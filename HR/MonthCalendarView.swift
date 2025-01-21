@@ -9,10 +9,13 @@ import SwiftUI
 
 struct MonthCalendarView: View {
     @Binding var selectedDate: Date
-    let events: [CalendarEvent]
-    let onEventDoubleTap: (CalendarEvent) -> Void
     
-    // NEW: closure to handle a drop
+    // Instead of passing plain [CalendarEvent], pass the entire viewModel
+    // or call a function in your parent that calls viewModel.eventsForDay(...)
+    // For simplicity, let’s pass the viewModel:
+    @ObservedObject var viewModel: CalendarViewModel
+    
+    let onEventDoubleTap: (CalendarEvent) -> Void
     let onEventDrop: (UUID, Date) -> Void
     
     private let calendar = Calendar.current
@@ -29,15 +32,16 @@ struct MonthCalendarView: View {
                         .font(.caption2)
                         .foregroundColor(.primary)
                     
-                    // Show events for this day
-                    let dayEvents = events.filter { calendar.isDate($0.start, inSameDayAs: day) }
+                    // GET repeated expansions from the viewModel
+                    let dayEvents = viewModel.eventsForDay(day)
+                    
                     ForEach(dayEvents) { event in
                         Text(event.title)
                             .font(.system(size: 8))
                             .padding(2)
                             .background(event.color.opacity(0.25))
                             .cornerRadius(4)
-                            // DRAGGABLE:
+                            // DRAG
                             .draggable(CalendarEventDragTransfer(eventID: event.id))
                             .onTapGesture(count: 2) {
                                 onEventDoubleTap(event)
@@ -47,16 +51,16 @@ struct MonthCalendarView: View {
                 .padding(4)
                 .frame(maxWidth: .infinity, minHeight: 50, alignment: .topLeading)
                 .background(
-                    calendar.isDate(day, inSameDayAs: selectedDate) ?
-                    Color.blue.opacity(0.1) : Color.clear
+                    calendar.isDate(day, inSameDayAs: selectedDate)
+                    ? Color.blue.opacity(0.1)
+                    : Color.clear
                 )
                 .onTapGesture {
                     selectedDate = day
                 }
-                // DROP DESTINATION:
+                // DROP
                 .dropDestination(for: CalendarEventDragTransfer.self) { items, location in
                     guard let item = items.first else { return false }
-                    // We call onEventDrop with the day as the new start date
                     onEventDrop(item.eventID, day)
                     return true
                 }

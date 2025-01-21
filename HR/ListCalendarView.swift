@@ -8,14 +8,13 @@ import SwiftUI
 
 struct ListCalendarView: View {
     @Binding var selectedDate: Date
-    let events: [CalendarEvent]
+    @ObservedObject var viewModel: CalendarViewModel
     let onEventDoubleTap: (CalendarEvent) -> Void
     
     private let calendar = Calendar.current
     
     var body: some View {
-        let dayEvents = events
-            .filter { calendar.isDate($0.start, inSameDayAs: selectedDate) }
+        let dayEvents = viewModel.eventsForDay(selectedDate)
             .sorted(by: { $0.start < $1.start })
         
         List {

@@ -1,3 +1,10 @@
+//
+//  FullCalendarContainer.swift
+//  HR
+//
+//  Created by Mincho Milev on 1/21/25.
+//
+
 import SwiftUI
 import Combine
 
@@ -12,8 +19,6 @@ enum CalendarDisplayMode: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
-// MARK: - Main Container
-
 struct FullCalendarContainer: View {
     @StateObject var viewModel = CalendarViewModel()
     
@@ -21,6 +26,8 @@ struct FullCalendarContainer: View {
     @State private var displayMode: CalendarDisplayMode = .month
     
     @State private var editingEvent: CalendarEvent? = nil
+    
+    private let calendar = Calendar.current
     
     var body: some View {
         NavigationStack {
@@ -57,79 +64,18 @@ struct FullCalendarContainer: View {
                 
                 Divider()
                 
-                // Main content
-                Group {
-                    switch displayMode {
-                    case .month:
-                        MonthCalendarView(
-                            selectedDate: $selectedDate,
-                            events: viewModel.events,
-                            onEventDoubleTap: { event in
-                                editingEvent = event
-                            },
-                            onEventDrop: { eventID, day in
-                                // Move the event to that day as all-day
-                                viewModel.moveEvent(withID: eventID, to: day, allDay: true)
-                            }
-                        )
-                        
-                    case .week:
-                        WeekCalendarView(
-                            selectedDate: $selectedDate,
-                            events: viewModel.events,
-                            onEventDoubleTap: { event in
-                                editingEvent = event
-                            },
-                            onEventDrop: { eventID, newStart in
-                                // Move the event to newStart, not all-day
-                                viewModel.moveEvent(withID: eventID, to: newStart, allDay: false)
-                            }
-                        )
-                        
-                    case .day:
-                        DayCalendarView(
-                            selectedDate: $selectedDate,
-                            events: viewModel.events,
-                            onEventDoubleTap: { event in
-                                editingEvent = event
-                            },
-                            onEventDrop: { eventID, newStart in
-                                viewModel.moveEvent(withID: eventID, to: newStart, allDay: false)
-                            }
-                        )
-                        
-                    case .list:
-                        ListCalendarView(
-                            selectedDate: $selectedDate,
-                            events: viewModel.events,
-                            onEventDoubleTap: { event in
-                                editingEvent = event
-                            }
-                        )
-                        // (No drag/drop in list view in this demo)
-                        
-                    case .resourceTimeline:
-                        ResourceTimelineView(
-                            resources: viewModel.resources,
-                            events: viewModel.events,
-                            selectedDate: $selectedDate,
-                            onEventDoubleTap: { event in
-                                editingEvent = event
-                            }
-                        )
-                        // (No drag/drop in resource timeline in this demo)
-                    }
-                }
+                // Main content (using a dedicated @ViewBuilder func)
+                mainContent()
             }
             .navigationTitle(formattedDate(selectedDate))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    // Add new event
                     Button {
+                        // Create a new empty event at the currently selected date
                         let newEvent = CalendarEvent(
                             title: "",
                             start: selectedDate,
-                            end: selectedDate.addingTimeInterval(3600)
+                            end: selectedDate.addingTimeInterval(3600) // +1 hour
                         )
                         editingEvent = newEvent
                     } label: {
@@ -137,7 +83,7 @@ struct FullCalendarContainer: View {
                     }
                 }
             }
-            // Present the form
+            // Present the form in a sheet
             .sheet(item: $editingEvent) { event in
                 CalendarEventFormView(
                     viewModel: viewModel,
@@ -148,8 +94,75 @@ struct FullCalendarContainer: View {
         }
     }
     
+    // MARK: - Main Content
+    
+    /// By wrapping this switch in a @ViewBuilder function, we avoid type-inference problems.
+    @ViewBuilder
+    private func mainContent() -> some View {
+        switch displayMode {
+        case .month:
+            MonthCalendarView(
+                selectedDate: $selectedDate,
+                viewModel: viewModel,
+                onEventDoubleTap: { event in
+                    editingEvent = event
+                },
+                onEventDrop: { eventID, day in
+                    // Move event to that day as all-day
+                    viewModel.moveEvent(withID: eventID, to: day, allDay: true)
+                }
+            )
+            
+        case .week:
+            WeekCalendarView(
+                selectedDate: $selectedDate,
+                viewModel: viewModel,
+                onEventDoubleTap: { event in
+                    editingEvent = event
+                },
+                onEventDrop: { eventID, newStart in
+                    // Move event to the newStart with an hour-based drop
+                    viewModel.moveEvent(withID: eventID, to: newStart, allDay: false)
+                }
+            )
+            
+        case .day:
+            DayCalendarView(
+                selectedDate: $selectedDate,
+                viewModel: viewModel,
+                onEventDoubleTap: { event in
+                    editingEvent = event
+                },
+                onEventDrop: { eventID, newStart in
+                    // For day view, we also treat it as time-based
+                    viewModel.moveEvent(withID: eventID, to: newStart, allDay: false)
+                }
+            )
+            
+        case .list:
+            ListCalendarView(
+                selectedDate: $selectedDate,
+                viewModel: viewModel,
+                onEventDoubleTap: { event in
+                    editingEvent = event
+                }
+            )
+            
+        case .resourceTimeline:
+            ResourceTimelineView(
+                resources: viewModel.resources,
+                events: viewModel.events, // or your expanded repeats if you prefer
+                selectedDate: $selectedDate,
+                onEventDoubleTap: { event in
+                    editingEvent = event
+                }
+            )
+        }
+    }
+    
+    // MARK: - Navigation Helpers
+    
     private func goToPrevious() {
-        let calendar = Calendar.current
         switch displayMode {
         case .month:
             if let newDate = calendar.date(byAdding: .month, value: -1, to: selectedDate) {
@@ -171,7 +184,6 @@ struct FullCalendarContainer: View {
     }
     
     private func goToNext() {
-        let calendar = Calendar.current
         switch displayMode {
         case .month:
             if let newDate = calendar.date(byAdding: .month, value: 1, to: selectedDate) {
