@@ -1,157 +1,114 @@
+//
+//  TimeOffCalendarView.swift
+//  HRApp
+//
+//  Created by Mincho Milev on ...
+//
+
 import SwiftUI
 import SwiftData
 
+/// Примерен екран, който показва TimeOffRequest в календар.
+/// Ползваме глобалното `CalendarMode` (от CalendarCoordinator.swift).
 struct TimeOffCalendarView: View {
-    @Environment(\.modelContext) private var context
+    // (1) Взимаме всички TimeOffRequest от SwiftData с @Query
+    @Query(sort: \TimeOffRequest.startDate, order: .forward)
+    private var requests: [TimeOffRequest]
     
-    // The "mode" for day/week/month/year
-    enum CalendarMode: String, CaseIterable {
-        case day = "Day"
-        case week = "Week"
-        case month = "Month"
-        case year = "Year"
-    }
-
-    @State private var currentMode: CalendarMode = .month
-
-    @State private var requests: [TimeOffRequest] = []
-    @State private var loading = false
-
-    // Coordinator for date logic
+    // (2) Координатор за навигиране
     @StateObject private var coordinator = CalendarCoordinator()
-    @StateObject private var colorManager = CalendarColorManager()
-
-    /// Whether an event is actively being dragged (for scroll logic, etc.)
+    
+    // (3) Текущ календ. мод (day/week/month/year).
+    //     Използваме глобалния enum CalendarMode
+    @State private var currentMode: CalendarMode = .month
+    
+    // (4) Ако ви трябва да блокирате скрол, докато драгвате
     @State private var isDraggingEvent = false
-
+    
+    // (По избор) color manager
+    @StateObject private var colorManager = CalendarColorManager()
+    
+    @Environment(\.dismiss) private var dismiss  // Ако се ползва в sheet
+    
     var body: some View {
         NavigationStack {
-            Group {
-                if loading {
-                    LoadingSpinner()
-                } else {
-                    content
+            VStack(spacing: 0) {
+                // Picker
+                Picker("Mode", selection: $currentMode) {
+                    ForEach(CalendarMode.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
                 }
+                .pickerStyle(.segmented)
+                .padding()
+                
+                // Header с бутон предишен/следващ
+                HStack {
+                    Button {
+                        coordinator.goToPreviousPeriod(mode: currentMode)
+                    } label: {
+                        Image(systemName: "chevron.left")
+                    }
+                    Spacer()
+                    Text(coordinator.currentPeriodTitle(mode: currentMode))
+                        .font(.headline)
+                    Spacer()
+                    Button {
+                        coordinator.goToNextPeriod(mode: currentMode)
+                    } label: {
+                        Image(systemName: "chevron.right")
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 5)
+                
+                // Календарният изглед (GenericCalendarView)
+                GenericCalendarView<TimeOffRequest>(
+                    events: requests,
+                    colorForEvent: { request in
+                        // Може да върнем .orange, или някой друг цвят
+                        colorManager.color(for: request.employee)
+                    },
+                    onDrop: { droppedEvent, newDay in
+                        // Ако искате custom логика при drop
+                        shiftTimeOffEvent(droppedEvent, to: newDay)
+                    },
+                    isDraggingEvent: $isDraggingEvent,
+                    mode: currentMode,
+                    coordinator: coordinator
+                )
             }
             .navigationTitle("Time Off Calendar")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Close") {
-                        dismissView()
+                        dismiss()
                     }
                 }
             }
         }
-        .onAppear {
-            fetchRequests()
+    }
+    
+    // Примерна функция, ако искаме да местим TimeOffRequest,
+    // измествайки startDate/endDate със същата разлика
+    private func shiftTimeOffEvent(_ req: TimeOffRequest, to newDay: Date) -> Bool {
+        let cal = Calendar.current
+        let oldStartDay = cal.startOfDay(for: req.startDate)
+        let newStartDay = cal.startOfDay(for: newDay)
+        let delta = cal.dateComponents([.day], from: oldStartDay, to: newStartDay).day ?? 0
+        
+        req.startDate = cal.date(byAdding: .day, value: delta, to: req.startDate) ?? req.startDate
+        req.endDate   = cal.date(byAdding: .day, value: delta, to: req.endDate) ?? req.endDate
+        
+        do {
+            try context.save()
+            return true
+        } catch {
+            print("Error shifting TimeOffRequest: \(error)")
+            return false
         }
     }
-
-    // MARK: - Subview: Content
-    /// Breaking the main content into a separate property
-    private var content: some View {
-        VStack(spacing: 0) {
-            modePicker
-            navigationHeader
-            calendarSubview
-        }
-    }
-
-    // MARK: - Subview: Mode Picker
-    private var modePicker: some View {
-        Picker("Calendar Mode", selection: $currentMode) {
-            ForEach(CalendarMode.allCases, id: \.self) { mode in
-                Text(mode.rawValue).tag(mode)
-            }
-        }
-        .pickerStyle(.segmented)
-        .padding()
-    }
-
-    // MARK: - Subview: Navigation Header
-    private var navigationHeader: some View {
-        HStack {
-            Button {
-                coordinator.goToPreviousPeriod(mode: currentMode)
-            } label: {
-                Image(systemName: "chevron.left")
-            }
-            Spacer()
-            Text(coordinator.currentPeriodTitle(mode: currentMode))
-                .font(.headline)
-            Spacer()
-            Button {
-                coordinator.goToNextPeriod(mode: currentMode)
-            } label: {
-                Image(systemName: "chevron.right")
-            }
-        }
-        .padding()
-    }
-
-    // MARK: - Subview: Calendar Switch
-    @ViewBuilder
-    private var calendarSubview: some View {
-        switch currentMode {
-        case .day:
-            GenericDayView(
-                date: coordinator.currentDate,
-                events: requests,
-                colorForEvent: { request in
-                    // Pass the request’s employee to colorManager
-                    colorManager.color(for: request.employee)
-                },
-                isDraggingEvent: $isDraggingEvent,
-                onDrop: nil
-            )
-        case .week:
-            GenericWeekView(
-                weekStart: coordinator.weekStart,
-                events: requests,                                // <--- pass 'requests' here
-                colorForEvent: { request in
-                    colorManager.color(for: request.employee)    // <--- create the closure
-                },
-                isDraggingEvent: $isDraggingEvent,
-                onDrop: nil
-            )
-        case .month:
-            GenericMonthView(
-                monthStart: coordinator.monthStart,
-                events: requests,
-                colorForEvent: { request in
-                    colorManager.color(for: request.employee)
-                },
-                isDraggingEvent: $isDraggingEvent,
-                onDrop: nil
-            )
-        case .year:
-            GenericYearView(
-                yearStart: coordinator.yearStart,
-                events: requests,
-                colorForEvent: { request in
-                    colorManager.color(for: request.employee)
-                },
-                onDrop: nil,                 // <-- onDrop comes before isDraggingEvent
-                isDraggingEvent: $isDraggingEvent
-            )
-        }
-    }
-
-    @Environment(\.dismiss) private var dismiss
-    private func dismissView() {
-        dismiss()
-    }
-
-    private func fetchRequests() {
-        Task {
-            do {
-                loading = true
-                let service = TimeOffService()
-                requests = try service.fetchRequests(context: context)
-            } catch {
-                print("Error fetching time-off requests for calendar: \(error)")
-            }
-            loading = false
-        }
-    }
+    
+    // Нужно е, за да запазите:
+    @Environment(\.modelContext) private var context
 }

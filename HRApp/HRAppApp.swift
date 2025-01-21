@@ -17,17 +17,10 @@ struct HRAppApp: App {
             WindowGroup {
                 ContentView()
                     // Inject the SwiftData model context
-                    .environment(\.modelContext, persistenceController.container.mainContext)
+//                    .environment(\.modelContext, persistenceController.container.mainContext)
                     // Inject the authentication service for global access
                     .environmentObject(authService)
             }
-            .modelContainer(for: [
-                Employee.self,
-                Department.self,
-                TimeOffRequest.self,
-                PerformanceReview.self,
-                Interview.self,
-                Candidate.self
-            ])
+            .modelContainer(PersistenceController.shared.container)
         }
 }

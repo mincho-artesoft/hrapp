@@ -1,8 +1,6 @@
-import SwiftUI
 import SwiftData
 import Foundation
 
-/// Протокол CalendarEvent, за да са класове (AnyObject) и да имат start/end/overlapsDay:
 protocol CalendarEvent: AnyObject, Identifiable {
     var id: UUID { get set }
     var startDate: Date { get set }
@@ -10,6 +8,7 @@ protocol CalendarEvent: AnyObject, Identifiable {
     func overlapsDay(_ date: Date) -> Bool
 }
 
+// Default реализация:
 extension CalendarEvent {
     func overlapsDay(_ date: Date) -> Bool {
         let dayStart = Calendar.current.startOfDay(for: date)
@@ -18,22 +17,19 @@ extension CalendarEvent {
     }
 }
 
-/// SwiftData модел за TimeOffRequest, имплементиращ `CalendarEvent`.
 @Model
 final class TimeOffRequest: CalendarEvent {
     @Attribute(.unique) var id: UUID
     var startDate: Date
     var endDate: Date
-    
-    // Предполага се, че имате някакъв `Employee` модел:
-    @Relationship var employee: Employee
-    
+
+    // Примерно:
     var reason: String
     var status: String
 
-    /// Пренареждаме параметрите, за да може да викаме:
-    /// TimeOffRequest(employee:..., startDate:..., endDate:..., reason:..., status:..., id:...)
-    /// като "id" и "status" имат default стойности.
+    // Rel към Employee
+    @Relationship var employee: Employee
+
     init(
         employee: Employee,
         startDate: Date,
@@ -44,16 +40,9 @@ final class TimeOffRequest: CalendarEvent {
     ) {
         self.employee = employee
         self.startDate = startDate
-        self.endDate   = endDate
-        self.reason    = reason
-        self.status    = status
-        self.id        = id
-    }
-
-    // Ако искате да override-нете overlapsDay(_:) със специфична логика, може:
-    func overlapsDay(_ date: Date) -> Bool {
-        let dayStart = Calendar.current.startOfDay(for: date)
-        let dayEnd   = Calendar.current.date(byAdding: .day, value: 1, to: dayStart)!
-        return (startDate < dayEnd) && (endDate > dayStart)
+        self.endDate = endDate
+        self.reason = reason
+        self.status = status
+        self.id = id
     }
 }

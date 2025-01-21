@@ -2,7 +2,7 @@
 //  TimeOffListView.swift
 //  HRApp
 //
-//  Опростен пример за списък с TimeOffRequest + Sheet за GenericCalendarView
+//  Пример: списък с TimeOffRequest + Sheet със SegmentedPicker (day/week/month/year)
 //
 
 import SwiftUI
@@ -13,18 +13,26 @@ struct TimeOffListView: View {
     
     // Списъкът от TimeOffRequest обекти, които ще показваме
     @State private var requests: [TimeOffRequest] = []
-    
-    // Дали в момента зареждаме (show ProgressView)
     @State private var loading = false
     
-    // Дали да покажем формата за добавяне на нов TimeOffRequest
+    // Sheet-състояния
     @State private var showingAddRequest = false
-    
-    // Дали да покажем календара в Sheet
     @State private var showingCalendar = false
     
     // Сервиз за манипулация на TimeOffRequest
     @StateObject private var timeOffService = TimeOffService()
+    
+    // -----------------------------------------
+    // MARK: - Параметри за GenericCalendarView
+    // -----------------------------------------
+    /// За drag-n-drop (да може да забраним скрол, докато се влачи)
+    @State private var isDraggingEvent = false
+    
+    /// Избран календарен режим (day / week / month / year)
+    @State private var currentMode: CalendarMode = .month
+    
+    /// Координатор, който държи текущата "основа" на календара (date, weekStart и т.н.)
+    @StateObject private var coordinator = CalendarCoordinator()
     
     var body: some View {
         NavigationStack {
@@ -56,17 +64,15 @@ struct TimeOffListView: View {
             }
             .navigationTitle("Time Off Requests")
             .toolbar {
-                // Два бутона: един за Calendar, един за "+"
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    // 1) Бутон за календар
                     Button {
-                        // Натискаме calendar бутона -> показваме .sheet с календар
                         showingCalendar = true
                     } label: {
                         Image(systemName: "calendar")
                     }
-                    
+                    // 2) Бутон за създаване на нов TimeOffRequest
                     Button {
-                        // Натискаме "+" -> показваме формата за добавяне
                         showingAddRequest = true
                     } label: {
                         Image(systemName: "plus")
@@ -74,31 +80,44 @@ struct TimeOffListView: View {
                 }
             }
         }
-        // Sheet за създаване на нов TimeOffRequest
         .sheet(isPresented: $showingAddRequest) {
+            // Sheet за създаване на TimeOffRequest
             AddTimeOffView {
-                // След като добавим нов, опресняваме списъка
                 fetchRequests()
             }
         }
-        // Sheet за календара (GenericCalendarView)
         .sheet(isPresented: $showingCalendar) {
+            // Sheet, в който показваме календар + Picker за превключване (day/week/month/year)
             NavigationStack {
-                // Показваме GenericCalendarView<TimeOffRequest>
-                // (трябва да сте го импортирали/дефинирали по-рано)
-                GenericCalendarView<TimeOffRequest>(
-                    events: requests,
-                    colorForEvent: { req in
-                        // Определете цвят по ваше желание
-                        .green.opacity(0.7)
-                    },
-                    // Когато user драгне TimeOffRequest
-                    // и го пусне на нов ден -> shift
-                    onDrop: { request, newDay in
-                        shiftTimeOffRequest(request, to: newDay)
+                VStack(spacing: 0) {
+                    // (A) Picker, за да превключваме изгледа
+                    Picker("View Mode", selection: $currentMode) {
+                        ForEach(CalendarMode.allCases, id: \.self) { mode in
+                            Text(mode.rawValue).tag(mode)
+                        }
                     }
-                )
-                .navigationTitle("Calendar")
+                    .pickerStyle(.segmented)
+                    .padding()
+
+                    // (B) Самият календар
+                    GenericCalendarView<TimeOffRequest>(
+                        events: requests,
+                        colorForEvent: { req in
+                            // Изберете какъвто цвят желаете
+                            .green.opacity(0.7)
+                        },
+                        // Handler, когато драгнем събитие до нов ден
+                        onDrop: { request, newDay in
+                            shiftTimeOffRequest(request, to: newDay)
+                        },
+                        
+                        // ЗАДЪЛЖИТЕЛНИ ПАРАМЕТРИ ЗА GenericCalendarView
+                        isDraggingEvent: $isDraggingEvent,
+                        mode: currentMode,
+                        coordinator: coordinator
+                    )
+                }
+                .navigationTitle("Time Off Calendar")
                 .toolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Close") {
@@ -113,7 +132,7 @@ struct TimeOffListView: View {
         }
     }
     
-    /// Зареждаме списъка requests от SwiftData (TimeOffService)
+    // MARK: - Fetch Requests
     private func fetchRequests() {
         Task {
             do {
@@ -126,16 +145,17 @@ struct TimeOffListView: View {
         }
     }
     
-    /// Когато user драгне TimeOffRequest към новия ден, местим start/end
+    // MARK: - Shift Event on Drop
+    /// Когато драгнем TimeOffRequest към новия ден, изместваме start/end
     private func shiftTimeOffRequest(_ req: TimeOffRequest, to newDay: Date) -> Bool {
         let cal = Calendar.current
         
-        // Колко дни е разликата от старото начало -> новото?
+        // Изчисляваме разликата в дни
         let oldStartDay = cal.startOfDay(for: req.startDate)
         let newStartDay = cal.startOfDay(for: newDay)
         let delta = cal.dateComponents([.day], from: oldStartDay, to: newStartDay).day ?? 0
         
-        // Изместваме start/end
+        // Прилагаме изместване и запазваме
         req.startDate = cal.date(byAdding: .day, value: delta, to: req.startDate) ?? req.startDate
         req.endDate   = cal.date(byAdding: .day, value: delta, to: req.endDate) ?? req.endDate
         

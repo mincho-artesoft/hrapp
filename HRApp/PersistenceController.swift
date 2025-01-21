@@ -10,24 +10,22 @@ class PersistenceController: ObservableObject {
     /// Pass `true` if you want an in-memory store. Default is on-disk.
     private init(inMemory: Bool = false) {
         // 1) Call the static removal function before assigning any instance properties
-        Self.removeLegacyStoreIfExists()
+//        Self.removeLegacyStoreIfExists()
 
         // 2) Create a ModelConfiguration (for older SwiftData betas)
-        let config = ModelConfiguration()
 
         do {
-            // 3) Pass your model types as a comma-separated list
-            //    and supply `config` for configurations:
-            container = try ModelContainer(
-                for:
-                    Employee.self,
-                    Department.self,
-                    TimeOffRequest.self,
-                    PerformanceReview.self,
-                    Candidate.self,
-                    Interview.self,
-                configurations: config
-            )
+            let schema = Schema([
+                Employee.self,
+                Department.self,
+                TimeOffRequest.self,
+                PerformanceReview.self,
+                Candidate.self,
+                Interview.self,
+            ])
+            let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+            container = try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
         }

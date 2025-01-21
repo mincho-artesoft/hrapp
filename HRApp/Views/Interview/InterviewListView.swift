@@ -1,19 +1,41 @@
 import SwiftUI
 import SwiftData
 
+/// 1) Разширение, което дефинира наш собствен метод safeToolbar
+extension View {
+    func myCustomToolbar<Content: ToolbarContent>(
+        @ToolbarContentBuilder content: () -> Content
+    ) -> some View {
+        self.toolbar(content: content)
+    }
+}
+
+
 struct InterviewListView: View {
     @Environment(\.modelContext) private var context
     @StateObject private var interviewService = InterviewService()
 
-    // Масивът със събития (интервюта)
+    // Държим локално масива с Interview обекти
     @State private var interviews: [Interview] = []
+
+    // Флаг за зареждане
     @State private var loading: Bool = false
 
-    // Покazваме формата за ново интервю
+    // Sheet за създаване на ново интервю
     @State private var showingNewInterview: Bool = false
 
-    // Покazваме календара в sheet
+    // Sheet за календара
     @State private var showingCalendar: Bool = false
+
+    // MARK: - Добавяме още три свойства:
+    /// Координатор, който ще следи текущата дата в календара
+    @StateObject private var coordinator = CalendarCoordinator()
+
+    /// Дали в момента влачим (drag) някое събитие
+    @State private var isDraggingEvent = false
+
+    /// Текущият изглед на календара (day, week, month, year)
+    @State private var currentMode: CalendarMode = .month
 
     var body: some View {
         NavigationStack {
@@ -37,7 +59,9 @@ struct InterviewListView: View {
                 }
             }
             .navigationTitle("Interviews")
-            .toolbar {
+            // Вместо .toolbar използваме нашия метод .safeToolbar,
+            // за да избегнем евентуални предупреждения при компилация.
+            .myCustomToolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingCalendar = true
@@ -54,25 +78,27 @@ struct InterviewListView: View {
                 }
             }
         }
-        // Sheet за ново интервю
         .sheet(isPresented: $showingNewInterview) {
+            // Екрана за създаване на ново интервю
             ScheduleInterviewGenericView {
                 fetchInterviews()
             }
         }
-        // Sheet за календара (GenericCalendarView<Interview>)
         .sheet(isPresented: $showingCalendar) {
             NavigationStack {
                 GenericCalendarView<Interview>(
                     events: interviews,
                     colorForEvent: { _ in .orange },
                     onDrop: { interview, newDay in
-                        // Когато user пусне (drop) интервю върху нов ден:
                         shiftInterview(interview, toDay: newDay)
-                    }
+                    },
+                    // Тук вече подаваме:
+                    isDraggingEvent: $isDraggingEvent,
+                    mode: currentMode,
+                    coordinator: coordinator
                 )
                 .navigationTitle("Interviews Calendar")
-                .toolbar {
+                .myCustomToolbar {
                     ToolbarItem(placement: .cancellationAction) {
                         Button("Close") {
                             showingCalendar = false
@@ -86,6 +112,7 @@ struct InterviewListView: View {
         }
     }
 
+    /// Зареждаме интервютата от базата (SwiftData)
     private func fetchInterviews() {
         Task {
             do {

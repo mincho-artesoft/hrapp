@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct GenericDayView<T: CalendarEvent>: View {
-    @Environment(\.modelContext) private var context  // ако ползвате SwiftData и искате да save-вате
+    @Environment(\.modelContext) private var context  // ако ползвате SwiftData
 
     let date: Date
     let events: [T]
@@ -13,7 +13,7 @@ struct GenericDayView<T: CalendarEvent>: View {
     let onDrop: ((T, Date) -> Bool)?
 
     var body: some View {
-        // Избираме само събития, които припокриват "date"
+        // Филтрираме само събития, които припокриват "date"
         let dayEvents = events.filter { $0.overlapsDay(date) }
 
         ScrollView {
@@ -56,9 +56,8 @@ struct GenericDayView<T: CalendarEvent>: View {
                     .frame(height: 60)
                     // Drop Destination
                     .dropDestination(for: GenericEventTransfer.self) { items, location in
-                        // Убедете се, че се извиква (напр. print)
                         print("Drop destination triggered on hour \(hour)")
-
+                        
                         guard let dropItem = items.first else {
                             return false
                         }
@@ -69,9 +68,8 @@ struct GenericDayView<T: CalendarEvent>: View {
                             return false
                         }
 
-                        // Или ползваме onDrop, или директно местим
+                        // Ако има onDrop callback -> викаме него
                         if let onDrop {
-                            // ако родителят иска да се справи с промяната
                             return onDrop(droppedEvent, hourStart)
                         } else {
                             // Директно тук сменяме start/end
@@ -79,10 +77,8 @@ struct GenericDayView<T: CalendarEvent>: View {
                             droppedEvent.startDate = hourStart
                             droppedEvent.endDate   = hourStart.addingTimeInterval(duration)
 
-                            // Ако използвате SwiftData:
                             do {
                                 try context.save()
-                                // Принтваме за отстраняване на грешки
                                 print("Dropped event: \(droppedEvent.id), new start:", droppedEvent.startDate)
                                 return true
                             } catch {
@@ -117,7 +113,6 @@ struct GenericDayEventRow<T: CalendarEvent>: View {
         RoundedRectangle(cornerRadius: 8)
             .fill(color.opacity(0.3))
             .frame(height: 60)
-            // По-ясен текст, за да се види дали start/end се променят
             .overlay(
                 VStack(alignment: .leading, spacing: 2) {
                     Text("ID: \(event.id)")
@@ -134,7 +129,6 @@ struct GenericDayEventRow<T: CalendarEvent>: View {
                     originalStart: event.startDate,
                     originalEnd: event.endDate
                 ),
-                // По желание подайте preview, за да видите графика:
                 preview: {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(color)
@@ -144,13 +138,10 @@ struct GenericDayEventRow<T: CalendarEvent>: View {
                         )
                 }
             )
-            // Ако искате long-press, може да добавите:
             .onLongPressGesture(minimumDuration: 0.5) {
                 isDraggingEvent = true
                 print("Long press -> isDraggingEvent = true")
             }
-            // Ако user пусне (drop) другаде, тогава isDraggingEvent = false
-            // (Зависи как сте структурирали кода, това може да стане и автоматично.)
             .onChange(of: isDraggingEvent) { newVal in
                 if newVal == false {
                     print("Stopped dragging event: \(event.id)")
