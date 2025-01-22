@@ -2,16 +2,25 @@
 //  hrappApp.swift
 //  hrapp
 //
-//  Created by Mincho Milev on 1/22/25.
-//
 
 import SwiftUI
 
 @main
 struct hrappApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+    @StateObject var viewModel = CalendarViewModel()
+        @State var selectedDate = Date()
+        @State var highlightedEventID: UUID? = nil
+        
+        var body: some Scene {
+            WindowGroup {
+                CalendarDayView(
+                    viewModel: viewModel,
+                    selectedDate: $selectedDate,
+                    startHour: 8,
+                    endHour: 17,
+                    slotMinutes: 30,
+                    highlightedEventID: $highlightedEventID
+                )
+            }
         }
-    }
 }
