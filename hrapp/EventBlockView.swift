@@ -1,8 +1,3 @@
-//
-//  EventBlockView.swift
-//  hrapp
-//
-
 import SwiftUI
 
 /// A single event’s visual block, with highlight state, and drag-to-resize handles.
@@ -30,12 +25,12 @@ struct EventBlockView: View {
                 .padding(.top, 2)
             
             if isHighlighted {
-                // Top handle (example layout)
+                // Example top handle
                 Circle()
                     .fill(Color.white)
                     .overlay(Circle().stroke(Color.blue, lineWidth: 1))
                     .frame(width: 12, height: 12)
-                    .position(x: 80, y: 6) // just a demo position
+                    .position(x: 80, y: 6) // example position, tweak as needed
                     .gesture(
                         DragGesture()
                             .onChanged { g in
@@ -47,12 +42,12 @@ struct EventBlockView: View {
                             }
                     )
                 
-                // Bottom handle (example layout)
+                // Example bottom handle
                 Circle()
                     .fill(Color.white)
                     .overlay(Circle().stroke(Color.blue, lineWidth: 1))
                     .frame(width: 12, height: 12)
-                    .position(x: 6, y: 60) // just a demo position
+                    .position(x: 6, y: 60) // example position, tweak as needed
                     .gesture(
                         DragGesture()
                             .onChanged { g in

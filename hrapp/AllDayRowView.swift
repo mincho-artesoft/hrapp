@@ -1,16 +1,3 @@
-//
-//  AllDayRowView.swift
-//  hrapp
-//
-//  Created by Mincho Milev on 1/22/25.
-//
-
-
-//
-//  AllDayRowView.swift
-//  hrapp
-//
-
 import SwiftUI
 
 /// A horizontal strip that displays all-day events for a given day, plus drop zone to convert events to all-day.
@@ -30,6 +17,7 @@ struct AllDayRowView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 4) {
+                    // IMPORTANT: Ensure `events` is `[CalendarEvent]`.
                     ForEach(events) { event in
                         let bgColor = event.color.opacity(0.3)
                         Text(event.title)
@@ -40,8 +28,10 @@ struct AllDayRowView: View {
                             .onTapGesture {
                                 onEventTapped(event)
                             }
-                            .draggable(CalendarEventDragTransfer(eventID: event.id),
-                                       gestures: [.pressAndDrag])
+                            .draggable(
+                                CalendarEventDragTransfer(eventID: event.id),
+                                gestures: [.pressAndDrag]
+                            )
                     }
                 }
             }
@@ -54,4 +44,3 @@ struct AllDayRowView: View {
         }
     }
 }
-

@@ -4,13 +4,22 @@
 //
 //  Created by Mincho Milev on 1/22/25.
 //
-
-
-//
-//  TransferError.swift
-//  hrapp
-//
+enum TransferError: Error { case invalidUUID }
 
 import SwiftUI
 
-enum TransferError: Error { case invalidUUID }
+struct CalendarEventDragTransfer: Transferable {
+    let eventID: UUID
+    
+    static var transferRepresentation: some TransferRepresentation {
+        ProxyRepresentation(
+            exporting: { $0.eventID.uuidString },
+            importing: {
+                guard let uuid = UUID(uuidString: $0) else {
+                    throw TransferError.invalidUUID
+                }
+                return CalendarEventDragTransfer(eventID: uuid)
+            }
+        )
+    }
+}

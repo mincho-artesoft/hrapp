@@ -1,10 +1,3 @@
-//
-//  DayTimeGridBackground.swift
-//  hrapp
-//
-//  Created by Mincho Milev on 1/22/25.
-//
-
 import SwiftUI
 
 /// Simple background lines for a day’s timeline
@@ -12,8 +5,6 @@ struct DayTimeGridBackground: View {
     let startHour: Int
     let endHour: Int
     let slotMinutes: Int
-    
-    private let calendar = Calendar.current
     
     var body: some View {
         VStack(spacing: 0) {
@@ -34,9 +25,8 @@ struct DayTimeGridBackground: View {
         return Array(startHour..<endHour)
     }
     
-    /// Just a simplistic constant to produce some height
+    /// Just a simplistic constant for height
     private var hourBlockHeight: CGFloat {
-        // You can tweak to your liking or compute from geometry
         60
     }
 }

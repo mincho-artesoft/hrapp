@@ -1,8 +1,3 @@
-//
-//  CalendarDayView.swift
-//  hrapp
-//
-
 import SwiftUI
 
 struct CalendarDayView: View {
@@ -99,8 +94,8 @@ struct CalendarDayView: View {
     
     private var dayTimedEvents: [CalendarEvent] {
         viewModel.events.filter {
-            !$0.allDay
-            && dateRangeOverlap(
+            !$0.allDay &&
+            dateRangeOverlap(
                 $0.start, $0.end,
                 calendar.startOfDay(for: selectedDate),
                 calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: selectedDate))!

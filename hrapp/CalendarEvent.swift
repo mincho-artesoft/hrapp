@@ -1,8 +1,3 @@
-//
-//  CalendarEvent.swift
-//  hrapp
-//
-
 import SwiftUI
 
 /// Represents a single event on the calendar with an ID, a title, a date range,

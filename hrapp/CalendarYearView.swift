@@ -1,8 +1,3 @@
-//
-//  CalendarYearView.swift
-//  hrapp
-//
-
 import SwiftUI
 
 struct CalendarYearView: View {

@@ -1,8 +1,3 @@
-//
-//  CalendarContainerView.swift
-//  hrapp
-//
-
 import SwiftUI
 
 struct CalendarContainerView: View {
@@ -42,10 +37,10 @@ struct CalendarContainerView: View {
                     CalendarWeekView(
                         viewModel: viewModel,
                         selectedDate: $selectedDate,
+                        highlightedEventID: $highlightedEventID,
                         startHour: startHour,
                         endHour: endHour,
-                        slotMinutes: slotMinutes,
-                        highlightedEventID: $highlightedEventID
+                        slotMinutes: slotMinutes
                     )
                 case .month:
                     CalendarMonthView(
