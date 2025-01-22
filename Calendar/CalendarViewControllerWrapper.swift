@@ -11,28 +11,15 @@ import CalendarKit
 
 /// Този SwiftUI изглед вгражда нашия `CalendarViewController` (UIKit) в SwiftUI йерархията
 struct CalendarViewControllerWrapper: UIViewControllerRepresentable {
-
-    // MARK: - Coordinator (ако ни трябва да комуникираме обратно към SwiftUI)
-
-    class Coordinator: NSObject {
-        // Тук може да пазим референции, ако трябва да връщаме данни към SwiftUI
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
-
-    // MARK: - UIViewControllerRepresentable
-
-    /// Създаваме инстанция на CalendarViewController (UIKit)
+    let selectedDate: Date
+    
     func makeUIViewController(context: Context) -> CalendarViewController {
         let vc = CalendarViewController()
-        // Тук можем да конфигурираме още неща, ако се наложи
+        vc.selectedDate = selectedDate
         return vc
     }
-
-    /// Ъпдейтва се при смяна на SwiftUI state
+    
     func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {
-        // Ако имаме нужда да обновяваме нещо специфично
+        // Ако искате да обновявате при промяна на selectedDate, го правите тук.
     }
 }

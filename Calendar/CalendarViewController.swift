@@ -12,7 +12,8 @@ import EventKitUI
 
 final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
     private var eventStore = EKEventStore()
-    
+    var selectedDate: Date? = nil
+
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -28,10 +29,14 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Ако по някаква причина се показва toolbar (например черен), можете да го скриете:
-        // navigationController?.setToolbarHidden(true, animated: false)
+        
+        guard let date = selectedDate else { return }
+        // За CalendarKit 6:
+        dayView.state?.move(to: date)
+        // По желание:
+        dayView.scrollTo(hour24: 9)
     }
-    
+
     // MARK: - Calendar Access
     
     /// Искаме достъп до календара на потребителя
