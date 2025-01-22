@@ -6,106 +6,107 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		50B2128F2D412A7700ABB8D3 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 50B2128E2D412A7700ABB8D3 /* CalendarKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		C8BB96202D3FA67100D8FCA1 /* HR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50B212702D41131C00ABB8D3 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C8BB96222D3FA67100D8FCA1 /* HR */ = {
+		50B2124D2D4111B800ABB8D3 /* Calendar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = HR;
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C8BB961D2D3FA67100D8FCA1 /* Frameworks */ = {
+		50B212482D4111B800ABB8D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B2128F2D412A7700ABB8D3 /* CalendarKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C8BB96172D3FA67100D8FCA1 = {
+		50B212422D4111B800ABB8D3 = {
 			isa = PBXGroup;
 			children = (
-				C8BB96222D3FA67100D8FCA1 /* HR */,
-				C8BB96212D3FA67100D8FCA1 /* Products */,
+				50B2124D2D4111B800ABB8D3 /* Calendar */,
+				50B212702D41131C00ABB8D3 /* Calendar.app */,
 			);
-			sourceTree = "<group>";
-		};
-		C8BB96212D3FA67100D8FCA1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C8BB96202D3FA67100D8FCA1 /* HR.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C8BB961F2D3FA67100D8FCA1 /* HR */ = {
+		50B2124A2D4111B800ABB8D3 /* Calendar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C8BB962E2D3FA67300D8FCA1 /* Build configuration list for PBXNativeTarget "HR" */;
+			buildConfigurationList = 50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "Calendar" */;
 			buildPhases = (
-				C8BB961C2D3FA67100D8FCA1 /* Sources */,
-				C8BB961D2D3FA67100D8FCA1 /* Frameworks */,
-				C8BB961E2D3FA67100D8FCA1 /* Resources */,
+				50B212472D4111B800ABB8D3 /* Sources */,
+				50B212482D4111B800ABB8D3 /* Frameworks */,
+				50B212492D4111B800ABB8D3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C8BB96222D3FA67100D8FCA1 /* HR */,
+				50B2124D2D4111B800ABB8D3 /* Calendar */,
 			);
-			name = HR;
+			name = Calendar;
 			packageProductDependencies = (
+				50B2128E2D412A7700ABB8D3 /* CalendarKit */,
 			);
-			productName = HR;
-			productReference = C8BB96202D3FA67100D8FCA1 /* HR.app */;
+			productName = Calendar;
+			productReference = 50B212702D41131C00ABB8D3 /* Calendar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C8BB96182D3FA67100D8FCA1 /* Project object */ = {
+		50B212432D4111B800ABB8D3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					C8BB961F2D3FA67100D8FCA1 = {
-						CreatedOnToolsVersion = 16.1;
+					50B2124A2D4111B800ABB8D3 = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = C8BB961B2D3FA67100D8FCA1 /* Build configuration list for PBXProject "HR" */;
+			buildConfigurationList = 50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "Calendar" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = C8BB96172D3FA67100D8FCA1;
+			mainGroup = 50B212422D4111B800ABB8D3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				50B2128D2D412A7700ABB8D3 /* XCRemoteSwiftPackageReference "CalendarKit" */,
+			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = C8BB96212D3FA67100D8FCA1 /* Products */;
+			productRefGroup = 50B212422D4111B800ABB8D3;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C8BB961F2D3FA67100D8FCA1 /* HR */,
+				50B2124A2D4111B800ABB8D3 /* Calendar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C8BB961E2D3FA67100D8FCA1 /* Resources */ = {
+		50B212492D4111B800ABB8D3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +116,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C8BB961C2D3FA67100D8FCA1 /* Sources */ = {
+		50B212472D4111B800ABB8D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +126,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C8BB962C2D3FA67300D8FCA1 /* Debug */ = {
+		50B212572D4111BA00ABB8D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -177,7 +178,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -188,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		C8BB962D2D3FA67300D8FCA1 /* Release */ = {
+		50B212582D4111BA00ABB8D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -244,28 +245,30 @@
 			};
 			name = Release;
 		};
-		C8BB962F2D3FA67300D8FCA1 /* Debug */ = {
+		50B2125A2D4111BA00ABB8D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HR/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.arte-soft.HR";
+				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -273,28 +276,30 @@
 			};
 			name = Debug;
 		};
-		C8BB96302D3FA67300D8FCA1 /* Release */ = {
+		50B2125B2D4111BA00ABB8D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HR/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.arte-soft.HR";
+				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -305,25 +310,44 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C8BB961B2D3FA67100D8FCA1 /* Build configuration list for PBXProject "HR" */ = {
+		50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "Calendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C8BB962C2D3FA67300D8FCA1 /* Debug */,
-				C8BB962D2D3FA67300D8FCA1 /* Release */,
+				50B212572D4111BA00ABB8D3 /* Debug */,
+				50B212582D4111BA00ABB8D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C8BB962E2D3FA67300D8FCA1 /* Build configuration list for PBXNativeTarget "HR" */ = {
+		50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "Calendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C8BB962F2D3FA67300D8FCA1 /* Debug */,
-				C8BB96302D3FA67300D8FCA1 /* Release */,
+				50B2125A2D4111BA00ABB8D3 /* Debug */,
+				50B2125B2D4111BA00ABB8D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		50B2128D2D412A7700ABB8D3 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardtop/CalendarKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.11;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		50B2128E2D412A7700ABB8D3 /* CalendarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50B2128D2D412A7700ABB8D3 /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			productName = CalendarKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = C8BB96182D3FA67100D8FCA1 /* Project object */;
+	rootObject = 50B212432D4111B800ABB8D3 /* Project object */;
 }
