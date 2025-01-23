@@ -46,13 +46,12 @@ struct YearCalendarView: View {
                             tappedMonthDate = tappedMonth
                             showMonthView = true
                         }
-                        // Фиксиран размер за „кутията“ на месеца
-                        .frame(width: 170, height: 220)
+                        // Увеличаваме рамката за по‑широк/висок визуален блок
+                        .frame(width: 200, height: 260)
                         .background(Color(.systemGray6))
                         .cornerRadius(12)
                     }
                 }
-                .padding()
             }
         }
         // Когато се покаже, зареждаме събития за годината (ако още не са)

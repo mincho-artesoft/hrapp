@@ -3,34 +3,48 @@ import EventKit
 
 struct MiniDayCellView: View {
     let day: Date
+    let referenceMonth: Date
     let events: [EKEvent]
     
     private let calendar = Calendar(identifier: .gregorian)
     
     var body: some View {
-        ZStack {
+        // Проверки
+        let isToday = calendar.isDateInToday(day)
+        let isInCurrentMonth = calendar.isDate(day, equalTo: referenceMonth, toGranularity: .month)
+        let dayNumber = calendar.component(.day, from: day)
+
+        ZStack(alignment: .top) {
+            // 1) Кръг за „днес“ (ако е днешна дата)
             if isToday {
                 Circle()
                     .fill(Color.red)
+                    .frame(width: 28, height: 28)
+                    .offset(y: 1) // може леко да го поместите
             }
-            
-            HStack(spacing: 2) {
-                Text("\(calendar.component(.day, from: day))")
-                    .font(.system(size: 11)) // малко по-малък, за да пасне
-                    .foregroundColor(isToday ? .white : .primary)
-                
-                if !events.isEmpty {
-                    Circle()
-                        .fill(Color.red)
-                        .frame(width: 4, height: 4)
-                }
+
+            // 2) Цифрата на деня (винаги на една и съща позиция)
+            Text("\(dayNumber)")
+                .font(.system(size: 12))
+                .foregroundColor(
+                    isToday
+                    ? Color.white
+                    : (isInCurrentMonth ? Color.primary : Color.gray)
+                )
+                .frame(height: 28, alignment: .center)
+                // alignment: .center, за да е центрирана в рамката
+
+            // 3) Ако има събития, малка точка отдолу
+            if !events.isEmpty {
+                Circle()
+                    .fill(Color.red)
+                    .frame(width: 4, height: 4)
+                    // Слагаме я под цифрата, например на +20 пиксела
+                    .offset(y: 20)
             }
         }
-        // Настройваме, за да е по-лесно клетката да се центрира
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-    
-    private var isToday: Bool {
-        calendar.isDateInToday(day)
+        // Даваме фиксирана рамка за всяка клетка
+        // Така всички цифри и точки се подравняват по редове/колони.
+        .frame(width: 30, height: 32)
     }
 }
