@@ -9,30 +9,28 @@ import EventKit
 struct RootView: View {
     @State private var selectedTab = 0
     
-    /// Един глобален EKEventStore за цялото приложение
     let eventStore = EKEventStore()
-    
-    /// Единствен екземпляр на CalendarViewModel, който държи и презарежда събития
     @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
     
     var body: some View {
         NavigationView {
             VStack {
-                // Сегментиран контрол: Месец / Ден
                 Picker("Изглед", selection: $selectedTab) {
                     Text("Месец").tag(0)
                     Text("Ден").tag(1)
+                    Text("Година").tag(2)  // <-- нов таб
                 }
                 .pickerStyle(.segmented)
                 .padding()
 
-                // Показваме или MonthCalendarView, или DayCalendarWrapperView
                 switch selectedTab {
                 case 0:
-                    // Предаваме ViewModel, за да може да чете/пише събития
-                    MonthCalendarView(viewModel: calendarVM)
+                    MonthCalendarView(viewModel: calendarVM, startMonth: Date())
                 case 1:
                     DayCalendarWrapperView(eventStore: calendarVM.eventStore)
+                case 2:
+                    // Тук викаме годишния изглед
+                    YearCalendarView(viewModel: calendarVM)
                 default:
                     Text("Невалидна селекция")
                 }
@@ -40,10 +38,9 @@ struct RootView: View {
             .navigationTitle("Calendar Demo")
         }
         .onAppear {
-            // При първо стартиране проверяваме достъпа до календара
+            // Искаме достъп до календара (ако не е даден)
             calendarVM.requestCalendarAccessIfNeeded {
-                // Ако вече има достъп (или го получим току-що), зареждаме събития
-                // примерно за текущия месец
+                // Зареждаме си каквото ни трябва, напр. текущ месец
                 calendarVM.loadEvents(for: Date())
             }
         }

@@ -93,3 +93,54 @@ class CalendarViewModel: ObservableObject {
         }
     }
 }
+
+extension CalendarViewModel {
+    /// Зареждаме всички събития за дадена година.
+    func loadEventsForWholeYear(year: Int) {
+        guard isCalendarAccessGranted() else {
+            self.eventsByDay = [:]
+            self.eventsByID = [:]
+            return
+        }
+        
+        let calendar = Calendar(identifier: .gregorian)
+        // Начало на годината (1-ви януари, 00:00)
+        var comp = DateComponents()
+        comp.year = year
+        comp.month = 1
+        comp.day = 1
+        guard let startOfYear = calendar.date(from: comp) else { return }
+        
+        // Начало на следващата година (1-ви януари на +1 година)
+        var compNext = DateComponents()
+        compNext.year = year + 1
+        compNext.month = 1
+        compNext.day = 1
+        guard let startOfNextYear = calendar.date(from: compNext) else { return }
+        
+        // Взимаме predicate
+        let predicate = eventStore.predicateForEvents(
+            withStart: startOfYear,
+            end: startOfNextYear,
+            calendars: nil
+        )
+        let foundEvents = eventStore.events(matching: predicate)
+        
+        var dict: [Date: [EKEvent]] = [:]
+        for ev in foundEvents {
+            let dayKey = calendar.startOfDay(for: ev.startDate)
+            dict[dayKey, default: []].append(ev)
+        }
+        
+        self.eventsByDay = dict
+        
+        // Речник по ID:
+        var tmp: [String: EKEvent] = [:]
+        for evList in dict.values {
+            for ev in evList {
+                tmp[ev.eventIdentifier] = ev
+            }
+        }
+        self.eventsByID = tmp
+    }
+}

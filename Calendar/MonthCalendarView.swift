@@ -10,11 +10,19 @@ import UniformTypeIdentifiers
 
 /// Месечен изглед, който показва събитията от CalendarViewModel
 struct MonthCalendarView: View {
-    @ObservedObject var viewModel: CalendarViewModel  // <-- вместо EKEventStore
+    @ObservedObject var viewModel: CalendarViewModel
     
-    @State private var currentMonth: Date = Date()
+    /// Тук приемаме началната дата на месеца,
+    /// например 1-ви януари 2025, ако навигираме от YearCalendarView.
+    /// Ако я няма, може да дадем „днешна дата“ като default:
+    var startMonth: Date
     
-    // За Day View (ако го ползваш директно)
+    // Държи кой месец реално гледаме в момента.
+    // При инициализация го слагаме равен на startMonth,
+    // но може да сменяме с бутони (следващ/предишен месец).
+    @State private var currentMonth: Date
+    
+    // За Day View (CalendarKit) на цял екран
     @State private var showDayView = false
     @State private var selectedDate: Date? = nil
     
@@ -28,6 +36,14 @@ struct MonthCalendarView: View {
     @State private var repeatingNewDate: Date?
     
     private let calendar = Calendar(identifier: .gregorian)
+    
+    // MARK: - Custom инициализатор
+    init(viewModel: CalendarViewModel, startMonth: Date) {
+        self.viewModel = viewModel
+        self.startMonth = startMonth
+        // Първоначално задаваме currentMonth = startMonth
+        _currentMonth = State(initialValue: startMonth)
+    }
     
     var body: some View {
         VStack {
@@ -80,7 +96,7 @@ struct MonthCalendarView: View {
                             } else {
                                 // Ако нямаме достъп, можем пак да поискаме
                                 viewModel.requestCalendarAccessIfNeeded {
-                                    // Можеш да заредиш, да покажеш alert и т.н.
+                                    // тук действие при нужда
                                 }
                             }
                         },
@@ -101,12 +117,11 @@ struct MonthCalendarView: View {
             .padding(.horizontal, 8)
         }
         .onAppear {
-            // Зареждаме събития за текущия месец, ако имаме достъп
+            // Зареждаме събития за текущия месец (currentMonth)
             viewModel.loadEvents(for: currentMonth)
         }
         // Day View (CalendarKit) на цял екран
         .fullScreenCover(isPresented: $showDayView, onDismiss: {
-            // Презареждаме след затваряне
             viewModel.loadEvents(for: currentMonth)
         }) {
             if let date = selectedDate {
@@ -127,11 +142,9 @@ struct MonthCalendarView: View {
         }
         // Системен редактор (EKEventEditViewController) като sheet
         .sheet(isPresented: $showEventEditor, onDismiss: {
-            // Презареждаме след затваряне
             viewModel.loadEvents(for: currentMonth)
         }) {
             if let ev = eventToEdit {
-                // Използваме EventEditViewWrapper (виж файл 4)
                 EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
             }
         }
@@ -152,7 +165,7 @@ struct MonthCalendarView: View {
     }
 }
 
-// MARK: - Помощни методи
+/// MARK: - Помощни методи
 extension MonthCalendarView {
     private func moveMonth(by offset: Int) {
         if let newMonth = calendar.date(byAdding: .month, value: offset, to: currentMonth) {
@@ -212,13 +225,11 @@ extension MonthCalendarView {
             presentNewEvent(on: day)
         }
         else if status == .notDetermined {
-            // Искаме достъп, и чак след като го получим, отваряме редактора
             viewModel.eventStore.requestAccess(to: .event) { granted, error in
                 DispatchQueue.main.async {
                     if granted, error == nil {
                         self.presentNewEvent(on: day)
                     } else {
-                        // Отказано
                         print("User denied calendar access.")
                     }
                 }
