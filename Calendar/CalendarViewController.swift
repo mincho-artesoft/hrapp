@@ -14,8 +14,8 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         dayView.reloadData()
+        
         if let date = selectedDate {
             dayView.state?.move(to: date)
             dayView.scrollTo(hour24: 9)
@@ -39,7 +39,7 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         var comp = DateComponents()
         comp.day = 1
         let endDate = calendar.date(byAdding: comp, to: startDate)!
-
+        
         let predicate = eventStore.predicateForEvents(withStart: startDate,
                                                       end: endDate,
                                                       calendars: nil)
@@ -55,6 +55,7 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         detailVC.event = wrapper.ekEvent
         detailVC.allowsCalendarPreview = true
         detailVC.allowsEditing = true
+        
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -74,8 +75,8 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         let endDate = calendar.date(byAdding: comp, to: date)
         
         newEvent.startDate = date
-        newEvent.endDate   = endDate
-        newEvent.title     = "New event"
+        newEvent.endDate = endDate
+        newEvent.title = "New event"
         
         let wrap = EKWrapper(eventKitEvent: newEvent)
         wrap.editedEvent = wrap
@@ -95,7 +96,7 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
             editingEvent.commitEditing()
             
             if original === editingEvent {
-                // Новосъздадено
+                // Новосъздадено събитие
                 presentEditingViewForEvent(editingEvent.ekEvent)
             } else {
                 // Редакция на вече съществуващо

@@ -1,3 +1,8 @@
+//
+//  DayCellView.swift
+//  ObservableCalendarDemo
+//
+
 import SwiftUI
 import EventKit
 import UniformTypeIdentifiers
@@ -29,11 +34,9 @@ struct DayCellView: View {
                     onDayLongPress(day)
                 }
 
-            // Слоят с деня и капсулите
             VStack(spacing: 4) {
-                // Ден
+                // Показваме деня
                 if calendar.isDateInToday(day) {
-                    // Днешна дата -> червен кръг
                     Text("\(dayNumber(day))")
                         .font(.subheadline)
                         .foregroundColor(.white)
@@ -45,7 +48,7 @@ struct DayCellView: View {
                         .foregroundColor(isInCurrentMonth(day) ? .primary : .gray)
                 }
 
-                // Събития (до 3)
+                // Показваме до 3 събития
                 if events.count <= 3 {
                     ForEach(events, id: \.eventIdentifier) { event in
                         eventCapsule(event)
@@ -110,3 +113,5 @@ struct DayCellView: View {
         calendar.isDate(date, equalTo: currentMonth, toGranularity: .month)
     }
 }
+
+

@@ -14,7 +14,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) {
-        // Няма нужда от update при този случай
+        // Няма нужда
     }
     
     func makeCoordinator() -> Coordinator {
@@ -30,6 +30,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         
         func eventEditViewController(_ controller: EKEventEditViewController,
                                      didCompleteWith action: EKEventEditViewAction) {
+            // Затваряме редактора
             controller.dismiss(animated: true)
         }
     }

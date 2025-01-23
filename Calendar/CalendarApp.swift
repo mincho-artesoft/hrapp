@@ -12,6 +12,8 @@ struct CalendarApp: App {
 }
 
 extension Calendar {
+    /// Генерира 42 дати (6 седмици по 7 дни) за даден месец,
+    /// включително предишните и следващите дни, за да се запълни "grid".
     func generateDatesForMonthGrid(for referenceDate: Date) -> [Date] {
         guard let monthStart = self.date(from: dateComponents([.year, .month], from: referenceDate)) else {
             return []
@@ -54,8 +56,8 @@ extension Calendar {
     }
 }
 
-// Зареждаме всички събития за целия месец, групирани по ден
 extension EKEventStore {
+    /// Зарежда всички събития за даден месец, групирани по ден
     func fetchEventsByDay(for month: Date, calendar: Calendar) -> [Date: [EKEvent]] {
         guard
             let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: month)),

@@ -1,30 +1,48 @@
+//
+//  RootView.swift
+//  ObservableCalendarDemo
+//
+
 import SwiftUI
 import EventKit
 
 struct RootView: View {
     @State private var selectedTab = 0
+    
+    // Един глобален EKEventStore за цялото приложение
     let eventStore = EKEventStore()
-
+    
+    // Единствен екземпляр на CalendarViewModel
+    @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
+    
     var body: some View {
-        VStack {
-            Picker("Изглед", selection: $selectedTab) {
-                Text("Месец").tag(0)
-                Text("Ден").tag(1)
-            }
-            .pickerStyle(.segmented)
-            .padding()
-            .onChange(of: selectedTab) { newValue in
-                if newValue == 0 {
-                    // Сменяме на "Месец" - принуди MonthCalendarView да се презареди
-                    NotificationCenter.default.post(name: .EKEventStoreChanged, object: eventStore)
-                    // или ако искаш по-пряко: някакъв flag, binding, и т.н.
+        NavigationView {
+            VStack {
+                Picker("Изглед", selection: $selectedTab) {
+                    Text("Месец").tag(0)
+                    Text("Ден").tag(1)
+                }
+                .pickerStyle(.segmented)
+                .padding()
+
+                // Смяна на изгледите
+                switch selectedTab {
+                case 0:
+                    MonthCalendarView(viewModel: calendarVM)
+                case 1:
+                    DayCalendarWrapperView(eventStore: calendarVM.eventStore)
+                default:
+                    Text("Невалидна селекция")
                 }
             }
-
-            if selectedTab == 0 {
-                MonthCalendarView(eventStore: eventStore)
-            } else {
-                DayCalendarWrapperView(eventStore: eventStore)
+            .navigationTitle("Calendar Demo")
+        }
+        .onAppear {
+            // При първо стартиране искаме достъп до календара:
+            calendarVM.requestCalendarAccessIfNeeded {
+                // След заявка (или ако вече има разрешение),
+                // зареждаме текущия месец
+                calendarVM.loadEvents(for: Date())
             }
         }
     }
