@@ -10,24 +10,27 @@ struct YearMonthMiniView: View {
     
     var body: some View {
         VStack(spacing: 6) {
-            // ТЕКСТ С ИМЕТО НА МЕСЕЦА
+            // Име на месеца (напр. "Jan")
             Text(monthName(monthDate))
                 .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .center)
             
-            // Тук е LazyVGrid с клетките
+            // Генерираме 42 дати за месеца
             let daysInGrid = calendar.generateDatesForMonthGrid(for: monthDate)
+            
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 6) {
                 ForEach(daysInGrid, id: \.self) { day in
                     let dayKey = calendar.startOfDay(for: day)
-                    let events = eventsByDay[dayKey] ?? []
+                    let dayEvents = eventsByDay[dayKey] ?? []
                     
                     MiniDayCellView(day: day,
                                     referenceMonth: monthDate,
-                                    events: events)
+                                    events: dayEvents)
                 }
             }
         }
         .padding(6)
+        .contentShape(Rectangle()) // цялото е кликаемо
         .onTapGesture {
             onMonthTapped(monthDate)
         }
@@ -35,8 +38,8 @@ struct YearMonthMiniView: View {
     
     private func monthName(_ date: Date) -> String {
         let df = DateFormatter()
-        df.dateFormat = "MMM" // Пример: "Jan", "Feb", ...
-        // Ако искате пълно име, ползвайте "LLLL" (January, February, ...)
+        df.dateFormat = "MMM" // "Jan", "Feb" и т.н.
+        // Ако искате пълно име: df.dateFormat = "LLLL" (January, February...)
         return df.string(from: date)
     }
 }

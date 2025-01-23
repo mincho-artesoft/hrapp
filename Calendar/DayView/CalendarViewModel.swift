@@ -1,8 +1,3 @@
-//
-//  CalendarViewModel.swift
-//  ObservableCalendarDemo
-//
-
 import SwiftUI
 import EventKit
 import Combine
@@ -23,21 +18,20 @@ class CalendarViewModel: ObservableObject {
         // Слушаме системните нотификации за промяна в eventStore
         NotificationCenter.default.publisher(for: .EKEventStoreChanged)
             .sink { [weak self] _ in
-                // При промяна (добавяне, редакция, триене) -> презареждаме
-                self?.reloadCurrentMonth()
+                // Тук може да презаредите при всяка промяна,
+                // или да го оставите празно – зависи от нуждите ви.
             }
             .store(in: &cancellables)
     }
     
-    /// Зарежда събития за даден месец
+    /// Зарежда събития за даден месец (ако е нужно в MonthCalendarView)
     func loadEvents(for month: Date) {
         guard isCalendarAccessGranted() else {
-            // Ако нямаме достъп, зануляваме
             self.eventsByDay = [:]
             self.eventsByID = [:]
             return
         }
-
+        
         let fetched = eventStore.fetchEventsByDay(for: month, calendar: calendar)
         self.eventsByDay = fetched
         
@@ -51,58 +45,14 @@ class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
     
-    /// Ако искаш винаги да презареждаш "актуалния" месец при .EKEventStoreChanged,
-    /// можеш да пазиш @Published currentMonth и да викаш loadEvents(for: currentMonth).
-    /// Тук за пример - презареждаме просто днешния месец.
-    func reloadCurrentMonth() {
-        loadEvents(for: Date())
-    }
-    
-    /// Проверява дали имаме разрешение (на iOS17: .fullAccess / по-старо: .authorized)
-    func isCalendarAccessGranted() -> Bool {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if #available(iOS 17.0, *) {
-            return (status == .fullAccess)
-        } else {
-            return (status == .authorized)
-        }
-    }
-    
-    /// Искаме разрешение (ако е .notDetermined), иначе изпълняваме completion директно
-    func requestCalendarAccessIfNeeded(completion: @escaping () -> Void) {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if status == .notDetermined {
-            if #available(iOS 17.0, *) {
-                eventStore.requestFullAccessToEvents { granted, error in
-                    DispatchQueue.main.async {
-                        // Можеш да провериш granted,
-                        // но в повечето случаи пак викаш completion()
-                        completion()
-                    }
-                }
-            } else {
-                eventStore.requestAccess(to: .event) { granted, error in
-                    DispatchQueue.main.async {
-                        completion()
-                    }
-                }
-            }
-        } else {
-            // Вече е authorized / denied / restricted / и т.н.
-            completion()
-        }
-    }
-}
-
-extension CalendarViewModel {
-    /// Зареждаме всички събития за дадена година.
+    /// Зарежда **всички** събития за дадена година
     func loadEventsForWholeYear(year: Int) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
             self.eventsByID = [:]
             return
         }
-        
+
         let calendar = Calendar(identifier: .gregorian)
         // Начало на годината (1-ви януари, 00:00)
         var comp = DateComponents()
@@ -142,5 +92,37 @@ extension CalendarViewModel {
             }
         }
         self.eventsByID = tmp
+    }
+    
+    /// Проверява дали имаме разрешение (iOS17: .fullAccess / по‑старо: .authorized)
+    func isCalendarAccessGranted() -> Bool {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if #available(iOS 17.0, *) {
+            return (status == .fullAccess)
+        } else {
+            return (status == .authorized)
+        }
+    }
+    
+    /// Искаме разрешение (ако е .notDetermined), иначе изпълняваме completion директно
+    func requestCalendarAccessIfNeeded(completion: @escaping () -> Void) {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if status == .notDetermined {
+            if #available(iOS 17.0, *) {
+                eventStore.requestFullAccessToEvents { granted, error in
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+            } else {
+                eventStore.requestAccess(to: .event) { granted, error in
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+            }
+        } else {
+            completion()
+        }
     }
 }

@@ -9,42 +9,38 @@ struct MiniDayCellView: View {
     private let calendar = Calendar(identifier: .gregorian)
     
     var body: some View {
-        // Проверки
         let isToday = calendar.isDateInToday(day)
         let isInCurrentMonth = calendar.isDate(day, equalTo: referenceMonth, toGranularity: .month)
         let dayNumber = calendar.component(.day, from: day)
-
+        
         ZStack(alignment: .top) {
-            // 1) Кръг за „днес“ (ако е днешна дата)
+            // Ако е днешна дата -> червен кръг отзад
             if isToday {
                 Circle()
                     .fill(Color.red)
                     .frame(width: 28, height: 28)
-                    .offset(y: 1) // може леко да го поместите
+                    .offset(y: 1)
             }
-
-            // 2) Цифрата на деня (винаги на една и съща позиция)
+            
+            // Цифрата
             Text("\(dayNumber)")
                 .font(.system(size: 12))
                 .foregroundColor(
                     isToday
-                    ? Color.white
-                    : (isInCurrentMonth ? Color.primary : Color.gray)
+                        ? .white
+                        : (isInCurrentMonth ? .primary : .gray)
                 )
                 .frame(height: 28, alignment: .center)
-                // alignment: .center, за да е центрирана в рамката
-
-            // 3) Ако има събития, малка точка отдолу
+            
+            // Ако има събития -> точка отдолу
             if !events.isEmpty {
                 Circle()
                     .fill(Color.red)
                     .frame(width: 4, height: 4)
-                    // Слагаме я под цифрата, например на +20 пиксела
                     .offset(y: 20)
             }
         }
-        // Даваме фиксирана рамка за всяка клетка
-        // Така всички цифри и точки се подравняват по редове/колони.
+        // Фиксирана рамка, за да са дните на една линия
         .frame(width: 30, height: 32)
     }
 }

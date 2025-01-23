@@ -1,25 +1,14 @@
-//
-//  MonthCalendarView.swift
-//  ObservableCalendarDemo
-//
-
 import SwiftUI
 import EventKit
 import EventKitUI
 import UniformTypeIdentifiers
 
-/// Месечен изглед, който показва събитията от CalendarViewModel
 struct MonthCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
-    /// Тук приемаме началната дата на месеца,
-    /// например 1-ви януари 2025, ако навигираме от YearCalendarView.
-    /// Ако я няма, може да дадем „днешна дата“ като default:
+    /// Начална дата за този месец (напр. 1-ви януари)
     var startMonth: Date
     
-    // Държи кой месец реално гледаме в момента.
-    // При инициализация го слагаме равен на startMonth,
-    // но може да сменяме с бутони (следващ/предишен месец).
     @State private var currentMonth: Date
     
     // За Day View (CalendarKit) на цял екран
@@ -30,24 +19,22 @@ struct MonthCalendarView: View {
     @State private var showEventEditor = false
     @State private var eventToEdit: EKEvent? = nil
     
-    // За recurring събития:
+    // За recurring събития
     @State private var showRepeatingDialog = false
     @State private var repeatingEvent: EKEvent?
     @State private var repeatingNewDate: Date?
     
     private let calendar = Calendar(identifier: .gregorian)
     
-    // MARK: - Custom инициализатор
     init(viewModel: CalendarViewModel, startMonth: Date) {
         self.viewModel = viewModel
         self.startMonth = startMonth
-        // Първоначално задаваме currentMonth = startMonth
         _currentMonth = State(initialValue: startMonth)
     }
     
     var body: some View {
         VStack {
-            // Навигация за месеци (назад/напред)
+            // Навигация за месеца (ляво/дясно)
             HStack {
                 Button {
                     moveMonth(by: -1)
@@ -70,7 +57,6 @@ struct MonthCalendarView: View {
             WeekdayHeaderView()
                 .padding(.top, 8)
             
-            // Генерираме 42 дати (6 седмици по 7 дни)
             let dates = calendar.generateDatesForMonthGrid(for: currentMonth)
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
@@ -82,31 +68,22 @@ struct MonthCalendarView: View {
                         day: day,
                         currentMonth: currentMonth,
                         events: dayEvents,
-                        
-                        // 1) Drag & Drop
                         onEventDropped: { eventID, newDay in
                             handleEventDropped(eventID, on: newDay)
                         },
-                        
-                        // 2) Tap на празен ден → Day View (ако искаш)
                         onDayTap: { tappedDay in
                             if viewModel.isCalendarAccessGranted() {
                                 selectedDate = tappedDay
                                 showDayView = true
                             } else {
-                                // Ако нямаме достъп, можем пак да поискаме
                                 viewModel.requestCalendarAccessIfNeeded {
-                                    // тук действие при нужда
+                                    // ...
                                 }
                             }
                         },
-                        
-                        // 3) Long press → ново събитие
                         onDayLongPress: { pressedDay in
                             createAndEditNewEvent(on: pressedDay)
                         },
-                        
-                        // 4) Tap на събитие → системен редактор
                         onEventTap: { tappedEvent in
                             eventToEdit = tappedEvent
                             showEventEditor = true
@@ -116,11 +93,11 @@ struct MonthCalendarView: View {
             }
             .padding(.horizontal, 8)
         }
+        // Ако искате всеки път да презареждате само този месец
         .onAppear {
-            // Зареждаме събития за текущия месец (currentMonth)
             viewModel.loadEvents(for: currentMonth)
         }
-        // Day View (CalendarKit) на цял екран
+        // Когато затворим Day View (CalendarKit)
         .fullScreenCover(isPresented: $showDayView, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) {
@@ -140,7 +117,7 @@ struct MonthCalendarView: View {
                 }
             }
         }
-        // Системен редактор (EKEventEditViewController) като sheet
+        // Когато затворим системния редактор
         .sheet(isPresented: $showEventEditor, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) {
@@ -148,7 +125,6 @@ struct MonthCalendarView: View {
                 EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
             }
         }
-        // Диалог за повтарящо се събитие
         .confirmationDialog("This is a repeating event.", isPresented: $showRepeatingDialog) {
             Button("Save for This Event Only") {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
@@ -163,10 +139,8 @@ struct MonthCalendarView: View {
             Button("Cancel", role: .cancel) {}
         }
     }
-}
-
-/// MARK: - Помощни методи
-extension MonthCalendarView {
+    
+    // Смяна на месеца
     private func moveMonth(by offset: Int) {
         if let newMonth = calendar.date(byAdding: .month, value: offset, to: currentMonth) {
             currentMonth = newMonth
@@ -177,10 +151,11 @@ extension MonthCalendarView {
     private func formattedMonthYear(_ date: Date) -> String {
         let df = DateFormatter()
         df.locale = Locale(identifier: "en_US")
-        df.dateFormat = "LLLL yyyy"
+        df.dateFormat = "LLLL yyyy" // January 2025
         return df.string(from: date).capitalized
     }
     
+    // Drag&Drop на събитие
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
         guard let droppedEvent = viewModel.eventsByID[eventID] else { return }
         
@@ -193,6 +168,7 @@ extension MonthCalendarView {
         }
     }
     
+    // Преместване на събитие
     private func moveEvent(_ event: EKEvent, to newDate: Date, span: EKSpan) {
         guard let oldStart = event.startDate,
               let oldEnd = event.endDate else { return }
@@ -215,28 +191,23 @@ extension MonthCalendarView {
         viewModel.loadEvents(for: currentMonth)
     }
     
+    // Създаваме ново събитие с long press
     private func createAndEditNewEvent(on day: Date) {
         let status = EKEventStore.authorizationStatus(for: .event)
         
         if #available(iOS 17.0, *), status == .fullAccess {
             presentNewEvent(on: day)
-        }
-        else if status == .authorized {
+        } else if status == .authorized {
             presentNewEvent(on: day)
-        }
-        else if status == .notDetermined {
-            viewModel.eventStore.requestAccess(to: .event) { granted, error in
-                DispatchQueue.main.async {
-                    if granted, error == nil {
-                        self.presentNewEvent(on: day)
-                    } else {
-                        print("User denied calendar access.")
-                    }
+        } else if status == .notDetermined {
+            viewModel.requestCalendarAccessIfNeeded {
+                if viewModel.isCalendarAccessGranted() {
+                    self.presentNewEvent(on: day)
                 }
             }
         } else {
-            // denied / restricted / limited
-            print("No calendar access. Show an alert or do something else.")
+            // denied / restricted
+            print("No calendar access.")
         }
     }
     
