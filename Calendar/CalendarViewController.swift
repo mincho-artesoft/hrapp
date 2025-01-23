@@ -1,78 +1,26 @@
-//
-//  CalendarViewController.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 22/1/25.
-//
-
 import UIKit
 import CalendarKit
 import EventKit
 import EventKitUI
 
 final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
-    private var eventStore = EKEventStore()
-    var selectedDate: Date? = nil
-
-    // MARK: - View Lifecycle
+    var eventStore: EKEventStore!
+    var selectedDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Ако ползвате SwiftUI NavigationView, можете да коментирате следващия ред,
-        // за да избегнете дублирано заглавие:
-        // title = "Calendar"
-        
-        requestAccessToCalendar()
         subscribeToNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let date = selectedDate else { return }
-        // За CalendarKit 6:
-        dayView.state?.move(to: date)
-        // По желание:
-        dayView.scrollTo(hour24: 9)
-    }
-
-    // MARK: - Calendar Access
-    
-    /// Искаме достъп до календара на потребителя
-    private func requestAccessToCalendar() {
-        let completionHandler: EKEventStoreRequestAccessCompletionHandler =  { [weak self] granted, error in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                
-                // ВАЖНО: Проверка дали достъпът е наистина даден
-                guard granted, error == nil else {
-                    // Тук можете да покажете Alert или да пренасочите потребителя към Settings
-                    print("Calendar access not granted (or error). Error = \(String(describing: error))")
-                    return
-                }
-                
-                // Ако сме тук, значи имаме (поне) Full Access в iOS 17 или Authorized в iOS < 17
-                self.initializeStore()
-                self.subscribeToNotifications()
-                self.reloadData()
-            }
-        }
-
-        if #available(iOS 17.0, *) {
-            eventStore.requestFullAccessToEvents(completion: completionHandler)
-        } else {
-            eventStore.requestAccess(to: .event, completion: completionHandler)
+        dayView.reloadData()
+        if let date = selectedDate {
+            dayView.state?.move(to: date)
+            dayView.scrollTo(hour24: 9)
         }
     }
-
-
-    private func initializeStore() {
-        // Презапазваме (реинициализираме) eventStore, за да сме сигурни, че е валиден
-        eventStore = EKEventStore()
-    }
-    
-    // MARK: - Notifications
     
     private func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -82,144 +30,108 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
     }
     
     @objc private func storeChanged(_ notification: Notification) {
-        // При промяна в EventStore (добавяне, изтриване, редакция на събитие), презареждаме изгледа
         reloadData()
     }
-
-    // MARK: - DayViewDataSource (CalendarKit)
     
-    /// Този метод се извиква от CalendarKit, за да вземе събития за дадена дата
+    // MARK: - DayViewDataSource
+    
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
-        // CalendarKit подава "date" с часове 00:00.00 за конкретния ден
         let startDate = date
-        var oneDayComponents = DateComponents()
-        oneDayComponents.day = 1
-        // endDate ще бъде начало на следващия ден (00:00.00)
-        let endDate = calendar.date(byAdding: oneDayComponents, to: startDate)!
-
-        // Създаваме predicate, за да вземем събития от eventStore в диапазона [startDate, endDate)
+        var comp = DateComponents()
+        comp.day = 1
+        let endDate = calendar.date(byAdding: comp, to: startDate)!
+        
         let predicate = eventStore.predicateForEvents(withStart: startDate,
                                                       end: endDate,
                                                       calendars: nil)
         
-        // Вземаме всички събития от eventStore за този ден
-        let eventKitEvents = eventStore.events(matching: predicate)
-        // Преобразуваме ги към EventDescriptor (EKWrapper)
-        let calendarKitEvents = eventKitEvents.map(EKWrapper.init)
-
-        return calendarKitEvents
+        let ekEvents = eventStore.events(matching: predicate)
+        return ekEvents.map { EKWrapper(eventKitEvent: $0) }
     }
-
-    // MARK: - DayViewDelegate (CalendarKit)
     
-    /// Извиква се при докосване (tap) върху вече съществуващо събитие
+    // MARK: - DayViewDelegate
+    
     override func dayViewDidSelectEventView(_ eventView: EventView) {
-        guard let ckEvent = eventView.descriptor as? EKWrapper else { return }
-        presentDetailViewForEvent(ckEvent.ekEvent)
+        guard let wrapper = eventView.descriptor as? EKWrapper else { return }
+        
+        let detailVC = EKEventViewController()
+        detailVC.event = wrapper.ekEvent
+        detailVC.allowsCalendarPreview = true
+        detailVC.allowsEditing = true
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    /// Отваряме детайлния екран за дадено EKEvent (EKEventViewController)
-    private func presentDetailViewForEvent(_ ekEvent: EKEvent) {
-        let eventController = EKEventViewController()
-        eventController.event = ekEvent
-        eventController.allowsCalendarPreview = true
-        eventController.allowsEditing = true
-        // Ако искате да останете в UIKit за подробен изглед:
-        navigationController?.pushViewController(eventController, animated: true)
-    }
-    
-    // MARK: - Създаване и редакция на събития
-    
-    /// Дълго задържане (long press) в празно място от деня – създаваме ново събитие
+    // Long press в празен час → ново събитие
     override func dayView(dayView: DayView, didLongPressTimelineAt date: Date) {
-        // Прекратяваме евентуална редакция на друго събитие
         endEventEditing()
         
-        // Създаваме нов EKWrapper (EKEvent) с 1 час продължителност
-        let newEKWrapper = createNewEvent(at: date)
-        // Използваме CalendarKit метод `create(...)` да го визуализираме "на място" (drag за промяна)
-        create(event: newEKWrapper, animated: true)
+        let newWrapper = createNewEvent(at: date)
+        create(event: newWrapper, animated: true)
     }
     
-    /// Създава нов EKWrapper и задава начална/крайна дата (+1 час)
     private func createNewEvent(at date: Date) -> EKWrapper {
-        let newEKEvent = EKEvent(eventStore: eventStore)
-        // По подразбиране календарът за нови събития
-        newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
+        let newEvent = EKEvent(eventStore: eventStore)
+        newEvent.calendar = eventStore.defaultCalendarForNewEvents
         
-        var components = DateComponents()
-        components.hour = 1
-        let endDate = calendar.date(byAdding: components, to: date)
+        var comp = DateComponents()
+        comp.hour = 1
+        let endDate = calendar.date(byAdding: comp, to: date)
         
-        newEKEvent.startDate = date
-        newEKEvent.endDate = endDate
-        newEKEvent.title = "New event"
+        newEvent.startDate = date
+        newEvent.endDate   = endDate
+        newEvent.title     = "New event"
         
-        let newEKWrapper = EKWrapper(eventKitEvent: newEKEvent)
-        // За да сигнализираме на CalendarKit, че това е "ново" събитие,
-        // и в момента се редактира (drag нанася промени върху `editedEvent`):
-        newEKWrapper.editedEvent = newEKWrapper
-        return newEKWrapper
+        let wrap = EKWrapper(eventKitEvent: newEvent)
+        // Сигнал, че е "ново"
+        wrap.editedEvent = wrap
+        return wrap
     }
     
-    /// Дълго задържане върху вече съществуващо събитие – започва редакция
     override func dayViewDidLongPressEventView(_ eventView: EventView) {
-        guard let descriptor = eventView.descriptor as? EKWrapper else { return }
+        guard let desc = eventView.descriptor as? EKWrapper else { return }
         endEventEditing()
-        beginEditing(event: descriptor, animated: true)
+        beginEditing(event: desc, animated: true)
     }
     
-    /// Извиква се, след като потребителят приключи drag/resize на събитието
     override func dayView(dayView: DayView, didUpdate event: EventDescriptor) {
         guard let editingEvent = event as? EKWrapper else { return }
         
-        if let originalEvent = event.editedEvent {
-            // Прилагаме промените (дата/час) в нашия EKWrapper
+        if let original = event.editedEvent {
             editingEvent.commitEditing()
             
-            if originalEvent === editingEvent {
-                // Ако originalEvent === editingEvent, значи това е новосъздадено събитие
-                // Отваряме EKEventEditViewController за допълнително редактиране
+            if original === editingEvent {
+                // Новосъздадено
                 presentEditingViewForEvent(editingEvent.ekEvent)
             } else {
-                // Редактираме вече съществуващо събитие
-                // Записваме промените обратно в EventStore
+                // Редакция на вече съществуващо
                 try! eventStore.save(editingEvent.ekEvent, span: .thisEvent)
             }
         }
-        
-        // Презареждаме календарния изглед
         reloadData()
     }
     
-    /// Показва системния редактор (EKEventEditViewController) за дадено EKEvent
     private func presentEditingViewForEvent(_ ekEvent: EKEvent) {
-        let eventEditViewController = EKEventEditViewController()
-        eventEditViewController.event = ekEvent
-        eventEditViewController.eventStore = eventStore
-        eventEditViewController.editViewDelegate = self
-        present(eventEditViewController, animated: true, completion: nil)
+        let vc = EKEventEditViewController()
+        vc.event = ekEvent
+        vc.eventStore = eventStore
+        vc.editViewDelegate = self
+        present(vc, animated: true)
     }
     
-    // MARK: - Други интеракции с DayView
-    
-    /// Обикновен tap в празно място – край на евентуална редакция
     override func dayView(dayView: DayView, didTapTimelineAt date: Date) {
         endEventEditing()
     }
     
-    /// Плъзгане на DayView (скрол) – край на евентуална редакция
     override func dayViewDidBeginDragging(dayView: DayView) {
         endEventEditing()
     }
     
     // MARK: - EKEventEditViewDelegate
     
-    /// Делегатен метод, който се вика при затваряне на EKEventEditViewController
     func eventEditViewController(_ controller: EKEventEditViewController,
                                  didCompleteWith action: EKEventEditViewAction) {
         endEventEditing()
         reloadData()
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true)
     }
 }

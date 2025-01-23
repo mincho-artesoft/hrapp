@@ -6,7 +6,7 @@ struct DraggableModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content.onDrag {
-            // Подаваме event.eventIdentifier като NSString
+            // Създаваме NSItemProvider с event.eventIdentifier
             let provider = NSItemProvider(object: event.eventIdentifier as NSString)
             provider.suggestedName = event.eventIdentifier
             return provider

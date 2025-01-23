@@ -1,55 +1,35 @@
-//
-//  EKWrapper.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 22/1/25.
-//
-
-
 import UIKit
 import EventKit
 import CalendarKit
 
 final class EKWrapper: EventDescriptor {
     public var dateInterval: DateInterval {
-        get {
-            DateInterval(start: ekEvent.startDate, end: ekEvent.endDate)
-        }
+        get { DateInterval(start: ekEvent.startDate, end: ekEvent.endDate) }
         set {
             ekEvent.startDate = newValue.start
-            ekEvent.endDate = newValue.end
+            ekEvent.endDate   = newValue.end
         }
     }
     
     public var isAllDay: Bool {
-        get {
-            ekEvent.isAllDay
-        }
-        set {
-            ekEvent.isAllDay = newValue
-        }
+        get { ekEvent.isAllDay }
+        set { ekEvent.isAllDay = newValue }
     }
     
     public var text: String {
-        get {
-            ekEvent.title
-        }
-        set {
-            ekEvent.title = newValue
-        }
+        get { ekEvent.title }
+        set { ekEvent.title = newValue }
     }
-
+    
     public var attributedText: NSAttributedString?
     public var lineBreakMode: NSLineBreakMode?
     
     public var color: UIColor {
         guard let cgColor = ekEvent.calendar?.cgColor else {
-            // Ако календарът е nil (нямаме достъп?), връщаме някакъв fallback цвят
             return .systemGray
         }
         return UIColor(cgColor: cgColor)
     }
-
     
     public var backgroundColor = UIColor()
     public var textColor = SystemColors.label
@@ -61,9 +41,9 @@ final class EKWrapper: EventDescriptor {
         }
     }
     
-    public private(set) var ekEvent: EKEvent
+    public let ekEvent: EKEvent
     
-    public init(eventKitEvent: EKEvent) {
+    init(eventKitEvent: EKEvent) {
         self.ekEvent = eventKitEvent
         applyStandardColors()
     }
@@ -79,10 +59,12 @@ final class EKWrapper: EventDescriptor {
         edited.dateInterval = dateInterval
     }
     
-    // MARK: - Color Updates
-    
     private func updateColors() {
-        editedEvent != nil ? applyEditingColors() : applyStandardColors()
+        if editedEvent != nil {
+            applyEditingColors()
+        } else {
+            applyStandardColors()
+        }
     }
     
     private func applyStandardColors() {
@@ -103,7 +85,7 @@ final class EKWrapper: EventDescriptor {
     
     private func dynamicStandardTextColor() -> UIColor {
         let light = textColorForLightTheme(baseColor: color)
-        let dark = color
+        let dark  = color
         return dynamicColor(light: light, dark: dark)
     }
     
@@ -125,8 +107,8 @@ final class EKWrapper: EventDescriptor {
     
     private func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
         if #available(iOS 13.0, *) {
-            return UIColor { traitCollection in
-                traitCollection.userInterfaceStyle == .dark ? dark : light
+            return UIColor { trait in
+                trait.userInterfaceStyle == .dark ? dark : light
             }
         } else {
             return light

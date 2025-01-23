@@ -1,12 +1,4 @@
-//
-//  WeekdayHeaderView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 22/1/25.
-//
-
 import SwiftUI
-
 
 struct WeekdayHeaderView: View {
     let weekdays = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]

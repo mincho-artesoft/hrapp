@@ -7,21 +7,25 @@ struct MonthCalendarView: View {
     @State private var eventsByDay: [Date: [EKEvent]] = [:]
     @State private var eventsByID: [String: EKEvent] = [:]
     
-    // За диалога при recurring
+    // -- За recurring събития:
     @State private var showRepeatingDialog = false
     @State private var repeatingEvent: EKEvent?
     @State private var repeatingNewDate: Date?
     
-    // За отваряне на Day View
+    // -- За Day View (CalendarKit)
     @State private var showDayView = false
     @State private var selectedDate: Date? = nil
+    
+    // -- За създаване/редакция на събития през системния редактор (EKEventEditViewController)
+    @State private var showEventEditor = false
+    @State private var eventToEdit: EKEvent? = nil
     
     let eventStore: EKEventStore
     let calendar = Calendar(identifier: .gregorian)
     
     var body: some View {
         VStack {
-            // --- Навигация между месеци ---
+            // ---- Навигация месеци (ляво/дясно) ----
             HStack {
                 Button {
                     moveMonth(by: -1)
@@ -41,35 +45,50 @@ struct MonthCalendarView: View {
             }
             .padding(.horizontal)
             
-            // --- Ред с дните от седмицата ---
+            // ---- Ред с дните от седмицата (Mon, Tue...) ----
             WeekdayHeaderView()
                 .padding(.top, 8)
             
-            // --- 42 клетки (6 реда x 7 колони) ---
+            // ---- 42 клетки ----
             let dates = calendar.generateDatesForMonthGrid(for: currentMonth)
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
                 ForEach(dates, id: \.self) { day in
+                    // Събития за този ден
                     let dayEvents = eventsByDay[calendar.startOfDay(for: day)] ?? []
                     
                     DayCellView(
                         day: day,
                         currentMonth: currentMonth,
-                        events: dayEvents
-                    ) { droppedEventID, targetDay in
-                        handleEventDropped(droppedEventID, on: targetDay)
-                    }
-                    .onTapGesture {
-                        // 1) Проверяваме дали имаме календарен достъп
-                        if isCalendarAccessGranted() {
-                            // Ако имаме => отваряме Day View
-                            selectedDate = day
-                            showDayView = true
-                        } else {
-                            // Ако не е => искаме го
-                            requestCalendarAccessIfNeeded()
+                        events: dayEvents,
+                        
+                        // 1) Когато drag&drop-нем
+                        onEventDropped: { eventID, newDay in
+                            handleEventDropped(eventID, on: newDay)
+                        },
+                        
+                        // 2) Tap върху ПРАЗНО => Day View
+                        onDayTap: { tappedDay in
+                            if isCalendarAccessGranted() {
+                                selectedDate = tappedDay
+                                showDayView = true
+                            } else {
+                                requestCalendarAccessIfNeeded()
+                            }
+                        },
+                        
+                        // 3) Long press върху ПРАЗНО => създаваме ново събитие
+                        onDayLongPress: { pressedDay in
+                            createAndEditNewEvent(on: pressedDay)
+                        },
+                        
+                        // 4) Tap върху СЪБИТИЕ => отваряме редактора
+                        onEventTap: { tappedEvent in
+                            eventToEdit = tappedEvent
+                            showEventEditor = true
                         }
-                    }
+                        // А drag & drop за събитието става автоматично през .onDrag(...)
+                    )
                 }
             }
             .padding(.horizontal, 8)
@@ -78,11 +97,8 @@ struct MonthCalendarView: View {
             requestCalendarAccessIfNeeded()
             loadEvents()
         }
-        // --- Диалог за recurring събития (This Event Only / Future Events) ---
-        .confirmationDialog(
-            "This is a repeating event.",
-            isPresented: $showRepeatingDialog
-        ) {
+        // Диалог, ако сме дръпнали recurring събитие
+        .confirmationDialog("This is a repeating event.", isPresented: $showRepeatingDialog) {
             Button("Save for This Event Only") {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .thisEvent)
@@ -95,33 +111,40 @@ struct MonthCalendarView: View {
             }
             Button("Cancel", role: .cancel) {}
         }
-        // --- Day View на цял екран (fullScreenCover) ---
+        // Day View (CalendarKit), full screen
         .fullScreenCover(isPresented: $showDayView) {
             if let date = selectedDate {
                 NavigationView {
-                    CalendarViewControllerWrapper(selectedDate: date)
-                        // Бутон за "Close" горе вдясно
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button("Close") {
-                                    showDayView = false
-                                }
+                    CalendarViewControllerWrapper(selectedDate: date,
+                                                  eventStore: eventStore)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Close") {
+                                showDayView = false
                             }
                         }
-                        .navigationTitle("Day View")
-                        .navigationBarTitleDisplayMode(.inline)
+                    }
+                    .navigationTitle("Day View")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
+            }
+        }
+        // System Event Editor
+        .sheet(isPresented: $showEventEditor, onDismiss: {
+            // Презареждаме, за да видим евентуалните промени
+            loadEvents()
+        }) {
+            if let ev = eventToEdit {
+                EventEditViewWrapper(eventStore: eventStore, event: ev)
             }
         }
     }
 }
 
-// MARK: - Вътрешни методи на MonthCalendarView
+// MARK: - Помощни методи
 extension MonthCalendarView {
-    /// Проверяваме дали вече имаме разрешен достъп
     private func isCalendarAccessGranted() -> Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
-        
         if #available(iOS 17.0, *) {
             return (status == .fullAccess)
         } else {
@@ -129,19 +152,15 @@ extension MonthCalendarView {
         }
     }
     
-    /// Искаме достъп, ако не е даден. След като бъде даден (или отказан), можем да load-нем събития
     private func requestCalendarAccessIfNeeded() {
         let status = EKEventStore.authorizationStatus(for: .event)
-        
-        // Ако вече е даден или отказан, не правим нищо
-        // (Може да сложите проверка за .denied, да показвате съобщение да иде в Settings и т.н.)
         guard status == .notDetermined else { return }
         
         if #available(iOS 17.0, *) {
             eventStore.requestFullAccessToEvents { granted, error in
                 if granted && error == nil {
                     DispatchQueue.main.async {
-                        self.loadEvents()
+                        loadEvents()
                     }
                 }
             }
@@ -149,24 +168,29 @@ extension MonthCalendarView {
             eventStore.requestAccess(to: .event) { granted, error in
                 if granted && error == nil {
                     DispatchQueue.main.async {
-                        self.loadEvents()
+                        loadEvents()
                     }
                 }
             }
         }
     }
     
-    /// Зареждаме събитията за currentMonth, групирано по ден
+    /// Зареждаме събития за currentMonth
     private func loadEvents() {
-        eventsByDay = eventStore.fetchEventsByDay(for: currentMonth, calendar: calendar)
-        
-        var tmp: [String: EKEvent] = [:]
-        for dayEvents in eventsByDay.values {
-            for ev in dayEvents {
-                tmp[ev.eventIdentifier] = ev
+        if isCalendarAccessGranted() {
+            eventsByDay = eventStore.fetchEventsByDay(for: currentMonth, calendar: calendar)
+            
+            var tmp: [String: EKEvent] = [:]
+            for dayList in eventsByDay.values {
+                for ev in dayList {
+                    tmp[ev.eventIdentifier] = ev
+                }
             }
+            eventsByID = tmp
+        } else {
+            eventsByDay.removeAll()
+            eventsByID.removeAll()
         }
-        eventsByID = tmp
     }
     
     private func moveMonth(by offset: Int) {
@@ -178,49 +202,64 @@ extension MonthCalendarView {
     
     private func formattedMonthYear(_ date: Date) -> String {
         let df = DateFormatter()
-        df.locale = Locale(identifier: "en_US") // или "bg_BG"
+        df.locale = Locale(identifier: "en_US")
         df.dateFormat = "LLLL yyyy"
         return df.string(from: date).capitalized
     }
     
-    /// При drag & drop на събитие (eventID) в даден ден
+    /// При drag & drop
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
         guard let droppedEvent = eventsByID[eventID] else { return }
         
-        // Ако е recurring -> диалог
         if droppedEvent.hasRecurrenceRules {
             repeatingEvent = droppedEvent
             repeatingNewDate = newDate
             showRepeatingDialog = true
         } else {
-            // Non-recurring => местим директно
             moveEvent(droppedEvent, to: newDate, span: .thisEvent)
         }
     }
     
-    /// Променяме датата (деня) на събитието, но запазваме часа. span => .thisEvent / .futureEvents
+    /// Преместваме събитието към newDate, запазвайки часа
     private func moveEvent(_ event: EKEvent, to newDate: Date, span: EKSpan) {
         guard let oldStart = event.startDate,
               let oldEnd = event.endDate
         else { return }
         
-        let startComponents = calendar.dateComponents([.hour, .minute, .second], from: oldStart)
-        let endComponents   = calendar.dateComponents([.hour, .minute, .second], from: oldEnd)
+        let startComp = calendar.dateComponents([.hour, .minute, .second], from: oldStart)
+        let endComp   = calendar.dateComponents([.hour, .minute, .second], from: oldEnd)
         
-        let newDay = calendar.startOfDay(for: newDate)
-        let newStart = calendar.date(byAdding: startComponents, to: newDay) ?? newDate
-        let newEnd   = calendar.date(byAdding: endComponents, to: newDay) ?? newDate
+        let newDay    = calendar.startOfDay(for: newDate)
+        let newStart  = calendar.date(byAdding: startComp, to: newDay) ?? newDate
+        let newEnd    = calendar.date(byAdding: endComp, to: newDay)   ?? newDate
         
         event.startDate = newStart
         event.endDate   = newEnd
         
         do {
             try eventStore.save(event, span: span, commit: true)
-            print("Moved event to \(newDate) with span=\(span)")
         } catch {
             print("Error saving event: \(error)")
         }
-        
         loadEvents()
+    }
+    
+    /// Създаваме ново събитие за деня и отваряме системния редактор
+    private func createAndEditNewEvent(on day: Date) {
+        guard isCalendarAccessGranted() else {
+            requestCalendarAccessIfNeeded()
+            return
+        }
+        
+        let newEvent = EKEvent(eventStore: eventStore)
+        
+        let startOfDay = calendar.startOfDay(for: day)
+        newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)  // 09:00
+        newEvent.endDate   = startOfDay.addingTimeInterval(10 * 3600) // 10:00
+        newEvent.title     = "New Event"
+        newEvent.calendar  = eventStore.defaultCalendarForNewEvents
+        
+        eventToEdit = newEvent
+        showEventEditor = true
     }
 }

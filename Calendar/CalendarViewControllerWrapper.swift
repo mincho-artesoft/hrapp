@@ -1,25 +1,20 @@
-//
-//  CalendarViewControllerWrapper.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 22/1/25.
-//
-
-
 import SwiftUI
 import CalendarKit
+import EventKit
 
-/// Този SwiftUI изглед вгражда нашия `CalendarViewController` (UIKit) в SwiftUI йерархията
 struct CalendarViewControllerWrapper: UIViewControllerRepresentable {
     let selectedDate: Date
+    let eventStore: EKEventStore
     
     func makeUIViewController(context: Context) -> CalendarViewController {
         let vc = CalendarViewController()
         vc.selectedDate = selectedDate
+        vc.eventStore = eventStore
         return vc
     }
     
     func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {
-        // Ако искате да обновявате при промяна на selectedDate, го правите тук.
+        // Ако искате при промяна на selectedDate да презаредите Day View
+        // uiViewController.dayView.state?.move(to: selectedDate)
     }
 }
