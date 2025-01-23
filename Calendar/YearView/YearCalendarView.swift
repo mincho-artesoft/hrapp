@@ -4,13 +4,13 @@ import EventKit
 struct YearCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
-    // Ако искате автоматично да вземете "текущата" година:
-    private let year: Int = Calendar.current.component(.year, from: Date())
+    // Вместо да е фиксиран, го правим @State, за да го променяме
+    @State private var year: Int = Calendar.current.component(.year, from: Date())
     
     @State private var showMonthView = false
     @State private var tappedMonthDate: Date?
     
-    // Примерно 2 колони (по 6 месеца в колона)
+    // Две колони (примерно)
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -18,6 +18,30 @@ struct YearCalendarView: View {
     
     var body: some View {
         VStack {
+            // Горната "лента" за избор на година
+            HStack {
+                Button(action: {
+                    // Минаваме 1 година назад
+                    year -= 1
+                    viewModel.loadEventsForWholeYear(year: year)
+                }) {
+                    Image(systemName: "chevron.left")
+                }
+                
+                Text(year, format: .number.grouping(.never))
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                
+                Button(action: {
+                    // Минаваме 1 година напред
+                    year += 1
+                    viewModel.loadEventsForWholeYear(year: year)
+                }) {
+                    Image(systemName: "chevron.right")
+                }
+            }
+            .padding(.horizontal)
+            
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(1...12, id: \.self) { monthIndex in
@@ -30,7 +54,6 @@ struct YearCalendarView: View {
                             tappedMonthDate = tappedMonth
                             showMonthView = true
                         }
-                        // Увеличете, ако искате повече място
                         .frame(width: 200, height: 260)
                         .background(Color(.systemGray6))
                         .cornerRadius(12)
@@ -39,13 +62,12 @@ struct YearCalendarView: View {
                 .padding()
             }
         }
-        // Когато показваме годишния изглед – винаги зареждаме цялата година
+        // Когато го покажем за първи път
         .onAppear {
             viewModel.loadEventsForWholeYear(year: year)
         }
-        // Когато затворим (onDismiss) екрана с месец
+        // Когато затворим екрана за месеца
         .fullScreenCover(isPresented: $showMonthView, onDismiss: {
-            // Презареждаме цялата година
             viewModel.loadEventsForWholeYear(year: year)
         }) {
             if let monthStart = tappedMonthDate {

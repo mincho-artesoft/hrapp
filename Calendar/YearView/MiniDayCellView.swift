@@ -34,10 +34,19 @@ struct MiniDayCellView: View {
             
             // Ако има събития -> точка отдолу
             if !events.isEmpty {
-                Circle()
-                    .fill(Color.red)
-                    .frame(width: 4, height: 4)
-                    .offset(y: 20)
+                if isToday {
+                    // Ако е днешен ден И има събития -> бяла точка
+                    Circle()
+                        .fill(Color.white)
+                        .frame(width: 4, height: 4)
+                        .offset(y: 20)
+                } else {
+                    // Иначе стандартна червена точка (или какъвто цвят искате)
+                    Circle()
+                        .fill(Color.red)
+                        .frame(width: 4, height: 4)
+                        .offset(y: 20)
+                }
             }
         }
         // Фиксирана рамка, за да са дните на една линия
