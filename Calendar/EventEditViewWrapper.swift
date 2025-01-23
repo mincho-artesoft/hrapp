@@ -1,6 +1,12 @@
+//
+//  EventEditViewWrapper.swift
+//  ObservableCalendarDemo
+//
+
 import SwiftUI
 import EventKitUI
 
+/// SwiftUI обвивка за системния EKEventEditViewController
 struct EventEditViewWrapper: UIViewControllerRepresentable {
     let eventStore: EKEventStore
     let event: EKEvent
@@ -14,7 +20,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) {
-        // Няма нужда
+        // Няма нужда от update
     }
     
     func makeCoordinator() -> Coordinator {
@@ -30,7 +36,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         
         func eventEditViewController(_ controller: EKEventEditViewController,
                                      didCompleteWith action: EKEventEditViewAction) {
-            // Затваряме редактора
+            // Когато потребителят натисне Done/Cancel, затваряме редактора
             controller.dismiss(animated: true)
         }
     }

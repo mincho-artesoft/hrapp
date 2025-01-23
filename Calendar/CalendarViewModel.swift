@@ -7,6 +7,7 @@ import SwiftUI
 import EventKit
 import Combine
 
+/// ViewModel, който държи и презарежда събитията от eventStore
 class CalendarViewModel: ObservableObject {
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID: [String: EKEvent] = [:]
@@ -19,28 +20,28 @@ class CalendarViewModel: ObservableObject {
     init(eventStore: EKEventStore) {
         self.eventStore = eventStore
         
-        // Слушаме системните нотификации за промяна в event store-а
+        // Слушаме системните нотификации за промяна в eventStore
         NotificationCenter.default.publisher(for: .EKEventStoreChanged)
             .sink { [weak self] _ in
-                // При всяка промяна (добавяне, триене, редактиране), презареждаме
+                // При промяна (добавяне, редакция, триене) -> презареждаме
                 self?.reloadCurrentMonth()
             }
             .store(in: &cancellables)
     }
     
-    /// Зарежда събитията за даден месец
+    /// Зарежда събития за даден месец
     func loadEvents(for month: Date) {
-        // Ако нямаме достъп, зануляваме
-        if !isCalendarAccessGranted() {
+        guard isCalendarAccessGranted() else {
+            // Ако нямаме достъп, зануляваме
             self.eventsByDay = [:]
             self.eventsByID = [:]
             return
         }
-        
+
         let fetched = eventStore.fetchEventsByDay(for: month, calendar: calendar)
         self.eventsByDay = fetched
         
-        // Съставяме и речник по eventIdentifier
+        // Изграждаме речник по eventIdentifier
         var tmp: [String: EKEvent] = [:]
         for evList in fetched.values {
             for ev in evList {
@@ -50,42 +51,45 @@ class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
     
-    /// Ако искаме при всяка системна промяна да презареждаме някакъв "текущ" месец,
-    /// можем да пазим един @Published currentMonth и да го презареждаме винаги.
-    /// Или просто да презаредим последно заредения месец. Тук за пример - няма state.
+    /// Ако искаш винаги да презареждаш "актуалния" месец при .EKEventStoreChanged,
+    /// можеш да пазиш @Published currentMonth и да викаш loadEvents(for: currentMonth).
+    /// Тук за пример - презареждаме просто днешния месец.
     func reloadCurrentMonth() {
-        // Може да пазим последно заредения месец в някоя @Published променлива, да речем:
-        // но тук за простота ще презаредим "днешния месец"
         loadEvents(for: Date())
     }
     
-    func requestCalendarAccessIfNeeded(completion: (() -> Void)? = nil) {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if status == .notDetermined {
-            if #available(iOS 17.0, *) {
-                eventStore.requestFullAccessToEvents { granted, error in
-                    DispatchQueue.main.async {
-                        completion?()
-                    }
-                }
-            } else {
-                eventStore.requestAccess(to: .event) { granted, error in
-                    DispatchQueue.main.async {
-                        completion?()
-                    }
-                }
-            }
-        } else {
-            completion?()
-        }
-    }
-    
+    /// Проверява дали имаме разрешение (на iOS17: .fullAccess / по-старо: .authorized)
     func isCalendarAccessGranted() -> Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
         if #available(iOS 17.0, *) {
             return (status == .fullAccess)
         } else {
             return (status == .authorized)
+        }
+    }
+    
+    /// Искаме разрешение (ако е .notDetermined), иначе изпълняваме completion директно
+    func requestCalendarAccessIfNeeded(completion: @escaping () -> Void) {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if status == .notDetermined {
+            if #available(iOS 17.0, *) {
+                eventStore.requestFullAccessToEvents { granted, error in
+                    DispatchQueue.main.async {
+                        // Можеш да провериш granted,
+                        // но в повечето случаи пак викаш completion()
+                        completion()
+                    }
+                }
+            } else {
+                eventStore.requestAccess(to: .event) { granted, error in
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+            }
+        } else {
+            // Вече е authorized / denied / restricted / и т.н.
+            completion()
         }
     }
 }

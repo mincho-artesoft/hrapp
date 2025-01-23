@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct WeekdayHeaderView: View {
-    let weekdays = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+    let weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
     
     var body: some View {
         HStack(spacing: 0) {
