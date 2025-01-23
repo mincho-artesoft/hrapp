@@ -13,7 +13,9 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         return vc
     }
     
-    func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) { }
+    func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) {
+        // Няма нужда от update при този случай
+    }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)

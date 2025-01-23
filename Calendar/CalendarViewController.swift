@@ -34,23 +34,20 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
     }
     
     // MARK: - DayViewDataSource
-    
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         let startDate = date
         var comp = DateComponents()
         comp.day = 1
         let endDate = calendar.date(byAdding: comp, to: startDate)!
-        
+
         let predicate = eventStore.predicateForEvents(withStart: startDate,
                                                       end: endDate,
                                                       calendars: nil)
-        
         let ekEvents = eventStore.events(matching: predicate)
         return ekEvents.map { EKWrapper(eventKitEvent: $0) }
     }
     
     // MARK: - DayViewDelegate
-    
     override func dayViewDidSelectEventView(_ eventView: EventView) {
         guard let wrapper = eventView.descriptor as? EKWrapper else { return }
         
@@ -61,7 +58,6 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    // Long press в празен час → ново събитие
     override func dayView(dayView: DayView, didLongPressTimelineAt date: Date) {
         endEventEditing()
         
@@ -82,7 +78,6 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         newEvent.title     = "New event"
         
         let wrap = EKWrapper(eventKitEvent: newEvent)
-        // Сигнал, че е "ново"
         wrap.editedEvent = wrap
         return wrap
     }
@@ -127,7 +122,6 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
     }
     
     // MARK: - EKEventEditViewDelegate
-    
     func eventEditViewController(_ controller: EKEventEditViewController,
                                  didCompleteWith action: EKEventEditViewAction) {
         endEventEditing()

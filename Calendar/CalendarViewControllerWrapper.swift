@@ -14,7 +14,7 @@ struct CalendarViewControllerWrapper: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {
-        // Ако искате при промяна на selectedDate да презаредите Day View
+        // Ако искате да презареждате при промяна на selectedDate:
         // uiViewController.dayView.state?.move(to: selectedDate)
     }
 }

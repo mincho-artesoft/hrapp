@@ -6,13 +6,12 @@ import EventKit
 struct CalendarApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView() // стартираме с RootView (SegmentedPicker)
         }
     }
 }
 
 extension Calendar {
-    /// Генерира 42 дати (6 реда x 7 колони) за дадения месец
     func generateDatesForMonthGrid(for referenceDate: Date) -> [Date] {
         guard let monthStart = self.date(from: dateComponents([.year, .month], from: referenceDate)) else {
             return []
@@ -32,7 +31,7 @@ extension Calendar {
         
         var dates: [Date] = []
         
-        // Дни от предишния месец
+        // Предишни дни
         for i in 0..<daysToPrepend {
             if let d = self.date(byAdding: .day, value: i - daysToPrepend, to: monthStart) {
                 dates.append(d)
@@ -44,7 +43,7 @@ extension Calendar {
                 dates.append(d)
             }
         }
-        // Дни от следващия месец
+        // Следващи дни
         for i in 0..<daysToAppend {
             if let d = self.date(byAdding: .day, value: i, to: monthStart.addingTimeInterval(TimeInterval(60*60*24*numberOfDaysInMonth))) {
                 dates.append(d)
@@ -55,8 +54,8 @@ extension Calendar {
     }
 }
 
+// Зареждаме всички събития за целия месец, групирани по ден
 extension EKEventStore {
-    /// Зареждаме всички събития за целия месец, групирани по ден (startOfDay)
     func fetchEventsByDay(for month: Date, calendar: Calendar) -> [Date: [EKEvent]] {
         guard
             let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: month)),
