@@ -492,153 +492,245 @@ public final class WeekTimelineViewNonOverlapping: UIView {
 ///  - има mainScrollView (двупосочен) + WeekTimelineViewNonOverlapping
 ///  - cornerView (горе-ляво) - „ъгъл“ между двете.
 /// При скрол: offset.x -> daysHeaderScrollView, offset.y -> hoursColumnScrollView.
+import UIKit
+import CalendarKit
+
+/// UIView, което показва:
+/// - Горен „navBar“ (бутони <, > + Label)
+/// - DaysHeader + лява колона (hours)
+/// - Основна зона (двупосочен скрол) за WeekTimelineViewNonOverlapping.
 public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
-    private let topBarHeight: CGFloat = 40
-    private let leftColumnWidth: CGFloat = 70  // Достатъчно да се вижда текстът
+    private let navBarHeight: CGFloat = 40
+    private let daysHeaderHeight: CGFloat = 40
+    private let leftColumnWidth: CGFloat = 70
 
-    private let mainScrollView = UIScrollView()
-    private let daysHeaderScrollView = UIScrollView()
-    private let hoursColumnScrollView = UIScrollView()
+    // Горна лента
+    private let navBar = UIView()
+    private let prevWeekButton = UIButton(type: .system)
+    private let nextWeekButton = UIButton(type: .system)
+    private let currentWeekLabel = UILabel()
 
-    private let daysHeaderView = DaysHeaderView()
-    private let hoursColumnView = HoursColumnView()
+    // Days Header
     private let cornerView = UIView()
+    private let daysHeaderScrollView = UIScrollView()
+    private let daysHeaderView = DaysHeaderView()
 
+    // Лява колона (часове)
+    private let hoursColumnScrollView = UIScrollView()
+    private let hoursColumnView = HoursColumnView()
+
+    // Основен скрол
+    private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
+    // Текущо зададена начална дата на седмицата
     public var startOfWeek: Date = Date() {
         didSet {
             daysHeaderView.startOfWeek = startOfWeek
             weekView.startOfWeek = startOfWeek
+            updateWeekLabel()
         }
     }
 
+    /// Callback, който викаме при натискане на бутоните < или >
+    public var onWeekChange: ((Date) -> Void)?
+
+    // MARK: - Инициализация
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
     }
 
+    // Конфигуриране на всички под-изгледи
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // Ъгъл горе-ляво (малкото сиво квадратче)
+        // (1) Горна „navBar“
+        navBar.backgroundColor = .secondarySystemBackground
+        addSubview(navBar)
+
+        // Бутон <
+        prevWeekButton.setTitle("<", for: .normal)
+        prevWeekButton.addTarget(self, action: #selector(didTapPrevWeek), for: .touchUpInside)
+        navBar.addSubview(prevWeekButton)
+
+        // Бутон >
+        nextWeekButton.setTitle(">", for: .normal)
+        nextWeekButton.addTarget(self, action: #selector(didTapNextWeek), for: .touchUpInside)
+        navBar.addSubview(nextWeekButton)
+
+        // Label, показващ диапазона на седмицата
+        currentWeekLabel.font = .boldSystemFont(ofSize: 14)
+        currentWeekLabel.textAlignment = .center
+        navBar.addSubview(currentWeekLabel)
+
+        // (2) DaysHeader (Mon, Tue...)
         cornerView.backgroundColor = .secondarySystemBackground
         addSubview(cornerView)
 
-        // DaysHeaderScrollView (най-горе)
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
         daysHeaderScrollView.isScrollEnabled = false
         daysHeaderScrollView.addSubview(daysHeaderView)
         addSubview(daysHeaderScrollView)
 
-        // HoursColumnScrollView (най-вляво)
+        // (3) Лява колона с часове
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
         hoursColumnScrollView.addSubview(hoursColumnView)
         addSubview(hoursColumnScrollView)
 
-        // mainScrollView (вътрешна зона за хоризонтален + вертикален скрол)
+        // (4) MainScrollView + WeekTimelineView (двупосочен скрол)
         mainScrollView.delegate = self
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // Синхронизираме параметрите
+        // (5) Настройки
         daysHeaderView.leadingInsetForHours = leftColumnWidth
-        weekView.leadingInsetForHours = leftColumnWidth
-
         daysHeaderView.dayColumnWidth = 100
+
+        weekView.leadingInsetForHours = leftColumnWidth
         weekView.dayColumnWidth = 100
+        weekView.hourHeight = 50
+        weekView.allDayHeight = 40
+        weekView.autoResizeAllDayHeight = true
 
         hoursColumnView.hourHeight = 50
-        weekView.hourHeight = 50
 
-        // Стартираме от понеделник на текущата седмица
-        let monday = findMonday(for: Date())
-        self.startOfWeek = monday
-    }
-
-    private func findMonday(for date: Date) -> Date {
-        let cal = Calendar.current
-        let weekday = cal.component(.weekday, from: date)
-        // weekday: 1=Sunday, 2=Monday, ...
-        let diff = (weekday == 1) ? 6 : weekday - 2
-        return cal.date(byAdding: .day, value: -diff, to: cal.startOfDay(for: date))!
+        // По желание – да започваме от понеделник на текущата седмица:
+        self.startOfWeek = findMonday(for: Date())
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
+        // (1) navBar
+        navBar.frame = CGRect(
+            x: 0, y: 0,
+            width: bounds.width,
+            height: navBarHeight
+        )
+        let btnW: CGFloat = 44
+        prevWeekButton.frame = CGRect(x: 8, y: 0, width: btnW, height: navBarHeight)
+        nextWeekButton.frame = CGRect(
+            x: navBar.bounds.width - btnW - 8,
+            y: 0,
+            width: btnW,
+            height: navBarHeight
+        )
+        currentWeekLabel.frame = CGRect(
+            x: prevWeekButton.frame.maxX,
+            y: 0,
+            width: nextWeekButton.frame.minX - prevWeekButton.frame.maxX,
+            height: navBarHeight
+        )
+
+        // (2) Лента с дните
         cornerView.frame = CGRect(
             x: 0,
-            y: 0,
+            y: navBarHeight,
             width: leftColumnWidth,
-            height: topBarHeight
+            height: daysHeaderHeight
         )
-
-        // DaysHeader (горе)
         daysHeaderScrollView.frame = CGRect(
             x: leftColumnWidth,
-            y: 0,
+            y: navBarHeight,
             width: bounds.width - leftColumnWidth,
-            height: topBarHeight
+            height: daysHeaderHeight
         )
-
-        // HoursColumn (вляво)
-        hoursColumnScrollView.frame = CGRect(
+        let totalDaysHeaderWidth: CGFloat =
+            daysHeaderView.leadingInsetForHours + 7*daysHeaderView.dayColumnWidth
+        daysHeaderScrollView.contentSize = CGSize(
+            width: totalDaysHeaderWidth - leftColumnWidth,
+            height: daysHeaderHeight
+        )
+        daysHeaderView.frame = CGRect(
             x: 0,
-            y: topBarHeight,
-            width: leftColumnWidth,
-            height: bounds.height - topBarHeight
+            y: 0,
+            width: totalDaysHeaderWidth,
+            height: daysHeaderHeight
         )
 
-        // mainScrollView (двупосочен) – започва след лявата колона
+        // (3) MainScrollView + HoursColumn
+        let yMain = navBarHeight + daysHeaderHeight
         mainScrollView.frame = CGRect(
             x: leftColumnWidth,
-            y: topBarHeight,
+            y: yMain,
             width: bounds.width - leftColumnWidth,
-            height: bounds.height - topBarHeight
+            height: bounds.height - yMain
+        )
+        hoursColumnScrollView.frame = CGRect(
+            x: 0,
+            y: yMain,
+            width: leftColumnWidth,
+            height: bounds.height - yMain
         )
 
-        // Пресмятаме общите размери спрямо 7 дни + 24 часа
         let totalWidth = weekView.leadingInsetForHours + 7 * weekView.dayColumnWidth
         let totalHeight = weekView.allDayHeight + 24 * weekView.hourHeight
 
-        // mainScrollView content
         mainScrollView.contentSize = CGSize(width: totalWidth, height: totalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: totalHeight)
 
-        // Изместваме часовете надолу, колкото е allDayHeight
-        hoursColumnView.topOffset = weekView.allDayHeight
-
-        // Съдържание на hoursColumnScrollView
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: totalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: totalHeight)
 
-        // daysHeaderScrollView
-        daysHeaderScrollView.contentSize = CGSize(width: totalWidth - leftColumnWidth, height: topBarHeight)
-        daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: topBarHeight)
+        hoursColumnView.topOffset = weekView.allDayHeight
 
-        // Винаги изкарваме колоната с часовете и cornerView най-отгоре
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
     }
 
+    // MARK: - Скрол делегат
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
-            // Свързваме X-offset -> daysHeaderScrollView
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
-            // Свързваме Y-offset -> hoursColumnScrollView
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
         }
     }
+
+    // MARK: - Бутоните
+    @objc private func didTapPrevWeek() {
+        guard let newDate = Calendar.current.date(byAdding: .day, value: -7, to: startOfWeek) else { return }
+        startOfWeek = newDate
+        onWeekChange?(newDate)
+    }
+
+    @objc private func didTapNextWeek() {
+        guard let newDate = Calendar.current.date(byAdding: .day, value: 7, to: startOfWeek) else { return }
+        startOfWeek = newDate
+        onWeekChange?(newDate)
+    }
+
+    // MARK: - Помощни
+    private func updateWeekLabel() {
+        let cal = Calendar.current
+        let endOfWeek = cal.date(byAdding: .day, value: 6, to: startOfWeek) ?? startOfWeek
+        let df = DateFormatter()
+        df.dateFormat = "d MMM"
+
+        let startStr = df.string(from: startOfWeek)
+        let endStr   = df.string(from: endOfWeek)
+        currentWeekLabel.text = "\(startStr) - \(endStr)"
+    }
+
+    /// Връща понеделника на седмицата, в която попада дадена дата
+    private func findMonday(for date: Date) -> Date {
+        let cal = Calendar.current
+        let weekday = cal.component(.weekday, from: date) // 1=Sun,2=Mon,...
+        let diff = (weekday == 1) ? 6 : weekday - 2
+        return cal.date(byAdding: .day, value: -diff, to: cal.startOfDay(for: date))!
+    }
 }
+
+    
+
 
 // MARK: - TimelineStyle
 public struct TimelineStyle {
@@ -651,39 +743,67 @@ public struct TimelineStyle {
     public init() {}
 }
 
-// MARK: - SwiftUI обвивка (опционално)
 import SwiftUI
 import CalendarKit
+import EventKit
 
+/// SwiftUI обвивка, която създава TwoWayPinnedWeekContainerView (UIKit)
+/// и позволява лесно да му подадем:
+///   - startOfWeek (Binding)
+///   - масив от EventDescriptor
+/// Когато потребителят натисне бутон < или >, вика onWeekChange и ние можем да презаредим събитията.
 public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
-    public let startOfWeek: Date
-    public let events: [EventDescriptor]
 
-    public init(startOfWeek: Date, events: [EventDescriptor]) {
-        self.startOfWeek = startOfWeek
-        self.events = events
+    // Параметри, които идват отвън (или от някакъв ViewModel)
+    @Binding var startOfWeek: Date
+    @Binding var events: [EventDescriptor]
+
+    // Може да имате и eventStore тук, ако искате директно да fetch-вате
+    let localEventStore = EKEventStore()
+
+    public init(startOfWeek: Binding<Date>, events: Binding<[EventDescriptor]>) {
+        self._startOfWeek = startOfWeek
+        self._events = events
     }
 
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
+
+        // 1) Създаваме TwoWayPinnedWeekContainerView
         let container = TwoWayPinnedWeekContainerView()
         container.startOfWeek = startOfWeek
 
-        // Настройка на weekView
-        let wv = container.weekView
-        wv.style.separatorColor = .lightGray
-        wv.style.timeColor = .darkGray
-        wv.leadingInsetForHours = 70
-        wv.dayColumnWidth = 100
-        wv.hourHeight = 50
-        wv.allDayHeight = 40
-        wv.autoResizeAllDayHeight = true
-
-        // Зареждаме събития
+        // 2) Задаваме начални събития (изчиствайки старите)
         let (allDay, regular) = splitAllDay(events)
-        wv.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
-        wv.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
+        container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
+        container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
 
+        // 3) Когато сменим седмицата от бутоните, извикваме onWeekChange
+        container.onWeekChange = { newStartDate in
+            // (а) сменяме @Binding startOfWeek -> това ще влезе в updateUIViewController
+            self.startOfWeek = newStartDate
+
+            // (б) Тук можем директно да fetch-нем новите събития и да ги зададем.
+            //     Примерно, ако искате [newStartDate..+7дни]:
+            let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: newStartDate)!
+            let predicate = self.localEventStore.predicateForEvents(withStart: newStartDate, end: endOfWeek, calendars: nil)
+            let found = self.localEventStore.events(matching: predicate)
+            let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
+
+            // (в) Обновяваме @Binding events (ако искаме да ги пазим в SwiftUI)
+            self.events = wrappers
+
+            // (г) Слагаме ги във view-то
+            let (ad, reg) = splitAllDay(wrappers)
+            container.weekView.allDayLayoutAttributes  = ad.map { EventLayoutAttributes($0) }
+            container.weekView.regularLayoutAttributes = reg.map { EventLayoutAttributes($0) }
+
+            // (д) Принудително layout, за да се рефрешне
+            container.setNeedsLayout()
+            container.layoutIfNeeded()
+        }
+
+        // Слагаме го във VC
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -692,21 +812,29 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             container.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor),
             container.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
         ])
+
         return vc
     }
 
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        if let container = uiViewController.view.subviews.first(where: { $0 is TwoWayPinnedWeekContainerView }) as? TwoWayPinnedWeekContainerView {
-            container.startOfWeek = startOfWeek
-            let wv = container.weekView
-
-            let (allDay, regular) = splitAllDay(events)
-            wv.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
-            wv.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
+        // Ако SwiftUI смени startOfWeek или events, рефрешваме.
+        guard let container = uiViewController.view.subviews.first(where: { $0 is TwoWayPinnedWeekContainerView }) as? TwoWayPinnedWeekContainerView else {
+            return
         }
+
+        // (1) Обновяваме startOfWeek
+        container.startOfWeek = startOfWeek
+
+        // (2) Обновяваме списъка със събития
+        let (allDay, regular) = splitAllDay(events)
+        container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
+        container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
+
+        container.setNeedsLayout()
+        container.layoutIfNeeded()
     }
 
-    /// Разделяме на all-day срещу редовни.
+    // Разделя евентите на allDay / редовни
     private func splitAllDay(_ evts: [EventDescriptor]) -> ([EventDescriptor], [EventDescriptor]) {
         var allDay = [EventDescriptor]()
         var regular = [EventDescriptor]()
