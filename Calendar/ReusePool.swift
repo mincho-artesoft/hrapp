@@ -2,8 +2,7 @@ import UIKit
 import CalendarKit
 
 // MARK: - DaysHeaderView
-/// Горна лента с 7 label‑а (Mon 1, Tue 2...), всеки започва при x = leadingInsetForHours + i*dayColumnWidth,
-/// за да съвпадне с колоните в timeline.
+/// Горна лента с 7 label‑а (Mon 1, Tue 2...), всеки започва при x = leadingInsetForHours + i*dayColumnWidth
 public final class DaysHeaderView: UIView {
 
     public var dayColumnWidth: CGFloat = 100
@@ -62,10 +61,14 @@ public final class DaysHeaderView: UIView {
 }
 
 // MARK: - HoursColumnView
-/// Лява колона (часове). Рисува 00:00..23:00 по vertical
+/// Лява колона (часове). Рисува 00:00..23:00 по vertical.
+/// Добавено свойство `topOffset`, за да можем да изместим 00:00 надолу.
 public final class HoursColumnView: UIView {
     public var hourHeight: CGFloat = 50
     public var font = UIFont.systemFont(ofSize: 12, weight: .medium)
+
+    /// Ново свойство: с колко пиксела да се измести целият текст надолу.
+    public var topOffset: CGFloat = 0
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,43 +82,37 @@ public final class HoursColumnView: UIView {
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
-        ctx.interpolationQuality = .none
 
         let attrs: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.label,
             .font: font
         ]
+
         for hour in 0...24 {
-            let y = CGFloat(hour)*hourHeight
+            // Ползваме topOffset + hour*hourHeight
+            let y = topOffset + CGFloat(hour)*hourHeight
             let text = String(format: "%02d:00", hour)
             text.draw(at: CGPoint(x: 8, y: y - 6), withAttributes: attrs)
         }
     }
 }
 
+// MARK: - WeekTimelineViewNonOverlapping
+/// Цялата седмична зона (all-day най-горе, после редовни евенти).
 public final class WeekTimelineViewNonOverlapping: UIView {
 
-    /// Начална дата (например понеделник)
     public var startOfWeek: Date = Date()
-
-    /// Визуален стил
     public var style = TimelineStyle()
-
-    /// Отстъп вляво (за колоната с часове)
     public var leadingInsetForHours: CGFloat = 53
-
-    /// Ширина за 1 ден
     public var dayColumnWidth: CGFloat = 100
-
-    /// Височина на един час (в редовната част)
     public var hourHeight: CGFloat = 50
 
-    /// Височина на all-day зоната.
-    /// **Вече** ще я изчисляваме динамично според това колко all-day events имаме в даден ден.
-    /// Но може и да зададете статична стойност, ако желаете.
+    /// Височина на all-day зоната
     public var allDayHeight: CGFloat = 40
 
-    /// All-day и редовни събития
+    /// Ако искате автоматично да увеличавате allDayHeight според броя all-day събития
+    public var autoResizeAllDayHeight = true
+
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
         didSet { setNeedsLayout() }
     }
@@ -123,14 +120,10 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         didSet { setNeedsLayout() }
     }
 
-    /// Ако искате автоматично да увеличавате allDayHeight според броя all-day събития
-    public var autoResizeAllDayHeight = true
-
     // MARK: - Private UI
     private let allDayBackground = UIView()
     private let allDayLabel = UILabel()
 
-    // Списъци за actual EventView
     private var allDayEventViews: [EventView] = []
     private var eventViews: [EventView] = []
 
@@ -158,34 +151,24 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         super.layoutSubviews()
 
         // 1) Динамично (по желание) коригираме allDayHeight
-        //    според броя all-day събития на всеки ден
         if autoResizeAllDayHeight {
             recalcAllDayHeightDynamically()
         }
 
-        // 2) Подреждаме subviews
+        // 2) Подреждаме
         layoutAllDayBackground()
         layoutAllDayLabel()
         layoutAllDayEvents()
         layoutRegularEvents()
     }
 
-    /// Изчисляваме колко all-day събития има за всеки ден,
-    /// взимаме най-голямата бройка, умножаваме по `rowHeight` => allDayHeight
     private func recalcAllDayHeightDynamically() {
-        // Групираме allDayLayoutAttributes по ден от седмицата (dayIndex)
         let groupedByDay = Dictionary(grouping: allDayLayoutAttributes, by: { dayIndexFor($0.descriptor.dateInterval.start) })
-
-        // Намираме най-големия брой all-day събития за някой ден
         let maxEventsInADay = groupedByDay.values.map({ $0.count }).max() ?? 0
         if maxEventsInADay <= 1 {
-            // Ако за всеки ден имаме 0 или 1 събитие,
-            // оставяме минимална височина (примерно 40).
             allDayHeight = 40
         } else {
-            // rowHeight за 1 all-day събитие
             let rowHeight: CGFloat = 24
-            // Допълнителен top/bottom space?
             let base: CGFloat = 10
             allDayHeight = base + (rowHeight * CGFloat(maxEventsInADay))
         }
@@ -205,27 +188,19 @@ public final class WeekTimelineViewNonOverlapping: UIView {
                                    height: allDayHeight)
     }
 
-    /// Сега подреждаме allDay events в „редове“.
-    /// 1) Групираме по dayIndex
-    /// 2) Всеки event се поставя на rowIndex * rowHeight
     private func layoutAllDayEvents() {
-        // 1) Групираме
         let grouped = Dictionary(grouping: allDayLayoutAttributes, by: { dayIndexFor($0.descriptor.dateInterval.start) })
 
         // rowHeight за всяко all-day event
-        let rowHeight: CGFloat = max(24, (allDayHeight - 5) / 2)
-        // Но ако ползвате recalcAllDayHeightDynamically, rowHeight
-        // може да е = (allDayHeight - base)/maxEventsInADay
+        // (примерна формула)
+        let groupedCount = grouped.values.map { $0.count }.max() ?? 1
+        let base: CGFloat = 10
+        let rowHeight = max(24, (allDayHeight - base) / CGFloat(groupedCount))
 
-        // Изчистете/скрийте стари views, ако old count > new count
-        // Но тук за простота просто не го трием.
-
-        var usedIndex = 0 // eventView index
-
+        var usedIndex = 0
         for dayIndex in 0..<7 {
             let dayEvents = grouped[dayIndex] ?? []
             for (i, attr) in dayEvents.enumerated() {
-                // i е редът в този ден
                 let x = leadingInsetForHours + CGFloat(dayIndex)*dayColumnWidth + style.eventGap
                 let y = style.eventGap + CGFloat(i)*rowHeight
                 let w = dayColumnWidth - style.eventGap*2
@@ -240,7 +215,6 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         }
     }
 
-    // MARK: - Layout regular events
     private func layoutRegularEvents() {
         for (i, attr) in regularLayoutAttributes.enumerated() {
             let start = attr.descriptor.dateInterval.start
@@ -263,7 +237,6 @@ public final class WeekTimelineViewNonOverlapping: UIView {
     }
 
     // MARK: - draw(_:)
-    /// Рисуваме хоризонтални линии за часа, + вертикални линии за дните
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
@@ -271,11 +244,10 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         let totalWidth = leadingInsetForHours + dayColumnWidth*7
         let normalZoneTop = allDayHeight
 
-        // 1) Хоризонтални линии (0..24)
+        // Хоризонтални линии (0..24)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
-
         ctx.beginPath()
         for hour in 0...24 {
             let y = normalZoneTop + CGFloat(hour)*hourHeight
@@ -285,7 +257,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
 
-        // 2) Вертикалната линия при leadingInsetForHours
+        // Вертикалната линия при leadingInsetForHours
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
@@ -294,7 +266,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
 
-        // 3) Вертикални линии за всяка колона (ден)
+        // Вертикални линии за всяка колона (ден)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
@@ -353,7 +325,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
 ///  - има mainScrollView (двупосочен) + WeekTimelineViewNonOverlapping
 ///  - cornerView (горе-ляво).
 /// При скрол: offset.x -> daysHeaderScrollView, offset.y -> hoursColumnScrollView.
-/// Така all-day евентите ще съвпаднат с колоните, защото formula за x е еднаква.
+/// Допълнително: изместваме колоната с часовете надолу, колкото е allDayHeight.
 public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     private let topBarHeight: CGFloat = 40
@@ -388,7 +360,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // ъгъл горе-ляво
+        // Ъгъл горе-ляво (малкото сиво квадратче)
         cornerView.backgroundColor = .secondarySystemBackground
         addSubview(cornerView)
 
@@ -411,8 +383,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // За да няма разминаване:
-        // И daysHeaderView, и weekView ползват еднакъв leadingInsetForHours
+        // Синхронизираме параметрите
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         weekView.leadingInsetForHours = leftColumnWidth
 
@@ -422,6 +393,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         hoursColumnView.hourHeight = 50
         weekView.hourHeight = 50
 
+        // Стартираме от понеделник на текущата седмица
         let monday = findMonday(for: Date())
         self.startOfWeek = monday
     }
@@ -429,6 +401,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private func findMonday(for date: Date) -> Date {
         let cal = Calendar.current
         let weekday = cal.component(.weekday, from: date)
+        // weekday: 1=Sunday, 2=Monday, ...
         let diff = (weekday == 1) ? 6 : weekday - 2
         return cal.date(byAdding: .day, value: -diff, to: cal.startOfDay(for: date))!
     }
@@ -436,54 +409,69 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        cornerView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: topBarHeight)
+        cornerView.frame = CGRect(x: 0, y: 0,
+                                  width: leftColumnWidth,
+                                  height: topBarHeight)
 
         // DaysHeader
-        daysHeaderScrollView.frame = CGRect(x: leftColumnWidth, y: 0,
-                                            width: bounds.width - leftColumnWidth,
-                                            height: topBarHeight)
+        daysHeaderScrollView.frame = CGRect(
+            x: leftColumnWidth,
+            y: 0,
+            width: bounds.width - leftColumnWidth,
+            height: topBarHeight
+        )
 
         // HoursColumn
-        hoursColumnScrollView.frame = CGRect(x: 0, y: topBarHeight,
-                                             width: leftColumnWidth,
-                                             height: bounds.height - topBarHeight)
+        hoursColumnScrollView.frame = CGRect(
+            x: 0,
+            y: topBarHeight,
+            width: leftColumnWidth,
+            height: bounds.height - topBarHeight
+        )
 
         // mainScrollView
-        mainScrollView.frame = CGRect(x: leftColumnWidth, y: topBarHeight,
-                                      width: bounds.width - leftColumnWidth,
-                                      height: bounds.height - topBarHeight)
+        mainScrollView.frame = CGRect(
+            x: leftColumnWidth,
+            y: topBarHeight,
+            width: bounds.width - leftColumnWidth,
+            height: bounds.height - topBarHeight
+        )
 
-        // contentSizes
-        let w = weekView.leadingInsetForHours + 7*weekView.dayColumnWidth
-        let h = weekView.allDayHeight + 24*weekView.hourHeight
-        mainScrollView.contentSize = CGSize(width: w, height: h)
-        weekView.frame = CGRect(x: 0, y: 0, width: w, height: h)
+        // Сметка за общите размери
+        let totalWidth = weekView.leadingInsetForHours + 7*weekView.dayColumnWidth
+        let totalHeight = weekView.allDayHeight + 24*weekView.hourHeight
+
+        // mainScrollView content
+        mainScrollView.contentSize = CGSize(width: totalWidth, height: totalHeight)
+        weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: totalHeight)
+
+        // ТУК: изместваме часовете надолу, колкото е allDayHeight
+        hoursColumnView.topOffset = weekView.allDayHeight
+
+        // Задаваме contentSize на hoursColumnScrollView, така че да обхваща и offset
+        hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: totalHeight)
+        hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: totalHeight)
 
         // daysHeaderScrollView
-        // ширината = w - leftColumnWidth (за scrolling)
-        daysHeaderScrollView.contentSize = CGSize(width: w - leftColumnWidth, height: topBarHeight)
-        // А самият daysHeaderView има width = w, за да включи leadingInsetForHours + 7*dayColumnWidth
-        daysHeaderView.frame = CGRect(x: 0, y: 0, width: w, height: topBarHeight)
+        daysHeaderScrollView.contentSize = CGSize(width: totalWidth - leftColumnWidth, height: topBarHeight)
+        daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: topBarHeight)
 
-        // hoursColumnScrollView
-        hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: h - topBarHeight)
-        hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: h)
-
-        daysHeaderView.setNeedsLayout()
-        hoursColumnView.setNeedsDisplay()
+        // Изкарваме колоната с часовете най-отгоре (ако има застъпване)
+        bringSubviewToFront(hoursColumnScrollView)
+        bringSubviewToFront(cornerView)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
-            // daysHeaderScrollView sync
+            // X-offset -> daysHeaderScrollView
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
-            // hoursColumnScrollView sync
+            // Y-offset -> hoursColumnScrollView
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
         }
     }
 }
 
-/// Примерен стил (както досега)
+// MARK: - TimelineStyle
 public struct TimelineStyle {
     public var backgroundColor = UIColor.white
     public var separatorColor = UIColor.lightGray
@@ -494,7 +482,7 @@ public struct TimelineStyle {
     public init() {}
 }
 
-
+// MARK: - SwiftUI обвивка
 import SwiftUI
 import CalendarKit
 
@@ -520,10 +508,15 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         wv.dayColumnWidth = 100
         wv.hourHeight = 50
         wv.allDayHeight = 40
+        wv.autoResizeAllDayHeight = true
 
         // Зареждаме събития
         let (allDay, regular) = splitAllDay(events)
+
+        // Покажи all-day събития:
         wv.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
+
+        // Редовни събития
         wv.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
 
         vc.view.addSubview(container)
@@ -540,14 +533,16 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         if let container = uiViewController.view.subviews.first(where: { $0 is TwoWayPinnedWeekContainerView }) as? TwoWayPinnedWeekContainerView {
             container.startOfWeek = startOfWeek
-
             let wv = container.weekView
+
             let (allDay, regular) = splitAllDay(events)
+
             wv.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
             wv.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
         }
     }
 
+    /// Разделяме на all-day срещу редовни.
     private func splitAllDay(_ evts: [EventDescriptor]) -> ([EventDescriptor], [EventDescriptor]) {
         var allDay = [EventDescriptor]()
         var regular = [EventDescriptor]()
