@@ -36,7 +36,7 @@ struct RootView: View {
                     Text("Месец").tag(0)
                     Text("Ден").tag(1)
                     Text("Година").tag(2)
-                    Text("Седмица+Часове").tag(3)
+                    Text("Седмица").tag(3)
                 }
                 .pickerStyle(.segmented)
                 .padding()

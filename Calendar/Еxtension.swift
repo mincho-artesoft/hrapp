@@ -48,9 +48,9 @@ extension Calendar {
 
 extension Date {
     func dateOnly(calendar: Calendar) -> Date {
-        let comps = calendar.dateComponents([.year, .month, .day], from: self)
-        return calendar.date(from: comps) ?? self
-    }
+           let comps = calendar.dateComponents([.year, .month, .day], from: self)
+           return calendar.date(from: comps) ?? self
+       }
 }
 
 extension EKEventStore {
