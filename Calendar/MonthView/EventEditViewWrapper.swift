@@ -1,12 +1,13 @@
 //
 //  EventEditViewWrapper.swift
-//  ObservableCalendarDemo
+//  ExampleCalendarApp
+//
+//  SwiftUI обвивка за системния EKEventEditViewController
 //
 
 import SwiftUI
 import EventKitUI
 
-/// SwiftUI обвивка за системния EKEventEditViewController
 struct EventEditViewWrapper: UIViewControllerRepresentable {
     let eventStore: EKEventStore
     let event: EKEvent

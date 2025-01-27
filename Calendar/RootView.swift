@@ -1,11 +1,23 @@
+//
+//  RootView.swift
+//  ExampleCalendarApp
+//
+//  Тук имаме основното SwiftUI View с табове:
+//   - Месечен изглед (MonthCalendarView)
+//   - Дневен изглед (DayCalendarWrapperView, базиран на CalendarKit)
+//   - Годишен изглед (YearCalendarView)
+//   - Седмичен изглед (TwoWayPinnedWeekWrapper)
+//
+
 import SwiftUI
 import EventKit
+import Combine
 import CalendarKit
 
 struct RootView: View {
     @State private var selectedTab = 0
 
-    // Нашият съществуващ eventStore и ViewModel
+    // Нашият споделен EKEventStore и ViewModel
     let eventStore = EKEventStore()
     @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
 
@@ -13,13 +25,13 @@ struct RootView: View {
     @State private var pinnedStartOfWeek: Date = Date()
     @State private var pinnedEvents: [EventDescriptor] = []
 
-    // Добавяме таймер, който „тиква“ на всяка минута
+    // Таймер, който „тиква“ на всяка минута -> рефреш
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationView {
             VStack {
-                // Сегментиран контрол за избор на изглед
+                // Сегментиран контрол (4 таба)
                 Picker("Изглед", selection: $selectedTab) {
                     Text("Месец").tag(0)
                     Text("Ден").tag(1)
@@ -32,34 +44,29 @@ struct RootView: View {
                 // Показваме конкретния изглед според селекцията
                 switch selectedTab {
                 case 0:
-                    // Месечен изглед (примерен)
+                    // Месечен изглед
                     MonthCalendarView(viewModel: calendarVM, startMonth: Date())
 
                 case 1:
-                    // Дневен изглед (примерен)
+                    // Дневен изглед (CalendarKit DayViewController)
                     DayCalendarWrapperView(eventStore: calendarVM.eventStore)
 
                 case 2:
-                    // Годишен изглед (примерен)
+                    // Годишен изглед
                     YearCalendarView(viewModel: calendarVM)
 
                 case 3:
-                    // Новият пиннат седмичен изглед
+                    // „Закована“ седмица с часове и червена линия
                     TwoWayPinnedWeekWrapper(
                         startOfWeek: $pinnedStartOfWeek,
                         events: $pinnedEvents
                     )
-                    // Когато се появи този таб, зареждаме събитията
+                    // При показване на този таб: зареждаме събития [pinnedStartOfWeek..+7дни]
                     .onAppear {
                         loadPinnedWeekEvents()
                     }
-                    // На всяка минута ще се изпълнява този onReceive => SwiftUI ще ре-рендва,
-                    // което води до updateUIViewController(...) в TwoWayPinnedWeekWrapper,
-                    // и там се вика setNeedsLayout() за да се опресни червената линия.
+                    // На всяка минута -> рефреш
                     .onReceive(timer) { _ in
-                        // "Побутване" - може просто да смените нещо дребно,
-                        // или да презаредите отново списъка със събития
-                        // За пример, просто презареждаме събитията:
                         loadPinnedWeekEvents()
                     }
 
@@ -70,12 +77,12 @@ struct RootView: View {
             .navigationTitle("Calendar Demo")
         }
         .onAppear {
-            // При първо показване искаме разрешение и зареждаме събития за ViewModel
+            // При първо показване искаме достъп до календара
             calendarVM.requestCalendarAccessIfNeeded {
                 let currentYear = Calendar.current.component(.year, from: Date())
                 calendarVM.loadEventsForWholeYear(year: currentYear)
             }
-            // Инициализираме pinnedStartOfWeek (пример: намираме понеделника)
+            // Инициализираме pinnedStartOfWeek да е понеделник
             pinnedStartOfWeek = startOfThisWeek()
         }
     }
@@ -84,21 +91,17 @@ struct RootView: View {
     func startOfThisWeek() -> Date {
         let cal = Calendar.current
         let today = cal.startOfDay(for: Date())
-        let weekday = cal.component(.weekday, from: today)
-        // 1=Sunday, 2=Monday...
+        let weekday = cal.component(.weekday, from: today) // 1 = Sunday
+        // Ако е неделя (1), offset = 6 дена назад, иначе offset = weekday - 2
         let diff = (weekday == 1) ? 6 : weekday - 2
         return cal.date(byAdding: .day, value: -diff, to: today)!
     }
 
-    /// Презарежда събитията за текущия pinnedStartOfWeek (7 дни напред)
+    /// Зарежда събитията за [pinnedStartOfWeek..+7 дни]
     func loadPinnedWeekEvents() {
         let cal = Calendar.current
         let end = cal.date(byAdding: .day, value: 7, to: pinnedStartOfWeek)!
-        let predicate = calendarVM.eventStore.predicateForEvents(
-            withStart: pinnedStartOfWeek,
-            end: end,
-            calendars: nil
-        )
+        let predicate = calendarVM.eventStore.predicateForEvents(withStart: pinnedStartOfWeek, end: end, calendars: nil)
         let found = calendarVM.eventStore.events(matching: predicate)
         let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
         pinnedEvents = wrappers

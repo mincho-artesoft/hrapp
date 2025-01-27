@@ -1,6 +1,8 @@
 //
 //  WeekdayHeaderView.swift
-//  ObservableCalendarDemo
+//  ExampleCalendarApp
+//
+//  Малка помощна лента с имена на дните (Sun, Mon, ...)
 //
 
 import SwiftUI

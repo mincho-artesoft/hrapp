@@ -1,3 +1,10 @@
+//
+//  CalendarViewModel.swift
+//  ExampleCalendarApp
+//
+//  ObservableObject, което държи заредените събития от EKEventStore
+//
+
 import SwiftUI
 import EventKit
 import Combine
@@ -24,7 +31,7 @@ class CalendarViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    /// Зарежда събития за даден месец (ако е нужно в MonthCalendarView)
+    /// Зарежда събития за даден месец
     func loadEvents(for month: Date) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
@@ -54,21 +61,20 @@ class CalendarViewModel: ObservableObject {
         }
 
         let calendar = Calendar(identifier: .gregorian)
-        // Начало на годината (1-ви януари, 00:00)
+        // Начало на годината
         var comp = DateComponents()
         comp.year = year
         comp.month = 1
         comp.day = 1
         guard let startOfYear = calendar.date(from: comp) else { return }
         
-        // Начало на следващата година (1-ви януари на +1 година)
+        // Начало на следващата година
         var compNext = DateComponents()
         compNext.year = year + 1
         compNext.month = 1
         compNext.day = 1
         guard let startOfNextYear = calendar.date(from: compNext) else { return }
         
-        // Взимаме predicate
         let predicate = eventStore.predicateForEvents(
             withStart: startOfYear,
             end: startOfNextYear,
@@ -94,7 +100,7 @@ class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
     
-    /// Проверява дали имаме разрешение (iOS17: .fullAccess / по‑старо: .authorized)
+    /// Проверява дали имаме разрешение
     func isCalendarAccessGranted() -> Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
         if #available(iOS 17.0, *) {
@@ -104,7 +110,7 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    /// Искаме разрешение (ако е .notDetermined), иначе изпълняваме completion директно
+    /// Искаме разрешение (ако е .notDetermined)
     func requestCalendarAccessIfNeeded(completion: @escaping () -> Void) {
         let status = EKEventStore.authorizationStatus(for: .event)
         if status == .notDetermined {

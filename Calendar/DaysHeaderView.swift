@@ -1,6 +1,12 @@
+//
+//  DaysHeaderView.swift
+//  ExampleCalendarApp
+//
+//  Изписва 7 етикета (Mon 20 Jan, Tue 21 Jan...), започвайки от startOfWeek.
+//
+
 import UIKit
 
-/// Горна лента (Mon 20 Jan, Tue 21 Jan...) за 7 дни, тръгващи от `startOfWeek`.
 public final class DaysHeaderView: UIView {
 
     public var dayColumnWidth: CGFloat = 100
@@ -41,10 +47,8 @@ public final class DaysHeaderView: UIView {
     }
 
     private func updateTexts() {
-        // Use a consistent Monday-based calendar:
         var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2 // 2 = Monday start
-
+        cal.firstWeekday = 2 // Monday start
         let df = DateFormatter()
         df.dateFormat = "EEE, d MMM"
 
@@ -53,7 +57,6 @@ public final class DaysHeaderView: UIView {
         for (i, lbl) in labels.enumerated() {
             if let dayDate = cal.date(byAdding: .day, value: i, to: startOfWeek) {
                 lbl.text = df.string(from: dayDate)
-                // Ако е днес -> оцветяваме в оранжево
                 let dayOnly = cal.startOfDay(for: dayDate)
                 if dayOnly == todayStart {
                     lbl.textColor = .systemOrange

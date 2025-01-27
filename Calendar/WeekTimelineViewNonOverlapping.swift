@@ -1,10 +1,6 @@
 import UIKit
-import EventKit
 import CalendarKit
 
-/// Основен седмичен "canvas" с 7 колони (Mon..Sun), не-застъпващо подреждане на евентите.
-/// Показва червената линия (current time) само ако "today" е в седмицата.
-/// Основен седмичен "canvas" с 7 колони (Mon..Sun), не-застъпващо подреждане на евентите.
 public final class WeekTimelineViewNonOverlapping: UIView {
 
     public var startOfWeek: Date = Date()
@@ -16,6 +12,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
     public var allDayHeight: CGFloat = 40
     public var autoResizeAllDayHeight = true
 
+    // Массиви със събития (EventLayoutAttributes, които са CalendarKit)
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
         didSet { setNeedsLayout() }
     }
@@ -23,12 +20,11 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         didSet { setNeedsLayout() }
     }
 
+    // Тук ще се рисуват "all-day" евенти
     private let allDayBackground = UIView()
     private let allDayLabel = UILabel()
 
-    /// Всички View-та за all-day (рециклираме ги)
     private var allDayEventViews: [EventView] = []
-    /// Всички View-та за редовни (часови) евенти
     private var eventViews: [EventView] = []
 
     public override init(frame: CGRect) {
@@ -44,15 +40,15 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         addSubview(allDayLabel)
     }
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) not implemented")
+        fatalError("init(coder:) has not been implemented")
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // (A) Скриваме всички стари EventView (да не висят от предната седмица)
+        // Скриваме стари EventView (рециклиране)
         for v in allDayEventViews { v.isHidden = true }
-        for v in eventViews      { v.isHidden = true }
+        for v in eventViews       { v.isHidden = true }
 
         if autoResizeAllDayHeight {
             recalcAllDayHeightDynamically()
@@ -60,14 +56,12 @@ public final class WeekTimelineViewNonOverlapping: UIView {
 
         layoutAllDayBackground()
         layoutAllDayLabel()
-
         layoutAllDayEvents()
         layoutRegularEvents()
-
-        // Накрая: Скриваме евентите, които се пресичат с "current time" (ако днес е в седмицата)
         hideEventsClashingWithCurrentTime()
     }
 
+    // Пример: ако има много all-day събития, увеличава allDayHeight
     private func recalcAllDayHeightDynamically() {
         let groupedByDay = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
@@ -90,9 +84,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
 
     private func layoutAllDayLabel() {
         let labelWidth = leadingInsetForHours
-        allDayLabel.frame = CGRect(x: 0, y: 0,
-                                   width: labelWidth,
-                                   height: allDayHeight)
+        allDayLabel.frame = CGRect(x: 0, y: 0, width: labelWidth, height: allDayHeight)
     }
 
     private func layoutAllDayEvents() {
@@ -138,7 +130,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
                 $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start
             }
 
-            // Нареждаме ги в колони, за да не се застъпват
+            // Подреждаме в колони (не-застъпващо)
             var columns: [[EventLayoutAttributes]] = []
             for attr in sorted {
                 var placed = false
@@ -199,27 +191,22 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         return false
     }
 
-    /// Скриваме евентите, които се засичат с current time line (ако "днес" е в седмицата).
+    // Ако „червената линия“ се пресича с някое евент view, можем да го скрием.
+    // (примерен детайл, не винаги е нужен)
     private func hideEventsClashingWithCurrentTime() {
         let now = Date()
         guard let dayIndex = dayIndexIfInCurrentWeek(now) else {
             return
         }
-        var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2
-
+        let cal = Calendar.current
         let hour = CGFloat(cal.component(.hour, from: now))
         let minute = CGFloat(cal.component(.minute, from: now))
         let fraction = hour + minute/60
-
         let yNow = allDayHeight + fraction * hourHeight
+
         let dayX = leadingInsetForHours + CGFloat(dayIndex)*dayColumnWidth
+        let lineRect = CGRect(x: dayX, y: yNow - 1, width: dayColumnWidth, height: 2)
 
-        // 2px висока "линия"
-        let lineRect = CGRect(x: dayX, y: yNow - 1,
-                              width: dayColumnWidth, height: 2)
-
-        // Скриваме онези, които се пресичат
         for evView in eventViews {
             if evView.frame.intersects(lineRect) {
                 evView.isHidden = true
@@ -232,7 +219,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         }
     }
 
-    // MARK: - draw(_:)
+    // MARK: - draw(_:) => чертае хор. линии, вертик. линии и "червена линия"
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
@@ -253,20 +240,15 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
 
-        // (2) Вертикална линия при leadingInsetForHours
-        ctx.saveGState()
-        ctx.setStrokeColor(style.separatorColor.cgColor)
-        ctx.setLineWidth(1.0 / UIScreen.main.scale)
-        ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
-        ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
-        ctx.strokePath()
-        ctx.restoreGState()
-
-        // (3) Вертикални линии за 7 колони
+        // (2) Вертикални линии (начална + 7 колони)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
+        // Линия при leadingInsetForHours
+        ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
+        ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
+        // + още 7 линии
         for i in 0...7 {
             let colX = leadingInsetForHours + CGFloat(i)*dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
@@ -275,22 +257,20 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
 
-        // (4) Червена линия (current time) само ако now е в седмицата
+        // (3) Червена линия (ако днешният ден е в седмицата)
         drawCurrentTimeLineForCurrentDay(ctx: ctx)
     }
 
     private func drawCurrentTimeLineForCurrentDay(ctx: CGContext) {
         let now = Date()
         guard let dayIndex = dayIndexIfInCurrentWeek(now) else {
+            // Ако не е в седмицата, не рисуваме линия
             return
         }
-
-        var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2
-
+        let cal = Calendar.current
         let hour = CGFloat(cal.component(.hour, from: now))
         let minute = CGFloat(cal.component(.minute, from: now))
-        let fraction = hour + minute / 60
+        let fraction = hour + minute/60
 
         let yNow = allDayHeight + fraction * hourHeight
         let totalLeftX = leadingInsetForHours
@@ -299,7 +279,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         let currentDayX  = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
         let currentDayX2 = currentDayX + dayColumnWidth
 
-        // Полупрозрачна линия (ляв сегмент)
+        // Ляв полупрозрачен сегмент
         if currentDayX > totalLeftX {
             ctx.saveGState()
             ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
@@ -321,7 +301,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
 
-        // Полупрозрачна (десен сегмент)
+        // Десен полупрозрачен сегмент
         if currentDayX2 < totalRightX {
             ctx.saveGState()
             ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
@@ -335,6 +315,37 @@ public final class WeekTimelineViewNonOverlapping: UIView {
     }
 
     // MARK: - Helpers
+
+    /// Проверка дали `date` е в диапазона `[startOfWeek ..< startOfWeek+7 дни]`.
+    /// Ако е вътре – връщаме 0..6 (индекс на деня). Ако не – nil.
+    public func dayIndexIfInCurrentWeek(_ date: Date) -> Int? {
+        let cal = Calendar.current
+        // "изрязваме" часовете, за да сме сигурни, че startOfWeek е 00:00
+        let startOnly = startOfWeek.dateOnly(calendar: cal)
+        let endOfWeek = cal.date(byAdding: .day, value: 7, to: startOnly)!
+
+        if date >= startOnly && date < endOfWeek {
+            let comps = cal.dateComponents([.day], from: startOnly, to: date)
+            return comps.day
+        }
+        return nil
+    }
+
+    private func dayIndexFor(_ date: Date) -> Int {
+        let cal = Calendar.current
+        let startOnly = startOfWeek.dateOnly(calendar: cal)
+        let evOnly = date.dateOnly(calendar: cal)
+        let comps = cal.dateComponents([.day], from: startOnly, to: evOnly)
+        return comps.day ?? 0
+    }
+
+    private func dateToY(_ date: Date) -> CGFloat {
+        let cal = Calendar.current
+        let hour = CGFloat(cal.component(.hour, from: date))
+        let minute = CGFloat(cal.component(.minute, from: date))
+        return (hour + minute/60) * hourHeight
+    }
+
     private func ensureAllDayEventView(index: Int) -> EventView {
         if index < allDayEventViews.count {
             return allDayEventViews[index]
@@ -355,39 +366,5 @@ public final class WeekTimelineViewNonOverlapping: UIView {
             eventViews.append(v)
             return v
         }
-    }
-
-    private func dayIndexIfInCurrentWeek(_ date: Date) -> Int? {
-        var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2
-
-        let startOnly = startOfWeek.dateOnly(calendar: cal)
-        let endOfWeek = cal.date(byAdding: .day, value: 7, to: startOnly)!
-        if date >= startOnly && date < endOfWeek {
-            let comps = cal.dateComponents([.day], from: startOnly, to: date)
-            let d = comps.day ?? 0
-            return d
-        } else {
-            return nil
-        }
-    }
-
-    private func dayIndexFor(_ date: Date) -> Int {
-        var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2
-
-        let startOnly = startOfWeek.dateOnly(calendar: cal)
-        let evOnly = date.dateOnly(calendar: cal)
-        let comps = cal.dateComponents([.day], from: startOnly, to: evOnly)
-        return comps.day ?? 0
-    }
-
-    private func dateToY(_ date: Date) -> CGFloat {
-        var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2
-
-        let hour = CGFloat(cal.component(.hour, from: date))
-        let minute = CGFloat(cal.component(.minute, from: date))
-        return (hour + minute/60) * hourHeight
     }
 }

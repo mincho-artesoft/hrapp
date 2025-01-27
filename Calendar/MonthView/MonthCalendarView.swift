@@ -1,3 +1,11 @@
+//
+//  MonthCalendarView.swift
+//  ExampleCalendarApp
+//
+//  Показва „месечен“ календар с DayCellView за всеки ден.
+//  Поддържа Drag & Drop на събития и системен EKEventEditViewController за редакция.
+//
+
 import SwiftUI
 import EventKit
 import EventKitUI
@@ -97,7 +105,7 @@ struct MonthCalendarView: View {
         .onAppear {
             viewModel.loadEvents(for: currentMonth)
         }
-        // Когато затворим Day View (CalendarKit)
+        // Day View (CalendarKit)
         .fullScreenCover(isPresented: $showDayView, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) {
@@ -117,7 +125,7 @@ struct MonthCalendarView: View {
                 }
             }
         }
-        // Когато затворим системния редактор
+        // Системният редактор
         .sheet(isPresented: $showEventEditor, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) {
@@ -170,15 +178,16 @@ struct MonthCalendarView: View {
     
     // Преместване на събитие
     private func moveEvent(_ event: EKEvent, to newDate: Date, span: EKSpan) {
+        let cal = Calendar.current
         guard let oldStart = event.startDate,
               let oldEnd = event.endDate else { return }
         
-        let startComp = calendar.dateComponents([.hour, .minute, .second], from: oldStart)
-        let endComp   = calendar.dateComponents([.hour, .minute, .second], from: oldEnd)
+        let startComp = cal.dateComponents([.hour, .minute, .second], from: oldStart)
+        let endComp   = cal.dateComponents([.hour, .minute, .second], from: oldEnd)
         
-        let newDay    = calendar.startOfDay(for: newDate)
-        let newStart  = calendar.date(byAdding: startComp, to: newDay) ?? newDate
-        let newEnd    = calendar.date(byAdding: endComp, to: newDay)   ?? newDate
+        let newDay    = cal.startOfDay(for: newDate)
+        let newStart  = cal.date(byAdding: startComp, to: newDay) ?? newDate
+        let newEnd    = cal.date(byAdding: endComp, to: newDay)   ?? newDate
         
         event.startDate = newStart
         event.endDate   = newEnd
@@ -213,8 +222,9 @@ struct MonthCalendarView: View {
     
     private func presentNewEvent(on day: Date) {
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
+        let cal = Calendar.current
         
-        let startOfDay = calendar.startOfDay(for: day)
+        let startOfDay = cal.startOfDay(for: day)
         newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)   // 09:00
         newEvent.endDate   = startOfDay.addingTimeInterval(10 * 3600)  // 10:00
         newEvent.title     = "New Event"

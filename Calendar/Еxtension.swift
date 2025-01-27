@@ -4,8 +4,6 @@ import EventKit
 
 
 extension Calendar {
-    /// Генерира 42 дати (6 седмици по 7 дни) за даден месец,
-    /// включително предишните и следващите дни, за да се запълни "grid".
     func generateDatesForMonthGrid(for referenceDate: Date) -> [Date] {
         guard let monthStart = self.date(from: dateComponents([.year, .month], from: referenceDate)) else {
             return []
@@ -48,8 +46,14 @@ extension Calendar {
     }
 }
 
+extension Date {
+    func dateOnly(calendar: Calendar) -> Date {
+        let comps = calendar.dateComponents([.year, .month, .day], from: self)
+        return calendar.date(from: comps) ?? self
+    }
+}
+
 extension EKEventStore {
-    /// Зарежда всички събития за даден месец, групирани по ден
     func fetchEventsByDay(for month: Date, calendar: Calendar) -> [Date: [EKEvent]] {
         guard
             let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: month)),
@@ -62,7 +66,6 @@ extension EKEventStore {
         let foundEvents = events(matching: predicate)
         
         var dict: [Date: [EKEvent]] = [:]
-        
         for ev in foundEvents {
             let dayKey = calendar.startOfDay(for: ev.startDate)
             dict[dayKey, default: []].append(ev)
@@ -72,16 +75,3 @@ extension EKEventStore {
     }
 }
 
-// MARK: - Помощни разширения (без промени)
-import Foundation
-
-extension Date {
-    /// "Изрязва" часовете, минутите и секундите, за да стане само дата (00:00).
-    func dateOnly(calendar: Calendar) -> Date {
-        let year = calendar.component(.year, from: self)
-        let month = calendar.component(.month, from: self)
-        let day = calendar.component(.day, from: self)
-
-        return calendar.date(from: DateComponents(year: year, month: month, day: day))!
-    }
-}

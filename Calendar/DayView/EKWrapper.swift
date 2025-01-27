@@ -1,8 +1,14 @@
+//
+//  EKWrapper.swift
+//  ExampleCalendarApp
+//
+//  Преобразува EKEvent в EventDescriptor (CalendarKit) за DayViewController.
+//
+
 import UIKit
 import EventKit
 import CalendarKit
 
-/// Преобразува EKEvent в EventDescriptor (CalendarKit)
 public final class EKWrapper: EventDescriptor {
 
     public var dateInterval: DateInterval {

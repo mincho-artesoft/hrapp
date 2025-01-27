@@ -1,3 +1,10 @@
+//
+//  TimelineStyle.swift
+//  ExampleCalendarApp
+//
+//  Помощна структура с настройки (цветове, шрифтове) за WeekTimelineViewNonOverlapping.
+//
+
 import UIKit
 
 public struct TimelineStyle {

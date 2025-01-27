@@ -1,3 +1,11 @@
+//
+//  YearMonthMiniView.swift
+//  ExampleCalendarApp
+//
+//  "Мини" календар за даден месец (6 реда x 7 колони).
+//  При тап -> вика callback onMonthTapped.
+//
+
 import SwiftUI
 import EventKit
 
@@ -10,7 +18,7 @@ struct YearMonthMiniView: View {
     
     var body: some View {
         VStack(spacing: 6) {
-            // Име на месеца (напр. "Jan")
+            // Име на месеца (Jan, Feb...)
             Text(monthName(monthDate))
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -23,9 +31,7 @@ struct YearMonthMiniView: View {
                     let dayKey = calendar.startOfDay(for: day)
                     let dayEvents = eventsByDay[dayKey] ?? []
                     
-                    MiniDayCellView(day: day,
-                                    referenceMonth: monthDate,
-                                    events: dayEvents)
+                    MiniDayCellView(day: day, referenceMonth: monthDate, events: dayEvents)
                 }
             }
         }
@@ -38,8 +44,7 @@ struct YearMonthMiniView: View {
     
     private func monthName(_ date: Date) -> String {
         let df = DateFormatter()
-        df.dateFormat = "MMM" // "Jan", "Feb" и т.н.
-        // Ако искате пълно име: df.dateFormat = "LLLL" (January, February...)
+        df.dateFormat = "MMM" // "Jan", "Feb", ...
         return df.string(from: date)
     }
 }

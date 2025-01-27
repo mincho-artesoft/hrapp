@@ -1,3 +1,11 @@
+//
+//  CalendarViewController.swift
+//  ExampleCalendarApp
+//
+//  Наш контролер, наследен от CalendarKit.DayViewController,
+//  който показва събития от EKEventStore (чрез EKWrapper).
+//
+
 import UIKit
 import CalendarKit
 import EventKit
@@ -18,6 +26,7 @@ final class CalendarViewController: DayViewController, EKEventEditViewDelegate {
         
         if let date = selectedDate {
             dayView.state?.move(to: date)
+            // Пример: скрол до 9ч
             dayView.scrollTo(hour24: 9)
         }
     }

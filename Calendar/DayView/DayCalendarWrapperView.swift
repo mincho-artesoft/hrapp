@@ -1,10 +1,13 @@
 //
 //  DayCalendarWrapperView.swift
-//  ObservableCalendarDemo
+//  ExampleCalendarApp
+//
+//  SwiftUI View, което „обвива“ CalendarViewController (DayViewController от CalendarKit).
 //
 
 import SwiftUI
 import EventKit
+import CalendarKit
 
 struct DayCalendarWrapperView: View {
     let eventStore: EKEventStore

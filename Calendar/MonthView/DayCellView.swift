@@ -1,8 +1,3 @@
-//
-//  DayCellView.swift
-//  ObservableCalendarDemo
-//
-
 import SwiftUI
 import EventKit
 import UniformTypeIdentifiers
@@ -113,5 +108,3 @@ struct DayCellView: View {
         calendar.isDate(date, equalTo: currentMonth, toGranularity: .month)
     }
 }
-
-

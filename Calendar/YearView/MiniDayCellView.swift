@@ -1,3 +1,11 @@
+//
+//  MiniDayCellView.swift
+//  ExampleCalendarApp
+//
+//  Клетка 30x32 в мини месеца от YearMonthMiniView
+//  Показва цифра, червена точка ако има събития, червен кръг ако е днешен ден
+//
+
 import SwiftUI
 import EventKit
 
@@ -14,7 +22,7 @@ struct MiniDayCellView: View {
         let dayNumber = calendar.component(.day, from: day)
         
         ZStack(alignment: .top) {
-            // Ако е днешна дата -> червен кръг отзад
+            // Ако е днес -> червен кръг
             if isToday {
                 Circle()
                     .fill(Color.red)
@@ -22,7 +30,6 @@ struct MiniDayCellView: View {
                     .offset(y: 1)
             }
             
-            // Цифрата
             Text("\(dayNumber)")
                 .font(.system(size: 12))
                 .foregroundColor(
@@ -35,13 +42,13 @@ struct MiniDayCellView: View {
             // Ако има събития -> точка отдолу
             if !events.isEmpty {
                 if isToday {
-                    // Ако е днешен ден И има събития -> бяла точка
+                    // Ако е днес + има събития -> бяла точка
                     Circle()
                         .fill(Color.white)
                         .frame(width: 4, height: 4)
                         .offset(y: 20)
                 } else {
-                    // Иначе стандартна червена точка (или какъвто цвят искате)
+                    // Иначе червена точка
                     Circle()
                         .fill(Color.red)
                         .frame(width: 4, height: 4)
@@ -49,7 +56,6 @@ struct MiniDayCellView: View {
                 }
             }
         }
-        // Фиксирана рамка, за да са дните на една линия
         .frame(width: 30, height: 32)
     }
 }

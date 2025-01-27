@@ -1,16 +1,21 @@
+//
+//  YearCalendarView.swift
+//  ExampleCalendarApp
+//
+//  Показва 12 "мини месеца" (YearMonthMiniView). При тап на месец -> отваряме MonthCalendarView.
+//
+
 import SwiftUI
 import EventKit
 
 struct YearCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
-    // Вместо да е фиксиран, го правим @State, за да го променяме
     @State private var year: Int = Calendar.current.component(.year, from: Date())
-    
     @State private var showMonthView = false
     @State private var tappedMonthDate: Date?
     
-    // Две колони (примерно)
+    // Примерно - 2 колони
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -18,22 +23,20 @@ struct YearCalendarView: View {
     
     var body: some View {
         VStack {
-            // Горната "лента" за избор на година
+            // Горна лента за избор на година
             HStack {
                 Button(action: {
-                    // Минаваме 1 година назад
                     year -= 1
                     viewModel.loadEventsForWholeYear(year: year)
                 }) {
                     Image(systemName: "chevron.left")
                 }
                 
-                Text(year, format: .number.grouping(.never))
+                Text("\(year)")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                 
                 Button(action: {
-                    // Минаваме 1 година напред
                     year += 1
                     viewModel.loadEventsForWholeYear(year: year)
                 }) {
@@ -62,11 +65,9 @@ struct YearCalendarView: View {
                 .padding()
             }
         }
-        // Когато го покажем за първи път
         .onAppear {
             viewModel.loadEventsForWholeYear(year: year)
         }
-        // Когато затворим екрана за месеца
         .fullScreenCover(isPresented: $showMonthView, onDismiss: {
             viewModel.loadEventsForWholeYear(year: year)
         }) {

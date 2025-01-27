@@ -1,42 +1,36 @@
 import UIKit
 import CalendarKit
 
-/// Контейнер (UIKit) със:
-///  - navBar + бутони < и > + надпис (диапазон на седмицата)
-///  - горен DaysHeaderView (Mon, Tue...)
-///  - лява HoursColumnView (часове)
-///  - централна 2D scroll зона (WeekTimelineViewNonOverlapping)
-///
-/// При смяна на седмицата (< / >) вика callback `onWeekChange(newDate)`.
 public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
+    // Размери
     private let navBarHeight: CGFloat = 40
     private let daysHeaderHeight: CGFloat = 40
     private let leftColumnWidth: CGFloat = 70
 
-    // Горна лента
+    // Горна "navbar"
     private let navBar = UIView()
     private let prevWeekButton = UIButton(type: .system)
     private let nextWeekButton = UIButton(type: .system)
     private let currentWeekLabel = UILabel()
 
-    // Days Header
+    // Days Header (Mon, Tue...)
     private let cornerView = UIView()
     private let daysHeaderScrollView = UIScrollView()
     private let daysHeaderView = DaysHeaderView()
 
-    // Лява колона (часове)
+    // Лява колона за часове
     private let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
 
-    // Основен 2D скрол
+    // Основен 2D scroll за седмичния „canvas“
     private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
-    /// Callback, вика се при натискане < или >.
+    /// Callback, ако искате да „известите“ SwiftUI или нещо друго при смяна на седмицата.
     public var onWeekChange: ((Date) -> Void)? = nil
 
-    /// Начална дата на седмицата (обикновено понеделник 00:00)
+    /// Начало на седмицата (понеделник 00:00)
     public var startOfWeek: Date = Date() {
         didSet {
             daysHeaderView.startOfWeek = startOfWeek
@@ -48,19 +42,32 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         }
     }
 
+    /// Таймер за периодично преизчертаване
+    private var redrawTimer: Timer?
+
+    // MARK: - Инициализация
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        startRedrawTimer()  // по избор: таймер, който опреснява червената линия всяка минута
     }
+
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
+        startRedrawTimer()
+    }
+
+    deinit {
+        // Ако се освободи този view, да не остане Timer активен
+        redrawTimer?.invalidate()
+        redrawTimer = nil
     }
 
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // (1) NavBar
+        // (1) НавБар
         navBar.backgroundColor = .secondarySystemBackground
         addSubview(navBar)
 
@@ -79,25 +86,26 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         // (2) DaysHeader
         cornerView.backgroundColor = .secondarySystemBackground
         addSubview(cornerView)
+
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
         daysHeaderScrollView.isScrollEnabled = false
         daysHeaderScrollView.addSubview(daysHeaderView)
         addSubview(daysHeaderScrollView)
 
-        // (3) HoursColumn
+        // (3) Лява колона (часове)
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
         hoursColumnScrollView.addSubview(hoursColumnView)
         addSubview(hoursColumnScrollView)
 
-        // (4) MainScrollView (2D)
+        // (4) Основен 2D скрол
         mainScrollView.delegate = self
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // (5) Настройки
+        // Настройки за ширини/височини
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         daysHeaderView.dayColumnWidth = 100
 
@@ -110,26 +118,25 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         hoursColumnView.hourHeight = 50
     }
 
+    // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // --- НавБар
+        // Горна лента
         navBar.frame = CGRect(x: 0, y: 0,
                               width: bounds.width,
                               height: navBarHeight)
-
         let btnW: CGFloat = 44
         prevWeekButton.frame = CGRect(x: 8, y: 0,
                                       width: btnW, height: navBarHeight)
         nextWeekButton.frame = CGRect(x: navBar.bounds.width - btnW - 8,
-                                      y: 0,
-                                      width: btnW, height: navBarHeight)
+                                      y: 0, width: btnW, height: navBarHeight)
         currentWeekLabel.frame = CGRect(x: prevWeekButton.frame.maxX,
                                         y: 0,
                                         width: nextWeekButton.frame.minX - prevWeekButton.frame.maxX,
                                         height: navBarHeight)
 
-        // --- Header (Mon, Tue...)
+        // DaysHeader
         cornerView.frame = CGRect(x: 0, y: navBarHeight,
                                   width: leftColumnWidth,
                                   height: daysHeaderHeight)
@@ -143,7 +150,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
                                       width: totalDaysHeaderWidth,
                                       height: daysHeaderHeight)
 
-        // --- MainScroll + HoursColumn
+        // MainScroll + HoursColumn
         let yMain = navBarHeight + daysHeaderHeight
         mainScrollView.frame = CGRect(x: leftColumnWidth, y: yMain,
                                       width: bounds.width - leftColumnWidth,
@@ -169,9 +176,11 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // --- Ако `Date()` е в [startOfWeek..+7), показваме червеното време
+        // --- Проверка дали текущата дата е в [startOfWeek.. +7 дни)
         let now = Date()
-        let inWeek = (dayIndexIfInCurrentWeek(now) != nil)
+        let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
+
+        // Ако не е в седмицата, не показваме червената линия (hoursColumnView)
         hoursColumnView.isCurrentDayInWeek = inWeek
         hoursColumnView.currentTime = inWeek ? now : nil
     }
@@ -183,16 +192,27 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         }
     }
 
+    // MARK: - Бутоните < и >
     @objc private func didTapPrevWeek() {
-        guard let newDate = Calendar.current.date(byAdding: .day, value: -7, to: startOfWeek) else { return }
-        startOfWeek = newDate
-        onWeekChange?(newDate)
+        var cal = Calendar.current
+        cal.firstWeekday = 2 // Понеделник
+        if let newDate = cal.date(byAdding: .day, value: -7, to: startOfWeek) {
+            // Изрязваме до 00:00
+            let mondayMidnight = newDate.dateOnly(calendar: cal)
+            startOfWeek = mondayMidnight
+            onWeekChange?(mondayMidnight)
+        }
     }
 
     @objc private func didTapNextWeek() {
-        guard let newDate = Calendar.current.date(byAdding: .day, value: 7, to: startOfWeek) else { return }
-        startOfWeek = newDate
-        onWeekChange?(newDate)
+        var cal = Calendar.current
+        cal.firstWeekday = 2 // Понеделник
+        if let newDate = cal.date(byAdding: .day, value: 7, to: startOfWeek) {
+            // Изрязваме до 00:00
+            let mondayMidnight = newDate.dateOnly(calendar: cal)
+            startOfWeek = mondayMidnight
+            onWeekChange?(mondayMidnight)
+        }
     }
 
     private func updateWeekLabel() {
@@ -206,17 +226,17 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         currentWeekLabel.text = "\(startStr) - \(endStr)"
     }
 
-    /// Проверка дали `date` попада в `[startOfWeek ..< startOfWeek+7 дни)`.
-    private func dayIndexIfInCurrentWeek(_ date: Date) -> Int? {
-        let cal = Calendar.current
-        let startOnly = startOfWeek.dateOnly(calendar: cal)
-        let endOfWeek = cal.date(byAdding: .day, value: 7, to: startOnly)!
-        if date >= startOnly && date < endOfWeek {
-            let comps = cal.dateComponents([.day], from: startOnly, to: date)
-            let d = comps.day ?? 0
-            return d
-        } else {
-            return nil
+    // MARK: - Таймер за преизчертаване (по избор)
+    private func startRedrawTimer() {
+        // Пример: на всеки 60 секунди
+        redrawTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            // Подбутваме layoutSubviews() -> опреснява червената линия
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+
+            // И също преизчертаваме централната зона, за да се "мести" линията
+            self.weekView.setNeedsDisplay()
         }
     }
 }
