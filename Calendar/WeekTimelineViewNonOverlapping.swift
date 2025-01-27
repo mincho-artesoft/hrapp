@@ -3,7 +3,8 @@
 //  ExampleCalendarApp
 //
 //  Седмичен не-застъпващ се изглед + all-day зона.
-//  При тап върху събитие вика onEventTap(descriptor).
+//  - При тап върху събитие: onEventTap(descriptor)
+//  - При дълго задържане в празно място: onEmptyLongPress(date)
 //
 
 import UIKit
@@ -20,10 +21,13 @@ public final class WeekTimelineViewNonOverlapping: UIView {
     public var allDayHeight: CGFloat = 40
     public var autoResizeAllDayHeight = true
     
-    /// Callback, извиква се при натискане върху събитие
+    // Callback при тап върху съществуващо събитие
     public var onEventTap: ((EventDescriptor) -> Void)?
     
-    // Layout attributes за all-day и "редовни" събития
+    // **Нов** callback при long press върху празно място
+    public var onEmptyLongPress: ((Date) -> Void)?
+    
+    // Layout attributes
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
         didSet { setNeedsLayout() }
     }
@@ -31,20 +35,20 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         didSet { setNeedsLayout() }
     }
     
-    // Помощни вюта
     private let allDayBackground = UIView()
     private let allDayLabel = UILabel()
     
     private var allDayEventViews: [EventView] = []
     private var eventViews: [EventView] = []
     
-    // Картировка между EventView и EventDescriptor
     private var eventViewToDescriptor: [EventView : EventDescriptor] = [:]
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        
         backgroundColor = style.backgroundColor
         
+        // Зона "all-day"
         allDayBackground.backgroundColor = .systemGray5
         addSubview(allDayBackground)
         
@@ -52,16 +56,24 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         allDayLabel.font = UIFont.systemFont(ofSize: 14)
         allDayLabel.textColor = .black
         addSubview(allDayLabel)
+        
+        // Дълго задържане за създаване на ново събитие
+        let longPressGR = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(handleLongPress(_:))
+        )
+        longPressGR.minimumPressDuration = 0.7
+        addGestureRecognizer(longPressGR)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Скрииваме всичко (рециклиране)
+        // Скриваме старите (рециклираме)
         for v in allDayEventViews { v.isHidden = true }
         for v in eventViews       { v.isHidden = true }
         
@@ -98,7 +110,8 @@ public final class WeekTimelineViewNonOverlapping: UIView {
     
     private func layoutAllDayLabel() {
         let labelWidth = leadingInsetForHours
-        allDayLabel.frame = CGRect(x: 0, y: 0, width: labelWidth, height: allDayHeight)
+        allDayLabel.frame = CGRect(x: 0, y: 0,
+                                   width: labelWidth, height: allDayHeight)
     }
     
     private func layoutAllDayEvents() {
@@ -141,7 +154,6 @@ public final class WeekTimelineViewNonOverlapping: UIView {
             guard let eventsForDay = groupedByDay[dayIndex],
                   !eventsForDay.isEmpty else { continue }
             
-            // Сортираме по начален час
             let sorted = eventsForDay.sorted {
                 $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start
             }
@@ -234,7 +246,6 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         }
     }
     
-    // MARK: - Рисуване
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
@@ -242,7 +253,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         let totalWidth = leadingInsetForHours + dayColumnWidth*7
         let normalZoneTop = allDayHeight
         
-        // (1) Хоризонтални линии (0..24)
+        // Хоризонтални линии (0..24)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
@@ -255,15 +266,13 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
         
-        // (2) Вертикални линии
+        // Вертикални линии
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
-        // Линия при leadingInsetForHours
         ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
         ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
-        
         for i in 0...7 {
             let colX = leadingInsetForHours + CGFloat(i)*dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
@@ -272,7 +281,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
         
-        // (3) Червена линия (ако днешният ден е в седмицата)
+        // Червена линия (ако днешният ден е в седмицата)
         drawCurrentTimeLineForCurrentDay(ctx: ctx)
     }
     
@@ -292,7 +301,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         let currentDayX  = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
         let currentDayX2 = currentDayX + dayColumnWidth
         
-        // Ляв полупрозрачен сегмент
+        // Ляв полупрозрачен
         if currentDayX > totalLeftX {
             ctx.saveGState()
             ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
@@ -314,7 +323,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
         
-        // Десен полупрозрачен сегмент
+        // Десен полупрозрачен
         if currentDayX2 < totalRightX {
             ctx.saveGState()
             ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
@@ -327,7 +336,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         }
     }
     
-    // MARK: - Помощни методи
+    // Помощни
     private func dateToY(_ date: Date) -> CGFloat {
         let cal = Calendar.current
         let hour = CGFloat(cal.component(.hour, from: date))
@@ -360,7 +369,6 @@ public final class WeekTimelineViewNonOverlapping: UIView {
             return allDayEventViews[index]
         } else {
             let v = EventView()
-            // Tap Gesture
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
             v.addGestureRecognizer(tapGR)
             v.isUserInteractionEnabled = true
@@ -376,7 +384,6 @@ public final class WeekTimelineViewNonOverlapping: UIView {
             return eventViews[index]
         } else {
             let v = EventView()
-            // Tap Gesture
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
             v.addGestureRecognizer(tapGR)
             v.isUserInteractionEnabled = true
@@ -393,5 +400,58 @@ public final class WeekTimelineViewNonOverlapping: UIView {
             return
         }
         onEventTap?(descriptor)
+    }
+    
+    // MARK: - Long Press
+    @objc private func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else { return }
+
+        let point = gesture.location(in: self)
+        
+        // Ако попада върху eventView -> не създаваме ново
+        for evView in (allDayEventViews + eventViews) {
+            if !evView.isHidden && evView.frame.contains(point) {
+                return
+            }
+        }
+        
+        // Ако е празно:
+        if let tappedDate = dateFromPoint(point) {
+            onEmptyLongPress?(tappedDate)
+        }
+    }
+
+    private func dateFromPoint(_ point: CGPoint) -> Date? {
+        let x = point.x
+        let y = point.y
+
+        // Вляво от колоната с часове
+        if x < leadingInsetForHours { return nil }
+
+        // В all-day зоната
+        if y < allDayHeight {
+            return nil
+        }
+
+        let dayIndex = Int((x - leadingInsetForHours) / dayColumnWidth)
+        if dayIndex < 0 || dayIndex > 6 { return nil }
+
+        let cal = Calendar.current
+        guard let dayDate = cal.date(byAdding: .day, value: dayIndex, to: startOfWeek) else {
+            return nil
+        }
+
+        let yOffset = y - allDayHeight
+        if yOffset < 0 { return dayDate }
+
+        let hours = floor(yOffset / hourHeight)
+        let minuteFraction = (yOffset / hourHeight) - hours
+        let minutes = minuteFraction * 60
+
+        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
+        comps.hour = Int(hours)
+        comps.minute = Int(minutes)
+
+        return cal.date(from: comps)
     }
 }

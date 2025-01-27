@@ -17,15 +17,14 @@ import CalendarKit
 struct RootView: View {
     @State private var selectedTab = 0
 
-    // Нашият споделен EKEventStore и ViewModel
-    let eventStore = EKEventStore()
+    /// Един-единствен `EKEventStore`, който се ползва навсякъде
     @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
 
-    // MARK: - Нови свойства за "Седмица+Часове"
+    // Свойства за седмичния изглед
     @State private var pinnedStartOfWeek: Date = Date()
     @State private var pinnedEvents: [EventDescriptor] = []
 
-    // Таймер, който „тиква“ на всяка минута -> рефреш
+    // Таймер (рефреш всяка минута)
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -56,13 +55,15 @@ struct RootView: View {
                     YearCalendarView(viewModel: calendarVM)
 
                 case 3:
-                    // „Закована“ седмица с часове и червена линия
+                    // Седмичен изглед (TwoWayPinnedWeekWrapper)
                     TwoWayPinnedWeekWrapper(
                         startOfWeek: $pinnedStartOfWeek,
-                        events: $pinnedEvents
+                        events: $pinnedEvents,
+                        // ВАЖНО: подаваме един и същи EventStore на седмичния изглед
+                        eventStore: calendarVM.eventStore
                     )
-                    // При показване на този таб: зареждаме събития [pinnedStartOfWeek..+7дни]
                     .onAppear {
+                        // При показване -> зареждаме събития за седмицата
                         loadPinnedWeekEvents()
                     }
                     // На всяка минута -> рефреш
@@ -77,7 +78,7 @@ struct RootView: View {
             .navigationTitle("Calendar Demo")
         }
         .onAppear {
-            // При първо показване искаме достъп до календара
+            // При първо показване: искаме разрешение за календара и зареждаме годишни събития
             calendarVM.requestCalendarAccessIfNeeded {
                 let currentYear = Calendar.current.component(.year, from: Date())
                 calendarVM.loadEventsForWholeYear(year: currentYear)
@@ -101,7 +102,11 @@ struct RootView: View {
     func loadPinnedWeekEvents() {
         let cal = Calendar.current
         let end = cal.date(byAdding: .day, value: 7, to: pinnedStartOfWeek)!
-        let predicate = calendarVM.eventStore.predicateForEvents(withStart: pinnedStartOfWeek, end: end, calendars: nil)
+        let predicate = calendarVM.eventStore.predicateForEvents(
+            withStart: pinnedStartOfWeek,
+            end: end,
+            calendars: nil
+        )
         let found = calendarVM.eventStore.events(matching: predicate)
         let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
         pinnedEvents = wrappers

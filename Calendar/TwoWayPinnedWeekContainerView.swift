@@ -2,9 +2,13 @@
 //  TwoWayPinnedWeekContainerView.swift
 //  ExampleCalendarApp
 //
-//  UIView, който държи бутони < >, DaysHeaderView, HoursColumnView и WeekTimelineViewNonOverlapping.
-//  При смяна на седмицата вика onWeekChange, при тап върху евент -> onEventTap.
+//  UIView, държащ:
+//   - навигационен бар < > и седмичен текст
+//   - DaysHeaderView (имената на дните горе)
+//   - HoursColumnView (челове вляво)
+//   - WeekTimelineViewNonOverlapping (същинския седмичен график)
 //
+
 import UIKit
 import CalendarKit
 
@@ -38,6 +42,9 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             weekView.onEventTap = onEventTap
         }
     }
+
+    /// Callback при Long Press върху празно място
+    public var onEmptyLongPress: ((Date) -> Void)? = nil
 
     public var startOfWeek: Date = Date() {
         didSet {
@@ -116,6 +123,11 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         weekView.autoResizeAllDayHeight = true
 
         hoursColumnView.hourHeight = 50
+
+        // Свързваме long press от weekView
+        weekView.onEmptyLongPress = { [weak self] tappedDate in
+            self?.onEmptyLongPress?(tappedDate)
+        }
     }
 
     public override func layoutSubviews() {

@@ -2,10 +2,11 @@
 //  TwoWayPinnedWeekWrapper.swift
 //  ExampleCalendarApp
 //
-//  SwiftUI обвивка (UIViewControllerRepresentable) за TwoWayPinnedWeekContainerView.
-//  Тук обработваме onEventTap, отваряме EKEventEditViewController, и след Done/Cancel
-//  презареждаме събитията, за да се видят редактираните веднага.
+//  SwiftUI обвивка за TwoWayPinnedWeekContainerView.
+//  - При тап на събитие -> отваряме EKEventEditViewController (в същия store)
+//  - При long press на празно -> извикваме onEmptyLongPress?(date)
 //
+
 import SwiftUI
 import CalendarKit
 import EventKit
@@ -16,12 +17,22 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     @Binding var startOfWeek: Date
     @Binding var events: [EventDescriptor]
 
-    /// Вътрешен eventStore (или може да ползвате глобален)
-    let localEventStore = EKEventStore()
+    // Подаваме отвън единствения EKEventStore, за да няма конфликт
+    let eventStore: EKEventStore
 
-    public init(startOfWeek: Binding<Date>, events: Binding<[EventDescriptor]>) {
+    /// Callback при дълго задържане върху празно място
+    public var onEmptyLongPress: ((Date) -> Void)? = nil
+
+    public init(
+        startOfWeek: Binding<Date>,
+        events: Binding<[EventDescriptor]>,
+        eventStore: EKEventStore,
+        onEmptyLongPress: ((Date) -> Void)? = nil
+    ) {
         self._startOfWeek = startOfWeek
         self._events = events
+        self.eventStore = eventStore
+        self.onEmptyLongPress = onEmptyLongPress
     }
 
     public func makeUIViewController(context: Context) -> UIViewController {
@@ -30,25 +41,22 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         let container = TwoWayPinnedWeekContainerView()
         container.startOfWeek = startOfWeek
 
-        // Първоначално подаваме събитията
+        // Първоначално "рисуваме" събитията
         let (allDay, regular) = splitAllDay(events)
         container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
 
-        // При смяна на седмица (< или >)
+        // При смяна на седмица
         container.onWeekChange = { newStartDate in
             self.startOfWeek = newStartDate
 
-            // Примерно - fetch от localEventStore
+            // Презареждаме от eventStore (примерен код)
             let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: newStartDate)!
-            let predicate = self.localEventStore.predicateForEvents(
-                withStart: newStartDate,
-                end: endOfWeek,
-                calendars: nil
-            )
-            let found = self.localEventStore.events(matching: predicate)
+            let predicate = self.eventStore.predicateForEvents(withStart: newStartDate,
+                                                               end: endOfWeek,
+                                                               calendars: nil)
+            let found = self.eventStore.events(matching: predicate)
             let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
-
             self.events = wrappers
 
             let (ad, reg) = self.splitAllDay(wrappers)
@@ -59,17 +67,23 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             container.layoutIfNeeded()
         }
 
-        // При тап върху евент
+        // При тап върху събитие
         container.onEventTap = { [weak vc] descriptor in
             guard let vc = vc else { return }
-            // Ако е EKWrapper -> имаме EKEvent
+
             if let ekWrapper = descriptor as? EKWrapper {
                 let editVC = EKEventEditViewController()
-                editVC.eventStore = self.localEventStore
+                // Същият store, от който е взето събитието
+                editVC.eventStore = self.eventStore
                 editVC.event = ekWrapper.ekEvent
                 editVC.editViewDelegate = context.coordinator
                 vc.present(editVC, animated: true)
             }
+        }
+
+        // При long press на празно
+        container.onEmptyLongPress = { date in
+            onEmptyLongPress?(date)
         }
 
         vc.view.addSubview(container)
@@ -89,7 +103,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             .first(where: { $0 is TwoWayPinnedWeekContainerView }) as? TwoWayPinnedWeekContainerView
         else { return }
 
-        // Обновяваме startOfWeek + събития
+        // Обновяваме startOfWeek и събития
         container.startOfWeek = startOfWeek
 
         let (allDay, regular) = splitAllDay(events)
@@ -100,7 +114,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         container.layoutIfNeeded()
     }
 
-    // MARK: - EKEventEditViewDelegate чрез Coordinator
     public func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -114,21 +127,20 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
         public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction) {
-            // Затваряме контролера
+            // Затваряме editor-а
             controller.dismiss(animated: true) {
-                // Тук презареждаме събитията:
+                // Презареждаме събития, за да отразим евентуални промени
                 let start = self.parent.startOfWeek
                 let end = Calendar.current.date(byAdding: .day, value: 7, to: start)!
 
-                let predicate = self.parent.localEventStore.predicateForEvents(
+                let predicate = self.parent.eventStore.predicateForEvents(
                     withStart: start,
                     end: end,
                     calendars: nil
                 )
-                let found = self.parent.localEventStore.events(matching: predicate)
+                let found = self.parent.eventStore.events(matching: predicate)
                 let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
 
-                // Записваме в @Binding var events
                 self.parent.events = wrappers
             }
         }
