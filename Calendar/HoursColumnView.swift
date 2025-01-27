@@ -1,14 +1,6 @@
-//
-//  HoursColumnView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 27/1/25.
-//
-
-
 import UIKit
 
-/// Лява колона (часове) от 0..24. Ако `isCurrentDayInWeek=false`, не рисува червено време.
+/// Лява колона (часове: 0..24). Ако isCurrentDayInWeek=false => не показва червения час.
 public final class HoursColumnView: UIView {
 
     public var hourHeight: CGFloat = 50
@@ -22,7 +14,6 @@ public final class HoursColumnView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
     }
-
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         backgroundColor = .white
@@ -35,65 +26,65 @@ public final class HoursColumnView: UIView {
         let cal = Calendar.current
         let baseDate = cal.startOfDay(for: Date())
 
-        // Стил за черни часове
+        // Стил за черните часове
         let blackAttrs: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.label,
             .font: font
         ]
 
-        // (1) Ако isCurrentDayInWeek=true => вадим позиция за "червен час"
+        // (1) Ако `isCurrentDayInWeek` и `currentTime` != nil => подготвяме "червен" час
         var currentTimeRect: CGRect? = nil
         if isCurrentDayInWeek, let now = currentTime {
             let hour = CGFloat(cal.component(.hour, from: now))
             let minute = CGFloat(cal.component(.minute, from: now))
             let fraction = hour + minute/60.0
-            let yNow = topOffset + fraction*hourHeight
+            let yNow = topOffset + fraction * hourHeight
 
-            let timeFormatter = DateFormatter()
-            timeFormatter.timeStyle = .short
-            let nowString = timeFormatter.string(from: now)
+            let fmt = DateFormatter()
+            fmt.timeStyle = .short
+            let nowStr = fmt.string(from: now)
 
             let redAttrs: [NSAttributedString.Key: Any] = [
                 .foregroundColor: UIColor.systemRed,
                 .font: UIFont.systemFont(ofSize: 12, weight: .semibold)
             ]
-            let size = nowString.size(withAttributes: redAttrs)
+            let size = nowStr.size(withAttributes: redAttrs)
             let textX: CGFloat = 8
             let textY: CGFloat = yNow - size.height/2
-            currentTimeRect = CGRect(x: textX, y: textY, width: size.width, height: size.height)
+            currentTimeRect = CGRect(x: textX, y: textY,
+                                     width: size.width, height: size.height)
         }
 
-        // (2) Рисуваме 0..24 часа в черно, пропускаме ако се застъпват с червения
+        // (2) Рисуваме 0..24 часа в черно
         for hour in 0...24 {
             let y = topOffset + CGFloat(hour)*hourHeight
             let date = cal.date(byAdding: .hour, value: hour, to: baseDate)!
             let df = DateFormatter()
-            df.dateFormat = "h:00 a"
+            df.dateFormat = "h:00 a" // "1:00 PM"
 
             let text = df.string(from: date)
             let size = text.size(withAttributes: blackAttrs)
             let textRect = CGRect(x: 8, y: y - size.height/2,
                                   width: size.width, height: size.height)
 
+            // Ако се застъпва с червеното => пропускаме
             if let cRect = currentTimeRect, textRect.intersects(cRect) {
-                // Ако се засича, пропускаме
                 continue
             }
-
             text.draw(in: textRect, withAttributes: blackAttrs)
         }
 
-        // (3) Накрая рисуваме червения час (ако inWeek=true)
-        if isCurrentDayInWeek, let now = currentTime, let cRect = currentTimeRect {
-            let timeFormatter = DateFormatter()
-            timeFormatter.timeStyle = .short
-            let nowString = timeFormatter.string(from: now)
+        // (3) Рисуваме червения час (ако isCurrentDayInWeek)
+        if isCurrentDayInWeek, let cRect = currentTimeRect {
+            let fmt = DateFormatter()
+            fmt.timeStyle = .short
+            let nowStr = fmt.string(from: currentTime!)
 
             let redAttrs: [NSAttributedString.Key: Any] = [
                 .foregroundColor: UIColor.systemRed,
                 .font: UIFont.systemFont(ofSize: 12, weight: .semibold)
             ]
-            nowString.draw(in: cRect, withAttributes: redAttrs)
+            nowStr.draw(in: cRect, withAttributes: redAttrs)
         }
     }
 }

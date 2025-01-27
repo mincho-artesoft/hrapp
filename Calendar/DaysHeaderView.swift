@@ -1,15 +1,7 @@
-//
-//  DaysHeaderView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 27/1/25.
-//
-
-
 import UIKit
 import CalendarKit
 
-/// Горна лента с 7 label-а (Mon 1, Tue 2…), за дните от startOfWeek.
+/// Горна лента (Mon 20 Jan, Tue 21 Jan...) за 7 дни, тръгващи от `startOfWeek`.
 public final class DaysHeaderView: UIView {
 
     public var dayColumnWidth: CGFloat = 100
@@ -25,7 +17,6 @@ public final class DaysHeaderView: UIView {
         super.init(frame: frame)
         configureLabels()
     }
-
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureLabels()
@@ -55,14 +46,14 @@ public final class DaysHeaderView: UIView {
         let df = DateFormatter()
         df.dateFormat = "EEE, d MMM"
 
-        let today = cal.startOfDay(for: Date())
+        let todayStart = cal.startOfDay(for: Date())
 
         for (i, lbl) in labels.enumerated() {
             if let dayDate = cal.date(byAdding: .day, value: i, to: startOfWeek) {
                 lbl.text = df.string(from: dayDate)
-
+                // Ако е днес -> оцветяваме в оранжево
                 let dayOnly = cal.startOfDay(for: dayDate)
-                if dayOnly == today {
+                if dayOnly == todayStart {
                     lbl.textColor = .systemOrange
                 } else {
                     lbl.textColor = .label

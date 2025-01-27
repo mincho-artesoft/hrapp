@@ -1,14 +1,6 @@
-//
-//  TimelineStyle.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 27/1/25.
-//
-
-
 import UIKit
 
-/// Стил за WeekTimelineView
+/// Стил (цветове, gap...) за WeekTimelineViewNonOverlapping
 public struct TimelineStyle {
     public var backgroundColor = UIColor.white
     public var separatorColor = UIColor.lightGray
@@ -16,5 +8,6 @@ public struct TimelineStyle {
     public var font = UIFont.boldSystemFont(ofSize: 12)
     public var verticalInset: CGFloat = 2
     public var eventGap: CGFloat = 2
+
     public init() {}
 }

@@ -1,46 +1,42 @@
-//
-//  TwoWayPinnedWeekContainerView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 27/1/25.
-//
-
-
 import UIKit
 import CalendarKit
 
-/// UIKit контейнер за:
-///  - navBar (с бутони < >, заглавие)
-///  - DaysHeaderView (Mon, Tue...)
-///  - HoursColumnView (0..24h)
-///  - WeekTimelineViewNonOverlapping (реално чертае евентите)
+/// Контейнер (UIKit) със:
+///  - navBar + бутони < и > + надпис (диапазон на седмицата)
+///  - горен DaysHeaderView (Mon, Tue...)
+///  - лява HoursColumnView (часове)
+///  - централна 2D scroll зона (WeekTimelineViewNonOverlapping)
 ///
-/// При натискане на < / > вика onWeekChange(newDate).
+/// При смяна на седмицата (< / >) вика callback `onWeekChange(newDate)`.
 public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     private let navBarHeight: CGFloat = 40
     private let daysHeaderHeight: CGFloat = 40
     private let leftColumnWidth: CGFloat = 70
 
+    // Горна лента
     private let navBar = UIView()
     private let prevWeekButton = UIButton(type: .system)
     private let nextWeekButton = UIButton(type: .system)
     private let currentWeekLabel = UILabel()
 
+    // Days Header
     private let cornerView = UIView()
     private let daysHeaderScrollView = UIScrollView()
     private let daysHeaderView = DaysHeaderView()
 
+    // Лява колона (часове)
     private let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
 
+    // Основен 2D скрол
     private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
-    /// Callback при смяна на седмицата
+    /// Callback, вика се при натискане < или >.
     public var onWeekChange: ((Date) -> Void)? = nil
 
-    /// Начална дата на седмицата
+    /// Начална дата на седмицата (обикновено понеделник 00:00)
     public var startOfWeek: Date = Date() {
         didSet {
             daysHeaderView.startOfWeek = startOfWeek
@@ -56,7 +52,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         super.init(frame: frame)
         setupViews()
     }
-
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
@@ -65,7 +60,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // (1) НавБар
+        // (1) NavBar
         navBar.backgroundColor = .secondarySystemBackground
         addSubview(navBar)
 
@@ -84,7 +79,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         // (2) DaysHeader
         cornerView.backgroundColor = .secondarySystemBackground
         addSubview(cornerView)
-
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
         daysHeaderScrollView.isScrollEnabled = false
         daysHeaderScrollView.addSubview(daysHeaderView)
@@ -96,7 +90,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         hoursColumnScrollView.addSubview(hoursColumnView)
         addSubview(hoursColumnScrollView)
 
-        // (4) MainScrollView
+        // (4) MainScrollView (2D)
         mainScrollView.delegate = self
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
@@ -119,7 +113,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // --- navBar
+        // --- НавБар
         navBar.frame = CGRect(x: 0, y: 0,
                               width: bounds.width,
                               height: navBarHeight)
@@ -135,11 +129,10 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
                                         width: nextWeekButton.frame.minX - prevWeekButton.frame.maxX,
                                         height: navBarHeight)
 
-        // --- Header (дните)
+        // --- Header (Mon, Tue...)
         cornerView.frame = CGRect(x: 0, y: navBarHeight,
                                   width: leftColumnWidth,
                                   height: daysHeaderHeight)
-
         daysHeaderScrollView.frame = CGRect(x: leftColumnWidth, y: navBarHeight,
                                             width: bounds.width - leftColumnWidth,
                                             height: daysHeaderHeight)
@@ -176,7 +169,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // --- Ако `now` е в седмицата => рисуваме червена линия
+        // --- Ако `Date()` е в [startOfWeek..+7), показваме червеното време
         let now = Date()
         let inWeek = (dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
@@ -191,14 +184,12 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     }
 
     @objc private func didTapPrevWeek() {
-        // При -7 дни
         guard let newDate = Calendar.current.date(byAdding: .day, value: -7, to: startOfWeek) else { return }
         startOfWeek = newDate
         onWeekChange?(newDate)
     }
 
     @objc private func didTapNextWeek() {
-        // При +7 дни
         guard let newDate = Calendar.current.date(byAdding: .day, value: 7, to: startOfWeek) else { return }
         startOfWeek = newDate
         onWeekChange?(newDate)
@@ -215,22 +206,17 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         currentWeekLabel.text = "\(startStr) - \(endStr)"
     }
 
-    /// Връща индекс [0..6], ако `date` е в `[startOfWeek..<(startOfWeek+7)]`, иначе nil.
+    /// Проверка дали `date` попада в `[startOfWeek ..< startOfWeek+7 дни)`.
     private func dayIndexIfInCurrentWeek(_ date: Date) -> Int? {
         let cal = Calendar.current
         let startOnly = startOfWeek.dateOnly(calendar: cal)
         let endOfWeek = cal.date(byAdding: .day, value: 7, to: startOnly)!
 
-        // DEBUG print
-        print("DEBUG(TwoWayPinnedWeekContainerView): now=\(date), startOnly=\(startOnly), endOfWeek=\(endOfWeek)")
-
         if date >= startOnly && date < endOfWeek {
             let comps = cal.dateComponents([.day], from: startOnly, to: date)
             let d = comps.day ?? 0
-            print(" -> dayIndex=\(d) => Днес е в седмицата!")
             return d
         } else {
-            print(" -> outside this week => Днес не е в седмицата!")
             return nil
         }
     }
