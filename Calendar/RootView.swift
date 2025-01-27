@@ -5,13 +5,16 @@ import CalendarKit
 struct RootView: View {
     @State private var selectedTab = 0
 
-    // Вашият съществуващ eventStore и ViewModel
+    // Нашият съществуващ eventStore и ViewModel
     let eventStore = EKEventStore()
     @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
 
     // MARK: - Нови свойства за "Седмица+Часове"
     @State private var pinnedStartOfWeek: Date = Date()
     @State private var pinnedEvents: [EventDescriptor] = []
+
+    // Добавяме таймер, който „тиква“ на всяка минута
+    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationView {
@@ -29,15 +32,15 @@ struct RootView: View {
                 // Показваме конкретния изглед според селекцията
                 switch selectedTab {
                 case 0:
-                    // Месечен изглед
+                    // Месечен изглед (примерен)
                     MonthCalendarView(viewModel: calendarVM, startMonth: Date())
 
                 case 1:
-                    // Дневен изглед
+                    // Дневен изглед (примерен)
                     DayCalendarWrapperView(eventStore: calendarVM.eventStore)
 
                 case 2:
-                    // Годишен изглед
+                    // Годишен изглед (примерен)
                     YearCalendarView(viewModel: calendarVM)
 
                 case 3:
@@ -46,8 +49,17 @@ struct RootView: View {
                         startOfWeek: $pinnedStartOfWeek,
                         events: $pinnedEvents
                     )
-                    // Когато се появи този таб, презареждаме събитията
+                    // Когато се появи този таб, зареждаме събитията
                     .onAppear {
+                        loadPinnedWeekEvents()
+                    }
+                    // На всяка минута ще се изпълнява този onReceive => SwiftUI ще ре-рендва,
+                    // което води до updateUIViewController(...) в TwoWayPinnedWeekWrapper,
+                    // и там се вика setNeedsLayout() за да се опресни червената линия.
+                    .onReceive(timer) { _ in
+                        // "Побутване" - може просто да смените нещо дребно,
+                        // или да презаредите отново списъка със събития
+                        // За пример, просто презареждаме събитията:
                         loadPinnedWeekEvents()
                     }
 

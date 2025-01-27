@@ -1,5 +1,4 @@
 import UIKit
-import CalendarKit
 
 /// Горна лента (Mon 20 Jan, Tue 21 Jan...) за 7 дни, тръгващи от `startOfWeek`.
 public final class DaysHeaderView: UIView {
@@ -42,7 +41,10 @@ public final class DaysHeaderView: UIView {
     }
 
     private func updateTexts() {
-        let cal = Calendar.current
+        // Use a consistent Monday-based calendar:
+        var cal = Calendar(identifier: .gregorian)
+        cal.firstWeekday = 2 // 2 = Monday start
+
         let df = DateFormatter()
         df.dateFormat = "EEE, d MMM"
 

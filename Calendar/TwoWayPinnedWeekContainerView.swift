@@ -211,7 +211,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         let cal = Calendar.current
         let startOnly = startOfWeek.dateOnly(calendar: cal)
         let endOfWeek = cal.date(byAdding: .day, value: 7, to: startOnly)!
-
         if date >= startOnly && date < endOfWeek {
             let comps = cal.dateComponents([.day], from: startOnly, to: date)
             let d = comps.day ?? 0

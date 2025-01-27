@@ -23,7 +23,9 @@ public final class HoursColumnView: UIView {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
-        let cal = Calendar.current
+        var cal = Calendar(identifier: .gregorian)
+        cal.firstWeekday = 2
+
         let baseDate = cal.startOfDay(for: Date())
 
         // Стил за черните часове
@@ -58,9 +60,10 @@ public final class HoursColumnView: UIView {
         // (2) Рисуваме 0..24 часа в черно
         for hour in 0...24 {
             let y = topOffset + CGFloat(hour)*hourHeight
-            let date = cal.date(byAdding: .hour, value: hour, to: baseDate)!
+            guard let date = cal.date(byAdding: .hour, value: hour, to: baseDate) else { continue }
+
             let df = DateFormatter()
-            df.dateFormat = "h:00 a" // "1:00 PM"
+            df.dateFormat = "h:00 a"
 
             let text = df.string(from: date)
             let size = text.size(withAttributes: blackAttrs)
@@ -75,10 +78,10 @@ public final class HoursColumnView: UIView {
         }
 
         // (3) Рисуваме червения час (ако isCurrentDayInWeek)
-        if isCurrentDayInWeek, let cRect = currentTimeRect {
+        if isCurrentDayInWeek, let cRect = currentTimeRect, let now = currentTime {
             let fmt = DateFormatter()
             fmt.timeStyle = .short
-            let nowStr = fmt.string(from: currentTime!)
+            let nowStr = fmt.string(from: now)
 
             let redAttrs: [NSAttributedString.Key: Any] = [
                 .foregroundColor: UIColor.systemRed,

@@ -1,6 +1,5 @@
 import UIKit
 
-/// Стил (цветове, gap...) за WeekTimelineViewNonOverlapping
 public struct TimelineStyle {
     public var backgroundColor = UIColor.white
     public var separatorColor = UIColor.lightGray

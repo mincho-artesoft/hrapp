@@ -6,15 +6,12 @@ import EventKit
 /// Подаваме:
 ///  - @Binding var startOfWeek: Date
 ///  - @Binding var events: [EventDescriptor]
-///
-/// Когато потребителят натисне < или >, `TwoWayPinnedWeekContainerView` вика onWeekChange(...),
-/// тук fetch-ваме нови евенти (по желание) и ги връщаме към SwiftUI.
 public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     @Binding var startOfWeek: Date
     @Binding var events: [EventDescriptor]
 
-    /// Може да ползвате глобален EKEventStore. Тук за пример създавам локален:
+    /// Може да ползвате глобален EKEventStore.
     let localEventStore = EKEventStore()
 
     public init(startOfWeek: Binding<Date>, events: Binding<[EventDescriptor]>) {
@@ -106,4 +103,3 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         return (allDay, regular)
     }
 }
-
