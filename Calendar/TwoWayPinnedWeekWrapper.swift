@@ -1,27 +1,18 @@
-//
-//  TwoWayPinnedWeekWrapper.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 27/1/25.
-//
-
-
 import SwiftUI
 import CalendarKit
 import EventKit
 
-/// Обвивка, която създава TwoWayPinnedWeekContainerView (UIKit)
-/// и позволява лесно да му подадем:
-///   - startOfWeek (Binding<Date>)
-///   - масив от EventDescriptor
-/// Когато потребителят натисне бутон < или >, вика onWeekChange и ние можем да реагираме.
+/// SwiftUI обвивка, която създава TwoWayPinnedWeekContainerView (UIKit).
+/// Подаваме `startOfWeek` ( Binding<Date> ), и `events` ( Binding<[EventDescriptor]> ).
+/// При натискане на < / >: TwoWayPinnedWeekContainerView вика onWeekChange,
+/// тук fetch-ваме нови евенти и ги връщаме към SwiftUI (self.events).
 public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
-    // Параметри, които идват отвън:
     @Binding var startOfWeek: Date
     @Binding var events: [EventDescriptor]
 
-    // Може да имате и eventStore тук, ако искате директно да fetch-вате
+    /// Може да ползвате глобален EKEventStore,
+    /// тук за пример създавам локален:
     let localEventStore = EKEventStore()
 
     public init(startOfWeek: Binding<Date>, events: Binding<[EventDescriptor]>) {
@@ -30,41 +21,46 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     }
 
     public func makeUIViewController(context: Context) -> UIViewController {
+        // (1) Правим празен UIViewController
         let vc = UIViewController()
 
-        // 1) Създаваме TwoWayPinnedWeekContainerView
+        // (2) Създаваме TwoWayPinnedWeekContainerView
         let container = TwoWayPinnedWeekContainerView()
         container.startOfWeek = startOfWeek
 
-        // 2) Задаваме начални събития (разделяме на all-day / редовни)
+        // (3) Първоначално задаваме събитията
         let (allDay, regular) = splitAllDay(events)
         container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
 
-        // 3) Когато сменим седмицата от бутоните < / >:
+        // (4) Когато натискаме < или >:
         container.onWeekChange = { newStartDate in
-            // (а) сменяме @Binding startOfWeek -> ъпдейт в SwiftUI
+            // (а) Ъпдейтваме SwiftUI
             self.startOfWeek = newStartDate
 
-            // (б) Тук можете директно да fetch-нете нови събития, ако желаете:
-            //     Например:
-            /*
+            // (б) Fetch от localEventStore за [newStartDate..+7 дни]
             let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: newStartDate)!
-            let predicate = self.localEventStore.predicateForEvents(withStart: newStartDate, end: endOfWeek, calendars: nil)
+            let predicate = self.localEventStore.predicateForEvents(withStart: newStartDate,
+                                                                    end: endOfWeek,
+                                                                    calendars: nil)
             let found = self.localEventStore.events(matching: predicate)
+
+            // Превръщаме EKEvent -> EKWrapper (което е EventDescriptor)
             let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
-            // (в) Обновяваме @Binding events (ако трябва да го пазим в SwiftUI)
+
+            // (в) Показваме ги на SwiftUI
             self.events = wrappers
-            // (г) Слагаме ги във view-то
-            let (ad, reg) = splitAllDay(wrappers)
+
+            // (г) Обновяваме седмичния изглед
+            let (ad, reg) = self.splitAllDay(wrappers)
             container.weekView.allDayLayoutAttributes  = ad.map { EventLayoutAttributes($0) }
             container.weekView.regularLayoutAttributes = reg.map { EventLayoutAttributes($0) }
+
             container.setNeedsLayout()
             container.layoutIfNeeded()
-            */
         }
 
-        // Слагаме го във VC
+        // (5) Добавяме container във vc
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -78,7 +74,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     }
 
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // Ако SwiftUI смени startOfWeek или events, рефрешваме
+        // Когато SwiftUI смени startOfWeek / events
         guard let container = uiViewController.view.subviews
             .first(where: { $0 is TwoWayPinnedWeekContainerView }) as? TwoWayPinnedWeekContainerView
         else { return }
@@ -86,7 +82,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         // (1) Обновяваме startOfWeek
         container.startOfWeek = startOfWeek
 
-        // (2) Обновяваме списъка със събития
+        // (2) Обновяваме events
         let (allDay, regular) = splitAllDay(events)
         container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
@@ -95,7 +91,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         container.layoutIfNeeded()
     }
 
-    // Разделя евентите на allDay / редовни
+    /// Помощна функция: разделя евентите на allDay и редовни
     private func splitAllDay(_ evts: [EventDescriptor]) -> ([EventDescriptor], [EventDescriptor]) {
         var allDay = [EventDescriptor]()
         var regular = [EventDescriptor]()

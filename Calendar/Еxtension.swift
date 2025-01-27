@@ -73,18 +73,15 @@ extension EKEventStore {
 }
 
 // MARK: - Помощни разширения (без промени)
-extension Date {
-    func dateOnly(calendar: Calendar) -> Date {
-        let yearComponent = calendar.component(.year, from: self)
-        let monthComponent = calendar.component(.month, from: self)
-        let dayComponent = calendar.component(.day, from: self)
-        let zone = calendar.timeZone
+import Foundation
 
-        let newComponents = DateComponents(timeZone: zone,
-                                           year: yearComponent,
-                                           month: monthComponent,
-                                           day: dayComponent)
-        let returnValue = calendar.date(from: newComponents)
-        return returnValue!
+extension Date {
+    /// "Изрязва" часовете, минутите и секундите, за да стане само дата (00:00).
+    func dateOnly(calendar: Calendar) -> Date {
+        let year = calendar.component(.year, from: self)
+        let month = calendar.component(.month, from: self)
+        let day = calendar.component(.day, from: self)
+
+        return calendar.date(from: DateComponents(year: year, month: month, day: day))!
     }
 }
