@@ -2,9 +2,8 @@
 //  TwoWayPinnedWeekWrapper.swift
 //  ExampleCalendarApp
 //
-//  SwiftUI обвивка за TwoWayPinnedWeekContainerView.
-//  - При Long Press в празно: отваряме системния EKEventEditViewController за нов евент
-//  - При Tap върху съществуващо събитие: отваряме редакция на него
+//  SwiftUI обвивка (UIViewControllerRepresentable) за TwoWayPinnedWeekContainerView.
+//  - При драг върху събитие (onEventDragEnded) -> сменяме start/end в EKEventStore
 //
 
 import SwiftUI
@@ -17,7 +16,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     @Binding var startOfWeek: Date
     @Binding var events: [EventDescriptor]
 
-    // Единственият EKEventStore, който ползвате (да няма "Event does not belong to eventStore")
     let eventStore: EKEventStore
 
     public init(
@@ -32,12 +30,10 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
-        
-        // Създаваме контейнер
         let container = TwoWayPinnedWeekContainerView()
         container.startOfWeek = startOfWeek
 
-        // Първоначално подаваме събитията
+        // Първоначални събития
         let (allDay, regular) = splitAllDay(events)
         container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
@@ -45,13 +41,11 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         // При смяна на седмица
         container.onWeekChange = { newStartDate in
             self.startOfWeek = newStartDate
-
-            // Примерно - зареждаме от eventStore
+            // Зареждаме събития
             let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: newStartDate)!
-            let predicate = self.eventStore.predicateForEvents(
+            let found = self.eventStore.events(matching: self.eventStore.predicateForEvents(
                 withStart: newStartDate, end: endOfWeek, calendars: nil
-            )
-            let found = self.eventStore.events(matching: predicate)
+            ))
             let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
             self.events = wrappers
 
@@ -63,10 +57,9 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             container.layoutIfNeeded()
         }
 
-        // При тап върху евент => отваряме редакция
+        // При тап на евент -> EKEventEditViewController
         container.onEventTap = { [weak vc] descriptor in
             guard let vc = vc else { return }
-
             if let ekWrapper = descriptor as? EKWrapper {
                 let editVC = EKEventEditViewController()
                 editVC.eventStore = self.eventStore
@@ -76,21 +69,47 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // При Long Press в празно => създаваме нов EKEvent и отваряме редактора
+        // При long press в празно -> ново събитие
         container.onEmptyLongPress = { [weak vc] date in
             guard let vc = vc else { return }
-
             let newEvent = EKEvent(eventStore: self.eventStore)
             newEvent.title = "New event"
             newEvent.calendar = self.eventStore.defaultCalendarForNewEvents
             newEvent.startDate = date
-            newEvent.endDate   = date.addingTimeInterval(3600) // +1 час
+            newEvent.endDate   = date.addingTimeInterval(3600)
 
             let editVC = EKEventEditViewController()
             editVC.eventStore = self.eventStore
             editVC.event = newEvent
             editVC.editViewDelegate = context.coordinator
             vc.present(editVC, animated: true)
+        }
+
+        // При drag & drop на евент
+        container.onEventDragEnded = { descriptor, newDate in
+            // Преизчисляваме startDate/endDate
+            if let ekWrapper = descriptor as? EKWrapper {
+                let ev = ekWrapper.ekEvent
+                let duration = ev.endDate.timeIntervalSince(ev.startDate)
+
+                ev.startDate = newDate
+                ev.endDate   = newDate.addingTimeInterval(duration)
+
+                // Запис в eventStore
+                do {
+                    try self.eventStore.save(ev, span: .thisEvent)
+                } catch {
+                    print("Error saving dragged event: \(error)")
+                }
+
+                // Презареждаме списъка, за да видим промяната
+                let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
+                let found = self.eventStore.events(matching: self.eventStore.predicateForEvents(
+                    withStart: self.startOfWeek, end: endOfWeek, calendars: nil
+                ))
+                let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
+                self.events = wrappers
+            }
         }
 
         vc.view.addSubview(container)
@@ -133,16 +152,13 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
         public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction) {
-            // След Done/Cancel
             controller.dismiss(animated: true) {
-                // Презареждаме събития
+                // Презареждаме
                 let start = self.parent.startOfWeek
                 let end = Calendar.current.date(byAdding: .day, value: 7, to: start)!
-
-                let predicate = self.parent.eventStore.predicateForEvents(
+                let found = self.parent.eventStore.events(matching: self.parent.eventStore.predicateForEvents(
                     withStart: start, end: end, calendars: nil
-                )
-                let found = self.parent.eventStore.events(matching: predicate)
+                ))
                 let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
                 self.parent.events = wrappers
             }

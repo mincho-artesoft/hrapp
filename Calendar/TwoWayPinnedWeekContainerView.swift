@@ -3,11 +3,11 @@
 //  ExampleCalendarApp
 //
 //  UIView, който държи:
-//   - бутони < и > за смяна на седмицата
-//   - DaysHeaderView (имената на дните горе)
-//   - HoursColumnView (часовата колона вляво)
-//   - WeekTimelineViewNonOverlapping (истинския "body")
-//  При long press => onEmptyLongPress(date)
+//   - Навигация < / >
+//   - DaysHeaderView
+//   - HoursColumnView
+//   - WeekTimelineViewNonOverlapping
+//  -> препраща onEventDragEnded нагоре
 //
 
 import UIKit
@@ -34,18 +34,14 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
-    /// Callback при смяна на седмица (натискане < или >)
     public var onWeekChange: ((Date) -> Void)?
-
-    /// Callback при Tap върху събитие
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
             weekView.onEventTap = onEventTap
         }
     }
-
-    /// Callback при Long Press на празно място
     public var onEmptyLongPress: ((Date) -> Void)?
+    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
 
     public var startOfWeek: Date = Date() {
         didSet {
@@ -78,7 +74,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // навигационна лента
+        // НавБар
         navBar.backgroundColor = .secondarySystemBackground
         addSubview(navBar)
 
@@ -113,7 +109,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // Настройка на DayHeader и WeekView
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         daysHeaderView.dayColumnWidth = 100
 
@@ -125,9 +120,12 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
         hoursColumnView.hourHeight = 50
 
-        // Свързваме long press от weekView
-        weekView.onEmptyLongPress = { [weak self] tappedDate in
-            self?.onEmptyLongPress?(tappedDate)
+        // Препращаме callback-ите
+        weekView.onEmptyLongPress = { [weak self] date in
+            self?.onEmptyLongPress?(date)
+        }
+        weekView.onEventDragEnded = { [weak self] descriptor, newDate in
+            self?.onEventDragEnded?(descriptor, newDate)
         }
     }
 
@@ -200,7 +198,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // За да покажем текущия час в колонката
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
