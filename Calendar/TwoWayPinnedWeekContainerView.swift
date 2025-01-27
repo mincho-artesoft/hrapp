@@ -2,11 +2,12 @@
 //  TwoWayPinnedWeekContainerView.swift
 //  ExampleCalendarApp
 //
-//  UIView, държащ:
-//   - навигационен бар < > и седмичен текст
+//  UIView, който държи:
+//   - бутони < и > за смяна на седмицата
 //   - DaysHeaderView (имената на дните горе)
-//   - HoursColumnView (челове вляво)
-//   - WeekTimelineViewNonOverlapping (същинския седмичен график)
+//   - HoursColumnView (часовата колона вляво)
+//   - WeekTimelineViewNonOverlapping (истинския "body")
+//  При long press => onEmptyLongPress(date)
 //
 
 import UIKit
@@ -33,18 +34,18 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
-    /// Callback при смяна на седмица
-    public var onWeekChange: ((Date) -> Void)? = nil
+    /// Callback при смяна на седмица (натискане < или >)
+    public var onWeekChange: ((Date) -> Void)?
 
-    /// Callback при Tap върху евент
+    /// Callback при Tap върху събитие
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
             weekView.onEventTap = onEventTap
         }
     }
 
-    /// Callback при Long Press върху празно място
-    public var onEmptyLongPress: ((Date) -> Void)? = nil
+    /// Callback при Long Press на празно място
+    public var onEmptyLongPress: ((Date) -> Void)?
 
     public var startOfWeek: Date = Date() {
         didSet {
@@ -72,13 +73,12 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     deinit {
         redrawTimer?.invalidate()
-        redrawTimer = nil
     }
 
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // НавБар
+        // навигационна лента
         navBar.backgroundColor = .secondarySystemBackground
         addSubview(navBar)
 
@@ -113,6 +113,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
+        // Настройка на DayHeader и WeekView
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         daysHeaderView.dayColumnWidth = 100
 
@@ -199,6 +200,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
+        // За да покажем текущия час в колонката
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
