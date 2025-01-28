@@ -2,10 +2,14 @@
 //  WeekTimelineViewNonOverlapping.swift
 //  ExampleCalendarApp
 //
-//  Седмичен изглед без застъпващи се събития.
-//  - onEventTap(descriptor): тап върху съществуващо събитие
-//  - onEmptyLongPress(date): дълго задържане в празно -> нов евент
-//  - onEventDragEnded(descriptor, newDate): при край на drag/drop на съществуващ евент
+//  Седмичен изглед, който поддържа:
+//   - non-overlapping подредба на събитията
+//   - drag & drop + resize (горна/долна дръжка)
+//   - drag „между дните“ (т.е. и по хоризонтала)
+//   - при отпускане -> onEventDragEnded(descriptor, newDate)
+//
+//  Кодът използва горния ръб (frame.minY) за вертикалната позиция (час)
+//  и midX за хоризонталната позиция (ден).
 //
 
 import UIKit
@@ -30,7 +34,8 @@ public final class WeekTimelineViewNonOverlapping: UIView {
     /// При дълго задържане в празно
     public var onEmptyLongPress: ((Date) -> Void)?
 
-    /// **Нов**: при завършване на drag/drop върху събитие
+    /// При drag или resize, когато жестът приключи (.ended)
+    /// → подава (EventDescriptor, Date) = (кое събитие, нова начална дата)
     public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
 
     // MARK: - Данни за layout
@@ -41,35 +46,35 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         didSet { setNeedsLayout() }
     }
 
-    // MARK: - Вътрешни UI компоненти
-    private let allDayBackground = UIView()
-    private let allDayLabel = UILabel()
-
-    // „рециклирани“ вюта
+    // Държим "живите" eventView за all-day и regular
     private var allDayEventViews: [EventView] = []
     private var eventViews: [EventView] = []
 
+    // Мап: EventView -> EventDescriptor
     private var eventViewToDescriptor: [EventView : EventDescriptor] = [:]
 
-    // Променливи за drag
+    // --- Променливи за drag/resize ---
     private var originalFrameForDraggedEvent: CGRect?
+    /// Drag offset: колко е (touch.x - frame.minX) и (touch.y - frame.minY)
     private var dragOffset: CGPoint?
+
+    private var resizeHandleTag: Int?      // 0=top, 1=bottom
+    private var prevResizeOffset: CGPoint?
 
     // MARK: - Инициализация
     public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = style.backgroundColor
+        setupLongPressForEmptySpace()
+    }
 
-        // Зона "all-day"
-        allDayBackground.backgroundColor = .systemGray5
-        addSubview(allDayBackground)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        backgroundColor = style.backgroundColor
+        setupLongPressForEmptySpace()
+    }
 
-        allDayLabel.text = "all-day"
-        allDayLabel.font = UIFont.systemFont(ofSize: 14)
-        allDayLabel.textColor = .black
-        addSubview(allDayLabel)
-
-        // LongPress за празно място
+    private func setupLongPressForEmptySpace() {
         let longPressGR = UILongPressGestureRecognizer(
             target: self,
             action: #selector(handleLongPressOnEmptySpace(_:))
@@ -78,15 +83,11 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         addGestureRecognizer(longPressGR)
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    // MARK: - Layout
+    // MARK: - LayoutSubviews
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // Скриваме старите
+        // Първо крия старите
         for v in allDayEventViews { v.isHidden = true }
         for v in eventViews       { v.isHidden = true }
 
@@ -101,6 +102,38 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         hideEventsClashingWithCurrentTime()
     }
 
+    // Фон за all-day (примерен)
+    private let allDayBackground = UIView()
+    private var didSetupAllDayBackground = false
+
+    private func layoutAllDayBackground() {
+        if !didSetupAllDayBackground {
+            allDayBackground.backgroundColor = .systemGray5
+            addSubview(allDayBackground)
+            didSetupAllDayBackground = true
+        }
+        let x = leadingInsetForHours
+        let w = dayColumnWidth * 7
+        allDayBackground.frame = CGRect(x: x, y: 0, width: w, height: allDayHeight)
+    }
+
+    // "all-day" етикет
+    private let allDayLabel = UILabel()
+    private var didSetupAllDayLabel = false
+
+    private func layoutAllDayLabel() {
+        if !didSetupAllDayLabel {
+            allDayLabel.text = "all-day"
+            allDayLabel.font = UIFont.systemFont(ofSize: 14)
+            allDayLabel.textColor = .black
+            addSubview(allDayLabel)
+            didSetupAllDayLabel = true
+        }
+        let labelWidth = leadingInsetForHours
+        allDayLabel.frame = CGRect(x: 0, y: 0, width: labelWidth, height: allDayHeight)
+    }
+
+    // Динамична височина
     private func recalcAllDayHeightDynamically() {
         let groupedByDay = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
@@ -115,28 +148,16 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         }
     }
 
-    private func layoutAllDayBackground() {
-        let x = leadingInsetForHours
-        let w = dayColumnWidth * 7
-        allDayBackground.frame = CGRect(x: x, y: 0, width: w, height: allDayHeight)
-    }
-
-    private func layoutAllDayLabel() {
-        let labelWidth = leadingInsetForHours
-        allDayLabel.frame = CGRect(x: 0, y: 0,
-                                   width: labelWidth, height: allDayHeight)
-    }
-
+    // Подреждане all-day
     private func layoutAllDayEvents() {
         let grouped = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
-
-        let base: CGFloat = 10
-        let maxInAnyDay = grouped.values.map { $0.count }.max() ?? 1
-        let rowHeight = max(24, (allDayHeight - base) / CGFloat(maxInAnyDay))
-
         var usedIndex = 0
+        let base: CGFloat = 10
+        let groupedMax = grouped.values.map { $0.count }.max() ?? 1
+        let rowHeight = max(24, (allDayHeight - base) / CGFloat(groupedMax))
+
         for dayIndex in 0..<7 {
             let dayEvents = grouped[dayIndex] ?? []
             for (i, attr) in dayEvents.enumerated() {
@@ -157,6 +178,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         }
     }
 
+    // Подреждане regular
     private func layoutRegularEvents() {
         let groupedByDay = Dictionary(grouping: regularLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
@@ -233,11 +255,10 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         return false
     }
 
+    // Скриваме евентите, които се засичат с текущия час
     private func hideEventsClashingWithCurrentTime() {
         let now = Date()
-        guard let dayIndex = dayIndexIfInCurrentWeek(now) else {
-            return
-        }
+        guard let dayIndex = dayIndexIfInCurrentWeek(now) else { return }
         let cal = Calendar.current
         let hour = CGFloat(cal.component(.hour, from: now))
         let minute = CGFloat(cal.component(.minute, from: now))
@@ -259,7 +280,274 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         }
     }
 
-    // MARK: - Рисуване (линии)
+    // MARK: - Създаване на EventView
+    private func ensureAllDayEventView(index: Int) -> EventView {
+        if index < allDayEventViews.count {
+            return allDayEventViews[index]
+        } else {
+            let v = createEventView()
+            allDayEventViews.append(v)
+            return v
+        }
+    }
+
+    private func ensureRegularEventView(index: Int) -> EventView {
+        if index < eventViews.count {
+            return eventViews[index]
+        } else {
+            let v = createEventView()
+            eventViews.append(v)
+            return v
+        }
+    }
+
+    private func createEventView() -> EventView {
+        let v = EventView()
+        // Tap
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
+        v.addGestureRecognizer(tapGR)
+
+        // LongPress -> drag
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewLongPress(_:)))
+        longPressGR.minimumPressDuration = 0.5
+        v.addGestureRecognizer(longPressGR)
+
+        // Пан върху дръжките (горна/долна)
+        for handle in v.eventResizeHandles {
+            handle.panGestureRecognizer.addTarget(self, action: #selector(handleResizeHandlePanGesture(_:)))
+            handle.panGestureRecognizer.cancelsTouchesInView = true
+        }
+        v.isUserInteractionEnabled = true
+        addSubview(v)
+        return v
+    }
+
+    // MARK: - Tap върху събитие
+    @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
+        guard let tappedView = gesture.view as? EventView,
+              let descriptor = eventViewToDescriptor[tappedView] else {
+            return
+        }
+        onEventTap?(descriptor)
+    }
+
+    // MARK: - LongPress върху събитие (drag) - и вертикално, и хоризонтално
+    @objc private func handleEventViewLongPress(_ gesture: UILongPressGestureRecognizer) {
+        guard let evView = gesture.view as? EventView else { return }
+        let location = gesture.location(in: self)
+
+        switch gesture.state {
+        case .began:
+            // Ако event не е в editing
+            if let desc = eventViewToDescriptor[evView], desc.editedEvent == nil {
+                desc.editedEvent = desc
+                evView.updateWithDescriptor(event: desc)
+            }
+            originalFrameForDraggedEvent = evView.frame
+            // Запомняме offset (touch - frame.origin)
+            dragOffset = CGPoint(
+                x: location.x - evView.frame.minX,
+                y: location.y - evView.frame.minY
+            )
+
+        case .changed:
+            guard let offset = dragOffset else { return }
+            var newFrame = evView.frame
+            newFrame.origin.x = location.x - offset.x
+            newFrame.origin.y = location.y - offset.y
+            evView.frame = newFrame
+
+        case .ended, .cancelled:
+            if let desc = eventViewToDescriptor[evView] {
+                // При отпускане -> вземаме деня (по midX) + началото (по minY)
+                if let newDate = dateFromFrame(evView.frame) {
+                    onEventDragEnded?(desc, newDate)
+                } else {
+                    // Ако е извън, връщаме
+                    if let original = originalFrameForDraggedEvent {
+                        evView.frame = original
+                    }
+                }
+            }
+            dragOffset = nil
+            originalFrameForDraggedEvent = nil
+
+        default:
+            break
+        }
+    }
+
+    // MARK: - Пан върху дръжките
+    @objc private func handleResizeHandlePanGesture(_ gesture: UIPanGestureRecognizer) {
+        guard let handleView = gesture.view as? EventResizeHandleView,
+              let eventView = handleView.superview as? EventView else { return }
+        let location = gesture.location(in: self)
+        let tag = handleView.tag // 0=top, 1=bottom
+
+        switch gesture.state {
+        case .began:
+            if let desc = eventViewToDescriptor[eventView], desc.editedEvent == nil {
+                desc.editedEvent = desc
+                eventView.updateWithDescriptor(event: desc)
+            }
+            resizeHandleTag = tag
+            prevResizeOffset = location
+
+        case .changed:
+            guard let prevLoc = prevResizeOffset else { return }
+            let dy = location.y - prevLoc.y
+
+            var f = eventView.frame
+            if tag == 0 {
+                // Горна дръжка
+                f.origin.y += dy
+                f.size.height -= dy
+            } else {
+                // Долна дръжка
+                f.size.height += dy
+            }
+            if f.size.height < 20 { break }
+            eventView.frame = f
+            prevResizeOffset = location
+
+        case .ended, .cancelled:
+            if let desc = eventViewToDescriptor[eventView] {
+                let isTop = (resizeHandleTag == 0)
+                if let newDate = dateFromResize(eventView.frame, isTop: isTop) {
+                    onEventDragEnded?(desc, newDate)
+                }
+            }
+            resizeHandleTag = nil
+            prevResizeOffset = nil
+
+        default:
+            break
+        }
+    }
+
+    // Кое време взимаме? Ако е top → frame.minY, ако bottom → frame.maxY
+    private func dateFromResize(_ frame: CGRect, isTop: Bool) -> Date? {
+        let y: CGFloat = isTop ? frame.minY : frame.maxY
+        let centerX = frame.midX
+        if centerX < leadingInsetForHours { return nil }
+        let dayIndex = Int((centerX - leadingInsetForHours) / dayColumnWidth)
+        if dayIndex < 0 || dayIndex > 6 { return nil }
+
+        let cal = Calendar.current
+        guard let dayDate = cal.date(byAdding: .day, value: dayIndex, to: startOfWeek) else {
+            return nil
+        }
+
+        let yOffset = y - allDayHeight
+        let hours = floor(yOffset / hourHeight)
+        let minuteFraction = (yOffset / hourHeight) - hours
+        let minutes = minuteFraction * 60
+
+        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
+        comps.hour = Int(hours)
+        comps.minute = Int(minutes)
+        return cal.date(from: comps)
+    }
+
+    // MARK: - Long Press в празно
+    @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else { return }
+        let point = gesture.location(in: self)
+
+        // Ако попада върху event, не правим нищо
+        for evView in (allDayEventViews + eventViews) {
+            if !evView.isHidden && evView.frame.contains(point) {
+                return
+            }
+        }
+        // Иначе: onEmptyLongPress
+        if let tappedDate = dateFromPoint(point) {
+            onEmptyLongPress?(tappedDate)
+        }
+    }
+
+    private func dateFromPoint(_ point: CGPoint) -> Date? {
+        let x = point.x
+        let y = point.y
+        if x < leadingInsetForHours { return nil }
+        if y < allDayHeight { return nil }
+
+        let dayIndex = Int((x - leadingInsetForHours) / dayColumnWidth)
+        if dayIndex < 0 || dayIndex > 6 { return nil }
+
+        let cal = Calendar.current
+        guard let dayDate = cal.date(byAdding: .day, value: dayIndex, to: startOfWeek) else {
+            return nil
+        }
+
+        let yOffset = y - allDayHeight
+        let hours = floor(yOffset / hourHeight)
+        let minuteFraction = (yOffset / hourHeight) - hours
+        let minutes = minuteFraction * 60
+
+        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
+        comps.hour = Int(hours)
+        comps.minute = Int(minutes)
+        return cal.date(from: comps)
+    }
+
+    /// При drag на цялото събитие (хотизонтално+вертикално),
+    /// за начален час взимаме frame.minY, а за ден - frame.midX.
+    private func dateFromFrame(_ frame: CGRect) -> Date? {
+        let topY = frame.minY
+        let midX = frame.midX
+
+        // Ден
+        if midX < leadingInsetForHours { return nil }
+        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
+        if dayIndex < 0 || dayIndex > 6 { return nil }
+
+        let cal = Calendar.current
+        guard let dayDate = cal.date(byAdding: .day, value: dayIndex, to: startOfWeek) else {
+            return nil
+        }
+
+        // Час
+        let yOffset = topY - allDayHeight
+        let hours = floor(yOffset / hourHeight)
+        let minuteFraction = (yOffset / hourHeight) - hours
+        let minutes = minuteFraction * 60
+
+        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
+        comps.hour = Int(hours)
+        comps.minute = Int(minutes)
+        return cal.date(from: comps)
+    }
+
+    // MARK: - Помощни
+    private func dateToY(_ date: Date) -> CGFloat {
+        let cal = Calendar.current
+        let hour = CGFloat(cal.component(.hour, from: date))
+        let minute = CGFloat(cal.component(.minute, from: date))
+        return hourHeight*(hour + minute/60)
+    }
+
+    private func dayIndexFor(_ date: Date) -> Int {
+        let cal = Calendar.current
+        let startOnly = startOfWeek.dateOnly(calendar: cal)
+        let evOnly = date.dateOnly(calendar: cal)
+        let comps = cal.dateComponents([.day], from: startOnly, to: evOnly)
+        return comps.day ?? 0
+    }
+
+    func dayIndexIfInCurrentWeek(_ date: Date) -> Int? {
+        let cal = Calendar.current
+        let startOnly = startOfWeek.dateOnly(calendar: cal)
+        let endOfWeek = cal.date(byAdding: .day, value: 7, to: startOnly)!
+
+        if date >= startOnly && date < endOfWeek {
+            let comps = cal.dateComponents([.day], from: startOnly, to: date)
+            return comps.day
+        }
+        return nil
+    }
+
+    // MARK: - Рисуване (линии, текущ час)
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
@@ -295,7 +583,6 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
 
-        // Червена линия за текущия ден/час
         drawCurrentTimeLineForCurrentDay(ctx: ctx)
     }
 
@@ -327,7 +614,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
             ctx.restoreGState()
         }
 
-        // Плътна червена в текущия ден
+        // Плътна червена линия в текущия ден
         ctx.saveGState()
         ctx.setStrokeColor(UIColor.systemRed.cgColor)
         ctx.setLineWidth(1.5)
@@ -337,7 +624,7 @@ public final class WeekTimelineViewNonOverlapping: UIView {
         ctx.strokePath()
         ctx.restoreGState()
 
-        // Десен полупрозрачен
+        // Дясна полупрозрачен
         if currentDayX2 < totalRightX {
             ctx.saveGState()
             ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
@@ -348,212 +635,5 @@ public final class WeekTimelineViewNonOverlapping: UIView {
             ctx.strokePath()
             ctx.restoreGState()
         }
-    }
-
-    // MARK: - Помощни методи
-    private func dateToY(_ date: Date) -> CGFloat {
-        let cal = Calendar.current
-        let hour = CGFloat(cal.component(.hour, from: date))
-        let minute = CGFloat(cal.component(.minute, from: date))
-        return (hour + minute/60) * hourHeight
-    }
-
-    private func dayIndexFor(_ date: Date) -> Int {
-        let cal = Calendar.current
-        let startOnly = startOfWeek.dateOnly(calendar: cal)
-        let evOnly = date.dateOnly(calendar: cal)
-        let comps = cal.dateComponents([.day], from: startOnly, to: evOnly)
-        return comps.day ?? 0
-    }
-
-    func dayIndexIfInCurrentWeek(_ date: Date) -> Int? {
-        let cal = Calendar.current
-        let startOnly = startOfWeek.dateOnly(calendar: cal)
-        let endOfWeek = cal.date(byAdding: .day, value: 7, to: startOnly)!
-
-        if date >= startOnly && date < endOfWeek {
-            let comps = cal.dateComponents([.day], from: startOnly, to: date)
-            return comps.day
-        }
-        return nil
-    }
-
-    // Преобразува frame -> Date (примерно center)
-    private func dateFromFrame(_ frame: CGRect) -> Date? {
-        let centerX = frame.midX
-        let centerY = frame.midY
-
-        // Колоната с часове?
-        if centerX < leadingInsetForHours { return nil }
-        // all-day зона?
-        if centerY < allDayHeight { return nil }
-
-        let dayIndex = Int((centerX - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex > 6 { return nil }
-
-        let cal = Calendar.current
-        guard let dayDate = cal.date(byAdding: .day, value: dayIndex, to: startOfWeek) else {
-            return nil
-        }
-
-        let yOffset = centerY - allDayHeight
-        let hours = floor(yOffset / hourHeight)
-        let minuteFraction = (yOffset / hourHeight) - hours
-        let minutes = minuteFraction * 60
-
-        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
-        comps.hour = Int(hours)
-        comps.minute = Int(minutes)
-
-        return cal.date(from: comps)
-    }
-
-    // MARK: - Създаване EventView
-    private func ensureAllDayEventView(index: Int) -> EventView {
-        if index < allDayEventViews.count {
-            return allDayEventViews[index]
-        } else {
-            let v = EventView()
-            // Tap за детайли
-            let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
-            v.addGestureRecognizer(tapGR)
-
-            // *** LongPress за drag & drop (all-day) ***
-            let longPressGR = UILongPressGestureRecognizer(target: self,
-                                                           action: #selector(handleEventViewLongPressAndDrag(_:)))
-            longPressGR.minimumPressDuration = 0.5
-            v.addGestureRecognizer(longPressGR)
-
-            v.isUserInteractionEnabled = true
-            addSubview(v)
-            allDayEventViews.append(v)
-            return v
-        }
-    }
-
-    private func ensureRegularEventView(index: Int) -> EventView {
-        if index < eventViews.count {
-            return eventViews[index]
-        } else {
-            let v = EventView()
-            // Tap за детайли
-            let tapGR = UITapGestureRecognizer(target: self,
-                                               action: #selector(handleEventViewTap(_:)))
-            v.addGestureRecognizer(tapGR)
-
-            // *** LongPress за drag & drop (регулярни събития) ***
-            let longPressGR = UILongPressGestureRecognizer(target: self,
-                                                           action: #selector(handleEventViewLongPressAndDrag(_:)))
-            longPressGR.minimumPressDuration = 0.5
-            v.addGestureRecognizer(longPressGR)
-
-            v.isUserInteractionEnabled = true
-            addSubview(v)
-            eventViews.append(v)
-            return v
-        }
-    }
-
-    // MARK: - Tap върху събитие
-    @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
-        guard let tappedView = gesture.view as? EventView,
-              let descriptor = eventViewToDescriptor[tappedView] else {
-            return
-        }
-        onEventTap?(descriptor)
-    }
-
-    // MARK: - Long Press (Drag & Drop) върху съществуващо събитие
-    @objc private func handleEventViewLongPressAndDrag(_ gesture: UILongPressGestureRecognizer) {
-        guard let evView = gesture.view as? EventView else { return }
-        let location = gesture.location(in: self)
-
-        switch gesture.state {
-        case .began:
-            // Запомняме началния frame
-            originalFrameForDraggedEvent = evView.frame
-
-            // Запомняме offset спрямо центъра
-            dragOffset = CGPoint(
-                x: location.x - evView.center.x,
-                y: location.y - evView.center.y
-            )
-
-            // По желание: леко „повдигане“
-            evView.alpha = 0.8
-
-        case .changed:
-            guard let offset = dragOffset else { return }
-            evView.center = CGPoint(
-                x: location.x - offset.x,
-                y: location.y - offset.y
-            )
-
-        case .ended, .cancelled:
-            evView.alpha = 1.0
-
-            if let newDate = dateFromFrame(evView.frame),
-               let desc = eventViewToDescriptor[evView] {
-                onEventDragEnded?(desc, newDate)
-            } else {
-                // Ако е извън валиден дроп → връщаме го обратно
-                if let original = originalFrameForDraggedEvent {
-                    evView.frame = original
-                }
-            }
-
-            // Нулираме
-            dragOffset = nil
-            originalFrameForDraggedEvent = nil
-
-        default:
-            break
-        }
-    }
-
-    // MARK: - Long Press в празно
-    @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
-        guard gesture.state == .began else { return }
-
-        let point = gesture.location(in: self)
-
-        // Ако попада върху event - пропускаме
-        for evView in (allDayEventViews + eventViews) {
-            if !evView.isHidden && evView.frame.contains(point) {
-                return
-            }
-        }
-
-        // Иначе празно
-        if let tappedDate = dateFromPoint(point) {
-            onEmptyLongPress?(tappedDate)
-        }
-    }
-
-    private func dateFromPoint(_ point: CGPoint) -> Date? {
-        let x = point.x
-        let y = point.y
-
-        if x < leadingInsetForHours { return nil }
-        if y < allDayHeight { return nil }
-
-        let dayIndex = Int((x - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex > 6 { return nil }
-
-        let cal = Calendar.current
-        guard let dayDate = cal.date(byAdding: .day, value: dayIndex, to: startOfWeek) else {
-            return nil
-        }
-
-        let yOffset = y - allDayHeight
-        let hours = floor(yOffset / hourHeight)
-        let minuteFraction = (yOffset / hourHeight) - hours
-        let minutes = minuteFraction * 60
-
-        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
-        comps.hour = Int(hours)
-        comps.minute = Int(minutes)
-
-        return cal.date(from: comps)
     }
 }
