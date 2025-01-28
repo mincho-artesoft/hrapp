@@ -2,9 +2,6 @@
 //  TwoWayPinnedWeekWrapper.swift
 //  ExampleCalendarApp
 //
-//  SwiftUI обвивка (UIViewControllerRepresentable) за TwoWayPinnedWeekContainerView.
-//  - При драг върху събитие (onEventDragEnded) -> сменяме start/end в EKEventStore
-//
 
 import SwiftUI
 import CalendarKit
@@ -17,6 +14,9 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     @Binding var events: [EventDescriptor]
 
     let eventStore: EKEventStore
+
+    // [CHANGE] -> Добавяме си променлива, в която пазим ID на "редактирания" евент
+    private var currentlyEditedEventID: String?
 
     public init(
         startOfWeek: Binding<Date>,
@@ -85,9 +85,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             vc.present(editVC, animated: true)
         }
 
-        // При drag & drop на евент
+        // [CHANGE] При drag/drop, пазим current ID, reload-ваме, и сетваме пак editedEvent
         container.onEventDragEnded = { descriptor, newDate in
-            // Преизчисляваме startDate/endDate
             if let ekWrapper = descriptor as? EKWrapper {
                 let ev = ekWrapper.ekEvent
                 let duration = ev.endDate.timeIntervalSince(ev.startDate)
@@ -95,20 +94,30 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 ev.startDate = newDate
                 ev.endDate   = newDate.addingTimeInterval(duration)
 
-                // Запис в eventStore
                 do {
                     try self.eventStore.save(ev, span: .thisEvent)
                 } catch {
                     print("Error saving dragged event: \(error)")
                 }
 
-                // Презареждаме списъка, за да видим промяната
+                // [CHANGE] -> Запомняме кой евент беше редактиран
+                let eventID = ev.eventIdentifier
+
+                // Презареждаме
                 let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
                 let found = self.eventStore.events(matching: self.eventStore.predicateForEvents(
                     withStart: self.startOfWeek, end: endOfWeek, calendars: nil
                 ))
                 let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
                 self.events = wrappers
+
+                // [CHANGE] -> Откриваме същия, отново му слагаме "edit mode"
+                if let sameWrapper = wrappers.first(where: {
+                    guard let ekw = $0 as? EKWrapper else { return false }
+                    return ekw.ekEvent.eventIdentifier == eventID
+                }) as? EKWrapper {
+                    sameWrapper.editedEvent = sameWrapper
+                }
             }
         }
 
@@ -145,11 +154,11 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     public class Coordinator: NSObject, EKEventEditViewDelegate {
         let parent: TwoWayPinnedWeekWrapper
-
+        
         init(_ parent: TwoWayPinnedWeekWrapper) {
             self.parent = parent
         }
-
+        
         public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction) {
             controller.dismiss(animated: true) {
