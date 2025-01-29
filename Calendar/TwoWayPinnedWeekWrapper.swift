@@ -15,7 +15,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     let eventStore: EKEventStore
 
-    // [CHANGE] -> Добавяме си променлива, в която пазим ID на "редактирания" евент
+    // [CHANGE] -> Може да пазим ID на "редактирания" евент, ако ви трябва
     private var currentlyEditedEventID: String?
 
     public init(
@@ -33,7 +33,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         let container = TwoWayPinnedWeekContainerView()
         container.startOfWeek = startOfWeek
 
-        // Първоначални събития
+        // Първоначално зареждане на събития
         let (allDay, regular) = splitAllDay(events)
         container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
@@ -43,9 +43,11 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             self.startOfWeek = newStartDate
             // Зареждаме събития
             let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: newStartDate)!
-            let found = self.eventStore.events(matching: self.eventStore.predicateForEvents(
-                withStart: newStartDate, end: endOfWeek, calendars: nil
-            ))
+            let found = self.eventStore.events(
+                matching: self.eventStore.predicateForEvents(withStart: newStartDate,
+                                                             end: endOfWeek,
+                                                             calendars: nil)
+            )
             let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
             self.events = wrappers
 
@@ -85,7 +87,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             vc.present(editVC, animated: true)
         }
 
-        // [CHANGE] При drag/drop, пазим current ID, reload-ваме, и сетваме пак editedEvent
+        // При drag/drop (край на драг):
         container.onEventDragEnded = { descriptor, newDate in
             if let ekWrapper = descriptor as? EKWrapper {
                 let ev = ekWrapper.ekEvent
@@ -100,48 +102,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     print("Error saving dragged event: \(error)")
                 }
 
-                // [CHANGE] -> Запомняме кой евент беше редактиран
+                // Презареждаме списъка след драг
                 let eventID = ev.eventIdentifier
-
-                // Презареждаме
-                let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
-                let found = self.eventStore.events(matching: self.eventStore.predicateForEvents(
-                    withStart: self.startOfWeek, end: endOfWeek, calendars: nil
-                ))
-                let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
-                self.events = wrappers
-
-                // [CHANGE] -> Откриваме същия, отново му слагаме "edit mode"
-                if let sameWrapper = wrappers.first(where: {
-                    guard let ekw = $0 as? EKWrapper else { return false }
-                    return ekw.ekEvent.eventIdentifier == eventID
-                }) as? EKWrapper {
-                    sameWrapper.editedEvent = sameWrapper
-                }
-            }
-        }
-        container.onEventDragResizeEnded = { descriptor, newDate in
-            if let ekWrapper = descriptor as? EKWrapper {
-                let ev = ekWrapper.ekEvent
-                
-                // (1) Вземаме реалните "start" и "end" от descriptor (отразяващи drag/resize)
-                let updatedStart = descriptor.dateInterval.start
-                let updatedEnd   = descriptor.dateInterval.end
-                
-                // (2) Ъпдейтваме EKEvent със същите дати
-                ev.startDate = updatedStart
-                ev.endDate   = updatedEnd
-
-                // (3) Записваме в EventStore
-                do {
-                    try self.eventStore.save(ev, span: .thisEvent)
-                } catch {
-                    print("Error saving dragged/resized event: \(error)")
-                }
-
-                // (4) Презареждаме евентите за седмицата
-                let eventID = ev.eventIdentifier
-
                 let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
                 let found = self.eventStore.events(
                     matching: self.eventStore.predicateForEvents(
@@ -152,8 +114,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 )
                 let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
                 self.events = wrappers
-                
-                // (5) Ако искате да оставите евента пак „в режим на редактиране“
+
+                // Ако искаме да маркираме същия евент като "редактиран"
                 if let sameWrapper = wrappers.first(where: {
                     guard let ekw = $0 as? EKWrapper else { return false }
                     return ekw.ekEvent.eventIdentifier == eventID
@@ -162,6 +124,48 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 }
             }
         }
+
+        // При drag resize (горна/долна дръжка)
+        container.onEventDragResizeEnded = { descriptor, newDate in
+            if let ekWrapper = descriptor as? EKWrapper {
+                let ev = ekWrapper.ekEvent
+
+                // Вземаме реалните "start" и "end" от descriptor
+                let updatedStart = descriptor.dateInterval.start
+                let updatedEnd   = descriptor.dateInterval.end
+
+                ev.startDate = updatedStart
+                ev.endDate   = updatedEnd
+
+                do {
+                    try self.eventStore.save(ev, span: .thisEvent)
+                } catch {
+                    print("Error saving dragged/resized event: \(error)")
+                }
+
+                // Презареждаме евентите за седмицата
+                let eventID = ev.eventIdentifier
+                let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
+                let found = self.eventStore.events(
+                    matching: self.eventStore.predicateForEvents(
+                        withStart: self.startOfWeek,
+                        end: endOfWeek,
+                        calendars: nil
+                    )
+                )
+                let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
+                self.events = wrappers
+
+                // Ако искаме да го оставим пак „в режим на редактиране“
+                if let sameWrapper = wrappers.first(where: {
+                    guard let ekw = $0 as? EKWrapper else { return false }
+                    return ekw.ekEvent.eventIdentifier == eventID
+                }) as? EKWrapper {
+                    sameWrapper.editedEvent = sameWrapper
+                }
+            }
+        }
+
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -206,15 +210,18 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 // Презареждаме
                 let start = self.parent.startOfWeek
                 let end = Calendar.current.date(byAdding: .day, value: 7, to: start)!
-                let found = self.parent.eventStore.events(matching: self.parent.eventStore.predicateForEvents(
-                    withStart: start, end: end, calendars: nil
-                ))
+                let found = self.parent.eventStore.events(
+                    matching: self.parent.eventStore.predicateForEvents(
+                        withStart: start, end: end, calendars: nil
+                    )
+                )
                 let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
                 self.parent.events = wrappers
             }
         }
     }
 
+    // Подпомагаща функция за разделяне на all-day от нормалните
     private func splitAllDay(_ evts: [EventDescriptor]) -> ([EventDescriptor], [EventDescriptor]) {
         var allDay = [EventDescriptor]()
         var regular = [EventDescriptor]()

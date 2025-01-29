@@ -40,9 +40,21 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             weekView.onEventTap = onEventTap
         }
     }
-    public var onEmptyLongPress: ((Date) -> Void)?
-    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
-    public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
+    public var onEmptyLongPress: ((Date) -> Void)? {
+        didSet {
+            weekView.onEmptyLongPress = onEmptyLongPress
+        }
+    }
+    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)? {
+        didSet {
+            weekView.onEventDragEnded = onEventDragEnded
+        }
+    }
+    public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)? {
+        didSet {
+            weekView.onEventDragResizeEnded = onEventDragResizeEnded
+        }
+    }
 
     public var startOfWeek: Date = Date() {
         didSet {
@@ -120,17 +132,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         weekView.autoResizeAllDayHeight = true
 
         hoursColumnView.hourHeight = 50
-
-        // Препращаме callback-ите
-        weekView.onEmptyLongPress = { [weak self] date in
-            self?.onEmptyLongPress?(date)
-        }
-        weekView.onEventDragEnded = { [weak self] descriptor, newDate in
-            self?.onEventDragEnded?(descriptor, newDate)
-        }
-        weekView.onEventDragResizeEnded = { [weak self] descriptor, newDate in
-            self?.onEventDragResizeEnded?(descriptor, newDate)
-        }
     }
 
     public override func layoutSubviews() {
@@ -202,6 +203,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
+        // Обновяваме дали текущият ден е в седмицата
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
