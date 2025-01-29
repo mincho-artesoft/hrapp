@@ -122,6 +122,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
+        // Задаваме настройки (ширини, височини) към DaysHeaderView, WeekView, HoursColumnView
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         daysHeaderView.dayColumnWidth = 100
 
@@ -132,6 +133,12 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         weekView.autoResizeAllDayHeight = true
 
         hoursColumnView.hourHeight = 50
+
+        // [NEW] Свързваме callback `onEventSelected` от weekView към нашия hoursColumnView
+        // Така, когато има/няма селекция, колонката може да показва маркировки през 5 мин или през 1 час.
+        weekView.onEventSelected = { [weak self] isSelected in
+            self?.hoursColumnView.isEventSelected = isSelected
+        }
     }
 
     public override func layoutSubviews() {
@@ -200,10 +207,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
                                        height: totalHeight)
         hoursColumnView.topOffset = weekView.allDayHeight
 
-        bringSubviewToFront(hoursColumnScrollView)
-        bringSubviewToFront(cornerView)
-
-        // Обновяваме дали текущият ден е в седмицата
+        // Дали сегашният ден е в седмицата
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek

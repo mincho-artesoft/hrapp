@@ -1,90 +1,111 @@
 import UIKit
 
+/// Лявата колона, в която се изписват часовете.
 public final class HoursColumnView: UIView {
 
+    /// Колко точки (pt) е височината на 1 час.
     public var hourHeight: CGFloat = 50
-    public var font = UIFont.systemFont(ofSize: 12, weight: .medium)
-    public var topOffset: CGFloat = 0
 
-    /// true → червеният час се показва, false → не се показва
+    /// Ако true -> рисуваме на всеки 5 мин; иначе -> само на всеки кръгъл час.
+    public var isEventSelected: Bool = false {
+        didSet {
+            setNeedsDisplay()  // при промяна - презареждаме
+        }
+    }
+
+    /// Флаг дали днешният ден е в текущата седмица (за да рисуваме червена линия).
     public var isCurrentDayInWeek: Bool = false
 
-    /// Ако не е nil, червеният текст (2:13 PM) ще се изрисува
-    public var currentTime: Date? = nil
+    /// Ако `isCurrentDayInWeek == true`, тук пазим "сега" (`Date`).
+    public var currentTime: Date?
 
+    /// Опционален offset, ако имате горна зона за all-day (напр. 40 px).
+    public var topOffset: CGFloat = 0
+
+    private let timeFactory = TimeStringsFactory()
+
+    // Двата набора от часови маркери:
+    private let timeMarksHourly: [String]
+    private let timeMarks5Min: [String]
+
+    // MARK: - Init
     public override init(frame: CGRect) {
+        // Генерираме предварително двата масива
+        self.timeMarksHourly = timeFactory.makeHourlyStrings24h()
+        self.timeMarks5Min   = timeFactory.make5MinStrings24h()
         super.init(frame: frame)
-        backgroundColor = .white
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        backgroundColor = .white
+        backgroundColor = .systemBackground
     }
 
+    public required init?(coder: NSCoder) {
+        self.timeMarksHourly = timeFactory.makeHourlyStrings24h()
+        self.timeMarks5Min   = timeFactory.make5MinStrings24h()
+        super.init(coder: coder)
+        backgroundColor = .systemBackground
+    }
+
+    // MARK: - Draw
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
-        let cal = Calendar.current
-        let baseDate = cal.startOfDay(for: Date())
+        // Избираме кой масив да ползваме:
+        let activeMarks = isEventSelected ? timeMarks5Min : timeMarksHourly
 
-        let blackAttrs: [NSAttributedString.Key: Any] = [
+        // Ако рисуваме през 5 мин -> 288 записа (00:00..23:55).
+        // Ако рисуваме през час -> 25 записа (00:00..24:00) или 24, според предпочитания.
+        let count = CGFloat(activeMarks.count)
+        
+        // 24 часа = 24 * hourHeight точки.
+        // Разстояние между всяка стъпка: (24 * hourHeight) / (count - 1)
+        // (ако има 25 точки за 24 ч, значи 24 интервала)
+        let dayHeight = 24.0 * hourHeight
+        let stepHeight = dayHeight / max(1, (count - 1))
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .right
+
+        let textAttrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 10),
             .foregroundColor: UIColor.label,
-            .font: font
+            .paragraphStyle: paragraphStyle
         ]
 
-        // (1) Ако сме в текущата седмица и currentTime != nil → подготвяме "червен" час
-        var currentTimeRect: CGRect? = nil
-        if isCurrentDayInWeek, let now = currentTime {
-            let hour = CGFloat(cal.component(.hour, from: now))
-            let minute = CGFloat(cal.component(.minute, from: now))
-            let fraction = hour + minute/60
-            let yNow = topOffset + fraction * hourHeight
+        for (i, timeString) in activeMarks.enumerated() {
+            let y = CGFloat(i) * stepHeight
 
-            let fmt = DateFormatter()
-            fmt.timeStyle = .short
-            let nowStr = fmt.string(from: now)
+            // (А) По желание - рисуваме хоризонтална линия
+            ctx.saveGState()
+            ctx.setStrokeColor(UIColor.lightGray.withAlphaComponent(0.3).cgColor)
+            ctx.setLineWidth(1.0 / UIScreen.main.scale)
+            ctx.move(to: CGPoint(x: 0, y: y))
+            ctx.addLine(to: CGPoint(x: rect.width, y: y))
+            ctx.strokePath()
+            ctx.restoreGState()
 
-            let redAttrs: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor.systemRed,
-                .font: UIFont.systemFont(ofSize: 12, weight: .semibold)
-            ]
-            let size = nowStr.size(withAttributes: redAttrs)
-            let textX: CGFloat = 8
-            let textY: CGFloat = yNow - size.height/2
-            currentTimeRect = CGRect(x: textX, y: textY, width: size.width, height: size.height)
+            // (Б) Рисуваме текст
+            let textRect = CGRect(x: 0,
+                                  y: y - 5,
+                                  width: rect.width - 2,
+                                  height: 10)
+            timeString.draw(in: textRect, withAttributes: textAttrs)
         }
 
-        // (2) Рисуваме 0..24 часа (в черно)
-        for hour in 0...24 {
-            let y = topOffset + CGFloat(hour)*hourHeight
-            guard let date = cal.date(byAdding: .hour, value: hour, to: baseDate) else { continue }
+        // (В) Ако е текущ ден, рисуваме червена линия за "сега"
+        if isCurrentDayInWeek, let curr = currentTime {
+            let cal = Calendar.current
+            let hour = CGFloat(cal.component(.hour, from: curr))
+            let minute = CGFloat(cal.component(.minute, from: curr))
+            let fraction = hour + minute/60.0
 
-            let df = DateFormatter()
-            df.dateFormat = "h:00 a"
-            let text = df.string(from: date)
-            let size = text.size(withAttributes: blackAttrs)
-            let textRect = CGRect(x: 8, y: y - size.height/2,
-                                  width: size.width, height: size.height)
-
-            // Ако се застъпва с червеното → пропускаме
-            if let cRect = currentTimeRect, textRect.intersects(cRect) {
-                continue
-            }
-            text.draw(in: textRect, withAttributes: blackAttrs)
-        }
-
-        // (3) Червеният час (ако е зададен)
-        if isCurrentDayInWeek, let cRect = currentTimeRect, let now = currentTime {
-            let fmt = DateFormatter()
-            fmt.timeStyle = .short
-            let nowStr = fmt.string(from: now)
-
-            let redAttrs: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor.systemRed,
-                .font: UIFont.systemFont(ofSize: 12, weight: .semibold)
-            ]
-            nowStr.draw(in: cRect, withAttributes: redAttrs)
+            let yNow = fraction * hourHeight
+            ctx.saveGState()
+            ctx.setStrokeColor(UIColor.systemRed.cgColor)
+            ctx.setLineWidth(1.5)
+            ctx.move(to: CGPoint(x: 0, y: yNow))
+            ctx.addLine(to: CGPoint(x: rect.width, y: yNow))
+            ctx.strokePath()
+            ctx.restoreGState()
         }
     }
 }
