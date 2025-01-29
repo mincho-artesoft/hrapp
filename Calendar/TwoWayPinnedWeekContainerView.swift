@@ -42,6 +42,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     }
     public var onEmptyLongPress: ((Date) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
+    public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
 
     public var startOfWeek: Date = Date() {
         didSet {
@@ -126,6 +127,9 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         }
         weekView.onEventDragEnded = { [weak self] descriptor, newDate in
             self?.onEventDragEnded?(descriptor, newDate)
+        }
+        weekView.onEventDragResizeEnded = { [weak self] descriptor, newDate in
+            self?.onEventDragResizeEnded?(descriptor, newDate)
         }
     }
 

@@ -120,7 +120,48 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 }
             }
         }
+        container.onEventDragResizeEnded = { descriptor, newDate in
+            if let ekWrapper = descriptor as? EKWrapper {
+                let ev = ekWrapper.ekEvent
+                
+                // (1) Вземаме реалните "start" и "end" от descriptor (отразяващи drag/resize)
+                let updatedStart = descriptor.dateInterval.start
+                let updatedEnd   = descriptor.dateInterval.end
+                
+                // (2) Ъпдейтваме EKEvent със същите дати
+                ev.startDate = updatedStart
+                ev.endDate   = updatedEnd
 
+                // (3) Записваме в EventStore
+                do {
+                    try self.eventStore.save(ev, span: .thisEvent)
+                } catch {
+                    print("Error saving dragged/resized event: \(error)")
+                }
+
+                // (4) Презареждаме евентите за седмицата
+                let eventID = ev.eventIdentifier
+
+                let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
+                let found = self.eventStore.events(
+                    matching: self.eventStore.predicateForEvents(
+                        withStart: self.startOfWeek,
+                        end: endOfWeek,
+                        calendars: nil
+                    )
+                )
+                let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
+                self.events = wrappers
+                
+                // (5) Ако искате да оставите евента пак „в режим на редактиране“
+                if let sameWrapper = wrappers.first(where: {
+                    guard let ekw = $0 as? EKWrapper else { return false }
+                    return ekw.ekEvent.eventIdentifier == eventID
+                }) as? EKWrapper {
+                    sameWrapper.editedEvent = sameWrapper
+                }
+            }
+        }
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

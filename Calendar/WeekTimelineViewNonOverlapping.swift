@@ -28,6 +28,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEmptyLongPress: ((Date) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
+    public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
 
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
         didSet { setNeedsLayout() }
@@ -482,7 +483,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             guard let d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
             // Изчисляваме финалната data
             if let newDate = dateFromResize(eventView.frame, isTop: d.isTop) {
-                onEventDragEnded?(desc, newDate)
+                onEventDragResizeEnded?(desc, newDate)
             }
             // чистим
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
