@@ -1,8 +1,3 @@
-//
-//  TwoWayPinnedWeekContainerView.swift
-//  ExampleCalendarApp
-//
-
 import UIKit
 import CalendarKit
 
@@ -114,7 +109,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // Свързваме weekView с hoursColumnView
+        // Връзка
         weekView.hoursColumnView = hoursColumnView
 
         daysHeaderView.leadingInsetForHours = leftColumnWidth
@@ -198,7 +193,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // Обновяваме дали е текущата седмица, и currentTime за балона
+        // Обновяваме текущия час
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
