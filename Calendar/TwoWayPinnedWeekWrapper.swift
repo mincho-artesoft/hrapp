@@ -15,9 +15,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     let eventStore: EKEventStore
 
-    // [CHANGE] -> Може да пазим ID на "редактирания" евент, ако ви трябва
-    private var currentlyEditedEventID: String?
-
     public init(
         startOfWeek: Binding<Date>,
         events: Binding<[EventDescriptor]>,
@@ -33,15 +30,15 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         let container = TwoWayPinnedWeekContainerView()
         container.startOfWeek = startOfWeek
 
-        // Първоначално зареждане на събития
+        // Initial load
         let (allDay, regular) = splitAllDay(events)
         container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
 
-        // При смяна на седмица
+        // On week change
         container.onWeekChange = { newStartDate in
             self.startOfWeek = newStartDate
-            // Зареждаме събития
+            // Load events for the new week
             let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: newStartDate)!
             let found = self.eventStore.events(
                 matching: self.eventStore.predicateForEvents(withStart: newStartDate,
@@ -59,7 +56,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             container.layoutIfNeeded()
         }
 
-        // При тап на евент -> EKEventEditViewController
+        // On event tap -> show EKEventEditViewController
         container.onEventTap = { [weak vc] descriptor in
             guard let vc = vc else { return }
             if let ekWrapper = descriptor as? EKWrapper {
@@ -71,7 +68,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // При long press в празно -> ново събитие
+        // On empty space long press -> create a new event
         container.onEmptyLongPress = { [weak vc] date in
             guard let vc = vc else { return }
             let newEvent = EKEvent(eventStore: self.eventStore)
@@ -87,81 +84,34 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             vc.present(editVC, animated: true)
         }
 
-        // При drag/drop (край на драг):
-        container.onEventDragEnded = { descriptor, newDate in
+        // MARK: - Drag/Drop End
+        container.onEventDragEnded = { [weak vc] descriptor, newDate in
+            guard let vc = vc else { return }
             if let ekWrapper = descriptor as? EKWrapper {
                 let ev = ekWrapper.ekEvent
-                let duration = ev.endDate.timeIntervalSince(ev.startDate)
 
-                ev.startDate = newDate
-                ev.endDate   = newDate.addingTimeInterval(duration)
-
-                do {
-                    try self.eventStore.save(ev, span: .thisEvent)
-                } catch {
-                    print("Error saving dragged event: \(error)")
-                }
-
-                // Презареждаме списъка след драг
-                let eventID = ev.eventIdentifier
-                let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
-                let found = self.eventStore.events(
-                    matching: self.eventStore.predicateForEvents(
-                        withStart: self.startOfWeek,
-                        end: endOfWeek,
-                        calendars: nil
-                    )
-                )
-                let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
-                self.events = wrappers
-
-                // Ако искаме да маркираме същия евент като "редактиран"
-                if let sameWrapper = wrappers.first(where: {
-                    guard let ekw = $0 as? EKWrapper else { return false }
-                    return ekw.ekEvent.eventIdentifier == eventID
-                }) as? EKWrapper {
-                    sameWrapper.editedEvent = sameWrapper
+                // If it's a recurring event, ask user how to save
+                if ev.hasRecurrenceRules {
+                    self.askUserAndSaveRecurring(in: vc, event: ev, newStartDate: newDate, isResize: false)
+                } else {
+                    // If it's not recurring, save immediately for this event only
+                    self.applyDragChangesAndSave(ev: ev, newStartDate: newDate, span: .thisEvent)
                 }
             }
         }
 
-        // При drag resize (горна/долна дръжка)
-        container.onEventDragResizeEnded = { descriptor, newDate in
+        // MARK: - Resize End
+        container.onEventDragResizeEnded = { [weak vc] descriptor, newDate in
+            guard let vc = vc else { return }
             if let ekWrapper = descriptor as? EKWrapper {
                 let ev = ekWrapper.ekEvent
 
-                // Вземаме реалните "start" и "end" от descriptor
-                let updatedStart = descriptor.dateInterval.start
-                let updatedEnd   = descriptor.dateInterval.end
-
-                ev.startDate = updatedStart
-                ev.endDate   = updatedEnd
-
-                do {
-                    try self.eventStore.save(ev, span: .thisEvent)
-                } catch {
-                    print("Error saving dragged/resized event: \(error)")
-                }
-
-                // Презареждаме евентите за седмицата
-                let eventID = ev.eventIdentifier
-                let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
-                let found = self.eventStore.events(
-                    matching: self.eventStore.predicateForEvents(
-                        withStart: self.startOfWeek,
-                        end: endOfWeek,
-                        calendars: nil
-                    )
-                )
-                let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
-                self.events = wrappers
-
-                // Ако искаме да го оставим пак „в режим на редактиране“
-                if let sameWrapper = wrappers.first(where: {
-                    guard let ekw = $0 as? EKWrapper else { return false }
-                    return ekw.ekEvent.eventIdentifier == eventID
-                }) as? EKWrapper {
-                    sameWrapper.editedEvent = sameWrapper
+                // If it's a recurring event, ask user
+                if ev.hasRecurrenceRules {
+                    self.askUserAndSaveRecurring(in: vc, event: ev, newStartDate: newDate, isResize: true)
+                } else {
+                    // If it's not recurring, save immediately
+                    self.applyResizeChangesAndSave(ev: ev, descriptor: descriptor, span: .thisEvent)
                 }
             }
         }
@@ -207,7 +157,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction) {
             controller.dismiss(animated: true) {
-                // Презареждаме
+                // Reload after closing the editor
                 let start = self.parent.startOfWeek
                 let end = Calendar.current.date(byAdding: .day, value: 7, to: start)!
                 let found = self.parent.eventStore.events(
@@ -221,7 +171,120 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         }
     }
 
-    // Подпомагаща функция за разделяне на all-day от нормалните
+    // -------------------------------------------------------------------------
+    // MARK: - Utility methods for saving (Drag/Drop and Resize) with EKSpan
+    // -------------------------------------------------------------------------
+
+    /// Ask user how to save changes to a recurring event: this event only, future events, or cancel.
+    private func askUserAndSaveRecurring(in vc: UIViewController,
+                                         event: EKEvent,
+                                         newStartDate: Date,
+                                         isResize: Bool) {
+        let alert = UIAlertController(
+            title: "Recurring Event",
+            message: "This event is part of a series. How would you like to update it?",
+            preferredStyle: .actionSheet
+        )
+
+        // 1) Only this event
+        let onlyThisAction = UIAlertAction(title: "This Event Only", style: .default) { _ in
+            if !isResize {
+                self.applyDragChangesAndSave(ev: event, newStartDate: newStartDate, span: .thisEvent)
+            } else {
+                self.applyResizeChangesAndSave(ev: event, descriptor: nil, span: .thisEvent, forcedNewDate: newStartDate)
+            }
+        }
+
+        // 2) Future events
+        let futureAction = UIAlertAction(title: "All Future Events", style: .default) { _ in
+            if !isResize {
+                self.applyDragChangesAndSave(ev: event, newStartDate: newStartDate, span: .futureEvents)
+            } else {
+                self.applyResizeChangesAndSave(ev: event, descriptor: nil, span: .futureEvents, forcedNewDate: newStartDate)
+            }
+        }
+
+        // 3) Cancel
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            self.reloadCurrentWeek()  // Reload to revert the visual change
+        }
+
+        alert.addAction(onlyThisAction)
+        alert.addAction(futureAction)
+        alert.addAction(cancelAction)
+
+        // iPad support
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = vc.view
+            popover.sourceRect = CGRect(x: vc.view.bounds.midX,
+                                        y: vc.view.bounds.midY,
+                                        width: 0, height: 0)
+            popover.permittedArrowDirections = []
+        }
+
+        vc.present(alert, animated: true)
+    }
+
+    /// Apply dragged changes and save with the given EKSpan.
+    private func applyDragChangesAndSave(ev: EKEvent,
+                                         newStartDate: Date,
+                                         span: EKSpan) {
+        let duration = ev.endDate.timeIntervalSince(ev.startDate)
+        ev.startDate = newStartDate
+        ev.endDate   = newStartDate.addingTimeInterval(duration)
+
+        do {
+            try eventStore.save(ev, span: span)
+        } catch {
+            print("Error while saving dragged event: \(error)")
+        }
+
+        reloadCurrentWeek()
+    }
+
+    /// Apply resized changes and save with the given EKSpan.
+    ///
+    /// - If we have a descriptor, we use `descriptor.dateInterval.start/end`.
+    /// - If nil (after the alert), we use `forcedNewDate` to update start/end.
+    private func applyResizeChangesAndSave(ev: EKEvent,
+                                           descriptor: EventDescriptor?,
+                                           span: EKSpan,
+                                           forcedNewDate: Date? = nil) {
+        if let desc = descriptor {
+            ev.startDate = desc.dateInterval.start
+            ev.endDate   = desc.dateInterval.end
+        }
+        else if let newDt = forcedNewDate {
+            // Simple approach: keep the same duration, move startDate to newDt
+            let oldDuration = ev.endDate.timeIntervalSince(ev.startDate)
+            ev.startDate = newDt
+            ev.endDate   = newDt.addingTimeInterval(oldDuration)
+        }
+
+        do {
+            try eventStore.save(ev, span: span)
+        } catch {
+            print("Error while saving resized event: \(error)")
+        }
+
+        reloadCurrentWeek()
+    }
+
+    /// Reload events for the current week to refresh UI
+    private func reloadCurrentWeek() {
+        let endOfWeek = Calendar.current.date(byAdding: .day, value: 7, to: self.startOfWeek)!
+        let found = self.eventStore.events(
+            matching: self.eventStore.predicateForEvents(
+                withStart: self.startOfWeek,
+                end: endOfWeek,
+                calendars: nil
+            )
+        )
+        let wrappers = found.map { EKWrapper(eventKitEvent: $0) }
+        self.events = wrappers
+    }
+
+    // Splits all-day vs normal events
     private func splitAllDay(_ evts: [EventDescriptor]) -> ([EventDescriptor], [EventDescriptor]) {
         var allDay = [EventDescriptor]()
         var regular = [EventDescriptor]()
