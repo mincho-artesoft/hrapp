@@ -2,13 +2,6 @@
 //  TwoWayPinnedWeekContainerView.swift
 //  ExampleCalendarApp
 //
-//  UIView, който държи:
-//   - Навигация < / >
-//   - DaysHeaderView
-//   - HoursColumnView
-//   - WeekTimelineViewNonOverlapping
-//  -> препраща onEventDragEnded нагоре
-//
 
 import UIKit
 import CalendarKit
@@ -87,7 +80,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // НавБар
         navBar.backgroundColor = .secondarySystemBackground
         addSubview(navBar)
 
@@ -122,23 +114,19 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // Свързваме weekView с hoursColumnView, за да може да управлява show5MinuteMarks
+        // Свързваме weekView с hoursColumnView
         weekView.hoursColumnView = hoursColumnView
 
-        // Настройки за DaysHeaderView
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         daysHeaderView.dayColumnWidth = 100
 
-        // Настройки за WeekTimelineViewNonOverlapping
         weekView.leadingInsetForHours = leftColumnWidth
         weekView.dayColumnWidth = 100
         weekView.hourHeight = 50
         weekView.allDayHeight = 40
         weekView.autoResizeAllDayHeight = true
 
-        // Настройка за HoursColumnView
         hoursColumnView.hourHeight = 50
-        // hoursColumnView.show5MinuteMarks = false (по подразбиране)
     }
 
     public override func layoutSubviews() {
@@ -210,7 +198,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // Обновяваме дали текущият ден е в седмицата и задаваме currentTime, за да се рисува балон
+        // Обновяваме дали текущият ден е в седмицата, задаваме currentTime, за балона
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
