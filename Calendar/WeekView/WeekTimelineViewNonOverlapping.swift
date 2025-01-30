@@ -5,7 +5,7 @@
 //  - Non-overlapping подреждане
 //  - Drag & drop на целия евент (Pan / LongPress)
 //  - Resize (горна/долна дръжка)
-//  - Дроп/прехвърляне в all-day зоната, включително за дълги евенти (ВНИМАНИЕ: ползваме frame.minY < allDayHeight)
+//  - Дроп/прехвърляне в all-day зоната, включително за дълги евенти
 //  - „snap“ към най-близките 10 минути при отпускане
 //  - Динамично рисуване на най-близката 10-минутна отметка в HoursColumnView
 //
@@ -418,6 +418,14 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                desc.editedEvent == nil {
                 desc.editedEvent = desc
                 evView.updateWithDescriptor(event: desc)
+
+                // >>> Ново: ако не е all-day, веднага показваме "minuteMark"
+                if !desc.isAllDay {
+                    setSingle10MinuteMarkFromDate(desc.dateInterval.start)
+                } else {
+                    hoursColumnView?.selectedMinuteMark = nil
+                    hoursColumnView?.setNeedsDisplay()
+                }
             }
             currentlyEditedEventView = evView
 
@@ -438,7 +446,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             newF.origin.y = loc.y - offset.y
             evView.frame = newF
 
-            // Динамично -> 10-мин отметка (само ако не сме горе в all-day)
+            // Динамично -> 10-мин отметка (ако не сме горе в all-day)
             if newF.minY < allDayHeight {
                 hoursColumnView?.selectedMinuteMark = nil
                 hoursColumnView?.setNeedsDisplay()
@@ -452,9 +460,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             if let desc = eventViewToDescriptor[evView] {
                 // Проверяваме дали сме "дропнали" в all-day зоната
                 if let dayIdx = dayIndexIfAllDayDrop(evView.frame) {
-                    // -> Всички day-based all-day настройки
                     desc.isAllDay = true
-
                     if let dayDate = Calendar.current.date(byAdding: .day, value: dayIdx, to: startOfWeek) {
                         let startOfDay = Calendar.current.startOfDay(for: dayDate)
                         let endOfDay   = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
@@ -463,13 +469,13 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     }
                 }
                 else if let newRaw = dateFromFrame(evView.frame) {
-                    // -> Редови евент с конкретни часове
+                    // Редови евент
                     let snapped = snapToNearest10Min(newRaw)
                     desc.isAllDay = false
                     onEventDragEnded?(desc, snapped)
                 }
                 else if let orig = originalFrameForDraggedEvent {
-                    // Ако изобщо не можем да вземем валидна дата - връщаме
+                    // Връщаме го, ако няма валидна дата
                     evView.frame = orig
                 }
             }
@@ -620,7 +626,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             ghost.frame = f
 
             // Динамична отметка
-            // Ако горната/долната част е над allDayHeight -> махаме minuteMark
             if f.minY < allDayHeight || f.maxY < allDayHeight {
                 hoursColumnView?.selectedMinuteMark = nil
                 hoursColumnView?.setNeedsDisplay()
@@ -815,15 +820,14 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
-    // MARK: - (UPDATED) Проверка дали drop-ът е в all-day зоната (по minY)
-    /// Ако midX (или centerX) на евента е в даден ден, и minY е < allDayHeight -> връща dayIndex
+    // MARK: - (UPDATED) Проверка дали drop-ът е в all-day зоната
     private func dayIndexIfAllDayDrop(_ frame: CGRect) -> Int? {
         let midX = frame.midX
         if midX < leadingInsetForHours { return nil }
         let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
         if dayIndex < 0 || dayIndex > 6 { return nil }
 
-        // (UPDATED) Вече гледаме frame.minY, за да може и дълги евенти да се прехвърлят
+        // Ако frame.minY < allDayHeight -> смятаме, че е all-day
         if frame.minY < allDayHeight {
             return dayIndex
         }
@@ -855,7 +859,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             if dayIdx >= 0 && dayIdx < 7 {
                 if let dayDate = Calendar.current.date(byAdding: .day, value: dayIdx, to: startOfWeek) {
                     let startOfDay = Calendar.current.startOfDay(for: dayDate)
-                    onEmptyLongPress?(startOfDay) // <- в callback може да зададете all-day = true
+                    onEmptyLongPress?(startOfDay) // <- в callback може да си зададете isAllDay = true
                 }
             }
             return
