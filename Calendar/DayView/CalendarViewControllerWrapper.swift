@@ -2,8 +2,6 @@
 //  CalendarViewControllerWrapper.swift
 //  ExampleCalendarApp
 //
-//  Свързва SwiftUI с нашия Custom CalendarViewController (който наследява CalendarKit.DayViewController).
-//
 
 import SwiftUI
 import CalendarKit
@@ -21,7 +19,8 @@ struct CalendarViewControllerWrapper: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: CalendarViewController, context: Context) {
-        // Примерно, ако се смени selectedDate
-        // uiViewController.dayView.state?.move(to: selectedDate)
+        // Ако date се промени, да обновим DayView:
+        uiViewController.selectedDate = selectedDate
+        uiViewController.dayView.state?.move(to: selectedDate)
     }
 }

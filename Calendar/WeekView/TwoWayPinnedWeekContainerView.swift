@@ -1,3 +1,7 @@
+//
+//  TwoWayPinnedWeekContainerView.swift
+//  ExampleCalendarApp
+//
 import UIKit
 import CalendarKit
 
@@ -22,27 +26,36 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
+    /// Колбек – при смяна на седмицата (натискане на < или >)
     public var onWeekChange: ((Date) -> Void)?
+
+    /// Колбек – при тап върху евент
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
             weekView.onEventTap = onEventTap
         }
     }
+    /// Колбек – при long press на празно място
     public var onEmptyLongPress: ((Date) -> Void)? {
         didSet {
             weekView.onEmptyLongPress = onEmptyLongPress
         }
     }
+    /// Колбек – при отпускане на drag (цял евент)
     public var onEventDragEnded: ((EventDescriptor, Date) -> Void)? {
         didSet {
             weekView.onEventDragEnded = onEventDragEnded
         }
     }
+    /// Колбек – при отпускане на resize
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)? {
         didSet {
             weekView.onEventDragResizeEnded = onEventDragResizeEnded
         }
     }
+
+    /// Нов колбек – при тап върху име на ден (DaysHeaderView)
+    public var onDayLabelTap: ((Date) -> Void)?
 
     public var startOfWeek: Date = Date() {
         didSet {
@@ -98,6 +111,11 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         daysHeaderScrollView.addSubview(daysHeaderView)
         addSubview(daysHeaderScrollView)
 
+        // ТУК свързваме onDayTap:
+        daysHeaderView.onDayTap = { [weak self] tappedDate in
+            self?.onDayLabelTap?(tappedDate)
+        }
+
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
         hoursColumnScrollView.addSubview(hoursColumnView)
@@ -109,7 +127,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // Връзка
+        // Свързваме weekView.hoursColumnView
         weekView.hoursColumnView = hoursColumnView
 
         daysHeaderView.leadingInsetForHours = leftColumnWidth

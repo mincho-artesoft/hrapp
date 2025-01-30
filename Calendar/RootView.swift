@@ -2,11 +2,6 @@
 //  RootView.swift
 //  ExampleCalendarApp
 //
-//  - Месечен (MonthCalendarView)
-//  - Дневен (DayCalendarWrapperView)
-//  - Годишен (YearCalendarView)
-//  - Седмичен (TwoWayPinnedWeekWrapper) + Drag/Drop функционалност
-//
 
 import SwiftUI
 import EventKit
@@ -20,6 +15,9 @@ struct RootView: View {
 
     @State private var pinnedStartOfWeek: Date = Date()
     @State private var pinnedEvents: [EventDescriptor] = []
+
+    // Тук пазим кой ден сме избрали за Day View:
+    @State private var dayTabSelectedDate = Date()
 
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
@@ -39,15 +37,23 @@ struct RootView: View {
                 case 0:
                     MonthCalendarView(viewModel: calendarVM, startMonth: Date())
                 case 1:
-                    DayCalendarWrapperView(eventStore: calendarVM.eventStore)
+                    // Day View, подаваме конкретна дата
+                    DayCalendarWrapperView(
+                        eventStore: calendarVM.eventStore,
+                        date: dayTabSelectedDate
+                    )
                 case 2:
                     YearCalendarView(viewModel: calendarVM)
                 case 3:
-                    // Тук имаме drag/drop
                     TwoWayPinnedWeekWrapper(
                         startOfWeek: $pinnedStartOfWeek,
                         events: $pinnedEvents,
-                        eventStore: calendarVM.eventStore
+                        eventStore: calendarVM.eventStore,
+                        onDayLabelTap: { tappedDate in
+                            // Когато натиснем върху ден (DaysHeaderView):
+                            self.dayTabSelectedDate = tappedDate
+                            self.selectedTab = 1
+                        }
                     )
                     .onAppear {
                         loadPinnedWeekEvents()
@@ -55,6 +61,7 @@ struct RootView: View {
                     .onReceive(timer) { _ in
                         loadPinnedWeekEvents()
                     }
+
                 default:
                     Text("Невалидна селекция")
                 }

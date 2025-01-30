@@ -11,11 +11,16 @@ import CalendarKit
 
 struct DayCalendarWrapperView: View {
     let eventStore: EKEventStore
-    @State private var date = Date()
     
+    /// Ново пропърти, за да показваме конкретна дата
+    var date: Date
+
     var body: some View {
-        CalendarViewControllerWrapper(selectedDate: date, eventStore: eventStore)
-            .navigationTitle("Day View")
-            .navigationBarTitleDisplayMode(.inline)
+        CalendarViewControllerWrapper(
+            selectedDate: date,
+            eventStore: eventStore
+        )
+        .navigationTitle("Day View")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
