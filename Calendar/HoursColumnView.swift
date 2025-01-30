@@ -9,21 +9,13 @@ public final class HoursColumnView: UIView {
     public var hourHeight: CGFloat = 50
     public var topOffset: CGFloat = 0
 
-    /// Дали сме в текущия ден/седмица: ако е true + имаме currentTime,
-    /// рисуваме оранжев балон за текущия час.
     public var isCurrentDayInWeek: Bool = false
-
-    /// Текущото време (ако е nil, не показваме балон)
     public var currentTime: Date?
 
-    /**
-     Тук държим информацията за *една-единствена* 5-минутна отметка,
-     която да покажем. Пример: (hour: 13, minute: 10) -> рисуваме ".10" при 13ч.
-     Ако е nil, не рисуваме нищо.
-     */
+    /// Само една 5-минутна отметка – най-близката до началото/края (според логиката)
     public var selected5MinMark: (hour: Int, minute: Int)?
 
-    // Шрифт/цвят за основните (целите) часове
+    // Шрифт/цвят за кръглите часове (12 AM, 1 AM...)
     private let majorFont = UIFont.systemFont(ofSize: 11, weight: .medium)
     private let majorColor = UIColor.darkText
 
@@ -46,7 +38,7 @@ public final class HoursColumnView: UIView {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
         //
-        // 1) Рисуваме всички цели часове (0..24) в 12-часов формат AM/PM
+        // 1) Цели часове (0...24)
         //
         for hour in 0...24 {
             let y = topOffset + CGFloat(hour)*hourHeight
@@ -55,10 +47,10 @@ public final class HoursColumnView: UIView {
             ctx.setStrokeColor(UIColor.lightGray.cgColor)
             ctx.setLineWidth(0.5)
             ctx.move(to: CGPoint(x: bounds.width - 5, y: y))
-            ctx.addLine(to: CGPoint(x: bounds.width, y: y))
+            ctx.addLine(to: CGPoint(x: bounds.width,     y: y))
             ctx.strokePath()
 
-            // Текст, например "12 AM", "1 AM", ...
+            // Текст: "12 AM", "1 AM", ...
             let hourStr = hourString12HourFormat(hour)
             let attrStr = NSAttributedString(
                 string: hourStr,
@@ -74,19 +66,17 @@ public final class HoursColumnView: UIView {
         }
 
         //
-        // 2) Рисуваме ЕДНА 5-минутна отметка (ако е зададена):
+        // 2) ЕДНА 5-минутна отметка (ако е зададена)
         //
         if let mark = selected5MinMark {
             let h = mark.hour
             let m = mark.minute
-            // Проверяваме hour в [0..23], minute в [1..59]
             if h >= 0 && h < 24 && m > 0 && m < 60 {
                 let baseY = topOffset + CGFloat(h)*hourHeight
                 let fraction = CGFloat(m)/60.0
                 let yPos = baseY + fraction*hourHeight
 
-                // Текст, напр. ".05", ".10"
-                let minuteStr = String(format: ".%02d", m)
+                let minuteStr = String(format: ":%02d", m) // ".05", ".10" ...
                 let attr = NSAttributedString(
                     string: minuteStr,
                     attributes: [
@@ -102,8 +92,7 @@ public final class HoursColumnView: UIView {
         }
 
         //
-        // 3) Рисуваме (по избор) оранжев балон за текущия час,
-        //    ако isCurrentDayInWeek == true и currentTime != nil
+        // 3) Оранжев балон за текущия час (ако isCurrentDayInWeek = true и currentTime != nil)
         //
         if isCurrentDayInWeek, let current = currentTime {
             let cal = Calendar.current
@@ -138,7 +127,6 @@ public final class HoursColumnView: UIView {
         }
     }
 
-    // Превръща час 0..24 в 12-часов AM/PM, например 13->"1 PM", 0->"12 AM", 24->"12 AM"
     private func hourString12HourFormat(_ hour: Int) -> String {
         let hrMod12 = hour % 12
         let finalHr = (hrMod12 == 0) ? 12 : hrMod12
@@ -146,7 +134,6 @@ public final class HoursColumnView: UIView {
         return "\(finalHr) \(ampm)"
     }
 
-    // Пример: 13:24 -> "1:24 PM"
     private func hourMinuteAmPmString(hour: Int, minute: Int) -> String {
         let hrMod12 = hour % 12
         let finalHr = (hrMod12 == 0) ? 12 : hrMod12

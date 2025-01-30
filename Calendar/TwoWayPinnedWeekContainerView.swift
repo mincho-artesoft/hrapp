@@ -198,7 +198,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // Обновяваме дали текущият ден е в седмицата, задаваме currentTime, за балона
+        // Обновяваме дали е текущата седмица, и currentTime за балона
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
