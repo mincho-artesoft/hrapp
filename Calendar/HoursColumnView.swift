@@ -12,14 +12,14 @@ public final class HoursColumnView: UIView {
     public var isCurrentDayInWeek: Bool = false
     public var currentTime: Date?
 
-    /// Само една 5-минутна отметка – най-близката до началото/края (според логиката)
-    public var selected5MinMark: (hour: Int, minute: Int)?
+    /// Ще показваме само една отметка (на 10 мин). Ако nil, не рисуваме нищо.
+    public var selectedMinuteMark: (hour: Int, minute: Int)?
 
-    // Шрифт/цвят за кръглите часове (12 AM, 1 AM...)
+    // Основен шрифт/цвят за целите часове
     private let majorFont = UIFont.systemFont(ofSize: 11, weight: .medium)
     private let majorColor = UIColor.darkText
 
-    // Шрифт/цвят за 5-минутната отметка
+    // Шрифт/цвят за 10-минутната отметка
     private let minorFont = UIFont.systemFont(ofSize: 10, weight: .regular)
     private let minorColor = UIColor.darkGray.withAlphaComponent(0.8)
 
@@ -38,7 +38,7 @@ public final class HoursColumnView: UIView {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
         //
-        // 1) Цели часове (0...24)
+        // 1) Рисуваме целите часове 0..24 в 12-часов формат
         //
         for hour in 0...24 {
             let y = topOffset + CGFloat(hour)*hourHeight
@@ -50,7 +50,7 @@ public final class HoursColumnView: UIView {
             ctx.addLine(to: CGPoint(x: bounds.width,     y: y))
             ctx.strokePath()
 
-            // Текст: "12 AM", "1 AM", ...
+            // Текст "12 AM", "1 AM", ...
             let hourStr = hourString12HourFormat(hour)
             let attrStr = NSAttributedString(
                 string: hourStr,
@@ -61,22 +61,24 @@ public final class HoursColumnView: UIView {
             )
             let size = attrStr.size()
             let textX = bounds.width - size.width - 4
-            let textY = y - size.height/2
+            let textY = y - size.height / 2
             attrStr.draw(at: CGPoint(x: textX, y: textY))
         }
 
         //
-        // 2) ЕДНА 5-минутна отметка (ако е зададена)
+        // 2) Рисуваме ЕДНА 10-минутна отметка (ако е зададена)
         //
-        if let mark = selected5MinMark {
+        if let mark = selectedMinuteMark {
             let h = mark.hour
             let m = mark.minute
+            // Валидиране: h в [0..23], m в [1..59], без 0 и 60
             if h >= 0 && h < 24 && m > 0 && m < 60 {
                 let baseY = topOffset + CGFloat(h)*hourHeight
                 let fraction = CGFloat(m)/60.0
                 let yPos = baseY + fraction*hourHeight
 
-                let minuteStr = String(format: ":%02d", m) // ".05", ".10" ...
+                // Примерен формат ".10", ".30"
+                let minuteStr = String(format: ".%02d", m)
                 let attr = NSAttributedString(
                     string: minuteStr,
                     attributes: [
@@ -92,7 +94,7 @@ public final class HoursColumnView: UIView {
         }
 
         //
-        // 3) Оранжев балон за текущия час (ако isCurrentDayInWeek = true и currentTime != nil)
+        // 3) Оранжев балон за текущия час (ако isCurrentDayInWeek + currentTime)
         //
         if isCurrentDayInWeek, let current = currentTime {
             let cal = Calendar.current
@@ -127,6 +129,7 @@ public final class HoursColumnView: UIView {
         }
     }
 
+    // MARK: - Помощни
     private func hourString12HourFormat(_ hour: Int) -> String {
         let hrMod12 = hour % 12
         let finalHr = (hrMod12 == 0) ? 12 : hrMod12
