@@ -122,23 +122,23 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // Задаваме настройки (ширини, височини) към DaysHeaderView, WeekView, HoursColumnView
+        // Свързваме weekView с hoursColumnView, за да може да управлява show5MinuteMarks
+        weekView.hoursColumnView = hoursColumnView
+
+        // Настройки за DaysHeaderView
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         daysHeaderView.dayColumnWidth = 100
 
+        // Настройки за WeekTimelineViewNonOverlapping
         weekView.leadingInsetForHours = leftColumnWidth
         weekView.dayColumnWidth = 100
         weekView.hourHeight = 50
         weekView.allDayHeight = 40
         weekView.autoResizeAllDayHeight = true
 
+        // Настройка за HoursColumnView
         hoursColumnView.hourHeight = 50
-
-        // [NEW] Свързваме callback `onEventSelected` от weekView към нашия hoursColumnView
-        // Така, когато има/няма селекция, колонката може да показва маркировки през 5 мин или през 1 час.
-        weekView.onEventSelected = { [weak self] isSelected in
-            self?.hoursColumnView.isEventSelected = isSelected
-        }
+        // hoursColumnView.show5MinuteMarks = false (по подразбиране)
     }
 
     public override func layoutSubviews() {
@@ -207,11 +207,14 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
                                        height: totalHeight)
         hoursColumnView.topOffset = weekView.allDayHeight
 
-        // Дали сегашният ден е в седмицата
+        bringSubviewToFront(hoursColumnScrollView)
+        bringSubviewToFront(cornerView)
+
+        // Обновяваме дали текущият ден е в седмицата и задаваме currentTime, за да се рисува балон
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
-        hoursColumnView.currentTime        = inWeek ? now : nil
+        hoursColumnView.currentTime = inWeek ? now : nil
 
         hoursColumnView.setNeedsDisplay()
         weekView.setNeedsDisplay()

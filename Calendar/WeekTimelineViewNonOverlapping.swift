@@ -4,9 +4,9 @@
 //
 //  - Non-overlapping подреждане
 //  - Drag & drop на целия евент (через Pan или LongPress)
-//  - Resize на евентите (горна/долна дръжка) – и с “клик и дърпане” (Pan), и с “задържане” (LongPress)
-//  - Ghost EventView: изглежда като евента, полупрозрачно, широко колкото целия ден
-//  - Не пипаме името (title) на евента
+//  - Resize на евентите (горна/долна дръжка)
+//  - Ghost EventView
+//  - Не пипаме името на евента
 //
 
 import UIKit
@@ -25,9 +25,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     public var allDayHeight: CGFloat = 40
     public var autoResizeAllDayHeight = true
 
-    /// [NEW] Callback, който ще извикваме, когато потребителят селектира или деселектира евент.
-    /// Предава `true`, ако има активна селекция, и `false`, ако няма.
-    public var onEventSelected: ((Bool) -> Void)?
+    // == Свързваме HoursColumnView, за да включваме/изключваме 5-минутните отметки
+    public weak var hoursColumnView: HoursColumnView?
 
     // Callback-и
     public var onEventTap: ((EventDescriptor) -> Void)?
@@ -55,7 +54,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     private var originalFrameForDraggedEvent: CGRect?
     private var dragOffset: CGPoint?
 
-    // Ключът, под който пазим DragData в layer-а на EventView (примерно за resize)
+    // Ключът, под който пазим DragData (за resize) в layer-а на EventView
     private let DRAG_DATA_KEY = "ResizeDragDataKey"
 
     // Ghost (временен EventView) – за resize
@@ -76,10 +75,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     }
 
     // MARK: - Gesture Recognizer Delegate
-    
-    /// Пример: разрешаваме Pan на самия евент само ако вече е селектиран
     public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        // Ако е Pan върху EventView, позволяваме само ако е текущо селектиран
+        // Ако е Pan върху EventView, позволяваме само ако евентът е селектиран
         if let pan = gestureRecognizer as? UIPanGestureRecognizer,
            let evView = pan.view as? EventView {
             return (currentlyEditedEventView === evView)
@@ -92,12 +89,28 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         lp.minimumPressDuration = 0.7
         addGestureRecognizer(lp)
     }
-
     private func setupTapOnEmptySpace() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapOnEmptySpace(_:)))
         tap.cancelsTouchesInView = false
         tap.delegate = self
         addGestureRecognizer(tap)
+    }
+
+    // MARK: - Tap върху празно място
+    @objc private func handleTapOnEmptySpace(_ gesture: UITapGestureRecognizer) {
+        guard gesture.state == .ended else { return }
+
+        // Ако има селектиран евент -> деселектираме
+        if let oldView = currentlyEditedEventView,
+           let oldDesc = eventViewToDescriptor[oldView] {
+            oldDesc.editedEvent = nil
+            oldView.updateWithDescriptor(event: oldDesc)
+            currentlyEditedEventView = nil
+        }
+
+        // Изключваме 5-минутните отметки
+        hoursColumnView?.show5MinuteMarks = false
+        hoursColumnView?.setNeedsDisplay()
     }
 
     // MARK: - Layout
@@ -307,40 +320,33 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
-    /// Създаваме EventView с нужните жестове:
-    ///  - Tap, LongPress, Pan за целия евент (drag & drop)
-    ///  - Pan И LongPress за всяка дръжка (resize)
     private func createEventView() -> EventView {
         let ev = EventView()
 
-        // ============ 1) TAP -> селектира евента =============
+        // 1) Tap -> селекция
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
         tapGR.delegate = self
         ev.addGestureRecognizer(tapGR)
 
-        // ============ 2) LONG PRESS -> drag целия евент =============
+        // 2) Long Press -> drag на целия евент
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewLongPress(_:)))
         lp.minimumPressDuration = 0.5
         lp.delegate = self
         ev.addGestureRecognizer(lp)
 
-        // ============ 3) PAN -> drag, ако евентът вече е селектиран =============
+        // 3) Pan -> drag, ако евентът вече е селектиран
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
         pan.delegate = self
         ev.addGestureRecognizer(pan)
 
-        // ============ 4) ДРЪЖКИ ЗА RESIZE ============
+        // 4) Resize Handles (Pan и LongPress)
         for handle in ev.eventResizeHandles {
-            // (а) Pan за resize
             let panResize = UIPanGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
             panResize.delegate = self
 
-            // (б) LongPress за resize
             let lpResize = UILongPressGestureRecognizer(target: self, action: #selector(handleResizeHandleLongPressGesture(_:)))
             lpResize.delegate = self
             lpResize.minimumPressDuration = 0.4
-
-            // За да избегнем конфликт (ако потребителят бързо дръпне):
             lpResize.require(toFail: panResize)
 
             handle.addGestureRecognizer(panResize)
@@ -352,13 +358,13 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         return ev
     }
 
-    // MARK: - Tap върху EventView (само за селекция)
+    // MARK: - Tap върху EventView (за селекция)
     @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
         guard let tappedView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[tappedView] else {
             return
         }
-        // Изключваме стар селектиран, ако има
+        // Деселектираме стар
         if let oldView = currentlyEditedEventView,
            oldView !== tappedView,
            let oldDesc = eventViewToDescriptor[oldView] {
@@ -370,28 +376,15 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         tappedView.updateWithDescriptor(event: descriptor)
         currentlyEditedEventView = tappedView
 
-        // [NEW] Уведомяваме, че има селекция
-        onEventSelected?(true)
+        // Включваме 5-минутните отметки
+        hoursColumnView?.show5MinuteMarks = true
+        hoursColumnView?.setNeedsDisplay()
 
+        // Callback
         onEventTap?(descriptor)
     }
 
-    // MARK: - Tap върху празно -> деселекция
-    @objc private func handleTapOnEmptySpace(_ gesture: UITapGestureRecognizer) {
-        guard gesture.state == .ended else { return }
-        // Ако имаме някой евент в edit mode -> махаме го
-        if let oldView = currentlyEditedEventView,
-           let oldDesc = eventViewToDescriptor[oldView] {
-            oldDesc.editedEvent = nil
-            oldView.updateWithDescriptor(event: oldDesc)
-            currentlyEditedEventView = nil
-        }
-
-        // [NEW] Уведомяваме, че вече няма селекция
-        onEventSelected?(false)
-    }
-
-    // MARK: - LongPress върху EventView (drag & drop на целия евент)
+    // MARK: - LongPress върху EventView (drag & drop)
     @objc private func handleEventViewLongPress(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView else { return }
 
@@ -399,7 +392,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
         switch gesture.state {
         case .began:
-            // Селектираме, ако не е
+            // Селектираме, ако не е селектиран
             if let oldView = currentlyEditedEventView,
                oldView !== evView,
                let oldDesc = eventViewToDescriptor[oldView] {
@@ -410,13 +403,14 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                desc.editedEvent == nil {
                 desc.editedEvent = desc
                 evView.updateWithDescriptor(event: desc)
-                currentlyEditedEventView = evView
-
-                // [NEW] Уведомяваме, че има селекция
-                onEventSelected?(true)
             }
+            currentlyEditedEventView = evView
 
-            // Започваме drag
+            // == ВКЛЮЧВАМЕ 5-МИНУТНИТЕ ОТМЕТКИ И ТУК ==
+            hoursColumnView?.show5MinuteMarks = true
+            hoursColumnView?.setNeedsDisplay()
+
+            // Подготвяме Drag
             originalFrameForDraggedEvent = evView.frame
             dragOffset = CGPoint(
                 x: location.x - evView.frame.minX,
@@ -427,10 +421,10 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             guard let offset = dragOffset,
                   currentlyEditedEventView === evView else { return }
 
-            let location = gesture.location(in: self)
+            let newLoc = gesture.location(in: self)
             var newF = evView.frame
-            newF.origin.x = location.x - offset.x
-            newF.origin.y = location.y - offset.y
+            newF.origin.x = newLoc.x - offset.x
+            newF.origin.y = newLoc.y - offset.y
             evView.frame = newF
 
         case .ended, .cancelled:
@@ -519,9 +513,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             }
             currentlyEditedEventView = eventView
 
-            // [NEW] Има селекция
-            onEventSelected?(true)
-
             // Създаваме Ghost
             let ghost = EventView()
             ghost.updateWithDescriptor(event: desc)
@@ -529,7 +520,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             addSubview(ghost)
             ghostView = ghost
 
-            // Правим ghost-а колкото цялата колона
             let dayIndex = dayIndexFor(desc.dateInterval.start)
             let dayX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
             let originalY = eventView.frame.origin.y
@@ -541,11 +531,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 width: dayColumnWidth,
                 height: originalH
             )
-
-            // Скриваме реалния евент
             eventView.isHidden = true
 
-            // Пазим начална информация (DragData)
             let startGlobal = gesture.location(in: self.window)
             let d = DragData(
                 startGlobalPoint: startGlobal,
@@ -594,13 +581,9 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             ghost.removeFromSuperview()
             ghostView = nil
 
-            // Показваме реалния eventView
             eventView.isHidden = false
-
-            // Пренареждаме UI
             setNeedsLayout()
 
-            // Махаме DragData
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
 
         default:
@@ -631,17 +614,12 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             }
             currentlyEditedEventView = eventView
 
-            // [NEW] Също така - селектиран евент
-            onEventSelected?(true)
-
-            // Създаваме Ghost
             let ghost = EventView()
             ghost.updateWithDescriptor(event: desc)
             ghost.alpha = 0.5
             addSubview(ghost)
             ghostView = ghost
 
-            // Правим ghost-а колкото цялата колона
             let dayIndex = dayIndexFor(desc.dateInterval.start)
             let dayX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
             let originalY = eventView.frame.origin.y
@@ -653,11 +631,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 width: dayColumnWidth,
                 height: originalH
             )
-
-            // Скриваме реалния евент
             eventView.isHidden = true
 
-            // Пазим DragData
             let startGlobal = gesture.location(in: self.window)
             let d = DragData(
                 startGlobalPoint: startGlobal,
@@ -706,10 +681,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             ghost.removeFromSuperview()
             ghostView = nil
 
-            // Показваме реалния eventView
             eventView.isHidden = false
-
-            // Пренареждаме UI
             setNeedsLayout()
 
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
@@ -730,17 +702,14 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 return
             }
         }
-        // Ако има евент в edit mode - махаме го
+        // Ако има евент в edit mode - деселектираме
         if let oldView = currentlyEditedEventView,
            let oldDesc = eventViewToDescriptor[oldView] {
             oldDesc.editedEvent = nil
             oldView.updateWithDescriptor(event: oldDesc)
             currentlyEditedEventView = nil
         }
-        // [NEW] Тук също вероятно искаме да кажем "няма селекция"
-        onEventSelected?(false)
 
-        // Callback за създаване на ново събитие
         if let tappedDate = dateFromPoint(point) {
             onEmptyLongPress?(tappedDate)
         }
@@ -816,6 +785,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         return hourHeight * (hour + minute/60)
     }
 
+    // Връща индекс на деня 0..6 спрямо startOfWeek
     private func dayIndexFor(_ date: Date) -> Int {
         let cal = Calendar.current
         let startOnly = startOfWeek.dateOnly(calendar: cal)
@@ -844,7 +814,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         let totalWidth = leadingInsetForHours + dayColumnWidth*7
         let normalZoneTop = allDayHeight
 
-        // Хоризонтални линии (часови)
+        // Хоризонтални линии за всеки час
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
@@ -857,7 +827,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         ctx.strokePath()
         ctx.restoreGState()
 
-        // Вертикални линии (дните)
+        // Вертикални линии (разделят дните)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
@@ -872,7 +842,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         ctx.strokePath()
         ctx.restoreGState()
 
-        // Текуща червена линия
+        // Текуща червена линия (ако датата попада в седмицата)
         drawCurrentTimeLineForCurrentDay(ctx: ctx)
     }
 
@@ -904,7 +874,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             ctx.restoreGState()
         }
 
-        // Плътна червена линия (върху текущия ден)
+        // Плътна червена линия за текущия ден
         ctx.saveGState()
         ctx.setStrokeColor(UIColor.systemRed.cgColor)
         ctx.setLineWidth(1.5)
@@ -914,7 +884,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         ctx.strokePath()
         ctx.restoreGState()
 
-        // Дясна полупрозрачна
+        // Дясна полупрозрачна част
         if currentDayX2 < totalRightX {
             ctx.saveGState()
             ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
