@@ -1,7 +1,3 @@
-//
-//  TwoWayPinnedWeekContainerView.swift
-//  ExampleCalendarApp
-//
 import UIKit
 import CalendarKit
 
@@ -26,35 +22,30 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
-    /// Колбек – при смяна на седмицата (натискане на < или >)
+    /// Callback – when user taps < or >
     public var onWeekChange: ((Date) -> Void)?
 
-    /// Колбек – при тап върху евент
+    /// Tapping an event
     public var onEventTap: ((EventDescriptor) -> Void)? {
-        didSet {
-            weekView.onEventTap = onEventTap
-        }
-    }
-    /// Колбек – при long press на празно място
-    public var onEmptyLongPress: ((Date) -> Void)? {
-        didSet {
-            weekView.onEmptyLongPress = onEmptyLongPress
-        }
-    }
-    /// Колбек – при отпускане на drag (цял евент)
-    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)? {
-        didSet {
-            weekView.onEventDragEnded = onEventDragEnded
-        }
-    }
-    /// Колбек – при отпускане на resize
-    public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)? {
-        didSet {
-            weekView.onEventDragResizeEnded = onEventDragResizeEnded
-        }
+        didSet { weekView.onEventTap = onEventTap }
     }
 
-    /// Нов колбек – при тап върху име на ден (DaysHeaderView)
+    /// Long press on empty area
+    public var onEmptyLongPress: ((Date) -> Void)? {
+        didSet { weekView.onEmptyLongPress = onEmptyLongPress }
+    }
+
+    /// Drag/Drop entire event
+    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)? {
+        didSet { weekView.onEventDragEnded = onEventDragEnded }
+    }
+
+    /// Resize
+    public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)? {
+        didSet { weekView.onEventDragResizeEnded = onEventDragResizeEnded }
+    }
+
+    /// Tapping day label
     public var onDayLabelTap: ((Date) -> Void)?
 
     public var startOfWeek: Date = Date() {
@@ -111,9 +102,8 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         daysHeaderScrollView.addSubview(daysHeaderView)
         addSubview(daysHeaderScrollView)
 
-        // ТУК свързваме onDayTap:
-        daysHeaderView.onDayTap = { [weak self] tappedDate in
-            self?.onDayLabelTap?(tappedDate)
+        daysHeaderView.onDayTap = { [weak self] date in
+            self?.onDayLabelTap?(date)
         }
 
         hoursColumnScrollView.showsVerticalScrollIndicator = false
@@ -127,7 +117,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // Свързваме weekView.hoursColumnView
         weekView.hoursColumnView = hoursColumnView
 
         daysHeaderView.leadingInsetForHours = leftColumnWidth
@@ -150,21 +139,15 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
                               height: navBarHeight)
 
         let btnW: CGFloat = 44
-        prevWeekButton.frame = CGRect(x: 8, y: 0,
+        prevWeekButton.frame = CGRect(x: 8, y: 0, width: btnW, height: navBarHeight)
+        nextWeekButton.frame = CGRect(x: navBar.bounds.width - btnW - 8, y: 0,
                                       width: btnW, height: navBarHeight)
-        nextWeekButton.frame = CGRect(x: navBar.bounds.width - btnW - 8,
-                                      y: 0,
-                                      width: btnW,
-                                      height: navBarHeight)
-        currentWeekLabel.frame = CGRect(x: prevWeekButton.frame.maxX,
-                                        y: 0,
+        currentWeekLabel.frame = CGRect(x: prevWeekButton.frame.maxX, y: 0,
                                         width: nextWeekButton.frame.minX - prevWeekButton.frame.maxX,
                                         height: navBarHeight)
 
-        cornerView.frame = CGRect(x: 0,
-                                  y: navBarHeight,
-                                  width: leftColumnWidth,
-                                  height: daysHeaderHeight)
+        cornerView.frame = CGRect(x: 0, y: navBarHeight,
+                                  width: leftColumnWidth, height: daysHeaderHeight)
 
         daysHeaderScrollView.frame = CGRect(x: leftColumnWidth,
                                             y: navBarHeight,
@@ -176,42 +159,32 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             width: totalDaysHeaderWidth - leftColumnWidth,
             height: daysHeaderHeight
         )
-        daysHeaderView.frame = CGRect(x: 0,
-                                      y: 0,
+        daysHeaderView.frame = CGRect(x: 0, y: 0,
                                       width: totalDaysHeaderWidth,
                                       height: daysHeaderHeight)
 
         let yMain = navBarHeight + daysHeaderHeight
-        mainScrollView.frame = CGRect(
-            x: leftColumnWidth,
-            y: yMain,
-            width: bounds.width - leftColumnWidth,
-            height: bounds.height - yMain
-        )
-        hoursColumnScrollView.frame = CGRect(
-            x: 0,
-            y: yMain,
-            width: leftColumnWidth,
-            height: bounds.height - yMain
-        )
+        mainScrollView.frame = CGRect(x: leftColumnWidth, y: yMain,
+                                      width: bounds.width - leftColumnWidth,
+                                      height: bounds.height - yMain)
+        hoursColumnScrollView.frame = CGRect(x: 0, y: yMain,
+                                             width: leftColumnWidth,
+                                             height: bounds.height - yMain)
 
         let totalWidth = weekView.leadingInsetForHours + 7*weekView.dayColumnWidth
         let totalHeight = weekView.allDayHeight + 24*weekView.hourHeight
 
         mainScrollView.contentSize = CGSize(width: totalWidth, height: totalHeight)
-        weekView.frame = CGRect(x: 0, y: 0,
-                                width: totalWidth,
-                                height: totalHeight)
+        weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: totalHeight)
+
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: totalHeight)
-        hoursColumnView.frame = CGRect(x: 0, y: 0,
-                                       width: leftColumnWidth,
-                                       height: totalHeight)
+        hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: totalHeight)
         hoursColumnView.topOffset = weekView.allDayHeight
 
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // Обновяваме текущия час
+        // Show the current time line if the week includes “today”
         let now = Date()
         let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
         hoursColumnView.isCurrentDayInWeek = inWeek
@@ -230,7 +203,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     @objc private func didTapPrevWeek() {
         var cal = Calendar.current
-        cal.firstWeekday = 2
+        cal.firstWeekday = 2 // Monday start
         if let newDate = cal.date(byAdding: .day, value: -7, to: startOfWeek) {
             let mondayMidnight = newDate.dateOnly(calendar: cal)
             startOfWeek = mondayMidnight
@@ -240,7 +213,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     @objc private func didTapNextWeek() {
         var cal = Calendar.current
-        cal.firstWeekday = 2
+        cal.firstWeekday = 2 // Monday start
         if let newDate = cal.date(byAdding: .day, value: 7, to: startOfWeek) {
             let mondayMidnight = newDate.dateOnly(calendar: cal)
             startOfWeek = mondayMidnight

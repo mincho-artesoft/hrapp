@@ -1,9 +1,3 @@
-//
-//  DaysHeaderView.swift
-//  ExampleCalendarApp
-//
-//  Изписва 7 етикета (Mon 20 Jan, Tue 21 Jan...), започвайки от startOfWeek.
-//
 import UIKit
 
 public final class DaysHeaderView: UIView {
@@ -15,14 +9,14 @@ public final class DaysHeaderView: UIView {
         didSet { updateTexts() }
     }
 
-    /// Колбек, който ще извикаме при тап върху даден ден:
     public var onDayTap: ((Date) -> Void)?
 
     private var labels: [UILabel] = []
 
     private var calendarForLabels: Calendar = {
         var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2 // Monday start
+        // Monday = 2
+        cal.firstWeekday = 2
         return cal
     }()
 
@@ -42,12 +36,9 @@ public final class DaysHeaderView: UIView {
             lbl.font = .systemFont(ofSize: 12, weight: .semibold)
             lbl.textColor = .label
 
-            // Правим лейбъла интерактивен
             lbl.isUserInteractionEnabled = true
-            // Добавяме Tap Gesture
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_:)))
             lbl.addGestureRecognizer(tapGR)
-            // Помним кой ден е това чрез lbl.tag
             lbl.tag = i
 
             labels.append(lbl)
@@ -59,7 +50,6 @@ public final class DaysHeaderView: UIView {
         guard let tappedLabel = gesture.view as? UILabel else { return }
         let dayIndex = tappedLabel.tag
 
-        // Определяме точната дата = startOfWeek + dayIndex дни
         if let tappedDate = calendarForLabels.date(byAdding: .day, value: dayIndex, to: startOfWeek) {
             onDayTap?(tappedDate)
         }
@@ -74,25 +64,20 @@ public final class DaysHeaderView: UIView {
     }
 
     private func updateTexts() {
-        var cal = calendarForLabels
-        cal.firstWeekday = 2 // Monday start
-
+        let cal = calendarForLabels
         let df = DateFormatter()
         df.dateFormat = "EEE, d MMM"
 
         let todayStart = cal.startOfDay(for: Date())
 
-        for (i, lbl) in labels.enumerated() {
+        for i in 0..<7 {
             if let dayDate = cal.date(byAdding: .day, value: i, to: startOfWeek) {
-                lbl.text = df.string(from: dayDate)
+                let dayStr = df.string(from: dayDate)
+                labels[i].text = dayStr
                 let dayOnly = cal.startOfDay(for: dayDate)
-                if dayOnly == todayStart {
-                    lbl.textColor = .systemOrange
-                } else {
-                    lbl.textColor = .label
-                }
+                labels[i].textColor = (dayOnly == todayStart) ? .systemOrange : .label
             } else {
-                lbl.text = "??"
+                labels[i].text = "??"
             }
         }
     }

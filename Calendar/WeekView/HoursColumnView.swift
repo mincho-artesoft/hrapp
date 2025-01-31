@@ -7,7 +7,7 @@ public final class HoursColumnView: UIView {
     public var isCurrentDayInWeek: Bool = false
     public var currentTime: Date?
 
-    /// Показваме само една отметка (hour, minute). Ако е nil, не рисуваме.
+    /// If set, draw a small ".MM" next to that hour
     public var selectedMinuteMark: (hour: Int, minute: Int)?
 
     private let majorFont = UIFont.systemFont(ofSize: 11, weight: .medium)
@@ -30,31 +30,28 @@ public final class HoursColumnView: UIView {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
-        // 1) Рисуваме целите часове 0..24
+        // 1) draw hours 0..24
         for hour in 0...24 {
             let y = topOffset + CGFloat(hour)*hourHeight
-
             ctx.setStrokeColor(UIColor.lightGray.cgColor)
             ctx.setLineWidth(0.5)
             ctx.move(to: CGPoint(x: bounds.width - 5, y: y))
-            ctx.addLine(to: CGPoint(x: bounds.width,     y: y))
+            ctx.addLine(to: CGPoint(x: bounds.width, y: y))
             ctx.strokePath()
 
             let hourStr = hourString12HourFormat(hour)
-            let attrStr = NSAttributedString(
-                string: hourStr,
-                attributes: [
-                    .font: majorFont,
-                    .foregroundColor: majorColor
-                ]
-            )
+            let attrStr = NSAttributedString(string: hourStr,
+                                             attributes: [
+                                                 .font: majorFont,
+                                                 .foregroundColor: majorColor
+                                             ])
             let size = attrStr.size()
             let textX = bounds.width - size.width - 4
             let textY = y - size.height/2
             attrStr.draw(at: CGPoint(x: textX, y: textY))
         }
 
-        // 2) ЕДНА отметка (hour, minute), ако е зададена
+        // 2) single minute mark
         if let mark = selectedMinuteMark {
             let h = mark.hour
             let m = mark.minute
@@ -62,15 +59,12 @@ public final class HoursColumnView: UIView {
                 let baseY = topOffset + CGFloat(h)*hourHeight
                 let fraction = CGFloat(m)/60.0
                 let yPos = baseY + fraction*hourHeight
-
-                let minuteStr = String(format: ".%02d", m)  // ".05", ".10", ...
-                let attr = NSAttributedString(
-                    string: minuteStr,
-                    attributes: [
-                        .font: minorFont,
-                        .foregroundColor: minorColor
-                    ]
-                )
+                let minuteStr = String(format: ".%02d", m) // e.g. ".05", ".10", ...
+                let attr = NSAttributedString(string: minuteStr,
+                                              attributes: [
+                                                  .font: minorFont,
+                                                  .foregroundColor: minorColor
+                                              ])
                 let size = attr.size()
                 let textX = bounds.width - size.width - 4
                 let textY = yPos - size.height/2
@@ -78,7 +72,7 @@ public final class HoursColumnView: UIView {
             }
         }
 
-        // 3) Оранжев балон за текущия час (ако isCurrentDayInWeek + currentTime)
+        // 3) orange bubble for “now”
         if isCurrentDayInWeek, let current = currentTime {
             let cal = Calendar.current
             let comps = cal.dateComponents([.hour, .minute], from: current)
@@ -87,8 +81,8 @@ public final class HoursColumnView: UIView {
             let fraction = hourF + minuteF/60.0
 
             let yPos = topOffset + fraction*hourHeight
-
             let bubbleText = hourMinuteAmPmString(hour: Int(hourF), minute: Int(minuteF))
+
             let bubbleFont = UIFont.systemFont(ofSize: 10, weight: .semibold)
             let bubbleAttrs: [NSAttributedString.Key: Any] = [
                 .font: bubbleFont,
@@ -112,7 +106,6 @@ public final class HoursColumnView: UIView {
         }
     }
 
-    // Пример: 0 -> "12 AM", 13 -> "1 PM", 24 -> "12 AM"
     private func hourString12HourFormat(_ hour: Int) -> String {
         let hrMod12 = hour % 12
         let finalHr = (hrMod12 == 0) ? 12 : hrMod12

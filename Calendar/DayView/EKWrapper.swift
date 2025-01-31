@@ -1,10 +1,3 @@
-//
-//  EKWrapper.swift
-//  ExampleCalendarApp
-//
-//  Преобразува EKEvent в EventDescriptor (CalendarKit) за DayViewController.
-//
-
 import UIKit
 import EventKit
 import CalendarKit
@@ -40,7 +33,7 @@ public final class EKWrapper: EventDescriptor {
     }
 
     public var backgroundColor = UIColor()
-    public var textColor = SystemColors.label
+    public var textColor = UIColor.label
     public var font = UIFont.boldSystemFont(ofSize: 12)
 
     public weak var editedEvent: EventDescriptor?

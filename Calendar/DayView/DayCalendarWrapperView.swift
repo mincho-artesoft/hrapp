@@ -1,10 +1,3 @@
-//
-//  DayCalendarWrapperView.swift
-//  ExampleCalendarApp
-//
-//  SwiftUI View, което „обвива“ CalendarViewController (DayViewController от CalendarKit).
-//
-
 import SwiftUI
 import EventKit
 import CalendarKit
@@ -12,7 +5,7 @@ import CalendarKit
 struct DayCalendarWrapperView: View {
     let eventStore: EKEventStore
     
-    /// Ново пропърти, за да показваме конкретна дата
+    /// We show a particular date in the Day view
     var date: Date
 
     var body: some View {
