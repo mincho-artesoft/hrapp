@@ -163,31 +163,36 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         public func reloadCurrentWeek() {
             let start = parent.startOfWeek
             guard let end = Calendar.current.date(byAdding: .day, value: 7, to: start) else { return }
-
+            
+            // Извличаме всички събития в седмичния интервал.
             let found = parent.eventStore.events(
                 matching: parent.eventStore.predicateForEvents(withStart: start,
                                                                end: end,
                                                                calendars: nil)
             )
-            // We now create partial wrappers that all share the same real event
+            
             var splitted = [EventDescriptor]()
-
+            let cal = Calendar.current
+            
             for ekEvent in found {
                 guard let realStart = ekEvent.startDate,
                       let realEnd   = ekEvent.endDate else { continue }
-
-                // If single-day or zero duration
-                if Calendar.current.isDate(realStart, inSameDayAs: realEnd) {
-                    splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
-                } else {
-                    // multi-day -> slice it up for [start..end]
+                
+                // Изчисляваме разликата в дни между началната и крайната дата.
+                let dayDifference = cal.dateComponents([.day], from: realStart, to: realEnd).day ?? 0
+                
+                if dayDifference > 0 {
+                    // Ако събитието спанава повече от един ден – разделяме го.
                     splitted.append(contentsOf: splitEventByDays(ekEvent,
                                                                  startOfWeek: start,
                                                                  endOfWeek: end))
+                } else {
+                    // Ако е в рамките на един ден – създаваме обикновен wrapper.
+                    splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
                 }
             }
-
-            // If we had a selected event ID, re-select it if it’s still around
+            
+            // Ако има избрано събитие от предишна селекция, опитваме да го подберем отново.
             if let lastID = selectedEventID {
                 if let sameEvent = splitted
                     .compactMap({ $0 as? EKMultiDayWrapper })
@@ -195,9 +200,10 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     sameEvent.editedEvent = sameEvent
                 }
             }
-
+            
             parent.events = splitted
         }
+
 
         private func splitEventByDays(_ ekEvent: EKEvent,
                                       startOfWeek: Date,
@@ -210,25 +216,23 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 return results
             }
 
-            // Clip to the [startOfWeek..endOfWeek] range
+            // Ограничаваме интервала до [startOfWeek, endOfWeek]
             var currentStart = max(realStart, startOfWeek)
             let finalEnd = min(realEnd, endOfWeek)
             if currentStart >= finalEnd { return results }
 
-            // Step through each day
+            // Стъпковото разделяне на всеки ден.
             while currentStart < finalEnd {
                 guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else {
                     break
                 }
                 let pieceEnd = min(endOfDay, finalEnd)
-
-                // Instead of copying the event, create a partial wrapper referencing the same realEvent
                 let partial = EKMultiDayWrapper(realEvent: ekEvent,
                                                 partialStart: currentStart,
-                                                partialEnd:   pieceEnd)
+                                                partialEnd: pieceEnd)
                 results.append(partial)
 
-                // Move to next day’s 00:00
+                // Превключваме към следващия ден (00:00)
                 guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
                       let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay) else {
                     break
@@ -237,6 +241,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
             return results
         }
+
 
         // Called by onEventDragEnded or onEventDragResizeEnded
         func handleEventDragOrResize(descriptor: EventDescriptor,

@@ -297,20 +297,38 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         let fraction = hour + minute/60
         let yNow = allDayHeight + fraction * hourHeight
 
-        let dayX = leadingInsetForHours + CGFloat(dayIndex)*dayColumnWidth
+        let dayX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
         let lineRect = CGRect(x: dayX, y: yNow - 1, width: dayColumnWidth, height: 2)
 
+        // Обработка за обикновените евенти (eventViews)
         for evView in eventViews {
+            // Ако евентът е многодневен и започва днес, пропускаме скриването
+            if let descriptor = eventViewToDescriptor[evView],
+               let multi = descriptor as? EKMultiDayWrapper,
+               let startDate = multi.ekEvent.startDate,
+               Calendar.current.isDate(startDate, inSameDayAs: now) {
+                continue
+            }
             if evView.frame.intersects(lineRect) {
                 evView.isHidden = true
             }
         }
+        
+        // Обработка за all-day евентите (allDayEventViews)
         for adView in allDayEventViews {
+            // Ако евентът е многодневен и започва днес, не го скриваме
+            if let descriptor = eventViewToDescriptor[adView],
+               let multi = descriptor as? EKMultiDayWrapper,
+               let startDate = multi.ekEvent.startDate,
+               Calendar.current.isDate(startDate, inSameDayAs: now) {
+                continue
+            }
             if adView.frame.intersects(lineRect) {
                 adView.isHidden = true
             }
         }
     }
+
 
     // MARK: - All-day вю създаване/ползване
     private func ensureAllDayEventView(index: Int) -> EventView {
