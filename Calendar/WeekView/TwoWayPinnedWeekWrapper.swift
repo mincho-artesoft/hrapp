@@ -31,7 +31,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         let container = TwoWayPinnedWeekContainerView()
         container.startOfWeek = startOfWeek
 
-        // Initial data: разделяме евентите на all-day и regular
+        // Initial data: разделяме събитията на all-day и regular.
         let (allDay, regular) = splitAllDay(events)
         container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
@@ -42,7 +42,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             context.coordinator.reloadCurrentWeek()
         }
 
-        // Тап върху евент -> отваряме системния редактор
+        // Тап върху събитие -> отваряме системния редактор
         container.onEventTap = { [weak vc] descriptor in
             guard let vc = vc else { return }
             if let ekWrap = descriptor as? EKWrapper {
@@ -60,7 +60,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // Long press върху празна зона -> създаваме нов евент
+        // Long press върху празна зона -> създаваме ново събитие
         container.onEmptyLongPress = { [weak vc] date in
             guard let vc = vc else { return }
             let newEvent = EKEvent(eventStore: self.eventStore)
@@ -75,7 +75,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             vc.present(editVC, animated: true)
         }
 
-        // Drag/Drop на евент
+        // Drag/Drop на събитие
         container.onEventDragEnded = { descriptor, newDate in
             context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: false)
         }
@@ -145,7 +145,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // Зареждаме текущата седмица и разделяме евентите (split)
+        // Зареждаме текущата седмица и разделяме събитията (split)
         public func reloadCurrentWeek() {
             let start = parent.startOfWeek
             guard let end = Calendar.current.date(byAdding: .day, value: 7, to: start) else { return }
@@ -160,7 +160,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
             for ekEvent in found {
                 guard let realStart = ekEvent.startDate,
-                      let realEnd   = ekEvent.endDate else { continue }
+                      let realEnd = ekEvent.endDate else { continue }
 
                 if cal.isDate(realStart, inSameDayAs: realEnd) {
                     splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
@@ -188,7 +188,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             let cal = Calendar.current
 
             guard let realStart = ekEvent.startDate,
-                  let realEnd   = ekEvent.endDate else { return results }
+                  let realEnd = ekEvent.endDate else { return results }
 
             var currentStart = max(realStart, startOfWeek)
             let finalEnd = min(realEnd, endOfWeek)
@@ -234,7 +234,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     let draggedDay = calendar.startOfDay(for: multi.dateInterval.start)
                     let originalDay = calendar.startOfDay(for: ev.startDate)
                     var adjustedNewDate = newDate
-                    // Ако partial wrapper‑то не съвпада с деня на реалното начало,
+                    // Ако денят на partial wrapper-а не съвпада с деня на реалното начало,
                     // изчисляваме offset и го прибавяме.
                     if draggedDay != originalDay {
                         let offset = ev.startDate.timeIntervalSince(multi.dateInterval.start)
@@ -243,8 +243,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     if !isResize {
                         applyDragChangesAndSave(ev: ev, newStartDate: adjustedNewDate, span: .thisEvent)
                     } else {
-                        // ← МОДИФИКАЦИЯ: ако е resize от началото (top handle) на многодневното събитие,
-                        // използваме винаги forcedNewDate, за да актуализираме realEvent‑а.
                         applyResizeChangesAndSave(ev: ev, descriptor: multi, span: .thisEvent, forcedNewDate: adjustedNewDate)
                     }
                 }
@@ -295,17 +293,23 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // Модифициран метод за прилагане на Resize промените
+        // Модифициран метод за прилагане на Resize промените.
+        // При resize от горната дръжка (forcedNewDate по-малко от ev.startDate) се променя само началната дата,
+        // а крайната остава непроменена.
         func applyResizeChangesAndSave(ev: EKEvent,
                                        descriptor: EventDescriptor?,
                                        span: EKSpan,
                                        forcedNewDate: Date? = nil) {
-            // Ако става дума за многодневно събитие (EKMultiDayWrapper) и имаме forcedNewDate,
-            // винаги използваме forcedNewDate за актуализиране на realEvent‑а.
             if let forced = forcedNewDate, descriptor is EKMultiDayWrapper {
-                let oldDuration = ev.endDate.timeIntervalSince(ev.startDate)
-                ev.startDate = forced
-                ev.endDate = forced.addingTimeInterval(oldDuration)
+                if forced < ev.startDate {
+                    // Top resize: променяме само началната дата
+                    ev.startDate = forced
+                    // Крайната дата остава непроменена
+                } else if forced > ev.endDate {
+                    // Bottom resize: променяме само крайната дата
+                    ev.endDate = forced
+                }
+                // Ако forced попада между ev.startDate и ev.endDate – може да не правим нищо или да добавим допълнителна логика
             } else if let desc = descriptor {
                 ev.startDate = desc.dateInterval.start
                 ev.endDate = desc.dateInterval.end
