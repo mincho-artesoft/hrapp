@@ -234,8 +234,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     let draggedDay = calendar.startOfDay(for: multi.dateInterval.start)
                     let originalDay = calendar.startOfDay(for: ev.startDate)
                     var adjustedNewDate = newDate
-                    // Ако днесният partial wrapper не съвпада с деня на реалното начало,
-                    // изчисляваме offset-а и го прибавяме към newDate.
+                    // Ако partial wrapper‑то не съвпада с деня на реалното начало,
+                    // изчисляваме offset и го прибавяме.
                     if draggedDay != originalDay {
                         let offset = ev.startDate.timeIntervalSince(multi.dateInterval.start)
                         adjustedNewDate = newDate.addingTimeInterval(offset)
@@ -243,6 +243,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     if !isResize {
                         applyDragChangesAndSave(ev: ev, newStartDate: adjustedNewDate, span: .thisEvent)
                     } else {
+                        // ← МОДИФИКАЦИЯ: ако е resize от началото (top handle) на многодневното събитие,
+                        // използваме винаги forcedNewDate, за да актуализираме realEvent‑а.
                         applyResizeChangesAndSave(ev: ev, descriptor: multi, span: .thisEvent, forcedNewDate: adjustedNewDate)
                     }
                 }
@@ -293,11 +295,25 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        func applyDragChangesAndSave(ev: EKEvent, newStartDate: Date, span: EKSpan) {
-            guard let oldStart = ev.startDate, let oldEnd = ev.endDate else { return }
-            let duration = oldEnd.timeIntervalSince(oldStart)
-            ev.startDate = newStartDate
-            ev.endDate = newStartDate.addingTimeInterval(duration)
+        // Модифициран метод за прилагане на Resize промените
+        func applyResizeChangesAndSave(ev: EKEvent,
+                                       descriptor: EventDescriptor?,
+                                       span: EKSpan,
+                                       forcedNewDate: Date? = nil) {
+            // Ако става дума за многодневно събитие (EKMultiDayWrapper) и имаме forcedNewDate,
+            // винаги използваме forcedNewDate за актуализиране на realEvent‑а.
+            if let forced = forcedNewDate, descriptor is EKMultiDayWrapper {
+                let oldDuration = ev.endDate.timeIntervalSince(ev.startDate)
+                ev.startDate = forced
+                ev.endDate = forced.addingTimeInterval(oldDuration)
+            } else if let desc = descriptor {
+                ev.startDate = desc.dateInterval.start
+                ev.endDate = desc.dateInterval.end
+            } else if let forced = forcedNewDate {
+                let oldDuration = ev.endDate.timeIntervalSince(ev.startDate)
+                ev.startDate = forced
+                ev.endDate = forced.addingTimeInterval(oldDuration)
+            }
             do {
                 try parent.eventStore.save(ev, span: span)
             } catch {
@@ -306,20 +322,11 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             reloadCurrentWeek()
         }
 
-        func applyResizeChangesAndSave(ev: EKEvent,
-                                       descriptor: EventDescriptor?,
-                                       span: EKSpan,
-                                       forcedNewDate: Date? = nil) {
-            if let desc = descriptor {
-                ev.startDate = desc.dateInterval.start
-                ev.endDate = desc.dateInterval.end
-            } else if let forced = forcedNewDate {
-                guard let oldStart = ev.startDate, let oldEnd = ev.endDate else { return }
-                let oldDuration = oldEnd.timeIntervalSince(oldStart)
-                ev.startDate = forced
-                ev.endDate = forced.addingTimeInterval(oldDuration)
-            }
-
+        func applyDragChangesAndSave(ev: EKEvent, newStartDate: Date, span: EKSpan) {
+            guard let oldStart = ev.startDate, let oldEnd = ev.endDate else { return }
+            let duration = oldEnd.timeIntervalSince(oldStart)
+            ev.startDate = newStartDate
+            ev.endDate = newStartDate.addingTimeInterval(duration)
             do {
                 try parent.eventStore.save(ev, span: span)
             } catch {
