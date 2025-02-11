@@ -1,6 +1,12 @@
 import Foundation
 import EventKit
 
+extension Date: Identifiable {
+    public var id: TimeInterval {
+        self.timeIntervalSince1970
+    }
+}
+
 extension Calendar {
     /// Връща 42 дати (6 реда х 7 колони), така че първият ден на месеца
     /// да попада в точната колона за своя делничен ден.
