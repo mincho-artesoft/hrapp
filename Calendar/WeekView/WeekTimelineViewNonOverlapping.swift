@@ -360,24 +360,40 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             oldView.updateWithDescriptor(event: oldDesc)
         }
         
-        // Селектираме текущия елемент
+        // Селектираме текущия елемент (натиснатата част)
         descriptor.editedEvent = descriptor
         tappedView.updateWithDescriptor(event: descriptor)
         currentlyEditedEventView = tappedView
         
-        // Ако е многодневно събитие, маркираме и всички негови части
+        // Ако това е многодневно събитие, определяме дали е натисната първата или последната част
         if let tappedMulti = descriptor as? EKMultiDayWrapper {
+            let cal = Calendar.current
+            // Определяме дали натиснатата част е първа (сравняваме началото)
+            let isTappedFirst = cal.isDate(tappedMulti.dateInterval.start, inSameDayAs: tappedMulti.realEvent.startDate)
+            // За последната част – ако realEvent.endDate е точно в полунощ, отнемаме 1 секунда за корекция
+            let adjustedRealEnd = tappedMulti.realEvent.endDate.addingTimeInterval(-1)
+            let isTappedLast = cal.isDate(tappedMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
+            
+            // Обхождаме всички части от същото събитие и селектираме само тези, които съответстват на натиснатия край
             for (otherView, otherDesc) in eventViewToDescriptor {
                 if let otherMulti = otherDesc as? EKMultiDayWrapper,
                    otherMulti.realEvent.eventIdentifier == tappedMulti.realEvent.eventIdentifier,
                    otherMulti !== tappedMulti {
-                    otherMulti.editedEvent = tappedMulti.editedEvent
-                    otherView.updateWithDescriptor(event: otherMulti)
+                    
+                    let otherIsFirst = cal.isDate(otherMulti.dateInterval.start, inSameDayAs: tappedMulti.realEvent.startDate)
+                    let otherIsLast = cal.isDate(otherMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
+                    
+                    // Ако натиснатата част е първа, селектираме само частите, които са първи.
+                    // Ако е последна, селектираме само частите, които са последни.
+                    if (isTappedFirst && otherIsFirst) || (isTappedLast && otherIsLast) {
+                        otherMulti.editedEvent = tappedMulti.editedEvent
+                        otherView.updateWithDescriptor(event: otherMulti)
+                    }
                 }
             }
         }
         
-        // Показваме динамична отметка, ако събитието не е all-day
+        // Ако събитието не е "all-day", актуализираме динамичната отметка в часовата колона
         if !descriptor.isAllDay {
             setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
         } else {
@@ -387,7 +403,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         
         onEventTap?(descriptor)
     }
-
 
 
     // MARK: - LongPress (drag) – модифицирана логика за многодневни събития
@@ -493,16 +508,18 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     private func selectEventView(_ evView: EventView) {
         guard let descriptor = eventViewToDescriptor[evView] else { return }
         
+        // Изчистваме старата селекция
         if let oldView = currentlyEditedEventView, oldView !== evView,
            let oldDesc = eventViewToDescriptor[oldView] {
             oldDesc.editedEvent = nil
             oldView.updateWithDescriptor(event: oldDesc)
         }
+        // Селектираме текущия елемент
         descriptor.editedEvent = descriptor
         evView.updateWithDescriptor(event: descriptor)
         currentlyEditedEventView = evView
         
-        // Ако е многодневно събитие – селектираме и останалите части
+        // Ако става дума за многодневно събитие – селектираме и всички негови части
         if let tappedMulti = descriptor as? EKMultiDayWrapper {
             for (otherView, otherDesc) in eventViewToDescriptor {
                 if let otherMulti = otherDesc as? EKMultiDayWrapper,
@@ -515,7 +532,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
-    // MARK: - Pan (drag) – модифицирана логика за многодневни събития
+
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
@@ -531,7 +548,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             originalFrameForDraggedEvent = evView.frame
             dragOffset = CGPoint(x: loc.x - evView.frame.minX, y: loc.y - evView.frame.minY)
             
-            // Ако става въпрос за многодневно събитие, запазваме оригиналните рамки за всички draggable части
+            // Ако става въпрос за многодневно събитие, запазваме оригиналните рамки за всички части
             if let multiDesc = descriptor as? EKMultiDayWrapper, isDraggableMultiDayPart(multiDesc) {
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multiDesc.realEvent.eventIdentifier
@@ -552,7 +569,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
             
-            // Ако става дума за многодневно събитие – синхронизиране на останалите части
+            // Синхронизиране на позициите за всички части (ако е многодневно)
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let deltaX = newFrame.origin.x - origFrame.origin.x
                 let deltaY = newFrame.origin.y - origFrame.origin.y
@@ -586,7 +603,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             break
         }
     }
-
 
     // MARK: - Pan (resize handle)
     @objc private func handleResizeHandlePanGesture(_ gesture: UIPanGestureRecognizer) {
