@@ -300,16 +300,25 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                                        descriptor: EventDescriptor?,
                                        span: EKSpan,
                                        forcedNewDate: Date? = nil) {
-            if let forced = forcedNewDate, descriptor is EKMultiDayWrapper {
-                if forced < ev.startDate {
-                    // Top resize: променяме само началната дата
-                    ev.startDate = forced
-                    // Крайната дата остава непроменена
-                } else if forced > ev.endDate {
-                    // Bottom resize: променяме само крайната дата
-                    ev.endDate = forced
+            if let forced = forcedNewDate, let multiWrapper = descriptor as? EKMultiDayWrapper {
+                // Използваме оригиналния интервал от wrapper-а
+                let originalInterval = multiWrapper.dateInterval
+                // Изчисляваме разликите от началото и края
+                let distanceToStart = forced.timeIntervalSince(originalInterval.start)
+                let distanceToEnd = originalInterval.end.timeIntervalSince(forced)
+                
+                // Ако новата дата е по-близо до началото – смятаме, че е ресайз отгоре
+                if distanceToStart < distanceToEnd {
+                    // Уверяваме се, че forced е по-малко от текущия endDate
+                    if forced < ev.endDate {
+                        ev.startDate = forced
+                    }
+                } else {
+                    // В противен случай – ресайз отдолу: ако forced е по-голяма от startDate
+                    if forced > ev.startDate {
+                        ev.endDate = forced
+                    }
                 }
-                // Ако forced попада между ev.startDate и ev.endDate – може да не правим нищо или да добавим допълнителна логика
             } else if let desc = descriptor {
                 ev.startDate = desc.dateInterval.start
                 ev.endDate = desc.dateInterval.end
@@ -325,6 +334,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
             reloadCurrentWeek()
         }
+
 
         func applyDragChangesAndSave(ev: EKEvent, newStartDate: Date, span: EKSpan) {
             guard let oldStart = ev.startDate, let oldEnd = ev.endDate else { return }
