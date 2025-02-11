@@ -6,6 +6,15 @@ extension Date: Identifiable {
         self.timeIntervalSince1970
     }
 }
+import EventKit
+
+extension EKEvent: Identifiable {
+    public var id: String {
+        // Ако eventIdentifier е nil, ще върнем временно уникално ID
+        eventIdentifier ?? UUID().uuidString
+    }
+}
+
 
 extension Calendar {
     /// Връща 42 дати (6 реда х 7 колони), така че първият ден на месеца

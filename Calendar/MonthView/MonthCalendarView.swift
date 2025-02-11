@@ -1,11 +1,3 @@
-//
-//  MonthCalendarView.swift
-//  ExampleCalendarApp
-//
-//  Показва „месечен“ календар с DayCellView за всеки ден.
-//  Поддържа Drag & Drop на събития и системен EKEventEditViewController за редакция.
-//
-
 import SwiftUI
 import EventKit
 import EventKitUI
@@ -17,14 +9,10 @@ struct MonthCalendarView: View {
     /// Начална дата за този месец (напр. 1-ви януари)
     var startMonth: Date
     
-    @State private var currentMonth: Date
+    /// Вместо Bool `showDayView`, ще използваме Date? като "item"
+    @State private var selectedDayForFullScreen: Date? = nil
     
-    // За Day View (CalendarKit) на цял екран
-    @State private var showDayView = false
-    @State private var selectedDate: Date? = nil
-    
-    // За системния редактор (EKEventEditViewController)
-    @State private var showEventEditor = false
+    /// Вместо Bool `showEventEditor`, директно ползваме eventToEdit = EKEvent?
     @State private var eventToEdit: EKEvent? = nil
     
     // За recurring събития
@@ -32,6 +20,8 @@ struct MonthCalendarView: View {
     @State private var repeatingEvent: EKEvent?
     @State private var repeatingNewDate: Date?
     
+    @State private var currentMonth: Date
+
     private let calendar = Calendar(identifier: .gregorian)
     
     init(viewModel: CalendarViewModel, startMonth: Date) {
@@ -81,11 +71,11 @@ struct MonthCalendarView: View {
                         },
                         onDayTap: { tappedDay in
                             if viewModel.isCalendarAccessGranted() {
-                                selectedDate = tappedDay
-                                showDayView = true
+                                // Вместо showDayView = true -> задаваме selectedDayForFullScreen
+                                selectedDayForFullScreen = tappedDay
                             } else {
                                 viewModel.requestCalendarAccessIfNeeded {
-                                    // ...
+                                    // Ако получите достъп, може пак да зададете selectedDayForFullScreen
                                 }
                             }
                         },
@@ -93,8 +83,8 @@ struct MonthCalendarView: View {
                             createAndEditNewEvent(on: pressedDay)
                         },
                         onEventTap: { tappedEvent in
+                            // Вместо showEventEditor = true, директно задаваме eventToEdit
                             eventToEdit = tappedEvent
-                            showEventEditor = true
                         }
                     )
                 }
@@ -105,34 +95,35 @@ struct MonthCalendarView: View {
         .onAppear {
             viewModel.loadEvents(for: currentMonth)
         }
-        // Day View (CalendarKit)
-        .fullScreenCover(isPresented: $showDayView, onDismiss: {
-            viewModel.loadEvents(for: currentMonth)
-        }) {
-            if let date = selectedDate {
-                NavigationView {
-                    CalendarViewControllerWrapper(selectedDate: date,
-                                                  eventStore: viewModel.eventStore)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button("Close") {
-                                    showDayView = false
-                                }
+        
+        // Показваме Day View (CalendarKit) като fullScreenCover
+        // Вече item: $selectedDayForFullScreen, така че се показва още първия път
+        .fullScreenCover(item: $selectedDayForFullScreen) { day in
+            NavigationView {
+                // Тук вашият CalendarKit вю контролер
+                CalendarViewControllerWrapper(selectedDate: day,
+                                              eventStore: viewModel.eventStore)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Close") {
+                                selectedDayForFullScreen = nil
+                                // По желание презаредете събития
+                                viewModel.loadEvents(for: currentMonth)
                             }
                         }
-                        .navigationTitle("Day View")
-                        .navigationBarTitleDisplayMode(.inline)
-                }
+                    }
+                    .navigationTitle("Day View")
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
-        // Системният редактор
-        .sheet(isPresented: $showEventEditor, onDismiss: {
-            viewModel.loadEvents(for: currentMonth)
-        }) {
-            if let ev = eventToEdit {
-                EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
-            }
+        
+        // Системният редактор за EKEvent
+        // Вместо .sheet(isPresented: $showEventEditor), ползваме .sheet(item: $eventToEdit)
+        .sheet(item: $eventToEdit) { event in
+            EventEditViewWrapper(eventStore: viewModel.eventStore, event: event)
         }
+        
+        // Диалог за многократни (recurring) събития
         .confirmationDialog("This is a repeating event.", isPresented: $showRepeatingDialog) {
             Button("Save for This Event Only") {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
@@ -231,6 +222,5 @@ struct MonthCalendarView: View {
         newEvent.calendar  = viewModel.eventStore.defaultCalendarForNewEvents
         
         eventToEdit = newEvent
-        showEventEditor = true
     }
 }
