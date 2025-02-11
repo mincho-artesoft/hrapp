@@ -2,6 +2,51 @@ import Foundation
 import EventKit
 
 extension Calendar {
+    /// Връща 42 дати (6 реда х 7 колони), така че първият ден на месеца
+    /// да попада в точната колона за своя делничен ден.
+    /// По подразбиране приемаме, че понеделник е първият ден от седмицата.
+    func generateDatesForMonthGridAligned(for date: Date) -> [Date] {
+        // 1) Намираме "първо число" на дадения месец
+        guard let firstOfMonth = self.date(from: self.dateComponents([.year, .month], from: date))
+        else { return [] }
+        
+        // 2) Колко дни има в месеца
+        let daysInMonth = self.range(of: .day, in: .month, for: firstOfMonth)?.count ?? 30
+        
+        // 3) Определяме деня от седмицата на "първо число".
+        //    В зависимост от Locale това може да е 1=Неделя, 2=Понеделник и т.н.
+        let weekdayOfFirst = component(.weekday, from: firstOfMonth)
+        
+        // За да подравним така, че ПОНЕДЕЛНИК да е колона 0,
+        // правим изчисление "offset = (weekdayOfFirst + 7 - firstWeekday) % 7".
+        // По подразбиране в iOS Calendar "firstWeekday" често е 1 (Неделя),
+        // но в БГ обичайно искаме 2 (Понеделник) да е начало. Ето пример:
+        let firstWeekday = 2  // 2 = Понеделник, 1 = Неделя...
+        let offset = (weekdayOfFirst + 7 - firstWeekday) % 7
+        
+        // 4) Искаме общо 42 клетки.
+        //    Значи след като "първо число" влезе на правилната колона (offset),
+        //    трябва да попълним и дните до края, плюс евентуално следващия месец.
+        let totalCells = 42
+        // Ако един месец има 31 дни и offset=2, тогава са нужни още (42 - 31 - 2) = 9 клетки за следващия месец
+        
+        // 5) Определяме началната дата в решетката: "firstOfMonth - offset дни"
+        guard let startDate = self.date(byAdding: .day, value: -offset, to: firstOfMonth)
+        else { return [] }
+        
+        // 6) Генерираме всички 42 дати
+        var result: [Date] = []
+        for i in 0..<totalCells {
+            if let someDay = self.date(byAdding: .day, value: i, to: startDate) {
+                result.append(someDay)
+            }
+        }
+        
+        return result
+    }
+}
+
+extension Calendar {
     /// Generate an array of 42 dates for a typical 6-row month grid
     func generateDatesForMonthGrid(for referenceDate: Date) -> [Date] {
         guard let monthStart = self.date(from: dateComponents([.year, .month], from: referenceDate)) else {

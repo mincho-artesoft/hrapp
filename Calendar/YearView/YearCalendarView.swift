@@ -1,10 +1,3 @@
-//
-//  YearCalendarView.swift
-//  ExampleCalendarApp
-//
-//  Показва 12 "мини месеца" (YearMonthMiniView). При тап на месец -> отваряме MonthCalendarView.
-//
-
 import SwiftUI
 import EventKit
 
@@ -15,7 +8,7 @@ struct YearCalendarView: View {
     @State private var showMonthView = false
     @State private var tappedMonthDate: Date?
     
-    // Примерно - 2 колони
+    // 1) Указваме spacing в самите GridItem (това е разстоянието между колоните)
     private let columns = [
         GridItem(.flexible(), spacing: 16),
         GridItem(.flexible(), spacing: 16)
@@ -23,7 +16,7 @@ struct YearCalendarView: View {
     
     var body: some View {
         VStack {
-            // Горна лента за избор на година
+            // Горна лента
             HStack {
                 Button(action: {
                     year -= 1
@@ -32,7 +25,7 @@ struct YearCalendarView: View {
                     Image(systemName: "chevron.left")
                 }
                 
-                Text("\(year)")
+                Text(String(year))
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                 
@@ -46,7 +39,8 @@ struct YearCalendarView: View {
             .padding(.horizontal)
             
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
+                // 2) Увеличаваме `spacing` тук за да имаме повече вертикално разстояние между редовете
+                LazyVGrid(columns: columns, spacing: 32) {
                     ForEach(1...12, id: \.self) { monthIndex in
                         let dateForMonth = dateFromYearMonth(year, monthIndex)
                         
@@ -57,12 +51,12 @@ struct YearCalendarView: View {
                             tappedMonthDate = tappedMonth
                             showMonthView = true
                         }
-                        .frame(width: 200, height: 260)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(12)
+                        // 3) Може да добавите и padding около всяко мини-каре
+                        .padding(16)
                     }
                 }
-                .padding()
+                .padding(.horizontal, 16)
+                .padding(.top, 16)
             }
         }
         .onAppear {
