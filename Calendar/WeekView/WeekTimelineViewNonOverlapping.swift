@@ -112,7 +112,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             currentlyEditedEventView = nil
         }
 
-        // Махаме отметката
+        // Махаме отметката (в колоната)
         hoursColumnView?.selectedMinuteMark = nil
         hoursColumnView?.setNeedsDisplay()
     }
@@ -132,7 +132,10 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         layoutAllDayLabel()
         layoutAllDayEvents()
         layoutRegularEvents()
-        hideEventsClashingWithCurrentTime()
+
+        // Преди тук се викаше hideEventsClashingWithCurrentTime().
+        // За да не се скриват многодневните, махаме го.
+        // hideEventsClashingWithCurrentTime() -- ИЗТРИТО/ЗАКОМЕНТИРАНО
     }
 
     // MARK: - All-day фон
@@ -287,48 +290,12 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         return false
     }
 
-    // MARK: - Скриване на евенти, които са "дописани" от current time
-    private func hideEventsClashingWithCurrentTime() {
-        let now = Date()
-        guard let dayIndex = dayIndexIfInCurrentWeek(now) else { return }
-        let cal = Calendar.current
-        let hour = CGFloat(cal.component(.hour, from: now))
-        let minute = CGFloat(cal.component(.minute, from: now))
-        let fraction = hour + minute/60
-        let yNow = allDayHeight + fraction * hourHeight
-
-        let dayX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
-        let lineRect = CGRect(x: dayX, y: yNow - 1, width: dayColumnWidth, height: 2)
-
-        // Обработка за обикновените евенти (eventViews)
-        for evView in eventViews {
-            // Ако евентът е многодневен и започва днес, пропускаме скриването
-            if let descriptor = eventViewToDescriptor[evView],
-               let multi = descriptor as? EKMultiDayWrapper,
-               let startDate = multi.ekEvent.startDate,
-               Calendar.current.isDate(startDate, inSameDayAs: now) {
-                continue
-            }
-            if evView.frame.intersects(lineRect) {
-                evView.isHidden = true
-            }
-        }
-        
-        // Обработка за all-day евентите (allDayEventViews)
-        for adView in allDayEventViews {
-            // Ако евентът е многодневен и започва днес, не го скриваме
-            if let descriptor = eventViewToDescriptor[adView],
-               let multi = descriptor as? EKMultiDayWrapper,
-               let startDate = multi.ekEvent.startDate,
-               Calendar.current.isDate(startDate, inSameDayAs: now) {
-                continue
-            }
-            if adView.frame.intersects(lineRect) {
-                adView.isHidden = true
-            }
-        }
-    }
-
+    // MARK: - (Премахнат метод) hideEventsClashingWithCurrentTime()
+    // !!! Ако имате нужда да скривате събития, махнете/адаптирайте логиката внимателно !!!
+    //
+    //  private func hideEventsClashingWithCurrentTime() {
+    //      // СТАРА ЛОГИКА - ПРЕМАХНАТА, понеже криеше многодневни събития
+    //  }
 
     // MARK: - All-day вю създаване/ползване
     private func ensureAllDayEventView(index: Int) -> EventView {
@@ -437,7 +404,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 desc.editedEvent = desc
                 evView.updateWithDescriptor(event: desc)
 
-                // >>> Ново: ако не е all-day, веднага показваме "minuteMark"
+                // Ако не е all-day, веднага показваме "minuteMark"
                 if !desc.isAllDay {
                     setSingle10MinuteMarkFromDate(desc.dateInterval.start)
                 } else {
@@ -533,7 +500,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             newF.origin.y = loc.y - offset.y
             evView.frame = newF
 
-            // Динамично -> 10-мин отметка (ако не е над allDayHeight)
+            // Динамично -> 10-мин отметка
             if newF.minY < allDayHeight {
                 hoursColumnView?.selectedMinuteMark = nil
                 hoursColumnView?.setNeedsDisplay()
@@ -838,20 +805,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
-    // MARK: - (UPDATED) Проверка дали drop-ът е в all-day зоната
-    private func dayIndexIfAllDayDrop(_ frame: CGRect) -> Int? {
-        let midX = frame.midX
-        if midX < leadingInsetForHours { return nil }
-        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex > 6 { return nil }
-
-        // Ако frame.minY < allDayHeight -> смятаме, че е all-day
-        if frame.minY < allDayHeight {
-            return dayIndex
-        }
-        return nil
-    }
-
     // MARK: - LongPress празно -> нов евент
     @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
@@ -899,8 +852,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             return
         }
 
+        // Ако е кръгъл час -> не показваме
         if minute == 0 {
-            // кръгъл час -> не показваме
             hoursColumnView?.selectedMinuteMark = nil
             hoursColumnView?.setNeedsDisplay()
             return
@@ -936,7 +889,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             return date
         }
 
-        // ако е точно кръгъл час, не пипаме
         if m == 0 { return date }
 
         let remainder = m % 10
@@ -946,7 +898,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         } else {
             finalM = m + (10 - remainder)
             if finalM == 60 {
-                // значи точно следващия час
+                // точно следващия час
                 finalM = 0
                 return cal.date(bySettingHour: (h + 1) % 24, minute: 0, second: 0, of: date) ?? date
             }
@@ -1056,6 +1008,19 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         return comps.day ?? 0
     }
 
+    // MARK: - Проверка дали drop-ът е в all-day зоната
+    private func dayIndexIfAllDayDrop(_ frame: CGRect) -> Int? {
+        let midX = frame.midX
+        if midX < leadingInsetForHours { return nil }
+        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
+        if dayIndex < 0 || dayIndex > 6 { return nil }
+
+        if frame.minY < allDayHeight {
+            return dayIndex
+        }
+        return nil
+    }
+
     // MARK: - Рисуване на часови линии
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -1124,7 +1089,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             ctx.restoreGState()
         }
 
-        // Плътна червена линия
+        // Плътна червена линия (в конкретния ден)
         ctx.saveGState()
         ctx.setStrokeColor(UIColor.systemRed.cgColor)
         ctx.setLineWidth(1.5)
@@ -1156,4 +1121,3 @@ private struct DragData {
     let startInterval: DateInterval
     let wasAllDay: Bool
 }
-
