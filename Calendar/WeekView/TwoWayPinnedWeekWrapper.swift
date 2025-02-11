@@ -131,7 +131,12 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     // MARK: - Coordinator
     public class Coordinator: NSObject, EKEventEditViewDelegate {
         let parent: TwoWayPinnedWeekWrapper
+
+        // Запомняме последния избран евент (по неговия eventIdentifier)
         var selectedEventID: String?
+
+        // <-- ADDED: Запомняме началото на partial-а, за да можем да намерим точния Wrapper
+        var selectedEventPartialStart: Date? // <-- ADDED
 
         init(_ parent: TwoWayPinnedWeekWrapper) {
             self.parent = parent
@@ -163,21 +168,38 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                       let realEnd = ekEvent.endDate else { continue }
 
                 if cal.isDate(realStart, inSameDayAs: realEnd) {
+                    // single-day
                     splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
                 } else {
+                    // split multi-day
                     splitted.append(contentsOf: self.splitEventByDays(ekEvent, startOfWeek: start, endOfWeek: end))
                 }
             }
 
+            parent.events = splitted
+
+            // <-- ADDED: Възстановяваме точно кой partial беше селектиран
             if let lastID = selectedEventID {
-                if let sameEvent = splitted
-                    .compactMap({ $0 as? EKMultiDayWrapper })
-                    .first(where: { $0.ekEvent.eventIdentifier == lastID }) {
-                    sameEvent.editedEvent = sameEvent
+                let splittedMulti = splitted.compactMap({ $0 as? EKMultiDayWrapper })
+
+                if let partialStart = selectedEventPartialStart {
+                    // Търсим същия partial, съвпадащ по eventID + начало
+                    if let samePartial = splittedMulti.first(where: {
+                        $0.ekEvent.eventIdentifier == lastID &&
+                        $0.dateInterval.start == partialStart
+                    }) {
+                        samePartial.editedEvent = samePartial
+                    }
+                } else {
+                    // Ако е EKWrapper или не пазим partialStart,
+                    // просто намираме някоя (първата) част от това събитие:
+                    if let sameEvent = splittedMulti.first(where: {
+                        $0.ekEvent.eventIdentifier == lastID
+                    }) {
+                        sameEvent.editedEvent = sameEvent
+                    }
                 }
             }
-
-            parent.events = splitted
         }
 
         // Функция за разделяне на многодневни събития – генерира partial wrappers за всеки ден
@@ -208,42 +230,40 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             return results
         }
 
-        // MARK: - Обработка на Drag / Resize
+        // MARK: - Drag / Resize
         public func handleEventDragOrResize(descriptor: EventDescriptor,
                                             newDate: Date,
                                             isResize: Bool) {
             if let ekw = descriptor as? EKWrapper {
                 let ev = ekw.ekEvent
+                // Запомняме eventID
+                selectedEventID = ev.eventIdentifier
+                // Този евент няма partial => nil
+                selectedEventPartialStart = nil
+
                 if ev.hasRecurrenceRules {
                     askUserAndSaveRecurring(event: ev, newStartDate: newDate, isResize: isResize)
                 } else {
-                    selectedEventID = ev.eventIdentifier
                     if !isResize {
                         applyDragChangesAndSave(ev: ev, newStartDate: newDate, span: .thisEvent)
                     } else {
                         applyResizeChangesAndSave(ev: ev, descriptor: ekw, span: .thisEvent, forcedNewDate: newDate)
                     }
                 }
-            } else if let multi = descriptor as? EKMultiDayWrapper {
+            }
+            else if let multi = descriptor as? EKMultiDayWrapper {
                 let ev = multi.realEvent
+                // <-- ADDED: запомняме частта по start
+                selectedEventID = ev.eventIdentifier
+                selectedEventPartialStart = multi.dateInterval.start
+
                 if ev.hasRecurrenceRules {
                     askUserAndSaveRecurring(event: ev, newStartDate: newDate, isResize: isResize)
                 } else {
-                    selectedEventID = ev.eventIdentifier
-                    let calendar = Calendar.current
-                    let draggedDay = calendar.startOfDay(for: multi.dateInterval.start)
-                    let originalDay = calendar.startOfDay(for: ev.startDate)
-                    var adjustedNewDate = newDate
-                    // Ако денят на partial wrapper-а не съвпада с деня на реалното начало,
-                    // изчисляваме offset и го прибавяме.
-                    if draggedDay != originalDay {
-                        let offset = ev.startDate.timeIntervalSince(multi.dateInterval.start)
-                        adjustedNewDate = newDate.addingTimeInterval(offset)
-                    }
                     if !isResize {
-                        applyDragChangesAndSave(ev: ev, newStartDate: adjustedNewDate, span: .thisEvent)
+                        applyDragChangesAndSave(ev: ev, newStartDate: newDate, span: .thisEvent)
                     } else {
-                        applyResizeChangesAndSave(ev: ev, descriptor: multi, span: .thisEvent, forcedNewDate: adjustedNewDate)
+                        applyResizeChangesAndSave(ev: ev, descriptor: multi, span: .thisEvent, forcedNewDate: newDate)
                     }
                 }
             }
@@ -293,36 +313,32 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // Модифициран метод за прилагане на Resize промените.
-        // При resize от горната дръжка (forcedNewDate по-малко от ev.startDate) се променя само началната дата,
-        // а крайната остава непроменена.
         func applyResizeChangesAndSave(ev: EKEvent,
                                        descriptor: EventDescriptor?,
                                        span: EKSpan,
                                        forcedNewDate: Date? = nil) {
             if let forced = forcedNewDate, let multiWrapper = descriptor as? EKMultiDayWrapper {
-                // Използваме оригиналния интервал от wrapper-а
                 let originalInterval = multiWrapper.dateInterval
-                // Изчисляваме разликите от началото и края
                 let distanceToStart = forced.timeIntervalSince(originalInterval.start)
                 let distanceToEnd = originalInterval.end.timeIntervalSince(forced)
-                
-                // Ако новата дата е по-близо до началото – смятаме, че е ресайз отгоре
+
+                // If closer to top => resizing top
                 if distanceToStart < distanceToEnd {
-                    // Уверяваме се, че forced е по-малко от текущия endDate
                     if forced < ev.endDate {
                         ev.startDate = forced
                     }
                 } else {
-                    // В противен случай – ресайз отдолу: ако forced е по-голяма от startDate
+                    // resizing bottom
                     if forced > ev.startDate {
                         ev.endDate = forced
                     }
                 }
-            } else if let desc = descriptor {
+            }
+            else if let desc = descriptor {
                 ev.startDate = desc.dateInterval.start
                 ev.endDate = desc.dateInterval.end
-            } else if let forced = forcedNewDate {
+            }
+            else if let forced = forcedNewDate {
                 let oldDuration = ev.endDate.timeIntervalSince(ev.startDate)
                 ev.startDate = forced
                 ev.endDate = forced.addingTimeInterval(oldDuration)
@@ -334,7 +350,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
             reloadCurrentWeek()
         }
-
 
         func applyDragChangesAndSave(ev: EKEvent, newStartDate: Date, span: EKSpan) {
             guard let oldStart = ev.startDate, let oldEnd = ev.endDate else { return }

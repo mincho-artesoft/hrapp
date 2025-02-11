@@ -70,7 +70,15 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         return isFirstDay || isLastDay
     }
 
-
+    // <-- ADDED: Метод за проверка дали е „последна част“ от многодневния евент
+    private func isLastPartOfMultiDay(_ multiDesc: EKMultiDayWrapper) -> Bool {
+        let cal = Calendar.current
+        guard let realEnd = multiDesc.realEvent.endDate else { return false }
+        // Ако крайът е точно в полунощ, изместваме с -1 сек, за да падне в предния ден
+        let adjustedRealEnd = realEnd.addingTimeInterval(-1)
+        return cal.isDate(multiDesc.dateInterval.end, inSameDayAs: adjustedRealEnd)
+    }
+    // <-- END ADD
 
     // MARK: - Инициализация
 
@@ -96,7 +104,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
         return true
     }
-
 
     // MARK: - Setup на жестове
 
@@ -368,23 +375,19 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         // Ако това е многодневно събитие, определяме дали е натисната първата или последната част
         if let tappedMulti = descriptor as? EKMultiDayWrapper {
             let cal = Calendar.current
-            // Определяме дали натиснатата част е първа (сравняваме началото)
-            let isTappedFirst = cal.isDate(tappedMulti.dateInterval.start, inSameDayAs: tappedMulti.realEvent.startDate)
-            // За последната част – ако realEvent.endDate е точно в полунощ, отнемаме 1 секунда за корекция
             let adjustedRealEnd = tappedMulti.realEvent.endDate.addingTimeInterval(-1)
-            let isTappedLast = cal.isDate(tappedMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
+            let isTappedFirst = cal.isDate(tappedMulti.dateInterval.start, inSameDayAs: tappedMulti.realEvent.startDate)
+            let isTappedLast  = cal.isDate(tappedMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
             
-            // Обхождаме всички части от същото събитие и селектираме само тези, които съответстват на натиснатия край
+            // Обхождаме всички части от същото събитие и селектираме само първите или само последните
             for (otherView, otherDesc) in eventViewToDescriptor {
                 if let otherMulti = otherDesc as? EKMultiDayWrapper,
                    otherMulti.realEvent.eventIdentifier == tappedMulti.realEvent.eventIdentifier,
                    otherMulti !== tappedMulti {
                     
                     let otherIsFirst = cal.isDate(otherMulti.dateInterval.start, inSameDayAs: tappedMulti.realEvent.startDate)
-                    let otherIsLast = cal.isDate(otherMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
+                    let otherIsLast  = cal.isDate(otherMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
                     
-                    // Ако натиснатата част е първа, селектираме само частите, които са първи.
-                    // Ако е последна, селектираме само частите, които са последни.
                     if (isTappedFirst && otherIsFirst) || (isTappedLast && otherIsLast) {
                         otherMulti.editedEvent = tappedMulti.editedEvent
                         otherView.updateWithDescriptor(event: otherMulti)
@@ -393,7 +396,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             }
         }
         
-        // Ако събитието не е "all-day", актуализираме динамичната отметка в часовата колона
+        // Ако събитието не е "all-day", актуализираме отметката в часовата колона
         if !descriptor.isAllDay {
             setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
         } else {
@@ -404,15 +407,16 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         onEventTap?(descriptor)
     }
 
-
     // MARK: - LongPress (drag) – модифицирана логика за многодневни събития
     @objc private func handleEventViewLongPress(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
-        // За многодневен wrapper разрешаваме drag само ако тази част е първи или последен ден.
+
+        // Ако е многодневен wrapper, позволяваме drag само за първа/последна част
         if let multiDesc = descriptor as? EKMultiDayWrapper {
             if !isDraggableMultiDayPart(multiDesc) { return }
         }
+        
         switch gesture.state {
         case .began:
             if let oldView = currentlyEditedEventView,
@@ -424,8 +428,9 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             if let desc = eventViewToDescriptor[evView], desc.editedEvent == nil {
                 desc.editedEvent = desc
                 evView.updateWithDescriptor(event: desc)
-                if !desc.isAllDay { setSingle10MinuteMarkFromDate(desc.dateInterval.start) }
-                else {
+                if !desc.isAllDay {
+                    setSingle10MinuteMarkFromDate(desc.dateInterval.start)
+                } else {
                     hoursColumnView?.selectedMinuteMark = nil
                     hoursColumnView?.setNeedsDisplay()
                 }
@@ -436,7 +441,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             originalFrameForDraggedEvent = evView.frame
             dragOffset = CGPoint(x: loc.x - evView.frame.minX, y: loc.y - evView.frame.minY)
 
-            if let multiDesc = eventViewToDescriptor[evView] as? EKMultiDayWrapper {
+            if let multiDesc = descriptor as? EKMultiDayWrapper {
                 if isDraggableMultiDayPart(multiDesc) {
                     multiDayDraggingOriginalFrames.removeAll()
                     let eventID = multiDesc.realEvent.eventIdentifier
@@ -449,7 +454,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     }
                 }
             }
-            
+
         case .changed:
             guard let offset = dragOffset, currentlyEditedEventView === evView else { return }
             let loc = gesture.location(in: self)
@@ -461,7 +466,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let deltaX = newF.origin.x - origFrame.origin.x
                 let deltaY = newF.origin.y - origFrame.origin.y
-                // Сега за всяка draggable част прилагаме същото изместване (delta)
                 for (otherView, otherOrig) in multiDayDraggingOriginalFrames {
                     if otherView == evView { continue }
                     if let otherMulti = eventViewToDescriptor[otherView] as? EKMultiDayWrapper,
@@ -477,34 +481,50 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             } else if let newDate = dateFromFrame(newF) {
                 setSingle10MinuteMarkFromDate(newDate)
             }
-            
+
         case .ended, .cancelled:
             guard currentlyEditedEventView === evView else { return }
-            if let desc = eventViewToDescriptor[evView] {
-                if let dayIdx = dayIndexIfAllDayDrop(evView.frame) {
-                    desc.isAllDay = true
-                    if let dayDate = Calendar.current.date(byAdding: .day, value: dayIdx, to: startOfWeek) {
-                        let startOfDay = Calendar.current.startOfDay(for: dayDate)
-                        let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
-                        desc.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
-                        onEventDragEnded?(desc, startOfDay)
-                    }
-                } else if let newRaw = dateFromFrame(evView.frame) {
-                    let snapped = snapToNearest10Min(newRaw)
-                    desc.isAllDay = false
-                    onEventDragEnded?(desc, snapped)
-                } else if let orig = originalFrameForDraggedEvent {
-                    evView.frame = orig
-                }
+
+            // <-- ADDED: Ако е последна част от многодневен евент, само го селектираме
+            if let multi = descriptor as? EKMultiDayWrapper,
+               isLastPartOfMultiDay(multi)
+            {
+                // (по желание може да върнете позицията, за да няма реален drag)
+                // evView.frame = originalFrameForDraggedEvent ?? evView.frame
+
+                // Просто излизаме -> НЕ викаме onEventDragEnded
+                dragOffset = nil
+                originalFrameForDraggedEvent = nil
+                multiDayDraggingOriginalFrames.removeAll()
+                return
             }
+            // <-- END ADD
+
+            if let dayIdx = dayIndexIfAllDayDrop(evView.frame) {
+                descriptor.isAllDay = true
+                if let dayDate = Calendar.current.date(byAdding: .day, value: dayIdx, to: startOfWeek) {
+                    let startOfDay = Calendar.current.startOfDay(for: dayDate)
+                    let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
+                    descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
+                    onEventDragEnded?(descriptor, startOfDay)
+                }
+            } else if let newRaw = dateFromFrame(evView.frame) {
+                let snapped = snapToNearest10Min(newRaw)
+                descriptor.isAllDay = false
+                onEventDragEnded?(descriptor, snapped)
+            } else if let orig = originalFrameForDraggedEvent {
+                evView.frame = orig
+            }
+
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
-            
+
         default:
             break
         }
     }
+
     private func selectEventView(_ evView: EventView) {
         guard let descriptor = eventViewToDescriptor[evView] else { return }
         
@@ -518,37 +538,43 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         descriptor.editedEvent = descriptor
         evView.updateWithDescriptor(event: descriptor)
         currentlyEditedEventView = evView
-        
-        // Ако става дума за многодневно събитие – селектираме и всички негови части
+
+        // Ако е многодневно събитие – селектираме и съответните части
         if let tappedMulti = descriptor as? EKMultiDayWrapper {
+            let cal = Calendar.current
+            let adjustedRealEnd = tappedMulti.realEvent.endDate.addingTimeInterval(-1)
             for (otherView, otherDesc) in eventViewToDescriptor {
                 if let otherMulti = otherDesc as? EKMultiDayWrapper,
                    otherMulti.realEvent.eventIdentifier == tappedMulti.realEvent.eventIdentifier,
                    otherMulti !== tappedMulti {
-                    otherMulti.editedEvent = tappedMulti.editedEvent
-                    otherView.updateWithDescriptor(event: otherMulti)
+                    let otherIsFirst = cal.isDate(otherMulti.dateInterval.start, inSameDayAs: tappedMulti.realEvent.startDate)
+                    let otherIsLast  = cal.isDate(otherMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
+                    let isTappedFirst = cal.isDate(tappedMulti.dateInterval.start, inSameDayAs: tappedMulti.realEvent.startDate)
+                    let isTappedLast  = cal.isDate(tappedMulti.dateInterval.end, inSameDayAs: adjustedRealEnd)
+                    if (isTappedFirst && otherIsFirst) || (isTappedLast && otherIsLast) {
+                        otherMulti.editedEvent = tappedMulti.editedEvent
+                        otherView.updateWithDescriptor(event: otherMulti)
+                    }
                 }
             }
         }
     }
 
-
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
-        
-        // Ако елементът не е селектиран, селектираме го автоматично
+
+        // Ако елементът не е селектиран, селектираме го
         if currentlyEditedEventView !== evView {
             selectEventView(evView)
         }
-        
+
         switch gesture.state {
         case .began:
             let loc = gesture.location(in: self)
             originalFrameForDraggedEvent = evView.frame
             dragOffset = CGPoint(x: loc.x - evView.frame.minX, y: loc.y - evView.frame.minY)
-            
-            // Ако става въпрос за многодневно събитие, запазваме оригиналните рамки за всички части
+
             if let multiDesc = descriptor as? EKMultiDayWrapper, isDraggableMultiDayPart(multiDesc) {
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multiDesc.realEvent.eventIdentifier
@@ -560,7 +586,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     }
                 }
             }
-            
+
         case .changed:
             guard let offset = dragOffset else { return }
             let loc = gesture.location(in: self)
@@ -568,8 +594,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             newFrame.origin.x = loc.x - offset.x
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
-            
-            // Синхронизиране на позициите за всички части (ако е многодневно)
+
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let deltaX = newFrame.origin.x - origFrame.origin.x
                 let deltaY = newFrame.origin.y - origFrame.origin.y
@@ -579,14 +604,14 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     }
                 }
             }
-            
+
             if newFrame.minY < allDayHeight {
                 hoursColumnView?.selectedMinuteMark = nil
                 hoursColumnView?.setNeedsDisplay()
             } else if let newDate = dateFromFrame(newFrame) {
                 setSingle10MinuteMarkFromDate(newDate)
             }
-            
+
         case .ended, .cancelled:
             if let newRaw = dateFromFrame(evView.frame) {
                 let snapped = snapToNearest10Min(newRaw)
@@ -598,7 +623,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
-            
+
         default:
             break
         }
@@ -644,7 +669,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                              startInterval: desc.dateInterval,
                              wasAllDay: desc.isAllDay)
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
-            print(">>> Begin resize isTop=\(isTop). startInterval=\(d.startInterval)  frame=\(ghost.frame)")
 
         case .changed:
             guard let d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? DragData,
@@ -660,7 +684,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             }
             if f.size.height < 20 { return }
             ghost.frame = f
-            print("    Pan changed isTop=\(d.isTop). diffY=\(diffY) => newFrame=\(f)")
+
             if f.minY < allDayHeight || f.maxY < allDayHeight {
                 hoursColumnView?.selectedMinuteMark = nil
                 hoursColumnView?.setNeedsDisplay()
@@ -669,19 +693,18 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             if d.isTop {
                 if let newStart = dateFromResize(f, isTop: true) {
                     setSingle10MinuteMarkFromDate(newStart)
-                    print("    -> Potential new START = \(newStart)")
                 }
             } else {
                 if let newEnd = dateFromResize(f, isTop: false) {
                     setSingle10MinuteMarkFromDate(newEnd)
-                    print("    -> Potential new END = \(newEnd)")
                 }
             }
+
         case .ended, .cancelled:
             guard let d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? DragData,
                   let ghost = ghostView else { return }
             let finalFrame = ghost.frame
-            print(">>> End resize isTop=\(d.isTop). finalFrame=\(finalFrame)")
+
             if let dayIdx = dayIndexIfAllDayDrop(finalFrame) {
                 desc.isAllDay = true
                 if let dayDate = Calendar.current.date(byAdding: .day, value: dayIdx, to: startOfWeek) {
@@ -689,29 +712,22 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
                     desc.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
                     onEventDragResizeEnded?(desc, startOfDay)
-                    print(">>> Moved to all-day.")
                 }
             } else {
                 desc.isAllDay = false
                 if let newDateRaw = dateFromResize(finalFrame, isTop: d.isTop) {
                     let snapped = snapToNearest10Min(newDateRaw)
-                    print("    -> snapped newDate=\(snapped)")
                     var interval = d.startInterval
                     if d.isTop {
-                        if snapped >= interval.end {
-                            print("!!! new START >= old END => clipping or ignoring")
-                        } else {
+                        if snapped < interval.end {
                             interval = DateInterval(start: snapped, end: interval.end)
                         }
                     } else {
-                        if snapped <= interval.start {
-                            print("!!! new END <= old START => clipping or ignoring")
-                        } else {
+                        if snapped > interval.start {
                             interval = DateInterval(start: interval.start, end: snapped)
                         }
                     }
                     desc.dateInterval = interval
-                    print("    final interval = \(desc.dateInterval)")
                     onEventDragResizeEnded?(desc, snapped)
                 }
             }
@@ -720,16 +736,17 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             eventView.isHidden = false
             setNeedsLayout()
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+
         default:
             break
         }
     }
 
     @objc private func handleResizeHandleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
-        // Ако не е необходима специална логика, оставете този метод празен.
+        // Може да не се ползва
     }
 
-    // MARK: - LongPress на празно място -> създаване на нов евент
+    // MARK: - LongPress на празно място
     @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
         let point = gesture.location(in: self)
@@ -755,7 +772,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         if let tappedDate = dateFromPoint(point) { onEmptyLongPress?(tappedDate) }
     }
 
-    // MARK: - Динамична отметка (докато се движи)
+    // MARK: - Динамична отметка
     private func setSingle10MinuteMarkFromDate(_ date: Date) {
         let cal = Calendar.current
         let comps = cal.dateComponents([.hour, .minute], from: date)
@@ -785,7 +802,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         hoursColumnView?.setNeedsDisplay()
     }
 
-    // MARK: - Финално "snap" при отпускане
+    // MARK: - Snap
     private func snapToNearest10Min(_ date: Date) -> Date {
         let cal = Calendar.current
         let comps = cal.dateComponents([.year, .month, .day, .hour, .minute], from: date)
@@ -812,7 +829,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         return cal.date(from: comps2) ?? date
     }
 
-    // MARK: - Помощни методи: координати -> дата
+    // MARK: - Помощни методи
     private func dateFromPoint(_ point: CGPoint) -> Date? {
         let x = point.x, y = point.y
         if x < leadingInsetForHours { return nil }
@@ -825,7 +842,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     }
 
     private func dateFromFrame(_ frame: CGRect) -> Date? {
-        let topY = frame.minY, midX = frame.midX
+        let topY = frame.minY
+        let midX = frame.midX
         if midX < leadingInsetForHours { return nil }
         let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
         if dayIndex < 0 || dayIndex > 6 { return nil }
