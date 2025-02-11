@@ -1,14 +1,12 @@
-//
-//  MiniDayCellView.swift
-//  ExampleCalendarApp
-//
-//  Клетка 30x32 в мини месеца от YearMonthMiniView
-//  Показва цифра, червена точка ако има събития, червен кръг ако е днешен ден
-//
-
 import SwiftUI
 import EventKit
 
+// MARK: - 1) Правим Date да е Identifiable, за да можем да го ползваме с fullScreenCover(item:)
+
+// MARK: - ViewModel (примерен, ако вече си имате, може да си го оставите)
+
+
+// MARK: - MiniDayCellView
 struct MiniDayCellView: View {
     let day: Date
     let referenceMonth: Date
@@ -59,5 +57,4 @@ struct MiniDayCellView: View {
         .frame(width: 30, height: 32)
     }
 }
-
 
