@@ -411,119 +411,39 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     @objc private func handleEventViewLongPress(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
-
-        // Ако е многодневен wrapper, позволяваме drag само за първа/последна част
+        
+        // Ако искаш за многодневни събития да се селектира само определена част, можеш да запазиш проверката:
         if let multiDesc = descriptor as? EKMultiDayWrapper {
-            if !isDraggableMultiDayPart(multiDesc) { return }
+            if !isDraggableMultiDayPart(multiDesc) {
+                // Ако не искаш дори да селектираш, може и да върнеш
+                return
+            }
         }
         
-        switch gesture.state {
-        case .began:
+        // Изпълняваме селекцията само при начало на long press
+        if gesture.state == .began {
+            // Изчистваме старата селекция (ако има такава)
             if let oldView = currentlyEditedEventView,
                oldView !== evView,
                let oldDesc = eventViewToDescriptor[oldView] {
                 oldDesc.editedEvent = nil
                 oldView.updateWithDescriptor(event: oldDesc)
             }
-            if let desc = eventViewToDescriptor[evView], desc.editedEvent == nil {
-                desc.editedEvent = desc
-                evView.updateWithDescriptor(event: desc)
-                if !desc.isAllDay {
-                    setSingle10MinuteMarkFromDate(desc.dateInterval.start)
-                } else {
-                    hoursColumnView?.selectedMinuteMark = nil
-                    hoursColumnView?.setNeedsDisplay()
-                }
+            
+            // Селектираме текущото събитие
+            if descriptor.editedEvent == nil {
+                descriptor.editedEvent = descriptor
+                evView.updateWithDescriptor(event: descriptor)
             }
             currentlyEditedEventView = evView
-
-            let loc = gesture.location(in: self)
-            originalFrameForDraggedEvent = evView.frame
-            dragOffset = CGPoint(x: loc.x - evView.frame.minX, y: loc.y - evView.frame.minY)
-
-            if let multiDesc = descriptor as? EKMultiDayWrapper {
-                if isDraggableMultiDayPart(multiDesc) {
-                    multiDayDraggingOriginalFrames.removeAll()
-                    let eventID = multiDesc.realEvent.eventIdentifier
-                    for (otherView, otherDesc) in eventViewToDescriptor {
-                        if let otherMulti = otherDesc as? EKMultiDayWrapper,
-                           otherMulti.realEvent.eventIdentifier == eventID,
-                           isDraggableMultiDayPart(otherMulti) {
-                            multiDayDraggingOriginalFrames[otherView] = otherView.frame
-                        }
-                    }
-                }
-            }
-
-        case .changed:
-            guard let offset = dragOffset, currentlyEditedEventView === evView else { return }
-            let loc = gesture.location(in: self)
-            var newF = evView.frame
-            newF.origin.x = loc.x - offset.x
-            newF.origin.y = loc.y - offset.y
-            evView.frame = newF
-
-            if let origFrame = multiDayDraggingOriginalFrames[evView] {
-                let deltaX = newF.origin.x - origFrame.origin.x
-                let deltaY = newF.origin.y - origFrame.origin.y
-                for (otherView, otherOrig) in multiDayDraggingOriginalFrames {
-                    if otherView == evView { continue }
-                    if let otherMulti = eventViewToDescriptor[otherView] as? EKMultiDayWrapper,
-                       isDraggableMultiDayPart(otherMulti) {
-                        otherView.frame = otherOrig.offsetBy(dx: deltaX, dy: deltaY)
-                    }
-                }
-            }
-
-            if newF.minY < allDayHeight {
-                hoursColumnView?.selectedMinuteMark = nil
-                hoursColumnView?.setNeedsDisplay()
-            } else if let newDate = dateFromFrame(newF) {
-                setSingle10MinuteMarkFromDate(newDate)
-            }
-
-        case .ended, .cancelled:
-            guard currentlyEditedEventView === evView else { return }
-
-            // <-- ADDED: Ако е последна част от многодневен евент, само го селектираме
-            if let multi = descriptor as? EKMultiDayWrapper,
-               isLastPartOfMultiDay(multi)
-            {
-                // (по желание може да върнете позицията, за да няма реален drag)
-                // evView.frame = originalFrameForDraggedEvent ?? evView.frame
-
-                // Просто излизаме -> НЕ викаме onEventDragEnded
-                dragOffset = nil
-                originalFrameForDraggedEvent = nil
-                multiDayDraggingOriginalFrames.removeAll()
-                return
-            }
-            // <-- END ADD
-
-            if let dayIdx = dayIndexIfAllDayDrop(evView.frame) {
-                descriptor.isAllDay = true
-                if let dayDate = Calendar.current.date(byAdding: .day, value: dayIdx, to: startOfWeek) {
-                    let startOfDay = Calendar.current.startOfDay(for: dayDate)
-                    let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
-                    descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
-                    onEventDragEnded?(descriptor, startOfDay)
-                }
-            } else if let newRaw = dateFromFrame(evView.frame) {
-                let snapped = snapToNearest10Min(newRaw)
-                descriptor.isAllDay = false
-                onEventDragEnded?(descriptor, snapped)
-            } else if let orig = originalFrameForDraggedEvent {
-                evView.frame = orig
-            }
-
-            dragOffset = nil
-            originalFrameForDraggedEvent = nil
-            multiDayDraggingOriginalFrames.removeAll()
-
-        default:
-            break
+            
+            // Тук премахваме кода за drag – не задаваме originalFrameForDraggedEvent,
+            // dragOffset или други данни за преместване.
         }
+        
+        // Може да пропуснем и обработката при .changed, .ended, .cancelled
     }
+
 
     private func selectEventView(_ evView: EventView) {
         guard let descriptor = eventViewToDescriptor[evView] else { return }
