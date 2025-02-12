@@ -3,14 +3,13 @@ import CalendarKit
 
 public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
-    private let navBarHeight: CGFloat = 40
+    private let navBarHeight: CGFloat = 60
     private let daysHeaderHeight: CGFloat = 40
     private let leftColumnWidth: CGFloat = 70
 
-    private let navBar = UIView()
-    private let prevWeekButton = UIButton(type: .system)
-    private let nextWeekButton = UIButton(type: .system)
-    private let currentWeekLabel = UILabel()
+    /// Вместо бутони за смяна на седмица, имаме два DatePicker-а
+    private let fromDatePicker = UIDatePicker()
+    private let toDatePicker   = UIDatePicker()
 
     private let cornerView = UIView()
     private let daysHeaderScrollView = UIScrollView()
@@ -22,42 +21,51 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
-    /// Callback – when user taps < or >
-    public var onWeekChange: ((Date) -> Void)?
+    /// Callback – когато потребителят смени датите в DatePicker-ите
+    public var onRangeChange: ((Date, Date) -> Void)?
 
-    /// Tapping an event
+    /// При тап върху евент
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet { weekView.onEventTap = onEventTap }
     }
 
-    /// Long press on empty area
+    /// Long press в празно
     public var onEmptyLongPress: ((Date) -> Void)? {
         didSet { weekView.onEmptyLongPress = onEmptyLongPress }
     }
 
-    /// Drag/Drop entire event
+    /// Drag/Drop
     public var onEventDragEnded: ((EventDescriptor, Date) -> Void)? {
         didSet { weekView.onEventDragEnded = onEventDragEnded }
     }
-
-    /// Resize
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)? {
         didSet { weekView.onEventDragResizeEnded = onEventDragResizeEnded }
     }
 
-    /// Tapping day label
-    public var onDayLabelTap: ((Date) -> Void)?
+    /// Тап върху label на ден
+    public var onDayLabelTap: ((Date) -> Void)? {
+        didSet { daysHeaderView.onDayTap = onDayLabelTap }
+    }
 
-    public var startOfWeek: Date = Date() {
+    // Нашите дати за диапазона
+    public var fromDate: Date = Date() {
         didSet {
-            daysHeaderView.startOfWeek = startOfWeek
-            weekView.startOfWeek       = startOfWeek
-            updateWeekLabel()
+            daysHeaderView.fromDate = fromDate
+            weekView.fromDate = fromDate
+            fromDatePicker.date = fromDate
             setNeedsLayout()
-            layoutIfNeeded()
+        }
+    }
+    public var toDate: Date = Date() {
+        didSet {
+            daysHeaderView.toDate = toDate
+            weekView.toDate = toDate
+            toDatePicker.date = toDate
+            setNeedsLayout()
         }
     }
 
+    // Таймер за прерисуване (на линията за текущия час)
     private var redrawTimer: Timer?
 
     public override init(frame: CGRect) {
@@ -79,99 +87,122 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private func setupViews() {
         backgroundColor = .systemBackground
 
+        // Нав бар (ползваме го като контейнер)
+        let navBar = UIView()
         navBar.backgroundColor = .secondarySystemBackground
         addSubview(navBar)
+        navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
+        navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
 
-        prevWeekButton.setTitle("<", for: .normal)
-        prevWeekButton.addTarget(self, action: #selector(didTapPrevWeek), for: .touchUpInside)
-        navBar.addSubview(prevWeekButton)
+        // Настройки на datePicker-ите
+        fromDatePicker.datePickerMode = .date
+        fromDatePicker.preferredDatePickerStyle = .compact
+        fromDatePicker.addTarget(self, action: #selector(didPickFromDate(_:)), for: .valueChanged)
+        navBar.addSubview(fromDatePicker)
 
-        nextWeekButton.setTitle(">", for: .normal)
-        nextWeekButton.addTarget(self, action: #selector(didTapNextWeek), for: .touchUpInside)
-        navBar.addSubview(nextWeekButton)
+        toDatePicker.datePickerMode = .date
+        toDatePicker.preferredDatePickerStyle = .compact
+        toDatePicker.addTarget(self, action: #selector(didPickToDate(_:)), for: .valueChanged)
+        navBar.addSubview(toDatePicker)
 
-        currentWeekLabel.font = .boldSystemFont(ofSize: 14)
-        currentWeekLabel.textAlignment = .center
-        navBar.addSubview(currentWeekLabel)
-
+        // ъгълчето вляво под navbar
         cornerView.backgroundColor = .secondarySystemBackground
         addSubview(cornerView)
 
+        // Days header
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
         daysHeaderScrollView.isScrollEnabled = false
         daysHeaderScrollView.addSubview(daysHeaderView)
         addSubview(daysHeaderScrollView)
 
-        daysHeaderView.onDayTap = { [weak self] date in
-            self?.onDayLabelTap?(date)
-        }
-
+        // Hours column
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
         hoursColumnScrollView.addSubview(hoursColumnView)
         addSubview(hoursColumnScrollView)
 
+        // Main scroll
         mainScrollView.delegate = self
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
+        // Свързваме hoursColumnView
         weekView.hoursColumnView = hoursColumnView
 
+        // Някои начални настройки
         daysHeaderView.leadingInsetForHours = leftColumnWidth
-        daysHeaderView.dayColumnWidth = 100
-
         weekView.leadingInsetForHours = leftColumnWidth
-        weekView.dayColumnWidth = 100
-        weekView.hourHeight = 50
-        weekView.allDayHeight = 40
-        weekView.autoResizeAllDayHeight = true
+        hoursColumnView.topOffset = weekView.allDayHeight
+    }
 
-        hoursColumnView.hourHeight = 50
+    @objc private func didPickFromDate(_ sender: UIDatePicker) {
+        // Ако потребителят вдигне "fromDate", не допускаме даDate да е по-рано
+        if sender.date > toDate {
+            toDate = sender.date
+        }
+        fromDate = sender.date
+        onRangeChange?(fromDate, toDate)
+    }
+
+    @objc private func didPickToDate(_ sender: UIDatePicker) {
+        // Не допускаме toDate < fromDate
+        if sender.date < fromDate {
+            fromDate = sender.date
+        }
+        toDate = sender.date
+        onRangeChange?(fromDate, toDate)
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        navBar.frame = CGRect(x: 0, y: 0,
-                              width: bounds.width,
-                              height: navBarHeight)
+        let navBarFrame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
+        // Търсим първия subview (navigation bar)
+        if let navBar = subviews.first {
+            navBar.frame = navBarFrame
+        }
 
-        let btnW: CGFloat = 44
-        prevWeekButton.frame = CGRect(x: 8, y: 0, width: btnW, height: navBarHeight)
-        nextWeekButton.frame = CGRect(x: navBar.bounds.width - btnW - 8, y: 0,
-                                      width: btnW, height: navBarHeight)
-        currentWeekLabel.frame = CGRect(x: prevWeekButton.frame.maxX, y: 0,
-                                        width: nextWeekButton.frame.minX - prevWeekButton.frame.maxX,
-                                        height: navBarHeight)
+        // Позиционираме picker-ите вътре в нав бара
+        // (по желание може да ги наредите по друг начин)
+        let pickerW: CGFloat = 160
+        let marginX: CGFloat = 8
+        fromDatePicker.frame = CGRect(x: marginX, y: 10, width: pickerW, height: 40)
+        toDatePicker.frame = CGRect(x: marginX + pickerW + 16, y: 10, width: pickerW, height: 40)
 
-        cornerView.frame = CGRect(x: 0, y: navBarHeight,
-                                  width: leftColumnWidth, height: daysHeaderHeight)
+        let yMain = navBarHeight
+        cornerView.frame = CGRect(x: 0, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
 
-        daysHeaderScrollView.frame = CGRect(x: leftColumnWidth,
-                                            y: navBarHeight,
+        daysHeaderScrollView.frame = CGRect(x: leftColumnWidth, y: yMain,
                                             width: bounds.width - leftColumnWidth,
                                             height: daysHeaderHeight)
 
-        let totalDaysHeaderWidth = daysHeaderView.leadingInsetForHours + 7*daysHeaderView.dayColumnWidth
-        daysHeaderScrollView.contentSize = CGSize(
-            width: totalDaysHeaderWidth - leftColumnWidth,
-            height: daysHeaderHeight
-        )
+        // Изчисляваме колко дни е диапазонът
+        let cal = Calendar.current
+        let fromOnly = cal.startOfDay(for: fromDate)
+        let toOnly = cal.startOfDay(for: toDate)
+        let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
+
+        let totalDaysHeaderWidth = daysHeaderView.leadingInsetForHours + CGFloat(dayCount)*daysHeaderView.dayColumnWidth
+        daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth - leftColumnWidth,
+                                                  height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0,
                                       width: totalDaysHeaderWidth,
                                       height: daysHeaderHeight)
 
-        let yMain = navBarHeight + daysHeaderHeight
-        mainScrollView.frame = CGRect(x: leftColumnWidth, y: yMain,
+        let mainScrollY = yMain + daysHeaderHeight
+        mainScrollView.frame = CGRect(x: leftColumnWidth, y: mainScrollY,
                                       width: bounds.width - leftColumnWidth,
-                                      height: bounds.height - yMain)
-        hoursColumnScrollView.frame = CGRect(x: 0, y: yMain,
-                                             width: leftColumnWidth,
-                                             height: bounds.height - yMain)
+                                      height: bounds.height - mainScrollY)
 
-        let totalWidth = weekView.leadingInsetForHours + 7*weekView.dayColumnWidth
+        hoursColumnScrollView.frame = CGRect(x: 0, y: mainScrollY,
+                                             width: leftColumnWidth,
+                                             height: bounds.height - mainScrollY)
+
+        // Ширина на timeline
+        let totalWidth = weekView.leadingInsetForHours + CGFloat(dayCount)*weekView.dayColumnWidth
+        // Височина: allDayHeight + 24 * hourHeight (може да се смени)
         let totalHeight = weekView.allDayHeight + 24*weekView.hourHeight
 
         mainScrollView.contentSize = CGSize(width: totalWidth, height: totalHeight)
@@ -184,11 +215,10 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         bringSubviewToFront(hoursColumnScrollView)
         bringSubviewToFront(cornerView)
 
-        // Show the current time line if the week includes “today”
-        let now = Date()
-        let inWeek = (weekView.dayIndexIfInCurrentWeek(now) != nil)
-        hoursColumnView.isCurrentDayInWeek = inWeek
-        hoursColumnView.currentTime = inWeek ? now : nil
+        // Маркираме в HoursColumnView дали текущият ден попада в диапазона
+        let nowOnly = cal.startOfDay(for: Date())
+        hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
+        hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
 
         hoursColumnView.setNeedsDisplay()
         weekView.setNeedsDisplay()
@@ -199,38 +229,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
         }
-    }
-
-    @objc private func didTapPrevWeek() {
-        var cal = Calendar.current
-        cal.firstWeekday = 2 // Monday start
-        if let newDate = cal.date(byAdding: .day, value: -7, to: startOfWeek) {
-            let mondayMidnight = newDate.dateOnly(calendar: cal)
-            startOfWeek = mondayMidnight
-            onWeekChange?(mondayMidnight)
-        }
-    }
-
-    @objc private func didTapNextWeek() {
-        var cal = Calendar.current
-        cal.firstWeekday = 2 // Monday start
-        if let newDate = cal.date(byAdding: .day, value: 7, to: startOfWeek) {
-            let mondayMidnight = newDate.dateOnly(calendar: cal)
-            startOfWeek = mondayMidnight
-            onWeekChange?(mondayMidnight)
-        }
-    }
-
-    private func updateWeekLabel() {
-        let cal = Calendar.current
-        let endOfWeek = cal.date(byAdding: .day, value: 6, to: startOfWeek) ?? startOfWeek
-
-        let df = DateFormatter()
-        df.dateFormat = "d MMM"
-        let startStr = df.string(from: startOfWeek)
-        let endStr   = df.string(from: endOfWeek)
-
-        currentWeekLabel.text = "\(startStr) - \(endStr)"
     }
 
     private func startRedrawTimer() {
