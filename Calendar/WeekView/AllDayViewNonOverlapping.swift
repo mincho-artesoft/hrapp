@@ -62,7 +62,10 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(frame: frame)
 
-        backgroundColor = style.backgroundColor
+        // Промяната е тук:
+        // Вместо backgroundColor = style.backgroundColor
+        // задаваме по-тъмен цвят, напр. systemGray5
+        backgroundColor = .systemGray5
 
         longPressEmptySpace.addTarget(self, action: #selector(handleLongPressOnEmptySpace(_:)))
         longPressEmptySpace.minimumPressDuration = 0.7
@@ -73,7 +76,8 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(coder: coder)
 
-        backgroundColor = style.backgroundColor
+        // Отново задаваме по-тъмен фон
+        backgroundColor = .systemGray5
 
         longPressEmptySpace.addTarget(self, action: #selector(handleLongPressOnEmptySpace(_:)))
         longPressEmptySpace.minimumPressDuration = 0.7
