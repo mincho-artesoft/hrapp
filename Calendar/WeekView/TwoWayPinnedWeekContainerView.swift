@@ -6,7 +6,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private let navBarHeight: CGFloat = 60
     private let daysHeaderHeight: CGFloat = 40
 
-    // Връщаме го на 70 (както беше)
+    // Връщаме го на 70 (както беше) или вашата стойност
     private let leftColumnWidth: CGFloat = 70 // CHANGED
 
     // Нав-бар с два DatePicker-а
@@ -156,13 +156,34 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
 
-        // ВАЖНО: тук казваме 0 за всички .leadingInsetForHours
-        daysHeaderView.leadingInsetForHours = 0 // CHANGED
-        allDayView.leadingInsetForHours     = 0 // CHANGED
-        weekView.leadingInsetForHours       = 0 // CHANGED
+        // Тук казваме 0 за всички .leadingInsetForHours
+        daysHeaderView.leadingInsetForHours = 0
+        allDayView.leadingInsetForHours     = 0
+        weekView.leadingInsetForHours       = 0
 
         // Свързваме hoursColumnView -> weekView
         weekView.hoursColumnView = hoursColumnView
+
+        // --- НОВО: Закачаме onEventConvertToAllDay --- //
+        weekView.onEventConvertToAllDay = { [weak self] descriptor, dayIdx in
+            guard let self = self else { return }
+            let cal = Calendar.current
+            let fromOnly = cal.startOfDay(for: self.fromDate)
+            guard let targetDay = cal.date(byAdding: .day, value: dayIdx, to: fromOnly) else { return }
+
+            descriptor.isAllDay = true
+
+            let startOfDay = cal.startOfDay(for: targetDay)
+            let endOfDay   = cal.date(byAdding: .day, value: 1, to: startOfDay)!
+            descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
+
+            // По аналогия на onEventDragEnded:
+            self.onEventDragEnded?(descriptor, startOfDay)
+
+            // Или, ако ползвате Coordinator (EKEventStore):
+            // context.coordinator.handleEventConvertToAllDay(descriptor, startOfDay)
+            // ...
+        }
     }
 
     @objc private func didPickFromDate(_ sender: UIDatePicker) {
@@ -209,12 +230,10 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         let toOnly = cal.startOfDay(for: toDate)
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
 
-        // Понеже daysHeaderView.leadingInsetForHours = 0, общата ширина е 0 + dayCount*dayColumnWidth
         let totalDaysHeaderWidth = daysHeaderView.leadingInsetForHours + CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalDaysHeaderWidth, height: daysHeaderHeight)
 
-        // pinned all-day
         let allDayY = yMain + daysHeaderHeight
         let allDayH = allDayView.desiredHeight()
         allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
@@ -229,7 +248,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayH)
 
-        // Лява колона за часове
         let hoursColumnY = allDayY + allDayH
         hoursColumnScrollView.frame = CGRect(
             x: 0,
@@ -238,14 +256,13 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             height: bounds.height - hoursColumnY
         )
 
-        // mainScroll
-        let mainScrollY = hoursColumnY
         mainScrollView.frame = CGRect(
             x: leftColumnWidth,
-            y: mainScrollY,
+            y: hoursColumnY,
             width: bounds.width - leftColumnWidth,
-            height: bounds.height - mainScrollY
+            height: bounds.height - hoursColumnY
         )
+
         let totalHeight = 24 * weekView.hourHeight
         let totalWidth = weekView.leadingInsetForHours + CGFloat(dayCount) * weekView.dayColumnWidth
         mainScrollView.contentSize = CGSize(width: totalWidth, height: totalHeight)

@@ -20,7 +20,9 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     public var onEmptyLongPress: ((Date) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
-    public var onEventConvertToAllDay: ((EventDescriptor, Int) -> Void)?
+    
+    // --- НОВО: колбек при драгване в all-day --- //
+    public var onEventConvertToAllDay: ((EventDescriptor, Int) -> Void)? // NEW
 
     public var regularLayoutAttributes = [EventLayoutAttributes]() {
         didSet { setNeedsLayout() }
@@ -106,6 +108,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             guard let eventsForDay = groupedByDay[dayIndex], !eventsForDay.isEmpty else { continue }
             let sorted = eventsForDay.sorted { $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start }
 
+            // Разделяме ги на колони (не-оверлапване)
             var columns: [[EventLayoutAttributes]] = []
             for attr in sorted {
                 var placed = false
@@ -118,6 +121,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 }
                 if !placed { columns.append([attr]) }
             }
+
             let colCount = CGFloat(columns.count)
             let columnWidth = (dayColumnWidth - style.eventGap * 2) / colCount
 
@@ -151,7 +155,9 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         for ev in columnEvents {
             let evStart = ev.descriptor.dateInterval.start
             let evEnd   = ev.descriptor.dateInterval.end
-            if evStart < candEnd && candStart < evEnd { return true }
+            if evStart < candEnd && candStart < evEnd {
+                return true
+            }
         }
         return false
     }
@@ -237,6 +243,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
+    // --- Тук добавяме проверка дали евентът е излезнал над 0 (all-day) --- //
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
@@ -284,10 +291,12 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             }
 
         case .ended, .cancelled:
-            if evView.frame.maxY < 0 {
+            // --- НОВО: Ако евентът е "излетял" над 0 (горе), превръщаме го в all-day --- //
+            if evView.frame.maxY < 0 { // NEW CHECK
                 let midX = evView.frame.midX
                 if let dIdx = dayIndexFromX(midX) {
-                    onEventConvertToAllDay?(descriptor, dIdx)
+                    // Извикваме новия колбек
+                    onEventConvertToAllDay?(descriptor, dIdx) // NEW
                 } else {
                     if let orig = originalFrameForDraggedEvent {
                         evView.frame = orig
