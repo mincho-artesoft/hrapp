@@ -35,8 +35,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         container.fromDate = fromDate
         container.toDate   = toDate
 
-        let (allDay, regular) = splitAllDay($events.wrappedValue)
-        container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
+        let (allDay, regular) = splitAllDay(events)
+        container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
 
         // onRangeChange -> викаме през Coordinator
@@ -86,8 +86,9 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         container.toDate   = toDate
 
         let (allDay, regular) = splitAllDay(events)
-        container.weekView.allDayLayoutAttributes  = allDay.map { EventLayoutAttributes($0) }
-        container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
+        container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
+        container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
+
         container.setNeedsLayout()
         container.layoutIfNeeded()
     }
@@ -113,7 +114,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     public class Coordinator: NSObject, EKEventEditViewDelegate {
         let parent: TwoWayPinnedWeekWrapper
 
-        // Запомняне на последния избран евент ID (ако е многодневен)
         var selectedEventID: String?
         var selectedEventPartialStart: Date?
 
@@ -128,7 +128,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // Презареждаме събитията за текущия диапазон [fromDate..toDate]
         public func reloadCurrentRange() {
             let cal = Calendar.current
             let fromOnly = cal.startOfDay(for: parent.fromDate)
@@ -141,7 +140,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             var splitted: [EventDescriptor] = []
             for ekEvent in found {
                 guard let realStart = ekEvent.startDate, let realEnd = ekEvent.endDate else { continue }
-                // Проверка дали е много-дневно
                 if cal.startOfDay(for: realStart) != cal.startOfDay(for: realEnd) {
                     splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: fromOnly, endRange: actualEnd))
                 } else {
@@ -170,7 +168,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        // Разбиваме многодневно събитие на отделни partial-и
         private func splitEventByDays(_ ekEvent: EKEvent, startRange: Date, endRange: Date) -> [EKMultiDayWrapper] {
             var results = [EKMultiDayWrapper]()
             let cal = Calendar.current
@@ -190,7 +187,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             return results
         }
 
-        // Откриваме и показваме системния редактор
         func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
             let editVC = EKEventEditViewController()
             editVC.eventStore = parent.eventStore
@@ -295,7 +291,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 let distanceToStart = forcedNewDate.timeIntervalSince(originalInterval.start)
                 let distanceToEnd = originalInterval.end.timeIntervalSince(forcedNewDate)
 
-                // Определяме дали местим началото или края
                 if distanceToStart < distanceToEnd {
                     // top
                     if forcedNewDate < event.endDate {
@@ -334,7 +329,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     // top
                     event.startDate = forcedNewDate
                     if forcedNewDate > event.endDate {
-                        // предпазна проверка
                         event.endDate = forcedNewDate.addingTimeInterval(3600)
                     }
                 } else {
