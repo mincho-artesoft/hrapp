@@ -156,12 +156,13 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         allDayTitleLabel.textAlignment = .center
         addSubview(allDayTitleLabel)
 
-        // 6) pinned all-day зона (скрол само по X)
+        // 6) pinned all-day зона
         allDayScrollView.showsHorizontalScrollIndicator = false
         allDayScrollView.showsVerticalScrollIndicator = false
         allDayScrollView.alwaysBounceHorizontal = true
         allDayScrollView.alwaysBounceVertical = false
-        allDayScrollView.isScrollEnabled = true
+        // ТУК ПРОМЕНЯМЕ: беше true, сега става false
+        allDayScrollView.isScrollEnabled = false
         addSubview(allDayScrollView)
         allDayScrollView.addSubview(allDayView)
 
@@ -179,10 +180,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         daysHeaderView.leadingInsetForHours = leftColumnWidth
         allDayView.leadingInsetForHours = leftColumnWidth
         weekView.leadingInsetForHours = leftColumnWidth
-
-        // Ако искате логика "drag from hours -> all-day", може да закачите:
-        // weekView.onEventConvertToAllDay = { ... }
-
     }
 
     @objc private func didPickFromDate(_ sender: UIDatePicker) {

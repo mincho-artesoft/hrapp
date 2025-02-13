@@ -3,7 +3,7 @@ import EventKit
 import CalendarKit
 
 struct RootView: View {
-    @State private var selectedTab = 2
+    @State private var selectedTab = 3
 
     // Единична споделена инстанция на EKEventStore
     @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
