@@ -10,7 +10,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     @Binding var events: [EventDescriptor]
     let eventStore: EKEventStore
 
-    /// Callback при тап върху day label
     public var onDayLabelTap: ((Date) -> Void)?
 
     public init(
@@ -31,21 +30,18 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         let vc = UIViewController()
         let container = TwoWayPinnedWeekContainerView()
 
-        // Задаваме начално
         container.fromDate = fromDate
         container.toDate   = toDate
 
         let (allDay, regular) = splitAllDay(events)
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
-        container.weekView.regularLayoutAttributes = regular.map { EventLayoutAttributes($0) }
+        container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
 
-        // onRangeChange -> викаме през Coordinator
         container.onRangeChange = { newFrom, newTo in
             self.fromDate = newFrom
             self.toDate   = newTo
             context.coordinator.reloadCurrentRange()
         }
-        // Event tap -> системен EKEventEditViewController
         container.onEventTap = { descriptor in
             if let ekWrap = descriptor as? EKWrapper {
                 context.coordinator.presentSystemEditor(ekWrap.ekEvent, in: vc)
@@ -56,14 +52,12 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         container.onEmptyLongPress = { date in
             context.coordinator.createNewEventAndPresent(date: date, in: vc)
         }
-
         container.onEventDragEnded = { descriptor, newDate in
             context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: false)
         }
         container.onEventDragResizeEnded = { descriptor, newDate in
             context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: true)
         }
-
         container.onDayLabelTap = { tappedDay in
             self.onDayLabelTap?(tappedDay)
         }
@@ -110,7 +104,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         return (allDay, regular)
     }
 
-    // MARK: - Coordinator
     public class Coordinator: NSObject, EKEventEditViewDelegate {
         let parent: TwoWayPinnedWeekWrapper
 
@@ -148,13 +141,11 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
             parent.events = splitted
 
-            // Възстановяваме "editedEvent", ако някой беше селектиран
             if let lastID = selectedEventID {
                 let splittedMulti = splitted.compactMap { $0 as? EKMultiDayWrapper }
                 if let partialStart = selectedEventPartialStart {
                     if let samePartial = splittedMulti.first(where: {
-                        $0.ekEvent.eventIdentifier == lastID &&
-                        $0.dateInterval.start == partialStart
+                        $0.ekEvent.eventIdentifier == lastID && $0.dateInterval.start == partialStart
                     }) {
                         samePartial.editedEvent = samePartial
                     }
@@ -205,7 +196,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         }
 
         func handleEventDragOrResize(descriptor: EventDescriptor, newDate: Date, isResize: Bool) {
-            // Запомняме info
             if let multi = descriptor as? EKMultiDayWrapper {
                 selectedEventID = multi.realEvent.eventIdentifier
                 selectedEventPartialStart = multi.dateInterval.start
@@ -321,18 +311,15 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     }
                 }
             } else {
-                // ако descriptor е nil (recurring future)
                 let oldDur = event.endDate.timeIntervalSince(event.startDate)
                 let distanceToStart = forcedNewDate.timeIntervalSince(event.startDate)
                 let distanceToEnd   = event.endDate.timeIntervalSince(forcedNewDate)
                 if distanceToStart < distanceToEnd {
-                    // top
                     event.startDate = forcedNewDate
                     if forcedNewDate > event.endDate {
                         event.endDate = forcedNewDate.addingTimeInterval(3600)
                     }
                 } else {
-                    // bottom
                     event.endDate = forcedNewDate
                     if forcedNewDate < event.startDate {
                         event.startDate = forcedNewDate.addingTimeInterval(-oldDur)

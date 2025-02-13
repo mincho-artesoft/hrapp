@@ -3,9 +3,10 @@ import UIKit
 public final class DaysHeaderView: UIView {
 
     public var dayColumnWidth: CGFloat = 100
-    public var leadingInsetForHours: CGFloat = 70
 
-    /// Начална и крайна дата на диапазона, който ще се показва
+    // Тук го правим 0 (или нещо много малко)
+    public var leadingInsetForHours: CGFloat = 0 // CHANGED
+
     public var fromDate: Date = Date() {
         didSet { rebuildLabelsIfNeeded() }
     }
@@ -13,15 +14,12 @@ public final class DaysHeaderView: UIView {
         didSet { rebuildLabelsIfNeeded() }
     }
 
-    /// При тап върху даден ден
     public var onDayTap: ((Date) -> Void)?
 
-    // Динамично създаваме label-ове според броя дни в диапазона
     private var labels: [UILabel] = []
     private var calendarForLabels: Calendar = {
         var cal = Calendar(identifier: .gregorian)
-        // Monday = 2 (ако искате понеделник да е първи ден)
-        cal.firstWeekday = 2
+        cal.firstWeekday = 2 // Monday=2
         return cal
     }()
 
@@ -35,14 +33,11 @@ public final class DaysHeaderView: UIView {
         backgroundColor = .clear
     }
 
-    // Колко дни обхваща диапазонът
     private var dayCount: Int {
         let comps = calendarForLabels.dateComponents([.day], from: fromDateOnly, to: toDateOnly)
-        // +1 за да включим и крайния ден
         return (comps.day ?? 0) + 1
     }
 
-    /// Изчисляваме “start of day” за fromDate / toDate, за да избегнем часове
     private var fromDateOnly: Date {
         calendarForLabels.startOfDay(for: fromDate)
     }
@@ -50,7 +45,6 @@ public final class DaysHeaderView: UIView {
         calendarForLabels.startOfDay(for: toDate)
     }
 
-    // Ако броят на label-ите се е променил, строим наново
     private func rebuildLabelsIfNeeded() {
         let needed = dayCount
         if needed < 1 {
@@ -62,11 +56,9 @@ public final class DaysHeaderView: UIView {
             updateTexts()
             return
         }
-        // Премахваме старите
         labels.forEach { $0.removeFromSuperview() }
         labels.removeAll()
 
-        // Създаваме нужния брой
         for i in 0..<needed {
             let lbl = UILabel()
             lbl.textAlignment = .center
@@ -74,9 +66,8 @@ public final class DaysHeaderView: UIView {
             lbl.textColor = .label
             lbl.tag = i
 
-            // Tap gesture
-            lbl.isUserInteractionEnabled = true
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_:)))
+            lbl.isUserInteractionEnabled = true
             lbl.addGestureRecognizer(tapGR)
 
             labels.append(lbl)
@@ -94,7 +85,6 @@ public final class DaysHeaderView: UIView {
         }
     }
 
-    // Обновяваме текстовете в label-ите
     private func updateTexts() {
         let df = DateFormatter()
         df.dateFormat = "EEE, d MMM"
@@ -109,13 +99,8 @@ public final class DaysHeaderView: UIView {
             }
             lbl.text = df.string(from: currentDay)
 
-            // Оцветяваме, ако е днешния ден
             let dayOnly = calendarForLabels.startOfDay(for: currentDay)
-            if dayOnly == todayOnly {
-                lbl.textColor = .systemOrange
-            } else {
-                lbl.textColor = .label
-            }
+            lbl.textColor = (dayOnly == todayOnly) ? .systemOrange : .label
         }
     }
 

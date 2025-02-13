@@ -59,7 +59,7 @@ public final class HoursColumnView: UIView {
                 let baseY = topOffset + CGFloat(h)*hourHeight
                 let fraction = CGFloat(m)/60.0
                 let yPos = baseY + fraction*hourHeight
-                let minuteStr = String(format: ".%02d", m) // e.g. ".05", ".10", ...
+                let minuteStr = String(format: ".%02d", m)
                 let attr = NSAttributedString(string: minuteStr,
                                               attributes: [
                                                   .font: minorFont,

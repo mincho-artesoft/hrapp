@@ -1,10 +1,3 @@
-//
-//  AllDayViewNonOverlapping.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 12/2/25.
-//
-
 import UIKit
 import CalendarKit
 
@@ -22,8 +15,9 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     /// Стилът за таймлайн (цветове, дебелина на линии и т.н.).
     public var style = TimelineStyle()
 
-    /// Колко място оставяме вляво за "часовете" (дори да нямаме часове тук).
-    public var leadingInsetForHours: CGFloat = 70
+    /// Колко място оставяме вляво (между колоната с часовете и евентите).
+    /// Ще го правим 0, за да няма допълнителен отстъп.
+    public var leadingInsetForHours: CGFloat = 0 // CHANGED
 
     /// Ширина на колоната за всеки ден (ще се преизчислява динамично в `layoutSubviews()`).
     public var dayColumnWidth: CGFloat = 100
@@ -62,9 +56,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(frame: frame)
 
-        // Промяната е тук:
-        // Вместо backgroundColor = style.backgroundColor
-        // задаваме по-тъмен цвят, напр. systemGray5
+        // За разлика от style.backgroundColor, тук даваме по-тъмен фон (пример)
         backgroundColor = .systemGray5
 
         longPressEmptySpace.addTarget(self, action: #selector(handleLongPressOnEmptySpace(_:)))
@@ -76,7 +68,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(coder: coder)
 
-        // Отново задаваме по-тъмен фон
         backgroundColor = .systemGray5
 
         longPressEmptySpace.addTarget(self, action: #selector(handleLongPressOnEmptySpace(_:)))
@@ -102,7 +93,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         // Преизчисляваме ширината на колоните, за да няма хоризонтален скрол
         let totalDays = dayCount
         if totalDays > 0 {
-            // Колко място имаме в общия контейнер, изключвайки мястото вляво за "часовете"
             let availableWidth = bounds.width - leadingInsetForHours
             let safeWidth = max(availableWidth, 0)
             // Разпределяме го поравно за всеки ден
@@ -111,8 +101,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             dayColumnWidth = 0
         }
 
-        // Създаваме/обновяваме вече съществуващи EventView след преоразмеряването
-        // и отбелязваме нуждата от чертане на фоновите линии
         setNeedsDisplay()
 
         // Групираме евентите по ден
@@ -138,7 +126,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 let w = dayColumnWidth - style.eventGap * 2
                 let h = rowHeight - style.eventGap * 2
 
-                // Взимаме вю (създаваме ново, ако няма достатъчно)
                 let evView = ensureEventView(at: usedIndex)
                 evView.isHidden = false
                 evView.frame = CGRect(x: x, y: y, width: w, height: h)
@@ -150,13 +137,12 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         }
     }
 
-    // Чертаем разделителните линии в draw(_ rect: CGRect)
+    // Чертаем разделителните линии
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         layoutBackground()
     }
 
-    /// Рисуваме линии по вертикал (за дни) и по хоризонтал (за редове), за да е ясно разделението.
     private func layoutBackground() {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
         ctx.saveGState()
@@ -165,25 +151,22 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
 
-        // --- Вертикални линии (отделни дни) ---
-        // Линия вляво (между часовете и all-day зоната)
+        // Вертикални линии
         ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
         ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
 
-        // Още колони за всеки ден
         for i in 0...dayCount {
             let colX = leadingInsetForHours + CGFloat(i) * dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
             ctx.addLine(to: CGPoint(x: colX, y: bounds.height))
         }
 
-        // --- Хоризонтални линии (редове) ---
+        // Хоризонтални
         let grouped = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         let maxEventsInAnyDay = grouped.values.map { $0.count }.max() ?? 0
 
-        // Ако autoResizeHeight e true, преизчисляваме преди да рисуваме
         if autoResizeHeight {
             recalcAllDayHeightDynamically()
         }
@@ -197,12 +180,11 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
         }
 
-        // Накрая чертаем
         ctx.strokePath()
         ctx.restoreGState()
     }
 
-    // MARK: - Създаване/менажиране на EventView
+    // MARK: - Менажиране на EventView
 
     private func ensureEventView(at index: Int) -> EventView {
         if index < eventViews.count {
@@ -233,7 +215,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         pan.delegate = self
         ev.addGestureRecognizer(pan)
 
-        // Resize handles (ако решите да ползвате resizing и в all-day зона)
+        // Resize handles (ако решите да ползвате resizing и тук)
         for handle in ev.eventResizeHandles {
             let panResize = UIPanGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
             panResize.delegate = self
@@ -252,7 +234,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         return ev
     }
 
-    // MARK: - Actions върху евент (tap, longPress, pan, resize)
+    // MARK: - Actions върху евент
 
     @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
         guard let tappedView = gesture.view as? EventView,
@@ -300,7 +282,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
 
-        // Ако не е селектиран, селектираме го
         if currentlyEditedEventView !== evView {
             selectEventView(evView)
         }
@@ -331,7 +312,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
 
-            // Ако е многодневен, местим и останалите вюта паралелно
+            // Ако е многодневен, местим и останалите вюта
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let deltaX = newFrame.origin.x - origFrame.origin.x
                 let deltaY = newFrame.origin.y - origFrame.origin.y
@@ -364,7 +345,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
 
-            // Прерисуваме накрая
             setNeedsLayout()
 
         default:
@@ -373,14 +353,13 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     }
 
     @objc private func handleResizeHandlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        // Примерно за all-day няма да имплементираме сложен resize.
+        // За all-day няма специална логика
         guard let handleView = gesture.view as? EventResizeHandleView,
               let eventView = handleView.superview as? EventView,
               let desc = eventViewToDescriptor[eventView] else { return }
 
         switch gesture.state {
         case .began:
-            // Уверяваме се, че евентът е селектиран
             if currentlyEditedEventView !== eventView {
                 selectEventView(eventView)
             }
@@ -392,36 +371,33 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     }
 
     @objc private func handleResizeHandleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
-        // Ако ви е необходима допълнителна логика
+        // допълнителна логика, ако искате
     }
 
     private func selectEventView(_ evView: EventView) {
         guard let descriptor = eventViewToDescriptor[evView] else { return }
 
-        // Сваляме старата селекция (ако има)
         if let oldView = currentlyEditedEventView, oldView !== evView,
            let oldDesc = eventViewToDescriptor[oldView] {
             oldDesc.editedEvent = nil
             oldView.updateWithDescriptor(event: oldDesc)
         }
-        // Селектираме новия
         descriptor.editedEvent = descriptor
         evView.updateWithDescriptor(event: descriptor)
         currentlyEditedEventView = evView
     }
 
-    // MARK: - LongPress на празно място (създаване на нов евент или друга логика)
+    // MARK: - LongPress на празно място
 
     @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
         let point = gesture.location(in: self)
 
-        // Ако попада върху евент, игнорираме
+        // Ако попада върху евент
         for evView in eventViews where !evView.isHidden && evView.frame.contains(point) {
             return
         }
 
-        // Деселектираме стария (ако има)
         if let oldView = currentlyEditedEventView,
            let oldDesc = eventViewToDescriptor[oldView] {
             oldDesc.editedEvent = nil
@@ -429,7 +405,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             currentlyEditedEventView = nil
         }
 
-        // В кой ден е кликнато?
         let dayIdx = dayIndexFromMidX(point.x)
         if let di = dayIdx,
            let dayDate = dayDateByAddingDays(di) {
@@ -440,7 +415,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
 
     // MARK: - Помощни методи
 
-    /// Колко дни обхваща диапазонът
     private var dayCount: Int {
         let cal = Calendar.current
         let startOnly = cal.startOfDay(for: fromDate)
@@ -449,7 +423,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         return (comps.day ?? 0) + 1
     }
 
-    /// Индекс за ден, на базата на датата
     private func dayIndexFor(_ date: Date) -> Int {
         let cal = Calendar.current
         let startOnly = cal.startOfDay(for: fromDate)
@@ -458,9 +431,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         return comps.day ?? 0
     }
 
-    /// Автоматично преоразмеряване на височината при много all-day евенти
     private func recalcAllDayHeightDynamically() {
-        // Ако няма евенти, да е ниско
         if allDayLayoutAttributes.isEmpty {
             self.fixedHeight = 40
             return
@@ -478,12 +449,10 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         }
     }
 
-    /// Външен метод: контейнерът може да пита "колко високо искаш да станеш?"
     public func desiredHeight() -> CGFloat {
         return self.fixedHeight
     }
 
-    /// Намира dayIndex по x координата (например midX на евента)
     private func dayIndexFromMidX(_ x: CGFloat) -> Int? {
         let colX = x - leadingInsetForHours
         let idx = Int(floor(colX / dayColumnWidth))
@@ -491,7 +460,6 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         return idx
     }
 
-    /// Връща датата на конкретния ден (добавяме dayIndex към `fromDate`)
     private func dayDateByAddingDays(_ dayIndex: Int) -> Date? {
         return Calendar.current.date(
             byAdding: .day,
