@@ -510,7 +510,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         return cal.date(from: comps2) ?? date
     }
 
-    private func dateFromPoint(_ point: CGPoint) -> Date? {
+    func dateFromPoint(_ point: CGPoint) -> Date? {
         if point.x < leadingInsetForHours { return nil }
         let dayIndex = Int((point.x - leadingInsetForHours) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
