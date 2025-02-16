@@ -31,51 +31,57 @@ struct RootView: View {
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Picker("View", selection: $selectedTab) {
-                    Text("Month").tag(0)
-                    Text("Day").tag(1)
-                    Text("Year").tag(2)
-                    Text("MultiDay").tag(3)
-                }
-                .pickerStyle(.segmented)
-                .padding()
+        ZStack {
+            // Задаваме системния фон
+            Color(.systemBackground)
+                .edgesIgnoringSafeArea(.all)
 
-                switch selectedTab {
-                case 0:
-                    MonthCalendarView(viewModel: calendarVM, startMonth: Date())
-                case 1:
-                    DayCalendarWrapperView(
-                        eventStore: calendarVM.eventStore,
-                        date: dayTabSelectedDate
-                    )
-                case 2:
-                    YearCalendarView(viewModel: calendarVM)
-                case 3:
-                    // Нашият Multi-Day изглед
-                    TwoWayPinnedWeekWrapper(
-                        fromDate: $pinnedFromDate,
-                        toDate: $pinnedToDate,
-                        events: $pinnedEvents,
-                        eventStore: calendarVM.eventStore
-                    ) { tappedDay in
-                        // Ако натиснем върху label на ден – прехвърляме се на Day View
-                        self.dayTabSelectedDate = tappedDay
-                        self.selectedTab = 1
+            NavigationView {
+                VStack {
+                    Picker("View", selection: $selectedTab) {
+                        Text("Month").tag(0)
+                        Text("Day").tag(1)
+                        Text("Year").tag(2)
+                        Text("MultiDay").tag(3)
                     }
-                    .onAppear {
-                        loadPinnedRangeEvents()
-                    }
-                    .onReceive(timer) { _ in
-                        loadPinnedRangeEvents()
-                    }
+                    .pickerStyle(.segmented)
+                    .padding()
 
-                default:
-                    Text("N/A")
+                    switch selectedTab {
+                    case 0:
+                        MonthCalendarView(viewModel: calendarVM, startMonth: Date())
+                    case 1:
+                        DayCalendarWrapperView(
+                            eventStore: calendarVM.eventStore,
+                            date: dayTabSelectedDate
+                        )
+                    case 2:
+                        YearCalendarView(viewModel: calendarVM)
+                    case 3:
+                        // Нашият Multi-Day изглед
+                        TwoWayPinnedWeekWrapper(
+                            fromDate: $pinnedFromDate,
+                            toDate: $pinnedToDate,
+                            events: $pinnedEvents,
+                            eventStore: calendarVM.eventStore
+                        ) { tappedDay in
+                            // Ако натиснем върху label на ден – прехвърляме се на Day View
+                            self.dayTabSelectedDate = tappedDay
+                            self.selectedTab = 1
+                        }
+                        .onAppear {
+                            loadPinnedRangeEvents()
+                        }
+                        .onReceive(timer) { _ in
+                            loadPinnedRangeEvents()
+                        }
+
+                    default:
+                        Text("N/A")
+                    }
                 }
+                .navigationTitle("Calendar Demo")
             }
-            .navigationTitle("Calendar Demo")
         }
         .onAppear {
             // Първоначално искаме да поискаме достъп и да заредим данни

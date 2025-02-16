@@ -24,7 +24,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
 
-    // callbacks
+    // Callbacks
     public var onRangeChange: ((Date, Date) -> Void)?
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
@@ -96,12 +96,14 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     private func setupViews() {
         backgroundColor = .systemBackground
 
-        // 1) mainScrollView + weekView (цялата седмица, с часове)
+        self.clipsToBounds = true
+        // 1) mainScrollView + weekView (цяла седмица с часове)
         mainScrollView.delegate = self
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.addSubview(weekView)
-        addSubview(mainScrollView)    // <-- добавен пръв
+        mainScrollView.layer.zPosition = 0
+        addSubview(mainScrollView) // Добавяме първо
 
         // 2) allDayScrollView + allDayView
         allDayScrollView.showsHorizontalScrollIndicator = false
@@ -109,27 +111,38 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         allDayScrollView.alwaysBounceHorizontal = true
         allDayScrollView.isScrollEnabled = false
         allDayScrollView.addSubview(allDayView)
-        addSubview(allDayScrollView)  // <-- добавен втори
-        // => mainScrollView и allDayScrollView са "едно ниво" (без bringSubviewToFront)
+        allDayScrollView.layer.zPosition = 1
+        addSubview(allDayScrollView) // Добавяме второ
+
+        // Изпращаме двата scroll view-а (и така weekView и allDayView) назад
+        sendSubviewToBack(mainScrollView)
+        sendSubviewToBack(allDayScrollView)
 
         // 3) Пиннати елементи (отгоре, вляво и т.н.)
         hoursColumnScrollView.showsVerticalScrollIndicator = false
+        hoursColumnScrollView.layer.zPosition = 2
         hoursColumnScrollView.addSubview(hoursColumnView)
-        addSubview(hoursColumnScrollView) // pinned
+        addSubview(hoursColumnScrollView)
 
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
         daysHeaderScrollView.addSubview(daysHeaderView)
-        addSubview(daysHeaderScrollView) // pinned
+        daysHeaderScrollView.backgroundColor = .secondarySystemBackground
+        daysHeaderScrollView.layer.zPosition = 3
+        addSubview(daysHeaderScrollView)
 
         cornerView.backgroundColor = .secondarySystemBackground
+        cornerView.layer.zPosition = 4
         addSubview(cornerView)
 
         allDayTitleLabel.text = "all-day"
+        allDayTitleLabel.backgroundColor = .secondarySystemBackground
+        allDayTitleLabel.layer.zPosition = 5
         addSubview(allDayTitleLabel)
 
-        // 4) Нав-бар (ако ви трябва)
+        // 4) Навигационен бар (ако е нужен)
         let navBar = UIView()
         navBar.backgroundColor = .secondarySystemBackground
+        navBar.layer.zPosition = 6
         addSubview(navBar)
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
@@ -137,19 +150,21 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         fromDatePicker.datePickerMode = .date
         fromDatePicker.preferredDatePickerStyle = .compact
         fromDatePicker.addTarget(self, action: #selector(didPickFromDate(_:)), for: .valueChanged)
+        fromDatePicker.layer.zPosition = 7
         navBar.addSubview(fromDatePicker)
 
         toDatePicker.datePickerMode = .date
         toDatePicker.preferredDatePickerStyle = .compact
         toDatePicker.addTarget(self, action: #selector(didPickToDate(_:)), for: .valueChanged)
+        toDatePicker.layer.zPosition = 8
         navBar.addSubview(toDatePicker)
 
-        // 5) Зануляваме .leadingInsetForHours, защото вече имаме pinned колона
+        // 5) Задаваме .leadingInsetForHours на 0, защото имаме пинната колона
         daysHeaderView.leadingInsetForHours = 0
         allDayView.leadingInsetForHours = 0
         weekView.leadingInsetForHours = 0
 
-        // Свързваме hoursColumnView -> weekView
+        // Свързваме hoursColumnView с weekView
         weekView.hoursColumnView = hoursColumnView
     }
 
@@ -172,7 +187,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // 1) Нав-бар
+        // 1) Навигационен бар
         let navBar = subviews.first(where: { $0.frame.origin == .zero && $0.bounds.height == navBarHeight })
         navBar?.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
 
@@ -193,7 +208,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             height: daysHeaderHeight
         )
 
-        // 3) изчисляваме dayCount
+        // 3) Изчисляваме брой дни
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
         let toOnly   = cal.startOfDay(for: toDate)
@@ -218,7 +233,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayH)
 
-        // 5) Колона с часове + mainScroll
+        // 5) Часова колона + mainScrollView
         let hoursColumnY = allDayY + allDayH
         hoursColumnScrollView.frame = CGRect(
             x: 0,
@@ -242,8 +257,9 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: totalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: totalHeight)
 
-        // НЕ извикваме bringSubviewToFront за allDayScrollView или mainScrollView:
-        // => те ще останат на едно ниво в subview stack-а.
+        // Гарантираме, че mainScrollView и allDayScrollView остават в задния план
+        sendSubviewToBack(mainScrollView)
+        sendSubviewToBack(allDayScrollView)
 
         // Проверка дали "днес" е в диапазона
         let nowOnly = cal.startOfDay(for: Date())
@@ -253,6 +269,9 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         hoursColumnView.setNeedsDisplay()
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
+
+        // Уверяваме се, че пиннатите елементи (напр. allDayTitleLabel) са най-отгоре
+        bringSubviewToFront(allDayTitleLabel)
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {

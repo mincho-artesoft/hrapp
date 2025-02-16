@@ -64,10 +64,10 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             context.coordinator.createNewEventAndPresent(date: date, in: vc)
         }
 
-        // Когато се задържи в all-day празно място  ( // ADDED )
+        // Когато се задържи в all-day празно място
         container.allDayView.onEmptyLongPress = { dayDate in
-            // Създаваме all-day event и го показваме през системния редактор  // ADDED
-            context.coordinator.createAllDayEventAndPresent(date: dayDate, in: vc)  // ADDED
+            // Създаваме all-day event и го показваме през системния редактор
+            context.coordinator.createAllDayEventAndPresent(date: dayDate, in: vc)
         }
 
         // При край на drag евент
@@ -85,14 +85,14 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             self.onDayLabelTap?(tappedDay)
         }
 
-        // Добавяме subview
+        // Добавяме subview и използваме safeAreaLayoutGuide, за да се запълни целия екран
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: vc.view.topAnchor),
+            container.topAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.topAnchor),
             container.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
             container.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
+            container.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor),
         ])
 
         return vc
@@ -243,7 +243,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             presentSystemEditor(newEvent, in: parentVC)
         }
 
-        // MARK: - Създаване на all-day евент ( // ADDED )
+        // MARK: - Създаване на all-day евент
         func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents

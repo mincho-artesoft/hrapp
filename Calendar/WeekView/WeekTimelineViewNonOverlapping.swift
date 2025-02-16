@@ -254,7 +254,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         case .began:
             // Издърпваме евента най-отгоре
 //            self.bringSubviewToFront(evView)
-            self.bringSubviewToFront(evView)
+//            self.bringSubviewToFront(evView)
 
             // CHANGED: изключваме clipsToBounds
             setScrollsClipping(enabled: false)
@@ -719,5 +719,12 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         // self.superview?.superview => TwoWayPinnedWeekContainerView
         guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
         container.mainScrollView.clipsToBounds = enabled
+        if enabled {
+            container.allDayScrollView.layer.zPosition = 2
+            container.mainScrollView.layer.zPosition = 1
+        }else{
+            container.allDayScrollView.layer.zPosition = 1
+            container.mainScrollView.layer.zPosition = 2
+        }
     }
 }
