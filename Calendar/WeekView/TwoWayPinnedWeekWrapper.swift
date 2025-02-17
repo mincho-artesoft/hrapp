@@ -3,8 +3,8 @@ import CalendarKit
 import EventKit
 import EventKitUI
 
-/// Обвива нашия "TwoWayPinnedWeekContainerView" в SwiftUI.
-/// Управлява събитията (events) и връзката с EKEventStore.
+// MARK: - TwoWayPinnedWeekWrapper
+
 public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     @Binding var fromDate: Date
@@ -66,7 +66,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
         // Когато се задържи в all-day празно място
         container.allDayView.onEmptyLongPress = { dayDate in
-            // Създаваме all-day event и го показваме през системния редактор
             context.coordinator.createAllDayEventAndPresent(date: dayDate, in: vc)
         }
 
@@ -99,7 +98,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     }
 
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // Намираме нашия контейнер:
         guard let container = uiViewController.view.subviews
             .first(where: { $0 is TwoWayPinnedWeekContainerView }) as? TwoWayPinnedWeekContainerView else { return }
 
@@ -114,12 +112,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         container.layoutIfNeeded()
     }
 
-    /// Координаторът държи логиката за създаване/редакция на EKEvent
-    public func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    /// Разделяме събитията на all-day и "часови"
     private func splitAllDay(_ evts: [EventDescriptor]) -> ([EventDescriptor], [EventDescriptor]) {
         var allDay = [EventDescriptor]()
         var regular = [EventDescriptor]()
@@ -133,13 +125,18 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         return (allDay, regular)
     }
 
+    public func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
     // MARK: - Coordinator
 
     public class Coordinator: NSObject, EKEventEditViewDelegate {
         let parent: TwoWayPinnedWeekWrapper
 
-        var selectedEventID: String?
-        var selectedEventPartialStart: Date?
+        // Вече не пазим ID за повторно "селектиране".
+        // var selectedEventID: String?
+        // var selectedEventPartialStart: Date?
 
         init(_ parent: TwoWayPinnedWeekWrapper) {
             self.parent = parent
@@ -160,44 +157,31 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             let toOnly   = cal.startOfDay(for: parent.toDate)
             let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) ?? toOnly
 
-            let predicate = parent.eventStore.predicateForEvents(withStart: fromOnly, end: actualEnd, calendars: nil)
+            let predicate = parent.eventStore.predicateForEvents(withStart: fromOnly,
+                                                                 end: actualEnd,
+                                                                 calendars: nil)
             let found = parent.eventStore.events(matching: predicate)
 
             var splitted: [EventDescriptor] = []
             for ekEvent in found {
-                guard let realStart = ekEvent.startDate, let realEnd = ekEvent.endDate else { continue }
+                guard let realStart = ekEvent.startDate,
+                      let realEnd = ekEvent.endDate else { continue }
 
-                // Ако евентът се простира в няколко дни, създаваме няколко EKMultiDayWrapper
-                // (по един за всеки ден)
+                // Ако евентът се простира в няколко дни, нарязваме го на "парчета"
                 if cal.startOfDay(for: realStart) != cal.startOfDay(for: realEnd) {
-                    splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: fromOnly, endRange: actualEnd))
+                    splitted.append(contentsOf: splitEventByDays(ekEvent,
+                                                                 startRange: fromOnly,
+                                                                 endRange: actualEnd))
                 } else {
                     splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
                 }
             }
             parent.events = splitted
 
-            // Ако имаме запомнено избрано събитие -> отново го отбелязваме като editedEvent
-            if let lastID = selectedEventID {
-                let splittedMulti = splitted.compactMap { $0 as? EKMultiDayWrapper }
-                if let partialStart = selectedEventPartialStart {
-                    if let samePartial = splittedMulti.first(where: {
-                        $0.ekEvent.eventIdentifier == lastID &&
-                        $0.dateInterval.start == partialStart
-                    }) {
-                        samePartial.editedEvent = samePartial
-                    }
-                } else {
-                    if let sameEvent = splittedMulti.first(where: {
-                        $0.ekEvent.eventIdentifier == lastID
-                    }) {
-                        sameEvent.editedEvent = sameEvent
-                    }
-                }
-            }
+            // Премахнато: логиката за "re-select":
+            // if let lastID = selectedEventID { ... } => няма повече!
         }
 
-        /// Ако един EKEvent е многодневен, нарязваме го по дни
         private func splitEventByDays(_ ekEvent: EKEvent,
                                       startRange: Date,
                                       endRange: Date) -> [EKMultiDayWrapper] {
@@ -209,16 +193,19 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
             var currentStart = realStart
             while currentStart < realEnd {
-                guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else { break }
+                guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else {
+                    break
+                }
                 let pieceEnd = min(endOfDay, realEnd)
                 let partial = EKMultiDayWrapper(realEvent: ekEvent,
                                                 partialStart: currentStart,
                                                 partialEnd: pieceEnd)
                 results.append(partial)
 
-                // следващия ден (0:00)
                 guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
-                      let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay) else { break }
+                      let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay) else {
+                    break
+                }
                 currentStart = morning
             }
             return results
@@ -239,7 +226,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             newEvent.title = "New event"
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
             newEvent.startDate = date
-            newEvent.endDate   = date.addingTimeInterval(3600) // +1 час
+            newEvent.endDate   = date.addingTimeInterval(3600)
             presentSystemEditor(newEvent, in: parentVC)
         }
 
@@ -248,23 +235,22 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
             newEvent.title = "All-day event"
-            // Задаваме го като all-day за избрания ден:
             newEvent.isAllDay = true
             newEvent.startDate = date
-            newEvent.endDate   = date  // iOS автоматично ще го интерпретира за същия ден
-
+            newEvent.endDate   = date
             presentSystemEditor(newEvent, in: parentVC)
         }
 
         // MARK: - Преместване (drag) или resize
         func handleEventDragOrResize(descriptor: EventDescriptor, newDate: Date, isResize: Bool) {
-            if let multi = descriptor as? EKMultiDayWrapper {
-                selectedEventID = multi.realEvent.eventIdentifier
-                selectedEventPartialStart = multi.dateInterval.start
-            } else if let wrap = descriptor as? EKWrapper {
-                selectedEventID = wrap.ekEvent.eventIdentifier
-                selectedEventPartialStart = nil
-            }
+            // Премахваме задаването на selectedEventID/selectedEventPartialStart, за да не „селектираме“
+            // if let multi = descriptor as? EKMultiDayWrapper {
+            //     selectedEventID = multi.realEvent.eventIdentifier
+            //     selectedEventPartialStart = multi.dateInterval.start
+            // } else if let wrap = descriptor as? EKWrapper {
+            //     selectedEventID = wrap.ekEvent.eventIdentifier
+            //     selectedEventPartialStart = nil
+            // }
 
             if let multi = descriptor as? EKMultiDayWrapper {
                 let ev = multi.realEvent
@@ -314,7 +300,6 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 self.reloadCurrentRange()
             }))
 
-            // Презентираме alert-а
             if let wnd = UIApplication.shared.windows.first,
                let root = wnd.rootViewController {
                 alert.popoverPresentationController?.sourceView = root.view
