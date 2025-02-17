@@ -7,6 +7,7 @@ import EventKitUI
 // MARK: - AllDayViewNonOverlapping
 
 public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
+    
     public var fromDate: Date = Date()
     public var toDate: Date = Date()
     public var style = TimelineStyle()
@@ -21,35 +22,61 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
 
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
-        didSet { setNeedsLayout() }
+        didSet {
+            setNeedsLayout()
+        }
     }
 
     private var eventViews: [EventView] = []
     private var eventViewToDescriptor: [EventView: EventDescriptor] = [:]
 
-    // Премахваме логика за "editedEvent"
-    // (нямаме 'currentlyEditedEventView' и т.н.)
+    // Тук вече няма логика за "editedEvent"
 
+    // -- Жест за дълго задържане на празно място --
     private let longPressEmptySpace: UILongPressGestureRecognizer
+
     private var originalFrameForDraggedEvent: CGRect?
     private var dragOffset: CGPoint?
     private var multiDayDraggingOriginalFrames: [EventView: CGRect] = [:]
 
+    // MARK: - Initializers
+
     public override init(frame: CGRect) {
+        // 1) Създаваме жеста без да подаваме target
         longPressEmptySpace = UILongPressGestureRecognizer()
+        
+        // 2) Първо извикваме super.init
         super.init(frame: frame)
+
+        // 3) Сега вече свързваме жеста с self
+        longPressEmptySpace.addTarget(self, action: #selector(handleLongPressEmptySpace(_:)))
+        longPressEmptySpace.delegate = self
+        addGestureRecognizer(longPressEmptySpace)
+
         backgroundColor = .systemGray5
     }
 
     required init?(coder: NSCoder) {
+        // 1) Създаваме жеста без да подаваме target
         longPressEmptySpace = UILongPressGestureRecognizer()
+        
+        // 2) Първо извикваме super.init
         super.init(coder: coder)
+
+        // 3) Сега вече свързваме жеста с self
+        longPressEmptySpace.addTarget(self, action: #selector(handleLongPressEmptySpace(_:)))
+        longPressEmptySpace.delegate = self
+        addGestureRecognizer(longPressEmptySpace)
+
         backgroundColor = .systemGray5
     }
+
+    // MARK: - Layout
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
+        // Скриваме всичките (за да ги пренаредим)
         for ev in eventViews {
             ev.isHidden = true
         }
@@ -120,7 +147,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             ctx.addLine(to: CGPoint(x: colX, y: bounds.height))
         }
 
-        // Хоризонтални линии (спрямо броя all-day евенти)
+        // Хоризонтални линии (според броя all-day евенти)
         let grouped = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
@@ -169,7 +196,8 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         return ev
     }
 
-    // Няма "selectEventView" логика, само обаждане за tap
+    // MARK: - Gesture Handling
+
     @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
         guard let tappedView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[tappedView] else { return }
@@ -220,11 +248,12 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         case .ended, .cancelled:
             setScrollsClipping(enabled: true)
 
-            // Проверяваме дали евентът е излезнал от all-day зоната (надолу):
+            // Проверяваме дали евентът е „изпаднал“ от all-day зоната (надолу):
             if evView.frame.origin.y > self.bounds.height {
                 // -> Преместваме го в "часовия" изглед (WeekTimelineViewNonOverlapping)
                 if let container = self.superview,
-                   let weekView = container.subviews.first(where: { $0 is WeekTimelineViewNonOverlapping }) as? WeekTimelineViewNonOverlapping {
+                   let weekView = container.subviews.first(where: { $0 is WeekTimelineViewNonOverlapping })
+                       as? WeekTimelineViewNonOverlapping {
 
                     let dropPoint = self.convert(evView.frame.origin, to: weekView)
                     if let newDate = weekView.dateFromPoint(dropPoint) {
@@ -243,7 +272,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                     }
                 }
             } else {
-                // Остава в all-day, може да е сменил деня
+                // Остава в all-day (може да е сменил деня)
                 if let newDayIndex = dayIndexFromMidX(evView.frame.midX),
                    let newDayDate = dayDateByAddingDays(newDayIndex) {
                     let cal = Calendar.current
@@ -266,6 +295,29 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             break
         }
     }
+
+    // -- Метод за дълго задържане в празно място --
+    @objc private func handleLongPressEmptySpace(_ gesture: UILongPressGestureRecognizer) {
+        // Реагираме само при .began
+        guard gesture.state == .began else { return }
+
+        let location = gesture.location(in: self)
+        
+        // 1) Проверяваме дали е върху EventView
+        let tappedEvent = eventViews.first(where: { !$0.isHidden && $0.frame.contains(location) })
+        guard tappedEvent == nil else { return }
+
+        // 2) Определяме деня
+        guard let dayIndex = dayIndexFromMidX(location.x) else { return }
+
+        // 3) Генерираме датата (startOfDay за дадения ден)
+        guard let dayDate = dayDateByAddingDays(dayIndex) else { return }
+
+        // 4) Извикваме callback-а
+        onEmptyLongPress?(dayDate)
+    }
+
+    // MARK: - Helpers
 
     private var dayCount: Int {
         let cal = Calendar.current
@@ -313,7 +365,8 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     }
 
     private func dayDateByAddingDays(_ dayIndex: Int) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: dayIndex,
+        return Calendar.current.date(byAdding: .day,
+                                     value: dayIndex,
                                      to: Calendar.current.startOfDay(for: fromDate))
     }
 
@@ -323,15 +376,15 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         container.allDayScrollView.clipsToBounds = enabled
     }
 
-    // Позволяваме едновременно разпознаване на tap + pan
+    // Позволяваме едновременно разпознаване на tap + pan + long press
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                                   shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if (gestureRecognizer is UITapGestureRecognizer && otherGestureRecognizer is UIPanGestureRecognizer) ||
-           (gestureRecognizer is UIPanGestureRecognizer && otherGestureRecognizer is UITapGestureRecognizer) {
+           (gestureRecognizer is UIPanGestureRecognizer && otherGestureRecognizer is UITapGestureRecognizer) ||
+           (gestureRecognizer is UILongPressGestureRecognizer && otherGestureRecognizer is UIPanGestureRecognizer) ||
+           (gestureRecognizer is UIPanGestureRecognizer && otherGestureRecognizer is UILongPressGestureRecognizer) {
             return true
         }
         return false
     }
 }
-
-
