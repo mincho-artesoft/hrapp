@@ -7,7 +7,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     public var toDate: Date = Date()
     public var style = TimelineStyle()
 
-    public var leadingInsetForHours: CGFloat = 0 // CHANGED
+    public var leadingInsetForHours: CGFloat = 0
     public var dayColumnWidth: CGFloat = 100
     public var hourHeight: CGFloat = 50
 
@@ -18,7 +18,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
 
-    /// Called when a dragged event is moved above the timeline (to be converted to all‑day).
+    /// Callback for converting a timeline event into an all‑day event.
     public var onEventConvertToAllDay: ((EventDescriptor, Int) -> Void)?
 
     public var regularLayoutAttributes = [EventLayoutAttributes]() {
@@ -104,7 +104,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             guard let eventsForDay = groupedByDay[dayIndex], !eventsForDay.isEmpty else { continue }
             let sorted = eventsForDay.sorted { $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start }
 
-            // Arrange events into non-overlapping columns
+            // Arrange events into non-overlapping columns.
             var columns: [[EventLayoutAttributes]] = []
             for attr in sorted {
                 var placed = false
@@ -249,7 +249,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
         switch gesture.state {
         case .began:
-            // Disable clipping so that dragging can move outside the view
             setScrollsClipping(enabled: false)
             let loc = gesture.location(in: self)
             originalFrameForDraggedEvent = evView.frame
@@ -286,24 +285,41 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 setSingle10MinuteMarkFromDate(date)
             }
         case .ended, .cancelled:
-            // Re-enable clipping
             setScrollsClipping(enabled: true)
-            // If the event is dragged above the view (its maxY is negative), convert it to an all-day event.
-            if evView.frame.maxY < 0 {
-                let midX = evView.frame.midX
-                if let dayIndex = dayIndexFromX(midX) {
-                    onEventConvertToAllDay?(descriptor, dayIndex)
-                } else if let orig = originalFrameForDraggedEvent {
-                    evView.frame = orig
+            if let container = self.superview?.superview as? TwoWayPinnedWeekContainerView {
+                let dropLocationInContainer = gesture.location(in: container)
+                let allDayFrameInContainer = container.allDayScrollView.frame
+                if dropLocationInContainer.y > allDayFrameInContainer.maxY {
+                    // Dropped into timeline area.
+                    let dropPointInWeek = container.weekView.convert(dropLocationInContainer, from: container)
+                    if let newDateRaw = container.weekView.dateFromPoint(dropPointInWeek) {
+                        let snapped = snapToNearest10Min(newDateRaw)
+                        descriptor.isAllDay = false
+                        descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(3600))
+                        container.weekView.onEventDragEnded?(descriptor, snapped)
+                    } else if let orig = originalFrameForDraggedEvent {
+                        evView.frame = orig
+                    }
+                } else {
+                    // Remains in all‑day view.
+                    if let newDayIndex = dayIndexFromMidX(evView.frame.midX),
+                       let newDayDate = dayDateByAddingDays(newDayIndex) {
+                        let cal = Calendar.current
+                        let startOfDay = cal.startOfDay(for: newDayDate)
+                        let endOfDay = cal.date(byAdding: .day, value: 1, to: startOfDay)!
+                        descriptor.isAllDay = true
+                        descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
+                        print("WeekDay drop: Event dropped in All-Day area. Day index: \(newDayIndex). Computed start: \(startOfDay), end: \(endOfDay)")
+                        onEventDragEnded?(descriptor, startOfDay)
+
+                        onEventDragEnded?(descriptor, startOfDay)
+                    } else if let orig = originalFrameForDraggedEvent {
+                        evView.frame = orig
+                        print("WeekDay drop: Event dropped outside valid area. Resetting to original frame.")
+
+                    }
                 }
-            }
-            // Otherwise, update the event’s start time based on drop position.
-            else if let newDateRaw = dateFromFrame(evView.frame) {
-                let snapped = snapToNearest10Min(newDateRaw)
-                descriptor.isAllDay = false
-                onEventDragEnded?(descriptor, snapped)
-            }
-            else if let orig = originalFrameForDraggedEvent {
+            } else if let orig = originalFrameForDraggedEvent {
                 evView.frame = orig
             }
             dragOffset = nil
@@ -314,7 +330,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
-    // MARK: - Resize (omitted for brevity; unchanged)
+    // MARK: - Resize (omitted for brevity)
     @objc private func handleResizeHandlePanGesture(_ gesture: UIPanGestureRecognizer) {
         // Existing resize logic…
     }
@@ -354,6 +370,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
+    // MARK: - Helper Methods
+
     private func dateToY(_ date: Date) -> CGFloat {
         let cal = Calendar.current
         let hour = CGFloat(cal.component(.hour, from: date))
@@ -390,6 +408,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         hoursColumnView?.setNeedsDisplay()
     }
 
+    // Utility method to snap a date to the nearest 10 minutes.
     private func snapToNearest10Min(_ date: Date) -> Date {
         let cal = Calendar.current
         let comps = cal.dateComponents([.year, .month, .day, .hour, .minute], from: date)
@@ -424,7 +443,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         let dayIndex = Int((point.x - leadingInsetForHours) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
         let cal = Calendar.current
-        if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: fromDateOnly) {
+        if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate)) {
             let yOffset = point.y
             if yOffset < 0 { return nil }
             return timeToDate(dayDate: dayDate, verticalOffset: yOffset)
@@ -439,23 +458,9 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
         let cal = Calendar.current
-        if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: fromDateOnly) {
+        if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate)) {
             if topY < 0 { return nil }
             return timeToDate(dayDate: dayDate, verticalOffset: topY)
-        }
-        return nil
-    }
-
-    private func dateFromResize(_ frame: CGRect, isTop: Bool) -> Date? {
-        let y: CGFloat = isTop ? frame.minY : frame.maxY
-        let midX = frame.midX
-        if midX < leadingInsetForHours { return nil }
-        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex >= dayCount { return nil }
-        let cal = Calendar.current
-        if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: fromDateOnly) {
-            if y < 0 { return nil }
-            return timeToDate(dayDate: dayDate, verticalOffset: y)
         }
         return nil
     }
@@ -483,8 +488,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     private func dayIndexFromX(_ x: CGFloat) -> Int? {
         let localX = x - leadingInsetForHours
         let idx = Int(localX / dayColumnWidth)
-        if idx < 0 || idx >= dayCount { return nil }
-        return idx
+        return (idx >= 0 && idx < dayCount) ? idx : nil
     }
 
     private func dayIndexFor(_ date: Date) -> Int {
@@ -493,6 +497,17 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         let dateOnly = cal.startOfDay(for: date)
         let comps = cal.dateComponents([.day], from: startOnly, to: dateOnly)
         return comps.day ?? 0
+    }
+
+    private func dayIndexFromMidX(_ x: CGFloat) -> Int? {
+        let localX = x - leadingInsetForHours
+        let idx = Int(floor(localX / dayColumnWidth))
+        return (idx >= 0 && idx < dayCount) ? idx : nil
+    }
+
+    private func dayDateByAddingDays(_ dayIndex: Int) -> Date? {
+        let cal = Calendar.current
+        return cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate))
     }
 
     public override func draw(_ rect: CGRect) {
@@ -589,7 +604,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
     }
 
-    // MARK: - Helpers for clipping
+    // MARK: - Clipping Helper
 
     private func setScrollsClipping(enabled: Bool) {
         guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }

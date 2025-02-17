@@ -177,8 +177,10 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
                 let startOfDay = cal.startOfDay(for: newDayDate)
                 let endOfDay = cal.date(byAdding: .day, value: 1, to: startOfDay)!
                 descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
-                // Trigger the all-day drag callback so the event appears correctly in the all-day view.
+                // Trigger the all‑day drag callback so the event appears correctly in the all‑day view.
                 self.allDayView.onEventDragEnded?(descriptor, startOfDay)
+                // Immediately update the container’s layout
+                self.setNeedsLayout()
             }
         }
     }
