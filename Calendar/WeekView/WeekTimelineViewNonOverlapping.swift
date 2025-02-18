@@ -47,6 +47,13 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
     // Ключ за layer.setValue(...)
     private let DRAG_DATA_KEY = "ResizeDragDataKey"
+    
+    // MARK: - Auto Scroll Properties
+    
+    /// CADisplayLink за автоматично скролиране по време на драгване
+    private var autoScrollDisplayLink: CADisplayLink?
+    /// Посоката (x, y) в която трябва да се скролира
+    private var autoScrollDirection = CGPoint.zero
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -299,7 +306,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             selectEventView(evView)
         }
 
-        // Намираме container-a
+        // Намираме container-а
         guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
 
         switch gesture.state {
@@ -343,9 +350,14 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             if let date = dateFromFrame(newFrame) {
                 setSingle10MinuteMarkFromDate(date)
             }
+            
+            // Автоматично скролиране – използваме координатната система на контейнера,
+            // така че скролът работи и за ляво/горе
+            updateAutoScrollDirection(for: gesture)
 
         case .ended, .cancelled:
             setScrollsClipping(enabled: true)
+            stopAutoScroll()
 
             // -- ПРИМЕРНОТО МЯСТО, КЪДЕТО ПРОМЕНЯМЕ ЛОГИКАТА --
             // Вместо да вземем курсора, вземаме горния край на евента (midX, minY) в координатна система на container
@@ -372,7 +384,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     descriptor.isAllDay = false
                     descriptor.dateInterval = DateInterval(start: snapped,
                                                            end: snapped.addingTimeInterval(oldDuration))
-                    container.weekView.onEventDragEnded?(descriptor, snapped,false)
+                    container.weekView.onEventDragEnded?(descriptor, snapped, false)
                 } else if let orig = originalFrameForDraggedEvent {
                     // Ако не можем да определим валиден drop
                     evView.frame = orig
@@ -793,5 +805,71 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             container.allDayScrollView.layer.zPosition = 1
             container.mainScrollView.layer.zPosition = 2
         }
+    }
+    
+    // MARK: - Auto Scroll Logic
+    
+    /// Изчислява посоката на скролиране, като използва координатната система на контейнера (видимата област на mainScrollView)
+    private func updateAutoScrollDirection(for gesture: UIPanGestureRecognizer) {
+        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        // Измерваме местоположението на жеста в контейнера
+        let location = gesture.location(in: container)
+        let threshold: CGFloat = 50.0
+        var direction = CGPoint.zero
+        
+        // Използваме рамката на mainScrollView (видимата област)
+        let scrollFrame = container.mainScrollView.frame
+        
+        if location.x < scrollFrame.minX + threshold {
+            direction.x = -1
+        } else if location.x > scrollFrame.maxX - threshold {
+            direction.x = 1
+        }
+        
+        if location.y < scrollFrame.minY + threshold {
+            direction.y = -1
+        } else if location.y > scrollFrame.maxY - threshold {
+            direction.y = 1
+        }
+        
+        autoScrollDirection = direction
+        if direction != .zero {
+            startAutoScrollIfNeeded()
+        } else {
+            stopAutoScroll()
+        }
+    }
+    
+    /// Стартира CADisplayLink за автоматично скролиране, ако още не е активен.
+    private func startAutoScrollIfNeeded() {
+        if autoScrollDisplayLink == nil {
+            autoScrollDisplayLink = CADisplayLink(target: self, selector: #selector(handleAutoScroll))
+            autoScrollDisplayLink?.add(to: .main, forMode: .common)
+        }
+    }
+    
+    /// Спира автоматичното скролиране.
+    private func stopAutoScroll() {
+        autoScrollDisplayLink?.invalidate()
+        autoScrollDisplayLink = nil
+    }
+    
+    /// Извиква се периодично и актуализира contentOffset на mainScrollView според посоката за скролиране.
+    @objc private func handleAutoScroll() {
+        guard autoScrollDirection != .zero,
+              let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        
+        let scrollView = container.mainScrollView
+        var newOffset = scrollView.contentOffset
+        let scrollSpeed: CGFloat = 5.0 // Скоростта на скролиране
+        
+        newOffset.x += autoScrollDirection.x * scrollSpeed
+        newOffset.y += autoScrollDirection.y * scrollSpeed
+        
+        // Ограничаваме newOffset в рамките на contentSize-а
+        newOffset.x = max(0, min(newOffset.x, scrollView.contentSize.width - scrollView.bounds.width))
+        newOffset.y = max(0, min(newOffset.y, scrollView.contentSize.height - scrollView.bounds.height))
+        
+        scrollView.setContentOffset(newOffset, animated: false)
     }
 }
