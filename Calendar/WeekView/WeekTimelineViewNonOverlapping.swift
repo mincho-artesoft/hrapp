@@ -17,7 +17,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEmptyLongPress: ((Date) -> Void)?
-    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
+    public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
 
     /// Callback за конвертиране на „часово“ събитие в "all-day" (ако се пусне в All-Day зоната).
@@ -372,7 +372,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     descriptor.isAllDay = false
                     descriptor.dateInterval = DateInterval(start: snapped,
                                                            end: snapped.addingTimeInterval(oldDuration))
-                    container.weekView.onEventDragEnded?(descriptor, snapped)
+                    container.weekView.onEventDragEnded?(descriptor, snapped,false)
                 } else if let orig = originalFrameForDraggedEvent {
                     // Ако не можем да определим валиден drop
                     evView.frame = orig

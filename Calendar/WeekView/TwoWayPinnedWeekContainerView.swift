@@ -38,7 +38,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             allDayView.onEmptyLongPress = onEmptyLongPress
         }
     }
-    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)? {
+    public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)? {
         didSet {
             weekView.onEventDragEnded = onEventDragEnded
             allDayView.onEventDragEnded = onEventDragEnded
@@ -178,7 +178,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
                 let endOfDay = cal.date(byAdding: .day, value: 1, to: startOfDay)!
                 descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
                 // Trigger the all‑day drag callback so the event appears correctly in the all‑day view.
-                self.allDayView.onEventDragEnded?(descriptor, startOfDay)
+                self.allDayView.onEventDragEnded?(descriptor, startOfDay,false)
                 // Immediately update the container’s layout
                 self.setNeedsLayout()
             }

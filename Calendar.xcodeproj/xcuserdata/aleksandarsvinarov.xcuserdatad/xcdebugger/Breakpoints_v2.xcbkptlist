@@ -7,31 +7,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FF6D1C3A-B1BC-48B8-8410-D9E55E214872"
+            uuid = "450AC016-7AF6-4077-9E4A-31207C101DD5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Calendar/WeekView/WeekTimelineViewNonOverlapping.swift"
+            filePath = "Calendar/WeekView/TwoWayPinnedWeekWrapper.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
-            landmarkName = "handleResizeHandlePanGesture(_:)"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "handleEventDragOrResize(descriptor:newDate:isResize:isAllDay:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "86123E65-E45F-482C-8F50-CA0264F50D01"
+            uuid = "66397050-2B21-42AF-A188-3C8FC5D27AB9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Calendar/WeekView/WeekTimelineViewNonOverlapping.swift"
+            filePath = "Calendar/WeekView/AllDayViewNonOverlapping.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "handleEventViewPan(_:)"
             landmarkType = "7">
          </BreakpointContent>

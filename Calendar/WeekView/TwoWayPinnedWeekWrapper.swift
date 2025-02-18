@@ -65,12 +65,12 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             context.coordinator.createAllDayEventAndPresent(date: dayDate, in: vc)
         }
 
-        container.onEventDragEnded = { descriptor, newDate in
-            context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: false)
+        container.onEventDragEnded = { descriptor, newDate, isAllDay in
+            context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: false, isAllDay: isAllDay)
         }
 
         container.onEventDragResizeEnded = { descriptor, newDate in
-            context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: true)
+            context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: true, isAllDay: false)
         }
 
         container.onDayLabelTap = { tappedDay in
@@ -221,14 +221,14 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             presentSystemEditor(newEvent, in: parentVC)
         }
 
-        func handleEventDragOrResize(descriptor: EventDescriptor, newDate: Date, isResize: Bool) {
+        func handleEventDragOrResize(descriptor: EventDescriptor, newDate: Date, isResize: Bool, isAllDay: Bool) {
             if let multi = descriptor as? EKMultiDayWrapper {
                 let ev = multi.realEvent
                 if ev.hasRecurrenceRules {
                     askUserForRecurring(event: ev, newDate: newDate, isResize: isResize)
                 } else {
                     if !isResize {
-                        applyDragChanges(ev, newStartDate: newDate, span: .thisEvent)
+                        applyDragChanges(ev, newStartDate: newDate, span: .thisEvent, isAllDay: isAllDay)
                     } else {
                         applyResizeChanges(ev, descriptor: multi, forcedNewDate: newDate, span: .thisEvent)
                     }
@@ -239,7 +239,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                     askUserForRecurring(event: ev, newDate: newDate, isResize: isResize)
                 } else {
                     if !isResize {
-                        applyDragChanges(ev, newStartDate: newDate, span: .thisEvent)
+                        applyDragChanges(ev, newStartDate: newDate, span: .thisEvent, isAllDay: isAllDay)
                     } else {
                         applyResizeChanges(ev, descriptor: wrap, forcedNewDate: newDate, span: .thisEvent)
                     }
@@ -255,14 +255,14 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             )
             alert.addAction(UIAlertAction(title: "This Event Only", style: .default, handler: { _ in
                 if !isResize {
-                    self.applyDragChanges(event, newStartDate: newDate, span: .thisEvent)
+                    self.applyDragChanges(event, newStartDate: newDate, span: .thisEvent, isAllDay: false)
                 } else {
                     self.applyResizeChanges(event, descriptor: nil, forcedNewDate: newDate, span: .thisEvent)
                 }
             }))
             alert.addAction(UIAlertAction(title: "All Future Events", style: .default, handler: { _ in
                 if !isResize {
-                    self.applyDragChanges(event, newStartDate: newDate, span: .futureEvents)
+                    self.applyDragChanges(event, newStartDate: newDate, span: .futureEvents, isAllDay: false)
                 } else {
                     self.applyResizeChanges(event, descriptor: nil, forcedNewDate: newDate, span: .futureEvents)
                 }
@@ -280,11 +280,17 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
-        func applyDragChanges(_ event: EKEvent, newStartDate: Date, span: EKSpan) {
+        func applyDragChanges(_ event: EKEvent, newStartDate: Date, span: EKSpan, isAllDay: Bool) {
             guard let oldStart = event.startDate, let oldEnd = event.endDate else { return }
-            let dur = oldEnd.timeIntervalSince(oldStart)
-            event.startDate = newStartDate
-            event.endDate   = newStartDate.addingTimeInterval(dur)
+            if isAllDay {
+                event.startDate = newStartDate
+                event.endDate   = newStartDate.addingTimeInterval(3600)
+                
+            }else{
+                let dur = oldEnd.timeIntervalSince(oldStart)
+                event.startDate = newStartDate
+                event.endDate   = newStartDate.addingTimeInterval(dur)
+            }
             do {
                 try parent.eventStore.save(event, span: span)
             } catch {

@@ -27,7 +27,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
 
     public var onEventTap: ((EventDescriptor) -> Void)?
     /// Callback for when a drag/drop operation ends.
-    public var onEventDragEnded: ((EventDescriptor, Date) -> Void)?
+    public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
     public var onEmptyLongPress: ((Date) -> Void)?
 
@@ -290,7 +290,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                     descriptor.isAllDay = true
                     descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
                     
-                    onEventDragEnded?(descriptor, startOfDay)
+                    onEventDragEnded?(descriptor, startOfDay,false)
                 }
                 else if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
@@ -308,7 +308,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                     let newEndDate = snapped.addingTimeInterval(3600)
                     descriptor.dateInterval = DateInterval(start: snapped, end: newEndDate)
                     
-                    container.weekView.onEventDragEnded?(descriptor, snapped)
+                    container.weekView.onEventDragEnded?(descriptor, snapped,true)
                 }
                 else if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
