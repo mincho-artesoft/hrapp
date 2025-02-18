@@ -5,6 +5,9 @@
 //  Updated to support dropping an event from the All‑Day view into the timeline (WeekTimelineViewNonOverlapping)
 //  by converting it into a timed event if the drop location (in container coordinates) is inside the timeline area.
 //
+//  [SNAP-CHANGE] Добавихме snapToNearest10Min, setSingle10MinuteMarkFromDate, clear10MinuteMark
+//  и редакции в handleEventViewPan(...)
+//
 
 import UIKit
 import SwiftUI
@@ -237,12 +240,28 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 }
             }
             
-            // Ако искаме да показваме текущия час (10‑мин маркер) в колоната
-            if let date = dateFromFrame(newFrame) {
-                setSingle10MinuteMarkFromDate(date)
+            // [SNAP-CHANGE] Проверка къде драгваме – ако е над Timeline, показваме 10‑мин marker:
+            guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+            let dropLocationInContainer = gesture.location(in: container)
+            
+            // Ако сме над седмичната зона => snap + show marker
+            if container.weekView.frame.contains(dropLocationInContainer) {
+                let locInWeek = gesture.location(in: container.weekView)
+                if let rawDate = container.weekView.dateFromPoint(locInWeek) {
+                    let snapped = snapToNearest10Min(rawDate)
+                    setSingle10MinuteMarkFromDate(snapped)
+                } else {
+                    clear10MinuteMark()
+                }
+            } else {
+                // Иначе трием маркера (примерно още сме в allDay или извън)
+                clear10MinuteMark()
             }
             
         case .ended, .cancelled:
+            // [SNAP-CHANGE] Премахваме маркера
+            clear10MinuteMark()
+            
             setScrollsClipping(enabled: true)
             
             // 1) Намираме контейнера, който държи AllDayView + WeekTimelineView
@@ -254,14 +273,13 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 return
             }
             
-            // 2) Координати на drop в контейнерната система
+            // 2) Координати на drop
             let dropLocationInContainer = gesture.location(in: container)
-            // Допълнително - координати в самия AllDayView (self)
             let dropLocationInAllDay = gesture.location(in: self)
             
-            // === ВАЖНО: Първо проверяваме дали drop‑ът е в самия all‑day view ===
+            // === Проверка дали drop‑ът е горе (allDay area) ===
             if self.bounds.contains(dropLocationInAllDay) {
-                // => събитието остава в all-day (преместваме го на друг ден)
+                // => Остава в all-day
                 if let newDayIndex = dayIndexFromMidX(evView.frame.midX),
                    let newDayDate = dayDateByAddingDays(newDayIndex) {
                     
@@ -272,39 +290,33 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                     descriptor.isAllDay = true
                     descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
                     
-                    print("AllDayView drop: Event dropped in all-day area. " +
-                          "Day index: \(newDayIndex). Start: \(startOfDay), End: \(endOfDay)")
-                    
                     onEventDragEnded?(descriptor, startOfDay)
                 }
                 else if let orig = originalFrameForDraggedEvent {
-                    print("AllDayView drop: Could not compute valid day index. Reset.")
                     evView.frame = orig
                 }
             }
-            // === Ако НЕ е горе, проверяваме дали е в седмичния timeline (weekView) ===
+            // === Ако е над седмичния timeline (weekView) => timed event ===
             else if container.weekView.frame.contains(dropLocationInContainer) {
-                // => Преобразуваме го в „timed event“
                 let dropLocationInWeek = gesture.location(in: container.weekView)
-                if let newDate = container.weekView.dateFromPoint(dropLocationInWeek) {
+                if let newDateRaw = container.weekView.dateFromPoint(dropLocationInWeek) {
+                    // [SNAP-CHANGE] При пускане в timeline – snap‑ваме
+                    let snapped = snapToNearest10Min(newDateRaw)
                     
                     descriptor.isAllDay = false
                     // Примерно: 1 час нова продължителност
-                    let newEndDate = newDate.addingTimeInterval(3600)
-                    descriptor.dateInterval = DateInterval(start: newDate, end: newEndDate)
+                    let newEndDate = snapped.addingTimeInterval(3600)
+                    descriptor.dateInterval = DateInterval(start: snapped, end: newEndDate)
                     
-                    print("AllDayView drop: Event converted to timed. Start: \(newDate), End: \(newEndDate)")
-                    container.weekView.onEventDragEnded?(descriptor, newDate)
+                    container.weekView.onEventDragEnded?(descriptor, snapped)
                 }
                 else if let orig = originalFrameForDraggedEvent {
-                    print("AllDayView drop: Invalid drop in WeekTimelineView. Reset.")
                     evView.frame = orig
                 }
             }
             // === Иначе сме извън валидните зони => връщаме евента, откъдето го вдигнахме
             else {
                 if let orig = originalFrameForDraggedEvent {
-                    print("AllDayView drop: Dropped outside valid areas. Reset.")
                     evView.frame = orig
                 }
             }
@@ -329,6 +341,85 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         guard let dayIndex = dayIndexFromMidX(location.x) else { return }
         guard let dayDate = dayDateByAddingDays(dayIndex) else { return }
         onEmptyLongPress?(dayDate)
+    }
+    
+    // MARK: - [SNAP-CHANGE] Snap & Marker Logic
+    
+    /// Задава 10‑минутния маркер в HoursColumnView
+    private func setSingle10MinuteMarkFromDate(_ date: Date) {
+        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        let hoursColumn = container.hoursColumnView
+        
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.hour, .minute], from: date)
+        guard let hour = comps.hour, let minute = comps.minute else {
+            hoursColumn.selectedMinuteMark = nil
+            hoursColumn.setNeedsDisplay()
+            return
+        }
+        
+        if minute == 0 {
+            hoursColumn.selectedMinuteMark = nil
+            hoursColumn.setNeedsDisplay()
+            return
+        }
+        
+        let remainder = minute % 10
+        var closest10 = minute
+        if remainder < 5 {
+            closest10 = minute - remainder
+        } else {
+            closest10 = minute + (10 - remainder)
+            if closest10 == 60 {
+                hoursColumn.selectedMinuteMark = nil
+                hoursColumn.setNeedsDisplay()
+                return
+            }
+        }
+        
+        hoursColumn.selectedMinuteMark = (hour, closest10)
+        hoursColumn.setNeedsDisplay()
+    }
+    
+    /// Изтрива текущия 10‑минутен маркер
+    private func clear10MinuteMark() {
+        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        container.hoursColumnView.selectedMinuteMark = nil
+        container.hoursColumnView.setNeedsDisplay()
+    }
+    
+    /// Snap‑ва към най‑близките 10 минути
+    private func snapToNearest10Min(_ date: Date) -> Date {
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+        guard
+          let year = comps.year,
+          let month = comps.month,
+          let day = comps.day,
+          let hour = comps.hour,
+          let minute = comps.minute
+        else {
+            return date
+        }
+        
+        let remainder = minute % 10
+        var finalMinute = minute
+        if remainder < 5 {
+            finalMinute = minute - remainder
+        } else {
+            finalMinute = minute + (10 - remainder)
+            if finalMinute == 60 {
+                finalMinute = 0
+                // Увеличаваме hour (с евентуален rollover)
+                let nextHour = (hour + 1) % 24
+                var comps2 = DateComponents(year: year, month: month, day: day,
+                                            hour: nextHour, minute: 0, second: 0)
+                return cal.date(from: comps2) ?? date
+            }
+        }
+        var comps2 = DateComponents(year: year, month: month, day: day,
+                                    hour: hour, minute: finalMinute, second: 0)
+        return cal.date(from: comps2) ?? date
     }
     
     // MARK: - Helper Methods
@@ -363,6 +454,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     }
     
     // Converts a given frame (typically of a dragged event) into a Date.
+    // (Използва се основно за евентуални изчисления, но тук се променя логиката при .changed)
     private func dateFromFrame(_ frame: CGRect) -> Date? {
         let topY = frame.minY
         let midX = frame.midX
@@ -377,9 +469,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         return nil
     }
     
-    // In the all‑day view, this method is a no‑op.
-    private func setSingle10MinuteMarkFromDate(_ date: Date) { }
-    
+    // In the all‑day view, normally a no‑op. Но ако решим да измерваме Y -> time, тук е пример:
     private func timeToDate(dayDate: Date, verticalOffset: CGFloat) -> Date? {
         var hoursFloat = verticalOffset / (fixedHeight / 24)  // Simple scaling; adjust if needed.
         if hoursFloat < 0 { hoursFloat = 0 }
