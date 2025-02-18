@@ -116,11 +116,13 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
         // 3) Закрепени елементи (часова колона, заглавие на дните и т.н.)
         hoursColumnScrollView.showsVerticalScrollIndicator = false
+        hoursColumnScrollView.isScrollEnabled = false // <- Спиране на самостоятелно скролиране
         hoursColumnScrollView.layer.zPosition = 2
         hoursColumnScrollView.addSubview(hoursColumnView)
         addSubview(hoursColumnScrollView)
 
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
+        daysHeaderScrollView.isScrollEnabled = false // <- Спиране на самостоятелно скролиране
         daysHeaderScrollView.addSubview(daysHeaderView)
         daysHeaderScrollView.backgroundColor = .secondarySystemBackground
         daysHeaderScrollView.layer.zPosition = 3
@@ -178,6 +180,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             }
         }
     }
+
 
     @objc private func didPickFromDate(_ sender: UIDatePicker) {
         if sender.date > toDate {
