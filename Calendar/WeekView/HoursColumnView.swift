@@ -1,18 +1,30 @@
 import UIKit
 
 public final class HoursColumnView: UIView {
+    /// Височина на един "час" в пиксели
     public var hourHeight: CGFloat = 50
-    public var topOffset: CGFloat = 0
+    
+    /**
+     Допълнителен отстъп, който добавяме в горната
+     и долната част, за да не се реже текстът
+     за 0‐вия и 24‐ия час.
+     
+     Същото това разстояние ще ползваме като `topMargin`
+     в седмичния Timeline, за да съвпадат линиите.
+     */
+    public var extraMarginTopBottom: CGFloat = 10
 
+    /// Маркер дали текущият ден е в обхвата (за оранжев балон)
     public var isCurrentDayInWeek: Bool = false
+
+    /// Ако е зададено, рисуваме балон на текущия час
     public var currentTime: Date?
 
-    /// If set, draw a small ".MM" next to that hour
+    /// Ако е зададено, рисуваме ".MM" до съответния час
     public var selectedMinuteMark: (hour: Int, minute: Int)?
 
     private let majorFont = UIFont.systemFont(ofSize: 11, weight: .medium)
     private let majorColor = UIColor.darkText
-
     private let minorFont = UIFont.systemFont(ofSize: 10, weight: .regular)
     private let minorColor = UIColor.darkGray.withAlphaComponent(0.8)
 
@@ -30,41 +42,49 @@ public final class HoursColumnView: UIView {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
-        // 1) draw hours 0..24
+        // Рисуваме линиите и текстовете за часовете 0..24 (общо 25 линии)
         for hour in 0...24 {
-            let y = topOffset + CGFloat(hour)*hourHeight
+            let y = extraMarginTopBottom + CGFloat(hour)*hourHeight
+
+            // Малка чертичка в десния край
             ctx.setStrokeColor(UIColor.lightGray.cgColor)
             ctx.setLineWidth(0.5)
             ctx.move(to: CGPoint(x: bounds.width - 5, y: y))
             ctx.addLine(to: CGPoint(x: bounds.width, y: y))
             ctx.strokePath()
 
+            // Текст на часа (напр. "1 AM", "12 PM" и т.н.)
             let hourStr = hourString12HourFormat(hour)
-            let attrStr = NSAttributedString(string: hourStr,
-                                             attributes: [
-                                                 .font: majorFont,
-                                                 .foregroundColor: majorColor
-                                             ])
+            let attrStr = NSAttributedString(
+                string: hourStr,
+                attributes: [
+                    .font: majorFont,
+                    .foregroundColor: majorColor
+                ]
+            )
             let size = attrStr.size()
             let textX = bounds.width - size.width - 4
-            let textY = y - size.height/2
+            let textY = y - size.height/2  // центриране спрямо линията
             attrStr.draw(at: CGPoint(x: textX, y: textY))
         }
 
-        // 2) single minute mark
+        // Маркер за конкретна минута (пример: .30)
         if let mark = selectedMinuteMark {
             let h = mark.hour
             let m = mark.minute
-            if h >= 0 && h < 24 && m > 0 && m < 60 {
-                let baseY = topOffset + CGFloat(h)*hourHeight
+            if (0 <= h && h < 24) && (0 <= m && m < 60) {
+                let baseY = extraMarginTopBottom + CGFloat(h)*hourHeight
                 let fraction = CGFloat(m)/60.0
                 let yPos = baseY + fraction*hourHeight
+
                 let minuteStr = String(format: ".%02d", m)
-                let attr = NSAttributedString(string: minuteStr,
-                                              attributes: [
-                                                  .font: minorFont,
-                                                  .foregroundColor: minorColor
-                                              ])
+                let attr = NSAttributedString(
+                    string: minuteStr,
+                    attributes: [
+                        .font: minorFont,
+                        .foregroundColor: minorColor
+                    ]
+                )
                 let size = attr.size()
                 let textX = bounds.width - size.width - 4
                 let textY = yPos - size.height/2
@@ -72,7 +92,7 @@ public final class HoursColumnView: UIView {
             }
         }
 
-        // 3) orange bubble for “now”
+        // Оранжев балон за "сега"
         if isCurrentDayInWeek, let current = currentTime {
             let cal = Calendar.current
             let comps = cal.dateComponents([.hour, .minute], from: current)
@@ -80,7 +100,7 @@ public final class HoursColumnView: UIView {
             let minuteF = CGFloat(comps.minute ?? 0)
             let fraction = hourF + minuteF/60.0
 
-            let yPos = topOffset + fraction*hourHeight
+            let yPos = extraMarginTopBottom + fraction*hourHeight
             let bubbleText = hourMinuteAmPmString(hour: Int(hourF), minute: Int(minuteF))
 
             let bubbleFont = UIFont.systemFont(ofSize: 10, weight: .semibold)
