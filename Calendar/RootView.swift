@@ -8,14 +8,12 @@ struct RootView: View {
     // Единична споделена инстанция на EKEventStore
     @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
 
-    // За Multi-Day (бивш седмичен) изглед
+    // За Multi-Day изгледа
     @State private var pinnedFromDate: Date = {
-        // Примерно: днешна дата
         let cal = Calendar.current
         return cal.startOfDay(for: Date())
     }()
     @State private var pinnedToDate: Date = {
-        // По подразбиране +7 дни
         let cal = Calendar.current
         if let plus7 = cal.date(byAdding: .day, value: 7, to: cal.startOfDay(for: Date())) {
             return plus7
@@ -24,18 +22,29 @@ struct RootView: View {
     }()
     @State private var pinnedEvents: [EventDescriptor] = []
 
-    // Примерно – за Day View
+    // За Day View (ако е необходимо)
     @State private var dayTabSelectedDate = Date()
+
+    // Нови state‑променливи за избрания ден (начало и край)
+    @State private var selectedStartTime: Date = Calendar.current.startOfDay(for: Date())
+    @State private var selectedEndTime: Date = Calendar.current.date(byAdding: .day, value: 1, to: Calendar.current.startOfDay(for: Date()))!
 
     // Таймер за презареждане
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
+    // Formatter за показване на времето
+    var timeFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter
+    }
+
     var body: some View {
         ZStack {
-            // Задаваме системния фон
+            // Системен фон
             Color(.systemBackground)
                 .edgesIgnoringSafeArea(.all)
-
+            
             NavigationView {
                 VStack {
                     Picker("View", selection: $selectedTab) {
@@ -58,16 +67,16 @@ struct RootView: View {
                     case 2:
                         YearCalendarView(viewModel: calendarVM)
                     case 3:
-                        // Нашият Multi-Day изглед
+                        // Нашият Multi-Day изглед с модифициран onDayLabelTap:
                         TwoWayPinnedWeekWrapper(
                             fromDate: $pinnedFromDate,
                             toDate: $pinnedToDate,
                             events: $pinnedEvents,
                             eventStore: calendarVM.eventStore
                         ) { tappedDay in
-                            // Ако натиснем върху label на ден – прехвърляме се на Day View
-                            self.dayTabSelectedDate = tappedDay
-                            self.selectedTab = 1
+                            // Обновяваме само началния и крайния ден
+                            pinnedFromDate = tappedDay
+                            pinnedToDate = tappedDay
                         }
                         .onAppear {
                             loadPinnedRangeEvents()
@@ -75,7 +84,7 @@ struct RootView: View {
                         .onReceive(timer) { _ in
                             loadPinnedRangeEvents()
                         }
-
+                        
                     default:
                         Text("N/A")
                     }
@@ -84,15 +93,14 @@ struct RootView: View {
             }
         }
         .onAppear {
-            // Първоначално искаме да поискаме достъп и да заредим данни
+            // При стартиране искаме достъп до календара и зареждаме данни
             calendarVM.requestCalendarAccessIfNeeded {
-                // Пример: зареждаме събития за текущата година
                 let year = Calendar.current.component(.year, from: Date())
                 calendarVM.loadEventsForWholeYear(year: year)
             }
         }
     }
-
+    
     private func loadPinnedRangeEvents() {
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: pinnedFromDate)
@@ -100,7 +108,7 @@ struct RootView: View {
         guard let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) else { return }
         let predicate = calendarVM.eventStore.predicateForEvents(withStart: fromOnly, end: actualEnd, calendars: nil)
         let found = calendarVM.eventStore.events(matching: predicate)
-
+        
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
             guard let realStart = ekEvent.startDate, let realEnd = ekEvent.endDate else { continue }
@@ -112,7 +120,7 @@ struct RootView: View {
         }
         pinnedEvents = splitted
     }
-
+    
     private func splitEventByDays(_ ekEvent: EKEvent, startRange: Date, endRange: Date) -> [EKMultiDayWrapper] {
         var results = [EKMultiDayWrapper]()
         let cal = Calendar.current
