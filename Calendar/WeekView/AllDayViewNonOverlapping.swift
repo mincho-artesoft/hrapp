@@ -203,7 +203,10 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             setScrollsClipping(enabled: false)
             let loc = gesture.location(in: self)
             originalFrameForDraggedEvent = evView.frame
-            dragOffset = CGPoint(x: loc.x - evView.frame.minX, y: loc.y - evView.frame.minY)
+            dragOffset = CGPoint(x: loc.x - evView.frame.minX,
+                                 y: loc.y - evView.frame.minY)
+            
+            // Ако евентът е EKMultiDayWrapper, пазим всички парчета (ако има)
             if let multi = descriptor as? EKMultiDayWrapper {
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multi.realEvent.eventIdentifier
@@ -214,6 +217,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                     }
                 }
             }
+            
         case .changed:
             guard let offset = dragOffset else { return }
             let loc = gesture.location(in: self)
@@ -222,6 +226,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
             
+            // Местене на всички парчета при EKMultiDayWrapper
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let dx = newFrame.origin.x - origFrame.origin.x
                 let dy = newFrame.origin.y - origFrame.origin.y
@@ -232,59 +237,89 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 }
             }
             
+            // Ако искаме да показваме текущия час (10‑мин маркер) в колоната
             if let date = dateFromFrame(newFrame) {
                 setSingle10MinuteMarkFromDate(date)
             }
+            
         case .ended, .cancelled:
             setScrollsClipping(enabled: true)
-            // Get the container (which holds both the all‑day and the week/timeline views)
+            
+            // 1) Намираме контейнера, който държи AllDayView + WeekTimelineView
             guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else {
-                if let orig = originalFrameForDraggedEvent { evView.frame = orig }
+                // Ако няма container, връщаме на старо място
+                if let orig = originalFrameForDraggedEvent {
+                    evView.frame = orig
+                }
                 return
             }
+            
+            // 2) Координати на drop в контейнерната система
             let dropLocationInContainer = gesture.location(in: container)
-            // If the drop is in the timeline area, convert the event into a timed event.
-            if container.weekView.frame.contains(dropLocationInContainer) {
-                let dropLocationInWeek = gesture.location(in: container.weekView)
-                if let newDate = container.weekView.dateFromPoint(dropLocationInWeek) {
-                    descriptor.isAllDay = false
-                    let newEndDate = newDate.addingTimeInterval(3600) // Default 1‑hour duration
-                    descriptor.dateInterval = DateInterval(start: newDate, end: newEndDate)
-                    print("AllDayView drop: Event converted to timed event in WeekTimelineView. Computed start: \(newDate), end: \(newEndDate)")
-                    container.weekView.onEventDragEnded?(descriptor, newDate)
-                } else if let orig = originalFrameForDraggedEvent {
-                    print("AllDayView drop: Invalid drop in WeekTimelineView. Resetting to original frame.")
-                    evView.frame = orig
-                }
-            }
-            // Otherwise, if dropped within the all‑day view itself…
-            else if self.bounds.contains(gesture.location(in: self)) {
+            // Допълнително - координати в самия AllDayView (self)
+            let dropLocationInAllDay = gesture.location(in: self)
+            
+            // === ВАЖНО: Първо проверяваме дали drop‑ът е в самия all‑day view ===
+            if self.bounds.contains(dropLocationInAllDay) {
+                // => събитието остава в all-day (преместваме го на друг ден)
                 if let newDayIndex = dayIndexFromMidX(evView.frame.midX),
                    let newDayDate = dayDateByAddingDays(newDayIndex) {
+                    
                     let cal = Calendar.current
                     let startOfDay = cal.startOfDay(for: newDayDate)
-                    let endOfDay = cal.date(byAdding: .day, value: 1, to: startOfDay)!
+                    let endOfDay   = cal.date(byAdding: .day, value: 1, to: startOfDay)!
+                    
                     descriptor.isAllDay = true
                     descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
-                    print("AllDayView drop: Event dropped in All‑Day area. Day index: \(newDayIndex). Computed start: \(startOfDay), end: \(endOfDay)")
+                    
+                    print("AllDayView drop: Event dropped in all-day area. " +
+                          "Day index: \(newDayIndex). Start: \(startOfDay), End: \(endOfDay)")
+                    
                     onEventDragEnded?(descriptor, startOfDay)
                 }
-            }
-            // If dropped elsewhere, reset the view.
-            else {
-                if let orig = originalFrameForDraggedEvent {
-                    print("AllDayView drop: Event dropped outside valid areas. Resetting to original frame.")
+                else if let orig = originalFrameForDraggedEvent {
+                    print("AllDayView drop: Could not compute valid day index. Reset.")
                     evView.frame = orig
                 }
             }
+            // === Ако НЕ е горе, проверяваме дали е в седмичния timeline (weekView) ===
+            else if container.weekView.frame.contains(dropLocationInContainer) {
+                // => Преобразуваме го в „timed event“
+                let dropLocationInWeek = gesture.location(in: container.weekView)
+                if let newDate = container.weekView.dateFromPoint(dropLocationInWeek) {
+                    
+                    descriptor.isAllDay = false
+                    // Примерно: 1 час нова продължителност
+                    let newEndDate = newDate.addingTimeInterval(3600)
+                    descriptor.dateInterval = DateInterval(start: newDate, end: newEndDate)
+                    
+                    print("AllDayView drop: Event converted to timed. Start: \(newDate), End: \(newEndDate)")
+                    container.weekView.onEventDragEnded?(descriptor, newDate)
+                }
+                else if let orig = originalFrameForDraggedEvent {
+                    print("AllDayView drop: Invalid drop in WeekTimelineView. Reset.")
+                    evView.frame = orig
+                }
+            }
+            // === Иначе сме извън валидните зони => връщаме евента, откъдето го вдигнахме
+            else {
+                if let orig = originalFrameForDraggedEvent {
+                    print("AllDayView drop: Dropped outside valid areas. Reset.")
+                    evView.frame = orig
+                }
+            }
+            
+            // Финални операции
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
             setNeedsLayout()
+            
         default:
             break
         }
     }
+
     
     @objc private func handleLongPressEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
