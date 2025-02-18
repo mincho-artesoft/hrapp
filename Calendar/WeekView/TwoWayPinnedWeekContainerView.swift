@@ -102,6 +102,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.addSubview(weekView)
+        mainScrollView.bounces = false
         mainScrollView.layer.zPosition = 0
         addSubview(mainScrollView)
 
