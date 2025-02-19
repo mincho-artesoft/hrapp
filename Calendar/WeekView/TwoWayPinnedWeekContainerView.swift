@@ -18,8 +18,8 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public let hoursColumnView = HoursColumnView()
 
     public let allDayTitleLabel = UILabel()
-    public let allDayScrollView = UIScrollView()
-    public let allDayView = AllDayViewNonOverlapping()
+    public let allDayScrollView = UIScrollView()      // scroll за all-day (вертикален)
+    public let allDayView = AllDayViewNonOverlapping()// самият custom view
 
     public let mainScrollView = UIScrollView()
     public let weekView = WeekTimelineViewNonOverlapping()
@@ -77,7 +77,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     private var redrawTimer: Timer?
 
-    // <<< Ново свойство за двоен pass
+    // двоен pass
     private var isInSecondPass = false
 
     public override init(frame: CGRect) {
@@ -110,10 +110,11 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         addSubview(mainScrollView)
 
         // 2) allDayScrollView + allDayView
-        allDayScrollView.showsHorizontalScrollIndicator = false
-        allDayScrollView.showsVerticalScrollIndicator = false
-        allDayScrollView.alwaysBounceHorizontal = true
-        allDayScrollView.isScrollEnabled = false
+        allDayScrollView.showsHorizontalScrollIndicator = false  // (чистим хоризонталния скрол)
+        allDayScrollView.showsVerticalScrollIndicator = true
+        allDayScrollView.alwaysBounceHorizontal = false          // (чистим хоризонталния скрол)
+        allDayScrollView.isScrollEnabled = true
+        allDayScrollView.bounces = false// за вертикален скрол
         allDayScrollView.addSubview(allDayView)
         allDayScrollView.layer.zPosition = 1
         addSubview(allDayScrollView)
@@ -204,7 +205,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        // <<< Преди да направим custom layout, опитваме да сме на втория pass?
         if isInSecondPass {
             isInSecondPass = false
         }
@@ -236,7 +236,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         let toOnly   = cal.startOfDay(for: toDate)
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
 
-        // Логика за широчина на колоните
+        // Широчина на колоните
         let availableWidth = bounds.width - leftColumnWidth
         if dayCount < 4 {
             let newDayColumnWidth = availableWidth / CGFloat(dayCount)
@@ -256,18 +256,31 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         // 5) all-day view
         let allDayY = yMain + daysHeaderHeight
 
-        // >>> първо оразмеряваме "грубо"
-        var allDayH = allDayView.desiredHeight() // възможно е още да е 40
+        let allDayH = allDayView.desiredHeight()   // До 2.5 реда
+        let allDayFullH = allDayView.contentHeight // Цялото
+
         allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
+
+        // Рамката на scrollView
         allDayScrollView.frame = CGRect(
             x: leftColumnWidth,
             y: allDayY,
             width: bounds.width - leftColumnWidth,
             height: allDayH
         )
+
+        // (чистим хоризонталния скрол)
+        // => contentSize.width = frame.width
+        // => няма да може да се скролира хоризонтално
+        let scrollViewWidth = allDayScrollView.frame.width
+
+        // За да има вертикален скрол, задаваме:
+        allDayScrollView.contentSize = CGSize(width: scrollViewWidth, height: allDayFullH)
+
+        // Самото allDayView може да е по-широко, но user няма да го скролне хоризонтално,
+        // защото contentSize.width е "заключена" до scrollViewWidth
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
-        allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayH)
-        allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayH)
+        allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
 
         // 6) hours column + mainScrollView
         let hoursColumnY = allDayY + allDayH
@@ -287,7 +300,6 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         // Задаваме topMargin на weekView
         weekView.topMargin = hoursColumnView.extraMarginTopBottom
 
-        // Имаме 25 часа (0..24)
         let totalHours = 25
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
         let finalHeight = baseHeight + (weekView.topMargin * 2)
@@ -312,20 +324,22 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
         bringSubviewToFront(allDayTitleLabel)
 
-
-        // <<< Правим "принудителен layout" на allDayView
+        // Двоен pass
         allDayView.layoutIfNeeded()
+        let newH = allDayView.desiredHeight()
+        let newCH = allDayView.contentHeight
+        let curH = allDayScrollView.frame.height
+        let curCH = allDayScrollView.contentSize.height
 
-        // <<< ако след това allDayView иска различна височина, правим втори pass
-        let realAllDayH = allDayView.desiredHeight()
-        if abs(realAllDayH - allDayH) > 0.5 {
-            // разликата е над 0.5 => явно е нужна корекция
+        let diff1 = abs(newH - curH)
+        let diff2 = abs(newCH - curCH)
+
+        if diff1 > 0.5 || diff2 > 0.5 {
             if !isInSecondPass {
                 isInSecondPass = true
-                setNeedsLayout() // ще влезем втори път в layoutSubviews()
+                setNeedsLayout()
                 return
             } else {
-                // Ако сме вече в second pass, спираме да повтаряме
                 isInSecondPass = false
             }
         }
@@ -333,9 +347,11 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
+            // Синхронизираме хоризонталния offset
             let offsetX = scrollView.contentOffset.x
+
             daysHeaderScrollView.contentOffset.x = offsetX
-            allDayScrollView.contentOffset.x = offsetX
+            allDayScrollView.contentOffset.x = offsetX // Обвързваме x offset
 
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
         }

@@ -3,8 +3,7 @@
 //  ExampleProject
 //
 //  Неприпокриваща подредба на all-day събития.
-//  Съдържа drag/drop логика за превръщане на събитие от all-day в timed (и обратно).
-//  Поддържа динамично преоразмеряване, така че винаги да се виждат всички евенти.
+//  Видими 2.5 реда макс; при повече евенти - скрол (вертикален).
 //
 
 import UIKit
@@ -19,15 +18,21 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     public var toDate: Date = Date()
     public var style = TimelineStyle()
 
-    // Ляво отстояние (ако имаме колона за часове). Тук обаче е 0, задава се отвън.
+    // Ляво отстояние (ако имаме колона за часове). Тук е 0, задава се отвън.
     public var leadingInsetForHours: CGFloat = 0
-    // Широчина на една дневна колона. Задава се от контейнера (TwoWayPinnedWeekContainerView).
+    // Широчина на една дневна колона (определя се от контейнера).
     public var dayColumnWidth: CGFloat = 100
 
     // Ако е true, височината се преоразмерява автоматично според броя евенти.
     public var autoResizeHeight = true
-    // Текущата (или фиксирана) височина.
+    // Текущата (или фиксирана) височина, която „казваме“ на контейнера.
     public var fixedHeight: CGFloat = 40
+    
+    // МАКС броя „редове“ (float), които показваме без пълен скрол. 2.5 = 2 цели + половин.
+    private let maxVisibleRows: CGFloat = 2.5
+    
+    // Пълна височина (ако няма ограничение). Може да надхвърля fixedHeight.
+    public private(set) var contentHeight: CGFloat = 0
 
     // Callback-и
     public var onEventTap: ((EventDescriptor) -> Void)?
@@ -39,7 +44,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
         didSet {
             setNeedsLayout()
-            superview?.setNeedsLayout() // <-- ново (за да известим родителя)
+            superview?.setNeedsLayout() // Уведомяваме родителя да прелайаутира
         }
     }
     
@@ -106,13 +111,9 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         let grouped = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
-        let maxEventsInAnyDay = grouped.values.map { $0.count }.max() ?? 0
         
-        // Константа за височината на всеки ред
         let rowHeight: CGFloat = 24
-        // Базово отстояние отгоре
         let baseY: CGFloat = 6
-        // Разстояние между евентите
         let gap = style.eventGap
         
         var usedIndex = 0
@@ -452,43 +453,16 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         return cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate))
     }
     
-    // Ако в allDay искаме да обръщаме Y -> време (не се ползва тук директно):
-    private func dateFromFrame(_ frame: CGRect) -> Date? {
-        let topY = frame.minY
-        let midX = frame.midX
-        if midX < leadingInsetForHours { return nil }
-        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex >= dayCount { return nil }
-        let cal = Calendar.current
-        if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate)) {
-            if topY < 0 { return nil }
-            return timeToDate(dayDate: dayDate, verticalOffset: topY)
-        }
-        return nil
-    }
-    
-    private func timeToDate(dayDate: Date, verticalOffset: CGFloat) -> Date? {
-        var hoursFloat = verticalOffset / (fixedHeight / 24)
-        if hoursFloat < 0 { hoursFloat = 0 }
-        if hoursFloat > 24 { hoursFloat = 24 }
-        let hour = floor(hoursFloat)
-        let minuteFloat = (hoursFloat - hour) * 60
-        let minute = floor(minuteFloat)
-        let cal = Calendar.current
-        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
-        comps.hour = Int(hour)
-        comps.minute = Int(minute)
-        comps.second = 0
-        return cal.date(from: comps)
-    }
-    
     // MARK: - Преоразмеряване
     
     private func recalcAllDayHeightDynamically() {
         if allDayLayoutAttributes.isEmpty {
+            // Няма събития => минимум 40
             self.fixedHeight = 40
+            self.contentHeight = 40
             return
         }
+        
         let groupedByDay = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
@@ -497,14 +471,17 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         let rowHeight: CGFloat = 24
         let base: CGFloat = 10
         
-        if maxEventsInAnyDay <= 1 {
-            self.fixedHeight = max(40, base + rowHeight)
-        } else {
-            self.fixedHeight = base + (rowHeight * CGFloat(maxEventsInAnyDay))
-            if self.fixedHeight < 40 {
-                self.fixedHeight = 40
-            }
-        }
+        // Пълната височина (ако няма лимит)
+        let fullNeededRows = CGFloat(maxEventsInAnyDay)
+        let fullHeight = base + (rowHeight * fullNeededRows)
+        self.contentHeight = max(fullHeight, 40)
+        
+        // Видима височина: до 2.5 реда
+        let visibleRows = min(fullNeededRows, maxVisibleRows)
+        let partialHeight = base + (rowHeight * visibleRows)
+        
+        // Минимум 40
+        self.fixedHeight = max(40, partialHeight)
     }
     
     public func desiredHeight() -> CGFloat {
