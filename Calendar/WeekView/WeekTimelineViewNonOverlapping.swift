@@ -314,26 +314,34 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
     // MARK: - Пан (drag) на цялото събитие
 
+    // In WeekTimelineViewNonOverlapping.swift
+
+    // Add this new instance property to hold reparenting state:
+    // In WeekTimelineViewNonOverlapping.swift
+
+    // Add this new instance property to hold reparenting state:
+    private var dragReparentState: (originalSuperview: UIView?, originalFrame: CGRect, isReparented: Bool) = (nil, .zero, false)
+
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
-              let descriptor = eventViewToDescriptor[evView] else { return }
-
-        // Ако не е селектирано
-        if currentlyEditedEventView !== evView {
-            selectEventView(evView)
-        }
-
-        // Търсим контейнера (TwoWayPinnedWeekContainerView)
-        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+              let descriptor = eventViewToDescriptor[evView],
+              let container = self.superview?.superview as? TwoWayPinnedWeekContainerView
+        else { return }
 
         switch gesture.state {
         case .began:
+            // Record the original superview and frame so we can put the view back later.
+            dragReparentState.originalSuperview = evView.superview
+            dragReparentState.originalFrame = evView.frame
+            dragReparentState.isReparented = false
             setScrollsClipping(enabled: false)
+            
+            // Calculate the drag offset relative to the event view’s origin.
             let loc = gesture.location(in: self)
-            originalFrameForDraggedEvent = evView.frame
-            dragOffset = CGPoint(x: loc.x - evView.frame.minX, y: loc.y - evView.frame.minY)
-
-            // Ако е EKMultiDayWrapper => пазим всички парчета
+            dragOffset = CGPoint(x: loc.x - evView.frame.minX,
+                                 y: loc.y - evView.frame.minY)
+            
+            // (Existing multi‑day logic if needed …)
             if let multi = descriptor as? EKMultiDayWrapper {
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multi.realEvent.eventIdentifier
@@ -344,15 +352,17 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     }
                 }
             }
-
+            
         case .changed:
             guard let offset = dragOffset else { return }
-            let loc = gesture.location(in: self)
+            // Update the event view’s frame inside its current coordinate system.
+            let locInSelf = gesture.location(in: self)
             var newFrame = evView.frame
-            newFrame.origin.x = loc.x - offset.x
-            newFrame.origin.y = loc.y - offset.y
+            newFrame.origin.x = locInSelf.x - offset.x
+            newFrame.origin.y = locInSelf.y - offset.y
             evView.frame = newFrame
-
+            
+            // (Also update any multi‑day dragged copies if needed.)
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let dx = newFrame.origin.x - origFrame.origin.x
                 let dy = newFrame.origin.y - origFrame.origin.y
@@ -362,88 +372,110 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     }
                 }
             }
-
-            // Ако успеем да намерим новата дата => snap marker
+            
+            // Now check whether the gesture’s location (in container coordinates)
+            // lies inside the all‑day view’s area.
+            let locationInContainer = gesture.location(in: container)
+            let allDayViewFrameInContainer = container.allDayView.convert(container.allDayView.bounds, to: container)
+            
+            if allDayViewFrameInContainer.contains(locationInContainer) {
+                // If not already reparented, move evView into the AllDayView.
+                if evView.superview != container.allDayView {
+                    // Convert the event view’s frame to the coordinate space of allDayView.
+                    let convertedFrame = container.allDayView.convert(evView.frame, from: evView.superview)
+                    evView.removeFromSuperview()
+                    container.allDayView.addSubview(evView)
+                    evView.frame = convertedFrame
+                    dragReparentState.isReparented = true
+                }
+            } else {
+                // If the drag has moved out of the all‑day area and we were reparented,
+                // then reparent it back to its original container.
+                if dragReparentState.isReparented,
+                   let originalSuperview = dragReparentState.originalSuperview {
+                    let convertedFrame = originalSuperview.convert(evView.frame, from: evView.superview)
+                    evView.removeFromSuperview()
+                    originalSuperview.addSubview(evView)
+                    evView.frame = convertedFrame
+                    dragReparentState.isReparented = false
+                }
+            }
+            
+            // Optionally update any snap marker using the new frame.
             if let date = dateFromFrame(newFrame) {
                 setSingle10MinuteMarkFromDate(date)
             }
-
-            // Auto scroll
             updateAutoScrollDirection(for: gesture)
-
+            
         case .ended, .cancelled:
             setScrollsClipping(enabled: true)
             stopAutoScroll()
-
-            // При drop
-            let topInContainer = evView.convert(CGPoint(x: evView.bounds.midX, y: evView.bounds.minY), to: container)
-            let topPointInWeek = container.weekView.convert(topInContainer, from: container)
-
             
-            // >>> НОВО <<< (2 нива нагоре)
-            // Проверка къде е курсорът в контейнера (и родителите му до 2 нива нагоре)
+            // Before processing drop, if we reparented the view, put it back
+            // into its original container so that the drop logic (and date calculations)
+            // remain unchanged.
+            if dragReparentState.isReparented,
+               let originalSuperview = dragReparentState.originalSuperview {
+                let convertedFrame = originalSuperview.convert(evView.frame, from: evView.superview)
+                evView.removeFromSuperview()
+                originalSuperview.addSubview(evView)
+                evView.frame = convertedFrame
+                dragReparentState.isReparented = false
+            }
+            
+            // Proceed with your existing drop logic (which will update the event’s
+            // date interval, etc.). For example:
+            let topInContainer = evView.convert(CGPoint(x: evView.bounds.midX,
+                                                        y: evView.bounds.minY), to: container)
+            let topPointInWeek = container.weekView.convert(topInContainer, from: container)
             let locationInContainer = gesture.location(in: container)
             if let hitView = container.hitTest(locationInContainer, with: nil) {
                 let hitViewClass = String(describing: type(of: hitView))
-
-                // Първо ниво родител
                 var parent1Class = "nil"
                 var parent2Class = "nil"
-
                 if let parent1 = hitView.superview {
                     parent1Class = String(describing: type(of: parent1))
-                    // Второ ниво родител
                     if let parent2 = parent1.superview {
                         parent2Class = String(describing: type(of: parent2))
                     }
                 }
-
-                print("""
-                Dragging above: \(hitViewClass)
-                parent1: \(parent1Class)
-                parent2: \(parent2Class)
-                """)
                 
-                if hitViewClass == "WeekTimelineViewNonOverlapping" || parent1Class == "WeekTimelineViewNonOverlapping" || parent2Class == "WeekTimelineViewNonOverlapping" {
-                    // Остава в timeline
+                if hitViewClass == "WeekTimelineViewNonOverlapping" ||
+                    parent1Class == "WeekTimelineViewNonOverlapping" ||
+                    parent2Class == "WeekTimelineViewNonOverlapping" {
                     if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
                         let oldDuration = descriptor.dateInterval.duration
                         let snapped = snapToNearest10Min(newDateRaw)
+                        // Ensure that the event remains a timed (not all‑day) event.
                         descriptor.isAllDay = false
-                        descriptor.dateInterval = DateInterval(start: snapped,
-                                                               end: snapped.addingTimeInterval(oldDuration))
+                        descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
                         container.weekView.onEventDragEnded?(descriptor, snapped, false)
                     } else if let orig = originalFrameForDraggedEvent {
                         evView.frame = orig
                     }
-                }else if hitViewClass == "AllDayViewNonOverlapping" || parent1Class == "AllDayViewNonOverlapping" || parent2Class == "AllDayViewNonOverlapping"{
+                } else if hitViewClass == "AllDayViewNonOverlapping" ||
+                          parent1Class == "AllDayViewNonOverlapping" ||
+                          parent2Class == "AllDayViewNonOverlapping" {
                     if let newDayIndex = dayIndexFromMidX(evView.frame.midX) {
                         onEventConvertToAllDay?(descriptor, newDayIndex)
                     } else if let orig = originalFrameForDraggedEvent {
                         evView.frame = orig
                     }
+                } else {
+                    if let orig = originalFrameForDraggedEvent {
+                        evView.frame = orig
+                    }
                 }
             }
-
+            
+            // Clean up drag state.
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
-
+            
         default:
             break
         }
-    }
-
-    private func selectEventView(_ evView: EventView) {
-        guard let descriptor = eventViewToDescriptor[evView] else { return }
-        if let oldView = currentlyEditedEventView, oldView !== evView,
-           let oldDesc = eventViewToDescriptor[oldView] {
-            oldDesc.editedEvent = nil
-            oldView.updateWithDescriptor(event: oldDesc)
-        }
-        descriptor.editedEvent = descriptor
-        evView.updateWithDescriptor(event: descriptor)
-        currentlyEditedEventView = evView
     }
 
     // MARK: - Resize
@@ -821,8 +853,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             container.allDayScrollView.layer.zPosition = 2
             container.mainScrollView.layer.zPosition = 1
         } else {
-            container.allDayScrollView.layer.zPosition = 1
-            container.mainScrollView.layer.zPosition = 2
+            container.allDayScrollView.layer.zPosition = 2
+            container.mainScrollView.layer.zPosition = 1
         }
     }
 
