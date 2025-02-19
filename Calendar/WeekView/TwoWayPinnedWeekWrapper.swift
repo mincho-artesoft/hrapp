@@ -1,39 +1,55 @@
-// MARK: - SwiftUI Wrapper
-
 import SwiftUI
 import CalendarKit
 import EventKit
 import EventKitUI
 
+/// SwiftUI-обвивка за TwoWayPinnedWeekContainerView,
+/// която позволява извън него да се зададе дали да е Single-day или Multi-day.
 public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     @Binding var fromDate: Date
     @Binding var toDate: Date
     @Binding var events: [EventDescriptor]
+    
+    /// EventStore - подава се отвън
     let eventStore: EKEventStore
+    
+    /// НОВО: флаг дали да се показва като Single day
+    /// (ако е true, ще видите само `fromDatePicker`, центриран,
+    ///  а `toDatePicker` ще се скрие).
+    var isSingleDay: Bool
 
     public var onDayLabelTap: ((Date) -> Void)?
 
+    // MARK: - Инициализатор
     public init(
         fromDate: Binding<Date>,
         toDate: Binding<Date>,
         events: Binding<[EventDescriptor]>,
         eventStore: EKEventStore,
+        // По подразбиране приемаме false => Multi-day
+        isSingleDay: Bool = false,
         onDayLabelTap: ((Date) -> Void)? = nil
     ) {
         self._fromDate = fromDate
         self._toDate = toDate
         self._events = events
         self.eventStore = eventStore
+        self.isSingleDay = isSingleDay
         self.onDayLabelTap = onDayLabelTap
     }
 
+    // MARK: - makeUIViewController
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
 
+        // Нашият UIView
         let container = TwoWayPinnedWeekContainerView()
 
-        // Начален интервал
+        // Настройваме дали да е single-day или multi-day
+        container.showSingleDay = isSingleDay
+
+        // Задаваме началните дати
         container.fromDate = fromDate
         container.toDate   = toDate
 
@@ -44,12 +60,15 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
         // Callbacks
         container.onRangeChange = { newFrom, newTo in
-            self.fromDate = newFrom
-            self.toDate   = newTo
+            // Когато вътрешният изглед промени обхвата,
+            // обновяваме нашите @State променливи
+            fromDate = newFrom
+            toDate   = newTo
             context.coordinator.reloadCurrentRange()
         }
 
         container.onEventTap = { descriptor in
+            // При натискане на събитие -> отваряме system editor
             if let ekWrap = descriptor as? EKWrapper {
                 context.coordinator.presentSystemEditor(ekWrap.ekEvent, in: vc)
             } else if let multi = descriptor as? EKMultiDayWrapper {
@@ -66,18 +85,24 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         }
 
         container.onEventDragEnded = { descriptor, newDate, isAllDay in
-            context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: false, isAllDay: isAllDay)
+            context.coordinator.handleEventDragOrResize(descriptor: descriptor,
+                                                        newDate: newDate,
+                                                        isResize: false,
+                                                        isAllDay: isAllDay)
         }
 
         container.onEventDragResizeEnded = { descriptor, newDate in
-            context.coordinator.handleEventDragOrResize(descriptor: descriptor, newDate: newDate, isResize: true, isAllDay: false)
+            context.coordinator.handleEventDragOrResize(descriptor: descriptor,
+                                                        newDate: newDate,
+                                                        isResize: true,
+                                                        isAllDay: false)
         }
 
         container.onDayLabelTap = { tappedDay in
-            self.onDayLabelTap?(tappedDay)
+            onDayLabelTap?(tappedDay)
         }
 
-        // Добавяме subview
+        // Добавяме като subview във ViewController-а
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -90,21 +115,32 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         return vc
     }
 
+    // MARK: - updateUIViewController
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         guard let container = uiViewController.view.subviews
-            .first(where: { $0 is TwoWayPinnedWeekContainerView }) as? TwoWayPinnedWeekContainerView else { return }
+                .first(where: { $0 is TwoWayPinnedWeekContainerView })
+                as? TwoWayPinnedWeekContainerView else {
+            return
+        }
 
+        // Променяме single/multi
+        container.showSingleDay = isSingleDay
+
+        // Обновяваме датите
         container.fromDate = fromDate
         container.toDate   = toDate
 
+        // Обновяваме събитията
         let (allDay, regular) = splitAllDay(events)
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
 
+        // Принуждаваме layout, ако има промени
         container.setNeedsLayout()
         container.layoutIfNeeded()
     }
 
+    // MARK: - Подпомагаща функция: отделяме all-day от редовни събития
     private func splitAllDay(_ evts: [EventDescriptor]) -> ([EventDescriptor], [EventDescriptor]) {
         var allDay = [EventDescriptor]()
         var regular = [EventDescriptor]()
@@ -118,10 +154,12 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         return (allDay, regular)
     }
 
+    // MARK: - makeCoordinator
     public func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
+    // MARK: - Coordinator (EKEventEditViewDelegate)
     public class Coordinator: NSObject, EKEventEditViewDelegate {
         let parent: TwoWayPinnedWeekWrapper
 
@@ -129,7 +167,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             self.parent = parent
         }
 
-        // EKEventEditViewDelegate
+        // Делегатен метод на EKEventEditViewController
         public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction) {
             controller.dismiss(animated: true) {
@@ -151,8 +189,9 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             var splitted: [EventDescriptor] = []
             for ekEvent in found {
                 guard let realStart = ekEvent.startDate,
-                      let realEnd = ekEvent.endDate else { continue }
-
+                      let realEnd = ekEvent.endDate else {
+                    continue
+                }
                 // Ако се простира няколко дни - режем го
                 if cal.startOfDay(for: realStart) != cal.startOfDay(for: realEnd) {
                     splitted.append(contentsOf: splitEventByDays(ekEvent,
@@ -213,8 +252,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
         func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
-            newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
             newEvent.title = "All-day event"
+            newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
             newEvent.isAllDay = true
             newEvent.startDate = date
             newEvent.endDate   = date
@@ -222,6 +261,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         }
 
         func handleEventDragOrResize(descriptor: EventDescriptor, newDate: Date, isResize: Bool, isAllDay: Bool) {
+            // Проверяваме кой wrapper имаме
             if let multi = descriptor as? EKMultiDayWrapper {
                 let ev = multi.realEvent
                 if ev.hasRecurrenceRules {
@@ -285,12 +325,12 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             if isAllDay {
                 event.startDate = newStartDate
                 event.endDate   = newStartDate.addingTimeInterval(3600)
-                
-            }else{
+            } else {
                 let dur = oldEnd.timeIntervalSince(oldStart)
                 event.startDate = newStartDate
                 event.endDate   = newStartDate.addingTimeInterval(dur)
             }
+
             do {
                 try parent.eventStore.save(event, span: span)
             } catch {
@@ -307,6 +347,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 let originalInterval = multi.dateInterval
                 let distanceToStart = forcedNewDate.timeIntervalSince(originalInterval.start)
                 let distanceToEnd   = originalInterval.end.timeIntervalSince(forcedNewDate)
+
                 if distanceToStart < distanceToEnd {
                     // top
                     if forcedNewDate < event.endDate {
@@ -323,6 +364,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
                 let oldInterval = wrap.dateInterval
                 let distanceToStart = forcedNewDate.timeIntervalSince(oldInterval.start)
                 let distanceToEnd   = oldInterval.end.timeIntervalSince(forcedNewDate)
+
                 if distanceToStart < distanceToEnd {
                     // top
                     if forcedNewDate < oldInterval.end {
@@ -369,5 +411,3 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         }
     }
 }
-
-

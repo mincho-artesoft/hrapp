@@ -60,15 +60,17 @@ struct RootView: View {
                     case 0:
                         MonthCalendarView(viewModel: calendarVM, startMonth: Date())
                     case 1:
+                        // Пример: показваме TwoWayPinnedWeekWrapper като single-day
                         TwoWayPinnedWeekWrapper(
                             fromDate: $pinnedFromDate,
                             toDate: $pinnedFromDate,
                             events: $pinnedEvents,
-                            eventStore: calendarVM.eventStore
+                            eventStore: calendarVM.eventStore,
+                            isSingleDay: true // <-- ВАЖНО: single day
                         ) { tappedDay in
-                            // Обновяваме само началния и крайния ден
+                            // Ако потребителят цъкне на dayLabel, задаваме една и съща from/to
                             pinnedFromDate = tappedDay
-                            pinnedToDate = tappedDay
+                            pinnedToDate   = tappedDay
                         }
                         .onAppear {
                             loadPinnedRangeEvents()
@@ -76,19 +78,22 @@ struct RootView: View {
                         .onReceive(timer) { _ in
                             loadPinnedRangeEvents()
                         }
+
                     case 2:
                         YearCalendarView(viewModel: calendarVM)
+
                     case 3:
-                        // Нашият Multi-Day изглед с модифициран onDayLabelTap:
+                        // Пример: показваме TwoWayPinnedWeekWrapper като multi-day
                         TwoWayPinnedWeekWrapper(
                             fromDate: $pinnedFromDate,
                             toDate: $pinnedToDate,
                             events: $pinnedEvents,
-                            eventStore: calendarVM.eventStore
+                            eventStore: calendarVM.eventStore,
+                            isSingleDay: false // <-- Multi-day
                         ) { tappedDay in
-                            // Обновяваме само началния и крайния ден
+                            // Обновяваме началния и крайния ден
                             pinnedFromDate = tappedDay
-                            pinnedToDate = tappedDay
+                            pinnedToDate   = tappedDay
                         }
                         .onAppear {
                             loadPinnedRangeEvents()
@@ -118,14 +123,23 @@ struct RootView: View {
         let fromOnly = cal.startOfDay(for: pinnedFromDate)
         let toOnly   = cal.startOfDay(for: pinnedToDate)
         guard let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) else { return }
-        let predicate = calendarVM.eventStore.predicateForEvents(withStart: fromOnly, end: actualEnd, calendars: nil)
+        let predicate = calendarVM.eventStore.predicateForEvents(
+            withStart: fromOnly,
+            end: actualEnd,
+            calendars: nil
+        )
         let found = calendarVM.eventStore.events(matching: predicate)
-        
+
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
-            guard let realStart = ekEvent.startDate, let realEnd = ekEvent.endDate else { continue }
+            guard let realStart = ekEvent.startDate,
+                  let realEnd   = ekEvent.endDate else { continue }
+            
+            // Ако събитието е в няколко дни, режем го
             if cal.startOfDay(for: realStart) != cal.startOfDay(for: realEnd) {
-                splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: fromOnly, endRange: actualEnd))
+                splitted.append(contentsOf: splitEventByDays(ekEvent,
+                                                             startRange: fromOnly,
+                                                             endRange: actualEnd))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
@@ -133,20 +147,30 @@ struct RootView: View {
         pinnedEvents = splitted
     }
     
-    private func splitEventByDays(_ ekEvent: EKEvent, startRange: Date, endRange: Date) -> [EKMultiDayWrapper] {
+    private func splitEventByDays(_ ekEvent: EKEvent,
+                                  startRange: Date,
+                                  endRange: Date) -> [EKMultiDayWrapper] {
         var results = [EKMultiDayWrapper]()
         let cal = Calendar.current
         let realStart = max(ekEvent.startDate, startRange)
         let realEnd   = min(ekEvent.endDate, endRange)
         if realStart >= realEnd { return results }
+
         var currentStart = realStart
         while currentStart < realEnd {
-            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else { break }
+            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else {
+                break
+            }
             let pieceEnd = min(endOfDay, realEnd)
-            let partial = EKMultiDayWrapper(realEvent: ekEvent, partialStart: currentStart, partialEnd: pieceEnd)
+            let partial = EKMultiDayWrapper(realEvent: ekEvent,
+                                            partialStart: currentStart,
+                                            partialEnd: pieceEnd)
             results.append(partial)
+
             guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
-                  let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay) else { break }
+                  let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay) else {
+                break
+            }
             currentStart = morning
         }
         return results

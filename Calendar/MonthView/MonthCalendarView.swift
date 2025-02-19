@@ -109,7 +109,8 @@ struct MonthCalendarView: View {
                     fromDate: .constant(day),   // искаме еднодневен изглед
                     toDate: .constant(day),     // => от day до day
                     events: $pinnedDayEvents,   // данните, които ще заредим за този ден
-                    eventStore: viewModel.eventStore
+                    eventStore: viewModel.eventStore,
+                    isSingleDay: true
                 ) { tappedDay in
                     // Ако кликнем друг ден вътре, може да зададем new selectedDayForFullScreen
                     selectedDayForFullScreen = tappedDay
