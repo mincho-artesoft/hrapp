@@ -11,6 +11,12 @@ import CalendarKit
 
 public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
 
+    private static let localFormatter: DateFormatter = {
+          let df = DateFormatter()
+          df.dateFormat = "yyyy-MM-dd HH:mm"
+          df.timeZone = TimeZone.current // Ако искате конкретна TimeZone, задайте например "Europe/Sofia"
+          return df
+      }()
     // -- Настройки за времевия изглед --
     public var fromDate: Date = Date()
     public var toDate: Date = Date()
@@ -406,6 +412,8 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 
                 if hitViewClass == "WeekTimelineViewNonOverlapping" || parent1Class == "WeekTimelineViewNonOverlapping" || parent2Class == "WeekTimelineViewNonOverlapping" {
                     // Остава в timeline
+                    print("Dropping event into timeline: start = \(Self.localFormatter.string(from: descriptor.dateInterval.start)), end = \(Self.localFormatter.string(from: descriptor.dateInterval.end))")
+                    
                     if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
                         let oldDuration = descriptor.dateInterval.duration
                         let snapped = snapToNearest10Min(newDateRaw)
