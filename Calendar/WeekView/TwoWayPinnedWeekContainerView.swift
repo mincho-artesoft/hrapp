@@ -77,6 +77,9 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     private var redrawTimer: Timer?
 
+    // <<< Ново свойство за двоен pass
+    private var isInSecondPass = false
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -201,6 +204,11 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
+        // <<< Преди да направим custom layout, опитваме да сме на втория pass?
+        if isInSecondPass {
+            isInSecondPass = false
+        }
+
         // 1) Navigation bar
         if let navBar = subviews.first(where: { $0.frame.origin == .zero && $0.bounds.height == navBarHeight }) {
             navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
@@ -241,16 +249,16 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             allDayView.dayColumnWidth = 100
         }
 
-        // 4) Days header
         let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalDaysHeaderWidth, height: daysHeaderHeight)
 
         // 5) all-day view
         let allDayY = yMain + daysHeaderHeight
-        let allDayH = allDayView.desiredHeight()
-        allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
 
+        // >>> първо оразмеряваме "грубо"
+        var allDayH = allDayView.desiredHeight() // възможно е още да е 40
+        allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
         allDayScrollView.frame = CGRect(
             x: leftColumnWidth,
             y: allDayY,
@@ -276,31 +284,24 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
             height: bounds.height - hoursColumnY
         )
 
-        // >>> КЛЮЧОВИ ПРОМЕНИ <<<
         // Задаваме topMargin на weekView
         weekView.topMargin = hoursColumnView.extraMarginTopBottom
 
         // Имаме 25 часа (0..24)
         let totalHours = 25
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
-        // finalHeight = 25 * hourHeight + (2 * topMargin)
         let finalHeight = baseHeight + (weekView.topMargin * 2)
-
         let totalWidth  = CGFloat(dayCount) * weekView.dayColumnWidth
 
-        // mainScrollView / weekView
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
 
-        // hoursColumnScrollView / hoursColumnView
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
 
-        // Пращаме mainScrollView назад
         sendSubviewToBack(mainScrollView)
         sendSubviewToBack(allDayScrollView)
 
-        // Настройка дали сме в днешен ден
         let nowOnly = cal.startOfDay(for: Date())
         hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
@@ -310,6 +311,24 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         allDayView.setNeedsLayout()
 
         bringSubviewToFront(allDayTitleLabel)
+
+
+        // <<< Правим "принудителен layout" на allDayView
+        allDayView.layoutIfNeeded()
+
+        // <<< ако след това allDayView иска различна височина, правим втори pass
+        let realAllDayH = allDayView.desiredHeight()
+        if abs(realAllDayH - allDayH) > 0.5 {
+            // разликата е над 0.5 => явно е нужна корекция
+            if !isInSecondPass {
+                isInSecondPass = true
+                setNeedsLayout() // ще влезем втори път в layoutSubviews()
+                return
+            } else {
+                // Ако сме вече в second pass, спираме да повтаряме
+                isInSecondPass = false
+            }
+        }
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
