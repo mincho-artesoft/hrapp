@@ -2,6 +2,7 @@ import SwiftUI
 import EventKit
 import EventKitUI
 import UniformTypeIdentifiers
+import CalendarKit  // ако ви трябва за EventDescriptor / EKMultiDayWrapper
 
 struct MonthCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
@@ -23,6 +24,10 @@ struct MonthCalendarView: View {
     @State private var currentMonth: Date
 
     private let calendar = Calendar(identifier: .gregorian)
+    
+    // Тук пазим събитията (EventDescriptor) за конкретния ден,
+    // които подаваме на TwoWayPinnedWeekWrapper.
+    @State private var pinnedDayEvents: [EventDescriptor] = []
     
     init(viewModel: CalendarViewModel, startMonth: Date) {
         self.viewModel = viewModel
@@ -96,29 +101,38 @@ struct MonthCalendarView: View {
             viewModel.loadEvents(for: currentMonth)
         }
         
-        // Показваме Day View (CalendarKit) като fullScreenCover
-        // Вече item: $selectedDayForFullScreen, така че се показва още първия път
+        // Показваме Day View като fullScreenCover,
+        // но този път използваме TwoWayPinnedWeekWrapper вместо CalendarKit DayViewController.
         .fullScreenCover(item: $selectedDayForFullScreen) { day in
             NavigationView {
-                // Тук вашият CalendarKit вю контролер
-                CalendarViewControllerWrapper(selectedDate: day,
-                                              eventStore: viewModel.eventStore)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Close") {
-                                selectedDayForFullScreen = nil
-                                // По желание презаредете събития
-                                viewModel.loadEvents(for: currentMonth)
-                            }
+                TwoWayPinnedWeekWrapper(
+                    fromDate: .constant(day),   // искаме еднодневен изглед
+                    toDate: .constant(day),     // => от day до day
+                    events: $pinnedDayEvents,   // данните, които ще заредим за този ден
+                    eventStore: viewModel.eventStore
+                ) { tappedDay in
+                    // Ако кликнем друг ден вътре, може да зададем new selectedDayForFullScreen
+                    selectedDayForFullScreen = tappedDay
+                }
+                .onAppear {
+                    // Зареждаме събитията за този конкретен ден
+                    loadPinnedDayEvents(for: day)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Close") {
+                            selectedDayForFullScreen = nil
+                            // По желание презаредете събития за месеца
+                            viewModel.loadEvents(for: currentMonth)
                         }
                     }
-                    .navigationTitle("Day View")
-                    .navigationBarTitleDisplayMode(.inline)
+                }
+                .navigationTitle("Day View")
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
         
-        // Системният редактор за EKEvent
-        // Вместо .sheet(isPresented: $showEventEditor), ползваме .sheet(item: $eventToEdit)
+        // Системният редактор за EKEvent (sheet)
         .sheet(item: $eventToEdit) { event in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: event)
         }
@@ -222,5 +236,80 @@ struct MonthCalendarView: View {
         newEvent.calendar  = viewModel.eventStore.defaultCalendarForNewEvents
         
         eventToEdit = newEvent
+    }
+    
+    // Зареждане на събитията като EventDescriptor, за да ги подадем на TwoWayPinnedWeekWrapper
+    private func loadPinnedDayEvents(for day: Date) {
+        let cal = Calendar.current
+        let dayStart = cal.startOfDay(for: day)
+        // За да ограничим събитията в рамките на деня: [dayStart, nextDay)
+        guard let nextDay = cal.date(byAdding: .day, value: 1, to: dayStart) else { return }
+        
+        let predicate = viewModel.eventStore.predicateForEvents(
+            withStart: dayStart,
+            end: nextDay,
+            calendars: nil
+        )
+        
+        let found = viewModel.eventStore.events(matching: predicate)
+        
+        // Ако искате да "раздробявате" събития, които преливат в следващ ден,
+        // може да използвате splitEventByDays. Ако не, може да ги map‑вате директно.
+        var splitted: [EventDescriptor] = []
+        for ekEvent in found {
+            let realStart = ekEvent.startDate
+            let realEnd   = ekEvent.endDate
+            
+            // Ако събитието прелива отвъд границите на dayStart..nextDay,
+            // можем да го "разделим" на парчета. Ако не, добавяме директно.
+            if realStart! < dayStart || realEnd! > nextDay {
+                splitted.append(contentsOf: splitEventByDays(ekEvent,
+                                                             startRange: dayStart,
+                                                             endRange: nextDay))
+            } else {
+                splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
+            }
+        }
+        
+        pinnedDayEvents = splitted
+    }
+    
+    // Примерна функция, която разделя EKEvent на парчета (по дни),
+    // за да може TwoWayPinnedWeekWrapper да ги визуализира коректно.
+    private func splitEventByDays(_ ekEvent: EKEvent,
+                                  startRange: Date,
+                                  endRange: Date) -> [EKMultiDayWrapper] {
+        var results = [EKMultiDayWrapper]()
+        let cal = Calendar.current
+        
+        let realStart = max(ekEvent.startDate, startRange)
+        let realEnd   = min(ekEvent.endDate, endRange)
+        if realStart >= realEnd { return results }
+        
+        var currentStart = realStart
+        while currentStart < realEnd {
+            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59,
+                                          of: currentStart)
+            else {
+                break
+            }
+            let pieceEnd = min(endOfDay, realEnd)
+            
+            let partial = EKMultiDayWrapper(
+                realEvent: ekEvent,
+                partialStart: currentStart,
+                partialEnd: pieceEnd
+            )
+            results.append(partial)
+            
+            guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
+                  let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)
+            else {
+                break
+            }
+            currentStart = morning
+        }
+        
+        return results
     }
 }

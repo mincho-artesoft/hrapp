@@ -60,10 +60,22 @@ struct RootView: View {
                     case 0:
                         MonthCalendarView(viewModel: calendarVM, startMonth: Date())
                     case 1:
-                        DayCalendarWrapperView(
-                            eventStore: calendarVM.eventStore,
-                            date: dayTabSelectedDate
-                        )
+                        TwoWayPinnedWeekWrapper(
+                            fromDate: $pinnedFromDate,
+                            toDate: $pinnedFromDate,
+                            events: $pinnedEvents,
+                            eventStore: calendarVM.eventStore
+                        ) { tappedDay in
+                            // Обновяваме само началния и крайния ден
+                            pinnedFromDate = tappedDay
+                            pinnedToDate = tappedDay
+                        }
+                        .onAppear {
+                            loadPinnedRangeEvents()
+                        }
+                        .onReceive(timer) { _ in
+                            loadPinnedRangeEvents()
+                        }
                     case 2:
                         YearCalendarView(viewModel: calendarVM)
                     case 3:
