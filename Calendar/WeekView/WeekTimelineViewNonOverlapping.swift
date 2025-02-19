@@ -323,6 +323,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             selectEventView(evView)
         }
 
+        // Търсим контейнера (TwoWayPinnedWeekContainerView)
         guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
 
         switch gesture.state {
@@ -378,24 +379,49 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             let topInContainer = evView.convert(CGPoint(x: evView.bounds.midX, y: evView.bounds.minY), to: container)
             let topPointInWeek = container.weekView.convert(topInContainer, from: container)
 
-            // Ако е в All-Day зоната
-            if topInContainer.y < container.allDayScrollView.frame.maxY {
-                if let newDayIndex = dayIndexFromMidX(evView.frame.midX) {
-                    onEventConvertToAllDay?(descriptor, newDayIndex)
-                } else if let orig = originalFrameForDraggedEvent {
-                    evView.frame = orig
+            
+            // >>> НОВО <<< (2 нива нагоре)
+            // Проверка къде е курсорът в контейнера (и родителите му до 2 нива нагоре)
+            let locationInContainer = gesture.location(in: container)
+            if let hitView = container.hitTest(locationInContainer, with: nil) {
+                let hitViewClass = String(describing: type(of: hitView))
+
+                // Първо ниво родител
+                var parent1Class = "nil"
+                var parent2Class = "nil"
+
+                if let parent1 = hitView.superview {
+                    parent1Class = String(describing: type(of: parent1))
+                    // Второ ниво родител
+                    if let parent2 = parent1.superview {
+                        parent2Class = String(describing: type(of: parent2))
+                    }
                 }
-            } else {
-                // Остава в timeline
-                if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
-                    let oldDuration = descriptor.dateInterval.duration
-                    let snapped = snapToNearest10Min(newDateRaw)
-                    descriptor.isAllDay = false
-                    descriptor.dateInterval = DateInterval(start: snapped,
-                                                           end: snapped.addingTimeInterval(oldDuration))
-                    container.weekView.onEventDragEnded?(descriptor, snapped, false)
-                } else if let orig = originalFrameForDraggedEvent {
-                    evView.frame = orig
+
+                print("""
+                Dragging above: \(hitViewClass)
+                parent1: \(parent1Class)
+                parent2: \(parent2Class)
+                """)
+                
+                if hitViewClass == "WeekTimelineViewNonOverlapping" || parent1Class == "WeekTimelineViewNonOverlapping" || parent2Class == "WeekTimelineViewNonOverlapping" {
+                    // Остава в timeline
+                    if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
+                        let oldDuration = descriptor.dateInterval.duration
+                        let snapped = snapToNearest10Min(newDateRaw)
+                        descriptor.isAllDay = false
+                        descriptor.dateInterval = DateInterval(start: snapped,
+                                                               end: snapped.addingTimeInterval(oldDuration))
+                        container.weekView.onEventDragEnded?(descriptor, snapped, false)
+                    } else if let orig = originalFrameForDraggedEvent {
+                        evView.frame = orig
+                    }
+                }else if hitViewClass == "AllDayViewNonOverlapping" || parent1Class == "AllDayViewNonOverlapping" || parent2Class == "AllDayViewNonOverlapping"{
+                    if let newDayIndex = dayIndexFromMidX(evView.frame.midX) {
+                        onEventConvertToAllDay?(descriptor, newDayIndex)
+                    } else if let orig = originalFrameForDraggedEvent {
+                        evView.frame = orig
+                    }
                 }
             }
 
@@ -643,8 +669,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         // Добавяме topMargin и тогава рисуваме червената линия
         let yNow = topMargin + fraction * hourHeight
 
-        let totalLeftX = leadingInsetForHours
-        let totalRightX = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
         let currentDayX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
         let currentDayX2 = currentDayX + dayColumnWidth
 
@@ -657,8 +681,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         ctx.addLine(to: CGPoint(x: currentDayX2, y: yNow))
         ctx.strokePath()
         ctx.restoreGState()
-
-        // (По избор можеш да рисуваш по-светло отляво/дясно)
     }
 
     // MARK: - Помощни
