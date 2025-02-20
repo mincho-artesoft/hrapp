@@ -7,8 +7,8 @@ public final class EKMultiDayWrapper: EventDescriptor {
     public let realEvent: EKEvent
 
     // For drawing just the portion that’s in a single day
-    private var partialStart: Date
-    private var partialEnd: Date
+     var partialStart: Date
+     var partialEnd: Date
 
     public var isAllDay: Bool {
         get { realEvent.isAllDay }
