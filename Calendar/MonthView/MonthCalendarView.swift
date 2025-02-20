@@ -2,7 +2,6 @@ import SwiftUI
 import EventKit
 import EventKitUI
 import UniformTypeIdentifiers
-import CalendarKit  // ако ви трябва за EventDescriptor / EKMultiDayWrapper
 
 struct MonthCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel

@@ -1,6 +1,5 @@
 import UIKit
 import EventKit
-import CalendarKit
 
 public final class EKWrapper: EventDescriptor {
 

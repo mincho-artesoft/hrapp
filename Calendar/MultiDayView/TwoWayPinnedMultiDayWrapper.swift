@@ -1,5 +1,4 @@
 import SwiftUI
-import CalendarKit
 import EventKit
 import EventKitUI
 

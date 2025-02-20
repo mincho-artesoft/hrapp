@@ -1,5 +1,4 @@
 import UIKit
-import CalendarKit
 
 public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate {
 

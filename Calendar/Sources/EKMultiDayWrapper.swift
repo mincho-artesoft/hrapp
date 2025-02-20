@@ -1,6 +1,5 @@
 import UIKit
 import EventKit
-import CalendarKit
 
 /// A custom wrapper that references one real EKEvent, but can display partial (start..end) for each day.
 public final class EKMultiDayWrapper: EventDescriptor {

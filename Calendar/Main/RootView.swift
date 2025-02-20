@@ -1,6 +1,5 @@
 import SwiftUI
 import EventKit
-import CalendarKit
 
 struct RootView: View {
     @State private var selectedTab = 3

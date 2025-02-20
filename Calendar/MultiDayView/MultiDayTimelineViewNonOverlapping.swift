@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CalendarKit
 
 public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
 
