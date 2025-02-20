@@ -413,12 +413,12 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             if finalMinute == 60 {
                 finalMinute = 0
                 let nextHour = (hour + 1) % 24
-                var comps2 = DateComponents(year: year, month: month, day: day,
+                let comps2 = DateComponents(year: year, month: month, day: day,
                                             hour: nextHour, minute: 0, second: 0)
                 return cal.date(from: comps2) ?? date
             }
         }
-        var comps2 = DateComponents(year: year, month: month, day: day,
+        let comps2 = DateComponents(year: year, month: month, day: day,
                                     hour: hour, minute: finalMinute, second: 0)
         return cal.date(from: comps2) ?? date
     }

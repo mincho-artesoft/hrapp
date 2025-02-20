@@ -318,13 +318,14 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 self.reloadCurrentRange()
             }))
 
-            if let wnd = UIApplication.shared.windows.first,
-               let root = wnd.rootViewController {
+            if let windowScene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+               let window = windowScene.windows.first(where: { $0.isKeyWindow }),
+               let root = window.rootViewController {
                 alert.popoverPresentationController?.sourceView = root.view
                 root.present(alert, animated: true)
-            } else {
-                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
             }
+
         }
 
         @MainActor

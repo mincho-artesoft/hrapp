@@ -87,7 +87,7 @@ public final class EKMultiDayWrapper: EventDescriptor {
         // Example approach: if the user dragged the partial portion, shift entire event.
         // Or you can make your own logic. For simplicity, let's shift the entire realEvent
         // so that the partial block lines up with the new partialStart.
-        let oldStart = realEvent.startDate
+        _ = realEvent.startDate
         if !realEvent.isAllDay {
             let newStart = edited.partialStart
             realEvent.startDate = newStart

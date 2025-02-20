@@ -373,15 +373,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
 
             // >>> NEW LOGIC: изчисляваме start от горната част, но ако тя е извън изгледа,
             //    опитваме да вземем дата от долната част (да продължим да принтираме край).
-            let oldDuration = descriptor.dateInterval.duration
+            _ = descriptor.dateInterval.duration
 
             // 1) Опитваме се да вземем "start" (горна част)
             if let newStart = dateFromFrame(newFrame) {
                 setSingle10MinuteMarkFromDate(newStart)
 
-                let newEnd = newStart.addingTimeInterval(oldDuration)
-                let startStr = Self.localFormatter.string(from: newStart)
-                let endStr   = Self.localFormatter.string(from: newEnd)
+//                let newEnd = newStart.addingTimeInterval(oldDuration)
+//                let startStr = Self.localFormatter.string(from: newStart)
+//                let endStr   = Self.localFormatter.string(from: newEnd)
 //                print("Dragging event... (TOP visible) start = \(startStr), end = \(endStr)")
 
             } else {
@@ -398,13 +398,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     if let newEnd = dateFromFrame(bottomFrame) {
                         // Сега newEnd считаме за краен час,
                         // а старта е newEnd - старата продължителност
-                        let newStart = newEnd.addingTimeInterval(-oldDuration)
+//                        let newStart = newEnd.addingTimeInterval(-oldDuration)
 
                         // (може да изберете да сложите mark и на newEnd, ако желаете)
                         setSingle10MinuteMarkFromDate(newEnd)
 
-                        let startStr = Self.localFormatter.string(from: newStart)
-                        let endStr   = Self.localFormatter.string(from: newEnd)
+//                        let startStr = Self.localFormatter.string(from: newStart)
+//                        let endStr   = Self.localFormatter.string(from: newEnd)
 //                        print("Dragging event... (BOTTOM) start = \(startStr), end = \(endStr)")
                     }
                 }
@@ -815,7 +815,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             if finalM == 60 {
                 finalM = 0
                 let plusOneHour = (h + 1) % 24
-                var comps2 = DateComponents(year: y, month: mo, day: d,
+                let comps2 = DateComponents(year: y, month: mo, day: d,
                                             hour: plusOneHour, minute: 0, second: 0)
                 return cal.date(from: comps2) ?? date
             }

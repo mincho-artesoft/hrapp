@@ -283,10 +283,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
-        if let topVC = UIApplication.shared.windows.first?.rootViewController {
+        if let windowScene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let topVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController {
             alert.popoverPresentationController?.sourceView = menuButton
             topVC.present(alert, animated: true, completion: nil)
         }
+
     }
 
     // MARK: - Actions при DatePicker промени

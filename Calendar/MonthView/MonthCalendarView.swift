@@ -209,21 +209,36 @@ struct MonthCalendarView: View {
     private func createAndEditNewEvent(on day: Date) {
         let status = EKEventStore.authorizationStatus(for: .event)
         
-        if #available(iOS 17.0, *), status == .fullAccess {
-            presentNewEvent(on: day)
-        } else if status == .authorized {
-            presentNewEvent(on: day)
-        } else if status == .notDetermined {
-            viewModel.requestCalendarAccessIfNeeded {
-                if viewModel.isCalendarAccessGranted() {
-                    self.presentNewEvent(on: day)
+        if #available(iOS 17.0, *) {
+            // iOS 17+: Check for either full access or write-only access.
+            switch status {
+            case .fullAccess, .writeOnly:
+                presentNewEvent(on: day)
+            case .notDetermined:
+                viewModel.requestCalendarAccessIfNeeded {
+                    if viewModel.isCalendarAccessGranted() {
+                        self.presentNewEvent(on: day)
+                    }
                 }
+            default:
+                print("No calendar access.")
             }
         } else {
-            // denied / restricted
-            print("No calendar access.")
+            // Pre-iOS 17: Use the old .authorized status.
+            if status == .authorized {
+                presentNewEvent(on: day)
+            } else if status == .notDetermined {
+                viewModel.requestCalendarAccessIfNeeded {
+                    if viewModel.isCalendarAccessGranted() {
+                        self.presentNewEvent(on: day)
+                    }
+                }
+            } else {
+                print("No calendar access.")
+            }
         }
     }
+
     
     private func presentNewEvent(on day: Date) {
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
