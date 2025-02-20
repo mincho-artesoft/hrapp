@@ -11,12 +11,14 @@ import CalendarKit
 
 public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
 
+    // MARK: - Форматиране на датите за принтиране (с локална часова зона)
     private static let localFormatter: DateFormatter = {
-          let df = DateFormatter()
-          df.dateFormat = "yyyy-MM-dd HH:mm"
-          df.timeZone = TimeZone.current // Ако искате конкретна TimeZone, задайте например "Europe/Sofia"
-          return df
-      }()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm"
+        df.timeZone = TimeZone.current // Или "Europe/Sofia"
+        return df
+    }()
+
     // -- Настройки за времевия изглед --
     public var fromDate: Date = Date()
     public var toDate: Date = Date()
@@ -359,6 +361,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
 
+            // Ако евентът е EKMultiDayWrapper => местим и останалите парчета
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let dx = newFrame.origin.x - origFrame.origin.x
                 let dy = newFrame.origin.y - origFrame.origin.y
@@ -369,9 +372,43 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 }
             }
 
-            // Ако успеем да намерим новата дата => snap marker
-            if let date = dateFromFrame(newFrame) {
-                setSingle10MinuteMarkFromDate(date)
+            // >>> NEW LOGIC: изчисляваме start от горната част, но ако тя е извън изгледа,
+            //    опитваме да вземем дата от долната част (да продължим да принтираме край).
+            let oldDuration = descriptor.dateInterval.duration
+
+            // 1) Опитваме се да вземем "start" (горна част)
+            if let newStart = dateFromFrame(newFrame) {
+                setSingle10MinuteMarkFromDate(newStart)
+
+                let newEnd = newStart.addingTimeInterval(oldDuration)
+                let startStr = Self.localFormatter.string(from: newStart)
+                let endStr   = Self.localFormatter.string(from: newEnd)
+                print("Dragging event... (TOP visible) start = \(startStr), end = \(endStr)")
+
+            } else {
+                // 2) Горната част е извън, но ако долната част е още в полето (например > 0)
+                if newFrame.maxY > 0 {
+                    // Нека вземем "край" от долната част: bottomFrame
+                    // Тоест мислено вземаме point = (x: frame.midX, y: frame.maxY)
+                    // и ще го трактираме като start? Не, реално това е "end" :)
+                    // => За да вземем dateFromFrame, подаваме малка "рамка" около bottomY.
+                    var bottomFrame = newFrame
+                    bottomFrame.origin.y = newFrame.maxY - 1
+                    bottomFrame.size.height = 1
+
+                    if let newEnd = dateFromFrame(bottomFrame) {
+                        // Сега newEnd считаме за краен час,
+                        // а старта е newEnd - старата продължителност
+                        let newStart = newEnd.addingTimeInterval(-oldDuration)
+
+                        // (може да изберете да сложите mark и на newEnd, ако желаете)
+                        setSingle10MinuteMarkFromDate(newEnd)
+
+                        let startStr = Self.localFormatter.string(from: newStart)
+                        let endStr   = Self.localFormatter.string(from: newEnd)
+                        print("Dragging event... (BOTTOM) start = \(startStr), end = \(endStr)")
+                    }
+                }
             }
 
             // Auto scroll
@@ -385,9 +422,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
             let topInContainer = evView.convert(CGPoint(x: evView.bounds.midX, y: evView.bounds.minY), to: container)
             let topPointInWeek = container.weekView.convert(topInContainer, from: container)
 
-            
-            // >>> НОВО <<< (2 нива нагоре)
-            // Проверка къде е курсорът в контейнера (и родителите му до 2 нива нагоре)
             let locationInContainer = gesture.location(in: container)
             if let hitView = container.hitTest(locationInContainer, with: nil) {
                 let hitViewClass = String(describing: type(of: hitView))
@@ -398,7 +432,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
                 if let parent1 = hitView.superview {
                     parent1Class = String(describing: type(of: parent1))
-                    // Второ ниво родител
                     if let parent2 = parent1.superview {
                         parent2Class = String(describing: type(of: parent2))
                     }
@@ -409,22 +442,35 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 parent1: \(parent1Class)
                 parent2: \(parent2Class)
                 """)
-                
-                if hitViewClass == "WeekTimelineViewNonOverlapping" || parent1Class == "WeekTimelineViewNonOverlapping" || parent2Class == "WeekTimelineViewNonOverlapping" {
+
+                if hitViewClass == "WeekTimelineViewNonOverlapping"
+                    || parent1Class == "WeekTimelineViewNonOverlapping"
+                    || parent2Class == "WeekTimelineViewNonOverlapping"
+                {
                     // Остава в timeline
-                    print("Dropping event into timeline: start = \(Self.localFormatter.string(from: descriptor.dateInterval.start)), end = \(Self.localFormatter.string(from: descriptor.dateInterval.end))")
-                    
                     if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
                         let oldDuration = descriptor.dateInterval.duration
                         let snapped = snapToNearest10Min(newDateRaw)
                         descriptor.isAllDay = false
-                        descriptor.dateInterval = DateInterval(start: snapped,
-                                                               end: snapped.addingTimeInterval(oldDuration))
+                        descriptor.dateInterval = DateInterval(
+                            start: snapped,
+                            end: snapped.addingTimeInterval(oldDuration)
+                        )
+
+                        // Принтиране при drop
+                        let startStr = Self.localFormatter.string(from: descriptor.dateInterval.start)
+                        let endStr   = Self.localFormatter.string(from: descriptor.dateInterval.end)
+                        print("Dropping event into timeline: start = \(startStr), end = \(endStr)")
+
                         container.weekView.onEventDragEnded?(descriptor, snapped, false)
                     } else if let orig = originalFrameForDraggedEvent {
                         evView.frame = orig
                     }
-                }else if hitViewClass == "AllDayViewNonOverlapping" || parent1Class == "AllDayViewNonOverlapping" || parent2Class == "AllDayViewNonOverlapping"{
+                }
+                else if hitViewClass == "AllDayViewNonOverlapping"
+                        || parent1Class == "AllDayViewNonOverlapping"
+                        || parent2Class == "AllDayViewNonOverlapping"
+                {
                     if let newDayIndex = dayIndexFromMidX(evView.frame.midX) {
                         onEventConvertToAllDay?(descriptor, newDayIndex)
                     } else if let orig = originalFrameForDraggedEvent {
