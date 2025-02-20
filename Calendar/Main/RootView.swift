@@ -47,10 +47,10 @@ struct RootView: View {
             NavigationView {
                 VStack {
                     Picker("View", selection: $selectedTab) {
-                        Text("Month").tag(0)
                         Text("Day").tag(1)
-                        Text("Year").tag(2)
                         Text("MultiDay").tag(3)
+                        Text("Month").tag(0)
+                        Text("Year").tag(2)
                     }
                     .pickerStyle(.segmented)
                     .padding()
