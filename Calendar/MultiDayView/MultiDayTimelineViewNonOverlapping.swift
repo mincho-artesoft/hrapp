@@ -9,7 +9,7 @@
 import UIKit
 import CalendarKit
 
-public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
+public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
 
     // MARK: - Форматиране на датите за принтиране (с локална часова зона)
     private static let localFormatter: DateFormatter = {
@@ -332,7 +332,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
         }
 
         // Търсим контейнера (TwoWayPinnedWeekContainerView)
-        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
 
         switch gesture.state {
         case .began:
@@ -443,9 +443,9 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 parent2: \(parent2Class)
                 """)
 
-                if hitViewClass == "WeekTimelineViewNonOverlapping"
-                    || parent1Class == "WeekTimelineViewNonOverlapping"
-                    || parent2Class == "WeekTimelineViewNonOverlapping"
+                if hitViewClass == "MultiDayTimelineViewNonOverlapping"
+                    || parent1Class == "MultiDayTimelineViewNonOverlapping"
+                    || parent2Class == "MultiDayTimelineViewNonOverlapping"
                 {
                     if topInContainer.y < container.allDayScrollView.frame.maxY {
                         var newFrame = evView.frame
@@ -893,7 +893,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     // MARK: - Scroll / Clipping
 
     private func setScrollsClipping(enabled: Bool) {
-        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         container.mainScrollView.clipsToBounds = enabled
         if enabled {
             container.allDayScrollView.layer.zPosition = 2
@@ -907,7 +907,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
     // MARK: - Auto Scroll
 
     private func updateAutoScrollDirection(for gesture: UIPanGestureRecognizer) {
-        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         let location = gesture.location(in: container)
         let threshold: CGFloat = 50.0
         var direction = CGPoint.zero
@@ -948,7 +948,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
     @objc private func handleAutoScroll() {
         guard autoScrollDirection != .zero,
-              let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+              let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
 
         let scrollView = container.mainScrollView
         var newOffset = scrollView.contentOffset

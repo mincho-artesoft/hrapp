@@ -61,7 +61,7 @@ struct RootView: View {
                         MonthCalendarView(viewModel: calendarVM, startMonth: Date())
                     case 1:
                         // Пример: показваме TwoWayPinnedWeekWrapper като single-day
-                        TwoWayPinnedWeekWrapper(
+                        TwoWayPinnedMultiDayWrapper(
                             fromDate: $pinnedFromDate,
                             toDate: $pinnedFromDate,
                             events: $pinnedEvents,
@@ -84,7 +84,7 @@ struct RootView: View {
 
                     case 3:
                         // Пример: показваме TwoWayPinnedWeekWrapper като multi-day
-                        TwoWayPinnedWeekWrapper(
+                        TwoWayPinnedMultiDayWrapper(
                             fromDate: $pinnedFromDate,
                             toDate: $pinnedToDate,
                             events: $pinnedEvents,

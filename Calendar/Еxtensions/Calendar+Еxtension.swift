@@ -1,20 +1,4 @@
 import Foundation
-import EventKit
-
-extension Date: Identifiable {
-    public var id: TimeInterval {
-        self.timeIntervalSince1970
-    }
-}
-import EventKit
-
-extension EKEvent: Identifiable {
-    public var id: String {
-        // Ако eventIdentifier е nil, ще върнем временно уникално ID
-        eventIdentifier ?? UUID().uuidString
-    }
-}
-
 
 extension Calendar {
     /// Връща 42 дати (6 реда х 7 колони), така че първият ден на месеца
@@ -26,7 +10,7 @@ extension Calendar {
         else { return [] }
         
         // 2) Колко дни има в месеца
-        let daysInMonth = self.range(of: .day, in: .month, for: firstOfMonth)?.count ?? 30
+        _ = self.range(of: .day, in: .month, for: firstOfMonth)?.count ?? 30
         
         // 3) Определяме деня от седмицата на "първо число".
         //    В зависимост от Locale това може да е 1=Неделя, 2=Понеделник и т.н.
@@ -59,10 +43,6 @@ extension Calendar {
         
         return result
     }
-}
-
-extension Calendar {
-    /// Generate an array of 42 dates for a typical 6-row month grid
     func generateDatesForMonthGrid(for referenceDate: Date) -> [Date] {
         guard let monthStart = self.date(from: dateComponents([.year, .month], from: referenceDate)) else {
             return []
@@ -105,32 +85,4 @@ extension Calendar {
     }
 }
 
-extension Date {
-    func dateOnly(calendar: Calendar) -> Date {
-        let comps = calendar.dateComponents([.year, .month, .day], from: self)
-        return calendar.date(from: comps) ?? self
-    }
-}
 
-extension EKEventStore {
-    /// Fetch events in a given month, returning a [Date: [EKEvent]] dictionary
-    func fetchEventsByDay(for month: Date, calendar: Calendar) -> [Date: [EKEvent]] {
-        guard
-            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: month)),
-            let startOfNextMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)
-        else {
-            return [:]
-        }
-
-        let predicate = predicateForEvents(withStart: startOfMonth, end: startOfNextMonth, calendars: nil)
-        let foundEvents = events(matching: predicate)
-
-        var dict: [Date: [EKEvent]] = [:]
-        for ev in foundEvents {
-            let dayKey = calendar.startOfDay(for: ev.startDate)
-            dict[dayKey, default: []].append(ev)
-        }
-        return dict
-    }
-}
-extension Timer: @unchecked Sendable {}

@@ -5,7 +5,7 @@ import EventKitUI
 
 /// SwiftUI-обвивка за TwoWayPinnedWeekContainerView,
 /// която позволява извън него да се зададе дали да е Single-day или Multi-day.
-public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
+public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
 
     @Binding var fromDate: Date
     @Binding var toDate: Date
@@ -44,7 +44,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         let vc = UIViewController()
 
         // Нашият UIView
-        let container = TwoWayPinnedWeekContainerView()
+        let container = TwoWayPinnedMultiDayContainerView()
 
         // Настройваме дали да е single-day или multi-day
         container.showSingleDay = isSingleDay
@@ -118,8 +118,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     // MARK: - updateUIViewController
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         guard let container = uiViewController.view.subviews
-                .first(where: { $0 is TwoWayPinnedWeekContainerView })
-                as? TwoWayPinnedWeekContainerView else {
+                .first(where: { $0 is TwoWayPinnedMultiDayContainerView })
+                as? TwoWayPinnedMultiDayContainerView else {
             return
         }
 
@@ -161,9 +161,9 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
 
     // MARK: - Coordinator (EKEventEditViewDelegate)
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
-        let parent: TwoWayPinnedWeekWrapper
+        let parent: TwoWayPinnedMultiDayWrapper
 
-        init(_ parent: TwoWayPinnedWeekWrapper) {
+        init(_ parent: TwoWayPinnedMultiDayWrapper) {
             self.parent = parent
         }
 

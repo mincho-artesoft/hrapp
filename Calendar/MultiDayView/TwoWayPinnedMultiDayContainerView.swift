@@ -1,7 +1,7 @@
 import UIKit
 import CalendarKit
 
-public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
+public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate {
 
     // Размери
     private let navBarHeight: CGFloat = 60
@@ -54,7 +54,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
     public let allDayView = AllDayViewNonOverlapping()
 
     public let mainScrollView = UIScrollView()
-    public let weekView = WeekTimelineViewNonOverlapping()
+    public let weekView = MultiDayTimelineViewNonOverlapping()
 
     // Callbacks
     public var onRangeChange: ((Date, Date) -> Void)?

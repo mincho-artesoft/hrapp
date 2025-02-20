@@ -105,7 +105,7 @@ struct MonthCalendarView: View {
         // но този път използваме TwoWayPinnedWeekWrapper вместо CalendarKit DayViewController.
         .fullScreenCover(item: $selectedDayForFullScreen) { day in
             NavigationView {
-                TwoWayPinnedWeekWrapper(
+                TwoWayPinnedMultiDayWrapper(
                     fromDate: .constant(day),   // искаме еднодневен изглед
                     toDate: .constant(day),     // => от day до day
                     events: $pinnedDayEvents,   // данните, които ще заредим за този ден

@@ -253,7 +253,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             }
             
             // Проверка къде драгваме – ако е над Timeline, показваме 10‑мин marker:
-            guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
             let dropLocationInContainer = gesture.location(in: container)
             
             if container.weekView.frame.contains(dropLocationInContainer) {
@@ -275,7 +275,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             setScrollsClipping(enabled: true)
             
             // 1) Намираме контейнера
-            guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else {
+            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else {
                 // Ако няма container, връщаме на старо място
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
@@ -352,7 +352,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     // MARK: - Помощни (Snap / Marker)
     
     private func setSingle10MinuteMarkFromDate(_ date: Date) {
-        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         let hoursColumn = container.hoursColumnView
         
         let cal = Calendar.current
@@ -387,7 +387,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     }
     
     private func clear10MinuteMark() {
-        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         container.hoursColumnView.selectedMinuteMark = nil
         container.hoursColumnView.setNeedsDisplay()
     }
@@ -491,7 +491,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     // MARK: - Scroll Clipping
     
     private func setScrollsClipping(enabled: Bool) {
-        guard let container = self.superview?.superview as? TwoWayPinnedWeekContainerView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         container.allDayScrollView.clipsToBounds = enabled
     }
 }
