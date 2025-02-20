@@ -18,7 +18,7 @@ class CalendarViewModel: ObservableObject {
         // Listen for system notifications that the store changed
         NotificationCenter.default.publisher(for: .EKEventStoreChanged)
             .sink { _ in 
-                print("CalendarViewModel sink")
+//                print("CalendarViewModel sink")
             }
             .store(in: &cancellables)
     }

@@ -365,8 +365,14 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let loc = gesture.location(in: self)
             originalFrameForDraggedEvent = evView.frame
             dragOffset = CGPoint(x: loc.x - evView.frame.minX, y: loc.y - evView.frame.minY)
-
+            
+            // Ако събитието е многодневно, проверяваме дали е разположено в повече от 1 ден.
             if let multi = descriptor as? EKMultiDayWrapper {
+                let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                let lastDayIndex = dayIndexFor(multi.realEvent.endDate)
+                if firstDayIndex != lastDayIndex {
+                    print("Драгвате многодневен евент: \(multi.realEvent.eventIdentifier)")
+                }
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multi.realEvent.eventIdentifier
                 for (otherView, otherDesc) in eventViewToDescriptor {
@@ -376,7 +382,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
-
+            
         case .changed:
             guard let offset = dragOffset else { return }
             let loc = gesture.location(in: self)
@@ -546,6 +552,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 eventView.updateWithDescriptor(event: desc)
             }
             currentlyEditedEventView = eventView
+
+            // Ако драгвате долната част (resize handle с isTop == false) на многодневен евент, принтираме.
+            if !isTop, let multi = desc as? EKMultiDayWrapper {
+                let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                let lastDayIndex = dayIndexFor(multi.realEvent.endDate)
+                if firstDayIndex != lastDayIndex {
+                    print("Драгвате последната част от многодневен евент: \(multi.realEvent.eventIdentifier)")
+                }
+            }
 
             let ghost = EventView()
             ghost.updateWithDescriptor(event: desc)

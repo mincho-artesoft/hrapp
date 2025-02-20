@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		504D17D12D678413006E5D6E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 504D17D02D678413006E5D6E /* FSCalendar */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		50B212702D41131C00ABB8D3 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,17 +27,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504D17D12D678413006E5D6E /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		504D17CF2D678413006E5D6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		50B212422D4111B800ABB8D3 = {
 			isa = PBXGroup;
 			children = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
 				50B212702D41131C00ABB8D3 /* Calendar.app */,
+				504D17CF2D678413006E5D6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,6 +70,7 @@
 			);
 			name = Calendar;
 			packageProductDependencies = (
+				504D17D02D678413006E5D6E /* FSCalendar */,
 			);
 			productName = Calendar;
 			productReference = 50B212702D41131C00ABB8D3 /* Calendar.app */;
@@ -127,6 +141,7 @@
 			mainGroup = 50B212422D4111B800ABB8D3;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				504D17CE2D6783EC006E5D6E /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 50B212422D4111B800ABB8D3;
@@ -362,6 +377,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		504D17CE2D6783EC006E5D6E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		504D17D02D678413006E5D6E /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 504D17CE2D6783EC006E5D6E /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50B212432D4111B800ABB8D3 /* Project object */;
 }

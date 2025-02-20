@@ -19,7 +19,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     fileprivate let leftColumnWidth: CGFloat = 70
 
     // Двата UIDatePicker-а (за избор на диапазона)
-    private let fromDatePicker = UIDatePicker()
+        private let fromDatePicker = UIDatePicker()
     private let toDatePicker   = UIDatePicker()
 
     // Бутон (три точки) за менюто (Single/Multiple)
