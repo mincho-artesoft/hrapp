@@ -1,17 +1,28 @@
 import UIKit
 
+/**
+ Контейнер, който включва:
+ - Навигационна лента (двата DatePicker-а + бутон меню)
+ - DaysHeaderView (хоризонтален)
+ - Колона за часове (HoursColumnView, вертикално)
+ - AllDayViewNonOverlapping (скролируем all-day)
+ - MultiDayTimelineViewNonOverlapping (главен scroll за часовете).
+
+ Целта е да се „пине“ колоната за часове (отляво) и дните (отгоре),
+ докато останалите секции се скролват по оста X и/или Y.
+ */
 public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate {
 
     // Размери
-    private let navBarHeight: CGFloat = 60
-    private let daysHeaderHeight: CGFloat = 40
-    private let leftColumnWidth: CGFloat = 70
+    fileprivate let navBarHeight: CGFloat = 60
+    fileprivate let daysHeaderHeight: CGFloat = 40
+    fileprivate let leftColumnWidth: CGFloat = 70
 
-    // Двата UIDatePicker-а
+    // Двата UIDatePicker-а (за избор на диапазона)
     private let fromDatePicker = UIDatePicker()
     private let toDatePicker   = UIDatePicker()
 
-    // Бутон (три точки) за менюто
+    // Бутон (три точки) за менюто (Single/Multiple)
     private let menuButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
@@ -19,39 +30,42 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         return btn
     }()
 
-    // MARK: - Публично свойство, което указва дали да е single-day
-    // При промяна на showSingleDay динамично опресняваме менюто и layout-а.
+    /// Флаг дали да показваме single-day режим (скриваме toDatePicker)
     public var showSingleDay: Bool = false {
         didSet {
-            // Крием toDatePicker, ако сме single
+            // Крием toDatePicker, ако е single
             toDatePicker.isHidden = showSingleDay
 
-            // Ако вече сме single, приравняваме toDate = fromDate,
-            // за да не се разминават датите
+            // Ако сме single, приравняваме toDate = fromDate
             if showSingleDay {
                 toDate = fromDate
             }
 
-            // Подновяваме менюто (iOS 14+), за да се покаже отметката правилно
+            // iOS 14+: обновяваме UIMenu
             if #available(iOS 14.0, *) {
                 menuButton.menu = buildMenu()
             }
 
-            // Пренареждаме
             setNeedsLayout()
         }
     }
 
-    private let cornerView = UIView()
-    private let daysHeaderScrollView = UIScrollView()
-    private let daysHeaderView = DaysHeaderView()
-    private let hoursColumnScrollView = UIScrollView()
+    // Горен ляв ъгъл (сиво квадратче)
+    fileprivate let cornerView = UIView()
+    // DaysHeaderView + неговия Scroll
+    fileprivate let daysHeaderScrollView = UIScrollView()
+    fileprivate let daysHeaderView = DaysHeaderView()
+
+    // Колоната с часове + неговия Scroll
+    fileprivate let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
 
+    // All-day зона
     public let allDayTitleLabel = UILabel()
     public let allDayScrollView = UIScrollView()
     public let allDayView = AllDayViewNonOverlapping()
 
+    // Главен скрол за часовете (MultiDayTimelineViewNonOverlapping)
     public let mainScrollView = UIScrollView()
     public let weekView = MultiDayTimelineViewNonOverlapping()
 
@@ -87,7 +101,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
 
-    // Дати (първи и последен), обхванати от изгледа
+    // Дати (първи и последен)
     public var fromDate: Date = Date() {
         didSet {
             daysHeaderView.fromDate = fromDate
@@ -95,8 +109,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             weekView.fromDate = fromDate
             fromDatePicker.date = fromDate
 
-            // Ако сме single и вече разминаваме from/to,
-            // приравняваме toDate
+            // Ако сме single
             if showSingleDay {
                 toDate = fromDate
             }
@@ -115,11 +128,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
 
-    // Таймер за презареждане
+    // Таймер за презареждане всяка минута (за актуалната червена линия)
     private var redrawTimer: Timer?
 
     // За двоен pass при layoutSubviews()
-    private var isInSecondPass = false
+    fileprivate var isInSecondPass = false
 
     // MARK: - ИНИЦИАЛИЗАЦИЯ
     public override init(frame: CGRect) {
@@ -134,7 +147,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         startRedrawTimer()
     }
 
-    
     deinit {
         redrawTimer?.invalidate()
     }
@@ -148,12 +160,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         mainScrollView.delegate = self
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
-        mainScrollView.addSubview(weekView)
         mainScrollView.bounces = false
+        mainScrollView.addSubview(weekView)
         mainScrollView.layer.zPosition = 0
         addSubview(mainScrollView)
 
-        // 2) AllDay скрол + allDayView
+        // 2) AllDay (scroll + view)
         allDayScrollView.showsHorizontalScrollIndicator = false
         allDayScrollView.showsVerticalScrollIndicator = true
         allDayScrollView.alwaysBounceHorizontal = false
@@ -163,18 +175,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         allDayScrollView.layer.zPosition = 1
         addSubview(allDayScrollView)
 
-        // 3) Закрепените зони: колоната за часовете + header за дните
+        // 3) Фиксирани зони: колоната за часове + header за дните
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
-        hoursColumnScrollView.layer.zPosition = 2
         hoursColumnScrollView.addSubview(hoursColumnView)
+        hoursColumnScrollView.layer.zPosition = 2
         addSubview(hoursColumnScrollView)
 
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
         daysHeaderScrollView.isScrollEnabled = false
         daysHeaderScrollView.backgroundColor = .secondarySystemBackground
-        daysHeaderScrollView.layer.zPosition = 3
         daysHeaderScrollView.addSubview(daysHeaderView)
+        daysHeaderScrollView.layer.zPosition = 3
         addSubview(daysHeaderScrollView)
 
         cornerView.backgroundColor = .secondarySystemBackground
@@ -243,7 +255,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
 
-    // MARK: - Създаване на меню (iOS 14+)
+    // MARK: - Меню (iOS14+) и legacy (ActionSheet)
     @available(iOS 14.0, *)
     private func buildMenu() -> UIMenu {
         let singleAction = UIAction(
@@ -261,7 +273,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         return UIMenu(title: "", children: [singleAction, multiAction])
     }
 
-    // < iOS 14
     @objc private func legacyMenuTapped() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Single day", style: .default, handler: { [weak self] _ in
@@ -278,7 +289,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
 
-    // MARK: - Действия при промяна на DatePickers
+    // MARK: - Actions при DatePicker промени
     @objc private func didPickFromDate(_ sender: UIDatePicker) {
         if sender.date > toDate {
             toDate = sender.date
@@ -307,7 +318,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         if let navBar = subviews.first(where: { $0.frame.origin == .zero && $0.bounds.height == navBarHeight }) {
             navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
 
-            // Бутонът горе вдясно
+            // Бутонът (три точки) горе вдясно
             let buttonSize: CGFloat = 40
             menuButton.frame = CGRect(
                 x: navBar.bounds.width - buttonSize - 8,
@@ -316,8 +327,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
                 height: buttonSize
             )
 
-            // Ако сме single-day: центрираме fromDatePicker, крием toDatePicker
+            // Single vs. Multi
             if showSingleDay {
+                // Центрираме fromDatePicker
                 let pickerW: CGFloat = 160
                 let pickerH: CGFloat = 40
                 fromDatePicker.frame = CGRect(
@@ -328,7 +340,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
                 )
                 toDatePicker.frame = .zero
             } else {
-                // Multi-day
                 let marginX: CGFloat = 8
                 let pickerW: CGFloat = 160
                 fromDatePicker.frame = CGRect(
@@ -357,13 +368,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             height: daysHeaderHeight
         )
 
-        // Колко дни?
+        // Брой дни?
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
         let toOnly   = cal.startOfDay(for: toDate)
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
 
-        // Колона (width)
+        // Изчисляваме колонната ширина
         let availableWidth = bounds.width - leftColumnWidth
         if dayCount < 4 {
             let newDayColumnWidth = availableWidth / CGFloat(dayCount)
@@ -376,13 +387,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             allDayView.dayColumnWidth = 100
         }
 
-        // daysHeader view
+        // daysHeaderView
         let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalDaysHeaderWidth, height: daysHeaderHeight)
 
         // All-day
         let allDayY = yMain + daysHeaderHeight
+
+        // >>>>>>>>>>>>>>> 1) ЗАПОМНЯМЕ OFFSET ТУК
+        let oldOffset = allDayScrollView.contentOffset
+
         let allDayH = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
 
@@ -394,11 +409,24 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             height: allDayH
         )
 
-        let scrollViewWidth = allDayScrollView.frame.width
-        allDayScrollView.contentSize = CGSize(width: scrollViewWidth, height: allDayFullH)
+        // Променяме contentSize
+        allDayScrollView.contentSize = CGSize(
+            width: allDayScrollView.frame.width,
+            height: allDayFullH
+        )
 
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
+
+        // >>>>>>>>>>>>>>> 2) ВРЪЩАМЕ OFFSET
+        let maxOffsetY = max(0, allDayScrollView.contentSize.height - allDayScrollView.bounds.height)
+        var newOffset = oldOffset
+        if newOffset.y < 0 {
+            newOffset.y = 0
+        } else if newOffset.y > maxOffsetY {
+            newOffset.y = maxOffsetY
+        }
+        allDayScrollView.setContentOffset(newOffset, animated: false)
 
         // HoursColumn + mainScrollView
         let hoursColumnY = allDayY + allDayH
@@ -443,7 +471,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
 
         bringSubviewToFront(allDayTitleLabel)
 
-        // Двоен pass, ако allDayView промени височина
+        // Двоен pass, ако allDayView промени височината
         allDayView.layoutIfNeeded()
         let newH = allDayView.desiredHeight()
         let newCH = allDayView.contentHeight
@@ -463,6 +491,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
 
+    // MARK: - ScrollView Delegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
             let offsetX = scrollView.contentOffset.x
@@ -473,6 +502,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
 
+    // MARK: - Timer за презареждане всяка минута
     private func startRedrawTimer() {
         redrawTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
             Task { @MainActor in
@@ -483,5 +513,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
                 self.allDayView.setNeedsLayout()
             }
         }
+    }
+
+    // MARK: - Публичен метод за refresh
+    public func refreshLayouts() {
+        // Така, ако някъде извикате `.refreshLayouts()`,
+        // няма да получавате грешката "no member refreshLayouts".
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }
