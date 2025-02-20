@@ -1,41 +1,53 @@
-//import SwiftUI
-//
-//struct ContentView: View {
-//    @State private var isShowingPicker = false
-//    @State private var selectedStartDate: Date? = nil
-//    @State private var selectedEndDate: Date? = nil
-//    
-//    var body: some View {
-//        VStack(spacing: 20) {
-//            if let start = selectedStartDate, let end = selectedEndDate {
-//                Text("Избрани дати:")
-//                Text("Начало: \(start, formatter: dateFormatter)")
-//                Text("Край: \(end, formatter: dateFormatter)")
-//            } else {
-//                Text("Няма избрани дати")
-//            }
-//            
-//            Button("Избери диапазон от дати") {
-//                isShowingPicker.toggle()
-//            }
-//        }
-//        .sheet(isPresented: $isShowingPicker) {
-//            NavigationView {
-//                CalendarDateRangePickerWrapper { start, end in
-//                    self.selectedStartDate = start
-//                    self.selectedEndDate = end
-//                }
-//                .navigationBarTitle("Избери дати", displayMode: .inline)
-//                .navigationBarItems(leading: Button("Отказ") {
-//                    isShowingPicker = false
-//                })
-//            }
-//        }
-//    }
-//}
-//
-//private let dateFormatter: DateFormatter = {
-//    let formatter = DateFormatter()
-//    formatter.dateStyle = .medium
-//    return formatter
-//}()
+import SwiftUI
+
+struct ContentView: View {
+    @State private var isShowingPicker = false
+    
+    // Примерно държим избора в @State:
+    @State private var selectedStartDate: Date? = Date() // днес
+    @State private var selectedEndDate: Date? = Calendar.current.date(byAdding: .day, value: 7, to: Date())
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Button(action: {
+                isShowingPicker.toggle()
+            }) {
+                // Ако имаме дати:
+                if let start = selectedStartDate, let end = selectedEndDate {
+                    // Ако съвпадат, показваме само един ден
+                    if Calendar.current.isDate(start, inSameDayAs: end) {
+                        Text("Избран ден: \(start, formatter: dateFormatter)")
+                    } else {
+                        VStack(spacing: 5) {
+                            Text("Избран диапазон:")
+                            Text("Начало: \(start, formatter: dateFormatter)")
+                            Text("Край: \(end, formatter: dateFormatter)")
+                        }
+                    }
+                } else {
+                    Text("Избери ден или диапазон от дати")
+                }
+            }
+            .sheet(isPresented: $isShowingPicker) {
+                CalendarDateRangePickerWrapper(
+                    startDate: selectedStartDate,
+                    endDate: selectedEndDate,
+                    // По желание minDate, maxDate, etc.
+                    selectedColor: UIColor.systemGreen,
+                    titleText: "Моите дати"
+                ) { start, end in
+                    // onComplete:
+                    self.selectedStartDate = start
+                    self.selectedEndDate = end
+                }
+            }
+        }
+        .padding()
+    }
+}
+
+private let dateFormatter: DateFormatter = {
+    let f = DateFormatter()
+    f.dateStyle = .medium
+    return f
+}()
