@@ -447,24 +447,49 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                     || parent1Class == "WeekTimelineViewNonOverlapping"
                     || parent2Class == "WeekTimelineViewNonOverlapping"
                 {
-                    // Остава в timeline
-                    if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
+                    if topInContainer.y < container.allDayScrollView.frame.maxY {
+                        var newFrame = evView.frame
+                        let loc = gesture.location(in: self)
+                        guard let offset = dragOffset else { return }
+                        newFrame.origin.x = loc.x - offset.x
+                        newFrame.origin.y = loc.y - offset.y
+                        var bottomFrame = newFrame
+                        bottomFrame.origin.y = newFrame.maxY - 1
+                        bottomFrame.size.height = 1
                         let oldDuration = descriptor.dateInterval.duration
-                        let snapped = snapToNearest10Min(newDateRaw)
-                        descriptor.isAllDay = false
-                        descriptor.dateInterval = DateInterval(
-                            start: snapped,
-                            end: snapped.addingTimeInterval(oldDuration)
-                        )
 
-                        // Принтиране при drop
-                        let startStr = Self.localFormatter.string(from: descriptor.dateInterval.start)
-                        let endStr   = Self.localFormatter.string(from: descriptor.dateInterval.end)
-                        print("Dropping event into timeline: start = \(startStr), end = \(endStr)")
+                        if let newEnd = dateFromFrame(bottomFrame) {
+                            // Сега newEnd считаме за краен час,
+                            // а старта е newEnd - старата продължителност
+                            let newStart = newEnd.addingTimeInterval(-oldDuration)
 
-                        container.weekView.onEventDragEnded?(descriptor, snapped, false)
-                    } else if let orig = originalFrameForDraggedEvent {
-                        evView.frame = orig
+                            // (може да изберете да сложите mark и на newEnd, ако желаете)
+                            setSingle10MinuteMarkFromDate(newEnd)
+
+                            let startStr = Self.localFormatter.string(from: newStart)
+                            let endStr   = Self.localFormatter.string(from: newEnd)
+                            print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
+                                 let oldDuration = descriptor.dateInterval.duration
+                                 let snapped = snapToNearest10Min(newStart)
+                                print("snap ",snapped)
+                                 descriptor.isAllDay = false
+                                 descriptor.dateInterval = DateInterval(start: snapped,
+                                                                        end: snapped.addingTimeInterval(oldDuration))
+                                 container.weekView.onEventDragEnded?(descriptor, snapped, false)
+                        }
+                     
+                    } else {
+                        // Остава в timeline
+                        if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
+                            let oldDuration = descriptor.dateInterval.duration
+                            let snapped = snapToNearest10Min(newDateRaw)
+                            descriptor.isAllDay = false
+                            descriptor.dateInterval = DateInterval(start: snapped,
+                                                                   end: snapped.addingTimeInterval(oldDuration))
+                            container.weekView.onEventDragEnded?(descriptor, snapped, false)
+                        } else if let orig = originalFrameForDraggedEvent {
+                            evView.frame = orig
+                        }
                     }
                 }
                 else if hitViewClass == "AllDayViewNonOverlapping"
