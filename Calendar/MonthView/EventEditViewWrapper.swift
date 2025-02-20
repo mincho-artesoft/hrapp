@@ -28,13 +28,14 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
-    class Coordinator: NSObject, EKEventEditViewDelegate {
+    class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
         let parent: EventEditViewWrapper
         
         init(_ parent: EventEditViewWrapper) {
             self.parent = parent
         }
         
+        @MainActor
         func eventEditViewController(_ controller: EKEventEditViewController,
                                      didCompleteWith action: EKEventEditViewAction) {
             // Когато потребителят натисне Done/Cancel, затваряме редактора

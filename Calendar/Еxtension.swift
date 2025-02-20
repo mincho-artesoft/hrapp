@@ -133,3 +133,4 @@ extension EKEventStore {
         return dict
     }
 }
+extension Timer: @unchecked Sendable {}

@@ -99,24 +99,22 @@ class CalendarViewModel: ObservableObject {
     }
 
     /// Ask for permission (if .notDetermined)
+    @MainActor
     func requestCalendarAccessIfNeeded(completion: @escaping () -> Void) {
         let status = EKEventStore.authorizationStatus(for: .event)
         if status == .notDetermined {
             if #available(iOS 17.0, *) {
                 eventStore.requestFullAccessToEvents { _, _ in
-                    DispatchQueue.main.async {
-                        completion()
-                    }
+                    completion()
                 }
             } else {
                 eventStore.requestAccess(to: .event) { _, _ in
-                    DispatchQueue.main.async {
-                        completion()
-                    }
+                    completion()
                 }
             }
         } else {
             completion()
         }
     }
+
 }

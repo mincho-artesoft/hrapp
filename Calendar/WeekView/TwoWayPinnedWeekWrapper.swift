@@ -160,7 +160,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
     }
 
     // MARK: - Coordinator (EKEventEditViewDelegate)
-    public class Coordinator: NSObject, EKEventEditViewDelegate {
+    public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
         let parent: TwoWayPinnedWeekWrapper
 
         init(_ parent: TwoWayPinnedWeekWrapper) {
@@ -168,6 +168,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
         }
 
         // Делегатен метод на EKEventEditViewController
+        @MainActor
         public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction) {
             controller.dismiss(animated: true) {
@@ -175,6 +176,8 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
+
+        @MainActor
         public func reloadCurrentRange() {
             let cal = Calendar.current
             let fromOnly = cal.startOfDay(for: parent.fromDate)
@@ -233,6 +236,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             return results
         }
 
+        @MainActor
         func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
             let editVC = EKEventEditViewController()
             editVC.eventStore = parent.eventStore
@@ -241,6 +245,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             parentVC.present(editVC, animated: true)
         }
 
+        @MainActor
         func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = "New event"
@@ -250,6 +255,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             presentSystemEditor(newEvent, in: parentVC)
         }
 
+        @MainActor
         func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = "All-day event"
@@ -260,6 +266,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             presentSystemEditor(newEvent, in: parentVC)
         }
 
+        @MainActor
         func handleEventDragOrResize(descriptor: EventDescriptor, newDate: Date, isResize: Bool, isAllDay: Bool) {
             // Проверяваме кой wrapper имаме
             if let multi = descriptor as? EKMultiDayWrapper {
@@ -287,6 +294,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
+        @MainActor
         func askUserForRecurring(event: EKEvent, newDate: Date, isResize: Bool) {
             let alert = UIAlertController(
                 title: "Recurring Event",
@@ -320,6 +328,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             }
         }
 
+        @MainActor
         func applyDragChanges(_ event: EKEvent, newStartDate: Date, span: EKSpan, isAllDay: Bool) {
             guard let oldStart = event.startDate, let oldEnd = event.endDate else { return }
             if isAllDay {
@@ -339,6 +348,7 @@ public struct TwoWayPinnedWeekWrapper: UIViewControllerRepresentable {
             reloadCurrentRange()
         }
 
+        @MainActor
         func applyResizeChanges(_ event: EKEvent,
                                 descriptor: EventDescriptor?,
                                 forcedNewDate: Date,

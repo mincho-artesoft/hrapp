@@ -135,6 +135,7 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
         startRedrawTimer()
     }
 
+    
     deinit {
         redrawTimer?.invalidate()
     }
@@ -475,11 +476,13 @@ public final class TwoWayPinnedWeekContainerView: UIView, UIScrollViewDelegate {
 
     private func startRedrawTimer() {
         redrawTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
-            self.setNeedsLayout()
-            self.layoutIfNeeded()
-            self.weekView.setNeedsDisplay()
-            self.allDayView.setNeedsLayout()
+            Task { @MainActor in
+                guard let self = self else { return }
+                self.setNeedsLayout()
+                self.layoutIfNeeded()
+                self.weekView.setNeedsDisplay()
+                self.allDayView.setNeedsLayout()
+            }
         }
     }
 }
