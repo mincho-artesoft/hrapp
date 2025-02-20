@@ -383,7 +383,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                 let newEnd = newStart.addingTimeInterval(oldDuration)
                 let startStr = Self.localFormatter.string(from: newStart)
                 let endStr   = Self.localFormatter.string(from: newEnd)
-                print("Dragging event... (TOP visible) start = \(startStr), end = \(endStr)")
+//                print("Dragging event... (TOP visible) start = \(startStr), end = \(endStr)")
 
             } else {
                 // 2) Горната част е извън, но ако долната част е още в полето (например > 0)
@@ -406,7 +406,7 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
 
                         let startStr = Self.localFormatter.string(from: newStart)
                         let endStr   = Self.localFormatter.string(from: newEnd)
-                        print("Dragging event... (BOTTOM) start = \(startStr), end = \(endStr)")
+//                        print("Dragging event... (BOTTOM) start = \(startStr), end = \(endStr)")
                     }
                 }
             }
@@ -471,7 +471,6 @@ public final class WeekTimelineViewNonOverlapping: UIView, UIGestureRecognizerDe
                             print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
                                  let oldDuration = descriptor.dateInterval.duration
                                  let snapped = snapToNearest10Min(newStart)
-                                print("snap ",snapped)
                                  descriptor.isAllDay = false
                                  descriptor.dateInterval = DateInterval(start: snapped,
                                                                         end: snapped.addingTimeInterval(oldDuration))
