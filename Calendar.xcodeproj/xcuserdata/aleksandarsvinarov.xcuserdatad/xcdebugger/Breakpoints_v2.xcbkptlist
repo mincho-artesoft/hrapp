@@ -78,8 +78,8 @@
             filePath = "Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "handleEventViewPan(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "549"
-            endingLineNumber = "549"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
             landmarkName = "handleEventViewPan(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,8 +110,8 @@
             filePath = "Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "handleEventViewPan(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,56 +126,10 @@
             filePath = "Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "559"
-            endingLineNumber = "559"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "handleEventViewPan(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B01C6036-F7D2-48FC-A3A3-68C8F087DCE9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
-            landmarkName = "handleEventViewPan(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B01C6036-F7D2-48FC-A3A3-68C8F087DCE9 - 447e17adbae245c2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calendar.MultiDayTimelineViewNonOverlapping.handleEventViewPan(__C.UIPanGestureRecognizer) -&gt; ()"
-                  moduleName = "Calendar.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandarsvinarov/Desktop/Repo/hrapp/Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "430"
-                  endingLineNumber = "430">
-               </Location>
-               <Location
-                  uuid = "B01C6036-F7D2-48FC-A3A3-68C8F087DCE9 - 447e17adbae242ca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Calendar.MultiDayTimelineViewNonOverlapping.handleEventViewPan(__C.UIPanGestureRecognizer) -&gt; ()"
-                  moduleName = "Calendar.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandarsvinarov/Desktop/Repo/hrapp/Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "438"
-                  endingLineNumber = "438">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
