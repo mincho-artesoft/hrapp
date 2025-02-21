@@ -3,8 +3,8 @@
 //  CalendarKit
 //
 //  Modified to avoid overlapping events, support drag/drop, resizing,
-//  and now when dragging a multi-day event, each day's ghost
-//  visually stretches to the event's total duration.
+//  now makes the original event partially transparent (alpha = 0.3)
+//  during dragging instead of completely hiding it.
 //
 
 import UIKit
@@ -55,12 +55,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     // MARK: - Editing / Drag & Drop / Resize
     private var currentlyEditedEventView: EventView?
 
-    // GHOSTS used while dragging
+    // GHOSTS used while dragging (one ghost per day piece)
     private var draggingGhosts: [EventView: EventView] = [:]
 
-    // We also keep a struct to store the original bounding times
-    // for the real event (especially multi-day).
+    // We also keep a struct to store the original bounding times for multi-day drag.
     private let DRAG_DATA_KEY = "DragDataKey"
+
+    // Used to remember original alpha for each event piece while dragging
+    // so we can restore it once the drag ends.
+    private var draggingOriginalAlphas: [EventView : CGFloat] = [:] // CHANGED/ADDED
 
     // Resizing uses a single ghostView
     private var ghostView: EventView?
@@ -141,10 +144,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
-        // Hide all old event views first
+
+        // 1) Hide all existing event views first
         for v in eventViews {
             v.isHidden = true
         }
+
+        // 2) Layout the current list of events
         layoutRegularEvents()
     }
 
@@ -247,6 +253,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         for ev in columnEvents {
             let evStart = ev.descriptor.dateInterval.start
             let evEnd   = ev.descriptor.dateInterval.end
+            // overlap if (evStart < candEnd) AND (candStart < evEnd)
             if evStart < candEnd && candStart < evEnd {
                 return true
             }
@@ -347,12 +354,12 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     /// For dragging a multi-day event so each day’s ghost can show the
     /// *full bounding range* (e.g. 53 hours total).
     private struct DragData {
-        let originalBoundingStart: Date   // The earliest start of the entire multi-day event
-        let originalBoundingEnd: Date     // The latest end
-        let totalDuration: TimeInterval   // e.g. 53 hours
-        let startGlobalPoint: CGPoint     // where the gesture began
-        let anchorDayY: CGFloat          // the local Y of the day piece we actually grabbed
-        let anchorDate: Date             // the date/time for the top of day piece we grabbed
+        let originalBoundingStart: Date
+        let originalBoundingEnd: Date
+        let totalDuration: TimeInterval
+        let startGlobalPoint: CGPoint
+        let anchorDayY: CGFloat
+        let anchorDate: Date
     }
 
     // MARK: - Pan (drag) the whole event
@@ -372,8 +379,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             // Turn off clipping so we can drag out of bounds
             setScrollsClipping(enabled: false)
 
-            // Gather the bounding start/end for the entire real event
-            // If multi-day, use realEvent start/end. If single-day, it’s just dateInterval
+            // Gather bounding start/end (multi-day uses real event range, single-day uses dateInterval)
             let realStart: Date
             let realEnd: Date
             if let multi = descriptor as? EKMultiDayWrapper {
@@ -387,17 +393,11 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
 
             let startGlobal = gesture.location(in: self.window)
 
-            // We'll treat the "anchorDate" as the top date of the piece we grabbed,
-            // i.e. descriptor.dateInterval.start for that piece.
-            // That way the user sees the correct "snap" if they drag a bit up or down.
+            // We'll treat the "anchorDate" as the top date of the piece we grabbed
             let anchorDate = descriptor.dateInterval.start
-
-            // The local Y of the grabbed event's top inside our view
-            // (so we can maintain the same vertical offset for the ghost)
             let anchorDayY = evView.frame.minY
 
-            // Create ghost copies: we find all day pieces that belong to the same real event
-            // (for single-day, that’s just this one).
+            // Find all day pieces for the same real event if multi-day
             var multiDayViews: [EventView] = []
             if let multi = descriptor as? EKMultiDayWrapper {
                 let eventID = multi.realEvent.eventIdentifier
@@ -412,17 +412,22 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
 
             draggingGhosts.removeAll()
+            // CHANGED/ADDED: Keep track of original alpha values
+            draggingOriginalAlphas.removeAll()
 
-            // Create a ghost for each piece we found
+            // Instead of hiding the originals, we make them partially transparent
             for realView in multiDayViews {
                 guard let realDesc = eventViewToDescriptor[realView] else { continue }
 
+                // Store original alpha and set new alpha
+                draggingOriginalAlphas[realView] = realView.alpha  // CHANGED/ADDED
+                realView.alpha = 0.0                                // CHANGED/ADDED
+
                 let ghost = createEventView()
                 ghost.updateWithDescriptor(event: realDesc)
-                ghost.alpha = 0.5
+                ghost.alpha = 1
                 addSubview(ghost)
                 ghost.isHidden = false
-                realView.isHidden = true
                 draggingGhosts[realView] = ghost
             }
 
@@ -441,37 +446,26 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let currGlobal = gesture.location(in: self.window)
             let diffY = currGlobal.y - d.startGlobalPoint.y
 
-            // We want to figure out the new boundingStart date based on how far we've dragged in "minutes"
-            // We'll see how many hours we moved from the anchor point
-            //  => 1 pixel in Y = 1/hourHeight hours
+            // how many hours we moved
             let movedHours = diffY / hourHeight
             let movedSeconds = movedHours * 3600
 
-            // new bounding start = originalBoundingStart + offset
-            // but we want to anchor it so that the piece we actually grabbed lines up properly.
-            // We'll do: the new top date for the piece we grabbed is anchorDate + movedSeconds
-            // Then the boundingStart is (originalBoundingStart + the same delta).
-            let anchorDelta = movedSeconds
-            let newBoundingStart = d.originalBoundingStart.addingTimeInterval(anchorDelta)
+            // new bounding start
+            let newBoundingStart = d.originalBoundingStart.addingTimeInterval(movedSeconds)
             let newBoundingEnd   = newBoundingStart.addingTimeInterval(d.totalDuration)
 
-            // Now update each ghost piece
+            // For each piece, show the full bounding range in that day
             for (realView, ghost) in draggingGhosts {
                 guard let realDesc = eventViewToDescriptor[realView] else { continue }
-                // For the day index of this piece, or better: we’ll build a frame
-                // that shows the ENTIRE bounding range for that piece’s day column:
-                // e.g. if it’s day i, we calculate local boundingStartHour = ( newBoundingStart - day i midnight ) in hours
-                // local boundingEndHour = local boundingStartHour + totalDuration in hours
-                // Then the ghost is from topMargin + localStartHour * hourHeight
-                // to topMargin + localEndHour * hourHeight (and we can keep the same day column X).
                 let dayIndex = dayIndexFor(realDesc.dateInterval.start)
-
                 let dayX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+
                 let localStartHour = hoursBetweenDayIndex(newBoundingStart, dayIndex: dayIndex)
                 let localEndHour   = localStartHour + CGFloat(d.totalDuration / 3600.0)
 
                 let yStart = topMargin + (localStartHour * hourHeight)
                 let yEnd   = topMargin + (localEndHour * hourHeight)
+
                 let ghostFrame = CGRect(
                     x: dayX,
                     y: yStart,
@@ -482,10 +476,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
 
             // Show a "time pointer" in the hours column for the user
-            // We'll pick, for example, the piece we are physically dragging, i.e. evView
-            // We'll do the top of that piece. That’s newBoundingStart for single-day,
-            // or for multi-day, we can do the top of this day piece => anchorDate + offset
-            let newTopForAnchorPiece = d.anchorDate.addingTimeInterval(anchorDelta)
+            let newTopForAnchorPiece = d.anchorDate.addingTimeInterval(movedSeconds)
             setSingle10MinuteMarkFromDate(newTopForAnchorPiece)
 
             // auto-scroll
@@ -497,80 +488,79 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             hoursColumnView?.selectedMinuteMark = nil
 
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else {
-                // Just remove ghosts
+                // If no data, just remove ghosts & restore alpha if needed
                 for (realView, ghost) in draggingGhosts {
                     ghost.removeFromSuperview()
-                    realView.isHidden = false
+                    // Restore alpha
+                    if let originalAlpha = draggingOriginalAlphas[realView] {
+                        realView.alpha = originalAlpha
+                    }
                 }
                 draggingGhosts.removeAll()
+                draggingOriginalAlphas.removeAll()
+                evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+                setNeedsLayout()
                 return
             }
 
-            // Where did we drop it?
+            let currGlobal = gesture.location(in: self.window)
+            let diffY = currGlobal.y - d.startGlobalPoint.y
+            let movedHours = diffY / hourHeight
+            let movedSeconds = movedHours * 3600
+
+            let finalBoundingStart = d.originalBoundingStart.addingTimeInterval(movedSeconds)
+            let finalBoundingEnd   = finalBoundingStart.addingTimeInterval(d.totalDuration)
+
             let locationInContainer = gesture.location(in: container)
             if let hitView = container.hitTest(locationInContainer, with: nil) {
                 let hitViewClass = String(describing: type(of: hitView))
                 let parent1Class = hitView.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 let parent2Class = hitView.superview?.superview.map { String(describing: type(of: $0)) } ?? "nil"
 
-                // For finalizing the new date/time:
-                // We know the new bounding start = originalBoundingStart + anchorDelta
-                // (computed in .changed). Let's compute it again easily from final offset:
-                let currGlobal = gesture.location(in: self.window)
-                let diffY = currGlobal.y - d.startGlobalPoint.y
-                let movedHours = diffY / hourHeight
-                let movedSeconds = movedHours * 3600
-                let finalBoundingStart = d.originalBoundingStart.addingTimeInterval(movedSeconds)
-                let finalBoundingEnd = finalBoundingStart.addingTimeInterval(d.totalDuration)
-
-                // For each real event piece, remove ghost, unhide real
+                // Remove ghosts & restore alphas
                 for (realView, ghost) in draggingGhosts {
                     ghost.removeFromSuperview()
-                    realView.isHidden = false
+                    if let originalAlpha = draggingOriginalAlphas[realView] {
+                        realView.alpha = originalAlpha // CHANGED/ADDED
+                    }
                 }
                 draggingGhosts.removeAll()
+                draggingOriginalAlphas.removeAll()
 
-                // If dropping on the main timeline
+                // Now finalize new date/time
                 if hitViewClass == "MultiDayTimelineViewNonOverlapping"
                     || parent1Class == "MultiDayTimelineViewNonOverlapping"
                     || parent2Class == "MultiDayTimelineViewNonOverlapping" {
 
-                    // Actually set descriptor's new time range
-                    // descriptor might be multi-day or single-day
-                    // We keep the entire bounding from finalBoundingStart .. finalBoundingEnd
-                    // Then call `onEventDragEnded`.
-                    let newStart = finalBoundingStart
-                    let isAllDay = false
-                    // If single-day event, we just do descriptor.dateInterval = ...
-                    // If multi, we still do the same for the partial, but your code
-                    // often updates the "realEvent" outside of this class. So we pass callback.
                     descriptor.isAllDay = false
-                    descriptor.dateInterval = DateInterval(start: newStart, end: finalBoundingEnd)
-                    onEventDragEnded?(descriptor, newStart, isAllDay)
+                    descriptor.dateInterval = DateInterval(start: finalBoundingStart,
+                                                           end: finalBoundingEnd)
+                    onEventDragEnded?(descriptor, finalBoundingStart, false)
                 }
-                // If dropping on all-day
                 else if hitViewClass == "AllDayViewNonOverlapping"
                         || parent1Class == "AllDayViewNonOverlapping"
                         || parent2Class == "AllDayViewNonOverlapping" {
-                    // Convert to all-day
-                    // We can pick dayIndex from the midX of the anchor piece or so.
                     if let dayIndex = dayIndexFromMidX(evView.frame.midX) {
                         onEventConvertToAllDay?(descriptor, dayIndex)
-                    } else {
-                        // fallback: do nothing
                     }
                 } else {
-                    // fallback: do nothing
+                    // Fallback => do nothing
                 }
             } else {
-                // No valid drop target => revert
+                // No valid drop => revert
                 for (realView, ghost) in draggingGhosts {
                     ghost.removeFromSuperview()
-                    realView.isHidden = false
+                    if let originalAlpha = draggingOriginalAlphas[realView] {
+                        realView.alpha = originalAlpha // CHANGED/ADDED
+                    }
                 }
                 draggingGhosts.removeAll()
+                draggingOriginalAlphas.removeAll()
             }
+
+            // We do not unhide it because we never hid it—just restore alpha after drop
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+            setNeedsLayout()
 
         default:
             break
@@ -634,6 +624,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             currentlyEditedEventView = eventView
 
+            // Create ghost
             let ghost = EventView()
             ghost.updateWithDescriptor(event: desc)
             ghost.alpha = 0.5
@@ -648,6 +639,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let originalH = eventView.frame.size.height
             ghost.frame = CGRect(x: dayX, y: originalY, width: dayColumnWidth, height: originalH)
 
+            // Hide the original event
             eventView.isHidden = true
 
             let startGlobal = gesture.location(in: self.window)
@@ -696,11 +688,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
 
             let finalFrame = ghost.frame
-            let desc = eventViewToDescriptor[eventView]
-            desc?.isAllDay = false
+            desc.isAllDay = false
 
-            if let newDateRaw = dateFromResize(finalFrame, isTop: d.isTop),
-               let descriptor = desc {
+            if let newDateRaw = dateFromResize(finalFrame, isTop: d.isTop) {
                 let snapped = snapToNearest10Min(newDateRaw)
                 var interval = d.startInterval
                 if d.isTop {
@@ -712,15 +702,16 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                         interval = DateInterval(start: interval.start, end: snapped)
                     }
                 }
-                descriptor.dateInterval = interval
-                onEventDragResizeEnded?(descriptor, snapped)
+                desc.dateInterval = interval
+                onEventDragResizeEnded?(desc, snapped)
             }
 
             ghost.removeFromSuperview()
             ghostView = nil
-            eventView.isHidden = false
-            setNeedsLayout()
+
+            // Re-show the original after layout pass
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+            setNeedsLayout()
 
         default:
             break
