@@ -215,7 +215,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
 
                     // Модифицирана логика за мулти-дневни събития:
                     if let multiEvent = attr.descriptor as? EKMultiDayWrapper {
-                        let calendar = Calendar.current
                         let firstDayIndex = dayIndexFor(multiEvent.realEvent.startDate)
                         let lastDayIndex  = dayIndexFor(multiEvent.realEvent.endDate)
                         if firstDayIndex == lastDayIndex {
@@ -428,6 +427,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
 //                    print("Драгвам Това е еднодневен евент (MultiDayWrapper), няма 'първа/средна/последна' част.")
                 } else {
                     if currentDayIndex == firstDayIndex {
+                        
+//                        if d.isTop {
+//                            f.origin.y += diffY
+//                            f.size.height -= diffY
+//                        } else {
+//                            f.size.height += diffY
+//                        }
 //                        print("Драгвам ПЪРВАТА част от многодневния евент.")
                     } else if currentDayIndex == lastDayIndex {
 //                        print("Драгвам ПОСЛЕДНАТА част от многодневния евент.")
@@ -572,13 +578,11 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                     var bottomFrame = newFrame
                                     bottomFrame.origin.y = newFrame.maxY - 1
                                     bottomFrame.size.height = 1
-                                    let oldDuration = descriptor.dateInterval.duration
                                     
                                     if let newEnd = dateFromFrame(bottomFrame) {
                                         let newStart = newEnd.addingTimeInterval(-totalDuration)
                                         setSingle10MinuteMarkFromDate(newEnd)
                                         
-                                        let oldDuration = descriptor.dateInterval.duration
                                         let snapped = snapToNearest10Min(newStart)
                                         descriptor.isAllDay = false
                                         descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(totalDuration))
@@ -664,7 +668,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
                 let lastDayIndex = dayIndexFor(multi.realEvent.endDate)
                 if firstDayIndex != lastDayIndex {
-                    print("Драгвате последната част от многодневен евент: \(multi.realEvent.eventIdentifier)")
+                    print("Драгвате последната част от многодневен евент: \(String(describing: multi.realEvent.eventIdentifier))")
                 }
             }
 
