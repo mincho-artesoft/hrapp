@@ -425,14 +425,14 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 
                 if firstDayIndex == lastDayIndex {
                  
-                    print("Драгвам Това е еднодневен евент (MultiDayWrapper), няма 'първа/средна/последна' част.")
+//                    print("Драгвам Това е еднодневен евент (MultiDayWrapper), няма 'първа/средна/последна' част.")
                 } else {
                     if currentDayIndex == firstDayIndex {
-                        print("Драгвам ПЪРВАТА част от многодневния евент.")
+//                        print("Драгвам ПЪРВАТА част от многодневния евент.")
                     } else if currentDayIndex == lastDayIndex {
-                        print("Драгвам ПОСЛЕДНАТА част от многодневния евент.")
+//                        print("Драгвам ПОСЛЕДНАТА част от многодневния евент.")
                     } else {
-                        print("Драгвам СРЕДНА част от многодневния евент.")
+//                        print("Драгвам СРЕДНА част от многодневния евент.")
                     }
                 }
             }
@@ -492,9 +492,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                     let newStart = newEnd.addingTimeInterval(-oldDuration)
                                     setSingle10MinuteMarkFromDate(newEnd)
                                     
-                                    let startStr = Self.localFormatter.string(from: newStart)
-                                    let endStr   = Self.localFormatter.string(from: newEnd)
-                                    //                                    print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
                                     let oldDuration = descriptor.dateInterval.duration
                                     let snapped = snapToNearest10Min(newStart)
                                     descriptor.isAllDay = false
@@ -517,9 +514,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                     let newStart = newEnd.addingTimeInterval(-oldDuration)
                                     setSingle10MinuteMarkFromDate(newEnd)
                                     
-                                    let startStr = Self.localFormatter.string(from: newStart)
-                                    let endStr   = Self.localFormatter.string(from: newEnd)
-//                                    print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
                                     let oldDuration = descriptor.dateInterval.duration
                                     let snapped = snapToNearest10Min(newStart)
                                     descriptor.isAllDay = false
@@ -540,36 +534,11 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                     bottomFrame.origin.y = newFrame.maxY - 1
                                     bottomFrame.size.height = 1
                                     let oldDuration = descriptor.dateInterval.duration
-                                    
+
                                     if let newEnd = dateFromFrame(bottomFrame) {
                                         let newStart = newEnd.addingTimeInterval(-oldDuration)
                                         setSingle10MinuteMarkFromDate(newEnd)
-                                        
-                                        let startStr = Self.localFormatter.string(from: newStart)
-                                        let endStr   = Self.localFormatter.string(from: newEnd)
-                                        //                                    print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
-                                        let oldDuration = descriptor.dateInterval.duration
-                                        let snapped = snapToNearest10Min(newStart)
-                                        descriptor.isAllDay = false
-                                        descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
-                                        container.weekView.onEventDragEnded?(descriptor, snapped, false)
-                                    }
-                                    
-                                } else {
-                                    var newFrame = evView.frame
-                                    let loc = gesture.location(in: self)
-                                    guard let offset = dragOffset else { return }
-                                    newFrame.origin.x = loc.x - offset.x
-                                    newFrame.origin.y = loc.y - offset.y
-                                    var bottomFrame = newFrame
-                                    bottomFrame.origin.y = newFrame.maxY - 1
-                                    bottomFrame.size.height = 1
-                                    let oldDuration = descriptor.dateInterval.duration
-                                    
-                                    if let newEnd = dateFromFrame(bottomFrame) {
-                                        let newStart = newEnd.addingTimeInterval(-oldDuration)
-                                        setSingle10MinuteMarkFromDate(newEnd)
-                                        
+
                                         let startStr = Self.localFormatter.string(from: newStart)
                                         let endStr   = Self.localFormatter.string(from: newEnd)
                                         print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
@@ -579,14 +548,22 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                         descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
                                         container.weekView.onEventDragEnded?(descriptor, snapped, false)
                                     }
+                                 
+                                } else {
+                                    if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
+                                        let oldDuration = descriptor.dateInterval.duration
+                                        let snapped = snapToNearest10Min(newDateRaw)
+                                        descriptor.isAllDay = false
+                                        descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
+                                        container.weekView.onEventDragEnded?(descriptor, snapped, false)
+                                    } else if let orig = originalFrameForDraggedEvent {
+                                        evView.frame = orig
+                                    }
                                 }
 
                                 print("Дропвам ПЪРВАТА част от многодневния евент.")
                             } else if currentDayIndex == lastDayIndex {
-                                if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
-                                    
                                     let totalDuration = multi.realEvent.endDate.timeIntervalSince(multi.realEvent.startDate)
-                                    
                                     var newFrame = evView.frame
                                     let loc = gesture.location(in: self)
                                     guard let offset = dragOffset else { return }
@@ -604,12 +581,10 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                         let oldDuration = descriptor.dateInterval.duration
                                         let snapped = snapToNearest10Min(newStart)
                                         descriptor.isAllDay = false
-                                        descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
+                                        descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(totalDuration))
                                         container.weekView.onEventDragEnded?(descriptor, snapped, false)
                                     }
                                     print("Дропвам ПОСЛЕДНАТА част от многодневния евент.")
-                                    
-                                }
                             } else {
                                 print("Дропвам СРЕДНА част от многодневния евент.")
                             }
