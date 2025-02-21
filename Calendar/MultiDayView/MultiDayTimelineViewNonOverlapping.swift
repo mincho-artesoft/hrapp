@@ -495,9 +495,10 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     } else if let orig = originalFrameForDraggedEvent {
                         evView.frame = orig
                     }
+                    
                 }
             }
-
+            hoursColumnView?.selectedMinuteMark = nil
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
