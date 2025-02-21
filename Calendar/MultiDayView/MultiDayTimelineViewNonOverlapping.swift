@@ -368,11 +368,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             
             // Ако събитието е многодневно, проверяваме дали е разположено в повече от 1 ден.
             if let multi = descriptor as? EKMultiDayWrapper {
-                let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
-                let lastDayIndex = dayIndexFor(multi.realEvent.endDate)
-                if firstDayIndex != lastDayIndex {
-                    print("Драгвате многодневен евент: \(multi.realEvent.eventIdentifier)")
-                }
+                
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multi.realEvent.eventIdentifier
                 for (otherView, otherDesc) in eventViewToDescriptor {
@@ -403,16 +399,27 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
 
             _ = descriptor.dateInterval.duration
 
-            if let newStart = dateFromFrame(newFrame) {
-                setSingle10MinuteMarkFromDate(newStart)
-            } else {
-                if newFrame.maxY > 0 {
-                    var bottomFrame = newFrame
-                    bottomFrame.origin.y = newFrame.maxY - 1
-                    bottomFrame.size.height = 1
+            if let multi = descriptor as? EKMultiDayWrapper {
+                let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
+                let currentDayIndex = dayIndexFor(descriptor.dateInterval.start)
+                
+                // Ако firstDayIndex == lastDayIndex => това реално е еднодневно,
+                // но все пак "опаковано" като многодневно.
+                if currentDayIndex == firstDayIndex || firstDayIndex == lastDayIndex {
+                    if let newStart = dateFromFrame(newFrame) {
+                        setSingle10MinuteMarkFromDate(newStart)
+                    }
+                } else {
+                    if currentDayIndex == lastDayIndex {
+                        var bottomFrame = newFrame
+                        bottomFrame.origin.y = newFrame.maxY - 1
+                        bottomFrame.size.height = 1
 
-                    if let newEnd = dateFromFrame(bottomFrame) {
-                        setSingle10MinuteMarkFromDate(newEnd)
+                        if let newEnd = dateFromFrame(bottomFrame) {
+                            setSingle10MinuteMarkFromDate(newEnd)
+                        }
+                    } else {
                     }
                 }
             }
@@ -449,40 +456,95 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     || parent1Class == "MultiDayTimelineViewNonOverlapping"
                     || parent2Class == "MultiDayTimelineViewNonOverlapping"
                 {
-                    if topInContainer.y < container.allDayScrollView.frame.maxY {
-                        var newFrame = evView.frame
-                        let loc = gesture.location(in: self)
-                        guard let offset = dragOffset else { return }
-                        newFrame.origin.x = loc.x - offset.x
-                        newFrame.origin.y = loc.y - offset.y
-                        var bottomFrame = newFrame
-                        bottomFrame.origin.y = newFrame.maxY - 1
-                        bottomFrame.size.height = 1
-                        let oldDuration = descriptor.dateInterval.duration
-
-                        if let newEnd = dateFromFrame(bottomFrame) {
-                            let newStart = newEnd.addingTimeInterval(-oldDuration)
-                            setSingle10MinuteMarkFromDate(newEnd)
-
-                            let startStr = Self.localFormatter.string(from: newStart)
-                            let endStr   = Self.localFormatter.string(from: newEnd)
-                            print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
-                            let oldDuration = descriptor.dateInterval.duration
-                            let snapped = snapToNearest10Min(newStart)
-                            descriptor.isAllDay = false
-                            descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
-                            container.weekView.onEventDragEnded?(descriptor, snapped, false)
-                        }
-                     
-                    } else {
-                        if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
-                            let oldDuration = descriptor.dateInterval.duration
-                            let snapped = snapToNearest10Min(newDateRaw)
-                            descriptor.isAllDay = false
-                            descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
-                            container.weekView.onEventDragEnded?(descriptor, snapped, false)
-                        } else if let orig = originalFrameForDraggedEvent {
-                            evView.frame = orig
+                    if let multi = descriptor as? EKMultiDayWrapper {
+                        let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                        let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
+                        let currentDayIndex = dayIndexFor(descriptor.dateInterval.start)
+                        
+                        // Ако firstDayIndex == lastDayIndex => това реално е еднодневно,
+                        // но все пак "опаковано" като многодневно.
+                        if currentDayIndex == firstDayIndex || firstDayIndex == lastDayIndex {
+                            if topInContainer.y < container.allDayScrollView.frame.maxY {
+                                var newFrame = evView.frame
+                                let loc = gesture.location(in: self)
+                                guard let offset = dragOffset else { return }
+                                newFrame.origin.x = loc.x - offset.x
+                                newFrame.origin.y = loc.y - offset.y
+                                var bottomFrame = newFrame
+                                bottomFrame.origin.y = newFrame.maxY - 1
+                                bottomFrame.size.height = 1
+                                let oldDuration = descriptor.dateInterval.duration
+                                
+                                if let newEnd = dateFromFrame(bottomFrame) {
+                                    let newStart = newEnd.addingTimeInterval(-oldDuration)
+                                    setSingle10MinuteMarkFromDate(newEnd)
+                                    
+                                    let startStr = Self.localFormatter.string(from: newStart)
+                                    let endStr   = Self.localFormatter.string(from: newEnd)
+                                    //                                    print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
+                                    let oldDuration = descriptor.dateInterval.duration
+                                    let snapped = snapToNearest10Min(newStart)
+                                    descriptor.isAllDay = false
+                                    descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
+                                    container.weekView.onEventDragEnded?(descriptor, snapped, false)
+                                }
+                                
+                            } else {
+                                var newFrame = evView.frame
+                                let loc = gesture.location(in: self)
+                                guard let offset = dragOffset else { return }
+                                newFrame.origin.x = loc.x - offset.x
+                                newFrame.origin.y = loc.y - offset.y
+                                var bottomFrame = newFrame
+                                bottomFrame.origin.y = newFrame.maxY - 1
+                                bottomFrame.size.height = 1
+                                let oldDuration = descriptor.dateInterval.duration
+                                
+                                if let newEnd = dateFromFrame(bottomFrame) {
+                                    let newStart = newEnd.addingTimeInterval(-oldDuration)
+                                    setSingle10MinuteMarkFromDate(newEnd)
+                                    
+                                    let startStr = Self.localFormatter.string(from: newStart)
+                                    let endStr   = Self.localFormatter.string(from: newEnd)
+                                    print("Drop event... (BOTTOM) start = \(startStr), end = \(endStr)")
+                                    let oldDuration = descriptor.dateInterval.duration
+                                    let snapped = snapToNearest10Min(newStart)
+                                    descriptor.isAllDay = false
+                                    descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
+                                    container.weekView.onEventDragEnded?(descriptor, snapped, false)
+                                }
+                            }
+                            print("Дропвам ПЪРВАТА част от многодневния евент. или Това е еднодневен евент (MultiDayWrapper), няма 'първа/средна/последна' част.")
+                        } else {
+                            if let newDateRaw = container.weekView.dateFromPoint(topPointInWeek) {
+                                
+                                let totalDuration = multi.realEvent.endDate.timeIntervalSince(multi.realEvent.startDate)
+                                
+                                var newFrame = evView.frame
+                                let loc = gesture.location(in: self)
+                                guard let offset = dragOffset else { return }
+                                newFrame.origin.x = loc.x - offset.x
+                                newFrame.origin.y = loc.y - offset.y
+                                var bottomFrame = newFrame
+                                bottomFrame.origin.y = newFrame.maxY - 1
+                                bottomFrame.size.height = 1
+                                let oldDuration = descriptor.dateInterval.duration
+                                
+                                if let newEnd = dateFromFrame(bottomFrame) {
+                                    let newStart = newEnd.addingTimeInterval(-totalDuration)
+                                    setSingle10MinuteMarkFromDate(newEnd)
+                                    
+                                    let oldDuration = descriptor.dateInterval.duration
+                                    let snapped = snapToNearest10Min(newStart)
+                                    descriptor.isAllDay = false
+                                    descriptor.dateInterval = DateInterval(start: snapped, end: snapped.addingTimeInterval(oldDuration))
+                                    container.weekView.onEventDragEnded?(descriptor, snapped, false)
+                                }
+                                print("Дропвам ПОСЛЕДНАТА част от многодневния евент.")
+                                
+                            } else {
+                                print("Дропвам СРЕДНА част от многодневния евент.")
+                            }
                         }
                     }
                 }
