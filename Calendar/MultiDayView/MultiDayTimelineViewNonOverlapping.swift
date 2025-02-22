@@ -2,14 +2,14 @@
 //  MultiDayTimelineViewNonOverlapping.swift
 //  CalendarKit
 //
-//  Hybrid logic:
-//  - Ghost events occupy the full width of a single day column
-//    (i.e. dayColumnWidth minus style gaps).
-//  - You can still drag them horizontally across days,
-//    allowing partial overlap between adjacent day columns while dragging.
-//  - On drop, we compute the final day index from the ghost’s midX,
-//    and the final time from the ghost’s Y position.
+//  Features:
+//   - Non-overlapping event columns
+//   - Drag & drop horizontally across days
+//   - Ghost event is full day-column width during drag
+//   - For multi-day events, each day's ghost slice is as tall as the ENTIRE event duration
+//     (so users see the full 53-hour (etc.) vertical span, extending outside container if needed).
 //
+
 import UIKit
 
 public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
@@ -307,6 +307,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         }
         
         ev.isUserInteractionEnabled = true
+        ev.clipsToBounds = false
         addSubview(ev)
         return ev
     }
@@ -353,13 +354,12 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     }
     
     // MARK: - Pan (drag) the whole event
-    /// DragData storing final durations, original frames, anchor offsets, and day indices for each piece.
+    /// DragData storing final durations, original big frames, anchor offsets, etc.
     private struct DragData {
         let totalDuration: TimeInterval
         let originalContainerFrames: [EventView: CGRect]
         let anchorOffsetX: CGFloat
         let anchorOffsetY: CGFloat
-        let dayIndexForView: [EventView: Int]
     }
     
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
@@ -376,17 +376,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         case .began:
             setScrollsClipping(enabled: false)
             
-            // Gather bounding start/end
-            let realStart: Date
-            let realEnd: Date
-            if let multi = descriptor as? EKMultiDayWrapper {
-                realStart = multi.realEvent.startDate
-                realEnd   = multi.realEvent.endDate
-            } else {
-                realStart = descriptor.dateInterval.start
-                realEnd   = descriptor.dateInterval.end
-            }
-            let totalDuration = realEnd.timeIntervalSince(realStart)
+            // Real start/end for entire multi-day event
+            let (realStart, realEnd) = actualStartEnd(for: descriptor)
+            let totalDuration = realEnd.timeIntervalSince(realStart) // e.g. 53 hours
             
             // For multi-day events, find all day slices
             var multiDayViews: [EventView] = []
@@ -407,40 +399,63 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             } else {
+                // Single-day
                 multiDayViews.append(evView)
             }
             
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
-            // Store day indices for each piece, create ghosts
             var originalFrames = [EventView: CGRect]()
-            var dayIndexMap = [EventView: Int]()
             
+            // Create a ghost for each day slice, but forcibly make it represent the full event height
             for realView in multiDayViews {
                 if let realDesc = eventViewToDescriptor[realView] {
+                    // Fade out the real slice
                     draggingOriginalAlphas[realView] = realView.alpha
                     realView.alpha = 0.0
                     
-                    let frameInTimeline = realView.frame
-                    let frameInContainer = self.convert(frameInTimeline, to: container)
-                    
-                    // Figure out day index from the descriptor’s date start
-                    let dIndex = dayIndexFor(realDesc.dateInterval.start)
-                    dayIndexMap[realView] = dIndex
+                    // We still want to preserve the day slice's horizontal position
+                    // from the existing frame, but compute a "full-event" vertical size.
+                    let partialFrameInTimeline = realView.frame
+                    let partialFrameInContainer = self.convert(partialFrameInTimeline, to: container)
                     
                     let ghost = createEventView()
                     ghost.updateWithDescriptor(event: realDesc)
                     ghost.alpha = 1.0
                     ghost.layer.zPosition = 9999
+                    ghost.clipsToBounds = false
                     
                     container.addSubview(ghost)
                     container.bringSubviewToFront(ghost)
                     
-                    ghost.frame = frameInContainer
+                    // *** Compute the "full vertical" ghost frame for day i. ***
+                    // 1) Identify which day this slice belongs to:
+                    let dayIndex = dayIndexFor(realDesc.dateInterval.start)
+                    // 2) We want to place the ghost so that its top
+                    //    aligns with (realStart relative to dayIndex's midnight).
+                    let dayStart = dayStartDate(for: dayIndex)
+                    let hoursOffset = realStart.timeIntervalSince(dayStart) / 3600.0
+                    let topY = topMargin + hourHeight * CGFloat(hoursOffset) // might be negative
+                    let height = CGFloat(totalDuration / 3600.0) * hourHeight
+                    
+                    // 3) Force the width to one day column wide:
+                    //    We can reuse the partial's x (minus style gaps if needed):
+                    //    Or just partialFrameInContainer.minX for left,
+                    //    and keep dayColumnWidth - style.eventGap * 2 for width:
+                    let ghostWidth = dayColumnWidth - style.eventGap * 2
+                    let ghostX = partialFrameInContainer.minX
+                    
+                    let ghostFrame = CGRect(
+                        x: ghostX,
+                        y: topY,
+                        width: ghostWidth,
+                        height: height
+                    )
+                    ghost.frame = ghostFrame
                     ghost.isHidden = false
                     draggingGhosts[realView] = ghost
-                    originalFrames[realView] = frameInContainer
+                    originalFrames[realView] = ghostFrame
                 }
             }
             
@@ -456,8 +471,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 totalDuration: totalDuration,
                 originalContainerFrames: originalFrames,
                 anchorOffsetX: offsetX,
-                anchorOffsetY: offsetY,
-                dayIndexForView: dayIndexMap
+                anchorOffsetY: offsetY
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             
@@ -469,8 +483,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let newX = fingerWindow.x - d.anchorOffsetX
             let newY = fingerWindow.y - d.anchorOffsetY
             
-            // Shift each piece by the same delta. We'll keep a "full column width"
-            // but the horizontal position is free to move in partial transitions.
+            // Shift each piece by the same delta
             if let anchorOrig = d.originalContainerFrames[evView] {
                 let deltaX = newX - anchorOrig.minX
                 let deltaY = newY - anchorOrig.minY
@@ -480,23 +493,24 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     
                     let ghostX = origF.minX + deltaX
                     let ghostY = origF.minY + deltaY
-                    // Force the width to be "one day column minus gaps"
-                    let ghostW = dayColumnWidth - style.eventGap * 2
                     ghost.frame = CGRect(
                         x: ghostX,
                         y: ghostY,
-                        width: ghostW,
+                        width: origF.width,
                         height: origF.height
                     )
                 }
             }
             
-            // Show time pointer from anchor ghost
+            // Show time pointer from anchor ghost’s top
             if let anchorGhost = draggingGhosts[evView] {
                 let anchorFrameInTimeline = container.convert(anchorGhost.frame, to: self)
                 let localY = anchorFrameInTimeline.minY - topMargin
                 let hourOffset = localY / hourHeight
-                let newTime = descriptor.dateInterval.start.addingTimeInterval(hourOffset * 3600)
+                let descriptor = eventViewToDescriptor[evView]!
+                // We interpret the original descriptor's start as reference:
+                let referenceStart = descriptor.dateInterval.start
+                let newTime = referenceStart.addingTimeInterval(hourOffset * 3600)
                 setSingle10MinuteMarkFromDate(newTime)
             }
             
@@ -560,7 +574,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 let parent1Class = hitView.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 let parent2Class = hitView.superview?.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 
-                // Final assignment
+                // Final assignment: set descriptor's new interval
                 descriptor.isAllDay = false
                 descriptor.dateInterval = DateInterval(start: finalStart, end: finalEnd)
                 
@@ -577,8 +591,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     
                     // Moved to all-day
                     onEventConvertToAllDay?(descriptor, dayIndex)
-                } else {
-                    // Fallback => do nothing
                 }
             }
             
@@ -602,7 +614,18 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         currentlyEditedEventView = evView
     }
     
-    // MARK: - Helpers for day index
+    // MARK: - Helpers
+    /// Return the real start/end for multi-day or single-day descriptor
+    private func actualStartEnd(for descriptor: EventDescriptor) -> (Date, Date) {
+        if let multi = descriptor as? EKMultiDayWrapper {
+            return (multi.realEvent.startDate, multi.realEvent.endDate)
+        } else if let wrap = descriptor as? EKWrapper {
+            return (wrap.ekEvent.startDate, wrap.ekEvent.endDate)
+        } else {
+            return (descriptor.dateInterval.start, descriptor.dateInterval.end)
+        }
+    }
+    
     /// Return the Date at midnight for dayIndex (0-based from `fromDate`)
     private func dayStartDate(for dayIndex: Int) -> Date {
         let cal = Calendar.current
@@ -857,7 +880,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         ctx.restoreGState()
     }
     
-    // MARK: - Helpers
     private func dateToY(_ date: Date) -> CGFloat {
         let cal = Calendar.current
         let hour = CGFloat(cal.component(.hour, from: date))
