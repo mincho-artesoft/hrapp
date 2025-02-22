@@ -952,13 +952,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private func setScrollsClipping(enabled: Bool) {
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         container.mainScrollView.clipsToBounds = enabled
-        if enabled {
-            container.allDayScrollView.layer.zPosition = 2
-            container.mainScrollView.layer.zPosition = 1
-        } else {
-            container.allDayScrollView.layer.zPosition = 1
-            container.mainScrollView.layer.zPosition = 2
-        }
+//        if enabled {
+//            container.allDayScrollView.layer.zPosition = 2
+//            container.mainScrollView.layer.zPosition = 1
+//        } else {
+//            container.allDayScrollView.layer.zPosition = 1
+//            container.mainScrollView.layer.zPosition = 2
+//        }
     }
     
     // MARK: - Auto Scroll
