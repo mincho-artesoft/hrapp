@@ -179,29 +179,29 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
         hoursColumnScrollView.addSubview(hoursColumnView)
-        hoursColumnScrollView.layer.zPosition = 2
+        hoursColumnScrollView.layer.zPosition = 3
         addSubview(hoursColumnScrollView)
 
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
         daysHeaderScrollView.isScrollEnabled = false
         daysHeaderScrollView.backgroundColor = .secondarySystemBackground
         daysHeaderScrollView.addSubview(daysHeaderView)
-        daysHeaderScrollView.layer.zPosition = 3
+        daysHeaderScrollView.layer.zPosition = 4
         addSubview(daysHeaderScrollView)
 
         cornerView.backgroundColor = .secondarySystemBackground
-        cornerView.layer.zPosition = 4
+        cornerView.layer.zPosition = 5
         addSubview(cornerView)
 
         allDayTitleLabel.text = "all-day"
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
-        allDayTitleLabel.layer.zPosition = 5
+        allDayTitleLabel.layer.zPosition = 6
         addSubview(allDayTitleLabel)
 
         // 4) Navigation bar
         let navBar = UIView()
         navBar.backgroundColor = .secondarySystemBackground
-        navBar.layer.zPosition = 6
+        navBar.layer.zPosition = 7
         addSubview(navBar)
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
@@ -210,13 +210,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         fromDatePicker.datePickerMode = .date
         fromDatePicker.preferredDatePickerStyle = .compact
         fromDatePicker.addTarget(self, action: #selector(didPickFromDate(_:)), for: .valueChanged)
-        fromDatePicker.layer.zPosition = 7
+        fromDatePicker.layer.zPosition = 8
         navBar.addSubview(fromDatePicker)
 
         toDatePicker.datePickerMode = .date
         toDatePicker.preferredDatePickerStyle = .compact
         toDatePicker.addTarget(self, action: #selector(didPickToDate(_:)), for: .valueChanged)
-        toDatePicker.layer.zPosition = 8
+        toDatePicker.layer.zPosition = 9
         navBar.addSubview(toDatePicker)
 
         // Бутон (три точки)

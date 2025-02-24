@@ -430,10 +430,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     let ghost = createEventView()
                     ghost.updateWithDescriptor(event: desc)
                     ghost.alpha = 1.0
-                    ghost.layer.zPosition = 9999
+                    ghost.layer.zPosition = 2
                     container.addSubview(ghost)
-                    container.bringSubviewToFront(ghost)
-                    
+                                        
                     // We'll compute the final ghost height to be the entire event timespan
                     let hoursTotal = totalDuration / 3600.0
                     let ghostH = hourHeight * CGFloat(hoursTotal)
@@ -666,10 +665,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
             let ghost = EventView()
             ghost.updateWithDescriptor(event: desc)
-            ghost.alpha = 0.5
-            ghost.layer.zPosition = 9999
+            ghost.alpha = 1
+            ghost.layer.zPosition = 2
             container.addSubview(ghost)
-            container.bringSubviewToFront(ghost)
             
             // Convert from self => container
             let frameInTimeline = eventView.frame
