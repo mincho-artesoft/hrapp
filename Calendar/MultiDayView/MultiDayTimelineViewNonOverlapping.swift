@@ -99,17 +99,18 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     
     @objc private func handleTapOnEmptySpace(_ gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
-        // If we had an edited event, revert it:
+        // Ако имаме редактиран евент, го връщаме към нормален режим:
         if let oldView = currentlyEditedEventView,
            let oldDesc = eventViewToDescriptor[oldView] {
             oldDesc.editedEvent = nil
             oldView.updateWithDescriptor(event: oldDesc)
             currentlyEditedEventView = nil
         }
-        // Remove any selection mark in HoursColumnView
+        // Премахваме маркираната минута в HoursColumnView
         hoursColumnView?.selectedMinuteMark = nil
         hoursColumnView?.setNeedsDisplay()
     }
+
     
     @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
@@ -269,7 +270,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         // Long press
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
-        lp.minimumPressDuration = 0.05
+        lp.minimumPressDuration = 0.1
         lp.delegate = self
         ev.addGestureRecognizer(lp)
         
@@ -277,7 +278,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         for handle in ev.eventResizeHandles {
             let lpResize = UILongPressGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
             lpResize.delegate = self
-            lpResize.minimumPressDuration = 0.04
+            lpResize.minimumPressDuration = 0.05
             handle.addGestureRecognizer(lpResize)
         }
         
