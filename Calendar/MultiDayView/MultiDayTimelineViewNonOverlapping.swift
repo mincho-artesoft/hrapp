@@ -268,7 +268,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         ev.addGestureRecognizer(tapGR)
         
         // Long press
-        let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewLongPress(_:)))
+//        let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewLongPress(_:)))
+        let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
         lp.minimumPressDuration = 0.5
         lp.delegate = self
         ev.addGestureRecognizer(lp)
@@ -365,7 +366,21 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         switch gesture.state {
         case .began:
             setScrollsClipping(enabled: false)
-            
+          
+                // Deselect old
+                if let oldView = currentlyEditedEventView,
+                   oldView !== evView,
+                   let oldDesc = eventViewToDescriptor[oldView] {
+                    oldDesc.editedEvent = nil
+                    oldView.updateWithDescriptor(event: oldDesc)
+                }
+                // Mark as editing
+                if descriptor.editedEvent == nil {
+                    descriptor.editedEvent = descriptor
+                    evView.updateWithDescriptor(event: descriptor)
+                }
+                currentlyEditedEventView = evView
+    
             // Real start/end for entire multi-day
             let realStart: Date
             let realEnd: Date
@@ -424,16 +439,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     let dayIndex = dayIndexFor(desc.dateInterval.start)
                     let dayStart = dayStartDate(for: dayIndex)
                     let hoursOffset = realStart.timeIntervalSince(dayStart) / 3600.0
-                    let topY = topMargin + CGFloat(hoursOffset) * hourHeight
-                    // Also incorporate pinnedTop
-                    let finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY)
+                    let topY = topMargin + CGFloat(hoursOffset) * hourHeight    
                     
                     let ghostX = sliceFrameInContainer.minX
+                    let ghostY = sliceFrameInContainer.minY
                     let ghostW = dayColumnWidth - style.eventGap*2
                     
                     let ghostFrame = CGRect(
                         x: ghostX,
-                        y: finalY,
+                        y: ghostY,
                         width: ghostW,
                         height: ghostH
                     )
