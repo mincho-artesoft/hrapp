@@ -522,10 +522,52 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 
                 // 3) Сглобяваме дата
                 let newTime = dayDate.addingTimeInterval(hourOffset * 3600)
-                let snapped = snapToNearest10Min(newTime)
+//                let snapped = snapToNearest10Min(newTime)
                 
-                // 4) Показваме 10-минутния маркер
-                setSingle10MinuteMarkFromDate(snapped)
+                if let multi = descriptor as? EKMultiDayWrapper {
+                    let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                    let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
+                    let currentDayIndex = dayIndexFor(descriptor.dateInterval.start)
+                    
+                    // Ако firstDayIndex == lastDayIndex => това реално е еднодневно,
+                    // но все пак "опаковано" като многодневно.
+                    if currentDayIndex == firstDayIndex || firstDayIndex == lastDayIndex {
+                        if let newStart = dateFromFrame(newFrame) {
+                            setSingle10MinuteMarkFromDate(newStart)
+                        }
+                    } else {
+                        if currentDayIndex == lastDayIndex {
+                            var bottomFrame = newFrame
+                            bottomFrame.origin.y = newFrame.maxY - 1
+                            bottomFrame.size.height = 1
+                            
+                            if let newEnd = dateFromFrame(bottomFrame) {
+                                setSingle10MinuteMarkFromDate(newEnd)
+                            }
+                        } else {
+                        }
+                    }
+                    
+                    if firstDayIndex == lastDayIndex {
+                     
+    //                    print("Драгвам Това е еднодневен евент (MultiDayWrapper), няма 'първа/средна/последна' част.")
+                    } else {
+                        if currentDayIndex == firstDayIndex {
+                            
+    //                        if d.isTop {
+    //                            f.origin.y += diffY
+    //                            f.size.height -= diffY
+    //                        } else {
+    //                            f.size.height += diffY
+    //                        }
+    //                        print("Драгвам ПЪРВАТА част от многодневния евент.")
+                        } else if currentDayIndex == lastDayIndex {
+    //                        print("Драгвам ПОСЛЕДНАТА част от многодневния евент.")
+                        } else {
+    //                        print("Драгвам СРЕДНА част от многодневния евент.")
+                        }
+                    }
+                }
             }
             
             updateAutoScrollDirection(for: gesture)
