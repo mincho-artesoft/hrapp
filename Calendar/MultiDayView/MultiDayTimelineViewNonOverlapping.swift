@@ -270,27 +270,18 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         // Long press
 //        let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewLongPress(_:)))
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
-        lp.minimumPressDuration = 0.5
+        lp.minimumPressDuration = 0.05
         lp.delegate = self
         ev.addGestureRecognizer(lp)
         
-        // Pan for drag
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
-        pan.delegate = self
-        ev.addGestureRecognizer(pan)
-        
-        
         // Resize handles
         for handle in ev.eventResizeHandles {
-            let panResize = UIPanGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
-            panResize.delegate = self
+   
             
-            let lpResize = UILongPressGestureRecognizer(target: self, action: #selector(handleResizeHandleLongPressGesture(_:)))
+            let lpResize = UILongPressGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
             lpResize.delegate = self
-            lpResize.minimumPressDuration = 0.4
-            lpResize.require(toFail: panResize)
+            lpResize.minimumPressDuration = 0.04
             
-            handle.addGestureRecognizer(panResize)
             handle.addGestureRecognizer(lpResize)
         }
         
@@ -440,14 +431,14 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     let dayStart = dayStartDate(for: dayIndex)
                     let hoursOffset = realStart.timeIntervalSince(dayStart) / 3600.0
                     let topY = topMargin + CGFloat(hoursOffset) * hourHeight    
-                    
+                    let finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY) - 10
+
                     let ghostX = sliceFrameInContainer.minX
-                    let ghostY = sliceFrameInContainer.minY
                     let ghostW = dayColumnWidth - style.eventGap*2
                     
                     let ghostFrame = CGRect(
                         x: ghostX,
-                        y: ghostY,
+                        y: finalY,
                         width: ghostW,
                         height: ghostH
                     )
