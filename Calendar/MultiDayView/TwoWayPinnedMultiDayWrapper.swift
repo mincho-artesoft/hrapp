@@ -67,10 +67,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         }
 
         container.onEventTap = { descriptor in
-            // При натискане на събитие -> отваряме system editor
-            if let ekWrap = descriptor as? EKWrapper {
-                context.coordinator.presentSystemEditor(ekWrap.ekEvent, in: vc)
-            } else if let multi = descriptor as? EKMultiDayWrapper {
+        if let multi = descriptor as? EKMultiDayWrapper {
                 context.coordinator.presentSystemEditor(multi.ekEvent, in: vc)
             }
         }
@@ -279,17 +276,6 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                         applyResizeChanges(ev, descriptor: multi, forcedNewDate: newDate, span: .thisEvent)
                     }
                 }
-            } else if let wrap = descriptor as? EKWrapper {
-                let ev = wrap.ekEvent
-                if ev.hasRecurrenceRules {
-                    askUserForRecurring(event: ev, newDate: newDate, isResize: isResize)
-                } else {
-                    if !isResize {
-                        applyDragChanges(ev, newStartDate: newDate, span: .thisEvent, isAllDay: isAllDay)
-                    } else {
-                        applyResizeChanges(ev, descriptor: wrap, forcedNewDate: newDate, span: .thisEvent)
-                    }
-                }
             }
         }
 
@@ -370,23 +356,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                     }
                 }
             }
-            else if let wrap = descriptor as? EKWrapper {
-                let oldInterval = wrap.dateInterval
-                let distanceToStart = forcedNewDate.timeIntervalSince(oldInterval.start)
-                let distanceToEnd   = oldInterval.end.timeIntervalSince(forcedNewDate)
-
-                if distanceToStart < distanceToEnd {
-                    // top
-                    if forcedNewDate < oldInterval.end {
-                        event.startDate = forcedNewDate
-                    }
-                } else {
-                    // bottom
-                    if forcedNewDate > oldInterval.start {
-                        event.endDate = forcedNewDate
-                    }
-                }
-            } else {
+             else {
                 // fallback
                 guard let oldStart = event.startDate,
                       let oldEnd = event.endDate else { return }

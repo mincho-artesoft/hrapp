@@ -278,6 +278,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         pan.delegate = self
         ev.addGestureRecognizer(pan)
         
+        
         // Resize handles
         for handle in ev.eventResizeHandles {
             let panResize = UIPanGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
@@ -371,9 +372,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             if let multi = descriptor as? EKMultiDayWrapper {
                 realStart = multi.realEvent.startDate
                 realEnd   = multi.realEvent.endDate
-            } else if let ekWrap = descriptor as? EKWrapper {
-                realStart = ekWrap.ekEvent.startDate
-                realEnd   = ekWrap.ekEvent.endDate
             } else {
                 realStart = descriptor.dateInterval.start
                 realEnd   = descriptor.dateInterval.end
@@ -387,14 +385,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 for (ov, od) in eventViewToDescriptor {
                     if let om = od as? EKMultiDayWrapper,
                        om.realEvent.eventIdentifier == eventID {
-                        slices.append(ov)
-                    }
-                }
-            } else if let ekWrap = descriptor as? EKWrapper {
-                let eventID = ekWrap.ekEvent.eventIdentifier
-                for (ov, od) in eventViewToDescriptor {
-                    if let ok = od as? EKWrapper,
-                       ok.ekEvent.eventIdentifier == eventID {
                         slices.append(ov)
                     }
                 }
@@ -470,7 +460,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 anchorOffsetY: offsetY
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
-            
+            print("asd")
         case .changed:
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
             
