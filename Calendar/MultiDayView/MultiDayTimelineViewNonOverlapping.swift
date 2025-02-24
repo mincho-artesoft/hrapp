@@ -2,11 +2,6 @@
 //  MultiDayTimelineViewNonOverlapping.swift
 //  CalendarKit
 //
-//  Attaches ghost views to the container (like before).
-//  Uses a pinnedTop offset to account for pinned all-day or headers.
-//  Allows full-width ghost columns and horizontal dragging.
-//  Prevents the “jump” by consistently offsetting Y-coordinates.
-//
 
 import UIKit
 
@@ -148,7 +143,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         layoutRegularEvents()
     }
     
-     var dayCount: Int {
+    var dayCount: Int {
         let cal = Calendar.current
         let startOnly = cal.startOfDay(for: fromDate)
         let endOnly = cal.startOfDay(for: toDate)
@@ -345,8 +340,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     // MARK: - Drag the event
     /// Additional pinned top offset to fix vertical mismatch from pinned headers/all-day, etc.
     private var pinnedTop: CGFloat {
-        // Примерно 40 за AllDayView + 50 за DaysHeader = 90
-        // Или ако е динамично, четете от контейнера
         return 0
     }
     
@@ -432,7 +425,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     ghost.alpha = 1.0
                     ghost.layer.zPosition = 2
                     container.addSubview(ghost)
-                                        
+                    
                     // We'll compute the final ghost height to be the entire event timespan
                     let hoursTotal = totalDuration / 3600.0
                     let ghostH = hourHeight * CGFloat(hoursTotal)
@@ -479,7 +472,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             
         case .changed:
-            // >>>>>>>>>>> ТУК Е НАЙ-ВАЖНАТА ПРОМЯНА <<<<<<<<<<<
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
             
             let fingerInContainer = gesture.location(in: container)
@@ -503,69 +495,33 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 }
             }
             
-            // Time pointer from anchor ghost top (или midY, ако желаете)
+            // >>>>>>> ТУК ПРОМЕНЯМЕ ЛОГИКАТА ЗА setSingle10MinuteMarkFromDate <<<<<<
             if let anchorGhost = draggingGhosts[evView] {
-                // Convert anchorGhost's frame from container => self
+                // Convert ghost's frame from container => self
                 var ghostFrameInTimeline = anchorGhost.frame
                 ghostFrameInTimeline.origin.y -= pinnedTop
                 let frameSelf = container.convert(ghostFrameInTimeline, to: self)
                 
-                // 1) Кой ден (по X)
-                let midX = frameSelf.midX
-                var dayIndex = Int(floor((midX - leadingInsetForHours) / dayColumnWidth))
-                dayIndex = max(0, min(dayIndex, dayCount - 1))
+                // Тук прилагаме логика: ако top е в зоната -> ползваме него,
+                // иначе вземаме bottom.
+                let topY = frameSelf.minY
+                let bottomY = frameSelf.maxY
                 
-                // 2) Изчисляваме часа (по Y)
-                let localY = frameSelf.minY - topMargin
-                let hourOffset = localY / hourHeight
-                let dayDate = dayStartDate(for: dayIndex)
+                // Може да считаме за "видима" зона [0 ... bounds.height]
+                // (или [topMargin ... bounds.height], ако има нужда).
                 
-                // 3) Сглобяваме дата
-                let newTime = dayDate.addingTimeInterval(hourOffset * 3600)
-//                let snapped = snapToNearest10Min(newTime)
-                
-                if let multi = descriptor as? EKMultiDayWrapper {
-                    let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
-                    let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
-                    let currentDayIndex = dayIndexFor(descriptor.dateInterval.start)
-                    
-                    // Ако firstDayIndex == lastDayIndex => това реално е еднодневно,
-                    // но все пак "опаковано" като многодневно.
-                    if currentDayIndex == firstDayIndex || firstDayIndex == lastDayIndex {
-                        if let newStart = dateFromFrame(ghostFrameInTimeline) {
-                            setSingle10MinuteMarkFromDate(newStart)
-                        }
-                    } else {
-                        if currentDayIndex == lastDayIndex {
-                            var ghostFrameInTimeline = ghostFrameInTimeline
-                            bottomFrame.origin.y = ghostFrameInTimeline.maxY - 1
-                            bottomFrame.size.height = 1
-                            
-                            if let newEnd = dateFromFrame(bottomFrame) {
-                                setSingle10MinuteMarkFromDate(newEnd)
-                            }
-                        } else {
-                        }
+                let topIsVisible = (topY >= 0 && topY < bounds.height)
+                if topIsVisible {
+                    if let newStart = dateFromFrame(frameSelf) {
+                        setSingle10MinuteMarkFromDate(newStart)
                     }
-                    
-                    if firstDayIndex == lastDayIndex {
-                     
-    //                    print("Драгвам Това е еднодневен евент (MultiDayWrapper), няма 'първа/средна/последна' част.")
-                    } else {
-                        if currentDayIndex == firstDayIndex {
-                            
-    //                        if d.isTop {
-    //                            f.origin.y += diffY
-    //                            f.size.height -= diffY
-    //                        } else {
-    //                            f.size.height += diffY
-    //                        }
-    //                        print("Драгвам ПЪРВАТА част от многодневния евент.")
-                        } else if currentDayIndex == lastDayIndex {
-    //                        print("Драгвам ПОСЛЕДНАТА част от многодневния евент.")
-                        } else {
-    //                        print("Драгвам СРЕДНА част от многодневния евент.")
-                        }
+                } else {
+                    // bottom
+                    var bottomFrame = frameSelf
+                    bottomFrame.origin.y = bottomY - 1
+                    bottomFrame.size.height = 1
+                    if let newEnd = dateFromFrame(bottomFrame) {
+                        setSingle10MinuteMarkFromDate(newEnd)
                     }
                 }
             }
@@ -668,7 +624,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     }
     
     // MARK: - Helpers for day index
-     func dayStartDate(for dayIndex: Int) -> Date {
+    func dayStartDate(for dayIndex: Int) -> Date {
         let cal = Calendar.current
         let start = cal.startOfDay(for: fromDate)
         return cal.date(byAdding: .day, value: dayIndex, to: start) ?? start
@@ -762,9 +718,24 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             ghost.frame = f
             
+            // >>>>>>> ТУК ПРОМЕНЯМЕ ЛОГИКАТА ЗА setSingle10MinuteMarkFromDate <<<<<<
+            let ghostTop = ghost.frame.minY
+            let ghostBottom = ghost.frame.maxY
             // Позиция на горния/долния край => засичаме текущата минута
-            if let newEdgeDate = dateFromResize(ghost.frame, isTop: d.isTop, container: container) {
-                setSingle10MinuteMarkFromDate(newEdgeDate)
+            // Ако горният край е видим, взимаме него.
+            // Иначе => взимаме долния.
+            let topIsVisible = (ghostTop >= 0 && ghostTop < bounds.height)
+            if topIsVisible {
+                if let newEdgeDate = dateFromResize(ghost.frame, isTop: d.isTop, container: container) {
+                    setSingle10MinuteMarkFromDate(newEdgeDate)
+                }
+            } else {
+                var bottomFrame = ghost.frame
+                bottomFrame.origin.y = ghostBottom - 1
+                bottomFrame.size.height = 1
+                if let newEdgeDate = dateFromResize(bottomFrame, isTop: d.isTop, container: container) {
+                    setSingle10MinuteMarkFromDate(newEdgeDate)
+                }
             }
             
         case .ended, .cancelled:
@@ -1078,7 +1049,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         scrollView.setContentOffset(newOffset, animated: false)
     }
-     func dateFromFrame(_ frame: CGRect) -> Date? {
+    
+    func dateFromFrame(_ frame: CGRect) -> Date? {
         let topY = frame.minY - topMargin
         let midX = frame.midX
         if midX < leadingInsetForHours { return nil }
