@@ -235,12 +235,14 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         case .changed:
             guard let offset = dragOffset else { return }
             let loc = gesture.location(in: self)
+            
+            // 1) Изчисляваме нов frame (в наши координати).
             var newFrame = evView.frame
             newFrame.origin.x = loc.x - offset.x
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
             
-            // Местене на всички парчета при EKMultiDayWrapper
+            // 2) Ако има други slice-ове на multi-day, мърдаме и тях.
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let dx = newFrame.origin.x - origFrame.origin.x
                 let dy = newFrame.origin.y - origFrame.origin.y
@@ -251,26 +253,46 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 }
             }
             
-            // Проверка къде драгваме – ако е над Timeline, показваме 10‑мин marker:
+            // 3) Изчисляваме къде е горната част на eventView в `weekView` (ако сме над него).
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
             let dropLocationInContainer = gesture.location(in: container)
             
+            // Ако попаднем над timeline-а:
             if container.weekView.frame.contains(dropLocationInContainer) {
-                let locInWeek = gesture.location(in: container.weekView)
-                if let rawDate = container.weekView.dateFromPoint(locInWeek) {
-                    let snapped = snapToNearest10Min(rawDate)
-                    setSingle10MinuteMarkFromDate(snapped)
-                } else {
-                    clear10MinuteMark()
-                }
+                
+                // (a) Конвертираме top-координатата на евента към weekView.
+                //     За целта вземаме целия му `frame` в координатната система на `weekView`.
+                let evFrameInTimeline = self.convert(evView.frame, to: container.weekView)
+                
+                // (b) hourHeight, topMargin - четем от weekView
+                let hourHeight = container.weekView.hourHeight
+                let topMargin  = container.weekView.topMargin
+                
+                // (c) minY на евента спрямо topMargin
+                let localY = evFrameInTimeline.minY - topMargin
+                let midX   = evFrameInTimeline.midX
+                
+                // (d) кой dayIndex?
+                var dayIndex = Int((midX - container.weekView.leadingInsetForHours) / container.weekView.dayColumnWidth)
+                dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
+                
+                // (e) преобразуваме localY => час
+                let dayDate = container.weekView.dayStartDate(for: dayIndex)
+                let hourOffset = localY / hourHeight
+                let rawDate = dayDate.addingTimeInterval(hourOffset * 3600)
+                
+                // (f) снипваме към 10 мин.
+                let snapped = snapToNearest10Min(rawDate)
+                
+                // (g) показваме маркера
+                setSingle10MinuteMarkFromDate(snapped)
+                
             } else {
                 clear10MinuteMark()
             }
             
         case .ended, .cancelled:
-            // Премахваме маркера
             clear10MinuteMark()
-            
             setScrollsClipping(enabled: true)
             
             // 1) Намираме контейнера
@@ -282,14 +304,17 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 return
             }
             
-            // 2) Координати на drop
+            // 2) Къде пускаме?
             let dropLocationInContainer = gesture.location(in: container)
-            let dropLocationInAllDay = gesture.location(in: self)
             
-            // Ако остава горе (allDay zone)
+            // (A) Ако остава горе (allDay zone)
+            let dropLocationInAllDay = gesture.location(in: self)
             if self.bounds.contains(dropLocationInAllDay) {
-                if let newDayIndex = dayIndexFromMidX(evView.frame.midX),
-                   let newDayDate = dayDateByAddingDays(newDayIndex) {
+                // Изчисляваме деня от midX на event-a
+                let evMidX = evView.frame.midX
+                if let newDayIndex = dayIndexFromMidX(evMidX),
+                   let newDayDate = dayDateByAddingDays(newDayIndex)
+                {
                     let cal = Calendar.current
                     let startOfDay = cal.startOfDay(for: newDayDate)
                     let endOfDay   = cal.date(byAdding: .day, value: 1, to: startOfDay)!
@@ -303,24 +328,39 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                     evView.frame = orig
                 }
             }
-            // Ако го пускаме над седмичния timeline
+            // (B) Ако пускаме над седмичния timeline
             else if container.weekView.frame.contains(dropLocationInContainer) {
-                let dropLocationInWeek = gesture.location(in: container.weekView)
-                if let newDateRaw = container.weekView.dateFromPoint(dropLocationInWeek) {
-                    let snapped = snapToNearest10Min(newDateRaw)
-                    
-                    descriptor.isAllDay = false
-                    // Примерно: 1 час продължителност
-                    let newEndDate = snapped.addingTimeInterval(3600)
-                    descriptor.dateInterval = DateInterval(start: snapped, end: newEndDate)
-                    
-                    container.weekView.onEventDragEnded?(descriptor, snapped, true)
-                }
-                else if let orig = originalFrameForDraggedEvent {
-                    evView.frame = orig
-                }
+                
+                // Взимаме горния край на евента в координати на weekView
+                let evFrameInTimeline = self.convert(evView.frame, to: container.weekView)
+                
+                let hourHeight = container.weekView.hourHeight
+                let topMargin  = container.weekView.topMargin
+                
+                // X => dayIndex
+                let midX = evFrameInTimeline.midX
+                var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
+                                   / container.weekView.dayColumnWidth)
+                dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
+                
+                // Y => час
+                let localY = evFrameInTimeline.minY - topMargin
+                let hourOffset = localY / hourHeight
+                let dayDate = container.weekView.dayStartDate(for: dayIndex)
+                let rawDate = dayDate.addingTimeInterval(hourOffset * 3600)
+                
+                // Снап към 10 мин.
+                let snapped = snapToNearest10Min(rawDate)
+                
+                // За пример слагаме 1ч продължителност
+                let finalEnd = snapped.addingTimeInterval(3600)
+                
+                descriptor.isAllDay = false
+                descriptor.dateInterval = DateInterval(start: snapped, end: finalEnd)
+                
+                container.weekView.onEventDragEnded?(descriptor, snapped, true)
             }
-            // Иначе извън
+            // (C) Иначе е извън, връщаме на старото място
             else {
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig

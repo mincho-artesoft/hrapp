@@ -148,7 +148,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         layoutRegularEvents()
     }
     
-    private var dayCount: Int {
+     var dayCount: Int {
         let cal = Calendar.current
         let startOnly = cal.startOfDay(for: fromDate)
         let endOnly = cal.startOfDay(for: toDate)
@@ -626,7 +626,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     }
     
     // MARK: - Helpers for day index
-    private func dayStartDate(for dayIndex: Int) -> Date {
+     func dayStartDate(for dayIndex: Int) -> Date {
         let cal = Calendar.current
         let start = cal.startOfDay(for: fromDate)
         return cal.date(byAdding: .day, value: dayIndex, to: start) ?? start
