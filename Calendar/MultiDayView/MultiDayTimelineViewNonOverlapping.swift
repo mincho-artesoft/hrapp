@@ -532,13 +532,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     // Ако firstDayIndex == lastDayIndex => това реално е еднодневно,
                     // но все пак "опаковано" като многодневно.
                     if currentDayIndex == firstDayIndex || firstDayIndex == lastDayIndex {
-                        if let newStart = dateFromFrame(newFrame) {
+                        if let newStart = dateFromFrame(ghostFrameInTimeline) {
                             setSingle10MinuteMarkFromDate(newStart)
                         }
                     } else {
                         if currentDayIndex == lastDayIndex {
-                            var bottomFrame = newFrame
-                            bottomFrame.origin.y = newFrame.maxY - 1
+                            var ghostFrameInTimeline = ghostFrameInTimeline
+                            bottomFrame.origin.y = ghostFrameInTimeline.maxY - 1
                             bottomFrame.size.height = 1
                             
                             if let newEnd = dateFromFrame(bottomFrame) {
@@ -1077,5 +1077,18 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         newOffset.y = max(0, min(newOffset.y, scrollView.contentSize.height - scrollView.bounds.height))
         
         scrollView.setContentOffset(newOffset, animated: false)
+    }
+     func dateFromFrame(_ frame: CGRect) -> Date? {
+        let topY = frame.minY - topMargin
+        let midX = frame.midX
+        if midX < leadingInsetForHours { return nil }
+        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
+        if dayIndex < 0 || dayIndex >= dayCount { return nil }
+        let cal = Calendar.current
+        if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate)) {
+            if topY < 0 { return nil }
+            return timeToDate(dayDate: dayDate, verticalOffset: topY)
+        }
+        return nil
     }
 }
