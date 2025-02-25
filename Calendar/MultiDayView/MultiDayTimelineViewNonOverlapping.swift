@@ -110,13 +110,11 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         // 2) Махаме едит режима за всички EventDescriptor-и
         for (view, descriptor) in eventViewToDescriptor {
-            if descriptor.editedEvent != nil {
-                descriptor.editedEvent = nil
-                view.updateWithDescriptor(event: descriptor)
-            }
+            view.eventResizeHandles[0].isHidden = true
+            view.eventResizeHandles[1].isHidden =  true
         }
         currentlyEditedEventView = nil
-        
+
         // 3) Зануляваме селектираната минута в колоната, ако има
         hoursColumnView?.selectedMinuteMark = nil
         hoursColumnView?.setNeedsDisplay()
@@ -218,36 +216,49 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     evView.updateWithDescriptor(event: attr.descriptor)
                     eventViewToDescriptor[evView] = attr.descriptor
                     
-                    // Покazваме дръжките само ако е в edit режим
+                    var slices: [EventView] = []
                     if let multi = attr.descriptor as? EKMultiDayWrapper {
-                        // Дали сме в edit
-                        let showHandles = (attr.descriptor.editedEvent != nil)
-                        let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
-                        let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
-                        
-                        if firstDayIndex == lastDayIndex {
-                            // Реално е многодневно, но start/end попадат в един ден (или реално е еднодневно)
-                            evView.eventResizeHandles[0].isHidden = !showHandles
-                            evView.eventResizeHandles[1].isHidden = !showHandles
-                        } else if dayIndex == firstDayIndex {
-                            // Показваме горната дръжка САМО ако е в edit режим
-                            evView.eventResizeHandles[0].isHidden = !showHandles
-                            evView.eventResizeHandles[1].isHidden = true
-                        } else if dayIndex == lastDayIndex {
-                            // Показваме долната дръжка САМО ако е в edit режим
-                            evView.eventResizeHandles[0].isHidden = true
-                            evView.eventResizeHandles[1].isHidden = !showHandles
-                        } else {
-                            // Нито горна, нито долна
-                            evView.eventResizeHandles[0].isHidden = true
-                            evView.eventResizeHandles[1].isHidden = true
+                        let eventID = multi.realEvent.eventIdentifier
+                        for (ov, od) in eventViewToDescriptor {
+                            if let om = od as? EKMultiDayWrapper,
+                               om.realEvent.eventIdentifier == eventID {
+                                slices.append(ov)
+                            }
                         }
                     } else {
-                        // Еднодневно
-                        let showHandles = (attr.descriptor.editedEvent != nil)
-                        evView.eventResizeHandles[0].isHidden = !showHandles
-                        evView.eventResizeHandles[1].isHidden = !showHandles
+                        slices.append(evView)
                     }
+                      
+                        if let multi = attr.descriptor as? EKMultiDayWrapper {
+                            var isCurrentlyEditedEventView = false
+                            for realSliceView in slices {
+                                if  currentlyEditedEventView == realSliceView{
+                                    isCurrentlyEditedEventView = true
+                                }
+                            }
+                            if isCurrentlyEditedEventView{
+                                    let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                                    let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
+                                    
+                                    if firstDayIndex == lastDayIndex {
+                                        // Реално е многодневно, но start/end попадат в един ден (или реално е еднодневно)
+                                        evView.eventResizeHandles[0].isHidden = false
+                                        evView.eventResizeHandles[1].isHidden =  false
+                                    } else if dayIndex == firstDayIndex {
+                                        // Показваме горната дръжка САМО ако е в edit режим
+                                        evView.eventResizeHandles[0].isHidden =  false
+                                        evView.eventResizeHandles[1].isHidden = true
+                                    } else if dayIndex == lastDayIndex {
+                                        // Показваме долната дръжка САМО ако е в edit режим
+                                        evView.eventResizeHandles[0].isHidden = true
+                                        evView.eventResizeHandles[1].isHidden =  false
+                                    }
+                                
+                            }
+
+                        } else {
+                            slices.append(evView)
+                        }
                 }
             }
         }
