@@ -1,8 +1,3 @@
-//
-//  MultiDayTimelineViewNonOverlapping.swift
-//  CalendarKit
-//
-
 import UIKit
 
 public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
@@ -56,7 +51,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private var draggingGhosts: [EventView: EventView] = [:]
     private var draggingOriginalAlphas: [EventView: CGFloat] = [:]
     
-    // [CHANGED] - DRAG_DATA_KEY си остава същото
+    // Ключ за запазване на данни при drag
     private let DRAG_DATA_KEY = "DragDataKey"
     private var ghostView: EventView? // for resizing
     
@@ -101,34 +96,52 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         true
     }
     
+    // При TAP върху празно — зануляваме edit режима за всички
     @objc private func handleTapOnEmptySpace(_ gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
-        if let oldView = currentlyEditedEventView,
-           let oldDesc = eventViewToDescriptor[oldView] {
-            oldDesc.editedEvent = nil
-            oldView.updateWithDescriptor(event: oldDesc)
-            currentlyEditedEventView = nil
-        }
-        hoursColumnView?.selectedMinuteMark = nil
-        hoursColumnView?.setNeedsDisplay()
-    }
-
-    @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
-        guard gesture.state == .began else { return }
+        
+        // 1) Проверяваме дали реално е тап върху празно
         let point = gesture.location(in: self)
-        // Ensure not on an event
         for evView in eventViews {
             if !evView.isHidden && evView.frame.contains(point) {
                 return
             }
         }
-        // If truly empty
-        if let oldView = currentlyEditedEventView,
-           let oldDesc = eventViewToDescriptor[oldView] {
-            oldDesc.editedEvent = nil
-            oldView.updateWithDescriptor(event: oldDesc)
-            currentlyEditedEventView = nil
+        
+        // 2) Махаме едит режима за всички EventDescriptor-и
+        for (view, descriptor) in eventViewToDescriptor {
+            if descriptor.editedEvent != nil {
+                descriptor.editedEvent = nil
+                view.updateWithDescriptor(event: descriptor)
+            }
         }
+        currentlyEditedEventView = nil
+        
+        // 3) Зануляваме селектираната минута в колоната, ако има
+        hoursColumnView?.selectedMinuteMark = nil
+        hoursColumnView?.setNeedsDisplay()
+    }
+
+    // При LongPress върху празно — същото махане, плюс извикване на onEmptyLongPress
+    @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else { return }
+        let point = gesture.location(in: self)
+        // Проверяваме да не е върху някое събитие
+        for evView in eventViews {
+            if !evView.isHidden && evView.frame.contains(point) {
+                return
+            }
+        }
+        // Ако е празно, зануляваме edit режима навсякъде
+        for (view, descriptor) in eventViewToDescriptor {
+            if descriptor.editedEvent != nil {
+                descriptor.editedEvent = nil
+                view.updateWithDescriptor(event: descriptor)
+            }
+        }
+        currentlyEditedEventView = nil
+        
+        // Callback
         if let tappedDate = dateFromPoint(point) {
             onEmptyLongPress?(tappedDate)
         }
@@ -164,6 +177,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             guard let eventsForDay = grouped[dayIndex], !eventsForDay.isEmpty else { continue }
             let sorted = eventsForDay.sorted { $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start }
             
+            // Non-overlapping columns
             var columns: [[EventLayoutAttributes]] = []
             for attr in sorted {
                 var placed = false
@@ -204,26 +218,32 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     evView.updateWithDescriptor(event: attr.descriptor)
                     eventViewToDescriptor[evView] = attr.descriptor
                     
-                    if let multiEvent = attr.descriptor as? EKMultiDayWrapper {
-                        let firstDayIndex = dayIndexFor(multiEvent.realEvent.startDate)
-                        let lastDayIndex  = dayIndexFor(multiEvent.realEvent.endDate)
+                    // Покazваме дръжките само ако е в edit режим
+                    if let multi = attr.descriptor as? EKMultiDayWrapper {
+                        // Дали сме в edit
+                        let showHandles = (attr.descriptor.editedEvent != nil)
+                        let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                        let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
+                        
                         if firstDayIndex == lastDayIndex {
-                            // single day
-                            let showHandles = (attr.descriptor.editedEvent != nil)
+                            // Реално е многодневно, но start/end попадат в един ден (или реално е еднодневно)
                             evView.eventResizeHandles[0].isHidden = !showHandles
                             evView.eventResizeHandles[1].isHidden = !showHandles
                         } else if dayIndex == firstDayIndex {
-                            evView.eventResizeHandles[0].isHidden = false
+                            // Показваме горната дръжка САМО ако е в edit режим
+                            evView.eventResizeHandles[0].isHidden = !showHandles
                             evView.eventResizeHandles[1].isHidden = true
                         } else if dayIndex == lastDayIndex {
+                            // Показваме долната дръжка САМО ако е в edit режим
                             evView.eventResizeHandles[0].isHidden = true
-                            evView.eventResizeHandles[1].isHidden = false
+                            evView.eventResizeHandles[1].isHidden = !showHandles
                         } else {
+                            // Нито горна, нито долна
                             evView.eventResizeHandles[0].isHidden = true
                             evView.eventResizeHandles[1].isHidden = true
                         }
                     } else {
-                        // Normal single-day
+                        // Еднодневно
                         let showHandles = (attr.descriptor.editedEvent != nil)
                         evView.eventResizeHandles[0].isHidden = !showHandles
                         evView.eventResizeHandles[1].isHidden = !showHandles
@@ -283,7 +303,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     // MARK: - createMissingSlicesIfNeeded / removeMissingSlicesIfNeeded
     @discardableResult
     private func createMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) -> [EventView] {
-        // 1) Изчистваме, ако има стари slice‑ове
         removeMissingSlicesIfNeeded(for: multi)
         
         guard
@@ -372,21 +391,58 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
         guard let tappedView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[tappedView] else { return }
-        
-        if let oldView = currentlyEditedEventView, oldView !== tappedView,
-           let oldDesc = eventViewToDescriptor[oldView] {
-            oldDesc.editedEvent = nil
-            oldView.updateWithDescriptor(event: oldDesc)
-        }
-        
-        descriptor.editedEvent = descriptor
-        tappedView.updateWithDescriptor(event: descriptor)
-        currentlyEditedEventView = tappedView
-        
-        setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
+        selectEventView(tappedView)
         onEventTap?(descriptor)
     }
     
+    // [MODIFIED] - Клик (tap) върху slice от многодневно събитие → всички slice-ове в edit режим
+    private func selectEventView(_ evView: EventView) {
+        // 1) Първо махаме edit режима от всички евенти
+        for (view, desc) in eventViewToDescriptor {
+            if desc.editedEvent != nil {
+                desc.editedEvent = nil
+                view.updateWithDescriptor(event: desc)
+            }
+        }
+        
+        // 2) Descriptor на кликнатото парче
+        guard let descriptor = eventViewToDescriptor[evView] else { return }
+        
+        // 3) Ако е многодневно
+        if let multi = descriptor as? EKMultiDayWrapper {
+            let realEventObj = multi.realEvent
+            // Търсим ВСИЧКИ slice-ове, които имат *същото* реално събитие
+            for (view, d) in eventViewToDescriptor {
+                if let m2 = d as? EKMultiDayWrapper {
+                    // Първо сравняваме по обект
+                    if m2.realEvent == realEventObj {
+                        m2.editedEvent = m2
+                        view.updateWithDescriptor(event: m2)
+                    }
+                    // После fallback по eventIdentifier
+                    else if let eID1 = m2.realEvent.eventIdentifier,
+                            let eID2 = realEventObj.eventIdentifier,
+                            !eID1.isEmpty, !eID2.isEmpty,
+                            eID1 == eID2 {
+                        
+                        m2.editedEvent = m2
+                        view.updateWithDescriptor(event: m2)
+                    }
+                }
+            }
+        } else {
+            // 4) Ако е еднодневно, само той влиза в edit режим
+            descriptor.editedEvent = descriptor
+            evView.updateWithDescriptor(event: descriptor)
+        }
+        
+        // 5) Запомняме, ако ползвате тази променлива за друго
+        currentlyEditedEventView = evView
+        
+        // 6) (Опционално) Обновяваме визуална индикация
+        setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
+    }
+
     // MARK: - Drag the event
     private var pinnedTop: CGFloat { return 0 }
     
@@ -398,12 +454,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         let originalStart: Date
     }
     
-    // [CHANGED] - Добавяме нов метод за махане на ghost‑ове, свързани с даден descriptor
     private func removeGhostsForDescriptor(_ descriptor: EventDescriptor) {
         let pairsToRemove = draggingGhosts.filter { (originalView, ghostView) in
             if let d = eventViewToDescriptor[originalView] {
-                // Сравняваме по самия обект (или eventIdentifier), за да гарантираме,
-                // че е един и същи descriptor
                 return d === descriptor
             }
             return false
@@ -422,17 +475,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
         
-        selectEventView(evView)
-        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
-        
         switch gesture.state {
         case .began:
-            // [CHANGED] - Изчистваме стари ghost‑ове за този descriptor
+            // Винаги влизаме в edit mode при задържане,
+            // независимо върху коя част е натиснато.
+            selectEventView(evView)
+
             removeGhostsForDescriptor(descriptor)
             
-            // *** Ако DRAG_DATA_KEY сочи, че вече сме в drag, прекратяваме
             if evView.layer.value(forKey: DRAG_DATA_KEY) != nil {
-                print("DEBUG: Drag already in progress, skipping second .began.")
                 return
             }
             
@@ -453,6 +504,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             let totalDuration = realEnd.timeIntervalSince(realStart)
             
+            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
+            
             var slices: [EventView] = []
             if let multi = descriptor as? EKMultiDayWrapper {
                 let eventID = multi.realEvent.eventIdentifier
@@ -472,6 +525,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             var originalFrames = [EventView: CGRect]()
             for realSliceView in slices {
                 if let desc = eventViewToDescriptor[realSliceView] {
+                    realSliceView.isHidden = false
                     draggingOriginalAlphas[realSliceView] = realSliceView.alpha
                     realSliceView.alpha = 0.0
                     
@@ -530,6 +584,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         case .changed:
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
             
+            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
             let fingerInContainer = gesture.location(in: container)
             let newX = fingerInContainer.x - d.anchorOffsetX
             let newY = fingerInContainer.y - d.anchorOffsetY
@@ -585,7 +640,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                   let anchorGhost = draggingGhosts[evView],
                   let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else {
                 
-                // Ако нямаме drag data
                 for (sv, gh) in draggingGhosts {
                     gh.removeFromSuperview()
                     if let alpha = draggingOriginalAlphas[sv] {
@@ -628,9 +682,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 removeMissingSlicesIfNeeded(for: multi)
             }
             
-            if finalStart == d.originalStart {
-                // No change
-            } else {
+            // Ако действително е преместен
+            if finalStart != d.originalStart {
                 let locationInContainer = gesture.location(in: container)
                 if let hitView = container.hitTest(locationInContainer, with: nil) {
                     let hitViewClass = String(describing: type(of: hitView))
@@ -661,18 +714,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         default:
             break
         }
-    }
-
-    private func selectEventView(_ evView: EventView) {
-        guard let descriptor = eventViewToDescriptor[evView] else { return }
-        if let oldView = currentlyEditedEventView, oldView !== evView,
-           let oldDesc = eventViewToDescriptor[oldView] {
-            oldDesc.editedEvent = nil
-            oldView.updateWithDescriptor(event: oldDesc)
-        }
-        descriptor.editedEvent = descriptor
-        evView.updateWithDescriptor(event: descriptor)
-        currentlyEditedEventView = evView
     }
     
     // MARK: - Resizing
@@ -872,7 +913,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         ctx.strokePath()
         ctx.restoreGState()
         
-        // Red "now" line
+        // Червената линия "сега"
         drawCurrentTimeLine(ctx: ctx)
     }
     
