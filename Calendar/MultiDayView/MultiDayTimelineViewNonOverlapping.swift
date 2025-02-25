@@ -284,6 +284,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     // MARK: - createMissingSlicesIfNeeded / removeMissingSlicesIfNeeded
     @discardableResult
     private func createMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) -> [EventView] {
+        // 1) Изчистваме, ако има стари slice‑ове
         removeMissingSlicesIfNeeded(for: multi)
         
         guard
@@ -293,25 +294,50 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         else {
             return []
         }
-        
+
         let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
         let cal = Calendar.current
         
+        // dayStart = полунощта на realStart
         let dayStart = cal.startOfDay(for: realStart)
-        let dayEnd   = cal.startOfDay(for: realEnd)
+        // dayEnd   = полунощта на realEnd
+        var dayEnd   = cal.startOfDay(for: realEnd)
         
-        let daysBetween = cal.dateComponents([.day], from: dayStart, to: dayEnd).day ?? 0
+        // 2) daysBetween = "цели" дни
+        var totalDays = cal.dateComponents([.day], from: dayStart, to: dayEnd).day ?? 0
+        
+        // 3) Ако realEnd не е точно в 00:00, добавяме +1 ден
+        if !cal.isDate(dayEnd, equalTo: realEnd, toGranularity: .minute) {
+            totalDays += 1
+        }
+        
+        // 4) Ако totalDays е 0 (или по‑малко), правим поне 1
+        // (случай: ev‑тът е в един и същи ден, но не в 00:00)
+        if totalDays < 1 {
+            totalDays = 1
+        }
+        
         var newViews: [EventView] = []
         
-        for i in 0 ..< daysBetween {
+        // 5) Обхождаме [0 ..< totalDays], за да създадем partial slices
+        for i in 0 ..< totalDays {
             guard let thisDay = cal.date(byAdding: .day, value: i, to: dayStart) else { continue }
+            
             let partialDayStart = max(thisDay, realStart)
             guard let nextDay = cal.date(byAdding: .day, value: 1, to: thisDay) else { continue }
             let partialDayEnd = min(nextDay, realEnd)
             
-            if partialDayStart >= partialDayEnd { continue }
-            if partialDayStart <= toDate && partialDayEnd > fromDate { continue }
+            // Ако нямаме реална продължителност:
+            if partialDayStart >= partialDayEnd {
+                continue
+            }
             
+            // Ако [partialDayStart..partialDayEnd] се припокрива с [fromDate..toDate], пропускаме:
+            if partialDayStart <= toDate && partialDayEnd > fromDate {
+                continue
+            }
+            
+            // 6) Създаваме “partial slice”
             let partialWrapper = EKMultiDayWrapper(
                 realEvent:    multi.realEvent,
                 partialStart: partialDayStart,
@@ -322,6 +348,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             hiddenView.isHidden = true
             hiddenView.updateWithDescriptor(event: partialWrapper)
             
+            // Frame изчисление
             let dayIndex = dayIndexFor(partialDayStart)
             let x = leadingInsetForHours
                     + CGFloat(dayIndex) * dayColumnWidth
@@ -332,13 +359,17 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let h = max(1, (toY - fromY) - style.eventGap)
             
             hiddenView.frame = CGRect(x: x, y: fromY, width: w, height: h)
+            
             eventViewToDescriptor[hiddenView] = partialWrapper
             newViews.append(hiddenView)
         }
         
+        // 7) Запазваме резултата
         dragSlicesMap[eventID] = newViews
         return newViews
     }
+
+
     
     private func removeMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) {
         let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
