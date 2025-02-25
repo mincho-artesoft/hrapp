@@ -740,48 +740,55 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         guard
             let handleView = gesture.view as? EventResizeHandleView,
             let eventView = handleView.superview as? EventView,
-            let desc = eventViewToDescriptor[eventView]
+            let desc = eventViewToDescriptor[eventView],
+            let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView
         else { return }
         
         let isTop = (handleView.tag == 0)
         
         switch gesture.state {
         case .began:
-            let ghost = EventView()
-            ghost.updateWithDescriptor(event: desc)
-            eventView.alpha = 0
-            ghost.alpha = 1
-            addSubview(ghost)
-            ghostView = ghost
-            
             setScrollsClipping(enabled: false)
             
-            let dayIndex = dayIndexFor(desc.dateInterval.start)
-            let dayX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
-            let originalY = eventView.frame.origin.y
-            let originalH = eventView.frame.size.height
-            ghost.frame = CGRect(x: dayX, y: originalY, width: dayColumnWidth, height: originalH)
+            // 1) Създаваме ghost и го добавяме в container
+            let ghost = EventView()
+            ghost.updateWithDescriptor(event: desc)
+            ghost.alpha = 1.0
+            container.addSubview(ghost)
+            ghostView = ghost
             
-            eventView.isHidden = true
+            // 2) Определяме originalFrame, но вече в координати на container
+            //    - eventView.frame е в "self" координати, затова:
+            var frameInContainer = self.convert(eventView.frame, to: container)
+            // Ако имате pinnedTop, добавяте го:
+            frameInContainer.origin.y += pinnedTop
             
-            let startGlobal = gesture.location(in: self.window)
+            ghost.frame = frameInContainer
+            
+            // Скриваме/прозрачно правим оригиналния view
+            eventView.alpha = 0
+            
+            // Съхраняваме началната точка (пръста) пак в container
+            let startContainerPoint = gesture.location(in: container)
+            
             let d = ResizeDragData(
-                startGlobalPoint: startGlobal,
-                originalFrame: ghost.frame,
+                startGlobalPoint: startContainerPoint, // вече е 'в контейнер', не 'window'
+                originalFrame: frameInContainer,
                 isTop: isTop,
                 startInterval: desc.dateInterval,
                 wasAllDay: desc.isAllDay
             )
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
-            
+
         case .changed:
             guard
                 let d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? ResizeDragData,
                 let ghost = ghostView
             else { return }
-            
-            let currGlobal = gesture.location(in: self.window)
-            let diffY = currGlobal.y - d.startGlobalPoint.y
+
+            // 3) Текуща позиция на пръста в container
+            let currContainer = gesture.location(in: container)
+            let diffY = currContainer.y - d.startGlobalPoint.y
             
             var f = d.originalFrame
             if d.isTop {
@@ -790,15 +797,23 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             } else {
                 f.size.height += diffY
             }
-            if f.size.height < 20 { return }
+            if f.size.height < 20 { return } // минимум
             
             ghost.frame = f
             
-            if let newDateRaw = dateFromResize(f, isTop: d.isTop, container: self) {
+            // Авто-скрол
+            updateAutoScrollDirection(for: gesture)
+            
+            // Показваме "snap" маркер (ако искате)
+            // Тук ghost е в container coords => за да сметнете дата:
+            // 4) Конвертирате ghost.frame обратно в self
+            let frameInSelf = container.convert(f, to: self)
+            if let newDateRaw = dateFromResize(frameInSelf, isTop: d.isTop, container: self) {
                 setSingle10MinuteMarkFromDate(newDateRaw)
             }
             
         case .ended, .cancelled:
+            stopAutoScroll()
             setScrollsClipping(enabled: true)
             
             guard
@@ -806,10 +821,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 let ghost = ghostView
             else { return }
             
-            let finalFrame = ghost.frame
-            desc.isAllDay = false
+            // Вземаме финалната рамка на ghost (в координати на container)
+            let finalFrameInContainer = ghost.frame
             
-            if let newDateRaw = dateFromResize(finalFrame, isTop: d.isTop, container: self) {
+            // Връщаме се в "self" координати, за да си намерим финалната дата
+            let finalFrameInSelf = container.convert(finalFrameInContainer, to: self)
+            
+            if let newDateRaw = dateFromResize(finalFrameInSelf, isTop: d.isTop, container: self) {
                 let snapped = snapToNearest10Min(newDateRaw)
                 var interval = d.startInterval
                 if d.isTop {
@@ -828,13 +846,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             ghost.removeFromSuperview()
             ghostView = nil
             eventView.alpha = 1
-            eventView.isHidden = false
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             
         default:
             break
         }
     }
+
+
+
     
     // MARK: - dayIndex, etc.
     private func dayIndexFor(_ date: Date) -> Int {
