@@ -754,6 +754,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let ghost = EventView()
             ghost.updateWithDescriptor(event: desc)
             ghost.alpha = 1.0
+            ghost.isHidden = false
             container.addSubview(ghost)
             ghostView = ghost
             
