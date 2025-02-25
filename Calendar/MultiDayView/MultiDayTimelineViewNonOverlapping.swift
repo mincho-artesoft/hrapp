@@ -46,6 +46,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private var eventViews: [EventView] = []
     private var eventViewToDescriptor: [EventView : EventDescriptor] = [:]
     
+    // MARK: - Temporary multi-day slices
+    private var dragSlicesMap = [String: [EventView]]()
+    
     // MARK: - Editing / Drag & Drop / Resize
     private var currentlyEditedEventView: EventView?
     
@@ -83,6 +86,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private func setupLongPressForEmptySpace() {
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressOnEmptySpace(_:)))
         lp.minimumPressDuration = 0.7
+        // lp.allowableMovement = 10 // (ако искате да намалите повторното .began)
         addGestureRecognizer(lp)
     }
     
@@ -99,19 +103,16 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     
     @objc private func handleTapOnEmptySpace(_ gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
-        // Ако имаме редактиран евент, го връщаме към нормален режим:
         if let oldView = currentlyEditedEventView,
            let oldDesc = eventViewToDescriptor[oldView] {
             oldDesc.editedEvent = nil
             oldView.updateWithDescriptor(event: oldDesc)
             currentlyEditedEventView = nil
         }
-        // Премахваме маркираната минута в HoursColumnView
         hoursColumnView?.selectedMinuteMark = nil
         hoursColumnView?.setNeedsDisplay()
     }
 
-    
     @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
         let point = gesture.location(in: self)
@@ -161,10 +162,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         for dayIndex in 0..<dayCount {
             guard let eventsForDay = grouped[dayIndex], !eventsForDay.isEmpty else { continue }
-            // Sort by start date
             let sorted = eventsForDay.sorted { $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start }
             
-            // Build columns so they don’t overlap
             var columns: [[EventLayoutAttributes]] = []
             for attr in sorted {
                 var placed = false
@@ -205,7 +204,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     evView.updateWithDescriptor(event: attr.descriptor)
                     eventViewToDescriptor[evView] = attr.descriptor
                     
-                    // Multi-day handle logic
                     if let multiEvent = attr.descriptor as? EKMultiDayWrapper {
                         let firstDayIndex = dayIndexFor(multiEvent.realEvent.startDate)
                         let lastDayIndex  = dayIndexFor(multiEvent.realEvent.endDate)
@@ -215,11 +213,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                             evView.eventResizeHandles[0].isHidden = !showHandles
                             evView.eventResizeHandles[1].isHidden = !showHandles
                         } else if dayIndex == firstDayIndex {
-                            // First day
                             evView.eventResizeHandles[0].isHidden = false
                             evView.eventResizeHandles[1].isHidden = true
                         } else if dayIndex == lastDayIndex {
-                            // Last day
                             evView.eventResizeHandles[0].isHidden = true
                             evView.eventResizeHandles[1].isHidden = false
                         } else {
@@ -263,18 +259,16 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private func createEventView() -> EventView {
         let ev = EventView()
         
-        // Tap
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
         tapGR.delegate = self
         ev.addGestureRecognizer(tapGR)
         
-        // Long press
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
         lp.minimumPressDuration = 0.1
+        // lp.allowableMovement = 10 // optionally
         lp.delegate = self
         ev.addGestureRecognizer(lp)
         
-        // Resize handles
         for handle in ev.eventResizeHandles {
             let lpResize = UILongPressGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
             lpResize.delegate = self
@@ -287,12 +281,81 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         return ev
     }
     
+    // MARK: - createMissingSlicesIfNeeded / removeMissingSlicesIfNeeded
+    @discardableResult
+    private func createMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) -> [EventView] {
+        removeMissingSlicesIfNeeded(for: multi)
+        
+        guard
+            let realStart = multi.realEvent.startDate,
+            let realEnd   = multi.realEvent.endDate,
+            realStart < realEnd
+        else {
+            return []
+        }
+        
+        let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
+        let cal = Calendar.current
+        
+        let dayStart = cal.startOfDay(for: realStart)
+        let dayEnd   = cal.startOfDay(for: realEnd)
+        
+        let daysBetween = cal.dateComponents([.day], from: dayStart, to: dayEnd).day ?? 0
+        var newViews: [EventView] = []
+        
+        for i in 0 ..< daysBetween {
+            guard let thisDay = cal.date(byAdding: .day, value: i, to: dayStart) else { continue }
+            let partialDayStart = max(thisDay, realStart)
+            guard let nextDay = cal.date(byAdding: .day, value: 1, to: thisDay) else { continue }
+            let partialDayEnd = min(nextDay, realEnd)
+            
+            if partialDayStart >= partialDayEnd { continue }
+            if partialDayStart <= toDate && partialDayEnd > fromDate { continue }
+            
+            let partialWrapper = EKMultiDayWrapper(
+                realEvent:    multi.realEvent,
+                partialStart: partialDayStart,
+                partialEnd:   partialDayEnd
+            )
+            
+            let hiddenView = createEventView()
+            hiddenView.isHidden = true
+            hiddenView.updateWithDescriptor(event: partialWrapper)
+            
+            let dayIndex = dayIndexFor(partialDayStart)
+            let x = leadingInsetForHours
+                    + CGFloat(dayIndex) * dayColumnWidth
+                    + style.eventGap
+            let fromY = topMargin + dateToY(partialDayStart)
+            let toY   = topMargin + dateToY(partialDayEnd)
+            let w = dayColumnWidth - 2 * style.eventGap
+            let h = max(1, (toY - fromY) - style.eventGap)
+            
+            hiddenView.frame = CGRect(x: x, y: fromY, width: w, height: h)
+            eventViewToDescriptor[hiddenView] = partialWrapper
+            newViews.append(hiddenView)
+        }
+        
+        dragSlicesMap[eventID] = newViews
+        return newViews
+    }
+    
+    private func removeMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) {
+        let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
+        guard let slices = dragSlicesMap[eventID] else { return }
+        
+        for sliceView in slices {
+            sliceView.removeFromSuperview()
+            eventViewToDescriptor.removeValue(forKey: sliceView)
+        }
+        dragSlicesMap.removeValue(forKey: eventID)
+    }
+    
     // MARK: - Gesture: Tap on Event
     @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
         guard let tappedView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[tappedView] else { return }
         
-        // Deselect old
         if let oldView = currentlyEditedEventView, oldView !== tappedView,
            let oldDesc = eventViewToDescriptor[oldView] {
             oldDesc.editedEvent = nil
@@ -307,54 +370,38 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         onEventTap?(descriptor)
     }
     
-    @objc private func handleEventViewLongPress(_ gesture: UILongPressGestureRecognizer) {
-        guard let evView = gesture.view as? EventView,
-              let descriptor = eventViewToDescriptor[evView] else { return }
-        if gesture.state == .began {
-            // Deselect old
-            if let oldView = currentlyEditedEventView,
-               oldView !== evView,
-               let oldDesc = eventViewToDescriptor[oldView] {
-                oldDesc.editedEvent = nil
-                oldView.updateWithDescriptor(event: oldDesc)
-            }
-            // Mark as editing
-            if descriptor.editedEvent == nil {
-                descriptor.editedEvent = descriptor
-                evView.updateWithDescriptor(event: descriptor)
-            }
-            currentlyEditedEventView = evView
-        }
-    }
-    
     // MARK: - Drag the event
-    /// Additional pinned top offset to fix vertical mismatch from pinned headers/all-day, etc.
-    private var pinnedTop: CGFloat {
-        return 0
-    }
+    private var pinnedTop: CGFloat { return 0 }
     
-    // Добавете новото свойство originalStart в DragData:
     private struct DragData {
         let totalDuration: TimeInterval
         let originalContainerFrames: [EventView: CGRect]
         let anchorOffsetX: CGFloat
         let anchorOffsetY: CGFloat
-        let originalStart: Date  // Ново – запазва оригиналния старт
+        let originalStart: Date
     }
-
-    @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
+    
+    @objc private func handleEventViewPan(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
         
-            selectEventView(evView)
-        // Контейнерът (superview на superview)
+        selectEventView(evView)
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         
         switch gesture.state {
         case .began:
+            // *** Защита срещу второ .began за същия view
+            if evView.layer.value(forKey: DRAG_DATA_KEY) != nil {
+                print("DEBUG: Drag already in progress, skipping second .began.")
+                return
+            }
+            
             setScrollsClipping(enabled: false)
-          
-            // Реалния старт/край на целия многодневен евент
+            
+            if let multi = descriptor as? EKMultiDayWrapper {
+                createMissingSlicesIfNeeded(for: multi)
+            }
+            
             let realStart: Date
             let realEnd: Date
             if let multi = descriptor as? EKMultiDayWrapper {
@@ -366,7 +413,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             let totalDuration = realEnd.timeIntervalSince(realStart)
             
-            // Определяме всички "слайсове" за евента
             var slices: [EventView] = []
             if let multi = descriptor as? EKMultiDayWrapper {
                 let eventID = multi.realEvent.eventIdentifier
@@ -383,38 +429,31 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
-            // Създаваме ghost-и в координатната система на контейнера
             var originalFrames = [EventView: CGRect]()
             for realSliceView in slices {
                 if let desc = eventViewToDescriptor[realSliceView] {
-                    // При потискане – избледняваме реалния изглед
                     draggingOriginalAlphas[realSliceView] = realSliceView.alpha
                     realSliceView.alpha = 0.0
                     
-                    // Конвертираме рамката от self към контейнера
                     let sliceFrameInTimeline = realSliceView.frame
                     var sliceFrameInContainer = self.convert(sliceFrameInTimeline, to: container)
-                    // Компенсираме за pinnedTop, за да е под пръста
                     sliceFrameInContainer.origin.y += pinnedTop
                     
-                    // Създаваме ghost за целия многодневен период
                     let ghost = createEventView()
                     ghost.updateWithDescriptor(event: desc)
                     ghost.alpha = 1.0
                     ghost.layer.zPosition = 2
                     container.addSubview(ghost)
                     
-                    // Изчисляваме финалната височина – целият период
                     let hoursTotal = totalDuration / 3600.0
                     let ghostH = hourHeight * CGFloat(hoursTotal)
                     
-                    // Горната част се подравнява спрямо realStart
                     let dayIndex = dayIndexFor(desc.dateInterval.start)
                     let dayStart = dayStartDate(for: dayIndex)
                     let hoursOffset = realStart.timeIntervalSince(dayStart) / 3600.0
                     let topY = topMargin + CGFloat(hoursOffset) * hourHeight
                     let finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY) - 10
-
+                    
                     let ghostX = sliceFrameInContainer.minX
                     let ghostW = dayColumnWidth - style.eventGap * 2
                     
@@ -432,7 +471,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 }
             }
             
-            // Изчисляваме отместването от пръста спрямо ghost-а
             let fingerInContainer = gesture.location(in: container)
             guard let anchorGhost = draggingGhosts[evView] else { return }
             
@@ -440,7 +478,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let offsetX = fingerInContainer.x - anchorFrame.minX
             let offsetY = fingerInContainer.y - anchorFrame.minY
             
-            // Създаваме DragData – тук запазваме и оригиналния стартов момент
             let d = DragData(
                 totalDuration: totalDuration,
                 originalContainerFrames: originalFrames,
@@ -449,7 +486,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 originalStart: descriptor.dateInterval.start
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
-            print("Начало на драгването")
             
         case .changed:
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
@@ -475,7 +511,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 }
             }
             
-            // Логика за маркиране на 10-минутни интервали
             if let anchorGhost = draggingGhosts[evView] {
                 var ghostFrameInTimeline = anchorGhost.frame
                 ghostFrameInTimeline.origin.y -= pinnedTop
@@ -509,7 +544,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData,
                   let anchorGhost = draggingGhosts[evView],
                   let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else {
-                // Изчистване
+                
+                // Ако нямаме drag data
                 for (sv, gh) in draggingGhosts {
                     gh.removeFromSuperview()
                     if let alpha = draggingOriginalAlphas[sv] {
@@ -523,25 +559,22 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 return
             }
             
-            // Конвертираме финалния ghost от контейнера към self
-            var finalFrame = anchorGhost.frame
-            finalFrame.origin.y -= pinnedTop
-            let finalFrameInTimeline = container.convert(finalFrame, to: self)
+            let finalFrame = anchorGhost.frame
+            var finalFrameInTimeline = finalFrame
+            finalFrameInTimeline.origin.y -= pinnedTop
+            let frameSelf = container.convert(finalFrameInTimeline, to: self)
             
-            // Определяме деня по midX
-            let midX = finalFrameInTimeline.midX
+            let midX = frameSelf.midX
             var dayIndex = Int(floor((midX - leadingInsetForHours) / dayColumnWidth))
             dayIndex = max(0, min(dayIndex, dayCount - 1))
             
-            // Изчисляваме часа по topY
-            let topY = finalFrameInTimeline.minY
+            let topY = frameSelf.minY
             let hourOffset = (topY - topMargin) / hourHeight
             
             let dayDate = dayStartDate(for: dayIndex)
             let finalStart = dayDate.addingTimeInterval(hourOffset * 3600)
             let finalEnd   = finalStart.addingTimeInterval(d.totalDuration)
             
-            // Премахваме ghost-ите
             for (sv, gh) in draggingGhosts {
                 gh.removeFromSuperview()
                 if let alpha = draggingOriginalAlphas[sv] {
@@ -551,12 +584,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
-            // Проверяваме дали стартовият момент не е променен
+            if let multi = descriptor as? EKMultiDayWrapper {
+                removeMissingSlicesIfNeeded(for: multi)
+            }
+            
             if finalStart == d.originalStart {
-                // Няма значителна промяна – нямаме нужда да извикваме callback‑а
-                // Може тук да добавите допълнително възстановяване на UI, ако е нужно
+                // No change
             } else {
-                // Ако има промяна – определяме кой callback да се извика според drop зоната
                 let locationInContainer = gesture.location(in: container)
                 if let hitView = container.hitTest(locationInContainer, with: nil) {
                     let hitViewClass = String(describing: type(of: hitView))
@@ -566,15 +600,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     descriptor.isAllDay = false
                     descriptor.dateInterval = DateInterval(start: finalStart, end: finalEnd)
                     
-                    if hitViewClass == "MultiDayTimelineViewNonOverlapping"
-                        || parent1Class == "MultiDayTimelineViewNonOverlapping"
-                        || parent2Class == "MultiDayTimelineViewNonOverlapping" {
+                    if  hitViewClass.contains("MultiDayTimelineViewNonOverlapping")
+                        || parent1Class.contains("MultiDayTimelineViewNonOverlapping")
+                        || parent2Class.contains("MultiDayTimelineViewNonOverlapping") {
                         
                         onEventDragEnded?(descriptor, finalStart, false)
                         
-                    } else if hitViewClass == "AllDayViewNonOverlapping"
-                                || parent1Class == "AllDayViewNonOverlapping"
-                                || parent2Class == "AllDayViewNonOverlapping" {
+                    } else if hitViewClass.contains("AllDayViewNonOverlapping")
+                                || parent1Class.contains("AllDayViewNonOverlapping")
+                                || parent2Class.contains("AllDayViewNonOverlapping") {
                         
                         onEventConvertToAllDay?(descriptor, dayIndex)
                     }
@@ -601,21 +635,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         currentlyEditedEventView = evView
     }
     
-    // MARK: - Helpers for day index
-    func dayStartDate(for dayIndex: Int) -> Date {
-        let cal = Calendar.current
-        let start = cal.startOfDay(for: fromDate)
-        return cal.date(byAdding: .day, value: dayIndex, to: start) ?? start
-    }
-    
-    private func dayIndexFor(_ date: Date) -> Int {
-        let cal = Calendar.current
-        let startOnly = cal.startOfDay(for: fromDate)
-        let dateOnly = cal.startOfDay(for: date)
-        let comps = cal.dateComponents([.day], from: startOnly, to: dateOnly)
-        return comps.day ?? 0
-    }
-    
     // MARK: - Resizing
     private struct ResizeDragData {
         let startGlobalPoint: CGPoint
@@ -625,8 +644,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         let wasAllDay: Bool
     }
     
-    // ********** Обновената функция за resize **********
-    @objc private func handleResizeHandlePanGesture(_ gesture: UIPanGestureRecognizer) {
+    @objc private func handleResizeHandlePanGesture(_ gesture: UILongPressGestureRecognizer) {
         guard
             let handleView = gesture.view as? EventResizeHandleView,
             let eventView = handleView.superview as? EventView,
@@ -637,16 +655,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         switch gesture.state {
         case .began:
-            
-            // Ако драгвате долната част (resize handle с isTop == false) на многодневен евент, принтираме.
-            if !isTop, let multi = desc as? EKMultiDayWrapper {
-                let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
-                let lastDayIndex = dayIndexFor(multi.realEvent.endDate)
-                if firstDayIndex != lastDayIndex {
-                    print("Драгвате последната част от многодневен евент: \(String(describing: multi.realEvent.eventIdentifier))")
-                }
-            }
-            
             let ghost = EventView()
             ghost.updateWithDescriptor(event: desc)
             eventView.alpha = 0
@@ -694,8 +702,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             
             ghost.frame = f
             
-            if let newEdgeDate = dateFromResize(f, isTop: d.isTop, container: self) {
-                setSingle10MinuteMarkFromDate(newEdgeDate)
+            if let newDateRaw = dateFromResize(f, isTop: d.isTop, container: self) {
+                setSingle10MinuteMarkFromDate(newDateRaw)
             }
             
         case .ended, .cancelled:
@@ -729,23 +737,31 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             ghostView = nil
             eventView.alpha = 1
             eventView.isHidden = false
-//            setNeedsLayout()
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             
         default:
             break
         }
     }
-    // ***************************************************
     
-    @objc private func handleResizeHandleLongPressGesture(_ gesture: UILongPressGestureRecognizer) {
-        // Additional logic if needed
+    // MARK: - dayIndex, etc.
+    private func dayIndexFor(_ date: Date) -> Int {
+        let cal = Calendar.current
+        let startOnly = cal.startOfDay(for: fromDate)
+        let dateOnly = cal.startOfDay(for: date)
+        let comps = cal.dateComponents([.day], from: startOnly, to: dateOnly)
+        return comps.day ?? 0
+    }
+    
+    func dayStartDate(for dayIndex: Int) -> Date {
+        let cal = Calendar.current
+        let start = cal.startOfDay(for: fromDate)
+        return cal.date(byAdding: .day, value: dayIndex, to: start) ?? start
     }
     
     private func dateFromResize(_ frameInContainer: CGRect,
                                 isTop: Bool,
                                 container: UIView) -> Date? {
-        // remove pinnedTop first
         var adjusted = frameInContainer
         adjusted.origin.y -= pinnedTop
         
@@ -816,7 +832,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         ctx.strokePath()
         ctx.restoreGState()
         
-        // Red "now" line if in range
+        // Red "now" line
         drawCurrentTimeLine(ctx: ctx)
     }
     
@@ -956,7 +972,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     }
     
     // MARK: - Auto Scroll
-    private func updateAutoScrollDirection(for gesture: UIPanGestureRecognizer) {
+    private func updateAutoScrollDirection(for gesture: UILongPressGestureRecognizer) {
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         let location = gesture.location(in: container)
         let threshold: CGFloat = 50
@@ -1019,6 +1035,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         if midX < leadingInsetForHours { return nil }
         let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
+        
         let cal = Calendar.current
         if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate)) {
             if topY < 0 { return nil }
