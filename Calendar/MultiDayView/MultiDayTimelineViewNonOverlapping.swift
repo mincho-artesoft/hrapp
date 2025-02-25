@@ -56,6 +56,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private var draggingGhosts: [EventView: EventView] = [:]
     private var draggingOriginalAlphas: [EventView: CGFloat] = [:]
     
+    // [CHANGED] - DRAG_DATA_KEY си остава същото
     private let DRAG_DATA_KEY = "DragDataKey"
     private var ghostView: EventView? // for resizing
     
@@ -86,7 +87,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private func setupLongPressForEmptySpace() {
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressOnEmptySpace(_:)))
         lp.minimumPressDuration = 0.7
-        // lp.allowableMovement = 10 // (ако искате да намалите повторното .began)
         addGestureRecognizer(lp)
     }
     
@@ -265,7 +265,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
         lp.minimumPressDuration = 0.1
-        // lp.allowableMovement = 10 // optionally
         lp.delegate = self
         ev.addGestureRecognizer(lp)
         
@@ -298,28 +297,21 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
         let cal = Calendar.current
         
-        // dayStart = полунощта на realStart
         let dayStart = cal.startOfDay(for: realStart)
-        // dayEnd   = полунощта на realEnd
         var dayEnd   = cal.startOfDay(for: realEnd)
         
-        // 2) daysBetween = "цели" дни
         var totalDays = cal.dateComponents([.day], from: dayStart, to: dayEnd).day ?? 0
         
-        // 3) Ако realEnd не е точно в 00:00, добавяме +1 ден
         if !cal.isDate(dayEnd, equalTo: realEnd, toGranularity: .minute) {
             totalDays += 1
         }
         
-        // 4) Ако totalDays е 0 (или по‑малко), правим поне 1
-        // (случай: ev‑тът е в един и същи ден, но не в 00:00)
         if totalDays < 1 {
             totalDays = 1
         }
         
         var newViews: [EventView] = []
         
-        // 5) Обхождаме [0 ..< totalDays], за да създадем partial slices
         for i in 0 ..< totalDays {
             guard let thisDay = cal.date(byAdding: .day, value: i, to: dayStart) else { continue }
             
@@ -327,17 +319,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             guard let nextDay = cal.date(byAdding: .day, value: 1, to: thisDay) else { continue }
             let partialDayEnd = min(nextDay, realEnd)
             
-            // Ако нямаме реална продължителност:
             if partialDayStart >= partialDayEnd {
                 continue
             }
             
-            // Ако [partialDayStart..partialDayEnd] се припокрива с [fromDate..toDate], пропускаме:
+            // Ако [partialDayStart..partialDayEnd] се припокрива с [fromDate..toDate], пропускаме
             if partialDayStart <= toDate && partialDayEnd > fromDate {
                 continue
             }
             
-            // 6) Създаваме “partial slice”
             let partialWrapper = EKMultiDayWrapper(
                 realEvent:    multi.realEvent,
                 partialStart: partialDayStart,
@@ -348,7 +338,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             hiddenView.isHidden = true
             hiddenView.updateWithDescriptor(event: partialWrapper)
             
-            // Frame изчисление
             let dayIndex = dayIndexFor(partialDayStart)
             let x = leadingInsetForHours
                     + CGFloat(dayIndex) * dayColumnWidth
@@ -364,13 +353,10 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             newViews.append(hiddenView)
         }
         
-        // 7) Запазваме резултата
         dragSlicesMap[eventID] = newViews
         return newViews
     }
 
-
-    
     private func removeMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) {
         let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
         guard let slices = dragSlicesMap[eventID] else { return }
@@ -412,6 +398,26 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         let originalStart: Date
     }
     
+    // [CHANGED] - Добавяме нов метод за махане на ghost‑ове, свързани с даден descriptor
+    private func removeGhostsForDescriptor(_ descriptor: EventDescriptor) {
+        let pairsToRemove = draggingGhosts.filter { (originalView, ghostView) in
+            if let d = eventViewToDescriptor[originalView] {
+                // Сравняваме по самия обект (или eventIdentifier), за да гарантираме,
+                // че е един и същи descriptor
+                return d === descriptor
+            }
+            return false
+        }
+        for (originalView, ghostView) in pairsToRemove {
+            ghostView.removeFromSuperview()
+            draggingGhosts.removeValue(forKey: originalView)
+            if let oldAlpha = draggingOriginalAlphas[originalView] {
+                originalView.alpha = oldAlpha
+                draggingOriginalAlphas.removeValue(forKey: originalView)
+            }
+        }
+    }
+    
     @objc private func handleEventViewPan(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
@@ -421,7 +427,10 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         switch gesture.state {
         case .began:
-            // *** Защита срещу второ .began за същия view
+            // [CHANGED] - Изчистваме стари ghost‑ове за този descriptor
+            removeGhostsForDescriptor(descriptor)
+            
+            // *** Ако DRAG_DATA_KEY сочи, че вече сме в drag, прекратяваме
             if evView.layer.value(forKey: DRAG_DATA_KEY) != nil {
                 print("DEBUG: Drag already in progress, skipping second .began.")
                 return
