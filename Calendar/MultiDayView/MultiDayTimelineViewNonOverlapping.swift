@@ -53,7 +53,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     
     // Ключ за запазване на данни при drag
     private let DRAG_DATA_KEY = "DragDataKey"
-    private var ghostView: EventView? // for resizing
     
     // MARK: - Auto-Scroll
     private var autoScrollDisplayLink: CADisplayLink?
@@ -782,53 +781,119 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         guard
             let handleView = gesture.view as? EventResizeHandleView,
             let eventView = handleView.superview as? EventView,
-            let desc = eventViewToDescriptor[eventView],
-            let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView
+            let desc = eventViewToDescriptor[eventView]
         else { return }
         
         let isTop = (handleView.tag == 0)
-        
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         switch gesture.state {
         case .began:
-            setScrollsClipping(enabled: false)
+            // 1) Вкарваме евента в "edit" режим
+            selectEventView(eventView)
             
-            // 1) Създаваме ghost и го добавяме в container
-            let ghost = EventView()
-            ghost.updateWithDescriptor(event: desc)
-            ghost.alpha = 1.0
-            ghost.isHidden = false
-            container.addSubview(ghost)
-            ghostView = ghost
+            // 2) Премахваме стари ghost-ове, ако има
+            removeGhostsForDescriptor(desc)
             
-            // 2) Определяме originalFrame, но вече в координати на container
-            let frameInContainer = self.convert(eventView.frame, to: container)
+            // 3) Проверяваме дали вече има drag data
+            if eventView.layer.value(forKey: DRAG_DATA_KEY) != nil {
+                return
+            }
             
-            ghost.frame = frameInContainer
+            // 4) [Ако е многодневно] Създаваме липсващи slice-ове (ако трябва)
+            if let multi = desc as? EKMultiDayWrapper {
+                let eventID = multi.realEvent.eventIdentifier
+                // Събиране на текущи slice-ове
+                let existingSlices = eventViewToDescriptor.keys.filter { v in
+                    guard let d = eventViewToDescriptor[v] as? EKMultiDayWrapper else { return false }
+                    return d.realEvent.eventIdentifier == eventID
+                }
+                let totalDays = 1 + Calendar.current.dateComponents(
+                    [.day],
+                    from: Calendar.current.startOfDay(for: multi.realEvent.startDate),
+                    to:   Calendar.current.startOfDay(for: multi.realEvent.endDate)
+                ).day!
+                if existingSlices.count != totalDays {
+                    createMissingSlicesIfNeeded(for: multi, count: existingSlices.count)
+                }
+            }
             
-            // Скриваме/прозрачно правим оригиналния view
-            eventView.alpha = 0
+            // 5) Събираме всички slice-ове на това събитие
+            var slices: [EventView] = []
+            if let multi = desc as? EKMultiDayWrapper {
+                let eventID = multi.realEvent.eventIdentifier
+                for (ov, od) in eventViewToDescriptor {
+                    if let om = od as? EKMultiDayWrapper,
+                       om.realEvent.eventIdentifier == eventID {
+                        slices.append(ov)
+                    }
+                }
+            } else {
+                slices = [eventView]
+            }
             
-            // Съхраняваме началната точка (пръста) пак в container
-            let startContainerPoint = gesture.location(in: container)
+            // 6) Правим ghost-ове и запомняме начална рамка
+            draggingGhosts.removeAll()
+            draggingOriginalAlphas.removeAll()
             
+            var originalFrames = [EventView: CGRect]()
+            for realSliceView in slices {
+                if let desc = eventViewToDescriptor[realSliceView] {
+                    
+                    realSliceView.isHidden = false
+                    draggingOriginalAlphas[realSliceView] = realSliceView.alpha
+                    realSliceView.alpha = 0.0
+                    
+                    let sliceFrameInContainer = realSliceView.frame
+                    
+                    let ghost = createEventView()
+                    ghost.updateWithDescriptor(event: desc)
+                    ghost.alpha = 1.0
+                    ghost.layer.zPosition = 2
+                    addSubview(ghost)
+                    
+                    let dayIndex = dayIndexFor(desc.dateInterval.start)
+                    let ghostX =  leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                    let ghostY = sliceFrameInContainer.minY
+                    let ghostW = dayColumnWidth - style.eventGap * 2 - 2
+                    let ghostH = sliceFrameInContainer.height
+
+                   
+                  
+                    let ghostFrame = CGRect(
+                        x: ghostX,
+                        y: ghostY,
+                        width: ghostW,
+                        height: ghostH
+                    )
+                    ghost.frame = ghostFrame
+                    ghost.isHidden = false
+                    
+                    draggingGhosts[realSliceView] = ghost
+                    originalFrames[realSliceView] = ghostFrame
+                }
+            }
+            
+            // 7) Запомняме началната точка + оригиналния frame
+            let startPointInSelf = gesture.location(in: self)
             let d = ResizeDragData(
-                startGlobalPoint: startContainerPoint, // вече е 'в контейнер', не 'window'
-                originalFrame: frameInContainer,
+                startGlobalPoint: startPointInSelf, // сега е в self
+                originalFrame: originalFrames[eventView] ?? .zero,
                 isTop: isTop,
                 startInterval: desc.dateInterval,
                 wasAllDay: desc.isAllDay
             )
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
+            
 
+            
         case .changed:
             guard
                 let d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? ResizeDragData,
-                let ghost = ghostView
+                let ghost = draggingGhosts[eventView]
             else { return }
-
-            // 3) Текуща позиция на пръста в container
-            let currContainer = gesture.location(in: container)
-            let diffY = currContainer.y - d.startGlobalPoint.y
+            
+            let currPointInSelf = gesture.location(in: self)
+            let diffY = currPointInSelf.y - d.startGlobalPoint.y
             
             var f = d.originalFrame
             if d.isTop {
@@ -840,67 +905,96 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             if f.size.height < 20 { return } // минимум
             
             ghost.frame = f
-            // 1) Преобразуваме координатата от container към self (timeline)
-            let pointInTimeline = container.convert(currContainer, to: self)
-
-            // 2) Изчисляваме dayIndex
+            
+            let pointInTimeline = container.convert(currPointInSelf, to: self)
             var dayIndex = Int((pointInTimeline.x - leadingInsetForHours) / dayColumnWidth)
             dayIndex = max(0, min(dayIndex, dayCount - 1))
 
-            print("resize ", currContainer.x, " dayIndex=", dayIndex)
-
-            // Авто-скрол
+            print("resize ", currPointInSelf.x, " dayIndex=", dayIndex)
+            // Авто-скрол, ако ползвате
             updateAutoScrollDirection(for: gesture)
             
-            // Показваме "snap" маркер
-            let frameInSelf = container.convert(f, to: self)
-            if let newDateRaw = dateFromResize(frameInSelf, isTop: d.isTop, container: self) {
-                // Тук, ако искате, може да сложите snap при показването:
-                let snapped = snapToNearest10Min(newDateRaw) // ADDED
-                setSingle10MinuteMarkFromDate(snapped)       // CHANGED
+            // Покажи snap маркер
+            if let newDateRaw = dateFromResize(f, isTop: d.isTop) {
+                let snapped = snapToNearest10Min(newDateRaw)
+                setSingle10MinuteMarkFromDate(snapped)
             }
             
         case .ended, .cancelled:
             stopAutoScroll()
             setScrollsClipping(enabled: true)
+            hoursColumnView?.selectedMinuteMark = nil
             
             guard
                 let d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? ResizeDragData,
-                let ghost = ghostView
-            else { return }
+                let ghost = draggingGhosts[eventView]
+            else {
+                // Ако нещо е гръмнало - чистим всичко
+                for (sv, gh) in draggingGhosts {
+                    gh.removeFromSuperview()
+                    if let oldAlpha = draggingOriginalAlphas[sv] {
+                        sv.alpha = oldAlpha
+                    }
+                }
+                draggingGhosts.removeAll()
+                draggingOriginalAlphas.removeAll()
+                return
+            }
             
-            // Вземаме финалната рамка на ghost (в координати на container)
-            let finalFrameInContainer = ghost.frame
+            // Взимаме финалния frame
+            let finalFrameInSelf = ghost.frame
             
-            // Връщаме се в "self" координати, за да си намерим финалната дата
-            let finalFrameInSelf = container.convert(finalFrameInContainer, to: self)
+            // Премахваме всички ghost-ове и показваме реалните
+            for (sv, gh) in draggingGhosts {
+                gh.removeFromSuperview()
+                if let oldAlpha = draggingOriginalAlphas[sv] {
+                    sv.alpha = oldAlpha
+                }
+            }
+            draggingGhosts.removeAll()
+            draggingOriginalAlphas.removeAll()
             
-            if let newDateRaw = dateFromResize(finalFrameInSelf, isTop: d.isTop, container: self) {
-                // CHANGED: Снап в края
+            // Махаме временните slice-ове, ако е многодневно
+            if let multi = desc as? EKMultiDayWrapper {
+                removeMissingSlicesIfNeeded(for: multi)
+            }
+            
+            // Нулираме DRAG_DATA_KEY
+            eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+            
+            // Изчисляваме нов start/end
+            var interval = d.startInterval
+            desc.isAllDay = false
+            
+            if let newDateRaw = dateFromResize(finalFrameInSelf, isTop: d.isTop) {
                 let snapped = snapToNearest10Min(newDateRaw)
-                var interval = d.startInterval
                 if d.isTop {
+                    // Нов start
                     if snapped < interval.end {
                         interval = DateInterval(start: snapped, end: interval.end)
                     }
                 } else {
+                    // Нов end
                     if snapped > interval.start {
                         interval = DateInterval(start: interval.start, end: snapped)
                     }
                 }
-                desc.dateInterval = interval
-                onEventDragResizeEnded?(desc, snapped)
             }
+            desc.dateInterval = interval
             
-            ghost.removeFromSuperview()
-            ghostView = nil
-            eventView.alpha = 1
-            eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+            // Вече newEdge не е Optional, затова просто:
+            let newEdge = d.isTop ? interval.start : interval.end
+            onEventDragResizeEnded?(desc, newEdge)
+            
+            // Презареждаме layout
+            setNeedsLayout()
             
         default:
             break
         }
     }
+
+
 
     // MARK: - dayIndex, etc.
     private func dayIndexFor(_ date: Date) -> Int {
@@ -917,22 +1011,16 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         return cal.date(byAdding: .day, value: dayIndex, to: start) ?? start
     }
     
-    private func dateFromResize(_ frameInContainer: CGRect,
-                                isTop: Bool,
-                                container: UIView) -> Date? {
-        let adjusted = frameInContainer
-        
-        let inTimeline = container.convert(adjusted, to: self)
-        
-        let y = isTop ? inTimeline.minY : inTimeline.maxY
+    private func dateFromResize(_ frameInTimeline: CGRect,
+                                isTop: Bool) -> Date? {
+        let y = isTop ? frameInTimeline.minY : frameInTimeline.maxY
         let localY = y - topMargin
-        let midX = inTimeline.midX
+        let midX = frameInTimeline.midX
         
         if midX < leadingInsetForHours { return nil }
         let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
         
-        let cal = Calendar.current
         let dayDate = dayStartDate(for: dayIndex)
         
         var hoursFloat = localY / hourHeight
@@ -942,12 +1030,14 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         let minuteFloat = (hoursFloat - hour) * 60
         let minute = floor(minuteFloat)
         
-        var comps = cal.dateComponents([.year, .month, .day], from: dayDate)
+        var comps = Calendar.current.dateComponents([.year, .month, .day], from: dayDate)
         comps.hour = Int(hour)
         comps.minute = Int(minute)
         comps.second = 0
-        return cal.date(from: comps)
+        
+        return Calendar.current.date(from: comps)
     }
+
     
     // MARK: - Drawing
     public override func draw(_ rect: CGRect) {
