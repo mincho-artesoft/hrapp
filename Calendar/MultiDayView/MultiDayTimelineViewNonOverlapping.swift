@@ -586,14 +586,12 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                          finalY = sliceFrameInContainer.minY
                          ghostH = sliceFrameInContainer.height
                     }
-                    if evView == realSliceView,
-                       desc.dateInterval.start == realStart {
-                        print("Това е първото парче от многодневното събитие.",sliceFrameInContainer.minX)
-                    }
-
+                    let localX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+                    // Конвертираме точка (localX, 0) от self към container:
+                    let containerPoint = self.convert(CGPoint(x: localX, y: 0), to: container)
                     
                     let ghostFrame = CGRect(
-                        x: ghostX,
+                        x: containerPoint.x + 2,
                         y: finalY,
                         width: ghostW,
                         height: ghostH
