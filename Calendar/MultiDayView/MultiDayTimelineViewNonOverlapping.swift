@@ -526,10 +526,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                         slices.append(ov)
                     }
                 }
-            } else {
-                slices.append(evView)
             }
-            
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
@@ -551,7 +548,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     container.addSubview(ghost)
                     
                     let hoursTotal = totalDuration / 3600.0
-                    let ghostH = hourHeight * CGFloat(hoursTotal)
+                    let ghostH = hourHeight * CGFloat(hoursTotal) - 2
                     
                     let dayIndex = dayIndexFor(desc.dateInterval.start)
                     let dayStart = dayStartDate(for: dayIndex)
@@ -560,7 +557,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     let finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY) - 10
                     
                     let ghostX = sliceFrameInContainer.minX
-                    let ghostW = dayColumnWidth - style.eventGap * 2
+                    let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                     
                     let ghostFrame = CGRect(
                         x: ghostX,
