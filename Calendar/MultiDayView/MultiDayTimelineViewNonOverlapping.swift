@@ -577,8 +577,11 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     let topY = topMargin + CGFloat(hoursOffset) * hourHeight
                     var finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY) - 10
                     
+                    let localX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+                    // Конвертираме точка (localX, 0) от self към container:
+                    let containerPoint = self.convert(CGPoint(x: localX, y: 0), to: container)
                     
-                    let ghostX = sliceFrameInContainer.minX
+                    let ghostX = containerPoint.x + 2
                     let ghostW = dayColumnWidth - style.eventGap * 2 - 2
 
                     if totalDays == 1{
@@ -586,12 +589,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                          finalY = sliceFrameInContainer.minY
                          ghostH = sliceFrameInContainer.height
                     }
-                    let localX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
-                    // Конвертираме точка (localX, 0) от self към container:
-                    let containerPoint = self.convert(CGPoint(x: localX, y: 0), to: container)
-                    
+                  
                     let ghostFrame = CGRect(
-                        x: containerPoint.x + 2,
+                        x: ghostX,
                         y: finalY,
                         width: ghostW,
                         height: ghostH
