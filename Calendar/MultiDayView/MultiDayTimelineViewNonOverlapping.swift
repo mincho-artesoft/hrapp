@@ -840,7 +840,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             if f.size.height < 20 { return } // минимум
             
             ghost.frame = f
-            
+            // 1) Преобразуваме координатата от container към self (timeline)
+            let pointInTimeline = container.convert(currContainer, to: self)
+
+            // 2) Изчисляваме dayIndex
+            var dayIndex = Int((pointInTimeline.x - leadingInsetForHours) / dayColumnWidth)
+            dayIndex = max(0, min(dayIndex, dayCount - 1))
+
+            print("resize ", currContainer.x, " dayIndex=", dayIndex)
+
             // Авто-скрол
             updateAutoScrollDirection(for: gesture)
             
