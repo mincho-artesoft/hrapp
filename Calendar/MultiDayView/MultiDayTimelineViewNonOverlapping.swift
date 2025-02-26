@@ -315,7 +315,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     @discardableResult
     private func createMissingSlicesIfNeeded(for multi: EKMultiDayWrapper, count: Int) -> [EventView] {
         removeMissingSlicesIfNeeded(for: multi)
-        
         guard
             let realStart = multi.realEvent.startDate,
             let realEnd   = multi.realEvent.endDate,
@@ -343,7 +342,25 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         var newViews: [EventView] = []
         
-        for i in count ..< totalDays {
+        guard
+               let realStart = multi.realEvent.startDate,
+               let realEnd   = multi.realEvent.endDate,
+               realStart < realEnd
+           else {
+               return []
+           }
+           
+         
+           if realStart < fromDate {
+            print ("realStart < fromDate")
+           }
+           
+           if realEnd > toDate {
+            print("realEnd > toDate")
+           }
+        
+      
+        for i in 0 ..< totalDays {
             guard let thisDay = cal.date(byAdding: .day, value: i, to: dayStart) else { continue }
             
             let partialDayStart = max(thisDay, realStart)
@@ -535,7 +552,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             print("IndexB", slices.count)
             if let multi = descriptor as? EKMultiDayWrapper {
-                if totalDays != slices.count {
+                if totalDays != slices.count || totalDays > 1{
                     minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
                 }
             }
