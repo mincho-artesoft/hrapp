@@ -16,6 +16,9 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     public var fromDate: Date = Date()
     public var toDate: Date = Date()
     public var style = TimelineStyle()
+    // MARK: - Auto-Scroll
+    private var autoScrollDisplayLink: CADisplayLink?
+    private var autoScrollDirection = CGPoint.zero
 
     // Ляво отстояние (ако имаме колона за часове). Тук е 0, задава се отвън.
     public var leadingInsetForHours: CGFloat = 0
@@ -290,7 +293,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             } else {
                 clear10MinuteMark()
             }
-            
+            updateAutoScrollDirection(for: gesture)
         case .ended, .cancelled:
             clear10MinuteMark()
             setScrollsClipping(enabled: true)
@@ -532,5 +535,59 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     private func setScrollsClipping(enabled: Bool) {
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         container.allDayScrollView.clipsToBounds = enabled
+    }
+    private func updateAutoScrollDirection(for gesture: UIPanGestureRecognizer) {
+        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
+        let location = gesture.location(in: container)
+        let threshold: CGFloat = 50
+        var direction = CGPoint.zero
+        
+        let scrollFrame = container.mainScrollView.frame
+        
+        if location.x < scrollFrame.minX + threshold {
+            direction.x = -1
+        } else if location.x > scrollFrame.maxX - threshold {
+            direction.x = 1
+        }
+        
+        if location.y < scrollFrame.minY + threshold {
+            direction.y = -1
+        } else if location.y > scrollFrame.maxY - threshold {
+            direction.y = 1
+        }
+        
+        autoScrollDirection = direction
+        if direction != .zero {
+            startAutoScrollIfNeeded()
+        } else {
+            stopAutoScroll()
+        }
+    }
+    private func startAutoScrollIfNeeded() {
+        if autoScrollDisplayLink == nil {
+            autoScrollDisplayLink = CADisplayLink(target: self, selector: #selector(handleAutoScroll))
+            autoScrollDisplayLink?.add(to: .main, forMode: .common)
+        }
+    }
+    
+    private func stopAutoScroll() {
+        autoScrollDisplayLink?.invalidate()
+        autoScrollDisplayLink = nil
+    }
+    @objc private func handleAutoScroll() {
+        guard autoScrollDirection != .zero,
+              let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
+        
+        let scrollView = container.mainScrollView
+        let scrollSpeed: CGFloat = 5
+        var newOffset = scrollView.contentOffset
+        
+        newOffset.x += autoScrollDirection.x * scrollSpeed
+        newOffset.y += autoScrollDirection.y * scrollSpeed
+        
+        newOffset.x = max(0, min(newOffset.x, scrollView.contentSize.width - scrollView.bounds.width))
+        newOffset.y = max(0, min(newOffset.y, scrollView.contentSize.height - scrollView.bounds.height))
+        
+        scrollView.setContentOffset(newOffset, animated: false)
     }
 }
