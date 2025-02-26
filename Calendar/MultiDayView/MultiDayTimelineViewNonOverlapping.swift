@@ -313,7 +313,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     
     // MARK: - createMissingSlicesIfNeeded / removeMissingSlicesIfNeeded
     @discardableResult
-    private func createMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) -> [EventView] {
+    private func createMissingSlicesIfNeeded(for multi: EKMultiDayWrapper, count: Int) -> [EventView] {
         removeMissingSlicesIfNeeded(for: multi)
         
         guard
@@ -335,14 +335,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         if !cal.isDate(dayEnd, equalTo: realEnd, toGranularity: .minute) {
             totalDays += 1
         }
-        
+        print("totalDays",totalDays)
+
         if totalDays < 1 {
             totalDays = 1
         }
         
         var newViews: [EventView] = []
         
-        for i in 0 ..< totalDays {
+        for i in count ..< totalDays {
             guard let thisDay = cal.date(byAdding: .day, value: i, to: dayStart) else { continue }
             
             let partialDayStart = max(thisDay, realStart)
@@ -486,6 +487,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
         
+        var minsingEvent:  [EventView] = []
         switch gesture.state {
         case .began:
             // Винаги влизаме в edit mode при задържане,
@@ -499,11 +501,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             
             setScrollsClipping(enabled: false)
-            
+            var totalDays = 1
             if let multi = descriptor as? EKMultiDayWrapper {
-                createMissingSlicesIfNeeded(for: multi)
+                let cal = Calendar.current
+                let startOfStart = cal.startOfDay(for: multi.realEvent.startDate)
+                let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
+                let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
+                totalDays = dayCount + 1
+                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
-            
             let realStart: Date
             let realEnd: Date
             if let multi = descriptor as? EKMultiDayWrapper {
@@ -527,10 +533,20 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
+            print("IndexB", slices.count)
+            if let multi = descriptor as? EKMultiDayWrapper {
+                if totalDays != slices.count {
+                    minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
+                }
+            }
+            for realSliceView in minsingEvent {
+                slices.append(realSliceView)
+            }
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
             var originalFrames = [EventView: CGRect]()
+            print("IndexA", slices.count)
             for realSliceView in slices {
                 if let desc = eventViewToDescriptor[realSliceView] {
                     realSliceView.isHidden = false
@@ -640,6 +656,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             updateAutoScrollDirection(for: gesture)
             
         case .ended, .cancelled:
+//            for realSliceView in minsingEvent {
+//                eventViewToDescriptor.removeValue(forKey: realSliceView)
+//            }
             setScrollsClipping(enabled: true)
             stopAutoScroll()
             hoursColumnView?.selectedMinuteMark = nil
@@ -715,7 +734,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
-            
+          
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             setNeedsLayout()
             
