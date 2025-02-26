@@ -349,7 +349,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
            else {
                return []
            }
-           
+        var index = 0
+       
          
            if realStart < fromDate {
             print ("realStart < fromDate")
@@ -357,10 +358,12 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
            
            if realEnd > toDate {
             print("realEnd > toDate")
+               if count == 1{
+                   index = 1
+               }
            }
-        
       
-        for i in 0 ..< totalDays {
+        for i in index ..< totalDays {
             guard let thisDay = cal.date(byAdding: .day, value: i, to: dayStart) else { continue }
             
             let partialDayStart = max(thisDay, realStart)
@@ -552,7 +555,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             print("IndexB", slices.count)
             if let multi = descriptor as? EKMultiDayWrapper {
-                if totalDays != slices.count || totalDays > 1{
+                if totalDays != slices.count{
                     minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
                 }
             }
@@ -673,9 +676,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             updateAutoScrollDirection(for: gesture)
             
         case .ended, .cancelled:
-//            for realSliceView in minsingEvent {
-//                eventViewToDescriptor.removeValue(forKey: realSliceView)
-//            }
+            for realSliceView in minsingEvent {
+                eventViewToDescriptor.removeValue(forKey: realSliceView)
+            }
             setScrollsClipping(enabled: true)
             stopAutoScroll()
             hoursColumnView?.selectedMinuteMark = nil
@@ -753,6 +756,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
           
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+            eventViewToDescriptor = [:]
             setNeedsLayout()
             
         default:
