@@ -1016,7 +1016,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             if let newDateRaw = dateFromResize(f, isTop: d.isTop) {
                 let snapped = snapToNearest10Min(newDateRaw)
                 // По желание:
-                // setSingle10MinuteMarkFromDate(snapped)
+                 setSingle10MinuteMarkFromDate(snapped)
             }
             
             // (8) Авто-скрол
