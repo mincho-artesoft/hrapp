@@ -951,57 +951,56 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 return max(0, min(di, dayCount - 1))
             }
             guard !allGhostDayIndexes.isEmpty else { break }
-            let minSliceIndex = allGhostDayIndexes.min()!
-            let maxSliceIndex = allGhostDayIndexes.max()!
             
-            // (4) Ако е горна дръжка и сме стигнали последната колона => да не може да мине под bottom
-            if d.isTop {
-                if clampedDayIndex >= maxSliceIndex {
-                    clampedDayIndex = maxSliceIndex
-                    
-                    // Тук ограничаваме top да не мине под bottom - и винаги да е >= 20 px
-                    if let ghostAtMax = draggingGhosts.values.first(where: { gv in
-                        let midX = gv.frame.midX
-                        let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                        return di == maxSliceIndex
-                    }) {
-                        let newBottomY = ghostAtMax.frame.maxY
-                        let potentialTopY = f.origin.y
-                        var potentialHeight = newBottomY - potentialTopY
+            // [CHANGED] - Добавяме проверка дали имаме повече от 1 slice (т.е. multi-day).
+            // Ако е САМО 1 slice => пропускаме clamping-а, за да може да се връщаме свободно.
+            if draggingGhosts.count > 1 {
+                let minSliceIndex = allGhostDayIndexes.min()!
+                let maxSliceIndex = allGhostDayIndexes.max()!
+                
+                // (4) Ако е горна дръжка и сме стигнали последната колона => да не може да мине под bottom
+                if d.isTop {
+                    if clampedDayIndex >= maxSliceIndex {
+                        clampedDayIndex = maxSliceIndex
                         
-                        // Ако потенциалната височина е под 0 => реално top е „под“ bottom
-                        // => clamp-ваме на минимум 20
-                        if potentialHeight < 0 {
-                            potentialHeight = MIN_HEIGHT
+                        if let ghostAtMax = draggingGhosts.values.first(where: { gv in
+                            let midX = gv.frame.midX
+                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            return di == maxSliceIndex
+                        }) {
+                            let newBottomY = ghostAtMax.frame.maxY
+                            let potentialTopY = f.origin.y
+                            var potentialHeight = newBottomY - potentialTopY
+                            
+                            if potentialHeight < 0 {
+                                potentialHeight = MIN_HEIGHT
+                            }
+                            if potentialHeight < MIN_HEIGHT {
+                                potentialHeight = MIN_HEIGHT
+                            }
+                            f.size.height = potentialHeight
+                            f.origin.y = newBottomY - potentialHeight
                         }
-                        
-                        if potentialHeight < MIN_HEIGHT {
-                            potentialHeight = MIN_HEIGHT
+                    }
+                } else {
+                    // Ако drag‐ваме от долната дръжка и стигнем по-малък dayIndex от minSliceIndex
+                    if clampedDayIndex <= minSliceIndex {
+                        clampedDayIndex = minSliceIndex
+                        if let ghostAtMin = draggingGhosts.values.first(where: { gv in
+                            let midX = gv.frame.midX
+                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            return di == minSliceIndex
+                        }) {
+                            let oldBottomY = f.maxY
+                            let newTopY = ghostAtMin.frame.minY
+                            f.origin.y = newTopY
+                            f.size.height = oldBottomY - newTopY
+                            if f.size.height < MIN_HEIGHT {
+                                f.size.height = MIN_HEIGHT
+                            }
                         }
-                        // Сега прилагаме:
-                        f.size.height = potentialHeight
-                        f.origin.y = newBottomY - potentialHeight
                     }
                 }
-            } else {
-                // Ако drag‐ваме от долната дръжка и стигнем по-малък dayIndex от minSliceIndex
-                               // => clamp до minSliceIndex и „горната“ част да съвпадне с top на този slice
-                               if clampedDayIndex <= minSliceIndex {
-                                   clampedDayIndex = minSliceIndex
-                                   if let ghostAtMin = draggingGhosts.values.first(where: { gv in
-                                       let midX = gv.frame.midX
-                                       let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                                       return di == minSliceIndex
-                                   }) {
-                                       let oldBottomY = f.maxY
-                                       let newTopY = ghostAtMin.frame.minY
-                                       f.origin.y = newTopY
-                                       f.size.height = oldBottomY - newTopY
-                                       if f.size.height < MIN_HEIGHT {
-                                           f.size.height = MIN_HEIGHT
-                                       }
-                                   }
-                               }
             }
             
             // (6) Накрая нагласяме X & width
@@ -1015,8 +1014,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             // (7) Snap към 10 минутки, ако желаем
             if let newDateRaw = dateFromResize(f, isTop: d.isTop) {
                 let snapped = snapToNearest10Min(newDateRaw)
-                // По желание:
-                 setSingle10MinuteMarkFromDate(snapped)
+                setSingle10MinuteMarkFromDate(snapped)
             }
             
             // (8) Авто-скрол
@@ -1118,6 +1116,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             break
         }
     }
+
+
 
     // MARK: - dayIndex, etc.
     private func dayIndexFor(_ date: Date) -> Int {
