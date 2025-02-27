@@ -1002,7 +1002,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
-            
+            let limitDayIndex = d.isTop ? dayIndexFor(d.startInterval.end)
+            : dayIndexFor(d.startInterval.start)
+            if d.isTop {
+                clampedDayIndex = min(clampedDayIndex, limitDayIndex)
+            } else {
+                clampedDayIndex = max(clampedDayIndex, limitDayIndex)
+            }
             // (6) Накрая нагласяме X & width
             let newX = leadingInsetForHours + CGFloat(clampedDayIndex) * dayColumnWidth + 2
             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
