@@ -768,16 +768,18 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         }
     }
     
-    // MARK: - Resizing
     private struct ResizeDragData {
         let startGlobalPoint: CGPoint
-        let originalFrame: CGRect
+        var originalFrame: CGRect
         let isTop: Bool
         let startInterval: DateInterval
         let wasAllDay: Bool
-        let originalDayIndex: Int // Ново поле
+        let originalDayIndex: Int
+        
+        // NEW: Добавяме поле, в което ще пазим последния известен dayIndex
+        var lastDayIndex: Int
     }
-    
+
     @objc private func handleResizeHandlePanGesture(_ gesture: UILongPressGestureRecognizer) {
         guard
             let handleView = gesture.view as? EventResizeHandleView,
@@ -891,28 +893,35 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             
             let startPointInSelf = gesture.location(in: self)
-            let dateInterval = DateInterval(start: realStart, end: realEnd)
-            let originalDayIndex = dayIndexFor(dateInterval.start)
             
+            let dateInterval = DateInterval(start: realStart, end: realEnd)
+            var originalDayIndex = 0
+            if isTop {
+                originalDayIndex = dayIndexFor(dateInterval.start)
+            }else{
+                originalDayIndex = dayIndexFor(dateInterval.end)
+            }
+           
+            
+            // NEW: Добавяме lastDayIndex: originalDayIndex
             let d = ResizeDragData(
                 startGlobalPoint: startPointInSelf,
                 originalFrame: originalFrames[eventView] ?? .zero,
                 isTop: isTop,
                 startInterval: dateInterval,
                 wasAllDay: desc.isAllDay,
-                originalDayIndex: originalDayIndex
+                originalDayIndex: originalDayIndex,
+                lastDayIndex: originalDayIndex
             )
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
-        
-        
+            
+            
         // ----------------------------------------------------------------------------------
         // MARK: .changed
         // ----------------------------------------------------------------------------------
         case .changed:
-            guard
-                let d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? ResizeDragData,
-                let ghost = draggingGhosts[eventView]
-            else { return }
+            guard var d = eventView.layer.value(forKey: DRAG_DATA_KEY) as? ResizeDragData,
+                  let ghost = draggingGhosts[eventView] else { return }
             
             let MIN_HEIGHT: CGFloat = 20  // <-- Минимална височина
             
@@ -952,17 +961,14 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
             guard !allGhostDayIndexes.isEmpty else { break }
             
-            // [CHANGED] - Добавяме проверка дали имаме повече от 1 slice (т.е. multi-day).
-            // Ако е САМО 1 slice => пропускаме clamping-а, за да може да се връщаме свободно.
+            // Ако имаме повече от 1 slice => многодневен; clamp-ваме (проверки).
             if draggingGhosts.count > 1 {
                 let minSliceIndex = allGhostDayIndexes.min()!
                 let maxSliceIndex = allGhostDayIndexes.max()!
                 
-                // (4) Ако е горна дръжка и сме стигнали последната колона => да не може да мине под bottom
                 if d.isTop {
                     if clampedDayIndex >= maxSliceIndex {
                         clampedDayIndex = maxSliceIndex
-                        
                         if let ghostAtMax = draggingGhosts.values.first(where: { gv in
                             let midX = gv.frame.midX
                             let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
@@ -971,7 +977,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                             let newBottomY = ghostAtMax.frame.maxY
                             let potentialTopY = f.origin.y
                             var potentialHeight = newBottomY - potentialTopY
-                            
                             if potentialHeight < 0 {
                                 potentialHeight = MIN_HEIGHT
                             }
@@ -983,7 +988,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                         }
                     }
                 } else {
-                    // Ако drag‐ваме от долната дръжка и стигнем по-малък dayIndex от minSliceIndex
                     if clampedDayIndex <= minSliceIndex {
                         clampedDayIndex = minSliceIndex
                         if let ghostAtMin = draggingGhosts.values.first(where: { gv in
@@ -1002,13 +1006,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
+            
             let limitDayIndex = d.isTop ? dayIndexFor(d.startInterval.end)
-            : dayIndexFor(d.startInterval.start)
+                                        : dayIndexFor(d.startInterval.start)
             if d.isTop {
                 clampedDayIndex = min(clampedDayIndex, limitDayIndex)
             } else {
                 clampedDayIndex = max(clampedDayIndex, limitDayIndex)
             }
+            
             // (6) Накрая нагласяме X & width
             let newX = leadingInsetForHours + CGFloat(clampedDayIndex) * dayColumnWidth + 2
             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
@@ -1016,6 +1022,118 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             f.size.width = ghostW
             
             ghost.frame = f
+            
+            // NEW: Проверяваме дали се е сменил dayIndex и принтираме
+            if clampedDayIndex != d.lastDayIndex {
+                if draggingGhosts.count > 1 {
+                    print("Многодневен евент: смяна на колона от \(d.lastDayIndex) на \(clampedDayIndex)")
+                    let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
+                        let midX = gv.frame.midX
+                        let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                        return max(0, min(di, dayCount - 1))
+                    }
+                    print("allGhostDayIndexes",allGhostDayIndexes)
+                    if !allGhostDayIndexes.contains(d.lastDayIndex) {
+                        let ghost = createEventView()
+                        ghost.updateWithDescriptor(event: desc)
+                        ghost.alpha = 1.0
+                        ghost.layer.zPosition = 2
+                        addSubview(ghost)
+                        
+                        let dayIndex = d.lastDayIndex
+                        let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                        let ghostY = 10
+                        let ghostW = dayColumnWidth - style.eventGap * 2 - 2
+                        let ghostH = 24 * 50 - 3
+                        
+                        let ghostFrame = CGRect(
+                            x: ghostX,
+                            y: CGFloat(ghostY),
+                            width: ghostW,
+                            height: CGFloat(ghostH)
+                        )
+                        ghost.frame = ghostFrame
+                        ghost.isHidden = false
+                        
+                        draggingGhosts[ghost] = ghost
+                    }
+                } else {
+                    print("Еднодневен евент: смяна на колона от \(d.lastDayIndex) на \(clampedDayIndex)")
+                  
+                    if isTop && d.lastDayIndex > clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
+                        let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
+                            let midX = gv.frame.midX
+                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            return max(0, min(di, dayCount - 1))
+                        }
+                        print("allGhostDayIndexes",allGhostDayIndexes)
+                        if !allGhostDayIndexes.contains(d.lastDayIndex) {
+                            let ghost = createEventView()
+                            ghost.updateWithDescriptor(event: desc)
+                            ghost.alpha = 1.0
+                            ghost.layer.zPosition = 2
+                            addSubview(ghost)
+                            
+                            let dayIndex = d.lastDayIndex
+                            let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                            let ghostY = 10
+                            let ghostW = dayColumnWidth - style.eventGap * 2 - 2
+                            let ghostH = d.originalFrame.maxY - 10
+                            
+                            let ghostFrame = CGRect(
+                                x: ghostX,
+                                y: CGFloat(ghostY),
+                                width: ghostW,
+                                height: CGFloat(ghostH)
+                            )
+                            ghost.frame = ghostFrame
+                            ghost.isHidden = false
+                            
+                            draggingGhosts[ghost] = ghost
+//                            let ghostFrame2 = CGRect(
+//                                x: ghostX,
+//                                y: d.originalFrame.minY,
+//                                width: ghostW,
+//                                height: 4 * 50 + 10                         )
+//                            d.originalFrame = ghostFrame2
+                        }
+                    }else if !isTop && d.lastDayIndex < clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
+                        let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
+                            let midX = gv.frame.midX
+                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            return max(0, min(di, dayCount - 1))
+                        }
+                        print("allGhostDayIndexes",allGhostDayIndexes)
+                        if !allGhostDayIndexes.contains(d.lastDayIndex) {
+                            let ghost = createEventView()
+                            ghost.updateWithDescriptor(event: desc)
+                            ghost.alpha = 1.0
+                            ghost.layer.zPosition = 2
+                            addSubview(ghost)
+                            
+                            let dayIndex = d.lastDayIndex
+                            let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                            let ghostY = d.originalFrame.minY
+                            let ghostW = dayColumnWidth - style.eventGap * 2 - 2
+                            let ghostH = 24 * 50 + 10 - d.originalFrame.minY
+                            
+                            let ghostFrame = CGRect(
+                                x: ghostX,
+                                y: CGFloat(ghostY),
+                                width: ghostW,
+                                height: CGFloat(ghostH)
+                            )
+                            ghost.frame = ghostFrame
+                            ghost.isHidden = false
+                            
+                            draggingGhosts[ghost] = ghost
+                        }
+                    }
+                }
+                // Обновяваме lastDayIndex
+                d.lastDayIndex = clampedDayIndex
+                eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
+            }
             
             // (7) Snap към 10 минутки, ако желаем
             if let newDateRaw = dateFromResize(f, isTop: d.isTop) {
@@ -1047,8 +1165,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
-        
-        
+            
+            
         // ----------------------------------------------------------------------------------
         // MARK: .ended / .cancelled
         // ----------------------------------------------------------------------------------
@@ -1109,6 +1227,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
+            
             desc.dateInterval = interval
             
             let newEdge = d.isTop ? interval.start : interval.end
@@ -1116,12 +1235,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             
             // Обновяваме layout
             setNeedsLayout()
-        
-        
+            
+            
         default:
             break
         }
     }
+
 
 
 
