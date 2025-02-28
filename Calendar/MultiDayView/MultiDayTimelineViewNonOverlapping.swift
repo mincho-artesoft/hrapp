@@ -904,7 +904,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 )
                 ghost.frame = ghostFrame
                 ghost.isHidden = false
-                
+                ghost.eventResizeHandles[0].isHidden = true
+                ghost.eventResizeHandles[1].isHidden = true
                 draggingGhosts[realSliceView] = ghost
                 originalFrames[realSliceView] = ghostFrame
             }
@@ -918,7 +919,36 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }else{
                 originalDayIndex = dayIndexFor(dateInterval.end)
             }
-           
+            if let multi = desc as? EKMultiDayWrapper {
+                var isCurrentlyEditedEventView = false
+                for realSliceView in slices {
+                    if  currentlyEditedEventView == realSliceView{
+                        isCurrentlyEditedEventView = true
+                    }
+                }
+                if isCurrentlyEditedEventView{
+                    for (_,ghost) in draggingGhosts {
+                        let dayIndexRealStart = dayIndexFor(realStart)
+                        let dayIndexrealEnd = dayIndexFor(realEnd)
+                        let firstDayIndex = dayIndexFor(ghost.descriptor!.dateInterval.start)
+                        let lastDayIndex  = dayIndexFor(ghost.descriptor!.dateInterval.end)
+                        
+                        if dayIndexRealStart == dayIndexrealEnd {
+                            // Реално е многодневно, но start/end попадат в един ден
+                            ghost.eventResizeHandles[0].isHidden = false
+                            ghost.eventResizeHandles[1].isHidden = false
+                        } else if dayIndexRealStart == firstDayIndex {
+                            // Показваме горната дръжка САМО ако е в edit режим
+                            ghost.eventResizeHandles[0].isHidden = false
+                            ghost.eventResizeHandles[1].isHidden = true
+                        } else if dayIndexrealEnd == lastDayIndex {
+                            // Показваме долната дръжка САМО ако е в edit режим
+                            ghost.eventResizeHandles[0].isHidden = true
+                            ghost.eventResizeHandles[1].isHidden = false
+                        }
+                    }
+                }
+            }
             
             // NEW: Добавяме lastDayIndex: originalDayIndex
             let d = ResizeDragData(
