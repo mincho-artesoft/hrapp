@@ -14,7 +14,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     public var fromDate: Date = Date()
     public var toDate: Date = Date()
     public var style = TimelineStyle()
-    
+    var isFirstResize = false
     /// Top margin so drawing aligns with HoursColumnView lines
     public var topMargin: CGFloat = 0
     
@@ -253,10 +253,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                 evView.eventResizeHandles[1].isHidden = false
                             }
                         }
-                    } else {
-                        slices.append(evView)
                     }
                 }
+            }
+        }
+        if eventViewToDescriptor.count == 1 {
+            if isFirstResize {
+                selectEventView(eventViewToDescriptor.first!.key)
             }
         }
     }
@@ -501,7 +504,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             // Винаги влизаме в edit mode при задържане,
             // независимо върху коя част е натиснато.
             selectEventView(evView)
-
+            isFirstResize = false
             removeGhostsForDescriptor(descriptor)
             
             if evView.layer.value(forKey: DRAG_DATA_KEY) != nil {
@@ -793,7 +796,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let eventView = handleView.superview as? EventView,
             let desc = eventViewToDescriptor[eventView]
         else { return }
-        
+        isFirstResize = false
         let isTop = (handleView.tag == 0)  // Горна дръжка => tag = 0, Долна => tag = 1
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         var missingBefore: Bool = false
@@ -1315,10 +1318,10 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 for ev in eventViews{
                     ev.isHidden = true
                 }
+                isFirstResize = true
                 eventViews.removeAll()
             }
             desc.dateInterval = interval
-            print(" d.startInterval", d.originalTotalDays, d.totalDay)
             let newEdge = d.isTop ? interval.start : interval.end
             onEventDragResizeEnded?(desc, newEdge)
             eventViewToDescriptor.removeAll()
