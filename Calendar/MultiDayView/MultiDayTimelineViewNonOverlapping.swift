@@ -292,11 +292,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         ev.addGestureRecognizer(tapGR)
         
         let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
-        lp.minimumPressDuration = 0.1
+        lp.minimumPressDuration = 0.2
         lp.delegate = self
         ev.addGestureRecognizer(lp)
         
         for handle in ev.eventResizeHandles {
+            let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
+            tapGR.delegate = self
+            handle.addGestureRecognizer(tapGR)
+            
             let lpResize = UILongPressGestureRecognizer(target: self, action: #selector(handleResizeHandlePanGesture(_:)))
             lpResize.delegate = self
             lpResize.minimumPressDuration = 0.05
