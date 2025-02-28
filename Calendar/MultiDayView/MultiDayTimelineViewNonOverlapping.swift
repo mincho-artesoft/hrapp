@@ -771,6 +771,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private struct ResizeDragData {
         let startGlobalPoint: CGPoint
         var originalFrame: CGRect
+        var originalFrame2: CGRect
         let isTop: Bool
         let startInterval: DateInterval
         let wasAllDay: Bool
@@ -907,6 +908,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let d = ResizeDragData(
                 startGlobalPoint: startPointInSelf,
                 originalFrame: originalFrames[eventView] ?? .zero,
+                originalFrame2: originalFrames[eventView] ?? .zero,
                 isTop: isTop,
                 startInterval: dateInterval,
                 wasAllDay: desc.isAllDay,
@@ -1090,12 +1092,13 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                             ghost.isHidden = false
                             
                             draggingGhosts[ghost] = ghost
-//                            let ghostFrame2 = CGRect(
-//                                x: ghostX,
-//                                y: d.originalFrame.minY,
-//                                width: ghostW,
-//                                height: 4 * 50 + 10                         )
-//                            d.originalFrame = ghostFrame2
+                            let ghostFrame2 = CGRect(
+                                x: ghostX,
+                                y: d.originalFrame.minY,
+                                width: ghostW,
+                                height: 24 * 50 + 7 - d.originalFrame.minY
+                            )
+                            d.originalFrame = ghostFrame2
                         }
                     }else if !isTop && d.lastDayIndex < clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
                         let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
@@ -1127,6 +1130,15 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                             ghost.isHidden = false
                             
                             draggingGhosts[ghost] = ghost
+                            
+                            draggingGhosts[ghost] = ghost
+                            let ghostFrame2 = CGRect(
+                                x: ghostX,
+                                y: 10,
+                                width: ghostW,
+                                height: d.originalFrame.maxY - 10
+                            )
+                            d.originalFrame = ghostFrame2
                         }
                     }
                 }
