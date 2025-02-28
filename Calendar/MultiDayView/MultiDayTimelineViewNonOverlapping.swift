@@ -771,13 +771,10 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private struct ResizeDragData {
         let startGlobalPoint: CGPoint
         var originalFrame: CGRect
-        var originalFrame2: CGRect
         let isTop: Bool
         let startInterval: DateInterval
         let wasAllDay: Bool
         let originalDayIndex: Int
-        
-        // NEW: Добавяме поле, в което ще пазим последния известен dayIndex
         var lastDayIndex: Int
     }
 
@@ -908,7 +905,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             let d = ResizeDragData(
                 startGlobalPoint: startPointInSelf,
                 originalFrame: originalFrames[eventView] ?? .zero,
-                originalFrame2: originalFrames[eventView] ?? .zero,
                 isTop: isTop,
                 startInterval: dateInterval,
                 wasAllDay: desc.isAllDay,
