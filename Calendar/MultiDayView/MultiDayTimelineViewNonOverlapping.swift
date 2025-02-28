@@ -169,7 +169,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         var usedEventViewIndex = 0
-        eventViewToDescriptor.removeAll()
+       
         for dayIndex in 0..<dayCount {
             guard let eventsForDay = grouped[dayIndex], !eventsForDay.isEmpty else { continue }
             let sorted = eventsForDay.sorted { $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start }
@@ -764,6 +764,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
           
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+            eventViewToDescriptor.removeAll()
             setNeedsLayout()
             
         default:
@@ -1289,7 +1290,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             
             let newEdge = d.isTop ? interval.start : interval.end
             onEventDragResizeEnded?(desc, newEdge)
-            
+            eventViewToDescriptor.removeAll()
             // Обновяваме layout
             setNeedsLayout()
             
