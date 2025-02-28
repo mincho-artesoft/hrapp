@@ -776,6 +776,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         let wasAllDay: Bool
         let originalDayIndex: Int
         var lastDayIndex: Int
+        let missingBefore: Bool
+        let missingAfter: Bool
     }
 
     @objc private func handleResizeHandlePanGesture(_ gesture: UILongPressGestureRecognizer) {
@@ -787,7 +789,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         
         let isTop = (handleView.tag == 0)  // Горна дръжка => tag = 0, Долна => tag = 1
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
-        
+        var missingBefore: Bool = false
+        var missingAfter: Bool = false
         switch gesture.state {
         // ----------------------------------------------------------------------------------
         // MARK: .began
@@ -817,24 +820,14 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             // Изключваме clipToBounds, за да позволим движение извън видимото
             setScrollsClipping(enabled: false)
             
-            // Създаваме липсващи slice-ове (при многодневно)
+            var totalDays = 1
             if let multi = desc as? EKMultiDayWrapper {
-                let eventID = multi.realEvent.eventIdentifier
-                let existingSlices = eventViewToDescriptor.keys.filter { v in
-                    guard let dd = eventViewToDescriptor[v] as? EKMultiDayWrapper else { return false }
-                    return dd.realEvent.eventIdentifier == eventID
-                }
-                
                 let cal = Calendar.current
-                let totalDays = 1 + cal.dateComponents(
-                    [.day],
-                    from: cal.startOfDay(for: multi.realEvent.startDate),
-                    to:   cal.startOfDay(for: multi.realEvent.endDate)
-                ).day!
-                
-                if existingSlices.count != totalDays {
-                    _ = createMissingSlicesIfNeeded(for: multi, count: existingSlices.count)
-                }
+                let startOfStart = cal.startOfDay(for: multi.realEvent.startDate)
+                let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
+                let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
+                totalDays = dayCount + 1
+                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
             
             // Събираме всички slice-ове на това събитие
@@ -847,10 +840,32 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                         slices.append(ov)
                     }
                 }
-            } else {
-                slices = [eventView]
             }
-            
+            var minsingEvent : [EventView] = []
+//            print("IndexB", slices.count)
+            if let multi = desc as? EKMultiDayWrapper {
+                if totalDays != slices.count {
+                    minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
+                }
+                if !minsingEvent.isEmpty {
+                    // Тук вече имаме липсващи slice-ове.
+                    // Кажи "преди" или "след":
+                    if multi.realEvent.startDate < fromDate {
+                        print("Липсващи slice-ове: ПРЕДИ видимия диапазон.")
+                        missingBefore = true
+                    }
+                    if multi.realEvent.endDate > toDate {
+                        print("Липсващи slice-ове: СЛЕД видимия диапазон.")
+                        missingAfter = true
+                    }
+                }
+            }
+//            for realSliceView in minsingEvent {
+//                slices.append(realSliceView)
+//            }
+//            print("IndexA", slices.count)
+           
+
             // Създаваме ghost-ове + пазим original frames
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
@@ -909,7 +924,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 startInterval: dateInterval,
                 wasAllDay: desc.isAllDay,
                 originalDayIndex: originalDayIndex,
-                lastDayIndex: originalDayIndex
+                lastDayIndex: originalDayIndex,
+                missingBefore: missingBefore,
+                missingAfter: missingAfter
             )
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             
@@ -965,7 +982,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 let maxSliceIndex = allGhostDayIndexes.max()!
                 
                 if d.isTop {
-                    if clampedDayIndex >= maxSliceIndex {
+                    if clampedDayIndex >= maxSliceIndex && (missingAfter || (!missingBefore && !missingAfter)){
                         clampedDayIndex = maxSliceIndex
                         if let ghostAtMax = draggingGhosts.values.first(where: { gv in
                             let midX = gv.frame.midX
@@ -986,7 +1003,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                         }
                     }
                 } else {
-                    if clampedDayIndex <= minSliceIndex {
+                    if clampedDayIndex <= minSliceIndex && (missingBefore || (!missingBefore && !missingAfter)) {
                         clampedDayIndex = minSliceIndex
                         if let ghostAtMin = draggingGhosts.values.first(where: { gv in
                             let midX = gv.frame.midX
@@ -1127,7 +1144,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                             
                             draggingGhosts[ghost] = ghost
                             
-                            draggingGhosts[ghost] = ghost
                             let ghostFrame2 = CGRect(
                                 x: ghostX,
                                 y: 10,
