@@ -3,9 +3,7 @@ import EventKit
 
 struct RootView: View {
     @State private var selectedTab = 3
-
-    // Единична споделена инстанция на EKEventStore
-    @StateObject private var calendarVM = CalendarViewModel(eventStore: EKEventStore())
+    @State var accessGranted = false
 
     // За Multi-Day изгледа
     @State private var pinnedFromDate: Date = {
@@ -57,14 +55,14 @@ struct RootView: View {
 
                     switch selectedTab {
                     case 0:
-                        MonthCalendarView(viewModel: calendarVM, startMonth: Date())
+                        MonthCalendarView(viewModel:  CalendarViewModel.shared, startMonth: Date())
                     case 1:
                         // Пример: показваме TwoWayPinnedWeekWrapper като single-day
                         TwoWayPinnedMultiDayWrapper(
                             fromDate: $pinnedFromDate,
                             toDate: $pinnedFromDate,
                             events: $pinnedEvents,
-                            eventStore: calendarVM.eventStore,
+                            eventStore: CalendarViewModel.shared.eventStore,
                             isSingleDay: true // <-- ВАЖНО: single day
                         ) { tappedDay in
                             // Ако потребителят цъкне на dayLabel, задаваме една и съща from/to
@@ -79,7 +77,7 @@ struct RootView: View {
                         }
 
                     case 2:
-                        YearCalendarView(viewModel: calendarVM)
+                        YearCalendarView(viewModel: CalendarViewModel.shared)
 
                     case 3:
                         // Пример: показваме TwoWayPinnedWeekWrapper като multi-day
@@ -87,7 +85,7 @@ struct RootView: View {
                             fromDate: $pinnedFromDate,
                             toDate: $pinnedToDate,
                             events: $pinnedEvents,
-                            eventStore: calendarVM.eventStore,
+                            eventStore: CalendarViewModel.shared.eventStore,
                             isSingleDay: false // <-- Multi-day
                         ) { tappedDay in
                             // Обновяваме началния и крайния ден
@@ -109,11 +107,18 @@ struct RootView: View {
             }
         }
         .onAppear {
-            // При стартиране искаме достъп до календара и зареждаме данни
-            calendarVM.requestCalendarAccessIfNeeded {
-                let year = Calendar.current.component(.year, from: Date())
-                calendarVM.loadEventsForWholeYear(year: year)
+            Task {
+                accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
             }
+            if accessGranted{
+                                let year = Calendar.current.component(.year, from: Date())
+                CalendarViewModel.shared.loadEventsForWholeYear(year: year)
+            }
+            // При стартиране искаме достъп до календара и зареждаме данни
+//            calendarVM.requestCalendarAccessIfNeeded {
+//                let year = Calendar.current.component(.year, from: Date())
+//                calendarVM.loadEventsForWholeYear(year: year)
+//            }
         }
     }
     
@@ -122,12 +127,12 @@ struct RootView: View {
         let fromOnly = cal.startOfDay(for: pinnedFromDate)
         let toOnly   = cal.startOfDay(for: pinnedToDate)
         guard let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) else { return }
-        let predicate = calendarVM.eventStore.predicateForEvents(
+        let predicate = CalendarViewModel.shared.eventStore.predicateForEvents(
             withStart: fromOnly,
             end: actualEnd,
             calendars: nil
         )
-        let found = calendarVM.eventStore.events(matching: predicate)
+        let found = CalendarViewModel.shared.eventStore.events(matching: predicate)
 
         var splitted: [EventDescriptor] = []
         for ekEvent in found {

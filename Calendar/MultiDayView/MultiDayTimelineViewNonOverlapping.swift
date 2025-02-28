@@ -169,7 +169,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         var usedEventViewIndex = 0
-        
+        eventViewToDescriptor.removeAll()
         for dayIndex in 0..<dayCount {
             guard let eventsForDay = grouped[dayIndex], !eventsForDay.isEmpty else { continue }
             let sorted = eventsForDay.sorted { $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start }
@@ -764,7 +764,6 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
           
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
-            eventViewToDescriptor = [:]
             setNeedsLayout()
             
         default:
@@ -867,7 +866,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
 //            for realSliceView in minsingEvent {
 //                slices.append(realSliceView)
 //            }
-//            print("IndexA", slices.count)
+            print("IndexA", slices.count)
            
 
             // Създаваме ghost-ове + пазим original frames
@@ -904,8 +903,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 )
                 ghost.frame = ghostFrame
                 ghost.isHidden = false
-                ghost.eventResizeHandles[0].isHidden = true
-                ghost.eventResizeHandles[1].isHidden = true
+//                ghost.eventResizeHandles[0].isHidden = true
+//                ghost.eventResizeHandles[1].isHidden = true
                 draggingGhosts[realSliceView] = ghost
                 originalFrames[realSliceView] = ghostFrame
             }
@@ -919,36 +918,36 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }else{
                 originalDayIndex = dayIndexFor(dateInterval.end)
             }
-            if let multi = desc as? EKMultiDayWrapper {
-                var isCurrentlyEditedEventView = false
-                for realSliceView in slices {
-                    if  currentlyEditedEventView == realSliceView{
-                        isCurrentlyEditedEventView = true
-                    }
-                }
-                if isCurrentlyEditedEventView{
-                    for (_,ghost) in draggingGhosts {
-                        let dayIndexRealStart = dayIndexFor(realStart)
-                        let dayIndexrealEnd = dayIndexFor(realEnd)
-                        let firstDayIndex = dayIndexFor(ghost.descriptor!.dateInterval.start)
-                        let lastDayIndex  = dayIndexFor(ghost.descriptor!.dateInterval.end)
-                        
-                        if dayIndexRealStart == dayIndexrealEnd {
-                            // Реално е многодневно, но start/end попадат в един ден
-                            ghost.eventResizeHandles[0].isHidden = false
-                            ghost.eventResizeHandles[1].isHidden = false
-                        } else if dayIndexRealStart == firstDayIndex {
-                            // Показваме горната дръжка САМО ако е в edit режим
-                            ghost.eventResizeHandles[0].isHidden = false
-                            ghost.eventResizeHandles[1].isHidden = true
-                        } else if dayIndexrealEnd == lastDayIndex {
-                            // Показваме долната дръжка САМО ако е в edit режим
-                            ghost.eventResizeHandles[0].isHidden = true
-                            ghost.eventResizeHandles[1].isHidden = false
-                        }
-                    }
-                }
-            }
+//            if let multi = desc as? EKMultiDayWrapper {
+//                var isCurrentlyEditedEventView = false
+//                for realSliceView in slices {
+//                    if  currentlyEditedEventView == realSliceView{
+//                        isCurrentlyEditedEventView = true
+//                    }
+//                }
+//                if isCurrentlyEditedEventView{
+//                    for (_,ghost) in draggingGhosts {
+//                        let dayIndexRealStart = dayIndexFor(realStart)
+//                        let dayIndexrealEnd = dayIndexFor(realEnd)
+//                        let firstDayIndex = dayIndexFor(ghost.descriptor!.dateInterval.start)
+//                        let lastDayIndex  = dayIndexFor(ghost.descriptor!.dateInterval.end)
+//                        
+//                        if dayIndexRealStart == dayIndexrealEnd {
+//                            // Реално е многодневно, но start/end попадат в един ден
+//                            ghost.eventResizeHandles[0].isHidden = false
+//                            ghost.eventResizeHandles[1].isHidden = false
+//                        } else if dayIndexRealStart == firstDayIndex {
+//                            // Показваме горната дръжка САМО ако е в edit режим
+//                            ghost.eventResizeHandles[0].isHidden = false
+//                            ghost.eventResizeHandles[1].isHidden = true
+//                        } else if dayIndexrealEnd == lastDayIndex {
+//                            // Показваме долната дръжка САМО ако е в edit режим
+//                            ghost.eventResizeHandles[0].isHidden = true
+//                            ghost.eventResizeHandles[1].isHidden = false
+//                        }
+//                    }
+//                }
+//            }
             
             // NEW: Добавяме lastDayIndex: originalDayIndex
             let d = ResizeDragData(

@@ -78,9 +78,7 @@ struct MonthCalendarView: View {
                                 // Вместо showDayView = true -> задаваме selectedDayForFullScreen
                                 selectedDayForFullScreen = tappedDay
                             } else {
-                                viewModel.requestCalendarAccessIfNeeded {
-                                    // Ако получите достъп, може пак да зададете selectedDayForFullScreen
-                                }
+//                                await viewModel.requestCalendarAccessIfNeeded()
                             }
                         },
                         onDayLongPress: { pressedDay in
@@ -215,11 +213,12 @@ struct MonthCalendarView: View {
             case .fullAccess, .writeOnly:
                 presentNewEvent(on: day)
             case .notDetermined:
-                viewModel.requestCalendarAccessIfNeeded {
-                    if viewModel.isCalendarAccessGranted() {
-                        self.presentNewEvent(on: day)
-                    }
-                }
+                print("TODO...")
+//                viewModel.requestCalendarAccessIfNeeded {
+//                    if viewModel.isCalendarAccessGranted() {
+//                        self.presentNewEvent(on: day)
+//                    }
+//                }
             default:
                 print("No calendar access.")
             }
@@ -228,11 +227,11 @@ struct MonthCalendarView: View {
             if status == .authorized {
                 presentNewEvent(on: day)
             } else if status == .notDetermined {
-                viewModel.requestCalendarAccessIfNeeded {
-                    if viewModel.isCalendarAccessGranted() {
-                        self.presentNewEvent(on: day)
-                    }
-                }
+//                viewModel.requestCalendarAccessIfNeeded {
+//                    if viewModel.isCalendarAccessGranted() {
+//                        self.presentNewEvent(on: day)
+//                    }
+//                }
             } else {
                 print("No calendar access.")
             }

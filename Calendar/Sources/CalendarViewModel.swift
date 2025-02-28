@@ -2,26 +2,22 @@ import SwiftUI
 import EventKit
 import Combine
 
+extension EKEventStore: @unchecked @retroactive Sendable {}
+
 /// ViewModel that holds events from EKEventStore
-class CalendarViewModel: ObservableObject {
+
+@MainActor
+final class CalendarViewModel: ObservableObject {
+    let eventStore: EKEventStore =  EKEventStore()
+
+    static let shared = CalendarViewModel()
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID: [String: EKEvent] = [:]
-
-    let eventStore: EKEventStore
+    @Published var accessGranted = false
     let calendar = Calendar(identifier: .gregorian)
 
     private var cancellables = Set<AnyCancellable>()
 
-    init(eventStore: EKEventStore) {
-        self.eventStore = eventStore
-
-        // Listen for system notifications that the store changed
-        NotificationCenter.default.publisher(for: .EKEventStoreChanged)
-            .sink { _ in 
-//                print("CalendarViewModel sink")
-            }
-            .store(in: &cancellables)
-    }
 
     /// Load events for a given month
     func loadEvents(for month: Date) {
@@ -100,20 +96,22 @@ class CalendarViewModel: ObservableObject {
 
     /// Ask for permission (if .notDetermined)
     @MainActor
-    func requestCalendarAccessIfNeeded(completion: @escaping () -> Void) {
+    func requestCalendarAccessIfNeeded() async -> Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
         if status == .notDetermined {
-            if #available(iOS 17.0, *) {
-                eventStore.requestFullAccessToEvents { _, _ in
-                    completion()
-                }
-            } else {
-                eventStore.requestAccess(to: .event) { _, _ in
-                    completion()
-                }
+            do {
+                let granted = try await eventStore.requestFullAccessToEvents()
+                self.accessGranted = granted
+                return granted
+            } catch {
+                print("Error requesting calendar access: \(error.localizedDescription)")
+                self.accessGranted = false
+                return false
             }
         } else {
-            completion()
+            let granted = isCalendarAccessGranted()
+            self.accessGranted = granted
+            return granted
         }
     }
 
