@@ -19,7 +19,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     fileprivate let leftColumnWidth: CGFloat = 70
 
     // Двата UIDatePicker-а (за избор на диапазона)
-        private let fromDatePicker = UIDatePicker()
+    private let fromDatePicker = UIDatePicker()
     private let toDatePicker   = UIDatePicker()
 
     // Бутон (три точки) за менюто (Single/Multiple)
@@ -166,9 +166,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         addSubview(mainScrollView)
 
         // 2) AllDay (scroll + view)
+        allDayScrollView.delegate = self
         allDayScrollView.showsHorizontalScrollIndicator = false
         allDayScrollView.showsVerticalScrollIndicator = true
         allDayScrollView.alwaysBounceHorizontal = false
+        allDayScrollView.alwaysBounceVertical = false
         allDayScrollView.isScrollEnabled = true
         allDayScrollView.bounces = false
         allDayScrollView.addSubview(allDayView)
@@ -182,9 +184,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         hoursColumnScrollView.layer.zPosition = 3
         addSubview(hoursColumnScrollView)
 
+        // -- Променено: даваме delegate и разрешаваме скрол в daysHeaderScrollView
+        daysHeaderScrollView.showsVerticalScrollIndicator = false
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
-        daysHeaderScrollView.isScrollEnabled = false
+        daysHeaderScrollView.isScrollEnabled = true
+        daysHeaderScrollView.delegate = self
         daysHeaderScrollView.backgroundColor = .secondarySystemBackground
+        daysHeaderScrollView.bounces = false
         daysHeaderScrollView.addSubview(daysHeaderView)
         daysHeaderScrollView.layer.zPosition = 4
         addSubview(daysHeaderScrollView)
@@ -412,16 +418,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             height: allDayH
         )
 
-        // Променяме contentSize
+        // Променено: contentSize = totalAllDayWidth
+        let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayScrollView.contentSize = CGSize(
-            width: allDayScrollView.frame.width,
+            width: totalAllDayWidth,
             height: allDayFullH
         )
 
-        let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
 
-        // >>>>>>>>>>>>>>> 2) ВРЪЩАМЕ OFFSET
+        // >>>>>>>>>>>>>>> 2) ВРЪЩАМЕ OFFSET (ако е извън границите)
         let maxOffsetY = max(0, allDayScrollView.contentSize.height - allDayScrollView.bounds.height)
         var newOffset = oldOffset
         if newOffset.y < 0 {
@@ -502,6 +508,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             allDayScrollView.contentOffset.x = offsetX
 
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
+
+        } else if scrollView == allDayScrollView {
+            let offsetX = scrollView.contentOffset.x
+            mainScrollView.contentOffset.x = offsetX
+            daysHeaderScrollView.contentOffset.x = offsetX
+            // Вертикалният offset на allDayScrollView остава независим (all-day ивентите)
+
+        } else if scrollView == daysHeaderScrollView {
+            let offsetX = scrollView.contentOffset.x
+            mainScrollView.contentOffset.x = offsetX
+            allDayScrollView.contentOffset.x = offsetX
+            // Вертикален offset няма тук
         }
     }
 
@@ -520,8 +538,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
 
     // MARK: - Публичен метод за refresh
     public func refreshLayouts() {
-        // Така, ако някъде извикате `.refreshLayouts()`,
-        // няма да получавате грешката "no member refreshLayouts".
         setNeedsLayout()
         layoutIfNeeded()
     }
