@@ -343,7 +343,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 let originalInterval = multi.dateInterval
                 let distanceToStart = forcedNewDate.timeIntervalSince(originalInterval.start)
                 let distanceToEnd   = originalInterval.end.timeIntervalSince(forcedNewDate)
-
+print("distanceToStart",distanceToStart,"distanceToEnd",distanceToEnd)
                 if distanceToStart < distanceToEnd {
                     // top
                     if forcedNewDate < event.endDate {
@@ -353,31 +353,6 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                     // bottom
                     if forcedNewDate > event.startDate {
                         event.endDate = forcedNewDate
-                    }
-                }
-            }
-             else {
-                // fallback
-                guard let oldStart = event.startDate,
-                      let oldEnd = event.endDate else { return }
-                let oldDur = oldEnd.timeIntervalSince(oldStart)
-                let distanceToStart = forcedNewDate.timeIntervalSince(oldStart)
-                let distanceToEnd   = oldEnd.timeIntervalSince(forcedNewDate)
-                if distanceToStart < distanceToEnd {
-                    // top
-                    if forcedNewDate < oldEnd {
-                        event.startDate = forcedNewDate
-                        if forcedNewDate > oldEnd {
-                            event.endDate = forcedNewDate.addingTimeInterval(3600)
-                        }
-                    }
-                } else {
-                    // bottom
-                    if forcedNewDate > oldStart {
-                        event.endDate = forcedNewDate
-                        if forcedNewDate < oldStart {
-                            event.startDate = forcedNewDate.addingTimeInterval(-oldDur)
-                        }
                     }
                 }
             }

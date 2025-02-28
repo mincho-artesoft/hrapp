@@ -782,6 +782,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         var lastDayIndex: Int
         let missingBefore: Bool
         let missingAfter: Bool
+        var totalDay: Int
+        let originalTotalDays : Int
+        
     }
 
     @objc private func handleResizeHandlePanGesture(_ gesture: UILongPressGestureRecognizer) {
@@ -960,7 +963,9 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 originalDayIndex: originalDayIndex,
                 lastDayIndex: originalDayIndex,
                 missingBefore: missingBefore,
-                missingAfter: missingAfter
+                missingAfter: missingAfter,
+                totalDay: totalDays,
+                originalTotalDays: totalDays
             )
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             
@@ -1105,6 +1110,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                         ghost.isHidden = false
                         
                         draggingGhosts[ghost] = ghost
+                        d.totalDay = d.totalDay + 1
                     }
                 } else {
                     print("Еднодневен евент: смяна на колона от \(d.lastDayIndex) на \(clampedDayIndex)")
@@ -1146,6 +1152,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                 height: 24 * 50 + 7 - d.originalFrame.minY
                             )
                             d.originalFrame = ghostFrame2
+                            d.totalDay = d.totalDay + 1
                         }
                     }else if !isTop && d.lastDayIndex < clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
                         let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
@@ -1185,6 +1192,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                 height: d.originalFrame.maxY - 10
                             )
                             d.originalFrame = ghostFrame2
+                            d.totalDay = d.totalDay + 1
                         }
                     }
                 }
@@ -1211,20 +1219,38 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 
                 if d.isTop {
                     if ghostDayIndex <= boundaryDayIndex {
+                        let isHidden = ghostView.isHidden
                         ghostView.isHidden = true
+                        if isHidden !=  ghostView.isHidden{
+                            d.totalDay = d.totalDay - 1
+                        }
                     } else {
+                        let isHidden = ghostView.isHidden
                         ghostView.isHidden = false
+                        if isHidden !=  ghostView.isHidden{
+                            d.totalDay = d.totalDay + 1
+                        }
                     }
                 } else {
                     if ghostDayIndex >= boundaryDayIndex {
+                        let isHidden = ghostView.isHidden
                         ghostView.isHidden = true
+                        if isHidden !=  ghostView.isHidden{
+                            d.totalDay = d.totalDay - 1
+                        }
                     } else {
+                        let isHidden = ghostView.isHidden
                         ghostView.isHidden = false
+                        if isHidden !=  ghostView.isHidden{
+                            d.totalDay = d.totalDay + 1
+                        }
+                       
                     }
                 }
             }
             
-            
+            eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
+
         // ----------------------------------------------------------------------------------
         // MARK: .ended / .cancelled
         // ----------------------------------------------------------------------------------
@@ -1271,7 +1297,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             // Нова дата
             var interval = d.startInterval
             desc.isAllDay = false
-            
+           
             // Snap‐ваме горния / долния край
             if let newDateRaw = dateFromResize(finalFrameInSelf, isTop: d.isTop) {
                 let snapped = snapToNearest10Min(newDateRaw)
@@ -1285,9 +1311,14 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     }
                 }
             }
-            
+            if d.originalTotalDays == eventViewToDescriptor.count && d.totalDay == 1 {
+                for ev in eventViews{
+                    ev.isHidden = true
+                }
+                eventViews.removeAll()
+            }
             desc.dateInterval = interval
-            
+            print(" d.startInterval", d.originalTotalDays, d.totalDay)
             let newEdge = d.isTop ? interval.start : interval.end
             onEventDragResizeEnded?(desc, newEdge)
             eventViewToDescriptor.removeAll()
@@ -1598,4 +1629,5 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         }
         return nil
     }
+    
 }
