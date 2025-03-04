@@ -229,14 +229,12 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
             for: indexPath
         ) as! CalendarDateRangePickerCell
 
-        // Нулираме (махаме кръгове/линии)
         cell.reset()
         cell.selectedColor = self.selectedColor
 
-        // Първите 7 са етикети за дните от седмицата
+        // Първите 7 са етикети на делнични дни
         if indexPath.item < 7 {
             cell.label.text = getWeekdayLabel(weekday: indexPath.item + 1)
-            // ---- ТУК: правим текста сив ----
             cell.label.textColor = .gray
             return cell
         }
@@ -248,65 +246,47 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
             return cell
         }
 
-        // Реален ден от месеца
+        // Ден от месеца + подсказка "today"
         let dayOfMonth = indexPath.item - (7 + blankItems) + 1
         let date = getDate(dayOfMonth: dayOfMonth, baseMonth: currentMonth)
         cell.date = date
         cell.label.text = "\(dayOfMonth)"
 
-        // Оцветяване (днешна дата, селекция, диапазон и т.н.)
         let today = Date()
-        
+
+        // --- Логика за селекция, обхват, и т.н. ---
         if let start = selectedStartDate, let end = selectedEndDate {
-            // Ако start == end (един ден)
             if areSameDay(dateA: start, dateB: end) {
+                // Един-единствен ден
                 if areSameDay(dateA: date, dateB: start) {
-                    // Една единствена дата => цял кръг, без линия
-                    cell.addCircle()
-                } else if areSameDay(dateA: date, dateB: today) {
-                    cell.label.textColor = .orange
+                    cell.addCircle()    // <-- това ще смени текста на .white
                 }
             } else {
-                // Имаме start < end
+                // start < end
                 if areSameDay(dateA: date, dateB: start) {
-                    // Клетката е стартовата
                     cell.addLine(from: cell.bounds.width / 2, to: cell.bounds.width)
                     cell.addCircle()
-                }
-                else if areSameDay(dateA: date, dateB: end) {
-                    // Клетката е крайната
+                } else if areSameDay(dateA: date, dateB: end) {
                     cell.addLine(from: 0, to: cell.bounds.width / 2)
                     cell.addCircle()
-                }
-                else if isBefore(dateA: start, dateB: date) && isBefore(dateA: date, dateB: end) {
-                    // Междинна дата => сива линия по цялата ширина
+                } else if isBefore(dateA: start, dateB: date) && isBefore(dateA: date, dateB: end) {
                     cell.addLine(from: 0, to: cell.bounds.width)
                 }
-                else {
-                    // Извън диапазона
-                    if areSameDay(dateA: date, dateB: today) {
-                        cell.label.textColor = .orange
-                    }
-                }
             }
-        }
-        else if let justStart = selectedStartDate {
-            // Имаме само start (няма end)
+        } else if let justStart = selectedStartDate {
             if areSameDay(dateA: date, dateB: justStart) {
                 cell.addCircle()
-            } else if areSameDay(dateA: date, dateB: today) {
-                cell.label.textColor = .orange
             }
         }
-        else {
-            // Без селекции
-            if areSameDay(dateA: date, dateB: today) {
-                cell.label.textColor = .orange
-            }
+
+        // --- Накрая, ако денят е "днес", да остане оранжев ---
+        if areSameDay(dateA: date, dateB: today) {
+            cell.label.textColor = .orange
         }
 
         return cell
     }
+
 
     public func collectionView(_ collectionView: UICollectionView,
                                didSelectItemAt indexPath: IndexPath) {
