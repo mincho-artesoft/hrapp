@@ -16,6 +16,7 @@ public class CalendarDateRangePickerCell: UICollectionViewCell {
     
     var label: UILabel!
 
+    // MARK: - Инициализация
     override init(frame: CGRect) {
         super.init(frame: frame)
         initLabel()

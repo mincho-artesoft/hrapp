@@ -8,12 +8,12 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
         "July", "August", "September", "October", "November", "December"
     ]
 
-    // Масив от години (примерно 2020..2030)
+    // Създаваме много голям диапазон за годините (примерно –9999...9999)
     public var years: [Int] = []
 
     // „Умножители“ за циклично превъртане
     private let monthRowsMultiplier = 10_000
-    private let yearRowsMultiplier = 10_000
+    private let yearRowsMultiplier = 1_000  // по-малък, за да не е прекалено огромно
 
     // Тук пазим кой месец/година (по индекс в масивите) е избран
     private(set) var selectedMonthIndex = 0
@@ -22,6 +22,7 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
     // Този closure ще извикваме, когато се смени нещо в UIPickerView
     public var onDateChanged: ((Int, Int) -> Void)?
 
+    // MARK: - Инициализация
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -35,18 +36,22 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
     private func setup() {
         self.dataSource = self
         self.delegate = self
-        self.years = Array(1970...2270)
+        
+        // Тук задаваме нашия (почти) безкраен диапазон:
+        self.years = Array(-9999...9999)
     }
 
     // MARK: - UIPickerViewDataSource
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2 // 0=Months, 1=Years
+        return 2 // [0: Месец], [1: Година]
     }
 
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
             return months.count * monthRowsMultiplier
         } else {
+            // Връщаме голям брой редове,
+            // за да може да „превъртаме“ (циклично)
             return years.count * yearRowsMultiplier
         }
     }
@@ -60,7 +65,8 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
             return months[mIndex]
         } else {
             let yIndex = row % years.count
-            return "\(years[yIndex])"
+            let realYear = years[yIndex]
+            return "\(realYear)"
         }
     }
 
@@ -80,6 +86,7 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
 
     // Позициониране на picker-а на (month, year)
     public func select(month: Int, year: Int, animated: Bool = false) {
+        // Намираме индекса на зададената година в нашия масив years
         guard let yearPos = years.firstIndex(of: year) else { return }
 
         let middleMonths = months.count * (monthRowsMultiplier / 2)
