@@ -1,9 +1,6 @@
 import SwiftUI
 import UIKit
 
-import SwiftUI
-import UIKit
-
 struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     
@@ -19,7 +16,6 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     var onComplete: ((Date, Date) -> Void)?
 
     func makeUIViewController(context: Context) -> UINavigationController {
-        // СЕГА просто инициализираме без layout:
         let pickerVC = CalendarDateRangePickerViewController()
         pickerVC.delegate = context.coordinator
         
@@ -53,15 +49,22 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        @MainActor func didCancelPickingDateRange() {
-            parent.presentationMode.wrappedValue.dismiss()
+        func didCancelPickingDateRange() {
+            // Ако все пак имаме метод за отменяне,
+            // може да затворите, ако желаете:
+            // parent.presentationMode.wrappedValue.dismiss()
         }
         
         @MainActor func didPickDateRange(startDate: Date!, endDate: Date!) {
             if let s = startDate, let e = endDate {
+                // Предаваме ги обратно на SwiftUI:
                 parent.onComplete?(s, e)
             }
-            parent.presentationMode.wrappedValue.dismiss()
+            
+            // Коментар:
+            // ПРЕДИ беше:
+            // parent.presentationMode.wrappedValue.dismiss()
+            // СЕГА е махнато, за да НЕ се затваря автоматично
         }
     }
 }

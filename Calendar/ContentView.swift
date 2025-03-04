@@ -1,8 +1,3 @@
-//
-//  ContentView.swift
-//  <Вашият проект>
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -42,6 +37,7 @@ struct ContentView: View {
                 Color.black.opacity(0.4)
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
+                        // Ако искате да се скрива при тап извън него:
                         withAnimation {
                             showCalendar = false
                         }
@@ -56,11 +52,18 @@ struct ContentView: View {
                         maximumDate: Calendar.current.date(byAdding: .month, value: 6, to: Date()),
                         selectedColor: UIColor.systemBlue
                     ) { newStart, newEnd in
+                        // Тук автоматично получаваме новите (start, end)
+                        // при всяка промяна. Може да ги запишем в @State:
                         self.startDate = newStart
                         self.endDate = newEnd
-                        withAnimation {
-                            showCalendar = false
-                        }
+                        
+                        // НЕ затваряме (showCalendar = false),
+                        // за да остане календара отворен
+                        
+                        // Ако искаме все пак да го затворим, разкоментирайте:
+                        // withAnimation {
+                        //    showCalendar = false
+                        // }
                     }
                     .frame(height: 350)  // коригирайте височината по желание
                     

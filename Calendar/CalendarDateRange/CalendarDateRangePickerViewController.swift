@@ -328,23 +328,23 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
         }
 
         if selectedStartDate == nil {
+            // Първи клик => начална дата
             selectedStartDate = cellDate
         }
         else if selectedEndDate == nil {
-            // Ако е в бъдещето спрямо startDate, слагаме за endDate;
-            // иначе просто заменяме startDate
+            // Втори клик => крайна дата (или заменяме startDate, ако са обърнати)
             if let start = selectedStartDate, isBefore(dateA: start, dateB: cellDate) {
                 selectedEndDate = cellDate
             } else {
                 selectedStartDate = cellDate
             }
-            // Имаме start+end => делегат
+            // Веднага извикваме делегата, но **няма** да затваряме екрана:
             if let s = selectedStartDate, let e = selectedEndDate {
                 delegate?.didPickDateRange(startDate: s, endDate: e)
             }
         }
         else {
-            // Трето кликване => започваме нов диапазон
+            // Трети клик => стартираме нов диапазон
             selectedStartDate = cellDate
             selectedEndDate = nil
         }

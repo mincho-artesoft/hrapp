@@ -65,4 +65,3 @@ public class CalendarDateRangePickerCell: UICollectionViewCell {
         self.backgroundColor = highlightedColor
     }
 }
-
