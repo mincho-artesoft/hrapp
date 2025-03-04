@@ -2,7 +2,7 @@ import SwiftUI
 import EventKit
 
 struct RootView: View {
-    @State private var selectedTab = 3
+    @State private var selectedTab = 4
     @State var accessGranted = false
 
     // За Multi-Day изгледа

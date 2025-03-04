@@ -30,9 +30,6 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
         if let c = selectedColor {
             pickerVC.selectedColor = c
         }
-        if let t = titleText {
-            pickerVC.titleText = t
-        }
         
         let navController = UINavigationController(rootViewController: pickerVC)
         return navController
