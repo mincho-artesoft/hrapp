@@ -1,220 +1,179 @@
-//import SwiftUI
-//import FSCalendar
-//
-//struct ContentView: View {
-//    @State private var showCalendar = false
-//    
-//    // Запазваме позицията и размера на бутона за позициониране на pop-up-а
-//    @State private var buttonFrame: CGRect = .zero
-//    
-//    // Избраните начална и крайна дата
-//    @State private var startDate: Date? = nil
-//    @State private var endDate: Date? = nil
-//    
-//    var body: some View {
-//        ZStack(alignment: .topLeading) {
-//            VStack(spacing: 20) {
-//                Text("Избран диапазон:")
-//                
-//                if let start = startDate, let end = endDate {
-//                    Text("\(formatted(start)) – \(formatted(end))")
-//                        .fontWeight(.bold)
-//                } else if let start = startDate {
-//                    Text("Начална дата: \(formatted(start)) (няма крайна)")
-//                } else {
-//                    Text("Няма избран диапазон")
-//                }
-//                
-//                Button("Избери диапазон") {
-//                    showCalendar.toggle()
-//                }
-//                .background(
-//                    GeometryReader { geo in
-//                        Color.clear
-//                            .onAppear {
-//                                self.buttonFrame = geo.frame(in: .global)
-//                            }
-//                    }
-//                )
-//                
-//                Spacer()
-//            }
-//            .padding()
-//            
-//            // Pop-up календарът
-//            if showCalendar {
-//                // Полупрозрачен фон за затваряне при клик извън календара
-//                Color.black.opacity(0.3)
-//                    .ignoresSafeArea()
-//                    .onTapGesture {
-//                        showCalendar = false
-//                    }
-//                
-//                VStack(alignment: .leading, spacing: 0) {
-//                    ZStack {
-//                        LinearGradient(
-//                            gradient: Gradient(colors: [
-//                                Color.white,
-//                                Color(red: 0.94, green: 0.97, blue: 1.0)
-//                            ]),
-//                            startPoint: .top,
-//                            endPoint: .bottom
-//                        )
-//                        .cornerRadius(12)
-//                        
-//                        FSCalendarRangePicker(startDate: $startDate, endDate: $endDate)
-//                            .padding(.vertical, 8)
-//                    }
-//                    .frame(width: 320, height: 340)
-//                    .cornerRadius(12)
-//                    .shadow(radius: 8)
-//                }
-//                // Позициониране под бутона
-//                .position(
-//                    x: buttonFrame.midX,
-//                    y: buttonFrame.maxY + 190
-//                )
-//            }
-//        }
-//    }
-//    
-//    private func formatted(_ date: Date) -> String {
-//        let fmt = DateFormatter()
-//        fmt.dateFormat = "dd.MM.yyyy"
-//        return fmt.string(from: date)
-//    }
-//}
-//
-//struct FSCalendarRangePicker: UIViewRepresentable {
-//    @Binding var startDate: Date?
-//    @Binding var endDate: Date?
-//    
-//    func makeUIView(context: Context) -> FSCalendar {
-//        let calendar = FSCalendar()
-//        
-//        // Задаваме делегати и dataSource
-//        calendar.delegate = context.coordinator
-//        calendar.dataSource = context.coordinator
-//        
-//        // Не показваме placeholder дни от други месеци
-//        calendar.placeholderType = .none
-//        
-//        let appearance = calendar.appearance
-//        // Задаваме селекцията като кръг (50% от височината)
-//        appearance.borderRadius = 0.5
-//        
-//        // Настройки за днешния ден
-//        appearance.todayColor = .clear
-//        appearance.titleTodayColor = .orange
-//        
-//        // Заглавие (месец/година)
-//        appearance.headerDateFormat = "LLLL yyyy"
-//        appearance.headerTitleColor = UIColor.label
-//        appearance.headerTitleFont = UIFont.systemFont(ofSize: 20, weight: .semibold)
-//        appearance.headerMinimumDissolvedAlpha = 0.0
-//        
-//        // Дните от седмицата
-//        appearance.weekdayTextColor = UIColor.secondaryLabel
-//        appearance.weekdayFont = UIFont.systemFont(ofSize: 14, weight: .medium)
-//        
-//        // Дните в календара
-//        appearance.titleDefaultColor = UIColor.label
-//        appearance.titleFont = UIFont.systemFont(ofSize: 16, weight: .regular)
-//        
-//        // Подредба на български
-//        calendar.locale = Locale(identifier: "bg_BG")
-//        
-//        return calendar
-//    }
-//    
-//    func updateUIView(_ uiView: FSCalendar, context: Context) {
-//        uiView.reloadData()
-//    }
-//    
-//    func makeCoordinator() -> Coordinator {
-//        Coordinator(self)
-//    }
-//    
-//    class Coordinator: NSObject, @preconcurrency FSCalendarDelegate, FSCalendarDataSource, @preconcurrency FSCalendarDelegateAppearance {
-//        var parent: FSCalendarRangePicker
-//        
-//        init(_ parent: FSCalendarRangePicker) {
-//            self.parent = parent
-//        }
-//        
-//        // Логика за избор на начална и крайна дата
-//        @MainActor func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//            let selected = Calendar.current.startOfDay(for: date)
-//            if parent.startDate == nil {
-//                parent.startDate = selected
-//                parent.endDate = nil
-//                calendar.reloadData()
-//                return
-//            }
-//            if let start = parent.startDate, parent.endDate == nil {
-//                if selected < start {
-//                    parent.endDate = start
-//                    parent.startDate = selected
-//                } else {
-//                    parent.endDate = selected
-//                }
-//                calendar.reloadData()
-//                return
-//            }
-//            // Ако вече са избрани начална и крайна дата – рестартираме
-//            parent.startDate = selected
-//            parent.endDate = nil
-//            calendar.reloadData()
-//        }
-//        
-//        // Настройка на запълването за избраните дати:
-//        // – При само една избрана дата: тя се оцветява с пълен син кръг.
-//        // – При избран диапазон: началната и крайната дата имат пълен цвят,
-//        //   а дните между тях са оцветени с полупрозрачен син фон.
-//        @MainActor func calendar(_ calendar: FSCalendar,
-//                                  appearance: FSCalendarAppearance,
-//                                  fillSelectionColorFor date: Date) -> UIColor? {
-//            guard let start = parent.startDate else {
-//                return nil
-//            }
-//            
-//            // Само начална дата избрана
-//            if parent.endDate == nil {
-//                if areSameDay(dateA: date, dateB: start) {
-//                    return UIColor.systemBlue
-//                }
-//                return nil
-//            }
-//            
-//            guard let end = parent.endDate else { return nil }
-//            
-//            // Ако диапазонът е само един ден
-//            if areSameDay(dateA: start, dateB: end) {
-//                if areSameDay(dateA: date, dateB: start) {
-//                    return UIColor.systemBlue
-//                }
-//            } else {
-//                // При истински диапазон:
-//                if areSameDay(dateA: date, dateB: start) || areSameDay(dateA: date, dateB: end) {
-//                    // Началната и крайната дата – пълен кръг
-//                    return UIColor.systemBlue
-//                }
-//                if date > start && date < end {
-//                    // Дните между тях – полупрозрачно запълване
-//                    return UIColor.systemBlue.withAlphaComponent(0.3)
-//                }
-//            }
-//            return nil
-//        }
-//        
-//        func areSameDay(dateA: Date, dateB: Date) -> Bool {
-//            return Calendar.current.compare(dateA, to: dateB, toGranularity: .day) == .orderedSame
-//        }
-//    }
-//}
-//
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+import SwiftUI
+import FSCalendar
+
+/// UIViewRepresentable, което да показва FSCalendar и да пази start/end дати
+struct FSCalendarRangeView: UIViewRepresentable {
+    @Binding var startDate: Date?
+    @Binding var endDate: Date?
+
+    func makeUIView(context: Context) -> FSCalendar {
+        let calendar = FSCalendar()
+        calendar.delegate = context.coordinator
+        calendar.dataSource = context.coordinator
+        calendar.allowsMultipleSelection = true
+        calendar.scope = .month
+        return calendar
+    }
+
+    func updateUIView(_ uiView: FSCalendar, context: Context) {
+        // Изчистваме предишни селекции
+        uiView.selectedDates.forEach { uiView.deselect($0) }
+        
+        // Ако имаме startDate
+        if let start = startDate {
+            uiView.select(start)
+        }
+        // Ако имаме startDate и endDate
+        if let start = startDate, let end = endDate, start <= end {
+            // Селектираме всички дати между start..end
+            datesRange(from: start, to: end).forEach {
+                uiView.select($0)
+            }
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, @preconcurrency FSCalendarDelegate, FSCalendarDataSource {
+        var parent: FSCalendarRangeView
+        
+        init(_ parent: FSCalendarRangeView) {
+            self.parent = parent
+        }
+
+        // При избор на дата
+        @MainActor func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+            let start = parent.startDate
+            let end = parent.endDate
+
+            // Нямаме start => избираме тази дата за startDate
+            if start == nil {
+                parent.startDate = date
+                parent.endDate = nil
+                return
+            }
+
+            // Имаме start, нямаме end => избираме date за endDate
+            if start != nil && end == nil {
+                // Ако date < start => разменяме
+                if let s = start, date < s {
+                    parent.startDate = date
+                    parent.endDate = s
+                } else {
+                    parent.endDate = date
+                }
+                return
+            }
+
+            // Ако вече има start и end => започваме нов диапазон
+            if start != nil && end != nil {
+                parent.startDate = date
+                parent.endDate = nil
+                calendar.selectedDates.forEach { calendar.deselect($0) }
+                calendar.select(date)
+            }
+        }
+    }
+    
+    // Хелпър функция за дати между two dates (включително)
+    private func datesRange(from: Date, to: Date) -> [Date] {
+        guard from <= to else { return [] }
+        var dates: [Date] = []
+        var current = from
+        while current <= to {
+            dates.append(current)
+            current = Calendar.current.date(byAdding: .day, value: 1, to: current) ?? current
+        }
+        return dates
+    }
+}
+
+import SwiftUI
+import FSCalendar
+
+struct ContentView: View {
+    @State private var showCalendar = false
+    // Променливи за start/end
+    @State private var startDate: Date? = nil
+    @State private var endDate: Date? = nil
+
+    var body: some View {
+        ZStack {
+            // Основно съдържание
+            VStack {
+                Text("Calendar Demo")
+                    .font(.largeTitle)
+                    .padding()
+
+                HStack {
+                    if let s = startDate, let e = endDate {
+                        Text("Избран период:\n\(fmt(s)) - \(fmt(e))")
+                            .multilineTextAlignment(.center)
+                    } else {
+                        Text("Няма избран период")
+                    }
+                }
+                .padding()
+
+                Button("Покажи календар") {
+                    withAnimation {
+                        showCalendar = true
+                    }
+                }
+                .padding()
+
+                Spacer()
+            }
+
+            // Ако е натиснат бутона, показваме overlay
+            if showCalendar {
+                // Полупрозрачен фон зад календарчето
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                    // При клик върху фона затваряме
+                    .onTapGesture {
+                        withAnimation {
+                            showCalendar = false
+                        }
+                    }
+
+                // „Плаващо“ прозорче
+                VStack {
+                    // Заглавие
+                    Text("Изберете период")
+                        .font(.headline)
+                        .padding(.top)
+
+                    // ТУК Е СЪЩИНСКИЯТ КАЛЕНДАР
+                    FSCalendarRangeView(startDate: $startDate, endDate: $endDate)
+                        .frame(height: 300)
+                        .padding()
+
+                    Divider()
+
+                    Button("Готово") {
+                        withAnimation {
+                            showCalendar = false
+                        }
+                    }
+                    .padding(.bottom)
+                }
+                .frame(width: 320)
+                .background(Color(UIColor.systemBackground)) // или .white
+                .cornerRadius(12)
+                .shadow(radius: 10)
+                .padding()
+                .transition(.scale)
+            }
+        }
+    }
+
+    // Форматиране на датите за показване
+    private func fmt(_ date: Date) -> String {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        return df.string(from: date)
+    }
+}

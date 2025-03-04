@@ -49,6 +49,8 @@ struct RootView: View {
                         Text("MultiDay").tag(3)
                         Text("Month").tag(0)
                         Text("Year").tag(2)
+                        Text("TEST").tag(4)
+
                     }
                     .pickerStyle(.segmented)
                     .padding()
@@ -98,7 +100,8 @@ struct RootView: View {
                         .onReceive(timer) { _ in
                             loadPinnedRangeEvents()
                         }
-                        
+                    case 4:
+                        ContentView()
                     default:
                         Text("N/A")
                     }
