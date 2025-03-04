@@ -1,7 +1,5 @@
-//
-//  CalendarDateRangePickerWrapper.swift
-//  <Вашият проект>
-//
+import SwiftUI
+import UIKit
 
 import SwiftUI
 import UIKit
@@ -19,11 +17,10 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     
     // Callback при завършване
     var onComplete: ((Date, Date) -> Void)?
-    
+
     func makeUIViewController(context: Context) -> UINavigationController {
-        let layout = UICollectionViewFlowLayout()
-        
-        let pickerVC = CalendarDateRangePickerViewController(collectionViewLayout: layout)
+        // СЕГА просто инициализираме без layout:
+        let pickerVC = CalendarDateRangePickerViewController()
         pickerVC.delegate = context.coordinator
         
         // Подаваме зададените стойности
@@ -36,6 +33,7 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
             pickerVC.selectedColor = c
         }
         
+        // Опаковаме в NavigationController (за да имаме Navbar)
         let navController = UINavigationController(rootViewController: pickerVC)
         return navController
     }
@@ -55,7 +53,6 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        // Ако имате бутон Cancel – затваря без да избира
         @MainActor func didCancelPickingDateRange() {
             parent.presentationMode.wrappedValue.dismiss()
         }
