@@ -25,7 +25,7 @@ struct MonthCalendarView: View {
     private let calendar = Calendar(identifier: .gregorian)
     
     // Тук пазим събитията (EventDescriptor) за конкретния ден,
-    // които подаваме на TwoWayPinnedWeekWrapper.
+    // които подаваме на TwoWayPinnedMultiDayWrapper.
     @State private var pinnedDayEvents: [EventDescriptor] = []
     
     init(viewModel: CalendarViewModel, startMonth: Date) {
@@ -62,38 +62,41 @@ struct MonthCalendarView: View {
             // Генерираме всички дати за показване в мрежата 7x6 (или 7x5) за месеца
             let dates = calendar.generateDatesForMonthGrid(for: currentMonth)
 
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
-                ForEach(dates, id: \.self) { day in
-                    let dayKey = calendar.startOfDay(for: day)
-                    let dayEvents = viewModel.eventsByDay[dayKey] ?? []
-                    
-                    DayCellView(
-                        day: day,
-                        currentMonth: currentMonth,
-                        events: dayEvents,
-                        onEventDropped: { eventID, newDay in
-                            handleEventDropped(eventID, on: newDay)
-                        },
-                        onDayTap: { tappedDay in
-                            if viewModel.isCalendarAccessGranted() {
-                                // Вместо showDayView = true -> задаваме selectedDayForFullScreen
-                                selectedDayForFullScreen = tappedDay
-                            } else {
-                                // Ако нямате достъп:
-                                // await viewModel.requestCalendarAccessIfNeeded()
+            // >>> ПРОМЯНАТА ТУК: ScrollView, който обгръща LazyVGrid <<<
+            ScrollView {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
+                    ForEach(dates, id: \.self) { day in
+                        let dayKey = calendar.startOfDay(for: day)
+                        let dayEvents = viewModel.eventsByDay[dayKey] ?? []
+                        
+                        DayCellView(
+                            day: day,
+                            currentMonth: currentMonth,
+                            events: dayEvents,
+                            onEventDropped: { eventID, newDay in
+                                handleEventDropped(eventID, on: newDay)
+                            },
+                            onDayTap: { tappedDay in
+                                if viewModel.isCalendarAccessGranted() {
+                                    // Вместо showDayView = true -> задаваме selectedDayForFullScreen
+                                    selectedDayForFullScreen = tappedDay
+                                } else {
+                                    // Ако нямате достъп:
+                                    // await viewModel.requestCalendarAccessIfNeeded()
+                                }
+                            },
+                            onDayLongPress: { pressedDay in
+                                createAndEditNewEvent(on: pressedDay)
+                            },
+                            onEventTap: { tappedEvent in
+                                // Вместо showEventEditor = true, директно задаваме eventToEdit
+                                eventToEdit = tappedEvent
                             }
-                        },
-                        onDayLongPress: { pressedDay in
-                            createAndEditNewEvent(on: pressedDay)
-                        },
-                        onEventTap: { tappedEvent in
-                            // Вместо showEventEditor = true, директно задаваме eventToEdit
-                            eventToEdit = tappedEvent
-                        }
-                    )
+                        )
+                    }
                 }
+                .padding(.horizontal, 8)
             }
-            .padding(.horizontal, 8)
         }
         // Презареждаме събитията за текущия месец при onAppear:
         .onAppear {
@@ -251,7 +254,7 @@ struct MonthCalendarView: View {
         eventToEdit = newEvent
     }
     
-    // Зареждаме EKEvent-и като EventDescriptor, за да ги подадем на TwoWayPinnedWeekWrapper.
+    // Зареждаме EKEvent-и като EventDescriptor, за да ги подадем на TwoWayPinnedMultiDayWrapper.
     private func loadPinnedDayEvents(for day: Date) {
         let cal = Calendar.current
         let dayStart = cal.startOfDay(for: day)
@@ -273,7 +276,7 @@ struct MonthCalendarView: View {
             let realStart = ekEvent.startDate
             let realEnd   = ekEvent.endDate
             
-            // Ако пресичат границата: ден/следващ, раздробяваме:
+            // Ако пресичат границата ден/следващ ден, раздробяваме:
             if realStart! < dayStart || realEnd! > nextDay {
                 splitted.append(contentsOf: splitEventByDays(ekEvent,
                                                              startRange: dayStart,
