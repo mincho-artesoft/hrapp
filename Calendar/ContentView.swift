@@ -1,14 +1,17 @@
+//
+//  ContentView.swift
+//  <Вашият проект>
+//
+
 import SwiftUI
 
 struct ContentView: View {
     @State private var showCalendar = false
-    // Променливи за start/end
     @State private var startDate: Date? = nil
     @State private var endDate: Date? = nil
     
     var body: some View {
         ZStack {
-            // Основно съдържание
             VStack {
                 Text("Calendar Demo")
                     .font(.largeTitle)
@@ -34,27 +37,24 @@ struct ContentView: View {
                 Spacer()
             }
             
-            // Ако е натиснат бутона, показваме overlay
             if showCalendar {
-                // Полупрозрачен фон зад календарчето
+                // Полупрозрачен фон
                 Color.black.opacity(0.4)
                     .edgesIgnoringSafeArea(.all)
-                    // При клик върху фона затваряме
                     .onTapGesture {
                         withAnimation {
                             showCalendar = false
                         }
                     }
                 
-                // „Плаващо“ прозорче
+                // Плаващо "прозорче" с CalendarDateRangePickerWrapper
                 VStack {
                     CalendarDateRangePickerWrapper(
                         startDate: startDate,
                         endDate: endDate,
                         minimumDate: Calendar.current.date(byAdding: .month, value: -6, to: Date()),
                         maximumDate: Calendar.current.date(byAdding: .month, value: 6, to: Date()),
-                        selectedColor: UIColor.systemBlue,
-                        titleText: "Select Dates"  // Ето го
+                        selectedColor: UIColor.systemBlue
                     ) { newStart, newEnd in
                         self.startDate = newStart
                         self.endDate = newEnd
@@ -62,12 +62,12 @@ struct ContentView: View {
                             showCalendar = false
                         }
                     }
-                    .frame(height: 350)  // колкото искате височина
+                    .frame(height: 350)  // коригирайте височината по желание
                     
                     Divider()
                 }
                 .frame(width: 320)
-                .background(Color(UIColor.systemBackground)) // или .white
+                .background(Color(UIColor.systemBackground))
                 .cornerRadius(12)
                 .shadow(radius: 10)
                 .padding()
@@ -76,10 +76,15 @@ struct ContentView: View {
         }
     }
     
-    // Форматиране на датите за показване
     private func fmt(_ date: Date) -> String {
         let df = DateFormatter()
         df.dateStyle = .medium
         return df.string(from: date)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

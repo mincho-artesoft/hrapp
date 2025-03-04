@@ -1,4 +1,10 @@
+//
+//  CalendarDateRangePickerWrapper.swift
+//  <Вашият проект>
+//
+
 import SwiftUI
+import UIKit
 
 struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
@@ -6,11 +12,10 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     var startDate: Date?
     var endDate: Date?
     
-    // По желание: minDate, maxDate, цвят, заглавие...
+    // По желание: минимална/максимална дата, цвят...
     var minimumDate: Date?
     var maximumDate: Date?
     var selectedColor: UIColor? = nil
-    var titleText: String? = nil
     
     // Callback при завършване
     var onComplete: ((Date, Date) -> Void)?
@@ -21,7 +26,7 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
         let pickerVC = CalendarDateRangePickerViewController(collectionViewLayout: layout)
         pickerVC.delegate = context.coordinator
         
-        // Подаваме отвън зададените стойности
+        // Подаваме зададените стойности
         pickerVC.selectedStartDate = startDate
         pickerVC.selectedEndDate = endDate
         pickerVC.minimumDate = minimumDate
@@ -36,7 +41,7 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // ...
+        // Тук може да обновявате при нужда
     }
     
     func makeCoordinator() -> Coordinator {
@@ -50,6 +55,7 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
             self.parent = parent
         }
         
+        // Ако имате бутон Cancel – затваря без да избира
         @MainActor func didCancelPickingDateRange() {
             parent.presentationMode.wrappedValue.dismiss()
         }

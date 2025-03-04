@@ -1,15 +1,19 @@
-import Foundation
 import UIKit
+import Foundation
 
+// MARK: - Протокол
 public protocol CalendarDateRangePickerViewControllerDelegate {
     func didCancelPickingDateRange()
     func didPickDateRange(startDate: Date!, endDate: Date!)
 }
 
+// MARK: - Основен VC
 public class CalendarDateRangePickerViewController: UICollectionViewController {
     
     let cellReuseIdentifier = "CalendarDateRangePickerCell"
-    let headerReuseIdentifier = "CalendarDateRangePickerHeaderView"
+    
+    // Тук пазим нашия UILabel, който показва "March 2025"
+    var monthLabel = UILabel()
     
     var currentMonth: Date = Date()
     
@@ -24,7 +28,10 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     public var selectedStartDate: Date?
     public var selectedEndDate: Date?
     
-    public var selectedColor = UIColor(red: 66/255.0, green: 150/255.0, blue: 240/255.0, alpha: 1.0)
+    public var selectedColor = UIColor(red: 66/255.0,
+                                       green: 150/255.0,
+                                       blue: 240/255.0,
+                                       alpha: 1.0)
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,18 +40,16 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
         collectionView?.delegate = self
         collectionView?.backgroundColor = UIColor.white
         
+        // Регистрираме клетката
         collectionView?.register(
             CalendarDateRangePickerCell.self,
             forCellWithReuseIdentifier: cellReuseIdentifier
         )
-        collectionView?.register(
-            CalendarDateRangePickerHeaderView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: headerReuseIdentifier
-        )
+        
+        // Отстояния
         collectionView?.contentInset = collectionViewInsets
         
-        // Минимални/максимални дати
+        // Минимални и максимални дати
         let today = Date()
         if minimumDate == nil {
             minimumDate = Calendar.current.date(byAdding: .year, value: -5, to: today)
@@ -53,15 +58,27 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
             maximumDate = Calendar.current.date(byAdding: .year, value: 3, to: today)
         }
         
-        // Определяме кой месец да се вижда
+        // Кой месец да се показва
         if let start = selectedStartDate {
             currentMonth = makeFirstDayOfMonth(from: start)
         } else {
             currentMonth = makeFirstDayOfMonth(from: today)
         }
         
-        // -- Махаме бутоните Cancel/Done --
-        // (ако искаме да имаме < / > бутони за навигация, може да ги оставим)
+        // == Слагаме MonthLabel в левия ъгъл ==
+        monthLabel.text = getMonthLabel(date: currentMonth)  // "March 2025", напр.
+        monthLabel.sizeToFit()
+        
+        // Пускаме tap жест върху monthLabel
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(monthLabelTapped))
+        monthLabel.isUserInteractionEnabled = true
+        monthLabel.addGestureRecognizer(tapGesture)
+        
+        // Правим UIBarButtonItem с този Label
+        let labelItem = UIBarButtonItem(customView: monthLabel)
+        self.navigationItem.leftBarButtonItem = labelItem
+        
+        // == Слагаме бутоните < и > в десния ъгъл ==
         let prevMonthButton = UIBarButtonItem(
             title: "<",
             style: .plain,
@@ -74,7 +91,8 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
             target: self,
             action: #selector(didTapNextMonth)
         )
-        // Примерно ги слагаме вдясно
+        
+        // Ако искате "<" да е по-близо до monthLabel, разменете реда
         self.navigationItem.rightBarButtonItems = [nextMonthButton, prevMonthButton]
     }
     
@@ -83,23 +101,94 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
-    // MARK: - Бутоните < / >
+    // При натискане на monthLabel -> показваме UIPickerView в UIAlertController
+    @objc func monthLabelTapped() {
+        let alert = UIAlertController(
+            title: "Select month & year",
+            message: "\n\n\n\n\n\n\n\n", // малък трик за място на Picker-а (~8 празни реда)
+            preferredStyle: .actionSheet
+        )
+        
+        // Създаваме нашия MonthYearPickerView
+        let pickerView = MonthYearPickerView()
+        pickerView.frame = CGRect(x: 0, y: 0, width: alert.view.bounds.width, height: 180)
+        
+        // Позиционираме пикъра според текущия месец/година
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.year, .month], from: currentMonth)
+        let curYear = comps.year ?? 2025
+        let curMonth = comps.month ?? 3
+        pickerView.select(month: curMonth, year: curYear)
+        
+        // Добавяме pickerView като subview на alert.view
+        alert.view.addSubview(pickerView)
+        
+        // Бутон OK
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            
+            let newMonth = pickerView.getSelectedMonth()    // int [1..12]
+            let newYear = pickerView.getSelectedYear()      // int, напр. 2025
+            
+            // Правим нов Date (1-во число на избрания месец)
+            var components = DateComponents()
+            components.day = 1
+            components.month = newMonth
+            components.year = newYear
+            if let newDate = Calendar.current.date(from: components) {
+                self.currentMonth = newDate
+                // Обновяваме monthLabel
+                self.monthLabel.text = self.getMonthLabel(date: newDate)
+                self.monthLabel.sizeToFit()
+                
+                // Релоуд на колекцията
+                self.collectionView?.reloadData()
+            }
+        }
+        
+        // Бутон Cancel
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        // За iPad (popover) да не крашне
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.monthLabel
+            popoverController.sourceRect = self.monthLabel.bounds
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // Бутон < (предишен месец)
     @objc func didTapPrevMonth() {
         if let newMonth = Calendar.current.date(byAdding: .month, value: -1, to: currentMonth) {
             if let minD = minimumDate, newMonth < makeFirstDayOfMonth(from: minD) {
                 return
             }
             currentMonth = newMonth
+            
+            // Обновяваме monthLabel
+            self.monthLabel.text = getMonthLabel(date: currentMonth)
+            self.monthLabel.sizeToFit()
+            
             collectionView?.reloadData()
         }
     }
     
+    // Бутон > (следващ месец)
     @objc func didTapNextMonth() {
         if let newMonth = Calendar.current.date(byAdding: .month, value: 1, to: currentMonth) {
             if let maxD = maximumDate, newMonth > makeFirstDayOfMonth(from: maxD) {
                 return
             }
             currentMonth = newMonth
+            
+            // Обновяваме monthLabel
+            self.monthLabel.text = getMonthLabel(date: currentMonth)
+            self.monthLabel.sizeToFit()
+            
             collectionView?.reloadData()
         }
     }
@@ -109,13 +198,12 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
 extension CalendarDateRangePickerViewController {
     
     public override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // Само 1 секция – текущият месец
         return 1
     }
     
     public override func collectionView(_ collectionView: UICollectionView,
                                         numberOfItemsInSection section: Int) -> Int {
-        // 7 клетки за етикетите на дните + празните слотове + реалните дни
+        // 7 клетки за дните (Mon..Sun) + празни + реални дни
         let weekdayRowItems = 7
         let blankItems = getWeekday(date: currentMonth) - 1
         let daysInMonth = getNumberOfDaysInMonth(date: currentMonth)
@@ -134,20 +222,20 @@ extension CalendarDateRangePickerViewController {
         cell.selectedColor = self.selectedColor
         cell.reset()
         
-        // Първите 7 са етикети (Mon, Tue, Wed...)
+        // Първите 7 са етикети (Mon, Tue, Wed ...)
         if indexPath.item < 7 {
             cell.label.text = getWeekdayLabel(weekday: indexPath.item + 1)
             return cell
         }
         
-        let blankItems = getWeekday(date: currentMonth) - 1
         // Празни слотове
+        let blankItems = getWeekday(date: currentMonth) - 1
         if indexPath.item < 7 + blankItems {
             cell.label.text = ""
             return cell
         }
         
-        // Реални дни
+        // Реален ден
         let dayOfMonth = indexPath.item - (7 + blankItems) + 1
         let date = getDate(dayOfMonth: dayOfMonth, baseMonth: currentMonth)
         cell.date = date
@@ -155,7 +243,6 @@ extension CalendarDateRangePickerViewController {
         
         // Оцветяване (startDate/endDate)
         if let start = selectedStartDate, let end = selectedEndDate {
-            // Имаме пълен диапазон
             if areSameDay(dateA: start, dateB: end) {
                 // Един ден
                 if areSameDay(dateA: date, dateB: start) {
@@ -165,7 +252,8 @@ extension CalendarDateRangePickerViewController {
                 }
             } else {
                 // start < end
-                if isBefore(dateA: start, dateB: date) && isBefore(dateA: date, dateB: end) {
+                if isBefore(dateA: start, dateB: date) &&
+                   isBefore(dateA: date, dateB: end) {
                     cell.highlight()
                 } else if areSameDay(dateA: date, dateB: start) {
                     cell.select()
@@ -193,24 +281,6 @@ extension CalendarDateRangePickerViewController {
         
         return cell
     }
-    
-    // Ако искате горен хедър "Месец Година":
-    public override func collectionView(_ collectionView: UICollectionView,
-                                        viewForSupplementaryElementOfKind kind: String,
-                                        at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: headerReuseIdentifier,
-                for: indexPath
-            ) as! CalendarDateRangePickerHeaderView
-            headerView.label.text = getMonthLabel(date: currentMonth)
-            return headerView
-        default:
-            fatalError("Unexpected element kind")
-        }
-    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -223,28 +293,25 @@ extension CalendarDateRangePickerViewController {
             return
         }
         
-        // 1) Ако нямаме start -> избираме start
-        // 2) Ако имаме start, но нямаме end -> слагаме end (ако е след start) или сменяме start
-        // 3) В момента, в който имаме start + end, директно викаме callback и затваряме
+        // Логика за избор на start/end
         if selectedStartDate == nil {
             selectedStartDate = cellDate
         }
         else if selectedEndDate == nil {
-            // Имаме само start
-            if let start = selectedStartDate, isBefore(dateA: start, dateB: cellDate) {
+            if let start = selectedStartDate,
+               isBefore(dateA: start, dateB: cellDate) {
                 selectedEndDate = cellDate
             } else {
                 selectedStartDate = cellDate
             }
             
-            // Вече имаме start + end ⇒ Извикваме delegate => затваряме
+            // Вече имаме start+end => казваме на делегата
             if let s = selectedStartDate, let e = selectedEndDate {
                 delegate?.didPickDateRange(startDate: s, endDate: e)
             }
         }
         else {
-            // Ако user кликне трети път, да започне нов диапазон
-            // (По желание може директно да се игнорира третият клик)
+            // Трето кликване => нов диапазон
             selectedStartDate = cellDate
             selectedEndDate = nil
         }
@@ -265,10 +332,11 @@ extension CalendarDateRangePickerViewController: UICollectionViewDelegateFlowLay
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
+    // Не ни трябва header => .zero
     public func collectionView(_ collectionView: UICollectionView,
                                layout collectionViewLayout: UICollectionViewLayout,
                                referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: 50)
+        return .zero
     }
     
     public func collectionView(_ collectionView: UICollectionView,
@@ -295,22 +363,25 @@ extension CalendarDateRangePickerViewController {
     
     func getMonthLabel(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM yyyy"
+        formatter.dateFormat = "MMMM yyyy" // "March 2025"
         return formatter.string(from: date)
     }
     
     func getWeekdayLabel(weekday: Int) -> String {
+        // weekday: 1 = Sunday, 2 = Monday, ...
+        // Тук искаме "Mon" да е 1, но в iOS Monday = 2
+        // Ако искате да компенсирате, може да има offset; засега приемаме така
         var comps = DateComponents()
         comps.calendar = Calendar.current
         comps.weekday = weekday
+        
         let date = Calendar.current.nextDate(after: Date(),
                                              matching: comps,
                                              matchingPolicy: .strict)
-        if date == nil {
-            return "?"
-        }
+        if date == nil { return "?" }
+        
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEEE" // 1 буква (M, T, W...)
+        formatter.dateFormat = "EEEEE" // 1 буква: M, T, W...
         return formatter.string(from: date!)
     }
     
