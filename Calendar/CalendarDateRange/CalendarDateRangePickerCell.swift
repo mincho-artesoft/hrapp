@@ -1,16 +1,17 @@
 import UIKit
 
+// =====================================================================
+// MARK: - Клетка (UICollectionViewCell)
+// =====================================================================
 public class CalendarDateRangePickerCell: UICollectionViewCell {
 
     private let defaultTextColor = UIColor.darkGray
-    
-    // Линията ще е сивкав фон (променете по желание):
     private let lineColor = UIColor(white: 0.9, alpha: 1.0)
 
     var selectedColor: UIColor!
     var date: Date?
     
-    // Subview-ове
+    // Subview-ове (линия и кръг)
     var lineView: UIView?
     var circleView: UIView?
     
@@ -28,8 +29,6 @@ public class CalendarDateRangePickerCell: UICollectionViewCell {
     }
 
     func initLabel() {
-        // Създаваме label (върху цялата клетка),
-        // за да може да е винаги отгоре спрямо другите subviews:
         label = UILabel(frame: bounds)
         label.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
         label.font = UIFont(name: "HelveticaNeue", size: 15.0)
@@ -65,7 +64,7 @@ public class CalendarDateRangePickerCell: UICollectionViewCell {
         lineView = v
     }
     
-    /// Чертай **кръг** (selectedColor) зад датата
+    /// Чертай кръг зад датата (selectedColor)
     func addCircle() {
         let w = bounds.width
         let h = bounds.height

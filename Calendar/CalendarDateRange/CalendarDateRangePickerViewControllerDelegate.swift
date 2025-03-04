@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol CalendarDateRangePickerViewControllerDelegate {
-    /// Извиква се при натискане на "Cancel"
+    /// Извиква се при натискане на "Cancel" (ако имате такава логика)
     func didCancelPickingDateRange()
     
     /// Извиква се, след като потребителят избере startDate & endDate
