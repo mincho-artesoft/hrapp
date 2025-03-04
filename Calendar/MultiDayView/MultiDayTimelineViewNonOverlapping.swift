@@ -186,7 +186,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             // за да разпределим евентите, които се застъпват, в отделни колони
             var columns: [[EventLayoutAttributes]] = []
             
-            // 4) Разпределяме евентите по колони на база вашата стара логика isOverlapping
+            // 4) Разпределяме евентите по колони на база дали се застъпват
             for attr in sorted {
                 var placed = false
                 for c in 0..<columns.count {
@@ -210,9 +210,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             // "ширина" на всяка колона (делим наличната dayColumnWidth)
             let columnWidth = (dayColumnWidth - style.eventGap * 2) / colCount
             
-            // Обхождаме всяка колона поотделно:
+            // Обхождаме всяка колона поотделно
             for (colIndex, columnEvents) in columns.enumerated() {
-                // Всъщност тук columnEvents са EventLayoutAttributes за събитията
                 for attr in columnEvents {
                     let start = attr.descriptor.dateInterval.start
                     let end   = attr.descriptor.dateInterval.end
@@ -240,17 +239,16 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                     evView.isHidden = false
                     evView.frame = CGRect(x: x, y: yStart, width: w, height: h)
                     
-                    // Ъпдейтваме му descriptor-а
+                    // Ъпдейтваме Descriptor-а
                     evView.updateWithDescriptor(event: attr.descriptor)
                     eventViewToDescriptor[evView] = attr.descriptor
                     
-                    // --- Връщаме логиката за многодневни (multi) и дръжките ---
+                    // Ако е многодневно (EKMultiDayWrapper) – логика за дръжките, редакции и т.н.
                     if let multi = attr.descriptor as? EKMultiDayWrapper {
                         var isCurrentlyEditedEventView = false
                         if currentlyEditedEventViewID == multi.realEvent.eventIdentifier {
                             isCurrentlyEditedEventView = true
                         }
-                        
                         if isCurrentlyEditedEventView {
                             let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
                             let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
@@ -260,7 +258,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                                 evView.eventResizeHandles[0].isHidden = false
                                 evView.eventResizeHandles[1].isHidden = false
                             } else if dayIndex == firstDayIndex {
-                                // Горната дръжка
+                                // Горна дръжка
                                 evView.eventResizeHandles[0].isHidden = false
                                 evView.eventResizeHandles[1].isHidden = true
                             } else if dayIndex == lastDayIndex {
@@ -274,10 +272,8 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
         }
         
-        // 6) ВТОРИ проход: проверяваме реалното (геометрично) застъпване на eventView-овете,
-        //    и "стесняваме" този, който започва по-късно във времето (т.е. е "отдолу").
-        
-        // Взимаме само видимите eventView (тези, на които не сме задали .isHidden = true)
+        // 6) Втори проход: проверяваме реалното (геометрично) застъпване на eventView-овете,
+        //    и "стесняваме" този, който започва по-късно (само от лявата страна)
         let allVisibleViews = eventViews.filter { !$0.isHidden }
         
         for i in 0..<allVisibleViews.count {
@@ -285,19 +281,29 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 let v1 = allVisibleViews[i]
                 let v2 = allVisibleViews[j]
                 
-                // Ако .frame се пресичат
                 if v1.frame.intersects(v2.frame) {
-                    // Проверяваме кой от двата Descriptor-и е "по-късно"
                     guard let desc1 = eventViewToDescriptor[v1],
                           let desc2 = eventViewToDescriptor[v2] else { continue }
                     
-                    // Ако desc1.start < desc2.start => desc2 е "долен"
-                    // => стесняваме v2
+                    // Кой е „по-късен” → стесняваме само неговата лява страна
                     if desc1.dateInterval.start < desc2.dateInterval.start {
-                        v2.frame = v2.frame.insetBy(dx: 6, dy: 0)
+                        // v2 е “по-късният”
+                        let oldF = v2.frame
+                        v2.frame = CGRect(
+                            x: oldF.minX + 6,
+                            y: oldF.minY,
+                            width: max(1, oldF.width - 6),
+                            height: oldF.height
+                        )
                     } else {
-                        // Обратно
-                        v1.frame = v1.frame.insetBy(dx: 6, dy: 0)
+                        // v1 е “по-късният”
+                        let oldF = v1.frame
+                        v1.frame = CGRect(
+                            x: oldF.minX + 6,
+                            y: oldF.minY,
+                            width: max(1, oldF.width - 6),
+                            height: oldF.height
+                        )
                     }
                 }
             }
@@ -310,6 +316,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             }
         }
     }
+
 
 
     

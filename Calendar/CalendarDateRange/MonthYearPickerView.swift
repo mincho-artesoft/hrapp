@@ -35,8 +35,7 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
     private func setup() {
         self.dataSource = self
         self.delegate = self
-        // Примерно: години от 2020 до 2030
-        self.years = Array(2020...2030)
+        self.years = Array(1970...2270)
     }
 
     // MARK: - UIPickerViewDataSource
