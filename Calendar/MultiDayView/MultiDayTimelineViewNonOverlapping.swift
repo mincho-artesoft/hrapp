@@ -45,7 +45,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     private var dragSlicesMap = [String: [EventView]]()
     
     // MARK: - Editing / Drag & Drop / Resize
-    private var currentlyEditedEventView: EventView?
+    private var currentlyEditedEventViewID: String?
     
     // Ghosts during drag (one ghost per day slice)
     private var draggingGhosts: [EventView: EventView] = [:]
@@ -112,7 +112,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
             view.eventResizeHandles[0].isHidden = true
             view.eventResizeHandles[1].isHidden =  true
         }
-        currentlyEditedEventView = nil
+        currentlyEditedEventViewID = ""
 
         // 3) Зануляваме селектираната минута в колоната, ако има
         hoursColumnView?.selectedMinuteMark = nil
@@ -136,7 +136,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                 view.updateWithDescriptor(event: descriptor)
             }
         }
-        currentlyEditedEventView = nil
+        currentlyEditedEventViewID = ""
         
         // Callback
         if let tappedDate = dateFromPoint(point) {
@@ -230,11 +230,11 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                       
                     if let multi = attr.descriptor as? EKMultiDayWrapper {
                         var isCurrentlyEditedEventView = false
-                        for realSliceView in slices {
-                            if  currentlyEditedEventView == realSliceView{
+//                        for realSliceView in slices {
+                        if  currentlyEditedEventViewID == multi.realEvent.eventIdentifier{
                                 isCurrentlyEditedEventView = true
                             }
-                        }
+//                        }
                         if isCurrentlyEditedEventView{
                             let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
                             let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
@@ -423,6 +423,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     
     // [MODIFIED] - Клик (tap) върху slice от многодневно събитие → всички slice-ове в edit режим
     private func selectEventView(_ evView: EventView) {
+        let d = evView.descriptor as! EKMultiDayWrapper
         // 1) Първо махаме edit режима от всички евенти
         for (view, desc) in eventViewToDescriptor {
             if desc.editedEvent != nil {
@@ -463,7 +464,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         }
         
         // 5) Запомняме, ако ползвате тази променлива за друго
-        currentlyEditedEventView = evView
+        currentlyEditedEventViewID = d.realEvent.eventIdentifier
         
         // 6) (Опционално) Обновяваме визуална индикация
         setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
@@ -760,7 +761,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
                         view.eventResizeHandles[0].isHidden = true
                         view.eventResizeHandles[1].isHidden =  true
                     }
-                    currentlyEditedEventView = nil
+                    currentlyEditedEventViewID = ""
 
                     onEventConvertToAllDay?(descriptor, dayIndex)
                 }
