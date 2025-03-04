@@ -29,13 +29,13 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
             pickerVC.selectedColor = c
         }
         
-        // Опаковаме в NavigationController (за да имаме Navbar)
+        // Опаковаме в NavigationController (за да има Navbar)
         let navController = UINavigationController(rootViewController: pickerVC)
         return navController
     }
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // Тук може да обновявате при нужда
+        // Ако трябва да се обновява нещо динамично
     }
     
     func makeCoordinator() -> Coordinator {
@@ -50,21 +50,16 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
         }
         
         func didCancelPickingDateRange() {
-            // Ако все пак имаме метод за отменяне,
-            // може да затворите, ако желаете:
+            // При cancel, ако желаете, затворете:
             // parent.presentationMode.wrappedValue.dismiss()
         }
         
         @MainActor func didPickDateRange(startDate: Date!, endDate: Date!) {
             if let s = startDate, let e = endDate {
-                // Предаваме ги обратно на SwiftUI:
                 parent.onComplete?(s, e)
             }
-            
-            // Коментар:
-            // ПРЕДИ беше:
+            // Ако искате да се затвори:
             // parent.presentationMode.wrappedValue.dismiss()
-            // СЕГА е махнато, за да НЕ се затваря автоматично
         }
     }
 }

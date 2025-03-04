@@ -37,13 +37,13 @@ struct ContentView: View {
                 Color.black.opacity(0.4)
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
-                        // Ако искате да се скрива при тап извън него:
+                        // ако искате да се скрива при тап извън календара:
                         withAnimation {
                             showCalendar = false
                         }
                     }
                 
-                // Плаващо "прозорче" с CalendarDateRangePickerWrapper
+                // "прозорче" с CalendarDateRangePickerWrapper
                 VStack {
                     CalendarDateRangePickerWrapper(
                         startDate: startDate,
@@ -52,20 +52,16 @@ struct ContentView: View {
                         maximumDate: Calendar.current.date(byAdding: .month, value: 6, to: Date()),
                         selectedColor: UIColor.systemBlue
                     ) { newStart, newEnd in
-                        // Тук автоматично получаваме новите (start, end)
-                        // при всяка промяна. Може да ги запишем в @State:
+                        // при всяка промяна:
                         self.startDate = newStart
                         self.endDate = newEnd
                         
-                        // НЕ затваряме (showCalendar = false),
-                        // за да остане календара отворен
-                        
-                        // Ако искаме все пак да го затворим, разкоментирайте:
+                        // ако искате да се затваря веднага:
                         // withAnimation {
                         //    showCalendar = false
                         // }
                     }
-                    .frame(height: 350)  // коригирайте височината по желание
+                    .frame(height: 350)
                     
                     Divider()
                 }

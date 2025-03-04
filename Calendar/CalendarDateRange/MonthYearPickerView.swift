@@ -22,7 +22,6 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
     // Този closure ще извикваме, когато се смени нещо в UIPickerView
     public var onDateChanged: ((Int, Int) -> Void)?
 
-    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -45,13 +44,10 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
         return 2 // 0=Months, 1=Years
     }
 
-    public func pickerView(_ pickerView: UIPickerView,
-                           numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 0 {
-            // Месеци
             return months.count * monthRowsMultiplier
         } else {
-            // Години
             return years.count * yearRowsMultiplier
         }
     }
@@ -61,11 +57,11 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
                            titleForRow row: Int,
                            forComponent component: Int) -> String? {
         if component == 0 {
-            let actualMonthIndex = row % months.count
-            return months[actualMonthIndex]
+            let mIndex = row % months.count
+            return months[mIndex]
         } else {
-            let actualYearIndex = row % years.count
-            return "\(years[actualYearIndex])"
+            let yIndex = row % years.count
+            return "\(years[yIndex])"
         }
     }
 
@@ -83,7 +79,7 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
         onDateChanged?(selectedMonth, selectedYear)
     }
 
-    // MARK: - Позициониране на picker-а на определен (month, year)
+    // Позициониране на picker-а на (month, year)
     public func select(month: Int, year: Int, animated: Bool = false) {
         guard let yearPos = years.firstIndex(of: year) else { return }
 
