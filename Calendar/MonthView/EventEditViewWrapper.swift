@@ -1,10 +1,3 @@
-//
-//  EventEditViewWrapper.swift
-//  ExampleCalendarApp
-//
-//  SwiftUI обвивка за системния EKEventEditViewController
-//
-
 import SwiftUI
 import EventKitUI
 
@@ -20,7 +13,8 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         return vc
     }
     
-    func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) {
+    func updateUIViewController(_ uiViewController: EKEventEditViewController,
+                                context: Context) {
         // Няма нужда от update
     }
     
@@ -38,7 +32,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         @MainActor
         func eventEditViewController(_ controller: EKEventEditViewController,
                                      didCompleteWith action: EKEventEditViewAction) {
-            // Когато потребителят натисне Done/Cancel, затваряме редактора
+            // Когато потребителят натисне Done/Cancel, затваряме редактора.
             controller.dismiss(animated: true)
         }
     }
