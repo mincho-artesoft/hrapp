@@ -1,6 +1,5 @@
 import UIKit
 
-
 // =====================================================================
 // MARK: - ViewController с календар (UICollectionView)
 // =====================================================================
@@ -237,6 +236,8 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
         // Първите 7 са етикети за дните от седмицата
         if indexPath.item < 7 {
             cell.label.text = getWeekdayLabel(weekday: indexPath.item + 1)
+            // ---- ТУК: правим текста сив ----
+            cell.label.textColor = .gray
             return cell
         }
 
@@ -422,6 +423,7 @@ extension CalendarDateRangePickerViewController {
         return formatter.string(from: date)
     }
 
+    // >>> ТУК: използваме "EEE" за 3-буквено съкращение <<<
     func getWeekdayLabel(weekday: Int) -> String {
         // weekday: 1=Sunday, 2=Monday, ...
         var comps = DateComponents()
@@ -433,11 +435,13 @@ extension CalendarDateRangePickerViewController {
             matching: comps,
             matchingPolicy: .strict
         ) else {
-            return "?"
+            return "???"
         }
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEEE" // 1 буква (Mon -> "M", etc.)
+        formatter.dateFormat = "EEE" // 3 букви (Mon, Tue, Wed, ...)
+
+        // Ако искате на български: formatter.locale = Locale(identifier: "bg_BG")
         return formatter.string(from: date)
     }
 

@@ -40,7 +40,7 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
         self.delegate = self
         
         // Пълен набор от години
-        self.years = Array(-9999...9999)
+        self.years = Array(1970...3000)
     }
 
     // MARK: - UIPickerViewDataSource

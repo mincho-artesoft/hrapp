@@ -1,11 +1,3 @@
-//
-//  CalendarDateRangePickerViewControllerDelegate.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 4/3/25.
-//
-
-
 import Foundation
 
 public protocol CalendarDateRangePickerViewControllerDelegate {

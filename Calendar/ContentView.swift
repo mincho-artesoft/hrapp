@@ -61,7 +61,7 @@ struct ContentView: View {
                         //    showCalendar = false
                         // }
                     }
-                    .frame(height: 350)
+                    .frame(height: 330)
                     
                     Divider()
                 }
