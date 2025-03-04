@@ -1,50 +1,78 @@
 import SwiftUI
 
+/// Примерен ButtonStyle, който сменя цвета на текста,
+/// ако бутонът е натиснат или вече е "избран".
+struct PressableAndSelectedButtonStyle: ButtonStyle {
+    @Binding var isSelected: Bool
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(configuration.isPressed || isSelected ? .blue : .black)
+            .padding()
+            .background(Color(UIColor.systemGray5))
+            .cornerRadius(10)
+            .shadow(radius: 2)
+    }
+}
+
 struct ContentView: View {
     @State private var showCalendar = false
     @State private var startDate: Date? = nil
     @State private var endDate: Date? = nil
     
+    // Променлива, която пази дали бутонът е "активиран".
+    @State private var isButtonSelected = false
+    
+    // Тук пазим координатите и размера на бутона.
+    @State private var buttonFrame: CGRect = .zero
+    
     var body: some View {
         ZStack {
             VStack {
-                Text("Calendar Demo")
-                    .font(.largeTitle)
-                    .padding()
-                
-                HStack {
+                // Бутонът
+                Button(action: {
+                    withAnimation {
+                        showCalendar = true
+                        isButtonSelected = true
+                    }
+                }) {
                     if let s = startDate, let e = endDate {
-                        Text("Избран период:\n\(fmt(s)) - \(fmt(e))")
+                        Text("\(fmt(s)) : \(fmt(e))")
                             .multilineTextAlignment(.center)
                     } else {
                         Text("Няма избран период")
                     }
                 }
-                .padding()
-                
-                Button("Покажи календар") {
-                    withAnimation {
-                        showCalendar = true
+                .buttonStyle(PressableAndSelectedButtonStyle(isSelected: $isButtonSelected))
+                // Чрез GeometryReader хващаме рамката на бутона
+                .background(
+                    GeometryReader { geo in
+                        Color.clear
+                            .onAppear {
+                                self.buttonFrame = geo.frame(in: .global)
+                            }
+                            .onChange(of: geo.size) { _ in
+                                self.buttonFrame = geo.frame(in: .global)
+                            }
                     }
-                }
-                .padding()
+                )
                 
                 Spacer()
             }
             
+            // Ако showCalendar е true, показваме полупрозрачен фон и календара.
             if showCalendar {
-                // Полупрозрачен фон
-                Color.black.opacity(0.4)
+                Color.black.opacity(0.01)
                     .edgesIgnoringSafeArea(.all)
                     .onTapGesture {
-                        // ако искате да се скрива при тап извън календара:
                         withAnimation {
                             showCalendar = false
+                            isButtonSelected = false
                         }
                     }
                 
-                // "прозорче" с CalendarDateRangePickerWrapper
                 VStack {
+                    // Примерен календар (заменете с вашия CalendarDateRangePickerWrapper).
                     CalendarDateRangePickerWrapper(
                         startDate: startDate,
                         endDate: endDate,
@@ -52,16 +80,10 @@ struct ContentView: View {
                         maximumDate: Calendar.current.date(byAdding: .month, value: 6, to: Date()),
                         selectedColor: UIColor.systemBlue
                     ) { newStart, newEnd in
-                        // при всяка промяна:
                         self.startDate = newStart
                         self.endDate = newEnd
-                        
-                        // ако искате да се затваря веднага:
-                        // withAnimation {
-                        //    showCalendar = false
-                        // }
                     }
-                    .frame(height: 330)
+                    .frame(height: 320)
                     
                     Divider()
                 }
@@ -69,8 +91,13 @@ struct ContentView: View {
                 .background(Color(UIColor.systemBackground))
                 .cornerRadius(12)
                 .shadow(radius: 10)
-                .padding()
                 .transition(.scale)
+                // Позиционираме календара с център по х = midX на бутона,
+                // а по у така, че горният му ръб да е 20 точки под бутона.
+                .position(
+                    x: buttonFrame.midX,
+                    y: buttonFrame.minY
+                )
             }
         }
     }
@@ -79,11 +106,5 @@ struct ContentView: View {
         let df = DateFormatter()
         df.dateStyle = .medium
         return df.string(from: date)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
