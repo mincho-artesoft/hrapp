@@ -1,18 +1,6 @@
 import UIKit
 import SwiftUI
 
-extension UIView {
-    func findViewController() -> UIViewController? {
-        if let nextResponder = self.next as? UIViewController {
-            return nextResponder
-        } else if let nextResponder = self.next as? UIView {
-            return nextResponder.findViewController()
-        } else {
-            return nil
-        }
-    }
-}
-
 public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate {
 
     // MARK: - Properties
