@@ -180,18 +180,25 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             let toOnly   = cal.startOfDay(for: parent.toDate)
             let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) ?? toOnly
 
-            let predicate = parent.eventStore.predicateForEvents(withStart: fromOnly,
-                                                                 end: actualEnd,
-                                                                 calendars: nil)
+            // 1) Вземаме САМО “allowed” календарите
+            //    (тези, които юзерът е чекнал в CalendarsSheetView).
+            let allowedCals = CalendarViewModel.shared.allowedCalendars()
+
+            // 2) Създаваме predicate за точно тези allowedCals
+            let predicate = parent.eventStore.predicateForEvents(
+                withStart: fromOnly,
+                end: actualEnd,
+                calendars: allowedCals
+            )
             let found = parent.eventStore.events(matching: predicate)
 
             var splitted: [EventDescriptor] = []
             for ekEvent in found {
                 guard let realStart = ekEvent.startDate,
-                      let realEnd = ekEvent.endDate else {
+                      let realEnd   = ekEvent.endDate else {
                     continue
                 }
-                // Ако се простира няколко дни - режем го
+                // Ако се простира в няколко дни - "нарязваме" го
                 if cal.startOfDay(for: realStart) != cal.startOfDay(for: realEnd) {
                     splitted.append(contentsOf: splitEventByDays(ekEvent,
                                                                  startRange: fromOnly,
@@ -200,6 +207,8 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                     splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
                 }
             }
+
+            // Накрая обновяваме @State масива със събития
             parent.events = splitted
         }
 
