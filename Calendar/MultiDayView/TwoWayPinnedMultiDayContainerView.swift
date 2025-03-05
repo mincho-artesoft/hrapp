@@ -308,10 +308,22 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
+    private var calendarBackgroundView: UIView?
+
     private func showCalendarPopup() {
         guard !showCalendar else { return }
         showCalendar = true
         
+        // 1) Правим си пълен overlay
+        let backgroundView = UIView(frame: bounds)
+        backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        // Черен фон, леко прозрачен
+        backgroundView.backgroundColor = UIColor.clear
+        backgroundView.layer.zPosition = 9998
+        addSubview(backgroundView)
+        calendarBackgroundView = backgroundView
+        
+        // 2) Създаваме SwiftUI контролера (същото както досега)
         let swiftUICalendar = CalendarDateRangePickerWrapper(
             startDate: fromDate,
             endDate: toDate,
@@ -326,7 +338,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
         
         let hc = UIHostingController(rootView: swiftUICalendar)
-        hc.view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.9)
+        hc.view.backgroundColor = UIColor.systemBackground
         hc.view.layer.cornerRadius = 12
         hc.view.layer.zPosition = 9999
         
@@ -337,8 +349,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             hc.didMove(toParent: parentVC)
         }
 
-        self.addSubview(hc.view)
-        
+        // 3) Добавяме SwiftUI календара върху backgroundView
+        backgroundView.addSubview(hc.view)
+            
         let btnFrame = self.convert(dateRangeButton.frame, from: dateRangeButton.superview)
         let calW: CGFloat = 320
         let calH: CGFloat = 320
@@ -346,9 +359,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         let y = btnFrame.maxY + 8
         hc.view.frame = CGRect(x: x, y: y, width: calW, height: calH)
 
-        // Анимация
+        // 4) Анимация (смален и прозрачен → нормален)
         hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         hc.view.alpha = 0
+        backgroundView.alpha = 0
 
         UIView.animate(withDuration: 0.25,
                        delay: 0,
@@ -356,13 +370,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
                        animations: {
             hc.view.transform = .identity
             hc.view.alpha = 1
+            backgroundView.alpha = 1
         }, completion: nil)
 
-        // Тап извън календара
+        // 5) Жест за тап извън календара (за да го скрием)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(containerTapped(_:)))
         tapGesture.cancelsTouchesInView = false
-        tapGesture.delegate = self // <-- NEW: Задаваме делегат
-        self.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        backgroundView.addGestureRecognizer(tapGesture)
 
         dateRangeButton.isSelected = true
     }
@@ -370,24 +385,35 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     private func hideCalendarPopup() {
         guard showCalendar else { return }
         showCalendar = false
-        guard let hc = calendarHostingController else {
+        
+        guard
+            let hc = calendarHostingController,
+            let bgView = calendarBackgroundView
+        else {
             dateRangeButton.isSelected = false
             return
         }
+        
         UIView.animate(withDuration: 0.2,
                        delay: 0,
                        options: [.curveEaseIn],
                        animations: {
             hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             hc.view.alpha = 0
+            bgView.alpha = 0
         }, completion: { _ in
             hc.willMove(toParent: nil)
             hc.view.removeFromSuperview()
             hc.removeFromParent()
+            
+            bgView.removeFromSuperview()
+            self.calendarBackgroundView = nil
         })
+        
         calendarHostingController = nil
         dateRangeButton.isSelected = false
     }
+
     
     // MARK: - Layout
     
