@@ -2,34 +2,73 @@ import SwiftUI
 import EventKit
 import Combine
 
-extension EKEventStore: @unchecked @retroactive Sendable {}
-
-/// ViewModel that holds events from EKEventStore
-
 @MainActor
 final class CalendarViewModel: ObservableObject {
-    let eventStore: EKEventStore =  EKEventStore()
+    let eventStore: EKEventStore = EKEventStore()
 
+    /// Единствен, споделен инстанс
     static let shared = CalendarViewModel()
+    
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
-    @Published var eventsByID: [String: EKEvent] = [:]
+    @Published var eventsByID:  [String: EKEvent] = [:]
     @Published var accessGranted = false
+    
+    /// Тук пазим всички календари (за .event)
+    @Published var allCalendars: [EKCalendar] = []
+    
     let calendar = Calendar(identifier: .gregorian)
-
     private var cancellables = Set<AnyCancellable>()
 
+    // MARK: - Права за достъп
 
-    /// Load events for a given month
+    func isCalendarAccessGranted() -> Bool {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if #available(iOS 17.0, *) {
+            return (status == .fullAccess)
+        } else {
+            return (status == .authorized)
+        }
+    }
+
+    @MainActor
+    func requestCalendarAccessIfNeeded() async -> Bool {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if status == .notDetermined {
+            do {
+                let granted = try await eventStore.requestFullAccessToEvents()
+                self.accessGranted = granted
+                return granted
+            } catch {
+                print("Error requesting calendar access: \(error.localizedDescription)")
+                self.accessGranted = false
+                return false
+            }
+        } else {
+            let granted = isCalendarAccessGranted()
+            self.accessGranted = granted
+            return granted
+        }
+    }
+
+    // MARK: - Зареждане на календари
+    func reloadCalendars() {
+        let cals = eventStore.calendars(for: .event)
+        self.allCalendars = cals
+    }
+
+    // MARK: - Зареждане на събития
+    
+    /// Примерно зареждане на събития за цял месец
     func loadEvents(for month: Date) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
             self.eventsByID = [:]
             return
         }
-
+        
         let fetched = eventStore.fetchEventsByDay(for: month, calendar: calendar)
         self.eventsByDay = fetched
-
+        
         var tmp: [String: EKEvent] = [:]
         for evList in fetched.values {
             for ev in evList {
@@ -39,7 +78,7 @@ final class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
 
-    /// Load **all** events for a given year
+    /// Примерно зареждане на събития за цяла година
     func loadEventsForWholeYear(year: Int) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
@@ -83,36 +122,4 @@ final class CalendarViewModel: ObservableObject {
         }
         self.eventsByID = tmp
     }
-
-    /// Check if we have permission
-    func isCalendarAccessGranted() -> Bool {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if #available(iOS 17.0, *) {
-            return (status == .fullAccess)
-        } else {
-            return (status == .authorized)
-        }
-    }
-
-    /// Ask for permission (if .notDetermined)
-    @MainActor
-    func requestCalendarAccessIfNeeded() async -> Bool {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if status == .notDetermined {
-            do {
-                let granted = try await eventStore.requestFullAccessToEvents()
-                self.accessGranted = granted
-                return granted
-            } catch {
-                print("Error requesting calendar access: \(error.localizedDescription)")
-                self.accessGranted = false
-                return false
-            }
-        } else {
-            let granted = isCalendarAccessGranted()
-            self.accessGranted = granted
-            return granted
-        }
-    }
-
 }

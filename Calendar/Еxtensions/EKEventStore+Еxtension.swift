@@ -1,6 +1,6 @@
 import EventKit
 
-extension EKEventStore {
+extension EKEventStore: @unchecked @retroactive Sendable{
     /// Fetch events in a given month, returning a [Date: [EKEvent]] dictionary
     func fetchEventsByDay(for month: Date, calendar: Calendar) -> [Date: [EKEvent]] {
         guard
