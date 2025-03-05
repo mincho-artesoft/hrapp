@@ -37,7 +37,7 @@ struct ContentView: View {
                     }
                 }) {
                     if let s = startDate, let e = endDate {
-                        Text("\(fmt(s)) : \(fmt(e))")
+                        Text("\(fmt(s)) - \(fmt(e))")
                             .multilineTextAlignment(.center)
                     } else {
                         Text("Няма избран период")
@@ -56,8 +56,10 @@ struct ContentView: View {
                             }
                     }
                 )
-                
+                Text("хдсфкйхдсйкфхдсйкхфйкдсхйкфхдсйкфхкйдсхфкйдсхкфхдсйкхфкйдсхфйкдсхйкфхдскйхфдскхфдсхфхдскхфсдкхфйкдсхкйфхдскхфдскйхфйкдсхкфхдскйхфкйдс")
+                    .multilineTextAlignment(.center)
                 Spacer()
+               
             }
             
             // Ако showCalendar е true, показваме полупрозрачен фон и календара.

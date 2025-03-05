@@ -23,17 +23,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "49BAD85F-349C-4478-AADA-EEB1BE1F0D7F"
-            shouldBeEnabled = "No"
+            uuid = "030B2205-78C5-4E80-9CAD-0B79C753DBD0"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Calendar/CalendarDateRange/CalendarDateRangePickerWrapper.swift"
+            filePath = "Calendar/MultiDayView/MultiDayTimelineViewNonOverlapping.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "Coordinator"
-            landmarkType = "3">
+            startingLineNumber = "703"
+            endingLineNumber = "703"
+            landmarkName = "handleEventViewPan(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -1,28 +1,24 @@
+import SwiftUI
 import UIKit
+
 
 // =====================================================================
 // MARK: - MonthYearPickerView (за избор на месец/година)
 // =====================================================================
 public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    // Масив с месеци (12)
     private let months = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ]
 
-    // Диапазон години (примерен: –9999...9999)
     public var years: [Int] = []
-
-    // „Умножители“ за циклично превъртане
     private let monthRowsMultiplier = 10_000
     private let yearRowsMultiplier = 1_000
 
-    // Индекси на текущо избрания месец/година
     private(set) var selectedMonthIndex = 0
     private(set) var selectedYearIndex = 0
 
-    // Callback при промяна на месец/година
     public var onDateChanged: ((Int, Int) -> Void)?
 
     override init(frame: CGRect) {
@@ -39,13 +35,11 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
         self.dataSource = self
         self.delegate = self
         
-        // Пълен набор от години
         self.years = Array(1970...3000)
     }
 
-    // MARK: - UIPickerViewDataSource
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2 // [0: Месец], [1: Година]
+        return 2
     }
 
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -56,7 +50,6 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
         }
     }
 
-    // MARK: - UIPickerViewDelegate
     public func pickerView(_ pickerView: UIPickerView,
                            titleForRow row: Int,
                            forComponent component: Int) -> String? {
@@ -83,7 +76,6 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
         onDateChanged?(selectedMonth, selectedYear)
     }
 
-    // Позициониране на (month, year)
     public func select(month: Int, year: Int, animated: Bool = false) {
         guard let yearPos = years.firstIndex(of: year) else { return }
 

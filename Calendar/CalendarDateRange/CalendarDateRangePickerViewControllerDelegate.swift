@@ -1,9 +1,10 @@
 import Foundation
 
+
+// =====================================================================
+// MARK: - Протокол за делегат
+// =====================================================================
 public protocol CalendarDateRangePickerViewControllerDelegate {
-    /// Извиква се при натискане на "Cancel" (ако имате такава логика)
     func didCancelPickingDateRange()
-    
-    /// Извиква се, след като потребителят избере startDate & endDate
     func didPickDateRange(startDate: Date!, endDate: Date!)
 }

@@ -1,19 +1,20 @@
 import UIKit
+import SwiftUI
+
 // =====================================================================
 // MARK: - Клетка (UICollectionViewCell)
 // =====================================================================
 public class CalendarDateRangePickerCell: UICollectionViewCell {
 
-    private let defaultTextColor = UIColor.darkGray
-    private let lineColor = UIColor(white: 0.9, alpha: 1.0)
-
+    // Използваме динамичен цвят за текста (поддържа light/dark mode):
+    private let defaultTextColor = UIColor.label
+    private let lineColor = UIColor.tertiarySystemFill
+    
     var selectedColor: UIColor!
     var date: Date?
     
-    // Subview-ове (линия и кръг)
     var lineView: UIView?
     var circleView: UIView?
-    
     var label: UILabel!
 
     // MARK: - Инициализация

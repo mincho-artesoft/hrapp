@@ -1,6 +1,11 @@
 import SwiftUI
 import UIKit
 
+
+
+// =====================================================================
+// MARK: - Обвивката за SwiftUI: CalendarDateRangePickerWrapper
+// =====================================================================
 struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     
@@ -29,8 +34,15 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
             pickerVC.selectedColor = c
         }
         
-        // Опаковаме в NavigationController (за да има Navbar)
+        // 1) Създаваме UINavigationController
         let navController = UINavigationController(rootViewController: pickerVC)
+        
+        // 2) Презентация "над" текущия екран
+        navController.modalPresentationStyle = .overFullScreen
+        
+        // 3) Правим фона му прозрачен (да не добавя тъмен слой)
+        navController.view.backgroundColor = .clear
+        
         return navController
     }
     
@@ -50,7 +62,7 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
         }
         
         func didCancelPickingDateRange() {
-            // При cancel, ако желаете, затворете:
+            // Ако искате да се затваря при Cancel:
             // parent.presentationMode.wrappedValue.dismiss()
         }
         
@@ -58,7 +70,7 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
             if let s = startDate, let e = endDate {
                 parent.onComplete?(s, e)
             }
-            // Ако искате да се затвори:
+            // Ако искате да се затваря след избор:
             // parent.presentationMode.wrappedValue.dismiss()
         }
     }

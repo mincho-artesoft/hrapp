@@ -24,18 +24,17 @@ public final class HoursColumnView: UIView {
     public var selectedMinuteMark: (hour: Int, minute: Int)?
 
     private let majorFont = UIFont.systemFont(ofSize: 11, weight: .medium)
-    private let majorColor = UIColor.darkText
     private let minorFont = UIFont.systemFont(ofSize: 10, weight: .regular)
     private let minorColor = UIColor.darkGray.withAlphaComponent(0.8)
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .systemGray6
     }
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        backgroundColor = .white
+        backgroundColor = .systemGray6
     }
 
     public override func draw(_ rect: CGRect) {
@@ -59,7 +58,7 @@ public final class HoursColumnView: UIView {
                 string: hourStr,
                 attributes: [
                     .font: majorFont,
-                    .foregroundColor: majorColor
+                    .foregroundColor: UIColor.label
                 ]
             )
             let size = attrStr.size()

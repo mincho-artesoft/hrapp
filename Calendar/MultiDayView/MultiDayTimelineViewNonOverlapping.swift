@@ -61,7 +61,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     // MARK: - Init
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = style.backgroundColor
+        backgroundColor = .systemGray6
         clipsToBounds = false
         
         setupLongPressForEmptySpace()
@@ -70,7 +70,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
     
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
-        backgroundColor = style.backgroundColor
+        backgroundColor = .systemGray6
         clipsToBounds = false
         
         setupLongPressForEmptySpace()
