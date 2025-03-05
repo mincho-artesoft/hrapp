@@ -1,12 +1,3 @@
-//
-//  CalendarsSheetView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 5/3/25.
-//
-
-
-
 import SwiftUI
 import EventKit
 
@@ -14,26 +5,26 @@ struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
 
-    @State private var selectedCalendarIDs: Set<String> = []
-    
+    // Показваме ли Add/Edit sheet
+    @State private var showAddCalendarView = false
+    @State private var calendarToEdit: EKCalendar? = nil
+
+    // За разгръщане на секциите
     @State private var isOnMyIphoneExpanded = true
     @State private var isOtherExpanded      = true
-
-    // Показваме ли Add/Edit?
-    @State private var showAddCalendarView = false
-    @State private var calendarToEdit: EKCalendar? = nil // за sheet
 
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    // ГРУПА "On My iPhone"
+                    // "On My iPhone"
                     DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
                         ForEach(viewModel.allCalendars.filter { $0.source.sourceType == .local },
                                 id: \.calendarIdentifier) { cal in
                             CalendarRowView(
                                 calendar: cal,
-                                isSelected: selectedCalendarIDs.contains(cal.calendarIdentifier),
+                                // Вече гледаме директно viewModel.selectedCalendarIDs
+                                isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                 toggleAction: toggleCalendar,
                                 editAction: {
                                     calendarToEdit = cal
@@ -42,13 +33,13 @@ struct CalendarsSheetView: View {
                         }
                     }
 
-                    // ГРУПА "Other"
+                    // "Other"
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
                         ForEach(viewModel.allCalendars.filter { $0.source.sourceType != .local },
                                 id: \.calendarIdentifier) { cal in
                             CalendarRowView(
                                 calendar: cal,
-                                isSelected: selectedCalendarIDs.contains(cal.calendarIdentifier),
+                                isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                 toggleAction: toggleCalendar,
                                 editAction: {
                                     calendarToEdit = cal
@@ -65,7 +56,7 @@ struct CalendarsSheetView: View {
                         }
                 )
 
-                // Долни бутони "Add Calendar" / "Hide All"
+                // Долни бутони "Add Calendar" и "Hide All"
                 HStack {
                     Button("Add Calendar") {
                         showAddCalendarView = true
@@ -75,33 +66,26 @@ struct CalendarsSheetView: View {
                     Spacer()
 
                     Button("Hide All") {
-                        selectedCalendarIDs.removeAll()
+                        viewModel.selectedCalendarIDs.removeAll()
                     }
                     .padding(.trailing)
                 }
                 .padding(.vertical, 8)
             }
         }
-        // Когато View се появи, зареждаме списъка с календари
         .onAppear {
+            // Когато отворим листа, презареждаме текущия списък календари
             viewModel.reloadCalendars()
-            
-            // За по-лесно: селектираме всички (пример)
-            let allIDs = viewModel.allCalendars.map { $0.calendarIdentifier }
-            self.selectedCalendarIDs = Set(allIDs)
         }
-
-        // Sheet за Add:
+        // Sheet за Add
         .sheet(isPresented: $showAddCalendarView, onDismiss: {
-            // Когато AddCalendarView се затвори:
+            // Когато AddCalendarView се затвори
             viewModel.reloadCalendars()
         }) {
             AddCalendarView()
         }
-        
-        // Sheet за Edit:
+        // Sheet за Edit
         .sheet(item: $calendarToEdit, onDismiss: {
-            // Когато EditCalendarView се затвори:
             viewModel.reloadCalendars()
         }) { cal in
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
@@ -109,10 +93,10 @@ struct CalendarsSheetView: View {
     }
 
     private func toggleCalendar(_ cal: EKCalendar) {
-        if selectedCalendarIDs.contains(cal.calendarIdentifier) {
-            selectedCalendarIDs.remove(cal.calendarIdentifier)
+        if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {
+            viewModel.selectedCalendarIDs.remove(cal.calendarIdentifier)
         } else {
-            selectedCalendarIDs.insert(cal.calendarIdentifier)
+            viewModel.selectedCalendarIDs.insert(cal.calendarIdentifier)
         }
     }
 }

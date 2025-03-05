@@ -6,21 +6,44 @@ import Combine
 final class CalendarViewModel: ObservableObject {
     let eventStore: EKEventStore = EKEventStore()
 
-    /// Единствен, споделен инстанс
+    /// Единствен, споделен инстанс (Singleton)
     static let shared = CalendarViewModel()
     
-    @Published var eventsByDay: [Date: [EKEvent]] = [:]
-    @Published var eventsByID:  [String: EKEvent] = [:]
-    @Published var accessGranted = false
-    
-    /// Тук пазим всички календари (за .event)
+    // Пазим всички календари (за .event)
     @Published var allCalendars: [EKCalendar] = []
     
+    // Събития (примерно по ден или по ID)
+    @Published var eventsByDay: [Date: [EKEvent]] = [:]
+    @Published var eventsByID:  [String: EKEvent] = [:]
+    
+    // Дали имаме достъп до Календарите
+    @Published var accessGranted = false
+
+    /// Тук пазим ID-тата на календари, които потребителят е “разрешил” да се виждат
+    @Published var selectedCalendarIDs: Set<String> = []
+
     let calendar = Calendar(identifier: .gregorian)
+
+    /// За Combine sink-ове
     private var cancellables = Set<AnyCancellable>()
 
-    // MARK: - Права за достъп
+    // MARK: - Инициализатор
+    init() {
+        // 1) Зареждаме вече запомнените ID-та от UserDefaults (ако има)
+        if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String] {
+            self.selectedCalendarIDs = Set(storedArray)
+        }
 
+        // 2) Всеки път, когато selectedCalendarIDs се промени, записваме обратно
+        $selectedCalendarIDs
+            .sink { newValue in
+                let array = Array(newValue)
+                UserDefaults.standard.set(array, forKey: "SelectedCalendarIDsKey")
+            }
+            .store(in: &cancellables)
+    }
+
+    // MARK: - Проверка/заявка за достъп
     func isCalendarAccessGranted() -> Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
         if #available(iOS 17.0, *) {
@@ -56,17 +79,20 @@ final class CalendarViewModel: ObservableObject {
         self.allCalendars = cals
     }
 
-    // MARK: - Зареждане на събития
-    
-    /// Примерно зареждане на събития за цял месец
+    // MARK: - Методи за зареждане на събития
     func loadEvents(for month: Date) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
-            self.eventsByID = [:]
+            self.eventsByID  = [:]
             return
         }
         
-        let fetched = eventStore.fetchEventsByDay(for: month, calendar: calendar)
+        // Примерно “ByDay” за 1 месец
+        let fetched = eventStore.fetchEventsByDay(
+            for: month,
+            calendar: calendar,
+            allowedCalendarIDs: selectedCalendarIDs
+        )
         self.eventsByDay = fetched
         
         var tmp: [String: EKEvent] = [:]
@@ -78,11 +104,10 @@ final class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
 
-    /// Примерно зареждане на събития за цяла година
     func loadEventsForWholeYear(year: Int) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
-            self.eventsByID = [:]
+            self.eventsByID  = [:]
             return
         }
 
@@ -100,10 +125,12 @@ final class CalendarViewModel: ObservableObject {
         compNext.day = 1
         guard let startOfNextYear = calendar.date(from: compNext) else { return }
 
+        // Филтрираме само разрешените календари
+        let allowedCals = allowedCalendars()
         let predicate = eventStore.predicateForEvents(
             withStart: startOfYear,
             end: startOfNextYear,
-            calendars: nil
+            calendars: allowedCals
         )
         let foundEvents = eventStore.events(matching: predicate)
 
@@ -121,5 +148,52 @@ final class CalendarViewModel: ObservableObject {
             }
         }
         self.eventsByID = tmp
+    }
+
+    // MARK: - Помощни
+    func allowedCalendars() -> [EKCalendar] {
+        allCalendars.filter {
+            selectedCalendarIDs.contains($0.calendarIdentifier)
+        }
+    }
+}
+
+// MARK: - EKEventStore helper (пример)
+extension EKEventStore {
+    /// Зареждаме събития за месеца, групирани по дни
+    func fetchEventsByDay(
+        for month: Date,
+        calendar: Calendar,
+        allowedCalendarIDs: Set<String>
+    ) -> [Date: [EKEvent]] {
+        // Начало на месеца
+        let comp = calendar.dateComponents([.year, .month], from: month)
+        guard let startOfMonth = calendar.date(from: comp) else { return [:] }
+
+        // Начало на следващия месец
+        var nextComp = DateComponents()
+        nextComp.month = 1
+        guard let startOfNextMonth = calendar.date(byAdding: nextComp, to: startOfMonth) else {
+            return [:]
+        }
+
+        // Взимаме само календарите, които са разрешени
+        let allowedCals = calendars(for: .event).filter {
+            allowedCalendarIDs.contains($0.calendarIdentifier)
+        }
+
+        let predicate = predicateForEvents(
+            withStart: startOfMonth,
+            end: startOfNextMonth,
+            calendars: allowedCals
+        )
+        let found = events(matching: predicate)
+
+        var dict: [Date: [EKEvent]] = [:]
+        for ev in found {
+            let dayKey = calendar.startOfDay(for: ev.startDate)
+            dict[dayKey, default: []].append(ev)
+        }
+        return dict
     }
 }

@@ -1,12 +1,3 @@
-//
-//  AddCalendarView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 5/3/25.
-//
-
-
-
 import SwiftUI
 import EventKit
 
@@ -83,9 +74,12 @@ struct AddCalendarView: View {
 
         do {
             try eventStore.saveCalendar(newCal, commit: true)
-            eventStore.refreshSourcesIfNecessary() // или reset() - по избор
             
-            // за по-сигурно:
+            // По желание - автоматично го маркираме като "показван":
+            CalendarViewModel.shared.selectedCalendarIDs.insert(newCal.calendarIdentifier)
+            
+            // Опресняваме списъка
+            eventStore.refreshSourcesIfNecessary()
             CalendarViewModel.shared.reloadCalendars()
 
             presentationMode.wrappedValue.dismiss()
@@ -95,7 +89,6 @@ struct AddCalendarView: View {
     }
 
     private func displayColorName(for uiColor: UIColor) -> String {
-        // ваше си helper-че
         if colorsAreEqual(uiColor, .systemRed)    { return "Red" }
         if colorsAreEqual(uiColor, .systemOrange) { return "Orange" }
         if colorsAreEqual(uiColor, .systemYellow) { return "Yellow" }
@@ -111,7 +104,6 @@ struct AddCalendarView: View {
         var r2: CGFloat = 0, g2: CGFloat = 0, b2: CGFloat = 0, a2: CGFloat = 0
         c1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
         c2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
-        return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
+        return (r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2)
     }
 }
-

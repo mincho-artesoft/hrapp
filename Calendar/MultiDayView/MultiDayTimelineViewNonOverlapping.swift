@@ -866,7 +866,7 @@ public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecogniz
         else { return }
         isFirstResize = false
         let isTop = (handleView.tag == 0)  // Горна дръжка => tag = 0, Долна => tag = 1
-        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
+//        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         var missingBefore: Bool = false
         var missingAfter: Bool = false
         switch gesture.state {

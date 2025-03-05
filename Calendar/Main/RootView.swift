@@ -1,32 +1,35 @@
 import SwiftUI
 import EventKit
 
-// MARK: - Основен RootView
 struct RootView: View {
-    @State private var selectedTab = 3  // MultiDay, примерно
     @State var accessGranted = false
-
-    // За Multi-Day примера
-    @State private var pinnedFromDate: Date = Date()
-    @State private var pinnedToDate: Date = Date()
-    @State private var pinnedEvents: [EventDescriptor] = []
-
-    // Таймер за презареждане (пример)
+    
+    // MARK: - Single Day
+    @State private var pinnedFromDateSingle: Date = Date()
+    @State private var pinnedToDateSingle: Date = Date()
+    @State private var pinnedEventsSingle: [EventDescriptor] = []
+    
+    // MARK: - Multi Day (пример за 7-дневен диапазон)
+    @State private var pinnedFromDateMulti: Date = Date()
+    @State private var pinnedToDateMulti: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
+    @State private var pinnedEventsMulti: [EventDescriptor] = []
+    
+    // Таймер за пример (презареждане на 60 секунди)
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
-
-    // Показваме/скриваме листа с календари
+    
+    // Избор на таб
+    @State private var selectedTab = 3  // По подразбиране MultiDay
+    
+    // Sheet за календари
     @State private var showCalendarsSheet = false
-    // Показваме/скриваме AddCalendarView
-    @State private var showAddCalendarSheet = false
-
+    
     var body: some View {
         ZStack {
             Color(.systemBackground)
                 .edgesIgnoringSafeArea(.all)
-
+            
             NavigationView {
                 VStack {
-                    // Горен Picker (Day / MultiDay / Month / Year / TEST)
                     Picker("View", selection: $selectedTab) {
                         Text("Day").tag(1)
                         Text("MultiDay").tag(3)
@@ -36,76 +39,85 @@ struct RootView: View {
                     }
                     .pickerStyle(.segmented)
                     .padding()
-
-                    // Превключваме между различните примери
+                    
                     switch selectedTab {
                     case 0:
-                        // Пример: месечен календар
+                        // Месечен календар
                         MonthCalendarView(
                             viewModel: CalendarViewModel.shared,
                             startMonth: Date()
                         )
-
+                        
                     case 1:
-                        // Single-day пример
+                        // Single Day
                         TwoWayPinnedMultiDayWrapper(
-                            fromDate: $pinnedFromDate,
-                            toDate: $pinnedFromDate,
-                            events: $pinnedEvents,
+                            fromDate: $pinnedFromDateSingle,
+                            toDate: $pinnedToDateSingle,
+                            events: $pinnedEventsSingle,
                             eventStore: CalendarViewModel.shared.eventStore,
                             isSingleDay: true
                         ) { tappedDay in
-                            pinnedFromDate = tappedDay
-                            pinnedToDate   = tappedDay
+                            pinnedFromDateSingle = tappedDay
+                            pinnedToDateSingle   = tappedDay
+                            loadSingleDayEvents()
                         }
-                        .onAppear { loadPinnedRangeEvents() }
-                        .onReceive(timer) { _ in loadPinnedRangeEvents() }
-
+                        .onAppear {
+                            loadSingleDayEvents()
+                        }
+                        .onReceive(timer) { _ in
+                            loadSingleDayEvents()
+                        }
+                        
                     case 2:
                         // Годишен календар
                         YearCalendarView(viewModel: CalendarViewModel.shared)
-
+                        
                     case 3:
-                        // Multi-day
+                        // MultiDay (начална дата: pinnedFromDateMulti, крайна: pinnedToDateMulti)
                         TwoWayPinnedMultiDayWrapper(
-                            fromDate: $pinnedFromDate,
-                            toDate: $pinnedToDate,
-                            events: $pinnedEvents,
+                            fromDate: $pinnedFromDateMulti,
+                            toDate: $pinnedToDateMulti,
+                            events: $pinnedEventsMulti,
                             eventStore: CalendarViewModel.shared.eventStore,
                             isSingleDay: false
                         ) { tappedDay in
-                            pinnedFromDate = tappedDay
-                            pinnedToDate   = tappedDay
+                            pinnedFromDateMulti = tappedDay
+                            pinnedToDateMulti   = Calendar.current.date(byAdding: .day, value: 7, to: tappedDay)!
+                            loadMultiDayEvents()
                         }
-                        .onAppear { loadPinnedRangeEvents() }
-                        .onReceive(timer) { _ in loadPinnedRangeEvents() }
-
+                        .onAppear {
+                            loadMultiDayEvents()
+                        }
+                        .onReceive(timer) { _ in
+                            loadMultiDayEvents()
+                        }
+                        
                     case 4:
                         // Тестова страница
                         ContentView()
-
+                        
                     default:
                         Text("N/A")
                     }
                 }
                 .navigationTitle("Calendar Demo")
-                // Долна лента с 3 бутона: Today / Calendars / Inbox (+AddCalendar, ако искате)
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
                         // “Today”
                         Button("Today") {
-                            pinnedFromDate = Calendar.current.startOfDay(for: Date())
-                            pinnedToDate   = pinnedFromDate
-                            selectedTab    = 1 // Day view
+                            let today = Calendar.current.startOfDay(for: Date())
+                            pinnedFromDateSingle = today
+                            pinnedToDateSingle = today
+                            selectedTab = 1 // Day view
                         }
                         Spacer()
-
+                        
                         // “Calendars”
                         Button("Calendars") {
                             showCalendarsSheet = true
                         }
                         Spacer()
-
+                        
                         // “Inbox” (пример)
                         Button("Inbox") {
                             // Може да покажете някакъв екран за покани
@@ -114,85 +126,121 @@ struct RootView: View {
                 }
             }
         }
-        // При първо отваряне на RootView
         .onAppear {
             Task {
-                // Заявяваме достъп асинхронно
+                // 1) Искане на достъп
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
+                
                 if accessGranted {
-                    // Зареждаме събития за текущата година (примерно)
+                    // 2) ТУК Е КЛЮЧОВО: първо зареждаме списъка с календари
+                    CalendarViewModel.shared.reloadCalendars()
+                    
+                    // 3) После зареждаме събития (примерно цяла година)
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
-
-                    // Ако искате да заредите и pinnedEvents веднага
-                    loadPinnedRangeEvents()
+                    
+                    // 4) Ако сме по подразбиране на MultiDay (selectedTab = 3),
+                    //    да заредим и multi-day събитията:
+                    loadMultiDayEvents()
                 }
             }
         }
-        // Когато затваряме листа с календари – веднага презареждаме pinnedEvents
+        // Когато листът CalendarsSheetView се затвори, презареждаме
         .sheet(isPresented: $showCalendarsSheet, onDismiss: {
-            // Презареждаме текущо видимите събития
             if accessGranted {
-                loadPinnedRangeEvents()
+                // Зависи кой таб гледаме.
+                if selectedTab == 3 {
+                    loadMultiDayEvents()
+                } else if selectedTab == 1 {
+                    loadSingleDayEvents()
+                }
             }
         }) {
             CalendarsSheetView()
         }
     }
+}
 
-    // Зареждаме събития в pinnedEvents за диапазона [pinnedFromDate ... pinnedToDate]
-    private func loadPinnedRangeEvents() {
+
+// MARK: - Зареждане на евенти за SingleDay
+extension RootView {
+    private func loadSingleDayEvents() {
+        guard accessGranted else { return }
+        let fromOnly = Calendar.current.startOfDay(for: pinnedFromDateSingle)
+        guard let toDate = Calendar.current.date(byAdding: .day, value: 1, to: fromOnly) else {
+            pinnedEventsSingle = []
+            return
+        }
+        
+        pinnedEventsSingle = fetchAndSplitEvents(from: fromOnly, to: toDate)
+    }
+}
+
+
+// MARK: - Зареждане на евенти за MultiDay
+extension RootView {
+    private func loadMultiDayEvents() {
         guard accessGranted else { return }
         let cal = Calendar.current
+        let fromOnly = cal.startOfDay(for: pinnedFromDateMulti)
+        
+        // За multi-day взимаме края като startOfDay(for: pinnedToDateMulti) + 1 ден
+        let toOnly = cal.startOfDay(for: pinnedToDateMulti)
+        guard let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) else {
+            pinnedEventsMulti = []
+            return
+        }
+        
+        pinnedEventsMulti = fetchAndSplitEvents(from: fromOnly, to: actualEnd)
+    }
+}
+
+
+// MARK: - Общ метод за fetch + split
+extension RootView {
+    private func fetchAndSplitEvents(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
-
-        let fromOnly = cal.startOfDay(for: pinnedFromDate)
-        let toOnly   = cal.startOfDay(for: pinnedToDate)
-        guard let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) else { return }
-
-        let predicate = store.predicateForEvents(withStart: fromOnly, end: actualEnd, calendars: nil)
+        let cal   = Calendar.current
+        
+        // 1) Филтрираме само календари, които са селектирани
+        let allowedCalendars = CalendarViewModel.shared.allCalendars.filter {
+            CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
+        }
+        // 2) Правим predicate САМО за тези календари
+        let predicate = store.predicateForEvents(withStart: from, end: to, calendars: allowedCalendars)
         let found = store.events(matching: predicate)
-
+        
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
-            // Ако събитието прехвърля няколко дни, разцепваме го
+            // Ако събитието е много‐дневно, да го "разцепим"
             if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
-                splitted.append(contentsOf: splitEventByDays(
-                    ekEvent,
-                    startRange: fromOnly,
-                    endRange: actualEnd
-                ))
+                splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
         }
-        pinnedEvents = splitted
+        return splitted
     }
-
-    // Ако event е много‐дневен, правим парчета за всеки ден
-    private func splitEventByDays(_ ekEvent: EKEvent,
-                                  startRange: Date,
-                                  endRange: Date) -> [EKMultiDayWrapper] {
+    
+    private func splitEventByDays(_ ekEvent: EKEvent, startRange: Date, endRange: Date) -> [EKMultiDayWrapper] {
         var results = [EKMultiDayWrapper]()
         let cal = Calendar.current
-
+        
         let realStart = max(ekEvent.startDate, startRange)
         let realEnd   = min(ekEvent.endDate, endRange)
         if realStart >= realEnd { return results }
-
+        
         var currentStart = realStart
         while currentStart < realEnd {
             guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart)
             else { break }
-
+            
             let pieceEnd = min(endOfDay, realEnd)
-            let partial = EKMultiDayWrapper(
-                realEvent: ekEvent,
-                partialStart: currentStart,
-                partialEnd: pieceEnd
-            )
+            let partial = EKMultiDayWrapper(realEvent: ekEvent,
+                                            partialStart: currentStart,
+                                            partialEnd: pieceEnd)
             results.append(partial)
-
+            
             guard
                 let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
                 let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)

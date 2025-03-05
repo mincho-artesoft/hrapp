@@ -1,12 +1,3 @@
-//
-//  CalendarRowView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 5/3/25.
-//
-
-
-
 import SwiftUI
 import EventKit
 
@@ -17,32 +8,43 @@ struct CalendarRowView: View {
     let editAction: () -> Void
 
     var body: some View {
-        HStack {
-            Circle()
-                .fill(Color(uiColor: UIColor(cgColor: calendar.cgColor ?? UIColor.clear.cgColor)))
-                .frame(width: 12, height: 12)
-
+        HStack(spacing: 16) {
+            // Бутонът, който при натискане toggle-ва селекцията
             Button(action: { toggleAction(calendar) }) {
-                Image(systemName: isSelected ? "checkmark" : "")
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(.blue)
+                ZStack {
+                    // 1) Кръг, запълнен с цвета на календара
+                    Circle()
+                        .fill(Color(uiColor: UIColor(cgColor: calendar.cgColor ?? UIColor.gray.cgColor)))
+                        .frame(width: 28, height: 28)
+                    
+                    // 2) Ако е селектиран, показваме "checkmark" отгоре
+                    if isSelected {
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.white)
+                    }
+                }
             }
             .buttonStyle(.plain)
-
+            
+            // Име на календара
             Text(calendar.title)
-                .padding(.leading, 4)
+                .foregroundColor(.primary)
+            
             Spacer()
-
+            
+            // Бутон за Edit (info)
             if calendar.allowsContentModifications {
                 Button(action: {
                     editAction()
                 }) {
                     Image(systemName: "info.circle")
                         .foregroundColor(.blue)
+                        .font(.system(size: 18))
                 }
                 .buttonStyle(.plain)
             }
         }
+        .padding(.vertical, 4)
     }
 }
-

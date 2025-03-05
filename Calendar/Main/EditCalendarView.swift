@@ -82,11 +82,9 @@ struct EditCalendarView: View {
         
         do {
             try eventStore.saveCalendar(calendar, commit: true)
-            
-            // Важи, ако сте сменили името/цвета
             eventStore.reset()
             
-            // Опресняваме списъка с календари във ViewModel
+            // Опресняваме списъка с календари в ViewModel
             CalendarViewModel.shared.reloadCalendars()
 
             presentationMode.wrappedValue.dismiss()
@@ -99,6 +97,9 @@ struct EditCalendarView: View {
         do {
             try eventStore.removeCalendar(calendar, commit: true)
             eventStore.reset()
+
+            // Ако calendar е бил селектиран, махаме го от selectedCalendarIDs
+            CalendarViewModel.shared.selectedCalendarIDs.remove(calendar.calendarIdentifier)
 
             // Reload в ViewModel
             CalendarViewModel.shared.reloadCalendars()
