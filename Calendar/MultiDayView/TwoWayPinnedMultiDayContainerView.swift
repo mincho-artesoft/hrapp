@@ -1,8 +1,6 @@
 import UIKit
 import SwiftUI
 
-/// Малък помощен extension за намиране на най-близкия UIViewController
-/// (ако TwoWayPinnedMultiDayContainerView е в някаква верига от subviews).
 extension UIView {
     func findViewController() -> UIViewController? {
         if let nextResponder = self.next as? UIViewController {
@@ -15,70 +13,42 @@ extension UIView {
     }
 }
 
-/**
- Контейнер, който включва:
- - Навигационна лента (горе):
-    - Ако е `showSingleDay = true` => 1 DatePicker (fromDatePicker), центриран.
-    - Ако е `showSingleDay = false` => бутон (dateRangeButton), който при натискане показва CalendarDateRangePickerWrapper като popup.
- - DaysHeaderView (хоризонтално, пиннато отгоре)
- - Колона за часове (HoursColumnView, вертикално, пиннато вляво)
- - AllDayViewNonOverlapping (скролируем all-day)
- - MultiDayTimelineViewNonOverlapping (главен scroll за часовете).
-
- Целта е да се „пине“ колоната за часове (отляво) и заглавията на дните (отгоре),
- докато останалите секции се скролват по оста X и/или Y.
- */
 public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate {
 
-    // Размери
+    // MARK: - Properties
+
     fileprivate let navBarHeight: CGFloat = 60
     fileprivate let daysHeaderHeight: CGFloat = 40
     fileprivate let leftColumnWidth: CGFloat = 70
-
-    // == UI елементи ==
-    // Единственият UIDatePicker (ползва се само при single-day):
+    
     private let fromDatePicker = UIDatePicker()
-
-    // Бутон (три точки) за превключване Single/Multi
     private let menuButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         btn.tintColor = .label
         return btn
     }()
-
-    /// Бутонът за избор на период (ползва се, ако сме в multi-day).
+    
     private let dateRangeButton: UIButton = {
-        // Използваме .custom, за да не получаваме автоматични промени в tint/fon
         let btn = UIButton(type: .custom)
-        
         btn.setTitle("Няма избран период", for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-
-        // Постоянна рамка и фон:
         btn.layer.cornerRadius = 8
         btn.backgroundColor = .systemGray5
-
-        // Цветове на текста в различните състояния:
-        btn.setTitleColor(.black, for: .normal)       // Когато Popup е скрит
-        btn.setTitleColor(.systemBlue, for: .selected) // Когато Popup е показан
-
+        btn.setTitleColor(.label, for: .normal)
+        btn.setTitleColor(.systemBlue, for: .selected)
         return btn
     }()
-
-
-
-    /// Показва ли се в момента popup календарът?
+    
+    /// Дали показваме „popup“ календара в момента
     private var showCalendar = false
-
-    /// Прозорец за „полупрозрачен фон“ + SwiftUI календар (popup)
+    
+    /// Това **обезателно** трябва да се сетва, за да можем да махнем контролера после.
     private var calendarHostingController: UIHostingController<CalendarDateRangePickerWrapper>?
-
-    /// Флаг дали да показваме single-day (true) или multi-day (false).
+    
     public var showSingleDay: Bool = false {
         didSet {
             if showSingleDay {
-                // Ако сме single-day, приравняваме toDate = fromDate
                 toDate = fromDate
             }
             if #available(iOS 14.0, *) {
@@ -87,27 +57,19 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             setNeedsLayout()
         }
     }
-
-    // Горен ляв ъгъл (сиво квадратче)
+    
+    // Останалите вюта (DaysHeader, HoursColumn и т.н.)...
     fileprivate let cornerView = UIView()
-    // DaysHeaderView + неговия Scroll
     fileprivate let daysHeaderScrollView = UIScrollView()
     fileprivate let daysHeaderView = DaysHeaderView()
-
-    // Колона с часове + неговия Scroll
     fileprivate let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
-
-    // All-day зона
     public let allDayTitleLabel = UILabel()
     public let allDayScrollView = UIScrollView()
     public let allDayView = AllDayViewNonOverlapping()
-
-    // Главен скрол (MultiDayTimelineViewNonOverlapping)
     public let mainScrollView = UIScrollView()
     public let weekView = MultiDayTimelineViewNonOverlapping()
 
-    // == Callbacks ==
     public var onRangeChange: ((Date, Date) -> Void)?
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
@@ -138,8 +100,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             daysHeaderView.onDayTap = onDayLabelTap
         }
     }
-
-    // == Дати (fromDate и toDate) ==
+    
     public var fromDate: Date = Date() {
         didSet {
             refreshDateRangeButtonTitle()
@@ -171,36 +132,35 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             }
         }
     }
-
-    // Таймер за презареждане всяка минута (червената линия)
+    
     private var redrawTimer: Timer?
     private var isInSecondPass = false
 
-    // MARK: - Инициализация
+    // MARK: - Init
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         startRedrawTimer()
         refreshDateRangeButtonTitle()
     }
-
+    
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
         startRedrawTimer()
         refreshDateRangeButtonTitle()
     }
-
+    
     deinit {
         redrawTimer?.invalidate()
     }
-
-    // MARK: - SETUP
+    
+    // MARK: - Setup
     private func setupViews() {
         backgroundColor = .systemBackground
         self.clipsToBounds = true
-
-        // 1) Основният скрол + weekView
+        
+        // Основни subviews
         mainScrollView.delegate = self
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
@@ -209,19 +169,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         mainScrollView.layer.zPosition = 0
         addSubview(mainScrollView)
 
-        // 2) AllDay (scroll + view)
         allDayScrollView.delegate = self
         allDayScrollView.showsHorizontalScrollIndicator = false
         allDayScrollView.showsVerticalScrollIndicator = true
         allDayScrollView.alwaysBounceHorizontal = false
         allDayScrollView.alwaysBounceVertical = false
-        allDayScrollView.isScrollEnabled = true
         allDayScrollView.bounces = false
         allDayScrollView.addSubview(allDayView)
         allDayScrollView.layer.zPosition = 1
         addSubview(allDayScrollView)
 
-        // 3) Фиксирани зони
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
         hoursColumnScrollView.addSubview(hoursColumnView)
@@ -247,7 +204,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         allDayTitleLabel.layer.zPosition = 6
         addSubview(allDayTitleLabel)
 
-        // 4) Navigation bar
+        // „Нав-бар“
         let navBar = UIView()
         navBar.backgroundColor = .secondarySystemBackground
         navBar.layer.zPosition = 7
@@ -255,13 +212,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
 
-        // single-day picker
         fromDatePicker.datePickerMode = .date
         fromDatePicker.preferredDatePickerStyle = .compact
         fromDatePicker.addTarget(self, action: #selector(didPickFromDate(_:)), for: .valueChanged)
         navBar.addSubview(fromDatePicker)
 
-        // Бутон "..."
         navBar.addSubview(menuButton)
         if #available(iOS 14.0, *) {
             menuButton.showsMenuAsPrimaryAction = true
@@ -270,19 +225,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             menuButton.addTarget(self, action: #selector(legacyMenuTapped), for: .touchUpInside)
         }
 
-        // multi-day бутон
+        // Бутон за избиране на период
         dateRangeButton.addTarget(self, action: #selector(didTapDateRangeButton), for: .touchUpInside)
         navBar.addSubview(dateRangeButton)
 
-        // 5) Индентации
         daysHeaderView.leadingInsetForHours = 0
         allDayView.leadingInsetForHours = 0
         weekView.leadingInsetForHours = 0
 
-        // Свързваме hoursColumnView
         weekView.hoursColumnView = hoursColumnView
-
-        // Пример: onEventConvertToAllDay
+        
+        // Примерна логика за Drag to AllDay:
         weekView.onEventConvertToAllDay = { [weak self] descriptor, dayIndex in
             guard let self = self else { return }
             let cal = Calendar.current
@@ -297,8 +250,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             }
         }
     }
-
-    // MARK: - Меню
+    
     @available(iOS 14.0, *)
     private func buildMenu() -> UIMenu {
         let singleAction = UIAction(
@@ -315,7 +267,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
         return UIMenu(title: "", children: [singleAction, multiAction])
     }
-
+    
     @objc private func legacyMenuTapped() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Single day", style: .default, handler: { [weak self] _ in
@@ -333,30 +285,42 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             topVC.present(alert, animated: true, completion: nil)
         }
     }
-
-    // MARK: - Single-day DatePicker
+    
+    // MARK: - Date picking
     @objc private func didPickFromDate(_ sender: UIDatePicker) {
         self.fromDate = sender.date
         self.toDate   = sender.date
         onRangeChange?(fromDate, toDate)
     }
-
-    // MARK: - Multi-day Button (popup)
+    
+    // MARK: - Show / Hide Calendar
+    
     @objc private func didTapDateRangeButton() {
-        // Ако вече е показан -> скриваме
         if showCalendar {
-            hideCalendarPopup()
+            hideCalendarPopup() // -> скриване
         } else {
-            showCalendarPopup()
+            showCalendarPopup() // -> показване
         }
     }
 
-    private var backgroundOverlay: UIView?
 
+
+    @objc private func containerTapped(_ sender: UITapGestureRecognizer) {
+        guard let hc = calendarHostingController else { return }
+        let location = sender.location(in: self)
+        let calendarFrame = hc.view.frame
+        print("ssss")
+        // Ако тапнем извън „popup“-а
+        if !calendarFrame.contains(location) {
+            hideCalendarPopup()
+        }
+    }
+    
+    /// Показваме календара с анимация
     private func showCalendarPopup() {
         guard !showCalendar else { return }
         showCalendar = true
-
+        
         let swiftUICalendar = CalendarDateRangePickerWrapper(
             startDate: fromDate,
             endDate: toDate,
@@ -369,94 +333,98 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             self.toDate   = newEnd
             self.onRangeChange?(self.fromDate, self.toDate)
         }
-
+        
         let hc = UIHostingController(rootView: swiftUICalendar)
-
-        // Задаваш частична прозрачност на самия календар:
-        // Ако искаш да е леко „замъглено“, му сложи някаква alpha:
-        hc.view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.5)
+        hc.view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.9)
         hc.view.layer.cornerRadius = 12
         hc.view.layer.zPosition = 9999
-
+        
+        // Важно: запазваме го в пропърти, за да може после да го скрием
+        self.calendarHostingController = hc
+        
         if let parentVC = self.findViewController() {
             parentVC.addChild(hc)
+            hc.didMove(toParent: parentVC)
         }
 
         self.addSubview(hc.view)
-
-        // Позиционираш където ти е удобно:
+        
+        // Позициониране (примерно под бутона)
         let btnFrame = self.convert(dateRangeButton.frame, from: dateRangeButton.superview)
         let calW: CGFloat = 320
         let calH: CGFloat = 320
         let x = btnFrame.midX - calW/2
         let y = btnFrame.maxY + 8
-
         hc.view.frame = CGRect(x: x, y: y, width: calW, height: calH)
 
-        self.calendarHostingController = hc
+        // Начално състояние за анимацията (умален и прозрачен)
+        hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        hc.view.alpha = 0
 
-        // Добавяш tap gesture върху главния контейнер,
-        // за да отчиташ „клик извън календара“:
+        // Анимирано показване
+        UIView.animate(withDuration: 0.25,
+                       delay: 0,
+                       options: [.curveEaseOut],
+                       animations: {
+            hc.view.transform = .identity
+            hc.view.alpha = 1
+        }, completion: nil)
+
+        // Тап извън календара
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(containerTapped(_:)))
-        tapGesture.cancelsTouchesInView = false // за да не изяжда другите тапове
+        tapGesture.cancelsTouchesInView = false
         self.addGestureRecognizer(tapGesture)
+
         dateRangeButton.isSelected = true
     }
 
-
-    @objc private func containerTapped(_ sender: UITapGestureRecognizer) {
-        guard let hc = calendarHostingController else { return }
-
-        let location = sender.location(in: self)
-        let calendarFrame = hc.view.frame
-
-        // Ако tap-ът е извън рамката на календара:
-        if !calendarFrame.contains(location) {
-            hideCalendarPopup()
-        }
-    }
-
+    /// Скриваме календара (анимация обратно)
     private func hideCalendarPopup() {
+        print("asd")
+        guard showCalendar else { return }
         showCalendar = false
-
-        calendarHostingController?.willMove(toParent: nil)
-        calendarHostingController?.view.removeFromSuperview()
-        calendarHostingController?.removeFromParent()
-        calendarHostingController = nil
-
-        // Може би и да махнеш tap gesture от self, ако не ти трябва за друго
-        // (ако използваш само за календара):
-        if let gestures = self.gestureRecognizers {
-            for g in gestures {
-                if g is UITapGestureRecognizer {
-                    self.removeGestureRecognizer(g)
-                }
-            }
+        print("asd2")
+        // ЗАДЪЛЖИТЕЛНО трябва да има вече не-nil calendarHostingController
+        guard let hc = calendarHostingController else {
+            dateRangeButton.isSelected = false
+            return
         }
+        print("asd3")
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       options: [.curveEaseIn],
+                       animations: {
+            hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            hc.view.alpha = 0
+        }, completion: { _ in
+            hc.willMove(toParent: nil)
+            hc.view.removeFromSuperview()
+            hc.removeFromParent()
+        })
+        print("asd4")
+        // След като сме го махнали, зануляваме пропъртито
+        calendarHostingController = nil
         dateRangeButton.isSelected = false
+        print("asd5")
     }
-
-    @objc private func backgroundTapped() {
-        hideCalendarPopup()
-    }
-
+    
     // MARK: - Layout
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         if isInSecondPass {
             isInSecondPass = false
         }
-
-        // Навбар
+        
+        // Примерен layout
         guard let navBar = subviews.first(where: {
             $0.frame.origin == .zero && $0.bounds.height == navBarHeight
         }) else {
             return
         }
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
-
-        // Меню бутон
+        
         let buttonSize: CGFloat = 40
         menuButton.frame = CGRect(
             x: navBar.bounds.width - buttonSize - 8,
@@ -464,12 +432,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             width: buttonSize,
             height: buttonSize
         )
-
-        // Single-day => fromDatePicker, Multi-day => dateRangeButton
+        
         if showSingleDay {
             fromDatePicker.isHidden = false
             dateRangeButton.isHidden = true
-
             let pickerW: CGFloat = 160
             let pickerH: CGFloat = 40
             let x = (navBar.bounds.width - pickerW) / 2
@@ -478,17 +444,15 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         } else {
             fromDatePicker.isHidden = true
             dateRangeButton.isHidden = false
-
             let btnW: CGFloat = 220
             let btnH: CGFloat = 40
             let x = (navBar.bounds.width - btnW)/2
             let y = (navBarHeight - btnH)/2
             dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
         }
-
+        
         let yMain = navBarHeight
-
-        // Corner + daysHeader
+        
         cornerView.frame = CGRect(x: 0, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
         daysHeaderScrollView.frame = CGRect(
             x: leftColumnWidth,
@@ -497,13 +461,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             height: daysHeaderHeight
         )
 
-        // Брой дни
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
         let toOnly   = cal.startOfDay(for: toDate)
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
-
-        // Колонна ширина
+        
         let availableWidth = bounds.width - leftColumnWidth
         if dayCount < 4 {
             let newDayColumnWidth = availableWidth / CGFloat(dayCount)
@@ -515,18 +477,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             daysHeaderView.dayColumnWidth = 100
             allDayView.dayColumnWidth = 100
         }
-
-        // daysHeader
+        
         let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalDaysHeaderWidth, height: daysHeaderHeight)
-
-        // All-day
+        
         let allDayY = yMain + daysHeaderHeight
         let oldOffset = allDayScrollView.contentOffset
         let allDayH = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
-
+        
         allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
         allDayScrollView.frame = CGRect(x: leftColumnWidth, y: allDayY, width: bounds.width - leftColumnWidth, height: allDayH)
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
@@ -538,8 +498,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         if newOffset.y < 0 { newOffset.y = 0 }
         else if newOffset.y > maxOffsetY { newOffset.y = maxOffsetY }
         allDayScrollView.setContentOffset(newOffset, animated: false)
-
-        // HoursColumn + mainScrollView
+        
         let hoursColumnY = allDayY + allDayH
         hoursColumnScrollView.frame = CGRect(
             x: 0,
@@ -562,24 +521,22 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
 
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
-
+        
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
-
+        
         sendSubviewToBack(mainScrollView)
         sendSubviewToBack(allDayScrollView)
         bringSubviewToFront(allDayTitleLabel)
-
-        // "сега"
+        
         let nowOnly = cal.startOfDay(for: Date())
         hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
-
+        
         hoursColumnView.setNeedsDisplay()
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
-
-        // Втори pass?
+        
         allDayView.layoutIfNeeded()
         let newH = allDayView.desiredHeight()
         let newCH = allDayView.contentHeight
@@ -587,18 +544,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         let curCH = allDayScrollView.contentSize.height
         let diff1 = abs(newH - curH)
         let diff2 = abs(newCH - curCH)
-        if diff1 > 0.5 || diff2 > 0.5 {
-            if !isInSecondPass {
-                isInSecondPass = true
-                setNeedsLayout()
-                return
-            } else {
-                isInSecondPass = false
-            }
+        if (diff1 > 0.5 || diff2 > 0.5) && !isInSecondPass {
+            isInSecondPass = true
+            setNeedsLayout()
+            return
+        } else {
+            isInSecondPass = false
         }
     }
-
-    // MARK: - ScrollView Delegate
+    
+    // MARK: - UIScrollViewDelegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
             let offsetX = scrollView.contentOffset.x
@@ -610,16 +565,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             let offsetX = scrollView.contentOffset.x
             mainScrollView.contentOffset.x = offsetX
             daysHeaderScrollView.contentOffset.x = offsetX
-            // Вертикалният offset на allDayScrollView остава независим
         }
         else if scrollView == daysHeaderScrollView {
             let offsetX = scrollView.contentOffset.x
             mainScrollView.contentOffset.x = offsetX
             allDayScrollView.contentOffset.x = offsetX
-            // Вертикалният offset тук няма значение
         }
     }
-
+    
     // MARK: - Timer
     private func startRedrawTimer() {
         redrawTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
@@ -632,11 +585,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             }
         }
     }
-
-    // MARK: - Refresh Button Title
+    
     private func refreshDateRangeButtonTitle() {
-        // Ако fromDate > toDate, "Няма избран период"
-        // Иначе "от - до"
         if fromDate > toDate {
             dateRangeButton.setTitle("Няма избран период", for: .normal)
         } else {
