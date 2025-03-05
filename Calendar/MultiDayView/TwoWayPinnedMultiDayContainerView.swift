@@ -22,6 +22,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     fileprivate let leftColumnWidth: CGFloat = 70
     
     private let fromDatePicker = UIDatePicker()
+    
+    // ------------------------
+    // ВАЖНО: Само един addTarget!
+    // ------------------------
     private let menuButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
@@ -40,10 +44,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         return btn
     }()
     
-    /// Дали показваме „popup“ календара в момента
+    // Дали показваме „popup“ календара в момента
     private var showCalendar = false
     
-    /// Това **обезателно** трябва да се сетва, за да можем да махнем контролера после.
     private var calendarHostingController: UIHostingController<CalendarDateRangePickerWrapper>?
     
     public var showSingleDay: Bool = false {
@@ -58,7 +61,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    // Останалите вюта (DaysHeader, HoursColumn и т.н.)...
+    // Останалите вюта...
     fileprivate let cornerView = UIView()
     fileprivate let daysHeaderScrollView = UIScrollView()
     fileprivate let daysHeaderView = DaysHeaderView()
@@ -225,7 +228,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             menuButton.addTarget(self, action: #selector(legacyMenuTapped), for: .touchUpInside)
         }
 
-        // Бутон за избиране на период
+        // ** Важно: САМО тук го добавяме, за да няма дублиращо се извикване **
         dateRangeButton.addTarget(self, action: #selector(didTapDateRangeButton), for: .touchUpInside)
         navBar.addSubview(dateRangeButton)
 
@@ -296,27 +299,27 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     // MARK: - Show / Hide Calendar
     
     @objc private func didTapDateRangeButton() {
+        // Ако натискате бутона и тук влиза два пъти,
+        // проверете дали имате второ закачане към @IBAction
+        // или още един addTarget.
+     
         if showCalendar {
-            hideCalendarPopup() // -> скриване
+            hideCalendarPopup()
         } else {
-            showCalendarPopup() // -> показване
+            showCalendarPopup()
         }
     }
-
-
 
     @objc private func containerTapped(_ sender: UITapGestureRecognizer) {
         guard let hc = calendarHostingController else { return }
         let location = sender.location(in: self)
         let calendarFrame = hc.view.frame
-        print("ssss")
         // Ако тапнем извън „popup“-а
         if !calendarFrame.contains(location) {
             hideCalendarPopup()
         }
     }
     
-    /// Показваме календара с анимация
     private func showCalendarPopup() {
         guard !showCalendar else { return }
         showCalendar = true
@@ -339,7 +342,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         hc.view.layer.cornerRadius = 12
         hc.view.layer.zPosition = 9999
         
-        // Важно: запазваме го в пропърти, за да може после да го скрием
         self.calendarHostingController = hc
         
         if let parentVC = self.findViewController() {
@@ -349,7 +351,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
 
         self.addSubview(hc.view)
         
-        // Позициониране (примерно под бутона)
         let btnFrame = self.convert(dateRangeButton.frame, from: dateRangeButton.superview)
         let calW: CGFloat = 320
         let calH: CGFloat = 320
@@ -357,11 +358,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         let y = btnFrame.maxY + 8
         hc.view.frame = CGRect(x: x, y: y, width: calW, height: calH)
 
-        // Начално състояние за анимацията (умален и прозрачен)
+        // Анимация
         hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         hc.view.alpha = 0
 
-        // Анимирано показване
         UIView.animate(withDuration: 0.25,
                        delay: 0,
                        options: [.curveEaseOut],
@@ -373,23 +373,19 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         // Тап извън календара
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(containerTapped(_:)))
         tapGesture.cancelsTouchesInView = false
+        tapGesture.delegate = self // <-- NEW: Задаваме делегат
         self.addGestureRecognizer(tapGesture)
 
         dateRangeButton.isSelected = true
     }
 
-    /// Скриваме календара (анимация обратно)
     private func hideCalendarPopup() {
-        print("asd")
         guard showCalendar else { return }
         showCalendar = false
-        print("asd2")
-        // ЗАДЪЛЖИТЕЛНО трябва да има вече не-nil calendarHostingController
         guard let hc = calendarHostingController else {
             dateRangeButton.isSelected = false
             return
         }
-        print("asd3")
         UIView.animate(withDuration: 0.2,
                        delay: 0,
                        options: [.curveEaseIn],
@@ -401,11 +397,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             hc.view.removeFromSuperview()
             hc.removeFromParent()
         })
-        print("asd4")
-        // След като сме го махнали, зануляваме пропъртито
         calendarHostingController = nil
         dateRangeButton.isSelected = false
-        print("asd5")
     }
     
     // MARK: - Layout
@@ -417,7 +410,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             isInSecondPass = false
         }
         
-        // Примерен layout
         guard let navBar = subviews.first(where: {
             $0.frame.origin == .zero && $0.bounds.height == navBarHeight
         }) else {
@@ -604,5 +596,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         let df = DateFormatter()
         df.dateStyle = .medium
         return df.string(from: d)
+    }
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension TwoWayPinnedMultiDayContainerView: UIGestureRecognizerDelegate { // <-- NEW: делегиране
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        // Ако е натиснато върху dateRangeButton (или негов subview),
+        // връщаме false, за да не се извика containerTapped(_:)
+        if let tappedView = touch.view,
+           tappedView.isDescendant(of: dateRangeButton) {
+            return false
+        }
+        return true
     }
 }
