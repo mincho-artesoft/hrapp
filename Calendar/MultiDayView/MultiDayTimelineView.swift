@@ -813,16 +813,16 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 let parent1Class = hitView.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 let parent2Class = hitView.superview?.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 
-                if  hitViewClass.contains("MultiDayTimelineViewNonOverlapping")
-                    || parent1Class.contains("MultiDayTimelineViewNonOverlapping")
-                    || parent2Class.contains("MultiDayTimelineViewNonOverlapping") {
+                if  hitViewClass.contains("MultiDayTimelineView")
+                    || parent1Class.contains("MultiDayTimelineView")
+                    || parent2Class.contains("MultiDayTimelineView") {
                     
                     // При дроп в този изглед:
                     onEventDragEnded?(descriptor, snappedStart, false) // CHANGED (snappedStart)
                     
-                } else if hitViewClass.contains("AllDayViewNonOverlapping")
-                            || parent1Class.contains("AllDayViewNonOverlapping")
-                            || parent2Class.contains("AllDayViewNonOverlapping") {
+                } else if hitViewClass.contains("AllDayView")
+                            || parent1Class.contains("AllDayView")
+                            || parent2Class.contains("AllDayView") {
                     
                     for (view, _) in eventViewToDescriptor {
                         view.eventResizeHandles[0].isHidden = true
