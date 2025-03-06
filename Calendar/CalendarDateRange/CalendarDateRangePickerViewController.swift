@@ -169,24 +169,52 @@ public class CalendarDateRangePickerViewController: UIViewController {
     @objc func monthLabelTapped() {
         arrowIsDown.toggle()
         let rotationAngle: CGFloat = arrowIsDown ? .pi / 2 : 0
+
+        // Завъртане и промяна на цвета на надписа
         UIView.animate(withDuration: 0.25) {
             self.arrowImageView.transform = CGAffineTransform(rotationAngle: rotationAngle)
             self.monthLabel.textColor = self.arrowIsDown ? .systemBlue : .label
         }
 
+        // Показване/скриване на picker-a с анимация
         isPickerVisible.toggle()
-        monthYearPickerView.isHidden = !isPickerVisible
 
         if isPickerVisible {
-            let comps = Calendar.current.dateComponents([.month, .year], from: currentMonth)
-            let curMonth = comps.month ?? 1
-            let curYear = comps.year ?? 2025
-            monthYearPickerView.select(month: curMonth, year: curYear)
-            collectionView.isHidden = true
+            // Подготвяме picker-a за анимация (скрит, умален)
+            monthYearPickerView.alpha = 0
+            monthYearPickerView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            monthYearPickerView.isHidden = false
+            self.collectionView.isHidden = true
+            // Анимираме "показването"
+            UIView.animate(withDuration: 0.25,
+                           animations: {
+                self.monthYearPickerView.alpha = 1
+                self.monthYearPickerView.transform = .identity
+            }, completion: { _ in
+                // Селектираме текущия месец/година
+                let comps = Calendar.current.dateComponents([.month, .year], from: self.currentMonth)
+                let curMonth = comps.month ?? 1
+                let curYear = comps.year ?? 2025
+                self.monthYearPickerView.select(month: curMonth, year: curYear)
+
+                // Скриваме колекцията, докато е отворен picker-ът
+            
+            })
         } else {
-            collectionView.isHidden = false
+            // Анимираме "скриването"
+            UIView.animate(withDuration: 0.25,
+                           animations: {
+                self.monthYearPickerView.alpha = 0
+                self.monthYearPickerView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            }, completion: { _ in
+                self.monthYearPickerView.isHidden = true
+
+                // Връщаме колекцията след затваряне на picker-а
+                self.collectionView.isHidden = false
+            })
         }
     }
+
 
     // MARK: - didTapPrevMonth
     @objc func didTapPrevMonth() {
