@@ -1842,23 +1842,3 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
 }
 
-final class BasicEvent: EventDescriptor {
-    var dateInterval: DateInterval = DateInterval()
-    var isAllDay: Bool = false
-    var text: String = ""
-    var attributedText: NSAttributedString?
-    var lineBreakMode: NSLineBreakMode?
-    var font: UIFont = UIFont.systemFont(ofSize: 12)
-    var color: UIColor = .systemBlue
-    var textColor: UIColor = .label
-    var backgroundColor: UIColor = .systemBlue.withAlphaComponent(0.3)
-    var editedEvent: EventDescriptor?
-
-    func makeEditable() -> Self {
-        editedEvent = self
-        return self
-    }
-    func commitEditing() {
-        editedEvent = nil
-    }
-}

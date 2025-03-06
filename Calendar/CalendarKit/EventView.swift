@@ -283,15 +283,14 @@ open class EventView: UIView {
         )
     }
     func applyGhostStyle(
-           cornerRadius: CGFloat = 8,
+           cornerRadius: CGFloat = 5,
            ghostAlpha: CGFloat = 0.8
        ) {
            // Round corners
            layer.cornerRadius = cornerRadius
            clipsToBounds = true
-           layer.backgroundColor = UIColor.systemBlue.cgColor      
            alpha = ghostAlpha
-
+           color = UIColor.systemBlue
            // Hide the resize handles for the ghost
            eventResizeHandles.forEach { $0.isHidden = true }
        }
