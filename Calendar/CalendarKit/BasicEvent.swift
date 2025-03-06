@@ -10,7 +10,7 @@ final class BasicEvent: EventDescriptor {
     var font: UIFont = UIFont.systemFont(ofSize: 12)
     var color: UIColor = .systemRed
     var textColor: UIColor = .label
-    var backgroundColor: UIColor = .systemBlue.withAlphaComponent(0.3)
+    var backgroundColor: UIColor = .systemBlue
     var editedEvent: EventDescriptor?
 
     func makeEditable() -> Self {

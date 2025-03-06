@@ -6,35 +6,33 @@ import Combine
 final class CalendarViewModel: ObservableObject {
     let eventStore: EKEventStore = EKEventStore()
 
-    /// Единствен, споделен инстанс (Singleton)
     static let shared = CalendarViewModel()
-    
-    // Пазим всички календари (за .event)
+
     @Published var allCalendars: [EKCalendar] = []
     
-    // Събития (примерно по ден или по ID)
+    // Събития
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID:  [String: EKEvent] = [:]
-    
+
     // Дали имаме достъп до Календарите
     @Published var accessGranted = false
 
-    /// Тук пазим ID-тата на календари, които потребителят е “разрешил” да се виждат
+    // Тук пазим ID-тата на календари, които потребителят е “разрешил” да се виждат
     @Published var selectedCalendarIDs: Set<String> = []
+
+    // Променлива, в която да запазим UI цвят (UIColor) на първия .local календар
+    @Published var firstLocalCalendarColor: UIColor?
 
     let calendar = Calendar(identifier: .gregorian)
 
-    /// За Combine sink-ове
     private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Инициализатор
     init() {
-        // 1) Зареждаме вече запомнените ID-та от UserDefaults (ако има)
         if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String] {
             self.selectedCalendarIDs = Set(storedArray)
         }
 
-        // 2) Всеки път, когато selectedCalendarIDs се промени, записваме обратно
         $selectedCalendarIDs
             .sink { newValue in
                 let array = Array(newValue)
@@ -76,7 +74,18 @@ final class CalendarViewModel: ObservableObject {
     // MARK: - Зареждане на календари
     func reloadCalendars() {
         let cals = eventStore.calendars(for: .event)
+        
+        // Записваме в allCalendars
         self.allCalendars = cals
+        
+        // Търсим първия локален календар
+        if let firstLocalCal = cals.first(where: { $0.source.sourceType == .local }),
+           let cgColor = firstLocalCal.cgColor {
+            self.firstLocalCalendarColor = UIColor(cgColor: cgColor)
+        } else {
+            // Ако не намерим локален календар, или cgColor е nil
+            self.firstLocalCalendarColor = nil
+        }
     }
 
     // MARK: - Методи за зареждане на събития
@@ -87,7 +96,6 @@ final class CalendarViewModel: ObservableObject {
             return
         }
         
-        // Примерно “ByDay” за 1 месец
         let fetched = eventStore.fetchEventsByDay(
             for: month,
             calendar: calendar,
@@ -111,21 +119,18 @@ final class CalendarViewModel: ObservableObject {
             return
         }
 
-        // Start of year
         var comp = DateComponents()
         comp.year = year
         comp.month = 1
         comp.day = 1
         guard let startOfYear = calendar.date(from: comp) else { return }
 
-        // Start of next year
         var compNext = DateComponents()
         compNext.year = year + 1
         compNext.month = 1
         compNext.day = 1
         guard let startOfNextYear = calendar.date(from: compNext) else { return }
 
-        // Филтрираме само разрешените календари
         let allowedCals = allowedCalendars()
         let predicate = eventStore.predicateForEvents(
             withStart: startOfYear,

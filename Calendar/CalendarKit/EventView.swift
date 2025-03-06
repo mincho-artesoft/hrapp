@@ -3,7 +3,8 @@ import UIKit
 open class EventView: UIView {
     public var descriptor: EventDescriptor?
     public var color = SystemColors.label
-    
+    var viewModel: CalendarViewModel = .shared
+
     public var contentHeight: Double {
         textView.frame.height
     }
@@ -44,7 +45,6 @@ open class EventView: UIView {
     
     public func updateWithDescriptor(event: EventDescriptor) {
         descriptor = event
-        
         guard let wrapper = event as? EKMultiDayWrapper else { return }
         
         let eventCalendar = wrapper.realEvent.calendar
@@ -289,8 +289,18 @@ open class EventView: UIView {
            // Round corners
            layer.cornerRadius = cornerRadius
            clipsToBounds = true
-           alpha = ghostAlpha
-           color = UIColor.systemBlue
+//           alpha = ghostAlpha
+        
+           if viewModel.firstLocalCalendarColor != nil{
+               color = viewModel.firstLocalCalendarColor!
+               backgroundColor = viewModel.firstLocalCalendarColor!.withAlphaComponent(0.3)
+           }else{
+               color = .systemBlue
+               backgroundColor = .systemBlue.withAlphaComponent(0.3)
+           }
+         
+           textView.text = "New event"
+           textView.font = .systemFont(ofSize: 12, weight: .semibold)
            // Hide the resize handles for the ghost
            eventResizeHandles.forEach { $0.isHidden = true }
        }
