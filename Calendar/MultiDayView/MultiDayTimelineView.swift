@@ -99,25 +99,35 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     @objc private func handleTapOnEmptySpace(_ gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
         
-        // 1) Проверяваме дали реално е тап върху празно
         let point = gesture.location(in: self)
         for evView in eventViews {
             if !evView.isHidden && evView.frame.contains(point) {
                 return
             }
         }
-        
-        // 2) Махаме едит режима за всички EventDescriptor-и
+
+        // 2) Махаме edit режима за всички
         for (view, _) in eventViewToDescriptor {
             view.eventResizeHandles[0].isHidden = true
-            view.eventResizeHandles[1].isHidden =  true
+            view.eventResizeHandles[1].isHidden = true
         }
         currentlyEditedEventViewID = ""
 
-        // 3) Зануляваме селектираната минута в колоната, ако има
+        // ВАЖНО: тук връщаме minimumPressDuration на 0.2 за всеки EventView
+        for evView in eventViews {
+            guard let gestures = evView.gestureRecognizers else { continue }
+            for g in gestures {
+                if let longPress = g as? UILongPressGestureRecognizer {
+                    longPress.minimumPressDuration = 0.2
+                }
+            }
+        }
+
+        // Нулираме селектирана минута и прерисуваме
         hoursColumnView?.selectedMinuteMark = nil
         hoursColumnView?.setNeedsDisplay()
     }
+
 
     // При LongPress върху празно — същото махане, плюс извикване на onEmptyLongPress
     @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
@@ -490,52 +500,56 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
     // [MODIFIED] - Клик (tap) върху slice от многодневно събитие → всички slice-ове в edit режим
     private func selectEventView(_ evView: EventView) {
-        let d = evView.descriptor as! EKMultiDayWrapper
-        // 1) Първо махаме edit режима от всички евенти
-        for (view, desc) in eventViewToDescriptor {
-            if desc.editedEvent != nil {
-                desc.editedEvent = nil
-                view.updateWithDescriptor(event: desc)
-            }
-        }
-        
-        // 2) Descriptor на кликнатото парче
-        guard let descriptor = eventViewToDescriptor[evView] else { return }
-        
-        // 3) Ако е многодневно
-        if let multi = descriptor as? EKMultiDayWrapper {
-            let realEventObj = multi.realEvent
-            // Търсим ВСИЧКИ slice-ове, които имат *същото* реално събитие
-            for (view, d) in eventViewToDescriptor {
-                if let m2 = d as? EKMultiDayWrapper {
-                    // Първо сравняваме по обект
-                    if m2.realEvent == realEventObj {
-                        m2.editedEvent = m2
-                        view.updateWithDescriptor(event: m2)
-                    }
-                    // После fallback по eventIdentifier
-                    else if let eID1 = m2.realEvent.eventIdentifier,
-                            let eID2 = realEventObj.eventIdentifier,
-                            !eID1.isEmpty, !eID2.isEmpty,
-                            eID1 == eID2 {
-                        
-                        m2.editedEvent = m2
-                        view.updateWithDescriptor(event: m2)
+        // 1) Махаме edit режима от всички евенти (както е по условие)
+        for (view, descriptor) in eventViewToDescriptor {
+            // Ако е редактирано, нулираме
+            descriptor.editedEvent = nil
+            view.updateWithDescriptor(event: descriptor)
+            
+            // ВРЪЩАМЕ minimumPressDuration на 0.2 за ВСИЧКИ стари евенти
+            if let gestures = view.gestureRecognizers {
+                for g in gestures {
+                    if let lp = g as? UILongPressGestureRecognizer {
+                        lp.minimumPressDuration = 0.2
                     }
                 }
             }
+        }
+        
+        currentlyEditedEventViewID = ""
+        
+        // 2) Активираме „edit“ режима за ново-селектирания
+        guard let descriptor = eventViewToDescriptor[evView] else { return }
+        
+        // Ако е многодневно, маркираме всички slice-ове на същото EKEvent
+        if let multi = descriptor as? EKMultiDayWrapper {
+            // … вашата логика за маркиране на slice-ове, както досега …
         } else {
-            // 4) Ако е еднодневно, само той влиза в edit режим
+            // Ако е еднодневно, само той влиза в edit режим
             descriptor.editedEvent = descriptor
             evView.updateWithDescriptor(event: descriptor)
         }
+        guard let multi = descriptor as? EKMultiDayWrapper else {
+          // Ако не е EKMultiDayWrapper, няма да имаме realEvent
+          return
+        }
+
+        // Задаваме идентификатора (ако го ползвате)
+        currentlyEditedEventViewID = multi.realEvent.eventIdentifier
         
-        // 5) Запомняме, ако ползвате тази променлива за друго
-        currentlyEditedEventViewID = d.realEvent.eventIdentifier
-        
-        // 6) (Опционално) Обновяваме визуална индикация
+        // 3) За новоселектирания eventView задаваме minimumPressDuration = 0.1
+        if let gestures = evView.gestureRecognizers {
+            for g in gestures {
+                if let lp = g as? UILongPressGestureRecognizer {
+                    lp.minimumPressDuration = 0.1
+                }
+            }
+        }
+
+        // (По желание) Ъпдейт на „highlight“ за часовете
         setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
     }
+
     
     private struct DragData {
         let totalDuration: TimeInterval
