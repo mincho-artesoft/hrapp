@@ -8,9 +8,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         let initialFingerPoint: CGPoint
         let anchorOffsetX: CGFloat
         let anchorOffsetY: CGFloat
-        var originalFrame: CGRect
+        let originalFrame: CGRect
     }
-
     
     // MARK: - Local DateFormatter (for debug prints)
     private static let localFormatter: DateFormatter = {
@@ -148,10 +147,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         // MARK: .began
         // ─────────────────────────────────────────────────────────────────────────────
         case .began:
-            // 1) Ensure the press is NOT on an existing event
+            // 1) Make sure it's not on an existing event
             for evView in eventViews {
                 if !evView.isHidden && evView.frame.contains(point) {
-                    // It's on top of an event → do nothing
                     return
                 }
             }
@@ -163,49 +161,39 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 ghostEmptySpaceDescriptor = nil
             }
 
-            // 3) Create a brand-new “ghost” descriptor
-            let ghostDesc = BasicEvent() // or any EventDescriptor you have
+            // 3) Create a descriptor for the ghost:
+            //    Blue background, black text, 1-hour long, etc.
+            let ghostDesc = BasicEvent() // or any custom class conforming to EventDescriptor
             ghostDesc.dateInterval = DateInterval(
                 start: Date(),
-                end: Date().addingTimeInterval(60 * 60) // e.g. 1-hour event
+                end: Date().addingTimeInterval(60 * 60) // 1 hour from now
             )
             ghostDesc.isAllDay = false
             ghostDesc.text = "New Event"
-            ghostDesc.color = .systemPink
-            ghostDesc.backgroundColor = UIColor.systemPink.withAlphaComponent(0.1)
-            ghostDesc.textColor = .label
-            ghostDesc.editedEvent = nil
+            ghostDesc.color = .systemBlue               // Usually the left border
+            ghostDesc.backgroundColor = .systemBlue     // The fill color
+            ghostDesc.textColor = .black                // Black text
 
-            // 4) Create a new ghost EventView
+            // 4) Create a new ghost EventView and update it
             let ghostView = createEventView()
             ghostView.updateWithDescriptor(event: ghostDesc)
-            ghostView.alpha = 0.8
-            addSubview(ghostView)
 
-            // 5) Position it initially at the press location
+            // 5) Optionally apply additional “ghost style” (like rounding) if you want:
+            ghostView.applyGhostStyle()
+
+            // 6) Position the ghost at the press location
             let w: CGFloat = dayColumnWidth - style.eventGap * 2
-              let h: CGFloat = 60
-              let x = max(leadingInsetForHours, point.x - w / 2)
-              let y = point.y
-              let initialFrame = CGRect(x: x, y: y, width: w, height: h)
-              ghostView.frame = initialFrame
+            let h: CGFloat = 60
+            let x = max(leadingInsetForHours, point.x - w / 2)
+            let y = point.y
+            let initialFrame = CGRect(x: x, y: y, width: w, height: h)
+            ghostView.frame = initialFrame
 
-              // (Optional) If you want to highlight the snap line right away:
-              let topPoint = CGPoint(x: initialFrame.midX, y: initialFrame.minY)
-              if let rawDate = dateFromPoint(topPoint) {
-                  let snapped = snapToNearest10Min(rawDate)
-                  setSingle10MinuteMarkFromDate(snapped)
-              }
-
-              // 6) Keep references, store drag info, etc.
-              ghostEmptySpaceView = ghostView
-              ghostEmptySpaceDescriptor = ghostDesc
-
-            // 6) Store references so we can move it around in .changed
+            addSubview(ghostView)
             ghostEmptySpaceView = ghostView
             ghostEmptySpaceDescriptor = ghostDesc
 
-            // 7) Store drag data in the layer (or use a property if you prefer)
+            // 7) Store drag data
             let offsetX = point.x - initialFrame.minX
             let offsetY = point.y - initialFrame.minY
             let ghostDragData = GhostDragData(
@@ -216,7 +204,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             )
             ghostView.layer.setValue(ghostDragData, forKey: DRAG_DATA_KEY)
 
-            // 8) Turn off clipping to allow dragging outside visible area if desired
+            // 8) Turn off clipping if you want to allow ghost to go outside visible rect
             setScrollsClipping(enabled: false)
 
         // ─────────────────────────────────────────────────────────────────────────────
@@ -229,7 +217,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 return
             }
 
-            // 1) Move the ghost FREELY (no snapping applied to its frame).
+            // Move the ghost freely (no direct Y snapping)
             let current = gesture.location(in: self)
             var newFrame = dragData.originalFrame
             let dx = current.x - dragData.initialFingerPoint.x
@@ -237,28 +225,26 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             newFrame.origin.x += dx
             newFrame.origin.y += dy
 
-            // Optional: clamp top/bottom, etc.
+            // Optional clamp top/bottom so it doesn't go off screen
             if newFrame.minY < 0 {
                 newFrame.origin.y = 0
             } else if newFrame.maxY > bounds.height {
                 newFrame.origin.y = bounds.height - newFrame.height
             }
 
-            // 2) Calculate a raw date from the top of the ghost,
-            //    then snap it to 10-min increments for the highlight line.
+            // For the 10-minute highlight line, we do a "snap" of the date
+            // but we do NOT actually move the ghost's frame to that snap,
+            // we just highlight it in the hoursColumnView.
             let topPoint = CGPoint(x: newFrame.midX, y: newFrame.minY)
             if let rawDate = dateFromPoint(topPoint) {
                 let snapped = snapToNearest10Min(rawDate)
-                setSingle10MinuteMarkFromDate(snapped)
-                // This updates your HoursColumnView’s highlight line
+                setSingle10MinuteMarkFromDate(snapped) // draws highlight line
             }
 
-            // 3) Update ghost position to the newFrame (un-snapped).
             ghostView.frame = newFrame
 
-            // 4) Auto-scroll if near edges
+            // If you want auto-scroll near edges:
             updateAutoScrollDirection(for: gesture)
-
 
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
@@ -270,27 +256,19 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             guard let ghostView = ghostEmptySpaceView else { return }
             ghostView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
 
-            // Where did we drop? We'll look at the TOP of the ghost
+            // Where we finally dropped => top of the ghost
             let finalFrame = ghostView.frame
             let topPoint = CGPoint(x: finalFrame.midX, y: finalFrame.minY)
 
-            // Convert that point to a raw Date
+            // Convert to date, remove the ghost from superview
             let rawDate = dateFromPoint(topPoint)
-
-            // Remove ghost from superview
             ghostView.removeFromSuperview()
             ghostEmptySpaceView = nil
             ghostEmptySpaceDescriptor = nil
 
-            // If the drop is in range, then snap
-            if let unwrappedDate = rawDate {
-                // Snap to nearest 10-min boundary
-                let snappedDate = snapToNearest10Min(unwrappedDate)
-
-                // (Optional) You could also check day-column snapping here
-                // if you want the final dayIndex to be pinned.
-
-                // Fire your callback with the *snapped* date:
+            // Snap the final date to 10 mins, call callback
+            if let unwrapped = rawDate {
+                let snappedDate = snapToNearest10Min(unwrapped)
                 onEmptyLongPress?(snappedDate)
             }
 
@@ -298,6 +276,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             break
         }
     }
+
 
     
     // MARK: - Layout
