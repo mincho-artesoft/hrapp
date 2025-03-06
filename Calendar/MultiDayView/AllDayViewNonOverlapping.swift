@@ -31,7 +31,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
     public var fixedHeight: CGFloat = 40
     
     // МАКС броя „редове“ (float), които показваме без пълен скрол. 2.5 = 2 цели + половин.
-    private let maxVisibleRows: CGFloat = 2.5
+    private let maxVisibleRows: CGFloat = 3.5
     
     // Пълна височина (ако няма ограничение). Може да надхвърля fixedHeight.
     public private(set) var contentHeight: CGFloat = 0
@@ -114,7 +114,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         
-        let rowHeight: CGFloat = 24
+        let rowHeight: CGFloat = 22
         let baseY: CGFloat = 6
         let gap = style.eventGap
         
@@ -165,13 +165,14 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         }
         let maxEventsInAnyDay = grouped.values.map { $0.count }.max() ?? 0
         
-        let rowHeight: CGFloat = 24
+        let rowHeight: CGFloat = 22
         let baseY: CGFloat = 6
         
         for r in 0...maxEventsInAnyDay {
             let y = baseY + CGFloat(r) * rowHeight
             ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
-            ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
+            // ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
+            // Ако искате хоризонталната линия да се рисува, разкоментирайте горния ред
         }
         ctx.strokePath()
         ctx.restoreGState()
@@ -276,7 +277,8 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 let midX   = evFrameInTimeline.midX
                 
                 // (d) кой dayIndex?
-                var dayIndex = Int((midX - container.weekView.leadingInsetForHours) / container.weekView.dayColumnWidth)
+                var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
+                                   / container.weekView.dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                 
                 // (e) преобразуваме localY => час
@@ -294,11 +296,19 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 clear10MinuteMark()
             }
             updateAutoScrollDirection(for: gesture)
+            
         case .ended, .cancelled:
+            // 1) Спираме auto-скрол и нулираме посоката
+            stopAutoScroll()
+            autoScrollDirection = .zero
+            
+            // 2) Премахваме маркера за 10-мин. отбелязване
             clear10MinuteMark()
+            
+            // 3) Връщаме clipping-а
             setScrollsClipping(enabled: true)
             
-            // 1) Намираме контейнера
+            // 4) Намираме контейнера
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else {
                 // Ако няма container, връщаме на старо място
                 if let orig = originalFrameForDraggedEvent {
@@ -307,7 +317,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
                 return
             }
             
-            // 2) Къде пускаме?
+            // 5) Къде пускаме?
             let dropLocationInContainer = gesture.location(in: container)
             
             // (A) Ако остава горе (allDay zone)
@@ -510,7 +520,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         }
         let maxEventsInAnyDay = groupedByDay.values.map { $0.count }.max() ?? 0
 
-        let rowHeight: CGFloat = 24
+        let rowHeight: CGFloat = 22
         let base: CGFloat = 10
         
         // Пълната височина (ако няма лимит)
@@ -518,7 +528,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         let fullHeight = base + (rowHeight * fullNeededRows)
         self.contentHeight = max(fullHeight, 40)
         
-        // Видима височина: до 2.5 реда
+        // Видима височина: до 2.5 реда (или 3.5, ако сте задали maxVisibleRows = 3.5)
         let visibleRows = min(fullNeededRows, maxVisibleRows)
         let partialHeight = base + (rowHeight * visibleRows)
         
@@ -536,6 +546,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         container.allDayScrollView.clipsToBounds = enabled
     }
+    
     private func updateAutoScrollDirection(for gesture: UIPanGestureRecognizer) {
         guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
         let location = gesture.location(in: container)
@@ -563,6 +574,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
             stopAutoScroll()
         }
     }
+    
     private func startAutoScrollIfNeeded() {
         if autoScrollDisplayLink == nil {
             autoScrollDisplayLink = CADisplayLink(target: self, selector: #selector(handleAutoScroll))
@@ -574,6 +586,7 @@ public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate
         autoScrollDisplayLink?.invalidate()
         autoScrollDisplayLink = nil
     }
+    
     @objc private func handleAutoScroll() {
         guard autoScrollDirection != .zero,
               let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
