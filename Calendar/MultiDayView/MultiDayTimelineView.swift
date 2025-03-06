@@ -1,6 +1,6 @@
 import UIKit
 
-public final class MultiDayTimelineViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
+public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Local DateFormatter (for debug prints)
     private static let localFormatter: DateFormatter = {

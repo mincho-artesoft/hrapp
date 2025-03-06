@@ -11,7 +11,7 @@ import SwiftUI
 import EventKit
 import EventKitUI
 
-public final class AllDayViewNonOverlapping: UIView, UIGestureRecognizerDelegate {
+public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     
     public var fromDate: Date = Date()
     public var toDate: Date = Date()

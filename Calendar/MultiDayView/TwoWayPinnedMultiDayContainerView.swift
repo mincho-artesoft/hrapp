@@ -58,9 +58,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     public let hoursColumnView = HoursColumnView()
     public let allDayTitleLabel = UILabel()
     public let allDayScrollView = UIScrollView()
-    public let allDayView = AllDayViewNonOverlapping()
+    public let allDayView = AllDayView()
     public let mainScrollView = UIScrollView()
-    public let weekView = MultiDayTimelineViewNonOverlapping()
+    public let weekView = MultiDayTimelineView()
     
     public var onRangeChange: ((Date, Date) -> Void)?
     public var onEventTap: ((EventDescriptor) -> Void)? {

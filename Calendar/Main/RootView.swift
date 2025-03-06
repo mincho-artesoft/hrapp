@@ -101,7 +101,6 @@ struct RootView: View {
                         Text("N/A")
                     }
                 }
-                .navigationTitle("Calendar Demo")
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
                         // “Today”
