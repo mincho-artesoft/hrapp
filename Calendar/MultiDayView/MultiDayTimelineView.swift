@@ -2,6 +2,16 @@ import UIKit
 
 public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
+    private var ghostEmptySpaceView: EventView?
+    private var ghostEmptySpaceDescriptor: EventDescriptor?
+    private struct GhostDragData {
+        let initialFingerPoint: CGPoint
+        let anchorOffsetX: CGFloat
+        let anchorOffsetY: CGFloat
+        var originalFrame: CGRect
+    }
+
+    
     // MARK: - Local DateFormatter (for debug prints)
     private static let localFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -131,28 +141,164 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
 
     // При LongPress върху празно — същото махане, плюс извикване на onEmptyLongPress
     @objc private func handleLongPressOnEmptySpace(_ gesture: UILongPressGestureRecognizer) {
-        guard gesture.state == .began else { return }
         let point = gesture.location(in: self)
-        // Проверяваме да не е върху някое събитие
-        for evView in eventViews {
-            if !evView.isHidden && evView.frame.contains(point) {
+
+        switch gesture.state {
+        // ─────────────────────────────────────────────────────────────────────────────
+        // MARK: .began
+        // ─────────────────────────────────────────────────────────────────────────────
+        case .began:
+            // 1) Ensure the press is NOT on an existing event
+            for evView in eventViews {
+                if !evView.isHidden && evView.frame.contains(point) {
+                    // It's on top of an event → do nothing
+                    return
+                }
+            }
+
+            // 2) Remove old ghost if it exists
+            if let oldGhost = ghostEmptySpaceView {
+                oldGhost.removeFromSuperview()
+                ghostEmptySpaceView = nil
+                ghostEmptySpaceDescriptor = nil
+            }
+
+            // 3) Create a brand-new “ghost” descriptor
+            let ghostDesc = BasicEvent() // or any EventDescriptor you have
+            ghostDesc.dateInterval = DateInterval(
+                start: Date(),
+                end: Date().addingTimeInterval(60 * 60) // e.g. 1-hour event
+            )
+            ghostDesc.isAllDay = false
+            ghostDesc.text = "New Event"
+            ghostDesc.color = .systemPink
+            ghostDesc.backgroundColor = UIColor.systemPink.withAlphaComponent(0.1)
+            ghostDesc.textColor = .label
+            ghostDesc.editedEvent = nil
+
+            // 4) Create a new ghost EventView
+            let ghostView = createEventView()
+            ghostView.updateWithDescriptor(event: ghostDesc)
+            ghostView.alpha = 0.8
+            addSubview(ghostView)
+
+            // 5) Position it initially at the press location
+            let w: CGFloat = dayColumnWidth - style.eventGap * 2
+              let h: CGFloat = 60
+              let x = max(leadingInsetForHours, point.x - w / 2)
+              let y = point.y
+              let initialFrame = CGRect(x: x, y: y, width: w, height: h)
+              ghostView.frame = initialFrame
+
+              // (Optional) If you want to highlight the snap line right away:
+              let topPoint = CGPoint(x: initialFrame.midX, y: initialFrame.minY)
+              if let rawDate = dateFromPoint(topPoint) {
+                  let snapped = snapToNearest10Min(rawDate)
+                  setSingle10MinuteMarkFromDate(snapped)
+              }
+
+              // 6) Keep references, store drag info, etc.
+              ghostEmptySpaceView = ghostView
+              ghostEmptySpaceDescriptor = ghostDesc
+
+            // 6) Store references so we can move it around in .changed
+            ghostEmptySpaceView = ghostView
+            ghostEmptySpaceDescriptor = ghostDesc
+
+            // 7) Store drag data in the layer (or use a property if you prefer)
+            let offsetX = point.x - initialFrame.minX
+            let offsetY = point.y - initialFrame.minY
+            let ghostDragData = GhostDragData(
+                initialFingerPoint: point,
+                anchorOffsetX: offsetX,
+                anchorOffsetY: offsetY,
+                originalFrame: initialFrame
+            )
+            ghostView.layer.setValue(ghostDragData, forKey: DRAG_DATA_KEY)
+
+            // 8) Turn off clipping to allow dragging outside visible area if desired
+            setScrollsClipping(enabled: false)
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // MARK: .changed
+        // ─────────────────────────────────────────────────────────────────────────────
+        case .changed:
+            guard let ghostView = ghostEmptySpaceView,
+                  let dragData = ghostView.layer.value(forKey: DRAG_DATA_KEY) as? GhostDragData
+            else {
                 return
             }
-        }
-        // Ако е празно, зануляваме edit режима навсякъде
-        for (view, descriptor) in eventViewToDescriptor {
-            if descriptor.editedEvent != nil {
-                descriptor.editedEvent = nil
-                view.updateWithDescriptor(event: descriptor)
+
+            // 1) Move the ghost FREELY (no snapping applied to its frame).
+            let current = gesture.location(in: self)
+            var newFrame = dragData.originalFrame
+            let dx = current.x - dragData.initialFingerPoint.x
+            let dy = current.y - dragData.initialFingerPoint.y
+            newFrame.origin.x += dx
+            newFrame.origin.y += dy
+
+            // Optional: clamp top/bottom, etc.
+            if newFrame.minY < 0 {
+                newFrame.origin.y = 0
+            } else if newFrame.maxY > bounds.height {
+                newFrame.origin.y = bounds.height - newFrame.height
             }
-        }
-        currentlyEditedEventViewID = ""
-        
-        // Callback
-        if let tappedDate = dateFromPoint(point) {
-            onEmptyLongPress?(tappedDate)
+
+            // 2) Calculate a raw date from the top of the ghost,
+            //    then snap it to 10-min increments for the highlight line.
+            let topPoint = CGPoint(x: newFrame.midX, y: newFrame.minY)
+            if let rawDate = dateFromPoint(topPoint) {
+                let snapped = snapToNearest10Min(rawDate)
+                setSingle10MinuteMarkFromDate(snapped)
+                // This updates your HoursColumnView’s highlight line
+            }
+
+            // 3) Update ghost position to the newFrame (un-snapped).
+            ghostView.frame = newFrame
+
+            // 4) Auto-scroll if near edges
+            updateAutoScrollDirection(for: gesture)
+
+
+        // ─────────────────────────────────────────────────────────────────────────────
+        // MARK: .ended / .cancelled
+        // ─────────────────────────────────────────────────────────────────────────────
+        case .ended, .cancelled:
+            stopAutoScroll()
+            setScrollsClipping(enabled: true)
+
+            guard let ghostView = ghostEmptySpaceView else { return }
+            ghostView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+
+            // Where did we drop? We'll look at the TOP of the ghost
+            let finalFrame = ghostView.frame
+            let topPoint = CGPoint(x: finalFrame.midX, y: finalFrame.minY)
+
+            // Convert that point to a raw Date
+            let rawDate = dateFromPoint(topPoint)
+
+            // Remove ghost from superview
+            ghostView.removeFromSuperview()
+            ghostEmptySpaceView = nil
+            ghostEmptySpaceDescriptor = nil
+
+            // If the drop is in range, then snap
+            if let unwrappedDate = rawDate {
+                // Snap to nearest 10-min boundary
+                let snappedDate = snapToNearest10Min(unwrappedDate)
+
+                // (Optional) You could also check day-column snapping here
+                // if you want the final dayIndex to be pinned.
+
+                // Fire your callback with the *snapped* date:
+                onEmptyLongPress?(snappedDate)
+            }
+
+        default:
+            break
         }
     }
+
     
     // MARK: - Layout
     public override func layoutSubviews() {
@@ -522,7 +668,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         guard let descriptor = eventViewToDescriptor[evView] else { return }
         
         // Ако е многодневно, маркираме всички slice-ове на същото EKEvent
-        if let multi = descriptor as? EKMultiDayWrapper {
+        if descriptor is EKMultiDayWrapper {
             // … вашата логика за маркиране на slice-ове, както досега …
         } else {
             // Ако е еднодневно, само той влиза в edit режим
@@ -1715,4 +1861,25 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         return nil
     }
     
+}
+
+final class BasicEvent: EventDescriptor {
+    var dateInterval: DateInterval = DateInterval()
+    var isAllDay: Bool = false
+    var text: String = ""
+    var attributedText: NSAttributedString?
+    var lineBreakMode: NSLineBreakMode?
+    var font: UIFont = UIFont.systemFont(ofSize: 12)
+    var color: UIColor = .systemBlue
+    var textColor: UIColor = .label
+    var backgroundColor: UIColor = .systemBlue.withAlphaComponent(0.3)
+    var editedEvent: EventDescriptor?
+
+    func makeEditable() -> Self {
+        editedEvent = self
+        return self
+    }
+    func commitEditing() {
+        editedEvent = nil
+    }
 }
