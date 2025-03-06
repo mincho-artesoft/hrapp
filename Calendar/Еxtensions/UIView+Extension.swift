@@ -10,4 +10,14 @@ extension UIView {
             return nil
         }
     }
+    func findViewController2() -> UIViewController? {
+        var parentResponder: UIResponder? = self
+        while let responder = parentResponder {
+            if let viewController = responder as? UIViewController {
+                return viewController
+            }
+            parentResponder = responder.next
+        }
+        return nil
+    }
 }
