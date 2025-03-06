@@ -195,9 +195,10 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         tapGR.delegate = self
         ev.addGestureRecognizer(tapGR)
         
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
-        pan.delegate = self
-        ev.addGestureRecognizer(pan)
+        let lp = UILongPressGestureRecognizer(target: self, action: #selector(handleEventViewPan(_:)))
+        lp.minimumPressDuration = 0.2
+        lp.delegate = self
+        ev.addGestureRecognizer(lp)
         
         ev.isUserInteractionEnabled = true
         addSubview(ev)
