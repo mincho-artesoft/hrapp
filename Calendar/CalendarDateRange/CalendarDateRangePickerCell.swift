@@ -31,7 +31,7 @@ public class CalendarDateRangePickerCell: UICollectionViewCell {
     func initLabel() {
         label = UILabel(frame: bounds)
         label.center = CGPoint(x: bounds.size.width / 2, y: bounds.size.height / 2)
-        label.font = UIFont(name: "HelveticaNeue", size: 15.0)
+        label.font = UIFont(name: "HelveticaNeue", size: 18.0)
         label.textColor = defaultTextColor
         label.textAlignment = .center
 
