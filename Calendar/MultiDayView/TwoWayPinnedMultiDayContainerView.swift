@@ -364,8 +364,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         hostingView.frame = CGRect(
             x: (backgroundView.bounds.width - 320) / 2,
             y: (backgroundView.bounds.height - 320) / 2,
-            width: 320,
-            height: 320
+            width: 350,
+            height: 350
         )
         backgroundView.addSubview(hostingView)
         

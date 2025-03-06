@@ -122,10 +122,15 @@ public class CalendarDateRangePickerViewController: UIViewController {
 
         // 6) Navbar: monthLabel + стрелка (chevron)
         monthLabel.text = getMonthLabel(date: currentMonth)
+        
+        // >>> CHANGE <<<: Правим шрифта болд:
+        monthLabel.font = UIFont.boldSystemFont(ofSize: 17)  // <<< BOLD FONT
         monthLabel.textColor = .label
         monthLabel.sizeToFit()
 
-        arrowImageView.image = UIImage(systemName: "chevron.right")
+        // >>> CHANGE <<<: Ползваме chevron.right:
+        arrowImageView.image = UIImage(systemName: "chevron.right")  // <<< ICON
+        // По желание може да ползвате .label, .darkGray или друг цвят:
         arrowImageView.tintColor = .systemBlue
         arrowImageView.contentMode = .scaleAspectFit
 
@@ -198,7 +203,6 @@ public class CalendarDateRangePickerViewController: UIViewController {
                 self.monthYearPickerView.select(month: curMonth, year: curYear)
 
                 // Скриваме колекцията, докато е отворен picker-ът
-            
             })
         } else {
             // Анимираме "скриването"
@@ -267,7 +271,6 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
         // Първите 7 са етикети на делнични дни
         if indexPath.item < 7 {
             cell.label.text = getWeekdayLabel(weekday: indexPath.item + 1)
-            // Вместо .gray -> .secondaryLabel
             cell.label.textColor = .secondaryLabel
             return cell
         }
