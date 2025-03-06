@@ -1,11 +1,3 @@
-//
-//  EventView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 20/2/25.
-//
-
-
 import UIKit
 
 open class EventView: UIView {
@@ -51,53 +43,83 @@ open class EventView: UIView {
     }
     
     public func updateWithDescriptor(event: EventDescriptor) {
-        if let attributedText = event.attributedText {
-            textView.attributedText = attributedText
-            textView.setNeedsLayout()
-        } else {
-            textView.text = event.text
-            textView.textColor = event.textColor
-            textView.font = event.font
-        }
-        if let lineBreakMode = event.lineBreakMode {
-            textView.textContainer.lineBreakMode = lineBreakMode
-        }
         descriptor = event
+        
+        // Подгответе шрифт и цвят за текста
+        let textAttributes: [NSAttributedString.Key: Any] = [
+            .font: event.font,
+            .foregroundColor: event.textColor
+        ]
+        
+        // Създаваме NSMutableAttributedString за пълния текст (име + иконка + часове)
+        let finalString = NSMutableAttributedString(
+            string: event.text,
+            attributes: textAttributes
+        )
+        
+        // Нов ред след заглавието
+        finalString.append(NSAttributedString(string: "\n"))
+        
+        // Ако евентът НЕ е целодневен, показваме часовник и ам/пм часове
+        if !event.isAllDay {
+            // Създаваме NSTextAttachment за иконката
+            let clockAttachment = NSTextAttachment()
+            // Може да ползвате SF Symbol "clock" или "clock.fill"
+            clockAttachment.image = UIImage(systemName: "clock")
+            // Лека корекция за по-добро центриране
+            clockAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
+            
+            // Създаваме атрибутиран низ с иконката
+            let clockIcon = NSAttributedString(attachment: clockAttachment)
+            finalString.append(clockIcon)
+            
+            // Форматираме началната/крайната дата с am/pm
+            let dateFormatter = DateFormatter()
+            // Уверяваме се, че показва на английски (am/pm)
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            // "h:mm a" -> 12-часов формат с "am"/"pm"
+            dateFormatter.dateFormat = "h:mm a"
+            
+            let startStr = dateFormatter.string(from: event.dateInterval.start)
+            let endStr   = dateFormatter.string(from: event.dateInterval.end)
+            
+            let timeStr = NSAttributedString(
+                string: " \(startStr) - \(endStr)",
+                attributes: textAttributes
+            )
+            finalString.append(timeStr)
+        }
+        
+        // Задаваме получения атрибутиран текст
+        textView.attributedText = finalString
+        
+        // Останалите настройки (цветове, рамки и т.н.)
         backgroundColor = .clear
         layer.backgroundColor = event.backgroundColor.cgColor
         layer.cornerRadius = 5
         color = event.color
-        eventResizeHandles.forEach{
+        
+        eventResizeHandles.forEach {
             $0.borderColor = event.color
             $0.isHidden = event.editedEvent == nil
         }
-        drawsShadow = event.editedEvent != nil
+        
         setNeedsDisplay()
         setNeedsLayout()
     }
     
     public func animateCreation() {
         transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        func scaleAnimation() {
-            transform = .identity
-        }
         UIView.animate(withDuration: 0.2,
                        delay: 0,
                        usingSpringWithDamping: 0.2,
                        initialSpringVelocity: 10,
                        options: [],
-                       animations: scaleAnimation,
+                       animations: { self.transform = .identity },
                        completion: nil)
     }
     
-    /**
-     Custom implementation of the hitTest method is needed for the tap gesture recognizers
-     located in the ResizeHandleView to work.
-     Since the ResizeHandleView could be outside of the EventView's bounds, the touches to the ResizeHandleView
-     are ignored.
-     In the custom implementation the method is recursively invoked for all of the subviews,
-     regardless of their position in relation to the Timeline's bounds.
-     */
+    // Пример за override на hitTest и т.н.
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         for resizeHandle in eventResizeHandles {
             if let subSubView = resizeHandle.hitTest(convert(point, to: resizeHandle), with: event) {
@@ -109,20 +131,21 @@ open class EventView: UIView {
     
     override open func draw(_ rect: CGRect) {
         super.draw(rect)
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return
-        }
+        guard let context = UIGraphicsGetCurrentContext() else { return }
         context.interpolationQuality = .none
         context.saveGState()
+        
         context.setStrokeColor(color.cgColor)
         context.setLineWidth(3)
         context.setLineCap(.round)
         context.translateBy(x: 0, y: 0.5)
+        
         let leftToRight = UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
-        let x: Double = leftToRight ? 0 : frame.width - 1.0  // 1 is the line width
+        let x: Double = leftToRight ? 0 : frame.width - 1.0
         let y: Double = 0
         let hOffset: Double = 3
         let vOffset: Double = 5
+        
         context.beginPath()
         context.move(to: CGPoint(x: x + 2 * hOffset, y: y + vOffset))
         context.addLine(to: CGPoint(x: x + 2 * hOffset, y: (bounds).height - vOffset))
@@ -130,10 +153,9 @@ open class EventView: UIView {
         context.restoreGState()
     }
     
-    private var drawsShadow = false
-    
     override open func layoutSubviews() {
         super.layoutSubviews()
+        
         textView.frame = {
             if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft {
                 return CGRect(x: bounds.minX, y: bounds.minY, width: bounds.width - 3, height: bounds.height)
@@ -141,48 +163,26 @@ open class EventView: UIView {
                 return CGRect(x: bounds.minX + 8, y: bounds.minY, width: bounds.width - 6, height: bounds.height)
             }
         }()
+        
+        // Ако горната част е извън екрана, компенсираме
         if frame.minY < 0 {
-            var textFrame = textView.frame;
-            textFrame.origin.y = frame.minY * -1;
-            textFrame.size.height += frame.minY;
-            textView.frame = textFrame;
+            var textFrame = textView.frame
+            textFrame.origin.y = frame.minY * -1
+            textFrame.size.height += frame.minY
+            textView.frame = textFrame
         }
+        
         let first = eventResizeHandles.first
         let last = eventResizeHandles.last
         let radius: Double = 40
-        let yPad: Double =  -radius / 2
+        let yPad: Double = -radius / 2
         let width = bounds.width
         let height = bounds.height
         let size = CGSize(width: radius, height: radius)
+        
         first?.frame = CGRect(origin: CGPoint(x: width - radius - layoutMargins.right, y: yPad),
                               size: size)
         last?.frame = CGRect(origin: CGPoint(x: layoutMargins.left, y: height - yPad - radius),
                              size: size)
-        
-        if drawsShadow {
-            applySketchShadow(alpha: 0.13,
-                              blur: 10)
-        }
-    }
-    
-    private func applySketchShadow(
-        color: UIColor = .black,
-        alpha: Float = 0.5,
-        x: Double = 0,
-        y: Double = 2,
-        blur: Double = 4,
-        spread: Double = 0)
-    {
-        layer.shadowColor = color.cgColor
-        layer.shadowOpacity = alpha
-        layer.shadowOffset = CGSize(width: x, height: y)
-        layer.shadowRadius = blur / 2.0
-        if spread == 0 {
-            layer.shadowPath = nil
-        } else {
-            let dx = -spread
-            let rect = bounds.insetBy(dx: dx, dy: dx)
-            layer.shadowPath = UIBezierPath(rect: rect).cgPath
-        }
     }
 }
