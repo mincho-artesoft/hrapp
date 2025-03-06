@@ -157,8 +157,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     return
                 }
             }
-
-            // 2) Remove old ghost if it exists
+            draggingGhosts.removeAll()
+            draggingOriginalAlphas.removeAll()            // 2) Remove old ghost if it exists
             if let oldGhost = ghostEmptySpaceView {
                 oldGhost.removeFromSuperview()
                 ghostEmptySpaceView = nil
@@ -184,7 +184,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
 
             // 5) Optionally apply additional “ghost style” (like rounding) if you want:
             ghostView.applyGhostStyle()
-
+            draggingGhosts[ghostView] = ghostView
             // 6) Position the ghost at the press location
             let w: CGFloat = dayColumnWidth - style.eventGap * 2
             let h: CGFloat = 50
@@ -194,6 +194,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             ghostView.frame = initialFrame
 
             addSubview(ghostView)
+        
             ghostEmptySpaceView = ghostView
             ghostEmptySpaceDescriptor = ghostDesc
 
@@ -210,7 +211,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
 
             // 8) Turn off clipping if you want to allow ghost to go outside visible rect
             setScrollsClipping(enabled: false)
-
+            updateHighlightedColumnsFromGhosts(isResize: false)
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .changed
         // ─────────────────────────────────────────────────────────────────────────────
@@ -249,7 +250,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
 
             // If you want auto-scroll near edges:
             updateAutoScrollDirection(for: gesture)
-
+            updateHighlightedColumnsFromGhosts(isResize: false)
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
@@ -272,7 +273,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             ghostView.removeFromSuperview()
             ghostEmptySpaceView = nil
             ghostEmptySpaceDescriptor = nil
-
+            draggingGhosts.removeAll()
+            draggingOriginalAlphas.removeAll()
+            highlightedDayIndexes.removeAll()
             // Snap the final date to 10 mins, call callback
             if let unwrapped = rawDate {
                 let snappedDate = snapToNearest10Min(unwrapped)
