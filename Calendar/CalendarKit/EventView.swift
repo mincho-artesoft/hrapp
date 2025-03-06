@@ -45,68 +45,98 @@ open class EventView: UIView {
     public func updateWithDescriptor(event: EventDescriptor) {
         descriptor = event
         
-        // Подгответе шрифт и цвят за текста
-        let textAttributes: [NSAttributedString.Key: Any] = [
-            .font: event.font,
-            .foregroundColor: event.textColor
-        ]
-        
-        // Създаваме NSMutableAttributedString за пълния текст (име + иконка + часове)
-        let finalString = NSMutableAttributedString(
-            string: event.text,
-            attributes: textAttributes
-        )
-        
-        // Нов ред след заглавието
-        finalString.append(NSAttributedString(string: "\n"))
-        
-        // Ако евентът НЕ е целодневен, показваме часовник и ам/пм часове
-        if !event.isAllDay {
-            // Създаваме NSTextAttachment за иконката
-            let clockAttachment = NSTextAttachment()
-            // Може да ползвате SF Symbol "clock" или "clock.fill"
-            clockAttachment.image = UIImage(systemName: "clock")
-            // Лека корекция за по-добро центриране
-            clockAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
+        // Проверяваме дали това е EKMultiDayWrapper, за да имаме достъп
+        // до реалния EKEvent (и съответно EKCalendar)
+        if let wrapper = event as? EKMultiDayWrapper {
+            let eventCalendar = wrapper.realEvent.calendar
             
-            // Създаваме атрибутиран низ с иконката
-            let clockIcon = NSAttributedString(attachment: clockAttachment)
-            finalString.append(clockIcon)
+            // Проверка по type (и/или по title):
+            let calType = eventCalendar!.type
             
-            // Форматираме началната/крайната дата с am/pm
-            let dateFormatter = DateFormatter()
-            // Уверяваме се, че показва на английски (am/pm)
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            // "h:mm a" -> 12-часов формат с "am"/"pm"
-            dateFormatter.dateFormat = "h:mm a"
+            // Подготвяме NSTextAttachment при нужда
+            let iconAttachment = NSTextAttachment()
             
-            let startStr = dateFormatter.string(from: event.dateInterval.start)
-            let endStr   = dateFormatter.string(from: event.dateInterval.end)
+            if calType == .birthday {
+                // Показваме подарък
+                iconAttachment.image = UIImage(systemName: "gift.fill")
+            }
+            else if calType == .subscription,
+                    eventCalendar!.title.localizedCaseInsensitiveContains("holiday") {
+                // Показваме звезда
+                iconAttachment.image = UIImage(systemName: "star.fill")
+            }
+            else {
+                // За другите календари – не слагаме иконка
+                iconAttachment.image = nil
+            }
+
             
-            let timeStr = NSAttributedString(
-                string: " \(startStr) - \(endStr)",
-                attributes: textAttributes
-            )
-            finalString.append(timeStr)
+            // Ако имаме иконка, добавяме я в началото
+            // (коригираме bounds за центриране)
+            iconAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
+            
+            // Създаваме атрибутите (шрифт и цвят) за текста:
+            let textAttributes: [NSAttributedString.Key: Any] = [
+                .font: event.font,
+                .foregroundColor: event.textColor
+            ]
+            
+            // Съставяме финалния низ
+            let finalString = NSMutableAttributedString()
+            
+            if iconAttachment.image != nil {
+                finalString.append(NSAttributedString(attachment: iconAttachment))
+                finalString.append(NSAttributedString(string: " ", attributes: textAttributes))
+            }
+            
+            // Добавяме заглавието на събитието
+            finalString.append(NSAttributedString(string: wrapper.text, attributes: textAttributes))
+            
+            // Нов ред
+            finalString.append(NSAttributedString(string: "\n"))
+            
+            // Ако събитието не е целодневно – добавяме часовника + времето
+            if !event.isAllDay {
+                let clockAttachment = NSTextAttachment()
+                clockAttachment.image = UIImage(systemName: "clock")
+                clockAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
+                finalString.append(NSAttributedString(attachment: clockAttachment))
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "h:mm a"
+                
+                let startStr = dateFormatter.string(from: wrapper.dateInterval.start)
+                let endStr   = dateFormatter.string(from: wrapper.dateInterval.end)
+                
+                finalString.append(
+                    NSAttributedString(
+                        string: " \(startStr) - \(endStr)",
+                        attributes: textAttributes
+                    )
+                )
+            }
+            
+            // Задаваме получения атрибутиран текст в textView
+            textView.attributedText = finalString
+            
+            // Цветове и други UI-настройки
+            backgroundColor = .clear
+            layer.backgroundColor = event.backgroundColor.cgColor
+            layer.cornerRadius = 5
+            color = event.color
+            
+            eventResizeHandles.forEach {
+                $0.borderColor = event.color
+                $0.isHidden = event.editedEvent == nil
+            }
+            
+            setNeedsDisplay()
+            setNeedsLayout()
         }
-        
-        // Задаваме получения атрибутиран текст
-        textView.attributedText = finalString
-        
-        // Останалите настройки (цветове, рамки и т.н.)
-        backgroundColor = .clear
-        layer.backgroundColor = event.backgroundColor.cgColor
-        layer.cornerRadius = 5
-        color = event.color
-        
-        eventResizeHandles.forEach {
-            $0.borderColor = event.color
-            $0.isHidden = event.editedEvent == nil
-        }
-        
-        setNeedsDisplay()
-        setNeedsLayout()
     }
+
+
     
     public func animateCreation() {
         transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -185,4 +215,11 @@ open class EventView: UIView {
         last?.frame = CGRect(origin: CGPoint(x: layoutMargins.left, y: height - yPad - radius),
                              size: size)
     }
+}
+public enum EKCalendarType : Int {
+    case local         = 0
+    case calDAV        = 1
+    case exchange      = 2
+    case subscription  = 3
+    case birthday      = 4
 }

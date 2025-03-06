@@ -191,9 +191,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         cornerView.layer.zPosition = 5
         addSubview(cornerView)
         
-        allDayTitleLabel.text = "all-day"
+        allDayTitleLabel.text = "  all-day"
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         allDayTitleLabel.layer.zPosition = 6
+        allDayTitleLabel.layer.borderWidth = 1.5
+        allDayTitleLabel.layer.borderColor = UIColor.systemGray5.cgColor
         addSubview(allDayTitleLabel)
         
         // „Нав-бар“
