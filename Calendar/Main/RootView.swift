@@ -80,9 +80,15 @@ struct RootView: View {
                             eventStore: CalendarViewModel.shared.eventStore,
                             isSingleDay: false
                         ) { tappedDay in
-                            pinnedFromDateMulti = tappedDay
-                            pinnedToDateMulti   = Calendar.current.date(byAdding: .day, value: 7, to: tappedDay)!
-                            loadMultiDayEvents()
+                            // Когато натиснем върху ден от DaysHeaderView:
+                            // 1) Превключваме директно на Single Day,
+                            //    като задаваме "tappedDay" и в двата state-а
+                            pinnedFromDateSingle = tappedDay
+                            pinnedToDateSingle   = tappedDay
+                            loadSingleDayEvents()
+                            
+                            // 2) Преминаваме към таба "Day"
+                            selectedTab = 1
                         }
                         .onAppear {
                             loadMultiDayEvents()
