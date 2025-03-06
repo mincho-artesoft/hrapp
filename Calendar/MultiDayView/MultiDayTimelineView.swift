@@ -1417,10 +1417,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 if d.isTop {
                     if ghostDayIndex <= boundaryDayIndex {
                         let isHidden = ghostView.isHidden
-                        draggingGhosts.removeValue(forKey: ghostView)
+                        ghostView.isHidden = true
                         if isHidden !=  ghostView.isHidden{
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             d.totalDay = d.totalDay - 1
                         }
                     } else {
@@ -1433,11 +1432,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 } else {
                     if ghostDayIndex >= boundaryDayIndex {
                         let isHidden = ghostView.isHidden
-                        draggingGhosts.removeValue(forKey: ghostView)
                         ghostView.isHidden = true
-                        if isHidden != ghostView.isHidden{
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                        if isHidden !=  ghostView.isHidden{
+                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
                             d.totalDay = d.totalDay - 1
                         }
                     } else {
@@ -1859,61 +1856,48 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
 
     private func updateHighlightedColumnsFromGhosts(isResize: Bool) {
         var newHighlighted = Set<Int>()
-        for ghostView in draggingGhosts.values {
-            guard let di = dayIndexForFrame(ghostView.frame) else { continue }
+        for (_, ghostView) in draggingGhosts {
             
-            // Ако е ресайз (дръпване на горна/долна дръжка), изцяло осветяваме деня
-            // Ако е преместване, може да решите да осветите и съседния ден (примерно di-1),
-            // или само текущия, зависи от логиката ви:
-            if isResize {
-                newHighlighted.insert(di)
+            // 1) Ако ghost-ът е add-нат в контейнера, конвертираме frame-а му към self:
+            let ghostFrameInTimeline: CGRect
+            if ghostView.superview !== self, let container = ghostView.superview {
+                ghostFrameInTimeline = container.convert(ghostView.frame, to: self)
             } else {
-                newHighlighted.insert(di-1)
-                // или, ако искате и съседния:
-                // newHighlighted.insert(di - 1)
+                ghostFrameInTimeline = ghostView.frame
+            }
+            
+            // 2) Едва сега намираме dayIndex:
+            guard let di = dayIndexForFrame(ghostFrameInTimeline) else { continue }
+            
+            // 3) Ако не е скрит => добавяме го към highlightedDayIndexes
+            if !ghostView.isHidden {
+                newHighlighted.insert(di)
             }
         }
         
-        // --- HAPTIC Feedback при преминаване в нова колона ---
-        // 1) Проверяваме какво (ако нещо) се е променило
+        // Ако ви трябва haptic при влизане в нова колона:
         let newlyAddedIndexes = newHighlighted.subtracting(oldHighlightedDayIndexes)
         if !newlyAddedIndexes.isEmpty {
-            // Изпълняваме лека вибрация веднъж, ако има някакви „нови“ колони
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
-        // Може също да проверявате ако е празен `newlyAddedIndexes`,
-        // но има `removedIndexes = oldHighlightedDayIndexes.subtracting(newHighlighted)`,
-        // да пуснете друг тип вибрация (зависи от нуждата)
-
-        // 2) Запомняме новия сет като „стар“
         oldHighlightedDayIndexes = newHighlighted
 
-        // 3) Накрая прилагаме промените
         highlightedDayIndexes = newHighlighted
         setNeedsDisplay()
     }
 
 
+
+
     /// Връща dayIndex, върху който попада `frame` (според midX), или nil, ако е извън диапазона.
     private func dayIndexForFrame(_ frame: CGRect) -> Int? {
-        // Средата на вюто
         let midX = frame.midX
-        
-        // Колко колони са минали от `leadingInsetForHours` досега:
-        // (т.е. ако midX е точно 0.7 * ширината на колоната, това е dayIndex = 0)
         let rawIndex = (midX - leadingInsetForHours) / dayColumnWidth
-        
-        // Правим floor, за да не „прескочи“ на следващата колона в момент,
-        // когато midX е точно на границата (или с плаваща запетая малко над нея).
         let i = Int(floor(rawIndex))
-        
-        // Пазим се да не излезем извън 0...dayCount-1
         if i < 0 || i >= dayCount {
             return nil
         }
         return i
     }
-
 }
 
