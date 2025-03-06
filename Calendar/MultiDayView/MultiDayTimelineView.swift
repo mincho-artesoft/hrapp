@@ -1,7 +1,8 @@
 import UIKit
 
 public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
-    
+    private var highlightedDayIndexes: Set<Int> = []
+
     private var ghostEmptySpaceView: EventView?
     private var ghostEmptySpaceDescriptor: EventDescriptor?
     private struct GhostDragData {
@@ -147,6 +148,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         // MARK: .began
         // ─────────────────────────────────────────────────────────────────────────────
         case .began:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
             // 1) Make sure it's not on an existing event
             for evView in eventViews {
                 if !evView.isHidden && evView.frame.contains(point) {
@@ -250,6 +254,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
         case .ended, .cancelled:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
             stopAutoScroll()
             setScrollsClipping(enabled: true)
 
@@ -708,6 +715,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         var minsingEvent:  [EventView] = []
         switch gesture.state {
         case .began:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
             // Винаги влизаме в edit mode при задържане,
             // независимо върху коя част е натиснато.
             selectEventView(evView)
@@ -832,7 +842,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 originalStart: descriptor.dateInterval.start
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
-            
+            updateHighlightedColumnsFromGhosts(isResize: false)
         case .changed:
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
             
@@ -884,10 +894,13 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     }
                 }
             }
-            
+            updateHighlightedColumnsFromGhosts(isResize: false)
             updateAutoScrollDirection(for: gesture)
             
         case .ended, .cancelled:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
             for realSliceView in minsingEvent {
                 eventViewToDescriptor.removeValue(forKey: realSliceView)
             }
@@ -975,7 +988,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
           
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             eventViewToDescriptor.removeAll()
-            setNeedsLayout()
+            highlightedDayIndexes.removeAll()
+            setNeedsDisplay()
             
         default:
             break
@@ -1013,6 +1027,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         // MARK: .began
         // ----------------------------------------------------------------------------------
         case .began:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
             let realStart: Date
             let realEnd: Date
             if let multi = desc as? EKMultiDayWrapper {
@@ -1132,36 +1149,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             }else{
                 originalDayIndex = dayIndexFor(dateInterval.end)
             }
-//            if let multi = desc as? EKMultiDayWrapper {
-//                var isCurrentlyEditedEventView = false
-//                for realSliceView in slices {
-//                    if  currentlyEditedEventView == realSliceView{
-//                        isCurrentlyEditedEventView = true
-//                    }
-//                }
-//                if isCurrentlyEditedEventView{
-//                    for (_,ghost) in draggingGhosts {
-//                        let dayIndexRealStart = dayIndexFor(realStart)
-//                        let dayIndexrealEnd = dayIndexFor(realEnd)
-//                        let firstDayIndex = dayIndexFor(ghost.descriptor!.dateInterval.start)
-//                        let lastDayIndex  = dayIndexFor(ghost.descriptor!.dateInterval.end)
-//                        
-//                        if dayIndexRealStart == dayIndexrealEnd {
-//                            // Реално е многодневно, но start/end попадат в един ден
-//                            ghost.eventResizeHandles[0].isHidden = false
-//                            ghost.eventResizeHandles[1].isHidden = false
-//                        } else if dayIndexRealStart == firstDayIndex {
-//                            // Показваме горната дръжка САМО ако е в edit режим
-//                            ghost.eventResizeHandles[0].isHidden = false
-//                            ghost.eventResizeHandles[1].isHidden = true
-//                        } else if dayIndexrealEnd == lastDayIndex {
-//                            // Показваме долната дръжка САМО ако е в edit режим
-//                            ghost.eventResizeHandles[0].isHidden = true
-//                            ghost.eventResizeHandles[1].isHidden = false
-//                        }
-//                    }
-//                }
-//            }
             
             // NEW: Добавяме lastDayIndex: originalDayIndex
             let d = ResizeDragData(
@@ -1179,7 +1166,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             )
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             
-            
+            updateHighlightedColumnsFromGhosts(isResize: true)
         // ----------------------------------------------------------------------------------
         // MARK: .changed
         // ----------------------------------------------------------------------------------
@@ -1430,8 +1417,10 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 if d.isTop {
                     if ghostDayIndex <= boundaryDayIndex {
                         let isHidden = ghostView.isHidden
-                        ghostView.isHidden = true
+                        draggingGhosts.removeValue(forKey: ghostView)
                         if isHidden !=  ghostView.isHidden{
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
                             d.totalDay = d.totalDay - 1
                         }
                     } else {
@@ -1444,8 +1433,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 } else {
                     if ghostDayIndex >= boundaryDayIndex {
                         let isHidden = ghostView.isHidden
+                        draggingGhosts.removeValue(forKey: ghostView)
                         ghostView.isHidden = true
-                        if isHidden !=  ghostView.isHidden{
+                        if isHidden != ghostView.isHidden{
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
                             d.totalDay = d.totalDay - 1
                         }
                     } else {
@@ -1458,13 +1450,16 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     }
                 }
             }
-            
+            updateHighlightedColumnsFromGhosts(isResize: true)
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
 
         // ----------------------------------------------------------------------------------
         // MARK: .ended / .cancelled
         // ----------------------------------------------------------------------------------
         case .ended, .cancelled:
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
             stopAutoScroll()
             setScrollsClipping(enabled: true)
             hoursColumnView?.selectedMinuteMark = nil
@@ -1533,7 +1528,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             onEventDragResizeEnded?(desc, newEdge)
             eventViewToDescriptor.removeAll()
             // Обновяваме layout
-            setNeedsLayout()
+            highlightedDayIndexes.removeAll()
+            setNeedsDisplay()
             
             
         default:
@@ -1589,16 +1585,34 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Drawing
     public override func draw(_ rect: CGRect) {
-        super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
         
         let totalWidth = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
         
-        // Horizontal hour lines
+        // 1) Изпълваме фона с цвета на фоновия UIView (ако държите, може да го пропуснете,
+        //    понеже backgroundColor = .systemGray6 е вече зададено).
+        //    Ако искате да сте сигурни, че винаги се "fill"-ва, може да го направите така:
+        // ctx.setFillColor(UIColor.systemGray6.cgColor)
+        // ctx.fill(rect)
+        
+        // 2) Оцветяваме "подсветените" колони (highlightedDayIndexes)
+        for dayIndex in 0..<dayCount {
+            let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+            let colRect = CGRect(x: colX, y: 0, width: dayColumnWidth, height: bounds.height)
+            
+            if highlightedDayIndexes.contains(dayIndex) {
+                // Изберете си цвят/прозрачност по ваш вкус:
+                ctx.setFillColor(UIColor.systemGray4.withAlphaComponent(0.8).cgColor)
+                ctx.fill(colRect)
+            }
+        }
+        
+        // 3) Хоризонтални линии (часовете)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
+        
         var lastY: CGFloat = 0
         for hour in 0...24 {
             let y = topMargin + CGFloat(hour) * hourHeight
@@ -1609,16 +1623,17 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         ctx.strokePath()
         ctx.restoreGState()
         
-        // Vertical day lines
+        // 4) Вертикални линии (гранични на колоните)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
         
-        // left boundary
+        // Лявата граница
         ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
         ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
         
+        // Вертикалните за всеки ден
         for i in 0...dayCount {
             let colX = leadingInsetForHours + CGFloat(i) * dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
@@ -1627,9 +1642,10 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         ctx.strokePath()
         ctx.restoreGState()
         
-        // Червената линия "сега"
+        // 5) Червената линия „сега“ (ако попада в диапазона)
         drawCurrentTimeLine(ctx: ctx)
     }
+
     
     private func drawCurrentTimeLine(ctx: CGContext) {
         let now = Date()
@@ -1839,6 +1855,65 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         }
         return nil
     }
-    
+    private var oldHighlightedDayIndexes = Set<Int>()
+
+    private func updateHighlightedColumnsFromGhosts(isResize: Bool) {
+        var newHighlighted = Set<Int>()
+        for ghostView in draggingGhosts.values {
+            guard let di = dayIndexForFrame(ghostView.frame) else { continue }
+            
+            // Ако е ресайз (дръпване на горна/долна дръжка), изцяло осветяваме деня
+            // Ако е преместване, може да решите да осветите и съседния ден (примерно di-1),
+            // или само текущия, зависи от логиката ви:
+            if isResize {
+                newHighlighted.insert(di)
+            } else {
+                newHighlighted.insert(di-1)
+                // или, ако искате и съседния:
+                // newHighlighted.insert(di - 1)
+            }
+        }
+        
+        // --- HAPTIC Feedback при преминаване в нова колона ---
+        // 1) Проверяваме какво (ако нещо) се е променило
+        let newlyAddedIndexes = newHighlighted.subtracting(oldHighlightedDayIndexes)
+        if !newlyAddedIndexes.isEmpty {
+            // Изпълняваме лека вибрация веднъж, ако има някакви „нови“ колони
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+        }
+        // Може също да проверявате ако е празен `newlyAddedIndexes`,
+        // но има `removedIndexes = oldHighlightedDayIndexes.subtracting(newHighlighted)`,
+        // да пуснете друг тип вибрация (зависи от нуждата)
+
+        // 2) Запомняме новия сет като „стар“
+        oldHighlightedDayIndexes = newHighlighted
+
+        // 3) Накрая прилагаме промените
+        highlightedDayIndexes = newHighlighted
+        setNeedsDisplay()
+    }
+
+
+    /// Връща dayIndex, върху който попада `frame` (според midX), или nil, ако е извън диапазона.
+    private func dayIndexForFrame(_ frame: CGRect) -> Int? {
+        // Средата на вюто
+        let midX = frame.midX
+        
+        // Колко колони са минали от `leadingInsetForHours` досега:
+        // (т.е. ако midX е точно 0.7 * ширината на колоната, това е dayIndex = 0)
+        let rawIndex = (midX - leadingInsetForHours) / dayColumnWidth
+        
+        // Правим floor, за да не „прескочи“ на следващата колона в момент,
+        // когато midX е точно на границата (или с плаваща запетая малко над нея).
+        let i = Int(floor(rawIndex))
+        
+        // Пазим се да не излезем извън 0...dayCount-1
+        if i < 0 || i >= dayCount {
+            return nil
+        }
+        return i
+    }
+
 }
 
