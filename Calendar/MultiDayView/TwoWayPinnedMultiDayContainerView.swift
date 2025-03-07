@@ -26,7 +26,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         btn.setTitle("Няма избран период", for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         btn.layer.cornerRadius = 8
-        btn.backgroundColor = .systemGray5
+        btn.backgroundColor = .systemGray4
         btn.setTitleColor(.label, for: .normal)
         btn.setTitleColor(.systemBlue, for: .selected)
         return btn
