@@ -959,6 +959,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                        }
                    }
         case .ended, .cancelled:
+            
             if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
                       container.allDayTitleLabel.textColor = .label
                   }
@@ -1049,7 +1050,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     onEventConvertToAllDay?(descriptor, dayIndex)
                 }
             }
-          
+            container.allDayView.clearAllHighlights()
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             eventViewToDescriptor.removeAll()
             highlightedDayIndexes.removeAll()
