@@ -282,14 +282,10 @@ open class EventView: UIView {
             size: size
         )
     }
-    func applyGhostStyle(
-           cornerRadius: CGFloat = 5,
-           ghostAlpha: CGFloat = 0.8
-       ) {
+    func applyGhostStyle(cornerRadius: CGFloat = 5) {
            // Round corners
            layer.cornerRadius = cornerRadius
            clipsToBounds = true
-//           alpha = ghostAlpha
         
            if viewModel.firstLocalCalendarColor != nil{
                color = viewModel.firstLocalCalendarColor!
@@ -304,4 +300,25 @@ open class EventView: UIView {
            // Hide the resize handles for the ghost
            eventResizeHandles.forEach { $0.isHidden = true }
        }
+    
+    public func applyGhostStyleAllDay(event: EventDescriptor) {
+        
+        layer.cornerRadius = 5
+        clipsToBounds = true
+        
+        color = event.color
+        backgroundColor = event.color.withAlphaComponent(0.3)
+        
+        textView.text = event.text
+        textView.font = .systemFont(ofSize: 12, weight: .semibold)
+        // Hide the resize handles for the ghost
+        eventResizeHandles.forEach { $0.isHidden = true }
+                
+        textView.frame = CGRect(
+            x: bounds.minX,
+            y: bounds.minY - 16,
+            width: bounds.width - 6,
+            height: bounds.height
+        )
+    }
 }

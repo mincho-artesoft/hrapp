@@ -12,7 +12,8 @@ import EventKit
 import EventKitUI
 
 public final class AllDayView: UIView, UIGestureRecognizerDelegate {
-    
+    private var additionalGhostView: EventView?
+
     public var fromDate: Date = Date()
     public var toDate: Date = Date()
     public var style = TimelineStyle()
@@ -234,16 +235,23 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
               let descriptor = eventViewToDescriptor[tappedView] else { return }
         onEventTap?(descriptor)
     }
-    
+    private struct GhostDragData {
+        let initialFingerPoint: CGPoint
+        let anchorOffsetX: CGFloat
+        let anchorOffsetY: CGFloat
+        let originalFrame: CGRect
+    }
+
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
-        
+        let point = gesture.location(in: self)
         switch gesture.state {
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .began
         // ─────────────────────────────────────────────────────────────────────────────
         case .began:
+           
             // Отключваме scrolling/clipping, за да може евентът да се движи
             setScrollsClipping(enabled: false)
             // Записваме началната позиция на пръста и оригиналния frame
@@ -283,6 +291,42 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
             }
             // Clear 10-minute marker
             clear10MinuteMark()
+            
+            
+            let ghostDesc = BasicEvent() // or any custom class conforming to EventDescriptor
+            ghostDesc.dateInterval = DateInterval(
+                start: Date(),
+                end: Date().addingTimeInterval(60 * 60) // 1 hour from now
+            )
+            ghostDesc.isAllDay = false
+            ghostDesc.text = "New Event"
+            ghostDesc.color = .systemBlue               // Usually the left border
+            ghostDesc.backgroundColor = .systemBlue     // The fill color
+            ghostDesc.textColor = .black                // Black text
+            
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
+
+            // 4) Create a new ghost EventView and update it
+            let ghostView = createEventView()
+
+            ghostView.updateWithDescriptor(event: ghostDesc)
+            ghostView.applyGhostStyleAllDay(event: descriptor)
+
+            // 5) Optionally apply additional “ghost style” (like rounding) if you want:
+            additionalGhostView = ghostView
+            // 6) Position the ghost at the press location
+            let w: CGFloat = dayColumnWidth - style.eventGap * 2
+            let h: CGFloat = 50
+            let x = max(leadingInsetForHours, point.x - w / 2)
+            let y = point.y - 25
+            let initialFrame = CGRect(x: x, y: y, width: w, height: h)
+            ghostView.frame = initialFrame
+            ghostView.isHidden = true
+            addSubview(ghostView)
+
+//////////aaaaaaaa
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .changed
         // ─────────────────────────────────────────────────────────────────────────────
@@ -306,7 +350,10 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                     }
                 }
             }
-            
+            var additionalnewFrame = additionalGhostView!.layer.frame
+            additionalnewFrame.origin.x = loc.x - offset.x
+            additionalnewFrame.origin.y = loc.y - offset.y
+            additionalGhostView?.frame = additionalnewFrame
             // 3) Проверяваме къде сме спрямо TwoWayPinnedMultiDayContainerView
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
             let dropLocationInContainer = gesture.location(in: container)
@@ -340,9 +387,17 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 container.weekView.clearAllHighlights()
                 // Clear 10-minute marker
                 clear10MinuteMark()
+                for (otherV, _) in multiDayDraggingOriginalFrames {
+                        otherV.isHidden = false
+                }
+                additionalGhostView!.isHidden = true
             }
             // Otherwise, if the user is dragging over the main timeline area
             else if isOverMainScroll {
+                for (otherV, _) in multiDayDraggingOriginalFrames {
+                        otherV.isHidden = true
+                }
+                additionalGhostView!.isHidden = false
                 // Clear highlight in AllDayView
                 clearAllHighlights()
                 
@@ -407,6 +462,8 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
         case .ended, .cancelled:
+            additionalGhostView!.isHidden = true
+            additionalGhostView = nil
             if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
                       container.allDayTitleLabel.textColor = .label
                   }
