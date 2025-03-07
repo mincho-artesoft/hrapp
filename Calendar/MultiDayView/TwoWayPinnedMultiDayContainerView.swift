@@ -47,9 +47,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     fileprivate let daysHeaderView = DaysHeaderView()
     fileprivate let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
+    
+    // MARK: - allDay label + scrollview
     public let allDayTitleLabel = UILabel()
+    // Вместо рамка навсякъде, ще слагаме само две линии:
+    private let topBorder = CALayer()
+    private let bottomBorder = CALayer()
+    
     public let allDayScrollView = UIScrollView()
     public let allDayView = AllDayView()
+    
     public let mainScrollView = UIScrollView()
     public let weekView = MultiDayTimelineView()
     
@@ -182,12 +189,22 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         cornerView.layer.zPosition = 5
         addSubview(cornerView)
         
+        // Маркираме заглавието на all-day реда
         allDayTitleLabel.text = "  all-day"
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         allDayTitleLabel.layer.zPosition = 6
-        allDayTitleLabel.layer.borderWidth = 1.5
-        allDayTitleLabel.layer.borderColor = UIColor.systemGray5.cgColor
+        // Махаме borderWidth/borderColor, за да не рисува рамка от всички страни:
+        // allDayTitleLabel.layer.borderWidth = 0.5
+        // allDayTitleLabel.layer.borderColor = UIColor.lightGray.cgColor
+        
         addSubview(allDayTitleLabel)
+        
+        // Добавяме топ и долна линия за allDayTitleLabel
+        topBorder.backgroundColor = UIColor.lightGray.cgColor
+        allDayTitleLabel.layer.addSublayer(topBorder)
+        
+        bottomBorder.backgroundColor = UIColor.lightGray.cgColor
+        allDayTitleLabel.layer.addSublayer(bottomBorder)
         
         // „Нав-бар“
         let navBar = UIView()
@@ -417,6 +434,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             isInSecondPass = false
         }
         
+        // Търсим "navBar", който е първи сабвю със zero origin и височина = navBarHeight
         guard let navBar = subviews.first(where: {
             $0.frame.origin == .zero && $0.bounds.height == navBarHeight
         }) else {
@@ -484,6 +502,24 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayFullH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
         
+        // Обновяваме рамките на topBorder/bottomBorder
+        let superThin = 1 / UIScreen.main.scale
+        topBorder.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: allDayTitleLabel.bounds.width,
+            height: superThin
+        )
+        bottomBorder.frame = CGRect(
+            x: 0,
+            y: allDayTitleLabel.bounds.height - superThin,
+            width: allDayTitleLabel.bounds.width,
+            height: superThin
+        )
+
+
+        
+        // Настройваме offset на allDayScrollView при промяна на съдържанието
         let maxOffsetY = max(0, allDayScrollView.contentSize.height - allDayScrollView.bounds.height)
         var newOffset = oldOffset
         if newOffset.y < 0 { newOffset.y = 0 }

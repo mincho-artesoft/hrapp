@@ -49,6 +49,7 @@ open class EventView: UIView {
         
         let eventCalendar = wrapper.realEvent.calendar
         let calType = eventCalendar?.type ?? .local
+        
         // Подготвяме NSTextAttachment за иконки
         let iconAttachment = NSTextAttachment()
         let calendarAttachment = NSTextAttachment()
@@ -79,9 +80,10 @@ open class EventView: UIView {
         iconAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
 
         // Създаваме атрибутите за текста
+        // Тук сменяме .foregroundColor от event.textColor на event.color.withAlphaComponent(1)
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: event.font,
-            .foregroundColor: event.textColor
+            .foregroundColor: event.color.withAlphaComponent(1) // <-- Винаги цвета на event
         ]
 
         // Финален атрибутиран низ
@@ -108,7 +110,8 @@ open class EventView: UIView {
         // Ако не е целодневно, добавяме часовник и времеви интервал (с проверка за multi-day)
         if !event.isAllDay {
             let clockAttachment = NSTextAttachment()
-            clockAttachment.image = UIImage(systemName: "clock")
+            clockAttachment.image = UIImage(systemName: "clock")?
+                .withTintColor(event.color, renderingMode: .alwaysOriginal)
             clockAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
             finalString.append(NSAttributedString(attachment: clockAttachment))
             
@@ -119,11 +122,9 @@ open class EventView: UIView {
             let startDate = wrapper.realEvent.startDate
             let endDate   = wrapper.realEvent.endDate ?? startDate
             
-            // Проверяваме дали обхваща повече от един календарен ден:
             let calendar = Calendar.current
             let isSpanningMultipleDays = !calendar.isDate(startDate!, inSameDayAs: endDate!)
             
-            // Ако е над 1 ден: "MMM d, h:mm a", иначе само "h:mm a"
             if isSpanningMultipleDays {
                 dateFormatter.dateFormat = "MMM d h:mm a"
             } else {
@@ -170,7 +171,6 @@ open class EventView: UIView {
                        completion: nil)
     }
     
-    // Пример за override на hitTest и т.н.
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         for resizeHandle in eventResizeHandles {
             if let subSubView = resizeHandle.hitTest(convert(point, to: resizeHandle), with: event) {
@@ -217,17 +217,14 @@ open class EventView: UIView {
         // --- Отклонение наляво за all-day (както преди) ---
         let leftPadding: CGFloat
         if let descriptor = descriptor, descriptor.isAllDay {
-            // Ако е allDay, даваме по-малък offset, за да не стои прекалено вдясно.
             leftPadding = -3
         } else {
-            // Ако не е allDay, оставяме "стандартния" offset.
             leftPadding = 8
         }
         
         // --- Отклонение по вертикала за all-day ---
         let topPadding: CGFloat
         if let descriptor = descriptor, descriptor.isAllDay {
-            // Ако е allDay, текстът да започне малко по-високо
             topPadding = -6
         } else {
             topPadding = 0
@@ -281,27 +278,30 @@ open class EventView: UIView {
             size: size
         )
     }
+    
     func applyGhostStyle(cornerRadius: CGFloat = 5) {
-           // Round corners
-           layer.cornerRadius = cornerRadius
-           clipsToBounds = true
+        // Round corners
+        layer.cornerRadius = cornerRadius
+        clipsToBounds = true
         
-           if viewModel.firstLocalCalendarColor != nil{
-               color = viewModel.firstLocalCalendarColor!
-               backgroundColor = viewModel.firstLocalCalendarColor!.withAlphaComponent(0.3)
-           }else{
-               color = .systemBlue
-               backgroundColor = .systemBlue.withAlphaComponent(0.3)
-           }
-         
-           textView.text = "New event"
-           textView.font = .systemFont(ofSize: 12, weight: .semibold)
-           // Hide the resize handles for the ghost
-           eventResizeHandles.forEach { $0.isHidden = true }
-       }
+        if let firstColor = viewModel.firstLocalCalendarColor {
+            color = firstColor
+            backgroundColor = firstColor.withAlphaComponent(0.3)
+        } else {
+            color = .systemBlue
+            backgroundColor = .systemBlue.withAlphaComponent(0.3)
+        }
+        
+        // Тук сменяме цвета на текста
+        textView.text = "New event"
+        textView.font = .systemFont(ofSize: 12, weight: .semibold)
+        textView.textColor = color.withAlphaComponent(1) // <-- Винаги цвета на event (или първия локален календар)
+        
+        // Hide the resize handles for the ghost
+        eventResizeHandles.forEach { $0.isHidden = true }
+    }
     
     public func applyGhostStyleAllDay(event: EventDescriptor) {
-        
         layer.cornerRadius = 5
         clipsToBounds = true
         
@@ -310,10 +310,13 @@ open class EventView: UIView {
         
         textView.text = event.text
         textView.font = .systemFont(ofSize: 12, weight: .semibold)
+        // Тук сменяме цвета на текста да е event.color
+        textView.textColor = event.color.withAlphaComponent(1)
+
         // Hide the resize handles for the ghost
         eventResizeHandles.forEach { $0.isHidden = true }
-                
     }
+    
     public func applyGhostStyleNoAllDay(event: EventDescriptor) {
         // Настройки за цвят и фон
         layer.cornerRadius = 9
@@ -331,14 +334,13 @@ open class EventView: UIView {
         let attributedString = NSMutableAttributedString()
         attributedString.append(NSAttributedString(attachment: calendarAttachment))
         attributedString.append(NSAttributedString(string: " \(event.text)"))
-        
-        // Задаваме атрибутирания низ към textView
+
         textView.attributedText = attributedString
         textView.font = .systemFont(ofSize: 12, weight: .semibold)
+        // Тук също сменяме цвета на текста
+        textView.textColor = event.color.withAlphaComponent(1)
         
         // Скриваме resize дръжките
         eventResizeHandles.forEach { $0.isHidden = true }
     }
-
-
 }
