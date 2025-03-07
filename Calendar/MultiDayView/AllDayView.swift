@@ -183,7 +183,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         }
         
         // Хоризонтални линии — по редове
-        let grouped = Dictionary(grouping: allDayLayoutAttributes) {
+        _ = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         

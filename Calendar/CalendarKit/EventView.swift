@@ -49,7 +49,6 @@ open class EventView: UIView {
         
         let eventCalendar = wrapper.realEvent.calendar
         let calType = eventCalendar?.type ?? .local
-
         // Подготвяме NSTextAttachment за иконки
         let iconAttachment = NSTextAttachment()
         let calendarAttachment = NSTextAttachment()
@@ -315,4 +314,31 @@ open class EventView: UIView {
         eventResizeHandles.forEach { $0.isHidden = true }
                 
     }
+    public func applyGhostStyleNoAllDay(event: EventDescriptor) {
+        // Настройки за цвят и фон
+        layer.cornerRadius = 9
+        clipsToBounds = true
+        color = event.color
+        backgroundColor = event.color.withAlphaComponent(0.3)
+        
+        // Създаваме NSTextAttachment за иконата
+        let calendarAttachment = NSTextAttachment()
+        calendarAttachment.image = UIImage(systemName: "calendar.circle.fill")?
+            .withTintColor(event.color, renderingMode: .alwaysOriginal)
+        calendarAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
+
+        // Сглобяваме атрибутиран низ, който съдържа иконата + текста на събитието
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(NSAttributedString(attachment: calendarAttachment))
+        attributedString.append(NSAttributedString(string: " \(event.text)"))
+        
+        // Задаваме атрибутирания низ към textView
+        textView.attributedText = attributedString
+        textView.font = .systemFont(ofSize: 12, weight: .semibold)
+        
+        // Скриваме resize дръжките
+        eventResizeHandles.forEach { $0.isHidden = true }
+    }
+
+
 }

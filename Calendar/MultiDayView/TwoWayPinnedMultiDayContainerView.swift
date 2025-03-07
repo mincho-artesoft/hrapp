@@ -423,9 +423,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             return
         }
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
-        
-        let buttonSize: CGFloat = 40
-        
+                
         if showSingleDay {
             fromDatePicker.isHidden = false
             dateRangeButton.isHidden = true

@@ -60,6 +60,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
     // Ghosts during drag (one ghost per day slice)
     private var draggingGhosts: [EventView: EventView] = [:]
+    private var additionalDraggingGhosts: [EventView: EventView] = [:]
+
     private var draggingOriginalAlphas: [EventView: CGFloat] = [:]
     
     // Ключ за запазване на данни при drag
@@ -712,16 +714,24 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    private struct AdditionalGhostDragData {
+        let originalFrame: CGRect
+        let anchorOffsetX: CGFloat
+        let anchorOffsetY: CGFloat
+    }
+
+    
     @objc private func handleEventViewPan(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
         
-        var minsingEvent:  [EventView] = []
+        var minsingEvent: [EventView] = []
         switch gesture.state {
         case .began:
+            
             let generator = UIImpactFeedbackGenerator(style: .light)
-              generator.prepare()
-              generator.impactOccurred()
+            generator.prepare()
+            generator.impactOccurred()
             // Винаги влизаме в edit mode при задържане,
             // независимо върху коя част е натиснато.
             selectEventView(evView)
@@ -754,6 +764,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             let totalDuration = realEnd.timeIntervalSince(realStart)
             
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
+            let pointInContainer = gesture.location(in: container)
             
             var slices: [EventView] = []
             if let multi = descriptor as? EKMultiDayWrapper {
@@ -774,6 +785,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             for realSliceView in minsingEvent {
                 slices.append(realSliceView)
             }
+            
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
@@ -811,12 +823,12 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     let ghostX = containerPoint.x + 2
                     let ghostW = dayColumnWidth - style.eventGap * 2 - 2
 
-                    if totalDays == 1{
-                        print("ghostX",sliceFrameInContainer.minX,"ghostY",sliceFrameInContainer.minY)
-                         finalY = sliceFrameInContainer.minY
-                         ghostH = sliceFrameInContainer.height
+                    if totalDays == 1 {
+                        print("ghostX", sliceFrameInContainer.minX, "ghostY", sliceFrameInContainer.minY)
+                        finalY = sliceFrameInContainer.minY
+                        ghostH = sliceFrameInContainer.height
                     }
-                  
+                    
                     let ghostFrame = CGRect(
                         x: ghostX,
                         y: finalY,
@@ -848,21 +860,100 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             updateHighlightedColumnsFromGhosts(isResize: false)
             if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
-                     container.allDayTitleLabel.textColor = .lightGray
-                 }
+                container.allDayTitleLabel.textColor = .lightGray
+            }
+            
+            ///////////////////////////////////////addd
+            for (sliceView, _) in draggingGhosts {
+                
+                let ghostDesc = BasicEvent() // or any custom class conforming to EventDescriptor
+                ghostDesc.dateInterval = DateInterval(
+                    start: Date(),
+                    end: Date().addingTimeInterval(60 * 60) // 1 hour from now
+                )
+                ghostDesc.isAllDay = true
+                ghostDesc.text = "New Event"
+                ghostDesc.color = .systemBlue               // Usually the left border
+                ghostDesc.backgroundColor = .systemBlue     // The fill color
+                ghostDesc.textColor = .black                // Black text
+                
+                // 4) Create a new ghost EventView and update it
+                let ghostView = createEventView()
+                ghostView.updateWithDescriptor(event: ghostDesc)
+                ghostView.applyGhostStyleNoAllDay(event: sliceView.descriptor!)
+                
+                ghostView.isHidden = true
+                ghostView.layer.zPosition = 2
+                container.addSubview(ghostView)
+                
+                // Фиксираме началната рамка
+                let w: CGFloat = dayColumnWidth - style.eventGap * 2 - 3
+                let h: CGFloat = 18
+                // 1) Convert sliceView.frame up to the container’s coordinate space
+                let sliceFrameInContainer = sliceView.superview!.convert(sliceView.frame, to: container)
+
+                // 2) Now use the converted frame
+                let x = sliceFrameInContainer.minX
+                let y = pointInContainer.y
+
+                // … same as before …
+                let initialFrame = CGRect(x: x, y: y, width: w, height: h)
+                ghostView.frame = initialFrame
+
+
+                // MARK: // FIX START
+                // Правилно offset-ване: (finger - ghostFrame.origin)
+                let fingerPoint = gesture.location(in: container)
+                let ghostFrame = ghostView.frame
+                
+                let offsetX = fingerPoint.x - ghostFrame.minX
+                let offsetY = fingerPoint.y - ghostFrame.minY
+                // MARK: // FIX END
+
+                let ghostData = AdditionalGhostDragData(
+                    originalFrame: ghostFrame,
+                    anchorOffsetX: offsetX,
+                    anchorOffsetY: offsetY
+                )
+                ghostView.layer.setValue(ghostData, forKey: "AdditionalGhostDragDataKey")
+                
+                // Запомняме този ghost
+                additionalDraggingGhosts[ghostView] = ghostView
+            }
+            
         case .changed:
-            // 1) Опитваме да вземем "DragData" от оригиналния евент (evView) – така знаем началното състояние
+            // 1) Опитваме да вземем "DragData" от оригиналния евент (evView)
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
 
-            // 2) Вземаме контейнера (TwoWayPinnedMultiDayContainerView), за да ползваме .allDayView, .allDayScrollView, .mainScrollView и т.н.
+            // 2) Вземаме контейнера
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
 
-            // 3) Координатата на пръста (или курсора) **в coordinate space-а на container**.
+            // 3) Координатата на пръста (или курсора)
             let fingerInContainer = gesture.location(in: container)
 
-            // 4) Новата желана позиция за "ghost" евентите (слага се над контейнера):
+            // 4) Новите X/Y за "anchor ghost"
             let newX = fingerInContainer.x - d.anchorOffsetX
             let newY = fingerInContainer.y - d.anchorOffsetY
+            
+            // Придвижваме "additionalDraggingGhosts"
+            for (ghostView, _) in additionalDraggingGhosts {
+                guard let ghostData = ghostView.layer.value(forKey: "AdditionalGhostDragDataKey")
+                        as? AdditionalGhostDragData else { return }
+
+                // MARK: // FIX START
+                // Current finger location in the container
+                let finger = gesture.location(in: container)
+
+                // Започваме от originalFrame
+                var f = ghostData.originalFrame
+
+                // Ново origin, базирано на (finger - offsets)
+                f.origin.x = finger.x - ghostData.anchorOffsetX
+                f.origin.y = finger.y - ghostData.anchorOffsetY
+                // MARK: // FIX END
+
+                ghostView.frame = f
+            }
 
             // 5) Местим всички "slice ghost"-ове пропорционално на delta‑та (спрямо "anchorGhost")
             if let anchorOrig = d.originalContainerFrames[evView] {
@@ -882,48 +973,22 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 }
             }
 
-            // 6) Ако искате "snap" към 10 минути по време на drag – намираме евентуална времева позиция
-            if let anchorGhost = draggingGhosts[evView] {
-                // Конвертираме ghost‑рамката към локалната координатна система (self = MultiDayTimelineView)
-                let ghostFrameInTimeline = container.convert(anchorGhost.frame, to: self)
-                
-                let topY    = ghostFrameInTimeline.minY
-                let bottomY = ghostFrameInTimeline.maxY
-                
-                // Ако горният край е видим => ползваме него за преизчисляване на часа
-                let topIsVisible = (topY >= 0 && topY < bounds.height)
-                if topIsVisible {
-                    if let newStart = dateFromFrame(ghostFrameInTimeline) {
-                        let snapped = snapToNearest10Min(newStart)
-                        setSingle10MinuteMarkFromDate(snapped)
-                    }
-                }
-                // Иначе, ако горният край е извън изгледа => ползваме долния
-                else {
-                    var bottomFrame = ghostFrameInTimeline
-                    bottomFrame.origin.y = bottomY - 1
-                    bottomFrame.size.height = 1
-                    if let newEnd = dateFromFrame(bottomFrame) {
-                        let snapped = snapToNearest10Min(newEnd)
-                        setSingle10MinuteMarkFromDate(snapped)
-                    }
-                }
-            }
+            // 6) Snap към 10 минути
+            
 
-            // 7) Проверяваме дали сме над `allDayScrollView`
-            //    ПЪРВО засичаме промяната за haptic feedback
+            // 7) Проверяваме дали сме над allDayScrollView
             let isNowOverAllDay = container.allDayScrollView.frame.contains(fingerInContainer)
             if isNowOverAllDay != isCurrentlyOverAllDay {
-                // ТУК предизвикваме лека вибрация
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             }
 
             if isNowOverAllDay {
-                // Преди това чистите highlight-a в MultiDayTimelineView
+                guard let hoursView = hoursColumnView else { return }
+                hoursView.selectedMinuteMark = (-1, 0)
+                hoursView.setNeedsDisplay()
                 highlightedDayIndexes.removeAll()
                 setNeedsDisplay()
                 
-                // Събираме всички dayIndex‑и от draggingGhosts:
                 var dayIndexes = Set<Int>()
                 for (_, ghostView) in draggingGhosts {
                     let ghostFrameInAllDay = container.convert(ghostView.frame, to: container.allDayView)
@@ -932,47 +997,80 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                         dayIndexes.insert(di)
                     }
                 }
-
                 if dayIndexes.isEmpty {
-                    // Ако не сме над никоя валидна колона -> чистим highlight
                     container.allDayView.clearAllHighlights()
                 } else {
-                    // Ако има намерени колони -> маркираме ги
                     container.allDayView.highlightColumns(dayIndexes)
+                }
+                for (ghostView, _) in additionalDraggingGhosts {
+                    ghostView.isHidden = false
+                }
+                for (_, view) in draggingGhosts {
+                    view.isHidden = true
                 }
             }
             else {
-                // Старият else-блок за стандартния highlight в MultiDayTimelineView
+                print("asd")
+                if let anchorGhost = draggingGhosts[evView] {
+                    let ghostFrameInTimeline = container.convert(anchorGhost.frame, to: self)
+                    
+                    let topY    = ghostFrameInTimeline.minY
+                    let bottomY = ghostFrameInTimeline.maxY
+                    
+                    let topIsVisible = (topY >= 0 && topY < bounds.height)
+                    if topIsVisible {
+                        if let newStart = dateFromFrame(ghostFrameInTimeline) {
+                            let snapped = snapToNearest10Min(newStart)
+                            setSingle10MinuteMarkFromDate(snapped)
+                        }
+                    }
+                    else {
+                        var bottomFrame = ghostFrameInTimeline
+                        bottomFrame.origin.y = bottomY - 1
+                        bottomFrame.size.height = 1
+                        if let newEnd = dateFromFrame(bottomFrame) {
+                            let snapped = snapToNearest10Min(newEnd)
+                            setSingle10MinuteMarkFromDate(snapped)
+                        }
+                    }
+                }
                 updateHighlightedColumnsFromGhosts(isResize: false)
                 container.allDayView.clearAllHighlights()
+                for (ghostView, _) in additionalDraggingGhosts {
+                     ghostView.isHidden = true
+                }
+                for (_, view) in draggingGhosts {
+                    view.isHidden = false
+                }
             }
-
-
-            // Обновяваме локалното флагче
+            
             isCurrentlyOverAllDay = isNowOverAllDay
 
-            // 8) Ако имате auto-scroll, ъпдейтвате го
+            // 8) Auto-scroll
             updateAutoScrollDirection(for: gesture)
             
             if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
-                       // Ако искате да разпознавате "hover" над all-day и тук,
-                       // ще трябва да засечете дали сме "излезли" от timeline-a
-                       // и сме над allDayScrollView (подобно на handleEventViewPan).
-                       // Примерно:
-                       if isCurrentlyOverAllDay {
-                           container.allDayTitleLabel.textColor = .label
-                       } else {
-                           container.allDayTitleLabel.textColor = .lightGray
-                       }
-                   }
-        case .ended, .cancelled:
+                if isCurrentlyOverAllDay {
+                    container.allDayTitleLabel.textColor = .label
+                } else {
+                    container.allDayTitleLabel.textColor = .lightGray
+                }
+            }
             
+        case .ended, .cancelled:
+            for (ghostView, _) in additionalDraggingGhosts {
+                ghostView.layer.setValue(nil, forKey: "AdditionalGhostDragDataKey")
+                ghostView.isHidden = true
+                ghostView.removeFromSuperview()
+            }
+            // additionalDraggingGhosts.removeAll()
+
             if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
-                      container.allDayTitleLabel.textColor = .label
-                  }
+                container.allDayTitleLabel.textColor = .label
+            }
             let generator = UIImpactFeedbackGenerator(style: .light)
-              generator.prepare()
-              generator.impactOccurred()
+            generator.prepare()
+            generator.impactOccurred()
             for realSliceView in minsingEvent {
                 eventViewToDescriptor.removeValue(forKey: realSliceView)
             }
@@ -1023,14 +1121,13 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 removeMissingSlicesIfNeeded(for: multi)
             }
             
-            // CHANGED: Снап върху най-близките 10 минути:
-            let snappedStart = snapToNearest10Min(finalStart)   // ADDED
-            let snappedEnd   = snappedStart.addingTimeInterval(d.totalDuration) // ADDED
+            let snappedStart = snapToNearest10Min(finalStart)
+            let snappedEnd   = snappedStart.addingTimeInterval(d.totalDuration)
             
             descriptor.isAllDay = false
-            descriptor.dateInterval = DateInterval(start: snappedStart, end: snappedEnd) // CHANGED
+            descriptor.dateInterval = DateInterval(start: snappedStart, end: snappedEnd)
             
-            // Проверяваме къде е дропа:
+            // Проверяваме къде е дропа
             let locationInContainer = gesture.location(in: container)
             if let hitView = container.hitTest(locationInContainer, with: nil) {
                 let hitViewClass = String(describing: type(of: hitView))
@@ -1041,8 +1138,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     || parent1Class.contains("MultiDayTimelineView")
                     || parent2Class.contains("MultiDayTimelineView") {
                     
-                    // При дроп в този изглед:
-                    onEventDragEnded?(descriptor, snappedStart, false) // CHANGED (snappedStart)
+                    onEventDragEnded?(descriptor, snappedStart, false)
                     
                 } else if hitViewClass.contains("AllDayView")
                             || parent1Class.contains("AllDayView")
@@ -1050,10 +1146,10 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     
                     for (view, _) in eventViewToDescriptor {
                         view.eventResizeHandles[0].isHidden = true
-                        view.eventResizeHandles[1].isHidden =  true
+                        view.eventResizeHandles[1].isHidden = true
                     }
                     currentlyEditedEventViewID = ""
-
+                    
                     onEventConvertToAllDay?(descriptor, dayIndex)
                 }
             }
@@ -1061,12 +1157,14 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             eventViewToDescriptor.removeAll()
             highlightedDayIndexes.removeAll()
+            additionalDraggingGhosts.removeAll()
             setNeedsDisplay()
             
         default:
             break
         }
     }
+
     
     private struct ResizeDragData {
         let startGlobalPoint: CGPoint
