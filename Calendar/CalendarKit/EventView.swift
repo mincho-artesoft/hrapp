@@ -314,11 +314,5 @@ open class EventView: UIView {
         // Hide the resize handles for the ghost
         eventResizeHandles.forEach { $0.isHidden = true }
                 
-        textView.frame = CGRect(
-            x: bounds.minX,
-            y: bounds.minY - 16,
-            width: bounds.width - 6,
-            height: bounds.height
-        )
     }
 }

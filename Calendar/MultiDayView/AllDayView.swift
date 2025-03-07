@@ -186,17 +186,16 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         let grouped = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
-        let maxEventsInAnyDay = grouped.values.map { $0.count }.max() ?? 0
         
         let rowHeight: CGFloat = 22
-        let baseY: CGFloat = 6
+        let baseY: CGFloat = 0
         
-        for r in 0...maxEventsInAnyDay {
-            let y = baseY + CGFloat(r) * rowHeight
+        
+            let y = baseY * rowHeight
             ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
-            // ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
+             ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
             // Ако искате хоризонталната линия да се рисува, разкоментирайте горния ред
-        }
+        
         ctx.strokePath()
         ctx.restoreGState()
     }
