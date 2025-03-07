@@ -390,10 +390,26 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
             // 4) Auto-scroll, ако го ползвате
             updateAutoScrollDirection(for: gesture)
             
+            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
+                       // Ако искате да разпознавате "hover" над all-day и тук,
+                       // ще трябва да засечете дали сме "излезли" от timeline-a
+                       // и сме над allDayScrollView (подобно на handleEventViewPan).
+                       // Примерно:
+                       if isOverMainScroll {
+                           container.allDayTitleLabel.textColor = .lightGray
+                         
+                       } else {
+                           container.allDayTitleLabel.textColor = .label
+                       }
+                   }
+
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
         case .ended, .cancelled:
+            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
+                      container.allDayTitleLabel.textColor = .label
+                  }
             // 1) Спираме auto-scroll
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             stopAutoScroll()

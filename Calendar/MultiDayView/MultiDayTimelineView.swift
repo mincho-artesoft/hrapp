@@ -847,6 +847,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             updateHighlightedColumnsFromGhosts(isResize: false)
+            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
+                     container.allDayTitleLabel.textColor = .lightGray
+                 }
         case .changed:
             // 1) Опитваме да вземем "DragData" от оригиналния евент (evView) – така знаем началното състояние
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
@@ -943,7 +946,22 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
 
             // 8) Ако имате auto-scroll, ъпдейтвате го
             updateAutoScrollDirection(for: gesture)
+            
+            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
+                       // Ако искате да разпознавате "hover" над all-day и тук,
+                       // ще трябва да засечете дали сме "излезли" от timeline-a
+                       // и сме над allDayScrollView (подобно на handleEventViewPan).
+                       // Примерно:
+                       if isCurrentlyOverAllDay {
+                           container.allDayTitleLabel.textColor = .label
+                       } else {
+                           container.allDayTitleLabel.textColor = .lightGray
+                       }
+                   }
         case .ended, .cancelled:
+            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
+                      container.allDayTitleLabel.textColor = .label
+                  }
             let generator = UIImpactFeedbackGenerator(style: .light)
               generator.prepare()
               generator.impactOccurred()
