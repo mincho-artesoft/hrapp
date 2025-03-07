@@ -919,27 +919,34 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             }
 
             if isNowOverAllDay {
-                // --- ТУК „чистим“ highlight-овете в MultiDayTimelineView, защото сме над AllDayView
+                // Преди това чистите highlight-a в MultiDayTimelineView
                 highlightedDayIndexes.removeAll()
                 setNeedsDisplay()
                 
-                // Освен това, ако искате да highlight-вате определена колона (ден) в самия allDayView:
-                if let anchorGhost = draggingGhosts[evView] {
-                    let ghostFrameInAllDay = container.convert(anchorGhost.frame, to: container.allDayView)
+                // Събираме всички dayIndex‑и от draggingGhosts:
+                var dayIndexes = Set<Int>()
+                for (_, ghostView) in draggingGhosts {
+                    let ghostFrameInAllDay = container.convert(ghostView.frame, to: container.allDayView)
                     let midX = ghostFrameInAllDay.midX
                     if let di = container.allDayView.dayIndexFromMidX(midX) {
-                        container.allDayView.highlightColumns([di])
-                    } else {
-                        container.allDayView.clearAllHighlights()
+                        dayIndexes.insert(di)
                     }
                 }
-            } else {
-                // Ако не сме над AllDayView => правим стандартния highlight в MultiDayTimelineView
+
+                if dayIndexes.isEmpty {
+                    // Ако не сме над никоя валидна колона -> чистим highlight
+                    container.allDayView.clearAllHighlights()
+                } else {
+                    // Ако има намерени колони -> маркираме ги
+                    container.allDayView.highlightColumns(dayIndexes)
+                }
+            }
+            else {
+                // Старият else-блок за стандартния highlight в MultiDayTimelineView
                 updateHighlightedColumnsFromGhosts(isResize: false)
-                
-                // ...и в AllDayView да се изчисти, ако е имало
                 container.allDayView.clearAllHighlights()
             }
+
 
             // Обновяваме локалното флагче
             isCurrentlyOverAllDay = isNowOverAllDay
