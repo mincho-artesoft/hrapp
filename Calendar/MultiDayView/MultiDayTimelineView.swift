@@ -190,7 +190,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             let w: CGFloat = dayColumnWidth - style.eventGap * 2
             let h: CGFloat = 50
             let x = max(leadingInsetForHours, point.x - w / 2)
-            let y = point.y
+            let y = point.y - 25
             let initialFrame = CGRect(x: x, y: y, width: w, height: h)
             ghostView.frame = initialFrame
 

@@ -505,6 +505,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
 
     @objc private func handleLongPressEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         let location = gesture.location(in: self)
         let tappedEvent = eventViews.first(where: { !$0.isHidden && $0.frame.contains(location) })
         guard tappedEvent == nil else { return }
