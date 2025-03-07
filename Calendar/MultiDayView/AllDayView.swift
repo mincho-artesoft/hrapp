@@ -30,7 +30,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     // Текущата (или фиксирана) височина, която „казваме“ на контейнера.
     public var fixedHeight: CGFloat = 40
     
-    // МАКС броя „редове“ (float), които показваме без пълен скрол. 2.5 = 2 цели + половин.
+    // МАКС броя „редове“ (float), които показваме без пълен скрол. 3.5 => 3 цели + половин.
     private let maxVisibleRows: CGFloat = 3.5
     
     // Пълна височина (ако няма ограничение). Може да надхвърля fixedHeight.
@@ -60,7 +60,17 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     // Променливи за drag
     private var originalFrameForDraggedEvent: CGRect?
     private var dragOffset: CGPoint?
+    
+    // При многодневни събития пазим frame за всеки slice
     private var multiDayDraggingOriginalFrames: [EventView: CGRect] = [:]
+    
+    // MARK: - Highlight
+    /// **Now tracks multiple columns** (e.g. for multi-day slices).
+    public var highlightedDayIndices: Set<Int> = [] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     // MARK: - Init
     
@@ -145,6 +155,18 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     private func layoutBackground() {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
         ctx.saveGState()
+        
+        // 1) Highlight all columns in highlightedDayIndices
+        for idx in highlightedDayIndices {
+            guard idx >= 0 && idx < dayCount else { continue }
+            let colX = leadingInsetForHours + CGFloat(idx) * dayColumnWidth
+            let highlightRect = CGRect(x: colX, y: 0,
+                                       width: dayColumnWidth, height: bounds.height)
+            ctx.setFillColor(UIColor.systemGray.withAlphaComponent(0.10).cgColor)
+            ctx.fill(highlightRect)
+        }
+
+        // 2) Draw vertical & horizontal separators
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
@@ -218,14 +240,21 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
               let descriptor = eventViewToDescriptor[evView] else { return }
         
         switch gesture.state {
+        // ─────────────────────────────────────────────────────────────────────────────
+        // MARK: .began
+        // ─────────────────────────────────────────────────────────────────────────────
         case .began:
+            // Отключваме scrolling/clipping, за да може евентът да се движи
             setScrollsClipping(enabled: false)
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+
+            // Записваме началната позиция на пръста и оригиналния frame
             let loc = gesture.location(in: self)
             originalFrameForDraggedEvent = evView.frame
             dragOffset = CGPoint(x: loc.x - evView.frame.minX,
                                  y: loc.y - evView.frame.minY)
             
-            // Ако евентът е EKMultiDayWrapper, пазим всички парчета (ако има)
+            // Ако е многодневно EKMultiDayWrapper, пазим позициите и на останалите slice-ове:
             if let multi = descriptor as? EKMultiDayWrapper {
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multi.realEvent.eventIdentifier
@@ -235,19 +264,26 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                         multiDayDraggingOriginalFrames[otherView] = otherView.frame
                     }
                 }
+            } else {
+                // Single day => just track this single eventView
+                multiDayDraggingOriginalFrames.removeAll()
+                multiDayDraggingOriginalFrames[evView] = evView.frame
             }
             
+        // ─────────────────────────────────────────────────────────────────────────────
+        // MARK: .changed
+        // ─────────────────────────────────────────────────────────────────────────────
         case .changed:
             guard let offset = dragOffset else { return }
             let loc = gesture.location(in: self)
             
-            // 1) Изчисляваме нов frame (в наши координати).
+            // 1) Местим основния (видимия) евент
             var newFrame = evView.frame
             newFrame.origin.x = loc.x - offset.x
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
             
-            // 2) Ако има други slice-ове на multi-day, мърдаме и тях.
+            // 2) Ако е multi-day, местим и другите slice-ове
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let dx = newFrame.origin.x - origFrame.origin.x
                 let dy = newFrame.origin.y - origFrame.origin.y
@@ -258,115 +294,158 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 }
             }
             
-            // 3) Изчисляваме къде е горната част на eventView в `weekView` (ако сме над него).
+            // 3) Проверяваме къде сме спрямо TwoWayPinnedMultiDayContainerView
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
             let dropLocationInContainer = gesture.location(in: container)
             
-            // Ако попаднем над timeline-а:
-            if container.weekView.frame.contains(dropLocationInContainer) {
+            // Calculate if the event is (still) within AllDayView bounds
+            let dropLocationInAllDay = gesture.location(in: self)
+            let isOverAllDay = self.bounds.contains(dropLocationInAllDay)
+            
+            // If the user is dragging inside the "mainScrollView" => bottom part
+            let isOverMainScroll = container.mainScrollView.frame.contains(dropLocationInContainer)
+            
+            // ─────────────────────────────────────────────────────────────────────────
+            // Highlight logic for AllDayView
+            // If the event is in the AllDay area, gather all day indexes for each slice
+            if isOverAllDay {
+                var dayIndexes = Set<Int>()
+                for (sliceView, _) in multiDayDraggingOriginalFrames {
+                    let sliceMidX = sliceView.frame.midX
+                    if let di = dayIndexFromMidX(sliceMidX) {
+                        dayIndexes.insert(di)
+                    }
+                }
+                // Update highlight
+                if !dayIndexes.isEmpty {
+                    highlightColumns(dayIndexes)
+                } else {
+                    clearAllHighlights()
+                }
                 
-                // (a) Конвертираме top-координатата на евента към weekView.
-                //     За целта вземаме целия му `frame` в координатната система на `weekView`.
+                // Clear highlight in main timeline
+                container.weekView.clearAllHighlights()
+                // Clear 10-minute marker
+                clear10MinuteMark()
+            }
+            // Otherwise, if the user is dragging over the main timeline area
+            else if isOverMainScroll {
+                // Clear highlight in AllDayView
+                clearAllHighlights()
+                
+                // Now highlight the day column(s) in the main timeline
                 let evFrameInTimeline = self.convert(evView.frame, to: container.weekView)
                 
-                // (b) hourHeight, topMargin - четем от weekView
+                // Gather all day indexes in the timeline for each slice
+                var dayIndexes = Set<Int>()
+                for (sliceView, _) in multiDayDraggingOriginalFrames {
+                    let sliceFrameInTimeline = self.convert(sliceView.frame, to: container.weekView)
+                    let midX = sliceFrameInTimeline.midX
+                    var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
+                                       / container.weekView.dayColumnWidth)
+                    dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
+                    dayIndexes.insert(dayIndex)
+                }
+                
+                // The main timeline (weekView) can highlight multiple columns as well
+                container.weekView.highlightMultipleColumns(dayIndexes: dayIndexes)
+                
+                // Optionally, show "snap" line in HoursColumnView, but typically you'd do it
+                // for whichever slice is the "main" being moved. For demonstration, let's do
+                // it for the main evView:
                 let hourHeight = container.weekView.hourHeight
                 let topMargin  = container.weekView.topMargin
-                
-                // (c) minY на евента спрямо topMargin
-                let localY = evFrameInTimeline.minY - topMargin
-                let midX   = evFrameInTimeline.midX
-                
-                // (d) кой dayIndex?
+                let localY     = evFrameInTimeline.minY - topMargin
+                let midX       = evFrameInTimeline.midX
                 var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
                                    / container.weekView.dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                 
-                // (e) преобразуваме localY => час
-                let dayDate = container.weekView.dayStartDate(for: dayIndex)
+                let dayDate    = container.weekView.dayStartDate(for: dayIndex)
                 let hourOffset = localY / hourHeight
-                let rawDate = dayDate.addingTimeInterval(hourOffset * 3600)
-                
-                // (f) снипваме към 10 мин.
-                let snapped = snapToNearest10Min(rawDate)
-                
-                // (g) показваме маркера
+                let rawDate    = dayDate.addingTimeInterval(hourOffset * 3600)
+                let snapped    = snapToNearest10Min(rawDate)
                 setSingle10MinuteMarkFromDate(snapped)
-                
-            } else {
+            }
+            // If it's outside both => clear highlights
+            else {
+                clearAllHighlights()
+                container.weekView.clearAllHighlights()
                 clear10MinuteMark()
             }
+            
+            // 4) Auto-scroll, ако го ползвате
             updateAutoScrollDirection(for: gesture)
             
+        // ─────────────────────────────────────────────────────────────────────────────
+        // MARK: .ended / .cancelled
+        // ─────────────────────────────────────────────────────────────────────────────
         case .ended, .cancelled:
-            // 1) Спираме auto-скрол и нулираме посоката
+            // 1) Спираме auto-scroll
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
             stopAutoScroll()
             autoScrollDirection = .zero
             
-            // 2) Премахваме маркера за 10-мин. отбелязване
+            // 2) Махаме 10-минутния маркер
             clear10MinuteMark()
             
-            // 3) Връщаме clipping-а
+            // 3) Връщаме clipping
             setScrollsClipping(enabled: true)
             
-            // 4) Намираме контейнера
+            // 4) Изчистваме highlight
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else {
-                // Ако няма container, връщаме на старо място
+                // Ако няма container, просто връщаме евента на мястото му
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
                 }
                 return
             }
+            container.weekView.clearAllHighlights()
+            clearAllHighlights()
             
-            // 5) Къде пускаме?
+            // 5) Проверяваме къде "пускаме" евента:
             let dropLocationInContainer = gesture.location(in: container)
-            
-            // (A) Ако остава горе (allDay zone)
             let dropLocationInAllDay = gesture.location(in: self)
+            
+            // (A) Ако оставаме горе (AllDayView)
             if self.bounds.contains(dropLocationInAllDay) {
-                // Изчисляваме деня от midX на event-a
                 let evMidX = evView.frame.midX
                 if let newDayIndex = dayIndexFromMidX(evMidX),
                    let newDayDate = dayDateByAddingDays(newDayIndex)
                 {
-                    let cal = Calendar.current
+                    let cal       = Calendar.current
                     let startOfDay = cal.startOfDay(for: newDayDate)
                     let endOfDay   = cal.date(byAdding: .day, value: 1, to: startOfDay)!
                     
-                    descriptor.isAllDay = true
-                    descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
+                    descriptor.isAllDay      = true
+                    descriptor.dateInterval  = DateInterval(start: startOfDay, end: endOfDay)
                     
                     onEventDragEnded?(descriptor, startOfDay, false)
-                }
-                else if let orig = originalFrameForDraggedEvent {
-                    evView.frame = orig
+                } else {
+                    // Ако не можем да определим деня, връщаме го обратно
+                    if let orig = originalFrameForDraggedEvent {
+                        evView.frame = orig
+                    }
                 }
             }
-            // (B) Ако пускаме над седмичния timeline
+            // (B) Ако пускаме над MultiDayTimelineView
             else if container.weekView.frame.contains(dropLocationInContainer) {
-                
-                // Взимаме горния край на евента в координати на weekView
+                // Даваме му, например, 1 час продължителност
                 let evFrameInTimeline = self.convert(evView.frame, to: container.weekView)
-                
                 let hourHeight = container.weekView.hourHeight
                 let topMargin  = container.weekView.topMargin
+                let midX       = evFrameInTimeline.midX
                 
-                // X => dayIndex
-                let midX = evFrameInTimeline.midX
                 var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
                                    / container.weekView.dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                 
-                // Y => час
                 let localY = evFrameInTimeline.minY - topMargin
                 let hourOffset = localY / hourHeight
                 let dayDate = container.weekView.dayStartDate(for: dayIndex)
                 let rawDate = dayDate.addingTimeInterval(hourOffset * 3600)
                 
-                // Снап към 10 мин.
-                let snapped = snapToNearest10Min(rawDate)
-                
-                // За пример слагаме 1ч продължителност
+                let snapped  = snapToNearest10Min(rawDate)
                 let finalEnd = snapped.addingTimeInterval(3600)
                 
                 descriptor.isAllDay = false
@@ -374,23 +453,26 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 
                 container.weekView.onEventDragEnded?(descriptor, snapped, true)
             }
-            // (C) Иначе е извън, връщаме на старото място
+            // (C) Извън, връщаме евента на старото му място
             else {
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
                 }
             }
             
-            // Финал
+            // 6) Нулираме временните променливи
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
+            
+            // 7) Презаложащо layout-ване
             setNeedsLayout()
             
         default:
             break
         }
     }
+
 
     @objc private func handleLongPressEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
@@ -400,6 +482,20 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         guard let dayIndex = dayIndexFromMidX(location.x) else { return }
         guard let dayDate = dayDateByAddingDays(dayIndex) else { return }
         onEmptyLongPress?(dayDate)
+    }
+    
+    // MARK: - Highlight API
+    
+    /// Highlights a set of columns in AllDayView
+    public func highlightColumns(_ indices: Set<Int>) {
+        if highlightedDayIndices != indices {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            highlightedDayIndices = indices
+        }
+    }
+    
+    public func clearAllHighlights() {
+        highlightedDayIndices.removeAll()
     }
     
     // MARK: - Помощни (Snap / Marker)
@@ -529,7 +625,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         let fullHeight = base + (rowHeight * fullNeededRows)
         self.contentHeight = max(fullHeight, 40)
         
-        // Видима височина: до 2.5 реда (или 3.5, ако сте задали maxVisibleRows = 3.5)
+        // Видима височина: до 3.5 реда
         let visibleRows = min(fullNeededRows, maxVisibleRows)
         let partialHeight = base + (rowHeight * visibleRows)
         

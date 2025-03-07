@@ -1902,5 +1902,27 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         }
         return i
     }
+    public func clearAllHighlights() {
+        self.highlightedDayIndexes.removeAll()
+        setNeedsDisplay()
+    }
+    public func highlightSingleColumn(dayIndex: Int?) {
+        // Ако dayIndex е nil => махаме цялата подсветка
+        if let di = dayIndex {
+            self.highlightedDayIndexes = [di]
+        } else {
+            self.highlightedDayIndexes.removeAll()
+        }
+        setNeedsDisplay()
+    }
+    public func highlightMultipleColumns(dayIndexes: Set<Int>) {
+        // Overwrite the currently highlighted set
+        if highlightedDayIndexes != dayIndexes {
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            self.highlightedDayIndexes = dayIndexes
+        }
+        setNeedsDisplay()
+    }
+
 }
 
