@@ -894,7 +894,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
 
                 // 2) Now use the converted frame
                 let x = sliceFrameInContainer.minX
-                let y = pointInContainer.y
+                let y = pointInContainer.y + 9
 
                 // … same as before …
                 let initialFrame = CGRect(x: x, y: y, width: w, height: h)
