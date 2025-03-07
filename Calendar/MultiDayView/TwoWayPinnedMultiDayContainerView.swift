@@ -14,12 +14,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     // ------------------------
     // ВАЖНО: Само един addTarget!
     // ------------------------
-    private let menuButton: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        btn.tintColor = .label
-        return btn
-    }()
     
     private let dateRangeButton: UIButton = {
         let btn = UIButton(type: .custom)
@@ -42,9 +36,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         didSet {
             if showSingleDay {
                 toDate = fromDate
-            }
-            if #available(iOS 14.0, *) {
-                menuButton.menu = buildMenu()
             }
             setNeedsLayout()
         }
@@ -211,14 +202,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         fromDatePicker.addTarget(self, action: #selector(didPickFromDate(_:)), for: .valueChanged)
         navBar.addSubview(fromDatePicker)
         
-        navBar.addSubview(menuButton)
-        if #available(iOS 14.0, *) {
-            menuButton.showsMenuAsPrimaryAction = true
-            menuButton.menu = buildMenu()
-        } else {
-            menuButton.addTarget(self, action: #selector(legacyMenuTapped), for: .touchUpInside)
-        }
-        
         // ** Важно: САМО тук го добавяме, за да няма дублиращо се извикване **
         dateRangeButton.addTarget(self, action: #selector(didTapDateRangeButton), for: .touchUpInside)
         navBar.addSubview(dateRangeButton)
@@ -275,7 +258,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         if let windowScene = UIApplication.shared.connectedScenes
             .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
            let topVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController {
-            alert.popoverPresentationController?.sourceView = menuButton
             topVC.present(alert, animated: true, completion: nil)
         }
     }
@@ -443,12 +425,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         
         let buttonSize: CGFloat = 40
-        menuButton.frame = CGRect(
-            x: navBar.bounds.width - buttonSize - 8,
-            y: (navBarHeight - buttonSize)/2,
-            width: buttonSize,
-            height: buttonSize
-        )
         
         if showSingleDay {
             fromDatePicker.isHidden = false
