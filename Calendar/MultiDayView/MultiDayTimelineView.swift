@@ -847,13 +847,20 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             updateHighlightedColumnsFromGhosts(isResize: false)
         case .changed:
+            // 1) Опитваме да вземем "DragData" от оригиналния евент (evView) – така знаем началното състояние
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
             
+            // 2) Вземаме контейнера (TwoWayPinnedMultiDayContainerView), за да ползваме .allDayView, .allDayScrollView, .mainScrollView и т.н.
             guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
+            
+            // 3) Координатата на пръста (или курсора) **в coordinate space-a на container**.
             let fingerInContainer = gesture.location(in: container)
+            
+            // 4) Новата желана позиция за "ghost" евентите (слага се над контейнера):
             let newX = fingerInContainer.x - d.anchorOffsetX
             let newY = fingerInContainer.y - d.anchorOffsetY
             
+            // 5) Местим всички "slice ghost"-ове пропорционално на delta‑та
             if let anchorOrig = d.originalContainerFrames[evView] {
                 let deltaX = newX - anchorOrig.minX
                 let deltaY = newY - anchorOrig.minY
@@ -871,35 +878,63 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 }
             }
             
-            // CHANGED: Снап към 10-минутни стъпки още докато се вижда "highlight"
+            // 6) Ако искате "snap" към 10 минути по време на drag – намираме евентуална времева позиция
             if let anchorGhost = draggingGhosts[evView] {
                 let ghostFrameInTimeline = anchorGhost.frame
+                // Конвертираме ghost‑рамката към локалната координатна система (self = MultiDayTimelineView)
                 let frameSelf = container.convert(ghostFrameInTimeline, to: self)
                 
-                let topY = frameSelf.minY
+                let topY    = frameSelf.minY
                 let bottomY = frameSelf.maxY
                 
+                // Ако горният край е видим => ползваме него за преизчисляване на часа
                 let topIsVisible = (topY >= 0 && topY < bounds.height)
                 if topIsVisible {
                     if let newStart = dateFromFrame(frameSelf) {
-                        // ADDED: Снап
                         let snapped = snapToNearest10Min(newStart)
                         setSingle10MinuteMarkFromDate(snapped)
                     }
-                } else {
+                }
+                // Иначе, ако горният край е извън изгледа => ползваме долния
+                else {
                     var bottomFrame = frameSelf
                     bottomFrame.origin.y = bottomY - 1
                     bottomFrame.size.height = 1
                     if let newEnd = dateFromFrame(bottomFrame) {
-                        // ADDED: Снап
                         let snapped = snapToNearest10Min(newEnd)
                         setSingle10MinuteMarkFromDate(snapped)
                     }
                 }
             }
-            updateHighlightedColumnsFromGhosts(isResize: false)
-            updateAutoScrollDirection(for: gesture)
             
+            // 7) Проверяваме дали сме над `allDayScrollView`
+            if container.allDayScrollView.frame.contains(fingerInContainer) {
+                // --- ТУК „чистим“ highlight-овете в MultiDayTimelineView, защото сме над AllDayView
+                //     (или, ако ползвате метод за това, може и self.clearAllHighlights())
+                highlightedDayIndexes.removeAll()
+                setNeedsDisplay()  // да се прерисува
+                
+                // Освен това, ако искате да highlight-вате определена колона (ден) в самия allDayView:
+                if let anchorGhost = draggingGhosts[evView] {
+                    let ghostFrameInAllDay = container.convert(anchorGhost.frame, to: container.allDayView)
+                    let midX = ghostFrameInAllDay.midX
+                    if let di = container.allDayView.dayIndexFromMidX(midX) {
+                        container.allDayView.highlightColumns([di])
+                    } else {
+                        container.allDayView.clearAllHighlights()
+                    }
+                }
+            } else {
+                // Ако не сме над AllDayView => правим стандартния highlight в MultiDayTimelineView
+                updateHighlightedColumnsFromGhosts(isResize: false)
+                
+                // ...и в AllDayView да се изчисти, ако е имало
+                container.allDayView.clearAllHighlights()
+            }
+            
+            // 8) Ако имате auto-scroll, ъпдейтвате го
+            updateAutoScrollDirection(for: gesture)
+
         case .ended, .cancelled:
             let generator = UIImpactFeedbackGenerator(style: .light)
               generator.prepare()
@@ -1883,7 +1918,13 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         if !newlyAddedIndexes.isEmpty {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
-        oldHighlightedDayIndexes = newHighlighted
+        if oldHighlightedDayIndexes != newHighlighted {
+            let generator = UIImpactFeedbackGenerator(style: .light)
+              generator.prepare()
+              generator.impactOccurred()
+            oldHighlightedDayIndexes = newHighlighted
+        }
+      
 
         highlightedDayIndexes = newHighlighted
         setNeedsDisplay()

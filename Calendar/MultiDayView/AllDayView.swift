@@ -246,8 +246,6 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         case .began:
             // Отключваме scrolling/clipping, за да може евентът да се движи
             setScrollsClipping(enabled: false)
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-
             // Записваме началната позиция на пръста и оригиналния frame
             let loc = gesture.location(in: self)
             originalFrameForDraggedEvent = evView.frame
@@ -270,6 +268,21 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 multiDayDraggingOriginalFrames[evView] = evView.frame
             }
             
+            var dayIndexes = Set<Int>()
+            for (sliceView, _) in multiDayDraggingOriginalFrames {
+                let sliceMidX = sliceView.frame.midX
+                if let di = dayIndexFromMidX(sliceMidX) {
+                    dayIndexes.insert(di)
+                }
+            }
+            // Update highlight
+            if !dayIndexes.isEmpty {
+                highlightColumns(dayIndexes)
+            } else {
+                clearAllHighlights()
+            }
+            // Clear 10-minute marker
+            clear10MinuteMark()
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .changed
         // ─────────────────────────────────────────────────────────────────────────────
@@ -591,7 +604,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         return comps.day ?? 0
     }
     
-    private func dayIndexFromMidX(_ x: CGFloat) -> Int? {
+    func dayIndexFromMidX(_ x: CGFloat) -> Int? {
         let colX = x - leadingInsetForHours
         let idx = Int(floor(colX / dayColumnWidth))
         return (idx >= 0 && idx < dayCount) ? idx : nil
