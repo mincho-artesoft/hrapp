@@ -121,8 +121,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         btn.setTitle("Няма избран период", for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         btn.layer.cornerRadius = 8
-        btn.backgroundColor = .systemGray4
-        
+        btn.backgroundColor = .systemGray5
+//        btn.layer.borderWidth = 1
+//        btn.layer.borderColor = UIColor.systemBlue.cgColor
         // В нормално състояние - сив текст
         btn.setTitleColor(.label, for: .normal)
         // Ако бутонът е "selected" (когато е отворен календарът), искаме също да е сив
