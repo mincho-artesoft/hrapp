@@ -313,115 +313,97 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     }
     
     private func layoutRegularEvents() {
-        // 1) Скриваме всички eventViews, за да започнем начисто
+        // 1) Скриваме старите subviews
         for v in eventViews {
             v.isHidden = true
         }
-        
-        // 2) Събираме dayIndex → списък събития
+
+        // 2) Групираме EventLayoutAttributes по ден:
         let groupedByDay = Dictionary(grouping: regularLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
-        
-        // 3) Събираме множество от всички календари, които се появяват
-        //    (ако descriptor е EKMultiDayWrapper, вземаме realEvent.calendar)
-        //    и ги подреждаме в масив (за да имаме конкретен ред на колоните).
-        //    Тук за пример – сортираме по calendarIdentifier.
+
+        // 3) Събираме всички различни календари, срещащи се в regularLayoutAttributes:
         var uniqueCalendars = Set<EKCalendar>()
         for attr in regularLayoutAttributes {
-            if let multi = attr.descriptor as? EKMultiDayWrapper {
-                if let cal = multi.realEvent.calendar {
-                    uniqueCalendars.insert(cal)
-                }
+            if let multi = attr.descriptor as? EKMultiDayWrapper,
+               let cal = multi.realEvent.calendar {
+                uniqueCalendars.insert(cal)
             }
         }
-        // Превръщаме в масив, сортираме:
-        let sortedCalendars = uniqueCalendars.sorted { $0.calendarIdentifier < $1.calendarIdentifier }
-        
-        // Ако няма календари, спираме
-        if sortedCalendars.isEmpty {
-            return
+        // Сортираме ги, за да имаме „стабилен“ ред на колоните:
+        let sortedCalendars = uniqueCalendars.sorted {
+            $0.calendarIdentifier < $1.calendarIdentifier
         }
-        
-        // 4) За всеки ден, ще „нарисуваме“ колони (по 1 за всеки календар).
+        // Ако няма календари (празно), излизаме
+        if sortedCalendars.isEmpty { return }
+
+        // 4) Брой колони = брой календари; всяка е 100pt
+        let calendarColumnWidth: CGFloat = 100
+        let calCount = CGFloat(sortedCalendars.count)
+        // Общата „дневна“ ширина:
+        let totalDayWidth = calCount * calendarColumnWidth
+
+        // 5) За всеки ден ...
         var usedEventViewIndex = 0
-        
         for dayIndex in 0..<dayCount {
-            // Взимаме събитията за този ден (ако няма, пропускаме)
-            guard let eventsForDay = groupedByDay[dayIndex], !eventsForDay.isEmpty else { continue }
-            
-            // Групираме ги по самия календар:
-            let groupedByCalendar = Dictionary(grouping: eventsForDay) { attr -> String in
-                // calendarIdentifier
+            // Събитията за този ден
+            guard let eventsForDay = groupedByDay[dayIndex],
+                  !eventsForDay.isEmpty
+            else { continue }
+
+            // Групираме ги и по календар:
+            let byCal = Dictionary(grouping: eventsForDay) { attr -> String in
                 if let multi = attr.descriptor as? EKMultiDayWrapper,
-                   let cal = multi.realEvent.calendar
-                {
+                   let cal = multi.realEvent.calendar {
                     return cal.calendarIdentifier
-                } else {
-                    return "unknown"
                 }
+                return "unknown"
             }
-            
-            // Колко календара имаме „общо“ (по целия период) => sortedCalendars.count
-            // Ширината на дневния правоъгъл – `dayColumnWidth`
-            // Делим я на брой календари, за да получим columnWidthPerCalendar
-            let colCount = CGFloat(sortedCalendars.count)
-            let columnWidthPerCalendar = (dayColumnWidth - style.eventGap * 2) / colCount
-            
-            // 5) За всяко calendar–index ще позиционираме евентите
+
+            // Изчисляваме хоризонталната начална позиция на деня
+            let dayX = leadingInsetForHours + CGFloat(dayIndex)*totalDayWidth
+
+            // 6) Обхождаме всеки календар (във фиксиран ред)
             for (calIndex, calendar) in sortedCalendars.enumerated() {
-                // Взимаме събитията за този календар
-                let calEvents = groupedByCalendar[calendar.calendarIdentifier] ?? []
-                if calEvents.isEmpty { continue }
-                
-                // x за тази колона
-                let colX = leadingInsetForHours
-                          + CGFloat(dayIndex) * dayColumnWidth
-                          + style.eventGap
-                          + columnWidthPerCalendar * CGFloat(calIndex)
-                
-                // 6) Сортираме тези събития по начален час
-                let sorted = calEvents.sorted {
+                let colX = dayX + CGFloat(calIndex)*calendarColumnWidth
+                // Тук вземаме евентите специално за този календар
+                let calEvents = byCal[calendar.calendarIdentifier] ?? []
+
+                // (По желание) Сортираме ги по старт:
+                let sortedCalEvents = calEvents.sorted {
                     $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start
                 }
-                
-                // И тук, за простота, **не** се опитваме да избягваме застъпване –
-                // просто рисуваме всяко събитие в рамките на колоната.
-                for attr in sorted {
+
+                // 7) Рисуваме всяко събитие в неговата „колона‑за‑календар“
+                for attr in sortedCalEvents {
                     let start = attr.descriptor.dateInterval.start
                     let end   = attr.descriptor.dateInterval.end
-                    
                     let yStart = topMargin + dateToY(start)
                     let yEnd   = topMargin + dateToY(end)
-                    
-                    let w = columnWidthPerCalendar - style.eventGap
-                    let h = max(1, (yEnd - yStart) - style.eventGap)
-                    
+                    let height = max(1, (yEnd - yStart) - style.eventGap)
+
                     let evView = ensureEventView(index: usedEventViewIndex)
                     usedEventViewIndex += 1
-                    
-                    evView.isHidden = false
-                    evView.frame = CGRect(
+
+                    let frame = CGRect(
                         x: colX,
                         y: yStart,
-                        width: w,
-                        height: h
+                        width: calendarColumnWidth - style.eventGap,
+                        height: height
                     )
-                    
+                    evView.isHidden = false
+                    evView.frame = frame
                     evView.updateWithDescriptor(event: attr.descriptor)
                     eventViewToDescriptor[evView] = attr.descriptor
                 }
             }
         }
-        
-        // Ако искате още логика за застъпвания **в рамките** на един и същи календар,
-        // тук може да добавите втори проход, който намалява ширината на евентите, които реално се застъпват.
+
+        // Ако искате да правите логика за застъпване **вътре** в една и съща календарна колона,
+        // можете да надградите кода, за да дели „colX..colX+100“ на допълнителни под-ширини.
     }
 
-
-
-
-    
     private func isOverlapping(_ candidate: EventLayoutAttributes,
                                in columnEvents: [EventLayoutAttributes]) -> Bool
     {
@@ -1705,66 +1687,50 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Drawing
     public override func draw(_ rect: CGRect) {
+        super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
-        
-        let totalWidth = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
-        
-        // 1) Изпълваме фона с цвета на фоновия UIView (ако държите, може да го пропуснете,
-        //    понеже backgroundColor = .systemGray6 е вече зададено).
-        //    Ако искате да сте сигурни, че винаги се "fill"-ва, може да го направите така:
-        // ctx.setFillColor(UIColor.systemGray6.cgColor)
-        // ctx.fill(rect)
-        
-        // 2) Оцветяваме "подсветените" колони (highlightedDayIndexes)
+
+        ctx.saveGState()
+
+        // == Преди това нарисувайте евентуално фона, хоризонтални линии и т.н. ==
+
+        // Накрая рисуваме разделителите между колоните за всеки ден/календар.
+        let calCount = CGFloat(sortedCalendars.count)  // ТРЯБВА да го пазите като проп или да го смятате пак
+        let calendarColumnWidth: CGFloat = 100
+        let totalDayWidth = calCount * calendarColumnWidth
+
+        ctx.setStrokeColor(UIColor.lightGray.cgColor)
+        ctx.setLineWidth(1.0 / UIScreen.main.scale)
+
+        ctx.beginPath()
+
+        // За всеки ден:
         for dayIndex in 0..<dayCount {
-            let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
-            let colRect = CGRect(x: colX, y: 0, width: dayColumnWidth, height: bounds.height)
+            let dayX = leadingInsetForHours + CGFloat(dayIndex)*totalDayWidth
             
-            if highlightedDayIndexes.contains(dayIndex) {
-                // Изберете си цвят/прозрачност по ваш вкус:
-                ctx.setFillColor(UIColor.systemGray4.withAlphaComponent(0.8).cgColor)
-                ctx.fill(colRect)
+            // Рисуваме вертикална линия за самото начало на деня
+            ctx.move(to: CGPoint(x: dayX, y: 0))
+            ctx.addLine(to: CGPoint(x: dayX, y: bounds.height))
+
+            // Сега за всяка подколона (календари):
+            for calIndex in 1..<Int(calCount) {
+                let colX = dayX + CGFloat(calIndex)*calendarColumnWidth
+                ctx.move(to: CGPoint(x: colX, y: 0))
+                ctx.addLine(to: CGPoint(x: colX, y: bounds.height))
             }
+
+            // Ако искате и най-дясната граница (края на деня):
+            let dayRight = dayX + totalDayWidth
+            ctx.move(to: CGPoint(x: dayRight, y: 0))
+            ctx.addLine(to: CGPoint(x: dayRight, y: bounds.height))
         }
-        
-        // 3) Хоризонтални линии (часовете)
-        ctx.saveGState()
-        ctx.setStrokeColor(style.separatorColor.cgColor)
-        ctx.setLineWidth(1.0 / UIScreen.main.scale)
-        ctx.beginPath()
-        
-        var lastY: CGFloat = 0
-        for hour in 0...24 {
-            let y = topMargin + CGFloat(hour) * hourHeight
-            lastY = y
-            ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
-            ctx.addLine(to: CGPoint(x: totalWidth, y: y))
-        }
+
         ctx.strokePath()
         ctx.restoreGState()
-        
-        // 4) Вертикални линии (гранични на колоните)
-        ctx.saveGState()
-        ctx.setStrokeColor(style.separatorColor.cgColor)
-        ctx.setLineWidth(1.0 / UIScreen.main.scale)
-        ctx.beginPath()
-        
-        // Лявата граница
-        ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
-        ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
-        
-        // Вертикалните за всеки ден
-        for i in 0...dayCount {
-            let colX = leadingInsetForHours + CGFloat(i) * dayColumnWidth
-            ctx.move(to: CGPoint(x: colX, y: 0))
-            ctx.addLine(to: CGPoint(x: colX, y: lastY))
-        }
-        ctx.strokePath()
-        ctx.restoreGState()
-        
-        // 5) Червената линия „сега“ (ако попада в диапазона)
-        drawCurrentTimeLine(ctx: ctx)
+
+        // След това може да си нарисувате/дооточните червената линия за "текущ час", хоризонталните линии за часове и т.н.
     }
+
 
     
     private func drawCurrentTimeLine(ctx: CGContext) {
