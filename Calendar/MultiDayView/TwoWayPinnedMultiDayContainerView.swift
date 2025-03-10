@@ -4,12 +4,10 @@ import EventKit
 
 // MARK: - TwoWayPinnedMultiDayContainerView
 public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate {
-    
+
     // MARK: - Public configuration
-    /// Whether we show single‐day mode (from==to), or multiple days.
     public var showSingleDay: Bool = false {
         didSet {
-            // If single day is true, force toDate = fromDate
             if showSingleDay {
                 toDate = fromDate
             }
@@ -17,37 +15,27 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    /// The currently selected "view". For instance:
-    /// 0 = Month, 1 = Day, 2 = Year, 3 = MultiDay, etc.
-    /// This helps us show a checkmark in a menu if you like.
     public var currentView: Int = 3
-    
-    /// Callback that can tell the outside code to switch to another view tab.
     public var onViewChange: ((Int) -> Void)?
     
-    /// The pinned start date (in multi‐day mode) or the single day (in single‐day mode).
     public var fromDate: Date = Date() {
         didSet {
             refreshDateRangeButtonTitle()
             daysHeaderView.fromDate = fromDate
             allDayView.fromDate = fromDate
             weekView.fromDate = fromDate
-            fromDatePicker.date = fromDate
             
-            // If single day => keep toDate in sync
             if showSingleDay {
                 toDate = fromDate
             }
             setNeedsLayout()
             
-            // If fromDate is after toDate, align them
             if fromDate > toDate {
                 toDate = fromDate
             }
         }
     }
     
-    /// The pinned end date (in multi‐day mode). In single‐day mode, it is forced to match fromDate.
     public var toDate: Date = Date() {
         didSet {
             refreshDateRangeButtonTitle()
@@ -62,11 +50,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    /// Callback invoked when the user changes the range from inside
-    /// the container (e.g. using the date pickers).
     public var onRangeChange: ((Date, Date) -> Void)?
     
-    /// Tapping an event
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
             weekView.onEventTap = onEventTap
@@ -74,7 +59,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    /// Long-press on empty area to create a new event
     public var onEmptyLongPress: ((Date) -> Void)? {
         didSet {
             weekView.onEmptyLongPress = onEmptyLongPress
@@ -82,7 +66,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    /// Callback for finishing a drag. For all-day or regular events
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)? {
         didSet {
             weekView.onEventDragEnded = onEventDragEnded
@@ -90,7 +73,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    /// Callback for finishing a resize on a regular event
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)? {
         didSet {
             weekView.onEventDragResizeEnded = onEventDragResizeEnded
@@ -98,45 +80,37 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    /// Tapping on the day label in the header
     public var onDayLabelTap: ((Date) -> Void)? {
         didSet {
             daysHeaderView.onDayTap = onDayLabelTap
         }
     }
     
-    
     // MARK: - Subviews
-    
-    /// Left column (hours)
     public let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
     
-    /// Header row with the day numbers
     fileprivate let daysHeaderScrollView = UIScrollView()
     fileprivate let daysHeaderView = DaysHeaderView()
     
-    /// Corner view (the rectangle at the intersection of hours column & days header)
     fileprivate let cornerView = UIView()
     
-    /// All-day row
     public let allDayScrollView = UIScrollView()
     public let allDayView = AllDayView()
     
-    /// Title label for the all-day row
     public let allDayTitleLabel = UILabel()
     
-    /// The main scroll view for hours & events
     public let mainScrollView = UIScrollView()
     public let weekView = MultiDayTimelineView()
     
     // MARK: - "Nav bar" (top area)
+    private let singleDayButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: "calendar"), for: .normal)
+        btn.tintColor = .label
+        return btn
+    }()
     
-    /// If `showSingleDay == true`, we show fromDatePicker only.
-    /// Otherwise, we show dateRangeButton for picking a multi-day range.
-    private let fromDatePicker = UIDatePicker()
-    
-    /// A button that, when tapped, pops up a calendar range selection
     private let dateRangeButton: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setTitle("Няма избран период", for: .normal)
@@ -148,7 +122,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         return btn
     }()
     
-    /// A three-dot button in the nav bar (to select day / multi-day / month / year, etc.)
     private let viewMenuButton: UIButton = {
         let btn = UIButton(type: .system)
         let image = UIImage(systemName: "ellipsis.circle")
@@ -158,24 +131,19 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     }()
     
     // MARK: - Private constants & variables
-    
-    fileprivate let navBarHeight: CGFloat = 60
-    fileprivate let daysHeaderHeight: CGFloat = 40
+    fileprivate let navBarHeight: CGFloat = 50
+    fileprivate let daysHeaderHeight: CGFloat = 20
     fileprivate let leftColumnWidth: CGFloat = 60
     
-    // For "all-day" label's top & bottom borders
     private let topBorder = CALayer()
     private let bottomBorder = CALayer()
     
-    // For showing an overlay with SwiftUI calendar range picker
     private var showCalendar = false
     private var calendarHostingController: UIHostingController<CalendarDateRangePickerWrapper>?
     private var calendarBackgroundView: UIView?
     
-    // For re-drawing every minute
     private var redrawTimer: Timer?
     private var isInSecondPass = false
-    
     
     // MARK: - Lifecycle
     public override init(frame: CGRect) {
@@ -195,7 +163,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     deinit {
         redrawTimer?.invalidate()
     }
-    
     
     // MARK: - Setup
     private func setupViews() {
@@ -245,9 +212,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         addSubview(allDayTitleLabel)
-
         
-        // add top & bottom borders inside the allDayTitleLabel
         topBorder.backgroundColor = UIColor.lightGray.cgColor
         allDayTitleLabel.layer.addSublayer(topBorder)
         
@@ -261,35 +226,26 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        // The fromDatePicker is used only in single-day mode
-        fromDatePicker.datePickerMode = .date
-        fromDatePicker.preferredDatePickerStyle = .compact
-        fromDatePicker.addTarget(self, action: #selector(didPickFromDate(_:)), for: .valueChanged)
-        navBar.addSubview(fromDatePicker)
+        navBar.addSubview(singleDayButton)
+        singleDayButton.addTarget(self, action: #selector(openSingleDayPicker), for: .touchUpInside)
         
-        // The range button is used for multi-day
         dateRangeButton.addTarget(self, action: #selector(didTapDateRangeButton), for: .touchUpInside)
         navBar.addSubview(dateRangeButton)
         
-        // The three-dot menu button
         if #available(iOS 14.0, *) {
-            // For iOS 14+, we can attach a menu directly
             viewMenuButton.showsMenuAsPrimaryAction = true
         } else {
-            // For earlier iOS, we present a legacy action sheet
             viewMenuButton.addTarget(self, action: #selector(legacyMenuTapped), for: .touchUpInside)
         }
         navBar.addSubview(viewMenuButton)
         
-        // 8) Additional layout in subviews
+        // 8) Layout in subviews
         daysHeaderView.leadingInsetForHours = 0
         allDayView.leadingInsetForHours = 0
         weekView.leadingInsetForHours = 0
         
-        // Let the weekView know about the hoursColumnView (for current time offset, etc.)
         weekView.hoursColumnView = hoursColumnView
         
-        // If an event is dragged up to the all-day region, convert it to all-day
         weekView.onEventConvertToAllDay = { [weak self] descriptor, dayIndex in
             guard let self = self else { return }
             let cal = Calendar.current
@@ -304,64 +260,70 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
                 self.setNeedsLayout()
             }
         }
+        
+        // ------------------------------------------------------------------------------------
+        // FIX: Задаваме еднакви hourHeight и "margin" и за hoursColumnView, и за weekView:
+        // ------------------------------------------------------------------------------------
+        hoursColumnView.hourHeight = 50
+        hoursColumnView.extraMarginTopBottom = 10
+        
+        weekView.hourHeight = 50
+        weekView.topMargin = 10
+        // ------------------------------------------------------------------------------------
     }
-    
     
     // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
-
-        // ----------------------------------------------------
-        // ВАЖНО: Синхронизираме topMargin и hourHeight:
-        weekView.topMargin = hoursColumnView.extraMarginTopBottom
-        weekView.hourHeight = hoursColumnView.hourHeight
-        // ----------------------------------------------------
-
-        // Find the navBar (the view with height == navBarHeight)
+        
         guard let navBar = subviews.first(where: { $0.bounds.height == navBarHeight }) else {
             return
         }
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         
-        // Single vs. multi day UI
-        if showSingleDay {
-            fromDatePicker.isHidden = false
-            dateRangeButton.isHidden = true
-            
-            // Center the UIDatePicker
-            let pickerW: CGFloat = 160
-            let pickerH: CGFloat = 40
-            let x = (navBar.bounds.width - pickerW) / 2
-            let y = (navBar.bounds.height - pickerH) / 2
-            fromDatePicker.frame = CGRect(x: x, y: y, width: pickerW, height: pickerH)
-        } else {
-            fromDatePicker.isHidden = true
-            dateRangeButton.isHidden = false
-            
-            // Put the dateRangeButton near center
-            let btnW: CGFloat = 220
-            let btnH: CGFloat = 40
-            let x = (navBar.bounds.width - btnW)/2 - 20
-            let y = (navBar.bounds.height - btnH)/2
-            dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
-        }
-        
-        // The 3-dot menu button in the top-right
+        // Логика за позиция на бутоните singleDayButton/viewMenuButton...
         let menuBtnSize: CGFloat = 34
+        let singleBtnSize: CGFloat = 34
+        let margin: CGFloat = 8
+        
+        let menuButtonX = navBar.bounds.width - menuBtnSize - 10
+        let centerY = (navBar.bounds.height - menuBtnSize) / 2
+        
         viewMenuButton.frame = CGRect(
-            x: navBar.bounds.width - menuBtnSize - 10,
-            y: (navBarHeight - menuBtnSize) / 2,
+            x: menuButtonX,
+            y: centerY,
             width: menuBtnSize,
             height: menuBtnSize
         )
         
-        // If iOS 14+, set the menu so it updates checkmarks
         if #available(iOS 14.0, *) {
             viewMenuButton.menu = buildViewMenu()
         }
         
-        let yMain = navBarHeight
+        if showSingleDay {
+            singleDayButton.isHidden = false
+            dateRangeButton.isHidden = true
+            
+            let singleDayX = menuButtonX - singleBtnSize - margin
+            let singleDayY = (navBar.bounds.height - singleBtnSize) / 2
+            singleDayButton.frame = CGRect(
+                x: singleDayX,
+                y: singleDayY,
+                width: singleBtnSize,
+                height: singleBtnSize
+            )
+        } else {
+            singleDayButton.isHidden = true
+            dateRangeButton.isHidden = false
+            
+            let btnW: CGFloat = 220
+            let btnH: CGFloat = 40
+            let x = (navBar.bounds.width - btnW) / 2 - 20
+            let y = (navBar.bounds.height - btnH) / 2
+            dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
+        }
         
+        let yMain = navBarHeight
         cornerView.frame = CGRect(x: 0, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
         daysHeaderScrollView.frame = CGRect(
             x: leftColumnWidth,
@@ -375,20 +337,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         let toOnly   = cal.startOfDay(for: toDate)
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
         
-        // If only a few days, fit them evenly; else 100 points per day column
         let availableWidth = bounds.width - leftColumnWidth
         if dayCount < 4 {
             let newDayColumnWidth = availableWidth / CGFloat(dayCount)
-            weekView.dayColumnWidth      = newDayColumnWidth
+            weekView.dayColumnWidth       = newDayColumnWidth
             daysHeaderView.dayColumnWidth = newDayColumnWidth
             allDayView.dayColumnWidth     = newDayColumnWidth
         } else {
-            weekView.dayColumnWidth      = 100
+            weekView.dayColumnWidth       = 100
             daysHeaderView.dayColumnWidth = 100
             allDayView.dayColumnWidth     = 100
         }
         
-        // daysHeader
         let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalDaysHeaderWidth, height: daysHeaderHeight)
@@ -401,15 +361,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         let allDayFullH = allDayView.contentHeight
         
         allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
-        allDayScrollView.frame = CGRect(x: leftColumnWidth, y: allDayY,
-                                        width: bounds.width - leftColumnWidth,
-                                        height: allDayH)
+        allDayScrollView.frame = CGRect(
+            x: leftColumnWidth,
+            y: allDayY,
+            width: bounds.width - leftColumnWidth,
+            height: allDayH
+        )
         
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayFullH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
         
-        // top & bottom borders in the allDayTitleLabel
         let superThin = 1 / UIScreen.main.scale
         topBorder.frame = CGRect(
             x: 0,
@@ -424,14 +386,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             height: superThin
         )
         
-        // Adjust allDayScroll offset if needed
         let maxOffsetY = max(0, allDayScrollView.contentSize.height - allDayScrollView.bounds.height)
         var newOffset = oldOffset
         if newOffset.y < 0 { newOffset.y = 0 }
         else if newOffset.y > maxOffsetY { newOffset.y = maxOffsetY }
         allDayScrollView.setContentOffset(newOffset, animated: false)
         
-        // Hours column & main timeline
         let hoursColumnY = allDayY + allDayH
         hoursColumnScrollView.frame = CGRect(
             x: 0,
@@ -446,21 +406,22 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             height: bounds.height - hoursColumnY
         )
         
-        // MultiDayTimelineView: 25 "hours" (0..24), each hour is hourHeight points tall
-        let totalHours = 25
+        // ------------------------------------------------------------------------------------
+        // FIX: Вместо директно "25 * hourHeight", вадим topMargin от weekView:
+        // ------------------------------------------------------------------------------------
+        let totalHours = 25  // 0..24
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
-        let finalHeight = baseHeight + (weekView.topMargin * 2)
+        let finalHeight = baseHeight + (weekView.topMargin * 2) // горен + долен отстъп
+        
         let totalWidth  = CGFloat(dayCount) * weekView.dayColumnWidth
         
-        // main scroll
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
         
-        // hours column
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
+        // ------------------------------------------------------------------------------------
         
-        // Is "today" in this range?
         let nowOnly = cal.startOfDay(for: Date())
         hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
@@ -469,11 +430,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
-        // A second pass check for allDayView content resizing
         if isInSecondPass {
             isInSecondPass = false
         } else {
-            // If the allDayView adjusts its height again, re-layout once more
             let newH = allDayView.desiredHeight()
             let newCH = allDayView.contentHeight
             let diff1 = abs(newH - allDayScrollView.frame.height)
@@ -484,12 +443,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             }
         }
     }
-    
-    
+
     // MARK: - UIScrollViewDelegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
-            // Sync horizontal scroll with daysHeader & allDay
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x     = scrollView.contentOffset.x
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
@@ -504,7 +461,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    
     // MARK: - Timer
     private func startRedrawTimer() {
         redrawTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
@@ -518,7 +474,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    
     // MARK: - iOS 14+ menu
     @available(iOS 14.0, *)
     private func buildViewMenu() -> UIMenu {
@@ -526,7 +481,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             title: "Day",
             state: (currentView == 1 ? .on : .off)
         ) { [weak self] _ in
-            // Switch to day
             self?.showSingleDay = true
             self?.onViewChange?(1)
         }
@@ -535,7 +489,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             title: "MultiDay",
             state: (currentView == 3 ? .on : .off)
         ) { [weak self] _ in
-            // Switch to multi-day
             self?.showSingleDay = false
             self?.onViewChange?(3)
         }
@@ -556,7 +509,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         
         return UIMenu(title: "", children: [dayAction, multiAction, monthAction, yearAction])
     }
-    
     
     // MARK: - Legacy menu (iOS < 14)
     @objc private func legacyMenuTapped() {
@@ -586,17 +538,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
-    
-    // MARK: - Single Day date picker changes
-    @objc private func didPickFromDate(_ sender: UIDatePicker) {
-        // In single-day mode, fromDate=toDate=picker.date
-        self.fromDate = sender.date
-        self.toDate   = sender.date
-        onRangeChange?(fromDate, toDate)
-    }
-    
-    
-    // MARK: - Show / hide the date range selection popup
+    // MARK: - Показване / скриване на pop-up (SwiftUI range picker)
     @objc private func didTapDateRangeButton() {
         if showCalendar {
             hideCalendarPopup()
@@ -612,7 +554,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         else { return }
         
         let location = sender.location(in: backgroundView)
-        // If the tap is outside the hostingView => hide the calendar
         if !hostingView.frame.contains(location) {
             hideCalendarPopup()
         }
@@ -624,12 +565,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             print("No active UIWindow found.")
             return
         }
-        
-        // If already shown, do nothing
         guard !showCalendar else { return }
         showCalendar = true
         
-        // Create an overlay
         let backgroundView = UIView(frame: window.bounds)
         backgroundView.backgroundColor = .clear
         backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -637,7 +575,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         window.addSubview(backgroundView)
         calendarBackgroundView = backgroundView
         
-        // Build SwiftUI range picker
         let swiftUICalendar = CalendarDateRangePickerWrapper(
             startDate: fromDate,
             endDate: toDate,
@@ -656,10 +593,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         hc.view.layer.cornerRadius = 12
         hc.view.layer.masksToBounds = true
         hc.view.layer.zPosition = 9999
-        
         self.calendarHostingController = hc
         
-        // Add the SwiftUI view on top of backgroundView
         let hostingView = hc.view!
         let size: CGFloat = 350
         hostingView.frame = CGRect(
@@ -670,7 +605,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         )
         backgroundView.addSubview(hostingView)
         
-        // Animate
         hostingView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         hostingView.alpha = 0
         backgroundView.alpha = 0
@@ -685,7 +619,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         tapGesture.delegate = self
         backgroundView.addGestureRecognizer(tapGesture)
         
-        // Mark button as selected
         dateRangeButton.isSelected = true
     }
     
@@ -715,7 +648,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         dateRangeButton.isSelected = false
     }
     
-    
     // MARK: - Helper
     private func refreshDateRangeButtonTitle() {
         if fromDate > toDate {
@@ -736,28 +668,67 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         df.dateStyle = .medium
         return df.string(from: d)
     }
-}
+    
+    // MARK: - Single‐day DatePicker popup
+    @objc private func openSingleDayPicker() {
+        let alert = UIAlertController(title: "Избери ден", message: nil, preferredStyle: .actionSheet)
+        
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = singleDayButton
+            popover.sourceRect = singleDayButton.bounds
+        }
 
+        let pickerVC = UIViewController()
+        pickerVC.preferredContentSize = CGSize(width: 250, height: 200)
+        
+        let picker = UIDatePicker()
+        picker.datePickerMode = .date
+        if #available(iOS 14.0, *) {
+            picker.preferredDatePickerStyle = .wheels
+        }
+        picker.date = fromDate
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        
+        pickerVC.view.addSubview(picker)
+        NSLayoutConstraint.activate([
+            picker.centerXAnchor.constraint(equalTo: pickerVC.view.centerXAnchor),
+            picker.centerYAnchor.constraint(equalTo: pickerVC.view.centerYAnchor)
+        ])
+        
+        alert.setValue(pickerVC, forKey: "contentViewController")
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            let pickedDate = picker.date
+            self.fromDate = pickedDate
+            self.toDate   = pickedDate
+            self.onRangeChange?(pickedDate, pickedDate)
+            self.setNeedsLayout()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Отказ", style: .cancel, handler: nil))
+        
+        if let windowScene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let topVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController {
+            topVC.present(alert, animated: true, completion: nil)
+        }
+    }
+}
 
 // MARK: - UIGestureRecognizerDelegate
 extension TwoWayPinnedMultiDayContainerView: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                                   shouldReceive touch: UITouch) -> Bool {
-        guard
-            let hostingView = calendarHostingController?.view
-        else {
+        guard let hostingView = calendarHostingController?.view else {
             return true
         }
-        // If the user tapped inside the SwiftUI calendar, do not dismiss
         if let tappedView = touch.view, tappedView.isDescendant(of: hostingView) {
             return false
         }
-        // If the user tapped the dateRangeButton itself, do not dismiss
         if let tappedView = touch.view, tappedView.isDescendant(of: dateRangeButton) {
             return false
         }
-        
-        // Otherwise, let the gesture handle it
         return true
     }
 }

@@ -55,7 +55,7 @@ public final class HoursColumnView: UIView {
         // 2) Рисуваме линиите и текстовете за часовете 0..24 (общо 25 линии)
         //    но пропускаме (continue) близкия час, ако е под 15 мин. разлика от fractionCur
         for hour in 0...24 {
-            let y = extraMarginTopBottom + CGFloat(hour)*hourHeight
+            let y = extraMarginTopBottom + CGFloat(hour) * hourHeight
             
             // Проверка: ако имаме текущ час, дали hour е под 15 мин разлика?
             if fractionCur >= 0 {
