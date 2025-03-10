@@ -11,7 +11,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		50B212702D41131C00ABB8D3 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50B212702D41131C00ABB8D3 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Calendar.app; path = "/Users/aleksandarsvinarov/Desktop/Repo/hrapp/build/Debug-iphoneos/Calendar.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -45,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
-				50B212702D41131C00ABB8D3 /* Calendar.app */,
 				504D17CF2D678413006E5D6E /* Frameworks */,
 			);
 			sourceTree = "<group>";

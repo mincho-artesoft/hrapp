@@ -557,10 +557,15 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         ) { [weak self] _ in
             self?.onViewChange?(2)
         }
-        
+        let listAction = UIAction(
+            title: "List",
+            state: (currentView == 4 ? .on : .off)
+        ) { [weak self] _ in
+            self?.onViewChange?(4)
+        }
         return UIMenu(
             title: "",
-            children: [dayAction, multiAction, monthAction, yearAction]
+            children: [dayAction, multiAction, monthAction, yearAction, listAction]
         )
     }
     

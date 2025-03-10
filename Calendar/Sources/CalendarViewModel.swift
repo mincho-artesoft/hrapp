@@ -1,3 +1,6 @@
+//
+// MARK: - CalendarViewModel
+//
 import SwiftUI
 import EventKit
 import Combine
@@ -17,7 +20,7 @@ final class CalendarViewModel: ObservableObject {
     // Дали имаме достъп до Календарите
     @Published var accessGranted = false
 
-    // Тук пазим ID-тата на календари, които потребителят е “разрешил” да се виждат
+    // Тук пазим ID-тата на календари, които потребителят е “разрешил”
     @Published var selectedCalendarIDs: Set<String> = []
 
     // Променлива, в която да запазим UI цвят (UIColor) на първия .local календар
@@ -29,10 +32,18 @@ final class CalendarViewModel: ObservableObject {
 
     // MARK: - Инициализатор
     init() {
-        if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String] {
+        // --- ПРОМЕНЕНО: добавена логика за "ако няма нищо в UserDefaults, взимаме всички календари"
+        if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String],
+           !storedArray.isEmpty {
             self.selectedCalendarIDs = Set(storedArray)
+        } else {
+            // Ако няма нищо в UserDefaults, селектираме ВСИЧКИ календари по подразбиране
+            // (Може да избереш да селектираш само първия локален, ако предпочиташ)
+            let cals = eventStore.calendars(for: .event)
+            self.selectedCalendarIDs = Set(cals.map { $0.calendarIdentifier })
         }
 
+        // Когато selectedCalendarIDs се промени => да пазим в UserDefaults
         $selectedCalendarIDs
             .sink { newValue in
                 let array = Array(newValue)
@@ -75,7 +86,6 @@ final class CalendarViewModel: ObservableObject {
     func reloadCalendars() {
         let cals = eventStore.calendars(for: .event)
         
-        // Записваме в allCalendars
         self.allCalendars = cals
         
         // Търсим първия локален календар
@@ -83,7 +93,6 @@ final class CalendarViewModel: ObservableObject {
            let cgColor = firstLocalCal.cgColor {
             self.firstLocalCalendarColor = UIColor(cgColor: cgColor)
         } else {
-            // Ако не намерим локален календар, или cgColor е nil
             self.firstLocalCalendarColor = nil
         }
     }
@@ -162,3 +171,4 @@ final class CalendarViewModel: ObservableObject {
         }
     }
 }
+

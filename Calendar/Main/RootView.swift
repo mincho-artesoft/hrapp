@@ -1,6 +1,7 @@
 import SwiftUI
 import EventKit
 
+// MARK: - RootView
 struct RootView: View {
     @State var accessGranted = false
     
@@ -14,11 +15,15 @@ struct RootView: View {
     @State private var pinnedToDateMulti: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
     @State private var pinnedEventsMulti: [EventDescriptor] = []
     
-    // Таймер за пример (презареждане на 60 секунди)
+    // MARK: - All Events
+    @State private var pinnedAllEvents: [EventDescriptor] = []
+    @State private var eventToEdit: EKEvent? = nil
+    
+    // Таймер (презареждане на 60 сек)
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
-    // Избор на екран (0=Month, 1=Day, 2=Year, 3=MultiDay)
-    @State private var selectedTab = 3 // По подразбиране MultiDay
+    // Избор на екран (0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList)
+    @State private var selectedTab = 3 // По подразбиране да стартираме на "All Events"
     
     // Sheet за календари
     @State private var showCalendarsSheet = false
@@ -30,20 +35,20 @@ struct RootView: View {
             
             NavigationView {
                 GeometryReader { geometry in
+                    // Това беше за portrait/landscape
+                    // Няма да крием бутона за Calendars в landscape
+                    // така че, ако искаш - можеш да изтриеш изцяло логиката
                     let isPortrait = geometry.size.height > geometry.size.width
                     
                     VStack {
-                        // >>> REMOVED THE PICKER <<<
-                        
-                        // Просто показваме „текущото“ в зависимост от selectedTab
                         switch selectedTab {
                         case 0:
                             // Месечен календар
                             MonthCalendarView(
                                 viewModel: CalendarViewModel.shared,
                                 startMonth: Date(),
-                                selectedTab: selectedTab,                 // CHANGES
-                                onViewChange: { newTab in selectedTab = newTab } // CHANGES
+                                selectedTab: selectedTab,
+                                onViewChange: { newTab in selectedTab = newTab }
                             )
                             
                         case 1:
@@ -55,7 +60,6 @@ struct RootView: View {
                                 eventStore: CalendarViewModel.shared.eventStore,
                                 isSingleDay: true,
                                 
-                                // CHANGES: pass current selectedTab + callback
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
@@ -76,7 +80,7 @@ struct RootView: View {
                             // Годишен календар
                             YearCalendarView(
                                 viewModel: CalendarViewModel.shared,
-                                selectedTab: selectedTab, // CHANGES
+                                selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
                                 }
@@ -91,7 +95,6 @@ struct RootView: View {
                                 eventStore: CalendarViewModel.shared.eventStore,
                                 isSingleDay: false,
                                 
-                                // CHANGES: pass current selectedTab + callback
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
@@ -110,33 +113,52 @@ struct RootView: View {
                                 loadMultiDayEvents()
                             }
                             
+                        case 4:
+                            // All Events List
+                            AllEventsListView(
+                                events: pinnedAllEvents,
+                                selectedTab: selectedTab,
+                                onViewChange: { newTab in
+                                    selectedTab = newTab
+                                },
+                                onEventTap: { descriptor in
+                                    if let multi = descriptor as? EKMultiDayWrapper {
+                                        eventToEdit = multi.realEvent
+                                    }
+                                }
+                            )
+                            .onAppear {
+                                loadAllEventsFromMinusOneYearToPlusTwoYears()
+                            }
+                            
                         default:
                             Text("N/A")
                         }
                     }
-                    // Показваме toolbar само ако е вертикално (пример)
+                    // Инструментална лента (toolbar)
                     .toolbar {
-                        if isPortrait {
-                            ToolbarItemGroup(placement: .bottomBar) {
-                                // “Today”
-                                Button("Today") {
-                                    let today = Calendar.current.startOfDay(for: Date())
-                                    pinnedFromDateSingle = today
-                                    pinnedToDateSingle = today
-                                    selectedTab = 1 // Day view
-                                }
-                                Spacer()
-                                
-                                // “Calendars”
-                                Button("Calendars") {
-                                    showCalendarsSheet = true
-                                }
-                                Spacer()
-                                
-                                // “Inbox” (пример)
-                                Button("Inbox") {
-                                    // ...
-                                }
+                        ToolbarItemGroup(placement: .bottomBar) {
+                            
+                            // “Today”
+                            Button("Today") {
+                                let today = Calendar.current.startOfDay(for: Date())
+                                pinnedFromDateSingle = today
+                                pinnedToDateSingle = today
+                                selectedTab = 1 // Day view
+                            }
+                            
+                            Spacer()
+                            
+                            // “Calendars”
+                            Button("Calendars") {
+                                showCalendarsSheet = true
+                            }
+                            
+                            Spacer()
+                            
+                            // “Inbox” (пример)
+                            Button("Inbox") {
+                                // ...
                             }
                         }
                     }
@@ -152,12 +174,18 @@ struct RootView: View {
                     // 2) Зареждане на календари
                     CalendarViewModel.shared.reloadCalendars()
                     
-                    // 3) Зареждаме събития за цяла година
+                    // 3) Зареждаме събития за годината
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
                     
-                    // 4) Ако сме по подразбиране на MultiDay, зареждаме MultiDay събитията:
-                    loadMultiDayEvents()
+                    // 4) Ако сме на MultiDay или AllEventsList, или Day — зареждаме нужните
+                    if selectedTab == 3 {
+                        loadMultiDayEvents()
+                    } else if selectedTab == 1 {
+                        loadSingleDayEvents()
+                    } else if selectedTab == 4 {
+                        loadAllEventsFromMinusOneYearToPlusTwoYears()
+                    }
                 }
             }
         }
@@ -168,6 +196,8 @@ struct RootView: View {
                     loadMultiDayEvents()
                 } else if selectedTab == 1 {
                     loadSingleDayEvents()
+                } else if selectedTab == 4 {
+                    loadAllEventsFromMinusOneYearToPlusTwoYears()
                 }
             }
         }) {
@@ -175,7 +205,6 @@ struct RootView: View {
         }
     }
 }
-
 
 // MARK: - Зареждане на евенти за SingleDay
 extension RootView {
@@ -186,11 +215,9 @@ extension RootView {
             pinnedEventsSingle = []
             return
         }
-        
         pinnedEventsSingle = fetchAndSplitEvents(from: fromOnly, to: toDate)
     }
 }
-
 
 // MARK: - Зареждане на евенти за MultiDay
 extension RootView {
@@ -209,7 +236,21 @@ extension RootView {
     }
 }
 
-// MARK: - Общ метод fetch+split
+// MARK: - Зареждане на евенти за "All Events"
+extension RootView {
+    private func loadAllEventsFromMinusOneYearToPlusTwoYears() {
+        guard accessGranted else { return }
+        let cal = Calendar.current
+        
+        // Пример: от днес - 1 година до днес + 2 години
+        let start = cal.date(byAdding: .year, value: -1, to: Date())!
+        let end   = cal.date(byAdding: .year, value: 2, to: Date())!
+        
+        pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
+    }
+}
+
+// MARK: - Общ метод
 extension RootView {
     private func fetchAndSplitEvents(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
@@ -246,21 +287,27 @@ extension RootView {
         
         var currentStart = realStart
         while currentStart < realEnd {
-            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart)
-            else { break }
+            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else {
+                break
+            }
             
             let pieceEnd = min(endOfDay, realEnd)
-            let partial = EKMultiDayWrapper(realEvent: ekEvent,
-                                            partialStart: currentStart,
-                                            partialEnd: pieceEnd)
+            let partial = EKMultiDayWrapper(
+                realEvent: ekEvent,
+                partialStart: currentStart,
+                partialEnd: pieceEnd
+            )
             results.append(partial)
             
             guard
                 let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
                 let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)
-            else { break }
+            else {
+                break
+            }
             currentStart = morning
         }
         return results
     }
 }
+

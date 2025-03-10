@@ -133,6 +133,11 @@ struct YearCalendarView: View {
                         } label: {
                             Label("Year", systemImage: selectedTab == 2 ? "checkmark" : "")
                         }
+                        Button {
+                            onViewChange?(4)
+                        } label: {
+                            Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
+                        }
                     } label: {
                         Image(systemName: "ellipsis.circle")
                     }
