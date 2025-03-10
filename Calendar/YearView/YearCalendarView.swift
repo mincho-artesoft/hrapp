@@ -4,12 +4,18 @@ import EventKit
 struct YearCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
-    // CHANGES
+    // CHANGES: info за активния таб и callback за смяна
     var selectedTab: Int
     var onViewChange: ((Int)->Void)?
     
+    // Показва годината
     @State private var year: Int = Calendar.current.component(.year, from: Date())
+    
+    // При клик върху даден месец, ще отваряме MonthCalendarView
     @State private var tappedMonthDate: Date? = nil
+    
+    // NEW: За редакция на (ново) събитие
+    @State private var eventToEdit: EKEvent? = nil
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,7 +28,7 @@ struct YearCalendarView: View {
                    GridItem(.flexible(), spacing: 16)]
             
             VStack {
-                // Горна лента
+                // Горна лента (показва "year" и стрелки)
                 HStack {
                     Button(action: {
                         year -= 1
@@ -44,6 +50,7 @@ struct YearCalendarView: View {
                 }
                 .padding(.horizontal)
                 
+                // Съдържание – мрежа с 12 месеца
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 32) {
                         ForEach(1...12, id: \.self) { monthIndex in
@@ -65,15 +72,15 @@ struct YearCalendarView: View {
             .onAppear {
                 viewModel.loadEventsForWholeYear(year: year)
             }
-            // Показваме MonthCalendarView като fullScreenCover, когато tappedMonthDate != nil
+            // fullScreenCover за MonthCalendarView
             .fullScreenCover(item: $tappedMonthDate) { monthStart in
                 NavigationView {
                     MonthCalendarView(
                         viewModel: viewModel,
                         startMonth: monthStart,
                         
-                        selectedTab: selectedTab,     // CHANGES
-                        onViewChange: onViewChange    // CHANGES
+                        selectedTab: selectedTab,
+                        onViewChange: onViewChange
                     )
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
@@ -85,8 +92,25 @@ struct YearCalendarView: View {
                     }
                 }
             }
-            // CHANGES: Three-dot menu
+            // NEW: sheet за системния редактор на събития
+            .sheet(item: $eventToEdit, onDismiss: {
+                // При затваряне на редактора, презареждаме цялата година
+                viewModel.loadEventsForWholeYear(year: year)
+            }) { ev in
+                EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
+            }
+            // Toolbar с “+” бутон и трите точки
             .toolbar {
+                // 1) Бутон “+”
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        createNewEventForYear()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+                
+                // 2) Бутон с трите точки (Menu)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         Button {
@@ -117,11 +141,27 @@ struct YearCalendarView: View {
         }
     }
     
+    /// Създава `Date` от дадена година и месец (примерно 2025, 7 → 1 юли 2025)
     private func dateFromYearMonth(_ year: Int, _ month: Int) -> Date {
         var comp = DateComponents()
         comp.year = year
         comp.month = month
         comp.day = 1
         return Calendar.current.date(from: comp) ?? Date()
+    }
+    
+    // NEW: Примерен метод, създаващ събитие за "днешна дата"
+    private func createNewEventForYear() {
+        // Може да е "първия ден на текущата година", Date(), или нещо друго
+        let newEvent = EKEvent(eventStore: viewModel.eventStore)
+        newEvent.title = "New Event"
+        newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
+        
+        // Тук избираме да е за "днес" (текущ час)
+        let start = Date()
+        newEvent.startDate = start
+        newEvent.endDate   = start.addingTimeInterval(3600)
+        
+        eventToEdit = newEvent
     }
 }
