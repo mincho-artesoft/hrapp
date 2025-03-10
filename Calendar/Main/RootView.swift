@@ -29,98 +29,100 @@ struct RootView: View {
                 .edgesIgnoringSafeArea(.all)
             
             NavigationView {
-                VStack {
-                    Picker("View", selection: $selectedTab) {
-                        Text("Day").tag(1)
-                        Text("MultiDay").tag(3)
-                        Text("Month").tag(0)
-                        Text("Year").tag(2)
-                    }
-                    .pickerStyle(.segmented)
-                    .padding()
+                GeometryReader { geometry in
+                    let isPortrait = geometry.size.height > geometry.size.width
                     
-                    switch selectedTab {
-                    case 0:
-                        // Месечен календар
-                        MonthCalendarView(
-                            viewModel: CalendarViewModel.shared,
-                            startMonth: Date()
-                        )
-                        
-                    case 1:
-                        // Single Day
-                        TwoWayPinnedMultiDayWrapper(
-                            fromDate: $pinnedFromDateSingle,
-                            toDate: $pinnedToDateSingle,
-                            events: $pinnedEventsSingle,
-                            eventStore: CalendarViewModel.shared.eventStore,
-                            isSingleDay: true
-                        ) { tappedDay in
-                            pinnedFromDateSingle = tappedDay
-                            pinnedToDateSingle   = tappedDay
-                            loadSingleDayEvents()
+                    VStack {
+                        Picker("View", selection: $selectedTab) {
+                            Text("Day").tag(1)
+                            Text("MultiDay").tag(3)
+                            Text("Month").tag(0)
+                            Text("Year").tag(2)
                         }
-                        .onAppear {
-                            loadSingleDayEvents()
-                        }
-                        .onReceive(timer) { _ in
-                            loadSingleDayEvents()
-                        }
+                        .pickerStyle(.segmented)
+                        .padding()
                         
-                    case 2:
-                        // Годишен календар
-                        YearCalendarView(viewModel: CalendarViewModel.shared)
-                        
-                    case 3:
-                        // MultiDay (начална дата: pinnedFromDateMulti, крайна: pinnedToDateMulti)
-                        TwoWayPinnedMultiDayWrapper(
-                            fromDate: $pinnedFromDateMulti,
-                            toDate: $pinnedToDateMulti,
-                            events: $pinnedEventsMulti,
-                            eventStore: CalendarViewModel.shared.eventStore,
-                            isSingleDay: false
-                        ) { tappedDay in
-                            // Когато натиснем върху ден от DaysHeaderView:
-                            // 1) Превключваме директно на Single Day,
-                            //    като задаваме "tappedDay" и в двата state-а
-                            pinnedFromDateSingle = tappedDay
-                            pinnedToDateSingle   = tappedDay
-                            loadSingleDayEvents()
+                        switch selectedTab {
+                        case 0:
+                            // Месечен календар
+                            MonthCalendarView(
+                                viewModel: CalendarViewModel.shared,
+                                startMonth: Date()
+                            )
                             
-                            // 2) Преминаваме към таба "Day"
-                            selectedTab = 1
+                        case 1:
+                            // Single Day
+                            TwoWayPinnedMultiDayWrapper(
+                                fromDate: $pinnedFromDateSingle,
+                                toDate: $pinnedToDateSingle,
+                                events: $pinnedEventsSingle,
+                                eventStore: CalendarViewModel.shared.eventStore,
+                                isSingleDay: true
+                            ) { tappedDay in
+                                pinnedFromDateSingle = tappedDay
+                                pinnedToDateSingle   = tappedDay
+                                loadSingleDayEvents()
+                            }
+                            .onAppear {
+                                loadSingleDayEvents()
+                            }
+                            .onReceive(timer) { _ in
+                                loadSingleDayEvents()
+                            }
+                            
+                        case 2:
+                            // Годишен календар
+                            YearCalendarView(viewModel: CalendarViewModel.shared)
+                            
+                        case 3:
+                            // MultiDay
+                            TwoWayPinnedMultiDayWrapper(
+                                fromDate: $pinnedFromDateMulti,
+                                toDate: $pinnedToDateMulti,
+                                events: $pinnedEventsMulti,
+                                eventStore: CalendarViewModel.shared.eventStore,
+                                isSingleDay: false
+                            ) { tappedDay in
+                                pinnedFromDateSingle = tappedDay
+                                pinnedToDateSingle   = tappedDay
+                                loadSingleDayEvents()
+                                selectedTab = 1
+                            }
+                            .onAppear {
+                                loadMultiDayEvents()
+                            }
+                            .onReceive(timer) { _ in
+                                loadMultiDayEvents()
+                            }
+                            
+                        default:
+                            Text("N/A")
                         }
-                        .onAppear {
-                            loadMultiDayEvents()
-                        }
-                        .onReceive(timer) { _ in
-                            loadMultiDayEvents()
-                        }
-                        
-                    default:
-                        Text("N/A")
                     }
-                }
-                .toolbar {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        // “Today”
-                        Button("Today") {
-                            let today = Calendar.current.startOfDay(for: Date())
-                            pinnedFromDateSingle = today
-                            pinnedToDateSingle = today
-                            selectedTab = 1 // Day view
-                        }
-                        Spacer()
-                        
-                        // “Calendars”
-                        Button("Calendars") {
-                            showCalendarsSheet = true
-                        }
-                        Spacer()
-                        
-                        // “Inbox” (пример)
-                        Button("Inbox") {
-                            // Може да покажете някакъв екран за покани
+                    // Показваме toolbar-а само ако е вертикално
+                    .toolbar {
+                        if isPortrait {
+                            ToolbarItemGroup(placement: .bottomBar) {
+                                // “Today”
+                                Button("Today") {
+                                    let today = Calendar.current.startOfDay(for: Date())
+                                    pinnedFromDateSingle = today
+                                    pinnedToDateSingle = today
+                                    selectedTab = 1 // Day view
+                                }
+                                Spacer()
+                                
+                                // “Calendars”
+                                Button("Calendars") {
+                                    showCalendarsSheet = true
+                                }
+                                Spacer()
+                                
+                                // “Inbox” (пример)
+                                Button("Inbox") {
+                                    // Покажи нещо за поканите
+                                }
+                            }
                         }
                     }
                 }
@@ -132,15 +134,15 @@ struct RootView: View {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                 
                 if accessGranted {
-                    // 2) ТУК Е КЛЮЧОВО: първо зареждаме списъка с календари
+                    // 2) Зареждане на календари
                     CalendarViewModel.shared.reloadCalendars()
                     
-                    // 3) После зареждаме събития (примерно цяла година)
+                    // 3) Зареждаме събития за цяла година
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
                     
-                    // 4) Ако сме по подразбиране на MultiDay (selectedTab = 3),
-                    //    да заредим и multi-day събитията:
+                    // 4) Ако сме по подразбиране на MultiDay,
+                    //    зареждаме MultiDay събитията:
                     loadMultiDayEvents()
                 }
             }
@@ -148,7 +150,6 @@ struct RootView: View {
         // Когато листът CalendarsSheetView се затвори, презареждаме
         .sheet(isPresented: $showCalendarsSheet, onDismiss: {
             if accessGranted {
-                // Зависи кой таб гледаме.
                 if selectedTab == 3 {
                     loadMultiDayEvents()
                 } else if selectedTab == 1 {
@@ -206,13 +207,14 @@ extension RootView {
         let allowedCalendars = CalendarViewModel.shared.allCalendars.filter {
             CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
         }
+        
         // 2) Правим predicate САМО за тези календари
         let predicate = store.predicateForEvents(withStart: from, end: to, calendars: allowedCalendars)
         let found = store.events(matching: predicate)
         
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
-            // Ако събитието е много‐дневно, да го "разцепим"
+            // Ако събитието е много‐дневно, да го "разцепим" по дни
             if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
                 splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
             } else {
