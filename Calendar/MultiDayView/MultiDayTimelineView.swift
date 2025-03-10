@@ -1010,7 +1010,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 }
             }
             else {
-                print("asd")
                 if let anchorGhost = draggingGhosts[evView] {
                     let ghostFrameInTimeline = container.convert(anchorGhost.frame, to: self)
                     
@@ -1820,28 +1819,51 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         let nowOnly = cal.startOfDay(for: now)
         let fromOnly = cal.startOfDay(for: fromDate)
         let toOnly   = cal.startOfDay(for: toDate)
-        if nowOnly < fromOnly || nowOnly > toOnly { return }
-        
+
+        // Ако искате линията да се вижда само когато "днешният" ден е в диапазона:
+        if nowOnly < fromOnly || nowOnly > toOnly {
+            return
+        }
+
         let dayIndex = dayIndexFor(now)
-        if dayIndex < 0 || dayIndex >= dayCount { return }
-        
-        let hour = CGFloat(cal.component(.hour, from: now))
+        if dayIndex < 0 || dayIndex >= dayCount {
+            return
+        }
+
+        let hour   = CGFloat(cal.component(.hour, from: now))
         let minute = CGFloat(cal.component(.minute, from: now))
         let fraction = hour + minute/60.0
         let yNow = topMargin + fraction * hourHeight
-        
-        let currentDayX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+
+        // Координати за цялата линия (отляво надясно)
+        let fullLineStartX = leadingInsetForHours
+        let fullLineEndX   = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
+
+        // Тясната част върху самия текущ ден
+        let currentDayX  = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
         let currentDayX2 = currentDayX + dayColumnWidth
-        
+
+        // 1) Полупрозрачна линия през всички колони
+        ctx.saveGState()
+        ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
+        ctx.setLineWidth(1.5)
+        ctx.beginPath()
+        ctx.move(to: CGPoint(x: fullLineStartX, y: yNow))
+        ctx.addLine(to: CGPoint(x: fullLineEndX,   y: yNow))
+        ctx.strokePath()
+        ctx.restoreGState()
+
+        // 2) Напълно непрозрачна линия само върху текущия ден
         ctx.saveGState()
         ctx.setStrokeColor(UIColor.systemRed.cgColor)
         ctx.setLineWidth(1.5)
         ctx.beginPath()
-        ctx.move(to: CGPoint(x: currentDayX, y: yNow))
+        ctx.move(to: CGPoint(x: currentDayX,  y: yNow))
         ctx.addLine(to: CGPoint(x: currentDayX2, y: yNow))
         ctx.strokePath()
         ctx.restoreGState()
     }
+
     
     // MARK: - Helpers
     private func dateToY(_ date: Date) -> CGFloat {

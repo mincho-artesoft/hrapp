@@ -4,15 +4,15 @@ import EventKit
 struct YearCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
-    @State private var year: Int = Calendar.current.component(.year, from: Date())
+    // CHANGES
+    var selectedTab: Int
+    var onViewChange: ((Int)->Void)?
     
-    // Вместо bool, използваме Date? като "item" за fullScreenCover
+    @State private var year: Int = Calendar.current.component(.year, from: Date())
     @State private var tappedMonthDate: Date? = nil
     
     var body: some View {
         GeometryReader { geometry in
-            // Ако ширината е по-голяма от височината => Landscape => 3 колони,
-            // иначе => Portrait => 2 колони.
             let isLandscape = geometry.size.width > geometry.size.height
             let columns = isLandscape
                 ? [GridItem(.flexible(), spacing: 16),
@@ -45,7 +45,6 @@ struct YearCalendarView: View {
                 .padding(.horizontal)
                 
                 ScrollView {
-                    // Тук подаваме columns, които създадохме по-горе
                     LazyVGrid(columns: columns, spacing: 32) {
                         ForEach(1...12, id: \.self) { monthIndex in
                             let dateForMonth = dateFromYearMonth(year, monthIndex)
@@ -69,16 +68,50 @@ struct YearCalendarView: View {
             // Показваме MonthCalendarView като fullScreenCover, когато tappedMonthDate != nil
             .fullScreenCover(item: $tappedMonthDate) { monthStart in
                 NavigationView {
-                    MonthCalendarView(viewModel: viewModel, startMonth: monthStart)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button("Close") {
-                                    tappedMonthDate = nil
-                                    // По желание може да презаредим годишните събития
-                                    viewModel.loadEventsForWholeYear(year: year)
-                                }
+                    MonthCalendarView(
+                        viewModel: viewModel,
+                        startMonth: monthStart,
+                        
+                        selectedTab: selectedTab,     // CHANGES
+                        onViewChange: onViewChange    // CHANGES
+                    )
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Close") {
+                                tappedMonthDate = nil
+                                viewModel.loadEventsForWholeYear(year: year)
                             }
                         }
+                    }
+                }
+            }
+            // CHANGES: Three-dot menu
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button {
+                            onViewChange?(1) // Day
+                        } label: {
+                            Label("Day", systemImage: selectedTab == 1 ? "checkmark" : "")
+                        }
+                        Button {
+                            onViewChange?(3) // MultiDay
+                        } label: {
+                            Label("MultiDay", systemImage: selectedTab == 3 ? "checkmark" : "")
+                        }
+                        Button {
+                            onViewChange?(0) // Month
+                        } label: {
+                            Label("Month", systemImage: selectedTab == 0 ? "checkmark" : "")
+                        }
+                        Button {
+                            onViewChange?(2) // Year
+                        } label: {
+                            Label("Year", systemImage: selectedTab == 2 ? "checkmark" : "")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
                 }
             }
         }

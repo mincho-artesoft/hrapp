@@ -1,37 +1,46 @@
 import SwiftUI
 import EventKit
 import EventKitUI
-import UniformTypeIdentifiers
 
 struct MonthCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
-    /// Начална дата за този месец (напр. 1-ви януари)
+    /// Начална дата за този месец
     var startMonth: Date
     
-    /// Вместо Bool `showDayView`, ще използваме Date? като "item"
+    /// Кое "tab" е в момента (0=Month)
+    var selectedTab: Int                    // CHANGES
+    
+    /// Смяна на екрана оттук
+    var onViewChange: ((Int)->Void)?        // CHANGES
+    
+    // Вместо Bool `showDayView`, ще използваме Date? като "item"
     @State private var selectedDayForFullScreen: Date? = nil
     
-    /// Вместо Bool `showEventEditor`, директно ползваме eventToEdit = EKEvent?
+    // Вместо Bool `showEventEditor`, директно `eventToEdit`
     @State private var eventToEdit: EKEvent? = nil
     
-    // За recurring събития
+    // За recurring
     @State private var showRepeatingDialog = false
     @State private var repeatingEvent: EKEvent?
     @State private var repeatingNewDate: Date?
     
     @State private var currentMonth: Date
-
+    
     private let calendar = Calendar(identifier: .gregorian)
     
-    // Тук пазим събитията (EventDescriptor) за конкретния ден,
-    // които подаваме на TwoWayPinnedMultiDayWrapper.
+    // Тук пазим събитията за конкретния ден
     @State private var pinnedDayEvents: [EventDescriptor] = []
     
-    init(viewModel: CalendarViewModel, startMonth: Date) {
+    init(viewModel: CalendarViewModel, startMonth: Date,
+         selectedTab: Int, // CHANGES
+         onViewChange: ((Int)->Void)? // CHANGES
+    ) {
         self.viewModel = viewModel
         self.startMonth = startMonth
-        _currentMonth = State(initialValue: startMonth)
+        self._currentMonth = State(initialValue: startMonth)
+        self.selectedTab = selectedTab // CHANGES
+        self.onViewChange = onViewChange
     }
     
     var body: some View {
@@ -59,10 +68,9 @@ struct MonthCalendarView: View {
             WeekdayHeaderView()
                 .padding(.top, 8)
             
-            // Генерираме всички дати за показване в мрежата 7x6 (или 7x5) за месеца
+            // Генерираме датите за месеца
             let dates = calendar.generateDatesForMonthGrid(for: currentMonth)
-
-            // >>> ПРОМЯНАТА ТУК: ScrollView, който обгръща LazyVGrid <<<
+            
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
                     ForEach(dates, id: \.self) { day in
@@ -78,18 +86,13 @@ struct MonthCalendarView: View {
                             },
                             onDayTap: { tappedDay in
                                 if viewModel.isCalendarAccessGranted() {
-                                    // Вместо showDayView = true -> задаваме selectedDayForFullScreen
                                     selectedDayForFullScreen = tappedDay
-                                } else {
-                                    // Ако нямате достъп:
-                                    // await viewModel.requestCalendarAccessIfNeeded()
                                 }
                             },
                             onDayLongPress: { pressedDay in
                                 createAndEditNewEvent(on: pressedDay)
                             },
                             onEventTap: { tappedEvent in
-                                // Вместо showEventEditor = true, директно задаваме eventToEdit
                                 eventToEdit = tappedEvent
                             }
                         )
@@ -98,34 +101,35 @@ struct MonthCalendarView: View {
                 .padding(.horizontal, 8)
             }
         }
-        // Презареждаме събитията за текущия месец при onAppear:
         .onAppear {
             viewModel.loadEvents(for: currentMonth)
         }
-        
-        // Показваме Day View (fullScreenCover) -
-        // TwoWayPinnedMultiDayWrapper вместо CalendarKit DayViewController.
+        // fullScreenCover за DayView
         .fullScreenCover(item: $selectedDayForFullScreen) { day in
             NavigationView {
                 TwoWayPinnedMultiDayWrapper(
-                    fromDate: .constant(day),   // изглед от day до day (1 ден)
+                    fromDate: .constant(day),
                     toDate: .constant(day),
                     events: $pinnedDayEvents,
                     eventStore: viewModel.eventStore,
-                    isSingleDay: true
+                    isSingleDay: true,
+                    
+                    // Pass current tab + callback
+                    selectedTab: selectedTab,              // CHANGES
+                    onViewChange: onViewChange             // CHANGES
+                    
                 ) { tappedDay in
-                    // Ако кликнем друг ден, може да сменим selectedDayForFullScreen
+                    // Ако кликнем друг ден, сменяме selectedDayForFullScreen
                     selectedDayForFullScreen = tappedDay
                 }
                 .onAppear {
-                    // Зареждаме събитията за този конкретен ден
                     loadPinnedDayEvents(for: day)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Close") {
                             selectedDayForFullScreen = nil
-                            // По желание, презаредете събитията на месеца
+                            // По желание, презареждаме събитията на месеца
                             viewModel.loadEvents(for: currentMonth)
                         }
                     }
@@ -134,16 +138,13 @@ struct MonthCalendarView: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
-        
-        // Системният редактор за EKEvent (sheet)
+        // System event editor
         .sheet(item: $eventToEdit, onDismiss: {
-            // ВАЖНО: презареждаме събитията, когато редакторът се затвори
             viewModel.loadEvents(for: currentMonth)
         }) { event in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: event)
         }
-        
-        // Диалог за многократни (recurring) събития
+        // Recurring dialog
         .confirmationDialog("This is a repeating event.", isPresented: $showRepeatingDialog) {
             Button("Save for This Event Only") {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
@@ -157,9 +158,42 @@ struct MonthCalendarView: View {
             }
             Button("Cancel", role: .cancel) {}
         }
+        // CHANGES: Three-dot menu in the nav bar
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
+                    // Day
+                    Button {
+                        onViewChange?(1) // switch to Day
+                    } label: {
+                        Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                    }
+                    // MultiDay
+                    Button {
+                        onViewChange?(3) // switch to MultiDay
+                    } label: {
+                        Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                    }
+                    // Month
+                    Button {
+                        // Already on Month (0), do nothing or re-trigger
+                        onViewChange?(0)
+                    } label: {
+                        Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                    }
+                    // Year
+                    Button {
+                        onViewChange?(2)
+                    } label: {
+                        Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+            }
+        }
     }
     
-    // Смяна на месеца
     private func moveMonth(by offset: Int) {
         if let newMonth = calendar.date(byAdding: .month, value: offset, to: currentMonth) {
             currentMonth = newMonth
@@ -170,11 +204,10 @@ struct MonthCalendarView: View {
     private func formattedMonthYear(_ date: Date) -> String {
         let df = DateFormatter()
         df.locale = Locale(identifier: "en_US")
-        df.dateFormat = "LLLL yyyy" // "January 2025"
+        df.dateFormat = "LLLL yyyy"
         return df.string(from: date).capitalized
     }
     
-    // Drag&Drop на събитие
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
         guard let droppedEvent = viewModel.eventsByID[eventID] else { return }
         
@@ -187,7 +220,6 @@ struct MonthCalendarView: View {
         }
     }
     
-    // Преместване на събитие
     private func moveEvent(_ event: EKEvent, to newDate: Date, span: EKSpan) {
         let cal = Calendar.current
         guard let oldStart = event.startDate,
@@ -208,57 +240,47 @@ struct MonthCalendarView: View {
         } catch {
             print("Error saving event: \(error)")
         }
-        // Презареждаме:
         viewModel.loadEvents(for: currentMonth)
     }
     
-    // Създаваме ново събитие с long press
     private func createAndEditNewEvent(on day: Date) {
         let status = EKEventStore.authorizationStatus(for: .event)
-        
         if #available(iOS 17.0, *) {
-            // iOS 17+: Check for either full access or write-only access.
             switch status {
             case .fullAccess, .writeOnly:
                 presentNewEvent(on: day)
             case .notDetermined:
-                // Може да поискате достъп, ако желаете (async/await)
                 print("TODO: requestCalendarAccessIfNeeded()")
             default:
                 print("No calendar access.")
             }
         } else {
-            // Pre-iOS 17: Use the old .authorized status.
             if status == .authorized {
                 presentNewEvent(on: day)
             } else if status == .notDetermined {
-                // Може да поискате достъп, ако желаете
                 print("TODO: requestCalendarAccessIfNeeded()")
             } else {
                 print("No calendar access.")
             }
         }
     }
-
+    
     private func presentNewEvent(on day: Date) {
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
         let cal = Calendar.current
         
         let startOfDay = cal.startOfDay(for: day)
-        newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)   // 09:00
-        newEvent.endDate   = startOfDay.addingTimeInterval(10 * 3600)  // 10:00
+        newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)
+        newEvent.endDate   = startOfDay.addingTimeInterval(10 * 3600)
         newEvent.title     = "New Event"
         newEvent.calendar  = viewModel.eventStore.defaultCalendarForNewEvents
         
-        // Отваряме новото събитие за редакция
         eventToEdit = newEvent
     }
     
-    // Зареждаме EKEvent-и като EventDescriptor, за да ги подадем на TwoWayPinnedMultiDayWrapper.
     private func loadPinnedDayEvents(for day: Date) {
         let cal = Calendar.current
         let dayStart = cal.startOfDay(for: day)
-        
         guard let nextDay = cal.date(byAdding: .day, value: 1, to: dayStart) else { return }
         
         let predicate = viewModel.eventStore.predicateForEvents(
@@ -266,17 +288,12 @@ struct MonthCalendarView: View {
             end: nextDay,
             calendars: nil
         )
-        
         let found = viewModel.eventStore.events(matching: predicate)
         
-        // Ако събитията минават отвъд един ден, може да ги "раздробите"
-        // с допълнителна логика (splitEventByDays). Тук е пример:
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
             let realStart = ekEvent.startDate
             let realEnd   = ekEvent.endDate
-            
-            // Ако пресичат границата ден/следващ ден, раздробяваме:
             if realStart! < dayStart || realEnd! > nextDay {
                 splitted.append(contentsOf: splitEventByDays(ekEvent,
                                                              startRange: dayStart,
@@ -285,11 +302,9 @@ struct MonthCalendarView: View {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
         }
-        
         pinnedDayEvents = splitted
     }
     
-    /// Примерна функция за "раздробяване" на EKEvent, който прелива през няколко дни.
     private func splitEventByDays(_ ekEvent: EKEvent,
                                   startRange: Date,
                                   endRange: Date) -> [EKMultiDayWrapper] {
@@ -304,9 +319,7 @@ struct MonthCalendarView: View {
         while currentStart < realEnd {
             guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59,
                                           of: currentStart)
-            else {
-                break
-            }
+            else { break }
             let pieceEnd = min(endOfDay, realEnd)
             
             let partial = EKMultiDayWrapper(
@@ -318,9 +331,7 @@ struct MonthCalendarView: View {
             
             guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
                   let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)
-            else {
-                break
-            }
+            else { break }
             currentStart = morning
         }
         
