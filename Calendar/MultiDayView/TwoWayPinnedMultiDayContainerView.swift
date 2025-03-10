@@ -3,7 +3,7 @@ import SwiftUI
 import EventKit
 
 // MARK: - TwoWayPinnedMultiDayContainerView
-public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate {
+public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
     // MARK: - Public configuration
     public var showSingleDay: Bool = false {
@@ -86,6 +86,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
     }
     
+    /// NEW: Добавяме пропърти, което ще извикваме при натискане на бутона “+”
+    public var onAddNewEvent: (() -> Void)?
+
     // MARK: - Subviews
     public let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
@@ -125,6 +128,15 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     private let viewMenuButton: UIButton = {
         let btn = UIButton(type: .system)
         let image = UIImage(systemName: "ellipsis.circle")
+        btn.setImage(image, for: .normal)
+        btn.tintColor = .label
+        return btn
+    }()
+    
+    /// NEW: Добавяме още един бутон за “+”
+    private let addEventButton: UIButton = {
+        let btn = UIButton(type: .system)
+        let image = UIImage(systemName: "plus")
         btn.setImage(image, for: .normal)
         btn.tintColor = .label
         return btn
@@ -226,12 +238,19 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
+        // singleDay button
         navBar.addSubview(singleDayButton)
         singleDayButton.addTarget(self, action: #selector(openSingleDayPicker), for: .touchUpInside)
         
+        // dateRange button
         dateRangeButton.addTarget(self, action: #selector(didTapDateRangeButton), for: .touchUpInside)
         navBar.addSubview(dateRangeButton)
         
+        // NEW: addEventButton
+        navBar.addSubview(addEventButton)
+        addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
+        
+        // viewMenu button
         if #available(iOS 14.0, *) {
             viewMenuButton.showsMenuAsPrimaryAction = true
         } else {
@@ -272,6 +291,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         // ------------------------------------------------------------------------------------
     }
     
+    // MARK: - NEW: бутон “+”
+    @objc private func addEventButtonTapped() {
+        onAddNewEvent?()
+    }
+    
     // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -281,11 +305,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         }
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         
-        // Логика за позиция на бутоните singleDayButton/viewMenuButton...
+        // Логика за позиция на бутоните singleDayButton, viewMenuButton, dateRangeButton...
         let menuBtnSize: CGFloat = 34
         let singleBtnSize: CGFloat = 34
+        let plusBtnSize: CGFloat = 34
         let margin: CGFloat = 8
         
+        // Най-вдясно е бутонът с трите точки
         let menuButtonX = navBar.bounds.width - menuBtnSize - 10
         let centerY = (navBar.bounds.height - menuBtnSize) / 2
         
@@ -300,12 +326,24 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             viewMenuButton.menu = buildViewMenu()
         }
         
+        // Вляво от бутона с трите точки е + бутона
+        let plusButtonX = menuButtonX - plusBtnSize - margin
+        addEventButton.frame = CGRect(
+            x: plusButtonX,
+            y: centerY,
+            width: plusBtnSize,
+            height: plusBtnSize
+        )
+        
+        // singleDayButton или dateRangeButton
         if showSingleDay {
             singleDayButton.isHidden = false
             dateRangeButton.isHidden = true
             
-            let singleDayX = menuButtonX - singleBtnSize - margin
-            let singleDayY = (navBar.bounds.height - singleBtnSize) / 2
+            // singleDayButton вляво от плюс бутона
+            let singleDayX = plusButtonX - singleBtnSize - margin
+            let singleDayY = centerY
+            
             singleDayButton.frame = CGRect(
                 x: singleDayX,
                 y: singleDayY,
@@ -318,7 +356,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             
             let btnW: CGFloat = 220
             let btnH: CGFloat = 40
-            let x = (navBar.bounds.width - btnW) / 2 - 20
+            let x = (navBar.bounds.width - (btnW + plusBtnSize + menuBtnSize + margin * 2)) / 2
             let y = (navBar.bounds.height - btnH) / 2
             dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
         }
@@ -407,7 +445,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         )
         
         // ------------------------------------------------------------------------------------
-        // FIX: Вместо директно "25 * hourHeight", вадим topMargin от weekView:
+        // Вместо директно "25 * hourHeight", вадим topMargin от weekView:
         // ------------------------------------------------------------------------------------
         let totalHours = 25  // 0..24
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
@@ -507,7 +545,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             self?.onViewChange?(2)
         }
         
-        return UIMenu(title: "", children: [dayAction, multiAction, monthAction, yearAction])
+        // REMOVED: Няма “Add Event” тук, защото вече е отделен бутон
+        
+        return UIMenu(
+            title: "",
+            children: [dayAction, multiAction, monthAction, yearAction]
+        )
     }
     
     // MARK: - Legacy menu (iOS < 14)
@@ -528,6 +571,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         sheet.addAction(UIAlertAction(title: "Year", style: .default, handler: { [weak self] _ in
             self?.onViewChange?(2)
         }))
+        
+        // REMOVED: Няма “Add Event” тук, защото вече е отделен бутон
+        
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         if let windowScene = UIApplication.shared.connectedScenes
@@ -714,10 +760,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             topVC.present(alert, animated: true, completion: nil)
         }
     }
-}
-
-// MARK: - UIGestureRecognizerDelegate
-extension TwoWayPinnedMultiDayContainerView: UIGestureRecognizerDelegate {
+    
+    // MARK: - UIGestureRecognizerDelegate
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                                   shouldReceive touch: UITouch) -> Bool {
         guard let hostingView = calendarHostingController?.view else {
@@ -732,3 +776,4 @@ extension TwoWayPinnedMultiDayContainerView: UIGestureRecognizerDelegate {
         return true
     }
 }
+

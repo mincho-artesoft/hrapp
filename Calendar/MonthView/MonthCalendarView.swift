@@ -9,10 +9,9 @@ struct MonthCalendarView: View {
     var startMonth: Date
     
     /// Кое "tab" е в момента (0=Month)
-    var selectedTab: Int                    // CHANGES
-    
+    var selectedTab: Int
     /// Смяна на екрана оттук
-    var onViewChange: ((Int)->Void)?        // CHANGES
+    var onViewChange: ((Int)->Void)?
     
     // Вместо Bool `showDayView`, ще използваме Date? като "item"
     @State private var selectedDayForFullScreen: Date? = nil
@@ -33,13 +32,13 @@ struct MonthCalendarView: View {
     @State private var pinnedDayEvents: [EventDescriptor] = []
     
     init(viewModel: CalendarViewModel, startMonth: Date,
-         selectedTab: Int, // CHANGES
-         onViewChange: ((Int)->Void)? // CHANGES
+         selectedTab: Int,
+         onViewChange: ((Int)->Void)?
     ) {
         self.viewModel = viewModel
         self.startMonth = startMonth
         self._currentMonth = State(initialValue: startMonth)
-        self.selectedTab = selectedTab // CHANGES
+        self.selectedTab = selectedTab
         self.onViewChange = onViewChange
     }
     
@@ -114,9 +113,8 @@ struct MonthCalendarView: View {
                     eventStore: viewModel.eventStore,
                     isSingleDay: true,
                     
-                    // Pass current tab + callback
-                    selectedTab: selectedTab,              // CHANGES
-                    onViewChange: onViewChange             // CHANGES
+                    selectedTab: selectedTab,
+                    onViewChange: onViewChange
                     
                 ) { tappedDay in
                     // Ако кликнем друг ден, сменяме selectedDayForFullScreen
@@ -158,8 +156,19 @@ struct MonthCalendarView: View {
             }
             Button("Cancel", role: .cancel) {}
         }
-        // CHANGES: Three-dot menu in the nav bar
+        // Тук добавяме отделен "+" бутон, редом до трите точки
         .toolbar {
+            // 1) Бутон “+”
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    // Решете сами дали да създавате събитие за "днешния" ден или друго
+                    createAndEditNewEvent(on: Date())
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            
+            // 2) Бутон с трите точки (Menu)
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     // Day
@@ -176,7 +185,6 @@ struct MonthCalendarView: View {
                     }
                     // Month
                     Button {
-                        // Already on Month (0), do nothing or re-trigger
                         onViewChange?(0)
                     } label: {
                         Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
@@ -295,9 +303,11 @@ struct MonthCalendarView: View {
             let realStart = ekEvent.startDate
             let realEnd   = ekEvent.endDate
             if realStart! < dayStart || realEnd! > nextDay {
-                splitted.append(contentsOf: splitEventByDays(ekEvent,
-                                                             startRange: dayStart,
-                                                             endRange: nextDay))
+                splitted.append(contentsOf: splitEventByDays(
+                    ekEvent,
+                    startRange: dayStart,
+                    endRange: nextDay
+                ))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
@@ -317,8 +327,7 @@ struct MonthCalendarView: View {
         
         var currentStart = realStart
         while currentStart < realEnd {
-            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59,
-                                          of: currentStart)
+            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart)
             else { break }
             let pieceEnd = min(endOfDay, realEnd)
             

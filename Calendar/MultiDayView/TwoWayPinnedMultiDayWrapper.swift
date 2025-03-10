@@ -1,7 +1,8 @@
 import SwiftUI
-import EventKit
 import EventKitUI
+import EventKit
 
+// MARK: - TwoWayPinnedMultiDayWrapper
 public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     
     @Binding var fromDate: Date
@@ -11,7 +12,6 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     let eventStore: EKEventStore
     var isSingleDay: Bool
     
-    // CHANGES:
     var selectedTab: Int
     var onViewChange: ((Int)->Void)?
     
@@ -26,7 +26,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         container.fromDate = fromDate
         container.toDate   = toDate
         
-        // Split all-day vs. regular
+        // Разделяме all-day и regular
         let (allDay, regular) = splitAllDay(events)
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
@@ -36,17 +36,20 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             toDate   = newTo
             context.coordinator.reloadCurrentRange()
         }
+        
         container.onEventTap = { descriptor in
             if let multi = descriptor as? EKMultiDayWrapper {
                 context.coordinator.presentSystemEditor(multi.ekEvent, in: vc)
             }
         }
+        
         container.onEmptyLongPress = { date in
             context.coordinator.createNewEventAndPresent(date: date, in: vc)
         }
         container.allDayView.onEmptyLongPress = { date in
             context.coordinator.createAllDayEventAndPresent(date: date, in: vc)
         }
+        
         container.onEventDragEnded = { descriptor, newDate, isAllDay in
             context.coordinator.handleEventDragOrResize(descriptor: descriptor,
                                                         newDate: newDate,
@@ -59,13 +62,19 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                                                         isResize: true,
                                                         isAllDay: false)
         }
+        
         container.onDayLabelTap = { day in
             onDayLabelTap?(day)
         }
         
-        // CHANGES: pass the needed info to the container
         container.currentView = selectedTab
         container.onViewChange = onViewChange
+        
+        // NEW: Натискане на бутона “+” в горния десен ъгъл
+        container.onAddNewEvent = {
+            // Примерно създаваме ново събитие за "сега", или за fromDate:
+            context.coordinator.createNewEventAndPresent(date: Date(), in: vc)
+        }
         
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -94,7 +103,6 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
         
-        // CHANGES: keep in sync
         container.currentView = selectedTab
         container.onViewChange = onViewChange
         
@@ -135,9 +143,9 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             let fromOnly = cal.startOfDay(for: parent.fromDate)
             let toOnly   = cal.startOfDay(for: parent.toDate)
             let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) ?? toOnly
-            
+
             let allowedCals = CalendarViewModel.shared.allowedCalendars()
-            
+
             let predicate = parent.eventStore.predicateForEvents(
                 withStart: fromOnly,
                 end: actualEnd,
