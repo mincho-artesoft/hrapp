@@ -41,9 +41,31 @@ public final class HoursColumnView: UIView {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
-        // Рисуваме линиите и текстовете за часовете 0..24 (общо 25 линии)
+        // 1) Изчисляваме fractionCur, за да знаем къде е текущото време (ако има)
+        //    Ако currentTime не е зададено, fractionCur ще остане -1, което значи „няма текущ час“.
+        var fractionCur: CGFloat = -1
+        if let current = currentTime {
+            let cal = Calendar.current
+            let comps = cal.dateComponents([.hour, .minute], from: current)
+            let hourF = CGFloat(comps.hour ?? 0)
+            let minuteF = CGFloat(comps.minute ?? 0)
+            fractionCur = hourF + minuteF/60.0
+        }
+
+        // 2) Рисуваме линиите и текстовете за часовете 0..24 (общо 25 линии)
+        //    но пропускаме (continue) близкия час, ако е под 15 мин. разлика от fractionCur
         for hour in 0...24 {
             let y = extraMarginTopBottom + CGFloat(hour)*hourHeight
+            
+            // Проверка: ако имаме текущ час, дали hour е под 15 мин разлика?
+            if fractionCur >= 0 {
+                let diffHours = abs(CGFloat(hour) - fractionCur)
+                let diffMinutes = diffHours * 60
+                // Ако е по-малко от 15 мин, пропускаме рисуването
+                if diffMinutes < 15 {
+                    continue
+                }
+            }
 
             // Малка чертичка в десния край
             ctx.setStrokeColor(UIColor.lightGray.cgColor)
@@ -52,7 +74,7 @@ public final class HoursColumnView: UIView {
             ctx.addLine(to: CGPoint(x: bounds.width, y: y))
             ctx.strokePath()
 
-            // Текст на часа (напр. "1 AM", "12 PM" и т.н.)
+            // Текст на часа (напр. "1 AM", "12 PM", и т.н.)
             let hourStr = hourString12HourFormat(hour)
             let attrStr = NSAttributedString(
                 string: hourStr,
@@ -67,7 +89,7 @@ public final class HoursColumnView: UIView {
             attrStr.draw(at: CGPoint(x: textX, y: textY))
         }
 
-        // Маркер за конкретна минута (пример: .30)
+        // 3) Маркер за конкретна минута (пример: .30)
         if let mark = selectedMinuteMark {
             let h = mark.hour
             let m = mark.minute
@@ -91,39 +113,27 @@ public final class HoursColumnView: UIView {
             }
         }
 
-        // Оранжев балон за "сега"
-        if isCurrentDayInWeek, let current = currentTime {
-            let cal = Calendar.current
-            let comps = cal.dateComponents([.hour, .minute], from: current)
-            let hourF = CGFloat(comps.hour ?? 0)
-            let minuteF = CGFloat(comps.minute ?? 0)
-            let fraction = hourF + minuteF/60.0
+        // 4) Ако денят е в обхвата — рисуваме текущия час в ЧЕРВЕНО (без балон)
+        if isCurrentDayInWeek, fractionCur >= 0 {
+            let yPos = extraMarginTopBottom + fractionCur * hourHeight
 
-            let yPos = extraMarginTopBottom + fraction*hourHeight
-            let bubbleText = hourMinuteAmPmString(hour: Int(hourF), minute: Int(minuteF))
+            // Превръщаме fractionCur обратно към (час, минути) за надписа
+            let hourPart = Int(floor(fractionCur))
+            let minutePart = Int(round((fractionCur - CGFloat(hourPart)) * 60))
 
-            let bubbleFont = UIFont.systemFont(ofSize: 10, weight: .semibold)
-            let bubbleAttrs: [NSAttributedString.Key: Any] = [
-                .font: bubbleFont,
-                .foregroundColor: UIColor.white
+            let currentTimeText = hourMinuteAmPmString(hour: hourPart, minute: minutePart)
+
+            let attrs: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 11, weight: .semibold),
+                .foregroundColor: UIColor.systemRed
             ]
-            let textSize = (bubbleText as NSString).size(withAttributes: bubbleAttrs)
-            let bubbleWidth = textSize.width + 12
-            let bubbleHeight = textSize.height + 4
-
-            let bubbleX = bounds.width - bubbleWidth - 4
-            let bubbleY = yPos - bubbleHeight/2
-            let bubbleRect = CGRect(x: bubbleX, y: bubbleY, width: bubbleWidth, height: bubbleHeight)
-
-            let path = UIBezierPath(roundedRect: bubbleRect, cornerRadius: bubbleHeight/2)
-            UIColor.systemOrange.setFill()
-            path.fill()
-
-            let textX = bubbleX + (bubbleWidth - textSize.width)/2
-            let textY = bubbleY + (bubbleHeight - textSize.height)/2
-            (bubbleText as NSString).draw(at: CGPoint(x: textX, y: textY), withAttributes: bubbleAttrs)
+            let size = (currentTimeText as NSString).size(withAttributes: attrs)
+            let textX = bounds.width - size.width - 4
+            let textY = yPos - size.height / 2
+            (currentTimeText as NSString).draw(at: CGPoint(x: textX, y: textY), withAttributes: attrs)
         }
     }
+
 
     private func hourString12HourFormat(_ hour: Int) -> String {
         let hrMod12 = hour % 12

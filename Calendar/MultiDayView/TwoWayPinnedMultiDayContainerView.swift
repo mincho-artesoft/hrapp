@@ -161,7 +161,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     
     fileprivate let navBarHeight: CGFloat = 60
     fileprivate let daysHeaderHeight: CGFloat = 40
-    fileprivate let leftColumnWidth: CGFloat = 70
+    fileprivate let leftColumnWidth: CGFloat = 60
     
     // For "all-day" label's top & bottom borders
     private let topBorder = CALayer()
@@ -242,8 +242,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
         
         // 6) allDayTitleLabel
         allDayTitleLabel.text = "  all-day"
+        allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         addSubview(allDayTitleLabel)
+
         
         // add top & bottom borders inside the allDayTitleLabel
         topBorder.backgroundColor = UIColor.lightGray.cgColor
