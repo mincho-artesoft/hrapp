@@ -308,7 +308,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
+
+        // ----------------------------------------------------
+        // ВАЖНО: Синхронизираме topMargin и hourHeight:
+        weekView.topMargin = hoursColumnView.extraMarginTopBottom
+        weekView.hourHeight = hoursColumnView.hourHeight
+        // ----------------------------------------------------
+
         // Find the navBar (the view with height == navBarHeight)
         guard let navBar = subviews.first(where: { $0.bounds.height == navBarHeight }) else {
             return
@@ -352,7 +358,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
             viewMenuButton.menu = buildViewMenu()
         }
         
-        // Layout the rest
         let yMain = navBarHeight
         
         cornerView.frame = CGRect(x: 0, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
@@ -515,10 +520,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView, UIScrollViewDelega
     // MARK: - iOS 14+ menu
     @available(iOS 14.0, *)
     private func buildViewMenu() -> UIMenu {
-        // For example: Day(1), MultiDay(3), Month(0), Year(2)
-        // showSingleDay => "Day"
-        // not showSingleDay => "MultiDay"
-        
         let dayAction = UIAction(
             title: "Day",
             state: (currentView == 1 ? .on : .off)
