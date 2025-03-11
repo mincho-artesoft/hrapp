@@ -239,17 +239,28 @@ struct AllEventsListView: View {
         let cal = Calendar.current
         let newEvent = EKEvent(eventStore: CalendarViewModel.shared.eventStore)
         
-        // Взимаме началото на "day" (т.е. 00:00ч),
-        // за да сме сигурни, че новото събитие
-        // ще е в същия ден, който потребителят вижда.
-        let dayStart = cal.startOfDay(for: day)
-        newEvent.startDate = dayStart
-        newEvent.endDate   = cal.date(byAdding: .hour, value: 1, to: dayStart)!
+        // Вземаме [year, month, day] от подадения "day"
+        var dateComponents = cal.dateComponents([.year, .month, .day], from: day)
+        
+        // И вземаме [hour, minute] от текущия момент
+        let nowComponents = cal.dateComponents([.hour, .minute], from: Date())
+        
+        // Комбинираме ги:
+        dateComponents.hour = nowComponents.hour
+        dateComponents.minute = nowComponents.minute
+        
+        // Създаваме начален час като “текущия час в избрания ден”
+        let startDate = cal.date(from: dateComponents)!
+        newEvent.startDate = startDate
+        
+        // Задаваме край – например +1 час
+        newEvent.endDate   = cal.date(byAdding: .hour, value: 1, to: startDate)!
         
         newEvent.title = "New Event"
         newEvent.calendar = CalendarViewModel.shared.eventStore.defaultCalendarForNewEvents
         eventToEdit = newEvent
     }
+
 }
 
 // MARK: - Допълнителни под-вюта

@@ -7,16 +7,16 @@ struct RootView: View {
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
     private let chunkDays: Int = 30
-
+    
     /// Докога МАКС можем да зареждаме напред (+3 години)
     private let maxLoadDate: Date = {
         let cal = Calendar.current
         return cal.date(byAdding: .year, value: 3, to: Date())!
     }()
-
+    
     /// От коя дата сме заредили *назад*
     @State private var loadedFrom: Date = Calendar.current.startOfDay(for: Date())
-
+    
     /// Докога МИНИМУМ можем да зареждаме назад (до -1 година)
     private let minLoadDate: Date = {
         let cal = Calendar.current
@@ -58,7 +58,7 @@ struct RootView: View {
                     
                     VStack {
                         switch selectedTab {
-                        // 0) Month
+                            // 0) Month
                         case 0:
                             MonthCalendarView(
                                 viewModel: CalendarViewModel.shared,
@@ -69,7 +69,7 @@ struct RootView: View {
                                 }
                             )
                             
-                        // 1) Day
+                            // 1) Day
                         case 1:
                             TwoWayPinnedMultiDayWrapper(
                                 fromDate: $pinnedFromDateSingle,
@@ -89,7 +89,7 @@ struct RootView: View {
                             .onAppear { loadSingleDayEvents() }
                             .onReceive(timer) { _ in loadSingleDayEvents() }
                             
-                        // 2) Year
+                            // 2) Year
                         case 2:
                             YearCalendarView(
                                 viewModel: CalendarViewModel.shared,
@@ -99,7 +99,7 @@ struct RootView: View {
                                 }
                             )
                             
-                        // 3) MultiDay
+                            // 3) MultiDay
                         case 3:
                             TwoWayPinnedMultiDayWrapper(
                                 fromDate: $pinnedFromDateMulti,
@@ -120,15 +120,19 @@ struct RootView: View {
                             .onAppear { loadMultiDayEvents() }
                             .onReceive(timer) { _ in loadMultiDayEvents() }
                             
-                        // 4) AllEventsList
+                            // 4) AllEventsList
                         case 4:
+                            // ВАЖНО: ТУК ПРОМЕНЯМЕ loadInitialEvents, за да презареди целия диапазон!
                             AllEventsListView(
                                 pinnedAllEvents: $pinnedAllEvents,
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
                                 },
-                                loadInitialEvents: { loadNextChunkOfEvents() },
+                                // Вместо loadNextChunkOfEvents() -> извикваме reloadAllEvents()
+                                loadInitialEvents: {
+                                    reloadAllEvents()
+                                },
                                 onLoadMoreAfter: {
                                     if loadedUntil < maxLoadDate {
                                         loadNextChunkOfEvents()
@@ -178,6 +182,8 @@ struct RootView: View {
                     CalendarViewModel.shared.reloadCalendars()
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
+                    
+                    // Зареждаме Day или MultiDay, ако е избран такъв таб
                     if selectedTab == 3 {
                         loadMultiDayEvents()
                     } else if selectedTab == 1 {
@@ -188,6 +194,7 @@ struct RootView: View {
         }
         .sheet(isPresented: $showCalendarsSheet, onDismiss: {
             if accessGranted {
+                // Ако потребителят смени календари, да презаредим
                 if selectedTab == 3 {
                     loadMultiDayEvents()
                 } else if selectedTab == 1 {
@@ -199,7 +206,6 @@ struct RootView: View {
         }) {
             CalendarsSheetView()
         }
-        // Sheet за редактиране е премахната от RootView, тъй като тя сега се управлява в AllEventsListView
     }
 }
 
@@ -219,7 +225,8 @@ extension RootView {
         guard accessGranted else { return }
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: pinnedFromDateMulti)
-        let toOnly = cal.startOfDay(for: pinnedToDateMulti)
+        let toOnly   = cal.startOfDay(for: pinnedToDateMulti)
+        
         guard let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) else {
             pinnedEventsMulti = []
             return
@@ -268,6 +275,7 @@ extension RootView {
     }
 }
 
+// MARK: - Общи помощни функции за fetch, split, etc.
 extension RootView {
     private func fetchAndSplitEvents(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
@@ -280,9 +288,11 @@ extension RootView {
         
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
+            // Ако започва и свършва в различни дни - split
             if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
                 splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
             } else {
+                // За еднодневно или all-day
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
         }
@@ -298,6 +308,7 @@ extension RootView {
         let realEnd   = min(ekEvent.endDate, endRange)
         if realStart >= realEnd { return results }
         var currentStart = realStart
+        
         while currentStart < realEnd {
             guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else { break }
             let pieceEnd = min(endOfDay, realEnd)
@@ -307,6 +318,7 @@ extension RootView {
                 partialEnd: pieceEnd
             )
             results.append(partial)
+            
             guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
                   let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)
             else { break }
@@ -316,16 +328,18 @@ extension RootView {
     }
 }
 
+// MARK: - Допълнителни функции за зареждане на chunk-ове (AllEventsListView)
 extension RootView {
     /// Зарежда “парче” от текущия `loadedUntil` до +chunkDays
     private func loadNextChunkOfEvents() {
-//        pinnedAllEvents = []
         guard accessGranted else { return }
         let cal = Calendar.current
         let fromDate = loadedUntil
         guard fromDate < maxLoadDate else { return }
+        
         let toDateRaw = cal.date(byAdding: .day, value: chunkDays, to: fromDate)!
         let toDate = min(toDateRaw, maxLoadDate)
+        
         let newEvents = fetchAndSplitEvents(from: fromDate, to: toDate)
         pinnedAllEvents.append(contentsOf: newEvents)
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
@@ -338,8 +352,10 @@ extension RootView {
         let cal = Calendar.current
         let toDate = loadedFrom
         guard toDate > minLoadDate else { return }
+        
         let fromDateRaw = cal.date(byAdding: .day, value: -chunkDays, to: toDate)!
         let fromDate = max(fromDateRaw, minLoadDate)
+        
         let newEvents = fetchAndSplitEvents(from: fromDate, to: toDate)
         pinnedAllEvents.append(contentsOf: newEvents)
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
@@ -348,15 +364,19 @@ extension RootView {
 }
 
 extension RootView {
-    /// Функция за пълно презареждане на AllEventsListView
+    /// Пълно презареждане (примерно +/-1 месец)
     private func reloadAllEvents() {
         let now = Date()
         guard let start = Calendar.current.date(byAdding: .month, value: -1, to: now),
-              let end   = Calendar.current.date(byAdding: .month, value: 1, to: now) else { return }
+              let end   = Calendar.current.date(byAdding: .month, value: 1, to: now)
+        else { return }
+        
         loadedStartDate = start
-        loadedEndDate = end
+        loadedEndDate   = end
+        loadedFrom      = Calendar.current.startOfDay(for: start)
+        loadedUntil     = Calendar.current.startOfDay(for: end)
+        
         pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
-        loadedFrom = Calendar.current.startOfDay(for: start)
-        loadedUntil = Calendar.current.startOfDay(for: end)
+        pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
     }
 }
