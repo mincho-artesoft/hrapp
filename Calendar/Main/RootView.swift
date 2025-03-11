@@ -1,7 +1,6 @@
 import SwiftUI
 import EventKit
 
-// MARK: - RootView
 struct RootView: View {
     @State var accessGranted = false
     
@@ -17,49 +16,51 @@ struct RootView: View {
     
     // MARK: - All Events
     @State private var pinnedAllEvents: [EventDescriptor] = []
-    @State private var eventToEdit: EKEvent? = nil
+    
+    // За "lazy load"
+    @State private var loadedStartDate: Date = Calendar.current.startOfMonth(for: Date())
+    @State private var loadedEndDate: Date   = Calendar.current.endOfMonth(for: Date())
     
     // Таймер (презареждане на 60 сек)
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     // Избор на екран (0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList)
-    @State private var selectedTab = 3 // По подразбиране да стартираме на "All Events"
+    @State private var selectedTab = 3 // Да стартира примерно с MultiDay
     
     // Sheet за календари
     @State private var showCalendarsSheet = false
     
+    // EKEventEditor, ако искате да редактирате събития
+    @State private var eventToEdit: EKEvent? = nil
+    
     var body: some View {
         ZStack {
-            Color(.systemBackground)
-                .edgesIgnoringSafeArea(.all)
+            Color(.systemBackground).edgesIgnoringSafeArea(.all)
             
             NavigationView {
                 GeometryReader { geometry in
-                    // Това беше за portrait/landscape
-                    // Няма да крием бутона за Calendars в landscape
-                    // така че, ако искаш - можеш да изтриеш изцяло логиката
+                    // 1) Проверяваме ориентацията
                     let isPortrait = geometry.size.height > geometry.size.width
                     
                     VStack {
                         switch selectedTab {
                         case 0:
-                            // Месечен календар
                             MonthCalendarView(
                                 viewModel: CalendarViewModel.shared,
                                 startMonth: Date(),
                                 selectedTab: selectedTab,
-                                onViewChange: { newTab in selectedTab = newTab }
+                                onViewChange: { newTab in
+                                    selectedTab = newTab
+                                }
                             )
                             
                         case 1:
-                            // Single Day
                             TwoWayPinnedMultiDayWrapper(
                                 fromDate: $pinnedFromDateSingle,
                                 toDate: $pinnedToDateSingle,
                                 events: $pinnedEventsSingle,
                                 eventStore: CalendarViewModel.shared.eventStore,
                                 isSingleDay: true,
-                                
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
@@ -77,7 +78,6 @@ struct RootView: View {
                             }
                             
                         case 2:
-                            // Годишен календар
                             YearCalendarView(
                                 viewModel: CalendarViewModel.shared,
                                 selectedTab: selectedTab,
@@ -87,20 +87,17 @@ struct RootView: View {
                             )
                             
                         case 3:
-                            // MultiDay
                             TwoWayPinnedMultiDayWrapper(
                                 fromDate: $pinnedFromDateMulti,
                                 toDate: $pinnedToDateMulti,
                                 events: $pinnedEventsMulti,
                                 eventStore: CalendarViewModel.shared.eventStore,
                                 isSingleDay: false,
-                                
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
                                 }
                             ) { tappedDay in
-                                // Преминаване към Single Day
                                 pinnedFromDateSingle = tappedDay
                                 pinnedToDateSingle   = tappedDay
                                 loadSingleDayEvents()
@@ -114,12 +111,17 @@ struct RootView: View {
                             }
                             
                         case 4:
-                            // All Events List
+                            // Нашият списък с ALL events, с “lazy load”
                             AllEventsListView(
-                                events: pinnedAllEvents,
+                                pinnedAllEvents: $pinnedAllEvents,
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
+                                },
+                                loadInitialMonth: { loadInitialMonth() },
+                                // Забележете, че сега приемаме completion
+                                loadNextMonth: { completion in
+                                    loadNextMonth(completion: completion)
                                 },
                                 onEventTap: { descriptor in
                                     if let multi = descriptor as? EKMultiDayWrapper {
@@ -127,38 +129,30 @@ struct RootView: View {
                                     }
                                 }
                             )
-                            .onAppear {
-                                loadAllEventsFromMinusOneYearToPlusTwoYears()
-                            }
                             
                         default:
                             Text("N/A")
                         }
                     }
-                    // Инструментална лента (toolbar)
                     .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
-                            
-                            // “Today”
-                            Button("Today") {
-                                let today = Calendar.current.startOfDay(for: Date())
-                                pinnedFromDateSingle = today
-                                pinnedToDateSingle = today
-                                selectedTab = 1 // Day view
-                            }
-                            
-                            Spacer()
-                            
-                            // “Calendars”
-                            Button("Calendars") {
-                                showCalendarsSheet = true
-                            }
-                            
-                            Spacer()
-                            
-                            // “Inbox” (пример)
-                            Button("Inbox") {
-                                // ...
+                            if isPortrait {
+                                Button("Today") {
+                                    let today = Calendar.current.startOfDay(for: Date())
+                                    pinnedFromDateSingle = today
+                                    pinnedToDateSingle = today
+                                    selectedTab = 1
+                                }
+                                Spacer()
+                                
+                                Button("Calendars") {
+                                    showCalendarsSheet = true
+                                }
+                                Spacer()
+                                
+                                Button("Inbox") {
+                                    // ...
+                                }
                             }
                         }
                     }
@@ -167,37 +161,35 @@ struct RootView: View {
         }
         .onAppear {
             Task {
-                // 1) Искане на достъп
+                // 1) Искаме достъп до календарите
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                 
                 if accessGranted {
-                    // 2) Зареждане на календари
+                    // 2) Зареждаме календари
                     CalendarViewModel.shared.reloadCalendars()
                     
-                    // 3) Зареждаме събития за годината
+                    // 3) Примерно зареждаме събития за текущата година
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
                     
-                    // 4) Ако сме на MultiDay или AllEventsList, или Day — зареждаме нужните
+                    // 4) Ако сме на MultiDay или Day, презареждаме
                     if selectedTab == 3 {
                         loadMultiDayEvents()
                     } else if selectedTab == 1 {
                         loadSingleDayEvents()
-                    } else if selectedTab == 4 {
-                        loadAllEventsFromMinusOneYearToPlusTwoYears()
                     }
                 }
             }
         }
-        // Sheet за избор на календари
         .sheet(isPresented: $showCalendarsSheet, onDismiss: {
+            // Когато приключим CalendarsSheet
             if accessGranted {
                 if selectedTab == 3 {
                     loadMultiDayEvents()
                 } else if selectedTab == 1 {
                     loadSingleDayEvents()
                 } else if selectedTab == 4 {
-                    loadAllEventsFromMinusOneYearToPlusTwoYears()
+                    pinnedAllEvents.removeAll()
                 }
             }
         }) {
@@ -206,7 +198,7 @@ struct RootView: View {
     }
 }
 
-// MARK: - Зареждане на евенти за SingleDay
+// MARK: - Примерни функции за SingleDay и MultiDay
 extension RootView {
     private func loadSingleDayEvents() {
         guard accessGranted else { return }
@@ -217,10 +209,7 @@ extension RootView {
         }
         pinnedEventsSingle = fetchAndSplitEvents(from: fromOnly, to: toDate)
     }
-}
-
-// MARK: - Зареждане на евенти за MultiDay
-extension RootView {
+    
     private func loadMultiDayEvents() {
         guard accessGranted else { return }
         let cal = Calendar.current
@@ -236,17 +225,47 @@ extension RootView {
     }
 }
 
-// MARK: - Зареждане на евенти за "All Events"
+// MARK: - Функции за LAZY AllEventsListView
 extension RootView {
-    private func loadAllEventsFromMinusOneYearToPlusTwoYears() {
+    func loadInitialMonth() {
         guard accessGranted else { return }
-        let cal = Calendar.current
         
-        // Пример: от днес - 1 година до днес + 2 години
-        let start = cal.date(byAdding: .year, value: -1, to: Date())!
-        let end   = cal.date(byAdding: .year, value: 2, to: Date())!
+        // Започваме от днешния ден (startOfDay)
+        let start = Calendar.current.startOfDay(for: Date())
+        // Прибавяме 1 месец към днешния ден
+        guard let end = Calendar.current.date(byAdding: .month, value: 1, to: start) else {
+            return
+        }
+        
+        loadedStartDate = start
+        loadedEndDate   = end
         
         pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
+    }
+    
+    // Тук добавяме optional completion, за да сигнализираме кога сме готови
+    func loadNextMonth(completion: (() -> Void)? = nil) {
+        guard accessGranted else {
+            completion?()
+            return
+        }
+        
+        // Стартът е последната крайна дата + 1 сек
+        let newStart = loadedEndDate.addingTimeInterval(1)
+        
+        // Краят е още 1 месец напред
+        guard let newEnd = Calendar.current.date(byAdding: .month, value: 1, to: newStart) else {
+            completion?()
+            return
+        }
+        
+        let newEvents = fetchAndSplitEvents(from: newStart, to: newEnd)
+        pinnedAllEvents.append(contentsOf: newEvents)
+        
+        loadedEndDate = newEnd
+        
+        // Казваме че сме готови
+        completion?()
     }
 }
 
@@ -256,18 +275,16 @@ extension RootView {
         let store = CalendarViewModel.shared.eventStore
         let cal   = Calendar.current
         
-        // 1) Само селектирани календари
         let allowedCalendars = CalendarViewModel.shared.allCalendars.filter {
             CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
         }
         
-        // 2) Predicate
         let predicate = store.predicateForEvents(withStart: from, end: to, calendars: allowedCalendars)
         let found = store.events(matching: predicate)
         
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
-            // Ако е много‐дневно, “цепим” по дни
+            // Ако събитието обхваща повече от 1 ден, го “разделяме” на парчета
             if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
                 splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
             } else {
@@ -290,8 +307,8 @@ extension RootView {
             guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else {
                 break
             }
-            
             let pieceEnd = min(endOfDay, realEnd)
+            
             let partial = EKMultiDayWrapper(
                 realEvent: ekEvent,
                 partialStart: currentStart,
@@ -311,3 +328,23 @@ extension RootView {
     }
 }
 
+// Примерен extension за start/endOfMonth
+extension Calendar {
+    func startOfMonth(for date: Date) -> Date {
+        guard let start = self.date(from: self.dateComponents([.year, .month], from: date)) else {
+            return date
+        }
+        return start
+    }
+    
+    func endOfMonth(for date: Date) -> Date {
+        guard
+            let start = self.date(from: self.dateComponents([.year, .month], from: date)),
+            let plusOneMonth = self.date(byAdding: .month, value: 1, to: start),
+            let minusOneSec  = self.date(byAdding: .second, value: -1, to: plusOneMonth)
+        else {
+            return date
+        }
+        return minusOneSec
+    }
+}
