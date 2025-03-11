@@ -1,7 +1,7 @@
 import SwiftUI
 import EventKit
 
-// MARK: - ALL EVENTS LIST VIEW (Infinite Scroll) - без автоскрол и без автоматично зареждане нагоре
+// MARK: - ALL EVENTS LIST VIEW (Infinite Scroll) + зареждане нагоре + скрол обратно до днешния ден
 struct AllEventsListView: View {
     @Binding var pinnedAllEvents: [EventDescriptor]
     
@@ -15,39 +15,37 @@ struct AllEventsListView: View {
     let onLoadMoreAfter: () -> Void
     
     /// Зареждане на още събития, след като стигнем „горе“ (първа дата)
-    /// - Ще го викаме ръчно (ако изобщо искаме).
     let onLoadMoreBefore: () -> Void
     
     let onEventTap: (EventDescriptor) -> Void
     
+    /// Флаг, за да знаем, че току-що сме заредили стари събития
+    @State private var didLoadMoreBefore: Bool = false
+    
     var body: some View {
+        // Използваме ScrollViewReader, за да можем да скролираме до конкретен ID (датата на деня)
         ScrollViewReader { proxy in
             let dayGroups = groupByDay(pinnedAllEvents)
             
             List {
-                // Вместо ForEach(dayGroups, id: \.day), ползваме индекси:
+                // Обхождаме ден-групите по индекс, за да имаме достъп до index
                 ForEach(dayGroups.indices, id: \.self) { index in
                     let dayGroup = dayGroups[index]
                     
                     daySectionView(dayGroup: dayGroup)
+                        // Даваме .id(dayGroup.day), за да можем да скролим до тази секция
                         .id(dayGroup.day)
-                    
-                        // Коментар/пример за автоматично зареждане „назад“ (спрян в момента):
-                        /*
+                        
                         .onAppear {
-                            // Ако искаме да товарим назад, може да проверим подобно
-                            // дали index е малък и ако е (примерно) 2, да load-нем назад
-                            if index == 0 {
+                            // Ако сме сред първите няколко дни (threshold = 3),
+                            // значи сме скролнали горе и трябва да заредим още стари дни
+                            let threshold = 3
+                            if index < threshold {
+                                didLoadMoreBefore = true
                                 onLoadMoreBefore()
                             }
-                        }
-                        */
-                        
-                        // Автоматично зареждане "напред" (по-рано).
-                        // Ако сме в последните 3 dayGroups, викаме onLoadMoreAfter()
-                        .onAppear {
-                            let threshold = 3
-                            // Ако индексът е в последните 'threshold' елемента
+                            
+                            // Ако сме сред последните няколко дни, зареждаме още дни "напред"
                             if index >= dayGroups.count - threshold {
                                 onLoadMoreAfter()
                             }
@@ -56,13 +54,23 @@ struct AllEventsListView: View {
             }
             .listStyle(.plain)
             
-            // Ако списъкът е празен -> първоначално зареждане
+            // Ако при първо показване списъкът е празен, извикваме начално зареждане
             .onAppear {
                 if pinnedAllEvents.isEmpty {
                     loadInitialEvents()
                 }
             }
             
+            // Новият синтаксис (iOS 17) за onChange: следим промяна в pinnedAllEvents.count
+            .onChange(of: pinnedAllEvents.count) {
+                // Тук влизаме всеки път, когато броят на елементите в pinnedAllEvents се промени
+                if didLoadMoreBefore {
+                    scrollToToday(proxy: proxy)
+                    didLoadMoreBefore = false
+                }
+            }
+            
+            // Примерен toolbar
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
@@ -99,7 +107,23 @@ struct AllEventsListView: View {
         }
     }
     
-    // Рендерира един ден (Section)
+    // MARK: - Скрол до днешния ден
+    func scrollToToday(proxy: ScrollViewProxy) {
+        // Намираме началото на днешния ден
+        let today = Calendar.current.startOfDay(for: Date())
+        // Отново групираме събитията (могат да са се добавили нови)
+        let groups = groupByDay(pinnedAllEvents)
+        
+        // Търсим дали имаме група за днешния ден
+        if let match = groups.first(where: { Calendar.current.isDate($0.day, inSameDayAs: today) }) {
+            // Скролваме плавно
+            withAnimation {
+                proxy.scrollTo(match.day, anchor: .top)
+            }
+        }
+    }
+    
+    // MARK: - UI за цяла секция (един ден)
     @ViewBuilder
     func daySectionView(dayGroup: DayGroup) -> some View {
         Section {
@@ -116,7 +140,7 @@ struct AllEventsListView: View {
         }
     }
     
-    // Един ред: визуализира EventDescriptor
+    // MARK: - UI за един ред (EventDescriptor)
     @ViewBuilder
     func eventRowView(event: EventDescriptor) -> some View {
         HStack(alignment: .top, spacing: 8) {
@@ -153,6 +177,7 @@ struct AllEventsListView: View {
         }
     }
     
+    // MARK: - UI за многодневно събитие (EKMultiDayWrapper), разглеждано ден по ден
     @ViewBuilder
     func partialDayView(for multi: EKMultiDayWrapper) -> some View {
         if multi.isFirstPartialDay {
@@ -180,21 +205,28 @@ struct AllEventsListView: View {
         }
     }
     
+    // MARK: - Групиране на събитията по ден
     func groupByDay(_ events: [EventDescriptor]) -> [DayGroup] {
         var dict = [Date: [EventDescriptor]]()
         let cal = Calendar.current
+        
         for e in events {
             let dayStart = cal.startOfDay(for: e.dateInterval.start)
             dict[dayStart, default: []].append(e)
         }
+        
+        // Подреждаме дните по възходящ ред
         let sortedKeys = dict.keys.sorted()
+        
         return sortedKeys.map { day in
             let dayEvents = dict[day] ?? []
+            // Подреждаме събитията в самия ден по начален час
             let sortedEvents = dayEvents.sorted { $0.dateInterval.start < $1.dateInterval.start }
             return DayGroup(day: day, events: sortedEvents)
         }
     }
     
+    // MARK: - Помощна структура за ден
     struct DayGroup: Identifiable {
         let day: Date
         let events: [EventDescriptor]
@@ -202,23 +234,29 @@ struct AllEventsListView: View {
         var id: Date { day }
     }
     
+    // MARK: - Форматиране на заглавието на деня
     func dayHeaderString(_ date: Date) -> String {
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
         let targetYear = calendar.component(.year, from: date)
         
         let df = DateFormatter()
+        // Ако е същата година -> "EEEE — MMM d", иначе добавяме и годината
         df.dateFormat = (targetYear == currentYear) ? "EEEE — MMM d" : "EEEE — MMM d, yyyy"
+        
+        // .uppercased() за ефект (по желание)
         return df.string(from: date).uppercased()
     }
     
+    // MARK: - Проверка дали даден ден е днешния
     func isToday(_ date: Date) -> Bool {
         Calendar.current.isDateInToday(date)
     }
     
+    // MARK: - Форматиране на час
     func timeString(_ date: Date) -> String {
         let df = DateFormatter()
-        df.dateFormat = "h:mma"
+        df.dateFormat = "h:mma" // Пример: "1:37PM"
         return df.string(from: date)
     }
 }
