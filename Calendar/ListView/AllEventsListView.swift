@@ -61,16 +61,19 @@ struct AllEventsListView: View {
                 if pinnedAllEvents.isEmpty {
                     loadInitialEvents()
                 }
+                scrollToToday(proxy: proxy)
             }
-            
+            .onDisappear {
+                
+            }
             // Следим, когато броят на събитията се промени
-            .onChange(of: pinnedAllEvents.count) { _ in
-                // Ако току-що сме заредили стари събития, отиваме до днешния ден
+            .onChange(of: pinnedAllEvents.count) { oldValue, newValue in
                 if didLoadMoreBefore {
                     scrollToToday(proxy: proxy)
                     didLoadMoreBefore = false
                 }
             }
+
             
             // Примерен toolbar
             .toolbar {
@@ -119,9 +122,9 @@ struct AllEventsListView: View {
             // Вместо веднага, пускаме скрол след кратко забавяне (0.05 сек),
             // за да сме сигурни, че List е "подготвен"
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                withAnimation {
+//                withAnimation {
                     proxy.scrollTo(match.day, anchor: .top)
-                }
+//                }
             }
         }
     }
