@@ -1,62 +1,68 @@
 import SwiftUI
 import EventKit
 
-// MARK: - ALL EVENTS LIST VIEW (Infinite Scroll)
+// MARK: - ALL EVENTS LIST VIEW (Infinite Scroll) - без автоскрол и без автоматично зареждане нагоре
 struct AllEventsListView: View {
     @Binding var pinnedAllEvents: [EventDescriptor]
     
     let selectedTab: Int
     let onViewChange: (Int) -> Void
     
-    // Зареждане на “първата партида” (примерно 30 дни)
-    let loadCurrentMonthEvents: () -> Void
+    /// Първоначално зареждане (ако списъкът е празен)
+    let loadInitialEvents: () -> Void
     
-    // Зареждане на още събития (след като стигнем дъното)
-    let onLoadMore: () -> Void
+    /// Зареждане на още събития, след като стигнем „дъното“
+    let onLoadMoreAfter: () -> Void
+    
+    /// Зареждане на още събития, след като стигнем „горе“ (първа дата)
+    /// - Ще го викаме ръчно (ако изобщо искаме).
+    let onLoadMoreBefore: () -> Void
     
     let onEventTap: (EventDescriptor) -> Void
     
-    @State private var didInitialScroll = false
-    
     var body: some View {
         ScrollViewReader { proxy in
-            
-            // Групираме събитията по дни (за Section-и)
             let dayGroups = groupByDay(pinnedAllEvents)
             
             List {
-                ForEach(dayGroups, id: \.day) { dayGroup in
+                // Вместо ForEach(dayGroups, id: \.day), ползваме индекси:
+                ForEach(dayGroups.indices, id: \.self) { index in
+                    let dayGroup = dayGroups[index]
+                    
                     daySectionView(dayGroup: dayGroup)
                         .id(dayGroup.day)
                     
-                    // MARK: - ТУК е “onAppear” на всеки DayGroup
+                        // Коментар/пример за автоматично зареждане „назад“ (спрян в момента):
+                        /*
                         .onAppear {
-                            // Ако това е последният ден в списъка -> зареждаме още
-                            if let lastDay = dayGroups.last?.day,
-                               dayGroup.day == lastDay
-                            {
-                                onLoadMore()
+                            // Ако искаме да товарим назад, може да проверим подобно
+                            // дали index е малък и ако е (примерно) 2, да load-нем назад
+                            if index == 0 {
+                                onLoadMoreBefore()
+                            }
+                        }
+                        */
+                        
+                        // Автоматично зареждане "напред" (по-рано).
+                        // Ако сме в последните 3 dayGroups, викаме onLoadMoreAfter()
+                        .onAppear {
+                            let threshold = 3
+                            // Ако индексът е в последните 'threshold' елемента
+                            if index >= dayGroups.count - threshold {
+                                onLoadMoreAfter()
                             }
                         }
                 }
             }
             .listStyle(.plain)
             
+            // Ако списъкът е празен -> първоначално зареждане
             .onAppear {
-                // Ако списъкът е празен -> първоначално зареждане
                 if pinnedAllEvents.isEmpty {
-                    loadCurrentMonthEvents()
+                    loadInitialEvents()
                 }
             }
             
-            // Когато списъкът се промени от празен -> непразен, скрол до днес
-            .onChange(of: pinnedAllEvents.isEmpty) { oldValue, newValue in
-                if !newValue, !didInitialScroll {
-                    DispatchQueue.main.async {
-                        scrollToTodayIfNeeded(proxy: proxy)
-                    }
-                }
-            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
@@ -132,7 +138,6 @@ struct AllEventsListView: View {
             } else if let multi = event as? EKMultiDayWrapper {
                 partialDayView(for: multi)
             } else {
-                // Еднодневно
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(timeString(event.dateInterval.start))
                     Text(timeString(event.dateInterval.end))
@@ -172,16 +177,6 @@ struct AllEventsListView: View {
             }
             .font(.subheadline)
             .foregroundColor(.gray)
-        }
-    }
-    
-    func scrollToTodayIfNeeded(proxy: ScrollViewProxy) {
-        guard !didInitialScroll else { return }
-        didInitialScroll = true
-        
-        let dayGroups = groupByDay(pinnedAllEvents)
-        if let idx = dayGroups.firstIndex(where: { isToday($0.day) }) {
-            proxy.scrollTo(dayGroups[idx].day, anchor: .top)
         }
     }
     
@@ -227,4 +222,3 @@ struct AllEventsListView: View {
         return df.string(from: date)
     }
 }
-
