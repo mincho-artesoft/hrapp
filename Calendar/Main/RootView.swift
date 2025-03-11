@@ -1,8 +1,7 @@
 import SwiftUI
 import EventKit
+import EventKitUI
 
-
-// MARK: - RootView с обновяване на събитията след редакция
 struct RootView: View {
     // 1) Дали имаме достъп
     @State private var accessGranted = false
@@ -33,7 +32,7 @@ struct RootView: View {
     @State private var pinnedToDateMulti: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
     @State private var pinnedEventsMulti: [EventDescriptor] = []
     
-    // 2) Всички събития (за списъка)
+    // 2) Всички събития (за AllEventsListView)
     @State private var pinnedAllEvents: [EventDescriptor] = []
     
     // 3) Дати за текущия обхват за AllEventsListView
@@ -48,9 +47,6 @@ struct RootView: View {
     
     // Sheet за календари
     @State private var showCalendarsSheet = false
-    
-    // EKEventEditViewController – съхраняваме събитието, което ще редактираме
-    @State private var eventToEdit: EKEvent? = nil
     
     var body: some View {
         ZStack {
@@ -142,13 +138,6 @@ struct RootView: View {
                                     if loadedFrom > minLoadDate {
                                         loadPreviousChunkOfEvents()
                                     }
-                                },
-                                // При тап върху събитие задаваме eventToEdit за редакция
-                                onEventTap: { descriptor in
-                                    if let multi = descriptor as? EKMultiDayWrapper {
-                                        eventToEdit = multi.realEvent
-                                    }
-                                    // Допълнителна обработка за други типове събития може да се добави тук.
                                 }
                             )
                             
@@ -210,36 +199,7 @@ struct RootView: View {
         }) {
             CalendarsSheetView()
         }
-        // Sheet за редактиране на събитие
-        .sheet(item: $eventToEdit) { event in
-            EventEditView(
-                event: event,
-                eventStore: CalendarViewModel.shared.eventStore,
-                onEventUpdated: {
-                    if selectedTab == 1 {
-                        loadSingleDayEvents()
-                    } else if selectedTab == 3 {
-                        loadMultiDayEvents()
-                    } else if selectedTab == 4 {
-                        // Вместо да изчиствате и зареждате парче, презареждаме целия списък
-                        reloadAllEvents()
-                    }
-                }
-            )
-        }
-
-        // Използване на NotificationCenter за наблюдение на промените от EKEventStore
-        .onReceive(NotificationCenter.default.publisher(for: .EKEventStoreChanged)) { _ in
-            CalendarViewModel.shared.reloadCalendars()
-            if selectedTab == 1 {
-                loadSingleDayEvents()
-            } else if selectedTab == 3 {
-                loadMultiDayEvents()
-            } else if selectedTab == 4 {
-                pinnedAllEvents.removeAll()
-                loadNextChunkOfEvents()
-            }
-        }
+        // Sheet за редактиране е премахната от RootView, тъй като тя сега се управлява в AllEventsListView
     }
 }
 
@@ -308,7 +268,6 @@ extension RootView {
     }
 }
 
-// MARK: - Общ метод за взимане на събития
 extension RootView {
     private func fetchAndSplitEvents(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
@@ -360,6 +319,7 @@ extension RootView {
 extension RootView {
     /// Зарежда “парче” от текущия `loadedUntil` до +chunkDays
     private func loadNextChunkOfEvents() {
+//        pinnedAllEvents = []
         guard accessGranted else { return }
         let cal = Calendar.current
         let fromDate = loadedUntil
@@ -386,17 +346,16 @@ extension RootView {
         loadedFrom = fromDate
     }
 }
-// Функция за пълно презареждане на AllEventsListView
+
 extension RootView {
+    /// Функция за пълно презареждане на AllEventsListView
     private func reloadAllEvents() {
         let now = Date()
-        // Примерно интервал: 1 месец назад и 1 месец напред от днес
         guard let start = Calendar.current.date(byAdding: .month, value: -1, to: now),
               let end   = Calendar.current.date(byAdding: .month, value: 1, to: now) else { return }
         loadedStartDate = start
         loadedEndDate = end
         pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
-        // Синхронизиране на началните/крайните точки за lazy зареждане
         loadedFrom = Calendar.current.startOfDay(for: start)
         loadedUntil = Calendar.current.startOfDay(for: end)
     }

@@ -16,7 +16,8 @@ struct AllEventsListView: View {
     /// Зареждане на още събития, след като стигнем „горе“ (първа дата)
     let onLoadMoreBefore: () -> Void
     
-    let onEventTap: (EventDescriptor) -> Void
+    // Локално състояние за редактиране/създаване на събитие
+    @State private var eventToEdit: EKEvent? = nil
     
     /// Флаг, за да знаем, че току-що сме заредили стари събития
     @State private var didLoadMoreBefore: Bool = false
@@ -25,93 +26,128 @@ struct AllEventsListView: View {
     
     var body: some View {
         ScrollViewReader { proxy in
-            Group {
-                if isContentVisible {
-                    List {
-                        let dayGroups = groupByDay(pinnedAllEvents)
-                        ForEach(dayGroups.indices, id: \.self) { index in
-                            let dayGroup = dayGroups[index]
-                            
-                            daySectionView(dayGroup: dayGroup)
-                                .id(dayGroup.day)
-                                .onAppear {
-                                    let threshold = 3
-                                    if index < threshold {
-                                        didLoadMoreBefore = true
-                                        onLoadMoreBefore()
-                                    }
-                                    if index >= dayGroups.count - threshold {
-                                        onLoadMoreAfter()
-                                    }
-                                }
-                        }
-                    }
-                    .listStyle(.plain)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Menu {
-                                Button {
-                                    onViewChange(1)
-                                } label: {
-                                    Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
-                                }
-                                Button {
-                                    onViewChange(3)
-                                } label: {
-                                    Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
-                                }
-                                Button {
-                                    onViewChange(0)
-                                } label: {
-                                    Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
-                                }
-                                Button {
-                                    onViewChange(2)
-                                } label: {
-                                    Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
-                                }
-                                Button {
-                                    onViewChange(4)
-                                } label: {
-                                    Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
-                                }
-                            } label: {
-                                Image(systemName: "ellipsis.circle")
-                            }
-                        }
-                    }
-                    .onChange(of: pinnedAllEvents.count) { oldValue, newValue in
-                        if didLoadMoreBefore {
-                            scrollToToday(proxy: proxy)
-                            didLoadMoreBefore = false
-                        }
-                    }
-                } else {
-                    // Тук може да добавите индикатор за зареждане, ако е необходимо
-                    EmptyView()
-                }
-            }
-            .onAppear {
-                if pinnedAllEvents.isEmpty {
+            content(proxy: proxy)
+        }
+        // 2) В sheet-а за редактиране:
+        //    - Гарантираме, че след Save/Delete извикваме loadInitialEvents()
+        .sheet(item: $eventToEdit) { event in
+            EventEditViewWrapper(
+                eventStore: CalendarViewModel.shared.eventStore,
+                event: event,
+                onEventUpdated: {
+                    // След като затворим EventEditViewWrapper, презареждаме
                     loadInitialEvents()
                 }
-                scrollToToday(proxy: proxy)
-                // Закъснение, преди да покажем съдържанието – докато scrollToToday се изпълни
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
-                    isContentVisible = true
-                }
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private func content(proxy: ScrollViewProxy) -> some View {
+        Group {
+            if isContentVisible {
+                eventList(proxy: proxy)
+            } else {
+                EmptyView()
             }
-            .onDisappear {
-                
+        }
+        .onAppear {
+            if pinnedAllEvents.isEmpty {
+                loadInitialEvents()
+            }
+            scrollToToday(proxy: proxy)
+            // Закъснение, за да сме сигурни, че scrollToToday ще се изпълни
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
+                isContentVisible = true
             }
         }
     }
     
-    // MARK: - Скрол до днешния ден (секцията за него най-горе)
-    func scrollToToday(proxy: ScrollViewProxy) {
+    private func eventList(proxy: ScrollViewProxy) -> some View {
+        List {
+            let dayGroups = groupByDay(pinnedAllEvents)
+            ForEach(dayGroups.indices, id: \.self) { index in
+                let dayGroup = dayGroups[index]
+                DaySectionView(dayGroup: dayGroup,
+                               isToday: isToday,
+                               dayHeaderString: dayHeaderString,
+                               timeString: timeString,
+                               eventRowAction: { event in
+                                   if let multi = event as? EKMultiDayWrapper {
+                                       eventToEdit = multi.realEvent
+                                   } else if let editableEvent = event as? EKEvent {
+                                       eventToEdit = editableEvent
+                                   } else {
+                                       print("Event type not supported for editing")
+                                   }
+                               })
+                    .id(dayGroup.day)
+                    .onAppear {
+                        let threshold = 3
+                        // Ако сме в първите редове -> зареждаме още "назад"
+                        if index < threshold {
+                            didLoadMoreBefore = true
+                            onLoadMoreBefore()
+                        }
+                        // Ако сме към последните редове -> зареждаме още "надолу"
+                        if index >= dayGroups.count - threshold {
+                            onLoadMoreAfter()
+                        }
+                    }
+            }
+        }
+        .listStyle(.plain)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                // Бутонът "плюс" за създаване на ново събитие
+                Button(action: {
+                    createAndEditNewEvent(on: Date())
+                }) {
+                    Image(systemName: "plus")
+                }
+                // Менюто за смяна на изгледите
+                Menu {
+                    Button {
+                        onViewChange(1)
+                    } label: {
+                        Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                    }
+                    Button {
+                        onViewChange(3)
+                    } label: {
+                        Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                    }
+                    Button {
+                        onViewChange(0)
+                    } label: {
+                        Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                    }
+                    Button {
+                        onViewChange(2)
+                    } label: {
+                        Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
+                    }
+                    Button {
+                        onViewChange(4)
+                    } label: {
+                        Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+            }
+        }
+        .onChange(of: pinnedAllEvents.count) { _, _ in
+            if didLoadMoreBefore {
+                scrollToToday(proxy: proxy)
+                didLoadMoreBefore = false
+            }
+        }
+    }
+    
+    private func scrollToToday(proxy: ScrollViewProxy) {
         let today = Calendar.current.startOfDay(for: Date())
         let groups = groupByDay(pinnedAllEvents)
-        
         if let match = groups.first(where: { Calendar.current.isDate($0.day, inSameDayAs: today) }) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 proxy.scrollTo(match.day, anchor: .top)
@@ -119,89 +155,9 @@ struct AllEventsListView: View {
         }
     }
     
-    // MARK: - UI за цяла секция (един ден)
-    @ViewBuilder
-    func daySectionView(dayGroup: DayGroup) -> some View {
-        Section {
-            ForEach(dayGroup.events.indices, id: \.self) { i in
-                let event = dayGroup.events[i]
-                eventRowView(event: event)
-            }
-        } header: {
-            Text(dayHeaderString(dayGroup.day))
-                .font(.headline)
-                .foregroundColor(isToday(dayGroup.day) ? .red : .secondary)
-                .padding(.bottom, 4)
-                .textCase(nil)
-        }
-    }
+    // MARK: - Помощни функции
     
-    // MARK: - UI за един ред (EventDescriptor)
-    @ViewBuilder
-    func eventRowView(event: EventDescriptor) -> some View {
-        HStack(alignment: .top, spacing: 8) {
-            Rectangle()
-                .fill(Color(uiColor: event.color))
-                .frame(width: 3)
-                .cornerRadius(1.5)
-            
-            Text(event.text)
-                .font(.body)
-                .foregroundColor(.primary)
-            
-            Spacer()
-            
-            if event.isAllDay {
-                Text("all-day")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            } else if let multi = event as? EKMultiDayWrapper {
-                partialDayView(for: multi)
-            } else {
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text(timeString(event.dateInterval.start))
-                    Text(timeString(event.dateInterval.end))
-                }
-                .font(.subheadline)
-                .foregroundColor(.gray)
-            }
-        }
-        .padding(.vertical, 6)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            onEventTap(event)
-        }
-    }
-    
-    // MARK: - UI за многодневно събитие (EKMultiDayWrapper)
-    @ViewBuilder
-    func partialDayView(for multi: EKMultiDayWrapper) -> some View {
-        if multi.isFirstPartialDay {
-            Text(timeString(multi.partialStart))
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        } else if multi.isLastPartialDay {
-            VStack(alignment: .trailing, spacing: 2) {
-                Text("Ends")
-                Text(timeString(multi.partialEnd))
-            }
-            .font(.subheadline)
-            .foregroundColor(.gray)
-        } else if multi.isMiddlePartialDay {
-            Text("all-day")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        } else {
-            VStack(alignment: .trailing, spacing: 2) {
-                Text(timeString(multi.partialStart))
-                Text(timeString(multi.partialEnd))
-            }
-            .font(.subheadline)
-            .foregroundColor(.gray)
-        }
-    }
-    
-    // MARK: - Групиране на събитията по ден
+    /// Групиране на събитията по ден
     func groupByDay(_ events: [EventDescriptor]) -> [DayGroup] {
         var dict = [Date: [EventDescriptor]]()
         let cal = Calendar.current
@@ -220,7 +176,7 @@ struct AllEventsListView: View {
         }
     }
     
-    // MARK: - Помощна структура за ден
+    /// Помощна структура за ден
     struct DayGroup: Identifiable {
         let day: Date
         let events: [EventDescriptor]
@@ -228,7 +184,7 @@ struct AllEventsListView: View {
         var id: Date { day }
     }
     
-    // MARK: - Форматиране на заглавието на деня
+    /// Форматиране на заглавието на деня
     func dayHeaderString(_ date: Date) -> String {
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
@@ -240,15 +196,159 @@ struct AllEventsListView: View {
         return df.string(from: date).uppercased()
     }
     
-    // MARK: - Проверка дали даден ден е днешния
+    /// Проверка дали даден ден е днешния
     func isToday(_ date: Date) -> Bool {
         Calendar.current.isDateInToday(date)
     }
     
-    // MARK: - Форматиране на час
+    /// Форматиране на час
     func timeString(_ date: Date) -> String {
         let df = DateFormatter()
         df.dateFormat = "h:mma"
         return df.string(from: date)
+    }
+    
+    // MARK: - Функции за създаване на нови събития
+    
+    // 1) Тук пипаме началните/крайните дати: вместо "Date()" сега
+    //    задаваме точно "day" (startOfDay), за да е сигурно, че
+    //    попада в диапазона, който вие вече сте заредили.
+    private func createAndEditNewEvent(on day: Date) {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if #available(iOS 17.0, *) {
+            switch status {
+            case .fullAccess, .writeOnly:
+                presentNewEvent(on: day)
+            case .notDetermined:
+                print("TODO: requestCalendarAccessIfNeeded()")
+            default:
+                print("No calendar access.")
+            }
+        } else {
+            if status == .authorized {
+                presentNewEvent(on: day)
+            } else if status == .notDetermined {
+                print("TODO: requestCalendarAccessIfNeeded()")
+            } else {
+                print("No calendar access.")
+            }
+        }
+    }
+    
+    private func presentNewEvent(on day: Date) {
+        let cal = Calendar.current
+        let newEvent = EKEvent(eventStore: CalendarViewModel.shared.eventStore)
+        
+        // Взимаме началото на "day" (т.е. 00:00ч),
+        // за да сме сигурни, че новото събитие
+        // ще е в същия ден, който потребителят вижда.
+        let dayStart = cal.startOfDay(for: day)
+        newEvent.startDate = dayStart
+        newEvent.endDate   = cal.date(byAdding: .hour, value: 1, to: dayStart)!
+        
+        newEvent.title = "New Event"
+        newEvent.calendar = CalendarViewModel.shared.eventStore.defaultCalendarForNewEvents
+        eventToEdit = newEvent
+    }
+}
+
+// MARK: - Допълнителни под-вюта
+
+// Изглед за секция на ден
+struct DaySectionView: View {
+    let dayGroup: AllEventsListView.DayGroup
+    let isToday: (Date) -> Bool
+    let dayHeaderString: (Date) -> String
+    let timeString: (Date) -> String
+    let eventRowAction: (EventDescriptor) -> Void
+    
+    var body: some View {
+        Section {
+            ForEach(dayGroup.events.indices, id: \.self) { i in
+                let event = dayGroup.events[i]
+                EventRowView(event: event, timeString: timeString)
+                    .onTapGesture {
+                        eventRowAction(event)
+                    }
+            }
+        } header: {
+            Text(dayHeaderString(dayGroup.day))
+                .font(.headline)
+                .foregroundColor(isToday(dayGroup.day) ? .red : .secondary)
+                .padding(.bottom, 4)
+                .textCase(nil)
+        }
+    }
+}
+
+// Изглед за един ред (EventDescriptor)
+struct EventRowView: View {
+    let event: EventDescriptor
+    let timeString: (Date) -> String
+    
+    var body: some View {
+        HStack(alignment: .top, spacing: 8) {
+            Rectangle()
+                .fill(Color(uiColor: event.color))
+                .frame(width: 3)
+                .cornerRadius(1.5)
+            
+            Text(event.text)
+                .font(.body)
+                .foregroundColor(.primary)
+            
+            Spacer()
+            
+            if event.isAllDay {
+                Text("all-day")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            } else if let multi = event as? EKMultiDayWrapper {
+                PartialDayView(multi: multi, timeString: timeString)
+            } else {
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(timeString(event.dateInterval.start))
+                    Text(timeString(event.dateInterval.end))
+                }
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            }
+        }
+        .padding(.vertical, 6)
+        .contentShape(Rectangle())
+    }
+}
+
+// Изглед за многодневно събитие
+struct PartialDayView: View {
+    let multi: EKMultiDayWrapper
+    let timeString: (Date) -> String
+    
+    var body: some View {
+        Group {
+            if multi.isFirstPartialDay {
+                Text(timeString(multi.partialStart))
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            } else if multi.isLastPartialDay {
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("Ends")
+                    Text(timeString(multi.partialEnd))
+                }
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            } else if multi.isMiddlePartialDay {
+                Text("all-day")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            } else {
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(timeString(multi.partialStart))
+                    Text(timeString(multi.partialEnd))
+                }
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            }
+        }
     }
 }
