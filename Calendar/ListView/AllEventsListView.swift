@@ -1,7 +1,6 @@
 import SwiftUI
 import EventKit
 
-// MARK: - ALL EVENTS LIST VIEW (Infinite Scroll) + зареждане нагоре + скрол обратно до днешния ден
 struct AllEventsListView: View {
     @Binding var pinnedAllEvents: [EventDescriptor]
     
@@ -21,93 +20,89 @@ struct AllEventsListView: View {
     
     /// Флаг, за да знаем, че току-що сме заредили стари събития
     @State private var didLoadMoreBefore: Bool = false
+    /// Флаг, който контролира видимостта на съдържанието
+    @State private var isContentVisible: Bool = false
     
     var body: some View {
-        // Използваме ScrollViewReader, за да можем да скролираме до конкретен ID (датата на деня)
         ScrollViewReader { proxy in
-            let dayGroups = groupByDay(pinnedAllEvents)
-            
-            List {
-                // Обхождаме ден-групите по индекс, за да имаме достъп до index
-                ForEach(dayGroups.indices, id: \.self) { index in
-                    let dayGroup = dayGroups[index]
-                    
-                    // Секция за конкретния ден
-                    daySectionView(dayGroup: dayGroup)
-                        // Даваме .id(dayGroup.day), за да можем да скролим до тази секция
-                        .id(dayGroup.day)
-                        
-                        // При появяване на секцията проверяваме дали сме близо до „началото“ или „края“
-                        .onAppear {
-                            // Ако сме сред първите няколко дни (threshold = 3),
-                            // значи сме скролнали горе и трябва да заредим още стари дни
-                            let threshold = 3
-                            if index < threshold {
-                                didLoadMoreBefore = true
-                                onLoadMoreBefore()
-                            }
+            Group {
+                if isContentVisible {
+                    List {
+                        let dayGroups = groupByDay(pinnedAllEvents)
+                        ForEach(dayGroups.indices, id: \.self) { index in
+                            let dayGroup = dayGroups[index]
                             
-                            // Ако сме сред последните няколко дни, зареждаме още дни "напред"
-                            if index >= dayGroups.count - threshold {
-                                onLoadMoreAfter()
+                            daySectionView(dayGroup: dayGroup)
+                                .id(dayGroup.day)
+                                .onAppear {
+                                    let threshold = 3
+                                    if index < threshold {
+                                        didLoadMoreBefore = true
+                                        onLoadMoreBefore()
+                                    }
+                                    if index >= dayGroups.count - threshold {
+                                        onLoadMoreAfter()
+                                    }
+                                }
+                        }
+                    }
+                    .listStyle(.plain)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Menu {
+                                Button {
+                                    onViewChange(1)
+                                } label: {
+                                    Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                                }
+                                Button {
+                                    onViewChange(3)
+                                } label: {
+                                    Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                                }
+                                Button {
+                                    onViewChange(0)
+                                } label: {
+                                    Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                                }
+                                Button {
+                                    onViewChange(2)
+                                } label: {
+                                    Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
+                                }
+                                Button {
+                                    onViewChange(4)
+                                } label: {
+                                    Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
+                                }
+                            } label: {
+                                Image(systemName: "ellipsis.circle")
                             }
                         }
+                    }
+                    .onChange(of: pinnedAllEvents.count) { oldValue, newValue in
+                        if didLoadMoreBefore {
+                            scrollToToday(proxy: proxy)
+                            didLoadMoreBefore = false
+                        }
+                    }
+                } else {
+                    // Тук може да добавите индикатор за зареждане, ако е необходимо
+                    EmptyView()
                 }
             }
-            .listStyle(.plain)
-            
-            // Ако при първо показване списъкът е празен, извикваме начално зареждане
             .onAppear {
                 if pinnedAllEvents.isEmpty {
                     loadInitialEvents()
                 }
                 scrollToToday(proxy: proxy)
+                // Закъснение, преди да покажем съдържанието – докато scrollToToday се изпълни
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
+                    isContentVisible = true
+                }
             }
             .onDisappear {
                 
-            }
-            // Следим, когато броят на събитията се промени
-            .onChange(of: pinnedAllEvents.count) { oldValue, newValue in
-                if didLoadMoreBefore {
-                    scrollToToday(proxy: proxy)
-                    didLoadMoreBefore = false
-                }
-            }
-
-            
-            // Примерен toolbar
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Menu {
-                        Button {
-                            onViewChange(1)
-                        } label: {
-                            Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
-                        }
-                        Button {
-                            onViewChange(3)
-                        } label: {
-                            Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
-                        }
-                        Button {
-                            onViewChange(0)
-                        } label: {
-                            Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
-                        }
-                        Button {
-                            onViewChange(2)
-                        } label: {
-                            Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
-                        }
-                        Button {
-                            onViewChange(4)
-                        } label: {
-                            Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
-                    }
-                }
             }
         }
     }
@@ -117,14 +112,9 @@ struct AllEventsListView: View {
         let today = Calendar.current.startOfDay(for: Date())
         let groups = groupByDay(pinnedAllEvents)
         
-        // Търсим дали имаме група за днешния ден
         if let match = groups.first(where: { Calendar.current.isDate($0.day, inSameDayAs: today) }) {
-            // Вместо веднага, пускаме скрол след кратко забавяне (0.05 сек),
-            // за да сме сигурни, че List е "подготвен"
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-//                withAnimation {
-                    proxy.scrollTo(match.day, anchor: .top)
-//                }
+                proxy.scrollTo(match.day, anchor: .top)
             }
         }
     }
@@ -133,7 +123,6 @@ struct AllEventsListView: View {
     @ViewBuilder
     func daySectionView(dayGroup: DayGroup) -> some View {
         Section {
-            // Редовете за събитията в този ден
             ForEach(dayGroup.events.indices, id: \.self) { i in
                 let event = dayGroup.events[i]
                 eventRowView(event: event)
@@ -184,7 +173,7 @@ struct AllEventsListView: View {
         }
     }
     
-    // MARK: - UI за многодневно събитие (EKMultiDayWrapper), разглеждано ден по ден
+    // MARK: - UI за многодневно събитие (EKMultiDayWrapper)
     @ViewBuilder
     func partialDayView(for multi: EKMultiDayWrapper) -> some View {
         if multi.isFirstPartialDay {
@@ -222,12 +211,10 @@ struct AllEventsListView: View {
             dict[dayStart, default: []].append(e)
         }
         
-        // Подреждаме дните по възходящ ред
         let sortedKeys = dict.keys.sorted()
         
         return sortedKeys.map { day in
             let dayEvents = dict[day] ?? []
-            // Подреждаме събитията в самия ден по начален час
             let sortedEvents = dayEvents.sorted { $0.dateInterval.start < $1.dateInterval.start }
             return DayGroup(day: day, events: sortedEvents)
         }
@@ -248,7 +235,6 @@ struct AllEventsListView: View {
         let targetYear = calendar.component(.year, from: date)
         
         let df = DateFormatter()
-        // Ако е същата година -> "EEEE — MMM d", иначе добавяме и годината
         df.dateFormat = (targetYear == currentYear) ? "EEEE — MMM d" : "EEEE — MMM d, yyyy"
         
         return df.string(from: date).uppercased()
@@ -262,7 +248,7 @@ struct AllEventsListView: View {
     // MARK: - Форматиране на час
     func timeString(_ date: Date) -> String {
         let df = DateFormatter()
-        df.dateFormat = "h:mma" // Пример: "1:37PM"
+        df.dateFormat = "h:mma"
         return df.string(from: date)
     }
 }
