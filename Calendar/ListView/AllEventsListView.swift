@@ -32,10 +32,12 @@ struct AllEventsListView: View {
                 ForEach(dayGroups.indices, id: \.self) { index in
                     let dayGroup = dayGroups[index]
                     
+                    // Секция за конкретния ден
                     daySectionView(dayGroup: dayGroup)
                         // Даваме .id(dayGroup.day), за да можем да скролим до тази секция
                         .id(dayGroup.day)
                         
+                        // При появяване на секцията проверяваме дали сме близо до „началото“ или „края“
                         .onAppear {
                             // Ако сме сред първите няколко дни (threshold = 3),
                             // значи сме скролнали горе и трябва да заредим още стари дни
@@ -61,9 +63,9 @@ struct AllEventsListView: View {
                 }
             }
             
-            // Новият синтаксис (iOS 17) за onChange: следим промяна в pinnedAllEvents.count
-            .onChange(of: pinnedAllEvents.count) {
-                // Тук влизаме всеки път, когато броят на елементите в pinnedAllEvents се промени
+            // Следим, когато броят на събитията се промени
+            .onChange(of: pinnedAllEvents.count) { _ in
+                // Ако току-що сме заредили стари събития, отиваме до днешния ден
                 if didLoadMoreBefore {
                     scrollToToday(proxy: proxy)
                     didLoadMoreBefore = false
@@ -107,18 +109,19 @@ struct AllEventsListView: View {
         }
     }
     
-    // MARK: - Скрол до днешния ден
+    // MARK: - Скрол до днешния ден (секцията за него най-горе)
     func scrollToToday(proxy: ScrollViewProxy) {
-        // Намираме началото на днешния ден
         let today = Calendar.current.startOfDay(for: Date())
-        // Отново групираме събитията (могат да са се добавили нови)
         let groups = groupByDay(pinnedAllEvents)
         
         // Търсим дали имаме група за днешния ден
         if let match = groups.first(where: { Calendar.current.isDate($0.day, inSameDayAs: today) }) {
-            // Скролваме плавно
-            withAnimation {
-                proxy.scrollTo(match.day, anchor: .top)
+            // Вместо веднага, пускаме скрол след кратко забавяне (0.05 сек),
+            // за да сме сигурни, че List е "подготвен"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                withAnimation {
+                    proxy.scrollTo(match.day, anchor: .top)
+                }
             }
         }
     }
@@ -127,6 +130,7 @@ struct AllEventsListView: View {
     @ViewBuilder
     func daySectionView(dayGroup: DayGroup) -> some View {
         Section {
+            // Редовете за събитията в този ден
             ForEach(dayGroup.events.indices, id: \.self) { i in
                 let event = dayGroup.events[i]
                 eventRowView(event: event)
@@ -244,7 +248,6 @@ struct AllEventsListView: View {
         // Ако е същата година -> "EEEE — MMM d", иначе добавяме и годината
         df.dateFormat = (targetYear == currentYear) ? "EEEE — MMM d" : "EEEE — MMM d, yyyy"
         
-        // .uppercased() за ефект (по желание)
         return df.string(from: date).uppercased()
     }
     
