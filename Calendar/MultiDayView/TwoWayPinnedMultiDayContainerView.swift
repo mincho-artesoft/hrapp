@@ -163,10 +163,44 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     private let searchBar: UISearchBar = {
         let sb = UISearchBar()
         sb.placeholder = "Search events..."
-        // Първоначално може да е скрит, но ще го показваме с анимация
         sb.isHidden = true
+        sb.searchBarStyle = .minimal   // или .prominent, ако искате по-ясен бекграунд
+        
+        // Премахваме default бекграунда (сивата лента) на searchBar
+        sb.backgroundImage = UIImage()
+        
+        // Ако искате да промените основния цвят (и на „Cancel“ бутона):
+        sb.tintColor = .systemBlue
+        
+        // Ако сте на iOS 13 или по-нов:
+        if #available(iOS 13.0, *) {
+            let textField = sb.searchTextField
+            
+            // Пример: задаваме бял фон в полето за търсене
+            textField.backgroundColor = .systemBackground
+            
+            // Заобляме ъглите (примерно 10pt)
+            textField.layer.cornerRadius = 10
+            textField.layer.masksToBounds = true
+            
+            // Променяме цвета на иконката-лупа (ако искате да е синя)
+            if let leftView = textField.leftView as? UIImageView {
+                leftView.tintColor = .systemBlue
+            }
+            
+            // Може да настроите и шрифт, placeholder цвят, и пр.
+            textField.font = UIFont.systemFont(ofSize: 16)
+            textField.attributedPlaceholder = NSAttributedString(
+                string: "Search events...",
+                attributes: [
+                    .foregroundColor: UIColor.secondaryLabel
+                ]
+            )
+        }
+        
         return sb
     }()
+
     
     /// HostingController за SwiftUI SearchResultsView
     private var searchHostingController: UIHostingController<SearchResultsView>?
