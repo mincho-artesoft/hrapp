@@ -36,8 +36,6 @@ struct MonthCalendarView: View {
     }
 
     var body: some View {
-        // ВАЖНО: НЯМА `NavigationView { ... }` тук.
-        // Използваме само VStack и разчитаме на NavigationView от RootView.
         VStack(spacing: 0) {
             // 1) Търсачка (conditional)
             if showSearchBar {
@@ -47,10 +45,9 @@ struct MonthCalendarView: View {
                         .padding(.leading)
 
                     Button("Cancel") {
-                        withAnimation {
-                            showSearchBar = false
-                            searchText = ""
-                        }
+                        // Не слагаме withAnimation, защото ползваме .animation(..., value: showSearchBar)
+                        showSearchBar = false
+                        searchText = ""
                     }
                     .padding(.trailing)
                 }
@@ -59,7 +56,7 @@ struct MonthCalendarView: View {
                 .transition(.move(edge: .top))
             }
 
-            // 2) Навигация за месец (скрита, ако searchText е непразен)
+            // 2) Навигация за месеца (скрита, ако searchText е непразен)
             if !(showSearchBar && !searchText.isEmpty) {
                 HStack {
                     Button {
@@ -121,14 +118,12 @@ struct MonthCalendarView: View {
                 }
             }
         }
+        // Ключова точка за гладка анимация при промяна на showSearchBar
+        .animation(.easeInOut, value: showSearchBar)
         .onAppear {
             viewModel.loadEvents(for: currentMonth)
         }
-        // 4) Преместваме бутоните в .toolbar (но без нов NavigationView)
         .toolbar {
-            // Бутон за търсене (показва се, само ако търсачката не е активна)
-          
-
             // Бутон за създаване на ново събитие
             ToolbarItem(placement: .navigationBarTrailing) {
                 if !showSearchBar {
@@ -139,12 +134,12 @@ struct MonthCalendarView: View {
                     }
                 }
             }
+            // Бутон за търсене
             ToolbarItem(placement: .navigationBarTrailing) {
                 if !showSearchBar {
                     Button {
-                        withAnimation {
-                            showSearchBar = true
-                        }
+                        // Може да е и showSearchBar.toggle()
+                        showSearchBar = true
                     } label: {
                         Image(systemName: "magnifyingglass")
                     }
@@ -207,14 +202,12 @@ struct MonthCalendarView: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
-
         // 7) Sheet за редакция на събитие
         .sheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { event in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: event)
         }
-
         // 8) Диалог за повтарящи се събития
         .confirmationDialog("This is a repeating event.", isPresented: $showRepeatingDialog) {
             Button("Save for This Event Only") {

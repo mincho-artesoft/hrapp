@@ -40,7 +40,10 @@ struct SearchResultsView: View {
     var body: some View {
         List {
             ForEach(groupedSearchResults, id: \.day) { group in
-                Section(header: Text(dayHeaderString(group.day))) {
+                Section(
+                    header: Text(dayHeaderString(group.day))
+                        .foregroundColor(Calendar.current.isDateInToday(group.day) ? .red : .primary)
+                ) {
                     ForEach(group.events, id: \.eventIdentifier) { event in
                         SearchEventRowView(event: event)
                             .onTapGesture {
@@ -50,6 +53,7 @@ struct SearchResultsView: View {
                 }
             }
         }
+
         .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
