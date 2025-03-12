@@ -1,7 +1,5 @@
 import UIKit
 
-/// 3) "Безкраен" DayCarouselView, което при доближаване до двата края добавя още дни.
-/// Няма автоматично селектиране при спиране на скрол — само при докосване на клетка.
 class InfiniteDayCarouselView: UIView,
                               UICollectionViewDataSource,
                               UICollectionViewDelegateFlowLayout,
@@ -26,9 +24,6 @@ class InfiniteDayCarouselView: UIView,
     /// Самата колекция
     private let collectionView: UICollectionView
     
-    // Премахваме `didInitialScroll`:
-    // private var didInitialScroll = false  // CHANGED (removed)
-    
     // MARK: - Init
     override init(frame: CGRect) {
         let layout = CenteredFlowLayout()
@@ -36,22 +31,19 @@ class InfiniteDayCarouselView: UIView,
         layout.minimumLineSpacing = 0
         
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        // Като "начална" избрана дата - днес
         self.selectedDate = Date()
         
         super.init(frame: frame)
         
         backgroundColor = .clear
         
-        // Конфигуриране на колекцията
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.decelerationRate = .fast
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         
-        // Регистрация на клетката
+        // Регистрация на клетката DayCell
         collectionView.register(DayCell.self, forCellWithReuseIdentifier: "DayCell")
         
         addSubview(collectionView)
@@ -64,18 +56,15 @@ class InfiniteDayCarouselView: UIView,
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    // MARK: - Зареждане на начални дни (пример: +/- 30 дни)
+    // Зареждане на начални дни (+/- 30 дни)
     private func loadInitialDates(around date: Date) {
         let cal = Calendar.current
         let baseDay = cal.startOfDay(for: date)
         
-        // Примерно 30 дни назад + 30 дни напред => общо 61 дни
         let start = cal.date(byAdding: .day, value: -chunkSize, to: baseDay)!
         let end   = cal.date(byAdding: .day, value:  chunkSize, to: baseDay)!
         
         var tempDates: [Date] = []
-        
         var d = start
         while d <= end {
             tempDates.append(d)
@@ -89,21 +78,18 @@ class InfiniteDayCarouselView: UIView,
         self.dates = tempDates
     }
     
-    // MARK: - Layout
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         collectionView.frame = bounds
         
-        // Винаги скролваме към избрания ден след промяна на размера. // CHANGED
+        // Винаги след промяна на размера (rotation и т.н.) -> скролваме към избрания ден
         scrollToSelectedDate()
     }
     
-    /// Вадим логиката за „проверка“ и винаги скролваме към `selectedDate`.
     private func scrollToSelectedDate() {
         guard let index = dates.firstIndex(where: { isSameDay($0, selectedDate) }) else { return }
         let ip = IndexPath(item: index, section: 0)
-        // Без анимация, за да не "прескача" при всяко малко resize.
+        // Без анимация, за да не "подскача" при всяко малко resize
         collectionView.scrollToItem(at: ip, at: .centeredHorizontally, animated: false)
     }
     
@@ -134,10 +120,12 @@ class InfiniteDayCarouselView: UIView,
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // Примерно: 50 пиксела широчина, цялата височина (или колкото ви е нужно)
-        return CGSize(width: 50, height: collectionView.bounds.height)
+
+        let width = collectionView.bounds.width / 7
+        let height = collectionView.bounds.height
+        return CGSize(width: width, height: height)
     }
+
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
@@ -147,35 +135,31 @@ class InfiniteDayCarouselView: UIView,
             onDaySelected?(d)
         }
         
-        // При tap -> можеш да скролнеш централно
+        // При tap -> скрол към центъра
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     // MARK: - UIScrollViewDelegate
-    
-    /// Логика за „безкрайно“ добавяне на дни вляво/вдясно, когато се доближим до края.
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // 1) Намираме видимите IndexPath-и
         let visibleIPs = collectionView.indexPathsForVisibleItems
         guard !visibleIPs.isEmpty else { return }
         
-        let minIndex = visibleIPs.map({ $0.item }).min() ?? 0
-        let maxIndex = visibleIPs.map({ $0.item }).max() ?? 0
+        let minIndex = visibleIPs.map { $0.item }.min() ?? 0
+        let maxIndex = visibleIPs.map { $0.item }.max() ?? 0
         
-        // 2) Ако сме близо до "началото" (minIndex < 5), добавяме още дни НАЗАД
+        // 2) Ако сме близо до "началото" (minIndex < 5) -> добавяме още дни назад
         if minIndex < 5 {
             prependMoreDays()
         }
         
-        // 3) Ако сме близо до "края" (maxIndex > dates.count - 5), добавяме още дни НАПРЕД
+        // 3) Ако сме близо до "края" (maxIndex > dates.count - 5) -> добавяме още дни напред
         if maxIndex > dates.count - 5 {
             appendMoreDays()
         }
     }
     
-    // MARK: - "Безкрайно" добавяне/премахване
-    
-    /// Добавяме още `chunkSize` дни *преди* най-левия наличен
+    // Добавяме още `chunkSize` дни *преди* най-левия наличен
     private func prependMoreDays() {
         guard let firstDate = dates.first else { return }
         let cal = Calendar.current
@@ -183,7 +167,7 @@ class InfiniteDayCarouselView: UIView,
         // Запазваме стария contentOffset
         let oldContentOffset = collectionView.contentOffset
         
-        // 1) Генерираме новите дни (примерно 30 дни назад)
+        // 1) Генерираме новите дни
         var newDates: [Date] = []
         for i in 1...chunkSize {
             if let newDay = cal.date(byAdding: .day, value: -i, to: firstDate) {
@@ -192,27 +176,28 @@ class InfiniteDayCarouselView: UIView,
         }
         newDates.reverse()
         
-        // 2) Актуализираме масива (вмъкваме отпред)
+        // 2) Вмъкваме ги отпред
         dates.insert(contentsOf: newDates, at: 0)
         
-        // 3) Запомняме колко клетки добавихме (count)
+        // 3) Индекс пъти
         let addedCount = newDates.count
-        
-        // 4) Ъпдейт на колекцията
         var indexPaths: [IndexPath] = []
         for i in 0..<addedCount {
             indexPaths.append(IndexPath(item: i, section: 0))
         }
         
-        // Размер на една клетка
-        let itemWidth = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize.width ?? 60
-        let spacing   = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.minimumLineSpacing ?? 0
+        // 4) Размер на една клетка
+        let flowLayout = (collectionView.collectionViewLayout as? UICollectionViewFlowLayout)
+                         ?? UICollectionViewFlowLayout()
+        let itemWidth = flowLayout.itemSize.width
+        let spacing   = flowLayout.minimumLineSpacing
         let totalItemWidth = itemWidth + spacing
         
+        // 5) Ъпдейт на колекцията
         collectionView.performBatchUpdates({
             collectionView.insertItems(at: indexPaths)
         }, completion: { _ in
-            // 5) Коригираме contentOffset надясно, за да не "подскочи" списъкът
+            // 6) Коригираме contentOffset надясно
             let offsetShift = CGFloat(addedCount) * totalItemWidth
             let newOffset = CGPoint(
                 x: oldContentOffset.x + offsetShift,
@@ -222,12 +207,11 @@ class InfiniteDayCarouselView: UIView,
         })
     }
     
-    /// Добавяме още `chunkSize` дни *след* най-десния наличен
+    // Добавяме още `chunkSize` дни *след* най-десния наличен
     private func appendMoreDays() {
         guard let lastDate = dates.last else { return }
         let cal = Calendar.current
         
-        // 1) Генерираме новите дни
         var newDates: [Date] = []
         for i in 1...chunkSize {
             if let newDay = cal.date(byAdding: .day, value: i, to: lastDate) {
@@ -235,11 +219,9 @@ class InfiniteDayCarouselView: UIView,
             }
         }
         
-        // 2) Актуализираме масива (добавяме отзад)
         let startIndex = dates.count
         dates.append(contentsOf: newDates)
         
-        // 3) Ъпдейт на колекцията
         var indexPaths: [IndexPath] = []
         for i in 0..<newDates.count {
             indexPaths.append(IndexPath(item: startIndex + i, section: 0))
@@ -250,7 +232,7 @@ class InfiniteDayCarouselView: UIView,
         }, completion: nil)
     }
     
-    // MARK: - Помощен метод
+    // MARK: - Helper
     private func isSameDay(_ d1: Date, _ d2: Date) -> Bool {
         let cal = Calendar.current
         return cal.isDate(d1, inSameDayAs: d2)

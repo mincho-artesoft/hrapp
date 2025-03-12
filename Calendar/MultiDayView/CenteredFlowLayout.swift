@@ -1,7 +1,6 @@
 import UIKit
 
-
-/// 1) Layout за "snap" към центъра
+/// Примерен FlowLayout, който "приляга" клетките към центъра при спиране на скрол
 class CenteredFlowLayout: UICollectionViewFlowLayout {
     override func targetContentOffset(
         forProposedContentOffset proposedContentOffset: CGPoint,
@@ -9,14 +8,15 @@ class CenteredFlowLayout: UICollectionViewFlowLayout {
     ) -> CGPoint {
         
         guard let collectionView = self.collectionView else {
-            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset,
-                                             withScrollingVelocity: velocity)
+            return super.targetContentOffset(
+                forProposedContentOffset: proposedContentOffset,
+                withScrollingVelocity: velocity
+            )
         }
         
         let collectionViewSize = collectionView.bounds.size
         let centerX = proposedContentOffset.x + collectionViewSize.width / 2
         
-        // Търсим елемента (layoutAttributes), чийто center е най-близо до centerX
         let visibleRect = CGRect(
             x: proposedContentOffset.x,
             y: proposedContentOffset.y,
@@ -25,8 +25,10 @@ class CenteredFlowLayout: UICollectionViewFlowLayout {
         )
         
         guard let attributesArray = self.layoutAttributesForElements(in: visibleRect) else {
-            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset,
-                                             withScrollingVelocity: velocity)
+            return super.targetContentOffset(
+                forProposedContentOffset: proposedContentOffset,
+                withScrollingVelocity: velocity
+            )
         }
         
         var closest: UICollectionViewLayoutAttributes?
@@ -41,8 +43,10 @@ class CenteredFlowLayout: UICollectionViewFlowLayout {
         }
         
         guard let closestAttr = closest else {
-            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset,
-                                             withScrollingVelocity: velocity)
+            return super.targetContentOffset(
+                forProposedContentOffset: proposedContentOffset,
+                withScrollingVelocity: velocity
+            )
         }
         
         let targetX = closestAttr.center.x - collectionViewSize.width / 2

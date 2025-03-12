@@ -1,7 +1,6 @@
 import UIKit
 import SwiftUI
 
-
 // MARK: - TwoWayPinnedMultiDayContainerView
 public final class TwoWayPinnedMultiDayContainerView: UIView,
                                                       UIScrollViewDelegate,
@@ -112,10 +111,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - "Nav bar" (top area)
     private let navBar = UIView()
     
-    // MARK: - singleDayCarousel (Вече НЕ е част от navBar-а!) // CHANGE
+    // MARK: - singleDayCarousel
+    // Вече го правим "по подразбиране скрит, ако showSingleDay = false".
     private let singleDayCarousel: InfiniteDayCarouselView = {
         let view = InfiniteDayCarouselView()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .secondarySystemBackground
         view.layer.cornerRadius = 8
         view.isHidden = true  // По подразбиране скрит, ако showSingleDay = false
         return view
@@ -200,24 +200,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 viewMenuButton.isHidden = true
                 searchButton.isHidden = true
                 
-                // ПРЕДИ: тук криехме и singleDayCarousel, ако showSingleDay = true
-                //      => махаме това, за да НЕ се крие. // CHANGE
-                // if showSingleDay {
-                //    dateRangeButton.isHidden = true
-                //    singleDayCarousel.isHidden = true
-                // } else {
-                //    singleDayCarousel.isHidden = true
-                //    dateRangeButton.isHidden = true
-                // }
-                
-                // Вместо това:
+                // Ако showSingleDay = true, оставяме каросела видим, но скриваме бутона:
                 if showSingleDay {
-                    // singleDayCarousel остава видим:
                     singleDayCarousel.isHidden = false
-                    // dateRangeButton го крием, защото сме в Day режим:
                     dateRangeButton.isHidden = true
                 } else {
-                    // multi-day режим – кароселът няма смисъл; крием го
                     singleDayCarousel.isHidden = true
                     dateRangeButton.isHidden   = true
                 }
@@ -231,9 +218,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 viewMenuButton.isHidden = false
                 searchButton.isHidden = false
                 
-                // showSingleDay vs. multiDay
                 if showSingleDay {
-                    // singleDayCarousel да се вижда винаги:
                     singleDayCarousel.isHidden = false
                     dateRangeButton.isHidden   = true
                 } else {
@@ -361,7 +346,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         searchBar.delegate = self
         navBar.addSubview(searchBar)
         
-        // singleDayCarousel – ВАЖНО: Вече го добавяме към self, не към navBar // CHANGE
+        // singleDayCarousel
         addSubview(singleDayCarousel)
         singleDayCarousel.onDaySelected = { [weak self] date in
             guard let self = self else { return }
@@ -419,7 +404,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         weekView.hourHeight = 50
         weekView.topMargin = 10
         
-        // Доп. изглед за фон зад нав. лента, ако искаме:
+        // Доп. изглед за фон зад нав. лента (примерно)
         topBackgroundView.backgroundColor = .secondarySystemBackground
         addSubview(topBackgroundView)
     }
@@ -537,7 +522,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Примерно, ако искаш да избуташ цялото съдържание с 60т надолу, когато е portrait:
+        // Примерно, ако искаш да избуташ цялото съдържание с 60т надолу, когато е портрет:
         let isLandscape = bounds.width > bounds.height
         let topOffset: CGFloat = isLandscape ? 0 : 60
         
@@ -598,13 +583,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let x = plusButtonX - btnW - margin
         let y = (navBar.bounds.height - btnH) / 2
         dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
-        dateRangeButton.isHidden = showSingleDay
-        // 3) singleDayCarousel – вече на отделен ред, ПОД navBar // CHANGE
-        let singleDayCarouselHeight: CGFloat = showSingleDay ? 40 : 0
-
-        // Ако showSingleDay = false → да се крие, иначе -> да е видим
+        if !isSearching{
+            dateRangeButton.isHidden = showSingleDay
+        }
+        // 3) singleDayCarousel
+        let singleDayCarouselHeight: CGFloat = showSingleDay ? 60 : 0
         singleDayCarousel.isHidden = !showSingleDay
-        
         let singleDayCarouselY = navBar.frame.maxY
         singleDayCarousel.frame = CGRect(
             x: 0,
@@ -613,7 +597,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: singleDayCarouselHeight
         )
         
-        // Ако сме в singleDay режим, синхронизираме избраната дата:
         if showSingleDay {
             singleDayCarousel.selectedDate = fromDate
         }
