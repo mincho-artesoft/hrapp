@@ -50,7 +50,7 @@ class DayCell: UICollectionViewCell {
         )
         
         // Размер за цифрата, за да изглежда като кръг
-        let circleSide: CGFloat = 32 // или 30, по ваша преценка
+        let circleSide: CGFloat = 35 // или 30, по ваша преценка
         let dayNumberY = dayOfWeekHeight - 2 // Малко застъпване нагоре
         let dayNumberX = (contentView.bounds.width - circleSide) / 2
         

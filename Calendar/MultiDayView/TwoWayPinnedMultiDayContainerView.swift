@@ -113,8 +113,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     // MARK: - singleDayCarousel
     // Вече го правим "по подразбиране скрит, ако showSingleDay = false".
-    private let singleDayCarousel: InfiniteDayCarouselView = {
-        let view = InfiniteDayCarouselView()
+    private let singleDayCarousel: WeekCarouselView = {
+        let view = WeekCarouselView()
         view.backgroundColor = .secondarySystemBackground
         view.layer.cornerRadius = 8
         view.isHidden = true  // По подразбиране скрит, ако showSingleDay = false
@@ -587,7 +587,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             dateRangeButton.isHidden = showSingleDay
         }
         // 3) singleDayCarousel
-        let singleDayCarouselHeight: CGFloat = showSingleDay ? 60 : 0
+        let singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
         singleDayCarousel.isHidden = !showSingleDay
         let singleDayCarouselY = navBar.frame.maxY
         singleDayCarousel.frame = CGRect(
