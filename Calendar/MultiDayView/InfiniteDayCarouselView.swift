@@ -26,8 +26,8 @@ class InfiniteDayCarouselView: UIView,
     /// Самата колекция
     private let collectionView: UICollectionView
     
-    /// За да знаем дали вече сме скролнали поне веднъж (при първо layout-ване)
-    private var didInitialScroll = false
+    // Премахваме `didInitialScroll`:
+    // private var didInitialScroll = false  // CHANGED (removed)
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -95,18 +95,16 @@ class InfiniteDayCarouselView: UIView,
         
         collectionView.frame = bounds
         
-        scrollToSelectedDateIfNeeded()
+        // Винаги скролваме към избрания ден след промяна на размера. // CHANGED
+        scrollToSelectedDate()
     }
     
-    /// При първо layout-ване -> скролваме централно към `selectedDate`.
-    private func scrollToSelectedDateIfNeeded() {
-        guard !didInitialScroll else { return }
+    /// Вадим логиката за „проверка“ и винаги скролваме към `selectedDate`.
+    private func scrollToSelectedDate() {
         guard let index = dates.firstIndex(where: { isSameDay($0, selectedDate) }) else { return }
-        
         let ip = IndexPath(item: index, section: 0)
+        // Без анимация, за да не "прескача" при всяко малко resize.
         collectionView.scrollToItem(at: ip, at: .centeredHorizontally, animated: false)
-        
-        didInitialScroll = true
     }
     
     // MARK: - UICollectionViewDataSource
@@ -149,7 +147,7 @@ class InfiniteDayCarouselView: UIView,
             onDaySelected?(d)
         }
         
-        // При tap -> можеш да скролнеш централно, ако искаш:
+        // При tap -> можеш да скролнеш централно
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     

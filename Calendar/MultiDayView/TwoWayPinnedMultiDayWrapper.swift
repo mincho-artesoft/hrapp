@@ -20,17 +20,23 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
         
+        // Ако ще представяте този контролер модално и искате
+        // да е fullscreen, можете да активирате:
+        //
+        // vc.modalPresentationStyle = .fullScreen
+
         let container = TwoWayPinnedMultiDayContainerView()
         
         container.showSingleDay = isSingleDay
         container.fromDate = fromDate
         container.toDate   = toDate
         
-        // Разделяме all-day и regular
+        // Ако имате нужда да настройвате/подавате събития:
         let (allDay, regular) = splitAllDay(events)
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
         
+        // CALLBACK-и
         container.onRangeChange = { newFrom, newTo in
             fromDate = newFrom
             toDate   = newTo
@@ -51,35 +57,41 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         }
         
         container.onEventDragEnded = { descriptor, newDate, isAllDay in
-            context.coordinator.handleEventDragOrResize(descriptor: descriptor,
-                                                        newDate: newDate,
-                                                        isResize: false,
-                                                        isAllDay: isAllDay)
+            context.coordinator.handleEventDragOrResize(
+                descriptor: descriptor,
+                newDate: newDate,
+                isResize: false,
+                isAllDay: isAllDay
+            )
         }
         container.onEventDragResizeEnded = { descriptor, newDate in
-            context.coordinator.handleEventDragOrResize(descriptor: descriptor,
-                                                        newDate: newDate,
-                                                        isResize: true,
-                                                        isAllDay: false)
+            context.coordinator.handleEventDragOrResize(
+                descriptor: descriptor,
+                newDate: newDate,
+                isResize: true,
+                isAllDay: false
+            )
         }
         
         container.onDayLabelTap = { day in
             onDayLabelTap?(day)
         }
         
+        // Настройки за типа изглед (Day, MultiDay и т.н.)
         container.currentView = selectedTab
         container.onViewChange = onViewChange
         
-        // NEW: Натискане на бутона “+” в горния десен ъгъл
+        // Бутон “+”
         container.onAddNewEvent = {
-            // Примерно създаваме ново събитие за "сега", или за fromDate:
+            // Примерно създаваме ново събитие за "сега":
             context.coordinator.createNewEventAndPresent(date: Date(), in: vc)
         }
         
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         
-        // ТУК Е ПРОМЯНАТА (Safe Area -> Top/Bottom Anchor):
+        // >>> ТУК Е ПРОМЯНАТА <<<
+        // Вместо safeAreaLayoutGuide, връзваме към vc.view.(top/leading/...):
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: vc.view.topAnchor),
             container.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
@@ -126,6 +138,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         Coordinator(self)
     }
     
+    // MARK: - Coordinator
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
         let parent: TwoWayPinnedMultiDayWrapper
         
@@ -147,7 +160,6 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) ?? toOnly
 
             let allowedCals = CalendarViewModel.shared.allowedCalendars()
-
             let predicate = parent.eventStore.predicateForEvents(
                 withStart: fromOnly,
                 end: actualEnd,
@@ -160,6 +172,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 guard let realStart = ekEvent.startDate,
                       let realEnd   = ekEvent.endDate else { continue }
                 
+                // Ако е повече от 1 ден -> split
                 if cal.startOfDay(for: realStart) != cal.startOfDay(for: realEnd) {
                     splitted.append(contentsOf: splitEventByDays(ekEvent,
                                                                  startRange: fromOnly,
@@ -200,7 +213,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             return results
         }
         
-        @MainActor func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+        @MainActor public func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
             let editVC = EKEventEditViewController()
             editVC.eventStore = parent.eventStore
             editVC.event = ekEvent
@@ -208,7 +221,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             parentVC.present(editVC, animated: true)
         }
         
-        @MainActor func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
+        @MainActor public func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = "New event"
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
@@ -217,7 +230,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             presentSystemEditor(newEvent, in: parentVC)
         }
         
-        @MainActor func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
+        @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = "All-day event"
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
@@ -227,7 +240,12 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             presentSystemEditor(newEvent, in: parentVC)
         }
         
-        @MainActor func handleEventDragOrResize(descriptor: EventDescriptor, newDate: Date, isResize: Bool, isAllDay: Bool) {
+        @MainActor public func handleEventDragOrResize(
+            descriptor: EventDescriptor,
+            newDate: Date,
+            isResize: Bool,
+            isAllDay: Bool
+        ) {
             if let multi = descriptor as? EKMultiDayWrapper {
                 let ev = multi.realEvent
                 if ev.hasRecurrenceRules {
@@ -242,7 +260,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             }
         }
         
-        @MainActor func askUserForRecurring(event: EKEvent, newDate: Date, isResize: Bool) {
+        @MainActor public func askUserForRecurring(event: EKEvent, newDate: Date, isResize: Bool) {
             let alert = UIAlertController(
                 title: "Recurring Event",
                 message: "This event is part of a series. Update which events?",
@@ -275,17 +293,21 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             }
         }
         
-        @MainActor func applyDragChanges(_ event: EKEvent, newStartDate: Date, span: EKSpan, isAllDay: Bool) {
+        @MainActor public func applyDragChanges(
+            _ event: EKEvent,
+            newStartDate: Date,
+            span: EKSpan,
+            isAllDay: Bool
+        ) {
             guard let oldStart = event.startDate, let oldEnd = event.endDate else { return }
             if isAllDay {
                 event.startDate = newStartDate
                 event.endDate   = newStartDate.addingTimeInterval(3600)
             } else {
-                let dur = oldEnd.timeIntervalSince(oldStart)
+                let duration = oldEnd.timeIntervalSince(oldStart)
                 event.startDate = newStartDate
-                event.endDate   = newStartDate.addingTimeInterval(dur)
+                event.endDate   = newStartDate.addingTimeInterval(duration)
             }
-            
             do {
                 try parent.eventStore.save(event, span: span)
             } catch {
@@ -294,21 +316,24 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             reloadCurrentRange()
         }
         
-        @MainActor func applyResizeChanges(_ event: EKEvent,
-                                descriptor: EventDescriptor?,
-                                forcedNewDate: Date,
-                                span: EKSpan) {
+        @MainActor public func applyResizeChanges(
+            _ event: EKEvent,
+            descriptor: EventDescriptor?,
+            forcedNewDate: Date,
+            span: EKSpan
+        ) {
             if let multi = descriptor as? EKMultiDayWrapper {
                 let originalInterval = multi.dateInterval
                 let distanceToStart = forcedNewDate.timeIntervalSince(originalInterval.start)
                 let distanceToEnd   = originalInterval.end.timeIntervalSince(forcedNewDate)
+                // Ако хващаме горната част (start) или долната (end) при resize:
                 if distanceToStart < distanceToEnd {
-                    // top
+                    // resize отгоре (нов start)
                     if forcedNewDate < event.endDate {
                         event.startDate = forcedNewDate
                     }
                 } else {
-                    // bottom
+                    // resize отдолу (нов end)
                     if forcedNewDate > event.startDate {
                         event.endDate = forcedNewDate
                     }

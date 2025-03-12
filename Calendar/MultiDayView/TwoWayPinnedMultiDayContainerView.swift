@@ -574,7 +574,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             singleDayCarousel.isHidden = false
             dateRangeButton.isHidden   = true
             
-            let carouselWidth: CGFloat = 250
+            let isLandscape = bounds.width > bounds.height
+               // Ако искаш да е 350 в landscape, иначе 250:
+               let carouselWidth: CGFloat = isLandscape ? 350 : 250
             let carouselX = plusButtonX - carouselWidth - margin
             let carouselY = (navBar.bounds.height - singleDayCarouselHeight) / 2
             

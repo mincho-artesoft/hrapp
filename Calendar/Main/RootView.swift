@@ -68,7 +68,7 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
-                            
+                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                             // 1) Day
                         case 1:
                             TwoWayPinnedMultiDayWrapper(
@@ -88,7 +88,8 @@ struct RootView: View {
                             }
                             .onAppear { loadSingleDayEvents() }
                             .onReceive(timer) { _ in loadSingleDayEvents() }
-                            
+                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+
                             // 2) Year
                         case 2:
                             YearCalendarView(
@@ -98,7 +99,8 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
-                            
+                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+
                             // 3) MultiDay
                         case 3:
                             TwoWayPinnedMultiDayWrapper(
@@ -119,7 +121,8 @@ struct RootView: View {
                             }
                             .onAppear { loadMultiDayEvents() }
                             .onReceive(timer) { _ in loadMultiDayEvents() }
-                            
+                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+
                             // 4) AllEventsList
                         case 4:
                             // ВАЖНО: ТУК ПРОМЕНЯМЕ loadInitialEvents, за да презареди целия диапазон!
@@ -144,6 +147,8 @@ struct RootView: View {
                                     }
                                 }
                             )
+                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+
                             
                         default:
                             Text("N/A")
