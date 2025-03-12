@@ -326,13 +326,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // cornerView
         cornerView.backgroundColor = .secondarySystemBackground
+        cornerView.layer.zPosition = 5
         addSubview(cornerView)
         
         // allDayTitleLabel
         allDayTitleLabel.text = "  all-day"
         allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
-        allDayTitleLabel.layer.zPosition = 5
+        allDayTitleLabel.layer.zPosition = 6
         addSubview(allDayTitleLabel)
         
         topBorder.backgroundColor = UIColor.lightGray.cgColor
@@ -343,7 +344,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // Nav bar
         navBar.backgroundColor = .secondarySystemBackground
-        navBar.layer.zPosition = 6
+        navBar.layer.zPosition = 7
         addSubview(navBar)
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
@@ -542,7 +543,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             width: bounds.width,
             height: topOffset
         )
-        
+        topBackgroundView.layer.zPosition = 3
         // 2) самата navBar – качваме я след topOffset:
         navBar.frame = CGRect(
             x: 0,
@@ -554,7 +555,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // --------------------------------
         // Ако showSingleDay = true → показваме monthLabel
         // и обновяваме текста му:
-        if showSingleDay {
+        if showSingleDay && !isLandscape{
             let df = DateFormatter()
             // Примерно показваме целия месец (напр. "March")
             // Може да ползвате "MMM" за съкратен: "Mar"
@@ -625,8 +626,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
         
         // 3) singleDayCarousel
-        let singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
+        var singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
+        
         singleDayCarousel.isHidden = !showSingleDay
+        if isLandscape{
+            singleDayCarousel.isHidden = true
+            singleDayCarouselHeight = 0
+        }
+        singleDayCarousel.layer.zPosition = 8
         let singleDayCarouselY = navBar.frame.maxY
         singleDayCarousel.frame = CGRect(
             x: 0,
