@@ -78,11 +78,13 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
+        
+        // ТУК Е ПРОМЯНАТА (Safe Area -> Top/Bottom Anchor):
         NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.topAnchor),
+            container.topAnchor.constraint(equalTo: vc.view.topAnchor),
             container.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
             container.trailingAnchor.constraint(equalTo: vc.view.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor),
+            container.bottomAnchor.constraint(equalTo: vc.view.bottomAnchor),
         ])
         
         return vc

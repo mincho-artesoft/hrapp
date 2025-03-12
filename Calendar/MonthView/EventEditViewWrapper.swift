@@ -17,6 +17,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         vc.eventStore = eventStore
         vc.event = event
         vc.editViewDelegate = context.coordinator
+        
         return vc
     }
     

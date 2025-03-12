@@ -1,8 +1,8 @@
 import UIKit
 
 
-// MARK: - DayCell
- class DayCell: UICollectionViewCell {
+/// 2) Примерна клетка
+class DayCell: UICollectionViewCell {
     private let label = UILabel()
     
     override init(frame: CGRect) {
@@ -25,9 +25,7 @@ import UIKit
     func configure(with date: Date, isSelected: Bool) {
         let df = DateFormatter()
         df.dateFormat = "EE\nd MMM"
-        let text = df.string(from: date)
-        
-        label.text = text
+        label.text = df.string(from: date)
         
         if isSelected {
             label.textColor = .white
@@ -40,3 +38,4 @@ import UIKit
         }
     }
 }
+

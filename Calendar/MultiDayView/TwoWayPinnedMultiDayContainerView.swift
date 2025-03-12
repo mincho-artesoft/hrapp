@@ -113,8 +113,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     private let navBar = UIView()
     
     // ЗАМЯНА: Вместо singleDayButton, имаме DayCarouselView:
-    private let singleDayCarousel: DayCarouselView = {
-        let view = DayCarouselView()
+    private let singleDayCarousel: InfiniteDayCarouselView = {
+        let view = InfiniteDayCarouselView()
+        view.backgroundColor = .systemGray5
+        view.layer.cornerRadius = 8
         view.isHidden = true  // По подразбиране е скрит (ако showSingleDay = false)
         return view
     }()
@@ -572,7 +574,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             singleDayCarousel.isHidden = false
             dateRangeButton.isHidden   = true
             
-            let carouselWidth: CGFloat = 300
+            let carouselWidth: CGFloat = 250
             let carouselX = plusButtonX - carouselWidth - margin
             let carouselY = (navBar.bounds.height - singleDayCarouselHeight) / 2
             
