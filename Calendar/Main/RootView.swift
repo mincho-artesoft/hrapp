@@ -43,7 +43,7 @@ struct RootView: View {
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     // Табовете/екраните
-    @State private var selectedTab = 2  // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList
+    @State private var selectedTab = 3  // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList
     
     // Sheet за календари
     @State private var showCalendarsSheet = false
