@@ -13,6 +13,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             if showSingleDay {
                 toDate = fromDate
             }
+            // Показваме или скриваме етикета за месеца
+            monthLabel.isHidden = !showSingleDay
             setNeedsLayout()
         }
     }
@@ -111,12 +113,20 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - "Nav bar" (top area)
     private let navBar = UIView()
     
+    // Добавяме нов лейбъл за месеца (скрит по подразбиране, ще го показваме само при showSingleDay = true)
+    private let monthLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = .label
+        label.isHidden = true
+        return label
+    }()
+    
     // MARK: - singleDayCarousel
-    // Вече го правим "по подразбиране скрит, ако showSingleDay = false".
     private let singleDayCarousel: WeekCarouselView = {
         let view = WeekCarouselView()
         view.backgroundColor = .secondarySystemBackground
-        view.layer.cornerRadius = 8
         view.isHidden = true  // По подразбиране скрит, ако showSingleDay = false
         return view
     }()
@@ -202,10 +212,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 
                 // Ако showSingleDay = true, оставяме каросела видим, но скриваме бутона:
                 if showSingleDay {
-                    singleDayCarousel.isHidden = false
                     dateRangeButton.isHidden = true
                 } else {
-                    singleDayCarousel.isHidden = true
                     dateRangeButton.isHidden   = true
                 }
                 
@@ -219,10 +227,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 searchButton.isHidden = false
                 
                 if showSingleDay {
-                    singleDayCarousel.isHidden = false
                     dateRangeButton.isHidden   = true
                 } else {
-                    singleDayCarousel.isHidden = true
                     dateRangeButton.isHidden   = false
                 }
                 
@@ -341,6 +347,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         addSubview(navBar)
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        
+        // Добавяме monthLabel в navBar
+        navBar.addSubview(monthLabel)
         
         // Search bar
         searchBar.delegate = self
@@ -485,7 +494,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         allDayTitleLabel.isHidden = shouldShow
         daysHeaderScrollView.isHidden = shouldShow
         
-        guard shouldShow else {
+        guard shouldShow == true else {
             searchHostingController?.view.removeFromSuperview()
             searchHostingController = nil
             return
@@ -542,7 +551,33 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: navBarHeight
         )
         
-        // Подреждаме бутоните в navBar:
+        // --------------------------------
+        // Ако showSingleDay = true → показваме monthLabel
+        // и обновяваме текста му:
+        if showSingleDay {
+            let df = DateFormatter()
+            // Примерно показваме целия месец (напр. "March")
+            // Може да ползвате "MMM" за съкратен: "Mar"
+            df.dateFormat = "LLLL"
+            monthLabel.text = df.string(from: fromDate)
+            monthLabel.textColor = .systemBlue
+            monthLabel.sizeToFit()
+            // Слагаме го горе вляво с ~10pt отстъп
+            let mlX: CGFloat = 10
+            let mlY = (navBarHeight - monthLabel.bounds.height) / 2
+            monthLabel.frame = CGRect(
+                x: mlX,
+                y: mlY,
+                width: monthLabel.bounds.width,
+                height: monthLabel.bounds.height
+            )
+            monthLabel.isHidden = false
+        } else {
+            monthLabel.isHidden = true
+        }
+        // --------------------------------
+        
+        // Подреждаме бутоните вдясно в navBar:
         let menuBtnSize: CGFloat = 34
         let searchBtnSize: CGFloat = 34
         let plusBtnSize: CGFloat = 34
@@ -583,9 +618,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let x = plusButtonX - btnW - margin
         let y = (navBar.bounds.height - btnH) / 2
         dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
-        if !isSearching{
+        
+        // Ако не търсим, тогава крием/показваме dateRangeButton спрямо showSingleDay:
+        if !isSearching {
             dateRangeButton.isHidden = showSingleDay
         }
+        
         // 3) singleDayCarousel
         let singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
         singleDayCarousel.isHidden = !showSingleDay
