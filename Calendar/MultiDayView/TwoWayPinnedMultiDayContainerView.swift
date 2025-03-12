@@ -185,6 +185,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                     // Показваме Single-day бутона (ако е зададено)
                     singleDayButton.isHidden = false
                     dateRangeButton.isHidden = true
+                    singleDayButton.isHidden = true
                 } else {
                     singleDayButton.isHidden = true
                     dateRangeButton.isHidden = true
@@ -202,6 +203,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 if showSingleDay {
                     singleDayButton.isHidden = false
                     dateRangeButton.isHidden = true
+                    singleDayButton.isHidden = false
                 } else {
                     singleDayButton.isHidden = true
                     dateRangeButton.isHidden = false
@@ -263,6 +265,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.bounces = false
+        mainScrollView.layer.zPosition = 1
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
         
@@ -273,6 +276,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         allDayScrollView.alwaysBounceHorizontal = false
         allDayScrollView.alwaysBounceVertical = false
         allDayScrollView.bounces = false
+        allDayScrollView.layer.zPosition = 2
         allDayScrollView.addSubview(allDayView)
         addSubview(allDayScrollView)
         
@@ -280,6 +284,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
         hoursColumnScrollView.addSubview(hoursColumnView)
+        hoursColumnScrollView.layer.zPosition = 3
         addSubview(hoursColumnScrollView)
         
         // 4) daysHeaderScrollView
@@ -290,6 +295,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         daysHeaderScrollView.backgroundColor = .secondarySystemBackground
         daysHeaderScrollView.bounces = false
         daysHeaderScrollView.addSubview(daysHeaderView)
+        daysHeaderScrollView.layer.zPosition = 4
         addSubview(daysHeaderScrollView)
         
         // 5) cornerView
@@ -300,6 +306,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         allDayTitleLabel.text = "  all-day"
         allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
+        allDayTitleLabel.layer.zPosition = 5
         addSubview(allDayTitleLabel)
         
         topBorder.backgroundColor = UIColor.lightGray.cgColor
@@ -310,6 +317,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // 7) Nav бар
         navBar.backgroundColor = .secondarySystemBackground
+        navBar.layer.zPosition = 6
         addSubview(navBar)
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
