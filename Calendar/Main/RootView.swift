@@ -88,7 +88,7 @@ struct RootView: View {
                             }
                             .onAppear { loadSingleDayEvents() }
                             .onReceive(timer) { _ in loadSingleDayEvents() }
-                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+                            .ignoresSafeArea(.all)
 
                             // 2) Year
                         case 2:
@@ -121,7 +121,7 @@ struct RootView: View {
                             }
                             .onAppear { loadMultiDayEvents() }
                             .onReceive(timer) { _ in loadMultiDayEvents() }
-                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+                            .ignoresSafeArea(.all)
 
                             // 4) AllEventsList
                         case 4:

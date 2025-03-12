@@ -522,13 +522,33 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     @objc private func addEventButtonTapped() {
         onAddNewEvent?()
     }
-    
+    private let topBackgroundView = UIView()
+
     // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
+        topBackgroundView.backgroundColor = .secondarySystemBackground
+          addSubview(topBackgroundView)
+        // Тук задаваме колко пиксела (точки) искаме да изместим съдържанието надолу
+        let isLandscape = bounds.width > bounds.height
+
+        let topOffset: CGFloat = isLandscape ? 0 : 60
         
         // 1) Навигационна лента
-        navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
+        topBackgroundView.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: bounds.width,
+                height: topOffset
+            )
+
+            // Навигационната лента започва от `topOffset`
+            navBar.frame = CGRect(
+                x: 0,
+                y: topOffset,
+                width: bounds.width,
+                height: navBarHeight
+            )
         
         let menuBtnSize: CGFloat = 34
         let singleDayCarouselHeight: CGFloat = 34
@@ -546,7 +566,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: menuBtnSize
         )
         
-        // iOS 14+ menu
+        // iOS 14+ меню (ако е налично)
         if #available(iOS 14.0, *) {
             viewMenuButton.menu = buildViewMenu()
         }
@@ -569,14 +589,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: plusBtnSize
         )
         
-        // Каросел и dateRangeButton
+        // Превключване между Day (singleDayCarousel) и dateRangeButton
         if showSingleDay && !isSearching {
             singleDayCarousel.isHidden = false
             dateRangeButton.isHidden   = true
             
             let isLandscape = bounds.width > bounds.height
-               // Ако искаш да е 350 в landscape, иначе 250:
-               let carouselWidth: CGFloat = isLandscape ? 350 : 250
+            let carouselWidth: CGFloat = isLandscape ? 350 : 250
             let carouselX = plusButtonX - carouselWidth - margin
             let carouselY = (navBar.bounds.height - singleDayCarouselHeight) / 2
             
@@ -587,12 +606,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 height: singleDayCarouselHeight
             )
             
-            // >>> Ключовата промяна <<<
-            // При всяко layout-ване, ако сме singleDay, задаваме
-            // избраната дата в каросела да е равна на fromDate:
+            // При всяко layout-ване, ако сме в singleDay режим,
+            // актуализираме датата на каросела да е равна на fromDate
             singleDayCarousel.selectedDate = fromDate
             
-        } else  if !showSingleDay && !isSearching{
+        } else if !showSingleDay && !isSearching {
             singleDayCarousel.isHidden = true
             dateRangeButton.isHidden   = false
             
@@ -603,14 +621,23 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
         }
         
-        // 2) Други layout-и
-        let yMain = navBarHeight
-        cornerView.frame = CGRect(x: 0, y: yMain,
-                                  width: leftColumnWidth,
-                                  height: daysHeaderHeight)
-        daysHeaderScrollView.frame = CGRect(x: leftColumnWidth, y: yMain,
-                                            width: bounds.width - leftColumnWidth,
-                                            height: daysHeaderHeight)
+        // 2) Изчисляваме началното “y” за основната част на изгледа
+        //    след като прибавим навигационната лента + отместването.
+        let yMain = topOffset + navBarHeight
+        
+        cornerView.frame = CGRect(
+            x: 0,
+            y: yMain,
+            width: leftColumnWidth,
+            height: daysHeaderHeight
+        )
+        
+        daysHeaderScrollView.frame = CGRect(
+            x: leftColumnWidth,
+            y: yMain,
+            width: bounds.width - leftColumnWidth,
+            height: daysHeaderHeight
+        )
         
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
@@ -640,10 +667,19 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let allDayH = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
         
-        allDayTitleLabel.frame = CGRect(x: 0, y: allDayY,
-                                        width: leftColumnWidth, height: allDayH)
-        allDayScrollView.frame = CGRect(x: leftColumnWidth, y: allDayY,
-                                        width: bounds.width - leftColumnWidth, height: allDayH)
+        allDayTitleLabel.frame = CGRect(
+            x: 0,
+            y: allDayY,
+            width: leftColumnWidth,
+            height: allDayH
+        )
+        
+        allDayScrollView.frame = CGRect(
+            x: leftColumnWidth,
+            y: allDayY,
+            width: bounds.width - leftColumnWidth,
+            height: allDayH
+        )
         
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayFullH)
@@ -670,19 +706,25 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         allDayScrollView.setContentOffset(newOffset, animated: false)
         
         let hoursColumnY = allDayY + allDayH
-        hoursColumnScrollView.frame = CGRect(x: 0, y: hoursColumnY,
-                                             width: leftColumnWidth,
-                                             height: bounds.height - hoursColumnY)
-        mainScrollView.frame = CGRect(x: leftColumnWidth, y: hoursColumnY,
-                                      width: bounds.width - leftColumnWidth,
-                                      height: bounds.height - hoursColumnY)
+        hoursColumnScrollView.frame = CGRect(
+            x: 0,
+            y: hoursColumnY,
+            width: leftColumnWidth,
+            height: bounds.height - hoursColumnY
+        )
+        
+        mainScrollView.frame = CGRect(
+            x: leftColumnWidth,
+            y: hoursColumnY,
+            width: bounds.width - leftColumnWidth,
+            height: bounds.height - hoursColumnY
+        )
         
         let totalHours = 25
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
         let finalHeight = baseHeight + (weekView.topMargin * 2)
         
         let totalWidth  = CGFloat(dayCount) * weekView.dayColumnWidth
-        
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
         
@@ -697,6 +739,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
+        // Ако съдържанието на allDayView се е променило много при първия pass,
+        // втори pass ще презареди layout-а пак (опит за корекция на височината).
         if isInSecondPass {
             isInSecondPass = false
         } else {
@@ -710,8 +754,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             }
         }
         
+        // Правим layout на Search Results, ако сме в режим на търсене
         layoutSearchResultsIfNeeded()
     }
+
     
     // MARK: - UIScrollViewDelegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
