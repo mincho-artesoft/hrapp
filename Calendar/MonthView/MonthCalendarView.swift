@@ -31,7 +31,11 @@ struct MonthCalendarView: View {
     // Тук пазим събитията за конкретния ден
     @State private var pinnedDayEvents: [EventDescriptor] = []
     
-    init(viewModel: CalendarViewModel, startMonth: Date,
+    // NEW: Показване/скриване на лист (sheet) за търсене
+    @State private var showSearchSheet = false
+    
+    init(viewModel: CalendarViewModel,
+         startMonth: Date,
          selectedTab: Int,
          onViewChange: ((Int)->Void)?
     ) {
@@ -101,6 +105,7 @@ struct MonthCalendarView: View {
             }
         }
         .onAppear {
+            // Зареждаме събитията за текущия месец
             viewModel.loadEvents(for: currentMonth)
         }
         // fullScreenCover за DayView
@@ -156,19 +161,27 @@ struct MonthCalendarView: View {
             }
             Button("Cancel", role: .cancel) {}
         }
-        // Тук добавяме отделен "+" бутон, редом до трите точки
+        // .toolbar + .sheet за Search
         .toolbar {
             // 1) Бутон “+”
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    // Решете сами дали да създавате събитие за "днешния" ден или друго
                     createAndEditNewEvent(on: Date())
                 } label: {
                     Image(systemName: "plus")
                 }
             }
             
-            // 2) Бутон с трите точки (Menu)
+            // 2) Бутон с икона "magnifyingglass" -> показва search sheet
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showSearchSheet.toggle()  // при натискане показваме search
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+            }
+            
+            // 3) Бутон с трите точки (Menu)
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     // Day
@@ -195,6 +208,7 @@ struct MonthCalendarView: View {
                     } label: {
                         Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
                     }
+                    // List
                     Button {
                         onViewChange?(4)
                     } label: {
@@ -205,7 +219,15 @@ struct MonthCalendarView: View {
                 }
             }
         }
+        // Когато showSearchSheet е true -> отваряме SearchView
+        .sheet(isPresented: $showSearchSheet) {
+            NavigationView {
+                SearchEventsView()
+            }
+        }
     }
+    
+    // MARK: - Методи за местене между месеците
     
     private func moveMonth(by offset: Int) {
         if let newMonth = calendar.date(byAdding: .month, value: offset, to: currentMonth) {
@@ -220,6 +242,8 @@ struct MonthCalendarView: View {
         df.dateFormat = "LLLL yyyy"
         return df.string(from: date).capitalized
     }
+    
+    // MARK: - DnD на събитие в друг ден
     
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
         guard let droppedEvent = viewModel.eventsByID[eventID] else { return }
@@ -256,6 +280,8 @@ struct MonthCalendarView: View {
         viewModel.loadEvents(for: currentMonth)
     }
     
+    // MARK: - Създаване и редакция на ново събитие
+    
     private func createAndEditNewEvent(on day: Date) {
         let status = EKEventStore.authorizationStatus(for: .event)
         if #available(iOS 17.0, *) {
@@ -263,6 +289,7 @@ struct MonthCalendarView: View {
             case .fullAccess, .writeOnly:
                 presentNewEvent(on: day)
             case .notDetermined:
+                // Може да извикате някаква функция за requestAccess
                 print("TODO: requestCalendarAccessIfNeeded()")
             default:
                 print("No calendar access.")
@@ -271,6 +298,7 @@ struct MonthCalendarView: View {
             if status == .authorized {
                 presentNewEvent(on: day)
             } else if status == .notDetermined {
+                // Може да извикате някаква функция за requestAccess
                 print("TODO: requestCalendarAccessIfNeeded()")
             } else {
                 print("No calendar access.")
@@ -291,6 +319,8 @@ struct MonthCalendarView: View {
         eventToEdit = newEvent
     }
     
+    // MARK: - Зареждане на pinnedDayEvents
+    
     private func loadPinnedDayEvents(for day: Date) {
         let cal = Calendar.current
         let dayStart = cal.startOfDay(for: day)
@@ -307,6 +337,7 @@ struct MonthCalendarView: View {
         for ekEvent in found {
             let realStart = ekEvent.startDate
             let realEnd   = ekEvent.endDate
+            // Ако събитието е по-дълго, може да го "разделим" за визуализация
             if realStart! < dayStart || realEnd! > nextDay {
                 splitted.append(contentsOf: splitEventByDays(
                     ekEvent,
