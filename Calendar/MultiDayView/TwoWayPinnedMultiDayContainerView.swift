@@ -110,6 +110,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     public let weekView = MultiDayTimelineView()
     
     // MARK: - "Nav bar" (top area)
+    // CHANGE: Направете го property, за да го позлваме при анимации
+    private let navBar = UIView()
+    
     private let singleDayButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(UIImage(systemName: "calendar"), for: .normal)
@@ -156,27 +159,57 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }()
     
     // MARK: - Search functionality (с Cancel)
+    // CHANGE: Премахваме директното isHidden от конструктора, защото ще правим анимации
+    private let searchBar: UISearchBar = {
+        let sb = UISearchBar()
+        sb.placeholder = "Search events..."
+        // Първоначално може да е скрит, но ще го показваме с анимация
+        sb.isHidden = true
+        return sb
+    }()
+    
+    /// HostingController за SwiftUI SearchResultsView
+    private var searchHostingController: UIHostingController<SearchResultsView>?
+    
+    // CHANGE: Премахнато е старото „show/hide“ от didSet. Вече ще анимираме.
     private var isSearching: Bool = false {
         didSet {
-            // Показваме/скриваме searchBar + Cancel
-            searchBar.isHidden = !isSearching
-            searchBar.showsCancelButton = isSearching
-            
-            // Крием другите бутони
-            addEventButton.isHidden = isSearching
-            viewMenuButton.isHidden = isSearching
-            searchButton.isHidden = isSearching  // Ако искате да скривате лупичката по време на търсене
-            
-            // singleDay vs dateRange
-            if showSingleDay {
-                singleDayButton.isHidden = !showSingleDay || isSearching
-                dateRangeButton.isHidden = true
+            if isSearching {
+                // Крие другите бутони
+                addEventButton.isHidden = true
+                viewMenuButton.isHidden = true
+                searchButton.isHidden = true
+                
+                // singleDay vs. dateRange
+                if showSingleDay {
+                    // Показваме Single-day бутона (ако е зададено)
+                    singleDayButton.isHidden = false
+                    dateRangeButton.isHidden = true
+                } else {
+                    singleDayButton.isHidden = true
+                    dateRangeButton.isHidden = true
+                }
+                
+                // Показваме SearchBar с анимация
+                animateSearchBarIn()
+                
             } else {
-                dateRangeButton.isHidden = isSearching
-                singleDayButton.isHidden = true
+                // Възстановяваме другите бутони
+                addEventButton.isHidden = false
+                viewMenuButton.isHidden = false
+                searchButton.isHidden = false
+                
+                if showSingleDay {
+                    singleDayButton.isHidden = false
+                    dateRangeButton.isHidden = true
+                } else {
+                    singleDayButton.isHidden = true
+                    dateRangeButton.isHidden = false
+                }
+                
+                // Скриваме SearchBar с анимация
+                animateSearchBarOut()
             }
-            
-            setNeedsLayout()
         }
     }
     
@@ -185,16 +218,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             updateSearchResults()
         }
     }
-    
-    private let searchBar: UISearchBar = {
-        let sb = UISearchBar()
-        sb.placeholder = "Search events..."
-        sb.isHidden = true
-        return sb
-    }()
-    
-    /// HostingController за SwiftUI SearchResultsView
-    private var searchHostingController: UIHostingController<SearchResultsView>?
     
     // MARK: - Private constants & variables
     fileprivate let navBarHeight: CGFloat = 50
@@ -286,7 +309,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         allDayTitleLabel.layer.addSublayer(bottomBorder)
         
         // 7) Nav бар
-        let navBar = UIView()
         navBar.backgroundColor = .secondarySystemBackground
         addSubview(navBar)
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
@@ -352,7 +374,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - Логика за бутона с лупичка
     @objc private func searchButtonTapped() {
         // При натискане на лупичката включваме режима isSearching
-        // Това ще покаже searchBar (с Cancel)
+        // Това ще покаже searchBar (с Cancel) чрез animateSearchBarIn()
         isSearching = true
         searchText = ""
         searchBar.text = ""
@@ -374,6 +396,54 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         searchBar.resignFirstResponder()
         searchText = ""
         searchBar.text = ""
+    }
+    
+    // MARK: - Анимиран вход/изход на SearchBar
+    
+    // CHANGE: Добавяме два нови метода за анимация
+    
+    /// Показваме SearchBar-а с "слизане" отгоре
+    private func animateSearchBarIn() {
+        searchBar.isHidden = false
+        searchBar.showsCancelButton = true
+        
+        // За по-голяма гъвкавост смятаме финалната рамка:
+        let sbHeight: CGFloat = 36
+        // Да е центриран вертикално (примерно) в navBar
+        let finalY = (navBarHeight - sbHeight) / 2
+        let finalFrame = CGRect(
+            x: 10,
+            y: finalY,
+            width: navBar.bounds.width - 20,
+            height: sbHeight
+        )
+        
+        // Стартова позиция: същите X/W, но Y идва отгоре (една navBar височина)
+        let startFrame = finalFrame.offsetBy(dx: 0, dy: -navBarHeight)
+        
+        searchBar.frame = startFrame
+        searchBar.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBar.frame = finalFrame
+            self.searchBar.alpha = 1
+        })
+    }
+    
+    /// Скриваме SearchBar-а нагоре
+    private func animateSearchBarOut() {
+        let finalFrame = searchBar.frame.offsetBy(dx: 0, dy: -navBarHeight)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBar.frame = finalFrame
+            self.searchBar.alpha = 0
+        }, completion: { _ in
+            // Накрая го крием напълно
+            self.searchBar.isHidden = true
+            self.searchBar.showsCancelButton = false
+            // Нулираме текста (по желание)
+            self.searchBar.text = ""
+        })
     }
     
     // MARK: - Обработка на резултата от търсенето
@@ -433,9 +503,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         super.layoutSubviews()
         
         // 1) Навигационна лента
-        guard let navBar = subviews.first(where: { $0.bounds.height == navBarHeight }) else {
-            return
-        }
+        // Понеже вече имаме self.navBar, не търсим subviews.first(where:)
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         
         let menuBtnSize: CGFloat = 34
@@ -455,17 +523,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             viewMenuButton.menu = buildViewMenu()
         }
         
-        // Вляво от него – бутонът "+"
-        // Позиционираме searchButton (лупичката) наляво от menuButton
+        // Лупичката
         let searchButtonX = menuButtonX - searchBtnSize - margin
         searchButton.frame = CGRect(x: searchButtonX, y: centerY,
                                     width: searchBtnSize, height: searchBtnSize)
-
-        // Още по-наляво – плюс бутонът (“+”)
+        
+        // "+" бутонът
         let plusButtonX = searchButtonX - plusBtnSize - margin
         addEventButton.frame = CGRect(x: plusButtonX, y: centerY,
                                       width: plusBtnSize, height: plusBtnSize)
-
+        
         // singleDay vs dateRange (ако не сме в isSearching)
         if showSingleDay && !isSearching {
             singleDayButton.isHidden = false
@@ -484,17 +551,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
         }
         
-        // Ако isSearching -> UISearchBar на ширина
-        if isSearching {
-            let sbHeight: CGFloat = 36
-            let sbY = (navBar.bounds.height - sbHeight) / 2
-            searchBar.frame = CGRect(x: 10, y: sbY,
-                                     width: navBar.bounds.width - 20,
-                                     height: sbHeight)
-            searchBar.isHidden = false
-        } else {
-            searchBar.isHidden = true
-        }
+        // CHANGE: Тук премахваме задължителното задаване на searchBar.frame
+        // (Оставяме animateSearchBarIn()/Out() да го управляват.)
+        // Т.е. не го пипаме в този метод, за да не "прескача" анимацията.
         
         // 2) Други layout-и
         let yMain = navBarHeight
