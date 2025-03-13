@@ -18,9 +18,8 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     /// Взимаме ViewModel, за да заредим списък с календари.
     private let calendarVM = CalendarViewModel.shared
     
-    /// Тук пазим локална селекция/инфо:
-    /// Ключ = calendarIdentifier
-    /// Стойност = (title, color, selected)
+    /// НОВО: Callback, който ще извикаме, когато потребителят промени селекцията на календари
+    public var onCalendarsSelectionChanged: (() -> Void)?  // <-- НОВ РЕД
     
     // Dropdown + background
     private var calendarsDropdownView: CalendarsDropdownView?
@@ -258,12 +257,6 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     deinit {
         redrawTimer?.invalidate()
     }
-    
-    // ---------------------------------------------------------
-    // MARK: - Зареждане на локалните календари (име, цвят, selected)
-    // ---------------------------------------------------------
-    @MainActor
-  
     
     // ---------------------------------------------------------
     // MARK: - Setup на под-views
@@ -1044,10 +1037,13 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         let dropdown = CalendarsDropdownView()
         dropdown.setCalendarsInfo(calendarVM.calendarsDict)
         
-        // 3) При промяна обръщаме flag-а
+        // 3) При промяна обръщаме flag-а + викаме callback
         dropdown.onSelectionChanged = { [weak self] newDict in
             guard let self = self else { return }
-            calendarVM.calendarsDict = newDict
+            self.calendarVM.calendarsDict = newDict
+            
+            // НОВО: Викане на външния callback
+            self.onCalendarsSelectionChanged?()   // <-- ТУК
         }
         
         bgView.addSubview(dropdown)

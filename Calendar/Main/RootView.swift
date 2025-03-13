@@ -132,7 +132,6 @@ struct RootView: View {
                                 onViewChange: { newTab in
                                     selectedTab = newTab
                                 },
-                                // Вместо loadNextChunkOfEvents() -> извикваме reloadAllEvents()
                                 loadInitialEvents: {
                                     reloadAllEvents()
                                 },
@@ -166,7 +165,6 @@ struct RootView: View {
                                 // зареждаме само локални за този таб (пример)
                                 loadSingleDayEventsLocal()
                             }
-                            // При appear и през 60 сек. - зареждаме само локални (пример)
                             .onAppear { loadSingleDayEventsLocal() }
                             .onReceive(timer) { _ in loadSingleDayEventsLocal() }
                             .ignoresSafeArea(.all)
@@ -209,7 +207,7 @@ struct RootView: View {
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
                     
-                    // Зареждаме при първоначален appear (ако е избран съответният таб)
+                    // Зареждаме при първоначален appear
                     if selectedTab == 3 {
                         loadMultiDayEvents()
                     } else if selectedTab == 1 {
@@ -231,7 +229,7 @@ struct RootView: View {
                 } else if selectedTab == 4 {
                     pinnedAllEvents.removeAll()
                 } else if selectedTab == 5 {
-                    // Тук пак само локални, без selectedCalendarIDs
+                    // Тук пак само локални, но и селектирани
                     loadSingleDayEventsLocal()
                 }
             }
@@ -268,10 +266,8 @@ extension RootView {
 }
 
 // MARK: - >>> НОВИ методи за локални календари (case 5)
-//     (ТУК изцяло игнорираме selectedCalendarIDs)
 extension RootView {
-    /// Същото като loadSingleDayEvents, но филтрира САМО локални (или всички).
-    /// Важно: Не гледаме selectedCalendarIDs.
+    /// Същото като loadSingleDayEvents, но филтрира САМО локални (и селектирани) от calendarsDict
     private func loadSingleDayEventsLocal() {
         guard accessGranted else { return }
         let fromOnly = Calendar.current.startOfDay(for: pinnedFromDateSingle)
@@ -279,20 +275,20 @@ extension RootView {
             pinnedEventsSingle = []
             return
         }
+        // Вече ползваме по-долния метод
         pinnedEventsSingle = fetchAndSplitEventsLocal(from: fromOnly, to: toDate)
     }
     
-    /// Тук се игнорира `selectedCalendarIDs`. Например филтрираме само `sourceType == .local`.
+    /// Тук се игнорира `selectedCalendarIDs` и ползваме само локални (sourceType == .local),
+    /// но и проверяваме дали са маркирани в `calendarsDict[...]?.selected == true`.
     private func fetchAndSplitEventsLocal(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
         let cal   = Calendar.current
         
-        // ***** КЛЮЧОВО: тук махаме филтрирането по selectedCalendarIDs. *****
-        // Ако искате *всички* календари, заменете го с:
-        //     let localCals = CalendarViewModel.shared.allCalendars
-        //
+        // CHANGED: Филтрираме за локални + selected.
         let localCals = CalendarViewModel.shared.allCalendars.filter {
-            $0.source.sourceType == .local
+            $0.source.sourceType == .local &&
+            (CalendarViewModel.shared.calendarsDict[$0.calendarIdentifier]?.selected == true) // CHANGED
         }
 
         let predicate = store.predicateForEvents(withStart: from, end: to, calendars: localCals)
@@ -353,7 +349,7 @@ extension RootView {
 
 // MARK: - Общи помощни функции за fetch, split, etc.
 extension RootView {
-    /// Оригинален fetch, който взема *всички* календари, НО филтрира по selectedCalendarIDs.
+    /// Оригинален fetch, който взема *всички* календари, НО филтрира по selectedCalendarIDs
     private func fetchAndSplitEvents(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
         let cal   = Calendar.current
@@ -369,7 +365,6 @@ extension RootView {
             if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
                 splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
             } else {
-                // За еднодневно или all-day
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
         }
@@ -407,7 +402,6 @@ extension RootView {
 
 // MARK: - Допълнителни функции за зареждане на chunk-ове (AllEventsListView)
 extension RootView {
-    /// Зарежда “парче” от текущия `loadedUntil` до +chunkDays
     private func loadNextChunkOfEvents() {
         guard accessGranted else { return }
         let cal = Calendar.current
@@ -423,7 +417,6 @@ extension RootView {
         loadedUntil = toDate
     }
 
-    /// Зарежда “парче” назад от loadedFrom
     private func loadPreviousChunkOfEvents() {
         guard accessGranted else { return }
         let cal = Calendar.current
@@ -441,7 +434,6 @@ extension RootView {
 }
 
 extension RootView {
-    /// Пълно презареждане (примерно +/-1 месец)
     private func reloadAllEvents() {
         let now = Date()
         guard let start = Calendar.current.date(byAdding: .month, value: -1, to: now),

@@ -19,10 +19,6 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
         
-        // Ако ще представяте този контролер модално и искате
-        // да е fullscreen, можете да активирате:
-        // vc.modalPresentationStyle = .fullScreen
-
         let container = TwoWayPinnedMultiDayContainerMultiCalendarView()
         
         container.showSingleDay = isSingleDay
@@ -80,14 +76,18 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
         
         // Бутон “+”
         container.onAddNewEvent = {
-            // Примерно създаваме ново събитие за "сега":
             context.coordinator.createNewEventAndPresent(date: Date(), in: vc)
+        }
+        
+        // НОВО: Когато потребителят промени селекцията на календарите:
+        container.onCalendarsSelectionChanged = {
+            // Координаторът презарежда събитията
+            context.coordinator.reloadCurrentRange()
         }
         
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         
-        // Вместо safeAreaLayoutGuide, тук връзваме към водещите/горни/долни котви на vc.view
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: vc.view.topAnchor),
             container.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
@@ -157,12 +157,11 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
                 parent.events = []
                 return
             }
-
-            // >>> ТУК Е ПРОМЯНАТА <<<
-            // Вземаме само локални календари,
-            // без да гледаме selectedCalendarIDs:
+            
+            // Вземаме само ЛОКАЛНИ календари, и само "selected"
             let localCalendars = CalendarViewModel.shared.allCalendars.filter {
-                $0.source.sourceType == .local
+                $0.source.sourceType == .local &&
+                (CalendarViewModel.shared.calendarsDict[$0.calendarIdentifier]?.selected == true)
             }
 
             let predicate = parent.eventStore.predicateForEvents(
@@ -177,7 +176,7 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
                 let startDay = cal.startOfDay(for: ekEvent.startDate)
                 let endDay   = cal.startOfDay(for: ekEvent.endDate)
                 
-                // Ако обхваща повече от 1 ден => сплит
+                // Ако обхваща повече от 1 ден => split
                 if startDay != endDay {
                     splitted.append(contentsOf:
                         splitEventByDays(ekEvent,
@@ -191,7 +190,6 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
             parent.events = splitted
         }
 
-        
         private func splitEventByDays(_ ekEvent: EKEvent,
                                       startRange: Date,
                                       endRange: Date) -> [EKMultiDayWrapper] {
