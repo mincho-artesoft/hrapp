@@ -2,7 +2,7 @@ import SwiftUI
 import EventKitUI
 import EventKit
 
-// MARK: - TwoWayPinnedMultiDayWrapper
+// MARK: - TwoWayPinnedMultiDayMultiCalendarWrapper
 public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresentable {
     
     @Binding var fromDate: Date
@@ -21,7 +21,6 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
         
         // Ако ще представяте този контролер модално и искате
         // да е fullscreen, можете да активирате:
-        //
         // vc.modalPresentationStyle = .fullScreen
 
         let container = TwoWayPinnedMultiDayContainerMultiCalendarView()
@@ -88,8 +87,7 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
         vc.view.addSubview(container)
         container.translatesAutoresizingMaskIntoConstraints = false
         
-        // >>> ТУК Е ПРОМЯНАТА <<<
-        // Вместо safeAreaLayoutGuide, връзваме към vc.view.(top/leading/...):
+        // Вместо safeAreaLayoutGuide, тук връзваме към водещите/горни/долни котви на vc.view
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: vc.view.topAnchor),
             container.leadingAnchor.constraint(equalTo: vc.view.leadingAnchor),
@@ -157,11 +155,17 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
             let toOnly   = fromOnly
             let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) ?? toOnly
 
-            let allowedCals = CalendarViewModel.shared.allowedCalendars()
+            // >>> ПРОМЯНАТА СЕ НАМИРА ТУК <<<
+            // Вместо да вземаме всички избрани календари, взимаме само локални
+            let localSelectedCalendars = CalendarViewModel.shared.allCalendars.filter {
+                $0.source.sourceType == .local &&
+                CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
+            }
+            
             let predicate = parent.eventStore.predicateForEvents(
                 withStart: fromOnly,
                 end: actualEnd,
-                calendars: allowedCals
+                calendars: localSelectedCalendars
             )
             let found = parent.eventStore.events(matching: predicate)
             

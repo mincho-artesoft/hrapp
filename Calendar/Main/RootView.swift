@@ -43,7 +43,7 @@ struct RootView: View {
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     // Табовете/екраните
-    @State private var selectedTab = 5  // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList
+    @State private var selectedTab = 5  // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar
     
     // Sheet за календари
     @State private var showCalendarsSheet = false
@@ -69,6 +69,7 @@ struct RootView: View {
                                 }
                             )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+                            
                             // 1) Day
                         case 1:
                             TwoWayPinnedMultiDayWrapper(
@@ -125,7 +126,6 @@ struct RootView: View {
 
                             // 4) AllEventsList
                         case 4:
-                            // ВАЖНО: ТУК ПРОМЕНЯМЕ loadInitialEvents, за да презареди целия диапазон!
                             AllEventsListView(
                                 pinnedAllEvents: $pinnedAllEvents,
                                 selectedTab: selectedTab,
@@ -148,6 +148,8 @@ struct RootView: View {
                                 }
                             )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+                            
+                            // 5) MultiCalendar (TwoWayPinnedMultiDayMultiCalendarWrapper)
                         case 5:
                             TwoWayPinnedMultiDayMultiCalendarWrapper(
                                 fromDate: $pinnedFromDateSingle,
@@ -161,11 +163,14 @@ struct RootView: View {
                             ) { tappedDay in
                                 pinnedFromDateSingle = tappedDay
                                 pinnedToDateSingle   = tappedDay
-                                loadSingleDayEvents()
+                                // зареждаме само локални за този таб
+                                loadSingleDayEventsLocal()
                             }
-                            .onAppear { loadSingleDayEvents() }
-                            .onReceive(timer) { _ in loadSingleDayEvents() }
+                            // При appear и през 60 сек. - зареждаме само локални
+                            .onAppear { loadSingleDayEventsLocal() }
+                            .onReceive(timer) { _ in loadSingleDayEventsLocal() }
                             .ignoresSafeArea(.all)
+                            
                         default:
                             Text("N/A")
                         }
@@ -204,14 +209,14 @@ struct RootView: View {
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
                     
-                    // Зареждаме Day или MultiDay, ако е избран такъв таб
+                    // Зареждаме при първоначален appear (ако е избран съответният таб)
                     if selectedTab == 3 {
                         loadMultiDayEvents()
                     } else if selectedTab == 1 {
                         loadSingleDayEvents()
-                    }
-                    else if selectedTab == 5 {
-                        loadSingleDayEvents()
+                    } else if selectedTab == 5 {
+                        // Тук зареждаме само локални (MultiCalendar)
+                        loadSingleDayEventsLocal()
                     }
                 }
             }
@@ -225,8 +230,9 @@ struct RootView: View {
                     loadSingleDayEvents()
                 } else if selectedTab == 4 {
                     pinnedAllEvents.removeAll()
-                }else if selectedTab == 5 {
-                    loadSingleDayEvents()
+                } else if selectedTab == 5 {
+                    // Тук пак само локални
+                    loadSingleDayEventsLocal()
                 }
             }
         }) {
@@ -258,6 +264,45 @@ extension RootView {
             return
         }
         pinnedEventsMulti = fetchAndSplitEvents(from: fromOnly, to: actualEnd)
+    }
+}
+
+// MARK: - >>> НОВИ методи за локални календари (case 5)
+extension RootView {
+    /// Същото като loadSingleDayEvents, но филтрира САМО локални
+    private func loadSingleDayEventsLocal() {
+        guard accessGranted else { return }
+        let fromOnly = Calendar.current.startOfDay(for: pinnedFromDateSingle)
+        guard let toDate = Calendar.current.date(byAdding: .day, value: 1, to: fromOnly) else {
+            pinnedEventsSingle = []
+            return
+        }
+        pinnedEventsSingle = fetchAndSplitEventsLocal(from: fromOnly, to: toDate)
+    }
+    
+    /// Същото като fetchAndSplitEvents, но взима само локални календари
+    private func fetchAndSplitEventsLocal(from: Date, to: Date) -> [EventDescriptor] {
+        let store = CalendarViewModel.shared.eventStore
+        let cal   = Calendar.current
+        
+        // Взимаме само локалните календари, които са избрани
+        let localCals = CalendarViewModel.shared.allCalendars.filter {
+            $0.source.sourceType == .local &&
+            CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
+        }
+        let predicate = store.predicateForEvents(withStart: from, end: to, calendars: localCals)
+        let found = store.events(matching: predicate)
+        
+        var splitted: [EventDescriptor] = []
+        for ekEvent in found {
+            // Ако обхваща повече от 1 ден
+            if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
+                splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
+            } else {
+                splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
+            }
+        }
+        return splitted
     }
 }
 
@@ -303,6 +348,7 @@ extension RootView {
 
 // MARK: - Общи помощни функции за fetch, split, etc.
 extension RootView {
+    /// Оригинален fetch, който взема *всички* селектирани календари
     private func fetchAndSplitEvents(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
         let cal   = Calendar.current
