@@ -164,6 +164,9 @@ struct MonthCalendarView: View {
                         Button { onViewChange?(4) } label: {
                             Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
                         }
+                        Button { onViewChange?(5) } label: {
+                            Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
+                        }
                     } label: {
                         Image(systemName: "ellipsis.circle")
                     }

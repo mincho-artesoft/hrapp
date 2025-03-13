@@ -148,8 +148,24 @@ struct RootView: View {
                                 }
                             )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
-
-                            
+                        case 5:
+                            TwoWayPinnedMultiDayMultiCalendarWrapper(
+                                fromDate: $pinnedFromDateSingle,
+                                events: $pinnedEventsSingle,
+                                eventStore: CalendarViewModel.shared.eventStore,
+                                isSingleDay: true,
+                                selectedTab: selectedTab,
+                                onViewChange: { newTab in
+                                    selectedTab = newTab
+                                }
+                            ) { tappedDay in
+                                pinnedFromDateSingle = tappedDay
+                                pinnedToDateSingle   = tappedDay
+                                loadSingleDayEvents()
+                            }
+                            .onAppear { loadSingleDayEvents() }
+                            .onReceive(timer) { _ in loadSingleDayEvents() }
+                            .ignoresSafeArea(.all)
                         default:
                             Text("N/A")
                         }
@@ -192,6 +208,9 @@ struct RootView: View {
                     if selectedTab == 3 {
                         loadMultiDayEvents()
                     } else if selectedTab == 1 {
+                        loadSingleDayEvents()
+                    }
+                    else if selectedTab == 5 {
                         loadSingleDayEvents()
                     }
                 }

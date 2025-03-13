@@ -1,8 +1,9 @@
 import UIKit
 import SwiftUI
+import EventKit
+import EventKitUI
 
-// MARK: - TwoWayPinnedMultiDayContainerView
-public final class TwoWayPinnedMultiDayContainerView: UIView,
+public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
                                                       UIScrollViewDelegate,
                                                       UIGestureRecognizerDelegate,
                                                       UISearchBarDelegate {
@@ -103,12 +104,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     fileprivate let cornerView = UIView()
     
     public let allDayScrollView = UIScrollView()
-    public let allDayView = AllDayView()
+    public let allDayView = AllDayMultiCalendarView()
     
     public let allDayTitleLabel = UILabel()
     
     public let mainScrollView = UIScrollView()
-    public let weekView = MultiDayTimelineView()
+    public let weekView = MultiDayTimelineMultiCalendarView()
     
     // MARK: - "Nav bar" (top area)
     private let navBar = UIView()
@@ -160,11 +161,20 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         return btn
     }()
     
-    /// NEW: Бутон с лупичка
+    /// NEW: Бутон с лупичка (search)
     private let searchButton: UIButton = {
         let btn = UIButton(type: .system)
         let image = UIImage(systemName: "magnifyingglass")
         btn.setImage(image, for: .normal)
+        btn.tintColor = .systemBlue
+        return btn
+    }()
+    
+    // MARK: - NEW: Бутон за мултиселект на календари (без празници и рождени дни)
+    private let calendarsMultiSelectButton: UIButton = {
+        let btn = UIButton(type: .system)
+        // Примерен текст ("Calendars ▼"), може да се смени
+        btn.setTitle("Calendars ▼", for: .normal)
         btn.tintColor = .systemBlue
         return btn
     }()
@@ -205,10 +215,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     private var isSearching: Bool = false {
         didSet {
             if isSearching {
-                // Крие някои бутони (Add, Menu, Search)
+                // Крие някои бутони (Add, Menu, Search, Calendars)
                 addEventButton.isHidden = true
                 viewMenuButton.isHidden = true
                 searchButton.isHidden = true
+                calendarsMultiSelectButton.isHidden = true // NEW: Скриваме и този
                 
                 // Ако showSingleDay = true, оставяме каросела видим, но скриваме бутона:
                 if showSingleDay {
@@ -225,6 +236,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 addEventButton.isHidden = false
                 viewMenuButton.isHidden = false
                 searchButton.isHidden = false
+                calendarsMultiSelectButton.isHidden = false // NEW: Показваме го отново
                 
                 if showSingleDay {
                     dateRangeButton.isHidden   = true
@@ -279,6 +291,57 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     deinit {
         redrawTimer?.invalidate()
+    }
+    
+    // MARK: - NEW: Създаваме меню за мултиселект на календари (iOS14+)
+    @available(iOS 14.0, *)
+    private func buildCalendarsMultiSelectMenu() -> UIMenu {
+        // 1) Взимаме всички календари от ViewModel
+        let allCals = CalendarViewModel.shared.allCalendars
+            .filter { cal in
+                let isBirthday = (cal.type == .birthday)
+                let isHoliday  = (cal.type == .subscription && cal.title.localizedCaseInsensitiveContains("holiday"))
+                return (!isBirthday && !isHoliday)
+            }
+        
+        // 2) Правим списък от UIAction
+        let actions = allCals.map { cal -> UIAction in
+            let isSelected = CalendarViewModel.shared.selectedCalendarIDs.contains(cal.calendarIdentifier)
+            
+            return UIAction(
+                title: cal.title,
+                state: isSelected ? .on : .off,    // .on ако вече е избран
+                handler: { [weak self] _ in
+                    if isSelected {
+                        // Махаме от избраните
+                        CalendarViewModel.shared.selectedCalendarIDs.remove(cal.calendarIdentifier)
+                    } else {
+                        // Добавяме го
+                        CalendarViewModel.shared.selectedCalendarIDs.insert(cal.calendarIdentifier)
+                    }
+                    // Обновяваме менюто (за да се отрази check/uncheck)
+                    self?.calendarsMultiSelectButton.menu = self?.buildCalendarsMultiSelectMenu()
+                    // Презареждаме изгледите (или викаме callback)
+                    self?.refreshAfterCalendarSelectionChanged()
+                }
+            )
+        }
+        
+        return UIMenu(
+            title: "Избери календари",
+            options: .displayInline,
+            children: actions
+        )
+    }
+    
+    private func refreshAfterCalendarSelectionChanged() {
+        // Тук може да извикате метод за презареждане на данните:
+        // Примерно:
+        // onRangeChange?(fromDate, toDate)
+        
+        // Или просто да ъпдейтнете layout-а:
+        self.weekView.setNeedsLayout()
+        self.allDayView.setNeedsLayout()
     }
     
     // MARK: - Setup
@@ -386,6 +449,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         navBar.addSubview(searchButton)
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
+        // NEW: Добавяме нашия бутон за мултиселект
+        navBar.addSubview(calendarsMultiSelectButton)
+        if #available(iOS 14.0, *) {
+            calendarsMultiSelectButton.menu = buildCalendarsMultiSelectMenu()
+            calendarsMultiSelectButton.showsMenuAsPrimaryAction = true
+        } else {
+            // За iOS < 14 може да се покаже alertController / actionSheet
+            calendarsMultiSelectButton.isHidden = true
+        }
+        
         // Свързваме вюта
         daysHeaderView.leadingInsetForHours = 0
         allDayView.leadingInsetForHours = 0
@@ -414,7 +487,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         weekView.hourHeight = 50
         weekView.topMargin = 10
         
-        // Доп. изглед за фон зад нав. лента (примерно)
+        // Доп. изглед за фон зад нав. лента
         topBackgroundView.backgroundColor = .secondarySystemBackground
         addSubview(topBackgroundView)
     }
@@ -537,7 +610,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let isLandscape = bounds.width > bounds.height
         let topOffset: CGFloat = isLandscape ? 0 : 60
         
-        // 1) фон зад нав. лента (ако искаме):
+        // 1) фон зад нав. лента
         topBackgroundView.frame = CGRect(
             x: 0,
             y: 0,
@@ -545,7 +618,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: topOffset
         )
         topBackgroundView.layer.zPosition = 3
-        // 2) самата navBar – качваме я след topOffset:
+        
+        // 2) самата navBar – качваме я след topOffset
         navBar.frame = CGRect(
             x: 0,
             y: topOffset,
@@ -553,18 +627,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: navBarHeight
         )
         
-        // --------------------------------
-        // Ако showSingleDay = true → показваме monthLabel
-        // и обновяваме текста му:
+        // Ако showSingleDay = true → показваме monthLabel:
         if showSingleDay && !isLandscape{
             let df = DateFormatter()
-            // Примерно показваме целия месец (напр. "March")
-            // Може да ползвате "MMM" за съкратен: "Mar"
             df.dateFormat = "LLLL"
             monthLabel.text = df.string(from: fromDate)
             monthLabel.textColor = .systemBlue
             monthLabel.sizeToFit()
-            // Слагаме го горе вляво с ~10pt отстъп
             let mlX: CGFloat = 10
             let mlY = (navBarHeight - monthLabel.bounds.height) / 2
             monthLabel.frame = CGRect(
@@ -577,13 +646,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         } else {
             monthLabel.isHidden = true
         }
-        // --------------------------------
         
         // Подреждаме бутоните вдясно в navBar:
-        let menuBtnSize: CGFloat = 34
+        let menuBtnSize: CGFloat   = 34
         let searchBtnSize: CGFloat = 34
-        let plusBtnSize: CGFloat = 34
-        let margin: CGFloat = 8
+        let plusBtnSize:   CGFloat = 34
+        let margin:  CGFloat = 8
         
         let menuButtonX = navBar.bounds.width - menuBtnSize - 10
         let centerY = (navBar.bounds.height - menuBtnSize) / 2
@@ -594,7 +662,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: menuBtnSize
         )
         
-        // iOS 14+ меню
         if #available(iOS 14.0, *) {
             viewMenuButton.menu = buildViewMenu()
         }
@@ -615,13 +682,23 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: plusBtnSize
         )
         
+        // NEW: Позиционираме бутона за мултиселект
+        let calButtonW: CGFloat = 110
+        let calButtonX = plusButtonX - calButtonW - margin
+        calendarsMultiSelectButton.frame = CGRect(
+            x: calButtonX,
+            y: centerY,
+            width: calButtonW,
+            height: 34
+        )
+        
         let btnW: CGFloat = 220
         let btnH: CGFloat = 40
-        let x = plusButtonX - btnW - margin
+        let x = calButtonX - btnW - margin
         let y = (navBar.bounds.height - btnH) / 2
         dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
         
-        // Ако не търсим, тогава крием/показваме dateRangeButton спрямо showSingleDay:
+        // Ако не търсим, крием/показваме dateRangeButton спрямо showSingleDay:
         if !isSearching {
             dateRangeButton.isHidden = showSingleDay
         }
@@ -630,7 +707,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         var singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
         
         singleDayCarousel.isHidden = !showSingleDay
-        if isLandscape{
+        if isLandscape {
             singleDayCarousel.isHidden = true
             singleDayCarouselHeight = 0
         }
@@ -813,7 +890,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
     }
     
-    // MARK: - iOS 14+ menu
+    // MARK: - iOS 14+ menu (legacy menu)
     @available(iOS 14.0, *)
     private func buildViewMenu() -> UIMenu {
         let dayAction = UIAction(title: "Day",
@@ -839,7 +916,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             self?.onViewChange?(4)
         }
         let multiCalendarAction = UIAction(title: "MultiCalendar",
-                                  state: (currentView == 5 ? .on : .off)) { [weak self] _ in
+                                           state: (currentView == 5 ? .on : .off)) { [weak self] _ in
             self?.onViewChange?(5)
         }
         
@@ -849,7 +926,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         )
     }
     
-    // MARK: - Legacy menu (iOS < 14)
     @objc private func legacyMenuTapped() {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
