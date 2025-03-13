@@ -152,39 +152,45 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
         @MainActor public func reloadCurrentRange() {
             let cal = Calendar.current
             let fromOnly = cal.startOfDay(for: parent.fromDate)
-            let toOnly   = fromOnly
-            let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) ?? toOnly
-
-            // >>> ПРОМЯНАТА СЕ НАМИРА ТУК <<<
-            // Вместо да вземаме всички избрани календари, взимаме само локални
-            let localSelectedCalendars = CalendarViewModel.shared.allCalendars.filter {
-                $0.source.sourceType == .local &&
-                CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
+            // от утрото на parent.fromDate до +1 ден
+            guard let actualEnd = cal.date(byAdding: .day, value: 1, to: fromOnly) else {
+                parent.events = []
+                return
             }
-            
+
+            // >>> ТУК Е ПРОМЯНАТА <<<
+            // Вземаме само локални календари,
+            // без да гледаме selectedCalendarIDs:
+            let localCalendars = CalendarViewModel.shared.allCalendars.filter {
+                $0.source.sourceType == .local
+            }
+
             let predicate = parent.eventStore.predicateForEvents(
                 withStart: fromOnly,
                 end: actualEnd,
-                calendars: localSelectedCalendars
+                calendars: localCalendars
             )
             let found = parent.eventStore.events(matching: predicate)
             
             var splitted: [EventDescriptor] = []
             for ekEvent in found {
-                guard let realStart = ekEvent.startDate,
-                      let realEnd   = ekEvent.endDate else { continue }
+                let startDay = cal.startOfDay(for: ekEvent.startDate)
+                let endDay   = cal.startOfDay(for: ekEvent.endDate)
                 
-                // Ако е повече от 1 ден -> split
-                if cal.startOfDay(for: realStart) != cal.startOfDay(for: realEnd) {
-                    splitted.append(contentsOf: splitEventByDays(ekEvent,
-                                                                 startRange: fromOnly,
-                                                                 endRange: actualEnd))
+                // Ако обхваща повече от 1 ден => сплит
+                if startDay != endDay {
+                    splitted.append(contentsOf:
+                        splitEventByDays(ekEvent,
+                                         startRange: fromOnly,
+                                         endRange: actualEnd)
+                    )
                 } else {
                     splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
                 }
             }
             parent.events = splitted
         }
+
         
         private func splitEventByDays(_ ekEvent: EKEvent,
                                       startRange: Date,

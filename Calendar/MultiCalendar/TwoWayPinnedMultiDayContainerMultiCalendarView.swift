@@ -183,21 +183,22 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     }()
     
     // ---------------------------------------------------------
-    // MARK: - Dropdown с календари (беше DigitsDropdownView)
+    // MARK: - Dropdown с календари (Със запазване на title и color)
     // ---------------------------------------------------------
-    /// Вместо `selectedDigits` + `DigitsDropdownView`, вече имаме:
-    private var calendarsDropdownView: CalendarDropdownView?
-    private var dropdownBackgroundView: UIControl?
+    /// Пазим селектираните календари в речник:
+    /// ключ = calendarIdentifier,
+    /// стойност = (title: String, color: UIColor)
+    public var selectedCalendars = [String: (title: String, color: UIColor)]() // NEW
     
-    // ▼ Промяна #1: Държим си двете изображения за стрелките + бутон
-    // ---------------------------------------------------------
+    // (CHANGED) Вместо UIControl -> UIView, за да не „изяжда“ first tap в таблицата
+    private var dropdownBackgroundView: UIView?  // (CHANGED)
+    
+    private var calendarsDropdownView: CalendarDropdownView?  // Без промяна
+    
     private let smallConfig = UIImage.SymbolConfiguration(pointSize: 14, weight: .regular)
     private lazy var arrowImageRight: UIImage? = UIImage(systemName: "chevron.right", withConfiguration: smallConfig)
     private lazy var arrowImageDown:  UIImage? = UIImage(systemName: "chevron.down",  withConfiguration: smallConfig)
 
-    // ---------------------------------------------------------
-    // iOS 15+ конфигурация за бутона "Calendars"
-    // ---------------------------------------------------------
     private let calendarsMultiSelectButton: UIButton = {
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.plain()
@@ -217,7 +218,6 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
             btn.titleLabel?.lineBreakMode = .byTruncatingTail
             return btn
         } else {
-            // iOS 14 (или по-старо)
             let btn = UIButton(type: .system)
             btn.setTitle("Calendars", for: .normal)
             btn.tintColor = .systemBlue
@@ -365,7 +365,7 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         navBar.addSubview(searchButton)
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
-        // Тук вече добавяме button-a за календарите
+        // Бутон за MultiSelect Calendars
         navBar.addSubview(calendarsMultiSelectButton)
         calendarsMultiSelectButton.addTarget(
             self,
@@ -636,7 +636,7 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         
         layoutSearchResultsIfNeeded()
         
-        // Ако dropdown е отворен => преизчисляваме позицията му (напр. при завъртане)
+        // Ако dropdown е отворен => преизчисляваме позицията му
         if let dView = calendarsDropdownView {
             positionCalendarsDropdown(dView)
         }
@@ -662,7 +662,7 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     }
     
     // ---------------------------------------------------------
-    // MARK: - Timer за презарисуване (червена линия и т.н.)
+    // MARK: - Timer за презарисуване
     // ---------------------------------------------------------
     private func startRedrawTimer() {
         redrawTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
@@ -1018,67 +1018,58 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     }
     
     // ---------------------------------------------------------
-    // MARK: - Dropdown с календари (заместваше DigitsDropdownView)
+    // MARK: - Dropdown с календари (title + color)
     // ---------------------------------------------------------
     @objc private func toggleCalendarsDropdown() {
         if calendarsDropdownView == nil {
             // Ако не е показан -> показваме го
             showCalendarsDropdown()
-            
-            // Анимация: crossfade на иконата (chevron.right -> chevron.down)
-            UIView.transition(
-                with: calendarsMultiSelectButton,
-                duration: 0.2,
-                options: .transitionCrossDissolve,
-                animations: { [self] in
-                    if #available(iOS 15.0, *) {
-                        var config = calendarsMultiSelectButton.configuration
-                        config?.image = self.arrowImageDown
-                        calendarsMultiSelectButton.configuration = config
-                    } else {
-                        calendarsMultiSelectButton.setImage(self.arrowImageDown, for: .normal)
-                    }
-                },
-                completion: nil
-            )
         } else {
             // Ако dropdown е отворен -> затваряме го
             hideCalendarsDropdown()
-            
-            // crossfade chevron.down -> chevron.right
-            UIView.transition(
-                with: calendarsMultiSelectButton,
-                duration: 0.2,
-                options: .transitionCrossDissolve,
-                animations: { [self] in
-                    if #available(iOS 15.0, *) {
-                        var config = calendarsMultiSelectButton.configuration
-                        config?.image = self.arrowImageRight
-                        calendarsMultiSelectButton.configuration = config
-                    } else {
-                        calendarsMultiSelectButton.setImage(self.arrowImageRight, for: .normal)
-                    }
-                },
-                completion: nil
-            )
         }
     }
     
     private func showCalendarsDropdown() {
         guard calendarsDropdownView == nil else { return }
         
-        // Прозрачен overlay
-        let bg = UIControl(frame: UIScreen.main.bounds)
-        bg.backgroundColor = .clear
-        bg.addTarget(self, action: #selector(handleTapOutsideDropdown), for: .touchUpInside)
+        print("\n[TwoWayPinnedMultiDayContainer] ОТВАРЯНЕ на dropdown.")
+        print(" => текущо selectedCalendars = ")
+        for (id, info) in selectedCalendars {
+            print("  - \(info.title) [\(id)], color=\(info.color)")
+        }
         
-        guard let topVC = topMostViewController() else { return }
-        topVC.view.addSubview(bg)
+        // (CHANGED) Вместо UIControl -> ползваме UIView + UITapGestureRecognizer
+        let bg = UIView(frame: UIScreen.main.bounds) // (CHANGED)
+        bg.backgroundColor = .clear
+        bg.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        if let topVC = topMostViewController() {
+            topVC.view.addSubview(bg)
+        }
         dropdownBackgroundView = bg
         
+        // (ADDED) Tap жест, който затваря dropdown-а, ако натиснем извън него
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideDropdown(_:)))
+        tapGesture.cancelsTouchesInView = false // (ADDED) За да не „изяжда“ тапа към таблицата
+        bg.addGestureRecognizer(tapGesture)
+        
         let dropdown = CalendarDropdownView()
-        // Примерни размери
-        dropdown.frame = CGRect(x: 0, y: 0, width: 200, height: 300)
+        
+        // (ADDED) Ако има вече избрани календари, подаваме ги
+        if !selectedCalendars.isEmpty {
+            dropdown.setSelectedCalendars(selectedCalendars)
+        }
+        
+        // Регистрираме callback, в който dropdown ни връща новата селекция
+        dropdown.onSelectionChanged = { [weak self] newDict in
+            self?.selectedCalendars = newDict
+            
+            print("[TwoWayPinnedMultiDayContainer] Обновено selectedCalendars:")
+            for (id, info) in newDict {
+                print("  - \(info.title) [\(id)], color=\(info.color)")
+            }
+        }
         
         bg.addSubview(dropdown)
         calendarsDropdownView = dropdown
@@ -1089,6 +1080,23 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         UIView.animate(withDuration: 0.2) {
             dropdown.alpha = 1
         }
+        
+        // crossfade на иконата (chevron.right -> chevron.down)
+        UIView.transition(
+            with: calendarsMultiSelectButton,
+            duration: 0.2,
+            options: .transitionCrossDissolve,
+            animations: { [self] in
+                if #available(iOS 15.0, *) {
+                    var config = calendarsMultiSelectButton.configuration
+                    config?.image = self.arrowImageDown
+                    calendarsMultiSelectButton.configuration = config
+                } else {
+                    calendarsMultiSelectButton.setImage(self.arrowImageDown, for: .normal)
+                }
+            },
+            completion: nil
+        )
     }
     
     private func positionCalendarsDropdown(_ dropdown: CalendarDropdownView) {
@@ -1128,30 +1136,37 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
             bg.removeFromSuperview()
         })
         
-        calendarsDropdownView     = nil
-        dropdownBackgroundView    = nil
-    }
-    
-    @objc private func handleTapOutsideDropdown() {
-        // Тап извън => затваряме
-        hideCalendarsDropdown()
+        calendarsDropdownView  = nil
+        dropdownBackgroundView = nil
         
-        // Когато „tap“-нем извън, връщаме иконата (чрез crossfade):
+        // crossfade chevron.down -> chevron.right
         UIView.transition(
             with: calendarsMultiSelectButton,
             duration: 0.2,
             options: .transitionCrossDissolve,
-            animations: {
+            animations: { [self] in
                 if #available(iOS 15.0, *) {
-                    var config = self.calendarsMultiSelectButton.configuration
+                    var config = calendarsMultiSelectButton.configuration
                     config?.image = self.arrowImageRight
-                    self.calendarsMultiSelectButton.configuration = config
+                    calendarsMultiSelectButton.configuration = config
                 } else {
-                    self.calendarsMultiSelectButton.setImage(self.arrowImageRight, for: .normal)
+                    calendarsMultiSelectButton.setImage(self.arrowImageRight, for: .normal)
                 }
             },
             completion: nil
         )
+    }
+    
+    // (CHANGED) Tap извън дропдауна => затваряне
+    @objc private func handleTapOutsideDropdown(_ gesture: UITapGestureRecognizer) {
+        guard let dropdown = calendarsDropdownView,
+              let bg = dropdownBackgroundView else {
+            return
+        }
+        let loc = gesture.location(in: bg)
+        if !dropdown.frame.contains(loc) {
+            hideCalendarsDropdown()
+        }
     }
     
     // ---------------------------------------------------------

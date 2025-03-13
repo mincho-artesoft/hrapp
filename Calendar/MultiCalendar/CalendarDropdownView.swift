@@ -5,17 +5,25 @@ final class CalendarDropdownView: UIView, UITableViewDelegate, UITableViewDataSo
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     
-    // За да групираме „On My iPhone“ и „Other“
+    // Тук пазим само локалните календари (примерна логика):
     private var localCalendars: [EKCalendar] = []
-    private var otherCalendars: [EKCalendar] = []
     
-    // Тук достъпваме директно сингълтона
+    // Речник: [calendarID: (title, color)]
+    private var selectedCalendars = [String: (title: String, color: UIColor)]()
+    
+    // Когато нещо се промени, викаме този callback,
+    // за да уведомим контейнера (TwoWayPinnedMultiDayContainerMultiCalendarView)
+    var onSelectionChanged: (([String: (title: String, color: UIColor)]) -> Void)?
+    
+    // ViewModel – трябва да е имплементиран във вашия проект
     private let viewModel = CalendarViewModel.shared
     
+    // MARK: - Инициализатори
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
@@ -26,24 +34,17 @@ final class CalendarDropdownView: UIView, UITableViewDelegate, UITableViewDataSo
         layer.cornerRadius = 10
         layer.masksToBounds = true
         
+        // Примерна начална големина – после я променяме в superview
+        self.frame.size = CGSize(width: 200, height: 300)
+        
         tableView.delegate   = self
         tableView.dataSource = self
         tableView.rowHeight  = 44
+        tableView.register(CalendarCell.self, forCellReuseIdentifier: "CalendarCell")
         
         addSubview(tableView)
         
-        // Зареждаме списъка с календари
         reloadCalendars()
-    }
-    
-    private func reloadCalendars() {
-        viewModel.reloadCalendars()
-        
-        let allCals = viewModel.allCalendars
-        localCalendars = allCals.filter { $0.source.sourceType == .local }
-        otherCalendars = allCals.filter { $0.source.sourceType != .local }
-        
-        tableView.reloadData()
     }
     
     override func layoutSubviews() {
@@ -51,73 +52,85 @@ final class CalendarDropdownView: UIView, UITableViewDelegate, UITableViewDataSo
         tableView.frame = bounds
     }
     
+    /// Презареждаме календари (примерна логика)
+    private func reloadCalendars() {
+        viewModel.reloadCalendars()
+        localCalendars = viewModel.allCalendars.filter { $0.source.sourceType == .local }
+        
+        // Ако речникът ни е празен => за първи път се отваряме
+        // => селектираме ВСИЧКИ локални. (примерно)
+        if selectedCalendars.isEmpty {
+            for cal in localCalendars {
+                let color = UIColor(cgColor: cal.cgColor)
+                selectedCalendars[cal.calendarIdentifier] = (title: cal.title, color: color)
+            }
+        }
+        
+        tableView.reloadData()
+    }
+
+    /// Контейнерът ще извика този метод, ако има вече запазени селектирани календари
+    public func setSelectedCalendars(_ dict: [String: (title: String, color: UIColor)]) {
+        selectedCalendars = dict
+        tableView.reloadData()
+    }
+    
     // MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        // 2 секции: "On My iPhone" и "Other"
-        return 2
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return localCalendars.count
-        } else {
-            return otherCalendars.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (section == 0) ? "On My iPhone" : "Other"
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return localCalendars.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let calID = "CalendarCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: calID)
-            ?? UITableViewCell(style: .subtitle, reuseIdentifier: calID)
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "CalendarCell",
+            for: indexPath
+        ) as! CalendarCell
         
-        let calendar = (indexPath.section == 0) ?
-            localCalendars[indexPath.row] :
-            otherCalendars[indexPath.row]
+        let calendar = localCalendars[indexPath.row]
+        let calID = calendar.calendarIdentifier
         
-        cell.textLabel?.text = calendar.title
+        // Проверяваме дали този календар е в речника
+        let isSelected = selectedCalendars.keys.contains(calID)
         
-        let switchView = UISwitch()
-        switchView.isOn = viewModel.selectedCalendarIDs.contains(calendar.calendarIdentifier)
-        
-        // tag: за да разберем в didSelectRow (ако искате)
-        switchView.tag = (indexPath.section * 1000) + indexPath.row
-        
-        switchView.addTarget(self, action: #selector(switchChanged(_:)), for: .valueChanged)
-        cell.accessoryView = switchView
+        cell.configure(with: calendar, isSelected: isSelected)
         
         return cell
-    }
-    
-    @objc private func switchChanged(_ sender: UISwitch) {
-        let section = sender.tag / 1000
-        let row     = sender.tag % 1000
-        
-        let calendar = (section == 0) ?
-            localCalendars[row] :
-            otherCalendars[row]
-        
-        if sender.isOn {
-            viewModel.selectedCalendarIDs.insert(calendar.calendarIdentifier)
-        } else {
-            viewModel.selectedCalendarIDs.remove(calendar.calendarIdentifier)
-        }
     }
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        // Ако искате при tap на ред без switch да toggle-вате
-        if let cell = tableView.cellForRow(at: indexPath),
-           let switchView = cell.accessoryView as? UISwitch {
-            switchView.setOn(!switchView.isOn, animated: true)
-            switchChanged(switchView)
-        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Взимаме съответния календар
+        let calendar = localCalendars[indexPath.row]
+        let calID = calendar.calendarIdentifier
+        let calColor = UIColor(cgColor: calendar.cgColor)
+        
+        // Ако вече е селектиран, го махаме; иначе го добавяме
+        if selectedCalendars.keys.contains(calID) {
+            selectedCalendars.removeValue(forKey: calID)
+        } else {
+            selectedCalendars[calID] = (title: calendar.title, color: calColor)
+        }
+        
+        // Презареждаме само текущия ред, за да се обнови отметката
+        tableView.reloadRows(at: [indexPath], with: .none)
+        
+        print("[CalendarDropdownView] Селектирани календари:")
+        for (id, info) in selectedCalendars {
+            print("  - \(info.title) [\(id)], color=\(info.color)")
+        }
+        
+        // Уведомяваме контейнера
+        onSelectionChanged?(selectedCalendars)
     }
 }
