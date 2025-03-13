@@ -225,6 +225,8 @@ struct RootView: View {
                     loadSingleDayEvents()
                 } else if selectedTab == 4 {
                     pinnedAllEvents.removeAll()
+                }else if selectedTab == 5 {
+                    loadSingleDayEvents()
                 }
             }
         }) {
