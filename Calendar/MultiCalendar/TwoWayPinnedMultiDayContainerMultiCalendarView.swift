@@ -18,8 +18,8 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     /// Взимаме ViewModel, за да заредим списък с календари.
     private let calendarVM = CalendarViewModel.shared
     
-    /// НОВО: Callback, който ще извикаме, когато потребителят промени селекцията на календари
-    public var onCalendarsSelectionChanged: (() -> Void)?  // <-- НОВ РЕД
+    /// Callback, който ще извикаме, когато потребителят промени селекцията на календари
+    public var onCalendarsSelectionChanged: (() -> Void)?
     
     // Dropdown + background
     private var calendarsDropdownView: CalendarsDropdownView?
@@ -222,7 +222,7 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     // ---------------------------------------------------------
     // MARK: - Layout constants
     // ---------------------------------------------------------
-    fileprivate let navBarHeight: CGFloat   = 50
+    fileprivate let navBarHeight: CGFloat     = 50
     fileprivate let daysHeaderHeight: CGFloat = 20
     fileprivate let leftColumnWidth: CGFloat  = 60
     
@@ -238,11 +238,22 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     private let topBackgroundView = UIView()
     
     // ---------------------------------------------------------
+    // MARK: - Втори хедър за календари
+    // ---------------------------------------------------------
+    fileprivate let calendarsHeaderScrollView = UIScrollView()
+    fileprivate let calendarsHeaderView       = CalendarsHeaderView()
+    fileprivate let calendarsHeaderHeight: CGFloat = 20
+    
+    // ---------------------------------------------------------
     // MARK: - Инициализация
     // ---------------------------------------------------------
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        
+        // (НОВО) Още в началото, задаваме списъка с календари от ViewModel:
+        calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
+        
         startRedrawTimer()
         refreshDateRangeButtonTitle()
     }
@@ -250,6 +261,10 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
+        
+        // (НОВО) Още в началото, задаваме списъка с календари от ViewModel:
+        calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
+        
         startRedrawTimer()
         refreshDateRangeButtonTitle()
     }
@@ -388,6 +403,16 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         
         topBackgroundView.backgroundColor = .secondarySystemBackground
         addSubview(topBackgroundView)
+        
+        // (НОВО) Setup за втория хедър (ScrollView + View)
+        calendarsHeaderScrollView.showsHorizontalScrollIndicator = false
+        calendarsHeaderScrollView.showsVerticalScrollIndicator   = false
+        calendarsHeaderScrollView.bounces = false
+        calendarsHeaderScrollView.delegate = self
+        calendarsHeaderScrollView.layer.zPosition = 4
+        addSubview(calendarsHeaderScrollView)
+        
+        calendarsHeaderScrollView.addSubview(calendarsHeaderView)
     }
     
     // ---------------------------------------------------------
@@ -534,7 +559,33 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
                                       width: totalDaysHeaderWidth,
                                       height: daysHeaderHeight)
         
-        let allDayY    = yMain + daysHeaderHeight
+        // (НОВО) Под daysHeaderScrollView => втори хедър за календари
+        let calendarsHeaderY = daysHeaderScrollView.frame.maxY
+        calendarsHeaderScrollView.frame = CGRect(
+            x: leftColumnWidth,
+            y: calendarsHeaderY,
+            width: bounds.width - leftColumnWidth,
+            height: calendarsHeaderHeight
+        )
+        // Ширина на колона в втория хедър:
+        let calendarsCount = calendarsHeaderView.calendarsDict.count
+        let calendarColumnWidth: CGFloat = 100
+        let totalCalendarsWidth = CGFloat(calendarsCount) * calendarColumnWidth
+        
+        calendarsHeaderScrollView.contentSize = CGSize(
+            width: totalCalendarsWidth,
+            height: calendarsHeaderHeight
+        )
+        calendarsHeaderView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: totalCalendarsWidth,
+            height: calendarsHeaderHeight
+        )
+        calendarsHeaderView.columnWidth = calendarColumnWidth
+        
+        // Отместваме надолу AllDay = вече под новия втори хедър
+        let allDayY    = calendarsHeaderScrollView.frame.maxY
         let oldOffset  = allDayScrollView.contentOffset
         let allDayH    = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
@@ -645,6 +696,9 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         else if scrollView == allDayScrollView {
             mainScrollView.contentOffset.x     = scrollView.contentOffset.x
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
+        }
+        else if scrollView == calendarsHeaderScrollView {
+            // Вторият хедър е независим — не синхронизираме нищо друго тук.
         }
     }
     
@@ -975,6 +1029,7 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         cornerView.isHidden          = shouldShow
         allDayTitleLabel.isHidden    = shouldShow
         daysHeaderScrollView.isHidden = shouldShow
+        calendarsHeaderScrollView.isHidden = shouldShow
         
         guard shouldShow else {
             searchHostingController?.view.removeFromSuperview()
@@ -1041,9 +1096,10 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         dropdown.onSelectionChanged = { [weak self] newDict in
             guard let self = self else { return }
             self.calendarVM.calendarsDict = newDict
+            self.onCalendarsSelectionChanged?()
             
-            // НОВО: Викане на външния callback
-            self.onCalendarsSelectionChanged?()   // <-- ТУК
+            // Обновяваме и втория хедър, за да се вижда промяната
+            self.calendarsHeaderView.calendarsDict = newDict
         }
         
         bgView.addSubview(dropdown)
