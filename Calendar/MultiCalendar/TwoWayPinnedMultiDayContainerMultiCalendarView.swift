@@ -579,10 +579,9 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         calendarsHeaderView.frame = CGRect(
             x: 0,
             y: 0,
-            width: totalCalendarsWidth,
+            width: daysHeaderView.dayColumnWidth,
             height: calendarsHeaderHeight
         )
-        calendarsHeaderView.columnWidth = calendarColumnWidth
         
         // Отместваме надолу AllDay = вече под новия втори хедър
         let allDayY    = calendarsHeaderScrollView.frame.maxY
