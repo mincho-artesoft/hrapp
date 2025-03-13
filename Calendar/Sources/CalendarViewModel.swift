@@ -8,6 +8,7 @@ import Combine
 @MainActor
 final class CalendarViewModel: ObservableObject {
     let eventStore: EKEventStore = EKEventStore()
+    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool)] = [:]
 
     static let shared = CalendarViewModel()
 
@@ -32,6 +33,7 @@ final class CalendarViewModel: ObservableObject {
 
     // MARK: - Инициализатор
     init() {
+        loadLocalCalendars()
         // --- ПРОМЕНЕНО: добавена логика за "ако няма нищо в UserDefaults, взимаме всички календари"
         if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String],
            !storedArray.isEmpty {
@@ -169,6 +171,37 @@ final class CalendarViewModel: ObservableObject {
         allCalendars.filter {
             selectedCalendarIDs.contains($0.calendarIdentifier)
         }
+    }
+    private func loadLocalCalendars() {
+        // Предполага се, че вече имате accessGranted == true
+        reloadCalendars()
+        
+        // Може да вземете всички, или само локални
+        let localCals = allCalendars.filter {
+            $0.source.sourceType == .local
+        }
+        
+        var dict: [String: (title: String, color: UIColor, selected: Bool)] = [:]
+        
+        for cal in localCals {
+            // Извличаме заглавие
+            let calTitle = cal.title
+            
+            // Извличаме цвят
+            var uiColor = UIColor.systemGray
+            if let cgColor = cal.cgColor {
+                uiColor = UIColor(cgColor: cgColor)
+            }
+            
+            // Всички => selected = true (по изискването ви)
+            dict[cal.calendarIdentifier] = (
+                title: calTitle,
+                color: uiColor,
+                selected: true
+            )
+        }
+        
+        calendarsDict = dict
     }
 }
 

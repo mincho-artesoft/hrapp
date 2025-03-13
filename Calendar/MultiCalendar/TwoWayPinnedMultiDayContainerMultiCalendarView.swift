@@ -21,7 +21,6 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     /// Тук пазим локална селекция/инфо:
     /// Ключ = calendarIdentifier
     /// Стойност = (title, color, selected)
-    private var calendarsDict: [String: (title: String, color: UIColor, selected: Bool)] = [:]
     
     // Dropdown + background
     private var calendarsDropdownView: CalendarsDropdownView?
@@ -247,9 +246,6 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         setupViews()
         startRedrawTimer()
         refreshDateRangeButtonTitle()
-        
-        // Зареждаме локалните календари (примерно)
-        loadLocalCalendars()
     }
     
     public required init?(coder: NSCoder) {
@@ -257,9 +253,6 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         setupViews()
         startRedrawTimer()
         refreshDateRangeButtonTitle()
-        
-        // Зареждаме локалните календари
-        loadLocalCalendars()
     }
     
     deinit {
@@ -270,37 +263,7 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     // MARK: - Зареждане на локалните календари (име, цвят, selected)
     // ---------------------------------------------------------
     @MainActor
-    private func loadLocalCalendars() {
-        // Предполага се, че вече имате accessGranted == true
-        calendarVM.reloadCalendars()
-        
-        // Може да вземете всички, или само локални
-        let localCals = calendarVM.allCalendars.filter {
-            $0.source.sourceType == .local
-        }
-        
-        var dict: [String: (title: String, color: UIColor, selected: Bool)] = [:]
-        
-        for cal in localCals {
-            // Извличаме заглавие
-            let calTitle = cal.title
-            
-            // Извличаме цвят
-            var uiColor = UIColor.systemGray
-            if let cgColor = cal.cgColor {
-                uiColor = UIColor(cgColor: cgColor)
-            }
-            
-            // Всички => selected = true (по изискването ви)
-            dict[cal.calendarIdentifier] = (
-                title: calTitle,
-                color: uiColor,
-                selected: true
-            )
-        }
-        
-        self.calendarsDict = dict
-    }
+  
     
     // ---------------------------------------------------------
     // MARK: - Setup на под-views
@@ -1079,12 +1042,12 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
         
         // 2) Dropdown view
         let dropdown = CalendarsDropdownView()
-        dropdown.setCalendarsInfo(calendarsDict)
+        dropdown.setCalendarsInfo(calendarVM.calendarsDict)
         
         // 3) При промяна обръщаме flag-а
         dropdown.onSelectionChanged = { [weak self] newDict in
             guard let self = self else { return }
-            self.calendarsDict = newDict
+            calendarVM.calendarsDict = newDict
         }
         
         bgView.addSubview(dropdown)
