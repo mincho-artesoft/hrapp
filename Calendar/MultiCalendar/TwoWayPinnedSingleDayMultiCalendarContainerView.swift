@@ -33,17 +33,41 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // Бутон, който отваря dropdown-а
     private let calendarsMultiSelectButton: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("Calendars", for: .normal)
-        btn.tintColor = .systemBlue
-        if let chevronImage = UIImage(systemName: "chevron.right") {
-            btn.setImage(chevronImage, for: .normal)
-            btn.semanticContentAttribute = .forceRightToLeft
+        
+        if #available(iOS 15.0, *) {
+            // Use the new configuration-based API
+            var config = UIButton.Configuration.plain()
+            config.title = "Calendars"
+            config.image = UIImage(systemName: "chevron.right")
+            // This aligns the image on the trailing side:
+            config.imagePlacement = .trailing
+            // Space between title and image:
+            config.imagePadding = 4
+            // Equivalent to old contentEdgeInsets:
+            config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
+            // For tint color:
+            config.baseForegroundColor = .systemBlue
+            
+            btn.configuration = config
+        } else {
+            // Fallback for iOS < 15
+            btn.setTitle("Calendars", for: .normal)
+            btn.tintColor = .systemBlue
+            if let chevronImage = UIImage(systemName: "chevron.right") {
+                btn.setImage(chevronImage, for: .normal)
+                // Force title to the left, image to the right:
+                btn.semanticContentAttribute = .forceRightToLeft
+            }
+            // The old property, which works pre-iOS 15:
+            btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
         }
-        btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
+        
+        // General properties (apply to both iOS 15+ and older):
         btn.titleLabel?.numberOfLines = 1
         btn.titleLabel?.lineBreakMode = .byTruncatingTail
         return btn
     }()
+
     
 
     public var currentView: Int = 3
