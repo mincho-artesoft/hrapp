@@ -150,7 +150,7 @@ struct RootView: View {
                             
                             // 5) MultiCalendar (TwoWayPinnedMultiDayMultiCalendarWrapper)
                         case 5:
-                            TwoWayPinnedMultiDayMultiCalendarWrapper(
+                            TwoWayPinnedSingleDayMultiCalendarWrapper(
                                 fromDate: $pinnedFromDateSingle,
                                 events: $pinnedEventsSingle,
                                 eventStore: CalendarViewModel.shared.eventStore,

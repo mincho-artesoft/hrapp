@@ -6,7 +6,7 @@ import EventKitUI
 //
 // MARK: - TwoWayPinnedMultiDayContainerMultiCalendarView
 //
-public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
+public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                                                   UIScrollViewDelegate,
                                                                   UIGestureRecognizerDelegate,
                                                                   UISearchBarDelegate

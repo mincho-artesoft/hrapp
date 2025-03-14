@@ -3,7 +3,7 @@ import EventKitUI
 import EventKit
 
 // MARK: - TwoWayPinnedMultiDayMultiCalendarWrapper
-public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresentable {
+public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerRepresentable {
     
     @Binding var fromDate: Date
     @Binding var events: [EventDescriptor]
@@ -19,7 +19,7 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
         
-        let container = TwoWayPinnedMultiDayContainerMultiCalendarView()
+        let container = TwoWayPinnedSingleDayMultiCalendarContainerView()
         
         container.showSingleDay = isSingleDay
         container.fromDate = fromDate
@@ -100,8 +100,8 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
     
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         guard let container = uiViewController.view.subviews
-                .first(where: { $0 is TwoWayPinnedMultiDayContainerMultiCalendarView })
-                as? TwoWayPinnedMultiDayContainerMultiCalendarView else {
+                .first(where: { $0 is TwoWayPinnedSingleDayMultiCalendarContainerView })
+                as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
             return
         }
         
@@ -136,9 +136,9 @@ public struct TwoWayPinnedMultiDayMultiCalendarWrapper: UIViewControllerRepresen
     
     // MARK: - Coordinator
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
-        let parent: TwoWayPinnedMultiDayMultiCalendarWrapper
+        let parent: TwoWayPinnedSingleDayMultiCalendarWrapper
         
-        init(_ parent: TwoWayPinnedMultiDayMultiCalendarWrapper) {
+        init(_ parent: TwoWayPinnedSingleDayMultiCalendarWrapper) {
             self.parent = parent
         }
         

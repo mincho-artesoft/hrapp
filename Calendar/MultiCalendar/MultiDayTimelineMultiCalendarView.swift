@@ -763,7 +763,7 @@ public final class MultiDayTimelineMultiCalendarView: UIView, UIGestureRecognize
             }
             let totalDuration = realEnd.timeIntervalSince(realStart)
             
-            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+            guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
             let pointInContainer = gesture.location(in: container)
             
             var slices: [EventView] = []
@@ -859,7 +859,7 @@ public final class MultiDayTimelineMultiCalendarView: UIView, UIGestureRecognize
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             updateHighlightedColumnsFromGhosts(isResize: false)
-            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView {
+            if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                 container.allDayTitleLabel.textColor = .lightGray
             }
             
@@ -926,7 +926,7 @@ public final class MultiDayTimelineMultiCalendarView: UIView, UIGestureRecognize
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
 
             // 2) Вземаме контейнера
-            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+            guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
 
             // 3) Координатата на пръста (или курсора)
             let fingerInContainer = gesture.location(in: container)
@@ -1048,7 +1048,7 @@ public final class MultiDayTimelineMultiCalendarView: UIView, UIGestureRecognize
             // 8) Auto-scroll
             updateAutoScrollDirection(for: gesture)
             
-            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView {
+            if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                 if isCurrentlyOverAllDay {
                     container.allDayTitleLabel.textColor = .label
                 } else {
@@ -1064,7 +1064,7 @@ public final class MultiDayTimelineMultiCalendarView: UIView, UIGestureRecognize
             }
             // additionalDraggingGhosts.removeAll()
 
-            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView {
+            if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                 container.allDayTitleLabel.textColor = .label
             }
             let generator = UIImpactFeedbackGenerator(style: .light)
@@ -1079,7 +1079,7 @@ public final class MultiDayTimelineMultiCalendarView: UIView, UIGestureRecognize
             
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData,
                   let anchorGhost = draggingGhosts[evView],
-                  let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else {
+                  let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
                 
                 for (sv, gh) in draggingGhosts {
                     gh.removeFromSuperview()

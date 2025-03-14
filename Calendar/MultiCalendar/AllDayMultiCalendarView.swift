@@ -354,7 +354,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             additionalnewFrame.origin.y = loc.y - offset.y
             additionalGhostView?.frame = additionalnewFrame
             // 3) Проверяваме къде сме спрямо TwoWayPinnedMultiDayContainerView
-            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+            guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
             let dropLocationInContainer = gesture.location(in: container)
             
             // Calculate if the event is (still) within AllDayView bounds
@@ -444,7 +444,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             // 4) Auto-scroll, ако го ползвате
             updateAutoScrollDirection(for: gesture)
             
-            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView {
+            if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                        // Ако искате да разпознавате "hover" над all-day и тук,
                        // ще трябва да засечете дали сме "излезли" от timeline-a
                        // и сме над allDayScrollView (подобно на handleEventViewPan).
@@ -463,7 +463,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         case .ended, .cancelled:
             additionalGhostView!.isHidden = true
             additionalGhostView = nil
-            if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView {
+            if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                       container.allDayTitleLabel.textColor = .label
                   }
             // 1) Спираме auto-scroll
@@ -478,7 +478,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             setScrollsClipping(enabled: true)
             
             // 4) Изчистваме highlight
-            guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else {
+            guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
                 // Ако няма container, просто връщаме евента на мястото му
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
@@ -587,7 +587,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     // MARK: - Помощни (Snap / Marker)
     
     private func setSingle10MinuteMarkFromDate(_ date: Date) {
-        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
         let hoursColumn = container.hoursColumnView
         
         let cal = Calendar.current
@@ -622,7 +622,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     }
     
     private func clear10MinuteMark() {
-        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
         container.hoursColumnView.selectedMinuteMark = nil
         container.hoursColumnView.setNeedsDisplay()
     }
@@ -726,12 +726,12 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     // MARK: - Scroll Clipping
     
     private func setScrollsClipping(enabled: Bool) {
-        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
         container.allDayScrollView.clipsToBounds = enabled
     }
     
     private func updateAutoScrollDirection(for gesture: UIPanGestureRecognizer) {
-        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+        guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
         let location = gesture.location(in: container)
         let threshold: CGFloat = 50
         var direction = CGPoint.zero
@@ -772,7 +772,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     
     @objc private func handleAutoScroll() {
         guard autoScrollDirection != .zero,
-              let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerMultiCalendarView else { return }
+              let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
         
         let scrollView = container.mainScrollView
         let scrollSpeed: CGFloat = 5
