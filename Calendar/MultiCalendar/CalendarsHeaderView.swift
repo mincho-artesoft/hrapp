@@ -28,41 +28,38 @@ final class CalendarsHeaderView: UIView {
     }
 
     private func rebuildSubviews() {
-        // 1) Махаме старите
+        // 1) Remove old labels
         labelViews.forEach { $0.removeFromSuperview() }
         labelViews = []
-        
-        // 2) Създаваме по 1 UILabel САМО за селектираните календари
-        if calendarsDict.values.filter({ $0.selected }).count > 0{
-            for (_, info) in calendarsDict {
-                guard info.selected else { continue }
-                let label = UILabel()
-                label.textAlignment = .center
-                label.text = info.title
-                label.textColor = .label
-                // Запазваме си леко прозрачен фон, ако е нужно
-                label.backgroundColor = info.color.withAlphaComponent(0.15)
-                
-                addSubview(label)
-                labelViews.append(label)
-            }
-        }else{
-            for (_, info) in calendarsDict {
-                let label = UILabel()
-                label.textAlignment = .center
-                label.text = info.title
-                label.textColor = .label
-                // Запазваме си леко прозрачен фон, ако е нужно
-                label.backgroundColor = info.color.withAlphaComponent(0.15)
-                
-                addSubview(label)
-                labelViews.append(label)
-            }
+
+        // 2) Build an array of calendars that are "to show"
+        let selectedCals = calendarsDict.filter { $0.value.selected }
+        let calsToDraw: [(String, (title: String, color: UIColor, selected: Bool))]
+        if selectedCals.isEmpty {
+            // none selected => show all
+            calsToDraw = Array(calendarsDict)
+        } else {
+            calsToDraw = Array(selectedCals)
         }
-        
+
+        // 3) SORT them by .title
+        let sortedCals = calsToDraw.sorted { $0.1.title < $1.1.title }
+
+        // 4) Create UILabels for each, in sorted order
+        for (calID, info) in sortedCals {
+            let label = UILabel()
+            label.text = info.title
+            label.textAlignment = .center
+            label.backgroundColor = info.color.withAlphaComponent(0.15)
+            // etc.
+            addSubview(label)
+            labelViews.append(label)
+        }
+
         setNeedsLayout()
-        setNeedsDisplay() // да се презачертаят линиите
+        setNeedsDisplay()
     }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()

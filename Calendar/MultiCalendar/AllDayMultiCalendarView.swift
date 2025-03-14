@@ -98,17 +98,17 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Скриваме всички eventView‑та
+        // 1) Скриваме старите EventView обекти:
         for ev in eventViews {
             ev.isHidden = true
         }
         
-        // Преоразмеряваме височината, ако е нужно.
+        // 2) Ако е включено autoResizeHeight, преоразмеряваме височината:
         if autoResizeHeight {
             recalcAllDayHeightDynamically()
         }
-
-        // Брой дни
+        
+        // 3) Определяме dayColumnWidth, ако имаме N дни
         let totalDays = dayCount
         if totalDays > 0 {
             let availableWidth = bounds.width - leadingInsetForHours
@@ -118,35 +118,79 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             dayColumnWidth = 0
         }
         
+        // 4) Задействаме setNeedsDisplay(), за да се нарисуват линиите/background
         setNeedsDisplay()
         
-        // Групираме евентите по ден
-        let grouped = Dictionary(grouping: allDayLayoutAttributes) {
+        // 5) Събираме кои календари ще чертаем (взимаме само селектираните,
+        //    или всички, ако нито един не е селектиран):
+        let allCals = calendarVM.calendarsDict
+        let selectedCals = allCals.filter { $0.value.selected }
+        let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+        
+        // Сортираме ги по заглавие, за да съвпадне с подредбата в layoutBackground()
+        let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+        
+        // Това е бройката под-колони (по 1 за всеки календар)
+        let numberOfCalendars = max(1, sortedCals.count)
+        let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
+        
+        // 6) Групираме all-day атрибутите по ден:
+        let groupedByDay = Dictionary(grouping: allDayLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         
+        // 7) Подготовка за подреждане в редове
         let rowHeight: CGFloat = 22
         let baseY: CGFloat = 6
         let gap = style.eventGap
         
+        // Ще ползваме един брояч за да взимаме EventView обекти от масива:
         var usedIndex = 0
-        for dayIndex in 0..<dayCount {
-            let dayEvents = grouped[dayIndex] ?? []
-            for (i, attr) in dayEvents.enumerated() {
-                let x = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth + gap
-                let y = baseY + CGFloat(i) * rowHeight + gap
-                let w = dayColumnWidth - gap * 2
-                let h = rowHeight - gap * 2
-
-                let evView = ensureEventView(at: usedIndex)
-                evView.isHidden = false
-                evView.frame = CGRect(x: x, y: y, width: w, height: h)
-                evView.updateWithDescriptor(event: attr.descriptor)
-                eventViewToDescriptor[evView] = attr.descriptor
-                usedIndex += 1
+        
+        // 8) За всеки ден (0..<dayCount)
+        for dayIndex in 0 ..< dayCount {
+            // Ако няма евенти за този ден
+            guard let dayEvents = groupedByDay[dayIndex], !dayEvents.isEmpty else {
+                continue
+            }
+            
+            // (A) Групираме тези евенти (само за dayIndex) по calendarID:
+            let eventsByCalID = Dictionary(grouping: dayEvents) { attr in
+                attr.descriptor.calendarID ?? ""
+            }
+            
+            // (B) За всяка под-колона (т.е. за всяко сортирано calendarID)
+            for (calIndex, (calID, _)) in sortedCals.enumerated() {
+                // Масивът с евенти за calID
+                let theseEvents = eventsByCalID[calID] ?? []
+                
+                // Подреждаме ги вертикално, неприпокриващо, i = 0,1,2...
+                for (i, attr) in theseEvents.enumerated() {
+                    // X = позицията на деня + позицията на подколоната + някакъв gap
+                    let x = leadingInsetForHours
+                          + CGFloat(dayIndex) * dayColumnWidth
+                          + CGFloat(calIndex) * subColumnWidth
+                          + gap
+                    // Y = базово + номер на ред i
+                    let y = baseY + CGFloat(i) * rowHeight + gap
+                    // Ширина и височина
+                    let w = subColumnWidth - 2 * gap
+                    let h = rowHeight - 2 * gap
+                    
+                    // Взимаме/създаваме EventView
+                    let evView = ensureEventView(at: usedIndex)
+                    usedIndex += 1
+                    
+                    evView.isHidden = false
+                    evView.frame = CGRect(x: x, y: y, width: w, height: h)
+                    
+                    evView.updateWithDescriptor(event: attr.descriptor)
+                    eventViewToDescriptor[evView] = attr.descriptor
+                }
             }
         }
     }
+
     
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
