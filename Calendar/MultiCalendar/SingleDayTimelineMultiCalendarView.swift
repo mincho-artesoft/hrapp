@@ -3,6 +3,7 @@ import UIKit
 public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecognizerDelegate {
     private var highlightedDayIndexes: Set<Int> = []
     private var isCurrentlyOverAllDay = false
+    private let calendarVM = CalendarViewModel.shared
 
     private var ghostEmptySpaceView: EventView?
     private var ghostEmptySpaceDescriptor: EventDescriptor?
@@ -1803,7 +1804,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         //    (същата логика както при `CalendarsHeaderView`).
         //
         //    (А) Вземаме календарите (selected vs. all)
-        let allCals = CalendarViewModel.shared.calendarsDict
+        let allCals = calendarVM.calendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
         let numberOfCalendars = calsToShow.count
