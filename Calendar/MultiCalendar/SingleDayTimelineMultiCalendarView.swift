@@ -1,6 +1,6 @@
 import UIKit
 
-public final class MultiDayTimelineMultiCalendarView: UIView, UIGestureRecognizerDelegate {
+public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecognizerDelegate {
     private var highlightedDayIndexes: Set<Int> = []
     private var isCurrentlyOverAllDay = false
 

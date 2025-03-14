@@ -119,7 +119,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     public let allDayTitleLabel = UILabel()
     
     public let mainScrollView = UIScrollView()
-    public let weekView       = MultiDayTimelineMultiCalendarView()
+    public let weekView       = SingleDayTimelineMultiCalendarView()
     
     // Горна лента (navBar)
     private let navBar = UIView()
