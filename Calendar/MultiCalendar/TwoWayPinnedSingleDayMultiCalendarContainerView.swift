@@ -25,40 +25,31 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     private var calendarsDropdownView: CalendarsDropdownView?
     private var dropdownBackgroundView: UIView?
     
-    // Иконки за chevron
-    private let smallConfig = UIImage.SymbolConfiguration(pointSize: 14, weight: .regular)
-    private lazy var arrowImageRight: UIImage? = UIImage(systemName: "chevron.right", withConfiguration: smallConfig)
-    private lazy var arrowImageDown:  UIImage? = UIImage(systemName: "chevron.down",  withConfiguration: smallConfig)
-    
-    // Бутон, който отваря dropdown-а
+    // Бутонът, който отваря dropdown-а – без текст и с иконата "calendar.circle.fill"
     private let calendarsMultiSelectButton: UIButton = {
         let btn = UIButton(type: .system)
         
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.plain()
-            config.title = "Calendars"
-            config.image = UIImage(systemName: "chevron.right")
-            config.imagePlacement = .trailing
-            config.imagePadding = 4
+            let image = UIImage(systemName: "calendar")?
+                .withConfiguration(UIImage.SymbolConfiguration(pointSize: 17))
+            config.image = image
             config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
             config.baseForegroundColor = .systemBlue
-            
             btn.configuration = config
         } else {
-            btn.setTitle("Calendars", for: .normal)
             btn.tintColor = .systemBlue
-            if let chevronImage = UIImage(systemName: "chevron.right") {
-                btn.setImage(chevronImage, for: .normal)
-                btn.semanticContentAttribute = .forceRightToLeft
+            if let calendarImage = UIImage(systemName: "calendar")?
+                .withConfiguration(UIImage.SymbolConfiguration(pointSize: 17)) {
+                btn.setImage(calendarImage, for: .normal)
             }
             btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
         }
+
         
-        btn.titleLabel?.numberOfLines = 1
-        btn.titleLabel?.lineBreakMode = .byTruncatingTail
         return btn
     }()
-
+    
     public var currentView: Int = 3
     public var onViewChange: ((Int) -> Void)?
     
@@ -71,7 +62,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             setNeedsLayout()
         }
     }
-
+    
     public var onRangeChange: ((Date, Date) -> Void)?
     
     public var onEventTap: ((EventDescriptor) -> Void)? {
@@ -208,13 +199,15 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     private var redrawTimer: Timer?
     private var isInSecondPass = false
     private let topBackgroundView = UIView()
-    
+    private let calendarHeaderBackgroundView = UIView()
+
     // ---------------------------------------------------------
     // MARK: - Втори хедър за календари
     // ---------------------------------------------------------
+    // Увеличихме височината с 10 пиксела (от 20 на 30)
     fileprivate let calendarsHeaderScrollView = UIScrollView()
     fileprivate let calendarsHeaderView       = CalendarsHeaderView()
-    fileprivate let calendarsHeaderHeight: CGFloat = 20
+    fileprivate let calendarsHeaderHeight: CGFloat = 30
     
     // ---------------------------------------------------------
     // MARK: - Инициализация
@@ -223,7 +216,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         super.init(frame: frame)
         setupViews()
         
-        // (НОВО) Още в началото, задаваме списъка с календари от ViewModel:
+        // (НОВО) Задаваме списъка с календари от ViewModel
         calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
         
         startRedrawTimer()
@@ -233,7 +226,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         super.init(coder: coder)
         setupViews()
         
-        // (НОВО) Още в началото, задаваме списъка с календари от ViewModel:
+        // (НОВО) Задаваме списъка с календари от ViewModel
         calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
         
         startRedrawTimer()
@@ -330,7 +323,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
         // Бутон за MultiSelect Calendars => показваме наш "dropdown"
-        navBar.addSubview(calendarsMultiSelectButton)
+        calendarsMultiSelectButton.layer.zPosition = 8
+        addSubview(calendarsMultiSelectButton)
         calendarsMultiSelectButton.addTarget(
             self,
             action: #selector(toggleCalendarsDropdown),
@@ -366,7 +360,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         topBackgroundView.backgroundColor = .secondarySystemBackground
         addSubview(topBackgroundView)
-        
+        calendarHeaderBackgroundView.backgroundColor = .secondarySystemBackground
+        addSubview(calendarHeaderBackgroundView)
         // (НОВО) Setup за втория хедър (ScrollView + View)
         calendarsHeaderScrollView.showsHorizontalScrollIndicator = false
         calendarsHeaderScrollView.showsVerticalScrollIndicator   = false
@@ -389,7 +384,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         topBackgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topOffset)
         topBackgroundView.layer.zPosition = 3
-        
+
         navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width, height: navBarHeight)
         
         if !isLandscape {
@@ -441,18 +436,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             height: plusBtnSize
         )
         
-        // Бутон за calendars
-        let calButtonW: CGFloat = 130
-        let calButtonH: CGFloat = 34
-        let calButtonX = plusButtonX - calButtonW + margin
-        calendarsMultiSelectButton.frame = CGRect(
-            x: calButtonX,
-            y: centerY,
-            width: calButtonW,
-            height: calButtonH
-        )
-        calendarsMultiSelectButton.layer.cornerRadius = 8
-        calendarsMultiSelectButton.layer.masksToBounds = true
+
+       
         
         var singleDayCarouselHeight: CGFloat = 70
         singleDayCarousel.isHidden = false
@@ -504,13 +489,11 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                     allDayView.dayColumnWidth     = newDayColumnWidth
                 }
             }else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 7 {
-                // Примерна логика
                 let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
                 daysHeaderView.dayColumnWidth = newDayColumnWidth
                 allDayView.dayColumnWidth     = newDayColumnWidth
             } else {
-                // Пример: ако са много календари, слагаме по-широки колонки
                 weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
                 daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
                 allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
@@ -528,19 +511,16 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                     allDayView.dayColumnWidth     = newDayColumnWidth
                 }
             }else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 3 {
-                // Примерна логика
                 let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
                 daysHeaderView.dayColumnWidth = newDayColumnWidth
                 allDayView.dayColumnWidth     = newDayColumnWidth
             } else {
-                // Пример: ако са много календари, слагаме по-широки колонки
                 weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
                 daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
                 allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
             }
         }
-       
         
         let totalDaysHeaderWidth = daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
@@ -548,7 +528,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                       width: totalDaysHeaderWidth,
                                       height: daysHeaderHeight)
         
-        // (НОВО) Под daysHeaderScrollView => втори хедър за календари
+        // Втори хедър за календари под daysHeaderScrollView
         let calendarsHeaderY = daysHeaderScrollView.frame.maxY
         calendarsHeaderScrollView.frame = CGRect(
             x: leftColumnWidth,
@@ -556,21 +536,28 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             width: bounds.width - leftColumnWidth,
             height: calendarsHeaderHeight
         )
-        
-        // Тук, ако искаме second header да е “заключен” по дни, му даваме същата ширина.
-        // (Може да промените логиката, ако искате различно поведение.)
+        calendarHeaderBackgroundView.frame = CGRect(x: 0, y: calendarsHeaderY, width: bounds.width, height: calendarsHeaderHeight)
+        calendarHeaderBackgroundView.layer.zPosition = 3
         calendarsHeaderScrollView.contentSize = CGSize(
-            width: totalDaysHeaderWidth,       // Същото като daysHeaderScrollView
+            width: totalDaysHeaderWidth,
             height: calendarsHeaderHeight
         )
+        calendarsMultiSelectButton.frame = CGRect(
+            x: 15,
+            y: calendarsHeaderY,
+            width: 30,
+            height: 30
+        )
+        self.bringSubviewToFront(calendarsMultiSelectButton)
+
         calendarsHeaderView.frame = CGRect(
             x: 0,
             y: 0,
-            width: totalDaysHeaderWidth,       // Да съответства на горното
+            width: totalDaysHeaderWidth,
             height: calendarsHeaderHeight
         )
         
-        // Отместваме надолу AllDay => вече под новия втори хедър
+        // Отместваме AllDay под втория хедър
         let allDayY    = calendarsHeaderScrollView.frame.maxY
         let oldOffset  = allDayScrollView.contentOffset
         let allDayH    = allDayView.desiredHeight()
@@ -638,7 +625,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                        height: finalHeight)
         
         let nowOnly = cal.startOfDay(for: Date())
-        hoursColumnView.isCurrentDayInWeek = (nowOnly == fromOnly )
+        hoursColumnView.isCurrentDayInWeek = (nowOnly == fromOnly)
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
         
         hoursColumnView.setNeedsDisplay()
@@ -660,7 +647,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         layoutSearchResultsIfNeeded()
         
-        // Ако dropdown е отворен => преизчисляваме позицията му при ротация
+        // Ако dropdown е отворен, преизчисляваме позицията му при ротация
         if let dView = calendarsDropdownView {
             positionDropdown(dView)
         }
@@ -670,15 +657,11 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // MARK: - UIScrollViewDelegate
     // ---------------------------------------------------------
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //
-        // (НОВО/ПРОМЕНЕНО) Синхронизация и с calendarsHeaderScrollView:
-        //
         if scrollView == mainScrollView {
             daysHeaderScrollView.contentOffset.x     = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x         = scrollView.contentOffset.x
             calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
-            
-            hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
+            hoursColumnScrollView.contentOffset.y      = scrollView.contentOffset.y
         }
         else if scrollView == daysHeaderScrollView {
             mainScrollView.contentOffset.x           = scrollView.contentOffset.x
@@ -691,10 +674,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
         }
         else if scrollView == calendarsHeaderScrollView {
-            //
-            // Тук, ако искаме вторият хедър да е заключен по същия offset,
-            // синхронизираме и останалите три скролове:
-            //
             mainScrollView.contentOffset.x       = scrollView.contentOffset.x
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x     = scrollView.contentOffset.x
@@ -767,15 +746,11 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 addEventButton.isHidden      = true
                 viewMenuButton.isHidden      = true
                 searchButton.isHidden        = true
-                calendarsMultiSelectButton.isHidden = true
-                
                 animateSearchBarIn()
             } else {
                 addEventButton.isHidden      = false
                 viewMenuButton.isHidden      = false
                 searchButton.isHidden        = false
-                calendarsMultiSelectButton.isHidden = false
-                
                 animateSearchBarOut()
             }
         }
@@ -914,13 +889,11 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let dropdown = CalendarsDropdownView()
         dropdown.setCalendarsInfo(calendarVM.calendarsDict)
         
-        // 3) При промяна обръщаме flag-а + викаме callback
+        // 3) Callback при смяна на селекцията
         dropdown.onSelectionChanged = { [weak self] newDict in
             guard let self = self else { return }
             self.calendarVM.calendarsDict = newDict
             self.onCalendarsSelectionChanged?()
-            
-            // Обновяваме и втория хедър, за да се вижда промяната
             self.calendarsHeaderView.calendarsDict = newDict
         }
         
@@ -930,23 +903,13 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         // 4) Позиция
         positionDropdown(dropdown)
         
-        // Анимация
+        // Анимация за показване
         dropdown.alpha = 0
         UIView.animate(withDuration: 0.2) {
             dropdown.alpha = 1
         }
         
-        // Превключваме chevron
-        UIView.transition(
-            with: calendarsMultiSelectButton,
-            duration: 0.2,
-            options: .transitionCrossDissolve,
-            animations: { [weak self] in
-                guard let self = self else { return }
-                self.calendarsMultiSelectButton.setImage(self.arrowImageDown, for: .normal)
-            },
-            completion: nil
-        )
+        // Иконата остава "calendar.circle.fill"
     }
     
     private func positionDropdown(_ dropdown: CalendarsDropdownView) {
@@ -984,17 +947,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         dropdownBackgroundView = nil
         calendarsDropdownView  = nil
         
-        // chevron.down -> chevron.right
-        UIView.transition(
-            with: calendarsMultiSelectButton,
-            duration: 0.2,
-            options: .transitionCrossDissolve,
-            animations: { [weak self] in
-                guard let self = self else { return }
-                self.calendarsMultiSelectButton.setImage(self.arrowImageRight, for: .normal)
-            },
-            completion: nil
-        )
+        // Иконата остава "calendar.circle.fill"
     }
     
     @objc private func handleTapOutsideDropdown(_ gesture: UITapGestureRecognizer) {

@@ -12,7 +12,7 @@ public class CalendarsDropdownView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemGray5
+        backgroundColor = .systemBackground
         layer.cornerRadius = 8
         layer.masksToBounds = true
         
