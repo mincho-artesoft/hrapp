@@ -9,7 +9,6 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
     @Binding var events: [EventDescriptor]
     
     let eventStore: EKEventStore
-    var isSingleDay: Bool
     
     var selectedTab: Int
     var onViewChange: ((Int)->Void)?
@@ -21,7 +20,6 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         let container = TwoWayPinnedSingleDayMultiCalendarContainerView()
         
-        container.showSingleDay = isSingleDay
         container.fromDate = fromDate
         container.toDate   = fromDate
         
@@ -105,7 +103,6 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             return
         }
         
-        container.showSingleDay = isSingleDay
         container.fromDate = fromDate
         container.toDate   = fromDate
         

@@ -154,7 +154,6 @@ struct RootView: View {
                                 fromDate: $pinnedFromDateSingle,
                                 events: $pinnedEventsSingle,
                                 eventStore: CalendarViewModel.shared.eventStore,
-                                isSingleDay: true,
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab

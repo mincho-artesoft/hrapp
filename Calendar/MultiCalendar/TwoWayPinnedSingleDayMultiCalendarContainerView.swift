@@ -45,30 +45,17 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         return btn
     }()
     
-    // ---------------------------------------------------------
-    // MARK: - Други публични пропъртита
-    // ---------------------------------------------------------
-    public var showSingleDay: Bool = false {
-        didSet {
-            if showSingleDay {
-                toDate = fromDate
-            }
-            monthLabel.isHidden = !showSingleDay
-            setNeedsLayout()
-        }
-    }
-    
+
     public var currentView: Int = 3
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {
         didSet {
-            refreshDateRangeButtonTitle()
             daysHeaderView.fromDate = fromDate
             allDayView.fromDate     = fromDate
             weekView.fromDate       = fromDate
             
-            if showSingleDay { toDate = fromDate }
+            toDate = fromDate
             setNeedsLayout()
             if fromDate > toDate {
                 toDate = fromDate
@@ -77,7 +64,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     }
     public var toDate: Date = Date() {
         didSet {
-            refreshDateRangeButtonTitle()
             daysHeaderView.toDate = toDate
             allDayView.toDate     = toDate
             weekView.toDate       = toDate
@@ -154,18 +140,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         return view
     }()
     
-    private let dateRangeButton: UIButton = {
-        let btn = UIButton(type: .custom)
-        btn.setTitle("Няма избран период", for: .normal)
-        btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        btn.layer.cornerRadius = 8
-        btn.backgroundColor = .systemGray5
-        btn.setTitleColor(.label,      for: .normal)
-        btn.setTitleColor(.systemBlue, for: .selected)
-        btn.setTitleColor(.systemBlue, for: .highlighted)
-        return btn
-    }()
-    
     private let viewMenuButton: UIButton = {
         let btn = UIButton(type: .system)
         let image = UIImage(systemName: "ellipsis.circle")
@@ -230,7 +204,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     private let bottomBorder = CALayer()
     
     private var showCalendar = false
-    private var calendarHostingController: UIHostingController<CalendarDateRangePickerWrapper>?
     private var calendarBackgroundView: UIView?
     
     private var redrawTimer: Timer?
@@ -255,7 +228,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
         
         startRedrawTimer()
-        refreshDateRangeButtonTitle()
     }
     
     public required init?(coder: NSCoder) {
@@ -266,7 +238,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
         
         startRedrawTimer()
-        refreshDateRangeButtonTitle()
     }
     
     deinit {
@@ -348,17 +319,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             self.setNeedsLayout()
         }
         
-        dateRangeButton.addTarget(self, action: #selector(didTapDateRangeButton), for: .touchUpInside)
-        navBar.addSubview(dateRangeButton)
-        
         navBar.addSubview(addEventButton)
         addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
         
         if #available(iOS 14.0, *) {
             viewMenuButton.showsMenuAsPrimaryAction = true
             viewMenuButton.menu = buildViewMenu()
-        } else {
-            viewMenuButton.addTarget(self, action: #selector(legacyMenuTapped), for: .touchUpInside)
         }
         navBar.addSubview(viewMenuButton)
         
@@ -429,7 +395,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width, height: navBarHeight)
         
-        if showSingleDay && !isLandscape {
+        if !isLandscape {
             let df = DateFormatter()
             df.dateFormat = "LLLL"
             monthLabel.text = df.string(from: fromDate)
@@ -496,14 +462,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let btnH: CGFloat = 40
         let x = calButtonX - btnW - margin
         let y = (navBar.bounds.height - btnH) / 2
-        dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
         
-        if !isSearching {
-            dateRangeButton.isHidden = showSingleDay
-        }
-        
-        var singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
-        singleDayCarousel.isHidden = !showSingleDay
+        var singleDayCarouselHeight: CGFloat = 70
+        singleDayCarousel.isHidden = false
         if isLandscape {
             singleDayCarousel.isHidden = true
             singleDayCarouselHeight = 0
@@ -516,9 +477,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             width: bounds.width,
             height: singleDayCarouselHeight
         )
-        if showSingleDay {
-            singleDayCarousel.selectedDate = fromDate
-        }
+      
+        singleDayCarousel.selectedDate = fromDate
         
         let yMain = singleDayCarousel.frame.maxY
         
@@ -721,11 +681,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     @available(iOS 14.0, *)
     private func buildViewMenu() -> UIMenu {
         let dayAction = UIAction(title: "Day", state: (currentView == 1 ? .on : .off)) { [weak self] _ in
-            self?.showSingleDay = true
             self?.onViewChange?(1)
         }
         let multiAction = UIAction(title: "MultiDay", state: (currentView == 3 ? .on : .off)) { [weak self] _ in
-            self?.showSingleDay = false
             self?.onViewChange?(3)
         }
         let monthAction = UIAction(title: "Month", state: (currentView == 0 ? .on : .off)) { [weak self] _ in
@@ -745,172 +703,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             dayAction, multiAction, monthAction, yearAction, listAction, multiCal
         ])
     }
-    
-    @objc private func legacyMenuTapped() {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: "Day", style: .default, handler: { [weak self] _ in
-            self?.showSingleDay = true
-            self?.onViewChange?(1)
-        }))
-        sheet.addAction(UIAlertAction(title: "MultiDay", style: .default, handler: { [weak self] _ in
-            self?.showSingleDay = false
-            self?.onViewChange?(3)
-        }))
-        sheet.addAction(UIAlertAction(title: "Month", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(0)
-        }))
-        sheet.addAction(UIAlertAction(title: "Year", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(2)
-        }))
-        sheet.addAction(UIAlertAction(title: "List", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(4)
-        }))
-        sheet.addAction(UIAlertAction(title: "MultiCalendar", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(5)
-        }))
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        
-        if let topVC = topMostViewController() {
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                sheet.popoverPresentationController?.sourceView = topVC.view
-            }
-            topVC.present(sheet, animated: true)
-        }
-    }
-    
-    // ---------------------------------------------------------
-    // MARK: - DateRangeButton
-    // ---------------------------------------------------------
-    @objc private func didTapDateRangeButton() {
-        if showCalendar {
-            hideCalendarPopup()
-        } else {
-            showCalendarPopupOnWindow()
-        }
-    }
-    
-    @objc private func containerTapped(_ sender: UITapGestureRecognizer) {
-        guard
-            let backgroundView = calendarBackgroundView,
-            let hostingView = calendarHostingController?.view
-        else { return }
-        
-        let location = sender.location(in: backgroundView)
-        if !hostingView.frame.contains(location) {
-            hideCalendarPopup()
-        }
-    }
-    
-    private func showCalendarPopupOnWindow() {
-        guard let topVC = topMostViewController() else { return }
-        guard !showCalendar else { return }
-        showCalendar = true
-        
-        let backgroundView = UIView(frame: topVC.view.bounds)
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0)
-        backgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        backgroundView.layer.zPosition  = 9998
-        topVC.view.addSubview(backgroundView)
-        calendarBackgroundView = backgroundView
-        
-        let swiftUICalendar = CalendarDateRangePickerWrapper(
-            startDate: fromDate,
-            endDate:   toDate,
-            minimumDate: nil,
-            maximumDate: nil,
-            selectedColor: .systemBlue
-        ) { [weak self] newStart, newEnd in
-            guard let self = self else { return }
-            self.fromDate = newStart
-            self.toDate   = newEnd
-            self.onRangeChange?(self.fromDate, self.toDate)
-        }
-        
-        let hc = UIHostingController(rootView: swiftUICalendar)
-        hc.view.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.7)
-        hc.view.layer.cornerRadius = 12
-        hc.view.layer.masksToBounds = true
-        hc.view.layer.zPosition     = 9999
-        self.calendarHostingController = hc
-        
-        let buttonFrameInWindow = dateRangeButton.superview?.convert(dateRangeButton.frame, to: topVC.view) ?? .zero
-        
-        let calendarWidth:  CGFloat = 350
-        let calendarHeight: CGFloat = 350
-        
-        var finalX = buttonFrameInWindow.midX - (calendarWidth / 2)
-        var finalY = buttonFrameInWindow.maxY + 8
-        
-        if (finalX + calendarWidth) > topVC.view.bounds.maxX {
-            finalX = topVC.view.bounds.maxX - calendarWidth - 10
-        }
-        if finalX < 10 {
-            finalX = 10
-        }
-        
-        if (finalY + calendarHeight) > topVC.view.bounds.maxY {
-            finalY = buttonFrameInWindow.minY - calendarHeight - 8
-        }
-        
-        hc.view.frame = CGRect(x: finalX, y: finalY,
-                               width: calendarWidth, height: calendarHeight)
-        backgroundView.addSubview(hc.view)
-        
-        hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        hc.view.alpha = 0
-        backgroundView.alpha = 0
-        UIView.animate(withDuration: 0.25) {
-            hc.view.transform = .identity
-            hc.view.alpha = 1
-            backgroundView.alpha = 1
-        }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(containerTapped(_:)))
-        tapGesture.cancelsTouchesInView = false
-        tapGesture.delegate = self
-        backgroundView.addGestureRecognizer(tapGesture)
-        
-        dateRangeButton.isSelected = true
-    }
-    
-    private func hideCalendarPopup() {
-        guard showCalendar else { return }
-        showCalendar = false
-        
-        guard let hc = calendarHostingController,
-              let bgView = calendarBackgroundView else {
-            dateRangeButton.isSelected = false
-            return
-        }
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            hc.view.alpha = 0
-            bgView.alpha   = 0
-        }, completion: { _ in
-            hc.view.removeFromSuperview()
-            bgView.removeFromSuperview()
-            self.calendarBackgroundView = nil
-        })
-        
-        calendarHostingController = nil
-        dateRangeButton.isSelected = false
-    }
-    
-    private func refreshDateRangeButtonTitle() {
-        if fromDate > toDate {
-            dateRangeButton.setTitle("Няма избран период", for: .normal)
-        } else {
-            let s = fmt(fromDate)
-            let e = fmt(toDate)
-            if s.isEmpty || e.isEmpty {
-                dateRangeButton.setTitle("Няма избран период", for: .normal)
-            } else {
-                dateRangeButton.setTitle("\(s) - \(e)", for: .normal)
-            }
-        }
-    }
-    
+   
     private func fmt(_ d: Date) -> String {
         let df = DateFormatter()
         df.dateStyle = .medium
@@ -936,11 +729,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 searchButton.isHidden        = true
                 calendarsMultiSelectButton.isHidden = true
                 
-                if showSingleDay {
-                    dateRangeButton.isHidden = true
-                } else {
-                    dateRangeButton.isHidden = true
-                }
                 animateSearchBarIn()
             } else {
                 addEventButton.isHidden      = false
@@ -948,11 +736,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 searchButton.isHidden        = false
                 calendarsMultiSelectButton.isHidden = false
                 
-                if showSingleDay {
-                    dateRangeButton.isHidden = true
-                } else {
-                    dateRangeButton.isHidden = false
-                }
                 animateSearchBarOut()
             }
         }
@@ -1197,22 +980,5 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             top = presented
         }
         return top
-    }
-    
-    // ---------------------------------------------------------
-    // MARK: - UIGestureRecognizerDelegate
-    // ---------------------------------------------------------
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                                  shouldReceive touch: UITouch) -> Bool {
-        if let hostingView = calendarHostingController?.view {
-            if let tappedView = touch.view, tappedView.isDescendant(of: hostingView) {
-                return false
-            }
-        }
-        if let tappedView = touch.view,
-           tappedView.isDescendant(of: dateRangeButton) {
-            return false
-        }
-        return true
     }
 }
