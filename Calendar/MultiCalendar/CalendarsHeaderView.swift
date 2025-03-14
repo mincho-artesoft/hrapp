@@ -1,8 +1,9 @@
 import UIKit
+import EventKit
 
 final class CalendarsHeaderView: UIView {
     /// Данни за всеки календар: [calendarID: (title, color, selected)]
-    var calendarsDict: [String: (title: String, color: UIColor, selected: Bool)] = [:] {
+    var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:] {
         didSet {
             rebuildSubviews()
         }
@@ -34,7 +35,7 @@ final class CalendarsHeaderView: UIView {
 
         // 2) Избираме календарите, които трябва да се покажат
         let selectedCals = calendarsDict.filter { $0.value.selected }
-        let calsToDraw: [(String, (title: String, color: UIColor, selected: Bool))]
+        let calsToDraw: [(String, (title: String, color: UIColor, selected: Bool, calendar: EKCalendar))]
         if selectedCals.isEmpty {
             // ако няма селектирани -> показваме всички
             calsToDraw = Array(calendarsDict)

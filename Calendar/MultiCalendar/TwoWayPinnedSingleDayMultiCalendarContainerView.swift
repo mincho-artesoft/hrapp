@@ -50,7 +50,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         return btn
     }()
     
-    public var currentView: Int = 3
+    public var currentView: Int = 5
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {

@@ -230,7 +230,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         //     - иначе ползваме всички
         let allCals = calendarVM.calendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
-        let calsToShow: [(String, (title: String, color: UIColor, selected: Bool))]
+        let calsToShow: [(String, (title: String, color: UIColor, selected: Bool, calendar: EKCalendar))]
         if selectedCals.isEmpty {
             // Няма селектирани => всички
             calsToShow = Array(allCals)
@@ -551,76 +551,121 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
         case .ended, .cancelled:
-            additionalGhostView!.isHidden = true
+            // Скриваме допълнителния ghost view
+            additionalGhostView?.isHidden = true
             additionalGhostView = nil
             if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
-                      container.allDayTitleLabel.textColor = .label
-                  }
-            // 1) Спираме auto-scroll
+                container.allDayTitleLabel.textColor = .label
+            }
+            
+            // Вибрация и спиране на auto-scroll
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             stopAutoScroll()
             autoScrollDirection = .zero
-            
-            // 2) Махаме 10-минутния маркер
             clear10MinuteMark()
-            
-            // 3) Връщаме clipping
             setScrollsClipping(enabled: true)
             
-            // 4) Изчистваме highlight
+            // Ако не можем да вземем контейнера, връщаме евента на първоначалната позиция
             guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
-                // Ако няма container, просто връщаме евента на мястото му
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
                 }
                 return
             }
+            
+            // Изчистваме highlight
             container.weekView.clearAllHighlights()
             clearAllHighlights()
             
-            // 5) Проверяваме къде "пускаме" евента:
-            let dropLocationInContainer = gesture.location(in: container)
+            // Вземаме drop локацията в рамките на AllDayView
             let dropLocationInAllDay = gesture.location(in: self)
             
-            // (A) Ако оставаме горе (AllDayView)
+            // Ако drop-ът е в AllDayView
             if self.bounds.contains(dropLocationInAllDay) {
                 let evMidX = evView.frame.midX
                 if let newDayIndex = dayIndexFromMidX(evMidX),
-                   let newDayDate = dayDateByAddingDays(newDayIndex)
-                {
-                    let cal       = Calendar.current
+                   let newDayDate = dayDateByAddingDays(newDayIndex) {
+                    let cal = Calendar.current
                     let startOfDay = cal.startOfDay(for: newDayDate)
-                    let endOfDay   = cal.date(byAdding: .day, value: 1, to: startOfDay)!
+                    let endOfDay = cal.date(byAdding: .day, value: 1, to: startOfDay)!
                     
-                    descriptor.isAllDay      = true
-                    descriptor.dateInterval  = DateInterval(start: startOfDay, end: endOfDay)
+                    // Определяне на новата календарна подколона:
+                    // 1. Вземаме всички календари от ViewModel-а
+                    let allCals = CalendarViewModel.shared.calendarsDict
+                    // 2. Ако има селектирани, използваме само тях, иначе всички
+                    let selectedCals = allCals.filter { $0.value.selected }
+                    let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+                    // 3. Сортираме ги по заглавие
+                    let sortedCalsSorted = sortedCals.sorted { $0.1.title < $1.1.title }
                     
+                    // Изчисляваме относителната X позиция вътре в денната колона
+                    let relativeX = evView.frame.midX - leadingInsetForHours - CGFloat(newDayIndex) * dayColumnWidth
+                    let numCalendars = max(1, sortedCalsSorted.count)
+                    let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
+                    let newCalendarIndex = Int(floor(relativeX / subColumnWidth))
+                    // Ограничаваме индекса, ако е извън границите
+                    let clampedIndex = min(max(newCalendarIndex, 0), sortedCalsSorted.count - 1)
+                    let newCalendarID = sortedCalsSorted[clampedIndex].key
+                    
+                    // Ако работите с EKMultiDayWrapper, актуализирайте календара на реалния EKEvent
+                    if let multi = descriptor as? EKMultiDayWrapper,
+                       let newCalendar = CalendarViewModel.shared.calendarsDict[newCalendarID]?.calendar {
+                        multi.realEvent.calendar = newCalendar
+                    }
+                    
+                    // Превръщаме евента в all‑day и обновяваме dateInterval-а
+                    descriptor.isAllDay = true
+                    descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
+                    
+                    // Извикваме callback-а за приключване на drag-а
                     onEventDragEnded?(descriptor, startOfDay, false)
                 } else {
-                    // Ако не можем да определим деня, връщаме го обратно
+                    // Ако не може да се определи денят – връщаме евента на първоначалната позиция
                     if let orig = originalFrameForDraggedEvent {
                         evView.frame = orig
                     }
                 }
             }
-            // (B) Ако пускаме над MultiDayTimelineView
-            else if container.weekView.frame.contains(dropLocationInContainer) {
-                // Даваме му, например, 1 час продължителност
+            // Ако drop-ът е в основната timeline зона (MultiDayTimelineView)
+            else if container.weekView.frame.contains(gesture.location(in: container)) {
                 let evFrameInTimeline = self.convert(evView.frame, to: container.weekView)
                 let hourHeight = container.weekView.hourHeight
                 let topMargin  = container.weekView.topMargin
-                let midX       = evFrameInTimeline.midX
+                let midX = evFrameInTimeline.midX
                 
-                var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
-                                   / container.weekView.dayColumnWidth)
+                // Определяне на деня (dayIndex) в weekView:
+                var dayIndex = Int((midX - container.weekView.leadingInsetForHours) / container.weekView.dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                 
+                // Изчисляваме относителната X позиция вътре в денната колона:
+                let relativeX = midX - container.weekView.leadingInsetForHours - CGFloat(dayIndex) * container.weekView.dayColumnWidth
+                
+                // Вземаме списъка с календари от ViewModel-а:
+                let allCals = CalendarViewModel.shared.calendarsDict
+                let selectedCals = allCals.filter { $0.value.selected }
+                let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+                // Сортираме по заглавие, за да е последователно:
+                let sortedCalsSorted = sortedCals.sorted { $0.1.title < $1.1.title }
+                
+                // Изчисляваме ширината на една подколона (т.е. календар) в рамките на денната колона:
+                let numCalendars = max(1, sortedCalsSorted.count)
+                let subColumnWidth = container.weekView.dayColumnWidth / CGFloat(numCalendars)
+                let newCalendarIndex = Int(floor(relativeX / subColumnWidth))
+                let clampedIndex = min(max(newCalendarIndex, 0), sortedCalsSorted.count - 1)
+                let newCalendarID = sortedCalsSorted[clampedIndex].key
+                
+                // Актуализираме календара на евента, ако използвате структура, която съдържа самия EKCalendar:
+                if let multi = descriptor as? EKMultiDayWrapper,
+                   let newCalendar = CalendarViewModel.shared.calendarsDict[newCalendarID]?.calendar {
+                    multi.realEvent.calendar = newCalendar
+                }
+                
+                // Обновяваме датата на събитието в timeline-а:
                 let localY = evFrameInTimeline.minY - topMargin
                 let hourOffset = localY / hourHeight
                 let dayDate = container.weekView.dayStartDate(for: dayIndex)
                 let rawDate = dayDate.addingTimeInterval(hourOffset * 3600)
-                
-                let snapped  = snapToNearest10Min(rawDate)
+                let snapped = snapToNearest10Min(rawDate)
                 let finalEnd = snapped.addingTimeInterval(3600)
                 
                 descriptor.isAllDay = false
@@ -628,21 +673,19 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 
                 container.weekView.onEventDragEnded?(descriptor, snapped, true)
             }
-            // (C) Извън, връщаме евента на старото му място
+            // Ако drop-ът е извън определените зони – връщаме евента на първоначалната позиция
             else {
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
                 }
             }
             
-            // 6) Нулираме временните променливи
+            // Нулираме временните променливи и обновяваме layout-а
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
-            
-            // 7) Презаложащо layout-ване
             setNeedsLayout()
-            
+
         default:
             break
         }

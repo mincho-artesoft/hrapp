@@ -1,4 +1,5 @@
 import UIKit
+import EventKit
 
 public class CalendarsDropdownView: UIView {
     
@@ -6,9 +7,9 @@ public class CalendarsDropdownView: UIView {
     
     // Ключ = calendarID
     // Стойност = (title, color, selected)
-    private var dict: [String: (title: String, color: UIColor, selected: Bool)] = [:]
+    private var dict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
     
-    public var onSelectionChanged: (([String: (title: String, color: UIColor, selected: Bool)]) -> Void)?
+    public var onSelectionChanged: (([String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]) -> Void)?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +32,7 @@ public class CalendarsDropdownView: UIView {
         stackView.frame = bounds
     }
     
-    public func setCalendarsInfo(_ newDict: [String: (title: String, color: UIColor, selected: Bool)]) {
+    public func setCalendarsInfo(_ newDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]) {
         self.dict = newDict
         reloadStackView()
     }
@@ -129,7 +130,8 @@ public class CalendarsDropdownView: UIView {
             dict[calID] = (
                 title: oldVal.title,
                 color: oldVal.color,
-                selected: !oldVal.selected
+                selected: !oldVal.selected,
+                calendar: oldVal.calendar
             )
         }
         

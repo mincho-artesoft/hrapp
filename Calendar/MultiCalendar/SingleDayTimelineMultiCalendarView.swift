@@ -1,4 +1,5 @@
 import UIKit
+import EventKit
 
 public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecognizerDelegate {
     private var highlightedDayIndexes: Set<Int> = []
@@ -320,7 +321,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         let selectedCals = allCals.filter { $0.value.selected }
         
         // If none selected, use all:
-        let calsToShow: [(String, (title: String, color: UIColor, selected: Bool))]
+        let calsToShow: [(String, (title: String, color: UIColor, selected: Bool, calendar: EKCalendar))]
         if selectedCals.isEmpty {
             calsToShow = Array(allCals)
         } else {

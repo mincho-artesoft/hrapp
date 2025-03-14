@@ -8,7 +8,7 @@ import Combine
 @MainActor
 final class CalendarViewModel: ObservableObject {
     let eventStore: EKEventStore = EKEventStore()
-    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool)] = [:]
+    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
 
     static let shared = CalendarViewModel()
 
@@ -181,7 +181,7 @@ final class CalendarViewModel: ObservableObject {
             $0.source.sourceType == .local
         }
         
-        var dict: [String: (title: String, color: UIColor, selected: Bool)] = [:]
+        var dict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
         
         for cal in localCals {
             // Извличаме заглавие
@@ -197,7 +197,8 @@ final class CalendarViewModel: ObservableObject {
             dict[cal.calendarIdentifier] = (
                 title: calTitle,
                 color: uiColor,
-                selected: true
+                selected: true,
+                calendar: cal
             )
         }
         
