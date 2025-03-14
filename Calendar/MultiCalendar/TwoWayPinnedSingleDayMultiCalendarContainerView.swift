@@ -4,7 +4,7 @@ import EventKit
 import EventKitUI
 
 //
-// MARK: - TwoWayPinnedMultiDayContainerMultiCalendarView
+// MARK: - TwoWayPinnedSingleDayMultiCalendarContainerView
 //
 public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                                                   UIScrollViewDelegate,
@@ -35,40 +35,29 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let btn = UIButton(type: .system)
         
         if #available(iOS 15.0, *) {
-            // Use the new configuration-based API
             var config = UIButton.Configuration.plain()
             config.title = "Calendars"
             config.image = UIImage(systemName: "chevron.right")
-            // This aligns the image on the trailing side:
             config.imagePlacement = .trailing
-            // Space between title and image:
             config.imagePadding = 4
-            // Equivalent to old contentEdgeInsets:
             config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
-            // For tint color:
             config.baseForegroundColor = .systemBlue
             
             btn.configuration = config
         } else {
-            // Fallback for iOS < 15
             btn.setTitle("Calendars", for: .normal)
             btn.tintColor = .systemBlue
             if let chevronImage = UIImage(systemName: "chevron.right") {
                 btn.setImage(chevronImage, for: .normal)
-                // Force title to the left, image to the right:
                 btn.semanticContentAttribute = .forceRightToLeft
             }
-            // The old property, which works pre-iOS 15:
             btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
         }
         
-        // General properties (apply to both iOS 15+ and older):
         btn.titleLabel?.numberOfLines = 1
         btn.titleLabel?.lineBreakMode = .byTruncatingTail
         return btn
     }()
-
-    
 
     public var currentView: Int = 3
     public var onViewChange: ((Int) -> Void)?
@@ -369,7 +358,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         weekView.hoursColumnView = hoursColumnView
         
-        // Пример: convertToAllDay
         weekView.onEventConvertToAllDay = { [weak self] descriptor, dayIndex in
             guard let self = self else { return }
             let cal = Calendar.current
@@ -481,12 +469,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         calendarsMultiSelectButton.layer.cornerRadius = 8
         calendarsMultiSelectButton.layer.masksToBounds = true
         
-        // dateRangeButton
-        let btnW: CGFloat = 220
-        let btnH: CGFloat = 40
-        let x = calButtonX - btnW - margin
-        let y = (navBar.bounds.height - btnH) / 2
-        
         var singleDayCarouselHeight: CGFloat = 70
         singleDayCarousel.isHidden = false
         if isLandscape {
@@ -526,16 +508,34 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
         
         let availableWidth = bounds.width - leftColumnWidth
-        if dayCount < 4 {
-            let newDayColumnWidth = availableWidth / CGFloat(dayCount)
-            weekView.dayColumnWidth       = newDayColumnWidth
-            daysHeaderView.dayColumnWidth = newDayColumnWidth
-            allDayView.dayColumnWidth     = newDayColumnWidth
-        } else {
-            weekView.dayColumnWidth       = 100
-            daysHeaderView.dayColumnWidth = 100
-            allDayView.dayColumnWidth     = 100
+        if isLandscape{
+            if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 7 {
+                // Примерна логика
+                let newDayColumnWidth = availableWidth / CGFloat(dayCount)
+                weekView.dayColumnWidth       = newDayColumnWidth
+                daysHeaderView.dayColumnWidth = newDayColumnWidth
+                allDayView.dayColumnWidth     = newDayColumnWidth
+            } else {
+                // Пример: ако са много календари, слагаме по-широки колонки
+                weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
+                daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
+                allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
+            }
+        }else{
+            if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 3 {
+                // Примерна логика
+                let newDayColumnWidth = availableWidth / CGFloat(dayCount)
+                weekView.dayColumnWidth       = newDayColumnWidth
+                daysHeaderView.dayColumnWidth = newDayColumnWidth
+                allDayView.dayColumnWidth     = newDayColumnWidth
+            } else {
+                // Пример: ако са много календари, слагаме по-широки колонки
+                weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
+                daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
+                allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
+            }
         }
+       
         
         let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
@@ -551,23 +551,21 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             width: bounds.width - leftColumnWidth,
             height: calendarsHeaderHeight
         )
-        // Ширина на колона в втория хедър:
-        let calendarsCount = calendarsHeaderView.calendarsDict.count
-        let calendarColumnWidth: CGFloat = 100
-        let totalCalendarsWidth = CGFloat(calendarsCount) * calendarColumnWidth
         
+        // Тук, ако искаме second header да е “заключен” по дни, му даваме същата ширина.
+        // (Може да промените логиката, ако искате различно поведение.)
         calendarsHeaderScrollView.contentSize = CGSize(
-            width: totalCalendarsWidth,
+            width: totalDaysHeaderWidth,       // Същото като daysHeaderScrollView
             height: calendarsHeaderHeight
         )
         calendarsHeaderView.frame = CGRect(
             x: 0,
             y: 0,
-            width: daysHeaderView.dayColumnWidth,
+            width: totalDaysHeaderWidth,       // Да съответства на горното
             height: calendarsHeaderHeight
         )
         
-        // Отместваме надолу AllDay = вече под новия втори хедър
+        // Отместваме надолу AllDay => вече под новия втори хедър
         let allDayY    = calendarsHeaderScrollView.frame.maxY
         let oldOffset  = allDayScrollView.contentOffset
         let allDayH    = allDayView.desiredHeight()
@@ -667,21 +665,34 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // MARK: - UIScrollViewDelegate
     // ---------------------------------------------------------
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //
+        // (НОВО/ПРОМЕНЕНО) Синхронизация и с calendarsHeaderScrollView:
+        //
         if scrollView == mainScrollView {
-            daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
-            allDayScrollView.contentOffset.x     = scrollView.contentOffset.x
+            daysHeaderScrollView.contentOffset.x     = scrollView.contentOffset.x
+            allDayScrollView.contentOffset.x         = scrollView.contentOffset.x
+            calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
+            
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
         }
         else if scrollView == daysHeaderScrollView {
-            mainScrollView.contentOffset.x   = scrollView.contentOffset.x
-            allDayScrollView.contentOffset.x = scrollView.contentOffset.x
+            mainScrollView.contentOffset.x           = scrollView.contentOffset.x
+            allDayScrollView.contentOffset.x         = scrollView.contentOffset.x
+            calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
         }
         else if scrollView == allDayScrollView {
-            mainScrollView.contentOffset.x     = scrollView.contentOffset.x
-            daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
+            mainScrollView.contentOffset.x           = scrollView.contentOffset.x
+            daysHeaderScrollView.contentOffset.x     = scrollView.contentOffset.x
+            calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
         }
         else if scrollView == calendarsHeaderScrollView {
-            // Вторият хедър е независим — не синхронизираме нищо друго тук.
+            //
+            // Тук, ако искаме вторият хедър да е заключен по същия offset,
+            // синхронизираме и останалите три скролове:
+            //
+            mainScrollView.contentOffset.x       = scrollView.contentOffset.x
+            daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
+            allDayScrollView.contentOffset.x     = scrollView.contentOffset.x
         }
     }
     

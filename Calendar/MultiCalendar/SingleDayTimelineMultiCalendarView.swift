@@ -1133,9 +1133,9 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let parent1Class = hitView.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 let parent2Class = hitView.superview?.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 
-                if  hitViewClass.contains("MultiDayTimelineMultiCalendarView")
-                    || parent1Class.contains("MultiDayTimelineMultiCalendarView")
-                    || parent2Class.contains("MultiDayTimelineView") {
+                if  hitViewClass.contains("SingleDayTimelineMultiCalendarView")
+                    || parent1Class.contains("SingleDayTimelineMultiCalendarView")
+                    || parent2Class.contains("SingleDayTimelineMultiCalendarView") {
                     
                     onEventDragEnded?(descriptor, snappedStart, false)
                     

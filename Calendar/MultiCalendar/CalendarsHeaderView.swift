@@ -57,15 +57,25 @@ final class CalendarsHeaderView: UIView {
         guard count > 0 else { return }
         
         let totalWidth = bounds.width
-        
+        let isLandscape = bounds.width > bounds.height
+
         // Ако колoните са 4 или повече -> фиксирана ширина
         // Ако са < 4 -> разпределяме по цялата ширина
         let actualColumnWidth: CGFloat
-        if count < 4 {
-            actualColumnWidth = totalWidth / CGFloat(count)
-        } else {
-            actualColumnWidth = defaultColumnWidth
+        if isLandscape{
+            if count < 7 {
+                actualColumnWidth = totalWidth / CGFloat(count)
+            } else {
+                actualColumnWidth = defaultColumnWidth
+            }
+        }else{
+            if count < 4 {
+                actualColumnWidth = totalWidth / CGFloat(count)
+            } else {
+                actualColumnWidth = defaultColumnWidth
+            }
         }
+        
         
         for (index, lbl) in labelViews.enumerated() {
             let xPos = CGFloat(index) * actualColumnWidth
