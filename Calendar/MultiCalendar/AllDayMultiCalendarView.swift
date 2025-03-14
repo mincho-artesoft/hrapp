@@ -404,11 +404,13 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             // 5) Optionally apply additional “ghost style” (like rounding) if you want:
             additionalGhostView = ghostView
             // 6) Position the ghost at the press location
-            let w: CGFloat = dayColumnWidth - style.eventGap * 2
+            let columNumber =  CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count
+
+            let w: CGFloat = dayColumnWidth - style.eventGap * 2 * CGFloat(columNumber)
             let h: CGFloat = 50
             let x = max(leadingInsetForHours, point.x - w / 2)
             let y = point.y - 25
-            let initialFrame = CGRect(x: x, y: y, width: w, height: h)
+            let initialFrame = CGRect(x: x, y: y, width: w / CGFloat(columNumber), height: h)
             ghostView.frame = initialFrame
             ghostView.isHidden = true
             addSubview(ghostView)
