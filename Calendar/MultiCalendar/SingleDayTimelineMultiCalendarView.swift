@@ -1743,35 +1743,32 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
     
     // MARK: - Drawing
-    public override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
-        
+
         let totalWidth = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
         
-        // 1) Изпълваме фона с цвета на фоновия UIView (ако държите, може да го пропуснете,
-        //    понеже backgroundColor = .systemGray6 е вече зададено).
-        //    Ако искате да сте сигурни, че винаги се "fill"-ва, може да го направите така:
+        // 1) Ако искате, запълвате фона (тук backgroundColor е .systemGray6,
+        //    което вече сте задали, така че може и да пропуснете).
         // ctx.setFillColor(UIColor.systemGray6.cgColor)
         // ctx.fill(rect)
-        
-        // 2) Оцветяваме "подсветените" колони (highlightedDayIndexes)
+
+        // 2) Highlight на колони, където highlightedDayIndexes (както си беше при вас)
         for dayIndex in 0..<dayCount {
             let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
             let colRect = CGRect(x: colX, y: 0, width: dayColumnWidth, height: bounds.height)
-            
             if highlightedDayIndexes.contains(dayIndex) {
-                // Изберете си цвят/прозрачност по ваш вкус:
                 ctx.setFillColor(UIColor.systemGray4.withAlphaComponent(0.8).cgColor)
                 ctx.fill(colRect)
             }
         }
-        
-        // 3) Хоризонтални линии (часовете)
+
+        // 3) Хоризонтални линии по часовете (както си бяха):
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
-        
+
         var lastY: CGFloat = 0
         for hour in 0...24 {
             let y = topMargin + CGFloat(hour) * hourHeight
@@ -1781,29 +1778,65 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         }
         ctx.strokePath()
         ctx.restoreGState()
-        
-        // 4) Вертикални линии (гранични на колоните)
+
+        // 4) "Големи" вертикални линии за деня (гранични)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
-        
-        // Лявата граница
+
+        // Лява граница
         ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
         ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
-        
-        // Вертикалните за всеки ден
+
+        // Дясна граница на всеки ден
         for i in 0...dayCount {
             let colX = leadingInsetForHours + CGFloat(i) * dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
             ctx.addLine(to: CGPoint(x: colX, y: lastY))
         }
+
         ctx.strokePath()
         ctx.restoreGState()
+
+        // 5) Допълнителни "вътрешни" вертикални линии за под‑колони
+        //    (същата логика както при `CalendarsHeaderView`).
+        //
+        //    (А) Вземаме календарите (selected vs. all)
+        let allCals = CalendarViewModel.shared.calendarsDict
+        let selectedCals = allCals.filter { $0.value.selected }
+        let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
+        let numberOfCalendars = calsToShow.count
         
-        // 5) Червената линия „сега“ (ако попада в диапазона)
+        //    (Б) Ако има поне 1 календар, рисуваме вътрешни линии:
+        if numberOfCalendars > 0 {
+            ctx.saveGState()
+            ctx.setStrokeColor(style.separatorColor.cgColor)
+            ctx.setLineWidth(1.0 / UIScreen.main.scale)
+            ctx.beginPath()
+
+            let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
+
+            // За всеки ден -> допълнителни линии за под‑колоните
+            for dayIndex in 0..<dayCount {
+                let dayX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+
+                // Чертаем линия между всяка под‑колона (1..<(broyNaPodKoloni))
+                for calIndex in 1..<numberOfCalendars {
+                    let xPos = dayX + subColumnWidth * CGFloat(calIndex)
+                    ctx.move(to: CGPoint(x: xPos, y: 0))
+                    ctx.addLine(to: CGPoint(x: xPos, y: bounds.height))
+                }
+            }
+
+            ctx.strokePath()
+            ctx.restoreGState()
+        }
+
+        // 6) Накрая — червената "сега" линия (ако е в обхвата), както си беше
         drawCurrentTimeLine(ctx: ctx)
     }
+
 
     
     private func drawCurrentTimeLine(ctx: CGContext) {

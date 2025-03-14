@@ -13,6 +13,7 @@ import EventKitUI
 
 public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate {
     private var additionalGhostView: EventView?
+    private let calendarVM = CalendarViewModel.shared
 
     public var fromDate: Date = Date()
     public var style = TimelineStyle()
@@ -151,12 +152,26 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         super.draw(rect)
         layoutBackground()
     }
-    
+    /// Минимална ширина на колона, ако колони >= 4 (портрет) или >= 7 (ландскейп).
+    var defaultColumnWidth: CGFloat = 100
+
+    /// Текущ брой "колони" според селектираните календари
+    private var calendarsCountForDrawing: Int = 0
+
+    /// Ширина на всяка колона (динамично изчислена при layoutSubviews)
+    private var actualColumnWidth: CGFloat = 0
+
     private func layoutBackground() {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
         ctx.saveGState()
         
-        // 1) Highlight all columns in highlightedDayIndices
+        // (1) Изчистваме фона, за да не наслагваме
+        // ако backgroundColor е .systemGray5 и isOpaque = true,
+        // това може да не е задължително, но е "по-сигурно"
+        backgroundColor?.setFill()
+        ctx.fill(bounds)
+        
+        // (2) Highlight колони (ако има) – както си беше досега
         for idx in highlightedDayIndices {
             guard idx >= 0 && idx < dayCount else { continue }
             let colX = leadingInsetForHours + CGFloat(idx) * dayColumnWidth
@@ -165,36 +180,66 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             ctx.setFillColor(UIColor.systemGray.withAlphaComponent(0.10).cgColor)
             ctx.fill(highlightRect)
         }
+        
+        // (3) Вземаме масива с календари за рисуване:
+        //     - ако има селектирани, ползваме само тях
+        //     - иначе ползваме всички
+        let allCals = calendarVM.calendarsDict
+        let selectedCals = allCals.filter { $0.value.selected }
+        let calsToShow: [(String, (title: String, color: UIColor, selected: Bool))]
+        if selectedCals.isEmpty {
+            // Няма селектирани => всички
+            calsToShow = Array(allCals)
+        } else {
+            // Има селектирани
+            calsToShow = Array(selectedCals)
+        }
+        
+        let numberOfCalendars = calsToShow.count
+        guard dayCount > 0, numberOfCalendars > 0 else {
+            // Ако няма дни или няма календари
+            ctx.restoreGState()
+            return
+        }
 
-        // 2) Draw vertical & horizontal separators
+        // (4) Подготвяме за рисуване на линии
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
         
-        // Вертикални линии
-        ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
-        ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
-        
-        for i in 0...dayCount {
-            let colX = leadingInsetForHours + CGFloat(i) * dayColumnWidth
+        // 4.1) Вертикални линии в началото/края на всяка дневна колона
+        for dayIndex in 0...dayCount {
+            let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
             ctx.addLine(to: CGPoint(x: colX, y: bounds.height))
         }
         
-        // Хоризонтални линии — по редове
-        _ = Dictionary(grouping: allDayLayoutAttributes) {
-            dayIndexFor($0.descriptor.dateInterval.start)
+        // 4.2) *Вътрешни* вертикални линии за всеки календар в рамките на деня
+        //     За всеки ден -> разделяме dayColumnWidth на numberOfCalendars под‑колони.
+        let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
+        
+        // Ще направим линия за всяка "под‑колона" (т.е. 1..<(broyPodKoloni)), за да не дублираме краищата
+        for dayIndex in 0..<dayCount {
+            let dayStartX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+            for calIndex in 1..<numberOfCalendars {
+                let subX = dayStartX + CGFloat(calIndex) * subColumnWidth
+                ctx.move(to: CGPoint(x: subX, y: 0))
+                ctx.addLine(to: CGPoint(x: subX, y: bounds.height))
+            }
         }
         
+        // 4.3) Ако искате, може да оставите/допълните и стария вариант
+        //      с "крайна" вертикална линия за деня – но вече имаме я в 4.1)
+        
+        // (5) Хоризонтални линии по желание – както си беше досега
         let rowHeight: CGFloat = 24
         let baseY: CGFloat = 0
+        // Примерна хоризонтална линия най-отгоре (ако желаете):
+        let y = baseY * rowHeight
+        ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
+        ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
         
-        
-            let y = baseY * rowHeight
-            ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
-             ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
-            // Ако искате хоризонталната линия да се рисува, разкоментирайте горния ред
-        
+        // (6) Рисуваме всички линии наведнъж
         ctx.strokePath()
         ctx.restoreGState()
     }
