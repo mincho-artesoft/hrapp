@@ -125,7 +125,7 @@ public final class TwoWayPinnedMultiDayContainerMultiCalendarView: UIView,
     public let hoursColumnView       = HoursColumnView()
     
     fileprivate let daysHeaderScrollView = UIScrollView()
-    fileprivate let daysHeaderView       = DaysHeaderView()
+    fileprivate let daysHeaderView       = DaysHeaderMultiCalendarView()
     fileprivate let cornerView           = UIView()
     
     public let allDayScrollView = UIScrollView()
