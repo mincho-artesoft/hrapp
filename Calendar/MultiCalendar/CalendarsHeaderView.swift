@@ -33,17 +33,31 @@ final class CalendarsHeaderView: UIView {
         labelViews = []
         
         // 2) Създаваме по 1 UILabel САМО за селектираните календари
-        for (_, info) in calendarsDict {
-            guard info.selected else { continue }
-            let label = UILabel()
-            label.textAlignment = .center
-            label.text = info.title
-            label.textColor = .label
-            // Запазваме си леко прозрачен фон, ако е нужно
-            label.backgroundColor = info.color.withAlphaComponent(0.15)
-            
-            addSubview(label)
-            labelViews.append(label)
+        if calendarsDict.values.filter({ $0.selected }).count > 0{
+            for (_, info) in calendarsDict {
+                guard info.selected else { continue }
+                let label = UILabel()
+                label.textAlignment = .center
+                label.text = info.title
+                label.textColor = .label
+                // Запазваме си леко прозрачен фон, ако е нужно
+                label.backgroundColor = info.color.withAlphaComponent(0.15)
+                
+                addSubview(label)
+                labelViews.append(label)
+            }
+        }else{
+            for (_, info) in calendarsDict {
+                let label = UILabel()
+                label.textAlignment = .center
+                label.text = info.title
+                label.textColor = .label
+                // Запазваме си леко прозрачен фон, ако е нужно
+                label.backgroundColor = info.color.withAlphaComponent(0.15)
+                
+                addSubview(label)
+                labelViews.append(label)
+            }
         }
         
         setNeedsLayout()
@@ -66,13 +80,21 @@ final class CalendarsHeaderView: UIView {
             if count < 7 {
                 actualColumnWidth = totalWidth / CGFloat(count)
             } else {
-                actualColumnWidth = defaultColumnWidth
+                if calendarsDict.values.filter({ $0.selected }).count > 0{
+                    actualColumnWidth = defaultColumnWidth
+                }else {
+                    actualColumnWidth = totalWidth / CGFloat(count)
+                }
             }
         }else{
             if count < 4 {
                 actualColumnWidth = totalWidth / CGFloat(count)
             } else {
-                actualColumnWidth = defaultColumnWidth
+                if calendarsDict.values.filter({ $0.selected }).count > 0{
+                    actualColumnWidth = defaultColumnWidth}
+                else{
+                    actualColumnWidth = totalWidth / CGFloat(count)
+                }
             }
         }
         
@@ -109,13 +131,15 @@ final class CalendarsHeaderView: UIView {
         UIColor.lightGray.setStroke()
         
         // (3) Чертаме линия в началото на всеки (без първия) label
-        for i in 1..<labelViews.count {
-            // По желание може да подравняваме xPos към пиксел:
-            let xPos = round(labelViews[i].frame.minX * UIScreen.main.scale) / UIScreen.main.scale
-            
-            ctx.move(to: CGPoint(x: xPos, y: 0))
-            ctx.addLine(to: CGPoint(x: xPos, y: bounds.height))
-            ctx.strokePath()
+        if labelViews.count > 0{
+            for i in 1..<labelViews.count {
+                // По желание може да подравняваме xPos към пиксел:
+                let xPos = round(labelViews[i].frame.minX * UIScreen.main.scale) / UIScreen.main.scale
+                
+                ctx.move(to: CGPoint(x: xPos, y: 0))
+                ctx.addLine(to: CGPoint(x: xPos, y: bounds.height))
+                ctx.strokePath()
+            }
         }
     }
 }

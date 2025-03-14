@@ -492,7 +492,18 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         let availableWidth = bounds.width - leftColumnWidth
         if isLandscape{
-            if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 7 {
+            if calendarVM.calendarsDict.values.filter({ $0.selected }).count == 0 {
+                if calendarVM.calendarsDict.count > 7{
+                    weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
+                    daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
+                    allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
+                }else{
+                    let newDayColumnWidth = availableWidth
+                    weekView.dayColumnWidth       = newDayColumnWidth
+                    daysHeaderView.dayColumnWidth = newDayColumnWidth
+                    allDayView.dayColumnWidth     = newDayColumnWidth
+                }
+            }else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 7 {
                 // Примерна логика
                 let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
@@ -505,7 +516,18 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
             }
         }else{
-            if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 3 {
+            if calendarVM.calendarsDict.values.filter({ $0.selected }).count == 0 {
+                if calendarVM.calendarsDict.count > 3{
+                    weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
+                    daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
+                    allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
+                }else{
+                    let newDayColumnWidth = availableWidth
+                    weekView.dayColumnWidth       = newDayColumnWidth
+                    daysHeaderView.dayColumnWidth = newDayColumnWidth
+                    allDayView.dayColumnWidth     = newDayColumnWidth
+                }
+            }else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 3 {
                 // Примерна логика
                 let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
