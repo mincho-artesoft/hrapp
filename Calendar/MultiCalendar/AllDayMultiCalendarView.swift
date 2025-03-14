@@ -15,7 +15,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     private var additionalGhostView: EventView?
 
     public var fromDate: Date = Date()
-    public var toDate: Date = Date()
     public var style = TimelineStyle()
     // MARK: - Auto-Scroll
     private var autoScrollDisplayLink: CADisplayLink?
@@ -661,13 +660,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     
     // MARK: - Брой дни и пр.
     
-    private var dayCount: Int {
-        let cal = Calendar.current
-        let startOnly = cal.startOfDay(for: fromDate)
-        let endOnly = cal.startOfDay(for: toDate)
-        let comps = cal.dateComponents([.day], from: startOnly, to: endOnly)
-        return (comps.day ?? 0) + 1
-    }
+    private var dayCount: Int = 1
     
     private func dayIndexFor(_ date: Date) -> Int {
         let cal = Calendar.current

@@ -68,24 +68,10 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             allDayView.fromDate     = fromDate
             weekView.fromDate       = fromDate
             
-            toDate = fromDate
             setNeedsLayout()
-            if fromDate > toDate {
-                toDate = fromDate
-            }
         }
     }
-    public var toDate: Date = Date() {
-        didSet {
-            daysHeaderView.toDate = toDate
-            allDayView.toDate     = toDate
-            weekView.toDate       = toDate
-            setNeedsLayout()
-            if fromDate > toDate {
-                fromDate = toDate
-            }
-        }
-    }
+
     public var onRangeChange: ((Date, Date) -> Void)?
     
     public var onEventTap: ((EventDescriptor) -> Void)? {
@@ -327,7 +313,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         singleDayCarousel.onDaySelected = { [weak self] date in
             guard let self = self else { return }
             self.fromDate = date
-            self.toDate   = date
             self.onRangeChange?(date, date)
             self.setNeedsLayout()
         }
@@ -504,14 +489,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
-        let toOnly   = cal.startOfDay(for: toDate)
-        let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
         
         let availableWidth = bounds.width - leftColumnWidth
         if isLandscape{
             if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 7 {
                 // Примерна логика
-                let newDayColumnWidth = availableWidth / CGFloat(dayCount)
+                let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
                 daysHeaderView.dayColumnWidth = newDayColumnWidth
                 allDayView.dayColumnWidth     = newDayColumnWidth
@@ -524,7 +507,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }else{
             if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 3 {
                 // Примерна логика
-                let newDayColumnWidth = availableWidth / CGFloat(dayCount)
+                let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
                 daysHeaderView.dayColumnWidth = newDayColumnWidth
                 allDayView.dayColumnWidth     = newDayColumnWidth
@@ -537,7 +520,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }
        
         
-        let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
+        let totalDaysHeaderWidth = daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0,
                                       width: totalDaysHeaderWidth,
@@ -581,7 +564,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             height: allDayH
         )
         
-        let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
+        let totalAllDayWidth = allDayView.dayColumnWidth
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayFullH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
         
@@ -621,7 +604,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
         let finalHeight = baseHeight + (weekView.topMargin * 2)
         
-        let totalWidth  = CGFloat(dayCount) * weekView.dayColumnWidth
+        let totalWidth  = weekView.dayColumnWidth
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0,
                                 width: totalWidth,
@@ -633,7 +616,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                        height: finalHeight)
         
         let nowOnly = cal.startOfDay(for: Date())
-        hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
+        hoursColumnView.isCurrentDayInWeek = (nowOnly == fromOnly )
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
         
         hoursColumnView.setNeedsDisplay()

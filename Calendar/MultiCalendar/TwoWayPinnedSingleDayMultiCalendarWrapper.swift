@@ -21,7 +21,6 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         let container = TwoWayPinnedSingleDayMultiCalendarContainerView()
         
         container.fromDate = fromDate
-        container.toDate   = fromDate
         
         // Ако имате нужда да настройвате/подавате събития:
         let (allDay, regular) = splitAllDay(events)
@@ -104,7 +103,6 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         }
         
         container.fromDate = fromDate
-        container.toDate   = fromDate
         
         let (allDay, regular) = splitAllDay(events)
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }

@@ -23,7 +23,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     
     // MARK: - Public Style / Config
     public var fromDate: Date = Date()
-    public var toDate: Date = Date()
     public var style = TimelineStyle()
     var isFirstResize = false
     /// Top margin so drawing aligns with HoursColumnView lines
@@ -303,13 +302,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         layoutRegularEvents()
     }
     
-    var dayCount: Int {
-        let cal = Calendar.current
-        let startOnly = cal.startOfDay(for: fromDate)
-        let endOnly = cal.startOfDay(for: toDate)
-        let comps = cal.dateComponents([.day], from: startOnly, to: endOnly)
-        return (comps.day ?? 0) + 1
-    }
+    var dayCount: Int = 1
     
     private func layoutRegularEvents() {
         // 1) Скриваме всички eventViews, за да започнем на чисто
@@ -565,7 +558,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         if realStart < fromDate {
             print ("realStart < fromDate")
         }
-        if realEnd > toDate {
+        if realEnd > fromDate {
             print("realEnd > toDate")
             if count == 1 {
                 index = 1
@@ -584,7 +577,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             
             // Ако [partialDayStart..partialDayEnd] се припокрива с [fromDate..toDate], пропускаме
-            if partialDayStart <= toDate && partialDayEnd > fromDate {
+            if partialDayStart <= fromDate && partialDayEnd > fromDate {
                 continue
             }
             
@@ -1257,7 +1250,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                         print("Липсващи slice-ове: ПРЕДИ видимия диапазон.")
                         missingBefore = true
                     }
-                    if multi.realEvent.endDate > toDate {
+                    if multi.realEvent.endDate > fromDate {
                         print("Липсващи slice-ове: СЛЕД видимия диапазон.")
                         missingAfter = true
                     }
@@ -1818,7 +1811,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         let cal = Calendar.current
         let nowOnly = cal.startOfDay(for: now)
         let fromOnly = cal.startOfDay(for: fromDate)
-        let toOnly   = cal.startOfDay(for: toDate)
+        let toOnly   = cal.startOfDay(for: fromDate)
 
         // Ако искате линията да се вижда само когато "днешният" ден е в диапазона:
         if nowOnly < fromOnly || nowOnly > toOnly {
