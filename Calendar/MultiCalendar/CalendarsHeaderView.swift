@@ -46,7 +46,7 @@ final class CalendarsHeaderView: UIView {
         let sortedCals = calsToDraw.sorted { $0.1.title < $1.1.title }
 
         // 4) Create UILabels for each, in sorted order
-        for (calID, info) in sortedCals {
+        for (_, info) in sortedCals {
             let label = UILabel()
             label.text = info.title
             label.textAlignment = .center

@@ -306,37 +306,34 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     var dayCount: Int = 1
     
     private func layoutRegularEvents() {
-        // (A) Hide existing event views
+        // 1) Hide all old eventViews so we can start fresh
         for v in eventViews {
             v.isHidden = true
         }
+        eventViewToDescriptor.removeAll()
 
-        // (B) Gather the same calendars (selected or all)
+        // 2) Gather calendars (selected or all), then sort by title
         let allCals = calendarVM.calendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+        let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
 
-        // (C) SORT by the same .title
-        let sortedCals = calsToShow.sorted {
-            $0.1.title < $1.1.title
-        }
-
-        // The number of sub‑columns in each day
         let numberOfSubcolumns = max(1, sortedCals.count)
         let subColumnWidth = dayColumnWidth / CGFloat(numberOfSubcolumns)
-
-        // (D) Group events by day
+        
+        // 3) Group the events by day
         let grouped = Dictionary(grouping: regularLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
 
-        // (E) Position each event in the correct subcolumn
         var usedEventViewIndex = 0
-        for dayIndex in 0 ..< dayCount {
-            guard let eventsForDay = grouped[dayIndex] else { continue }
 
+        // 4) For each day in our day range
+        for dayIndex in 0..<dayCount {
+            guard let eventsForDay = grouped[dayIndex], !eventsForDay.isEmpty else { continue }
+            
+            // Place each event in the sub‑column matching its calendarID
             for attr in eventsForDay {
-                // figure out which sub‑column index to use
                 let calID = attr.descriptor.calendarID ?? ""
                 let subIndex = sortedCals.firstIndex(where: { $0.0 == calID }) ?? 0
 
@@ -350,24 +347,95 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
                 let gap: CGFloat = style.eventGap
                 let finalX = xPos + gap
-                let finalW = subColumnWidth - 2*gap
+                let finalW = subColumnWidth - 2 * gap
 
                 let yStart = topMargin + dateToY(start)
                 let yEnd   = topMargin + dateToY(end)
                 let finalY = yStart + gap
-                let finalH = max(1, (yEnd - yStart) - 2*gap)
+                let finalH = max(1, (yEnd - yStart) - 2 * gap)
 
-                // Grab an event view, place it
+                // Get or create an EventView
                 let evView = ensureEventView(index: usedEventViewIndex)
                 usedEventViewIndex += 1
                 evView.isHidden = false
                 evView.frame = CGRect(x: finalX, y: finalY, width: finalW, height: finalH)
 
+                // Update the descriptor
                 evView.updateWithDescriptor(event: attr.descriptor)
                 eventViewToDescriptor[evView] = attr.descriptor
+
+                // If it’s EKMultiDayWrapper, show the resize handles if it’s currently “edited”
+                if let multi = attr.descriptor as? EKMultiDayWrapper {
+                    var isCurrentlyEditedEvent = false
+                    if currentlyEditedEventViewID == multi.realEvent.eventIdentifier {
+                        isCurrentlyEditedEvent = true
+                    }
+                    if isCurrentlyEditedEvent {
+                        let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                        let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
+
+                        if firstDayIndex == lastDayIndex {
+                            // If the multi‑day event is truly in only one day
+                            evView.eventResizeHandles[0].isHidden = false
+                            evView.eventResizeHandles[1].isHidden = false
+                        }
+                        else if dayIndex == firstDayIndex {
+                            // Show top handle
+                            evView.eventResizeHandles[0].isHidden = false
+                            evView.eventResizeHandles[1].isHidden = true
+                        }
+                        else if dayIndex == lastDayIndex {
+                            // Show bottom handle
+                            evView.eventResizeHandles[0].isHidden = true
+                            evView.eventResizeHandles[1].isHidden = false
+                        }
+                    }
+                }
+            }
+        }
+
+        // 5) Second pass: check for actual overlapping frames.
+        //    If two events overlap visually, shift the one that starts later.
+        let allVisibleViews = eventViews.filter { !$0.isHidden }
+        for i in 0..<allVisibleViews.count {
+            for j in (i+1)..<allVisibleViews.count {
+                let v1 = allVisibleViews[i]
+                let v2 = allVisibleViews[j]
+                
+                if v1.frame.intersects(v2.frame) {
+                    guard let desc1 = eventViewToDescriptor[v1],
+                          let desc2 = eventViewToDescriptor[v2] else { continue }
+                    
+                    // whichever starts later → shift left by 6 points
+                    if desc1.dateInterval.start < desc2.dateInterval.start {
+                        let oldF = v2.frame
+                        v2.frame = CGRect(
+                            x: oldF.minX + 6,
+                            y: oldF.minY,
+                            width: max(1, oldF.width - 6),
+                            height: oldF.height
+                        )
+                    } else {
+                        let oldF = v1.frame
+                        v1.frame = CGRect(
+                            x: oldF.minX + 6,
+                            y: oldF.minY,
+                            width: max(1, oldF.width - 6),
+                            height: oldF.height
+                        )
+                    }
+                }
+            }
+        }
+        
+        // 6) If there’s exactly 1 event in total, and it’s our “first resize”, then select it
+        if eventViewToDescriptor.count == 1 {
+            if isFirstResize, let (singleView, _) = eventViewToDescriptor.first {
+                selectEventView(singleView)
             }
         }
     }
+
 
 
 
