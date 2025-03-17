@@ -331,10 +331,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             for: .touchUpInside
         )
         
-        daysHeaderView.leadingInsetForHours = 0
-        allDayView.leadingInsetForHours     = 0
-        weekView.leadingInsetForHours       = 0
-        
         weekView.hoursColumnView = hoursColumnView
         
         weekView.onEventConvertToAllDay = { [weak self] descriptor, dayIndex in

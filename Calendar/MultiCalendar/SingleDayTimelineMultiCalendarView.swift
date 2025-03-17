@@ -30,7 +30,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     /// Top margin so drawing aligns with HoursColumnView lines
     public var topMargin: CGFloat = 0
     
-    public var leadingInsetForHours: CGFloat = 0
     public var dayColumnWidth: CGFloat = 100
     public var hourHeight: CGFloat = 50
     
@@ -192,7 +191,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             // 6) Position the ghost at the press location
             let w: CGFloat = dayColumnWidth - style.eventGap * 2
             let h: CGFloat = 50
-            let x = max(leadingInsetForHours, point.x - w / 2)
+            let x = point.x - w / 2
             let y = point.y - 25
             let initialFrame = CGRect(x: x, y: y, width: w, height: h)
             ghostView.frame = initialFrame
@@ -380,8 +379,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let start = attr.descriptor.dateInterval.start
                 let end   = attr.descriptor.dateInterval.end
                 
-                let xPos = leadingInsetForHours
-                          + CGFloat(dayIndex) * dayColumnWidth
+                let xPos = CGFloat(dayIndex) * dayColumnWidth
                           + subColumnWidth * CGFloat(subIndex)
                 
                 let yStart = topMargin + dateToY(start)
@@ -404,6 +402,30 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 
                 evView.updateWithDescriptor(event: attr.descriptor)
                 eventViewToDescriptor[evView] = attr.descriptor
+                if let multi = attr.descriptor as? EKMultiDayWrapper {
+                    var isCurrentlyEditedEventView = false
+                    if currentlyEditedEventViewID == multi.realEvent.eventIdentifier {
+                        isCurrentlyEditedEventView = true
+                    }
+                    if isCurrentlyEditedEventView {
+                        let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
+                        let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
+                        
+                        if firstDayIndex == lastDayIndex {
+                            // Реално е многодневно, но start/end попадат в един ден
+                            evView.eventResizeHandles[0].isHidden = false
+                            evView.eventResizeHandles[1].isHidden = false
+                        } else if dayIndex == firstDayIndex {
+                            // Горна дръжка
+                            evView.eventResizeHandles[0].isHidden = false
+                            evView.eventResizeHandles[1].isHidden = true
+                        } else if dayIndex == lastDayIndex {
+                            // Долната дръжка
+                            evView.eventResizeHandles[0].isHidden = true
+                            evView.eventResizeHandles[1].isHidden = false
+                        }
+                    }
+                }
             }
         }
     }
@@ -468,104 +490,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         ev.isUserInteractionEnabled = true
         addSubview(ev)
         return ev
-    }
-    
-    // MARK: - createMissingSlicesIfNeeded / removeMissingSlicesIfNeeded
-    @discardableResult
-    private func createMissingSlicesIfNeeded(for multi: EKMultiDayWrapper, count: Int) -> [EventView] {
-        removeMissingSlicesIfNeeded(for: multi)
-        guard
-            let realStart = multi.realEvent.startDate,
-            let realEnd   = multi.realEvent.endDate,
-            realStart < realEnd
-        else {
-            return []
-        }
-
-        let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
-        let cal = Calendar.current
-        
-        let dayStart = cal.startOfDay(for: realStart)
-        let dayEnd   = cal.startOfDay(for: realEnd)
-        
-        var totalDays = cal.dateComponents([.day], from: dayStart, to: dayEnd).day ?? 0
-        
-        if !cal.isDate(dayEnd, equalTo: realEnd, toGranularity: .minute) {
-            totalDays += 1
-        }
-        print("totalDays",totalDays)
-
-        if totalDays < 1 {
-            totalDays = 1
-        }
-        
-        var newViews: [EventView] = []
-        
-        var index = 0
-        if realStart < fromDate {
-            print ("realStart < fromDate")
-        }
-        if realEnd > fromDate {
-            print("realEnd > toDate")
-            if count == 1 {
-                index = 1
-            }
-        }
-      
-        for i in index ..< totalDays {
-            guard let thisDay = cal.date(byAdding: .day, value: i, to: dayStart) else { continue }
-            
-            let partialDayStart = max(thisDay, realStart)
-            guard let nextDay = cal.date(byAdding: .day, value: 1, to: thisDay) else { continue }
-            let partialDayEnd = min(nextDay, realEnd)
-            
-            if partialDayStart >= partialDayEnd {
-                continue
-            }
-            
-            // Ако [partialDayStart..partialDayEnd] се припокрива с [fromDate..toDate], пропускаме
-            if partialDayStart <= fromDate && partialDayEnd > fromDate {
-                continue
-            }
-            
-            let partialWrapper = EKMultiDayWrapper(
-                realEvent:    multi.realEvent,
-                partialStart: partialDayStart,
-                partialEnd:   partialDayEnd
-            )
-            
-            let hiddenView = createEventView()
-            hiddenView.isHidden = true
-            hiddenView.updateWithDescriptor(event: partialWrapper)
-            
-            let dayIndex = dayIndexFor(partialDayStart)
-            let x = leadingInsetForHours
-                    + CGFloat(dayIndex) * dayColumnWidth
-                    + style.eventGap
-            let fromY = topMargin + dateToY(partialDayStart)
-            let toY   = topMargin + dateToY(partialDayEnd)
-            let w = dayColumnWidth - 2 * style.eventGap
-            let h = max(1, (toY - fromY) - style.eventGap)
-            
-            hiddenView.frame = CGRect(x: x, y: fromY, width: w, height: h)
-            
-            eventViewToDescriptor[hiddenView] = partialWrapper
-            newViews.append(hiddenView)
-        }
-        
-        dragSlicesMap[eventID] = newViews
-        return newViews
-    }
-
-    private func removeMissingSlicesIfNeeded(for multi: EKMultiDayWrapper) {
-        let eventID = multi.realEvent.eventIdentifier ?? "--noID--"
-        guard let slices = dragSlicesMap[eventID] else { return }
-        
-        for sliceView in slices {
-            sliceView.removeFromSuperview()
-            eventViewToDescriptor.removeValue(forKey: sliceView)
-        }
-        dragSlicesMap.removeValue(forKey: eventID)
     }
     
     // MARK: - Gesture: Tap on Event
@@ -665,7 +589,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
         
-        var minsingEvent: [EventView] = []
         switch gesture.state {
         case .began:
             
@@ -716,21 +639,13 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     }
                 }
             }
-            print("IndexB", slices.count)
-            if let multi = descriptor as? EKMultiDayWrapper {
-                if totalDays != slices.count {
-                    minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
-                }
-            }
-            for realSliceView in minsingEvent {
-                slices.append(realSliceView)
-            }
+            print("Indexs", slices.count)
+
             
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
             var originalFrames = [EventView: CGRect]()
-            print("IndexA", slices.count)
             for realSliceView in slices {
                 if let desc = eventViewToDescriptor[realSliceView] {
                     
@@ -756,23 +671,31 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let topY = topMargin + CGFloat(hoursOffset) * hourHeight
                     var finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY) - 10
                     
-                    let localX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+                    let localX = dayColumnWidth * CGFloat(dayIndex)
                     // Конвертираме точка (localX, 0) от self към container:
                     let containerPoint = self.convert(CGPoint(x: localX, y: 0), to: container)
-                    
+                    let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
+
                     let ghostX = containerPoint.x + 2
-                    let ghostW = dayColumnWidth - style.eventGap * 2 - 2
+                    let ghostW = dayColumnWidth - style.eventGap * 2 * columNumber - 2
 
                     if totalDays == 1 {
-                        print("ghostX", sliceFrameInContainer.minX, "ghostY", sliceFrameInContainer.minY)
                         finalY = sliceFrameInContainer.minY
                         ghostH = sliceFrameInContainer.height
                     }
-                    
+                   
+                    let allCals = calendarVM.calendarsDict
+                    let selectedCals = allCals.filter { $0.value.selected }
+                    let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
+                    let columnCount = max(1, calsToShow.count)
+                    let subColumnWidth = dayColumnWidth / CGFloat(columnCount)
+                    let localXSub = sliceFrameInContainer.minX.truncatingRemainder(dividingBy: dayColumnWidth)
+                    let subColumnIndex = Int(localXSub / subColumnWidth)
+
                     let ghostFrame = CGRect(
-                        x: ghostX,
+                        x: ghostX + CGFloat(subColumnIndex) * CGFloat(subColumnWidth),
                         y: finalY,
-                        width: ghostW,
+                        width: ghostW / columNumber,
                         height: ghostH
                     )
                     ghost.frame = ghostFrame
@@ -785,7 +708,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             
             let fingerInContainer = gesture.location(in: container)
             guard let anchorGhost = draggingGhosts[evView] else { return }
-            
             let anchorFrame = anchorGhost.frame
             let offsetX = fingerInContainer.x - anchorFrame.minX
             let offsetY = fingerInContainer.y - anchorFrame.minY
@@ -827,7 +749,9 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 container.addSubview(ghostView)
                 
                 // Фиксираме началната рамка
-                let w: CGFloat = dayColumnWidth - style.eventGap * 2 - 3
+                let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
+
+                let w: CGFloat = dayColumnWidth - style.eventGap * 2 * columNumber - 3
                 let h: CGFloat = 18
                 // 1) Convert sliceView.frame up to the container’s coordinate space
                 let sliceFrameInContainer = sliceView.superview!.convert(sliceView.frame, to: container)
@@ -837,7 +761,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let y = pointInContainer.y - 9
 
                 // … same as before …
-                let initialFrame = CGRect(x: x, y: y, width: w, height: h)
+                let initialFrame = CGRect(x: x, y: y, width: w / columNumber, height: h)
                 ghostView.frame = initialFrame
 
 
@@ -1005,9 +929,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.prepare()
             generator.impactOccurred()
-            for realSliceView in minsingEvent {
-                eventViewToDescriptor.removeValue(forKey: realSliceView)
-            }
             setScrollsClipping(enabled: true)
             stopAutoScroll()
             hoursColumnView?.selectedMinuteMark = nil
@@ -1033,7 +954,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             let frameSelf = container.convert(finalFrame, to: self)
             
             let midX = frameSelf.midX
-            var dayIndex = Int(floor((midX - leadingInsetForHours) / dayColumnWidth))
+            var dayIndex = Int(floor((midX) / dayColumnWidth))
             dayIndex = max(0, min(dayIndex, dayCount - 1))
             
             let topY = frameSelf.minY
@@ -1050,10 +971,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
-            
-            if let multi = descriptor as? EKMultiDayWrapper {
-                removeMissingSlicesIfNeeded(for: multi)
-            }
             
             let snappedStart = snapToNearest10Min(finalStart)
             let snappedEnd   = snappedStart.addingTimeInterval(d.totalDuration)
@@ -1107,8 +1024,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         let wasAllDay: Bool
         let originalDayIndex: Int
         var lastDayIndex: Int
-        let missingBefore: Bool
-        let missingAfter: Bool
         var totalDay: Int
         let originalTotalDays : Int
         
@@ -1122,9 +1037,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         else { return }
         isFirstResize = false
         let isTop = (handleView.tag == 0)  // Горна дръжка => tag = 0, Долна => tag = 1
-//        guard let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView else { return }
-        var missingBefore: Bool = false
-        var missingAfter: Bool = false
         switch gesture.state {
         // ----------------------------------------------------------------------------------
         // MARK: .began
@@ -1178,25 +1090,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     }
                 }
             }
-            var minsingEvent : [EventView] = []
-//            print("IndexB", slices.count)
-            if let multi = desc as? EKMultiDayWrapper {
-                if totalDays != slices.count {
-                    minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
-                }
-                if !minsingEvent.isEmpty {
-                    // Тук вече имаме липсващи slice-ове.
-                    // Кажи "преди" или "след":
-                    if multi.realEvent.startDate < fromDate {
-                        print("Липсващи slice-ове: ПРЕДИ видимия диапазон.")
-                        missingBefore = true
-                    }
-                    if multi.realEvent.endDate > fromDate {
-                        print("Липсващи slice-ове: СЛЕД видимия диапазон.")
-                        missingAfter = true
-                    }
-                }
-            }
 //            for realSliceView in minsingEvent {
 //                slices.append(realSliceView)
 //            }
@@ -1224,7 +1117,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 addSubview(ghost)
                 
                 let dayIndex = dayIndexFor(thisDesc.dateInterval.start)
-                let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                let ghostX = dayColumnWidth * CGFloat(dayIndex) + 2
                 let ghostY = sliceFrameInSelf.minY
                 let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                 let ghostH = sliceFrameInSelf.height
@@ -1262,8 +1155,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 wasAllDay: desc.isAllDay,
                 originalDayIndex: originalDayIndex,
                 lastDayIndex: originalDayIndex,
-                missingBefore: missingBefore,
-                missingAfter: missingAfter,
                 totalDay: totalDays,
                 originalTotalDays: totalDays
             )
@@ -1304,13 +1195,13 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             
             // (2) Смятаме dayIndex от X
-            let newDayIndexRaw = Int((currPointInSelf.x - leadingInsetForHours) / dayColumnWidth)
+            let newDayIndexRaw = Int((currPointInSelf.x) / dayColumnWidth)
             var clampedDayIndex = max(0, min(newDayIndexRaw, dayCount - 1))
             
             // (3) Всички dayIndex от ghost-ове => min, max
             let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                 let midX = gv.frame.midX
-                let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                let di = Int((midX) / dayColumnWidth)
                 return max(0, min(di, dayCount - 1))
             }
             guard !allGhostDayIndexes.isEmpty else { break }
@@ -1321,11 +1212,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let maxSliceIndex = allGhostDayIndexes.max()!
                 
                 if d.isTop {
-                    if clampedDayIndex >= maxSliceIndex && (missingAfter || (!missingBefore && !missingAfter)){
+                    if clampedDayIndex >= maxSliceIndex {
                         clampedDayIndex = maxSliceIndex
                         if let ghostAtMax = draggingGhosts.values.first(where: { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            let di = Int((midX) / dayColumnWidth)
                             return di == maxSliceIndex
                         }) {
                             let newBottomY = ghostAtMax.frame.maxY
@@ -1342,11 +1233,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                         }
                     }
                 } else {
-                    if clampedDayIndex <= minSliceIndex && (missingBefore || (!missingBefore && !missingAfter)) {
+                    if clampedDayIndex <= minSliceIndex{
                         clampedDayIndex = minSliceIndex
                         if let ghostAtMin = draggingGhosts.values.first(where: { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            let di = Int((midX) / dayColumnWidth)
                             return di == minSliceIndex
                         }) {
                             let oldBottomY = f.maxY
@@ -1370,7 +1261,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             
             // (6) Накрая нагласяме X & width
-            let newX = leadingInsetForHours + CGFloat(clampedDayIndex) * dayColumnWidth + 2
+            let newX = CGFloat(clampedDayIndex) * dayColumnWidth + 2
             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
             f.origin.x = newX
             f.size.width = ghostW
@@ -1383,7 +1274,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     print("Многодневен евент: смяна на колона от \(d.lastDayIndex) на \(clampedDayIndex)")
                     let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                         let midX = gv.frame.midX
-                        let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                        let di = Int((midX) / dayColumnWidth)
                         return max(0, min(di, dayCount - 1))
                     }
                     print("allGhostDayIndexes",allGhostDayIndexes)
@@ -1395,7 +1286,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                         addSubview(ghost)
                         
                         let dayIndex = d.lastDayIndex
-                        let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                        let ghostX = dayColumnWidth * CGFloat(dayIndex) + 2
                         let ghostY = 10
                         let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                         let ghostH = 24 * 50 - 3
@@ -1418,7 +1309,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     if isTop && d.lastDayIndex > clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
                         let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            let di = Int((midX) / dayColumnWidth)
                             return max(0, min(di, dayCount - 1))
                         }
                         print("allGhostDayIndexes",allGhostDayIndexes)
@@ -1430,7 +1321,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                             addSubview(ghost)
                             
                             let dayIndex = d.lastDayIndex
-                            let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                            let ghostX = dayColumnWidth * CGFloat(dayIndex) + 2
                             let ghostY = 10
                             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                             let ghostH = d.originalFrame.maxY - 10
@@ -1457,7 +1348,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     }else if !isTop && d.lastDayIndex < clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
                         let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
+                            let di = Int((midX ) / dayColumnWidth)
                             return max(0, min(di, dayCount - 1))
                         }
                         print("allGhostDayIndexes",allGhostDayIndexes)
@@ -1469,7 +1360,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                             addSubview(ghost)
                             
                             let dayIndex = d.lastDayIndex
-                            let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                            let ghostX = dayColumnWidth * CGFloat(dayIndex) + 2
                             let ghostY = d.originalFrame.minY
                             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                             let ghostH = 24 * 50 + 10 - d.originalFrame.minY
@@ -1515,7 +1406,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             for (origView, ghostView) in draggingGhosts {
                 if origView == eventView { continue }
                 let ghostMidX = ghostView.frame.midX
-                let ghostDayIndex = Int((ghostMidX - leadingInsetForHours) / dayColumnWidth)
+                let ghostDayIndex = Int((ghostMidX) / dayColumnWidth)
                 
                 if d.isTop {
                     if ghostDayIndex <= boundaryDayIndex {
@@ -1592,10 +1483,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
-            // Премахваме slice-ове, ако са създадени за многодневно
-            if let multi = desc as? EKMultiDayWrapper {
-                removeMissingSlicesIfNeeded(for: multi)
-            }
             
             eventView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             
@@ -1661,8 +1548,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         let localY = y - topMargin
         let midX = frameInTimeline.midX
         
-        if midX < leadingInsetForHours { return nil }
-        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
+        if midX < 0 { return nil }
+        let dayIndex = Int((midX ) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
         
         let dayDate = dayStartDate(for: dayIndex)
@@ -1687,7 +1574,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     override public func draw(_ rect: CGRect) {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
 
-        let totalWidth = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
+        let totalWidth = dayColumnWidth * CGFloat(dayCount)
         
         // 1) Ако искате, запълвате фона (тук backgroundColor е .systemGray6,
         //    което вече сте задали, така че може и да пропуснете).
@@ -1696,7 +1583,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
         // 2) Highlight на колони, където highlightedDayIndexes (както си беше при вас)
         for dayIndex in 0..<dayCount {
-            let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+            let colX = CGFloat(dayIndex) * dayColumnWidth
             let colRect = CGRect(x: colX, y: 0, width: dayColumnWidth, height: bounds.height)
             if highlightedDayIndexes.contains(dayIndex) {
                 ctx.setFillColor(UIColor.systemGray4.withAlphaComponent(0.8).cgColor)
@@ -1714,7 +1601,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         for hour in 0...24 {
             let y = topMargin + CGFloat(hour) * hourHeight
             lastY = y
-            ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
+            ctx.move(to: CGPoint(x: 0, y: y))
             ctx.addLine(to: CGPoint(x: totalWidth, y: y))
         }
         ctx.strokePath()
@@ -1727,12 +1614,12 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         ctx.beginPath()
 
         // Лява граница
-        ctx.move(to: CGPoint(x: leadingInsetForHours, y: 0))
-        ctx.addLine(to: CGPoint(x: leadingInsetForHours, y: bounds.height))
+        ctx.move(to: CGPoint(x: 0, y: 0))
+        ctx.addLine(to: CGPoint(x: 0, y: bounds.height))
 
         // Дясна граница на всеки ден
         for i in 0...dayCount {
-            let colX = leadingInsetForHours + CGFloat(i) * dayColumnWidth
+            let colX =  CGFloat(i) * dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
             ctx.addLine(to: CGPoint(x: colX, y: lastY))
         }
@@ -1760,7 +1647,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             // За всеки ден -> допълнителни линии за под‑колоните
             for dayIndex in 0..<dayCount {
-                let dayX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+                let dayX = CGFloat(dayIndex) * dayColumnWidth
 
                 // Чертаем линия между всяка под‑колона (1..<(broyNaPodKoloni))
                 for calIndex in 1..<numberOfCalendars {
@@ -1803,11 +1690,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         let yNow = topMargin + fraction * hourHeight
 
         // Координати за цялата линия (отляво надясно)
-        let fullLineStartX = leadingInsetForHours
-        let fullLineEndX   = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
+        let fullLineEndX   = dayColumnWidth * CGFloat(dayCount)
 
         // Тясната част върху самия текущ ден
-        let currentDayX  = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+        let currentDayX  = dayColumnWidth * CGFloat(dayIndex)
         let currentDayX2 = currentDayX + dayColumnWidth
 
         // 1) Полупрозрачна линия през всички колони
@@ -1815,7 +1701,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
         ctx.setLineWidth(1.5)
         ctx.beginPath()
-        ctx.move(to: CGPoint(x: fullLineStartX, y: yNow))
+        ctx.move(to: CGPoint(x: 0, y: yNow))
         ctx.addLine(to: CGPoint(x: fullLineEndX,   y: yNow))
         ctx.strokePath()
         ctx.restoreGState()
@@ -1906,8 +1792,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     
     func dateFromPoint(_ point: CGPoint) -> Date? {
         let localY = point.y - topMargin
-        if point.x < leadingInsetForHours { return nil }
-        let dayIndex = Int((point.x - leadingInsetForHours) / dayColumnWidth)
+        if point.x < 0 { return nil }
+        let dayIndex = Int((point.x) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
         
         let cal = Calendar.current
@@ -2000,8 +1886,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     func dateFromFrame(_ frame: CGRect) -> Date? {
         let topY = frame.minY - topMargin
         let midX = frame.midX
-        if midX < leadingInsetForHours { return nil }
-        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
+        if midX < 0 { return nil }
+        let dayIndex = Int((midX) / dayColumnWidth)
         if dayIndex < 0 || dayIndex >= dayCount { return nil }
         
         let cal = Calendar.current
@@ -2054,7 +1940,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     /// Връща dayIndex, върху който попада `frame` (според midX), или nil, ако е извън диапазона.
     private func dayIndexForFrame(_ frame: CGRect) -> Int? {
         let midX = frame.midX
-        let rawIndex = (midX - leadingInsetForHours) / dayColumnWidth
+        let rawIndex = (midX) / dayColumnWidth
         let i = Int(floor(rawIndex))
         if i < 0 || i >= dayCount {
             return nil

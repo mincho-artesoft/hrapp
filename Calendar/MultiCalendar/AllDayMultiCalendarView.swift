@@ -33,8 +33,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     private var autoScrollDisplayLink: CADisplayLink?
     private var autoScrollDirection = CGPoint.zero
 
-    // Ляво отстояние (ако имаме колона за часове). Тук е 0, задава се отвън.
-    public var leadingInsetForHours: CGFloat = 0
     // Широчина на една дневна колона (определя се от контейнера).
     public var dayColumnWidth: CGFloat = 100
 
@@ -123,7 +121,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         // 3) Определяме dayColumnWidth, ако имаме N дни
         let totalDays = dayCount
         if totalDays > 0 {
-            let availableWidth = bounds.width - leadingInsetForHours
+            let availableWidth = bounds.width
             let safeWidth = max(availableWidth, 0)
             dayColumnWidth = safeWidth / CGFloat(totalDays)
         } else {
@@ -173,8 +171,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let theseEvents = eventsByCalID[calID] ?? []
                 
                 for (i, attr) in theseEvents.enumerated() {
-                    let x = leadingInsetForHours
-                          + CGFloat(dayIndex) * dayColumnWidth
+                    let x = CGFloat(dayIndex) * dayColumnWidth
                           + CGFloat(calIndex) * subColumnWidth
                           + gap
                     let y = baseY + CGFloat(i) * rowHeight + gap
@@ -223,8 +220,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         if let (dayIdx, calIdx) = highlightedSubColumn {
             let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
             
-            let highlightX = leadingInsetForHours
-                           + CGFloat(dayIdx) * dayColumnWidth
+            let highlightX =  CGFloat(dayIdx) * dayColumnWidth
                            + CGFloat(calIdx) * subColumnWidth
             let highlightRect = CGRect(x: highlightX,
                                        y: 0,
@@ -243,7 +239,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         
         // 4.1) Линии за разграничаване на деня
         for dayIndex in 0...dayCount {
-            let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+            let colX = CGFloat(dayIndex) * dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
             ctx.addLine(to: CGPoint(x: colX, y: bounds.height))
         }
@@ -251,7 +247,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         // 4.2) Вътрешни вертикални линии за всеки календар
         let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
         for dayIndex in 0..<dayCount {
-            let dayStartX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+            let dayStartX = CGFloat(dayIndex) * dayColumnWidth
             for calIndex in 1..<numberOfCalendars {
                 let subX = dayStartX + CGFloat(calIndex) * subColumnWidth
                 ctx.move(to: CGPoint(x: subX, y: 0))
@@ -263,8 +259,8 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         let rowHeight: CGFloat = 24
         let baseY: CGFloat = 0
         let y = baseY * rowHeight
-        ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
-        ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
+        ctx.move(to: CGPoint(x: 0, y: y))
+        ctx.addLine(to: CGPoint(x: CGFloat(dayCount) * dayColumnWidth, y: y))
         
         ctx.strokePath()
         ctx.restoreGState()
@@ -373,7 +369,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             let columNumber =  CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count
             let w: CGFloat = dayColumnWidth - style.eventGap * 2 * CGFloat(columNumber)
             let h: CGFloat = 50
-            let x = max(leadingInsetForHours, point.x - w / 2)
+            let x = point.x - w / 2
             let y = point.y - 25
             ghostView.frame = CGRect(x: x, y: y, width: w / CGFloat(columNumber), height: h)
             ghostView.isHidden = true
@@ -393,7 +389,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             
             // X относително спрямо деня
             let relativeX = evView.frame.midX
-            - leadingInsetForHours
             - CGFloat(newDayIndex) * dayColumnWidth
             var newCalendarIndex = Int(floor(relativeX / subColumnWidth))
             newCalendarIndex = max(0, min(newCalendarIndex, numCalendars - 1))
@@ -453,7 +448,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 
                 // X относително спрямо деня
                 let relativeX = evView.frame.midX
-                - leadingInsetForHours
                 - CGFloat(newDayIndex) * dayColumnWidth
                 var newCalendarIndex = Int(floor(relativeX / subColumnWidth))
                 newCalendarIndex = max(0, min(newCalendarIndex, numCalendars - 1))
@@ -492,7 +486,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 for (sliceView, _) in multiDayDraggingOriginalFrames {
                     let sliceFrameInTimeline = self.convert(sliceView.frame, to: container.weekView)
                     let midX = sliceFrameInTimeline.midX
-                    var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
+                    var dayIndex = Int((midX)
                                        / container.weekView.dayColumnWidth)
                     dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                     dayIndexes.insert(dayIndex)
@@ -504,7 +498,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let topMargin  = container.weekView.topMargin
                 let localY     = evFrameInTimeline.minY - topMargin
                 let midX       = evFrameInTimeline.midX
-                var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
+                var dayIndex = Int((midX)
                                    / container.weekView.dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                 
@@ -571,7 +565,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     let sortedCalsSorted = sortedCals.sorted { $0.1.title < $1.1.title }
                     
                     let relativeX = evView.frame.midX
-                        - leadingInsetForHours
                         - CGFloat(newDayIndex) * dayColumnWidth
                     let numCalendars = max(1, sortedCalsSorted.count)
                     let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
@@ -600,11 +593,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let topMargin  = container.weekView.topMargin
                 let midX = evFrameInTimeline.midX
                 
-                var dayIndex = Int((midX - container.weekView.leadingInsetForHours) / container.weekView.dayColumnWidth)
+                var dayIndex = Int((midX) / container.weekView.dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                 
                 let relativeX = midX
-                    - container.weekView.leadingInsetForHours
                     - CGFloat(dayIndex) * container.weekView.dayColumnWidth
                 let allCals = CalendarViewModel.shared.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
@@ -751,7 +743,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     }
     
     func dayIndexFromMidX(_ x: CGFloat) -> Int? {
-        let colX = x - leadingInsetForHours
+        let colX = x
         let idx = Int(floor(colX / dayColumnWidth))
         return (idx >= 0 && idx < dayCount) ? idx : nil
     }
