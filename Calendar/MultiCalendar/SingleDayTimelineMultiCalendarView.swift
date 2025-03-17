@@ -937,11 +937,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                         dayIndexes.insert(di)
                     }
                 }
-                if dayIndexes.isEmpty {
-                    container.allDayView.clearAllHighlights()
-                } else {
-                    container.allDayView.highlightColumns(dayIndexes)
-                }
+               
                 for (ghostView, _) in additionalDraggingGhosts {
                     ghostView.isHidden = false
                 }
@@ -974,7 +970,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     }
                 }
                 updateHighlightedColumnsFromGhosts(isResize: false)
-                container.allDayView.clearAllHighlights()
                 for (ghostView, _) in additionalDraggingGhosts {
                      ghostView.isHidden = true
                 }
@@ -1092,7 +1087,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     onEventConvertToAllDay?(descriptor, dayIndex)
                 }
             }
-            container.allDayView.clearAllHighlights()
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             eventViewToDescriptor.removeAll()
             highlightedDayIndexes.removeAll()
