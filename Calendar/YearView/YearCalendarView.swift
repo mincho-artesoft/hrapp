@@ -57,26 +57,32 @@ struct YearCalendarView: View {
                         Image(systemName: "chevron.right")
                     }
                 }
+                .padding(.vertical, 8)
                 .padding(.horizontal)
             }
             
             // 3) Main content: if searching, show search results; otherwise show the year grid
             if showSearchBar && !searchText.isEmpty {
-                // Here you present the actual search results
+                // Тук показвате резултатите от търсене
                 SearchResultsView(searchText: searchText)
             } else {
                 // Normal year grid
                 GeometryReader { geometry in
                     let isLandscape = geometry.size.width > geometry.size.height
+                    
+                    // Тук променяме конфигурацията, за да не е flexible, а фиксирана ширина
+                    let horizontalSpacing: CGFloat = isLandscape ? 16 : 16
                     let columns = isLandscape
-                    ? [GridItem(.flexible(), spacing: 16),
-                       GridItem(.flexible(), spacing: 16),
-                       GridItem(.flexible(), spacing: 16)]
-                    : [GridItem(.flexible(), spacing: 16),
-                       GridItem(.flexible(), spacing: 16)]
+                        ? [GridItem(.fixed(180), spacing: horizontalSpacing),
+                           GridItem(.fixed(180), spacing: horizontalSpacing),
+                           GridItem(.fixed(180), spacing: horizontalSpacing),
+                           GridItem(.fixed(180), spacing: horizontalSpacing)]
+                        : [GridItem(.fixed(180), spacing: horizontalSpacing),
+                           GridItem(.fixed(180), spacing: horizontalSpacing)]
                     
                     ScrollView {
-                        LazyVGrid(columns: columns, spacing: 32) {
+                        // `spacing: 16` тук отговаря за вертикалното разстояние между редовете
+                        LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(1...12, id: \.self) { monthIndex in
                                 let dateForMonth = dateFromYearMonth(year, monthIndex)
                                 YearMonthMiniView(
@@ -85,11 +91,12 @@ struct YearCalendarView: View {
                                 ) { tappedMonth in
                                     tappedMonthDate = tappedMonth
                                 }
-                                .padding(16)
+                                .padding(8)
                             }
                         }
                         .padding(.horizontal, 16)
-                        .padding(.top, 16)
+                        .padding(.top, 8)
+                        .padding(.bottom, isLandscape ? 16 : 80)
                     }
                 }
                 .onAppear {
@@ -97,7 +104,7 @@ struct YearCalendarView: View {
                 }
             }
         }
-        .animation(.easeInOut, value: showSearchBar)   // Smooth animation for showing/hiding search bar
+        .animation(.easeInOut, value: showSearchBar)
         .fullScreenCover(item: $tappedMonthDate) { monthStart in
             NavigationView {
                 MonthCalendarView(
@@ -116,13 +123,11 @@ struct YearCalendarView: View {
                 }
             }
         }
-        // Sheet for new/edit event
         .sheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEventsForWholeYear(year: year)
         }) { ev in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
         }
-        // Top-level toolbar
         .toolbar {
             // 1) Plus button
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -173,7 +178,9 @@ struct YearCalendarView: View {
                         } label: {
                             Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
                         }
-                        Button { onViewChange?(5) } label: {
+                        Button {
+                            onViewChange?(5) // MultiCalendar
+                        } label: {
                             Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
                         }
                     } label: {

@@ -54,7 +54,7 @@ struct MiniDayCellView: View {
                 }
             }
         }
-        .frame(width: 30, height: 32)
+        .frame(width: 24, height: 28)
     }
 }
 
