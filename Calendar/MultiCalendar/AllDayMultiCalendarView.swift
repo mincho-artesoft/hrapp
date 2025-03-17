@@ -12,7 +12,7 @@ import EventKit
 import EventKitUI
 
 public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate {
-    private var highlightedSubColumn: (dayIndex: Int, calIndex: Int)? = nil
+     var highlightedSubColumn: (dayIndex: Int, calIndex: Int)? = nil
 
     /// Скрол в който ще слагаме всички EventView.
     private let scrollView: UIScrollView = {
@@ -433,6 +433,8 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             let isOverMainScroll = container.mainScrollView.frame.contains(dropLocationInContainer)
             
             if isOverAllDay {
+                container.weekView.highlightedSubColumn = nil
+                container.weekView.setNeedsDisplay()
                 guard let newDayIndex = dayIndexFromMidX(evView.frame.midX) else {
                     highlightedSubColumn = nil
                     setNeedsDisplay()
@@ -473,6 +475,29 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             } else if isOverMainScroll {
                 highlightedSubColumn = nil
                 setNeedsDisplay()
+                
+                guard let newDayIndex = dayIndexFromMidX(evView.frame.midX) else {
+                    highlightedSubColumn = nil
+                    setNeedsDisplay()
+                    return
+                }
+                // 2) Смятаме кой точно календарен subColumn е
+                let allCals = CalendarViewModel.shared.calendarsDict
+                let selectedCals = allCals.filter { $0.value.selected }
+                let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+                let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+                let numCalendars = max(1, sortedCals.count)
+                let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
+                
+                // X относително спрямо деня
+                let relativeX = evView.frame.midX
+                - CGFloat(newDayIndex) * dayColumnWidth
+                var newCalendarIndex = Int(floor(relativeX / subColumnWidth))
+                newCalendarIndex = max(0, min(newCalendarIndex, numCalendars - 1))
+                
+                // 3) Задаваме highlight
+                container.weekView.highlightedSubColumn = (newDayIndex, newCalendarIndex)
+                container.weekView.setNeedsDisplay()
                 // Скриваме реалния evView, показваме ghost
                 for (otherV, _) in multiDayDraggingOriginalFrames {
                     otherV.isHidden = true
