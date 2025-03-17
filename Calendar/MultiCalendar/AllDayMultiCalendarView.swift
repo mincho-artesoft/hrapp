@@ -47,7 +47,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
-    public var onEmptyLongPress: ((Date) -> Void)?
+    public var onEmptyLongPress: ((Date, EKCalendar?) -> Void)?
 
     // Списък с атрибути (позиции, дескриптори) за all-day събитията.
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
@@ -227,7 +227,8 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                                        height: bounds.height)
             
             // Примерен полупрозрачен цвят за фон
-            UIColor.systemGray4.setFill()
+            
+            UIColor.systemGray4.withAlphaComponent(0.8).setFill()
             ctx.fill(highlightRect)
         }
         
@@ -462,7 +463,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     }
                 }
                 
-                container.weekView.clearAllHighlights()
                 clear10MinuteMark()
                 
                 for (otherV, _) in multiDayDraggingOriginalFrames {
@@ -490,7 +490,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                     dayIndexes.insert(dayIndex)
                 }
-                container.weekView.highlightMultipleColumns(dayIndexes: dayIndexes)
                 
                 // Snap 10 min
                 let hourHeight = container.weekView.hourHeight
@@ -508,7 +507,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 setSingle10MinuteMarkFromDate(snapped)
                 
             } else {
-                container.weekView.clearAllHighlights()
                 highlightedSubColumn = nil
                 clear10MinuteMark()
             }
@@ -544,9 +542,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 }
                 return
             }
-            
-            container.weekView.clearAllHighlights()
-            
+                        
             let dropLocationInAllDay = gesture.location(in: self)
             if self.bounds.contains(dropLocationInAllDay) {
                 let evMidX = evView.frame.midX
@@ -645,14 +641,45 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     @objc private func handleLongPressEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
         let location = gesture.location(in: self)
+        // 1) Проверяваме дали не сме в/у някой вече съществуващ eventView
         let tappedEvent = eventViews.first(where: { !$0.isHidden && $0.frame.contains(location) })
         guard tappedEvent == nil else { return }
+
+        // 2) Намираме dayIndex
         guard let dayIndex = dayIndexFromMidX(location.x) else { return }
-        guard let dayDate = dayDateByAddingDays(dayIndex) else { return }
-        onEmptyLongPress?(dayDate)
+        guard let dayDate  = dayDateByAddingDays(dayIndex) else { return }
+
+        // 3) Намираме над кой "sub-календар" сме
+        //    (подколона за конкретния dayIndex).
+        let allCals = calendarVM.calendarsDict
+        let selectedCals = allCals.filter { $0.value.selected }
+        // Ако няма селектирани, взимаме всички:
+        let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+        // Сортираме
+        let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+        let numCals = max(1, sortedCals.count)
+        
+        // subColumnWidth = общата ширина на деня / брой календари
+        let subColumnWidth = dayColumnWidth / CGFloat(numCals)
+
+        // Откъде почва денят:
+        let dayStartX = CGFloat(dayIndex) * dayColumnWidth
+        // Колко "надясно" сме в конкретния ден:
+        let offsetXWithinDay = location.x - dayStartX
+        
+        // Индекс на под-колоната (календара)
+        var subIndex = Int(offsetXWithinDay / subColumnWidth)
+        subIndex = max(0, min(subIndex, numCals - 1))
+        
+        // Извличаме EKCalendar (ако има)
+        let chosenCalendar = sortedCals[subIndex].value.calendar
+        
+        // 4) Извикваме callback и подаваме и календара
+        onEmptyLongPress?(dayDate, chosenCalendar)
     }
-    
+
     
     // MARK: - Помощни (Snap / Marker)
     

@@ -2,7 +2,6 @@ import UIKit
 import EventKit
 
 public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecognizerDelegate {
-    private var highlightedDayIndexes: Set<Int> = []
     private var isCurrentlyOverAllDay = false
     private let calendarVM = CalendarViewModel.shared
 
@@ -38,7 +37,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     
     // MARK: - Public Callbacks
     public var onEventTap: ((EventDescriptor) -> Void)?
-    public var onEmptyLongPress: ((Date) -> Void)?
+    public var onEmptyLongPress: ((Date, EKCalendar?) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
     public var onEventConvertToAllDay: ((EventDescriptor, Int) -> Void)?
@@ -188,13 +187,45 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             // 5) Optionally apply additional “ghost style” (like rounding) if you want:
             ghostView.applyGhostStyle()
             draggingGhosts[ghostView] = ghostView
+
+            // ─────────────────────────────────────────────────────────────────────────────
+            // PRINT CALENDAR COLUMN & WIDTH
+            // ─────────────────────────────────────────────────────────────────────────────
+            let xPoint = point.x
+            let dayIndex = Int(xPoint / dayColumnWidth)
+            let allCals = calendarVM.calendarsDict
+                 let selectedCals = allCals.filter { $0.value.selected }
+                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
+                 let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+
+                 let subCount = max(sortedCals.count, 1)
+                 let subColumnWidth = dayColumnWidth / CGFloat(subCount)
+
+                 // Offset within that day’s column
+                 let offsetXWithinDay = xPoint - CGFloat(dayIndex) * dayColumnWidth
+                 let subIndex = Int(offsetXWithinDay / subColumnWidth)
+
+                 // Safely find the color
+                 var colorString = "n/a"
+                 if subIndex >= 0, subIndex < sortedCals.count {
+                     ghostView.applyGhostColor(newColor: sortedCals[subIndex].value.color)
+                     colorString = "\(sortedCals[subIndex].value.color)"
+                 }
+
+                 // Print with color included
+                 print("Long press => Over dayIndex: \(dayIndex), subIndex: \(subIndex), subColumnWidth: \(subColumnWidth), color: \(colorString)")
+            
+            // ─────────────────────────────────────────────────────────────────────────────
+            let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
+
             // 6) Position the ghost at the press location
-            let w: CGFloat = dayColumnWidth - style.eventGap * 2
+            let w: CGFloat = dayColumnWidth - style.eventGap * 2 * columNumber
             let h: CGFloat = 50
-            let x = point.x - w / 2
+            let x = point.x - w / columNumber / 2
             let y = point.y - 25
-            let initialFrame = CGRect(x: x, y: y, width: w, height: h)
+            let initialFrame = CGRect(x: x, y: y, width: w / columNumber, height: h)
             ghostView.frame = initialFrame
+
 
             addSubview(ghostView)
         
@@ -214,7 +245,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             // 8) Turn off clipping if you want to allow ghost to go outside visible rect
             setScrollsClipping(enabled: false)
-            updateHighlightedColumnsFromGhosts(isResize: false)
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .changed
         // ─────────────────────────────────────────────────────────────────────────────
@@ -251,39 +281,89 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             ghostView.frame = newFrame
 
+            // 1) Намираме dayIndex (над кой ден сме)
+            let xMid = newFrame.midX
+            var dayIndex = Int(xMid / dayColumnWidth)
+            dayIndex = max(0, min(dayIndex, dayCount - 1))
+
+            // 2) Проверяваме колко календара сме показали и колко е subColumnWidth
+            let allCals = calendarVM.calendarsDict
+            let selectedCals = allCals.filter { $0.value.selected }
+            let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
+            let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+
+            let subCount = max(sortedCals.count, 1)
+            let subColumnWidth = dayColumnWidth / CGFloat(subCount)
+
+            // 3) Позиция спрямо левия край на конкретния dayIndex
+            let offsetXWithinDay = xMid - CGFloat(dayIndex) * dayColumnWidth
+            var subIndex = Int(offsetXWithinDay / subColumnWidth)
+            subIndex = max(0, min(subIndex, subCount - 1))
+
+            // 4) Ако искате да смените цвета според кой календар е “отдолу”,
+            //    просто взимате съответния sortedCals[subIndex].value.color:
+            let newColor = sortedCals[subIndex].value.color
+            ghostView.applyGhostColor(newColor: newColor)
             // If you want auto-scroll near edges:
             updateAutoScrollDirection(for: gesture)
-            updateHighlightedColumnsFromGhosts(isResize: false)
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
         case .ended, .cancelled:
             let generator = UIImpactFeedbackGenerator(style: .light)
-              generator.prepare()
-              generator.impactOccurred()
+            generator.prepare()
+            generator.impactOccurred()
             stopAutoScroll()
             setScrollsClipping(enabled: true)
 
             guard let ghostView = ghostEmptySpaceView else { return }
             ghostView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
 
-            // Where we finally dropped => top of the ghost
+            // Къде пускаме? => горния ръб на ghost-а
             let finalFrame = ghostView.frame
             let topPoint = CGPoint(x: finalFrame.midX, y: finalFrame.minY)
 
-            // Convert to date, remove the ghost from superview
+            // Преобразуваме до Date; махаме ghost-а от superview
             let rawDate = dateFromPoint(topPoint)
             ghostView.removeFromSuperview()
             ghostEmptySpaceView = nil
             ghostEmptySpaceDescriptor = nil
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
-            highlightedDayIndexes.removeAll()
-            // Snap the final date to 10 mins, call callback
+
+            // Ако има реална дата
             if let unwrapped = rawDate {
                 let snappedDate = snapToNearest10Min(unwrapped)
-                onEmptyLongPress?(snappedDate)
+
+                // ─────────────────────────────────────────────────────────────────────────
+                // 1) Намираме dayIndex
+                let xMid = finalFrame.midX
+                var dayIndex = Int(xMid / dayColumnWidth)
+                dayIndex = max(0, min(dayIndex, dayCount - 1))
+
+                // 2) Списък календар(и)
+                let allCals = calendarVM.calendarsDict
+                let selectedCals = allCals.filter { $0.value.selected }
+                let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
+                let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+
+                // 3) Разделяме деня на под‑колони
+                let subCount = max(sortedCals.count, 1)
+                let subColumnWidth = dayColumnWidth / CGFloat(subCount)
+
+                // 4) На кой под‑индекс попадна?
+                let offsetXWithinDay = xMid - CGFloat(dayIndex) * dayColumnWidth
+                var subIndex = Int(offsetXWithinDay / subColumnWidth)
+                subIndex = max(0, min(subIndex, subCount - 1))
+
+                // 5) Извличаме конкретния EKCalendar
+                let chosenCalendar = sortedCals[subIndex].value.calendar
+                // ─────────────────────────────────────────────────────────────────────────
+
+                // Извикваме callback-а, като подаваме датата + календара
+                onEmptyLongPress?(snappedDate, chosenCalendar)
             }
+
 
         default:
             break
@@ -720,7 +800,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 originalStart: descriptor.dateInterval.start
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
-            updateHighlightedColumnsFromGhosts(isResize: false)
             if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                 container.allDayTitleLabel.textColor = .lightGray
             }
@@ -850,7 +929,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 guard let hoursView = hoursColumnView else { return }
                 hoursView.selectedMinuteMark = (-1, 0)
                 hoursView.setNeedsDisplay()
-                highlightedDayIndexes.removeAll()
                 setNeedsDisplay()
                 
                 var dayIndexes = Set<Int>()
@@ -893,7 +971,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                         }
                     }
                 }
-                updateHighlightedColumnsFromGhosts(isResize: false)
                 for (ghostView, _) in additionalDraggingGhosts {
                     ghostView.isHidden = true
                 }
@@ -1087,7 +1164,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             evView.layer.setValue(nil, forKey: DRAG_DATA_KEY)
             eventViewToDescriptor.removeAll()
-            highlightedDayIndexes.removeAll()
             additionalDraggingGhosts.removeAll()
             setNeedsDisplay()
             
@@ -1260,7 +1336,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             )
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             
-            updateHighlightedColumnsFromGhosts(isResize: true)
         // ----------------------------------------------------------------------------------
         // MARK: .changed
         // ----------------------------------------------------------------------------------
@@ -1411,7 +1486,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     }
                 }
             }
-            updateHighlightedColumnsFromGhosts(isResize: true)
             eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
 
         // ----------------------------------------------------------------------------------
@@ -1485,7 +1559,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             onEventDragResizeEnded?(desc, newEdge)
             eventViewToDescriptor.removeAll()
             // Обновяваме layout
-            highlightedDayIndexes.removeAll()
             setNeedsDisplay()
             
             
@@ -1546,21 +1619,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
         let totalWidth = dayColumnWidth * CGFloat(dayCount)
         
-        // 1) Ако искате, запълвате фона (тук backgroundColor е .systemGray6,
-        //    което вече сте задали, така че може и да пропуснете).
-        // ctx.setFillColor(UIColor.systemGray6.cgColor)
-        // ctx.fill(rect)
-
-        // 2) Highlight на колони, където highlightedDayIndexes (както си беше при вас)
-        for dayIndex in 0..<dayCount {
-            let colX = CGFloat(dayIndex) * dayColumnWidth
-            let colRect = CGRect(x: colX, y: 0, width: dayColumnWidth, height: bounds.height)
-            if highlightedDayIndexes.contains(dayIndex) {
-                ctx.setFillColor(UIColor.systemGray4.withAlphaComponent(0.8).cgColor)
-                ctx.fill(colRect)
-            }
-        }
-
         // 3) Хоризонтални линии по часовете (както си бяха):
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
@@ -1866,45 +1924,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         }
         return nil
     }
-    private var oldHighlightedDayIndexes = Set<Int>()
-
-    private func updateHighlightedColumnsFromGhosts(isResize: Bool) {
-        var newHighlighted = Set<Int>()
-        for (_, ghostView) in draggingGhosts {
-            
-            // 1) Ако ghost-ът е add-нат в контейнера, конвертираме frame-а му към self:
-            let ghostFrameInTimeline: CGRect
-            if ghostView.superview !== self, let container = ghostView.superview {
-                ghostFrameInTimeline = container.convert(ghostView.frame, to: self)
-            } else {
-                ghostFrameInTimeline = ghostView.frame
-            }
-            
-            // 2) Едва сега намираме dayIndex:
-            guard let di = dayIndexForFrame(ghostFrameInTimeline) else { continue }
-            
-            // 3) Ако не е скрит => добавяме го към highlightedDayIndexes
-            if !ghostView.isHidden {
-                newHighlighted.insert(di)
-            }
-        }
-        
-        // Ако ви трябва haptic при влизане в нова колона:
-        let newlyAddedIndexes = newHighlighted.subtracting(oldHighlightedDayIndexes)
-        if !newlyAddedIndexes.isEmpty {
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-        }
-
-            oldHighlightedDayIndexes = newHighlighted
-        
-      
-
-        highlightedDayIndexes = newHighlighted
-        setNeedsDisplay()
-    }
-
-
-
 
     /// Връща dayIndex, върху който попада `frame` (според midX), или nil, ако е извън диапазона.
     private func dayIndexForFrame(_ frame: CGRect) -> Int? {
@@ -1916,27 +1935,5 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         }
         return i
     }
-    public func clearAllHighlights() {
-        self.highlightedDayIndexes.removeAll()
-        setNeedsDisplay()
-    }
-    public func highlightSingleColumn(dayIndex: Int?) {
-        // Ако dayIndex е nil => махаме цялата подсветка
-        if let di = dayIndex {
-            self.highlightedDayIndexes = [di]
-        } else {
-            self.highlightedDayIndexes.removeAll()
-        }
-        setNeedsDisplay()
-    }
-    public func highlightMultipleColumns(dayIndexes: Set<Int>) {
-        // Overwrite the currently highlighted set
-        if highlightedDayIndexes != dayIndexes {
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
-            self.highlightedDayIndexes = dayIndexes
-        }
-        setNeedsDisplay()
-    }
-
 }
 

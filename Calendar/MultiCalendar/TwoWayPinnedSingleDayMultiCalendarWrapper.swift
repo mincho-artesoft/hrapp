@@ -39,11 +39,12 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             }
         }
         
-        container.onEmptyLongPress = { date in
-            context.coordinator.createNewEventAndPresent(date: date, in: vc)
+        container.onEmptyLongPress = {date, calendar in
+            context.coordinator.createNewEventAndPresent(date: date, in: vc, preselectedCalendar: calendar)
         }
-        container.allDayView.onEmptyLongPress = { date in
-            context.coordinator.createAllDayEventAndPresent(date: date, in: vc)
+
+        container.allDayView.onEmptyLongPress = { date, calendar in
+            context.coordinator.createAllDayEventAndPresent(date: date, in: vc, preselectedCalendar: calendar)
         }
         
         container.onEventDragEnded = { descriptor, newDate, isAllDay in
@@ -222,22 +223,41 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             parentVC.present(editVC, animated: true)
         }
         
-        @MainActor public func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
+        @MainActor
+        public func createNewEventAndPresent(
+            date: Date,
+            in parentVC: UIViewController,
+            preselectedCalendar: EKCalendar? = nil
+        ) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
-            newEvent.title = "New event"
-            newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+            newEvent.title     = "New event"
             newEvent.startDate = date
             newEvent.endDate   = date.addingTimeInterval(3600)
+
+            // Ако имаме избран календар, ползваме него; иначе default
+            if let cal = preselectedCalendar {
+                newEvent.calendar = cal
+            } else {
+                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+            }
+
             presentSystemEditor(newEvent, in: parentVC)
         }
+
+
         
-        @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
+        @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController,  preselectedCalendar: EKCalendar? = nil) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = "All-day event"
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
             newEvent.isAllDay = true
             newEvent.startDate = date
             newEvent.endDate   = date
+            if let cal = preselectedCalendar {
+                newEvent.calendar = cal
+            } else {
+                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+            }
             presentSystemEditor(newEvent, in: parentVC)
         }
         

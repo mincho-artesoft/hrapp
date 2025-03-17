@@ -300,6 +300,11 @@ open class EventView: UIView {
         // Hide the resize handles for the ghost
         eventResizeHandles.forEach { $0.isHidden = true }
     }
+    func applyGhostColor(newColor: UIColor) {
+        color = newColor
+        backgroundColor = newColor.withAlphaComponent(0.3)
+        textView.textColor = color.withAlphaComponent(1)
+    }
     
     public func applyGhostStyleAllDay(event: EventDescriptor) {
         layer.cornerRadius = 5

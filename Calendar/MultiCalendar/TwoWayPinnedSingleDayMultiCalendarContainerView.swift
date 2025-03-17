@@ -71,7 +71,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             allDayView.onEventTap = onEventTap
         }
     }
-    public var onEmptyLongPress: ((Date) -> Void)? {
+    public var onEmptyLongPress: ((Date, EKCalendar?) -> Void)? {
         didSet {
             weekView.onEmptyLongPress   = onEmptyLongPress
             allDayView.onEmptyLongPress = onEmptyLongPress
