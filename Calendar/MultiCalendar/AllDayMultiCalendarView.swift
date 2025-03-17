@@ -656,6 +656,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             originalFrameForDraggedEvent = nil
             highlightedSubColumn = nil
             multiDayDraggingOriginalFrames.removeAll()
+            container.weekView.highlightedSubColumn = nil
             setNeedsLayout()
             
         default:
