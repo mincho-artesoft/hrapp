@@ -686,6 +686,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalDaysHeaderWidth, height: daysHeaderHeight)
         
+        allDayView.recalcAllDayHeightDynamically()
         // All‐day ред
         let allDayY = yMain + daysHeaderHeight
         let oldOffset = allDayScrollView.contentOffset
@@ -764,20 +765,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         hoursColumnView.setNeedsDisplay()
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
-        
-        // Втори pass (ако e нужно)
-        if isInSecondPass {
-            isInSecondPass = false
-        } else {
-            let newH = allDayView.desiredHeight()
-            let newCH = allDayView.contentHeight
-            let diff1 = abs(newH - allDayScrollView.frame.height)
-            let diff2 = abs(newCH - allDayScrollView.contentSize.height)
-            if (diff1 > 0.5 || diff2 > 0.5) {
-                isInSecondPass = true
-                setNeedsLayout()
-            }
-        }
         
         // Layout на резултатите от търсене (ако сме в режим на търсене)
         layoutSearchResultsIfNeeded()

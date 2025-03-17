@@ -3,7 +3,7 @@
 //  ExampleProject
 //
 //  Неприпокриваща подредба на all-day събития.
-//  Видими 2.5 реда макс; при повече евенти - скрол (вертикален).
+//  Видими 2.5-3.5 реда макс; при повече евенти - вертикален скрол.
 //
 
 import UIKit
@@ -12,6 +12,16 @@ import EventKit
 import EventKitUI
 
 public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate {
+    
+    /// Скрол в който ще слагаме всички EventView.
+    private let scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.showsVerticalScrollIndicator = true
+        sv.showsHorizontalScrollIndicator = false
+        sv.bounces = true
+        return sv
+    }()
+    
     private var additionalGhostView: EventView?
     private let calendarVM = CalendarViewModel.shared
 
@@ -30,9 +40,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     public var autoResizeHeight = true
     // Текущата (или фиксирана) височина, която „казваме“ на контейнера.
     public var fixedHeight: CGFloat = 40
-    
-    // МАКС броя „редове“ (float), които показваме без пълен скрол. 3.5 => 3 цели + половин.
-    private let maxVisibleRows: CGFloat = 3.5
     
     // Пълна височина (ако няма ограничение). Може да надхвърля fixedHeight.
     public private(set) var contentHeight: CGFloat = 0
@@ -78,19 +85,31 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     public override init(frame: CGRect) {
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(frame: frame)
+        
+        // 1) ScrollView
+        addSubview(scrollView)
+        
         longPressEmptySpace.addTarget(self, action: #selector(handleLongPressEmptySpace(_:)))
         longPressEmptySpace.delegate = self
         addGestureRecognizer(longPressEmptySpace)
+        
         backgroundColor = .systemGray5
+        recalcAllDayHeightDynamically()
     }
     
     required init?(coder: NSCoder) {
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(coder: coder)
+        
+        // 1) ScrollView
+        addSubview(scrollView)
+        
         longPressEmptySpace.addTarget(self, action: #selector(handleLongPressEmptySpace(_:)))
         longPressEmptySpace.delegate = self
         addGestureRecognizer(longPressEmptySpace)
+        
         backgroundColor = .systemGray5
+        recalcAllDayHeightDynamically()
     }
     
     // MARK: - Layout
@@ -98,10 +117,8 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        // 1) Скриваме старите EventView обекти:
-        for ev in eventViews {
-            ev.isHidden = true
-        }
+        // 1) Скролът да обхваща цялата площ на self
+        scrollView.frame = self.bounds
         
         // 2) Ако е включено autoResizeHeight, преоразмеряваме височината:
         if autoResizeHeight {
@@ -121,16 +138,12 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         // 4) Задействаме setNeedsDisplay(), за да се нарисуват линиите/background
         setNeedsDisplay()
         
-        // 5) Събираме кои календари ще чертаем (взимаме само селектираните,
-        //    или всички, ако нито един не е селектиран):
+        // 5) Събираме кои календари ще чертаем (взимаме само селектираните или всички)
         let allCals = calendarVM.calendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-        
-        // Сортираме ги по заглавие, за да съвпадне с подредбата в layoutBackground()
         let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
         
-        // Това е бройката под-колони (по 1 за всеки календар)
         let numberOfCalendars = max(1, sortedCals.count)
         let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
         
@@ -139,45 +152,40 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         
-        // 7) Подготовка за подреждане в редове
+        // 7) Скриваме старите EventView обекти
+        for ev in eventViews {
+            ev.isHidden = true
+        }
+        
+        // 8) Подготовка за подреждане в редове
         let rowHeight: CGFloat = 22
         let baseY: CGFloat = 6
         let gap = style.eventGap
         
-        // Ще ползваме един брояч за да взимаме EventView обекти от масива:
+        // Брояч
         var usedIndex = 0
         
-        // 8) За всеки ден (0..<dayCount)
+        // 9) Подреждаме събитията във scrollView
         for dayIndex in 0 ..< dayCount {
-            // Ако няма евенти за този ден
             guard let dayEvents = groupedByDay[dayIndex], !dayEvents.isEmpty else {
                 continue
             }
-            
-            // (A) Групираме тези евенти (само за dayIndex) по calendarID:
             let eventsByCalID = Dictionary(grouping: dayEvents) { attr in
                 attr.descriptor.calendarID ?? ""
             }
             
-            // (B) За всяка под-колона (т.е. за всяко сортирано calendarID)
             for (calIndex, (calID, _)) in sortedCals.enumerated() {
-                // Масивът с евенти за calID
                 let theseEvents = eventsByCalID[calID] ?? []
                 
-                // Подреждаме ги вертикално, неприпокриващо, i = 0,1,2...
                 for (i, attr) in theseEvents.enumerated() {
-                    // X = позицията на деня + позицията на подколоната + някакъв gap
                     let x = leadingInsetForHours
                           + CGFloat(dayIndex) * dayColumnWidth
                           + CGFloat(calIndex) * subColumnWidth
                           + gap
-                    // Y = базово + номер на ред i
                     let y = baseY + CGFloat(i) * rowHeight + gap
-                    // Ширина и височина
                     let w = subColumnWidth - 2 * gap
                     let h = rowHeight - 2 * gap
                     
-                    // Взимаме/създаваме EventView
                     let evView = ensureEventView(at: usedIndex)
                     usedIndex += 1
                     
@@ -189,6 +197,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 }
             }
         }
+        
+        // 10) Определяме contentSize на scrollView (в случай че contentHeight > frame.height)
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width,
+                                        height: contentHeight)
     }
 
     
@@ -196,26 +208,17 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         super.draw(rect)
         layoutBackground()
     }
-    /// Минимална ширина на колона, ако колони >= 4 (портрет) или >= 7 (ландскейп).
-    var defaultColumnWidth: CGFloat = 100
-
-    /// Текущ брой "колони" според селектираните календари
-    private var calendarsCountForDrawing: Int = 0
-
-    /// Ширина на всяка колона (динамично изчислена при layoutSubviews)
-    private var actualColumnWidth: CGFloat = 0
-
+    
+    /// Рисуваме разделителни линии / highlight и т.н.
     private func layoutBackground() {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
         ctx.saveGState()
         
-        // (1) Изчистваме фона, за да не наслагваме
-        // ако backgroundColor е .systemGray5 и isOpaque = true,
-        // това може да не е задължително, но е "по-сигурно"
+        // (1) Фон
         backgroundColor?.setFill()
         ctx.fill(bounds)
         
-        // (2) Highlight колони (ако има) – както си беше досега
+        // (2) Highlight колони (ако има)
         for idx in highlightedDayIndices {
             guard idx >= 0 && idx < dayCount else { continue }
             let colX = leadingInsetForHours + CGFloat(idx) * dayColumnWidth
@@ -225,44 +228,31 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             ctx.fill(highlightRect)
         }
         
-        // (3) Вземаме масива с календари за рисуване:
-        //     - ако има селектирани, ползваме само тях
-        //     - иначе ползваме всички
+        // (3) Определяме кои календари рисуваме
         let allCals = calendarVM.calendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
-        let calsToShow: [(String, (title: String, color: UIColor, selected: Bool, calendar: EKCalendar))]
-        if selectedCals.isEmpty {
-            // Няма селектирани => всички
-            calsToShow = Array(allCals)
-        } else {
-            // Има селектирани
-            calsToShow = Array(selectedCals)
-        }
+        let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+        let numberOfCalendars = max(1, calsToShow.count)
         
-        let numberOfCalendars = calsToShow.count
-        guard dayCount > 0, numberOfCalendars > 0 else {
-            // Ако няма дни или няма календари
+        if dayCount == 0 || numberOfCalendars == 0 {
             ctx.restoreGState()
             return
         }
 
-        // (4) Подготвяме за рисуване на линии
+        // (4) Линии
         ctx.setStrokeColor(style.separatorColor.cgColor)
         ctx.setLineWidth(1.0 / UIScreen.main.scale)
         ctx.beginPath()
         
-        // 4.1) Вертикални линии в началото/края на всяка дневна колона
+        // 4.1) Вертикални линии в началото/края на дневна колона
         for dayIndex in 0...dayCount {
             let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
             ctx.move(to: CGPoint(x: colX, y: 0))
             ctx.addLine(to: CGPoint(x: colX, y: bounds.height))
         }
         
-        // 4.2) *Вътрешни* вертикални линии за всеки календар в рамките на деня
-        //     За всеки ден -> разделяме dayColumnWidth на numberOfCalendars под‑колони.
+        // 4.2) Вътрешни вертикални линии за всеки календар
         let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
-        
-        // Ще направим линия за всяка "под‑колона" (т.е. 1..<(broyPodKoloni)), за да не дублираме краищата
         for dayIndex in 0..<dayCount {
             let dayStartX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
             for calIndex in 1..<numberOfCalendars {
@@ -272,18 +262,13 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             }
         }
         
-        // 4.3) Ако искате, може да оставите/допълните и стария вариант
-        //      с "крайна" вертикална линия за деня – но вече имаме я в 4.1)
-        
-        // (5) Хоризонтални линии по желание – както си беше досега
+        // 4.3) Хоризонтална линия отгоре (примерно)
         let rowHeight: CGFloat = 24
         let baseY: CGFloat = 0
-        // Примерна хоризонтална линия най-отгоре (ако желаете):
         let y = baseY * rowHeight
         ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
         ctx.addLine(to: CGPoint(x: leadingInsetForHours + CGFloat(dayCount) * dayColumnWidth, y: y))
         
-        // (6) Рисуваме всички линии наведнъж
         ctx.strokePath()
         ctx.restoreGState()
     }
@@ -298,6 +283,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         }
     }
     
+    /// Създаваме EventView и го добавяме във `scrollView` (НЕ директно в self)
     private func createEventView() -> EventView {
         let ev = EventView()
         
@@ -311,7 +297,8 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         ev.addGestureRecognizer(lp)
         
         ev.isUserInteractionEnabled = true
-        addSubview(ev)
+        // Важно: добавяме във scrollView
+        scrollView.addSubview(ev)
         return ev
     }
     
@@ -322,32 +309,24 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
               let descriptor = eventViewToDescriptor[tappedView] else { return }
         onEventTap?(descriptor)
     }
-    private struct GhostDragData {
-        let initialFingerPoint: CGPoint
-        let anchorOffsetX: CGFloat
-        let anchorOffsetY: CGFloat
-        let originalFrame: CGRect
-    }
 
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
               let descriptor = eventViewToDescriptor[evView] else { return }
         let point = gesture.location(in: self)
+        
         switch gesture.state {
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .began
         // ─────────────────────────────────────────────────────────────────────────────
         case .began:
-           
-            // Отключваме scrolling/clipping, за да може евентът да се движи
             setScrollsClipping(enabled: false)
-            // Записваме началната позиция на пръста и оригиналния frame
             let loc = gesture.location(in: self)
             originalFrameForDraggedEvent = evView.frame
             dragOffset = CGPoint(x: loc.x - evView.frame.minX,
                                  y: loc.y - evView.frame.minY)
             
-            // Ако е многодневно EKMultiDayWrapper, пазим позициите и на останалите slice-ове:
+            // Multi-day drag frames
             if let multi = descriptor as? EKMultiDayWrapper {
                 multiDayDraggingOriginalFrames.removeAll()
                 let eventID = multi.realEvent.eventIdentifier
@@ -358,7 +337,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     }
                 }
             } else {
-                // Single day => just track this single eventView
                 multiDayDraggingOriginalFrames.removeAll()
                 multiDayDraggingOriginalFrames[evView] = evView.frame
             }
@@ -370,52 +348,42 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     dayIndexes.insert(di)
                 }
             }
-            // Update highlight
             if !dayIndexes.isEmpty {
                 highlightColumns(dayIndexes)
             } else {
                 clearAllHighlights()
             }
-            // Clear 10-minute marker
             clear10MinuteMark()
             
-            
-            let ghostDesc = BasicEvent() // or any custom class conforming to EventDescriptor
-            ghostDesc.dateInterval = DateInterval(
-                start: Date(),
-                end: Date().addingTimeInterval(60 * 60) // 1 hour from now
-            )
+            // Ghost
+            let ghostDesc = BasicEvent()
+            ghostDesc.dateInterval = DateInterval(start: Date(),
+                                                  end: Date().addingTimeInterval(60 * 60))
             ghostDesc.isAllDay = false
             ghostDesc.text = "New Event"
-            ghostDesc.color = .systemBlue               // Usually the left border
-            ghostDesc.backgroundColor = .systemBlue     // The fill color
-            ghostDesc.textColor = .black                // Black text
+            ghostDesc.color = .systemBlue
+            ghostDesc.backgroundColor = .systemBlue
+            ghostDesc.textColor = .black
             
             let generator = UIImpactFeedbackGenerator(style: .light)
-              generator.prepare()
-              generator.impactOccurred()
+            generator.prepare()
+            generator.impactOccurred()
 
-            // 4) Create a new ghost EventView and update it
             let ghostView = createEventView()
-
             ghostView.updateWithDescriptor(event: ghostDesc)
             ghostView.applyGhostStyleAllDay(event: descriptor)
-
-            // 5) Optionally apply additional “ghost style” (like rounding) if you want:
+            
             additionalGhostView = ghostView
-            // 6) Position the ghost at the press location
+            
+            // Позиция на ghost
             let columNumber =  CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count
-
             let w: CGFloat = dayColumnWidth - style.eventGap * 2 * CGFloat(columNumber)
             let h: CGFloat = 50
             let x = max(leadingInsetForHours, point.x - w / 2)
             let y = point.y - 25
-            let initialFrame = CGRect(x: x, y: y, width: w / CGFloat(columNumber), height: h)
-            ghostView.frame = initialFrame
+            ghostView.frame = CGRect(x: x, y: y, width: w / CGFloat(columNumber), height: h)
             ghostView.isHidden = true
-            addSubview(ghostView)
-
-//////////aaaaaaaa
+            
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .changed
         // ─────────────────────────────────────────────────────────────────────────────
@@ -429,7 +397,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             newFrame.origin.y = loc.y - offset.y
             evView.frame = newFrame
             
-            // 2) Ако е multi-day, местим и другите slice-ове
+            // 2) Ако е multi-day, местим и останалите slice-ове
             if let origFrame = multiDayDraggingOriginalFrames[evView] {
                 let dx = newFrame.origin.x - origFrame.origin.x
                 let dy = newFrame.origin.y - origFrame.origin.y
@@ -439,24 +407,19 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     }
                 }
             }
-            var additionalnewFrame = additionalGhostView!.layer.frame
-            additionalnewFrame.origin.x = loc.x - offset.x
-            additionalnewFrame.origin.y = loc.y - offset.y
-            additionalGhostView?.frame = additionalnewFrame
-            // 3) Проверяваме къде сме спрямо TwoWayPinnedMultiDayContainerView
+            
+            // Ghost
+            var ghostNewFrame = additionalGhostView!.frame
+            ghostNewFrame.origin.x = loc.x - offset.x
+            ghostNewFrame.origin.y = loc.y - offset.y
+            additionalGhostView?.frame = ghostNewFrame
+            
             guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
             let dropLocationInContainer = gesture.location(in: container)
-            
-            // Calculate if the event is (still) within AllDayView bounds
             let dropLocationInAllDay = gesture.location(in: self)
             let isOverAllDay = self.bounds.contains(dropLocationInAllDay)
-            
-            // If the user is dragging inside the "mainScrollView" => bottom part
             let isOverMainScroll = container.mainScrollView.frame.contains(dropLocationInContainer)
             
-            // ─────────────────────────────────────────────────────────────────────────
-            // Highlight logic for AllDayView
-            // If the event is in the AllDay area, gather all day indexes for each slice
             if isOverAllDay {
                 var dayIndexes = Set<Int>()
                 for (sliceView, _) in multiDayDraggingOriginalFrames {
@@ -465,35 +428,29 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                         dayIndexes.insert(di)
                     }
                 }
-                // Update highlight
                 if !dayIndexes.isEmpty {
                     highlightColumns(dayIndexes)
                 } else {
                     clearAllHighlights()
                 }
-                
-                // Clear highlight in main timeline
                 container.weekView.clearAllHighlights()
-                // Clear 10-minute marker
                 clear10MinuteMark()
+                
                 for (otherV, _) in multiDayDraggingOriginalFrames {
-                        otherV.isHidden = false
+                    otherV.isHidden = false
                 }
-                additionalGhostView!.isHidden = true
-            }
-            // Otherwise, if the user is dragging over the main timeline area
-            else if isOverMainScroll {
+                additionalGhostView?.isHidden = true
+                
+            } else if isOverMainScroll {
+                // Скриваме реалния evView, показваме ghost
                 for (otherV, _) in multiDayDraggingOriginalFrames {
-                        otherV.isHidden = true
+                    otherV.isHidden = true
                 }
-                additionalGhostView!.isHidden = false
-                // Clear highlight in AllDayView
+                additionalGhostView?.isHidden = false
                 clearAllHighlights()
                 
-                // Now highlight the day column(s) in the main timeline
+                // Highlight в main timeline
                 let evFrameInTimeline = self.convert(evView.frame, to: container.weekView)
-                
-                // Gather all day indexes in the timeline for each slice
                 var dayIndexes = Set<Int>()
                 for (sliceView, _) in multiDayDraggingOriginalFrames {
                     let sliceFrameInTimeline = self.convert(sliceView.frame, to: container.weekView)
@@ -503,13 +460,9 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                     dayIndexes.insert(dayIndex)
                 }
-                
-                // The main timeline (weekView) can highlight multiple columns as well
                 container.weekView.highlightMultipleColumns(dayIndexes: dayIndexes)
                 
-                // Optionally, show "snap" line in HoursColumnView, but typically you'd do it
-                // for whichever slice is the "main" being moved. For demonstration, let's do
-                // it for the main evView:
+                // Snap 10 min
                 let hourHeight = container.weekView.hourHeight
                 let topMargin  = container.weekView.topMargin
                 let localY     = evFrameInTimeline.minY - topMargin
@@ -523,49 +476,38 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let rawDate    = dayDate.addingTimeInterval(hourOffset * 3600)
                 let snapped    = snapToNearest10Min(rawDate)
                 setSingle10MinuteMarkFromDate(snapped)
-            }
-            // If it's outside both => clear highlights
-            else {
+                
+            } else {
                 clearAllHighlights()
                 container.weekView.clearAllHighlights()
                 clear10MinuteMark()
             }
             
-            // 4) Auto-scroll, ако го ползвате
             updateAutoScrollDirection(for: gesture)
             
-            if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
-                       // Ако искате да разпознавате "hover" над all-day и тук,
-                       // ще трябва да засечете дали сме "излезли" от timeline-a
-                       // и сме над allDayScrollView (подобно на handleEventViewPan).
-                       // Примерно:
-                       if isOverMainScroll {
-                           container.allDayTitleLabel.textColor = .lightGray
-                         
-                       } else {
-                           container.allDayTitleLabel.textColor = .label
-                       }
-                   }
+            if isOverMainScroll {
+                container.allDayTitleLabel.textColor = .lightGray
+            } else {
+                container.allDayTitleLabel.textColor = .label
+            }
 
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
         case .ended, .cancelled:
-            // Скриваме допълнителния ghost view
             additionalGhostView?.isHidden = true
             additionalGhostView = nil
+            
             if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                 container.allDayTitleLabel.textColor = .label
             }
             
-            // Вибрация и спиране на auto-scroll
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             stopAutoScroll()
             autoScrollDirection = .zero
             clear10MinuteMark()
             setScrollsClipping(enabled: true)
             
-            // Ако не можем да вземем контейнера, връщаме евента на първоначалната позиция
             guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
@@ -573,94 +515,77 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 return
             }
             
-            // Изчистваме highlight
             container.weekView.clearAllHighlights()
             clearAllHighlights()
             
-            // Вземаме drop локацията в рамките на AllDayView
             let dropLocationInAllDay = gesture.location(in: self)
-            
-            // Ако drop-ът е в AllDayView
             if self.bounds.contains(dropLocationInAllDay) {
                 let evMidX = evView.frame.midX
                 if let newDayIndex = dayIndexFromMidX(evMidX),
                    let newDayDate = dayDateByAddingDays(newDayIndex) {
+                    
                     let cal = Calendar.current
                     let startOfDay = cal.startOfDay(for: newDayDate)
                     let endOfDay = cal.date(byAdding: .day, value: 1, to: startOfDay)!
                     
-                    // Определяне на новата календарна подколона:
-                    // 1. Вземаме всички календари от ViewModel-а
+                    // Определяме новия календар
                     let allCals = CalendarViewModel.shared.calendarsDict
-                    // 2. Ако има селектирани, използваме само тях, иначе всички
                     let selectedCals = allCals.filter { $0.value.selected }
                     let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                    // 3. Сортираме ги по заглавие
                     let sortedCalsSorted = sortedCals.sorted { $0.1.title < $1.1.title }
                     
-                    // Изчисляваме относителната X позиция вътре в денната колона
-                    let relativeX = evView.frame.midX - leadingInsetForHours - CGFloat(newDayIndex) * dayColumnWidth
+                    let relativeX = evView.frame.midX
+                        - leadingInsetForHours
+                        - CGFloat(newDayIndex) * dayColumnWidth
                     let numCalendars = max(1, sortedCalsSorted.count)
                     let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
                     let newCalendarIndex = Int(floor(relativeX / subColumnWidth))
-                    // Ограничаваме индекса, ако е извън границите
                     let clampedIndex = min(max(newCalendarIndex, 0), sortedCalsSorted.count - 1)
                     let newCalendarID = sortedCalsSorted[clampedIndex].key
                     
-                    // Ако работите с EKMultiDayWrapper, актуализирайте календара на реалния EKEvent
                     if let multi = descriptor as? EKMultiDayWrapper,
                        let newCalendar = CalendarViewModel.shared.calendarsDict[newCalendarID]?.calendar {
                         multi.realEvent.calendar = newCalendar
                     }
                     
-                    // Превръщаме евента в all‑day и обновяваме dateInterval-а
                     descriptor.isAllDay = true
                     descriptor.dateInterval = DateInterval(start: startOfDay, end: endOfDay)
                     
-                    // Извикваме callback-а за приключване на drag-а
                     onEventDragEnded?(descriptor, startOfDay, false)
                 } else {
-                    // Ако не може да се определи денят – връщаме евента на първоначалната позиция
                     if let orig = originalFrameForDraggedEvent {
                         evView.frame = orig
                     }
                 }
             }
-            // Ако drop-ът е в основната timeline зона (MultiDayTimelineView)
             else if container.weekView.frame.contains(gesture.location(in: container)) {
                 let evFrameInTimeline = self.convert(evView.frame, to: container.weekView)
                 let hourHeight = container.weekView.hourHeight
                 let topMargin  = container.weekView.topMargin
                 let midX = evFrameInTimeline.midX
                 
-                // Определяне на деня (dayIndex) в weekView:
                 var dayIndex = Int((midX - container.weekView.leadingInsetForHours) / container.weekView.dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
                 
-                // Изчисляваме относителната X позиция вътре в денната колона:
-                let relativeX = midX - container.weekView.leadingInsetForHours - CGFloat(dayIndex) * container.weekView.dayColumnWidth
-                
-                // Вземаме списъка с календари от ViewModel-а:
+                let relativeX = midX
+                    - container.weekView.leadingInsetForHours
+                    - CGFloat(dayIndex) * container.weekView.dayColumnWidth
                 let allCals = CalendarViewModel.shared.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                // Сортираме по заглавие, за да е последователно:
                 let sortedCalsSorted = sortedCals.sorted { $0.1.title < $1.1.title }
                 
-                // Изчисляваме ширината на една подколона (т.е. календар) в рамките на денната колона:
                 let numCalendars = max(1, sortedCalsSorted.count)
                 let subColumnWidth = container.weekView.dayColumnWidth / CGFloat(numCalendars)
                 let newCalendarIndex = Int(floor(relativeX / subColumnWidth))
                 let clampedIndex = min(max(newCalendarIndex, 0), sortedCalsSorted.count - 1)
                 let newCalendarID = sortedCalsSorted[clampedIndex].key
                 
-                // Актуализираме календара на евента, ако използвате структура, която съдържа самия EKCalendar:
                 if let multi = descriptor as? EKMultiDayWrapper,
                    let newCalendar = CalendarViewModel.shared.calendarsDict[newCalendarID]?.calendar {
                     multi.realEvent.calendar = newCalendar
                 }
                 
-                // Обновяваме датата на събитието в timeline-а:
                 let localY = evFrameInTimeline.minY - topMargin
                 let hourOffset = localY / hourHeight
                 let dayDate = container.weekView.dayStartDate(for: dayIndex)
@@ -673,24 +598,21 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 
                 container.weekView.onEventDragEnded?(descriptor, snapped, true)
             }
-            // Ако drop-ът е извън определените зони – връщаме евента на първоначалната позиция
             else {
                 if let orig = originalFrameForDraggedEvent {
                     evView.frame = orig
                 }
             }
             
-            // Нулираме временните променливи и обновяваме layout-а
             dragOffset = nil
             originalFrameForDraggedEvent = nil
             multiDayDraggingOriginalFrames.removeAll()
             setNeedsLayout()
-
+            
         default:
             break
         }
     }
-
 
     @objc private func handleLongPressEmptySpace(_ gesture: UILongPressGestureRecognizer) {
         guard gesture.state == .began else { return }
@@ -705,7 +627,6 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     
     // MARK: - Highlight API
     
-    /// Highlights a set of columns in AllDayView
     public func highlightColumns(_ indices: Set<Int>) {
         if highlightedDayIndices != indices {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
@@ -817,37 +738,44 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     
     // MARK: - Преоразмеряване
     
-    private func recalcAllDayHeightDynamically() {
+    /// Пресмята `contentHeight` и `fixedHeight`. Ако имаме >3 реда, показваме ~3.5 реда, а останалото се скролира.
+    func recalcAllDayHeightDynamically() {
         if allDayLayoutAttributes.isEmpty {
-            // Няма събития => минимум 40
             self.fixedHeight = 40
             self.contentHeight = 40
             return
         }
         
-        let groupedByDay = Dictionary(grouping: allDayLayoutAttributes) {
-            dayIndexFor($0.descriptor.dateInterval.start)
+        let groupedByCalID = Dictionary(grouping: allDayLayoutAttributes) { attr -> String in
+            return attr.descriptor.calendarID ?? "NO_ID"
         }
-        let maxEventsInAnyDay = groupedByDay.values.map { $0.count }.max() ?? 0
 
-        let rowHeight: CGFloat = 22
-        let base: CGFloat = 10
+        let rowHeight: CGFloat = 24
+        let baseHeight: CGFloat = 6
         
-        // Пълната височина (ако няма лимит)
-        let fullNeededRows = CGFloat(maxEventsInAnyDay)
-        let fullHeight = base + (rowHeight * fullNeededRows)
-        self.contentHeight = max(fullHeight, 40)
-        
-        // Видима височина: до 3.5 реда
-        let visibleRows = min(fullNeededRows, maxVisibleRows)
-        let partialHeight = base + (rowHeight * visibleRows)
-        
-        // Минимум 40
-        self.fixedHeight = max(40, partialHeight)
+        if let (_, attrsWithMax) = groupedByCalID.max(by: { $0.value.count < $1.value.count }) {
+            let countMax = attrsWithMax.count
+            
+            if countMax <= 3 {
+                let totalHeight = baseHeight + CGFloat(countMax) * rowHeight
+                self.contentHeight = totalHeight
+                self.fixedHeight   = totalHeight
+                
+           
+            }
+            else {
+                let realContentHeight = baseHeight + CGFloat(countMax) * rowHeight
+                let maxVisibleHeight = CGFloat(3.3) * rowHeight
+                self.contentHeight = realContentHeight
+                self.fixedHeight   = maxVisibleHeight
+                
+            }
+        }
     }
+
     
     public func desiredHeight() -> CGFloat {
-        return self.fixedHeight
+        return fixedHeight
     }
     
     // MARK: - Scroll Clipping

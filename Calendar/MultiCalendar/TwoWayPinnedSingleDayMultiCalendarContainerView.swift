@@ -556,7 +556,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             width: totalDaysHeaderWidth,
             height: calendarsHeaderHeight
         )
-        
+        allDayView.recalcAllDayHeightDynamically()
         // Отместваме AllDay под втория хедър
         let allDayY    = calendarsHeaderScrollView.frame.maxY
         let oldOffset  = allDayScrollView.contentOffset
@@ -632,18 +632,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
-        if isInSecondPass {
-            isInSecondPass = false
-        } else {
-            let newH  = allDayView.desiredHeight()
-            let newCH = allDayView.contentHeight
-            let diff1 = abs(newH - allDayScrollView.frame.height)
-            let diff2 = abs(newCH - allDayScrollView.contentSize.height)
-            if diff1 > 0.5 || diff2 > 0.5 {
-                isInSecondPass = true
-                setNeedsLayout()
-            }
-        }
+       
         
         layoutSearchResultsIfNeeded()
         

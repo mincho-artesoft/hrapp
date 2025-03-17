@@ -32,7 +32,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     public var fixedHeight: CGFloat = 40
     
     // МАКС броя „редове“ (float), които показваме без пълен скрол. 3.5 => 3 цели + половин.
-    private let maxVisibleRows: CGFloat = 3.5
+    private let maxVisibleRows: CGFloat = 3.3
     
     // Пълна височина (ако няма ограничение). Може да надхвърля fixedHeight.
     public private(set) var contentHeight: CGFloat = 0
@@ -690,7 +690,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Преоразмеряване
     
-    private func recalcAllDayHeightDynamically() {
+     func recalcAllDayHeightDynamically() {
         if allDayLayoutAttributes.isEmpty {
             // Няма събития => минимум 40
             self.fixedHeight = 40
@@ -703,11 +703,12 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         }
         let maxEventsInAnyDay = groupedByDay.values.map { $0.count }.max() ?? 0
 
-        let rowHeight: CGFloat = 22
-        let base: CGFloat = 10
-        
+        let rowHeight: CGFloat = 24
+        let base: CGFloat = 6
         // Пълната височина (ако няма лимит)
         let fullNeededRows = CGFloat(maxEventsInAnyDay)
+        print("fullNeededRows",fullNeededRows)
+
         let fullHeight = base + (rowHeight * fullNeededRows)
         self.contentHeight = max(fullHeight, 40)
         
