@@ -85,7 +85,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     public override init(frame: CGRect) {
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(frame: frame)
-        
+        scrollView.clipsToBounds = false
         // 1) ScrollView
         addSubview(scrollView)
         
@@ -100,7 +100,8 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     required init?(coder: NSCoder) {
         longPressEmptySpace = UILongPressGestureRecognizer()
         super.init(coder: coder)
-        
+        scrollView.clipsToBounds = false
+
         // 1) ScrollView
         addSubview(scrollView)
         
