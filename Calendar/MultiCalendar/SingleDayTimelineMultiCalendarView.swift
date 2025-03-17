@@ -640,7 +640,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 }
             }
             print("Indexs", slices.count)
-
+            
             
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
@@ -675,15 +675,15 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     // Конвертираме точка (localX, 0) от self към container:
                     let containerPoint = self.convert(CGPoint(x: localX, y: 0), to: container)
                     let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
-
+                    
                     let ghostX = containerPoint.x + 2
                     let ghostW = dayColumnWidth - style.eventGap * 2 * columNumber - 2
-
+                    
                     if totalDays == 1 {
                         finalY = sliceFrameInContainer.minY
                         ghostH = sliceFrameInContainer.height
                     }
-                   
+                    
                     let allCals = calendarVM.calendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
@@ -691,7 +691,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let subColumnWidth = dayColumnWidth / CGFloat(columnCount)
                     let localXSub = sliceFrameInContainer.minX.truncatingRemainder(dividingBy: dayColumnWidth)
                     let subColumnIndex = Int(localXSub / subColumnWidth)
-
+                    
                     let ghostFrame = CGRect(
                         x: ghostX + CGFloat(subColumnIndex) * CGFloat(subColumnWidth),
                         y: finalY,
@@ -750,21 +750,21 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 
                 // Фиксираме началната рамка
                 let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
-
+                
                 let w: CGFloat = dayColumnWidth - style.eventGap * 2 * columNumber - 3
                 let h: CGFloat = 18
                 // 1) Convert sliceView.frame up to the container’s coordinate space
                 let sliceFrameInContainer = sliceView.superview!.convert(sliceView.frame, to: container)
-
+                
                 // 2) Now use the converted frame
                 let x = sliceFrameInContainer.minX
                 let y = pointInContainer.y - 9
-
+                
                 // … same as before …
                 let initialFrame = CGRect(x: x, y: y, width: w / columNumber, height: h)
                 ghostView.frame = initialFrame
-
-
+                
+                
                 // MARK: // FIX START
                 // Правилно offset-ване: (finger - ghostFrame.origin)
                 let fingerPoint = gesture.location(in: container)
@@ -773,7 +773,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let offsetX = fingerPoint.x - ghostFrame.minX
                 let offsetY = fingerPoint.y - ghostFrame.minY
                 // MARK: // FIX END
-
+                
                 let ghostData = AdditionalGhostDragData(
                     originalFrame: ghostFrame,
                     anchorOffsetX: offsetX,
@@ -788,13 +788,13 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         case .changed:
             // 1) Опитваме да вземем "DragData" от оригиналния евент (evView)
             guard let d = evView.layer.value(forKey: DRAG_DATA_KEY) as? DragData else { return }
-
+            
             // 2) Вземаме контейнера
             guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
-
+            
             // 3) Координатата на пръста (или курсора)
             let fingerInContainer = gesture.location(in: container)
-
+            
             // 4) Новите X/Y за "anchor ghost"
             let newX = fingerInContainer.x - d.anchorOffsetX
             let newY = fingerInContainer.y - d.anchorOffsetY
@@ -803,22 +803,22 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             for (ghostView, _) in additionalDraggingGhosts {
                 guard let ghostData = ghostView.layer.value(forKey: "AdditionalGhostDragDataKey")
                         as? AdditionalGhostDragData else { return }
-
+                
                 // MARK: // FIX START
                 // Current finger location in the container
                 let finger = gesture.location(in: container)
-
+                
                 // Започваме от originalFrame
                 var f = ghostData.originalFrame
-
+                
                 // Ново origin, базирано на (finger - offsets)
                 f.origin.x = finger.x - ghostData.anchorOffsetX
                 f.origin.y = finger.y - ghostData.anchorOffsetY
                 // MARK: // FIX END
-
+                
                 ghostView.frame = f
             }
-
+            
             // 5) Местим всички "slice ghost"-ове пропорционално на delta‑та (спрямо "anchorGhost")
             if let anchorOrig = d.originalContainerFrames[evView] {
                 let deltaX = newX - anchorOrig.minX
@@ -836,16 +836,16 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     )
                 }
             }
-
+            
             // 6) Snap към 10 минути
             
-
+            
             // 7) Проверяваме дали сме над allDayScrollView
             let isNowOverAllDay = container.allDayScrollView.frame.contains(fingerInContainer)
             if isNowOverAllDay != isCurrentlyOverAllDay {
                 UIImpactFeedbackGenerator(style: .light).impactOccurred()
             }
-
+            
             if isNowOverAllDay {
                 guard let hoursView = hoursColumnView else { return }
                 hoursView.selectedMinuteMark = (-1, 0)
@@ -861,7 +861,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                         dayIndexes.insert(di)
                     }
                 }
-               
+                
                 for (ghostView, _) in additionalDraggingGhosts {
                     ghostView.isHidden = false
                 }
@@ -895,7 +895,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 }
                 updateHighlightedColumnsFromGhosts(isResize: false)
                 for (ghostView, _) in additionalDraggingGhosts {
-                     ghostView.isHidden = true
+                    ghostView.isHidden = true
                 }
                 for (_, view) in draggingGhosts {
                     view.isHidden = false
@@ -903,7 +903,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             
             isCurrentlyOverAllDay = isNowOverAllDay
-
+            
             // 8) Auto-scroll
             updateAutoScrollDirection(for: gesture)
             
@@ -922,7 +922,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 ghostView.removeFromSuperview()
             }
             // additionalDraggingGhosts.removeAll()
-
+            
             if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
                 container.allDayTitleLabel.textColor = .label
             }
@@ -986,15 +986,96 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let parent2Class = hitView.superview?.superview.map { String(describing: type(of: $0)) } ?? "nil"
                 
                 if  hitViewClass.contains("SingleDayTimelineMultiCalendarView")
-                    || parent1Class.contains("SingleDayTimelineMultiCalendarView")
-                    || parent2Class.contains("SingleDayTimelineMultiCalendarView") {
+                        || parent1Class.contains("SingleDayTimelineMultiCalendarView")
+                        || parent2Class.contains("SingleDayTimelineMultiCalendarView")
+                {
+                    let finalFrame = anchorGhost.frame
+                    // Преобразуваме координатите на ghost-а от container-координатната система към self
+                    let finalFrameInSelf = container.convert(finalFrame, to: self)
                     
+                    
+                    // i) Открийте колко календара реално рисувате
+                    let allCals = calendarVM.calendarsDict
+                    let selectedCals = allCals.filter { $0.value.selected }
+                    let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+                    let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                    let numCalendars = max(1, sortedCals.count)
+                    
+                    // ii) subColumnWidth
+                    let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
+                    
+                    // iii) x в рамките на текущия dayIndex
+                    //     (приемам, че горе сте си сметнали "dayIndex" и "finalFrameInSelf")
+                    let offsetXWithinDay = finalFrameInSelf.midX - (CGFloat(dayIndex) * dayColumnWidth)
+                    
+                    // iv) subIndex
+                    var newCalendarIndex = Int(floor(offsetXWithinDay / subColumnWidth))
+                    newCalendarIndex = max(0, min(newCalendarIndex, numCalendars - 1))
+                    
+                    // v) Примерно извличаме calendarID
+                    let newCalendarID = sortedCals[newCalendarIndex].key
+                    
+                    // vi) Ако е EKMultiDayWrapper => сменяме realEvent.calendar
+                    if let multi = descriptor as? EKMultiDayWrapper,
+                       let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                    {
+                        multi.realEvent.calendar = newCalendar
+                    }
+                    else if let singleEK = descriptor as? EKMultiDayWrapper,  // Ако ползвате EKWrapper за еднодневни
+                            let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                    {
+                        singleEK.ekEvent.calendar = newCalendar
+                    }
+                    
+                    //
+                    // 2) Старото ви викане на callback:
+                    //
                     onEventDragEnded?(descriptor, snappedStart, false)
-                    
-                } else if hitViewClass.contains("AllDayMultiCalendarView")
+                }
+                else if hitViewClass.contains("AllDayMultiCalendarView")
                             || parent1Class.contains("AllDayMultiCalendarView")
                             || parent2Class.contains("AllDayMultiCalendarView") {
+                    let finalFrame = anchorGhost.frame
+                    // Преобразуваме координатите на ghost-а от container-координатната система към self
+                    let finalFrameInSelf = container.convert(finalFrame, to: self)
                     
+                    
+                    // i) Открийте колко календара реално рисувате
+                    let allCals = calendarVM.calendarsDict
+                    let selectedCals = allCals.filter { $0.value.selected }
+                    let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
+                    let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                    let numCalendars = max(1, sortedCals.count)
+                    
+                    // ii) subColumnWidth
+                    let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
+                    
+                    // iii) x в рамките на текущия dayIndex
+                    //     (приемам, че горе сте си сметнали "dayIndex" и "finalFrameInSelf")
+                    let offsetXWithinDay = finalFrameInSelf.midX - (CGFloat(dayIndex) * dayColumnWidth)
+                    
+                    // iv) subIndex
+                    var newCalendarIndex = Int(floor(offsetXWithinDay / subColumnWidth))
+                    newCalendarIndex = max(0, min(newCalendarIndex, numCalendars - 1))
+                    
+                    // v) Примерно извличаме calendarID
+                    let newCalendarID = sortedCals[newCalendarIndex].key
+                    
+                    // vi) Ако е EKMultiDayWrapper => сменяме realEvent.calendar
+                    if let multi = descriptor as? EKMultiDayWrapper,
+                       let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                    {
+                        multi.realEvent.calendar = newCalendar
+                    }
+                    else if let singleEK = descriptor as? EKMultiDayWrapper,  // Ако ползвате EKWrapper за еднодневни
+                            let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                    {
+                        singleEK.ekEvent.calendar = newCalendar
+                    }
+                    
+                    //
+                    // 2) Старото ви викане на callback:
+                    //
                     for (view, _) in eventViewToDescriptor {
                         view.eventResizeHandles[0].isHidden = true
                         view.eventResizeHandles[1].isHidden = true

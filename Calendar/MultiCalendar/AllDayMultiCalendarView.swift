@@ -12,7 +12,6 @@ import EventKit
 import EventKitUI
 
 public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate {
-    // Във вашия AllDayMultiCalendarView:
     private var highlightedSubColumn: (dayIndex: Int, calIndex: Int)? = nil
 
     /// Скрол в който ще слагаме всички EventView.
