@@ -1989,7 +1989,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         
         if location.y < scrollFrame.minY + threshold {
             direction.y = -1
-        } else if location.y > scrollFrame.maxY - threshold {
+        } else if location.y > scrollFrame.maxY - (threshold + 50) {
             direction.y = 1
         }
         
