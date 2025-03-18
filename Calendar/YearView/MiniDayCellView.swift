@@ -1,12 +1,6 @@
 import SwiftUI
 import EventKit
 
-// MARK: - 1) Правим Date да е Identifiable, за да можем да го ползваме с fullScreenCover(item:)
-
-// MARK: - ViewModel (примерен, ако вече си имате, може да си го оставите)
-
-
-// MARK: - MiniDayCellView
 struct MiniDayCellView: View {
     let day: Date
     let referenceMonth: Date
@@ -19,8 +13,20 @@ struct MiniDayCellView: View {
         let isInCurrentMonth = calendar.isDate(day, equalTo: referenceMonth, toGranularity: .month)
         let dayNumber = calendar.component(.day, from: day)
         
-        ZStack(alignment: .top) {
-            // Ако е днес -> червен кръг
+        // 1) Събираме всички уникални цветове на календарите за събитията в този ден.
+        let distinctColors: [UIColor] = {
+            let cals = events.compactMap { $0.calendar }
+            let unique = Set(cals.map { $0.cgColor ?? UIColor.systemGray.cgColor })
+            return unique.map { UIColor(cgColor: $0) }
+        }()
+        
+        // 2) Разделяме масива на парчета (chunk) по 3 елемента.
+        let colorChunks: [[UIColor]] = stride(from: 0, to: distinctColors.count, by: 3).map {
+            Array(distinctColors[$0..<min($0+3, distinctColors.count)])
+        }
+        
+        return ZStack(alignment: .top) {
+            // Ако е днес -> по-голям кръг зад датата
             if isToday {
                 Circle()
                     .fill(Color.red)
@@ -28,6 +34,7 @@ struct MiniDayCellView: View {
                     .offset(y: 1)
             }
             
+            // Числото на деня
             Text("\(dayNumber)")
                 .font(.system(size: 12))
                 .foregroundColor(
@@ -37,24 +44,22 @@ struct MiniDayCellView: View {
                 )
                 .frame(height: 28, alignment: .center)
             
-            // Ако има събития -> точка отдолу
-            if !events.isEmpty {
-                if isToday {
-                    // Ако е днес + има събития -> бяла точка
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: 4, height: 4)
-                        .offset(y: 20)
-                } else {
-                    // Иначе червена точка
-                    Circle()
-                        .fill(Color.red)
-                        .frame(width: 4, height: 4)
-                        .offset(y: 20)
+            // 3) Малки точици за всеки календар, подредени в няколко реда.
+            if !distinctColors.isEmpty {
+                VStack(alignment: .center, spacing: 2) {
+                    ForEach(0..<colorChunks.count, id: \.self) { rowIndex in
+                        HStack(spacing: 2) {
+                            ForEach(colorChunks[rowIndex], id: \.self) { uiColor in
+                                Circle()
+                                    .fill(Color(uiColor))
+                                    .frame(width: 4, height: 4)
+                            }
+                        }
+                    }
                 }
+                .offset(y: 20) // Местим цялата VStack надолу под датата
             }
         }
         .frame(width: 24, height: 28)
     }
 }
-

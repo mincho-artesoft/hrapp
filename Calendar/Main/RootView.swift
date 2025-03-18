@@ -222,12 +222,12 @@ struct RootView: View {
             if accessGranted {
                 switch selectedTab {
                 case 0:
-
                     let nowMonth = Calendar.current.startOfDay(for: Date())
                     CalendarViewModel.shared.loadEvents(for: nowMonth)
 
                 case 1:
                     loadSingleDayEvents()
+                    
                 case 2:
                     let currentYear = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: currentYear)
