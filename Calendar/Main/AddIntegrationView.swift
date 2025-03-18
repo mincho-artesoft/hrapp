@@ -13,9 +13,12 @@ struct AddIntegrationView: View {
     // Показваме ли грешка (ако има)
     @State private var errorMessage: String?
     
-    // Примерен clientID (в реален проект може да е в Info.plist)
+    // Примерен clientID
     let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
     
+    // ViewModel, в който пазим googleCalendars глобално
+    @ObservedObject var viewModel = CalendarViewModel.shared
+
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -30,7 +33,7 @@ struct AddIntegrationView: View {
                     }
                     
                     if googleCalendars.isEmpty {
-                        Text("No calendars loaded yet or an error occurred.")
+                        Text("No calendars loaded or some were filtered out.")
                             .padding()
                     } else {
                         List(googleCalendars, id: \.id) { cal in
@@ -67,7 +70,6 @@ struct AddIntegrationView: View {
             .navigationBarTitle("Add Integration", displayMode: .inline)
             .padding()
         }
-        // Опит за възстановяване на предишна Google сесия
         .onAppear {
             restoreSignInIfNeeded()
         }
@@ -76,7 +78,6 @@ struct AddIntegrationView: View {
 
 // MARK: - Методи за логване, разлогване, четене на календари
 extension AddIntegrationView {
-    /// Опит за възстановяване на предишна Google Sign-In сесия
     func restoreSignInIfNeeded() {
         GIDSignIn.sharedInstance.restorePreviousSignIn { signInResult, error in
             if let error = error {
@@ -93,20 +94,16 @@ extension AddIntegrationView {
         }
     }
     
-    /// Логика за Sign In с искане на calendar.readonly scope
     func signIn() {
         guard let topVC = UIApplication.shared.topMostViewController() else {
             return
         }
         
-        // Създаваме конфигурация
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
         
-        // Списъкът със scopes, които искаме – напр. четене на календар
         let scopes = ["https://www.googleapis.com/auth/calendar.readonly"]
         
-        // Извикваме signIn, но с `additionalScopes`
         GIDSignIn.sharedInstance.signIn(
             withPresenting: topVC,
             hint: nil,
@@ -126,32 +123,28 @@ extension AddIntegrationView {
         }
     }
     
-    /// Sign Out (без да унищожаваме refresh токена)
     func signOut() {
         GIDSignIn.sharedInstance.signOut()
         isSignedIn = false
         googleCalendars = []
+        viewModel.googleCalendars = []
     }
     
-    /// Заявка към Google Calendar API за да извлечем списък с календари
-    ///
-    /// - Ако текущият потребител *няма* още `calendar.readonly` scope,
-    ///   опитваме да го добавим (user.addScopes).
+    /// Зареждаме списъка с календари от Google, след което за всеки календар опитваме да заредим евентите.
+    /// Ако е успешно - добавяме го, ако не - пропускаме го.
     func loadGoogleCalendars() async {
         guard let user = GIDSignIn.sharedInstance.currentUser else {
             errorMessage = "Not signed in."
             return
         }
         
-        // 1) Убедете се, че имаме календарен scope
         let neededScope = "https://www.googleapis.com/auth/calendar.readonly"
         
-        // Ако потребителят все още няма нужното scope, го добавяме
+        // 1) Проверяваме дали вече е даден scope за четене на Google Calendar
         if !(user.grantedScopes?.contains(neededScope) ?? false) {
             guard let topVC = UIApplication.shared.topMostViewController() else { return }
             
             do {
-                // addScopes ползва completion блок, но може да се "await"-не чрез continuation
                 try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
                     user.addScopes([neededScope], presenting: topVC) { newUser, error in
                         if let error = error {
@@ -168,10 +161,8 @@ extension AddIntegrationView {
             }
         }
         
-        // 2) Вече трябва да имаме нужното scope, правим заявка
-        let accessToken = GIDSignIn.sharedInstance.currentUser?.accessToken.tokenString ?? ""
-        print("accessToken: \(accessToken)")
-        
+        // 2) Вземаме списък от календари
+        let accessToken = user.accessToken.tokenString
         guard let url = URL(string: "https://www.googleapis.com/calendar/v3/users/me/calendarList") else {
             return
         }
@@ -192,27 +183,77 @@ extension AddIntegrationView {
             
             let decoder = JSONDecoder()
             let calendarList = try decoder.decode(GoogleCalendarList.self, from: data)
-            self.googleCalendars = calendarList.items
+            
+            // 3) Филтрираме: за всеки календар, опитваме да заредим евентите му.
+            var validCalendars: [GoogleCalendarItem] = []
+            
+            for cal in calendarList.items {
+                let calId = cal.id
+                let canFetch = await canFetchEvents(forCalendarId: calId, accessToken: accessToken)
+                if canFetch {
+                    // Ако успешно може да заредим събития => добавяме го
+                    validCalendars.append(cal)
+                } else {
+                    print("Skipping calendar \(calId) due to fetch error or HTTP error.")
+                }
+            }
+            
+            // 4) Записваме филтрираните календари
+            DispatchQueue.main.async {
+                self.googleCalendars = validCalendars
+                self.viewModel.googleCalendars = validCalendars
+            }
             
         } catch {
             self.errorMessage = "Fetch error: \(error.localizedDescription)"
         }
     }
+    
+    /// Примерен метод, който тества дали могат да се прочетат евентите на даден календар.
+    /// Ако получим 2xx отговор => true, иначе (404 / 403 / etc) => false
+    private func canFetchEvents(forCalendarId calId: String, accessToken: String) async -> Bool {
+        guard let eventsURL = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(calId)/events") else {
+            return false
+        }
+        
+        var eventsRequest = URLRequest(url: eventsURL)
+        eventsRequest.httpMethod = "GET"
+        eventsRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (_, response) = try await URLSession.shared.data(for: eventsRequest)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode) else {
+                // Не е успешен статус => връщаме false
+                return false
+            }
+            // Успешно
+            return true
+        } catch {
+            // Грешка (напр. връзка) => false
+            return false
+        }
+    }
 }
 
-// MARK: - Примерни модели за декодиране на Google Calendar List JSON
+// Примерни модели
 struct GoogleCalendarList: Codable {
     let items: [GoogleCalendarItem]
 }
 
-struct GoogleCalendarItem: Codable {
+struct GoogleCalendarItem: Codable, Hashable {
     let id: String
     let summary: String
     let description: String?
+    
+    // Добавете, ако го има в JSON-а от Google
+    let colorId: String?
+    let backgroundColor: String?
+    let foregroundColor: String?
 }
 
-/// Хелпър за намиране на topMostViewController (нужно при signIn(withPresenting:...))
-extension UIApplication {   
+/// Хелпър за topMostViewController
+extension UIApplication {
     func topMostViewController(_ base: UIViewController? = nil) -> UIViewController? {
         let baseVC = base ?? keyWindow?.rootViewController
         if let nav = baseVC as? UINavigationController {

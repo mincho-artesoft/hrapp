@@ -1,60 +1,91 @@
 //
-// MARK: - CalendarViewModel
+//  CalendarViewModel.swift
+//  YourProject
 //
+
 import SwiftUI
 import EventKit
 import Combine
+import GoogleSignIn
+import GoogleSignInSwift
 
 @MainActor
 final class CalendarViewModel: ObservableObject {
+    
+    // MARK: - EventKit Store & Properties
     let eventStore: EKEventStore = EKEventStore()
-    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
-
-    static let shared = CalendarViewModel()
-
+    
+    /// Съхраняваме всички намерени EKCalendar (локални, iCloud, Outlook, и т.н.)
     @Published var allCalendars: [EKCalendar] = []
     
-    // Събития
+    /// Събития (по дни и по ID) - примерно за месечен/годишен календар
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID:  [String: EKEvent] = [:]
 
-    // Дали имаме достъп до Календарите
+    /// Дали вече имаме достъп до iOS Календара (EventKit)
     @Published var accessGranted = false
 
-    // Тук пазим ID-тата на календари, които потребителят е “разрешил”
+    /// IDs на календари, които потребителят е маркирал като "show" (EKCalendar.calendarIdentifier + Google IDs)
     @Published var selectedCalendarIDs: Set<String> = []
 
-    // Променлива, в която да запазим UI цвят (UIColor) на първия .local календар
+    /// Dictionary за вашите локални календари (по изискване)
+    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
+    
+    /// Пазим UI цвят (UIColor) на първия локален календар (за някои цели)
     @Published var firstLocalCalendarColor: UIColor?
 
-    let calendar = Calendar(identifier: .gregorian)
+    // MARK: - Google Calendars
+    /// Списък от Google CalendarItem (ваш модел), които сме заредили от Google API
+    @Published var googleCalendars: [GoogleCalendarItem] = [] {
+        didSet {
+            // Всеки път, когато googleCalendars се промени => пазим в UserDefaults
+            storeGoogleCalendarsInUserDefaults(googleCalendars)
+        }
+    }
+    
+    /// Префикс за Google календарите, за да ги различаваме от EKCalendar.calendarIdentifier
+    static let googlePrefix = "google::"
 
+    /// Singleton, за да се ползва по цялото приложение
+    static let shared = CalendarViewModel()
+
+    // MARK: - Друго
     private var cancellables = Set<AnyCancellable>()
+    let calendar = Calendar(identifier: .gregorian)
 
     // MARK: - Инициализатор
     init() {
+        // 1) Зареждаме локални (EventKit) календари
         loadLocalCalendars()
-        // --- ПРОМЕНЕНО: добавена логика за "ако няма нищо в UserDefaults, взимаме всички календари"
+        
+        // 2) Зареждаме selectedCalendarIDs (ако има) от UserDefaults
         if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String],
            !storedArray.isEmpty {
             self.selectedCalendarIDs = Set(storedArray)
         } else {
-            // Ако няма нищо в UserDefaults, селектираме ВСИЧКИ календари по подразбиране
-            // (Може да избереш да селектираш само първия локален, ако предпочиташ)
+            // Ако няма нищо запазено => селектираме всички налични EKCalendar
             let cals = eventStore.calendars(for: .event)
             self.selectedCalendarIDs = Set(cals.map { $0.calendarIdentifier })
         }
 
-        // Когато selectedCalendarIDs се промени => да пазим в UserDefaults
+        // 3) Когато има промяна, да пазим обратно в UserDefaults
         $selectedCalendarIDs
             .sink { newValue in
                 let array = Array(newValue)
                 UserDefaults.standard.set(array, forKey: "SelectedCalendarIDsKey")
             }
             .store(in: &cancellables)
+
+        // 4) Зареждаме преди това кеширани Google календари
+        self.googleCalendars = loadGoogleCalendarsFromUserDefaults()
+        
+        // 5) Опит за автоматично възстановяване на Google Sign-In и зареждане на календарите от API
+        restoreGoogleSignInIfNeededAndLoad()
     }
 
-    // MARK: - Проверка/заявка за достъп
+    // MARK: - Методи за EventKit (iOS) календари
+
+    /// Проверка дали имаме (или сме поискали) разрешение за достъп до календари
     func isCalendarAccessGranted() -> Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
         if #available(iOS 17.0, *) {
@@ -64,6 +95,7 @@ final class CalendarViewModel: ObservableObject {
         }
     }
 
+    /// Ако потребителят още не е дал достъп до EventKit, искаме. Иначе връща true/false според статуса.
     @MainActor
     func requestCalendarAccessIfNeeded() async -> Bool {
         let status = EKEventStore.authorizationStatus(for: .event)
@@ -84,22 +116,22 @@ final class CalendarViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Зареждане на календари
+    /// Презареждаме списъка `allCalendars` от EventKit Store
     func reloadCalendars() {
         let cals = eventStore.calendars(for: .event)
-        
         self.allCalendars = cals
         
-        // Търсим първия локален календар
+        // Намираме първия локален календар и пазим неговия цвят
         if let firstLocalCal = cals.first(where: { $0.source.sourceType == .local }),
            let cgColor = firstLocalCal.cgColor {
             self.firstLocalCalendarColor = UIColor(cgColor: cgColor)
         } else {
             self.firstLocalCalendarColor = nil
         }
+        
     }
 
-    // MARK: - Методи за зареждане на събития
+    /// Зареждаме събития за даден месец
     func loadEvents(for month: Date) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
@@ -114,6 +146,7 @@ final class CalendarViewModel: ObservableObject {
         )
         self.eventsByDay = fetched
         
+        // Събираме всички в един речник по eventIdentifier
         var tmp: [String: EKEvent] = [:]
         for evList in fetched.values {
             for ev in evList {
@@ -123,6 +156,7 @@ final class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
 
+    /// Зареждаме събития за цяла година (примерен метод)
     func loadEventsForWholeYear(year: Int) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
@@ -166,17 +200,18 @@ final class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
 
-    // MARK: - Помощни
+    /// Връща масив от EKCalendar, които са отбелязани като "selected"
     func allowedCalendars() -> [EKCalendar] {
         allCalendars.filter {
             selectedCalendarIDs.contains($0.calendarIdentifier)
         }
     }
+    
+    /// Зареждаме локалните (On My iPhone) календари в `calendarsDict` (примерно за Sheet)
     private func loadLocalCalendars() {
-        // Предполага се, че вече имате accessGranted == true
+        // Предполага се, че вече имаме accessGranted, но все пак:
         reloadCalendars()
         
-        // Може да вземете всички, или само локални
         let localCals = allCalendars.filter {
             $0.source.sourceType == .local
         }
@@ -184,16 +219,12 @@ final class CalendarViewModel: ObservableObject {
         var dict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
         
         for cal in localCals {
-            // Извличаме заглавие
             let calTitle = cal.title
-            
-            // Извличаме цвят
             var uiColor = UIColor.systemGray
             if let cgColor = cal.cgColor {
                 uiColor = UIColor(cgColor: cgColor)
             }
-            
-            // Всички => selected = true (по изискването ви)
+            // По условие => всички локални = selected = true (или както решите)
             dict[cal.calendarIdentifier] = (
                 title: calTitle,
                 color: uiColor,
@@ -202,7 +233,183 @@ final class CalendarViewModel: ObservableObject {
             )
         }
         
-        calendarsDict = dict
+        self.calendarsDict = dict
+    }
+    
+    // MARK: - Google Sign-In Възстановяване и Fetch
+    private func restoreGoogleSignInIfNeededAndLoad() {
+        // Опит за възстановяване на предишна Google сесия
+        GIDSignIn.sharedInstance.restorePreviousSignIn { signInResult, error in
+            if let error = error {
+                print("Restore Google SignIn error: \(error.localizedDescription)")
+                return
+            }
+            // Ако имаме валиден signInResult => значи сме логнати => да fetch‐нем
+            guard let _ = signInResult else {
+                print("No existing Google SignIn session.")
+                return
+            }
+            
+            print("✅ Google session restored => fetching calendars from API...")
+            Task {
+                await self.fetchGoogleCalendarsFromAPI()
+            }
+        }
+    }
+
+    /// Извлича списък от Google календари директно от API (ако имаме логнат user)
+    @MainActor
+    func fetchGoogleCalendarsFromAPI() async {
+        guard let user = GIDSignIn.sharedInstance.currentUser else {
+            print("⚠️ Not signed in to Google => skip fetching.")
+            return
+        }
+
+        let neededScope = "https://www.googleapis.com/auth/calendar.readonly"
+        
+        // 1) Проверяваме scope
+        if !(user.grantedScopes?.contains(neededScope) ?? false) {
+            guard let topVC = UIApplication.shared.topMostViewController() else { return }
+            
+            do {
+                try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                    user.addScopes([neededScope], presenting: topVC) { newUser, error in
+                        if let error = error {
+                            continuation.resume(throwing: error)
+                        } else {
+                            continuation.resume(returning: ())
+                        }
+                    }
+                }
+            } catch {
+                print("⚠️ User denied calendar scope: \(error)")
+                return
+            }
+        }
+
+        // 2) Зареждаме списъка с календари
+        let accessToken = user.accessToken.tokenString
+        guard let url = URL(string: "https://www.googleapis.com/calendar/v3/users/me/calendarList") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode) else {
+                let respStr = String(data: data, encoding: .utf8) ?? ""
+                print("⚠️ HTTP Error from Google (calendarList): \(respStr)")
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            let calendarList = try decoder.decode(GoogleCalendarList.self, from: data)
+            
+            var validCalendars: [GoogleCalendarItem] = []
+
+            // 3) За всеки календар от списъка – опит за fetch на събития:
+            for cal in calendarList.items {
+                let calId = cal.id
+                if await canFetchEvents(forCalendarId: calId, accessToken: accessToken) {
+                    // Успешно се зареждат евентите => включваме го
+                    validCalendars.append(cal)
+                } else {
+                    // Грешка при събитията => пропускаме го
+                    print("Skipping calendar \(calId) due to fetch error.")
+                }
+            }
+
+            // 4) Записваме само „валидните“ календари
+            DispatchQueue.main.async {
+                self.googleCalendars = validCalendars
+                self.storeGoogleCalendarsInUserDefaults(validCalendars)
+            }
+
+            print("✅ Filtered Google Calendars: \(validCalendars.count) from total \(calendarList.items.count)")
+
+        } catch {
+            print("⚠️ Fetch from Google error: \(error)")
+        }
+    }
+
+    /// Помощен метод, който прави заявка към "/calendars/{calendarId}/events"
+    /// и връща true/false дали може да зареди евентите успешно (2xx статус).
+    private func canFetchEvents(forCalendarId calId: String, accessToken: String) async -> Bool {
+        guard let eventsURL = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(calId)/events") else {
+            return false
+        }
+        var eventsRequest = URLRequest(url: eventsURL)
+        eventsRequest.httpMethod = "GET"
+        eventsRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        do {
+            let (_, response) = try await URLSession.shared.data(for: eventsRequest)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode) else {
+                return false
+            }
+            return true
+        } catch {
+            print("⚠️ Error fetching events for \(calId): \(error)")
+            return false
+        }
+    }
+
+
+    // MARK: - Съхранение/четене на Google Calendars от UserDefaults
+    private func storeGoogleCalendarsInUserDefaults(_ calendars: [GoogleCalendarItem]) {
+        print("storeGoogleCalendarsInUserDefaults")
+        
+        for cal in calendars {
+            print("  • \(cal.summary) | colorId: \(cal.colorId ?? "no colorId") | bgColor: \(cal.backgroundColor ?? "n/a")")
+        }
+        
+        do {
+            let data = try JSONEncoder().encode(calendars)
+            UserDefaults.standard.set(data, forKey: "StoredGoogleCalendars")
+        } catch {
+            print("⚠️ Failed to encode GoogleCalendars: \(error)")
+        }
+    }
+
+    private func loadGoogleCalendarsFromUserDefaults() -> [GoogleCalendarItem] {
+        guard let data = UserDefaults.standard.data(forKey: "StoredGoogleCalendars") else {
+            return []
+        }
+        print("loadGoogleCalendarsFromUserDefaults")
+        
+        do {
+            let decoded = try JSONDecoder().decode([GoogleCalendarItem].self, from: data)
+            print("  -> Заредени са \(decoded.count) GoogleCalendars:")
+            for cal in decoded {
+                print("     • \(cal.summary) | colorId: \(cal.colorId ?? "no colorId") | bgColor: \(cal.backgroundColor ?? "n/a")")
+            }
+            return decoded
+        } catch {
+            print("⚠️ Failed to decode GoogleCalendars: \(error)")
+            return []
+        }
     }
 }
 
+/// Модел за списък от събития
+ struct GoogleEventList: Codable {
+    let items: [GoogleEvent]
+}
+
+/// Модел за събитие (може да се разшири според нуждите)
+ struct GoogleEvent: Codable {
+    let id: String
+    let summary: String?
+    let start: EventDateTime?
+    let end: EventDateTime?
+
+    struct EventDateTime: Codable {
+        let date: String?
+        let dateTime: String?
+    }
+}

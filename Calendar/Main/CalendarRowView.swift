@@ -48,3 +48,80 @@ struct CalendarRowView: View {
         .padding(.vertical, 4)
     }
 }
+import SwiftUI
+import EventKit
+
+struct GoogleCalendarRowView: View {
+    let googleCalendar: GoogleCalendarItem
+    let isSelected: Bool
+    let toggleAction: (GoogleCalendarItem) -> Void
+    
+    var body: some View {
+        // 1) Изчисляваме цвета от backgroundColor-а (ако го има).
+        let calendarColor = colorFromHex(googleCalendar.backgroundColor)
+
+        HStack(spacing: 16) {
+            Button(action: { toggleAction(googleCalendar) }) {
+                ZStack {
+                    Circle()
+                        .fill(calendarColor)
+                        .frame(width: 28, height: 28)
+                    
+                    if isSelected {
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .buttonStyle(.plain)
+            
+            Text(googleCalendar.summary)
+                .foregroundColor(.primary)
+            
+            Spacer()
+        }
+        .padding(.vertical, 4)
+    }
+}
+func colorFromHex(_ hex: String?) -> Color {
+    guard var hexString = hex?.trimmingCharacters(in: .whitespacesAndNewlines),
+          !hexString.isEmpty else {
+        return .blue // fallback цвят
+    }
+
+    // Премахваме # ако има
+    if hexString.hasPrefix("#") {
+        hexString.removeFirst()
+    }
+
+    // В зависимост от това дали е 6 или 8-символен хекс, можем да обработим алфа канал
+    // но често Google връща 6-символен (RRGGBB).
+    // Ако искате да обработите 8-символен, ето примерен подход:
+
+    if hexString.count == 6 {
+        hexString.append("FF") // добавяме алфа FF (непрозрачно)
+    } else if hexString.count != 8 {
+        // Непознат формат => връщаме fallback
+        return .blue
+    }
+
+    var rgbValue: UInt64 = 0
+    let scanner = Scanner(string: hexString)
+    guard scanner.scanHexInt64(&rgbValue) else {
+        return .blue
+    }
+
+    let r = Double((rgbValue & 0xFF000000) >> 24) / 255.0
+    let g = Double((rgbValue & 0x00FF0000) >> 16) / 255.0
+    let b = Double((rgbValue & 0x0000FF00) >> 8)  / 255.0
+    let a = Double(rgbValue & 0x000000FF)         / 255.0
+
+    return Color(
+        .sRGB,
+        red: r,
+        green: g,
+        blue: b,
+        opacity: a
+    )
+}
