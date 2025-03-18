@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>GIDClientID</key>
+       <string>540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <!-- Това е вашият reversed client ID, взет от Google Cloud Console -->
+          <string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
+        </array>
+      </dict>
+    </array>
+
+</dict>
+</plist>

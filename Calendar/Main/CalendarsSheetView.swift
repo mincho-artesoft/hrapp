@@ -5,25 +5,25 @@ struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
 
-    // Показваме ли Add/Edit sheet
-    @State private var showAddCalendarView = false
-    @State private var calendarToEdit: EKCalendar? = nil
-
-    // За разгръщане на секциите
+    // За разгъване на DisclosureGroup
     @State private var isOnMyIphoneExpanded = true
     @State private var isOtherExpanded      = true
+
+    // Кое sheet да покажем (nil, ако не искаме да показваме sheet)
+    @State private var sheetType: AddCalendarSheetType? = nil
+
+    // За Edit
+    @State private var calendarToEdit: EKCalendar? = nil
 
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    // "On My iPhone"
                     DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
                         ForEach(viewModel.allCalendars.filter { $0.source.sourceType == .local },
                                 id: \.calendarIdentifier) { cal in
                             CalendarRowView(
                                 calendar: cal,
-                                // Вече гледаме директно viewModel.selectedCalendarIDs
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                 toggleAction: toggleCalendar,
                                 editAction: {
@@ -32,8 +32,7 @@ struct CalendarsSheetView: View {
                             )
                         }
                     }
-
-                    // "Other"
+                    
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
                         ForEach(viewModel.allCalendars.filter { $0.source.sourceType != .local },
                                 id: \.calendarIdentifier) { cal in
@@ -50,21 +49,29 @@ struct CalendarsSheetView: View {
                 }
                 .navigationBarTitle("Calendars", displayMode: .inline)
                 .navigationBarItems(
-                    trailing:
-                        Button("Done") {
-                            presentationMode.wrappedValue.dismiss()
-                        }
+                    trailing: Button("Done") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 )
-
-                // Долни бутони "Add Calendar" и "Hide All"
+                
+                // Долни бутони "Add Calendar" (Menu) и "Hide All"
                 HStack {
-                    Button("Add Calendar") {
-                        showAddCalendarView = true
+                    // Заменяме Button("Add Calendar") с Menu("Add Calendar")
+                    Menu("Add Calendar") {
+                        Button("Add Local Calendar") {
+                            // При избор на „Add Local Calendar“ показваме sheet за локален календар
+                            sheetType = .local
+                        }
+                        
+                        Button("Add Integrated Calendar") {
+                            // При избор на „Add Integrated Calendar“ показваме sheet за интеграция
+                            sheetType = .integration
+                        }
                     }
                     .padding(.leading)
-
+                    
                     Spacer()
-
+                    
                     Button("Hide All") {
                         viewModel.selectedCalendarIDs.removeAll()
                     }
@@ -74,15 +81,18 @@ struct CalendarsSheetView: View {
             }
         }
         .onAppear {
-            // Когато отворим листа, презареждаме текущия списък календари
             viewModel.reloadCalendars()
         }
-        // Sheet за Add
-        .sheet(isPresented: $showAddCalendarView, onDismiss: {
-            // Когато AddCalendarView се затвори
+        // Sheet за Add (local или интеграция)
+        .sheet(item: $sheetType, onDismiss: {
             viewModel.reloadCalendars()
-        }) {
-            AddCalendarView()
+        }) { type in
+            switch type {
+            case .local:
+                AddCalendarView()
+            case .integration:
+                AddIntegrationView()
+            }
         }
         // Sheet за Edit
         .sheet(item: $calendarToEdit, onDismiss: {
@@ -91,7 +101,7 @@ struct CalendarsSheetView: View {
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
         }
     }
-
+    
     private func toggleCalendar(_ cal: EKCalendar) {
         if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {
             viewModel.selectedCalendarIDs.remove(cal.calendarIdentifier)
@@ -100,3 +110,5 @@ struct CalendarsSheetView: View {
         }
     }
 }
+
+

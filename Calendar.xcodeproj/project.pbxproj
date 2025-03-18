@@ -8,15 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		504D17D12D678413006E5D6E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 504D17D02D678413006E5D6E /* FSCalendar */; };
+		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
+		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50D8281C2D80218F004B3545 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "Calendar" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 50B2124A2D4111B800ABB8D3 /* Calendar */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		50B2124D2D4111B800ABB8D3 /* Calendar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "Calendar" target */,
+			);
 			path = Calendar;
 			sourceTree = "<group>";
 		};
@@ -27,7 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */,
 				504D17D12D678413006E5D6E /* FSCalendar in Frameworks */,
+				50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +88,8 @@
 			name = Calendar;
 			packageProductDependencies = (
 				504D17D02D678413006E5D6E /* FSCalendar */,
+				50D829892D886BBD004B3545 /* GoogleSignIn */,
+				50D8298B2D886BBD004B3545 /* GoogleSignInSwift */,
 			);
 			productName = Calendar;
 			productReference = 50D8281C2D80218F004B3545 /* Calendar.app */;
@@ -142,6 +161,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				504D17CE2D6783EC006E5D6E /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 50B212422D4111B800ABB8D3;
@@ -304,6 +324,7 @@
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calendar/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -335,6 +356,7 @@
 				DEVELOPMENT_TEAM = 8293TNMX6S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calendar/Info.plist;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -387,6 +409,14 @@
 				minimumVersion = 2.8.4;
 			};
 		};
+		50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -394,6 +424,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 504D17CE2D6783EC006E5D6E /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		50D829892D886BBD004B3545 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		50D8298B2D886BBD004B3545 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
