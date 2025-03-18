@@ -220,16 +220,29 @@ struct RootView: View {
         }
         .sheet(isPresented: $showCalendarsSheet, onDismiss: {
             if accessGranted {
-                // Ако потребителят смени календари, да презаредим
-                if selectedTab == 3 {
-                    loadMultiDayEvents()
-                } else if selectedTab == 1 {
+                switch selectedTab {
+                case 0:
+
+                    let nowMonth = Calendar.current.startOfDay(for: Date())
+                    CalendarViewModel.shared.loadEvents(for: nowMonth)
+
+                case 1:
                     loadSingleDayEvents()
-                } else if selectedTab == 4 {
+                case 2:
+                    let currentYear = Calendar.current.component(.year, from: Date())
+                    CalendarViewModel.shared.loadEventsForWholeYear(year: currentYear)
+
+                case 3:
+                    loadMultiDayEvents()
+
+                case 4:
                     pinnedAllEvents.removeAll()
-                } else if selectedTab == 5 {
-                    // Тук пак само локални, но и селектирани
+
+                case 5:
                     loadSingleDayEventsLocal()
+
+                default:
+                    break
                 }
             }
         }) {

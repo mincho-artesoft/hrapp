@@ -14,7 +14,9 @@ final class CalendarViewModel: ObservableObject {
     
     // MARK: - EventKit Store & Properties
     let eventStore: EKEventStore = EKEventStore()
-    
+    /// Събития от Google, групирани по calendarId
+    @Published var googleEventsByCalendarID: [String: [GoogleEvent]] = [:]
+
     /// Съхраняваме всички намерени EKCalendar (локални, iCloud, Outlook, и т.н.)
     @Published var allCalendars: [EKCalendar] = []
     
@@ -256,7 +258,144 @@ final class CalendarViewModel: ObservableObject {
             }
         }
     }
+    /// Зарежда събития само от онези Google календари, които са в `selectedCalendarIDs`.
+    /// Ако `selectedCalendarIDs` съдържа "google::<calendar.id>", зареждаме събития за този календар.
+    @MainActor
+    func fetchGoogleEventsForSelectedCalendars(
+        startDate: Date,
+        endDate: Date
+    ) async {
+        guard let user = GIDSignIn.sharedInstance.currentUser else {
+            print("⚠️ Not signed in to Google => skip fetching events.")
+            return
+        }
+        
+        // Google Calendar API изисква да подадем timeMin/timeMax в ISO8601 (UTC).
+        let formatter = ISO8601DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let timeMin = formatter.string(from: startDate)
+        let timeMax = formatter.string(from: endDate)
+        
+        // Вземаме актуалния Google accessToken
+        let accessToken = user.accessToken.tokenString
+        
+        // Филтрираме само календарите, чиито ID (с добавен префикс) са в selectedCalendarIDs
+        let selectedGoogleCalendars = googleCalendars.filter {
+            selectedCalendarIDs.contains(CalendarViewModel.googlePrefix + $0.id)
+        }
+        
+        // Временен речник за събития
+        var tempEventsDict: [String: [GoogleEvent]] = [:]
+        
+        // Обхождаме само избраните googleCalendars
+        for googleCal in selectedGoogleCalendars {
+            do {
+                // Примерна заявка към Google Calendar API:
+                // GET /calendar/v3/calendars/{calendarId}/events?timeMin=...&timeMax=...&singleEvents=true
+                
+                var urlString = "https://www.googleapis.com/calendar/v3/calendars/\(googleCal.id)/events"
+                urlString += "?timeMin=\(timeMin)"
+                urlString += "&timeMax=\(timeMax)"
+                urlString += "&singleEvents=true"
+                
+                guard let url = URL(string: urlString) else { continue }
+                
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+                request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+                
+                let (data, response) = try await URLSession.shared.data(for: request)
+                guard let httpResponse = response as? HTTPURLResponse,
+                      (200..<300).contains(httpResponse.statusCode) else {
+                    let respStr = String(data: data, encoding: .utf8) ?? "n/a"
+                    print("⚠️ Error from Google (/events): \(respStr)")
+                    continue
+                }
+                
+                // Декодираме JSON отговора в GoogleEventList
+                let eventList = try JSONDecoder().decode(GoogleEventList.self, from: data)
+                let events = eventList.items
+                
+                // Записваме събитията във временния речник
+                tempEventsDict[googleCal.id] = events
+                
+                print("✅ \(events.count) events for \(googleCal.summary) [\(googleCal.id)]")
+            }
+            catch {
+                print("⚠️ Fetch events error for \(googleCal.id): \(error)")
+            }
+        }
+        
+        // Обновяваме @Published речника на главната нишка
+        self.googleEventsByCalendarID = tempEventsDict
+    }
 
+    @MainActor
+    func fetchGoogleEventsForAllCalendars(
+        startDate: Date,
+        endDate: Date
+    ) async {
+        guard let user = GIDSignIn.sharedInstance.currentUser else {
+            print("⚠️ Not signed in to Google => skip fetching events.")
+            return
+        }
+        
+        // Google Calendar API изисква да подадем timeMin/timeMax в ISO8601 формат (UTC).
+        let formatter = ISO8601DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        let timeMin = formatter.string(from: startDate)
+        let timeMax = formatter.string(from: endDate)
+        
+        // Ще ни трябва валидният accessToken
+        let accessToken = user.accessToken.tokenString
+        
+        // Ще съберем всички резултати в един временен речник.
+        var tempEventsDict: [String: [GoogleEvent]] = [:]
+        
+        // Обхождаме всеки календар от googleCalendars
+        for googleCal in googleCalendars {
+            do {
+                // 1) Правим заявка /calendars/<cal.id>/events?timeMin=...&timeMax=...&singleEvents=true
+                //    (singleEvents=true кара Google да „експандне“ recurring events на отделни екземпляри)
+                
+                var urlString = "https://www.googleapis.com/calendar/v3/calendars/\(googleCal.id)/events"
+                urlString += "?timeMin=\(timeMin)"
+                urlString += "&timeMax=\(timeMax)"
+                urlString += "&singleEvents=true"
+                
+                guard let url = URL(string: urlString) else { continue }
+                
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
+                request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+                
+                let (data, response) = try await URLSession.shared.data(for: request)
+                guard let httpResponse = response as? HTTPURLResponse,
+                      (200..<300).contains(httpResponse.statusCode) else {
+                    let respStr = String(data: data, encoding: .utf8) ?? "n/a"
+                    print("⚠️ Error from Google (/events): \(respStr)")
+                    continue
+                }
+                
+                // 2) Декодираме JSON отговора в GoogleEventList
+                let eventList = try JSONDecoder().decode(GoogleEventList.self, from: data)
+                let events = eventList.items
+                
+                // 3) Записваме събитията за този календар
+                tempEventsDict[googleCal.id] = events
+                
+                print("✅ \(events.count) events for \(googleCal.summary) [\(googleCal.id)]")
+            }
+            catch {
+                print("⚠️ Fetch events error for \(googleCal.id): \(error)")
+            }
+        }
+        
+        // Накрая обновяваме @Published речника на главната нишка
+        self.googleEventsByCalendarID = tempEventsDict
+    }
     /// Извлича списък от Google календари директно от API (ако имаме логнат user)
     @MainActor
     func fetchGoogleCalendarsFromAPI() async {
