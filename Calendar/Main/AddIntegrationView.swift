@@ -72,7 +72,7 @@ struct AddIntegrationView: View {
     }
 }
 
-// MARK: - Методи за логване, разлогване, четене на календари + импорт в локални календари
+// MARK: - Методи за логване, разлогване, четене на календари + импорт
 extension AddIntegrationView {
     func restoreSignInIfNeeded() {
         GIDSignIn.sharedInstance.restorePreviousSignIn { signInResult, error in
@@ -127,6 +127,8 @@ extension AddIntegrationView {
     
     /// Зареждаме списъка с календари от Google, след което за всеки календар ще извлечем и евентите му,
     /// и ги импортираме в локален календар.
+    ///
+    /// Сега използваме `importGoogleEventsAvoidingDuplicates`, за да не се дублират събитията.
     func loadGoogleCalendars() async {
         guard let user = GIDSignIn.sharedInstance.currentUser else {
             errorMessage = "Not signed in."
@@ -179,7 +181,7 @@ extension AddIntegrationView {
             let decoder = JSONDecoder()
             let calendarList = try decoder.decode(GoogleCalendarList.self, from: data)
             
-            // 3) За всеки календар извличаме евентите -> записваме ги в локален
+            // 3) За всеки календар извличаме евентите -> записваме/ъпдейтваме локално
             var validCalendars: [GoogleCalendarItem] = []
             
             for cal in calendarList.items {
@@ -187,13 +189,12 @@ extension AddIntegrationView {
                     // Вземаме евентите за този Google календар
                     let events = try await fetchEvents(forCalendarId: cal.id, accessToken: accessToken)
                     
-                    // Импортираме евентите в локален календар:
+                    // Импортираме евентите в локален календар (с Avoiding Duplicates!)
                     // 1) Намираме/създаваме EKCalendar (On My iPhone) за този Google календар
                     let localCal = try CalendarViewModel.shared.findOrCreateLocalCalendar(for: cal)
                     
-                    // 2) Импортираме събитията
-                    //    Ако искате да избягвате дубликати, ползвайте importGoogleEventsAvoidingDuplicates(...)
-                    try await CalendarViewModel.shared.importGoogleEvents(events, into: localCal)
+                    // 2) Импортираме събитията, като ъпдейтваме вече създадени
+                    try await CalendarViewModel.shared.importGoogleEventsAvoidingDuplicates(events, into: localCal)
                     
                     // Добавяме календара към списъка за UI
                     validCalendars.append(cal)
@@ -245,38 +246,6 @@ extension AddIntegrationView {
     }
 }
 
-// MARK: - Модели
-struct GoogleCalendarList: Codable {
-    let items: [GoogleCalendarItem]
-}
-
-struct GoogleCalendarItem: Codable, Hashable {
-    let id: String
-    let summary: String
-    let description: String?
-    
-    let colorId: String?
-    let backgroundColor: String? // <- Hex стринг (примерно "#9fe1e7")
-    let foregroundColor: String? // <- Hex стринг за текста
-}
-
-struct GoogleEventsList: Codable {
-    let items: [GoogleEvent]
-}
-
-struct GoogleEvent: Codable, Hashable {
-    let id: String
-    let summary: String?
-    let description: String?
-    let start: EventDateTime?
-    let end: EventDateTime?
-}
-
-struct EventDateTime: Codable, Hashable {
-    let dateTime: String?   // ако е събитие с точни часове
-    let date: String?       // ако е целодневно събитие
-}
-
 /// Хелпър за topMostViewController
 extension UIApplication {
     func topMostViewController(_ base: UIViewController? = nil) -> UIViewController? {
@@ -291,39 +260,5 @@ extension UIApplication {
             return topMostViewController(presented)
         }
         return baseVC
-    }
-}
-import UIKit
-
-extension UIColor {
-    /// Конструктор за "#RRGGBB" или "#RRGGBBAA".
-    convenience init?(hex: String) {
-        var raw = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-        // Махаме '#' ако го има
-        if raw.hasPrefix("#") {
-            raw.removeFirst()
-        }
-        
-        // Допустими формати: 6 или 8 символа (RGB или RGBA)
-        guard raw.count == 6 || raw.count == 8 else {
-            return nil
-        }
-        
-        var rgbValue: UInt64 = 0
-        Scanner(string: raw).scanHexInt64(&rgbValue)
-        
-        if raw.count == 6 {
-            let r = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-            let g = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
-            let b = CGFloat(rgbValue & 0x0000FF)         / 255.0
-            self.init(red: r, green: g, blue: b, alpha: 1.0)
-        } else {
-            // 8 символа (RRGGBBAA)
-            let r = CGFloat((rgbValue & 0xFF000000) >> 24) / 255.0
-            let g = CGFloat((rgbValue & 0x00FF0000) >> 16) / 255.0
-            let b = CGFloat((rgbValue & 0x0000FF00) >> 8)  / 255.0
-            let a = CGFloat(rgbValue & 0x000000FF)         / 255.0
-            self.init(red: r, green: g, blue: b, alpha: a)
-        }
     }
 }
