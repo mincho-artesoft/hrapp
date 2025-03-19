@@ -257,49 +257,70 @@ final class CalendarViewModel: ObservableObject {
     }
 }
 
-// MARK: - Методи за намиране/създаване на локален календар
+// MARK: - Методи за намиране/създаване на локален календар (с ъпдейт на име/цвят)
 extension CalendarViewModel {
     
-    /// Връща (или създава, ако не съществува) локален EKCalendar, кореспондиращ на даден Google календар.
-    /// Ползваме `googleToLocalCalendarMapping`, за да проверим дали вече сме създали такъв.
+    /// Връща (или създава) локален EKCalendar за Google календара.
+    /// Ако вече съществува, опитваме да обновим title и cgColor.
     func findOrCreateLocalCalendar(for googleCal: GoogleCalendarItem) throws -> EKCalendar {
         
-        // 1) Проверяваме речника дали вече имаме локален календар за този googleCal.id
+        // Ползваме eventStore.calendar(withIdentifier:) – сигурен начин да вземем актуален EKCalendar
         if let localCalID = googleToLocalCalendarMapping[googleCal.id],
-           let existingLocalCalendar = allCalendars.first(where: { $0.calendarIdentifier == localCalID }) {
+           let existingLocalCalendar = eventStore.calendar(withIdentifier: localCalID) {
+            
+            // ОБНОВЯВАМЕ име и цвят, ако са се променили
+            if existingLocalCalendar.title != googleCal.summary {
+                existingLocalCalendar.title = googleCal.summary
+            }
+            
+            if let bgColorHex = googleCal.backgroundColor,
+               let uiColor = UIColor(hex: bgColorHex) {
+                let currentComponents = existingLocalCalendar.cgColor?.components
+                let newComponents = uiColor.cgColor.components
+                if currentComponents != newComponents {
+                    existingLocalCalendar.cgColor = uiColor.cgColor
+                }
+            }
+            
+            // Записваме промените
+            do {
+                try eventStore.saveCalendar(existingLocalCalendar, commit: true)
+                reloadCalendars()
+            } catch {
+                print("Failed to save calendar: \(error)")
+            }
+            
             return existingLocalCalendar
+            
+        } else {
+            // Създаваме нов локален календар
+            guard let localSource = eventStore.sources.first(where: { $0.sourceType == .local }) else {
+                throw NSError(domain: "LocalSourceError",
+                              code: 1,
+                              userInfo: [NSLocalizedDescriptionKey: "Не е намерен локален source (On My iPhone)."])
+            }
+            
+            let newCal = EKCalendar(for: .event, eventStore: eventStore)
+            newCal.title = googleCal.summary
+            newCal.source = localSource
+            
+            if let bgColorHex = googleCal.backgroundColor,
+               let uiColor = UIColor(hex: bgColorHex) {
+                newCal.cgColor = uiColor.cgColor
+            }
+            
+            try eventStore.saveCalendar(newCal, commit: true)
+            reloadCalendars()
+            
+            googleToLocalCalendarMapping[googleCal.id] = newCal.calendarIdentifier
+            saveGoogleToLocalCalendarMapping()
+            
+            return newCal
         }
-        
-        // 2) Ако нямаме запис, създаваме нов локален календар
-        guard let localSource = eventStore.sources.first(where: { $0.sourceType == .local }) else {
-            throw NSError(domain: "LocalSourceError",
-                          code: 1,
-                          userInfo: [NSLocalizedDescriptionKey: "Не е намерен локален source (On My iPhone)."])
-        }
-        
-        let newCal = EKCalendar(for: .event, eventStore: eventStore)
-        // Ползваме името на Google календара
-        newCal.title = googleCal.summary
-        newCal.source = localSource
-        
-        // Ако имаме backgroundColor, задаваме го
-        if let bgColor = googleCal.backgroundColor,
-           let uiColor = UIColor(hex: bgColor) {
-            newCal.cgColor = uiColor.cgColor
-        }
-        
-        try eventStore.saveCalendar(newCal, commit: true)
-        reloadCalendars()
-        
-        // Записваме mapping: googleCal.id -> newCal.calendarIdentifier
-        googleToLocalCalendarMapping[googleCal.id] = newCal.calendarIdentifier
-        saveGoogleToLocalCalendarMapping()
-        
-        return newCal
     }
 }
 
-// MARK: - Методи за Импорт на Събития
+// MARK: - Методи за Импорт на Събития (без и със проверка за дубликати)
 extension CalendarViewModel {
 
     /// Импорт на Google събития, БЕЗ проверка за дубликати (създава нови всеки път!)
@@ -338,7 +359,7 @@ extension CalendarViewModel {
         }
     }
     
-    /// Импорт на Google събития *с проверка* (и избягване) на дубликати.
+    /// Импорт на Google събития с проверка (и избягване) на дубликати.
     /// Ако има вече създадено събитие за `gEvent.id`, го ъпдейтваме вместо да създаваме ново.
     func importGoogleEventsAvoidingDuplicates(_ googleEvents: [GoogleEvent],
                                               into localCalendar: EKCalendar) async throws {
@@ -419,7 +440,60 @@ extension CalendarViewModel {
     }
 }
 
-// MARK: - Google Models
+// MARK: - Fetch ALL events (без период, с обработка на pageToken)
+extension CalendarViewModel {
+    
+    /// Изтегля ВСИЧКИ събития (минали, бъдещи) от Google Calendar,
+    /// като обработва и nextPageToken, за да върне над 2500 събития, ако има.
+    func fetchAllEvents(forCalendarId calId: String, accessToken: String) async throws -> [GoogleEvent] {
+        var allEvents: [GoogleEvent] = []
+        var nextPageToken: String? = nil
+        
+        repeat {
+            var urlString = "https://www.googleapis.com/calendar/v3/calendars/\(calId)/events?singleEvents=true&orderBy=startTime"
+            // Ако имаме pageToken, добавяме го
+            if let token = nextPageToken {
+                urlString += "&pageToken=\(token)"
+            }
+            
+            guard let url = URL(string: urlString) else {
+                throw URLError(.badURL)
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode) else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+                let respStr = String(data: data, encoding: .utf8) ?? ""
+                throw NSError(
+                    domain: "CalendarFetch",
+                    code: statusCode,
+                    userInfo: [NSLocalizedDescriptionKey: "HTTP Error: \(respStr)"]
+                )
+            }
+            
+            let decoder = JSONDecoder()
+            let eventsList = try decoder.decode(GoogleEventsList.self, from: data)
+            
+            // Добавяме събития
+            allEvents.append(contentsOf: eventsList.items)
+            
+            // Гледаме дали има nextPageToken в JSON отговора
+            let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            let token = json?["nextPageToken"] as? String
+            nextPageToken = token  // ако е nil => край
+        } while nextPageToken != nil
+        
+        return allEvents
+    }
+}
+
+// MARK: - Модели за декодиране на Google Calendar
 struct GoogleCalendarList: Codable {
     let items: [GoogleCalendarItem]
 }
@@ -451,7 +525,7 @@ struct EventDateTime: Codable, Hashable {
     let date: String?
 }
 
-// MARK: - UIColor(hex:)
+// MARK: - UIColor(hex:) конструктор
 import UIKit
 
 extension UIColor {

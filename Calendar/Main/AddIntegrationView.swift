@@ -125,10 +125,8 @@ extension AddIntegrationView {
         googleCalendars = []
     }
     
-    /// Зареждаме списъка с календари от Google, след което за всеки календар ще извлечем и евентите му,
-    /// и ги импортираме в локален календар.
-    ///
-    /// Сега използваме `importGoogleEventsAvoidingDuplicates`, за да не се дублират събитията.
+    /// Зареждаме списъка с календари от Google, след което за всеки календар ще извлечем *всички* евенти,
+    /// и ще ги добавим / ъпдейтнем локално (avoid duplicates).
     func loadGoogleCalendars() async {
         guard let user = GIDSignIn.sharedInstance.currentUser else {
             errorMessage = "Not signed in."
@@ -181,26 +179,25 @@ extension AddIntegrationView {
             let decoder = JSONDecoder()
             let calendarList = try decoder.decode(GoogleCalendarList.self, from: data)
             
-            // 3) За всеки календар извличаме евентите -> записваме/ъпдейтваме локално
+            // 3) За всеки календар -> изтегляме ВСИЧКИ събития и ги импортваме (avoid duplicates)
             var validCalendars: [GoogleCalendarItem] = []
             
             for cal in calendarList.items {
                 do {
-                    // Вземаме евентите за този Google календар
-                    let events = try await fetchEvents(forCalendarId: cal.id, accessToken: accessToken)
+                    // Взимаме ВСИЧКИ (минали + бъдещи) събития, обработвайки pageToken
+                    let allEvents = try await CalendarViewModel.shared.fetchAllEvents(forCalendarId: cal.id,
+                                                                                      accessToken: accessToken)
                     
-                    // Импортираме евентите в локален календар (с Avoiding Duplicates!)
-                    // 1) Намираме/създаваме EKCalendar (On My iPhone) за този Google календар
+                    // 1) Намираме/създаваме локален календар (и ъпдейтваме име/цвят, ако се е променил)
                     let localCal = try CalendarViewModel.shared.findOrCreateLocalCalendar(for: cal)
                     
-                    // 2) Импортираме събитията, като ъпдейтваме вече създадени
-                    try await CalendarViewModel.shared.importGoogleEventsAvoidingDuplicates(events, into: localCal)
+                    // 2) Импортираме събитията, като ъпдейтваме вече съществуващи (avoid duplicates)
+                    try await CalendarViewModel.shared.importGoogleEventsAvoidingDuplicates(allEvents, into: localCal)
                     
                     // Добавяме календара към списъка за UI
                     validCalendars.append(cal)
                     
                 } catch {
-                    // Ако не успеем да заредим евенти или да създадем календар, го пропускаме
                     print("Skipping calendar \(cal.id) due to fetch error: \(error.localizedDescription)")
                 }
             }
@@ -213,36 +210,6 @@ extension AddIntegrationView {
         } catch {
             self.errorMessage = "Fetch error: \(error.localizedDescription)"
         }
-    }
-    
-    /// Връща списък от евентите на даден Google календар.
-    private func fetchEvents(forCalendarId calId: String, accessToken: String) async throws -> [GoogleEvent] {
-        // Пример: включваме future events от днес нататък
-        let nowISO = ISO8601DateFormatter().string(from: Date())
-        guard let eventsURL = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(calId)/events?timeMin=\(nowISO)&singleEvents=true&orderBy=startTime") else {
-            throw URLError(.badURL)
-        }
-        
-        var eventsRequest = URLRequest(url: eventsURL)
-        eventsRequest.httpMethod = "GET"
-        eventsRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-
-        let (data, response) = try await URLSession.shared.data(for: eventsRequest)
-        
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200..<300).contains(httpResponse.statusCode) else {
-            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
-            let respStr = String(data: data, encoding: .utf8) ?? ""
-            throw NSError(
-                domain: "CalendarFetch",
-                code: statusCode,
-                userInfo: [NSLocalizedDescriptionKey: "HTTP Error: \(respStr)"]
-            )
-        }
-
-        let decoder = JSONDecoder()
-        let eventsList = try decoder.decode(GoogleEventsList.self, from: data)
-        return eventsList.items
     }
 }
 
