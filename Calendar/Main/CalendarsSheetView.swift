@@ -120,10 +120,9 @@ struct CalendarsSheetView: View {
                 HStack {
                     Menu("Add Calendar") {
                         Button("Add Local Calendar") {
-                            // тук може да отвориш някакъв sheet за създаване на локален календар
-                            // или директно да вмъкнеш логиката
+                            // Тук може да отвориш sheet за създаване на локален календар
+                            // или директно да вмъкнеш логика
                         }
-                        // Махаме "Add Integrated Calendar" понеже вече го правим горе
                     }
                     .padding(.leading)
 
@@ -187,11 +186,15 @@ extension CalendarsSheetView {
             return
         }
         
+        // 1) Инициализираме GIDConfiguration
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
         
-        let scopes = ["https://www.googleapis.com/auth/calendar.readonly"]
+        // 2) Тук ползваме "calendar" (пълен достъп),
+        // вместо "calendar.readonly", за да можем да редактираме/трием/създаваме събития.
+        let scopes = ["https://www.googleapis.com/auth/calendar"]
         
+        // 3) Стартираме Google Sign-In
         GIDSignIn.sharedInstance.signIn(
             withPresenting: topVC,
             hint: nil,
@@ -223,9 +226,10 @@ extension CalendarsSheetView {
             return
         }
         
-        let neededScope = "https://www.googleapis.com/auth/calendar.readonly"
+        // Тук също ползваме "calendar", не "calendar.readonly"
+        let neededScope = "https://www.googleapis.com/auth/calendar"
         
-        // 1) Проверяваме дали вече е даден scope за четене на Google Calendar
+        // 1) Проверяваме дали имаме нужния scope
         if !(user.grantedScopes?.contains(neededScope) ?? false) {
             guard let topVC = UIApplication.shared.topMostViewController() else { return }
             
@@ -246,7 +250,7 @@ extension CalendarsSheetView {
             }
         }
         
-        // 2) Вземаме списък от календари
+        // 2) Вземаме списък от календари (GET)
         let accessToken = user.accessToken.tokenString
         guard let url = URL(string: "https://www.googleapis.com/calendar/v3/users/me/calendarList") else {
             return
@@ -291,7 +295,7 @@ extension CalendarsSheetView {
                 }
             }
             
-            // 4) Записваме филтрираните календари (за UI, ако искаш да ги покажеш)
+            // 4) Записваме филтрираните календари (за UI)
             DispatchQueue.main.async {
                 self.googleCalendars = validCalendars
             }

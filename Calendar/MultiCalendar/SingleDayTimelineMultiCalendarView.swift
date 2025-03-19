@@ -698,7 +698,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
                 let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
                 totalDays = dayCount + 1
-                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
             let realStart: Date
             let realEnd: Date
@@ -1340,7 +1339,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
                 let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
                 totalDays = dayCount + 1
-                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
 
             // Събираме всички slice-ове на това събитие
@@ -1355,7 +1353,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 }
             }
 
-            print("IndexA", slices.count)
 
             // Създаваме ghost-ове + пазим original frames
             draggingGhosts.removeAll()

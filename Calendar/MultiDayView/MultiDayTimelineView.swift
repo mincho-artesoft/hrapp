@@ -750,7 +750,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
                 let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
                 totalDays = dayCount + 1
-                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
             let realStart: Date
             let realEnd: Date
@@ -776,7 +775,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     }
                 }
             }
-            print("IndexB", slices.count)
             if let multi = descriptor as? EKMultiDayWrapper {
                 if totalDays != slices.count {
                     minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
@@ -790,7 +788,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             draggingOriginalAlphas.removeAll()
             
             var originalFrames = [EventView: CGRect]()
-            print("IndexA", slices.count)
             for realSliceView in slices {
                 if let desc = eventViewToDescriptor[realSliceView] {
                     
@@ -824,7 +821,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     let ghostW = dayColumnWidth - style.eventGap * 2 - 2
 
                     if totalDays == 1 {
-                        print("ghostX", sliceFrameInContainer.minX, "ghostY", sliceFrameInContainer.minY)
                         finalY = sliceFrameInContainer.minY
                         ghostH = sliceFrameInContainer.height
                     }
@@ -1230,7 +1226,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
                 let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
                 totalDays = dayCount + 1
-                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
             
             // Събираме всички slice-ове на това събитие
@@ -1263,10 +1258,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     }
                 }
             }
-//            for realSliceView in minsingEvent {
-//                slices.append(realSliceView)
-//            }
-            print("IndexA", slices.count)
+
            
 
             // Създаваме ghost-ове + пазим original frames

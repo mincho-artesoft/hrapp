@@ -79,6 +79,7 @@ final class CalendarViewModel: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: googleToLocalCalendarMappingKey),
            let mapping = try? JSONDecoder().decode([String: String].self, from: data) {
             self.googleToLocalCalendarMapping = mapping
+            print("googleToLocalCalendarMapping",googleToLocalCalendarMapping)
         } else {
             self.googleToLocalCalendarMapping = [:]
         }
@@ -87,6 +88,7 @@ final class CalendarViewModel: ObservableObject {
         if let data = UserDefaults.standard.data(forKey: googleToLocalEventMappingKey),
            let mapping = try? JSONDecoder().decode([String: String].self, from: data) {
             self.googleToLocalEventMapping = mapping
+            print("googleToLocalEventMapping",googleToLocalEventMapping)
         } else {
             self.googleToLocalEventMapping = [:]
         }
@@ -98,6 +100,18 @@ final class CalendarViewModel: ObservableObject {
             name: .EKEventStoreChanged,
             object: eventStore
         )
+        GIDSignIn.sharedInstance.restorePreviousSignIn { signInResult, error in
+              if let error = error {
+                  print("Авто-логин в Google неуспешен: \(error.localizedDescription)")
+              } else if let _ = signInResult {
+                  // Успешно възстановена Google сесия
+                  print("Авто-логин в Google успешен!")
+                  // Ако искаш да имаш някакъв флаг в модела, за да знаеш че е логнат:
+                  // self.isGoogleSignedIn = true
+              } else {
+                  print("Няма запомнена Google сесия.")
+              }
+          }
     }
     
     /// Това ще се вика всеки път, когато има промяна (добавяне, триене или редакция на събитие/календар)
@@ -119,8 +133,8 @@ final class CalendarViewModel: ObservableObject {
         let oldIDs = Set(oldEventsDict.keys)
         let newIDs = Set(newEventsDict.keys)
         
-        let addedIDs            = newIDs.subtracting(oldIDs)      // току-що добавени
-        let removedIDs          = oldIDs.subtracting(newIDs)      // току-що изтрити
+        let addedIDs            = newIDs.subtracting(oldIDs)      // току-що добавени (локално)
+        let removedIDs          = oldIDs.subtracting(newIDs)      // току-що изтрити (локално)
         let potentialUpdatedIDs = oldIDs.intersection(newIDs)     // може би редактирани
         
         // –––––––––––––––––––––––––––––––––
@@ -128,35 +142,57 @@ final class CalendarViewModel: ObservableObject {
         // –––––––––––––––––––––––––––––––––
         let googleLocalEventIDs = Set(googleToLocalEventMapping.values)
         
-        // *Добавени* Google събития
-        let googleAddedIDs = addedIDs.filter { googleLocalEventIDs.contains($0) }
-        // *Изтрити* Google събития
-        let googleRemovedIDs = removedIDs.filter { googleLocalEventIDs.contains($0) }
-        // *Потенциално обновени* Google събития
-        let googleUpdatedIDs = potentialUpdatedIDs.filter { googleLocalEventIDs.contains($0) }
+        // 1) Новодобавени локално, но които *съответстват* на Google (т.е. техният календар е Google)
+        let googleAddedIDs = addedIDs.filter { googleLocalEventIDs.contains($0) || isInGoogleCalendar($0) }
         
+        // 2) Изтрити локално
+        let googleRemovedIDs = removedIDs.filter { googleLocalEventIDs.contains($0) }
+        
+        // 3) Обновени
+        let googleUpdatedIDs = potentialUpdatedIDs.filter { googleLocalEventIDs.contains($0) }
+
         // –––––––––––––––––––––––––––––––––
-        // 1) Принтираме *само ако има едно* добавено Google-събитие
+        // 1) Добавено 1 Google-събитие локално
         // –––––––––––––––––––––––––––––––––
         if googleAddedIDs.count == 1,
            let singleAddedID = googleAddedIDs.first,
            let singleAddedEvent = newEventsDict[singleAddedID] {
             
-            print("Добавено 1 Google-събитие: \(singleAddedEvent.title ?? "(без заглавие)")")
+            print("Локално добавено 1 Google-събитие: \(singleAddedEvent.title ?? "(без заглавие)")")
+            
+            // Тук създаваме в Google (Async)
+            Task {
+                do {
+                    try await createEventInGoogle(singleAddedEvent)
+                    print("Успешно създадено Google-събитие!")
+                } catch {
+                    print("Грешка при createEventInGoogle:", error)
+                }
+            }
         }
         
         // –––––––––––––––––––––––––––––––––
-        // 2) Принтираме *само ако има едно* изтрито Google-събитие
+        // 2) Изтрито 1 Google-събитие локално
         // –––––––––––––––––––––––––––––––––
         if googleRemovedIDs.count == 1,
            let singleRemovedID = googleRemovedIDs.first,
            let singleRemovedEvent = oldEventsDict[singleRemovedID] {
             
-            print("Изтрито 1 Google-събитие: \(singleRemovedEvent.title ?? "(без заглавие)")")
+            print("Локално изтрито 1 Google-събитие: \(singleRemovedEvent.title ?? "(без заглавие)")")
+            
+            // Тук изтриваме в Google (Async)
+            Task {
+                do {
+                    try await removeEventFromGoogle(singleRemovedEvent)
+                    print("Успешно изтрито Google-събитие!")
+                } catch {
+                    print("Грешка при removeEventFromGoogle:", error)
+                }
+            }
         }
         
         // –––––––––––––––––––––––––––––––––
-        // 3) Принтираме *само ако има едно* обновено Google-събитие
+        // 3) Обновено 1 Google-събитие локално
         // –––––––––––––––––––––––––––––––––
         if googleUpdatedIDs.count == 1,
            let singleUpdatedID = googleUpdatedIDs.first,
@@ -168,10 +204,21 @@ final class CalendarViewModel: ObservableObject {
                oldEvent.startDate != newEvent.startDate ||
                oldEvent.endDate   != newEvent.endDate {
                 
-                print("Обновено 1 Google-събитие: \(oldEvent.title ?? "(без заглавие)") -> \(newEvent.title ?? "(без заглавие)")")
+                print("Локално обновено 1 Google-събитие: \(oldEvent.title ?? "(без заглавие)") -> \(newEvent.title ?? "(без заглавие)")")
+                
+                // Тук обновяваме в Google (Async)
+                Task {
+                    do {
+                        try await updateEventInGoogle(newEvent)
+                        print("Успешно обновено Google-събитие!")
+                    } catch {
+                        print("Грешка при updateEventInGoogle:", error)
+                    }
+                }
             }
         }
     }
+
 
 
 
@@ -328,16 +375,25 @@ final class CalendarViewModel: ObservableObject {
     
     // MARK: - Записване на mapping-и в UserDefaults
     private func saveGoogleToLocalCalendarMapping() {
+        // 1) Изтриваме старите данни по този ключ
+        UserDefaults.standard.removeObject(forKey: googleToLocalCalendarMappingKey)
+        
+        // 2) Записваме новите
         if let data = try? JSONEncoder().encode(googleToLocalCalendarMapping) {
             UserDefaults.standard.set(data, forKey: googleToLocalCalendarMappingKey)
         }
     }
-    
+
     private func saveGoogleToLocalEventMapping() {
+        // 1) Изтриваме старите данни по този ключ
+        UserDefaults.standard.removeObject(forKey: googleToLocalEventMappingKey)
+        
+        // 2) Записваме новите
         if let data = try? JSONEncoder().encode(googleToLocalEventMapping) {
             UserDefaults.standard.set(data, forKey: googleToLocalEventMappingKey)
         }
     }
+
 }
 
 // MARK: - Методи за намиране/създаване на локален календар (с ъпдейт на име/цвят)
@@ -640,5 +696,245 @@ extension UIColor {
             let a = CGFloat(rgbValue & 0x000000FF)         / 255.0
             self.init(red: r, green: g, blue: b, alpha: a)
         }
+    }
+}
+extension CalendarViewModel {
+    
+    // MARK: - CREATE (POST)
+    /// Създава (POST) ново събитие в Google Calendar, базирано на локалното EKEvent (което току-що е добавено).
+    func createEventInGoogle(_ localEvent: EKEvent) async throws {
+        
+        // 1) Определяме кой Google Calendar ID отговаря на localEvent.calendar:
+        guard let googleCalID = findGoogleCalendarID(forLocalCalendarID: localEvent.calendar.calendarIdentifier) else {
+            throw NSError(domain: "NoGoogleCalID", code: -1, userInfo: [NSLocalizedDescriptionKey: "Локалният календар няма Google ID"])
+        }
+        
+        // 2) Вземаме access token
+        guard let user = GIDSignIn.sharedInstance.currentUser else {
+            throw NSError(domain: "NoGoogleUser", code: -1, userInfo: [NSLocalizedDescriptionKey: "Не сте логнати в Google"])
+        }
+        let accessToken = user.accessToken.tokenString
+        
+        // 3) Подготвяме JSON
+        var requestBody: [String: Any] = [
+            "summary": localEvent.title ?? "(Без заглавие)",
+            "description": localEvent.notes ?? ""
+        ]
+        
+        // Дата/час (ако е all-day -> "date", иначе -> "dateTime")
+        if localEvent.isAllDay {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let startStr = dateFormatter.string(from: localEvent.startDate)
+            let endStr   = dateFormatter.string(from: localEvent.endDate)
+            
+            requestBody["start"] = ["date": startStr]
+            requestBody["end"]   = ["date": endStr]
+        } else {
+            let isoFormatter = ISO8601DateFormatter()
+            let startStr = isoFormatter.string(from: localEvent.startDate)
+            let endStr   = isoFormatter.string(from: localEvent.endDate)
+            
+            requestBody["start"] = [
+                "dateTime": startStr,
+                "timeZone": TimeZone.current.identifier
+            ]
+            requestBody["end"] = [
+                "dateTime": endStr,
+                "timeZone": TimeZone.current.identifier
+            ]
+        }
+        
+        // 4) Правим POST заявка
+        let urlString = "https://www.googleapis.com/calendar/v3/calendars/\(googleCalID)/events"
+        guard let url = URL(string: urlString) else {
+            throw URLError(.badURL)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: requestBody, options: [])
+        request.httpBody = jsonData
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResp = response as? HTTPURLResponse,
+              (200..<300).contains(httpResp.statusCode) else {
+            let respStr = String(data: data, encoding: .utf8) ?? ""
+            throw NSError(domain: "GoogleCreate", code: -1,
+                          userInfo: [NSLocalizedDescriptionKey: "Грешка при Create: \(respStr)"])
+        }
+        
+        // 5) Връща се JSON с новосъздаденото събитие
+        let decoder = JSONDecoder()
+        let createdGoogleEvent = try decoder.decode(GoogleEvent.self, from: data)
+        
+        // 6) Запазваме mapping: GoogleEvent.id -> localEvent.eventIdentifier
+        let newGoogleID = createdGoogleEvent.id
+        googleToLocalEventMapping[newGoogleID] = localEvent.eventIdentifier
+        saveGoogleToLocalEventMapping()
+        
+        print("Create Success: GoogleEventID = \(newGoogleID)")
+    }
+    
+    
+    // MARK: - UPDATE (PATCH)
+    /// Обновява съществуващо Google Event (PATCH).
+    /// Трябва да имаме GoogleEventID => намираме го през `findGoogleEventID(...)`.
+    func updateEventInGoogle(_ localEvent: EKEvent) async throws {
+        
+        // 1) Намираме Google Event ID
+        guard let googleEventID = findGoogleEventID(forLocalEventID: localEvent.eventIdentifier) else {
+            throw NSError(domain: "NoGoogleEventID", code: -1, userInfo: [NSLocalizedDescriptionKey: "Това събитие няма Google ID"])
+        }
+        
+        // 2) Намираме Google Calendar ID
+        guard let googleCalID = findGoogleCalendarID(forLocalCalendarID: localEvent.calendar.calendarIdentifier) else {
+            throw NSError(domain: "NoGoogleCalID", code: -1, userInfo: [NSLocalizedDescriptionKey: "Локалният календар няма Google ID"])
+        }
+        
+        // 3) Access token
+        guard let user = GIDSignIn.sharedInstance.currentUser else {
+            throw NSError(domain: "NoGoogleUser", code: -1, userInfo: [NSLocalizedDescriptionKey: "Не сте логнати в Google"])
+        }
+        let accessToken = user.accessToken.tokenString
+        
+        // 4) Подготвяме данните
+        var patchBody: [String: Any] = [
+            "summary": localEvent.title ?? "(Без заглавие)",
+            "description": localEvent.notes ?? ""
+        ]
+        
+        if localEvent.isAllDay {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let startStr = dateFormatter.string(from: localEvent.startDate)
+            let endStr   = dateFormatter.string(from: localEvent.endDate)
+            
+            patchBody["start"] = ["date": startStr]
+            patchBody["end"]   = ["date": endStr]
+        } else {
+            let isoFormatter = ISO8601DateFormatter()
+            let startStr = isoFormatter.string(from: localEvent.startDate)
+            let endStr   = isoFormatter.string(from: localEvent.endDate)
+            
+            patchBody["start"] = [
+                "dateTime": startStr,
+                "timeZone": TimeZone.current.identifier
+            ]
+            patchBody["end"] = [
+                "dateTime": endStr,
+                "timeZone": TimeZone.current.identifier
+            ]
+        }
+        
+        // 5) Правим PATCH
+        let urlString = "https://www.googleapis.com/calendar/v3/calendars/\(googleCalID)/events/\(googleEventID)"
+        guard let url = URL(string: urlString) else {
+            throw URLError(.badURL)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: patchBody, options: [])
+        request.httpBody = jsonData
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResp = response as? HTTPURLResponse,
+              (200..<300).contains(httpResp.statusCode) else {
+            let respStr = String(data: data, encoding: .utf8) ?? ""
+            throw NSError(domain: "GoogleUpdate", code: -1,
+                          userInfo: [NSLocalizedDescriptionKey: "Грешка при Update: \(respStr)"])
+        }
+        
+        print("Update Success: GoogleEventID = \(googleEventID)")
+    }
+    
+    
+    // MARK: - REMOVE (DELETE)
+    /// Изтрива съществуващ Google Event (DELETE).
+    func removeEventFromGoogle(_ localEvent: EKEvent) async throws {
+        
+        // 1) Намери Google Event ID
+        guard let googleEventID = findGoogleEventID(forLocalEventID: localEvent.eventIdentifier) else {
+            throw NSError(domain: "NoGoogleEventID", code: -1, userInfo: [NSLocalizedDescriptionKey: "Това събитие няма Google ID"])
+        }
+        
+        // 2) Намери Google Calendar ID
+        guard let googleCalID = findGoogleCalendarID(forLocalCalendarID: localEvent.calendar.calendarIdentifier) else {
+            throw NSError(domain: "NoGoogleCalID", code: -1, userInfo: [NSLocalizedDescriptionKey: "Локалният календар няма Google ID"])
+        }
+        
+        // 3) Access token
+        guard let user = GIDSignIn.sharedInstance.currentUser else {
+            throw NSError(domain: "NoGoogleUser", code: -1, userInfo: [NSLocalizedDescriptionKey: "Не сте логнати в Google"])
+        }
+        let accessToken = user.accessToken.tokenString
+        
+        // 4) DELETE заявка
+        let urlString = "https://www.googleapis.com/calendar/v3/calendars/\(googleCalID)/events/\(googleEventID)"
+        guard let url = URL(string: urlString) else {
+            throw URLError(.badURL)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResp = response as? HTTPURLResponse,
+              (200..<300).contains(httpResp.statusCode) else {
+            throw NSError(domain: "GoogleDelete", code: -1,
+                          userInfo: [NSLocalizedDescriptionKey: "Грешка при Delete"])
+        }
+        
+        // 5) Ако е успешно => махаме го от googleToLocalEventMapping
+        if let key = findGoogleEventID(forLocalEventID: localEvent.eventIdentifier) {
+            googleToLocalEventMapping.removeValue(forKey: key)
+            saveGoogleToLocalEventMapping()
+        }
+        
+        print("Delete Success: GoogleEventID = \(googleEventID)")
+    }
+    
+    
+    // MARK: - Помощни функции за "reverse" lookup
+    private func findGoogleEventID(forLocalEventID localID: String) -> String? {
+        // Нашият mapping е googleEventID -> localEventID
+        // Тук обхождаме, за да намерим КОЙ googleEventID съответства на localID
+        for (googleID, mappedLocalID) in googleToLocalEventMapping {
+            if mappedLocalID == localID {
+                return googleID
+            }
+        }
+        return nil
+    }
+
+    private func findGoogleCalendarID(forLocalCalendarID localCalID: String) -> String? {
+        // Нашият mapping е googleCalendarID -> localCalendarID
+        for (googleCalID, mappedLocalCalID) in googleToLocalCalendarMapping {
+            if mappedLocalCalID == localCalID {
+                return googleCalID
+            }
+        }
+        return nil
+    }
+    
+    /// Примерна функция, която проверява дали новосъздадено локално събитие е в "Google" календар (ако искаш да го добавиш).
+    private func isInGoogleCalendar(_ localEventID: String) -> Bool {
+        guard let ev = eventsByID[localEventID] else { return false }
+        let localCalID = ev.calendar.calendarIdentifier
+        
+        // Ако тази calendarIdentifier съвпада с някоя от googleToLocalCalendarMapping.values
+        // => това значи, че този локален календар е създаден за Google.
+        return googleToLocalCalendarMapping.values.contains(localCalID)
     }
 }
