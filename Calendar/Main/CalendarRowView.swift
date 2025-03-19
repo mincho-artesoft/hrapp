@@ -48,42 +48,7 @@ struct CalendarRowView: View {
         .padding(.vertical, 4)
     }
 }
-import SwiftUI
-import EventKit
 
-struct GoogleCalendarRowView: View {
-    let googleCalendar: GoogleCalendarItem
-    let isSelected: Bool
-    let toggleAction: (GoogleCalendarItem) -> Void
-    
-    var body: some View {
-        // 1) Изчисляваме цвета от backgroundColor-а (ако го има).
-        let calendarColor = colorFromHex(googleCalendar.backgroundColor)
-
-        HStack(spacing: 16) {
-            Button(action: { toggleAction(googleCalendar) }) {
-                ZStack {
-                    Circle()
-                        .fill(calendarColor)
-                        .frame(width: 28, height: 28)
-                    
-                    if isSelected {
-                        Image(systemName: "checkmark")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(.white)
-                    }
-                }
-            }
-            .buttonStyle(.plain)
-            
-            Text(googleCalendar.summary)
-                .foregroundColor(.primary)
-            
-            Spacer()
-        }
-        .padding(.vertical, 4)
-    }
-}
 func colorFromHex(_ hex: String?) -> Color {
     guard var hexString = hex?.trimmingCharacters(in: .whitespacesAndNewlines),
           !hexString.isEmpty else {

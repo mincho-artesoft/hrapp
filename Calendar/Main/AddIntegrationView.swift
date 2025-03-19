@@ -1,22 +1,19 @@
+//
+//  AddIntegrationView.swift
+//  YourProject
+//
+
 import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
 
-/// Примерен SwiftUI изглед, който прави Google Sign-In, иска календарен scope при нужда и чете Google Calendar.
 struct AddIntegrationView: View {
-    // Съхраняваме календарите, които сме извлекли от Google
     @State private var googleCalendars: [GoogleCalendarItem] = []
-    
-    // Дали сме логнати
     @State private var isSignedIn = false
-    
-    // Показваме ли грешка (ако има)
     @State private var errorMessage: String?
     
-    // Примерен clientID
     let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
     
-    // ViewModel, в който пазим googleCalendars глобално
     @ObservedObject var viewModel = CalendarViewModel.shared
 
     var body: some View {
@@ -48,7 +45,7 @@ struct AddIntegrationView: View {
                         }
                     }
                     
-                    Button("Load Google Calendars") {
+                    Button("Load Google Calendars & Events") {
                         Task {
                             await loadGoogleCalendars()
                         }
@@ -60,7 +57,6 @@ struct AddIntegrationView: View {
                     .foregroundColor(.red)
                     
                 } else {
-                    // Бутон за логин с Google
                     GoogleSignInButton {
                         signIn()
                     }
@@ -76,7 +72,7 @@ struct AddIntegrationView: View {
     }
 }
 
-// MARK: - Методи за логване, разлогване, четене на календари
+// MARK: - Методи за логване, разлогване, четене на календари + импорт в локални календари
 extension AddIntegrationView {
     func restoreSignInIfNeeded() {
         GIDSignIn.sharedInstance.restorePreviousSignIn { signInResult, error in
@@ -127,11 +123,10 @@ extension AddIntegrationView {
         GIDSignIn.sharedInstance.signOut()
         isSignedIn = false
         googleCalendars = []
-        viewModel.googleCalendars = []
     }
     
-    /// Зареждаме списъка с календари от Google, след което за всеки календар опитваме да заредим евентите.
-    /// Ако е успешно - добавяме го, ако не - пропускаме го.
+    /// Зареждаме списъка с календари от Google, след което за всеки календар ще извлечем и евентите му,
+    /// и ги импортираме в локален календар.
     func loadGoogleCalendars() async {
         guard let user = GIDSignIn.sharedInstance.currentUser else {
             errorMessage = "Not signed in."
@@ -184,24 +179,34 @@ extension AddIntegrationView {
             let decoder = JSONDecoder()
             let calendarList = try decoder.decode(GoogleCalendarList.self, from: data)
             
-            // 3) Филтрираме: за всеки календар, опитваме да заредим евентите му.
+            // 3) За всеки календар извличаме евентите -> записваме ги в локален
             var validCalendars: [GoogleCalendarItem] = []
             
             for cal in calendarList.items {
-                let calId = cal.id
-                let canFetch = await canFetchEvents(forCalendarId: calId, accessToken: accessToken)
-                if canFetch {
-                    // Ако успешно може да заредим събития => добавяме го
+                do {
+                    // Вземаме евентите за този Google календар
+                    let events = try await fetchEvents(forCalendarId: cal.id, accessToken: accessToken)
+                    
+                    // Импортираме евентите в локален календар:
+                    // 1) Намираме/създаваме EKCalendar (On My iPhone) за този Google календар
+                    let localCal = try CalendarViewModel.shared.findOrCreateLocalCalendar(for: cal)
+                    
+                    // 2) Импортираме събитията
+                    //    Ако искате да избягвате дубликати, ползвайте importGoogleEventsAvoidingDuplicates(...)
+                    try await CalendarViewModel.shared.importGoogleEvents(events, into: localCal)
+                    
+                    // Добавяме календара към списъка за UI
                     validCalendars.append(cal)
-                } else {
-                    print("Skipping calendar \(calId) due to fetch error or HTTP error.")
+                    
+                } catch {
+                    // Ако не успеем да заредим евенти или да създадем календар, го пропускаме
+                    print("Skipping calendar \(cal.id) due to fetch error: \(error.localizedDescription)")
                 }
             }
             
-            // 4) Записваме филтрираните календари
+            // 4) Записваме филтрираните календари (за UI)
             DispatchQueue.main.async {
                 self.googleCalendars = validCalendars
-                self.viewModel.googleCalendars = validCalendars
             }
             
         } catch {
@@ -209,34 +214,38 @@ extension AddIntegrationView {
         }
     }
     
-    /// Примерен метод, който тества дали могат да се прочетат евентите на даден календар.
-    /// Ако получим 2xx отговор => true, иначе (404 / 403 / etc) => false
-    private func canFetchEvents(forCalendarId calId: String, accessToken: String) async -> Bool {
-        guard let eventsURL = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(calId)/events") else {
-            return false
+    /// Връща списък от евентите на даден Google календар.
+    private func fetchEvents(forCalendarId calId: String, accessToken: String) async throws -> [GoogleEvent] {
+        // Пример: включваме future events от днес нататък
+        let nowISO = ISO8601DateFormatter().string(from: Date())
+        guard let eventsURL = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(calId)/events?timeMin=\(nowISO)&singleEvents=true&orderBy=startTime") else {
+            throw URLError(.badURL)
         }
         
         var eventsRequest = URLRequest(url: eventsURL)
         eventsRequest.httpMethod = "GET"
         eventsRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        let (data, response) = try await URLSession.shared.data(for: eventsRequest)
         
-        do {
-            let (_, response) = try await URLSession.shared.data(for: eventsRequest)
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200..<300).contains(httpResponse.statusCode) else {
-                // Не е успешен статус => връщаме false
-                return false
-            }
-            // Успешно
-            return true
-        } catch {
-            // Грешка (напр. връзка) => false
-            return false
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200..<300).contains(httpResponse.statusCode) else {
+            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+            let respStr = String(data: data, encoding: .utf8) ?? ""
+            throw NSError(
+                domain: "CalendarFetch",
+                code: statusCode,
+                userInfo: [NSLocalizedDescriptionKey: "HTTP Error: \(respStr)"]
+            )
         }
+
+        let decoder = JSONDecoder()
+        let eventsList = try decoder.decode(GoogleEventsList.self, from: data)
+        return eventsList.items
     }
 }
 
-// Примерни модели
+// MARK: - Модели
 struct GoogleCalendarList: Codable {
     let items: [GoogleCalendarItem]
 }
@@ -246,10 +255,26 @@ struct GoogleCalendarItem: Codable, Hashable {
     let summary: String
     let description: String?
     
-    // Добавете, ако го има в JSON-а от Google
     let colorId: String?
-    let backgroundColor: String?
-    let foregroundColor: String?
+    let backgroundColor: String? // <- Hex стринг (примерно "#9fe1e7")
+    let foregroundColor: String? // <- Hex стринг за текста
+}
+
+struct GoogleEventsList: Codable {
+    let items: [GoogleEvent]
+}
+
+struct GoogleEvent: Codable, Hashable {
+    let id: String
+    let summary: String?
+    let description: String?
+    let start: EventDateTime?
+    let end: EventDateTime?
+}
+
+struct EventDateTime: Codable, Hashable {
+    let dateTime: String?   // ако е събитие с точни часове
+    let date: String?       // ако е целодневно събитие
 }
 
 /// Хелпър за topMostViewController
@@ -266,5 +291,39 @@ extension UIApplication {
             return topMostViewController(presented)
         }
         return baseVC
+    }
+}
+import UIKit
+
+extension UIColor {
+    /// Конструктор за "#RRGGBB" или "#RRGGBBAA".
+    convenience init?(hex: String) {
+        var raw = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Махаме '#' ако го има
+        if raw.hasPrefix("#") {
+            raw.removeFirst()
+        }
+        
+        // Допустими формати: 6 или 8 символа (RGB или RGBA)
+        guard raw.count == 6 || raw.count == 8 else {
+            return nil
+        }
+        
+        var rgbValue: UInt64 = 0
+        Scanner(string: raw).scanHexInt64(&rgbValue)
+        
+        if raw.count == 6 {
+            let r = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
+            let g = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+            let b = CGFloat(rgbValue & 0x0000FF)         / 255.0
+            self.init(red: r, green: g, blue: b, alpha: 1.0)
+        } else {
+            // 8 символа (RRGGBBAA)
+            let r = CGFloat((rgbValue & 0xFF000000) >> 24) / 255.0
+            let g = CGFloat((rgbValue & 0x00FF0000) >> 16) / 255.0
+            let b = CGFloat((rgbValue & 0x0000FF00) >> 8)  / 255.0
+            let a = CGFloat(rgbValue & 0x000000FF)         / 255.0
+            self.init(red: r, green: g, blue: b, alpha: a)
+        }
     }
 }

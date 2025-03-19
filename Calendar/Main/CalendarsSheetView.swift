@@ -20,10 +20,20 @@ struct CalendarsSheetView: View {
         NavigationView {
             VStack {
                 Form {
-                    // ============ On My iPhone ===========
+                    // Създаваме множество (Set) от всички локални календарни IDs, които са свързани с Google
+                    let googleLocalCalendarIDs = Set(viewModel.googleToLocalCalendarMapping.values)
+                    
+                    // ============ Google Calendars ===========
+                  
+                    // ============ On My iPhone (Local, но не Google) ===========
                     DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
-                        ForEach(viewModel.allCalendars.filter { $0.source.sourceType == .local },
-                                id: \.calendarIdentifier) { cal in
+                        ForEach(
+                            viewModel.allCalendars.filter { cal in
+                                cal.source.sourceType == .local
+                                && !googleLocalCalendarIDs.contains(cal.calendarIdentifier)
+                            },
+                            id: \.calendarIdentifier
+                        ) { cal in
                             CalendarRowView(
                                 calendar: cal,
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
@@ -37,8 +47,30 @@ struct CalendarsSheetView: View {
                     
                     // ============ Other ===========
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
-                        ForEach(viewModel.allCalendars.filter { $0.source.sourceType != .local },
-                                id: \.calendarIdentifier) { cal in
+                        ForEach(
+                            viewModel.allCalendars.filter { $0.source.sourceType != .local },
+                            id: \.calendarIdentifier
+                        ) { cal in
+                            CalendarRowView(
+                                calendar: cal,
+                                isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
+                                toggleAction: toggleCalendar,
+                                editAction: {
+                                    calendarToEdit = cal
+                                }
+                            )
+                        }
+                    }
+                    DisclosureGroup("Google Calendars", isExpanded: $isGoogleExpanded) {
+                        ForEach(
+                            viewModel.allCalendars.filter { cal in
+                                // Google-календарите са локални (т.е. sourceType == .local),
+                                // и също calendarIdentifier е в googleLocalCalendarMapping
+                                cal.source.sourceType == .local
+                                && googleLocalCalendarIDs.contains(cal.calendarIdentifier)
+                            },
+                            id: \.calendarIdentifier
+                        ) { cal in
                             CalendarRowView(
                                 calendar: cal,
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
@@ -50,19 +82,6 @@ struct CalendarsSheetView: View {
                         }
                     }
                     
-                    // ============ Google Calendars ===========
-                    if !viewModel.googleCalendars.isEmpty {
-                        DisclosureGroup("Google Calendars", isExpanded: $isGoogleExpanded) {
-                            ForEach(viewModel.googleCalendars, id: \.id) { gCal in
-                                GoogleCalendarRowView(
-                                    googleCalendar: gCal,
-                                    // Предполага се, че Google календарите са "googlePrefix + gCal.id"
-                                    isSelected: viewModel.selectedCalendarIDs.contains(CalendarViewModel.googlePrefix + gCal.id),
-                                    toggleAction: toggleGoogleCalendar
-                                )
-                            }
-                        }
-                    }
                 }
                 .navigationBarTitle("Calendars", displayMode: .inline)
                 .navigationBarItems(
@@ -94,13 +113,8 @@ struct CalendarsSheetView: View {
             }
         }
         .onAppear {
-            // 1) Презареждаме системните (EventKit) календари
+            // Презареждаме системните (EventKit) календари
             viewModel.reloadCalendars()
-            
-            // 2) Презареждаме Google (async)
-            Task {
-                await viewModel.fetchGoogleCalendarsFromAPI()
-            }
         }
         // Sheet за Add (local или интеграция)
         .sheet(item: $sheetType, onDismiss: {
@@ -126,15 +140,6 @@ struct CalendarsSheetView: View {
             viewModel.selectedCalendarIDs.remove(cal.calendarIdentifier)
         } else {
             viewModel.selectedCalendarIDs.insert(cal.calendarIdentifier)
-        }
-    }
-    
-    private func toggleGoogleCalendar(_ gCal: GoogleCalendarItem) {
-        let googleID = CalendarViewModel.googlePrefix + gCal.id
-        if viewModel.selectedCalendarIDs.contains(googleID) {
-            viewModel.selectedCalendarIDs.remove(googleID)
-        } else {
-            viewModel.selectedCalendarIDs.insert(googleID)
         }
     }
 }
