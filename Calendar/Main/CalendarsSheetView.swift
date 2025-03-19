@@ -1,5 +1,7 @@
 import SwiftUI
 import EventKit
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -10,22 +12,22 @@ struct CalendarsSheetView: View {
     @State private var isOtherExpanded      = true
     @State private var isGoogleExpanded     = true
 
-    // Кое sheet да покажем (nil, ако не искаме да показваме sheet)
-    @State private var sheetType: AddCalendarSheetType? = nil
-
     // За Edit
     @State private var calendarToEdit: EKCalendar? = nil
+    
+    // ========== Google Sign-In променливи ==========
+    @State private var isSignedIn = false
+    @State private var googleCalendars: [GoogleCalendarItem] = []
+    @State private var errorMessage: String?
+
+    let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
 
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    // Създаваме множество (Set) от всички локални календарни IDs, които са свързани с Google
                     let googleLocalCalendarIDs = Set(viewModel.googleToLocalCalendarMapping.values)
-                    
-                    // ============ Google Calendars ===========
-                  
-                    // ============ On My iPhone (Local, но не Google) ===========
+
                     DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
                         ForEach(
                             viewModel.allCalendars.filter { cal in
@@ -44,8 +46,7 @@ struct CalendarsSheetView: View {
                             )
                         }
                     }
-                    
-                    // ============ Other ===========
+
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
                         ForEach(
                             viewModel.allCalendars.filter { $0.source.sourceType != .local },
@@ -61,11 +62,10 @@ struct CalendarsSheetView: View {
                             )
                         }
                     }
+                    
                     DisclosureGroup("Google Calendars", isExpanded: $isGoogleExpanded) {
                         ForEach(
                             viewModel.allCalendars.filter { cal in
-                                // Google-календарите са локални (т.е. sourceType == .local),
-                                // и също calendarIdentifier е в googleLocalCalendarMapping
                                 cal.source.sourceType == .local
                                 && googleLocalCalendarIDs.contains(cal.calendarIdentifier)
                             },
@@ -82,6 +82,32 @@ struct CalendarsSheetView: View {
                         }
                     }
                     
+                    // =============== Google Integration Section ===============
+                    Section(header: Text("Google Integration")) {
+                        if let error = errorMessage {
+                            Text("Грешка: \(error)")
+                                .foregroundColor(.red)
+                        }
+                        
+                        if isSignedIn {
+                            Button("Load Google Calendars & Events") {
+                                Task {
+                                    await loadGoogleCalendars()
+                                }
+                            }
+
+                            Button("Sign Out") {
+                                signOut()
+                            }
+                            .foregroundColor(.red)
+                            
+                        } else {
+                            GoogleSignInButton {
+                                signIn()
+                            }
+                            .frame(width: 200, height: 50)
+                        }
+                    }
                 }
                 .navigationBarTitle("Calendars", displayMode: .inline)
                 .navigationBarItems(
@@ -89,21 +115,20 @@ struct CalendarsSheetView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                 )
-                
+
                 // Долни бутони
                 HStack {
                     Menu("Add Calendar") {
                         Button("Add Local Calendar") {
-                            sheetType = .local
+                            // тук може да отвориш някакъв sheet за създаване на локален календар
+                            // или директно да вмъкнеш логиката
                         }
-                        Button("Add Integrated Calendar") {
-                            sheetType = .integration
-                        }
+                        // Махаме "Add Integrated Calendar" понеже вече го правим горе
                     }
                     .padding(.leading)
-                    
+
                     Spacer()
-                    
+
                     Button("Hide All") {
                         viewModel.selectedCalendarIDs.removeAll()
                     }
@@ -113,19 +138,14 @@ struct CalendarsSheetView: View {
             }
         }
         .onAppear {
+            Task {
+                await loadGoogleCalendars()
+            }
+
             // Презареждаме системните (EventKit) календари
             viewModel.reloadCalendars()
-        }
-        // Sheet за Add (local или интеграция)
-        .sheet(item: $sheetType, onDismiss: {
-            viewModel.reloadCalendars()
-        }) { type in
-            switch type {
-            case .local:
-                AddCalendarView()
-            case .integration:
-                AddIntegrationView()
-            }
+            // Опит за възстановяване на Google сесия
+            restoreSignInIfNeeded()
         }
         // Sheet за Edit (EventKit календар)
         .sheet(item: $calendarToEdit, onDismiss: {
@@ -141,5 +161,160 @@ struct CalendarsSheetView: View {
         } else {
             viewModel.selectedCalendarIDs.insert(cal.calendarIdentifier)
         }
+    }
+}
+
+// MARK: - Google Sign-In helpers
+extension CalendarsSheetView {
+    func restoreSignInIfNeeded() {
+        GIDSignIn.sharedInstance.restorePreviousSignIn { signInResult, error in
+            if let error = error {
+                self.errorMessage = "Restore error: \(error.localizedDescription)"
+                return
+            }
+            guard let _ = signInResult else {
+                // Няма налична сесия
+                return
+            }
+            // Има валидна сесия
+            self.isSignedIn = true
+            self.errorMessage = nil
+        }
+    }
+
+    func signIn() {
+        guard let topVC = UIApplication.shared.topMostViewController() else {
+            return
+        }
+        
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+        let scopes = ["https://www.googleapis.com/auth/calendar.readonly"]
+        
+        GIDSignIn.sharedInstance.signIn(
+            withPresenting: topVC,
+            hint: nil,
+            additionalScopes: scopes
+        ) { signInResult, error in
+            if let error = error {
+                self.errorMessage = "Sign-in error: \(error.localizedDescription)"
+                return
+            }
+            guard let signInResult = signInResult else {
+                self.errorMessage = "No SignInResult found."
+                return
+            }
+            // Успешен логин
+            self.isSignedIn = true
+            self.errorMessage = nil
+        }
+    }
+
+    func signOut() {
+        GIDSignIn.sharedInstance.signOut()
+        isSignedIn = false
+        googleCalendars = []
+    }
+
+    func loadGoogleCalendars() async {
+        guard let user = GIDSignIn.sharedInstance.currentUser else {
+            errorMessage = "Not signed in."
+            return
+        }
+        
+        let neededScope = "https://www.googleapis.com/auth/calendar.readonly"
+        
+        // 1) Проверяваме дали вече е даден scope за четене на Google Calendar
+        if !(user.grantedScopes?.contains(neededScope) ?? false) {
+            guard let topVC = UIApplication.shared.topMostViewController() else { return }
+            
+            do {
+                try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                    user.addScopes([neededScope], presenting: topVC) { newUser, error in
+                        if let error = error {
+                            continuation.resume(throwing: error)
+                        } else {
+                            continuation.resume(returning: ())
+                        }
+                    }
+                }
+
+            } catch {
+                self.errorMessage = "Потребителят отказа календарен достъп: \(error.localizedDescription)"
+                return
+            }
+        }
+        
+        // 2) Вземаме списък от календари
+        let accessToken = user.accessToken.tokenString
+        guard let url = URL(string: "https://www.googleapis.com/calendar/v3/users/me/calendarList") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200..<300).contains(httpResponse.statusCode) else {
+                let respStr = String(data: data, encoding: .utf8) ?? ""
+                self.errorMessage = "HTTP Error: \(respStr)"
+                print(respStr)
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            let calendarList = try decoder.decode(GoogleCalendarList.self, from: data)
+            
+            var validCalendars: [GoogleCalendarItem] = []
+            
+            // 3) За всеки календар -> изтегляме ВСИЧКИ събития и ги импортваме
+            for cal in calendarList.items {
+                do {
+                    let allEvents = try await CalendarViewModel.shared.fetchAllEvents(
+                        forCalendarId: cal.id,
+                        accessToken: accessToken
+                    )
+                    
+                    let localCal = try CalendarViewModel.shared.findOrCreateLocalCalendar(for: cal)
+                    
+                    try await CalendarViewModel.shared.importGoogleEventsAvoidingDuplicates(
+                        allEvents, into: localCal
+                    )
+                    
+                    validCalendars.append(cal)
+                } catch {
+                    print("Skipping calendar \(cal.id) due to fetch error: \(error.localizedDescription)")
+                }
+            }
+            
+            // 4) Записваме филтрираните календари (за UI, ако искаш да ги покажеш)
+            DispatchQueue.main.async {
+                self.googleCalendars = validCalendars
+            }
+            
+        } catch {
+            self.errorMessage = "Fetch error: \(error.localizedDescription)"
+        }
+    }
+}
+
+// MARK: - TopMostViewController
+extension UIApplication {
+    func topMostViewController(_ base: UIViewController? = nil) -> UIViewController? {
+        let baseVC = base ?? keyWindow?.rootViewController
+        if let nav = baseVC as? UINavigationController {
+            return topMostViewController(nav.visibleViewController)
+        }
+        if let tab = baseVC as? UITabBarController {
+            return topMostViewController(tab.selectedViewController)
+        }
+        if let presented = baseVC?.presentedViewController {
+            return topMostViewController(presented)
+        }
+        return baseVC
     }
 }
