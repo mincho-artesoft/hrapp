@@ -28,7 +28,7 @@ final class CalendarViewModel: ObservableObject {
     /// IDs на календари, които потребителят е маркирал като "show" (EKCalendar.calendarIdentifier + Google IDs)
     @Published var selectedCalendarIDs: Set<String> = []
 
-    /// Dictionary за вашите локални календари (по изискване)
+    /// Dictionary за вашите локални календари
     @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
     
     /// Пазим UI цвят (UIColor) на първия локален календар (за някои цели)
@@ -90,7 +90,90 @@ final class CalendarViewModel: ObservableObject {
         } else {
             self.googleToLocalEventMapping = [:]
         }
+        
+        // 6) Абонираме се за промени в Event Store:
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(eventStoreDidChange(_:)),
+            name: .EKEventStoreChanged,
+            object: eventStore
+        )
     }
+    
+    /// Това ще се вика всеки път, когато има промяна (добавяне, триене или редакция на събитие/календар)
+    @objc private func eventStoreDidChange(_ notification: Notification) {
+        print("EKEventStore has changed! Ще презаредим...")
+
+        // 1) Запазваме старите събития:
+        let oldEventsDict = self.eventsByID
+
+        // 2) Презареждаме списъка календари
+        reloadCalendars()
+        
+        // 3) Презареждаме събитията за текущия месец (примерно)
+        loadEvents(for: Date())
+        
+        // 4) Вземаме „новите“ събития
+        let newEventsDict = self.eventsByID
+        
+        let oldIDs = Set(oldEventsDict.keys)
+        let newIDs = Set(newEventsDict.keys)
+        
+        let addedIDs            = newIDs.subtracting(oldIDs)      // току-що добавени
+        let removedIDs          = oldIDs.subtracting(newIDs)      // току-що изтрити
+        let potentialUpdatedIDs = oldIDs.intersection(newIDs)     // може би редактирани
+        
+        // –––––––––––––––––––––––––––––––––
+        // Филтрираме *само* Google-събития
+        // –––––––––––––––––––––––––––––––––
+        let googleLocalEventIDs = Set(googleToLocalEventMapping.values)
+        
+        // *Добавени* Google събития
+        let googleAddedIDs = addedIDs.filter { googleLocalEventIDs.contains($0) }
+        // *Изтрити* Google събития
+        let googleRemovedIDs = removedIDs.filter { googleLocalEventIDs.contains($0) }
+        // *Потенциално обновени* Google събития
+        let googleUpdatedIDs = potentialUpdatedIDs.filter { googleLocalEventIDs.contains($0) }
+        
+        // –––––––––––––––––––––––––––––––––
+        // 1) Принтираме *само ако има едно* добавено Google-събитие
+        // –––––––––––––––––––––––––––––––––
+        if googleAddedIDs.count == 1,
+           let singleAddedID = googleAddedIDs.first,
+           let singleAddedEvent = newEventsDict[singleAddedID] {
+            
+            print("Добавено 1 Google-събитие: \(singleAddedEvent.title ?? "(без заглавие)")")
+        }
+        
+        // –––––––––––––––––––––––––––––––––
+        // 2) Принтираме *само ако има едно* изтрито Google-събитие
+        // –––––––––––––––––––––––––––––––––
+        if googleRemovedIDs.count == 1,
+           let singleRemovedID = googleRemovedIDs.first,
+           let singleRemovedEvent = oldEventsDict[singleRemovedID] {
+            
+            print("Изтрито 1 Google-събитие: \(singleRemovedEvent.title ?? "(без заглавие)")")
+        }
+        
+        // –––––––––––––––––––––––––––––––––
+        // 3) Принтираме *само ако има едно* обновено Google-събитие
+        // –––––––––––––––––––––––––––––––––
+        if googleUpdatedIDs.count == 1,
+           let singleUpdatedID = googleUpdatedIDs.first,
+           let oldEvent = oldEventsDict[singleUpdatedID],
+           let newEvent = newEventsDict[singleUpdatedID] {
+            
+            // Проверяваме дали наистина се е променило нещо в (title/startDate/endDate)
+            if oldEvent.title     != newEvent.title ||
+               oldEvent.startDate != newEvent.startDate ||
+               oldEvent.endDate   != newEvent.endDate {
+                
+                print("Обновено 1 Google-събитие: \(oldEvent.title ?? "(без заглавие)") -> \(newEvent.title ?? "(без заглавие)")")
+            }
+        }
+    }
+
+
 
     // MARK: - Методи за EventKit (iOS) календари
 
@@ -125,7 +208,7 @@ final class CalendarViewModel: ObservableObject {
         }
     }
 
-    /// Презареждаме списъка `allCalendars` от EventKit Store
+    /// Презареждаме списъка allCalendars от EventKit Store
     func reloadCalendars() {
         let cals = eventStore.calendars(for: .event)
         self.allCalendars = cals
@@ -215,7 +298,7 @@ final class CalendarViewModel: ObservableObject {
         self.eventsByID = tmp
     }
     
-    /// Зареждаме локалните (On My iPhone) календари в `calendarsDict` (примерно за Sheet)
+    /// Зареждаме локалните (On My iPhone) календари в calendarsDict
     func loadLocalCalendars() {
         reloadCalendars()
         
@@ -261,7 +344,7 @@ final class CalendarViewModel: ObservableObject {
 extension CalendarViewModel {
     
     /// Връща (или създава) локален EKCalendar за Google календара.
-    /// Ако вече съществува, опитваме да обновим title и cgColor.
+    /// Ако вече съществува, опитваме да обновим title и цвят.
     func findOrCreateLocalCalendar(for googleCal: GoogleCalendarItem) throws -> EKCalendar {
         
         // Ползваме eventStore.calendar(withIdentifier:) – сигурен начин да вземем актуален EKCalendar
@@ -360,7 +443,6 @@ extension CalendarViewModel {
     }
     
     /// Импорт на Google събития с проверка (и избягване) на дубликати.
-    /// Ако има вече създадено събитие за `gEvent.id`, го ъпдейтваме вместо да създаваме ново.
     func importGoogleEventsAvoidingDuplicates(_ googleEvents: [GoogleEvent],
                                               into localCalendar: EKCalendar) async throws {
         
