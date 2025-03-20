@@ -7,8 +7,8 @@ import GoogleSignIn
 final class CalendarViewModel: ObservableObject {
     
     // MARK: - EventKit Store & Properties
-    let eventStore: EKEventStore = EKEventStore()
-
+    var eventStore: EKEventStore = EKEventStore()
+  
     @Published var allCalendars: [EKCalendar] = []
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID:  [String: EKEvent] = [:]
@@ -42,6 +42,7 @@ final class CalendarViewModel: ObservableObject {
     }
     
     // MARK: - Google Event -> Local Event mapping
+    private var oldGoogleToLocalEventMap: [String: String]  = [:]
     private var googleToLocalEventMap: [String: String] {
         get {
             UserDefaults.standard.dictionary(forKey: "GoogleToLocalEventMap") as? [String: String] ?? [:]
@@ -301,6 +302,7 @@ extension CalendarViewModel {
         let accessToken = user.accessToken.tokenString
         
         do {
+            oldGoogleToLocalEventMap = googleToLocalEventMap
             // 1) Google -> Local
             let googleCalendars = try await fetchGoogleCalendarList(accessToken: accessToken)
             await syncGoogleCalendars(googleCalendars, accessToken: accessToken)
@@ -588,7 +590,7 @@ extension CalendarViewModel {
     private func uploadLocalChangesToGoogle(googleCalId: String,
                                             accessToken: String,
                                             localCalendar: EKCalendar) async {
-        // Пример: 1 година назад и 1 година напред
+        // 1) Първо качваме редактираните/новите събития (както досега).
         let oneYearAgo = Date().addingTimeInterval(-3600*24*365)
         let oneYearAfter = Date().addingTimeInterval(3600*24*365)
         
@@ -603,16 +605,17 @@ extension CalendarViewModel {
         }
         
         guard !changedEvents.isEmpty else {
-            print("No local changes in calendar \(localCalendar.title). Skip uploading.")
+            print("No local changes in calendar \(localCalendar.title). Checking for deletions…")
+            // Понеже нямаме промени, все пак ще проверим за изтрити.
+            await uploadLocalDeletionsToGoogle(googleCalId: googleCalId, accessToken: accessToken)
             return
         }
         
         print("Found \(changedEvents.count) local changes in \"\(localCalendar.title)\", uploading…")
         
         for event in changedEvents {
-            // Ако има google ID => PATCH/обновяване, иначе => POST/създаване
             if let googleID = getGoogleIDFrom(event) {
-                // (По желание може да се направи проверка за конфликт тук, ако googleEventUpdatedMap е различен от "live" Google updated)
+                // PATCH (update) в Google
                 let success = await patchEventToGoogle(event: event,
                                                        googleCalId: googleCalId,
                                                        googleEventId: googleID,
@@ -621,7 +624,7 @@ extension CalendarViewModel {
                     // OK
                 }
             } else {
-                // Нямаме googleID => ново събитие, правим POST
+                // POST (create) в Google
                 let success = await postEventToGoogle(event: event,
                                                       googleCalId: googleCalId,
                                                       accessToken: accessToken)
@@ -631,9 +634,74 @@ extension CalendarViewModel {
             }
         }
         
-        // След като приключим, ъпдейтваме lastSyncDate
+        // 2) Проверяваме и за изтрити локални събития
+        await uploadLocalDeletionsToGoogle(googleCalId: googleCalId, accessToken: accessToken)
+        
+        // 3) Накрая ъпдейтваме lastSyncDate
         lastSyncDate = Date()
     }
+
+    private func uploadLocalDeletionsToGoogle(googleCalId: String, accessToken: String) async {
+        for (gID, localID) in oldGoogleToLocalEventMap {
+            
+            // Проверка: calendarIdentifier на това събитие съвпада ли с този googleCalId?
+            // Всъщност, ако имате 1:1 връзка googleCalId -> localCalendar, може да филтрирате по него.
+            // Но често googleToLocalEventMap няма нужда от допълнителна проверка, стига да знаете в кой метод се вика.
+            
+            if let e = eventStore.event(withIdentifier: localID) {
+                 print("DEBUG: Има още локално събитие за \(gID) с title: \(e.title ?? "")")
+             } else {
+                 print("DEBUG: Няма локално събитие за \(gID) => трием в Google…")
+                // Локалното събитие е изтрито, а в googleToLocalEventMap все още има връзка към Google.
+                let success = await deleteEventFromGoogle(googleCalId: googleCalId,
+                                                          googleEventId: gID,
+                                                          accessToken: accessToken)
+                if success {
+                    // Ако сме изтрили успешно, махаме го и от речниците
+                    var newMap = googleToLocalEventMap
+                    newMap.removeValue(forKey: gID)
+                    googleToLocalEventMap = newMap
+                    
+                    var updMap = googleEventUpdatedMap
+                    updMap.removeValue(forKey: gID)
+                    googleEventUpdatedMap = updMap
+                    
+                    print("Removed event \(gID) from Google because it no longer exists locally.")
+                }
+            }
+        }
+    }
+
+    private func deleteEventFromGoogle(googleCalId: String,
+                                       googleEventId: String,
+                                       accessToken: String) async -> Bool {
+        let encodedCalID = googleCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? googleCalId
+        let encodedEvID  = googleEventId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? googleEventId
+        
+        let urlString = "https://www.googleapis.com/calendar/v3/calendars/\(encodedCalID)/events/\(encodedEvID)"
+        guard let url = URL(string: urlString) else { return false }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (_, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse,
+               httpResp.statusCode >= 300 {
+                print("Failed to DELETE event in Google (status = \(httpResp.statusCode))")
+                return false
+            }
+            
+            // Успешно (статус 204 или 200)
+            return true
+            
+        } catch {
+            print("Error deleting event from Google:", error.localizedDescription)
+            return false
+        }
+    }
+
     
     /// Примерна функция, която вади `updated` само за конкретно събитие от Google,
     /// ако искате "live" проверка (не винаги е нужно, ако вече сте свалили всичко).

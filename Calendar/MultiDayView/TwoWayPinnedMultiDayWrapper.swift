@@ -141,18 +141,73 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     // MARK: - Coordinator
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
         let parent: TwoWayPinnedMultiDayWrapper
-        
+        var currentlyEditingEventID: String? = nil
+
         init(_ parent: TwoWayPinnedMultiDayWrapper) {
             self.parent = parent
         }
-        
-        @MainActor public func eventEditViewController(_ controller: EKEventEditViewController,
-                                            didCompleteWith action: EKEventEditViewAction) {
-            controller.dismiss(animated: true) {
-                self.reloadCurrentRange()
+      
+        @MainActor
+        public func eventEditViewController(_ controller: EKEventEditViewController,
+                                            didCompleteWith action: EKEventEditViewAction)
+        {
+            defer {
+                controller.dismiss(animated: true) {
+                    self.reloadCurrentRange()
+                }
+            }
+            switch action {
+            case .canceled:
+                print("Canceled")
+                
+            case .saved:
+                // Ако не е nil, можем да запишем директно.
+                if let event = controller.event {
+                    do {
+                        try controller.eventStore.save(event, span: .thisEvent)
+                    } catch {
+                        print("Save error:", error)
+                    }
+                }
+                
+            case .deleted:
+                print("Deleted")
+                
+                // 1) Опитваме да достъпим директно event.
+                if let event = controller.event {
+                    // Ако е останал валиден, трием го по стандартния начин
+                    do {
+                        try controller.eventStore.remove(event, span: .thisEvent)
+                        print("Събитието е изтрито локално (директно).")
+                    } catch {
+                        print("Remove error:", error)
+                    }
+                } else {
+                    // 2) Ако iOS го е махнал от паметта => ползваме предварително
+                    //    запомнения currentlyEditingEventID
+                    print("controller.event е nil – iOS вече го е махнал от редактора.")
+                    
+                    if let id = self.currentlyEditingEventID {
+                        // Проверяваме дали все още съществува в eventStore
+                        if let leftover = controller.eventStore.event(withIdentifier: id) {
+                            print("Намираме събитие c ID=\(id). Ще го изтрием ръчно.")
+                            do {
+                                try controller.eventStore.remove(leftover, span: .thisEvent)
+                                print("Събитието е изтрито локално (ръчно).")
+                            } catch {
+                                print("Remove error:", error)
+                            }
+                        } else {
+                            print("Не го намираме в eventStore => вече е изтрито.")
+                        }
+                    }
+                }
+                
+            @unknown default:
+                break
             }
         }
-        
+
         @MainActor public func reloadCurrentRange() {
             let cal = Calendar.current
             let fromOnly = cal.startOfDay(for: parent.fromDate)
@@ -212,14 +267,19 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             }
             return results
         }
-        
-        @MainActor public func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+        @MainActor
+        public func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+            // Запомняме идентификатора:
+            self.currentlyEditingEventID = ekEvent.eventIdentifier
+            
             let editVC = EKEventEditViewController()
             editVC.eventStore = parent.eventStore
             editVC.event = ekEvent
             editVC.editViewDelegate = self
+            
             parentVC.present(editVC, animated: true)
         }
+
         
         @MainActor public func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
