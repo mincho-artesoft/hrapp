@@ -707,7 +707,6 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         let base: CGFloat = 6
         // Пълната височина (ако няма лимит)
         let fullNeededRows = CGFloat(maxEventsInAnyDay)
-        print("fullNeededRows",fullNeededRows)
 
         let fullHeight = base + (rowHeight * fullNeededRows)
         self.contentHeight = max(fullHeight, 40)

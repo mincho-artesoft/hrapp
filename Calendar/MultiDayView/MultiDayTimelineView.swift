@@ -553,7 +553,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         if !cal.isDate(dayEnd, equalTo: realEnd, toGranularity: .minute) {
             totalDays += 1
         }
-        print("totalDays",totalDays)
 
         if totalDays < 1 {
             totalDays = 1
@@ -563,10 +562,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         
         var index = 0
         if realStart < fromDate {
-            print ("realStart < fromDate")
         }
         if realEnd > toDate {
-            print("realEnd > toDate")
             if count == 1 {
                 index = 1
             }
@@ -750,7 +747,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
                 let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
                 totalDays = dayCount + 1
-                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
             let realStart: Date
             let realEnd: Date
@@ -776,7 +772,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     }
                 }
             }
-            print("IndexB", slices.count)
             if let multi = descriptor as? EKMultiDayWrapper {
                 if totalDays != slices.count {
                     minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
@@ -790,7 +785,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             draggingOriginalAlphas.removeAll()
             
             var originalFrames = [EventView: CGRect]()
-            print("IndexA", slices.count)
             for realSliceView in slices {
                 if let desc = eventViewToDescriptor[realSliceView] {
                     
@@ -824,7 +818,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     let ghostW = dayColumnWidth - style.eventGap * 2 - 2
 
                     if totalDays == 1 {
-                        print("ghostX", sliceFrameInContainer.minX, "ghostY", sliceFrameInContainer.minY)
                         finalY = sliceFrameInContainer.minY
                         ghostH = sliceFrameInContainer.height
                     }
@@ -1230,7 +1223,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
                 let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
                 totalDays = dayCount + 1
-                print("Многодневното събитие обхваща \(totalDays) календарни дни.")
             }
             
             // Събираме всички slice-ове на това събитие
@@ -1245,7 +1237,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                 }
             }
             var minsingEvent : [EventView] = []
-//            print("IndexB", slices.count)
             if let multi = desc as? EKMultiDayWrapper {
                 if totalDays != slices.count {
                     minsingEvent = createMissingSlicesIfNeeded(for: multi, count: slices.count)
@@ -1254,20 +1245,13 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                     // Тук вече имаме липсващи slice-ове.
                     // Кажи "преди" или "след":
                     if multi.realEvent.startDate < fromDate {
-                        print("Липсващи slice-ове: ПРЕДИ видимия диапазон.")
                         missingBefore = true
                     }
                     if multi.realEvent.endDate > toDate {
-                        print("Липсващи slice-ове: СЛЕД видимия диапазон.")
                         missingAfter = true
                     }
                 }
             }
-//            for realSliceView in minsingEvent {
-//                slices.append(realSliceView)
-//            }
-            print("IndexA", slices.count)
-           
 
             // Създаваме ghost-ове + пазим original frames
             draggingGhosts.removeAll()
@@ -1446,13 +1430,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
             // NEW: Проверяваме дали се е сменил dayIndex и принтираме
             if clampedDayIndex != d.lastDayIndex {
                 if draggingGhosts.count > 1 {
-                    print("Многодневен евент: смяна на колона от \(d.lastDayIndex) на \(clampedDayIndex)")
                     let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                         let midX = gv.frame.midX
                         let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
                         return max(0, min(di, dayCount - 1))
                     }
-                    print("allGhostDayIndexes",allGhostDayIndexes)
                     if !allGhostDayIndexes.contains(d.lastDayIndex) {
                         let ghost = createEventView()
                         ghost.updateWithDescriptor(event: desc)
@@ -1479,15 +1461,12 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                         d.totalDay = d.totalDay + 1
                     }
                 } else {
-                    print("Еднодневен евент: смяна на колона от \(d.lastDayIndex) на \(clampedDayIndex)")
-                  
                     if isTop && d.lastDayIndex > clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
                         let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                             let midX = gv.frame.midX
                             let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
                             return max(0, min(di, dayCount - 1))
                         }
-                        print("allGhostDayIndexes",allGhostDayIndexes)
                         if !allGhostDayIndexes.contains(d.lastDayIndex) {
                             let ghost = createEventView()
                             ghost.updateWithDescriptor(event: desc)
@@ -1526,7 +1505,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
                             let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
                             return max(0, min(di, dayCount - 1))
                         }
-                        print("allGhostDayIndexes",allGhostDayIndexes)
                         if !allGhostDayIndexes.contains(d.lastDayIndex) {
                             let ghost = createEventView()
                             ghost.updateWithDescriptor(event: desc)
