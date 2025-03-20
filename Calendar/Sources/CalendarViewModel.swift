@@ -32,7 +32,7 @@ final class CalendarViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - За мапване Google Calendar ID -> Local Calendar ID
-    private var googleToLocalCalendarMap: [String: String] {
+    var googleToLocalCalendarMap: [String: String] {
         get {
             UserDefaults.standard.dictionary(forKey: "GoogleToLocalCalendarMap") as? [String: String] ?? [:]
         }
@@ -345,24 +345,30 @@ extension CalendarViewModel {
         return decoded.items
     }
     
-    private func syncGoogleCalendars(_ googleCalendars: [GoogleCalendarItem],
-                                     accessToken: String) async {
+    private func syncGoogleCalendars(
+        _ googleCalendars: [GoogleCalendarItem],
+        accessToken: String
+    ) async {
         var stillExistsGoogleCalendarIDs = Set<String>()
         
         for gcal in googleCalendars {
             let googleCalId = gcal.id
             stillExistsGoogleCalendarIDs.insert(googleCalId)
             
+            // Взимаме името и (ако има) backgroundColor
             let googleCalName = gcal.summary
-            let googleCalColor = UIColor.systemBlue  // примерно задаваме някакъв default цвят
+            // Парсваме color-a, ако е наличен. Ако липсва или не е валиден, fallback = .systemBlue
+            let googleCalColor = colorFromHexString(gcal.backgroundColor ?? "") ?? .systemBlue
             
             let map = self.googleToLocalCalendarMap
             if let localCalID = map[googleCalId],
                let localEKCal = eventStore.calendar(withIdentifier: localCalID) {
                 
-                // Update на заглавие/цвят при нужда
-                if localEKCal.title != googleCalName {
-                    localEKCal.title = googleCalName
+                // Проверяваме дали Google e променил името или цвета
+                if localEKCal.title != googleCalName ||
+                    localEKCal.cgColor != googleCalColor.cgColor {
+                    
+                    localEKCal.title  = googleCalName
                     localEKCal.cgColor = googleCalColor.cgColor
                     do {
                         try eventStore.saveCalendar(localEKCal, commit: true)
@@ -372,25 +378,32 @@ extension CalendarViewModel {
                 }
                 
                 // Сваляме събития (Google->Local)
-                await downloadAllEvents(forGoogleCalendarID: googleCalId,
-                                        localCalendar: localEKCal,
-                                        accessToken: accessToken)
+                await downloadAllEvents(
+                    forGoogleCalendarID: googleCalId,
+                    localCalendar: localEKCal,
+                    accessToken: accessToken
+                )
+                
             } else {
-                // Create local
-                if let newCal = createLocalCalendar(googleCalendarName: googleCalName,
-                                                    googleCalendarColor: googleCalColor) {
+                // Ако липсва локален календар за този Google календар -> създаваме нов
+                if let newCal = createLocalCalendar(
+                    googleCalendarName: googleCalName,
+                    googleCalendarColor: googleCalColor
+                ) {
                     var newMap = map
                     newMap[googleCalId] = newCal.calendarIdentifier
                     self.googleToLocalCalendarMap = newMap
                     
-                    await downloadAllEvents(forGoogleCalendarID: googleCalId,
-                                            localCalendar: newCal,
-                                            accessToken: accessToken)
+                    await downloadAllEvents(
+                        forGoogleCalendarID: googleCalId,
+                        localCalendar: newCal,
+                        accessToken: accessToken
+                    )
                 }
             }
         }
         
-        // Трием локални календари, които вече ги няма в Google
+        // Трием локални календари, които вече ги няма в Google...
         let currentMap = googleToLocalCalendarMap
         for (gCalID, localID) in currentMap {
             if !stillExistsGoogleCalendarIDs.contains(gCalID) {
@@ -408,6 +421,7 @@ extension CalendarViewModel {
             }
         }
     }
+
     
     private func createLocalCalendar(googleCalendarName: String,
                                      googleCalendarColor: UIColor?) -> EKCalendar? {
@@ -648,10 +662,7 @@ extension CalendarViewModel {
             // Всъщност, ако имате 1:1 връзка googleCalId -> localCalendar, може да филтрирате по него.
             // Но често googleToLocalEventMap няма нужда от допълнителна проверка, стига да знаете в кой метод се вика.
             
-            if let e = eventStore.event(withIdentifier: localID) {
-                 print("DEBUG: Има още локално събитие за \(gID) с title: \(e.title ?? "")")
-             } else {
-                 print("DEBUG: Няма локално събитие за \(gID) => трием в Google…")
+            if eventStore.event(withIdentifier: localID) == nil {
                 // Локалното събитие е изтрито, а в googleToLocalEventMap все още има връзка към Google.
                 let success = await deleteEventFromGoogle(googleCalId: googleCalId,
                                                           googleEventId: gID,
@@ -996,6 +1007,35 @@ extension CalendarViewModel {
             ]
         }
     }
+    private func colorFromHexString(_ hexString: String) -> UIColor? {
+        var cString = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        // Премахваме # ако има
+        if cString.hasPrefix("#") {
+            cString.removeFirst()
+        }
+        
+        // Ако е 6-символен хекс, добавяме FF за алфа канал
+        if cString.count == 6 {
+            cString.append("FF")
+        }
+        // Ако не е 8 => невалиден хекс
+        else if cString.count != 8 {
+            return nil
+        }
+        
+        var rgbValue: UInt64 = 0
+        guard Scanner(string: cString).scanHexInt64(&rgbValue) else {
+            return nil
+        }
+
+        let r = CGFloat((rgbValue & 0xFF000000) >> 24) / 255.0
+        let g = CGFloat((rgbValue & 0x00FF0000) >> 16) / 255.0
+        let b = CGFloat((rgbValue & 0x0000FF00) >> 8)  / 255.0
+        let a = CGFloat(rgbValue & 0x000000FF)         / 255.0
+        
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
 
 }
 
@@ -1058,4 +1098,37 @@ struct GoogleEventItem: Codable {
 struct GoogleEventDate: Codable {
     let date: String?      // при all-day евенти
     let dateTime: String?  // при евенти с час
+}
+extension CalendarViewModel {
+    func signOutFromGoogle() {
+        // 1) Извеждаме потребителя от Google
+        GIDSignIn.sharedInstance.signOut()
+        
+        // 2) Нулираме googleUser
+        self.googleUser = nil
+        
+        // 3) Спираме syncTimer
+        self.stopGoogleCalendarSync()
+        
+        // 4) Трием локалните календари, който са копие на Google
+        let currentMap = self.googleToLocalCalendarMap
+        for (_, localCalID) in currentMap {
+            if let calToDelete = eventStore.calendar(withIdentifier: localCalID) {
+                do {
+                    try eventStore.removeCalendar(calToDelete, commit: true)
+                    print("Removed local Google-copy calendar:", calToDelete.title)
+                } catch {
+                    print("Failed to remove local calendar:", error.localizedDescription)
+                }
+            }
+        }
+        
+        // 5) Изчистваме речниците
+        self.googleToLocalCalendarMap = [:]
+        self.googleToLocalEventMap   = [:]
+        self.googleEventUpdatedMap   = [:]
+        
+        // 6) Презареждаме всичко
+        self.reloadCalendars()
+    }
 }

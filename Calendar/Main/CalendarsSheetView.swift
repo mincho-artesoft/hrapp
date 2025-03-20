@@ -8,6 +8,7 @@ struct CalendarsSheetView: View {
     @ObservedObject var viewModel: CalendarViewModel = .shared
 
     @State private var isOnMyIphoneExpanded = true
+    @State private var isGoogleExpanded     = true
     @State private var isOtherExpanded      = true
     @State private var isIntegrateExpanded  = true
 
@@ -19,47 +20,62 @@ struct CalendarsSheetView: View {
         NavigationView {
             VStack {
                 Form {
+                    // 1) Група с локални „On My iPhone“ (които НЕ са Google копия)
                     DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
-                        ForEach(
-                            viewModel.allCalendars.filter { $0.source.sourceType == .local },
-                            id: \.calendarIdentifier
-                        ) { cal in
+                        ForEach(localNonGoogleCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
                                 calendar: cal,
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                 toggleAction: toggleCalendar,
                                 editAction: {
                                     calendarToEdit = cal
-                                }
+                                },
+                                showEditButton: true  // <--- за локалните ще показваме info бутона
                             )
                         }
                     }
 
+                    // 2) Група с локални календари, които са копие на Google
+                    DisclosureGroup("Google Calendars", isExpanded: $isGoogleExpanded) {
+                        ForEach(googleCopiedCalendars(), id: \.calendarIdentifier) { cal in
+                            CalendarRowView(
+                                calendar: cal,
+                                isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
+                                toggleAction: toggleCalendar,
+                                editAction: {
+                                    // Няма да отваряме Edit, затова може да го оставим празно
+                                },
+                                showEditButton: false // <--- крием info бутона
+                            )
+                        }
+                    }
+
+                    // 3) Група с „други“ (примерно iCloud, Exchange и т.н., ако не искате да ги смесвате)
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
-                        ForEach(
-                            viewModel.allCalendars.filter { $0.source.sourceType != .local },
-                            id: \.calendarIdentifier
-                        ) { cal in
+                        ForEach(otherCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
                                 calendar: cal,
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                 toggleAction: toggleCalendar,
                                 editAction: {
                                     calendarToEdit = cal
-                                }
+                                },
+                                showEditButton: true
                             )
                         }
                     }
 
+                    // 4) Група за Google Sign-In / логване
                     DisclosureGroup("Integrate calendar", isExpanded: $isIntegrateExpanded) {
                         if let user = viewModel.googleUser {
                             Text("Логнат сте като: \(user.profile?.email ?? "(няма email)")")
                                 .padding(.vertical, 4)
-                            
+
                             Button("Log out from Google") {
                                 GIDSignIn.sharedInstance.signOut()
                                 viewModel.googleUser = nil
                                 viewModel.stopGoogleCalendarSync()
+                                viewModel.signOutFromGoogle()
                             }
                         } else {
                             Button("Sign in with Google") {
@@ -78,7 +94,7 @@ struct CalendarsSheetView: View {
                 HStack {
                     Menu("Add Calendar") {
                         Button("Add Local Calendar") {
-                            // ...
+                            // Вашата логика
                         }
                     }
                     .padding(.leading)
@@ -103,6 +119,34 @@ struct CalendarsSheetView: View {
         }
     }
     
+    // MARK: - Помощни методи
+
+    private func localNonGoogleCalendars() -> [EKCalendar] {
+        // Връща локалните календари, които НЕ са копия от Google
+        let googleSyncedIDs = Set(viewModel.googleToLocalCalendarMap.values)
+        return viewModel.allCalendars.filter {
+            $0.source.sourceType == .local &&
+            !googleSyncedIDs.contains($0.calendarIdentifier)
+        }
+    }
+
+    private func googleCopiedCalendars() -> [EKCalendar] {
+        // Връща локалните календари, които са създадени като копие на Google
+        let googleSyncedIDs = Set(viewModel.googleToLocalCalendarMap.values)
+        return viewModel.allCalendars.filter {
+            googleSyncedIDs.contains($0.calendarIdentifier)
+        }
+    }
+
+    private func otherCalendars() -> [EKCalendar] {
+        // Всичко, което не е .local и не е в googleSyncedIDs
+        let googleSyncedIDs = Set(viewModel.googleToLocalCalendarMap.values)
+        return viewModel.allCalendars.filter {
+            $0.source.sourceType != .local &&
+            !googleSyncedIDs.contains($0.calendarIdentifier)
+        }
+    }
+
     private func toggleCalendar(_ cal: EKCalendar) {
         if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {
             viewModel.selectedCalendarIDs.remove(cal.calendarIdentifier)
