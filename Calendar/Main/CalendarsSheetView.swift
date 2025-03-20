@@ -14,7 +14,7 @@ struct CalendarsSheetView: View {
 
     // За Edit
     @State private var calendarToEdit: EKCalendar? = nil
-    
+
     // ========== Google Sign-In променливи ==========
     @State private var isSignedIn = false
     @State private var googleCalendars: [GoogleCalendarItem] = []
@@ -90,17 +90,11 @@ struct CalendarsSheetView: View {
                         }
                         
                         if isSignedIn {
-                            Button("Load Google Calendars & Events") {
-                                Task {
-                                    await loadGoogleCalendars()
-                                }
-                            }
-
+                            // При логнат потребител вече няма нужда от бутон за зареждане, зареждането става автоматично.
                             Button("Sign Out") {
                                 signOut()
                             }
                             .foregroundColor(.red)
-                            
                         } else {
                             GoogleSignInButton {
                                 signIn()
@@ -137,13 +131,8 @@ struct CalendarsSheetView: View {
             }
         }
         .onAppear {
-            Task {
-                await loadGoogleCalendars()
-            }
-
-            // Презареждаме системните (EventKit) календари
+            
             viewModel.reloadCalendars()
-            // Опит за възстановяване на Google сесия
             restoreSignInIfNeeded()
         }
         // Sheet за Edit (EventKit календар)
@@ -190,8 +179,7 @@ extension CalendarsSheetView {
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
         
-        // 2) Тук ползваме "calendar" (пълен достъп),
-        // вместо "calendar.readonly", за да можем да редактираме/трием/създаваме събития.
+        // 2) Използваме "calendar" (пълен достъп)
         let scopes = ["https://www.googleapis.com/auth/calendar"]
         
         // 3) Стартираме Google Sign-In
@@ -204,13 +192,17 @@ extension CalendarsSheetView {
                 self.errorMessage = "Sign-in error: \(error.localizedDescription)"
                 return
             }
-            guard let signInResult = signInResult else {
+            guard let _ = signInResult else {
                 self.errorMessage = "No SignInResult found."
                 return
             }
             // Успешен логин
             self.isSignedIn = true
             self.errorMessage = nil
+            // Автоматично зареждаме Google календарите и събитията
+            Task {
+                await loadGoogleCalendars()
+            }
         }
     }
 
@@ -226,7 +218,7 @@ extension CalendarsSheetView {
             return
         }
         
-        // Тук също ползваме "calendar", не "calendar.readonly"
+        // Използваме "calendar" за пълен достъп
         let neededScope = "https://www.googleapis.com/auth/calendar"
         
         // 1) Проверяваме дали имаме нужния scope
@@ -275,7 +267,7 @@ extension CalendarsSheetView {
             
             var validCalendars: [GoogleCalendarItem] = []
             
-            // 3) За всеки календар -> изтегляме ВСИЧКИ събития и ги импортваме
+            // 3) За всеки календар -> изтегляме всички събития и ги импортваме
             for cal in calendarList.items {
                 do {
                     let allEvents = try await CalendarViewModel.shared.fetchAllEvents(
@@ -305,6 +297,7 @@ extension CalendarsSheetView {
         }
     }
 }
+
 
 // MARK: - TopMostViewController
 extension UIApplication {
