@@ -42,6 +42,13 @@ final class CalendarViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
+    // Sync Token Storage: [GoogleCalendarID: SyncToken]
+    @Published var syncTokens: [String: String] = [:]
+    private let syncTokensKey = "GoogleCalendarSyncTokensKey"
+    
+    // Periodic Sync Timer
+    private var syncTimer: Timer?
+    
     // MARK: - Google -> Local Calendar Mapping
     /// Речник: Google Calendar ID -> Local EKCalendar ID
     @Published var googleToLocalCalendarMapping: [String: String] = [:]
@@ -101,6 +108,14 @@ final class CalendarViewModel: ObservableObject {
             self.googleToLocalEventMapping = [:]
         }
         
+        if let data = UserDefaults.standard.data(forKey: syncTokensKey),
+           let tokens = try? JSONDecoder().decode([String: String].self, from: data) {
+            self.syncTokens = tokens
+        }
+        else {
+            self.syncTokens = [:]
+        }
+        
         // 6) Абонираме се за промени в Event Store:
         NotificationCenter.default.addObserver(
             self,
@@ -111,6 +126,31 @@ final class CalendarViewModel: ObservableObject {
         
         // (По желание) опит за auto-login в Google:
         // GIDSignIn.sharedInstance.restorePreviousSignIn { ... }
+        GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
+            guard let self = self else { return }
+            if user != nil && error == nil {
+                self.isGoogleSignedIn = true
+                self.startPeriodicSync()
+            }
+        }
+    }
+    
+    private func startPeriodicSync() {
+        syncTimer?.invalidate()
+        syncTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
+            Task { [weak self] in
+                await self?.syncWithGoogleCalendars()
+            }
+        }
+        // Run immediately on start
+        Task {
+            await syncWithGoogleCalendars()
+        }
+    }
+        
+    func stopPeriodicSync() {
+        syncTimer?.invalidate()
+        syncTimer = nil
     }
     
     /// Това ще се вика всеки път, когато има промяна (добавяне, триене или редакция на събитие/календар)
@@ -243,6 +283,117 @@ final class CalendarViewModel: ObservableObject {
             }
         }
     }
+    
+    func syncWithGoogleCalendars() async {
+        guard isGoogleSignedIn, let user = GIDSignIn.sharedInstance.currentUser else { return }
+        let accessToken = user.accessToken.tokenString
+        
+        isImportingGoogleData = true
+        defer { isImportingGoogleData = false }
+        
+        do {
+            let googleCalendars = try await fetchGoogleCalendarList(accessToken: accessToken)
+            for googleCal in googleCalendars {
+                let localCal = try findOrCreateLocalCalendar(for: googleCal)
+                try await syncEvents(forCalendarId: googleCal.id, localCalendar: localCal, accessToken: accessToken)
+            }
+            reloadCalendars()
+            loadEvents(for: Date())
+        } catch {
+            print("Sync error: \(error.localizedDescription)")
+        }
+    }
+    
+    private func fetchGoogleCalendarList(accessToken: String) async throws -> [GoogleCalendarItem] {
+        let url = URL(string: "https://www.googleapis.com/calendar/v3/users/me/calendarList")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+            throw NSError(domain: "CalendarListFetch", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to fetch calendar list"])
+        }
+        
+        let decoder = JSONDecoder()
+        let calendarList = try decoder.decode(GoogleCalendarList.self, from: data)
+        return calendarList.items
+    }
+    
+    private func syncEvents(forCalendarId calId: String, localCalendar: EKCalendar, accessToken: String) async throws {
+        var urlString = "https://www.googleapis.com/calendar/v3/calendars/\(calId)/events?singleEvents=true&orderBy=startTime"
+        if let syncToken = syncTokens[calId] {
+            urlString += "&syncToken=\(syncToken)"
+        } else {
+            urlString += "&timeMin=\(ISO8601DateFormatter().string(from: Date().addingTimeInterval(-60*60*24*365)))" // 1 year back for initial sync
+        }
+        
+        guard let url = URL(string: urlString) else { throw URLError(.badURL) }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+        guard  (200..<300).contains(httpResponse!.statusCode) else {
+            if httpResponse!.statusCode == 410 { // Sync token expired
+                syncTokens.removeValue(forKey: calId)
+                saveSyncTokens()
+                return try await syncEvents(forCalendarId: calId, localCalendar: localCalendar, accessToken: accessToken) // Retry full sync
+            }
+            throw NSError(domain: "EventSync", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to sync events"])
+        }
+        
+        let decoder = JSONDecoder()
+        let eventsList = try decoder.decode(GoogleEventsList.self, from: data)
+        
+        eventStore.reset()
+        for gEvent in eventsList.items {
+            guard let startDate = parseGoogleDateTime(gEvent.start),
+                  let endDate = parseGoogleDateTime(gEvent.end) else { continue }
+            
+            let googleID = gEvent.id
+            if gEvent.status == "cancelled" {
+                if let localEventID = googleToLocalEventMapping[googleID],
+                   let existingEvent = eventStore.event(withIdentifier: localEventID) {
+                    try eventStore.remove(existingEvent, span: .thisEvent, commit: false)
+                    googleToLocalEventMapping.removeValue(forKey: googleID)
+                }
+            } else if let localEventID = googleToLocalEventMapping[googleID],
+                      let existingEvent = eventStore.event(withIdentifier: localEventID) {
+                existingEvent.calendar = localCalendar
+                existingEvent.title = gEvent.summary ?? "(Без заглавие)"
+                existingEvent.isAllDay = (gEvent.start?.date != nil)
+                existingEvent.startDate = startDate
+                existingEvent.endDate = endDate
+                try eventStore.save(existingEvent, span: .thisEvent, commit: false)
+            } else {
+                let newEvent = EKEvent(eventStore: eventStore)
+                newEvent.calendar = localCalendar
+                newEvent.title = gEvent.summary ?? "(Без заглавие)"
+                newEvent.isAllDay = (gEvent.start?.date != nil)
+                newEvent.startDate = startDate
+                newEvent.endDate = endDate
+                try eventStore.save(newEvent, span: .thisEvent, commit: false)
+                googleToLocalEventMapping[googleID] = newEvent.eventIdentifier
+            }
+        }
+        
+        try eventStore.commit()
+        if let nextSyncToken = eventsList.nextSyncToken {
+            syncTokens[calId] = nextSyncToken
+            saveSyncTokens()
+        }
+        saveGoogleToLocalEventMapping()
+    }
+        
+        // MARK: - Storage Methods
+    func saveSyncTokens() {
+        if let data = try? JSONEncoder().encode(syncTokens) {
+            UserDefaults.standard.set(data, forKey: syncTokensKey)
+        }
+    }
+        
 
     // MARK: - Методи за EventKit (iOS) календари
     func isCalendarAccessGranted() -> Bool {
@@ -876,6 +1027,7 @@ struct GoogleCalendarItem: Codable, Hashable {
 
 struct GoogleEventsList: Codable {
     let items: [GoogleEvent]
+    let nextSyncToken: String?
 }
 
 struct GoogleEvent: Codable, Hashable {
@@ -884,6 +1036,7 @@ struct GoogleEvent: Codable, Hashable {
     let description: String?
     let start: EventDateTime?
     let end: EventDateTime?
+    let status: String?
 }
 
 struct EventDateTime: Codable, Hashable {
