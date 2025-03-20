@@ -7,13 +7,11 @@ struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
 
-    // За разгъване на DisclosureGroup
     @State private var isOnMyIphoneExpanded = true
     @State private var isOtherExpanded      = true
+    @State private var isIntegrateExpanded  = true
 
-    // За Edit
     @State private var calendarToEdit: EKCalendar? = nil
-
 
     let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
 
@@ -23,9 +21,7 @@ struct CalendarsSheetView: View {
                 Form {
                     DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
                         ForEach(
-                            viewModel.allCalendars.filter { cal in
-                                cal.source.sourceType == .local
-                            },
+                            viewModel.allCalendars.filter { $0.source.sourceType == .local },
                             id: \.calendarIdentifier
                         ) { cal in
                             CalendarRowView(
@@ -54,6 +50,23 @@ struct CalendarsSheetView: View {
                             )
                         }
                     }
+
+                    DisclosureGroup("Integrate calendar", isExpanded: $isIntegrateExpanded) {
+                        if let user = viewModel.googleUser {
+                            Text("Логнат сте като: \(user.profile?.email ?? "(няма email)")")
+                                .padding(.vertical, 4)
+                            
+                            Button("Log out from Google") {
+                                GIDSignIn.sharedInstance.signOut()
+                                viewModel.googleUser = nil
+                                viewModel.stopGoogleCalendarSync()
+                            }
+                        } else {
+                            Button("Sign in with Google") {
+                                signInWithGoogle()
+                            }
+                        }
+                    }
                 }
                 .navigationBarTitle("Calendars", displayMode: .inline)
                 .navigationBarItems(
@@ -62,14 +75,11 @@ struct CalendarsSheetView: View {
                     }
                 )
 
-                // Долни бутони
                 HStack {
                     Menu("Add Calendar") {
                         Button("Add Local Calendar") {
-                            // тук може да отвориш някакъв sheet за създаване на локален календар
-                            // или директно да вмъкнеш логиката
+                            // ...
                         }
-                        // Махаме "Add Integrated Calendar" понеже вече го правим горе
                     }
                     .padding(.leading)
 
@@ -84,10 +94,8 @@ struct CalendarsSheetView: View {
             }
         }
         .onAppear {
-         
             viewModel.reloadCalendars()
         }
-        // Sheet за Edit (EventKit календар)
         .sheet(item: $calendarToEdit, onDismiss: {
             viewModel.reloadCalendars()
         }) { cal in
@@ -102,5 +110,25 @@ struct CalendarsSheetView: View {
             viewModel.selectedCalendarIDs.insert(cal.calendarIdentifier)
         }
     }
-}
 
+    private func signInWithGoogle() {
+        GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
+        guard let rootVC = UIApplication.shared.windows.first?.rootViewController else {
+            return
+        }
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
+            if let error = error {
+                print("Google Sign In error:", error.localizedDescription)
+                return
+            }
+            if let user = signInResult?.user {
+                print("Signed in user:", user.profile?.email ?? "(no email)")
+                Task { @MainActor in
+                    viewModel.googleUser = user
+                    viewModel.startGoogleCalendarSync()
+                    await viewModel.performGoogleCalendarSync()
+                }
+            }
+        }
+    }
+}
