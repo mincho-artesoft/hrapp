@@ -1,5 +1,5 @@
 {
-  "originHash" : "c1ccc997adf09ef6f4c0f0d32532c1087ba6a4c6128a168075677589d95cae59",
+  "originHash" : "68aa00e3cba36db2e0a76f54dbc84d1f079d8aa9a19bfa9fce02d6286bd620b7",
   "pins" : [
     {
       "identity" : "app-check",
@@ -17,24 +17,6 @@
       "state" : {
         "revision" : "2781038865a80e2c425a1da12cc1327bcd56501f",
         "version" : "1.7.6"
-      }
-    },
-    {
-      "identity" : "fscalendar",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/WenchaoD/FSCalendar.git",
-      "state" : {
-        "revision" : "0fbdec5172fccb90f707472eeaea4ffe095278f6",
-        "version" : "2.8.4"
-      }
-    },
-    {
-      "identity" : "google-api-objectivec-client-for-rest",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/google-api-objectivec-client-for-rest",
-      "state" : {
-        "branch" : "main",
-        "revision" : "708fb13705592387cac69d688ade1f665d6ab37b"
       }
     },
     {
