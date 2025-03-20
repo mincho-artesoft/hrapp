@@ -1,31 +1,29 @@
 import UIKit
 
-/// WeekCarouselView – „седмична“ колекция, която листва по 7 дни на страница.
-/// Добавяме onDaySelected + четимо/записваемо selectedDate.
+/// WeekCarouselView – седмична колекция, която може да скролва безкрайно назад/напред.
 public class WeekCarouselView: UIView,
                                UICollectionViewDataSource,
                                UICollectionViewDelegateFlowLayout,
                                UIScrollViewDelegate
 {
-    // MARK: - ПУБЛИЧНИ пропъртита, нужни за TwoWayPinnedMultiDayContainerView
-    /// Callback при тап върху даден ден
+    // MARK: - Публични пропъртита
     public var onDaySelected: ((Date) -> Void)?
     
-    /// Current selected day (read/write)
     public var selectedDate: Date {
         get {
-            // Връщаме текущия ден от масива
             return dates[selectedIndex]
         }
         set {
-            // Ако newValue е в dates, местим selectedIndex
             if let idx = dates.firstIndex(where: { isSameDay($0, newValue) }) {
                 selectedIndex = idx
-                // Скролваме без анимация, за да го покажем
                 scrollToSelectedIndex(animated: false)
             } else {
-                // Ако го няма, може да разширим/презаредим данните,
-                // за да го включим. Минимално: игнорираме или добавяме логика.
+                // Ако новата дата я няма, можем динамично да я добавим (примерно):
+                loadWeeksAround(newValue, rangeInWeeks: 2)
+                if let newIdx = dates.firstIndex(where: { isSameDay($0, newValue) }) {
+                    selectedIndex = newIdx
+                    scrollToSelectedIndex(animated: false)
+                }
             }
         }
     }
@@ -38,10 +36,13 @@ public class WeekCarouselView: UIView,
         }
     }
     
+    /// Колко седмици да зареждаме при едно разширение
+    /// (може да е 1,2,4 ... колкото решите)
     private let chunkWeeks = 2
+    
     private var collectionView: UICollectionView!
     
-    // MARK: - Init
+    // MARK: - Инициализация
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -61,28 +62,38 @@ public class WeekCarouselView: UIView,
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         
-        // Регистрираме клетката (примерно DayCell)
         collectionView.register(DayCell.self, forCellWithReuseIdentifier: "DayCell")
         
         addSubview(collectionView)
         
-        // Зареждаме първоначални седмици около днес
+        // Зареждаме първоначално няколко седмици около днешния ден:
         let today = Date()
-        loadInitialWeeks(around: today)
+        loadWeeksAround(today, rangeInWeeks: 2)
         
-        // Отваряме selectedIndex към днешния
+        // Отиваме на позицията на днес:
         if let todayIndex = dates.firstIndex(where: { isSameDay($0, today) }) {
             selectedIndex = todayIndex
         }
     }
     
-    private func loadInitialWeeks(around date: Date) {
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        collectionView.frame = bounds
+        // При промяна на размера да скролне към избрания ден без анимация:
+        scrollToSelectedIndex(animated: false)
+    }
+    
+    // MARK: - Зареждане на данни
+    /// Зарежда (или добавя) дати, така че `centerDate` да е вътре в списъка,
+    /// и добавя по rangeInWeeks назад и напред от тази дата.
+    private func loadWeeksAround(_ centerDate: Date, rangeInWeeks: Int) {
         let cal = Calendar.current
-        let sunday = alignToSunday(date)
-        var temp: [Date] = []
+        // Намираме неделята (за да подредим седмиците правилно)
+        let sunday = alignToSunday(centerDate)
         
-        // Добавяме 2 седмици назад, самата седмица, 2 седмици напред
-        for w in -chunkWeeks...chunkWeeks {
+        // Генерираме дати в интервала [sunday - rangeInWeeks седмици .. sunday + rangeInWeeks седмици]
+        var temp: [Date] = []
+        for w in -rangeInWeeks...rangeInWeeks {
             if let startOfWeek = cal.date(byAdding: .day, value: w * 7, to: sunday) {
                 for i in 0..<7 {
                     if let d = cal.date(byAdding: .day, value: i, to: startOfWeek) {
@@ -92,18 +103,76 @@ public class WeekCarouselView: UIView,
             }
         }
         temp.sort()
-        self.dates = temp
-    }
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        collectionView.frame = bounds
         
-        // При промяна на размера да скролне до избрания индекс без анимация
-        scrollToSelectedIndex(animated: false)
+        // Ако досега нямаме данни, просто ги слагаме
+        if dates.isEmpty {
+            dates = temp
+            return
+        }
+        
+        // Ако имаме, виждаме дали тези нови дати разширяват нашите...
+        // Но тук, за простота, можем да вземем обединението на вече съществуващите
+        // + новите (за да сме сигурни, че няма дублиране).
+        var setOld = Set(dates)
+        for d in temp {
+            if !setOld.contains(d) {
+                dates.append(d)
+                setOld.insert(d)
+            }
+        }
+        dates.sort()
     }
     
-    // MARK: - Scrolling
+    /// Зарежда N седмици "отляво"
+    private func prependWeeks(_ count: Int) {
+        guard let first = dates.first else { return }
+        let cal = Calendar.current
+        
+        // Намираме началната неделя (спрямо първата дата)
+        let sunday = alignToSunday(first)
+        
+        // Генерираме "count" седмици преди sunday
+        var newDays: [Date] = []
+        for w in 1...count {
+            // w = 1 => 1 седмица назад, w = 2 => 2 седмици назад и т.н.
+            if let startOfWeek = cal.date(byAdding: .day, value: -w * 7, to: sunday) {
+                for i in 0..<7 {
+                    if let d = cal.date(byAdding: .day, value: i, to: startOfWeek) {
+                        newDays.append(d)
+                    }
+                }
+            }
+        }
+        dates.insert(contentsOf: newDays.sorted(), at: 0)
+    }
+    
+    /// Зарежда N седмици "отдясно"
+    private func appendWeeks(_ count: Int) {
+        guard let last = dates.last else { return }
+        let cal = Calendar.current
+        
+        // Намираме неделята (или понеделника) на последната дата
+        // Тъй като alignToSunday ти дава неделя за референтната дата.
+        let lastSunday = alignToSunday(last)
+        
+        // last може да не е точно неделя → намираме колко седмици да добавим оттам нататък
+        // но по-лесно е да тръгнем от lastSunday + 1 седмица и т.н.
+        
+        var newDays: [Date] = []
+        for w in 1...count {
+            if let startOfWeek = cal.date(byAdding: .day, value: w * 7, to: lastSunday) {
+                for i in 0..<7 {
+                    if let d = cal.date(byAdding: .day, value: i, to: startOfWeek) {
+                        newDays.append(d)
+                    }
+                }
+            }
+        }
+        dates.append(contentsOf: newDays.sorted())
+    }
+    
+    
+    // MARK: - Скролване до избран ден
     private func scrollToSelectedIndex(animated: Bool) {
         guard selectedIndex < dates.count else { return }
         let ip = IndexPath(item: selectedIndex, section: 0)
@@ -136,13 +205,11 @@ public class WeekCarouselView: UIView,
     public func collectionView(_ collectionView: UICollectionView,
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // 7 дни на страница (pagingEnabled = true)
         let w = bounds.width / 7
         let h = bounds.height
         return CGSize(width: w, height: h)
     }
     
-    // При тап → сменяме selectedIndex, викаме onDaySelected, скролваме
     public func collectionView(_ collectionView: UICollectionView,
                                didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.item
@@ -151,31 +218,78 @@ public class WeekCarouselView: UIView,
         scrollToSelectedIndex(animated: true)
     }
     
-    // MARK: - UIScrollViewDelegate (примерно добавяме ако искаме „близо до края → добавяне“)
+    // MARK: - UIScrollViewDelegate
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // Намираме "страницата" (всеки 7 елемента = 1 страница)
         let page = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
-        let pageStartIndex = page * 7
-        let oldPos = selectedIndex % 7
         
-        let newIndex = pageStartIndex + oldPos
+        // Начален индекс на тази страница
+        let pageStartIndex = page * 7
+        
+        // Старото отместване в рамките на страницата (0..6)
+        let oldPosWithinPage = selectedIndex % 7
+        
+        // Нов индекс (кандидат) = начало на страницата + позицията в седмицата
+        var newIndex = pageStartIndex + oldPosWithinPage
+        
+        // 1) Проверяваме дали сме близо до ляв край → добавяме още седмици назад
+        if page < 2 {
+            let oldCount = dates.count
+            prependWeeks(chunkWeeks)
+            let newCount = dates.count
+            
+            // След като сме добавили "отпред", real newIndex трябва да се измести надясно
+            // с броя новодобавени елементи.
+            let diff = newCount - oldCount
+            newIndex += diff
+            
+            // Релоуд и запазване на contentOffset, за да не "мига"
+            collectionView.reloadData()
+            
+            // Запазваме предишния page визуално – компенсираме със същия брой новодобавени items.
+            let newOffsetX = scrollView.contentOffset.x + CGFloat(diff) * (bounds.width/7)
+            scrollView.contentOffset = CGPoint(x: newOffsetX, y: scrollView.contentOffset.y)
+        }
+        
+        // 2) Проверяваме дали сме близо до десен край → добавяме седмици напред
+        // Колко страници имаме общо?
+        let totalPages = Int(ceil(Double(dates.count) / 7.0))
+        
+        if page > totalPages - 3 {
+            // Добавяме още chunkWeeks
+            appendWeeks(chunkWeeks)
+            collectionView.reloadData()
+            // Тук няма нужда от корекция на newIndex, защото добавяме "вдясно" от current.
+        }
+        
+        // Накрая сетваме избрания индекс, ако е в обхвата
         if newIndex >= 0, newIndex < dates.count {
             selectedIndex = newIndex
-            onDaySelected?(dates[newIndex]) 
+            onDaySelected?(dates[newIndex])
+        } else {
+            // Ако сме извън обхват, коригираме в разумни граници
+            if newIndex < 0 { newIndex = 0 }
+            if newIndex >= dates.count { newIndex = dates.count - 1 }
+            selectedIndex = newIndex
+            onDaySelected?(dates[newIndex])
         }
+        
+        // Превъртаме до избрания елемент (без анимация)
+        scrollToSelectedIndex(animated: false)
     }
-
     
-    // MARK: - Помощни
+    // MARK: - Помощни методи
     private func alignToSunday(_ date: Date) -> Date {
         let cal = Calendar.current
-        let wd = cal.component(.weekday, from: date) // Sunday=1 (в системен Calendar)
+        // В повечето регионални настройки Sunday = 1, Monday = 2 и т.н.
+        // Ако е различно, коригирайте логиката.
+        let wd = cal.component(.weekday, from: date) // Sunday=1
         let offset = 1 - wd
         let maybeSunday = cal.date(byAdding: .day, value: offset, to: date) ?? date
         return cal.startOfDay(for: maybeSunday)
     }
     
     private func isSameDay(_ d1: Date, _ d2: Date) -> Bool {
-        let cal = Calendar.current
-        return cal.isDate(d1, inSameDayAs: d2)
+        return Calendar.current.isDate(d1, inSameDayAs: d2)
     }
 }

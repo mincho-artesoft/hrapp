@@ -12,7 +12,11 @@ struct CalendarsSheetView: View {
     @State private var isOtherExpanded      = true
     @State private var isIntegrateExpanded  = true
 
+    // За редакция на вече съществуващ календар
     @State private var calendarToEdit: EKCalendar? = nil
+
+    // За показване на AddCalendarView (нов календар)
+    @State private var showAddCalendarSheet = false
 
     let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
 
@@ -30,7 +34,7 @@ struct CalendarsSheetView: View {
                                 editAction: {
                                     calendarToEdit = cal
                                 },
-                                showEditButton: true  // <--- за локалните ще показваме info бутона
+                                showEditButton: true  // показваме info бутона
                             )
                         }
                     }
@@ -43,14 +47,14 @@ struct CalendarsSheetView: View {
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                 toggleAction: toggleCalendar,
                                 editAction: {
-                                    // Няма да отваряме Edit, затова може да го оставим празно
+                                    // няма редакция
                                 },
-                                showEditButton: false // <--- крием info бутона
+                                showEditButton: false
                             )
                         }
                     }
 
-                    // 3) Група с „други“ (примерно iCloud, Exchange и т.н., ако не искате да ги смесвате)
+                    // 3) Група с „други“ (iCloud, Exchange и т.н.)
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
                         ForEach(otherCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
@@ -72,6 +76,7 @@ struct CalendarsSheetView: View {
                                 .padding(.vertical, 4)
 
                             Button("Log out from Google") {
+                                // Първо стандартното signOut
                                 GIDSignIn.sharedInstance.signOut()
                                 viewModel.googleUser = nil
                                 viewModel.stopGoogleCalendarSync()
@@ -91,11 +96,10 @@ struct CalendarsSheetView: View {
                     }
                 )
 
+                // В долната лента - бутон "Add Local Calendar" и "Hide All"
                 HStack {
-                    Menu("Add Calendar") {
-                        Button("Add Local Calendar") {
-                            // Вашата логика
-                        }
+                    Button("Add Local Calendar") {
+                        showAddCalendarSheet = true
                     }
                     .padding(.leading)
 
@@ -112,17 +116,21 @@ struct CalendarsSheetView: View {
         .onAppear {
             viewModel.reloadCalendars()
         }
+        // .sheet за редактиране на вече съществуващ календар
         .sheet(item: $calendarToEdit, onDismiss: {
             viewModel.reloadCalendars()
         }) { cal in
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
+        }
+        // .sheet за създаване на нов (AddCalendarView)
+        .sheet(isPresented: $showAddCalendarSheet) {
+            AddCalendarView()  // директно в нов sheet
         }
     }
     
     // MARK: - Помощни методи
 
     private func localNonGoogleCalendars() -> [EKCalendar] {
-        // Връща локалните календари, които НЕ са копия от Google
         let googleSyncedIDs = Set(viewModel.googleToLocalCalendarMap.values)
         return viewModel.allCalendars.filter {
             $0.source.sourceType == .local &&
@@ -131,7 +139,6 @@ struct CalendarsSheetView: View {
     }
 
     private func googleCopiedCalendars() -> [EKCalendar] {
-        // Връща локалните календари, които са създадени като копие на Google
         let googleSyncedIDs = Set(viewModel.googleToLocalCalendarMap.values)
         return viewModel.allCalendars.filter {
             googleSyncedIDs.contains($0.calendarIdentifier)
@@ -139,7 +146,6 @@ struct CalendarsSheetView: View {
     }
 
     private func otherCalendars() -> [EKCalendar] {
-        // Всичко, което не е .local и не е в googleSyncedIDs
         let googleSyncedIDs = Set(viewModel.googleToLocalCalendarMap.values)
         return viewModel.allCalendars.filter {
             $0.source.sourceType != .local &&
