@@ -294,6 +294,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             self.currentlyEditingEventID = ekEvent.eventIdentifier
             
             let editVC = EKEventEditViewController()
+            
             editVC.eventStore = parent.eventStore
             editVC.event = ekEvent
             editVC.editViewDelegate = self

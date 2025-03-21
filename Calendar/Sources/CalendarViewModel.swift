@@ -461,37 +461,49 @@ extension CalendarViewModel {
         let now = Date()
         let startDate = Calendar.current.date(byAdding: .day, value: -180, to: now)!
         let endDate   = Calendar.current.date(byAdding: .day, value: 360, to: now)!
-        
+
         do {
-            let allGEvents = try await fetchAllGoogleEvents(googleCalId: googleCalId,
-                                                            accessToken: accessToken,
-                                                            startDate: startDate,
-                                                            endDate: endDate)
+            // 1) Изтегляме всички Google събития за този календар
+            let allGEvents = try await fetchAllGoogleEvents(
+                googleCalId: googleCalId,
+                accessToken: accessToken,
+                startDate: startDate,
+                endDate: endDate
+            )
             
+            // 2) Принтираме дали имат Google Meet или не
+            for gevent in allGEvents {
+                if let meetLink = gevent.hangoutLink {
+                    print("Event \"\(gevent.summary ?? "(no summary)")\" има Google Meet: \(meetLink)")
+                } else {
+                    print("Event \"\(gevent.summary ?? "(no summary)")\" НЯМА Google Meet.")
+                }
+            }
+            
+            // 3) Прехвърляме всички Google Event ID-та в Set (за по-лесно търсене по-късно)
             let googleEventIDsSet = Set(allGEvents.map { $0.id })
             
-            // Създаваме/ъпдейтваме локални събития
+            // 4) Създаваме/ъпдейтваме локалните събития (Google -> Local)
             for gevent in allGEvents {
                 let googleUpdated = gevent.updated ?? ""
                 let localKnownUpdated = googleEventUpdatedMap[gevent.id] ?? ""
                 
-                // Проверяваме дали Google действително е обновил събитието (updated се е сменило),
-                // иначе не презаписваме локалното (за да не загубим наша промяна).
+                // Проверяваме дали Google е променил събитието (updated стойността)
                 let googleChanged = (googleUpdated != localKnownUpdated)
                 
+                // Ако вече имаме mapping (googleToLocalEventMap) -> взимаме локалното събитие
                 if let mappedLocalID = googleToLocalEventMap[gevent.id],
                    let existingLocalEvent = eventStore.event(withIdentifier: mappedLocalID) {
                     
-                    // Само ако Google наистина е променил (googleChanged == true), ъпдейтваме локално
                     if googleChanged {
                         updateLocalEvent(existingLocalEvent, withGoogleEvent: gevent, inCalendar: localCalendar)
                     }
                     
+                // Ако го намерим по URL (груба проверка), но не е в речника googleToLocalEventMap
                 } else if let foundByUrl = findLocalEvent(withGoogleID: gevent.id) {
                     
-                    // Ако не сме го вкарали в googleToLocalEventMap, но го намерим по URL
-                    // отново проверка googleChanged
                     if googleChanged {
+                        // Обновяваме речника, за да не го търсим всеки път
                         var newMap = googleToLocalEventMap
                         newMap[gevent.id] = foundByUrl.eventIdentifier
                         googleToLocalEventMap = newMap
@@ -500,7 +512,7 @@ extension CalendarViewModel {
                     }
                     
                 } else {
-                    // Ако изобщо не съществува локално, значи е ново Google събитие -> винаги го сваляме
+                    // Ако локално изобщо не съществува такова събитие, създаваме го
                     if let newEv = createLocalEvent(gevent, inCalendar: localCalendar) {
                         var newMap = googleToLocalEventMap
                         newMap[gevent.id] = newEv.eventIdentifier
@@ -508,20 +520,28 @@ extension CalendarViewModel {
                     }
                 }
                 
-                // Винаги накрая записваме какво updated имаме от Google.
+                // Винаги обновяваме локалния 'updated' отпечатък
                 var updMap = googleEventUpdatedMap
                 updMap[gevent.id] = googleUpdated
                 googleEventUpdatedMap = updMap
             }
             
-            // Трием локалните, които липсват в Google
-            let localEvents = fetchLocalEvents(in: localCalendar, startDate: startDate, endDate: endDate)
+            // 5) Изтриваме локалните събития, които вече не съществуват в Google
+            let localEvents = fetchLocalEvents(
+                in: localCalendar,
+                startDate: startDate,
+                endDate: endDate
+            )
+            
             for localEv in localEvents {
                 if let gID = getGoogleIDFrom(localEv) {
+                    // Ако googleEventIDsSet не съдържа това gID => то е изтрито от Google
                     if !googleEventIDsSet.contains(gID) {
                         do {
                             try eventStore.remove(localEv, span: .thisEvent, commit: true)
                             print("Removed local event:", localEv.title ?? "(No Title)")
+                            
+                            // Почистете речниците
                             var newMap = googleToLocalEventMap
                             newMap.removeValue(forKey: gID)
                             googleToLocalEventMap = newMap
@@ -529,17 +549,19 @@ extension CalendarViewModel {
                             var updMap = googleEventUpdatedMap
                             updMap.removeValue(forKey: gID)
                             googleEventUpdatedMap = updMap
+                            
                         } catch {
                             print("Error removing local event:", error.localizedDescription)
                         }
                     }
                 }
             }
+            
         } catch {
             print("Error fetching events for \(googleCalId):", error.localizedDescription)
         }
     }
-    
+
     private func fetchAllGoogleEvents(googleCalId: String,
                                       accessToken: String,
                                       startDate: Date,
@@ -870,13 +892,37 @@ extension CalendarViewModel {
         return events.first(where: { $0.url?.absoluteString == "gcal://\(gID)" })
     }
 
-    private func createLocalEvent(_ gevent: GoogleEventItem, inCalendar: EKCalendar) -> EKEvent? {
+    private func createLocalEvent(_ gevent: GoogleEventItem,
+                                  inCalendar: EKCalendar) -> EKEvent? {
         let newEvent = EKEvent(eventStore: eventStore)
         newEvent.calendar = inCalendar
+        
+        // Сетваме URL, за да знаем, че това е "gcal://<someID>"
         newEvent.url = URL(string: "gcal://\(gevent.id)")
         
+        // Title & description
         newEvent.title = gevent.summary ?? "(No Title)"
         newEvent.notes = gevent.description
+        
+        // Ако Google има location
+        if let gLocation = gevent.location, !gLocation.isEmpty {
+            newEvent.location = gLocation
+        }
+        
+        // Ако има Google Meet линк
+        if let meetLink = gevent.hangoutLink, !meetLink.isEmpty {
+            let videoCallBlock = """
+            ----( Video Call )----
+            [Google Meet]
+            \(meetLink)
+            ---===---
+            """
+            // Добавяме го в notes (в случая - на нов ред под описанието)
+            let existingNotes = newEvent.notes ?? ""
+            newEvent.notes = existingNotes.isEmpty
+                ? videoCallBlock
+                : existingNotes + "\n\n" + videoCallBlock
+        }
 
         // Проверяваме дали е all-day
         if let startStr = gevent.start?.date {
@@ -890,6 +936,8 @@ extension CalendarViewModel {
                let endDate = formatter.date(from: endStr) {
                 newEvent.endDate = endDate
             }
+            
+        // Или dateTime (нормално събитие с час)
         } else if let startStr = gevent.start?.dateTime {
             newEvent.isAllDay = false
             if let startDate = ISO8601DateFormatter().date(from: startStr) {
@@ -910,14 +958,43 @@ extension CalendarViewModel {
             return nil
         }
     }
+
+
     
     private func updateLocalEvent(_ localEvent: EKEvent,
                                   withGoogleEvent gevent: GoogleEventItem,
                                   inCalendar: EKCalendar) {
         localEvent.title = gevent.summary ?? "(No Title)"
-        localEvent.notes = gevent.description
-        localEvent.calendar = inCalendar
+        localEvent.notes = gevent.description  // Първо презаписваме описание
         
+        // Сетваме location, ако има
+        if let gLocation = gevent.location, !gLocation.isEmpty {
+            localEvent.location = gLocation
+        } else {
+            localEvent.location = nil
+        }
+        
+        // Ако има Google Meet линк - добавяме го в notes
+        if let meetLink = gevent.hangoutLink, !meetLink.isEmpty {
+            let videoCallBlock = """
+            ----( Video Call )----
+            [Google Meet]
+            \(meetLink)
+            ---===---
+            """
+            let existingNotes = localEvent.notes ?? ""
+            localEvent.notes = existingNotes.isEmpty
+                ? videoCallBlock
+                : existingNotes + "\n\n" + videoCallBlock
+        }
+        
+        // Примерен подход: Ако искате да **не** презаписвате `notes` изцяло по-горе,
+        // а само да добавите Meet линка, трябва да комбинирате описанието + блока.
+        // Тук, за простота, показвам overwrite на notes със gevent.description,
+        // после добавям MeetLink. Ако ви е нужно друго, нагласете логиката.
+
+        // Ъпдейт на start/end
+        localEvent.calendar = inCalendar
         if let startStr = gevent.start?.date {
             localEvent.isAllDay = true
             let formatter = DateFormatter()
@@ -940,16 +1017,20 @@ extension CalendarViewModel {
             }
         }
         
+        // Ако локалното събитие досега е нямало url, а Google има ID, сетваме
         if localEvent.url == nil {
             localEvent.url = URL(string: "gcal://\(gevent.id)")
         }
-        
+
         do {
             try eventStore.save(localEvent, span: .thisEvent, commit: true)
+            print("Updated local event:", localEvent.title)
         } catch {
             print("Error updating event:", error.localizedDescription)
         }
     }
+
+
     
     private func localAllDayDateString(_ date: Date) -> String {
         let formatter = DateFormatter()
@@ -1093,7 +1174,11 @@ struct GoogleEventItem: Codable {
     let location: String?
     let start: GoogleEventDate?
     let end: GoogleEventDate?
+    
+    // Добавяме това:
+    let hangoutLink: String?  // <--- Google Meet линк (ако има)
 }
+
 
 struct GoogleEventDate: Codable {
     let date: String?      // при all-day евенти
