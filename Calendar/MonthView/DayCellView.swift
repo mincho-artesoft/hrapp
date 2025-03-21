@@ -7,6 +7,7 @@ struct DayCellView: View {
     let currentMonth: Date
     let events: [EKEvent]
 
+    /// Callback-и
     var onEventDropped: (String, Date) -> Void
     var onDayTap: (Date) -> Void
     var onDayLongPress: (Date) -> Void
@@ -18,7 +19,7 @@ struct DayCellView: View {
 
     var body: some View {
         ZStack {
-            // Фон за засичане на tap/long press
+            // 1) Зона за тап/дълго задържане
             Rectangle()
                 .fill(Color.clear)
                 .contentShape(Rectangle())
@@ -29,8 +30,9 @@ struct DayCellView: View {
                     onDayLongPress(day)
                 }
 
+            // 2) Показваме деня и (до 3) събития
             VStack(spacing: 4) {
-                // Показваме деня
+                // Денят (ако е днес, показваме червен кръг)
                 if calendar.isDateInToday(day) {
                     Text("\(dayNumber(day))")
                         .font(.subheadline)
@@ -43,7 +45,7 @@ struct DayCellView: View {
                         .foregroundColor(isInCurrentMonth(day) ? .primary : .gray)
                 }
 
-                // Показваме до 3 събития
+                // Събития
                 if events.count <= 3 {
                     ForEach(events, id: \.eventIdentifier) { event in
                         eventCapsule(event)
@@ -63,12 +65,14 @@ struct DayCellView: View {
         }
         .frame(minHeight: 60)
         .frame(maxWidth: .infinity)
+        // Логика за drag & drop (ако ви трябва)
         .onDrop(of: [UTType.text], isTargeted: $isTargeted) { providers in
             handleDrop(providers)
         }
         .background(isTargeted ? Color.blue.opacity(0.1) : Color.clear)
     }
 
+    /// Капсулка за едно събитие
     private func eventCapsule(_ event: EKEvent) -> some View {
         let color = Color(UIColor(cgColor: event.calendar.cgColor ?? UIColor.systemGray.cgColor))
 
@@ -83,9 +87,10 @@ struct DayCellView: View {
             .onTapGesture {
                 onEventTap(event)
             }
-            .modifier(DraggableModifier(event: event))
+            .modifier(DraggableModifier(event: event)) // ако ползвате draggable
     }
 
+    /// Обработка на drop (ако ползвате drag & drop)
     private func handleDrop(_ providers: [NSItemProvider]) -> Bool {
         guard let provider = providers.first else { return false }
 
