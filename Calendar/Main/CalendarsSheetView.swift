@@ -163,9 +163,16 @@ struct CalendarsSheetView: View {
 
     private func signInWithGoogle() {
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
-        guard let rootVC = UIApplication.shared.windows.first?.rootViewController else {
+        
+        // Query the active UIWindowScene
+        guard let windowScene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+              let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        else {
             return
         }
+
+        // Present the Google sign-in flow using the obtained root view controller
         GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
             if let error = error {
                 print("Google Sign In error:", error.localizedDescription)
@@ -181,4 +188,5 @@ struct CalendarsSheetView: View {
             }
         }
     }
+
 }

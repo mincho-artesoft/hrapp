@@ -21,7 +21,16 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         let container = TwoWayPinnedSingleDayMultiCalendarContainerView()
         
         container.fromDate = fromDate
-        
+        container.onEventDeleted = { descriptor in
+               // Анонимна функция, която вика reloadCurrentRange() през координатора:
+               context.coordinator.reloadCurrentRange()
+           }
+           // 2) Когато евент се дублира
+           container.onEventDuplicated = { descriptor in
+               // Отново
+               context.coordinator.reloadCurrentRange()
+           }
+           vc.view.addSubview(container)
         // Ако имате нужда да настройвате/подавате събития:
         let (allDay, regular) = splitAllDay(events)
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }

@@ -62,7 +62,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             allDayView.onEventTap = onEventTap
         }
     }
-    
+    public var onEventDeleted: ((EventDescriptor) -> Void)? {
+        didSet {
+            weekView.onEventDeleted = onEventDeleted
+        }
+    }
+    public var onEventDuplicated: ((EventDescriptor) -> Void)? {
+        didSet {
+            weekView.onEventDuplicated = onEventDuplicated
+        }
+    }
+
     public var onEmptyLongPress: ((Date) -> Void)? {
         didSet {
             weekView.onEmptyLongPress = onEmptyLongPress

@@ -1,6 +1,7 @@
 import UIKit
+import EventKit
 
-public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
+public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @preconcurrency UIEditMenuInteractionDelegate {
     private var highlightedDayIndexes: Set<Int> = []
     private var isCurrentlyOverAllDay = false
 
@@ -39,6 +40,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     // MARK: - Public Callbacks
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEmptyLongPress: ((Date) -> Void)?
+    public var onEventDeleted: ((EventDescriptor) -> Void)?
+    public var onEventDuplicated: ((EventDescriptor) -> Void)?
+
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
     public var onEventConvertToAllDay: ((EventDescriptor, Int) -> Void)?
@@ -79,6 +83,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         
         setupLongPressForEmptySpace()
         setupTapOnEmptySpace()
+        setupEditMenuInteraction()
     }
     
     required public init?(coder: NSCoder) {
@@ -88,6 +93,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         
         setupLongPressForEmptySpace()
         setupTapOnEmptySpace()
+        setupEditMenuInteraction()
     }
     
     // MARK: - Gestures for Empty Space
@@ -99,6 +105,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     
     private func setupTapOnEmptySpace() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapOnEmptySpace(_:)))
+        
         tap.cancelsTouchesInView = false
         tap.delegate = self
         addGestureRecognizer(tap)
@@ -108,6 +115,126 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         true
     }
     
+    /// iOS ви пита: „Какво меню да покажа?“
+    public func editMenuInteraction(
+        _ interaction: UIEditMenuInteraction,
+        menuFor configuration: UIEditMenuConfiguration,
+        suggestedActions: [UIMenuElement]
+    ) -> UIMenu? {
+        guard let descriptor = currentTappedDescriptor else { return nil }
+        
+        // 1) „Edit“ бутон
+        let editAction = UIAction(
+            title: "Edit",
+            image: UIImage(systemName: "square.and.pencil")
+        ) { action in
+            self.onEventTap?(descriptor)
+        }
+        
+        // 2) „Duplicate“ бутон
+        let duplicateAction = UIAction(
+            title: "Duplicate",
+            image: UIImage(systemName: "doc.on.doc")
+        ) { action in
+            self.duplicateEventInStore(descriptor)
+            self.onEventDuplicated?(descriptor)
+        }
+        
+        // 3) „Delete“ бутон
+        let deleteAction = UIAction(
+            title: "Delete",
+            image: UIImage(systemName: "trash"),
+            attributes: .destructive
+        ) { action in
+            self.deleteEventFromStore(descriptor)
+            self.onEventDeleted?(descriptor)
+        }
+
+        // Събираме всички задължителни бутони
+        var children: [UIMenuElement] = [
+            editAction,
+            duplicateAction,
+            deleteAction
+        ]
+        
+        // ------------------------------------------------
+        // 4) „Add to Google Meet“, **но** само при две условия:
+        //    a) има логнат Google потребител
+        //    b) текущото събитие е от Google календар
+        // ------------------------------------------------
+        if let _ = CalendarViewModel.shared.googleUser,
+           CalendarViewModel.shared.isGoogleCalendarEvent(descriptor),
+           !CalendarViewModel.shared.hasGoogleMeetLink(in: descriptor)
+        {
+            let googleAction = UIAction(
+                title: "Add to Google Meet",
+                image: UIImage(systemName: "globe")
+            ) { action in
+                CalendarViewModel.shared.addGoogleMeet(to: descriptor)
+            }
+            children.append(googleAction)
+        }
+        
+        // Финално връщаме UIMenu с децата
+        return UIMenu(title: "", children: children)
+    }
+
+
+
+    private func deleteEventFromStore(_ descriptor: EventDescriptor) {
+        guard let multi = descriptor as? EKMultiDayWrapper else { return }
+        let realEv = multi.realEvent
+        
+        let store = CalendarViewModel.shared.eventStore // или откъдето си пазите EKEventStore
+        
+        do {
+            try store.remove(realEv, span: .thisEvent, commit: true)
+            print("Deleted event: \(realEv.title ?? "")")
+        } catch {
+            print("Error:", error)
+        }
+    }
+
+    private func duplicateEventInStore(_ descriptor: EventDescriptor) {
+        guard let multi = descriptor as? EKMultiDayWrapper else { return }
+        let original = multi.realEvent
+        let store = CalendarViewModel.shared.eventStore
+        
+        let newEv = EKEvent(eventStore: store)
+        newEv.title = original.title
+        newEv.startDate = original.startDate
+        newEv.endDate   = original.endDate
+        newEv.isAllDay  = original.isAllDay
+        newEv.notes     = original.notes
+        newEv.location  = original.location
+        newEv.calendar  = original.calendar
+        
+        do {
+            try store.save(newEv, span: .thisEvent, commit: true)
+            print("Duplicated: \(original.title ?? "") → \(newEv.title ?? "")")
+        } catch {
+            print("Error duplicating:", error)
+        }
+    }
+
+   
+
+    /// Ако искате да засичате момента, в който менюто е показано/скрито:
+    private func editMenuInteraction(
+        _ interaction: UIEditMenuInteraction,
+        willPresentEditMenuWith configuration: UIEditMenuConfiguration,
+        animator: UIEditMenuInteractionAnimating
+    ) {
+        // По желание: код при показване
+    }
+    
+    private func editMenuInteraction(
+        _ interaction: UIEditMenuInteraction,
+        willDismissEditMenuWith configuration: UIEditMenuConfiguration,
+        animator: UIEditMenuInteractionAnimating
+    ) {
+        // По желание: код при скриване
+    }
     // При TAP върху празно — зануляваме edit режима за всички
     @objc private func handleTapOnEmptySpace(_ gesture: UITapGestureRecognizer) {
         guard gesture.state == .ended else { return }
@@ -624,14 +751,39 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
         }
         dragSlicesMap.removeValue(forKey: eventID)
     }
-    
-    // MARK: - Gesture: Tap on Event
-    @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
-        guard let tappedView = gesture.view as? EventView,
-              let descriptor = eventViewToDescriptor[tappedView] else { return }
-        selectEventView(tappedView)
-        onEventTap?(descriptor)
-    }
+    private var editMenuInteraction: UIEditMenuInteraction?
+      private var currentTappedDescriptor: EventDescriptor?
+      
+      private func setupEditMenuInteraction() {
+          // Създаваме и закачаме interaction към този view
+          let interaction = UIEditMenuInteraction(delegate: self)
+          self.addInteraction(interaction)
+          self.editMenuInteraction = interaction
+      }
+      
+      // Примерен метод, който се вика при tap върху EventView
+      @objc private func handleEventViewTap(_ gesture: UITapGestureRecognizer) {
+          guard
+              let tappedView = gesture.view as? EventView,
+              let descriptor = eventViewToDescriptor[tappedView]
+          else { return }
+          
+          // Запомняме кой евент е „кликнат“
+          self.currentTappedDescriptor = descriptor
+          
+          // Ако имате някаква логика за „select“
+          selectEventView(tappedView)
+          
+          // Сега казваме на `UIEditMenuInteraction`: „Покажи меню на точно тази точка“
+          let location = gesture.location(in: self)
+          
+          // Трябва ни конфигурация, в която задаваме къде точно да се покаже менюто
+          let menuConfig = UIEditMenuConfiguration(identifier: nil, sourcePoint: location)
+          
+          // `presentEditMenu(...)` казва на iOS да изрисува меню (чрез delegate метод)
+          editMenuInteraction?.presentEditMenu(with: menuConfig)
+      }
+
     
     // [MODIFIED] - Клик (tap) върху slice от многодневно събитие → всички slice-ове в edit режим
     private func selectEventView(_ evView: EventView) {
@@ -2095,4 +2247,3 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate {
     }
 
 }
-

@@ -951,7 +951,7 @@ extension CalendarViewModel {
         
         do {
             try eventStore.save(newEvent, span: .thisEvent, commit: true)
-            print("Created local event:", newEvent.title)
+            print("Created local event:", newEvent.title as Any)
             return newEvent
         } catch {
             print("Error creating local event:", error.localizedDescription)
@@ -1024,7 +1024,7 @@ extension CalendarViewModel {
 
         do {
             try eventStore.save(localEvent, span: .thisEvent, commit: true)
-            print("Updated local event:", localEvent.title)
+            print("Updated local event:", localEvent.title as Any)
         } catch {
             print("Error updating event:", error.localizedDescription)
         }
@@ -1216,4 +1216,192 @@ extension CalendarViewModel {
         // 6) Презареждаме всичко
         self.reloadCalendars()
     }
+    public func isGoogleCalendarEvent(_ descriptor: EventDescriptor) -> Bool {
+        guard let multi = descriptor as? EKMultiDayWrapper else {
+            // Ако не е EKMultiDayWrapper, няма реален EKEvent
+            return false
+        }
+        let realEKEvent = multi.realEvent
+        
+        // 1) Проверка дали "calendarIdentifier" на събитието съществува в googleToLocalCalendarMap.values
+        let googleLocalIDs = CalendarViewModel.shared.googleToLocalCalendarMap.values
+        if googleLocalIDs.contains(realEKEvent.calendar.calendarIdentifier) {
+            return true
+        }
+        return false
+    }
+    func findGoogleIDs(for descriptor: EventDescriptor) -> (calID: String, eventID: String)? {
+        guard let multi = descriptor as? EKMultiDayWrapper else { return nil }
+        let localEvent = multi.realEvent
+        
+        // Ако сте си пазили URL:
+        // localEvent.url = gcal://<googleEventID>
+        guard let urlStr = localEvent.url?.absoluteString,
+              urlStr.hasPrefix("gcal://")
+        else {
+            return nil
+        }
+        let googleEventID = urlStr.replacingOccurrences(of: "gcal://", with: "")
+        
+        // А за calendarID:
+        // Ако сте си пазили в речник googleToLocalCalendarMap:
+        //   googleToLocalCalendarMap[gCalID] = localCalendarID
+        // Тук localCalendarID = localEvent.calendar.calendarIdentifier
+        // Трябва да намерим ключа "gCalID"
+        
+        let localCalID = localEvent.calendar.calendarIdentifier
+        // Търсим кой Google Calendar ID съответства
+        let reverse = CalendarViewModel.shared.googleToLocalCalendarMap
+            .filter { $0.value == localCalID }
+        guard let (gCalID, _) = reverse.first else {
+            return nil
+        }
+        
+        return (gCalID, googleEventID)
+    }
+    func addGoogleMeet(to descriptor: EventDescriptor) {
+        // 1) Намираме googleCalId & googleEventId
+        guard let (googleCalId, googleEventId) = findGoogleIDs(for: descriptor) else {
+            print("Нямаме Google IDs за това събитие.")
+            return
+        }
+        // 2) Проверяваме имаме ли Google User & accessToken
+        guard let user = CalendarViewModel.shared.googleUser else {
+            print("Нямаме googleUser => не можем да добавим Meet.")
+            return
+        }
+        let accessToken = user.accessToken.tokenString
+        
+        // 3) Правим PATCH заявка
+        Task {
+            // Пробваме да refresh-нем, в случай че е изтекъл
+            do { try await refreshTokensIfNeeded(user: user) } catch { /*...*/ }
+            
+            let success = await self.patchConferenceData(
+                googleCalId: googleCalId,
+                googleEventId: googleEventId,
+                accessToken: accessToken
+            )
+            
+            if success {
+                // Ако е success, Google е създал Hangouts Meet линк.
+                // Обновяваме локалното EKEvent (notes).
+                 self.updateLocalEventWithMeetLink(descriptor)
+            }
+        }
+    }
+    private func patchConferenceData(googleCalId: String,
+                                     googleEventId: String,
+                                     accessToken: String) async -> Bool {
+        // URL:
+        //   PATCH /calendars/<calId>/events/<evId>?conferenceDataVersion=1
+        // Тялото:
+        // {
+        //   "conferenceData": {
+        //     "createRequest": {
+        //       "requestId": "some-unique-string",
+        //       "conferenceSolutionKey": {
+        //         "type": "hangoutsMeet"
+        //       }
+        //     }
+        //   }
+        // }
+
+        let encodedCalID = googleCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? googleCalId
+        let encodedEvID  = googleEventId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? googleEventId
+        
+        var urlString = "https://www.googleapis.com/calendar/v3/calendars/\(encodedCalID)/events/\(encodedEvID)?conferenceDataVersion=1"
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return false
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        
+        let body: [String: Any] = [
+            "conferenceData": [
+                "createRequest": [
+                    "requestId": UUID().uuidString,           // трябва да е уникално
+                    "conferenceSolutionKey": [
+                        "type": "hangoutsMeet"
+                    ]
+                ]
+            ]
+        ]
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: body, options: [])
+            request.httpBody = jsonData
+            
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse,
+               !(200...299).contains(httpResp.statusCode) {
+                let errBody = String(data: data, encoding: .utf8) ?? ""
+                print("Error: PATCH confData status=\(httpResp.statusCode), body=\(errBody)")
+                return false
+            }
+            
+            // Ако е успешен (2xx), Google връща пълен JSON с event (вкл. conferenceData, hangoutLink и пр.)
+            // Можем да го декодираме, за да видим hangoutLink:
+            let updatedEvent = try JSONDecoder().decode(GoogleEventItem.self, from: data)
+            if let meetLink = updatedEvent.hangoutLink {
+                print("Successfully created Google Meet link:", meetLink)
+            } else {
+                // Понякога е в updatedEvent.conferenceData?.entryPoints?
+                print("No hangoutLink field in response, might be in .conferenceData.entryPoints")
+            }
+            
+            return true
+            
+        } catch {
+            print("Error PATCH confData:", error.localizedDescription)
+            return false
+        }
+    }
+    @MainActor
+    private func updateLocalEventWithMeetLink(_ descriptor: EventDescriptor) {
+        guard let multi = descriptor as? EKMultiDayWrapper else { return }
+       
+        
+        // 1) отново fetch-вате event (за да сме сигурни, че е актуален)
+        guard let localEv = eventStore.event(withIdentifier: multi.realEvent.eventIdentifier) else {
+            return
+        }
+        
+        // 2) Да кажем, че сме запазили meetLink в някакво свойство (или сте го върнали от patchConferenceData).
+        let meetLink = "https://meet.google.com/abc-defg-hjk"  // <-- ако сте го взели от PATCH
+        
+        let videoCallBlock = """
+        ----( Video Call )----
+        [Google Meet]
+        \(meetLink)
+        ---===---
+        """
+        let existingNotes = localEv.notes ?? ""
+        localEv.notes = existingNotes.isEmpty
+            ? videoCallBlock
+            : existingNotes + "\n\n" + videoCallBlock
+
+        do {
+            try eventStore.save(localEv, span: .thisEvent, commit: true)
+            print("Local EKEvent updated with Google Meet link in notes.")
+            
+            // И ако искате -> извиквате self.onEventDeleted?(descriptor)
+            // или reloadCurrentRange?
+            // Зависи от логиката ви
+        } catch {
+            print("Error saving local event:", error.localizedDescription)
+        }
+    }
+    // Примерна функция, която проверява дали в notes има "Google Meet" линк
+    func hasGoogleMeetLink(in descriptor: EventDescriptor) -> Bool {
+        guard let multi = descriptor as? EKMultiDayWrapper else { return false }
+        let event = multi.realEvent
+        guard let notes = event.notes else { return false }
+        // Търсим "hangout" или "meet.google.com" (по избор)
+        return notes.contains("meet.google.com") // или "Video Call" и т.н.
+    }
+
 }

@@ -26,7 +26,18 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         // vc.modalPresentationStyle = .fullScreen
 
         let container = TwoWayPinnedMultiDayContainerView()
-        
+        container.onEventDeleted = { descriptor in
+               // Когато в MultiDayTimelineView натиснат „Delete“ (и реално изтриете EventKit event),
+               // Накрая искаме да презаредим диапазона:
+               context.coordinator.reloadCurrentRange()
+           }
+           
+           container.onEventDuplicated = { descriptor in
+               // Същото при „Duplicate“
+               context.coordinator.reloadCurrentRange()
+           }
+           
+           vc.view.addSubview(container)
         container.showSingleDay = isSingleDay
         container.fromDate = fromDate
         container.toDate   = toDate
@@ -141,11 +152,9 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     // MARK: - Coordinator
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate, @preconcurrency EKEventViewDelegate {
         @MainActor public func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
-            defer {
                 controller.dismiss(animated: true) {
                     self.reloadCurrentRange()
                 }
-            }
         }
         
         let parent: TwoWayPinnedMultiDayWrapper
