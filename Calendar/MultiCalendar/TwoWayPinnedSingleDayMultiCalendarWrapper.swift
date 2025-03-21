@@ -35,7 +35,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         container.onEventTap = { descriptor in
             if let multi = descriptor as? EKMultiDayWrapper {
-                context.coordinator.presentSystemEditor(multi.ekEvent, in: vc)
+                context.coordinator.presentSystemDetails(multi.ekEvent, in: vc)
             }
         }
         
@@ -131,7 +131,13 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
     }
     
     // MARK: - Coordinator
-    public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
+    public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate, @preconcurrency EKEventViewDelegate {
+        @MainActor public func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
+            controller.dismiss(animated: true) {
+                self.reloadCurrentRange()
+            }
+        }
+        
         let parent: TwoWayPinnedSingleDayMultiCalendarWrapper
         
         init(_ parent: TwoWayPinnedSingleDayMultiCalendarWrapper) {
@@ -367,5 +373,18 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             }
             reloadCurrentRange()
         }
+        @MainActor
+        public func presentSystemDetails(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+            let eventVC = EKEventViewController()
+            eventVC.event = ekEvent
+            eventVC.delegate = self
+            eventVC.allowsEditing = true              // Показва „Edit“ и „Delete Event“
+            eventVC.allowsCalendarPreview = true      // Разрешава тап върху датата/календара
+
+            // Презентирате го модално в нав. контролер:
+            let navVC = UINavigationController(rootViewController: eventVC)
+            parentVC.present(navVC, animated: true)
+        }
+
     }
 }

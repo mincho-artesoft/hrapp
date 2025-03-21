@@ -45,7 +45,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         
         container.onEventTap = { descriptor in
             if let multi = descriptor as? EKMultiDayWrapper {
-                context.coordinator.presentSystemEditor(multi.ekEvent, in: vc)
+                context.coordinator.presentSystemDetails(multi.ekEvent, in: vc)
             }
         }
         
@@ -139,7 +139,15 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     }
     
     // MARK: - Coordinator
-    public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
+    public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate, @preconcurrency EKEventViewDelegate {
+        @MainActor public func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
+            defer {
+                controller.dismiss(animated: true) {
+                    self.reloadCurrentRange()
+                }
+            }
+        }
+        
         let parent: TwoWayPinnedMultiDayWrapper
         var currentlyEditingEventID: String? = nil
 
@@ -267,6 +275,19 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             }
             return results
         }
+        @MainActor
+        public func presentSystemDetails(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+            let eventVC = EKEventViewController()
+            eventVC.event = ekEvent
+            eventVC.delegate = self
+            eventVC.allowsEditing = true              // Показва „Edit“ и „Delete Event“
+            eventVC.allowsCalendarPreview = true      // Разрешава тап върху датата/календара
+
+            // Презентирате го модално в нав. контролер:
+            let navVC = UINavigationController(rootViewController: eventVC)
+            parentVC.present(navVC, animated: true)
+        }
+
         @MainActor
         public func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
             // Запомняме идентификатора:
