@@ -1109,7 +1109,6 @@ import Foundation
 /// so we can store multiple users even if userID or email are nil/duplicated.
 struct StoredGoogleUser: Codable, Hashable {
     let uniqueID: UUID
-    
     var userID: String?
     var email: String?
     var accessToken: String
@@ -1117,14 +1116,10 @@ struct StoredGoogleUser: Codable, Hashable {
     var refreshToken: String?
     var idToken: String?
     
-    // For Hashable, we'll just use the `uniqueID`
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(uniqueID)
-    }
-    static func == (lhs: StoredGoogleUser, rhs: StoredGoogleUser) -> Bool {
-        return lhs.uniqueID == rhs.uniqueID
-    }
+    // Ново поле:
+    var photoURL: String?  // тук ще пазим линка към снимката
 }
+
 
 // MARK: - Методи за StoredGoogleUser
 extension CalendarViewModel {
@@ -1347,23 +1342,27 @@ extension CalendarViewModel {
     // When user signs in (new account):
     func storeGoogleUserInUserDefaults(_ gUser: GIDGoogleUser) {
         let accessToken = gUser.accessToken.tokenString
-        let expiration  = gUser.accessToken.expirationDate
-        let refreshTokenString = gUser.refreshToken.tokenString
-        let idToken = gUser.idToken?.tokenString
-        let email = gUser.profile?.email
-        
-        let newStoredUser = StoredGoogleUser(
-            uniqueID: UUID(),
-            userID: gUser.userID,
-            email:  email,
-            accessToken: accessToken,
-            accessTokenExpiration: expiration!,
-            refreshToken: refreshTokenString,
-            idToken: idToken
-        )
-        
-        self.storedUsers.append(newStoredUser)
-        self.saveAllUsersToUserDefaults()
+            let expiration  = gUser.accessToken.expirationDate
+            let refreshTokenString = gUser.refreshToken.tokenString
+            let idToken = gUser.idToken?.tokenString
+            let email = gUser.profile?.email
+            
+            // Намираме URL на аватара
+            let avatarURL = gUser.profile?.imageURL(withDimension: 96)?.absoluteString
+            
+            let newStoredUser = StoredGoogleUser(
+                uniqueID: UUID(),
+                userID: gUser.userID,
+                email:  email,
+                accessToken: accessToken,
+                accessTokenExpiration: expiration!,
+                refreshToken: refreshTokenString,
+                idToken: idToken,
+                photoURL: avatarURL  // записваме го
+            )
+            
+            self.storedUsers.append(newStoredUser)
+            self.saveAllUsersToUserDefaults()
         
         // Immediately load per-user maps for that user
         loadPerUserMaps(for: newStoredUser)

@@ -10,16 +10,14 @@ struct CalendarsSheetView: View {
     @State private var isOnMyIphoneExpanded = true
     @State private var isOtherExpanded      = true
     
-    // We won’t have a single “isGoogleExpanded” anymore; we'll expand/collapse each user individually.
+    // Вместо един isGoogleExpanded, ползваме речник на потребителите:
     @State private var googleExpandedStates: [UUID: Bool] = [:]
 
-    // For editing existing calendar
+    // За редакция на вече създаден календар:
     @State private var calendarToEdit: EKCalendar? = nil
 
-    // For AddCalendarView
+    // Sheet за добавяне на нов календар:
     @State private var showAddCalendarSheet = false
-
-    // Replace with your actual ClientID
 
     var body: some View {
         NavigationView {
@@ -40,17 +38,17 @@ struct CalendarsSheetView: View {
                         }
                     }
 
-                    // 2) For each storedUser => show a separate Google group
+                    // 2) За всеки Google потребител => отделен DisclosureGroup
                     ForEach(viewModel.storedUsers, id: \.uniqueID) { user in
-                        // Default to expanded if not in dictionary
+                        // Binding за expanded state (ако няма запис в речника, default е true)
                         let binding = Binding<Bool>(
                             get: { googleExpandedStates[user.uniqueID] ?? true },
                             set: { googleExpandedStates[user.uniqueID] = $0 }
                         )
                         
-                        DisclosureGroup("Google (\(user.email ?? "No Email"))",
-                                        isExpanded: binding) {
-                            // Show the local calendars that correspond to *this user’s* googleToLocalCalendarMap
+                        DisclosureGroup(isExpanded: binding) {
+                            // Секцията на групата (child content):
+                            
                             let googleCals = googleCopiedCalendars(for: user)
                             if googleCals.isEmpty {
                                 Text("No synced Google calendars yet.")
@@ -63,8 +61,7 @@ struct CalendarsSheetView: View {
                                         isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                         toggleAction: toggleCalendar,
                                         editAction: {
-                                            // Typically we don't let the user rename the “Google copy” calendar
-                                            // but if you want, you can present your EditCalendarView:
+                                            // по желание може да се позволи rename
                                             calendarToEdit = cal
                                         },
                                         showEditButton: false
@@ -72,15 +69,50 @@ struct CalendarsSheetView: View {
                                 }
                             }
                             
-                            // Log out for this user
-                            Button("Sign out from Google (\(user.email ?? ""))") {
+                            // Бутона за sign out
+                            Button("Sign out") {
                                 viewModel.signOutFromGoogle(user: user)
                             }
                             .foregroundColor(.red)
+                            
+                        } label: {
+                            // Label на DisclosureGroup (където показваме аватар + имейл)
+                            HStack {
+                                if let photoURLString = user.photoURL,
+                                   let photoURL = URL(string: photoURLString) {
+                                    // iOS 15+ AsyncImage
+                                    AsyncImage(url: photoURL) { phase in
+                                        switch phase {
+                                        case .empty:
+                                            ProgressView()
+                                        case .success(let image):
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                        case .failure:
+                                            Image(systemName: "person.crop.circle.badge.exclamationmark")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                        @unknown default:
+                                            EmptyView()
+                                        }
+                                    }
+                                    .frame(width: 24, height: 24)
+                                    .clipShape(Circle())
+                                } else {
+                                    // Ако няма photoURL
+                                    Image(systemName: "person.crop.circle")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                }
+                                
+                                Text("Google calendars (\(user.email ?? "No Email"))")
+                                    .padding(.leading, 4)
+                            }
                         }
                     }
                     
-                    // 3) Other (iCloud, Exchange, etc.)
+                    // 3) Други (iCloud, Exchange и др.)
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
                         ForEach(otherCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
@@ -95,7 +127,7 @@ struct CalendarsSheetView: View {
                         }
                     }
                     
-                    // 4) Google Sign-In area
+                    // 4) Google Sign-In бутон
                     Section {
                         Button("Sign in with Google") {
                             signInWithGoogle()
@@ -109,7 +141,7 @@ struct CalendarsSheetView: View {
                     }
                 )
                 
-                // Bottom bar
+                // Долна лента с бутони
                 HStack {
                     Button("Add Local Calendar") {
                         showAddCalendarSheet = true
@@ -132,9 +164,11 @@ struct CalendarsSheetView: View {
         .sheet(item: $calendarToEdit, onDismiss: {
             viewModel.reloadCalendars()
         }) { cal in
+            // Например EditCalendarView
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
         }
         .sheet(isPresented: $showAddCalendarSheet) {
+            // Например AddCalendarView
             AddCalendarView()
         }
     }
@@ -142,32 +176,31 @@ struct CalendarsSheetView: View {
     // MARK: - Helpers
 
     private func localNonGoogleCalendars() -> [EKCalendar] {
-        // Gather *all* local calendars that are NOT associated with any Google user
+        // Събираме всички "Local" календари
         let allLocal = viewModel.allCalendars.filter { $0.source.sourceType == .local }
         
-        // Combine all user googleToLocalCalendarMaps
+        // Събираме ID-та на локалните календари, които са копирани от Google
         let googleSyncedIDs = Set(
             viewModel.storedUsers.flatMap { user in
                 viewModel.googleToLocalCalendarMap(for: user.uniqueID).values
             }
         )
-        // Filter out anything in googleSyncedIDs
+        // Връщаме онези, които не са в Google map
         return allLocal.filter { !googleSyncedIDs.contains($0.calendarIdentifier) }
     }
     
     private func googleCopiedCalendars(for user: StoredGoogleUser) -> [EKCalendar] {
-        // For a specific user, get googleToLocalCalendarMap
+        // Намираме кои локални календари са "Google copies" за този user
         let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
         let localIDs = Set(map.values)
         
-        // Filter allCalendars by those IDs
         return viewModel.allCalendars.filter {
             localIDs.contains($0.calendarIdentifier)
         }
     }
 
     private func otherCalendars() -> [EKCalendar] {
-        // Return calendars that are *not local*, and not in googleToLocalCalendarMap of any user
+        // Всички, които не са .local, и не са копие от Google
         let googleSyncedIDs = Set(
             viewModel.storedUsers.flatMap { user in
                 viewModel.googleToLocalCalendarMap(for: user.uniqueID).values
@@ -187,6 +220,7 @@ struct CalendarsSheetView: View {
     }
 
     private func signInWithGoogle() {
+        // ClientID е налично във viewModel
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: viewModel.clientID)
         
         guard let windowScene = UIApplication.shared.connectedScenes
@@ -203,15 +237,16 @@ struct CalendarsSheetView: View {
             }
             if let user = signInResult?.user {
                 print("Signed in user:", user.profile?.email ?? "(no email)")
-                // 1) Store the new user in our multi-user model
+                
+                // Записваме в нашата логика
                 viewModel.storeGoogleUserInUserDefaults(user)
                 
-                // 2) Start the sync timer if not started
+                // Ако е първият акаунт, стартираме sync
                 if viewModel.storedUsers.count == 1 {
                     viewModel.startGoogleCalendarSync()
                 }
                 
-                // 3) Perform an immediate sync
+                // Правим immediate sync
                 Task {
                     if let newStoredUser = viewModel.storedUsers.last {
                         await viewModel.performGoogleCalendarSync(for: newStoredUser)
