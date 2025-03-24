@@ -174,7 +174,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         //    a) има логнат Google потребител
         //    b) текущото събитие е от Google календар
         // ------------------------------------------------
-        if let _ = CalendarViewModel.shared.googleUser,
+        if !CalendarViewModel.shared.storedUsers.isEmpty,
            CalendarViewModel.shared.isGoogleCalendarEvent(descriptor),
            !CalendarViewModel.shared.hasGoogleMeetLink(in: descriptor)
         {
