@@ -826,14 +826,6 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             
             setScrollsClipping(enabled: false)
-            var totalDays = 1
-            if let multi = descriptor as? EKMultiDayWrapper {
-                let cal = Calendar.current
-                let startOfStart = cal.startOfDay(for: multi.realEvent.startDate)
-                let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
-                let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
-                totalDays = dayCount + 1
-            }
             let realStart: Date
             let realEnd: Date
             if let multi = descriptor as? EKMultiDayWrapper {

@@ -668,7 +668,6 @@ extension CalendarViewModel {
         print("Found \(changedEvents.count) local changes in \"\(localCalendar.title)\", uploading…")
         
         for event in changedEvents {
-            var evMap = googleToLocalEventMap(for: userID)
             let googleID = getGoogleIDFrom(event)
             
             if let googleID = googleID {
@@ -1627,7 +1626,7 @@ extension CalendarViewModel {
     /// - Parameter descriptor: Вашият EventDescriptor (най-често EKMultiDayWrapper).
     func addGoogleMeet(to descriptor: EventDescriptor) {
         // 1) Проверяваме дали е EKMultiDayWrapper
-        guard let multi = descriptor as? EKMultiDayWrapper else {
+        guard descriptor is EKMultiDayWrapper else {
             print("addGoogleMeet: descriptor не е EKMultiDayWrapper => отказ.")
             return
         }
