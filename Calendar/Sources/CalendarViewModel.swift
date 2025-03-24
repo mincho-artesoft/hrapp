@@ -8,7 +8,13 @@ final class CalendarViewModel: ObservableObject {
     
     // MARK: - EventKit Store & Properties
     var eventStore: EKEventStore = EKEventStore()
-  
+    private var clientSecret: String {
+        guard let secret = Bundle.main.object(forInfoDictionaryKey: "GoogleClientSecret") as? String else {
+            fatalError("GoogleClientSecret not found in Info.plist")
+        }
+        return secret
+    }
+
     @Published var allCalendars: [EKCalendar] = []
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID:  [String: EKEvent] = [:]
@@ -1512,7 +1518,7 @@ extension CalendarViewModel {
     ) {
         // 1) Подготвяме данните
         let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
-        let clientSecret = "" /
+        let clientSecret = ""
         
         // 2) Правим URL
         guard let url = URL(string: "https://oauth2.googleapis.com/token") else {
@@ -1541,17 +1547,7 @@ extension CalendarViewModel {
                 NSLocalizedDescriptionKey: "HTTP \(httpResp.statusCode) - \(errMsg)"
             ])
         }
-        
-        // 6) Декодираме JSON отговора
-        //    Пример за отговор (опростен):
-        //    {
-        //      "access_token": "ya29.A0AfH6...",
-        //      "expires_in": 3920,
-        //      "scope": "https://www.googleapis.com/auth/calendar",
-        //      "token_type": "Bearer",
-        //      "id_token": "...",
-        //    }
-        
+
         struct RefreshResponse: Codable {
             let access_token: String
             let expires_in: Int

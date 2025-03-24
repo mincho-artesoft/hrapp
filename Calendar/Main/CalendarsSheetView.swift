@@ -71,14 +71,12 @@ struct CalendarsSheetView: View {
 
                     // 4) Група за Google Sign-In / логване
                     DisclosureGroup("Integrate calendar", isExpanded: $isIntegrateExpanded) {
-                        if let user = viewModel.googleUser {
-                            Text("Логнат сте като: \(user.profile?.email ?? "(няма email)")")
+                        if let storedUser = viewModel.storedUser {
+                            Text("Logged in as: \(storedUser.email ?? "(no email)")")
                                 .padding(.vertical, 4)
 
                             Button("Log out from Google") {
                                 GIDSignIn.sharedInstance.signOut()
-                                   viewModel.googleUser = nil
-                                   viewModel.stopGoogleCalendarSync()
                                    viewModel.signOutFromGoogle()
                             }
                         } else {
