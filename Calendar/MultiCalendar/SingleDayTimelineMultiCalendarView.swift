@@ -862,80 +862,53 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
-            
+            let fingerInContainer = gesture.location(in: container)
+
             var originalFrames = [EventView: CGRect]()
             for realSliceView in slices {
-                if let desc = eventViewToDescriptor[realSliceView] {
-                    
-                    realSliceView.isHidden = false
-                    draggingOriginalAlphas[realSliceView] = realSliceView.alpha
-                    realSliceView.alpha = 0.0
-                    
-                    let sliceFrameInTimeline = realSliceView.frame
-                    let sliceFrameInContainer = self.convert(sliceFrameInTimeline, to: container)
-                    
-                    let ghost = createEventView()
-                    ghost.updateWithDescriptor(event: desc)
-                    ghost.alpha = 1.0
-                    ghost.layer.zPosition = 2
-                    container.addSubview(ghost)
-                    
-                    let hoursTotal = totalDuration / 3600.0
-                    var ghostH = hourHeight * CGFloat(hoursTotal) - 2.5
-                    
-                    let dayIndex = dayIndexFor(desc.dateInterval.start)
-                    let dayStart = dayStartDate(for: dayIndex)
-                    let hoursOffset = realStart.timeIntervalSince(dayStart) / 3600.0
-                    let topY = topMargin + CGFloat(hoursOffset) * hourHeight
-                    var finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY) - 10
-                    
-                    let localX = dayColumnWidth * CGFloat(dayIndex)
-                    // Конвертираме точка (localX, 0) от self към container:
-                    let containerPoint = self.convert(CGPoint(x: localX, y: 0), to: container)
-                    let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
-                    
-                    let ghostX = containerPoint.x + 2
-                    let ghostW = dayColumnWidth - style.eventGap * 2 * columNumber - 2
-                    
-                    if totalDays == 1 {
-                        finalY = sliceFrameInContainer.minY
-                        ghostH = sliceFrameInContainer.height
+                guard let desc = eventViewToDescriptor[realSliceView] else { continue }
+                        
+                        // 3.1) Намираме frame в координатите на container
+                        let sliceFrameInSelf = realSliceView.frame
+                        let sliceFrameInScroll = self.convert(sliceFrameInSelf, to: container.mainScrollView)
+                        let sliceFrameInContainer = container.mainScrollView.convert(sliceFrameInScroll, to: container)
+
+                        // 3.2) Създаваме ghost
+                        let ghost = createEventView()
+                        ghost.updateWithDescriptor(event: desc)
+                        ghost.alpha = 1
+                        ghost.layer.zPosition = 2
+                        
+                        // 3.3) Първоначалната му рамка (в container)
+                        ghost.frame = sliceFrameInContainer
+                        container.addSubview(ghost)
+
+                        // 3.4) Крием оригинала
+                        draggingOriginalAlphas[realSliceView] = realSliceView.alpha
+                        realSliceView.alpha = 0.0
+
+                        // 3.5) Запомняме
+                        draggingGhosts[realSliceView] = ghost
+                        originalFrames[realSliceView] = sliceFrameInContainer
                     }
-                    
-                    let allCals = calendarVM.calendarsDict
-                    let selectedCals = allCals.filter { $0.value.selected }
-                    let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                    let columnCount = max(1, calsToShow.count)
-                    let subColumnWidth = dayColumnWidth / CGFloat(columnCount)
-                    let localXSub = sliceFrameInContainer.minX.truncatingRemainder(dividingBy: dayColumnWidth)
-                    let subColumnIndex = Int(localXSub / subColumnWidth)
-                    
-                    let ghostFrame = CGRect(
-                        x: ghostX + CGFloat(subColumnIndex) * CGFloat(subColumnWidth),
-                        y: finalY,
-                        width: ghostW / columNumber,
-                        height: ghostH
-                    )
-                    ghost.frame = ghostFrame
-                    ghost.isHidden = false
-                    
-                    draggingGhosts[realSliceView] = ghost
-                    originalFrames[realSliceView] = ghostFrame
-                }
-            }
-            
-            let fingerInContainer = gesture.location(in: container)
-            guard let anchorGhost = draggingGhosts[evView] else { return }
-            let anchorFrame = anchorGhost.frame
-            let offsetX = fingerInContainer.x - anchorFrame.minX
-            let offsetY = fingerInContainer.y - anchorFrame.minY
+
+                    // 4) Намираме anchorGhost (този, върху който сме натиснали)
+                    guard let anchorGhost = draggingGhosts[evView] else { return }
+                    let anchorFrame = anchorGhost.frame
+
+                    // 5) offsetX / offsetY: от пръста до горния ляв ъгъл на ghost
+                    let offsetX = fingerInContainer.x - anchorFrame.minX
+                    let offsetY = fingerInContainer.y - anchorFrame.minY
+
+                    // 6) Други нужни неща (пр. totalDuration)
+
             
             let d = DragData(
-                totalDuration: totalDuration,
-                originalContainerFrames: originalFrames,
-                anchorOffsetX: offsetX,
-                anchorOffsetY: offsetY,
-                originalStart: descriptor.dateInterval.start
+                           totalDuration: totalDuration,
+                           originalContainerFrames: originalFrames,
+                           anchorOffsetX: offsetX,
+                           anchorOffsetY: offsetY,
+                           originalStart: realStart
             )
             evView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
