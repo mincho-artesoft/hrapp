@@ -21,7 +21,8 @@ final class CalendarViewModel: ObservableObject {
     
     /// Google User (след логин)
     @Published var googleUser: GIDGoogleUser? = nil
-    
+     var storedUser: StoredGoogleUser? = nil
+
     /// Timer за автоматична синхронизация
     private var syncTimer: Timer? = nil
 
@@ -76,44 +77,36 @@ final class CalendarViewModel: ObservableObject {
 
     // MARK: - Init
     init() {
-        // 0) Авто-възстановяване на Google сесия, ако има
-        if GIDSignIn.sharedInstance.hasPreviousSignIn() {
-            GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
-                guard let self = self else { return }
-                Task { @MainActor in
-                    if let error = error {
-                        print("Failed to restore previous Google Sign In:", error.localizedDescription)
-                    } else if let user = user {
-                        print("Restored Google user:", user.profile?.email ?? "(no email)")
-                        self.googleUser = user
-                        // Стартираме syncTimer и/или правим еднократен sync
-                        self.startGoogleCalendarSync()
-                        await self.performGoogleCalendarSync()
-                    }
-                }
-            }
-        }
+           // Преди:
+           // if GIDSignIn.sharedInstance.hasPreviousSignIn() {
+           //     GIDSignIn.sharedInstance.restorePreviousSignIn { [weak self] user, error in
+           //         ...
+           //     }
+           // }
 
-        // 1) Зареждаме локални календари
-        loadLocalCalendars()
-        
-        // 2) Зареждаме избраните ID-та
-        if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String],
-           !storedArray.isEmpty {
-            self.selectedCalendarIDs = Set(storedArray)
-        } else {
-            let cals = eventStore.calendars(for: .event)
-            self.selectedCalendarIDs = Set(cals.map { $0.calendarIdentifier })
-        }
-        
-        // 3) При промяна на selectedCalendarIDs -> пазим обратно в UserDefaults
-        $selectedCalendarIDs
-            .sink { newValue in
-                let array = Array(newValue)
-                UserDefaults.standard.set(array, forKey: "SelectedCalendarIDsKey")
-            }
-            .store(in: &cancellables)
-    }
+           // Ново: опит да заредим нашия потребител от UserDefaults
+           self.checkForStoredGoogleUser()
+           
+           // 1) Зареждаме локални календари
+           loadLocalCalendars()
+           
+           // 2) Зареждаме избраните ID-та
+           if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String],
+              !storedArray.isEmpty {
+               self.selectedCalendarIDs = Set(storedArray)
+           } else {
+               let cals = eventStore.calendars(for: .event)
+               self.selectedCalendarIDs = Set(cals.map { $0.calendarIdentifier })
+           }
+
+           // 3) При промяна на selectedCalendarIDs -> пазим обратно в UserDefaults
+           $selectedCalendarIDs
+               .sink { newValue in
+                   let array = Array(newValue)
+                   UserDefaults.standard.set(array, forKey: "SelectedCalendarIDsKey")
+               }
+               .store(in: &cancellables)
+       }
     
     deinit {
         syncTimer?.invalidate()
@@ -281,33 +274,63 @@ extension CalendarViewModel {
     }
     
     /// Основен метод за ДВУПОСОЧЕН sync
+    @MainActor
     func performGoogleCalendarSync() async {
-        guard let user = googleUser else {
-            print("No Google user, skip sync.")
+        // 1) Проверяваме дали имаме "съхранен" Google потребител (StoredGoogleUser)
+        guard let storedUser = self.storedUser else {
+            print("No stored Google user => skip sync.")
             return
         }
-        
-        // Ако token е изтекъл, опит за refresh
-        if let expirationDate = user.accessToken.expirationDate,
-           expirationDate < Date() {
-            print("Access token possibly expired, trying refreshTokensIfNeeded()…")
-            do {
-                try await refreshTokensIfNeeded(user: user)
-            } catch {
-                print("Refresh token error:", error.localizedDescription)
+
+        // 2) Проверяваме дали accessToken-ът е изтекъл
+        if storedUser.accessTokenExpiration < Date() {
+            // Опит за refresh, ако имаме refreshToken
+            if let refresh = storedUser.refreshToken, !refresh.isEmpty {
+                do {
+                    // Ще извика нашия метод, който прави HTTP POST към /token
+                    // (grant_type=refresh_token)
+                    let (newAccessToken, newExpDate, newIDToken) = try await self.refreshTokens(refreshToken: refresh)
+                    
+                    // Създаваме "обновен" StoredGoogleUser
+                    let updatedUser = StoredGoogleUser(
+                        userID: storedUser.userID,
+                        email:  storedUser.email,
+                        accessToken: newAccessToken,
+                        accessTokenExpiration: newExpDate,
+                        refreshToken: storedUser.refreshToken, // същият refresh
+                        idToken: newIDToken
+                    )
+                    
+                    // Записваме го в UserDefaults
+                    try self.saveStoredGoogleUser(updatedUser)
+                    // Ъпдейтваме и в памет
+                    self.storedUser = updatedUser
+
+                } catch {
+                    print("Refresh token error:", error.localizedDescription)
+                    // Ако refresh не е минал, няма достъп => прекратяваме sync.
+                    return
+                }
+            } else {
+                // Ако изобщо нямаме refreshToken => не можем да продължим
+                print("No refresh token => can't refresh => skip sync.")
                 return
             }
         }
+
+        // 3) Сега би трябвало да имаме валиден accessToken
+        let accessToken = self.storedUser?.accessToken ?? ""
         
-        let accessToken = user.accessToken.tokenString
-        
+        // 4) Стартираме двупосочната синхронизация
         do {
+            // запомняме текущата версия на map, за да следим изтрити събития
             oldGoogleToLocalEventMap = googleToLocalEventMap
-            // 1) Google -> Local
+            
+            // (A) Google -> Local
             let googleCalendars = try await fetchGoogleCalendarList(accessToken: accessToken)
             await syncGoogleCalendars(googleCalendars, accessToken: accessToken)
-            
-            // 2) Local -> Google (качваме само промени след lastSyncDate)
+
+            // (B) Local -> Google
             for (gCalID, localCalID) in googleToLocalCalendarMap {
                 if let localCal = eventStore.calendar(withIdentifier: localCalID) {
                     await uploadLocalChangesToGoogle(
@@ -322,6 +345,7 @@ extension CalendarViewModel {
             print("Error in performGoogleCalendarSync:", error.localizedDescription)
         }
     }
+
     
     // MARK: - Google -> Local
     private func fetchGoogleCalendarList(accessToken: String) async throws -> [GoogleCalendarItem] {
@@ -1188,10 +1212,12 @@ extension CalendarViewModel {
     func signOutFromGoogle() {
         // 1) Извеждаме потребителя от Google
         GIDSignIn.sharedInstance.signOut()
-        
+        UserDefaults.standard.removeObject(forKey: "StoredGoogleUser")
+
         // 2) Нулираме googleUser
         self.googleUser = nil
-        
+        self.storedUser = nil
+
         // 3) Спираме syncTimer
         self.stopGoogleCalendarSync()
         
@@ -1402,6 +1428,153 @@ extension CalendarViewModel {
         guard let notes = event.notes else { return false }
         // Търсим "hangout" или "meet.google.com" (по избор)
         return notes.contains("meet.google.com") // или "Video Call" и т.н.
+    }
+
+}
+import Foundation
+
+struct StoredGoogleUser: Codable {
+    let userID: String?
+    let email: String?
+    let accessToken: String
+    let accessTokenExpiration: Date
+    let refreshToken: String?
+    let idToken: String?
+}
+extension CalendarViewModel {
+    private func checkForStoredGoogleUser() {
+        // Опитваме да вземем запазения StoredGoogleUser като Data
+        guard
+            let data = UserDefaults.standard.data(forKey: "StoredGoogleUser"),
+            let decoded = try? JSONDecoder().decode(StoredGoogleUser.self, from: data)
+        else {
+            return
+        }
+        
+        // Проверяваме дали все още не е изтекъл accessToken-ът
+        if decoded.accessTokenExpiration > Date() {
+            // Валиден е, значи можем да ползваме този токен
+            print("Restored stored Google user from UserDefaults, email = \(decoded.email ?? "???")")
+            self.storedUser = decoded
+            
+            // Стартираме syncTimer и т.н.
+            self.startGoogleCalendarSync()
+            Task {
+                await self.performGoogleCalendarSync()
+            }
+        } else {
+            // Токенът е изтекъл
+            print("Stored Google user found, but token is expired.")
+            
+            // Опит за "ръчен" refresh
+            if let refresh = decoded.refreshToken, !refresh.isEmpty {
+                print("We have a refreshToken, trying to refresh…")
+                Task {
+                    do {
+                        let (newAccessToken, newExpDate, newIDToken) = try await self.refreshTokens(refreshToken: refresh)
+                        
+                        // Създаваме нов StoredGoogleUser, обновен с новия accessToken
+                        let updatedUser = StoredGoogleUser(
+                            userID: decoded.userID,
+                            email: decoded.email,
+                            accessToken: newAccessToken,
+                            accessTokenExpiration: newExpDate,
+                            refreshToken: decoded.refreshToken, // същият refresh токен
+                            idToken: newIDToken
+                        )
+                        
+                        // Записваме го в UserDefaults
+                        try self.saveStoredGoogleUser(updatedUser)
+                        
+                        // Сетваме self.storedUser = updatedUser
+                        self.storedUser = updatedUser
+                        
+                        // Сега вече имаме нов (неизтекъл) accessToken
+                        print("Refresh successful, starting sync.")
+                        self.startGoogleCalendarSync()
+                        await self.performGoogleCalendarSync()
+                        
+                    } catch {
+                        print("Failed to refresh token:", error.localizedDescription)
+                        // Тук можем да искаме пак да се логне
+                    }
+                }
+            } else {
+                // Нямаме refreshToken => задължително нов логин
+                print("No refresh token found. User must sign in again.")
+            }
+        }
+    }
+    private func refreshTokens(refreshToken: String) async throws -> (
+        accessToken: String,
+        expirationDate: Date,
+        idToken: String?
+    ) {
+        // 1) Подготвяме данните
+        let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
+        let clientSecret = "" /
+        
+        // 2) Правим URL
+        guard let url = URL(string: "https://oauth2.googleapis.com/token") else {
+            throw NSError(domain: "BadURL", code: -1, userInfo: nil)
+        }
+        
+        // 3) Правим POST заявка
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        // 4) Тялото: client_id, client_secret, refresh_token, grant_type=refresh_token
+        let postString = """
+        client_id=\(clientID)&\
+        client_secret=\(clientSecret)&\
+        refresh_token=\(refreshToken)&\
+        grant_type=refresh_token
+        """
+        request.httpBody = postString.data(using: .utf8)
+        
+        // 5) Изпълняваме заявката асинхронно
+        let (data, response) = try await URLSession.shared.data(for: request)
+        if let httpResp = response as? HTTPURLResponse, httpResp.statusCode != 200 {
+            let errMsg = String(data: data, encoding: .utf8) ?? "Unknown error"
+            throw NSError(domain: "RefreshError", code: httpResp.statusCode, userInfo: [
+                NSLocalizedDescriptionKey: "HTTP \(httpResp.statusCode) - \(errMsg)"
+            ])
+        }
+        
+        // 6) Декодираме JSON отговора
+        //    Пример за отговор (опростен):
+        //    {
+        //      "access_token": "ya29.A0AfH6...",
+        //      "expires_in": 3920,
+        //      "scope": "https://www.googleapis.com/auth/calendar",
+        //      "token_type": "Bearer",
+        //      "id_token": "...",
+        //    }
+        
+        struct RefreshResponse: Codable {
+            let access_token: String
+            let expires_in: Int
+            let token_type: String?
+            let scope: String?
+            let id_token: String?
+        }
+        
+        let decoded = try JSONDecoder().decode(RefreshResponse.self, from: data)
+        
+        let newToken = decoded.access_token
+        let expiresIn = decoded.expires_in
+        let newIDToken = decoded.id_token
+        
+        // Някои хора използват Date().addingTimeInterval(...)
+        let newExpDate = Date().addingTimeInterval(TimeInterval(expiresIn))
+        
+        return (newToken, newExpDate, newIDToken)
+    }
+    private func saveStoredGoogleUser(_ user: StoredGoogleUser) throws {
+        let encodedData = try JSONEncoder().encode(user)
+        UserDefaults.standard.set(encodedData, forKey: "StoredGoogleUser")
+        UserDefaults.standard.synchronize()
     }
 
 }

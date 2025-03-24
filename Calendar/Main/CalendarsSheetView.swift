@@ -76,11 +76,10 @@ struct CalendarsSheetView: View {
                                 .padding(.vertical, 4)
 
                             Button("Log out from Google") {
-                                // Първо стандартното signOut
                                 GIDSignIn.sharedInstance.signOut()
-                                viewModel.googleUser = nil
-                                viewModel.stopGoogleCalendarSync()
-                                viewModel.signOutFromGoogle()
+                                   viewModel.googleUser = nil
+                                   viewModel.stopGoogleCalendarSync()
+                                   viewModel.signOutFromGoogle()
                             }
                         } else {
                             Button("Sign in with Google") {
@@ -166,13 +165,12 @@ struct CalendarsSheetView: View {
         
         // Query the active UIWindowScene
         guard let windowScene = UIApplication.shared.connectedScenes
-            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
               let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
         else {
             return
         }
 
-        // Present the Google sign-in flow using the obtained root view controller
         GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
             if let error = error {
                 print("Google Sign In error:", error.localizedDescription)
@@ -180,13 +178,50 @@ struct CalendarsSheetView: View {
             }
             if let user = signInResult?.user {
                 print("Signed in user:", user.profile?.email ?? "(no email)")
+                
+                // 1) Записваме в наш UserDefaults
+                CalendarViewModel.shared.storeGoogleUserInUserDefaults(user)
+                
+                // 2) Сетваме си `googleUser` в CalendarViewModel, ако още го пазим
                 Task { @MainActor in
-                    viewModel.googleUser = user
-                    viewModel.startGoogleCalendarSync()
-                    await viewModel.performGoogleCalendarSync()
+                    CalendarViewModel.shared.googleUser = user
+                    CalendarViewModel.shared.startGoogleCalendarSync()
+                    await CalendarViewModel.shared.performGoogleCalendarSync()
                 }
             }
         }
     }
+}
+extension CalendarViewModel {
+    func storeGoogleUserInUserDefaults(_ gUser: GIDGoogleUser) {
+        // Извличаме това, което ни е нужно
+        let accessToken = gUser.accessToken.tokenString
+        let expiration  = gUser.accessToken.expirationDate
+        let refreshTokenString = gUser.refreshToken.tokenString
+        let idToken = gUser.idToken?.tokenString
+        let email = gUser.profile?.email
+        
+        // Създаваме наш модел
+        let stored = StoredGoogleUser(
+            userID: gUser.userID,
+            email:  email,
+            accessToken: accessToken,
+            accessTokenExpiration: expiration!,
+            refreshToken: refreshTokenString,
+            idToken: idToken
+        )
 
+        
+        // Кодиране и запис
+        do {
+            let encodedData = try JSONEncoder().encode(stored)
+            UserDefaults.standard.set(encodedData, forKey: "StoredGoogleUser")
+            UserDefaults.standard.synchronize()
+            
+            // Съхраняваме го и в памет, ако искаме
+            self.storedUser = stored
+        } catch {
+            print("Failed to encode StoredGoogleUser:", error)
+        }
+    }
 }
