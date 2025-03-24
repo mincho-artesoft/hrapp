@@ -130,6 +130,7 @@ final class CalendarViewModel: ObservableObject {
         } else {
             self.firstLocalCalendarColor = nil
         }
+        syncLocalCalendarsDict()
     }
 
     func allowedCalendars() -> [EKCalendar] {
@@ -158,7 +159,35 @@ final class CalendarViewModel: ObservableObject {
         }
         self.eventsByID = tmp
     }
-
+    func syncLocalCalendarsDict() {
+        // 1) Filter the allCalendars to only local
+        let localCals = allCalendars.filter { $0.source.sourceType == .local }
+        
+        // 2) Create a new dictionary
+        var newDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
+        
+        for cal in localCals {
+            let calTitle = cal.title
+            
+            var uiColor = UIColor.systemGray
+            if let cgColor = cal.cgColor {
+                uiColor = UIColor(cgColor: cgColor)
+            }
+            
+            // If we already had this calendar in old dictionary, preserve its `selected` value.
+            let wasSelected = calendarsDict[cal.calendarIdentifier]?.selected ?? true
+            
+            newDict[cal.calendarIdentifier] = (
+                title: calTitle,
+                color: uiColor,
+                selected: wasSelected,
+                calendar: cal
+            )
+        }
+        
+        // 3) Assign it
+        self.calendarsDict = newDict
+    }
     func loadEventsForWholeYear(year: Int) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
@@ -1150,13 +1179,11 @@ extension CalendarViewModel {
             
             
             // 3) Изтриваме user-специфичните речници от UserDefaults
-            UserDefaults.standard.removeObject(forKey: "GoogleToLocalCalendarMap_\(user.uniqueID.uuidString)")
             UserDefaults.standard.removeObject(forKey: "GoogleToLocalEventMap_\(user.uniqueID.uuidString)")
             UserDefaults.standard.removeObject(forKey: "GoogleEventUpdatedMap_\(user.uniqueID.uuidString)")
             UserDefaults.standard.removeObject(forKey: "LastSyncDateKey_\(user.uniqueID.uuidString)")
             
             // 4) Премахваме и от речниците в паметта
-            self.googleToLocalCalendarMapAll.removeValue(forKey: user.uniqueID.uuidString)
             self.googleToLocalEventMapAll.removeValue(forKey: user.uniqueID.uuidString)
             self.googleEventUpdatedMapAll.removeValue(forKey: user.uniqueID.uuidString)
             self.lastSyncDateAll.removeValue(forKey: user.uniqueID.uuidString)
@@ -1191,6 +1218,8 @@ extension CalendarViewModel {
                 }
             }
         }
+        UserDefaults.standard.removeObject(forKey: "GoogleToLocalCalendarMap_\(userID.uuidString)")
+        self.googleToLocalCalendarMapAll.removeValue(forKey: userID.uuidString)
     }
     
     func refreshTokens(refreshToken: String) async throws -> (
