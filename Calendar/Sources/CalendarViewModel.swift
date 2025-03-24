@@ -10,8 +10,6 @@ final class CalendarViewModel: ObservableObject {
     var eventStore: EKEventStore = EKEventStore()
     
     let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
-    let clientSecret = ""
-    
     @Published var allCalendars: [EKCalendar] = []
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID:  [String: EKEvent] = [:]
@@ -62,8 +60,12 @@ final class CalendarViewModel: ObservableObject {
             self.loadPerUserMaps(for: user)
         }
 
+        Task {
+            await refreshTokensForAllUsers()
+            startGoogleCalendarSync()
+        }
         // 3) Reload local calendars from EKEventStore
-        startGoogleCalendarSync()
+       
         loadLocalCalendars()
 
         // 4) Load the previously selected calendar IDs
@@ -1151,7 +1153,7 @@ extension CalendarViewModel {
             
             print("storedUsers", self.storedUsers)
             
-        
+            
             // 3) Изтриваме user-специфичните речници от UserDefaults
             UserDefaults.standard.removeObject(forKey: "GoogleToLocalCalendarMap_\(user.uniqueID.uuidString)")
             UserDefaults.standard.removeObject(forKey: "GoogleToLocalEventMap_\(user.uniqueID.uuidString)")
@@ -1180,7 +1182,7 @@ extension CalendarViewModel {
             self.reloadCalendars()
         }
     }
-
+    
     
     private func removeLocalGoogleCalendars(forUserID userID: UUID) {
         let map = googleToLocalCalendarMap(for: userID)
@@ -1201,27 +1203,42 @@ extension CalendarViewModel {
         expirationDate: Date,
         idToken: String?
     ) {
-       
+        print("=== refreshTokens START ===")
+        let safeRefresh = String(refreshToken.prefix(6)) + "..."  // За да не печатаме целия
+        print("Will refresh using refreshToken = \(safeRefresh)")
         
         guard let url = URL(string: "https://oauth2.googleapis.com/token") else {
+            print("Bad URL for token endpoint!")
             throw NSError(domain: "BadURL", code: -1, userInfo: nil)
         }
         
+        print("Request URL = \(url.absoluteString)")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
+        // Премахваме client_secret
         let postString = """
         client_id=\(clientID)&\
-        client_secret=\(clientSecret)&\
         refresh_token=\(refreshToken)&\
         grant_type=refresh_token
         """
+        print("POST body = \(postString)")
         request.httpBody = postString.data(using: .utf8)
         
         let (data, response) = try await URLSession.shared.data(for: request)
+        
+        // Печатаме HTTP кода и евентуално body (ако искате да видите exact отговора)
+        if let httpResp = response as? HTTPURLResponse {
+            print("HTTP status code = \(httpResp.statusCode)")
+        }
+        if let bodyString = String(data: data, encoding: .utf8) {
+            print("HTTP response body:\n\(bodyString)")
+        }
+        
         if let httpResp = response as? HTTPURLResponse, httpResp.statusCode != 200 {
             let errMsg = String(data: data, encoding: .utf8) ?? "Unknown error"
+            print("Got error response => \(errMsg)")
             throw NSError(domain: "RefreshError", code: httpResp.statusCode, userInfo: [
                 NSLocalizedDescriptionKey: "HTTP \(httpResp.statusCode) - \(errMsg)"
             ])
@@ -1234,16 +1251,65 @@ extension CalendarViewModel {
             let scope: String?
             let id_token: String?
         }
-        
+
         let decoded = try JSONDecoder().decode(RefreshResponse.self, from: data)
+        
         let newToken = decoded.access_token
         let expiresIn = decoded.expires_in
         let newIDToken = decoded.id_token
-        
         let newExpDate = Date().addingTimeInterval(TimeInterval(expiresIn))
         
+        let safeAccess = String(newToken.prefix(6)) + "..."
+        print("Successfully refreshed tokens!")
+        print("New AccessToken = \(safeAccess)")
+        print("ExpiresAt = \(newExpDate)")
+        if let idToken = newIDToken {
+            print("Got id_token as well (prefix) = \(String(idToken.prefix(6)))...")
+        }
+        
+        print("=== refreshTokens END ===")
         return (newToken, newExpDate, newIDToken)
     }
+
+    @MainActor
+    func refreshTokensForAllUsers() async {
+        print("=== refreshTokensForAllUsers START ===")
+        
+        for user in storedUsers {
+            print("Checking user: \(user.email ?? "???" )")
+            guard let refresh = user.refreshToken, !refresh.isEmpty else {
+                print("No refresh token => skip this user.")
+                continue
+            }
+            
+            do {
+                let (newAccessToken, newExpDate, newIDToken) = try await refreshTokens(refreshToken: refresh)
+                // Създаваме нов “ъпдейтнат” потребител
+                let updatedUser = StoredGoogleUser(
+                    uniqueID: user.uniqueID,
+                    userID:    user.userID,
+                    email:     user.email,
+                    accessToken: newAccessToken,
+                    accessTokenExpiration: newExpDate,
+                    refreshToken: refresh,  // същият refresh
+                    idToken: newIDToken
+                )
+                // Обновяваме този потребител в масива `storedUsers`
+                self.updateUserInMemory(updatedUser)
+                
+                print("Updated user \(user.email ?? "???" ) with new token. Expires at \(newExpDate)")
+                
+            } catch {
+                print("Refresh tokens error за \(user.email ?? "???"): \(error.localizedDescription)")
+            }
+        }
+        
+        // Записваме всички потребители обратно в UserDefaults
+        self.saveAllUsersToUserDefaults()
+        print("=== refreshTokensForAllUsers END ===")
+    }
+
+
 }
 
 // MARK: - Store multiple users in UserDefaults
