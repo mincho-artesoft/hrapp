@@ -198,7 +198,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         
         do {
             try store.remove(realEv, span: .thisEvent, commit: true)
-            print("Deleted event: \(realEv.title ?? "")")
+//            print("Deleted event: \(realEv.title ?? "")")
         } catch {
             print("Error:", error)
         }

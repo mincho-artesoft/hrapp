@@ -1196,7 +1196,6 @@ extension CalendarViewModel {
             guard let data = UserDefaults.standard.data(forKey: "StoredGoogleUsers") else { return }
             do {
                 let decoded = try JSONDecoder().decode([StoredGoogleUser].self, from: data)
-                print("decoded", decoded)
             } catch {
                 print("Failed to decode [StoredGoogleUser]:", error)
             }
@@ -1252,13 +1251,13 @@ extension CalendarViewModel {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        // Печатаме HTTP кода и евентуално body (ако искате да видите exact отговора)
-        if let httpResp = response as? HTTPURLResponse {
-            print("HTTP status code = \(httpResp.statusCode)")
-        }
-        if let bodyString = String(data: data, encoding: .utf8) {
-            print("HTTP response body:\n\(bodyString)")
-        }
+//        // Печатаме HTTP кода и евентуално body (ако искате да видите exact отговора)
+//        if let httpResp = response as? HTTPURLResponse {
+//            print("HTTP status code = \(httpResp.statusCode)")
+//        }
+//        if let bodyString = String(data: data, encoding: .utf8) {
+//            print("HTTP response body:\n\(bodyString)")
+//        }
         
         if let httpResp = response as? HTTPURLResponse, httpResp.statusCode != 200 {
             let errMsg = String(data: data, encoding: .utf8) ?? "Unknown error"
@@ -1345,7 +1344,6 @@ extension CalendarViewModel {
         do {
             let decoded = try JSONDecoder().decode([StoredGoogleUser].self, from: data)
             self.storedUsers = decoded
-            print("decoded",decoded)
         } catch {
             print("Failed to decode [StoredGoogleUser]:", error)
         }
