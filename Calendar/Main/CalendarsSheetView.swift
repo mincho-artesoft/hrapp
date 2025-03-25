@@ -97,13 +97,13 @@ struct CalendarsSheetView: View {
                                             EmptyView()
                                         }
                                     }
-                                    .frame(width: 24, height: 24)
+                                    .frame(width: 28, height: 28)
                                     .clipShape(Circle())
                                 } else {
                                     // Ако няма photoURL
                                     Image(systemName: "person.crop.circle")
                                         .resizable()
-                                        .frame(width: 24, height: 24)
+                                        .frame(width: 28, height: 28)
                                 }
                                 
                                 Text("Google calendars (\(user.email ?? "No Email"))")
