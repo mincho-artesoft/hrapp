@@ -84,10 +84,267 @@ final class CalendarViewModel: ObservableObject {
                 UserDefaults.standard.set(array, forKey: "SelectedCalendarIDsKey")
             }
             .store(in: &cancellables)
+        NotificationCenter.default.addObserver(
+               self,
+               selector: #selector(handleEventStoreChanged(_:)),
+               name: .EKEventStoreChanged,
+               object: eventStore
+           )
+
+           // Първоначално зареждане на локални събития и запис в oldEventCalendarMap
+           loadAndStoreCurrentEvents()
     }
     
     deinit {
         syncTimer?.invalidate()
+    }
+
+    private var oldEventCalendarMap: [String: String] = [:]  // eventID -> calendarID
+
+    func loadAndStoreCurrentEvents() {
+        // Пример: взимаме всички локални календари, или разрешените от потребителя
+        let allowedCalendars = eventStore.calendars(for: .event)
+            .filter { selectedCalendarIDs.contains($0.calendarIdentifier) }
+
+        // Правим predicate за някакъв обхват
+        let start = Date().addingTimeInterval(-3600 * 24 * 30) // 1 месец назад
+        let end   = Date().addingTimeInterval(3600 * 24 * 180) // 6 месеца напред
+        let pred = eventStore.predicateForEvents(withStart: start, end: end, calendars: allowedCalendars)
+        let events = eventStore.events(matching: pred)
+        
+        // Изчистваме стария речник и записваме нов
+        var tmp: [String: String] = [:]
+        for ev in events {
+            // eventIdentifier може да е nil, макар и рядко, затова check-нете
+            if let evID = ev.eventIdentifier {
+                tmp[evID] = ev.calendar.calendarIdentifier
+            }
+        }
+        oldEventCalendarMap = tmp
+    }
+    @objc private func handleEventStoreChanged(_ notification: Notification) {
+        // 1) Презареждаме евентите (в подходящ диапазон + филтрирани календари)
+        let allowedCalendars = eventStore.calendars(for: .event)
+            .filter { selectedCalendarIDs.contains($0.calendarIdentifier) }
+
+        let start = Date().addingTimeInterval(-3600 * 24 * 30) // 1 месец назад
+        let end   = Date().addingTimeInterval( 3600 * 24 * 180) // 6 месеца напред
+        let pred = eventStore.predicateForEvents(withStart: start, end: end, calendars: allowedCalendars)
+        let events = eventStore.events(matching: pred)
+
+        // 2) Строим нов snapshot (eventID -> calendarID) от текущите събития
+        var newEventCalendarMap: [String: String] = [:]
+
+        for ev in events {
+            guard let evID = ev.eventIdentifier else { continue }
+            
+            let newCalID = ev.calendar.calendarIdentifier
+            newEventCalendarMap[evID] = newCalID
+            
+            // Сравняваме с това, което сме запомнили досега (oldEventCalendarMap)
+            if let oldCalID = oldEventCalendarMap[evID], oldCalID != newCalID {
+                // => Евентът е преместен от oldCalID към newCalID!
+                Task {
+                    // 1) Проверяваме дали старият календар е Google (и ако да, кой userID + googleCalID)
+                    let oldGoogleInfo = findGoogleCalID(forLocalCalID: oldCalID)
+                    // 2) Проверяваме дали новият календар е Google
+                    let newGoogleInfo = findGoogleCalID(forLocalCalID: newCalID)
+                    
+                    // 3) Еvent може да има url="gcal://someGoogleEventID". Вземаме го:
+                    let maybeGEventID = extractGoogleEventID(ev)
+
+                    switch (oldGoogleInfo, newGoogleInfo) {
+                        
+                    // ---------------------------
+                    // 1) Старият = Google, Новият = Google
+                    // ---------------------------
+                    case let (.some((oldUserID, oldGoogleCalID)), .some((newUserID, newGoogleCalID))):
+
+                        // Ако това е един и същ Google акаунт и имаме googleEventID => MOVE
+                        if oldUserID == newUserID, let googleEventID = maybeGEventID {
+                            
+                            guard let user = getUserInMemory(oldUserID) else { return }
+                            // Ако token е изтекъл => refreshTokens(...) (пропускаме тук за краткост)
+                            
+                            // 1) Преместваме (move)
+                            let successMove = await moveEventInGoogle(
+                                googleEventID: googleEventID,
+                                oldGoogleCalID: oldGoogleCalID,
+                                newGoogleCalID: newGoogleCalID,
+                                accessToken: user.accessToken
+                            )
+                            if successMove {
+                                print("Успешно преместен евент (Google → Google) с moveEventInGoogle.")
+                                // 2) Пачваме (patchEventToGoogle), за да качим и другите промени (заглавие, дати...)
+                                let successPatch = await patchEventToGoogle(
+                                    event: ev,
+                                    googleCalId: newGoogleCalID,
+                                    googleEventId: googleEventID,
+                                    accessToken: user.accessToken,
+                                    userID: user.uniqueID
+                                )
+                                if successPatch {
+                                    print("Patch успешен, евентът е обновен в новия календар (заглавие, време и пр.).")
+                                }
+                            }
+
+                        } else {
+                            // => Различни акаунти (или maybeGEventID е nil) => изтриваме от стария + създаваме в новия
+                            // (a) Delete
+                            if let googleEventID = maybeGEventID,
+                               let oldUser = getUserInMemory(oldUserID) {
+                                _ = await deleteEventFromGoogle(
+                                    googleCalId: oldGoogleCalID,
+                                    googleEventId: googleEventID,
+                                    accessToken: oldUser.accessToken
+                                )
+                                print("Изтрит евент от стария акаунт (Google).")
+                            }
+                            // (b) Create
+                            if let newUser = getUserInMemory(newUserID) {
+                                _ = await postEventToGoogle(
+                                    event: ev,
+                                    googleCalId: newGoogleCalID,
+                                    accessToken: newUser.accessToken,
+                                    userID: newUser.uniqueID
+                                )
+                                print("Създаден евент в новия акаунт (Google).")
+                            }
+                        }
+                        
+                    // ---------------------------
+                    // 2) Старият = Google, Новият = Не-Google
+                    // ---------------------------
+                    case let (.some((oldUserID, oldGoogleCalID)), .none):
+                        // => Трябва да го изтрием от Google, защото вече е локален
+                        if let googleEventID = maybeGEventID,
+                           let oldUser = getUserInMemory(oldUserID) {
+                            _ = await deleteEventFromGoogle(
+                                googleCalId: oldGoogleCalID,
+                                googleEventId: googleEventID,
+                                accessToken: oldUser.accessToken
+                            )
+                            print("Изтрит евент от Google (преместване към не-Google календар).")
+                        }
+                        
+                    // ---------------------------
+                    // 3) Старият = Не-Google, Новият = Google
+                    // ---------------------------
+                    case let (.none, .some((newUserID, newGoogleCalID))):
+                        // => Създаваме ново събитие в Google
+                        if let newUser = getUserInMemory(newUserID) {
+                            _ = await postEventToGoogle(
+                                event: ev,
+                                googleCalId: newGoogleCalID,
+                                accessToken: newUser.accessToken,
+                                userID: newUser.uniqueID
+                            )
+                            print("Създаден евент в Google (преместен от локален).")
+                        }
+                        
+                    // ---------------------------
+                    // 4) И старият, и новият = НЕ-Google
+                    // ---------------------------
+                    case (.none, .none):
+                        // => Не засяга Google, не правим нищо
+                        break
+                    }
+                }
+
+                // Тук за debug отпечатваме, че събитието е преместено:
+                let oldCalName = eventStore.calendar(withIdentifier: oldCalID)?.title ?? "(неизвестен)"
+                let newCalName = ev.calendar.title
+                print("Събитие ‘\(ev.title ?? "Без заглавие")’ беше преместено от ‘\(oldCalName)’ в ‘\(newCalName)’")
+            }
+        }
+
+        // Проверяваме дали някой евент от стария snapshot го няма вече => може би е изтрит:
+        for oldEvID in oldEventCalendarMap.keys {
+            if newEventCalendarMap[oldEvID] == nil {
+                print("Събитие с ID=\(oldEvID) е изчезнало => вероятно е изтрито.")
+                // Ако е било Google => може да викнете deleteEventFromGoogle...
+            }
+        }
+
+        // 3) Накрая запомняме новата снимка
+        oldEventCalendarMap = newEventCalendarMap
+    }
+
+
+
+    /// Връща true, ако `calendarIdentifier` е локален календар,
+    /// който е "копие" на някой Google Calendar за НЯКОЙ от потребителите
+    func isGoogleLocalCalendar(_ calendarIdentifier: String) -> Bool {
+        for (_, googleMap) in googleToLocalCalendarMapAll {
+            // googleMap е [googleCalID: localCalID]
+            if googleMap.values.contains(calendarIdentifier) {
+                return true
+            }
+        }
+        return false
+    }
+    /// Премества Google-събитие от oldGoogleCalID към newGoogleCalID
+    /// (запазва същия googleEventID). Връща `true` при успех.
+    func moveEventInGoogle(
+        googleEventID: String,
+        oldGoogleCalID: String,
+        newGoogleCalID: String,
+        accessToken: String
+    ) async -> Bool {
+        // Енкодираме CalendarID и EventID за URL
+        let encOldCalID = oldGoogleCalID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? oldGoogleCalID
+        let encEvID     = googleEventID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? googleEventID
+        let endpoint = "https://www.googleapis.com/calendar/v3/calendars/\(encOldCalID)/events/\(encEvID)/move?destination=\(newGoogleCalID)"
+        
+        guard let url = URL(string: endpoint) else {
+            print("moveEventInGoogle: Invalid URL!")
+            return false
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse, !(200...299).contains(httpResp.statusCode) {
+                let body = String(data: data, encoding: .utf8) ?? ""
+                print("moveEventInGoogle failed: status=\(httpResp.statusCode), body=\(body)")
+                return false
+            }
+            print("moveEventInGoogle: success.")
+            return true
+        } catch {
+            print("moveEventInGoogle error: \(error)")
+            return false
+        }
+    }
+
+    func extractGoogleEventID(_ event: EKEvent) -> String? {
+        guard let urlStr = event.url?.absoluteString,
+              urlStr.hasPrefix("gcal://") else {
+            return nil
+        }
+        return urlStr.replacingOccurrences(of: "gcal://", with: "")
+    }
+
+    func findGoogleCalID(forLocalCalID localCalID: String) -> (UUID, String)? {
+        // googleToLocalCalendarMapAll е [ userKeyString : [googleCalID : localCalID] ]
+        for (userKey, map) in googleToLocalCalendarMapAll {
+            // userKey е String = userID.uuidString
+            guard let uuid = UUID(uuidString: userKey) else { continue }
+            
+            // map е [googleCalendarID : localCalendarID]
+            // търсим дали localCalID съвпада с някоя от стойностите
+            // напр. ("primary" : "123-ABCD-LOCALCAL")
+            if let foundPair = map.first(where: { $0.value == localCalID }) {
+                // foundPair.key  = googleCalendarID
+                // foundPair.value= localCalendarID
+                return (uuid, foundPair.key)
+            }
+        }
+        return nil // не е Google календар
     }
 
     // MARK: - Calendar Access
@@ -1193,12 +1450,6 @@ extension CalendarViewModel {
                 self.stopGoogleCalendarSync()
             }
             self.saveAllUsersToUserDefaults()
-            guard let data = UserDefaults.standard.data(forKey: "StoredGoogleUsers") else { return }
-            do {
-                let decoded = try JSONDecoder().decode([StoredGoogleUser].self, from: data)
-            } catch {
-                print("Failed to decode [StoredGoogleUser]:", error)
-            }
             // 6) Презареждаме локалните календари
             self.reloadCalendars()
         }
@@ -1764,14 +2015,7 @@ extension CalendarViewModel {
         }
     }
     
-    /// Вади gcal://ID от EKEvent.url
-    private func extractGoogleEventID(_ event: EKEvent) -> String? {
-        guard let urlStr = event.url?.absoluteString,
-              urlStr.hasPrefix("gcal://") else {
-            return nil
-        }
-        return urlStr.replacingOccurrences(of: "gcal://", with: "")
-    }
+
     
     /// След като Google ни върне hangoutLink, добавяме го в notes на локалното събитие (ако го няма).
     func updateLocalEventWithMeetLink(_ descriptor: EventDescriptor) {
