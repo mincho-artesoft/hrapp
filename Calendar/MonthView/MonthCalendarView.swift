@@ -137,46 +137,43 @@ struct MonthCalendarView: View {
         // (D) Toolbar: бутони за + / search / смяна на изглед
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                if !showSearchBar {
-                    Button {
-                        createAndEditNewEvent(on: Date())
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !showSearchBar {
-                    Button {
-                        showSearchBar = true
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                    }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !showSearchBar {
-                    Menu {
-                        Button { onViewChange?(1) } label: {
-                            Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                // Обединен HStack с контролирано разстояние
+                HStack(spacing: 9) {
+                    if !showSearchBar {
+                        Button {
+                            createAndEditNewEvent(on: Date())
+                        } label: {
+                            Image(systemName: "plus")
                         }
-                        Button { onViewChange?(3) } label: {
-                            Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                        
+                        Button {
+                            showSearchBar = true
+                        } label: {
+                            Image(systemName: "magnifyingglass")
                         }
-                        Button { onViewChange?(0) } label: {
-                            Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                        
+                        Menu {
+                            Button { onViewChange?(1) } label: {
+                                Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(3) } label: {
+                                Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(0) } label: {
+                                Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(2) } label: {
+                                Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(4) } label: {
+                                Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(5) } label: {
+                                Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
                         }
-                        Button { onViewChange?(2) } label: {
-                            Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
-                        }
-                        Button { onViewChange?(4) } label: {
-                            Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
-                        }
-                        Button { onViewChange?(5) } label: {
-                            Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
                     }
                 }
             }

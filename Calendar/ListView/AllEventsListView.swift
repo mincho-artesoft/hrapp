@@ -70,57 +70,44 @@ struct AllEventsListView: View {
         
         // 3) Toolbar: add the magnifying glass button + existing items
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                // Show the "plus" and "ellipsis" only if not searching
-                if !showSearchBar {
-                    // 3a) “+” за ново събитие
-                    Button(action: {
-                        createAndEditNewEvent(on: Date())
-                    }) {
-                        Image(systemName: "plus")
-                    }
-                    
-                    // 3b) Search button
-                    Button {
-                        showSearchBar = true
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                    }
-                    
-                    // 3c) Menu за изгледи
-                    Menu {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                // Обединен HStack с контролирано разстояние
+                HStack(spacing: 9) {
+                    if !showSearchBar {
                         Button {
-                            onViewChange(1)
+                            createAndEditNewEvent(on: Date())
                         } label: {
-                            Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                            Image(systemName: "plus")
                         }
+                        
                         Button {
-                            onViewChange(3)
+                            showSearchBar = true
                         } label: {
-                            Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                            Image(systemName: "magnifyingglass")
                         }
-                        Button {
-                            onViewChange(0)
+                        
+                        Menu {
+                            Button { onViewChange(1) } label: {
+                                Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange(3) } label: {
+                                Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange(0) } label: {
+                                Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange(2) } label: {
+                                Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange(4) } label: {
+                                Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange(5) } label: {
+                                Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
+                            }
                         } label: {
-                            Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                            Image(systemName: "ellipsis.circle")
                         }
-                        Button {
-                            onViewChange(2)
-                        } label: {
-                            Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
-                        }
-                        Button {
-                            onViewChange(4)
-                        } label: {
-                            Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
-                        }
-                        Button {
-                            onViewChange(5)
-                        } label: {
-                            Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
                     }
                 }
             }

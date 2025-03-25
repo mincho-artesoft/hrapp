@@ -386,12 +386,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         super.layoutSubviews()
         
         let isLandscape = bounds.width > bounds.height
-        let topOffset: CGFloat = isLandscape ? 0 : 60
+        let topOffset: CGFloat = isLandscape ? 0 : 53.5
         
         topBackgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topOffset)
         topBackgroundView.layer.zPosition = 3
 
-        navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width, height: navBarHeight)
+        navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width - 2, height: navBarHeight)
         
         if !isLandscape {
             let df = DateFormatter()

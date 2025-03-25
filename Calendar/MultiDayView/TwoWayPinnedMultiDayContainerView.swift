@@ -543,9 +543,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Примерно, ако искаш да избуташ цялото съдържание с 60т надолу, когато е портрет:
         let isLandscape = bounds.width > bounds.height
-        let topOffset: CGFloat = isLandscape ? 0 : 60
+        let topOffset: CGFloat = isLandscape ? 0 : 53.5
         
         // 1) фон зад нав. лента (ако искаме):
         topBackgroundView.frame = CGRect(
@@ -559,7 +558,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         navBar.frame = CGRect(
             x: 0,
             y: topOffset,
-            width: bounds.width,
+            width: bounds.width - 2,
             height: navBarHeight
         )
         

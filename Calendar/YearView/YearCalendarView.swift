@@ -129,62 +129,44 @@ struct YearCalendarView: View {
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
         }
         .toolbar {
-            // 1) Plus button
             ToolbarItem(placement: .navigationBarTrailing) {
-                if !showSearchBar {
-                    Button {
-                        createNewEventForYear()
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-            }
-            // 2) Search button
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !showSearchBar {
-                    Button {
-                        showSearchBar = true
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                    }
-                }
-            }
-            // 3) Menu for switching views
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !showSearchBar {
-                    Menu {
+                // Обединен HStack с контролирано разстояние
+                HStack(spacing: 9) {
+                    if !showSearchBar {
                         Button {
-                            onViewChange?(1) // Day
+                            createNewEventForYear()
                         } label: {
-                            Label("Day", systemImage: selectedTab == 1 ? "checkmark" : "")
+                            Image(systemName: "plus")
                         }
+                        
                         Button {
-                            onViewChange?(3) // MultiDay
+                            showSearchBar = true
                         } label: {
-                            Label("MultiDay", systemImage: selectedTab == 3 ? "checkmark" : "")
+                            Image(systemName: "magnifyingglass")
                         }
-                        Button {
-                            onViewChange?(0) // Month
+                        
+                        Menu {
+                            Button { onViewChange?(1) } label: {
+                                Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(3) } label: {
+                                Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(0) } label: {
+                                Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(2) } label: {
+                                Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(4) } label: {
+                                Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
+                            }
+                            Button { onViewChange?(5) } label: {
+                                Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
+                            }
                         } label: {
-                            Label("Month", systemImage: selectedTab == 0 ? "checkmark" : "")
+                            Image(systemName: "ellipsis.circle")
                         }
-                        Button {
-                            onViewChange?(2) // Year
-                        } label: {
-                            Label("Year", systemImage: selectedTab == 2 ? "checkmark" : "")
-                        }
-                        Button {
-                            onViewChange?(4) // List
-                        } label: {
-                            Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
-                        }
-                        Button {
-                            onViewChange?(5) // MultiCalendar
-                        } label: {
-                            Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis.circle")
                     }
                 }
             }
