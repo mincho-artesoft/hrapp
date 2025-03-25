@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
 		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
+		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */,
+				50D82EE72D92C681004B3545 /* MSAL in Frameworks */,
 				50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				50D829892D886BBD004B3545 /* GoogleSignIn */,
 				50D8298B2D886BBD004B3545 /* GoogleSignInSwift */,
+				50D82EE62D92C681004B3545 /* MSAL */,
 			);
 			productName = Calendar;
 			productReference = 50D8281C2D80218F004B3545 /* Calendar.app */;
@@ -158,6 +161,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				50D82EE52D92C681004B3545 /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 50B212422D4111B800ABB8D3;
@@ -405,6 +409,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		50D82EE52D92C681004B3545 /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AzureAD/microsoft-authentication-library-for-objc";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -417,6 +429,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		50D82EE62D92C681004B3545 /* MSAL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D82EE52D92C681004B3545 /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */;
+			productName = MSAL;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

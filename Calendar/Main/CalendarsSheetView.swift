@@ -129,9 +129,16 @@ struct CalendarsSheetView: View {
                     
                     // 4) Google Sign-In бутон
                     Section {
-                        Button("Sign in with Google") {
-                            signInWithGoogle()
+                        Button(action: signInWithGoogle) {
+                            HStack {
+                                Image("google_icon")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 28, height: 28)
+                                Text("Sign in with Google")
+                            }
                         }
+                        .buttonStyle(PlainButtonStyle()) // Или .borderlessButtonStyle()
                     }
                 }
                 .navigationBarTitle("Calendars", displayMode: .inline)
