@@ -2,9 +2,24 @@ import SwiftUI
 import EventKit
 import Combine
 import GoogleSignIn
+import MSAL
 
 @MainActor
 final class CalendarViewModel: ObservableObject {
+    private var msSyncTimer: Timer?
+
+    let kClientID = "5b1a5159-948f-4b5b-ac6a-009df927c665"
+    let kRedirectUri = "msauth.Deksan.CalendarASD://auth"
+    let kAuthority = "https://login.microsoftonline.com/common"
+    let kGraphEndpoint = "https://graph.microsoft.com/"
+    
+    @Published var storedMsUsers: [StoredMicrosoftUser] = []
+       
+       // For 2-way sync, you can keep analogous dictionary maps:
+   private var msToLocalCalendarMapAll: [String : [String : String]] = [:]  // [userKey: [msCalendarID : localCalendarID]]
+   private var msToLocalEventMapAll:    [String : [String : String]] = [:]
+   private var msEventUpdatedMapAll:    [String : [String : String]] = [:]
+   private var msLastSyncDateAll:       [String : Date] = [:]
     
     // MARK: - EventKit Store & Properties
     var eventStore: EKEventStore = EKEventStore()
@@ -54,6 +69,17 @@ final class CalendarViewModel: ObservableObject {
     init() {
         // 1) Attempt to load the array of StoredGoogleUsers from UserDefaults
         self.loadAllUsersFromUserDefaults()
+        
+        // load MS users
+       loadAllMsUsersFromUserDefaults()
+       
+       // load per-user MS dictionary maps
+       for user in storedMsUsers {
+           loadPerMsUserMaps(for: user)
+       }
+       
+       // Possibly start an MS sync timer as well
+       startMicrosoftCalendarSync()
         
         // 2) Load per-user dictionaries from UserDefaults
         for user in storedUsers {
@@ -2048,4 +2074,831 @@ extension CalendarViewModel {
             }
         }
     }
+}
+/// MARK: - Microsoft user model
+struct StoredMicrosoftUser: Codable, Hashable {
+    let uniqueID: UUID  // internal stable ID for app
+    var msAccountID: String?  // e.g., "xxxx-xxxx..." from Microsoft
+    var email: String?
+    
+    var accessToken: String
+    var accessTokenExpiration: Date
+    var refreshToken: String?
+    
+    // Possibly store the ID token, photoURL, displayName, etc.
+    var idToken: String?
+    var avatarURL: String?
+}
+extension CalendarViewModel {
+    // Примерен метод за логин
+    func signInWithMicrosoft() {
+        do {
+            let authorityURL = URL(string: kAuthority)!
+            let msalConfig = MSALPublicClientApplicationConfig(
+                clientId: kClientID,
+                redirectUri: kRedirectUri,
+                authority: try MSALAADAuthority(url: authorityURL)
+            )
+
+            let application = try MSALPublicClientApplication(configuration: msalConfig)
+
+            let scopes = ["Calendars.ReadWrite", "User.Read"]
+            let parameters = MSALInteractiveTokenParameters(scopes: scopes)
+            parameters.promptType = .selectAccount
+            parameters.parentViewController = topMostViewController()
+
+            print("Will acquire MS token (interactive)...")
+
+            application.acquireToken(with: parameters) { result, error in
+                if let error = error {
+                    print("MSAL error: \(error)")
+                    return
+                }
+                guard let authResult = result else {
+                    print("No MSAL result!")
+                    return
+                }
+
+                print("MSAL login success! accessToken length = \(authResult.accessToken.count)")
+
+                // Извличаме данни
+                let accessToken = authResult.accessToken
+                let expiresOn   = authResult.expiresOn ?? Date()
+                let account     = authResult.account
+                let msID        = account.identifier
+                let email       = account.username ?? "(No username)"
+                let refresh     = "???"
+
+                let newMsUser = StoredMicrosoftUser(
+                    uniqueID: UUID(),
+                    msAccountID: msID,
+                    email: email,
+                    accessToken: accessToken,
+                    accessTokenExpiration: expiresOn,
+                    refreshToken: refresh,
+                    idToken: authResult.idToken,
+                    avatarURL: nil
+                )
+
+                print("Will store new MS user:", newMsUser)
+
+                Task { @MainActor in
+                    // 1) Добавяме го към масива
+                    self.storedMsUsers.append(newMsUser)
+                    // 2) Записваме в UserDefaults
+                    self.saveAllMsUsersToUserDefaults()
+
+                    // 3) Ако това е първият MS акаунт, стартираме таймера:
+                    if self.storedMsUsers.count == 1 {
+                        self.startMicrosoftCalendarSync()
+                    }
+
+                    // 4) Извикваме sync веднага (за да видите резултатите на момента)
+                    await self.performMicrosoftCalendarSync(for: newMsUser)
+                }
+            }
+
+        } catch {
+            print("MSAL init error:", error)
+        }
+    }
+
+    @MainActor
+    func performMicrosoftCalendarSync(for user: StoredMicrosoftUser) async {
+        print("performMicrosoftCalendarSync(for: \(user.email ?? "")) => start")
+        do {
+            let refreshedUser = await refreshMicrosoftTokenIfNeeded(for: user) ?? user
+            print("Using accessToken length = \(refreshedUser.accessToken.count) for user \(refreshedUser.email ?? "")")
+
+            let msCalendars = try await fetchMsCalendarList(accessToken: refreshedUser.accessToken)
+            print("Получихме \(msCalendars.count) MS календара за \(refreshedUser.email ?? "")")
+
+            await syncMsCalendars(msCalendars, forUser: refreshedUser, accessToken: refreshedUser.accessToken)
+            
+            // Local -> MS (ако го има)
+            let map = msToLocalCalendarMap(for: refreshedUser.uniqueID)
+            for (msCalID, localCalID) in map {
+                if let localCal = eventStore.calendar(withIdentifier: localCalID) {
+                    await uploadLocalChangesToMicrosoft(
+                        msCalId: msCalID,
+                        user: refreshedUser,
+                        accessToken: refreshedUser.accessToken,
+                        localCalendar: localCal
+                    )
+                }
+            }
+        } catch {
+            print("performMicrosoftCalendarSync грешка:", error)
+        }
+        print("performMicrosoftCalendarSync(for: \(user.email ?? "")) => done")
+    }
+
+
+    // Примерен helper
+    private func topMostViewController() -> UIViewController? {
+        guard let windowScene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+              let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        else {
+            return nil
+        }
+        var topVC = rootVC
+        while let presented = topVC.presentedViewController {
+            topVC = presented
+        }
+        return topVC
+    }
+
+    
+    // MARK: - Sign out
+    func signOutFromMicrosoft(user: StoredMicrosoftUser) {
+        // For MSAL, you typically remove the account from MSAL’s cache:
+        // 1) Locate the account object in the cache
+        // 2) call application.remove(account)
+        
+        // Then remove from your local data
+        removeLocalMicrosoftCalendars(forUserID: user.uniqueID)
+        self.storedMsUsers.removeAll(where: { $0.uniqueID == user.uniqueID })
+        
+        UserDefaults.standard.removeObject(forKey: "MsToLocalEventMap_\(user.uniqueID.uuidString)")
+        UserDefaults.standard.removeObject(forKey: "MsEventUpdatedMap_\(user.uniqueID.uuidString)")
+        UserDefaults.standard.removeObject(forKey: "MsLastSyncDateKey_\(user.uniqueID.uuidString)")
+        self.msToLocalEventMapAll.removeValue(forKey: user.uniqueID.uuidString)
+        self.msEventUpdatedMapAll.removeValue(forKey: user.uniqueID.uuidString)
+        self.msLastSyncDateAll.removeValue(forKey: user.uniqueID.uuidString)
+        
+        if self.storedMsUsers.isEmpty {
+            self.stopMicrosoftCalendarSync()
+        }
+        self.saveAllMsUsersToUserDefaults()
+        self.reloadCalendars()
+    }
+    
+    private func removeLocalMicrosoftCalendars(forUserID userID: UUID) {
+        let map = msToLocalCalendarMap(for: userID)
+        for (_, localCalID) in map {
+            if let calToDelete = eventStore.calendar(withIdentifier: localCalID) {
+                do {
+                    try eventStore.removeCalendar(calToDelete, commit: true)
+                    print("Removed local MS-copy calendar:", calToDelete.title)
+                } catch {
+                    print("Failed to remove local calendar:", error.localizedDescription)
+                }
+            }
+        }
+        UserDefaults.standard.removeObject(forKey: "MsToLocalCalendarMap_\(userID.uuidString)")
+        self.msToLocalCalendarMapAll.removeValue(forKey: userID.uuidString)
+    }
+    
+    // MARK: - MSAL Refresh (simplified)
+
+    /// Example approach for refreshing (if needed).
+    /// MSAL typically handles refresh tokens in the library’s cache,
+    /// so you may not need a manual HTTP request for refresh like with Google.
+    func refreshMicrosoftTokenIfNeeded(for user: StoredMicrosoftUser) async -> StoredMicrosoftUser? {
+        if user.accessTokenExpiration > Date() {
+            // still valid, no refresh needed
+            return user
+        }
+        // If you do want to do a silent token call:
+        do {
+            guard let authorityURL = URL(string: kAuthority) else { return user }
+            let msalConfig = MSALPublicClientApplicationConfig(clientId: kClientID,
+                                                               redirectUri: kRedirectUri,
+                                                               authority: try MSALAADAuthority(url: authorityURL))
+            let application = try MSALPublicClientApplication(configuration: msalConfig)
+            
+            // We have to find the account in MSAL’s cache
+            // If we stored "msAccountID" = user.msAccountID = e.g. "some-homeAccountId"
+            guard let msAccountID = user.msAccountID else { return user }
+            
+            let cachedAccounts = try application.allAccounts()
+            if let matching = cachedAccounts.first(where: { $0.identifier == msAccountID }) {
+                
+                let params = MSALSilentTokenParameters(scopes: ["Calendars.ReadWrite", "offline_access", "User.Read"],
+                                                       account: matching)
+                let result = try await withCheckedThrowingContinuation { (cont: CheckedContinuation<MSALResult, Error>) in
+                    application.acquireTokenSilent(with: params) { (res, err) in
+                        if let err = err {
+                            cont.resume(throwing: err)
+                        } else if let res = res {
+                            cont.resume(returning: res)
+                        } else {
+                            cont.resume(throwing: NSError(domain: "Unknown MSAL error", code: -1))
+                        }
+                    }
+                }
+                // success
+                let updated = StoredMicrosoftUser(
+                    uniqueID: user.uniqueID,
+                    msAccountID: msAccountID,
+                    email: result.account.username,
+                    accessToken: result.accessToken,
+                    accessTokenExpiration: result.expiresOn!,
+                    refreshToken: user.refreshToken, // or nil
+                    idToken: result.idToken,
+                    avatarURL: user.avatarURL
+                )
+                
+                // store in memory
+                updateMsUserInMemory(updated)
+                saveAllMsUsersToUserDefaults()
+                return updated
+            }
+        } catch {
+            print("MSAL silent refresh error:", error.localizedDescription)
+        }
+        return user
+    }
+
+
+
+
+       func startMicrosoftCalendarSync() {
+           print("Start Microsoft Calendar sync timer…")
+           // Първо, ако вече има стар таймер, го спираме:
+           msSyncTimer?.invalidate()
+
+           // Създаваме нов таймер, който на всеки 10 сек. вика синка:
+           msSyncTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
+               Task { [weak self] in
+                   // Тук вече извикваме нашия метод, който синхронизира *всички* MS акаунти
+                   await self?.performMicrosoftCalendarSyncForAllUsers()
+               }
+           }
+       }
+
+       func stopMicrosoftCalendarSync() {
+           print("Stop Microsoft Calendar sync timer…")
+           msSyncTimer?.invalidate()
+           msSyncTimer = nil
+       }
+
+
+    /// Call this to sync all stored MsUsers
+    func performMicrosoftCalendarSyncForAllUsers() async {
+        for user in storedMsUsers {
+            print(" - Will sync user \(user.email ?? "???" )")
+            await performMicrosoftCalendarSync(for: user)
+        }
+    }
+
+    private func fetchMsCalendarList(accessToken: String) async throws -> [MSCalendarItem] {
+        guard let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars") else {
+            throw NSError(domain: "Bad URL", code: -1)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        if let httpResp = response as? HTTPURLResponse, httpResp.statusCode >= 300 {
+            let body = String(data: data, encoding: .utf8) ?? ""
+            throw NSError(domain: "MsCalendarList HTTP \(httpResp.statusCode)", code: -1,
+                          userInfo: [NSLocalizedDescriptionKey: body])
+        }
+
+        let decoded = try JSONDecoder().decode(MSCalendarListResponse.self, from: data)
+
+        // ТУК можеш да принтираш какво точно ти връща Graph:
+        for cal in decoded.value {
+        }
+
+        return decoded.value
+    }
+
+
+    private func syncMsCalendars(
+        _ msCalendars: [MSCalendarItem],
+        forUser user: StoredMicrosoftUser,
+        accessToken: String
+    ) async {
+        let userKey = user.uniqueID
+        var map = msToLocalCalendarMap(for: userKey)
+        
+        var stillExistsIDs = Set<String>()
+        
+        for msCal in msCalendars {
+            stillExistsIDs.insert(msCal.id)
+            
+            let msCalName = msCal.name
+            let msCalID   = msCal.id
+            // Microsoft doesn’t always store color directly, or you’d get it from `msCal.colorHex`
+            // For example, we can default all to .systemBlue
+            let msColor = UIColor.systemBlue
+            
+            if let localID = map[msCalID],
+               let localEKCal = eventStore.calendar(withIdentifier: localID) {
+                
+                // If the name or color differs, update
+                if localEKCal.title != msCalName || localEKCal.cgColor != msColor.cgColor {
+                    localEKCal.title  = msCalName
+                    localEKCal.cgColor = msColor.cgColor
+                    do {
+                        try eventStore.saveCalendar(localEKCal, commit: true)
+                    } catch {
+                        print("Error updating local MS calendar:", error.localizedDescription)
+                    }
+                }
+                
+                // Then fetch events from MS -> local
+                await downloadAllMsEvents(
+                    forMsCalendarID: msCalID,
+                    user: user,
+                    localCalendar: localEKCal,
+                    accessToken: accessToken
+                )
+            } else {
+                // create local calendar
+                if let newLocalCal = createLocalCalendar(googleCalendarName: msCalName, googleCalendarColor: msColor) {
+                    // Reuse the same function or make a separate createLocalMsCalendar
+                    map[msCalID] = newLocalCal.calendarIdentifier
+                    setMsToLocalCalendarMap(map, for: userKey)
+                    
+                    // fetch MS -> local events
+                    await downloadAllMsEvents(
+                        forMsCalendarID: msCalID,
+                        user: user,
+                        localCalendar: newLocalCal,
+                        accessToken: accessToken
+                    )
+                }
+            }
+        }
+        
+        // Delete local calendars that were removed from MS
+        let currentMap = msToLocalCalendarMap(for: userKey)
+        for (msCalID, localID) in currentMap {
+            if !stillExistsIDs.contains(msCalID) {
+                if let toRemove = eventStore.calendar(withIdentifier: localID) {
+                    do {
+                        try eventStore.removeCalendar(toRemove, commit: true)
+                    } catch {
+                        print("removeCalendar error:", error.localizedDescription)
+                    }
+                }
+                var newMap = currentMap
+                newMap.removeValue(forKey: msCalID)
+                setMsToLocalCalendarMap(newMap, for: userKey)
+            }
+        }
+    }
+    
+    // Here we reuse your createLocalCalendar from Google code
+    // or rename it to something more general:
+    // `createLocalCalendar(title:color:)`
+    
+    private func downloadAllMsEvents(
+        forMsCalendarID msCalId: String,
+        user: StoredMicrosoftUser,
+        localCalendar: EKCalendar,
+        accessToken: String
+    ) async {
+        let now = Date()
+        let startDate = Calendar.current.date(byAdding: .month, value: -6, to: now)!
+        let endDate   = Calendar.current.date(byAdding: .month, value: 6, to: now)!
+
+        do {
+            // 1) Взимаме всички събития от Graph
+            let msEvents = try await fetchAllMsEvents(
+                msCalID: msCalId,
+                accessToken: accessToken,
+                startDate: startDate,
+                endDate: endDate
+            )
+
+            // 2) Принтираме колко събития сме получили + някои детайли
+            for evt in msEvents {
+                let subj = evt.subject ?? "(no subject)"
+                let modified = evt.lastModifiedDateTime ?? "(no mod date)"
+                let startDT = evt.start?.dateTime ?? "(no start)"
+                let endDT   = evt.end?.dateTime ?? "(no end)"
+            }
+            print("====================================================")
+
+            // 3) Тук продължава оригиналният ти код за синхронизиране (MS -> Local)
+
+            let msEventIDs = Set(msEvents.map { $0.id })
+            
+            // (Зареждаме речниците за този user)
+            var evMap  = msToLocalEventMap(for: user.uniqueID)
+            var updMap = msEventUpdatedMap(for: user.uniqueID)
+
+            // За всяко MS събитие...
+            for msEvent in msEvents {
+                let msUpdated = msEvent.lastModifiedDateTime ?? ""
+                let localKnownUpdated = updMap[msEvent.id] ?? ""
+                let msChanged = (msUpdated != localKnownUpdated)
+                
+                if let mappedLocalID = evMap[msEvent.id],
+                   let existingLocal = eventStore.event(withIdentifier: mappedLocalID) {
+
+                    // Ако MS event-а е обновен, ъпдейтваме локалния EKEvent
+                    if msChanged {
+                        updateLocalEvent(existingLocal, withMsEvent: msEvent, inCalendar: localCalendar)
+                    }
+
+                } else {
+                    // Ако в речника не фигурираме => създаваме нов локален и го добавяме в map
+                    if let newEv = createLocalMsEvent(msEvent, inCalendar: localCalendar) {
+                        evMap[msEvent.id] = newEv.eventIdentifier
+                    }
+                }
+                // Винаги обновяваме updated-стойността
+                updMap[msEvent.id] = msUpdated
+            }
+
+            setMsToLocalEventMap(evMap, for: user.uniqueID)
+            setMsEventUpdatedMap(updMap, for: user.uniqueID)
+            
+            // 4) Премахваме локални евенти, които вече ги няма в MS
+            let localEvents = fetchLocalEvents(
+                in: localCalendar,
+                startDate: startDate,
+                endDate: endDate
+            )
+            for locEv in localEvents {
+                if let msID = extractMsEventID(locEv),  // напр. "mscal://..."
+                   !msEventIDs.contains(msID) {
+                    // => Евентът е изтрит в Microsoft => трием и локалния
+                    do {
+                        try eventStore.remove(locEv, span: .thisEvent, commit: true)
+                        print("Removed local MS event:", locEv.title ?? "")
+                        
+                        var newMap = msToLocalEventMap(for: user.uniqueID)
+                        newMap.removeValue(forKey: msID)
+                        setMsToLocalEventMap(newMap, for: user.uniqueID)
+                        
+                        var newUpd = msEventUpdatedMap(for: user.uniqueID)
+                        newUpd.removeValue(forKey: msID)
+                        setMsEventUpdatedMap(newUpd, for: user.uniqueID)
+                    } catch {
+                        print("Error removing local MS event:", error.localizedDescription)
+                    }
+                }
+            }
+            
+        } catch {
+            print("Error fetching MS events:", error.localizedDescription)
+        }
+    }
+
+    
+    private func fetchAllMsEvents(
+        msCalID: String,
+        accessToken: String,
+        startDate: Date,
+        endDate: Date
+    ) async throws -> [MSCalendarEvent] {
+        var allEv: [MSCalendarEvent] = []
+        var nextLink: String? = nil
+        
+        repeat {
+            let (chunk, link) = try await fetchMsEventsPage(
+                msCalID: msCalID,
+                accessToken: accessToken,
+                startDate: startDate,
+                endDate: endDate,
+                pageLink: nextLink
+            )
+
+            // Нов принт (по желание):
+            print("fetchAllMsEvents: fetched chunk of \(chunk.count) events (pageLink=\(nextLink ?? "nil"))")
+
+            allEv.append(contentsOf: chunk)
+            nextLink = link
+        } while nextLink != nil
+        
+        return allEv
+    }
+
+    
+    private func fetchMsEventsPage(msCalID: String,
+                                   accessToken: String,
+                                   startDate: Date,
+                                   endDate: Date,
+                                   pageLink: String?) async throws -> ([MSCalendarEvent], String?) {
+        if let pageLink = pageLink {
+            // If Graph gave us a nextLink, use it
+            guard let url = URL(string: pageLink) else {
+                return ([], nil)
+            }
+            var req = URLRequest(url: url)
+            req.httpMethod = "GET"
+            req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            
+            let (data, resp) = try await URLSession.shared.data(for: req)
+            if let httpResp = resp as? HTTPURLResponse, httpResp.statusCode >= 300 {
+                throw NSError(domain: "MSGraph Error", code: httpResp.statusCode)
+            }
+            
+            let decoded = try JSONDecoder().decode(MSCalendarEventResponse.self, from: data)
+            // Use .odataNextLink, not subscript
+            return (decoded.value, decoded.odataNextLink)
+            
+        } else {
+            // First page
+            let formatter = ISO8601DateFormatter()
+            let startStr = formatter.string(from: startDate)
+            let endStr   = formatter.string(from: endDate)
+            
+            guard let encodedCalId = msCalID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+                  let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalId)/events?startDateTime=\(startStr)&endDateTime=\(endStr)")
+            else {
+                return ([], nil)
+            }
+            
+            var req = URLRequest(url: url)
+            req.httpMethod = "GET"
+            req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            
+            let (data, resp) = try await URLSession.shared.data(for: req)
+            if let httpResp = resp as? HTTPURLResponse, httpResp.statusCode >= 300 {
+                throw NSError(domain: "MSGraph Error", code: httpResp.statusCode)
+            }
+            
+            let decoded = try JSONDecoder().decode(MSCalendarEventResponse.self, from: data)
+            // Again, use decoded.odataNextLink
+            return (decoded.value, decoded.odataNextLink)
+        }
+    }
+
+    
+    // Similarly implement uploadLocalChangesToMicrosoft (Local -> MS)...
+
+    private func uploadLocalChangesToMicrosoft(msCalId: String,
+                                               user: StoredMicrosoftUser,
+                                               accessToken: String,
+                                               localCalendar: EKCalendar) async {
+        // Very similar logic to your Google push:
+        // 1) find local changes since last sync
+        // 2) if event has “mscal://someID”, then PATCH, else POST
+        // 3) handle local deletions
+    }
+    
+    // Example of how you create a local event from an MS event
+    /// Създава нов локален EKEvent (iOS) от Microsoft събитие (msEvent).
+    /// Задава url="mscal://someMsEventID", за да можем после да го разпознаем като MS събитие.
+    private func createLocalMsEvent(_ msEvent: MSCalendarEvent,
+                                    inCalendar: EKCalendar) -> EKEvent?
+    {
+        // 1) Създаваме EKEvent (локално събитие в iOS)
+        let newEvent = EKEvent(eventStore: eventStore)
+        newEvent.calendar = inCalendar
+        
+        // 2) Записваме URL="mscal://..." за да знаем, че идва от Microsoft
+        newEvent.url = URL(string: "mscal://\(msEvent.id)")
+
+        // 3) Прехвърляме basic полета (subject, notes, location и пр.)
+        newEvent.title = msEvent.subject ?? "(No Title)"
+        newEvent.notes = msEvent.bodyPreview ?? ""
+        
+        if let loc = msEvent.location?.displayName {
+            newEvent.location = loc
+        }
+
+        // 4) Парсваме startDate
+        if let startStr = msEvent.start?.dateTime,
+           let startDate = parseMsDateTime(startStr)
+        {
+            newEvent.startDate = startDate
+            // Ако е all-day (msEvent.isAllDay == true), може да сложим:
+            // newEvent.isAllDay = true
+        } else {
+            return nil  // няма смисъл да продължаваме
+        }
+
+        // 5) Парсваме endDate
+        if let endStr = msEvent.end?.dateTime,
+           let endDate = parseMsDateTime(endStr)
+        {
+            newEvent.endDate = endDate
+        } else {
+            // fallback логика, в случай че е празен/невалиден
+            newEvent.endDate = newEvent.startDate.addingTimeInterval(3600)
+            print("Warning: MS event \(msEvent.id) has no valid end => using start+1h.")
+        }
+
+        // 6) Опитваме да запазим събитието
+        do {
+            try eventStore.save(newEvent, span: .thisEvent, commit: true)
+            return newEvent
+        } catch {
+            print("Error saving local MS event:", error.localizedDescription)
+            return nil
+        }
+    }
+
+
+
+    
+    /// Обновява вече съществуващ локален EKEvent, ако е настъпила промяна в MS събитието (msEvent).
+    private func updateLocalEvent(_ localEvent: EKEvent,
+                                  withMsEvent msEvent: MSCalendarEvent,
+                                  inCalendar: EKCalendar)
+    {
+        // 1) Ако искате да обновите базова информация
+        localEvent.title = msEvent.subject ?? "(No Title)"
+        localEvent.notes = msEvent.bodyPreview ?? ""
+        if let loc = msEvent.location?.displayName {
+            localEvent.location = loc
+        } else {
+            localEvent.location = nil
+        }
+        
+        // 2) Ако е различен календар — премества го
+        localEvent.calendar = inCalendar
+
+        // 3) Парсваме началната дата
+        if let startStr = msEvent.start?.dateTime,
+           let startDate = parseMsDateTime(startStr)
+        {
+            localEvent.startDate = startDate
+            localEvent.isAllDay = false  // или your logic
+        } else {
+            return
+        }
+        
+        // 4) Парсваме крайната дата
+        if let endStr = msEvent.end?.dateTime,
+           let endDate = parseMsDateTime(endStr)
+        {
+            localEvent.endDate = endDate
+        } else {
+            localEvent.endDate = localEvent.startDate.addingTimeInterval(3600)
+        }
+
+        // 5) Записваме обратно в EventKit
+        do {
+            try eventStore.save(localEvent, span: .thisEvent, commit: true)
+        } catch {
+            print("Error updating local MS event:", error.localizedDescription)
+        }
+    }
+
+
+
+
+    
+    private func extractMsEventID(_ event: EKEvent) -> String? {
+        guard let urlStr = event.url?.absoluteString,
+              urlStr.hasPrefix("mscal://") else {
+            return nil
+        }
+        return urlStr.replacingOccurrences(of: "mscal://", with: "")
+    }
+    
+    // For convenience, we can do something like:
+    func microsoftCopiedCalendars(for user: StoredMicrosoftUser) -> [EKCalendar] {
+        let map = msToLocalCalendarMap(for: user.uniqueID)
+        let localIDs = Set(map.values)
+        return allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
+    }
+}
+
+// MARK: - Microsoft Graph Models
+struct MSCalendarListResponse: Codable {
+    let value: [MSCalendarItem]
+}
+
+struct MSCalendarItem: Codable {
+    let id: String
+    let name: String
+    // let color: String?
+    // ...
+}
+
+struct MSCalendarEventResponse: Codable {
+    let value: [MSCalendarEvent]
+    let odataNextLink: String?
+
+    // In actual JSON, Microsoft uses `@odata.nextLink`
+    // so define custom keys:
+    private enum CodingKeys: String, CodingKey {
+        case value
+        case odataNextLink = "@odata.nextLink"
+    }
+}
+
+struct MSCalendarEvent: Codable {
+    let id: String
+    let subject: String?
+    let bodyPreview: String?
+    let start: MSDateTimeTimeZone?
+    let end:   MSDateTimeTimeZone?
+    let location: MSLocation?
+    
+    let lastModifiedDateTime: String?
+}
+
+struct MSDateTimeTimeZone: Codable {
+    let dateTime: String?
+    let timeZone: String?
+    // При all-day от Graph се връща date (без часове).
+    let date: String?  // <-- Добавете това
+}
+
+
+
+struct MSLocation: Codable {
+    let displayName: String?
+}
+
+extension CalendarViewModel {
+    private func loadAllMsUsersFromUserDefaults() {
+        guard let data = UserDefaults.standard.data(forKey: "StoredMsUsers") else { return }
+        do {
+            let decoded = try JSONDecoder().decode([StoredMicrosoftUser].self, from: data)
+            self.storedMsUsers = decoded
+        } catch {
+            print("Failed to decode [StoredMicrosoftUser]:", error)
+        }
+    }
+    
+    func saveAllMsUsersToUserDefaults() {
+        do {
+            let encoded = try JSONEncoder().encode(storedMsUsers)
+            UserDefaults.standard.set(encoded, forKey: "StoredMsUsers")
+            UserDefaults.standard.synchronize()
+        } catch {
+            print("Failed to encode [StoredMicrosoftUser]:", error)
+        }
+    }
+    
+    func updateMsUserInMemory(_ updatedUser: StoredMicrosoftUser) {
+        if let idx = storedMsUsers.firstIndex(where: { $0.uniqueID == updatedUser.uniqueID }) {
+            storedMsUsers[idx] = updatedUser
+        }
+    }
+}
+extension CalendarViewModel {
+    func loadPerMsUserMaps(for user: StoredMicrosoftUser) {
+        let userKey = user.uniqueID.uuidString
+        
+        let cals = UserDefaults.standard.dictionary(forKey: "MsToLocalCalendarMap_\(userKey)") as? [String : String] ?? [:]
+        msToLocalCalendarMapAll[userKey] = cals
+        
+        let evs = UserDefaults.standard.dictionary(forKey: "MsToLocalEventMap_\(userKey)") as? [String : String] ?? [:]
+        msToLocalEventMapAll[userKey] = evs
+        
+        let upds = UserDefaults.standard.dictionary(forKey: "MsEventUpdatedMap_\(userKey)") as? [String : String] ?? [:]
+        msEventUpdatedMapAll[userKey] = upds
+        
+        let last = UserDefaults.standard.object(forKey: "MsLastSyncDateKey_\(userKey)") as? Date ?? .distantPast
+        msLastSyncDateAll[userKey] = last
+    }
+
+    func msToLocalCalendarMap(for userID: UUID) -> [String : String] {
+        return msToLocalCalendarMapAll[userID.uuidString] ?? [:]
+    }
+    func setMsToLocalCalendarMap(_ newVal: [String : String], for userID: UUID) {
+        msToLocalCalendarMapAll[userID.uuidString] = newVal
+        UserDefaults.standard.setValue(newVal, forKey: "MsToLocalCalendarMap_\(userID.uuidString)")
+    }
+
+    func msToLocalEventMap(for userID: UUID) -> [String : String] {
+        return msToLocalEventMapAll[userID.uuidString] ?? [:]
+    }
+    func setMsToLocalEventMap(_ newVal: [String : String], for userID: UUID) {
+        msToLocalEventMapAll[userID.uuidString] = newVal
+        UserDefaults.standard.setValue(newVal, forKey: "MsToLocalEventMap_\(userID.uuidString)")
+    }
+
+    func msEventUpdatedMap(for userID: UUID) -> [String : String] {
+        return msEventUpdatedMapAll[userID.uuidString] ?? [:]
+    }
+    func setMsEventUpdatedMap(_ newVal: [String : String], for userID: UUID) {
+        msEventUpdatedMapAll[userID.uuidString] = newVal
+        UserDefaults.standard.setValue(newVal, forKey: "MsEventUpdatedMap_\(userID.uuidString)")
+    }
+
+    func saveMsLastSyncDate(_ userID: UUID, date: Date) {
+        msLastSyncDateAll[userID.uuidString] = date
+        UserDefaults.standard.set(date, forKey: "MsLastSyncDateKey_\(userID.uuidString)")
+    }
+    func parseMsDateTime(_ raw: String) -> Date? {
+        var tmp = raw
+        
+        // 1) Ако има точка, махаме всичко след точката, за да остане само "YYYY-MM-DDTHH:mm:ss"
+        if let dotIndex = tmp.firstIndex(of: ".") {
+            tmp.removeSubrange(dotIndex..<tmp.endIndex)
+            // Пр.: "2025-03-24T12:00:00.0000000" става "2025-03-24T12:00:00"
+        }
+        
+        // 2) Ако стрингът не съдържа 'Z' или '+' (т.е. няма никакъв timezone),
+        // добавяме 'Z' за UTC
+        if !tmp.contains("Z") && !tmp.contains("+") {
+            tmp.append("Z")
+            // Пр.: "2025-03-24T12:00:00" => "2025-03-24T12:00:00Z"
+        }
+
+        // 3) Ползваме ISO8601DateFormatter да парсне резултата.
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        
+        return isoFormatter.date(from: tmp)
+    }
+
+
 }

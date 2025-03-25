@@ -62,8 +62,8 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1470"
-            endingLineNumber = "1470"
+            startingLineNumber = "1496"
+            endingLineNumber = "1496"
             landmarkName = "removeLocalGoogleCalendars(forUserID:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1471"
-            endingLineNumber = "1471"
+            startingLineNumber = "1497"
+            endingLineNumber = "1497"
             landmarkName = "removeLocalGoogleCalendars(forUserID:)"
             landmarkType = "7">
          </BreakpointContent>

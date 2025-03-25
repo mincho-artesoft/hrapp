@@ -2,6 +2,7 @@ import SwiftUI
 import EventKit
 import GoogleSignIn
 import GoogleSignInSwift
+import MSAL  // Be sure to add MSAL to your project if you haven't already.
 
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -10,20 +11,21 @@ struct CalendarsSheetView: View {
     @State private var isOnMyIphoneExpanded = true
     @State private var isOtherExpanded      = true
     
-    // Вместо един isGoogleExpanded, ползваме речник на потребителите:
+    // For each Google user: store disclosure group expand/collapse states
     @State private var googleExpandedStates: [UUID: Bool] = [:]
+    // For each Microsoft user: store disclosure group expand/collapse states
+    @State private var msExpandedStates:     [UUID: Bool] = [:]
 
-    // За редакция на вече създаден календар:
+    // For editing an existing calendar
     @State private var calendarToEdit: EKCalendar? = nil
-
-    // Sheet за добавяне на нов календар:
+    // Sheet for adding a new local calendar
     @State private var showAddCalendarSheet = false
 
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    // 1) Local “On My iPhone”
+                    // 1) Local “On My iPhone” section
                     DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
                         ForEach(localNonGoogleCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
@@ -38,17 +40,14 @@ struct CalendarsSheetView: View {
                         }
                     }
 
-                    // 2) За всеки Google потребител => отделен DisclosureGroup
+                    // 2) For each Google user => separate DisclosureGroup
                     ForEach(viewModel.storedUsers, id: \.uniqueID) { user in
-                        // Binding за expanded state (ако няма запис в речника, default е true)
                         let binding = Binding<Bool>(
                             get: { googleExpandedStates[user.uniqueID] ?? true },
                             set: { googleExpandedStates[user.uniqueID] = $0 }
                         )
-                        
                         DisclosureGroup(isExpanded: binding) {
-                            // Секцията на групата (child content):
-                            
+                            // Child content for this Google user
                             let googleCals = googleCopiedCalendars(for: user)
                             if googleCals.isEmpty {
                                 Text("No synced Google calendars yet.")
@@ -61,26 +60,26 @@ struct CalendarsSheetView: View {
                                         isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                         toggleAction: toggleCalendar,
                                         editAction: {
-                                            // по желание може да се позволи rename
+                                            // Optionally allow rename
                                             calendarToEdit = cal
                                         },
                                         showEditButton: false
                                     )
                                 }
                             }
-                            
-                            // Бутона за sign out
+
+                            // Sign-out button
                             Button("Sign out") {
                                 viewModel.signOutFromGoogle(user: user)
                             }
                             .foregroundColor(.red)
-                            
+
                         } label: {
-                            // Label на DisclosureGroup (където показваме аватар + имейл)
+                            // The label portion (avatar + email)
                             HStack {
                                 if let photoURLString = user.photoURL,
                                    let photoURL = URL(string: photoURLString) {
-                                    // iOS 15+ AsyncImage
+                                    // iOS 15+ AsyncImage for the avatar
                                     AsyncImage(url: photoURL) { phase in
                                         switch phase {
                                         case .empty:
@@ -100,7 +99,7 @@ struct CalendarsSheetView: View {
                                     .frame(width: 28, height: 28)
                                     .clipShape(Circle())
                                 } else {
-                                    // Ако няма photoURL
+                                    // Fallback icon if no photoURL
                                     Image(systemName: "person.crop.circle")
                                         .resizable()
                                         .frame(width: 28, height: 28)
@@ -111,8 +110,55 @@ struct CalendarsSheetView: View {
                             }
                         }
                     }
-                    
-                    // 3) Други (iCloud, Exchange и др.)
+
+                    // 3) For each Microsoft user => separate DisclosureGroup
+                    ForEach(viewModel.storedMsUsers, id: \.uniqueID) { user in
+                        let binding = Binding<Bool>(
+                            get: { msExpandedStates[user.uniqueID] ?? true },
+                            set: { msExpandedStates[user.uniqueID] = $0 }
+                        )
+                        DisclosureGroup(isExpanded: binding) {
+                            // Child content for this Microsoft user
+                            let msCals = viewModel.microsoftCopiedCalendars(for: user)
+                            if msCals.isEmpty {
+                                Text("No synced Microsoft calendars yet.")
+                                    .font(.footnote)
+                                    .foregroundColor(.secondary)
+                            } else {
+                                ForEach(msCals, id: \.calendarIdentifier) { cal in
+                                    CalendarRowView(
+                                        calendar: cal,
+                                        isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
+                                        toggleAction: toggleCalendar,
+                                        editAction: {
+                                            calendarToEdit = cal
+                                        },
+                                        showEditButton: false
+                                    )
+                                }
+                            }
+
+                            // Sign-out button for Microsoft
+                            Button("Sign out") {
+                                viewModel.signOutFromMicrosoft(user: user)
+                            }
+                            .foregroundColor(.red)
+                            
+                        } label: {
+                            // Label portion (avatar + email) for Microsoft
+                            HStack {
+                                // If you store an avatar URL for MS, load it similarly with AsyncImage
+                                Image(systemName: "person.circle")
+                                    .resizable()
+                                    .frame(width: 28, height: 28)
+                                
+                                Text("Microsoft calendars (\(user.email ?? "No Email"))")
+                                    .padding(.leading, 4)
+                            }
+                        }
+                    }
+
+                    // 4) Other (iCloud, Exchange, etc.) calendars
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
                         ForEach(otherCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
@@ -126,19 +172,32 @@ struct CalendarsSheetView: View {
                             )
                         }
                     }
-                    
-                    // 4) Google Sign-In бутон
+
+                    // 5) Buttons for signing in
                     Section {
+                        // Google
                         Button(action: signInWithGoogle) {
                             HStack {
-                                Image("google_icon")
+                                Image("google_icon") // or systemName if you prefer
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 28, height: 28)
                                 Text("Sign in with Google")
                             }
                         }
-                        .buttonStyle(PlainButtonStyle()) // Или .borderlessButtonStyle()
+                        .buttonStyle(PlainButtonStyle())
+
+                        // Microsoft
+                        Button(action: signInWithMicrosoft) {
+                            HStack {
+                                Image("microsoft_icon")  // Replace with a MS icon if you have one
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 28, height: 28)
+                                Text("Sign in with Microsoft")
+                            }
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
                 .navigationBarTitle("Calendars", displayMode: .inline)
@@ -147,16 +206,16 @@ struct CalendarsSheetView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                 )
-                
-                // Долна лента с бутони
+
+                // Bottom bar with Add Calendar / Hide All
                 HStack {
                     Button("Add Local Calendar") {
                         showAddCalendarSheet = true
                     }
                     .padding(.leading)
-
+                    
                     Spacer()
-
+                    
                     Button("Hide All") {
                         viewModel.selectedCalendarIDs.removeAll()
                     }
@@ -165,59 +224,82 @@ struct CalendarsSheetView: View {
                 .padding(.vertical, 8)
             }
         }
+        // On appear, refresh
         .onAppear {
             viewModel.reloadCalendars()
         }
+        // Sheets for editing or adding local calendars
         .sheet(item: $calendarToEdit, onDismiss: {
             viewModel.reloadCalendars()
         }) { cal in
-            // Например EditCalendarView
+            // For example, your EditCalendarView
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
         }
         .sheet(isPresented: $showAddCalendarSheet) {
-            // Например AddCalendarView
+            // For example, AddCalendarView
             AddCalendarView()
         }
     }
     
     // MARK: - Helpers
 
+    /// Returns all local calendars that are NOT Google or Microsoft copies
     private func localNonGoogleCalendars() -> [EKCalendar] {
-        // Събираме всички "Local" календари
         let allLocal = viewModel.allCalendars.filter { $0.source.sourceType == .local }
         
-        // Събираме ID-та на локалните календари, които са копирани от Google
+        // Gather IDs of local cals that are copies of Google
         let googleSyncedIDs = Set(
             viewModel.storedUsers.flatMap { user in
                 viewModel.googleToLocalCalendarMap(for: user.uniqueID).values
             }
         )
-        // Връщаме онези, които не са в Google map
-        return allLocal.filter { !googleSyncedIDs.contains($0.calendarIdentifier) }
+        // Gather IDs of local cals that are copies of Microsoft
+        let msSyncedIDs = Set(
+            viewModel.storedMsUsers.flatMap { user in
+                viewModel.msToLocalCalendarMap(for: user.uniqueID).values
+            }
+        )
+        // Return those not in either sync set
+        return allLocal.filter {
+            !googleSyncedIDs.contains($0.calendarIdentifier) &&
+            !msSyncedIDs.contains($0.calendarIdentifier)
+        }
     }
-    
+
+    /// Returns the local calendars that are “copies” of Google calendars for a particular user
     private func googleCopiedCalendars(for user: StoredGoogleUser) -> [EKCalendar] {
-        // Намираме кои локални календари са "Google copies" за този user
         let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
         let localIDs = Set(map.values)
-        
-        return viewModel.allCalendars.filter {
-            localIDs.contains($0.calendarIdentifier)
-        }
+        return viewModel.allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
     }
 
+    /// Returns local calendars that are “copies” of MS calendars for a particular user
+    private func microsoftCopiedCalendars(for user: StoredMicrosoftUser) -> [EKCalendar] {
+        let map = viewModel.msToLocalCalendarMap(for: user.uniqueID)
+        let localIDs = Set(map.values)
+        return viewModel.allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
+    }
+
+    /// Returns everything else (iCloud, Exchange, etc.) that is not local or a known Google/MS copy
     private func otherCalendars() -> [EKCalendar] {
-        // Всички, които не са .local, и не са копие от Google
         let googleSyncedIDs = Set(
             viewModel.storedUsers.flatMap { user in
                 viewModel.googleToLocalCalendarMap(for: user.uniqueID).values
             }
         )
+        let msSyncedIDs = Set(
+            viewModel.storedMsUsers.flatMap { user in
+                viewModel.msToLocalCalendarMap(for: user.uniqueID).values
+            }
+        )
         return viewModel.allCalendars.filter {
-            $0.source.sourceType != .local && !googleSyncedIDs.contains($0.calendarIdentifier)
+            $0.source.sourceType != .local
+            && !googleSyncedIDs.contains($0.calendarIdentifier)
+            && !msSyncedIDs.contains($0.calendarIdentifier)
         }
     }
 
+    /// Toggles a calendar’s selection on/off
     private func toggleCalendar(_ cal: EKCalendar) {
         if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {
             viewModel.selectedCalendarIDs.remove(cal.calendarIdentifier)
@@ -225,9 +307,10 @@ struct CalendarsSheetView: View {
             viewModel.selectedCalendarIDs.insert(cal.calendarIdentifier)
         }
     }
-
+    
+    // MARK: - Sign-in Helpers
+    
     private func signInWithGoogle() {
-        // ClientID е налично във viewModel
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: viewModel.clientID)
         
         guard let windowScene = UIApplication.shared.connectedScenes
@@ -245,15 +328,15 @@ struct CalendarsSheetView: View {
             if let user = signInResult?.user {
                 print("Signed in user:", user.profile?.email ?? "(no email)")
                 
-                // Записваме в нашата логика
+                // Store in our logic
                 viewModel.storeGoogleUserInUserDefaults(user)
                 
-                // Ако е първият акаунт, стартираме sync
+                // If first account, start sync
                 if viewModel.storedUsers.count == 1 {
                     viewModel.startGoogleCalendarSync()
                 }
-                
-                // Правим immediate sync
+
+                // Immediate sync
                 Task {
                     if let newStoredUser = viewModel.storedUsers.last {
                         await viewModel.performGoogleCalendarSync(for: newStoredUser)
@@ -261,5 +344,10 @@ struct CalendarsSheetView: View {
                 }
             }
         }
+    }
+
+    private func signInWithMicrosoft() {
+        // Just call the viewModel method
+        viewModel.signInWithMicrosoft()
     }
 }

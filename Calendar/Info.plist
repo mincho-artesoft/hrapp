@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+"https://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLIconFile</key>
-			<string></string>
-		</dict>
-	</array>
-	<key>GIDClientID</key>
-	<string>540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com</string>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
-		<dict/>
-	</array>
-    
+
+    <!-- Нужно за MSAL (ако ползваш системен браузър / broker): -->
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauthv2</string>
+        <string>msauthv3</string>
+    </array>
+
+    <!-- URL Types - Google -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <!-- Google scheme (примерно) -->
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
+            </array>
+        </dict>
+
+        <!-- Microsoft scheme -->
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <!-- Трябва да е 'msauth.Deksan.CalendarASD' без ://auth -->
+                <string>msauth.Deksan.CalendarASD</string>
+            </array>
+        </dict>
+    </array>
+
+    <!-- Други ключове, ако имаш GIDClientID, NSCameraUsageDescription и пр. -->
+
 </dict>
 </plist>
