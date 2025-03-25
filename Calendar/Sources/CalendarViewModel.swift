@@ -305,7 +305,8 @@ extension CalendarViewModel {
                         accessToken: newAccessToken,
                         accessTokenExpiration: newExpDate,
                         refreshToken: user.refreshToken, // same refresh
-                        idToken: newIDToken
+                        idToken: newIDToken,
+                        photoURL: user.photoURL
                     )
                     
                     // Update local array
@@ -1145,7 +1146,7 @@ struct StoredGoogleUser: Codable, Hashable {
     var idToken: String?
     
     // Ново поле:
-    var photoURL: String?  // тук ще пазим линка към снимката
+    var photoURL: String?
 }
 
 
@@ -1315,7 +1316,9 @@ extension CalendarViewModel {
                     accessToken: newAccessToken,
                     accessTokenExpiration: newExpDate,
                     refreshToken: refresh,  // същият refresh
-                    idToken: newIDToken
+                    idToken: newIDToken,
+                    photoURL : user.photoURL
+                    
                 )
                 // Обновяваме този потребител в масива `storedUsers`
                 self.updateUserInMemory(updatedUser)
@@ -1342,6 +1345,7 @@ extension CalendarViewModel {
         do {
             let decoded = try JSONDecoder().decode([StoredGoogleUser].self, from: data)
             self.storedUsers = decoded
+            print("decoded",decoded)
         } catch {
             print("Failed to decode [StoredGoogleUser]:", error)
         }
@@ -1349,6 +1353,7 @@ extension CalendarViewModel {
     
     func saveAllUsersToUserDefaults() {
         do {
+            print("saveAllUsersToUserDefaults",storedUsers)
             let encodedData = try JSONEncoder().encode(storedUsers)
             UserDefaults.standard.set(encodedData, forKey: "StoredGoogleUsers")
             UserDefaults.standard.synchronize()
@@ -1386,7 +1391,7 @@ extension CalendarViewModel {
                 accessTokenExpiration: expiration!,
                 refreshToken: refreshTokenString,
                 idToken: idToken,
-                photoURL: avatarURL  // записваме го
+                photoURL: avatarURL!  // записваме го
             )
             
             self.storedUsers.append(newStoredUser)
@@ -1471,7 +1476,8 @@ extension CalendarViewModel {
                             accessToken: newAccessToken,
                             accessTokenExpiration: newExpDate,
                             refreshToken: user.refreshToken,
-                            idToken: newIDToken
+                            idToken: newIDToken,
+                            photoURL: user.photoURL
                         )
                         self.updateUserInMemory(updatedUser)
                         self.saveAllUsersToUserDefaults()
@@ -1653,7 +1659,8 @@ extension CalendarViewModel {
                         accessToken: newAccess,
                         accessTokenExpiration: newExp,
                         refreshToken: user.refreshToken,
-                        idToken: newID
+                        idToken: newID,
+                        photoURL: user.photoURL
                     )
                     // Записваме промяната в масива `storedUsers` и UserDefaults
                     self.updateUserInMemory(updatedUser)
