@@ -20,7 +20,8 @@ final class CalendarViewModel: ObservableObject {
    private var msToLocalEventMapAll:    [String : [String : String]] = [:]
    private var msEventUpdatedMapAll:    [String : [String : String]] = [:]
    private var msLastSyncDateAll:       [String : Date] = [:]
-    
+    private var oldMsToLocalEventMap: [String : String] = [:]
+
     // MARK: - EventKit Store & Properties
     var eventStore: EKEventStore = EKEventStore()
     
@@ -2513,27 +2514,21 @@ extension CalendarViewModel {
         let endDate   = Calendar.current.date(byAdding: .month, value: 6, to: now)!
 
         do {
-            // 1) Взимаме всички събития от Graph
+            // 1) Fetch all events from Graph
             let msEvents = try await fetchAllMsEvents(
                 msCalID: msCalId,
                 accessToken: accessToken,
                 startDate: startDate,
                 endDate: endDate
             )
-
-            // 2) Принтираме колко събития сме получили + някои детайли
-
-            print("====================================================")
-
-            // 3) Тук продължава оригиналният ти код за синхронизиране (MS -> Local)
-
+            
             let msEventIDs = Set(msEvents.map { $0.id })
             
-            // (Зареждаме речниците за този user)
+            // Load existing dictionaries for this user
             var evMap  = msToLocalEventMap(for: user.uniqueID)
             var updMap = msEventUpdatedMap(for: user.uniqueID)
-
-            // За всяко MS събитие...
+            
+            // For each MS event
             for msEvent in msEvents {
                 let msUpdated = msEvent.lastModifiedDateTime ?? ""
                 let localKnownUpdated = updMap[msEvent.id] ?? ""
@@ -2541,43 +2536,44 @@ extension CalendarViewModel {
                 
                 if let mappedLocalID = evMap[msEvent.id],
                    let existingLocal = eventStore.event(withIdentifier: mappedLocalID) {
-
-                    // Ако MS event-а е обновен, ъпдейтваме локалния EKEvent
+                    
+                    // If MS event has changed, update the local event
                     if msChanged {
                         updateLocalEvent(existingLocal, withMsEvent: msEvent, inCalendar: localCalendar)
-                    }else{
-                        if let newEv = createLocalMsEvent(msEvent, inCalendar: localCalendar) {
-                            evMap[msEvent.id] = newEv.eventIdentifier
-                        }
                     }
-
+                    // else DO NOTHING if the event has *not* changed
+                    // (so we do NOT accidentally create a duplicate)
+                    
                 } else {
-                    // Ако в речника не фигурираме => създаваме нов локален и го добавяме в map
+                    // If no local mapping, create new local event
                     if let newEv = createLocalMsEvent(msEvent, inCalendar: localCalendar) {
                         evMap[msEvent.id] = newEv.eventIdentifier
                     }
                 }
-                // Винаги обновяваме updated-стойността
+                
+                // Update our “updated” dictionary every time
                 updMap[msEvent.id] = msUpdated
             }
-
+            
+            // Save the updated maps
             setMsToLocalEventMap(evMap, for: user.uniqueID)
             setMsEventUpdatedMap(updMap, for: user.uniqueID)
             
-            // 4) Премахваме локални евенти, които вече ги няма в MS
+            // 4) Remove any local events that no longer exist in MS
             let localEvents = fetchLocalEvents(
                 in: localCalendar,
                 startDate: startDate,
                 endDate: endDate
             )
             for locEv in localEvents {
-                if let msID = extractMsEventID(locEv),  // напр. "mscal://..."
+                if let msID = extractMsEventID(locEv),  // e.g., mscal://...
                    !msEventIDs.contains(msID) {
-                    // => Евентът е изтрит в Microsoft => трием и локалния
+                    // => The event was deleted from Microsoft => remove locally
                     do {
                         try eventStore.remove(locEv, span: .thisEvent, commit: true)
                         print("Removed local MS event:", locEv.title ?? "")
                         
+                        // And remove from our dictionaries
                         var newMap = msToLocalEventMap(for: user.uniqueID)
                         newMap.removeValue(forKey: msID)
                         setMsToLocalEventMap(newMap, for: user.uniqueID)
@@ -2595,6 +2591,7 @@ extension CalendarViewModel {
             print("Error fetching MS events:", error.localizedDescription)
         }
     }
+
 
     
     private func fetchAllMsEvents(
@@ -2679,34 +2676,350 @@ extension CalendarViewModel {
     
     // Similarly implement uploadLocalChangesToMicrosoft (Local -> MS)...
 
+    /// Качва локални промени (в посочения локален календар) към MS.
     func uploadLocalChangesToMicrosoft(
-            msCalId: String,
-            user: StoredMicrosoftUser,
-            accessToken: String,
-            localCalendar: EKCalendar
-        ) async {
-            print("=== uploadLocalChangesToMicrosoft START for \(msCalId) (\(localCalendar.title)) ===")
+        msCalId: String,
+        user: StoredMicrosoftUser,
+        accessToken: String,
+        localCalendar: EKCalendar
+    ) async {
+        print("=== uploadLocalChangesToMicrosoft START for \(msCalId) (\(localCalendar.title)) ===")
 
-            // ТУК би била вашата логика (примерно: търсите локални промени, после PATCH / POST към Graph API).
-            // Ако има опасност от безкраен цикъл, *временно* я закоментирайте.
-            // Примерно:
-            /*
-            let oneYearAgo = Date().addingTimeInterval(-3600 * 24 * 365)
-            let oneYearAfter = Date().addingTimeInterval(3600 * 24 * 365)
-            let localEvents = fetchLocalEvents(in: localCalendar, startDate: oneYearAgo, endDate: oneYearAfter)
-
-            for event in localEvents {
-                // ... проверка дали има mscal://
-                // ... ако няма => POST
-                // ... ако има => PATCH
-            }
-
-            // Накрая проверяваме изтрити локално и трием в MS ...
-            */
-
-            // Сега, за да не блокираме, просто връщаме:
-            print("=== uploadLocalChangesToMicrosoft END for \(msCalId) (\(localCalendar.title)) ===")
+        // 1) Определяме времето на последната синхронизация (ако няма, distantPast).
+        let lastSync = msLastSyncDateAll[user.uniqueID.uuidString] ?? .distantPast
+        
+        // 2) Намираме ВСИЧКИ локални събития в този календар за разумен диапазон (примерно 1 година назад/напред)
+        let oneYearAgo   = Date().addingTimeInterval(-3600 * 24 * 365)
+        let oneYearAfter = Date().addingTimeInterval( 3600 * 24 * 365)
+        let localEvents = fetchLocalEvents(in: localCalendar, startDate: oneYearAgo, endDate: oneYearAfter)
+        
+        // 3) От тях филтрираме тези, които са модифицирани след `lastSync`
+        let changedEvents = localEvents.filter { ev in
+            guard let modDate = ev.lastModifiedDate else { return false }
+            return modDate > lastSync
         }
+        
+        if changedEvents.isEmpty {
+            print("Няма локални промени в '\(localCalendar.title)' след \(lastSync).")
+            
+            // Все пак ще обработим локалните изтривания (ако някъде имате oldMap).
+            await uploadLocalDeletionsToMicrosoft(msCalId: msCalId, user: user, accessToken: accessToken)
+            
+            return
+        }
+        
+        print("Намерени \(changedEvents.count) локално-променени евента в \"\(localCalendar.title)\", качваме в MS…")
+        
+        // 4) За всеки локален евент => проверяваме дали е “mscal://” (т.е. вече съществува в MS) или е нов
+        for event in changedEvents {
+            // Проверяваме дали евентът вече има msEventID в `url="mscal://..."`.
+            if let msID = extractMsEventID(event) {
+                // => PATCH (актуализиране) в Graph
+                let success = await patchMsEvent(
+                    msCalId: msCalId,
+                    msEventId: msID,
+                    localEvent: event,
+                    accessToken: accessToken,
+                    user: user
+                )
+                if success {
+                    print("Успешно patch-нат евент в MS:", event.title ?? "")
+                }
+            } else {
+                // => POST (нов евент в MS)
+                let success = await postMsEvent(
+                    msCalId: msCalId,
+                    localEvent: event,
+                    accessToken: accessToken,
+                    user: user
+                )
+                if success {
+                    print("Успешно post-нат (създаден) евент в MS:", event.title ?? "")
+                }
+            }
+        }
+        
+        // 5) Накрая обработваме локалните изтривания (ако пазите oldMap от предната итерация)
+        await uploadLocalDeletionsToMicrosoft(msCalId: msCalId, user: user, accessToken: accessToken)
+        
+        // 6) Обновяваме `lastSyncDate` за този потребител
+        saveMsLastSyncDate(user.uniqueID, date: Date())
+        
+        print("=== uploadLocalChangesToMicrosoft END for \(msCalId) (\(localCalendar.title)) ===")
+    }
+    /// Създава НОВ евент в MS Calendar (POST /me/calendars/{calId}/events)
+    private func postMsEvent(
+        msCalId: String,
+        localEvent: EKEvent,
+        accessToken: String,
+        user: StoredMicrosoftUser
+    ) async -> Bool {
+        // Примерен endpoint:
+        //   POST https://graph.microsoft.com/v1.0/me/calendars/{calId}/events
+        guard let encodedCalID = msCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalID)/events")
+        else {
+            print("postMsEvent: Bad URL!")
+            return false
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let bodyDict = makeMsEventBody(from: localEvent)
+        guard let bodyData = try? JSONSerialization.data(withJSONObject: bodyDict, options: []) else {
+            print("postMsEvent: cannot encode JSON body!")
+            return false
+        }
+        request.httpBody = bodyData
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse, !(200...299).contains(httpResp.statusCode) {
+                let errBody = String(data: data, encoding: .utf8) ?? ""
+                print("postMsEvent: HTTP \(httpResp.statusCode), body=\(errBody)")
+                return false
+            }
+            
+            // Ако е success => decode-ваме отговора и взимаме новия id
+            let created = try JSONDecoder().decode(MSCalendarEvent.self, from: data)
+            let newID   = created.id
+            
+            // 1) Записваме URL-то в локалния евент => "mscal://{id}"
+            localEvent.url = URL(string: "mscal://\(newID)")
+            // 2) Save в eventStore
+            try eventStore.save(localEvent, span: .thisEvent, commit: true)
+            
+            // 3) Обновяваме речниците: `msToLocalEventMap` и `msEventUpdatedMap`
+            var evMap  = msToLocalEventMap(for: user.uniqueID)
+            evMap[newID] = localEvent.eventIdentifier
+            setMsToLocalEventMap(evMap, for: user.uniqueID)
+            
+            var updMap = msEventUpdatedMap(for: user.uniqueID)
+            // Взимаме lastModifiedDateTime от `created`, за да го сложим
+            if let msUpdated = created.lastModifiedDateTime {
+                updMap[newID] = msUpdated
+            }
+            setMsEventUpdatedMap(updMap, for: user.uniqueID)
+            
+            return true
+        } catch {
+            print("postMsEvent: error =>", error.localizedDescription)
+            return false
+        }
+    }
+    /// Актуализира съществуващ евент (PATCH /me/calendars/{calId}/events/{eventId})
+    private func patchMsEvent(
+        msCalId: String,
+        msEventId: String,
+        localEvent: EKEvent,
+        accessToken: String,
+        user: StoredMicrosoftUser
+    ) async -> Bool {
+        guard let encodedCalID = msCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let encodedEvID  = msEventId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalID)/events/\(encodedEvID)")
+        else {
+            print("patchMsEvent: Bad URL!")
+            return false
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let bodyDict = makeMsEventBody(from: localEvent)
+        
+        // Внимавайте: при PATCH към Graph, ако поле липсва, може да го изтрие.
+        // За да избегнете проблеми, или използвайте само полетата, които искате да актуализирате.
+        // В текущия пример пращаме почти всички, все едно overwrite-име.
+        // Ако някои полета липсват, това може да изчисти стойности в MS.
+        // Ако искате "partial update", редуцирайте bodyDict само до променените полета.
+        
+        guard let bodyData = try? JSONSerialization.data(withJSONObject: bodyDict, options: []) else {
+            print("patchMsEvent: cannot encode JSON body!")
+            return false
+        }
+        request.httpBody = bodyData
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse, !(200...299).contains(httpResp.statusCode) {
+                let errBody = String(data: data, encoding: .utf8) ?? ""
+                print("patchMsEvent: HTTP \(httpResp.statusCode), body=\(errBody)")
+                return false
+            }
+            
+            // Ако е success => декодираме новото съдържание. MS връща пълния обект.
+            let updated = try JSONDecoder().decode(MSCalendarEvent.self, from: data)
+            // Обновяваме msEventUpdatedMap
+            if let newUpdated = updated.lastModifiedDateTime {
+                var updMap = msEventUpdatedMap(for: user.uniqueID)
+                updMap[msEventId] = newUpdated
+                setMsEventUpdatedMap(updMap, for: user.uniqueID)
+            }
+            
+            print("patchMsEvent: success => updated event ‘\(localEvent.title ?? "")’ in MS.")
+            return true
+        } catch {
+            print("patchMsEvent: error =>", error.localizedDescription)
+            return false
+        }
+    }
+    private func makeMsEventBody(from localEvent: EKEvent) -> [String: Any] {
+        // subject => заглавие
+        // body => можем да ползваме notes (BodyType=text/html),
+        // start / end => MSDateTimeTimeZone
+
+        // Пример:
+        
+        var subjectVal = localEvent.title ?? "(No Title)"
+        let bodyPreviewVal = (localEvent.notes?.prefix(100) ?? "")  // bodyPreview обикновено идва от MS
+        let notesVal = localEvent.notes ?? ""
+        let locationVal = localEvent.location ?? ""
+        
+        // Правим start/end обекти
+        // Ако е all-day => използваме date-only формата (например "yyyy-MM-dd")
+        
+        let isAllDay = localEvent.isAllDay
+        let startDict: [String: Any]
+        let endDict:   [String: Any]
+
+        if isAllDay {
+            // date-only
+            let formatter = DateFormatter()
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
+            formatter.dateFormat = "yyyy-MM-dd"
+            let startDateStr = formatter.string(from: localEvent.startDate)
+            
+            // MS all-day често се води с endDate = "следващия ден", но зависи от логиката.
+            // Може да се наложи да прецените дали endDate е реалното.
+            let endDateStr   = formatter.string(from: localEvent.endDate)
+            
+            startDict = [
+                "date": startDateStr,
+                "timeZone": "UTC"
+            ]
+            endDict = [
+                "date": endDateStr,
+                "timeZone": "UTC"
+            ]
+        } else {
+            // Дата с час (dateTime: "2023-03-01T09:00:00", timeZone: "UTC")
+            let iso = ISO8601DateFormatter()
+            iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds] // напр. 2023-03-01T09:00:00Z
+            let startStr = iso.string(from: localEvent.startDate)
+            let endStr   = iso.string(from: localEvent.endDate)
+            
+            startDict = [
+                "dateTime": startStr,
+                "timeZone": "UTC"
+            ]
+            endDict = [
+                "dateTime": endStr,
+                "timeZone": "UTC"
+            ]
+        }
+        
+        // Graph позволява да подадем body: { contentType, content }
+        let bodyDict: [String: Any] = [
+            "contentType": "text", // или "html"
+            "content": notesVal
+        ]
+        
+        let eventDict: [String: Any] = [
+            "subject": subjectVal,
+            "bodyPreview": bodyPreviewVal,
+            "body": bodyDict,
+            "start": startDict,
+            "end":   endDict,
+            "location": [
+                "displayName": locationVal
+            ]
+            // Може да добавите attendees, isOnlineMeeting, onlineMeetingProvider...
+        ]
+        
+        return eventDict
+    }
+    /// Качва локалните изтривания: т.е. евентите, които преди са били в msToLocalEventMap,
+    /// но сега локално вече *не съществуват* (или са премахнати от речника).
+    func uploadLocalDeletionsToMicrosoft(
+        msCalId: String,
+        user: StoredMicrosoftUser,
+        accessToken: String
+    ) async {
+        // 1) Взимаме новата (актуална) карта:
+        let currentMap = msToLocalEventMap(for: user.uniqueID)
+        
+        // 2) Обхождаме "стария" snapshot.
+        // Ако някой msEventID вече го няма в currentMap,
+        // или съответният локален event не съществува, значи локално сме го изтрили.
+        for (msID, oldLocalID) in oldMsToLocalEventMap {
+            
+            // Ако в currentMap вече липсва този msID => изтрит/преместен
+            let wasRemovedFromMap = (currentMap[msID] == nil)
+            
+            // Или ако самият eventStore.event(...) не може да го намери => изтрит локално.
+            let localEventStillExists = (eventStore.event(withIdentifier: oldLocalID) != nil)
+            
+            if wasRemovedFromMap || !localEventStillExists {
+                // => Нужно е да го изтрием и в Microsoft, ако искате 2‑way sync
+                let success = await deleteMsEvent(
+                    msCalID: msCalId,
+                    msEventID: msID,
+                    accessToken: accessToken
+                )
+                if success {
+                    print("Успешно изтрит MS евент => \(msID)")
+                    
+                    // И изчистваме от (текущия) map
+                    var newMap = msToLocalEventMap(for: user.uniqueID)
+                    newMap.removeValue(forKey: msID)
+                    setMsToLocalEventMap(newMap, for: user.uniqueID)
+
+                    // И от msEventUpdatedMap
+                    var updMap = msEventUpdatedMap(for: user.uniqueID)
+                    updMap.removeValue(forKey: msID)
+                    setMsEventUpdatedMap(updMap, for: user.uniqueID)
+                }
+            }
+        }
+    }
+
+
+    /// Примерен delete
+    /// Прави DELETE към:
+    ///     DELETE /v1.0/me/calendars/{calId}/events/{eventId}
+    func deleteMsEvent(msCalID: String, msEventID: String, accessToken: String) async -> Bool {
+        guard let encodedCalID = msCalID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let encodedEvID  = msEventID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalID)/events/\(encodedEvID)")
+        else {
+            print("deleteMsEvent: Invalid URL!")
+            return false
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+
+        do {
+            let (_, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse, httpResp.statusCode >= 300 {
+                print("deleteMsEvent: Failed with HTTP \(httpResp.statusCode)")
+                return false
+            }
+            return true
+        } catch {
+            print("deleteMsEvent: Error =>", error.localizedDescription)
+            return false
+        }
+    }
+
+
     
     // Example of how you create a local event from an MS event
     /// Създава нов локален EKEvent (iOS) от Microsoft събитие (msEvent).
@@ -3016,33 +3329,4 @@ extension CalendarViewModel {
         return formatter.date(from: raw)
     }
 
-//    func parseMsDateTime(_ raw: String) -> Date? {
-//        var tmp = raw.trimmingCharacters(in: .whitespacesAndNewlines)
-//        
-//        // 1) Ако няма Z, + или -, добавяме "Z"
-//        //    (Microsoft често връща нещо от вида "...T12:00:00.0000000" без зона.)
-//        if !tmp.contains("Z"),
-//           !tmp.contains("+"),
-//           !tmp.contains("-")
-//        {
-//            tmp += "Z"
-//        }
-//        
-//        // 2) Настройваме форматера
-//        let iso = ISO8601DateFormatter()
-//        iso.formatOptions = [
-//            .withInternetDateTime,
-//            .withFractionalSeconds,    // за дробните секунди
-//            .withDashSeparatorInDate,
-//            .withColonSeparatorInTime
-//        ]
-//        
-//        // 3) Опит за парс
-//        if let date = iso.date(from: tmp) {
-//            return date
-//        } else {
-//            print("parseMsDateTime: failed to parse \(tmp)")
-//            return nil
-//        }
-//    }
 }
