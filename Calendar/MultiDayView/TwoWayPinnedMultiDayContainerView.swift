@@ -401,10 +401,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         navBar.addSubview(addEventButton)
         addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
         
-        // viewMenuButton
-        if #available(iOS 14.0, *) {
-            viewMenuButton.showsMenuAsPrimaryAction = true
-        } 
+        updateButtonIconForCurrentView() // дава началната икона
+           
+           if #available(iOS 14.0, *) {
+              viewMenuButton.showsMenuAsPrimaryAction = true
+              viewMenuButton.menu = buildViewMenu()
+           }
         navBar.addSubview(viewMenuButton)
         
         // searchButton
@@ -442,6 +444,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // Доп. изглед за фон зад нав. лента (примерно)
         topBackgroundView.backgroundColor = .secondarySystemBackground
         addSubview(topBackgroundView)
+        
+       
     }
     
     // MARK: - Бутон с лупичка (търсене)
@@ -618,6 +622,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: menuBtnSize
         )
         
+        updateButtonIconForCurrentView()
         // iOS 14+ меню
         if #available(iOS 14.0, *) {
             viewMenuButton.menu = buildViewMenu()
@@ -827,38 +832,118 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - iOS 14+ menu
     @available(iOS 14.0, *)
     private func buildViewMenu() -> UIMenu {
-        let dayAction = UIAction(title: "Day",
-                                 state: (currentView == 1 ? .on : .off)) { [weak self] _ in
+        // 1) Създавате си иконите извън самия action, за да можете да ги ползвате пак:
+        let dayImage          = UIImage(systemName: "calendar.day.timeline.leading")
+        let multiDayImage     = UIImage(systemName: "distribute.horizontal.left")
+        let monthImage        = UIImage(systemName: "calendar")
+        let yearImage         = UIImage(systemName: "12.lane")
+        let listImage         = UIImage(systemName: "list.bullet")
+        let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
+        
+        let dayAction = UIAction(
+            title: "Day",
+            image: dayImage,
+            state: currentView == 1 ? .on : .off
+        ) { [weak self] _ in
             self?.showSingleDay = true
+            self?.currentView = 1
             self?.onViewChange?(1)
+            
+            // Тук задаваме иконата на бутона:
+            self?.viewMenuButton.setImage(dayImage, for: .normal)
         }
-        let multiAction = UIAction(title: "MultiDay",
-                                   state: (currentView == 3 ? .on : .off)) { [weak self] _ in
+        
+        let multiAction = UIAction(
+            title: "MultiDay",
+            image: multiDayImage,
+            state: currentView == 3 ? .on : .off
+        ) { [weak self] _ in
             self?.showSingleDay = false
+            self?.currentView = 3
             self?.onViewChange?(3)
+            
+            self?.viewMenuButton.setImage(multiDayImage, for: .normal)
         }
-        let monthAction = UIAction(title: "Month",
-                                   state: (currentView == 0 ? .on : .off)) { [weak self] _ in
+        
+        let monthAction = UIAction(
+            title: "Month",
+            image: monthImage,
+            state: currentView == 0 ? .on : .off
+        ) { [weak self] _ in
+            self?.currentView = 0
             self?.onViewChange?(0)
+            
+            self?.viewMenuButton.setImage(monthImage, for: .normal)
         }
-        let yearAction = UIAction(title: "Year",
-                                  state: (currentView == 2 ? .on : .off)) { [weak self] _ in
+        
+        let yearAction = UIAction(
+            title: "Year",
+            image: yearImage,
+            state: currentView == 2 ? .on : .off
+        ) { [weak self] _ in
+            self?.currentView = 2
             self?.onViewChange?(2)
+            
+            self?.viewMenuButton.setImage(yearImage, for: .normal)
         }
-        let listAction = UIAction(title: "List",
-                                  state: (currentView == 4 ? .on : .off)) { [weak self] _ in
+        
+        let listAction = UIAction(
+            title: "List",
+            image: listImage,
+            state: currentView == 4 ? .on : .off
+        ) { [weak self] _ in
+            self?.currentView = 4
             self?.onViewChange?(4)
+            
+            self?.viewMenuButton.setImage(listImage, for: .normal)
         }
-        let multiCalendarAction = UIAction(title: "MultiCalendar",
-                                  state: (currentView == 5 ? .on : .off)) { [weak self] _ in
+        
+        let multiCalendarAction = UIAction(
+            title: "MultiCalendar",
+            image: multiCalendarIcon,
+            state: currentView == 5 ? .on : .off
+        ) { [weak self] _ in
+            self?.currentView = 5
             self?.onViewChange?(5)
+            
+            self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
         }
         
         return UIMenu(
             title: "",
-            children: [dayAction, multiAction, monthAction, yearAction, listAction, multiCalendarAction]
+            children: [
+                dayAction,
+                multiAction,
+                monthAction,
+                yearAction,
+                listAction,
+                multiCalendarAction
+            ]
         )
     }
+
+    private func updateButtonIconForCurrentView() {
+        let imageName: String
+        switch currentView {
+        case 1:
+            imageName = "calendar.day.timeline.leading"
+        case 3:
+            imageName = "distribute.horizontal.left"
+        case 0:
+            imageName = "calendar"
+        case 2:
+            imageName = "12.lane"
+        case 4:
+            imageName = "list.bullet"
+        case 5:
+            imageName = "align.vertical.top"
+        default:
+            imageName = "calendar"
+        }
+        
+        viewMenuButton.setImage(UIImage(systemName: imageName), for: .normal)
+    }
+
    
     
     // MARK: - DateRangeButton

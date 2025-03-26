@@ -87,30 +87,62 @@ struct AllEventsListView: View {
                         }
                         
                         Menu {
-                            Button { onViewChange(1) } label: {
+                            // Бутони за превключване
+                            Button {
+                                onViewChange(1)
+                            } label: {
                                 Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
                             }
-                            Button { onViewChange(3) } label: {
+                            Button {
+                                onViewChange(3)
+                            } label: {
                                 Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
                             }
-                            Button { onViewChange(0) } label: {
+                            Button {
+                                onViewChange(0)
+                            } label: {
                                 Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
                             }
-                            Button { onViewChange(2) } label: {
+                            Button {
+                                onViewChange(2)
+                            } label: {
                                 Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
                             }
-                            Button { onViewChange(4) } label: {
+                            Button {
+                                onViewChange(4)
+                            } label: {
                                 Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
                             }
-                            Button { onViewChange(5) } label: {
+                            Button {
+                                onViewChange(5)
+                            } label: {
                                 Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
                             }
                         } label: {
-                            Image(systemName: "ellipsis.circle")
+                            // Тук ще се показва текущата икона, според selectedTab
+                            Image(systemName: iconName(for: selectedTab))
                         }
                     }
                 }
             }
+        }
+    }
+    private func iconName(for tab: Int) -> String {
+        switch tab {
+        case 1:
+            return "calendar.day.timeline.leading"
+        case 3:
+            return "distribute.horizontal.left"
+        case 0:
+            return "calendar"
+        case 2:
+            return "12.lane"
+        case 4:
+            return "list.bullet"
+        case 5:
+            return "align.vertical.top"
+        default:
+            return "calendar"
         }
     }
     
