@@ -240,16 +240,16 @@ struct CalendarsSheetView: View {
             .navigationBarItems(
                 leading:
                     Button(action: {
-                        if viewModel.selectedCalendarIDs.isEmpty {
-                            // Няма селектирани календари → селектирай всички
-                            let allIDs = viewModel.allCalendars.map(\.calendarIdentifier)
-                            viewModel.selectedCalendarIDs = Set(allIDs)
-                        } else {
-                            // Има поне един селектиран → раз-дeselect-ваме всички
+                        let allIDs = Set(viewModel.allCalendars.map { $0.calendarIdentifier })
+                        if viewModel.selectedCalendarIDs.count == allIDs.count {
+                            // Всички календари са избрани → deselect-ваме всички
                             viewModel.selectedCalendarIDs.removeAll()
+                        } else {
+                            // Има поне един не избран календар → селектираме всички
+                            viewModel.selectedCalendarIDs = allIDs
                         }
                     }) {
-                        Text(viewModel.selectedCalendarIDs.isEmpty ? "Select All" : "Deselect All")
+                        Text(viewModel.selectedCalendarIDs.count == viewModel.allCalendars.count ? "Deselect All" : "Select All")
                     },
                 trailing:
                     Button("Done") {

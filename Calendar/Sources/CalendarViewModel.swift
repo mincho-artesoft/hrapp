@@ -2898,8 +2898,6 @@ struct MSCalendarListResponse: Codable {
 struct MSCalendarItem: Codable {
     let id: String
     let name: String
-    // let color: String?
-    // ...
 }
 
 struct MSCalendarEventResponse: Codable {
@@ -3011,32 +3009,40 @@ extension CalendarViewModel {
         UserDefaults.standard.set(date, forKey: "MsLastSyncDateKey_\(userID.uuidString)")
     }
     func parseMsDateTime(_ raw: String) -> Date? {
-        var tmp = raw.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        // 1) Махаме всичко след точката (ако има)
-        if let dotIndex = tmp.firstIndex(of: ".") {
-            // Например "2025-03-24T12:30:00.0000000" -> "2025-03-24T12:30:00"
-            tmp.removeSubrange(dotIndex..<tmp.endIndex)
-        }
-
-        // 2) Ако няма 'Z' или '+', добавяме 'Z'
-        if !tmp.contains("Z") && !tmp.contains("+") {
-            tmp.append("Z")
-            // Пр.: "2025-03-24T12:30:00" -> "2025-03-24T12:30:00Z"
-        }
-
-        // 3) Опитваме да парснем с ISO8601DateFormatter
-        let isoFormatter = ISO8601DateFormatter()
-        isoFormatter.formatOptions = [
-            .withInternetDateTime,
-            .withFractionalSeconds,
-            .withDashSeparatorInDate,
-            .withColonSeparatorInTime
-        ]
-
-        print("parseMsDateTime => final string=\"\(tmp)\"")
-        return isoFormatter.date(from: tmp)
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSS"
+        return formatter.date(from: raw)
     }
 
-
+//    func parseMsDateTime(_ raw: String) -> Date? {
+//        var tmp = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+//        
+//        // 1) Ако няма Z, + или -, добавяме "Z"
+//        //    (Microsoft често връща нещо от вида "...T12:00:00.0000000" без зона.)
+//        if !tmp.contains("Z"),
+//           !tmp.contains("+"),
+//           !tmp.contains("-")
+//        {
+//            tmp += "Z"
+//        }
+//        
+//        // 2) Настройваме форматера
+//        let iso = ISO8601DateFormatter()
+//        iso.formatOptions = [
+//            .withInternetDateTime,
+//            .withFractionalSeconds,    // за дробните секунди
+//            .withDashSeparatorInDate,
+//            .withColonSeparatorInTime
+//        ]
+//        
+//        // 3) Опит за парс
+//        if let date = iso.date(from: tmp) {
+//            return date
+//        } else {
+//            print("parseMsDateTime: failed to parse \(tmp)")
+//            return nil
+//        }
+//    }
 }
