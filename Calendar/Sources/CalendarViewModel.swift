@@ -1304,6 +1304,18 @@ extension CalendarViewModel {
     }
 
     private func makeGoogleEventBody(from event: EKEvent) -> [String: Any] {
+        print("event.notes")
+        print("eventIdentifier: \(event.eventIdentifier ?? "nil")")
+        print("title: \(event.title ?? "nil")")
+        print("location: \(event.location ?? "nil")")
+        print("notes: \(event.notes ?? "nil")")
+        print("startDate: \(event.startDate)")
+        print("endDate: \(event.endDate)")
+        print("isAllDay: \(event.isAllDay)")
+        print("attendees: \(event.attendees?.description ?? "nil")")
+        print("calendar: \(event.calendar.title)")
+        print("availability: \(event.availability.rawValue)")
+        
         if event.isAllDay {
             let startDateStr = localAllDayDateString(event.startDate)
             let endDateStr   = localAllDayDateString(event.endDate)

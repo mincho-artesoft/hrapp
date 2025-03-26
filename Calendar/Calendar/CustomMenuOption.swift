@@ -1,21 +1,13 @@
-//
-//  CustomMenuOption.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 26/3/25.
-//
-
-
 import UIKit
-
-/// Model за всяка опция от менюто
+//
+// MARK: - Custom Structures for the new Menu
+//
 struct CustomMenuOption {
     let title: String
     let icon: UIImage?
     var viewID: Int
 }
 
-/// Custom dropdown, съдържа UITableView
 final class CustomDropdownMenuView: UIView {
     
     private let tableView = UITableView()
@@ -64,7 +56,7 @@ final class CustomDropdownMenuView: UIView {
     /// Подаваш опциите, които искаш да се виждат в dropdown-а
     func setOptions(_ opts: [CustomMenuOption], selectedViewID: Int) {
         self.options = opts
-        // откриваме кое viewID е избрано, за да го маркираме
+        // Откриваме кое viewID е избрано, за да го маркираме
         if let idx = options.firstIndex(where: { $0.viewID == selectedViewID }) {
             self.selectedIndex = idx
         } else {
@@ -98,7 +90,7 @@ extension CustomDropdownMenuView: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.text = option.title
         cell.imageView?.image = option.icon
         
-        // Премахваме системния стил на селекция, за да си го управляваме сами
+        // Премахваме системния стил на селекция, за да си управляваме сами оцветяването
         cell.selectionStyle = .none
         
         // Ако този ред е избраният, оцветяваме го в синьо
@@ -113,7 +105,7 @@ extension CustomDropdownMenuView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        // Запомняме кой индекс е избран:
+        // Запомняме кой индекс е избран
         selectedIndex = indexPath.row
         tableView.reloadData()
         
