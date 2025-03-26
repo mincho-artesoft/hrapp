@@ -122,43 +122,52 @@ public class CalendarDateRangePickerViewController: UIViewController {
 
         // 6) Navbar: monthLabel + стрелка (chevron)
         monthLabel.text = getMonthLabel(date: currentMonth)
-        
-        // >>> CHANGE <<<: Правим шрифта болд:
-        monthLabel.font = UIFont.boldSystemFont(ofSize: 17)  // <<< BOLD FONT
+        monthLabel.font = UIFont.boldSystemFont(ofSize: 17)
         monthLabel.textColor = .label
         monthLabel.sizeToFit()
 
-        // >>> CHANGE <<<: Ползваме chevron.right:
-        arrowImageView.image = UIImage(systemName: "chevron.right")  // <<< ICON
-        // По желание може да ползвате .label, .darkGray или друг цвят:
+        arrowImageView.image = UIImage(systemName: "chevron.right")
         arrowImageView.tintColor = .systemBlue
         arrowImageView.contentMode = .scaleAspectFit
 
-        let containerStack = UIStackView(arrangedSubviews: [monthLabel, arrowImageView])
-        containerStack.axis = .horizontal
-        containerStack.spacing = 4
+        // Създаваме stackView за левия бутон
+        let leftStack = UIStackView(arrangedSubviews: [monthLabel, arrowImageView])
+        leftStack.axis = .horizontal
+        leftStack.spacing = 4
+
+        // Задаваме layoutMargins => това „бутва“ съдържанието навътре
+        leftStack.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        leftStack.isLayoutMarginsRelativeArrangement = true
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(monthLabelTapped))
-        containerStack.isUserInteractionEnabled = true
-        containerStack.addGestureRecognizer(tapGesture)
+        leftStack.isUserInteractionEnabled = true
+        leftStack.addGestureRecognizer(tapGesture)
 
-        let labelItem = UIBarButtonItem(customView: containerStack)
+        // Правим го customView на UIBarButtonItem
+        let labelItem = UIBarButtonItem(customView: leftStack)
         navigationItem.leftBarButtonItem = labelItem
 
         // 7) Бутоните chevron.left и chevron.right
-        let prevMonthButton = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.left"),
-            style: .plain,
-            target: self,
-            action: #selector(didTapPrevMonth)
-        )
-        let nextMonthButton = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.right"),
-            style: .plain,
-            target: self,
-            action: #selector(didTapNextMonth)
-        )
-        navigationItem.rightBarButtonItems = [nextMonthButton, prevMonthButton]
+        let prevMonthButton = UIButton(type: .system)
+        prevMonthButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        prevMonthButton.addTarget(self, action: #selector(didTapPrevMonth), for: .touchUpInside)
+
+        let nextMonthButton = UIButton(type: .system)
+        nextMonthButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        nextMonthButton.addTarget(self, action: #selector(didTapNextMonth), for: .touchUpInside)
+
+        // Слагаме двата бутона в един stack
+        let rightStack = UIStackView(arrangedSubviews: [prevMonthButton, nextMonthButton])
+        rightStack.axis = .horizontal
+        rightStack.spacing = 16
+
+        // Също им даваме "отстояния" навътре
+        rightStack.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        rightStack.isLayoutMarginsRelativeArrangement = true
+
+        let rightBarButtonItem = UIBarButtonItem(customView: rightStack)
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+
 
         // 8) Добавяме Pan Gesture, за да поддържаме drag-selection
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
@@ -259,64 +268,84 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
 
     public func collectionView(_ collectionView: UICollectionView,
                                cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "CalendarDateRangePickerCell",
             for: indexPath
         ) as! CalendarDateRangePickerCell
-
+        
+        // Нулираме клетката (премахва стари линии/кръгове)
         cell.reset()
+        // За всеки случай първоначално задаваме избрания цвят
         cell.selectedColor = self.selectedColor
 
-        // Първите 7 са етикети на делнични дни
+        // Първите 7 клетки са за дните от седмицата (Пон, Вто, ...)
         if indexPath.item < 7 {
             cell.label.text = getWeekdayLabel(weekday: indexPath.item + 1)
             cell.label.textColor = .secondaryLabel
             return cell
         }
 
-        // Празни слотове
+        // Колко празни слотове има преди да започне 1-вият ден от месеца
         let blankItems = getWeekday(date: currentMonth) - 1
         if indexPath.item < 7 + blankItems {
+            // Празна клетка
             cell.label.text = ""
             return cell
         }
 
-        // Ден от месеца
+        // Изчисляваме кой "ден от месеца" съответства на тази клетка
         let dayOfMonth = indexPath.item - (7 + blankItems) + 1
         let date = getDate(dayOfMonth: dayOfMonth, baseMonth: currentMonth)
         cell.date = date
         cell.label.text = "\(dayOfMonth)"
 
+        // Проверка дали е „днес“
         let today = Date()
+        let isToday = areSameDay(dateA: date, dateB: today)
 
-        // --- Логика за селекция, обхват, и т.н. ---
+        // === Логика за селекция (start/end) ===
         if let start = selectedStartDate, let end = selectedEndDate {
+            
+            // Ако start и end съвпадат => само един ден е избран
             if areSameDay(dateA: start, dateB: end) {
-                // Един-единствен ден
                 if areSameDay(dateA: date, dateB: start) {
+                    // Ако е "днес" + start/end => кръгчето става .systemRed
+                    cell.selectedColor = isToday ? .systemRed : self.selectedColor
                     cell.addCircle()
                 }
             } else {
-                // start < end
+                // Нормален случай: start < end
                 if areSameDay(dateA: date, dateB: start) {
+                    cell.selectedColor = isToday ? .systemRed : self.selectedColor
+                    // Линия вдясно + кръг
                     cell.addLine(from: cell.bounds.width / 2, to: cell.bounds.width)
                     cell.addCircle()
+
                 } else if areSameDay(dateA: date, dateB: end) {
+                    cell.selectedColor = isToday ? .systemRed : self.selectedColor
+                    // Линия вляво + кръг
                     cell.addLine(from: 0, to: cell.bounds.width / 2)
                     cell.addCircle()
-                } else if isBefore(dateA: start, dateB: date) && isBefore(dateA: date, dateB: end) {
+
+                } else if isBefore(dateA: start, dateB: date),
+                          isBefore(dateA: date, dateB: end) {
+                    // Денят е между start и end => чертаем само линия
                     cell.addLine(from: 0, to: cell.bounds.width)
                 }
             }
-        } else if let justStart = selectedStartDate {
+        }
+        else if let justStart = selectedStartDate {
+            // Имаме само start, но още не е избран end
             if areSameDay(dateA: date, dateB: justStart) {
+                cell.selectedColor = isToday ? .systemRed : self.selectedColor
                 cell.addCircle()
             }
         }
 
-        // Ако денят е "днес", го маркираме в .systemOrange
-        if areSameDay(dateA: date, dateB: today) {
+        // Ако денят е „днес“, но НЯМА кръг (circleView),
+        // маркираме текста в оранжево (както досега).
+        if isToday && cell.circleView == nil {
             cell.label.textColor = .systemOrange
         }
 

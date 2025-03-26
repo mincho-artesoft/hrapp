@@ -278,6 +278,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         setupViews()
         startRedrawTimer()
         refreshDateRangeButtonTitle()
+        NotificationCenter.default.addObserver(
+               self,
+               selector: #selector(orientationDidChange),
+               name: UIDevice.orientationDidChangeNotification,
+               object: nil
+           )
     }
     
     public required init?(coder: NSCoder) {
@@ -285,10 +291,21 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         setupViews()
         startRedrawTimer()
         refreshDateRangeButtonTitle()
+        NotificationCenter.default.addObserver(
+               self,
+               selector: #selector(orientationDidChange),
+               name: UIDevice.orientationDidChangeNotification,
+               object: nil
+           )
     }
     
     deinit {
         redrawTimer?.invalidate()
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func orientationDidChange() {
+        hideCalendarPopup()
     }
     
     // MARK: - Setup
@@ -387,9 +404,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // viewMenuButton
         if #available(iOS 14.0, *) {
             viewMenuButton.showsMenuAsPrimaryAction = true
-        } else {
-            viewMenuButton.addTarget(self, action: #selector(legacyMenuTapped), for: .touchUpInside)
-        }
+        } 
         navBar.addSubview(viewMenuButton)
         
         // searchButton
@@ -844,40 +859,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             children: [dayAction, multiAction, monthAction, yearAction, listAction, multiCalendarAction]
         )
     }
-    
-    // MARK: - Legacy menu (iOS < 14)
-    @objc private func legacyMenuTapped() {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        sheet.addAction(UIAlertAction(title: "Day", style: .default, handler: { [weak self] _ in
-            self?.showSingleDay = true
-            self?.onViewChange?(1)
-        }))
-        sheet.addAction(UIAlertAction(title: "MultiDay", style: .default, handler: { [weak self] _ in
-            self?.showSingleDay = false
-            self?.onViewChange?(3)
-        }))
-        sheet.addAction(UIAlertAction(title: "Month", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(0)
-        }))
-        sheet.addAction(UIAlertAction(title: "Year", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(2)
-        }))
-        sheet.addAction(UIAlertAction(title: "List", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(4)
-        }))
-        sheet.addAction(UIAlertAction(title: "MultiCalendar", style: .default, handler: { [weak self] _ in
-            self?.onViewChange?(5)
-        }))
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        if let windowScene = UIApplication.shared.connectedScenes
-            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-           let topVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController {
-            sheet.popoverPresentationController?.sourceView = topVC.view
-            topVC.present(sheet, animated: true, completion: nil)
-        }
-    }
+   
     
     // MARK: - DateRangeButton
     @objc private func didTapDateRangeButton() {
@@ -921,7 +903,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             endDate: toDate,
             minimumDate: nil,
             maximumDate: nil,
-            selectedColor: .systemBlue
+            selectedColor: .systemBlue.withAlphaComponent(0.7)
         ) { [weak self] newStart, newEnd in
             guard let self = self else { return }
             self.fromDate = newStart
@@ -936,30 +918,69 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         hc.view.layer.zPosition = 9999
         self.calendarHostingController = hc
         
-        let buttonFrameInWindow = dateRangeButton.superview?.convert(dateRangeButton.frame, to: window) ?? .zero
-        
+        // Размер на календара
         let calendarWidth: CGFloat  = 350
         let calendarHeight: CGFloat = 350
         
-        let xCenter = buttonFrameInWindow.midX - (calendarWidth / 2)
-        let yBelowButton = buttonFrameInWindow.maxY + 8
+        // Координати на бутона в прозореца
+        let buttonFrameInWindow = dateRangeButton.superview?.convert(dateRangeButton.frame, to: window) ?? .zero
         
-        var finalX = xCenter
-        if (finalX + calendarWidth) > window.bounds.maxX {
-            finalX = window.bounds.maxX - calendarWidth - 10
+        // Първоначално центриране по X
+        var finalX = (window.bounds.width - calendarWidth) / 2
+        
+        // "Под бутона" по Y (с малък отстъп)
+        let belowButtonY = buttonFrameInWindow.maxY + 8
+        
+        // Опитваме първо да го поставим отдолу
+        var finalY = belowButtonY
+        var placed = false
+        
+        // 1) Ако излиза извън екрана надолу,
+        //    пробваме над бутона
+        if finalY + calendarHeight > window.bounds.maxY - 10 {
+            let aboveButtonY = buttonFrameInWindow.minY - calendarHeight - 8
+            if aboveButtonY >= 10 {
+                finalY = aboveButtonY
+                placed = true
+            }
+        } else {
+            placed = true
         }
+        
+        // 2) Ако все още не е сложен (няма място нито отдолу, нито отгоре),
+        //    го центрираме по вертикала
+        if !placed {
+            finalY = (window.bounds.height - calendarHeight) / 2
+        }
+        
+        // --- Офсет при пейзажен режим (ако width > height)
+        let isLandscape = window.bounds.width > window.bounds.height
+        if isLandscape {
+            // Примерно 80 точки надясно и 20 надолу
+            finalX += finalX/2
+            finalY += 20
+        }
+        // -------------------------------
+        
+        // „Clamping” по хоризонтала (да не излезе вляво или вдясно)
         if finalX < 10 {
             finalX = 10
+        } else if finalX + calendarWidth > window.bounds.width - 10 {
+            finalX = window.bounds.width - calendarWidth - 10
         }
         
-        var finalY = yBelowButton
-        if (finalY + calendarHeight) > window.bounds.maxY {
-            finalY = buttonFrameInWindow.minY - calendarHeight - 8
+        // „Clamping” по вертикала (да не излезе горе или долу)
+        if finalY < 10 {
+            finalY = 10
+        } else if finalY + calendarHeight > window.bounds.height - 10 {
+            finalY = window.bounds.height - calendarHeight - 10
         }
         
+        // Поставяме календара
         hc.view.frame = CGRect(x: finalX, y: finalY, width: calendarWidth, height: calendarHeight)
         backgroundView.addSubview(hc.view)
         
+        // Анимация при поява
         hc.view.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         hc.view.alpha = 0
         backgroundView.alpha = 0
@@ -969,6 +990,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             backgroundView.alpha = 1
         }, completion: nil)
         
+        // Tap-gesture за да го скрием при натискане извън календара
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(containerTapped(_:)))
         tapGesture.cancelsTouchesInView = false
         tapGesture.delegate = self
@@ -976,6 +998,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         dateRangeButton.isSelected = true
     }
+
+
     
     private func hideCalendarPopup() {
         guard showCalendar else { return }

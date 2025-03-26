@@ -39,9 +39,7 @@ struct CalendarRowView: View {
             
             // Бутон за Edit (info)
             if showEditButton && calendar.allowsContentModifications {
-                Button(action: {
-                    editAction()
-                }) {
+                Button(action: { editAction() }) {
                     Image(systemName: "info.circle")
                         .foregroundColor(.blue)
                         .font(.system(size: 18))
@@ -50,5 +48,10 @@ struct CalendarRowView: View {
             }
         }
         .padding(.vertical, 4)
+        .padding(.horizontal, 5) // <--- добавяме хоризонталния падинг
+        .background(
+            RoundedRectangle(cornerRadius: 24)
+                .fill(isSelected ? Color(UIColor.systemGray4.withAlphaComponent(0.5)) : Color.clear)
+        )
     }
 }
