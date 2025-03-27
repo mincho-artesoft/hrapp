@@ -31,6 +31,8 @@
             </array>
         </dict>
     </array>
+    <key>NSContactsUsageDescription</key>
+    <string>Това приложение се нуждае от достъп до контактите, за да може да ...</string>
 
     <!-- Други ключове, ако имаш GIDClientID, NSCameraUsageDescription и пр. -->
 

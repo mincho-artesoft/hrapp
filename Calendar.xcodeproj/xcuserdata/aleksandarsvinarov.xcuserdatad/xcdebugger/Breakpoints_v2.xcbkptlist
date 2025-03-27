@@ -64,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1635"
             endingLineNumber = "1635"
-            landmarkName = "removeLocalGoogleCalendars(forUserID:)"
+            landmarkName = "signOutFromGoogle(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,7 +80,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1636"
             endingLineNumber = "1636"
-            landmarkName = "removeLocalGoogleCalendars(forUserID:)"
+            landmarkName = "signOutFromGoogle(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,7 +96,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2770"
             endingLineNumber = "2770"
-            landmarkName = "fetchMsEventsPage(msCalID:accessToken:startDate:endDate:pageLink:)"
+            landmarkName = "fetchAllMsEvents(msCalID:accessToken:startDate:endDate:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -533,29 +533,3 @@ struct CalendarChooserView: UIViewControllerRepresentable {
         // (напр. ако selectedCalendars се промени отвън)
     }
 }
-
-//
-//import SwiftUICore
-//import SwiftUI
-//struct RootView: View {
-//    @EnvironmentObject var appViewModel: AppViewModel
-//    
-//    var body: some View {
-//        VStack(spacing: 20) {
-//            Text("Добре дошли в основната част на приложението!")
-//                .font(.largeTitle)
-//                .multilineTextAlignment(.center)
-//                .padding()
-//            
-//            Text("Влизане с Apple успешно.")
-//            
-//            if !appViewModel.email.isEmpty {
-//                Text("Email: \(appViewModel.email)")
-//            }
-//            
-//            Button("Изход") {
-//                appViewModel.logout()
-//            }
-//        }
-//    }
-//}

@@ -23,6 +23,7 @@ struct EditCalendarView: View {
         } else {
             _selectedColor = State(initialValue: .systemBlue)
         }
+        
     }
 
     var body: some View {
