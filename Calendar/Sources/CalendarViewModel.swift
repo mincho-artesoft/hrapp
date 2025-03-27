@@ -771,97 +771,106 @@ extension CalendarViewModel {
         }
     }
     
+    /// Изтегля всички събития от Google Calendar и ги синхронизира в локалния EKCalendar.
+    /// Ако `gevent.updated` се различава от запаметеното в `updMap[gevent.id]`,
+    /// значи има промяна (title/description/location/attendees и т.н.) и се ъпдейтва.
     private func downloadAllEvents(
         forGoogleCalendarID googleCalId: String,
         userID: UUID,
         localCalendar: EKCalendar,
         accessToken: String
     ) async {
+        // Примерен диапазон от -180 дни до +360 дни
         let now = Date()
         let startDate = Calendar.current.date(byAdding: .day, value: -180, to: now)!
         let endDate   = Calendar.current.date(byAdding: .day, value: 360, to: now)!
 
         do {
+            // 1) Изтегляме всички Google събития (с възможни страници pageToken)
             let allGEvents = try await fetchAllGoogleEvents(
                 googleCalId: googleCalId,
                 accessToken: accessToken,
                 startDate: startDate,
                 endDate: endDate
             )
-            
+
+            // Събираме ID-тата в множество, за да видим по-късно кое е изтрито
             let googleEventIDsSet = Set(allGEvents.map { $0.id })
-            
-            // Load current maps for user
-            var evMap  = googleToLocalEventMap(for: userID)
-            var updMap = googleEventUpdatedMap(for: userID)
-            
-            // For each event from Google
+
+            // Вземаме текущите речници за потребителя
+            var evMap  = googleToLocalEventMap(for: userID)    // [googleEventID: localEventID]
+            var updMap = googleEventUpdatedMap(for: userID)    // [googleEventID: googleUpdatedString]
+
+            // 2) Обхождаме всяко Google събитие
             for gevent in allGEvents {
+                // Google поддържа `updated` като ISO8601 String
                 let googleUpdated = gevent.updated ?? ""
                 let localKnownUpdated = updMap[gevent.id] ?? ""
                 let googleChanged = (googleUpdated != localKnownUpdated)
-                
+
                 if let mappedLocalID = evMap[gevent.id],
                    let existingLocalEvent = eventStore.event(withIdentifier: mappedLocalID) {
-                    
+                    // => вече има локално събитие
                     if googleChanged {
-                        updateLocalEvent(existingLocalEvent, withGoogleEvent: gevent, inCalendar: localCalendar)
+                        // => Правим updateLocalEvent(...), за да отразим всякакви промени
+                        updateLocalEvent(existingLocalEvent,
+                                         withGoogleEvent: gevent,
+                                         inCalendar: localCalendar)
                     }
-                    
                 } else if let foundByUrl = findLocalEvent(withGoogleID: gevent.id, userID: userID) {
-                    
+                    // => Нямаме го в map-a, но го намираме по url = "gcal://..."
                     if googleChanged {
                         evMap[gevent.id] = foundByUrl.eventIdentifier
-                        updateLocalEvent(foundByUrl, withGoogleEvent: gevent, inCalendar: localCalendar)
+                        updateLocalEvent(foundByUrl,
+                                         withGoogleEvent: gevent,
+                                         inCalendar: localCalendar)
                     }
-                    
                 } else {
-                    // Create new local event
+                    // => Напълно ново събитие (не съществува локално)
                     if let newEv = createLocalEvent(gevent, inCalendar: localCalendar) {
                         evMap[gevent.id] = newEv.eventIdentifier
                     }
                 }
-                
-                // Always update updated-value
+
+                // При всяка итерация обновяваме updated-стойността (даже и да не е имало промяна)
                 updMap[gevent.id] = googleUpdated
             }
-            
+
+            // 3) Записваме обновените речници
             setGoogleToLocalEventMap(evMap, for: userID)
             setGoogleEventUpdatedMap(updMap, for: userID)
-            
-            // Remove local events that no longer exist in Google
-            let localEvents = fetchLocalEvents(
-                in: localCalendar,
-                startDate: startDate,
-                endDate: endDate
-            )
+
+            // 4) Накрая трием локално събитие, ако вече не съществува в Google
+            let localEvents = fetchLocalEvents(in: localCalendar,
+                                               startDate: startDate,
+                                               endDate: endDate)
             for localEv in localEvents {
-                if let gID = getGoogleIDFrom(localEv) {
-                    if !googleEventIDsSet.contains(gID) {
-                        do {
-                            try eventStore.remove(localEv, span: .thisEvent, commit: true)
-                            print("Removed local event:", localEv.title ?? "(No Title)")
-                            
-                            // Update maps
-                            var newMap = googleToLocalEventMap(for: userID)
-                            newMap.removeValue(forKey: gID)
-                            setGoogleToLocalEventMap(newMap, for: userID)
-                            
-                            var newUpdMap = googleEventUpdatedMap(for: userID)
-                            newUpdMap.removeValue(forKey: gID)
-                            setGoogleEventUpdatedMap(newUpdMap, for: userID)
-                            
-                        } catch {
-                            print("Error removing local event:", error.localizedDescription)
-                        }
+                if let gID = getGoogleIDFrom(localEv),
+                   !googleEventIDsSet.contains(gID) {
+                    // => Събитие е изтрито от Google => трием го локално
+                    do {
+                        try eventStore.remove(localEv, span: .thisEvent, commit: true)
+                        print("Removed local event:", localEv.title ?? "(No Title)")
+
+                        // Махаме го и от map / updMap
+                        var newMap = googleToLocalEventMap(for: userID)
+                        newMap.removeValue(forKey: gID)
+                        setGoogleToLocalEventMap(newMap, for: userID)
+
+                        var newUpdMap = googleEventUpdatedMap(for: userID)
+                        newUpdMap.removeValue(forKey: gID)
+                        setGoogleEventUpdatedMap(newUpdMap, for: userID)
+                    } catch {
+                        print("Error removing local event:", error.localizedDescription)
                     }
                 }
             }
-            
+
         } catch {
             print("Error fetching events for \(googleCalId):", error.localizedDescription)
         }
     }
+
 
     private func fetchAllGoogleEvents(googleCalId: String,
                                       accessToken: String,
@@ -924,68 +933,83 @@ extension CalendarViewModel {
     
     // MARK: - Local -> Google
     
-    private func uploadLocalChangesToGoogle(googleCalId: String,
-                                            userID: UUID,
-                                            accessToken: String,
-                                            localCalendar: EKCalendar) async {
+    /// Качва локалните промени (в даден EKCalendar) към Google.
+    /// Ползваме lastModifiedDate на EKEvent (EventKit) за да разберем дали има промяна.
+    private func uploadLocalChangesToGoogle(
+        googleCalId: String,
+        userID: UUID,
+        accessToken: String,
+        localCalendar: EKCalendar
+    ) async {
+        // 1) Селектираме локални събития за последната/следващата година
         let oneYearAgo   = Date().addingTimeInterval(-3600*24*365)
         let oneYearAfter = Date().addingTimeInterval( 3600*24*365)
-        
+
         let localEvents = fetchLocalEvents(in: localCalendar,
                                            startDate: oneYearAgo,
                                            endDate: oneYearAfter)
-        
+
+        // 2) Гледаме lastSyncDate, за да качим само събития, които са пипнати след него
         let lastSync = self.lastSyncDateAll[userID.uuidString] ?? .distantPast
         let changedEvents = localEvents.filter { ev in
             guard let modDate = ev.lastModifiedDate else { return false }
             return modDate > lastSync
         }
-        
+
         if changedEvents.isEmpty {
-            // Possibly check for local deletions
+            // Ако няма промени => проверяваме само за локални изтривания
             print("No local changes in \(localCalendar.title). Checking for local deletions…")
-            await uploadLocalDeletionsToGoogle(googleCalId: googleCalId,
-                                               userID: userID,
-                                               accessToken: accessToken)
+            await uploadLocalDeletionsToGoogle(
+                googleCalId: googleCalId,
+                userID: userID,
+                accessToken: accessToken
+            )
             return
         }
-        
-        print("Found \(changedEvents.count) local changes in \"\(localCalendar.title)\", uploading…")
-        
+
+        print("Found \(changedEvents.count) local changes in ‘\(localCalendar.title)’, uploading…")
+
+        // 3) За всяко променено събитие => решаваме PATCH или POST в Google
         for event in changedEvents {
             let googleID = getGoogleIDFrom(event)
-            
             if let googleID = googleID {
-                // PATCH (update)
-                let success = await patchEventToGoogle(event: event,
-                                                       googleCalId: googleCalId,
-                                                       googleEventId: googleID,
-                                                       accessToken: accessToken,
-                                                       userID: userID)
+                // => Вече съществува в Google => PATCH (update)
+                let success = await patchEventToGoogle(
+                    event: event,
+                    googleCalId: googleCalId,
+                    googleEventId: googleID,
+                    accessToken: accessToken,
+                    userID: userID
+                )
                 if success {
-                    // ...
+                    print("Успешно обновен Google евент ‘\(event.title ?? "")’.")
                 }
             } else {
-                // POST (create)
-                let success = await postEventToGoogle(event: event,
-                                                      googleCalId: googleCalId,
-                                                      accessToken: accessToken,
-                                                      userID: userID)
+                // => Ново събитие => POST (create)
+                let success = await postEventToGoogle(
+                    event: event,
+                    googleCalId: googleCalId,
+                    accessToken: accessToken,
+                    userID: userID
+                )
                 if success {
-                    // ...
+                    print("Успешно създаден Google евент ‘\(event.title ?? "")’.")
                 }
             }
         }
-        
-        // Check for local deletions
-        await uploadLocalDeletionsToGoogle(googleCalId: googleCalId,
-                                           userID: userID,
-                                           accessToken: accessToken)
-        
-        // Update lastSyncDate
+
+        // 4) Проверяваме за изтрити локално събития (за да ги изтрием и от Google)
+        await uploadLocalDeletionsToGoogle(
+            googleCalId: googleCalId,
+            userID: userID,
+            accessToken: accessToken
+        )
+
+        // 5) Ъпдейтваме lastSyncDate
         lastSyncDateAll[userID.uuidString] = Date()
         saveUserSyncDate(userID, date: Date())
     }
+
 
     private func uploadLocalDeletionsToGoogle(googleCalId: String,
                                               userID: UUID,
