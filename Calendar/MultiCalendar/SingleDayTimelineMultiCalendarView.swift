@@ -187,7 +187,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             children.append(googleAction)
         }
         if let msUser = CalendarViewModel.shared.findMicrosoftUser(for: descriptor),
-           !CalendarViewModel.shared.hasTeamsLink(in: descriptor)
+           !CalendarViewModel.shared.hasMicrosoftTeamsLink(in: descriptor)
         {
             let teamsAction = UIAction(
                 title: "Add to Microsoft Teams",
