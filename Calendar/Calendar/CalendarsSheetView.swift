@@ -57,10 +57,12 @@ struct CalendarsSheetView: View {
                         }
                     }
                 }
-                Section {
-                    Text("Google calendars")
+                if !viewModel.storedUsers.isEmpty {
+                    Section {
+                        Text("Google calendars")
+                    }
+                    .listRowBackground(Color(UIColor.systemGroupedBackground))
                 }
-                .listRowBackground(Color(UIColor.systemGroupedBackground))
 
                 // 2) For всеки Google потребител
                 ForEach(viewModel.storedUsers, id: \.uniqueID) { user in
@@ -134,11 +136,13 @@ struct CalendarsSheetView: View {
                     }
                 }
                
-                Section {
-                    Text("Microsoft calendars")
+                if !viewModel.storedMsUsers.isEmpty {
+                    Section {
+                        Text("Microsoft calendars")
+                    }
+                    .listRowBackground(Color(UIColor.systemGroupedBackground))
                 }
-                .listRowBackground(Color(UIColor.systemGroupedBackground))
-
+               
                 // 3) For всеки Microsoft потребител
                 ForEach(viewModel.storedMsUsers, id: \.uniqueID) { user in
                     let binding = Binding<Bool>(

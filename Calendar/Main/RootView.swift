@@ -4,6 +4,10 @@ import EventKitUI
 
 struct RootView: View {
     // 1) Дали имаме достъп
+    @State private var selectedCalendars = Set<EKCalendar>()
+
+    @State private var showCalendarChooser = false
+
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
     private let chunkDays: Int = 30
@@ -190,8 +194,8 @@ struct RootView: View {
                                 Spacer()
                                 
                                 Button("Inbox") {
-                                    // ...
-                                }
+                                            showCalendarChooser = true
+                                        }
                             }
                         }
                     }
@@ -218,6 +222,9 @@ struct RootView: View {
                 }
             }
         }
+        .sheet(isPresented: $showCalendarChooser) {
+            CalendarChooserView(selectedCalendars: $selectedCalendars)
+              }
         .sheet(isPresented: $showCalendarsSheet, onDismiss: {
             if accessGranted {
                 switch selectedTab {
@@ -461,3 +468,69 @@ extension RootView {
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
     }
 }
+import SwiftUI
+import EventKit
+import EventKitUI
+
+// 1) Нашият представител (wrapper) за EKCalendarChooser
+struct CalendarChooserView: UIViewControllerRepresentable {
+
+    // Свързваме се със SwiftUI, за да затворим sheet-а и да връщаме избора на календари.
+    @Environment(\.presentationMode) var presentationMode
+    
+    // Примерно property, в което пазим избраните от потребителя календари
+    @Binding var selectedCalendars: Set<EKCalendar>
+    
+    // Делегат клас (Coordinator), който реагира на събитията от EKCalendarChooserDelegate
+    class Coordinator: NSObject, @preconcurrency EKCalendarChooserDelegate {
+        let parent: CalendarChooserView
+        
+        init(_ parent: CalendarChooserView) {
+            self.parent = parent
+        }
+        
+        // Извиква се, когато потребителят натисне Done
+        @MainActor func calendarChooserDidFinish(_ calendarChooser: EKCalendarChooser) {
+            // Записваме избраните календари и затваряме sheet-а
+            parent.selectedCalendars = calendarChooser.selectedCalendars
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+        
+        // Извиква се, когато потребителят натисне Cancel
+        @MainActor func calendarChooserDidCancel(_ calendarChooser: EKCalendarChooser) {
+            // Просто затваряме sheet-а без да променяме selectedCalendars
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+        
+        // По желание може да използвате и други методи на протокола
+        // като calendarChooserSelectionDidChange(...) за динамична реакция
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
+    func makeUIViewController(context: Context) -> UINavigationController {
+        // Създаваме EKCalendarChooser с желаните параметри
+        let chooser = EKCalendarChooser(
+            selectionStyle: .multiple,
+            displayStyle: .allCalendars,
+            entityType: .event,
+            eventStore: CalendarViewModel.shared.eventStore
+        )
+        
+        // Показваме бутоните и задаваме делегат
+        chooser.showsDoneButton = true
+        chooser.showsCancelButton = true
+        chooser.delegate = context.coordinator
+        
+        // Връщаме го обвит в UINavigationController
+        return UINavigationController(rootViewController: chooser)
+    }
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+        // Тук може да обновявате EKCalendarChooser при нужда
+        // (напр. ако selectedCalendars се промени отвън)
+    }
+}
+

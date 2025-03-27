@@ -1041,23 +1041,40 @@ extension CalendarViewModel {
         }
     }
 
-    private func postEventToGoogle(event: EKEvent,
-                                   googleCalId: String,
-                                   accessToken: String,
-                                   userID: UUID) async -> Bool {
+    private func postEventToGoogle(
+        event: EKEvent,
+        googleCalId: String,
+        accessToken: String,
+        userID: UUID
+    ) async -> Bool {
+        // 1) Добавяме "?conferenceDataVersion=1" към URL-а
         let encodedCalID = googleCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? googleCalId
-        let urlString = "https://www.googleapis.com/calendar/v3/calendars/\(encodedCalID)/events"
+        let urlString = "https://www.googleapis.com/calendar/v3/calendars/\(encodedCalID)/events?conferenceDataVersion=1"
         guard let url = URL(string: urlString) else { return false }
-        
+
+        // 2) Подготвяме request
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let bodyDict: [String: Any] = makeGoogleEventBody(from: event)
-        request.httpBody = try? JSONSerialization.data(withJSONObject: bodyDict)
-        
+
+        // 3) Създаваме тялото на заявката
+        var bodyDict: [String: Any] = makeGoogleEventBody(from: event)
+        // Добавяме conferenceData, за да се генерира Meet линк
+        bodyDict["conferenceData"] = [
+            "createRequest": [
+                "requestId": UUID().uuidString, // нещо уникално, може и random низ
+                "conferenceSolutionKey": [
+                    "type": "hangoutsMeet"
+                ]
+            ]
+        ]
+
+        // 4) Сериализираме в JSON и прикачваме
+        request.httpBody = try? JSONSerialization.data(withJSONObject: bodyDict, options: [])
+
         do {
+            // 5) Изпращаме заявката
             let (data, response) = try await URLSession.shared.data(for: request)
             if let httpResp = response as? HTTPURLResponse,
                (httpResp.statusCode < 200 || httpResp.statusCode >= 300) {
@@ -1065,30 +1082,44 @@ extension CalendarViewModel {
                 print("POST event error, status = \(httpResp.statusCode), body = \(responseBody)")
                 return false
             }
-            // Success
+
+            // 6) Ако е успех, декодираме резултата
             let createdEventResp = try JSONDecoder().decode(GoogleEventItem.self, from: data)
             let gID = createdEventResp.id
-            
+
+            // Записваме gcal://... в локалния EKEvent
             event.url = URL(string: "gcal://\(gID)")
+
+            // 7) Ако има hangoutLink => добавяме го в локалния EKEvent (напр. в notes)
+            if let meetLink = createdEventResp.hangoutLink, !meetLink.isEmpty {
+                print("Успешно създадохме Google Meet линк:", meetLink)
+                self.updateLocalEventWithMeetLink(event, meetLink: meetLink)
+            }
+
+            // 8) Записваме събитието локално
             try eventStore.save(event, span: .thisEvent, commit: true)
-            
+
+            // 9) Обновяваме речниците googleToLocalEventMap/updatedMap и т.н.
             var newMap = googleToLocalEventMap(for: userID)
             newMap[gID] = event.eventIdentifier
             setGoogleToLocalEventMap(newMap, for: userID)
-            
-            if let newUpdated = createdEventResp.updated {
+
+            if let updatedTime = createdEventResp.updated {
                 var updMap = googleEventUpdatedMap(for: userID)
-                updMap[gID] = newUpdated
+                updMap[gID] = updatedTime
                 setGoogleEventUpdatedMap(updMap, for: userID)
             }
-            
-            print("Created new event in Google -> \(event.title ?? "(No Title)")")
+
+            print("Създадохме ново Google събитие + Meet за ‘\(event.title ?? "(No title)")’.")
             return true
+
         } catch {
             print("Error POSTing to Google:", error.localizedDescription)
             return false
         }
     }
+
+
 
     private func patchEventToGoogle(event: EKEvent,
                                     googleCalId: String,
@@ -1303,9 +1334,28 @@ extension CalendarViewModel {
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         return formatter.string(from: date)
     }
+    private func removeVideoCallBlock(from notes: String) -> String {
+        // 1) Пишем RegEx шаблон:
+        //    - "----\( Video Call \)----" (буквално)
+        //    - [\s\S]*? (всички символи, жадно, докато не срещне...)
+        //    - "---===---"
+        //    Разликата между [\s\S] и . (dot) e, че [\s\S] мачва и нови редове.
+        let pattern = #"----\( Video Call \)----[\s\S]*?---===---"#
 
+        do {
+            let regex = try NSRegularExpression(pattern: pattern, options: [])
+            let range = NSRange(notes.startIndex..., in: notes)
+            // Глобално заменяме всички срещания с празен низ:
+            let cleaned = regex.stringByReplacingMatches(in: notes, options: [], range: range, withTemplate: "")
+            // Също може да подрежем водещи/завършващи whitespace:
+            let trimmed = cleaned.trimmingCharacters(in: .whitespacesAndNewlines)
+            return trimmed
+        } catch {
+            // Ако нещо стане, връщаме оригиналния notes
+            return notes
+        }
+    }
     private func makeGoogleEventBody(from event: EKEvent) -> [String: Any] {
-        print("event.notes")
         print("eventIdentifier: \(event.eventIdentifier ?? "nil")")
         print("title: \(event.title ?? "nil")")
         print("location: \(event.location ?? "nil")")
@@ -1316,20 +1366,27 @@ extension CalendarViewModel {
         print("attendees: \(event.attendees?.description ?? "nil")")
         print("calendar: \(event.calendar.title)")
         print("availability: \(event.availability.rawValue)")
-        
+
+        // 1) Почистваме notes
+        let originalNotes = event.notes ?? ""
+        let sanitizedNotes = removeVideoCallBlock(from: originalNotes)
+
+        // 2) Ако евентът е allDay:
         if event.isAllDay {
             let startDateStr = localAllDayDateString(event.startDate)
             let endDateStr   = localAllDayDateString(event.endDate)
+
             return [
                 "summary": event.title ?? "(No Title)",
-                "description": event.notes ?? "",
+                "description": sanitizedNotes, // => качваме почистения текст
                 "start": ["date": startDateStr],
                 "end":   ["date": endDateStr]
             ]
         } else {
+            // 3) Иначе е dateTime
             return [
                 "summary": event.title ?? "(No Title)",
-                "description": event.notes ?? "",
+                "description": sanitizedNotes, // => качваме почистения текст
                 "start": ["dateTime": isoDateString(event.startDate)],
                 "end":   ["dateTime": isoDateString(event.endDate)]
             ]

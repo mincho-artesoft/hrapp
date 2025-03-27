@@ -62,10 +62,10 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1490"
-            endingLineNumber = "1490"
-            landmarkName = "signOutFromGoogle(user:)"
-            landmarkType = "7">
+            startingLineNumber = "1547"
+            endingLineNumber = "1547"
+            landmarkName = "CalendarViewModel"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -78,10 +78,10 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1491"
-            endingLineNumber = "1491"
-            landmarkName = "signOutFromGoogle(user:)"
-            landmarkType = "7">
+            startingLineNumber = "1548"
+            endingLineNumber = "1548"
+            landmarkName = "CalendarViewModel"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,8 +94,8 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2625"
-            endingLineNumber = "2625"
+            startingLineNumber = "2682"
+            endingLineNumber = "2682"
             landmarkName = "fetchAllMsEvents(msCalID:accessToken:startDate:endDate:)"
             landmarkType = "7">
          </BreakpointContent>
