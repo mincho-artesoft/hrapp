@@ -16,7 +16,6 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     var onViewChange: ((Int)->Void)?
     
     public var onDayLabelTap: ((Date) -> Void)?
-
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
         
@@ -312,24 +311,44 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         }
 
         
-        @MainActor public func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
+        @MainActor
+        public func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = "New event"
-            newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+
+            // Намерете „първия селектиран“ календар, който позволява промени
+            // (т.е. не е read-only). EKCalendar има флаг `allowsContentModifications`.
+            if let writableSelectedCal =  CalendarViewModel.shared.pickFirstWritableSelectedCalendar() {
+                newEvent.calendar = writableSelectedCal
+            } else {
+                // Ако не намирате такъв, fallback към defaultCalendarForNewEvents
+                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+            }
+
             newEvent.startDate = date
             newEvent.endDate   = date.addingTimeInterval(3600)
             presentSystemEditor(newEvent, in: parentVC)
         }
         
-        @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
+        @MainActor
+        public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = "All-day event"
-            newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+            
+            if let writableSelectedCal =  CalendarViewModel.shared.pickFirstWritableSelectedCalendar() {
+                newEvent.calendar = writableSelectedCal
+            } else {
+                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+            }
+            
             newEvent.isAllDay = true
             newEvent.startDate = date
             newEvent.endDate   = date
             presentSystemEditor(newEvent, in: parentVC)
         }
+
+       
+
         
         @MainActor public func handleEventDragOrResize(
             descriptor: EventDescriptor,

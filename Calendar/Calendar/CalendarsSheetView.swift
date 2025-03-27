@@ -8,7 +8,7 @@ struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
 
-    @State private var isOnMyIphoneExpanded = true
+    @State private var iCloudExpanded = true
     @State private var isOtherExpanded      = true
     
     // For each Google user: store disclosure group expand/collapse states
@@ -26,8 +26,8 @@ struct CalendarsSheetView: View {
             Form {
                 // 1) Local “On My iPhone” section
                 Section {
-                    DisclosureGroup("On My iPhone", isExpanded: $isOnMyIphoneExpanded) {
-                        ForEach(localNonGoogleCalendars(), id: \.calendarIdentifier) { cal in
+                    DisclosureGroup("iCloud", isExpanded: $iCloudExpanded) {
+                        ForEach(viewModel.localOrICloudCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
                                 calendar: cal,
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
@@ -43,7 +43,7 @@ struct CalendarsSheetView: View {
                 }
                 Section {
                     DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
-                        ForEach(otherCalendars(), id: \.calendarIdentifier) { cal in
+                        ForEach(viewModel.otherCalendars(), id: \.calendarIdentifier) { cal in
                             CalendarRowView(
                                 calendar: cal,
                                 isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
@@ -281,25 +281,8 @@ struct CalendarsSheetView: View {
     
     // MARK: - Helpers
 
-    private func localNonGoogleCalendars() -> [EKCalendar] {
-        let allLocal = viewModel.allCalendars.filter { $0.source.sourceType == .local }
-        
-        let googleSyncedIDs = Set(
-            viewModel.storedUsers.flatMap { user in
-                viewModel.googleToLocalCalendarMap(for: user.uniqueID).values
-            }
-        )
-        let msSyncedIDs = Set(
-            viewModel.storedMsUsers.flatMap { user in
-                viewModel.msToLocalCalendarMap(for: user.uniqueID).values
-            }
-        )
-        
-        return allLocal.filter {
-            !googleSyncedIDs.contains($0.calendarIdentifier) &&
-            !msSyncedIDs.contains($0.calendarIdentifier)
-        }
-    }
+   
+
 
     private func googleCopiedCalendars(for user: StoredGoogleUser) -> [EKCalendar] {
         let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
@@ -312,24 +295,8 @@ struct CalendarsSheetView: View {
         let localIDs = Set(map.values)
         return viewModel.allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
     }
+   
 
-    private func otherCalendars() -> [EKCalendar] {
-        let googleSyncedIDs = Set(
-            viewModel.storedUsers.flatMap { user in
-                viewModel.googleToLocalCalendarMap(for: user.uniqueID).values
-            }
-        )
-        let msSyncedIDs = Set(
-            viewModel.storedMsUsers.flatMap { user in
-                viewModel.msToLocalCalendarMap(for: user.uniqueID).values
-            }
-        )
-        return viewModel.allCalendars.filter {
-            $0.source.sourceType != .local
-            && !googleSyncedIDs.contains($0.calendarIdentifier)
-            && !msSyncedIDs.contains($0.calendarIdentifier)
-        }
-    }
 
     private func toggleCalendar(_ cal: EKCalendar) {
         if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {

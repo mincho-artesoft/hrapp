@@ -407,16 +407,41 @@ final class CalendarViewModel: ObservableObject {
     func reloadCalendars() {
         let cals = eventStore.calendars(for: .event)
         self.allCalendars = cals
-        
-        if let firstLocalCal = cals.first(where: { $0.source.sourceType == .local }),
-           let cgColor = firstLocalCal.cgColor {
+
+        // Обновяваме речника (или каквото друго е нужно)
+        syncNonOtherCalendarsDict()
+
+        // Използваме същата логика, която ползваме при създаване на нови събития
+        // (примерно pickFirstWritableSelectedCalendar())
+        if let writableSelectedCal = pickFirstWritableSelectedCalendar(),
+           let cgColor = writableSelectedCal.cgColor {
             self.firstLocalCalendarColor = UIColor(cgColor: cgColor)
         } else {
             self.firstLocalCalendarColor = nil
         }
-        syncLocalCalendarsDict()
     }
 
+
+    @MainActor
+    func pickFirstWritableSelectedCalendar() -> EKCalendar? {
+        // Тук предполагаме, че:
+        // - `CalendarViewModel.shared.selectedCalendarIDs` е Set<String> с идентификатори
+        // - `CalendarViewModel.shared.allowedCalendars()` връща масив от EKCalendar,
+        //   или имате друг начин да вземете всички налични календари и да ги филтрирате.
+
+        let selectedIDs = selectedCalendarIDs
+        let possibleCalendars = allowedCalendars()
+
+        // Обхождаме ги в някакъв ред (какъвто вие решите: по title, по ред на избиране и т.н.)
+        // и връщаме първия, който е едновременно избран и не е read-only.
+        for cal in possibleCalendars {
+            if selectedIDs.contains(cal.calendarIdentifier),
+               cal.allowsContentModifications {
+                return cal
+            }
+        }
+        return nil
+    }
     func allowedCalendars() -> [EKCalendar] {
         allCalendars.filter {
             selectedCalendarIDs.contains($0.calendarIdentifier)
@@ -443,22 +468,69 @@ final class CalendarViewModel: ObservableObject {
         }
         self.eventsByID = tmp
     }
-    func syncLocalCalendarsDict() {
-        // 1) Filter the allCalendars to only local
-        let localCals = allCalendars.filter { $0.source.sourceType == .local }
+    func localOrICloudCalendars() -> [EKCalendar] {
+       let googleSyncedIDs = Set(
+           storedUsers.flatMap { user in
+               googleToLocalCalendarMap(for: user.uniqueID).values
+           }
+       )
+       let msSyncedIDs = Set(
+           storedMsUsers.flatMap { user in
+               msToLocalCalendarMap(for: user.uniqueID).values
+           }
+       )
+       
+       return allCalendars.filter {
+           // Дали е локален (On My iPhone) или iCloud
+           ($0.source.sourceType == .local || $0.source.title == "iCloud")
+           // ... и не е „копиран“ от Google или Microsoft
+           && !googleSyncedIDs.contains($0.calendarIdentifier)
+           && !msSyncedIDs.contains($0.calendarIdentifier)
+       }
+   }
+   func otherCalendars() -> [EKCalendar] {
+       let googleSyncedIDs = Set(
+           storedUsers.flatMap { user in
+               googleToLocalCalendarMap(for: user.uniqueID).values
+           }
+       )
+       let msSyncedIDs = Set(
+        storedMsUsers.flatMap { user in
+               msToLocalCalendarMap(for: user.uniqueID).values
+           }
+       )
+       
+       return allCalendars.filter {
+           // Да не е локален
+           $0.source.sourceType != .local
+           // Да не е iCloud (по title)
+           && $0.source.title != "iCloud"
+           // И да не е календар, копиран от Google / Microsoft
+           && !googleSyncedIDs.contains($0.calendarIdentifier)
+           && !msSyncedIDs.contains($0.calendarIdentifier)
+       }
+   }
+    func syncNonOtherCalendarsDict() {
+        // 1) Събираме "other" календарите в множество, за да ги изключим.
+        let otherSet = Set(otherCalendars())
         
-        // 2) Create a new dictionary
+        // 2) Филтрираме `allCalendars`, така че да останат само тези,
+        // които не са в `otherCalendars()`
+        let nonOtherCals = allCalendars.filter { !otherSet.contains($0) }
+        
+        // 3) Създаваме нов речник
         var newDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
         
-        for cal in localCals {
+        for cal in nonOtherCals {
             let calTitle = cal.title
             
+            // Вземаме цвета, ако има
             var uiColor = UIColor.systemGray
             if let cgColor = cal.cgColor {
                 uiColor = UIColor(cgColor: cgColor)
             }
             
-            // If we already had this calendar in old dictionary, preserve its `selected` value.
+            // Запазваме дали е било селектирано досега
             let wasSelected = calendarsDict[cal.calendarIdentifier]?.selected ?? true
             
             newDict[cal.calendarIdentifier] = (
@@ -469,9 +541,10 @@ final class CalendarViewModel: ObservableObject {
             )
         }
         
-        // 3) Assign it
+        // 4) Заместваме стария речник с новия
         self.calendarsDict = newDict
     }
+
     func loadEventsForWholeYear(year: Int) {
         guard isCalendarAccessGranted() else {
             self.eventsByDay = [:]
@@ -1786,7 +1859,6 @@ extension CalendarViewModel {
     
     func saveAllUsersToUserDefaults() {
         do {
-            print("saveAllUsersToUserDefaults",storedUsers)
             let encodedData = try JSONEncoder().encode(storedUsers)
             UserDefaults.standard.set(encodedData, forKey: "StoredGoogleUsers")
             UserDefaults.standard.synchronize()
@@ -1808,31 +1880,62 @@ extension CalendarViewModel {
     // When user signs in (new account):
     func storeGoogleUserInUserDefaults(_ gUser: GIDGoogleUser) {
         let accessToken = gUser.accessToken.tokenString
-            let expiration  = gUser.accessToken.expirationDate
-            let refreshTokenString = gUser.refreshToken.tokenString
-            let idToken = gUser.idToken?.tokenString
-            let email = gUser.profile?.email
-            
-            // Намираме URL на аватара
-            let avatarURL = gUser.profile?.imageURL(withDimension: 96)?.absoluteString
-            
-            let newStoredUser = StoredGoogleUser(
-                uniqueID: UUID(),
-                userID: gUser.userID,
-                email:  email,
-                accessToken: accessToken,
-                accessTokenExpiration: expiration!,
-                refreshToken: refreshTokenString,
-                idToken: idToken,
-                photoURL: avatarURL!  // записваме го
-            )
-            
-            self.storedUsers.append(newStoredUser)
-            self.saveAllUsersToUserDefaults()
+        let expiration  = gUser.accessToken.expirationDate
+        let refreshTokenString = gUser.refreshToken.tokenString
+        let idToken = gUser.idToken?.tokenString
+        let email = gUser.profile?.email ?? "(no email)"
         
-        // Immediately load per-user maps for that user
-        loadPerUserMaps(for: newStoredUser)
+        let avatarURL = gUser.profile?.imageURL(withDimension: 96)?.absoluteString
+        
+        // Подготвяме потенциално новия потребител
+        let newStoredUser = StoredGoogleUser(
+            uniqueID: UUID(),
+            userID: gUser.userID,
+            email:  email,
+            accessToken: accessToken,
+            accessTokenExpiration: expiration!,
+            refreshToken: refreshTokenString,
+            idToken: idToken,
+            photoURL: avatarURL
+        )
+        
+        // 1) Проверяваме дали вече имаме този потребител по email или userID
+        if let existingIndex = storedUsers.firstIndex(where: {
+            // Може да изберете дали да проверявате по email, или по userID, или и двете.
+            // Тук пример: същия имейл ИЛИ същия gUser.userID
+            $0.email == email || ($0.userID == gUser.userID && gUser.userID != nil)
+        }) {
+            // => Вече имаме такъв акаунт => решаваме какво да правим:
+            
+            // (А) Просто пропускаме добавянето
+            // print("User already exists => skip")
+            // return
+            
+            // (Б) Или обновяваме токените на вече съществуващия запис
+            var existingUser = storedUsers[existingIndex]
+            existingUser.accessToken = newStoredUser.accessToken
+            existingUser.accessTokenExpiration = newStoredUser.accessTokenExpiration
+            existingUser.refreshToken = newStoredUser.refreshToken
+            existingUser.idToken = newStoredUser.idToken
+            existingUser.photoURL = newStoredUser.photoURL
+            // По желание, ако userID / email са празни в стария, може да ги презапишем:
+            // existingUser.userID = newStoredUser.userID
+            // existingUser.email = newStoredUser.email
+            
+            storedUsers[existingIndex] = existingUser
+            print("Updated existing Google user => \(email).")
+        }
+        else {
+            // => Нямаме такъв акаунт => добавяме като нов
+            storedUsers.append(newStoredUser)
+            print("Added new Google user => \(email).")
+        }
+        
+        // 2) Записваме (UserDefaults) + презареждаме map-овете
+        self.saveAllUsersToUserDefaults()
+        self.loadPerUserMaps(for: newStoredUser)
     }
+
 }
 
 // MARK: - Per-user dictionaries from UserDefaults
@@ -2259,15 +2362,12 @@ extension CalendarViewModel {
             )
 
             let application = try MSALPublicClientApplication(configuration: msalConfig)
-
             let scopes = ["Calendars.ReadWrite", "User.Read"]
             let parameters = MSALInteractiveTokenParameters(scopes: scopes)
             parameters.promptType = .selectAccount
             parameters.parentViewController = topMostViewController()
 
-            print("Will acquire MS token (interactive)...")
-
-            application.acquireToken(with: parameters) { result, error in
+            application.acquireToken(with: parameters) { (result, error) in
                 if let error = error {
                     print("MSAL error: \(error)")
                     return
@@ -2277,14 +2377,10 @@ extension CalendarViewModel {
                     return
                 }
 
-                print("MSAL login success! accessToken length = \(authResult.accessToken.count)")
-
-                // Извличаме данни
                 let accessToken = authResult.accessToken
                 let expiresOn   = authResult.expiresOn ?? Date()
-                let account     = authResult.account
-                let msID        = account.identifier
-                let email       = account.username ?? "(No username)"
+                let msID        = authResult.account.identifier
+                let email       = authResult.account.username ?? "(No username)"
                 let refresh     = "???"
 
                 let newMsUser = StoredMicrosoftUser(
@@ -2298,24 +2394,42 @@ extension CalendarViewModel {
                     avatarURL: nil
                 )
 
-                print("Will store new MS user:", newMsUser)
-
                 Task { @MainActor in
-                    self.storedMsUsers.append(newMsUser)
-                    self.saveAllMsUsersToUserDefaults()
-
-                    if self.storedMsUsers.count >= 1 {
-                        self.startMicrosoftCalendarSync()
+                    // 1) Проверяваме дали вече имаме този акаунт (по msAccountID или email)
+                    if let existingIndex = self.storedMsUsers.firstIndex(where: {
+                        $0.msAccountID == msID || ($0.email == email && !email.isEmpty)
+                    }) {
+                        // => вече имаме такъв акаунт => решаваме дали да ъпдейтнем или да пропуснем
+                        var existingUser = self.storedMsUsers[existingIndex]
+                        existingUser.accessToken = accessToken
+                        existingUser.accessTokenExpiration = expiresOn
+                        existingUser.refreshToken = refresh
+                        existingUser.idToken = authResult.idToken
+                        // existingUser.email = email // ако искаме да обновим
+                    
+                        self.storedMsUsers[existingIndex] = existingUser
+                        print("Updated existing MS user => \(email)")
+                        
+                        // Синхронизираме него
+                        await self.performMicrosoftCalendarSync(for: existingUser)
                     }
-
-                    await self.performMicrosoftCalendarSync(for: newMsUser)
+                    else {
+                        // => нов потребител
+                        self.storedMsUsers.append(newMsUser)
+                        self.saveAllMsUsersToUserDefaults()
+                        
+                        print("Added new MS user => \(email).")
+                        
+                        // Стартираме sync
+                        await self.performMicrosoftCalendarSync(for: newMsUser)
+                    }
                 }
             }
-
         } catch {
             print("MSAL init error:", error)
         }
     }
+
 
     @MainActor
     func performMicrosoftCalendarSync(for user: StoredMicrosoftUser) async {
@@ -2767,7 +2881,7 @@ extension CalendarViewModel {
             )
 
             // Нов принт (по желание):
-            print("fetchAllMsEvents: fetched chunk of \(chunk.count) events (pageLink=\(nextLink ?? "nil"))")
+            print("fetchAllMsEvents: fetched chunk of \(chunk.count) events")
 
             allEv.append(contentsOf: chunk)
             nextLink = link
@@ -2908,27 +3022,33 @@ extension CalendarViewModel {
         accessToken: String,
         user: StoredMicrosoftUser
     ) async -> Bool {
-        // Примерен endpoint:
-        //   POST https://graph.microsoft.com/v1.0/me/calendars/{calId}/events
+        // 1) Готвим URL:
         guard let encodedCalID = msCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
               let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalID)/events")
         else {
             print("postMsEvent: Bad URL!")
             return false
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let bodyDict = makeMsEventBody(from: localEvent)
+        // 2) Създаваме тялото (JSON).
+        //    Вече имате makeMsEventBody(...), но сега добавяме isOnlineMeeting + onlineMeetingProvider:
+
+        var bodyDict = makeMsEventBody(from: localEvent)
+        bodyDict["isOnlineMeeting"] = true
+        bodyDict["onlineMeetingProvider"] = "teamsForBusiness"
+        
         guard let bodyData = try? JSONSerialization.data(withJSONObject: bodyDict, options: []) else {
             print("postMsEvent: cannot encode JSON body!")
             return false
         }
         request.httpBody = bodyData
-        
+
+        // 3) Изпращаме заявката
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             if let httpResp = response as? HTTPURLResponse, !(200...299).contains(httpResp.statusCode) {
@@ -2937,167 +3057,230 @@ extension CalendarViewModel {
                 return false
             }
             
-            // Ако е success => decode-ваме отговора и взимаме новия id
+            // 4) Успешен отговор => декодираме MSCalendarEvent
             let created = try JSONDecoder().decode(MSCalendarEvent.self, from: data)
             let newID   = created.id
-            
-            // 1) Записваме URL-то в локалния евент => "mscal://{id}"
+
+            // Записваме URL-то в локалния евент => "mscal://{id}"
             localEvent.url = URL(string: "mscal://\(newID)")
-            // 2) Save в eventStore
+
+            // Ако е върнал onlineMeeting.joinUrl => добавяме го в notes:
+            if let joinUrl = created.onlineMeeting?.joinUrl, !joinUrl.isEmpty {
+                // Примерен блок, подобен на meet-block-a при Google:
+                let teamsBlock = """
+                ----( Video Call )----
+                [Microsoft Teams]
+                \(joinUrl)
+                ---===---
+                """
+                let existingNotes = localEvent.notes ?? ""
+                localEvent.notes = existingNotes.isEmpty
+                    ? teamsBlock
+                    : existingNotes + "\n\n" + teamsBlock
+            }
+
+            // 5) Записваме локално събитието
             try eventStore.save(localEvent, span: .thisEvent, commit: true)
             
-            // 3) Обновяваме речниците: `msToLocalEventMap` и `msEventUpdatedMap`
+            // 6) Обновяваме речниците: `msToLocalEventMap` и `msEventUpdatedMap`
             var evMap  = msToLocalEventMap(for: user.uniqueID)
             evMap[newID] = localEvent.eventIdentifier
             setMsToLocalEventMap(evMap, for: user.uniqueID)
             
             var updMap = msEventUpdatedMap(for: user.uniqueID)
-            // Взимаме lastModifiedDateTime от `created`, за да го сложим
             if let msUpdated = created.lastModifiedDateTime {
                 updMap[newID] = msUpdated
             }
             setMsEventUpdatedMap(updMap, for: user.uniqueID)
-            
+
+            print("postMsEvent: created MS event + Teams link => \(localEvent.title ?? "nil")")
             return true
+
         } catch {
             print("postMsEvent: error =>", error.localizedDescription)
             return false
         }
     }
-    /// Актуализира съществуващ евент (PATCH /me/calendars/{calId}/events/{eventId})
+
+    /// Прави PATCH към Microsoft Graph, за да актуализира съществуващо събитие (MS Calendar Event).
+    /// - Parameters:
+    ///   - msCalId:     Идентификаторът на Microsoft календара (e.g. "AAMkAGI2ZDI3OWQ2LTdjOGYtNDA2NS05Nzk5LT...").
+    ///   - msEventId:   Идентификаторът на Microsoft събитието (от типа "mscal://...").
+    ///   - localEvent:  Локалният EKEvent, от който вземаме заглавие, дати и т.н.
+    ///   - accessToken: Валиден (неизтекъл) Access Token за Microsoft Graph.
+    ///   - user:        StoredMicrosoftUser, който държи refreshToken и др.
+    ///   - forceAddTeams: Ако е `true`, добавяме `"isOnlineMeeting": true, "onlineMeetingProvider": "teamsForBusiness"`.
+    ///
+    /// Връща `true` при успех или `false` при грешка.
     private func patchMsEvent(
         msCalId: String,
         msEventId: String,
         localEvent: EKEvent,
         accessToken: String,
-        user: StoredMicrosoftUser
+        user: StoredMicrosoftUser,
+        forceAddTeams: Bool = false
     ) async -> Bool {
-        guard let encodedCalID = msCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let encodedEvID  = msEventId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalID)/events/\(encodedEvID)")
+        // 1) Правим URL:
+        //    Пример: PATCH https://graph.microsoft.com/v1.0/me/calendars/{calendarId}/events/{eventId}
+        guard
+            let encodedCalID = msCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let encodedEvID  = msEventId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalID)/events/\(encodedEvID)")
         else {
             print("patchMsEvent: Bad URL!")
             return false
         }
         
+        // 2) Подготвяме заявката:
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         
-        let bodyDict = makeMsEventBody(from: localEvent)
+        // 3) Създаваме JSON тяло от нашия локален EKEvent:
+        //    (makeMsEventBody е ваш helper, който пълни subject, body, start/end и т.н.)
+        var bodyDict = makeMsEventBody(from: localEvent)
         
-        // Внимавайте: при PATCH към Graph, ако поле липсва, може да го изтрие.
-        // За да избегнете проблеми, или използвайте само полетата, които искате да актуализирате.
-        // В текущия пример пращаме почти всички, все едно overwrite-име.
-        // Ако някои полета липсват, това може да изчисти стойности в MS.
-        // Ако искате "partial update", редуцирайте bodyDict само до променените полета.
+        // 4) Ако искаме да форсираме Microsoft Teams среща (напр. при "Add to MS Teams"):
+        if forceAddTeams {
+            bodyDict["isOnlineMeeting"] = true
+            bodyDict["onlineMeetingProvider"] = "teamsForBusiness"
+        }
         
+        // 5) Сериализираме тялото
         guard let bodyData = try? JSONSerialization.data(withJSONObject: bodyDict, options: []) else {
-            print("patchMsEvent: cannot encode JSON body!")
+            print("patchMsEvent: не можем да сериализираме JSON тялото!")
             return false
         }
         request.httpBody = bodyData
-        
+
+        // 6) Изпращаме PATCH заявката
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
+            
+            // Проверка на HTTP статус кода
             if let httpResp = response as? HTTPURLResponse, !(200...299).contains(httpResp.statusCode) {
                 let errBody = String(data: data, encoding: .utf8) ?? ""
-                print("patchMsEvent: HTTP \(httpResp.statusCode), body=\(errBody)")
+                print("patchMsEvent: HTTP \(httpResp.statusCode), body = \(errBody)")
                 return false
             }
             
-            // Ако е success => декодираме новото съдържание. MS връща пълния обект.
-            let updated = try JSONDecoder().decode(MSCalendarEvent.self, from: data)
-            // Обновяваме msEventUpdatedMap
-            if let newUpdated = updated.lastModifiedDateTime {
+            // 7) Ако е успех (2xx), декодираме новото MSCalendarEvent
+            let updatedEvent = try JSONDecoder().decode(MSCalendarEvent.self, from: data)
+            
+            // 8) Ако има lastModifiedDateTime => обновяваме msEventUpdatedMap
+            if let newUpdated = updatedEvent.lastModifiedDateTime {
                 var updMap = msEventUpdatedMap(for: user.uniqueID)
                 updMap[msEventId] = newUpdated
                 setMsEventUpdatedMap(updMap, for: user.uniqueID)
             }
             
-            print("patchMsEvent: success => updated event ‘\(localEvent.title ?? "")’ in MS.")
+            // 9) Ако Graph ни е върнал onlineMeeting.joinUrl => добавяме го в notes на локалния EKEvent
+            if let joinUrl = updatedEvent.onlineMeeting?.joinUrl,
+               !joinUrl.isEmpty
+            {
+                let teamsBlock = """
+                ----( Video Call )----
+                [Microsoft Teams]
+                \(joinUrl)
+                ---===---
+                """
+                let existingNotes = localEvent.notes ?? ""
+                
+                // Ако вече нямаме този линк, добавяме го най-отдолу
+                if !existingNotes.contains(joinUrl) {
+                    localEvent.notes = existingNotes.isEmpty
+                        ? teamsBlock
+                        : existingNotes + "\n\n" + teamsBlock
+                    
+                    // Записваме локалния евент, за да се обнови в iOS Calendar
+                    do {
+                        try eventStore.save(localEvent, span: .thisEvent, commit: true)
+                    } catch {
+                        print("patchMsEvent: грешка при save(localEvent) => \(error.localizedDescription)")
+                    }
+                }
+            }
+            
+            print("patchMsEvent: успех => обновихме ‘\(localEvent.title ?? "")’ в MS + Teams (ако е поискан).")
             return true
+            
         } catch {
-            print("patchMsEvent: error =>", error.localizedDescription)
+            print("patchMsEvent: грешка =>", error.localizedDescription)
             return false
         }
     }
+
+
+    /// Помощна функция, която създава JSON речник (Dictionary)
+    /// за тялото на заявка (POST / PATCH) към Microsoft Graph Events API.
+    ///
+    /// - Премахваме "video call" блокове от `notes`, за да не ги качваме обратно в MS.
+    /// - Ако е all-day, пращаме `start.date` / `end.date`,
+    ///   иначе `start.dateTime` / `end.dateTime`.
+    ///
     private func makeMsEventBody(from localEvent: EKEvent) -> [String: Any] {
-        // subject => заглавие
-        // body => можем да ползваме notes (BodyType=text/html),
-        // start / end => MSDateTimeTimeZone
+        // 1) Заглавие (subject)
+        let subjectVal = localEvent.title ?? "(No Title)"
 
-        // Пример:
-        
-        var subjectVal = localEvent.title ?? "(No Title)"
-        let bodyPreviewVal = (localEvent.notes?.prefix(100) ?? "")  // bodyPreview обикновено идва от MS
-        let notesVal = localEvent.notes ?? ""
-        let locationVal = localEvent.location ?? ""
-        
-        // Правим start/end обекти
-        // Ако е all-day => използваме date-only формата (например "yyyy-MM-dd")
-        
-        let isAllDay = localEvent.isAllDay
-        let startDict: [String: Any]
-        let endDict:   [String: Any]
+        // 2) Премахваме специалния блок от notes (за Google Meet, Teams и т.н.),
+        //    за да не го изпращаме обратно към Microsoft.
+        let originalNotes = localEvent.notes ?? ""
+        let sanitizedNotes = removeVideoCallBlock(from: originalNotes)
 
-        if isAllDay {
-            // date-only
+        // 3) Подготвяме "body" JSON
+        let bodyDict: [String: Any] = [
+            "contentType": "text",  // Или "html", ако искате
+            "content": sanitizedNotes
+        ]
+
+        // 4) start / end
+        //    Ако е all-day => ползваме формата `{"date": "...", "timeZone": "UTC"}`
+        //    Ако е с часове => `{"dateTime": "...", "timeZone": "UTC"}`
+        var startDict: [String: Any] = [:]
+        var endDict:   [String: Any] = [:]
+
+        if localEvent.isAllDay {
+            // Използваме "date": "2025-03-27", например.
             let formatter = DateFormatter()
             formatter.timeZone = TimeZone(secondsFromGMT: 0)
             formatter.dateFormat = "yyyy-MM-dd"
+            
             let startDateStr = formatter.string(from: localEvent.startDate)
-            
-            // MS all-day често се води с endDate = "следващия ден", но зависи от логиката.
-            // Може да се наложи да прецените дали endDate е реалното.
             let endDateStr   = formatter.string(from: localEvent.endDate)
-            
-            startDict = [
-                "date": startDateStr,
-                "timeZone": "UTC"
-            ]
-            endDict = [
-                "date": endDateStr,
-                "timeZone": "UTC"
-            ]
+
+            startDict = ["date": startDateStr, "timeZone": "UTC"]
+            endDict   = ["date": endDateStr,   "timeZone": "UTC"]
         } else {
-            // Дата с час (dateTime: "2023-03-01T09:00:00", timeZone: "UTC")
-            let iso = ISO8601DateFormatter()
-            iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds] // напр. 2023-03-01T09:00:00Z
-            let startStr = iso.string(from: localEvent.startDate)
-            let endStr   = iso.string(from: localEvent.endDate)
-            
-            startDict = [
-                "dateTime": startStr,
-                "timeZone": "UTC"
-            ]
-            endDict = [
-                "dateTime": endStr,
-                "timeZone": "UTC"
-            ]
+            // Има часове
+            let isoFormatter = ISO8601DateFormatter()
+            isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+
+            let startStr = isoFormatter.string(from: localEvent.startDate)
+            let endStr   = isoFormatter.string(from: localEvent.endDate)
+
+            startDict = ["dateTime": startStr, "timeZone": "UTC"]
+            endDict   = ["dateTime": endStr,   "timeZone": "UTC"]
         }
-        
-        // Graph позволява да подадем body: { contentType, content }
-        let bodyDict: [String: Any] = [
-            "contentType": "text", // или "html"
-            "content": notesVal
+
+        // 5) По желание задаваме location
+        let locationDict: [String: Any] = [
+            "displayName": localEvent.location ?? ""
         ]
-        
+
+        // 6) Събираме всичко в един Dictionary
         let eventDict: [String: Any] = [
             "subject": subjectVal,
-            "bodyPreview": bodyPreviewVal,
             "body": bodyDict,
             "start": startDict,
             "end":   endDict,
-            "location": [
-                "displayName": locationVal
-            ]
-            // Може да добавите attendees, isOnlineMeeting, onlineMeetingProvider...
+            "location": locationDict
+            // Тук може да добавите "attendees", "isOnlineMeeting", "onlineMeetingProvider" и т.н., ако ви трябват
         ]
-        
+
         return eventDict
     }
+
     /// Качва локалните изтривания: т.е. евентите, които преди са били в msToLocalEventMap,
     /// но сега локално вече *не съществуват* (или са премахнати от речника).
     func uploadLocalDeletionsToMicrosoft(
@@ -3175,171 +3358,164 @@ extension CalendarViewModel {
 
 
     
-    // Example of how you create a local event from an MS event
-    /// Създава нов локален EKEvent (iOS) от Microsoft събитие (msEvent).
-    /// Задава url="mscal://someMsEventID", за да можем после да го разпознаем като MS събитие.
     private func createLocalMsEvent(_ msEvent: MSCalendarEvent,
                                     inCalendar: EKCalendar) -> EKEvent? {
-        print("createLocalMsEvent CALLED with msEvent.id=\(msEvent.id), subject='\(msEvent.subject ?? "")' => target calendar: '\(inCalendar.title)' (\(inCalendar.calendarIdentifier))")
+        // Печат на JSON-а за дебъг
+        print("===== ПОЛУЧЕН MSCalendarEvent =====")
+        do {
+            let encoded = try JSONEncoder().encode(msEvent)
+            if let jsonStr = String(data: encoded, encoding: .utf8) {
+                print(jsonStr)
+            }
+        } catch {
+            print("Грешка при JSON encode на msEvent:", error.localizedDescription)
+        }
+        print("====================================\n")
 
         let newEvent = EKEvent(eventStore: eventStore)
         newEvent.calendar = inCalendar
+
+        // За да знаем кое MS събитие е това:
         let msEventID = msEvent.id
         newEvent.url = URL(string: "mscal://\(msEventID)")
 
+        // Заглавие, notes (примерно bodyPreview) и локация
         newEvent.title = msEvent.subject ?? "(No Title)"
         newEvent.notes = msEvent.bodyPreview ?? ""
         if let locName = msEvent.location?.displayName, !locName.isEmpty {
             newEvent.location = locName
         }
 
-        // --- Parse START ---
+        // Ако има onlineMeeting.joinUrl => добавяме блок в notes
+        if let joinUrl = msEvent.onlineMeeting?.joinUrl, !joinUrl.isEmpty {
+            let videoCallBlock = """
+            ----( Video Call )----
+            [Microsoft Teams]
+            \(joinUrl)
+            ---===---
+            """
+            let existingNotes = newEvent.notes ?? ""
+            newEvent.notes = existingNotes.isEmpty
+                ? videoCallBlock
+                : existingNotes + "\n\n" + videoCallBlock
+        }
+
+        // Парсваме start
         if let startStr = msEvent.start?.dateTime {
-            // 1) Имаме time-based начало
+            // Вариант: dateTime (например "2025-03-27T10:00:00.0000000")
             if let startDate = parseMsDateTime(startStr) {
                 newEvent.startDate = startDate
-                print("   startDate parsed => \(startDate)")
-            } else {
-                print("   WARNING: parseMsDateTime(\(startStr)) failed => ABORT")
-                return nil
+                newEvent.isAllDay  = false
             }
         } else if let dateOnlyStr = msEvent.start?.date {
-            // 2) All-day в MS
+            // Вариант: само дата ("2025-03-27") => all-day
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             if let dateVal = formatter.date(from: dateOnlyStr) {
                 newEvent.startDate = dateVal
                 newEvent.isAllDay  = true
-                print("   startDate all-day => \(dateVal)")
-            } else {
-                print("   WARNING: can't parse msEvent.start?.date => ABORT")
-                return nil
             }
-        } else {
-            print("   WARNING: no start?.dateTime or start?.date => ABORT")
-            return nil
         }
 
-        // --- Parse END ---
+        // Парсваме end
         if let endStr = msEvent.end?.dateTime {
-            // time-based край
             if let endDate = parseMsDateTime(endStr) {
                 newEvent.endDate = endDate
-                print("   endDate parsed => \(endDate)")
             } else {
-                let fallback = newEvent.startDate.addingTimeInterval(3600)
-                newEvent.endDate = fallback
-                print("   WARNING: parse fail => fallback endDate => \(fallback)")
+                // fallback +1 час
+                newEvent.endDate = newEvent.startDate.addingTimeInterval(3600)
             }
         } else if let endDateOnlyStr = msEvent.end?.date {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             if let dateVal = formatter.date(from: endDateOnlyStr) {
                 newEvent.endDate = dateVal
-                // Ако са all-day, обикновено endDate е "следващия" ден. Може да се наложи да нагласите
-                // newEvent.endDate = dateVal.addingTimeInterval(24*60*60)  // ако Outlook така го дава.
-                // Но зависи как Graph връща all-day events.
                 newEvent.isAllDay = true
-                print("   endDate all-day => \(dateVal)")
             } else {
-                let fallback = newEvent.startDate.addingTimeInterval(3600)
-                newEvent.endDate = fallback
-                print("   WARNING: can't parse end?.date => fallback => \(fallback)")
+                newEvent.endDate = newEvent.startDate.addingTimeInterval(3600)
             }
-        } else {
-            // fallback
-            let fallback = newEvent.startDate.addingTimeInterval(3600)
-            newEvent.endDate = fallback
-            print("   WARNING: no endDate => fallback => \(fallback)")
         }
 
+        // Накрая save
         do {
             try eventStore.save(newEvent, span: .thisEvent, commit: true)
-            print("   SUCCESS: created local event in '\(inCalendar.title)' => \(newEvent.title ?? "nil") (start=\(newEvent.startDate))")
+            print("Създаден локален EKEvent в календар ‘\(inCalendar.title)’ => ‘\(newEvent.title ?? "nil")’")
             return newEvent
         } catch {
-            print("   ERROR saving local MS event => \(error.localizedDescription)")
+            print("Грешка при save на локален EKEvent:", error.localizedDescription)
             return nil
         }
     }
 
-
     private func updateLocalEvent(_ localEvent: EKEvent,
                                   withMsEvent msEvent: MSCalendarEvent,
-                                  inCalendar: EKCalendar)
-    {
-        print("updateLocalEvent CALLED for localEvent.id='\(localEvent.eventIdentifier ?? "?")' => msEvent.id=\(msEvent.id), subject='\(msEvent.subject ?? "")'")
-        print("   Local event old title='\(localEvent.title ?? "")' => will update to '\(msEvent.subject ?? "")'")
+                                  inCalendar: EKCalendar) {
+        print("updateLocalEvent => localEvent.id='\(localEvent.eventIdentifier ?? "?")' => msEvent.id=\(msEvent.id)")
 
         // Заглавие, notes, location
         localEvent.title = msEvent.subject ?? "(No Title)"
         localEvent.notes = msEvent.bodyPreview ?? ""
-        if let locName = msEvent.location?.displayName, !locName.isEmpty {
-            localEvent.location = locName
-        } else {
-            localEvent.location = nil
+        localEvent.location = msEvent.location?.displayName ?? ""
+
+        // Ако има onlineMeeting.joinUrl => добавяме го в notes (ако го няма вече)
+        if let joinUrl = msEvent.onlineMeeting?.joinUrl, !joinUrl.isEmpty {
+            let videoCallBlock = """
+            ----( Video Call )----
+            [Microsoft Teams]
+            \(joinUrl)
+            ---===---
+            """
+            let existing = localEvent.notes ?? ""
+            if !existing.contains(joinUrl) {
+                localEvent.notes = existing.isEmpty
+                    ? videoCallBlock
+                    : existing + "\n\n" + videoCallBlock
+            }
         }
 
-        // Ако искате винаги да е в конкретния календар:
+        // Принудително да сме в същия календар (по желание)
         localEvent.calendar = inCalendar
-        
-        // ---- Parse START ----
+
+        // Обновяваме start/end
         if let startStr = msEvent.start?.dateTime {
-            // time-based
-            if let startDate = parseMsDateTime(startStr) {
-                localEvent.startDate = startDate
-                localEvent.isAllDay = false
-                print("   localEvent.startDate updated => \(startDate)")
-            } else {
-                print("   WARNING: parseMsDateTime(\(startStr)) failed => skip updating start?")
-            }
-        } else if let allDayStartStr = msEvent.start?.date {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            if let sDate = formatter.date(from: allDayStartStr) {
+            if let sDate = parseMsDateTime(startStr) {
                 localEvent.startDate = sDate
-                localEvent.isAllDay = true
-                print("   localEvent.startDate all-day => \(sDate)")
-            } else {
-                print("   WARNING: can't parse msEvent.start?.date => skip updating start?")
+                localEvent.isAllDay  = false
             }
-        } else {
-            print("   WARNING: no start?.dateTime or start?.date => skip updating start?")
-        }
-
-        // ---- Parse END ----
-        if let endStr = msEvent.end?.dateTime {
-            // time-based
-            if let endDate = parseMsDateTime(endStr) {
-                localEvent.endDate = endDate
-                if !localEvent.isAllDay {
-                    print("   localEvent.endDate updated => \(endDate)")
-                }
-            } else {
-                print("   WARNING: parseMsDateTime(\(endStr)) failed => skip updating end?")
-            }
-        } else if let allDayEndStr = msEvent.end?.date {
+        } else if let dateOnlyStr = msEvent.start?.date {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
-            if let eDate = formatter.date(from: allDayEndStr) {
-                localEvent.endDate = eDate
-                localEvent.isAllDay = true
-                print("   localEvent.endDate all-day => \(eDate)")
-            } else {
-                print("   WARNING: can't parse msEvent.end?.date => skip updating end?")
+            if let dateVal = formatter.date(from: dateOnlyStr) {
+                localEvent.startDate = dateVal
+                localEvent.isAllDay  = true
             }
-        } else {
-            print("   WARNING: no end?.dateTime or end?.date => skip updating end?")
+        }
+        if let endStr = msEvent.end?.dateTime {
+            if let eDate = parseMsDateTime(endStr) {
+                localEvent.endDate = eDate
+            } else {
+                localEvent.endDate = localEvent.startDate.addingTimeInterval(3600)
+            }
+        } else if let dateOnlyStr = msEvent.end?.date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            if let dateVal = formatter.date(from: dateOnlyStr) {
+                localEvent.endDate = dateVal
+                localEvent.isAllDay = true
+            } else {
+                localEvent.endDate = localEvent.startDate.addingTimeInterval(3600)
+            }
         }
 
-        // Финално save
+        // Save
         do {
             try eventStore.save(localEvent, span: .thisEvent, commit: true)
-            print("   SUCCESS: updated local event => new title='\(localEvent.title ?? "")', allDay=\(localEvent.isAllDay)")
+            print("Успешно обновен локален евент => title='\(localEvent.title ?? "")'")
         } catch {
-            print("   ERROR updating local MS event => \(error.localizedDescription)")
+            print("Грешка при update на локалния евент:", error.localizedDescription)
         }
     }
+    
 
     private func extractMsEventID(_ event: EKEvent) -> String? {
         guard let urlStr = event.url?.absoluteString,
@@ -3386,9 +3562,18 @@ struct MSCalendarEvent: Codable {
     let start: MSDateTimeTimeZone?
     let end:   MSDateTimeTimeZone?
     let location: MSLocation?
-    
+
     let lastModifiedDateTime: String?
+    
+    // Ново:
+    let onlineMeeting: MSOnlineMeetingInfo?
 }
+
+struct MSOnlineMeetingInfo: Codable {
+    let joinUrl: String?
+    // Може да има и други полета (conferenceId, tollNumber...), ако искате.
+}
+
 
 struct MSDateTimeTimeZone: Codable {
     let dateTime: String?
@@ -3483,4 +3668,106 @@ extension CalendarViewModel {
         return formatter.date(from: raw)
     }
 
+}
+extension CalendarViewModel {
+    
+    /// Проверява дали събитието е в някой от календарите на Microsoft.
+    /// (Понеже вече имате msToLocalCalendarMap, можем директно да видим
+    ///  дали `descriptor.calendarID` влиза в някой [msCalID: localCalID].values)
+    func isMsCalendarEvent(_ descriptor: EventDescriptor) -> Bool {
+        guard let multi = descriptor as? EKMultiDayWrapper else {
+            return false
+        }
+        let localCalID = multi.realEvent.calendar.calendarIdentifier
+        
+        // Събираме всички локални calendarIdentifier-и, които са копие на *някой* Microsoft акаунт
+        let allMsLocalIDs = storedMsUsers.flatMap { msToLocalCalendarMap(for: $0.uniqueID).values }
+        
+        return allMsLocalIDs.contains(localCalID)
+    }
+
+    /// Намира *кой* MS акаунт притежава този локален EKCalendar
+    /// (Ако имате няколко MS акаунта – връща първия, който има map-ване към localCalID.)
+    func findMicrosoftUser(for descriptor: EventDescriptor) -> StoredMicrosoftUser? {
+        guard let multi = descriptor as? EKMultiDayWrapper else { return nil }
+        let localCalID = multi.realEvent.calendar.calendarIdentifier
+
+        for user in storedMsUsers {
+            let userMap = msToLocalCalendarMap(for: user.uniqueID) // [msCalendarID : localCalendarID]
+            if userMap.values.contains(localCalID) {
+                return user
+            }
+        }
+        return nil
+    }
+
+    /// Проверяваме дали notes вече съдържа Teams линк (примерно "https://teams.microsoft.com/l/meetup-join/...")
+    /// Това е „хлабав“ подход – търсим substring "teams.microsoft.com",
+    ///  за да избегнем да добавяме втори път.
+    func hasTeamsLink(in descriptor: EventDescriptor) -> Bool {
+        guard let multi = descriptor as? EKMultiDayWrapper,
+              let notes = multi.realEvent.notes?.lowercased()
+        else {
+            return false
+        }
+        return notes.contains("teams.microsoft.com")
+    }
+}
+extension CalendarViewModel {
+    /// Добавя Microsoft Teams видеосреща към посоченото събитие,
+    /// като праща PATCH (isOnlineMeeting=true, onlineMeetingProvider=teamsForBusiness).
+    /// - Parameters:
+    ///   - descriptor: Вашият EventDescriptor (EKMultiDayWrapper)
+    ///   - msUser: конкретният StoredMicrosoftUser (already found).
+    func addMicrosoftTeams(to descriptor: EventDescriptor, for msUser: StoredMicrosoftUser) {
+        // 1) Проверяваме дали е EKMultiDayWrapper
+        guard let multi = descriptor as? EKMultiDayWrapper else {
+            print("addMicrosoftTeams: descriptor не е EKMultiDayWrapper => отказ.")
+            return
+        }
+
+        // 2) Ако token е изтекъл, опитваме silent refresh
+        if msUser.accessTokenExpiration < Date() {
+            Task {
+                // refreshMicrosoftTokenIfNeeded ще върне нов user (с нов accessToken) или стария
+                let freshUser = await refreshMicrosoftTokenIfNeeded(for: msUser) ?? msUser
+                await self.patchMsEventToAddTeams(meDescriptor: multi, user: freshUser)
+            }
+        } else {
+            // Иначе директно PATCH към Graph
+            Task {
+                await self.patchMsEventToAddTeams(meDescriptor: multi, user: msUser)
+            }
+        }
+    }
+    
+    /// Реално извършва PATCH: `isOnlineMeeting=true`, `onlineMeetingProvider=teamsForBusiness`.
+    private func patchMsEventToAddTeams(meDescriptor: EKMultiDayWrapper, user: StoredMicrosoftUser) async {
+        let msEventID = extractMsEventID(meDescriptor.realEvent)
+        guard let msEventID = msEventID else {
+            print("patchMsEventToAddTeams: Нямаме mscal://{id} в event.url => отказ.")
+            return
+        }
+        
+        // Намерете кой msCalendarId от `msToLocalCalendarMap` отговаря на localCalID
+        let localCalID = meDescriptor.realEvent.calendar.calendarIdentifier
+        guard let msCalID = msToLocalCalendarMap(for: user.uniqueID).first(where: { $0.value == localCalID })?.key
+        else {
+            print("patchMsEventToAddTeams: не откривам msCalendarID за този localCalID => отказ.")
+            return
+        }
+
+        // Правим PATCH заявка. Използваме вече съществуващия helper patchMsEvent(...)
+        let success = await self.patchMsEvent(
+            msCalId: msCalID,
+            msEventId: msEventID,
+            localEvent: meDescriptor.realEvent,
+            accessToken: user.accessToken,
+            user: user,
+            forceAddTeams: true  // ще добавим аргумент, за да активираме onlineMeeting
+        )
+        if success {
+            print("Add Microsoft Teams => success!")
+        }
+    }
 }

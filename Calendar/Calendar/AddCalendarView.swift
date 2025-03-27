@@ -9,7 +9,7 @@ struct AddCalendarView: View {
     @State private var selectedColor: UIColor = .systemGreen
     @State private var eventAlertsEnabled: Bool = true
 
-    private let accountName: String = "On My iPhone"
+    private let accountName: String = "iCloud"
 
     var body: some View {
         NavigationView {
@@ -64,7 +64,7 @@ struct AddCalendarView: View {
         newCal.title = calendarName
 
         // Намираме local source (On My iPhone):
-        if let localSource = eventStore.sources.first(where: { $0.title == "On My iPhone" }) {
+        if let localSource = eventStore.sources.first(where: { $0.title == "iCloud" }) {
             newCal.source = localSource
         } else if let defaultSource = eventStore.defaultCalendarForNewEvents?.source {
             newCal.source = defaultSource

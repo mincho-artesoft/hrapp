@@ -9,9 +9,5 @@
 import Foundation
 
 struct GlobalState {
-    nonisolated(unsafe) static var email: String = "" {
-        didSet {
-            print("GlobalState.email changed to: \(email)")
-        }
-    }
+    nonisolated(unsafe) static var email: String = ""
 }

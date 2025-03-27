@@ -186,7 +186,17 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             children.append(googleAction)
         }
-        
+        if let msUser = CalendarViewModel.shared.findMicrosoftUser(for: descriptor),
+           !CalendarViewModel.shared.hasTeamsLink(in: descriptor)
+        {
+            let teamsAction = UIAction(
+                title: "Add to Microsoft Teams",
+                image: UIImage(systemName: "video")
+            ) { action in
+                CalendarViewModel.shared.addMicrosoftTeams(to: descriptor, for: msUser)
+            }
+            children.append(teamsAction)
+        }
         // Финално връщаме UIMenu с децата
         return UIMenu(title: "", children: children)
     }
