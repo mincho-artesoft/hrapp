@@ -2173,40 +2173,49 @@ extension CalendarViewModel {
     }
 
     @MainActor
-       func performMicrosoftCalendarSync(for user: StoredMicrosoftUser) async {
-           print("performMicrosoftCalendarSync(for: \(user.email ?? "")) => start")
-           do {
-               let refreshedUser = await refreshMicrosoftTokenIfNeeded(for: user) ?? user
-               print("Using accessToken length = \(refreshedUser.accessToken.count) for user \(refreshedUser.email ?? "")")
+    func performMicrosoftCalendarSync(for user: StoredMicrosoftUser) async {
+        print("==> performMicrosoftCalendarSync(\(user.email ?? "???")) START")
 
-               let msCalendars = try await fetchMsCalendarList(accessToken: refreshedUser.accessToken)
-               print("Получихме \(msCalendars.count) MS календара за \(refreshedUser.email ?? "")")
+        // 1) Проверяваме дали токенът е изтекъл и ако да – опитваме тих рефреш.
+        let freshUser = await refreshMicrosoftTokenIfNeeded(for: user) ?? user
 
-               // 1) MS -> Local
-               await syncMsCalendars(msCalendars, forUser: refreshedUser, accessToken: refreshedUser.accessToken)
-               
-               // 2) Local -> MS
-               let map = msToLocalCalendarMap(for: refreshedUser.uniqueID)
-               for (msCalID, localCalID) in map {
-                   if let localCal = eventStore.calendar(withIdentifier: localCalID) {
-                       await uploadLocalChangesToMicrosoft(
-                           msCalId: msCalID,
-                           user: refreshedUser,
-                           accessToken: refreshedUser.accessToken,
-                           localCalendar: localCal
-                       )
-                   }
-               }
-           } catch {
-               print("performMicrosoftCalendarSync грешка:", error)
-           }
+        // 2) Запазваме старото състояние на [msEventID : localEventIdentifier]
+        //    за да засечем локално изтрити евенти по-късно.
+        self.oldMsToLocalEventMap = msToLocalEventMap(for: freshUser.uniqueID)
 
-           // Ето го принта, който искате да видите:
-           print("performMicrosoftCalendarSync(for: \(user.email ?? "")) => done")
+        do {
+            // 3) Взимаме списък с MS календари (через Graph API)
+            let msCalendars = try await fetchMsCalendarList(accessToken: freshUser.accessToken)
+            
+            // 4) MS → Local: синхронизация на календарите и техните събития
+            await syncMsCalendars(msCalendars, forUser: freshUser, accessToken: freshUser.accessToken)
+            
+            // 5) Local → MS: за всеки MS календар синхронизираме локалните промени
+            let map = msToLocalCalendarMap(for: freshUser.uniqueID)
+            for (msCalId, localCalId) in map {
+                if let localCal = eventStore.calendar(withIdentifier: localCalId) {
+                    await uploadLocalChangesToMicrosoft(
+                        msCalId: msCalId,
+                        user: freshUser,
+                        accessToken: freshUser.accessToken,
+                        localCalendar: localCal
+                    )
+                }
+            }
+            
+        } catch {
+            print("performMicrosoftCalendarSync(\(user.email ?? "???")) error:", error)
+        }
+        
+        print("==> performMicrosoftCalendarSync(\(user.email ?? "???")) DONE")
 
-           // Накрая викаме и debug, за да видим локалните календари и събития
-           debugPrintLocalMsCalendars()
-       }
+        // По желание: debug метод, който отпечатва локалните MS календари и събития:
+        debugPrintLocalMsCalendars()
+        
+        // Ако желаете, тук може да записвате "новия" map като "стар" за следващото извикване:
+        // self.oldMsToLocalEventMap = msToLocalEventMap(for: freshUser.uniqueID)
+    }
+
    
 
     func debugPrintLocalMsCalendars() {

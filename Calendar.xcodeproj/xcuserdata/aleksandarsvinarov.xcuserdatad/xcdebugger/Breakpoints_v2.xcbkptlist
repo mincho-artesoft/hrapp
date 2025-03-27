@@ -94,8 +94,8 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2616"
-            endingLineNumber = "2616"
+            startingLineNumber = "2625"
+            endingLineNumber = "2625"
             landmarkName = "fetchAllMsEvents(msCalID:accessToken:startDate:endDate:)"
             landmarkType = "7">
          </BreakpointContent>
