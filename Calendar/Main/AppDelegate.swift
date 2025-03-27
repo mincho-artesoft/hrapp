@@ -1,27 +1,26 @@
 import UIKit
 import GoogleSignIn
 
-
-// Примерен AppDelegate, където можем да прихващаме
-/// openURL callbacks, нужни за GoogleSignIn
 class AppDelegate: NSObject, UIApplicationDelegate {
     
-    // Ако искате да вършите някакви допълнителни неща при стартиране на приложението
+    // Ако ползваш Firebase или други услуги – инициализирай ги тук
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        // Например: настройвате Firebase, Analytics, други...
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        // Пример: FirebaseApp.configure()
+        // Пример: настройка на Analytics и т.н.
+        
         return true
     }
-
-    // Този метод се вика, когато потребителят приключи OAuth потока и iOS отвори вашето app обратно:
+    
+    // Тук iOS се връща, когато приключи Google OAuth извън приложението
     func application(_ app: UIApplication,
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        // Подаваме URL-а на GIDSignIn, за да завърши логина, ако е Google OAuth
+        // Google SignIn callback:
         if GIDSignIn.sharedInstance.handle(url) {
             return true
         }
-        // Ако имате и други URL schemes, проверете тук
+        // Ако имаш и други OAuth провайдъри, проверяваш тук
         return false
     }
 }

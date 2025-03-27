@@ -1356,42 +1356,106 @@ extension CalendarViewModel {
         }
     }
     private func makeGoogleEventBody(from event: EKEvent) -> [String: Any] {
-        print("eventIdentifier: \(event.eventIdentifier ?? "nil")")
-        print("title: \(event.title ?? "nil")")
-        print("location: \(event.location ?? "nil")")
-        print("notes: \(event.notes ?? "nil")")
-        print("startDate: \(event.startDate)")
-        print("endDate: \(event.endDate)")
-        print("isAllDay: \(event.isAllDay)")
-        print("attendees: \(event.attendees?.description ?? "nil")")
-        print("calendar: \(event.calendar.title)")
-        print("availability: \(event.availability.rawValue)")
+        print("event.notes")
+        
+        // 1) Вие вече правите RegEx и създавате масив `attendees: [Attendee]`.
+        let input = event.attendees?.description ?? ""
+        let pattern = #"""
+        UUID\s*=\s*(.*?);\s*name\s*=\s*(.*?);\s*email\s*=\s*(.*?);\s*phone\s*=\s*\((.*?)\);\s*status\s*=\s*(\d+);\s*role\s*=\s*(\d+);\s*type\s*=\s*(\d+)
+        """#
 
-        // 1) Почистваме notes
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
+            fatalError("Невалиден регулярен израз.")
+        }
+
+        let nsrange = NSRange(input.startIndex..<input.endIndex, in: input)
+        let matches = regex.matches(in: input, options: [], range: nsrange)
+
+        var attendees: [Attendee] = []
+
+        for match in matches {
+            func getGroup(_ index: Int) -> String {
+                let range = match.range(at: index)
+                guard let swiftRange = Range(range, in: input) else { return "" }
+                return String(input[swiftRange])
+            }
+
+            let uuid   = getGroup(1)
+            let name   = getGroup(2)
+            let email  = getGroup(3)
+            let phoneString = getGroup(4)
+            let status = Int(getGroup(5)) ?? 0
+            let role   = Int(getGroup(6)) ?? 0
+            let type   = Int(getGroup(7)) ?? 0
+            
+            let phone: String? = (phoneString == "null") ? nil : phoneString
+            
+            let attendee = Attendee(uuid: uuid,
+                                    name: name,
+                                    email: email,
+                                    phone: phone,
+                                    status: status,
+                                    role: role,
+                                    type: type)
+            attendees.append(attendee)
+        }
+
+        // 2) Сега можете да отпечатате / debug-нете, ако желаете:
+        for a in attendees {
+            if a.email != GlobalState.email {
+                print("Will share event with => \(a.email)")
+            }
+        }
+
+        // === НАЙ-ВАЖНО ===
+        // 3) Тук превръщаме подходящите Attendee обекти в JSON “attendees” за Google
+        var googleAttendeeDicts: [[String: Any]] = []
+        for a in attendees {
+            guard a.email != GlobalState.email else {
+                continue // пропускаме "основния" имейл
+            }
+            // Можем да подадем само "email", или да добавим "displayName", "optional", etc.
+            let dict: [String: Any] = [
+                "email": a.email,
+                "displayName": a.name,
+                // Ако искате да ги бележите като “необходими” или “опционални”:
+                "optional": false
+                // Може да зададете responseStatus: "needsAction", ако искате.
+            ]
+            googleAttendeeDicts.append(dict)
+        }
+        
+        // == КРАЙ на attendees ==
+
+        // Почистваме notes от VideoCall блок
         let originalNotes = event.notes ?? ""
         let sanitizedNotes = removeVideoCallBlock(from: originalNotes)
 
-        // 2) Ако евентът е allDay:
         if event.isAllDay {
             let startDateStr = localAllDayDateString(event.startDate)
             let endDateStr   = localAllDayDateString(event.endDate)
 
+            // 4) Връщаме новия body, в който слагаме "attendees" масива
             return [
                 "summary": event.title ?? "(No Title)",
-                "description": sanitizedNotes, // => качваме почистения текст
+                "description": sanitizedNotes,
                 "start": ["date": startDateStr],
-                "end":   ["date": endDateStr]
+                "end":   ["date": endDateStr],
+                // Ето го attendees:
+                "attendees": googleAttendeeDicts
             ]
         } else {
-            // 3) Иначе е dateTime
             return [
                 "summary": event.title ?? "(No Title)",
-                "description": sanitizedNotes, // => качваме почистения текст
+                "description": sanitizedNotes,
                 "start": ["dateTime": isoDateString(event.startDate)],
-                "end":   ["dateTime": isoDateString(event.endDate)]
+                "end":   ["dateTime": isoDateString(event.endDate)],
+                // Ето го attendees:
+                "attendees": googleAttendeeDicts
             ]
         }
     }
+
     
     private func colorFromHexString(_ hexString: String) -> UIColor? {
         var cString = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
