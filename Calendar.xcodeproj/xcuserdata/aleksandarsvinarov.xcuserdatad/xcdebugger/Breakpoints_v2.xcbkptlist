@@ -62,9 +62,9 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1708"
-            endingLineNumber = "1708"
-            landmarkName = "signOutFromGoogle(user:)"
+            startingLineNumber = "1794"
+            endingLineNumber = "1794"
+            landmarkName = "removeLocalGoogleCalendars(forUserID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,9 +78,9 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1709"
-            endingLineNumber = "1709"
-            landmarkName = "signOutFromGoogle(user:)"
+            startingLineNumber = "1795"
+            endingLineNumber = "1795"
+            landmarkName = "removeLocalGoogleCalendars(forUserID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -94,9 +94,9 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2892"
-            endingLineNumber = "2892"
-            landmarkName = "fetchAllMsEvents(msCalID:accessToken:startDate:endDate:)"
+            startingLineNumber = "2978"
+            endingLineNumber = "2978"
+            landmarkName = "fetchMsEventsPage(msCalID:accessToken:startDate:endDate:pageLink:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

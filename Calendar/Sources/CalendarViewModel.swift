@@ -68,6 +68,12 @@ final class CalendarViewModel: ObservableObject {
 
     // MARK: - Init
     init() {
+        Task {
+              await refreshTokensForAllUsers()      // Google
+              for msUser in storedMsUsers {         // Microsoft
+                  _ = await refreshMicrosoftTokenIfNeeded(for: msUser)
+              }
+          }
         // 1) Attempt to load the array of StoredGoogleUsers from UserDefaults
         self.loadAllUsersFromUserDefaults()
         
@@ -150,151 +156,231 @@ final class CalendarViewModel: ObservableObject {
         oldEventCalendarMap = tmp
     }
     @objc private func handleEventStoreChanged(_ notification: Notification) {
-        // 1) Презареждаме евентите (в подходящ диапазон + филтрирани календари)
+        // 1) Селектираме „разрешените“ календари (или всички, ако предпочитате).
         let allowedCalendars = eventStore.calendars(for: .event)
             .filter { selectedCalendarIDs.contains($0.calendarIdentifier) }
 
-        let start = Date().addingTimeInterval(-3600 * 24 * 30) // 1 месец назад
-        let end   = Date().addingTimeInterval( 3600 * 24 * 180) // 6 месеца напред
+        // 2) Избираме диапазон (1 месец назад / 6 месеца напред като пример).
+        let start = Date().addingTimeInterval(-3600 * 24 * 30)
+        let end   = Date().addingTimeInterval( 3600 * 24 * 180)
+
+        // 3) Взимаме всички събития в този диапазон от тези календари.
         let pred = eventStore.predicateForEvents(withStart: start, end: end, calendars: allowedCalendars)
         let events = eventStore.events(matching: pred)
 
-        // 2) Строим нов snapshot (eventID -> calendarID) от текущите събития
+        // 4) Създаваме "нов" snapshot eventID -> calendarID
         var newEventCalendarMap: [String: String] = [:]
-
         for ev in events {
             guard let evID = ev.eventIdentifier else { continue }
-            
             let newCalID = ev.calendar.calendarIdentifier
             newEventCalendarMap[evID] = newCalID
-            
-            // Сравняваме с това, което сме запомнили досега (oldEventCalendarMap)
+
+            // Проверяваме дали старият календар се различава
             if let oldCalID = oldEventCalendarMap[evID], oldCalID != newCalID {
-                // => Евентът е преместен от oldCalID към newCalID!
-                Task {
-                    // 1) Проверяваме дали старият календар е Google (и ако да, кой userID + googleCalID)
-                    let oldGoogleInfo = findGoogleCalID(forLocalCalID: oldCalID)
-                    // 2) Проверяваме дали новият календар е Google
-                    let newGoogleInfo = findGoogleCalID(forLocalCalID: newCalID)
-                    
-                    // 3) Еvent може да има url="gcal://someGoogleEventID". Вземаме го:
-                    let maybeGEventID = extractGoogleEventID(ev)
+                // => събитието е преместено от oldCalID към newCalID
+                print("handleEventStoreChanged: \"\(ev.title ?? "")\" от \(oldCalID) към \(newCalID).")
 
-                    switch (oldGoogleInfo, newGoogleInfo) {
-                        
-                    // ---------------------------
-                    // 1) Старият = Google, Новият = Google
-                    // ---------------------------
-                    case let (.some((oldUserID, oldGoogleCalID)), .some((newUserID, newGoogleCalID))):
+                // ========== GOOGLE част ==========
+                let oldGoogleInfo = findGoogleCalID(forLocalCalID: oldCalID)
+                let newGoogleInfo = findGoogleCalID(forLocalCalID: newCalID)
+                let maybeGEventID = extractGoogleEventID(ev)
 
-                        // Ако това е един и същ Google акаунт и имаме googleEventID => MOVE
-                        if oldUserID == newUserID, let googleEventID = maybeGEventID {
-                            
-                            guard let user = getUserInMemory(oldUserID) else { return }
-                            // Ако token е изтекъл => refreshTokens(...) (пропускаме тук за краткост)
-                            
-                            // 1) Преместваме (move)
+                switch (oldGoogleInfo, newGoogleInfo) {
+                case let (.some((oldGUserID, oldGCalID)), .some((newGUserID, newGCalID))):
+                    // И старият, и новият са Google календари
+                    if oldGUserID == newGUserID, let gEvID = maybeGEventID {
+                        // Същият Google акаунт => може да ползваме moveEventInGoogle + patchEventToGoogle
+                        Task {
+                            guard let googleUser = getUserInMemory(oldGUserID) else { return }
+                            // move
                             let successMove = await moveEventInGoogle(
-                                googleEventID: googleEventID,
-                                oldGoogleCalID: oldGoogleCalID,
-                                newGoogleCalID: newGoogleCalID,
-                                accessToken: user.accessToken
+                                googleEventID: gEvID,
+                                oldGoogleCalID: oldGCalID,
+                                newGoogleCalID: newGCalID,
+                                accessToken: googleUser.accessToken
                             )
                             if successMove {
-                                print("Успешно преместен евент (Google → Google) с moveEventInGoogle.")
-                                // 2) Пачваме (patchEventToGoogle), за да качим и другите промени (заглавие, дати...)
-                                let successPatch = await patchEventToGoogle(
+                                // После patch, за да се качат евентуални промени
+                                _ = await patchEventToGoogle(
                                     event: ev,
-                                    googleCalId: newGoogleCalID,
-                                    googleEventId: googleEventID,
-                                    accessToken: user.accessToken,
-                                    userID: user.uniqueID
+                                    googleCalId: newGCalID,
+                                    googleEventId: gEvID,
+                                    accessToken: googleUser.accessToken,
+                                    userID: googleUser.uniqueID
                                 )
-                                if successPatch {
-                                    print("Patch успешен, евентът е обновен в новия календар (заглавие, време и пр.).")
-                                }
                             }
-
-                        } else {
-                            // => Различни акаунти (или maybeGEventID е nil) => изтриваме от стария + създаваме в новия
-                            // (a) Delete
-                            if let googleEventID = maybeGEventID,
-                               let oldUser = getUserInMemory(oldUserID) {
+                        }
+                    } else {
+                        // Различни акаунти (или нямаме gEvID) => трием от стария + качваме в новия
+                        Task {
+                            // (a) delete от стария
+                            if let gEvID = maybeGEventID,
+                               let oldUser = getUserInMemory(oldGUserID) {
                                 _ = await deleteEventFromGoogle(
-                                    googleCalId: oldGoogleCalID,
-                                    googleEventId: googleEventID,
+                                    googleCalId: oldGCalID,
+                                    googleEventId: gEvID,
                                     accessToken: oldUser.accessToken
                                 )
-                                print("Изтрит евент от стария акаунт (Google).")
                             }
-                            // (b) Create
-                            if let newUser = getUserInMemory(newUserID) {
+                            // (b) post в новия
+                            if let newUser = getUserInMemory(newGUserID) {
                                 _ = await postEventToGoogle(
                                     event: ev,
-                                    googleCalId: newGoogleCalID,
+                                    googleCalId: newGCalID,
                                     accessToken: newUser.accessToken,
                                     userID: newUser.uniqueID
                                 )
-                                print("Създаден евент в новия акаунт (Google).")
                             }
                         }
-                        
-                    // ---------------------------
-                    // 2) Старият = Google, Новият = Не-Google
-                    // ---------------------------
-                    case let (.some((oldUserID, oldGoogleCalID)), .none):
-                        // => Трябва да го изтрием от Google, защото вече е локален
-                        if let googleEventID = maybeGEventID,
-                           let oldUser = getUserInMemory(oldUserID) {
+                    }
+
+                case let (.some((oldGUserID, oldGCalID)), .none):
+                    // Старият е Google, новият = не-Google => трием от Google
+                    Task {
+                        if let gEvID = maybeGEventID,
+                           let oldUser = getUserInMemory(oldGUserID) {
                             _ = await deleteEventFromGoogle(
-                                googleCalId: oldGoogleCalID,
-                                googleEventId: googleEventID,
+                                googleCalId: oldGCalID,
+                                googleEventId: gEvID,
                                 accessToken: oldUser.accessToken
                             )
-                            print("Изтрит евент от Google (преместване към не-Google календар).")
                         }
-                        
-                    // ---------------------------
-                    // 3) Старият = Не-Google, Новият = Google
-                    // ---------------------------
-                    case let (.none, .some((newUserID, newGoogleCalID))):
-                        // => Създаваме ново събитие в Google
-                        if let newUser = getUserInMemory(newUserID) {
+                    }
+
+                case let (.none, .some((newGUserID, newGCalID))):
+                    // Старият = не-Google, новият = Google => създаваме в Google
+                    Task {
+                        if let newUser = getUserInMemory(newGUserID) {
                             _ = await postEventToGoogle(
                                 event: ev,
-                                googleCalId: newGoogleCalID,
+                                googleCalId: newGCalID,
                                 accessToken: newUser.accessToken,
                                 userID: newUser.uniqueID
                             )
-                            print("Създаден евент в Google (преместен от локален).")
                         }
-                        
-                    // ---------------------------
-                    // 4) И старият, и новият = НЕ-Google
-                    // ---------------------------
-                    case (.none, .none):
-                        // => Не засяга Google, не правим нищо
-                        break
                     }
+
+                case (.none, .none):
+                    // И двата не са Google => нищо не правим за Google
+                    break
                 }
 
-                // Тук за debug отпечатваме, че събитието е преместено:
-                let oldCalName = eventStore.calendar(withIdentifier: oldCalID)?.title ?? "(неизвестен)"
-                let newCalName = ev.calendar.title
-                print("Събитие ‘\(ev.title ?? "Без заглавие")’ беше преместено от ‘\(oldCalName)’ в ‘\(newCalName)’")
+                // ========== MICROSOFT част ==========
+                let oldMsInfo = findMsCalID(forLocalCalID: oldCalID)   // -> (UUID, String)?
+                let newMsInfo = findMsCalID(forLocalCalID: newCalID)
+                let maybeMsEvID = extractMsEventID(from: ev)
+
+                switch (oldMsInfo, newMsInfo) {
+                case let (.some((oldMsUserID, oldMsCalID)), .some((newMsUserID, newMsCalID))):
+                    // И старият, и новият са Microsoft
+                    if oldMsUserID == newMsUserID, let msID = maybeMsEvID {
+                        // Същият MS акаунт => можем да “premestime” (patch) ако Graph поддържа такъв ход
+                        Task {
+                            if let oldMsUser = storedMsUsers.first(where: { $0.uniqueID == oldMsUserID }) {
+                                // Примерен вариант: ако има moveMsEvent или PATCH calendarId
+                                // await moveMsEvent(...)
+                                // или просто:
+                                _ = await patchMsEvent(
+                                    msCalId: newMsCalID,
+                                    msEventId: msID,
+                                    localEvent: ev,
+                                    accessToken: oldMsUser.accessToken,
+                                    user: oldMsUser,
+                                    forceAddTeams: false
+                                )
+                            }
+                        }
+                    } else {
+                        // Различни акаунти или нямаме msID => изтриваме от стария + качваме в новия
+                        Task {
+                            // (a) delete от стария
+                            if let msID = maybeMsEvID,
+                               let oldUser = storedMsUsers.first(where: { $0.uniqueID == oldMsUserID }) {
+                                _ = await deleteMsEvent(
+                                    msCalID: oldMsCalID,
+                                    msEventID: msID,
+                                    accessToken: oldUser.accessToken
+                                )
+                            }
+                            // (b) post в новия
+                            if let newUser = storedMsUsers.first(where: { $0.uniqueID == newMsUserID }) {
+                                _ = await postMsEvent(
+                                    msCalId: newMsCalID,
+                                    localEvent: ev,
+                                    accessToken: newUser.accessToken,
+                                    user: newUser
+                                )
+                            }
+                        }
+                    }
+
+                case let (.some((oldMsUserID, oldMsCalID)), .none):
+                    // Старият = Microsoft, новият = не-Microsoft => трием от MS
+                    Task {
+                        if let msID = maybeMsEvID,
+                           let oldMsUser = storedMsUsers.first(where: { $0.uniqueID == oldMsUserID }) {
+                            _ = await deleteMsEvent(
+                                msCalID: oldMsCalID,
+                                msEventID: msID,
+                                accessToken: oldMsUser.accessToken
+                            )
+                        }
+                    }
+
+                case let (.none, .some((newMsUserID, newMsCalID))):
+                    // Старият = не-Microsoft, новият = Microsoft => постваме в MS
+                    Task {
+                        if let newMsUser = storedMsUsers.first(where: { $0.uniqueID == newMsUserID }) {
+                            _ = await postMsEvent(
+                                msCalId: newMsCalID,
+                                localEvent: ev,
+                                accessToken: newMsUser.accessToken,
+                                user: newMsUser
+                            )
+                        }
+                    }
+
+                case (.none, .none):
+                    // И двата не са Microsoft => нищо не правим за MS
+                    break
+                }
             }
         }
 
-        // Проверяваме дали някой евент от стария snapshot го няма вече => може би е изтрит:
+        // 5) Проверяваме дали някой евент от стария snapshot вече го няма
         for oldEvID in oldEventCalendarMap.keys {
             if newEventCalendarMap[oldEvID] == nil {
-                print("Събитие с ID=\(oldEvID) е изчезнало => вероятно е изтрито.")
-                // Ако е било Google => може да викнете deleteEventFromGoogle...
+                print("Събитие с ID=\(oldEvID) вече не съществува => изтрито е")
+                // => Ако е било Google => deleteEventFromGoogle(...)
+                // => Ако е било MS => deleteMsEvent(...)
+                // (Може да го откриете чрез обратен map googleToLocalEventMap/msToLocalEventMap и т.н.)
             }
         }
 
-        // 3) Накрая запомняме новата снимка
+        // 6) Накрая записваме newEventCalendarMap като нов „стар“ snapshot
         oldEventCalendarMap = newEventCalendarMap
+    }
+
+    /// Търси в msToLocalCalendarMapAll дали даденият локален календар (localCalID)
+    /// съответства на Microsoft календар. Ако да – връща (msUserUUID, msCalendarID).
+    /// Ако не намери, връща nil.
+    func findMsCalID(forLocalCalID localCalID: String) -> (UUID, String)? {
+        // msToLocalCalendarMapAll е речник [String : [String : String]],
+        // където ключът е стринг формата на userID.uuidString,
+        // а стойността е map: [msCalendarID : localCalendarID].
+        for (userKey, msMap) in msToLocalCalendarMapAll {
+            // userKey е "UUID().uuidString"
+            guard let uuid = UUID(uuidString: userKey) else { continue }
+
+            // Преглеждаме всяка двойка (msCalID -> localID).
+            // Ако localID съвпада, значи това е търсеният Microsoft календар.
+            if let (msCalID, _) = msMap.first(where: { $0.value == localCalID }) {
+                // Връщаме (UUID, msCalendarID)
+                return (uuid, msCalID)
+            }
+        }
+        // Нищо не е намерено => не е MS календар
+        return nil
     }
 
 
