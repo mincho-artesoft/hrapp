@@ -135,15 +135,69 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     ) -> UIMenu? {
         guard let descriptor = currentTappedDescriptor else { return nil }
         
-        // 1) „Edit“ бутон
+        // ------------------------------------------------
+        // Проверка дали евентът вече има някакъв видео линк:
+        // (примерно Meet, Teams и т.н.)
+        // ------------------------------------------------
+        var existingVideoURL: URL? = nil
+        
+        // Ако имаш готов помощен метод:
+        // existingVideoURL = CalendarViewModel.shared.getExistingMeetingURL(for: descriptor)
+        //
+        // Или ръчно (пример):
+        if let notes = (descriptor as? EKMultiDayWrapper)?.realEvent.notes {
+            // Търсим HTTP(S) линк, примерно:
+            // "https://meet.google.com" или "https://teams.microsoft.com/..."
+            // Може да се доразвие с regex, ако линкът не е винаги на едно и също място
+            // Тук за пример ще търсим "https://meet.google.com/"
+            if let range = notes.range(of: "https://meet.google.com/") {
+                // Изваждаме целия стринг от там нататък
+                let meetLink = String(notes[range.lowerBound...])
+                if let url = URL(string: meetLink) {
+                    existingVideoURL = url
+                }
+            }
+            // Пример и за Teams:
+            if existingVideoURL == nil, let range = notes.range(of: "https://teams.live.com/") {
+                let teamsLink = String(notes[range.lowerBound...])
+                if let url = URL(string: teamsLink) {
+                    existingVideoURL = url
+                }
+            }
+        }
+
+        // Сглобяване на екшъните
+        var children: [UIMenuElement] = []
+
+        // ------------------------------------------------
+        // (А) Ако има вече видео линк, добавяме "Join Meeting" най-отгоре
+        // ------------------------------------------------
+        if let videoURL = existingVideoURL {
+            let joinAction = UIAction(
+                title: "Join Meeting",
+                image: UIImage(systemName: "video.fill") // или "video"
+            ) { _ in
+                // Опитваме да отворим линка
+                UIApplication.shared.open(videoURL, options: [:], completionHandler: nil)
+            }
+            
+            children.append(joinAction)
+        }
+
+        // ------------------------------------------------
+        // (B) „Edit“ бутон
+        // ------------------------------------------------
         let editAction = UIAction(
             title: "Edit",
             image: UIImage(systemName: "square.and.pencil")
         ) { action in
             self.onEventTap?(descriptor)
         }
-        
-        // 2) „Duplicate“ бутон
+        children.append(editAction)
+
+        // ------------------------------------------------
+        // (C) „Duplicate“ бутон
+        // ------------------------------------------------
         let duplicateAction = UIAction(
             title: "Duplicate",
             image: UIImage(systemName: "doc.on.doc")
@@ -151,8 +205,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             self.duplicateEventInStore(descriptor)
             self.onEventDuplicated?(descriptor)
         }
-        
-        // 3) „Delete“ бутон
+        children.append(duplicateAction)
+
+        // ------------------------------------------------
+        // (D) „Delete“ бутон
+        // ------------------------------------------------
         let deleteAction = UIAction(
             title: "Delete",
             image: UIImage(systemName: "trash"),
@@ -161,18 +218,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             self.deleteEventFromStore(descriptor)
             self.onEventDeleted?(descriptor)
         }
-
-        // Събираме всички задължителни бутони
-        var children: [UIMenuElement] = [
-            editAction,
-            duplicateAction,
-            deleteAction
-        ]
+        children.append(deleteAction)
         
         // ------------------------------------------------
-        // 4) „Add to Google Meet“, **но** само при две условия:
-        //    a) има логнат Google потребител
-        //    b) текущото събитие е от Google календар
+        // (E) „Add to Google Meet“ (ако няма Meet линк)
         // ------------------------------------------------
         if !CalendarViewModel.shared.storedUsers.isEmpty,
            CalendarViewModel.shared.isGoogleCalendarEvent(descriptor),
@@ -186,6 +235,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             children.append(googleAction)
         }
+        
+        // ------------------------------------------------
+        // (F) „Add to MS Teams“ (ако няма Teams линк)
+        // ------------------------------------------------
         if let msUser = CalendarViewModel.shared.findMicrosoftUser(for: descriptor),
            !CalendarViewModel.shared.hasMicrosoftTeamsLink(in: descriptor)
         {
@@ -197,9 +250,13 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             children.append(teamsAction)
         }
-        // Финално връщаме UIMenu с децата
+
+        // ------------------------------------------------
+        // Финално връщаме менюто
+        // ------------------------------------------------
         return UIMenu(title: "", children: children)
     }
+    
     private func deleteEventFromStore(_ descriptor: EventDescriptor) {
         guard let multi = descriptor as? EKMultiDayWrapper else { return }
         let realEv = multi.realEvent

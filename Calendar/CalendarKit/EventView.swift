@@ -50,13 +50,20 @@ open class EventView: UIView {
         let eventCalendar = wrapper.realEvent.calendar
         let calType = eventCalendar?.type ?? .local
         
-        // Подготвяме NSTextAttachment за иконки
-        let iconAttachment = NSTextAttachment()
-        let calendarAttachment = NSTextAttachment()
+        // Настройки за иконките
+        let iconSize = CGSize(width: 12, height: 12)
         
+        // Иконка за календар (ако е all-day без да е birthday/holiday)
+        let calendarAttachment = NSTextAttachment()
+        calendarAttachment.bounds = CGRect(x: 0, y: -2, width: iconSize.width, height: iconSize.height)
+        
+        // Иконка за birthday/holiday (gift/star) или nil
+        let iconAttachment = NSTextAttachment()
+        iconAttachment.bounds = CGRect(x: 0, y: -2, width: iconSize.width, height: iconSize.height)
+
         var shouldShowCalendarIcon = false
         
-        // Проверяваме типа на календара
+        // Проверка за типа календар (birthday/holiday)
         if calType == .birthday {
             iconAttachment.image = UIImage(systemName: "gift.circle.fill")?
                 .withTintColor(event.color, renderingMode: .alwaysOriginal)
@@ -66,62 +73,77 @@ open class EventView: UIView {
                 .withTintColor(event.color, renderingMode: .alwaysOriginal)
         } else {
             iconAttachment.image = nil
-            shouldShowCalendarIcon = event.isAllDay  // Показваме иконка само ако не е birthday/holiday
+            shouldShowCalendarIcon = event.isAllDay
         }
         
-        // Ако събитието е all-day и не е birthday/holiday, добавяме иконката на календар
+        // Ако е all-day и не е birthday/holiday -> иконка календар
         if shouldShowCalendarIcon {
             calendarAttachment.image = UIImage(systemName: "calendar.circle.fill")?
                 .withTintColor(event.color, renderingMode: .alwaysOriginal)
-            calendarAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
         }
 
-        // Коригираме bounds за центриране
-        iconAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
-
-        // Създаваме атрибутите за текста
-        // Тук сменяме .foregroundColor от event.textColor на event.color.withAlphaComponent(1)
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: event.font,
-            .foregroundColor: event.color.withAlphaComponent(1) // <-- Винаги цвета на event
+            .foregroundColor: event.color
         ]
-
-        // Финален атрибутиран низ
+        
+        // Финалният атрибутиран низ, който ще напълним
         let finalString = NSMutableAttributedString()
-
-        // Ако събитието е all-day и не е birthday/holiday, добавяме иконката на календар
-        if shouldShowCalendarIcon {
+        
+        // 1) Показваме (ако трябва) календарна/holiday/birthday иконка преди заглавието
+        if let calImage = calendarAttachment.image {
             finalString.append(NSAttributedString(attachment: calendarAttachment))
             finalString.append(NSAttributedString(string: " ", attributes: textAttributes))
         }
-
-        // Ако имаме иконка за birthday/holiday, добавяме я
-        if iconAttachment.image != nil {
+        if let mainIcon = iconAttachment.image {
             finalString.append(NSAttributedString(attachment: iconAttachment))
             finalString.append(NSAttributedString(string: " ", attributes: textAttributes))
         }
-
-        // Добавяме заглавието на събитието
+        
+        // 2) Заглавие
         finalString.append(NSAttributedString(string: wrapper.text, attributes: textAttributes))
+        
+        // 3) Видеоразговор ред (ако го има):
+        var hasVideoCall = false
+        if let notes = wrapper.realEvent.notes,
+           notes.contains("----( Video Call )----")
+        {
+            // Търсим текста в [ ] - примерно [Google Meet], [Microsoft Teams], и т.н.
+            let bracketRegex = "\\[([^\\]]+)\\]"
+            if let matchRange = notes.range(of: bracketRegex, options: .regularExpression) {
+                let bracketedText = String(notes[matchRange]) // "[Microsoft Teams]" например
+                let platform = bracketedText.trimmingCharacters(in: .init(charactersIn: "[]"))
+                
+                // Нов ред под заглавието + иконка за видео
+                finalString.append(NSAttributedString(string: "\n"))  // <— тук слизаме на следващ ред
+                let videoAttachment = NSTextAttachment()
+                videoAttachment.image = UIImage(systemName: "video")?
+                    .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                videoAttachment.bounds = CGRect(x: 0, y: -2, width: iconSize.width, height: iconSize.height)
+                
+                finalString.append(NSAttributedString(attachment: videoAttachment))
+                finalString.append(NSAttributedString(string: " \(platform)", attributes: textAttributes))
+                hasVideoCall = true
+            }
+        }
 
-        // Добавяме нов ред
-        finalString.append(NSAttributedString(string: "\n"))
-
-        // Ако не е целодневно, добавяме часовник и времеви интервал (с проверка за multi-day)
+        // 4) Ако евентът не е all-day, показваме часа
+        //    - ако има видео, ще добавим нов ред след него
+        //    - ако няма видео, времето ще е веднага под името
         if !event.isAllDay {
-            let clockAttachment = NSTextAttachment()
-            clockAttachment.image = UIImage(systemName: "clock")?
+            finalString.append(NSAttributedString(string: "\n")) // Винаги на нов ред
+            let clockIcon = NSTextAttachment()
+            clockIcon.image = UIImage(systemName: "clock")?
                 .withTintColor(event.color, renderingMode: .alwaysOriginal)
-            clockAttachment.bounds = CGRect(x: 0, y: -2, width: 14, height: 14)
-            finalString.append(NSAttributedString(attachment: clockAttachment))
+            clockIcon.bounds = CGRect(x: 0, y: -2, width: iconSize.width, height: iconSize.height)
+            
+            finalString.append(NSAttributedString(attachment: clockIcon))
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             
-            // Взимаме реалните дати от EKEvent:
             let startDate = wrapper.realEvent.startDate
-            let endDate   = wrapper.realEvent.endDate ?? startDate
-            
+            let endDate = wrapper.realEvent.endDate ?? startDate
             let calendar = Calendar.current
             let isSpanningMultipleDays = !calendar.isDate(startDate!, inSameDayAs: endDate!)
             
@@ -132,33 +154,45 @@ open class EventView: UIView {
             }
             
             let startStr = dateFormatter.string(from: startDate!)
-            let endStr   = dateFormatter.string(from: endDate!)
+            let endStr = dateFormatter.string(from: endDate!)
             
-            finalString.append(
-                NSAttributedString(
-                    string: " \(startStr) - \(endStr)",
-                    attributes: textAttributes
-                )
-            )
+            finalString.append(NSAttributedString(string: " \(startStr) - \(endStr)", attributes: textAttributes))
         }
-
-        // Задаваме получения атрибутиран текст в textView
+        
+        // 5) Локация (ако има)
+        if let location = wrapper.realEvent.location, !location.isEmpty {
+            // Винаги нов ред под часа
+            finalString.append(NSAttributedString(string: "\n"))
+            
+            let locationAttachment = NSTextAttachment()
+            locationAttachment.image = UIImage(systemName: "location")?
+                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+            locationAttachment.bounds = CGRect(x: 0, y: -2, width: iconSize.width, height: iconSize.height)
+            
+            finalString.append(NSAttributedString(attachment: locationAttachment))
+            finalString.append(NSAttributedString(string: " \(location)", attributes: textAttributes))
+        }
+        
+        // Задаваме получения низ
         textView.attributedText = finalString
-
-        // UI настройки
+        
+        // Други UI настройки
         backgroundColor = .clear
         layer.backgroundColor = event.backgroundColor.cgColor
         layer.cornerRadius = event.isAllDay ? 9 : 5
         color = event.color
-
+        
         eventResizeHandles.forEach {
             $0.borderColor = event.color
             $0.isHidden = event.editedEvent == nil
         }
-
+        
         setNeedsDisplay()
         setNeedsLayout()
     }
+
+
+
     
     public func animateCreation() {
         transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
