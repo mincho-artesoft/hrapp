@@ -3013,29 +3013,33 @@ extension CalendarViewModel {
            print("=== uploadLocalChangesToMicrosoft END for \(msCalId) => \(localCalendar.title) ===")
        }
     /// Създава НОВ евент в MS Calendar (POST /me/calendars/{calId}/events)
+    /// Creates a new event in Microsoft Calendar *with* a Teams link by default.
     private func postMsEvent(
         msCalId: String,
         localEvent: EKEvent,
         accessToken: String,
         user: StoredMicrosoftUser
     ) async -> Bool {
-        // 1) Готвим URL:
+        // 1) Build the POST URL: https://graph.microsoft.com/v1.0/me/calendars/{calId}/events
         guard let encodedCalID = msCalId.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
               let url = URL(string: "\(kGraphEndpoint)v1.0/me/calendars/\(encodedCalID)/events")
         else {
             print("postMsEvent: Bad URL!")
             return false
         }
-
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        // 2) Създаваме тялото (JSON).
-        //    Вече имате makeMsEventBody(...), но сега добавяме isOnlineMeeting + onlineMeetingProvider:
-
+        // 2) Build the JSON body from the local EKEvent.
+        //    Typically you’d have a helper like `makeMsEventBody(from:)` that converts
+        //    the title, notes, start/end times, etc. to the MS Graph JSON structure.
+        //    Then we add "isOnlineMeeting" + "onlineMeetingProvider".
         var bodyDict = makeMsEventBody(from: localEvent)
+        
+        // Add these two lines to create a Teams online meeting
         bodyDict["isOnlineMeeting"] = true
         bodyDict["onlineMeetingProvider"] = "teamsForBusiness"
         
@@ -3044,26 +3048,27 @@ extension CalendarViewModel {
             return false
         }
         request.httpBody = bodyData
-
-        // 3) Изпращаме заявката
+        
         do {
+            // 3) Send the POST request
             let (data, response) = try await URLSession.shared.data(for: request)
+            
+            // Check for success
             if let httpResp = response as? HTTPURLResponse, !(200...299).contains(httpResp.statusCode) {
                 let errBody = String(data: data, encoding: .utf8) ?? ""
                 print("postMsEvent: HTTP \(httpResp.statusCode), body=\(errBody)")
                 return false
             }
             
-            // 4) Успешен отговор => декодираме MSCalendarEvent
+            // 4) Decode the newly created MSCalendarEvent
             let created = try JSONDecoder().decode(MSCalendarEvent.self, from: data)
             let newID   = created.id
-
-            // Записваме URL-то в локалния евент => "mscal://{id}"
+            
+            // Mark the local event with url = "mscal://{newID}"
             localEvent.url = URL(string: "mscal://\(newID)")
-
-            // Ако е върнал onlineMeeting.joinUrl => добавяме го в notes:
+            
+            // If Graph returned an onlineMeeting.joinUrl => add it to local EKEvent notes
             if let joinUrl = created.onlineMeeting?.joinUrl, !joinUrl.isEmpty {
-                // Примерен блок, подобен на meet-block-a при Google:
                 let teamsBlock = """
                 ----( Video Call )----
                 [Microsoft Teams]
@@ -3075,11 +3080,12 @@ extension CalendarViewModel {
                     ? teamsBlock
                     : existingNotes + "\n\n" + teamsBlock
             }
-
-            // 5) Записваме локално събитието
+            
+            // 5) Save this EKEvent locally
             try eventStore.save(localEvent, span: .thisEvent, commit: true)
             
-            // 6) Обновяваме речниците: `msToLocalEventMap` и `msEventUpdatedMap`
+            // 6) Update your local dictionary maps
+            //    e.g. msToLocalEventMap[userID][msEventID] = localEventIdentifier
             var evMap  = msToLocalEventMap(for: user.uniqueID)
             evMap[newID] = localEvent.eventIdentifier
             setMsToLocalEventMap(evMap, for: user.uniqueID)
@@ -3089,15 +3095,16 @@ extension CalendarViewModel {
                 updMap[newID] = msUpdated
             }
             setMsEventUpdatedMap(updMap, for: user.uniqueID)
-
-            print("postMsEvent: created MS event + Teams link => \(localEvent.title ?? "nil")")
+            
+            print("postMsEvent => created MS event with Teams link => \(localEvent.title ?? "nil")")
             return true
-
+            
         } catch {
             print("postMsEvent: error =>", error.localizedDescription)
             return false
         }
     }
+
 
     /// Прави PATCH към Microsoft Graph, за да актуализира съществуващо събитие (MS Calendar Event).
     /// - Parameters:
@@ -3221,28 +3228,21 @@ extension CalendarViewModel {
     ///
     /// - НЕ трием video call блоковете (Meet, Teams) от `notes`,
     ///   за да не губим информацията за онлайн срещата.
+    /// Builds the dictionary for MS Graph `POST / PATCH` request body.
+    /// This example does NOT remove any "video call" blocks from notes
+    /// (so if you have existing Teams or Meet info, it will remain).
     private func makeMsEventBody(from localEvent: EKEvent) -> [String: Any] {
-        // 1) Заглавие (subject)
         let subjectVal = localEvent.title ?? "(No Title)"
-
-        // 2) Вече НЕ трием нищо от notes (за да запазим Teams линковете)
         let originalNotes = localEvent.notes ?? ""
-        // Ако преди триехте и Google Meet, тук можете да махнете само Meet блоковете,
-        // но да оставяте "teams.microsoft.com", ако искате. Най-простият вариант е:
-        let sanitizedNotes = originalNotes
-
-        // 3) Подготвяме "body" JSON (текстово съдържание на събитието)
+        
         let bodyDict: [String: Any] = [
             "contentType": "text",
-            "content": sanitizedNotes
+            "content": originalNotes
         ]
-
-        // 4) Определяме start / end
-        //    - Ако е all-day => "date": "2025-03-27"
-        //    - Иначе => "dateTime": "2025-03-27T10:00:00", timeZone="UTC"
+        
         var startDict: [String: Any] = [:]
         var endDict:   [String: Any] = [:]
-
+        
         if localEvent.isAllDay {
             let formatter = DateFormatter()
             formatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -3250,37 +3250,42 @@ extension CalendarViewModel {
             
             let startDateStr = formatter.string(from: localEvent.startDate)
             let endDateStr   = formatter.string(from: localEvent.endDate)
-
+            
+            // For all-day, use { "date": "YYYY-MM-DD" }
             startDict = ["date": startDateStr, "timeZone": "UTC"]
             endDict   = ["date": endDateStr,   "timeZone": "UTC"]
+            
         } else {
             let isoFormatter = ISO8601DateFormatter()
             isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-
+            
             let startStr = isoFormatter.string(from: localEvent.startDate)
             let endStr   = isoFormatter.string(from: localEvent.endDate)
-
+            
+            // For timed events, use { "dateTime": "YYYY-MM-DDTHH:MM:SS", "timeZone": "UTC" }
             startDict = ["dateTime": startStr, "timeZone": "UTC"]
             endDict   = ["dateTime": endStr,   "timeZone": "UTC"]
         }
-
-        // 5) По желание задаваме location
+        
+        // Optional: location
         let locationDict: [String: Any] = [
             "displayName": localEvent.location ?? ""
         ]
-
-        // 6) Събираме всичко в един Dictionary
+        
         let eventDict: [String: Any] = [
             "subject": subjectVal,
             "body": bodyDict,
             "start": startDict,
             "end":   endDict,
             "location": locationDict
-            // Тук може да добавите "attendees", "isOnlineMeeting", "onlineMeetingProvider" и т.н.
+            // We do NOT include isOnlineMeeting here by default.
+            // That part we set in the main `postMsEvent` if we want a Teams link:
+            //   bodyDict["isOnlineMeeting"]         = true
+            //   bodyDict["onlineMeetingProvider"]   = "teamsForBusiness"
         ]
-
         return eventDict
     }
+
 
 
     /// Качва локалните изтривания: т.е. евентите, които преди са били в msToLocalEventMap,
