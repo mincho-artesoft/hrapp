@@ -260,13 +260,25 @@ extension CalendarsSheetView {
     private var addCalendarSection: some View {
         Section {
             Button(action: {
-                showAddCalendarSheet = true
+                showICloudSheet = true
             }) {
                 HStack {
-                    Image("icloud_icon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                    Image(systemName: "icloud.fill")
+                        .foregroundStyle(
+                            LinearGradient(
+                                gradient: Gradient(colors: [
+                                    Color(red: 0.69, green: 0.85, blue: 0.98), // Светло синьо
+                                    Color(red: 0.46, green: 0.70, blue: 0.97),
+                                    Color(red: 0.26, green: 0.57, blue: 0.96),
+                                    Color(red: 0.09, green: 0.44, blue: 0.94),
+                                    Color(red: 0.04, green: 0.35, blue: 0.92)  // По-тъмно синьо
+                                ]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
                         .frame(width: 28, height: 28)
+
                     Text("Add iCloud Calendar")
                 }
             }
@@ -285,22 +297,22 @@ extension CalendarsSheetView {
                         .foregroundStyle(
                             LinearGradient(
                                 gradient: Gradient(colors: [
-                                    Color(red: 0.90, green: 0.95, blue: 1.0), // Светло синьо
-                                      Color(red: 0.75, green: 0.85, blue: 1.0),
-                                      Color(red: 0.60, green: 0.75, blue: 1.0),
-                                      Color(red: 0.45, green: 0.65, blue: 0.90), // Още по-тъмно
-                                      Color.blue
-                                    ]),
+                                    Color(red: 0.69, green: 0.85, blue: 0.98), // Светло синьо
+                                    Color(red: 0.46, green: 0.70, blue: 0.97),
+                                    Color(red: 0.26, green: 0.57, blue: 0.96),
+                                    Color(red: 0.09, green: 0.44, blue: 0.94),
+                                    Color(red: 0.04, green: 0.35, blue: 0.92)  // По-тъмно синьо
+                                ]),
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
                         )
                         .frame(width: 28, height: 28)
 
-                    
                     Text("Share calendars with iCloud Calendar")
                 }
             }
+        
             .buttonStyle(PlainButtonStyle())
             .sheet(isPresented: $showICloudSheet) {
                 if let url = URL(string: "https://www.icloud.com/calendar/") {
