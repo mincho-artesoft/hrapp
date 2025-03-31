@@ -5,79 +5,73 @@ import GoogleSignInSwift
 import MSAL
 import SafariServices
 
+struct GoogleSharingInfo: Codable, Equatable {
+    var calID: String
+    var calTitle: String
+}
+
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
-    
     @ObservedObject var viewModel: CalendarViewModel = .shared
-    
-    // Disclosure controls
-    @State private var showICloudSheet     = false
-    @State private var iCloudExpanded      = true
-    @State private var isOtherExpanded     = true
-    @State private var googleExpandedStates:    [UUID: Bool] = [:]
-    @State private var msExpandedStates:        [UUID: Bool] = [:]
-    
-    // Editing / Adding local calendars
+
+    // Вместо отделни променливи за споделяне използваме речник:
+    @State private var googleSharingInfos: [String: GoogleSharingInfo] = [:]
+    // Запазваме кой акаунт (ключ – uniqueID.uuidString) е избран за споделяне в момента:
+    @State private var currentGoogleUserID: String? = nil
+
+    // Други State/Binding свойства
+    @State private var iCloudExpanded = true
+    @State private var isOtherExpanded = true
+    @State private var googleExpandedStates: [UUID: Bool] = [:]
+    @State private var msExpandedStates: [UUID: Bool] = [:]
     @State private var calendarToEdit: EKCalendar? = nil
     @State private var showAddCalendarSheet = false
-    
+    @State private var showICloudSheet = false
+    @State private var showingGoogleSharingSheet = false
+
     var body: some View {
         NavigationView {
             Form {
-                // 1) iCloud
                 iCloudSection
-                
-                // 2) Other
                 otherSection
-                
-                // 3) Google
                 googleSection
-                
-                // 4) Microsoft
                 microsoftSection
-                
-                // 5) Add new local calendar
                 addCalendarSection
-                
-                // 6) “Share with iCloud Calendar” button
                 shareCalendarsSection
-                
-                // 7) Google sign-in
                 googleSignInSection
-                
-                // 8) Microsoft sign-in
                 microsoftSignInSection
             }
             .listSectionSpacing(8)
             .navigationBarTitle("Calendars", displayMode: .inline)
-            // Navigation bar items
-            .navigationBarItems(
-                leading: selectAllButton,
-                trailing: doneButton
-            )
+            .navigationBarItems(leading: selectAllButton, trailing: doneButton)
         }
-        // Reload calendars each time the sheet appears
         .onAppear {
             viewModel.reloadCalendars()
+            loadGoogleSharingInfos()
+            loadCurrentGoogleUserID()
+
         }
-        // Sheet за редактиране на календар
-        .sheet(item: $calendarToEdit, onDismiss: {
-            viewModel.reloadCalendars()
-        }) { cal in
-            EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
+        .onChange(of: googleSharingInfos) { _ in
+            saveGoogleSharingInfos()
         }
-        // Sheet за добавяне на календар
-        .sheet(isPresented: $showAddCalendarSheet) {
-            AddCalendarView()
+        .onChange(of: currentGoogleUserID) { _ in
+            saveCurrentGoogleUserID()
+        }
+        .sheet(isPresented: $showingGoogleSharingSheet) {
+            if let userID = currentGoogleUserID,
+               let info = googleSharingInfos[userID],
+               let user = viewModel.storedUsers.first(where: { $0.uniqueID.uuidString == userID }) {
+                GoogleCalendarSharingView(
+                    googleCalID: info.calID,
+                    user: user,
+                    calendarTitle: info.calTitle
+                )
+            }
         }
     }
-}
-
-// MARK: - Subviews / Sections
-
-extension CalendarsSheetView {
     
-    // iCloud Section
+    // MARK: - Computed Sections
+    
     private var iCloudSection: some View {
         Section {
             DisclosureGroup("iCloud", isExpanded: $iCloudExpanded) {
@@ -87,7 +81,9 @@ extension CalendarsSheetView {
                         isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                         toggleAction: toggleCalendar,
                         editAction: { calendarToEdit = cal },
-                        showEditButton: true
+                        showEditButton: true,
+                        showShareButton: false,
+                        shareAction: {}
                     )
                     .listRowSeparator(.hidden)
                 }
@@ -95,7 +91,6 @@ extension CalendarsSheetView {
         }
     }
     
-    // Other Section
     private var otherSection: some View {
         Section {
             DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
@@ -105,7 +100,9 @@ extension CalendarsSheetView {
                         isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                         toggleAction: toggleCalendar,
                         editAction: { calendarToEdit = cal },
-                        showEditButton: true
+                        showEditButton: true,
+                        showShareButton: false,
+                        shareAction: {}
                     )
                     .listRowSeparator(.hidden)
                 }
@@ -113,10 +110,8 @@ extension CalendarsSheetView {
         }
     }
     
-    // Google Section
     private var googleSection: some View {
         Group {
-            // Label “Google calendars”
             if !viewModel.storedUsers.isEmpty {
                 Section {
                     Text("Google calendars")
@@ -124,7 +119,6 @@ extension CalendarsSheetView {
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
             
-            // For each Google user
             ForEach(viewModel.storedUsers, id: \.uniqueID) { user in
                 let binding = Binding<Bool>(
                     get: { googleExpandedStates[user.uniqueID] ?? true },
@@ -133,9 +127,7 @@ extension CalendarsSheetView {
                 
                 Section {
                     DisclosureGroup(isExpanded: binding) {
-                        // Child content for this Google user
                         let googleCals = googleCopiedCalendars(for: user)
-                        
                         if googleCals.isEmpty {
                             Text("No synced Google calendars yet.")
                                 .font(.footnote)
@@ -146,21 +138,28 @@ extension CalendarsSheetView {
                                     calendar: cal,
                                     isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                     toggleAction: toggleCalendar,
-                                    editAction: { calendarToEdit = cal },
-                                    showEditButton: false
+                                    editAction: { },
+                                    showEditButton: false,
+                                    showShareButton: (user.refreshToken?.isEmpty == false),
+                                    shareAction: {
+                                        if let googleCalID = findGoogleCalID(cal, user: user) {
+                                            googleSharingInfos[user.uniqueID.uuidString] = GoogleSharingInfo(calID: googleCalID, calTitle: cal.title)
+                                            currentGoogleUserID = user.uniqueID.uuidString
+                                            showingGoogleSharingSheet = true
+                                        }
+                                    }
                                 )
                                 .listRowSeparator(.hidden)
                             }
                         }
                         
-                        // Sign-out button
                         Button("Sign out") {
                             viewModel.signOutFromGoogle(user: user)
                         }
                         .foregroundColor(.red)
+                        
                     } label: {
                         HStack {
-                            // Show user avatar if we have one
                             if let photoURLString = user.photoURL,
                                let photoURL = URL(string: photoURLString) {
                                 AsyncImage(url: photoURL) { phase in
@@ -196,10 +195,8 @@ extension CalendarsSheetView {
         }
     }
     
-    // Microsoft Section
     private var microsoftSection: some View {
         Group {
-            // Label “Microsoft calendars”
             if !viewModel.storedMsUsers.isEmpty {
                 Section {
                     Text("Microsoft calendars")
@@ -207,7 +204,6 @@ extension CalendarsSheetView {
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
             
-            // For each Microsoft user
             ForEach(viewModel.storedMsUsers, id: \.uniqueID) { user in
                 let binding = Binding<Bool>(
                     get: { msExpandedStates[user.uniqueID] ?? true },
@@ -217,7 +213,6 @@ extension CalendarsSheetView {
                 Section {
                     DisclosureGroup(isExpanded: binding) {
                         let msCals = viewModel.microsoftCopiedCalendars(for: user)
-                        
                         if msCals.isEmpty {
                             Text("No synced Microsoft calendars yet.")
                                 .font(.footnote)
@@ -229,24 +224,24 @@ extension CalendarsSheetView {
                                     isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                                     toggleAction: toggleCalendar,
                                     editAction: { calendarToEdit = cal },
-                                    showEditButton: false
+                                    showEditButton: false,
+                                    showShareButton: false,
+                                    shareAction: {}
                                 )
                                 .listRowSeparator(.hidden)
                             }
                         }
                         
-                        // Sign-out button
                         Button("Sign out") {
                             viewModel.signOutFromMicrosoft(user: user)
                         }
                         .foregroundColor(.red)
+                        
                     } label: {
                         HStack {
-                            // If you have an avatar URL, load it similarly with AsyncImage
                             Image(systemName: "person.circle")
                                 .resizable()
                                 .frame(width: 28, height: 28)
-                            
                             Text("\(user.email ?? "No Email")")
                                 .padding(.leading, 4)
                         }
@@ -256,29 +251,28 @@ extension CalendarsSheetView {
         }
     }
     
-    // Section: Add local calendar
     private var addCalendarSection: some View {
         Section {
             Button(action: {
-                showICloudSheet = true
+                showAddCalendarSheet = true
             }) {
                 HStack {
                     Image(systemName: "icloud.fill")
                         .foregroundStyle(
                             LinearGradient(
                                 gradient: Gradient(colors: [
-                                    Color(red: 0.69, green: 0.85, blue: 0.98), // Светло синьо
+                                    Color(red: 0.69, green: 0.85, blue: 0.98),
                                     Color(red: 0.46, green: 0.70, blue: 0.97),
                                     Color(red: 0.26, green: 0.57, blue: 0.96),
                                     Color(red: 0.09, green: 0.44, blue: 0.94),
-                                    Color(red: 0.04, green: 0.35, blue: 0.92)  // По-тъмно синьо
+                                    Color(red: 0.04, green: 0.35, blue: 0.92)
                                 ]),
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
                         )
                         .frame(width: 28, height: 28)
-
+                    
                     Text("Add iCloud Calendar")
                 }
             }
@@ -286,7 +280,6 @@ extension CalendarsSheetView {
         }
     }
     
-    // Section: “Share with iCloud Calendar”
     private var shareCalendarsSection: some View {
         Section {
             Button(action: {
@@ -297,22 +290,21 @@ extension CalendarsSheetView {
                         .foregroundStyle(
                             LinearGradient(
                                 gradient: Gradient(colors: [
-                                    Color(red: 0.69, green: 0.85, blue: 0.98), // Светло синьо
+                                    Color(red: 0.69, green: 0.85, blue: 0.98),
                                     Color(red: 0.46, green: 0.70, blue: 0.97),
                                     Color(red: 0.26, green: 0.57, blue: 0.96),
                                     Color(red: 0.09, green: 0.44, blue: 0.94),
-                                    Color(red: 0.04, green: 0.35, blue: 0.92)  // По-тъмно синьо
+                                    Color(red: 0.04, green: 0.35, blue: 0.92)
                                 ]),
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
                         )
                         .frame(width: 28, height: 28)
-
+                    
                     Text("Share calendars with iCloud Calendar")
                 }
             }
-        
             .buttonStyle(PlainButtonStyle())
             .sheet(isPresented: $showICloudSheet) {
                 if let url = URL(string: "https://www.icloud.com/calendar/") {
@@ -322,7 +314,6 @@ extension CalendarsSheetView {
         }
     }
     
-    // Section: Google sign-in
     private var googleSignInSection: some View {
         Section {
             Button(action: signInWithGoogle) {
@@ -338,7 +329,6 @@ extension CalendarsSheetView {
         }
     }
     
-    // Section: Microsoft sign-in
     private var microsoftSignInSection: some View {
         Section {
             Button(action: signInWithMicrosoft) {
@@ -353,42 +343,26 @@ extension CalendarsSheetView {
             .buttonStyle(PlainButtonStyle())
         }
     }
-}
-
-// MARK: - Navigation Bar Items
-
-extension CalendarsSheetView {
+    
     private var selectAllButton: some View {
         Button(action: {
             let allIDs = Set(viewModel.allCalendars.map { $0.calendarIdentifier })
             if viewModel.selectedCalendarIDs.count == allIDs.count {
-                // All selected → deselect all
                 viewModel.selectedCalendarIDs.removeAll()
             } else {
-                // Some not selected → select all
                 viewModel.selectedCalendarIDs = allIDs
             }
         }) {
-            Text(
-                viewModel.selectedCalendarIDs.count == viewModel.allCalendars.count
-                ? "Deselect All"
-                : "Select All"
-            )
+            Text(viewModel.selectedCalendarIDs.count == viewModel.allCalendars.count ? "Deselect All" : "Select All")
         }
     }
-
+    
     private var doneButton: some View {
         Button("Done") {
             presentationMode.wrappedValue.dismiss()
         }
     }
-}
-
-// MARK: - Helpers
-
-extension CalendarsSheetView {
     
-    /// Превключва calendar в selectedCalendarIDs
     private func toggleCalendar(_ cal: EKCalendar) {
         if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {
             viewModel.selectedCalendarIDs.remove(cal.calendarIdentifier)
@@ -397,32 +371,23 @@ extension CalendarsSheetView {
         }
     }
     
-    /// Връща локалните (EKCalendar), които са копирани от Google за даден user.
     private func googleCopiedCalendars(for user: StoredGoogleUser) -> [EKCalendar] {
         let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
         let localIDs = Set(map.values)
         return viewModel.allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
     }
     
-    /// Връща локалните (EKCalendar), които са копирани от Microsoft за даден user.
-    private func microsoftCopiedCalendars(for user: StoredMicrosoftUser) -> [EKCalendar] {
-        let map = viewModel.msToLocalCalendarMap(for: user.uniqueID)
-        let localIDs = Set(map.values)
-        return viewModel.allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
+    private func findGoogleCalID(_ cal: EKCalendar, user: StoredGoogleUser) -> String? {
+        let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
+        return map.first(where: { $0.value == cal.calendarIdentifier })?.key
     }
-    
-    // MARK: - Sign-in Methods
     
     private func signInWithGoogle() {
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: viewModel.clientID)
         
-        guard
-            let windowScene = UIApplication.shared.connectedScenes
-                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-            let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
-        else {
-            return
-        }
+        guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+              let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        else { return }
         
         GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
             if let error = error {
@@ -432,15 +397,10 @@ extension CalendarsSheetView {
             
             if let user = signInResult?.user {
                 print("Signed in user:", user.profile?.email ?? "(no email)")
-                // Запазваме user в UserDefaults
                 viewModel.storeGoogleUserInUserDefaults(user)
-                
-                // Ако е първи акаунт, почваме sync
                 if viewModel.storedUsers.count == 1 {
                     viewModel.startGoogleCalendarSync()
                 }
-                
-                // Immediate sync
                 Task {
                     if let newStoredUser = viewModel.storedUsers.last {
                         await viewModel.performGoogleCalendarSync(for: newStoredUser)
@@ -453,18 +413,32 @@ extension CalendarsSheetView {
     private func signInWithMicrosoft() {
         viewModel.signInWithMicrosoft()
     }
-}
-
-// MARK: - SafariView
-
-struct SafariView: UIViewControllerRepresentable {
-    let url: URL
     
-    func makeUIViewController(context: Context) -> SFSafariViewController {
-        SFSafariViewController(url: url)
+    // MARK: - UserDefaults Helpers for Sharing Info
+    
+    private func loadGoogleSharingInfos() {
+        if let data = UserDefaults.standard.data(forKey: "GoogleSharingInfos") {
+            if let infos = try? JSONDecoder().decode([String: GoogleSharingInfo].self, from: data) {
+                googleSharingInfos = infos
+            }
+        }
     }
     
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
-        // Няма нужда от обновяване
+    private func saveGoogleSharingInfos() {
+        if let data = try? JSONEncoder().encode(googleSharingInfos) {
+            UserDefaults.standard.set(data, forKey: "GoogleSharingInfos")
+        }
+    }
+    
+    private func loadCurrentGoogleUserID() {
+        currentGoogleUserID = UserDefaults.standard.string(forKey: "CurrentGoogleUserID")
+    }
+    
+    private func saveCurrentGoogleUserID() {
+        if let id = currentGoogleUserID {
+            UserDefaults.standard.set(id, forKey: "CurrentGoogleUserID")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "CurrentGoogleUserID")
+        }
     }
 }

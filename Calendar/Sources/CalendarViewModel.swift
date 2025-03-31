@@ -3918,3 +3918,127 @@ extension CalendarViewModel {
     }
 
 }
+import Foundation
+import GoogleSignIn
+import EventKit
+
+extension CalendarViewModel {
+    
+    // MARK: - Google Calendar Sharing (ACL)
+
+    /// Взима списъка от ACL (Access Control List) правила за даден Google календар.
+    /// За да разберем с кого е споделен календарът, ще извлечем “scope.type=email”
+    /// и “scope.value=имейл адрес” от JSON отговора.
+    func fetchGoogleCalendarAclList(
+        googleCalendarID: String,
+        accessToken: String
+    ) async throws -> [GoogleCalendarACLRule] {
+        guard let encCalID = googleCalendarID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(encCalID)/acl")
+        else {
+            throw NSError(domain: "BadURL", code: -1, userInfo: nil)
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        if let httpResp = response as? HTTPURLResponse, httpResp.statusCode >= 300 {
+            let body = String(data: data, encoding: .utf8) ?? ""
+            throw NSError(domain: "fetchGoogleCalendarAclList", code: httpResp.statusCode, userInfo: [
+                NSLocalizedDescriptionKey: "HTTP \(httpResp.statusCode): \(body)"
+            ])
+        }
+        
+        let decoded = try JSONDecoder().decode(GoogleCalendarACLListResponse.self, from: data)
+        return decoded.items
+    }
+    
+    /// Добавя ново ACL правило (споделяне) за даден Google календар с конкретен имейл.
+    /// - parameter ruleRole: Какви права даваме – например "reader" (само четене) или "writer".
+    ///   Ако искаме да даваме и права за „управление“, това е "owner", но обикновено се внимава с това.
+    func insertGoogleCalendarAcl(
+        googleCalendarID: String,
+        accessToken: String,
+        emailToShare: String,
+        ruleRole: String = "reader"
+    ) async throws -> GoogleCalendarACLRule {
+        guard let encCalID = googleCalendarID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(encCalID)/acl")
+        else {
+            throw NSError(domain: "BadURL", code: -1, userInfo: nil)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        // Тялото: даваме права "reader" или "writer" на конкретен имейл
+        let bodyDict: [String: Any] = [
+            "scope": [
+                "type": "user",
+                "value": emailToShare
+            ],
+            "role": ruleRole
+        ]
+        
+        let bodyData = try JSONSerialization.data(withJSONObject: bodyDict, options: [])
+        request.httpBody = bodyData
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        if let httpResp = response as? HTTPURLResponse, httpResp.statusCode >= 300 {
+            let body = String(data: data, encoding: .utf8) ?? ""
+            throw NSError(domain: "insertGoogleCalendarAcl", code: httpResp.statusCode, userInfo: [
+                NSLocalizedDescriptionKey: "HTTP \(httpResp.statusCode): \(body)"
+            ])
+        }
+        
+        let decoded = try JSONDecoder().decode(GoogleCalendarACLRule.self, from: data)
+        return decoded
+    }
+    
+    /// Изтрива вече създадено ACL правило – за да махнем даден имейл от споделянията.
+    /// Това означава, че трябва да знаем ID-то на самото правило "aclId", което обикновено е "user:somebody@domain.com".
+    func deleteGoogleCalendarAclRule(
+        googleCalendarID: String,
+        aclRuleID: String,
+        accessToken: String
+    ) async throws {
+        guard let encCalID = googleCalendarID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let encAclID = aclRuleID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(encCalID)/acl/\(encAclID)")
+        else {
+            throw NSError(domain: "BadURL", code: -1, userInfo: nil)
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let (_, response) = try await URLSession.shared.data(for: request)
+        if let httpResp = response as? HTTPURLResponse, httpResp.statusCode >= 300 {
+            throw NSError(domain: "deleteGoogleCalendarAclRule", code: httpResp.statusCode, userInfo: [
+                NSLocalizedDescriptionKey: "HTTP \(httpResp.statusCode)"
+            ])
+        }
+    }
+}
+
+// MARK: - Модели
+struct GoogleCalendarACLListResponse: Codable {
+    let kind: String
+    let etag: String
+    let items: [GoogleCalendarACLRule]
+}
+
+struct GoogleCalendarACLRule: Codable, Identifiable {
+    let id: String             // често е "user:email@domain.com"
+    let scope: GoogleACLScope?
+    let role: String
+}
+
+struct GoogleACLScope: Codable {
+    let type: String // "user", "group", "domain", "default"
+    let value: String?
+}

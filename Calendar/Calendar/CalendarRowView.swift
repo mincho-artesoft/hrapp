@@ -6,22 +6,22 @@ struct CalendarRowView: View {
     let isSelected: Bool
     let toggleAction: (EKCalendar) -> Void
     let editAction: () -> Void
-    
-    /// Ако е `true`, показва бутона с "info.circle".
-    /// Ако е `false`, го скрива.
+
     let showEditButton: Bool
+    
+    // Новите 2 параметъра:
+    let showShareButton: Bool
+    let shareAction: () -> Void
 
     var body: some View {
         HStack(spacing: 16) {
-            // Бутон, който при натискане (de)селектира календара
+            // Бутон (де)селектиране
             Button(action: { toggleAction(calendar) }) {
                 ZStack {
-                    // 1) Кръг, оцветен с цвета на календара
                     Circle()
                         .fill(Color(uiColor: UIColor(cgColor: calendar.cgColor ?? UIColor.gray.cgColor)))
                         .frame(width: 28, height: 28)
                     
-                    // 2) Ако е селектиран, показваме „чавката“
                     if isSelected {
                         Image(systemName: "checkmark")
                             .font(.system(size: 14, weight: .medium))
@@ -37,7 +37,7 @@ struct CalendarRowView: View {
             
             Spacer()
             
-            // Бутон за Edit (info)
+            // Бутон „Edit“ (ако е разрешено)
             if showEditButton && calendar.allowsContentModifications {
                 Button(action: { editAction() }) {
                     Image(systemName: "info.circle")
@@ -46,12 +46,23 @@ struct CalendarRowView: View {
                 }
                 .buttonStyle(.plain)
             }
+
+            // Бутон „Share“, ако showShareButton == true
+            if showShareButton {
+                Button(action: shareAction) {
+                    Image(systemName: "person.2.fill")
+                        .foregroundColor(.blue)   // Или Color(UIColor.systemBlue)
+                }
+                .buttonStyle(.plain)
+            }
         }
         .padding(.vertical, 4)
-        .padding(.horizontal, 5) // <--- добавяме хоризонталния падинг
+        .padding(.horizontal, 5)
         .background(
             RoundedRectangle(cornerRadius: 24)
-                .fill(isSelected ? Color(UIColor.systemGray4.withAlphaComponent(0.5)) : Color.clear)
+                .fill(isSelected
+                      ? Color(UIColor.systemGray4.withAlphaComponent(0.5))
+                      : Color.clear)
         )
     }
 }
