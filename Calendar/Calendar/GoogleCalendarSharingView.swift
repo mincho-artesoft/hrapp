@@ -1,23 +1,29 @@
 import SwiftUI
-import SafariServices
 
 struct GoogleCalendarSharingView: View {
     @ObservedObject var viewModel: CalendarViewModel = .shared
 
-    let googleCalID: String         // ID of the Google Calendar
-    let user: StoredGoogleUser      // Google account used for this calendar
-    let calendarTitle: String       // UI title
+    let googleCalID: String         // ID на Google календара
+    let user: StoredGoogleUser      // Google акаунтът, използван за този календар
+    let calendarTitle: String       // Заглавие за потребителския интерфейс
 
     @Environment(\.dismiss) private var dismiss
 
     @State private var aclRules: [GoogleCalendarACLRule] = []
     @State private var isLoading = false
     @State private var newEmailToShare = ""
-    @State private var newRole: String = "reader" // Default selected role
+    @State private var newRole: String = "reader" // По подразбиране избрана роля
     @State private var errorMessage = ""
 
-    // Available roles – you can expand these if needed
+    // Налични роли – можеш да добавиш още, ако е необходимо
     let availableRoles = ["reader", "writer", "owner"]
+
+    // Изчисляема променлива, която проверява дали текущият потребител е собственик
+    var isUserOwner: Bool {
+        aclRules.contains { rule in
+            rule.scope?.value == user.email && rule.role == "owner"
+        }
+    }
 
     var body: some View {
         NavigationView {
@@ -31,54 +37,79 @@ struct GoogleCalendarSharingView: View {
                             .padding(.bottom, 8)
                     }
                     
-                    List {
-                        Section(header: Text("Shared with these users")) {
-                            ForEach(aclRules) { rule in
-                                let isSelfOwner = rule.scope?.value == user.email && rule.role == "owner"
-                                HStack {
-                                    Text(rule.scope?.value ?? "Unknown")
-                                        .font(.callout)
-                                    Spacer()
-                                    if isSelfOwner {
-                                        Text(rule.role.capitalized)
-                                    } else {
-                                        Picker("Permission", selection: binding(for: rule)) {
-                                            ForEach(availableRoles, id: \.self) { role in
-                                                Text(role.capitalized).tag(role)
+                    // Ако потребителят е собственик, показваме интерфейс за редакция
+                    if isUserOwner {
+                        List {
+                            Section(header: Text("Shared with these users")) {
+                                ForEach(aclRules.filter { rule in
+                                    guard let email = rule.scope?.value else { return true }
+                                    return !email.hasSuffix("@group.calendar.google.com")
+                                }) { rule in
+                                    let isSelfOwner = rule.scope?.value == user.email && rule.role == "owner"
+                                    HStack {
+                                        Text(rule.scope?.value ?? "Unknown")
+                                            .font(.callout)
+                                        Spacer()
+                                        if isSelfOwner {
+                                            Text(rule.role.capitalized)
+                                        } else {
+                                            Picker("", selection: binding(for: rule)) {
+                                                ForEach(availableRoles, id: \.self) { role in
+                                                    Text(role.capitalized).tag(role)
+                                                }
                                             }
+                                            .pickerStyle(MenuPickerStyle())
                                         }
-                                        .pickerStyle(MenuPickerStyle())
+                                        if !isSelfOwner {
+                                            Button(action: {
+                                                Task {
+                                                    await deleteAclRule(rule)
+                                                }
+                                            }) {
+                                                Image(systemName: "xmark")
+                                            }
+                                            .buttonStyle(BorderlessButtonStyle())
+                                        }
                                     }
-                                    if !isSelfOwner {
-                                        Button(action: {
-                                            Task {
-                                                await deleteAclRule(rule)
-                                            }
-                                        }) {
-                                            Image(systemName: "xmark.circle")
+                                }
+                            }
+                            
+                            Section(header: Text("Add New Email")) {
+                                TextField("Email to share", text: $newEmailToShare)
+                                    .keyboardType(.emailAddress)
+                                    .autocapitalization(.none)
+                                HStack {
+                                    Picker("Permission:", selection: $newRole) {
+                                        ForEach(availableRoles, id: \.self) { role in
+                                            Text(role.capitalized).tag(role)
                                         }
-                                        .buttonStyle(BorderlessButtonStyle())
+                                    }
+                                    .pickerStyle(MenuPickerStyle())
+                                }
+                            }
+                            
+                            Section() {
+                                Button("Add") {
+                                    Task {
+                                        await addEmailToShare()
                                     }
                                 }
                             }
                         }
-                        
-                        Section(header: Text("Add New Email")) {
-                            TextField("Email to share", text: $newEmailToShare)
-                                .keyboardType(.emailAddress)
-                                .autocapitalization(.none)
-                            HStack {
-                                Text("Permission:")
-                                Picker("Permission", selection: $newRole) {
-                                    ForEach(availableRoles, id: \.self) { role in
-                                        Text(role.capitalized).tag(role)
+                    } else {
+                        // Ако потребителят НЕ е собственик, показваме само read-only списък
+                        List {
+                            Section(header: Text("Shared with these users")) {
+                                ForEach(aclRules.filter { rule in
+                                    guard let email = rule.scope?.value else { return true }
+                                    return !email.hasSuffix("@group.calendar.google.com")
+                                }) { rule in
+                                    HStack {
+                                        Text(rule.scope?.value ?? "Unknown")
+                                            .font(.callout)
+                                        Spacer()
+                                        Text(rule.role.capitalized)
                                     }
-                                }
-                                .pickerStyle(MenuPickerStyle())
-                            }
-                            Button("Add") {
-                                Task {
-                                    await addEmailToShare()
                                 }
                             }
                         }
@@ -102,7 +133,7 @@ struct GoogleCalendarSharingView: View {
         }
     }
     
-    // Creates a binding to the role for a given ACL rule
+    // Създава binding за ролята на дадено ACL правило
     private func binding(for rule: GoogleCalendarACLRule) -> Binding<String> {
         guard let index = aclRules.firstIndex(where: { $0.id == rule.id }) else {
             return .constant(rule.role)
@@ -110,7 +141,7 @@ struct GoogleCalendarSharingView: View {
         return Binding(
             get: { aclRules[index].role },
             set: { newValue in
-                // Prevent editing if this is the current owner's rule
+                // Предотвратява редакция, ако това е правилото на текущия собственик
                 if rule.scope?.value == user.email && rule.role == "owner" { return }
                 aclRules[index].role = newValue
                 Task {
@@ -120,7 +151,7 @@ struct GoogleCalendarSharingView: View {
         )
     }
     
-    // Loads ACL rules from Google Calendar API using viewModel
+    // Зарежда ACL правилата от Google Calendar API чрез viewModel
     private func loadAclList() async {
         isLoading = true
         errorMessage = ""
@@ -137,7 +168,7 @@ struct GoogleCalendarSharingView: View {
         isLoading = false
     }
     
-    // Adds a new sharing entry with the selected email and role
+    // Добавя нов запис за споделяне с избрания имейл и роля
     private func addEmailToShare() async {
         guard !newEmailToShare.isEmpty else { return }
         isLoading = true
@@ -161,7 +192,7 @@ struct GoogleCalendarSharingView: View {
         isLoading = false
     }
     
-    // Deletes the specified ACL rule using viewModel
+    // Изтрива посоченото ACL правило чрез viewModel
     private func deleteAclRule(_ rule: GoogleCalendarACLRule) async {
         isLoading = true
         errorMessage = ""
@@ -184,7 +215,7 @@ struct GoogleCalendarSharingView: View {
         isLoading = false
     }
     
-    // Updates the role of the specified ACL rule using viewModel
+    // Актуализира ролята на посоченото ACL правило чрез viewModel
     private func updateAclRule(_ rule: GoogleCalendarACLRule) async {
         do {
             try await viewModel.updateGoogleCalendarAclRule(
