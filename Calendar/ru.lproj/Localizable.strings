@@ -1,0 +1,13 @@
+/* RequestEmailView */
+"No email was provided." = "Не был указан адрес электронной почты.";
+"Please enter a valid email to continue." = "Пожалуйста, введите действительный адрес электронной почты, чтобы продолжить.";
+"Your email" = "Ваш адрес электронной почты";
+"Save" = "Сохранить";
+"Login" = "Войти";
+"Logout" = "Выйти";
+
+/* RootView */
+"N/A" = "Н/Д";
+"Today" = "Сегодня";
+"Calendars" = "Календари";
+"Inbox" = "Входящие";

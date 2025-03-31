@@ -1,0 +1,13 @@
+/* RequestEmailView */
+"No email was provided." = "No se ha proporcionado ninguna dirección de correo.";
+"Please enter a valid email to continue." = "Por favor, introduce una dirección de correo válida para continuar.";
+"Your email" = "Tu correo electrónico";
+"Save" = "Guardar";
+"Login" = "Iniciar sesión";
+"Logout" = "Cerrar sesión";
+
+/* RootView */
+"N/A" = "N/D";
+"Today" = "Hoy";
+"Calendars" = "Calendarios";
+"Inbox" = "Bandeja de entrada";

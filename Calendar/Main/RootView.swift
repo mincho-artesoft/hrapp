@@ -173,14 +173,14 @@ struct RootView: View {
                             .ignoresSafeArea(.all)
                             
                         default:
-                            Text("N/A")
+                            Text(LocalizedStringKey("N/A"))
                         }
                     }
                     // Toolbar
                     .toolbar {
                         ToolbarItemGroup(placement: .bottomBar) {
                             if isPortrait {
-                                Button("Today") {
+                                Button(LocalizedStringKey("Today")) {
                                     let today = Calendar.current.startOfDay(for: Date())
                                     pinnedFromDateSingle = today
                                     pinnedToDateSingle = today
@@ -188,12 +188,12 @@ struct RootView: View {
                                 }
                                 Spacer()
                                 
-                                Button("Calendars") {
+                                Button(LocalizedStringKey("Calendars")) {
                                     showCalendarsSheet = true
                                 }
                                 Spacer()
                                 
-                                Button("Inbox") {
+                                Button(LocalizedStringKey("Inbox")) {
                                     showCalendarChooser = true
                                 }
                             }
@@ -206,6 +206,11 @@ struct RootView: View {
             .toolbarBackground(.visible, for: .bottomBar)
         }
         .onAppear {
+            print(Bundle.main.localizations)
+            print(Bundle.main.preferredLocalizations)
+            print(Locale.current.identifier)
+            print(LocalizedStringKey("Today"))
+
             Task {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                 if accessGranted {

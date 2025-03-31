@@ -1,0 +1,13 @@
+/* RequestEmailView */
+"No email was provided." = "Aucune adresse e-mail n'a été fournie.";
+"Please enter a valid email to continue." = "Veuillez saisir une adresse e-mail valide pour continuer.";
+"Your email" = "Votre e-mail";
+"Save" = "Enregistrer";
+"Login" = "Connexion";
+"Logout" = "Déconnexion";
+
+/* RootView */
+"N/A" = "N/D";
+"Today" = "Aujourd'hui";
+"Calendars" = "Calendriers";
+"Inbox" = "Boîte de réception";

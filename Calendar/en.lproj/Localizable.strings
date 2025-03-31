@@ -1,0 +1,13 @@
+/* RequestEmailView */
+"No email was provided." = "No email was provided.";
+"Please enter a valid email to continue." = "Please enter a valid email to continue.";
+"Your email" = "Your email";
+"Save" = "Save";
+"Login" = "Login";
+"Logout" = "Logout";
+
+/* RootView */
+"N/A" = "N/A";
+"Today" = "Today";
+"Calendars" = "Calendars";
+"Inbox" = "Inbox";
