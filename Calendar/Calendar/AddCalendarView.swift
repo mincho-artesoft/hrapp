@@ -15,43 +15,44 @@ struct AddCalendarView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Calendar Name", text: $calendarName)
+                    TextField(LocalizedStringKey("Calendar Name"), text: $calendarName)
                     HStack {
-                        Text("Account")
+                        Text(LocalizedStringKey("Account"))
                         Spacer()
-                        Text(accountName).foregroundColor(.secondary)
+                        Text(accountName)
+                            .foregroundColor(.secondary)
                     }
                 }
                 
-                Section(header: Text("COLOR")) {
+                Section(header: Text(LocalizedStringKey("COLOR"))) {
                     NavigationLink(destination: CalendarColorSelectionView(selectedColor: $selectedColor)) {
                         HStack {
                             Circle()
                                 .fill(Color(selectedColor))
                                 .frame(width: 20, height: 20)
-                            Text(displayColorName(for: selectedColor))
+                            Text(LocalizedStringKey(displayColorName(for: selectedColor)))
                                 .padding(.leading, 8)
                         }
                     }
                 }
 
-                Section(header: Text("NOTIFICATIONS")) {
+                Section(header: Text(LocalizedStringKey("NOTIFICATIONS"))) {
                     Toggle(isOn: $eventAlertsEnabled) {
-                        Text("Event Alerts")
+                        Text(LocalizedStringKey("Event Alerts"))
                     }
-                    Text("Allow events on this calendar to display alerts.")
+                    Text(LocalizedStringKey("Allow events on this calendar to display alerts."))
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
             }
-            .navigationBarTitle("Add Calendar", displayMode: .inline)
+            .navigationBarTitle(LocalizedStringKey("Add Calendar"), displayMode: .inline)
             .navigationBarItems(
                 leading:
-                    Button("Cancel") {
+                    Button(LocalizedStringKey("Cancel")) {
                         presentationMode.wrappedValue.dismiss()
                     },
                 trailing:
-                    Button("Done") {
+                    Button(LocalizedStringKey("Done")) {
                         createCalendar()
                     }
                     .disabled(calendarName.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -63,7 +64,7 @@ struct AddCalendarView: View {
         let newCal = EKCalendar(for: .event, eventStore: eventStore)
         newCal.title = calendarName
 
-        // Намираме local source (On My iPhone):
+        // Намираме local source (On My iPhone) или iCloud source:
         if let localSource = eventStore.sources.first(where: { $0.title == "iCloud" }) {
             newCal.source = localSource
         } else if let defaultSource = eventStore.defaultCalendarForNewEvents?.source {
@@ -75,7 +76,7 @@ struct AddCalendarView: View {
         do {
             try eventStore.saveCalendar(newCal, commit: true)
             
-            // По желание - автоматично го маркираме като "показван":
+            // По желание - автоматично го добавяме към "показваните":
             CalendarViewModel.shared.selectedCalendarIDs.insert(newCal.calendarIdentifier)
             
             // Опресняваме списъка
@@ -89,6 +90,7 @@ struct AddCalendarView: View {
     }
 
     private func displayColorName(for uiColor: UIColor) -> String {
+        // Тук връщаме *ключ*, който после трябва да присъства в Localizable.strings
         if colorsAreEqual(uiColor, .systemRed)    { return "Red" }
         if colorsAreEqual(uiColor, .systemOrange) { return "Orange" }
         if colorsAreEqual(uiColor, .systemYellow) { return "Yellow" }

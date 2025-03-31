@@ -11,3 +11,48 @@
 "Today" = "Today";
 "Calendars" = "Calendars";
 "Inbox" = "Inbox";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Other";
+"Google calendars" = "Google calendars";
+"No synced Google calendars yet." = "No synced Google calendars yet.";
+"Microsoft calendars" = "Microsoft calendars";
+"No synced Microsoft calendars yet." = "No synced Microsoft calendars yet.";
+"Sign out" = "Sign out";
+"Add iCloud Calendar" = "Add iCloud Calendar";
+"Share calendars with iCloud Calendar" = "Share calendars with iCloud Calendar";
+"Sign in with Google" = "Sign in with Google";
+"Sign in with Microsoft" = "Sign in with Microsoft";
+"Deselect All" = "Deselect All";
+"Select All" = "Select All";
+"Done" = "Done";
+"No Email" = "No Email";
+
+/* AddCalendarView */
+"Calendar Name" = "Calendar Name";
+"Account" = "Account";
+"COLOR" = "COLOR";
+"NOTIFICATIONS" = "NOTIFICATIONS";
+"Event Alerts" = "Event Alerts";
+"Allow events on this calendar to display alerts." = "Allow events on this calendar to display alerts.";
+"Add Calendar" = "Add Calendar";
+"Cancel" = "Cancel";
+
+/* Colors */
+"Red" = "Red";
+"Orange" = "Orange";
+"Yellow" = "Yellow";
+"Green" = "Green";
+"Blue" = "Blue";
+"Purple" = "Purple";
+"Brown" = "Brown";
+"Custom" = "Custom";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Calendar Color";
+"Custom..." = "Custom...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Edit Calendar";
+"Delete Calendar" = "Delete Calendar";

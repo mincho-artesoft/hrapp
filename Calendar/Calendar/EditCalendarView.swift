@@ -23,17 +23,17 @@ struct EditCalendarView: View {
         } else {
             _selectedColor = State(initialValue: .systemBlue)
         }
-        
     }
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Calendar Name", text: $calendarName)
+                    // Вместо "Calendar Name" ползвате локализиран ключ
+                    TextField(LocalizedStringKey("Calendar Name"), text: $calendarName)
                 }
 
-                Section(header: Text("COLOR").foregroundColor(.secondary)) {
+                Section(header: Text(LocalizedStringKey("COLOR")).foregroundColor(.secondary)) {
                     NavigationLink(destination: CalendarColorSelectionView(selectedColor: $selectedColor)) {
                         HStack {
                             Circle()
@@ -45,9 +45,9 @@ struct EditCalendarView: View {
                     }
                 }
 
-                Section(header: Text("NOTIFICATIONS").foregroundColor(.secondary)) {
-                    Toggle("Event Alerts", isOn: $eventAlertsEnabled)
-                    Text("Allow events on this calendar to display alerts.")
+                Section(header: Text(LocalizedStringKey("NOTIFICATIONS")).foregroundColor(.secondary)) {
+                    Toggle(LocalizedStringKey("Event Alerts"), isOn: $eventAlertsEnabled)
+                    Text(LocalizedStringKey("Allow events on this calendar to display alerts."))
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
@@ -57,19 +57,23 @@ struct EditCalendarView: View {
                     Button(role: .destructive) {
                         deleteCalendar()
                     } label: {
-                        Text("Delete Calendar")
+                        // Вместо "Delete Calendar" ползвате локализиран ключ
+                        Text(LocalizedStringKey("Delete Calendar"))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
             }
-            .navigationBarTitle("Edit Calendar", displayMode: .inline)
+            // Вместо "Edit Calendar" ползвате локализиран ключ
+            .navigationBarTitle(LocalizedStringKey("Edit Calendar"), displayMode: .inline)
             .navigationBarItems(
                 leading:
-                    Button("Cancel") {
+                    // Вместо "Cancel"
+                    Button(LocalizedStringKey("Cancel")) {
                         presentationMode.wrappedValue.dismiss()
                     },
                 trailing:
-                    Button("Done") {
+                    // Вместо "Done"
+                    Button(LocalizedStringKey("Done")) {
                         updateCalendar()
                     }
                     .disabled(calendarName.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -84,7 +88,7 @@ struct EditCalendarView: View {
         do {
             try eventStore.saveCalendar(calendar, commit: true)
             eventStore.reset()
-            
+
             // Опресняваме списъка с календари в ViewModel
             CalendarViewModel.shared.reloadCalendars()
 
@@ -112,14 +116,16 @@ struct EditCalendarView: View {
     }
 
     private func displayColorName(for uiColor: UIColor) -> String {
-        if colorsAreEqual(uiColor, .systemRed)    { return "Red" }
-        if colorsAreEqual(uiColor, .systemOrange) { return "Orange" }
-        if colorsAreEqual(uiColor, .systemYellow) { return "Yellow" }
-        if colorsAreEqual(uiColor, .systemGreen)  { return "Green" }
-        if colorsAreEqual(uiColor, .systemBlue)   { return "Blue" }
-        if colorsAreEqual(uiColor, .systemPurple) { return "Purple" }
-        if colorsAreEqual(uiColor, .brown)        { return "Brown" }
-        return "Custom"
+        // Тук може да ползвате пак съществуващите локализирани ключове за "Red", "Green", "Orange" и т.н.
+        // или да използвате подходящ механизъм за превод (ако вече имате ключове за цветове).
+        if colorsAreEqual(uiColor, .systemRed)    { return NSLocalizedString("Red", comment: "") }
+        if colorsAreEqual(uiColor, .systemOrange) { return NSLocalizedString("Orange", comment: "") }
+        if colorsAreEqual(uiColor, .systemYellow) { return NSLocalizedString("Yellow", comment: "") }
+        if colorsAreEqual(uiColor, .systemGreen)  { return NSLocalizedString("Green", comment: "") }
+        if colorsAreEqual(uiColor, .systemBlue)   { return NSLocalizedString("Blue", comment: "") }
+        if colorsAreEqual(uiColor, .systemPurple) { return NSLocalizedString("Purple", comment: "") }
+        if colorsAreEqual(uiColor, .brown)        { return NSLocalizedString("Brown", comment: "") }
+        return NSLocalizedString("Custom", comment: "")
     }
 
     private func colorsAreEqual(_ c1: UIColor, _ c2: UIColor) -> Bool {

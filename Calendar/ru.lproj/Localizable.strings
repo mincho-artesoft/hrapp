@@ -11,3 +11,48 @@
 "Today" = "Сегодня";
 "Calendars" = "Календари";
 "Inbox" = "Входящие";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Прочее";
+"Google calendars" = "Календари Google";
+"No synced Google calendars yet." = "Пока нет синхронизированных календарей Google.";
+"Microsoft calendars" = "Календари Microsoft";
+"No synced Microsoft calendars yet." = "Пока нет синхронизированных календарей Microsoft.";
+"Sign out" = "Выйти";
+"Add iCloud Calendar" = "Добавить календарь iCloud";
+"Share calendars with iCloud Calendar" = "Поделиться календарями через iCloud Calendar";
+"Sign in with Google" = "Войти через Google";
+"Sign in with Microsoft" = "Войти через Microsoft";
+"Deselect All" = "Отменить выбор всех";
+"Select All" = "Выбрать все";
+"Done" = "Готово";
+"No Email" = "Нет эл. почты";
+
+/* AddCalendarView */
+"Calendar Name" = "Название календаря";
+"Account" = "Аккаунт";
+"COLOR" = "ЦВЕТ";
+"NOTIFICATIONS" = "УВЕДОМЛЕНИЯ";
+"Event Alerts" = "Уведомления о событиях";
+"Allow events on this calendar to display alerts." = "Разрешить событиям в этом календаре отображать уведомления.";
+"Add Calendar" = "Добавить календарь";
+"Cancel" = "Отмена";
+
+/* Colors */
+"Red" = "Красный";
+"Orange" = "Оранжевый";
+"Yellow" = "Жёлтый";
+"Green" = "Зелёный";
+"Blue" = "Синий";
+"Purple" = "Фиолетовый";
+"Brown" = "Коричневый";
+"Custom" = "Произвольный";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Цвет календаря";
+"Custom..." = "Произвольный…";
+
+/* EditCalendarView */
+"Edit Calendar" = "Редактировать календарь";
+"Delete Calendar" = "Удалить календарь";

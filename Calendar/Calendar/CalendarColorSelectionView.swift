@@ -6,6 +6,10 @@ struct CalendarColorSelectionView: View {
     
     @State private var showSystemColorPicker = false
     
+    // Заменяме name: String с name: LocalizedStringKey,
+    // ако предпочитате да ползвате директно ключовете.
+    // Обаче в този пример ще го направим, като при извикване
+    // на Text(LocalizedStringKey(option.name)), да конвертираме String -> LocalizedStringKey.
     private let colorOptions: [(name: String, color: UIColor)] = [
         ("Red",    .systemRed),
         ("Orange", .systemOrange),
@@ -24,7 +28,8 @@ struct CalendarColorSelectionView: View {
                         Circle()
                             .fill(Color(option.color))
                             .frame(width: 20, height: 20)
-                        Text(option.name)
+                        // Ползваме LocalizedStringKey, за да се чете преводът от Localizable.strings
+                        Text(LocalizedStringKey(option.name))
                             .padding(.leading, 4)
                         Spacer()
                         if colorsAreEqual(option.color, selectedColor) {
@@ -43,9 +48,10 @@ struct CalendarColorSelectionView: View {
                     Circle()
                         .fill(Color(selectedColor))
                         .frame(width: 20, height: 20)
-                    Text("Custom...")
+                    Text(LocalizedStringKey("Custom..."))
                         .padding(.leading, 4)
                     Spacer()
+                    // Ако текущият цвят не е в списъка (Red, Orange, …, Brown), показваме checkmark при “Custom...”
                     if !colorOptions.contains(where: { colorsAreEqual($0.color, selectedColor) }) {
                         Image(systemName: "checkmark")
                             .foregroundColor(.blue)
@@ -57,7 +63,8 @@ struct CalendarColorSelectionView: View {
                 }
             }
         }
-        .navigationTitle("Calendar Color")
+        // Заглавието на NavigationBar също го правим локализирано
+        .navigationTitle(LocalizedStringKey("Calendar Color"))
         .sheet(isPresented: $showSystemColorPicker) {
             UIKitColorPicker(selectedColor: $selectedColor)
                 .presentationDetents([.fraction(0.9), .large])

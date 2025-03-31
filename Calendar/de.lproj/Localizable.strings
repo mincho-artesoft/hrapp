@@ -11,3 +11,48 @@
 "Today" = "Heute";
 "Calendars" = "Kalender";
 "Inbox" = "Posteingang";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Andere";
+"Google calendars" = "Google-Kalender";
+"No synced Google calendars yet." = "Bisher keine synchronisierten Google-Kalender.";
+"Microsoft calendars" = "Microsoft-Kalender";
+"No synced Microsoft calendars yet." = "Bisher keine synchronisierten Microsoft-Kalender.";
+"Sign out" = "Abmelden";
+"Add iCloud Calendar" = "iCloud-Kalender hinzufügen";
+"Share calendars with iCloud Calendar" = "Kalender mit iCloud-Kalender teilen";
+"Sign in with Google" = "Mit Google anmelden";
+"Sign in with Microsoft" = "Mit Microsoft anmelden";
+"Deselect All" = "Alles abwählen";
+"Select All" = "Alles auswählen";
+"Done" = "Fertig";
+"No Email" = "Keine E-Mail";
+
+/* AddCalendarView */
+"Calendar Name" = "Kalendername";
+"Account" = "Konto";
+"COLOR" = "FARBE";
+"NOTIFICATIONS" = "BENACHRICHTIGUNGEN";
+"Event Alerts" = "Ereignisbenachrichtigungen";
+"Allow events on this calendar to display alerts." = "Erlaube, dass für Ereignisse in diesem Kalender Benachrichtigungen angezeigt werden.";
+"Add Calendar" = "Kalender hinzufügen";
+"Cancel" = "Abbrechen";
+
+/* Colors */
+"Red" = "Rot";
+"Orange" = "Orange";
+"Yellow" = "Gelb";
+"Green" = "Grün";
+"Blue" = "Blau";
+"Purple" = "Lila";
+"Brown" = "Braun";
+"Custom" = "Benutzerdefiniert";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Kalenderfarbe";
+"Custom..." = "Benutzerdefiniert…";
+
+/* EditCalendarView */
+"Edit Calendar" = "Kalender bearbeiten";
+"Delete Calendar" = "Kalender löschen";

@@ -14,7 +14,7 @@ struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
 
-    // Вместо отделни променливи за споделяне използваме речник:
+    // Вместо отделни променливи за споделяне, използваме речник:
     @State private var googleSharingInfos: [String: GoogleSharingInfo] = [:]
     // Запазваме кой акаунт (ключ – uniqueID.uuidString) е избран за споделяне в момента:
     @State private var currentGoogleUserID: String? = nil
@@ -42,14 +42,13 @@ struct CalendarsSheetView: View {
                 microsoftSignInSection
             }
             .listSectionSpacing(8)
-            .navigationBarTitle("Calendars", displayMode: .inline)
+            .navigationBarTitle(LocalizedStringKey("Calendars"), displayMode: .inline)
             .navigationBarItems(leading: selectAllButton, trailing: doneButton)
         }
         .onAppear {
             viewModel.reloadCalendars()
             loadGoogleSharingInfos()
             loadCurrentGoogleUserID()
-
         }
         .sheet(item: $calendarToEdit, onDismiss: {
             viewModel.reloadCalendars()
@@ -82,7 +81,7 @@ struct CalendarsSheetView: View {
     
     private var iCloudSection: some View {
         Section {
-            DisclosureGroup("iCloud", isExpanded: $iCloudExpanded) {
+            DisclosureGroup(LocalizedStringKey("iCloud"), isExpanded: $iCloudExpanded) {
                 ForEach(viewModel.localOrICloudCalendars(), id: \.calendarIdentifier) { cal in
                     CalendarRowView(
                         calendar: cal,
@@ -101,7 +100,7 @@ struct CalendarsSheetView: View {
     
     private var otherSection: some View {
         Section {
-            DisclosureGroup("Other", isExpanded: $isOtherExpanded) {
+            DisclosureGroup(LocalizedStringKey("Other"), isExpanded: $isOtherExpanded) {
                 ForEach(viewModel.otherCalendars(), id: \.calendarIdentifier) { cal in
                     CalendarRowView(
                         calendar: cal,
@@ -122,7 +121,7 @@ struct CalendarsSheetView: View {
         Group {
             if !viewModel.storedUsers.isEmpty {
                 Section {
-                    Text("Google calendars")
+                    Text(LocalizedStringKey("Google calendars"))
                 }
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
@@ -135,9 +134,10 @@ struct CalendarsSheetView: View {
                 
                 Section {
                     DisclosureGroup(isExpanded: binding) {
+                        
                         let googleCals = googleCopiedCalendars(for: user)
                         if googleCals.isEmpty {
-                            Text("No synced Google calendars yet.")
+                            Text(LocalizedStringKey("No synced Google calendars yet."))
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
                         } else {
@@ -161,7 +161,7 @@ struct CalendarsSheetView: View {
                             }
                         }
                         
-                        Button("Sign out") {
+                        Button(LocalizedStringKey("Sign out")) {
                             viewModel.signOutFromGoogle(user: user)
                         }
                         .foregroundColor(.red)
@@ -194,7 +194,7 @@ struct CalendarsSheetView: View {
                                     .frame(width: 28, height: 28)
                             }
                             
-                            Text("\(user.email ?? "No Email")")
+                            Text("\(user.email ?? NSLocalizedString("No Email", comment: ""))")
                                 .padding(.leading, 4)
                         }
                     }
@@ -207,7 +207,7 @@ struct CalendarsSheetView: View {
         Group {
             if !viewModel.storedMsUsers.isEmpty {
                 Section {
-                    Text("Microsoft calendars")
+                    Text(LocalizedStringKey("Microsoft calendars"))
                 }
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
             }
@@ -222,7 +222,7 @@ struct CalendarsSheetView: View {
                     DisclosureGroup(isExpanded: binding) {
                         let msCals = viewModel.microsoftCopiedCalendars(for: user)
                         if msCals.isEmpty {
-                            Text("No synced Microsoft calendars yet.")
+                            Text(LocalizedStringKey("No synced Microsoft calendars yet."))
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
                         } else {
@@ -240,7 +240,7 @@ struct CalendarsSheetView: View {
                             }
                         }
                         
-                        Button("Sign out") {
+                        Button(LocalizedStringKey("Sign out")) {
                             viewModel.signOutFromMicrosoft(user: user)
                         }
                         .foregroundColor(.red)
@@ -250,7 +250,7 @@ struct CalendarsSheetView: View {
                             Image(systemName: "person.circle")
                                 .resizable()
                                 .frame(width: 28, height: 28)
-                            Text("\(user.email ?? "No Email")")
+                            Text("\(user.email ?? NSLocalizedString("No Email", comment: ""))")
                                 .padding(.leading, 4)
                         }
                     }
@@ -281,7 +281,7 @@ struct CalendarsSheetView: View {
                         )
                         .frame(width: 28, height: 28)
                     
-                    Text("Add iCloud Calendar")
+                    Text(LocalizedStringKey("Add iCloud Calendar"))
                 }
             }
             .buttonStyle(PlainButtonStyle())
@@ -310,7 +310,7 @@ struct CalendarsSheetView: View {
                         )
                         .frame(width: 28, height: 28)
                     
-                    Text("Share calendars with iCloud Calendar")
+                    Text(LocalizedStringKey("Share calendars with iCloud Calendar"))
                 }
             }
             .buttonStyle(PlainButtonStyle())
@@ -330,7 +330,7 @@ struct CalendarsSheetView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 28, height: 28)
-                    Text("Sign in with Google")
+                    Text(LocalizedStringKey("Sign in with Google"))
                 }
             }
             .buttonStyle(PlainButtonStyle())
@@ -345,7 +345,7 @@ struct CalendarsSheetView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 28, height: 28)
-                    Text("Sign in with Microsoft")
+                    Text(LocalizedStringKey("Sign in with Microsoft"))
                 }
             }
             .buttonStyle(PlainButtonStyle())
@@ -361,15 +361,19 @@ struct CalendarsSheetView: View {
                 viewModel.selectedCalendarIDs = allIDs
             }
         }) {
-            Text(viewModel.selectedCalendarIDs.count == viewModel.allCalendars.count ? "Deselect All" : "Select All")
+            Text(viewModel.selectedCalendarIDs.count == viewModel.allCalendars.count
+                 ? LocalizedStringKey("Deselect All")
+                 : LocalizedStringKey("Select All"))
         }
     }
     
     private var doneButton: some View {
-        Button("Done") {
+        Button(LocalizedStringKey("Done")) {
             presentationMode.wrappedValue.dismiss()
         }
     }
+    
+    // MARK: - Helpers
     
     private func toggleCalendar(_ cal: EKCalendar) {
         if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {
