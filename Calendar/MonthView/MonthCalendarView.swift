@@ -9,25 +9,18 @@ struct MonthCalendarView: View {
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)?
     
-    // 1) За системния детайлен изглед (EKEventViewController)
     @State private var eventToView: EKEvent? = nil
-    
-    // 2) За екран за създаване/редакция (EKEventEditViewController)
     @State private var eventToEdit: EKEvent? = nil
     
-    // 3) За диалог при повтарящи се събития (drag & drop)
     @State private var showRepeatingDialog = false
     @State private var repeatingEvent: EKEvent? = nil
     @State private var repeatingNewDate: Date? = nil
     
-    // 4) DayView (пълен екран), ако го ползвате
     @State private var selectedDayForFullScreen: Date? = nil
     @State private var pinnedDayEvents: [EventDescriptor] = []
     
-    // Текущ месец
     @State private var currentMonth: Date
     
-    // Променливи за търсене
     @State private var showSearchBar: Bool = false
     @State private var searchText: String = ""
     
@@ -46,14 +39,14 @@ struct MonthCalendarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // (A) Търсачка (по желание)
+            // (A) Търсачка
             if showSearchBar {
                 HStack {
-                    TextField("Search events...", text: $searchText)
+                    TextField(LocalizedStringKey("Search events..."), text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
-                    Button("Cancel") {
+                    Button(LocalizedStringKey("Cancel")) {
                         showSearchBar = false
                         searchText = ""
                     }
@@ -64,7 +57,7 @@ struct MonthCalendarView: View {
                 .transition(.move(edge: .top))
             }
             
-            // (B) Навигация за месеца (бутон < >, заглавие)
+            // (B) Навигация за месеца
             if !(showSearchBar && !searchText.isEmpty) {
                 HStack {
                     Button {
@@ -73,7 +66,7 @@ struct MonthCalendarView: View {
                         Image(systemName: "chevron.left")
                     }
                     
-                    Text(formattedMonthYear(currentMonth))
+                    Text(localizedFormattedMonthYear(currentMonth))
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                     
@@ -87,11 +80,10 @@ struct MonthCalendarView: View {
                 .padding(.top)
             }
             
-            // (C) Основно съдържание (календар или SearchResults)
+            // (C) Основно съдържание
             if showSearchBar && !searchText.isEmpty {
                 SearchResultsView(searchText: searchText)
             } else {
-                // Примерно: WeekdayHeaderView() за "Mon, Tue, Wed..."
                 WeekdayHeaderView()
                     .padding(.top, 8)
                 
@@ -100,7 +92,6 @@ struct MonthCalendarView: View {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 8) {
                         ForEach(dates, id: \.self) { day in
                             let dayKey = calendar.startOfDay(for: day)
-                            // Тук очакваме viewModel.eventsByDay да връща [EKEvent]
                             let dayEvents = viewModel.eventsByDay[dayKey] ?? []
                             
                             DayCellView(
@@ -111,15 +102,12 @@ struct MonthCalendarView: View {
                                     handleEventDropped(eventID, on: newDay)
                                 },
                                 onDayTap: { tappedDay in
-                                    // Пример: отваряме DayView на пълен екран
                                     selectedDayForFullScreen = tappedDay
                                 },
                                 onDayLongPress: { pressedDay in
-                                    // Създаваме ново събитие
                                     createAndEditNewEvent(on: pressedDay)
                                 },
                                 onEventTap: { tappedEvent in
-                                    // Показваме детайла
                                     eventToView = tappedEvent
                                 }
                             )
@@ -134,71 +122,144 @@ struct MonthCalendarView: View {
             // Зареждаме събития за текущия месец
             viewModel.loadEvents(for: currentMonth)
         }
-        // (D) Toolbar: бутони за + / search / смяна на изглед
+        // (D) Toolbar
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                // Обединен HStack с контролирано разстояние
                 HStack(spacing: 9) {
                     if !showSearchBar {
+                        
+                        // Бутон "+"
                         Button {
                             createAndEditNewEvent(on: Date())
                         } label: {
                             Image(systemName: "plus")
                         }
                         
+                        // Бутон за търсене
                         Button {
                             showSearchBar = true
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
                         
+                        // Меню за смяна на изгледите (Day, MultiDay, Month, Year, List, MultiCalendar)
                         Menu {
-                            // Бутони за превключване
+                            // --- Day ---
                             Button {
-                                onViewChange!(1)
+                                onViewChange?(1)
                             } label: {
-                                Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                                HStack {
+                                    // Checkmark вляво, ако selectedTab == 1
+                                    if selectedTab == 1 {
+                                        Image(systemName: "checkmark")
+                                    } else {
+                                        Image(systemName: "checkmark").opacity(0)
+                                    }
+                                    
+                                    // Заглавие
+                                    Text(localizedTabName("Day"))
+                                    
+                                    // Spacer избутва иконката вдясно
+                                    Spacer()
+                                    
+                                    // Иконка вдясно
+                                    Image(systemName: iconName(for: 1))
+                                }
                             }
+                            
+                            // --- MultiDay ---
                             Button {
-                                onViewChange!(3)
+                                onViewChange?(3)
                             } label: {
-                                Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
+                                HStack {
+                                    if selectedTab == 3 {
+                                        Image(systemName: "checkmark")
+                                    } else {
+                                        Image(systemName: "checkmark").opacity(0)
+                                    }
+                                    Text(localizedTabName("MultiDay"))
+                                    Spacer()
+                                    Image(systemName: iconName(for: 3))
+                                }
                             }
+                            
+                            // --- Month ---
                             Button {
-                                onViewChange!(0)
+                                onViewChange?(0)
                             } label: {
-                                Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
+                                HStack {
+                                    if selectedTab == 0 {
+                                        Image(systemName: "checkmark")
+                                    } else {
+                                        Image(systemName: "checkmark").opacity(0)
+                                    }
+                                    Text(localizedTabName("Month"))
+                                    Spacer()
+                                    Image(systemName: iconName(for: 0))
+                                }
                             }
+                            
+                            // --- Year ---
                             Button {
-                                onViewChange!(2)
+                                onViewChange?(2)
                             } label: {
-                                Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
+                                HStack {
+                                    if selectedTab == 2 {
+                                        Image(systemName: "checkmark")
+                                    } else {
+                                        Image(systemName: "checkmark").opacity(0)
+                                    }
+                                    Text(localizedTabName("Year"))
+                                    Spacer()
+                                    Image(systemName: iconName(for: 2))
+                                }
                             }
+                            
+                            // --- List ---
                             Button {
-                                onViewChange!(4)
+                                onViewChange?(4)
                             } label: {
-                                Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
+                                HStack {
+                                    if selectedTab == 4 {
+                                        Image(systemName: "checkmark")
+                                    } else {
+                                        Image(systemName: "checkmark").opacity(0)
+                                    }
+                                    Text(localizedTabName("List"))
+                                    Spacer()
+                                    Image(systemName: iconName(for: 4))
+                                }
                             }
+                            
+                            // --- MultiCalendar ---
                             Button {
-                                onViewChange!(5)
+                                onViewChange?(5)
                             } label: {
-                                Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
+                                HStack {
+                                    if selectedTab == 5 {
+                                        Image(systemName: "checkmark")
+                                    } else {
+                                        Image(systemName: "checkmark").opacity(0)
+                                    }
+                                    Text(localizedTabName("MultiCalendar"))
+                                    Spacer()
+                                    Image(systemName: iconName(for: 5))
+                                }
                             }
+                            
                         } label: {
-                            // Тук ще се показва текущата икона, според selectedTab
+                            // Главна иконка в самия Toolbar
                             Image(systemName: iconName(for: selectedTab))
                         }
-
                     }
                 }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
         
-        // (E) Full-screen cover за DayView (ако ползвате)
+        // (E) Full-screen cover (DayView)
         .fullScreenCover(item: $selectedDayForFullScreen) { day in
             NavigationView {
-                // Примерно TwoWayPinnedMultiDayWrapper...
                 TwoWayPinnedMultiDayWrapper(
                     fromDate: .constant(day),
                     toDate: .constant(day),
@@ -215,52 +276,56 @@ struct MonthCalendarView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Close") {
+                        Button(LocalizedStringKey("Close")) {
                             selectedDayForFullScreen = nil
                             viewModel.loadEvents(for: currentMonth)
                         }
                     }
                 }
-                .navigationTitle("Day View")
+                .navigationTitle(LocalizedStringKey("Day View"))
                 .navigationBarTitleDisplayMode(.inline)
             }
         }
         
-        // (F) Sheet за детайлен изглед (EKEventViewController)
+        // (F) Sheet за детайлен изглед
         .sheet(item: $eventToView, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { theEvent in
             EventDetailViewWrapper(event: theEvent)
         }
         
-        // (G) Sheet за създаване/редакция (EKEventEditViewController)
+        // (G) Sheet за създаване/редакция
         .sheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { theEvent in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
         }
         
-        // (H) Диалог за повтарящо се събитие (ако е drag & drop)
-        .confirmationDialog("This is a repeating event.",
+        // (H) Диалог за повтарящо се събитие
+        .confirmationDialog(LocalizedStringKey("This is a repeating event."),
                             isPresented: $showRepeatingDialog,
                             titleVisibility: .visible) {
-            Button("Save for This Event Only") {
+            Button(LocalizedStringKey("Save for This Event Only")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .thisEvent)
                 }
             }
-            Button("Save for Future Events") {
+            Button(LocalizedStringKey("Save for Future Events")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .futureEvents)
                 }
             }
-            Button("Cancel", role: .cancel) {}
+            Button(LocalizedStringKey("Cancel"), role: .cancel) {}
         }
     }
 }
 
 // MARK: - Помощни методи
 extension MonthCalendarView {
+    private func localizedTabName(_ rawValue: String) -> String {
+        return NSLocalizedString(rawValue, comment: "")
+    }
+    
     private func iconName(for tab: Int) -> String {
         switch tab {
         case 1:
@@ -279,6 +344,7 @@ extension MonthCalendarView {
             return "calendar"
         }
     }
+    
     private func moveMonth(by offset: Int) {
         if let newMonth = calendar.date(byAdding: .month, value: offset, to: currentMonth) {
             currentMonth = newMonth
@@ -286,18 +352,17 @@ extension MonthCalendarView {
         }
     }
 
-    private func formattedMonthYear(_ date: Date) -> String {
+    /// Локализиран формат за месец/година според езика на системата
+    private func localizedFormattedMonthYear(_ date: Date) -> String {
         let df = DateFormatter()
-        df.locale = Locale(identifier: "en_US")
-        df.dateFormat = "LLLL yyyy"
-        return df.string(from: date).capitalized
+        df.locale = Locale.current
+        df.setLocalizedDateFormatFromTemplate("yyyyMMMM")
+        return df.string(from: date)
     }
 
-    /// Логика за DRAG & DROP
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
         guard let droppedEvent = viewModel.eventsByID[eventID] else { return }
         
-        // Ако има recurrenceRules -> показваме диалог
         if droppedEvent.hasRecurrenceRules {
             repeatingEvent = droppedEvent
             repeatingNewDate = newDate
@@ -307,23 +372,16 @@ extension MonthCalendarView {
         }
     }
 
-    /// Реално мести събитието в newDate, запазва го.
     private func moveEvent(_ event: EKEvent, to newDate: Date, span: EKSpan) {
         let cal = Calendar.current
-        
-        // Да запазим "продължителността" (end - start)
         let duration = event.endDate.timeIntervalSince(event.startDate)
-
-        // Може да вземем (час:минути) от оригиналното начало
         let startHour = cal.component(.hour, from: event.startDate)
         let startMin = cal.component(.minute, from: event.startDate)
-
-        // Нов старт: (newDate + startHour:startMin)
-        guard let newStart = cal.date(bySettingHour: startHour, minute: startMin, second: 0, of: newDate)
-        else {
+        
+        guard let newStart = cal.date(bySettingHour: startHour, minute: startMin, second: 0, of: newDate) else {
             return
         }
-
+        
         let newEnd = newStart.addingTimeInterval(duration)
         event.startDate = newStart
         event.endDate = newEnd
@@ -331,13 +389,12 @@ extension MonthCalendarView {
         do {
             try viewModel.eventStore.save(event, span: span, commit: true)
         } catch {
-            print("Error saving event: \(error)")
+            print("Error saving event: \(error.localizedDescription)")
         }
 
         viewModel.loadEvents(for: currentMonth)
     }
 
-    /// Дълго задържане => създаване на ново събитие
     private func createAndEditNewEvent(on day: Date) {
         let status = EKEventStore.authorizationStatus(for: .event)
         
@@ -347,7 +404,6 @@ extension MonthCalendarView {
                 presentNewEvent(on: day)
             case .notDetermined:
                 print("Още не е поискан достъп.")
-                // Може да извикате viewModel.requestCalendarAccessIfNeeded()
             default:
                 print("Нямате достъп до календара.")
             }
@@ -369,14 +425,12 @@ extension MonthCalendarView {
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
         newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)
         newEvent.endDate = startOfDay.addingTimeInterval(10 * 3600)
-        newEvent.title = "New Event"
+        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
         newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
         
-        // Пускаме sheet-a за редакция
         eventToEdit = newEvent
     }
 
-    /// Зареждаме събития за DayView (ако ползвате TwoWayPinnedMultiDayWrapper)
     private func loadPinnedDayEvents(for day: Date) {
         let cal = Calendar.current
         let dayStart = cal.startOfDay(for: day)
@@ -387,9 +441,9 @@ extension MonthCalendarView {
         
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
-            let realStart = ekEvent.startDate ?? day
-            let realEnd = ekEvent.endDate ?? day
-            if realStart < dayStart || realEnd > nextDay {
+            let realStart = ekEvent.startDate
+            let realEnd = ekEvent.endDate
+            if let rs = realStart, let re = realEnd, (rs < dayStart || re > nextDay) {
                 splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: dayStart, endRange: nextDay))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
@@ -398,7 +452,6 @@ extension MonthCalendarView {
         pinnedDayEvents = splitted
     }
 
-    /// Примерен split по дни (ако преминава през полунощ)
     private func splitEventByDays(_ ekEvent: EKEvent,
                                   startRange: Date,
                                   endRange: Date) -> [EKMultiDayWrapper] {
@@ -412,7 +465,9 @@ extension MonthCalendarView {
         while currentStart < realEnd {
             guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else { break }
             let pieceEnd = min(endOfDay, realEnd)
-            let partial = EKMultiDayWrapper(realEvent: ekEvent, partialStart: currentStart, partialEnd: pieceEnd)
+            let partial = EKMultiDayWrapper(realEvent: ekEvent,
+                                            partialStart: currentStart,
+                                            partialEnd: pieceEnd)
             results.append(partial)
 
             guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),

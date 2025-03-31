@@ -56,3 +56,53 @@
 /* EditCalendarView */
 "Edit Calendar" = "Kalender bearbeiten";
 "Delete Calendar" = "Kalender löschen";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Freigabeeinstellungen werden geladen…";
+"Shared with these users" = "Freigegeben für diese Benutzer";
+"Add New Email" = "Neue E-Mail hinzufügen";
+"Email to share" = "E-Mail zum Teilen";
+"Permission:" = "Berechtigung:";
+"Add" = "Hinzufügen";
+"Unknown" = "Unbekannt";
+"Sharing:" = "Freigabe:";
+"Done" = "Fertig";
+
+"Error loading: %@" = "Fehler beim Laden: %@";
+"Error adding: %@" = "Fehler beim Hinzufügen: %@";
+"Error deleting: %@" = "Fehler beim Löschen: %@";
+"Error updating: %@" = "Fehler beim Aktualisieren: %@";
+"Error re-inviting (delete): %@" = "Fehler beim Erneuten Einladen (Löschen): %@";
+"Error re-inviting (insert): %@" = "Fehler beim Erneuten Einladen (Hinzufügen): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Leser";
+"Writer" = "Bearbeiter";
+"Owner"  = "Eigentümer";
+
+/* MonthCalendarView */
+"Search events..." = "Veranstaltungen durchsuchen…";
+"Cancel" = "Abbrechen";
+"Close" = "Schließen";
+"Day View" = "Tagesansicht";
+"This is a repeating event." = "Dies ist ein wiederkehrendes Ereignis.";
+"Save for This Event Only" = "Nur für dieses Ereignis speichern";
+"Save for Future Events" = "Für zukünftige Ereignisse speichern";
+"New Event" = "Neues Ereignis";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+"Day" = "Tag";
+"MultiDay" = "Mehrere Tage";
+"Month" = "Monat";
+"Year" = "Jahr";
+"List" = "Liste";
+"MultiCalendar" = "Mehrere Kalender";
+
+/* WeekdayHeaderView */
+"Sun" = "So";
+"Mon" = "Mo";
+"Tue" = "Di";
+"Wed" = "Mi";
+"Thu" = "Do";
+"Fri" = "Fr";
+"Sat" = "Sa";

@@ -56,3 +56,53 @@
 /* EditCalendarView */
 "Edit Calendar" = "Edit Calendar";
 "Delete Calendar" = "Delete Calendar";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Loading sharing settings…";
+"Shared with these users" = "Shared with these users";
+"Add New Email" = "Add New Email";
+"Email to share" = "Email to share";
+"Permission:" = "Permission:";
+"Add" = "Add";
+"Unknown" = "Unknown";
+"Sharing:" = "Sharing:";
+"Done" = "Done";
+
+"Error loading: %@" = "Error loading: %@";
+"Error adding: %@" = "Error adding: %@";
+"Error deleting: %@" = "Error deleting: %@";
+"Error updating: %@" = "Error updating: %@";
+"Error re-inviting (delete): %@" = "Error re-inviting (delete): %@";
+"Error re-inviting (insert): %@" = "Error re-inviting (insert): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Reader";
+"Writer" = "Writer";
+"Owner"  = "Owner";
+
+/* MonthCalendarView */
+"Search events..." = "Search events...";
+"Cancel" = "Cancel";
+"Close" = "Close";
+"Day View" = "Day View";
+"This is a repeating event." = "This is a repeating event.";
+"Save for This Event Only" = "Save for This Event Only";
+"Save for Future Events" = "Save for Future Events";
+"New Event" = "New Event";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+"Day" = "Day";
+"MultiDay" = "MultiDay";
+"Month" = "Month";
+"Year" = "Year";
+"List" = "List";
+"MultiCalendar" = "MultiCalendar";
+
+/* WeekdayHeaderView */
+"Sun" = "Sun";
+"Mon" = "Mon";
+"Tue" = "Tue";
+"Wed" = "Wed";
+"Thu" = "Thu";
+"Fri" = "Fri";
+"Sat" = "Sat";

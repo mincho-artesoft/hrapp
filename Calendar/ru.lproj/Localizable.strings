@@ -56,3 +56,53 @@
 /* EditCalendarView */
 "Edit Calendar" = "Редактировать календарь";
 "Delete Calendar" = "Удалить календарь";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Загрузка настроек общего доступа…";
+"Shared with these users" = "Открыто совместное использование для этих пользователей";
+"Add New Email" = "Добавить новый адрес эл. почты";
+"Email to share" = "Адрес для совместного доступа";
+"Permission:" = "Права:";
+"Add" = "Добавить";
+"Unknown" = "Неизвестно";
+"Sharing:" = "Совместный доступ:";
+"Done" = "Готово";
+
+"Error loading: %@" = "Ошибка при загрузке: %@";
+"Error adding: %@" = "Ошибка при добавлении: %@";
+"Error deleting: %@" = "Ошибка при удалении: %@";
+"Error updating: %@" = "Ошибка при обновлении: %@";
+"Error re-inviting (delete): %@" = "Ошибка при повторном приглашении (удаление): %@";
+"Error re-inviting (insert): %@" = "Ошибка при повторном приглашении (добавление): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Читатель";
+"Writer" = "Редактор";
+"Owner"  = "Владелец";
+
+/* MonthCalendarView */
+"Search events..." = "Поиск событий…";
+"Cancel" = "Отмена";
+"Close" = "Закрыть";
+"Day View" = "Дневной вид";
+"This is a repeating event." = "Это повторяющееся событие.";
+"Save for This Event Only" = "Сохранить только для этого события";
+"Save for Future Events" = "Сохранить для будущих событий";
+"New Event" = "Новое событие";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+"Day" = "День";
+"MultiDay" = "Несколько дней";
+"Month" = "Месяц";
+"Year" = "Год";
+"List" = "Список";
+"MultiCalendar" = "Несколько календарей";
+
+/* WeekdayHeaderView */
+"Sun" = "Вс";
+"Mon" = "Пн";
+"Tue" = "Вт";
+"Wed" = "Ср";
+"Thu" = "Чт";
+"Fri" = "Пт";
+"Sat" = "Сб";
