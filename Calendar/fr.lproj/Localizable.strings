@@ -106,3 +106,31 @@
 "Thu" = "Jeu";
 "Fri" = "Ven";
 "Sat" = "Sam";
+
+/* UIMenuButtonRepresentable */
+"Day" = "Jour";
+"MultiDay" = "Plusieurs jours";
+"Month" = "Mois";
+"Year" = "Année";
+"List" = "Liste";
+"MultiCalendar" = "Plusieurs calendriers";
+
+/* YearCalendarView */
+"Search events..." = "Rechercher des événements…";
+"Cancel" = "Annuler";
+"Close" = "Fermer";
+"New Event" = "Nouvel événement";
+
+/* AllEventsListView */
+"Search events..." = "Rechercher des événements…";
+"Cancel" = "Annuler";
+"New Event" = "Nouvel événement";
+"No calendar access." = "Pas d'accès au calendrier.";
+
+/* EventRowView */
+"all-day" = "Toute la journée";
+"Ends" = "Se termine";
+
+/* SearchEventRowView */
+"No Title" = "Sans titre";
+"all-day" = "Toute la journée";

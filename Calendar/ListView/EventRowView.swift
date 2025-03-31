@@ -1,12 +1,3 @@
-//
-//  EventRowView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 12/3/25.
-//
-
-
-// Изглед за един ред (EventDescriptor)
 import SwiftUI
 import EventKit
 
@@ -14,50 +5,40 @@ struct EventRowView: View {
     let event: EventDescriptor
     let timeString: (Date) -> String
     
-    /// Изчисляваме каква икона да покажем в зависимост от типа на календара
     private var calendarIconName: String? {
-        // Първо проверяваме дали е EKMultiDayWrapper:
         if let multi = event as? EKMultiDayWrapper {
             let cal = multi.realEvent.calendar
             let calType = cal?.type ?? .local
-            // Проверяваме типа на календара
             if calType == .birthday {
                 return "gift.circle.fill"
             } else if calType == .subscription,
                       (cal?.title.localizedCaseInsensitiveContains("holiday") == true) {
                 return "star.circle.fill"
             } else if event.isAllDay {
-                // Ако не е birthday/holiday, но е all-day
                 return "calendar.circle.fill"
             } else {
                 return nil
             }
-        }
-        // Ако е еднодневно събитие (EKEvent)
-        else if let singleEvent = event as? EKEvent {
+        } else if let singleEvent = event as? EKEvent {
             let cal = singleEvent.calendar
             let calType = cal?.type ?? .local
-            // Проверяваме типа на календара
             if calType == .birthday {
                 return "gift.circle.fill"
             } else if calType == .subscription,
                       (cal?.title.localizedCaseInsensitiveContains("holiday") == true) {
                 return "star.circle.fill"
             } else if event.isAllDay {
-                // Ако не е birthday/holiday, но е all-day
                 return "calendar.circle.fill"
             } else {
                 return nil
             }
         }
-        
-        // Ако не можем да определим типа (няма EKMultiDayWrapper или EKEvent)
         return nil
     }
     
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            // Рисуваме цветната лента само ако не е all-day събитие
+            // Цветна лента при не-all-day събитие
             if !event.isAllDay {
                 Rectangle()
                     .fill(Color(uiColor: event.color))
@@ -65,10 +46,9 @@ struct EventRowView: View {
                     .cornerRadius(1.5)
             }
             
-            // Ако има икона за календара, я показваме
+            // Ако има икона за календара
             if let iconName = calendarIconName {
                 Image(systemName: iconName)
-                    // Може да оцветим иконата според цвета на календара
                     .foregroundColor(Color(uiColor: event.color))
             }
             
@@ -79,18 +59,15 @@ struct EventRowView: View {
             
             Spacer()
             
-            // Показваме "all-day" или часове, ако не е all-day
+            // Показваме "all-day" или време
             if event.isAllDay {
-                Text("all-day")
+                // (LOC) Заменяме "all-day" с локализиран ключ
+                Text(LocalizedStringKey("all-day"))
                     .font(.subheadline)
                     .foregroundColor(.gray)
-            }
-            // Ако е многодневно (EKMultiDayWrapper), използваме PartialDayView:
-            else if let multi = event as? EKMultiDayWrapper {
+            } else if let multi = event as? EKMultiDayWrapper {
                 PartialDayView(multi: multi, timeString: timeString)
-            }
-            // Иначе показваме стандартен интервал (начало – край)
-            else {
+            } else {
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(timeString(event.dateInterval.start))
                     Text(timeString(event.dateInterval.end))
@@ -105,7 +82,7 @@ struct EventRowView: View {
 }
 
 
-// Изглед за многодневно събитие
+/// Изглед за многодневно събитие
 struct PartialDayView: View {
     let multi: EKMultiDayWrapper
     let timeString: (Date) -> String
@@ -118,16 +95,18 @@ struct PartialDayView: View {
                     .foregroundColor(.gray)
             } else if multi.isLastPartialDay {
                 VStack(alignment: .trailing, spacing: 2) {
-                    Text("Ends")
+                    // (LOC) Заменяме "Ends" с локализиран ключ
+                    Text(LocalizedStringKey("Ends"))
                     Text(timeString(multi.partialEnd))
                 }
                 .font(.subheadline)
                 .foregroundColor(.gray)
             } else if multi.isMiddlePartialDay {
-                Text("all-day")
+                Text(LocalizedStringKey("all-day"))
                     .font(.subheadline)
                     .foregroundColor(.gray)
             } else {
+                // Ако не сме first, last или middle partial day
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(timeString(multi.partialStart))
                     Text(timeString(multi.partialEnd))

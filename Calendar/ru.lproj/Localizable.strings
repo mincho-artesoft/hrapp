@@ -106,3 +106,31 @@
 "Thu" = "Чт";
 "Fri" = "Пт";
 "Sat" = "Сб";
+
+/* UIMenuButtonRepresentable */
+"Day" = "День";
+"MultiDay" = "Несколько дней";
+"Month" = "Месяц";
+"Year" = "Год";
+"List" = "Список";
+"MultiCalendar" = "Несколько календарей";
+
+/* YearCalendarView */
+"Search events..." = "Поиск событий…";
+"Cancel" = "Отмена";
+"Close" = "Закрыть";
+"New Event" = "Новое событие";
+
+/* AllEventsListView */
+"Search events..." = "Поиск событий…";
+"Cancel" = "Отмена";
+"New Event" = "Новое событие";
+"No calendar access." = "Нет доступа к календарю.";
+
+/* EventRowView */
+"all-day" = "Весь день";
+"Ends" = "Завершение";
+
+/* SearchEventRowView */
+"No Title" = "Без названия";
+"all-day" = "Весь день";

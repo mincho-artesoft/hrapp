@@ -1,8 +1,7 @@
 import SwiftUI
 import EventKit
 
-
-/// Визуализация на един ред (EKEvent), в стила на AllEventsListView
+/// Визуализация на един ред (EKEvent) за Search Results
 struct SearchEventRowView: View {
     let event: EKEvent
 
@@ -26,15 +25,16 @@ struct SearchEventRowView: View {
         return nil
     }
 
+    /// Форматиране на часа
     private func timeString(_ date: Date) -> String {
         let df = DateFormatter()
-        df.dateFormat = "h:mma"
+        df.dateFormat = "h:mma"  // или използвайте локализирана формата
         return df.string(from: date)
     }
 
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
-            // Цветна лента (ако не е all-day)
+            // Цветна лента, ако не е all-day
             if !event.isAllDay {
                 Rectangle()
                     .fill(Color(uiColor: eventColor))
@@ -42,22 +42,25 @@ struct SearchEventRowView: View {
                     .cornerRadius(1.5)
             }
 
-            // Икона (birthday, holiday, all-day) ако има
+            // Икона (birthday, holiday, all-day), ако има
             if let iconName = calendarIconName {
                 Image(systemName: iconName)
                     .foregroundColor(Color(uiColor: eventColor))
             }
 
             // Заглавие
-            Text(event.title ?? "Без заглавие")
+            Text(event.title?.isEmpty == false
+                 ? event.title!
+                 : NSLocalizedString("No Title", comment: "Fallback if an event has no title"))
                 .font(.body)
                 .foregroundColor(.primary)
 
             Spacer()
 
-            // Показваме "all-day" или часовете
+            // Показваме "all-day" или часа
             if event.isAllDay {
-                Text("all-day")
+                // (LOC) Заменяме "all-day" с локализиран ключ
+                Text(LocalizedStringKey("all-day"))
                     .font(.subheadline)
                     .foregroundColor(.gray)
             } else {
@@ -70,6 +73,6 @@ struct SearchEventRowView: View {
             }
         }
         .padding(.vertical, 6)
-        .contentShape(Rectangle()) // Позволява целият ред да е "кликаем"
+        .contentShape(Rectangle()) // Целият ред да е кликаем
     }
 }

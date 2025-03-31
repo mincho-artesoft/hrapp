@@ -25,14 +25,16 @@ struct AllEventsListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // 1) Optional search bar, shown if showSearchBar == true
+            // 1) Optional search bar
             if showSearchBar {
                 HStack {
-                    TextField("Search events...", text: $searchText)
+                    // (LOC) Локализиран placeholder
+                    TextField(LocalizedStringKey("Search events..."), text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
-                    Button("Cancel") {
+                    // (LOC) Локализиран бутон
+                    Button(LocalizedStringKey("Cancel")) {
                         showSearchBar = false
                         searchText = ""
                     }
@@ -43,51 +45,46 @@ struct AllEventsListView: View {
                 .transition(.move(edge: .top))
             }
             
-            // 2) Main Content – conditionally show search results or the normal event list
+            // 2) Main Content
             if showSearchBar && !searchText.isEmpty {
-                // If searching and we have text, show search results
                 SearchResultsView(searchText: searchText)
             } else {
-                // Otherwise, show your normal event list
                 ScrollViewReader { proxy in
                     content(proxy: proxy)
                 }
-                // Sheet за редактиране/създаване на събитие
                 .sheet(item: $eventToEdit) { event in
                     EventEditViewWrapper(
                         eventStore: CalendarViewModel.shared.eventStore,
                         event: event,
                         onEventUpdated: {
-                            // След Save/Delete → презареждане
                             loadInitialEvents()
                         }
                     )
                 }
             }
         }
-        // Нежна анимация при показване/скриване на searchBar
         .animation(.easeInOut, value: showSearchBar)
         
-        // 3) Toolbar: заместваме SwiftUI Menu с UIMenuButtonRepresentable
+        // 3) Toolbar
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {
                     if !showSearchBar {
-                        // (a) Бутон "+"
+                        // (a) + Button
                         Button {
                             createAndEditNewEvent(on: Date())
                         } label: {
                             Image(systemName: "plus")
                         }
                         
-                        // (b) Бутон за търсене
+                        // (b) Search Button
                         Button {
                             showSearchBar = true
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
                         
-                        // (c) Вместо SwiftUI Menu { ... }, ползваме UIMenuButtonRepresentable
+                        // (c) UIMenuButtonRepresentable
                         UIMenuButtonRepresentable(
                             currentView: selectedTab,
                             onViewChange: { newTab in
@@ -116,7 +113,6 @@ struct AllEventsListView: View {
                 loadInitialEvents()
             }
             scrollToToday(proxy: proxy)
-            // Малко закъснение, за да сме сигурни, че scrollToToday ще се изпълни
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
                 isContentVisible = true
             }
@@ -129,13 +125,13 @@ struct AllEventsListView: View {
             
             ForEach(dayGroups.indices, id: \.self) { index in
                 let dayGroup = dayGroups[index]
+                
                 DaySectionView(
                     dayGroup: dayGroup,
                     isToday: isToday,
                     dayHeaderString: dayHeaderString,
                     timeString: timeString
                 ) { event in
-                    // On event tap → open for edit
                     if let multi = event as? EKMultiDayWrapper {
                         eventToEdit = multi.realEvent
                     } else if let editableEvent = event as? EKEvent {
@@ -160,7 +156,6 @@ struct AllEventsListView: View {
             }
         }
         .listStyle(.plain)
-        // При зареждане "назад" → скрол до "днес"
         .onChange(of: pinnedAllEvents.count) { _, _ in
             if didLoadMoreBefore {
                 scrollToToday(proxy: proxy)
@@ -182,8 +177,6 @@ struct AllEventsListView: View {
     }
     
     // MARK: - Helpers
-    
-    /// Групиране на събитията по ден
     func groupByDay(_ events: [EventDescriptor]) -> [DayGroup] {
         var dict = [Date: [EventDescriptor]]()
         let cal = Calendar.current
@@ -194,7 +187,6 @@ struct AllEventsListView: View {
         }
         
         let sortedKeys = dict.keys.sorted()
-        
         return sortedKeys.map { day in
             let dayEvents = dict[day] ?? []
             let sortedEvents = dayEvents.sorted { $0.dateInterval.start < $1.dateInterval.start }
@@ -202,7 +194,6 @@ struct AllEventsListView: View {
         }
     }
     
-    /// Помощна структура за ден
     struct DayGroup: Identifiable {
         let day: Date
         let events: [EventDescriptor]
@@ -210,7 +201,6 @@ struct AllEventsListView: View {
         var id: Date { day }
     }
     
-    /// Форматиране на заглавието на деня
     func dayHeaderString(_ date: Date) -> String {
         let calendar = Calendar.current
         let currentYear = calendar.component(.year, from: Date())
@@ -222,12 +212,10 @@ struct AllEventsListView: View {
         return df.string(from: date).uppercased()
     }
     
-    /// Проверка дали даден ден е днешния
     func isToday(_ date: Date) -> Bool {
         Calendar.current.isDateInToday(date)
     }
     
-    /// Форматиране на час
     func timeString(_ date: Date) -> String {
         let df = DateFormatter()
         df.dateFormat = "h:mma"
@@ -244,7 +232,8 @@ struct AllEventsListView: View {
             case .notDetermined:
                 print("TODO: requestCalendarAccessIfNeeded()")
             default:
-                print("No calendar access.")
+                // (LOC) Може да го преведете, ако искате да го показвате на екрана
+                print(NSLocalizedString("No calendar access.", comment: "Log message"))
             }
         } else {
             if status == .authorized {
@@ -252,7 +241,7 @@ struct AllEventsListView: View {
             } else if status == .notDetermined {
                 print("TODO: requestCalendarAccessIfNeeded()")
             } else {
-                print("No calendar access.")
+                print(NSLocalizedString("No calendar access.", comment: "Log message"))
             }
         }
     }
@@ -261,24 +250,17 @@ struct AllEventsListView: View {
         let cal = Calendar.current
         let newEvent = EKEvent(eventStore: CalendarViewModel.shared.eventStore)
         
-        // Вземаме [year, month, day] от "day"
         var dateComponents = cal.dateComponents([.year, .month, .day], from: day)
-        
-        // Вземаме [hour, minute] от текущия момент
         let nowComponents = cal.dateComponents([.hour, .minute], from: Date())
         
-        // Комбинираме ги:
         dateComponents.hour = nowComponents.hour
         dateComponents.minute = nowComponents.minute
         
-        // Начален час
         let startDate = cal.date(from: dateComponents)!
         newEvent.startDate = startDate
+        newEvent.endDate   = cal.date(byAdding: .hour, value: 1, to: startDate)!
         
-        // Краен час (+1 час)
-        newEvent.endDate = cal.date(byAdding: .hour, value: 1, to: startDate)!
-        
-        newEvent.title = "New Event"
+        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
         newEvent.calendar = CalendarViewModel.shared.eventStore.defaultCalendarForNewEvents
         eventToEdit = newEvent
     }

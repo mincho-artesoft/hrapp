@@ -17,13 +17,16 @@ struct YearCalendarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            // (A) Търсачка
             if showSearchBar {
                 HStack {
-                    TextField("Search events...", text: $searchText)
+                    // Локализираме Placeholder-а
+                    TextField(LocalizedStringKey("Search events..."), text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
-                    Button("Cancel") {
+                    // Локализираме бутона "Cancel"
+                    Button(LocalizedStringKey("Cancel")) {
                         showSearchBar = false
                         searchText = ""
                     }
@@ -34,6 +37,7 @@ struct YearCalendarView: View {
                 .transition(.move(edge: .top))
             }
             
+            // (B) Горен ред: year navigation (ако не сме в режим на търсене)
             if !(showSearchBar && !searchText.isEmpty) {
                 HStack {
                     Button(action: {
@@ -43,6 +47,7 @@ struct YearCalendarView: View {
                         Image(systemName: "chevron.left")
                     }
                     
+                    // Просто показваме числото (година); не е нужно да се локализира
                     Text(String(year))
                         .font(.headline)
                         .frame(maxWidth: .infinity)
@@ -58,6 +63,7 @@ struct YearCalendarView: View {
                 .padding(.horizontal)
             }
             
+            // (C) Основно съдържание
             if showSearchBar && !searchText.isEmpty {
                 // Резултати от търсене
                 SearchResultsView(searchText: searchText)
@@ -71,40 +77,20 @@ struct YearCalendarView: View {
                         if isPad {
                             // iPad
                             if isLandscape {
-                                // 6 колони (iPad хоризонтално)
-                                return [
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing)
-                                ]
+                                // 6 колони
+                                return Array(repeating: GridItem(.fixed(180), spacing: horizontalSpacing), count: 6)
                             } else {
-                                // 4 колони (iPad портрет)
-                                return [
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing)
-                                ]
+                                // 4 колони
+                                return Array(repeating: GridItem(.fixed(180), spacing: horizontalSpacing), count: 4)
                             }
                         } else {
                             // iPhone
                             if isLandscape {
-                                // 4 колони (iPhone хоризонтално)
-                                return [
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing)
-                                ]
+                                // 4 колони
+                                return Array(repeating: GridItem(.fixed(180), spacing: horizontalSpacing), count: 4)
                             } else {
-                                // 2 колони (iPhone портрет)
-                                return [
-                                    GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    GridItem(.fixed(180), spacing: horizontalSpacing)
-                                ]
+                                // 2 колони
+                                return Array(repeating: GridItem(.fixed(180), spacing: horizontalSpacing), count: 2)
                             }
                         }
                     }()
@@ -113,6 +99,7 @@ struct YearCalendarView: View {
                         LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(1...12, id: \.self) { monthIndex in
                                 let dateForMonth = dateFromYearMonth(year, monthIndex)
+                                
                                 YearMonthMiniView(
                                     monthDate: dateForMonth,
                                     eventsByDay: viewModel.eventsByDay
@@ -133,6 +120,8 @@ struct YearCalendarView: View {
             }
         }
         .animation(.easeInOut, value: showSearchBar)
+        
+        // (D) Full-screen cover при цъкане на даден месец => MonthCalendarView
         .fullScreenCover(item: $tappedMonthDate) { monthStart in
             NavigationView {
                 MonthCalendarView(
@@ -143,7 +132,8 @@ struct YearCalendarView: View {
                 )
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Close") {
+                        // Локализираме "Close"
+                        Button(LocalizedStringKey("Close")) {
                             tappedMonthDate = nil
                             viewModel.loadEventsForWholeYear(year: year)
                         }
@@ -151,11 +141,15 @@ struct YearCalendarView: View {
                 }
             }
         }
+        
+        // (E) Sheet за създаване на събитие
         .sheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEventsForWholeYear(year: year)
         }) { ev in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
         }
+        
+        // (F) Toolbar (Add, Search, UIMenuButtonRepresentable)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {
@@ -174,7 +168,7 @@ struct YearCalendarView: View {
                             Image(systemName: "magnifyingglass")
                         }
                         
-                        // Заместваме SwiftUI Menu с UIMenuButtonRepresentable
+                        // Меню
                         UIMenuButtonRepresentable(
                             currentView: selectedTab,
                             onViewChange: { newTab in
@@ -200,7 +194,9 @@ struct YearCalendarView: View {
     
     private func createNewEventForYear() {
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
-        newEvent.title = "New Event"
+        
+        // Локализираме "New Event"
+        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
         newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
         
         let start = Date()

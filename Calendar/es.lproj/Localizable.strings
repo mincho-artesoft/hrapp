@@ -106,3 +106,31 @@
 "Thu" = "Jue";
 "Fri" = "Vie";
 "Sat" = "Sáb";
+
+/* UIMenuButtonRepresentable */
+"Day" = "Día";
+"MultiDay" = "Varios días";
+"Month" = "Mes";
+"Year" = "Año";
+"List" = "Lista";
+"MultiCalendar" = "Varios calendarios";
+
+/* YearCalendarView */
+"Search events..." = "Buscar eventos…";
+"Cancel" = "Cancelar";
+"Close" = "Cerrar";
+"New Event" = "Evento nuevo";
+
+/* AllEventsListView */
+"Search events..." = "Buscar eventos…";
+"Cancel" = "Cancelar";
+"New Event" = "Evento nuevo";
+"No calendar access." = "No hay acceso al calendario.";
+
+/* EventRowView */
+"all-day" = "Todo el día";
+"Ends" = "Termina";
+
+/* SearchEventRowView */
+"No Title" = "Sin título";
+"all-day" = "Todo el día";

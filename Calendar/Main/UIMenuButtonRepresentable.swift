@@ -1,24 +1,13 @@
-//
-//  UIMenuButtonRepresentable.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 31/3/25.
-//
-
-
 import SwiftUI
 import UIKit
 
 struct UIMenuButtonRepresentable: UIViewRepresentable {
-    /// Кой изглед в момента е селектиран
     let currentView: Int
-    
-    /// Callback, който извикваме при промяна
     let onViewChange: ((Int) -> Void)?
     
     func makeUIView(context: Context) -> UIButton {
         let button = UIButton(type: .system)
-        
+
         // Първоначална икона
         let initialImage = imageForTab(currentView)
         button.setImage(initialImage, for: .normal)
@@ -31,14 +20,11 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIButton, context: Context) {
-        // При всяко "прерисуване" на SwiftUI, обновяваме менюто + иконата
         uiView.setImage(imageForTab(currentView), for: .normal)
         uiView.menu = buildViewMenu(for: uiView)
     }
     
-    /// Тук си генерираме вашия UIMenu с UIAction
     private func buildViewMenu(for button: UIButton) -> UIMenu {
-        // Иконите
         let dayImage          = UIImage(systemName: "calendar.day.timeline.leading")
         let multiDayImage     = UIImage(systemName: "distribute.horizontal.left")
         let monthImage        = UIImage(systemName: "calendar")
@@ -46,9 +32,9 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         
-        // Day
+        // (LOC) Заместваме "Day" с NSLocalizedString("Day", ...)
         let dayAction = UIAction(
-            title: "Day",
+            title: NSLocalizedString("Day", comment: "Tab name: Day"),
             image: dayImage,
             state: currentView == 1 ? .on : .off
         ) { _ in
@@ -56,9 +42,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(dayImage, for: .normal)
         }
         
-        // MultiDay
         let multiAction = UIAction(
-            title: "MultiDay",
+            title: NSLocalizedString("MultiDay", comment: "Tab name: MultiDay"),
             image: multiDayImage,
             state: currentView == 3 ? .on : .off
         ) { _ in
@@ -66,9 +51,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(multiDayImage, for: .normal)
         }
         
-        // Month
         let monthAction = UIAction(
-            title: "Month",
+            title: NSLocalizedString("Month", comment: "Tab name: Month"),
             image: monthImage,
             state: currentView == 0 ? .on : .off
         ) { _ in
@@ -76,9 +60,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(monthImage, for: .normal)
         }
         
-        // Year
         let yearAction = UIAction(
-            title: "Year",
+            title: NSLocalizedString("Year", comment: "Tab name: Year"),
             image: yearImage,
             state: currentView == 2 ? .on : .off
         ) { _ in
@@ -86,9 +69,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(yearImage, for: .normal)
         }
         
-        // List
         let listAction = UIAction(
-            title: "List",
+            title: NSLocalizedString("List", comment: "Tab name: List"),
             image: listImage,
             state: currentView == 4 ? .on : .off
         ) { _ in
@@ -96,9 +78,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(listImage, for: .normal)
         }
         
-        // MultiCalendar
         let multiCalendarAction = UIAction(
-            title: "MultiCalendar",
+            title: NSLocalizedString("MultiCalendar", comment: "Tab name: MultiCalendar"),
             image: multiCalendarIcon,
             state: currentView == 5 ? .on : .off
         ) { _ in
@@ -106,7 +87,6 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(multiCalendarIcon, for: .normal)
         }
         
-        // Създаваме UIMenu с горните actions
         return UIMenu(
             title: "",
             children: [
@@ -120,7 +100,6 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         )
     }
     
-    /// Малка помощна функция, за да определим иконата спрямо `currentView`
     private func imageForTab(_ tab: Int) -> UIImage? {
         switch tab {
         case 1: return UIImage(systemName: "calendar.day.timeline.leading")
