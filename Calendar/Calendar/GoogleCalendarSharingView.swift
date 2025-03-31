@@ -1,32 +1,29 @@
-//
-//  GoogleCalendarSharingView.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 31/3/25.
-//
-
-
 import SwiftUI
+import SafariServices
 
 struct GoogleCalendarSharingView: View {
     @ObservedObject var viewModel: CalendarViewModel = .shared
-    
-    let googleCalID: String         // ID на Google календара (пр. "primary" или "someID@group.calendar.google.com")
-    let user: StoredGoogleUser      // Кой Google акаунт използваме
-    let calendarTitle: String       // Например "My Work Calendar" – за UI
-    
+
+    let googleCalID: String         // ID of the Google Calendar
+    let user: StoredGoogleUser      // Google account used for this calendar
+    let calendarTitle: String       // UI title
+
     @Environment(\.dismiss) private var dismiss
-    
+
     @State private var aclRules: [GoogleCalendarACLRule] = []
     @State private var isLoading = false
     @State private var newEmailToShare = ""
+    @State private var newRole: String = "reader" // Default selected role
     @State private var errorMessage = ""
-    
+
+    // Available roles – you can expand these if needed
+    let availableRoles = ["reader", "writer", "owner"]
+
     var body: some View {
         NavigationView {
             VStack {
                 if isLoading {
-                    ProgressView("Зареждане на споделянето…")
+                    ProgressView("Loading sharing settings…")
                 } else {
                     if !errorMessage.isEmpty {
                         Text(errorMessage)
@@ -35,47 +32,64 @@ struct GoogleCalendarSharingView: View {
                     }
                     
                     List {
-                        Section("Споделено с тези потребители") {
+                        Section(header: Text("Shared with these users")) {
                             ForEach(aclRules) { rule in
+                                let isSelfOwner = rule.scope?.value == user.email && rule.role == "owner"
                                 HStack {
-                                    Text(rule.id) // обикновено "user:email@..."
+                                    Text(rule.scope?.value ?? "Unknown")
                                         .font(.callout)
                                     Spacer()
-                                    Text(rule.role)
-                                        .font(.footnote)
-                                        .foregroundColor(.secondary)
-                                }
-                                .swipeActions {
-                                    Button(role: .destructive) {
-                                        Task {
-                                            await deleteAclRule(rule)
+                                    if isSelfOwner {
+                                        Text(rule.role.capitalized)
+                                    } else {
+                                        Picker("Permission", selection: binding(for: rule)) {
+                                            ForEach(availableRoles, id: \.self) { role in
+                                                Text(role.capitalized).tag(role)
+                                            }
                                         }
-                                    } label: {
-                                        Text("Remove")
+                                        .pickerStyle(MenuPickerStyle())
+                                    }
+                                    if !isSelfOwner {
+                                        Button(action: {
+                                            Task {
+                                                await deleteAclRule(rule)
+                                            }
+                                        }) {
+                                            Image(systemName: "xmark.circle")
+                                        }
+                                        .buttonStyle(BorderlessButtonStyle())
                                     }
                                 }
                             }
                         }
                         
-                        Section {
-                            TextField("Имейл за споделяне", text: $newEmailToShare)
+                        Section(header: Text("Add New Email")) {
+                            TextField("Email to share", text: $newEmailToShare)
                                 .keyboardType(.emailAddress)
-                            Button("Добави") {
+                                .autocapitalization(.none)
+                            HStack {
+                                Text("Permission:")
+                                Picker("Permission", selection: $newRole) {
+                                    ForEach(availableRoles, id: \.self) { role in
+                                        Text(role.capitalized).tag(role)
+                                    }
+                                }
+                                .pickerStyle(MenuPickerStyle())
+                            }
+                            Button("Add") {
                                 Task {
                                     await addEmailToShare()
                                 }
                             }
-                        } header: {
-                            Text("Добавяне на нов имейл")
                         }
                     }
                 }
             }
-            .navigationTitle("Споделяне: \(calendarTitle)")
+            .navigationTitle("Sharing: \(calendarTitle)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Затвори") {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
                         dismiss()
                     }
                 }
@@ -88,149 +102,101 @@ struct GoogleCalendarSharingView: View {
         }
     }
     
-    private func loadAclList() async {
-        guard !isLoading else { return }
-        isLoading = true
-        errorMessage = ""
-        
-        do {
-            // Проверяваме дали трябва refresh
-            var actualUser = user
-            if user.accessTokenExpiration < Date(), let rtoken = user.refreshToken, !rtoken.isEmpty {
-                do {
-                    let (newAccess, newExp, newID) = try await viewModel.refreshTokens(refreshToken: rtoken)
-                    let updatedUser = StoredGoogleUser(
-                        uniqueID: user.uniqueID,
-                        userID: user.userID,
-                        email: user.email,
-                        accessToken: newAccess,
-                        accessTokenExpiration: newExp,
-                        refreshToken: rtoken,
-                        idToken: newID,
-                        photoURL: user.photoURL
-                    )
-                    // Записваме в in-memory
-                    viewModel.updateUserInMemory(updatedUser)
-                    viewModel.saveAllUsersToUserDefaults()
-                    actualUser = updatedUser
-                } catch {
-                    print("Refresh error: \(error)")
+    // Creates a binding to the role for a given ACL rule
+    private func binding(for rule: GoogleCalendarACLRule) -> Binding<String> {
+        guard let index = aclRules.firstIndex(where: { $0.id == rule.id }) else {
+            return .constant(rule.role)
+        }
+        return Binding(
+            get: { aclRules[index].role },
+            set: { newValue in
+                // Prevent editing if this is the current owner's rule
+                if rule.scope?.value == user.email && rule.role == "owner" { return }
+                aclRules[index].role = newValue
+                Task {
+                    await updateAclRule(aclRules[index])
                 }
             }
-            
-            // Сега вече в actualUser.accessToken имаме (надяваме се) валиден токен
-            let rules = try await viewModel.fetchGoogleCalendarAclList(
-                googleCalendarID: googleCalID,
-                accessToken: actualUser.accessToken
-            )
-            
-            // Филтрираме "owner" (понякога = самият user) ако не искаме да го показваме в списъка
-            // Или пък го оставяме. Ваш избор:
-            // let filtered = rules.filter { $0.role != "owner" }
-            
+        )
+    }
+    
+    // Loads ACL rules from Google Calendar API using viewModel
+    private func loadAclList() async {
+        isLoading = true
+        errorMessage = ""
+        do {
+            let rules = try await viewModel.fetchGoogleCalendarAclList(googleCalendarID: googleCalID, accessToken: user.accessToken)
             await MainActor.run {
                 self.aclRules = rules
             }
         } catch {
             await MainActor.run {
-                errorMessage = "Грешка при зареждане: \(error.localizedDescription)"
+                errorMessage = "Error loading: \(error.localizedDescription)"
             }
         }
         isLoading = false
     }
     
+    // Adds a new sharing entry with the selected email and role
     private func addEmailToShare() async {
         guard !newEmailToShare.isEmpty else { return }
         isLoading = true
         errorMessage = ""
-        
         do {
-            var actualUser = user
-            if user.accessTokenExpiration < Date(), let rtoken = user.refreshToken, !rtoken.isEmpty {
-                do {
-                    let (newAccess, newExp, newID) = try await viewModel.refreshTokens(refreshToken: rtoken)
-                    let updatedUser = StoredGoogleUser(
-                        uniqueID: user.uniqueID,
-                        userID: user.userID,
-                        email: user.email,
-                        accessToken: newAccess,
-                        accessTokenExpiration: newExp,
-                        refreshToken: rtoken,
-                        idToken: newID,
-                        photoURL: user.photoURL
-                    )
-                    viewModel.updateUserInMemory(updatedUser)
-                    viewModel.saveAllUsersToUserDefaults()
-                    actualUser = updatedUser
-                } catch {
-                    print("Refresh error: \(error)")
-                }
-            }
-            
-            // Примерно даваме само "reader" права:
             let newRule = try await viewModel.insertGoogleCalendarAcl(
                 googleCalendarID: googleCalID,
-                accessToken: actualUser.accessToken,
+                accessToken: user.accessToken,
                 emailToShare: newEmailToShare,
-                ruleRole: "reader"
+                ruleRole: newRole
             )
-            
             await MainActor.run {
                 self.aclRules.append(newRule)
                 self.newEmailToShare = ""
             }
         } catch {
             await MainActor.run {
-                errorMessage = "Грешка при добавяне: \(error.localizedDescription)"
+                errorMessage = "Error adding: \(error.localizedDescription)"
             }
         }
         isLoading = false
     }
     
+    // Deletes the specified ACL rule using viewModel
     private func deleteAclRule(_ rule: GoogleCalendarACLRule) async {
-        guard !rule.id.isEmpty else { return }
         isLoading = true
         errorMessage = ""
-        
         do {
-            var actualUser = user
-            if user.accessTokenExpiration < Date(), let rtoken = user.refreshToken, !rtoken.isEmpty {
-                do {
-                    let (newAccess, newExp, newID) = try await viewModel.refreshTokens(refreshToken: rtoken)
-                    let updatedUser = StoredGoogleUser(
-                        uniqueID: user.uniqueID,
-                        userID: user.userID,
-                        email: user.email,
-                        accessToken: newAccess,
-                        accessTokenExpiration: newExp,
-                        refreshToken: rtoken,
-                        idToken: newID,
-                        photoURL: user.photoURL
-                    )
-                    viewModel.updateUserInMemory(updatedUser)
-                    viewModel.saveAllUsersToUserDefaults()
-                    actualUser = updatedUser
-                } catch {
-                    print("Refresh error: \(error)")
-                }
-            }
-            
             try await viewModel.deleteGoogleCalendarAclRule(
                 googleCalendarID: googleCalID,
                 aclRuleID: rule.id,
-                accessToken: actualUser.accessToken
+                accessToken: user.accessToken
             )
-            
             await MainActor.run {
-                if let idx = self.aclRules.firstIndex(where: { $0.id == rule.id }) {
-                    self.aclRules.remove(at: idx)
+                if let index = aclRules.firstIndex(where: { $0.id == rule.id }) {
+                    aclRules.remove(at: index)
                 }
             }
         } catch {
             await MainActor.run {
-                errorMessage = "Грешка при изтриване: \(error.localizedDescription)"
+                errorMessage = "Error deleting: \(error.localizedDescription)"
             }
         }
         isLoading = false
+    }
+    
+    // Updates the role of the specified ACL rule using viewModel
+    private func updateAclRule(_ rule: GoogleCalendarACLRule) async {
+        do {
+            try await viewModel.updateGoogleCalendarAclRule(
+                googleCalendarID: googleCalID,
+                aclRuleID: rule.id,
+                accessToken: user.accessToken,
+                newRole: rule.role
+            )
+        } catch {
+            await MainActor.run {
+                errorMessage = "Error updating: \(error.localizedDescription)"
+            }
+        }
     }
 }

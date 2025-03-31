@@ -51,6 +51,14 @@ struct CalendarsSheetView: View {
             loadCurrentGoogleUserID()
 
         }
+        .sheet(item: $calendarToEdit, onDismiss: {
+            viewModel.reloadCalendars()
+        }) { cal in
+            EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
+        }
+        .sheet(isPresented: $showAddCalendarSheet) {
+            AddCalendarView()
+        }
         .onChange(of: googleSharingInfos) { _ in
             saveGoogleSharingInfos()
         }

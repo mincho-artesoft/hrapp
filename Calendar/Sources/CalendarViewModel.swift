@@ -4032,13 +4032,44 @@ struct GoogleCalendarACLListResponse: Codable {
     let items: [GoogleCalendarACLRule]
 }
 
+// Предполагаеми модели:
 struct GoogleCalendarACLRule: Codable, Identifiable {
-    let id: String             // често е "user:email@domain.com"
-    let scope: GoogleACLScope?
-    let role: String
+    // Често това е "user:email@domain.com"
+    var id: String
+    var scope: GoogleACLScope?
+    var role: String
 }
 
-struct GoogleACLScope: Codable {
-    let type: String // "user", "group", "domain", "default"
-    let value: String?
+struct GoogleACLScope: Codable, Equatable {
+    var type: String    // "user", "group", "domain", "default"
+    var value: String?
+}
+extension CalendarViewModel {
+    func updateGoogleCalendarAclRule(googleCalendarID: String,
+                                     aclRuleID: String,
+                                     accessToken: String,
+                                     newRole: String) async throws {
+        // Енкодваме calendarID и aclRuleID за URL-а
+        guard let encodedCalendarID = googleCalendarID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let encodedAclRuleID = aclRuleID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+              let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/\(encodedCalendarID)/acl/\(encodedAclRuleID)") else {
+            throw NSError(domain: "updateGoogleCalendarAclRule", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        // Създаваме JSON тялото с новата роля
+        let body: [String: Any] = ["role": newRole]
+        request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
+            let responseBody = String(data: data, encoding: .utf8) ?? ""
+            throw NSError(domain: "updateGoogleCalendarAclRule", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: "HTTP \(httpResponse.statusCode): \(responseBody)"])
+        }
+        // При успех може да декодирате отговора ако е необходимо
+    }
 }
