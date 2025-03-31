@@ -357,7 +357,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         addSubview(cornerView)
         
         // allDayTitleLabel
-        allDayTitleLabel.text = "  all-day"
+        allDayTitleLabel.text = "  " + NSLocalizedString("all-day", comment: "")
         allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         allDayTitleLabel.layer.zPosition = 6
@@ -841,7 +841,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         
         let dayAction = UIAction(
-            title: "Day",
+            title: NSLocalizedString("Day", comment: ""),
             image: dayImage,
             state: currentView == 1 ? .on : .off
         ) { [weak self] _ in
@@ -854,7 +854,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
         
         let multiAction = UIAction(
-            title: "MultiDay",
+            title: NSLocalizedString("MultiDay", comment: ""),
             image: multiDayImage,
             state: currentView == 3 ? .on : .off
         ) { [weak self] _ in
@@ -866,7 +866,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
         
         let monthAction = UIAction(
-            title: "Month",
+            title: NSLocalizedString("Month", comment: ""),
             image: monthImage,
             state: currentView == 0 ? .on : .off
         ) { [weak self] _ in
@@ -877,7 +877,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
         
         let yearAction = UIAction(
-            title: "Year",
+            title: NSLocalizedString("Year", comment: ""),
             image: yearImage,
             state: currentView == 2 ? .on : .off
         ) { [weak self] _ in
@@ -888,7 +888,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
         
         let listAction = UIAction(
-            title: "List",
+            title: NSLocalizedString("List", comment: ""),
             image: listImage,
             state: currentView == 4 ? .on : .off
         ) { [weak self] _ in
@@ -899,7 +899,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
         
         let multiCalendarAction = UIAction(
-            title: "MultiCalendar",
+            title: NSLocalizedString("MultiCalendar", comment: ""),
             image: multiCalendarIcon,
             state: currentView == 5 ? .on : .off
         ) { [weak self] _ in
@@ -1115,12 +1115,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - Helpers
     private func refreshDateRangeButtonTitle() {
         if fromDate > toDate {
-            dateRangeButton.setTitle("Няма избран период", for: .normal)
+            dateRangeButton.setTitle(NSLocalizedString("No selected range", comment: ""), for: .normal)
         } else {
             let s = fmt(fromDate)
             let e = fmt(toDate)
             if s.isEmpty || e.isEmpty {
-                dateRangeButton.setTitle("Няма избран период", for: .normal)
+                dateRangeButton.setTitle(NSLocalizedString("No selected range", comment: ""), for: .normal)
             } else {
                 dateRangeButton.setTitle("\(s) - \(e)", for: .normal)
             }

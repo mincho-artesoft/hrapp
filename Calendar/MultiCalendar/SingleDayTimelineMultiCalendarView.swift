@@ -174,10 +174,9 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         // ------------------------------------------------
         if let videoURL = existingVideoURL {
             let joinAction = UIAction(
-                title: "Join Meeting",
-                image: UIImage(systemName: "video.fill") // или "video"
+                title: NSLocalizedString("Join Meeting", comment: ""),
+                image: UIImage(systemName: "video.fill")
             ) { _ in
-                // Опитваме да отворим линка
                 UIApplication.shared.open(videoURL, options: [:], completionHandler: nil)
             }
             
@@ -188,7 +187,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         // (B) „Edit“ бутон
         // ------------------------------------------------
         let editAction = UIAction(
-            title: "Edit",
+            title: NSLocalizedString("Edit", comment: ""),
             image: UIImage(systemName: "square.and.pencil")
         ) { action in
             self.onEventTap?(descriptor)
@@ -199,7 +198,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         // (C) „Duplicate“ бутон
         // ------------------------------------------------
         let duplicateAction = UIAction(
-            title: "Duplicate",
+            title: NSLocalizedString("Duplicate", comment: ""),
             image: UIImage(systemName: "doc.on.doc")
         ) { action in
             self.duplicateEventInStore(descriptor)
@@ -211,7 +210,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         // (D) „Delete“ бутон
         // ------------------------------------------------
         let deleteAction = UIAction(
-            title: "Delete",
+            title: NSLocalizedString("Delete", comment: ""),
             image: UIImage(systemName: "trash"),
             attributes: .destructive
         ) { action in
@@ -228,7 +227,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
            !CalendarViewModel.shared.hasGoogleMeetLink(in: descriptor)
         {
             let googleAction = UIAction(
-                title: "Add to Google Meet",
+                title: NSLocalizedString("Add to Google Meet", comment: ""),
                 image: UIImage(systemName: "globe")
             ) { action in
                 CalendarViewModel.shared.addGoogleMeet(to: descriptor)
@@ -243,7 +242,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
            !CalendarViewModel.shared.hasMicrosoftTeamsLink(in: descriptor)
         {
             let teamsAction = UIAction(
-                title: "Add to Microsoft Teams",
+                title: NSLocalizedString("Add to Microsoft Teams", comment: ""),
                 image: UIImage(systemName: "video")
             ) { action in
                 CalendarViewModel.shared.addMicrosoftTeams(to: descriptor, for: msUser)
@@ -394,7 +393,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 end: Date().addingTimeInterval(60 * 60) // 1 hour from now
             )
             ghostDesc.isAllDay = false
-            ghostDesc.text = "New Event"
+            ghostDesc.text = NSLocalizedString("New Event", comment: "")
             ghostDesc.color = .systemBlue               // Usually the left border
             ghostDesc.backgroundColor = .systemBlue     // The fill color
             ghostDesc.textColor = .black                // Black text
@@ -983,7 +982,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     end: Date().addingTimeInterval(60 * 60) // 1 hour from now
                 )
                 ghostDesc.isAllDay = true
-                ghostDesc.text = "New Event"
+                ghostDesc.text = NSLocalizedString("New Event", comment: "")
                 ghostDesc.color = .systemBlue               // Usually the left border
                 ghostDesc.backgroundColor = .systemBlue     // The fill color
                 ghostDesc.textColor = .black                // Black text

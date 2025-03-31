@@ -134,3 +134,63 @@
 /* SearchEventRowView */
 "No Title" = "Sin título";
 "all-day" = "Todo el día";
+
+/* BasicEvent */
+"New event" = "Evento nuevo";
+
+/* SingleDayTimelineMultiCalendarView */
+"Join Meeting" = "Unirse a la reunión";
+"Edit" = "Editar";
+"Duplicate" = "Duplicar";
+"Delete" = "Eliminar";
+"Add to Google Meet" = "Agregar a Google Meet";
+"Add to Microsoft Teams" = "Agregar a Microsoft Teams";
+"New Event" = "Evento nuevo";
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+"Search events..." = "Buscar eventos…";
+"all-day" = "Todo el día";
+"Day" = "Día";
+"MultiDay" = "Varios días";
+"Month" = "Mes";
+"Year" = "Año";
+"List" = "Lista";
+"MultiCalendar" = "Varios calendarios";
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+"New event" = "Evento nuevo";
+"All-day event" = "Evento de todo el día";
+"Recurring Event" = "Evento recurrente";
+"This event is part of a series. Update which events?" = "Este evento forma parte de una serie. ¿Qué eventos desea actualizar?";
+"This Event Only" = "Sólo este evento";
+"All Future Events" = "Todos los eventos futuros";
+"Cancel" = "Cancelar";
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Unirse a la reunión";
+"Edit" = "Editar";
+"Duplicate" = "Duplicar";
+"Delete" = "Eliminar";
+"Add to Google Meet" = "Agregar a Google Meet";
+"Add to Microsoft Teams" = "Agregar a Microsoft Teams";
+"New Event" = "Evento nuevo";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "No hay rango seleccionado";
+"all-day" = "Todo el día";
+"Search events..." = "Buscar eventos…";
+"Day" = "Día";
+"MultiDay" = "Varios días";
+"Month" = "Mes";
+"Year" = "Año";
+"List" = "Lista";
+"MultiCalendar" = "Varios calendarios";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Evento nuevo";
+"All-day event" = "Evento de todo el día";
+"Recurring Event" = "Evento recurrente";
+"This event is part of a series. Update which events?" = "Este evento forma parte de una serie. ¿Qué eventos desea actualizar?";
+"This Event Only" = "Sólo este evento";
+"All Future Events" = "Todos los eventos futuros";
+"Cancel" = "Cancelar";

@@ -134,3 +134,63 @@
 /* SearchEventRowView */
 "No Title" = "No Title";
 "all-day" = "all-day";
+
+/* BasicEvent */
+"New event" = "New event";
+
+/* SingleDayTimelineMultiCalendarView */
+"Join Meeting" = "Join Meeting";
+"Edit" = "Edit";
+"Duplicate" = "Duplicate";
+"Delete" = "Delete";
+"Add to Google Meet" = "Add to Google Meet";
+"Add to Microsoft Teams" = "Add to Microsoft Teams";
+"New Event" = "New Event";
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+"Search events..." = "Search events...";
+"all-day" = "all-day";
+"Day" = "Day";
+"MultiDay" = "MultiDay";
+"Month" = "Month";
+"Year" = "Year";
+"List" = "List";
+"MultiCalendar" = "MultiCalendar";
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+"New event" = "New event";
+"All-day event" = "All-day event";
+"Recurring Event" = "Recurring Event";
+"This event is part of a series. Update which events?" = "This event is part of a series. Update which events?";
+"This Event Only" = "This Event Only";
+"All Future Events" = "All Future Events";
+"Cancel" = "Cancel";
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Join Meeting";
+"Edit" = "Edit";
+"Duplicate" = "Duplicate";
+"Delete" = "Delete";
+"Add to Google Meet" = "Add to Google Meet";
+"Add to Microsoft Teams" = "Add to Microsoft Teams";
+"New Event" = "New Event";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "No selected range";
+"all-day" = "all-day";
+"Search events..." = "Search events...";
+"Day" = "Day";
+"MultiDay" = "MultiDay";
+"Month" = "Month";
+"Year" = "Year";
+"List" = "List";
+"MultiCalendar" = "MultiCalendar";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "New event";
+"All-day event" = "All-day event";
+"Recurring Event" = "Recurring Event";
+"This event is part of a series. Update which events?" = "This event is part of a series. Update which events?";
+"This Event Only" = "This Event Only";
+"All Future Events" = "All Future Events";
+"Cancel" = "Cancel";

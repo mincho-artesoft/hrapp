@@ -4,7 +4,10 @@ import UIKit
 final class BasicEvent: EventDescriptor {
     var dateInterval: DateInterval = DateInterval()
     var isAllDay: Bool = false
-    var text: String = "New event"
+    
+    // (LOC) Вместо "New event", ползваме NSLocalizedString(...)
+    var text: String = NSLocalizedString("New event", comment: "Default text for BasicEvent")
+    
     var attributedText: NSAttributedString?
     var lineBreakMode: NSLineBreakMode?
     var font: UIFont = UIFont.systemFont(ofSize: 12)

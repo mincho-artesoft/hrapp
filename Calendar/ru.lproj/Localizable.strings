@@ -134,3 +134,63 @@
 /* SearchEventRowView */
 "No Title" = "Без названия";
 "all-day" = "Весь день";
+
+/* BasicEvent */
+"New event" = "Новое событие";
+
+/* SingleDayTimelineMultiCalendarView */
+"Join Meeting" = "Присоединиться к совещанию";
+"Edit" = "Редактировать";
+"Duplicate" = "Дублировать";
+"Delete" = "Удалить";
+"Add to Google Meet" = "Добавить в Google Meet";
+"Add to Microsoft Teams" = "Добавить в Microsoft Teams";
+"New Event" = "Новое событие";
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+"Search events..." = "Поиск событий…";
+"all-day" = "Весь день";
+"Day" = "День";
+"MultiDay" = "Несколько дней";
+"Month" = "Месяц";
+"Year" = "Год";
+"List" = "Список";
+"MultiCalendar" = "Несколько календарей";
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+"New event" = "Новое событие";
+"All-day event" = "Событие на весь день";
+"Recurring Event" = "Повторяющееся событие";
+"This event is part of a series. Update which events?" = "Это событие является частью серии. Какие события хотите изменить?";
+"This Event Only" = "Только это событие";
+"All Future Events" = "Все будущие события";
+"Cancel" = "Отмена";
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Присоединиться к совещанию";
+"Edit" = "Редактировать";
+"Duplicate" = "Дублировать";
+"Delete" = "Удалить";
+"Add to Google Meet" = "Добавить в Google Meet";
+"Add to Microsoft Teams" = "Добавить в Microsoft Teams";
+"New Event" = "Новое событие";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Не выбран период";
+"all-day" = "Весь день";
+"Search events..." = "Поиск событий…";
+"Day" = "День";
+"MultiDay" = "Несколько дней";
+"Month" = "Месяц";
+"Year" = "Год";
+"List" = "Список";
+"MultiCalendar" = "Несколько календарей";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Новое событие";
+"All-day event" = "Событие на весь день";
+"Recurring Event" = "Повторяющееся событие";
+"This event is part of a series. Update which events?" = "Это событие является частью серии. Какие события хотите обновить?";
+"This Event Only" = "Только это событие";
+"All Future Events" = "Все будущие события";
+"Cancel" = "Отмена";

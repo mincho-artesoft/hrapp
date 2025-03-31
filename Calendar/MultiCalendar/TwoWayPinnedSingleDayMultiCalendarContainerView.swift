@@ -167,7 +167,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     
     private let searchBar: UISearchBar = {
         let sb = UISearchBar()
-        sb.placeholder = "Search events..."
+        sb.placeholder = NSLocalizedString("Search events...", comment: "")
         sb.isHidden = false
         sb.searchBarStyle = .default
         sb.backgroundImage = UIImage()
@@ -291,7 +291,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         cornerView.layer.zPosition = 5
         addSubview(cornerView)
         
-        allDayTitleLabel.text  = "  all-day"
+        allDayTitleLabel.text = "  " + NSLocalizedString("all-day", comment: "")
         allDayTitleLabel.font  = .systemFont(ofSize: 14, weight: .semibold)
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         allDayTitleLabel.layer.zPosition = 6
@@ -707,7 +707,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         
         let dayAction = UIAction(
-            title: "Day",
+            title: NSLocalizedString("Day", comment: ""),
             image: dayImage,
             state: currentView == 1 ? .on : .off
         ) { [weak self] _ in
@@ -719,7 +719,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }
         
         let multiAction = UIAction(
-            title: "MultiDay",
+            title: NSLocalizedString("MultiDay", comment: ""),
             image: multiDayImage,
             state: currentView == 3 ? .on : .off
         ) { [weak self] _ in
@@ -730,7 +730,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }
         
         let monthAction = UIAction(
-            title: "Month",
+            title: NSLocalizedString("Month", comment: ""),
             image: monthImage,
             state: currentView == 0 ? .on : .off
         ) { [weak self] _ in
@@ -741,7 +741,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }
         
         let yearAction = UIAction(
-            title: "Year",
+            title: NSLocalizedString("Year", comment: ""),
             image: yearImage,
             state: currentView == 2 ? .on : .off
         ) { [weak self] _ in
@@ -752,7 +752,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }
         
         let listAction = UIAction(
-            title: "List",
+            title: NSLocalizedString("List", comment: ""),
             image: listImage,
             state: currentView == 4 ? .on : .off
         ) { [weak self] _ in
@@ -763,7 +763,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }
         
         let multiCalendarAction = UIAction(
-            title: "MultiCalendar",
+            title: NSLocalizedString("MultiCalendar", comment: ""),
             image: multiCalendarIcon,
             state: currentView == 5 ? .on : .off
         ) { [weak self] _ in

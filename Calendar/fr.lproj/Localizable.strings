@@ -134,3 +134,63 @@
 /* SearchEventRowView */
 "No Title" = "Sans titre";
 "all-day" = "Toute la journée";
+
+/* BasicEvent */
+"New event" = "Nouvel événement";
+
+/* SingleDayTimelineMultiCalendarView */
+"Join Meeting" = "Rejoindre la réunion";
+"Edit" = "Modifier";
+"Duplicate" = "Dupliquer";
+"Delete" = "Supprimer";
+"Add to Google Meet" = "Ajouter à Google Meet";
+"Add to Microsoft Teams" = "Ajouter à Microsoft Teams";
+"New Event" = "Nouvel événement";
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+"Search events..." = "Rechercher des événements…";
+"all-day" = "Toute la journée";
+"Day" = "Jour";
+"MultiDay" = "Plusieurs jours";
+"Month" = "Mois";
+"Year" = "Année";
+"List" = "Liste";
+"MultiCalendar" = "Plusieurs calendriers";
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+"New event" = "Nouvel événement";
+"All-day event" = "Événement sur toute la journée";
+"Recurring Event" = "Événement récurrent";
+"This event is part of a series. Update which events?" = "Cet événement fait partie d'une série. Mettre à jour quels événements ?";
+"This Event Only" = "Cet événement seulement";
+"All Future Events" = "Tous les événements futurs";
+"Cancel" = "Annuler";
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Rejoindre la réunion";
+"Edit" = "Modifier";
+"Duplicate" = "Dupliquer";
+"Delete" = "Supprimer";
+"Add to Google Meet" = "Ajouter à Google Meet";
+"Add to Microsoft Teams" = "Ajouter à Microsoft Teams";
+"New Event" = "Nouvel événement";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Aucune plage sélectionnée";
+"all-day" = "Toute la journée";
+"Search events..." = "Rechercher des événements…";
+"Day" = "Jour";
+"MultiDay" = "Plusieurs jours";
+"Month" = "Mois";
+"Year" = "Année";
+"List" = "Liste";
+"MultiCalendar" = "Plusieurs calendriers";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Nouvel événement";
+"All-day event" = "Événement sur toute la journée";
+"Recurring Event" = "Événement récurrent";
+"This event is part of a series. Update which events?" = "Cet événement fait partie d'une série. Mettre à jour quels événements ?";
+"This Event Only" = "Seulement cet événement";
+"All Future Events" = "Tous les événements futurs";
+"Cancel" = "Annuler";

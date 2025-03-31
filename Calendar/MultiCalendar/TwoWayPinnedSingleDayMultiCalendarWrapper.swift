@@ -245,7 +245,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             preselectedCalendar: EKCalendar? = nil
         ) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
-            newEvent.title     = "New event"
+            newEvent.title = NSLocalizedString("New event", comment: "")
             newEvent.startDate = date
             newEvent.endDate   = date.addingTimeInterval(3600)
 
@@ -263,7 +263,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController,  preselectedCalendar: EKCalendar? = nil) {
             let newEvent = EKEvent(eventStore: parent.eventStore)
-            newEvent.title = "All-day event"
+            newEvent.title = NSLocalizedString("All-day event", comment: "")
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
             newEvent.isAllDay = true
             newEvent.startDate = date
@@ -298,25 +298,25 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         @MainActor public func askUserForRecurring(event: EKEvent, newDate: Date, isResize: Bool) {
             let alert = UIAlertController(
-                title: "Recurring Event",
-                message: "This event is part of a series. Update which events?",
+                title: NSLocalizedString("Recurring Event", comment: ""),
+                message: NSLocalizedString("This event is part of a series. Update which events?", comment: ""),
                 preferredStyle: .actionSheet
             )
-            alert.addAction(UIAlertAction(title: "This Event Only", style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("This Event Only", comment: ""), style: .default, handler: { _ in
                 if !isResize {
                     self.applyDragChanges(event, newStartDate: newDate, span: .thisEvent, isAllDay: false)
                 } else {
                     self.applyResizeChanges(event, descriptor: nil, forcedNewDate: newDate, span: .thisEvent)
                 }
             }))
-            alert.addAction(UIAlertAction(title: "All Future Events", style: .default, handler: { _ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("All Future Events", comment: ""), style: .default, handler: { _ in
                 if !isResize {
                     self.applyDragChanges(event, newStartDate: newDate, span: .futureEvents, isAllDay: false)
                 } else {
                     self.applyResizeChanges(event, descriptor: nil, forcedNewDate: newDate, span: .futureEvents)
                 }
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in 
                 self.reloadCurrentRange()
             }))
             

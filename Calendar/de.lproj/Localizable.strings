@@ -134,3 +134,63 @@
 /* SearchEventRowView */
 "No Title" = "Ohne Titel";
 "all-day" = "Ganztägig";
+
+/* BasicEvent */
+"New event" = "Neues Ereignis";
+
+/* SingleDayTimelineMultiCalendarView */
+"Join Meeting" = "An Besprechung teilnehmen";
+"Edit" = "Bearbeiten";
+"Duplicate" = "Duplizieren";
+"Delete" = "Löschen";
+"Add to Google Meet" = "Zu Google Meet hinzufügen";
+"Add to Microsoft Teams" = "Zu Microsoft Teams hinzufügen";
+"New Event" = "Neues Ereignis";
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+"Search events..." = "Veranstaltungen durchsuchen…";
+"all-day" = "Ganztägig";
+"Day" = "Tag";
+"MultiDay" = "Mehrere Tage";
+"Month" = "Monat";
+"Year" = "Jahr";
+"List" = "Liste";
+"MultiCalendar" = "Mehrere Kalender";
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+"New event" = "Neues Ereignis";
+"All-day event" = "Ganztägiges Ereignis";
+"Recurring Event" = "Wiederkehrendes Ereignis";
+"This event is part of a series. Update which events?" = "Dieses Ereignis ist Teil einer Serie. Welche Ereignisse möchten Sie aktualisieren?";
+"This Event Only" = "Nur dieses Ereignis";
+"All Future Events" = "Alle zukünftigen Ereignisse";
+"Cancel" = "Abbrechen";
+
+/* MultiDayTimelineView */
+"Join Meeting" = "An Besprechung teilnehmen";
+"Edit" = "Bearbeiten";
+"Duplicate" = "Duplizieren";
+"Delete" = "Löschen";
+"Add to Google Meet" = "Zu Google Meet hinzufügen";
+"Add to Microsoft Teams" = "Zu Microsoft Teams hinzufügen";
+"New Event" = "Neues Ereignis";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Kein Zeitraum ausgewählt";
+"all-day" = "Ganztägig";
+"Search events..." = "Veranstaltungen durchsuchen…";
+"Day" = "Tag";
+"MultiDay" = "Mehrere Tage";
+"Month" = "Monat";
+"Year" = "Jahr";
+"List" = "Liste";
+"MultiCalendar" = "Mehrere Kalender";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Neues Ereignis";
+"All-day event" = "Ganztägiges Ereignis";
+"Recurring Event" = "Wiederkehrendes Ereignis";
+"This event is part of a series. Update which events?" = "Dieses Ereignis ist Teil einer Serie. Welche Ereignisse möchten Sie aktualisieren?";
+"This Event Only" = "Nur dieses Ereignis";
+"All Future Events" = "Alle zukünftigen Ereignisse";
+"Cancel" = "Abbrechen";
