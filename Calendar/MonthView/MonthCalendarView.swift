@@ -42,10 +42,12 @@ struct MonthCalendarView: View {
             // (A) Търсачка
             if showSearchBar {
                 HStack {
+                    // (LOC) Тук локализираме Placeholder-а
                     TextField(LocalizedStringKey("Search events..."), text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
+                    // (LOC) Локализиран бутон „Cancel“
                     Button(LocalizedStringKey("Cancel")) {
                         showSearchBar = false
                         searchText = ""
@@ -127,128 +129,53 @@ struct MonthCalendarView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {
                     if !showSearchBar {
-                        
-                        // Бутон "+"
+                        // (LOC) Бутон "+"
                         Button {
                             createAndEditNewEvent(on: Date())
                         } label: {
                             Image(systemName: "plus")
                         }
                         
-                        // Бутон за търсене
+                        // (LOC) Бутон за търсене
                         Button {
                             showSearchBar = true
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
                         
-                        // Меню за смяна на изгледите (Day, MultiDay, Month, Year, List, MultiCalendar)
+                        // (LOC) Меню за смяна на изгледите (Day, MultiDay, Month, Year, List, MultiCalendar)
                         Menu {
-                            // --- Day ---
                             Button {
                                 onViewChange?(1)
                             } label: {
-                                HStack {
-                                    // Checkmark вляво, ако selectedTab == 1
-                                    if selectedTab == 1 {
-                                        Image(systemName: "checkmark")
-                                    } else {
-                                        Image(systemName: "checkmark").opacity(0)
-                                    }
-                                    
-                                    // Заглавие
-                                    Text(localizedTabName("Day"))
-                                    
-                                    // Spacer избутва иконката вдясно
-                                    Spacer()
-                                    
-                                    // Иконка вдясно
-                                    Image(systemName: iconName(for: 1))
-                                }
+                                Label(localizedTabName("Day"), systemImage: selectedTab == 1 ? "checkmark" : "")
                             }
-                            
-                            // --- MultiDay ---
                             Button {
                                 onViewChange?(3)
                             } label: {
-                                HStack {
-                                    if selectedTab == 3 {
-                                        Image(systemName: "checkmark")
-                                    } else {
-                                        Image(systemName: "checkmark").opacity(0)
-                                    }
-                                    Text(localizedTabName("MultiDay"))
-                                    Spacer()
-                                    Image(systemName: iconName(for: 3))
-                                }
+                                Label(localizedTabName("MultiDay"), systemImage: selectedTab == 3 ? "checkmark" : "")
                             }
-                            
-                            // --- Month ---
                             Button {
                                 onViewChange?(0)
                             } label: {
-                                HStack {
-                                    if selectedTab == 0 {
-                                        Image(systemName: "checkmark")
-                                    } else {
-                                        Image(systemName: "checkmark").opacity(0)
-                                    }
-                                    Text(localizedTabName("Month"))
-                                    Spacer()
-                                    Image(systemName: iconName(for: 0))
-                                }
+                                Label(localizedTabName("Month"), systemImage: selectedTab == 0 ? "checkmark" : "")
                             }
-                            
-                            // --- Year ---
                             Button {
                                 onViewChange?(2)
                             } label: {
-                                HStack {
-                                    if selectedTab == 2 {
-                                        Image(systemName: "checkmark")
-                                    } else {
-                                        Image(systemName: "checkmark").opacity(0)
-                                    }
-                                    Text(localizedTabName("Year"))
-                                    Spacer()
-                                    Image(systemName: iconName(for: 2))
-                                }
+                                Label(localizedTabName("Year"), systemImage: selectedTab == 2 ? "checkmark" : "")
                             }
-                            
-                            // --- List ---
                             Button {
                                 onViewChange?(4)
                             } label: {
-                                HStack {
-                                    if selectedTab == 4 {
-                                        Image(systemName: "checkmark")
-                                    } else {
-                                        Image(systemName: "checkmark").opacity(0)
-                                    }
-                                    Text(localizedTabName("List"))
-                                    Spacer()
-                                    Image(systemName: iconName(for: 4))
-                                }
+                                Label(localizedTabName("List"), systemImage: selectedTab == 4 ? "checkmark" : "")
                             }
-                            
-                            // --- MultiCalendar ---
                             Button {
                                 onViewChange?(5)
                             } label: {
-                                HStack {
-                                    if selectedTab == 5 {
-                                        Image(systemName: "checkmark")
-                                    } else {
-                                        Image(systemName: "checkmark").opacity(0)
-                                    }
-                                    Text(localizedTabName("MultiCalendar"))
-                                    Spacer()
-                                    Image(systemName: iconName(for: 5))
-                                }
+                                Label(localizedTabName("MultiCalendar"), systemImage: selectedTab == 5 ? "checkmark" : "")
                             }
-                            
                         } label: {
-                            // Главна иконка в самия Toolbar
                             Image(systemName: iconName(for: selectedTab))
                         }
                     }
@@ -275,6 +202,7 @@ struct MonthCalendarView: View {
                     loadPinnedDayEvents(for: day)
                 }
                 .toolbar {
+                    // (LOC) Бутон за затваряне
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(LocalizedStringKey("Close")) {
                             selectedDayForFullScreen = nil
@@ -282,6 +210,7 @@ struct MonthCalendarView: View {
                         }
                     }
                 }
+                // (LOC) Заглавие „Day View“
                 .navigationTitle(LocalizedStringKey("Day View"))
                 .navigationBarTitleDisplayMode(.inline)
             }
@@ -302,19 +231,23 @@ struct MonthCalendarView: View {
         }
         
         // (H) Диалог за повтарящо се събитие
+        // (LOC) "This is a repeating event."
         .confirmationDialog(LocalizedStringKey("This is a repeating event."),
                             isPresented: $showRepeatingDialog,
                             titleVisibility: .visible) {
+            // (LOC) "Save for This Event Only"
             Button(LocalizedStringKey("Save for This Event Only")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .thisEvent)
                 }
             }
+            // (LOC) "Save for Future Events"
             Button(LocalizedStringKey("Save for Future Events")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .futureEvents)
                 }
             }
+            // (LOC) "Cancel"
             Button(LocalizedStringKey("Cancel"), role: .cancel) {}
         }
     }
@@ -322,6 +255,7 @@ struct MonthCalendarView: View {
 
 // MARK: - Помощни методи
 extension MonthCalendarView {
+    // (LOC) Функция за локализиране на имената на табовете
     private func localizedTabName(_ rawValue: String) -> String {
         return NSLocalizedString(rawValue, comment: "")
     }
@@ -352,13 +286,19 @@ extension MonthCalendarView {
         }
     }
 
-    /// Локализиран формат за месец/година според езика на системата
     private func localizedFormattedMonthYear(_ date: Date) -> String {
         let df = DateFormatter()
+        // Ползваме текущия език на устройството
         df.locale = Locale.current
+        
+        // Локализиран формат "ММММ yyyy" (система сама адаптира към език/регион)
+        // Може да използвате setLocalizedDateFormatFromTemplate("yyyyMMMM")
+        // или направо да зададете "LLLL yyyy"
         df.setLocalizedDateFormatFromTemplate("yyyyMMMM")
+        
         return df.string(from: date)
     }
+
 
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
         guard let droppedEvent = viewModel.eventsByID[eventID] else { return }
@@ -403,9 +343,9 @@ extension MonthCalendarView {
             case .fullAccess, .writeOnly:
                 presentNewEvent(on: day)
             case .notDetermined:
-                print("Още не е поискан достъп.")
+                print("Още не е поискан достъп.") // (LOC) при желание
             default:
-                print("Нямате достъп до календара.")
+                print("Нямате достъп до календара.") // (LOC)
             }
         } else {
             if status == .authorized {
@@ -425,7 +365,7 @@ extension MonthCalendarView {
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
         newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)
         newEvent.endDate = startOfDay.addingTimeInterval(10 * 3600)
-        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
+        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events") // (LOC)
         newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
         
         eventToEdit = newEvent
