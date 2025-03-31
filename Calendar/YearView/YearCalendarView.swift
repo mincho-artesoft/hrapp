@@ -4,20 +4,19 @@ import EventKit
 struct YearCalendarView: View {
     @ObservedObject var viewModel: CalendarViewModel
     
-    // MARK: - Existing States
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)?
+    
     @State private var year: Int = Calendar.current.component(.year, from: Date())
     @State private var tappedMonthDate: Date? = nil
     @State private var eventToEdit: EKEvent? = nil
     
-    // MARK: - NEW: Search States
+    // За търсенето
     @State private var showSearchBar: Bool = false
     @State private var searchText: String = ""
     
     var body: some View {
         VStack(spacing: 0) {
-            // 1) Search bar (if active)
             if showSearchBar {
                 HStack {
                     TextField("Search events...", text: $searchText)
@@ -25,7 +24,6 @@ struct YearCalendarView: View {
                         .padding(.leading)
                     
                     Button("Cancel") {
-                        // Close search bar and clear search text
                         showSearchBar = false
                         searchText = ""
                     }
@@ -36,7 +34,6 @@ struct YearCalendarView: View {
                 .transition(.move(edge: .top))
             }
             
-            // 2) Year navigation (hidden if searchText is not empty)
             if !(showSearchBar && !searchText.isEmpty) {
                 HStack {
                     Button(action: {
@@ -61,27 +58,63 @@ struct YearCalendarView: View {
                 .padding(.horizontal)
             }
             
-            // 3) Main content: if searching, show search results; otherwise show the year grid
             if showSearchBar && !searchText.isEmpty {
-                // Тук показвате резултатите от търсене
+                // Резултати от търсене
                 SearchResultsView(searchText: searchText)
             } else {
-                // Normal year grid
                 GeometryReader { geometry in
+                    let isPad = UIDevice.current.userInterfaceIdiom == .pad
                     let isLandscape = geometry.size.width > geometry.size.height
+                    let horizontalSpacing: CGFloat = 16
                     
-                    // Тук променяме конфигурацията, за да не е flexible, а фиксирана ширина
-                    let horizontalSpacing: CGFloat = isLandscape ? 16 : 16
-                    let columns = isLandscape
-                        ? [GridItem(.fixed(180), spacing: horizontalSpacing),
-                           GridItem(.fixed(180), spacing: horizontalSpacing),
-                           GridItem(.fixed(180), spacing: horizontalSpacing),
-                           GridItem(.fixed(180), spacing: horizontalSpacing)]
-                        : [GridItem(.fixed(180), spacing: horizontalSpacing),
-                           GridItem(.fixed(180), spacing: horizontalSpacing)]
+                    // Определяме колко колони искаме:
+                    // - iPad/Portrait -> 4
+                    // - iPad/Landscape -> 6
+                    // - iPhone/Portrait -> 2
+                    // - iPhone/Landscape -> 4
+                    let columns: [GridItem] = {
+                        if isPad {
+                            // iPad
+                            if isLandscape {
+                                // 6 колони
+                                return [
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing)
+                                ]
+                            } else {
+                                // 4 колони (iPad портрет)
+                                return [
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing)
+                                ]
+                            }
+                        } else {
+                            // iPhone
+                            if isLandscape {
+                                // 4 колони (iPhone хоризонтално)
+                                return [
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing)
+                                ]
+                            } else {
+                                // 2 колони (iPhone портрет)
+                                return [
+                                    GridItem(.fixed(180), spacing: horizontalSpacing),
+                                    GridItem(.fixed(180), spacing: horizontalSpacing)
+                                ]
+                            }
+                        }
+                    }()
                     
                     ScrollView {
-                        // `spacing: 16` тук отговаря за вертикалното разстояние между редовете
                         LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(1...12, id: \.self) { monthIndex in
                                 let dateForMonth = dateFromYearMonth(year, monthIndex)
@@ -130,7 +163,6 @@ struct YearCalendarView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                // Обединен HStack с контролирано разстояние
                 HStack(spacing: 9) {
                     if !showSearchBar {
                         Button {
@@ -146,39 +178,37 @@ struct YearCalendarView: View {
                         }
                         
                         Menu {
-                            // Бутони за превключване
                             Button {
-                                onViewChange!(1)
+                                onViewChange?(1)
                             } label: {
                                 Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
                             }
                             Button {
-                                onViewChange!(3)
+                                onViewChange?(3)
                             } label: {
                                 Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
                             }
                             Button {
-                                onViewChange!(0)
+                                onViewChange?(0)
                             } label: {
                                 Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
                             }
                             Button {
-                                onViewChange!(2)
+                                onViewChange?(2)
                             } label: {
                                 Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
                             }
                             Button {
-                                onViewChange!(4)
+                                onViewChange?(4)
                             } label: {
                                 Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
                             }
                             Button {
-                                onViewChange!(5)
+                                onViewChange?(5)
                             } label: {
                                 Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
                             }
                         } label: {
-                            // Тук ще се показва текущата икона, според selectedTab
                             Image(systemName: iconName(for: selectedTab))
                         }
                     }

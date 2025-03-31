@@ -5,9 +5,9 @@ import EventKitUI
 struct RootView: View {
     // 1) Дали имаме достъп
     @State private var selectedCalendars = Set<EKCalendar>()
-
+    
     @State private var showCalendarChooser = false
-
+    
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
     private let chunkDays: Int = 30
@@ -47,7 +47,7 @@ struct RootView: View {
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     // Табовете/екраните
-    @State private var selectedTab = 1  // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar
+    @State private var selectedTab = 2 // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar
     
     // Sheet за календари
     @State private var showCalendarsSheet = false
@@ -194,13 +194,16 @@ struct RootView: View {
                                 Spacer()
                                 
                                 Button("Inbox") {
-                                            showCalendarChooser = true
-                                        }
+                                    showCalendarChooser = true
+                                }
                             }
                         }
                     }
                 }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .toolbarBackground(Color(UIColor.systemBackground), for: .bottomBar)
+            .toolbarBackground(.visible, for: .bottomBar)
         }
         .onAppear {
             Task {
@@ -224,30 +227,30 @@ struct RootView: View {
         }
         .sheet(isPresented: $showCalendarChooser) {
             CalendarChooserView(selectedCalendars: $selectedCalendars)
-              }
+        }
         .sheet(isPresented: $showCalendarsSheet, onDismiss: {
             if accessGranted {
                 switch selectedTab {
                 case 0:
                     let nowMonth = Calendar.current.startOfDay(for: Date())
                     CalendarViewModel.shared.loadEvents(for: nowMonth)
-
+                    
                 case 1:
                     loadSingleDayEvents()
                     
                 case 2:
                     let currentYear = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: currentYear)
-
+                    
                 case 3:
                     loadMultiDayEvents()
-
+                    
                 case 4:
                     pinnedAllEvents.removeAll()
-
+                    
                 case 5:
                     loadSingleDayEventsLocal()
-
+                    
                 default:
                     break
                 }
@@ -304,20 +307,22 @@ extension RootView {
         let store = CalendarViewModel.shared.eventStore
         let cal   = Calendar.current
         
-        // CHANGED: Филтрираме за локални + selected.
+        // Филтрираме за локални + такива, които са маркирани (selected) в нашия `calendarsDict`.
         let localCals = CalendarViewModel.shared.allCalendars.filter {
             $0.source.sourceType == .local &&
-            (CalendarViewModel.shared.calendarsDict[$0.calendarIdentifier]?.selected == true) // CHANGED
+            (CalendarViewModel.shared.calendarsDict[$0.calendarIdentifier]?.selected == true)
         }
-
+        
         let predicate = store.predicateForEvents(withStart: from, end: to, calendars: localCals)
         let found = store.events(matching: predicate)
         
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
-            // Ако обхваща повече от 1 ден
+            // Ако обхваща повече от 1 ден – split
             if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
-                splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
+                splitted.append(contentsOf: splitEventByDays(ekEvent,
+                                                             startRange: from,
+                                                             endRange: to))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
@@ -380,9 +385,11 @@ extension RootView {
         
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
-            // Ако започва и свършва в различни дни - split
+            // Ако започва и свършва в различни дни – split
             if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
-                splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
+                splitted.append(contentsOf: splitEventByDays(ekEvent,
+                                                             startRange: from,
+                                                             endRange: to))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
@@ -398,10 +405,13 @@ extension RootView {
         let realStart = max(ekEvent.startDate, startRange)
         let realEnd   = min(ekEvent.endDate, endRange)
         if realStart >= realEnd { return results }
+        
         var currentStart = realStart
         
         while currentStart < realEnd {
-            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else { break }
+            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else {
+                break
+            }
             let pieceEnd = min(endOfDay, realEnd)
             let partial = EKMultiDayWrapper(
                 realEvent: ekEvent,
@@ -410,9 +420,12 @@ extension RootView {
             )
             results.append(partial)
             
-            guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
-                  let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)
-            else { break }
+            guard
+                let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
+                let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)
+            else {
+                break
+            }
             currentStart = morning
         }
         return results
@@ -435,7 +448,7 @@ extension RootView {
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
         loadedUntil = toDate
     }
-
+    
     private func loadPreviousChunkOfEvents() {
         guard accessGranted else { return }
         let cal = Calendar.current
@@ -450,14 +463,15 @@ extension RootView {
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
         loadedFrom = fromDate
     }
-}
-
-extension RootView {
+    
     private func reloadAllEvents() {
         let now = Date()
-        guard let start = Calendar.current.date(byAdding: .month, value: -1, to: now),
-              let end   = Calendar.current.date(byAdding: .month, value: 1, to: now)
-        else { return }
+        guard
+            let start = Calendar.current.date(byAdding: .month, value: -1, to: now),
+            let end   = Calendar.current.date(byAdding: .month, value: 1, to: now)
+        else {
+            return
+        }
         
         loadedStartDate = start
         loadedEndDate   = end
@@ -468,6 +482,7 @@ extension RootView {
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
     }
 }
+
 import SwiftUI
 import EventKit
 import EventKitUI
@@ -501,9 +516,6 @@ struct CalendarChooserView: UIViewControllerRepresentable {
             // Просто затваряме sheet-а без да променяме selectedCalendars
             parent.presentationMode.wrappedValue.dismiss()
         }
-        
-        // По желание може да използвате и други методи на протокола
-        // като calendarChooserSelectionDidChange(...) за динамична реакция
     }
     
     func makeCoordinator() -> Coordinator {
@@ -519,17 +531,15 @@ struct CalendarChooserView: UIViewControllerRepresentable {
             eventStore: CalendarViewModel.shared.eventStore
         )
         
-        // Показваме бутоните и задаваме делегат
         chooser.showsDoneButton = true
         chooser.showsCancelButton = true
         chooser.delegate = context.coordinator
         
-        // Връщаме го обвит в UINavigationController
+        // Обвиваме в UINavigationController
         return UINavigationController(rootViewController: chooser)
     }
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // Тук може да обновявате EKCalendarChooser при нужда
-        // (напр. ако selectedCalendars се промени отвън)
+        // Може да обновявате EKCalendarChooser при нужда, ако selectedCalendars се промени отвън
     }
 }
