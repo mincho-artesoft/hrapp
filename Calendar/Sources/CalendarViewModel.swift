@@ -4034,11 +4034,11 @@ struct GoogleCalendarACLListResponse: Codable {
 
 // Предполагаеми модели:
 struct GoogleCalendarACLRule: Codable, Identifiable {
-    // Често това е "user:email@domain.com"
-    var id: String
-    var scope: GoogleACLScope?
-    var role: String
+    var id: String               // "user:someone@gmail.com"
+    var scope: GoogleACLScope?   // (type: "user", value: "someone@gmail.com")
+    var role: String             // "owner", "writer", "reader"
 }
+
 
 struct GoogleACLScope: Codable, Equatable {
     var type: String    // "user", "group", "domain", "default"
