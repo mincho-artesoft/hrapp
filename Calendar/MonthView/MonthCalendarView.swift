@@ -42,12 +42,10 @@ struct MonthCalendarView: View {
             // (A) Търсачка
             if showSearchBar {
                 HStack {
-                    // (LOC) Тук локализираме Placeholder-а
                     TextField(LocalizedStringKey("Search events..."), text: $searchText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading)
                     
-                    // (LOC) Локализиран бутон „Cancel“
                     Button(LocalizedStringKey("Cancel")) {
                         showSearchBar = false
                         searchText = ""
@@ -124,60 +122,32 @@ struct MonthCalendarView: View {
             // Зареждаме събития за текущия месец
             viewModel.loadEvents(for: currentMonth)
         }
-        // (D) Toolbar
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {
                     if !showSearchBar {
-                        // (LOC) Бутон "+"
+                        // Бутон "+"
                         Button {
                             createAndEditNewEvent(on: Date())
                         } label: {
                             Image(systemName: "plus")
                         }
                         
-                        // (LOC) Бутон за търсене
+                        // Бутон за търсене
                         Button {
                             showSearchBar = true
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
                         
-                        // (LOC) Меню за смяна на изгледите (Day, MultiDay, Month, Year, List, MultiCalendar)
-                        Menu {
-                            Button {
-                                onViewChange?(1)
-                            } label: {
-                                Label(localizedTabName("Day"), systemImage: selectedTab == 1 ? "checkmark" : "")
+                        // Заместваме SwiftUI Menu с UIMenuButtonRepresentable:
+                        UIMenuButtonRepresentable(
+                            currentView: selectedTab,
+                            onViewChange: { newTab in
+                                onViewChange?(newTab)
                             }
-                            Button {
-                                onViewChange?(3)
-                            } label: {
-                                Label(localizedTabName("MultiDay"), systemImage: selectedTab == 3 ? "checkmark" : "")
-                            }
-                            Button {
-                                onViewChange?(0)
-                            } label: {
-                                Label(localizedTabName("Month"), systemImage: selectedTab == 0 ? "checkmark" : "")
-                            }
-                            Button {
-                                onViewChange?(2)
-                            } label: {
-                                Label(localizedTabName("Year"), systemImage: selectedTab == 2 ? "checkmark" : "")
-                            }
-                            Button {
-                                onViewChange?(4)
-                            } label: {
-                                Label(localizedTabName("List"), systemImage: selectedTab == 4 ? "checkmark" : "")
-                            }
-                            Button {
-                                onViewChange?(5)
-                            } label: {
-                                Label(localizedTabName("MultiCalendar"), systemImage: selectedTab == 5 ? "checkmark" : "")
-                            }
-                        } label: {
-                            Image(systemName: iconName(for: selectedTab))
-                        }
+                        )
+                        .frame(width: 30, height: 30)
                     }
                 }
             }
@@ -202,7 +172,6 @@ struct MonthCalendarView: View {
                     loadPinnedDayEvents(for: day)
                 }
                 .toolbar {
-                    // (LOC) Бутон за затваряне
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(LocalizedStringKey("Close")) {
                             selectedDayForFullScreen = nil
@@ -210,7 +179,6 @@ struct MonthCalendarView: View {
                         }
                     }
                 }
-                // (LOC) Заглавие „Day View“
                 .navigationTitle(LocalizedStringKey("Day View"))
                 .navigationBarTitleDisplayMode(.inline)
             }
@@ -231,23 +199,19 @@ struct MonthCalendarView: View {
         }
         
         // (H) Диалог за повтарящо се събитие
-        // (LOC) "This is a repeating event."
         .confirmationDialog(LocalizedStringKey("This is a repeating event."),
                             isPresented: $showRepeatingDialog,
                             titleVisibility: .visible) {
-            // (LOC) "Save for This Event Only"
             Button(LocalizedStringKey("Save for This Event Only")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .thisEvent)
                 }
             }
-            // (LOC) "Save for Future Events"
             Button(LocalizedStringKey("Save for Future Events")) {
                 if let ev = repeatingEvent, let day = repeatingNewDate {
                     moveEvent(ev, to: day, span: .futureEvents)
                 }
             }
-            // (LOC) "Cancel"
             Button(LocalizedStringKey("Cancel"), role: .cancel) {}
         }
     }
@@ -255,7 +219,6 @@ struct MonthCalendarView: View {
 
 // MARK: - Помощни методи
 extension MonthCalendarView {
-    // (LOC) Функция за локализиране на имената на табовете
     private func localizedTabName(_ rawValue: String) -> String {
         return NSLocalizedString(rawValue, comment: "")
     }
@@ -288,17 +251,10 @@ extension MonthCalendarView {
 
     private func localizedFormattedMonthYear(_ date: Date) -> String {
         let df = DateFormatter()
-        // Ползваме текущия език на устройството
         df.locale = Locale.current
-        
-        // Локализиран формат "ММММ yyyy" (система сама адаптира към език/регион)
-        // Може да използвате setLocalizedDateFormatFromTemplate("yyyyMMMM")
-        // или направо да зададете "LLLL yyyy"
         df.setLocalizedDateFormatFromTemplate("yyyyMMMM")
-        
         return df.string(from: date)
     }
-
 
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
         guard let droppedEvent = viewModel.eventsByID[eventID] else { return }
@@ -343,9 +299,9 @@ extension MonthCalendarView {
             case .fullAccess, .writeOnly:
                 presentNewEvent(on: day)
             case .notDetermined:
-                print("Още не е поискан достъп.") // (LOC) при желание
+                print("Още не е поискан достъп.")
             default:
-                print("Нямате достъп до календара.") // (LOC)
+                print("Нямате достъп до календара.")
             }
         } else {
             if status == .authorized {
@@ -365,7 +321,7 @@ extension MonthCalendarView {
         let newEvent = EKEvent(eventStore: viewModel.eventStore)
         newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)
         newEvent.endDate = startOfDay.addingTimeInterval(10 * 3600)
-        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events") // (LOC)
+        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
         newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
         
         eventToEdit = newEvent

@@ -67,16 +67,11 @@ struct YearCalendarView: View {
                     let isLandscape = geometry.size.width > geometry.size.height
                     let horizontalSpacing: CGFloat = 16
                     
-                    // Определяме колко колони искаме:
-                    // - iPad/Portrait -> 4
-                    // - iPad/Landscape -> 6
-                    // - iPhone/Portrait -> 2
-                    // - iPhone/Landscape -> 4
                     let columns: [GridItem] = {
                         if isPad {
                             // iPad
                             if isLandscape {
-                                // 6 колони
+                                // 6 колони (iPad хоризонтално)
                                 return [
                                     GridItem(.fixed(180), spacing: horizontalSpacing),
                                     GridItem(.fixed(180), spacing: horizontalSpacing),
@@ -164,6 +159,7 @@ struct YearCalendarView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {
+                    // Бутон "+"
                     if !showSearchBar {
                         Button {
                             createNewEventForYear()
@@ -171,46 +167,21 @@ struct YearCalendarView: View {
                             Image(systemName: "plus")
                         }
                         
+                        // Бутон за търсене
                         Button {
                             showSearchBar = true
                         } label: {
                             Image(systemName: "magnifyingglass")
                         }
                         
-                        Menu {
-                            Button {
-                                onViewChange?(1)
-                            } label: {
-                                Label("Day", systemImage: (selectedTab == 1 ? "checkmark" : ""))
+                        // Заместваме SwiftUI Menu с UIMenuButtonRepresentable
+                        UIMenuButtonRepresentable(
+                            currentView: selectedTab,
+                            onViewChange: { newTab in
+                                onViewChange?(newTab)
                             }
-                            Button {
-                                onViewChange?(3)
-                            } label: {
-                                Label("MultiDay", systemImage: (selectedTab == 3 ? "checkmark" : ""))
-                            }
-                            Button {
-                                onViewChange?(0)
-                            } label: {
-                                Label("Month", systemImage: (selectedTab == 0 ? "checkmark" : ""))
-                            }
-                            Button {
-                                onViewChange?(2)
-                            } label: {
-                                Label("Year", systemImage: (selectedTab == 2 ? "checkmark" : ""))
-                            }
-                            Button {
-                                onViewChange?(4)
-                            } label: {
-                                Label("List", systemImage: (selectedTab == 4 ? "checkmark" : ""))
-                            }
-                            Button {
-                                onViewChange?(5)
-                            } label: {
-                                Label("MultiCalendar", systemImage: (selectedTab == 5 ? "checkmark" : ""))
-                            }
-                        } label: {
-                            Image(systemName: iconName(for: selectedTab))
-                        }
+                        )
+                        .frame(width: 30, height: 30)
                     }
                 }
             }
@@ -218,25 +189,7 @@ struct YearCalendarView: View {
     }
     
     // MARK: - Helper Methods
-    private func iconName(for tab: Int) -> String {
-        switch tab {
-        case 1:
-            return "calendar.day.timeline.leading"
-        case 3:
-            return "distribute.horizontal.left"
-        case 0:
-            return "calendar"
-        case 2:
-            return "12.lane"
-        case 4:
-            return "list.bullet"
-        case 5:
-            return "align.vertical.top"
-        default:
-            return "calendar"
-        }
-    }
-
+    
     private func dateFromYearMonth(_ year: Int, _ month: Int) -> Date {
         var comp = DateComponents()
         comp.year = year
