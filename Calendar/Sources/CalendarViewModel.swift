@@ -739,12 +739,16 @@ final class CalendarViewModel: ObservableObject {
 
 // MARK: - Google Sync (2‑way пример), adapted for multi-user
 extension CalendarViewModel {
-    
+
     func startGoogleCalendarSync() {
+        // Проверка дали вече има активен таймер
+        guard syncTimer == nil else {
+            print("startGoogleCalendarSync: вече има пуснат таймер => няма нужда да пускаме втори.")
+            return
+        }
+
         print("Start Google Calendar sync timer (multi-user)…")
-        syncTimer?.invalidate()
-        
-        // We'll do 1 timer that syncs *all* accounts every X seconds
+        syncTimer?.invalidate() // по желание, ако искаш да си подсигуриш
         syncTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             Task {
@@ -752,12 +756,13 @@ extension CalendarViewModel {
             }
         }
     }
-    
+
     func stopGoogleCalendarSync() {
         print("Stop Google Calendar sync timer...")
         syncTimer?.invalidate()
         syncTimer = nil
     }
+
     
     /// Sync *all* storedUsers
     @MainActor
@@ -2768,13 +2773,14 @@ extension CalendarViewModel {
         return user
     }
 
-
-
-
     func startMicrosoftCalendarSync() {
-        print("Start Microsoft Calendar sync timer…")
-        msSyncTimer?.invalidate()
+        // Проверка дали вече има активен таймер
+        guard msSyncTimer == nil else {
+            print("startMicrosoftCalendarSync: вече има активен таймер => няма нужда да стартираме втори.")
+            return
+        }
 
+        print("Start Microsoft Calendar sync timer…")
         msSyncTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
             Task { [weak self] in
                 await self?.performMicrosoftCalendarSyncForAllUsers()
@@ -2782,13 +2788,11 @@ extension CalendarViewModel {
         }
     }
 
-
-       func stopMicrosoftCalendarSync() {
-           print("Stop Microsoft Calendar sync timer…")
-           msSyncTimer?.invalidate()
-           msSyncTimer = nil
-       }
-
+    func stopMicrosoftCalendarSync() {
+        print("Stop Microsoft Calendar sync timer…")
+        msSyncTimer?.invalidate()
+        msSyncTimer = nil
+    }
 
     /// Call this to sync all stored MsUsers
     func performMicrosoftCalendarSyncForAllUsers() async {

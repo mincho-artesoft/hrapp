@@ -2,29 +2,45 @@ import SwiftUI
 
 @main
 struct CalendarApp: App {
-    // Свързваме SwiftUI App с AppDelegate, за да обработваме URL schemes (Google Sign-In или др.)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    // Главният ViewModel
+    @Environment(\.scenePhase) private var scenePhase
+    
     @StateObject var appViewModel = AppViewModel()
     
     var body: some Scene {
         WindowGroup {
-            // Логика кой изглед да покажем
             if appViewModel.isLoggedIn {
-                // Ако сме логнати, но нямаме email => RequestEmailView
                 if appViewModel.email.isEmpty {
                     RequestEmailView()
                         .environmentObject(appViewModel)
                 } else {
-                    // Иначе – основният екран
                     RootView()
                         .environmentObject(appViewModel)
                 }
             } else {
-                // Ако не сме логнати, показваме LoginView
                 LoginView()
                     .environmentObject(appViewModel)
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .active:
+                print("Приложението се върна на фокус. Пускаме sync таймерите.")
+                CalendarViewModel.shared.startGoogleCalendarSync()
+                CalendarViewModel.shared.startMicrosoftCalendarSync()
+                
+            case .background:
+                print("Приложението е минимизирано (background). Спираме sync таймерите.")
+                CalendarViewModel.shared.stopGoogleCalendarSync()
+                CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                
+            case .inactive:
+                // inactive се извиква при преходи (например при входящо обаждане), но може да го игнорирате
+                print("Приложението е временно неактивно.")
+                
+            @unknown default:
+                break
             }
         }
     }
