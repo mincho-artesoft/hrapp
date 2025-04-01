@@ -56,7 +56,7 @@ struct IconTestView: View {
     
     var body: some View {
         Button("Set Alternative Icon") {
-            setAppIcon("AppIcon2")
+            setAppIcon("AppIcon 2")
         }
         
         Button("Reset Icon To Default") {
