@@ -394,38 +394,14 @@ struct CalendarsSheetView: View {
         return map.first(where: { $0.value == cal.calendarIdentifier })?.key
     }
     
-    private func signInWithGoogle() {
-        GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: viewModel.clientID)
-        
-        guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-              let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
-        else { return }
-        
-        GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
-            if let error = error {
-                print("Google Sign In error:", error.localizedDescription)
-                return
-            }
-            
-            if let user = signInResult?.user {
-                print("Signed in user:", user.profile?.email ?? "(no email)")
-                viewModel.storeGoogleUserInUserDefaults(user)
-                if viewModel.storedUsers.count == 1 {
-                    viewModel.startGoogleCalendarSync()
-                }
-                Task {
-                    if let newStoredUser = viewModel.storedUsers.last {
-                        await viewModel.performGoogleCalendarSync(for: newStoredUser)
-                    }
-                }
-            }
-        }
-    }
+
     
     private func signInWithMicrosoft() {
         viewModel.signInWithMicrosoft()
     }
-    
+    private func signInWithGoogle() {
+        viewModel.signInWithGoogle()
+    }
     // MARK: - UserDefaults Helpers for Sharing Info
     
     private func loadGoogleSharingInfos() {

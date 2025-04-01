@@ -1,0 +1,196 @@
+/* RequestEmailView */
+"No email was provided." = "Не е предоставен имейл адрес.";
+"Please enter a valid email to continue." = "Моля, въведете валиден имейл, за да продължите.";
+"Your email" = "Вашият имейл";
+"Save" = "Запази";
+"Login" = "Вход";
+"Logout" = "Изход";
+
+/* RootView */
+"N/A" = "Няма данни";
+"Today" = "Днес";
+"Calendars" = "Календари";
+"Inbox" = "Входящи";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Други";
+"Google calendars" = "Google календари";
+"No synced Google calendars yet." = "Няма синхронизирани Google календари.";
+"Microsoft calendars" = "Microsoft календари";
+"No synced Microsoft calendars yet." = "Няма синхронизирани Microsoft календари.";
+"Sign out" = "Изход";
+"Add iCloud Calendar" = "Добави iCloud календар";
+"Share calendars with iCloud Calendar" = "Сподели календари с iCloud Calendar";
+"Sign in with Google" = "Вход с Google";
+"Sign in with Microsoft" = "Вход с Microsoft";
+"Deselect All" = "Премахни всички";
+"Select All" = "Избери всички";
+"Done" = "Готово";
+"No Email" = "Няма имейл";
+
+/* AddCalendarView */
+"Calendar Name" = "Име на календара";
+"Account" = "Акаунт";
+"COLOR" = "ЦВЯТ";
+"NOTIFICATIONS" = "УВЕДОМЛЕНИЯ";
+"Event Alerts" = "Известия за събития";
+"Allow events on this calendar to display alerts." = "Позволи събитията в този календар да показват известия.";
+"Add Calendar" = "Добави календар";
+"Cancel" = "Отмени";
+
+/* Colors */
+"Red" = "Червен";
+"Orange" = "Оранжев";
+"Yellow" = "Жълт";
+"Green" = "Зелен";
+"Blue" = "Син";
+"Purple" = "Лилав";
+"Brown" = "Кафяв";
+"Custom" = "Персонализиран";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Цвят на календара";
+"Custom..." = "Персонализиран…";
+
+/* EditCalendarView */
+"Edit Calendar" = "Редактирай календар";
+"Delete Calendar" = "Изтрий календар";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Зареждат се настройките за споделяне…";
+"Shared with these users" = "Споделено със следните потребители";
+"Add New Email" = "Добави нов имейл";
+"Email to share" = "Имейл за споделяне";
+"Permission:" = "Права:";
+"Add" = "Добави";
+"Unknown" = "Неизвестно";
+"Sharing:" = "Споделяне:";
+"Done" = "Готово";
+
+"Error loading: %@" = "Грешка при зареждане: %@";
+"Error adding: %@" = "Грешка при добавяне: %@";
+"Error deleting: %@" = "Грешка при изтриване: %@";
+"Error updating: %@" = "Грешка при обновяване: %@";
+"Error re-inviting (delete): %@" = "Грешка при повторно канене (изтриване): %@";
+"Error re-inviting (insert): %@" = "Грешка при повторно канене (вмъкване): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Четец";
+"Writer" = "Редактор";
+"Owner"  = "Собственик";
+
+/* MonthCalendarView */
+"Search events..." = "Търсене на събития…";
+"Cancel" = "Отмени";
+"Close" = "Затвори";
+"Day View" = "Дневен изглед";
+"This is a repeating event." = "Това е повтарящо се събитие.";
+"Save for This Event Only" = "Запази само за това събитие";
+"Save for Future Events" = "Запази за бъдещи събития";
+"New Event" = "Ново събитие";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+"Day" = "Ден";
+"MultiDay" = "Многодневен";
+"Month" = "Месец";
+"Year" = "Година";
+"List" = "Списък";
+"MultiCalendar" = "Няколко календара";
+
+/* WeekdayHeaderView */
+"Sun" = "Нд";
+"Mon" = "Пн";
+"Tue" = "Вт";
+"Wed" = "Ср";
+"Thu" = "Чт";
+"Fri" = "Пт";
+"Sat" = "Сб";
+
+/* UIMenuButtonRepresentable */
+"Day" = "Ден";
+"MultiDay" = "Многодневен";
+"Month" = "Месец";
+"Year" = "Година";
+"List" = "Списък";
+"MultiCalendar" = "Няколко календара";
+
+/* YearCalendarView */
+"Search events..." = "Търсене на събития…";
+"Cancel" = "Отмени";
+"Close" = "Затвори";
+"New Event" = "Ново събитие";
+
+/* AllEventsListView */
+"Search events..." = "Търсене на събития…";
+"Cancel" = "Отмени";
+"New Event" = "Ново събитие";
+"No calendar access." = "Няма достъп до календара.";
+
+/* EventRowView */
+"all-day" = "Цял ден";
+"Ends" = "Край";
+
+/* SearchEventRowView */
+"No Title" = "Без заглавие";
+"all-day" = "Цял ден";
+
+/* BasicEvent */
+"New event" = "Ново събитие";
+
+/* SingleDayTimelineMultiCalendarView */
+"Join Meeting" = "Присъедини се към среща";
+"Edit" = "Редактиране";
+"Duplicate" = "Дублиране";
+"Delete" = "Изтриване";
+"Add to Google Meet" = "Добави в Google Meet";
+"Add to Microsoft Teams" = "Добави в Microsoft Teams";
+"New Event" = "Ново събитие";
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+"Search events..." = "Търсене на събития…";
+"all-day" = "Цял ден";
+"Day" = "Ден";
+"MultiDay" = "Многодневен";
+"Month" = "Месец";
+"Year" = "Година";
+"List" = "Списък";
+"MultiCalendar" = "Няколко календара";
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+"New event" = "Ново събитие";
+"All-day event" = "Целодневно събитие";
+"Recurring Event" = "Повтарящо се събитие";
+"This event is part of a series. Update which events?" = "Това събитие е част от серия. Кои събития искате да актуализирате?";
+"This Event Only" = "Само това събитие";
+"All Future Events" = "Всички бъдещи събития";
+"Cancel" = "Отмени";
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Присъедини се към среща";
+"Edit" = "Редактиране";
+"Duplicate" = "Дублиране";
+"Delete" = "Изтриване";
+"Add to Google Meet" = "Добави в Google Meet";
+"Add to Microsoft Teams" = "Добави в Microsoft Teams";
+"New Event" = "Ново събитие";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Няма избран период";
+"all-day" = "Цял ден";
+"Search events..." = "Търсене на събития…";
+"Day" = "Ден";
+"MultiDay" = "Многодневен";
+"Month" = "Месец";
+"Year" = "Година";
+"List" = "Списък";
+"MultiCalendar" = "Няколко календара";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Ново събитие";
+"All-day event" = "Целодневно събитие";
+"Recurring Event" = "Повтарящо се събитие";
+"This event is part of a series. Update which events?" = "Това събитие е част от серия. Кои събития искате да актуализирате?";
+"This Event Only" = "Само това събитие";
+"All Future Events" = "Всички бъдещи събития";
+"Cancel" = "Отмени";

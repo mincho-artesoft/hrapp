@@ -1,0 +1,196 @@
+/* RequestEmailView */
+"No email was provided." = "Nessuna email è stata fornita.";
+"Please enter a valid email to continue." = "Inserisci un'email valida per continuare.";
+"Your email" = "La tua email";
+"Save" = "Salva";
+"Login" = "Accedi";
+"Logout" = "Disconnetti";
+
+/* RootView */
+"N/A" = "N/D";
+"Today" = "Oggi";
+"Calendars" = "Calendari";
+"Inbox" = "Posta in arrivo";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Altro";
+"Google calendars" = "Calendari Google";
+"No synced Google calendars yet." = "Nessun calendario Google sincronizzato.";
+"Microsoft calendars" = "Calendari Microsoft";
+"No synced Microsoft calendars yet." = "Nessun calendario Microsoft sincronizzato.";
+"Sign out" = "Disconnetti";
+"Add iCloud Calendar" = "Aggiungi calendario iCloud";
+"Share calendars with iCloud Calendar" = "Condividi calendari con iCloud Calendar";
+"Sign in with Google" = "Accedi con Google";
+"Sign in with Microsoft" = "Accedi con Microsoft";
+"Deselect All" = "Deseleziona tutto";
+"Select All" = "Seleziona tutto";
+"Done" = "Fatto";
+"No Email" = "Nessuna email";
+
+/* AddCalendarView */
+"Calendar Name" = "Nome calendario";
+"Account" = "Account";
+"COLOR" = "COLORE";
+"NOTIFICATIONS" = "NOTIFICHE";
+"Event Alerts" = "Avvisi evento";
+"Allow events on this calendar to display alerts." = "Consenti a questo calendario di mostrare avvisi per gli eventi.";
+"Add Calendar" = "Aggiungi calendario";
+"Cancel" = "Annulla";
+
+/* Colors */
+"Red" = "Rosso";
+"Orange" = "Arancione";
+"Yellow" = "Giallo";
+"Green" = "Verde";
+"Blue" = "Blu";
+"Purple" = "Viola";
+"Brown" = "Marrone";
+"Custom" = "Personalizzato";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Colore del calendario";
+"Custom..." = "Personalizzato...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Modifica calendario";
+"Delete Calendar" = "Elimina calendario";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Caricamento impostazioni di condivisione…";
+"Shared with these users" = "Condiviso con questi utenti";
+"Add New Email" = "Aggiungi nuova email";
+"Email to share" = "Email da condividere";
+"Permission:" = "Autorizzazione:";
+"Add" = "Aggiungi";
+"Unknown" = "Sconosciuto";
+"Sharing:" = "Condivisione:";
+"Done" = "Fatto";
+
+"Error loading: %@" = "Errore durante il caricamento: %@";
+"Error adding: %@" = "Errore durante l'aggiunta: %@";
+"Error deleting: %@" = "Errore durante l'eliminazione: %@";
+"Error updating: %@" = "Errore durante l'aggiornamento: %@";
+"Error re-inviting (delete): %@" = "Errore nel reinvito (elimina): %@";
+"Error re-inviting (insert): %@" = "Errore nel reinvito (inserisci): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Lettore";
+"Writer" = "Scrittore";
+"Owner"  = "Proprietario";
+
+/* MonthCalendarView */
+"Search events..." = "Cerca eventi...";
+"Cancel" = "Annulla";
+"Close" = "Chiudi";
+"Day View" = "Vista giornaliera";
+"This is a repeating event." = "Questo è un evento ricorrente.";
+"Save for This Event Only" = "Salva solo per questo evento";
+"Save for Future Events" = "Salva per gli eventi futuri";
+"New Event" = "Nuovo evento";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+"Day" = "Giorno";
+"MultiDay" = "MultiGiorno";
+"Month" = "Mese";
+"Year" = "Anno";
+"List" = "Elenco";
+"MultiCalendar" = "MultiCalendario";
+
+/* WeekdayHeaderView */
+"Sun" = "Dom";
+"Mon" = "Lun";
+"Tue" = "Mar";
+"Wed" = "Mer";
+"Thu" = "Gio";
+"Fri" = "Ven";
+"Sat" = "Sab";
+
+/* UIMenuButtonRepresentable */
+"Day" = "Giorno";
+"MultiDay" = "MultiGiorno";
+"Month" = "Mese";
+"Year" = "Anno";
+"List" = "Elenco";
+"MultiCalendar" = "MultiCalendario";
+
+/* YearCalendarView */
+"Search events..." = "Cerca eventi...";
+"Cancel" = "Annulla";
+"Close" = "Chiudi";
+"New Event" = "Nuovo evento";
+
+/* AllEventsListView */
+"Search events..." = "Cerca eventi...";
+"Cancel" = "Annulla";
+"New Event" = "Nuovo evento";
+"No calendar access." = "Nessun accesso al calendario.";
+
+/* EventRowView */
+"all-day" = "Tutto il giorno";
+"Ends" = "Termina";
+
+/* SearchEventRowView */
+"No Title" = "Senza titolo";
+"all-day" = "Tutto il giorno";
+
+/* BasicEvent */
+"New event" = "Nuovo evento";
+
+/* SingleDayTimelineMultiCalendarView */
+"Join Meeting" = "Partecipa alla riunione";
+"Edit" = "Modifica";
+"Duplicate" = "Duplica";
+"Delete" = "Elimina";
+"Add to Google Meet" = "Aggiungi a Google Meet";
+"Add to Microsoft Teams" = "Aggiungi a Microsoft Teams";
+"New Event" = "Nuovo evento";
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+"Search events..." = "Cerca eventi...";
+"all-day" = "Tutto il giorno";
+"Day" = "Giorno";
+"MultiDay" = "MultiGiorno";
+"Month" = "Mese";
+"Year" = "Anno";
+"List" = "Elenco";
+"MultiCalendar" = "MultiCalendario";
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+"New event" = "Nuovo evento";
+"All-day event" = "Evento di tutto il giorno";
+"Recurring Event" = "Evento ricorrente";
+"This event is part of a series. Update which events?" = "Questo evento fa parte di una serie. Aggiornare quali eventi?";
+"This Event Only" = "Solo questo evento";
+"All Future Events" = "Tutti i futuri eventi";
+"Cancel" = "Annulla";
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Partecipa alla riunione";
+"Edit" = "Modifica";
+"Duplicate" = "Duplica";
+"Delete" = "Elimina";
+"Add to Google Meet" = "Aggiungi a Google Meet";
+"Add to Microsoft Teams" = "Aggiungi a Microsoft Teams";
+"New Event" = "Nuovo evento";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Nessun intervallo selezionato";
+"all-day" = "Tutto il giorno";
+"Search events..." = "Cerca eventi...";
+"Day" = "Giorno";
+"MultiDay" = "MultiGiorno";
+"Month" = "Mese";
+"Year" = "Anno";
+"List" = "Elenco";
+"MultiCalendar" = "MultiCalendario";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Nuovo evento";
+"All-day event" = "Evento di tutto il giorno";
+"Recurring Event" = "Evento ricorrente";
+"This event is part of a series. Update which events?" = "Questo evento fa parte di una serie. Aggiornare quali eventi?";
+"This Event Only" = "Solo questo evento";
+"All Future Events" = "Tutti i futuri eventi";
+"Cancel" = "Annulla";

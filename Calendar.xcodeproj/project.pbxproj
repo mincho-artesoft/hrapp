@@ -121,6 +121,8 @@
 				ru,
 				es,
 				de,
+				bg,
+				it,
 			);
 			mainGroup = 50B212422D4111B800ABB8D3;
 			minimizedProjectReferenceProxies = 1;

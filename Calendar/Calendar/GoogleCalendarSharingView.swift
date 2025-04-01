@@ -1,4 +1,5 @@
 import SwiftUI
+import Contacts
 
 struct GoogleCalendarSharingView: View {
     @ObservedObject var viewModel: CalendarViewModel = .shared
@@ -29,7 +30,14 @@ struct GoogleCalendarSharingView: View {
         let role: String
     }
 
-    /// Проверка дали текущият потребител (user.email) е собственик
+    // --- За autocomplete ---
+    @State private var allEmails: [String] = []
+    @State private var filteredEmails: [String] = []
+    
+    // Този флаг ни позволява да пропуснем ЕДНО фокусиране/рефилтриране,
+    // когато потребителят току-що е избрал предложение.
+    @State private var skipNextRefilter = false
+
     var isUserOwner: Bool {
         aclRules.contains { rule in
             rule.scope?.value == user.email && rule.role == "owner"
@@ -40,38 +48,30 @@ struct GoogleCalendarSharingView: View {
         NavigationView {
             VStack {
                 if isLoading {
-                    // Локализирано съобщение за зареждане
-                    ProgressView(LocalizedStringKey("Loading sharing settings…"))
+                    ProgressView("Loading sharing settings…")
                 } else {
-                    // Ако има грешка, показваме я отгоре
                     if !errorMessage.isEmpty {
                         Text(errorMessage)
                             .foregroundColor(.red)
                             .padding(.bottom, 8)
                     }
                     
-                    // Ако сме owner => можем да променяме и добавяме
                     if isUserOwner {
                         List {
-                            Section(header: Text(LocalizedStringKey("Shared with these users"))) {
+                            Section(header: Text("Shared with these users")) {
                                 ForEach(aclRules.filter { rule in
                                     guard let email = rule.scope?.value else { return true }
-                                    // Пропускаме системните (@group.calendar.google.com)
                                     return !email.hasSuffix("@group.calendar.google.com")
                                 }) { rule in
                                     let isSelfOwner = (rule.scope?.value == user.email && rule.role == "owner")
                                     HStack {
-                                        // Имейл
-                                        Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: ""))
+                                        Text(rule.scope?.value ?? "Unknown")
                                             .font(.callout)
                                         Spacer()
                                         
-                                        // Ако е собственото ни правило (owner), не позволяваме смяна
                                         if isSelfOwner {
-                                            // Показваме просто role като текст (преведен)
                                             Text(localizedRoleDisplayName(rule.role))
                                         } else {
-                                            // Picker за смяна на роля
                                             Picker("", selection: binding(for: rule)) {
                                                 ForEach(availableRoles, id: \.self) { rawRole in
                                                     Text(localizedRoleDisplayName(rawRole))
@@ -81,15 +81,10 @@ struct GoogleCalendarSharingView: View {
                                             .pickerStyle(.menu)
                                         }
 
-                                        // –––––––––––––––––––––––––
-                                        //     Resend Invitation
-                                        // –––––––––––––––––––––––––
                                         if pendingResendRuleIDs.contains(rule.id) {
-                                            // Покажи спинър
                                             ProgressView()
                                                 .padding(.trailing, 8)
                                         } else if !isSelfOwner {
-                                            // Бутон
                                             Button(action: {
                                                 Task {
                                                     await resendAclInvitation(for: rule)
@@ -101,9 +96,6 @@ struct GoogleCalendarSharingView: View {
                                             .padding(.trailing, 8)
                                         }
                                         
-                                        // –––––––––––––––––––––
-                                        //     Delete ACL
-                                        // –––––––––––––––––––––
                                         if !isSelfOwner {
                                             Button(action: {
                                                 Task {
@@ -117,7 +109,6 @@ struct GoogleCalendarSharingView: View {
                                     }
                                 }
                                 
-                                // Pending редове (нови имейли) + спинър
                                 ForEach(pendingShares) { item in
                                     HStack {
                                         Text(item.email)
@@ -130,15 +121,44 @@ struct GoogleCalendarSharingView: View {
                                 }
                             }
                             
-                            // ––––––––––––––––––––––––––
-                            //     Add new email form
-                            // ––––––––––––––––––––––––––
-                            Section(header: Text(LocalizedStringKey("Add New Email"))) {
-                                TextField(LocalizedStringKey("Email to share"), text: $newEmailToShare)
+                            Section(header: Text("Add New Email")) {
+                                TextField("Email to share", text: $newEmailToShare)
                                     .keyboardType(.emailAddress)
                                     .autocapitalization(.none)
+                                    .disableAutocorrection(true)
+                                    .onChange(of: newEmailToShare) { newValue in
+                                        // 1) Ако skipNextRefilter е true, пропускаме еднократно
+                                        if skipNextRefilter {
+                                            skipNextRefilter = false
+                                            return
+                                        }
+                                        // 2) Ако полето е празно => няма предложения
+                                        if newValue.isEmpty {
+                                            filteredEmails = []
+                                            return
+                                        }
+                                        // 3) Иначе филтрираме
+                                        filteredEmails = allEmails.filter {
+                                            $0.localizedCaseInsensitiveContains(newValue)
+                                        }
+                                    }
                                 
-                                Picker(LocalizedStringKey("Permission:"), selection: $newRole) {
+                                // Показваме autocomplete предложения
+                                if !filteredEmails.isEmpty && !newEmailToShare.isEmpty {
+                                    ForEach(filteredEmails, id: \.self) { email in
+                                        Text(email)
+                                            .onTapGesture {
+                                                // При избор: попълваме полето
+                                                newEmailToShare = email
+                                                // Зануляваме списъка
+                                                filteredEmails = []
+                                                // Слагаме флаг, за да пропуснем филтриране в onChange
+                                                skipNextRefilter = true
+                                            }
+                                    }
+                                }
+
+                                Picker("Permission:", selection: $newRole) {
                                     ForEach(availableRoles, id: \.self) { rawRole in
                                         Text(localizedRoleDisplayName(rawRole))
                                             .tag(rawRole)
@@ -148,7 +168,7 @@ struct GoogleCalendarSharingView: View {
                             }
                             
                             Section {
-                                Button(LocalizedStringKey("Add")) {
+                                Button("Add") {
                                     Task {
                                         await addEmailToShare()
                                     }
@@ -157,18 +177,16 @@ struct GoogleCalendarSharingView: View {
                             }
                         }
                     } else {
-                        // Ако не сме owner => само списък, без бутони за промяна/изтриване
                         List {
-                            Section(header: Text(LocalizedStringKey("Shared with these users"))) {
+                            Section(header: Text("Shared with these users")) {
                                 ForEach(aclRules.filter { rule in
                                     guard let email = rule.scope?.value else { return true }
                                     return !email.hasSuffix("@group.calendar.google.com")
                                 }) { rule in
                                     HStack {
-                                        Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: ""))
+                                        Text(rule.scope?.value ?? "Unknown")
                                             .font(.callout)
                                         Spacer()
-                                        // Показваме role като преведен текст
                                         Text(localizedRoleDisplayName(rule.role))
                                     }
                                 }
@@ -177,27 +195,25 @@ struct GoogleCalendarSharingView: View {
                     }
                 }
             }
-            // Заглавие => "Sharing: \(calendarTitle)"
-            .navigationTitle("\(NSLocalizedString("Sharing:", comment: "")) \(calendarTitle)")
+            .navigationTitle("Sharing: \(calendarTitle)")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(LocalizedStringKey("Done")) {
+                    Button("Done") {
                         dismiss()
                     }
                 }
             }
-            // При първоначално зареждане
             .onAppear {
                 Task {
                     await loadAclList()
                 }
+                fetchEmailsFromContacts()
             }
         }
     }
     
     // MARK: - Bindings
-    /// Връщаме binding към aclRules[i].role, за да го променяме динамично
     private func binding(for rule: GoogleCalendarACLRule) -> Binding<String> {
         guard let index = aclRules.firstIndex(where: { $0.id == rule.id }) else {
             return .constant(rule.role)
@@ -205,7 +221,6 @@ struct GoogleCalendarSharingView: View {
         return Binding(
             get: { aclRules[index].role },
             set: { newValue in
-                // Не позволяваме да променяме нашата собствена (owner) роля
                 if rule.scope?.value == user.email && rule.role == "owner" {
                     return
                 }
@@ -218,7 +233,6 @@ struct GoogleCalendarSharingView: View {
     }
 
     // MARK: - Data ops
-    /// Зареждане на ACL правилата
     private func loadAclList() async {
         isLoading = true
         errorMessage = ""
@@ -232,14 +246,12 @@ struct GoogleCalendarSharingView: View {
             }
         } catch {
             await MainActor.run {
-                // Локализиран форматен низ: "Error loading: %@"
-                errorMessage = String(format: NSLocalizedString("Error loading: %@", comment: ""), error.localizedDescription)
+                errorMessage = "Error loading: \(error.localizedDescription)"
             }
         }
         isLoading = false
     }
     
-    /// Добавяне на нов email
     private func addEmailToShare() async {
         guard !newEmailToShare.isEmpty else { return }
         
@@ -265,11 +277,10 @@ struct GoogleCalendarSharingView: View {
             if let idx = pendingShares.firstIndex(where: { $0.id == pending.id }) {
                 pendingShares.remove(at: idx)
             }
-            errorMessage = String(format: NSLocalizedString("Error adding: %@", comment: ""), error.localizedDescription)
+            errorMessage = "Error adding: \(error.localizedDescription)"
         }
     }
     
-    /// Изтриване на ACL правило
     private func deleteAclRule(_ rule: GoogleCalendarACLRule) async {
         errorMessage = ""
         do {
@@ -285,12 +296,11 @@ struct GoogleCalendarSharingView: View {
             }
         } catch {
             await MainActor.run {
-                errorMessage = String(format: NSLocalizedString("Error deleting: %@", comment: ""), error.localizedDescription)
+                errorMessage = "Error deleting: \(error.localizedDescription)"
             }
         }
     }
     
-    /// Обновяване на съществуващо ACL правило (смяна на роля)
     private func updateAclRule(_ rule: GoogleCalendarACLRule) async {
         errorMessage = ""
         do {
@@ -302,12 +312,11 @@ struct GoogleCalendarSharingView: View {
             )
         } catch {
             await MainActor.run {
-                errorMessage = String(format: NSLocalizedString("Error updating: %@", comment: ""), error.localizedDescription)
+                errorMessage = "Error updating: \(error.localizedDescription)"
             }
         }
     }
     
-    /// Повторно изпращане на покана (resend): трием и после добавяме пак
     private func resendAclInvitation(for rule: GoogleCalendarACLRule) async {
         guard let email = rule.scope?.value else { return }
         errorMessage = ""
@@ -316,7 +325,6 @@ struct GoogleCalendarSharingView: View {
 
         let oldRole = rule.role
         
-        // 1) Изтриваме ACL
         do {
             try await viewModel.deleteGoogleCalendarAclRule(
                 googleCalendarID: googleCalID,
@@ -327,12 +335,11 @@ struct GoogleCalendarSharingView: View {
                 aclRules.remove(at: idx)
             }
         } catch {
-            errorMessage = String(format: NSLocalizedString("Error re-inviting (delete): %@", comment: ""), error.localizedDescription)
+            errorMessage = "Error re-inviting (delete): \(error.localizedDescription)"
             pendingResendRuleIDs.remove(rule.id)
             return
         }
         
-        // 2) Създаваме отново ACL
         do {
             let newRule = try await viewModel.insertGoogleCalendarAcl(
                 googleCalendarID: googleCalID,
@@ -342,24 +349,57 @@ struct GoogleCalendarSharingView: View {
             )
             aclRules.append(newRule)
         } catch {
-            errorMessage = String(format: NSLocalizedString("Error re-inviting (insert): %@", comment: ""), error.localizedDescription)
+            errorMessage = "Error re-inviting (insert): \(error.localizedDescription)"
         }
         
         pendingResendRuleIDs.remove(rule.id)
     }
     
     // MARK: - Локализация на ролите
-    /// Тук мапваме "reader", "writer", "owner" => превод за UI
     private func localizedRoleDisplayName(_ rawRole: String) -> String {
         switch rawRole {
-        case "reader":
-            return NSLocalizedString("Reader", comment: "Role: can view only")
-        case "writer":
-            return NSLocalizedString("Writer", comment: "Role: can edit")
-        case "owner":
-            return NSLocalizedString("Owner", comment: "Role: has full control")
-        default:
-            return rawRole
+        case "reader": return "Reader"
+        case "writer": return "Writer"
+        case "owner":  return "Owner"
+        default:       return rawRole
+        }
+    }
+
+    // MARK: - Зареждане на контактите
+    private func fetchEmailsFromContacts() {
+        let store = CNContactStore()
+        
+        store.requestAccess(for: .contacts) { granted, error in
+            if let error = error {
+                print("Грешка при заявка за контактите: \(error.localizedDescription)")
+                return
+            }
+            guard granted else {
+                print("Достъпът до контактите е отказан от потребителя.")
+                return
+            }
+            
+            var emails: [String] = []
+            let keysToFetch = [CNContactEmailAddressesKey as CNKeyDescriptor]
+            let request = CNContactFetchRequest(keysToFetch: keysToFetch)
+            
+            do {
+                try store.enumerateContacts(with: request) { (contact, _) in
+                    for emailValue in contact.emailAddresses {
+                        let email = emailValue.value as String
+                        emails.append(email)
+                    }
+                }
+                
+                let uniqueEmails = Array(Set(emails)).sorted()
+                
+                DispatchQueue.main.async {
+                    self.allEmails = uniqueEmails
+                }
+                
+            } catch {
+                print("Грешка при четене на контактите: \(error.localizedDescription)")
+            }
         }
     }
 }

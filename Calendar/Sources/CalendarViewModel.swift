@@ -3,6 +3,7 @@ import EventKit
 import Combine
 import GoogleSignIn
 import MSAL
+import Contacts
 
 @MainActor
 final class CalendarViewModel: ObservableObject {
@@ -126,6 +127,34 @@ final class CalendarViewModel: ObservableObject {
 
            // Първоначално зареждане на локални събития и запис в oldEventCalendarMap
            loadAndStoreCurrentEvents()
+        
+        Task {
+                   // 1) Искаме разрешение за Contacts
+                   let store = CNContactStore()
+                   do {
+                       let granted = try await store.requestAccess(for: .contacts)
+                       if granted {
+                           // 2) Ако имаме разрешение, четем и принтираме
+                           let allContacts = try fetchAllContacts(store: store)
+                           print("=== All device contacts (total: \(allContacts.count)) ===")
+                           for c in allContacts {
+                               // Примерен принт: име, фамилия, имейли, телефони
+                               let phones = c.phoneNumbers
+                                   .map { ($0.value as CNPhoneNumber).stringValue }
+                                   .joined(separator: ", ")
+                               let emails = c.emailAddresses
+                                   .map { $0.value as String }
+                                   .joined(separator: ", ")
+                               print(" - \(c.givenName) \(c.familyName) | phones=[\(phones)] | emails=[\(emails)]")
+                           }
+                           print("===============================================")
+                       } else {
+                           print("User denied iOS Contacts access => cannot print contacts.")
+                       }
+                   } catch {
+                       print("Error requesting contact access => \(error.localizedDescription)")
+                   }
+               }
     }
     
     deinit {
@@ -134,6 +163,60 @@ final class CalendarViewModel: ObservableObject {
 
     private var oldEventCalendarMap: [String: String] = [:]  // eventID -> calendarID
 
+    func signInWithGoogle() {
+        GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+              let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
+        else { return }
+        
+        // ТУК добавяме "https://www.googleapis.com/auth/contacts.readonly"
+        let extraScopes = ["https://www.googleapis.com/auth/contacts.readonly","https://www.googleapis.com/auth/contacts.other.readonly"]
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootVC, hint: nil, additionalScopes: extraScopes) { signInResult, error in
+            if let error = error {
+                print("Google Sign In error:", error.localizedDescription)
+                return
+            }
+            
+            if let user = signInResult?.user {
+                print("Signed in user:", user.profile?.email ?? "(no email)")
+                self.storeGoogleUserInUserDefaults(user)
+                
+                // Ако сте решили да стартирате синхронизация или да теглите контакти веднага:
+                Task {
+                    // Пример: сваляме контактите
+                    if let newStoredUser = self.storedUsers.last {
+                        await self.performGoogleCalendarSync(for: newStoredUser)
+                        // И тук викаме fetchGoogleContactsAndSaveLocally:
+                        await self.fetchGoogleContactsAndSaveLocally(for: newStoredUser)
+                        await self.fetchGoogleOtherContactsAndSaveLocally(for: newStoredUser)
+                    }
+                }
+            }
+        }
+    }
+    
+    /// Помощна функция, която връща всички iOS контакти (givenName, familyName, phoneNumbers, emailAddresses):
+       func fetchAllContacts(store: CNContactStore) throws -> [CNContact] {
+           // Кои ключове искаме да четем (име, фамилия, телефони, имейли)
+           let keys: [CNKeyDescriptor] = [
+               CNContactGivenNameKey as CNKeyDescriptor,
+               CNContactFamilyNameKey as CNKeyDescriptor,
+               CNContactPhoneNumbersKey as CNKeyDescriptor,
+               CNContactEmailAddressesKey as CNKeyDescriptor
+           ]
+           
+           let request = CNContactFetchRequest(keysToFetch: keys)
+           var results: [CNContact] = []
+           
+           // Обхождаме всички контакти и ги трупаме в масив (за принтиране)
+           try store.enumerateContacts(with: request) { contact, stop in
+               results.append(contact)
+           }
+           return results
+       }
+    
     func loadAndStoreCurrentEvents() {
         // Пример: взимаме всички локални календари, или разрешените от потребителя
         let allowedCalendars = eventStore.calendars(for: .event)
@@ -4072,4 +4155,326 @@ extension CalendarViewModel {
         }
         // При успех може да декодирате отговора ако е необходимо
     }
+}
+// Модели за People API:
+struct GoogleConnectionsResponse: Codable {
+    let connections: [Person]?
+}
+
+struct Person: Codable {
+    let names: [Name]?
+    let emailAddresses: [EmailAddress]?
+    let phoneNumbers: [PhoneNumber]?
+}
+
+struct Name: Codable {
+    let givenName: String?
+    let familyName: String?
+}
+
+struct EmailAddress: Codable {
+    let value: String?
+}
+
+struct PhoneNumber: Codable {
+    let value: String?
+}
+
+// Служебна структура, за да ни е по-лесно да подадем данните към createOrUpdateLocalContact(...)
+struct GoogleContact {
+    let givenName: String?
+    let familyName: String?
+    let emails: [String]
+    let phones: [String]
+}
+
+extension CalendarViewModel {
+    
+    /// Тегли контактите от Google People API (използвайки contacts.readonly scope),
+    /// и за всеки ги създава/обновява в iOS Contacts.
+    @MainActor
+    func fetchGoogleContactsAndSaveLocally(for user: StoredGoogleUser) async {
+        // 1) Проверка за валиден accessToken (ако е изтекъл => refresh).
+        var currentUser = user
+        if user.accessTokenExpiration < Date(), let rToken = user.refreshToken {
+            do {
+                let (newAccess, newExp, newIDT) = try await refreshTokens(refreshToken: rToken)
+                currentUser.accessToken = newAccess
+                currentUser.accessTokenExpiration = newExp
+                currentUser.idToken = newIDT
+                updateUserInMemory(currentUser)
+                saveAllUsersToUserDefaults()
+            } catch {
+                print("fetchGoogleContactsAndSaveLocally: Failed to refresh => \(error)")
+                return
+            }
+        }
+        
+        let accessToken = currentUser.accessToken
+        
+        // 2) Подготвяме People API заявка (примерно, v1/people/me/connections)
+        guard let url = URL(string: "https://people.googleapis.com/v1/people/me/connections?personFields=names,emailAddresses,phoneNumbers") else {
+            print("Bad URL for People API")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse,
+               !(200...299).contains(httpResp.statusCode) {
+                let body = String(data: data, encoding: .utf8) ?? ""
+                print("Error: People API => HTTP \(httpResp.statusCode). Body=\(body)")
+                return
+            }
+            
+            // 3) Декодираме JSON
+            let decoded = try JSONDecoder().decode(GoogleConnectionsResponse.self, from: data)
+            let connections = decoded.connections ?? []
+            print("Got \(connections.count) Google contacts from People API.")
+            
+            // 4) Трябва да поискаме достъп до iOS Contacts
+            let contactStore = CNContactStore()
+            let granted = try await contactStore.requestAccess(for: .contacts)
+            if !granted {
+                print("User did NOT grant contacts permission => abort.")
+                return
+            }
+            
+            // 5) Минаваме през всеки Google контакт
+            for person in connections {
+                let names = person.names ?? []
+                let emails = person.emailAddresses?.compactMap { $0.value } ?? []
+                let phones = person.phoneNumbers?.compactMap { $0.value } ?? []
+                
+                // Вземаме името от първия елемент (ако има)
+                let firstName  = names.first?.givenName
+                let familyName = names.first?.familyName
+                
+                let gContact = GoogleContact(
+                    givenName: firstName,
+                    familyName: familyName,
+                    emails: emails,
+                    phones: phones
+                )
+                
+                // 6) Създаваме/обновяваме в локалните iOS Contacts
+                createOrUpdateLocalContact(gContact, contactStore: contactStore)
+            }
+            
+        } catch {
+            print("fetchGoogleContactsAndSaveLocally: Error => \(error)")
+        }
+    }
+    @MainActor
+    func fetchGoogleOtherContactsAndSaveLocally(for user: StoredGoogleUser) async {
+        // 1) Проверяваме дали токенът е валиден, иначе – refresh:
+        var currentUser = user
+        if user.accessTokenExpiration < Date(), let rToken = user.refreshToken {
+            do {
+                let (newAcc, newExp, newID) = try await refreshTokens(refreshToken: rToken)
+                currentUser.accessToken = newAcc
+                currentUser.accessTokenExpiration = newExp
+                currentUser.idToken = newID
+                updateUserInMemory(currentUser)
+                saveAllUsersToUserDefaults()
+            } catch {
+                print("Failed to refresh => \(error)")
+                return
+            }
+        }
+        
+        let accessToken = currentUser.accessToken
+        
+        // 2) People API заявка за другите контакти
+        guard let url = URL(string: "https://people.googleapis.com/v1/otherContacts?readMask=names,emailAddresses,phoneNumbers") else {
+            print("Bad URL for People API (otherContacts)")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            if let httpResp = response as? HTTPURLResponse,
+               !(200...299).contains(httpResp.statusCode) {
+                let body = String(data: data, encoding: .utf8) ?? ""
+                print("People API otherContacts error => HTTP \(httpResp.statusCode). Body=\(body)")
+                return
+            }
+            
+            // 3) Моделът тук е леко различен от people/me/connections:
+            //    Официалният тип на отговора е People API `ListOtherContactsResponse`.
+            struct ListOtherContactsResponse: Codable {
+                let otherContacts: [Person]?
+            }
+            
+            let decoded = try JSONDecoder().decode(ListOtherContactsResponse.self, from: data)
+            let otherContacts = decoded.otherContacts ?? []
+            
+            print("Got \(otherContacts.count) 'other' Google contacts.")
+            
+            // 4) Искаме permission за iOS Contacts (ако нямаме вече)
+            let contactStore = CNContactStore()
+            let granted = try await contactStore.requestAccess(for: .contacts)
+            guard granted else {
+                print("No iOS Contacts permission => abort.")
+                return
+            }
+            
+            // 5) Обхождаме всеки Person (подобно на fetchGoogleContactsAndSaveLocally)
+            for person in otherContacts {
+                let names = person.names ?? []
+                let firstName = names.first?.givenName
+                let familyName = names.first?.familyName
+                let emails = person.emailAddresses?.compactMap { $0.value } ?? []
+                let phones = person.phoneNumbers?.compactMap { $0.value } ?? []
+                
+                let gContact = GoogleContact(
+                    givenName: firstName,
+                    familyName: familyName,
+                    emails: emails,
+                    phones: phones
+                )
+                
+                // Създаваме/ъпдейтваме в iOS Contacts:
+                createOrUpdateLocalContact(gContact, contactStore: contactStore)
+            }
+            
+        } catch {
+            print("fetchGoogleOtherContactsAndSaveLocally error => \(error)")
+        }
+    }
+
+    
+    /// Търси дали вече съществува iOS контакт с даден email (примерна логика).
+    /// Ако има – може да върнем CNMutableContact (ако искаме да го ъпдейтнем).
+    private func findLocalContactByEmail(_ email: String,
+                                         contactStore: CNContactStore) -> CNMutableContact? {
+        let predicate = CNContact.predicateForContacts(matchingEmailAddress: email)
+        let keys = [
+            CNContactIdentifierKey,
+            CNContactGivenNameKey,
+            CNContactFamilyNameKey,
+            CNContactEmailAddressesKey,
+            CNContactPhoneNumbersKey
+        ] as [CNKeyDescriptor]
+        
+        do {
+            let contacts = try contactStore.unifiedContacts(matching: predicate, keysToFetch: keys)
+            if let found = contacts.first {
+                // Преобразуваме го в mutable, за да можем да ъпдейтваме
+                return found.mutableCopy() as? CNMutableContact
+            } else {
+                return nil
+            }
+        } catch {
+            print("Error searching contact by email:", error)
+            return nil
+        }
+    }
+    
+    /// Създава/ъпдейтва локален iOS контакт, базиран на данните от GoogleContact
+    private func createOrUpdateLocalContact(_ gContact: GoogleContact,
+                                            contactStore: CNContactStore) {
+        // 1) Ако нямаме имейли изобщо, може да решим да пропуснем
+        print("gContact",gContact)
+        guard let firstEmail = gContact.emails.first else {
+            return
+        }
+        
+        // 2) Опитваме да намерим съществуващ контакт по email
+        if let existing = findLocalContactByEmail(firstEmail, contactStore: contactStore) {
+            // ========== АКО ВЕЧЕ ИМА КОНТАКТ ==========
+            
+            var needSave = false  // ще отметнем, ако има промяна и трябва да записваме
+            
+            // (A) Ъпдейт на име
+            if let newFirstName = gContact.givenName,
+               !newFirstName.isEmpty,
+               newFirstName != existing.givenName {
+                existing.givenName = newFirstName
+                needSave = true
+            }
+            
+            // (B) Ъпдейт на фамилия
+            if let newFamilyName = gContact.familyName,
+               !newFamilyName.isEmpty,
+               newFamilyName != existing.familyName {
+                existing.familyName = newFamilyName
+                needSave = true
+            }
+            
+            // (C) Ъпдейт на телефони (ако липсват)
+            let existingPhones = existing.phoneNumbers.map { ($0.value as CNPhoneNumber).stringValue }
+            for phone in gContact.phones {
+                if !existingPhones.contains(phone) {
+                    let newValue = CNLabeledValue(
+                        label: CNLabelPhoneNumberMobile,
+                        value: CNPhoneNumber(stringValue: phone)
+                    )
+                    existing.phoneNumbers.append(newValue)
+                    needSave = true
+                }
+            }
+            
+            // (D) Ъпдейт на имейли (ако липсват допълнителни)
+            let existingEmails = existing.emailAddresses.map { $0.value as String }
+            for e in gContact.emails {
+                if !existingEmails.contains(e) {
+                    let newEmailValue = CNLabeledValue(
+                        label: CNLabelHome,
+                        value: e as NSString
+                    )
+                    existing.emailAddresses.append(newEmailValue)
+                    needSave = true
+                }
+            }
+            
+            if needSave {
+                let saveReq = CNSaveRequest()
+                saveReq.update(existing)
+                do {
+                    try contactStore.execute(saveReq)
+                    print("Updated existing contact:", existing.identifier)
+                } catch {
+                    print("Error updating contact:", error)
+                }
+            } else {
+                print("No changes needed for:", existing.identifier)
+            }
+            
+            return
+        }
+        
+        // ========== АКО НЯМА ТАКЪВ КОНТАКТ (с този email) => СЪЗДАВАМЕ ==========
+        let newContact = CNMutableContact()
+        newContact.givenName  = gContact.givenName ?? ""
+        newContact.familyName = gContact.familyName ?? ""
+        
+        // Имейли:
+        newContact.emailAddresses = gContact.emails.map {
+            CNLabeledValue(label: CNLabelHome, value: $0 as NSString)
+        }
+        
+        // Телефони:
+        newContact.phoneNumbers = gContact.phones.map {
+            CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: $0))
+        }
+        
+        let saveReq = CNSaveRequest()
+        saveReq.add(newContact, toContainerWithIdentifier: nil)
+        do {
+            try contactStore.execute(saveReq)
+            print("Created new iOS contact => \(newContact.identifier)")
+        } catch {
+            print("Error creating contact:", error)
+        }
+    }
+
 }
