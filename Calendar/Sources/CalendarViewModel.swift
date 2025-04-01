@@ -128,7 +128,6 @@ final class CalendarViewModel: ObservableObject {
            // Първоначално зареждане на локални събития и запис в oldEventCalendarMap
            loadAndStoreCurrentEvents()
         
-
     }
     
     deinit {
@@ -767,71 +766,6 @@ extension CalendarViewModel {
             await performGoogleCalendarSync(for: user)
         }
     }
-    
-    /// Perform a 2‑way sync for a specific user
-    @MainActor
-    func performGoogleCalendarSync(for user: StoredGoogleUser) async {
-        // 1) Проверка за изтичане на токена (refresh, ако е нужно)
-        if user.accessTokenExpiration < Date() {
-            if let refresh = user.refreshToken, !refresh.isEmpty {
-                do {
-                    let (newAccessToken, newExpDate, newIDToken) = try await self.refreshTokens(refreshToken: refresh)
-                    let updatedUser = StoredGoogleUser(
-                        uniqueID: user.uniqueID,
-                        userID: user.userID,
-                        email:  user.email,
-                        accessToken: newAccessToken,
-                        accessTokenExpiration: newExpDate,
-                        refreshToken: user.refreshToken,
-                        idToken: newIDToken,
-                        photoURL: user.photoURL
-                    )
-                    updateUserInMemory(updatedUser)
-                    saveAllUsersToUserDefaults()
-                } catch {
-                    print("Refresh token error: \(error.localizedDescription)")
-                    return
-                }
-            } else {
-                print("No refresh token => skip sync for \(user.email ?? "???" ).")
-                return
-            }
-        }
-
-        // 2) Сега имаме валиден accessToken
-        let validAccessToken = getUserInMemory(user.uniqueID)?.accessToken ?? ""
-        if validAccessToken.isEmpty { return }
-
-        do {
-            // a) Google → Local
-            self.oldGoogleToLocalEventMap = googleToLocalEventMap(for: user.uniqueID)
-            let googleCalendars = try await fetchGoogleCalendarList(accessToken: validAccessToken)
-            await syncGoogleCalendars(googleCalendars, forUser: user, accessToken: validAccessToken)
-
-            // b) Local → Google
-            // ВЗИМАМЕ map [googleCalID: localCalID]
-            let map = googleToLocalCalendarMap(for: user.uniqueID)
-            for (gCalID, localCalID) in map {
-                // === (* НОВО *) Проверяваме дали този локален календар е в selectedCalendarIDs ===
-                guard selectedCalendarIDs.contains(localCalID) else {
-                    print("Skipping upload for not‑selected calendarID = \(localCalID)")
-                    continue
-                }
-
-                if let localCal = eventStore.calendar(withIdentifier: localCalID) {
-                    await uploadLocalChangesToGoogle(
-                        googleCalId: gCalID,
-                        userID: user.uniqueID,
-                        accessToken: validAccessToken,
-                        localCalendar: localCal
-                    )
-                }
-            }
-
-        } catch {
-            print("performGoogleCalendarSync error for \(user.email ?? "???"): \(error.localizedDescription)")
-        }
-    }
 
 
     // MARK: - Google -> Local
@@ -856,6 +790,20 @@ extension CalendarViewModel {
         return decoded.items
     }
     
+    // -------------------------------------------------------------------------
+    // MARK: - Google helper to detect holiday calendar
+    // -------------------------------------------------------------------------
+    private func isGoogleHolidayCalendar(_ gcal: GoogleCalendarItem) -> Bool {
+        // Holiday календарите обикновено имат ID, завършващо на "holiday@group.v.calendar.google.com"
+        // напр. "bg.bulgarian#holiday@group.v.calendar.google.com"
+        // Ако искате, може да проверявате и по title: gcal.summary.lowercased().contains("holiday")
+        return gcal.id.contains("holiday@group.v.calendar.google.com")
+    }
+
+
+    // -------------------------------------------------------------------------
+    // MARK: - syncGoogleCalendars(...)
+    // -------------------------------------------------------------------------
     private func syncGoogleCalendars(
         _ googleCalendars: [GoogleCalendarItem],
         forUser user: StoredGoogleUser,
@@ -864,7 +812,7 @@ extension CalendarViewModel {
         var stillExistsGoogleCalendarIDs = Set<String>()
         let userID = user.uniqueID
 
-        // Взимаме map [googleCalId: localCalId]
+        // Map от UserDefaults: [googleCalId: localCalId]
         var map = googleToLocalCalendarMap(for: userID)
 
         for gcal in googleCalendars {
@@ -874,13 +822,38 @@ extension CalendarViewModel {
             let googleCalName = gcal.summary
             let googleCalColor = colorFromHexString(gcal.backgroundColor ?? "") ?? .systemBlue
 
+            // --- NEW: Ако е holiday календар, сваляме го еднократно и пропускаме двупосочния sync ---
+            if isGoogleHolidayCalendar(gcal) {
+                // 1) Ако нямаме още локален календар => създаваме го и еднократно сваляме събития.
+                if map[googleCalId] == nil {
+                    if let newCal = createLocalCalendar(
+                        googleCalendarName: googleCalName,
+                        googleCalendarColor: googleCalColor
+                    ) {
+                        map[googleCalId] = newCal.calendarIdentifier
+                        self.setGoogleToLocalCalendarMap(map, for: userID)
+
+                        // Изтегляме събития само веднъж
+                        await downloadAllEvents(
+                            forGoogleCalendarID: googleCalId,
+                            userID: userID,
+                            localCalendar: newCal,
+                            accessToken: accessToken
+                        )
+                    }
+                }
+                // 2) След това пропускаме (не правим 2‑way sync)
+                continue
+            }
+            // --- END HOLIDAY CHECK ---
+
+            // (1) Ако вече имаме локален календар
             if let localCalID = map[googleCalId],
-               let localEKCal = eventStore.calendar(withIdentifier: localCalID)
-            {
-                // Ако заглавието/цветът се различават, ъпдейтваме
+               let localEKCal = eventStore.calendar(withIdentifier: localCalID) {
+
+                // Проверка за промяна в title/color
                 if localEKCal.title != googleCalName ||
-                   localEKCal.cgColor != googleCalColor.cgColor
-                {
+                   localEKCal.cgColor != googleCalColor.cgColor {
                     localEKCal.title = googleCalName
                     localEKCal.cgColor = googleCalColor.cgColor
                     do {
@@ -890,8 +863,7 @@ extension CalendarViewModel {
                     }
                 }
 
-                // === (* НОВО *) Проверка дали този локален календар е в selectedCalendarIDs,
-                //                преди да сваляме събитията му.
+                // Сваляме събития само ако календарът е селектиран
                 if selectedCalendarIDs.contains(localCalID) {
                     await downloadAllEvents(
                         forGoogleCalendarID: googleCalId,
@@ -904,18 +876,16 @@ extension CalendarViewModel {
                 }
 
             } else {
-                // => Създаваме нов локален календар
-                if let newCal = createLocalCalendar(googleCalendarName: googleCalName,
-                                                    googleCalendarColor: googleCalColor)
-                {
-                    // Записваме във map
+                // (2) Ако нямаме локален календар => създаваме
+                if let newCal = createLocalCalendar(
+                    googleCalendarName: googleCalName,
+                    googleCalendarColor: googleCalColor
+                ) {
                     map[googleCalId] = newCal.calendarIdentifier
                     self.setGoogleToLocalCalendarMap(map, for: userID)
 
-                    // === (* НОВО *) и тук също може да прецените:
-                    //     ако не е селектиран, да НЕ сваляте събития.
-                    let newID = newCal.calendarIdentifier
-                    if selectedCalendarIDs.contains(newID) {
+                    // Проверка за selection
+                    if selectedCalendarIDs.contains(newCal.calendarIdentifier) {
                         await downloadAllEvents(
                             forGoogleCalendarID: googleCalId,
                             userID: userID,
@@ -929,7 +899,7 @@ extension CalendarViewModel {
             }
         }
 
-        // Проверяваме за локални календари, които вече нямат Google еквивалент
+        // Накрая: трием локални календари, които вече не съществуват в Google
         let currentMap = googleToLocalCalendarMap(for: userID)
         for (gCalID, localID) in currentMap {
             if !stillExistsGoogleCalendarIDs.contains(gCalID) {
@@ -947,6 +917,74 @@ extension CalendarViewModel {
             }
         }
     }
+
+
+    // -------------------------------------------------------------------------
+    // MARK: - performGoogleCalendarSync(for:)
+    // -------------------------------------------------------------------------
+    @MainActor
+    func performGoogleCalendarSync(for user: StoredGoogleUser) async {
+        // (1) Ако токенът е изтекъл => refresh
+        if user.accessTokenExpiration < Date() {
+            if let rToken = user.refreshToken, !rToken.isEmpty {
+                do {
+                    let (newAccess, newExp, newID) = try await refreshTokens(refreshToken: rToken)
+                    let updatedUser = StoredGoogleUser(
+                        uniqueID: user.uniqueID,
+                        userID: user.userID,
+                        email: user.email,
+                        accessToken: newAccess,
+                        accessTokenExpiration: newExp,
+                        refreshToken: rToken,
+                        idToken: newID,
+                        photoURL: user.photoURL
+                    )
+                    updateUserInMemory(updatedUser)
+                    saveAllUsersToUserDefaults()
+                } catch {
+                    print("Refresh token error: \(error)")
+                    return
+                }
+            }
+        }
+
+        let validUser = getUserInMemory(user.uniqueID) ?? user
+        let accessToken = validUser.accessToken
+        if accessToken.isEmpty { return }
+
+        do {
+            // Google → Local
+            self.oldGoogleToLocalEventMap = googleToLocalEventMap(for: validUser.uniqueID)
+            let googleCalendars = try await fetchGoogleCalendarList(accessToken: accessToken)
+            await syncGoogleCalendars(googleCalendars, forUser: validUser, accessToken: accessToken)
+
+            // Local → Google
+            let map = googleToLocalCalendarMap(for: validUser.uniqueID)
+            for (gCalID, localCalID) in map {
+                // --- NEW: пропускаме holiday календар ---
+                if gCalID.contains("holiday@group.v.calendar.google.com") {
+                    continue
+                }
+                // --- END ---
+
+                // Пропускаме, ако не е селектиран
+                guard selectedCalendarIDs.contains(localCalID) else { continue }
+
+                if let localCal = eventStore.calendar(withIdentifier: localCalID) {
+                    await uploadLocalChangesToGoogle(
+                        googleCalId: gCalID,
+                        userID: validUser.uniqueID,
+                        accessToken: accessToken,
+                        localCalendar: localCal
+                    )
+                }
+            }
+
+        } catch {
+            print("performGoogleCalendarSync error:", error.localizedDescription)
+        }
+    }
+
 
 
     private func createLocalCalendar(googleCalendarName: String,
@@ -2572,52 +2610,6 @@ extension CalendarViewModel {
         }
     }
 
-
-    @MainActor
-    func performMicrosoftCalendarSync(for user: StoredMicrosoftUser) async {
-        print("==> performMicrosoftCalendarSync(\(user.email ?? "???")) START")
-
-        // 1) Проверяваме дали токенът е изтекъл и ако да – опитваме silent refresh
-        let freshUser = await refreshMicrosoftTokenIfNeeded(for: user) ?? user
-
-        // 2) Стар snapshot
-        self.oldMsToLocalEventMap = msToLocalEventMap(for: freshUser.uniqueID)
-
-        do {
-            // a) MS → Local
-            let msCalendars = try await fetchMsCalendarList(accessToken: freshUser.accessToken)
-            await syncMsCalendars(msCalendars, forUser: freshUser, accessToken: freshUser.accessToken)
-
-            // b) Local → MS
-            // map = [msCalId: localCalId]
-            let map = msToLocalCalendarMap(for: freshUser.uniqueID)
-            for (msCalId, localCalId) in map {
-                // === (* НОВО *) добавяме проверка:
-                guard selectedCalendarIDs.contains(localCalId) else {
-                    print("Skipping upload to MS for not selected localCalID = \(localCalId)")
-                    continue
-                }
-
-                if let localCal = eventStore.calendar(withIdentifier: localCalId) {
-                    await uploadLocalChangesToMicrosoft(
-                        msCalId: msCalId,
-                        user: freshUser,
-                        accessToken: freshUser.accessToken,
-                        localCalendar: localCal
-                    )
-                }
-            }
-
-        } catch {
-            print("performMicrosoftCalendarSync(\(user.email ?? "???")) error:", error)
-        }
-
-        print("==> performMicrosoftCalendarSync(\(user.email ?? "???")) DONE")
-    }
-
-
-   
-
     func debugPrintLocalMsCalendars() {
         print("=== debugPrintLocalMsCalendars START ===")
 
@@ -2832,13 +2824,28 @@ extension CalendarViewModel {
     }
 
 
+    // -------------------------------------------------------------------------
+    // MARK: - Microsoft helper to detect holiday calendar (by name)
+    // -------------------------------------------------------------------------
+    private func isMicrosoftHolidayCalendar(_ cal: MSCalendarItem) -> Bool {
+        let lowerName = cal.name.lowercased()
+        // Пример: "Holidays in Bulgaria", "US Holidays", "Birthdays" и т.н.
+        if lowerName.contains("holiday") || lowerName.contains("birthdays") {
+            return true
+        }
+        return false
+    }
+
+
+    // -------------------------------------------------------------------------
+    // MARK: - syncMsCalendars(...)
+    // -------------------------------------------------------------------------
     private func syncMsCalendars(
         _ msCalendars: [MSCalendarItem],
         forUser user: StoredMicrosoftUser,
         accessToken: String
     ) async {
-        let userKey = user.uniqueID
-        var map = msToLocalCalendarMap(for: userKey)
+        var map = msToLocalCalendarMap(for: user.uniqueID)
         var stillExistsIDs = Set<String>()
 
         for msCal in msCalendars {
@@ -2846,14 +2853,38 @@ extension CalendarViewModel {
 
             let msCalName = msCal.name
             let msCalID   = msCal.id
-            let msColor = UIColor.systemBlue  // примерно
+            let msColor   = UIColor.systemBlue
+
+            // --- NEW: ако е holiday => сваляме го веднъж и прескачаме 2-way sync ---
+            if isMicrosoftHolidayCalendar(msCal) {
+                if map[msCalID] == nil {
+                    // Създаваме локален календар и сваляме събития само веднъж
+                    if let newLocalCal = createLocalCalendar(
+                        googleCalendarName: msCalName,
+                        googleCalendarColor: msColor
+                    ) {
+                        map[msCalID] = newLocalCal.calendarIdentifier
+                        setMsToLocalCalendarMap(map, for: user.uniqueID)
+
+                        await downloadAllMsEvents(
+                            forMsCalendarID: msCalID,
+                            user: user,
+                            localCalendar: newLocalCal,
+                            accessToken: accessToken
+                        )
+                    }
+                }
+                // След това continue => не правим двупосочно sync
+                continue
+            }
+            // --- END HOLIDAY CHECK ---
 
             if let localID = map[msCalID],
                let localEKCal = eventStore.calendar(withIdentifier: localID) {
 
+                // Ако името/цвета са различни, ъпдейтваме
                 if localEKCal.title != msCalName ||
-                   localEKCal.cgColor != msColor.cgColor
-                {
+                   localEKCal.cgColor != msColor.cgColor {
                     localEKCal.title  = msCalName
                     localEKCal.cgColor = msColor.cgColor
                     do {
@@ -2863,7 +2894,7 @@ extension CalendarViewModel {
                     }
                 }
 
-                // === (* НОВО *) Проверяваме дали е селектиран
+                // Сваляме събития само ако е селектиран
                 if selectedCalendarIDs.contains(localID) {
                     await downloadAllMsEvents(
                         forMsCalendarID: msCalID,
@@ -2876,12 +2907,14 @@ extension CalendarViewModel {
                 }
 
             } else {
-                // => create local
-                if let newLocalCal = createLocalCalendar(googleCalendarName: msCalName, googleCalendarColor: msColor) {
+                // Създаваме нов локален
+                if let newLocalCal = createLocalCalendar(
+                    googleCalendarName: msCalName,
+                    googleCalendarColor: msColor
+                ) {
                     map[msCalID] = newLocalCal.calendarIdentifier
-                    setMsToLocalCalendarMap(map, for: userKey)
+                    setMsToLocalCalendarMap(map, for: user.uniqueID)
 
-                    // и пак проверка
                     if selectedCalendarIDs.contains(newLocalCal.calendarIdentifier) {
                         await downloadAllMsEvents(
                             forMsCalendarID: msCalID,
@@ -2896,23 +2929,70 @@ extension CalendarViewModel {
             }
         }
 
-        // Трием локални, които вече не съществуват в MS
-        let currentMap = msToLocalCalendarMap(for: userKey)
+        // Трием локални, които ги няма вече в MS
+        let currentMap = msToLocalCalendarMap(for: user.uniqueID)
         for (msCalID, localID) in currentMap {
             if !stillExistsIDs.contains(msCalID) {
                 if let toRemove = eventStore.calendar(withIdentifier: localID) {
                     do {
                         try eventStore.removeCalendar(toRemove, commit: true)
+                        print("Removed local MS-copy calendar:", toRemove.title)
                     } catch {
                         print("removeCalendar error:", error.localizedDescription)
                     }
                 }
                 var newMap = currentMap
                 newMap.removeValue(forKey: msCalID)
-                setMsToLocalCalendarMap(newMap, for: userKey)
+                setMsToLocalCalendarMap(newMap, for: user.uniqueID)
             }
         }
     }
+
+
+    // -------------------------------------------------------------------------
+    // MARK: - performMicrosoftCalendarSync(for:)
+    // -------------------------------------------------------------------------
+    @MainActor
+    func performMicrosoftCalendarSync(for user: StoredMicrosoftUser) async {
+        // Проверка за изтичащ токен => refresh ако е нужно
+        let freshUser = await refreshMicrosoftTokenIfNeeded(for: user) ?? user
+
+        // Стар snapshot
+        self.oldMsToLocalEventMap = msToLocalEventMap(for: freshUser.uniqueID)
+
+        do {
+            // MS → Local
+            let msCalendars = try await fetchMsCalendarList(accessToken: freshUser.accessToken)
+            await syncMsCalendars(msCalendars, forUser: freshUser, accessToken: freshUser.accessToken)
+
+            // Local → MS
+            let map = msToLocalCalendarMap(for: freshUser.uniqueID)
+            for (msCalId, localCalId) in map {
+
+                // --- NEW: пропускаме holiday/birthday календари ---
+                if let foundCalItem = msCalendars.first(where: { $0.id == msCalId }),
+                   isMicrosoftHolidayCalendar(foundCalItem) {
+                    continue
+                }
+                // --- END ---
+
+                guard selectedCalendarIDs.contains(localCalId) else { continue }
+
+                if let localCal = eventStore.calendar(withIdentifier: localCalId) {
+                    await uploadLocalChangesToMicrosoft(
+                        msCalId: msCalId,
+                        user: freshUser,
+                        accessToken: freshUser.accessToken,
+                        localCalendar: localCal
+                    )
+                }
+            }
+
+        } catch {
+            print("performMicrosoftCalendarSync(\(user.email ?? "???")) error:", error)
+        }
+    }
+
 
     
     // Here we reuse your createLocalCalendar from Google code
