@@ -4,7 +4,7 @@
 <plist version="1.0">
 <dict>
 
-    <!-- Нужно за MSAL (ако ползваш системен браузър / broker): -->
+    <!-- Нужно за MSAL -->
     <key>LSApplicationQueriesSchemes</key>
     <array>
         <string>msauthv2</string>
@@ -34,7 +34,28 @@
     <key>NSContactsUsageDescription</key>
     <string>Това приложение се нуждае от достъп до контактите, за да може да ...</string>
 
-    <!-- Други ключове, ако имаш GIDClientID, NSCameraUsageDescription и пр. -->
+    <!-- Тук добавяш новия блок CFBundleIcons -->
+    <key>CFBundleIcons</key>
+    <dict>
+        <key>CFBundlePrimaryIcon</key>
+        <dict>
+            <key>CFBundleIconFiles</key>
+            <array>
+                <string>AppIcon</string>
+            </array>
+        </dict>
+        <key>CFBundleAlternateIcons</key>
+        <dict>
+            <key>AppIcon2</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>AppIcon2</string>
+                </array>
+            </dict>
+        </dict>
+    </dict>
+
 
 </dict>
 </plist>

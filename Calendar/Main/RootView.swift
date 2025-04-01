@@ -206,10 +206,6 @@ struct RootView: View {
             .toolbarBackground(.visible, for: .bottomBar)
         }
         .onAppear {
-            print(Bundle.main.localizations)
-            print(Bundle.main.preferredLocalizations)
-            print(Locale.current.identifier)
-            print(LocalizedStringKey("Today"))
 
             Task {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
