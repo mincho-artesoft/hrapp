@@ -47,7 +47,7 @@ struct RootView: View {
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     // Табовете/екраните
-    @State private var selectedTab = 1 // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar
+    @State private var selectedTab = 6 // 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar
     
     // Sheet за календари
     @State private var showCalendarsSheet = false
@@ -171,7 +171,9 @@ struct RootView: View {
                             .onAppear { loadSingleDayEventsLocal() }
                             .onReceive(timer) { _ in loadSingleDayEventsLocal() }
                             .ignoresSafeArea(.all)
-                            
+                        case 6:
+                            WeatherView()
+                           
                         default:
                             Text(LocalizedStringKey("N/A"))
                         }

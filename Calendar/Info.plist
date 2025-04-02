@@ -1,61 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-"https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
-    <!-- Нужно за MSAL -->
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>msauthv2</string>
-        <string>msauthv3</string>
-    </array>
-
-    <!-- URL Types - Google -->
-    <key>CFBundleURLTypes</key>
-    <array>
-        <!-- Google scheme (примерно) -->
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
-            </array>
-        </dict>
-
-        <!-- Microsoft scheme -->
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <!-- Трябва да е 'msauth.Deksan.CalendarASD' без ://auth -->
-                <string>msauth.Deksan.CalendarASD</string>
-            </array>
-        </dict>
-    </array>
-    <key>NSContactsUsageDescription</key>
-    <string>Това приложение се нуждае от достъп до контактите, за да може да ...</string>
-
-    <!-- Тук добавяш новия блок CFBundleIcons -->
-    <key>CFBundleIcons</key>
-    <dict>
-        <key>CFBundlePrimaryIcon</key>
-        <dict>
-            <key>CFBundleIconFiles</key>
-            <array>
-                <string>AppIcon</string>
-            </array>
-        </dict>
-        <key>CFBundleAlternateIcons</key>
-        <dict>
-            <key>AppIcon2</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>AppIcon2</string>
-                </array>
-            </dict>
-        </dict>
-    </dict>
-
-
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>AppIcon2</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AppIcon2</string>
+				</array>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+		</dict>
+	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msauth.Deksan.CalendarASD</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>msauthv2</string>
+		<string>msauthv3</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+		<string>external-accessory</string>
+		<string>bluetooth-central</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>nearby-interaction</string>
+		<string>audio</string>
+		<string>processing</string>
+		<string>bluetooth-peripheral</string>
+		<string>voip</string>
+	</array>
 </dict>
 </plist>
