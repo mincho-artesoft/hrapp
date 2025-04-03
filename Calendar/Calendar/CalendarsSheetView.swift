@@ -356,8 +356,10 @@ struct CalendarsSheetView: View {
         Button(action: {
             let allIDs = Set(viewModel.allCalendars.map { $0.calendarIdentifier })
             if viewModel.selectedCalendarIDs.count == allIDs.count {
+                // Ако са избрани всички – deselect all
                 viewModel.selectedCalendarIDs.removeAll()
             } else {
+                // Иначе select all
                 viewModel.selectedCalendarIDs = allIDs
             }
         }) {
@@ -393,15 +395,14 @@ struct CalendarsSheetView: View {
         let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
         return map.first(where: { $0.value == cal.calendarIdentifier })?.key
     }
-    
 
-    
     private func signInWithMicrosoft() {
         viewModel.signInWithMicrosoft()
     }
     private func signInWithGoogle() {
         viewModel.signInWithGoogle()
     }
+    
     // MARK: - UserDefaults Helpers for Sharing Info
     
     private func loadGoogleSharingInfos() {

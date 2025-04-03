@@ -3,10 +3,12 @@ import AuthenticationServices
 
 struct LoginView: View {
     @EnvironmentObject var appViewModel: AppViewModel
+    
+    @Environment(\.presentationMode) var presentationMode  // За да затворим sheet-а
 
     var body: some View {
         VStack(spacing: 20) {
-            Spacer() // добавяме място отгоре, за да бутнем бутона надолу
+            Spacer()
 
             SignInWithAppleButton(
                 .signIn,
@@ -27,6 +29,9 @@ struct LoginView: View {
                             appViewModel.userID = appleUserID
                             appViewModel.email = email ?? ""
                             appViewModel.isLoggedIn = true
+                            
+                            // Затваряме sheet-а
+                            presentationMode.wrappedValue.dismiss()
                         }
                     case .failure(let error):
                         print("Грешка при Sign in with Apple: \(error.localizedDescription)")
@@ -37,7 +42,7 @@ struct LoginView: View {
             .frame(height: 50)
             .padding(.horizontal, 40)
 
-            Spacer() // добавяме място отдолу, за да центрираме бутона вертикално
+            Spacer()
         }
     }
 }
