@@ -1,10 +1,12 @@
 import SwiftUI
 import EventKit
 import EventKitUI
+@preconcurrency import WeatherKit
+import CoreLocation
 
+// MARK: - RootView
 struct RootView: View {
-    // MARK: - Съществуващи променливи (от по-стария ви код)
-
+    // Съществуващи променливи (от по-стария ви код)
     @State private var selectedCalendars = Set<EKCalendar>()
     @State private var showCalendarChooser = false
     
@@ -37,8 +39,7 @@ struct RootView: View {
     // Управление на табовете. Според примера: 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar, 6=Weather
     @State private var selectedTab = 6
     
-    // MARK: - Нови променливи
-    // sheet-ове
+    // Нови променливи за различните sheet-ове
     @State private var showCalendarsSheet = false      // Показва CalendarsSheetView
     @State private var showLoginSheet = false          // Показва LoginView
     @State private var showRequestEmailSheet = false   // Показва RequestEmailView
@@ -160,7 +161,7 @@ struct RootView: View {
                             .ignoresSafeArea(.all)
                             
                         case 6:
-                            WeatherView()
+                            WeatherKitView()
                             
                         default:
                             Text("N/A")
@@ -204,6 +205,10 @@ struct RootView: View {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
+            // -- Тук задаваме бял фон + тъмен текст на долния тулбар --
+            .toolbarBackground(Color.white, for: .bottomBar)
+            .toolbarBackground(.visible, for: .bottomBar)
+            .toolbarColorScheme(.light, for: .bottomBar)
         }
         .onAppear {
             Task {
@@ -264,7 +269,7 @@ struct RootView: View {
     }
 }
 
-// MARK: - Примерни функции за SingleDay/MultiDay. Всички сте ги имали, просто нека са тук за пълнота.
+// MARK: - Примерни функции за SingleDay/MultiDay.
 extension RootView {
     private func loadSingleDayEvents() {
         guard accessGranted else { return }
@@ -323,7 +328,7 @@ extension RootView {
     }
 }
 
-// MARK: - LAZY AllEventsListView
+// MARK: - LAZY AllEventsListView (примерни методи)
 extension RootView {
     func loadInitialMonth() {
         guard accessGranted else { return }
@@ -475,20 +480,13 @@ extension RootView {
     }
 }
 
-import SwiftUI
-import EventKit
-import EventKitUI
+// MARK: - Други представими/помощни в същия файл (ако желаете да са тук)
 
-// 1) Нашият представител (wrapper) за EKCalendarChooser
+// 1) CalendarChooserView (UIViewControllerRepresentable)
 struct CalendarChooserView: UIViewControllerRepresentable {
-
-    // Свързваме се със SwiftUI, за да затворим sheet-а и да връщаме избора на календари.
     @Environment(\.presentationMode) var presentationMode
-    
-    // Примерно property, в което пазим избраните от потребителя календари
     @Binding var selectedCalendars: Set<EKCalendar>
     
-    // Делегат клас (Coordinator), който реагира на събитията от EKCalendarChooserDelegate
     class Coordinator: NSObject, @preconcurrency EKCalendarChooserDelegate {
         let parent: CalendarChooserView
         
@@ -496,42 +494,35 @@ struct CalendarChooserView: UIViewControllerRepresentable {
             self.parent = parent
         }
         
-        // Извиква се, когато потребителят натисне Done
         @MainActor func calendarChooserDidFinish(_ calendarChooser: EKCalendarChooser) {
-            // Записваме избраните календари и затваряме sheet-а
             parent.selectedCalendars = calendarChooser.selectedCalendars
             parent.presentationMode.wrappedValue.dismiss()
         }
         
-        // Извиква се, когато потребителят натисне Cancel
         @MainActor func calendarChooserDidCancel(_ calendarChooser: EKCalendarChooser) {
-            // Просто затваряме sheet-а без да променяме selectedCalendars
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        Coordinator(self)
     }
     
     func makeUIViewController(context: Context) -> UINavigationController {
-        // Създаваме EKCalendarChooser с желаните параметри
         let chooser = EKCalendarChooser(
             selectionStyle: .multiple,
             displayStyle: .allCalendars,
             entityType: .event,
             eventStore: CalendarViewModel.shared.eventStore
         )
-        
         chooser.showsDoneButton = true
         chooser.showsCancelButton = true
         chooser.delegate = context.coordinator
         
-        // Обвиваме в UINavigationController
         return UINavigationController(rootViewController: chooser)
     }
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // Може да обновявате EKCalendarChooser при нужда, ако selectedCalendars се промени отвън
+        // Не е задължително да правите нещо тук
     }
 }
