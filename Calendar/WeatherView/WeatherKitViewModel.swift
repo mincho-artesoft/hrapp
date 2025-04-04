@@ -4,15 +4,20 @@ import CoreLocation
 @preconcurrency import WeatherKit
 
 // MARK: - НОВА СТРУКТУРА ЗА ЕДИН ДЕН ОТ ПРОГНОЗАТА // NEW
-struct DayForecastItem: Identifiable, Equatable {
-    let id = UUID()
-    let day: String
-    let minTemp: Double
-    let maxTemp: Double
-    let symbol: String
-    let precipChance: Double?
-}
+struct DayForecastItem: Identifiable, Equatable { // <-- Make sure it's Identifiable
+    let id: Date // Or use let id = UUID() if Date isn't always unique enough
+    var date: Date
+    var day: String
+    var symbol: String
+    var precipChance: Double?
+    var minTemp: Double
+    var maxTemp: Double
 
+    // Make Equatable based on id if needed for comparisons like .last
+    static func == (lhs: DayForecastItem, rhs: DayForecastItem) -> Bool {
+        lhs.id == rhs.id
+    }
+}
 
 // MARK: - WEATHERKIT VIEW MODEL
 @MainActor
@@ -93,29 +98,37 @@ class WeatherKitViewModel: ObservableObject {
     private func updateDailyForecast(_ days: [DayWeather]) {
         let count = min(days.count, 10)
         let slice = days.prefix(count)
-        
+
         var arr: [DayForecastItem] = []
-        
+
         for (i, dayData) in slice.enumerated() {
             let dayName = (i == 0) ? "Today" : weekdayString(from: dayData.date)
             let minT = dayData.lowTemperature.value
             let maxT = dayData.highTemperature.value
             let symbol = dayData.symbolName
             let chance = dayData.precipitationChance
-            
-            let item = DayForecastItem(day: dayName,
-                                       minTemp: minT,
-                                       maxTemp: maxT,
-                                       symbol: symbol,
-                                       precipChance: chance)
+            let dateValue = dayData.date
+
+            // ----- SOLUTION: Reorder arguments to match struct definition -----
+            let item = DayForecastItem(id: dateValue,
+                                       date: dateValue,
+                                       day: dayName,
+                                       symbol: symbol,       // Correct position
+                                       precipChance: chance, // Correct position
+                                       minTemp: minT,        // Correct position
+                                       maxTemp: maxT)        // Correct position
+            // -----------------------------------------------------------------
             arr.append(item)
         }
         self.dailyForecast = arr
-        
-        // Може да сложите firstDay = days.first, но тук вече ползваме arr.first
+
+        // Set today's min/max using the updated array
         if let firstDay = arr.first {
             self.todayMinTemp = firstDay.minTemp
             self.todayMaxTemp = firstDay.maxTemp
+        } else {
+            self.todayMinTemp = nil
+            self.todayMaxTemp = nil
         }
     }
     
