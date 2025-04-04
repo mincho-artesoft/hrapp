@@ -6,86 +6,132 @@ struct WindCard: View {
     let direction: Angle?
     let directionAbbreviation: String
 
-    // Wind compass styled like the screenshot
-    @ViewBuilder func windCompass() -> some View {
+    // Малка помощна функция за един ред текст + стойност
+    @ViewBuilder
+    func detailRow(label: String, value: String) -> some View {
+        HStack {
+            Text(label)
+                .font(.system(size: 15, weight: .regular))
+                .foregroundStyle(.primary)
+            Spacer()
+            Text(value)
+                .font(.system(size: 15, weight: .regular))
+                .foregroundStyle(.primary)
+        }
+    }
+
+    // Компасът със стрелката
+    @ViewBuilder
+    func windCompass() -> some View {
+         let compassSize: CGFloat = 90
+         // Радиус на кръга, който ще скъса/прикрие средата на стрелката
+         let coverCircleRadius: CGFloat = compassSize * 0.25
+
          ZStack {
-             // Subtle ticks
-              ForEach(0..<12) { i in
-                 Rectangle()
-                     .fill(Color.secondary.opacity(0.5))
-                      // Make N, E, S, W ticks slightly longer/thicker if desired
-                     .frame(width: i % 3 == 0 ? 1.5 : 1, height: i % 3 == 0 ? 6 : 4)
-                     .offset(y: -28) // Position on radius
-                     .rotationEffect(.degrees(Double(i) * 30))
+             // Тикове (60 бр. през 6°)
+              ForEach(0..<60) { i in
+                  let isMajorTick = i % 5 == 0 // всеки 5‑ти (30°)
+                  Rectangle()
+                      .fill(Color.secondary.opacity(0.6))
+                      .frame(width: 1, height: isMajorTick ? 6 : 4)
+                      .offset(y: -(compassSize / 2 - 8))
+                      .rotationEffect(.degrees(Double(i) * 6))
               }
 
-             // Direction letters (bolder)
-             Text("N").font(.caption.weight(.semibold)).foregroundStyle(.primary).offset(y: -38)
-             Text("S").font(.caption.weight(.semibold)).foregroundStyle(.primary).offset(y: 38)
-             Text("W").font(.caption.weight(.semibold)).foregroundStyle(.primary).offset(x: -38)
-             Text("E").font(.caption.weight(.semibold)).foregroundStyle(.primary).offset(x: 38)
+             // Основни букви: N, E, S, W
+             let letterOffset: CGFloat = compassSize / 2 - 1
+             Text("N")
+                 .font(.caption.weight(.medium))
+                 .foregroundStyle(.secondary)
+                 .offset(y: -letterOffset)
+             Text("S")
+                 .font(.caption.weight(.medium))
+                 .foregroundStyle(.secondary)
+                 .offset(y: letterOffset)
+             Text("W")
+                 .font(.caption.weight(.medium))
+                 .foregroundStyle(.secondary)
+                 .offset(x: -letterOffset)
+             Text("E")
+                 .font(.caption.weight(.medium))
+                 .foregroundStyle(.secondary)
+                 .offset(x: letterOffset)
 
-             // Wind Vane Arrow (points FROM direction)
-              Image(systemName: "location.north.fill") // Use location arrow shape from screenshot
-                  .resizable()
-                  .scaledToFit()
-                  .frame(width: 12, height: 12) // Smaller arrow
-                  .foregroundStyle(.primary)
-                  // Rotate arrow TO the direction wind is blowing FROM
-                  .rotationEffect((direction ?? Angle.zero) + Angle.degrees(180))
+             // --- Група за СТРЕЛКАТА (линия + връх) ---
+             Group {
+                 // Линия (Capsule)
+                 Capsule()
+                     .fill(Color.white)
+                     // Височината = дължината на стрелката, широчината = дебелина
+                     .frame(width: 2.5, height: compassSize * 0.22)
 
+                 // Връх (Circle)
+                 Circle()
+                     .fill(Color.white)
+                     .frame(width: 10, height: 10)
+                     .offset(y: -(compassSize * 0.11 + 5))
+             }
+             .offset(y: -compassSize * 0.15) // Смъкваме малко нагоре, за да изглежда центрирано
+             // Завъртаме спрямо посоката; 0° = North, 90° = East, и т.н.
+             .rotationEffect(direction ?? Angle.zero)
 
-             // Central speed display
-             VStack(spacing: -2) { // Reduced spacing for compact look
+             // Кръг, който покрива средата (ефект на "прекъсната" стрелка)
+             Circle()
+                 .fill(.ultraThinMaterial) // Или друг фон, ако имате
+                 .frame(width: coverCircleRadius * 2, height: coverCircleRadius * 2)
+
+             // Текст със скоростта (km/h) в центъра
+             VStack(spacing: -2) {
                   Text(String(format: "%.0f", windSpeedKmh))
-                       .font(.system(size: 20, weight: .medium)) // Prominent speed
+                       .font(.system(size: 26, weight: .medium))
                        .foregroundStyle(.primary)
                   Text("km/h")
-                       .font(.system(size: 9, weight: .medium)) // Smaller units
-                       .foregroundStyle(.secondary) // Units are secondary
+                       .font(.system(size: 10, weight: .medium))
+                       .foregroundStyle(.secondary)
+                       .padding(.top, 2)
              }
          }
-         .frame(width: 80, height: 80) // Maintain compass size
+         .frame(width: compassSize, height: compassSize)
     }
 
     var body: some View {
         WeatherDetailCard {
-            // Title - Top Left
+            // Заглавие
             Label("WIND", systemImage: "wind")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .padding(.bottom, 5)
 
-            // Use HStack to place text left, compass right
-            HStack(alignment: .center) {
-                // Text Content - Left Side
-                VStack(alignment: .leading, spacing: 4) {
-                    // Wind Direction Text (e.g., "Wind SW")
-                    Text("Wind \(directionAbbreviation)")
-                         .font(.system(size: 16, weight: .medium)) // Larger direction text
-                         .foregroundStyle(.primary)
+            HStack(alignment: .center, spacing: 15) {
+                // Лявата част (детайли)
+                VStack(alignment: .leading, spacing: 8) {
+                    // Основна скорост
+                    detailRow(
+                        label: "Wind",
+                        value: "\(Int(windSpeedKmh.rounded())) km/h"
+                    )
+                    Divider().background(.white.opacity(0.3))
 
-                    // Gusts Text (prominent)
-                    if let gust = gustSpeedKmh, gust > windSpeedKmh {
-                        Text("Gusts \(Int(gust.rounded())) km/h")
-                             .font(.system(size: 18, weight: .regular)) // Large gusts value
-                             .foregroundStyle(.primary)
-                    } else {
-                         // Add placeholder if needed for alignment, or just empty
-                         Text(" ") // Keep space consistent
-                              .font(.system(size: 18, weight: .regular))
+                    // Gusts, ако ги има и са по-високи
+                    if let gust = gustSpeedKmh, gust > windSpeedKmh + 1 {
+                        detailRow(
+                            label: "Gusts",
+                            value: "\(Int(gust.rounded())) km/h"
+                        )
+                        Divider().background(.white.opacity(0.3))
                     }
-                     // Add Spacer if needed to push text up within its column
-                     // Spacer()
+
+                    // Посока: примерно "279° WNW"
+                    detailRow(
+                        label: "Direction",
+                        value: "\(Int(direction?.degrees.rounded() ?? 0))° \(directionAbbreviation)"
+                    )
                 }
+                Spacer()
 
-                Spacer() // Pushes compass to the right
-
-                // Compass - Right Side
+                // Компасът (дясната част)
                 windCompass()
             }
-             // Add Spacer below the HStack if the card needs more vertical fill
-             // Spacer()
         }
     }
 }
-

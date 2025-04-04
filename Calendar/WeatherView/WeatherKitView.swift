@@ -421,18 +421,34 @@ struct WeatherKitView: View {
 
     // Остава същото
     private var todayDetailsGrid: some View {
-        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
-            FeelsLikeCard(feelsLike: vm.currentFeelsLike, currentTemp: vm.currentTemp)
-            UVIndexCard(uvIndex: vm.currentUVIndex, categoryInfo: vm.uvCategory(for: vm.currentUVIndex))
-            WindCard(windSpeedKmh: vm.metersPerSecondToKmh(vm.currentWindSpeed), gustSpeedKmh: vm.metersPerSecondToKmh(vm.currentWindGust), direction: vm.currentWindDirection, directionAbbreviation: vm.windDirectionAbbreviation(for: vm.currentWindDirection))
-            SunsetCard(sunrise: vm.sunriseTime, sunset: vm.sunsetTime, formatTime: vm.formatTime)
-             let nextRainInfo = findNextPrecipitationEvent()
-             PrecipitationTodayCard(amount: vm.todayPrecipitationAmount, nextExpectedAmount: nextRainInfo.amount, nextExpectedTimeString: nextRainInfo.timeString)
-            VisibilityCard(visibilityKm: (vm.currentVisibility ?? 0) / 1000)
-            HumidityCard(humidity: vm.currentHumidity, dewPoint: vm.currentDewPoint)
-            PressureCard(pressure: vm.currentPressure, trend: vm.pressureTrend)
-        }
-    }
+          // Changed from LazyVGrid to VStack to allow full-width items
+          VStack(spacing: 15) {
+              // Row 1: Feels Like & UV (Paired)
+              HStack(spacing: 15) {
+                  FeelsLikeCard(feelsLike: vm.currentFeelsLike, currentTemp: vm.currentTemp)
+                  UVIndexCard(uvIndex: vm.currentUVIndex, categoryInfo: vm.uvCategory(for: vm.currentUVIndex))
+              }
+
+              // Row 2: Wind (Full Width)
+              WindCard(windSpeedKmh: vm.metersPerSecondToKmh(vm.currentWindSpeed), gustSpeedKmh: vm.metersPerSecondToKmh(vm.currentWindGust), direction: vm.currentWindDirection, directionAbbreviation: vm.windDirectionAbbreviation(for: vm.currentWindDirection))
+
+              // Row 3: Sunset (Full Width)
+              SunsetCard(sunrise: vm.sunriseTime, sunset: vm.sunsetTime, formatTime: vm.formatTime)
+
+              // Row 4: Precipitation & Visibility (Paired)
+              HStack(spacing: 15) {
+                   let nextRainInfo = findNextPrecipitationEvent()
+                   PrecipitationTodayCard(amount: vm.todayPrecipitationAmount, nextExpectedAmount: nextRainInfo.amount, nextExpectedTimeString: nextRainInfo.timeString)
+                  VisibilityCard(visibilityKm: (vm.currentVisibility ?? 0) / 1000)
+              }
+
+              // Row 5: Humidity & Pressure (Paired)
+              HStack(spacing: 15) {
+                  HumidityCard(humidity: vm.currentHumidity, dewPoint: vm.currentDewPoint)
+                  PressureCard(pressure: vm.currentPressure, trend: vm.pressureTrend)
+              }
+          }
+      }
 
     // Модифицираме searchResultsOverlay малко
     private var searchResultsOverlay: some View {
