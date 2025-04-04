@@ -5,424 +5,555 @@ import MapKit
 @preconcurrency import WeatherKit
 
 struct WeatherKitView: View {
-    
+
     // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel()
     @StateObject private var locationSearchVM = LocationSearchViewModel()
-    
+
     // MARK: - UI State
     @State private var showSearchBar = false
     @State private var isEditing = false  // controls when suggestions list appears
-    @State private var geocodedCityName = ""
-    @State private var selectedDay: DayForecastItem? = nil
-    
+    @State private var geocodedCityName = "" // Store city name from search results
+    @State private var selectedDay: DayForecastItem? = nil // For daily forecast sheet
+
+    // Track if initial load is done to prevent flicker/multiple loads
+    @State private var initialLoadComplete = false
+
     var body: some View {
         ZStack(alignment: .top) {
-            
+
             // 1) Background gradient
             LinearGradient(
                 gradient: Gradient(colors: [
-                    Color.blue.opacity(0.5),
-                    Color.gray.opacity(0.4)
+                    Color.blue.opacity(0.6), // Slightly adjusted opacity
+                    Color.gray.opacity(0.5)
                 ]),
-                startPoint: .top,
-                endPoint: .bottom
+                startPoint: .topLeading, // Diagonal gradient
+                endPoint: .bottomTrailing
             )
             .edgesIgnoringSafeArea(.all)
-            
-            // 2) ScrollView, в която е включен и topBar
+
+            // 2) ScrollView for main content
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 20) {
-                    
-                    // ---------- TOP BAR като част от скрол-вюто ----------
+                VStack(spacing: 20) { // Consistent spacing for major sections
+
+                    // ---------- TOP BAR (Now part of ScrollView) ----------
                     topBar
-                    
+                        .padding(.top, 5) // Add slight padding from safe area edge
+
                     // ---------- MAIN WEATHER CONTENT ----------
-                    VStack(spacing: 20) {
-                        // --- Weather main info ---
-                        VStack(spacing: 8) {
-                            Text(displayedCityName())
-                                .font(.system(size: 36, weight: .bold))
-                                .foregroundColor(.white)
-                            
-                            // Current Temp + Symbol
-                            HStack(spacing: 8) {
-                                Image(systemName: vm.currentSymbol)
-                                    .symbolVariant(.fill)
-                                    .symbolRenderingMode(.multicolor)
-                                    .font(.system(size: 52))
-                                
-                                if let temp = vm.currentTemp {
-                                    Text("\(Int(temp.rounded()))°")
-                                        .font(.system(size: 80, weight: .thin))
-                                        .foregroundColor(.white)
-                                } else {
-                                    Text("—°")
-                                        .font(.system(size: 80, weight: .thin))
-                                        .foregroundColor(.white)
-                                }
-                            }
-                            
-                            Text(vm.currentCondition)
-                                .foregroundColor(.white)
-                                .font(.headline)
-                            
-                            if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
-                                Text("H:\(Int(hi))°   L:\(Int(lo))°")
-                                    .foregroundColor(.white.opacity(0.9))
-                                    .font(.subheadline)
-                            }
-                        }
-                        .padding(.top, 40)
-                        
-                        // Hourly Forecast
+                    // Use a Group to avoid too many nested VStacks if needed
+                    Group {
+                        // --- Current Weather Header ---
+                        currentWeatherHeader
+
+                        // --- Hourly Forecast Card ---
                         hourlyForecastCard
-                        
-                        // 10-Day Forecast
+                            .padding(.horizontal, 16)
+
+                        // --- 10-Day Forecast Card ---
                         tenDayForecastCard
-                        
-                        // Today Details
-                        TodayDetailsCardView(vm: vm)
-                        
+                            .padding(.horizontal, 16)
+
+                        // --- Today's Details Grid ---
+                        todayDetailsGrid
+                            .padding(.horizontal, 16)
+
+                        // --- Error Message Display ---
                         if let error = vm.errorMessage {
                             Text(error)
-                                .foregroundColor(.red)
-                                .multilineTextAlignment(.center)
+                                .foregroundColor(.yellow) // More visible error color
                                 .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(.red.opacity(0.6))
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                                .padding(.horizontal, 16)
                         }
-                    }
-                    .padding(.horizontal, 16)
-                    
-                    Spacer().frame(height: 40)
+                    } // End Group
+
+                    Spacer().frame(height: 40) // Bottom spacer inside ScrollView
                 }
             }
-            .onAppear {
-                if let loc = locationManager.currentLocation {
-                    vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude,
-                                             longitude: loc.coordinate.longitude)
-                }
+            .refreshable { // Pull to refresh
+                refreshWeatherData()
             }
-            .onChange(of: locationManager.currentLocation) { newLoc in
-                // Ако потребителят не е търсил ръчно, ъпдейтваме
-                if let loc = newLoc, locationSearchVM.queryFragment.isEmpty {
-                    vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude,
-                                             longitude: loc.coordinate.longitude)
-                }
-            }
-            // ---------- Край на ScrollView ----------
-            
-            // 3) Overlay с листа за предложения, за да е винаги “закован” отгоре
-            if showSearchBar && isEditing && !locationSearchVM.searchResults.isEmpty {
-                VStack(spacing: 0) {
-                    // Може да сложите малко “background”, за да се вижда листът
-                    List(locationSearchVM.searchResults, id: \.self) { completion in
-                        Button {
-                            // When tapped, pick that completion
-                            locationSearchVM.selectCompletion(completion)
-                            // Hide the list
-                            isEditing = false
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(completion.title)
-                                    .foregroundColor(.primary)
-                                if !completion.subtitle.isEmpty {
-                                    Text(completion.subtitle)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-                        }
-                        .listRowBackground(Color.white.opacity(0.8))
-                    }
-                    .padding(.top, 70)
-                    .listStyle(.plain)
-                    .frame(maxHeight: 800) // limit how tall the list can grow
-                    .transition(.move(edge: .top))
-                    
-                    Spacer() // Ще избутва списъка нагоре
-                }
-                .zIndex(1) // Да стои над ScrollView
-            }
+            // ---------- End ScrollView ----------
+
+            // 3) Search Results Overlay (appears above ScrollView)
+            searchResultsOverlay
         }
-        // ---------- SHEETS ----------
+        // ---------- Sheets and Data Handling ----------
         .sheet(item: $selectedDay) { day in
             DayDetailSheetView(day: day)
+                .presentationDetents([.medium]) // Start with medium detent
         }
-        // ---------- ON RECEIVE ----------
+        .onReceive(locationManager.$currentLocation) { location in
+            // Fetch weather only if search is not active and initial load needed
+            if let loc = location, !showSearchBar, geocodedCityName.isEmpty, !initialLoadComplete {
+                vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
+                initialLoadComplete = true // Mark initial load done
+            }
+        }
         .onReceive(locationSearchVM.$selectedPlacemark) { placemark in
             guard let placemark = placemark else { return }
-            let coords = placemark.coordinate
-            vm.fetchWeatherForCoords(latitude: coords.latitude, longitude: coords.longitude)
-            
-            // Display city name from placemark
-            let city = placemark.locality
-                ?? placemark.administrativeArea
-                ?? (placemark.name ?? "Location")
-            self.geocodedCityName = city
+            handleSelectedLocation(placemark: placemark)
+        }
+        // Handle authorization changes
+        .onReceive(locationManager.$authorizationStatus) { status in
+             if status == .authorizedWhenInUse || status == .authorizedAlways {
+                 // If authorized, and no location yet, try fetching again
+                 if locationManager.currentLocation == nil {
+                     locationManager.manager.requestLocation() // Request one-time update
+                 } else if !initialLoadComplete && !showSearchBar && geocodedCityName.isEmpty {
+                     // Or if location exists but initial load didn't happen (e.g., granted later)
+                     vm.fetchWeatherForCoords(latitude: locationManager.currentLocation!.coordinate.latitude,
+                                              longitude: locationManager.currentLocation!.coordinate.longitude)
+                     initialLoadComplete = true
+                 }
+             } else if status == .denied || status == .restricted {
+                 // Handle denial - maybe show a message or default location?
+                 vm.errorMessage = "Location access denied. Search for a city or grant access in Settings."
+                 initialLoadComplete = true // Prevent further automatic attempts
+             }
         }
     }
-}
 
-// MARK: - TOP BAR
-extension WeatherKitView {
+    // MARK: - Computed Views / Subviews
+
     private var topBar: some View {
         HStack {
             if showSearchBar {
-                HStack(spacing: 8) {
-                    TextField("Search city...",
-                              text: $locationSearchVM.queryFragment,
-                              onEditingChanged: { editing in
-                                isEditing = editing
-                              })
-                    .foregroundColor(.primary)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(minWidth: 150)
-                    .disableAutocorrection(true)
-                    .textInputAutocapitalization(.never)
-                    
-                    Button {
-                        // Force refresh suggestions if needed
-                        isEditing = true
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.white)
-                    }
-                    
-                    // Close search
-                    Button {
-                        withAnimation {
-                            showSearchBar = false
-                            locationSearchVM.queryFragment = ""
-                            isEditing = false
-                        }
-                        // Return to the user’s location-based weather
-                        if let loc = locationManager.currentLocation {
-                            vm.fetchWeatherForCoords(
-                                latitude: loc.coordinate.latitude,
-                                longitude: loc.coordinate.longitude
-                            )
-                            geocodedCityName = ""
-                        }
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.white)
-                    }
-                }
+                searchField
             } else {
-                // Magnifying glass to open search
-                Button {
-                    withAnimation {
-                        showSearchBar = true
-                    }
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.white)
-                }
+                searchButton
             }
-            
             Spacer()
-            
-            // Refresh button
-            Button {
-                withAnimation {
-                    showSearchBar = false
-                    locationSearchVM.queryFragment = ""
-                    isEditing = false
-                }
-                // Return to the user’s location-based weather
-                if let loc = locationManager.currentLocation {
-                    vm.fetchWeatherForCoords(
-                        latitude: loc.coordinate.latitude,
-                        longitude: loc.coordinate.longitude
-                    )
-                    geocodedCityName = ""
-                }
-            } label: {
-                Image(systemName: "arrow.clockwise")
-                    .foregroundColor(.white)
+            refreshButton
+        }
+        .padding(.horizontal) // Standard horizontal padding
+    }
+
+    private var searchField: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "magnifyingglass") // Icon inside text field area
+                 .foregroundColor(.secondary)
+
+            TextField("Search for a city...",
+                      text: $locationSearchVM.queryFragment,
+                      onEditingChanged: { editing in
+                          withAnimation(.easeInOut) { isEditing = editing }
+                      },
+                      onCommit: { // Optional: perform search on return key
+                          isEditing = false
+                      })
+                .textFieldStyle(.plain) // Use plain style for better integration
+                .autocorrectionDisabled(true)
+
+            // Clear button inside text field area
+            if !locationSearchVM.queryFragment.isEmpty {
+                 Button { locationSearchVM.queryFragment = "" } label: {
+                      Image(systemName: "xmark.circle.fill")
+                           .foregroundColor(.secondary)
+                 }
             }
         }
-        .font(.title2)
-        .padding()
+         .padding(.horizontal, 10)
+         .padding(.vertical, 8)
+         .background(.ultraThinMaterial, in: Capsule()) // Encapsulated background
+         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))) // Search bar animation
+
     }
-    
+
+    private var searchButton: some View {
+        Button {
+            withAnimation { showSearchBar = true }
+        } label: {
+            Image(systemName: "magnifyingglass")
+        }
+        .buttonStyle(.plain) // Use plain style for just the icon
+        .transition(.move(edge: .leading)) // Animation
+    }
+
+
+    private var refreshButton: some View {
+        Button {
+            refreshWeatherData()
+        } label: {
+             if showSearchBar { // Show close button when search is active
+                  Image(systemName: "xmark")
+                       .font(.title3) // Slightly smaller xmark
+             } else {
+                  Image(systemName: "arrow.clockwise") // Refresh icon otherwise
+             }
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var currentWeatherHeader: some View {
+        VStack(spacing: 5) { // Reduced spacing
+            // City Name
+            Text(displayedCityName())
+                .font(.system(size: 34, weight: .regular)) // Match screenshot font
+                .foregroundColor(.primary) // Use primary color
+
+            // Current Temperature
+            if let temp = vm.currentTemp {
+                Text("\(Int(temp.rounded()))°")
+                    .font(.system(size: 96, weight: .thin)) // Large thin temp
+                    .foregroundColor(.primary)
+            } else {
+                Text("—°")
+                    .font(.system(size: 96, weight: .thin))
+                    .foregroundColor(.primary)
+            }
+
+            // Condition Description
+            Text(vm.currentCondition)
+                .foregroundColor(.secondary) // Secondary color for condition
+                .font(.system(size: 18, weight: .medium)) // Match screenshot
+
+            // High/Low Temperatures
+            if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
+                Text("H:\(Int(hi.rounded()))° L:\(Int(lo.rounded()))°")
+                    .foregroundColor(.primary) // Primary color
+                    .font(.system(size: 18, weight: .medium))
+            }
+        }
+        .padding(.vertical, 10) // Add some vertical padding
+    }
+
+
+    private var hourlyForecastCard: some View {
+        VStack(alignment: .leading, spacing: 0) { // Align card content
+             // Optional: Add a title like "Hourly Forecast" if desired
+             // Text("HOURLY FORECAST").font(.caption).foregroundColor(.secondary).padding([.leading, .top], 15)
+
+             ScrollView(.horizontal, showsIndicators: false) {
+                 HStack(spacing: 25) { // Increased spacing between items
+                     ForEach(vm.hourlyForecast.indices, id: \.self) { i in
+                         let hourItem = vm.hourlyForecast[i]
+                         VStack(spacing: 12) { // Increased vertical spacing
+                             // Hour Label (e.g., "Now", "3PM")
+                             Text(hourItem.hour)
+                                 .font(.system(size: 14, weight: .medium)) // Slightly bolder hour
+                                 .foregroundColor(.primary)
+
+                             // Weather Symbol
+                             Image(systemName: hourItem.symbol)
+                                 .symbolVariant(.fill)
+                                 .symbolRenderingMode(.multicolor)
+                                 .font(.title2) // Keep icon size reasonable
+                                 .frame(height: 30) // Ensure consistent height
+
+                             // Temperature
+                             Text("\(Int(hourItem.temp.rounded()))°")
+                                 .font(.system(size: 18, weight: .medium)) // Bolder temp
+                                 .foregroundColor(.primary)
+                         }
+                         .padding(.vertical, 5) // Add slight vertical padding to center content
+                     }
+                 }
+                 .padding(.horizontal, 15) // Padding inside the ScrollView
+                 .padding(.vertical, 12) // Vertical padding for the content
+             }
+             .frame(height: 120) // Set fixed height for the card area
+        }
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+    }
+
+    private var tenDayForecastCard: some View {
+         VStack(alignment: .leading, spacing: 0) { // No spacing between rows/divider
+              Label("10-DAY FORECAST", systemImage: "calendar")
+                   .font(.system(size: 10, weight: .medium))
+                   .foregroundStyle(.secondary)
+                   .padding(.horizontal, 15)
+                   .padding(.top, 12)
+                   .padding(.bottom, 5)
+
+
+             if !vm.dailyForecast.isEmpty {
+                 // Determine global min/max across the displayed days for the bar range
+                 let temps = vm.dailyForecast.flatMap { [$0.minTemp, $0.maxTemp] }
+                 let globalMin = temps.min() ?? 0
+                 let globalMax = temps.max() ?? 1 // Avoid division by zero if min=max
+
+                 ForEach(vm.dailyForecast) { dayItem in
+                     dailyForecastRow(
+                         dayItem: dayItem,
+                         globalMin: globalMin,
+                         globalMax: globalMax,
+                         isToday: Calendar.current.isDateInToday(dayItem.date),
+                         currentTemp: vm.currentTemp // Pass current temp for today's dot
+                     )
+                     // Add Divider conditionally, except for the last item
+                      if dayItem.id != vm.dailyForecast.last?.id {
+                           Divider()
+                                .background(.white.opacity(0.2)) // Make divider visible
+                                .padding(.leading, 15) // Indent divider
+                      }
+                 }
+                  .padding(.bottom, 5) // Padding below the last row
+
+             } else {
+                  // Loading indicator or empty state
+                  HStack {
+                      Spacer()
+                      ProgressView().tint(.white)
+                      Spacer()
+                  }
+                  .padding()
+                  .frame(height: 100) // Give it some height while loading
+             }
+         } // End VStack
+         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+     }
+
+     // Function to create a row in the 10-day forecast
+     private func dailyForecastRow(dayItem: DayForecastItem, globalMin: Double, globalMax: Double, isToday: Bool, currentTemp: Double?) -> some View {
+         HStack(spacing: 10) { // Adjust spacing between columns
+
+             // Day Name (e.g., "Today", "Tue")
+             Text(dayItem.day)
+                 .font(.system(size: 16, weight: .medium))
+                 .foregroundColor(.primary)
+                 .frame(width: 55, alignment: .leading) // Fixed width for alignment
+
+             // Weather Symbol & Precipitation Chance
+             HStack(spacing: 5) {
+                 Image(systemName: dayItem.symbol)
+                     .symbolVariant(.fill)
+                     .symbolRenderingMode(.multicolor)
+                     .font(.title3)
+                     .frame(width: 30) // Fixed width for icon
+
+                 // Precipitation Chance Text (if significant)
+                 if let chance = dayItem.precipChance, chance >= 0.1 { // Threshold for showing chance
+                     Text("\(Int((chance * 100).rounded()))%")
+                         .font(.system(size: 11, weight: .semibold))
+                         .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 1.0)) // Cyan color
+                         .frame(width: 35) // Width for percentage
+                 } else {
+                     Spacer().frame(width: 35) // Placeholder for alignment
+                 }
+             }
+             .frame(maxWidth: .infinity, alignment: .leading) // Take remaining space before temps
+
+
+             // Min Temperature
+             Text("\(Int(dayItem.minTemp.rounded()))°")
+                 .font(.system(size: 16, weight: .medium))
+                 .foregroundColor(.secondary) // Min temp is secondary
+                 .frame(width: 35, alignment: .trailing)
+
+             // Temperature Range Bar
+             TemperatureRangeView(
+                 day: dayItem,
+                 globalMin: globalMin,
+                 globalMax: globalMax,
+                 isToday: isToday,
+                 currentTemp: isToday ? currentTemp : nil // Only pass current temp if it's today
+             )
+             .frame(width: 80) // Fixed width for the bar
+
+             // Max Temperature
+             Text("\(Int(dayItem.maxTemp.rounded()))°")
+                 .font(.system(size: 16, weight: .medium))
+                 .foregroundColor(.primary) // Max temp is primary
+                 .frame(width: 35, alignment: .trailing)
+         }
+         .padding(.horizontal, 15) // Padding for the row content
+         .padding(.vertical, 10) // Vertical padding for the row
+         .contentShape(Rectangle()) // Make the whole row tappable
+         .onTapGesture {
+             selectedDay = dayItem // Set the selected day for the sheet
+         }
+     }
+
+
+    private var todayDetailsGrid: some View {
+        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
+            // Use the new individual card views
+            FeelsLikeCard(feelsLike: vm.currentFeelsLike, currentTemp: vm.currentTemp)
+
+            UVIndexCard(
+                uvIndex: vm.currentUVIndex,
+                categoryInfo: vm.uvCategory(for: vm.currentUVIndex)
+            )
+
+            WindCard(
+                windSpeedKmh: vm.metersPerSecondToKmh(vm.currentWindSpeed),
+                gustSpeedKmh: vm.metersPerSecondToKmh(vm.currentWindGust),
+                direction: vm.currentWindDirection,
+                directionAbbreviation: vm.windDirectionAbbreviation(for: vm.currentWindDirection)
+            )
+
+            SunsetCard(
+                sunrise: vm.sunriseTime,
+                sunset: vm.sunsetTime,
+                formatTime: vm.formatTime // Pass the formatting helper
+            )
+
+            // Example data fetching logic for Precipitation card might be complex.
+            // Here, we pass today's amount and rely on ViewModel for next expected.
+             // You might need a more sophisticated way to determine the *next* rain event.
+             let nextRainInfo = findNextPrecipitationEvent()
+             PrecipitationTodayCard(
+                 amount: vm.todayPrecipitationAmount,
+                 nextExpectedAmount: nextRainInfo.amount,
+                 nextExpectedTimeString: nextRainInfo.timeString
+             )
+
+
+            VisibilityCard(
+                visibilityKm: (vm.currentVisibility ?? 0) / 1000 // Convert meters to km
+            )
+
+            HumidityCard(
+                humidity: vm.currentHumidity,
+                dewPoint: vm.currentDewPoint
+            )
+
+            PressureCard(
+                pressure: vm.currentPressure,
+                trend: vm.pressureTrend
+            )
+
+            // Add other cards like Moon Phase, Averages here when ready
+        }
+    }
+
+    private var searchResultsOverlay: some View {
+        // Overlay for search suggestions
+        Group {
+            if showSearchBar && isEditing && !locationSearchVM.searchResults.isEmpty {
+                List(locationSearchVM.searchResults, id: \.self) { completion in
+                    Button {
+                        // When tapped, get details for that completion
+                        locationSearchVM.selectCompletion(completion)
+                        // Hide keyboard and list
+                        hideKeyboard()
+                        isEditing = false
+                        // `onReceive(locationSearchVM.$selectedPlacemark)` will handle the rest
+                    } label: {
+                        VStack(alignment: .leading) {
+                            Text(completion.title).foregroundColor(.primary)
+                            if !completion.subtitle.isEmpty {
+                                Text(completion.subtitle)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                    .listRowBackground(Color(.systemGray6)) // Background for list rows
+                }
+                .listStyle(.plain)
+                .frame(maxHeight: 400) // Limit list height
+                .background(.thinMaterial) // Background behind the list
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .shadow(radius: 5)
+                .padding(.horizontal)
+                .offset(y: 60) // Position below the search bar area
+                .transition(.opacity.combined(with: .move(edge: .top))) // Animation
+                .zIndex(1) // Ensure it's above the main scroll view
+            }
+        }
+    }
+
+    // MARK: - Helper Functions
+
     private func displayedCityName() -> String {
         if !geocodedCityName.isEmpty {
-            return geocodedCityName
+            return geocodedCityName // Use searched city name if available
         }
-        return locationManager.currentCityName ?? "Loading..."
-    }
-}
-
-// MARK: - HOURLY FORECAST
-extension WeatherKitView {
-    private var hourlyForecastCard: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white.opacity(0.2))
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 24) {
-                    ForEach(vm.hourlyForecast.indices, id: \.self) { i in
-                        let hourItem = vm.hourlyForecast[i]
-                        VStack(spacing: 8) {
-                            Text(hourItem.hour)
-                                .font(.footnote)
-                                .foregroundColor(.white)
-                            Image(systemName: hourItem.symbol)
-                                .symbolVariant(.fill)
-                                .symbolRenderingMode(.multicolor)
-                                .font(.title2)
-                            Text("\(Int(hourItem.temp.rounded()))°")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                        }
-                        .frame(minWidth: 50)
-                    }
-                }
-                .padding()
-            }
-        }
-        .frame(height: 130)
-    }
-}
-
-// MARK: - TEN DAY FORECAST
-extension WeatherKitView {
-    private var tenDayForecastCard: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            // Заглавие ... (остава същото) ...
-            Text("10-Day Forecast")
-                .font(.callout).fontWeight(.medium)
-                .foregroundColor(Color.white.opacity(0.7))
-                .padding(.vertical, 10)
-                .padding(.leading, 16)
-
-            if !vm.dailyForecast.isEmpty {
-                let globalMin = vm.dailyForecast.map(\.minTemp).min() ?? 0
-                let globalMax = vm.dailyForecast.map(\.maxTemp).max() ?? 0
-
-                ForEach(vm.dailyForecast, id: \.id) { dayItem in
-                    let todayCheck = Calendar.current.isDateInToday(dayItem.date)
-
-                    // --- ИЗВИКВАНЕ НА НОВАТА ФУНКЦИЯ ---
-                    dailyForecastRow(
-                        dayItem: dayItem,
-                        globalMin: globalMin,
-                        globalMax: globalMax,
-                        isToday: todayCheck,
-                        currentTemp: vm.currentTemp // Предаваме currentTemp
-                    )
-                    // --- Прилагане на модификаторите към резултата от функцията ---
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 16)
-                    .background(Color.clear)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        selectedDay = dayItem
-                    }
-                    // ---------------------------------------
-
-                    // Разделител (остава същият)
-                    if dayItem != vm.dailyForecast.last {
-                        Divider()
-                            .background(Color.white.opacity(0.2))
-                            .padding(.leading, 16 + 60 + 12)
-                            .padding(.trailing, 16)
-                    }
-                } // Край на ForEach
-            } else {
-                 // Loading индикатор ... (остава същият) ...
-                 HStack {
-                     Spacer()
-                     ProgressView().tint(.white)
-                     Spacer()
-                 }
-                 .padding()
-            }
-        } // Край на VStack
-        .background(
-             // Фон ... (остава същият) ...
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.ultraThinMaterial)
-        )
+        return locationManager.currentCityName ?? "Loading..." // Otherwise use GPS location name
     }
 
-    private func dailyForecastRow(
-        dayItem: DayForecastItem,
-        globalMin: Double,
-        globalMax: Double,
-        isToday: Bool,
-        currentTemp: Double?
-    ) -> some View {
-        HStack(spacing: 8) {
-            
-            // КОЛОНА 1: Име на деня
-            Text(dayItem.day)
-                .foregroundColor(.white)
-                .font(.system(size: 18, weight: .medium))
-                .frame(width: 60, alignment: .leading)
-            
-            // КОЛОНА 2: Икона + Валежи
-            HStack(alignment: .center, spacing: 20) {
-                // Икона
-                Image(systemName: dayItem.symbol)
-                    .symbolVariant(.fill)
-                    .symbolRenderingMode(.multicolor)
-                    .font(.title3)
-                
-                // Вертикален стект за прогноза за валежи
-                VStack(alignment: .leading, spacing: 4) {
-                    if let chance = dayItem.precipChance, chance >= 0.1 {
-                        VStack(alignment: .center, spacing: 4) {
-                            Text("\(Int(chance * 100))%")
-                                .font(.caption)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.cyan)
-                            
-                            ProgressView(value: chance)
-                                .progressViewStyle(.linear)
-                                .tint(.cyan)
-                                .frame(width: 50, height: 6)
-                        }
-                    } else {
-                        // Ако няма валеж
-                        Spacer()
-                            .frame(height: 6)
-                    }
-                }
-            }
+    private func refreshWeatherData() {
+         vm.clearWeatherData() // Clear existing data immediately for refresh feel
+         initialLoadComplete = false // Allow fetching again
 
-            .frame(width: 90, alignment: .leading)
-            
-            // КОЛОНА 3: Минимална температура
-            Text("\(Int(dayItem.minTemp.rounded()))°")
-                .foregroundColor(Color.white.opacity(0.7))
-                .font(.system(size: 18, weight: .medium))
-                .frame(width: 35, alignment: .trailing)
-            
-            // КОЛОНА 4: Бар за температурния диапазон
-            TemperatureRangeView(
-                day: dayItem,
-                globalMin: globalMin,
-                globalMax: globalMax,
-                isToday: isToday,
-                currentTemp: currentTemp
-            )
-            .frame(width: 80, height: 5)
-            
-            // КОЛОНА 5: Максимална температура
-            Text("\(Int(dayItem.maxTemp.rounded()))°")
-                .foregroundColor(.white)
-                .font(.system(size: 18, weight: .medium))
-                .frame(width: 35, alignment: .trailing)
-        }
-        .padding(.vertical, 8)
-        .contentShape(Rectangle())
-        .onTapGesture {
-            selectedDay = dayItem
-        }
-    }
+         // If a city was searched, refresh that city
+         if !geocodedCityName.isEmpty, let placemark = locationSearchVM.selectedPlacemark {
+             handleSelectedLocation(placemark: placemark)
+         }
+         // Otherwise, refresh GPS location
+         else if let loc = locationManager.currentLocation {
+             vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
+             initialLoadComplete = true
+         } else {
+             // If no location available (e.g., denied), maybe try requesting again or show error
+             locationManager.manager.requestLocation() // Try to get location again
+             vm.errorMessage = "Cannot refresh. Location unknown."
+             initialLoadComplete = true // Prevent infinite loop if denied
+         }
 
+         // Reset search state if refresh button was hit while searching
+         if showSearchBar {
+             hideSearch()
+         }
+     }
 
-} // Край на extension WeatherKitView
+     // Central function to handle selecting a location from search
+     private func handleSelectedLocation(placemark: MKPlacemark) {
+         vm.clearWeatherData() // Clear old data
+         let coords = placemark.coordinate
+         vm.fetchWeatherForCoords(latitude: coords.latitude, longitude: coords.longitude)
+         initialLoadComplete = true // Mark load complete for this location
+
+         // Get a displayable city name from the placemark
+         let city = placemark.locality ?? placemark.administrativeArea ?? placemark.name ?? "Selected Location"
+         self.geocodedCityName = city // Store the searched city name
+
+         // Update UI state
+         hideSearch()
+     }
+
+     // Function to hide search bar and reset state
+     private func hideSearch() {
+         withAnimation {
+             showSearchBar = false
+             locationSearchVM.queryFragment = ""
+             isEditing = false
+             hideKeyboard()
+         }
+     }
+
+     // Function to dismiss keyboard
+     private func hideKeyboard() {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+     }
+
+     // Helper to find next precipitation event (simplified example)
+     // NOTE: Accurate prediction requires analysing hourly/daily forecasts in detail.
+     private func findNextPrecipitationEvent() -> (amount: Double?, timeString: String?) {
+         // 1. Check hourly first for nearest significant precipitation
+         if let nextHourPrecip = vm.hourlyForecast.first(where: { $0.temp >= 0.1 && $0.hour != "Now" }) { // Using temp field temporarily for precip chance >= 10%
+             // This needs proper precipitation chance data in the hourly tuple
+             // return (amount: ???, timeString: "soon") // Placeholder - need real precip data
+         }
+
+         // 2. If not soon, check daily forecast
+         if let nextDayPrecip = vm.dailyForecast.first(where: { day in
+             guard !Calendar.current.isDateInToday(day.date) else { return false } // Skip today
+             return (day.precipChance ?? 0) >= 0.1 // Check if chance is > 10%
+         }) {
+             // Calculate days until that event
+             let daysUntil = Calendar.current.dateComponents([.day], from: Date(), to: nextDayPrecip.date).day ?? 0
+             let timeString: String
+             if daysUntil <= 1 {
+                 timeString = "tomorrow"
+             } else if daysUntil <= 7 {
+                 timeString = "on \(nextDayPrecip.day)" // e.g., "on Tue"
+             } else {
+                  timeString = "in \(daysUntil) days"
+             }
+             // We don't easily get the *amount* for that specific future event from daily summary
+             return (amount: 1.0, timeString: timeString) // Placeholder amount
+         }
+
+         // 3. If nothing found
+         return (amount: nil, timeString: nil)
+     }
+
+} // End of WeatherKitView

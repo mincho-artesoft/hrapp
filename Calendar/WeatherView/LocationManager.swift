@@ -5,7 +5,7 @@ import MapKit
 
 // MARK: - LOCATION MANAGER (GPS + Reverse Geocoding)
 class LocationManager: NSObject, ObservableObject {
-    private let manager = CLLocationManager()
+    let manager = CLLocationManager()
     private let geocoder = CLGeocoder()
     
     @Published var currentLocation: CLLocation?
