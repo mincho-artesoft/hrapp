@@ -1,4 +1,4 @@
-import SwiftUICore
+import SwiftUI
 
 struct PressureCard: View {
     let pressure: Double? // hPa
