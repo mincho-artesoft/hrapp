@@ -36,7 +36,7 @@ struct CalendarApp: App {
         // --- 2) UIToolbar стил ---
         let toolBarAppearance = UIToolbarAppearance()
         toolBarAppearance.configureWithOpaqueBackground()
-        toolBarAppearance.backgroundColor = .white
+        toolBarAppearance.backgroundColor = .systemBackground
         
         UIToolbar.appearance().standardAppearance = toolBarAppearance
         if #available(iOS 15.0, *) {

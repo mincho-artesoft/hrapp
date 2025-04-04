@@ -1,47 +1,99 @@
 import SwiftUI
+import Combine
 import CoreLocation
 import MapKit
 @preconcurrency import WeatherKit
 
-// MARK: - SEARCH DELEGATE
-class SearchCompleterHandler: NSObject, MKLocalSearchCompleterDelegate {
-    var onResults: ([MKLocalSearchCompletion]) -> Void = { _ in }
+@MainActor
+class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLocalSearchCompleterDelegate {
+    @Published var queryFragment: String = ""
+    @Published var searchResults: [MKLocalSearchCompletion] = []
+    @Published var selectedPlacemark: MKPlacemark? = nil
+    @Published var searchError: Error? = nil
+
+    private var searchCompleter: MKLocalSearchCompleter
+    private var cancellable: AnyCancellable?
+    
+    override init() {
+        self.searchCompleter = MKLocalSearchCompleter()
+        super.init()
+        
+        searchCompleter.delegate = self
+        searchCompleter.resultTypes = .address
+        
+        cancellable = $queryFragment
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] newQuery in
+                guard let self = self else { return }
+                if newQuery.isEmpty {
+                    self.searchResults = []
+                    self.selectedPlacemark = nil
+                    self.searchError = nil
+                } else {
+                    self.searchCompleter.queryFragment = newQuery
+                    self.searchError = nil
+                }
+            }
+    }
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        onResults(completer.results)
+        self.searchResults = completer.results
+        self.searchError = nil
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        print("Completer error: \(error.localizedDescription)")
-        onResults([])
+        self.searchError = error
+        self.searchResults = []
+    }
+    
+    func selectCompletion(_ completion: MKLocalSearchCompletion) {
+        let request = MKLocalSearch.Request(completion: completion)
+        let search = MKLocalSearch(request: request)
+        
+        search.start { [weak self] (response, error) in
+            guard let self = self else { return }
+            if let error = error {
+                self.searchError = error
+                self.selectedPlacemark = nil
+                return
+            }
+            guard let mapItem = response?.mapItems.first else {
+                self.searchError = NSError(
+                    domain: "LocationSearch",
+                    code: 1,
+                    userInfo: [NSLocalizedDescriptionKey: "No details found for selection."]
+                )
+                self.selectedPlacemark = nil
+                return
+            }
+            self.selectedPlacemark = mapItem.placemark
+            self.queryFragment = ""
+            self.searchResults = []
+            self.searchError = nil
+        }
     }
 }
 
-// MARK: - MAIN VIEW
 struct WeatherKitView: View {
     
-    // 1) Location + Weather
+    // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel()
+    @StateObject private var locationSearchVM = LocationSearchViewModel()
     
-    // 2) Search
+    // MARK: - UI State
     @State private var showSearchBar = false
-    @State private var searchText = ""
-    @State private var isEditing = false
-    @State private var suggestions: [MKLocalSearchCompletion] = []
-    
-    // 3) Запаметяваме "актуален град", намерен чрез геокодиране
+    @State private var isEditing = false  // controls when suggestions list appears
     @State private var geocodedCityName = ""
-    
-    // Sheet с информация за даден ден
     @State private var selectedDay: DayForecastItem? = nil
     
-    private let searchCompleter = MKLocalSearchCompleter()
-    private let searchHandler = SearchCompleterHandler()
+    // We'll measure the height of the top bar to position our list
+    @State private var topBarHeight: CGFloat = 0
     
     var body: some View {
-        ZStack {
-            // --- Background Gradient ---
+        ZStack(alignment: .top) {
+            // 1) Background gradient
             LinearGradient(
                 gradient: Gradient(colors: [
                     Color.blue.opacity(0.5),
@@ -52,16 +104,11 @@ struct WeatherKitView: View {
             )
             .edgesIgnoringSafeArea(.all)
             
+            // 2) The main scrollable weather content, behind everything
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 20) {
-                    
-                    // --- Top bar (Search + Reload)
-                    topBar
-                    
-                    // --- Suggestions list
-                    if showSearchBar && !suggestions.isEmpty && isEditing {
-                        suggestionsList
-                    }
+                    // Add empty space so your scroll content starts below the top bar
+                    Spacer().frame(height: topBarHeight)
                     
                     // --- Weather main info ---
                     VStack(spacing: 8) {
@@ -69,7 +116,7 @@ struct WeatherKitView: View {
                             .font(.system(size: 36, weight: .bold))
                             .foregroundColor(.white)
                         
-                        // Температура + символ
+                        // Current Temp + Symbol
                         HStack(spacing: 8) {
                             Image(systemName: vm.currentSymbol)
                                 .symbolVariant(.fill)
@@ -99,16 +146,15 @@ struct WeatherKitView: View {
                     }
                     .padding(.top, 40)
                     
-                    // --- Hourly Forecast
+                    // Hourly Forecast
                     hourlyForecastCard
                     
-                    // --- 10-Day Forecast
+                    // 10-Day Forecast
                     tenDayForecastCard
                     
-                    // --- Today Details
+                    // Today Details
                     TodayDetailsCardView(vm: vm)
                     
-                    // --- Error message (if any)
                     if let error = vm.errorMessage {
                         Text(error)
                             .foregroundColor(.red)
@@ -120,26 +166,72 @@ struct WeatherKitView: View {
                 }
                 .padding(.horizontal, 16)
             }
+            
+            // 3) Top bar overlay (measured so we know how tall it is)
+            VStack(spacing: 0) {
+                topBar
+                    .background(
+                        // Measure the top bar height so we can offset the list below it
+                        GeometryReader { geo in
+                            Color.clear
+                                .onAppear {
+                                    topBarHeight = geo.size.height
+                                }
+                        }
+                    )
+                
+                // 4) The suggestions list (overlay), right below the top bar
+                if showSearchBar && isEditing && !locationSearchVM.searchResults.isEmpty {
+                    List(locationSearchVM.searchResults, id: \.self) { completion in
+                        Button {
+                            // When tapped, pick that completion
+                            locationSearchVM.selectCompletion(completion)
+                            // Hide the list
+                            isEditing = false
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(completion.title)
+                                    .foregroundColor(.primary)
+                                if !completion.subtitle.isEmpty {
+                                    Text(completion.subtitle)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                        }
+                        .listRowBackground(Color.white.opacity(0.8))
+                    }
+                    .listStyle(.plain)
+                    .frame(maxHeight: 300) // limit how tall the list can grow
+                    .transition(.move(edge: .top))
+                }
+            }
+            .zIndex(1) // ensure this stack is on top of the scroll content
         }
-        // Sheet при избран day
+        // ---------- SHEETS AND ON-APPEAR -----------
         .sheet(item: $selectedDay) { day in
             DayDetailSheetView(day: day)
         }
+        .onReceive(locationSearchVM.$selectedPlacemark) { placemark in
+            guard let placemark = placemark else { return }
+            let coords = placemark.coordinate
+            vm.fetchWeatherForCoords(latitude: coords.latitude, longitude: coords.longitude)
+            
+            // Display city name from placemark
+            let city = placemark.locality
+                ?? placemark.administrativeArea
+                ?? (placemark.name ?? "Location")
+            self.geocodedCityName = city
+        }
         .onAppear {
-            // Ако вече имаме coords -> зареждаме
             if let loc = locationManager.currentLocation {
                 vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude,
                                          longitude: loc.coordinate.longitude)
             }
-            // Настройваме searchCompleter delegate
-            searchHandler.onResults = { comps in
-                self.suggestions = comps
-            }
-            searchCompleter.delegate = searchHandler
         }
         .onChange(of: locationManager.currentLocation) { newLoc in
-            // Update weather if search is empty
-            if let loc = newLoc, searchText.isEmpty {
+            // If user hasn't typed a custom search, auto-update weather
+            if let loc = newLoc, locationSearchVM.queryFragment.isEmpty {
                 vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude,
                                          longitude: loc.coordinate.longitude)
             }
@@ -147,46 +239,43 @@ struct WeatherKitView: View {
     }
 }
 
-// MARK: - TOP BAR (Search + Refresh)
+// MARK: - TOP BAR
 extension WeatherKitView {
     private var topBar: some View {
         HStack {
             if showSearchBar {
-                // Search TextField
                 HStack(spacing: 8) {
-                    TextField("Search city...", text: $searchText, onEditingChanged: { edit in
-                        isEditing = edit
-                    })
+                    TextField("Search city...", text: $locationSearchVM.queryFragment,
+                              onEditingChanged: { editing in
+                                isEditing = editing
+                              })
                     .foregroundColor(.primary)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(minWidth: 150)
-                    .onChange(of: searchText) { newValue in
-                        updateSearchSuggestions(for: newValue)
-                    }
+                    .disableAutocorrection(true)
+                    .textInputAutocapitalization(.never)
                     
-                    // Search бутон - извиква doSearchCity()
                     Button {
-                        doSearchCity()
+                        // Force refresh suggestions if needed
+                        isEditing = true
                     } label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.white)
                     }
                     
-                    // Close search button
+                    // Close search
                     Button {
                         withAnimation {
                             showSearchBar = false
-                            searchText = ""
-                            suggestions = []
+                            locationSearchVM.queryFragment = ""
                             isEditing = false
                         }
-                        // Връщаме се към текущата локация
+                        // Return to the user’s location-based weather
                         if let loc = locationManager.currentLocation {
                             vm.fetchWeatherForCoords(
                                 latitude: loc.coordinate.latitude,
                                 longitude: loc.coordinate.longitude
                             )
-                            // Зануляваме геокодираното име, ако искаме да се показва градът от GPS
                             geocodedCityName = ""
                         }
                     } label: {
@@ -212,11 +301,10 @@ extension WeatherKitView {
             Button {
                 withAnimation {
                     showSearchBar = false
-                    searchText = ""
-                    suggestions = []
+                    locationSearchVM.queryFragment = ""
                     isEditing = false
                 }
-                // Връщаме се към текущата локация
+                // Return to the user’s location-based weather
                 if let loc = locationManager.currentLocation {
                     vm.fetchWeatherForCoords(
                         latitude: loc.coordinate.latitude,
@@ -231,81 +319,6 @@ extension WeatherKitView {
         }
         .font(.title2)
         .padding()
-    }
-    
-    // --- SUGGESTIONS LIST ---
-    private var suggestionsList: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            ForEach(suggestions, id: \.self) { item in
-                Button {
-                    let full = item.subtitle.isEmpty
-                        ? item.title
-                        : "\(item.title), \(item.subtitle)"
-                    searchText = full
-                    suggestions = []
-                    isEditing = false
-                } label: {
-                    HStack {
-                        Text("\(item.title), \(item.subtitle)")
-                            .foregroundColor(.white)
-                            .padding(.vertical, 6)
-                        Spacer()
-                    }
-                    .padding(.horizontal, 6)
-                }
-                if item != suggestions.last {
-                    Divider()
-                        .background(Color.white.opacity(0.2))
-                }
-            }
-        }
-        .background(
-            LinearGradient(
-                gradient: Gradient(colors: [.blue.opacity(0.8), .purple.opacity(0.8)]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-        )
-        .cornerRadius(8)
-        .padding(.horizontal, 16)
-    }
-}
-
-// MARK: - SEARCH LOGIC
-extension WeatherKitView {
-    private func updateSearchSuggestions(for query: String) {
-        if query.isEmpty {
-            suggestions = []
-        } else {
-            searchCompleter.queryFragment = query
-        }
-    }
-    
-    private func doSearchCity() {
-        let q = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !q.isEmpty else { return }
-        
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(q) { placemarks, err in
-            if let e = err {
-                print("Geocode error: \(e.localizedDescription)")
-                vm.errorMessage = "Could not find location."
-                return
-            }
-            if let first = placemarks?.first, let loc = first.location {
-                let city = first.locality
-                    ?? first.administrativeArea
-                    ?? q
-                self.geocodedCityName = city
-                
-                vm.fetchWeatherForCoords(
-                    latitude: loc.coordinate.latitude,
-                    longitude: loc.coordinate.longitude
-                )
-            } else {
-                vm.errorMessage = "Location not found."
-            }
-        }
     }
     
     private func displayedCityName() -> String {
@@ -348,7 +361,7 @@ extension WeatherKitView {
     }
 }
 
-// MARK: - TEN DAY FORECAST + ПРОГРЕС И ТЕМП. БАР
+// MARK: - TEN DAY FORECAST
 extension WeatherKitView {
     private var tenDayForecastCard: some View {
         ZStack {
@@ -363,32 +376,26 @@ extension WeatherKitView {
                 
                 Divider().opacity(0.3)
                 
-                // Намираме глобален мин/макс (за да са баровете съпоставими)
                 let globalMin = vm.dailyForecast.map(\.minTemp).min() ?? 0
                 let globalMax = vm.dailyForecast.map(\.maxTemp).max() ?? 0
                 
                 ForEach(vm.dailyForecast) { dayItem in
                     HStack {
-                        // Денят (Mon, Tue и т.н.)
                         Text(dayItem.day)
                             .foregroundColor(.white)
                             .font(.body)
                             .frame(width: 60, alignment: .leading)
                         
-                        // Иконка за времето
                         Image(systemName: dayItem.symbol)
                             .symbolVariant(.fill)
                             .symbolRenderingMode(.multicolor)
                             .font(.headline)
                         
-                        // Прогрес бар за вероятност за валежи (ако има `precipChance`)
                         if let chance = dayItem.precipChance {
                             VStack(spacing: 2) {
-                                // Малък ProgressView
                                 ProgressView(value: chance)
                                     .progressViewStyle(.linear)
                                     .frame(width: 60)
-                                
                                 let percent = Int(chance * 100)
                                 Text("\(percent)%")
                                     .foregroundColor(.white)
@@ -399,11 +406,9 @@ extension WeatherKitView {
                         
                         Spacer()
                         
-                        // Минимална температура
                         Text("\(Int(dayItem.minTemp.rounded()))°")
                             .foregroundColor(.white)
                         
-                        // Диапазон бар (custom view)
                         TemperatureRangeView(
                             day: dayItem,
                             globalMin: globalMin,
@@ -412,7 +417,6 @@ extension WeatherKitView {
                         .frame(width: 70, height: 8)
                         .padding(.horizontal, 4)
                         
-                        // Максимална температура
                         Text("\(Int(dayItem.maxTemp.rounded()))°")
                             .foregroundColor(.white)
                     }
@@ -422,7 +426,6 @@ extension WeatherKitView {
                         selectedDay = dayItem
                     }
                     
-                    // Divider между редовете (ако не е последен)
                     if dayItem != vm.dailyForecast.last {
                         Divider()
                             .overlay(Color.white.opacity(0.3))
@@ -433,6 +436,8 @@ extension WeatherKitView {
         }
     }
 }
+
+// MARK: - RANGE VIEW
 struct TemperatureRangeView: View {
     let day: DayForecastItem
     let globalMin: Double
@@ -444,26 +449,19 @@ struct TemperatureRangeView: View {
             let range = globalMax - globalMin
             
             if range == 0 {
-                // Ако всичките дни имат една и съща темп. (range = 0),
-                // може просто да покажем цялата лента в един цвят:
                 Rectangle()
                     .fill(Color.blue)
                     .frame(width: totalWidth, height: 4)
             } else {
-                // Изчисляваме къде започва "барчето" и колко е широко
                 let dayMinOffset = day.minTemp - globalMin
                 let dayRange = day.maxTemp - day.minTemp
-                
                 let barX = (dayMinOffset / range) * totalWidth
                 let barWidth = (dayRange / range) * totalWidth
                 
                 ZStack(alignment: .leading) {
-                    // Фонова линия (за визия)
                     Rectangle()
                         .fill(Color.white.opacity(0.3))
                         .frame(width: totalWidth, height: 4)
-                    
-                    // 1) Слагаме цяла градиентна лента от 0 до totalWidth
                     Rectangle()
                         .fill(
                             LinearGradient(
@@ -473,8 +471,6 @@ struct TemperatureRangeView: View {
                             )
                         )
                         .frame(width: totalWidth, height: 4)
-                    
-                        // 2) Маскираме (отсичаме) само участъка от dayMin до dayMax
                         .mask(
                             Rectangle()
                                 .offset(x: barX)
@@ -485,7 +481,6 @@ struct TemperatureRangeView: View {
         }
     }
 }
-
 
 // MARK: - TODAY DETAILS
 struct TodayDetailsCardView: View {
@@ -504,11 +499,9 @@ struct TodayDetailsCardView: View {
                 
                 Divider().opacity(0.3)
                 
-                LazyVGrid(
-                    columns: [GridItem(.flexible()), GridItem(.flexible())],
-                    alignment: .leading,
-                    spacing: 16
-                ) {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())],
+                          alignment: .leading,
+                          spacing: 16) {
                     if let feels = vm.currentFeelsLike {
                         detailCell(icon: "thermometer.sun.fill",
                                    title: "Feels Like",
@@ -570,7 +563,7 @@ struct TodayDetailsCardView: View {
     }
 }
 
-// MARK: - ДЕТАЙЛЕН ИЗГЛЕД ЗА ДЕНЯ (Sheet)
+// MARK: - DAY DETAIL SHEET
 struct DayDetailSheetView: View {
     let day: DayForecastItem
     
@@ -598,6 +591,6 @@ struct DayDetailSheetView: View {
             Spacer()
         }
         .padding()
-        .presentationDetents([.medium, .large]) // iOS 16+ (по избор)
+        .presentationDetents([.medium, .large])
     }
 }
