@@ -23,7 +23,7 @@ struct CalendarApp: App {
         // --- 1) UINavigationBar стил ---
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.backgroundColor = .white
+        navBarAppearance.backgroundColor = .white.withAlphaComponent(0.9)
         
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
@@ -36,7 +36,7 @@ struct CalendarApp: App {
         // --- 2) UIToolbar стил ---
         let toolBarAppearance = UIToolbarAppearance()
         toolBarAppearance.configureWithOpaqueBackground()
-        toolBarAppearance.backgroundColor = .systemBackground
+        toolBarAppearance.backgroundColor = .systemBackground.withAlphaComponent(0.9)
         
         UIToolbar.appearance().standardAppearance = toolBarAppearance
         if #available(iOS 15.0, *) {
