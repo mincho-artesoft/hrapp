@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreLocation
 import MapKit
+@preconcurrency import WeatherKit
 
 // MARK: - SEARCH DELEGATE
 class SearchCompleterHandler: NSObject, MKLocalSearchCompleterDelegate {
@@ -31,6 +32,9 @@ struct WeatherKitView: View {
     
     // 3) Запаметяваме "актуален град", намерен чрез геокодиране
     @State private var geocodedCityName = ""
+    
+    // Sheet с информация за даден ден
+    @State private var selectedDay: DayForecastItem? = nil
     
     private let searchCompleter = MKLocalSearchCompleter()
     private let searchHandler = SearchCompleterHandler()
@@ -117,15 +121,15 @@ struct WeatherKitView: View {
                 .padding(.horizontal, 16)
             }
         }
+        // Sheet при избран day
+        .sheet(item: $selectedDay) { day in
+            DayDetailSheetView(day: day)
+        }
         .onAppear {
             // Ако вече имаме coords -> зареждаме
             if let loc = locationManager.currentLocation {
                 vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude,
                                          longitude: loc.coordinate.longitude)
-                // В този случай geocodedCityName остава "",
-                // и displayedCityName() ще показва
-                // или `locationManager.currentCityName`
-                // или "Loading..."
             }
             // Настройваме searchCompleter delegate
             searchHandler.onResults = { comps in
@@ -150,14 +154,12 @@ extension WeatherKitView {
             if showSearchBar {
                 // Search TextField
                 HStack(spacing: 8) {
-                    // НЯМА onCommit: doSearchCity()
                     TextField("Search city...", text: $searchText, onEditingChanged: { edit in
                         isEditing = edit
                     })
                     .foregroundColor(.primary)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(minWidth: 150)
-                    // само за предложения:
                     .onChange(of: searchText) { newValue in
                         updateSearchSuggestions(for: newValue)
                     }
@@ -177,6 +179,15 @@ extension WeatherKitView {
                             searchText = ""
                             suggestions = []
                             isEditing = false
+                        }
+                        // Връщаме се към текущата локация
+                        if let loc = locationManager.currentLocation {
+                            vm.fetchWeatherForCoords(
+                                latitude: loc.coordinate.latitude,
+                                longitude: loc.coordinate.longitude
+                            )
+                            // Зануляваме геокодираното име, ако искаме да се показва градът от GPS
+                            geocodedCityName = ""
                         }
                     } label: {
                         Image(systemName: "xmark.circle.fill")
@@ -199,15 +210,19 @@ extension WeatherKitView {
             
             // Refresh button
             Button {
-                // Ако няма searchText, презареждаме текущата локация
-                if let loc = locationManager.currentLocation, searchText.isEmpty {
+                withAnimation {
+                    showSearchBar = false
+                    searchText = ""
+                    suggestions = []
+                    isEditing = false
+                }
+                // Връщаме се към текущата локация
+                if let loc = locationManager.currentLocation {
                     vm.fetchWeatherForCoords(
                         latitude: loc.coordinate.latitude,
                         longitude: loc.coordinate.longitude
                     )
-                } else if !searchText.isEmpty {
-                    // Ако имаме текст - правим doSearchCity()
-                    doSearchCity()
+                    geocodedCityName = ""
                 }
             } label: {
                 Image(systemName: "arrow.clockwise")
@@ -223,9 +238,6 @@ extension WeatherKitView {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(suggestions, id: \.self) { item in
                 Button {
-                    // Избираме предложението, само попълваме searchText
-                    // НЕ извикваме doSearchCity() -
-                    // все още не търсим, докато не натиснем Search.
                     let full = item.subtitle.isEmpty
                         ? item.title
                         : "\(item.title), \(item.subtitle)"
@@ -241,7 +253,6 @@ extension WeatherKitView {
                     }
                     .padding(.horizontal, 6)
                 }
-                // Divider след всеки ред освен последния
                 if item != suggestions.last {
                     Divider()
                         .background(Color.white.opacity(0.2))
@@ -262,7 +273,6 @@ extension WeatherKitView {
 
 // MARK: - SEARCH LOGIC
 extension WeatherKitView {
-    /// Генерираме само предложения, без да fetch-ваме времето
     private func updateSearchSuggestions(for query: String) {
         if query.isEmpty {
             suggestions = []
@@ -271,7 +281,6 @@ extension WeatherKitView {
         }
     }
     
-    /// Тук реално търсим геокодиране и fetchWeather
     private func doSearchCity() {
         let q = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !q.isEmpty else { return }
@@ -284,35 +293,25 @@ extension WeatherKitView {
                 return
             }
             if let first = placemarks?.first, let loc = first.location {
-                print("Found coords: \(loc.coordinate)")
-                
-                // Обновяваме "geocodedCityName" от placemark:
-                // (или fallback към 'q', ако нямаме locality)
                 let city = first.locality
                     ?? first.administrativeArea
                     ?? q
                 self.geocodedCityName = city
                 
-                // Fetch weather
                 vm.fetchWeatherForCoords(
                     latitude: loc.coordinate.latitude,
                     longitude: loc.coordinate.longitude
                 )
-                
             } else {
                 vm.errorMessage = "Location not found."
             }
         }
     }
     
-    /// Логика какво име да показваме най-отгоре
     private func displayedCityName() -> String {
-        // 1) Ако имаме "geocodedCityName", показваме него
         if !geocodedCityName.isEmpty {
             return geocodedCityName
         }
-        // 2) Иначе ако user не е търсил (geocodedCityName = ""),
-        //    показваме името от locationManager
         return locationManager.currentCityName ?? "Loading..."
     }
 }
@@ -349,7 +348,7 @@ extension WeatherKitView {
     }
 }
 
-// MARK: - TEN DAY FORECAST
+// MARK: - TEN DAY FORECAST + ПРОГРЕС И ТЕМП. БАР
 extension WeatherKitView {
     private var tenDayForecastCard: some View {
         ZStack {
@@ -364,43 +363,67 @@ extension WeatherKitView {
                 
                 Divider().opacity(0.3)
                 
-                ForEach(vm.dailyForecast.indices, id: \.self) { i in
-                    let dayItem = vm.dailyForecast[i]
+                // Намираме глобален мин/макс (за да са баровете съпоставими)
+                let globalMin = vm.dailyForecast.map(\.minTemp).min() ?? 0
+                let globalMax = vm.dailyForecast.map(\.maxTemp).max() ?? 0
+                
+                ForEach(vm.dailyForecast) { dayItem in
                     HStack {
+                        // Денят (Mon, Tue и т.н.)
                         Text(dayItem.day)
                             .foregroundColor(.white)
                             .font(.body)
                             .frame(width: 60, alignment: .leading)
                         
-                        Spacer()
-                        
+                        // Иконка за времето
                         Image(systemName: dayItem.symbol)
                             .symbolVariant(.fill)
                             .symbolRenderingMode(.multicolor)
                             .font(.headline)
                         
+                        // Прогрес бар за вероятност за валежи (ако има `precipChance`)
                         if let chance = dayItem.precipChance {
-                            let percent = Int(chance * 100)
-                            Text("\(percent)%")
-                                .foregroundColor(.white)
-                                .font(.footnote)
-                                .padding(.leading, 6)
+                            VStack(spacing: 2) {
+                                // Малък ProgressView
+                                ProgressView(value: chance)
+                                    .progressViewStyle(.linear)
+                                    .frame(width: 60)
+                                
+                                let percent = Int(chance * 100)
+                                Text("\(percent)%")
+                                    .foregroundColor(.white)
+                                    .font(.footnote)
+                            }
+                            .padding(.leading, 6)
                         }
                         
                         Spacer()
                         
+                        // Минимална температура
                         Text("\(Int(dayItem.minTemp.rounded()))°")
                             .foregroundColor(.white)
-                            .frame(width: 40, alignment: .trailing)
+                        
+                        // Диапазон бар (custom view)
+                        TemperatureRangeView(
+                            day: dayItem,
+                            globalMin: globalMin,
+                            globalMax: globalMax
+                        )
+                        .frame(width: 70, height: 8)
+                        .padding(.horizontal, 4)
+                        
+                        // Максимална температура
                         Text("\(Int(dayItem.maxTemp.rounded()))°")
                             .foregroundColor(.white)
-                            .frame(width: 40, alignment: .trailing)
-                            .padding(.leading, 8)
                     }
-                    .padding(.vertical, 8)
+                    .padding(.vertical, 10)
                     .padding(.horizontal, 16)
+                    .onTapGesture {
+                        selectedDay = dayItem
+                    }
                     
-                    if i < vm.dailyForecast.count - 1 {
+                    // Divider между редовете (ако не е последен)
+                    if dayItem != vm.dailyForecast.last {
                         Divider()
                             .overlay(Color.white.opacity(0.3))
                             .padding(.horizontal, 16)
@@ -410,6 +433,59 @@ extension WeatherKitView {
         }
     }
 }
+struct TemperatureRangeView: View {
+    let day: DayForecastItem
+    let globalMin: Double
+    let globalMax: Double
+    
+    var body: some View {
+        GeometryReader { geo in
+            let totalWidth = geo.size.width
+            let range = globalMax - globalMin
+            
+            if range == 0 {
+                // Ако всичките дни имат една и съща темп. (range = 0),
+                // може просто да покажем цялата лента в един цвят:
+                Rectangle()
+                    .fill(Color.blue)
+                    .frame(width: totalWidth, height: 4)
+            } else {
+                // Изчисляваме къде започва "барчето" и колко е широко
+                let dayMinOffset = day.minTemp - globalMin
+                let dayRange = day.maxTemp - day.minTemp
+                
+                let barX = (dayMinOffset / range) * totalWidth
+                let barWidth = (dayRange / range) * totalWidth
+                
+                ZStack(alignment: .leading) {
+                    // Фонова линия (за визия)
+                    Rectangle()
+                        .fill(Color.white.opacity(0.3))
+                        .frame(width: totalWidth, height: 4)
+                    
+                    // 1) Слагаме цяла градиентна лента от 0 до totalWidth
+                    Rectangle()
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: [.blue, .red]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(width: totalWidth, height: 4)
+                    
+                        // 2) Маскираме (отсичаме) само участъка от dayMin до dayMax
+                        .mask(
+                            Rectangle()
+                                .offset(x: barX)
+                                .frame(width: barWidth, height: 4)
+                        )
+                }
+            }
+        }
+    }
+}
+
 
 // MARK: - TODAY DETAILS
 struct TodayDetailsCardView: View {
@@ -491,5 +567,37 @@ struct TodayDetailsCardView: View {
                     .font(.body).bold()
             }
         }
+    }
+}
+
+// MARK: - ДЕТАЙЛЕН ИЗГЛЕД ЗА ДЕНЯ (Sheet)
+struct DayDetailSheetView: View {
+    let day: DayForecastItem
+    
+    var body: some View {
+        VStack(spacing: 16) {
+            Text(day.day)
+                .font(.largeTitle)
+                .padding(.top, 20)
+            
+            Image(systemName: day.symbol)
+                .symbolVariant(.fill)
+                .symbolRenderingMode(.multicolor)
+                .font(.system(size: 64))
+            
+            Text("Min: \(Int(day.minTemp))°")
+                .font(.title2)
+            Text("Max: \(Int(day.maxTemp))°")
+                .font(.title2)
+            
+            if let precip = day.precipChance {
+                Text("Precip Chance: \(Int(precip * 100))%")
+                    .font(.headline)
+            }
+            
+            Spacer()
+        }
+        .padding()
+        .presentationDetents([.medium, .large]) // iOS 16+ (по избор)
     }
 }

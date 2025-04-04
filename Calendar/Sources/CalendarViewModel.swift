@@ -4589,4 +4589,24 @@ extension CalendarViewModel {
         }
     }
 
+    private func syncRequestAccessToCalendar() -> Bool {
+           let semaphore = DispatchSemaphore(value: 0)
+           var accessGranted = false
+
+           eventStore.requestAccess(to: .event) { granted, error in
+               if granted {
+                   print("Calendar access => granted.")
+                   accessGranted = true
+               } else {
+                   print("Calendar access => NOT granted or error:", error?.localizedDescription ?? "nil")
+                   accessGranted = false
+               }
+               semaphore.signal()
+           }
+
+           // Блокираме, докато потребителят натисне Allow/Don't Allow.
+           semaphore.wait()
+           return accessGranted
+       }
+
 }

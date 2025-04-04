@@ -3,6 +3,18 @@ import MapKit
 import CoreLocation
 @preconcurrency import WeatherKit
 
+// MARK: - НОВА СТРУКТУРА ЗА ЕДИН ДЕН ОТ ПРОГНОЗАТА // NEW
+struct DayForecastItem: Identifiable, Equatable {
+    let id = UUID()
+    let day: String
+    let minTemp: Double
+    let maxTemp: Double
+    let symbol: String
+    let precipChance: Double?
+}
+
+
+// MARK: - WEATHERKIT VIEW MODEL
 @MainActor
 class WeatherKitViewModel: ObservableObject {
     private let weatherService = WeatherService.shared
@@ -25,14 +37,8 @@ class WeatherKitViewModel: ObservableObject {
     // Почасова (24 часа)
     @Published var hourlyForecast: [(hour: String, temp: Double, symbol: String)] = []
     
-    // 10-дневна
-    @Published var dailyForecast: [
-        (day: String,
-         minTemp: Double,
-         maxTemp: Double,
-         symbol: String,
-         precipChance: Double?)
-    ] = []
+    // 10-дневна // CHANGED: вече [DayForecastItem], не tuple
+    @Published var dailyForecast: [DayForecastItem] = []
     
     @Published var errorMessage: String?
     
@@ -83,13 +89,12 @@ class WeatherKitViewModel: ObservableObject {
         self.hourlyForecast = tempArray
     }
     
+    // CHANGED: dailyForecast -> масив от DayForecastItem
     private func updateDailyForecast(_ days: [DayWeather]) {
         let count = min(days.count, 10)
         let slice = days.prefix(count)
         
-        var arr: [
-            (String, Double, Double, String, Double?)
-        ] = []
+        var arr: [DayForecastItem] = []
         
         for (i, dayData) in slice.enumerated() {
             let dayName = (i == 0) ? "Today" : weekdayString(from: dayData.date)
@@ -98,13 +103,19 @@ class WeatherKitViewModel: ObservableObject {
             let symbol = dayData.symbolName
             let chance = dayData.precipitationChance
             
-            arr.append((dayName, minT, maxT, symbol, chance))
+            let item = DayForecastItem(day: dayName,
+                                       minTemp: minT,
+                                       maxTemp: maxT,
+                                       symbol: symbol,
+                                       precipChance: chance)
+            arr.append(item)
         }
         self.dailyForecast = arr
         
-        if let firstDay = days.first {
-            self.todayMinTemp = firstDay.lowTemperature.value
-            self.todayMaxTemp = firstDay.highTemperature.value
+        // Може да сложите firstDay = days.first, но тук вече ползваме arr.first
+        if let firstDay = arr.first {
+            self.todayMinTemp = firstDay.minTemp
+            self.todayMaxTemp = firstDay.maxTemp
         }
     }
     
