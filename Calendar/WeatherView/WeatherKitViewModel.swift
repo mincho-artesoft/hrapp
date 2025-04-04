@@ -19,6 +19,17 @@ struct DayForecastItem: Identifiable, Equatable {
     }
 }
 
+// MARK: - Структура за час от прогнозата (НОВО)
+struct HourlyForecastItem: Identifiable {
+    let id: Date // Use date as unique ID
+    var date: Date
+    var hour: String // e.g., "Now", "3PM"
+    var temp: Double
+    var feelsLikeTemp: Double // Added
+    var symbol: String
+}
+
+
 // MARK: - WEATHERKIT VIEW MODEL
 @MainActor
 class WeatherKitViewModel: ObservableObject {
@@ -51,8 +62,8 @@ class WeatherKitViewModel: ObservableObject {
     @Published var nextHourPrecipitationChance: Double?
     // --- End NEW Properties ---
 
-    // Почасова (24 часа)
-    @Published var hourlyForecast: [(hour: String, temp: Double, symbol: String)] = []
+    // Почасова (24 часа) - Променено да ползва новата структура
+    @Published var hourlyForecast: [HourlyForecastItem] = [] // <-- CHANGE TYPE
 
     // 10-дневна
     @Published var dailyForecast: [DayForecastItem] = []
@@ -75,7 +86,7 @@ class WeatherKitViewModel: ObservableObject {
                 let dailyForecast = weatherDataTuple.2
 
                 updateCurrentWeather(current)
-                updateHourlyForecast(hourlyForecast.forecast)
+                updateHourlyForecast(hourlyForecast.forecast) // Pass the array of HourWeather
                 updateDailyForecast(dailyForecast.forecast)
 
                 // Ако в dailyForecast има данни за днешния ден, взимаме sunrise/sunset и количества валеж
@@ -124,7 +135,7 @@ class WeatherKitViewModel: ObservableObject {
         sunsetTime = nil
         todayPrecipitationAmount = nil
         nextHourPrecipitationChance = nil
-        hourlyForecast = []
+        hourlyForecast = [] // <-- CLEAR NEW ARRAY TYPE
         dailyForecast = []
         errorMessage = nil
     }
@@ -162,6 +173,7 @@ class WeatherKitViewModel: ObservableObject {
         }
     }
 
+    // Променено да ползва новата структура и да записва feelsLikeTemp
     private func updateHourlyForecast(_ hours: [HourWeather]) {
         let now = Date()
         guard let startIndex = hours.firstIndex(where: { $0.date >= now }) else {
@@ -171,13 +183,23 @@ class WeatherKitViewModel: ObservableObject {
         let endIndex = min(startIndex + 24, hours.count)
         let relevantHours = hours[startIndex..<endIndex]
 
-        var tempArray: [(String, Double, String)] = []
+        var tempArray: [HourlyForecastItem] = [] // <-- CHANGE TYPE
         for (i, hourData) in relevantHours.enumerated() {
             let label = (i == 0) ? "Now" : hourString(from: hourData.date)
-            tempArray.append((label, hourData.temperature.value, hourData.symbolName))
+            // Създаваме HourlyForecastItem
+            let item = HourlyForecastItem( // <-- Create new struct instance
+                id: hourData.date, // Use date as ID
+                date: hourData.date,
+                hour: label,
+                temp: hourData.temperature.value,
+                feelsLikeTemp: hourData.apparentTemperature.value, // <-- STORE FEELS LIKE
+                symbol: hourData.symbolName
+            )
+            tempArray.append(item)
         }
-        self.hourlyForecast = tempArray
+        self.hourlyForecast = tempArray // <-- Assign the new array
     }
+
 
     private func updateDailyForecast(_ days: [DayWeather]) {
         let count = min(days.count, 10)
@@ -219,7 +241,8 @@ class WeatherKitViewModel: ObservableObject {
     // MARK: - Helper Functions
     private func hourString(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "ha"
+        formatter.dateFormat = "ha" // e.g., 3PM
+        // formatter.dateFormat = "HH" // e.g., 15 (24-hour format)
         formatter.amSymbol = "AM"
         formatter.pmSymbol = "PM"
         return formatter.string(from: date)
@@ -227,7 +250,7 @@ class WeatherKitViewModel: ObservableObject {
 
     private func weekdayString(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "E"
+        formatter.dateFormat = "E" // e.g., Mon, Tue
         return formatter.string(from: date)
     }
 
@@ -235,7 +258,7 @@ class WeatherKitViewModel: ObservableObject {
         guard let date = date else { return "--:--" }
         let formatter = DateFormatter()
         formatter.dateStyle = .none
-        formatter.timeStyle = .short
+        formatter.timeStyle = .short // e.g., 5:30 PM
         return formatter.string(from: date)
     }
 
@@ -254,8 +277,9 @@ class WeatherKitViewModel: ObservableObject {
     func windDirectionAbbreviation(for angle: Angle?) -> String {
         guard let angle = angle else { return "---" }
         let degrees = angle.degrees.truncatingRemainder(dividingBy: 360)
-                        .advanced(by: angle.degrees < 0 ? 360 : 0)
-        let index = Int(((degrees + 11.25) / 22.5).rounded().truncatingRemainder(dividingBy: 16))
+                        .advanced(by: angle.degrees < 0 ? 360 : 0) // Ensure positive degrees
+        // Adjust index calculation slightly for better rounding at boundaries
+        let index = Int(((degrees + 11.25).truncatingRemainder(dividingBy: 360) / 22.5).rounded()) % 16
         let directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
                           "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
         return directions[index]
