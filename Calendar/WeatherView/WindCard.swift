@@ -6,16 +6,16 @@ struct WindCard: View {
     let direction: Angle?
     let directionAbbreviation: String
 
-    // Компас
+    // Компас (примерна визуализация)
     @ViewBuilder
     func windCompass() -> some View {
          let compassSize: CGFloat = 90
          let coverCircleRadius: CGFloat = compassSize * 0.25
 
          ZStack {
-             // Тикове (0...59) през 6°
+             // тикове (0...59)
              ForEach(0..<60) { i in
-                 let isMajorTick = i % 5 == 0 // всеки 30°
+                 let isMajorTick = i % 5 == 0
                  Rectangle()
                      .fill(Color.secondary.opacity(0.6))
                      .frame(width: 1, height: isMajorTick ? 6 : 4)
@@ -34,7 +34,7 @@ struct WindCard: View {
              Text("E").font(.caption.weight(.medium)).foregroundStyle(.secondary)
                  .offset(x: letterOffset)
 
-             // (1) ОРИГИНАЛНА СТРЕЛКА (откъде духа вятърът)
+             // (1) Стрелка (откъде духа)
              Group {
                  Capsule()
                      .fill(Color.white)
@@ -45,12 +45,10 @@ struct WindCard: View {
                      .offset(y: -(compassSize * 0.11 + 5))
              }
              .offset(y: -compassSize * 0.15)
-             // Ориентираме я към windDirection (0° = North; 90° = East...)
              .rotationEffect(direction ?? .zero)
 
-             // (2) ВТОРА СТРЕЛКА (НА КЪДЕ ОТИВА вятърът) = direction + 180°
+             // (2) Стрелка (накъде отива) = +180°
              Group {
-                 // Може да й смените цвета, за да се различава, напр. .fill(Color.green)
                  Capsule()
                      .fill(Color.white)
                      .frame(width: 2.5, height: compassSize * 0.22)
@@ -60,10 +58,9 @@ struct WindCard: View {
                      .offset(y: -(compassSize * 0.11 + 5))
              }
              .offset(y: -compassSize * 0.15)
-             // Завъртаме я на +180° спрямо първата
              .rotationEffect((direction ?? .zero) + .degrees(180))
 
-             // Кръг в центъра, който "прекъсва" двете стрелки
+             // Кръг в центъра
              Circle()
                  .fill(.ultraThinMaterial)
                  .frame(width: coverCircleRadius * 2, height: coverCircleRadius * 2)
@@ -126,6 +123,7 @@ struct WindCard: View {
         }
     }
 }
+
 struct TriangleArrow: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()

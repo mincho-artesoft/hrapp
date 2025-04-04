@@ -2,9 +2,9 @@ import Combine
 import MapKit
 import CoreLocation
 @preconcurrency import WeatherKit
-import SwiftUI // Needed for Angle, Color, PressureTrend description
+import SwiftUI
 
-// MARK: - НОВА СТРУКТУРА ЗА ЕДИН ДЕН ОТ ПРОГНОЗАТА
+// MARK: - Структура за ден от прогнозата
 struct DayForecastItem: Identifiable, Equatable {
     let id: Date
     var date: Date
@@ -34,21 +34,22 @@ class WeatherKitViewModel: ObservableObject {
     // Доп. данни (Feels Like, Humidity, etc.)
     @Published var currentFeelsLike: Double?
     @Published var currentHumidity: Double?
-    @Published var currentWindSpeed: Double? // Speed in m/s from WeatherKit
+    // ВАЖНО: Тук вече пазим стойността *директно в km/h*
+    @Published var currentWindSpeed: Double?
     @Published var currentPressure: Double?
     @Published var currentVisibility: Double?
     @Published var currentUVIndex: Int?
     // --- NEW Properties ---
-    @Published var currentWindGust: Double? // Speed in m/s
-    @Published var currentWindDirection: Angle? // Angle
-    @Published var currentDewPoint: Double? // Temperature value
-    @Published var pressureTrend: String? // e.g., "Falling", "Steady", "Rising"
+    // Пазим поривите също като km/h
+    @Published var currentWindGust: Double?
+    @Published var currentWindDirection: Angle?
+    @Published var currentDewPoint: Double?
+    @Published var pressureTrend: String?
     @Published var sunriseTime: Date?
     @Published var sunsetTime: Date?
-    @Published var todayPrecipitationAmount: Double? // Amount in mm
-    @Published var nextHourPrecipitationChance: Double? // For the "Precipitation" card short term info
+    @Published var todayPrecipitationAmount: Double?
+    @Published var nextHourPrecipitationChance: Double?
     // --- End NEW Properties ---
-
 
     // Почасова (24 часа)
     @Published var hourlyForecast: [(hour: String, temp: Double, symbol: String)] = []
@@ -59,61 +60,50 @@ class WeatherKitViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     func fetchWeatherForCoords(latitude: Double, longitude: Double) {
-           Task {
-               do {
-                   let loc = CLLocation(latitude: latitude, longitude: longitude)
+        Task {
+            do {
+                let loc = CLLocation(latitude: latitude, longitude: longitude)
 
-                   // --- Request ALL datasets ---
-                   // This returns a TUPLE: (CurrentWeather, Forecast<HourWeather>, Forecast<DayWeather>)
-                   let weatherDataTuple = try await weatherService.weather(
-                       for: loc,
-                       including: .current, .hourly, .daily
-                   )
-                   // ---------------------------
+                // Request ALL datasets at once
+                let weatherDataTuple = try await weatherService.weather(
+                    for: loc,
+                    including: .current, .hourly, .daily
+                )
 
-                   // --- Access tuple elements by index ---
-                   let current = weatherDataTuple.0
-                   let hourlyForecast = weatherDataTuple.1 // This is Forecast<HourWeather>
-                   let dailyForecast = weatherDataTuple.2   // This is Forecast<DayWeather>
-                   // --------------------------------------
+                let current = weatherDataTuple.0
+                let hourlyForecast = weatherDataTuple.1
+                let dailyForecast = weatherDataTuple.2
 
-                   updateCurrentWeather(current) // Pass the CurrentWeather object
-                   updateHourlyForecast(hourlyForecast.forecast) // Pass the [HourWeather] array
-                   updateDailyForecast(dailyForecast.forecast)   // Pass the [DayWeather] array
+                updateCurrentWeather(current)
+                updateHourlyForecast(hourlyForecast.forecast)
+                updateDailyForecast(dailyForecast.forecast)
 
-                   // --- Fetch today's detailed daily data using the dailyForecast ---
-                   if let todayForecast = dailyForecast.forecast.first(where: { Calendar.current.isDateInToday($0.date) }) {
-                       self.sunriseTime = todayForecast.sun.sunrise
-                       self.sunsetTime = todayForecast.sun.sunset
-                       self.todayPrecipitationAmount = todayForecast.precipitationAmount.value // Get today's total precip in mm
-                   } else {
-                       self.sunriseTime = nil
-                       self.sunsetTime = nil
-                       self.todayPrecipitationAmount = 0 // Default to 0 if not found
-                   }
-                   // ----------------------------------------------------------------
+                // Ако в dailyForecast има данни за днешния ден, взимаме sunrise/sunset и количества валеж
+                if let todayForecast = dailyForecast.forecast.first(where: { Calendar.current.isDateInToday($0.date) }) {
+                    self.sunriseTime = todayForecast.sun.sunrise
+                    self.sunsetTime = todayForecast.sun.sunset
+                    self.todayPrecipitationAmount = todayForecast.precipitationAmount.value
+                } else {
+                    self.sunriseTime = nil
+                    self.sunsetTime = nil
+                    self.todayPrecipitationAmount = 0
+                }
 
-                   // --- Fetch next hour precipitation chance using the hourlyForecast ---
-                   // Find the first forecast entry strictly after the current time
-                   if let nextHour = hourlyForecast.forecast.first(where: { $0.date > Date() }) {
-                      self.nextHourPrecipitationChance = nextHour.precipitationChance
-                   } else {
-                       // If no future hour found (unlikely unless at end of data), use the latest available
-                        self.nextHourPrecipitationChance = hourlyForecast.forecast.last?.precipitationChance
-                   }
-                   // -----------------------------------------
+                // Next hour precip chance
+                if let nextHour = hourlyForecast.forecast.first(where: { $0.date > Date() }) {
+                    self.nextHourPrecipitationChance = nextHour.precipitationChance
+                } else {
+                    self.nextHourPrecipitationChance = hourlyForecast.forecast.last?.precipitationChance
+                }
 
-                   self.errorMessage = nil
-               } catch {
-                   print("WeatherKit Error: \(error)") // Log the actual error
-                   self.errorMessage = "Failed to fetch weather data. Please check your connection or try again later."
-                   // Consider clearing old data to avoid showing stale info
-                   // clearWeatherData()
-               }
-           }
-       }
+                self.errorMessage = nil
+            } catch {
+                print("WeatherKit Error: \(error)")
+                self.errorMessage = "Failed to fetch weather data. Please check your connection or try again later."
+            }
+        }
+    }
 
-    // Function to clear data, useful on error or location change start
     func clearWeatherData() {
         currentTemp = nil
         currentSymbol = "cloud"
@@ -136,51 +126,53 @@ class WeatherKitViewModel: ObservableObject {
         nextHourPrecipitationChance = nil
         hourlyForecast = []
         dailyForecast = []
-        errorMessage = nil // Clear error message too
+        errorMessage = nil
     }
 
-
     private func updateCurrentWeather(_ current: CurrentWeather) {
-        self.currentTemp = current.temperature.value
-        self.currentSymbol = current.symbolName
+        self.currentTemp     = current.temperature.value
+        self.currentSymbol   = current.symbolName
         self.currentCondition = current.condition.description
+        self.currentFeelsLike = current.apparentTemperature.value
+        self.currentHumidity  = current.humidity
+        self.currentPressure  = current.pressure.value
+        self.currentVisibility = current.visibility.value
+        self.currentUVIndex   = current.uvIndex.value
 
-        self.currentFeelsLike  = current.apparentTemperature.value
-        self.currentHumidity   = current.humidity
-        self.currentWindSpeed  = current.wind.speed.value // Keep as m/s internally
-        self.currentPressure   = current.pressure.value // hPa (millibars)
-        self.currentVisibility = current.visibility.value // meters
-        self.currentUVIndex    = current.uvIndex.value
+        // ВАЖНО: Още тук конвертираме speed и gust в km/h:
+        let windSpeedKmh = current.wind.speed.converted(to: .kilometersPerHour).value
+        self.currentWindSpeed = windSpeedKmh
 
-        // --- Update NEW Properties ---
-        self.currentWindGust = current.wind.gust?.value // Gust is optional (m/s)
+        if let gust = current.wind.gust {
+            let gustKmh = gust.converted(to: .kilometersPerHour).value
+            self.currentWindGust = gustKmh
+        } else {
+            self.currentWindGust = nil
+        }
+
         self.currentWindDirection = Angle(degrees: current.wind.direction.value)
-        self.currentDewPoint = current.dewPoint.value // Celsius
+        self.currentDewPoint = current.dewPoint.value
 
         switch current.pressureTrend {
         case .falling: self.pressureTrend = "Falling"
-        case .rising: self.pressureTrend = "Rising"
-        case .steady: self.pressureTrend = "Steady"
+        case .rising:  self.pressureTrend = "Rising"
+        case .steady:  self.pressureTrend = "Steady"
         @unknown default:
-            self.pressureTrend = nil // Handle unknown cases
+            self.pressureTrend = nil
         }
-        // --- End Update NEW ---
     }
 
     private func updateHourlyForecast(_ hours: [HourWeather]) {
         let now = Date()
-        // Find index of the first hour that starts *now* or later
         guard let startIndex = hours.firstIndex(where: { $0.date >= now }) else {
             self.hourlyForecast = []
             return
         }
-        // Take the next 24 hours from that starting point
         let endIndex = min(startIndex + 24, hours.count)
         let relevantHours = hours[startIndex..<endIndex]
 
         var tempArray: [(String, Double, String)] = []
         for (i, hourData) in relevantHours.enumerated() {
-            // Label the first item as "Now"
             let label = (i == 0) ? "Now" : hourString(from: hourData.date)
             tempArray.append((label, hourData.temperature.value, hourData.symbolName))
         }
@@ -188,46 +180,46 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     private func updateDailyForecast(_ days: [DayWeather]) {
-        let count = min(days.count, 10) // Limit to 10 days
+        let count = min(days.count, 10)
         let relevantDays = days.prefix(count)
 
         var arr: [DayForecastItem] = []
-
-        for (i, dayData) in relevantDays.enumerated() {
-            // Label the first day as "Today"
+        for dayData in relevantDays {
             let dayName = Calendar.current.isDateInToday(dayData.date) ? "Today" : weekdayString(from: dayData.date)
             let minT = dayData.lowTemperature.value
             let maxT = dayData.highTemperature.value
             let symbol = dayData.symbolName
             let chance = dayData.precipitationChance
-            let dateValue = dayData.date // Use the date as the ID
+            let dateValue = dayData.date
 
-            let item = DayForecastItem(id: dateValue,
-                                       date: dateValue,
-                                       day: dayName,
-                                       symbol: symbol,
-                                       precipChance: chance,
-                                       minTemp: minT,
-                                       maxTemp: maxT)
+            let item = DayForecastItem(
+                id: dateValue,
+                date: dateValue,
+                day: dayName,
+                symbol: symbol,
+                precipChance: chance,
+                minTemp: minT,
+                maxTemp: maxT
+            )
             arr.append(item)
         }
         self.dailyForecast = arr
 
-        // Update today's min/max specifically from the processed array
+        // Ако първият е "днес"
         if let firstDay = arr.first, Calendar.current.isDateInToday(firstDay.date) {
             self.todayMinTemp = firstDay.minTemp
             self.todayMaxTemp = firstDay.maxTemp
         } else {
-            // Fallback if the first day isn't 'Today' (shouldn't happen with current logic)
+            // fallback
             self.todayMinTemp = days.first?.lowTemperature.value
             self.todayMaxTemp = days.first?.highTemperature.value
         }
     }
 
-    // --- Helper Functions ---
+    // MARK: - Helper Functions
     private func hourString(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "ha" // e.g., 3PM (no space, uppercase AM/PM)
+        formatter.dateFormat = "ha"
         formatter.amSymbol = "AM"
         formatter.pmSymbol = "PM"
         return formatter.string(from: date)
@@ -235,7 +227,7 @@ class WeatherKitViewModel: ObservableObject {
 
     private func weekdayString(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "E" // e.g., Tue
+        formatter.dateFormat = "E"
         return formatter.string(from: date)
     }
 
@@ -243,34 +235,29 @@ class WeatherKitViewModel: ObservableObject {
         guard let date = date else { return "--:--" }
         let formatter = DateFormatter()
         formatter.dateStyle = .none
-        formatter.timeStyle = .short // e.g., 7:01 PM (respects locale)
+        formatter.timeStyle = .short
         return formatter.string(from: date)
     }
 
-     func uvCategory(for index: Int?) -> (description: String, color: Color) {
+    func uvCategory(for index: Int?) -> (description: String, color: Color) {
         guard let index = index else { return ("Unknown", .gray) }
         switch index {
         case 0...2: return ("Low", .green)
-        case 3...5: return ("Moderate", .yellow) // Match screenshot description
+        case 3...5: return ("Moderate", .yellow)
         case 6...7: return ("High", .orange)
         case 8...10: return ("Very High", .red)
         case 11...: return ("Extreme", .purple)
-        default: return ("Unknown", .gray) // Should not happen for valid index >= 0
+        default: return ("Unknown", .gray)
         }
     }
 
-     func windDirectionAbbreviation(for angle: Angle?) -> String {
-         guard let angle = angle else { return "---" }
-         // Normalize angle to 0 <= degrees < 360
-         let degrees = angle.degrees.truncatingRemainder(dividingBy: 360).advanced(by: angle.degrees < 0 ? 360 : 0)
-         // Determine the index in the 16-wind compass rose
-         let index = Int(((degrees + 11.25) / 22.5).rounded().truncatingRemainder(dividingBy: 16))
-         let directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
-         return directions[index]
-     }
-
-     func metersPerSecondToKmh(_ speed: Double?) -> Double {
-         guard let speed = speed else { return 0 }
-         return speed * 3.6
-     }
+    func windDirectionAbbreviation(for angle: Angle?) -> String {
+        guard let angle = angle else { return "---" }
+        let degrees = angle.degrees.truncatingRemainder(dividingBy: 360)
+                        .advanced(by: angle.degrees < 0 ? 360 : 0)
+        let index = Int(((degrees + 11.25) / 22.5).rounded().truncatingRemainder(dividingBy: 16))
+        let directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
+                          "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+        return directions[index]
+    }
 }
