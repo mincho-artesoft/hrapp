@@ -18,7 +18,7 @@ struct WeatherKitView: View {
     @State private var selectedDay: DayForecastItem? = nil
     @State private var initialLoadComplete = false
     
-    // 1) Нов state, който контролира sheet за HourlyFeelsLikeDetailView
+    // Sheet за HourlyFeelsLikeDetailView
     @State private var showFeelsLikeDetail = false
     
     var body: some View {
@@ -27,66 +27,55 @@ struct WeatherKitView: View {
             // 1) ДИНАМИЧЕН ФОН
             dynamicBackground
                 .edgesIgnoringSafeArea(.all)
-                .onTapGesture {
-                    // Тап върху фона -> скрий Search, ако е отворен
-                    if showSearchBar {
-                        hideSearch()
-                    }
-                }
             
-            // 2) ScrollView + Main Content
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 20) {
-                    
-                    // --- TOP BAR (част от ScrollView съдържанието) ---
-                    topBar
-                        .padding(.top, 10)
-                        .onTapGesture {
-                            // „Консумираме“ жеста, за да не стигне до фона
-                        }
-                    
-                    // --- MAIN WEATHER CONTENT ---
-                    Group {
-                        currentWeatherHeader
-                        hourlyForecastCard
-                            .padding(.horizontal, 16)
-                        tenDayForecastCard
-                            .padding(.horizontal, 16)
-                        
-                        // Тук показваме grid с детайли за днешния ден
-                        todayDetailsGrid
-                            .padding(.horizontal, 16)
-                        
-                        if let error = vm.errorMessage {
-                            Text(error)
-                                .foregroundColor(.yellow)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(.red.opacity(0.6))
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
+            // 2) Целият вертикален Layout (Top Bar + ScrollView съдържание + търсачката)
+            VStack(spacing: 0) {
+                // --- TOP BAR (Извън ScrollView) ---
+                topBar
+                    .padding(.top, 10)
+                
+                // --- ScrollView СЪДЪРЖАНИЕ ---
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 20) {
+                        Group {
+                            currentWeatherHeader
+                            hourlyForecastCard
                                 .padding(.horizontal, 16)
+                            tenDayForecastCard
+                                .padding(.horizontal, 16)
+                            
+                            todayDetailsGrid
+                                .padding(.horizontal, 16)
+                            
+                            if let error = vm.errorMessage {
+                                Text(error)
+                                    .foregroundColor(.yellow)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(.red.opacity(0.6))
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .padding(.horizontal, 16)
+                            }
+                        }
+                        Spacer().frame(height: 40)
+                    }
+                    // Когато showSearchBar е true, ScrollView няма да „гълта“ тапове
+                    .allowsHitTesting(!showSearchBar)
+                    .onTapGesture {
+                        // Тап в съдържанието -> ако search е отворен, го затваряме
+                        if showSearchBar {
+                            hideSearch()
                         }
                     }
-                    
-                    Spacer().frame(height: 40)
-                }
-                .onTapGesture {
-                    // Тап върху съдържанието -> скрий Search, ако е отворен
-                    if showSearchBar {
-                        hideSearch()
+                    .refreshable {
+                        refreshWeatherData()
                     }
-                }
-                .refreshable {
-                    refreshWeatherData()
                 }
             }
             
-            // 3) Search Results Overlay
+            // 3) Search Results Overlay (списък с резултати)
             searchResultsOverlay
-                .onTapGesture {
-                    // Консумираме жеста над списъка, за да не стига до фона
-                }
-                .zIndex(10) // По-висок индекс от Top Bar и др.
+                .zIndex(10) // По-висок индекс от ScrollView и фона
         }
         // Първи sheet: при избор на ден (selectedDay)
         .sheet(item: $selectedDay) { day in
@@ -96,12 +85,13 @@ struct WeatherKitView: View {
         // 2) Нов sheet: показва се при showFeelsLikeDetail == true
         .sheet(isPresented: $showFeelsLikeDetail) {
             HourlyFeelsLikeDetailView(
-                hourlyItems: vm.hourlyForecast,   // Или подайте само часовете за "днес"
+                hourlyItems: vm.hourlyForecast,
                 currentActualTemp: vm.currentTemp,
                 currentFeelsLikeTemp: vm.currentFeelsLike,
-                selectedDate: Date()              // Или конкретна дата, ако имате логика
+                selectedDate: Date()
             )
         }
+        // MARK: - onReceive за Location и др.
         .onReceive(locationManager.$currentLocation) { location in
             if let loc = location,
                !showSearchBar,
@@ -186,7 +176,7 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - TOP BAR
+    // MARK: - TOP BAR (Извън ScrollView)
     private var topBar: some View {
         HStack {
             if showSearchBar {
@@ -241,7 +231,6 @@ struct WeatherKitView: View {
                       })
                 .textFieldStyle(.plain)
                 .autocorrectionDisabled(true)
-                .onTapGesture { }
             
             if !locationSearchVM.queryFragment.isEmpty {
                 Button {
@@ -250,14 +239,12 @@ struct WeatherKitView: View {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.secondary)
                 }
-                .onTapGesture { }
             }
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 8)
         .background(.ultraThinMaterial, in: Capsule())
         .contentShape(Capsule())
-        .onTapGesture { }
     }
     
     private var searchButton: some View {
@@ -301,11 +288,6 @@ struct WeatherKitView: View {
                             }
                         }
                     }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        // „Консумираме“ жеста
-                        locationSearchVM.selectCompletion(completion)
-                    }
                     .listRowBackground(
                         Color(UIColor.systemBackground).opacity(0.2)
                     )
@@ -316,7 +298,7 @@ struct WeatherKitView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .shadow(radius: 5)
                 .padding(.horizontal)
-                .offset(y: 100)
+                .offset(y: 60)
                 .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
@@ -325,12 +307,11 @@ struct WeatherKitView: View {
     // MARK: - MAIN WEATHER SUBVIEWS
     private var currentWeatherHeader: some View {
         VStack(spacing: 10) {
-            // Име на града
             Text(displayedCityName())
                 .font(.system(size: 34, weight: .regular))
                 .foregroundColor(.primary)
-
-            // Температурата, центрирана хоризонтално
+            
+            // Температура
             HStack(alignment: .lastTextBaseline, spacing: 8) {
                 if let temp = vm.currentTemp {
                     Text("\(Int(temp.rounded()))°")
@@ -343,12 +324,12 @@ struct WeatherKitView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .center)
-
+            
             // Описание на текущото време
             Text(vm.currentCondition)
                 .foregroundColor(.secondary)
                 .font(.system(size: 18, weight: .medium))
-
+            
             // H/L за днешния ден
             if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
                 Text("H:\(Int(hi.rounded()))°   L:\(Int(lo.rounded()))°")
@@ -358,7 +339,7 @@ struct WeatherKitView: View {
         }
         .padding(.vertical, 10)
     }
-
+    
     private var hourlyForecastCard: some View {
         VStack(alignment: .leading, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -493,16 +474,14 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - Примерен Grid с 2 колони / 3 реда (или както го имате)
+    // Примерен Grid с детайли
     private var todayDetailsGrid: some View {
         VStack(spacing: 15) {
-            // Ред 1: Feels Like + UV
             HStack(spacing: 15) {
                 FeelsLikeCard(
                     feelsLike: vm.currentFeelsLike,
                     currentTemp: vm.currentTemp
                 )
-                // 3) Тук добавяме жест за отваряне на sheet-а
                 .onTapGesture {
                     showFeelsLikeDetail = true
                 }
@@ -513,7 +492,6 @@ struct WeatherKitView: View {
                 )
             }
             
-            // Ред 2: Wind (цяла ширина)
             WindCard(
                 windSpeedKmh: vm.currentWindSpeed ?? 0,
                 gustSpeedKmh: vm.currentWindGust ?? 0,
@@ -521,14 +499,12 @@ struct WeatherKitView: View {
                 directionAbbreviation: vm.windDirectionAbbreviation(for: vm.currentWindDirection)
             )
             
-            // Ред 3: Sunrise/Sunset (цяла ширина)
             SunsetCard(
                 sunrise: vm.sunriseTime,
                 sunset: vm.sunsetTime,
                 formatTime: vm.formatTime
             )
             
-            // Ред 4: Precip + Visibility
             HStack(spacing: 15) {
                 let nextRainInfo = findNextPrecipitationEvent()
                 PrecipitationTodayCard(
@@ -541,7 +517,6 @@ struct WeatherKitView: View {
                 )
             }
             
-            // Ред 5: Humidity + Pressure
             HStack(spacing: 15) {
                 HumidityCard(
                     humidity: vm.currentHumidity,
@@ -611,7 +586,6 @@ struct WeatherKitView: View {
     }
     
     private func findNextPrecipitationEvent() -> (amount: Double?, timeString: String?) {
-        // Примерна логика:
         if let nextDayPrecip = vm.dailyForecast.first(where: { day in
             guard !Calendar.current.isDateInToday(day.date) else { return false }
             return (day.precipChance ?? 0) >= 0.1

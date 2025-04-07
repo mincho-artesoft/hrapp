@@ -21,11 +21,11 @@ struct DayForecastItem: Identifiable, Equatable {
 
 // MARK: - Структура за час от прогнозата (НОВО)
 struct HourlyForecastItem: Identifiable {
-    let id: Date // Use date as unique ID
+    let id: Date
     var date: Date
-    var hour: String // e.g., "Now", "3PM"
+    var hour: String
     var temp: Double
-    var feelsLikeTemp: Double // Added
+    var feelsLikeTemp: Double
     var symbol: String
 }
 
