@@ -36,14 +36,14 @@ struct PressureCard: View {
              // 2. Draw the needle
              let needlePath = Path { path in
                  // Base of the needle
-                 path.move(to: CGPoint(x: center.x + cos(needleAngle.radians + .pi/2) * radius * 0.1,
-                                      y: center.y + sin(needleAngle.radians + .pi/2) * radius * 0.1))
+                 path.move(to: CGPoint(x: center.x + CGFloat(cos(needleAngle.radians + .pi/2)) * radius * 0.1,
+                                      y: center.y + CGFloat(sin(needleAngle.radians + .pi/2)) * radius * 0.1))
                  // Tip of the needle
-                 path.addLine(to: CGPoint(x: center.x + cos(needleAngle.radians) * radius * 0.9, // Needle length
-                                         y: center.y + sin(needleAngle.radians) * radius * 0.9))
+                 path.addLine(to: CGPoint(x: center.x + CGFloat(cos(needleAngle.radians)) * radius * 0.9, // Needle length
+                                         y: center.y + CGFloat(sin(needleAngle.radians)) * radius * 0.9))
                  // Other base point
-                  path.addLine(to: CGPoint(x: center.x + cos(needleAngle.radians - .pi/2) * radius * 0.1,
-                                           y: center.y + sin(needleAngle.radians - .pi/2) * radius * 0.1))
+                  path.addLine(to: CGPoint(x: center.x + CGFloat(cos(needleAngle.radians - .pi/2)) * radius * 0.1,
+                                           y: center.y + CGFloat(sin(needleAngle.radians - .pi/2)) * radius * 0.1))
                  path.closeSubpath()
              }
              context.fill(needlePath, with: .color(.primary)) // Fill needle with primary color
