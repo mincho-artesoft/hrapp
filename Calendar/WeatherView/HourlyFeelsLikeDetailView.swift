@@ -90,11 +90,38 @@ struct HourlyFeelsLikeDetailView: View {
 
     // MARK: - Computed Properties (Filtered Data, Display Info) - Keep as is
     private var hourlyItemsForSelectedDate: [HourlyForecastItem] {
-        allHourlyItems.filter {
-            Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+        // 1) Вземаме началото на деня (00:00) за selectedDate
+        let startOfDay = Calendar.current.startOfDay(for: selectedDate)
+        
+        // 2) Правим празен масив за 24 часа
+        var fullDayItems: [HourlyForecastItem] = []
+        
+        // 3) Строим 24 записа (от 0 до 23)
+        for hourOffset in 0..<24 {
+            let hourDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: startOfDay)!
+            
+            // Търсим реален запис в allHourlyItems за този час (ако има)
+            if let realItem = allHourlyItems.first(where: {
+                Calendar.current.isDate($0.date, equalTo: hourDate, toGranularity: .hour)
+            }) {
+                fullDayItems.append(realItem)
+            } else {
+                // Ако няма реален запис, правим placeholder
+                let placeholder = HourlyForecastItem(
+                    id: hourDate,
+                    date: hourDate,
+                    hour: String(format: "%02d", hourOffset), // "00","01"... "23"
+                    temp: 0, // Или nil, ако си нагодите структурите
+                    feelsLikeTemp: 0,
+                    symbol: "nosign" // Или някакъв "unknown" символ
+                )
+                fullDayItems.append(placeholder)
+            }
         }
-        .sorted { $0.date < $1.date } // Ensure sorted for graph
+        
+        return fullDayItems
     }
+
 
     private var displayedSymbol: String {
         if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) {
@@ -285,76 +312,59 @@ struct HourlyFeelsLikeDetailView: View {
          }
      }
 
-    // MARK: - HOURLY GRAPH SECTION (REVISED FOR GRADIENT)
+    // MARK: - HOURLY GRAPH SECTION (UPDATED)
     @ViewBuilder
     private func hourlyGraphSection() -> some View {
         let twoHourItemsForIcons = hourlyItemsForSelectedDate
             .enumerated()
             .filter { index, _ in index % 2 == 0 }
             .map { _, item in item }
-            .prefix(12)
 
         let currentTemperatures = temperatures
         let yRange = yAxisRange
 
         // --- 1. Define Temperature Gradient ---
-        // Define colors and rough temperature thresholds (adjust as needed)
         let gradient = Gradient(stops: [
-            .init(color: .blue, location: temperatureToGradientLocation(-5, range: yRange)), // Blue below -5°C
-            .init(color: .cyan, location: temperatureToGradientLocation(5, range: yRange)),  // Cyan around 5°C
-            .init(color: .green, location: temperatureToGradientLocation(15, range: yRange)), // Green around 15°C
-            .init(color: .yellow, location: temperatureToGradientLocation(25, range: yRange)),// Yellow around 25°C
-            .init(color: .orange, location: temperatureToGradientLocation(30, range: yRange)),// Orange around 30°C
-            .init(color: .red, location: temperatureToGradientLocation(35, range: yRange))    // Red above 35°C
+            .init(color: .blue,   location: temperatureToGradientLocation(-5, range: yRange)),
+            .init(color: .cyan,   location: temperatureToGradientLocation(5,  range: yRange)),
+            .init(color: .green,  location: temperatureToGradientLocation(15, range: yRange)),
+            .init(color: .yellow, location: temperatureToGradientLocation(25, range: yRange)),
+            .init(color: .orange, location: temperatureToGradientLocation(30, range: yRange)),
+            .init(color: .red,    location: temperatureToGradientLocation(35, range: yRange))
         ])
 
-        // Gradient for the fill area (combines color and slight opacity)
-        let fillGradient = LinearGradient(
-            gradient: gradient,
-            startPoint: .bottom, // Cooler colors at the bottom
-            endPoint: .top       // Warmer colors at the top
-        )
-
-        // Gradient for the line stroke (purely color, will be clipped)
-        let lineStrokeGradient = LinearGradient(
-             gradient: gradient,
-             startPoint: .bottom,
-             endPoint: .top
-        )
-        // --- End Gradient Definitions ---
-
         VStack(spacing: 0) {
-            // (A) Top row with icons - Keep as is
+            // (A) Горен ред с икони (през 2 часа)
             HStack(spacing: 0) {
-                 if twoHourItemsForIcons.isEmpty {
-                     Text("No hourly data available for this day.")
-                         .font(.caption)
-                         .foregroundColor(.gray)
-                         .frame(maxWidth: .infinity, alignment: .center)
-                         .padding(.vertical)
-                 } else {
-                     ForEach(Array(twoHourItemsForIcons), id: \.id) { item in
-                         Image(systemName: item.symbol)
-                             .renderingMode(.original)
-                             .font(.system(size: 13))
-                             .frame(maxWidth: .infinity)
-                             .opacity(item.date < Date() ? 0.6 : 1.0)
-                     }
-                 }
-             }
-             .frame(height: 20)
-             .padding(.horizontal, graphPadding + yAxisLabelWidth / 4)
-             .padding(.bottom, 4)
+                if twoHourItemsForIcons.isEmpty {
+                    Text("No hourly data available for this day.")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.vertical)
+                } else {
+                    ForEach(Array(twoHourItemsForIcons), id: \.id) { item in
+                        Image(systemName: item.symbol)
+                            .renderingMode(.original)
+                            .font(.system(size: 13))
+                            .frame(maxWidth: .infinity)
+                            .opacity(item.date < Date() ? 0.6 : 1.0)
+                    }
+                }
+            }
+            .frame(height: 20)
+            .padding(.horizontal, graphPadding + yAxisLabelWidth / 4)
+            .padding(.bottom, 4)
 
-            // (B) Graph Area (Canvas + Y labels)
+            // (B) Основна графична област
             HStack(spacing: 2) {
                 Canvas { context, size in
-                    // Guards and basic setup
+                    // --- Проверки за данните и размерите ---
                     guard !currentTemperatures.isEmpty,
                           currentTemperatures.count > 1,
                           size.width > graphPadding + yAxisLabelWidth,
                           size.height > graphPadding * 2,
-                          yRange.max > yRange.min // Prevent division by zero
+                          yRange.max > yRange.min
                     else { return }
 
                     let graphContentWidth = size.width - graphPadding - yAxisLabelWidth
@@ -362,26 +372,32 @@ struct HourlyFeelsLikeDetailView: View {
                     let origin = CGPoint(x: graphPadding, y: size.height - graphPadding)
                     let yStep = graphContentHeight / CGFloat(yRange.max - yRange.min)
 
-                    // Helper to calculate Y position
+                    // Хелпър за Y-позиция
                     func yPosition(for temp: Double) -> CGFloat {
                         origin.y - CGFloat(temp - yRange.min) * yStep
                     }
 
-                    // --- 1. Dashed Grid Lines --- (Keep as is)
-                    for tempLabelValue in yAxisLabels
-                    where tempLabelValue != yRange.min && tempLabelValue != yRange.max {
-                        let yPos = yPosition(for: tempLabelValue)
-                        var path = Path()
-                        path.move(to: CGPoint(x: origin.x - 5, y: yPos))
-                        path.addLine(to: CGPoint(x: origin.x + graphContentWidth + 5, y: yPos))
-                        context.stroke(path, with: .color(.gray.opacity(0.3)),
-                                       style: StrokeStyle(lineWidth: 0.5, dash: [2, 3]))
+                    // 1) Рисуваме **пунктирани хоризонтални линии** (grid), ако желаете да са зад fill
+                    context.drawLayer { layerContext in
+                        for tempLabelValue in yAxisLabels
+                        where tempLabelValue != yRange.min && tempLabelValue != yRange.max {
+                            let yPos = yPosition(for: tempLabelValue)
+                            var path = Path()
+                            path.move(to: CGPoint(x: origin.x - 5, y: yPos))
+                            path.addLine(to: CGPoint(x: origin.x + graphContentWidth + 5, y: yPos))
+                            layerContext.stroke(
+                                path,
+                                with: .color(.gray.opacity(0.3)),
+                                style: StrokeStyle(lineWidth: 0.5, dash: [2, 3])
+                            )
+                        }
                     }
 
-                    // --- 2. Calculate Points & Paths --- (Keep as is)
+                    // 2) Подготовка на linePath и fillPath
                     var linePath = Path()
                     var fillPath = Path()
                     var points: [CGPoint] = []
+
                     let xStep = graphContentWidth / CGFloat(max(1, currentTemperatures.count - 1))
 
                     for (index, temp) in currentTemperatures.enumerated() {
@@ -392,137 +408,230 @@ struct HourlyFeelsLikeDetailView: View {
 
                         if index == 0 {
                             linePath.move(to: point)
-                            fillPath.move(to: CGPoint(x: point.x, y: origin.y))
+                            fillPath.move(to: CGPoint(x: xPos, y: origin.y))
                             fillPath.addLine(to: point)
                         } else {
                             linePath.addLine(to: point)
                             fillPath.addLine(to: point)
                         }
                     }
+                    // Затваряме fillPath
                     if let lastPoint = points.last {
-                         fillPath.addLine(to: CGPoint(x: lastPoint.x, y: origin.y))
-                         fillPath.closeSubpath()
+                        fillPath.addLine(to: CGPoint(x: lastPoint.x, y: origin.y))
+                        fillPath.closeSubpath()
                     }
 
-                    // --- 3. Draw GRADIENT Shaded Area (Fill) ---
-                    // Apply the vertical color gradient with reduced opacity
-                    context.fill(fillPath, with: .linearGradient(
-                        gradient,
-                        startPoint: CGPoint(x: 0, y: size.height),
-                        endPoint: CGPoint(x: 0, y: 0)
-                    ), style: FillStyle(eoFill: false))
-                     
-                    // Add a subtle opacity gradient overlay (optional, enhances the look)
-                    let opacityGradient = Gradient(colors: [.clear, .black.opacity(0.8)]) // Fades from top to bottom
-                    context.blendMode = .destinationOut // Knock out opacity
-                    context.fill(fillPath, with: .linearGradient(
-                        opacityGradient,
-                        startPoint: CGPoint(x: 0, y: size.height),
-                        endPoint: CGPoint(x: 0, y: 0)
-                    ))
-                    context.blendMode = .normal // Reset blend mode
+                    // 3) Рисуваме запълването (fill) под линията
+                    //    (в drawLayer, за да е отделно от линията)
+                    context.drawLayer { layerContext in
+                        // Вертикален цветови градиент (според температурите)
+                        layerContext.fill(
+                            fillPath,
+                            with: .linearGradient(
+                                gradient,
+                                startPoint: CGPoint(x: 0, y: size.height),
+                                endPoint: CGPoint(x: 0, y: 0)
+                            )
+                        )
 
-
-                    // --- 4. Draw GRADIENT Temperature Line ---
-                    let lineWidth: CGFloat = 2.5
-                    let strokedLinePath = linePath.strokedPath(.init(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
-
-                    // Clip subsequent drawing to the shape of the stroked line
-                    context.clip(to: strokedLinePath)
-
-                    // Fill the clipped area (the line) with the vertical temperature gradient
-                    context.fill(Path(CGRect(origin: .zero, size: size)), with: .linearGradient(
-                        gradient,
-                        startPoint: CGPoint(x: 0, y: size.height),
-                        endPoint: CGPoint(x: 0, y: 0)
-                    ))
-
-                    // Clipping automatically ends after the drawing block.
-
-                    // --- 5. Draw First Point Marker --- (Keep as is, but maybe use white fill)
-                    if let firstPoint = points.first {
-                        let circle = Path(ellipseIn: CGRect(center: firstPoint, radius: 3.5))
-                        context.fill(circle, with: .color(.black)) // Small black bg for contrast
-                        context.fill(circle.strokedPath(.init(lineWidth: 1)), with: .color(.white)) // White outline
+                        // (Опционално) Добавяме прозрачност/fade отгоре надолу
+                        let opacityGradient = Gradient(colors: [.clear, .black.opacity(0.8)])
+                        layerContext.blendMode = .destinationOut
+                        layerContext.fill(
+                            fillPath,
+                            with: .linearGradient(
+                                opacityGradient,
+                                startPoint: CGPoint(x: 0, y: size.height),
+                                endPoint: CGPoint(x: 0, y: 0)
+                            )
+                        )
+                        layerContext.blendMode = .normal
                     }
-                    
-                    // --- 6. Draw H/L Markers --- (Keep as is)
+
+                    // 4) Рисуваме самата линия с градиент
+                    context.drawLayer { layerContext in
+                        // Подготвяме strokedPath
+                        let lineWidth: CGFloat = 2.5
+                        let strokedLinePath = linePath.strokedPath(
+                            .init(lineWidth: lineWidth, lineCap: .round, lineJoin: .round)
+                        )
+
+                        // Ако искате да клипнете линията, за да ползвате целия градиент, правим:
+                        layerContext.clip(to: strokedLinePath)
+
+                        layerContext.fill(
+                            Path(CGRect(origin: .zero, size: size)),
+                            with: .linearGradient(
+                                gradient,
+                                startPoint: CGPoint(x: 0, y: size.height),
+                                endPoint: CGPoint(x: 0, y: 0)
+                            )
+                        )
+                    }
+
+                    // 5) Накрая рисуваме H/L маркерите, за да са "отгоре"
                     let validPoints = points.filter { !$0.x.isNaN && !$0.y.isNaN }
                     guard !validPoints.isEmpty else { return }
 
+                    // MAX (High)
                     if let maxTemp = currentTemperatures.max(),
                        let maxIndex = currentTemperatures.firstIndex(of: maxTemp),
                        validPoints.indices.contains(maxIndex) {
                         let highPoint = validPoints[maxIndex]
-                        drawHLText(context: context, text: "H", at: highPoint, yOffset: -12)
+                        // Предаваме и самата темп., и градиента, и обхвата
+                        drawHLMarker(
+                            context: context,
+                            label: "H",
+                            at: highPoint,
+                            temperature: maxTemp,        // за да „вземем“ правилен цвят
+                            range: yRange,               // (min: Double, max: Double)
+                            gradient: gradient           // същия, който ползваме за линията
+                        )
                     }
 
+                    // MIN (Low)
                     if let minTemp = currentTemperatures.min(),
                        let minIndex = currentTemperatures.firstIndex(of: minTemp),
                        validPoints.indices.contains(minIndex) {
                         let lowPoint = validPoints[minIndex]
-                        drawHLText(context: context, text: "L", at: lowPoint, yOffset: 14)
+                        drawHLMarker(
+                            context: context,
+                            label: "L",
+                            at: lowPoint,
+                            temperature: minTemp,
+                            range: yRange,
+                            gradient: gradient
+                        )
                     }
                 }
                 .frame(height: graphHeight)
 
-                // (C) Y-Axis Labels (Right Side) - Keep as is
+                // (C) Y-Axis Labels (дясната колонка)
                 VStack(alignment: .trailing, spacing: 0) {
-                     let availableHeight = graphHeight - graphPadding * 2
-                     let yStep = (yRange.max > yRange.min) ? availableHeight / CGFloat(yRange.max - yRange.min) : 0
-                     let labelHeight: CGFloat = 15
+                    let availableHeight = graphHeight - graphPadding * 2
+                    let yStep = (yRange.max > yRange.min)
+                        ? availableHeight / CGFloat(yRange.max - yRange.min)
+                        : 0
+                    let labelHeight: CGFloat = 15
 
-                     GeometryReader { geo in
-                         ForEach(yAxisLabels, id: \.self) { tempLabelValue in
-                             let yCenterOffset = graphPadding + CGFloat(yRange.max - tempLabelValue) * yStep
-                             Text("\(Int(round(tempLabelValue)))°") // Rounded
-                                 .font(.system(size: 10))
-                                 .foregroundColor(.gray)
-                                 .frame(width: yAxisLabelWidth, height: labelHeight, alignment: .trailing)
-                                 .position(x: geo.size.width / 2, y: yCenterOffset)
-                         }
-                     }
-                 }
-                 .frame(width: yAxisLabelWidth, height: graphHeight)
-                 .padding(.trailing, 5)
+                    GeometryReader { geo in
+                        ForEach(yAxisLabels, id: \.self) { tempLabelValue in
+                            let yCenterOffset = graphPadding + CGFloat(yRange.max - tempLabelValue) * yStep
+                            Text("\(Int(round(tempLabelValue)))°")
+                                .font(.system(size: 10))
+                                .foregroundColor(.gray)
+                                .frame(width: yAxisLabelWidth, height: labelHeight, alignment: .trailing)
+                                .position(x: geo.size.width / 2, y: yCenterOffset)
+                        }
+                    }
+                }
+                .frame(width: yAxisLabelWidth, height: graphHeight)
+                .padding(.trailing, 5)
             }
 
-            // Divider Line - Keep as is
+            // Divider Line - отдолу
             Divider()
-                 .background(Color.gray.opacity(0.4))
-                 .padding(.horizontal, graphPadding / 2)
-                 .padding(.top, 2)
+                .background(Color.gray.opacity(0.4))
+                .padding(.horizontal, graphPadding / 2)
+                .padding(.top, 2)
 
-            // (D) Bottom row with hour labels - Keep as is
+            // (D) Долен ред с часове
             HStack {
-                  if !hourlyItemsForSelectedDate.isEmpty {
-                      Text("00").frame(maxWidth: .infinity, alignment: .leading) // Align first/last better
-                      Text("06").frame(maxWidth: .infinity)
-                      Text("12").frame(maxWidth: .infinity)
-                      Text("18").frame(maxWidth: .infinity)
-                      Text("00").frame(maxWidth: .infinity, alignment: .trailing) // Next day 00 marker
-                  } else { Text("") }
-             }
-             .font(.system(size: 11))
-             .foregroundColor(.gray)
-             .frame(height: 20)
-             .padding(.horizontal, graphPadding + yAxisLabelWidth / 4)
-             .padding(.bottom, 4)
+                if !hourlyItemsForSelectedDate.isEmpty {
+                    Text("00").frame(maxWidth: .infinity, alignment: .leading)
+                    Text("06").frame(maxWidth: .infinity)
+                    Text("12").frame(maxWidth: .infinity)
+                    Text("18").frame(maxWidth: .infinity)
+                    Text("").frame(maxWidth: .infinity, alignment: .trailing)
+                } else {
+                    Text("") // Празно, ако няма данни
+                }
+            }
+            .font(.system(size: 11))
+            .foregroundColor(.gray)
+            .frame(height: 20)
+            .padding(.horizontal, graphPadding + yAxisLabelWidth / 4)
+            .padding(.bottom, 4)
         }
     }
 
-    // Helper to draw H/L text with background shadow/blur for contrast
-    private func drawHLText(context: GraphicsContext, text: String, at point: CGPoint, yOffset: CGFloat) {
-        let textPoint = CGPoint(x: point.x, y: point.y + yOffset)
+    // MARK: - HELPER: Рисуване на маркер (кръг + буква H или L)
+    /// Рисува по-малък кръг (точка) в цвета на линията, а отгоре буква H / L в сив цвят.
+    /// Рисува черен външен кръг, вътрешна цветна точка спрямо температурата и буква H/L отгоре.
+    private func drawHLMarker(
+        context: GraphicsContext,
+        label: String,
+        at point: CGPoint,
+        temperature: Double,
+        range: (min: Double, max: Double),
+        gradient: Gradient
+    ) {
         context.drawLayer { layerContext in
-            layerContext.addFilter(.shadow(color: .black.opacity(0.7), radius: 1.5, x: 0, y: 0))
+            // 1) Взимаме приблизителен цвят (според температурата и градиента)
+            let innerColor = colorForTemperature(temperature, in: range, using: gradient)
+            
+            // 2) Рисуваме външен черен кръг (radius ~ 6)
+            let outerRadius: CGFloat = 6
+            let outerRect = CGRect(center: point, radius: outerRadius)
+            let outerPath = Path(ellipseIn: outerRect)
+            layerContext.fill(outerPath, with: .color(.black))
+            
+            // 3) Вътрешен (по-малък) кръг (radius ~ 3) в извлечения нюанс
+            let innerRadius: CGFloat = 3
+            let innerRect = CGRect(center: point, radius: innerRadius)
+            let innerPath = Path(ellipseIn: innerRect)
+            layerContext.fill(innerPath, with: .color(innerColor))
+            
+            // (По желание: бяла рамка около външния кръг или вътрешния)
+            // layerContext.stroke(outerPath, with: .color(.white.opacity(0.8)), style: StrokeStyle(lineWidth: 1))
+            
+            // 4) Текст (H / L) – над кръга, леко повдигнат
+            let textOffsetY: CGFloat = outerRadius + 4  // Колко пиксела над точката
+            let textPoint = CGPoint(x: point.x, y: point.y - textOffsetY)
+            
             layerContext.draw(
-                Text(text).font(.system(size: 10, weight: .bold)).foregroundColor(.white),
+                Text(label)
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundColor(.gray),
                 at: textPoint,
                 anchor: .center
             )
         }
     }
+
+
+    /// Връща приблизителен цвят за дадена температура от градиента.
+    private func colorForTemperature(
+        _ temperature: Double,
+        in range: (min: Double, max: Double),
+        using gradient: Gradient
+    ) -> Color {
+        // 1) Изчисляваме позиция 0...1 спрямо min/max
+        let loc = temperatureToGradientLocation(temperature, range: range)
+        
+        // 2) Подреждаме stops по location
+        let stops = gradient.stops.sorted { $0.location < $1.location }
+        guard let firstStop = stops.first, let lastStop = stops.last else {
+            return .white
+        }
+        
+        // Проверки, ако сме под/над границите
+        if loc <= firstStop.location { return firstStop.color }
+        if loc >= lastStop.location { return lastStop.color }
+        
+        // 3) Търсим двата съседни stop-a
+        for i in 0..<stops.count - 1 {
+            let lower = stops[i]
+            let upper = stops[i+1]
+            if loc >= lower.location && loc <= upper.location {
+                let ratio = (loc - lower.location) / (upper.location - lower.location)
+                // Най-прост вариант: ако ratio < 0.5 => връщаме долния, иначе горния (без реална интерполация)
+                return (ratio < 0.5) ? lower.color : upper.color
+            }
+        }
+        return .white
+    }
+
 
     // Helper function to map temperature to gradient location (0.0 to 1.0)
     private func temperatureToGradientLocation(_ temp: Double, range: (min: Double, max: Double)) -> CGFloat {
