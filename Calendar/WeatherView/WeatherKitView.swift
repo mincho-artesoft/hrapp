@@ -77,20 +77,47 @@ struct WeatherKitView: View {
             searchResultsOverlay
                 .zIndex(10) // По-висок индекс от ScrollView и фона
         }
-        // Първи sheet: при избор на ден (selectedDay)
+        
+        // 1) Sheet при избор на ден (selectedDay)
+        // При тап на избран ден
         .sheet(item: $selectedDay) { day in
-            DayDetailSheetView(day: day)
-                .presentationDetents([.medium])
-        }
-        // 2) Нов sheet: показва се при showFeelsLikeDetail == true
-        .sheet(isPresented: $showFeelsLikeDetail) {
             HourlyFeelsLikeDetailView(
-                hourlyItems: vm.hourlyForecast,
+                allHourlyItems: vm.hourlyForecast,
+                allDailyItems: vm.dailyForecast,  // ← тук подаваме дневните
                 currentActualTemp: vm.currentTemp,
                 currentFeelsLikeTemp: vm.currentFeelsLike,
-                selectedDate: Date()
+                initialDate: day.date,
+                daySymbol: day.symbol
             )
         }
+
+        // При натискане на “Feels like”
+        .sheet(isPresented: $showFeelsLikeDetail) {
+            if let todayItem = vm.dailyForecast.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: Date())
+            }) {
+                HourlyFeelsLikeDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: todayItem.symbol
+                )
+            } else {
+                HourlyFeelsLikeDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: vm.currentSymbol
+                )
+            }
+        }
+
+
+
         // MARK: - onReceive за Location и др.
         .onReceive(locationManager.$currentLocation) { location in
             if let loc = location,
@@ -126,13 +153,69 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - ДИНАМИЧЕН ФОН СПОРЕД КЛИМАТА
+    // MARK: - HELPER MAP (съкратено)
+    private let symbolDescriptions: [String: String] = [
+        "sun.max":        "Sunny",
+        "sun.max.fill":   "Sunny",
+        "cloud":          "Cloudy",
+        "cloud.fill":     "Cloudy",
+        "cloud.sun":      "Partly Cloudy",
+        "cloud.sun.fill": "Partly Cloudy",
+        "cloud.rain":         "Rain",
+        "cloud.rain.fill":    "Rain",
+        "cloud.drizzle":      "Drizzle",
+        "cloud.drizzle.fill": "Drizzle",
+        "cloud.snow":      "Snow",
+        "cloud.snow.fill": "Snow",
+        "cloud.bolt":             "Thunderstorm",
+        "cloud.bolt.fill":        "Thunderstorm",
+        "cloud.bolt.rain":        "Thunderstorm",
+        "cloud.bolt.rain.fill":   "Thunderstorm",
+        "cloud.fog":       "Fog",
+        "cloud.fog.fill":  "Fog",
+        "cloud.moon":      "Partly Cloudy Night",
+        "cloud.moon.fill": "Partly Cloudy Night",
+        "moon.stars":      "Clear Night",
+        "moon.stars.fill": "Clear Night",
+        "sun.haze":        "Hazy",
+        "sun.haze.fill":   "Hazy"
+    ]
+    func conditionFromSymbol(_ symbol: String) -> String {
+        if let description = symbolDescriptions[symbol] {
+            return description
+        }
+        if symbol.contains("cloud") {
+            return "Cloudy"
+        }
+        if symbol.contains("sun") {
+            return "Sunny"
+        }
+        if symbol.contains("rain") {
+            return "Rain"
+        }
+        if symbol.contains("snow") {
+            return "Snow"
+        }
+        if symbol.contains("bolt") {
+            return "Thunderstorm"
+        }
+        if symbol.contains("fog") {
+            return "Fog"
+        }
+        if symbol.contains("drizzle") {
+            return "Drizzle"
+        }
+        if symbol.contains("moon") || symbol.contains("stars") {
+            return "Clear Night"
+        }
+        return "Conditions"
+    }
+    
     private var dynamicBackground: some View {
         let condition = vm.currentCondition.lowercased()
         
         switch condition {
         case _ where condition.contains("sun"), _ where condition.contains("clear"):
-            // Слънчево
             return AnyView(
                 LinearGradient(
                     gradient: Gradient(colors: [Color.yellow, Color.blue]),
@@ -140,9 +223,7 @@ struct WeatherKitView: View {
                     endPoint: .bottomTrailing
                 )
             )
-            
         case _ where condition.contains("rain"):
-            // Дъжд
             return AnyView(
                 LinearGradient(
                     gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.gray]),
@@ -150,9 +231,7 @@ struct WeatherKitView: View {
                     endPoint: .bottomTrailing
                 )
             )
-            
         case _ where condition.contains("cloud"):
-            // Облаци
             return AnyView(
                 LinearGradient(
                     gradient: Gradient(colors: [Color.gray, Color.blue.opacity(0.4)]),
@@ -160,9 +239,7 @@ struct WeatherKitView: View {
                     endPoint: .bottomTrailing
                 )
             )
-            
         default:
-            // По подразбиране
             return AnyView(
                 LinearGradient(
                     gradient: Gradient(colors: [
@@ -176,7 +253,7 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - TOP BAR (Извън ScrollView)
+    // MARK: - TOP BAR
     private var topBar: some View {
         HStack {
             if showSearchBar {
@@ -199,7 +276,6 @@ struct WeatherKitView: View {
             
             Spacer()
             
-            // Показваме бутона за затваряне (xmark) само ако е отворено Search
             if showSearchBar {
                 closeSearchButton
                     .transition(
@@ -269,15 +345,12 @@ struct WeatherKitView: View {
         .buttonStyle(.plain)
     }
     
-    // MARK: - SEARCH RESULTS OVERLAY
     private var searchResultsOverlay: some View {
         Group {
             if showSearchBar && isEditing && !locationSearchVM.searchResults.isEmpty {
                 List(locationSearchVM.searchResults, id: \.self) { completion in
                     Button {
-                        // При тап:
                         locationSearchVM.selectCompletion(completion)
-                        // handleSelectedLocation(..) ще се извика от onReceive
                     } label: {
                         VStack(alignment: .leading) {
                             Text(completion.title).foregroundColor(.primary)
@@ -474,7 +547,6 @@ struct WeatherKitView: View {
         }
     }
     
-    // Примерен Grid с детайли
     private var todayDetailsGrid: some View {
         VStack(spacing: 15) {
             HStack(spacing: 15) {
@@ -530,7 +602,6 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - HELPER FUNCTIONS
     private func displayedCityName() -> String {
         if !geocodedCityName.isEmpty {
             return geocodedCityName
@@ -555,7 +626,6 @@ struct WeatherKitView: View {
             initialLoadComplete = true
         }
         
-        // Ако сме в режим на търсене, го затваряме
         if showSearchBar {
             hideSearch()
         }
@@ -601,15 +671,6 @@ struct WeatherKitView: View {
             }
             return (amount: 1.0, timeString: timeString)
         }
-        
         return (amount: nil, timeString: nil)
-    }
-}
-
-// MARK: - Доп. Extension за криене на клавиатурата
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                        to: nil, from: nil, for: nil)
     }
 }

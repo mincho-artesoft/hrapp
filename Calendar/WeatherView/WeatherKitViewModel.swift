@@ -1,8 +1,8 @@
-import Combine
-import MapKit
-import CoreLocation
-@preconcurrency import WeatherKit
 import SwiftUI
+import Combine
+import CoreLocation
+import MapKit
+@preconcurrency import WeatherKit
 
 // MARK: - Структура за ден от прогнозата
 struct DayForecastItem: Identifiable, Equatable {
@@ -19,7 +19,7 @@ struct DayForecastItem: Identifiable, Equatable {
     }
 }
 
-// MARK: - Структура за час от прогнозата (НОВО)
+// MARK: - Структура за час от прогнозата
 struct HourlyForecastItem: Identifiable {
     let id: Date
     var date: Date
@@ -29,29 +29,26 @@ struct HourlyForecastItem: Identifiable {
     var symbol: String
 }
 
-
 // MARK: - WEATHERKIT VIEW MODEL
 @MainActor
 class WeatherKitViewModel: ObservableObject {
     private let weatherService = WeatherService.shared
-
+    
     // Текущо
     @Published var currentTemp: Double?
-    @Published var currentSymbol: String = "cloud" // Default icon
+    @Published var currentSymbol: String = "cloud"
     @Published var currentCondition: String = "—"
     @Published var todayMinTemp: Double?
     @Published var todayMaxTemp: Double?
-
+    
     // Доп. данни (Feels Like, Humidity, etc.)
     @Published var currentFeelsLike: Double?
     @Published var currentHumidity: Double?
-    // ВАЖНО: Тук вече пазим стойността *директно в km/h*
     @Published var currentWindSpeed: Double?
     @Published var currentPressure: Double?
     @Published var currentVisibility: Double?
     @Published var currentUVIndex: Int?
-    // --- NEW Properties ---
-    // Пазим поривите също като km/h
+    // --- NEW:
     @Published var currentWindGust: Double?
     @Published var currentWindDirection: Angle?
     @Published var currentDewPoint: Double?
@@ -60,53 +57,56 @@ class WeatherKitViewModel: ObservableObject {
     @Published var sunsetTime: Date?
     @Published var todayPrecipitationAmount: Double?
     @Published var nextHourPrecipitationChance: Double?
-    // --- End NEW Properties ---
+    // ---
 
-    // Почасова (24 часа) - Променено да ползва новата структура
-    @Published var hourlyForecast: [HourlyForecastItem] = [] // <-- CHANGE TYPE
-
+    // Почасова
+    @Published var hourlyForecast: [HourlyForecastItem] = []
+    
     // 10-дневна
     @Published var dailyForecast: [DayForecastItem] = []
-
+    
     @Published var errorMessage: String?
 
     func fetchWeatherForCoords(latitude: Double, longitude: Double) {
         Task {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
-
-                // Request ALL datasets at once
+                
+                // Всички datasets
                 let weatherDataTuple = try await weatherService.weather(
                     for: loc,
                     including: .current, .hourly, .daily
                 )
-
+                
                 let current = weatherDataTuple.0
                 let hourlyForecast = weatherDataTuple.1
                 let dailyForecast = weatherDataTuple.2
-
+                
+                // Обновяваме
                 updateCurrentWeather(current)
-                updateHourlyForecast(hourlyForecast.forecast) // Pass the array of HourWeather
+                updateHourlyForecast(hourlyForecast.forecast)
                 updateDailyForecast(dailyForecast.forecast)
-
-                // Ако в dailyForecast има данни за днешния ден, взимаме sunrise/sunset и количества валеж
-                if let todayForecast = dailyForecast.forecast.first(where: { Calendar.current.isDateInToday($0.date) }) {
+                
+                // Sunrise/sunset/valеж за днес
+                if let todayForecast = dailyForecast.forecast.first(where: {
+                    Calendar.current.isDateInToday($0.date)
+                }) {
                     self.sunriseTime = todayForecast.sun.sunrise
-                    self.sunsetTime = todayForecast.sun.sunset
+                    self.sunsetTime  = todayForecast.sun.sunset
                     self.todayPrecipitationAmount = todayForecast.precipitationAmount.value
                 } else {
                     self.sunriseTime = nil
-                    self.sunsetTime = nil
+                    self.sunsetTime  = nil
                     self.todayPrecipitationAmount = 0
                 }
-
-                // Next hour precip chance
+                
+                // Next hour precip
                 if let nextHour = hourlyForecast.forecast.first(where: { $0.date > Date() }) {
                     self.nextHourPrecipitationChance = nextHour.precipitationChance
                 } else {
                     self.nextHourPrecipitationChance = hourlyForecast.forecast.last?.precipitationChance
                 }
-
+                
                 self.errorMessage = nil
             } catch {
                 print("WeatherKit Error: \(error)")
@@ -114,7 +114,7 @@ class WeatherKitViewModel: ObservableObject {
             }
         }
     }
-
+    
     func clearWeatherData() {
         currentTemp = nil
         currentSymbol = "cloud"
@@ -135,11 +135,11 @@ class WeatherKitViewModel: ObservableObject {
         sunsetTime = nil
         todayPrecipitationAmount = nil
         nextHourPrecipitationChance = nil
-        hourlyForecast = [] // <-- CLEAR NEW ARRAY TYPE
+        hourlyForecast = []
         dailyForecast = []
         errorMessage = nil
     }
-
+    
     private func updateCurrentWeather(_ current: CurrentWeather) {
         self.currentTemp     = current.temperature.value
         self.currentSymbol   = current.symbolName
@@ -149,21 +149,20 @@ class WeatherKitViewModel: ObservableObject {
         self.currentPressure  = current.pressure.value
         self.currentVisibility = current.visibility.value
         self.currentUVIndex   = current.uvIndex.value
-
-        // ВАЖНО: Още тук конвертираме speed и gust в km/h:
+        
+        // Конвертираме wind speed/gust в km/h
         let windSpeedKmh = current.wind.speed.converted(to: .kilometersPerHour).value
         self.currentWindSpeed = windSpeedKmh
-
+        
         if let gust = current.wind.gust {
-            let gustKmh = gust.converted(to: .kilometersPerHour).value
-            self.currentWindGust = gustKmh
+            self.currentWindGust = gust.converted(to:.kilometersPerHour).value
         } else {
             self.currentWindGust = nil
         }
-
+        
         self.currentWindDirection = Angle(degrees: current.wind.direction.value)
         self.currentDewPoint = current.dewPoint.value
-
+        
         switch current.pressureTrend {
         case .falling: self.pressureTrend = "Falling"
         case .rising:  self.pressureTrend = "Rising"
@@ -172,48 +171,46 @@ class WeatherKitViewModel: ObservableObject {
             self.pressureTrend = nil
         }
     }
-
-    // Променено да ползва новата структура и да записва feelsLikeTemp
+    
+    // Премахваме 24-часово ограничение!
     private func updateHourlyForecast(_ hours: [HourWeather]) {
-        let now = Date()
-        guard let startIndex = hours.firstIndex(where: { $0.date >= now }) else {
-            self.hourlyForecast = []
-            return
-        }
-        let endIndex = min(startIndex + 24, hours.count)
-        let relevantHours = hours[startIndex..<endIndex]
-
-        var tempArray: [HourlyForecastItem] = [] // <-- CHANGE TYPE
+        // Преди: само 24 часа
+        // Сега: всички
+        let relevantHours = hours
+        
+        var tempArray: [HourlyForecastItem] = []
         for (i, hourData) in relevantHours.enumerated() {
-            let label = (i == 0) ? "Now" : hourString(from: hourData.date)
-            // Създаваме HourlyForecastItem
-            let item = HourlyForecastItem( // <-- Create new struct instance
-                id: hourData.date, // Use date as ID
+            // Надпис на часа
+            let label = hourString(from: hourData.date)
+            
+            let item = HourlyForecastItem(
+                id: hourData.date,
                 date: hourData.date,
                 hour: label,
                 temp: hourData.temperature.value,
-                feelsLikeTemp: hourData.apparentTemperature.value, // <-- STORE FEELS LIKE
+                feelsLikeTemp: hourData.apparentTemperature.value,
                 symbol: hourData.symbolName
             )
             tempArray.append(item)
         }
-        self.hourlyForecast = tempArray // <-- Assign the new array
+        self.hourlyForecast = tempArray
     }
-
-
+    
     private func updateDailyForecast(_ days: [DayWeather]) {
         let count = min(days.count, 10)
         let relevantDays = days.prefix(count)
-
+        
         var arr: [DayForecastItem] = []
         for dayData in relevantDays {
-            let dayName = Calendar.current.isDateInToday(dayData.date) ? "Today" : weekdayString(from: dayData.date)
+            let dayName = Calendar.current.isDateInToday(dayData.date)
+                          ? "Today"
+                          : weekdayString(from: dayData.date)
             let minT = dayData.lowTemperature.value
             let maxT = dayData.highTemperature.value
             let symbol = dayData.symbolName
             let chance = dayData.precipitationChance
             let dateValue = dayData.date
-
+            
             let item = DayForecastItem(
                 id: dateValue,
                 date: dateValue,
@@ -226,62 +223,62 @@ class WeatherKitViewModel: ObservableObject {
             arr.append(item)
         }
         self.dailyForecast = arr
-
+        
         // Ако първият е "днес"
-        if let firstDay = arr.first, Calendar.current.isDateInToday(firstDay.date) {
+        if let firstDay = arr.first,
+           Calendar.current.isDateInToday(firstDay.date) {
             self.todayMinTemp = firstDay.minTemp
             self.todayMaxTemp = firstDay.maxTemp
         } else {
-            // fallback
             self.todayMinTemp = days.first?.lowTemperature.value
             self.todayMaxTemp = days.first?.highTemperature.value
         }
     }
-
-    // MARK: - Helper Functions
+    
+    // Формат на часа (3PM)
     private func hourString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "ha" // e.g., 3PM
-        // formatter.dateFormat = "HH" // e.g., 15 (24-hour format)
-        formatter.amSymbol = "AM"
-        formatter.pmSymbol = "PM"
-        return formatter.string(from: date)
+        let f = DateFormatter()
+        f.dateFormat = "ha"
+        f.amSymbol = "AM"
+        f.pmSymbol = "PM"
+        return f.string(from: date)
     }
-
+    
     private func weekdayString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E" // e.g., Mon, Tue
-        return formatter.string(from: date)
+        let f = DateFormatter()
+        f.dateFormat = "E" // e.g. Mon
+        return f.string(from: date)
     }
-
+    
     func formatTime(_ date: Date?) -> String {
         guard let date = date else { return "--:--" }
         let formatter = DateFormatter()
         formatter.dateStyle = .none
-        formatter.timeStyle = .short // e.g., 5:30 PM
+        formatter.timeStyle = .short
         return formatter.string(from: date)
     }
-
+    
     func uvCategory(for index: Int?) -> (description: String, color: Color) {
         guard let index = index else { return ("Unknown", .gray) }
         switch index {
         case 0...2: return ("Low", .green)
         case 3...5: return ("Moderate", .yellow)
         case 6...7: return ("High", .orange)
-        case 8...10: return ("Very High", .red)
+        case 8...10:return ("Very High", .red)
         case 11...: return ("Extreme", .purple)
-        default: return ("Unknown", .gray)
+        default:    return ("Unknown", .gray)
         }
     }
-
-    func windDirectionAbbreviation(for angle: Angle?) -> String {
+    
+    func windDirectionAbbreviation(for angle:Angle?) -> String {
         guard let angle = angle else { return "---" }
-        let degrees = angle.degrees.truncatingRemainder(dividingBy: 360)
-                        .advanced(by: angle.degrees < 0 ? 360 : 0) // Ensure positive degrees
-        // Adjust index calculation slightly for better rounding at boundaries
-        let index = Int(((degrees + 11.25).truncatingRemainder(dividingBy: 360) / 22.5).rounded()) % 16
-        let directions = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
-                          "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
-        return directions[index]
+        let deg = angle.degrees.truncatingRemainder(dividingBy:360)
+                     .advanced(by: angle.degrees<0 ? 360:0)
+        let idx = Int(((deg+11.25).truncatingRemainder(dividingBy:360)/22.5).rounded())%16
+        let directions = [
+            "N","NNE","NE","ENE","E","ESE","SE","SSE",
+            "S","SSW","SW","WSW","W","WNW","NW","NNW"
+        ]
+        return directions[idx]
     }
 }
