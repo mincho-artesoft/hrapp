@@ -81,7 +81,7 @@ struct WeatherKitView: View {
         // 1) Sheet при избор на ден (selectedDay)
         // При тап на избран ден
         .sheet(item: $selectedDay) { day in
-            HourlyFeelsLikeDetailView(
+            WeatherDetailView(
                 allHourlyItems: vm.hourlyForecast,
                 allDailyItems: vm.dailyForecast,  // ← тук подаваме дневните
                 currentActualTemp: vm.currentTemp,
@@ -96,7 +96,7 @@ struct WeatherKitView: View {
             if let todayItem = vm.dailyForecast.first(where: {
                 Calendar.current.isDate($0.date, inSameDayAs: Date())
             }) {
-                HourlyFeelsLikeDetailView(
+                WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
                     allDailyItems: vm.dailyForecast,  // ← отново!
                     currentActualTemp: vm.currentTemp,
@@ -105,7 +105,7 @@ struct WeatherKitView: View {
                     daySymbol: todayItem.symbol
                 )
             } else {
-                HourlyFeelsLikeDetailView(
+                WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
                     allDailyItems: vm.dailyForecast,  // ← отново!
                     currentActualTemp: vm.currentTemp,

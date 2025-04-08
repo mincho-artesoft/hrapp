@@ -19,7 +19,7 @@ struct DailyComparisonData {
 }
 
 // MARK: - Главният изглед
-struct HourlyFeelsLikeDetailView: View {
+struct WeatherDetailView: View {
     @StateObject private var vm = WeatherKitViewModel.shared
     // 1) Data Sources - Keep as is
     let allHourlyItems: [HourlyForecastItem]
@@ -227,11 +227,36 @@ struct HourlyFeelsLikeDetailView: View {
     }
     
     // MARK: - Subviews
-    
+    private var dynamicLabelText: String {
+        switch selectedOption {
+        case 0: return "Conditions"
+        case 1: return "UV Index"
+        case 2: return "Wind"
+        case 3: return "Precipitation"
+        case 4: return "Humidity"
+        case 5: return "Visibility"
+        case 6: return "Pressure"
+        default: return displayedCondition
+        }
+    }
+
+    private var dynamicLabelIcon: String {
+        switch selectedOption {
+        case 0: return "cloud.sun.fill"
+        case 1: return "sun.max.fill"
+        case 2: return "wind"
+        case 3: return "drop.fill"
+        case 4: return "humidity"
+        case 5: return "eye.fill"
+        case 6: return "gauge"
+        default: return displayedSymbol
+        }
+    }
+
     private var customNavBar: some View {
         HStack {
             Spacer()
-            Label(displayedCondition, systemImage: displayedSymbol)
+            Label(dynamicLabelText, systemImage: dynamicLabelIcon)
                 .font(.headline)
                 .foregroundColor(.white)
             Spacer()
