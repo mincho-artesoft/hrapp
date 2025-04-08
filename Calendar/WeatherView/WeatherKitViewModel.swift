@@ -60,8 +60,9 @@ class WeatherKitViewModel: ObservableObject {
     // ---
 
     // Почасова
+    @Published var next24HourlyForecast: [HourlyForecastItem] = []
     @Published var hourlyForecast: [HourlyForecastItem] = []
-    
+
     // 10-дневна
     @Published var dailyForecast: [DayForecastItem] = []
     
@@ -174,12 +175,56 @@ class WeatherKitViewModel: ObservableObject {
     
     // Премахваме 24-часово ограничение!
     private func updateHourlyForecast(_ hours: [HourWeather]) {
-        // Преди: само 24 часа
-        // Сега: всички
-        let relevantHours = hours
-        
+        let now = Date()
+        let calendar = Calendar.current
+
+        // Оформяме now така, че да е точно в началото на текущия час (min=0, sec=0).
+        // Ако е 7:37, това ще стане 7:00.
+        guard let truncatedNow = calendar.date(bySettingHour:
+                                               calendar.component(.hour, from: now),
+                                               minute: 0,
+                                               second: 0,
+                                               of: now)
+        else {
+            // Ако по някаква причина датата не може да се формира,
+            // може просто да върнем или да подадем now
+            // но практически винаги ще имаме валидна дата.
+            return
+        }
+
+        // Намираме първия елемент в hours, чиято дата е >= началото на текущия час
+        guard let startIndex = hours.firstIndex(where: { $0.date >= truncatedNow }) else {
+            self.hourlyForecast = []
+            return
+        }
+
+        let endIndex = min(startIndex + 24, hours.count)
+
+        // Оформяме подмасив и го преобразуваме в HourlyForecastItem
+        let relevantHours = hours[startIndex..<endIndex]
         var tempArray: [HourlyForecastItem] = []
+
         for (i, hourData) in relevantHours.enumerated() {
+            let label = (i == 0) ? "Now" : hourString(from: hourData.date)
+            
+            let item = HourlyForecastItem(
+                id: hourData.date,
+                date: hourData.date,
+                hour: label,
+                temp: hourData.temperature.value,
+                feelsLikeTemp: hourData.apparentTemperature.value,
+                symbol: hourData.symbolName
+            )
+            tempArray.append(item)
+        }
+
+        // Задаваме резултата
+        self.next24HourlyForecast = tempArray
+
+        let relevantHours2 = hours
+        
+        tempArray = []
+        for (_, hourData) in relevantHours2.enumerated() {
             // Надпис на часа
             let label = hourString(from: hourData.date)
             

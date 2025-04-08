@@ -417,8 +417,8 @@ struct WeatherKitView: View {
         VStack(alignment: .leading, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 25) {
-                    ForEach(vm.hourlyForecast.indices, id: \.self) { i in
-                        let hourItem = vm.hourlyForecast[i]
+                    ForEach(vm.next24HourlyForecast.indices, id: \.self) { i in
+                        let hourItem = vm.next24HourlyForecast[i]
                         VStack(spacing: 12) {
                             Text(hourItem.hour)
                                 .font(.system(size: 14, weight: .medium))
