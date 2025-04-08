@@ -20,24 +20,24 @@ struct DailyComparisonData {
 
 // MARK: - Главният изглед
 struct HourlyFeelsLikeDetailView: View {
-
-    // ... (Properties, State, Init, Placeholders, Helpers - Keep as is) ...
+    @StateObject private var vm = WeatherKitViewModel.shared
     // 1) Data Sources - Keep as is
     let allHourlyItems: [HourlyForecastItem]
     let allDailyItems: [DayForecastItem]
     let currentActualTemp: Double?
     let currentFeelsLikeTemp: Double?
-
-    // 2) State - Keep as is
+    @State private var selectedOption: Int = 0   // 2) State - Keep as is
     @State private var selectedDate: Date
     @State private var showingFeelsLike = false
-
+    // Изтриваме state за popover, защото Menu ще се използва
+    // @State private var showDropdown = false
+    
     // 3) Day Symbol - Keep as is
     private let daySymbol: String
-
+    
     // 4) Environment - Keep as is
     @Environment(\.dismiss) var dismiss
-
+    
     // MARK: – Init - Keep as is
     init(
         allHourlyItems: [HourlyForecastItem],
@@ -54,8 +54,7 @@ struct HourlyFeelsLikeDetailView: View {
         _selectedDate = State(initialValue: initialDate)
         self.daySymbol = daySymbol
     }
-
-
+    
     // MARK: - Placeholder Data - Keep as is
     let chanceOfPrecipitationToday: Int = 0
     let precipitationData = PrecipitationData()
@@ -65,7 +64,7 @@ struct HourlyFeelsLikeDetailView: View {
     Partly cloudy conditions expected around 18:00.
     This week's temperature range is from -2° to 4° and feels like -3° to 3°.
     """
-
+    
     // MARK: - Helper Functions - Keep as is
     private func conditionFromSymbol(_ symbol: String) -> String {
         let lowercasedSymbol = symbol.lowercased()
@@ -81,167 +80,143 @@ struct HourlyFeelsLikeDetailView: View {
         if lowercasedSymbol.contains("sun") { return "Sunny" }
         return "Conditions"
     }
-
+    
     private func hourString(from date: Date) -> String {
         let df = DateFormatter()
         df.dateFormat = "HH"
         return df.string(from: date)
     }
-
+    
     // MARK: - Computed Properties (Filtered Data, Display Info) - Keep as is
     private var hourlyItemsForSelectedDate: [HourlyForecastItem] {
-        // 1) Вземаме началото на деня (00:00) за selectedDate
         let startOfDay = Calendar.current.startOfDay(for: selectedDate)
-        
-        // 2) Правим празен масив за 24 часа
         var fullDayItems: [HourlyForecastItem] = []
-        
-        // 3) Строим 24 записа (от 0 до 23)
         for hourOffset in 0..<24 {
             let hourDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: startOfDay)!
-            
-            // Търсим реален запис в allHourlyItems за този час (ако има)
             if let realItem = allHourlyItems.first(where: {
                 Calendar.current.isDate($0.date, equalTo: hourDate, toGranularity: .hour)
             }) {
                 fullDayItems.append(realItem)
             } else {
-                // Ако няма реален запис, правим placeholder
                 let placeholder = HourlyForecastItem(
                     id: hourDate,
                     date: hourDate,
-                    hour: String(format: "%02d", hourOffset), // "00","01"... "23"
-                    temp: 0, // Или nil, ако си нагодите структурите
+                    hour: String(format: "%02d", hourOffset),
+                    temp: 0,
                     feelsLikeTemp: 0,
-                    symbol: "nosign" // Или някакъв "unknown" символ
+                    symbol: "nosign"
                 )
                 fullDayItems.append(placeholder)
             }
         }
-        
         return fullDayItems
     }
-
-
+    
     private var displayedSymbol: String {
         if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) {
             return dayItem.symbol
         }
-        return "cloud" // Fallback
+        return "cloud"
     }
-
+    
     private var displayedCondition: String {
         conditionFromSymbol(displayedSymbol)
     }
-
+    
     // MARK: - Date Formatters - Keep as is
     private var headerDateFormatter: DateFormatter {
         let f = DateFormatter()
         f.dateFormat = "EEEE, d MMMM yyyy"
         return f
     }
-    // ... other formatters remain the same ...
-
-    // MARK: - Graph Configuration - Keep as is (or adjust if needed)
+    
+    // MARK: - Graph Configuration - Keep as is
     private let graphPadding: CGFloat = 25
     private let yAxisLabelWidth: CGFloat = 35
-    private let graphHeight: CGFloat = 160 // Adjust height if needed
-
+    private let graphHeight: CGFloat = 160
+    
     private var temperatures: [Double] {
         hourlyItemsForSelectedDate.map { showingFeelsLike ? $0.feelsLikeTemp : $0.temp }
     }
-
-    // --- Y-AXIS RANGE & LABELS (Keep the smart logic) ---
+    
     private var yAxisRange: (min: Double, max: Double) {
         let allTemps = hourlyItemsForSelectedDate.flatMap { [$0.temp, $0.feelsLikeTemp] }
         guard let dataMin = allTemps.min(), let dataMax = allTemps.max(), !allTemps.isEmpty else {
-            return (-5, 35) // Default range if no data
+            return (-5, 35)
         }
-        // Keep the smart range calculation
-        let rangeBuffer: Double = 5.0 // How much space above max / below min
-        let minRangeSpan: Double = 20 // Ensure minimum degrees span
-        
+        let rangeBuffer: Double = 5.0
+        let minRangeSpan: Double = 20
         var suggestedMin = floor(dataMin / 5.0) * 5.0 - rangeBuffer
         var suggestedMax = ceil(dataMax / 5.0) * 5.0 + rangeBuffer
-        
-        // Ensure minimum span
         if (suggestedMax - suggestedMin) < minRangeSpan {
             let center = (suggestedMax + suggestedMin) / 2.0
             suggestedMin = center - (minRangeSpan / 2.0)
             suggestedMax = center + (minRangeSpan / 2.0)
-            // Re-round to nearest 5 after adjusting span
             suggestedMin = floor(suggestedMin / 5.0) * 5.0
             suggestedMax = ceil(suggestedMax / 5.0) * 5.0
         }
-
         return (suggestedMin, suggestedMax)
     }
-
-
+    
     private var yAxisLabels: [Double] {
         stride(from: yAxisRange.max, through: yAxisRange.min, by: -5).map { $0 }
     }
-
+    
     // MARK: BODY - Keep structure, uses updated hourlyGraphSection
     var body: some View {
         VStack(spacing: 0) {
             customNavBar
                 .padding(.bottom, 5)
-
+            
             ScrollView {
                 VStack(alignment: .leading, spacing: 15) {
-
-                    dateCarousel // Use WeekCarouselView2
-
-                    // Use selectedDate to show header
+                    
+                    dateCarousel
+                    
                     Text(selectedDate, formatter: headerDateFormatter)
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .padding(.horizontal)
                         .padding(.bottom, 5)
-
-
-                    currentStatusHeader // Shows temp based on selectedDate's H/L
+                    
+                    currentStatusHeader
                         .padding(.horizontal)
                         .padding(.bottom, 10)
-
-                    // --- UPDATED GRAPH SECTION ---
-                    hourlyGraphSection() // << Contains the main changes
-                    // ---------------------------
-
+                    
+                    hourlyGraphSection()
+                    
                     actualFeelsLikeToggle
                         .padding(.vertical, 15)
                         .padding(.horizontal)
-
-                    descriptionText // Update if needed
+                    
+                    descriptionText
                         .padding(.horizontal)
                         .padding(.bottom)
-
-                    // --- Other sections remain the same ---
+                    
                     chanceOfPrecipSection
                         .padding(.horizontal)
                         .padding(.bottom)
-
+                    
                     precipitationTotalsSection(data: precipitationData)
                         .padding(.horizontal)
                         .padding(.bottom)
-
+                    
                     forecastSection(summary: forecastSummary)
                         .padding(.horizontal)
                         .padding(.bottom)
-
+                    
                     dailyComparisonSection(data: comparisonData)
                         .padding(.horizontal)
                         .padding(.bottom)
-
+                    
                     aboutFeelsLikeSection
                         .padding(.horizontal)
                         .padding(.bottom)
-
+                    
                     optionsSection
                         .padding(.horizontal)
                         .padding(.bottom)
-
+                    
                     Spacer()
                 }
             }
@@ -250,9 +225,9 @@ struct HourlyFeelsLikeDetailView: View {
         .foregroundColor(.white)
         .colorScheme(.dark)
     }
-
-    // MARK: - Subviews (NavBar, Carousel, Header, Toggle, Text) - Keep mostly as is
-
+    
+    // MARK: - Subviews
+    
     private var customNavBar: some View {
         HStack {
             Spacer()
@@ -260,7 +235,9 @@ struct HourlyFeelsLikeDetailView: View {
                 .font(.headline)
                 .foregroundColor(.white)
             Spacer()
-            Button { dismiss() } label: {
+            Button {
+                dismiss()
+            } label: {
                 Image(systemName: "xmark")
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(.white.opacity(0.7))
@@ -273,55 +250,80 @@ struct HourlyFeelsLikeDetailView: View {
         .padding(.top, 5)
         .frame(height: 44)
     }
-
+    
     private var dateCarousel: some View {
-         WeekCarouselView2(
-             today: Date(), // Or pass the actual 'today' if needed elsewhere
-             selectedDay: $selectedDate
-         )
-         .padding(.bottom, 10)
+        WeekCarouselView2(
+            today: Date(),
+            selectedDay: $selectedDate
+        )
+        .padding(.bottom, 10)
     }
+    
+    private var currentStatusHeader: some View {
+        HStack(alignment: .top) {
+            if let dayItem = allDailyItems.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+            }) {
+                if showingFeelsLike, let feelsLike = currentFeelsLikeTemp {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Feels Like")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.secondary)
+                        Text("\(Int(round(feelsLike)))°")
+                            .font(.system(size: 70, weight: .thin))
+                    }
+                } else if let actual = currentActualTemp {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Actual")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.secondary)
+                        HStack(alignment: .top, spacing: 10) {
+                            Text("\(Int(round(actual)))°")
+                                .font(.system(size: 70, weight: .thin))
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("H: \(Int(round(dayItem.maxTemp)))°")
+                                    .font(.system(size: 14, weight: .regular))
+                                Text("L: \(Int(round(dayItem.minTemp)))°")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                } else {
+                    Text("--°")
+                        .font(.system(size: 70, weight: .thin))
+                }
+                Image(systemName: dayItem.symbol)
+                    .symbolVariant(.fill)
+                    .symbolRenderingMode(.multicolor)
+                    .font(.system(size: 40))
+                    .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
+                    .offset(y: 14)
+                
+                Spacer()
+                UIWeatherMenuButtonRepresentable(
+                    currentView: selectedOption,
+                    onViewChange: { newTab in
+                        selectedOption = newTab
+                    }
+                )
+                .frame(width: 30, height: 30)
 
-     private var currentStatusHeader: some View {
-         HStack(alignment: .firstTextBaseline) {
-             if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) {
-                 Text("\(Int(round(dayItem.maxTemp)))°") // Rounded
-                     .font(.system(size: 70, weight: .thin))
-                 + Text(" ")
-                 + Text("\(Int(round(dayItem.minTemp)))°") // Rounded
-                     .font(.system(size: 50, weight: .thin))
-                     .foregroundColor(.gray)
 
-                 Spacer()
-                 Image(systemName: dayItem.symbol)
-                     .renderingMode(.original)
-                     .font(.system(size: 35))
-                     .offset(y: 5)
-                     .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
-                 Image(systemName: "chevron.down.circle.fill")
-                     .symbolRenderingMode(.palette)
-                     .foregroundStyle(.white.opacity(0.8), .white.opacity(0.2))
-                     .font(.system(size: 20))
-                     .padding(.leading, 5)
-                     .offset(y: 5)
-             } else {
-                 Text("--°")
-                     .font(.system(size: 70, weight: .thin))
-                 Spacer()
-             }
-         }
-     }
-
-    // MARK: - HOURLY GRAPH SECTION (UPDATED)
+            } else {
+                Text("--°")
+                    .font(.system(size: 70, weight: .thin))
+                Spacer()
+            }
+        }
+    }
+    
     @ViewBuilder
     private func hourlyGraphSection() -> some View {
         let currentTemperatures = temperatures
         let yRange = yAxisRange
-        
-        // Маркери за вертикални линии по часове (0,6,12,18,24)
         let hourMarkers = [0, 6, 12, 18, 24]
         
-        // Примерен градиент за температурата (както по-горе)
         let purple   = Color(hue: 0.75, saturation: 0.7, brightness: 0.7)
         let darkBlue = Color(hue: 0.65, saturation: 0.8, brightness: 0.8)
         let cyan     = Color(hue: 0.55, saturation: 0.7, brightness: 0.9)
@@ -332,90 +334,85 @@ struct HourlyFeelsLikeDetailView: View {
         
         let gradient = Gradient(stops: [
             .init(color: purple,   location: temperatureToGradientLocation(-10, range: yRange)),
-            .init(color: darkBlue, location: temperatureToGradientLocation(  0, range: yRange)),
-            .init(color: cyan,     location: temperatureToGradientLocation( 12, range: yRange)),
-            .init(color: green,    location: temperatureToGradientLocation( 22, range: yRange)),
-            .init(color: yellow,   location: temperatureToGradientLocation( 25, range: yRange)),
-            .init(color: orange,   location: temperatureToGradientLocation( 30, range: yRange)),
-            .init(color: red,      location: temperatureToGradientLocation( 35, range: yRange))
+            .init(color: darkBlue, location: temperatureToGradientLocation(0, range: yRange)),
+            .init(color: cyan,     location: temperatureToGradientLocation(12, range: yRange)),
+            .init(color: green,    location: temperatureToGradientLocation(22, range: yRange)),
+            .init(color: yellow,   location: temperatureToGradientLocation(25, range: yRange)),
+            .init(color: orange,   location: temperatureToGradientLocation(30, range: yRange)),
+            .init(color: red,      location: temperatureToGradientLocation(35, range: yRange))
         ])
         
         VStack(spacing: 0) {
-            Canvas { context, size in
-                // 1) Запазваме малко място за иконките отгоре
-                let iconAreaHeight: CGFloat = 20
-                let origin = CGPoint(
-                    x: graphPadding,
-                    y: size.height - graphPadding
-                )
-                let availableHeight = size.height - graphPadding * 2 - iconAreaHeight
-                let graphContentHeight = max(0, availableHeight)
-                let graphContentWidth  = max(0, size.width - graphPadding * 2)
-                
-                guard graphContentWidth > 0,
-                      graphContentHeight > 0,
-                      !currentTemperatures.isEmpty,
-                      currentTemperatures.count > 1,
-                      yRange.max > yRange.min
-                else {
-                    // Ако няма данни или размер
-                    let textPoint = CGPoint(x: size.width/2, y: size.height/2)
-                    context.draw(Text("No Data").foregroundColor(.gray), at: textPoint, anchor: .center)
-                    return
-                }
-                
-                // 2) Рисуваме иконките „през 2 часа“
-                let dayItems = hourlyItemsForSelectedDate
-                let xStep = graphContentWidth / CGFloat(max(1, dayItems.count - 1))
-                let iconsY = origin.y - graphContentHeight - 2  // малък отстъп отгоре
-                
-                for (index, item) in dayItems.enumerated() where index % 2 == 0 {
-                    let xPos = origin.x + CGFloat(index) * xStep
-                    context.draw(
-                        Text(Image(systemName: item.symbol))
+            let twoHourItemsForIcons = hourlyItemsForSelectedDate
+                .enumerated()
+                .filter { index, _ in index % 2 == 0 }
+                .map { _, item in item }
+            
+            HStack(spacing: 0) {
+                if twoHourItemsForIcons.isEmpty {
+                    Text("No hourly data available for this day.")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.vertical)
+                } else {
+                    ForEach(Array(twoHourItemsForIcons), id: \.id) { item in
+                        Image(systemName: "\(item.symbol).fill")
+                            .symbolRenderingMode(.multicolor)
                             .font(.system(size: 13))
-                            .foregroundColor(item.date < Date() ? .gray : .white),
-                        at: CGPoint(x: xPos, y: iconsY),
-                        anchor: .center
-                    )
+                            .frame(maxWidth: .infinity)
+                            .opacity(item.date < Date() ? 0.6 : 1.0)
+                    }
                 }
+            }
+            .frame(height: 20)
+            .padding(.horizontal, graphPadding)
+            .padding(.bottom, -15)
+            
+            Canvas { context, size in
+                guard !currentTemperatures.isEmpty,
+                      currentTemperatures.count > 1,
+                      size.width > graphPadding,
+                      size.height > graphPadding * 2,
+                      yRange.max > yRange.min else { return }
                 
-                // 3) Подготовка на функция за Y позиция
+                let effectiveWidth = size.width
+                let effectiveHeight = size.height
+                let origin = CGPoint(x: graphPadding, y: effectiveHeight - graphPadding)
+                let graphContentWidth  = effectiveWidth - graphPadding * 2
+                let graphContentHeight = effectiveHeight - graphPadding * 2
                 let yStep = graphContentHeight / CGFloat(yRange.max - yRange.min)
+                
                 func yPosition(for temp: Double) -> CGFloat {
                     origin.y - CGFloat(temp - yRange.min) * yStep
                 }
                 
-                // 4) Хоризонтални линии + етикети за температури
                 for tempLabelValue in yAxisLabels {
                     let yPos = yPosition(for: tempLabelValue)
                     var hLine = Path()
                     hLine.move(to: CGPoint(x: origin.x, y: yPos))
                     hLine.addLine(to: CGPoint(x: origin.x + graphContentWidth, y: yPos))
-                    
                     context.stroke(
                         hLine,
                         with: .color(.gray.opacity(0.3)),
                         style: StrokeStyle(lineWidth: 0.5)
                     )
-                    
                     let textX = origin.x + graphContentWidth + 15
+                    let textPoint = CGPoint(x: textX, y: yPos)
                     context.draw(
                         Text("\(Int(round(tempLabelValue)))°")
                             .font(.system(size: 10))
                             .foregroundColor(.gray),
-                        at: CGPoint(x: textX, y: yPos),
+                        at: textPoint,
                         anchor: .center
                     )
                 }
                 
-                // 5) Вертикални линии за 0,6,12,18,24
                 for hour in hourMarkers {
                     let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                     var vLine = Path()
-                    vLine.move(to: CGPoint(x: xPos, y: origin.y - graphContentHeight))
+                    vLine.move(to: CGPoint(x: xPos, y: graphPadding))
                     vLine.addLine(to: CGPoint(x: xPos, y: origin.y))
-                    
                     context.stroke(
                         vLine,
                         with: .color(.gray.opacity(0.3)),
@@ -423,17 +420,16 @@ struct HourlyFeelsLikeDetailView: View {
                     )
                 }
                 
-                // 6) Линия и fill за текущите температури
                 var linePath = Path()
                 var fillPath = Path()
                 var points: [CGPoint] = []
+                let xStep = graphContentWidth / CGFloat(max(1, currentTemperatures.count - 1))
                 
                 for (index, temp) in currentTemperatures.enumerated() {
                     let xPos = origin.x + CGFloat(index) * xStep
                     let yPos = yPosition(for: temp)
                     let point = CGPoint(x: xPos, y: yPos)
                     points.append(point)
-                    
                     if index == 0 {
                         linePath.move(to: point)
                         fillPath.move(to: CGPoint(x: xPos, y: origin.y))
@@ -449,7 +445,6 @@ struct HourlyFeelsLikeDetailView: View {
                     fillPath.closeSubpath()
                 }
                 
-                // 6a) Запълване с градиент
                 context.drawLayer { layerContext in
                     layerContext.fill(
                         fillPath,
@@ -472,11 +467,9 @@ struct HourlyFeelsLikeDetailView: View {
                     layerContext.blendMode = .normal
                 }
                 
-                // 6b) Stroke с градиент
                 context.drawLayer { layerContext in
                     let lineWidth: CGFloat = 2.5
                     let stroked = linePath.strokedPath(.init(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
-                    
                     layerContext.clip(to: stroked)
                     layerContext.fill(
                         Path(CGRect(origin: .zero, size: size)),
@@ -488,7 +481,6 @@ struct HourlyFeelsLikeDetailView: View {
                     )
                 }
                 
-                // 7) H/L маркери
                 let validPoints = points.filter { !$0.x.isNaN && !$0.y.isNaN }
                 guard !validPoints.isEmpty else { return }
                 
@@ -520,7 +512,6 @@ struct HourlyFeelsLikeDetailView: View {
                     )
                 }
                 
-                // 8) Надписи за часове (0,6,12,18,24) под графиката
                 for hour in hourMarkers {
                     let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                     let textPoint = CGPoint(x: xPos, y: origin.y + 14)
@@ -532,8 +523,41 @@ struct HourlyFeelsLikeDetailView: View {
                         anchor: .center
                     )
                 }
+                
+                var calendar = Calendar(identifier: .gregorian)
+                calendar.timeZone = vm.locationTimeZone
+                if calendar.isDate(Date(), inSameDayAs: selectedDate),
+                   let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
+                       calendar.isDate($0.date, equalTo: Date(), toGranularity: .hour)
+                   }) {
+                    let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+                    let currentLineYOffset: CGFloat = graphPadding + 20
+                    var verticalPath = Path()
+                    verticalPath.move(to: CGPoint(x: currentXPos, y: currentLineYOffset))
+                    verticalPath.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                    
+                    let currentTemp = currentTemperatures[currentHourIndex]
+                    let currentColor = colorForTemperature(currentTemp, in: yRange, using: gradient)
+                    
+                    context.stroke(
+                        verticalPath,
+                        with: .color(currentColor),
+                        style: StrokeStyle(lineWidth: 2)
+                    )
+                    
+                    let darkenRect = CGRect(
+                        x: origin.x,
+                        y: graphPadding,
+                        width: currentXPos - origin.x,
+                        height: effectiveHeight - graphPadding * 2
+                    )
+                    context.fill(
+                        Path(darkenRect),
+                        with: .color(.black.opacity(0.3))
+                    )
+                }
             }
-            .frame(height: graphHeight + 30)
+            .frame(height: graphHeight + 20)
             
             Divider()
                 .background(Color.gray.opacity(0.4))
@@ -541,14 +565,8 @@ struct HourlyFeelsLikeDetailView: View {
                 .padding(.top, 2)
         }
     }
-
-
-
-
-
-    // MARK: - HELPER: Рисуване на маркер (кръг + буква H или L)
-    /// Рисува по-малък кръг (точка) в цвета на линията, а отгоре буква H / L в сив цвят.
-    /// Рисува черен външен кръг, вътрешна цветна точка спрямо температурата и буква H/L отгоре.
+    
+    // MARK: - HELPER: Рисуване на маркер (H / L)
     private func drawHLMarker(
         context: GraphicsContext,
         label: String,
@@ -558,26 +576,18 @@ struct HourlyFeelsLikeDetailView: View {
         gradient: Gradient
     ) {
         context.drawLayer { layerContext in
-            // 1) Взимаме приблизителен цвят (според температурата и градиента)
             let innerColor = colorForTemperature(temperature, in: range, using: gradient)
-            
-            // 2) Рисуваме външен черен кръг (radius ~ 6)
             let outerRadius: CGFloat = 6
             let outerRect = CGRect(center: point, radius: outerRadius)
             let outerPath = Path(ellipseIn: outerRect)
             layerContext.fill(outerPath, with: .color(.black))
             
-            // 3) Вътрешен (по-малък) кръг (radius ~ 3) в извлечения нюанс
             let innerRadius: CGFloat = 3
             let innerRect = CGRect(center: point, radius: innerRadius)
             let innerPath = Path(ellipseIn: innerRect)
             layerContext.fill(innerPath, with: .color(innerColor))
             
-            // (По желание: бяла рамка около външния кръг или вътрешния)
-            // layerContext.stroke(outerPath, with: .color(.white.opacity(0.8)), style: StrokeStyle(lineWidth: 1))
-            
-            // 4) Текст (H / L) – над кръга, леко повдигнат
-            let textOffsetY: CGFloat = outerRadius + 4  // Колко пиксела над точката
+            let textOffsetY: CGFloat = outerRadius + 4
             let textPoint = CGPoint(x: point.x, y: point.y - textOffsetY)
             
             layerContext.draw(
@@ -589,99 +599,92 @@ struct HourlyFeelsLikeDetailView: View {
             )
         }
     }
-
-
-    /// Връща приблизителен цвят за дадена температура от градиента.
+    
     private func colorForTemperature(
         _ temperature: Double,
         in range: (min: Double, max: Double),
         using gradient: Gradient
     ) -> Color {
-        // 1) Изчисляваме позиция 0...1 спрямо min/max
         let loc = temperatureToGradientLocation(temperature, range: range)
-        
-        // 2) Подреждаме stops по location
         let stops = gradient.stops.sorted { $0.location < $1.location }
         guard let firstStop = stops.first, let lastStop = stops.last else {
             return .white
         }
-        
-        // Проверки, ако сме под/над границите
         if loc <= firstStop.location { return firstStop.color }
         if loc >= lastStop.location { return lastStop.color }
-        
-        // 3) Търсим двата съседни stop-a
         for i in 0..<stops.count - 1 {
             let lower = stops[i]
             let upper = stops[i+1]
             if loc >= lower.location && loc <= upper.location {
                 let ratio = (loc - lower.location) / (upper.location - lower.location)
-                // Най-прост вариант: ако ratio < 0.5 => връщаме долния, иначе горния (без реална интерполация)
                 return (ratio < 0.5) ? lower.color : upper.color
             }
         }
         return .white
     }
-
-
-    // Helper function to map temperature to gradient location (0.0 to 1.0)
+    
     private func temperatureToGradientLocation(_ temp: Double, range: (min: Double, max: Double)) -> CGFloat {
-        guard range.max > range.min else { return 0.5 } // Avoid division by zero
+        guard range.max > range.min else { return 0.5 }
         let normalized = (temp - range.min) / (range.max - range.min)
-        return CGFloat(max(0.0, min(1.0, normalized))) // Clamp between 0 and 1
+        return CGFloat(max(0.0, min(1.0, normalized)))
     }
-
-
-    // MARK: - Other Subviews (Toggle, Text, Placeholders) - Keep as is
-
+    
+    // MARK: - Други Subviews
     private var actualFeelsLikeToggle: some View {
         HStack(spacing: 5) {
-            Button { showingFeelsLike = false } label: {
+            Button {
+                showingFeelsLike = false
+            } label: {
                 Text("Actual")
-                    .font(.system(size: 12, weight: .medium)).padding(.vertical, 7).padding(.horizontal, 12).frame(maxWidth: .infinity)
-                    .foregroundColor(!showingFeelsLike ? .black : .gray) // Adjust text color for selection
-                    .background(!showingFeelsLike ? Color.white : Color.clear) // Use white bg for selected
+                    .font(.system(size: 12, weight: .medium))
+                    .padding(.vertical, 7)
+                    .padding(.horizontal, 12)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(!showingFeelsLike ? .black : .gray)
+                    .background(!showingFeelsLike ? Color.white : Color.clear)
                     .cornerRadius(15)
-            }.buttonStyle(.plain)
-            Button { showingFeelsLike = true } label: {
+            }
+            .buttonStyle(.plain)
+            
+            Button {
+                showingFeelsLike = true
+            } label: {
                 Text("Feels Like")
-                    .font(.system(size: 12, weight: .medium)).padding(.vertical, 7).padding(.horizontal, 12).frame(maxWidth: .infinity)
-                    .foregroundColor(showingFeelsLike ? .black : .gray) // Adjust text color for selection
-                    .background(showingFeelsLike ? Color.white : Color.clear) // Use white bg for selected
+                    .font(.system(size: 12, weight: .medium))
+                    .padding(.vertical, 7)
+                    .padding(.horizontal, 12)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(showingFeelsLike ? .black : .gray)
+                    .background(showingFeelsLike ? Color.white : Color.clear)
                     .cornerRadius(15)
-            }.buttonStyle(.plain)
+            }
+            .buttonStyle(.plain)
         }
         .padding(3)
-        .background(Color.white.opacity(0.15)) // Slightly more opaque background
+        .background(Color.white.opacity(0.15))
         .clipShape(Capsule())
     }
-
+    
     private var descriptionText: some View {
         Text(showingFeelsLike
              ? "What the temperature feels like as a result of humidity, sunlight or wind."
              : "The actual air temperature."
-            )
-            .font(.caption)
-            .foregroundColor(.secondary)
-            .lineSpacing(3)
+        )
+        .font(.caption)
+        .foregroundColor(.secondary)
+        .lineSpacing(3)
     }
-
-    // --- All placeholder sections remain the same ---
-    // ... (ChanceOfPrecipSection, PrecipitationTotalsSection, ForecastSection, etc.) ...
-    // MARK: - Допълнителни Placeholder секции
+    
     private var chanceOfPrecipSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Chance of Precipitation")
                 .font(.system(size: 16, weight: .semibold))
-            Text("Tuesday's chance: \(chanceOfPrecipitationToday)%") // Example Text
+            Text("Tuesday's chance: \(chanceOfPrecipitationToday)%")
                 .font(.system(size: 13))
                 .foregroundColor(.white.opacity(0.8))
-            
-            // Ensure your PrecipitationChanceGraph uses hourlyItemsForSelectedDate
             PrecipitationChanceGraph(hourlyItems: hourlyItemsForSelectedDate)
                 .frame(height: 80)
                 .padding(.top, 5)
-            
             Text("The daily chance of precipitation tends to be higher than the chance for each hour.")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -689,17 +692,13 @@ struct HourlyFeelsLikeDetailView: View {
         }
     }
     
-    // Ensure PrecipitationChanceGraph uses the correct data structure if needed
     struct PrecipitationChanceGraph: View {
         let hourlyItems: [HourlyForecastItem]
-        
-        // Simplified placeholder - use your actual implementation
         var body: some View {
             Rectangle()
                 .fill(Color.blue.opacity(0.2))
                 .overlay(Text("Precip Graph Placeholder").foregroundColor(.gray))
-                .frame(height: 80) // Match frame height
-                 // Add your actual graph logic here
+                .frame(height: 80)
         }
     }
     
@@ -707,7 +706,6 @@ struct HourlyFeelsLikeDetailView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Precipitation Totals")
                 .font(.system(size:16,weight:.semibold))
-            
             VStack(alignment: .leading, spacing:5) {
                 Text("LAST 24 HOURS")
                     .font(.caption.weight(.medium))
@@ -732,7 +730,6 @@ struct HourlyFeelsLikeDetailView: View {
                 }
             }
             .padding(.top,5)
-            
             VStack(alignment: .leading, spacing:5) {
                 Text("NEXT 24 HOURS")
                     .font(.caption.weight(.medium))
@@ -748,7 +745,7 @@ struct HourlyFeelsLikeDetailView: View {
         }
     }
     
-    private func forecastSection(summary:String) -> some View {
+    private func forecastSection(summary: String) -> some View {
         VStack(alignment:.leading, spacing:5) {
             Text("Forecast")
                 .font(.system(size:16, weight:.semibold))
@@ -759,11 +756,10 @@ struct HourlyFeelsLikeDetailView: View {
         }
     }
     
-    private func dailyComparisonSection(data:DailyComparisonData) -> some View {
+    private func dailyComparisonSection(data: DailyComparisonData) -> some View {
         VStack(alignment:.leading, spacing:8) {
             Text("Daily Comparison")
                 .font(.system(size:16, weight:.semibold))
-            
             Text(data.highIsLower
                  ? "The high temperature today is lower than yesterday."
                  : "The high temperature today is higher than yesterday."
@@ -771,19 +767,17 @@ struct HourlyFeelsLikeDetailView: View {
             .font(.system(size:14))
             .foregroundColor(.white.opacity(0.9))
             .padding(.bottom,5)
-            
             dailyComparisonRow(label:"Today", minTemp:data.todayMin, maxTemp:data.todayMax,
-                               overallMin:min(data.todayMin,data.yesterdayMin),
-                               overallMax:max(data.todayMax,data.yesterdayMax))
+                               overallMin:min(data.todayMin, data.yesterdayMin),
+                               overallMax:max(data.todayMax, data.yesterdayMax))
             dailyComparisonRow(label:"Yesterday", minTemp:data.yesterdayMin, maxTemp:data.yesterdayMax,
-                               overallMin:min(data.todayMin,data.yesterdayMin),
-                               overallMax:max(data.todayMax,data.yesterdayMax))
+                               overallMin:min(data.todayMin, data.yesterdayMin),
+                               overallMax:max(data.todayMax, data.yesterdayMax))
         }
     }
     
-    // Make sure DailyComparisonRow is defined or imported
-    private func dailyComparisonRow(label:String, minTemp:Double, maxTemp:Double,
-                                    overallMin:Double, overallMax:Double) -> some View {
+    private func dailyComparisonRow(label: String, minTemp: Double, maxTemp: Double,
+                                    overallMin: Double, overallMax: Double) -> some View {
         DailyComparisonRow(
             label: label,
             minTemp: minTemp,
@@ -793,47 +787,43 @@ struct HourlyFeelsLikeDetailView: View {
         )
     }
     
-    // Ensure this struct is defined
-    struct DailyComparisonRow:View {
-        let label:String
-        let minTemp:Double
-        let maxTemp:Double
-        let overallMin:Double
-        let overallMax:Double
+    struct DailyComparisonRow: View {
+        let label: String
+        let minTemp: Double
+        let maxTemp: Double
+        let overallMin: Double
+        let overallMax: Double
         
-        private var range:Double { max(1, overallMax-overallMin) }
-        private var startOffsetPercentage:CGFloat {
-            CGFloat((minTemp-overallMin)/range)
-        }
-        private var widthPercentage:CGFloat {
-            CGFloat((maxTemp-minTemp)/range)
-        }
+        private var range: Double { max(1, overallMax - overallMin) }
+        private var startOffsetPercentage: CGFloat { CGFloat((minTemp - overallMin) / range) }
+        private var widthPercentage: CGFloat { CGFloat((maxTemp - minTemp) / range) }
         
         var body: some View {
             HStack {
-                Text(label).font(.system(size:14,weight:.medium))
-                    .frame(width:70,alignment:.leading)
-                Text("\(Int(round(minTemp)))°") // Rounded
+                Text(label)
+                    .font(.system(size:14, weight:.medium))
+                    .frame(width:70, alignment:.leading)
+                Text("\(Int(round(minTemp)))°")
                     .font(.system(size:14))
                     .foregroundColor(.secondary)
-                    .frame(width:30,alignment:.trailing)
-                
+                    .frame(width:30, alignment:.trailing)
                 GeometryReader { geo in
                     ZStack(alignment:.leading) {
-                        Capsule().fill(Color.gray.opacity(0.3)).frame(height:4)
                         Capsule()
-                            // You could apply a simple gradient here too if desired
-                            .fill(LinearGradient(colors:[.blue.opacity(0.7),.yellow.opacity(0.7)], startPoint:.leading, endPoint:.trailing))
-                            .frame(width:max(4, geo.size.width*widthPercentage), height:4) // Ensure min width
-                            .offset(x:geo.size.width*startOffsetPercentage)
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(height: 4)
+                        Capsule()
+                            .fill(LinearGradient(colors: [.blue.opacity(0.7), .yellow.opacity(0.7)], startPoint: .leading, endPoint: .trailing))
+                            .frame(width: max(4, geo.size.width * widthPercentage), height: 4)
+                            .offset(x: geo.size.width * startOffsetPercentage)
                     }
-                    .frame(height:4)
-                    .position(x:geo.size.width/2,y:geo.size.height/2)
-                    .clipShape(Capsule()) // Clip the whole container
+                    .frame(height: 4)
+                    .position(x: geo.size.width/2, y: geo.size.height/2)
+                    .clipShape(Capsule())
                 }
-                .frame(height:20)
-                
-                Text("\(Int(round(maxTemp)))°").font(.system(size:14)) // Rounded
+                .frame(height: 20)
+                Text("\(Int(round(maxTemp)))°")
+                    .font(.system(size:14))
                     .frame(width:30, alignment:.trailing)
             }
         }
@@ -854,32 +844,32 @@ struct HourlyFeelsLikeDetailView: View {
         VStack(alignment:.leading, spacing:10) {
             Text("Options")
                 .font(.system(size:16, weight:.semibold))
-            
             OptionRow(label:"Temperature", value:"Use system setting (°C)")
             OptionRow(label:"Precipitation", value:"mm, cm")
         }
     }
     
-    // Ensure this struct is defined
-    struct OptionRow:View {
-        let label:String
-        let value:String
+    struct OptionRow: View {
+        let label: String
+        let value: String
         var body: some View {
-            VStack(alignment: .leading, spacing: 8) { // Use VStack for label/value and divider
+            VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text(label).font(.system(size:14))
+                    Text(label)
+                        .font(.system(size:14))
                     Spacer()
-                    Text(value).font(.system(size:14))
+                    Text(value)
+                        .font(.system(size:14))
                         .foregroundColor(.gray)
-                    Image(systemName:"chevron.up.chevron.down")
+                    Image(systemName: "chevron.up.chevron.down")
                         .font(.caption)
                         .foregroundColor(.gray)
                 }
-                Divider().background(Color.gray.opacity(0.3))
+                Divider()
+                    .background(Color.gray.opacity(0.3))
             }
         }
     }
-
 }
 
 // MARK: - RECT EXTENSION - Keep as is
