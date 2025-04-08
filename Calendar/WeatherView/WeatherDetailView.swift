@@ -29,6 +29,8 @@ struct WeatherDetailView: View {
     @State private var selectedOption: Int = 0   // 2) State - Keep as is
     @State private var selectedDate: Date
     @State private var showingFeelsLike = false
+    @State private var dragLocation: CGPoint? = nil
+
     // Изтриваме state за popover, защото Menu ще се използва
     // @State private var showDropdown = false
     
@@ -342,13 +344,14 @@ struct WeatherDetailView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private func hourlyGraphSection() -> some View {
         let currentTemperatures = temperatures
         let yRange = yAxisRange
         let hourMarkers = [0, 6, 12, 18, 24]
         
+        // Дефиниране на цветове и градиент
         let purple   = Color(hue: 0.75, saturation: 0.7, brightness: 0.7)
         let darkBlue = Color(hue: 0.65, saturation: 0.8, brightness: 0.8)
         let cyan     = Color(hue: 0.55, saturation: 0.7, brightness: 0.9)
@@ -368,6 +371,7 @@ struct WeatherDetailView: View {
         ])
         
         VStack(spacing: 0) {
+            // Часовите икони – показват се на всеки 2 часа
             let twoHourItemsForIcons = hourlyItemsForSelectedDate
                 .enumerated()
                 .filter { index, _ in index % 2 == 0 }
@@ -412,6 +416,7 @@ struct WeatherDetailView: View {
                     origin.y - CGFloat(temp - yRange.min) * yStep
                 }
                 
+                // Рисуване на хоризонталните линии и температурните етикети
                 for tempLabelValue in yAxisLabels {
                     let yPos = yPosition(for: tempLabelValue)
                     var hLine = Path()
@@ -433,6 +438,7 @@ struct WeatherDetailView: View {
                     )
                 }
                 
+                // Вертикални часовникови маркери
                 for hour in hourMarkers {
                     let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                     var vLine = Path()
@@ -450,6 +456,7 @@ struct WeatherDetailView: View {
                 var points: [CGPoint] = []
                 let xStep = graphContentWidth / CGFloat(max(1, currentTemperatures.count - 1))
                 
+                // Изчисляване на точките за чертане на температурната линия
                 for (index, temp) in currentTemperatures.enumerated() {
                     let xPos = origin.x + CGFloat(index) * xStep
                     let yPos = yPosition(for: temp)
@@ -464,12 +471,12 @@ struct WeatherDetailView: View {
                         fillPath.addLine(to: point)
                     }
                 }
-                
                 if let lastPoint = points.last {
                     fillPath.addLine(to: CGPoint(x: lastPoint.x, y: origin.y))
                     fillPath.closeSubpath()
                 }
                 
+                // Рисуване на запълнената област под линията
                 context.drawLayer { layerContext in
                     layerContext.fill(
                         fillPath,
@@ -492,6 +499,7 @@ struct WeatherDetailView: View {
                     layerContext.blendMode = .normal
                 }
                 
+                // Рисуване на температурната линия с градиент
                 context.drawLayer { layerContext in
                     let lineWidth: CGFloat = 2.5
                     let stroked = linePath.strokedPath(.init(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
@@ -506,6 +514,7 @@ struct WeatherDetailView: View {
                     )
                 }
                 
+                // Поставяне на маркери за най-висока и най-ниска температура
                 let validPoints = points.filter { !$0.x.isNaN && !$0.y.isNaN }
                 guard !validPoints.isEmpty else { return }
                 
@@ -537,6 +546,7 @@ struct WeatherDetailView: View {
                     )
                 }
                 
+                // Часовникови надписи под графиката
                 for hour in hourMarkers {
                     let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                     let textPoint = CGPoint(x: xPos, y: origin.y + 14)
@@ -549,14 +559,14 @@ struct WeatherDetailView: View {
                     )
                 }
                 
-                var calendar = Calendar(identifier: .gregorian)
-                calendar.timeZone = vm.locationTimeZone
-                if calendar.isDate(Date(), inSameDayAs: selectedDate),
+                // *** Блок за текущото време и затъмняване ***
+               
+                if Calendar.current.isDate(Date(), inSameDayAs: selectedDate),
                    let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
-                       calendar.isDate($0.date, equalTo: Date(), toGranularity: .hour)
+                       Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .hour)
                    }) {
                     let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                    let currentLineYOffset: CGFloat = graphPadding + 20
+                    let currentLineYOffset: CGFloat = graphPadding - 120
                     var verticalPath = Path()
                     verticalPath.move(to: CGPoint(x: currentXPos, y: currentLineYOffset))
                     verticalPath.addLine(to: CGPoint(x: currentXPos, y: origin.y))
@@ -581,7 +591,89 @@ struct WeatherDetailView: View {
                         with: .color(.black.opacity(0.3))
                     )
                 }
+                
+                // *** Блок за Drag Gesture – вертикална линия с интерполация ***
+                if let dragPoint = dragLocation {
+                    if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
+                        // Изчисляване на позиционирането в данните
+                        let fractionIndex = (dragPoint.x - origin.x) / xStep
+                        let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
+                        let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
+                        let t: CGFloat = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
+                        
+                        // Интерполация на температурата
+                        let interpolatedTemp = currentTemperatures[lowerIndex] + (currentTemperatures[upperIndex] - currentTemperatures[lowerIndex]) * Double(t)
+                        
+                        // Интерполация на y–координатата
+                        var interpolatedY: CGFloat = points[lowerIndex].y
+                        if upperIndex != lowerIndex {
+                            interpolatedY = points[lowerIndex].y + t * (points[upperIndex].y - points[lowerIndex].y)
+                        }
+                        let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
+                        
+                        // Чертаем вертикална линия през точката (от горната до долната граница на графиката)
+                        var verticalLine = Path()
+                        verticalLine.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
+                        verticalLine.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
+                        context.stroke(verticalLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
+                        
+                        // Рисуване на маркера (точката)
+                        let dotRect = CGRect(center: dotPoint, radius: 4)
+                        context.fill(Path(ellipseIn: dotRect), with: .color(.white))
+                        
+                        // Извличане на елемента от данни, според приблизителния индекс
+                        let selectedIndex = max(0, min(hourlyItemsForSelectedDate.count - 1, Int(round(fractionIndex))))
+                        let forecastItem = hourlyItemsForSelectedDate[selectedIndex]
+                        
+                        // Изчисляване на интерполираната дата за точните минути (добавяме дробна част от час към базовата дата)
+                        let baseDate = hourlyItemsForSelectedDate[lowerIndex].date
+                        let secondsOffset = (fractionIndex - CGFloat(lowerIndex)) * 3600.0  // 1 час = 3600 секунди
+                        let interpolatedDate = baseDate.addingTimeInterval(TimeInterval(secondsOffset))
+                        
+                        // Фиксирано изместване за надписите вдясно от вертикалната линия
+                        let labelOffset: CGFloat = 8
+                        
+                        // Рисуване на иконата чрез Text (използва се вграден Image за SF Symbol)
+                        let iconSize: CGFloat = 10
+                        let iconText = Text(Image(systemName: forecastItem.symbol))
+                            .font(.system(size: iconSize))
+                            .foregroundColor(.white)
+                        let iconPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 45)
+                        context.draw(iconText, at: iconPoint, anchor: .leading)
+                        
+                        // Форматиране на времето с минути (напр. "14:30")
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "HH:mm"
+                        let exactTime = dateFormatter.string(from: interpolatedDate)
+                        
+                        // Рисуване на времето като текст вдясно от вертикалната линия
+                        let timeText = Text(exactTime)
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundColor(.white)
+                        let timePoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 30)
+                        context.draw(timeText, at: timePoint, anchor: .leading)
+                        
+                        // Рисуване на температурата като текст вдясно от вертикалната линия
+                        let temperatureText = Text("\(Int(round(interpolatedTemp)))°")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundColor(.white)
+                        let tempPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
+                        context.draw(temperatureText, at: tempPoint, anchor: .leading)
+                    }
+                }
+
+
             }
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        dragLocation = value.location
+                    }
+                    .onEnded { _ in
+                        dragLocation = nil
+                    }
+            )
+
             .frame(height: graphHeight + 20)
             
             Divider()
@@ -590,6 +682,8 @@ struct WeatherDetailView: View {
                 .padding(.top, 2)
         }
     }
+
+
     
     // MARK: - HELPER: Рисуване на маркер (H / L)
     private func drawHLMarker(
