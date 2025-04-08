@@ -8,7 +8,7 @@ struct WeatherKitView: View {
     
     // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
-    @StateObject private var vm = WeatherKitViewModel()
+    @StateObject private var vm = WeatherKitViewModel.shared
     @StateObject private var locationSearchVM = LocationSearchViewModel()
 
     // MARK: - UI State
@@ -512,7 +512,7 @@ struct WeatherKitView: View {
                 if let chance = dayItem.precipChance, chance >= 0.1 {
                     Text("\(Int((chance * 100).rounded()))%")
                         .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 1.0))
+                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 0.8))
                         .frame(width: 35)
                 } else {
                     Spacer().frame(width: 35)

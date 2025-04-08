@@ -11,7 +11,7 @@ struct CalendarApp: App {
     @Environment(\.scenePhase) private var scenePhase
     
     // Това е вашият WeatherKit ViewModel:
-    @StateObject private var weatherVM = WeatherKitViewModel()
+    @StateObject private var weatherVM = WeatherKitViewModel.shared
     
     // Вашият LocationManager (за да вземаме текущата локация на устройството)
     @StateObject private var locationManager = LocationManager()
