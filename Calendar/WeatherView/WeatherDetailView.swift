@@ -24,8 +24,9 @@ struct WeatherDetailView: View {
     @State private var selectedOption: Int = 0   // 2) State - Keep as is
     @State private var selectedDate: Date
     @State private var showingFeelsLike = false
-    @State private var dragLocation: CGPoint? = nil
-    @State private var dragLocation2: CGPoint? = nil
+    @State private var dragLocationTEMP: CGPoint? = nil
+    @State private var dragLocationPreci: CGPoint? = nil
+    @State private var dragLocationUV: CGPoint? = nil
 
     // Изтриваме state за popover, защото Menu ще се използва
     // @State private var showDropdown = false
@@ -616,7 +617,7 @@ struct WeatherDetailView: View {
                 }
                 
                 // *** Блок за Drag Gesture – вертикална линия с интерполация ***
-                if let dragPoint = dragLocation {
+                if let dragPoint = dragLocationTEMP {
                     if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
                         // Изчисляване на позиционирането в данните
                         let fractionIndex = (dragPoint.x - origin.x) / xStep
@@ -690,10 +691,10 @@ struct WeatherDetailView: View {
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { value in
-                        dragLocation = value.location
+                        dragLocationTEMP = value.location
                     }
                     .onEnded { _ in
-                        dragLocation = nil
+                        dragLocationTEMP = nil
                     }
             )
 
@@ -1015,43 +1016,76 @@ struct WeatherDetailView: View {
                 }
                 
                 // Интерполация при Drag Gesture – показване на стойност на вероятността в проценти.
-                if let dragPoint = dragLocation2 {
+                if let dragPoint = dragLocationPreci {
                     if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
+                        
+                        // 1) fractionIndex – позиция (0...n) между точките
                         let fractionIndex = (dragPoint.x - origin.x) / xStep
+                        
+                        // 2) Индекси на „долната“ и „горната“ точки
                         let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
                         let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
                         let t = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
-                        let interpolatedChance = precipData[lowerIndex] + (precipData[upperIndex] - precipData[lowerIndex]) * Double(t)
+                        
+                        // 3) Интерполация на вероятността за валеж (precipData)
+                        let lowerValue = precipData[lowerIndex]
+                        let upperValue = precipData[upperIndex]
+                        let interpolatedChance = lowerValue + (upperValue - lowerValue) * Double(t)
+                        
+                        // 4) Интерполация на координатата по Y (графиката)
                         var interpolatedY = points[lowerIndex].y
                         if upperIndex != lowerIndex {
                             interpolatedY = points[lowerIndex].y + t * (points[upperIndex].y - points[lowerIndex].y)
                         }
                         let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
                         
+                        // 5) Вертикална линия, която показва текущата X позиция
                         var verticalPath = Path()
                         verticalPath.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
                         verticalPath.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
                         context.stroke(verticalPath, with: .color(.white.opacity(0.5)), lineWidth: 1)
                         
+                        // 6) Малка бяла точка (dot), за да маркираме мястото
                         let dotRect = CGRect(center: dotPoint, radius: 4)
                         context.fill(Path(ellipseIn: dotRect), with: .color(.white))
                         
-                        let labelOffset: CGFloat = 8
-                        let chancePercentText = Text("\(Int(interpolatedChance * 100))%")
+                        // 7) Интерполираме и времето, за да покажем точния "HH:mm"
+                        let timeLabelString: String
+                        if lowerIndex < hourlyItemsForSelectedDate.count, upperIndex < hourlyItemsForSelectedDate.count {
+                            let lowerDate = hourlyItemsForSelectedDate[lowerIndex].date
+                            let upperDate = hourlyItemsForSelectedDate[upperIndex].date
+                            
+                            let totalInterval = upperDate.timeIntervalSince(lowerDate)
+                            let interpolatedDate = lowerDate.addingTimeInterval(totalInterval * Double(t))
+                            
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "HH:mm"
+                            timeLabelString = dateFormatter.string(from: interpolatedDate)
+                        } else {
+                            timeLabelString = "--:--"
+                        }
+
+                        // 8) Подготвяме многострочен етикет (час + % шанс за валеж)
+                        let combinedLabel = Text("\(timeLabelString)\n\(Int(interpolatedChance * 100))%")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.white)
+                        
+                        // 9) Позиционираме го малко вдясно и нагоре (за да не се застъпва с точката)
+                        let labelOffset: CGFloat = 8
                         let textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
-                        context.draw(chancePercentText, at: textPoint, anchor: .leading)
+                        
+                        // Използваме .bottomLeading, за да „стъпи“ долният ред (процентът) там, където сме задали textPoint
+                        context.draw(combinedLabel, at: textPoint, anchor: .bottomLeading)
                     }
                 }
             }
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { value in
-                        dragLocation2 = value.location
+                        dragLocationPreci = value.location
                     }
                     .onEnded { _ in
-                        dragLocation2 = nil
+                        dragLocationPreci = nil
                     }
             )
             .frame(height: graphHeight + 20)
@@ -1065,6 +1099,22 @@ struct WeatherDetailView: View {
             .font(.caption)
             .foregroundColor(.secondary)
             .padding(.top, 5)
+    }
+    
+    private func uvCategory(for uv: Int) -> String {
+        if uv >= 11 {
+            return "Extreme"
+        } else if uv >= 8 {
+            return "Very High"
+        } else if uv >= 6 {
+            return "High"
+        } else if uv >= 3 {
+            return "Moderate"
+        } else if uv >= 1 {
+            return "Low"
+        } else {
+            return "None" // или "0", ако искате да показвате конкретно число
+        }
     }
     
     @ViewBuilder
@@ -1088,19 +1138,22 @@ struct WeatherDetailView: View {
         }
         let dailyMaxUV = dayItem?.maxUV ?? 0
         
+    
+        
         VStack(spacing: 8) {
             // Заглавна част
             VStack(alignment: .leading, spacing: 5) {
                 Text("UV Index")
                     .font(.system(size: 16, weight: .semibold))
-                Text("Today's max: \(Int(dailyMaxUV))")
+                Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
                     .font(.system(size: 13))
                     .foregroundColor(.white.opacity(0.8))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
-            .offset(x: -18)
-            
+            .offset(x: -15)
+            .offset(y: 30)
+
             // Хедър със средните стойности за всеки 2 часа – използваме същия изглед, какъвто имате в hourlyGraphSection.
             let twoHourAverages: [Int] = stride(from: 0, to: uvData.count, by: 2).map { startIndex in
                 let endIndex = min(startIndex + 2, uvData.count)
@@ -1164,8 +1217,13 @@ struct WeatherDetailView: View {
                 func yPosition(for uv: Double) -> CGFloat {
                     return origin.y - CGFloat(uv - yRange.min) * yStep
                 }
-                
-                // Рисуване на хоризонтални линии и надписи за всички цели числа от 0 до 12
+                let specialMarkers: [Int: String] = [
+                    1: "Low",
+                    3: "Moderate",
+                    6: "High",
+                    8: "Very High",
+                    11: "Extreme"
+                ]
                 let gridMarkers: [Double] = Array(stride(from: 0, through: 12, by: 1))
                 for marker in gridMarkers {
                     let yPos = yPosition(for: marker)
@@ -1176,14 +1234,28 @@ struct WeatherDetailView: View {
                                    with: .color(.gray.opacity(0.3)),
                                    style: StrokeStyle(lineWidth: 0.5))
                     
-                    let labelPoint = CGPoint(x: origin.x + graphContentWidth + 15, y: yPos)
+                    // Надпис вдясно (числовия маркер)
+                    let rightLabelPoint = CGPoint(x: origin.x + graphContentWidth + 15, y: yPos)
                     context.draw(
                         Text("\(Int(marker))")
                             .font(.system(size: 10))
                             .foregroundColor(.gray),
-                        at: labelPoint,
+                        at: rightLabelPoint,
                         anchor: .center
                     )
+                    
+                    // Проверка дали текущият маркер се съдържа в речника за специални маркери
+                    if let specialText = specialMarkers[Int(marker)] {
+                        let leftLabelPoint = CGPoint(x: origin.x + 5, y: yPos + 5)
+                        context.draw(
+                            Text(specialText)
+                                .font(.system(size: 10))
+                                .foregroundColor(.gray),
+                            at: leftLabelPoint,
+                            anchor: .init(x: 0, y: 0.5) // x=0 -> ляво, y=0.5 -> центриране по вертикалата
+                        )
+                    }
+
                 }
                 
                 // Рисуване на вертикални линии за часовите маркери
@@ -1319,47 +1391,83 @@ struct WeatherDetailView: View {
                 }
                 
                 // Drag gesture интерполация – показване на стойност, взета от данните (като цяло число)
-                if let dragPoint = dragLocation2 {
+                if let dragPoint = dragLocationUV {
+                    // Проверка дали координатата на драг попада в рамките на графиката (по X)
                     if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
+                        
+                        // 1) fractionIndex – къде по X е плъзгачът спрямо началото на графиката
                         let fractionIndex = (dragPoint.x - origin.x) / xStep
+                        
+                        // 2) Индекси на съседните точки, между които плъзгаме
                         let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
                         let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
                         let t = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
                         
+                        // 3) Интерполираме UV стойността
                         let lowerValue = Double(uvData[lowerIndex])
                         let upperValue = Double(uvData[upperIndex])
                         let interpolatedValueDouble = lowerValue + (upperValue - lowerValue) * Double(t)
                         let interpolatedUV = Int(round(interpolatedValueDouble))
                         
+                        // 4) Интерполираме и координатата по Y
                         var interpolatedY = points[lowerIndex].y
                         if upperIndex != lowerIndex {
                             interpolatedY = points[lowerIndex].y + t * (points[upperIndex].y - points[lowerIndex].y)
                         }
                         let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
                         
+                        // 5) Рисуваме вертикална линия по X
                         var verticalPath = Path()
                         verticalPath.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
                         verticalPath.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
                         context.stroke(verticalPath, with: .color(.white.opacity(0.5)), lineWidth: 1)
                         
+                        // 6) Малък кръг (dot) върху точката
                         let dotRect = CGRect(center: dotPoint, radius: 4)
                         let normalizedDragged = (Double(interpolatedUV) - yRange.min) / (yRange.max - yRange.min)
                         let dragColor: Color = colorFromGradient(gradient: uvGradient, location: normalizedDragged)
                         context.fill(Path(ellipseIn: dotRect), with: .color(dragColor))
                         
-                        let labelOffset: CGFloat = 8
-                        let uvLabel = Text("\(interpolatedUV)")
+                        // 7) **Интерполираме времето** (ЧАС:МИНУТИ), а не просто долния индекс
+                        let timeLabelString: String
+                        if lowerIndex < hourlyItemsForSelectedDate.count, upperIndex < hourlyItemsForSelectedDate.count {
+                            let lowerDate = hourlyItemsForSelectedDate[lowerIndex].date
+                            let upperDate = hourlyItemsForSelectedDate[upperIndex].date
+                            
+                            // Цялата разлика между двете дати
+                            let totalInterval = upperDate.timeIntervalSince(lowerDate)
+                            
+                            // Новата, „междинна“ дата според t
+                            let interpolatedDate = lowerDate.addingTimeInterval(totalInterval * Double(t))
+                            
+                            // Форматираме като HH:mm (например "14:07", "15:30", ...)
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "HH:mm"
+                            timeLabelString = dateFormatter.string(from: interpolatedDate)
+                        } else {
+                            // fallback, ако сме извън обхват
+                            timeLabelString = "--:--"
+                        }
+                        
+                        // 8) Създаваме двуредов етикет (час + UV)
+                        let combinedLabel = Text("\(timeLabelString)\n\(interpolatedUV)")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.white)
+                        
+                        // 9) Позиционираме етикета малко вдясно и нагоре, за да не застъпва точката
+                        let labelOffset: CGFloat = 8
                         let textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
-                        context.draw(uvLabel, at: textPoint, anchor: .leading)
+                        
+                        // .bottomLeading => долният ред на текста (UV) да съвпада с точката
+                        context.draw(combinedLabel, at: textPoint, anchor: .bottomLeading)
                     }
                 }
+
             }
             .gesture(
                 DragGesture(minimumDistance: 0)
-                    .onChanged { value in dragLocation2 = value.location }
-                    .onEnded { _ in dragLocation2 = nil }
+                    .onChanged { value in dragLocationUV = value.location }
+                    .onEnded { _ in dragLocationUV = nil }
             )
             .frame(height: (graphHeight + 20) * 1.5)
 
@@ -1371,16 +1479,68 @@ struct WeatherDetailView: View {
                 .padding(.top, 2)
         }
         
-        // Малък надпис под графиката
-        Text("UV indexes above 6 can be harmful without proper protection.")
-            .font(.caption)
-            .foregroundColor(.secondary)
-            .padding(.top, 5)
+        
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Now, \(currentTimeString)")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            
+            Text(generateUVAdvice(uvData: uvData, startOfSelectedDay: startOfSelectedDay))
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .padding(.top, 5)
     }
 
+    func generateUVAdvice(uvData: [Int], startOfSelectedDay: Date) -> String {
+        // 1) Филтрираме UV стойностите, които са поне 3 (Moderate или по-висок)
+        let moderateOrHigher = uvData.enumerated().filter { $0.element >= 1 } // [(index, uv)]
+        
+        // 2) Ако няма нито една стойност ≥ 3, връщаме съответно съобщение
+        if moderateOrHigher.isEmpty {
+            return "No moderate or higher UV levels are expected for this day."
+        } else {
+            // earliest и latest – първият и последният час в деня, където UV ≥ 3
+            let earliestHourIndex = moderateOrHigher.first!.offset
+            let latestHourIndex   = moderateOrHigher.last!.offset
+            
+            // minUV и maxUV – най-ниската и най-високата UV стойност в този диапазон
+            let minUV = moderateOrHigher.map { $0.element }.min() ?? 1
+            let maxUV = moderateOrHigher.map { $0.element }.max() ?? 1
+            
+            // Преобразуваме index (час) в реални Date обекти
+            let calendar = Calendar.current
+            let earliestDate = calendar.date(byAdding: .hour, value: earliestHourIndex, to: startOfSelectedDay)!
+            let latestDate   = calendar.date(byAdding: .hour, value: latestHourIndex,  to: startOfSelectedDay)!
+            
+            // Форматираме ги като час:минути (HH:mm) или друго, което предпочитате
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            let earliestStr = formatter.string(from: earliestDate) // "10:00"
+            let latestStr   = formatter.string(from: latestDate)   // "15:00"
+            
+            // Определяме категориите за minUV и maxUV (пр. Moderate, High и т.н.)
+            let minCategory = uvCategory(for: minUV)
+            let maxCategory = uvCategory(for: maxUV)
+            
+            // Накрая сглобяваме динамичен текст
+            let uvAdviceText = """
+            Sun protection recommended. UV levels range from \(minCategory) to \(maxCategory), \
+            reached between \(earliestStr) and \(latestStr).
+            """
+            
+            return uvAdviceText
+        }
+    }
 
-
-
+    private var currentTimeString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: Date())
+    }
+    private func hourOfDay(from date: Date) -> Int {
+        return Calendar.current.component(.hour, from: date)
+    }
 
     private func colorFromGradient(gradient: Gradient, location: Double) -> Color {
         let stops = gradient.stops.sorted(by: { $0.location < $1.location })
