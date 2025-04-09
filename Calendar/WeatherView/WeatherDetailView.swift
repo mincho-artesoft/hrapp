@@ -187,14 +187,6 @@ struct WeatherDetailView: View {
                         .padding(.horizontal)
                         .padding(.bottom)
                     
-                    actualFeelsLikeToggle
-                        .padding(.vertical, 15)
-                        .padding(.horizontal)
-                    
-                    descriptionText
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
                     chanceOfPrecipSection()
                         .padding(.horizontal)
                         .padding(.bottom)
@@ -288,112 +280,136 @@ struct WeatherDetailView: View {
 
     @ViewBuilder
     private func hourlyGraphSection() -> some View {
-        let currentTemperatures = temperatures
-        let yRange = yAxisRange
-        let hourMarkers = [0, 6, 12, 18, 24]
-        
-        // Дефиниране на цветове и градиент
-        let purple   = Color(hue: 0.75, saturation: 0.7, brightness: 0.7)
-        let darkBlue = Color(hue: 0.65, saturation: 0.8, brightness: 0.8)
-        let cyan     = Color(hue: 0.55, saturation: 0.7, brightness: 0.9)
-        let green    = Color(hue: 0.33, saturation: 0.6, brightness: 0.8)
-        let yellow   = Color(hue: 0.15, saturation: 0.8, brightness: 1.0)
-        let orange   = Color(hue: 0.08, saturation: 0.9, brightness: 1.0)
-        let red      = Color(hue: 0.00, saturation: 0.9, brightness: 0.9)
-        
-        let gradient = Gradient(stops: [
-            .init(color: purple,   location: temperatureToGradientLocation(-10, range: yRange)),
-            .init(color: darkBlue, location: temperatureToGradientLocation(0, range: yRange)),
-            .init(color: cyan,     location: temperatureToGradientLocation(12, range: yRange)),
-            .init(color: green,    location: temperatureToGradientLocation(22, range: yRange)),
-            .init(color: yellow,   location: temperatureToGradientLocation(25, range: yRange)),
-            .init(color: orange,   location: temperatureToGradientLocation(30, range: yRange)),
-            .init(color: red,      location: temperatureToGradientLocation(35, range: yRange))
-        ])
-        
-        VStack(spacing: 0) {
-            HStack(alignment: .top) {
-                if let dayItem = allDailyItems.first(where: {
-                    Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
-                }) {
-                    if showingFeelsLike, let feelsLike = currentFeelsLikeTemp {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Feels Like")
-                                .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(.secondary)
-                            Text("\(Int(round(feelsLike)))°")
-                                .font(.system(size: 70, weight: .thin))
-                        }
-                    } else if let actual = currentActualTemp {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Actual")
-                                .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(.secondary)
-                            HStack(alignment: .top, spacing: 10) {
-                                Text("\(Int(round(actual)))°")
-                                    .font(.system(size: 70, weight: .thin))
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("H: \(Int(round(dayItem.maxTemp)))°")
-                                        .font(.system(size: 14, weight: .regular))
-                                    Text("L: \(Int(round(dayItem.minTemp)))°")
-                                        .font(.system(size: 14, weight: .regular))
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                        }
-                    } else {
-                        Text("--°")
-                            .font(.system(size: 70, weight: .thin))
-                    }
-                    Image(systemName: dayItem.symbol)
-                        .symbolVariant(.fill)
-                        .symbolRenderingMode(.multicolor)
-                        .font(.system(size: 40))
-                        .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
-                        .offset(y: 14)
-                    
-                    Spacer()
-                    UIWeatherMenuButtonRepresentable(
-                        currentView: selectedOption,
-                        onViewChange: { newTab in
-                            selectedOption = newTab
-                        }
-                    )
-                    .frame(width: 30, height: 30)
+        // Избираме актуалната дата (сега) и изчисляваме дял от деня (0.0...1.0)
+           let now = Date()
+           let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
+           let secondsFromMidnight = now.timeIntervalSince(startOfSelectedDay)
+           let fractionOfDay = secondsFromMidnight / (24 * 3600)
 
+           let currentTemperatures = temperatures
+           let yRange = yAxisRange
+           let hourMarkers = [0, 6, 12, 18, 24]
+           
+           // Определяме цветове и градиент
+           let purple   = Color(hue: 0.75, saturation: 0.7, brightness: 0.7)
+           let darkBlue = Color(hue: 0.65, saturation: 0.8, brightness: 0.8)
+           let cyan     = Color(hue: 0.55, saturation: 0.7, brightness: 0.9)
+           let green    = Color(hue: 0.33, saturation: 0.6, brightness: 0.8)
+           let yellow   = Color(hue: 0.15, saturation: 0.8, brightness: 1.0)
+           let orange   = Color(hue: 0.08, saturation: 0.9, brightness: 1.0)
+           let red      = Color(hue: 0.00, saturation: 0.9, brightness: 0.9)
+           
+           let gradient = Gradient(stops: [
+               .init(color: purple,   location: temperatureToGradientLocation(-10, range: yRange)),
+               .init(color: darkBlue, location: temperatureToGradientLocation(0, range: yRange)),
+               .init(color: cyan,     location: temperatureToGradientLocation(12, range: yRange)),
+               .init(color: green,    location: temperatureToGradientLocation(22, range: yRange)),
+               .init(color: yellow,   location: temperatureToGradientLocation(25, range: yRange)),
+               .init(color: orange,   location: temperatureToGradientLocation(30, range: yRange)),
+               .init(color: red,      location: temperatureToGradientLocation(35, range: yRange))
+           ])
+           
+           VStack(spacing: 0) {
+               // Първата част: показване на текущата температура, минимална/максимална стойност и иконка
+               HStack(alignment: .top) {
+                   if let dayItem = allDailyItems.first(where: {
+                       Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                   }) {
+                       if showingFeelsLike, let feelsLike = currentFeelsLikeTemp {
+                           VStack(alignment: .leading, spacing: 2) {
+                               Text("Feels Like")
+                                   .font(.system(size: 14, weight: .medium))
+                                   .foregroundColor(.secondary)
+                               Text("\(Int(round(feelsLike)))°")
+                                   .font(.system(size: 70, weight: .thin))
+                           }
+                       } else if let actual = currentActualTemp {
+                           VStack(alignment: .leading, spacing: 2) {
+                               Text("Actual")
+                                   .font(.system(size: 14, weight: .medium))
+                                   .foregroundColor(.secondary)
+                               HStack(alignment: .top, spacing: 10) {
+                                   Text("\(Int(round(actual)))°")
+                                       .font(.system(size: 70, weight: .thin))
+                                   VStack(alignment: .leading, spacing: 4) {
+                                       Text("H: \(Int(round(dayItem.maxTemp)))°")
+                                           .font(.system(size: 14, weight: .regular))
+                                       Text("L: \(Int(round(dayItem.minTemp)))°")
+                                           .font(.system(size: 14, weight: .regular))
+                                           .foregroundColor(.gray)
+                                   }
+                               }
+                           }
+                       } else {
+                           Text("--°")
+                               .font(.system(size: 70, weight: .thin))
+                       }
+                       Image(systemName: dayItem.symbol)
+                           .symbolVariant(.fill)
+                           .symbolRenderingMode(.multicolor)
+                           .font(.system(size: 40))
+                           .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
+                           .offset(y: 14)
+                       
+                       Spacer()
+                       UIWeatherMenuButtonRepresentable(
+                           currentView: selectedOption,
+                           onViewChange: { newTab in
+                               selectedOption = newTab
+                           }
+                       )
+                       .frame(width: 30, height: 30)
+                       
+                   } else {
+                       Text("--°")
+                           .font(.system(size: 70, weight: .thin))
+                       Spacer()
+                   }
+               }
+               
+               // Втората част: Часови икони с надложен затъмнителен слой за миналото.
+               GeometryReader { geo in
+                   ZStack(alignment: .leading) {
+                       HStack(spacing: 0) {
+                           let twoHourItemsForIcons = hourlyItemsForSelectedDate
+                               .enumerated()
+                               .filter { index, _ in index % 2 == 0 }
+                               .map { $0.element }
+                           
+                           if twoHourItemsForIcons.isEmpty {
+                               Text("No hourly data available for this day.")
+                                   .font(.caption)
+                                   .foregroundColor(.gray)
+                                   .frame(maxWidth: .infinity, alignment: .center)
+                                   .padding(.vertical)
+                           } else {
+                               ForEach(twoHourItemsForIcons, id: \.id) { item in
+                                   Image(systemName: "\(item.symbol).fill")
+                                       .symbolRenderingMode(item.symbol == "wind" ? .monochrome : .multicolor)
+                                       .foregroundColor(item.symbol == "wind" ? .white : .primary)
+                                       .font(.system(size: 13))
+                                       .frame(maxWidth: .infinity)
+                                       .offset(y: item.symbol == "cloud.fill" ? -5 : 0)
+                               }
+                           }
+                       }
+                       
+                       // Ако избраният ден съвпада с днешния, поставяме затъмняващ слой и вертикална линия,
+                       // които използват една и съща дробна стойност (fractionOfDay)
+                       if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                           let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
+                           // Полупрозрачен правоъгълник, който покрива частта до текущото време
+                           Rectangle()
+                               .fill(Color.black.opacity(0.4))
+                               .frame(width: overlayWidth)
+                         
+                       }
+                   }
+               }
+               .frame(height: 20)
+               .padding(.horizontal, graphPadding)
+               .padding(.bottom, -15)
 
-                } else {
-                    Text("--°")
-                        .font(.system(size: 70, weight: .thin))
-                    Spacer()
-                }
-            }
-            // Часовите икони – показват се на всеки 2 часа
-            let twoHourItemsForIcons = hourlyItemsForSelectedDate
-                .enumerated()
-                .filter { index, _ in index % 2 == 0 }
-                .map { _, item in item }
-            
-            HStack(spacing: 0) {
-                if twoHourItemsForIcons.isEmpty {
-                    Text("No hourly data available for this day.")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.vertical)
-                } else {
-                    ForEach(Array(twoHourItemsForIcons), id: \.id) { item in
-                        Image(systemName: "\(item.symbol).fill")
-                            .symbolRenderingMode(.multicolor)
-                            .font(.system(size: 13))
-                            .frame(maxWidth: .infinity)
-                            .opacity(item.date < Date() ? 0.6 : 1.0)
-                    }
-                }
-            }
-            .frame(height: 20)
-            .padding(.horizontal, graphPadding)
-            .padding(.bottom, -15)
             
             Canvas { context, size in
                 guard !currentTemperatures.isEmpty,
@@ -678,6 +694,46 @@ struct WeatherDetailView: View {
                 .padding(.horizontal, graphPadding / 2)
                 .padding(.top, 2)
         }
+        HStack(spacing: 5) {
+            Button {
+                showingFeelsLike = false
+            } label: {
+                Text("Actual")
+                    .font(.system(size: 12, weight: .medium))
+                    .padding(.vertical, 7)
+                    .padding(.horizontal, 12)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(!showingFeelsLike ? .black : .gray)
+                    .background(!showingFeelsLike ? Color.white : Color.clear)
+                    .cornerRadius(15)
+            }
+            .buttonStyle(.plain)
+            
+            Button {
+                showingFeelsLike = true
+            } label: {
+                Text("Feels Like")
+                    .font(.system(size: 12, weight: .medium))
+                    .padding(.vertical, 7)
+                    .padding(.horizontal, 12)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(showingFeelsLike ? .black : .gray)
+                    .background(showingFeelsLike ? Color.white : Color.clear)
+                    .cornerRadius(15)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(3)
+        .background(Color.white.opacity(0.15))
+        .clipShape(Capsule())
+        
+        Text(showingFeelsLike
+             ? "What the temperature feels like as a result of humidity, sunlight or wind."
+             : "The actual air temperature."
+        )
+        .font(.caption)
+        .foregroundColor(.secondary)
+        .lineSpacing(3)
     }
 
 
@@ -744,53 +800,7 @@ struct WeatherDetailView: View {
         let normalized = (temp - range.min) / (range.max - range.min)
         return CGFloat(max(0.0, min(1.0, normalized)))
     }
-    
-    // MARK: - Други Subviews
-    private var actualFeelsLikeToggle: some View {
-        HStack(spacing: 5) {
-            Button {
-                showingFeelsLike = false
-            } label: {
-                Text("Actual")
-                    .font(.system(size: 12, weight: .medium))
-                    .padding(.vertical, 7)
-                    .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(!showingFeelsLike ? .black : .gray)
-                    .background(!showingFeelsLike ? Color.white : Color.clear)
-                    .cornerRadius(15)
-            }
-            .buttonStyle(.plain)
-            
-            Button {
-                showingFeelsLike = true
-            } label: {
-                Text("Feels Like")
-                    .font(.system(size: 12, weight: .medium))
-                    .padding(.vertical, 7)
-                    .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(showingFeelsLike ? .black : .gray)
-                    .background(showingFeelsLike ? Color.white : Color.clear)
-                    .cornerRadius(15)
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(3)
-        .background(Color.white.opacity(0.15))
-        .clipShape(Capsule())
-    }
-    
-    private var descriptionText: some View {
-        Text(showingFeelsLike
-             ? "What the temperature feels like as a result of humidity, sunlight or wind."
-             : "The actual air temperature."
-        )
-        .font(.caption)
-        .foregroundColor(.secondary)
-        .lineSpacing(3)
-    }
-
+   
     @ViewBuilder
     private func chanceOfPrecipSection() -> some View {
         // Извличаме стойностите за вероятностите от часовата прогноза.
@@ -819,6 +829,7 @@ struct WeatherDetailView: View {
              }
              .frame(maxWidth: .infinity, alignment: .leading) // Задава максимална ширина и ляво подравняване
              .padding(.horizontal)
+             .offset(x: -18)
 
             
             // Графиката с Canvas – чертае линия с запълнената област, марки и интерактивен drag gesture
