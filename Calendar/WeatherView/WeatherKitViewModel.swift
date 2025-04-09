@@ -13,7 +13,20 @@ struct DayForecastItem: Identifiable, Equatable {
     var precipChance: Double?
     var minTemp: Double
     var maxTemp: Double
-
+    
+    // За последните 24 часа
+    var precipLast24h: Double   // Общ валеж (мм)
+    var rainLast24h: Double     // Дъжд (мм)
+    var snowLast24h: Double     // Сняг (напр. в см или мм)
+    
+    // За следващите 24 часа
+    var precipNext24h: Double  // Общ валеж (мм)
+    var rainNext24h: Double    // Дъжд (мм)
+    var snowNext24h: Double    // Сняг (напр. в см или мм)
+    
+    // (Optional) If you want a daily maximum UV or anything else:
+    var maxUV: Int
+    
     static func == (lhs: DayForecastItem, rhs: DayForecastItem) -> Bool {
         lhs.id == rhs.id
     }
@@ -26,14 +39,17 @@ struct HourlyForecastItem: Identifiable {
     var temp: Double
     var feelsLikeTemp: Double
     var symbol: String
-    var precipChance: Double  // Добавяме процента за валеж (напр. от 0 до 100)
+    var precipChance: Double          // Шанс за валеж (0...1)
+    var precipitationAmount: Double?  // Количество валеж (мм) за конкретния час
+    
+    // NEW: add UV Index if available in your data source
+    var uvIndex: Int
 }
-
 
 // MARK: - WEATHERKIT VIEW MODEL
 @MainActor
 class WeatherKitViewModel: ObservableObject {
-    // Singleton, ако искате да го достъпвате отвсякъде
+    // Singleton – достъпен отвсякъде ако е необходимо
     static let shared = WeatherKitViewModel()
     
     // WeatherService (общ за целия клас)
@@ -46,7 +62,7 @@ class WeatherKitViewModel: ObservableObject {
     @Published var todayMinTemp: Double?
     @Published var todayMaxTemp: Double?
     
-    // Доп. данни (Feels Like, Humidity, etc.)
+    // Допълнителни данни (Feels Like, Humidity, и т.н.)
     @Published var currentFeelsLike: Double?
     @Published var currentHumidity: Double?
     @Published var currentWindSpeed: Double?
@@ -54,7 +70,7 @@ class WeatherKitViewModel: ObservableObject {
     @Published var currentVisibility: Double?
     @Published var currentUVIndex: Int?
     
-    // Още нови: (ако ви трябват)
+    // Още нови – ако са необходими
     @Published var currentWindGust: Double?
     @Published var currentWindDirection: Angle?
     @Published var currentDewPoint: Double?
@@ -64,34 +80,34 @@ class WeatherKitViewModel: ObservableObject {
     @Published var todayPrecipitationAmount: Double?
     @Published var nextHourPrecipitationChance: Double?
 
-    // Почасова
+    // Почасова прогноза
     @Published var next24HourlyForecast: [HourlyForecastItem] = []
     @Published var hourlyForecast: [HourlyForecastItem] = []
 
-    // 10-дневна
+    // 10-дневна прогноза
     @Published var dailyForecast: [DayForecastItem] = []
     
     // Грешки/съобщения
     @Published var errorMessage: String?
     
     /// Часова зона на текущата или избрана локация.
-    /// По подразбиране – системната зона (`.current`).
+    /// По подразбиране – системната зона (.current).
     var locationTimeZone: TimeZone = .current
     
     // MARK: - Публични методи
     
-    /// Задаваме нова часова зона (примерно при избрана друга локация).
+    /// Задава нова часова зона (примерно при избор на друга локация).
     func setTimeZone(_ tz: TimeZone) {
         self.locationTimeZone = tz
     }
 
-    /// Основният метод, който изтегля времето от WeatherKit по координати.
+    /// Основният метод, който изтегля данни от WeatherKit по координати.
     func fetchWeatherForCoords(latitude: Double, longitude: Double) {
         Task {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
                 
-                // Еднократно поискаме всички нужни данни: current + hourly + daily
+                // Изтегляме данните наведнъж: current, hourly и daily
                 let weatherDataTuple = try await weatherService.weather(
                     for: loc,
                     including: .current, .hourly, .daily
@@ -101,12 +117,12 @@ class WeatherKitViewModel: ObservableObject {
                 let hourlyForecast = weatherDataTuple.1
                 let dailyForecast = weatherDataTuple.2
                 
-                // Обновяваме нашите пропъртита с получените данни
+                // Обновяваме данните, използвайки получените стойности
                 updateCurrentWeather(current)
                 updateHourlyForecast(hourlyForecast.forecast)
                 updateDailyForecast(dailyForecast.forecast)
                 
-                // Sunrise/sunset/валеж за днес (използваме Calendar с избраната TZ)
+                // Sunrise, sunset и валеж за днес, съобразени с избраната времева зона
                 var calendar = Calendar(identifier: .gregorian)
                 calendar.timeZone = locationTimeZone
                 
@@ -122,14 +138,14 @@ class WeatherKitViewModel: ObservableObject {
                     self.todayPrecipitationAmount = 0
                 }
                 
-                // Пример: процент за валеж в следващия час
+                // Пример: процент за валеж през следващия час
                 if let nextHour = hourlyForecast.forecast.first(where: { $0.date > Date() }) {
                     self.nextHourPrecipitationChance = nextHour.precipitationChance
                 } else {
                     self.nextHourPrecipitationChance = hourlyForecast.forecast.last?.precipitationChance
                 }
                 
-                // Изчистваме евентуална стара грешка, ако имаше
+                // Изчистваме евентуални стари грешки
                 self.errorMessage = nil
                 
             } catch {
@@ -139,7 +155,7 @@ class WeatherKitViewModel: ObservableObject {
         }
     }
     
-    /// Ако искате да нулирате всички данни (например при смяна на локация).
+    /// Нулира всички данни – например при смяна на локация.
     func clearWeatherData() {
         currentTemp = nil
         currentSymbol = "cloud"
@@ -166,9 +182,9 @@ class WeatherKitViewModel: ObservableObject {
         errorMessage = nil
     }
     
-    // MARK: - Приватни методи (update логика)
+    // MARK: - Приватни методи (обновяване на данните)
     
-    /// Обновява текущите стойности (current weather).
+    /// Обновява текущите метеорологични данни.
     private func updateCurrentWeather(_ current: CurrentWeather) {
         self.currentTemp      = current.temperature.value
         self.currentSymbol    = current.symbolName
@@ -179,7 +195,7 @@ class WeatherKitViewModel: ObservableObject {
         self.currentVisibility = current.visibility.value
         self.currentUVIndex   = current.uvIndex.value
         
-        // Преобразуваме в km/h
+        // Преобразуване на вятърната скорост в км/ч
         let windSpeedKmh = current.wind.speed.converted(to: .kilometersPerHour).value
         self.currentWindSpeed = windSpeedKmh
         
@@ -192,7 +208,7 @@ class WeatherKitViewModel: ObservableObject {
         self.currentWindDirection = Angle(degrees: current.wind.direction.value)
         self.currentDewPoint = current.dewPoint.value
         
-        // Pressure trend (Optional)
+        // Обработка на тренда на налягането
         switch current.pressureTrend {
         case .falling: self.pressureTrend = "Falling"
         case .rising:  self.pressureTrend = "Rising"
@@ -202,13 +218,13 @@ class WeatherKitViewModel: ObservableObject {
         }
     }
     
-    /// Обновява почасовата прогноза (hourlyForecast и next24HourlyForecast).
+    /// Обновява почасовата прогноза – както за следващите 24 часа, така и цялата.
     private func updateHourlyForecast(_ hours: [HourWeather]) {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = locationTimeZone
         
         let now = Date()
-        // Намираме "текущия" час (изчистен до h:00:00)
+        // Намираме “текущия” час, изчистен до нула секунди
         guard let truncatedNow = calendar.date(
             bySettingHour: calendar.component(.hour, from: now),
             minute: 0,
@@ -216,22 +232,20 @@ class WeatherKitViewModel: ObservableObject {
             of: now
         ) else { return }
         
-        // Търсим първия час, чиято дата >= truncatedNow
+        // Намираме първия час с дата >= truncatedNow
         guard let startIndex = hours.firstIndex(where: { $0.date >= truncatedNow }) else {
-            // Ако не намерим нищо, зануляваме
             self.hourlyForecast = []
             self.next24HourlyForecast = []
             return
         }
         
-        // Вземаме 24 часа занапред (ако има толкова)
+        // Извличаме следващите 24 часа (ако има достатъчно данни)
         let endIndex = min(startIndex + 24, hours.count)
         let relevantHours = hours[startIndex..<endIndex]
         
-        // Попълваме next24HourlyForecast (само следващите 24ч)
+        // Попълване на next24HourlyForecast с информация за следващите 24 часа
         var tempArray: [HourlyForecastItem] = []
         for (i, hourData) in relevantHours.enumerated() {
-            // Можете да замените "Now" с "Сега" или директно да покажете "HH"
             let label = (i == 0) ? "Now" : hourString(from: hourData.date)
             
             let item = HourlyForecastItem(
@@ -241,13 +255,14 @@ class WeatherKitViewModel: ObservableObject {
                 temp: hourData.temperature.value,
                 feelsLikeTemp: hourData.apparentTemperature.value,
                 symbol: hourData.symbolName,
-                precipChance: hourData.precipitationChance  // Добавяне на стойността за валежната вероятност
+                precipChance: hourData.precipitationChance,
+                uvIndex: hourData.uvIndex.value
             )
             tempArray.append(item)
         }
         self.next24HourlyForecast = tempArray
 
-        // Пълната почасова прогноза (ако ви е нужна)
+        // Пълната почасова прогноза
         self.hourlyForecast = hours.map { hourData in
             HourlyForecastItem(
                 id: hourData.date,
@@ -256,13 +271,14 @@ class WeatherKitViewModel: ObservableObject {
                 temp: hourData.temperature.value,
                 feelsLikeTemp: hourData.apparentTemperature.value,
                 symbol: hourData.symbolName,
-                precipChance: hourData.precipitationChance  // Също така тук
+                precipChance: hourData.precipitationChance,
+                precipitationAmount: hourData.precipitationAmount.value,
+                uvIndex: hourData.uvIndex.value
             )
         }
     }
-
     
-    /// Обновява 10-дневната прогноза (dailyForecast).
+    /// Обновява 10-дневната прогноза.
     private func updateDailyForecast(_ days: [DayWeather]) {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = locationTimeZone
@@ -276,6 +292,34 @@ class WeatherKitViewModel: ObservableObject {
             let isToday = calendar.isDateInToday(dateValue)
             let dayName = isToday ? "Today" : weekdayString(from: dateValue)
             
+            // Изчисляваме средната температура за по-точно определяне на вида валеж:
+            let averageTemp = (dayData.lowTemperature.value + dayData.highTemperature.value) / 2
+            let temperatureThreshold = 0.0  // Например 0°C
+            let isLikelySnow = (averageTemp < temperatureThreshold) || dayData.symbolName.lowercased().contains("snow")
+            
+            // Общ валеж според DayWeather
+            let precipitationValue = dayData.precipitationAmount.value
+            
+            // Филтриране на почасовите данни за съответния ден
+            let forecastItemsForDay = self.hourlyForecast.filter {
+                calendar.isDate($0.date, inSameDayAs: dateValue)
+            }
+            
+            // Изчисляване на сумата за валежите през следващите 24 часа
+            let totalHourlyPrecip = forecastItemsForDay.reduce(0) { sum, item in
+                sum + (item.precipitationAmount ?? 0)
+            }
+            
+            // Разделяне на валежа – дъжд и сняг – според символите
+            let totalHourlyRain = forecastItemsForDay.reduce(0) { sum, item in
+                let isLikelySnowHourly = item.symbol.lowercased().contains("snow")
+                return isLikelySnowHourly ? sum : sum + (item.precipitationAmount ?? 0)
+            }
+            let totalHourlySnow = forecastItemsForDay.reduce(0) { sum, item in
+                let isLikelySnowHourly = item.symbol.lowercased().contains("snow")
+                return isLikelySnowHourly ? sum + (item.precipitationAmount ?? 0) : sum
+            }
+            
             let item = DayForecastItem(
                 id: dateValue,
                 date: dateValue,
@@ -283,44 +327,50 @@ class WeatherKitViewModel: ObservableObject {
                 symbol: dayData.symbolName,
                 precipChance: dayData.precipitationChance,
                 minTemp: dayData.lowTemperature.value,
-                maxTemp: dayData.highTemperature.value
+                maxTemp: dayData.highTemperature.value,
+                // Валеж за последните 24 часа – използваме стойността от DayWeather
+                precipLast24h: precipitationValue,
+                rainLast24h: isLikelySnow ? 0 : precipitationValue,
+                snowLast24h: isLikelySnow ? precipitationValue : 0,
+                // Валеж за следващите 24 часа – суми от почасовата прогноза
+                precipNext24h: totalHourlyPrecip,
+                rainNext24h: totalHourlyRain,
+                snowNext24h: totalHourlySnow,
+                maxUV: dayData.uvIndex.value
             )
             arr.append(item)
         }
         self.dailyForecast = arr
         
-        // Определяме today's min/max (ако първият е "днес")
-        if let firstDay = arr.first,
-           calendar.isDateInToday(firstDay.date) {
+        // Настройване на днешните минимална и максимална температура
+        if let firstDay = arr.first, calendar.isDateInToday(firstDay.date) {
             self.todayMinTemp = firstDay.minTemp
             self.todayMaxTemp = firstDay.maxTemp
         } else {
-            // Ако по някаква причина не го намерим,
-            // вземаме първия елемент от days (ако има)
             self.todayMinTemp = days.first?.lowTemperature.value
             self.todayMaxTemp = days.first?.highTemperature.value
         }
     }
-    
+
     // MARK: - Помощни функции за форматиране (24-часов формат)
     
-    /// Връща "HH" (24ч) от дадена дата, напр. "00", "13", "22"...
+    /// Връща "HH" (24ч) от дата, напр. "00", "13", "22"...
     private func hourString(from date: Date) -> String {
-        let f = DateFormatter()
-        f.dateFormat = "HH"  // 24-часов формат (може "HH:mm" при нужда)
-        f.timeZone = locationTimeZone
-        return f.string(from: date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH"
+        formatter.timeZone = locationTimeZone
+        return formatter.string(from: date)
     }
     
-    /// Връща съкратен ден от седмицата (Mon, Tue...) според локационната TZ.
+    /// Връща съкратено име на ден от седмицата (Mon, Tue, Wed...) според избраната времева зона.
     private func weekdayString(from date: Date) -> String {
-        let f = DateFormatter()
-        f.dateFormat = "E" // Mon, Tue, Wed...
-        f.timeZone = locationTimeZone
-        return f.string(from: date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E"
+        formatter.timeZone = locationTimeZone
+        return formatter.string(from: date)
     }
     
-    /// Форматира Date (часове/минути), примерно "14:05", спрямо зададена TZ.
+    /// Форматира дата (часове/минути) според избраната времева зона, напр. "14:05".
     func formatTime(_ date: Date?) -> String {
         guard let date = date else { return "--:--" }
         let formatter = DateFormatter()
@@ -332,7 +382,7 @@ class WeatherKitViewModel: ObservableObject {
     
     // MARK: - Примерни помощни методи за UI (UV, вятър и т.н.)
     
-    /// Например, за да дадете цвят/описание за UV индекса.
+    /// Връща описание и цвят за даден UV индекс.
     func uvCategory(for index: Int?) -> (description: String, color: Color) {
         guard let index = index else { return ("Unknown", .gray) }
         switch index {
@@ -350,10 +400,10 @@ class WeatherKitViewModel: ObservableObject {
         guard let angle = angle else { return "---" }
         let deg = angle.degrees.truncatingRemainder(dividingBy:360)
                      .advanced(by: angle.degrees < 0 ? 360 : 0)
-        let idx = Int(((deg+11.25).truncatingRemainder(dividingBy:360)/22.5).rounded()) % 16
+        let idx = Int(((deg + 11.25).truncatingRemainder(dividingBy:360) / 22.5).rounded()) % 16
         let directions = [
-            "N","NNE","NE","ENE","E","ESE","SE","SSE",
-            "S","SSW","SW","WSW","W","WNW","NW","NNW"
+            "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
+            "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"
         ]
         return directions[idx]
     }
