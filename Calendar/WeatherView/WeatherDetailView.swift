@@ -106,7 +106,8 @@ struct WeatherDetailView: View {
                     hour: String(format: "%02d", hourOffset),
                     temp: 0,
                     feelsLikeTemp: 0,
-                    symbol: "nosign"
+                    symbol: "nosign",
+                    precipChance: 0,
                 )
                 fullDayItems.append(placeholder)
             }
@@ -181,11 +182,9 @@ struct WeatherDetailView: View {
                         .padding(.horizontal)
                         .padding(.bottom, 5)
                     
-                    currentStatusHeader
-                        .padding(.horizontal)
-                        .padding(.bottom, 10)
-                    
                     hourlyGraphSection()
+                        .padding(.horizontal)
+                        .padding(.bottom)
                     
                     actualFeelsLikeToggle
                         .padding(.vertical, 15)
@@ -195,7 +194,7 @@ struct WeatherDetailView: View {
                         .padding(.horizontal)
                         .padding(.bottom)
                     
-                    chanceOfPrecipSection
+                    chanceOfPrecipSection()
                         .padding(.horizontal)
                         .padding(.bottom)
                     
@@ -285,65 +284,6 @@ struct WeatherDetailView: View {
         )
         .padding(.bottom, 10)
     }
-    
-    private var currentStatusHeader: some View {
-        HStack(alignment: .top) {
-            if let dayItem = allDailyItems.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
-            }) {
-                if showingFeelsLike, let feelsLike = currentFeelsLikeTemp {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Feels Like")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(.secondary)
-                        Text("\(Int(round(feelsLike)))°")
-                            .font(.system(size: 70, weight: .thin))
-                    }
-                } else if let actual = currentActualTemp {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Actual")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(.secondary)
-                        HStack(alignment: .top, spacing: 10) {
-                            Text("\(Int(round(actual)))°")
-                                .font(.system(size: 70, weight: .thin))
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("H: \(Int(round(dayItem.maxTemp)))°")
-                                    .font(.system(size: 14, weight: .regular))
-                                Text("L: \(Int(round(dayItem.minTemp)))°")
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    }
-                } else {
-                    Text("--°")
-                        .font(.system(size: 70, weight: .thin))
-                }
-                Image(systemName: dayItem.symbol)
-                    .symbolVariant(.fill)
-                    .symbolRenderingMode(.multicolor)
-                    .font(.system(size: 40))
-                    .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
-                    .offset(y: 14)
-                
-                Spacer()
-                UIWeatherMenuButtonRepresentable(
-                    currentView: selectedOption,
-                    onViewChange: { newTab in
-                        selectedOption = newTab
-                    }
-                )
-                .frame(width: 30, height: 30)
-
-
-            } else {
-                Text("--°")
-                    .font(.system(size: 70, weight: .thin))
-                Spacer()
-            }
-        }
-    }
 
     @ViewBuilder
     private func hourlyGraphSection() -> some View {
@@ -371,6 +311,62 @@ struct WeatherDetailView: View {
         ])
         
         VStack(spacing: 0) {
+            HStack(alignment: .top) {
+                if let dayItem = allDailyItems.first(where: {
+                    Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                }) {
+                    if showingFeelsLike, let feelsLike = currentFeelsLikeTemp {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Feels Like")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundColor(.secondary)
+                            Text("\(Int(round(feelsLike)))°")
+                                .font(.system(size: 70, weight: .thin))
+                        }
+                    } else if let actual = currentActualTemp {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Actual")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundColor(.secondary)
+                            HStack(alignment: .top, spacing: 10) {
+                                Text("\(Int(round(actual)))°")
+                                    .font(.system(size: 70, weight: .thin))
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("H: \(Int(round(dayItem.maxTemp)))°")
+                                        .font(.system(size: 14, weight: .regular))
+                                    Text("L: \(Int(round(dayItem.minTemp)))°")
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
+                    } else {
+                        Text("--°")
+                            .font(.system(size: 70, weight: .thin))
+                    }
+                    Image(systemName: dayItem.symbol)
+                        .symbolVariant(.fill)
+                        .symbolRenderingMode(.multicolor)
+                        .font(.system(size: 40))
+                        .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
+                        .offset(y: 14)
+                    
+                    Spacer()
+                    UIWeatherMenuButtonRepresentable(
+                        currentView: selectedOption,
+                        onViewChange: { newTab in
+                            selectedOption = newTab
+                        }
+                    )
+                    .frame(width: 30, height: 30)
+
+
+                } else {
+                    Text("--°")
+                        .font(.system(size: 70, weight: .thin))
+                    Spacer()
+                }
+            }
             // Часовите икони – показват се на всеки 2 часа
             let twoHourItemsForIcons = hourlyItemsForSelectedDate
                 .enumerated()
@@ -793,33 +789,288 @@ struct WeatherDetailView: View {
         .foregroundColor(.secondary)
         .lineSpacing(3)
     }
-    
-    private var chanceOfPrecipSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Chance of Precipitation")
-                .font(.system(size: 16, weight: .semibold))
-            Text("Tuesday's chance: \(chanceOfPrecipitationToday)%")
-                .font(.system(size: 13))
-                .foregroundColor(.white.opacity(0.8))
-            PrecipitationChanceGraph(hourlyItems: hourlyItemsForSelectedDate)
-                .frame(height: 80)
-                .padding(.top, 5)
-            Text("The daily chance of precipitation tends to be higher than the chance for each hour.")
-                .font(.caption)
-                .foregroundColor(.secondary)
-                .padding(.top, 5)
+
+    @ViewBuilder
+    private func chanceOfPrecipSection() -> some View {
+        // Извличаме стойностите за вероятностите от часовата прогноза.
+        let precipData = hourlyItemsForSelectedDate.map { $0.precipChance }
+        // Задаваме фиксиран диапазон – от 0% до 100% (0.0 ... 1.0)
+        let yRange: (min: Double, max: Double) = (0.0, 1.0)
+        // Маркерите по оста за определени часове (0, 6, 12, 18, 24)
+        let hourMarkers = [0, 6, 12, 18, 24]
+        
+        let todayChance: Int = {
+            if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }),
+               let chance = dayItem.precipChance {
+                return Int(chance)
+            }
+            return 0
+        }()
+        
+        VStack(spacing: 0) {
+          
+            VStack(alignment: .leading, spacing: 5) {
+                 Text("Chance of Precipitation")
+                     .font(.system(size: 16, weight: .semibold))
+                 Text("Today's chance: \(todayChance)%")
+                     .font(.system(size: 13))
+                     .foregroundColor(.white.opacity(0.8))
+             }
+             .frame(maxWidth: .infinity, alignment: .leading) // Задава максимална ширина и ляво подравняване
+             .padding(.horizontal)
+
+            
+            // Графиката с Canvas – чертае линия с запълнената област, марки и интерактивен drag gesture
+            Canvas { context, size in
+                guard precipData.count > 1,
+                      size.width > graphPadding,
+                      size.height > graphPadding * 2 else { return }
+                
+                let effectiveWidth = size.width
+                let effectiveHeight = size.height
+                let origin = CGPoint(x: graphPadding, y: effectiveHeight - graphPadding)
+                let graphContentWidth = effectiveWidth - graphPadding * 2
+                let graphContentHeight = effectiveHeight - graphPadding * 2
+                let yStep = graphContentHeight / CGFloat(yRange.max - yRange.min)
+                
+                func yPosition(for chance: Double) -> CGFloat {
+                    // По-голямата вероятност (до 1.0) води до по-висока позиция.
+                    return origin.y - CGFloat(chance - yRange.min) * yStep
+                }
+                
+                // Чертаме хоризонтални линии и надписи (0%, 25%, 50%, 75%, 100%)
+                let percMarkers: [Double] = [0, 0.25, 0.5, 0.75, 1.0]
+                for marker in percMarkers {
+                    let yPos = yPosition(for: marker)
+                    var hLine = Path()
+                    hLine.move(to: CGPoint(x: origin.x, y: yPos))
+                    hLine.addLine(to: CGPoint(x: origin.x + graphContentWidth, y: yPos))
+                    context.stroke(hLine, with: .color(.gray.opacity(0.3)), style: StrokeStyle(lineWidth: 0.5))
+                    let labelPoint = CGPoint(x: origin.x + graphContentWidth + 15, y: yPos)
+                    context.draw(
+                        Text("\(Int(marker * 100))%")
+                            .font(.system(size: 10))
+                            .foregroundColor(.gray),
+                        at: labelPoint,
+                        anchor: .center
+                    )
+                }
+                
+                // Чертаме вертикални линии за избрани часове (0, 6, 12, 18, 24)
+                for hour in hourMarkers {
+                    let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
+                    var vLine = Path()
+                    vLine.move(to: CGPoint(x: xPos, y: graphPadding))
+                    vLine.addLine(to: CGPoint(x: xPos, y: origin.y))
+                    context.stroke(vLine, with: .color(.gray.opacity(0.3)), style: StrokeStyle(lineWidth: 0.5))
+                }
+                
+                // Изчисляваме точките по линията
+                var linePath = Path()
+                var fillPath = Path()
+                var points: [CGPoint] = []
+                let itemCount = precipData.count
+                let xStep = graphContentWidth / CGFloat(max(1, itemCount - 1))
+                for (index, chance) in precipData.enumerated() {
+                    let xPos = origin.x + CGFloat(index) * xStep
+                    let yPos = yPosition(for: chance)
+                    let pt = CGPoint(x: xPos, y: yPos)
+                    points.append(pt)
+                    if index == 0 {
+                        linePath.move(to: pt)
+                        fillPath.move(to: CGPoint(x: xPos, y: origin.y))
+                        fillPath.addLine(to: pt)
+                    } else {
+                        linePath.addLine(to: pt)
+                        fillPath.addLine(to: pt)
+                    }
+                }
+                if let lastPt = points.last {
+                    fillPath.addLine(to: CGPoint(x: lastPt.x, y: origin.y))
+                    fillPath.closeSubpath()
+                }
+                
+                // Градиент от светло към наситен син
+                let gradient = Gradient(stops: [
+                    .init(color: Color.blue.opacity(0.4), location: 0),
+                    .init(color: Color.blue.opacity(0.8), location: 1)
+                ])
+                
+                // Запълване на областта под линията с градиент
+                context.drawLayer { layerContext in
+                    layerContext.fill(
+                        fillPath,
+                        with: .linearGradient(
+                            gradient,
+                            startPoint: CGPoint(x: 0, y: size.height),
+                            endPoint: CGPoint(x: 0, y: 0)
+                        )
+                    )
+                }
+                
+                // Чертаме линията на вероятностите
+                context.stroke(linePath, with: .color(Color.blue), lineWidth: 2.5)
+                
+                // Ако не всички данни са 0, рисуваме маркерите за най-високата и най-ниската стойност.
+                if !precipData.allSatisfy({ $0 == 0 }) {
+                    if let maxChance = precipData.max(),
+                       let maxIndex = precipData.firstIndex(of: maxChance),
+                       points.indices.contains(maxIndex) {
+                        let highPoint = points[maxIndex]
+                        context.drawLayer { layerContext in
+                            let outerRadius: CGFloat = 6
+                            let innerRadius: CGFloat = 3
+                            let outerRect = CGRect(center: highPoint, radius: outerRadius)
+                            let innerRect = CGRect(center: highPoint, radius: innerRadius)
+                            layerContext.fill(Path(ellipseIn: outerRect), with: .color(.black))
+                            layerContext.fill(Path(ellipseIn: innerRect), with: .color(Color.blue))
+                            let labelPoint = CGPoint(x: highPoint.x, y: highPoint.y - outerRadius - 4)
+                            layerContext.draw(
+                                Text("Max")
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundColor(.gray),
+                                at: labelPoint,
+                                anchor: .center
+                            )
+                        }
+                    }
+                    if let minChance = precipData.min(),
+                       let minIndex = precipData.firstIndex(of: minChance),
+                       points.indices.contains(minIndex) {
+                        let lowPoint = points[minIndex]
+                        context.drawLayer { layerContext in
+                            let outerRadius: CGFloat = 6
+                            let innerRadius: CGFloat = 3
+                            let outerRect = CGRect(center: lowPoint, radius: outerRadius)
+                            let innerRect = CGRect(center: lowPoint, radius: innerRadius)
+                            layerContext.fill(Path(ellipseIn: outerRect), with: .color(.black))
+                            layerContext.fill(Path(ellipseIn: innerRect), with: .color(Color.blue))
+                            let labelPoint = CGPoint(x: lowPoint.x, y: lowPoint.y - outerRadius - 4)
+                            layerContext.draw(
+                                Text("Min")
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundColor(.gray),
+                                at: labelPoint,
+                                anchor: .center
+                            )
+                        }
+                    }
+                }
+                
+                // Изписваме часовите надписи под графиката.
+                for hour in hourMarkers {
+                    let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
+                    let textPoint = CGPoint(x: xPos, y: origin.y + 14)
+                    context.draw(
+                        Text(String(format: "%02d", hour))
+                            .font(.system(size: 11))
+                            .foregroundColor(.gray),
+                        at: textPoint,
+                        anchor: .center
+                    )
+                }
+                
+                // Ако избраният ден е текущ, затъмняваме графичната област преди текущия час...
+                if Calendar.current.isDate(Date(), inSameDayAs: selectedDate),
+                   let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
+                       Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .hour)
+                   }) {
+                    let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+                    let darkenRect = CGRect(
+                        x: origin.x,
+                        y: graphPadding,
+                        width: currentXPos - origin.x,
+                        height: effectiveHeight - graphPadding * 2
+                    )
+                    context.fill(
+                        Path(darkenRect),
+                        with: .color(.black.opacity(0.3))
+                    )
+                    // ...и добавяме вертикална линия, отбелязваща текущия час.
+                    var currentLine = Path()
+                    currentLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                    currentLine.addLine(to: CGPoint(x: currentXPos, y: effectiveHeight - graphPadding))
+                    context.stroke(currentLine, with: .color(.green), lineWidth: 2)
+                }
+                
+                // Интерполация при Drag Gesture – показване на стойност на вероятността в проценти.
+                if let dragPoint = dragLocation {
+                    if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
+                        let fractionIndex = (dragPoint.x - origin.x) / xStep
+                        let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
+                        let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
+                        let t = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
+                        let interpolatedChance = precipData[lowerIndex] + (precipData[upperIndex] - precipData[lowerIndex]) * Double(t)
+                        var interpolatedY = points[lowerIndex].y
+                        if upperIndex != lowerIndex {
+                            interpolatedY = points[lowerIndex].y + t * (points[upperIndex].y - points[lowerIndex].y)
+                        }
+                        let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
+                        
+                        var verticalPath = Path()
+                        verticalPath.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
+                        verticalPath.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
+                        context.stroke(verticalPath, with: .color(.white.opacity(0.5)), lineWidth: 1)
+                        
+                        let dotRect = CGRect(center: dotPoint, radius: 4)
+                        context.fill(Path(ellipseIn: dotRect), with: .color(.white))
+                        
+                        let labelOffset: CGFloat = 8
+                        let chancePercentText = Text("\(Int(interpolatedChance * 100))%")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundColor(.white)
+                        let textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
+                        context.draw(chancePercentText, at: textPoint, anchor: .leading)
+                    }
+                }
+            }
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        dragLocation = value.location
+                    }
+                    .onEnded { _ in
+                        dragLocation = nil
+                    }
+            )
+            .frame(height: graphHeight + 20)
+            
+            Divider()
+                .background(Color.gray.opacity(0.4))
+                .padding(.horizontal, graphPadding / 2)
+                .padding(.top, 2)
         }
+        Text("The daily chance of precipitation tends to be higher than the chance for each hour.")
+            .font(.caption)
+            .foregroundColor(.secondary)
+            .padding(.top, 5)
     }
+
     
+    // Новата имплементация на PrecipitationChanceGraph – графика за валежната вероятност
     struct PrecipitationChanceGraph: View {
         let hourlyItems: [HourlyForecastItem]
+        
         var body: some View {
-            Rectangle()
-                .fill(Color.blue.opacity(0.2))
-                .overlay(Text("Precip Graph Placeholder").foregroundColor(.gray))
-                .frame(height: 80)
+            GeometryReader { geometry in
+                let totalWidth = geometry.size.width
+                let itemCount = hourlyItems.count
+                // Изчисляваме, че 80% от ширината се разпределя за лентите, а 20% за разделители
+                let barWidth = itemCount > 0 ? (totalWidth / CGFloat(itemCount)) * 0.8 : 0
+                let spacing = itemCount > 0 ? (totalWidth / CGFloat(itemCount)) * 0.2 : 0
+                
+                HStack(alignment: .bottom, spacing: spacing) {
+                    ForEach(hourlyItems, id: \.id) { item in
+                        Rectangle()
+                            .fill(Color.blue)
+                            // Височината на лентата е пропорционална на шансa за валеж
+                            .frame(width: barWidth, height: geometry.size.height * CGFloat(item.precipChance))
+                    }
+                }
+            }
         }
     }
+
     
     private func precipitationTotalsSection(data: PrecipitationData) -> some View {
         VStack(alignment: .leading, spacing: 8) {

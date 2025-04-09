@@ -414,12 +414,15 @@ struct WeatherKitView: View {
     }
     
     private var hourlyForecastCard: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        // Определяме дали поне един елемент от колекцията отговаря на условието.
+        let isAnyPrecip = vm.next24HourlyForecast.contains { $0.precipChance >= 0.1 }
+        
+        return VStack(alignment: .leading, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 25) {
                     ForEach(vm.next24HourlyForecast.indices, id: \.self) { i in
                         let hourItem = vm.next24HourlyForecast[i]
-                        VStack(spacing: 12) {
+                        VStack {
                             Text(hourItem.hour)
                                 .font(.system(size: 14, weight: .medium))
                                 .foregroundColor(.primary)
@@ -430,11 +433,25 @@ struct WeatherKitView: View {
                                 .font(.title2)
                                 .frame(height: 30)
                             
+                            // Ако поне един елемент има precipChance >= 0.1, за всички резервираме място:
+                            if isAnyPrecip {
+                                if hourItem.precipChance >= 0.1 {
+                                    Text("\(Int(hourItem.precipChance * 100))%")
+                                        .font(.system(size: 12, weight: .medium))
+                                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 1.0))
+                                } else {
+                                    // Резервиране на място със скрит текст – това гарантира еднакво подравняване
+                                    Text("0%")
+                                        .font(.system(size: 12, weight: .medium))
+                                        .hidden()
+                                }
+                            }
+                            
                             Text("\(Int(hourItem.temp.rounded()))°")
                                 .font(.system(size: 18, weight: .medium))
                                 .foregroundColor(.primary)
                         }
-                        .padding(.vertical, 5)
+                        .padding(.vertical, 3)
                     }
                 }
                 .padding(.horizontal, 15)
@@ -444,6 +461,10 @@ struct WeatherKitView: View {
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
+
+
+
+
     
     private var tenDayForecastCard: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -512,7 +533,7 @@ struct WeatherKitView: View {
                 if let chance = dayItem.precipChance, chance >= 0.1 {
                     Text("\(Int((chance * 100).rounded()))%")
                         .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 0.8))
+                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 1.0))
                         .frame(width: 35)
                 } else {
                     Spacer().frame(width: 35)

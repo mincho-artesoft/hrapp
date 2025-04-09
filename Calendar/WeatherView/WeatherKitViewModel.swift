@@ -26,7 +26,9 @@ struct HourlyForecastItem: Identifiable {
     var temp: Double
     var feelsLikeTemp: Double
     var symbol: String
+    var precipChance: Double  // Добавяме процента за валеж (напр. от 0 до 100)
 }
+
 
 // MARK: - WEATHERKIT VIEW MODEL
 @MainActor
@@ -238,7 +240,8 @@ class WeatherKitViewModel: ObservableObject {
                 hour: label,
                 temp: hourData.temperature.value,
                 feelsLikeTemp: hourData.apparentTemperature.value,
-                symbol: hourData.symbolName
+                symbol: hourData.symbolName,
+                precipChance: hourData.precipitationChance  // Добавяне на стойността за валежната вероятност
             )
             tempArray.append(item)
         }
@@ -252,10 +255,12 @@ class WeatherKitViewModel: ObservableObject {
                 hour: hourString(from: hourData.date),
                 temp: hourData.temperature.value,
                 feelsLikeTemp: hourData.apparentTemperature.value,
-                symbol: hourData.symbolName
+                symbol: hourData.symbolName,
+                precipChance: hourData.precipitationChance  // Също така тук
             )
         }
     }
+
     
     /// Обновява 10-дневната прогноза (dailyForecast).
     private func updateDailyForecast(_ days: [DayWeather]) {
