@@ -30,6 +30,7 @@ struct WeatherDetailView: View {
     @State private var selectedDate: Date
     @State private var showingFeelsLike = false
     @State private var dragLocation: CGPoint? = nil
+    @State private var dragLocation2: CGPoint? = nil
 
     // Изтриваме state за popover, защото Menu ще се използва
     // @State private var showDropdown = false
@@ -994,7 +995,7 @@ struct WeatherDetailView: View {
                 }
                 
                 // Интерполация при Drag Gesture – показване на стойност на вероятността в проценти.
-                if let dragPoint = dragLocation {
+                if let dragPoint = dragLocation2 {
                     if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
                         let fractionIndex = (dragPoint.x - origin.x) / xStep
                         let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
@@ -1027,10 +1028,10 @@ struct WeatherDetailView: View {
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { value in
-                        dragLocation = value.location
+                        dragLocation2 = value.location
                     }
                     .onEnded { _ in
-                        dragLocation = nil
+                        dragLocation2 = nil
                     }
             )
             .frame(height: graphHeight + 20)
