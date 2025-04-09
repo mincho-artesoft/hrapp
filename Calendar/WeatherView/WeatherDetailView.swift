@@ -384,12 +384,18 @@ struct WeatherDetailView: View {
                                    .padding(.vertical)
                            } else {
                                ForEach(twoHourItemsForIcons, id: \.id) { item in
-                                   Image(systemName: "\(item.symbol).fill")
-                                       .symbolRenderingMode(item.symbol == "wind" ? .monochrome : .multicolor)
-                                       .foregroundColor(item.symbol == "wind" ? .white : .primary)
-                                       .font(.system(size: 13))
-                                       .frame(maxWidth: .infinity)
-                                       .offset(y: item.symbol == "cloud.fill" ? -5 : 0)
+                                   if item.symbol == "wind"{
+                                       Image(systemName: "\(item.symbol)")
+                                           .symbolRenderingMode(.multicolor)
+                                           .font(.system(size: 13))
+                                           .frame(maxWidth: .infinity)
+                                   }else{
+                                       Image(systemName: "\(item.symbol).fill")
+                                           .symbolRenderingMode(.multicolor)
+                                           .font(.system(size: 13))
+                                           .frame(maxWidth: .infinity)
+                                           .offset(y: item.symbol == "cloud.fill" ? -5 : 0)
+                                   }
                                }
                            }
                        }
@@ -811,9 +817,8 @@ struct WeatherDetailView: View {
         let hourMarkers = [0, 6, 12, 18, 24]
         
         let todayChance: Int = {
-            if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }),
-               let chance = dayItem.precipChance {
-                return Int(chance)
+            if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) {
+                return Int(dayItem.precipChance!*100)
             }
             return 0
         }()
