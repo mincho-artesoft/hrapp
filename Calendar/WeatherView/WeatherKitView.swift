@@ -10,6 +10,7 @@ struct WeatherKitView: View {
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel.shared
     @StateObject private var locationSearchVM = LocationSearchViewModel()
+    @Environment(\.colorScheme) var colorScheme
 
     // MARK: - UI State
     @State private var showSearchBar = false
@@ -432,13 +433,22 @@ struct WeatherKitView: View {
                                 .symbolRenderingMode(.multicolor)
                                 .font(.title2)
                                 .frame(height: 30)
+                                // Приложи отместването само ако hourItem.symbol е точно "cloud"
+                                .offset(y: hourItem.symbol == "cloud.fill" ? -5 : 0)
+
                             
                             // Ако поне един елемент има precipChance >= 0.1, за всички резервираме място:
                             if isAnyPrecip {
                                 if hourItem.precipChance >= 0.1 {
                                     Text("\(Int(hourItem.precipChance * 100))%")
                                         .font(.system(size: 12, weight: .medium))
-                                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 1.0))
+                                        .foregroundColor(
+                                            Color(
+                                                hue: 0.55,
+                                                saturation: 0.8,
+                                                brightness: colorScheme == .light ? 0.7 : 1.0
+                                             )
+                                        )
                                 } else {
                                     // Резервиране на място със скрит текст – това гарантира еднакво подравняване
                                     Text("0%")
@@ -533,7 +543,13 @@ struct WeatherKitView: View {
                 if let chance = dayItem.precipChance, chance >= 0.1 {
                     Text("\(Int((chance * 100).rounded()))%")
                         .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: 1.0))
+                        .foregroundColor(
+                            Color(
+                                hue: 0.55,
+                                saturation: 0.8,
+                                brightness: colorScheme == .light ? 0.7 : 1.0
+                             )
+                        )
                         .frame(width: 35)
                 } else {
                     Spacer().frame(width: 35)
