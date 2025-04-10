@@ -96,7 +96,7 @@ struct WeatherDetailView: View {
         let startOfDay = Calendar.current.startOfDay(for: selectedDate)
         var fullDayItems: [HourlyForecastItem] = []
         
-        for hourOffset in 0..<24 {
+        for hourOffset in 0...24 {
             let hourDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: startOfDay)!
             if let realItem = allHourlyItems.first(where: {
                 Calendar.current.isDate($0.date, equalTo: hourDate, toGranularity: .hour)
@@ -157,22 +157,26 @@ struct WeatherDetailView: View {
     private var yAxisRange: (min: Double, max: Double) {
         let allTemps = hourlyItemsForSelectedDate.flatMap { [$0.temp, $0.feelsLikeTemp] }
         guard let dataMin = allTemps.min(), let dataMax = allTemps.max(), !allTemps.isEmpty else {
-            return (-5, 35)
+            return (-10, 40)  // например някакъв fallback
         }
-        let rangeBuffer: Double = 5.0
+        // Увеличаваме rangeBuffer, ако искаш по-голямо “въздух” отгоре/отдолу
+        let rangeBuffer: Double = 10.0
         let minRangeSpan: Double = 20
-        var suggestedMin = floor(dataMin / 5.0) * 5.0 - rangeBuffer
-        var suggestedMax = ceil(dataMax / 5.0) * 5.0 + rangeBuffer
+        
+        // Заместваме 5.0 с 10.0
+        var suggestedMin = floor(dataMin / 10.0) * 10.0 - rangeBuffer
+        var suggestedMax = ceil(dataMax / 10.0) * 10.0 + rangeBuffer
+        
+        // Проверка за минимален диапазон
         if (suggestedMax - suggestedMin) < minRangeSpan {
             let center = (suggestedMax + suggestedMin) / 2.0
-            suggestedMin = center - (minRangeSpan / 2.0)
-            suggestedMax = center + (minRangeSpan / 2.0)
-            suggestedMin = floor(suggestedMin / 5.0) * 5.0
-            suggestedMax = ceil(suggestedMax / 5.0) * 5.0
+            let half = minRangeSpan / 2.0
+            suggestedMin = floor((center - half) / 10.0) * 10.0
+            suggestedMax = ceil((center + half) / 10.0) * 10.0
         }
         return (suggestedMin, suggestedMax)
     }
-    
+
     private var yAxisLabels: [Double] {
         stride(from: yAxisRange.max, through: yAxisRange.min, by: -5).map { $0 }
     }
@@ -1063,64 +1067,140 @@ struct WeatherDetailView: View {
                .init(color: orange,   location: temperatureToGradientLocation(30, range: yRange)),
                .init(color: red,      location: temperatureToGradientLocation(35, range: yRange))
            ])
-           
+        var feelsLikeMinMax: (min: Double, max: Double) {
+            let feelsLikeTemps = hourlyItemsForSelectedDate.map { $0.feelsLikeTemp }
+            return (feelsLikeTemps.min() ?? 0, feelsLikeTemps.max() ?? 0)
+        }
+
            VStack(spacing: 0) {
                // Първата част: показване на текущата температура, минимална/максимална стойност и иконка
                HStack(alignment: .top) {
                    if let dayItem = allDailyItems.first(where: {
                        Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
                    }) {
-                       if showingFeelsLike, let feelsLike = currentFeelsLikeTemp {
-                           VStack(alignment: .leading, spacing: 2) {
-                               Text("Feels Like")
-                                   .font(.system(size: 14, weight: .medium))
-                                   .foregroundColor(.secondary)
-                               Text("\(Int(round(feelsLike)))°")
-                                   .font(.system(size: 70, weight: .thin))
-                           }
-                       } else if let actual = currentActualTemp {
-                           VStack(alignment: .leading, spacing: 2) {
-                               Text("Actual")
-                                   .font(.system(size: 14, weight: .medium))
-                                   .foregroundColor(.secondary)
-                               HStack(alignment: .top, spacing: 10) {
-                                   Text("\(Int(round(actual)))°")
-                                       .font(.system(size: 70, weight: .thin))
-                                   VStack(alignment: .leading, spacing: 4) {
-                                       Text("H: \(Int(round(dayItem.maxTemp)))°")
-                                           .font(.system(size: 14, weight: .regular))
-                                       Text("L: \(Int(round(dayItem.minTemp)))°")
-                                           .font(.system(size: 14, weight: .regular))
-                                           .foregroundColor(.gray)
+                       // 1) Проверяваме дали избраният ден е “днешният”
+                       let isToday = Calendar.current.isDateInToday(dayItem.date)
+                       
+                       if isToday {
+                           // =============== CASE 1: Днешен ден ===============
+                           // Логиката за показване на текуща температура или feelsLike
+                           
+                           if showingFeelsLike, let feelsLike = currentFeelsLikeTemp {
+                               VStack(alignment: .leading, spacing: 2) {
+                                   Text("Feels Like")
+                                       .font(.system(size: 14, weight: .medium))
+                                       .foregroundColor(.secondary)
+                                   HStack(alignment: .top, spacing: 10) {
+                                       Text("\(Int(round(vm.currentFeelsLike!)))°")
+                                           .font(.system(size: 70, weight: .thin))
+                                           .foregroundColor(.white)
                                    }
                                }
+                           } else if let actual = currentActualTemp {
+                               VStack(alignment: .leading, spacing: 2) {
+                                   Text("Actual")
+                                       .font(.system(size: 14, weight: .medium))
+                                       .foregroundColor(.secondary)
+                                   HStack(alignment: .top, spacing: 10) {
+                                       Text("\(Int(round(vm.currentTemp!)))°")
+                                           .font(.system(size: 70, weight: .thin))
+                                           .foregroundColor(.white)
+                                       
+                                       VStack(alignment: .leading, spacing: 4) {
+                                           Text("H: \(Int(round(dayItem.maxTemp)))°")
+                                               .font(.system(size: 14, weight: .regular))
+                                           Text("L: \(Int(round(dayItem.minTemp)))°")
+                                               .font(.system(size: 14, weight: .regular))
+                                               .foregroundColor(.gray)
+                                       }
+                                   }
+                               }
+                           } else {
+                               // fallback ако липсва current temp
+                               Text("--°")
+                                   .font(.system(size: 70, weight: .thin))
+                                   .foregroundColor(.white)
                            }
+                           
+                           // Показваме символа (иконата) – без промяна
+                           Image(systemName: dayItem.symbol)
+                               .symbolVariant(.fill)
+                               .symbolRenderingMode(.multicolor)
+                               .font(.system(size: 40))
+                               .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
+                               .offset(y: 14)
+
+                           Spacer()
+                           
+                           // Бутонът за смяна на таба (UIWeatherMenuButtonRepresentable)
+                           UIWeatherMenuButtonRepresentable(
+                               currentView: selectedOption,
+                               onViewChange: { newTab in
+                                   selectedOption = newTab
+                               }
+                           )
+                           .frame(width: 30, height: 30)
+
                        } else {
-                           Text("--°")
-                               .font(.system(size: 70, weight: .thin))
-                       }
-                       Image(systemName: dayItem.symbol)
-                           .symbolVariant(.fill)
-                           .symbolRenderingMode(.multicolor)
-                           .font(.system(size: 40))
-                           .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
-                           .offset(y: 14)
-                       
-                       Spacer()
-                       UIWeatherMenuButtonRepresentable(
-                           currentView: selectedOption,
-                           onViewChange: { newTab in
-                               selectedOption = newTab
+                           HStack(){
+                              
+                               VStack(alignment: .leading, spacing: 6) {
+                                   HStack(alignment: .firstTextBaseline, spacing: 8) {
+                                       // Ако showingFeelsLike == true, показваме feels like max; иначе реалният max
+                                       if showingFeelsLike {
+                                           Text("\(Int(round(feelsLikeMinMax.max)))°")
+                                               .font(.system(size: 40, weight: .medium))
+                                               .foregroundColor(.white)
+                                           // Показваме и feels like min – можете да оцветите различно (например в сиво)
+                                           Text("\(Int(round(feelsLikeMinMax.min)))°")
+                                               .font(.system(size: 40, weight: .medium))
+                                               .foregroundColor(.gray)
+                                       } else {
+                                           // При нормално състояние показваме реалните температури от dayItem
+                                           Text("\(Int(round(dayItem.maxTemp)))°")
+                                               .font(.system(size: 40, weight: .medium))
+                                               .foregroundColor(.white)
+                                           Text("\(Int(round(dayItem.minTemp)))°")
+                                               .font(.system(size: 40, weight: .medium))
+                                               .foregroundColor(.gray)
+                                       }
+                                   }
+                               }
+                               .offset(y: 14)
+
+                               
+                               
+                               // Символът за време (например cloud.sun.fill)
+                               Image(systemName: dayItem.symbol)
+                                   .symbolVariant(.fill)
+                                   .symbolRenderingMode(.multicolor)
+                                   .font(.system(size: 40))
+                                   .shadow(color: .black.opacity(0.1), radius: 1, y: 1)
+                               
+                               
+                               Spacer()
+                               
+                               // Бутонът за табове (същия като горе)
+                               UIWeatherMenuButtonRepresentable(
+                                currentView: selectedOption,
+                                onViewChange: { newTab in
+                                    selectedOption = newTab
+                                }
+                               )
+                               .frame(width: 30, height: 30)
                            }
-                       )
-                       .frame(width: 30, height: 30)
+                           .padding(.bottom, 25)
+
+                       }
                        
                    } else {
+                       // fallback, ако няма DayForecastItem за избрания ден
                        Text("--°")
                            .font(.system(size: 70, weight: .thin))
                        Spacer()
                    }
                }
+
                
                // Втората част: Часови икони с надложен затъмнителен слой за миналото.
                GeometryReader { geo in
@@ -1369,74 +1449,68 @@ struct WeatherDetailView: View {
                 // *** Блок за Drag Gesture – вертикална линия с интерполация ***
                 if let dragPoint = dragLocationTEMP {
                     if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
-                        // Изчисляване на позиционирането в данните
+                        // 1) fractionIndex: figure out which hour(s) we’re between
                         let fractionIndex = (dragPoint.x - origin.x) / xStep
                         let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
                         let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
                         let t: CGFloat = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
                         
-                        // Интерполация на температурата
-                        let interpolatedTemp = currentTemperatures[lowerIndex] + (currentTemperatures[upperIndex] - currentTemperatures[lowerIndex]) * Double(t)
+                        // 2) Interpolate temperature
+                        let interpolatedTemp = currentTemperatures[lowerIndex]
+                            + (currentTemperatures[upperIndex] - currentTemperatures[lowerIndex]) * Double(t)
                         
-                        // Интерполация на y–координатата
+                        // 3) Interpolate y
                         var interpolatedY: CGFloat = points[lowerIndex].y
                         if upperIndex != lowerIndex {
-                            interpolatedY = points[lowerIndex].y + t * (points[upperIndex].y - points[lowerIndex].y)
+                            interpolatedY += t * (points[upperIndex].y - points[lowerIndex].y)
                         }
                         let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
                         
-                        // Чертаем вертикална линия през точката (от горната до долната граница на графиката)
+                        // 4) Vertical line
                         var verticalLine = Path()
                         verticalLine.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
                         verticalLine.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
                         context.stroke(verticalLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
                         
-                        // Рисуване на маркера (точката)
+                        // 5) Dot
                         let dotRect = CGRect(center: dotPoint, radius: 4)
                         context.fill(Path(ellipseIn: dotRect), with: .color(.white))
                         
-                        // Извличане на елемента от данни, според приблизителния индекс
-                        let selectedIndex = max(0, min(hourlyItemsForSelectedDate.count - 1, Int(round(fractionIndex))))
+                        // 6) Figure out the time label (HH:mm)
+                        let selectedIndex = max(0, min(hourlyItemsForSelectedDate.count - 1,
+                                                      Int(round(fractionIndex))))
                         let forecastItem = hourlyItemsForSelectedDate[selectedIndex]
                         
-                        // Изчисляване на интерполираната дата за точните минути (добавяме дробна част от час към базовата дата)
                         let baseDate = hourlyItemsForSelectedDate[lowerIndex].date
-                        let secondsOffset = (fractionIndex - CGFloat(lowerIndex)) * 3600.0  // 1 час = 3600 секунди
+                        let secondsOffset = (fractionIndex - CGFloat(lowerIndex)) * 3600.0
                         let interpolatedDate = baseDate.addingTimeInterval(TimeInterval(secondsOffset))
                         
-                        // Фиксирано изместване за надписите вдясно от вертикалната линия
-                        let labelOffset: CGFloat = 8
-                        
-                        // Рисуване на иконата чрез Text (използва се вграден Image за SF Symbol)
-                        let iconSize: CGFloat = 10
-                        let iconText = Text(Image(systemName: forecastItem.symbol))
-                            .font(.system(size: iconSize))
-                            .foregroundColor(.white)
-                        let iconPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 45)
-                        context.draw(iconText, at: iconPoint, anchor: .leading)
-                        
-                        // Форматиране на времето с минути (напр. "14:30")
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "HH:mm"
                         let exactTime = dateFormatter.string(from: interpolatedDate)
                         
-                        // Рисуване на времето като текст вдясно от вертикалната линия
-                        let timeText = Text(exactTime)
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundColor(.white)
-                        let timePoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 30)
-                        context.draw(timeText, at: timePoint, anchor: .leading)
+                        // 7) We want the text to go on the left side if hour >= 12
+                        let hourOfDrag = Double(lowerIndex) + Double(t) // an approximate “hour index”
                         
-                        // Рисуване на температурата като текст вдясно от вертикалната линия
-                        let temperatureText = Text("\(Int(round(interpolatedTemp)))°")
+                        // By default, place text on the right
+                        var labelAnchor: UnitPoint = .bottomLeading
+                        var textX = dotPoint.x + 8
+                        
+                        // If we’re after the 12th hour, place text on the LEFT
+                        if hourOfDrag >= 12 {
+                            labelAnchor = .bottomTrailing
+                            textX = dotPoint.x - 8
+                        }
+                        
+                        // 8) Draw the label
+                        let labelText = Text("\(exactTime)\n\(Int(round(interpolatedTemp)))°")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.white)
-                        let tempPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
-                        context.draw(temperatureText, at: tempPoint, anchor: .leading)
+                        
+                        let textPoint = CGPoint(x: textX, y: dotPoint.y - 20)
+                        context.draw(labelText, at: textPoint, anchor: labelAnchor)
                     }
                 }
-
-
             }
             .gesture(
                 DragGesture(minimumDistance: 0)
@@ -1579,18 +1653,27 @@ struct WeatherDetailView: View {
         }()
         
         VStack(spacing: 0) {
-          
-                VStack(alignment: .leading, spacing: 5) {
-                     Text("Chance of Precipitation")
-                         .font(.system(size: 16, weight: .semibold))
-                     Text("Today's chance: \(todayChance)%")
-                         .font(.system(size: 13))
-                         .foregroundColor(.white.opacity(0.8))
-                 }
-                 .frame(maxWidth: .infinity, alignment: .leading) // Задава максимална ширина и ляво подравняване
-                 .padding(.horizontal)
-                 .offset(x: -18)
-         
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Chance of Precipitation")
+                    .font(.system(size: 16, weight: .semibold))
+                Text({
+                    if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
+                        return "Today's chance: \(todayChance)%"
+                    } else {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "EEEE" // пълното име на деня от седмицата (напр. Monday)
+                        let dayName = formatter.string(from: selectedDate)
+                        return "\(dayName)'s chance: \(todayChance)%"
+                    }
+                }())
+                .font(.system(size: 13))
+                .foregroundColor(.white.opacity(0.8))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading) // Задава максимална ширина и ляво подравняване
+            .padding(.horizontal)
+            .offset(x: -18)
+
 
             
             // Графиката с Canvas – чертае линия с запълнената област, марки и интерактивен drag gesture
@@ -1622,7 +1705,7 @@ struct WeatherDetailView: View {
                     let labelPoint = CGPoint(x: origin.x + graphContentWidth + 15, y: yPos)
                     context.draw(
                         Text("\(Int(marker * 100))%")
-                            .font(.system(size: 10))
+                            .font(.system(size: 8))
                             .foregroundColor(.gray),
                         at: labelPoint,
                         anchor: .center
@@ -1767,21 +1850,22 @@ struct WeatherDetailView: View {
                 }
                 
                 // Интерполация при Drag Gesture – показване на стойност на вероятността в проценти.
+                // Интерполация при Drag Gesture – показване на стойност на вероятността в проценти.
                 if let dragPoint = dragLocationPreci {
                     if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
-                        
                         // 1) fractionIndex – позиция (0...n) между точките
                         let fractionIndex = (dragPoint.x - origin.x) / xStep
-                        
+
                         // 2) Индекси на „долната“ и „горната“ точки
                         let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
                         let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
                         let t = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
-                        
+
                         // 3) Интерполация на вероятността за валеж (precipData)
                         let lowerValue = precipData[lowerIndex]
                         let upperValue = precipData[upperIndex]
                         let interpolatedChance = lowerValue + (upperValue - lowerValue) * Double(t)
+                        let precipPercent = Int(interpolatedChance * 100)
                         
                         // 4) Интерполация на координатата по Y (графиката)
                         var interpolatedY = points[lowerIndex].y
@@ -1789,26 +1873,26 @@ struct WeatherDetailView: View {
                             interpolatedY = points[lowerIndex].y + t * (points[upperIndex].y - points[lowerIndex].y)
                         }
                         let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
-                        
+
                         // 5) Вертикална линия, която показва текущата X позиция
                         var verticalPath = Path()
                         verticalPath.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
                         verticalPath.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
                         context.stroke(verticalPath, with: .color(.white.opacity(0.5)), lineWidth: 1)
-                        
+
                         // 6) Малка бяла точка (dot), за да маркираме мястото
                         let dotRect = CGRect(center: dotPoint, radius: 4)
                         context.fill(Path(ellipseIn: dotRect), with: .color(.white))
-                        
-                        // 7) Интерполираме и времето, за да покажем точния "HH:mm"
+
+                        // 7) Интерполация на времето (чч:мм)
                         let timeLabelString: String
                         if lowerIndex < hourlyItemsForSelectedDate.count, upperIndex < hourlyItemsForSelectedDate.count {
                             let lowerDate = hourlyItemsForSelectedDate[lowerIndex].date
                             let upperDate = hourlyItemsForSelectedDate[upperIndex].date
-                            
+
                             let totalInterval = upperDate.timeIntervalSince(lowerDate)
                             let interpolatedDate = lowerDate.addingTimeInterval(totalInterval * Double(t))
-                            
+
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "HH:mm"
                             timeLabelString = dateFormatter.string(from: interpolatedDate)
@@ -1816,17 +1900,36 @@ struct WeatherDetailView: View {
                             timeLabelString = "--:--"
                         }
 
-                        // 8) Подготвяме многострочен етикет (час + % шанс за валеж)
-                        let combinedLabel = Text("\(timeLabelString)\n\(Int(interpolatedChance * 100))%")
+                        // 8) Създаваме етикета с времето и процента
+                        let combinedLabel = Text("\(timeLabelString)\n\(precipPercent)%")
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.white)
-                        
-                        // 9) Позиционираме го малко вдясно и нагоре (за да не се застъпва с точката)
+
+                        // 9) Определяме дали dragPoint е в дясната (след средата) или в лявата половина
+                        let isAfterMidday = dragPoint.x > origin.x + graphContentWidth / 2
                         let labelOffset: CGFloat = 8
-                        let textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
-                        
-                        // Използваме .bottomLeading, за да „стъпи“ долният ред (процентът) там, където сме задали textPoint
-                        context.draw(combinedLabel, at: textPoint, anchor: .bottomLeading)
+                        let textPoint: CGPoint
+                        let anchor: UnitPoint
+
+                        // Ако стойността е 50 или повече, етикетът да се показва под точката, иначе над нея.
+                        if precipPercent >= 50 {
+                            if isAfterMidday {
+                                textPoint = CGPoint(x: dotPoint.x - labelOffset, y: dotPoint.y + 20)
+                                anchor = .topTrailing
+                            } else {
+                                textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y + 20)
+                                anchor = .topLeading
+                            }
+                        } else {
+                            if isAfterMidday {
+                                textPoint = CGPoint(x: dotPoint.x - labelOffset, y: dotPoint.y - 20)
+                                anchor = .bottomTrailing
+                            } else {
+                                textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
+                                anchor = .bottomLeading
+                            }
+                        }
+                        context.draw(combinedLabel, at: textPoint, anchor: anchor)
                     }
                 }
             }

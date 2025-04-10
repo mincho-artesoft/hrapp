@@ -132,7 +132,7 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
         case 3: return UIImage(systemName: "drop.fill")
         case 4: return UIImage(systemName: "humidity")
         case 5: return UIImage(systemName: "eye.fill")
-        case 6: return UIImage(systemName: "align.vertical.top")
+        case 6: return UIImage(systemName: "gauge")
         default: return UIImage(systemName: "gauge")
         }
     }
