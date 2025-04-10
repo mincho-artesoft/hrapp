@@ -31,6 +31,7 @@ struct DayForecastItem: Identifiable, Equatable {
     // (Optional) If you want a daily maximum UV or anything else:
     var maxUV: Int
     
+    
     var maxWindSpeed: Double  // e.g. the day’s highest wind speed (km/h)
     var maxWindGust: Double  // day’s max wind gust (km/h), optional
     var predominantWindDirection: Double // e.g.  in degrees (0–360)
