@@ -19,6 +19,10 @@ struct DayForecastItem: Identifiable, Equatable {
     var rainLast24h: Double     // Дъжд (мм)
     var snowLast24h: Double     // Сняг (напр. в см или мм)
     
+    var precipitationAmount : Double
+    var reinAmount : Double
+    var snowfallAmount: Double
+
     // За следващите 24 часа
     var precipNext24h: Double  // Общ валеж (мм)
     var rainNext24h: Double    // Дъжд (мм)
@@ -50,8 +54,8 @@ struct HourlyForecastItem: Identifiable {
     var feelsLikeTemp: Double
     var symbol: String
     var precipChance: Double          // Шанс за валеж (0...1)
-    var precipitationAmount: Double?  // Количество валеж (мм) за конкретния час
-    
+    var precipitationAmount: Double  // Количество валеж (мм) за конкретния час
+    var snowfallAmount: Double
     // NEW: add UV Index if available in your data source
     var uvIndex: Int
     
@@ -62,6 +66,8 @@ struct HourlyForecastItem: Identifiable {
     var humidity: Double
     
     var visibility: Double
+    
+    var pressure: Double
 
 }
 
@@ -275,12 +281,15 @@ class WeatherKitViewModel: ObservableObject {
                 feelsLikeTemp: hourData.apparentTemperature.value,
                 symbol: hourData.symbolName,
                 precipChance: hourData.precipitationChance,
+                precipitationAmount: hourData.precipitationAmount.value,
+                snowfallAmount: hourData.snowfallAmount.value,
                 uvIndex: hourData.uvIndex.value,
                 windSpeed: hourData.wind.speed.value,
                 windGust: hourData.wind.gust!.value,
                 windDirection: hourData.wind.direction.converted(to: .degrees).value,
                 humidity: hourData.humidity,
                 visibility: hourData.visibility.value / 1000,
+                pressure: hourData.pressure.value,
 
             )
             tempArray.append(item)
@@ -298,13 +307,14 @@ class WeatherKitViewModel: ObservableObject {
                 symbol: hourData.symbolName,
                 precipChance: hourData.precipitationChance,
                 precipitationAmount: hourData.precipitationAmount.value,
+                snowfallAmount: hourData.snowfallAmount.value,
                 uvIndex: hourData.uvIndex.value,
                 windSpeed: hourData.wind.speed.value,
-                windGust: hourData.wind.gust?.value ?? 0,
+                windGust: hourData.wind.gust!.value,
                 windDirection: hourData.wind.direction.converted(to: .degrees).value,
                 humidity: hourData.humidity,
                 visibility: hourData.visibility.value / 1000,
-
+                pressure: hourData.pressure.value,
             )
         }
     }
@@ -363,6 +373,10 @@ class WeatherKitViewModel: ObservableObject {
                 precipLast24h: precipitationValue,
                 rainLast24h: isLikelySnow ? 0 : precipitationValue,
                 snowLast24h: isLikelySnow ? precipitationValue : 0,
+                precipitationAmount: dayData.precipitationAmount.value,
+                reinAmount: dayData.rainfallAmount.value,
+                snowfallAmount: dayData.snowfallAmount.value,
+                
                 // Валеж за следващите 24 часа – суми от почасовата прогноза
                 precipNext24h: totalHourlyPrecip,
                 rainNext24h: totalHourlyRain,

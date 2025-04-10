@@ -30,7 +30,10 @@ struct WeatherDetailView: View {
     @State private var dragLocationWind: CGPoint? = nil
     @State private var dragLocationHumidity: CGPoint? = nil
     @State private var dragLocationVisibility: CGPoint? = nil
+    @State private var dragPressureVisibility: CGPoint? = nil
+    @State private var dragPrecipAmauntVisibility: CGPoint? = nil
 
+    
     // Изтриваме state за popover, защото Menu ще се използва
     // @State private var showDropdown = false
     
@@ -108,12 +111,15 @@ struct WeatherDetailView: View {
                     feelsLikeTemp: 0,
                     symbol: "nosign",
                     precipChance: 0,
+                    precipitationAmount: 0,
+                    snowfallAmount: 0,
                     uvIndex: 0,
                     windSpeed: 0,
                     windGust: 0,
                     windDirection: 0,
                     humidity: 0,
-                    visibility: 0
+                    visibility: 0,
+                    pressure: 0,
                 )
                 fullDayItems.append(placeholder)
             }
@@ -188,55 +194,80 @@ struct WeatherDetailView: View {
                         .padding(.horizontal)
                         .padding(.bottom, 5)
                     
-                    visibilityGraphSection()
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    humidityGraphSection()
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    windGraphSection()
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    hourlyGraphSection()
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    chanceOfPrecipGraphSection()
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    UVGraphSection()
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    if let todayForecast = allDailyItems.first(where: {
-                        Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
-                    }) {
-                        precipitationTotalsSection(for: todayForecast)
-                            .padding(.horizontal)
-                            .padding(.bottom)
-                    }
-                    
-                    forecastSection(summary: forecastSummary)
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    dailyComparisonSection(data: comparisonData)
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    aboutFeelsLikeSection
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    optionsSection
-                        .padding(.horizontal)
-                        .padding(.bottom)
-                    
-                    Spacer()
+                         switch selectedOption {
+                         case 0:
+                             hourlyGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                             chanceOfPrecipGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                             if let todayForecast = allDailyItems.first(where: {
+                                 Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                             }) {
+                                 precipitationTotalsSection(for: todayForecast)
+                                     .padding(.horizontal)
+                                     .padding(.bottom)
+                             }
+                             
+                             forecastSection(summary: forecastSummary)
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                             dailyComparisonSection(data: comparisonData)
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                             aboutFeelsLikeSection
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                             optionsSection
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                             Spacer()
+                             
+                         case 1:
+                             UVGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                         case 2:
+                             windGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                         case 3:
+                             precipAmauntDiagranmSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                             chanceOfPrecipGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                           
+                         case 4:
+                             humidityGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                         case 5:
+                             visibilityGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                         case 6:
+                             pressureGraphSection()
+                                 .padding(.horizontal)
+                                 .padding(.bottom)
+                             
+                         default:
+                             EmptyView()
+                         }
                 }
             }
         }
@@ -303,6 +334,705 @@ struct WeatherDetailView: View {
         .padding(.bottom, 10)
     }
 
+    /// Помощна функция, която изчислява долна и горна граница (suggestedMin / suggestedMax)
+    /// за масива от налягания, като добавя буфер и гарантира минимален диапазон.
+    private func calculatePressureRange(from values: [Double]) -> (Double, Double) {
+        let minPressure = values.min() ?? 1000
+        let maxPressure = values.max() ?? 1020
+        
+        let rangeBuffer: Double = 3
+        let minRangeSpan: Double = 15
+
+        var sMin = floor(minPressure / 5) * 5 - rangeBuffer
+        var sMax = ceil(maxPressure / 5) * 5 + rangeBuffer
+
+        if (sMax - sMin) < minRangeSpan {
+            let midpoint = (sMax + sMin) / 2
+            sMin = midpoint - (minRangeSpan / 2)
+            sMax = midpoint + (minRangeSpan / 2)
+            sMin = floor(sMin / 5) * 5
+            sMax = ceil(sMax / 5) * 5
+        }
+
+        return (sMin, sMax)
+    }
+
+    private func precipAmauntDiagranmSection() -> some View {
+        // 1) Подготвяме нужните данни за всеки час (RAIN + SNOW)
+        let hourlyData = hourlyItemsForSelectedDate
+        let maxRain = hourlyData.map { $0.precipitationAmount }.max() ?? 0
+        let maxSnow = hourlyData.map { $0.snowfallAmount }.max() ?? 0
+        let maxPrecip = max(maxRain, maxSnow)
+        
+        // 2) Задаваме горна граница (yRange.max) с буфер, гарантираме и минимален обхват
+        let rangeBuffer: Double = 2
+        let minRangeSpan: Double = 10
+        
+        var suggestedMax = ceil(maxPrecip / 1) * 1 + rangeBuffer
+        if suggestedMax < minRangeSpan {
+            suggestedMax = minRangeSpan
+        }
+        let yRange: (min: Double, max: Double) = (0, suggestedMax)
+        
+        // Примерни прагове за light / moderate / heavy (mm/h)
+        let thresholds: [Double] = [1.0, 4.0, 10.0]
+        
+        // fractionOfDay – за shading при текущия ден
+        let now = Date()
+        let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
+        let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+        
+        // 3) Връщаме изглед (View)
+        return VStack(spacing: 0) {
+            
+            // Заглавие и кратък описателен текст
+            VStack() {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Precipitation Amount")
+                        .font(.system(size: 16, weight: .semibold))
+                    Text("Hourly bars for rain & snow (mm/h).")
+                        .font(.system(size: 13))
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .offset(x: -10)
+                
+                Spacer()
+                UIWeatherMenuButtonRepresentable(
+                    currentView: selectedOption,
+                    onViewChange: { newTab in
+                        selectedOption = newTab
+                    }
+                )
+                .frame(width: 30, height: 30)
+            }
+           
+            // (По желание) горен ред за средни стойности на всеки 2 часа, тук само празно:
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Color.clear
+                    
+                    // Ако е днешен ден, частично засенчваме изминалата част
+                    if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                        let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
+                        Rectangle()
+                            .fill(Color.black.opacity(0.4))
+                            .frame(width: overlayWidth)
+                    }
+                }
+            }
+            .frame(height: 20)
+            .padding(.horizontal, graphPadding)
+            .offset(y: 20)
+            
+            
+            // Основната графика (Canvas) – барове за Rain и Snow
+            Canvas { context, size in
+                guard hourlyData.count > 1,
+                      size.width > graphPadding,
+                      size.height > graphPadding * 2
+                else { return }
+                
+                let w = size.width
+                let h = size.height
+                let origin = CGPoint(x: graphPadding, y: h - graphPadding)
+                let contentWidth  = w - graphPadding * 2
+                let contentHeight = h - graphPadding * 2
+                
+                func yPos(_ val: Double) -> CGFloat {
+                    // По-голяма стойност -> по-нагоре
+                    let ratio = val / (yRange.max - yRange.min)
+                    return origin.y - CGFloat(ratio) * contentHeight
+                }
+                
+                // (A) Рисуваме хоризонталните линии през 2 mm/h
+                let step: Double = 2
+                let regularMarkers = stride(from: 0.0, through: yRange.max, by: step)
+                for marker in regularMarkers {
+                    let lineY = yPos(marker)
+                    var path = Path()
+                    path.move(to: CGPoint(x: origin.x, y: lineY))
+                    path.addLine(to: CGPoint(x: origin.x + contentWidth, y: lineY))
+                    context.stroke(
+                        path,
+                        with: .color(.gray.opacity(0.3)),
+                        style: StrokeStyle(lineWidth: 0.5)
+                    )
+                    
+                    // Надпис вдясно
+                    let labelPt = CGPoint(x: origin.x + contentWidth + 15, y: lineY)
+                    context.draw(
+                        Text("\(Int(marker))")
+                            .font(.system(size: 10))
+                            .foregroundColor(.gray),
+                        at: labelPt,
+                        anchor: .center
+                    )
+                }
+                
+                // (B) Специални threshold линии (Light/Moderate/Heavy)
+                for threshold in thresholds {
+                    guard threshold <= yRange.max else { continue }
+                    let lineY = yPos(threshold)
+                    var path = Path()
+                    path.move(to: CGPoint(x: origin.x, y: lineY))
+                    path.addLine(to: CGPoint(x: origin.x + contentWidth, y: lineY))
+                    context.stroke(
+                        path,
+                        with: .color(.white.opacity(0.5)),
+                        style: StrokeStyle(lineWidth: 1, dash: [4, 4])
+                    )
+                    
+                    // Малък надпис
+                    let label: String
+                    switch threshold {
+                    case 1.0:  label = "Light"
+                    case 4.0:  label = "Moderate"
+                    case 10.0: label = "Heavy"
+                    default:   label = ""
+                    }
+                    let labelPt = CGPoint(x: origin.x , y: lineY)
+                    context.draw(
+                        Text(label)
+                            .font(.system(size: 10, weight: .semibold))
+                            .foregroundColor(.white.opacity(0.7)),
+                        at: labelPt,
+                        anchor: .topLeading
+                    )
+                }
+                
+                // (C) Вертикални часови маркери (0,6,12,18,24)
+                let hourMarkers = [0,6,12,18,24]
+                for hour in hourMarkers {
+                    let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
+                    var vLine = Path()
+                    vLine.move(to: CGPoint(x: xPos, y: graphPadding))
+                    vLine.addLine(to: CGPoint(x: xPos, y: origin.y))
+                    context.stroke(
+                        vLine,
+                        with: .color(.gray.opacity(0.3)),
+                        style: StrokeStyle(lineWidth: 0.5)
+                    )
+                }
+                
+                // (D) Барове за всеки час (2 колони: Rain / Snow)
+                let xStep = contentWidth / 24
+                let barWidth = xStep / 2.5
+                
+                for (i, item) in hourlyData.enumerated() {
+                    let groupXCenter = origin.x + xStep * (CGFloat(i) + 0.5)
+                    
+                    // Rain бар
+                    let rainVal = item.precipitationAmount
+                    if rainVal > 0 {
+                        let barLeftX  = groupXCenter - barWidth * 1.05
+                        let topY      = yPos(rainVal)
+                        let barHeight = max(0, origin.y - topY)
+                        let barRect   = CGRect(x: barLeftX, y: topY, width: barWidth, height: barHeight)
+                        context.fill(Path(barRect), with: .color(.blue))
+                    }
+                    
+                    // Snow бар
+                    let snowVal = item.snowfallAmount
+                    if snowVal > 0 {
+                        let barRightX = groupXCenter + (barWidth * 0.05)
+                        let topY      = yPos(snowVal)
+                        let barHeight = max(0, origin.y - topY)
+                        let barRect   = CGRect(x: barRightX, y: topY, width: barWidth, height: barHeight)
+                        context.fill(Path(barRect), with: .color(.white))
+                    }
+                }
+                
+                // (E) Засенчване на изминали часове, ако е днес
+                if Calendar.current.isDate(now, inSameDayAs: selectedDate),
+                   let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
+                       Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
+                   }) {
+                    
+                    let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+                    // Вертикална линия за "сега"
+                    var nowLine = Path()
+                    nowLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                    nowLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                    context.stroke(
+                        nowLine,
+                        with: .color(.white.opacity(0.8)),
+                        style: StrokeStyle(lineWidth: 2)
+                    )
+                    
+                    // Тъмно shading
+                    let darkRect = CGRect(
+                        x: origin.x,
+                        y: graphPadding,
+                        width: currentXPos - origin.x,
+                        height: contentHeight
+                    )
+                    context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+                }
+                
+                // (F) Часови надписи в долната част
+                for hour in hourMarkers {
+                    let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
+                    let textPoint = CGPoint(x: xPos, y: origin.y + 14)
+                    context.draw(
+                        Text(String(format: "%02d", hour))
+                            .font(.system(size: 11))
+                            .foregroundColor(.gray),
+                        at: textPoint,
+                        anchor: .center
+                    )
+                }
+                
+                // (G) Drag Gesture – показва Rain / Snow за съответния час
+                if let dragPoint = dragPrecipAmauntVisibility {
+                    let localX = dragPoint.x - origin.x
+                    if localX >= 0, localX < contentWidth {
+                        let hourIndex = Int(floor(localX / xStep))
+                        if hourIndex >= 0, hourIndex < hourlyData.count {
+                            let item = hourlyData[hourIndex]
+                            
+                            let highlightX = origin.x + (CGFloat(hourIndex) + 0.5) * xStep
+                            // Вертикална подсказваща линия
+                            var highlightLine = Path()
+                            highlightLine.move(to: CGPoint(x: highlightX, y: graphPadding))
+                            highlightLine.addLine(to: CGPoint(x: highlightX, y: origin.y))
+                            context.stroke(highlightLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
+                            
+                            // Tooltip
+                            let df = DateFormatter()
+                            df.dateFormat = "HH"
+                            let hourStr = df.string(from: item.date)
+                            let rVal = item.precipitationAmount
+                            let sVal = item.snowfallAmount
+                            let labelText = """
+                                \(hourStr)h
+                                Rain: \(String(format: "%.1f", rVal)) mm/h
+                                Snow: \(String(format: "%.1f", sVal)) mm/h
+                                """
+                            let tooltipPt = CGPoint(x: highlightX + 6, y: graphPadding + 15)
+                            
+                            context.draw(
+                                Text(labelText)
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundColor(.white),
+                                at: tooltipPt,
+                                anchor: .topLeading
+                            )
+                        }
+                    }
+                }
+            }
+            .frame(height: 250)
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        dragPrecipAmauntVisibility = value.location
+                    }
+                    .onEnded { _ in
+                        dragPrecipAmauntVisibility = nil
+                    }
+            )
+            
+            // Divider
+            Divider()
+                .background(Color.gray.opacity(0.4))
+                .padding(.horizontal, graphPadding / 2)
+                .padding(.top, 2)
+            
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Bars show hourly Rain (blue) and Snow (white).")
+                Text("Light <1 mm/h, moderate up to ~4 mm/h, heavy above 10 mm/h.")
+            }
+            .font(.caption)
+            .foregroundColor(.secondary)
+            .offset(y: 20)
+            
+        }
+        .padding(.bottom, 8)
+        // (H) Някакъв финален описателен текст
+       
+    }
+
+
+    
+    @ViewBuilder
+    private func pressureGraphSection() -> some View {
+        // 1) Извличаме почасовите стойности (hPa) за избрания ден
+        let pressureValues = hourlyItemsForSelectedDate.map { $0.pressure }
+
+        // 2) Ако няма данни, показваме fallback
+        if pressureValues.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Pressure")
+                    .font(.system(size: 16, weight: .semibold))
+                Text("No pressure data available for this day.")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+            .padding(.bottom, 8)
+
+        } else {
+            // 3) Изчисляваме препоръчителен мин/макс (с буфер)
+            let (suggestedMin, suggestedMax) = calculatePressureRange(from: pressureValues)
+
+            // Реален min/max (без буфер), ако искаме да ги показваме в текста
+            let realMin = Int(round(pressureValues.min() ?? 1000))
+            let realMax = Int(round(pressureValues.max() ?? 1020))
+
+            // 4) fractionOfDay => колко част от деня е минала (за shading, ако е днес)
+            let now = Date()
+            let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
+            let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+
+            VStack(spacing: 0) {
+                VStack() {
+                    // MARK: Заглавна част
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Pressure")
+                            .font(.system(size: 16, weight: .semibold))
+                        Text("Today's min \(realMin) hPa – max \(realMax) hPa")
+                            .font(.system(size: 13))
+                            .foregroundColor(.white.opacity(0.8))
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .offset(x: -10)
+                Spacer()
+                UIWeatherMenuButtonRepresentable(
+                    currentView: selectedOption,
+                    onViewChange: { newTab in
+                        selectedOption = newTab
+                    }
+                )
+                .frame(width: 30, height: 30)
+            }
+               
+                
+                // MARK: Ред с иконки (arrow.up / arrow.down / equal) – на всеки 2 часа
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        HStack(spacing: 0) {
+                            // Взимаме всички почасови елементи, но само през 2 часа
+                            let twoHourPressures = hourlyItemsForSelectedDate
+                                .enumerated()
+                                .filter { $0.offset % 2 == 0 } // взимаме на всеки 2 часа
+                            
+                            if twoHourPressures.isEmpty {
+                                Text("No hourly data available for this day.")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.vertical)
+                            } else {
+                                ForEach(twoHourPressures, id: \.element.id) { (originalIndex, item) in
+
+                                    // (A) Локален closure, който изчислява какво да бъде името на иконата.
+                                    let iconName: String = {
+                                        if originalIndex >= 2 {
+                                            let prevItem = hourlyItemsForSelectedDate[originalIndex - 2]
+                                            let diff = item.pressure - prevItem.pressure
+                                            
+                                            if diff > 0.2 {
+                                                return "arrowshape.up.fill"
+                                            } else if diff < -0.2 {
+                                                return "arrowshape.down.fill"
+                                            } else {
+                                                return "equal"
+                                            }
+                                        } else {
+                                            return "equal"
+                                        }
+                                    }()
+
+                                    // (B) Вече чертаем Image
+                                    Image(systemName: iconName)
+                                        .font(.system(size: 13))
+                                        .frame(maxWidth: .infinity)
+                                }
+
+                            }
+                        }
+                        
+                        // Частично засенчваме миналите часове, ако избраният ден е "днес"
+                        if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                            let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
+                            Rectangle()
+                                .fill(Color.black.opacity(0.4))
+                                .frame(width: overlayWidth)
+                        }
+                    }
+                }
+                .frame(height: 20)
+                .padding(.horizontal, graphPadding)
+                .offset(y: 5)  // може да коригирате offset според визията си
+                
+                
+                // MARK: - Основна графика (Canvas)
+                Canvas { context, size in
+                    guard pressureValues.count > 1,
+                          size.width > graphPadding,
+                          size.height > graphPadding * 2
+                    else { return }
+
+                    let w = size.width
+                    let h = size.height
+                    let origin = CGPoint(x: graphPadding, y: h - graphPadding)
+                    let contentWidth  = w - graphPadding * 2
+                    let contentHeight = h - graphPadding * 2
+
+                    func yPosition(_ val: Double) -> CGFloat {
+                        let range = suggestedMax - suggestedMin
+                        let ratio = (val - suggestedMin) / range
+                        return origin.y - CGFloat(ratio) * contentHeight
+                    }
+
+                    // Хоризонтални линии (примерно през 5 hPa)
+                    let step: Double = 5
+                    let horizontalMarkers = stride(from: suggestedMin,
+                                                   through: suggestedMax,
+                                                   by: step)
+                    for marker in horizontalMarkers {
+                        let yPos = yPosition(marker)
+                        var hLine = Path()
+                        hLine.move(to: CGPoint(x: origin.x, y: yPos))
+                        hLine.addLine(to: CGPoint(x: origin.x + contentWidth, y: yPos))
+                        context.stroke(
+                            hLine,
+                            with: .color(.gray.opacity(0.3)),
+                            style: StrokeStyle(lineWidth: 0.5)
+                        )
+                        
+                        // Надпис вдясно
+                        let labelPt = CGPoint(x: origin.x + contentWidth + 15, y: yPos)
+                        context.draw(
+                            Text("\(Int(marker))")
+                                .font(.system(size: 8)) // може да нагласите размера
+                                .foregroundColor(.gray),
+                            at: labelPt,
+                            anchor: .center
+                        )
+                    }
+
+                    // Вертикални линии за часовете (0, 6, 12, 18, 24)
+                    let hourMarkers = [0, 6, 12, 18, 24]
+                    for hour in hourMarkers {
+                        let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
+                        var vLine = Path()
+                        vLine.move(to: CGPoint(x: xPos, y: graphPadding))
+                        vLine.addLine(to: CGPoint(x: xPos, y: origin.y))
+                        context.stroke(
+                            vLine,
+                            with: .color(.gray.opacity(0.3)),
+                            style: StrokeStyle(lineWidth: 0.5)
+                        )
+                    }
+
+                    // Линия + fillPath
+                    var linePath = Path()
+                    var fillPath = Path()
+                    var points: [CGPoint] = []
+
+                    let xStep = contentWidth / CGFloat(max(1, pressureValues.count - 1))
+
+                    for (i, val) in pressureValues.enumerated() {
+                        let xPos = origin.x + CGFloat(i) * xStep
+                        let yPos = yPosition(val)
+                        let pt   = CGPoint(x: xPos, y: yPos)
+                        points.append(pt)
+
+                        if i == 0 {
+                            linePath.move(to: pt)
+                            fillPath.move(to: CGPoint(x: xPos, y: origin.y))
+                            fillPath.addLine(to: pt)
+                        } else {
+                            linePath.addLine(to: pt)
+                            fillPath.addLine(to: pt)
+                        }
+                    }
+                    // Затваряме fillPath надолу
+                    if let lastPt = points.last {
+                        fillPath.addLine(to: CGPoint(x: lastPt.x, y: origin.y))
+                        fillPath.closeSubpath()
+                    }
+
+                    // Градиент (пример: синьо -> червено)
+                    let pressureGradient = Gradient(stops: [
+                        .init(color: .blue, location: 0),
+                        .init(color: .red,  location: 1)
+                    ])
+
+                    // Запълване под линията
+                    context.drawLayer { layerContext in
+                        layerContext.fill(
+                            fillPath,
+                            with: .linearGradient(
+                                pressureGradient,
+                                startPoint: CGPoint(x: 0, y: size.height),
+                                endPoint:   CGPoint(x: 0, y: 0)
+                            )
+                        )
+                    }
+
+                    // Линията (stroke) с градиент
+                    context.drawLayer { layerContext in
+                        let strokeStyle = StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round)
+                        let stroked     = linePath.strokedPath(strokeStyle)
+                        layerContext.clip(to: stroked)
+                        
+                        layerContext.fill(
+                            Path(CGRect(origin: .zero, size: size)),
+                            with: .linearGradient(
+                                pressureGradient,
+                                startPoint: CGPoint(x: 0, y: size.height),
+                                endPoint:   CGPoint(x: 0, y: 0)
+                            )
+                        )
+                    }
+
+                    // Маркери Min / Max (по желание)
+                    if let maxVal = pressureValues.max(),
+                       let maxIndex = pressureValues.firstIndex(of: maxVal),
+                       points.indices.contains(maxIndex) {
+                        let highPoint = points[maxIndex]
+                        drawHLMarker(context: context, label: "Max", at: highPoint)
+                    }
+                    if let minVal = pressureValues.min(),
+                       let minIndex = pressureValues.firstIndex(of: minVal),
+                       points.indices.contains(minIndex) {
+                        let lowPoint = points[minIndex]
+                        drawHLMarker(context: context, label: "Min", at: lowPoint)
+                    }
+
+                    // Затъмняваме “миналите” часове, ако денят е текущ
+                    if Calendar.current.isDate(now, inSameDayAs: selectedDate),
+                       let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
+                           Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
+                       }) {
+                        let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+
+                        // Вертикална линия за текущия час
+                        var verticalLine = Path()
+                        verticalLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                        verticalLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                        context.stroke(
+                            verticalLine,
+                            with: .color(.white.opacity(0.8)),
+                            style: StrokeStyle(lineWidth: 2)
+                        )
+
+                        // Правоъгълник за shading
+                        let darkRect = CGRect(
+                            x: origin.x,
+                            y: graphPadding,
+                            width: currentXPos - origin.x,
+                            height: contentHeight
+                        )
+                        context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+                    }
+
+                    // Часови надписи долу
+                    for hour in hourMarkers {
+                        let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
+                        let textPoint = CGPoint(x: xPos, y: origin.y + 14)
+                        context.draw(
+                            Text(String(format: "%02d", hour))
+                                .font(.system(size: 11))
+                                .foregroundColor(.gray),
+                            at: textPoint,
+                            anchor: .center
+                        )
+                    }
+
+                    // MARK: - Drag интерполация (показва налягане + точен час)
+                    if let dragPoint = dragPressureVisibility {
+                        if dragPoint.x >= origin.x && dragPoint.x <= origin.x + contentWidth {
+                            let fractionIndex = (dragPoint.x - origin.x) / xStep
+                            let lowerIdx = max(0, min(points.count - 1, Int(floor(fractionIndex))))
+                            let upperIdx = max(0, min(points.count - 1, lowerIdx + 1))
+                            let t = (upperIdx == lowerIdx) ? 0 : (fractionIndex - CGFloat(lowerIdx))
+
+                            let pLower = pressureValues[lowerIdx]
+                            let pUpper = pressureValues[upperIdx]
+                            let pVal   = pLower + (pUpper - pLower) * Double(t)
+
+                            var interpolatedY = points[lowerIdx].y
+                            if upperIdx != lowerIdx {
+                                interpolatedY += t * (points[upperIdx].y - points[lowerIdx].y)
+                            }
+                            let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
+
+                            // Вертикална линия
+                            var vLine = Path()
+                            vLine.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
+                            vLine.addLine(to: CGPoint(x: dotPoint.x, y: origin.y))
+                            context.stroke(vLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
+
+                            // Малка точка (dot)
+                            let dotRect = CGRect(center: dotPoint, radius: 4)
+                            context.fill(Path(ellipseIn: dotRect), with: .color(.white))
+
+                            // Интерполация на време (часове:минути)
+                            let timeString: String
+                            if lowerIdx < hourlyItemsForSelectedDate.count,
+                               upperIdx < hourlyItemsForSelectedDate.count {
+                                let d1 = hourlyItemsForSelectedDate[lowerIdx].date
+                                let d2 = hourlyItemsForSelectedDate[upperIdx].date
+                                let totalInterval = d2.timeIntervalSince(d1)
+                                let interpolatedDate = d1.addingTimeInterval(totalInterval * Double(t))
+
+                                let df = DateFormatter()
+                                df.dateFormat = "HH:mm"
+                                timeString = df.string(from: interpolatedDate)
+                            } else {
+                                timeString = "--:--"
+                            }
+
+                            // Многострочен текст (час + hPa)
+                            let labelText = "\(timeString)\n\(Int(round(pVal))) hPa"
+                            let label = Text(labelText)
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundColor(.white)
+
+                            let labelOffset: CGFloat = 8
+                            let textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
+                            context.draw(label, at: textPoint, anchor: .bottomLeading)
+                        }
+                    }
+                }
+                .frame(height: 240)
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            dragPressureVisibility = value.location
+                        }
+                        .onEnded { _ in
+                            dragPressureVisibility = nil
+                        }
+                )
+
+                // Divider
+                Divider()
+                    .background(Color.gray.opacity(0.4))
+                    .padding(.horizontal, graphPadding / 2)
+                    .padding(.top, 2)
+
+                // MARK: - Примерен текст отдолу
+                Text(
+                    "Current pressure is around \(Int(round(vm.currentPressure ?? 1013))) hPa. " +
+                    "Today’s range based on hourly data is about \(realMin)–\(realMax) hPa."
+                )
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.top, 8)
+            }
+            .padding(.bottom, 8)
+        }
+    }
+
+
+    
     @ViewBuilder
     private func hourlyGraphSection() -> some View {
         // Избираме актуалната дата (сега) и изчисляваме дял от деня (0.0...1.0)
@@ -850,16 +1580,17 @@ struct WeatherDetailView: View {
         
         VStack(spacing: 0) {
           
-            VStack(alignment: .leading, spacing: 5) {
-                 Text("Chance of Precipitation")
-                     .font(.system(size: 16, weight: .semibold))
-                 Text("Today's chance: \(todayChance)%")
-                     .font(.system(size: 13))
-                     .foregroundColor(.white.opacity(0.8))
-             }
-             .frame(maxWidth: .infinity, alignment: .leading) // Задава максимална ширина и ляво подравняване
-             .padding(.horizontal)
-             .offset(x: -18)
+                VStack(alignment: .leading, spacing: 5) {
+                     Text("Chance of Precipitation")
+                         .font(.system(size: 16, weight: .semibold))
+                     Text("Today's chance: \(todayChance)%")
+                         .font(.system(size: 13))
+                         .foregroundColor(.white.opacity(0.8))
+                 }
+                 .frame(maxWidth: .infinity, alignment: .leading) // Задава максимална ширина и ляво подравняване
+                 .padding(.horizontal)
+                 .offset(x: -18)
+         
 
             
             // Графиката с Canvas – чертае линия с запълнената област, марки и интерактивен drag gesture
@@ -1161,18 +1892,29 @@ struct WeatherDetailView: View {
     
         
         VStack(spacing: 8) {
-            // Заглавна част
-            VStack(alignment: .leading, spacing: 5) {
-                Text("UV Index")
-                    .font(.system(size: 16, weight: .semibold))
-                Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
-                    .font(.system(size: 13))
-                    .foregroundColor(.white.opacity(0.8))
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal)
-            .offset(x: -15)
-            .offset(y: 30)
+            VStack() {
+                // Заглавна част
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("UV Index")
+                        .font(.system(size: 16, weight: .semibold))
+                    Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
+                        .font(.system(size: 13))
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .offset(x: -15)
+                .offset(y: 30)
+            Spacer()
+            UIWeatherMenuButtonRepresentable(
+                currentView: selectedOption,
+                onViewChange: { newTab in
+                    selectedOption = newTab
+                }
+            )
+            .frame(width: 30, height: 30)
+        }
+           
 
             // Хедър със средните стойности за всеки 2 часа – използваме същия изглед, какъвто имате в hourlyGraphSection.
             let twoHourAverages: [Int] = stride(from: 0, to: uvData.count, by: 2).map { startIndex in
@@ -1674,7 +2416,29 @@ struct WeatherDetailView: View {
             let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
             
             VStack(spacing: 0) {
-                
+                VStack() {
+                    // Заглавна част
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Visibility")
+                            .font(.system(size: 16, weight: .semibold))
+                        
+                        Text("Today's min \(String(format: "%.1f", dailyMinVis)) km – max \(String(format: "%.1f", dailyMaxVis)) km")
+                            .font(.system(size: 13))
+                            .foregroundColor(.white.opacity(0.8))
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .offset(x: -15)
+                    .offset(y: 25)
+                    Spacer()
+                UIWeatherMenuButtonRepresentable(
+                    currentView: selectedOption,
+                    onViewChange: { newTab in
+                        selectedOption = newTab
+                    }
+                )
+                .frame(width: 30, height: 30)
+            }
                 // MARK: - Header with daily min–max
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Visibility")
@@ -2018,20 +2782,31 @@ struct WeatherDetailView: View {
 
         // 5) The overall vertical stack for our humidity section
         VStack(spacing: 8) {
-            
+            VStack() {
+                // Заглавна част
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Humidity")
+                        .font(.system(size: 16, weight: .semibold))
+                    Text("Today's min \(Int(dailyMinH * 100))% – max \(Int(dailyMaxH * 100))%")
+                        .font(.system(size: 13))
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                // Optional formatting/layout offsets
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .offset(x: -15)
+                .offset(y: 30)
+                Spacer()
+            UIWeatherMenuButtonRepresentable(
+                currentView: selectedOption,
+                onViewChange: { newTab in
+                    selectedOption = newTab
+                }
+            )
+            .frame(width: 30, height: 30)
+        }
             // MARK: - Header with daily min–max
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Humidity")
-                    .font(.system(size: 16, weight: .semibold))
-                Text("Today's min \(Int(dailyMinH * 100))% – max \(Int(dailyMaxH * 100))%")
-                    .font(.system(size: 13))
-                    .foregroundColor(.white.opacity(0.8))
-            }
-            // Optional formatting/layout offsets
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal)
-            .offset(x: -15)
-            .offset(y: 30)
+          
 
             
             // MARK: - A row showing 6‑hour chunk averages
@@ -2381,18 +3156,29 @@ struct WeatherDetailView: View {
             // ----------- Вече изграждаме изгледите -----------
             
             VStack(spacing: 0) {
-                
-                // Header (заглавие) за скоростта на вятъра
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Wind & Gust")
-                        .font(.system(size: 16, weight: .semibold))
-                    Text(dailyMaxLabel)
-                        .font(.system(size: 13))
-                        .foregroundColor(.white.opacity(0.8))
+                    VStack() {
+                        // Заглавна част
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("Wind & Gust")
+                                .font(.system(size: 16, weight: .semibold))
+                            Text(dailyMaxLabel)
+                                .font(.system(size: 13))
+                                .foregroundColor(.white.opacity(0.8))
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        .offset(x: -10)
+                        Spacer()
+                    UIWeatherMenuButtonRepresentable(
+                        currentView: selectedOption,
+                        onViewChange: { newTab in
+                            selectedOption = newTab
+                        }
+                    )
+                    .frame(width: 30, height: 30)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .offset(x: -10)
+                // Header (заглавие) за скоростта на вятъра
+              
                 
                 // Ред с иконки, показващи посока на вятъра (на всеки 2 часа)
                 GeometryReader { geo in
