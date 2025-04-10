@@ -3,16 +3,6 @@ import CoreLocation
 import MapKit
 @preconcurrency import WeatherKit
 
-// MARK: - Dummy Structures (Placeholder) - Keep as is
-
-struct DailyComparisonData {
-    let todayMin: Double = -2
-    let todayMax: Double = 4
-    let yesterdayMin: Double = 0
-    let yesterdayMax: Double = 7
-    let highIsLower: Bool = true
-}
-
 // MARK: - Главният изглед
 struct WeatherDetailView: View {
     @StateObject private var vm = WeatherKitViewModel.shared
@@ -59,16 +49,7 @@ struct WeatherDetailView: View {
         _selectedDate = State(initialValue: initialDate)
         self.daySymbol = daySymbol
     }
-    
-    // MARK: - Placeholder Data - Keep as is
-    let chanceOfPrecipitationToday: Int = 0
-    let comparisonData = DailyComparisonData()
-    let forecastSummary: String = """
-    0° now and mostly cloudy. Wind is making it feel colder, about -1°.
-    Partly cloudy conditions expected around 18:00.
-    This week's temperature range is from -2° to 4° and feels like -3° to 3°.
-    """
-    
+
     // MARK: - Helper Functions - Keep as is
     private func conditionFromSymbol(_ symbol: String) -> String {
         let lowercasedSymbol = symbol.lowercased()
@@ -216,19 +197,15 @@ struct WeatherDetailView: View {
                                      .padding(.bottom)
                              }
                              
-                             forecastSection(summary: forecastSummary)
-                                 .padding(.horizontal)
-                                 .padding(.bottom)
-                             
-                             dailyComparisonSection(data: comparisonData)
-                                 .padding(.horizontal)
-                                 .padding(.bottom)
+                             if let selectedDayForecast = allDailyItems.first(where: {
+                                 Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                             }) {
+                                 forecastSection(for: selectedDayForecast)
+                                     .padding(.horizontal)
+                                     .padding(.bottom)
+                             }
                              
                              aboutFeelsLikeSection
-                                 .padding(.horizontal)
-                                 .padding(.bottom)
-                             
-                             optionsSection
                                  .padding(.horizontal)
                                  .padding(.bottom)
                              
@@ -3588,26 +3565,133 @@ struct WeatherDetailView: View {
         }
     }
 
-
-
-
     private func precipitationTotalsSection(for day: DayForecastItem) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Precipitation Totals")
                 .font(.system(size: 16, weight: .semibold))
             
-            // LAST 24 HOURS секция
-            VStack(alignment: .leading, spacing: 5) {
-                Text("LAST 24 HOURS")
-                    .font(.caption.weight(.medium))
-                    .foregroundColor(.secondary)
+            if Calendar.current.isDate(day.date, inSameDayAs: Date()) {
+                // Подробен изглед за текущия ден
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("LAST 24 HOURS")
+                        .font(.caption.weight(.medium))
+                        .foregroundColor(.secondary)
+                    
+                    let rainLast = day.rainLast24h
+                    let snowLast = day.snowLast24h
+                    
+                    if rainLast == 0 && snowLast == 0 {
+                        HStack {
+                            Label("Total", systemImage: "drop.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.blue)
+                            Text("Precipitation")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(Int(day.precipLast24h)) mm")
+                                .font(.system(size: 14))
+                        }
+                    } else if snowLast == 0 {
+                        HStack {
+                            Label("Rain", systemImage: "circle.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.blue)
+                            Text("Rain")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(Int(rainLast)) mm")
+                                .font(.system(size: 14))
+                                .foregroundColor(.blue)
+                        }
+                    } else {
+                        HStack {
+                            Label("Snow", systemImage: "circle.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.white)
+                            Text("Snow")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(String(format: "%.1f", snowLast)) cm")
+                                .font(.system(size: 14))
+                        }
+                        HStack {
+                            Label("Rain", systemImage: "circle.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.blue)
+                            Text("Rain")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(Int(rainLast)) mm")
+                                .font(.system(size: 14))
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+                .padding(.top, 5)
                 
-                // Извличаме стойностите (ако са nil, ги третираме като 0)
-                let rainLast = day.rainLast24h
-                let snowLast = day.snowLast24h
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("NEXT 24 HOURS")
+                        .font(.caption.weight(.medium))
+                        .foregroundColor(.secondary)
+                    
+                    let rainNext = day.rainNext24h
+                    let snowNext = day.snowNext24h
+                    
+                    if rainNext == 0 && snowNext == 0 {
+                        HStack {
+                            Label("Total", systemImage: "drop.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.blue)
+                            Text("Precipitation")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(Int(day.precipNext24h)) mm")
+                                .font(.system(size: 14))
+                                .foregroundColor(.blue)
+                        }
+                    } else if snowNext == 0 {
+                        HStack {
+                            Label("Rain", systemImage: "circle.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.blue)
+                            Text("Rain")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(Int(rainNext)) mm")
+                                .font(.system(size: 14))
+                                .foregroundColor(.blue)
+                        }
+                    } else {
+                        HStack {
+                            Label("Snow", systemImage: "circle.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.white)
+                            Text("Snow")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(String(format: "%.1f", snowNext)) cm")
+                                .font(.system(size: 14))
+                        }
+                        HStack {
+                            Label("Rain", systemImage: "circle.fill")
+                                .labelStyle(.iconOnly)
+                                .foregroundColor(.blue)
+                            Text("Rain")
+                                .font(.system(size: 14))
+                            Spacer()
+                            Text("\(Int(rainNext)) mm")
+                                .font(.system(size: 14))
+                                .foregroundColor(.blue)
+                        }
+                    }
+                }
+                .padding(.top, 10)
+            } else {
+                // За ден, който не е текущ – използваме данните от reinAmount и snowfallAmount.
+                let rainValue = day.reinAmount
+                let snowValue = day.snowfallAmount
                 
-                if rainLast == 0 && snowLast == 0 {
-                    // Ако няма отделни данни за дъжд и сняг – показваме само общ валеж
+                if rainValue == 0 && snowValue == 0 {
                     HStack {
                         Label("Total", systemImage: "drop.fill")
                             .labelStyle(.iconOnly)
@@ -3615,11 +3699,10 @@ struct WeatherDetailView: View {
                         Text("Precipitation")
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(day.precipLast24h)) mm")
+                        Text("\(Int(day.precipitationAmount)) mm")
                             .font(.system(size: 14))
                     }
-                } else if snowLast == 0 {
-                    // Ако няма информация за сняг – показваме само за дъжд
+                } else if snowValue == 0 {
                     HStack {
                         Label("Rain", systemImage: "circle.fill")
                             .labelStyle(.iconOnly)
@@ -3627,12 +3710,11 @@ struct WeatherDetailView: View {
                         Text("Rain")
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(rainLast)) mm")
+                        Text("\(Int(rainValue)) mm")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
                 } else {
-                    // В противен случай показваме отделно и за сняг и за дъжд
                     HStack {
                         Label("Snow", systemImage: "circle.fill")
                             .labelStyle(.iconOnly)
@@ -3640,7 +3722,7 @@ struct WeatherDetailView: View {
                         Text("Snow")
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(String(format: "%.1f", snowLast)) cm")
+                        Text("\(String(format: "%.1f", snowValue)) cm")
                             .font(.system(size: 14))
                     }
                     HStack {
@@ -3650,113 +3732,111 @@ struct WeatherDetailView: View {
                         Text("Rain")
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(rainLast)) mm")
+                        Text("\(Int(rainValue)) mm")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
                 }
             }
-            .padding(.top, 5)
-            
-            // NEXT 24 HOURS секция
-            VStack(alignment: .leading, spacing: 5) {
-                Text("NEXT 24 HOURS")
-                    .font(.caption.weight(.medium))
-                    .foregroundColor(.secondary)
-                
-                let rainNext = day.rainNext24h
-                let snowNext = day.snowNext24h
-                
-                if rainNext == 0 && snowNext == 0 {
-                    // Ако няма отделни данни – показваме само общ валеж
-                    HStack {
-                        Label("Total", systemImage: "drop.fill")
-                            .labelStyle(.iconOnly)
-                            .foregroundColor(.blue)
-                        Text("Precipitation")
-                            .font(.system(size: 14))
-                        Spacer()
-                        Text("\(Int(day.precipNext24h)) mm")
-                            .font(.system(size: 14))
-                            .foregroundColor(.blue)
-                    }
-                } else if snowNext == 0 {
-                    // Ако няма данни за сняг – показваме само ред за дъжд
-                    HStack {
-                        Label("Rain", systemImage: "circle.fill")
-                            .labelStyle(.iconOnly)
-                            .foregroundColor(.blue)
-                        Text("Rain")
-                            .font(.system(size: 14))
-                        Spacer()
-                        Text("\(Int(rainNext)) mm")
-                            .font(.system(size: 14))
-                            .foregroundColor(.blue)
-                    }
-                } else {
-                    // Ако има данни и за сняг, и за дъжд – показваме двата реда
-                    HStack {
-                        Label("Snow", systemImage: "circle.fill")
-                            .labelStyle(.iconOnly)
-                            .foregroundColor(.white)
-                        Text("Snow")
-                            .font(.system(size: 14))
-                        Spacer()
-                        Text("\(String(format: "%.1f", snowNext)) cm")
-                            .font(.system(size: 14))
-                    }
-                    HStack {
-                        Label("Rain", systemImage: "circle.fill")
-                            .labelStyle(.iconOnly)
-                            .foregroundColor(.blue)
-                        Text("Rain")
-                            .font(.system(size: 14))
-                        Spacer()
-                        Text("\(Int(rainNext)) mm")
-                            .font(.system(size: 14))
-                            .foregroundColor(.blue)
-                    }
-                }
-            }
-            .padding(.top, 10)
         }
     }
 
+    /// Генерира подробен текст за текущия ден, използвайки данните от WeatherKitViewModel (vm) за текущите условия,
+    /// като падащите данни се комбинират с данните от обекта day (напр. за дневната мин/макс температура, ако vm не ги предоставя).
+    private func generateCurrentDayForecastText(from day: DayForecastItem) -> String {
+        // Използваме shared вю модел – ако има налични данни, ги вземаме от него.
+        let vm = WeatherKitViewModel.shared
+        
+        // Текущата температура: ако vm.currentTemp има стойност, използваме я, иначе изчисляваме средната
+        let currentTemp = vm.currentTemp ?? ((day.minTemp + day.maxTemp) / 2.0)
+        // "Feels like": ако vm.currentFeelsLike има стойност, използваме я, иначе симулираме чрез отнемане на 2°
+        let currentFeelsLike = vm.currentFeelsLike ?? (currentTemp - 2.0)
+        
+        // Ако за деня са зададени минимална/максимална температура (например vm.todayMinTemp), ги използваме, иначе данните от day.
+        let minTemp = vm.todayMinTemp ?? day.minTemp
+        let maxTemp = vm.todayMaxTemp ?? day.maxTemp
+        
+        // За символа използваме данните от vm, ако са зададени
+        let condition = vm.currentSymbol
+        
+        // Валежната вероятност – използваме данните от vm, ако са налични
+        let precipChanceText: String = {
+            if let chance = vm.currentPrecipitationProbability {
+                return "\(Int(chance * 100))%"
+            } else if let chance = day.precipChance {
+                return "\(Int(chance * 100))%"
+            }
+            return "N/A"
+        }()
+        
+        // За вятъра: ако vm.currentWindDirection има стойност, го използваме; иначе използваме данните от day
+        let windDir: String = {
+            if let angle = vm.currentWindDirection {
+                return directionAbbreviation(for: angle.degrees)
+            }
+            return directionAbbreviation(for: day.predominantWindDirection)
+        }()
+        let windGust = vm.currentWindGust ?? day.maxWindGust
+        
+        // UV индекс – използваме данните от vm или от day
+        let uvText: String = {
+            if let uv = vm.currentUVIndex {
+                return "UV index up to \(uv)"
+            }
+            return "UV index up to \(day.maxUV)"
+        }()
+        
+        // Влажност – тук ако няма текуща стойност, използваме диапазона от day
+        let humidityText: String = {
+            // Ако currentHumidity има стойност, приемаме, че тя представя момента (например приблизително една стойност)
+            if let hum = vm.currentHumidity {
+                return "Humidity around \(Int(round(hum * 100)))%"
+            }
+            return "Humidity from \(Int(round(day.humidityMin * 100)))% to \(Int(round(day.humidityMax * 100)))%"
+        }()
+        
+        return "\(Int(round(currentTemp)))° now with \(condition.lowercased()) conditions. There is a precipitation chance of \(precipChanceText). Wind from \(windDir) with gusts up to \(Int(round(windGust))) km/h. Today's temperature ranges from \(Int(round(minTemp)))° to \(Int(round(maxTemp)))° and feels like \(Int(round(currentFeelsLike)))°. \(uvText), and \(humidityText)."
+    }
 
+    /// Генерира динамичен текст за друг ден, използвайки данните от DayForecastItem.
+    /// Тук текстът включва пълното име на деня, изчислен "feels like" диапазон (чрез отнемане на 3°) и кратко резюме за валежите.
+    private func generateOtherDayForecastText(for day: DayForecastItem) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE"  // Пълното име на деня, напр. "Friday"
+        let dayName = formatter.string(from: day.date)
+        
+        let feelsLikeMin = day.minTemp - 3.0
+        let feelsLikeMax = day.maxTemp - 3.0
+        let windDir = directionAbbreviation(for: day.predominantWindDirection)
+        
+        let precipSummary: String = {
+            if day.rainLast24h == 0 && day.snowLast24h == 0 {
+                return "No precipitation recorded in the last 24 hours."
+            } else if day.snowLast24h == 0 {
+                return "It rained \(Int(round(day.rainLast24h))) mm in the last 24 hours."
+            } else {
+                return "In the last 24 hours, snow measured \(String(format: "%.1f", day.snowLast24h)) cm and rain \(Int(round(day.rainLast24h))) mm."
+            }
+        }()
+        
+        return "\(dayName)'s low is \(Int(round(day.minTemp)))° and the high is \(Int(round(day.maxTemp)))°. The temperature will feel like \(Int(round(feelsLikeMin)))° to \(Int(round(feelsLikeMax)))°. Wind from \(windDir) is expected. \(precipSummary)"
+    }
 
-
-    
-    private func forecastSection(summary: String) -> some View {
-        VStack(alignment:.leading, spacing:5) {
-            Text("Forecast")
-                .font(.system(size:16, weight:.semibold))
-            Text(summary)
-                .font(.system(size:14))
+    /// Показва секция за прогнозата – ако денят е текущ, заглавието е "Forecast" и се използват текущите данни от vm,
+    /// а ако не е, заглавието е "Daily Summary" и се използват данните от DayForecastItem.
+    private func forecastSection(for day: DayForecastItem) -> some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ? "Forecast" : "Daily Summary")
+                .font(.system(size: 16, weight: .semibold))
+            Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ?
+                 generateCurrentDayForecastText(from: day) :
+                 generateOtherDayForecastText(for: day))
+                .font(.system(size: 14))
                 .lineSpacing(4)
                 .foregroundColor(.white.opacity(0.9))
         }
     }
-    
-    private func dailyComparisonSection(data: DailyComparisonData) -> some View {
-        VStack(alignment:.leading, spacing:8) {
-            Text("Daily Comparison")
-                .font(.system(size:16, weight:.semibold))
-            Text(data.highIsLower
-                 ? "The high temperature today is lower than yesterday."
-                 : "The high temperature today is higher than yesterday."
-            )
-            .font(.system(size:14))
-            .foregroundColor(.white.opacity(0.9))
-            .padding(.bottom,5)
-            dailyComparisonRow(label:"Today", minTemp:data.todayMin, maxTemp:data.todayMax,
-                               overallMin:min(data.todayMin, data.yesterdayMin),
-                               overallMax:max(data.todayMax, data.yesterdayMax))
-            dailyComparisonRow(label:"Yesterday", minTemp:data.yesterdayMin, maxTemp:data.yesterdayMax,
-                               overallMin:min(data.todayMin, data.yesterdayMin),
-                               overallMax:max(data.todayMax, data.yesterdayMax))
-        }
-    }
-    
+
     private func dailyComparisonRow(label: String, minTemp: Double, maxTemp: Double,
                                     overallMin: Double, overallMax: Double) -> some View {
         DailyComparisonRow(
