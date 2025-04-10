@@ -1520,7 +1520,8 @@ struct WeatherDetailView: View {
                     .cornerRadius(15)
             }
             .buttonStyle(.plain)
-            
+            .contentShape(Rectangle())
+
             Button {
                 showingFeelsLike = true
             } label: {
@@ -1534,6 +1535,8 @@ struct WeatherDetailView: View {
                     .cornerRadius(15)
             }
             .buttonStyle(.plain)
+            .contentShape(Rectangle())
+
         }
         .padding(3)
         .background(Color.white.opacity(0.15))
@@ -1972,28 +1975,34 @@ struct WeatherDetailView: View {
     
         
         VStack(spacing: 8) {
-            VStack() {
-                // Заглавна част
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("UV Index")
-                        .font(.system(size: 16, weight: .semibold))
-                    Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
-                        .font(.system(size: 13))
-                        .foregroundColor(.white.opacity(0.8))
+            Group {
+                  // Заглавната част
+                  VStack(alignment: .leading, spacing: 5) {
+                      Text("UV Index")
+                          .font(.system(size: 16, weight: .semibold))
+                      Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
+                          .font(.system(size: 13))
+                          .foregroundColor(.white.opacity(0.8))
+                  }
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .padding(.horizontal)
+                  .offset(x: -15)
+                  
+                  // Бутонът за менюто, преместен вдясно
+                HStack {
+                    Spacer()
+                    UIWeatherMenuButtonRepresentable(
+                        currentView: selectedOption,
+                        onViewChange: { newTab in
+                            selectedOption = newTab
+                        }
+                    )
+                    .frame(width: 30, height: 30)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .offset(x: -15)
-                .offset(y: 30)
-            Spacer()
-            UIWeatherMenuButtonRepresentable(
-                currentView: selectedOption,
-                onViewChange: { newTab in
-                    selectedOption = newTab
-                }
-            )
-            .frame(width: 30, height: 30)
-        }
+                .offset(y: -45) // или друг offset
+              }
+              // Примерно прилагаме vertical offset за цялата група
+              .offset(y: 10) // Поправи стойността според нуждите ти
            
 
             // Хедър със средните стойности за всеки 2 часа – използваме същия изглед, какъвто имате в hourlyGraphSection.
@@ -2040,7 +2049,7 @@ struct WeatherDetailView: View {
             }
             .frame(height: 20)
             .padding(.horizontal, graphPadding)
-            .offset(y: 35)
+            .offset(y: -25)
 
             // Графична част с Canvas – увеличена височина
             // Графична част с Canvas – увеличена височина
@@ -2312,26 +2321,27 @@ struct WeatherDetailView: View {
                     .onEnded { _ in dragLocationUV = nil }
             )
             .frame(height: (graphHeight + 20) * 1.5)
-
-            .frame(height: (graphHeight + 20) * 1.5)
-            
+            .offset(y: -55)
             Divider()
                 .background(Color.gray.opacity(0.4))
                 .padding(.horizontal, graphPadding / 2)
                 .padding(.top, 2)
-        }
-        
-        
-        VStack(alignment: .leading, spacing: 4) {
-            Text("Now, \(currentTimeString)")
-                .font(.caption)
-                .foregroundColor(.secondary)
+                .offset(y: -65)
             
-            Text(generateUVAdvice(uvData: uvData, startOfSelectedDay: startOfSelectedDay))
-                .font(.caption)
-                .foregroundColor(.secondary)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Now, \(currentTimeString)")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Text(generateUVAdvice(uvData: uvData, startOfSelectedDay: startOfSelectedDay))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .padding(.top, 5)
+            .offset(y: -65)
         }
-        .padding(.top, 5)
+        .offset(y: -10)
     }
 
     func generateUVAdvice(uvData: [Int], startOfSelectedDay: Date) -> String {
