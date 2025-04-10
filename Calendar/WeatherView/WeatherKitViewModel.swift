@@ -27,6 +27,16 @@ struct DayForecastItem: Identifiable, Equatable {
     // (Optional) If you want a daily maximum UV or anything else:
     var maxUV: Int
     
+    var maxWindSpeed: Double  // e.g. the day’s highest wind speed (km/h)
+    var maxWindGust: Double  // day’s max wind gust (km/h), optional
+    var predominantWindDirection: Double // e.g.  in degrees (0–360)
+    
+    var humidityMin: Double
+    var humidityMax: Double
+
+    var visibilityMin: Double
+    var visibilityMax: Double
+
     static func == (lhs: DayForecastItem, rhs: DayForecastItem) -> Bool {
         lhs.id == rhs.id
     }
@@ -44,6 +54,15 @@ struct HourlyForecastItem: Identifiable {
     
     // NEW: add UV Index if available in your data source
     var uvIndex: Int
+    
+    var windSpeed: Double       // in km/h
+    var windGust: Double       // in km/h
+    var windDirection: Double  // degrees 0–360 (N=0°, E=90°, S=180°, W=270°, etc.)
+    
+    var humidity: Double
+    
+    var visibility: Double
+
 }
 
 // MARK: - WEATHERKIT VIEW MODEL
@@ -256,7 +275,13 @@ class WeatherKitViewModel: ObservableObject {
                 feelsLikeTemp: hourData.apparentTemperature.value,
                 symbol: hourData.symbolName,
                 precipChance: hourData.precipitationChance,
-                uvIndex: hourData.uvIndex.value
+                uvIndex: hourData.uvIndex.value,
+                windSpeed: hourData.wind.speed.value,
+                windGust: hourData.wind.gust!.value,
+                windDirection: hourData.wind.direction.converted(to: .degrees).value,
+                humidity: hourData.humidity,
+                visibility: hourData.visibility.value / 1000,
+
             )
             tempArray.append(item)
         }
@@ -273,7 +298,13 @@ class WeatherKitViewModel: ObservableObject {
                 symbol: hourData.symbolName,
                 precipChance: hourData.precipitationChance,
                 precipitationAmount: hourData.precipitationAmount.value,
-                uvIndex: hourData.uvIndex.value
+                uvIndex: hourData.uvIndex.value,
+                windSpeed: hourData.wind.speed.value,
+                windGust: hourData.wind.gust?.value ?? 0,
+                windDirection: hourData.wind.direction.converted(to: .degrees).value,
+                humidity: hourData.humidity,
+                visibility: hourData.visibility.value / 1000,
+
             )
         }
     }
@@ -336,7 +367,14 @@ class WeatherKitViewModel: ObservableObject {
                 precipNext24h: totalHourlyPrecip,
                 rainNext24h: totalHourlyRain,
                 snowNext24h: totalHourlySnow,
-                maxUV: dayData.uvIndex.value
+                maxUV: dayData.uvIndex.value,
+                maxWindSpeed: dayData.highWindSpeed!.value,
+                maxWindGust: dayData.wind.gust?.value ?? 0,
+                predominantWindDirection: dayData.wind.direction.converted(to: .degrees).value,
+                humidityMin: dayData.minimumHumidity,
+                humidityMax: dayData.maximumHumidity,
+                visibilityMin: dayData.minimumVisibility / 1000,
+                visibilityMax: dayData.maximumVisibility / 1000,
             )
             arr.append(item)
         }

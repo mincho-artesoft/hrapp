@@ -27,6 +27,9 @@ struct WeatherDetailView: View {
     @State private var dragLocationTEMP: CGPoint? = nil
     @State private var dragLocationPreci: CGPoint? = nil
     @State private var dragLocationUV: CGPoint? = nil
+    @State private var dragLocationWind: CGPoint? = nil
+    @State private var dragLocationHumidity: CGPoint? = nil
+    @State private var dragLocationVisibility: CGPoint? = nil
 
     // Изтриваме state за popover, защото Menu ще се използва
     // @State private var showDropdown = false
@@ -105,7 +108,12 @@ struct WeatherDetailView: View {
                     feelsLikeTemp: 0,
                     symbol: "nosign",
                     precipChance: 0,
-                    uvIndex: 0
+                    uvIndex: 0,
+                    windSpeed: 0,
+                    windGust: 0,
+                    windDirection: 0,
+                    humidity: 0,
+                    visibility: 0
                 )
                 fullDayItems.append(placeholder)
             }
@@ -179,6 +187,18 @@ struct WeatherDetailView: View {
                         .foregroundColor(.gray)
                         .padding(.horizontal)
                         .padding(.bottom, 5)
+                    
+                    visibilityGraphSection()
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                    
+                    humidityGraphSection()
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                    
+                    windGraphSection()
+                        .padding(.horizontal)
+                        .padding(.bottom)
                     
                     hourlyGraphSection()
                         .padding(.horizontal)
@@ -1586,8 +1606,1102 @@ struct WeatherDetailView: View {
         }
     }
 
+    // HELPER: Convert wind direction degrees (0–360) to textual abbreviations (N, NNE, NE, etc.)
+    // MARK: - Convert wind direction (degrees) to textual abbreviation (N, NE, etc.)
+    private func directionAbbreviation(for degrees: Double) -> String {
+        let d = degrees.truncatingRemainder(dividingBy: 360)
+        let dirs = ["N","NNE","NE","ENE","E","ESE","SE","SSE",
+                    "S","SSW","SW","WSW","W","WNW","NW","NNW"]
+        let index = Int(((d + 11.25).truncatingRemainder(dividingBy: 360) / 22.5).rounded()) % 16
+        return dirs[index]
+    }
+
+    // MARK: - Draw a min/max marker (circle + label)
+    private func drawMarker(
+        context: GraphicsContext,
+        label: String,
+        at point: CGPoint,
+        color: Color
+    ) {
+        context.drawLayer { layerContext in
+            let outerRect = CGRect(center: point, radius: 6)
+            layerContext.fill(Path(ellipseIn: outerRect), with: .color(.black))
+            
+            let innerRect = CGRect(center: point, radius: 3)
+            layerContext.fill(Path(ellipseIn: innerRect), with: .color(color))
+            
+            let textPoint = CGPoint(x: point.x, y: point.y - 10)
+            layerContext.draw(
+                Text(label)
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundColor(.gray),
+                at: textPoint,
+                anchor: .center
+            )
+        }
+    }
+    
+    
+    @ViewBuilder
+    private func visibilityGraphSection() -> some View {
+        // 1) Extract hourly visibility data (in km) for the selected date
+        let visData = hourlyItemsForSelectedDate.map { $0.visibility }
+        
+        // 2) Get the corresponding DayForecastItem to display daily min/max
+        let dayItem = allDailyItems.first {
+            Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+        }
+        let dailyMinVis = dayItem?.visibilityMin ?? 0
+        let dailyMaxVis = dayItem?.visibilityMax ?? 0
+        
+        // 3) Hardcode the y‑axis range from 0 to 50 (km)
+        let yRange: (min: Double, max: Double) = (0.0, 50.0)
+        
+        // 4) If no data, show a fallback message
+        if visData.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Visibility")
+                    .font(.system(size: 16, weight: .semibold))
+                Text("No visibility data available for this day.")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+            .padding(.bottom, 8)
+        } else {
+            // 5) Compute fraction of the day (for shading past hours if `selectedDate` is today)
+            let now = Date()
+            let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
+            let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+            
+            VStack(spacing: 0) {
+                
+                // MARK: - Header with daily min–max
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Visibility")
+                        .font(.system(size: 16, weight: .semibold))
+                    
+                    Text("Today's min \(String(format: "%.1f", dailyMinVis)) km – max \(String(format: "%.1f", dailyMaxVis)) km")
+                        .font(.system(size: 13))
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .offset(x: -15)
+                .offset(y: 25)
+                
+                // MARK: - Optional two-hour average row at the top
+                let twoHourAverages: [Int] = stride(from: 0, to: visData.count, by: 2).map { startIndex in
+                    let endIndex = min(startIndex + 2, visData.count)
+                    let block = visData[startIndex..<endIndex]
+                    return Int(block.reduce(0, +) / Double(block.count))
+                }
+                
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        HStack(spacing: 0) {
+                            if twoHourAverages.isEmpty {
+                                Text("No hourly data available.")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(.vertical)
+                            } else {
+                                ForEach(twoHourAverages.indices, id: \.self) { i in
+                                    Text("\(twoHourAverages[i])")
+                                        .font(.system(size: 12, weight: .bold))
+                                        .frame(maxWidth: .infinity)
+                                }
+                            }
+                        }
+                        
+                        // Shading for "past" portion if this is today's date
+                        if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                            let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
+                            Rectangle()
+                                .fill(Color.black.opacity(0.4))
+                                .frame(width: overlayWidth)
+                        }
+                    }
+                }
+                .frame(height: 20)
+                .padding(.horizontal, graphPadding)
+                .offset(y: 30)
+                
+                // MARK: - Main line chart
+                Canvas { context, size in
+                    guard visData.count > 1,
+                          size.width > graphPadding,
+                          size.height > graphPadding * 2 else { return }
+                    
+                    let effectiveWidth  = size.width
+                    let effectiveHeight = size.height
+                    let origin = CGPoint(x: graphPadding, y: effectiveHeight - graphPadding)
+                    let graphWidth  = effectiveWidth  - graphPadding * 2
+                    let graphHeight = effectiveHeight - graphPadding * 2
+                    
+                    // We'll map 0..50 (yRange) into the chart height
+                    let yStep = graphHeight / CGFloat(yRange.max - yRange.min)
+                    
+                    func yPosition(_ vis: Double) -> CGFloat {
+                        // higher visibility => higher up on chart
+                        return origin.y - CGFloat(vis - yRange.min) * yStep
+                    }
+                    
+                    // Horizontal grid lines at e.g. 0, 10, 20, 30, 40, 50
+                    let step = 5.0
+                    let horizontalMarkers = stride(from: yRange.min,
+                                                   through: yRange.max,
+                                                   by: step).map { $0 }
+                    for marker in horizontalMarkers {
+                        let yPos = yPosition(marker)
+                        var linePath = Path()
+                        linePath.move(to: CGPoint(x: origin.x, y: yPos))
+                        linePath.addLine(to: CGPoint(x: origin.x + graphWidth, y: yPos))
+                        context.stroke(
+                            linePath,
+                            with: .color(.gray.opacity(0.3)),
+                            style: StrokeStyle(lineWidth: 0.5)
+                        )
+                        
+                        // Label on the right (e.g. "10", "20", etc.)
+                        let labelPoint = CGPoint(x: origin.x + graphWidth + 15, y: yPos)
+                        context.draw(
+                            Text("\(Int(marker))")
+                                .font(.system(size: 10))
+                                .foregroundColor(.gray),
+                            at: labelPoint,
+                            anchor: .center
+                        )
+                    }
+                    
+                    // Vertical hour markers for 0, 6, 12, 18, 24
+                    let hourMarkers = [0, 6, 12, 18, 24]
+                    for hour in hourMarkers {
+                        let xPos = origin.x + (CGFloat(hour) * (graphWidth / 24.0))
+                        var vLine = Path()
+                        vLine.move(to: CGPoint(x: xPos, y: graphPadding))
+                        vLine.addLine(to: CGPoint(x: xPos, y: origin.y))
+                        context.stroke(
+                            vLine,
+                            with: .color(.gray.opacity(0.3)),
+                            style: StrokeStyle(lineWidth: 0.5)
+                        )
+                    }
+                    
+                    // Build the path (line + fill) for visibility
+                    var points: [CGPoint] = []
+                    var linePath = Path()
+                    var fillPath = Path()
+                    
+                    let xStep = graphWidth / CGFloat(max(1, visData.count - 1))
+                    for (i, val) in visData.enumerated() {
+                        let xPos = origin.x + CGFloat(i) * xStep
+                        let yPos = yPosition(val)
+                        let pt   = CGPoint(x: xPos, y: yPos)
+                        points.append(pt)
+                        
+                        if i == 0 {
+                            linePath.move(to: pt)
+                            fillPath.move(to: CGPoint(x: xPos, y: origin.y))
+                            fillPath.addLine(to: pt)
+                        } else {
+                            linePath.addLine(to: pt)
+                            fillPath.addLine(to: pt)
+                        }
+                    }
+                    
+                    // Close the fill path
+                    if let lastPt = points.last {
+                        fillPath.addLine(to: CGPoint(x: lastPt.x, y: origin.y))
+                        fillPath.closeSubpath()
+                    }
+                    
+                    // A gradient from red (bad/low) → green (good/high)
+                    let visibilityGradient = Gradient(stops: [
+                        .init(color: .red,   location: 0.00),
+                        .init(color: .green, location: 1.00)
+                    ])
+                    
+                    // Fill area
+                    context.drawLayer { layerContext in
+                        layerContext.fill(
+                            fillPath,
+                            with: .linearGradient(
+                                visibilityGradient,
+                                startPoint: CGPoint(x: 0, y: size.height),
+                                endPoint:   CGPoint(x: 0, y: 0)
+                            )
+                        )
+                    }
+                    
+                    // Stroke the line with the same gradient
+                    context.drawLayer { layerContext in
+                        let strokeStyle = StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round)
+                        let stroked = linePath.strokedPath(strokeStyle)
+                        layerContext.clip(to: stroked)
+                        
+                        layerContext.fill(
+                            Path(CGRect(origin: .zero, size: size)),
+                            with: .linearGradient(
+                                visibilityGradient,
+                                startPoint: CGPoint(x: 0, y: size.height),
+                                endPoint:   CGPoint(x: 0, y: 0)
+                            )
+                        )
+                    }
+                    
+                    // Markers for min / max
+                    if let maxVal = visData.max(),
+                       let maxIdx = visData.firstIndex(of: maxVal),
+                       points.indices.contains(maxIdx) {
+                        let maxPoint = points[maxIdx]
+                        drawHLMarker(context: context, label: "Max", at: maxPoint)
+                    }
+                    if let minVal = visData.min(),
+                       let minIdx = visData.firstIndex(of: minVal),
+                       points.indices.contains(minIdx) {
+                        let minPoint = points[minIdx]
+                        drawHLMarker(context: context, label: "Min", at: minPoint)
+                    }
+                    
+                    // Shade the “past” portion if it’s today
+                    if Calendar.current.isDate(now, inSameDayAs: selectedDate),
+                       let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
+                           Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
+                       }) {
+                        
+                        let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+                        // Vertical line
+                        var vLine = Path()
+                        vLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                        vLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                        context.stroke(vLine, with: .color(.white.opacity(0.7)), style: StrokeStyle(lineWidth: 2))
+                        
+                        // Shading rectangle
+                        let darkRect = CGRect(
+                            x: origin.x,
+                            y: graphPadding,
+                            width: currentXPos - origin.x,
+                            height: graphHeight
+                        )
+                        context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+                    }
+                    
+                    // Hour labels at the bottom
+                    for hour in hourMarkers {
+                        let xPos = origin.x + (CGFloat(hour) * (graphWidth / 24.0))
+                        let labelPoint = CGPoint(x: xPos, y: origin.y + 14)
+                        context.draw(
+                            Text(String(format: "%02d", hour))
+                                .font(.system(size: 11))
+                                .foregroundColor(.gray),
+                            at: labelPoint,
+                            anchor: .center
+                        )
+                    }
+                    
+                    // Drag interpolation
+                    if let dragPt = dragLocationVisibility {
+                        if dragPt.x >= origin.x && dragPt.x <= origin.x + graphWidth {
+                            let fractionIndex = (dragPt.x - origin.x) / xStep
+                            let lowerIdx = max(0, min(points.count - 1, Int(floor(fractionIndex))))
+                            let upperIdx = max(0, min(points.count - 1, lowerIdx + 1))
+                            let t = (upperIdx == lowerIdx) ? 0 : (fractionIndex - CGFloat(lowerIdx))
+                            
+                            let lowerVal = visData[lowerIdx]
+                            let upperVal = visData[upperIdx]
+                            let interpolatedVis = lowerVal + (upperVal - lowerVal) * Double(t)
+                            
+                            var yVal = points[lowerIdx].y
+                            if upperIdx != lowerIdx {
+                                yVal += t * (points[upperIdx].y - points[lowerIdx].y)
+                            }
+                            let dotPoint = CGPoint(x: dragPt.x, y: yVal)
+                            
+                            // Vertical line
+                            var verticalLine = Path()
+                            verticalLine.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
+                            verticalLine.addLine(to: CGPoint(x: dotPoint.x, y: origin.y))
+                            context.stroke(verticalLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
+                            
+                            // Dot
+                            let dotRect = CGRect(center: dotPoint, radius: 4)
+                            context.fill(Path(ellipseIn: dotRect), with: .color(.white))
+                            
+                            // Time interpolation
+                            let timeLabelString: String
+                            if lowerIdx < hourlyItemsForSelectedDate.count,
+                               upperIdx < hourlyItemsForSelectedDate.count {
+                                let lowerDate = hourlyItemsForSelectedDate[lowerIdx].date
+                                let upperDate = hourlyItemsForSelectedDate[upperIdx].date
+                                let totalInterval = upperDate.timeIntervalSince(lowerDate)
+                                let interpolatedDate = lowerDate.addingTimeInterval(totalInterval * Double(t))
+                                
+                                let df = DateFormatter()
+                                df.dateFormat = "HH:mm"
+                                timeLabelString = df.string(from: interpolatedDate)
+                            } else {
+                                timeLabelString = "--:--"
+                            }
+                            
+                            let combinedLabel = Text("\(timeLabelString)\n\(String(format: "%.1f", interpolatedVis)) km")
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundColor(.white)
+                            
+                            let labelOffset: CGFloat = 8
+                            let textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
+                            context.draw(combinedLabel, at: textPoint, anchor: .bottomLeading)
+                        }
+                    }
+                }
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            dragLocationVisibility = value.location
+                        }
+                        .onEnded { _ in
+                            dragLocationVisibility = nil
+                        }
+                )
+                .frame(height: (graphHeight + 20) * 1.5)
+                
+                Divider()
+                    .background(Color.gray.opacity(0.4))
+                    .padding(.horizontal, graphPadding / 2)
+                    .padding(.top, 2)
+            }
+            
+            // Optional textual summary below the chart
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Now, \(currentTimeString)")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text(
+                    "Visibility is currently around \(String(format: "%.1f", vm.currentVisibility ?? 0)) km. " +
+                    "Lower values indicate fog or reduced visibility."
+                )
+                .font(.caption)
+                .foregroundColor(.secondary)
+            }
+            .padding(.top, 5)
+        }
+    }
+
+
+    @ViewBuilder
+    private func humidityGraphSection() -> some View {
+        // 1) Extract hourly humidity data (0.0–1.0) for the selected date
+        let humidityData = hourlyItemsForSelectedDate.map { $0.humidity }
+
+        // 2) Identify the corresponding DayForecastItem to get min/max daily humidity
+        let dayItem = allDailyItems.first {
+            Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+        }
+        let dailyMinH = dayItem?.humidityMin ?? 0
+        let dailyMaxH = dayItem?.humidityMax ?? 1
+
+        // 3) We'll chunk the 24 hours (or however many hours you have) into 6-hour blocks
+        let hoursCount = hourlyItemsForSelectedDate.count
+        let chunkSize  = 6
+        
+        // Create an array of (startIndex, endIndex) pairs for each 6-hour chunk
+        let chunkRanges: [(start: Int, end: Int)] = stride(from: 0, to: hoursCount, by: chunkSize)
+            .map { startIndex in
+                let endIndex = min(startIndex + chunkSize, hoursCount)
+                return (start: startIndex, end: endIndex)
+            }
+
+        // 4) Fraction of day for shading the “past” portion if selectedDate is “today”
+        let now = Date()
+        let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
+        let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+
+        // 5) The overall vertical stack for our humidity section
+        VStack(spacing: 8) {
+            
+            // MARK: - Header with daily min–max
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Humidity")
+                    .font(.system(size: 16, weight: .semibold))
+                Text("Today's min \(Int(dailyMinH * 100))% – max \(Int(dailyMaxH * 100))%")
+                    .font(.system(size: 13))
+                    .foregroundColor(.white.opacity(0.8))
+            }
+            // Optional formatting/layout offsets
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            .offset(x: -15)
+            .offset(y: 30)
+
+            
+            // MARK: - A row showing 6‑hour chunk averages
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    HStack(spacing: 0) {
+                        // ForEach over our chunkRanges
+                        ForEach(chunkRanges.indices, id: \.self) { i in
+                            let (startIndex, endIndex) = chunkRanges[i]
+                            let block   = hourlyItemsForSelectedDate[startIndex..<endIndex]
+                            let avgHum  = block.map(\.humidity).reduce(0, +) / Double(block.count)
+                            let avgPct  = Int(round(avgHum * 100))
+
+                            Text("\(avgPct)%")
+                                .font(.system(size: 12, weight: .bold))
+                                .frame(maxWidth: .infinity)
+                        }
+                    }
+                    
+                    // If this is “today,” shade the fraction of the day that’s already passed
+                    if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                        let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
+                        Rectangle()
+                            .fill(Color.black.opacity(0.4))
+                            .frame(width: overlayWidth)
+                    }
+                }
+            }
+            .frame(height: 20)
+            .padding(.horizontal, graphPadding)
+            .offset(y: 35)
+
+
+            // MARK: - Canvas-based line chart
+            Canvas { context, size in
+                // 6) Bail out if we have no data or zero-size
+                guard humidityData.count > 1,
+                      size.width > graphPadding,
+                      size.height > graphPadding * 2 else { return }
+
+                let width  = size.width
+                let height = size.height
+                let origin = CGPoint(x: graphPadding, y: height - graphPadding)
+                let chartWidth  = width  - graphPadding * 2
+                let chartHeight = height - graphPadding * 2
+
+                // Y function for 0...1 humidity → chart space
+                func yPosition(_ h: Double) -> CGFloat {
+                    let ratio = (h - 0.0) / (1.0 - 0.0)  // i.e. 0..1
+                    return origin.y - CGFloat(ratio) * chartHeight
+                }
+
+                // Horizontal lines at 0%, 20%, 40%, 60%, 80%, 100%
+                let humidityMarkers: [Double] = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+                for marker in humidityMarkers {
+                    let yPos = yPosition(marker)
+                    var hLine = Path()
+                    hLine.move(to: CGPoint(x: origin.x, y: yPos))
+                    hLine.addLine(to: CGPoint(x: origin.x + chartWidth, y: yPos))
+                    context.stroke(hLine,
+                                   with: .color(.gray.opacity(0.3)),
+                                   style: StrokeStyle(lineWidth: 0.5))
+                    
+                    let labelPt = CGPoint(x: origin.x + chartWidth + 15, y: yPos)
+                    context.draw(
+                        Text("\(Int(marker * 100))%")
+                            .font(.system(size: 10))
+                            .foregroundColor(.gray),
+                        at: labelPt,
+                        anchor: .center
+                    )
+                }
+
+                // Vertical lines at hours 0, 6, 12, 18, 24
+                let hourMarkers = [0, 6, 12, 18, 24]
+                for hour in hourMarkers {
+                    let xPos = origin.x + (CGFloat(hour) * (chartWidth / 24.0))
+                    var vLine = Path()
+                    vLine.move(to: CGPoint(x: xPos, y: graphPadding))
+                    vLine.addLine(to: CGPoint(x: xPos, y: origin.y))
+                    context.stroke(vLine, with: .color(.gray.opacity(0.3)), style: StrokeStyle(lineWidth: 0.5))
+                }
+
+                // Build the line path + fill path
+                var linePath = Path()
+                var fillPath = Path()
+                var points: [CGPoint] = []
+
+                let xStep = chartWidth / CGFloat(max(1, humidityData.count - 1))
+                for (index, humVal) in humidityData.enumerated() {
+                    let xPos = origin.x + CGFloat(index) * xStep
+                    let yPos = yPosition(humVal)
+                    let pt   = CGPoint(x: xPos, y: yPos)
+
+                    points.append(pt)
+                    if index == 0 {
+                        linePath.move(to: pt)
+                        fillPath.move(to: CGPoint(x: xPos, y: origin.y))
+                        fillPath.addLine(to: pt)
+                    } else {
+                        linePath.addLine(to: pt)
+                        fillPath.addLine(to: pt)
+                    }
+                }
+                // Close fill path from last point down to baseline
+                if let lastPt = points.last {
+                    fillPath.addLine(to: CGPoint(x: lastPt.x, y: origin.y))
+                    fillPath.closeSubpath()
+                }
+
+                // Simple gradient from yellow (dry) to blue (wet)
+                let humidityGradient = Gradient(stops: [
+                    .init(color: .yellow, location: 0.0),
+                    .init(color: .blue,   location: 1.0)
+                ])
+
+                // Fill under line
+                context.drawLayer { layerContext in
+                    layerContext.fill(
+                        fillPath,
+                        with: .linearGradient(
+                            humidityGradient,
+                            startPoint: CGPoint(x: 0, y: size.height),
+                            endPoint:   CGPoint(x: 0, y: 0)
+                        )
+                    )
+                }
+
+                // Stroke the line with a gradient
+                context.drawLayer { layerContext in
+                    let strokeStyle = StrokeStyle(lineWidth: 2.5, lineCap: .round, lineJoin: .round)
+                    let strokedPath = linePath.strokedPath(strokeStyle)
+                    layerContext.clip(to: strokedPath)
+                    layerContext.fill(
+                        Path(CGRect(origin: .zero, size: size)),
+                        with: .linearGradient(
+                            humidityGradient,
+                            startPoint: CGPoint(x: 0, y: size.height),
+                            endPoint:   CGPoint(x: 0, y: 0)
+                        )
+                    )
+                }
+
+                // Min & Max markers
+                if let maxHum = humidityData.max(),
+                   let maxIndex = humidityData.firstIndex(of: maxHum),
+                   points.indices.contains(maxIndex) {
+                    let highPoint = points[maxIndex]
+                    drawHLMarker(context: context, label: "Max", at: highPoint)
+                }
+                if let minHum = humidityData.min(),
+                   let minIndex = humidityData.firstIndex(of: minHum),
+                   points.indices.contains(minIndex) {
+                    let lowPoint = points[minIndex]
+                    drawHLMarker(context: context, label: "Min", at: lowPoint)
+                }
+
+                // Shade the “past” portion if selected date is today
+                if Calendar.current.isDate(now, inSameDayAs: selectedDate),
+                   let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
+                       Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
+                   }) {
+                    let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+
+                    // Vertical line at current hour
+                    var verticalLine = Path()
+                    verticalLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                    verticalLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                    context.stroke(verticalLine, with: .color(.white.opacity(0.7)), style: StrokeStyle(lineWidth: 2))
+
+                    // Dark rectangle for everything to the left
+                    let darkRect = CGRect(
+                        x: origin.x,
+                        y: graphPadding,
+                        width: currentXPos - origin.x,
+                        height: chartHeight
+                    )
+                    context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+                }
+
+                // Hour labels at bottom
+                for hour in hourMarkers {
+                    let xPos = origin.x + (CGFloat(hour) * (chartWidth / 24.0))
+                    let labelPoint = CGPoint(x: xPos, y: origin.y + 14)
+                    context.draw(
+                        Text(String(format: "%02d", hour))
+                            .font(.system(size: 11))
+                            .foregroundColor(.gray),
+                        at: labelPoint,
+                        anchor: .center
+                    )
+                }
+
+                // DRAG Gesture Interpolation – showing humidity % and time
+                if let dragPoint = dragLocationHumidity {
+                    if dragPoint.x >= origin.x && dragPoint.x <= origin.x + chartWidth {
+                        let fractionIndex = (dragPoint.x - origin.x) / xStep
+                        let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
+                        let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
+                        let t = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
+
+                        // Interpolate humidity
+                        let lowerValue = humidityData[lowerIndex]
+                        let upperValue = humidityData[upperIndex]
+                        let hVal = lowerValue + (upperValue - lowerValue) * Double(t)
+
+                        // Interpolate y
+                        var hY = points[lowerIndex].y
+                        if upperIndex != lowerIndex {
+                            hY += t * (points[upperIndex].y - points[lowerIndex].y)
+                        }
+                        let dotPoint = CGPoint(x: dragPoint.x, y: hY)
+
+                        // Vertical line
+                        var vLine = Path()
+                        vLine.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
+                        vLine.addLine(to: CGPoint(x: dotPoint.x, y: origin.y))
+                        context.stroke(vLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
+
+                        // Dot
+                        let dotRect = CGRect(center: dotPoint, radius: 4)
+                        context.fill(Path(ellipseIn: dotRect), with: .color(.white))
+
+                        // Time interpolation
+                        let timeLabel: String
+                        if lowerIndex < hourlyItemsForSelectedDate.count,
+                           upperIndex < hourlyItemsForSelectedDate.count {
+                            let d1 = hourlyItemsForSelectedDate[lowerIndex].date
+                            let d2 = hourlyItemsForSelectedDate[upperIndex].date
+                            let totalInterval = d2.timeIntervalSince(d1)
+                            let interpolatedDate = d1.addingTimeInterval(totalInterval * Double(t))
+                            let df = DateFormatter()
+                            df.dateFormat = "HH:mm"
+                            timeLabel = df.string(from: interpolatedDate)
+                        } else {
+                            timeLabel = "--:--"
+                        }
+
+                        let labelText = "\(timeLabel)\n\(Int(round(hVal * 100)))%"
+                        let label = Text(labelText)
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundColor(.white)
+
+                        let labelOffset: CGFloat = 8
+                        let textPoint = CGPoint(x: dotPoint.x + labelOffset, y: dotPoint.y - 20)
+                        context.draw(label, at: textPoint, anchor: .bottomLeading)
+                    }
+                }
+            }
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        // If you want a separate var for humidity drag location,
+                        // create: @State private var dragLocationHumidity: CGPoint?
+                        dragLocationHumidity = value.location
+                    }
+                    .onEnded { _ in
+                        dragLocationHumidity = nil
+                    }
+            )
+            // Increase the chart’s height for extra space
+            .frame(height: (graphHeight + 20) * 1.5)
+
+            Divider()
+                .background(Color.gray.opacity(0.4))
+                .padding(.horizontal, graphPadding / 2)
+                .padding(.top, 2)
+        }
+
+        // Optionally, show a small textual summary
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Now, \(currentTimeString)")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Text("Today's humidity ranges from \(Int(dailyMinH * 100))% to \(Int(dailyMaxH * 100))%. A comfortable indoor humidity is around 40–60%.")
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .padding(.top, 5)
+    }
+
+
+
 
     
+    @ViewBuilder
+    private func windGraphSection() -> some View {
+        // 1) Извличаме масиви от почасовата прогноза
+        let speeds: [Double] = hourlyItemsForSelectedDate.map { $0.windSpeed }
+        let gusts:  [Double] = hourlyItemsForSelectedDate.map { $0.windGust }
+        let directions = hourlyItemsForSelectedDate.map { $0.windDirection }
+        
+        // 2) Ако няма данни, показваме fallback изглед
+        if speeds.isEmpty && gusts.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Wind Speed & Gust")
+                    .font(.system(size: 16, weight: .semibold))
+                Text("No wind data available for this day.")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+            .padding(.bottom, 8)
+        } else {
+            // ----------- Подготвяме изчисленията извън @ViewBuilder блока -----------
+            
+            // 3) Определяме обхвата по Y (минимум и максимум)
+            let maxSpeed = speeds.max() ?? 0
+            let maxGust  = gusts.max()  ?? 0
+            let overallMax = max(maxSpeed, maxGust)
+
+            let rangeBuffer: Double = 3
+            let minRangeSpan: Double = 10
+            
+            // Задаваме твърдо минималната стойност на 0
+            let suggestedMin: Double = 0
+            
+            // Изчисляваме горната граница (suggestedMax)
+            let suggestedMax: Double = {
+                var tmp = ceil(overallMax / 5) * 5 + rangeBuffer
+                if (tmp - suggestedMin) < minRangeSpan {
+                    tmp = suggestedMin + minRangeSpan
+                    tmp = ceil(tmp / 5) * 5
+                }
+                return tmp
+            }()
+            
+            let yRange: (min: Double, max: Double) = (suggestedMin, suggestedMax)
+            
+            // 4) Четем дневната прогноза за показване на “Max Speed/Gust” в заглавието
+            let dayItem = allDailyItems.first {
+                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+            }
+            let dailyMaxSpeed = dayItem?.maxWindSpeed ?? 0
+            let dailyMaxGust  = dayItem?.maxWindGust  ?? 0
+            
+            // Ако има daily item, извличаме посоката
+            let directionAbbrev: String = {
+                  if let item = dayItem {
+                      return directionAbbreviation(for: item.predominantWindDirection)
+                  } else {
+                      return "-"
+                  }
+              }()
+            
+            let dailyMaxLabel = "Max Speed: \(Int(dailyMaxSpeed)) – Gust: \(Int(dailyMaxGust)) – Dir: \(directionAbbrev)"
+            
+            // ----------- Вече изграждаме изгледите -----------
+            
+            VStack(spacing: 0) {
+                
+                // Header (заглавие) за скоростта на вятъра
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Wind & Gust")
+                        .font(.system(size: 16, weight: .semibold))
+                    Text(dailyMaxLabel)
+                        .font(.system(size: 13))
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .offset(x: -10)
+                
+                // Ред с иконки, показващи посока на вятъра (на всеки 2 часа)
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        let now = Date()
+                        let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
+                        let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+
+                        HStack(spacing: 0) {
+                            let twoHourItems = Array(directions.enumerated())
+                                .filter { $0.offset % 2 == 0 }  // 0,2,4,...
+                            
+                            if twoHourItems.isEmpty {
+                                Text("No directions")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                            } else {
+                                ForEach(twoHourItems, id: \.offset) { (_, deg) in
+                                    let rotation = deg - 90.0
+                                    Image(systemName: "arrowshape.forward.fill")
+                                        .font(.system(size: 12))
+                                        .rotationEffect(.degrees(rotation))
+                                        .frame(maxWidth: .infinity)
+                                }
+                            }
+                        }
+                        
+                        // Частично засенчване (past shading), ако денят е днес
+                        if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                            let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
+                            Rectangle()
+                                .fill(Color.black.opacity(0.4))
+                                .frame(width: overlayWidth)
+                        }
+                    }
+                }
+                .frame(height: 20)
+                .padding(.horizontal, graphPadding)
+                .offset(y: 25)
+                
+                // Canvas за рисуване на самата графика
+                Canvas { context, size in
+                    guard speeds.count > 1,
+                          size.width > graphPadding,
+                          size.height > graphPadding * 2
+                    else { return }
+
+                    let w = size.width
+                    let h = size.height
+                    let origin = CGPoint(x: graphPadding, y: h - graphPadding)
+                    let contentWidth  = w - graphPadding * 2
+                    let contentHeight = h - graphPadding * 2
+                    let yStep = contentHeight / CGFloat(yRange.max - yRange.min)
+                    
+                    func yPosition(_ val: Double) -> CGFloat {
+                        origin.y - CGFloat(val - yRange.min) * yStep
+                    }
+                    
+                    // Хоризонтални линии (примерно на всеки 5 единици)
+                    let step: Double = 5
+                    let markers = stride(from: yRange.min, through: yRange.max, by: step).map { $0 }
+                    for marker in markers {
+                        let yPos = yPosition(marker)
+                        var hLine = Path()
+                        hLine.move(to: CGPoint(x: origin.x, y: yPos))
+                        hLine.addLine(to: CGPoint(x: origin.x + contentWidth, y: yPos))
+                        context.stroke(
+                            hLine,
+                            with: .color(.gray.opacity(0.3)),
+                            style: StrokeStyle(lineWidth: 0.5)
+                        )
+                        
+                        // Етикети вдясно
+                        let labelPt = CGPoint(x: origin.x + contentWidth + 15, y: yPos)
+                        context.draw(
+                            Text("\(Int(marker))")
+                                .font(.system(size: 10))
+                                .foregroundColor(.gray),
+                            at: labelPt,
+                            anchor: .center
+                        )
+                    }
+                    
+                    // Вертикални линии (часови маркери)
+                    let hourMarkers = [0, 6, 12, 18, 24]
+                    for hour in hourMarkers {
+                        let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
+                        var vLine = Path()
+                        vLine.move(to: CGPoint(x: xPos, y: graphPadding))
+                        vLine.addLine(to: CGPoint(x: xPos, y: origin.y))
+                        context.stroke(
+                            vLine,
+                            with: .color(.gray.opacity(0.3)),
+                            style: StrokeStyle(lineWidth: 0.5)
+                        )
+                    }
+                    
+                    // Построяваме path за wind SPEED
+                    let xStep = contentWidth / CGFloat(max(1, speeds.count - 1))
+                    
+                    var speedPoints: [CGPoint] = []
+                    var speedLinePath = Path()
+                    
+                    for (i, val) in speeds.enumerated() {
+                        let xPos = origin.x + CGFloat(i) * xStep
+                        let yPos = yPosition(val)
+                        let pt = CGPoint(x: xPos, y: yPos)
+                        speedPoints.append(pt)
+                        
+                        if i == 0 {
+                            speedLinePath.move(to: pt)
+                        } else {
+                            speedLinePath.addLine(to: pt)
+                        }
+                    }
+                    
+                    // Path за запълването под speed линията (до baseline)
+                    var speedFillPath = speedLinePath
+                    if let firstPt = speedPoints.first,
+                       let lastPt  = speedPoints.last {
+                        speedFillPath.addLine(to: CGPoint(x: lastPt.x, y: origin.y))
+                        speedFillPath.addLine(to: CGPoint(x: firstPt.x, y: origin.y))
+                        speedFillPath.closeSubpath()
+                    }
+                    
+                    // Path за wind GUST
+                    var gustPoints: [CGPoint] = []
+                    var gustLinePath = Path()
+                    for (i, val) in gusts.enumerated() {
+                        let xPos = origin.x + CGFloat(i) * xStep
+                        let yPos = yPosition(val)
+                        let pt = CGPoint(x: xPos, y: yPos)
+                        gustPoints.append(pt)
+                        
+                        if i == 0 {
+                            gustLinePath.move(to: pt)
+                        } else {
+                            gustLinePath.addLine(to: pt)
+                        }
+                    }
+                    
+                    // Запълване (fill) под SPEED линията
+                    context.fill(
+                        speedFillPath,
+                        with: .color(.blue.opacity(0.25))
+                    )
+                    
+                    // Stroke на SPEED линията (синьо)
+                    context.stroke(
+                        speedLinePath,
+                        with: .color(.blue),
+                        style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round)
+                    )
+                    
+                    // Stroke на GUST линията (зелено)
+                    context.stroke(
+                        gustLinePath,
+                        with: .color(.green),
+                        style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round)
+                    )
+                    
+                    // Маркери за Max S и Max G
+                    if let maxS = speeds.max(),
+                       let maxSIdx = speeds.firstIndex(of: maxS),
+                       speedPoints.indices.contains(maxSIdx) {
+                        let hp = speedPoints[maxSIdx]
+                        drawMarker(context: context, label: "Max S", at: hp, color: .blue)
+                    }
+                    if let maxG = gusts.max(),
+                       let maxGIdx = gusts.firstIndex(of: maxG),
+                       gustPoints.indices.contains(maxGIdx) {
+                        let hp = gustPoints[maxGIdx]
+                        drawMarker(context: context, label: "Max G", at: hp, color: .green)
+                    }
+                    
+                    // Частично засенчване (past shading), ако денят е днес
+                    let now = Date()
+                    if Calendar.current.isDate(now, inSameDayAs: selectedDate),
+                       let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
+                           Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
+                       }) {
+                        let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+                        var verticalLine = Path()
+                        verticalLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                        verticalLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                        context.stroke(
+                            verticalLine,
+                            with: .color(.white.opacity(0.8)),
+                            style: StrokeStyle(lineWidth: 1.5)
+                        )
+                        
+                        let darkRect = CGRect(
+                            x: origin.x,
+                            y: graphPadding,
+                            width: currentXPos - origin.x,
+                            height: contentHeight
+                        )
+                        context.fill(Path(darkRect), with: .color(.black.opacity(0.2)))
+                    }
+                    
+                    // Часови етикети отдолу
+                    for hour in hourMarkers {
+                        let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
+                        let textPoint = CGPoint(x: xPos, y: origin.y + 14)
+                        context.draw(
+                            Text(String(format: "%02d", hour))
+                                .font(.system(size: 11))
+                                .foregroundColor(.gray),
+                            at: textPoint,
+                            anchor: .center
+                        )
+                    }
+                    
+                    // DRAG интерполация за speed/gust
+                    if let dragPoint = dragLocationWind {
+                        if dragPoint.x >= origin.x && dragPoint.x <= origin.x + contentWidth {
+                            let fractionIndex = (dragPoint.x - origin.x) / xStep
+                            let lowerIdx = max(0, min(speedPoints.count - 1, Int(floor(fractionIndex))))
+                            let upperIdx = max(0, min(speedPoints.count - 1, lowerIdx + 1))
+                            let t = (upperIdx == lowerIdx) ? 0 : (fractionIndex - CGFloat(lowerIdx))
+                            
+                            // Интерполация на speed
+                            let sLower = speeds[lowerIdx]
+                            let sUpper = speeds[upperIdx]
+                            let sVal   = sLower + (sUpper - sLower) * Double(t)
+                            
+                            // Интерполация на gust
+                            let gLower = gusts[lowerIdx]
+                            let gUpper = gusts[upperIdx]
+                            let gVal   = gLower + (gUpper - gLower) * Double(t)
+                            
+                            // Интерполация по Y
+                            var sY = speedPoints[lowerIdx].y
+                            var gY = gustPoints[lowerIdx].y
+                            if upperIdx != lowerIdx {
+                                sY += t * (speedPoints[upperIdx].y - speedPoints[lowerIdx].y)
+                                gY += t * (gustPoints[upperIdx].y - gustPoints[lowerIdx].y)
+                            }
+                            let spdPt = CGPoint(x: dragPoint.x, y: sY)
+                            let gstPt = CGPoint(x: dragPoint.x, y: gY)
+                            
+                            // Вертикална линия на drag позицията
+                            var vLine = Path()
+                            vLine.move(to: CGPoint(x: dragPoint.x, y: graphPadding))
+                            vLine.addLine(to: CGPoint(x: dragPoint.x, y: origin.y))
+                            context.stroke(vLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
+                            
+                            // Dot за скорост (синя точка)
+                            let speedDot = CGRect(center: spdPt, radius: 3.5)
+                            context.fill(Path(ellipseIn: speedDot), with: .color(.blue))
+                            
+                            // Dot за порив (зелена точка)
+                            let gustDot = CGRect(center: gstPt, radius: 3.5)
+                            context.fill(Path(ellipseIn: gustDot), with: .color(.green))
+                            
+                            // Интерполация на времето
+                            var timeText = "--:--"
+                            if lowerIdx < hourlyItemsForSelectedDate.count,
+                               upperIdx < hourlyItemsForSelectedDate.count {
+                                let d1 = hourlyItemsForSelectedDate[lowerIdx].date
+                                let d2 = hourlyItemsForSelectedDate[upperIdx].date
+                                let dt = d2.timeIntervalSince(d1) * Double(t)
+                                let newDate = d1.addingTimeInterval(dt)
+                                let df = DateFormatter()
+                                df.dateFormat = "HH:mm"
+                                timeText = df.string(from: newDate)
+                            }
+                            
+                            let labelText = "\(timeText)\nSpeed: \(Int(round(sVal)))\nGust:  \(Int(round(gVal)))"
+                            let label = Text(labelText)
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundColor(.white)
+                            
+                            let labelOffset: CGFloat = 8
+                            let textPoint = CGPoint(x: spdPt.x + labelOffset, y: spdPt.y - 30)
+                            context.draw(label, at: textPoint, anchor: .bottomLeading)
+                        }
+                    }
+                } // край на Canvas
+                .frame(height: 240)
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            dragLocationWind = value.location
+                        }
+                        .onEnded { _ in
+                            dragLocationWind = nil
+                        }
+                )
+                
+                Divider()
+                    .background(Color.gray.opacity(0.4))
+                    .padding(.horizontal, graphPadding / 2)
+                    .padding(.top, 2)
+                
+                // Примерен текст отдолу
+                Text("Wind is currently 15 km/h from the north-west. Today, wind speeds are 3 to 15 km/h, with gusts up to 36 km/h.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .padding(.top, 35)
+            }
+            .padding(.bottom, 8)
+        }
+    }
+
+
+
+
     private func precipitationTotalsSection(for day: DayForecastItem) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Precipitation Totals")
