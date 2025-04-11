@@ -223,6 +223,14 @@ struct WeatherDetailView: View {
                             windTableSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
+                            
+                            aboutWindSpeedAndGustsSection
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                           
+                            aboutBeaufortScaleSection
+                                .padding(.horizontal)
+                                .padding(.bottom)
                         case 3:
                             precipAmauntDiagranmSection()
                                 .padding(.horizontal)
@@ -682,6 +690,32 @@ struct WeatherDetailView: View {
         .offset(y: -10)
     }
 
+    private var aboutWindSpeedAndGustsSection: some View {
+           VStack(alignment:.leading, spacing:5) {
+               Text("About Wind Speed and Gusts")
+                   .font(.system(size:16, weight:.semibold))
+               Text("The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds.")
+                   .font(.system(size:14))
+                   .lineSpacing(3)
+                   .foregroundColor(.gray)
+           }
+           // Offset, за да изглежда еднакво с другите секции (по желание)
+           .offset(x: -4)
+       }
+       
+       /// Секция „About the Beaufort Scale“
+       private var aboutBeaufortScaleSection: some View {
+           VStack(alignment:.leading, spacing:5) {
+               Text("About the Beaufort Scale")
+                   .font(.system(size:16, weight:.semibold))
+               Text("The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range.")
+                   .font(.system(size:14))
+                   .lineSpacing(3)
+                   .foregroundColor(.gray)
+           }
+           .offset(x: 4)
+       }
+    
     /// Генерира подробен текст за текущия ден, използвайки данните от WeatherKitViewModel (vm) за текущите условия,
     /// като падащите данни се комбинират с данните от обекта day (напр. за дневната мин/макс температура, ако vm не ги предоставя).
     private func generateCurrentDayForecastText(from day: DayForecastItem) -> String {
@@ -806,9 +840,39 @@ struct WeatherDetailView: View {
         let kmhRange: String
     }
     
+    func interpolateColor(from: UIColor, to: UIColor, fraction: CGFloat) -> UIColor {
+        var fRed: CGFloat = 0, fGreen: CGFloat = 0, fBlue: CGFloat = 0, fAlpha: CGFloat = 0
+        var tRed: CGFloat = 0, tGreen: CGFloat = 0, tBlue: CGFloat = 0, tAlpha: CGFloat = 0
+        from.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
+        to.getRed(&tRed, green: &tGreen, blue: &tBlue, alpha: &tAlpha)
+        let red   = fRed   + (tRed   - fRed)   * fraction
+        let green = fGreen + (tGreen - fGreen) * fraction
+        let blue  = fBlue  + (tBlue  - fBlue)  * fraction
+        let alpha = fAlpha + (tAlpha - fAlpha) * fraction
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+    }
     
+    func gradientColor(for progress: Double) -> Color {
+        let clamped = min(max(progress, 0.0), 1.0)
+        let uiColor: UIColor
+        if clamped <= 0.33 {
+            let fraction = CGFloat(clamped / 0.33)
+            // teal to yellow
+            uiColor = interpolateColor(from: UIColor.systemTeal, to: UIColor.yellow, fraction: fraction)
+        } else if clamped <= 0.66 {
+            let fraction = CGFloat((clamped - 0.33) / 0.33)
+            // yellow to orange
+            uiColor = interpolateColor(from: UIColor.yellow, to: UIColor.orange, fraction: fraction)
+        } else {
+            let fraction = CGFloat((clamped - 0.66) / 0.34)
+            // orange to red
+            uiColor = interpolateColor(from: UIColor.orange, to: UIColor.red, fraction: fraction)
+        }
+        return Color(uiColor)
+    }
+    
+    @ViewBuilder
     private func windTableSection() -> some View {
-        
         // MARK: Beaufort Data
         let beaufortData: [BeaufortScaleItem] = [
             BeaufortScaleItem(bft: 0, description: "Calm",             kmhRange: "< 2"),
@@ -825,48 +889,12 @@ struct WeatherDetailView: View {
             BeaufortScaleItem(bft: 11, description: "Violent storm",   kmhRange: "103 – 117"),
             BeaufortScaleItem(bft: 12, description: "Hurricane-force", kmhRange: "> 118")
         ]
-        
-        // MARK: - Color Interpolation Helpers
-        // Interpolates between two UIColors using a fraction (0...1)
-        func interpolateColor(from: UIColor, to: UIColor, fraction: CGFloat) -> UIColor {
-            var fRed: CGFloat = 0, fGreen: CGFloat = 0, fBlue: CGFloat = 0, fAlpha: CGFloat = 0
-            var tRed: CGFloat = 0, tGreen: CGFloat = 0, tBlue: CGFloat = 0, tAlpha: CGFloat = 0
-            from.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
-            to.getRed(&tRed, green: &tGreen, blue: &tBlue, alpha: &tAlpha)
-            let red   = fRed   + (tRed   - fRed)   * fraction
-            let green = fGreen + (tGreen - fGreen) * fraction
-            let blue  = fBlue  + (tBlue  - fBlue)  * fraction
-            let alpha = fAlpha + (tAlpha - fAlpha) * fraction
-            return UIColor(red: red, green: green, blue: blue, alpha: alpha)
-        }
-        
-        // Returns a SwiftUI Color interpolated along a gradient defined by:
-        // 0.0 = teal, 0.33 = yellow, 0.66 = orange, 1.0 = red.
-        func gradientColor(for progress: Double) -> Color {
-            let clamped = min(max(progress, 0.0), 1.0)
-            let uiColor: UIColor
-            if clamped <= 0.33 {
-                let fraction = CGFloat(clamped / 0.33)
-                // teal to yellow
-                uiColor = interpolateColor(from: UIColor.systemTeal, to: UIColor.yellow, fraction: fraction)
-            } else if clamped <= 0.66 {
-                let fraction = CGFloat((clamped - 0.33) / 0.33)
-                // yellow to orange
-                uiColor = interpolateColor(from: UIColor.yellow, to: UIColor.orange, fraction: fraction)
-            } else {
-                let fraction = CGFloat((clamped - 0.66) / 0.34)
-                // orange to red
-                uiColor = interpolateColor(from: UIColor.orange, to: UIColor.red, fraction: fraction)
-            }
-            return Color(uiColor)
-        }
-        
-        // MARK: - View Body
-        return VStack(alignment: .leading, spacing: 5) {
+      
+        VStack(alignment: .leading, spacing: 5) {
             // Main Header
             Text("Beaufort Scale")
                 .font(.system(size: 16, weight: .semibold))
-                .offset(y: -5)
+                .offset(x: 4, y: -5)
             // Column Headers
             HStack(spacing: 12) {
                 Text("bft")
