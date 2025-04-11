@@ -46,7 +46,6 @@ extension WeatherDetailView{
                 }
                 .offset(y: -48) // или друг offset
               }
-              // Примерно прилагаме vertical offset за цялата група
               .offset(y: 10) // Поправи стойността според нуждите ти
            
 
@@ -94,7 +93,7 @@ extension WeatherDetailView{
                 }
                 .frame(height: 20)
                 .padding(.horizontal, graphPadding)
-                .offset(y: -25)
+//                .offset(y: -25)
                 
                 // Графична част с Canvas – увеличена височина
                 // Графична част с Canvas – увеличена височина
@@ -355,29 +354,41 @@ extension WeatherDetailView{
                         .onEnded { _ in dragLocationUV = nil }
                 )
                 .frame(height: (graphHeight + 20) * 1.5)
-                .offset(y: 0)
+                .offset(y: -30)
                 Divider()
                     .background(Color.gray.opacity(0.4))
                     .padding(.horizontal, graphPadding / 2)
                     .padding(.top, 2)
-                    .offset(y: 0)
+                    .offset(y: -35)
                 
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Now, \(currentTimeString)")
+                    HStack{
+                        Text("Now, \(currentTimeString)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                         .font(.caption)
                         .foregroundColor(.secondary)
-                    
-                    Text(generateUVAdvice(uvData: uvData, startOfSelectedDay: startOfSelectedDay))
+                        .lineSpacing(3)
+                        Spacer()
+                    }
+                    .offset(x: 2)
+                 
+                    HStack{
+                        Text(generateUVAdvice(uvData: uvData, startOfSelectedDay: startOfSelectedDay))
                         .font(.caption)
                         .foregroundColor(.secondary)
+                        .lineSpacing(3)
+                        Spacer()
+                    }
+                    .offset(x: 2)
                 }
                 .padding(.top, 5)
-                .offset(y: 0)
+                .offset(y: -35)
             }
-            .offset(y: 60)
+            .offset(y: 20)
         }
-        .offset(y: -60)
+        .offset(y: -10)
     }
     
     func generateUVAdvice(uvData: [Int], startOfSelectedDay: Date) -> String {

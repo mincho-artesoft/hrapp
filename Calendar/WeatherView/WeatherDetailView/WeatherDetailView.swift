@@ -779,25 +779,25 @@ struct WeatherDetailView: View {
         .offset(x: -2, y: -10)
     }
 
-        @ViewBuilder
-        private func forecastWindSection(for day: DayForecastItem) -> some View {
-            // Изчисляваме скоростите от почасовата прогноза за избрания ден
-            let speeds: [Double] = hourlyItemsForSelectedDate.map { $0.windSpeed }
-            // Определяме дали денят от day е текущ (днес)
-            let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
-            
-            VStack(alignment: .leading, spacing: 5) {
-                Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ? "Forecast" : "Daily Summary")
-                    .font(.system(size: 16, weight: .semibold))
-                Text(generateWindSummaryText(isToday: isToday,
-                                             speeds: speeds,
-                                             dayItem: day))
-                    .font(.system(size: 14))
-                    .lineSpacing(4)
-                    .foregroundColor(.gray)
-            }
-            .offset(y: -50)
+    @ViewBuilder
+    private func forecastWindSection(for day: DayForecastItem) -> some View {
+        // Изчисляваме скоростите от почасовата прогноза за избрания ден
+        let speeds: [Double] = hourlyItemsForSelectedDate.map { $0.windSpeed }
+        // Определяме дали денят от day е текущ (днес)
+        let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
+        
+        VStack(alignment: .leading, spacing: 5) {
+            Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ? "Forecast" : "Daily Summary")
+                .font(.system(size: 16, weight: .semibold))
+            Text(generateWindSummaryText(isToday: isToday,
+                                         speeds: speeds,
+                                         dayItem: day))
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
         }
+        .offset(x: Calendar.current.isDate(day.date, inSameDayAs: Date()) ? -12 : -2, y: -10)
+    }
 
     struct BeaufortScaleItem: Identifiable {
         let id = UUID()
@@ -806,7 +806,7 @@ struct WeatherDetailView: View {
         let kmhRange: String
     }
     
-    @ViewBuilder
+    
     private func windTableSection() -> some View {
         
         // MARK: Beaufort Data
@@ -936,7 +936,7 @@ struct WeatherDetailView: View {
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
-        .offset(x: -2, y:-10)
+        .offset(x: -4, y:-10)
     }
     
     private var optionsSection: some View {

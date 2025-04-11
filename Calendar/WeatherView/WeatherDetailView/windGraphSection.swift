@@ -406,11 +406,8 @@ extension WeatherDetailView{
                         .background(Color.gray.opacity(0.4))
                         .padding(.horizontal, graphPadding / 2)
                         .padding(.top, 2)
-                    let windSummary = generateWindSummaryText(isToday: isToday,
-                                                              speeds: speeds,
-                                                              dayItem: dayItem)
                 }
-                .offset(y: -45)
+//                .offset(y: -45)
             }
             .padding(.bottom, 8)
         }
