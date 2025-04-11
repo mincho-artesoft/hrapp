@@ -9,7 +9,7 @@ struct WeatherDetailView: View {
     // 1) Data Sources - Keep as is
     let allHourlyItems: [HourlyForecastItem]
     let allDailyItems: [DayForecastItem]
-    @State private var selectedOption: Int = 0   // 2) State - Keep as is
+    @State private var selectedOption: Int
     @State var selectedDate: Date
     @State var showingFeelsLike = false
     @State var dragLocationTEMP: CGPoint? = nil
@@ -38,8 +38,10 @@ struct WeatherDetailView: View {
         currentActualTemp: Double?,
         currentFeelsLikeTemp: Double?,
         initialDate: Date,
-        daySymbol: String
+        daySymbol: String,
+        selectedOption: Int
     ) {
+        self.selectedOption = selectedOption
         self.allHourlyItems = allHourlyItems
         self.allDailyItems = allDailyItems
         _selectedDate = State(initialValue: initialDate)

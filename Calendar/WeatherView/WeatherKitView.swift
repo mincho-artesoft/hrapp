@@ -21,7 +21,12 @@ struct WeatherKitView: View {
     
     // Sheet за HourlyFeelsLikeDetailView
     @State private var showFeelsLikeDetail = false
-    
+    @State private var showUVDetail = false
+    @State private var showWindDetail = false
+    @State private var showPrecipitationDetail = false
+    @State private var showHumidityDetail = false
+    @State private var showVisibilityDetail = false
+    @State private var showPressureDetail = false
     var body: some View {
         ZStack(alignment: .top) {
             
@@ -88,7 +93,8 @@ struct WeatherKitView: View {
                 currentActualTemp: vm.currentTemp,
                 currentFeelsLikeTemp: vm.currentFeelsLike,
                 initialDate: day.date,
-                daySymbol: day.symbol
+                daySymbol: day.symbol,
+                selectedOption: 0
             )
         }
 
@@ -103,7 +109,8 @@ struct WeatherKitView: View {
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
-                    daySymbol: todayItem.symbol
+                    daySymbol: todayItem.symbol,
+                    selectedOption: 0
                 )
             } else {
                 WeatherDetailView(
@@ -112,13 +119,161 @@ struct WeatherKitView: View {
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
-                    daySymbol: vm.currentSymbol
+                    daySymbol: vm.currentSymbol,
+                    selectedOption: 0
                 )
             }
         }
-
-
-
+        .sheet(isPresented: $showUVDetail) {
+            if let todayItem = vm.dailyForecast.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: Date())
+            }) {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: todayItem.symbol,
+                    selectedOption: 1
+                )
+            } else {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: vm.currentSymbol,
+                    selectedOption: 1
+                )
+            }
+        }
+        .sheet(isPresented: $showWindDetail) {
+            if let todayItem = vm.dailyForecast.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: Date())
+            }) {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: todayItem.symbol,
+                    selectedOption: 2
+                )
+            } else {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: vm.currentSymbol,
+                    selectedOption: 2
+                )
+            }
+        }
+        .sheet(isPresented: $showPrecipitationDetail) {
+            if let todayItem = vm.dailyForecast.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: Date())
+            }) {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: todayItem.symbol,
+                    selectedOption: 3
+                )
+            } else {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: vm.currentSymbol,
+                    selectedOption: 3
+                )
+            }
+        }
+        .sheet(isPresented: $showHumidityDetail) {
+            if let todayItem = vm.dailyForecast.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: Date())
+            }) {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: todayItem.symbol,
+                    selectedOption: 4
+                )
+            } else {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: vm.currentSymbol,
+                    selectedOption: 4
+                )
+            }
+        }
+        .sheet(isPresented: $showVisibilityDetail) {
+            if let todayItem = vm.dailyForecast.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: Date())
+            }) {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: todayItem.symbol,
+                    selectedOption: 5
+                )
+            } else {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: vm.currentSymbol,
+                    selectedOption: 5
+                )
+            }
+        }
+        .sheet(isPresented: $showPressureDetail) {
+            if let todayItem = vm.dailyForecast.first(where: {
+                Calendar.current.isDate($0.date, inSameDayAs: Date())
+            }) {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: todayItem.symbol,
+                    selectedOption: 6
+                )
+            } else {
+                WeatherDetailView(
+                    allHourlyItems: vm.hourlyForecast,
+                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    currentActualTemp: vm.currentTemp,
+                    currentFeelsLikeTemp: vm.currentFeelsLike,
+                    initialDate: Date(),
+                    daySymbol: vm.currentSymbol,
+                    selectedOption: 6
+                )
+            }
+        }
         // MARK: - onReceive за Location и др.
         .onReceive(locationManager.$currentLocation) { location in
             if let loc = location,
@@ -599,6 +754,9 @@ struct WeatherKitView: View {
                     uvIndex: vm.currentUVIndex,
                     categoryInfo: vm.uvCategory(for: vm.currentUVIndex)
                 )
+                .onTapGesture {
+                    showUVDetail = true
+                }
             }
             
             WindCard(
@@ -607,6 +765,9 @@ struct WeatherKitView: View {
                 direction: vm.currentWindDirection,
                 directionAbbreviation: vm.windDirectionAbbreviation(for: vm.currentWindDirection)
             )
+            .onTapGesture {
+                showWindDetail = true
+            }
             
             SunsetCard(
                 sunrise: vm.sunriseTime,
@@ -621,9 +782,15 @@ struct WeatherKitView: View {
                     nextExpectedAmount: nextRainInfo.amount,
                     nextExpectedTimeString: nextRainInfo.timeString
                 )
+                .onTapGesture {
+                    showPrecipitationDetail = true
+                }
                 VisibilityCard(
                     visibilityKm: (vm.currentVisibility ?? 0) / 1000
                 )
+                .onTapGesture {
+                    showVisibilityDetail = true
+                }
             }
             
             HStack(spacing: 15) {
@@ -631,10 +798,16 @@ struct WeatherKitView: View {
                     humidity: vm.currentHumidity,
                     dewPoint: vm.currentDewPoint
                 )
+                .onTapGesture {
+                    showHumidityDetail = true
+                }
                 PressureCard(
                     pressure: vm.currentPressure,
                     trend: vm.pressureTrend
                 )
+                .onTapGesture {
+                    showPressureDetail = true
+                }
             }
         }
     }
