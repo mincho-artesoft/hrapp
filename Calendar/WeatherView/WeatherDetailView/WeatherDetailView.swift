@@ -289,8 +289,32 @@ struct WeatherDetailView: View {
                                 .padding(.horizontal)
                                 .padding(.bottom)
                             
+                            if let selectedDayForecast = allDailyItems.first(where: {
+                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                            }) {
+                                forecastVisibilitySection(for: selectedDayForecast)
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
+                            }
+                            
+                            aboutVisibilitySection()
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                            
                         case 6:
                             pressureGraphSection()
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                            
+                            if let selectedDayForecast = allDailyItems.first(where: {
+                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                            }) {
+                                forecastPressureSection(for: selectedDayForecast)
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
+                            }
+                            
+                            aboutPressureSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
                             
@@ -929,7 +953,165 @@ struct WeatherDetailView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .offset(x: 4, y: -40)
     }
+    
+    func clarityDescription(for value: Int) -> String {
+        if value >= 30 {
+            return "perfectly clear"
+        } else if value >= 20 {
+            return "clear"
+        } else if value >= 10 {
+            return "partially clear"
+        } else {
+            return "hazy"
+        }
+    }
+    
+    @ViewBuilder
+    private func forecastVisibilitySection(for day: DayForecastItem) -> some View {
+        // Проверяваме дали денят е текущия ден
+        let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
+        
+        // Ако денят не е текущ, извличаме пълното име на деня (например "Saturday")
+        let dayName: String = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE"
+            return formatter.string(from: day.date)
+        }()
+        
+        // Закръгляме стойностите за видимост (в км) към цели числа
+        let minVis = Int(round(day.visibilityMin))
+        let maxVis = Int(round(day.visibilityMax))
+        
+        // Локална функция, която определя описанието на видимостта динамично
+       
+        
+        // За текущия ден може да използваме средната стойност като индикатор за общото състояние
+        let avgVis = (minVis + maxVis) / 2
+        let avgClarity = clarityDescription(for: avgVis)
+        // За не-текущите дни отделно описваме минималната и максималната видимост
+        let minClarity = clarityDescription(for: minVis)
+        let maxClarity = clarityDescription(for: maxVis)
+        
+        VStack(alignment: .leading, spacing: 5) {
+            // Заглавна част: "Forecast" за текущия ден или "Daily Summary" за друг ден
+            Text(isToday ? "Forecast" : "Daily Summary")
+                .font(.system(size: 16, weight: .semibold))
+            
+            if isToday {
+                // Пример за текущ ден:
+                // "Today, the visibility will be perfectly clear, at 21 to 32 km."
+                Text("Today, the visibility will be \(avgClarity), at \(minVis) to \(maxVis) km.")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            } else {
+                // Пример за не-текущ ден:
+                // "On Saturday, the lowest visibility will be clear at 13 km, and the highest will be perfectly clear at 28 km."
+                Text("On \(dayName), the lowest visibility will be \(minClarity) at \(minVis) km, and the highest will be \(maxClarity) at \(maxVis) km.")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4, y: 5)
+    }
 
+
+    @ViewBuilder
+    private func aboutVisibilitySection() -> some View {
+        VStack(alignment:.leading, spacing:5) {
+            Text("About Visibility")
+                .font(.system(size:16, weight:.semibold))
+            Text("""
+            Visibility tells you how far away you can clearly see objects like buildings and hills. It is a measure of the transparency of the air and does not take into account the amount of sunlight or the presence of obstructions. Visibility at or above 10 km is considered clear.
+            """)
+
+                .font(.system(size:14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4, y: 15)
+    }
+    
+    @ViewBuilder
+    private func forecastPressureSection(for day: DayForecastItem) -> some View {
+        // Определяме дали денят е днешният
+        let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
+        
+        // Извличаме почасовите стойности за налягането (в hPa) от hourlyItemsForSelectedDate
+        let pressureValues = hourlyItemsForSelectedDate.map { $0.pressure }
+        
+        // Изчисляваме средното налягане (ако има данни, иначе fallback)
+        let avgPressure: Int = {
+            if !pressureValues.isEmpty {
+                return Int(round(pressureValues.reduce(0, +) / Double(pressureValues.count)))
+            } else {
+                return 1013  // fallback стойност
+            }
+        }()
+        
+        // Извличаме минималното налягане (ако няма данни, fallback)
+        let minPressure: Int = {
+            if let minVal = pressureValues.min() {
+                return Int(round(minVal))
+            } else {
+                return 1013
+            }
+        }()
+        
+        VStack(alignment: .leading, spacing: 5) {
+            // Заглавна част – "Forecast" за днешния ден, "Daily Summary" за друг ден
+            Text(isToday ? "Forecast" : "Daily Summary")
+                .font(.system(size: 16, weight: .semibold))
+            
+            if isToday {
+                // За днешния ден използваме vm.currentPressure, ако е налична, иначе използваме средната стойност
+                let currentPressure = Int(round(vm.currentPressure ?? Double(avgPressure)))
+                Text("Pressure is currently \(currentPressure) hPa and falling. Today, the average pressure will be \(avgPressure) hPa, and the lowest pressure will be \(minPressure) hPa.")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            } else {
+                // Извличаме името на деня (например "Sunday")
+                let weekday: String = {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "EEEE"
+                    return formatter.string(from: day.date)
+                }()
+                Text("On \(weekday), the average pressure will be \(avgPressure) hPa, and the lowest pressure will be \(minPressure) hPa.")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4, y: 5)
+    }
+
+
+
+    @ViewBuilder
+    private func aboutPressureSection() -> some View {
+        VStack(alignment:.leading, spacing:5) {
+            Text("About Pressure")
+                .font(.system(size:16, weight:.semibold))
+            Text("""
+            Significant, rapid changes in pressure are used to predict changes in the weather. For example, a drop in pressure can mean that rain or snow is on the way, and rising pressure can mean that weather will improve. Pressure is also called barometric pressure or atmospheric pressure.
+            """)
+
+                .font(.system(size:14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4, y: 15)
+    }
     
     @ViewBuilder
     private func aboutHumiditySection() -> some View {
