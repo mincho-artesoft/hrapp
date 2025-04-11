@@ -69,7 +69,7 @@ extension WeatherDetailView{
                     // За текущия ден – показваме текущата скорост, посоката и под тях поривите (с по-малки и сиви букви)
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
-                            Text("\(Int(round(vm.currentWindSpeed ?? dailyMaxSpeed))) km/h")
+                            Text("Wind Speed \(Int(round(vm.currentWindSpeed ?? dailyMaxSpeed))) km/h")
                                 .font(.system(size: 16, weight: .semibold))
                             Text(vm.windDirectionAbbreviation(for: vm.currentWindDirection))
                                 .font(.system(size: 16, weight: .semibold))
@@ -84,7 +84,7 @@ extension WeatherDetailView{
                 } else {
                     // За друг ден – показваме само "Wind" и под него сив текст с "Gusts up to" и максималния порив
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("\(Int(round(dailyMinWindSpeed)))-\(Int(round(dailyMaxSpeed)))km/h")
+                        Text("Wind Speed \(Int(round(dailyMinWindSpeed)))-\(Int(round(dailyMaxSpeed)))km/h")
                             .font(.system(size: 16, weight: .semibold))
                         Text("Gusts up to \(Int(round(dailyMaxGust))) km/h")
                             .font(.system(size: 13))

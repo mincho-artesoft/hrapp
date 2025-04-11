@@ -29,11 +29,8 @@ extension WeatherDetailView{
             Group {
                   // Заглавната част
                   VStack(alignment: .leading, spacing: 5) {
-                      Text("UV Index")
-                          .font(.system(size: 16, weight: .semibold))
                       Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
-                          .font(.system(size: 13))
-                          .foregroundColor(.gray)
+                          .font(.system(size: 16, weight: .semibold))
                   }
                   .frame(maxWidth: .infinity, alignment: .leading)
                   .padding(.horizontal)
@@ -189,14 +186,20 @@ extension WeatherDetailView{
                     }
                     
                     // Градиент за UV – от зелен към жълт, оранжев, червен и лилав
-                    let uvGradient = Gradient(stops: [
+                    let uvGradientLine = Gradient(stops: [
                         .init(color: .green,   location: 0.0),
                         .init(color: .yellow,  location: 0.3),
                         .init(color: .orange,  location: 0.58),
                         .init(color: .red,     location: 0.75),
                         .init(color: .purple,  location: 1.0)
                     ])
-                    
+                    let uvGradient = Gradient(stops: [
+                        .init(color: .green.opacity(0.5),   location: 0.0),
+                        .init(color: .yellow.opacity(0.5),  location: 0.3),
+                        .init(color: .orange.opacity(0.5),  location: 0.58),
+                        .init(color: .red.opacity(0.5),     location: 0.75),
+                        .init(color: .purple.opacity(0.5),  location: 1.0)
+                    ])
                     // Запълване под линията с градиент
                     context.drawLayer { layerContext in
                         layerContext.fill(
@@ -217,7 +220,7 @@ extension WeatherDetailView{
                         layerContext.fill(
                             Path(CGRect(origin: .zero, size: size)),
                             with: .linearGradient(
-                                uvGradient,
+                                uvGradientLine,
                                 startPoint: CGPoint(x: 0, y: size.height),
                                 endPoint: CGPoint(x: 0, y: 0)
                             )
@@ -386,7 +389,7 @@ extension WeatherDetailView{
                 .padding(.top, 5)
                 .offset(y: -35)
             }
-            .offset(y: 20)
+            .offset(y: 33)
         }
         .offset(y: -10)
     }

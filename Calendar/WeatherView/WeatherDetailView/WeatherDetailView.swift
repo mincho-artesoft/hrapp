@@ -239,10 +239,48 @@ struct WeatherDetailView: View {
                             chanceOfPrecipGraphSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
+                                .offset(x: 5, y: -45)
                             
+                            if let todayForecast = allDailyItems.first(where: {
+                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                            }) {
+                                precipitationTotalsSection(for: todayForecast)
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
+                                    .offset(x: 5, y: -45)
+                            }
+                            
+                            if let selectedDayForecast = allDailyItems.first(where: {
+                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                            }) {
+                                forecastPrecipitationSection(for: selectedDayForecast)
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
+                            }
+                            
+                            aboutPrecipitationSection()
+                                .padding(.horizontal)
+                                .padding(.bottom)
+
                             
                         case 4:
                             humidityGraphSection()
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                            
+                            if let selectedDayForecast = allDailyItems.first(where: {
+                                Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
+                            }) {
+                                forecastHumiditySection(for: selectedDayForecast)
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
+                            }
+                          
+                            aboutHumiditySection()
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                            
+                            aboutDewPointSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
                             
@@ -699,8 +737,7 @@ struct WeatherDetailView: View {
                    .lineSpacing(3)
                    .foregroundColor(.gray)
            }
-           // Offset, за да изглежда еднакво с другите секции (по желание)
-           .offset(x: -4)
+           .frame(maxWidth: .infinity, alignment: .leading)
        }
        
        /// Секция „About the Beaufort Scale“
@@ -713,7 +750,7 @@ struct WeatherDetailView: View {
                    .lineSpacing(3)
                    .foregroundColor(.gray)
            }
-           .offset(x: 4)
+           .frame(maxWidth: .infinity, alignment: .leading)
        }
     
     /// Генерира подробен текст за текущия ден, използвайки данните от WeatherKitViewModel (vm) за текущите условия,
@@ -814,6 +851,138 @@ struct WeatherDetailView: View {
     }
 
     @ViewBuilder
+    private func forecastPrecipitationSection(for day: DayForecastItem) -> some View {
+        let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
+        // Compute weekday name outside of the view's conditional content.
+        let dayName: String = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE"
+            return formatter.string(from: day.date)
+        }()
+        
+        VStack(alignment: .leading, spacing: 5) {
+            Text(isToday ? "Forecast" : "Daily Summary")
+                .font(.system(size: 16, weight: .semibold))
+            
+            if isToday {
+                // For the current day, show a detailed forecast.
+                Text("There has been \(Int(day.precipLast24h)) mm of precipitation in the last 24 hours. Today's total precipitation will be \(Int(day.precipitationAmount)) mm. In the next 24 hours, \(Int(day.precipNext24h)) mm of precipitation is expected.")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            } else {
+                // For other days, display a concise summary using the dayName computed earlier.
+                Text("On \(dayName), the total precipitation will be \(Int(day.precipitationAmount)) mm.")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4,y: -60)
+    }
+
+    @ViewBuilder
+    private func forecastHumiditySection(for day: DayForecastItem) -> some View {
+        // Проверяваме дали денят е текущия
+        let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
+        
+        // Изчисляваме името на деня, ако не е "Today"
+        let dayName: String = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE"
+            return formatter.string(from: day.date)
+        }()
+        
+        // Средната влажност – приемаме, че е средната от минимална и максимална влажност (преобразувана в проценти)
+        let avgHumidity = Int(round(((day.humidityMin + day.humidityMax) / 2) * 100))
+        
+        // Динамично изчисляваме dew point стойностите с помощта на аппроксимация
+        let dewPointMin = Int(round(day.minTemp - ((100 - (day.humidityMin * 100)) / 5)))
+        let dewPointMax = Int(round(day.maxTemp - ((100 - (day.humidityMax * 100)) / 5)))
+        
+        // Генерираме текста за dew point-а според това дали денят е текущ или не
+        let dewPointText: String = isToday ?
+            "The dew point is \(dewPointMin)° to \(dewPointMax)°." :
+            "The dew point will be \(dewPointMin)° to \(dewPointMax)°."
+        
+        VStack(alignment: .leading, spacing: 5) {
+            Text(isToday ? "Forecast" : "Daily Summary")
+                .font(.system(size: 16, weight: .semibold))
+            
+            if isToday {
+                Text("Today, the average humidity is \(avgHumidity)%. \(dewPointText)")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            } else {
+                Text("On \(dayName), the average humidity will be \(avgHumidity)%.\n\(dewPointText)")
+                    .font(.system(size: 14))
+                    .lineSpacing(3)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4, y: -40)
+    }
+
+    
+    @ViewBuilder
+    private func aboutHumiditySection() -> some View {
+        VStack(alignment:.leading, spacing:5) {
+            Text("About Relative Humidity")
+                .font(.system(size:16, weight:.semibold))
+            Text("""
+            Relative humidity, commonly known just as humidity, is the amount of moisture in the air compared with what the air can hold. The air can hold more moisture at higher temperatures. A relative humidity near 100% means there may be dew or fog.
+            """)
+
+                .font(.system(size:14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4,y: -40)
+    }
+    
+    @ViewBuilder
+    private func aboutDewPointSection() -> some View {
+        VStack(alignment:.leading, spacing:5) {
+            Text("About Precipitation Intensity")
+                .font(.system(size:16, weight:.semibold))
+            Text("""
+            The dew point is what the temperature would need to fall to for dew to form. It can be a useful way to tell how humid the air feels — the higher the dew point, the more humid it feels. A dew point that matches the current temperature means the relative humidity is 100%, and there may be dew or fog.
+            """)
+
+                .font(.system(size:14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4,y: -40)
+    }
+    
+    @ViewBuilder
+    private func aboutPrecipitationSection() -> some View {
+        VStack(alignment:.leading, spacing:5) {
+            Text("About Precipitation Intensity")
+                .font(.system(size:16, weight:.semibold))
+            Text("""
+            Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a "heavy" intensity, while an average rainfall or lighter drizzle can have a "moderate" or "light" intensity.
+            """)
+
+                .font(.system(size:14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(x: 4,y: -60)
+    }
+    
+    @ViewBuilder
     private func forecastWindSection(for day: DayForecastItem) -> some View {
         // Изчисляваме скоростите от почасовата прогноза за избрания ден
         let speeds: [Double] = hourlyItemsForSelectedDate.map { $0.windSpeed }
@@ -824,13 +993,15 @@ struct WeatherDetailView: View {
             Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ? "Forecast" : "Daily Summary")
                 .font(.system(size: 16, weight: .semibold))
             Text(generateWindSummaryText(isToday: isToday,
-                                         speeds: speeds,
-                                         dayItem: day))
+                                          speeds: speeds,
+                                          dayItem: day))
                 .font(.system(size: 14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
+                .multilineTextAlignment(.leading) // Подравняване на много редове
         }
-        .offset(x: Calendar.current.isDate(day.date, inSameDayAs: Date()) ? -12 : -2, y: -10)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .offset(y: -10)
     }
 
     struct BeaufortScaleItem: Identifiable {
@@ -894,7 +1065,9 @@ struct WeatherDetailView: View {
             // Main Header
             Text("Beaufort Scale")
                 .font(.system(size: 16, weight: .semibold))
-                .offset(x: 4, y: -5)
+                .offset(y: -5)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
             // Column Headers
             HStack(spacing: 12) {
                 Text("bft")
@@ -916,7 +1089,6 @@ struct WeatherDetailView: View {
                 .background(Color.white.opacity(0.2))
                 .padding(.horizontal, 16)
             
-            // Data Rows
             ForEach(beaufortData) { item in
                 // Compute progress for the gradient based on Beaufort level (0...1)
                 let progress = Double(item.bft) / 12.0
@@ -953,6 +1125,7 @@ struct WeatherDetailView: View {
             }
         }
         .background(Color.black)
+
     }
 
     private var aboutFeelsLikeSection: some View {
