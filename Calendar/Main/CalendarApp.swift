@@ -21,27 +21,27 @@ struct CalendarApp: App {
     
     init() {
         // --- 1) UINavigationBar стил ---
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.backgroundColor = .white.withAlphaComponent(0.9)
-        
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-        
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        if #available(iOS 15.0, *) {
-            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        }
-        
-        // --- 2) UIToolbar стил ---
-        let toolBarAppearance = UIToolbarAppearance()
-        toolBarAppearance.configureWithOpaqueBackground()
-        toolBarAppearance.backgroundColor = .systemBackground.withAlphaComponent(0.9)
-        
-        UIToolbar.appearance().standardAppearance = toolBarAppearance
-        if #available(iOS 15.0, *) {
-            UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance
-        }
+//        let navBarAppearance = UINavigationBarAppearance()
+//        navBarAppearance.configureWithOpaqueBackground()
+//        navBarAppearance.backgroundColor = .white.withAlphaComponent(0.9)
+//        
+//        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+//        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+//        
+//        UINavigationBar.appearance().standardAppearance = navBarAppearance
+//        if #available(iOS 15.0, *) {
+//            UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+//        }
+//        
+//        // --- 2) UIToolbar стил ---
+//        let toolBarAppearance = UIToolbarAppearance()
+//        toolBarAppearance.configureWithOpaqueBackground()
+//        toolBarAppearance.backgroundColor = .systemBackground.withAlphaComponent(0.9)
+//        
+//        UIToolbar.appearance().standardAppearance = toolBarAppearance
+//        if #available(iOS 15.0, *) {
+//            UIToolbar.appearance().scrollEdgeAppearance = toolBarAppearance
+//        }
     }
     
     var body: some Scene {
