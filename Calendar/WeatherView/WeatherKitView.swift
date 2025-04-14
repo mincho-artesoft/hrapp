@@ -18,8 +18,8 @@ struct WeatherKitView: View {
     @State private var geocodedCityName = ""
     @State private var selectedDay: DayForecastItem? = nil
     @State private var initialLoadComplete = false
-    
-    // Sheet за HourlyFeelsLikeDetailView
+
+    // Sheets за различни детайли
     @State private var showFeelsLikeDetail = false
     @State private var showUVDetail = false
     @State private var showWindDetail = false
@@ -27,69 +27,66 @@ struct WeatherKitView: View {
     @State private var showHumidityDetail = false
     @State private var showVisibilityDetail = false
     @State private var showPressureDetail = false
+
     var body: some View {
         ZStack(alignment: .top) {
-            
-            // 1) ДИНАМИЧЕН ФОН
+            // 1) Динамичен фон
             dynamicBackground
                 .edgesIgnoringSafeArea(.all)
             
-            // 2) Целият вертикален Layout (Top Bar + ScrollView съдържание + търсачката)
-            VStack(spacing: 0) {
-                // --- TOP BAR (Извън ScrollView) ---
-                topBar
-                    .padding(.top, 10)
-                
-                // --- ScrollView СЪДЪРЖАНИЕ ---
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 20) {
-                        Group {
-                            currentWeatherHeader
-                            hourlyForecastCard
-                                .padding(.horizontal, 16)
-                            tenDayForecastCard
-                                .padding(.horizontal, 16)
-                            
-                            todayDetailsGrid
-                                .padding(.horizontal, 16)
-                            
-                            if let error = vm.errorMessage {
-                                Text(error)
-                                    .foregroundColor(.yellow)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(.red.opacity(0.6))
-                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                                    .padding(.horizontal, 16)
-                            }
-                        }
-                        Spacer().frame(height: 40)
+            // 2) ScrollView съдържащ цялото съдържание, включително и tърсачката (topBar)
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 20) {
+                    // Търсачката с бутони, сега като част от ScrollView
+                    topBar
+                        .padding(.top, 10)
+                    
+                    // Текущото време и град
+                    currentWeatherHeader
+                    
+                    // Часов прогноз – хоризонтален ScrollView
+                    hourlyForecastCard
+                        .padding(.horizontal, 16)
+                    
+                    // 10-дневният прогноз
+                    tenDayForecastCard
+                        .padding(.horizontal, 16)
+                    
+                    // Допълнителни детайли за днес
+                    todayDetailsGrid
+                        .padding(.horizontal, 16)
+                    
+                    // Ако има съобщение за грешка
+                    if let error = vm.errorMessage {
+                        Text(error)
+                            .foregroundColor(.yellow)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.red.opacity(0.6))
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .padding(.horizontal, 16)
                     }
-                    // Когато showSearchBar е true, ScrollView няма да „гълта“ тапове
-                    .allowsHitTesting(!showSearchBar)
-                    .onTapGesture {
-                        // Тап в съдържанието -> ако search е отворен, го затваряме
-                        if showSearchBar {
-                            hideSearch()
-                        }
-                    }
-                    .refreshable {
-                        refreshWeatherData()
-                    }
+                    
+                    Spacer().frame(height: 40)
+                }
+                // Ако е необходимо, можете да запазите tap gesture за скриване на търсачката
+                .onTapGesture {
+                    if showSearchBar { hideSearch() }
+                }
+                .refreshable {
+                    refreshWeatherData()
                 }
             }
             
-            // 3) Search Results Overlay (списък с резултати)
+            // 3) Overlay със списък с резултати от търсенето
             searchResultsOverlay
-                .zIndex(10) // По-висок индекс от ScrollView и фона
+                .zIndex(10) // overlay да е над останалото съдържание
         }
-        
-        // 1) Sheet при избор на ден (selectedDay)
-        // При тап на избран ден
+        // Sheet-ове за детайлен изглед при избор на ден или тап върху определени данни
         .sheet(item: $selectedDay) { day in
             WeatherDetailView(
                 allHourlyItems: vm.hourlyForecast,
-                allDailyItems: vm.dailyForecast,  // ← тук подаваме дневните
+                allDailyItems: vm.dailyForecast,
                 currentActualTemp: vm.currentTemp,
                 currentFeelsLikeTemp: vm.currentFeelsLike,
                 initialDate: day.date,
@@ -97,15 +94,11 @@ struct WeatherKitView: View {
                 selectedOption: 0
             )
         }
-
-        // При натискане на “Feels like”
         .sheet(isPresented: $showFeelsLikeDetail) {
-            if let todayItem = vm.dailyForecast.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: Date())
-            }) {
+            if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -115,7 +108,7 @@ struct WeatherKitView: View {
             } else {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -125,12 +118,10 @@ struct WeatherKitView: View {
             }
         }
         .sheet(isPresented: $showUVDetail) {
-            if let todayItem = vm.dailyForecast.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: Date())
-            }) {
+            if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -140,7 +131,7 @@ struct WeatherKitView: View {
             } else {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -150,12 +141,10 @@ struct WeatherKitView: View {
             }
         }
         .sheet(isPresented: $showWindDetail) {
-            if let todayItem = vm.dailyForecast.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: Date())
-            }) {
+            if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -165,7 +154,7 @@ struct WeatherKitView: View {
             } else {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -175,12 +164,10 @@ struct WeatherKitView: View {
             }
         }
         .sheet(isPresented: $showPrecipitationDetail) {
-            if let todayItem = vm.dailyForecast.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: Date())
-            }) {
+            if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -190,7 +177,7 @@ struct WeatherKitView: View {
             } else {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -200,12 +187,10 @@ struct WeatherKitView: View {
             }
         }
         .sheet(isPresented: $showHumidityDetail) {
-            if let todayItem = vm.dailyForecast.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: Date())
-            }) {
+            if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -215,7 +200,7 @@ struct WeatherKitView: View {
             } else {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -225,12 +210,10 @@ struct WeatherKitView: View {
             }
         }
         .sheet(isPresented: $showVisibilityDetail) {
-            if let todayItem = vm.dailyForecast.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: Date())
-            }) {
+            if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -240,7 +223,7 @@ struct WeatherKitView: View {
             } else {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -250,12 +233,10 @@ struct WeatherKitView: View {
             }
         }
         .sheet(isPresented: $showPressureDetail) {
-            if let todayItem = vm.dailyForecast.first(where: {
-                Calendar.current.isDate($0.date, inSameDayAs: Date())
-            }) {
+            if let todayItem = vm.dailyForecast.first(where: { Calendar.current.isDate($0.date, inSameDayAs: Date()) }) {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -265,7 +246,7 @@ struct WeatherKitView: View {
             } else {
                 WeatherDetailView(
                     allHourlyItems: vm.hourlyForecast,
-                    allDailyItems: vm.dailyForecast,  // ← отново!
+                    allDailyItems: vm.dailyForecast,
                     currentActualTemp: vm.currentTemp,
                     currentFeelsLikeTemp: vm.currentFeelsLike,
                     initialDate: Date(),
@@ -274,7 +255,7 @@ struct WeatherKitView: View {
                 )
             }
         }
-        // MARK: - onReceive за Location и др.
+        // MARK: - onReceive за Location и други събития
         .onReceive(locationManager.$currentLocation) { location in
             if let loc = location,
                !showSearchBar,
@@ -336,6 +317,7 @@ struct WeatherKitView: View {
         "sun.haze":        "Hazy",
         "sun.haze.fill":   "Hazy"
     ]
+    
     func conditionFromSymbol(_ symbol: String) -> String {
         if let description = symbolDescriptions[symbol] {
             return description
@@ -369,7 +351,6 @@ struct WeatherKitView: View {
     
     private var dynamicBackground: some View {
         let condition = vm.currentCondition.lowercased()
-        
         switch condition {
         case _ where condition.contains("sun"), _ where condition.contains("clear"):
             return AnyView(
@@ -398,10 +379,7 @@ struct WeatherKitView: View {
         default:
             return AnyView(
                 LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.blue.opacity(0.6),
-                        Color.gray.opacity(0.5)
-                    ]),
+                    gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.gray.opacity(0.5)]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -409,7 +387,7 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - TOP BAR
+    // MARK: - TOP BAR и търсачката
     private var topBar: some View {
         HStack {
             if showSearchBar {
@@ -449,7 +427,6 @@ struct WeatherKitView: View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
-            
             TextField("Search for a city...",
                       text: $locationSearchVM.queryFragment,
                       onEditingChanged: { editing in
@@ -481,7 +458,7 @@ struct WeatherKitView: View {
     
     private var searchButton: some View {
         Button {
-            showSearchBar = true
+            withAnimation { showSearchBar = true }
         } label: {
             Image(systemName: "magnifyingglass")
                 .font(.title2)
@@ -509,7 +486,8 @@ struct WeatherKitView: View {
                         locationSearchVM.selectCompletion(completion)
                     } label: {
                         VStack(alignment: .leading) {
-                            Text(completion.title).foregroundColor(.primary)
+                            Text(completion.title)
+                                .foregroundColor(.primary)
                             if !completion.subtitle.isEmpty {
                                 Text(completion.subtitle)
                                     .font(.subheadline)
@@ -517,9 +495,7 @@ struct WeatherKitView: View {
                             }
                         }
                     }
-                    .listRowBackground(
-                        Color(UIColor.systemBackground).opacity(0.2)
-                    )
+                    .listRowBackground(Color(UIColor.systemBackground).opacity(0.2))
                 }
                 .listStyle(.plain)
                 .frame(maxHeight: 400)
@@ -539,8 +515,6 @@ struct WeatherKitView: View {
             Text(displayedCityName())
                 .font(.system(size: 34, weight: .regular))
                 .foregroundColor(.primary)
-            
-            // Температура
             HStack(alignment: .lastTextBaseline, spacing: 8) {
                 if let temp = vm.currentTemp {
                     Text("\(Int(temp.rounded()))°")
@@ -553,13 +527,9 @@ struct WeatherKitView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .center)
-            
-            // Описание на текущото време
             Text(vm.currentCondition)
                 .foregroundColor(.secondary)
                 .font(.system(size: 18, weight: .medium))
-            
-            // H/L за днешния ден
             if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
                 Text("H:\(Int(hi.rounded()))°   L:\(Int(lo.rounded()))°")
                     .foregroundColor(.primary)
@@ -570,9 +540,7 @@ struct WeatherKitView: View {
     }
     
     private var hourlyForecastCard: some View {
-        // Определяме дали поне един елемент от колекцията отговаря на условието.
         let isAnyPrecip = vm.next24HourlyForecast.contains { $0.precipChance >= 0.1 }
-        
         return VStack(alignment: .leading, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 25) {
@@ -582,36 +550,23 @@ struct WeatherKitView: View {
                             Text(hourItem.hour)
                                 .font(.system(size: 14, weight: .medium))
                                 .foregroundColor(.primary)
-                            
                             Image(systemName: hourItem.symbol)
                                 .symbolVariant(.fill)
                                 .symbolRenderingMode(.multicolor)
                                 .font(.title2)
                                 .frame(height: 30)
-                                // Приложи отместването само ако hourItem.symbol е точно "cloud"
                                 .offset(y: hourItem.symbol == "cloud.fill" ? -5 : 0)
-
-                            
-                            // Ако поне един елемент има precipChance >= 0.1, за всички резервираме място:
                             if isAnyPrecip {
                                 if hourItem.precipChance >= 0.1 {
                                     Text("\(Int(hourItem.precipChance * 100))%")
                                         .font(.system(size: 12, weight: .medium))
-                                        .foregroundColor(
-                                            Color(
-                                                hue: 0.55,
-                                                saturation: 0.8,
-                                                brightness: colorScheme == .light ? 0.7 : 1.0
-                                             )
-                                        )
+                                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: colorScheme == .light ? 0.7 : 1.0))
                                 } else {
-                                    // Резервиране на място със скрит текст – това гарантира еднакво подравняване
                                     Text("0%")
                                         .font(.system(size: 12, weight: .medium))
                                         .hidden()
                                 }
                             }
-                            
                             Text("\(Int(hourItem.temp.rounded()))°")
                                 .font(.system(size: 18, weight: .medium))
                                 .foregroundColor(.primary)
@@ -626,10 +581,6 @@ struct WeatherKitView: View {
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
-
-
-
-
     
     private var tenDayForecastCard: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -656,12 +607,11 @@ struct WeatherKitView: View {
                     
                     if dayItem.id != vm.dailyForecast.last?.id {
                         Divider()
-                            .background(.white.opacity(0.2))
+                            .background(Color.white.opacity(0.2))
                             .padding(.leading, 15)
                     }
                 }
                 .padding(.bottom, 5)
-                
             } else {
                 HStack {
                     Spacer()
@@ -687,24 +637,16 @@ struct WeatherKitView: View {
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.primary)
                 .frame(width: 55, alignment: .leading)
-            
             HStack(spacing: 5) {
                 Image(systemName: dayItem.symbol)
                     .symbolVariant(.fill)
                     .symbolRenderingMode(.multicolor)
                     .font(.title3)
                     .frame(width: 30)
-                
                 if let chance = dayItem.precipChance, chance >= 0.1 {
                     Text("\(Int((chance * 100).rounded()))%")
                         .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(
-                            Color(
-                                hue: 0.55,
-                                saturation: 0.8,
-                                brightness: colorScheme == .light ? 0.7 : 1.0
-                             )
-                        )
+                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: colorScheme == .light ? 0.7 : 1.0))
                         .frame(width: 35)
                 } else {
                     Spacer().frame(width: 35)
@@ -749,7 +691,6 @@ struct WeatherKitView: View {
                 .onTapGesture {
                     showFeelsLikeDetail = true
                 }
-                
                 UVIndexCard(
                     uvIndex: vm.currentUVIndex,
                     categoryInfo: vm.uvCategory(for: vm.currentUVIndex)
@@ -758,7 +699,6 @@ struct WeatherKitView: View {
                     showUVDetail = true
                 }
             }
-            
             WindCard(
                 windSpeedKmh: vm.currentWindSpeed ?? 0,
                 gustSpeedKmh: vm.currentWindGust ?? 0,
@@ -768,17 +708,14 @@ struct WeatherKitView: View {
             .onTapGesture {
                 showWindDetail = true
             }
-            
             SunsetCard(
                 sunrise: vm.sunriseTime,
                 sunset: vm.sunsetTime,
                 formatTime: vm.formatTime
             )
-            
             MoonCard(
-                   moonEvents: vm.currentMoonEvents
-               )
-            
+                moonEvents: vm.currentMoonEvents
+            )
             HStack(spacing: 15) {
                 let nextRainInfo = findNextPrecipitationEvent()
                 PrecipitationTodayCard(
@@ -796,7 +733,6 @@ struct WeatherKitView: View {
                     showVisibilityDetail = true
                 }
             }
-            
             HStack(spacing: 15) {
                 HumidityCard(
                     humidity: vm.currentHumidity,
@@ -840,9 +776,7 @@ struct WeatherKitView: View {
             initialLoadComplete = true
         }
         
-        if showSearchBar {
-            hideSearch()
-        }
+        if showSearchBar { hideSearch() }
     }
     
     private func handleSelectedLocation(placemark: MKPlacemark) {
