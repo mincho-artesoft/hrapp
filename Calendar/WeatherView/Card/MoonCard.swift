@@ -110,8 +110,11 @@ struct MoonCard: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
+        // Задаваме часовата зона според локалната зона, определена в WeatherKitViewModel
+        formatter.timeZone = WeatherKitViewModel.shared.locationTimeZone
         return formatter.string(from: date)
     }
+
     
     /// Връща името на изображението, съответстващо на текущата фаза.
     private func phaseImageName(for phase: MoonPhase) -> String {
