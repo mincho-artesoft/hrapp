@@ -5,6 +5,7 @@ struct WindCard: View {
     let gustSpeedKmh: Double?
     let direction: Angle?
     let directionAbbreviation: String
+    @Environment(\.colorScheme) var colorScheme
 
     // Компас (примерна визуализация)
     @ViewBuilder
@@ -60,14 +61,14 @@ struct WindCard: View {
              .offset(y: -compassSize * 0.15)
              .rotationEffect((direction ?? .zero) + .degrees(180))
 
-           
-             // Кръг в центъра
-             Circle()
+                    // 2) Ползваме опакования стил
+            Circle()
                  .fill(.ultraThinMaterial)
-                 .frame(width: coverCircleRadius * 1.1, height: coverCircleRadius * 1.1)
-             
+                 .frame(width: coverCircleRadius * 1.3, height: coverCircleRadius * 1.3)
+                 .brightness((colorScheme == .dark) ? 0.01 : 0.1)
+
              // Текст за скоростта
-             VStack(spacing: -5) {
+             VStack(spacing: -6) {
                   Text(String(format: "%.0f", windSpeedKmh))
                        .font(.system(size: 20, weight: .medium))
                   Text("km/h")

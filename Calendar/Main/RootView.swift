@@ -161,7 +161,12 @@ struct RootView: View {
                             .ignoresSafeArea(.all)
                             
                         case 6:
-                            WeatherKitView()
+                            WeatherKitView(
+                                selectedTab: selectedTab,
+                                onViewChange: { newTab in
+                                    selectedTab = newTab
+                                }
+                            )
                             
                         default:
                             Text("N/A")

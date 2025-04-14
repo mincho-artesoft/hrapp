@@ -3,11 +3,22 @@ import UIKit
 
 struct UIMenuButtonRepresentable: UIViewRepresentable {
     let currentView: Int
+    let tintColor: UIColor
     let onViewChange: ((Int) -> Void)?
+    
+    // Инициализаторът задава по подразбиране .systemBlue за tintColor
+    init(currentView: Int, tintColor: UIColor = .systemBlue, onViewChange: ((Int) -> Void)? = nil) {
+        self.currentView = currentView
+        self.tintColor = tintColor
+        self.onViewChange = onViewChange
+    }
     
     func makeUIView(context: Context) -> UIButton {
         let button = UIButton(type: .system)
-
+        
+        // Задаваме цвета на бутона, който ще е .systemBlue, ако не е подаден различен
+        button.tintColor = tintColor
+        
         // Първоначална икона
         let initialImage = imageForTab(currentView)
         button.setImage(initialImage, for: .normal)
@@ -20,6 +31,7 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIButton, context: Context) {
+        uiView.tintColor = tintColor
         uiView.setImage(imageForTab(currentView), for: .normal)
         uiView.menu = buildViewMenu(for: uiView)
     }
@@ -31,8 +43,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         let yearImage         = UIImage(systemName: "12.lane")
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
+        let weatherImage      = UIImage(systemName: "cloud.sun")
         
-        // (LOC) Заместваме "Day" с NSLocalizedString("Day", ...)
         let dayAction = UIAction(
             title: NSLocalizedString("Day", comment: "Tab name: Day"),
             image: dayImage,
@@ -87,6 +99,15 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(multiCalendarIcon, for: .normal)
         }
         
+        let weatherAction = UIAction(
+            title: NSLocalizedString("Weather", comment: "Tab name: Weather"),
+            image: weatherImage,
+            state: currentView == 6 ? .on : .off
+        ) { _ in
+            onViewChange?(6)
+            button.setImage(weatherImage, for: .normal)
+        }
+        
         return UIMenu(
             title: "",
             children: [
@@ -95,7 +116,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
                 monthAction,
                 yearAction,
                 listAction,
-                multiCalendarAction
+                multiCalendarAction,
+                weatherAction
             ]
         )
     }
@@ -108,6 +130,7 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         case 2: return UIImage(systemName: "12.lane")
         case 4: return UIImage(systemName: "list.bullet")
         case 5: return UIImage(systemName: "align.vertical.top")
+        case 6: return UIImage(systemName: "cloud.sun")
         default: return UIImage(systemName: "calendar")
         }
     }

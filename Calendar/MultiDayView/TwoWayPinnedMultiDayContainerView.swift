@@ -832,24 +832,23 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - iOS 14+ menu
     @available(iOS 14.0, *)
     private func buildViewMenu() -> UIMenu {
-        // 1) Създавате си иконите извън самия action, за да можете да ги ползвате пак:
+        // Създаване на иконите за опциите
         let dayImage          = UIImage(systemName: "calendar.day.timeline.leading")
         let multiDayImage     = UIImage(systemName: "distribute.horizontal.left")
         let monthImage        = UIImage(systemName: "calendar")
         let yearImage         = UIImage(systemName: "12.lane")
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
-        
+        let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
+
+        // Съществуващите UIAction-и
         let dayAction = UIAction(
             title: NSLocalizedString("Day", comment: ""),
             image: dayImage,
             state: currentView == 1 ? .on : .off
         ) { [weak self] _ in
-            self?.showSingleDay = true
             self?.currentView = 1
             self?.onViewChange?(1)
-            
-            // Тук задаваме иконата на бутона:
             self?.viewMenuButton.setImage(dayImage, for: .normal)
         }
         
@@ -858,10 +857,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             image: multiDayImage,
             state: currentView == 3 ? .on : .off
         ) { [weak self] _ in
-            self?.showSingleDay = false
             self?.currentView = 3
             self?.onViewChange?(3)
-            
             self?.viewMenuButton.setImage(multiDayImage, for: .normal)
         }
         
@@ -872,7 +869,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         ) { [weak self] _ in
             self?.currentView = 0
             self?.onViewChange?(0)
-            
             self?.viewMenuButton.setImage(monthImage, for: .normal)
         }
         
@@ -883,7 +879,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         ) { [weak self] _ in
             self?.currentView = 2
             self?.onViewChange?(2)
-            
             self?.viewMenuButton.setImage(yearImage, for: .normal)
         }
         
@@ -894,7 +889,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         ) { [weak self] _ in
             self?.currentView = 4
             self?.onViewChange?(4)
-            
             self?.viewMenuButton.setImage(listImage, for: .normal)
         }
         
@@ -905,8 +899,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         ) { [weak self] _ in
             self?.currentView = 5
             self?.onViewChange?(5)
-            
             self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
+        }
+        
+        // Добавяне на нов UIAction за Weather
+        let weatherAction = UIAction(
+            title: NSLocalizedString("Weather", comment: ""),
+            image: weatherImage,
+            state: currentView == 6 ? .on : .off
+        ) { [weak self] _ in
+            self?.currentView = 6
+            self?.onViewChange?(6)
+            self?.viewMenuButton.setImage(weatherImage, for: .normal)
         }
         
         return UIMenu(
@@ -917,10 +921,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 monthAction,
                 yearAction,
                 listAction,
-                multiCalendarAction
+                multiCalendarAction,
+                weatherAction  // Добавената опция Weather
             ]
         )
     }
+
 
     private func updateButtonIconForCurrentView() {
         let imageName: String
@@ -937,12 +943,15 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             imageName = "list.bullet"
         case 5:
             imageName = "align.vertical.top"
+        case 6:
+            imageName = "cloud.sun"  // Иконата за Weather
         default:
             imageName = "calendar"
         }
         
         viewMenuButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
+
 
    
     

@@ -101,14 +101,14 @@ struct SunsetCard: View {
             }
 
         } // End Canvas
-        .frame(height: 50, )
+        .frame(height: 60, )
         .overlay(alignment: .bottom) {
             HStack {
                 Text("Sunrise: \(formatTime(sunrise))")
                 Spacer()
                 Text("Sunset: \(formatTime(sunset))")
             }
-            .font(.system(size: 9))
+            .font(.system(size: 12))
             .foregroundStyle(.secondary.opacity(0.8))
             .padding(.horizontal, 5)
         }
@@ -126,12 +126,6 @@ struct SunsetCard: View {
                 .font(.system(size: 10, weight: .medium)) // Title font style
                 .foregroundStyle(.secondary) // Title color
 
-            // Main Value - Display SUNRISE time to match screenshot's AM value
-            Text(formatTime(sunrise)) // Display sunrise time
-                .font(.system(size: 34, weight: .regular)) // Main value font style
-                .foregroundStyle(.primary) // Main value color
-
-            Spacer() // Pushes arc to the bottom
 
             // Add the Sun Arc Canvas View
             sunArc()

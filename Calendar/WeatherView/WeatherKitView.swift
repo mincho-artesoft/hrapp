@@ -6,6 +6,9 @@ import MapKit
 
 struct WeatherKitView: View {
     
+    var selectedTab: Int
+    var onViewChange: ((Int) -> Void)
+    
     // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel.shared
@@ -28,6 +31,11 @@ struct WeatherKitView: View {
     @State private var showVisibilityDetail = false
     @State private var showPressureDetail = false
 
+    
+    init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
+        self.selectedTab = selectedTab
+        self.onViewChange = onViewChange!
+    }
     var body: some View {
         ZStack(alignment: .top) {
             // 1) Динамичен фон
@@ -399,13 +407,24 @@ struct WeatherKitView: View {
                         )
                     )
             } else {
-                searchButton
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .leading).combined(with: .opacity),
-                            removal: .move(edge: .leading).combined(with: .opacity)
+                HStack {
+                    searchButton
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .leading).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            )
                         )
+                    Spacer()
+                    UIMenuButtonRepresentable(
+                        currentView: selectedTab,
+                        tintColor: colorScheme == .light ? .black : .white,  // Подаване на желания цвят
+                        onViewChange: { newTab in
+                            onViewChange(newTab)
+                        }
                     )
+                    .frame(width: 30, height: 30)
+                }
             }
             
             Spacer()
