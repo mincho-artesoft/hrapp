@@ -1,4 +1,5 @@
 import SwiftUI
+import EventKit
 import Combine
 import CoreLocation
 import MapKit
@@ -8,10 +9,13 @@ struct WeatherKitView: View {
     
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)
-    
+    @State private var eventToEdit: EKEvent? = nil
+
     // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel.shared
+    let viewModel = CalendarViewModel.shared
+
     @StateObject private var locationSearchVM = LocationSearchViewModel()
     @Environment(\.colorScheme) var colorScheme
 
@@ -262,6 +266,10 @@ struct WeatherKitView: View {
                     selectedOption: 6
                 )
             }
+        }
+        .sheet(item: $eventToEdit, onDismiss: {
+        }) { theEvent in
+            EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
         }
         // MARK: - onReceive за Location и други събития
         .onReceive(locationManager.$currentLocation) { location in
@@ -589,9 +597,18 @@ struct WeatherKitView: View {
                             Text("\(Int(hourItem.temp.rounded()))°")
                                 .font(.system(size: 18, weight: .medium))
                                 .foregroundColor(.primary)
+                        }                        .onTapGesture {
+                            // Пример: ако hourItem.hour е "14", направете преобразуване към Int:
+                            if let tappedHour = Int(hourItem.hour) {
+                                // Предполагаме, че денят е днес (или задайте съответния ден, ако имате модел за това)
+                                let today = Date()
+                                createAndEditNewEvent(from: tappedHour, for: today)
+                            } else {
+                                print("Невалиден формат на часа: \(hourItem.hour)")
+                            }
                         }
-                        .padding(.vertical, 3)
                     }
+
                 }
                 .padding(.horizontal, 15)
                 .padding(.vertical, 12)
@@ -840,4 +857,54 @@ struct WeatherKitView: View {
         }
         return (amount: nil, timeString: nil)
     }
+    
+    /// Функция, която създава ново събитие за даден ден и избран час.
+    /// С използване на текущия календар, който работи с часовата зона на устройството.
+    private func presentNewEvent(on day: Date, selectedHour: Int) {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = vm.locationTimeZone
+        var components = calendar.dateComponents([.year, .month, .day], from: day)
+        components.hour = selectedHour
+        components.minute = 0
+        
+        guard let eventStart = calendar.date(from: components) else {
+            print("Грешка при конструирането на датата за началото на събитието.")
+            return
+        }
+        
+        let eventEnd = eventStart.addingTimeInterval(3600)
+        let newEvent = EKEvent(eventStore: viewModel.eventStore)
+        newEvent.startDate = eventStart
+        newEvent.endDate = eventEnd
+        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
+        newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
+        
+        eventToEdit = newEvent
+    }
+
+    /// Функция, която се извиква при тап върху елемент от hourlyForecastCard.
+    /// Тук трябва да извлечете избрания час (например от модела на елемента) и да подадете и деня.
+    private func createAndEditNewEvent(from tappedHour: Int, for day: Date) {
+        // Проверяваме статуса на достъпа до календар (примерно както имате в оригиналния метод)
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if #available(iOS 17.0, *) {
+            switch status {
+            case .fullAccess, .writeOnly:
+                presentNewEvent(on: day, selectedHour: tappedHour)
+            case .notDetermined:
+                print("Още не е поискан достъп.")
+            default:
+                print("Нямате достъп до календара.")
+            }
+        } else {
+            if status == .authorized {
+                presentNewEvent(on: day, selectedHour: tappedHour)
+            } else if status == .notDetermined {
+                print("Още не е поискан достъп.")
+            } else {
+                print("Нямате достъп до календара.")
+            }
+        }
+    }
+
 }
