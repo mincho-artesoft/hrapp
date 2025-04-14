@@ -7,110 +7,114 @@ struct SunsetCard: View {
 
     // Sun arc view styled like the screenshot
     @ViewBuilder func sunArc() -> some View {
-         Canvas { context, size in
-             // Ensure size is valid for drawing
-             guard size.width > 0, size.height > 0 else { return }
+        Canvas { context, size in
+            // Ensure size is valid for drawing
+            guard size.width > 0, size.height > 0 else { return }
 
-             // Calculate geometry constants
-             let diameter = min(size.width, size.height * 2) // Arc diameter based on available space
-             let radius = diameter / 2
-             guard radius > 0 else { return } // Ensure radius is positive
+            // 1) Изчисляване на необходимите променливи
+            let diameter = min(size.width, size.height * 2)
+            let radius = diameter / 2
+            guard radius > 0 else { return }
 
-             let center = CGPoint(x: size.width / 2, y: size.height) // Arc's center at bottom-middle
+            let center = CGPoint(x: size.width / 2, y: size.height)
 
-             // Calculate current sun position fraction (0.0 at sunrise, 1.0 at sunset)
-             let now = Date()
-             var sunFraction: Double = 0.5 // Default to noon if times are missing or invalid
-             if let rise = sunrise, let set = sunset, rise < set { // Ensure valid rise/set times
-                 let totalDuration = set.timeIntervalSince(rise)
-                 if totalDuration > 0 {
-                     let elapsed = now.timeIntervalSince(rise)
-                     // Clamp fraction between 0 (sunrise) and 1 (sunset)
-                     sunFraction = max(0.0, min(1.0, elapsed / totalDuration))
-                 } else if now >= set { // Handle edge case where sun has set or rise/set are simultaneous
+            // 2) Изчисляване на sunFraction (0 = изгрев, 1 = залез)
+            let now = Date()
+            var sunFraction: Double = 0.5
+            if let rise = sunrise, let set = sunset, rise < set {
+                let totalDuration = set.timeIntervalSince(rise)
+                if totalDuration > 0 {
+                    let elapsed = now.timeIntervalSince(rise)
+                    sunFraction = max(0.0, min(1.0, elapsed / totalDuration))
+                } else if now >= set {
                     sunFraction = 1.0
-                 } else if now < rise { // Handle case where sun hasn't risen yet
+                } else if now < rise {
                     sunFraction = 0.0
-                 }
-             } else if let set = sunset, now >= set { // Handle only sunset time available
-                 sunFraction = 1.0
-             } else if let rise = sunrise, now < rise { // Handle only sunrise time available
-                 sunFraction = 0.0
-             }
+                }
+            } else if let set = sunset, now >= set {
+                sunFraction = 1.0
+            } else if let rise = sunrise, now < rise {
+                sunFraction = 0.0
+            }
 
-             // --- Angle Calculations for Canvas/addArc Coordinate System ---
-             // 0 degrees = right, 180 degrees = left, 270 = bottom
-             let startAngle = Angle.degrees(180) // Start arc at the left (sunrise)
-             // Calculate the total sweep angle based on the sun's progress (max 180 degrees)
-             let currentSweepDegrees = sunFraction * 180.0
-             // The end angle for the progress arc goes from 180 up to 360 degrees
-             let endAngleProgress = Angle.degrees(180.0 + currentSweepDegrees)
-             // The angle where the sun symbol should be placed is the same as the progress end angle
-             let finalSunAngle = endAngleProgress
+            // Ъгли за дъгата
+            let startAngle = Angle.degrees(180)
+            let currentSweepDegrees = sunFraction * 180.0
+            let endAngleProgress = Angle.degrees(180.0 + currentSweepDegrees)
+            let finalSunAngle = endAngleProgress
 
+            // 3) Позиция на слънцето по дъгата
+            let sunX = center.x + radius * CGFloat(cos(finalSunAngle.radians))
+            let sunY = center.y + radius * CGFloat(sin(finalSunAngle.radians))
+            let drawPoint = CGPoint(x: sunX, y: sunY)
 
-             // Calculate Sun's (x, y) coordinates on the arc
-             let sunX = center.x + radius * CGFloat(cos(finalSunAngle.radians))
-             let sunY = center.y + radius * CGFloat(sin(finalSunAngle.radians))
-             // --- End Angle Calculations ---
+            // 4) Цялата пунктирана дъга (background arc)
+            let fullArcPath = Path { path in
+                path.addArc(center: center, radius: radius,
+                            startAngle: startAngle, endAngle: .degrees(360), clockwise: false)
+            }
+            context.stroke(fullArcPath,
+                           with: .color(.secondary.opacity(0.7)),
+                           style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
 
+            // 5) Подготовка на текста с иконката на слънцето
+            let sunSymbolText = Text(Image(systemName: "sun.max.fill"))
+                .font(.system(size: 10))
+                .foregroundStyle(.yellow)
 
-             // 1. Draw the dashed background arc path (the full semi-circle)
-             let fullArcPath = Path { path in
-                 path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: .degrees(360), clockwise: false)
-             }
-             // Stroke the path with a dashed style and secondary color
-             context.stroke(fullArcPath, with: .color(.secondary.opacity(0.7)), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
+            let resolvedSunText = context.resolve(sunSymbolText)
 
+            // 6) Рисуваме слънцето + добавяме сияние (glow)
+            if sunrise != nil || sunset != nil {
+                // --- ADD GLOW: кръг с радиален градиент зад символа ---
+                let glowRadius: CGFloat = 14
+                let glowRect = CGRect(
+                    x: drawPoint.x - glowRadius,
+                    y: drawPoint.y - glowRadius,
+                    width: glowRadius * 2,
+                    height: glowRadius * 2
+                )
+                let glowCirclePath = Path(ellipseIn: glowRect)
 
-             // 2. Draw the solid line path representing sun's progress (REMOVED to match screenshot)
-             /*
-             if sunFraction > 0 && sunrise != nil && sunset != nil && sunrise! < sunset! {
-                 let progressArcPath = Path { path in
-                     // Draw arc from start angle to the current sun progress angle
-                     path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngleProgress, clockwise: false)
-                 }
-                 // Stroke with primary color, slightly thicker
-                 context.stroke(progressArcPath, with: .color(.primary.opacity(0.8)), lineWidth: 1.5)
-             }
-             */
+                // Добавяме лек радиален градиент (от жълтеникаво към прозрачно)
+                context.fill(
+                    glowCirclePath,
+                    with: .radialGradient(
+                        Gradient(colors: [.yellow.opacity(0.4), .clear]),
+                        center: drawPoint,
+                        startRadius: 0,
+                        endRadius: glowRadius
+                    )
+                )
 
+                // Може да се сложи и stroke за външен контур, ако искате:
+                /*
+                context.stroke(
+                    glowCirclePath,
+                    with: .color(.yellow.opacity(0.6)),
+                    style: StrokeStyle(lineWidth: 1)
+                )
+                */
 
-             // 3. Draw the sun symbol at its calculated position
-             // --- Create a Text view containing the symbol ---
-             let sunSymbolText = Text(Image(systemName: "sun.max.fill")) // Embed symbol in Text
-                                 .font(.system(size: 10)) // Control size via font
-                                 .foregroundStyle(.yellow) // Set color
+                // --- Накрая рисуваме и самото "слънце" (иконката) отгоре ---
+                context.draw(resolvedSunText, at: drawPoint, anchor: .center)
+            }
 
-             // --- Resolve the Text view for drawing ---
-             let resolvedSunText = context.resolve(sunSymbolText)
-
-             // Define the drawing point
-             let drawPoint = CGPoint(x: sunX, y: sunY)
-
-             // Draw the resolved Text if times are available (sun is somewhere)
-             if sunrise != nil || sunset != nil {
-                 context.draw(resolvedSunText, at: drawPoint, anchor: .center) // Anchor ensures center of text is at drawPoint
-             }
-
-         } // End Canvas
-         .frame(height: 50) // Set the desired height for the Canvas view
-         // --- Corrected Overlay for Time Labels using HStack ---
-         .overlay(alignment: .bottom) { // Single overlay at the bottom
-             HStack { // Use HStack to position labels side-by-side
-                 Text("Sunrise: \(formatTime(sunrise))")
-                 Spacer() // Pushes labels to edges
-                 Text("Sunset: \(formatTime(sunset))")
-             }
-             .font(.system(size: 9)) // Apply font once to HStack
-             .foregroundStyle(.secondary.opacity(0.8)) // Apply color once
-             .padding(.horizontal, 5) // Add horizontal padding to inset from edges
-             // Optionally add a slight vertical offset if needed
-             // .offset(y: 5) // Example offset
-         }
-         // --- End of Correction ---
-         .padding(.bottom, 5) // Keep padding below the overlay
+        } // End Canvas
+        .frame(height: 50, )
+        .overlay(alignment: .bottom) {
+            HStack {
+                Text("Sunrise: \(formatTime(sunrise))")
+                Spacer()
+                Text("Sunset: \(formatTime(sunset))")
+            }
+            .font(.system(size: 9))
+            .foregroundStyle(.secondary.opacity(0.8))
+            .padding(.horizontal, 5)
+        }
+        .padding(.bottom, 5)
     }
+
 
     // The main body of the SunsetCard view
     var body: some View {

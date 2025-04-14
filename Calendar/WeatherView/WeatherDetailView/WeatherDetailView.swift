@@ -5,6 +5,7 @@ import MapKit
 
 // MARK: - Главният изглед
 struct WeatherDetailView: View {
+    
     @StateObject var vm = WeatherKitViewModel.shared
     // 1) Data Sources - Keep as is
     let allHourlyItems: [HourlyForecastItem]

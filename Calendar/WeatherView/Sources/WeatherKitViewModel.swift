@@ -5,6 +5,7 @@ import MapKit
 @preconcurrency import WeatherKit
 
 // MARK: - Структури за почасова (Hourly) и дневна (Daily) прогноза
+
 struct DayForecastItem: Identifiable, Equatable {
     let id: Date
     var date: Date
@@ -19,29 +20,31 @@ struct DayForecastItem: Identifiable, Equatable {
     var rainLast24h: Double     // Дъжд (мм)
     var snowLast24h: Double     // Сняг (напр. в см или мм)
     
-    var precipitationAmount : Double
-    var reinAmount : Double
+    var precipitationAmount: Double
+    var reinAmount: Double
     var snowfallAmount: Double
 
     // За следващите 24 часа
-    var precipNext24h: Double  // Общ валеж (мм)
-    var rainNext24h: Double    // Дъжд (мм)
-    var snowNext24h: Double    // Сняг (напр. в см или мм)
+    var precipNext24h: Double   // Общ валеж (мм)
+    var rainNext24h: Double     // Дъжд (мм)
+    var snowNext24h: Double     // Сняг (напр. в см или мм)
     
-    // (Optional) If you want a daily maximum UV or anything else:
+    // (Опционално) Дневен максимален UV или други параметри:
     var maxUV: Int
     
-    
-    var maxWindSpeed: Double  // e.g. the day’s highest wind speed (km/h)
-    var maxWindGust: Double  // day’s max wind gust (km/h), optional
-    var predominantWindDirection: Double // e.g.  in degrees (0–360)
+    var maxWindSpeed: Double      // Максимална скорост на вятъра през деня (км/ч)
+    var maxWindGust: Double       // Максимална сила на порив (км/ч)
+    var predominantWindDirection: Double  // Преобладаващо направление (градуси 0–360)
     
     var humidityMin: Double
     var humidityMax: Double
 
     var visibilityMin: Double
     var visibilityMax: Double
-
+    
+    // Добавяме поле за лунна информация, ако е налична
+    var moon: MoonEvents?
+    
     static func == (lhs: DayForecastItem, rhs: DayForecastItem) -> Bool {
         lhs.id == rhs.id
     }
@@ -55,26 +58,25 @@ struct HourlyForecastItem: Identifiable {
     var feelsLikeTemp: Double
     var symbol: String
     var precipChance: Double          // Шанс за валеж (0...1)
-    var precipitationAmount: Double  // Количество валеж (мм) за конкретния час
+    var precipitationAmount: Double   // Количество валеж (мм) за конкретния час
     var snowfallAmount: Double
-    // NEW: add UV Index if available in your data source
+    // Ново: добавяне на UV индекс, ако е наличен от източника на данни
     var uvIndex: Int
     
-    var windSpeed: Double       // in km/h
-    var windGust: Double       // in km/h
-    var windDirection: Double  // degrees 0–360 (N=0°, E=90°, S=180°, W=270°, etc.)
+    var windSpeed: Double       // км/ч
+    var windGust: Double        // км/ч
+    var windDirection: Double   // градуси (0–360)
     
     var humidity: Double
     
     var visibility: Double
     
     var pressure: Double
-
 }
 
 @MainActor
 class WeatherKitViewModel: ObservableObject {
-    // Singleton – достъпен отвсякъде ако е необходимо
+    // Singleton – достъпен отвсякъде
     static let shared = WeatherKitViewModel()
     
     let weatherService = WeatherService.shared
@@ -94,13 +96,14 @@ class WeatherKitViewModel: ObservableObject {
     @Published var currentDewPoint: Double?
     @Published var pressureTrend: String?
     
-    // Допълнителни променливи – разширяване за възможно предоставени данни от WeatherKit
-    @Published var currentPrecipitationAmount: Double?       // Например: мм валеж в текущия момент
-    @Published var currentPrecipitationProbability: Double?   // Шанс за валеж (напр. 0...1)
-    @Published var currentCloudCover: Double?                 // Процент или доля на облачност
-    // Можете да добавите още, ако API-то предоставя други параметри, напр. скорост на дъждовния поток, тип валеж и т.н.
+    @Published var currentMoonEvents: MoonEvents?
     
-    // Дадени за изгледа/прогнозите
+    // Допълнителни параметри от WeatherKit
+    @Published var currentPrecipitationAmount: Double?
+    @Published var currentPrecipitationProbability: Double?
+    @Published var currentCloudCover: Double?
+    
+    // Данни за прогнозите
     @Published var todayMinTemp: Double?
     @Published var todayMaxTemp: Double?
     @Published var sunriseTime: Date?
@@ -114,9 +117,14 @@ class WeatherKitViewModel: ObservableObject {
     
     @Published var errorMessage: String?
     
+    // Нови публикувани свойства за лунната фаза
+    @Published var nextMoonPhase: String?
+    @Published var daysUntilNextMoonPhase: Int?
+    
     var locationTimeZone: TimeZone = .current
 
     // MARK: - Публични методи
+    
     func setTimeZone(_ tz: TimeZone) {
         self.locationTimeZone = tz
     }
@@ -190,10 +198,14 @@ class WeatherKitViewModel: ObservableObject {
         dailyForecast = []
         errorMessage = nil
         
-        // Допълнителни променливи също могат да се нулират
+        // Допълнителни параметри
         currentPrecipitationAmount = nil
         currentPrecipitationProbability = nil
         currentCloudCover = nil
+        
+        // Ресетване на лунните свойства
+        nextMoonPhase = nil
+        daysUntilNextMoonPhase = nil
     }
     
     // MARK: - Приватни методи за обновяване на данните
@@ -323,16 +335,21 @@ class WeatherKitViewModel: ObservableObject {
             }
             
             let totalHourlyPrecip = forecastItemsForDay.reduce(0) { sum, item in
-                sum + (item.precipitationAmount ?? 0)
+                sum + item.precipitationAmount
             }
             
             let totalHourlyRain = forecastItemsForDay.reduce(0) { sum, item in
                 let isLikelySnowHourly = item.symbol.lowercased().contains("snow")
-                return isLikelySnowHourly ? sum : sum + (item.precipitationAmount ?? 0)
+                return isLikelySnowHourly ? sum : sum + item.precipitationAmount
             }
             let totalHourlySnow = forecastItemsForDay.reduce(0) { sum, item in
                 let isLikelySnowHourly = item.symbol.lowercased().contains("snow")
-                return isLikelySnowHourly ? sum + (item.precipitationAmount ?? 0) : sum
+                return isLikelySnowHourly ? sum + item.precipitationAmount : sum
+            }
+            
+            // Ако днес е избраният ден, запазваме лунната информация
+            if isToday {
+               self.currentMoonEvents = dayData.moon
             }
             
             let item = DayForecastItem(
@@ -359,7 +376,8 @@ class WeatherKitViewModel: ObservableObject {
                 humidityMin: dayData.minimumHumidity,
                 humidityMax: dayData.maximumHumidity,
                 visibilityMin: dayData.minimumVisibility / 1000,
-                visibilityMax: dayData.maximumVisibility / 1000
+                visibilityMax: dayData.maximumVisibility / 1000,
+                moon: dayData.moon   // Ако dayData съдържа лунна информация
             )
             arr.append(item)
         }
@@ -371,6 +389,30 @@ class WeatherKitViewModel: ObservableObject {
         } else {
             self.todayMinTemp = days.first?.lowTemperature.value
             self.todayMaxTemp = days.first?.highTemperature.value
+        }
+        
+        // Обновяваме информацията за следващата лунна фаза
+        updateMoonPhaseInfo()
+    }
+    
+    // Функция за извличане на следващата лунна фаза и изчисляване на броя дни до нея.
+    private func updateMoonPhaseInfo() {
+        guard let currentMoon = currentMoonEvents else {
+            nextMoonPhase = nil
+            daysUntilNextMoonPhase = nil
+            return
+        }
+        let currentPhase = currentMoon.phase
+        let calendar = Calendar.current
+        
+        for forecast in dailyForecast {
+            if let forecastMoon = forecast.moon, forecastMoon.phase != currentPhase {
+                nextMoonPhase = forecastMoon.phase.description
+                if let daysDiff = calendar.dateComponents([.day], from: Date(), to: forecast.date).day {
+                    daysUntilNextMoonPhase = daysDiff
+                }
+                break
+            }
         }
     }
     
@@ -413,9 +455,9 @@ class WeatherKitViewModel: ObservableObject {
     
     func windDirectionAbbreviation(for angle: Angle?) -> String {
         guard let angle = angle else { return "---" }
-        let deg = angle.degrees.truncatingRemainder(dividingBy:360)
+        let deg = angle.degrees.truncatingRemainder(dividingBy: 360)
                      .advanced(by: angle.degrees < 0 ? 360 : 0)
-        let idx = Int(((deg + 11.25).truncatingRemainder(dividingBy:360) / 22.5).rounded()) % 16
+        let idx = Int(((deg + 11.25).truncatingRemainder(dividingBy: 360) / 22.5).rounded()) % 16
         let directions = [
             "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
             "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"

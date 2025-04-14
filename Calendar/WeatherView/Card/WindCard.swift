@@ -60,17 +60,18 @@ struct WindCard: View {
              .offset(y: -compassSize * 0.15)
              .rotationEffect((direction ?? .zero) + .degrees(180))
 
+           
              // Кръг в центъра
              Circle()
                  .fill(.ultraThinMaterial)
-                 .frame(width: coverCircleRadius * 2, height: coverCircleRadius * 2)
-
+                 .frame(width: coverCircleRadius * 1.1, height: coverCircleRadius * 1.1)
+             
              // Текст за скоростта
-             VStack(spacing: -2) {
+             VStack(spacing: -5) {
                   Text(String(format: "%.0f", windSpeedKmh))
-                       .font(.system(size: 26, weight: .medium))
+                       .font(.system(size: 20, weight: .medium))
                   Text("km/h")
-                       .font(.system(size: 10, weight: .medium))
+                       .font(.system(size: 6, weight: .medium))
                        .foregroundStyle(.secondary)
                        .padding(.top, 2)
              }

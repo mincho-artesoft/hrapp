@@ -775,6 +775,10 @@ struct WeatherKitView: View {
                 formatTime: vm.formatTime
             )
             
+            MoonCard(
+                   moonEvents: vm.currentMoonEvents
+               )
+            
             HStack(spacing: 15) {
                 let nextRainInfo = findNextPrecipitationEvent()
                 PrecipitationTodayCard(
