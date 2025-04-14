@@ -240,9 +240,10 @@ extension WeatherDetailView {
                                 highlightLine.addLine(to: CGPoint(x: highlightX, y: origin.y))
                                 context.stroke(highlightLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
                                 
-                                let df = DateFormatter()
-                                df.dateFormat = "HH"
-                                let hourStr = df.string(from: item.date)
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "HH"
+                                dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
+                                let hourStr = dateFormatter.string(from: item.date)
                                 let rVal = item.precipitationAmount
                                 let sVal = item.snowfallAmount
                                 let labelText = """

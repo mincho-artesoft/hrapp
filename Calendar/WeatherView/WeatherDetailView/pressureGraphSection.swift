@@ -341,9 +341,10 @@ extension WeatherDetailView{
                                     let totalInterval = d2.timeIntervalSince(d1)
                                     let interpolatedDate = d1.addingTimeInterval(totalInterval * Double(t))
                                     
-                                    let df = DateFormatter()
-                                    df.dateFormat = "HH:mm"
-                                    timeString = df.string(from: interpolatedDate)
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "HH:mm"
+                                    dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
+                                    timeString = dateFormatter.string(from: interpolatedDate)
                                 } else {
                                     timeString = "--:--"
                                 }

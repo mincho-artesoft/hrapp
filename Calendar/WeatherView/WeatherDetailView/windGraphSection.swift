@@ -365,9 +365,10 @@ extension WeatherDetailView{
                                     let d2 = hourlyItemsForSelectedDate[upperIdx].date
                                     let dt = d2.timeIntervalSince(d1) * Double(t)
                                     let newDate = d1.addingTimeInterval(dt)
-                                    let df = DateFormatter()
-                                    df.dateFormat = "HH:mm"
-                                    timeText = df.string(from: newDate)
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.dateFormat = "HH:mm"
+                                    dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
+                                    timeText = dateFormatter.string(from: newDate)
                                 }
                                 
                                 // Определяме приблизителния час от драг позицията

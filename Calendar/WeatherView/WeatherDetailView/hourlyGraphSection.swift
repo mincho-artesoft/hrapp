@@ -432,6 +432,8 @@ extension WeatherDetailView{
                             
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "HH:mm"
+                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
+
                             let exactTime = dateFormatter.string(from: interpolatedDate)
                             
                             // 7) We want the text to go on the left side if hour >= 12

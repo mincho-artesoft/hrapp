@@ -261,6 +261,8 @@ extension WeatherDetailView{
 
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "HH:mm"
+                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
+
                             timeLabelString = dateFormatter.string(from: interpolatedDate)
                         } else {
                             timeLabelString = "--:--"

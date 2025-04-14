@@ -270,9 +270,11 @@ extension WeatherDetailView {
                                 let d2 = dayHourlyItems[upperIndex].date
                                 let totalInterval = d2.timeIntervalSince(d1)
                                 let interpolatedDate = d1.addingTimeInterval(totalInterval * Double(t))
-                                let df = DateFormatter()
-                                df.dateFormat = "HH:mm"
-                                timeLabel = df.string(from: interpolatedDate)
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "HH:mm"
+                                dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
+
+                                timeLabel = dateFormatter.string(from: interpolatedDate)
                             } else {
                                 timeLabel = "--:--"
                             }

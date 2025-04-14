@@ -317,6 +317,7 @@ extension WeatherDetailView{
                             // Създаваме етикет за показване на време и UV стойност
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "HH:mm"
+                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
                             let timeLabelString: String = {
                                 if lowerIdx < hourlyItemsForSelectedDate.count, upperIdx < hourlyItemsForSelectedDate.count {
                                     let d1 = hourlyItemsForSelectedDate[lowerIdx].date

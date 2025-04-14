@@ -50,23 +50,27 @@ struct WeatherDetailView: View {
     }
     
     private func hourString(from date: Date) -> String {
-        let df = DateFormatter()
-        df.dateFormat = "HH"
-        return df.string(from: date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH"
+        formatter.timeZone = vm.locationTimeZone // Сега използва избраната часова зона
+        return formatter.string(from: date)
     }
+
     
     // MARK: - Computed Properties (Filtered Data, Display Info) - Keep as is
     var hourlyItemsForSelectedDate: [HourlyForecastItem] {
-        let startOfDay = Calendar.current.startOfDay(for: selectedDate)
+        let startOfDay = customCalendar.startOfDay(for: selectedDate)
+        // Използвайте customCalendar за всички сравнения и изчисления
         var fullDayItems: [HourlyForecastItem] = []
         
         for hourOffset in 0...24 {
-            let hourDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: startOfDay)!
+            let hourDate = customCalendar.date(byAdding: .hour, value: hourOffset, to: startOfDay)!
             if let realItem = allHourlyItems.first(where: {
-                Calendar.current.isDate($0.date, equalTo: hourDate, toGranularity: .hour)
+                customCalendar.isDate($0.date, equalTo: hourDate, toGranularity: .hour)
             }) {
                 fullDayItems.append(realItem)
             } else {
+                // Добавете placeholder елемент
                 let placeholder = HourlyForecastItem(
                     id: hourDate,
                     date: hourDate,
@@ -83,13 +87,14 @@ struct WeatherDetailView: View {
                     windDirection: 0,
                     humidity: 0,
                     visibility: 0,
-                    pressure: 0,
+                    pressure: 0
                 )
                 fullDayItems.append(placeholder)
             }
         }
         return fullDayItems
     }
+
     
     private var displayedSymbol: String {
         if let dayItem = allDailyItems.first(where: { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) {
@@ -100,10 +105,12 @@ struct WeatherDetailView: View {
     
     // MARK: - Date Formatters - Keep as is
     private var headerDateFormatter: DateFormatter {
-        let f = DateFormatter()
-        f.dateFormat = "EEEE, d MMMM yyyy"
-        return f
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, d MMMM yyyy"
+        formatter.timeZone = vm.locationTimeZone
+        return formatter
     }
+
     
     // MARK: - Graph Configuration - Keep as is
      let graphPadding: CGFloat = 25
@@ -1355,6 +1362,24 @@ struct WeatherDetailView: View {
             }
         }
     }
+    var customCalendar: Calendar {
+           var cal = Calendar(identifier: .gregorian)
+           cal.timeZone = vm.locationTimeZone // Използва избраната от потребителя зона
+           return cal
+       }
+     
+     private func weekdayString(from date: Date) -> String {
+         let formatter = DateFormatter()
+         formatter.dateFormat = "E"
+         formatter.timeZone = vm.locationTimeZone
+         return formatter.string(from: date)
+     }
+     
+     // Пример за изчисление на fractionOfDay в графичните функции
+     func fractionOfDay(for date: Date) -> TimeInterval {
+         let startOfDay = customCalendar.startOfDay(for: date)
+         return Date().timeIntervalSince(startOfDay) / (24 * 3600)
+     }
 }
 
 // MARK: - RECT EXTENSION - Keep as is
