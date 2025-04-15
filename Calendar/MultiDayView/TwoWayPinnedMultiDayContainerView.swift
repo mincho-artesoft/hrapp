@@ -19,7 +19,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
     }
     
-    public var currentView: Int = 3
+    public var currentView: Int = 3 {
+        didSet {
+            onViewChange?(currentView)
+            updateButtonIconForCurrentView()
+            // Пресъздаваме и присвояваме менюто, за да отразим новото състояние
+            if #available(iOS 14.0, *) {
+                viewMenuButton.menu = buildViewMenu()
+            }
+        }
+    }
+
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {
@@ -786,6 +796,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             image: dayImage,
             state: currentView == 1 ? .on : .off
         ) { [weak self] _ in
+            self?.showSingleDay = true
             self?.currentView = 1
             self?.onViewChange?(1)
             self?.viewMenuButton.setImage(dayImage, for: .normal)
@@ -796,6 +807,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             image: multiDayImage,
             state: currentView == 3 ? .on : .off
         ) { [weak self] _ in
+            self?.showSingleDay = false
             self?.currentView = 3
             self?.onViewChange?(3)
             self?.viewMenuButton.setImage(multiDayImage, for: .normal)
