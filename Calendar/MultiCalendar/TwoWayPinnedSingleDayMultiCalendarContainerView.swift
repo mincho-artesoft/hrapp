@@ -643,31 +643,31 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         // Проверяваме дали избраната дата (fromDate) е в интервала [днес, днес+9 дни].
         let today = cal.startOfDay(for: Date())
         let daysDiff = cal.dateComponents([.day], from: today, to: fromOnly).day ?? -1
-        if daysDiff >= 0, daysDiff <= 9 {
-            hoursColumnView.displayWeatherForecast = true
-            
-            // Използваме WeatherKitViewModel.shared за данните за прогнозата.
-            let weatherVM = WeatherKitViewModel.shared
-            
-            // Филтрираме записите за прогноза за избрания ден.
-            let dayHourlyForecasts = weatherVM.hourlyForecast.filter {
-                cal.isDate($0.date, inSameDayAs: fromDate)
-            }
-            
-            // Преобразуваме всеки запис към модела HourlyWeatherForecast.
-            let hourlyForecasts: [HourlyWeatherForecast] = dayHourlyForecasts.map { forecast in
-                let forecastHour = cal.component(.hour, from: forecast.date)
-                return HourlyWeatherForecast(
-                    hour: forecastHour,
-                    iconName: forecast.symbol,
-                    temperature: forecast.temp
-                )
-            }
-            hoursColumnView.hourlyWeatherForecasts = hourlyForecasts
-        } else {
-            hoursColumnView.displayWeatherForecast = false
-            hoursColumnView.hourlyWeatherForecasts = nil
-        }
+//        if daysDiff >= 0, daysDiff <= 9 {
+//            hoursColumnView.displayWeatherForecast = true
+//            
+//            // Използваме WeatherKitViewModel.shared за данните за прогнозата.
+//            let weatherVM = WeatherKitViewModel.shared
+//            
+//            // Филтрираме записите за прогноза за избрания ден.
+//            let dayHourlyForecasts = weatherVM.hourlyForecast.filter {
+//                cal.isDate($0.date, inSameDayAs: fromDate)
+//            }
+//            
+//            // Преобразуваме всеки запис към модела HourlyWeatherForecast.
+//            let hourlyForecasts: [HourlyWeatherForecast] = dayHourlyForecasts.map { forecast in
+//                let forecastHour = cal.component(.hour, from: forecast.date)
+//                return HourlyWeatherForecast(
+//                    hour: forecastHour,
+//                    iconName: forecast.symbol,
+//                    temperature: forecast.temp
+//                )
+//            }
+//            hoursColumnView.hourlyWeatherForecasts = hourlyForecasts
+//        } else {
+//            hoursColumnView.displayWeatherForecast = false
+//            hoursColumnView.hourlyWeatherForecasts = nil
+//        }
         hoursColumnView.setNeedsDisplay()
         
         layoutSearchResultsIfNeeded()

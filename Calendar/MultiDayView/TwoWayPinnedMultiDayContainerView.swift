@@ -110,6 +110,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     public var onAddNewEvent: (() -> Void)?
     
     // MARK: - Subviews
+    
+    public let hoursColumnWeatherScrollView = UIScrollView()
+    public let hoursColumnWeatherView = HoursColumnWeatherView()
+    
     public let hoursColumnScrollView = UIScrollView()
     public let hoursColumnView = HoursColumnView()
     
@@ -347,6 +351,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         hoursColumnScrollView.layer.zPosition = 3
         addSubview(hoursColumnScrollView)
         
+        hoursColumnWeatherScrollView.showsVerticalScrollIndicator = false
+        hoursColumnWeatherScrollView.isScrollEnabled = false
+        hoursColumnWeatherScrollView.addSubview(hoursColumnWeatherView)
+        hoursColumnWeatherScrollView.layer.zPosition = 3
+        addSubview(hoursColumnWeatherScrollView)
+        
         // daysHeaderScrollView
         daysHeaderScrollView.showsVerticalScrollIndicator = false
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
@@ -444,6 +454,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         hoursColumnView.hourHeight = 50
         hoursColumnView.extraMarginTopBottom = 10
+        hoursColumnWeatherView.hourHeight = 50
+        hoursColumnWeatherView.extraMarginTopBottom = 10
         
         weekView.hourHeight = 50
         weekView.topMargin = 10
@@ -527,6 +539,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         mainScrollView.isHidden = shouldShow
         hoursColumnScrollView.isHidden = shouldShow
+        hoursColumnWeatherScrollView.isHidden = shouldShow
         allDayScrollView.isHidden = shouldShow
         cornerView.isHidden = shouldShow
         allDayTitleLabel.isHidden = shouldShow
@@ -689,6 +702,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // 6. Hours Column and Main ScrollView
         let hoursColumnY = allDayY + allDayH
         hoursColumnScrollView.frame = CGRect(x: 0, y: hoursColumnY, width: leftColumnWidth, height: bounds.height - hoursColumnY)
+        hoursColumnWeatherScrollView.frame = CGRect(x: bounds.width - 50,
+                                    y: hoursColumnY,
+                                    width: 50,
+                                    height: bounds.height - hoursColumnY)
         mainScrollView.frame = CGRect(x: leftColumnWidth, y: hoursColumnY, width: bounds.width - leftColumnWidth, height: bounds.height - hoursColumnY)
         
         let totalHours = 25
@@ -698,13 +715,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
+        hoursColumnWeatherScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
-        
+        hoursColumnWeatherView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
         let nowOnly = cal.startOfDay(for: Date())
         hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
         
+        hoursColumnWeatherView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
+        
         hoursColumnView.setNeedsDisplay()
+        hoursColumnWeatherView.setNeedsDisplay()
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
@@ -714,7 +735,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let todayDay = cal.startOfDay(for: Date())
         let daysDifference = cal.dateComponents([.day], from: todayDay, to: fromOnly).day ?? -1
         if showSingleDay, daysDifference >= 0, daysDifference <= 9 {
-            hoursColumnView.displayWeatherForecast = true
+            hoursColumnWeatherView.displayWeatherForecast = true
             
             let weatherVM = WeatherKitViewModel.shared
             // Филтрираме часовете от прогнозата за избрания ден
@@ -731,14 +752,15 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                     temperature: forecast.temp
                 )
             }
-            hoursColumnView.hourlyWeatherForecasts = hourlyForecasts
+            hoursColumnWeatherView.hourlyWeatherForecasts = hourlyForecasts
         } else {
-            hoursColumnView.displayWeatherForecast = false
-            hoursColumnView.hourlyWeatherForecasts = nil
+            hoursColumnWeatherView.displayWeatherForecast = false
+            hoursColumnWeatherView.hourlyWeatherForecasts = nil
         }
         
         hoursColumnView.setNeedsDisplay()
-        
+        hoursColumnWeatherView.setNeedsDisplay()
+
         updateDaysHeaderForecast()
 
         // 8. Layout на рез-лтати от търсене (ако сме в режим на търсене)
@@ -752,6 +774,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x     = scrollView.contentOffset.x
             hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
+            hoursColumnWeatherScrollView.contentOffset.y = scrollView.contentOffset.y
+
         }
         else if scrollView == daysHeaderScrollView {
             mainScrollView.contentOffset.x = scrollView.contentOffset.x
