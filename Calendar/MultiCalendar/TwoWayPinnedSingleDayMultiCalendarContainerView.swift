@@ -50,7 +50,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         return btn
     }()
     
-    public var currentView: Int = 5
+    public var currentView: Int = 1
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {
@@ -444,9 +444,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             height: plusBtnSize
         )
         
-
-       
-        
         var singleDayCarouselHeight: CGFloat = 70
         singleDayCarousel.isHidden = false
         if isLandscape {
@@ -461,7 +458,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             width: bounds.width,
             height: singleDayCarouselHeight
         )
-      
         singleDayCarousel.selectedDate = fromDate
         
         let yMain = singleDayCarousel.frame.maxY
@@ -484,19 +480,19 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let fromOnly = cal.startOfDay(for: fromDate)
         
         let availableWidth = bounds.width - leftColumnWidth
-        if isLandscape{
+        if isLandscape {
             if calendarVM.calendarsDict.values.filter({ $0.selected }).count == 0 {
-                if calendarVM.calendarsDict.count > 7{
+                if calendarVM.calendarsDict.count > 7 {
                     weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
                     daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
                     allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
-                }else{
+                } else {
                     let newDayColumnWidth = availableWidth
                     weekView.dayColumnWidth       = newDayColumnWidth
                     daysHeaderView.dayColumnWidth = newDayColumnWidth
                     allDayView.dayColumnWidth     = newDayColumnWidth
                 }
-            }else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 7 {
+            } else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 7 {
                 let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
                 daysHeaderView.dayColumnWidth = newDayColumnWidth
@@ -506,19 +502,19 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
                 allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
             }
-        }else{
+        } else {
             if calendarVM.calendarsDict.values.filter({ $0.selected }).count == 0 {
-                if calendarVM.calendarsDict.count > 3{
+                if calendarVM.calendarsDict.count > 3 {
                     weekView.dayColumnWidth       = CGFloat(100 * calendarVM.calendarsDict.count)
                     daysHeaderView.dayColumnWidth = CGFloat(100 * calendarVM.calendarsDict.count)
                     allDayView.dayColumnWidth     = CGFloat(100 * calendarVM.calendarsDict.count)
-                }else{
+                } else {
                     let newDayColumnWidth = availableWidth
                     weekView.dayColumnWidth       = newDayColumnWidth
                     daysHeaderView.dayColumnWidth = newDayColumnWidth
                     allDayView.dayColumnWidth     = newDayColumnWidth
                 }
-            }else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 3 {
+            } else if calendarVM.calendarsDict.values.filter({ $0.selected }).count <= 3 {
                 let newDayColumnWidth = availableWidth
                 weekView.dayColumnWidth       = newDayColumnWidth
                 daysHeaderView.dayColumnWidth = newDayColumnWidth
@@ -557,18 +553,19 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             height: 30
         )
         self.bringSubviewToFront(calendarsMultiSelectButton)
-
+        
         calendarsHeaderView.frame = CGRect(
             x: 0,
             y: 0,
             width: totalDaysHeaderWidth,
             height: calendarsHeaderHeight
         )
+        
         allDayView.recalcAllDayHeightDynamically()
         // Отместваме AllDay под втория хедър
-        let allDayY    = calendarsHeaderScrollView.frame.maxY
-        let oldOffset  = allDayScrollView.contentOffset
-        let allDayH    = allDayView.desiredHeight()
+        let allDayY = calendarsHeaderScrollView.frame.maxY
+        let oldOffset = allDayScrollView.contentOffset
+        let allDayH = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
         
         allDayTitleLabel.frame = CGRect(x: 0, y: allDayY,
@@ -621,7 +618,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
         let finalHeight = baseHeight + (weekView.topMargin * 2)
         
-        let totalWidth  = weekView.dayColumnWidth
+        let totalWidth = weekView.dayColumnWidth
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0,
                                 width: totalWidth,
@@ -640,7 +637,38 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
-       
+        // -----------------------------------------------
+        // Добавяме логика за прогнозни данни за часовете
+        // -----------------------------------------------
+        // Проверяваме дали избраната дата (fromDate) е в интервала [днес, днес+9 дни].
+        let today = cal.startOfDay(for: Date())
+        let daysDiff = cal.dateComponents([.day], from: today, to: fromOnly).day ?? -1
+        if daysDiff >= 0, daysDiff <= 9 {
+            hoursColumnView.displayWeatherForecast = true
+            
+            // Използваме WeatherKitViewModel.shared за данните за прогнозата.
+            let weatherVM = WeatherKitViewModel.shared
+            
+            // Филтрираме записите за прогноза за избрания ден.
+            let dayHourlyForecasts = weatherVM.hourlyForecast.filter {
+                cal.isDate($0.date, inSameDayAs: fromDate)
+            }
+            
+            // Преобразуваме всеки запис към модела HourlyWeatherForecast.
+            let hourlyForecasts: [HourlyWeatherForecast] = dayHourlyForecasts.map { forecast in
+                let forecastHour = cal.component(.hour, from: forecast.date)
+                return HourlyWeatherForecast(
+                    hour: forecastHour,
+                    iconName: forecast.symbol,
+                    temperature: forecast.temp
+                )
+            }
+            hoursColumnView.hourlyWeatherForecasts = hourlyForecasts
+        } else {
+            hoursColumnView.displayWeatherForecast = false
+            hoursColumnView.hourlyWeatherForecasts = nil
+        }
+        hoursColumnView.setNeedsDisplay()
         
         layoutSearchResultsIfNeeded()
         
@@ -649,6 +677,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             positionDropdown(dView)
         }
     }
+
     
     // ---------------------------------------------------------
     // MARK: - UIScrollViewDelegate

@@ -565,49 +565,30 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let isLandscape = bounds.width > bounds.height
         let topOffset: CGFloat = isLandscape ? 0 : 53.5
         
-        // 1) фон зад нав. лента (ако искаме):
-        topBackgroundView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: bounds.width,
-            height: topOffset
-        )
+        // 1. Фон зад navBar (ако има)
+        topBackgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topOffset)
         topBackgroundView.layer.zPosition = 3
-        // 2) самата navBar – качваме я след topOffset:
-        navBar.frame = CGRect(
-            x: 0,
-            y: topOffset,
-            width: bounds.width - 2,
-            height: navBarHeight
-        )
         
-        // --------------------------------
-        // Ако showSingleDay = true → показваме monthLabel
-        // и обновяваме текста му:
-        if showSingleDay && !isLandscape{
+        // 2. NavBar
+        navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width - 2, height: navBarHeight)
+        navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        
+        // Ако сме в режим showSingleDay и не сме в пейзажен режим, показваме monthLabel с името на месеца
+        if showSingleDay && !isLandscape {
             let df = DateFormatter()
-            // Примерно показваме целия месец (напр. "March")
-            // Може да ползвате "MMM" за съкратен: "Mar"
             df.dateFormat = "LLLL"
             monthLabel.text = df.string(from: fromDate)
             monthLabel.textColor = .systemBlue
             monthLabel.sizeToFit()
-            // Слагаме го горе вляво с ~10pt отстъп
             let mlX: CGFloat = 10
             let mlY = (navBarHeight - monthLabel.bounds.height) / 2
-            monthLabel.frame = CGRect(
-                x: mlX,
-                y: mlY,
-                width: monthLabel.bounds.width,
-                height: monthLabel.bounds.height
-            )
+            monthLabel.frame = CGRect(x: mlX, y: mlY, width: monthLabel.bounds.width, height: monthLabel.bounds.height)
             monthLabel.isHidden = false
         } else {
             monthLabel.isHidden = true
         }
-        // --------------------------------
         
-        // Подреждаме бутоните вдясно в navBar:
+        // Подреждаме бутоните в navBar
         let menuBtnSize: CGFloat = 34
         let searchBtnSize: CGFloat = 34
         let plusBtnSize: CGFloat = 34
@@ -615,85 +596,44 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         let menuButtonX = navBar.bounds.width - menuBtnSize - 10
         let centerY = (navBar.bounds.height - menuBtnSize) / 2
-        viewMenuButton.frame = CGRect(
-            x: menuButtonX,
-            y: centerY,
-            width: menuBtnSize,
-            height: menuBtnSize
-        )
-        
-        updateButtonIconForCurrentView()
-        // iOS 14+ меню
-        if #available(iOS 14.0, *) {
-            viewMenuButton.menu = buildViewMenu()
-        }
+        viewMenuButton.frame = CGRect(x: menuButtonX, y: centerY, width: menuBtnSize, height: menuBtnSize)
         
         let searchButtonX = menuButtonX - searchBtnSize - margin
-        searchButton.frame = CGRect(
-            x: searchButtonX,
-            y: centerY,
-            width: searchBtnSize,
-            height: searchBtnSize
-        )
+        searchButton.frame = CGRect(x: searchButtonX, y: centerY, width: searchBtnSize, height: searchBtnSize)
         
         let plusButtonX = searchButtonX - plusBtnSize - margin
-        addEventButton.frame = CGRect(
-            x: plusButtonX,
-            y: centerY,
-            width: plusBtnSize,
-            height: plusBtnSize
-        )
+        addEventButton.frame = CGRect(x: plusButtonX, y: centerY, width: plusBtnSize, height: plusBtnSize)
         
         let btnW: CGFloat = 220
         let btnH: CGFloat = 40
-        let x = plusButtonX - btnW - margin
-        let y = (navBar.bounds.height - btnH) / 2
-        dateRangeButton.frame = CGRect(x: x, y: y, width: btnW, height: btnH)
+        let btnX = plusButtonX - btnW - margin
+        let btnY = (navBar.bounds.height - btnH) / 2
+        dateRangeButton.frame = CGRect(x: btnX, y: btnY, width: btnW, height: btnH)
         
-        // Ако не търсим, тогава крием/показваме dateRangeButton спрямо showSingleDay:
+        // Ако не търсим, скриваме dateRangeButton при showSingleDay
         if !isSearching {
             dateRangeButton.isHidden = showSingleDay
         }
         
-        // 3) singleDayCarousel
+        // 3. SingleDayCarousel
         var singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
-        
         singleDayCarousel.isHidden = !showSingleDay
-        if isLandscape{
+        if isLandscape {
             singleDayCarousel.isHidden = true
             singleDayCarouselHeight = 0
         }
         singleDayCarousel.layer.zPosition = 8
         let singleDayCarouselY = navBar.frame.maxY
-        singleDayCarousel.frame = CGRect(
-            x: 0,
-            y: singleDayCarouselY,
-            width: bounds.width,
-            height: singleDayCarouselHeight
-        )
-        
+        singleDayCarousel.frame = CGRect(x: 0, y: singleDayCarouselY, width: bounds.width, height: singleDayCarouselHeight)
         if showSingleDay {
             singleDayCarousel.selectedDate = fromDate
         }
         
-        // 4) Основното съдържание започва след singleDayCarousel
+        // 4. Days Header – позициониране на cornerView и daysHeaderScrollView
         let yMain = singleDayCarousel.frame.maxY
+        cornerView.frame = CGRect(x: 0, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
+        daysHeaderScrollView.frame = CGRect(x: leftColumnWidth, y: yMain, width: bounds.width - leftColumnWidth, height: daysHeaderHeight)
         
-        cornerView.frame = CGRect(
-            x: 0,
-            y: yMain,
-            width: leftColumnWidth,
-            height: daysHeaderHeight
-        )
-        
-        daysHeaderScrollView.frame = CGRect(
-            x: leftColumnWidth,
-            y: yMain,
-            width: bounds.width - leftColumnWidth,
-            height: daysHeaderHeight
-        )
-        
-        // Изчисляваме брой дни
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
         let toOnly   = cal.startOfDay(for: toDate)
@@ -702,58 +642,35 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let availableWidth = bounds.width - leftColumnWidth
         if dayCount < 4 {
             let newDayColumnWidth = availableWidth / CGFloat(dayCount)
-            weekView.dayColumnWidth       = newDayColumnWidth
+            weekView.dayColumnWidth = newDayColumnWidth
             daysHeaderView.dayColumnWidth = newDayColumnWidth
-            allDayView.dayColumnWidth     = newDayColumnWidth
+            allDayView.dayColumnWidth = newDayColumnWidth
         } else {
-            weekView.dayColumnWidth       = 100
+            weekView.dayColumnWidth = 100
             daysHeaderView.dayColumnWidth = 100
-            allDayView.dayColumnWidth     = 100
+            allDayView.dayColumnWidth = 100
         }
         
         let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0, width: totalDaysHeaderWidth, height: daysHeaderHeight)
         
+        // 5. All-Day View
         allDayView.recalcAllDayHeightDynamically()
-        // All‐day ред
         let allDayY = yMain + daysHeaderHeight
         let oldOffset = allDayScrollView.contentOffset
-        
         let allDayH = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
-        
-        allDayTitleLabel.frame = CGRect(
-            x: 0,
-            y: allDayY,
-            width: leftColumnWidth,
-            height: allDayH
-        )
-        
-        allDayScrollView.frame = CGRect(
-            x: leftColumnWidth,
-            y: allDayY,
-            width: bounds.width - leftColumnWidth,
-            height: allDayH
-        )
-        
+        allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
+        allDayScrollView.frame = CGRect(x: leftColumnWidth, y: allDayY, width: bounds.width - leftColumnWidth, height: allDayH)
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayFullH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
         
+        // Настройка на тънките линии (border) за allDayTitleLabel
         let superThin = 1 / UIScreen.main.scale
-        topBorder.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: allDayTitleLabel.bounds.width,
-            height: superThin
-        )
-        bottomBorder.frame = CGRect(
-            x: 0,
-            y: allDayTitleLabel.bounds.height - superThin,
-            width: allDayTitleLabel.bounds.width,
-            height: superThin
-        )
+        topBorder.frame = CGRect(x: 0, y: 0, width: allDayTitleLabel.bounds.width, height: superThin)
+        bottomBorder.frame = CGRect(x: 0, y: allDayTitleLabel.bounds.height - superThin, width: allDayTitleLabel.bounds.width, height: superThin)
         
         let maxOffsetY = max(0, allDayScrollView.contentSize.height - allDayScrollView.bounds.height)
         var newOffset = oldOffset
@@ -761,29 +678,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         else if newOffset.y > maxOffsetY { newOffset.y = maxOffsetY }
         allDayScrollView.setContentOffset(newOffset, animated: false)
         
+        // 6. Hours Column and Main ScrollView
         let hoursColumnY = allDayY + allDayH
-        hoursColumnScrollView.frame = CGRect(
-            x: 0,
-            y: hoursColumnY,
-            width: leftColumnWidth,
-            height: bounds.height - hoursColumnY
-        )
-        
-        mainScrollView.frame = CGRect(
-            x: leftColumnWidth,
-            y: hoursColumnY,
-            width: bounds.width - leftColumnWidth,
-            height: bounds.height - hoursColumnY
-        )
+        hoursColumnScrollView.frame = CGRect(x: 0, y: hoursColumnY, width: leftColumnWidth, height: bounds.height - hoursColumnY)
+        mainScrollView.frame = CGRect(x: leftColumnWidth, y: hoursColumnY, width: bounds.width - leftColumnWidth, height: bounds.height - hoursColumnY)
         
         let totalHours = 25
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
         let finalHeight = baseHeight + (weekView.topMargin * 2)
-        
-        let totalWidth  = CGFloat(dayCount) * weekView.dayColumnWidth
+        let totalWidth = CGFloat(dayCount) * weekView.dayColumnWidth
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
-        
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
         
@@ -795,9 +700,41 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
-        // Layout на резултатите от търсене (ако сме в режим на търсене)
+        // 7. Интеграция на данните за прогнозата
+        // Ако сме в режим showSingleDay и fromDate е в интервала [днес, днес + 9 дни],
+        // вземаме данни от WeatherKitViewModel.shared.hourlyForecast за избрания ден.
+        let todayDay = cal.startOfDay(for: Date())
+        let daysDifference = cal.dateComponents([.day], from: todayDay, to: fromOnly).day ?? -1
+        if showSingleDay, daysDifference >= 0, daysDifference <= 9 {
+            hoursColumnView.displayWeatherForecast = true
+            
+            let weatherVM = WeatherKitViewModel.shared
+            // Филтрираме часовете от прогнозата за избрания ден
+            let dayHourlyForecasts = weatherVM.hourlyForecast.filter {
+                cal.isDate($0.date, inSameDayAs: fromDate)
+            }
+            // Преобразуваме всеки HourlyForecastItem към модела HourlyWeatherForecast,
+            // използвайки часа (component .hour), символ (icon) и температура
+            let hourlyForecasts: [HourlyWeatherForecast] = dayHourlyForecasts.map { forecast in
+                let forecastHour = cal.component(.hour, from: forecast.date)
+                return HourlyWeatherForecast(
+                    hour: forecastHour,
+                    iconName: forecast.symbol,
+                    temperature: forecast.temp
+                )
+            }
+            hoursColumnView.hourlyWeatherForecasts = hourlyForecasts
+        } else {
+            hoursColumnView.displayWeatherForecast = false
+            hoursColumnView.hourlyWeatherForecasts = nil
+        }
+        
+        hoursColumnView.setNeedsDisplay()
+        
+        // 8. Layout на рез-лтати от търсене (ако сме в режим на търсене)
         layoutSearchResultsIfNeeded()
     }
+
 
     // MARK: - UIScrollViewDelegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
