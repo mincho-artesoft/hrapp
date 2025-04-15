@@ -37,7 +37,7 @@ struct RootView: View {
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     // Управление на табовете. Според примера: 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar, 6=Weather
-    @State private var selectedTab = 6
+    @State private var selectedTab = 1
     
     // Нови променливи за различните sheet-ове
     @State private var showCalendarsSheet = false      // Показва CalendarsSheetView

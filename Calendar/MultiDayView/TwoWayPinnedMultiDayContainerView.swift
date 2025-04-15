@@ -21,12 +21,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     public var currentView: Int = 3 {
         didSet {
-            onViewChange?(currentView)
             updateButtonIconForCurrentView()
-            // Пресъздаваме и присвояваме менюто, за да отразим новото състояние
-            if #available(iOS 14.0, *) {
-                viewMenuButton.menu = buildViewMenu()
-            }
+            viewMenuButton.menu = buildViewMenu()
         }
     }
 
