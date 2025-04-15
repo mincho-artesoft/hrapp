@@ -262,7 +262,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     // MARK: - Private constants & variables
     fileprivate let navBarHeight: CGFloat = 50
-    fileprivate let daysHeaderHeight: CGFloat = 20
+    fileprivate let daysHeaderHeight: CGFloat = 40
     fileprivate let leftColumnWidth: CGFloat = 60
     
     private let topBorder = CALayer()
@@ -277,7 +277,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     // Доп. изглед за фон зад navBar (ако желаем да добавим отместване)
     private let topBackgroundView = UIView()
-    
+    private let topBackgroundView2 = UIView()
+
     // MARK: - Lifecycle
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -449,6 +450,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // Доп. изглед за фон зад нав. лента (примерно)
         topBackgroundView.backgroundColor = .secondarySystemBackground
+        
         addSubview(topBackgroundView)
         
        
