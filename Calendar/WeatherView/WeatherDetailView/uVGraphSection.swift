@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension WeatherDetailView{
+extension WeatherDetailView {
     
     @ViewBuilder
     func uVGraphSection() -> some View {
@@ -8,45 +8,41 @@ extension WeatherDetailView{
         let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
         let secondsFromMidnight = now.timeIntervalSince(startOfSelectedDay)
         let fractionOfDay = secondsFromMidnight / (24 * 3600)
-        // 1) Извличане на UV данните за избрания ден (24 часа)
+        // Извличане на UV данните за избрания ден (24 часа)
         let uvData = hourlyItemsForSelectedDate.map { $0.uvIndex }
         
-        // 2) Фиксиран мащаб от 0 до 12
+        // Фиксиран мащаб от 0 до 12
         let yRange: (min: Double, max: Double) = (0, 12)
         
-        // 3) Часови маркери – обикновено на всеки 6 часа
+        // Часови маркери – обикновено на всеки 6 часа
         let hourMarkers = [0, 6, 12, 18, 24]
         
-        // 4) Определяне на дневния максимален UV от дневната прогноза
+        // Определяне на дневния максимален UV от дневната прогноза
         let dayItem = allDailyItems.first {
             Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
         }
         let dailyMaxUV = dayItem?.maxUV ?? 0
         
-    
-        
         VStack(spacing: 8) {
             Group {
-                  // Заглавната част
-                  VStack(alignment: .leading, spacing: 5) {
-                      Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
-                          .font(.system(size: 16, weight: .semibold))
-                  }
-                  .frame(maxWidth: .infinity, alignment: .leading)
-                  .padding(.horizontal)
-                  .offset(x: -15)
-                  
-                  // Бутонът за менюто, преместен вдясно
+                // Заглавната част
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
+                        .font(.system(size: 16, weight: .semibold))
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .offset(x: -15)
+                
+                // Бутонът за менюто, преместен вдясно
                 HStack {
                     Spacer()
-                   
                 }
-                .offset(y: -48) // или друг offset
-              }
-              .offset(y: 10) // Поправи стойността според нуждите ти
-           
-
-            // Хедър със средните стойности за всеки 2 часа – използваме същия изглед, какъвто имате в hourlyGraphSection.
+                .offset(y: -48)
+            }
+            .offset(y: 10)
+            
+            // Хедър със средните стойности за всеки 2 часа (същият изглед като в hourlyGraphSection)
             let twoHourAverages: [Int] = stride(from: 0, to: uvData.count, by: 2).map { startIndex in
                 let endIndex = min(startIndex + 2, uvData.count)
                 let block = uvData[startIndex..<endIndex]
@@ -76,23 +72,18 @@ extension WeatherDetailView{
                             }
                         }
                         
-                        // Ако избраният ден съвпада с днешния, поставяме затъмняващ слой и вертикална линия,
-                        // които използват една и съща дробна стойност (fractionOfDay)
+                        // Ако избраният ден е днес, поставяме затъмняващ слой до текущото време
                         if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
                             let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
-                            // Полупрозрачен правоъгълник, който покрива частта до текущото време
                             Rectangle()
                                 .fill(Color.black.opacity(0.4))
                                 .frame(width: overlayWidth)
-                            
                         }
                     }
                 }
                 .frame(height: 20)
                 .padding(.horizontal, graphPadding)
-//                .offset(y: -25)
                 
-                // Графична част с Canvas – увеличена височина
                 // Графична част с Canvas – увеличена височина
                 Canvas { context, size in
                     guard uvData.count > 1,
@@ -109,6 +100,8 @@ extension WeatherDetailView{
                     func yPosition(for uv: Double) -> CGFloat {
                         return origin.y - CGFloat(uv - yRange.min) * yStep
                     }
+                    
+                    // Рисуване на хоризонтални линии и етикети
                     let specialMarkers: [Int: String] = [
                         1: "Low",
                         3: "Moderate",
@@ -136,7 +129,6 @@ extension WeatherDetailView{
                             anchor: .center
                         )
                         
-                        // Проверка дали текущият маркер се съдържа в речника за специални маркери
                         if let specialText = specialMarkers[Int(marker)] {
                             let leftLabelPoint = CGPoint(x: origin.x + 5, y: yPos + 5)
                             context.draw(
@@ -144,13 +136,12 @@ extension WeatherDetailView{
                                     .font(.system(size: 10))
                                     .foregroundColor(.gray),
                                 at: leftLabelPoint,
-                                anchor: .init(x: 0, y: 0.5) // x=0 -> ляво, y=0.5 -> центриране по вертикалата
+                                anchor: UnitPoint(x: 0, y: 0.5)
                             )
                         }
-                        
                     }
                     
-                    // Рисуване на вертикални линии за часовите маркери
+                    // Вертикални линии за часовите маркери
                     for hour in hourMarkers {
                         let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                         var vLine = Path()
@@ -161,9 +152,7 @@ extension WeatherDetailView{
                                        style: StrokeStyle(lineWidth: 0.5))
                     }
                     
-                    // Построяване на пътя за линията и запълването под нея
-                    var linePath = Path()
-                    var fillPath = Path()
+                    // Изчисляване на точките върху графиката
                     var points: [CGPoint] = []
                     let xStep = graphContentWidth / CGFloat(max(1, uvData.count - 1))
                     for (index, uv) in uvData.enumerated() {
@@ -171,21 +160,34 @@ extension WeatherDetailView{
                         let yPos = yPosition(for: Double(uv))
                         let pt = CGPoint(x: xPos, y: yPos)
                         points.append(pt)
-                        if index == 0 {
-                            linePath.move(to: pt)
-                            fillPath.move(to: CGPoint(x: xPos, y: origin.y))
-                            fillPath.addLine(to: pt)
-                        } else {
-                            linePath.addLine(to: pt)
-                            fillPath.addLine(to: pt)
-                        }
-                    }
-                    if let lastPt = points.last {
-                        fillPath.addLine(to: CGPoint(x: lastPt.x, y: origin.y))
-                        fillPath.closeSubpath()
                     }
                     
-                    // Градиент за UV – от зелен към жълт, оранжев, червен и лилав
+                    // Използваме по-висок коефициент за контролни точки за по-изразена закръгленост
+                    let controlFactor: CGFloat = 0.7
+                    var linePath = Path()
+                    var fillPath = Path()
+                    if points.count > 1 {
+                        linePath.move(to: points[0])
+                        fillPath.move(to: CGPoint(x: points[0].x, y: origin.y))
+                        fillPath.addLine(to: points[0])
+                        for i in 1..<points.count {
+                            let current = points[i]
+                            let previous = points[i - 1]
+                            let deltaX = current.x - previous.x
+                            // Контролните точки с по-висок коефициент за по-силно извиване
+                            let cp1 = CGPoint(x: previous.x + deltaX * controlFactor, y: previous.y)
+                            let cp2 = CGPoint(x: current.x - deltaX * controlFactor, y: current.y)
+                            
+                            linePath.addCurve(to: current, control1: cp1, control2: cp2)
+                            fillPath.addCurve(to: current, control1: cp1, control2: cp2)
+                        }
+                        if let lastPt = points.last {
+                            fillPath.addLine(to: CGPoint(x: lastPt.x, y: origin.y))
+                            fillPath.closeSubpath()
+                        }
+                    }
+                    
+                    // Градиенти за UV линията и запълването под нея
                     let uvGradientLine = Gradient(stops: [
                         .init(color: .green,   location: 0.0),
                         .init(color: .yellow,  location: 0.3),
@@ -200,7 +202,8 @@ extension WeatherDetailView{
                         .init(color: .red.opacity(0.5),     location: 0.75),
                         .init(color: .purple.opacity(0.5),  location: 1.0)
                     ])
-                    // Запълване под линията с градиент
+                    
+                    // Запълване под кривата с градиент
                     context.drawLayer { layerContext in
                         layerContext.fill(
                             fillPath,
@@ -212,7 +215,7 @@ extension WeatherDetailView{
                         )
                     }
                     
-                    // Рисуване на линията с градиент чрез клипване и запълване
+                    // Рисуване на крива с градиент чрез клипване
                     context.drawLayer { layerContext in
                         let lineWidth: CGFloat = 2.5
                         let stroked = linePath.strokedPath(.init(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
@@ -227,7 +230,7 @@ extension WeatherDetailView{
                         )
                     }
                     
-                    // Рисуване на маркера за максималната стойност
+                    // Маркер за максималната стойност
                     if let maxUV = uvData.max(),
                        let maxIndex = uvData.firstIndex(of: maxUV),
                        points.indices.contains(maxIndex) {
@@ -235,33 +238,26 @@ extension WeatherDetailView{
                         drawHLMarker(context: context, label: "Max", at: highPoint)
                     }
                     
-                    // Затъмняване само на графичната област (fillPath) от началото до текущата точка и затъмняване на линията до текущия час
+                    // Затъмняване до текущия час, ако избраният ден е днес
                     if Calendar.current.isDate(Date(), inSameDayAs: selectedDate),
                        let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
                            Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .hour)
                        }) {
-                        // Изчисляване на X позицията за текущия час
                         let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                        
-                        // Начертаване на вертикална линия (можете да зададете Y офсета според нуждите; тук използваме graphPadding)
                         var verticalPath = Path()
                         verticalPath.move(to: CGPoint(x: currentXPos, y: graphPadding))
                         verticalPath.addLine(to: CGPoint(x: currentXPos, y: origin.y))
                         
-                        // Изчисляваме текущата UV стойност и нормализираме за извличане на цвят от градиента
                         let currentUV = uvData[currentHourIndex]
                         let normalized = (Double(currentUV) - yRange.min) / (yRange.max - yRange.min)
                         let currentColor: Color = colorFromGradient(gradient: uvGradient, location: normalized)
                         
-                        // Начертаване на вертикалната линия с текущия цвят и дебелина 2
                         context.stroke(
                             verticalPath,
                             with: .color(currentColor),
                             style: StrokeStyle(lineWidth: 2)
                         )
                         
-                        // Определяне на правоъгълник, който обхваща областта от началната X позиция до текущата,
-                        // и запълване с полупрозрачен черен цвят за потъмняване
                         let darkenRect = CGRect(
                             x: origin.x,
                             y: graphPadding,
@@ -273,7 +269,6 @@ extension WeatherDetailView{
                             with: .color(.black.opacity(0.3))
                         )
                     }
-                    
                     
                     // Часови надписи под графиката
                     for hour in hourMarkers {
@@ -288,7 +283,7 @@ extension WeatherDetailView{
                         )
                     }
                     
-                    // Drag gesture интерполация – показване на стойност, взета от данните (като цяло число)
+                    // Интерполация при drag gesture за показване на данни
                     if let dragPoint = dragLocationUV {
                         if dragPoint.x >= origin.x && dragPoint.x <= origin.x + graphContentWidth {
                             let fractionIndex = (dragPoint.x - origin.x) / xStep
@@ -296,7 +291,6 @@ extension WeatherDetailView{
                             let upperIdx = max(0, min(points.count - 1, lowerIdx + 1))
                             let t = (upperIdx == lowerIdx) ? 0 : (fractionIndex - CGFloat(lowerIdx))
                             
-                            // Интерполиране на UV стойността и Y координатата
                             let lowerValue = Double(uvData[lowerIdx])
                             let upperValue = Double(uvData[upperIdx])
                             let interpolatedValue = lowerValue + (upperValue - lowerValue) * Double(t)
@@ -308,16 +302,14 @@ extension WeatherDetailView{
                             }
                             let dotPoint = CGPoint(x: dragPoint.x, y: interpolatedY)
                             
-                            // Вертикална линия
                             var verticalPath = Path()
                             verticalPath.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
                             verticalPath.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
                             context.stroke(verticalPath, with: .color(.white.opacity(0.5)), lineWidth: 1)
                             
-                            // Създаваме етикет за показване на време и UV стойност
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "HH:mm"
-                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
+                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone
                             let timeLabelString: String = {
                                 if lowerIdx < hourlyItemsForSelectedDate.count, upperIdx < hourlyItemsForSelectedDate.count {
                                     let d1 = hourlyItemsForSelectedDate[lowerIdx].date
@@ -334,14 +326,11 @@ extension WeatherDetailView{
                                 .font(.system(size: 12, weight: .bold))
                                 .foregroundColor(.white)
                             
-                            // Изчисляваме приблизителния час за drag позицията:
                             let hourOfDrag = Double(lowerIdx) + Double(t)
                             
-                            // По подразбиране: текстът да се появява отдясно
                             var labelAnchor: UnitPoint = .bottomLeading
                             var textX = dotPoint.x + 8
                             
-                            // Ако приблизителният час е 12 или повече, позиционираме етикета наляво
                             if hourOfDrag >= 12 {
                                 labelAnchor = .bottomTrailing
                                 textX = dotPoint.x - 8
@@ -365,24 +354,22 @@ extension WeatherDetailView{
                     .padding(.top, 2)
                     .offset(y: -35)
                 
-                
+                // Информационна секция под графиката
                 VStack(alignment: .leading, spacing: 4) {
-                    HStack{
+                    HStack {
                         Text("Now, \(currentTimeString)")
                             .font(.caption)
                             .foregroundColor(.secondary)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .lineSpacing(3)
+                            .lineSpacing(3)
                         Spacer()
                     }
                     .offset(x: 2)
-                 
-                    HStack{
+                    
+                    HStack {
                         Text(generateUVAdvice(uvData: uvData, startOfSelectedDay: startOfSelectedDay))
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .lineSpacing(3)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .lineSpacing(3)
                         Spacer()
                     }
                     .offset(x: 2)
@@ -396,37 +383,29 @@ extension WeatherDetailView{
     }
     
     func generateUVAdvice(uvData: [Int], startOfSelectedDay: Date) -> String {
-        // 1) Филтрираме UV стойностите, които са поне 3 (Moderate или по-висок)
-        let moderateOrHigher = uvData.enumerated().filter { $0.element >= 1 } // [(index, uv)]
+        // Филтрираме UV стойностите, които са ≥ 1
+        let moderateOrHigher = uvData.enumerated().filter { $0.element >= 1 }
         
-        // 2) Ако няма нито една стойност ≥ 3, връщаме съответно съобщение
         if moderateOrHigher.isEmpty {
             return "No moderate or higher UV levels are expected for this day."
         } else {
-            // earliest и latest – първият и последният час в деня, където UV ≥ 3
             let earliestHourIndex = moderateOrHigher.first!.offset
             let latestHourIndex   = moderateOrHigher.last!.offset
-            
-            // minUV и maxUV – най-ниската и най-високата UV стойност в този диапазон
             let minUV = moderateOrHigher.map { $0.element }.min() ?? 1
             let maxUV = moderateOrHigher.map { $0.element }.max() ?? 1
             
-            // Преобразуваме index (час) в реални Date обекти
             let calendar = Calendar.current
             let earliestDate = calendar.date(byAdding: .hour, value: earliestHourIndex, to: startOfSelectedDay)!
-            let latestDate   = calendar.date(byAdding: .hour, value: latestHourIndex,  to: startOfSelectedDay)!
+            let latestDate   = calendar.date(byAdding: .hour, value: latestHourIndex, to: startOfSelectedDay)!
             
-            // Форматираме ги като час:минути (HH:mm) или друго, което предпочитате
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
-            let earliestStr = formatter.string(from: earliestDate) // "10:00"
-            let latestStr   = formatter.string(from: latestDate)   // "15:00"
+            let earliestStr = formatter.string(from: earliestDate)
+            let latestStr   = formatter.string(from: latestDate)
             
-            // Определяме категориите за minUV и maxUV (пр. Moderate, High и т.н.)
             let minCategory = uvCategory(for: minUV)
             let maxCategory = uvCategory(for: maxUV)
             
-            // Накрая сглобяваме динамичен текст
             let uvAdviceText = """
             Sun protection recommended. UV levels range from \(minCategory) to \(maxCategory), \
             reached between \(earliestStr) and \(latestStr).
@@ -448,7 +427,8 @@ extension WeatherDetailView{
         } else if uv >= 1 {
             return "Low"
         } else {
-            return "None" // или "0", ако искате да показвате конкретно число
+            return "None"
         }
     }
+    
 }
