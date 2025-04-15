@@ -6,47 +6,96 @@ import MapKit
 
 // MARK: - Структури за почасова (Hourly) и дневна (Daily) прогноза
 
-struct DayForecastItem: Identifiable, Equatable {
-    let id: Date
-    var date: Date
-    var day: String
-    var symbol: String
-    var precipChance: Double?
-    var minTemp: Double
-    var maxTemp: Double
+// Уверете се, че DayForecastItem е public:
+public struct DayForecastItem: Identifiable, Equatable {
+    public let id: Date
+    public var date: Date
+    public var day: String
+    public var symbol: String
+    public var precipChance: Double?
+    public var minTemp: Double
+    public var maxTemp: Double
     
     // За последните 24 часа
-    var precipLast24h: Double   // Общ валеж (мм)
-    var rainLast24h: Double     // Дъжд (мм)
-    var snowLast24h: Double     // Сняг (напр. в см или мм)
+    public var precipLast24h: Double   // Общ валеж (мм)
+    public var rainLast24h: Double     // Дъжд (мм)
+    public var snowLast24h: Double     // Сняг (напр. в см или мм)
     
-    var precipitationAmount: Double
-    var reinAmount: Double
-    var snowfallAmount: Double
+    public var precipitationAmount: Double
+    public var reinAmount: Double
+    public var snowfallAmount: Double
 
     // За следващите 24 часа
-    var precipNext24h: Double   // Общ валеж (мм)
-    var rainNext24h: Double     // Дъжд (мм)
-    var snowNext24h: Double     // Сняг (напр. в см или мм)
+    public var precipNext24h: Double   // Общ валеж (мм)
+    public var rainNext24h: Double     // Дъжд (мм)
+    public var snowNext24h: Double     // Сняг (напр. в см или мм)
     
     // (Опционално) Дневен максимален UV или други параметри:
-    var maxUV: Int
+    public var maxUV: Int
     
-    var maxWindSpeed: Double      // Максимална скорост на вятъра през деня (км/ч)
-    var maxWindGust: Double       // Максимална сила на порив (км/ч)
-    var predominantWindDirection: Double  // Преобладаващо направление (градуси 0–360)
+    public var maxWindSpeed: Double      // Максимална скорост на вятъра през деня (км/ч)
+    public var maxWindGust: Double       // Максимална сила на порив (км/ч)
+    public var predominantWindDirection: Double  // Преобладаващо направление (градуси 0–360)
     
-    var humidityMin: Double
-    var humidityMax: Double
+    public var humidityMin: Double
+    public var humidityMax: Double
 
-    var visibilityMin: Double
-    var visibilityMax: Double
+    public var visibilityMin: Double
+    public var visibilityMax: Double
     
-    // Добавяме поле за лунна информация, ако е налична
-    var moon: MoonEvents?
+    // Добавяме поле за лунна информация, ако е налична; уверете се, че MoonEvents също е public.
+    public var moon: MoonEvents?
     
-    static func == (lhs: DayForecastItem, rhs: DayForecastItem) -> Bool {
-        lhs.id == rhs.id
+    public init(id: Date,
+                date: Date,
+                day: String,
+                symbol: String,
+                precipChance: Double?,
+                minTemp: Double,
+                maxTemp: Double,
+                precipLast24h: Double,
+                rainLast24h: Double,
+                snowLast24h: Double,
+                precipitationAmount: Double,
+                reinAmount: Double,
+                snowfallAmount: Double,
+                precipNext24h: Double,
+                rainNext24h: Double,
+                snowNext24h: Double,
+                maxUV: Int,
+                maxWindSpeed: Double,
+                maxWindGust: Double,
+                predominantWindDirection: Double,
+                humidityMin: Double,
+                humidityMax: Double,
+                visibilityMin: Double,
+                visibilityMax: Double,
+                moon: MoonEvents?) {
+        self.id = id
+        self.date = date
+        self.day = day
+        self.symbol = symbol
+        self.precipChance = precipChance
+        self.minTemp = minTemp
+        self.maxTemp = maxTemp
+        self.precipLast24h = precipLast24h
+        self.rainLast24h = rainLast24h
+        self.snowLast24h = snowLast24h
+        self.precipitationAmount = precipitationAmount
+        self.reinAmount = reinAmount
+        self.snowfallAmount = snowfallAmount
+        self.precipNext24h = precipNext24h
+        self.rainNext24h = rainNext24h
+        self.snowNext24h = snowNext24h
+        self.maxUV = maxUV
+        self.maxWindSpeed = maxWindSpeed
+        self.maxWindGust = maxWindGust
+        self.predominantWindDirection = predominantWindDirection
+        self.humidityMin = humidityMin
+        self.humidityMax = humidityMax
+        self.visibilityMin = visibilityMin
+        self.visibilityMax = visibilityMax
+        self.moon = moon
     }
 }
 

@@ -731,6 +731,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         hoursColumnView.setNeedsDisplay()
         
+        updateDaysHeaderForecast()
+
         // 8. Layout на рез-лтати от търсене (ако сме в режим на търсене)
         layoutSearchResultsIfNeeded()
     }
@@ -1095,4 +1097,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
         return true
     }
+    // В класа TwoWayPinnedMultiDayContainerView добавете функцията:
+    private func updateDaysHeaderForecast() {
+        let weatherVM = WeatherKitViewModel.shared
+        if !weatherVM.dailyForecast.isEmpty {
+            daysHeaderView.dailyForecasts = weatherVM.dailyForecast
+        } else {
+            daysHeaderView.dailyForecasts = nil
+        }
+    }
+
 }

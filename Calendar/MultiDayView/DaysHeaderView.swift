@@ -1,11 +1,14 @@
 import UIKit
+import SwiftUI
+
 
 public final class DaysHeaderView: UIView {
 
+    // Широчината на всяка колона за ден – задаваме фиксирано 100 точки.
     public var dayColumnWidth: CGFloat = 100
 
-    // Тук го правим 0 (или нещо много малко)
-    public var leadingInsetForHours: CGFloat = 0 // CHANGED
+    // Отстъп за часовете – тук оставяме 0 или малка стойност.
+    public var leadingInsetForHours: CGFloat = 0
 
     public var fromDate: Date = Date() {
         didSet { rebuildLabelsIfNeeded() }
@@ -13,13 +16,20 @@ public final class DaysHeaderView: UIView {
     public var toDate: Date = Date() {
         didSet { rebuildLabelsIfNeeded() }
     }
-
+    
+    // Свойство за дневната прогноза
+    public var dailyForecasts: [DayForecastItem]? {
+        didSet {
+            updateTexts()
+        }
+    }
+    
     public var onDayTap: ((Date) -> Void)?
 
     private var labels: [UILabel] = []
     private var calendarForLabels: Calendar = {
         var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2 // Monday=2
+        cal.firstWeekday = 2 // Monday = 2
         return cal
     }()
 
@@ -28,7 +38,7 @@ public final class DaysHeaderView: UIView {
         backgroundColor = .clear
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         backgroundColor = .clear
     }
@@ -39,10 +49,10 @@ public final class DaysHeaderView: UIView {
     }
 
     private var fromDateOnly: Date {
-        calendarForLabels.startOfDay(for: fromDate)
+        return calendarForLabels.startOfDay(for: fromDate)
     }
     private var toDateOnly: Date {
-        calendarForLabels.startOfDay(for: toDate)
+        return calendarForLabels.startOfDay(for: toDate)
     }
 
     private func rebuildLabelsIfNeeded() {
@@ -62,9 +72,13 @@ public final class DaysHeaderView: UIView {
         for i in 0..<needed {
             let lbl = UILabel()
             lbl.textAlignment = .center
-            lbl.font = .systemFont(ofSize: 12, weight: .semibold)
+            lbl.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
             lbl.textColor = .label
             lbl.tag = i
+            // Ограничаваме текста да бъде на 1 ред и да се намалява шрифтът, ако е необходимо
+            lbl.numberOfLines = 1
+            lbl.adjustsFontSizeToFitWidth = true
+            lbl.minimumScaleFactor = 0.7
 
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_:)))
             lbl.isUserInteractionEnabled = true
@@ -86,29 +100,57 @@ public final class DaysHeaderView: UIView {
     }
 
     private func updateTexts() {
+        // Форматираме датата – например "Mon, 15 Apr"
         let df = DateFormatter()
         df.dateFormat = "EEE, d MMM"
-
+        
         let todayOnly = calendarForLabels.startOfDay(for: Date())
-
+        
         for i in 0..<labels.count {
             let lbl = labels[i]
             guard let currentDay = calendarForLabels.date(byAdding: .day, value: i, to: fromDateOnly) else {
-                lbl.text = "??"
+                lbl.attributedText = NSAttributedString(string: "??")
                 continue
             }
-            lbl.text = df.string(from: currentDay)
-
-            let dayOnly = calendarForLabels.startOfDay(for: currentDay)
-            lbl.textColor = (dayOnly == todayOnly) ? .systemOrange : .label
+            let dateString = df.string(from: currentDay)
+            let baseAttributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 12, weight: .semibold),
+                .foregroundColor: (calendarForLabels.startOfDay(for: currentDay) == todayOnly) ? UIColor.systemOrange : UIColor.label
+            ]
+            let baseAttrStr = NSAttributedString(string: dateString, attributes: baseAttributes)
+            let completeAttrStr = NSMutableAttributedString(attributedString: baseAttrStr)
+            
+            // Ако има дневна прогноза за този ден, добавяме разделител, иконка и температурен диапазон
+            if let forecasts = dailyForecasts {
+                let dayStart = calendarForLabels.startOfDay(for: currentDay)
+                if let forecast = forecasts.first(where: { calendarForLabels.isDate($0.date, inSameDayAs: dayStart) }) {
+                    let spacer = NSAttributedString(string: " ", attributes: baseAttributes)
+                    completeAttrStr.append(spacer)
+                    
+                    // Добавяме иконка чрез NSTextAttachment, ако има символ
+                    if let iconImage = UIImage(systemName: forecast.symbol)?.withRenderingMode(.alwaysOriginal) {
+                        let attachment = NSTextAttachment()
+                        let iconSize = CGSize(width: 12, height: 12)
+                        attachment.bounds = CGRect(origin: .zero, size: iconSize)
+                        attachment.image = iconImage
+                        let iconAttrStr = NSAttributedString(attachment: attachment)
+                        completeAttrStr.append(iconAttrStr)
+                    }
+                    
+                    let tempString = String(format: "%d°/%d°", Int(round(forecast.minTemp)), Int(round(forecast.maxTemp)))
+                    let tempAttrStr = NSAttributedString(string: tempString, attributes: baseAttributes)
+                    completeAttrStr.append(tempAttrStr)
+                }
+            }
+            
+            lbl.attributedText = completeAttrStr
         }
     }
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-
         for (i, lbl) in labels.enumerated() {
-            let x = leadingInsetForHours + CGFloat(i)*dayColumnWidth
+            let x = leadingInsetForHours + CGFloat(i) * dayColumnWidth
             lbl.frame = CGRect(x: x, y: 0, width: dayColumnWidth, height: bounds.height)
         }
     }

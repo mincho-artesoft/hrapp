@@ -97,8 +97,18 @@ public final class HoursColumnView: UIView {
         }
         
         // 2. Рисуваме прогнозните иконки и температури – използваме стойността forecast.hour за позициониране
+        // 2. Рисуваме прогнозните иконки и температури – използваме стойността forecast.hour за позициониране
         if displayWeatherForecast, let forecasts = hourlyWeatherForecasts {
             for forecast in forecasts {
+                // Ако currentTime е зададено, извличаме текущия час
+                if let current = currentTime {
+                    let currentHour = Calendar.current.component(.hour, from: current)
+                    // Ако прогнозата е за текущия час, НЕ рисуваме иконата
+                    if forecast.hour == currentHour {
+                        continue
+                    }
+                }
+                
                 // Изчисляваме вертикалната позиция по базата на forecast.hour
                 let yCenter = extraMarginTopBottom + CGFloat(forecast.hour) * hourHeight
                 
@@ -114,8 +124,8 @@ public final class HoursColumnView: UIView {
                 let tempAttrStr = NSAttributedString(string: tempText, attributes: tempAttributes)
                 let tempTextSize = tempAttrStr.size()
                 
-                // Изчисляваме позицията на иконата: центрирана хоризонтално в forecast зоната с допълнително отместване наляво
-                let iconX = (forecastAreaWidth - iconSize) / 2 - 8  // ако искате още повече наляво, може да коригирате тази стойност
+                // Изчисляваме позицията на иконата: центрирана хоризонтално в прогнозната зона с отместване наляво
+                let iconX = (forecastAreaWidth - iconSize) / 2 - 8  // отместване с -8 пиксела
                 let iconTopY = yCenter - iconSize / 2
                 
                 if let iconImage = UIImage(systemName: forecast.iconName)?.withRenderingMode(.alwaysOriginal) {
@@ -129,6 +139,7 @@ public final class HoursColumnView: UIView {
                 }
             }
         }
+
         
         // 3. Рисуваме маркировка за избрана минута (ако има)
         if let mark = selectedMinuteMark {
