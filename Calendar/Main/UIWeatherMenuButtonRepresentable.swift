@@ -6,32 +6,31 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
     let onViewChange: ((Int) -> Void)?
     
     func makeUIView(context: Context) -> UIButton {
-          let button = UIButton(type: .system)
-          
-          // Задаваме бял цвят на иконите
-          button.tintColor = .white
-          
-          // Задаваме сив бекраунд на бутона
-          button.backgroundColor = .gray
-          
-          // Правим бутона заоблен
-          button.layer.cornerRadius = 15
-          button.clipsToBounds = true
-          
-          // Настройваме вътрешните отстъпи (ако е необходимо)
-          button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-          
-          // Първоначално задаване на композитната икона (основната икона + стрелка)
-          let initialImage = combinedImage(for: currentView)
-          button.setImage(initialImage, for: .normal)
-          
-          // Настройка на менюто
-          button.menu = buildViewMenu(for: button)
-          button.showsMenuAsPrimaryAction = true
-          
-          return button
-      }
-
+        let button = UIButton(type: .system)
+        
+        // Задаваме бял цвят на иконите
+        button.tintColor = .white
+        
+        // Задаваме сив бекраунд на бутона
+        button.backgroundColor = .gray
+        
+        // Правим бутона заоблен
+        button.layer.cornerRadius = 15
+        button.clipsToBounds = true
+        
+        // Настройваме вътрешните отстъпи (ако е необходимо)
+        button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+        
+        // Първоначално задаване на композитната икона (основната икона + стрелка)
+        let initialImage = combinedImage(for: currentView)
+        button.setImage(initialImage, for: .normal)
+        
+        // Настройка на менюто
+        button.menu = buildViewMenu(for: button)
+        button.showsMenuAsPrimaryAction = true
+        
+        return button
+    }
     
     func updateUIView(_ uiView: UIButton, context: Context) {
         uiView.setImage(combinedImage(for: currentView), for: .normal)
@@ -53,7 +52,6 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
             state: currentView == 0 ? .on : .off
         ) { _ in
             onViewChange?(0)
-            button.setImage(ConditionsImage, for: .normal)
         }
         
         let UVIndexAction = UIAction(
@@ -62,7 +60,6 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
             state: currentView == 1 ? .on : .off
         ) { _ in
             onViewChange?(1)
-            button.setImage(UVIndexImage, for: .normal)
         }
         
         let WindAction = UIAction(
@@ -71,7 +68,6 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
             state: currentView == 2 ? .on : .off
         ) { _ in
             onViewChange?(2)
-            button.setImage(WindImage, for: .normal)
         }
         
         let PrecipitationAction = UIAction(
@@ -80,7 +76,6 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
             state: currentView == 3 ? .on : .off
         ) { _ in
             onViewChange?(3)
-            button.setImage(PrecipitationImage, for: .normal)
         }
         
         let HumidityAction = UIAction(
@@ -89,7 +84,6 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
             state: currentView == 4 ? .on : .off
         ) { _ in
             onViewChange?(4)
-            button.setImage(HumidityImage, for: .normal)
         }
         
         let VisibilityAction = UIAction(
@@ -98,7 +92,6 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
             state: currentView == 5 ? .on : .off
         ) { _ in
             onViewChange?(5)
-            button.setImage(VisibilityIcon, for: .normal)
         }
         
         let PressureAction = UIAction(
@@ -107,7 +100,6 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
             state: currentView == 6 ? .on : .off
         ) { _ in
             onViewChange?(6)
-            button.setImage(PressureIcon, for: .normal)
         }
         
         return UIMenu(
