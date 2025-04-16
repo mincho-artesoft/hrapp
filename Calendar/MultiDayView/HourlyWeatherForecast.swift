@@ -5,7 +5,6 @@
 //  Created by Aleksandar Svinarov on 15/4/25.
 //
 
-
 import UIKit
 
 /// Модел за прогнозна информация за един часов интервал
@@ -29,8 +28,6 @@ public final class HoursColumnWeatherView: UIView {
     public var isCurrentDayInWeek: Bool = false
     
     /// Ако е зададено, визуализира маркер за текущия час
-    
-    /// Ако е зададено, рисуваме ".MM" до съответния час
     public var selectedMinuteMark: (hour: Int, minute: Int)?
     
     // MARK: - Свойства за прогнозна информация
@@ -72,7 +69,7 @@ public final class HoursColumnWeatherView: UIView {
         let currentHourApprox = (fractionCur >= 0) ? Int(round(fractionCur)) : -1
         
         // 2) Рисуваме часовите линии и надписи (0 до 24)
-
+        // (тук може да добавите кода за часовите линии и надписи, ако е необходимо)
         
         // 3) Рисуваме прогнозните иконки и температури
         if displayWeatherForecast, let forecasts = hourlyWeatherForecasts {
@@ -98,28 +95,41 @@ public final class HoursColumnWeatherView: UIView {
                 // Опит за намиране на fill вариант за иконата
                 let finalIconName = fillSymbolNameIfAvailable(forecast.iconName)
                 
-                if let iconImage = UIImage(systemName: finalIconName)?
-                    .withTintColor(.systemBlue, renderingMode: .alwaysOriginal) {
+                // Задаваме фиксирана ширина на иконата и изчисляваме височината спрямо аспектното съотношение
+                let fixedWidth: CGFloat = 20
+                if let iconImage = UIImage(systemName: finalIconName) {
                     
-                    // Задаваме фиксирана ширина на иконата и изчисляваме височината спрямо аспектното съотношение
-                    let fixedWidth: CGFloat = 20
                     let originalSize = iconImage.size
                     let aspectRatio = originalSize.height / originalSize.width
                     let newHeight = fixedWidth * aspectRatio
                     
-                    // Връщаме иконката към оригиналното й положение (с offset -8)
+                    // Позициониране на иконата (с фиксиран offset)
                     let iconX = (forecastAreaWidth - fixedWidth) / 2
                     let iconTopY = yCenter - newHeight / 2
-                    
                     let iconRect = CGRect(x: iconX + 15,
                                           y: iconTopY + 20,
                                           width: fixedWidth,
                                           height: newHeight)
-                    iconImage.draw(in: iconRect)
                     
-                    // Центрираме температурата спрямо центъра на иконата
+                    if traitCollection.userInterfaceStyle == .dark {
+                        // В тъмна тема използваме оригиналната икона с нейния многотоцветен вариант
+                        let multicolorIcon = iconImage.withRenderingMode(.alwaysOriginal)
+                        multicolorIcon.draw(in: iconRect)
+                    } else {
+                        // В светла тема, прилагаме различна палитра в зависимост от името на иконата.
+                        let paletteConfig = paletteConfiguration(for: forecast.iconName)
+                        if let paletteIcon = iconImage.applyingSymbolConfiguration(paletteConfig) {
+                            paletteIcon.draw(in: iconRect)
+                        } else {
+                            // Ако приложението на палитрата не успее, използваме едноцветно оцветяване като резервен вариант.
+                            let tintedIcon = iconImage.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+                            tintedIcon.draw(in: iconRect)
+                        }
+                    }
+                    
+                    // Центрираме текста за температура спрямо центъра на иконата
                     let verticalSpacing: CGFloat = 2
-                    let textX = iconRect.midX - tempTextSize.width / 2 
+                    let textX = iconRect.midX - tempTextSize.width / 2
                     let textY = iconRect.maxY + verticalSpacing
                     tempAttrStr.draw(at: CGPoint(x: textX, y: textY))
                 }
@@ -138,4 +148,105 @@ public final class HoursColumnWeatherView: UIView {
         }
         return symbolName
     }
+    
+    /// Връща конфигурация на палитра в зависимост от името на иконата.
+    /// Този пример използва няколко различни случая за икони, които могат да се върнат от WeatherKit.
+    /// API‑то за палитра на SFSymbols е налично от iOS 15.
+    private func paletteConfiguration(for iconName: String) -> UIImage.SymbolConfiguration {
+        let paletteColors: [UIColor]
+        switch iconName {
+        case "sun.max", "sunrise":
+            // Слънце – топли нюанси: жълто и оранжево
+            paletteColors = [.systemOrange, .systemOrange]
+            
+        case "sunset":
+            // Залез – топли и наситени: оранжево и червено
+            paletteColors = [.systemOrange, .systemRed]
+            
+        case "cloud.sun":
+            // Частично облачно със силно слънце – комбинация от жълто и синьо
+            paletteColors = [.systemGray, .systemOrange]
+            
+        case "cloud":
+            // Облачно – неутрални тонове, може да добавите нюанси на сиво и синьо
+            paletteColors = [.systemGray]
+            
+        case "cloud.rain":
+            // Дъждовно – използване на синьо и цианово
+            paletteColors = [.systemGray, .systemIndigo]
+            
+        case "cloud.drizzle":
+            // Лекият дъжд – по-нежни тонове
+            paletteColors = [.systemGray, .systemIndigo]
+            
+        case "cloud.heavyrain", "cloud.rain.heavy":
+            // Силен дъжд – по-интензивни сини тонове
+            paletteColors = [.systemGray, .systemIndigo]
+            
+        case "cloud.bolt":
+            // Гръмотевица – ярко жълто и наситено сиво
+            paletteColors = [.systemGray, .systemOrange]
+            
+        case "cloud.snow":
+            // Сняг – светлосини и бели нюанси
+            paletteColors = [.systemGray, .systemGray]
+            
+        case "wind":
+            // Вятър – свежи зелени и сини тонове
+            paletteColors = [.systemGray]
+            
+        case "cloud.fog", "fog":
+            // Мъгла – пастелни сиви и цианови нюанси
+            paletteColors = [.systemGray, .systemGray]
+            
+        case "smoke":
+            // Дим – студени сиви тонове с акцент
+            paletteColors = [.systemGray, .systemGray]
+            
+        case "haze":
+            // Замъглено – топли, леко потъмнели нюанси
+            paletteColors = [.systemGray, .systemGray]
+            
+        case "mist":
+            // Мъгка – комбинация от меки сиви и сини тонове
+            paletteColors = [.systemGray, .systemBlue]
+            
+        case "cloud.sun.rain":
+            // Слънчево облачно с дъжд – комбинация от жълто и синьо
+            paletteColors = [.systemGray, .systemOrange]
+            
+        case "cloud.sun.bolt":
+            // Слънчево облачно с гръмотевици – ярко жълто и контрастно сиво
+            paletteColors = [.systemGray, .systemOrange, .systemOrange]
+            
+        case "tornado":
+            // Торнадо – драматична комбинация от сиво и червено
+            paletteColors = [.systemGray,]
+            
+        case "wind.snow":
+            // Вятър със сняг – студени нюанси
+            paletteColors = [.systemGray, .systemGray]
+            
+        // Добавени са и случаи за лунни и икони с луни
+        case "moon", "moon.fill":
+            // Луна – използваме тъмни, но меки нюанси, подходящи за нощна атмосфера
+            paletteColors = [.systemBlue, .systemBlue]
+            
+        case "moon.stars":
+            // Луна със звезди – комбинация от дълбоко индиго и светли жълти тонове за звездно сияние
+            paletteColors = [.systemBlue, .systemOrange]
+            
+        case "cloud.moon.fill":
+            paletteColors = [.systemGray, .systemBlue, .systemGray]
+            
+        case "cloud.moon":
+            paletteColors = [.systemGray, .systemBlue]
+        default:
+            // Резервен случай: използва се само системно синьо, ако не е зададено друго
+            paletteColors = [.systemBlue]
+        }
+        
+        return UIImage.SymbolConfiguration(paletteColors: paletteColors)
+    }
+
 }

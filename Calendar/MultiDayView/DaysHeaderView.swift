@@ -1,6 +1,6 @@
 import UIKit
 
-/// DaysHeaderView – показва дните в даден диапазон (fromDate...toDate) + икона за времето + темп. диапазон
+/// DaysHeaderView – показва дните в даден диапазон (fromDate...toDate) + икона за времето + температурен диапазон
 public final class DaysHeaderView: UIView {
     
     // Широчината на всяка колона за ден – по подразбиране 100 точки.
@@ -22,7 +22,7 @@ public final class DaysHeaderView: UIView {
     /// Списък с дневни прогнози (ако е празен или nil – не показваме прогноза).
     public var dailyForecasts: [DayForecastItem]? {
         didSet {
-            // При промяна на прогнозата да обновим текста
+            // При промяна на прогнозата обновяваме текста
             updateTexts()
         }
     }
@@ -36,7 +36,7 @@ public final class DaysHeaderView: UIView {
     /// Частен календар, който използваме за изчисления.
     private var calendarForLabels: Calendar = {
         var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 2  // Monday = 2
+        cal.firstWeekday = 2  // Първият ден е понеделник (2)
         return cal
     }()
     
@@ -52,7 +52,7 @@ public final class DaysHeaderView: UIView {
         backgroundColor = .clear
     }
     
-    // MARK: - Брой дни в [fromDate, toDate]
+    // MARK: - Изчисляване на броя дни в [fromDate, toDate]
     
     private var dayCount: Int {
         let comps = calendarForLabels.dateComponents([.day], from: fromDateOnly, to: toDateOnly)
@@ -62,28 +62,25 @@ public final class DaysHeaderView: UIView {
     private var fromDateOnly: Date {
         return calendarForLabels.startOfDay(for: fromDate)
     }
+    
     private var toDateOnly: Date {
         return calendarForLabels.startOfDay(for: toDate)
     }
     
-    // MARK: - Основен метод за създаване/обновяване на лейбълите
+    // MARK: - Създаване/обновяване на лейбълите
     
-    /// Проверява колко дни има нужда да се покажат и създава (или трие) UILabel-ите при нужда.
+    /// Проверява колко дни трябва да се покажат и създава (или премахва) UILabel-ите при нужда.
     private func rebuildLabelsIfNeeded() {
         let needed = dayCount
         if needed < 1 {
-            // Ако няма дни, махаме всички лейбъли
             labels.forEach { $0.removeFromSuperview() }
             labels.removeAll()
             return
         }
-        // Ако вече имаме толкова лейбъли, колкото дни, просто обновяваме текста
         if labels.count == needed {
             updateTexts()
             return
         }
-        
-        // Иначе изчистваме старите и създаваме точно толкова нови, колкото дни има
         labels.forEach { $0.removeFromSuperview() }
         labels.removeAll()
         
@@ -93,13 +90,10 @@ public final class DaysHeaderView: UIView {
             lbl.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
             lbl.textColor = .label
             lbl.tag = i
-            
-            // Позволяваме етикетът да има повече от един ред (за датата и прогнозата)
             lbl.numberOfLines = 0
             lbl.adjustsFontSizeToFitWidth = true
             lbl.minimumScaleFactor = 0.7
             
-            // Добавяме gesture, за да можем да засичаме натискания
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_:)))
             lbl.isUserInteractionEnabled = true
             lbl.addGestureRecognizer(tapGR)
@@ -108,7 +102,6 @@ public final class DaysHeaderView: UIView {
             addSubview(lbl)
         }
         
-        // Обновяваме текстовете в лейбълите
         updateTexts()
         setNeedsLayout()
     }
@@ -121,11 +114,9 @@ public final class DaysHeaderView: UIView {
         }
     }
     
-    // MARK: - Създаване/обновяване на атрибутния текст в лейбълите
+    // MARK: - Обновяване на атрибутния текст (дата + иконка + температурен диапазон)
     
-    /// Обновява текста (дата + иконка + температура) във всеки лейбъл.
     private func updateTexts() {
-        // Форматиращ обект за датите (пример: "Mon, 15 Apr")
         let df = DateFormatter()
         df.dateFormat = "EEE, d MMM"
         
@@ -139,71 +130,54 @@ public final class DaysHeaderView: UIView {
                 continue
             }
             
-            // Проверяваме дали е днешен ден
             let isToday = (calendarForLabels.startOfDay(for: currentDay) == todayOnly)
-            
-            // Основни атрибути за датата и (при нужда) иконката
             let baseAttributes: [NSAttributedString.Key: Any] = [
                 .font: UIFont.systemFont(ofSize: 12, weight: .semibold),
                 .foregroundColor: isToday ? UIColor.systemOrange : UIColor.label
             ]
-            
-            // По-малки и винаги черни цифри за температурите
             let tempAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 10, weight: .regular),
+                .font: UIFont.systemFont(ofSize: 10, weight: .regular)
             ]
             
-            // Форматираме датата
             let dateString = df.string(from: currentDay)
             let baseAttrStr = NSAttributedString(string: dateString, attributes: baseAttributes)
             let completeAttrStr = NSMutableAttributedString(attributedString: baseAttrStr)
             
-            // Ако имаме дневна прогноза за този ден, добавяме нов ред + иконка + температури
             if let forecasts = dailyForecasts {
                 let dayStart = calendarForLabels.startOfDay(for: currentDay)
-                
                 if let forecast = forecasts.first(where: { calendarForLabels.isDate($0.date, inSameDayAs: dayStart) }) {
-                    // Добавяме нов ред (за да са на втори ред иконката и температурите)
-                    let lineBreak = NSAttributedString(string: "\n", attributes: baseAttributes)
-                    completeAttrStr.append(lineBreak)
+                    completeAttrStr.append(NSAttributedString(string: "\n", attributes: baseAttributes))
                     
-                    // “Fill” вариант на символа, ако е наличен
                     let finalSymbolName = fillSymbolNameIfAvailable(forecast.symbol)
                     
-                    // Добавяме NSTextAttachment за иконката,
-                    // като я оцветяваме в systemBlue и запазваме пропорциите на символа
-                    if let iconImage = UIImage(systemName: finalSymbolName)?
-                        .withTintColor(.systemBlue, renderingMode: .alwaysOriginal) {
-                        
+                    if let iconImage = UIImage(systemName: finalSymbolName) {
                         let attachment = NSTextAttachment()
-                        
-                        // Избираме височина 12 pt (примерно).
-                        let desiredHeight: CGFloat = 12
-                        
-                        // Вземаме оригиналния размер на SF Symbol
+                        let desiredHeight: CGFloat = 14
                         let originalSize = iconImage.size
-                        
-                        // Съотношение ширина : височина
                         let aspectRatio = originalSize.width / originalSize.height
-                        
-                        // Новата ширина, така че иконата да не се разтяга/стеснява
                         let newWidth = desiredHeight * aspectRatio
-                        
-                        // По избор – малък отместване по вертикала, за да се центрира с текста
                         let yOffset: CGFloat = -1
                         
-                        attachment.bounds = CGRect(x: 0, y: yOffset, width: newWidth, height: desiredHeight)
-                        attachment.image = iconImage
+                        // Проверка: ако е тъмна тема, използваме оригиналната мултикалър икона
+                        if traitCollection.userInterfaceStyle == .dark {
+                            let multicolorIcon = iconImage.withRenderingMode(.alwaysOriginal)
+                            attachment.image = multicolorIcon
+                        } else {
+                            // В светла тема прилагаме палитра за цветовете
+                            let paletteConfig = paletteConfiguration(for: forecast.symbol)
+                            if let paletteIcon = iconImage.applyingSymbolConfiguration(paletteConfig) {
+                                attachment.image = paletteIcon
+                            } else {
+                                let tintedIcon = iconImage.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+                                attachment.image = tintedIcon
+                            }
+                        }
                         
-                        let iconAttrStr = NSAttributedString(attachment: attachment)
-                        completeAttrStr.append(iconAttrStr)
+                        attachment.bounds = CGRect(x: 0, y: yOffset, width: newWidth, height: desiredHeight)
+                        completeAttrStr.append(NSAttributedString(attachment: attachment))
                     }
                     
-                    // Малко интервал
-                    let spacer = NSAttributedString(string: " ", attributes: baseAttributes)
-                    completeAttrStr.append(spacer)
-                    
-                    // Температури (пример: "7°/13°") – по-малки и винаги черни
+                    completeAttrStr.append(NSAttributedString(string: " ", attributes: baseAttributes))
                     let tempString = String(format: "%d°/%d°",
                                             Int(round(forecast.minTemp)),
                                             Int(round(forecast.maxTemp)))
@@ -216,9 +190,10 @@ public final class DaysHeaderView: UIView {
         }
     }
     
-    // MARK: - Проверка за наличен ".fill" вариант
+    // MARK: - Помощни функции за иконите
     
-    /// Ако UIImage(systemName: "\(symbolName).fill") != nil, връща fill варианта, иначе - оригиналния.
+    /// Проверява дали има наличен ".fill" вариант за дадения символ.
+    /// Ако има, връща fill варианта, иначе – оригиналния.
     private func fillSymbolNameIfAvailable(_ symbolName: String) -> String {
         let fillVariant = symbolName + ".fill"
         if UIImage(systemName: fillVariant) != nil {
@@ -227,12 +202,64 @@ public final class DaysHeaderView: UIView {
         return symbolName
     }
     
+    /// Връща конфигурация на палитрата в зависимост от името на иконата.
+    private func paletteConfiguration(for iconName: String) -> UIImage.SymbolConfiguration {
+        let paletteColors: [UIColor]
+        switch iconName {
+        case "sun.max", "sunrise":
+            paletteColors = [.systemOrange, .systemOrange]
+        case "sunset":
+            paletteColors = [.systemOrange, .systemRed]
+        case "cloud.sun":
+            paletteColors = [.systemGray, .systemOrange]
+        case "cloud":
+            paletteColors = [.systemGray]
+        case "cloud.rain":
+            paletteColors = [.systemGray, .systemIndigo]
+        case "cloud.drizzle":
+            paletteColors = [.systemGray, .systemIndigo]
+        case "cloud.heavyrain", "cloud.rain.heavy":
+            paletteColors = [.systemGray, .systemIndigo]
+        case "cloud.bolt":
+            paletteColors = [.systemGray, .systemOrange]
+        case "cloud.snow":
+            paletteColors = [.systemGray, .systemGray]
+        case "wind":
+            paletteColors = [.systemGray]
+        case "cloud.fog", "fog":
+            paletteColors = [.systemGray, .systemGray]
+        case "smoke":
+            paletteColors = [.systemGray, .systemGray]
+        case "haze":
+            paletteColors = [.systemGray, .systemGray]
+        case "mist":
+            paletteColors = [.systemGray, .systemBlue]
+        case "cloud.sun.rain":
+            paletteColors = [.systemGray, .systemOrange]
+        case "cloud.sun.bolt":
+            paletteColors = [.systemGray, .systemOrange, .systemOrange]
+        case "tornado":
+            paletteColors = [.systemGray]
+        case "wind.snow":
+            paletteColors = [.systemGray, .systemGray]
+        case "moon", "moon.fill":
+            paletteColors = [.systemBlue, .systemBlue]
+        case "moon.stars":
+            paletteColors = [.systemBlue, .systemOrange]
+        case "cloud.moon.fill":
+            paletteColors = [.systemGray, .systemBlue, .systemGray]
+        case "cloud.moon":
+            paletteColors = [.systemGray, .systemBlue]
+        default:
+            paletteColors = [.systemBlue]
+        }
+        return UIImage.SymbolConfiguration(paletteColors: paletteColors)
+    }
+    
     // MARK: - Разположение на лейбълите
     
-    /// Подрежда UILabel-ите хоризонтално, всеки върху своя ден.
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
         for (i, lbl) in labels.enumerated() {
             let x = leadingInsetForHours + CGFloat(i) * dayColumnWidth
             lbl.frame = CGRect(x: x, y: 0, width: dayColumnWidth, height: bounds.height)
