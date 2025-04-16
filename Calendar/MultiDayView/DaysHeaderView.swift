@@ -152,18 +152,18 @@ public final class DaysHeaderView: UIView {
                     
                     if let iconImage = UIImage(systemName: finalSymbolName) {
                         let attachment = NSTextAttachment()
-                        let desiredHeight: CGFloat = 14
+                        let defaultDesiredHeight: CGFloat = 16
+                        // Проверяваме оригиналния символ, за да избегнем проблема с "cloud.fill"
+                        let desiredHeight: CGFloat = (forecast.symbol == "cloud") ? defaultDesiredHeight - 2 : defaultDesiredHeight
                         let originalSize = iconImage.size
                         let aspectRatio = originalSize.width / originalSize.height
                         let newWidth = desiredHeight * aspectRatio
-                        let yOffset: CGFloat = -1
-                        
-                        // Проверка: ако е тъмна тема, използваме оригиналната мултикалър икона
+                        let yOffset: CGFloat =  -3
+
                         if traitCollection.userInterfaceStyle == .dark {
                             let multicolorIcon = iconImage.withRenderingMode(.alwaysOriginal)
                             attachment.image = multicolorIcon
                         } else {
-                            // В светла тема прилагаме палитра за цветовете
                             let paletteConfig = paletteConfiguration(for: forecast.symbol)
                             if let paletteIcon = iconImage.applyingSymbolConfiguration(paletteConfig) {
                                 attachment.image = paletteIcon
@@ -172,10 +172,11 @@ public final class DaysHeaderView: UIView {
                                 attachment.image = tintedIcon
                             }
                         }
-                        
+
                         attachment.bounds = CGRect(x: 0, y: yOffset, width: newWidth, height: desiredHeight)
                         completeAttrStr.append(NSAttributedString(attachment: attachment))
                     }
+
                     
                     completeAttrStr.append(NSAttributedString(string: " ", attributes: baseAttributes))
                     let tempString = String(format: "%d°/%d°",

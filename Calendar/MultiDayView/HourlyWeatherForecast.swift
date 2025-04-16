@@ -230,17 +230,17 @@ public final class HoursColumnWeatherView: UIView {
         // Добавени са и случаи за лунни и икони с луни
         case "moon", "moon.fill":
             // Луна – използваме тъмни, но меки нюанси, подходящи за нощна атмосфера
-            paletteColors = [.systemBlue, .systemBlue]
+            paletteColors = [.systemGray3, .systemGray3]
             
         case "moon.stars":
             // Луна със звезди – комбинация от дълбоко индиго и светли жълти тонове за звездно сияние
-            paletteColors = [.systemBlue, .systemOrange]
+            paletteColors = [.systemGray3, .systemOrange]
             
         case "cloud.moon.fill":
-            paletteColors = [.systemGray, .systemBlue, .systemGray]
+            paletteColors = [.systemGray3, .systemBlue, .systemGray3]
             
         case "cloud.moon":
-            paletteColors = [.systemGray, .systemBlue]
+            paletteColors = [.systemGray, .systemGray3]
         default:
             // Резервен случай: използва се само системно синьо, ако не е зададено друго
             paletteColors = [.systemBlue]
