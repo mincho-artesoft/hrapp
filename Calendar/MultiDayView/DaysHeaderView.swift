@@ -154,7 +154,7 @@ public final class DaysHeaderView: UIView {
                         let attachment = NSTextAttachment()
                         let defaultDesiredHeight: CGFloat = 16
                         // Проверяваме оригиналния символ, за да избегнем проблема с "cloud.fill"
-                        let desiredHeight: CGFloat = (forecast.symbol == "cloud") ? defaultDesiredHeight - 2 : defaultDesiredHeight
+                        let desiredHeight: CGFloat = (forecast.symbol == "cloud") ? defaultDesiredHeight - 3 : defaultDesiredHeight
                         let originalSize = iconImage.size
                         let aspectRatio = originalSize.width / originalSize.height
                         let newWidth = desiredHeight * aspectRatio

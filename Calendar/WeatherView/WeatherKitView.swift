@@ -614,6 +614,19 @@ struct WeatherKitView: View {
                 .padding(.vertical, 12)
             }
             .frame(height: 120)
+            HStack(spacing: 4) {
+                Image(systemName: "info.circle")
+                    .font(.system(size: 12))
+                    .foregroundColor(.secondary)
+                Text("Tap an hour to quickly add a calendar event.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .lineSpacing(3)
+            }
+            .padding(.horizontal, 15)
+            .padding(.bottom, 5)
+
+
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
