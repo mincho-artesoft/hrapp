@@ -21,7 +21,7 @@ struct DraggableMenuView<
 >: View {
 
     // MARK: — Config & Theme
-    private let fixedBottomBarHeight: CGFloat = 70
+    private let fixedBottomBarHeight: CGFloat = 60
     private let horizontalContentHeight: CGFloat = 100
     private let handleHeight: CGFloat = 26
     private let menuCornerRadius: CGFloat = 15

@@ -148,13 +148,13 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         return btn
     }()
     
-    private let addEventButton: UIButton = {
-        let btn = UIButton(type: .system)
-        let image = UIImage(systemName: "plus")
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .systemBlue
-        return btn
-    }()
+//    private let addEventButton: UIButton = {
+//        let btn = UIButton(type: .system)
+//        let image = UIImage(systemName: "plus")
+//        btn.setImage(image, for: .normal)
+//        btn.tintColor = .systemBlue
+//        return btn
+//    }()
     
     // Търсене
     private let searchButton: UIButton = {
@@ -320,8 +320,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             self.setNeedsLayout()
         }
         
-        navBar.addSubview(addEventButton)
-        addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
+//        navBar.addSubview(addEventButton)
+//        addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
         
         updateButtonIconForCurrentView()
         if #available(iOS 14.0, *) {
@@ -437,12 +437,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         )
         
         let plusButtonX = searchButtonX - plusBtnSize - margin
-        addEventButton.frame = CGRect(
-            x: plusButtonX,
-            y: centerY,
-            width: plusBtnSize,
-            height: plusBtnSize
-        )
+//        addEventButton.frame = CGRect(
+//            x: plusButtonX,
+//            y: centerY,
+//            width: plusBtnSize,
+//            height: plusBtnSize
+//        )
         
         var singleDayCarouselHeight: CGFloat = 70
         singleDayCarousel.isHidden = false
@@ -868,12 +868,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     private var isSearching: Bool = false {
         didSet {
             if isSearching {
-                addEventButton.isHidden      = true
+//                addEventButton.isHidden      = true
                 viewMenuButton.isHidden      = true
                 searchButton.isHidden        = true
                 animateSearchBarIn()
             } else {
-                addEventButton.isHidden      = false
+//                addEventButton.isHidden      = false
                 viewMenuButton.isHidden      = false
                 searchButton.isHidden        = false
                 animateSearchBarOut()

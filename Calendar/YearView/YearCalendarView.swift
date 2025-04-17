@@ -155,11 +155,11 @@ struct YearCalendarView: View {
                 HStack(spacing: 9) {
                     // Бутон "+"
                     if !showSearchBar {
-                        Button {
-                            createNewEventForYear()
-                        } label: {
-                            Image(systemName: "plus")
-                        }
+//                        Button {
+//                            createNewEventForYear()
+//                        } label: {
+//                            Image(systemName: "plus")
+//                        }
                         
                         // Бутон за търсене
                         Button {

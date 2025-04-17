@@ -127,11 +127,11 @@ struct MonthCalendarView: View {
                 HStack(spacing: 9) {
                     if !showSearchBar {
                         // Бутон "+"
-                        Button {
-                            createAndEditNewEvent(on: Date())
-                        } label: {
-                            Image(systemName: "plus")
-                        }
+//                        Button {
+//                            createAndEditNewEvent(on: Date())
+//                        } label: {
+//                            Image(systemName: "plus")
+//                        }
                         
                         // Бутон за търсене
                         Button {

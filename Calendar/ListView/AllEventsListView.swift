@@ -71,11 +71,11 @@ struct AllEventsListView: View {
                 HStack(spacing: 9) {
                     if !showSearchBar {
                         // (a) + Button
-                        Button {
-                            createAndEditNewEvent(on: Date())
-                        } label: {
-                            Image(systemName: "plus")
-                        }
+//                        Button {
+//                            createAndEditNewEvent(on: Date())
+//                        } label: {
+//                            Image(systemName: "plus")
+//                        }
                         
                         // (b) Search Button
                         Button {

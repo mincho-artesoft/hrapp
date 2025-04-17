@@ -172,13 +172,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }()
     
     // Бутон “+”
-    private let addEventButton: UIButton = {
-        let btn = UIButton(type: .system)
-        let image = UIImage(systemName: "plus")
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .systemBlue
-        return btn
-    }()
+//    private let addEventButton: UIButton = {
+//        let btn = UIButton(type: .system)
+//        let image = UIImage(systemName: "plus")
+//        btn.setImage(image, for: .normal)
+//        btn.tintColor = .systemBlue
+//        return btn
+//    }()
     
     /// NEW: Бутон с лупичка
     private let searchButton: UIButton = {
@@ -226,7 +226,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         didSet {
             if isSearching {
                 // Крие някои бутони (Add, Menu, Search)
-                addEventButton.isHidden = true
+//                addEventButton.isHidden = true
                 viewMenuButton.isHidden = true
                 searchButton.isHidden = true
                 
@@ -242,7 +242,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 
             } else {
                 // Възстановяваме бутоните
-                addEventButton.isHidden = false
+//                addEventButton.isHidden = false
                 viewMenuButton.isHidden = false
                 searchButton.isHidden = false
                 
@@ -415,8 +415,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         navBar.addSubview(dateRangeButton)
         
         // addEventButton
-        navBar.addSubview(addEventButton)
-        addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
+//        navBar.addSubview(addEventButton)
+//        addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
         
         updateButtonIconForCurrentView() // дава началната икона
            
@@ -623,7 +623,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         searchButton.frame = CGRect(x: searchButtonX, y: centerY, width: searchBtnSize, height: searchBtnSize)
         
         let plusButtonX = searchButtonX - plusBtnSize - margin
-        addEventButton.frame = CGRect(x: plusButtonX, y: centerY, width: plusBtnSize, height: plusBtnSize)
+//        addEventButton.frame = CGRect(x: plusButtonX, y: centerY, width: plusBtnSize, height: plusBtnSize)
         
         let btnW: CGFloat = 220
         let btnH: CGFloat = 40
