@@ -9,7 +9,8 @@ struct RootView: View {
     // Съществуващи променливи (от по-стария ви код)
     @State private var selectedCalendars = Set<EKCalendar>()
     @State private var showCalendarChooser = false
-    
+    @State private var selectedTabDraggableMenuView = 0
+
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
     private let chunkDays: Int = 30
@@ -172,11 +173,12 @@ struct RootView: View {
                             Text("N/A")
                         }
                     }
-                    .overlay(alignment: .bottom) {               // ⬅️ добавете това
+                    .overlay(alignment: .bottom) {
                         if isPortrait {
-                            DraggableMenuViewRefactored(
+                            DraggableMenuView(
                                 initialState: .collapsed,
-                                // --- 1. Трите бутона в долната лента ---
+                                
+                                // MARK: Bottom‑Left ▸ Today
                                 bottomLeft: {
                                     Button {
                                         let today = Calendar.current.startOfDay(for: Date())
@@ -184,50 +186,94 @@ struct RootView: View {
                                         pinnedToDateSingle   = today
                                         selectedTab = 1
                                     } label: {
-                                        Image(systemName: "calendar.badge.checkmark")
-                                            .symbolRenderingMode(.multicolor)   // ← мултиколър
-                                            .font(.headline)
+                                        HStack(spacing: 4) {
+                                            Text("Today")
+                                            Image(systemName: "calendar.badge.checkmark")
+                                        }
+                                        .font(.body)
+                                        .foregroundColor(.blue)
                                     }
                                 },
-
+                                
+                                // MARK: Bottom‑Center ▸ Add
                                 bottomCenter: {
                                     Button {
-                                        if !appViewModel.isLoggedIn {
-                                            showLoginSheet = true
-                                        } else if appViewModel.email.isEmpty {
-                                            showRequestEmailSheet = true
-                                        } else {
-                                            showCalendarsSheet = true
-                                        }
+                                      
                                     } label: {
-                                        Image(systemName: "calendar.badge.checkmark")
-                                            .symbolRenderingMode(.multicolor)   // показва оригиналните цветове
-                                            .font(.headline)
+                                        HStack(spacing: 4) {
+                                            Text("Add")
+                                            Image(systemName: "calendar.badge.plus") 
+                                        }
+                                        .font(.body)
+                                        .foregroundColor(.blue)
                                     }
                                 },
-
-
+                                
+                                // MARK: Bottom‑Right ▸ Weather
                                 bottomRight: {
                                     Button { selectedTab = 6 } label: {
-                                        Image(systemName: "cloud.sun.fill")
-                                            .symbolRenderingMode(.multicolor)   // ← мултиколър
-                                            .font(.headline)
+                                        HStack(spacing: 4) {
+                                            Text("Weather")
+                                            Image(systemName: "cloud.sun.fill")
+                                        }
+                                        .font(.body)
+                                        .foregroundColor(.blue)
                                     }
                                 },
-                                // --- 2. Horizontal scroll‑секция (оставена празна за момента) ---
+                                
+                                // MARK: Horizontal секция (Picker)
                                 horizontalContent: {
-                                    EmptyView()          // сложете тук ваши shortcut‑и, ако желаете
-                                },
-                                // --- 3. Vertical scroll‑секция (оставена празна за момента) ---
-                                verticalContent: {
-                                       CalendarsSheetView()   // ← вместо EmptyView()
-                                           .padding(.vertical, 8)   // по желание
-                                   }
-                            )
-                            .edgesIgnoringSafeArea(.all)   // менюто да “залепне” за долния край
-                        }
-                    }                                       // ⬅️ до тук
+                                    Picker("", selection: $selectedTabDraggableMenuView) {
+                                        Label("Calendar",       systemImage: "calendar").tag(0)
+                                        Label("MultiCalendar",  systemImage: "calendar.badge.plus").tag(1)
+                                        Label("Subscriptions",  systemImage: "calendar.circle").tag(2)
+                                    }
+                                    .pickerStyle(.segmented)
+                                    .symbolRenderingMode(.multicolor)
+                                    .padding(.horizontal, 16)
 
+                                },
+                                
+                                // MARK: Vertical секция
+                                verticalContent: {
+                                    switch selectedTabDraggableMenuView {
+                                    case 0:
+                                        CalendarsSheetView()
+                                            .padding(.vertical, 8)
+                                    case 1:
+                                        Text("N/A")
+                                             .padding(.vertical, 8)
+                                    case 2:
+                                        Text("N/A")
+                                             .padding(.vertical, 8)
+                                    default:
+                                        Text("N/A")
+                                    }
+                                   
+                                },
+                                onStateChange: { state in        // ← получавате събития тук
+                                    Task {
+                                        accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
+                                        if accessGranted {
+                                            CalendarViewModel.shared.reloadCalendars()
+                                            let year = Calendar.current.component(.year, from: Date())
+                                            CalendarViewModel.shared.loadEventsForWholeYear(year: year)
+                                            
+                                            // Зареждаме начално, ако желаете
+                                            if selectedTab == 3 {
+                                                loadMultiDayEvents()
+                                            } else if selectedTab == 1 {
+                                                loadSingleDayEvents()
+                                            } else if selectedTab == 5 {
+                                                loadSingleDayEventsLocal()
+                                            }
+                                        }
+                                    }
+                                }
+                            )
+                            .edgesIgnoringSafeArea(.all)
+                        }
+                    }
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
@@ -253,42 +299,6 @@ struct RootView: View {
                     } else if selectedTab == 5 {
                         loadSingleDayEventsLocal()
                     }
-                }
-            }
-        }
-        // Sheet: EKCalendarChooser (Inbox)
-        .sheet(isPresented: $showCalendarChooser) {
-            CalendarChooserView(selectedCalendars: $selectedCalendars)
-        }
-        // Sheet: CalendarsSheetView
-        .sheet(isPresented: $showCalendarsSheet) {
-            CalendarsSheetView()
-        }
-        // Sheet: LoginView
-        .sheet(isPresented: $showLoginSheet) {
-            LoginView()
-                .environmentObject(appViewModel)
-        }
-        // Sheet: RequestEmailView
-        .sheet(isPresented: $showRequestEmailSheet, onDismiss: {
-            // При затваряне на RequestEmailView, ако вече има email -> отваряме Calendars
-            if appViewModel.isLoggedIn && !appViewModel.email.isEmpty {
-                showCalendarsSheet = true
-            }
-        }) {
-            RequestEmailView()
-                .environmentObject(appViewModel)
-        }
-        // Ако user се логне от LoginView -> onChange
-        .onChange(of: appViewModel.isLoggedIn) { newValue in
-            if newValue {
-                // Току-що се логна
-                if appViewModel.email.isEmpty {
-                    // Още няма email -> поискай email
-                    showRequestEmailSheet = true
-                } else {
-                    // Вече имаме email -> директно Calendars
-                    showCalendarsSheet = true
                 }
             }
         }
@@ -503,52 +513,5 @@ extension RootView {
         
         pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
-    }
-}
-
-// MARK: - Други представими/помощни в същия файл (ако желаете да са тук)
-
-// 1) CalendarChooserView (UIViewControllerRepresentable)
-struct CalendarChooserView: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) var presentationMode
-    @Binding var selectedCalendars: Set<EKCalendar>
-    
-    class Coordinator: NSObject, @preconcurrency EKCalendarChooserDelegate {
-        let parent: CalendarChooserView
-        
-        init(_ parent: CalendarChooserView) {
-            self.parent = parent
-        }
-        
-        @MainActor func calendarChooserDidFinish(_ calendarChooser: EKCalendarChooser) {
-            parent.selectedCalendars = calendarChooser.selectedCalendars
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-        
-        @MainActor func calendarChooserDidCancel(_ calendarChooser: EKCalendarChooser) {
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-    
-    func makeUIViewController(context: Context) -> UINavigationController {
-        let chooser = EKCalendarChooser(
-            selectionStyle: .multiple,
-            displayStyle: .allCalendars,
-            entityType: .event,
-            eventStore: CalendarViewModel.shared.eventStore
-        )
-        chooser.showsDoneButton = true
-        chooser.showsCancelButton = true
-        chooser.delegate = context.coordinator
-        
-        return UINavigationController(rootViewController: chooser)
-    }
-    
-    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // Не е задължително да правите нещо тук
     }
 }
