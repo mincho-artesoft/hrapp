@@ -172,41 +172,62 @@ struct RootView: View {
                             Text("N/A")
                         }
                     }
-                    .toolbar {
-                        ToolbarItemGroup(placement: .bottomBar) {
-                            if isPortrait {
-                                Button("Today") {
-                                    let today = Calendar.current.startOfDay(for: Date())
-                                    pinnedFromDateSingle = today
-                                    pinnedToDateSingle = today
-                                    selectedTab = 1
-                                }
-                                Spacer()
-                                
-                                // Когато натиснем "Calendars":
-                                Button("Calendars") {
-                                    if !appViewModel.isLoggedIn {
-                                        // НЕ е логнат -> Login
-                                        showLoginSheet = true
-                                    } else {
-                                        // Логнат
-                                        if appViewModel.email.isEmpty {
-                                            // Няма email -> RequestEmailView
+                    .overlay(alignment: .bottom) {               // ⬅️ добавете това
+                        if isPortrait {
+                            DraggableMenuViewRefactored(
+                                initialState: .collapsed,
+                                // --- 1. Трите бутона в долната лента ---
+                                bottomLeft: {
+                                    Button {
+                                        let today = Calendar.current.startOfDay(for: Date())
+                                        pinnedFromDateSingle = today
+                                        pinnedToDateSingle   = today
+                                        selectedTab = 1
+                                    } label: {
+                                        Image(systemName: "calendar.badge.checkmark")
+                                            .symbolRenderingMode(.multicolor)   // ← мултиколър
+                                            .font(.headline)
+                                    }
+                                },
+
+                                bottomCenter: {
+                                    Button {
+                                        if !appViewModel.isLoggedIn {
+                                            showLoginSheet = true
+                                        } else if appViewModel.email.isEmpty {
                                             showRequestEmailSheet = true
                                         } else {
-                                            // Има email -> направо CalendarsSheet
                                             showCalendarsSheet = true
                                         }
+                                    } label: {
+                                        Image(systemName: "calendar.badge.checkmark")
+                                            .symbolRenderingMode(.multicolor)   // показва оригиналните цветове
+                                            .font(.headline)
                                     }
-                                }
-                                Spacer()
-                                
-                                Button("Inbox") {
-                                    showCalendarChooser = true
-                                }
-                            }
+                                },
+
+
+                                bottomRight: {
+                                    Button { selectedTab = 6 } label: {
+                                        Image(systemName: "cloud.sun.fill")
+                                            .symbolRenderingMode(.multicolor)   // ← мултиколър
+                                            .font(.headline)
+                                    }
+                                },
+                                // --- 2. Horizontal scroll‑секция (оставена празна за момента) ---
+                                horizontalContent: {
+                                    EmptyView()          // сложете тук ваши shortcut‑и, ако желаете
+                                },
+                                // --- 3. Vertical scroll‑секция (оставена празна за момента) ---
+                                verticalContent: {
+                                       CalendarsSheetView()   // ← вместо EmptyView()
+                                           .padding(.vertical, 8)   // по желание
+                                   }
+                            )
+                            .edgesIgnoringSafeArea(.all)   // менюто да “залепне” за долния край
                         }
-                    }
+                    }                                       // ⬅️ до тук
+
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
