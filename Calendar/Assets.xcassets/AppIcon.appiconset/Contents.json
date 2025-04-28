@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "calendar-icon-png-4.png",
+      "filename" : "icon_normal.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "calendar-icon-png-4 1.png",
+      "filename" : "icon_normal 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -25,7 +25,7 @@
           "value" : "tinted"
         }
       ],
-      "filename" : "calendar-icon-png-4 2.png",
+      "filename" : "icon_normal 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

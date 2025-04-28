@@ -254,10 +254,10 @@ struct RootView: View {
                                         CalendarsDropdownRepresentable()
                                             .padding(.vertical, 8)
                                     case 2:
-                                        Text("N/A")
-                                             .padding(.vertical, 8)
-//                                        SubscriptionView()
-//                                            .padding(.vertical, 8)
+//                                        Text("N/A")
+//                                             .padding(.vertical, 8)
+                                        SubscriptionView()
+                                            .padding(.vertical, 8)
                                     default:
                                         Text("N/A")
                                     }

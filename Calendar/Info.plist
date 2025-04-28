@@ -2,60 +2,122 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>AppIcon2</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIcon2</string>
-				</array>
-			</dict>
-		</dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>AppIcon</string>
-			</array>
-		</dict>
-	</dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>msauth.Deksan.CalendarASD</string>
-			</array>
-		</dict>
-	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>msauthv2</string>
-		<string>msauthv3</string>
-	</array>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array/>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-		<string>external-accessory</string>
-		<string>bluetooth-central</string>
-		<string>fetch</string>
-		<string>remote-notification</string>
-		<string>nearby-interaction</string>
-		<string>audio</string>
-		<string>processing</string>
-		<string>bluetooth-peripheral</string>
-		<string>voip</string>
-	</array>
+
+    <!-- ===== Основни сведения ===== -->
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+
+    <!-- Вътрешно bundle-име • уникално, без интервали -->
+    <key>CFBundleName</key>
+    <string>ArteCalendarASD</string>
+
+    <!-- Версия, видима в App Store -->
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+
+    <!-- Build номер -->
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+
+    <!-- Името под иконата -->
+    <key>CFBundleDisplayName</key>
+    <string>ARTE Calendar</string>
+
+    <!-- ===== Икони ===== -->
+    <key>CFBundleIcons</key>
+    <dict>
+        <key>CFBundleAlternateIcons</key>
+        <dict>
+            <key>AppIcon2</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>AppIcon2</string>
+                </array>
+            </dict>
+        </dict>
+        <key>CFBundlePrimaryIcon</key>
+        <dict>
+            <key>CFBundleIconFiles</key>
+            <array>
+                <string>AppIcon</string>
+            </array>
+        </dict>
+    </dict>
+
+    <!-- ===== Custom URL схеми ===== -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
+            </array>
+        </dict>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>msauth.Deksan.CalendarASD</string>
+            </array>
+        </dict>
+    </array>
+
+    <!-- ===== Разрешени междуприложни заявки ===== -->
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauthv2</string>
+        <string>msauthv3</string>
+    </array>
+
+    <!-- ===== Поддържани режими в Maps (празно) ===== -->
+    <key>MKDirectionsApplicationSupportedModes</key>
+    <array/>
+
+    <!-- ===== Фонови режими ===== -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+        <string>external-accessory</string>
+        <string>bluetooth-central</string>
+        <string>fetch</string>
+        <string>remote-notification</string>
+        <string>nearby-interaction</string>
+        <string>audio</string>
+        <string>processing</string>            <!-- ⇒ изисква BGTaskSchedulerPermittedIdentifiers -->
+        <string>bluetooth-peripheral</string>
+        <string>voip</string>
+    </array>
+
+    <!-- ===== BGTaskScheduler разрешени идентификатори ===== -->
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>com.deksan.calendarasd.refresh</string>
+        <string>com.deksan.calendarasd.processing</string>
+    </array>
+
+    <!-- ===== (по избор) App Transport Security, Privacy keys и др. ===== -->
+    <!--
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+    </dict>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Нуждаем се от вашето местоположение, за да …</string>
+    -->
+
 </dict>
 </plist>
