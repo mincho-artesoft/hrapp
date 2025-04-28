@@ -11,6 +11,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                                                   UIGestureRecognizerDelegate,
                                                                   UISearchBarDelegate
 {
+    
     // Най-горе при другите свойства
     private var calendarsChangedObserver: NSObjectProtocol?
 
@@ -219,6 +220,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     @objc private func handleCalendarsSelectionChanged(_ note: Notification) {
         Task { @MainActor in
             updateCalendarsHeader()
+            
         }
     }
 

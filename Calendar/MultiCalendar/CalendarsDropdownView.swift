@@ -7,11 +7,11 @@ public class CalendarsDropdownView: UIView {
     
     private let scrollView = UIScrollView()
     private let stackView  = UIStackView()
-    
+
     /// Ключ = calendarID
     /// Стойност = (title, color, selected, calendar)
     private var dict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
-    
+
     public var onSelectionChanged: (([String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]) -> Void)?
     
     public override init(frame: CGRect) {
@@ -29,10 +29,8 @@ public class CalendarsDropdownView: UIView {
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         
-        // >>> Добавяме spacing и layoutMargins на stackView, за да има отстояния около редовете
         stackView.spacing = 12
         stackView.isLayoutMarginsRelativeArrangement = true
-        // Тук контролирате горен/долен/ляв/десен отстъп
         stackView.layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,13 +42,11 @@ public class CalendarsDropdownView: UIView {
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            // Ограничаваме stackView към contentLayoutGuide на scrollView
             stackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
             
-            // Ширината на stackView да е равна на frameLayoutGuide.width
             stackView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
         ])
     }
@@ -65,10 +61,8 @@ public class CalendarsDropdownView: UIView {
     }
     
     private func reloadStackView() {
-        // Премахваме старите под-views
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
-        // Сортираме по заглавие
         let sortedTuples = dict.sorted { $0.value.title < $1.value.title }
         
         for (calID, info) in sortedTuples {
@@ -76,47 +70,32 @@ public class CalendarsDropdownView: UIView {
             let color      = info.color
             let title      = info.title
             
-            // ─────────────
-            // 1) containerView (pill shape)
-            // ─────────────
             let containerView = UIView()
             containerView.isUserInteractionEnabled = true
             containerView.layer.cornerRadius = 16
             containerView.layer.masksToBounds = true
-            
-            // При селектиран календар – задаваме сив фон, иначе .clear
             containerView.backgroundColor = isSelected ? .systemGray5 : .clear
             
-            // Тап Gesture, за да знаем върху кой календар е натиснато
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleRowTap(_:)))
             containerView.addGestureRecognizer(tap)
             containerView.accessibilityIdentifier = calID
             
-            // ─────────────
-            // 2) вътрешен horizontal stack (иконката + лейбъла)
-            // ─────────────
             let rowStack = UIStackView()
             rowStack.axis = .horizontal
             rowStack.alignment = .center
-            // Можете да променяте spacing, ако искате да са по-близо/далече
             rowStack.spacing = 8
-            
-            // Добавяме вътрешни отстояния, за да не е тясно по вертикала
             rowStack.isLayoutMarginsRelativeArrangement = true
             rowStack.layoutMargins = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
             
             containerView.addSubview(rowStack)
-            
-            // rowStack да запълва изцяло containerView
             rowStack.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 rowStack.topAnchor.constraint(equalTo: containerView.topAnchor),
                 rowStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
                 rowStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-                rowStack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+                rowStack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             ])
             
-            // Кръгче с цвета на календара
             let circleView = UIView()
             circleView.backgroundColor = color
             circleView.translatesAutoresizingMaskIntoConstraints = false
@@ -125,7 +104,6 @@ public class CalendarsDropdownView: UIView {
             circleView.layer.cornerRadius = 12
             circleView.layer.masksToBounds = true
             
-            // Ако е селектиран – слагаме „✓“
             if isSelected {
                 let checkmarkLabel = UILabel()
                 checkmarkLabel.text = "✓"
@@ -146,11 +124,9 @@ public class CalendarsDropdownView: UIView {
             titleLabel.font = .systemFont(ofSize: 16, weight: .regular)
             titleLabel.textColor = .label
             
-            // Добавяме кръгчето и лейбъла в rowStack
             rowStack.addArrangedSubview(circleView)
             rowStack.addArrangedSubview(titleLabel)
             
-            // Добавяме готовия containerView в основния stackView
             stackView.addArrangedSubview(containerView)
         }
     }
@@ -161,7 +137,7 @@ public class CalendarsDropdownView: UIView {
             let calID      = tappedView.accessibilityIdentifier
         else { return }
         
-        // Обръщаме флага „selected“
+        // Променяме флага selected
         if let oldVal = dict[calID] {
             dict[calID] = (
                 title:    oldVal.title,
@@ -171,19 +147,18 @@ public class CalendarsDropdownView: UIView {
             )
         }
         
-        // 1) известяваме SwiftUI/ViewModel
+        // 1) Callback към SwiftUI/ViewModel
         onSelectionChanged?(dict)
         
-        // 2) (по желание) глобална нотификация
+        // 2) Вдигаме глобална нотификация
+        //    (ТУК Е КЛЮЧОВАТА ПРОМЯНА, ако не е било сложено досега)
         NotificationCenter.default.post(name: .calendarsSelectionChanged, object: nil)
         
-        // 3) презареждаме UI
+        // 3) Презареждаме UI на dropdown
         reloadStackView()
     }
     
-    // (По желание) метод за пресмятане на оптимална височина
     public func desiredHeight() -> CGFloat {
-        // Приблизителна сметка, ако искате да нагласите размера на самото View
         let rowHeight: CGFloat = 44
         let count = CGFloat(dict.count)
         return (count > 0) ? rowHeight * count : 0
