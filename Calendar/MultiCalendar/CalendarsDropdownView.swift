@@ -120,27 +120,34 @@ public class CalendarsDropdownView: UIView {
     }
     
     @objc private func handleRowTap(_ gesture: UITapGestureRecognizer) {
-        guard let rowStack = gesture.view as? UIStackView,
-              let calID = rowStack.accessibilityIdentifier else {
-            return
-        }
-        
-        // Обръщаме флага "selected"
+        guard
+            let rowStack = gesture.view as? UIStackView,
+            let calID    = rowStack.accessibilityIdentifier
+        else { return }
+
+        // Обръщаме флага „selected“
         if let oldVal = dict[calID] {
             dict[calID] = (
-                title: oldVal.title,
-                color: oldVal.color,
+                title:    oldVal.title,
+                color:    oldVal.color,
                 selected: !oldVal.selected,
                 calendar: oldVal.calendar
             )
         }
-        
-        // Известяваме, че има промяна
+
+        // 1) известяваме SwiftUI/ViewModel
         onSelectionChanged?(dict)
-        
-        // Презареждаме изгледа, за да опресним checkmark-овете
+
+        // 2) изпращаме глобална нотификация, за да я чуят UIKit-компонентите
+        NotificationCenter.default.post(
+            name: .calendarsSelectionChanged,
+            object: nil
+        )
+
+        // 3) презареждаме собственото UI
         reloadStackView()
     }
+
     
     // Примерна височина
     public func desiredHeight() -> CGFloat {

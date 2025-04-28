@@ -11,6 +11,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                                                   UIGestureRecognizerDelegate,
                                                                   UISearchBarDelegate
 {
+    // Най-горе при другите свойства
+    private var calendarsChangedObserver: NSObjectProtocol?
+
     // ---------------------------------------------------------
     // MARK: - Променливи свързани с календарите
     // ---------------------------------------------------------
@@ -22,33 +25,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     public var onCalendarsSelectionChanged: (() -> Void)?
     
     // Dropdown + background
-    private var calendarsDropdownView: CalendarsDropdownView?
     private var dropdownBackgroundView: UIView?
-    
-    // Бутонът, който отваря dropdown-а – без текст и с иконата "calendar.circle.fill"
-    private let calendarsMultiSelectButton: UIButton = {
-        let btn = UIButton(type: .system)
-        
-        if #available(iOS 15.0, *) {
-            var config = UIButton.Configuration.plain()
-            let image = UIImage(systemName: "calendar")?
-                .withConfiguration(UIImage.SymbolConfiguration(pointSize: 17))
-            config.image = image
-            config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
-            config.baseForegroundColor = .systemBlue
-            btn.configuration = config
-        } else {
-            btn.tintColor = .systemBlue
-            if let calendarImage = UIImage(systemName: "calendar")?
-                .withConfiguration(UIImage.SymbolConfiguration(pointSize: 17)) {
-                btn.setImage(calendarImage, for: .normal)
-            }
-            btn.contentEdgeInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
-        }
-
-        
-        return btn
-    }()
     
     public var currentView: Int = 1
     public var onViewChange: ((Int) -> Void)?
@@ -225,13 +202,33 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        
-        // (НОВО) Задаваме списъка с календари от ViewModel
-        calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
-        
+
+        // 👉 selector-вариант
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleCalendarsSelectionChanged),
+            name: .calendarsSelectionChanged,
+            object: nil
+        )
+
+        updateCalendarsHeader()   // показваме текущите календари
         startRedrawTimer()
     }
-    
+
+
+    @objc private func handleCalendarsSelectionChanged(_ note: Notification) {
+        Task { @MainActor in
+            updateCalendarsHeader()
+        }
+    }
+
+    @MainActor
+    private func updateCalendarsHeader() {
+        calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
+        setNeedsLayout()          // safe, вече сме на Main actor
+        layoutIfNeeded()
+    }
+
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupViews()
@@ -244,8 +241,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     
     deinit {
         redrawTimer?.invalidate()
+        NotificationCenter.default.removeObserver(self)
     }
-    
+
     // ---------------------------------------------------------
     // MARK: - Setup на под-views
     // ---------------------------------------------------------
@@ -332,15 +330,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         navBar.addSubview(searchButton)
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
-        
-        // Бутон за MultiSelect Calendars => показваме наш "dropdown"
-        calendarsMultiSelectButton.layer.zPosition = 8
-        addSubview(calendarsMultiSelectButton)
-        calendarsMultiSelectButton.addTarget(
-            self,
-            action: #selector(toggleCalendarsDropdown),
-            for: .touchUpInside
-        )
         
         weekView.hoursColumnView = hoursColumnView
         
@@ -546,13 +535,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             width: totalDaysHeaderWidth,
             height: calendarsHeaderHeight
         )
-        calendarsMultiSelectButton.frame = CGRect(
-            x: 15,
-            y: calendarsHeaderY,
-            width: 30,
-            height: 30
-        )
-        self.bringSubviewToFront(calendarsMultiSelectButton)
         
         calendarsHeaderView.frame = CGRect(
             x: 0,
@@ -643,39 +625,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         // Проверяваме дали избраната дата (fromDate) е в интервала [днес, днес+9 дни].
         let today = cal.startOfDay(for: Date())
         let daysDiff = cal.dateComponents([.day], from: today, to: fromOnly).day ?? -1
-//        if daysDiff >= 0, daysDiff <= 9 {
-//            hoursColumnView.displayWeatherForecast = true
-//            
-//            // Използваме WeatherKitViewModel.shared за данните за прогнозата.
-//            let weatherVM = WeatherKitViewModel.shared
-//            
-//            // Филтрираме записите за прогноза за избрания ден.
-//            let dayHourlyForecasts = weatherVM.hourlyForecast.filter {
-//                cal.isDate($0.date, inSameDayAs: fromDate)
-//            }
-//            
-//            // Преобразуваме всеки запис към модела HourlyWeatherForecast.
-//            let hourlyForecasts: [HourlyWeatherForecast] = dayHourlyForecasts.map { forecast in
-//                let forecastHour = cal.component(.hour, from: forecast.date)
-//                return HourlyWeatherForecast(
-//                    hour: forecastHour,
-//                    iconName: forecast.symbol,
-//                    temperature: forecast.temp
-//                )
-//            }
-//            hoursColumnView.hourlyWeatherForecasts = hourlyForecasts
-//        } else {
-//            hoursColumnView.displayWeatherForecast = false
-//            hoursColumnView.hourlyWeatherForecasts = nil
-//        }
         hoursColumnView.setNeedsDisplay()
         
         layoutSearchResultsIfNeeded()
-        
-        // Ако dropdown е отворен, преизчисляваме позицията му при ротация
-        if let dView = calendarsDropdownView {
-            positionDropdown(dView)
-        }
     }
 
     
@@ -978,109 +930,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 width: bounds.width,
                 height: bounds.height - navBarBottom
             )
-        }
-    }
-    
-    
-    // ---------------------------------------------------------
-    // MARK: - Dropdown с календари (title, color, selected)
-    // ---------------------------------------------------------
-    @objc private func toggleCalendarsDropdown() {
-        if calendarsDropdownView == nil {
-            showCalendarsDropdown()
-        } else {
-            hideCalendarsDropdown()
-        }
-    }
-    
-    private func showCalendarsDropdown() {
-        guard calendarsDropdownView == nil else { return }
-        
-        // 1) Прозрачен overlay
-        let bgView = UIView(frame: UIScreen.main.bounds)
-        bgView.backgroundColor = .clear
-        bgView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideDropdown(_:)))
-        tapGesture.cancelsTouchesInView = false
-        bgView.addGestureRecognizer(tapGesture)
-        
-        if let topVC = topMostViewController() {
-            topVC.view.addSubview(bgView)
-        }
-        dropdownBackgroundView = bgView
-        
-        // 2) Dropdown view
-        let dropdown = CalendarsDropdownView()
-        dropdown.setCalendarsInfo(calendarVM.calendarsDict)
-        
-        // 3) Callback при смяна на селекцията
-        dropdown.onSelectionChanged = { [weak self] newDict in
-            guard let self = self else { return }
-            self.calendarVM.calendarsDict = newDict
-            self.onCalendarsSelectionChanged?()
-            self.calendarsHeaderView.calendarsDict = newDict
-        }
-        
-        bgView.addSubview(dropdown)
-        calendarsDropdownView = dropdown
-        
-        // 4) Позиция
-        positionDropdown(dropdown)
-        
-        // Анимация за показване
-        dropdown.alpha = 0
-        UIView.animate(withDuration: 0.2) {
-            dropdown.alpha = 1
-        }
-        
-        // Иконата остава "calendar.circle.fill"
-    }
-    
-    private func positionDropdown(_ dropdown: CalendarsDropdownView) {
-        guard let bg = dropdownBackgroundView,
-              let topVC = topMostViewController() else { return }
-        
-        let btnFrameInVC = calendarsMultiSelectButton.superview?
-            .convert(calendarsMultiSelectButton.frame, to: topVC.view) ?? .zero
-        
-        let dW: CGFloat = 220
-        let dH = dropdown.desiredHeight()
-        
-        var finalX = btnFrameInVC.midX - (dW / 2)
-        let finalY = btnFrameInVC.maxY + 5
-        
-        if finalX < 10 { finalX = 10 }
-        if (finalX + dW) > (bg.bounds.width - 10) {
-            finalX = bg.bounds.width - dW - 10
-        }
-        
-        dropdown.frame = CGRect(x: finalX, y: finalY, width: dW, height: dH)
-    }
-    
-    private func hideCalendarsDropdown() {
-        guard let bg = dropdownBackgroundView,
-              let dropdown = calendarsDropdownView else { return }
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            dropdown.alpha = 0
-        }, completion: { _ in
-            dropdown.removeFromSuperview()
-            bg.removeFromSuperview()
-        })
-        
-        dropdownBackgroundView = nil
-        calendarsDropdownView  = nil
-        
-        // Иконата остава "calendar.circle.fill"
-    }
-    
-    @objc private func handleTapOutsideDropdown(_ gesture: UITapGestureRecognizer) {
-        guard let dropdown = calendarsDropdownView,
-              let bg = dropdownBackgroundView else { return }
-        let loc = gesture.location(in: bg)
-        if !dropdown.frame.contains(loc) {
-            hideCalendarsDropdown()
         }
     }
     
