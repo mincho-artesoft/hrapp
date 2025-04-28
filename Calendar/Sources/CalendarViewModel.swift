@@ -33,11 +33,7 @@ final class CalendarViewModel: ObservableObject {
 
     @Published var accessGranted = false
     @Published var selectedCalendarIDs: Set<String> = []
-    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]{
-        didSet {
-            print("calendarsDict ",calendarsDict)
-        }
-    }
+    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
 
     @Published var firstLocalCalendarColor: UIColor?
     
@@ -1338,7 +1334,7 @@ extension CalendarViewModel {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         // 3) Създаваме тялото на заявката
-        var bodyDict: [String: Any] = makeGoogleEventBody(from: event)
+        var bodyDict: [String: Any] = await makeGoogleEventBody(from: event)
         // Добавяме conferenceData, за да се генерира Meet линк
         bodyDict["conferenceData"] = [
             "createRequest": [
@@ -1416,7 +1412,7 @@ extension CalendarViewModel {
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let bodyDict: [String: Any] = makeGoogleEventBody(from: event)
+        let bodyDict: [String: Any] = await makeGoogleEventBody(from: event)
         request.httpBody = try? JSONSerialization.data(withJSONObject: bodyDict, options: [])
 
         do {
@@ -1634,106 +1630,132 @@ extension CalendarViewModel {
             return notes
         }
     }
-    private func makeGoogleEventBody(from event: EKEvent) -> [String: Any] {
-        print("event.notes")
-        
-        // 1) Вие вече правите RegEx и създавате масив `attendees: [Attendee]`.
-        let input = event.attendees?.description ?? ""
+    @MainActor
+    func pickPrimaryEmailIfNeeded(from attendees: [Attendee]) async {
+        // Already set? -> nothing to do
+        guard GlobalState.email == "" else { return }
+
+        let uniqueEmails = Array(Set(attendees.map(\.email))).sorted()
+        guard uniqueEmails.count > 1 else {
+            GlobalState.email = uniqueEmails.first ?? ""
+            return
+        }
+
+        // Ask the user which address is theirs
+        let chosen = await withCheckedContinuation { (cont: CheckedContinuation<String, Never>) in
+            let alert = UIAlertController(
+                title: "Choose your e-mail",
+                message: "It will be treated as your primary address and invitations will not be sent to it.",
+                preferredStyle: .actionSheet
+            )
+            uniqueEmails.forEach { email in
+                alert.addAction(UIAlertAction(title: email, style: .default) { _ in
+                    cont.resume(returning: email)
+                })
+            }
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                // If cancelled, default to the first e-mail in the list
+                cont.resume(returning: uniqueEmails[0])
+            })
+            UIApplication.shared.topMostViewController?.present(alert, animated: true)
+        }
+
+        GlobalState.email = chosen
+    }
+
+    //  CalendarViewModel.swift
+    //  MARK: - Build the JSON body used for POST / PATCH to Google Calendar
+    //
+    //  • Extracts attendees from EKEvent.attendees using the regex you already have
+    //  • If GlobalState.email is still empty *and* there are ≥ 2 addresses,
+    //    shows the e-mail-picker sheet and waits for the user’s choice
+    //  • Builds the final `[String: Any]` body (skipping the primary address)
+    //
+    @MainActor
+    private func makeGoogleEventBody(from event: EKEvent) async -> [String: Any] {
+
+        // -------------------------------------------------------------
+        // 1) Parse EKEvent.attendees → [Attendee]
+        // -------------------------------------------------------------
+        let input   = event.attendees?.description ?? ""
         let pattern = #"""
         UUID\s*=\s*(.*?);\s*name\s*=\s*(.*?);\s*email\s*=\s*(.*?);\s*phone\s*=\s*\((.*?)\);\s*status\s*=\s*(\d+);\s*role\s*=\s*(\d+);\s*type\s*=\s*(\d+)
         """#
 
-        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
-            fatalError("Невалиден регулярен израз.")
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            fatalError("Bad regex for attendees")
         }
-
-        let nsrange = NSRange(input.startIndex..<input.endIndex, in: input)
-        let matches = regex.matches(in: input, options: [], range: nsrange)
 
         var attendees: [Attendee] = []
+        let nsrange = NSRange(input.startIndex..<input.endIndex, in: input)
 
-        for match in matches {
-            func getGroup(_ index: Int) -> String {
-                let range = match.range(at: index)
-                guard let swiftRange = Range(range, in: input) else { return "" }
-                return String(input[swiftRange])
+        for m in regex.matches(in: input, range: nsrange) {
+            func group(_ i: Int) -> String {
+                let r = m.range(at: i)
+                guard let swift = Range(r, in: input) else { return "" }
+                return String(input[swift])
             }
-
-            let uuid   = getGroup(1)
-            let name   = getGroup(2)
-            let email  = getGroup(3)
-            let phoneString = getGroup(4)
-            let status = Int(getGroup(5)) ?? 0
-            let role   = Int(getGroup(6)) ?? 0
-            let type   = Int(getGroup(7)) ?? 0
-            
-            let phone: String? = (phoneString == "null") ? nil : phoneString
-            
-            let attendee = Attendee(uuid: uuid,
-                                    name: name,
-                                    email: email,
-                                    phone: phone,
-                                    status: status,
-                                    role: role,
-                                    type: type)
-            attendees.append(attendee)
+            let phone = group(4) == "null" ? nil : group(4)
+            attendees.append(
+                Attendee(uuid:   group(1),
+                         name:   group(2),
+                         email:  group(3),
+                         phone:  phone,
+                         status: Int(group(5)) ?? 0,
+                         role:   Int(group(6)) ?? 0,
+                         type:   Int(group(7)) ?? 0)
+            )
         }
 
-        // 2) Сега можете да отпечатате / debug-нете, ако желаете:
-        for a in attendees {
-            if a.email != GlobalState.email {
-                print("Will share event with => \(a.email)")
-            }
-        }
+        // -------------------------------------------------------------
+        // 2) Let the user choose their “primary” e-mail once
+        // -------------------------------------------------------------
+        await pickPrimaryEmailIfNeeded(from: attendees)
 
-        // === НАЙ-ВАЖНО ===
-        // 3) Тук превръщаме подходящите Attendee обекти в JSON “attendees” за Google
+        // -------------------------------------------------------------
+        // 3) Convert the remaining attendees → Google JSON format
+        // -------------------------------------------------------------
         var googleAttendeeDicts: [[String: Any]] = []
-        for a in attendees {
-            guard a.email != GlobalState.email else {
-                continue // пропускаме "основния" имейл
-            }
-            // Можем да подадем само "email", или да добавим "displayName", "optional", etc.
-            let dict: [String: Any] = [
-                "email": a.email,
-                "displayName": a.name,
-                // Ако искате да ги бележите като “необходими” или “опционални”:
-                "optional": false
-                // Може да зададете responseStatus: "needsAction", ако искате.
-            ]
-            googleAttendeeDicts.append(dict)
-        }
-        
-        // == КРАЙ на attendees ==
 
-        // Почистваме notes от VideoCall блок
-        let originalNotes = event.notes ?? ""
+        for a in attendees where a.email != GlobalState.email {
+            googleAttendeeDicts.append([
+                "email"       : a.email,
+                "displayName" : a.name,
+                "optional"    : false          // mark them as required; change if you wish
+            ])
+        }
+
+        // -------------------------------------------------------------
+        // 4) Clean up notes (remove any “Video Call” blocks)
+        // -------------------------------------------------------------
+        let originalNotes  = event.notes ?? ""
         let sanitizedNotes = removeVideoCallBlock(from: originalNotes)
 
+        // -------------------------------------------------------------
+        // 5) Build & return the final body
+        // -------------------------------------------------------------
         if event.isAllDay {
             let startDateStr = localAllDayDateString(event.startDate)
             let endDateStr   = localAllDayDateString(event.endDate)
 
-            // 4) Връщаме новия body, в който слагаме "attendees" масива
             return [
-                "summary": event.title ?? "(No Title)",
+                "summary"    : event.title ?? "(No Title)",
                 "description": sanitizedNotes,
-                "start": ["date": startDateStr],
-                "end":   ["date": endDateStr],
-                // Ето го attendees:
-                "attendees": googleAttendeeDicts
+                "start"      : ["date": startDateStr],
+                "end"        : ["date": endDateStr],
+                "attendees"  : googleAttendeeDicts
             ]
         } else {
             return [
-                "summary": event.title ?? "(No Title)",
+                "summary"    : event.title ?? "(No Title)",
                 "description": sanitizedNotes,
-                "start": ["dateTime": isoDateString(event.startDate)],
-                "end":   ["dateTime": isoDateString(event.endDate)],
-                // Ето го attendees:
-                "attendees": googleAttendeeDicts
+                "start"      : ["dateTime": isoDateString(event.startDate)],
+                "end"        : ["dateTime": isoDateString(event.endDate)],
+                "attendees"  : googleAttendeeDicts
             ]
         }
     }
+
 
     
     private func colorFromHexString(_ hexString: String) -> UIColor? {
@@ -3263,7 +3285,7 @@ extension CalendarViewModel {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         // Правим JSON тялото от локалния EKEvent, което вече включва "attendees"
-        var bodyDict = makeMsEventBody(from: localEvent)
+        var bodyDict = await makeMsEventBody(from: localEvent)
 
         // Ако искаме да принудим Teams линк => добавяме:
         bodyDict["isOnlineMeeting"] = true
@@ -3361,7 +3383,7 @@ extension CalendarViewModel {
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
 
         // Тялото вече включва "attendees"
-        var bodyDict = makeMsEventBody(from: localEvent)
+        var bodyDict = await makeMsEventBody(from: localEvent)
 
         // Ако искаме винаги да добавяме Teams линк (или в notes има Teams), задаваме:
         if forceAddTeams {
@@ -3497,9 +3519,17 @@ extension CalendarViewModel {
     /// Builds the dictionary for MS Graph `POST / PATCH` request body.
     /// This example does NOT remove any "video call" blocks from notes
     /// (so if you have existing Teams or Meet info, it will remain).
-    private func makeMsEventBody(from localEvent: EKEvent) -> [String: Any] {
-        let subjectVal = localEvent.title ?? "(No Title)"
-        let originalNotes = localEvent.notes ?? ""
+    //  CalendarViewModel.swift
+    //  MARK: - Build Microsoft-Graph event body (attendees + primary-mail picker)
+
+    @MainActor
+    private func makeMsEventBody(from localEvent: EKEvent) async -> [String: Any] {
+
+        // ------------------------------------------------------------------
+        // 0) Basic fields (subject, body, start / end, location)
+        // ------------------------------------------------------------------
+        let subjectVal     = localEvent.title ?? "(No Title)"
+        let originalNotes  = localEvent.notes ?? ""
 
         let bodyDict: [String: Any] = [
             "contentType": "text",
@@ -3510,65 +3540,60 @@ extension CalendarViewModel {
         var endDict:   [String: Any] = [:]
 
         if localEvent.isAllDay {
-            let formatter = DateFormatter()
-            formatter.timeZone = TimeZone(secondsFromGMT: 0)
-            formatter.dateFormat = "yyyy-MM-dd"
+            let fmt = DateFormatter()
+            fmt.timeZone     = .init(secondsFromGMT: 0)
+            fmt.dateFormat   = "yyyy-MM-dd"
 
-            let startDateStr = formatter.string(from: localEvent.startDate)
-            let endDateStr   = formatter.string(from: localEvent.endDate)
-
-            // all-day
-            startDict = ["date": startDateStr, "timeZone": "UTC"]
-            endDict   = ["date": endDateStr,   "timeZone": "UTC"]
+            startDict = ["date": fmt.string(from: localEvent.startDate), "timeZone": "UTC"]
+            endDict   = ["date": fmt.string(from: localEvent.endDate)  , "timeZone": "UTC"]
         } else {
-            // timed event
-            let isoFormatter = ISO8601DateFormatter()
-            isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            let iso = ISO8601DateFormatter()
+            iso.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
 
-            let startStr = isoFormatter.string(from: localEvent.startDate)
-            let endStr   = isoFormatter.string(from: localEvent.endDate)
-
-            startDict = ["dateTime": startStr, "timeZone": "UTC"]
-            endDict   = ["dateTime": endStr,   "timeZone": "UTC"]
+            startDict = ["dateTime": iso.string(from: localEvent.startDate), "timeZone": "UTC"]
+            endDict   = ["dateTime": iso.string(from: localEvent.endDate) , "timeZone": "UTC"]
         }
 
-        // Location
         let locationDict: [String: Any] = [
             "displayName": localEvent.location ?? ""
         ]
 
-        // === Ето ги наши Attendee обекти ===
-        let localAttendees = extractMsAttendees(from: localEvent)
+        // ------------------------------------------------------------------
+        // 1) Extract attendees & let the user pick their own e-mail once
+        // ------------------------------------------------------------------
+        let localAttendees = extractMsAttendees(from: localEvent)          // [Attendee]
+        await pickPrimaryEmailIfNeeded(from: localAttendees)               // may show the picker
 
-        // Превръщаме ги във формат на MS Graph
+        // ------------------------------------------------------------------
+        // 2) Transform attendees → Microsoft Graph format
+        //    (skip the address stored in GlobalState.email)
+        // ------------------------------------------------------------------
         var msAttendeeArray: [[String: Any]] = []
-        for a in localAttendees {
-            // Прескачате организатора, ако user.email == a.email? (по желание)
-            // let skip = ...
-            
-            let typeString = (a.role == 1) ? "optional" : "required"
-            let msAtt: [String: Any] = [
+
+        for a in localAttendees where a.email != GlobalState.email {
+            let typeString = (a.role == 1) ? "optional" : "required"       // your rule
+            msAttendeeArray.append([
                 "emailAddress": [
                     "address": a.email,
-                    "name": a.name
+                    "name"   : a.name
                 ],
                 "type": typeString
-            ]
-            msAttendeeArray.append(msAtt)
+            ])
         }
 
-        // Сглобяваме целия eventDict
-        var eventDict: [String: Any] = [
-            "subject": subjectVal,
-            "body": bodyDict,
-            "start": startDict,
-            "end":   endDict,
-            "location": locationDict,
+        // ------------------------------------------------------------------
+        // 3) Assemble & return the final event dictionary
+        // ------------------------------------------------------------------
+        return [
+            "subject"  : subjectVal,
+            "body"     : bodyDict,
+            "start"    : startDict,
+            "end"      : endDict,
+            "location" : locationDict,
             "attendees": msAttendeeArray
         ]
-
-        return eventDict
     }
+
 
 
 

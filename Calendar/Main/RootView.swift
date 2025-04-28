@@ -48,8 +48,6 @@ struct RootView: View {
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
 
-    @EnvironmentObject var appViewModel: AppViewModel
-
     var body: some View {
         ZStack {
             Color(.systemBackground).edgesIgnoringSafeArea(.all)
