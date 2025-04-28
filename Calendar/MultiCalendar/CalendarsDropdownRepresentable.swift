@@ -1,5 +1,8 @@
 import SwiftUI
+import UIKit
+import EventKit
 
+// MARK: - SwiftUI обвивка
 
 /// Покажи падащия списък с календарите в SwiftUI
 struct CalendarsDropdownRepresentable: UIViewRepresentable {

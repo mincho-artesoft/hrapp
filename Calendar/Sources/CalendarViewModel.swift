@@ -4610,3 +4610,14 @@ extension CalendarViewModel {
        }
 
 }
+
+extension CalendarViewModel {
+    /// Множество от calendarIdentifier-и, които трябва да се виждат.
+    /// • Ако няма отметнати календари – показваме всички.
+    var visibleCalendarIDs: Set<String> {
+        let selected = calendarsDict.filter { $0.value.selected }
+        return selected.isEmpty
+            ? Set(calendarsDict.keys)
+            : Set(selected.keys)
+    }
+}

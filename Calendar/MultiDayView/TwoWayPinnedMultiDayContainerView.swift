@@ -752,7 +752,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                     temperature: forecast.temp
                 )
             }
-            print("hourlyForecasts: \(hourlyForecasts)")
             hoursColumnWeatherView.hourlyWeatherForecasts = hourlyForecasts
         } else {
             hoursColumnWeatherView.displayWeatherForecast = false

@@ -151,6 +151,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         init(_ parent: TwoWayPinnedSingleDayMultiCalendarWrapper) {
             self.parent = parent
+            
         }
         
         @MainActor public func eventEditViewController(_ controller: EKEventEditViewController,
@@ -160,46 +161,94 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             }
         }
         
-        @MainActor public func reloadCurrentRange() {
+        @MainActor
+        public func reloadCurrentRange(debug: Bool = true) {
             let cal = Calendar.current
             let fromOnly = cal.startOfDay(for: parent.fromDate)
-            // от утрото на parent.fromDate до +1 ден
+            
+            // Показваме точно 1 ден
             guard let actualEnd = cal.date(byAdding: .day, value: 1, to: fromOnly) else {
                 parent.events = []
                 return
             }
             
-            // Вземаме само ЛОКАЛНИ календари, и само "selected"
-            let localCalendars = CalendarViewModel.shared.allCalendars.filter {
-                $0.source.sourceType == .local &&
-                (CalendarViewModel.shared.calendarsDict[$0.calendarIdentifier]?.selected == true)
+            // ----------------------------------------------------------
+            // 1) Видими календари
+            // ----------------------------------------------------------
+            let visibleIDs = CalendarViewModel.shared.visibleCalendarIDs
+            if debug {
+                print("⇢ visibleCalendarIDs =", visibleIDs)
+                print("⇢ calendarsDict (title • id • selected):")
+                CalendarViewModel.shared.calendarsDict.forEach { id, info in
+                    print("   •", info.title, "•", id, "• sel:", info.selected)
+                }
             }
-
+            
+            // ----------------------------------------------------------
+            // 2) Календарите, които подаваме към EventKit
+            // ----------------------------------------------------------
+            let allowedCalendars = CalendarViewModel.shared.allCalendars.filter {
+                visibleIDs.contains($0.calendarIdentifier)
+            }
+            if debug {
+                print("⇢ allowedCalendars =", allowedCalendars.count)
+                allowedCalendars.forEach { c in
+                    print("   •", c.title, "•", c.calendarIdentifier)
+                }
+            }
+            
             let predicate = parent.eventStore.predicateForEvents(
                 withStart: fromOnly,
                 end: actualEnd,
-                calendars: localCalendars
+                calendars: allowedCalendars.isEmpty ? nil : allowedCalendars
             )
-            let found = parent.eventStore.events(matching: predicate)
             
-            var splitted: [EventDescriptor] = []
+            // ----------------------------------------------------------
+            // 3) Взимаме събитията
+            // ----------------------------------------------------------
+            let found = parent.eventStore.events(matching: predicate)
+            if debug {
+                print("⇢ EventKit returned =", found.count, "events")
+                found.forEach { e in
+                    print("   •", e.title ?? "(no title)",
+                          "• cal:", e.calendar.title,
+                          "• id:", e.calendar.calendarIdentifier,
+                          "• allday:", e.isAllDay)
+                }
+            }
+            
+            // ----------------------------------------------------------
+            // 4) Разделяме многодневните, ако има
+            // ----------------------------------------------------------
+            var descriptors: [EventDescriptor] = []
+            
             for ekEvent in found {
                 let startDay = cal.startOfDay(for: ekEvent.startDate)
                 let endDay   = cal.startOfDay(for: ekEvent.endDate)
                 
-                // Ако обхваща повече от 1 ден => split
                 if startDay != endDay {
-                    splitted.append(contentsOf:
-                        splitEventByDays(ekEvent,
-                                         startRange: fromOnly,
-                                         endRange: actualEnd)
-                    )
+                    let parts = splitEventByDays(ekEvent,
+                                                 startRange: fromOnly,
+                                                 endRange: actualEnd)
+                    descriptors.append(contentsOf: parts)
+                    if debug && !parts.isEmpty {
+                        print("   ↳ split", ekEvent.title ?? "(no title)",
+                              "into", parts.count, "slices")
+                    }
                 } else {
-                    splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
+                    descriptors.append(EKMultiDayWrapper(realEvent: ekEvent))
                 }
             }
-            parent.events = splitted
+            
+            if debug {
+                print("⇢ descriptors to UI =", descriptors.count)
+            }
+            
+            // 5) Подаваш към SwiftUI
+            parent.events = descriptors
         }
+
+
 
         private func splitEventByDays(_ ekEvent: EKEvent,
                                       startRange: Date,
