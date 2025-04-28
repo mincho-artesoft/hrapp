@@ -1655,7 +1655,7 @@ extension CalendarViewModel {
             }
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
                 // If cancelled, default to the first e-mail in the list
-                cont.resume(returning: uniqueEmails[0])
+                cont.resume(returning: "")
             })
             UIApplication.shared.topMostViewController?.present(alert, animated: true)
         }
@@ -1717,6 +1717,7 @@ extension CalendarViewModel {
         // -------------------------------------------------------------
         var googleAttendeeDicts: [[String: Any]] = []
 
+        print("GlobalState.email", GlobalState.email)
         for a in attendees where a.email != GlobalState.email {
             googleAttendeeDicts.append([
                 "email"       : a.email,
