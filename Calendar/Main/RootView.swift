@@ -570,3 +570,4 @@ extension RootView {
         eventToEdit = newEvent                // ← задейства sheet‑a
     }
 }
+

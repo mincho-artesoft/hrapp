@@ -24,7 +24,7 @@ struct DraggableMenuView<
     private let fixedBottomBarHeight: CGFloat = 60
     private let horizontalContentHeight: CGFloat = 100
     private let handleHeight: CGFloat = 26
-    private let menuCornerRadius: CGFloat = 15
+    private let menuCornerRadius: CGFloat = 0
     private let collapsedPeekExtra: CGFloat = 10
     private var topGapWhenExpanded: CGFloat =  UIScreen.main.bounds.height * 0.2
 
