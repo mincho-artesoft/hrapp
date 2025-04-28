@@ -33,7 +33,11 @@ final class CalendarViewModel: ObservableObject {
 
     @Published var accessGranted = false
     @Published var selectedCalendarIDs: Set<String> = []
-    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
+    @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]{
+        didSet {
+            print("calendarsDict ",calendarsDict)
+        }
+    }
 
     @Published var firstLocalCalendarColor: UIColor?
     

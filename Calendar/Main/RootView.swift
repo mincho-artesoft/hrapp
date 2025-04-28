@@ -160,7 +160,7 @@ struct RootView: View {
                                 pinnedToDateSingle   = tappedDay
                                 loadSingleDayEventsLocal()
                             }
-                            .onAppear { loadSingleDayEventsLocal() }
+                            .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
                             .onReceive(timer) { _ in loadSingleDayEventsLocal() }
                             .ignoresSafeArea(.all)
 
@@ -268,7 +268,7 @@ struct RootView: View {
                                             } else if selectedTab == 1 {
                                                 loadSingleDayEvents()
                                             } else if selectedTab == 5 {
-                                                loadSingleDayEventsLocal()
+                                                reloadSingleDayEventsWithVisibleCalendars()
                                             }
                                         }
                                     }
@@ -300,11 +300,12 @@ struct RootView: View {
                     } else if selectedTab == 1 {
                         loadSingleDayEvents()
                     } else if selectedTab == 5 {
-                        loadSingleDayEventsLocal()
+                        reloadSingleDayEventsWithVisibleCalendars()
                     }
                 }
             }
         }
+        
         // Sheet за редакция/създаване
         .sheet(item: $eventToEdit) { theEvent in
             EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent)
@@ -323,7 +324,7 @@ struct RootView: View {
                     } else if selectedTab == 1 {
                         loadSingleDayEvents()
                     } else if selectedTab == 5 {
-                        loadSingleDayEventsLocal()
+                        reloadSingleDayEventsWithVisibleCalendars()
                     }
                 }
             }
@@ -571,3 +572,47 @@ extension RootView {
     }
 }
 
+
+extension RootView {
+    private func reloadSingleDayEventsWithVisibleCalendars() {
+        guard accessGranted else { pinnedEventsSingle = []; return }
+        let cal = Calendar.current
+        let fromOnly = cal.startOfDay(for: pinnedFromDateSingle)
+        guard let toDate = cal.date(byAdding: .day, value: 1, to: fromOnly) else {
+            pinnedEventsSingle = []
+            return
+        }
+
+        // 1) Вземаме видимите календари от модела
+        let visibleIDs = CalendarViewModel.shared.visibleCalendarIDs
+
+        // 2) Филтрираме само тези календари
+        let allowedCalendars = CalendarViewModel.shared.allCalendars.filter {
+            visibleIDs.contains($0.calendarIdentifier)
+        }
+
+        // 3) Правим EventKit запитването
+        let predicate = CalendarViewModel.shared.eventStore
+            .predicateForEvents(withStart: fromOnly,
+                                end: toDate,
+                                calendars: allowedCalendars.isEmpty ? nil : allowedCalendars)
+        let found = CalendarViewModel.shared.eventStore.events(matching: predicate)
+
+        // 4) Разделяме многодневните
+        var descriptors: [EventDescriptor] = []
+        for ekEvent in found {
+            let startDay = cal.startOfDay(for: ekEvent.startDate)
+            let endDay   = cal.startOfDay(for: ekEvent.endDate)
+            if startDay != endDay {
+                descriptors.append(contentsOf: splitEventByDays(ekEvent,
+                                                               startRange: fromOnly,
+                                                               endRange: toDate))
+            } else {
+                descriptors.append(EKMultiDayWrapper(realEvent: ekEvent))
+            }
+        }
+
+        // 5) Актуализираме състоянието
+        pinnedEventsSingle = descriptors
+    }
+}

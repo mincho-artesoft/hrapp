@@ -64,6 +64,10 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 isAllDay: isAllDay
             )
         }
+        
+        container.onEventsReload = {
+            context.coordinator.reloadCurrentRange()
+        }
         container.onEventDragResizeEnded = { descriptor, newDate in
             context.coordinator.handleEventDragOrResize(
                 descriptor: descriptor,

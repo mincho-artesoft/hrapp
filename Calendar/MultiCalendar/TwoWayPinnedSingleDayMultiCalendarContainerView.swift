@@ -71,6 +71,14 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             allDayView.onEventDragEnded = onEventDragEnded
         }
     }
+    
+    public var onEventsReload: (() -> Void)? {
+        didSet {
+            weekView.onEventDragEnded   = onEventDragEnded
+            allDayView.onEventDragEnded = onEventDragEnded
+        }
+    }
+    
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)? {
         didSet {
             weekView.onEventDragResizeEnded   = onEventDragResizeEnded
@@ -219,8 +227,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
 
     @objc private func handleCalendarsSelectionChanged(_ note: Notification) {
         Task { @MainActor in
-            updateCalendarsHeader()
+            onEventsReload!()
             
+            updateCalendarsHeader()
         }
     }
 
