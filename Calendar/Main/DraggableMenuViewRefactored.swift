@@ -22,7 +22,7 @@ struct DraggableMenuView<
 
     // MARK: — Config & Theme
     private let fixedBottomBarHeight: CGFloat = 60
-    private let horizontalContentHeight: CGFloat = 100
+    private let horizontalContentHeight: CGFloat = 150
     private let handleHeight: CGFloat = 26
     private let menuCornerRadius: CGFloat = 0
     private let collapsedPeekExtra: CGFloat = 10
@@ -189,7 +189,7 @@ struct DraggableMenuView<
                 Spacer()
             }
             .padding(.horizontal)
-            .padding(.top, 10)
+            .padding(.top, 5)
 
             Spacer()
         }

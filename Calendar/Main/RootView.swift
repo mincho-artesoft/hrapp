@@ -189,40 +189,49 @@ struct RootView: View {
                                         pinnedToDateSingle   = today
                                         selectedTab = 1
                                     } label: {
-                                        HStack(spacing: 4) {
-                                            Text("Today")
+                                        VStack(spacing: 0) {
                                             Image(systemName: "calendar.badge.checkmark")
+                                                .font(.system(size: 18))
+                                                .foregroundColor(.blue)
+                                            Text("Today")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.primary)
                                         }
-                                        .font(.body)
-                                        .foregroundColor(.blue)
                                     }
                                 },
 
-                                // MARK: Bottom‑Center ▸ Add
+                                // MARK: Bottom-Center ▸ Add
                                 bottomCenter: {
                                     Button {
                                         createAndEditNewEvent(on: Date())
                                     } label: {
-                                        HStack(spacing: 4) {
-                                            Text("Add")
+                                        VStack(spacing: 0) {
                                             Image(systemName: "calendar.badge.plus")
+                                                .font(.system(size: 18))
+                                                .foregroundColor(.blue)
+                                            Text("Add")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.primary)
                                         }
-                                        .font(.body)
-                                        .foregroundColor(.blue)
                                     }
                                 },
 
-                                // MARK: Bottom‑Right ▸ Weather
+                                // MARK: Bottom-Right ▸ Weather
                                 bottomRight: {
-                                    Button { selectedTab = 6 } label: {
-                                        HStack(spacing: 4) {
-                                            Text("Weather")
+                                    Button {
+                                        selectedTab = 6
+                                    } label: {
+                                        VStack(spacing: 0) {
                                             Image(systemName: "cloud.sun.fill")
+                                                .font(.system(size: 18))
+                                                .foregroundColor(.blue)
+                                            Text("Weather")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.primary)
                                         }
-                                        .font(.body)
-                                        .foregroundColor(.blue)
                                     }
                                 },
+
 
                                 // MARK: Horizontal секция (Picker)
                                 horizontalContent: {
@@ -249,6 +258,8 @@ struct RootView: View {
                                     case 2:
                                         Text("N/A")
                                              .padding(.vertical, 8)
+//                                        SubscriptionView()
+//                                            .padding(.vertical, 8)
                                     default:
                                         Text("N/A")
                                     }
