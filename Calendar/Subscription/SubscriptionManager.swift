@@ -72,8 +72,8 @@ class SubscriptionManager: ObservableObject {
 
         // Make sure these Product IDs match exactly what's in App Store Connect
         // Example IDs - Replace with your actual Product IDs
-        let ids = ["ARTE.Calendar.subscription.monthly",
-                   "ARTE.Calendar.subscription.yearly"]
+        let ids = ["ARTE.Calendar.subscription.advance.monthly",
+                   "ARTE.Calendar.subscription.advance.yearly"]
         do {
             let fetched = try await Product.products(for: ids)
             // Ensure products update happens on the main thread
