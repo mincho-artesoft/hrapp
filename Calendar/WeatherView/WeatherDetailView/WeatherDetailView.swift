@@ -807,7 +807,7 @@ struct WeatherDetailView: View {
         
         // Валежната вероятност – използваме данните от vm, ако са налични
         let precipChanceText: String = {
-            if let chance = vm.currentPrecipitationProbability {
+            if let chance = vm.nextHourPrecipitationChance {
                 return "\(Int(chance * 100))%"
             } else if let chance = day.precipChance {
                 return "\(Int(chance * 100))%"

@@ -2572,14 +2572,24 @@ extension CalendarViewModel {
                 redirectUri: kRedirectUri,
                 authority: try MSALAADAuthority(url: authorityURL)
             )
-
             let application = try MSALPublicClientApplication(configuration: msalConfig)
             let scopes = ["Calendars.ReadWrite", "User.Read"]
-            let parameters = MSALInteractiveTokenParameters(scopes: scopes)
-            parameters.promptType = .selectAccount
-            parameters.parentViewController = topMostViewController()
 
-            application.acquireToken(with: parameters) { (result, error) in
+            // Създаваме web view parameters вместо deprecated parentViewController
+            guard let presentingVC = topMostViewController() else {
+                print("No view controller to present from.")
+                return
+            }
+            let webParameters = MSALWebviewParameters(authPresentationViewController: presentingVC)
+
+            // Нов инициализатор с webviewParameters
+            let interactiveParameters = MSALInteractiveTokenParameters(
+                scopes: scopes,
+                webviewParameters: webParameters
+            )
+            interactiveParameters.promptType = .selectAccount
+
+            application.acquireToken(with: interactiveParameters) { (result, error) in
                 if let error = error {
                     print("MSAL error: \(error)")
                     return
@@ -2589,11 +2599,12 @@ extension CalendarViewModel {
                     return
                 }
 
+                // Обработка на токените и съхранение на user
                 let accessToken = authResult.accessToken
                 let expiresOn   = authResult.expiresOn ?? Date()
                 let msID        = authResult.account.identifier
                 let email       = authResult.account.username ?? "(No username)"
-                let refresh     = "???"
+                let refresh     = "???"  // MSAL обикновено се грижи сам за refresh
 
                 let newMsUser = StoredMicrosoftUser(
                     uniqueID: UUID(),
@@ -2607,32 +2618,18 @@ extension CalendarViewModel {
                 )
 
                 Task { @MainActor in
-                    // 1) Проверяваме дали вече имаме този акаунт (по msAccountID или email)
                     if let existingIndex = self.storedMsUsers.firstIndex(where: {
                         $0.msAccountID == msID || ($0.email == email && !email.isEmpty)
                     }) {
-                        // => вече имаме такъв акаунт => решаваме дали да ъпдейтнем или да пропуснем
                         var existingUser = self.storedMsUsers[existingIndex]
                         existingUser.accessToken = accessToken
                         existingUser.accessTokenExpiration = expiresOn
-                        existingUser.refreshToken = refresh
                         existingUser.idToken = authResult.idToken
-                        // existingUser.email = email // ако искаме да обновим
-                    
                         self.storedMsUsers[existingIndex] = existingUser
-                        print("Updated existing MS user => \(email)")
-                        
-                        // Синхронизираме него
                         await self.performMicrosoftCalendarSync(for: existingUser)
-                    }
-                    else {
-                        // => нов потребител
+                    } else {
                         self.storedMsUsers.append(newMsUser)
                         self.saveAllMsUsersToUserDefaults()
-                        
-                        print("Added new MS user => \(email).")
-                        
-                        // Стартираме sync
                         await self.performMicrosoftCalendarSync(for: newMsUser)
                     }
                 }
@@ -2641,6 +2638,7 @@ extension CalendarViewModel {
             print("MSAL init error:", error)
         }
     }
+
 
     func debugPrintLocalMsCalendars() {
         print("=== debugPrintLocalMsCalendars START ===")
@@ -2675,7 +2673,7 @@ extension CalendarViewModel {
             let events = eventStore.events(matching: predicate)
             print("   Found \(events.count) events in \"\(cal.title)\"")
             for e in events {
-                print("   - \(e.title ?? "(no title)") [\(e.startDate) - \(e.endDate)] id=\(e.eventIdentifier ?? "?")")
+                print("   - \(e.title ?? "(no title)") [\(String(describing: e.startDate)) - \(String(describing: e.endDate))] id=\(e.eventIdentifier ?? "?")")
             }
         }
 
@@ -2846,10 +2844,6 @@ extension CalendarViewModel {
         }
 
         let decoded = try JSONDecoder().decode(MSCalendarListResponse.self, from: data)
-
-        // ТУК можеш да принтираш какво точно ти връща Graph:
-        for cal in decoded.value {
-        }
 
         return decoded.value
     }
@@ -4618,26 +4612,39 @@ extension CalendarViewModel {
             print("Error creating contact:", error)
         }
     }
-
+    
     private func syncRequestAccessToCalendar() -> Bool {
-           let semaphore = DispatchSemaphore(value: 0)
-           var accessGranted = false
+        let semaphore = DispatchSemaphore(value: 0)
+        var accessGranted = false
 
-           eventStore.requestAccess(to: .event) { granted, error in
-               if granted {
-                   print("Calendar access => granted.")
-                   accessGranted = true
-               } else {
-                   print("Calendar access => NOT granted or error:", error?.localizedDescription ?? "nil")
-                   accessGranted = false
-               }
-               semaphore.signal()
-           }
+        if #available(iOS 17.0, *) {
+            // Новият метод за пълно право на Events
+            eventStore.requestFullAccessToEvents { granted, error in
+                if granted {
+                    print("Calendar full access => granted.")
+                } else {
+                    print("Calendar full access => NOT granted or error:", error?.localizedDescription ?? "nil")
+                }
+                accessGranted = granted
+                semaphore.signal()
+            }
+        } else {
+            // Остава старият за по-стари версии
+            eventStore.requestAccess(to: .event) { granted, error in
+                if granted {
+                    print("Calendar access => granted.")
+                } else {
+                    print("Calendar access => NOT granted or error:", error?.localizedDescription ?? "nil")
+                }
+                accessGranted = granted
+                semaphore.signal()
+            }
+        }
 
-           // Блокираме, докато потребителят натисне Allow/Don't Allow.
-           semaphore.wait()
-           return accessGranted
-       }
+        // Блокираме, докато потребителят не отговори
+        semaphore.wait()
+        return accessGranted
+    }
 
 }
 

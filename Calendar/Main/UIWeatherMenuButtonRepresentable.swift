@@ -6,28 +6,43 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
     let onViewChange: ((Int) -> Void)?
     
     func makeUIView(context: Context) -> UIButton {
-            let button = UIButton(type: .system)
+        let button = UIButton(type: .system)
 
-            // — Configure via UIButtonConfiguration instead of deprecated properties —
-            var config = UIButton.Configuration.plain()
-            config.baseBackgroundColor = .gray
-            config.baseForegroundColor = .white
-            config.cornerStyle = .capsule
-            config.contentInsets = .init(top: 6, leading: 6, bottom: 6, trailing: 6)
-            config.image = combinedImage(for: currentView)
-            config.imagePadding = 4
+        var config = UIButton.Configuration.plain()
+        config.baseForegroundColor = .white
+        config.background.backgroundColor = UIColor.systemGray6
+        config.background.cornerRadius = 15
+        config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6)
+        config.imagePadding = 4
 
-            button.configuration = config
-            button.showsMenuAsPrimaryAction = true
-            button.menu = buildViewMenu(for: button)
-
-            return button
+        // взимаме композитното изображение и го правим template
+        if let img = combinedImage(for: currentView)?
+            .withRenderingMode(.alwaysTemplate) {
+            config.image = img
         }
-    
+
+        button.configuration = config
+        button.showsMenuAsPrimaryAction = true
+        button.menu = buildViewMenu(for: button)
+        return button
+    }
+
     func updateUIView(_ uiView: UIButton, context: Context) {
-        uiView.setImage(combinedImage(for: currentView), for: .normal)
+        guard var config = uiView.configuration else { return }
+
+        config.baseForegroundColor = .white
+        config.background.backgroundColor = UIColor.systemGray6
+
+        if let img = combinedImage(for: currentView)?
+            .withRenderingMode(.alwaysTemplate) {
+            config.image = img
+        }
+
+        uiView.configuration = config
         uiView.menu = buildViewMenu(for: uiView)
     }
+
+
     
     private func buildViewMenu(for button: UIButton) -> UIMenu {
         let ConditionsImage = UIImage(systemName: "cloud.sun.fill")

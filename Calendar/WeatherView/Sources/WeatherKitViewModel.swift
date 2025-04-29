@@ -6,7 +6,6 @@ import MapKit
 
 // MARK: - Структури за почасова (Hourly) и дневна (Daily) прогноза
 
-// Уверете се, че DayForecastItem е public:
 public struct DayForecastItem: Identifiable, Equatable {
     public let id: Date
     public var date: Date
@@ -15,12 +14,12 @@ public struct DayForecastItem: Identifiable, Equatable {
     public var precipChance: Double?
     public var minTemp: Double
     public var maxTemp: Double
-    
+
     // За последните 24 часа
     public var precipLast24h: Double   // Общ валеж (мм)
     public var rainLast24h: Double     // Дъжд (мм)
-    public var snowLast24h: Double     // Сняг (напр. в см или мм)
-    
+    public var snowLast24h: Double     // Сняг (мм)
+
     public var precipitationAmount: Double
     public var reinAmount: Double
     public var snowfallAmount: Double
@@ -28,24 +27,21 @@ public struct DayForecastItem: Identifiable, Equatable {
     // За следващите 24 часа
     public var precipNext24h: Double   // Общ валеж (мм)
     public var rainNext24h: Double     // Дъжд (мм)
-    public var snowNext24h: Double     // Сняг (напр. в см или мм)
-    
-    // (Опционално) Дневен максимален UV или други параметри:
+    public var snowNext24h: Double     // Сняг (мм)
+
     public var maxUV: Int
-    
-    public var maxWindSpeed: Double      // Максимална скорост на вятъра през деня (км/ч)
-    public var maxWindGust: Double       // Максимална сила на порив (км/ч)
-    public var predominantWindDirection: Double  // Преобладаващо направление (градуси 0–360)
-    
+    public var maxWindSpeed: Double      // км/ч
+    public var maxWindGust: Double       // км/ч
+    public var predominantWindDirection: Double  // градуси 0–360
+
     public var humidityMin: Double
     public var humidityMax: Double
 
     public var visibilityMin: Double
     public var visibilityMax: Double
-    
-    // Добавяме поле за лунна информация, ако е налична; уверете се, че MoonEvents също е public.
+
     public var moon: MoonEvents?
-    
+
     public init(id: Date,
                 date: Date,
                 day: String,
@@ -106,31 +102,25 @@ struct HourlyForecastItem: Identifiable {
     var temp: Double
     var feelsLikeTemp: Double
     var symbol: String
-    var precipChance: Double          // Шанс за валеж (0...1)
-    var precipitationAmount: Double   // Количество валеж (мм) за конкретния час
+    var precipChance: Double
+    var precipitationAmount: Double
     var snowfallAmount: Double
-    // Ново: добавяне на UV индекс, ако е наличен от източника на данни
     var uvIndex: Int
-    
-    var windSpeed: Double       // км/ч
-    var windGust: Double        // км/ч
-    var windDirection: Double   // градуси (0–360)
-    
+    var windSpeed: Double
+    var windGust: Double
+    var windDirection: Double
     var humidity: Double
-    
     var visibility: Double
-    
     var pressure: Double
 }
 
 @MainActor
 class WeatherKitViewModel: ObservableObject {
-    // Singleton – достъпен отвсякъде
+    // Singleton
     static let shared = WeatherKitViewModel()
-    
     let weatherService = WeatherService.shared
 
-    // MARK: - Публикувани променливи за текущото време
+    // MARK: - Текущо време
     @Published var currentTemp: Double?
     @Published var currentSymbol: String = "cloud"
     @Published var currentCondition: String = "—"
@@ -144,263 +134,249 @@ class WeatherKitViewModel: ObservableObject {
     @Published var currentWindDirection: Angle?
     @Published var currentDewPoint: Double?
     @Published var pressureTrend: String?
-    
     @Published var currentMoonEvents: MoonEvents?
-    
-    // Допълнителни параметри от WeatherKit
-    @Published var currentPrecipitationAmount: Double?
-    @Published var currentPrecipitationProbability: Double?
+
+    // Нови параметри за валежи
+    @Published var currentPrecipitationAmount: Double?    // ще пази стойността на precipitationIntensity
     @Published var currentCloudCover: Double?
-    
-    // Данни за прогнозите
+
+    // MARK: - Прогнози
     @Published var todayMinTemp: Double?
     @Published var todayMaxTemp: Double?
     @Published var sunriseTime: Date?
     @Published var sunsetTime: Date?
     @Published var todayPrecipitationAmount: Double?
     @Published var nextHourPrecipitationChance: Double?
-    
+
     @Published var next24HourlyForecast: [HourlyForecastItem] = []
     @Published var hourlyForecast: [HourlyForecastItem] = []
     @Published var dailyForecast: [DayForecastItem] = []
-    
+
     @Published var errorMessage: String?
-    
-    // Нови публикувани свойства за лунната фаза
+
     @Published var nextMoonPhase: String?
     @Published var daysUntilNextMoonPhase: Int?
-    
+
     var locationTimeZone: TimeZone = .current
 
     // MARK: - Публични методи
-    
+
     func setTimeZone(_ tz: TimeZone) {
         self.locationTimeZone = tz
     }
-    
+
     func fetchWeatherForCoords(latitude: Double, longitude: Double) {
         Task {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
-                let weatherDataTuple = try await weatherService.weather(
+                let (current, hourlyData, dailyData) = try await weatherService.weather(
                     for: loc,
                     including: .current, .hourly, .daily
                 )
-                let current = weatherDataTuple.0
-                let hourlyForecast = weatherDataTuple.1
-                let dailyForecast = weatherDataTuple.2
-                
+
                 updateCurrentWeather(current)
-                updateHourlyForecast(hourlyForecast.forecast)
-                updateDailyForecast(dailyForecast.forecast)
-                
+                updateHourlyForecast(hourlyData.forecast)
+                updateDailyForecast(dailyData.forecast)
+
                 var calendar = Calendar(identifier: .gregorian)
                 calendar.timeZone = locationTimeZone
-                
-                if let todayForecast = dailyForecast.forecast.first(where: { calendar.isDateInToday($0.date) }) {
+
+                if let todayForecast = dailyData.forecast.first(where: { calendar.isDateInToday($0.date) }) {
                     self.sunriseTime = todayForecast.sun.sunrise
                     self.sunsetTime  = todayForecast.sun.sunset
-                    self.todayPrecipitationAmount = todayForecast.precipitationAmount.value
+
+                    let pptByType = todayForecast.precipitationAmountByType
+                    self.todayPrecipitationAmount       = pptByType.precipitation.value
+                    self.nextHourPrecipitationChance = todayForecast.precipitationChance
                 } else {
                     self.sunriseTime = nil
                     self.sunsetTime  = nil
                     self.todayPrecipitationAmount = 0
                 }
-                
-                if let nextHour = hourlyForecast.forecast.first(where: { $0.date > Date() }) {
+
+                if let nextHour = hourlyData.forecast.first(where: { $0.date > Date() }) {
                     self.nextHourPrecipitationChance = nextHour.precipitationChance
                 } else {
-                    self.nextHourPrecipitationChance = hourlyForecast.forecast.last?.precipitationChance
+                    self.nextHourPrecipitationChance = hourlyData.forecast.last?.precipitationChance
                 }
-                
+
                 self.errorMessage = nil
-                
             } catch {
                 print("WeatherKit Error: \(error)")
                 self.errorMessage = "Failed to fetch weather data. Please check your connection or try again later."
             }
         }
     }
-    
+
     func clearWeatherData() {
         currentTemp = nil
         currentSymbol = "cloud"
         currentCondition = "—"
-        todayMinTemp = nil
-        todayMaxTemp = nil
         currentFeelsLike = nil
         currentHumidity = nil
-        currentWindSpeed = nil
         currentPressure = nil
         currentVisibility = nil
         currentUVIndex = nil
+        currentWindSpeed = nil
         currentWindGust = nil
         currentWindDirection = nil
         currentDewPoint = nil
         pressureTrend = nil
+
         sunriseTime = nil
         sunsetTime = nil
+        todayMinTemp = nil
+        todayMaxTemp = nil
         todayPrecipitationAmount = nil
         nextHourPrecipitationChance = nil
+
         hourlyForecast = []
         next24HourlyForecast = []
         dailyForecast = []
-        errorMessage = nil
-        
-        // Допълнителни параметри
+
         currentPrecipitationAmount = nil
-        currentPrecipitationProbability = nil
         currentCloudCover = nil
-        
-        // Ресетване на лунните свойства
+
         nextMoonPhase = nil
         daysUntilNextMoonPhase = nil
+        currentMoonEvents = nil
+
+        errorMessage = nil
     }
-    
-    // MARK: - Приватни методи за обновяване на данните
-    
+
+    // MARK: - Приватни методи
+
     private func updateCurrentWeather(_ current: CurrentWeather) {
-        self.currentTemp      = current.temperature.value
-        self.currentSymbol    = current.symbolName
-        self.currentCondition = current.condition.description
-        self.currentFeelsLike = current.apparentTemperature.value
-        self.currentHumidity  = current.humidity
-        self.currentPressure  = current.pressure.value
-        self.currentVisibility = current.visibility.value
-        self.currentUVIndex   = current.uvIndex.value
-        
-        // Преобразуване на вятърната скорост в км/ч
-        let windSpeedKmh = current.wind.speed.converted(to: .kilometersPerHour).value
-        self.currentWindSpeed = windSpeedKmh
-        
+        currentTemp       = current.temperature.value
+        currentSymbol     = current.symbolName
+        currentCondition  = current.condition.description
+        currentFeelsLike  = current.apparentTemperature.value
+        currentHumidity   = current.humidity
+        currentPressure   = current.pressure.value
+        currentVisibility = current.visibility.value
+        currentUVIndex    = current.uvIndex.value
+
+        // km/h
+        currentWindSpeed = current.wind.speed.converted(to: .kilometersPerHour).value
         if let gust = current.wind.gust {
-            self.currentWindGust = gust.converted(to: .kilometersPerHour).value
-        } else {
-            self.currentWindGust = nil
+            currentWindGust = gust.converted(to: .kilometersPerHour).value
         }
-        
-        self.currentWindDirection = Angle(degrees: current.wind.direction.value)
-        self.currentDewPoint = current.dewPoint.value
-        
+
+        currentWindDirection = Angle(degrees: current.wind.direction.value)
+        currentDewPoint      = current.dewPoint.value
+
         switch current.pressureTrend {
-        case .falling: self.pressureTrend = "Falling"
-        case .rising:  self.pressureTrend = "Rising"
-        case .steady:  self.pressureTrend = "Steady"
+        case .falling: pressureTrend = "Falling"
+        case .rising:  pressureTrend = "Rising"
+        case .steady:  pressureTrend = "Steady"
         @unknown default:
-            self.pressureTrend = "Unknown"
+            pressureTrend = "Unknown"
         }
+
+        // валежи: използваме precipitationIntensity
+        currentPrecipitationAmount = current.precipitationIntensity.value
+        currentCloudCover          = current.cloudCover
     }
-    
+
     private func updateHourlyForecast(_ hours: [HourWeather]) {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = locationTimeZone
-        
         let now = Date()
-        guard let truncatedNow = calendar.date(
+
+        guard let startOfHour = calendar.date(
             bySettingHour: calendar.component(.hour, from: now),
             minute: 0,
             second: 0,
             of: now
         ) else { return }
-        
-        guard let startIndex = hours.firstIndex(where: { $0.date >= truncatedNow }) else {
-            self.hourlyForecast = []
-            self.next24HourlyForecast = []
+
+        guard let startIndex = hours.firstIndex(where: { $0.date >= startOfHour }) else {
+            hourlyForecast = []
+            next24HourlyForecast = []
             return
         }
-        
+
         let endIndex = min(startIndex + 24, hours.count)
-        let relevantHours = hours[startIndex..<endIndex]
-        
-        var tempArray: [HourlyForecastItem] = []
-        for (i, hourData) in relevantHours.enumerated() {
-            let label = (i == 0) ? "Now" : hourString(from: hourData.date)
-            
-            let item = HourlyForecastItem(
-                id: hourData.date,
-                date: hourData.date,
-                hour: label,
-                temp: hourData.temperature.value,
-                feelsLikeTemp: hourData.apparentTemperature.value,
-                symbol: hourData.symbolName,
-                precipChance: hourData.precipitationChance,
-                precipitationAmount: hourData.precipitationAmount.value,
-                snowfallAmount: hourData.snowfallAmount.value,
-                uvIndex: hourData.uvIndex.value,
-                windSpeed: hourData.wind.speed.value,
-                windGust: hourData.wind.gust!.value,
-                windDirection: hourData.wind.direction.converted(to: .degrees).value,
-                humidity: hourData.humidity,
-                visibility: hourData.visibility.value / 1000,
-                pressure: hourData.pressure.value
-            )
-            tempArray.append(item)
-        }
-        self.next24HourlyForecast = tempArray
-        
-        self.hourlyForecast = hours.map { hourData in
+        let slice = hours[startIndex..<endIndex]
+        next24HourlyForecast = slice.enumerated().map { i, h in
             HourlyForecastItem(
-                id: hourData.date,
-                date: hourData.date,
-                hour: hourString(from: hourData.date),
-                temp: hourData.temperature.value,
-                feelsLikeTemp: hourData.apparentTemperature.value,
-                symbol: hourData.symbolName,
-                precipChance: hourData.precipitationChance,
-                precipitationAmount: hourData.precipitationAmount.value,
-                snowfallAmount: hourData.snowfallAmount.value,
-                uvIndex: hourData.uvIndex.value,
-                windSpeed: hourData.wind.speed.value,
-                windGust: hourData.wind.gust!.value,
-                windDirection: hourData.wind.direction.converted(to: .degrees).value,
-                humidity: hourData.humidity,
-                visibility: hourData.visibility.value / 1000,
-                pressure: hourData.pressure.value
+                id: h.date,
+                date: h.date,
+                hour: i == 0 ? "Now" : hourString(from: h.date),
+                temp: h.temperature.value,
+                feelsLikeTemp: h.apparentTemperature.value,
+                symbol: h.symbolName,
+                precipChance: h.precipitationChance,
+                precipitationAmount: h.precipitationAmount.value,
+                snowfallAmount: h.snowfallAmount.value,
+                uvIndex: h.uvIndex.value,
+                windSpeed: h.wind.speed.value,
+                windGust: h.wind.gust?.value ?? 0,
+                windDirection: h.wind.direction.converted(to: .degrees).value,
+                humidity: h.humidity,
+                visibility: h.visibility.value / 1000,
+                pressure: h.pressure.value
+            )
+        }
+
+        hourlyForecast = hours.map { h in
+            HourlyForecastItem(
+                id: h.date,
+                date: h.date,
+                hour: hourString(from: h.date),
+                temp: h.temperature.value,
+                feelsLikeTemp: h.apparentTemperature.value,
+                symbol: h.symbolName,
+                precipChance: h.precipitationChance,
+                precipitationAmount: h.precipitationAmount.value,
+                snowfallAmount: h.snowfallAmount.value,
+                uvIndex: h.uvIndex.value,
+                windSpeed: h.wind.speed.value,
+                windGust: h.wind.gust?.value ?? 0,
+                windDirection: h.wind.direction.converted(to: .degrees).value,
+                humidity: h.humidity,
+                visibility: h.visibility.value / 1000,
+                pressure: h.pressure.value
             )
         }
     }
-    
+
     private func updateDailyForecast(_ days: [DayWeather]) {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = locationTimeZone
-        
-        let count = min(days.count, 10)
-        let relevantDays = days.prefix(count)
-        
+
+        // Вземаме до 10 дни напред
+        let relevantDays = days.prefix(min(days.count, 10))
         var arr: [DayForecastItem] = []
+
         for dayData in relevantDays {
             let dateValue = dayData.date
             let isToday = calendar.isDateInToday(dateValue)
             let dayName = isToday ? "Today" : weekdayString(from: dateValue)
-            
-            let averageTemp = (dayData.lowTemperature.value + dayData.highTemperature.value) / 2
-            let temperatureThreshold = 0.0
-            let isLikelySnow = (averageTemp < temperatureThreshold) || dayData.symbolName.lowercased().contains("snow")
-            
-            let precipitationValue = dayData.precipitationAmount.value
-            
-            let forecastItemsForDay = self.hourlyForecast.filter {
+
+            if isToday {
+                currentMoonEvents = dayData.moon
+            }
+
+            // Сумираме почасовите валежи за следващите 24ч
+            let hourlyForDay = hourlyForecast.filter {
                 calendar.isDate($0.date, inSameDayAs: dateValue)
             }
-            
-            let totalHourlyPrecip = forecastItemsForDay.reduce(0) { sum, item in
-                sum + item.precipitationAmount
+            let totalHourlyPrecip = hourlyForDay.reduce(0) { $0 + $1.precipitationAmount }
+            let totalHourlyRain = hourlyForDay.reduce(0) { sum, it in
+                it.symbol.lowercased().contains("snow") ? sum : sum + it.precipitationAmount
             }
-            
-            let totalHourlyRain = forecastItemsForDay.reduce(0) { sum, item in
-                let isLikelySnowHourly = item.symbol.lowercased().contains("snow")
-                return isLikelySnowHourly ? sum : sum + item.precipitationAmount
+            let totalHourlySnow = hourlyForDay.reduce(0) { sum, it in
+                it.symbol.lowercased().contains("snow") ? sum + it.precipitationAmount : sum
             }
-            let totalHourlySnow = forecastItemsForDay.reduce(0) { sum, item in
-                let isLikelySnowHourly = item.symbol.lowercased().contains("snow")
-                return isLikelySnowHourly ? sum + item.precipitationAmount : sum
-            }
-            
-            // Ако днес е избраният ден, запазваме лунната информация
-            if isToday {
-               self.currentMoonEvents = dayData.moon
-            }
-            
+
+            // Взимаме разбивката от новия API
+            let pptByType   = dayData.precipitationAmountByType
+            let totalPrecip = pptByType.precipitation.value
+            let rainPrecip  = pptByType.rainfall.value
+            // Тук е ключово: amount e Measurement<UnitLength>
+            let snowPrecip  = pptByType.snowfallAmount.amount.value
+
             let item = DayForecastItem(
                 id: dateValue,
                 date: dateValue,
@@ -409,42 +385,50 @@ class WeatherKitViewModel: ObservableObject {
                 precipChance: dayData.precipitationChance,
                 minTemp: dayData.lowTemperature.value,
                 maxTemp: dayData.highTemperature.value,
-                precipLast24h: precipitationValue,
-                rainLast24h: isLikelySnow ? 0 : precipitationValue,
-                snowLast24h: isLikelySnow ? precipitationValue : 0,
-                precipitationAmount: dayData.precipitationAmount.value,
-                reinAmount: dayData.rainfallAmount.value,
-                snowfallAmount: dayData.snowfallAmount.value,
+
+                // Последни 24ч
+                precipLast24h:    totalPrecip,
+                rainLast24h:      rainPrecip,
+                snowLast24h:      snowPrecip,
+
+                // Дублиращи полета
+                precipitationAmount: totalPrecip,
+                reinAmount:          rainPrecip,
+                snowfallAmount:      snowPrecip,
+
+                // Следващи 24ч
                 precipNext24h: totalHourlyPrecip,
-                rainNext24h: totalHourlyRain,
-                snowNext24h: totalHourlySnow,
-                maxUV: dayData.uvIndex.value,
-                maxWindSpeed: dayData.highWindSpeed!.value,
-                maxWindGust: dayData.wind.gust?.value ?? 0,
+                rainNext24h:  totalHourlyRain,
+                snowNext24h:  totalHourlySnow,
+
+                maxUV:                   dayData.uvIndex.value,
+                maxWindSpeed:            dayData.highWindSpeed!.value,
+                maxWindGust:             dayData.wind.gust?.value ?? 0,
                 predominantWindDirection: dayData.wind.direction.converted(to: .degrees).value,
-                humidityMin: dayData.minimumHumidity,
-                humidityMax: dayData.maximumHumidity,
-                visibilityMin: dayData.minimumVisibility / 1000,
-                visibilityMax: dayData.maximumVisibility / 1000,
-                moon: dayData.moon   // Ако dayData съдържа лунна информация
+                humidityMin:             dayData.minimumHumidity,
+                humidityMax:             dayData.maximumHumidity,
+                visibilityMin:           dayData.minimumVisibility / 1000,
+                visibilityMax:           dayData.maximumVisibility / 1000,
+                moon:                    dayData.moon
             )
             arr.append(item)
         }
-        self.dailyForecast = arr
-        
-        if let firstDay = arr.first, calendar.isDateInToday(firstDay.date) {
-            self.todayMinTemp = firstDay.minTemp
-            self.todayMaxTemp = firstDay.maxTemp
+
+        dailyForecast = arr
+
+        // Обновяваме днешните мин и макс
+        if let first = arr.first, calendar.isDateInToday(first.date) {
+            todayMinTemp = first.minTemp
+            todayMaxTemp = first.maxTemp
         } else {
-            self.todayMinTemp = days.first?.lowTemperature.value
-            self.todayMaxTemp = days.first?.highTemperature.value
+            todayMinTemp = days.first?.lowTemperature.value
+            todayMaxTemp = days.first?.highTemperature.value
         }
-        
-        // Обновяваме информацията за следващата лунна фаза
+
         updateMoonPhaseInfo()
     }
-    
-    // Функция за извличане на следващата лунна фаза и изчисляване на броя дни до нея.
+
+
     private func updateMoonPhaseInfo() {
         guard let currentMoon = currentMoonEvents else {
             nextMoonPhase = nil
@@ -453,65 +437,59 @@ class WeatherKitViewModel: ObservableObject {
         }
         let currentPhase = currentMoon.phase
         let calendar = Calendar.current
-        
+
         for forecast in dailyForecast {
-            if let forecastMoon = forecast.moon, forecastMoon.phase != currentPhase {
-                nextMoonPhase = forecastMoon.phase.description
-                if let daysDiff = calendar.dateComponents([.day], from: Date(), to: forecast.date).day {
-                    daysUntilNextMoonPhase = daysDiff
+            if let m = forecast.moon, m.phase != currentPhase {
+                nextMoonPhase = m.phase.description
+                if let diff = calendar.dateComponents([.day], from: Date(), to: forecast.date).day {
+                    daysUntilNextMoonPhase = diff
                 }
                 break
             }
         }
     }
-    
-    // MARK: - Помощни функции за форматиране
-    
+
+    // MARK: - Помощни форматиращи
+
     private func hourString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH"
-        formatter.timeZone = locationTimeZone
-        return formatter.string(from: date)
+        let fmt = DateFormatter()
+        fmt.dateFormat = "HH"
+        fmt.timeZone = locationTimeZone
+        return fmt.string(from: date)
     }
-    
+
     private func weekdayString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E"
-        formatter.timeZone = locationTimeZone
-        return formatter.string(from: date)
+        let fmt = DateFormatter()
+        fmt.dateFormat = "E"
+        fmt.timeZone = locationTimeZone
+        return fmt.string(from: date)
     }
-    
+
     func formatTime(_ date: Date?) -> String {
         guard let date = date else { return "--:--" }
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        formatter.timeZone = locationTimeZone
-        return formatter.string(from: date)
+        let fmt = DateFormatter()
+        fmt.timeStyle = .short
+        fmt.timeZone = locationTimeZone
+        return fmt.string(from: date)
     }
-    
+
     func uvCategory(for index: Int?) -> (description: String, color: Color) {
-        guard let index = index else { return ("Unknown", .gray) }
-        switch index {
-        case 0...2: return ("Low", .green)
-        case 3...5: return ("Moderate", .yellow)
-        case 6...7: return ("High", .orange)
-        case 8...10: return ("Very High", .red)
-        case 11...: return ("Extreme", .purple)
-        default:    return ("Unknown", .gray)
+        guard let i = index else { return ("Unknown", .gray) }
+        switch i {
+        case 0...2:   return ("Low", .green)
+        case 3...5:   return ("Moderate", .yellow)
+        case 6...7:   return ("High", .orange)
+        case 8...10:  return ("Very High", .red)
+        case 11...:   return ("Extreme", .purple)
+        default:      return ("Unknown", .gray)
         }
     }
-    
+
     func windDirectionAbbreviation(for angle: Angle?) -> String {
         guard let angle = angle else { return "---" }
         let deg = angle.degrees.truncatingRemainder(dividingBy: 360)
-                     .advanced(by: angle.degrees < 0 ? 360 : 0)
         let idx = Int(((deg + 11.25).truncatingRemainder(dividingBy: 360) / 22.5).rounded()) % 16
-        let directions = [
-            "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
-            "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"
-        ]
-        return directions[idx]
+        let dirs = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]
+        return dirs[idx]
     }
 }
-
