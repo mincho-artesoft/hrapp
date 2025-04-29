@@ -238,3 +238,4 @@ struct SubscriptionView: View {
         }
     }
 }
+
