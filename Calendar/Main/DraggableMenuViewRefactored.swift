@@ -30,7 +30,7 @@ struct DraggableMenuView<
 
     @Environment(\.colorScheme) private var colorScheme
     private var adaptiveBackground: Color {
-        colorScheme == .dark ? .black.opacity(0.8) : .white.opacity(0.8)
+        colorScheme == .dark ? .black : .white
     }
 
     // MARK: — Public enum
