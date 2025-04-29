@@ -1,27 +1,22 @@
 // SubscriptionManager.swift
-// ArteCalendar
-// Created by Aleksandar Svinarov on 29/4/25.
 
 import SwiftUI
 import StoreKit
 import UIKit  // Needed for UIApplication.shared.open
 
-/// Статуси на абонамента (по избор, ако използваш)
+/// Статуси на абонацията (по избор)
 enum SubscriptionStatus: String, CaseIterable {
     case base    = "Base"
     case advance = "Advance"
     case premium = "Premium"
 }
 
-/// Disambiguate from SwiftUI.Transaction.
 typealias StoreTransaction = StoreKit.Transaction
 
 @MainActor
 class SubscriptionManager: ObservableObject {
-    // Запазете това, ако ползвате SubscriptionStatus enum
     @AppStorage("subscriptionStatus") private var subscriptionStatusRaw: String = SubscriptionStatus.base.rawValue
 
-    /// Ако не ползвате enum, премахнете тези два реда и isSubscribed
     var subscriptionStatus: SubscriptionStatus {
         get { SubscriptionStatus(rawValue: subscriptionStatusRaw) ?? .base }
         set {
@@ -29,8 +24,6 @@ class SubscriptionManager: ObservableObject {
             objectWillChange.send()
         }
     }
-
-    // MARK: - Published state
 
     @Published var products: [Product] = []
     @Published var purchasedProductIDs: Set<String> = [] {
@@ -41,10 +34,7 @@ class SubscriptionManager: ObservableObject {
 
     private var updatesTask: Task<Void, Never>?
 
-    /// True ако има поне един активен entitlement
     var hasActiveSubscription: Bool { !purchasedProductIDs.isEmpty }
-
-    // MARK: - Init / Deinit
 
     static let shared = SubscriptionManager()
     private init() {
@@ -58,8 +48,6 @@ class SubscriptionManager: ObservableObject {
     deinit {
         updatesTask?.cancel()
     }
-
-    // MARK: - Load Products
 
     func loadProducts() async {
         await MainActor.run { isLoading = true }
@@ -78,16 +66,24 @@ class SubscriptionManager: ObservableObject {
                 self.products = ids.compactMap { id in
                     fetched.first(where: { $0.id == id })
                 }
-                print("Fetched products: \(self.products.map { $0.id })")
             }
         } catch {
             print("Failed to fetch products: \(error)")
         }
     }
 
-    // MARK: - Purchase / Upgrade
+    /// Връща true ако може да се селектира/new purchase или upgrade
+    func canPurchase(_ newProduct: Product) -> Bool {
+        // ако няма текуща – винаги може
+        guard hasActiveSubscription else { return true }
+        // ако е текущата – също може
+        if purchasedProductIDs.contains(newProduct.id) {
+            return true
+        }
+        // иначе само ако е upgrade Advance→Premium със същия период
+        return isUpgradeable(to: newProduct)
+    }
 
-    /// Проверява дали продуктът е upgrade Advance→Premium със същия период
     private func isUpgradeable(to newProduct: Product) -> Bool {
         guard let currentID = purchasedProductIDs.first,
               let current = products.first(where: { $0.id == currentID }),
@@ -100,11 +96,9 @@ class SubscriptionManager: ObservableObject {
             && curUnit == newUnit
     }
 
-    /// Извикваме за покупка или upgrade
     func purchase(_ product: Product) async {
-        // Блокирай само ако не е upgrade
-        if hasActiveSubscription && !isUpgradeable(to: product) {
-            print("Attempted to purchase, but already has active subscription.")
+        if hasActiveSubscription && !isUpgradeable(to: product) && !purchasedProductIDs.contains(product.id) {
+            print("Cannot purchase – already have non-upgradeable subscription.")
             return
         }
 
@@ -113,27 +107,20 @@ class SubscriptionManager: ObservableObject {
             switch result {
             case .success(let verification):
                 let transaction = try checkVerified(verification)
-                // регистрираме вътрешно
                 await MainActor.run { register(transaction: transaction) }
-                // приключваме транзакцията
                 await transaction.finish()
-                // **презареждаме entitlements**
                 await updatePurchasedStatus()
-                print("Purchase/upgrade successful for \(product.id)")
-
             case .userCancelled:
-                print("Purchase cancelled by user.")
+                break
             case .pending:
-                print("Purchase is pending.")
+                break
             @unknown default:
-                print("Unknown purchase result.")
+                break
             }
         } catch {
             print("Purchase failed: \(error)")
         }
     }
-
-    // MARK: - Background Updates Listener
 
     private func startListeningForUpdates() {
         updatesTask = Task.detached(priority: .background) { [weak self] in
@@ -143,31 +130,26 @@ class SubscriptionManager: ObservableObject {
                     let transaction = try await self.checkVerified(verification)
                     await MainActor.run { self.register(transaction: transaction) }
                     await transaction.finish()
-                    // **и тук презареждаме entitlements**
                     await self.updatePurchasedStatus()
                 } catch {
-                    print("Transaction update failed verification: \(error)")
+                    print("Update verification failed: \(error)")
                 }
             }
         }
     }
 
-    // MARK: - Update Purchased Status
-
-    /// Проверява текущите entitlements
     func updatePurchasedStatus() async {
-        print("Checking current entitlements...")
         var activeIDs = Set<String>()
         var expiryDates = [String: Date]()
 
         for await verification in StoreTransaction.currentEntitlements {
             do {
-                let transaction = try checkVerified(verification)
-                if transaction.revocationDate == nil {
-                    if let expiry = transaction.expirationDate, expiry > Date() {
-                        activeIDs.insert(transaction.productID)
-                        expiryDates[transaction.productID] = expiry
-                    }
+                let tx = try checkVerified(verification)
+                if tx.revocationDate == nil,
+                   let expiry = tx.expirationDate,
+                   expiry > Date() {
+                    activeIDs.insert(tx.productID)
+                    expiryDates[tx.productID] = expiry
                 }
             } catch {
                 print("Entitlement verification failed: \(error)")
@@ -177,34 +159,24 @@ class SubscriptionManager: ObservableObject {
         await MainActor.run {
             self.purchasedProductIDs = activeIDs
             self.expirationDates     = expiryDates
-            print("Updated purchased IDs: \(self.purchasedProductIDs)")
         }
     }
-
-    // MARK: - Register Transaction
 
     private func register(transaction: StoreTransaction) {
         guard transaction.revocationDate == nil else { return }
         guard products.contains(where: { $0.id == transaction.productID }) else { return }
-
         purchasedProductIDs.insert(transaction.productID)
         if let expiry = transaction.expirationDate {
             expirationDates[transaction.productID] = expiry
         }
     }
 
-    // MARK: - Verification
-
     func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {
-        case .unverified(_, let error):
-            throw error
-        case .verified(let safe):
-            return safe
+        case .unverified(_, let error): throw error
+        case .verified(let safe):     return safe
         }
     }
-
-    // MARK: - Helpers
 
     var sortedProducts: [Product] {
         products.sorted {
@@ -228,8 +200,6 @@ class SubscriptionManager: ObservableObject {
             subscriptionStatus = .base
         }
     }
-
-    // MARK: - Manage Subscriptions
 
     @MainActor
     func openManageSubscriptions() async {
