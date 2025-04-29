@@ -6,31 +6,23 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
     let onViewChange: ((Int) -> Void)?
     
     func makeUIView(context: Context) -> UIButton {
-        let button = UIButton(type: .system)
-        
-        // Задаваме бял цвят на иконите
-        button.tintColor = .white
-        
-        // Задаваме сив бекраунд на бутона
-        button.backgroundColor = .gray
-        
-        // Правим бутона заоблен
-        button.layer.cornerRadius = 15
-        button.clipsToBounds = true
-        
-        // Настройваме вътрешните отстъпи (ако е необходимо)
-        button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-        
-        // Първоначално задаване на композитната икона (основната икона + стрелка)
-        let initialImage = combinedImage(for: currentView)
-        button.setImage(initialImage, for: .normal)
-        
-        // Настройка на менюто
-        button.menu = buildViewMenu(for: button)
-        button.showsMenuAsPrimaryAction = true
-        
-        return button
-    }
+            let button = UIButton(type: .system)
+
+            // — Configure via UIButtonConfiguration instead of deprecated properties —
+            var config = UIButton.Configuration.plain()
+            config.baseBackgroundColor = .gray
+            config.baseForegroundColor = .white
+            config.cornerStyle = .capsule
+            config.contentInsets = .init(top: 6, leading: 6, bottom: 6, trailing: 6)
+            config.image = combinedImage(for: currentView)
+            config.imagePadding = 4
+
+            button.configuration = config
+            button.showsMenuAsPrimaryAction = true
+            button.menu = buildViewMenu(for: button)
+
+            return button
+        }
     
     func updateUIView(_ uiView: UIButton, context: Context) {
         uiView.setImage(combinedImage(for: currentView), for: .normal)

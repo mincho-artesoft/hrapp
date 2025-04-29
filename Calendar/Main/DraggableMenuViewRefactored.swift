@@ -140,10 +140,6 @@ struct DraggableMenuView<
         collapsedOffsetY: CGFloat
     ) -> some View {
 
-        // тук управляваме всички малки разстояния
-        let horizontalTopInset:  CGFloat = -6   // ↑ колкото по‑отрицателно, толкова по‑нагоре
-        let verticalTopInset:    CGFloat =  1   // разстояние между хор. и верт. секциите
-
         VStack(spacing: 0) {
 
             // ▸ дръжката

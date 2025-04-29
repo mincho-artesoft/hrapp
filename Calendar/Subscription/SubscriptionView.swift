@@ -16,14 +16,16 @@ struct SubscriptionView: View {
                 content // No horizontal padding here
             }
             .onAppear { setupDefaultSelection() }
-            .onChange(of: manager.products) { _ in setupDefaultSelection() }
-            .onChange(of: manager.hasActiveSubscription) { _ in
+            .onChange(of: manager.products) {
+                     setupDefaultSelection()
+                 }
+             .onChange(of: manager.hasActiveSubscription) {
                  if manager.hasActiveSubscription {
                      selectedProductID = manager.purchasedProductIDs.first
                  } else {
                      setupDefaultSelection()
                  }
-            }
+             }
         }
     }
 
@@ -178,7 +180,7 @@ struct SubscriptionView: View {
              print("Could not create subscription management URL.")
              return
          }
-         if await UIApplication.shared.canOpenURL(url) {
+         if UIApplication.shared.canOpenURL(url) {
              await UIApplication.shared.open(url)
          } else {
              print("Cannot open subscription management URL.")

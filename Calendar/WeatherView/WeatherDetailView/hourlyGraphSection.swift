@@ -421,11 +421,6 @@ extension WeatherDetailView{
                             let dotRect = CGRect(center: dotPoint, radius: 4)
                             context.fill(Path(ellipseIn: dotRect), with: .color(.white))
                             
-                            // 6) Figure out the time label (HH:mm)
-                            let selectedIndex = max(0, min(hourlyItemsForSelectedDate.count - 1,
-                                                           Int(round(fractionIndex))))
-                            let forecastItem = hourlyItemsForSelectedDate[selectedIndex]
-                            
                             let baseDate = hourlyItemsForSelectedDate[lowerIndex].date
                             let secondsOffset = (fractionIndex - CGFloat(lowerIndex)) * 3600.0
                             let interpolatedDate = baseDate.addingTimeInterval(TimeInterval(secondsOffset))

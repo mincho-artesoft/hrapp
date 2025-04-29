@@ -91,11 +91,11 @@ open class EventView: UIView {
         let finalString = NSMutableAttributedString()
         
         // 1) Показваме (ако трябва) календарна/holiday/birthday иконка преди заглавието
-        if let calImage = calendarAttachment.image {
+        if calendarAttachment.image != nil {
             finalString.append(NSAttributedString(attachment: calendarAttachment))
             finalString.append(NSAttributedString(string: " ", attributes: textAttributes))
         }
-        if let mainIcon = iconAttachment.image {
+        if iconAttachment.image != nil {
             finalString.append(NSAttributedString(attachment: iconAttachment))
             finalString.append(NSAttributedString(string: " ", attributes: textAttributes))
         }
@@ -104,7 +104,6 @@ open class EventView: UIView {
         finalString.append(NSAttributedString(string: wrapper.text, attributes: textAttributes))
         
         // 3) Видеоразговор ред (ако го има):
-        var hasVideoCall = false
         if let notes = wrapper.realEvent.notes,
            notes.contains("----( Video Call )----")
         {
@@ -123,7 +122,6 @@ open class EventView: UIView {
                 
                 finalString.append(NSAttributedString(attachment: videoAttachment))
                 finalString.append(NSAttributedString(string: " \(platform)", attributes: textAttributes))
-                hasVideoCall = true
             }
         }
 

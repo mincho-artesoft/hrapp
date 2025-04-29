@@ -514,3 +514,4 @@ class WeatherKitViewModel: ObservableObject {
         return directions[idx]
     }
 }
+

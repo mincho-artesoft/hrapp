@@ -81,11 +81,18 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-    nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
-        completionHandler([.alert, .sound, .badge])
+    nonisolated func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        // Достъп до payload-а, ако трябва
+        _ = notification.request.content.userInfo
 
+        // Вместо deprecated `.alert`, използваме новите опции `.banner` и/или `.list`
+        completionHandler([.banner, .list, .sound, .badge])
     }
+
     func application(
         _ application: UIApplication,
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],

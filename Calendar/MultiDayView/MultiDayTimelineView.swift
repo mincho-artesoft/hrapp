@@ -1,7 +1,7 @@
 import UIKit
 import EventKit
 
-public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @preconcurrency UIEditMenuInteractionDelegate {
+public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, UIEditMenuInteractionDelegate {
     private var highlightedDayIndexes: Set<Int> = []
     private var isCurrentlyOverAllDay = false
 

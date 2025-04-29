@@ -51,15 +51,6 @@ extension WeatherDetailView{
             }
             let dailyMaxSpeed = dayItem?.maxWindSpeed ?? 0
             let dailyMaxGust  = dayItem?.maxWindGust  ?? 0
-            
-            // Ако има daily item, извличаме посоката
-            let directionAbbrev: String = {
-                  if let item = dayItem {
-                      return directionAbbreviation(for: item.predominantWindDirection)
-                  } else {
-                      return "-"
-                  }
-              }()
 
             let isToday = Calendar.current.isDate(selectedDate, inSameDayAs: Date())
             let dailyMinWindSpeed = speeds.min() ?? 0

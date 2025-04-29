@@ -126,22 +126,22 @@ struct GoogleCalendarSharingView: View {
                                     .keyboardType(.emailAddress)
                                     .autocapitalization(.none)
                                     .disableAutocorrection(true)
-                                    .onChange(of: newEmailToShare) { newValue in
-                                        // 1) Ако skipNextRefilter е true, пропускаме еднократно
-                                        if skipNextRefilter {
-                                            skipNextRefilter = false
-                                            return
-                                        }
-                                        // 2) Ако полето е празно => няма предложения
-                                        if newValue.isEmpty {
-                                            filteredEmails = []
-                                            return
-                                        }
-                                        // 3) Иначе филтрираме
-                                        filteredEmails = allEmails.filter {
-                                            $0.localizedCaseInsensitiveContains(newValue)
-                                        }
-                                    }
+                                    .onChange(of: newEmailToShare) { _ /* oldValue */, newValue in
+                                           // 1) Ако skipNextRefilter е true, пропускаме еднократно
+                                           if skipNextRefilter {
+                                               skipNextRefilter = false
+                                               return
+                                           }
+                                           // 2) Ако полето е празно => няма предложения
+                                           if newValue.isEmpty {
+                                               filteredEmails = []
+                                               return
+                                           }
+                                           // 3) Иначе филтрираме
+                                           filteredEmails = allEmails.filter {
+                                               $0.localizedCaseInsensitiveContains(newValue)
+                                           }
+                                       }
                                 
                                 // Показваме autocomplete предложения
                                 if !filteredEmails.isEmpty && !newEmailToShare.isEmpty {

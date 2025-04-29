@@ -29,23 +29,21 @@ struct CalendarApp: App {
                     }
                 }
                 // Ако локацията се промени (напр. след разрешение от user), да презаредим времето:
-                .onChange(of: locationManager.currentLocation) { newLoc in
-                    guard let newLoc = newLoc else { return }
-                    weatherVM.fetchWeatherForCoords(
-                        latitude: newLoc.coordinate.latitude,
-                        longitude: newLoc.coordinate.longitude
-                    )
-                }
+                .onChange(of: locationManager.currentLocation) { _ /* oldLocation */, newLoc in
+                          guard let newLoc = newLoc else { return }
+                          weatherVM.fetchWeatherForCoords(
+                              latitude: newLoc.coordinate.latitude,
+                              longitude: newLoc.coordinate.longitude
+                          )
+                      }
         }
-        // На всяка смяна на state (active/inactive/background):
-        .onChange(of: scenePhase) { newPhase in
+        .onChange(of: scenePhase) { _ /* oldPhase */, newPhase in
             switch newPhase {
             case .active:
                 print("App is active. Starting sync timers.")
                 CalendarViewModel.shared.startGoogleCalendarSync()
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
                 
-                // Тук при active - сменяме иконата според датата + метео.
                 let date = Date()
                 let calendar = Calendar.current
                 let day = calendar.component(.day, from: date)
@@ -58,26 +56,19 @@ struct CalendarApp: App {
                 
                 let monthName = months[month - 1]
                 let weekdayName = weekdays[weekday - 1]
-                
-                // 1) Вземаме "cloud-bolt-rain", "cloud-snow", "sun" и т.н.
                 let weatherType = getCurrentWeatherType()
-                
-                // 2) Генерираме пълното име: напр. "icon_Apr_Fri_4_cloud-bolt-rain"
                 let iconName = "icon_\(monthName)_\(weekdayName)_\(day)_\(weatherType)"
                 
-                do {
-                    try AltIcon.setAppIcon(iconName)
-                } catch {
-                    print("Не намирам \(iconName). Слагам fallback (sun).")
-                    let fallbackName = "icon_\(monthName)_\(weekdayName)_\(day)_sun"
-                    try? AltIcon.setAppIcon(fallbackName)
-                }
+                AltIcon.setAppIcon(iconName)
+                print("Не намирам \(iconName). Слагам fallback (sun).")
+                let fallbackName = "icon_\(monthName)_\(weekdayName)_\(day)_sun"
+                AltIcon.setAppIcon(fallbackName)
                 
             case .background:
                 print("App in background. Stop sync timers.")
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
-                
+
             case .inactive:
                 print("App is inactive.")
                 

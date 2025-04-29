@@ -412,7 +412,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         let menuBtnSize: CGFloat   = 34
         let searchBtnSize: CGFloat = 34
-        let plusBtnSize:   CGFloat = 34
         let margin:  CGFloat       = 8
         
         let menuButtonX = navBar.bounds.width - menuBtnSize - 10
@@ -435,14 +434,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             width: searchBtnSize,
             height: searchBtnSize
         )
-        
-        let plusButtonX = searchButtonX - plusBtnSize - margin
-//        addEventButton.frame = CGRect(
-//            x: plusButtonX,
-//            y: centerY,
-//            width: plusBtnSize,
-//            height: plusBtnSize
-//        )
         
         var singleDayCarouselHeight: CGFloat = 70
         singleDayCarousel.isHidden = false
@@ -630,12 +621,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         weekView.setNeedsDisplay()
         allDayView.setNeedsLayout()
         
-        // -----------------------------------------------
-        // Добавяме логика за прогнозни данни за часовете
-        // -----------------------------------------------
-        // Проверяваме дали избраната дата (fromDate) е в интервала [днес, днес+9 дни].
-        let today = cal.startOfDay(for: Date())
-        let daysDiff = cal.dateComponents([.day], from: today, to: fromOnly).day ?? -1
         hoursColumnView.setNeedsDisplay()
         
         layoutSearchResultsIfNeeded()

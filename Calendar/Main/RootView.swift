@@ -319,7 +319,7 @@ struct RootView: View {
         .sheet(item: $eventToEdit) { theEvent in
             EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent)
         }
-        .onChange(of: eventToEdit) { newValue in
+        .onChange(of: eventToEdit) {
             Task {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                 if accessGranted {

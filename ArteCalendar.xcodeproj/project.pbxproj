@@ -27,22 +27,11 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		504530C12D9D4F7800471F6E /* Exceptions for "Calendar" folder in "Copy Bundle Resources" phase from "ArteCalendar" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 50B212492D4111B800ABB8D3 /* Resources */;
-			membershipExceptions = (
-				Calendar.entitlements,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		50B2124D2D4111B800ABB8D3 /* Calendar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "ArteCalendar" target */,
-				504530C12D9D4F7800471F6E /* Exceptions for "Calendar" folder in "Copy Bundle Resources" phase from "ArteCalendar" target */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";

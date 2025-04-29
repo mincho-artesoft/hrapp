@@ -135,8 +135,6 @@ struct MoonCard: View {
             return "phase_waxing_crescent"
         case .waxingGibbous:
             return "phase_waxing_gibbous"
-        default:
-            return "moon" // Резервно изображение
         }
     }
 }

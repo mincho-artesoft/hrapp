@@ -104,8 +104,12 @@ struct CalendarsSheetView: View {
         }
 
         // Persist sharing info
-        .onChange(of: googleSharingInfos) { _ in saveGoogleSharingInfos() }
-        .onChange(of: currentGoogleUserID) { _ in saveCurrentGoogleUserID() }
+        .onChange(of: googleSharingInfos) {
+            saveGoogleSharingInfos()
+        }
+        .onChange(of: currentGoogleUserID) {
+            saveCurrentGoogleUserID()
+        }
     }
 
     // MARK: - Sections
