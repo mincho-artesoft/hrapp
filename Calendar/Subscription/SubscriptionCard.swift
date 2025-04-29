@@ -1,7 +1,7 @@
 import SwiftUI
 import StoreKit
 
-struct SubscriptionCard: View {
+private struct SubscriptionCard: View {
     let product: Product
     let isActive: Bool
     let isSelected: Bool
