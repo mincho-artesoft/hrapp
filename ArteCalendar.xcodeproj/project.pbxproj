@@ -14,21 +14,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		50D8281C2D80218F004B3545 /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D8281C2D80218F004B3545 /* ArteCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArteCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "Calendar" target */ = {
+		50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "ArteCalendar" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 50B2124A2D4111B800ABB8D3 /* Calendar */;
+			target = 50B2124A2D4111B800ABB8D3 /* ArteCalendar */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		504530C12D9D4F7800471F6E /* Exceptions for "Calendar" folder in "Copy Bundle Resources" phase from "Calendar" target */ = {
+		504530C12D9D4F7800471F6E /* Exceptions for "Calendar" folder in "Copy Bundle Resources" phase from "ArteCalendar" target */ = {
 			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
 			buildPhase = 50B212492D4111B800ABB8D3 /* Resources */;
 			membershipExceptions = (
@@ -41,8 +41,8 @@
 		50B2124D2D4111B800ABB8D3 /* Calendar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "Calendar" target */,
-				504530C12D9D4F7800471F6E /* Exceptions for "Calendar" folder in "Copy Bundle Resources" phase from "Calendar" target */,
+				50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "ArteCalendar" target */,
+				504530C12D9D4F7800471F6E /* Exceptions for "Calendar" folder in "Copy Bundle Resources" phase from "ArteCalendar" target */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -76,16 +76,16 @@
 			children = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
 				504D17CF2D678413006E5D6E /* Frameworks */,
-				50D8281C2D80218F004B3545 /* Calendar.app */,
+				50D8281C2D80218F004B3545 /* ArteCalendar.app */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		50B2124A2D4111B800ABB8D3 /* Calendar */ = {
+		50B2124A2D4111B800ABB8D3 /* ArteCalendar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "Calendar" */;
+			buildConfigurationList = 50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "ArteCalendar" */;
 			buildPhases = (
 				50B212472D4111B800ABB8D3 /* Sources */,
 				50B212482D4111B800ABB8D3 /* Frameworks */,
@@ -98,7 +98,7 @@
 			fileSystemSynchronizedGroups = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
 			);
-			name = Calendar;
+			name = ArteCalendar;
 			packageProductDependencies = (
 				50D829892D886BBD004B3545 /* GoogleSignIn */,
 				50D8298B2D886BBD004B3545 /* GoogleSignInSwift */,
@@ -106,7 +106,7 @@
 				50AC17382D9C07280096F29D /* AltIcon */,
 			);
 			productName = Calendar;
-			productReference = 50D8281C2D80218F004B3545 /* Calendar.app */;
+			productReference = 50D8281C2D80218F004B3545 /* ArteCalendar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +124,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "Calendar" */;
+			buildConfigurationList = 50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "ArteCalendar" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -150,7 +150,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				50B2124A2D4111B800ABB8D3 /* Calendar */,
+				50B2124A2D4111B800ABB8D3 /* ArteCalendar */,
 			);
 		};
 /* End PBXProject section */
@@ -382,7 +382,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "Calendar" */ = {
+		50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "ArteCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50B212572D4111BA00ABB8D3 /* Debug */,
@@ -391,7 +391,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "Calendar" */ = {
+		50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "ArteCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50B2125A2D4111BA00ABB8D3 /* Debug */,

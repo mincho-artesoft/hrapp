@@ -6,28 +6,18 @@
     <!-- ===== Основни сведения ===== -->
     <key>CFBundleDevelopmentRegion</key>
     <string>en</string>
-
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
-
     <key>CFBundleIdentifier</key>
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
-
-    <!-- Вътрешно bundle-име • уникално, без интервали -->
     <key>CFBundleName</key>
     <string>ArteCalendarASD</string>
-
-    <!-- Версия, видима в App Store -->
     <key>CFBundleShortVersionString</key>
     <string>1.0</string>
-
-    <!-- Build номер -->
     <key>CFBundleVersion</key>
-    <string>1</string>
-
+    <string>4</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
 
@@ -35,19 +25,9 @@
     <key>CFBundleDisplayName</key>
     <string>ARTE Calendar</string>
 
-    <!-- ===== Икони ===== -->
+    <!-- ===== Първична икона ===== -->
     <key>CFBundleIcons</key>
     <dict>
-        <key>CFBundleAlternateIcons</key>
-        <dict>
-            <key>AppIcon2</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>AppIcon2</string>
-                </array>
-            </dict>
-        </dict>
         <key>CFBundlePrimaryIcon</key>
         <dict>
             <key>CFBundleIconFiles</key>
@@ -57,7 +37,7 @@
         </dict>
     </dict>
 
-    <!-- ===== Custom URL схеми ===== -->
+    <!-- ===== URL схеми ===== -->
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
@@ -95,7 +75,7 @@
         <string>remote-notification</string>
         <string>nearby-interaction</string>
         <string>audio</string>
-        <string>processing</string>            <!-- ⇒ изисква BGTaskSchedulerPermittedIdentifiers -->
+        <string>processing</string>
         <string>bluetooth-peripheral</string>
         <string>voip</string>
     </array>
@@ -107,17 +87,11 @@
         <string>com.deksan.calendarasd.processing</string>
     </array>
 
-    <!-- ===== (по избор) App Transport Security, Privacy keys и др. ===== -->
-    <!--
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <false/>
-    </dict>
-
+    <!-- ===== Privacy (Location) ===== -->
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Нуждаем се от вашето местоположение, за да …</string>
-    -->
+    <string>ARTE Calendar използва вашето местоположение, за да показва локални събития и изгрев/залез за текущата ви позиция.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>ARTE Calendar се нуждае от местоположението ви във фонов режим, за да актуализира напомняния, базирани на геозона.</string>
 
 </dict>
 </plist>

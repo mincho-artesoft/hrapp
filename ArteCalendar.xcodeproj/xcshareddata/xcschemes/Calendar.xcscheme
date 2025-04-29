@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "50B2124A2D4111B800ABB8D3"
-               BuildableName = "Calendar.app"
-               BlueprintName = "Calendar"
-               ReferencedContainer = "container:Calendar.xcodeproj">
+               BuildableName = "ArteCalendar.app"
+               BlueprintName = "ArteCalendar"
+               ReferencedContainer = "container:ArteCalendar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "50B2124A2D4111B800ABB8D3"
-            BuildableName = "Calendar.app"
-            BlueprintName = "Calendar"
-            ReferencedContainer = "container:Calendar.xcodeproj">
+            BuildableName = "ArteCalendar.app"
+            BlueprintName = "ArteCalendar"
+            ReferencedContainer = "container:ArteCalendar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <StoreKitConfigurationFileReference
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "50B2124A2D4111B800ABB8D3"
-            BuildableName = "Calendar.app"
-            BlueprintName = "Calendar"
-            ReferencedContainer = "container:Calendar.xcodeproj">
+            BuildableName = "ArteCalendar.app"
+            BlueprintName = "ArteCalendar"
+            ReferencedContainer = "container:ArteCalendar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
