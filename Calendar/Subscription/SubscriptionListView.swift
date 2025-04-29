@@ -9,11 +9,14 @@ struct SubscriptionListView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
-                Text(title)
-                    .font(.title2.bold())
-                    .padding(.top)
+            VStack(spacing: 0) {
+                if title == "Advance Plans"{
+                    AdvanceSubscriptionView()
 
+                }else if title == "Premium Plans"{
+                    PremiumSubscriptionView()
+                }
+                
                 HStack(spacing: 10) {
                     ForEach(products) { product in
                         let isActive = manager.purchasedProductIDs.contains(product.id)
@@ -55,6 +58,7 @@ struct SubscriptionListView: View {
                 }
             }
         }
+        Spacer()
     }
 
     @ViewBuilder

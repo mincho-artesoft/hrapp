@@ -138,6 +138,7 @@ class SubscriptionManager: ObservableObject {
         }
     }
 
+    /// Проверява текущите entitlements
     func updatePurchasedStatus() async {
         var activeIDs = Set<String>()
         var expiryDates = [String: Date]()
@@ -156,11 +157,18 @@ class SubscriptionManager: ObservableObject {
             }
         }
 
+        // Ако има поне един premium – махаме всички advance
+        if activeIDs.contains(where: { $0.contains("premium") }) {
+            activeIDs = activeIDs.filter { $0.contains("premium") }
+            expiryDates = expiryDates.filter { key, _ in key.contains("premium") }
+        }
+
         await MainActor.run {
             self.purchasedProductIDs = activeIDs
             self.expirationDates     = expiryDates
         }
     }
+
 
     private func register(transaction: StoreTransaction) {
         guard transaction.revocationDate == nil else { return }

@@ -28,7 +28,6 @@ struct SubscriptionView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding()
 
                 // Show subview per category
                 Group {
@@ -50,8 +49,8 @@ struct SubscriptionView: View {
                     }
                 }
                 .onAppear { setupDefaultSelection() }
-                .onChange(of: manager.products) { _ in setupDefaultSelection() }
-                .onChange(of: manager.hasActiveSubscription) { _ in
+                .onChange(of: manager.products) { setupDefaultSelection() }
+                .onChange(of: manager.hasActiveSubscription) {
                     if manager.hasActiveSubscription {
                         selectedProductID = manager.purchasedProductIDs.first
                     } else {
@@ -76,24 +75,5 @@ struct SubscriptionView: View {
         case .base:
             selectedProductID = nil
         }
-    }
-}
-
-// MARK: - Base Subscription View
-struct BaseSubscriptionView: View {
-    var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "gift")
-                .font(.system(size: 50))
-                .foregroundColor(.secondary)
-            Text("Base Plan")
-                .font(.title.bold())
-            Text("Enjoy basic features for free. Upgrade to Advance or Premium for more.")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-        }
-        .padding()
     }
 }
