@@ -8,6 +8,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                                                       UISearchBarDelegate {
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
 
+    private var didScrollToNow = false
+
     // MARK: - Public configuration
     public var showSingleDay: Bool = false {
         didSet {
@@ -766,6 +768,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
 
         // 8. Layout на рез-лтати от търсене (ако сме в режим на търсене)
         layoutSearchResultsIfNeeded()
+        
+        if !didScrollToNow {
+              scrollToCurrentTime()
+              didScrollToNow = true
+          }
     }
 
 
@@ -1156,6 +1163,31 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         } else {
             daysHeaderView.dailyForecasts = nil
         }
+    }
+
+    private func scrollToCurrentTime() {
+        let now = Date()
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.hour, .minute], from: now)
+        guard let hour = comps.hour, let minute = comps.minute else { return }
+
+        // Пресмятаме честичното число на часа
+        let hoursFloat = CGFloat(hour) + CGFloat(minute) / 60.0
+        // y-координата на линията „сега“
+        let yNow = 10 + hoursFloat * weekView.hourHeight
+
+        // Искаме yNow да е в средата на екрана:
+        let midScreenY = mainScrollView.bounds.height / 2
+        var targetOffsetY = yNow - midScreenY
+
+        // Ограничаваме до валидния диапазон
+        let maxOffsetY = max(0, mainScrollView.contentSize.height - mainScrollView.bounds.height)
+        targetOffsetY = min(max(targetOffsetY, 0), maxOffsetY)
+
+        // Скролваме без анимация
+        mainScrollView.setContentOffset(CGPoint(x: mainScrollView.contentOffset.x, y: targetOffsetY), animated: false)
+        hoursColumnScrollView.setContentOffset(CGPoint(x: 0, y: targetOffsetY), animated: false)
+        hoursColumnWeatherScrollView.setContentOffset(CGPoint(x: 0, y: targetOffsetY), animated: false)
     }
 
 }

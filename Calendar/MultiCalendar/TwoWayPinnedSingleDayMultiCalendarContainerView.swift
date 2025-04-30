@@ -14,6 +14,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     // Най-горе при другите свойства
     private var calendarsChangedObserver: NSObjectProtocol?
+    private var didScrollToNow = false
 
     // ---------------------------------------------------------
     // MARK: - Променливи свързани с календарите
@@ -624,6 +625,11 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         hoursColumnView.setNeedsDisplay()
         
         layoutSearchResultsIfNeeded()
+        
+        if !didScrollToNow {
+                scrollToCurrentTime()
+                didScrollToNow = true
+            }
     }
 
     
@@ -959,5 +965,29 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             top = presented
         }
         return top
+    }
+    
+    private func scrollToCurrentTime() {
+        let now = Date()
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.hour, .minute], from: now)
+        guard let hour = comps.hour, let minute = comps.minute else { return }
+
+        // Пресмятаме честичното число на часа
+        let hoursFloat = CGFloat(hour) + CGFloat(minute) / 60.0
+        // y-координата на линията „сега“
+        let yNow = -158 + hoursFloat * weekView.hourHeight
+
+        // Искаме yNow да е в средата на екрана:
+        let midScreenY = mainScrollView.bounds.height / 2
+        var targetOffsetY = yNow - midScreenY
+
+        // Ограничаваме до валидния диапазон
+        let maxOffsetY = max(0, mainScrollView.contentSize.height - mainScrollView.bounds.height)
+        targetOffsetY = min(max(targetOffsetY, 0), maxOffsetY)
+
+        // Скролваме без анимация
+        mainScrollView.setContentOffset(CGPoint(x: mainScrollView.contentOffset.x, y: targetOffsetY), animated: false)
+        hoursColumnScrollView.setContentOffset(CGPoint(x: 0, y: targetOffsetY), animated: false)
     }
 }
