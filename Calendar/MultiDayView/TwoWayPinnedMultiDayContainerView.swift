@@ -358,6 +358,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         hoursColumnWeatherScrollView.isScrollEnabled = false
         hoursColumnWeatherScrollView.addSubview(hoursColumnWeatherView)
         hoursColumnWeatherScrollView.layer.zPosition = 3
+        hoursColumnWeatherScrollView.isUserInteractionEnabled = false
         addSubview(hoursColumnWeatherScrollView)
         
         // daysHeaderScrollView
