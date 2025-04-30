@@ -33,7 +33,7 @@ struct DraggableMenuView<
 
     @Environment(\.colorScheme) private var colorScheme
     private var adaptiveBackground: Color {
-        colorScheme == .dark ? .black : .white
+        colorScheme == .dark ? .black.opacity(0.95) : .white.opacity(0.95)
     }
 
     // MARK: — Binding to external state

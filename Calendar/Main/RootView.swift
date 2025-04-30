@@ -297,8 +297,7 @@ struct RootView: View {
         }
         .onReceive(NotificationCenter.default.publisher(
             for: .notificationDraggableMenuViewSub)) { notification in
-                if let info = notification.userInfo,
-                   let value = info["subscriptionStatusRaw"] as? String {
+                if let info = notification.userInfo{
                         menuState = .full
                         selectedTabDraggableMenuView = 2
                 }
