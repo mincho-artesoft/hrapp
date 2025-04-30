@@ -10,6 +10,7 @@ struct RootView: View {
     @State private var selectedCalendars = Set<EKCalendar>()
     @State private var showCalendarChooser = false
     @State private var selectedTabDraggableMenuView = 0
+    @State private var menuState: MenuState = .collapsed
 
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
@@ -177,7 +178,7 @@ struct RootView: View {
                     .overlay(alignment: .bottom) {
                         if isPortrait {
                             DraggableMenuView(
-                                initialState: .collapsed,
+                                menuState: $menuState,
 
                                 // MARK: Bottom‑Left ▸ Today
                                 bottomLeft: {
@@ -294,6 +295,14 @@ struct RootView: View {
             .toolbarBackground(.visible, for: .bottomBar)
             .toolbarColorScheme(.light, for: .bottomBar)
         }
+        .onReceive(NotificationCenter.default.publisher(
+            for: .notificationDraggableMenuViewSub)) { notification in
+                if let info = notification.userInfo,
+                   let value = info["subscriptionStatusRaw"] as? String {
+                        menuState = .full
+                        selectedTabDraggableMenuView = 2
+                }
+            }
         .onAppear {
             Task {
                 // Искане на достъп до календара (по вашата логика)

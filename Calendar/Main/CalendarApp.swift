@@ -7,7 +7,8 @@ import CoreLocation
 @main
 struct CalendarApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+    @AppStorage("subscriptionStatus") private var storedSubscriptionStatusRaw: String = SubscriptionStatus.base.rawValue
+
     @Environment(\.scenePhase) private var scenePhase
     
     // Това е вашият WeatherKit ViewModel:
@@ -21,21 +22,28 @@ struct CalendarApp: App {
             RootView()
                 // Когато се появи RootView, опитваме да вземем текуща локация:
                 .onAppear {
-                    if let loc = locationManager.currentLocation {
-                        weatherVM.fetchWeatherForCoords(
-                            latitude: loc.coordinate.latitude,
-                            longitude: loc.coordinate.longitude
-                        )
-                    }
-                }
-                // Ако локацията се промени (напр. след разрешение от user), да презаредим времето:
-                .onChange(of: locationManager.currentLocation) { _ /* oldLocation */, newLoc in
-                          guard let newLoc = newLoc else { return }
-                          weatherVM.fetchWeatherForCoords(
-                              latitude: newLoc.coordinate.latitude,
-                              longitude: newLoc.coordinate.longitude
-                          )
-                      }
+                   // Принтираме при първо показване на RootView:
+                   print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
+                   
+                   // Пример: ако искаш да вземеш и enum-а от SubscriptionManager:
+                   let statusEnum = SubscriptionManager.shared.subscriptionStatus.rawValue
+                   print("📦 SubscriptionManager status: \(statusEnum)")
+
+                   // Съществуващата ти логика:
+                   if let loc = locationManager.currentLocation {
+                       weatherVM.fetchWeatherForCoords(
+                           latitude: loc.coordinate.latitude,
+                           longitude: loc.coordinate.longitude
+                       )
+                   }
+               }
+               .onChange(of: locationManager.currentLocation) { _, newLoc in
+                   guard let newLoc = newLoc else { return }
+                   weatherVM.fetchWeatherForCoords(
+                       latitude: newLoc.coordinate.latitude,
+                       longitude: newLoc.coordinate.longitude
+                   )
+               }
         }
         .onChange(of: scenePhase) { _ /* oldPhase */, newPhase in
             switch newPhase {

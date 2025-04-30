@@ -5,7 +5,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
     let currentView: Int
     let tintColor: UIColor
     let onViewChange: ((Int) -> Void)?
-    
+    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+
     // Инициализаторът задава по подразбиране .systemBlue за tintColor
     init(currentView: Int, tintColor: UIColor = .systemBlue, onViewChange: ((Int) -> Void)? = nil) {
         self.currentView = currentView
@@ -95,8 +96,24 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             image: multiCalendarIcon,
             state: currentView == 5 ? .on : .off
         ) { _ in
-            onViewChange?(5)
-            button.setImage(multiCalendarIcon, for: .normal)
+            if subscriptionManager.subscriptionStatus == .base {
+                let payload: [String: Any] = ["subscriptionStatusRaw": "Advance"]
+                NotificationCenter.default.post(
+                    name: .notificationDraggableMenuViewSub,
+                    object: nil,
+                    userInfo: payload
+                )
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    NotificationCenter.default.post(
+                        name: .notificationDraggableMenuViewSub,
+                        object: nil,
+                        userInfo: payload
+                    )
+                }
+            } else {
+                onViewChange?(5)
+                button.setImage(multiCalendarIcon, for: .normal)
+            }
         }
         
         let weatherAction = UIAction(

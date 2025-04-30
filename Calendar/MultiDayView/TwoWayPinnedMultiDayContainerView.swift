@@ -6,7 +6,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                                                       UIScrollViewDelegate,
                                                       UIGestureRecognizerDelegate,
                                                       UISearchBarDelegate {
-    
+    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+
     // MARK: - Public configuration
     public var showSingleDay: Bool = false {
         didSet {
@@ -870,9 +871,25 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             image: multiCalendarIcon,
             state: currentView == 5 ? .on : .off
         ) { [weak self] _ in
-            self?.currentView = 5
-            self?.onViewChange?(5)
-            self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
+            if self?.subscriptionManager.subscriptionStatus == .base {
+                let payload: [String: Any] = ["subscriptionStatusRaw": "Advance"]
+                NotificationCenter.default.post(
+                    name: .notificationDraggableMenuViewSub,
+                    object: nil,
+                    userInfo: payload
+                )
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    NotificationCenter.default.post(
+                        name: .notificationDraggableMenuViewSub,
+                        object: nil,
+                        userInfo: payload
+                    )
+                }
+            } else {
+                self?.currentView = 5
+                self?.onViewChange?(5)
+                self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
+            }
         }
         
         // Добавяне на нов UIAction за Weather

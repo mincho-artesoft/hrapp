@@ -13,7 +13,7 @@ struct GoogleSharingInfo: Codable, Equatable {
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
-
+    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     // MARK: - State
 
     @State private var googleSharingInfos: [String: GoogleSharingInfo] = [:]
@@ -356,23 +356,61 @@ struct CalendarsSheetView: View {
 
     private var googleSignInSection: some View {
         Section {
-            Button(action: signInWithGoogle) {
+            Button(action: {
+                if subscriptionManager.subscriptionStatus == .base {
+                    let payload: [String: Any] = ["subscriptionStatusRaw": "Advance"]
+                    NotificationCenter.default.post(
+                        name: .notificationDraggableMenuViewSub,
+                        object: nil,
+                        userInfo: payload
+                    )
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        NotificationCenter.default.post(
+                            name: .notificationDraggableMenuViewSub,
+                            object: nil,
+                            userInfo: payload
+                        )
+                    }
+                } else {
+                    // Ако вече е Advance или Premium, продължаваме нормално
+                    signInWithGoogle()
+                }
+            }) {
                 HStack {
                     Image("google_icon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 28, height: 28)
-                    Text(LocalizedStringKey("Sign in with Google"))
+                    Text("Sign in with Google")
                 }
             }
             .buttonStyle(PlainButtonStyle())
-//            .listRowBackground(Color.clear)
         }
     }
 
+
     private var microsoftSignInSection: some View {
         Section {
-            Button(action: signInWithMicrosoft) {
+            Button(action: {
+                if subscriptionManager.subscriptionStatus == .base  || subscriptionManager.subscriptionStatus == .advance{
+                    let payload: [String: Any] = ["subscriptionStatusRaw": "Premium"]
+                    NotificationCenter.default.post(
+                        name: .notificationDraggableMenuViewSub,
+                        object: nil,
+                        userInfo: payload
+                    )
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        NotificationCenter.default.post(
+                            name: .notificationDraggableMenuViewSub,
+                            object: nil,
+                            userInfo: payload
+                        )
+                    }
+                } else {
+                    // Ако вече е Advance или Premium, продължаваме нормално
+                    signInWithMicrosoft()
+                }
+            } ) {
                 HStack {
                     Image("microsoft_icon")
                         .resizable()

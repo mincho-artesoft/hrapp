@@ -1,7 +1,3 @@
-// SubscriptionView.swift
-// ArteCalendar
-// Created by Aleksandar Svinarov on 29/4/25.
-
 import SwiftUI
 
 // MARK: - Category Enum
@@ -15,21 +11,27 @@ enum SubscriptionCategory: String, CaseIterable, Identifiable {
 // MARK: - Main Subscription View
 struct SubscriptionView: View {
     @StateObject private var manager = SubscriptionManager.shared
-    @State private var selectedCategory: SubscriptionCategory = .advance
+    @State private var selectedCategory: SubscriptionCategory = .base
     @State private var selectedProductID: String?
+
+    // State for showing the alert
+    @State private var showPlanAlert = false
+    @State private var alertMessage = ""
 
     var body: some View {
         NavigationView {
             VStack {
-                // Picker to switch sections
+                // Picker to switch between plans
                 Picker("Plan", selection: $selectedCategory) {
                     ForEach(SubscriptionCategory.allCases) { category in
                         Text(category.rawValue).tag(category)
                     }
                 }
+                .padding(.top)
+                .padding(.horizontal)
                 .pickerStyle(SegmentedPickerStyle())
 
-                // Show subview per category
+                // Show the appropriate subview
                 Group {
                     switch selectedCategory {
                     case .base:
@@ -48,6 +50,24 @@ struct SubscriptionView: View {
                         )
                     }
                 }
+                // Listen for notification and trigger alert
+                .onReceive(NotificationCenter.default.publisher(
+                    for: .notificationDraggableMenuViewSub)) { notification in
+                    if let info = notification.userInfo,
+                       let value = info["subscriptionStatusRaw"] as? String {
+                        switch value {
+                        case "Advance":
+                            alertMessage = "You need an active Advance plan to access this section."
+                            selectedCategory = .advance
+                        case "Premium":
+                            alertMessage = "You need an active Premium plan to access this section."
+                            selectedCategory = .premium
+                        default:
+                            return
+                        }
+                        showPlanAlert = true
+                    }
+                }
                 .onAppear { setupDefaultSelection() }
                 .onChange(of: manager.products) { setupDefaultSelection() }
                 .onChange(of: manager.hasActiveSubscription) {
@@ -61,7 +81,15 @@ struct SubscriptionView: View {
                 Spacer()
             }
             .background(Color(.systemGroupedBackground).ignoresSafeArea())
+            // Alert presentation
+            .alert("Plan Required", isPresented: $showPlanAlert) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(alertMessage)
+            }
         }
+        .cornerRadius(10)
+        .padding(.horizontal)
     }
 
     private func setupDefaultSelection() {
