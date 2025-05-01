@@ -6,7 +6,7 @@ extension WeatherDetailView{
     func hourlyGraphSection() -> some View {
         // Избираме актуалната дата (сега) и изчисляваме дял от деня (0.0...1.0)
         let now = Date()
-        let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
+        let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
         let secondsFromMidnight = now.timeIntervalSince(startOfSelectedDay)
         let fractionOfDay = secondsFromMidnight / (24 * 3600)
         
@@ -190,13 +190,11 @@ extension WeatherDetailView{
                         
                         // Ако избраният ден съвпада с днешния, поставяме затъмняващ слой и вертикална линия,
                         // които използват една и съща дробна стойност (fractionOfDay)
-                        if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                        if customCalendar.isDate(now, inSameDayAs: selectedDate) {
                             let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
-                            // Полупрозрачен правоъгълник, който покрива частта до текущото време
                             Rectangle()
                                 .fill(Color.black.opacity(0.4))
                                 .frame(width: overlayWidth)
-                            
                         }
                     }
                 }
@@ -215,7 +213,7 @@ extension WeatherDetailView{
                     let effectiveWidth = size.width
                     let effectiveHeight = size.height
                     let origin = CGPoint(x: graphPadding, y: effectiveHeight - graphPadding)
-                    let graphContentWidth  = effectiveWidth - graphPadding * 2
+                    var graphContentWidth  = effectiveWidth - graphPadding * 2
                     let graphContentHeight = effectiveHeight - graphPadding * 2
                     let yStep = graphContentHeight / CGFloat(yRange.max - yRange.min)
                     
@@ -367,37 +365,62 @@ extension WeatherDetailView{
                     }
                     
                     // *** Блок за текущото време и затъмняване ***
-                    
-                    if Calendar.current.isDate(Date(), inSameDayAs: selectedDate),
-                       let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
-                           Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .hour)
-                       }) {
-                        let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
+                    let now = Date()
+
+                    // 1) Начало на избрания ден според customCalendar
+                    let startOfDay = customCalendar.startOfDay(for: selectedDate)
+
+                    // 2) Час/минути/секунди от now според customCalendar
+                    let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
+                    let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
+                                           + Double(comps.minute ?? 0) * 60
+                                           + Double(comps.second ?? 0)
+
+                    // 3) Дял от деня
+                    let fractionOfDay = secondsFromMidnight / (24 * 3600)
+
+                    // 4) Ширина на графиката
+                    graphContentWidth = size.width - graphPadding * 2
+
+                    if customCalendar.isDate(now, inSameDayAs: selectedDate) {
+                        // X позиция според точните час/минути
+                        let currentXPos = origin.x + CGFloat(fractionOfDay) * graphContentWidth
                         let currentLineYOffset: CGFloat = graphPadding - 120
+
+                        // Вертикална линия
                         var verticalPath = Path()
                         verticalPath.move(to: CGPoint(x: currentXPos, y: currentLineYOffset))
                         verticalPath.addLine(to: CGPoint(x: currentXPos, y: origin.y))
-                        
-                        let currentTemp = currentTemperatures[currentHourIndex]
-                        let currentColor = colorForTemperature(currentTemp, in: yRange, using: gradient)
-                        
+
+                        // Интерполираме температурата за exact момент
+                        let rawIndex = fractionOfDay * CGFloat(currentTemperatures.count - 1)
+                        let lower = Int(floor(rawIndex))
+                        let upper = min(currentTemperatures.count - 1, lower + 1)
+                        let t = rawIndex - CGFloat(lower)
+                        let interpolatedTemp = currentTemperatures[lower]
+                                               + (currentTemperatures[upper] - currentTemperatures[lower]) * Double(t)
+                        let currentColor = colorForTemperature(interpolatedTemp, in: yRange, using: gradient)
+
                         context.stroke(
                             verticalPath,
                             with: .color(currentColor),
                             style: StrokeStyle(lineWidth: 2)
                         )
-                        
+
+                        // Затъмняваме до текущото време
                         let darkenRect = CGRect(
                             x: origin.x,
                             y: graphPadding,
                             width: currentXPos - origin.x,
-                            height: effectiveHeight - graphPadding * 2
+                            height: size.height - graphPadding * 2
                         )
                         context.fill(
                             Path(darkenRect),
                             with: .color(.black.opacity(0.3))
                         )
                     }
+
+
                     
                     // *** Блок за Drag Gesture – вертикална линия с интерполация ***
                     if let dragPoint = dragLocationTEMP {

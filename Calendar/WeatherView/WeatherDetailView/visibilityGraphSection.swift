@@ -29,9 +29,15 @@ extension WeatherDetailView{
             .padding(.bottom, 8)
         } else {
             // 5) Compute fraction of the day (for shading past hours if `selectedDate` is today)
+            // 5) Compute fractionOfDay using customCalendar (with vm.locationTimeZone)
             let now = Date()
-            let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
-            let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+            let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
+            let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
+            let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
+                                   + Double(comps.minute ?? 0) * 60
+                                   + Double(comps.second ?? 0)
+            let fractionOfDay = secondsFromMidnight / (24 * 3600)
+
             
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 5) {
@@ -95,7 +101,7 @@ extension WeatherDetailView{
                             }
                             
                             // Shading for "past" portion if this is today's date
-                            if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                            if customCalendar.isDate(now, inSameDayAs: selectedDate) {
                                 let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
                                 Rectangle()
                                     .fill(Color.black.opacity(0.4))
@@ -256,19 +262,16 @@ extension WeatherDetailView{
                             )                        }
                         
                         // Shade the “past” portion if it’s today
-                        if Calendar.current.isDate(now, inSameDayAs: selectedDate),
-                           let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
-                               Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
-                           }) {
-                            
-                            let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                            // Vertical line
-                            var vLine = Path()
-                            vLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
-                            vLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
-                            context.stroke(vLine, with: .color(.white.opacity(0.7)), style: StrokeStyle(lineWidth: 2))
-                            
-                            // Shading rectangle
+                        // shading & vertical line според точния момент (час+минути)
+                        if customCalendar.isDate(now, inSameDayAs: selectedDate) {
+                            // graphWidth/graphHeight вече са дефинирани:
+                            //    let graphWidth  = effectiveWidth  - graphPadding * 2
+                            //    let graphHeight = effectiveHeight - graphPadding * 2
+
+                            // 1) Позиция по X
+                            let currentXPos = origin.x + CGFloat(fractionOfDay) * graphWidth
+
+                            // 2) Затъмняване до текущия момент
                             let darkRect = CGRect(
                                 x: origin.x,
                                 y: graphPadding,
@@ -276,7 +279,18 @@ extension WeatherDetailView{
                                 height: graphHeight
                             )
                             context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+
+                            // 3) Вертикална линия през точния момент
+                            var timeLine = Path()
+                            timeLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                            timeLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                            context.stroke(
+                                timeLine,
+                                with: .color(.white.opacity(0.7)),
+                                style: StrokeStyle(lineWidth: 2)
+                            )
                         }
+
                         
                         // Hour labels at the bottom
                         for hour in hourMarkers {

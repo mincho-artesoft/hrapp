@@ -5,9 +5,16 @@ extension WeatherDetailView {
     @ViewBuilder
     func uVGraphSection() -> some View {
         let now = Date()
-        let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
-        let secondsFromMidnight = now.timeIntervalSince(startOfSelectedDay)
+        // използваме customCalendar за начало на деня в правилната часова зона
+        let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
+        // взимаме час/минути/секунди от now според customCalendar
+        let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
+        let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
+                               + Double(comps.minute ?? 0) * 60
+                               + Double(comps.second ?? 0)
+        // дял от деня (0…1)
         let fractionOfDay = secondsFromMidnight / (24 * 3600)
+
         // Извличане на UV данните за избрания ден (24 часа)
         let uvData = hourlyItemsForSelectedDate.map { $0.uvIndex }
         
@@ -81,7 +88,7 @@ extension WeatherDetailView {
                         }
                         
                         // Ако избраният ден е днес, поставяме затъмняващ слой до текущото време
-                        if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                        if customCalendar.isDate(now, inSameDayAs: selectedDate) {
                             let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
                             Rectangle()
                                 .fill(Color.black.opacity(0.4))
@@ -252,37 +259,28 @@ extension WeatherDetailView {
                     }
                     
                     // Затъмняване до текущия час, ако избраният ден е днес
-                    if Calendar.current.isDate(Date(), inSameDayAs: selectedDate),
-                       let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
-                           Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .hour)
-                       }) {
-                        let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                        var verticalPath = Path()
-                        verticalPath.move(to: CGPoint(x: currentXPos, y: graphPadding))
-                        verticalPath.addLine(to: CGPoint(x: currentXPos, y: origin.y))
-                        
-                        let currentUV = uvData[currentHourIndex]
-                        let normalized = (Double(currentUV) - yRange.min) / (yRange.max - yRange.min)
-                        let currentColor: Color = colorFromGradient(gradient: uvGradient, location: normalized)
-                        
-                        context.stroke(
-                            verticalPath,
-                            with: .color(currentColor),
-                            style: StrokeStyle(lineWidth: 2)
-                        )
-                        
-                        let darkenRect = CGRect(
+                    // shading & vertical line според fractionOfDay и customCalendar
+                    if customCalendar.isDate(now, inSameDayAs: selectedDate) {
+                        // вече имаш graphContentWidth, graphContentHeight и origin
+                        let currentXPos = origin.x + CGFloat(fractionOfDay) * graphContentWidth
+
+                        // shading до текущия момент
+                        let darkRect = CGRect(
                             x: origin.x,
                             y: graphPadding,
                             width: currentXPos - origin.x,
-                            height: effectiveHeight - graphPadding * 2
+                            height: graphContentHeight
                         )
-                        context.fill(
-                            Path(darkenRect),
-                            with: .color(.black.opacity(0.3))
-                        )
+                        context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+
+                        // vertical line през точния момент (час + минути)
+                        var timeLine = Path()
+                        timeLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                        timeLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                        // можеш да ползваш същия gradient за цвят или конкретен цвят
+                        context.stroke(timeLine, with: .color(.white.opacity(0.8)), style: StrokeStyle(lineWidth: 2))
                     }
-                    
+
                     // Часови надписи под графиката
                     for hour in hourMarkers {
                         let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))

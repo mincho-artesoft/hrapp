@@ -28,8 +28,15 @@ extension WeatherDetailView{
 
             // 4) fractionOfDay => колко част от деня е минала (за shading, ако е днес)
             let now = Date()
-            let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
-            let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+            // използваме customCalendar, за да вземем полунощта според зададената часова зона
+            let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
+            // дроб от деня, включващ минути/секунди
+            let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
+            let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
+                                   + Double(comps.minute ?? 0) * 60
+                                   + Double(comps.second ?? 0)
+            let fractionOfDay = secondsFromMidnight / (24 * 3600)
+
 
             VStack(spacing: 0) {
                 VStack {
@@ -125,7 +132,7 @@ extension WeatherDetailView{
                             }
                             
                             // Частично засенчваме миналите часове, ако избраният ден е "днес"
-                            if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                            if customCalendar.isDate(now, inSameDayAs: selectedDate) {
                                 let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
                                 Rectangle()
                                     .fill(Color.black.opacity(0.4))
@@ -285,14 +292,12 @@ extension WeatherDetailView{
                                 at: lowPoint
                             )                        }
                         
-                        // Затъмняваме “миналите” часове, ако денят е текущ
-                        if Calendar.current.isDate(now, inSameDayAs: selectedDate),
-                           let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
-                               Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
-                           }) {
-                            let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                            
-                            // Вертикална линия за текущия час
+                        // Текуща линия и shading спрямо fractionOfDay и customCalendar
+                        if customCalendar.isDate(now, inSameDayAs: selectedDate) {
+                            // позиция по X с точни минути
+                            let currentXPos = origin.x + CGFloat(fractionOfDay) * contentWidth
+
+                            // вертикална линия
                             var verticalLine = Path()
                             verticalLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
                             verticalLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
@@ -301,8 +306,8 @@ extension WeatherDetailView{
                                 with: .color(.white.opacity(0.8)),
                                 style: StrokeStyle(lineWidth: 2)
                             )
-                            
-                            // Правоъгълник за shading
+
+                            // shading до текущото време
                             let darkRect = CGRect(
                                 x: origin.x,
                                 y: graphPadding,
@@ -311,6 +316,7 @@ extension WeatherDetailView{
                             )
                             context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
                         }
+
                         
                         // Часови надписи долу
                         for hour in hourMarkers {

@@ -30,9 +30,14 @@ extension WeatherDetailView {
         VStack(spacing: 8) {
             // Хедър с текуща или средна влажност
             let now = Date()
+            let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
+            let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
+            let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
+                                   + Double(comps.minute ?? 0) * 60
+                                   + Double(comps.second ?? 0)
+            let fractionOfDay = secondsFromMidnight / (24 * 3600)
+
             let averageHumidity = humidityData.reduce(0, +) / Double(humidityData.count)
-            let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
-            let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
 
             VStack(alignment: .leading, spacing: 5) {
                 if Calendar.current.isDate(selectedDate, inSameDayAs: now) {
@@ -85,7 +90,7 @@ extension WeatherDetailView {
                         }
                         
                         // Ако е днес, засенчваме частта на деня, която е минала
-                        if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                        if customCalendar.isDate(now, inSameDayAs: selectedDate) {
                             let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
                             Rectangle()
                                 .fill(Color.black.opacity(0.4))
@@ -223,16 +228,10 @@ extension WeatherDetailView {
                         )                    }
                     
                     // Ако е днес, засенчваме частта, която е минала
-                    if Calendar.current.isDate(now, inSameDayAs: selectedDate),
-                       let currentHourIndex = dayHourlyItems.firstIndex(where: {
-                           Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
-                       }) {
-                        let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                        var verticalLine = Path()
-                        verticalLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
-                        verticalLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
-                        context.stroke(verticalLine, with: .color(.white.opacity(0.7)), style: StrokeStyle(lineWidth: 2))
-                        
+                    if customCalendar.isDate(now, inSameDayAs: selectedDate) {
+                        let currentXPos = origin.x + CGFloat(fractionOfDay) * chartWidth
+
+                        // shading до текущия момент
                         let darkRect = CGRect(
                             x: origin.x,
                             y: graphPadding,
@@ -240,6 +239,16 @@ extension WeatherDetailView {
                             height: chartHeight
                         )
                         context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+
+                        // vertical line през текущия момент
+                        var timeLine = Path()
+                        timeLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                        timeLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                        context.stroke(
+                            timeLine,
+                            with: .color(.white.opacity(0.7)),
+                            style: StrokeStyle(lineWidth: 2)
+                        )
                     }
                     
                     for hour in hourMarkers {
@@ -257,56 +266,58 @@ extension WeatherDetailView {
                     // DRAG Gesture интерполация – показва влажност % и време
                     if let dragPoint = dragLocationHumidity {
                         if dragPoint.x >= origin.x && dragPoint.x <= origin.x + chartWidth {
+                            // 1) Интерполация на влажността
                             let fractionIndex = (dragPoint.x - origin.x) / xStep
-                            let lowerIndex = max(0, min(points.count - 1, Int(floor(fractionIndex))))
-                            let upperIndex = max(0, min(points.count - 1, lowerIndex + 1))
-                            let t = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
-                            
-                            let lowerValue = humidityData[lowerIndex]
-                            let upperValue = humidityData[upperIndex]
-                            let hVal = lowerValue + (upperValue - lowerValue) * Double(t)
-                            
+                            let lowerIndex   = max(0, min(points.count - 1, Int(floor(fractionIndex))))
+                            let upperIndex   = min(points.count - 1, lowerIndex + 1)
+                            let t            = (upperIndex == lowerIndex) ? 0 : (fractionIndex - CGFloat(lowerIndex))
+                            let lowerValue   = humidityData[lowerIndex]
+                            let upperValue   = humidityData[upperIndex]
+                            let hVal         = lowerValue + (upperValue - lowerValue) * Double(t)
+
+                            // 2) Позиция по Y и точка
                             var hY = points[lowerIndex].y
                             if upperIndex != lowerIndex {
                                 hY += t * (points[upperIndex].y - points[lowerIndex].y)
                             }
                             let dotPoint = CGPoint(x: dragPoint.x, y: hY)
-                            
+
+                            // 3) Вертикална линия
                             var vLine = Path()
                             vLine.move(to: CGPoint(x: dotPoint.x, y: graphPadding))
                             vLine.addLine(to: CGPoint(x: dotPoint.x, y: origin.y))
                             context.stroke(vLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
-                            
+
+                            // 4) Точка (dot)
                             let dotRect = CGRect(center: dotPoint, radius: 4)
                             context.fill(Path(ellipseIn: dotRect), with: .color(.white))
-                            
-                            let timeLabel: String
-                            if lowerIndex < dayHourlyItems.count,
-                               upperIndex < dayHourlyItems.count {
-                                let d1 = dayHourlyItems[lowerIndex].date
-                                let d2 = dayHourlyItems[upperIndex].date
-                                let totalInterval = d2.timeIntervalSince(d1)
-                                let interpolatedDate = d1.addingTimeInterval(totalInterval * Double(t))
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "HH:mm"
-                                dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
 
-                                timeLabel = dateFormatter.string(from: interpolatedDate)
-                            } else {
-                                timeLabel = "--:--"
-                            }
-                            
+                            // 5) Изчисляване на точното време спрямо fractionOfDay
+                            let ratio         = (dragPoint.x - origin.x) / chartWidth
+                            let secondsOffset = Double(ratio) * 24 * 3600
+                            let interpolatedDate = customCalendar.date(
+                                byAdding: .second,
+                                value: Int(secondsOffset),
+                                to: startOfSelectedDay
+                            )!
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "HH:mm"
+                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone
+                            let timeLabel = dateFormatter.string(from: interpolatedDate)
+
+                            // 6) Текст на етикета
                             let labelText = "\(timeLabel)\n\(Int(round(hVal * 100)))%"
                             let label = Text(labelText)
                                 .font(.system(size: 12, weight: .bold))
                                 .foregroundColor(.white)
-                            
+
+                            // 7) Позициониране на етикета
                             let labelOffset: CGFloat = 8
                             let horizontalAnchor: UnitPoint = lowerIndex >= 12 ? .trailing : .leading
                             let horizontalOffset: CGFloat = lowerIndex >= 12 ? -labelOffset : labelOffset
-                            let verticalAnchor: UnitPoint = hVal > 0.5 ? .top : .bottom
-                            let verticalOffset: CGFloat = hVal > 0.5 ? labelOffset : -20
-                            
+                            let verticalAnchor: UnitPoint   = hVal > 0.5 ? .top : .bottom
+                            let verticalOffset: CGFloat     = hVal > 0.5 ? labelOffset : -20
+
                             let combinedAnchor: UnitPoint = {
                                 if horizontalAnchor == .leading && verticalAnchor == .bottom {
                                     return .bottomLeading
@@ -318,11 +329,15 @@ extension WeatherDetailView {
                                     return .topTrailing
                                 }
                             }()
-                            
-                            let textPoint = CGPoint(x: dotPoint.x + horizontalOffset, y: dotPoint.y + verticalOffset)
+
+                            let textPoint = CGPoint(
+                                x: dotPoint.x + horizontalOffset,
+                                y: dotPoint.y + verticalOffset
+                            )
                             context.draw(label, at: textPoint, anchor: combinedAnchor)
                         }
                     }
+
                 }
                 .gesture(
                     DragGesture(minimumDistance: 0)

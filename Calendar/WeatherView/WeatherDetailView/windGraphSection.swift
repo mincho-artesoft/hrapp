@@ -9,6 +9,15 @@ extension WeatherDetailView{
         let gusts:  [Double] = hourlyItemsForSelectedDate.map { $0.windGust }
         let directions = hourlyItemsForSelectedDate.map { $0.windDirection }
         
+        let now = Date()
+        // използваме твоя customCalendar с правилната часова зона
+        let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
+        let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
+        let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
+                               + Double(comps.minute ?? 0) * 60
+                               + Double(comps.second ?? 0)
+        let fractionOfDay = secondsFromMidnight / (24 * 3600)
+
         // 2) Ако няма данни, показваме fallback изглед
         if speeds.isEmpty && gusts.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
@@ -131,9 +140,7 @@ extension WeatherDetailView{
                     // Ред с иконки, показващи посока на вятъра (на всеки 2 часа)
                     GeometryReader { geo in
                         ZStack(alignment: .leading) {
-                            let now = Date()
-                            let startOfSelectedDay = Calendar.current.startOfDay(for: selectedDate)
-                            let fractionOfDay = now.timeIntervalSince(startOfSelectedDay) / (24 * 3600)
+                          
                             
                             HStack(spacing: 0) {
                                 let twoHourItems = Array(directions.enumerated())
@@ -156,7 +163,7 @@ extension WeatherDetailView{
                             }
                             
                             // Частично засенчване (past shading), ако денят е днес
-                            if Calendar.current.isDate(now, inSameDayAs: selectedDate) {
+                            if customCalendar.isDate(now, inSameDayAs: selectedDate) {
                                 let overlayWidth = geo.size.width * CGFloat(fractionOfDay)
                                 Rectangle()
                                     .fill(Color.black.opacity(0.4))
@@ -314,21 +321,12 @@ extension WeatherDetailView{
                         }
                         
                         // Частично засенчване (past shading), ако денят е днес
-                        let now = Date()
-                        if Calendar.current.isDate(now, inSameDayAs: selectedDate),
-                           let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
-                               Calendar.current.isDate($0.date, equalTo: now, toGranularity: .hour)
-                           }) {
-                            let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                            var verticalLine = Path()
-                            verticalLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
-                            verticalLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
-                            context.stroke(
-                                verticalLine,
-                                with: .color(.white.opacity(0.8)),
-                                style: StrokeStyle(lineWidth: 1.5)
-                            )
-                            
+                        // shading & vertical line спрямо точния момент (час+минути)
+                        if customCalendar.isDate(now, inSameDayAs: selectedDate) {
+                            // contentWidth и contentHeight са вече дефинирани в началото на Canvas
+                            let currentXPos = origin.x + CGFloat(fractionOfDay) * contentWidth
+
+                            // shading до текущия момент
                             let darkRect = CGRect(
                                 x: origin.x,
                                 y: graphPadding,
@@ -336,6 +334,14 @@ extension WeatherDetailView{
                                 height: contentHeight
                             )
                             context.fill(Path(darkRect), with: .color(.black.opacity(0.2)))
+
+                            // вертикална линия през точния момент
+                            var timeLine = Path()
+                            timeLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                            timeLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                            context.stroke(timeLine,
+                                           with: .color(.white.opacity(0.8)),
+                                           style: StrokeStyle(lineWidth: 1.5))
                         }
                         
                         // Часови етикети отдолу

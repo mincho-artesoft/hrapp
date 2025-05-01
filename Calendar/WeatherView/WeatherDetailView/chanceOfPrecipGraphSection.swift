@@ -4,6 +4,8 @@ extension WeatherDetailView{
     
     @ViewBuilder
     func chanceOfPrecipGraphSection() -> some View {
+        
+        
         // Извличаме стойностите за вероятностите от часовата прогноза.
         let precipData = hourlyItemsForSelectedDate.map { $0.precipChance }
         // Задаваме фиксиран диапазон – от 0% до 100% (0.0 ... 1.0)
@@ -61,6 +63,15 @@ extension WeatherDetailView{
                 
                 let effectiveWidth = size.width
                 let effectiveHeight = size.height
+                let now = Date()
+                // вместо Calendar.current, използваме customCalendar
+                let startOfDay = customCalendar.startOfDay(for: selectedDate)
+                let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
+                let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
+                                       + Double(comps.minute ?? 0) * 60
+                                       + Double(comps.second ?? 0)
+                let fractionOfDay = secondsFromMidnight / (24 * 3600)
+
                 let origin = CGPoint(x: graphPadding, y: effectiveHeight - graphPadding)
                 let graphContentWidth = effectiveWidth - graphPadding * 2
                 let graphContentHeight = effectiveHeight - graphPadding * 2
@@ -203,28 +214,27 @@ extension WeatherDetailView{
                     )
                 }
                 
-                // Ако избраният ден е текущ, затъмняваме графичната област преди текущия час...
-                if Calendar.current.isDate(Date(), inSameDayAs: selectedDate),
-                   let currentHourIndex = hourlyItemsForSelectedDate.firstIndex(where: {
-                       Calendar.current.isDate($0.date, equalTo: Date(), toGranularity: .hour)
-                   }) {
-                    let currentXPos = origin.x + CGFloat(currentHourIndex) * xStep
-                    let darkenRect = CGRect(
+                // Шейд и вертикална линия в точния момент (час+минути) спрямо customCalendar
+                if customCalendar.isDate(now, inSameDayAs: selectedDate) {
+                    // graphContentWidth и graphContentHeight са вече дефинирани над Canvas
+                    let currentXPos = origin.x + CGFloat(fractionOfDay) * graphContentWidth
+
+                    // shading до текущото време
+                    let darkRect = CGRect(
                         x: origin.x,
                         y: graphPadding,
                         width: currentXPos - origin.x,
-                        height: effectiveHeight - graphPadding * 2
+                        height: graphContentHeight
                     )
-                    context.fill(
-                        Path(darkenRect),
-                        with: .color(.black.opacity(0.3))
-                    )
-                    // ...и добавяме вертикална линия, отбелязваща текущия час.
-                    var currentLine = Path()
-                    currentLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
-                    currentLine.addLine(to: CGPoint(x: currentXPos, y: effectiveHeight - graphPadding))
-                    context.stroke(currentLine, with: .color(.green), lineWidth: 2)
+                    context.fill(Path(darkRect), with: .color(.black.opacity(0.3)))
+
+                    // вертикална линия
+                    var timeLine = Path()
+                    timeLine.move(to: CGPoint(x: currentXPos, y: graphPadding))
+                    timeLine.addLine(to: CGPoint(x: currentXPos, y: origin.y))
+                    context.stroke(timeLine, with: .color(.green), lineWidth: 2)
                 }
+
                 
                 // Интерполация при Drag Gesture – показване на стойност на вероятността в проценти.
                 // Интерполация при Drag Gesture – показване на стойност на вероятността в проценти.
