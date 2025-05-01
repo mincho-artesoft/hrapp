@@ -27,8 +27,15 @@ extension WeatherDetailView {
             Group {
                 // Заглавната част
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("Today's \(uvCategory(for: dailyMaxUV)) \(dailyMaxUV)")
-                        .font(.system(size: 16, weight: .semibold))
+                    Text(
+                        String(
+                            format: NSLocalizedString("UVGraphHeader", comment: "Header for UV graph: {category} {index}"),
+                            uvCategory(for: dailyMaxUV),
+                            dailyMaxUV
+                        )
+                    )
+                    .font(.system(size: 16, weight: .semibold))
+
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
@@ -58,7 +65,7 @@ extension WeatherDetailView {
                                 .map { $0.element }
                             
                             if twoHourItemsForIcons.isEmpty {
-                                Text("No hourly data available for this day.")
+                                Text(NSLocalizedString("UVGraphNoHourlyData", comment: "No hourly data available for this day"))
                                     .font(.caption)
                                     .foregroundColor(.gray)
                                     .frame(maxWidth: .infinity, alignment: .center)
@@ -70,6 +77,7 @@ extension WeatherDetailView {
                                         .frame(maxWidth: .infinity)
                                 }
                             }
+
                         }
                         
                         // Ако избраният ден е днес, поставяме затъмняващ слой до текущото време
@@ -103,12 +111,13 @@ extension WeatherDetailView {
                     
                     // Рисуване на хоризонтални линии и етикети
                     let specialMarkers: [Int: String] = [
-                        1: "Low",
-                        3: "Moderate",
-                        6: "High",
-                        8: "Very High",
-                        11: "Extreme"
+                        1: NSLocalizedString("UVCategory_Low", comment: "UV category low"),
+                        3: NSLocalizedString("UVCategory_Moderate", comment: "UV category moderate"),
+                        6: NSLocalizedString("UVCategory_High", comment: "UV category high"),
+                        8: NSLocalizedString("UVCategory_VeryHigh", comment: "UV category very high"),
+                        11: NSLocalizedString("UVCategory_Extreme", comment: "UV category extreme")
                     ]
+
                     let gridMarkers: [Double] = Array(stride(from: 0, through: 12, by: 1))
                     for marker in gridMarkers {
                         let yPos = yPosition(for: marker)
@@ -235,7 +244,11 @@ extension WeatherDetailView {
                        let maxIndex = uvData.firstIndex(of: maxUV),
                        points.indices.contains(maxIndex) {
                         let highPoint = points[maxIndex]
-                        drawHLMarker(context: context, label: "Max", at: highPoint)
+                        drawHLMarker(
+                            context: context,
+                            label: NSLocalizedString("UVGraphMaxLabel", comment: "Max marker label"),
+                            at: highPoint
+                        )
                     }
                     
                     // Затъмняване до текущия час, ако избраният ден е днес
@@ -357,10 +370,16 @@ extension WeatherDetailView {
                 // Информационна секция под графиката
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text("Now, \(currentTimeString)")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .lineSpacing(3)
+                        Text(
+                            String(
+                                format: NSLocalizedString("UVGraphNowLabel", comment: "Now, {time}"),
+                                currentTimeString
+                            )
+                        )
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .lineSpacing(3)
+
                         Spacer()
                     }
                     .offset(x: 2)
@@ -387,7 +406,8 @@ extension WeatherDetailView {
         let moderateOrHigher = uvData.enumerated().filter { $0.element >= 1 }
         
         if moderateOrHigher.isEmpty {
-            return "No moderate or higher UV levels are expected for this day."
+            // Локализиран низ за липса на умерени или по-високи UV нива
+            return NSLocalizedString("UVAdvice_None", comment: "No moderate or higher UV levels are expected for this day.")
         } else {
             let earliestHourIndex = moderateOrHigher.first!.offset
             let latestHourIndex   = moderateOrHigher.last!.offset
@@ -406,29 +426,36 @@ extension WeatherDetailView {
             let minCategory = uvCategory(for: minUV)
             let maxCategory = uvCategory(for: maxUV)
             
-            let uvAdviceText = """
-            Sun protection recommended. UV levels range from \(minCategory) to \(maxCategory), \
-            reached between \(earliestStr) and \(latestStr).
-            """
+            // Локализиран форматен низ за съвет с диапазон и часове
+            let format = NSLocalizedString("UVAdvice_Range", comment: "Sun protection recommended. UV levels range from {minCategory} to {maxCategory}, reached between {earliestStr} and {latestStr}.")
             
-            return uvAdviceText
+            return String(
+                format: format,
+                minCategory,
+                maxCategory,
+                earliestStr,
+                latestStr
+            )
         }
     }
+
     
     func uvCategory(for uv: Int) -> String {
+        let key: String
         if uv >= 11 {
-            return "Extreme"
+            key = "UVCategory_Extreme"
         } else if uv >= 8 {
-            return "Very High"
+            key = "UVCategory_VeryHigh"
         } else if uv >= 6 {
-            return "High"
+            key = "UVCategory_High"
         } else if uv >= 3 {
-            return "Moderate"
+            key = "UVCategory_Moderate"
         } else if uv >= 1 {
-            return "Low"
+            key = "UVCategory_Low"
         } else {
-            return "None"
+            key = "UVCategory_None"
         }
+        return NSLocalizedString(key, comment: "UV risk category")
     }
-    
+
 }

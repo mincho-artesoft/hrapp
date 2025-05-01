@@ -344,16 +344,25 @@ struct WeatherDetailView: View {
     // MARK: - Subviews
     private var dynamicLabelText: String {
         switch selectedOption {
-        case 0: return "Conditions"
-        case 1: return "UV Index"
-        case 2: return "Wind"
-        case 3: return "Precipitation"
-        case 4: return "Humidity"
-        case 5: return "Visibility"
-        case 6: return "Pressure"
-        default: return "displayedCondition"
+        case 0:
+            return NSLocalizedString("Conditions", comment: "Label for Conditions tab")
+        case 1:
+            return NSLocalizedString("UV Index", comment: "Label for UV Index tab")
+        case 2:
+            return NSLocalizedString("Wind", comment: "Label for Wind tab")
+        case 3:
+            return NSLocalizedString("Precipitation", comment: "Label for Precipitation tab")
+        case 4:
+            return NSLocalizedString("Humidity", comment: "Label for Humidity tab")
+        case 5:
+            return NSLocalizedString("Visibility", comment: "Label for Visibility tab")
+        case 6:
+            return NSLocalizedString("Pressure", comment: "Label for Pressure tab")
+        default:
+            return NSLocalizedString("displayedCondition", comment: "Fallback label")
         }
     }
+
 
     private var dynamicLabelIcon: String {
         switch selectedOption {
@@ -513,11 +522,17 @@ struct WeatherDetailView: View {
     // MARK: - Convert wind direction (degrees) to textual abbreviation (N, NE, etc.)
     func directionAbbreviation(for degrees: Double) -> String {
         let d = degrees.truncatingRemainder(dividingBy: 360)
-        let dirs = ["N","NNE","NE","ENE","E","ESE","SE","SSE",
-                    "S","SSW","SW","WSW","W","WNW","NW","NNW"]
         let index = Int(((d + 11.25).truncatingRemainder(dividingBy: 360) / 22.5).rounded()) % 16
-        return dirs[index]
+        let keys = [
+            "Dir_N",   "Dir_NNE", "Dir_NE",  "Dir_ENE",
+            "Dir_E",   "Dir_ESE", "Dir_SE",  "Dir_SSE",
+            "Dir_S",   "Dir_SSW", "Dir_SW",  "Dir_WSW",
+            "Dir_W",   "Dir_WNW", "Dir_NW",  "Dir_NNW"
+        ]
+        return NSLocalizedString(keys[index],
+                                 comment: "Compass direction abbreviation")
     }
+
 
     // MARK: - Draw a min/max marker (circle + label)
     func drawMarker(
@@ -575,25 +590,47 @@ struct WeatherDetailView: View {
             let maxSpeed = Int(round(dailyMaxSpeed))
             let gustSpeed = Int(round(dailyMaxGust))
             
-            return "Wind is currently \(currentSpeed) km/h from the \(direction). Today, wind speeds are \(minSpeed) to \(maxSpeed) km/h, with gusts up to \(gustSpeed) km/h."
+            return String(
+                format: NSLocalizedString(
+                    "WindSummary_Current",
+                    comment: "Summary for today's wind: current speed, direction, range and gusts"
+                ),
+                currentSpeed,
+                direction,
+                minSpeed,
+                maxSpeed,
+                gustSpeed
+            )
         } else {
             // За друг ден – изчисляваме диапазона от часовата прогноза
             let minSpeed = Int(round(dailyMinWindSpeed))
             let maxSpeed = Int(round(dailyMaxSpeed))
             let gustSpeed = Int(round(dailyMaxGust))
-            return "Wind speeds range from \(minSpeed) to \(maxSpeed) km/h, with gusts up to \(gustSpeed) km/h."
+            return String(
+                format: NSLocalizedString(
+                    "WindSummary_Range",
+                    comment: "Summary for other days’ wind: speed range and gusts"
+                ),
+                minSpeed,
+                maxSpeed,
+                gustSpeed
+            )
         }
     }
 
     private func precipitationTotalsSection(for day: DayForecastItem) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Precipitation Totals")
+        // локализирани единици
+        let mmUnit = NSLocalizedString("UnitMillimeter", comment: "Millimeter unit abbreviation")
+        let cmUnit = NSLocalizedString("UnitCentimeter", comment: "Centimeter unit abbreviation")
+        
+        return VStack(alignment: .leading, spacing: 8) {
+            Text(NSLocalizedString("PrecipitationTotals_Title", comment: "Precipitation Totals title"))
                 .font(.system(size: 16, weight: .semibold))
             
             if Calendar.current.isDate(day.date, inSameDayAs: Date()) {
-                // Подробен изглед за текущия ден
+                // LAST 24 HOURS
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("LAST 24 HOURS")
+                    Text(NSLocalizedString("Last24h_Label", comment: "Last 24 hours label"))
                         .font(.caption.weight(.medium))
                         .foregroundColor(.secondary)
                     
@@ -602,46 +639,46 @@ struct WeatherDetailView: View {
                     
                     if rainLast == 0 && snowLast == 0 {
                         HStack {
-                            Label("Total", systemImage: "drop.fill")
+                            Label(NSLocalizedString("Total_Label", comment: "Total label"), systemImage: "drop.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.blue)
-                            Text("Precipitation")
+                            Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(day.precipLast24h)) mm")
+                            Text("\(Int(day.precipLast24h)) \(mmUnit)")
                                 .font(.system(size: 14))
                         }
                     } else if snowLast == 0 {
                         HStack {
-                            Label("Rain", systemImage: "circle.fill")
+                            Label(NSLocalizedString("Rain_Label", comment: "Rain label"), systemImage: "circle.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.blue)
-                            Text("Rain")
+                            Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainLast)) mm")
+                            Text("\(Int(rainLast)) \(mmUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
                     } else {
                         HStack {
-                            Label("Snow", systemImage: "circle.fill")
+                            Label(NSLocalizedString("Snow_Label", comment: "Snow label"), systemImage: "circle.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.white)
-                            Text("Snow")
+                            Text(NSLocalizedString("Snow_Label", comment: "Snow label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(String(format: "%.1f", snowLast)) cm")
+                            Text(String(format: "%.1f", snowLast) + " \(cmUnit)")
                                 .font(.system(size: 14))
                         }
                         HStack {
-                            Label("Rain", systemImage: "circle.fill")
+                            Label(NSLocalizedString("Rain_Label", comment: "Rain label"), systemImage: "circle.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.blue)
-                            Text("Rain")
+                            Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainLast)) mm")
+                            Text("\(Int(rainLast)) \(mmUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -649,8 +686,9 @@ struct WeatherDetailView: View {
                 }
                 .padding(.top, 5)
                 
+                // NEXT 24 HOURS
                 VStack(alignment: .leading, spacing: 5) {
-                    Text("NEXT 24 HOURS")
+                    Text(NSLocalizedString("Next24h_Label", comment: "Next 24 hours label"))
                         .font(.caption.weight(.medium))
                         .foregroundColor(.secondary)
                     
@@ -659,100 +697,101 @@ struct WeatherDetailView: View {
                     
                     if rainNext == 0 && snowNext == 0 {
                         HStack {
-                            Label("Total", systemImage: "drop.fill")
+                            Label(NSLocalizedString("Total_Label", comment: "Total label"), systemImage: "drop.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.blue)
-                            Text("Precipitation")
+                            Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(day.precipNext24h)) mm")
+                            Text("\(Int(day.precipNext24h)) \(mmUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
                     } else if snowNext == 0 {
                         HStack {
-                            Label("Rain", systemImage: "circle.fill")
+                            Label(NSLocalizedString("Rain_Label", comment: "Rain label"), systemImage: "circle.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.blue)
-                            Text("Rain")
+                            Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainNext)) mm")
+                            Text("\(Int(rainNext)) \(mmUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
                     } else {
                         HStack {
-                            Label("Snow", systemImage: "circle.fill")
+                            Label(NSLocalizedString("Snow_Label", comment: "Snow label"), systemImage: "circle.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.white)
-                            Text("Snow")
+                            Text(NSLocalizedString("Snow_Label", comment: "Snow label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(String(format: "%.1f", snowNext)) cm")
+                            Text(String(format: "%.1f", snowNext) + " \(cmUnit)")
                                 .font(.system(size: 14))
                         }
                         HStack {
-                            Label("Rain", systemImage: "circle.fill")
+                            Label(NSLocalizedString("Rain_Label", comment: "Rain label"), systemImage: "circle.fill")
                                 .labelStyle(.iconOnly)
                                 .foregroundColor(.blue)
-                            Text("Rain")
+                            Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainNext)) mm")
+                            Text("\(Int(rainNext)) \(mmUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
                     }
                 }
                 .padding(.top, 10)
+                
             } else {
-                // За ден, който не е текущ – използваме данните от reinAmount и snowfallAmount.
+                // Друг ден
                 let rainValue = day.reinAmount
                 let snowValue = day.snowfallAmount
                 
                 if rainValue == 0 && snowValue == 0 {
                     HStack {
-                        Label("Total", systemImage: "drop.fill")
+                        Label(NSLocalizedString("Total_Label", comment: "Total label"), systemImage: "drop.fill")
                             .labelStyle(.iconOnly)
                             .foregroundColor(.blue)
-                        Text("Precipitation")
+                        Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(day.precipitationAmount)) mm")
+                        Text("\(Int(day.precipitationAmount)) \(mmUnit)")
                             .font(.system(size: 14))
                     }
                 } else if snowValue == 0 {
                     HStack {
-                        Label("Rain", systemImage: "circle.fill")
+                        Label(NSLocalizedString("Rain_Label", comment: "Rain label"), systemImage: "circle.fill")
                             .labelStyle(.iconOnly)
                             .foregroundColor(.blue)
-                        Text("Rain")
+                        Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(rainValue)) mm")
+                        Text("\(Int(rainValue)) \(mmUnit)")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
                 } else {
                     HStack {
-                        Label("Snow", systemImage: "circle.fill")
+                        Label(NSLocalizedString("Snow_Label", comment: "Snow label"), systemImage: "circle.fill")
                             .labelStyle(.iconOnly)
                             .foregroundColor(.white)
-                        Text("Snow")
+                        Text(NSLocalizedString("Snow_Label", comment: "Snow label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(String(format: "%.1f", snowValue)) cm")
+                        Text(String(format: "%.1f", snowValue) + " \(cmUnit)")
                             .font(.system(size: 14))
                     }
                     HStack {
-                        Label("Rain", systemImage: "circle.fill")
+                        Label(NSLocalizedString("Rain_Label", comment: "Rain label"), systemImage: "circle.fill")
                             .labelStyle(.iconOnly)
                             .foregroundColor(.blue)
-                        Text("Rain")
+                        Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(rainValue)) mm")
+                        Text("\(Int(rainValue)) \(mmUnit)")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
@@ -761,6 +800,7 @@ struct WeatherDetailView: View {
         }
         .offset(y: -10)
     }
+
 
     private var aboutWindSpeedAndGustsSection: some View {
            VStack(alignment:.leading, spacing:5) {
@@ -790,256 +830,329 @@ struct WeatherDetailView: View {
     /// Генерира подробен текст за текущия ден, използвайки данните от WeatherKitViewModel (vm) за текущите условия,
     /// като падащите данни се комбинират с данните от обекта day (напр. за дневната мин/макс температура, ако vm не ги предоставя).
     private func generateCurrentDayForecastText(from day: DayForecastItem) -> String {
-        // Използваме shared вю модел – ако има налични данни, ги вземаме от него.
         let vm = WeatherKitViewModel.shared
         
-        // Текущата температура: ако vm.currentTemp има стойност, използваме я, иначе изчисляваме средната
-        let currentTemp = vm.currentTemp ?? ((day.minTemp + day.maxTemp) / 2.0)
-        // "Feels like": ако vm.currentFeelsLike има стойност, използваме я, иначе симулираме чрез отнемане на 2°
+        let currentTemp      = vm.currentTemp ?? ((day.minTemp + day.maxTemp) / 2.0)
         let currentFeelsLike = vm.currentFeelsLike ?? (currentTemp - 2.0)
+        let minTemp          = vm.todayMinTemp    ?? day.minTemp
+        let maxTemp          = vm.todayMaxTemp    ?? day.maxTemp
+        let condition        = vm.currentSymbol.lowercased()
         
-        // Ако за деня са зададени минимална/максимална температура (например vm.todayMinTemp), ги използваме, иначе данните от day.
-        let minTemp = vm.todayMinTemp ?? day.minTemp
-        let maxTemp = vm.todayMaxTemp ?? day.maxTemp
-        
-        // За символа използваме данните от vm, ако са зададени
-        let condition = vm.currentSymbol
-        
-        // Валежната вероятност – използваме данните от vm, ако са налични
+        // precipChanceText остава с %% вече форматирано
         let precipChanceText: String = {
             if let chance = vm.nextHourPrecipitationChance {
-                return "\(Int(chance * 100))%"
+                return String(format: "%d%%", Int(chance * 100))
             } else if let chance = day.precipChance {
-                return "\(Int(chance * 100))%"
+                return String(format: "%d%%", Int(chance * 100))
             }
-            return "N/A"
+            return NSLocalizedString("NA", comment: "Fallback when not available")
         }()
         
-        // За вятъра: ако vm.currentWindDirection има стойност, го използваме; иначе използваме данните от day
-        let windDir: String = {
-            if let angle = vm.currentWindDirection {
-                return directionAbbreviation(for: angle.degrees)
-            }
-            return directionAbbreviation(for: day.predominantWindDirection)
-        }()
+        let windDir = vm.currentWindDirection
+            .map { directionAbbreviation(for: $0.degrees) }
+          ?? directionAbbreviation(for: day.predominantWindDirection)
+        
         let windGust = vm.currentWindGust ?? day.maxWindGust
         
-        // UV индекс – използваме данните от vm или от day
         let uvText: String = {
-            if let uv = vm.currentUVIndex {
-                return "UV index up to \(uv)"
-            }
-            return "UV index up to \(day.maxUV)"
+            let uv = vm.currentUVIndex ?? day.maxUV
+            return String(format: NSLocalizedString("UVIndexFormat", comment: "UV index format"), uv)
         }()
         
-        // Влажност – тук ако няма текуща стойност, използваме диапазона от day
         let humidityText: String = {
-            // Ако currentHumidity има стойност, приемаме, че тя представя момента (например приблизително една стойност)
             if let hum = vm.currentHumidity {
-                return "Humidity around \(Int(round(hum * 100)))%"
+                return String(format: NSLocalizedString("HumidityFormat", comment: "Current humidity"), Int(round(hum*100)))
+            } else {
+                return String(
+                    format: NSLocalizedString("HumidityRangeFormat", comment: "Humidity range"),
+                    Int(round(day.humidityMin * 100)),
+                    Int(round(day.humidityMax * 100))
+                )
             }
-            return "Humidity from \(Int(round(day.humidityMin * 100)))% to \(Int(round(day.humidityMax * 100)))%"
         }()
         
-        return "\(Int(round(currentTemp)))° now with \(condition.lowercased()) conditions. There is a precipitation chance of \(precipChanceText). Wind from \(windDir) with gusts up to \(Int(round(windGust))) km/h. Today's temperature ranges from \(Int(round(minTemp)))° to \(Int(round(maxTemp)))° and feels like \(Int(round(currentFeelsLike)))°. \(uvText), and \(humidityText)."
+        let format = NSLocalizedString(
+            "CurrentDayForecastText",
+            comment: "Full summary for today's forecast: temp, condition, precip, wind, range, feels like, UV, humidity"
+        )
+        return String(
+            format: format,
+            Int(round(currentTemp)),
+            condition,
+            precipChanceText,
+            windDir,
+            Int(round(windGust)),
+            Int(round(minTemp)),
+            Int(round(maxTemp)),
+            Int(round(currentFeelsLike)),
+            uvText,
+            humidityText
+        )
     }
 
-    /// Генерира динамичен текст за друг ден, използвайки данните от DayForecastItem.
-    /// Тук текстът включва пълното име на деня, изчислен "feels like" диапазон (чрез отнемане на 3°) и кратко резюме за валежите.
     private func generateOtherDayForecastText(for day: DayForecastItem) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"  // Пълното име на деня, напр. "Friday"
+        formatter.dateFormat = "EEEE"
         let dayName = formatter.string(from: day.date)
         
         let feelsLikeMin = day.minTemp - 3.0
         let feelsLikeMax = day.maxTemp - 3.0
-        let windDir = directionAbbreviation(for: day.predominantWindDirection)
+        let windDir      = directionAbbreviation(for: day.predominantWindDirection)
         
         let precipSummary: String = {
             if day.rainLast24h == 0 && day.snowLast24h == 0 {
-                return "No precipitation recorded in the last 24 hours."
+                return NSLocalizedString("NoPrecipLast24h", comment: "No precip in last 24h")
             } else if day.snowLast24h == 0 {
-                return "It rained \(Int(round(day.rainLast24h))) mm in the last 24 hours."
+                return String(
+                    format: NSLocalizedString("RainLast24h", comment: "Rain in last 24h"),
+                    Int(round(day.rainLast24h))
+                )
             } else {
-                return "In the last 24 hours, snow measured \(String(format: "%.1f", day.snowLast24h)) cm and rain \(Int(round(day.rainLast24h))) mm."
+                return String(
+                    format: NSLocalizedString("SnowAndRainLast24h", comment: "Snow & rain in last 24h"),
+                    String(format: "%.1f", day.snowLast24h),
+                    Int(round(day.rainLast24h))
+                )
             }
         }()
         
-        return "\(dayName)'s low is \(Int(round(day.minTemp)))° and the high is \(Int(round(day.maxTemp)))°. The temperature will feel like \(Int(round(feelsLikeMin)))° to \(Int(round(feelsLikeMax)))°. Wind from \(windDir) is expected. \(precipSummary)"
+        let format = NSLocalizedString(
+            "OtherDayForecastText",
+            comment: "Full summary for another day: dayName, low, high, feelsLike-range, wind, precipSummary"
+        )
+        return String(
+            format: format,
+            dayName,
+            Int(round(day.minTemp)),
+            Int(round(day.maxTemp)),
+            Int(round(feelsLikeMin)),
+            Int(round(feelsLikeMax)),
+            windDir,
+            precipSummary
+        )
     }
+
 
     /// Показва секция за прогнозата – ако денят е текущ, заглавието е "Forecast" и се използват текущите данни от vm,
     /// а ако не е, заглавието е "Daily Summary" и се използват данните от DayForecastItem.
     private func forecastTempSection(for day: DayForecastItem) -> some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ? "Forecast" : "Daily Summary")
-                .font(.system(size: 16, weight: .semibold))
-            Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ?
-                 generateCurrentDayForecastText(from: day) :
-                 generateOtherDayForecastText(for: day))
-                .font(.system(size: 14))
-                .lineSpacing(3)
-                .foregroundColor(.gray)
+            let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
+            
+            Text(
+                NSLocalizedString(
+                    isToday ? "Forecast" : "DailySummary",
+                    comment: isToday
+                        ? "Title for today's forecast"
+                        : "Title for daily summary"
+                )
+            )
+            .font(.system(size: 16, weight: .semibold))
+            
+            Text(
+                isToday
+                    ? generateCurrentDayForecastText(from: day)
+                    : generateOtherDayForecastText(for: day)
+            )
+            .font(.system(size: 14))
+            .lineSpacing(3)
+            .foregroundColor(.gray)
         }
         .offset(x: -2, y: -10)
     }
 
+
     @ViewBuilder
     private func forecastPrecipitationSection(for day: DayForecastItem) -> some View {
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
-        // Compute weekday name outside of the view's conditional content.
         let dayName: String = {
             let formatter = DateFormatter()
             formatter.dateFormat = "EEEE"
             return formatter.string(from: day.date)
         }()
-        
+
         VStack(alignment: .leading, spacing: 5) {
-            Text(isToday ? "Forecast" : "Daily Summary")
-                .font(.system(size: 16, weight: .semibold))
-            
+            Text(
+                NSLocalizedString(
+                    isToday ? "Forecast_Title" : "DailySummary_Title",
+                    comment: "Section header: Forecast vs Daily Summary"
+                )
+            )
+            .font(.system(size: 16, weight: .semibold))
+
             if isToday {
-                // For the current day, show a detailed forecast.
-                Text("There has been \(Int(day.precipLast24h)) mm of precipitation in the last 24 hours. Today's total precipitation will be \(Int(day.precipitationAmount)) mm. In the next 24 hours, \(Int(day.precipNext24h)) mm of precipitation is expected.")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                Text(
+                    String(
+                        format: NSLocalizedString(
+                            "ForecastPrecip_TodayFormat",
+                            comment: "Detailed precipitation forecast for today"
+                        ),
+                        Int(day.precipLast24h),
+                        Int(day.precipitationAmount),
+                        Int(day.precipNext24h)
+                    )
+                )
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             } else {
-                // For other days, display a concise summary using the dayName computed earlier.
-                Text("On \(dayName), the total precipitation will be \(Int(day.precipitationAmount)) mm.")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                Text(
+                    String(
+                        format: NSLocalizedString(
+                            "ForecastPrecip_OtherDayFormat",
+                            comment: "Precipitation forecast for another day, includes weekday name"
+                        ),
+                        dayName,
+                        Int(day.precipitationAmount)
+                    )
+                )
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4,y: -60)
+        .offset(x: 4, y: -60)
     }
+
 
     @ViewBuilder
     private func forecastHumiditySection(for day: DayForecastItem) -> some View {
-        // Проверяваме дали денят е текущия
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
-        
-        // Изчисляваме името на деня, ако не е "Today"
         let dayName: String = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE"
-            return formatter.string(from: day.date)
+            let fmt = DateFormatter()
+            fmt.dateFormat = "EEEE"
+            return fmt.string(from: day.date)
         }()
-        
-        // Средната влажност – приемаме, че е средната от минимална и максимална влажност (преобразувана в проценти)
         let avgHumidity = Int(round(((day.humidityMin + day.humidityMax) / 2) * 100))
-        
-        // Динамично изчисляваме dew point стойностите с помощта на аппроксимация
         let dewPointMin = Int(round(day.minTemp - ((100 - (day.humidityMin * 100)) / 5)))
         let dewPointMax = Int(round(day.maxTemp - ((100 - (day.humidityMax * 100)) / 5)))
-        
-        // Генерираме текста за dew point-а според това дали денят е текущ или не
-        let dewPointText: String = isToday ?
-            "The dew point is \(dewPointMin)° to \(dewPointMax)°." :
-            "The dew point will be \(dewPointMin)° to \(dewPointMax)°."
-        
+
+        // избираме правилния формат за dew point
+        let dewKey = isToday
+            ? "DewPoint_CurrentFormat"
+            : "DewPoint_FutureFormat"
+        let dewText = String(
+            format: NSLocalizedString(dewKey, comment: "Dew point sentence"),
+            dewPointMin, dewPointMax
+        )
+
         VStack(alignment: .leading, spacing: 5) {
-            Text(isToday ? "Forecast" : "Daily Summary")
-                .font(.system(size: 16, weight: .semibold))
-            
+            Text(NSLocalizedString(
+                isToday ? "Forecast_Title" : "DailySummary_Title",
+                comment: "Section title"
+            ))
+            .font(.system(size: 16, weight: .semibold))
+
             if isToday {
-                Text("Today, the average humidity is \(avgHumidity)%. \(dewPointText)")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                Text(String(
+                    format: NSLocalizedString("ForecastHumidity_Today", comment: "Today humidity summary"),
+                    avgHumidity,
+                    dewText
+                ))
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             } else {
-                Text("On \(dayName), the average humidity will be \(avgHumidity)%.\n\(dewPointText)")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                Text(String(
+                    format: NSLocalizedString("ForecastHumidity_Other", comment: "Other day humidity summary"),
+                    dayName,
+                    avgHumidity,
+                    dewText
+                ))
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .offset(x: 4, y: -40)
     }
     
-    func clarityDescription(for value: Int) -> String {
-        if value >= 30 {
-            return "perfectly clear"
-        } else if value >= 20 {
-            return "clear"
-        } else if value >= 10 {
-            return "partially clear"
-        } else {
-            return "hazy"
-        }
-    }
-    
     @ViewBuilder
     private func forecastVisibilitySection(for day: DayForecastItem) -> some View {
-        // Проверяваме дали денят е текущия ден
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
-        
-        // Ако денят не е текущ, извличаме пълното име на деня (например "Saturday")
         let dayName: String = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE"
-            return formatter.string(from: day.date)
+            let fmt = DateFormatter()
+            fmt.dateFormat = "EEEE"
+            return fmt.string(from: day.date)
         }()
-        
-        // Закръгляме стойностите за видимост (в км) към цели числа
         let minVis = Int(round(day.visibilityMin))
         let maxVis = Int(round(day.visibilityMax))
-        
-        // Локална функция, която определя описанието на видимостта динамично
-       
-        
-        // За текущия ден може да използваме средната стойност като индикатор за общото състояние
         let avgVis = (minVis + maxVis) / 2
         let avgClarity = clarityDescription(for: avgVis)
-        // За не-текущите дни отделно описваме минималната и максималната видимост
         let minClarity = clarityDescription(for: minVis)
         let maxClarity = clarityDescription(for: maxVis)
-        
+
         VStack(alignment: .leading, spacing: 5) {
-            // Заглавна част: "Forecast" за текущия ден или "Daily Summary" за друг ден
-            Text(isToday ? "Forecast" : "Daily Summary")
+            Text(isToday
+                 ? NSLocalizedString("Section_Forecast", comment: "Forecast title")
+                 : NSLocalizedString("Section_DailySummary", comment: "Daily Summary title"))
                 .font(.system(size: 16, weight: .semibold))
-            
+
             if isToday {
-                // Пример за текущ ден:
-                // "Today, the visibility will be perfectly clear, at 21 to 32 km."
-                Text("Today, the visibility will be \(avgClarity), at \(minVis) to \(maxVis) km.")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                Text(
+                    String(
+                        format: NSLocalizedString(
+                            "ForecastVisibility_TodayFormat",
+                            comment: "Today, the visibility will be %@, at %d to %d km."
+                        ),
+                        avgClarity,
+                        minVis,
+                        maxVis
+                    )
+                )
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             } else {
-                // Пример за не-текущ ден:
-                // "On Saturday, the lowest visibility will be clear at 13 km, and the highest will be perfectly clear at 28 km."
-                Text("On \(dayName), the lowest visibility will be \(minClarity) at \(minVis) km, and the highest will be \(maxClarity) at \(maxVis) km.")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                Text(
+                    String(
+                        format: NSLocalizedString(
+                            "ForecastVisibility_OtherFormat",
+                            comment: "On %@, the lowest visibility will be %@ at %d km, and the highest will be %@ at %d km."
+                        ),
+                        dayName,
+                        minClarity,
+                        minVis,
+                        maxClarity,
+                        maxVis
+                    )
+                )
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .offset(x: 4, y: 5)
     }
 
+    // Помощна функция за описание на видимостта
+    private func clarityDescription(for km: Int) -> String {
+        let key: String
+        switch km {
+        case 0..<5:   key = "Clarity_Foggy"
+        case 5..<15:  key = "Clarity_Hazy"
+        case 15..<30: key = "Clarity_Clear"
+        default:      key = "Clarity_PerfectlyClear"
+        }
+        return NSLocalizedString(key, comment: "Visibility clarity description")
+    }
 
     @ViewBuilder
     private func aboutVisibilitySection() -> some View {
-        VStack(alignment:.leading, spacing:5) {
-            Text("About Visibility")
-                .font(.system(size:16, weight:.semibold))
-            Text("""
-            Visibility tells you how far away you can clearly see objects like buildings and hills. It is a measure of the transparency of the air and does not take into account the amount of sunlight or the presence of obstructions. Visibility at or above 10 km is considered clear.
-            """)
-
-                .font(.system(size:14))
+        VStack(alignment: .leading, spacing: 5) {
+            Text(NSLocalizedString("AboutVisibility_Title", comment: "Section title for about visibility"))
+                .font(.system(size: 16, weight: .semibold))
+            Text(NSLocalizedString("AboutVisibility_Body", comment: "Detailed explanation of visibility"))
+                .font(.system(size: 14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
@@ -1052,52 +1165,67 @@ struct WeatherDetailView: View {
         // Определяме дали денят е днешният
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
         
-        // Извличаме почасовите стойности за налягането (в hPa) от hourlyItemsForSelectedDate
+        // Извличаме почасовите стойности за налягането (в hPa)
         let pressureValues = hourlyItemsForSelectedDate.map { $0.pressure }
         
         // Изчисляваме средното налягане (ако има данни, иначе fallback)
         let avgPressure: Int = {
-            if !pressureValues.isEmpty {
-                return Int(round(pressureValues.reduce(0, +) / Double(pressureValues.count)))
-            } else {
-                return 1013  // fallback стойност
-            }
+            guard !pressureValues.isEmpty else { return 1013 }
+            return Int(round(pressureValues.reduce(0, +) / Double(pressureValues.count)))
         }()
         
-        // Извличаме минималното налягане (ако няма данни, fallback)
+        // Извличаме минималното налягане (или fallback)
         let minPressure: Int = {
-            if let minVal = pressureValues.min() {
-                return Int(round(minVal))
-            } else {
-                return 1013
-            }
+            guard let minVal = pressureValues.min() else { return 1013 }
+            return Int(round(minVal))
         }()
         
-        VStack(alignment: .leading, spacing: 5) {
-            // Заглавна част – "Forecast" за днешния ден, "Daily Summary" за друг ден
-            Text(isToday ? "Forecast" : "Daily Summary")
-                .font(.system(size: 16, weight: .semibold))
+        // Името на деня (например "Saturday")
+        let weekday: String = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE"
+            return formatter.string(from: day.date)
+        }()
+        
+        return VStack(alignment: .leading, spacing: 5) {
+            // Заглавие: "Forecast" или "Daily Summary"
+            Text(
+                NSLocalizedString(
+                    isToday ? "SectionForecast" : "SectionDailySummary",
+                    comment: ""
+                )
+            )
+            .font(.system(size: 16, weight: .semibold))
             
             if isToday {
-                // За днешния ден използваме vm.currentPressure, ако е налична, иначе използваме средната стойност
+                // Днешна прогноза
                 let currentPressure = Int(round(vm.currentPressure ?? Double(avgPressure)))
-                Text("Pressure is currently \(currentPressure) hPa and falling. Today, the average pressure will be \(avgPressure) hPa, and the lowest pressure will be \(minPressure) hPa.")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                Text(
+                    String(
+                        format: NSLocalizedString("PressureForecast_Today", comment: ""),
+                        currentPressure,
+                        avgPressure,
+                        minPressure
+                    )
+                )
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             } else {
-                // Извличаме името на деня (например "Sunday")
-                let weekday: String = {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "EEEE"
-                    return formatter.string(from: day.date)
-                }()
-                Text("On \(weekday), the average pressure will be \(avgPressure) hPa, and the lowest pressure will be \(minPressure) hPa.")
-                    .font(.system(size: 14))
-                    .lineSpacing(3)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.leading)
+                // Прогноза за бъдещ/минал ден
+                Text(
+                    String(
+                        format: NSLocalizedString("PressureForecast_Other", comment: ""),
+                        weekday,
+                        avgPressure,
+                        minPressure
+                    )
+                )
+                .font(.system(size: 14))
+                .lineSpacing(3)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.leading)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -1106,73 +1234,66 @@ struct WeatherDetailView: View {
 
 
 
+
     @ViewBuilder
     private func aboutPressureSection() -> some View {
-        VStack(alignment:.leading, spacing:5) {
-            Text("About Pressure")
-                .font(.system(size:16, weight:.semibold))
-            Text("""
-            Significant, rapid changes in pressure are used to predict changes in the weather. For example, a drop in pressure can mean that rain or snow is on the way, and rising pressure can mean that weather will improve. Pressure is also called barometric pressure or atmospheric pressure.
-            """)
-
-                .font(.system(size:14))
+        VStack(alignment: .leading, spacing: 5) {
+            Text(NSLocalizedString("AboutPressure_Title", comment: "Section title for pressure info"))
+                .font(.system(size: 16, weight: .semibold))
+            Text(NSLocalizedString("AboutPressure_Body", comment: "Body text for pressure info"))
+                .font(.system(size: 14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .offset(x: 4, y: 15)
     }
-    
+
     @ViewBuilder
     private func aboutHumiditySection() -> some View {
-        VStack(alignment:.leading, spacing:5) {
-            Text("About Relative Humidity")
-                .font(.system(size:16, weight:.semibold))
-            Text("""
-            Relative humidity, commonly known just as humidity, is the amount of moisture in the air compared with what the air can hold. The air can hold more moisture at higher temperatures. A relative humidity near 100% means there may be dew or fog.
-            """)
-
-                .font(.system(size:14))
+        VStack(alignment: .leading, spacing: 5) {
+            Text(NSLocalizedString("AboutHumidity_Title", comment: "Section title for relative humidity info"))
+                .font(.system(size: 16, weight: .semibold))
+            Text(NSLocalizedString("AboutHumidity_Body", comment: "Body text for relative humidity info"))
+                .font(.system(size: 14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4,y: -40)
+        .offset(x: 4, y: -40)
     }
-    
+
     @ViewBuilder
     private func aboutDewPointSection() -> some View {
-        VStack(alignment:.leading, spacing:5) {
-            Text("About Precipitation Intensity")
-                .font(.system(size:16, weight:.semibold))
-            Text("""
-            The dew point is what the temperature would need to fall to for dew to form. It can be a useful way to tell how humid the air feels — the higher the dew point, the more humid it feels. A dew point that matches the current temperature means the relative humidity is 100%, and there may be dew or fog.
-            """)
-
-                .font(.system(size:14))
+        VStack(alignment: .leading, spacing: 5) {
+            Text(NSLocalizedString("AboutDewPoint_Title", comment: "Section title for dew point info"))
+                .font(.system(size: 16, weight: .semibold))
+            Text(NSLocalizedString("AboutDewPoint_Body", comment: "Body text explaining dew point"))
+                .font(.system(size: 14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4,y: -40)
+        .offset(x: 4, y: -40)
     }
     
     @ViewBuilder
     private func aboutPrecipitationSection() -> some View {
         VStack(alignment:.leading, spacing:5) {
-            Text("About Precipitation Intensity")
+            Text(NSLocalizedString("AboutPrecipitation_Title",
+                                   comment: "Section header for precipitation intensity"))
                 .font(.system(size:16, weight:.semibold))
-            Text("""
-            Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a "heavy" intensity, while an average rainfall or lighter drizzle can have a "moderate" or "light" intensity.
-            """)
 
+            Text(NSLocalizedString("AboutPrecipitation_Body",
+                                   comment: "Full description of how precipitation intensity is calculated"))
                 .font(.system(size:14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4,y: -60)
+        .offset(x: 4, y: -60)
     }
+
     
     @ViewBuilder
     private func forecastWindSection(for day: DayForecastItem) -> some View {
@@ -1238,70 +1359,92 @@ struct WeatherDetailView: View {
     private func windTableSection() -> some View {
         // MARK: Beaufort Data
         let beaufortData: [BeaufortScaleItem] = [
-            BeaufortScaleItem(bft: 0, description: "Calm",             kmhRange: "< 2"),
-            BeaufortScaleItem(bft: 1, description: "Light air",        kmhRange: "2 – 5"),
-            BeaufortScaleItem(bft: 2, description: "Light breeze",     kmhRange: "6 – 11"),
-            BeaufortScaleItem(bft: 3, description: "Gentle breeze",    kmhRange: "12 – 19"),
-            BeaufortScaleItem(bft: 4, description: "Moderate breeze",  kmhRange: "20 – 28"),
-            BeaufortScaleItem(bft: 5, description: "Fresh breeze",     kmhRange: "29 – 38"),
-            BeaufortScaleItem(bft: 6, description: "Strong breeze",    kmhRange: "39 – 49"),
-            BeaufortScaleItem(bft: 7, description: "High wind",        kmhRange: "50 – 61"),
-            BeaufortScaleItem(bft: 8, description: "Gale",             kmhRange: "62 – 74"),
-            BeaufortScaleItem(bft: 9, description: "Strong gale",      kmhRange: "75 – 88"),
-            BeaufortScaleItem(bft: 10, description: "Storm",           kmhRange: "89 – 102"),
-            BeaufortScaleItem(bft: 11, description: "Violent storm",   kmhRange: "103 – 117"),
-            BeaufortScaleItem(bft: 12, description: "Hurricane-force", kmhRange: "> 118")
+            .init(bft: 0,
+                  description: NSLocalizedString("Beaufort_0", comment: "Calm"),
+                  kmhRange: NSLocalizedString("BeaufortRange_0", comment: "< 2")),
+            .init(bft: 1,
+                  description: NSLocalizedString("Beaufort_1", comment: "Light air"),
+                  kmhRange: NSLocalizedString("BeaufortRange_1", comment: "2 – 5")),
+            .init(bft: 2,
+                  description: NSLocalizedString("Beaufort_2", comment: "Light breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_2", comment: "6 – 11")),
+            .init(bft: 3,
+                  description: NSLocalizedString("Beaufort_3", comment: "Gentle breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_3", comment: "12 – 19")),
+            .init(bft: 4,
+                  description: NSLocalizedString("Beaufort_4", comment: "Moderate breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_4", comment: "20 – 28")),
+            .init(bft: 5,
+                  description: NSLocalizedString("Beaufort_5", comment: "Fresh breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_5", comment: "29 – 38")),
+            .init(bft: 6,
+                  description: NSLocalizedString("Beaufort_6", comment: "Strong breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_6", comment: "39 – 49")),
+            .init(bft: 7,
+                  description: NSLocalizedString("Beaufort_7", comment: "High wind"),
+                  kmhRange: NSLocalizedString("BeaufortRange_7", comment: "50 – 61")),
+            .init(bft: 8,
+                  description: NSLocalizedString("Beaufort_8", comment: "Gale"),
+                  kmhRange: NSLocalizedString("BeaufortRange_8", comment: "62 – 74")),
+            .init(bft: 9,
+                  description: NSLocalizedString("Beaufort_9", comment: "Strong gale"),
+                  kmhRange: NSLocalizedString("BeaufortRange_9", comment: "75 – 88")),
+            .init(bft: 10,
+                  description: NSLocalizedString("Beaufort_10", comment: "Storm"),
+                  kmhRange: NSLocalizedString("BeaufortRange_10", comment: "89 – 102")),
+            .init(bft: 11,
+                  description: NSLocalizedString("Beaufort_11", comment: "Violent storm"),
+                  kmhRange: NSLocalizedString("BeaufortRange_11", comment: "103 – 117")),
+            .init(bft: 12,
+                  description: NSLocalizedString("Beaufort_12", comment: "Hurricane-force"),
+                  kmhRange: NSLocalizedString("BeaufortRange_12", comment: "> 118"))
         ]
-      
+
         VStack(alignment: .leading, spacing: 5) {
             // Main Header
-            Text("Beaufort Scale")
+            Text(NSLocalizedString("Beaufort_Scale", comment: "Beaufort Scale title"))
                 .font(.system(size: 16, weight: .semibold))
                 .offset(y: -5)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             // Column Headers
             HStack(spacing: 12) {
-                Text("bft")
+                Text(NSLocalizedString("Beaufort_Column_bft", comment: "BFT column header"))
                     .font(.system(size: 13, weight: .medium))
                     .frame(width: 20, alignment: .leading)
                     .offset(x: 19)
-                Text("Description")
+                Text(NSLocalizedString("Beaufort_Column_Description", comment: "Description column header"))
                     .font(.system(size: 13, weight: .medium))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .offset(x: 20)
-                Text("km/h")
+                Text(NSLocalizedString("Beaufort_Column_kmh", comment: "km/h column header"))
                     .font(.system(size: 13, weight: .medium))
                     .frame(width: 60, alignment: .leading)
             }
             .foregroundColor(.gray)
             .padding(.horizontal, 16)
             .padding(.bottom, 4)
+
             Divider()
                 .background(Color.white.opacity(0.2))
                 .padding(.horizontal, 16)
-            
+
             ForEach(beaufortData) { item in
-                // Compute progress for the gradient based on Beaufort level (0...1)
                 let progress = Double(item.bft) / 12.0
                 let circleColor = gradientColor(for: progress)
-                
+
                 VStack(spacing: 0) {
                     HStack(spacing: 12) {
-                        // Gradient-based colored circle
                         Circle()
                             .fill(circleColor)
                             .frame(width: 10, height: 10)
-                        
-                        // Beaufort number
+
                         Text("\(item.bft)")
                             .frame(width: 20, alignment: .leading)
-                        
-                        // Wind description
+
                         Text(item.description)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        // km/h range left-aligned
+
                         Text(item.kmhRange)
                             .frame(width: 60, alignment: .leading)
                     }
@@ -1309,7 +1452,7 @@ struct WeatherDetailView: View {
                     .foregroundColor(.white)
                     .padding(.vertical, 6)
                     .padding(.horizontal, 16)
-                    
+
                     Divider()
                         .background(Color.white.opacity(0.08))
                         .padding(.leading, 16)
@@ -1317,8 +1460,8 @@ struct WeatherDetailView: View {
             }
         }
         .background(Color.black)
-
     }
+
 
     private var aboutFeelsLikeSection: some View {
         VStack(alignment:.leading, spacing:5) {

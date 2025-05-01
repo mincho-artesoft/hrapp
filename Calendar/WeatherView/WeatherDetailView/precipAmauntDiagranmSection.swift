@@ -35,22 +35,33 @@ extension WeatherDetailView {
                     
                     // Показваме сумарна информация – ако и двата са налични, или само един от тях, или 0
                     if totalRain > 0 && totalSnow > 0 {
-                        Text("Rain: \(String(format: "%.1f", totalRain)) mm, Snow: \(String(format: "%.1f", totalSnow)) mm")
-                            .font(.system(size: 16, weight: .semibold))
+                        Text(String(
+                            format: NSLocalizedString("Precip_Total_RainSnowFormat", comment: "Format: Rain and snow totals"),
+                            totalRain,
+                            totalSnow
+                        ))
+                        .font(.system(size: 16, weight: .semibold))
                     } else if totalRain > 0 {
-                        Text("Rain: \(String(format: "%.1f", totalRain)) mm")
-                            .font(.system(size: 16, weight: .semibold))
+                        Text(String(
+                            format: NSLocalizedString("Precip_Total_RainFormat", comment: "Format: Rain total"),
+                            totalRain
+                        ))
+                        .font(.system(size: 16, weight: .semibold))
                     } else if totalSnow > 0 {
-                        Text("Snow: \(String(format: "%.1f", totalSnow)) mm")
-                            .font(.system(size: 16, weight: .semibold))
+                        Text(String(
+                            format: NSLocalizedString("Precip_Total_SnowFormat", comment: "Format: Snow total"),
+                            totalSnow
+                        ))
+                        .font(.system(size: 16, weight: .semibold))
                     } else {
-                        Text("Precipitation: 0 mm")
-                            .font(.system(size: 16, weight: .semibold))
+                        Text(NSLocalizedString("Precip_Total_None", comment: "No precipitation"))
+                        .font(.system(size: 16, weight: .semibold))
                     }
                     // Подзаглавен текст
-                    Text("Hourly bars for rain & snow (mm/h).")
+                    Text(NSLocalizedString("Precip_Bars_Subtitle", comment: "Subtitle for precipitation bars"))
                         .font(.system(size: 13))
                         .foregroundColor(.gray)
+
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
@@ -135,11 +146,16 @@ extension WeatherDetailView {
                         
                         let label: String
                         switch threshold {
-                        case 1.0:  label = "Light"
-                        case 4.0:  label = "Moderate"
-                        case 10.0: label = "Heavy"
-                        default:   label = ""
+                        case 1.0:
+                            label = NSLocalizedString("Precip_Level_Light", comment: "Light precipitation intensity")
+                        case 4.0:
+                            label = NSLocalizedString("Precip_Level_Moderate", comment: "Moderate precipitation intensity")
+                        case 10.0:
+                            label = NSLocalizedString("Precip_Level_Heavy", comment: "Heavy precipitation intensity")
+                        default:
+                            label = ""
                         }
+
                         let labelPt = CGPoint(x: origin.x, y: lineY)
                         context.draw(
                             Text(label)
@@ -246,12 +262,13 @@ extension WeatherDetailView {
                                 let hourStr = dateFormatter.string(from: item.date)
                                 let rVal = item.precipitationAmount
                                 let sVal = item.snowfallAmount
-                                let labelText = """
-                            \(hourStr)h
-                            Rain: \(String(format: "%.1f", rVal)) mm/h
-                            Snow: \(String(format: "%.1f", sVal)) mm/h
-                            """
-                                
+                                let labelText = String(
+                                    format: NSLocalizedString("Precip_Tooltip_Format", comment: "Tooltip for precipitation bar"),
+                                    hourStr,
+                                    rVal,
+                                    sVal
+                                )
+
                                 if hourIndex >= 12 {
                                     let tooltipPt = CGPoint(x: highlightX - 6, y: graphPadding + 15)
                                     context.draw(

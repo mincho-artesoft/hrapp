@@ -194,3 +194,457 @@
 "This Event Only" = "Само това събитие";
 "All Future Events" = "Всички бъдещи събития";
 "Cancel" = "Отмени";
+
+/* DraggableMenuView */
+"Calendar" = "Календар";
+"Subscriptions" = "Абонаменти";
+"Weather" = "Време";
+
+/* WeatherKitView */
+"Search for a city..." = "Търсене на град…";
+"Location access denied. Search for a city or grant access in Settings." = "Достъпът до местоположение е отказан. Потърсете град или предоставете достъп в Настройки.";
+"Cannot refresh. Location unknown." = "Не може да се опресни. Местоположението е неизвестно.";
+"Tap an hour to quickly add a calendar event." = "Докоснете час, за да добавите бързо събитие в календара.";
+"10-DAY FORECAST" = "10-ДНЕВНА ПРОГНОЗА";
+
+/* Labels */
+"Today" = "Днес";
+"Now" = "Сега";
+"Conditions" = "Условия";
+"UV Index" = "UV индекс";
+"Wind" = "Вятър";
+"Precipitation" = "Валежи";
+"Humidity" = "Влажност";
+"Visibility" = "Видимост";
+"Pressure" = "Налягане";
+
+/* Calendar event */
+"New Event" = "Ново събитие";
+
+/* Search placeholder */
+"Search for a city..." = "Търсете град…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Докоснете час, за да добавите бързо събитие в календара.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "Възприемана температура";
+"Similar to the actual temperature." = "Подобно на действителната температура.";
+"Wind is making it feel cooler." = "Вятърът я кара да се усеща по-хладно.";
+"Humidity is making it feel warmer." = "Влажността я кара да се усеща по-топло.";
+
+/* HumidityCard */
+"HUMIDITY" = "Влажност";
+"The dew point is %d° right now." = "В момента точката на оросяване е %d°.";
+"dewPoint.current" = "Точка на оросяване – %d° в момента.";
+
+/* MoonCard */
+"MOON PHASE" = "ФАЗА НА ЛУНАТА";
+"Moonrise" = "Изгрев на Луната";
+"Moonset" = "Залез на Луната";
+"Next %@" = "Следваща %@";
+"day" = "ден";
+"days" = "дни";
+"Data unavailable" = "Няма данни";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION" = "Валежи";
+"mm" = "мм";
+"today" = "днес";
+"Next expected is %d mm %@" = "Очакват се %d мм %@.";
+"No precipitation expected soon." = "Не се очакват валежи скоро.";
+
+/* PressureCard */
+"PRESSURE" = "НАЛЯГАНЕ";
+"hPa" = "hPa";
+"Low" = "Ниско";
+"High" = "Високо";
+
+/* SunsetCard */
+"SUNRISE" = "ИЗГРЕВ";
+"Sunrise: %@" = "ИЗГРЕВ: %@";
+"Sunset: %@" = "ЗАЛЕЗ: %@";
+
+/* UVIndexCard */
+"UV INDEX" = "UV индекс";
+"Low" = "Нисък";
+"Moderate" = "Умерен";
+"High" = "Висок";
+"Very High" = "Много висок";
+"Extreme" = "Екстремен";
+
+/* VisibilityCard */
+"VISIBILITY" = "Видимост";
+"km" = "км";
+"Perfectly clear view." = "Перфектна видимост.";
+"Excellent visibility." = "Отлична видимост.";
+"Good visibility." = "Добра видимост.";
+"Moderate visibility." = "Умерена видимост.";
+"Poor visibility." = "Слаба видимост.";
+"Very poor visibility." = "Много слаба видимост.";
+"VISIBILITY"                = "Видимост";
+"visibility.perfect"        = "Перфектно чиста видимост.";
+"visibility.excellent"      = "Отлична видимост.";
+"visibility.good"           = "Добра видимост.";
+"visibility.moderate"       = "Умерена видимост.";
+"visibility.poor"           = "Слаба видимост.";
+"visibility.verypoor"       = "Много слаба видимост.";
+"visibility.unknown"        = "—";
+
+/* WindCard */
+"WIND" = "ВЯТЪР";
+"Wind" = "Вятър";
+"Gusts" = "Пориви";
+"Direction" = "Посока";
+"km/h" = "км/ч";
+"Compass_N" = "С";
+"Compass_S" = "Ю";
+"Compass_W" = "З";
+"Compass_E" = "И";
+
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Неуспешно зареждане на данни за времето. Моля, проверете връзката си или опитайте по-късно.";
+"Falling" = "Падащо";
+"Rising" = "Възходящо";
+"Steady" = "Устойчиво";
+"Unknown" = "Неизвестно";
+"Sunny" = "Слънчево";
+"Cloudy" = "Облачно";
+"Partly Cloudy" = "Частично облачно";
+"Rain" = "Дъжд";
+"Drizzle" = "Моросене";
+"Snow" = "Сняг";
+"Thunderstorm" = "Гръмотевична буря";
+"Fog" = "Мъгла";
+"Partly Cloudy Night" = "Частично облачно нощем";
+"Clear Night" = "Ясна нощ";
+"Hazy" = "Мъгливо";
+"Conditions" = "Условия";
+"Today" = "Днес";
+"Now" = "Сега";
+
+/* Кардинални и междинни посоки на български */
+"cardinal.N"   = "С";    /* Север */
+"cardinal.NNE" = "ССИ";  /* Север-североизток */
+"cardinal.NE"  = "СИ";   /* Североизток */
+"cardinal.ENE" = "ИСИ";  /* Изток-североизток */
+"cardinal.E"   = "И";    /* Изток */
+"cardinal.ESE" = "ИЮИ";  /* Изток-югоизток */
+"cardinal.SE"  = "ЮИ";   /* Югоизток */
+"cardinal.SSE" = "ЮЮИ";  /* Юг-югоизток */
+"cardinal.S"   = "Ю";    /* Юг */
+"cardinal.SSW" = "ЮЮЗ";  /* Юг-югозапад */
+"cardinal.SW"  = "ЮЗ";   /* Югозапад */
+"cardinal.WSW" = "ЗЮЗ";  /* Запад-югозапад */
+"cardinal.W"   = "З";    /* Запад */
+"cardinal.WNW" = "ЗСЗ";  /* Запад-северозапад */
+"cardinal.NW"  = "СЗ";   /* Северозапад */
+"cardinal.NNW" = "ССЗ";  /* Север-северозапад */
+
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Вероятност за валежи";
+"Today's chance: %d%%" = "Вероятността за днес: %d%%";
+"%@'s chance: %d%%" = "Вероятността за %@: %d%%";
+"Max" = "Макс";
+"Min" = "Мин";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Ежедневната вероятност за валежи обикновено е по-висока от часовата вероятност.";
+"ChanceOfPrecipitation_Title" = "Вероятност за валежи";
+"TodaysChance"                = "Вероятност днес: %d%%";
+"OtherDayChance"              = "Вероятност за %@: %d%%";
+"DailyChanceExplanation"      = "Вероятността за цял ден е по-висока от тази на всеки час.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Възприемана температура";
+"Actual" = "Реална температура";
+"No hourly data available for this day." = "Няма часови данни за този ден.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Как температурaта се усеща в резултат на влажност, слънчева светлина или вятър.";
+"The actual air temperature." = "Действителната въздушна температура.";
+"HighLabelFormat" = "В: %d°";
+"LowLabelFormat"  = "Н: %d°";
+"HighLowLabelFormat" = "В:%d°   Н:%d°";
+"HourlyGraph_HighLabel" = "В";
+"HourlyGraph_LowLabel"  = "Н";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Влажност";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Влажност %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Средна влажност %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Минимум %d%% – максимум %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Макс";
+"ChartMarker_Min"           = "Мин";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Дъжд: %.1f мм, Сняг: %.1f мм";
+"Precip_Total_RainFormat"       = "Дъжд: %.1f мм";
+"Precip_Total_SnowFormat"       = "Сняг: %.1f мм";
+"Precip_Total_None"             = "Валежи: 0 мм";
+"Precip_Bars_Subtitle"          = "Часови ленти за дъжд и сняг (мм/ч).";
+"Precip_Level_Light"            = "Слаб";
+"Precip_Level_Moderate"         = "Умерен";
+"Precip_Level_Heavy"            = "Силен";
+"Precip_Tooltip_Format"         = "%@ч\nДъжд: %.1f мм/ч\nСняг: %.1f мм/ч";
+
+/* WeatherDetailView pressureGraphSection */
+/* Current pressure display */
+"Pressure_CurrentFormat"           = "Налягане %d hPa";
+
+/* No current pressure available */
+"Pressure_CurrentUnavailable"      = "Налягане: --";
+
+/* Today's min/max pressure */
+"Pressure_DailyMinMaxFormat"       = "Минимално днес %d hPa – максимално %d hPa";
+
+/* Average pressure display */
+"Pressure_AverageFormat"           = "Средно налягане %d hPa";
+
+/* Daily range of pressure */
+"Pressure_DailyRangeFormat"        = "Диапазон за деня: %d–%d hPa";
+
+/* Label for the maximum marker */
+"Visibility_MaxLabel" = "Макс";
+
+/* Label for the minimum marker */
+"Visibility_MinLabel" = "Мин";
+/* Section title for pressure */
+"Pressure_Title" = "Налягане";
+/* Fallback when no pressure data available */
+"Pressure_NoData" = "Няма налични данни за налягането за този ден.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Днес %@ %d";
+"UVGraphNoHourlyData"   = "Няма налични почасови данни за този ден.";
+"UVGraphMaxLabel"       = "Макс";
+"UVGraphNowLabel"       = "Сега, %@";
+"UVCategory_None"       = "Няма";
+"UVCategory_Low"        = "Нисък";
+"UVCategory_Moderate"   = "Умерен";
+"UVCategory_High"       = "Висок";
+"UVCategory_VeryHigh"   = "Много висок";
+"UVCategory_Extreme"    = "Екстремен";
+"UVAdvice_None"         = "Не се очакват умерени или по-високи UV нива за този ден.";
+"UVAdvice_Range"        = "Препоръчва се защита от слънцето. UV нивата варират от %@ до %@, достигнати между %@ и %@.";
+"UVGraphMaxLabel" = "Макс";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                  = "Видимост";
+"Visibility_NoData"                 = "Няма налични данни за видимост за този ден.";
+"Visibility_CurrentFormat"          = "Видимост %d км";
+"Visibility_DailyMinMaxFormat"      = "мин %d – макс %d км";
+"Visibility_NoCurrentData"          = "Няма текущи данни за видимост";
+"Visibility_HourlyAverages_NoData"  = "Няма почасови данни.";
+"Visibility_MaxLabel"               = "Макс";
+"Visibility_MinLabel"               = "Мин";
+"Visibility_TooltipFormat"          = "%@\n%.1f км";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header"              = "Скорост на вятъра и пориви";
+"WindGraph_NoData"              = "Няма налични данни за вятъра за този ден.";
+"WindGraph_SpeedHeader"         = "Скорост на вятъра %d км/ч";
+"WindGraph_GustHeader"          = "Пориви до %d км/ч";
+"WindGraph_SpeedRangeHeader"    = "Скорост %d-%d км/ч";
+"WindGraph_MaxSpeedLabel"       = "Макс скор";
+"WindGraph_MaxGustLabel"        = "Макс порив";
+"WindGraph_DragLabel"           = "%@\nСкорост: %d\nПорив: %d";
+
+/* WeatherDetailView */
+"Conditions" = "Условия";
+"UV Index" = "UV Индекс";
+"Wind" = "Вятър";
+"Precipitation" = "Валежи";
+"Humidity" = "Влажност";
+"Visibility" = "Видимост";
+"Pressure" = "Налягане";
+
+"Forecast" = "Прогноза";
+"Daily Summary" = "Дневен преглед";
+
+"Precipitation Totals" = "Общо валежи";
+"LAST 24 HOURS" = "ПОСЛЕДНИ 24 ЧАСА";
+"NEXT 24 HOURS" = "СЛЕДВАЩИ 24 ЧАСА";
+"Total" = "Общо";
+"Precipitation" = "Валежи";
+"Rain" = "Дъжд";
+"Snow" = "Сняг";
+
+"About Wind Speed and Gusts" = "За скорост и пориви на вятъра";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Скоростта на вятъра се изчислява чрез средна стойност за кратък период. Поривите са кратки изблици над тази средна стойност и обикновено траят под 20 секунди.";
+
+"About the Beaufort Scale" = "За скалата на Бофорт";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Скалата на Бофорт показва колко силен е вятърът при дадена скорост. Тази скала помага да разберете колко „ветровито“ ще е времето и какви ефекти може да има. Всяка стойност съответства на диапазон скорост на вятъра.";
+
+"About Feels Like Temperature" = "За „Как се усеща“ температурата";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "„Как се усеща“ показва колко топло или студено се усеща и може да се различава от реалната температура. Влияещи фактори са влажност, слънчева светлина и вятър.";
+
+"Options" = "Опции";
+"Temperature" = "Температура";
+"Use system setting (°C)" = "Използвай системни настройки (°C)";
+"Precipitation" = "Валежи";
+"mm, cm" = "мм, см";
+
+/* Dynamic label titles */
+"Conditions" = "Условия";
+"UV Index" = "УВ индекс";
+"Wind" = "Вятър";
+"Precipitation" = "Валежи";
+"Humidity" = "Влажност";
+"Visibility" = "Видимост";
+"Pressure" = "Налягане";
+
+/* Fallback key */
+"displayedCondition" = "показаноСъстояние";
+
+/* Titles */
+"Forecast"                   = "Прогноза";
+"DailySummary"               = "Дневен обзор";
+
+/* Current-day forecast */
+"CurrentDayForecastText"     = "%d° сега при %@ условия. Шансът за валежи е %@. Вятър от %@ със силни пориви до %d км/ч. Днешната температура варира от %d° до %d° и се усеща като %d°. %@, и %@.";
+"UVIndexFormat"              = "УВ индекс до %d";
+"HumidityFormat"             = "Влажност около %d%%";
+"HumidityRangeFormat"        = "Влажност от %d%% до %d%%";
+"NA"                         = "Няма данни";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Мин. за %@ е %d°, макс. е %d°. Ще се усеща като %d° до %d°. Вятър от %@. %@";
+"NoPrecipLast24h"            = "Няма валежи през последните 24 ч.";
+"RainLast24h"                = "Паднаха %d mm дъжд през последните 24 ч.";
+"SnowAndRainLast24h"         = "През последните 24 ч. сняг: %@ cm и дъжд: %d mm.";
+
+"Dir_N"   = "С";
+"Dir_NNE" = "ССИ";
+"Dir_NE"  = "СИ";
+"Dir_ENE" = "ИСИ";
+"Dir_E"   = "И";
+"Dir_ESE" = "ИЮИ";
+"Dir_SE"  = "ЮИ";
+"Dir_SSE" = "ЮЮИ";
+"Dir_S"   = "Ю";
+"Dir_SSW" = "ЮЮЗ";
+"Dir_SW"  = "ЮЗ";
+"Dir_WSW" = "ЗЮЗ";
+"Dir_W"   = "З";
+"Dir_WNW" = "ЗСЗ";
+"Dir_NW"  = "СЗ";
+"Dir_NNW" = "ССЗ";
+
+"UnitMillimeter"     = "мм";
+"UnitCentimeter"     = "см";
+
+"PrecipitationTotals_Title" = "Суми на валежите";
+"Last24h_Label"             = "ПОСЛЕДНИ 24 ЧАСА";
+"Next24h_Label"             = "СЛЕДВАЩИ 24 ЧАСА";
+"Total_Label"               = "Общо";
+"Precipitation_Label"       = "Валежи";
+"Rain_Label"                = "Дъжд";
+"Snow_Label"                = "Сняг";
+
+"WindSummary_Current" = "Вятърът в момента е %d км/ч от %@. Днес скоростите варират от %d до %d км/ч, с пориви до %d км/ч.";
+"WindSummary_Range"   = "Скоростите на вятъра варират от %d до %d км/ч, с пориви до %d км/ч.";
+
+"Beaufort_Scale"                = "Скала на Бофорт";
+"Beaufort_Column_bft"           = "bft";
+"Beaufort_Column_Description"   = "Описание";
+"Beaufort_Column_kmh"           = "км/ч";
+"Beaufort_0"                    = "ШЕПОТ";
+"Beaufort_1"                    = "Слабо ветрец";
+"Beaufort_2"                    = "Лека бриза";
+"Beaufort_3"                    = "Нежна бриза";
+"Beaufort_4"                    = "Умерена бриза";
+"Beaufort_5"                    = "Прясна бриза";
+"Beaufort_6"                    = "Силна бриза";
+"Beaufort_7"                    = "Силен вятър";
+"Beaufort_8"                    = "Буря";
+"Beaufort_9"                    = "Силна буря";
+"Beaufort_10"                   = "Стихия";
+"Beaufort_11"                   = "Жестока стихия";
+"Beaufort_12"                   = "Ураган";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Заглавие на секцията: Прогноза срещу Дневен преглед */
+"Forecast_Title" = "Прогноза";
+"DailySummary_Title" = "Обобщение за деня";
+
+/* Подробна прогноза за валежите за днес:
+   1-ви %d = валеж последни 24ч
+   2-ри %d = общи валежи за деня
+   3-ти %d = очаквани валежи следващи 24ч */
+"ForecastPrecip_TodayFormat" = "През последните 24 часа е имало %d мм валеж. Днес общите валежи ще бъдат %d мм. В следващите 24 часа се очакват %d мм валеж.";
+
+/* Прогноза за валежите за друг ден:
+   1-ви %@ = ден от седмицата
+   2-ри %d = общи валежи */
+"ForecastPrecip_OtherDayFormat" = "На %@ общите валежи ще бъдат %d мм.";
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "За интензивността на валежите";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Интензивността се изчислява въз основа на количеството дъжд или сняг, падащи за час, и показва колко силно ще се усещат валежите. Използва се и за други видове валежи, като киша и смесени зимни условия. Проливен дъжд или силна снежна буря могат да имат „силна“ интензивност, докато нормален дъжд или лека мъгла могат да имат „умерена“ или „лека“ интензивност.";
+
+/* Section titles */
+"Forecast_Title"               = "Прогноза";
+"DailySummary_Title"           = "Дневно обобщение";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Точката на оросяване е %d° до %d°.";
+"DewPoint_FutureFormat"        = "Точката на оросяване ще бъде %d° до %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Днес средната влажност е %d%%. %@";
+"ForecastHumidity_Other"       = "На %@ средната влажност ще бъде %d%%.\n%@";
+
+"AboutPressure_Title"  = "За налягането";
+"AboutPressure_Body"   = "Значителните и бързи промени в налягането се използват за прогнозиране на промените в времето. Например спадът на налягането може да означава идващ дъжд или сняг, а повишаването на налягането може да означава подобряване на времето. Налягането се нарича още барометрично или атмосферно налягане.";
+
+"AboutHumidity_Title"  = "За относителната влажност";
+"AboutHumidity_Body"   = "Относителната влажност, позната като просто влажност, е количеството влага в въздуха в сравнение с това, което въздухът може да задържи. Въздухът може да задържа повече влага при по-високи температури. Относителна влажност близка до 100% означава наличие на роса или мъгла.";
+
+"AboutDewPoint_Title" = "За точката на оросяване";
+"AboutDewPoint_Body"  = "Точката на оросяване е температурата, до която трябва да спадне въздухът, за да се образува роса. Това е полезен показател за това колко влажен се усеща въздухът – колкото по-висока е точката на оросяване, толкова по-влажно се усеща. Когато точката на оросяване съвпада с текущата температура, относителната влажност е 100% и може да има роса или мъгла.";
+
+"Section_Forecast"                     = "Прогноза";
+"Section_DailySummary"                 = "Дневно обобщение";
+"ForecastVisibility_TodayFormat"       = "Днес видимостта ще бъде %@, от %d до %d км.";
+"ForecastVisibility_OtherFormat"       = "На %@ най-ниската видимост ще е %@ при %d км, а най-високата ще е %@ при %d км.";
+"Clarity_Foggy"                        = "Мъгливо";
+"Clarity_Hazy"                         = "Замъглено";
+"Clarity_Clear"                        = "Ясно";
+"Clarity_PerfectlyClear"               = "Перфектна видимост";
+
+"AboutVisibility_Title" = "За видимостта";
+"AboutVisibility_Body" = "Видимостта показва колко далеч можете ясно да виждате обекти като сгради и хълмове. Това е мярка за прозрачността на въздуха и не отчита количеството слънчева светлина или наличието на прегради. Видимост от 10 км или повече се счита за ясна.";
+
+/* Section header for today */
+"SectionForecast" = "Прогноза";
+/* Section header for other days */
+"SectionDailySummary" = "Обобщение";
+/* Detailed forecast for today: current, average and low */
+"PressureForecast_Today" = "Налягането в момента е %d hPa и спада. Днес средното налягане ще бъде %d hPa, а най-ниското – %d hPa.";
+/* Forecast for another day: weekday, average and low */
+"PressureForecast_Other" = "На %@ средното налягане ще бъде %d hPa, а най-ниското – %d hPa.";

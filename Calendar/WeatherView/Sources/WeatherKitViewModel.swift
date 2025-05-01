@@ -192,7 +192,9 @@ class WeatherKitViewModel: ObservableObject {
             HourlyForecastItem(
                 id: h.date,
                 date: h.date,
-                hour: i == 0 ? "Now" : hourString(from: h.date),
+                hour: i == 0
+                    ? NSLocalizedString("Now", comment: "Label for current hour")
+                    : hourString(from: h.date),
                 temp: h.temperature.value,
                 feelsLikeTemp: h.apparentTemperature.value,
                 symbol: h.symbolName,
@@ -242,8 +244,9 @@ class WeatherKitViewModel: ObservableObject {
         for dayData in relevantDays {
             let dateValue = dayData.date
             let isToday = calendar.isDateInToday(dateValue)
-            let dayName = isToday ? "Today" : weekdayString(from: dateValue)
-
+            let dayName = isToday
+                ? NSLocalizedString("Today", comment: "Label for current day")
+                : weekdayString(from: dateValue)
             if isToday {
                 currentMoonEvents = dayData.moon
             }
@@ -376,10 +379,20 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     func windDirectionAbbreviation(for angle: Angle?) -> String {
-        guard let angle = angle else { return "---" }
+        guard let angle = angle else { return "-" }
         let deg = angle.degrees.truncatingRemainder(dividingBy: 360)
-        let idx = Int(((deg + 11.25).truncatingRemainder(dividingBy: 360) / 22.5).rounded()) % 16
-        let dirs = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"]
-        return dirs[idx]
+        let idx = Int(((deg + 11.25)
+                        .truncatingRemainder(dividingBy: 360)
+                      / 22.5).rounded()) % 16
+        // Съответстващи ключове в правилния ред
+        let keys = [
+            "cardinal.N","cardinal.NNE","cardinal.NE","cardinal.ENE",
+            "cardinal.E","cardinal.ESE","cardinal.SE","cardinal.SSE",
+            "cardinal.S","cardinal.SSW","cardinal.SW","cardinal.WSW",
+            "cardinal.W","cardinal.WNW","cardinal.NW","cardinal.NNW"
+        ]
+        let key = keys[idx]
+        return NSLocalizedString(key, comment: "Wind direction abbreviation")
     }
+
 }

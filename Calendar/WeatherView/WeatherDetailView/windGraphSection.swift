@@ -12,11 +12,22 @@ extension WeatherDetailView{
         // 2) Ако няма данни, показваме fallback изглед
         if speeds.isEmpty && gusts.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Wind Speed & Gust")
-                    .font(.system(size: 16, weight: .semibold))
-                Text("No wind data available for this day.")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+                Text(
+                    NSLocalizedString(
+                        "WindGraph_Header",
+                        comment: "Header for wind graph: speed & gust"
+                    )
+                )
+                .font(.system(size: 16, weight: .semibold))
+                
+                Text(
+                    NSLocalizedString(
+                        "WindGraph_NoData",
+                        comment: "No wind data available for this day"
+                    )
+                )
+                .font(.footnote)
+                .foregroundColor(.gray)
             }
             .padding(.bottom, 8)
         } else {
@@ -60,14 +71,25 @@ extension WeatherDetailView{
                     // За текущия ден – показваме текущата скорост, посоката и под тях поривите (с по-малки и сиви букви)
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
-                            Text("Wind Speed \(Int(round(vm.currentWindSpeed ?? dailyMaxSpeed))) km/h")
-                                .font(.system(size: 16, weight: .semibold))
+                            Text(
+                                String(
+                                    format: NSLocalizedString("WindGraph_SpeedHeader", comment: "Wind Speed header"),
+                                    Int(round(vm.currentWindSpeed ?? dailyMaxSpeed))
+                                )
+                            )
+                            .font(.system(size: 16, weight: .semibold))
                             Text(vm.windDirectionAbbreviation(for: vm.currentWindDirection))
                                 .font(.system(size: 16, weight: .semibold))
                         }
-                        Text("Gusts up to \(Int(round(vm.currentWindGust ?? dailyMaxGust))) km/h")
-                            .font(.system(size: 13))
-                            .foregroundColor(.gray)
+                        Text(
+                            String(
+                                format: NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
+                                Int(round(vm.currentWindGust ?? dailyMaxGust))
+                            )
+                        )
+                        .font(.system(size: 13))
+                        .foregroundColor(.gray)
+
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
@@ -75,11 +97,22 @@ extension WeatherDetailView{
                 } else {
                     // За друг ден – показваме само "Wind" и под него сив текст с "Gusts up to" и максималния порив
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("Wind Speed \(Int(round(dailyMinWindSpeed)))-\(Int(round(dailyMaxSpeed)))km/h")
-                            .font(.system(size: 16, weight: .semibold))
-                        Text("Gusts up to \(Int(round(dailyMaxGust))) km/h")
-                            .font(.system(size: 13))
-                            .foregroundColor(.gray)
+                        Text(
+                            String(
+                                format: NSLocalizedString("WindGraph_SpeedRangeHeader", comment: "Wind speed range header"),
+                                Int(round(dailyMinWindSpeed)),
+                                Int(round(dailyMaxSpeed))
+                            )
+                        )
+                        .font(.system(size: 16, weight: .semibold))
+                        Text(
+                            String(
+                                format: NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
+                                Int(round(dailyMaxGust))
+                            )
+                        )
+                        .font(.system(size: 13))
+                        .foregroundColor(.gray)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
@@ -261,13 +294,23 @@ extension WeatherDetailView{
                            let maxSIdx = speeds.firstIndex(of: maxS),
                            speedPoints.indices.contains(maxSIdx) {
                             let hp = speedPoints[maxSIdx]
-                            drawMarker(context: context, label: "Max S", at: hp, color: .blue)
+                            drawMarker(
+                                context: context,
+                                label: NSLocalizedString("WindGraph_MaxSpeedLabel", comment: "Max speed label"),
+                                at: hp,
+                                color: .blue
+                            )
                         }
                         if let maxG = gusts.max(),
                            let maxGIdx = gusts.firstIndex(of: maxG),
                            gustPoints.indices.contains(maxGIdx) {
                             let hp = gustPoints[maxGIdx]
-                            drawMarker(context: context, label: "Max G", at: hp, color: .green)
+                            drawMarker(
+                                context: context,
+                                label: NSLocalizedString("WindGraph_MaxGustLabel", comment: "Max gust label"),
+                                at: hp,
+                                color: .green
+                            )
                         }
                         
                         // Частично засенчване (past shading), ако денят е днес
@@ -375,10 +418,16 @@ extension WeatherDetailView{
                                 }
                                 let textPoint = CGPoint(x: textX, y: spdPt.y - 30)
                                 
-                                let labelText = "\(timeText)\nSpeed: \(Int(round(sVal)))\nGust: \(Int(round(gVal)))"
+                                let labelText = String(
+                                    format: NSLocalizedString("WindGraph_DragLabel", comment: "Drag label with time, speed and gust"),
+                                    timeText,
+                                    Int(round(sVal)),
+                                    Int(round(gVal))
+                                )
                                 let label = Text(labelText)
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundColor(.white)
+
                                 context.draw(label, at: textPoint, anchor: labelAnchor)
                             }
                         }

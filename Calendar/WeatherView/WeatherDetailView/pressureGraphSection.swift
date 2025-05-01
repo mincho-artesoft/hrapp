@@ -10,9 +10,9 @@ extension WeatherDetailView{
         // 2) Ако няма данни, показваме fallback
         if pressureValues.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Pressure")
+                Text(NSLocalizedString("Pressure_Title", comment: "Section title for pressure"))
                     .font(.system(size: 16, weight: .semibold))
-                Text("No pressure data available for this day.")
+                Text(NSLocalizedString("Pressure_NoData", comment: "Fallback when no pressure data available"))
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
@@ -34,29 +34,44 @@ extension WeatherDetailView{
             VStack(spacing: 0) {
                 VStack {
                      // MARK: Заглавна част
-                     VStack(alignment: .leading, spacing: 5) {
-                         if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
-                             // Ако е текущия ден – показваме текущата стойност
-                             if let currentPressure = vm.currentPressure {
-                                 Text("Pressure \(Int(round(currentPressure))) hPa")
-                                     .font(.system(size: 16, weight: .semibold))
-                             } else {
-                                 Text("Pressure: --")
-                                     .font(.system(size: 16, weight: .semibold))
-                             }
-                             Text("Today's min \(realMin) hPa – max \(realMax) hPa")
-                                 .font(.system(size: 13))
-                                 .foregroundColor(.gray)
-                         } else {
-                             // Изчисляваме средната стойност от почасовите данни
-                             let avgPressure = pressureValues.reduce(0, +) / Double(pressureValues.count)
-                             Text("Pressure Average \(Int(round(avgPressure))) hPa")
-                                 .font(.system(size: 16, weight: .semibold))
-                             Text("Daily range: \(realMin)–\(realMax) hPa")
-                                 .font(.system(size: 13))
-                                 .foregroundColor(.gray)
-                         }
-                     }
+                    VStack(alignment: .leading, spacing: 5) {
+                        if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
+                            // Ако е текущия ден – показваме текущата стойност
+                            if let currentPressure = vm.currentPressure {
+                                Text(String(
+                                    format: NSLocalizedString("Pressure_CurrentFormat", comment: "Current pressure display"),
+                                    Int(round(currentPressure))
+                                ))
+                                .font(.system(size: 16, weight: .semibold))
+                            } else {
+                                Text(NSLocalizedString("Pressure_CurrentUnavailable", comment: "No current pressure available"))
+                                    .font(.system(size: 16, weight: .semibold))
+                            }
+                            Text(String(
+                                format: NSLocalizedString("Pressure_DailyMinMaxFormat", comment: "Today's min/max pressure"),
+                                realMin,
+                                realMax
+                            ))
+                            .font(.system(size: 13))
+                            .foregroundColor(.gray)
+                        } else {
+                            // За друг ден – показваме средната стойност и диапазона
+                            let avgPressure = pressureValues.reduce(0, +) / Double(pressureValues.count)
+                            Text(String(
+                                format: NSLocalizedString("Pressure_AverageFormat", comment: "Average pressure display"),
+                                Int(round(avgPressure))
+                            ))
+                            .font(.system(size: 16, weight: .semibold))
+                            Text(String(
+                                format: NSLocalizedString("Pressure_DailyRangeFormat", comment: "Daily range of pressure"),
+                                realMin,
+                                realMax
+                            ))
+                            .font(.system(size: 13))
+                            .foregroundColor(.gray)
+                        }
+                    }
+
                      .frame(maxWidth: .infinity, alignment: .leading)
                      .padding(.horizontal)
                      .offset(x: -14)
@@ -255,14 +270,20 @@ extension WeatherDetailView{
                            let maxIndex = pressureValues.firstIndex(of: maxVal),
                            points.indices.contains(maxIndex) {
                             let highPoint = points[maxIndex]
-                            drawHLMarker(context: context, label: "Max", at: highPoint)
-                        }
+                            drawHLMarker(
+                                context: context,
+                                label: NSLocalizedString("Visibility_MaxLabel", comment: "Label for maximum marker"),
+                                at: highPoint
+                            )                        }
                         if let minVal = pressureValues.min(),
                            let minIndex = pressureValues.firstIndex(of: minVal),
                            points.indices.contains(minIndex) {
                             let lowPoint = points[minIndex]
-                            drawHLMarker(context: context, label: "Min", at: lowPoint)
-                        }
+                            drawHLMarker(
+                                context: context,
+                                label: NSLocalizedString("Visibility_MinLabel", comment: "Label for minimum marker"),
+                                at: lowPoint
+                            )                        }
                         
                         // Затъмняваме “миналите” часове, ако денят е текущ
                         if Calendar.current.isDate(now, inSameDayAs: selectedDate),

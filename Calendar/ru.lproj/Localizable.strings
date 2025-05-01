@@ -194,3 +194,456 @@
 "This Event Only" = "Только это событие";
 "All Future Events" = "Все будущие события";
 "Cancel" = "Отмена";
+
+/* DraggableMenuView */
+"Calendar" = "Календарь";
+"Subscriptions" = "Подписки";
+"Weather" = "Погода";
+
+/* WeatherKitView */
+"Search for a city..." = "Поиск города…";
+"Location access denied. Search for a city or grant access in Settings." = "Доступ к геолокации запрещён. Найдите город или разрешите доступ в Настройках.";
+"Cannot refresh. Location unknown." = "Не удалось обновить. Местоположение неизвестно.";
+"Tap an hour to quickly add a calendar event." = "Нажмите на час, чтобы быстро добавить событие в календарь.";
+"10-DAY FORECAST" = "ПРОГНОЗ НА 10 ДНЕЙ";
+"HighLowLabelFormat" = "М:%d°   Н:%d°";
+
+/* Labels */
+"Today" = "Сегодня";
+"Now" = "Сейчас";
+"Conditions" = "Условия";
+"UV Index" = "УФ-индекс";
+"Wind" = "Ветер";
+"Precipitation" = "Осадки";
+"Humidity" = "Влажность";
+"Visibility" = "Видимость";
+"Pressure" = "Давление";
+
+/* Calendar event */
+"New Event" = "Новое событие";
+
+/* Search placeholder */
+"Search for a city..." = "Поиск города…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Нажмите на час, чтобы быстро добавить событие в календарь.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "Ощущается как";
+"Similar to the actual temperature." = "Похоже на фактическую температуру.";
+"Wind is making it feel cooler." = "Ветер создаёт ощущение прохлады.";
+"Humidity is making it feel warmer." = "Влажность создаёт ощущение тепла.";
+
+/* HumidityCard */
+"HUMIDITY" = "Влажность";
+"The dew point is %d° right now." = "Точка росы сейчас составляет %d°.";
+"dewPoint.current" = "Точка росы сейчас %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "ФАЗА ЛУНЫ";
+"Moonrise" = "Восход луны";
+"Moonset" = "Закат луны";
+"Next %@" = "Следующая %@";
+"day" = "день";
+"days" = "дней";
+"Data unavailable" = "Данные недоступны";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION" = "Осадки";
+"mm" = "мм";
+"today" = "сегодня";
+"Next expected is %d mm %@" = "Ожидается %d мм %@.";
+"No precipitation expected soon." = "Скоро осадков не ожидается.";
+
+/* PressureCard */
+"PRESSURE" = "ДАВЛЕНИЕ";
+"hPa" = "hPa";
+"Low" = "Низко";
+"High" = "Высоко";
+
+/* SunsetCard */
+"SUNRISE" = "ВОСХОД";
+"Sunrise: %@" = "Восход: %@";
+"Sunset: %@" = "Закат: %@";
+
+/* UVIndexCard */
+"UV INDEX" = "УФ-индекс";
+"Low" = "Низкий";
+"Moderate" = "Умеренный";
+"High" = "Высокий";
+"Very High" = "Очень высокий";
+"Extreme" = "Экстремальный";
+
+/* VisibilityCard */
+"VISIBILITY" = "ВИДИМОСТЬ";
+"km" = "км";
+"Perfectly clear view." = "Совершенно чистая видимость.";
+"Excellent visibility." = "Отличная видимость.";
+"Good visibility." = "Хорошая видимость.";
+"Moderate visibility." = "Умеренная видимость.";
+"Poor visibility." = "Плохая видимость.";
+"Very poor visibility." = "Очень плохая видимость.";
+"VISIBILITY"                = "Видимость";
+"visibility.perfect"        = "Идеальная видимость.";
+"visibility.excellent"      = "Отличная видимость.";
+"visibility.good"           = "Хорошая видимость.";
+"visibility.moderate"       = "Умеренная видимость.";
+"visibility.poor"           = "Плохая видимость.";
+"visibility.verypoor"       = "Очень плохая видимость.";
+"visibility.unknown"        = "—";
+
+/* WindCard */
+"WIND" = "ВЕТЕР";
+"Wind" = "Ветер";
+"Gusts" = "Порывы";
+"Direction" = "Направление";
+"km/h" = "км/ч";
+"Compass_N" = "С";
+"Compass_S" = "Ю";
+"Compass_W" = "З";
+"Compass_E" = "В";
+
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Не удалось получить данные о погоде. Пожалуйста, проверьте соединение или попробуйте позже.";
+"Falling" = "Падает";
+"Rising" = "Растёт";
+"Steady" = "Стабильно";
+"Unknown" = "Неизвестно";
+"Sunny" = "Солнечно";
+"Cloudy" = "Облачно";
+"Partly Cloudy" = "Переменная облачность";
+"Rain" = "Дождь";
+"Drizzle" = "Морось";
+"Snow" = "Снег";
+"Thunderstorm" = "Гроза";
+"Fog" = "Туман";
+"Partly Cloudy Night" = "Переменная облачность (ночь)";
+"Clear Night" = "Ясная ночь";
+"Hazy" = "Мглистый";
+"Conditions" = "Условия";
+"Today" = "Сегодня";
+"Now" = "Сейчас";
+
+/* Русские обозначения */
+"cardinal.N"   = "С";
+"cardinal.NNE" = "ССВ";  /* северо-северо-восток */
+"cardinal.NE"  = "СВ";   /* северо-восток */
+"cardinal.ENE" = "ВСВ";  /* восток-северо-восток */
+"cardinal.E"   = "В";
+"cardinal.ESE" = "ВСЮ";  /* восток-северо-юг? можно «ВСЮ» или «ВЮВ» */
+"cardinal.SE"  = "ЮВ";   /* юго-восток */
+"cardinal.SSE" = "ЮЮВ";  /* юго-юго-восток */
+"cardinal.S"   = "Ю";
+"cardinal.SSW" = "ЮЮЗ";  /* юго-юго-запад */
+"cardinal.SW"  = "ЮЗ";   /* юго-запад */
+"cardinal.WSW" = "ЗЮЗ";  /* запад-юго-запад */
+"cardinal.W"   = "З";
+"cardinal.WNW" = "ЗСЗ";  /* запад-северо-запад */
+"cardinal.NW"  = "СЗ";   /* северо-запад */
+"cardinal.NNW" = "ССЗ";  /* северо-северо-запад */
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Вероятность осадков";
+"Today's chance: %d%%" = "Шанс сегодня: %d%%";
+"%@'s chance: %d%%" = "Шанс для %@: %d%%";
+"Max" = "Макс";
+"Min" = "Мин";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Ежедневная вероятность осадков обычно выше почасовой вероятности.";
+"ChanceOfPrecipitation_Title" = "Вероятность осадков";
+"TodaysChance"                = "Вероятность сегодня: %d%%";
+"OtherDayChance"              = "Вероятность на %@: %d%%";
+"DailyChanceExplanation"      = "Суточная вероятность обычно выше почасовой.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Ощущается как";
+"Actual" = "Фактическая температура";
+"No hourly data available for this day." = "Нет почасовых данных для этого дня.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Как ощущается температура из-за влажности, солнечного света или ветра.";
+"The actual air temperature." = "Фактическая температура воздуха.";
+"HighLabelFormat" = "М: %d°";
+"LowLabelFormat"  = "Н: %d°";
+"HourlyGraph_HighLabel" = "В"; // 'Выс.'
+"HourlyGraph_LowLabel"  = "Н"; // 'Низ.'
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Влажность";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Влажность %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Средняя влажность %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Мин. %d%% – Макс. %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Макс";
+"ChartMarker_Min"           = "Мин";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Дождь: %.1f мм, Снег: %.1f мм";
+"Precip_Total_RainFormat"       = "Дождь: %.1f мм";
+"Precip_Total_SnowFormat"       = "Снег: %.1f мм";
+"Precip_Total_None"             = "Осадки: 0 мм";
+"Precip_Bars_Subtitle"          = "Часовые столбцы для дождя и снега (мм/ч).";
+"Precip_Level_Light"            = "Легкий";
+"Precip_Level_Moderate"         = "Умеренный";
+"Precip_Level_Heavy"            = "Сильный";
+"Precip_Tooltip_Format"         = "%@ч\nДождь: %.1f мм/ч\nСнег: %.1f мм/ч";
+
+/* WeatherDetailView pressureGraphSection */
+/* Current pressure display */
+"Pressure_CurrentFormat"           = "Давление %d hPa";
+
+/* No current pressure available */
+"Pressure_CurrentUnavailable"      = "Давление: --";
+
+/* Today's min/max pressure */
+"Pressure_DailyMinMaxFormat"       = "Сегодня мин %d hPa – макс %d hPa";
+
+/* Average pressure display */
+"Pressure_AverageFormat"           = "Среднее давление %d hPa";
+
+/* Daily range of pressure */
+"Pressure_DailyRangeFormat"        = "Диапазон за день: %d–%d hPa";
+/* Label for the maximum marker */
+"Visibility_MaxLabel" = "Макс";
+
+/* Label for the minimum marker */
+"Visibility_MinLabel" = "Мин";
+/* Section title for pressure */
+"Pressure_Title" = "Давление";
+/* Fallback when no pressure data available */
+"Pressure_NoData" = "Нет данных о давлении для этого дня.";
+
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Сегодня %@ %d";
+"UVGraphNoHourlyData"   = "Нет почасовых данных для этого дня.";
+"UVGraphMaxLabel"       = "Макс";
+"UVGraphNowLabel"       = "Сейчас, %@";
+"UVCategory_None"       = "Нет";
+"UVCategory_Low"        = "Низкий";
+"UVCategory_Moderate"   = "Умеренный";
+"UVCategory_High"       = "Высокий";
+"UVCategory_VeryHigh"   = "Очень высокий";
+"UVCategory_Extreme"    = "Экстремальный";
+"UVAdvice_None"         = "Умеренных или более высоких уровней УФ не ожидается в этот день.";
+"UVAdvice_Range"        = "Рекомендуется защита от солнца. УФ-уровни колеблются от %@ до %@, достигаясь между %@ и %@.";
+"UVGraphMaxLabel" = "Макс";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                  = "Видимость";
+"Visibility_NoData"                 = "Нет данных о видимости для этого дня.";
+"Visibility_CurrentFormat"          = "Видимость %d км";
+"Visibility_DailyMinMaxFormat"      = "мин %d – макс %d км";
+"Visibility_NoCurrentData"          = "Нет текущих данных о видимости";
+"Visibility_HourlyAverages_NoData"  = "Нет почасовых данных.";
+"Visibility_MaxLabel"               = "Макс";
+"Visibility_MinLabel"               = "Мин";
+"Visibility_TooltipFormat"          = "%@\n%.1f км";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header"              = "Скорость ветра и порывы";
+"WindGraph_NoData"              = "Нет данных о ветре за этот день.";
+"WindGraph_SpeedHeader"         = "Скорость ветра %d км/ч";
+"WindGraph_GustHeader"          = "Порывы до %d км/ч";
+"WindGraph_SpeedRangeHeader"    = "Скорость %d-%d км/ч";
+"WindGraph_MaxSpeedLabel"       = "Макс С";
+"WindGraph_MaxGustLabel"        = "Макс П";
+"WindGraph_DragLabel"           = "%@\nСкорость: %d\nПорыв: %d";
+
+/* WeatherDetailView */
+"Conditions" = "Погодные условия";
+"UV Index" = "УФ-индекс";
+"Wind" = "Ветер";
+"Precipitation" = "Осадки";
+"Humidity" = "Влажность";
+"Visibility" = "Видимость";
+"Pressure" = "Давление";
+
+"Forecast" = "Прогноз";
+"Daily Summary" = "Дневной обзор";
+
+"Precipitation Totals" = "Итог осадков";
+"LAST 24 HOURS" = "ПОСЛЕДНИЕ 24 ЧАСА";
+"NEXT 24 HOURS" = "СЛЕДУЮЩИЕ 24 ЧАСА";
+"Total" = "Итого";
+"Precipitation" = "Осадки";
+"Rain" = "Дождь";
+"Snow" = "Снег";
+
+"About Wind Speed and Gusts" = "О скорости ветра и порывах";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Скорость ветра вычисляется как среднее за короткий период. Порывы — это кратковременные ускорения ветра выше этого среднего и обычно длятся менее 20 секунд.";
+
+"About the Beaufort Scale" = "О шкале Бофорта";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Шкала Бофорта показывает силу ветра при определённой скорости. Она помогает понять, насколько будет ветрено и какие последствия это может иметь. Каждое значение соответствует диапазону скоростей ветра.";
+
+"About Feels Like Temperature" = "О «ощущаемой» температуре";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "«Ощущаемая» температура показывает, насколько тепло или холодно кажется, и может отличаться от фактической. На неё влияют влажность, солнечный свет и ветер.";
+
+"Options" = "Настройки";
+"Temperature" = "Температура";
+"Use system setting (°C)" = "Использовать системные настройки (°C)";
+"Precipitation" = "Осадки";
+"mm, cm" = "мм, см";
+
+/* Dynamic label titles */
+"Conditions" = "Условия";
+"UV Index" = "УФ-индекс";
+"Wind" = "Ветер";
+"Precipitation" = "Осадки";
+"Humidity" = "Влажность";
+"Visibility" = "Видимость";
+"Pressure" = "Давление";
+
+/* Fallback key */
+"displayedCondition" = "отображаемоеСостояние";
+
+/* Titles */
+"Forecast"                   = "Прогноз";
+"DailySummary"               = "Ежедневный обзор";
+
+/* Current-day forecast */
+"CurrentDayForecastText"     = "%d° сейчас при %@. Вероятность осадков: %@. Ветер из %@ с порывами до %d км/ч. Сегодня от %d° до %d°, ощущается как %d°. %@ и %@.";
+"UVIndexFormat"              = "УФ-индекс до %d";
+"HumidityFormat"             = "Влажность около %d%%";
+"HumidityRangeFormat"        = "Влажность от %d%% до %d%%";
+"NA"                         = "н/д";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Минимум на %@: %d°, максимум: %d°. Будет ощущаться как %d°–%d°. Ветер из %@. %@";
+"NoPrecipLast24h"            = "Осадков нет за последние 24 ч.";
+"RainLast24h"                = "За последние 24 ч. выпало %d мм дождя.";
+"SnowAndRainLast24h"         = "За последние 24 ч. снег %@ см и дождь %d мм.";
+
+"Dir_N"   = "С";
+"Dir_NNE" = "ССВ";
+"Dir_NE"  = "СВ";
+"Dir_ENE" = "ВСВ";
+"Dir_E"   = "В";
+"Dir_ESE" = "ВЮВ";
+"Dir_SE"  = "ЮВ";
+"Dir_SSE" = "ЮЮВ";
+"Dir_S"   = "Ю";
+"Dir_SSW" = "ЮЮЗ";
+"Dir_SW"  = "ЮЗ";
+"Dir_WSW" = "ЗЮЗ";
+"Dir_W"   = "З";
+"Dir_WNW" = "ЗСЗ";
+"Dir_NW"  = "СЗ";
+"Dir_NNW" = "ССЗ";
+
+"UnitMillimeter"     = "мм";
+"UnitCentimeter"     = "см";
+
+"PrecipitationTotals_Title" = "Общие осадки";
+"Last24h_Label"             = "ЗА ПОСЛЕДНИЕ 24 Ч";
+"Next24h_Label"             = "ЗА СЛЕДУЮЩИЕ 24 Ч";
+"Total_Label"               = "Всего";
+"Precipitation_Label"       = "Осадки";
+"Rain_Label"                = "Дождь";
+"Snow_Label"                = "Снег";
+
+"WindSummary_Current" = "Ветер сейчас %d км/ч от %@. Сегодня скорость ветра от %d до %d км/ч, порывы до %d км/ч.";
+"WindSummary_Range"   = "Скорость ветра варьируется от %d до %d км/ч, порывы до %d км/ч.";
+
+"Beaufort_Scale"                = "Шкала Бофорта";
+"Beaufort_Column_bft"           = "bft";
+"Beaufort_Column_Description"   = "Описание";
+"Beaufort_Column_kmh"           = "км/ч";
+"Beaufort_0"                    = "Штиль";
+"Beaufort_1"                    = "Слабый ветер";
+"Beaufort_2"                    = "Легкий ветер";
+"Beaufort_3"                    = "Слабый бриз";
+"Beaufort_4"                    = "Умеренный бриз";
+"Beaufort_5"                    = "Свежий бриз";
+"Beaufort_6"                    = "Сильный бриз";
+"Beaufort_7"                    = "Сильный ветер";
+"Beaufort_8"                    = "Штормовой ветер";
+"Beaufort_9"                    = "Сильный штормовой ветер";
+"Beaufort_10"                   = "Шторм";
+"Beaufort_11"                   = "Буря";
+"Beaufort_12"                   = "Ураган";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+"Forecast_Title"                  = "Прогноз";
+"DailySummary_Title"              = "Краткий обзор";
+
+/* Detailed precipitation forecast for today:
+   1st %d = precipLast24h
+   2nd %d = precipitationAmount
+   3rd %d = precipNext24h */
+"ForecastPrecip_TodayFormat"      = "За последние 24 часа выпало %d мм осадков. Сегодня суммарное количество осадков составит %d мм. За следующие 24 часа ожидается %d мм осадков.";
+
+/* Precipitation forecast for another day:
+   1st %@ = weekday name
+   2nd %d  = precipitationAmount */
+"ForecastPrecip_OtherDayFormat"   = "В %@ суммарное количество осадков составит %d мм.";
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "О интенсивности осадков";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Интенсивность рассчитывается на основе того, сколько дождя или снега выпадает в час, и показывает, насколько сильными будут осадки. Этот термин также используется для других типов осадков, таких как мокрый снег и зимняя смесь. Ливень или сильная метель могут иметь «высокую» интенсивность, а обычный дождь или легкая морось — «умеренную» или «легкую» интенсивность.";
+
+/* Section titles */
+"Forecast_Title"               = "Прогноз";
+"DailySummary_Title"           = "Ежедневный обзор";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Точка росы %d°–%d°.";
+"DewPoint_FutureFormat"        = "Точка росы будет %d°–%d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Сегодня средняя влажность %d%%. %@";
+"ForecastHumidity_Other"       = "В %@ средняя влажность будет %d%%.\n%@";
+
+"AboutPressure_Title"  = "О давлении";
+"AboutPressure_Body"   = "Значительные и быстрые изменения давления используются для прогнозирования погодных изменений. Например, падение давления может означать приближение дождя или снега, а повышение давления — улучшение погоды. Давление также называется барометрическим или атмосферным давлением.";
+
+"AboutHumidity_Title"  = "О относительной влажности";
+"AboutHumidity_Body"   = "Относительная влажность, обычно просто называемая влажностью, — это количество влаги в воздухе по сравнению с тем, сколько воздуха может удержать. При более высоких температурах воздух может удерживать больше влаги. Относительная влажность около 100% может означать наличие росы или тумана.";
+
+"AboutDewPoint_Title" = "О точке росы";
+"AboutDewPoint_Body"  = "Точка росы — это температура, до которой необходимо охладить воздух, чтобы образовалась роса. Это полезный способ оценить, насколько влажным кажется воздух — чем выше точка росы, тем более влажным он ощущается. Если точка росы равна текущей температуре, относительная влажность составляет 100%, и может появиться роса или туман.";
+
+"Section_Forecast"                     = "Прогноз";
+"Section_DailySummary"                 = "Ежедневный обзор";
+"ForecastVisibility_TodayFormat"       = "Сегодня видимость будет %@, от %d до %d км.";
+"ForecastVisibility_OtherFormat"       = "В %@ минимальная видимость будет %@ при %d км, а максимальная — %@ при %d км.";
+"Clarity_Foggy"                        = "Туманно";
+"Clarity_Hazy"                         = "Мгла";
+"Clarity_Clear"                        = "Ясно";
+"Clarity_PerfectlyClear"               = "Совершенно ясно";
+
+"AboutVisibility_Title" = "О видимости";
+"AboutVisibility_Body" = "Видимость показывает, как далеко вы можете ясно различать объекты, такие как здания и холмы. Это мера прозрачности воздуха и не учитывает количество солнечного света или наличие препятствий. Видимость 10 км и более считается хорошей.";
+
+/* Section header for today */
+"SectionForecast" = "Прогноз";
+/* Section header for other days */
+"SectionDailySummary" = "Ежедневный обзор";
+/* Detailed forecast for today: current, average and low */
+"PressureForecast_Today" = "Давление сейчас %d hPa и падает. Сегодня среднее давление будет %d hPa, а минимальное – %d hPa.";
+/* Forecast for another day: weekday, average and low */
+"PressureForecast_Other" = "В %@ среднее давление будет %d hPa, а минимальное – %d hPa.";

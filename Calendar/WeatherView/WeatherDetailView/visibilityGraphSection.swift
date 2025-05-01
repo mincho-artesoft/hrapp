@@ -20,9 +20,9 @@ extension WeatherDetailView{
         // 4) If no data, show a fallback message
         if visData.isEmpty {
             VStack(alignment: .leading, spacing: 8) {
-                Text("Visibility")
+                Text(NSLocalizedString("Visibility_Title", comment: "Section title for visibility"))
                     .font(.system(size: 16, weight: .semibold))
-                Text("No visibility data available for this day.")
+                Text(NSLocalizedString("Visibility_NoData", comment: "No visibility data fallback"))
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
@@ -35,26 +35,35 @@ extension WeatherDetailView{
             
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 5) {
-                    if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
-                        if let currentVis = vm.currentVisibility {
-                            Text("Visibility \(Int(currentVis / 1000)) km")
-                                .font(.system(size: 16, weight: .semibold))
-                            
-                            Text("min \(Int(dailyMinVis)) – max \(Int(dailyMaxVis)) km")
-                                .font(.system(size: 13))
-                                .foregroundColor(.gray)
-                        } else {
-                            Text("Visibility no current data")
-                                .font(.system(size: 16, weight: .semibold))
-                        }
-                    } else {
-                        Text("Visibility")
-                            .font(.system(size: 16, weight: .semibold))
-                        Text("min \(Int(dailyMinVis)) – max \(Int(dailyMaxVis)) km")
-                            .font(.system(size: 13))
-                            .foregroundColor(.gray)
-                    }
-                }
+                           if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
+                               if let currentVis = vm.currentVisibility {
+                                   Text(String(
+                                       format: NSLocalizedString("Visibility_CurrentFormat", comment: "Current visibility display"),
+                                       Int(currentVis / 1000)
+                                   ))
+                                   .font(.system(size: 16, weight: .semibold))
+
+                                   Text(String(
+                                       format: NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
+                                       Int(dailyMinVis), Int(dailyMaxVis)
+                                   ))
+                                   .font(.system(size: 13))
+                                   .foregroundColor(.gray)
+                               } else {
+                                   Text(NSLocalizedString("Visibility_NoCurrentData", comment: "No current visibility available"))
+                                       .font(.system(size: 16, weight: .semibold))
+                               }
+                           } else {
+                               Text(NSLocalizedString("Visibility_Title", comment: "Section title for visibility"))
+                                   .font(.system(size: 16, weight: .semibold))
+                               Text(String(
+                                   format: NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
+                                   Int(dailyMinVis), Int(dailyMaxVis)
+                               ))
+                               .font(.system(size: 13))
+                               .foregroundColor(.gray)
+                           }
+                       }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 .offset(x: -15)
@@ -71,11 +80,11 @@ extension WeatherDetailView{
                         ZStack(alignment: .leading) {
                             HStack(spacing: 0) {
                                 if twoHourAverages.isEmpty {
-                                    Text("No hourly data available.")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                        .frame(maxWidth: .infinity, alignment: .center)
-                                        .padding(.vertical)
+                                    Text(NSLocalizedString("Visibility_HourlyAverages_NoData", comment: "No hourly averages"))
+                                                                  .font(.caption)
+                                                                  .foregroundColor(.gray)
+                                                                  .frame(maxWidth: .infinity, alignment: .center)
+                                                                  .padding(.vertical)
                                 } else {
                                     ForEach(twoHourAverages.indices, id: \.self) { i in
                                         Text("\(twoHourAverages[i])")
@@ -231,14 +240,20 @@ extension WeatherDetailView{
                            let maxIdx = visData.firstIndex(of: maxVal),
                            points.indices.contains(maxIdx) {
                             let maxPoint = points[maxIdx]
-                            drawHLMarker(context: context, label: "Max", at: maxPoint)
-                        }
+                            drawHLMarker(
+                                context: context,
+                                label: NSLocalizedString("Visibility_MaxLabel", comment: "Label for maximum marker"),
+                                at: maxPoint
+                            )                        }
                         if let minVal = visData.min(),
                            let minIdx = visData.firstIndex(of: minVal),
                            points.indices.contains(minIdx) {
                             let minPoint = points[minIdx]
-                            drawHLMarker(context: context, label: "Min", at: minPoint)
-                        }
+                            drawHLMarker(
+                                context: context,
+                                label: NSLocalizedString("Visibility_MinLabel", comment: "Label for minimum marker"),
+                                at: minPoint
+                            )                        }
                         
                         // Shade the “past” portion if it’s today
                         if Calendar.current.isDate(now, inSameDayAs: selectedDate),
@@ -322,7 +337,14 @@ extension WeatherDetailView{
                                     timeLabelString = "--:--"
                                 }
                                 
-                                let labelText = "\(timeLabelString)\n\(String(format: "%.1f", interpolatedVis)) km"
+                                let labelText = String(
+                                    format: NSLocalizedString(
+                                        "Visibility_TooltipFormat",
+                                        comment: "Tooltip showing time and visibility value, e.g. \"12:00\n5.3 km\""
+                                    ),
+                                    timeLabelString,
+                                    interpolatedVis
+                                )
                                 let label = Text(labelText)
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundColor(.white)
@@ -362,5 +384,4 @@ extension WeatherDetailView{
             
         }
     }
-    
 }

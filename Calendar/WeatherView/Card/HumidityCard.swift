@@ -22,7 +22,12 @@ struct HumidityCard: View {
             // Description - Bottom Left
             if let dew = dewPoint {
                  // Format matches screenshot "The dew point is 7° right now."
-                 Text("The dew point is \(Int(dew.rounded()))° right now.")
+                Text(
+                    String(
+                        format: NSLocalizedString("dewPoint.current", comment: ""),
+                        Int(dew.rounded())
+                    )
+                )
                     .font(.system(size: 12))
                     .foregroundStyle(.primary)
             } else {

@@ -37,19 +37,30 @@ extension WeatherDetailView {
             VStack(alignment: .leading, spacing: 5) {
                 if Calendar.current.isDate(selectedDate, inSameDayAs: now) {
                     if let currentHumidity = vm.currentHumidity {
-                        Text("Humidity \(Int(currentHumidity * 100))%")
-                            .font(.system(size: 16, weight: .semibold))
+                        Text(String(
+                            format: NSLocalizedString("Humidity_CurrentFormat", comment: "Label for current humidity"),
+                            Int(currentHumidity * 100)
+                        ))
+                        .font(.system(size: 16, weight: .semibold))
                     } else {
-                        Text("Humidity")
+                        Text(NSLocalizedString("Humidity_Label", comment: "Label for humidity section"))
                             .font(.system(size: 16, weight: .semibold))
                     }
                 } else {
-                    Text("Humidity Avg \(Int(averageHumidity * 100))%")
-                        .font(.system(size: 16, weight: .semibold))
+                    Text(String(
+                        format: NSLocalizedString("Humidity_AvgFormat", comment: "Label for average humidity"),
+                        Int(averageHumidity * 100)
+                    ))
+                    .font(.system(size: 16, weight: .semibold))
                 }
-                Text("Today's min \(Int(dailyMinH * 100))% – max \(Int(dailyMaxH * 100))%")
-                    .font(.system(size: 13))
-                    .foregroundColor(.gray)
+
+                Text(String(
+                    format: NSLocalizedString("Humidity_MinMaxFormat", comment: "Label for humidity min/max"),
+                    Int(dailyMinH * 100),
+                    Int(dailyMaxH * 100)
+                ))
+                .font(.system(size: 13))
+                .foregroundColor(.gray)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal)
@@ -196,14 +207,20 @@ extension WeatherDetailView {
                        let maxIndex = humidityData.firstIndex(of: maxHum),
                        points.indices.contains(maxIndex) {
                         let highPoint = points[maxIndex]
-                        drawHLMarker(context: context, label: "Max", at: highPoint)
-                    }
+                        drawHLMarker(
+                            context: context,
+                            label: NSLocalizedString("ChartMarker_Max", comment: "Chart marker for maximum"),
+                            at: highPoint
+                        )                    }
                     if let minHum = humidityData.min(),
                        let minIndex = humidityData.firstIndex(of: minHum),
                        points.indices.contains(minIndex) {
                         let lowPoint = points[minIndex]
-                        drawHLMarker(context: context, label: "Min", at: lowPoint)
-                    }
+                        drawHLMarker(
+                            context: context,
+                            label: NSLocalizedString("ChartMarker_Min", comment: "Chart marker for minimum"),
+                            at: lowPoint
+                        )                    }
                     
                     // Ако е днес, засенчваме частта, която е минала
                     if Calendar.current.isDate(now, inSameDayAs: selectedDate),

@@ -72,11 +72,19 @@ extension WeatherDetailView{
                                         .foregroundColor(.white)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text("H: \(Int(round(dayItem.maxTemp)))°")
-                                            .font(.system(size: 14, weight: .regular))
-                                        Text("L: \(Int(round(dayItem.minTemp)))°")
-                                            .font(.system(size: 14, weight: .regular))
-                                            .foregroundColor(.gray)
+                                        Text(String(
+                                            format: NSLocalizedString("HighLabelFormat", comment: "Max temperature label"),
+                                            Int(round(dayItem.maxTemp))
+                                        ))
+                                        .font(.system(size: 14, weight: .regular))
+
+                                        Text(String(
+                                            format: NSLocalizedString("LowLabelFormat", comment: "Min temperature label"),
+                                            Int(round(dayItem.minTemp))
+                                        ))
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundColor(.gray)
+
                                     }
                                 }
                             }
@@ -322,13 +330,13 @@ extension WeatherDetailView{
                        validPoints.indices.contains(maxIndex) {
                         let highPoint = validPoints[maxIndex]
                         drawHLMarker(
-                            context: context,
-                            label: "H",
-                            at: highPoint,
-                            temperature: maxTemp,
-                            range: yRange,
-                            gradient: gradient
-                        )
+                               context: context,
+                               label: NSLocalizedString("HourlyGraph_HighLabel", comment: "High marker label"),
+                               at: highPoint,
+                               temperature: maxTemp,
+                               range: yRange,
+                               gradient: gradient
+                           )
                     }
                     
                     if let minTemp = currentTemperatures.min(),
@@ -336,13 +344,13 @@ extension WeatherDetailView{
                        validPoints.indices.contains(minIndex) {
                         let lowPoint = validPoints[minIndex]
                         drawHLMarker(
-                            context: context,
-                            label: "L",
-                            at: lowPoint,
-                            temperature: minTemp,
-                            range: yRange,
-                            gradient: gradient
-                        )
+                               context: context,
+                               label: NSLocalizedString("HourlyGraph_LowLabel", comment: "Low marker label"),
+                               at: lowPoint,
+                               temperature: minTemp,
+                               range: yRange,
+                               gradient: gradient
+                           )
                     }
                     
                     // Часовникови надписи под графиката

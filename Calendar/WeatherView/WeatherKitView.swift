@@ -558,9 +558,16 @@ struct WeatherKitView: View {
                 .foregroundColor(.secondary)
                 .font(.system(size: 18, weight: .medium))
             if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
-                Text("H:\(Int(hi.rounded()))°   L:\(Int(lo.rounded()))°")
-                    .foregroundColor(.primary)
-                    .font(.system(size: 18, weight: .medium))
+                Text(
+                    String(
+                        format: NSLocalizedString("HighLowLabelFormat", comment: "High and low temperature labels"),
+                        Int(hi.rounded()),
+                        Int(lo.rounded())
+                    )
+                )
+                .foregroundColor(.primary)
+                .font(.system(size: 18, weight: .medium))
+
             }
         }
         .padding(.vertical, 10)

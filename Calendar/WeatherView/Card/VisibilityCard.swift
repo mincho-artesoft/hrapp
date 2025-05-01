@@ -7,7 +7,7 @@ struct VisibilityCard: View {
         WeatherDetailCard {
             // Title - Top Left
             Label("VISIBILITY", systemImage: "eye.fill")
-                .symbolRenderingMode(.hierarchical) // Subtle icon style
+                .symbolRenderingMode(.hierarchical)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
 
@@ -18,35 +18,37 @@ struct VisibilityCard: View {
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
                     Text("km")
-                         .font(.system(size: 14, weight: .regular))
-                         .foregroundStyle(.secondary)
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundStyle(.secondary)
                 } else {
                     Text("—")
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
-                     Text("km")
-                          .font(.system(size: 14, weight: .regular))
-                          .foregroundStyle(.secondary)
+                    Text("km")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundStyle(.secondary)
                 }
             }
 
-             Spacer() // Pushes description to the bottom
+            Spacer()
 
-            // Description - Bottom Left
-            Text(visibilityDescription(vis: visibilityKm))
-                 .font(.system(size: 12))
-                 .foregroundStyle(.primary)
+            // Description - Bottom Left (локализуемый)
+            Text(LocalizedStringKey(visibilityDescriptionKey(for: visibilityKm)))
+                .font(.system(size: 12))
+                .foregroundStyle(.primary)
         }
     }
 
-    // Visibility description helper (same as before)
-    func visibilityDescription(vis: Double?) -> String {
-        guard let vis = vis else { return " " }
-        if vis > 20 { return "Perfectly clear view." }
-        if vis > 15 { return "Excellent visibility." } // Match screenshot
-        if vis > 10 { return "Good visibility." }
-        if vis > 5 { return "Moderate visibility." }
-        if vis > 1 { return "Poor visibility." }
-        return "Very poor visibility."
+    /// Возвращает ключ для описания видимости в зависимости от значения
+    private func visibilityDescriptionKey(for vis: Double?) -> String {
+        guard let v = vis else { return "visibility.unknown" }
+        switch v {
+        case _ where v > 20: return "visibility.perfect"
+        case _ where v > 15: return "visibility.excellent"
+        case _ where v > 10: return "visibility.good"
+        case _ where v > 5:  return "visibility.moderate"
+        case _ where v > 1:  return "visibility.poor"
+        default:             return "visibility.verypoor"
+        }
     }
 }

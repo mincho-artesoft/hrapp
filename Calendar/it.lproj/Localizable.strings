@@ -194,3 +194,455 @@
 "This Event Only" = "Solo questo evento";
 "All Future Events" = "Tutti i futuri eventi";
 "Cancel" = "Annulla";
+
+/* DraggableMenuView */
+"Calendar" = "Calendario";
+"Subscriptions" = "Abbonamenti";
+"Weather" = "Meteo";
+
+/* WeatherKitView */
+"Search for a city..." = "Cerca città…";
+"Location access denied. Search for a city or grant access in Settings." = "Accesso alla posizione negato. Cerca una città o concedi l’accesso in Impostazioni.";
+"Cannot refresh. Location unknown." = "Impossibile aggiornare. Posizione sconosciuta.";
+"Tap an hour to quickly add a calendar event." = "Tocca un’ora per aggiungere rapidamente un evento al calendario.";
+"10-DAY FORECAST" = "PREVISIONE A 10 GIORNI";
+"HighLowLabelFormat" = "Max: %d°   Min: %d°";
+
+/* Labels */
+"Today" = "Oggi";
+"Now" = "Adesso";
+"Conditions" = "Condizioni";
+"UV Index" = "Indice UV";
+"Wind" = "Vento";
+"Precipitation" = "Precipitazioni";
+"Humidity" = "Umidità";
+"Visibility" = "Visibilità";
+"Pressure" = "Pressione";
+
+/* Calendar event */
+"New Event" = "Nuovo evento";
+
+/* Search placeholder */
+"Search for a city..." = "Cerca una città…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Tocca un’ora per aggiungere rapidamente un evento al calendario.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "Percezione termica";
+"Similar to the actual temperature." = "Simile alla temperatura effettiva.";
+"Wind is making it feel cooler." = "Il vento lo fa sembrare più fresco.";
+"Humidity is making it feel warmer." = "L’umidità lo fa sembrare più caldo.";
+
+/* HumidityCard */
+"HUMIDITY" = "Umidità";
+"The dew point is %d° right now." = "Il punto di rugiada è di %d° in questo momento.";
+"dewPoint.current" = "Il punto di rugiada è di %d° al momento.";
+
+/* MoonCard */
+"MOON PHASE" = "FASE LUNARE";
+"Moonrise" = "Sorgere della luna";
+"Moonset" = "Tramonto della luna";
+"Next %@" = "Prossima %@";
+"day" = "giorno";
+"days" = "giorni";
+"Data unavailable" = "Dati non disponibili";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION" = "Precipitazioni";
+"mm" = "mm";
+"today" = "oggi";
+"Next expected is %d mm %@" = "Si prevedono %d mm %@.";
+"No precipitation expected soon." = "Non sono previste precipitazioni a breve.";
+
+/* PressureCard */
+"PRESSURE" = "PRESSIONE";
+"hPa" = "hPa";
+"Low" = "Basso";
+"High" = "Alto";
+
+/* SunsetCard */
+"SUNRISE" = "ALBA";
+"Sunrise: %@" = "Alba: %@";
+"Sunset: %@" = "Tramonto: %@";
+
+/* UVIndexCard */
+"UV INDEX" = "Indice UV";
+"Low" = "Basso";
+"Moderate" = "Moderato";
+"High" = "Alto";
+"Very High" = "Molto alto";
+"Extreme" = "Estremo";
+
+/* VisibilityCard */
+"VISIBILITY" = "VISIBILITÀ";
+"km" = "km";
+"Perfectly clear view." = "Vista perfettamente chiara.";
+"Excellent visibility." = "Visibilità eccellente.";
+"Good visibility." = "Buona visibilità.";
+"Moderate visibility." = "Visibilità moderata.";
+"Poor visibility." = "Scarsa visibilità.";
+"Very poor visibility." = "Visibilità molto scarsa.";
+"visibility.perfect"   = "Vista perfettamente limpida.";
+"visibility.excellent" = "Visibilità eccellente.";
+"visibility.good"      = "Buona visibilità.";
+"visibility.moderate"  = "Visibilità moderata.";
+"visibility.poor"      = "Visibilità scarsa.";
+"visibility.verypoor"  = "Visibilità molto scarsa.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "VENTO";
+"Wind" = "Vento";
+"Gusts" = "Raffiche";
+"Direction" = "Direzione";
+"km/h" = "km/h";
+"Compass_N" = "N";   /* Nord */
+"Compass_S" = "S";   /* Sud */
+"Compass_W" = "O";   /* Ovest */
+"Compass_E" = "E";   /* Est */
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Impossibile recuperare i dati meteo. Controlla la tua connessione o riprova più tardi.";
+"Falling" = "In calo";
+"Rising" = "In aumento";
+"Steady" = "Stabile";
+"Unknown" = "Sconosciuto";
+"Sunny" = "Soleggiato";
+"Cloudy" = "Nuvoloso";
+"Partly Cloudy" = "Parzialmente nuvoloso";
+"Rain" = "Pioggia";
+"Drizzle" = "Pioviggine";
+"Snow" = "Neve";
+"Thunderstorm" = "Temporale";
+"Fog" = "Nebbia";
+"Partly Cloudy Night" = "Parzialmente nuvoloso (notte)";
+"Clear Night" = "Notte serena";
+"Hazy" = "Foschia";
+"Conditions" = "Condizioni";
+"Today" = "Oggi";
+"Now" = "Ora";
+
+/* Abbreviazioni italiane */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSO";
+"cardinal.SW"  = "SO";
+"cardinal.WSW" = "OSO";
+"cardinal.W"   = "O";
+"cardinal.WNW" = "ONO";
+"cardinal.NW"  = "NO";
+"cardinal.NNW" = "NNO";
+
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Probabilità di precipitazione";
+"Today's chance: %d%%" = "Probabilità oggi: %d%%";
+"%@'s chance: %d%%" = "Probabilità di %@: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "La probabilità giornaliera di precipitazione tende a essere superiore a quella oraria.";
+"ChanceOfPrecipitation_Title" = "Probabilità di precipitazione";
+"TodaysChance"                = "Probabilità oggi: %d%%";
+"OtherDayChance"              = "Probabilità di %@: %d%%";
+"DailyChanceExplanation"      = "La probabilità giornaliera tende ad essere più alta di quella oraria.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Percezione termica";
+"Actual" = "Temperatura reale";
+"No hourly data available for this day." = "Nessun dato orario disponibile per questo giorno.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Come si percepisce la temperatura a causa di umidità, luce solare o vento.";
+"The actual air temperature." = "La temperatura reale dell’aria.";
+"HighLabelFormat" = "Max: %d°";
+"LowLabelFormat"  = "Min: %d°";
+"HourlyGraph_HighLabel" = "M"; // 'Massima'
+"HourlyGraph_LowLabel"  = "m"; // 'minima'
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Umidità";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Umidità %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Umidità media %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Min %d%% – Max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Pioggia: %.1f mm, Neve: %.1f mm";
+"Precip_Total_RainFormat"       = "Pioggia: %.1f mm";
+"Precip_Total_SnowFormat"       = "Neve: %.1f mm";
+"Precip_Total_None"             = "Precipitazioni: 0 mm";
+"Precip_Bars_Subtitle"          = "Barre orarie per pioggia e neve (mm/h).";
+"Precip_Level_Light"            = "Leggero";
+"Precip_Level_Moderate"         = "Moderato";
+"Precip_Level_Heavy"            = "Forte";
+"Precip_Tooltip_Format"         = "%@h\nPioggia: %.1f mm/h\nNeve: %.1f mm/h";
+
+/* WeatherDetailView pressureGraphSection */
+/* Current pressure display */
+"Pressure_CurrentFormat"           = "Pressione %d hPa";
+
+/* No current pressure available */
+"Pressure_CurrentUnavailable"      = "Pressione: --";
+
+/* Today's min/max pressure */
+"Pressure_DailyMinMaxFormat"       = "Min odierno %d hPa – max %d hPa";
+
+/* Average pressure display */
+"Pressure_AverageFormat"           = "Pressione media %d hPa";
+
+/* Daily range of pressure */
+"Pressure_DailyRangeFormat"        = "Intervallo giornaliero: %d–%d hPa";
+/* Label for the maximum marker */
+"Visibility_MaxLabel" = "Max";
+
+/* Label for the minimum marker */
+"Visibility_MinLabel" = "Min";
+/* Section title for pressure */
+"Pressure_Title" = "Pressione";
+/* Fallback when no pressure data available */
+"Pressure_NoData" = "Nessun dato di pressione disponibile per questo giorno.";
+
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Oggi %@ %d";
+"UVGraphNoHourlyData"   = "Nessun dato orario disponibile per questo giorno.";
+"UVGraphMaxLabel"       = "Max";
+"UVGraphNowLabel"       = "Ora, %@";
+"UVCategory_None"       = "Nessuno";
+"UVCategory_Low"        = "Basso";
+"UVCategory_Moderate"   = "Moderato";
+"UVCategory_High"       = "Alto";
+"UVCategory_VeryHigh"   = "Molto alto";
+"UVCategory_Extreme"    = "Estremo";
+"UVAdvice_None"         = "Non sono previsti livelli di UV moderati o superiori per questa giornata.";
+"UVAdvice_Range"        = "Si raccomanda protezione solare. I livelli di UV variano da %@ a %@, raggiungendo tra %@ e %@.";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                  = "Visibilità";
+"Visibility_NoData"                 = "Nessun dato di visibilità disponibile per questo giorno.";
+"Visibility_CurrentFormat"          = "Visibilità %d km";
+"Visibility_DailyMinMaxFormat"      = "min %d – max %d km";
+"Visibility_NoCurrentData"          = "Nessun dato di visibilità attuale";
+"Visibility_HourlyAverages_NoData"  = "Nessun dato orario disponibile.";
+"Visibility_MaxLabel"               = "Max";
+"Visibility_MinLabel"               = "Min";
+"Visibility_TooltipFormat"          = "%@\n%.1f km";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header"              = "Velocità e raffiche di vento";
+"WindGraph_NoData"              = "Nessun dato sul vento per questo giorno.";
+"WindGraph_SpeedHeader"         = "Velocità del vento %d km/h";
+"WindGraph_GustHeader"          = "Raffiche fino a %d km/h";
+"WindGraph_SpeedRangeHeader"    = "Velocità %d-%d km/h";
+"WindGraph_MaxSpeedLabel"       = "Max V";
+"WindGraph_MaxGustLabel"        = "Max R";
+"WindGraph_DragLabel"           = "%@\nVelocità: %d\nRaffica: %d";
+
+/* WeatherDetailView */
+"Conditions" = "Condizioni";
+"UV Index" = "Indice UV";
+"Wind" = "Vento";
+"Precipitation" = "Precipitazioni";
+"Humidity" = "Umidità";
+"Visibility" = "Visibilità";
+"Pressure" = "Pressione";
+
+"Forecast" = "Previsioni";
+"Daily Summary" = "Riepilogo giornaliero";
+
+"Precipitation Totals" = "Totale precipitazioni";
+"LAST 24 HOURS" = "ULTIME 24 ORE";
+"NEXT 24 HOURS" = "PROSSIME 24 ORE";
+"Total" = "Totale";
+"Precipitation" = "Precipitazioni";
+"Rain" = "Pioggia";
+"Snow" = "Neve";
+
+"About Wind Speed and Gusts" = "Informazioni su velocità del vento e raffiche";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "La velocità del vento è calcolata come media su un breve periodo. Le raffiche sono brevi picchi al di sopra di questa media e durano generalmente meno di 20 secondi.";
+
+"About the Beaufort Scale" = "Informazioni sulla scala Beaufort";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "La scala Beaufort descrive la forza del vento a una certa velocità. Aiuta a capire quanto sarà ventoso e quali effetti potrà avere. Ogni valore corrisponde a un intervallo di velocità del vento.";
+
+"About Feels Like Temperature" = "Informazioni sulla temperatura percepita";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "La temperatura percepita indica quanto caldo o freddo sembra e può differire dalla temperatura reale. È influenzata da umidità, luce solare e vento.";
+
+"Options" = "Opzioni";
+"Temperature" = "Temperatura";
+"Use system setting (°C)" = "Usa impostazioni di sistema (°C)";
+"Precipitation" = "Precipitazioni";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Condizioni";
+"UV Index" = "Indice UV";
+"Wind" = "Vento";
+"Precipitation" = "Precipitazioni";
+"Humidity" = "Umidità";
+"Visibility" = "Visibilità";
+"Pressure" = "Pressione";
+
+/* Fallback key */
+"displayedCondition" = "condizioneVisualizzata";
+
+/* Titles */
+"Forecast"                   = "Previsione";
+"DailySummary"               = "Riepilogo giornaliero";
+
+/* Current-day forecast */
+"CurrentDayForecastText"     = "%d° ora con %@. Probabilità di precipitazione: %@. Vento da %@ con raffiche fino a %d km/h. Oggi tra %d° e %d°, percepiti %d°. %@ e %@.";
+"UVIndexFormat"              = "Indice UV fino a %d";
+"HumidityFormat"             = "Umidità intorno al %d%%";
+"HumidityRangeFormat"        = "Umidità dal %d%% al %d%%";
+"NA"                         = "N/D";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Il minimo di %@ è %d° e il massimo è %d°. Si sentirà come %d°–%d°. Vento da %@. %@";
+"NoPrecipLast24h"            = "Nessuna precipitazione nelle ultime 24 h.";
+"RainLast24h"                = "Sono caduti %d mm di pioggia nelle ultime 24 h.";
+"SnowAndRainLast24h"         = "Nelle ultime 24 h, neve %@ cm e pioggia %d mm.";
+
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSO";
+"Dir_SW"  = "SO";
+"Dir_WSW" = "OSO";
+"Dir_W"   = "O";
+"Dir_WNW" = "ONO";
+"Dir_NW"  = "NO";
+"Dir_NNW" = "NNO";
+
+"UnitMillimeter"     = "mm";
+"UnitCentimeter"     = "cm";
+
+"PrecipitationTotals_Title" = "Totali precipitazioni";
+"Last24h_Label"             = "ULTIME 24 H";
+"Next24h_Label"             = "PROSSIME 24 H";
+"Total_Label"               = "Totale";
+"Precipitation_Label"       = "Precipitazioni";
+"Rain_Label"                = "Pioggia";
+"Snow_Label"                = "Neve";
+
+"WindSummary_Current" = "Il vento soffia attualmente a %d km/h da %@. Oggi le velocità variano da %d a %d km/h, con raffiche fino a %d km/h.";
+"WindSummary_Range"   = "Le velocità del vento variano da %d a %d km/h, con raffiche fino a %d km/h.";
+
+"Beaufort_Scale"                = "Scala Beaufort";
+"Beaufort_Column_bft"           = "bft";
+"Beaufort_Column_Description"   = "Descrizione";
+"Beaufort_Column_kmh"           = "km/h";
+"Beaufort_0"                    = "Calma piatta";
+"Beaufort_1"                    = "Brezza leggera";
+"Beaufort_2"                    = "Brezza leggera";
+"Beaufort_3"                    = "Brezza debole";
+"Beaufort_4"                    = "Brezza moderata";
+"Beaufort_5"                    = "Brezza tesa";
+"Beaufort_6"                    = "Vento teso";
+"Beaufort_7"                    = "Vento forte";
+"Beaufort_8"                    = "Burrasca";
+"Beaufort_9"                    = "Burrasca forte";
+"Beaufort_10"                   = "Tempesta";
+"Beaufort_11"                   = "Tempesta violenta";
+"Beaufort_12"                   = "Uragano";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+"Forecast_Title"                  = "Previsioni";
+"DailySummary_Title"              = "Riepilogo giornaliero";
+
+/* Detailed precipitation forecast for today:
+   1st %d = precipLast24h
+   2nd %d = precipitationAmount
+   3rd %d = precipNext24h */
+"ForecastPrecip_TodayFormat"      = "Nelle ultime 24 ore ci sono stati %d mm di precipitazioni. Oggi le precipitazioni totali saranno di %d mm. Nelle prossime 24 ore sono previsti %d mm di precipitazioni.";
+
+/* Precipitation forecast for another day:
+   1st %@ = weekday name
+   2nd %d  = precipitationAmount */
+"ForecastPrecip_OtherDayFormat"   = "Il %@ le precipitazioni totali saranno di %d mm.";
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Informazioni sull’intensità delle precipitazioni";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"L’intensità viene calcolata in base alla quantità di pioggia o neve che cade in un’ora ed è destinata a indicare quanto intensa si percepiranno le precipitazioni. Si usa anche per altri tipi di precipitazioni, come nevischio o miscele invernali. Un acquazzone o una forte nevicata possono avere intensità “alta”, mentre una pioggia media o una leggera pioggerella possono avere intensità “moderata” o “leggera”.";
+
+/* Section titles */
+"Forecast_Title"               = "Previsioni";
+"DailySummary_Title"           = "Riepilogo giornaliero";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Il punto di rugiada è da %d° a %d°.";
+"DewPoint_FutureFormat"        = "Il punto di rugiada sarà da %d° a %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Oggi l'umidità media è %d%%. %@";
+"ForecastHumidity_Other"       = "Il %@ l'umidità media sarà %d%%.\n%@";
+
+"AboutPressure_Title"  = "Informazioni sulla pressione";
+"AboutPressure_Body"   = "Le variazioni significative e rapide della pressione sono utilizzate per prevedere i cambiamenti meteorologici. Ad esempio, una diminuzione della pressione può significare l’arrivo di pioggia o neve, mentre un aumento della pressione può significare un miglioramento del tempo. La pressione è anche chiamata pressione barometrica o pressione atmosferica.";
+
+"AboutHumidity_Title"  = "Informazioni sull’umidità relativa";
+"AboutHumidity_Body"   = "L’umidità relativa, comunemente chiamata semplicemente umidità, è la quantità di umidità nell’aria rispetto a quella che l’aria può contenere. L’aria può contenere più umidità a temperature più elevate. Un’umidità relativa vicina al 100% può significare rugiada o nebbia.";
+
+"AboutDewPoint_Title" = "Informazioni sul punto di rugiada";
+"AboutDewPoint_Body"  = "Il punto di rugiada è la temperatura a cui l’aria deve raffreddarsi affinché si formi la rugiada. È un buon indicatore di quanto si avverte l’umidità nell’aria: più è alto il punto di rugiada, più umida è la sensazione. Se il punto di rugiada coincide con la temperatura attuale, l’umidità relativa è al 100% e può formarsi rugiada o nebbia.";
+
+"Section_Forecast"                     = "Previsione";
+"Section_DailySummary"                 = "Riepilogo giornaliero";
+"ForecastVisibility_TodayFormat"       = "Oggi la visibilità sarà %@, da %d a %d km.";
+"ForecastVisibility_OtherFormat"       = "Il %@ la visibilità minima sarà %@ a %d km, e la massima sarà %@ a %d km.";
+"Clarity_Foggy"                        = "Nebbioso";
+"Clarity_Hazy"                         = "Foschia";
+"Clarity_Clear"                        = "Sereno";
+"Clarity_PerfectlyClear"               = "Perfettamente chiaro";
+
+"AboutVisibility_Title" = "Informazioni sulla visibilità";
+"AboutVisibility_Body" = "La visibilità indica fino a che distanza puoi vedere chiaramente oggetti come edifici e colline. È una misura della trasparenza dell’aria e non considera la quantità di luce solare o la presenza di ostacoli. Una visibilità di 10 km o superiore è considerata ottima.";
+
+/* Section header for today */
+"SectionForecast" = "Previsioni";
+/* Section header for other days */
+"SectionDailySummary" = "Riepilogo giornaliero";
+/* Detailed forecast for today: current, average and low */
+"PressureForecast_Today" = "La pressione è attualmente di %d hPa e sta diminuendo. Oggi, la pressione media sarà di %d hPa e la minima di %d hPa.";
+/* Forecast for another day: weekday, average and low */
+"PressureForecast_Other" = "Il %@, la pressione media sarà di %d hPa e la minima di %d hPa.";

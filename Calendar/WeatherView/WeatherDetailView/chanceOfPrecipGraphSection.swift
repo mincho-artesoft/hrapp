@@ -21,20 +21,31 @@ extension WeatherDetailView{
         VStack(spacing: 0) {
             
             VStack(alignment: .leading, spacing: 5) {
-                Text("Chance of Precipitation")
-                    .font(.system(size: 16, weight: .semibold))
-                Text({
+                Text(NSLocalizedString("ChanceOfPrecipitation_Title",
+                                       comment: "Title for Chance of Precipitation section"))
+                
+                // build localized subtitle
+                let subtitle: String = {
                     if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
-                        return "Today's chance: \(todayChance)%"
+                        return String(
+                            format: NSLocalizedString("TodaysChance",
+                                                     comment: "Subtitle for today's precipitation chance"),
+                            todayChance
+                        )
                     } else {
                         let formatter = DateFormatter()
-                        formatter.dateFormat = "EEEE" // пълното име на деня от седмицата (напр. Monday)
+                        formatter.dateFormat = "EEEE"
                         let dayName = formatter.string(from: selectedDate)
-                        return "\(dayName)'s chance: \(todayChance)%"
+                        return String(
+                            format: NSLocalizedString("OtherDayChance",
+                                                     comment: "Subtitle for another day's precipitation chance"),
+                            dayName, todayChance
+                        )
                     }
-                }())
-                .font(.system(size: 13))
-                .foregroundColor(.gray)
+                }()
+                Text(subtitle)
+                    .font(.system(size: 13))
+                    .foregroundColor(.gray)
             }
             .frame(maxWidth: .infinity, alignment: .leading) // Задава максимална ширина и ляво подравняване
             .padding(.horizontal)
@@ -317,8 +328,9 @@ extension WeatherDetailView{
                 .padding(.horizontal, graphPadding / 2)
                 .padding(.top, 2)
         }
-        HStack{
-            Text("The daily chance of precipitation tends to be higher than the chance for each hour.")
+        HStack {
+            Text(NSLocalizedString("DailyChanceExplanation",
+                                   comment: "Footer note comparing daily vs. hourly precipitation chance"))
                 .font(.caption)
                 .foregroundColor(.secondary)
                 .lineSpacing(3)

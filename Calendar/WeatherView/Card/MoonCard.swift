@@ -8,53 +8,49 @@ struct MoonCard: View {
 
     var body: some View {
         WeatherDetailCard {
-            // Заглавие – взимаме системното изображение от moonEvents?.phase.symbolName (ако е налично)
+            // Заголовок локализуется по ключу "MOON PHASE"
             Label("MOON PHASE", systemImage: moonEvents?.phase.symbolName ?? "moon")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
                 .padding(.bottom, 5)
-            
+
             HStack(alignment: .center, spacing: 15) {
-                // Лявата колона: Данни за Moonrise, Moonset и следващата фаза
+                // Левая колонка: времена и следующая фаза
                 VStack(alignment: .leading, spacing: 8) {
                     if let events = moonEvents {
-                        // 1) Moonrise
                         detailRow(label: "Moonrise", value: formattedTime(from: events.moonrise))
                         Divider().background(Color.white.opacity(0.3))
-                        
-                        // 2) Moonset
+
                         detailRow(label: "Moonset", value: formattedTime(from: events.moonset))
                         Divider().background(Color.white.opacity(0.3))
-                        
-                        // 3) Следваща фаза – комбинираме "Next" с "фазата" (оградена в кавички) и броя дни
-                     
-                        if let nextMoonPhase = vm.nextMoonPhase,
-                           let daysUntilNext = vm.daysUntilNextMoonPhase {
+
+                        if let nextPhase = vm.nextMoonPhase,
+                           let daysUntil = vm.daysUntilNextMoonPhase {
+                            // Локализуем строку вида "Next Full Moon" и "%d days"
+                            let nextKey = LocalizedStringKey("Next \(nextPhase)")
+                            let daysFormat = NSLocalizedString(
+                                daysUntil == 1 ? "%d day" : "%d days",
+                                comment: "Формат дней до следующей фазы луны"
+                            )
                             detailRowSmall(
-                                label: "Next \(nextMoonPhase)",
-                                value: "\(daysUntilNext) day\(daysUntilNext == 1 ? "" : "s")"
+                                label: nextKey,
+                                value: String(format: daysFormat, daysUntil)
                             )
                         } else {
-                            detailRowSmall(
-                                label: "Next",
-                                value: "Data unavailable"
-                            )
+                            detailRowSmall(label: "Next", value: "Data unavailable")
                         }
-
                     } else {
                         detailRow(label: "Moonrise", value: "--")
                         Divider().background(Color.white.opacity(0.3))
-                        
                         detailRow(label: "Moonset", value: "--")
                         Divider().background(Color.white.opacity(0.3))
-                        
                         detailRowSmall(label: "Next", value: "--")
                     }
                 }
-                
+
                 Spacer()
-                
-                // Дясната колона: По-голяма картинка и текущата фаза отдолу
+
+                // Правая колонка: картинка и название фазы
                 VStack(spacing: 4) {
                     if let events = moonEvents {
                         Image(phaseImageName(for: events.phase))
@@ -74,15 +70,14 @@ struct MoonCard: View {
                             .foregroundStyle(.primary)
                     }
                 }
-            } // Край на HStack
+            }
         }
     }
-    
-    // MARK: - Подпомагащи функции
-    
-    /// Създава ред (label / value) със стандартен шрифт (16pt).
-    @ViewBuilder
-    private func detailRow(label: String, value: String) -> some View {
+
+    // MARK: – Вспомогательные вью для строк
+
+    /// Стандартная строка с размером шрифта 16pt.
+    private func detailRow(label: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(label)
                 .font(.system(size: 16, weight: .medium))
@@ -91,10 +86,9 @@ struct MoonCard: View {
                 .font(.system(size: 16, weight: .regular))
         }
     }
-    
-    /// Създава ред (label / value) с по-малък шрифт (14pt).
-    @ViewBuilder
-    private func detailRowSmall(label: String, value: String) -> some View {
+
+    /// Мелкая строка с размером шрифта 14pt.
+    private func detailRowSmall(label: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(label)
                 .font(.system(size: 14, weight: .medium))
@@ -103,38 +97,28 @@ struct MoonCard: View {
                 .font(.system(size: 14, weight: .regular))
         }
     }
-    
-    /// Форматира времето (само час и минути). Ако датата липсва – показва "--".
+
+    /// Форматирует время в коротком виде (например "14:07") или возвращает "--".
     private func formattedTime(from date: Date?) -> String {
         guard let date = date else { return "--" }
         let formatter = DateFormatter()
-        formatter.dateStyle = .none
         formatter.timeStyle = .short
-        // Задаваме часовата зона според локалната зона, определена в WeatherKitViewModel
         formatter.timeZone = WeatherKitViewModel.shared.locationTimeZone
         return formatter.string(from: date)
     }
 
-    
-    /// Връща името на изображението, съответстващо на текущата фаза.
+    /// Возвращает имя картинки для заданной фазы луны.
     private func phaseImageName(for phase: MoonPhase) -> String {
         switch phase {
-        case .new:
-            return "phase_new"
-        case .full:
-            return "phase_full"
-        case .firstQuarter:
-            return "phase_first_quarter"
-        case .lastQuarter:
-            return "phase_third_quarter"
-        case .waningCrescent:
-            return "phase_waning_crescent"
-        case .waningGibbous:
-            return "phase_waning_gibbous"
-        case .waxingCrescent:
-            return "phase_waxing_crescent"
-        case .waxingGibbous:
-            return "phase_waxing_gibbous"
+        case .new:            return "phase_new"
+        case .full:           return "phase_full"
+        case .firstQuarter:   return "phase_first_quarter"
+        case .lastQuarter:    return "phase_third_quarter"
+        case .waningCrescent: return "phase_waning_crescent"
+        case .waningGibbous:  return "phase_waning_gibbous"
+        case .waxingCrescent: return "phase_waxing_crescent"
+        case .waxingGibbous:  return "phase_waxing_gibbous"
+        @unknown default:     return "moon"
         }
     }
 }
