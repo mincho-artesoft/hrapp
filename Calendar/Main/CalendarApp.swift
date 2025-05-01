@@ -7,7 +7,7 @@ import CoreLocation
 @main
 struct CalendarApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @AppStorage("subscriptionStatus") private var storedSubscriptionStatusRaw: String = SubscriptionStatus.base.rawValue
+    @AppStorage("subscriptionStatus") private var storedSubscriptionStatusRaw: String = SubscriptionCategory.base.rawValue
 
     @Environment(\.scenePhase) private var scenePhase
     

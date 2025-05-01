@@ -1,10 +1,3 @@
-//
-//  HourlyWeatherForecast.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 15/4/25.
-//
-
 import UIKit
 
 /// Модел за прогнозна информация за един часов интервал

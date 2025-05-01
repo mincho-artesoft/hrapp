@@ -1,7 +1,3 @@
-// SubscriptionExtensions.swift
-// ArteCalendar
-// Created by Aleksandar Svinarov on 29/4/25.
-
 import StoreKit
 
 extension Product.SubscriptionPeriod.Unit {

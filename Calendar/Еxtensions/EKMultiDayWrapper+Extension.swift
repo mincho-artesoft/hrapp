@@ -1,12 +1,3 @@
-//
-//  асд.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 11/3/25.
-//
-
-
-
 extension EKMultiDayWrapper {
     /// Връща true, ако partialStart == реалния начален час, но partialEnd < реалния краен (значи сме в ПЪРВИЯ ден)
     var isFirstPartialDay: Bool {

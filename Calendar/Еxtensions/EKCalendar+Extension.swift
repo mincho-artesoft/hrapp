@@ -1,5 +1,3 @@
-
-
 import EventKit
 
 extension EKCalendar: @retroactive Identifiable {

@@ -126,13 +126,6 @@ struct MonthCalendarView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {
                     if !showSearchBar {
-                        // Бутон "+"
-//                        Button {
-//                            createAndEditNewEvent(on: Date())
-//                        } label: {
-//                            Image(systemName: "plus")
-//                        }
-                        
                         // Бутон за търсене
                         Button {
                             showSearchBar = true

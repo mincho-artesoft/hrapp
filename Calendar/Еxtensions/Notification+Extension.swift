@@ -5,4 +5,3 @@ extension Notification.Name {
     static let notificationDraggableMenuViewSub = Notification.Name("notificationDraggableMenuViewSub")
 
 }
-//DraggableMenuView

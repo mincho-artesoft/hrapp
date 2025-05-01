@@ -1,17 +1,4 @@
-import SwiftUI
 
-// MARK: - ScrollOffsetPreferenceKey (reserved for future use)
-struct ScrollOffsetPreferenceKey: @preconcurrency PreferenceKey {
-    @MainActor static var defaultValue: CGFloat = 0
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
-    }
-}
-
-enum MenuState { case collapsed, full }
-
-
-// MARK: - DraggableMenuView (collapsed & full only)
 import SwiftUI
 
 // MARK: - DraggableMenuView (collapsed & full only)

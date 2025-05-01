@@ -4,13 +4,6 @@ import SwiftUI
 import StoreKit
 import UIKit  // Needed for UIApplication.shared.open
 
-/// Статуси на абонацията (по избор)
-enum SubscriptionStatus: String, CaseIterable {
-    case base    = "Base"
-    case advance = "Advance"
-    case premium = "Premium"
-}
-
 typealias StoreTransaction = StoreKit.Transaction
 
 @MainActor

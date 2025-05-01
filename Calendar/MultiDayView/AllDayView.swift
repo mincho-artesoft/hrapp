@@ -1,11 +1,3 @@
-//
-//  AllDayViewNonOverlapping.swift
-//  ExampleProject
-//
-//  Неприпокриваща подредба на all-day събития.
-//  Видими 2.5 реда макс; при повече евенти - скрол (вертикален).
-//
-
 import UIKit
 import SwiftUI
 import EventKit

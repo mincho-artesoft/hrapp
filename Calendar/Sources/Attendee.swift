@@ -1,11 +1,3 @@
-//
-//  Attendee.swift
-//  Calendar
-//
-//  Created by Aleksandar Svinarov on 27/3/25.
-//
-
-
 struct Attendee {
     let uuid: String
     let name: String
