@@ -31,7 +31,6 @@ extension WeatherDetailView{
             // 5) Compute fraction of the day (for shading past hours if `selectedDate` is today)
             // 5) Compute fractionOfDay using customCalendar (with vm.locationTimeZone)
             let now = Date()
-            let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
             let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
             let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
                                    + Double(comps.minute ?? 0) * 60

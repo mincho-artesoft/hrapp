@@ -368,7 +368,6 @@ extension WeatherDetailView{
                     let now = Date()
 
                     // 1) Начало на избрания ден според customCalendar
-                    let startOfDay = customCalendar.startOfDay(for: selectedDate)
 
                     // 2) Час/минути/секунди от now според customCalendar
                     let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)

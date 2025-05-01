@@ -11,7 +11,6 @@ extension WeatherDetailView{
         
         let now = Date()
         // използваме твоя customCalendar с правилната часова зона
-        let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
         let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
         let secondsFromMidnight = Double(comps.hour ?? 0) * 3600
                                + Double(comps.minute ?? 0) * 60

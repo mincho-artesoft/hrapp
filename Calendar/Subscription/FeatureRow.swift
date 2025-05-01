@@ -1,7 +1,10 @@
 import SwiftUI
+
 // Shared helper за булет-списък
 struct FeatureRow: View {
-    let feature: String
+    // -> използваме LocalizedStringKey вместо String
+    let feature: LocalizedStringKey
+
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             Image(systemName: "checkmark.circle.fill")

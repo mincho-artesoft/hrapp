@@ -29,7 +29,6 @@ extension WeatherDetailView{
             // 4) fractionOfDay => колко част от деня е минала (за shading, ако е днес)
             let now = Date()
             // използваме customCalendar, за да вземем полунощта според зададената часова зона
-            let startOfSelectedDay = customCalendar.startOfDay(for: selectedDate)
             // дроб от деня, включващ минути/секунди
             let comps = customCalendar.dateComponents([.hour, .minute, .second], from: now)
             let secondsFromMidnight = Double(comps.hour ?? 0) * 3600

@@ -1,4 +1,5 @@
 import StoreKit
+import SwiftUICore
 
 extension Product.SubscriptionPeriod.Unit {
     func noun(plural: Bool) -> String {
@@ -33,16 +34,20 @@ extension Product.SubscriptionPeriod.Unit {
 }
 
 extension Product {
-    var periodUnitOnly: String {
-        guard let unit = subscription?.subscriptionPeriod.unit else { return "" }
-        switch unit {
-        case .day:   return "Daily"
-        case .week:  return "Weekly"
-        case .month: return "Monthly"
-        case .year:  return "Yearly"
-        @unknown default: return "Recurring"
+
+        var periodUnitOnly: LocalizedStringKey {
+            guard let unit = subscription?.subscriptionPeriod.unit else {
+                return LocalizedStringKey("")
+            }
+            switch unit {
+            case .day:   return LocalizedStringKey("Daily")
+            case .week:  return LocalizedStringKey("Weekly")
+            case .month: return LocalizedStringKey("Monthly")
+            case .year:  return LocalizedStringKey("Yearly")
+            @unknown default:
+                return LocalizedStringKey("Recurring")
+            }
         }
-    }
 
     var pricePerMonth: String? {
         guard let subscription = subscription else { return nil }

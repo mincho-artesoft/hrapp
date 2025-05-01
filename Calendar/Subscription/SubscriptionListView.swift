@@ -10,6 +10,7 @@ struct SubscriptionListView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
+                // Сравняваме вече локализирани заглавия
                 if title == "Advance Plans"{
                     AdvanceSubscriptionView()
 
@@ -29,26 +30,19 @@ struct SubscriptionListView: View {
                             isSelected: isSelectedOrActive,
                             expirationDate: manager.expirationDates[product.id]
                         ) {
-                            // позволяваме селекция само ако можем да купим/ъпгрейднем
                             if canBuy {
                                 selectedProductID = product.id
                             }
                         }
-                        // забраняваме и избледняваме само опциите, които не можем да купим
                         .disabled(!canBuy)
                         .opacity(!canBuy ? 0.6 : 1.0)
                     }
                 }
                 .padding(.horizontal)
 
-                // винаги показваме статуса на активната подписка
                 ActiveSubscriptionStatusView()
                     .padding(.horizontal)
 
-                // а бутоните за Subscribe показваме само ако:
-                //  - има селектиран product
-                //  - не е вече изкупен (isActive == false)
-                //  - може да се купи/ъпгрейдне
                 if let id = selectedProductID,
                    let product = manager.products.first(where: { $0.id == id }),
                    !manager.purchasedProductIDs.contains(id),
@@ -66,19 +60,60 @@ struct SubscriptionListView: View {
         if let activeID = manager.purchasedProductIDs.first,
            let product = manager.products.first(where: { $0.id == activeID }),
            let expiry = manager.expirationDates[activeID] {
-            
-            // Вземаме типа план от SubscriptionManager (Advance, Premium или Base)
-            let planType = manager.subscriptionStatus.rawValue
-            // Вземаме периода (Monthly или Yearly)
-            let period   = product.periodUnitOnly
-            
+
+            // 1. rawValue на статуса – това са ключовете "Base", "Advance", "Premium"
+            let planTypeKey = manager.subscriptionStatus.rawValue
+
+            // 2. Ръчно правим mapping unit → String ключ, точно както в periodUnitOnly, но като String
+            let periodKey: String = {
+                guard let unit = product.subscription?.subscriptionPeriod.unit else { return "" }
+                switch unit {
+                case .day:   return "Daily"
+                case .week:  return "Weekly"
+                case .month: return "Monthly"
+                case .year:  return "Yearly"
+                @unknown default: return "Recurring"
+                }
+            }()
+
+            // 3. Локализираме двата ключа
+            let planTypeLocalized = NSLocalizedString(
+                planTypeKey,
+                comment: "Subscription plan type"
+            )
+            let periodLocalized = NSLocalizedString(
+                periodKey,
+                comment: "Subscription period unit"
+            )
+
             VStack(spacing: 5) {
-                Text("You are subscribed to the \(planType) \(period) plan")
-                    .font(.headline)
-                Text("Renews on: \(expiry, style: .date)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Button("Manage Subscription") {
+                Text(
+                    String(
+                        format: NSLocalizedString(
+                            "You are subscribed to the %@ %@ plan",
+                            comment: "Status line showing current plan and period"
+                        ),
+                        planTypeLocalized,
+                        periodLocalized
+                    )
+                )
+                .font(.headline)
+
+                Text(
+                    String(
+                        format: NSLocalizedString(
+                            "Renews on: %@",
+                            comment: "Label for renewal date"
+                        ),
+                        DateFormatter.localizedString(from: expiry, dateStyle: .medium, timeStyle: .none)
+                    )
+                )
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+                Button(
+                    NSLocalizedString("Manage Subscription", comment: "Button title to open subscription management")
+                ) {
                     Task { await manager.openManageSubscriptions() }
                 }
                 .font(.caption)
@@ -87,7 +122,6 @@ struct SubscriptionListView: View {
             .padding(.vertical)
         }
     }
-
 
 
     @ViewBuilder
@@ -107,11 +141,11 @@ struct SubscriptionListView: View {
                 Button {
                     Task { await manager.purchase(product) }
                 } label: {
-                    let labelText = product.subscription?.introductoryOffer != nil
-                        ? "Start Free Trial"
-                        : "Subscribe Now"
+                    let labelKey = product.subscription?.introductoryOffer != nil
+                        ? NSLocalizedString("Start Free Trial", comment: "Button to start trial")
+                        : NSLocalizedString("Subscribe Now", comment: "Button to subscribe immediately")
                     
-                    Text(labelText)
+                    Text(labelKey)
                         .font(.headline.weight(.semibold))
                         .padding(.vertical, 12)
                         .padding(.horizontal)
@@ -125,15 +159,32 @@ struct SubscriptionListView: View {
         }
     }
 
+    // Връщаме локализирана String
     private func offerSummary(product: Product) -> String? {
         let suffix = product.subscription?.subscriptionPeriod.unit.perPeriodString ?? ""
         let price  = product.displayPrice
         if let intro = product.subscription?.introductoryOffer {
             let plural  = intro.period.value > 1
             let unitTxt = intro.period.unit.noun(plural: plural).lowercased()
-            return "\(intro.period.value) \(unitTxt) free, then \(price)\(suffix)."
+            return String(
+                format: NSLocalizedString(
+                    "%d %@ free, then %@%@.",
+                    comment: "Intro offer summary: free period then price"
+                ),
+                intro.period.value,
+                unitTxt,
+                price,
+                suffix
+            )
         } else {
-            return "Subscribe for \(price)\(suffix)."
+            return String(
+                format: NSLocalizedString(
+                    "Subscribe for %@%@.",
+                    comment: "Standard subscribe summary with price"
+                ),
+                price,
+                suffix
+            )
         }
     }
 }

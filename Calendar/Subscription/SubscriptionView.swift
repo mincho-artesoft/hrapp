@@ -16,7 +16,8 @@ struct SubscriptionView: View {
                 // Picker to switch between plans
                 Picker("Plan", selection: $selectedCategory) {
                     ForEach(SubscriptionCategory.allCases) { category in
-                        Text(category.rawValue).tag(category)
+                        // вместо rawValue ➝ вече показваме локализираното title
+                        Text(category.title).tag(category)
                     }
                 }
                 .padding(.top)
@@ -44,16 +45,32 @@ struct SubscriptionView: View {
                 }
                 // Listen for notification and trigger alert
                 .onReceive(NotificationCenter.default.publisher(
-                    for: .notificationDraggableMenuViewSub)) { notification in
+                    for: .notificationDraggableMenuViewSub)
+                ) { notification in
                     if let info = notification.userInfo,
                        let value = info["subscriptionStatusRaw"] as? String {
                         switch value {
-                        case "Advance":
-                            alertMessage = "You need an active Advance plan to access this section."
+                        case SubscriptionCategory.advance.rawValue:
+                            // Използваме форматен низ с локализация и локализирания title
+                            alertMessage = String(
+                                format: NSLocalizedString(
+                                    "You need an active %@ plan to access this section.",
+                                    comment: "Alert when user tries to access Advance without subscription"
+                                ),
+                                SubscriptionCategory.advance.title
+                            )
                             selectedCategory = .advance
-                        case "Premium":
-                            alertMessage = "You need an active Premium plan to access this section."
+
+                        case SubscriptionCategory.premium.rawValue:
+                            alertMessage = String(
+                                format: NSLocalizedString(
+                                    "You need an active %@ plan to access this section.",
+                                    comment: "Alert when user tries to access Premium without subscription"
+                                ),
+                                SubscriptionCategory.premium.title
+                            )
                             selectedCategory = .premium
+
                         default:
                             return
                         }
@@ -74,8 +91,16 @@ struct SubscriptionView: View {
             }
             .background(Color(.systemGroupedBackground).ignoresSafeArea())
             // Alert presentation
-            .alert("Plan Required", isPresented: $showPlanAlert) {
-                Button("OK", role: .cancel) { }
+            .alert(
+                // заглавие на алерта
+                Text(NSLocalizedString("Plan Required", comment: "Alert title when plan missing")),
+                isPresented: $showPlanAlert
+            ) {
+                // бутон OK
+                Button(
+                    NSLocalizedString("OK", comment: "OK button title"),
+                    role: .cancel
+                ) { }
             } message: {
                 Text(alertMessage)
             }

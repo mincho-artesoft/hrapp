@@ -1187,7 +1187,7 @@ struct WeatherDetailView: View {
             return formatter.string(from: day.date)
         }()
         
-        return VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 5) {
             // Заглавие: "Forecast" или "Daily Summary"
             Text(
                 NSLocalizedString(

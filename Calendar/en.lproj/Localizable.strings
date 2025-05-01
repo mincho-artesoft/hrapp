@@ -649,3 +649,71 @@
 "PressureForecast_Today" = "Pressure is currently %d hPa and falling. Today, the average pressure will be %d hPa, and the lowest pressure will be %d hPa.";
 /* Forecast for another day: weekday, average and low */
 "PressureForecast_Other" = "On %@, the average pressure will be %d hPa, and the lowest pressure will be %d hPa.";
+
+/* AdvanceSubscriptionView */
+"Advance Plan" = "Advance Plan";
+"All Base Plan features" = "All Base Plan features";
+"Multi-calendar view" = "Multi-calendar view";
+"Sync with Google Calendar" = "Sync with Google Calendar";
+"Sync meets from Google Meet" = "Sync meets from Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Base Plan";
+"Single-day calendar view" = "Single-day calendar view";
+"Multi-day calendar view" = "Multi-day calendar view";
+"Monthly calendar view" = "Monthly calendar view";
+"Yearly overview" = "Yearly overview";
+"List view for events" = "List view for events";
+"Weather view" = "Weather view";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Premium Plan";
+"All Advance Plan features" = "All Advance Plan features";
+"Sync with Microsoft Calendar" = "Sync with Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Sync meets from Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Equivalent to %@ per month";
+"%d %@ free" = "%d %@ free";
+
+/* SubscriptionListView */
+"Advance Plans" = "Advance Plans";
+"Premium Plans" = "Premium Plans";
+"You are subscribed to the %@ %@ plan" = "You are subscribed to the %@ %@ plan";
+"Renews on: %@" = "Renews on: %@";
+"Manage Subscription" = "Manage Subscription";
+"Start Free Trial" = "Start Free Trial";
+"Subscribe Now" = "Subscribe Now";
+"%d %@ free, then %@%@." = "%d %@ free, then %@%@.";
+"Subscribe for %@%@." = "Subscribe for %@%@.";
+
+/* SubscriptionCategory */
+"Base"    = "Base";
+"Advance" = "Advance";
+"Premium" = "Premium";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "You need an active %@ plan to access this section.";
+"Plan Required" = "Plan Required";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Base";
+"Advance" = "Advance";
+"Premium" = "Premium";
+
+/* Subscription period units */
+"Monthly" = "Monthly";
+"Yearly"  = "Yearly";
+
+/* SubscriptionListView status messages */
+"You are subscribed to the %@ %@ plan" = "You are subscribed to the %@ %@ plan";
+"Renews on: %@"                         = "Renews on: %@";
+"Manage Subscription"                   = "Manage Subscription";
+
+/* Period units */
+"Daily"     = "Daily";
+"Weekly"    = "Weekly";
+"Monthly"   = "Monthly";
+"Yearly"    = "Yearly";
+"Recurring" = "Recurring";

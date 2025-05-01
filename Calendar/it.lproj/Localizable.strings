@@ -646,3 +646,71 @@
 "PressureForecast_Today" = "La pressione è attualmente di %d hPa e sta diminuendo. Oggi, la pressione media sarà di %d hPa e la minima di %d hPa.";
 /* Forecast for another day: weekday, average and low */
 "PressureForecast_Other" = "Il %@, la pressione media sarà di %d hPa e la minima di %d hPa.";
+
+/* AdvanceSubscriptionView */
+"Advance Plan" = "Piano Avanzato";
+"All Base Plan features" = "Tutte le funzionalità del piano base";
+"Multi-calendar view" = "Visualizzazione multi-calendario";
+"Sync with Google Calendar" = "Sincronizzazione con Google Calendar";
+"Sync meets from Google Meet" = "Sincronizzazione riunioni da Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Piano Base";
+"Single-day calendar view" = "Visualizzazione giornaliera";
+"Multi-day calendar view" = "Visualizzazione multi-giorni";
+"Monthly calendar view" = "Visualizzazione mensile";
+"Yearly overview" = "Panoramica annuale";
+"List view for events" = "Visualizzazione elenco eventi";
+"Weather view" = "Visualizzazione meteo";
+
+/* PremiumSubscriptionView */
+"Premium Plan" = "Piano Premium";
+"All Advance Plan features" = "Tutte le funzionalità del piano Avanzato";
+"Sync with Microsoft Calendar" = "Sincronizzazione con Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Sincronizzazione riunioni da Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Equivalente a %@ al mese";
+"%d %@ free" = "%d %@ gratis";
+
+/* SubscriptionListView */
+"Advance Plans" = "Piani Avanzati";
+"Premium Plans" = "Piani Premium";
+"You are subscribed to the %@ %@ plan" = "Sei abbonato al piano %@ %@";
+"Renews on: %@" = "Si rinnova il: %@";
+"Manage Subscription" = "Gestisci abbonamento";
+"Start Free Trial" = "Inizia prova gratuita";
+"Subscribe Now" = "Abbonati ora";
+"%d %@ free, then %@%@." = "%d %@ gratis, poi %@%@.";
+"Subscribe for %@%@." = "Abbonati per %@%@.";
+
+/* SubscriptionCategory */
+"Base"    = "Base";
+"Advance" = "Avanzato";
+"Premium" = "Premium";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "È necessario un piano %@ attivo per accedere a questa sezione.";
+"Plan Required" = "Piano richiesto";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Base";
+"Advance" = "Avanzato";
+"Premium" = "Premium";
+
+/* Subscription period units */
+"Monthly" = "mensile";
+"Yearly"  = "annuale";
+
+/* SubscriptionListView status messages */
+"You are subscribed to the %@ %@ plan" = "Sei abbonato al piano %@ %@";
+"Renews on: %@"                         = "Si rinnova il: %@";
+"Manage Subscription"                   = "Gestisci abbonamento";
+
+/* Period units */
+"Daily"     = "Giornaliero";
+"Weekly"    = "Settimanale";
+"Monthly"   = "Mensile";
+"Yearly"    = "Annuale";
+"Recurring" = "Ricorrente";

@@ -1,7 +1,3 @@
-// SubscriptionCard.swift
-// ArteCalendar
-// Created by Aleksandar Svinarov on 29/4/25.
-
 import SwiftUI
 import StoreKit
 
@@ -20,19 +16,39 @@ struct SubscriptionCard: View {
                         .font(.headline)
                     Text(product.displayPrice)
                         .font(.title2.weight(.semibold))
+                    
+                    // → локализирано чрез NSLocalizedString + String(format:)
                     if let monthly = product.pricePerMonth,
                        product.subscription?.subscriptionPeriod.unit == .year {
-                        Text("Equivalent to \(monthly) per month")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                        Text(
+                            String(
+                                format: NSLocalizedString(
+                                    "Equivalent to %@ per month",
+                                    comment: "Equivalent monthly price"
+                                ),
+                                monthly
+                            )
+                        )
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                     }
+
                     if !isActive, let intro = product.subscription?.introductoryOffer {
                         let plural = intro.period.value > 1
                         let unit = intro.period.unit.noun(plural: plural).lowercased()
-                        Text("\(intro.period.value) \(unit) free")
-                            .font(.subheadline.weight(.medium))
-                            .foregroundColor(.orange)
-                            .padding(.top, 2)
+                        Text(
+                            String(
+                                format: NSLocalizedString(
+                                    "%d %@ free",
+                                    comment: "Introductory free period"
+                                ),
+                                intro.period.value,
+                                unit
+                            )
+                        )
+                        .font(.subheadline.weight(.medium))
+                        .foregroundColor(.orange)
+                        .padding(.top, 2)
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
@@ -51,8 +67,12 @@ struct SubscriptionCard: View {
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(isActive ? Color.green : (isSelected ? Color.accentColor : Color(.systemGray4)),
-                                  lineWidth: isSelected || isActive ? 2.5 : 1.5)
+                    .strokeBorder(
+                        isActive
+                            ? Color.green
+                            : (isSelected ? Color.accentColor : Color(.systemGray4)),
+                        lineWidth: isSelected || isActive ? 2.5 : 1.5
+                    )
             )
             .scaleEffect(isSelected ? 1.02 : 1.0)
             .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isSelected)

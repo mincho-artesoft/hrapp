@@ -647,3 +647,71 @@
 "PressureForecast_Today" = "Давление сейчас %d hPa и падает. Сегодня среднее давление будет %d hPa, а минимальное – %d hPa.";
 /* Forecast for another day: weekday, average and low */
 "PressureForecast_Other" = "В %@ среднее давление будет %d hPa, а минимальное – %d hPa.";
+
+/* AdvanceSubscriptionView */
+"Advance Plan" = "Расширенный план";
+"All Base Plan features" = "Все функции базового плана";
+"Multi-calendar view" = "Просмотр нескольких календарей";
+"Sync with Google Calendar" = "Синхронизация с Google Календарем";
+"Sync meets from Google Meet" = "Синхронизация встреч из Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Базовый план";
+"Single-day calendar view" = "Просмотр за один день";
+"Multi-day calendar view" = "Просмотр за несколько дней";
+"Monthly calendar view" = "Ежемесячный просмотр";
+"Yearly overview" = "Обзор за год";
+"List view for events" = "Просмотр списка событий";
+"Weather view" = "Просмотр погоды";
+
+/* PremiumSubscriptionView */
+"Premium Plan" = "Премиум план";
+"All Advance Plan features" = "Все функции расширенного плана";
+"Sync with Microsoft Calendar" = "Синхронизация с Microsoft Календарем";
+"Sync meets from Microsoft Teams" = "Синхронизация встреч из Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Эквивалентно %@ в месяц";
+"%d %@ free" = "%d %@ бесплатно";
+
+/* SubscriptionListView */
+"Advance Plans" = "Планы Расширенный";
+"Premium Plans" = "Планы Премиум";
+"You are subscribed to the %@ %@ plan" = "Вы подписаны на план %@ %@";
+"Renews on: %@" = "Продление: %@";
+"Manage Subscription" = "Управление подпиской";
+"Start Free Trial" = "Начать бесплатный пробный период";
+"Subscribe Now" = "Подписаться сейчас";
+"%d %@ free, then %@%@." = "%d %@ бесплатно, затем %@%@.";
+"Subscribe for %@%@." = "Подписаться за %@%@.";
+
+/* SubscriptionCategory */
+"Base"    = "Базовый";
+"Advance" = "Расширенный";
+"Premium" = "Премиум";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Чтобы получить доступ к этому разделу, нужен активный план %@.";
+"Plan Required" = "Требуется план";
+"OK" = "ОК";
+
+/* SubscriptionStatus */
+"Base"    = "Базовый";
+"Advance" = "Расширенный";
+"Premium" = "Премиум";
+
+/* Subscription period units */
+"Monthly" = "ежемесячно";
+"Yearly"  = "ежегодно";
+
+/* SubscriptionListView status messages */
+"You are subscribed to the %@ %@ plan" = "Вы подписаны на план %@ %@";
+"Renews on: %@"                         = "Продление: %@";
+"Manage Subscription"                   = "Управление подпиской";
+
+/* Period units */
+"Daily"     = "Ежедневно";
+"Weekly"    = "Еженедельно";
+"Monthly"   = "Ежемесячно";
+"Yearly"    = "Ежегодно";
+"Recurring" = "Повторяющийся";
