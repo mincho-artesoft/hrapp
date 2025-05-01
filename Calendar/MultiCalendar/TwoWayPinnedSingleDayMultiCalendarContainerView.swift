@@ -301,8 +301,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         cornerView.layer.zPosition = 5
         addSubview(cornerView)
         
-        allDayTitleLabel.text = "  " + NSLocalizedString("all-day", comment: "")
-        allDayTitleLabel.font  = .systemFont(ofSize: 14, weight: .semibold)
+        allDayTitleLabel.text = " " + NSLocalizedString("all-day", comment: "")
+        allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        allDayTitleLabel.numberOfLines = 1
+        allDayTitleLabel.adjustsFontSizeToFitWidth = true
+        allDayTitleLabel.minimumScaleFactor = 0.5   // може да намалява до 50% от оригиналния размер
+        allDayTitleLabel.lineBreakMode = .byTruncatingTail
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         allDayTitleLabel.layer.zPosition = 6
         addSubview(allDayTitleLabel)

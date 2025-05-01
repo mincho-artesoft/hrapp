@@ -378,11 +378,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         addSubview(cornerView)
         
         // allDayTitleLabel
-        allDayTitleLabel.text = "  " + NSLocalizedString("all-day", comment: "")
+        // MARK: - allDayTitleLabel
+        allDayTitleLabel.text = " " + NSLocalizedString("all-day", comment: "")
         allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
+        allDayTitleLabel.numberOfLines = 1
+        allDayTitleLabel.adjustsFontSizeToFitWidth = true
+        allDayTitleLabel.minimumScaleFactor = 0.5   // може да намалява до 50% от оригиналния размер
+        allDayTitleLabel.lineBreakMode = .byTruncatingTail
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         allDayTitleLabel.layer.zPosition = 6
         addSubview(allDayTitleLabel)
+
         
         topBorder.backgroundColor = UIColor.lightGray.cgColor
         allDayTitleLabel.layer.addSublayer(topBorder)
