@@ -1,15 +1,22 @@
+// LocalizationExtensions.swift
+
+import Foundation
 import StoreKit
 import SwiftUICore
 
 extension Product.SubscriptionPeriod.Unit {
+    /// Връща локализирана "noun" версия на единицата (day/week/month/year)
     func noun(plural: Bool) -> String {
+        let key: String
         switch self {
-        case .day:   return plural ? "days"   : "day"
-        case .week:  return plural ? "weeks"  : "week"
-        case .month: return plural ? "months" : "month"
-        case .year:  return plural ? "years"  : "year"
-        @unknown default: return plural ? "periods" : "period"
+        case .day:   key = plural ? "days"   : "day"
+        case .week:  key = plural ? "weeks"  : "week"
+        case .month: key = plural ? "months" : "month"
+        case .year:  key = plural ? "years"  : "year"
+        @unknown default:
+            key = plural ? "periods" : "period"
         }
+        return NSLocalizedString(key, comment: "Subscription period unit")
     }
 
     var sortIndex: Int {
@@ -22,33 +29,39 @@ extension Product.SubscriptionPeriod.Unit {
         }
     }
 
+    /// Връща "/day", "/week" и т.н., също локализирано
     var perPeriodString: String {
+        let key: String
         switch self {
-        case .day: return "/day"
-        case .week: return "/week"
-        case .month: return "/month"
-        case .year: return "/year"
-        @unknown default: return ""
+        case .day:   key = "/day"
+        case .week:  key = "/week"
+        case .month: key = "/month"
+        case .year:  key = "/year"
+        @unknown default:
+            key = ""
         }
+        return NSLocalizedString(key, comment: "Subscription price suffix")
     }
 }
 
 extension Product {
-
-        var periodUnitOnly: LocalizedStringKey {
-            guard let unit = subscription?.subscriptionPeriod.unit else {
-                return LocalizedStringKey("")
-            }
-            switch unit {
-            case .day:   return LocalizedStringKey("Daily")
-            case .week:  return LocalizedStringKey("Weekly")
-            case .month: return LocalizedStringKey("Monthly")
-            case .year:  return LocalizedStringKey("Yearly")
-            @unknown default:
-                return LocalizedStringKey("Recurring")
-            }
+    /// Връща локализирана кратка форма: "Daily", "Weekly" и т.н.
+    var periodUnitOnly: String {
+        guard let unit = subscription?.subscriptionPeriod.unit else {
+            return ""
         }
-
+        let key: String
+        switch unit {
+        case .day:   key = "Daily"
+        case .week:  key = "Weekly"
+        case .month: key = "Monthly"
+        case .year:  key = "Yearly"
+        @unknown default:
+            key = "Recurring"
+        }
+        return NSLocalizedString(key, comment: "Subscription period adjective")
+    }
+    
     var pricePerMonth: String? {
         guard let subscription = subscription else { return nil }
         let period = subscription.subscriptionPeriod

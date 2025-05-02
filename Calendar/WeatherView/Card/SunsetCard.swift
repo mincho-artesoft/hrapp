@@ -104,12 +104,26 @@ struct SunsetCard: View {
         .frame(height: 60, )
         .overlay(alignment: .bottom) {
             HStack {
-                Text("Sunrise: \(formatTime(sunrise))")
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Sunrise")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.secondary.opacity(0.8))
+                    Text(formatTime(sunrise))
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(.primary)
+                }
+
                 Spacer()
-                Text("Sunset: \(formatTime(sunset))")
+
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("Sunset")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.secondary.opacity(0.8))
+                    Text(formatTime(sunset))
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(.primary)
+                }
             }
-            .font(.system(size: 12))
-            .foregroundStyle(.secondary.opacity(0.8))
             .padding(.horizontal, 5)
         }
         .padding(.bottom, 5)

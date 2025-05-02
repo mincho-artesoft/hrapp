@@ -230,19 +230,26 @@ struct RootView: View {
                                         }
                                     }
                                 },
-
-
                                 // MARK: Horizontal секция (Picker)
                                 horizontalContent: {
                                     Picker("", selection: $selectedTabDraggableMenuView) {
-                                        Label("Calendar",       systemImage: "calendar").tag(0)
-                                        Label("MultiCalendar",  systemImage: "calendar.badge.plus").tag(1)
-                                        Label("Subscriptions",  systemImage: "calendar.circle").tag(2)
+                                        Label("Calendar",       systemImage: "calendar")
+                                            .frame(maxWidth: .infinity)
+                                            .lineLimit(1)
+                                            .minimumScaleFactor(0.7)
+                                            .tag(0)
+                                        Label("MultiCalendar",  systemImage: "calendar.badge.plus")
+                                            .frame(maxWidth: .infinity)
+                                            .lineLimit(1)
+                                            .minimumScaleFactor(0.7)
+                                            .tag(1)
+                                        Label("Subscriptions",  systemImage: "calendar.circle")
+                                            .frame(maxWidth: .infinity)
+                                            .lineLimit(1)
+                                            .minimumScaleFactor(0.7)
+                                            .tag(2)
                                     }
                                     .pickerStyle(.segmented)
-                                    .symbolRenderingMode(.multicolor)
-                                    .padding(.horizontal, 16)
-
                                 },
 
                                 // MARK: Vertical секция

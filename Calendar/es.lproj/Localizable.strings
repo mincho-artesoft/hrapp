@@ -715,3 +715,13 @@
 "Monthly"   = "Mensual";
 "Yearly"    = "Anual";
 "Recurring" = "Recurrente";
+
+/* units */
+"day"   = "día";
+"days"  = "días";
+"week"  = "semana";
+"weeks" = "semanas";
+"month"  = "mes";
+"months" = "meses";
+"year"   = "año";
+"years"  = "años";
