@@ -1,8 +1,6 @@
-// SubscriptionManager.swift
-
 import SwiftUI
 import StoreKit
-import UIKit  // Needed for UIApplication.shared.open
+import UIKit
 
 typealias StoreTransaction = StoreKit.Transaction
 
@@ -204,9 +202,15 @@ class SubscriptionManager: ObservableObject {
 
     @MainActor
     func openManageSubscriptions() async {
-        guard let url = URL(string: "https://apps.apple.com/account/subscriptions"),
-              UIApplication.shared.canOpenURL(url)
+        guard let windowScene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
         else { return }
-        await UIApplication.shared.open(url)
+
+        do {
+            try await AppStore.showManageSubscriptions(in: windowScene)
+        } catch {
+            // Можеш да логнеш или покажеш грешката на потребителя, ако искаш
+            print("Неуспешно показване на управлението на абонаменти: \(error)")
+        }
     }
 }

@@ -124,9 +124,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             if type == "silent"{
                 completionHandler()
             }else if type == "call"{
+//                completionHandler()
             }else{
                 completionHandler()
             }
         }
+//        completionHandler()
     }
 }
