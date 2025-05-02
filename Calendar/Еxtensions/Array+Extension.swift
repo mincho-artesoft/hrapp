@@ -20,4 +20,11 @@ extension Array: @retroactive RawRepresentable where Element: Codable {
         }
         return jsonString
     }
+    
+    func rotated(by offset: Int) -> [Element] {
+        guard !isEmpty else { return self }
+        let o = ((offset % count) + count) % count
+        return Array(self[o...] + self[..<o])
+    }
 }
+

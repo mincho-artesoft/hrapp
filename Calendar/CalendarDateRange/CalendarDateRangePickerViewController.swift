@@ -256,101 +256,91 @@ public class CalendarDateRangePickerViewController: UIViewController {
 extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     public func collectionView(_ collectionView: UICollectionView,
-                               numberOfItemsInSection section: Int) -> Int {
-        // Първите 7 слота са за етикети на дните от седмицата
-        let weekdayRowItems = 7
-        // Колко "празни" слота има преди 1-во число
-        let blankItems = getWeekday(date: currentMonth) - 1
-        // Колко дни има текущият месец
-        let daysInMonth = getNumberOfDaysInMonth(date: currentMonth)
-        return weekdayRowItems + blankItems + daysInMonth
-    }
+                                  numberOfItemsInSection section: Int) -> Int {
+           let weekdayRowItems = 7
+           // Вашата настройка за първи ден на седмицата (1 = неделя … 7 = събота)
+           let firstWeekday = GlobalState.firstWeekday
+           // кой е денят на седмицата за 1-во число на currentMonth
+           let weekdayOfFirst = getWeekday(date: currentMonth) // 1…7
+           // колко празни клетки преди 1-во число
+           let blankItems = (weekdayOfFirst - firstWeekday + 7) % 7
+           let daysInMonth = getNumberOfDaysInMonth(date: currentMonth)
+           return weekdayRowItems + blankItems + daysInMonth
+       }
 
-    public func collectionView(_ collectionView: UICollectionView,
-                               cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "CalendarDateRangePickerCell",
-            for: indexPath
-        ) as! CalendarDateRangePickerCell
-        
-        // Нулираме клетката (премахва стари линии/кръгове)
-        cell.reset()
-        // За всеки случай първоначално задаваме избрания цвят
-        cell.selectedColor = self.selectedColor
+       public func collectionView(_ collectionView: UICollectionView,
+                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+           let cell = collectionView.dequeueReusableCell(
+               withReuseIdentifier: "CalendarDateRangePickerCell",
+               for: indexPath
+           ) as! CalendarDateRangePickerCell
 
-        // Първите 7 клетки са за дните от седмицата (Пон, Вто, ...)
-        if indexPath.item < 7 {
-            cell.label.text = getWeekdayLabel(weekday: indexPath.item + 1)
-            cell.label.textColor = .secondaryLabel
-            return cell
-        }
+           cell.reset()
+           cell.selectedColor = self.selectedColor
 
-        // Колко празни слотове има преди да започне 1-вият ден от месеца
-        let blankItems = getWeekday(date: currentMonth) - 1
-        if indexPath.item < 7 + blankItems {
-            // Празна клетка
-            cell.label.text = ""
-            return cell
-        }
+           let firstWeekday = GlobalState.firstWeekday
+           let weekdayOfFirst = getWeekday(date: currentMonth)
+           let blankItems = (weekdayOfFirst - firstWeekday + 7) % 7
 
-        // Изчисляваме кой "ден от месеца" съответства на тази клетка
-        let dayOfMonth = indexPath.item - (7 + blankItems) + 1
-        let date = getDate(dayOfMonth: dayOfMonth, baseMonth: currentMonth)
-        cell.date = date
-        cell.label.text = "\(dayOfMonth)"
+           // 1) Заглавия на дните
+           if indexPath.item < 7 {
+               // indexPath.item от 0 до 6
+               // weekdayIndex от 1 до 7, циклично започващ от firstWeekday
+               let weekdayIndex = ((firstWeekday - 1 + indexPath.item) % 7) + 1
+               cell.label.text = getWeekdayLabel(weekday: weekdayIndex)
+               cell.label.textColor = .secondaryLabel
+               return cell
+           }
 
-        // Проверка дали е „днес“
-        let today = Date()
-        let isToday = areSameDay(dateA: date, dateB: today)
+           // 2) Празни слотове
+           if indexPath.item < 7 + blankItems {
+               cell.label.text = ""
+               return cell
+           }
 
-        // === Логика за селекция (start/end) ===
-        if let start = selectedStartDate, let end = selectedEndDate {
-            
-            // Ако start и end съвпадат => само един ден е избран
-            if areSameDay(dateA: start, dateB: end) {
-                if areSameDay(dateA: date, dateB: start) {
-                    // Ако е "днес" + start/end => кръгчето става .systemRed
-                    cell.selectedColor = isToday ? .systemRed : self.selectedColor
-                    cell.addCircle()
-                }
-            } else {
-                // Нормален случай: start < end
-                if areSameDay(dateA: date, dateB: start) {
-                    cell.selectedColor = isToday ? .systemRed : self.selectedColor
-                    // Линия вдясно + кръг
-                    cell.addLine(from: cell.bounds.width / 2, to: cell.bounds.width)
-                    cell.addCircle()
+           // 3) Дни от месеца
+           let dayOfMonth = indexPath.item - (7 + blankItems) + 1
+           let date = getDate(dayOfMonth: dayOfMonth, baseMonth: currentMonth)
+           cell.date = date
+           cell.label.text = "\(dayOfMonth)"
 
-                } else if areSameDay(dateA: date, dateB: end) {
-                    cell.selectedColor = isToday ? .systemRed : self.selectedColor
-                    // Линия вляво + кръг
-                    cell.addLine(from: 0, to: cell.bounds.width / 2)
-                    cell.addCircle()
+           // === Останалата ви логика за today/selection/etc. ===
+           let today = Date()
+           let isToday = areSameDay(dateA: date, dateB: today)
 
-                } else if isBefore(dateA: start, dateB: date),
-                          isBefore(dateA: date, dateB: end) {
-                    // Денят е между start и end => чертаем само линия
-                    cell.addLine(from: 0, to: cell.bounds.width)
-                }
-            }
-        }
-        else if let justStart = selectedStartDate {
-            // Имаме само start, но още не е избран end
-            if areSameDay(dateA: date, dateB: justStart) {
-                cell.selectedColor = isToday ? .systemRed : self.selectedColor
-                cell.addCircle()
-            }
-        }
+           if let start = selectedStartDate, let end = selectedEndDate {
+               if areSameDay(dateA: start, dateB: end) {
+                   if areSameDay(dateA: date, dateB: start) {
+                       cell.selectedColor = isToday ? .systemRed : self.selectedColor
+                       cell.addCircle()
+                   }
+               } else {
+                   if areSameDay(dateA: date, dateB: start) {
+                       cell.selectedColor = isToday ? .systemRed : self.selectedColor
+                       cell.addLine(from: cell.bounds.width/2, to: cell.bounds.width)
+                       cell.addCircle()
+                   } else if areSameDay(dateA: date, dateB: end) {
+                       cell.selectedColor = isToday ? .systemRed : self.selectedColor
+                       cell.addLine(from: 0, to: cell.bounds.width/2)
+                       cell.addCircle()
+                   } else if isBefore(dateA: start, dateB: date),
+                             isBefore(dateA: date, dateB: end) {
+                       cell.addLine(from: 0, to: cell.bounds.width)
+                   }
+               }
+           }
+           else if let justStart = selectedStartDate {
+               if areSameDay(dateA: date, dateB: justStart) {
+                   cell.selectedColor = isToday ? .systemRed : self.selectedColor
+                   cell.addCircle()
+               }
+           }
+           if isToday && cell.circleView == nil {
+               cell.label.textColor = .systemOrange
+           }
 
-        // Ако денят е „днес“, но НЯМА кръг (circleView),
-        // маркираме текста в оранжево (както досега).
-        if isToday && cell.circleView == nil {
-            cell.label.textColor = .systemOrange
-        }
-
-        return cell
-    }
+           return cell
+       }
 
 
     public func collectionView(_ collectionView: UICollectionView,

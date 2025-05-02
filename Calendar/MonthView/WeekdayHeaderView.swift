@@ -1,15 +1,22 @@
 import SwiftUI
 
 struct WeekdayHeaderView: View {
-    /// Суровите идентификатори за дните (на английски),
-    /// които ще мапнем чрез `LocalizedStringKey(...)`
-    let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    // Вземаме локализирани символи за дните
+    private var weekdaySymbols: [String] {
+        // Создаваме копие на календара с firstWeekday от GlobalState
+        var cal = Calendar.current
+        cal.firstWeekday = GlobalState.firstWeekday
+        // Можеш да ползваш shortWeekdaySymbols ("Sun", "Mon", …)
+        let symbols = cal.shortWeekdaySymbols  // ["Sun","Mon",…]
+        // Завъртаме масива така, че да започва от firstWeekday
+        let idx = cal.firstWeekday - 1         // 0-базирано
+        return Array(symbols[idx...] + symbols[..<idx])
+    }
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(weekdays, id: \.self) { dayName in
-                // Локализиране на всяка стойност
-                Text(LocalizedStringKey(dayName))
+            ForEach(weekdaySymbols, id: \.self) { dayName in
+                Text(dayName)
                     .font(.caption)
                     .frame(maxWidth: .infinity)
             }

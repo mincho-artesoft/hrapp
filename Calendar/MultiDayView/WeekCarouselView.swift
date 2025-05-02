@@ -6,6 +6,12 @@ public class WeekCarouselView: UIView,
                                UICollectionViewDelegateFlowLayout,
                                UIScrollViewDelegate
 {
+    private var customCalendar: Calendar {
+        var cal = Calendar.current
+        cal.firstWeekday = GlobalState.firstWeekday
+        return cal
+    }
+
     // MARK: - Публични пропъртита
     public var onDaySelected: ((Date) -> Void)?
     
@@ -87,89 +93,91 @@ public class WeekCarouselView: UIView,
     /// Зарежда (или добавя) дати, така че `centerDate` да е вътре в списъка,
     /// и добавя по rangeInWeeks назад и напред от тази дата.
     private func loadWeeksAround(_ centerDate: Date, rangeInWeeks: Int) {
-        let cal = Calendar.current
-        // Намираме неделята (за да подредим седмиците правилно)
-        let sunday = alignToSunday(centerDate)
+        // Използваме календар с първи ден по избор от GlobalState
+        let cal = customCalendar
+        // Намираме началото на „седмицата“ спрямо първия ден на седмицата
+        let startOfWeek = alignToFirstWeekday(centerDate)
         
-        // Генерираме дати в интервала [sunday - rangeInWeeks седмици .. sunday + rangeInWeeks седмици]
+        // Събираме дати в интервала [startOfWeek - rangeInWeeks седмици .. startOfWeek + rangeInWeeks седмици]
         var temp: [Date] = []
         for w in -rangeInWeeks...rangeInWeeks {
-            if let startOfWeek = cal.date(byAdding: .day, value: w * 7, to: sunday) {
+            if let weekStart = cal.date(byAdding: .day, value: w * 7, to: startOfWeek) {
                 for i in 0..<7 {
-                    if let d = cal.date(byAdding: .day, value: i, to: startOfWeek) {
+                    if let d = cal.date(byAdding: .day, value: i, to: weekStart) {
                         temp.append(d)
                     }
                 }
             }
         }
+        // Сортираме по нарастващ ред
         temp.sort()
         
-        // Ако досега нямаме данни, просто ги слагаме
+        // Ако е първо зареждане, просто присвояваме
         if dates.isEmpty {
             dates = temp
             return
         }
         
-        // Ако имаме, виждаме дали тези нови дати разширяват нашите...
-        // Но тук, за простота, можем да вземем обединението на вече съществуващите
-        // + новите (за да сме сигурни, че няма дублиране).
-        var setOld = Set(dates)
-        for d in temp {
-            if !setOld.contains(d) {
-                dates.append(d)
-                setOld.insert(d)
-            }
+        // В противен случай обединяваме без дублиране
+        var existing = Set(dates)
+        for day in temp where !existing.contains(day) {
+            dates.append(day)
+            existing.insert(day)
         }
         dates.sort()
     }
+
+
     
     /// Зарежда N седмици "отляво"
+    /// Зарежда N седмици „отляво“, като започва от първия ден на седмицата според GlobalState.firstWeekday
     private func prependWeeks(_ count: Int) {
-        guard let first = dates.first else { return }
-        let cal = Calendar.current
+        guard let firstDate = dates.first else { return }
+        let cal = customCalendar
+        // Намираме началото на седмицата за първата налична дата
+        let startOfWeek = alignToFirstWeekday(firstDate)
         
-        // Намираме началната неделя (спрямо първата дата)
-        let sunday = alignToSunday(first)
-        
-        // Генерираме "count" седмици преди sunday
         var newDays: [Date] = []
+        // За всяка от count седмици назад
         for w in 1...count {
-            // w = 1 => 1 седмица назад, w = 2 => 2 седмици назад и т.н.
-            if let startOfWeek = cal.date(byAdding: .day, value: -w * 7, to: sunday) {
+            // weekStart = startOfWeek - w * 7 дни
+            if let weekStart = cal.date(byAdding: .day, value: -w * 7, to: startOfWeek) {
+                // Добавяме 7-те дни на тази седмица
                 for i in 0..<7 {
-                    if let d = cal.date(byAdding: .day, value: i, to: startOfWeek) {
+                    if let d = cal.date(byAdding: .day, value: i, to: weekStart) {
                         newDays.append(d)
                     }
                 }
             }
         }
+        // Вмъкваме ги отпред, сортирани
         dates.insert(contentsOf: newDays.sorted(), at: 0)
     }
+
     
-    /// Зарежда N седмици "отдясно"
-    private func appendWeeks(_ count: Int) {
-        guard let last = dates.last else { return }
-        let cal = Calendar.current
-        
-        // Намираме неделята (или понеделника) на последната дата
-        // Тъй като alignToSunday ти дава неделя за референтната дата.
-        let lastSunday = alignToSunday(last)
-        
-        // last може да не е точно неделя → намираме колко седмици да добавим оттам нататък
-        // но по-лесно е да тръгнем от lastSunday + 1 седмица и т.н.
-        
-        var newDays: [Date] = []
-        for w in 1...count {
-            if let startOfWeek = cal.date(byAdding: .day, value: w * 7, to: lastSunday) {
-                for i in 0..<7 {
-                    if let d = cal.date(byAdding: .day, value: i, to: startOfWeek) {
-                        newDays.append(d)
+        private func appendWeeks(_ count: Int) {
+            guard let lastDate = dates.last else { return }
+            let cal = customCalendar
+            // Намираме началото на седмицата за последната налична дата
+            let startOfWeek = alignToFirstWeekday(lastDate)
+            
+            var newDays: [Date] = []
+            // За всяка от count седмици напред
+            for w in 1...count {
+                // weekStart = startOfWeek + w * 7 дни
+                if let weekStart = cal.date(byAdding: .day, value: w * 7, to: startOfWeek) {
+                    // Добавяме 7-те дни на тази седмица
+                    for i in 0..<7 {
+                        if let d = cal.date(byAdding: .day, value: i, to: weekStart) {
+                            newDays.append(d)
+                        }
                     }
                 }
             }
+            // Добавяме ги в края, сортирани
+            dates.append(contentsOf: newDays.sorted())
         }
-        dates.append(contentsOf: newDays.sorted())
-    }
+
     
     
     // MARK: - Скролване до избран ден
@@ -279,15 +287,14 @@ public class WeekCarouselView: UIView,
     }
     
     // MARK: - Помощни методи
-    private func alignToSunday(_ date: Date) -> Date {
-        let cal = Calendar.current
-        // В повечето регионални настройки Sunday = 1, Monday = 2 и т.н.
-        // Ако е различно, коригирайте логиката.
-        let wd = cal.component(.weekday, from: date) // Sunday=1
-        let offset = 1 - wd
-        let maybeSunday = cal.date(byAdding: .day, value: offset, to: date) ?? date
-        return cal.startOfDay(for: maybeSunday)
+    private func alignToFirstWeekday(_ date: Date) -> Date {
+        let cal = customCalendar
+        let weekday = cal.component(.weekday, from: date)            // текущ ден от седмицата 1–7
+        let offset = cal.firstWeekday - weekday                      // колко дни да отместим назад/напред
+        let maybeStart = cal.date(byAdding: .day, value: offset, to: date) ?? date
+        return cal.startOfDay(for: maybeStart)
     }
+
     
     private func isSameDay(_ d1: Date, _ d2: Date) -> Bool {
         return Calendar.current.isDate(d1, inSameDayAs: d2)

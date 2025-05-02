@@ -725,3 +725,6 @@
 "months" = "месяцев";
 "year"   = "год";
 "years"  = "лет";
+
+/* YearMonthMiniView */
+"weekday.headers" = "В,П,В,С,Ч,П,С";

@@ -5,74 +5,75 @@ struct YearMonthMiniView: View {
     let monthDate: Date
     let eventsByDay: [Date: [EKEvent]]
     let onMonthTapped: (Date) -> Void
-    
-    // Календар, който почва от неделя
-    private var sundayStartCalendar: Calendar {
+
+    private var calendar: Calendar {
         var cal = Calendar(identifier: .gregorian)
-        cal.firstWeekday = 1 // Sunday
+        cal.firstWeekday = GlobalState.firstWeekday
+        if !GlobalState.region.isEmpty {
+            cal.locale = Locale(identifier: GlobalState.region)
+        }
         return cal
     }
-    
+
+    // 1) Зареждаме CSV от Localizable.strings
+    private var rawSymbols: [String] {
+        let csv = NSLocalizedString("weekday.headers", comment: "Comma-separated 1-letter weekday symbols, starting от Sunday")
+        return csv
+            .split(separator: ",")
+            .map { String($0) }
+    }
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(Color(.systemGray6))
                 .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
-            
+
             VStack(spacing: 8) {
-                // Заглавие на месеца (Mar)
                 Text(monthName(monthDate))
                     .font(.headline)
                     .padding(.top, 8)
-                
-                // Генерираме 42 дати, ползвайки календар, който започва в неделя
-                let allGridDays = sundayStartCalendar.generateDatesForMonthGridAligned(for: monthDate)
-                
-                // Съкратени имена на дните (почват от Sunday)
-                let weekdaySymbols = sundayStartCalendar.shortStandaloneWeekdaySymbols.map {
-                    String($0.prefix(1))
-                }
-                
+
+                let allGridDays = calendar.generateDatesForMonthGridAligned(for: monthDate)
+
+                // 2) Завъртаме rawSymbols така, че първият елемент да е съобразен с firstWeekday
+                let headers = rawSymbols.rotated(by: calendar.firstWeekday - 1)
+
                 LazyVGrid(
-                    columns: Array(repeating: GridItem(.fixed(24), spacing: 1), count: 7), spacing: 1
+                    columns: Array(repeating: GridItem(.fixed(24), spacing: 1), count: 7),
+                    spacing: 1
                 ) {
-                    // Седмичния хедър
+                    // 3) Header на дните
                     ForEach(0..<7) { i in
-                        Text(weekdaySymbols[i])
+                        Text(headers[i])
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .frame(maxWidth: .infinity)
                     }
 
-                    // Дните от месеца
+                    // 4) Дни от месеца
                     ForEach(allGridDays, id: \.self) { day in
-                        let dayKey = sundayStartCalendar.startOfDay(for: day)
+                        let dayKey = calendar.startOfDay(for: day)
                         let dayEvents = eventsByDay[dayKey] ?? []
-                        let isInCurrentMonth = sundayStartCalendar.isDate(day, equalTo: monthDate, toGranularity: .month)
+                        let isInCurrentMonth = calendar.isDate(day, equalTo: monthDate, toGranularity: .month)
 
                         if isInCurrentMonth {
-                            MiniDayCellView(
-                                day: day,
-                                referenceMonth: monthDate,
-                                events: dayEvents
-                            )
+                            MiniDayCellView(day: day, referenceMonth: monthDate, events: dayEvents)
                         } else {
-                            Text("") // Празна клетка за дните, които не са в текущия месец
+                            Rectangle()
+                                .fill(Color.clear)
                                 .frame(width: 30, height: 32)
                         }
                     }
                 }
-
                 .padding(.horizontal, 6)
             }
         }
         .contentShape(Rectangle())
-        .onTapGesture {
-            onMonthTapped(monthDate)
-        }
+        .onTapGesture { onMonthTapped(monthDate) }
         .frame(width: 180, height: 240)
     }
-    
+
     private func monthName(_ date: Date) -> String {
         let df = DateFormatter()
         df.dateFormat = "MMM"

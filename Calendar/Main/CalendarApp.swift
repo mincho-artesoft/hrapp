@@ -74,8 +74,12 @@ struct CalendarApp: App {
                       let sample = Measurement(value: 1, unit: UnitTemperature.celsius)
                       let tempStr = formatter.string(from: sample)
                       GlobalState.temperatureUnit = tempStr.contains("°F") ? "°F" : "°C"
-
                       // 4. Мерна система
+                
+                        let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
+                        let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
+                        let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
+                        print("unit", unit)
                       GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
 
                       // 5. Първи ден от седмицата

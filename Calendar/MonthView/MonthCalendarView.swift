@@ -24,8 +24,12 @@ struct MonthCalendarView: View {
     @State private var showSearchBar: Bool = false
     @State private var searchText: String = ""
     
-    private let calendar = Calendar(identifier: .gregorian)
-    
+    private var calendar: Calendar {
+        var cal = Calendar(identifier: .gregorian)
+        cal.locale = Locale.current
+        cal.firstWeekday = GlobalState.firstWeekday
+        return cal
+    }
     init(viewModel: CalendarViewModel,
          startMonth: Date,
          selectedTab: Int,
@@ -241,7 +245,7 @@ extension MonthCalendarView {
             viewModel.loadEvents(for: currentMonth)
         }
     }
-
+    
     private func localizedFormattedMonthYear(_ date: Date) -> String {
         let df = DateFormatter()
         df.locale = Locale.current

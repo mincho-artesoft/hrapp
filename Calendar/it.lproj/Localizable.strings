@@ -724,3 +724,6 @@
 "months" = "mesi";
 "year"   = "anno";
 "years"  = "anni";
+
+/* YearMonthMiniView */
+"weekday.headers" = "D,L,M,M,G,V,S";

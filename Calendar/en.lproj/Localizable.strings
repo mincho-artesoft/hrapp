@@ -727,3 +727,6 @@
 "months" = "months";
 "year"   = "year";
 "years"  = "years";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S,M,T,W,T,F,S";

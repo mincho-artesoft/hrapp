@@ -7,12 +7,23 @@ struct WeekCarouselView2: View {
     // Добавяме computed property, която създава календар с избраната часова зона.
     var customCalendar: Calendar {
         var cal = Calendar(identifier: .gregorian)
-        // Използваме избраната часовата зона, например от shared view model.
         cal.timeZone = WeatherKitViewModel.shared.locationTimeZone
+        cal.firstWeekday = GlobalState.firstWeekday
         return cal
     }
     
     private let numberOfWeeks = 3
+    
+
+    private func startOfWeek(for date: Date) -> Date {
+        let cal = customCalendar
+        let weekday = cal.component(.weekday, from: date)
+        // колко дни да отидем назад, за да стигнем до firstWeekday
+        let delta = (weekday - cal.firstWeekday + 7) % 7
+        let start = cal.date(byAdding: .day, value: -delta, to: date) ?? date
+        return cal.startOfDay(for: start)
+    }
+
     
     var body: some View {
         TabView {
@@ -61,12 +72,12 @@ struct WeekCarouselView2: View {
     
     // Генерираме седмици (от неделя до събота), използвайки customCalendar.
     private func generateWeeks(from refDate: Date, numberOfWeeks: Int) -> [[Date]] {
-        let startSunday = startOfWeekSunday(for: refDate)
+        let weekStart0 = startOfWeek(for: refDate)
         var result: [[Date]] = []
         for w in 0..<numberOfWeeks {
-            if let firstDay = customCalendar.date(byAdding: .day, value: w * 7, to: startSunday) {
-                let days = (0..<7).compactMap { i -> Date? in
-                    customCalendar.date(byAdding: .day, value: i, to: firstDay)
+            if let firstDayOfWeek = customCalendar.date(byAdding: .day, value: w * 7, to: weekStart0) {
+                let days = (0..<7).compactMap { i in
+                    customCalendar.date(byAdding: .day, value: i, to: firstDayOfWeek)
                 }
                 result.append(days)
             }
