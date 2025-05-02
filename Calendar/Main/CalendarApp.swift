@@ -52,26 +52,70 @@ struct CalendarApp: App {
                 CalendarViewModel.shared.startGoogleCalendarSync()
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
                 
+                let locale = Locale.current
+                      let calendar = Calendar.current
+
+                      // 1. Регион
+                      if let regionCode = locale.region?.identifier,
+                         let regionName = locale.localizedString(forRegionCode: regionCode) {
+                          GlobalState.region = "\(regionName) (\(regionCode))"
+                      }
+
+                      // 2. Календар
+                      let calID = String(describing: calendar.identifier)
+                      let calName = locale.localizedString(for: calendar.identifier) ?? calID
+                      GlobalState.calendar = "\(calName) (\(calID))"
+
+                      // 3. Температурна единица
+                      let formatter = MeasurementFormatter()
+                      formatter.locale = locale
+                      formatter.unitStyle = .short
+                      formatter.unitOptions = .naturalScale
+                      let sample = Measurement(value: 1, unit: UnitTemperature.celsius)
+                      let tempStr = formatter.string(from: sample)
+                      GlobalState.temperatureUnit = tempStr.contains("°F") ? "°F" : "°C"
+
+                      // 4. Мерна система
+                      GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
+
+                      // 5. Първи ден от седмицата
+                      GlobalState.firstWeekday = calendar.firstWeekday
+
+                      // 6. Формат на дата
+                      let df = DateFormatter()
+                      df.locale = locale
+                      df.dateStyle = .short
+                      GlobalState.dateFormat = df.dateFormat ?? ""
+
+                      // 7. Формат на числа
+                      let nf = NumberFormatter()
+                      nf.locale = locale
+                      nf.numberStyle = .decimal
+                      let num = 1234567.89 as NSNumber
+                      GlobalState.numberFormat = nf.string(from: num) ?? ""
+
+                // ——— Твой код за иконите ———
                 let date = Date()
-                let calendar = Calendar.current
                 let day = calendar.component(.day, from: date)
                 let month = calendar.component(.month, from: date)
                 let weekday = calendar.component(.weekday, from: date)
-                
+
                 let months = ["Jan","Feb","Mar","Apr","May","Jun",
                               "Jul","Aug","Sep","Oct","Nov","Dec"]
-                let weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-                
+                let weekdaysShort = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+
                 let monthName = months[month - 1]
-                let weekdayName = weekdays[weekday - 1]
+                let weekdayNameShort = weekdaysShort[weekday - 1]
                 let weatherType = getCurrentWeatherType()
-                let iconName = "icon_\(monthName)_\(weekdayName)_\(day)_\(weatherType)"
-                
+                let iconName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_\(weatherType)"
+
                 AltIcon.setAppIcon(iconName)
                 print("Не намирам \(iconName). Слагам fallback (sun).")
-                let fallbackName = "icon_\(monthName)_\(weekdayName)_\(day)_sun"
+                let fallbackName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_sun"
                 AltIcon.setAppIcon(fallbackName)
-                
+                // ——————————————————————————————
+
+
             case .background:
                 print("App in background. Stop sync timers.")
                 CalendarViewModel.shared.stopGoogleCalendarSync()
