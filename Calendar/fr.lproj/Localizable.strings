@@ -96,7 +96,7 @@
 "Month" = "Mois";
 "Year" = "Année";
 "List" = "Liste";
-"MultiCalendar" = "Plusieurs calendriers";
+"MultiCalendar" = "Pluri Calendriers";
 
 /* WeekdayHeaderView */
 "Sun" = "Dim";
@@ -113,7 +113,7 @@
 "Month" = "Mois";
 "Year" = "Année";
 "List" = "Liste";
-"MultiCalendar" = "Plusieurs calendriers";
+"MultiCalendar" = "Pluri Calendriers";
 
 /* YearCalendarView */
 "Search events..." = "Rechercher des événements…";
@@ -128,12 +128,12 @@
 "No calendar access." = "Pas d'accès au calendrier.";
 
 /* EventRowView */
-"all-day" = "Toute la journée";
+"all-day" = "Jour entier";
 "Ends" = "Se termine";
 
 /* SearchEventRowView */
 "No Title" = "Sans titre";
-"all-day" = "Toute la journée";
+"all-day" = "Jour entier";
 
 /* BasicEvent */
 "New event" = "Nouvel événement";
@@ -149,13 +149,13 @@
 
 /* TwoWayPinnedSingleDayMultiCalendarContainerView */
 "Search events..." = "Rechercher des événements…";
-"all-day" = "Toute la journée";
+"all-day" = "Jour entier";
 "Day" = "Jour";
 "MultiDay" = "Plusieurs jours";
 "Month" = "Mois";
 "Year" = "Année";
 "List" = "Liste";
-"MultiCalendar" = "Plusieurs calendriers";
+"MultiCalendar" = "Pluri Calendriers";
 
 /* TwoWayPinnedSingleDayMultiCalendarWrapper */
 "New event" = "Nouvel événement";
@@ -177,14 +177,14 @@
 
 /* TwoWayPinnedMultiDayContainerView */
 "No selected range" = "Aucune plage sélectionnée";
-"all-day" = "Toute la journée";
+"all-day" = "Jour entier";
 "Search events..." = "Rechercher des événements…";
 "Day" = "Jour";
 "MultiDay" = "Plusieurs jours";
 "Month" = "Mois";
 "Year" = "Année";
 "List" = "Liste";
-"MultiCalendar" = "Plusieurs calendriers";
+"MultiCalendar" = "Pluri Calendriers";
 
 /* TwoWayPinnedMultiDayWrapper */
 "New event" = "Nouvel événement";

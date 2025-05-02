@@ -96,7 +96,7 @@
 "Month" = "Месяц";
 "Year" = "Год";
 "List" = "Список";
-"MultiCalendar" = "Несколько календарей";
+"MultiCalendar" = "МультиКалендарь";
 
 /* WeekdayHeaderView */
 "Sun" = "Вс";
@@ -113,7 +113,7 @@
 "Month" = "Месяц";
 "Year" = "Год";
 "List" = "Список";
-"MultiCalendar" = "Несколько календарей";
+"MultiCalendar" = "МультиКалендарь";
 
 /* YearCalendarView */
 "Search events..." = "Поиск событий…";
@@ -155,7 +155,7 @@
 "Month" = "Месяц";
 "Year" = "Год";
 "List" = "Список";
-"MultiCalendar" = "Несколько календарей";
+"MultiCalendar" = "МультиКалендарь";
 
 /* TwoWayPinnedSingleDayMultiCalendarWrapper */
 "New event" = "Новое событие";
@@ -184,7 +184,7 @@
 "Month" = "Месяц";
 "Year" = "Год";
 "List" = "Список";
-"MultiCalendar" = "Несколько календарей";
+"MultiCalendar" = "МультиКалендарь";
 
 /* TwoWayPinnedMultiDayWrapper */
 "New event" = "Новое событие";

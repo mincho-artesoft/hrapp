@@ -96,7 +96,7 @@
 "Month" = "Месец";
 "Year" = "Година";
 "List" = "Списък";
-"MultiCalendar" = "Няколко календара";
+"MultiCalendar" = "Мултикалендар";
 
 /* WeekdayHeaderView */
 "Sun" = "Нд";
@@ -113,7 +113,7 @@
 "Month" = "Месец";
 "Year" = "Година";
 "List" = "Списък";
-"MultiCalendar" = "Няколко календара";
+"MultiCalendar" = "Мултикалендар";
 
 /* YearCalendarView */
 "Search events..." = "Търсене на събития…";
@@ -155,7 +155,7 @@
 "Month" = "Месец";
 "Year" = "Година";
 "List" = "Списък";
-"MultiCalendar" = "Няколко календара";
+"MultiCalendar" = "Мултикалендар";
 
 /* TwoWayPinnedSingleDayMultiCalendarWrapper */
 "New event" = "Ново събитие";
@@ -184,7 +184,7 @@
 "Month" = "Месец";
 "Year" = "Година";
 "List" = "Списък";
-"MultiCalendar" = "Няколко календара";
+"MultiCalendar" = "Мултикалендар";
 
 /* TwoWayPinnedMultiDayWrapper */
 "New event" = "Ново събитие";
