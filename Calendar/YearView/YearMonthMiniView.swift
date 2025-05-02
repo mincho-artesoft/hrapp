@@ -7,7 +7,7 @@ struct YearMonthMiniView: View {
     let onMonthTapped: (Date) -> Void
 
     private var calendar: Calendar {
-        var cal = Calendar(identifier: .gregorian)
+        var cal = Calendar.current
         cal.firstWeekday = GlobalState.firstWeekday
         if !GlobalState.region.isEmpty {
             cal.locale = Locale(identifier: GlobalState.region)

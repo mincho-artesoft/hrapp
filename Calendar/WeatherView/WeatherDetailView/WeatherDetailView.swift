@@ -1506,7 +1506,7 @@ struct WeatherDetailView: View {
         }
     }
     var customCalendar: Calendar {
-           var cal = Calendar(identifier: .gregorian)
+           var cal = Calendar.current
            cal.timeZone = vm.locationTimeZone // Използва избраната от потребителя зона
            return cal
        }

@@ -45,7 +45,7 @@ final class CalendarViewModel: ObservableObject {
 
     static let shared = CalendarViewModel()
 
-    let calendar = Calendar(identifier: .gregorian)
+    let calendar = Calendar.current
     
     private var cancellables = Set<AnyCancellable>()
 

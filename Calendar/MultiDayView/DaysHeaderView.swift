@@ -35,7 +35,7 @@ public final class DaysHeaderView: UIView {
     
     /// Частен календар, който използваме за изчисления.
     private var calendarForLabels: Calendar = {
-        var cal = Calendar(identifier: .gregorian)
+        var cal = Calendar.current
         cal.firstWeekday = 2  // Първият ден е понеделник (2)
         return cal
     }()

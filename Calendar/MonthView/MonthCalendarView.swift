@@ -25,7 +25,7 @@ struct MonthCalendarView: View {
     @State private var searchText: String = ""
     
     private var calendar: Calendar {
-        var cal = Calendar(identifier: .gregorian)
+        var cal = Calendar.current
         cal.locale = Locale.current
         cal.firstWeekday = GlobalState.firstWeekday
         return cal

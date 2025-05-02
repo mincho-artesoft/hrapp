@@ -68,7 +68,7 @@ class WeatherKitViewModel: ObservableObject {
                 updateHourlyForecast(hourlyData.forecast)
                 updateDailyForecast(dailyData.forecast)
 
-                var calendar = Calendar(identifier: .gregorian)
+                var calendar = Calendar.current
                 calendar.timeZone = locationTimeZone
 
                 if let todayForecast = dailyData.forecast.first(where: { calendar.isDateInToday($0.date) }) {
@@ -169,7 +169,7 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     private func updateHourlyForecast(_ hours: [HourWeather]) {
-        var calendar = Calendar(identifier: .gregorian)
+        var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
         let now = Date()
 
@@ -234,7 +234,7 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     private func updateDailyForecast(_ days: [DayWeather]) {
-        var calendar = Calendar(identifier: .gregorian)
+        var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
 
         // Вземаме до 10 дни напред

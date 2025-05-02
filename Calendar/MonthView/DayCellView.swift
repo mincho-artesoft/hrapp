@@ -13,7 +13,7 @@ struct DayCellView: View {
     var onDayLongPress: (Date) -> Void
     var onEventTap: (EKEvent) -> Void
 
-    private let calendar = Calendar(identifier: .gregorian)
+    private let calendar = Calendar.current
 
     @State private var isTargeted = false
 

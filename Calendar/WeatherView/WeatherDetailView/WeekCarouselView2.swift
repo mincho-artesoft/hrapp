@@ -6,7 +6,7 @@ struct WeekCarouselView2: View {
     
     // Добавяме computed property, която създава календар с избраната часова зона.
     var customCalendar: Calendar {
-        var cal = Calendar(identifier: .gregorian)
+        var cal = Calendar.current
         cal.timeZone = WeatherKitViewModel.shared.locationTimeZone
         cal.firstWeekday = GlobalState.firstWeekday
         return cal

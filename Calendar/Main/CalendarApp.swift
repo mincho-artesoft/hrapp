@@ -56,30 +56,22 @@ struct CalendarApp: App {
                       let calendar = Calendar.current
 
                       // 1. Регион
-                      if let regionCode = locale.region?.identifier,
-                         let regionName = locale.localizedString(forRegionCode: regionCode) {
-                          GlobalState.region = "\(regionName) (\(regionCode))"
+                      if let regionCode = locale.region?.identifier{
+                          GlobalState.region = regionCode
                       }
 
                       // 2. Календар
                       let calID = String(describing: calendar.identifier)
-                      let calName = locale.localizedString(for: calendar.identifier) ?? calID
-                      GlobalState.calendar = "\(calName) (\(calID))"
+                      GlobalState.calendar = calID
 
                       // 3. Температурна единица
-                      let formatter = MeasurementFormatter()
-                      formatter.locale = locale
-                      formatter.unitStyle = .short
-                      formatter.unitOptions = .naturalScale
-                      let sample = Measurement(value: 1, unit: UnitTemperature.celsius)
-                      let tempStr = formatter.string(from: sample)
-                      GlobalState.temperatureUnit = tempStr.contains("°F") ? "°F" : "°C"
-                      // 4. Мерна система
+                      let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
+                      let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
+                      let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
+                      GlobalState.temperatureUnit = unit.symbol
                 
-                        let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
-                        let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
-                        let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
-                        print("unit", unit)
+                      // 4. Мерна система
+          
                       GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
 
                       // 5. Първи ден от седмицата

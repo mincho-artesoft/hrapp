@@ -4,7 +4,7 @@ import SwiftUICore
 struct PremiumSubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Image(systemName: "star.circle.fill")
+            Image(systemName: "checkmark.seal.fill")
                 .font(.system(size: 50))
                 .foregroundColor(.secondary)
 

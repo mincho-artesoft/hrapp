@@ -210,10 +210,15 @@ struct AllEventsListView: View {
     }
     
     func timeString(_ date: Date) -> String {
+        let locale = Locale.autoupdatingCurrent
         let df = DateFormatter()
-        df.dateFormat = "h:mma"
+        df.locale = locale
+        // "j:mm" дава например "1:05 PM" или "13:05" в зависимост от настройките
+        df.dateFormat = DateFormatter
+            .dateFormat(fromTemplate: "j:mm", options: 0, locale: locale)
         return df.string(from: date)
     }
+
     
     // MARK: - Създаване на нови събития
     private func createAndEditNewEvent(on day: Date) {

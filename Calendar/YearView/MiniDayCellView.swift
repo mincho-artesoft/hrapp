@@ -9,7 +9,7 @@ struct MiniDayCellView: View {
     
     // Използваме глобалния календар, зададен от потребителя
     private var calendar: Calendar {
-        var cal = Calendar(identifier: .gregorian)
+        var cal = Calendar.current
         cal.firstWeekday = GlobalState.firstWeekday
         if !GlobalState.region.isEmpty {
             cal.locale = Locale(identifier: GlobalState.region)
