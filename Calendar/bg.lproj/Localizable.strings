@@ -247,6 +247,8 @@
 "day" = "ден";
 "days" = "дни";
 "Data unavailable" = "Няма данни";
+"%d day"  = "%d ден";
+"%d days" = "%d дни";
 
 /* PrecipitationTodayCard */
 "PRECIPITATION" = "Валежи";
@@ -729,3 +731,13 @@
 
 /* YearMonthMiniView */
 "weekday.headers" = "Н,П,В,С,Ч,П,С";
+
+/* GlobalState */
+"Unit_Speed_kmh"            = "км/ч";
+"Unit_Speed_mph"            = "mph";
+"Unit_Distance_km"          = "км";
+"Unit_Distance_mi"          = "mi";
+"Unit_Precipitation_mm"     = "мм";
+"Unit_Precipitation_in"     = "″";
+"Unit_Pressure_hPa"         = "hPa";
+"Unit_Pressure_inHg"        = "inHg";

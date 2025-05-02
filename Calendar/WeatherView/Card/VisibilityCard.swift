@@ -17,14 +17,14 @@ struct VisibilityCard: View {
                     Text(String(format: "%.0f", vis))
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
-                    Text("km")
+                    Text(GlobalState.distanceUnitLabel)
                         .font(.system(size: 14, weight: .regular))
                         .foregroundStyle(.secondary)
                 } else {
                     Text("—")
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
-                    Text("km")
+                    Text(GlobalState.distanceUnitLabel)
                         .font(.system(size: 14, weight: .regular))
                         .foregroundStyle(.secondary)
                 }

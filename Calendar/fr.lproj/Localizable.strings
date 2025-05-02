@@ -248,6 +248,8 @@
 "day" = "jour";
 "days" = "jours";
 "Data unavailable" = "Données non disponibles";
+"%d day"  = "%d jour";
+"%d days" = "%d jours";
 
 /* PrecipitationTodayCard */
 "PRECIPITATION" = "Précipitations";
@@ -726,3 +728,13 @@
 
 /* YearMonthMiniView */
 "weekday.headers" = "D,L,M,M,J,V,S";
+
+/* GlobalState */
+"Unit_Speed_kmh"            = "km/h";
+"Unit_Speed_mph"            = "mph";
+"Unit_Distance_km"          = "km";
+"Unit_Distance_mi"          = "mi";
+"Unit_Precipitation_mm"     = "mm";
+"Unit_Precipitation_in"     = "″";
+"Unit_Pressure_hPa"         = "hPa";
+"Unit_Pressure_inHg"        = "inHg";

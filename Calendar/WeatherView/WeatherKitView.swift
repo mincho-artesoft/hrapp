@@ -749,8 +749,8 @@ struct WeatherKitView: View {
                 }
             }
             WindCard(
-                windSpeedKmh: vm.currentWindSpeed ?? 0,
-                gustSpeedKmh: vm.currentWindGust ?? 0,
+                windSpeed: vm.currentWindSpeed ?? 0,
+                gustSpeed: vm.currentWindGust ?? 0,
                 direction: vm.currentWindDirection,
                 directionAbbreviation: vm.windDirectionAbbreviation(for: vm.currentWindDirection)
             )
@@ -776,7 +776,7 @@ struct WeatherKitView: View {
                     showPrecipitationDetail = true
                 }
                 VisibilityCard(
-                    visibilityKm: (vm.currentVisibility ?? 0) / 1000
+                    visibilityKm: (vm.currentVisibility ?? 0)
                 )
                 .onTapGesture {
                     showVisibilityDetail = true

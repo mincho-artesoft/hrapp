@@ -78,3 +78,52 @@ struct GlobalState {
     }
 }
 
+
+import SwiftUI
+
+extension GlobalState {
+    /// „°C“ или „°F“
+    static var temperatureUnitSymbol: String {
+        if temperatureUnit == UnitTemperature.fahrenheit.symbol {
+            return "°F"
+        } else {
+            return "°C"
+        }
+    }
+
+    /// „km/h“ или „mph“
+    static var speedUnitLabel: String {
+        if measurementSystem == "Imperial" {
+            return NSLocalizedString("Unit_Speed_mph", comment: "miles per hour")
+        } else {
+            return NSLocalizedString("Unit_Speed_kmh", comment: "kilometers per hour")
+        }
+    }
+
+    /// „km“ или „mi“
+    static var distanceUnitLabel: String {
+        if measurementSystem == "Imperial" {
+            return NSLocalizedString("Unit_Distance_mi", comment: "miles")
+        } else {
+            return NSLocalizedString("Unit_Distance_km", comment: "kilometers")
+        }
+    }
+
+    /// „mm“ или „in“
+    static var precipitationUnitLabel: String {
+        if measurementSystem == "Imperial" {
+            return NSLocalizedString("Unit_Precipitation_in", comment: "inches")
+        } else {
+            return NSLocalizedString("Unit_Precipitation_mm", comment: "millimeters")
+        }
+    }
+
+    /// „hPa“ или „inHg“
+    static var pressureUnitLabel: String {
+        if measurementSystem == "Imperial" {
+            return NSLocalizedString("Unit_Pressure_inHg", comment: "inches of mercury")
+        } else {
+            return NSLocalizedString("Unit_Pressure_hPa", comment: "hectopascals")
+        }
+    }
+}

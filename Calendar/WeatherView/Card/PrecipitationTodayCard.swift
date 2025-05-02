@@ -18,9 +18,9 @@ struct PrecipitationTodayCard: View {
                  Text(String(format: "%.0f", amount ?? 0)) // No decimal for mm
                      .font(.system(size: 34, weight: .regular))
                      .foregroundStyle(.primary)
-                 Text("mm") // Unit separate
-                     .font(.system(size: 14, weight: .regular)) // Smaller unit font
-                     .foregroundStyle(.secondary) // Unit is secondary
+                Text(GlobalState.precipitationUnitLabel)
+                    .font(.system(size: 14, weight: .regular))
+                    .foregroundStyle(.secondary)
                  Text("today") // Description separate
                       .font(.system(size: 12, weight: .regular))
                       .foregroundStyle(.secondary)

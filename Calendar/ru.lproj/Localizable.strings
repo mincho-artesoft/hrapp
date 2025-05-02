@@ -248,6 +248,8 @@
 "day" = "день";
 "days" = "дней";
 "Data unavailable" = "Данные недоступны";
+"%d day"  = "%d день";
+"%d days" = "%d дней";
 
 /* PrecipitationTodayCard */
 "PRECIPITATION" = "Осадки";
@@ -728,3 +730,13 @@
 
 /* YearMonthMiniView */
 "weekday.headers" = "В,П,В,С,Ч,П,С";
+
+/* GlobalState */
+"Unit_Speed_kmh"            = "км/ч";
+"Unit_Speed_mph"            = "миль/ч";
+"Unit_Distance_km"          = "км";
+"Unit_Distance_mi"          = "ми";
+"Unit_Precipitation_mm"     = "мм";
+"Unit_Precipitation_in"     = "дюйм";
+"Unit_Pressure_hPa"         = "гПа";
+"Unit_Pressure_inHg"        = "дюйм рт. ст.";

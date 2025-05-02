@@ -134,27 +134,52 @@ class WeatherKitViewModel: ObservableObject {
         errorMessage = nil
     }
 
-    // MARK: - Приватни методи
-
+    // MARK: - Current Weather Conversion
     private func updateCurrentWeather(_ current: CurrentWeather) {
-        currentTemp       = current.temperature.value
-        currentSymbol     = current.symbolName
-        currentCondition  = current.condition.description
-        currentFeelsLike  = current.apparentTemperature.value
-        currentHumidity   = current.humidity
-        currentPressure   = current.pressure.value
-        currentVisibility = current.visibility.value
-        currentUVIndex    = current.uvIndex.value
+        // 1. Температура в °C или °F
+        let tempUnit: UnitTemperature = (GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol)
+            ? .fahrenheit
+            : .celsius
+        currentTemp      = current.temperature.converted(to: tempUnit).value
+        currentFeelsLike = current.apparentTemperature.converted(to: tempUnit).value
+        currentDewPoint  = current.dewPoint.converted(to: tempUnit).value
 
-        // km/h
-        currentWindSpeed = current.wind.speed.converted(to: .kilometersPerHour).value
+        // 2. Налягане в hPa или inHg
+        let pressureUnit: UnitPressure = (GlobalState.measurementSystem == "Imperial")
+            ? .inchesOfMercury
+            : .hectopascals
+        currentPressure = current.pressure.converted(to: pressureUnit).value
+
+        // 3. Видимост в km или miles
+        let distanceUnit: UnitLength = (GlobalState.measurementSystem == "Imperial")
+            ? .miles
+            : .kilometers
+        currentVisibility = current.visibility.converted(to: distanceUnit).value
+        // 4. Вятър в km/h или mph
+        let speedUnit: UnitSpeed = (GlobalState.measurementSystem == "Imperial")
+            ? .milesPerHour
+            : .kilometersPerHour
+        currentWindSpeed = current.wind.speed.converted(to: speedUnit).value
         if let gust = current.wind.gust {
-            currentWindGust = gust.converted(to: .kilometersPerHour).value
+            currentWindGust = gust.converted(to: speedUnit).value
         }
-
         currentWindDirection = Angle(degrees: current.wind.direction.value)
-        currentDewPoint      = current.dewPoint.value
 
+        // 5. Влажност, UV индекс и облачност
+        currentHumidity   = current.humidity
+        currentUVIndex    = current.uvIndex.value
+        currentCloudCover = current.cloudCover
+
+        // 6. Валежи (интензитет мм/h → mm/h или in/h)
+        let rawIntensityMmPerHour = current.precipitationIntensity.value
+        print("rawIntensityMmPerHour", current.precipitationIntensity.unit)
+        currentPrecipitationAmount = (GlobalState.measurementSystem == "Imperial")
+            ? rawIntensityMmPerHour / 25.4
+            : rawIntensityMmPerHour
+
+        // 7. Символ и тренд на налягането
+        currentSymbol    = current.symbolName
+        currentCondition = current.condition.description
         switch current.pressureTrend {
         case .falling: pressureTrend = "Falling"
         case .rising:  pressureTrend = "Rising"
@@ -162,82 +187,116 @@ class WeatherKitViewModel: ObservableObject {
         @unknown default:
             pressureTrend = "Unknown"
         }
-
-        // валежи: използваме precipitationIntensity
-        currentPrecipitationAmount = current.precipitationIntensity.value
-        currentCloudCover          = current.cloudCover
     }
 
+    // MARK: - Hourly Forecast Conversion
     private func updateHourlyForecast(_ hours: [HourWeather]) {
+        // 1. Избиране на базови единици
+        let tempUnit: UnitTemperature = (GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol)
+            ? .fahrenheit
+            : .celsius
+        let distanceUnit: UnitLength = (GlobalState.measurementSystem == "Imperial")
+            ? .miles
+            : .kilometers
+        let speedUnit: UnitSpeed = (GlobalState.measurementSystem == "Imperial")
+            ? .milesPerHour
+            : .kilometersPerHour
+
+        // 2. Определяме началото на текущия час
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
         let now = Date()
-
         guard let startOfHour = calendar.date(
             bySettingHour: calendar.component(.hour, from: now),
-            minute: 0,
-            second: 0,
-            of: now
+            minute: 0, second: 0, of: now
         ) else { return }
 
+        // 3. Вземаме slice за следващите 24 ч.
         guard let startIndex = hours.firstIndex(where: { $0.date >= startOfHour }) else {
             hourlyForecast = []
             next24HourlyForecast = []
             return
         }
+        let slice = hours[startIndex..<min(startIndex + 24, hours.count)]
 
-        let endIndex = min(startIndex + 24, hours.count)
-        let slice = hours[startIndex..<endIndex]
+        // 4. Попълваме next24HourlyForecast
         next24HourlyForecast = slice.enumerated().map { i, h in
-            HourlyForecastItem(
+            let rawPpt = h.precipitationAmount.value       // mm
+            let rawSnow = h.snowfallAmount.value           // mm
+            return HourlyForecastItem(
                 id: h.date,
                 date: h.date,
                 hour: i == 0
-                    ? NSLocalizedString("Now", comment: "Label for current hour")
+                    ? NSLocalizedString("Now", comment: "")
                     : hourString(from: h.date),
-                temp: h.temperature.value,
-                feelsLikeTemp: h.apparentTemperature.value,
+                temp: h.temperature.converted(to: tempUnit).value,
+                feelsLikeTemp: h.apparentTemperature.converted(to: tempUnit).value,
                 symbol: h.symbolName,
                 precipChance: h.precipitationChance,
-                precipitationAmount: h.precipitationAmount.value,
-                snowfallAmount: h.snowfallAmount.value,
+                precipitationAmount: (GlobalState.measurementSystem == "Imperial")
+                    ? rawPpt / 25.4
+                    : rawPpt,
+                snowfallAmount: (GlobalState.measurementSystem == "Imperial")
+                    ? rawSnow / 25.4
+                    : rawSnow,
                 uvIndex: h.uvIndex.value,
-                windSpeed: h.wind.speed.value,
-                windGust: h.wind.gust?.value ?? 0,
+                windSpeed: h.wind.speed.converted(to: speedUnit).value,
+                windGust: h.wind.gust?.converted(to: speedUnit).value ?? 0,
                 windDirection: h.wind.direction.converted(to: .degrees).value,
                 humidity: h.humidity,
-                visibility: h.visibility.value / 1000,
-                pressure: h.pressure.value
+                visibility: h.visibility.converted(to: distanceUnit).value,
+                pressure: h.pressure.converted(to: (GlobalState.measurementSystem == "Imperial")
+                    ? .inchesOfMercury
+                    : .hectopascals).value
             )
         }
 
+        // 5. Попълваме пълния hourlyForecast
         hourlyForecast = hours.map { h in
-            HourlyForecastItem(
+            let rawPpt = h.precipitationAmount.value
+            let rawSnow = h.snowfallAmount.value
+            return HourlyForecastItem(
                 id: h.date,
                 date: h.date,
                 hour: hourString(from: h.date),
-                temp: h.temperature.value,
-                feelsLikeTemp: h.apparentTemperature.value,
+                temp: h.temperature.converted(to: tempUnit).value,
+                feelsLikeTemp: h.apparentTemperature.converted(to: tempUnit).value,
                 symbol: h.symbolName,
                 precipChance: h.precipitationChance,
-                precipitationAmount: h.precipitationAmount.value,
-                snowfallAmount: h.snowfallAmount.value,
+                precipitationAmount: (GlobalState.measurementSystem == "Imperial")
+                    ? rawPpt / 25.4
+                    : rawPpt,
+                snowfallAmount: (GlobalState.measurementSystem == "Imperial")
+                    ? rawSnow / 25.4
+                    : rawSnow,
                 uvIndex: h.uvIndex.value,
-                windSpeed: h.wind.speed.value,
-                windGust: h.wind.gust?.value ?? 0,
+                windSpeed: h.wind.speed.converted(to: speedUnit).value,
+                windGust: h.wind.gust?.converted(to: speedUnit).value ?? 0,
                 windDirection: h.wind.direction.converted(to: .degrees).value,
                 humidity: h.humidity,
-                visibility: h.visibility.value / 1000,
-                pressure: h.pressure.value
+                visibility: h.visibility.converted(to: distanceUnit).value,
+                pressure: h.pressure.converted(to: (GlobalState.measurementSystem == "Imperial")
+                    ? .inchesOfMercury
+                    : .hectopascals).value
             )
         }
     }
 
+    // MARK: - Daily Forecast Conversion
     private func updateDailyForecast(_ days: [DayWeather]) {
+        // 1. Избиране на базови единици
+        let tempUnit: UnitTemperature = (GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol)
+            ? .fahrenheit
+            : .celsius
+        let distanceUnit: UnitLength = (GlobalState.measurementSystem == "Imperial")
+            ? .miles
+            : .kilometers
+        let speedUnit: UnitSpeed = (GlobalState.measurementSystem == "Imperial")
+            ? .milesPerHour
+            : .kilometersPerHour
+
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
-
-        // Вземаме до 10 дни напред
         let relevantDays = days.prefix(min(days.count, 10))
         var arr: [DayForecastItem] = []
 
@@ -245,30 +304,53 @@ class WeatherKitViewModel: ObservableObject {
             let dateValue = dayData.date
             let isToday = calendar.isDateInToday(dateValue)
             let dayName = isToday
-                ? NSLocalizedString("Today", comment: "Label for current day")
+                ? NSLocalizedString("Today", comment: "")
                 : weekdayString(from: dateValue)
-            if isToday {
-                currentMoonEvents = dayData.moon
-            }
+            if isToday { currentMoonEvents = dayData.moon }
 
-            // Сумираме почасовите валежи за следващите 24ч
+            // 2. API breakdown (mm)
+            let rawTotalPrecip = dayData.precipitationAmountByType.precipitation.value
+            let rawRainPrecip  = dayData.precipitationAmountByType.rainfall.value
+            let rawSnowPrecip  = dayData.precipitationAmountByType.snowfallAmount.amount.value
+
+            let totalPrecip = (GlobalState.measurementSystem == "Imperial")
+                ? rawTotalPrecip / 25.4
+                : rawTotalPrecip
+            let rainPrecip = (GlobalState.measurementSystem == "Imperial")
+                ? rawRainPrecip / 25.4
+                : rawRainPrecip
+            let snowPrecip = (GlobalState.measurementSystem == "Imperial")
+                ? rawSnowPrecip / 25.4
+                : rawSnowPrecip
+
+            // 3. Почасови за последните 24ч. (те вече в конвертирани единици)
             let hourlyForDay = hourlyForecast.filter {
                 calendar.isDate($0.date, inSameDayAs: dateValue)
             }
             let totalHourlyPrecip = hourlyForDay.reduce(0) { $0 + $1.precipitationAmount }
-            let totalHourlyRain = hourlyForDay.reduce(0) { sum, it in
+            let totalHourlyRain   = hourlyForDay.reduce(0) { sum, it in
                 it.symbol.lowercased().contains("snow") ? sum : sum + it.precipitationAmount
             }
-            let totalHourlySnow = hourlyForDay.reduce(0) { sum, it in
+            let totalHourlySnow   = hourlyForDay.reduce(0) { sum, it in
                 it.symbol.lowercased().contains("snow") ? sum + it.precipitationAmount : sum
             }
 
-            // Взимаме разбивката от новия API
-            let pptByType   = dayData.precipitationAmountByType
-            let totalPrecip = pptByType.precipitation.value
-            let rainPrecip  = pptByType.rainfall.value
-            // Тук е ключово: amount e Measurement<UnitLength>
-            let snowPrecip  = pptByType.snowfallAmount.amount.value
+            // 4. Low/High temperature
+            let lowTemp  = dayData.lowTemperature.converted(to: tempUnit).value
+            let highTemp = dayData.highTemperature.converted(to: tempUnit).value
+
+            // 5. Други стойности
+            let uv    = dayData.uvIndex.value
+            let windS = dayData.highWindSpeed?.converted(to: speedUnit).value ?? 0
+            let gust  = dayData.wind.gust?.converted(to: speedUnit).value ?? 0
+
+            // 6. Видимост (Double м → km/miles)
+            let visMin = Measurement(value: dayData.minimumVisibility,
+                                     unit: UnitLength.meters)
+                .converted(to: distanceUnit).value
+            let visMax = Measurement(value: dayData.maximumVisibility,
+                                     unit: UnitLength.meters)
+                .converted(to: distanceUnit).value
 
             let item = DayForecastItem(
                 id: dateValue,
@@ -276,50 +358,50 @@ class WeatherKitViewModel: ObservableObject {
                 day: dayName,
                 symbol: dayData.symbolName,
                 precipChance: dayData.precipitationChance,
-                minTemp: dayData.lowTemperature.value,
-                maxTemp: dayData.highTemperature.value,
+                minTemp: lowTemp,
+                maxTemp: highTemp,
 
-                // Последни 24ч
+                // Последни 24ч.
                 precipLast24h:    totalPrecip,
                 rainLast24h:      rainPrecip,
                 snowLast24h:      snowPrecip,
 
-                // Дублиращи полета
+                // API breakdown
                 precipitationAmount: totalPrecip,
                 reinAmount:          rainPrecip,
                 snowfallAmount:      snowPrecip,
 
-                // Следващи 24ч
+                // Следващи 24ч.
                 precipNext24h: totalHourlyPrecip,
-                rainNext24h:  totalHourlyRain,
-                snowNext24h:  totalHourlySnow,
+                rainNext24h:   totalHourlyRain,
+                snowNext24h:   totalHourlySnow,
 
-                maxUV:                   dayData.uvIndex.value,
-                maxWindSpeed:            dayData.highWindSpeed!.value,
-                maxWindGust:             dayData.wind.gust?.value ?? 0,
-                predominantWindDirection: dayData.wind.direction.converted(to: .degrees).value,
-                humidityMin:             dayData.minimumHumidity,
-                humidityMax:             dayData.maximumHumidity,
-                visibilityMin:           dayData.minimumVisibility / 1000,
-                visibilityMax:           dayData.maximumVisibility / 1000,
-                moon:                    dayData.moon
+                maxUV:                     uv,
+                maxWindSpeed:              windS,
+                maxWindGust:               gust,
+                predominantWindDirection:  dayData.wind.direction.converted(to: .degrees).value,
+                humidityMin:               dayData.minimumHumidity,
+                humidityMax:               dayData.maximumHumidity,
+                visibilityMin:             visMin,
+                visibilityMax:             visMax,
+                moon:                      dayData.moon
             )
             arr.append(item)
         }
 
         dailyForecast = arr
 
-        // Обновяваме днешните мин и макс
-        if let first = arr.first, calendar.isDateInToday(first.date) {
+        // Обновяване на днешни мин/макс
+        if let first = arr.first, Calendar.current.isDateInToday(first.date) {
             todayMinTemp = first.minTemp
             todayMaxTemp = first.maxTemp
-        } else {
-            todayMinTemp = days.first?.lowTemperature.value
-            todayMaxTemp = days.first?.highTemperature.value
         }
-
         updateMoonPhaseInfo()
     }
+
+
+
+
 
 
     private func updateMoonPhaseInfo() {

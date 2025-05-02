@@ -30,7 +30,7 @@ struct MoonCard: View {
                             let nextKey = LocalizedStringKey("Next \(nextPhase)")
                             let daysFormat = NSLocalizedString(
                                 daysUntil == 1 ? "%d day" : "%d days",
-                                comment: "Формат дней до следующей фазы луны"
+                                comment: "Формат дни до следваща фаза"
                             )
                             detailRowSmall(
                                 label: nextKey,

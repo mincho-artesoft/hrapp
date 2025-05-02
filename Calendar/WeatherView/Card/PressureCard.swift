@@ -13,8 +13,8 @@ struct PressureCard: View {
             let center = CGPoint(x: size.width / 2, y: size.height / 2)
 
              // Pressure range and angles
-             let minPressure: Double = 960
-             let maxPressure: Double = 1060
+             let minPressure: Double = gaugeThreshold(hPa: 960)
+             let maxPressure: Double = gaugeThreshold(hPa: 1060)
              let pressureRange = maxPressure - minPressure
              let startAngle = Angle.degrees(-135 - 90) // Start from bottom-left quarter
              let endAngle = Angle.degrees(135 - 90)   // End at bottom-right quarter
@@ -89,18 +89,18 @@ struct PressureCard: View {
                      // Text(String(format: "%.0f", pres.rounded())) // Original formatting
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
-                     Text("hPa")
+                     Text(GlobalState.pressureUnitLabel)
                          .font(.system(size: 14, weight: .regular))
                          .foregroundStyle(.secondary)
-                         .offset(y: -2) // Adjust baseline slightly
+                         .offset(y: -2)
                  } else {
                      Text("—")
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
-                     Text("hPa")
-                          .font(.system(size: 14, weight: .regular))
-                          .foregroundStyle(.secondary)
-                          .offset(y: -2)
+                     Text(GlobalState.pressureUnitLabel)
+                         .font(.system(size: 14, weight: .regular))
+                         .foregroundStyle(.secondary)
+                         .offset(y: -2)
                  }
              }
 
@@ -119,5 +119,12 @@ struct PressureCard: View {
         formatter.groupingSeparator = "," // Example: force comma
         formatter.usesGroupingSeparator = true // Enable grouping
         return formatter.string(from: NSNumber(value: pressureValue.rounded())) ?? String(format: "%.0f", pressureValue.rounded())
+    }
+    
+    private func gaugeThreshold(hPa: Double) -> Double {
+        // 1 hPa ≈ 0.02953 inHg
+        return GlobalState.measurementSystem == "Imperial"
+            ? hPa * 0.02953
+            : hPa
     }
 }
