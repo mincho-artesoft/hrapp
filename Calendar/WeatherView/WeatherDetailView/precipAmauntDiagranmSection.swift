@@ -30,37 +30,47 @@ extension WeatherDetailView {
             VStack() {
                 VStack(alignment: .leading, spacing: 5) {
                     // Изчисляваме общите валежи от данните за деня
+                    let unit = GlobalState.precipitationUnitLabel
                     let totalRain = hourlyData.reduce(0) { $0 + $1.precipitationAmount }
                     let totalSnow = hourlyData.reduce(0) { $0 + $1.snowfallAmount }
-                    
-                    // Показваме сумарна информация – ако и двата са налични, или само един от тях, или 0
+
                     if totalRain > 0 && totalSnow > 0 {
                         Text(String(
-                            format: NSLocalizedString("Precip_Total_RainSnowFormat", comment: "Format: Rain and snow totals"),
-                            totalRain,
-                            totalSnow
+                            format: NSLocalizedString("Precip_Total_RainSnowFormat", comment: ""),
+                            totalRain, unit,
+                            totalSnow, unit
                         ))
-                        .font(.system(size: 16, weight: .semibold))
-                    } else if totalRain > 0 {
-                        Text(String(
-                            format: NSLocalizedString("Precip_Total_RainFormat", comment: "Format: Rain total"),
-                            totalRain
-                        ))
-                        .font(.system(size: 16, weight: .semibold))
-                    } else if totalSnow > 0 {
-                        Text(String(
-                            format: NSLocalizedString("Precip_Total_SnowFormat", comment: "Format: Snow total"),
-                            totalSnow
-                        ))
-                        .font(.system(size: 16, weight: .semibold))
-                    } else {
-                        Text(NSLocalizedString("Precip_Total_None", comment: "No precipitation"))
                         .font(.system(size: 16, weight: .semibold))
                     }
-                    // Подзаглавен текст
-                    Text(NSLocalizedString("Precip_Bars_Subtitle", comment: "Subtitle for precipitation bars"))
-                        .font(.system(size: 13))
-                        .foregroundColor(.gray)
+                    else if totalRain > 0 {
+                        Text(String(
+                            format: NSLocalizedString("Precip_Total_RainFormat", comment: ""),
+                            totalRain, unit
+                        ))
+                        .font(.system(size: 16, weight: .semibold))
+                    }
+                    else if totalSnow > 0 {
+                        Text(String(
+                            format: NSLocalizedString("Precip_Total_SnowFormat", comment: ""),
+                            totalSnow, unit
+                        ))
+                        .font(.system(size: 16, weight: .semibold))
+                    }
+                    else {
+                        Text(String(
+                            format: NSLocalizedString("Precip_Total_None", comment: ""),
+                            unit
+                        ))
+                        .font(.system(size: 16, weight: .semibold))
+                    }
+
+                    // подзаглавие
+                    Text(String(
+                        format: NSLocalizedString("Precip_Bars_Subtitle", comment: ""),
+                        unit
+                    ))
+                    .font(.system(size: 13))
+                    .foregroundColor(.gray)
 
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -262,11 +272,13 @@ extension WeatherDetailView {
                                 let hourStr = dateFormatter.string(from: item.date)
                                 let rVal = item.precipitationAmount
                                 let sVal = item.snowfallAmount
+
+                                let unit = GlobalState.precipitationUnitLabel
                                 let labelText = String(
-                                    format: NSLocalizedString("Precip_Tooltip_Format", comment: "Tooltip for precipitation bar"),
+                                    format: NSLocalizedString("Precip_Tooltip_Format", comment: ""),
                                     hourStr,
-                                    rVal,
-                                    sVal
+                                    rVal, unit,
+                                    sVal, unit
                                 )
 
                                 if hourIndex >= 12 {

@@ -392,15 +392,15 @@
 
 
 /* WeatherDetailView precipAmauntDiagranmSection */
-"Precip_Total_RainSnowFormat"   = "Pluie : %.1f mm, Neige : %.1f mm";
-"Precip_Total_RainFormat"       = "Pluie : %.1f mm";
-"Precip_Total_SnowFormat"       = "Neige : %.1f mm";
-"Precip_Total_None"             = "Précipitations : 0 mm";
-"Precip_Bars_Subtitle"          = "Barres horaires pour pluie et neige (mm/h).";
-"Precip_Level_Light"            = "Léger";
-"Precip_Level_Moderate"         = "Modéré";
-"Precip_Level_Heavy"            = "Fort";
-"Precip_Tooltip_Format"         = "%@h\nPluie : %.1f mm/h\nNeige : %.1f mm/h";
+"Precip_Total_RainSnowFormat"   = "Pluie: %.1f%@, Neige: %.1f%@";
+"Precip_Total_RainFormat"       = "Pluie: %.1f%@";
+"Precip_Total_SnowFormat"       = "Neige: %.1f%@";
+"Precip_Total_None"             = "Précipitations: 0%@";
+"Precip_Bars_Subtitle"          = "Barres horaires pour pluie et neige (%@).";
+"Precip_Level_Light"            = "Légère";
+"Precip_Level_Moderate"         = "Modérée";
+"Precip_Level_Heavy"            = "Forte";
+"Precip_Tooltip_Format"         = "%@h\nPluie: %.1f%@\nNeige: %.1f%@";
 
 /* WeatherDetailView pressureGraphSection */
 /* Current pressure display */

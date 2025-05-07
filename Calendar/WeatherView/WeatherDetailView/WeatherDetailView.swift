@@ -655,7 +655,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(formatted(day.precipLast24h)) \(liquidUnit)")
+                            Text("\(formatted(day.precipLast24h))\(liquidUnit)")
                                 .font(.system(size: 14))
                         }
                     } else if snowLast == 0 {
@@ -666,7 +666,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(formatted(rainLast)) \(liquidUnit)")
+                            Text("\(formatted(rainLast))\(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -688,7 +688,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(formatted(rainLast)) \(liquidUnit)")
+                            Text("\(formatted(rainLast))\(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -713,7 +713,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(formatted(day.precipNext24h)) \(liquidUnit)")
+                            Text("\(formatted(day.precipNext24h))\(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -725,7 +725,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(formatted(rainNext)) \(liquidUnit)")
+                            Text("\(formatted(rainNext))\(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -747,7 +747,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(formatted(rainNext)) \(liquidUnit)")
+                            Text("\(formatted(rainNext))\(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -768,7 +768,7 @@ struct WeatherDetailView: View {
                         Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(formatted(day.precipitationAmount)) \(liquidUnit)")
+                        Text("\(formatted(day.precipitationAmount))\(liquidUnit)")
                             .font(.system(size: 14))
                     }
                 } else if snowValue == 0 {
@@ -779,7 +779,7 @@ struct WeatherDetailView: View {
                         Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(formatted(rainValue)) \(liquidUnit)")
+                        Text("\(formatted(rainValue))\(liquidUnit)")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
@@ -801,7 +801,7 @@ struct WeatherDetailView: View {
                         Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(formatted(rainValue)) \(liquidUnit)")
+                        Text("\(formatted(rainValue))\(liquidUnit)")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
@@ -1370,12 +1370,86 @@ struct WeatherDetailView: View {
         return Color(uiColor)
     }
     
-    // Предполагаме, че GlobalState и gradientColor са дефинирани и достъпни.
-    // func gradientColor(for progress: Double) -> Color { ... }
+    let beaufortRangesKmH: [String: String] = [
+        "BeaufortRange_0": "< 2",
+        "BeaufortRange_1": "2 – 5",
+        "BeaufortRange_2": "6 – 11",
+        "BeaufortRange_3": "12 – 19",
+        "BeaufortRange_4": "20 – 28",
+        "BeaufortRange_5": "29 – 38",
+        "BeaufortRange_6": "39 – 49",
+        "BeaufortRange_7": "50 – 61",
+        "BeaufortRange_8": "62 – 74",
+        "BeaufortRange_9": "75 – 88",
+        "BeaufortRange_10": "89 – 102",
+        "BeaufortRange_11": "103 – 117",
+        "BeaufortRange_12": "> 118"
+    ]
+    
+    let beaufortRangesMph: [String: String] = [
+        "BeaufortRange_0": "< 1",
+        "BeaufortRange_1": "1 – 3",
+        "BeaufortRange_2": "4 – 7",
+        "BeaufortRange_3": "7 – 12",
+        "BeaufortRange_4": "12 – 17",
+        "BeaufortRange_5": "18 – 24",
+        "BeaufortRange_6": "24 – 30",
+        "BeaufortRange_7": "31 – 38",
+        "BeaufortRange_8": "39 – 46",
+        "BeaufortRange_9": "47 – 55",
+        "BeaufortRange_10": "55 – 63",
+        "BeaufortRange_11": "64 – 73",
+        "BeaufortRange_12": "> 73"
+    ]
 
+    
     @ViewBuilder
     private func windTableSection() -> some View {
-        // beaufortData вече е дефиниран извън тази функция или като член на View структурата.
+        // MARK: Beaufort Data
+        let beaufortData: [BeaufortScaleItem] = [
+            .init(bft: 0,
+                  description: NSLocalizedString("Beaufort_0", comment: "Calm"),
+                  kmhRange: NSLocalizedString("BeaufortRange_0", comment: "< 2")),
+            .init(bft: 1,
+                  description: NSLocalizedString("Beaufort_1", comment: "Light air"),
+                  kmhRange: NSLocalizedString("BeaufortRange_1", comment: "2 – 5")),
+            .init(bft: 2,
+                  description: NSLocalizedString("Beaufort_2", comment: "Light breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_2", comment: "6 – 11")),
+            .init(bft: 3,
+                  description: NSLocalizedString("Beaufort_3", comment: "Gentle breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_3", comment: "12 – 19")),
+            .init(bft: 4,
+                  description: NSLocalizedString("Beaufort_4", comment: "Moderate breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_4", comment: "20 – 28")),
+            .init(bft: 5,
+                  description: NSLocalizedString("Beaufort_5", comment: "Fresh breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_5", comment: "29 – 38")),
+            .init(bft: 6,
+                  description: NSLocalizedString("Beaufort_6", comment: "Strong breeze"),
+                  kmhRange: NSLocalizedString("BeaufortRange_6", comment: "39 – 49")),
+            .init(bft: 7,
+                  description: NSLocalizedString("Beaufort_7", comment: "High wind"),
+                  kmhRange: NSLocalizedString("BeaufortRange_7", comment: "50 – 61")),
+            .init(bft: 8,
+                  description: NSLocalizedString("Beaufort_8", comment: "Gale"),
+                  kmhRange: NSLocalizedString("BeaufortRange_8", comment: "62 – 74")),
+            .init(bft: 9,
+                  description: NSLocalizedString("Beaufort_9", comment: "Strong gale"),
+                  kmhRange: NSLocalizedString("BeaufortRange_9", comment: "75 – 88")),
+            .init(bft: 10,
+                  description: NSLocalizedString("Beaufort_10", comment: "Storm"),
+                  kmhRange: NSLocalizedString("BeaufortRange_10", comment: "89 – 102")),
+            .init(bft: 11,
+                  description: NSLocalizedString("Beaufort_11", comment: "Violent storm"),
+                  kmhRange: NSLocalizedString("BeaufortRange_11", comment: "103 – 117")),
+            .init(bft: 12,
+                  description: NSLocalizedString("Beaufort_12", comment: "Hurricane-force"),
+                  kmhRange: NSLocalizedString("BeaufortRange_12", comment: "> 118"))
+        ]
+
+        // Dynamically select the appropriate range (km/h or mph) based on measurement system
+        let beaufortRanges = GlobalState.measurementSystem == "Imperial" ? beaufortRangesMph : beaufortRangesKmH
 
         VStack(alignment: .leading, spacing: 5) {
             // Main Header
@@ -1389,14 +1463,15 @@ struct WeatherDetailView: View {
                 Text(NSLocalizedString("Beaufort_Column_bft", comment: "BFT column header"))
                     .font(.system(size: 13, weight: .medium))
                     .frame(width: 20, alignment: .leading)
-                    .offset(x: 19) // Може да се наложи корекция на оформлението
+                    .offset(x: 19)
                 Text(NSLocalizedString("Beaufort_Column_Description", comment: "Description column header"))
                     .font(.system(size: 13, weight: .medium))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .offset(x: 20) // Може да се наложи корекция на оформлението
-                Text(GlobalState.speedUnitLabel) // Динамично заглавие на колоната за скорост
+                    .offset(x: 20)
+                Text(GlobalState.speedUnitLabel)
                     .font(.system(size: 13, weight: .medium))
-                    .frame(width: 60, alignment: .leading) // Ширината може да се нуждае от корекция
+                    .frame(width: 60, alignment: .leading)
+
             }
             .foregroundColor(.gray)
             .padding(.horizontal, 16)
@@ -1406,9 +1481,9 @@ struct WeatherDetailView: View {
                 .background(Color.white.opacity(0.2))
                 .padding(.horizontal, 16)
 
-            ForEach(beaufortData) { item in // beaufortData вече е от тип [BeaufortScaleItem]
+            ForEach(beaufortData) { item in
                 let progress = Double(item.bft) / 12.0
-                let circleColor = gradientColor(for: progress) // Предполагаме, че тази функция съществува
+                let circleColor = gradientColor(for: progress)
 
                 VStack(spacing: 0) {
                     HStack(spacing: 12) {
@@ -1419,11 +1494,12 @@ struct WeatherDetailView: View {
                         Text("\(item.bft)")
                             .frame(width: 20, alignment: .leading)
 
-                        Text(item.localizedDescription) // Използваме новия метод
+                        Text(item.description)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                        Text(item.formattedSpeedRange()) // Използваме новия метод за диапазона
-                            .frame(width: 60, alignment: .leading) // Ширината може да се нуждае от корекция
+                        // Use the selected range from beaufortRanges (km/h or mph)
+                        Text(beaufortRanges["BeaufortRange_\(item.bft)"] ?? "")
+                            .frame(width: 60, alignment: .leading)
                     }
                     .font(.system(size: 14))
                     .foregroundColor(.white)
@@ -1436,7 +1512,7 @@ struct WeatherDetailView: View {
                 }
             }
         }
-        .background(Color.black) // Предполагам, че това е за целия VStack
+        .background(Color.black)
     }
 
 

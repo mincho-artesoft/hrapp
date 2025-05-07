@@ -392,15 +392,15 @@
 
 
 /* WeatherDetailView precipAmauntDiagranmSection */
-"Precip_Total_RainSnowFormat"   = "Дождь: %.1f мм, Снег: %.1f мм";
-"Precip_Total_RainFormat"       = "Дождь: %.1f мм";
-"Precip_Total_SnowFormat"       = "Снег: %.1f мм";
-"Precip_Total_None"             = "Осадки: 0 мм";
-"Precip_Bars_Subtitle"          = "Часовые столбцы для дождя и снега (мм/ч).";
+"Precip_Total_RainSnowFormat"   = "Дождь: %.1f%@, Снег: %.1f%@";
+"Precip_Total_RainFormat"       = "Дождь: %.1f%@";
+"Precip_Total_SnowFormat"       = "Снег: %.1f%@";
+"Precip_Total_None"             = "Осадки: 0%@";
+"Precip_Bars_Subtitle"          = "Часовые бары для дождя и снега (%@).";
 "Precip_Level_Light"            = "Легкий";
 "Precip_Level_Moderate"         = "Умеренный";
 "Precip_Level_Heavy"            = "Сильный";
-"Precip_Tooltip_Format"         = "%@ч\nДождь: %.1f мм/ч\nСнег: %.1f мм/ч";
+"Precip_Tooltip_Format"         = "%@h\nДождь: %.1f%@\nСнег: %.1f%@";
 
 /* WeatherDetailView pressureGraphSection */
 /* Current pressure display */

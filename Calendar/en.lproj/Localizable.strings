@@ -392,15 +392,15 @@
 
 
 /* WeatherDetailView precipAmauntDiagranmSection */
-"Precip_Total_RainSnowFormat"   = "Rain: %.1f mm, Snow: %.1f mm";
-"Precip_Total_RainFormat"       = "Rain: %.1f mm";
-"Precip_Total_SnowFormat"       = "Snow: %.1f mm";
-"Precip_Total_None"             = "Precipitation: 0 mm";
-"Precip_Bars_Subtitle"          = "Hourly bars for rain & snow (mm/h).";
+"Precip_Total_RainSnowFormat"   = "Rain: %.1f%@, Snow: %.1f%@";
+"Precip_Total_RainFormat"       = "Rain: %.1f%@";
+"Precip_Total_SnowFormat"       = "Snow: %.1f%@";
+"Precip_Total_None"             = "Precipitation: 0%@";
+"Precip_Bars_Subtitle"          = "Hourly bars for rain & snow (%@).";
 "Precip_Level_Light"            = "Light";
 "Precip_Level_Moderate"         = "Moderate";
 "Precip_Level_Heavy"            = "Heavy";
-"Precip_Tooltip_Format"         = "%@h\nRain: %.1f mm/h\nSnow: %.1f mm/h";
+"Precip_Tooltip_Format"         = "%@h\nRain: %.1f%@\nSnow: %.1f%@";
 
 /* WeatherDetailView pressureGraphSection */
 /* Current pressure display */

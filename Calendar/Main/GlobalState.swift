@@ -126,4 +126,6 @@ extension GlobalState {
             return NSLocalizedString("Unit_Pressure_hPa", comment: "hectopascals")
         }
     }
+    
+    
 }
