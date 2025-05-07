@@ -403,30 +403,15 @@
 "Precip_Tooltip_Format"         = "%@h\nДождь: %.1f%@\nСнег: %.1f%@";
 
 /* WeatherDetailView pressureGraphSection */
-/* Current pressure display */
-"Pressure_CurrentFormat"           = "Давление %d hPa";
-
-/* No current pressure available */
+"Pressure_CurrentFormat"           = "Давление %@ %@";
 "Pressure_CurrentUnavailable"      = "Давление: --";
-
-/* Today's min/max pressure */
-"Pressure_DailyMinMaxFormat"       = "Сегодня мин %d hPa – макс %d hPa";
-
-/* Average pressure display */
-"Pressure_AverageFormat"           = "Среднее давление %d hPa";
-
-/* Daily range of pressure */
-"Pressure_DailyRangeFormat"        = "Диапазон за день: %d–%d hPa";
-/* Label for the maximum marker */
-"Visibility_MaxLabel" = "Макс";
-
-/* Label for the minimum marker */
-"Visibility_MinLabel" = "Мин";
-/* Section title for pressure */
-"Pressure_Title" = "Давление";
-/* Fallback when no pressure data available */
-"Pressure_NoData" = "Нет данных о давлении для этого дня.";
-
+"Pressure_DailyMinMaxFormat"       = "Минимум %@ %@ – максимум %@ %@ сегодня";
+"Pressure_AverageFormat"           = "Среднее давление %@ %@";
+"Pressure_DailyRangeFormat"        = "Ежедневный диапазон: %@–%@ %@";
+"Visibility_MaxLabel"              = "Макс";
+"Visibility_MinLabel"              = "Мин";
+"Pressure_Title"                   = "Давление";
+"Pressure_NoData"                  = "Данные о давлении отсутствуют на этот день.";
 
 /* WeatherDetailView uVGraphSection */
 "UVGraphHeader"         = "Сегодня %@ %d";
@@ -444,15 +429,15 @@
 "UVGraphMaxLabel" = "Макс";
 
 /* WeatherDetailView visibilityGraphSection */
-"Visibility_Title"                  = "Видимость";
-"Visibility_NoData"                 = "Нет данных о видимости для этого дня.";
-"Visibility_CurrentFormat"          = "Видимость %d км";
-"Visibility_DailyMinMaxFormat"      = "мин %d – макс %d км";
-"Visibility_NoCurrentData"          = "Нет текущих данных о видимости";
-"Visibility_HourlyAverages_NoData"  = "Нет почасовых данных.";
-"Visibility_MaxLabel"               = "Макс";
-"Visibility_MinLabel"               = "Мин";
-"Visibility_TooltipFormat"          = "%@\n%.1f км";
+"Visibility_Title"                 = "Видимость";
+"Visibility_NoData"                = "Нет данных по видимости за этот день.";
+"Visibility_CurrentFormat"         = "Видимость %d %@";
+"Visibility_DailyMinMaxFormat"     = "мин %d – макс %d %@";
+"Visibility_NoCurrentData"         = "Нет текущих данных по видимости.";
+"Visibility_HourlyAverages_NoData" = "Нет почасовых данных.";
+"Visibility_MaxLabel"              = "Макс";
+"Visibility_MinLabel"              = "Мин";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
 
 /* WeatherDetailView windGraphSection */
 "WindGraph_Header" = "Скорость и порывы ветра";
@@ -608,16 +593,9 @@
 "Forecast_Title"                  = "Прогноз";
 "DailySummary_Title"              = "Краткий обзор";
 
-/* Detailed precipitation forecast for today:
-   1st %d = precipLast24h
-   2nd %d = precipitationAmount
-   3rd %d = precipNext24h */
-"ForecastPrecip_TodayFormat"      = "За последние 24 часа выпало %d мм осадков. Сегодня суммарное количество осадков составит %d мм. За следующие 24 часа ожидается %d мм осадков.";
+"ForecastPrecip_TodayFormat"    = "За последние 24 ч выпало %.1f%@ осадков. Сегодня ожидается всего %.1f@%. В ближайшие 24 ч прогнозируется %.1f%@ осадков.";
+"ForecastPrecip_OtherDayFormat" = "В %@ выпадет в общей сложности %.1f%@ осадков.";
 
-/* Precipitation forecast for another day:
-   1st %@ = weekday name
-   2nd %d  = precipitationAmount */
-"ForecastPrecip_OtherDayFormat"   = "В %@ суммарное количество осадков составит %d мм.";
 
 /* Section header for precipitation intensity */
 "AboutPrecipitation_Title" = "О интенсивности осадков";
@@ -649,24 +627,20 @@
 
 "Section_Forecast"                     = "Прогноз";
 "Section_DailySummary"                 = "Ежедневный обзор";
-"ForecastVisibility_TodayFormat"       = "Сегодня видимость будет %@, от %d до %d км.";
-"ForecastVisibility_OtherFormat"       = "В %@ минимальная видимость будет %@ при %d км, а максимальная — %@ при %d км.";
+"ForecastVisibility_TodayFormat" = "Сегодня видимость составит %@, от %d до %d %@.";
+"ForecastVisibility_OtherFormat" = "На %@ минимальная видимость составит %@ на %d %@, а максимальная составит %@ на %d %@.";
 "Clarity_Foggy"                        = "Туманно";
 "Clarity_Hazy"                         = "Мгла";
 "Clarity_Clear"                        = "Ясно";
 "Clarity_PerfectlyClear"               = "Совершенно ясно";
 
 "AboutVisibility_Title" = "О видимости";
-"AboutVisibility_Body" = "Видимость показывает, как далеко вы можете ясно различать объекты, такие как здания и холмы. Это мера прозрачности воздуха и не учитывает количество солнечного света или наличие препятствий. Видимость 10 км и более считается хорошей.";
+"AboutVisibility_Body" = "Видимость показывает, насколько далеко можно ясно видеть такие объекты, как здания и холмы. Это мера прозрачности воздуха и не учитывает количество солнечного света или наличие препятствий. Видимость, равная или превышающая %@, считается ясной.";
 
-/* Section header for today */
+"PressureForecast_Today" = "Текущее давление %@ %@ и падает. Сегодня среднее давление будет %@ %@, а наименьшее давление будет %@ %@.";
+"PressureForecast_Other" = "На %@ среднее давление будет %@ %@, а наименьшее давление будет %@ %@.";
 "SectionForecast" = "Прогноз";
-/* Section header for other days */
-"SectionDailySummary" = "Ежедневный обзор";
-/* Detailed forecast for today: current, average and low */
-"PressureForecast_Today" = "Давление сейчас %d hPa и падает. Сегодня среднее давление будет %d hPa, а минимальное – %d hPa.";
-/* Forecast for another day: weekday, average and low */
-"PressureForecast_Other" = "В %@ среднее давление будет %d hPa, а минимальное – %d hPa.";
+"SectionDailySummary" = "Ежедневное резюме";
 
 /* AdvanceSubscriptionView */
 "Advance Plan" = "Расширенный план";

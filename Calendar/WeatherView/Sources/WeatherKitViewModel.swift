@@ -206,7 +206,6 @@ class WeatherKitViewModel: ObservableObject {
         let speedUnit: UnitSpeed = (GlobalState.measurementSystem == "Imperial")
             ? .milesPerHour
             : .kilometersPerHour
-        print("distanceUnit",distanceUnit, "speedUnit", speedUnit)
         // 2. Определяме началото на текущия час
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone

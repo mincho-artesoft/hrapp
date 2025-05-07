@@ -6,6 +6,7 @@ extension WeatherDetailView{
     func pressureGraphSection() -> some View {
         // 1) Извличаме почасовите стойности (hPa) за избрания ден
         let pressureValues = hourlyItemsForSelectedDate.map { $0.pressure }
+        let unit = GlobalState.pressureUnitLabel
 
         // 2) Ако няма данни, показваме fallback
         if pressureValues.isEmpty {
@@ -23,8 +24,8 @@ extension WeatherDetailView{
             let (suggestedMin, suggestedMax) = calculatePressureRange(from: pressureValues)
 
             // Реален min/max (без буфер), ако искаме да ги показваме в текста
-            let realMin = Int(round(pressureValues.min() ?? 1000))
-            let realMax = Int(round(pressureValues.max() ?? 1020))
+            let realMin = pressureValues.min()
+            let realMax = pressureValues.max()
 
             // 4) fractionOfDay => колко част от деня е минала (за shading, ако е днес)
             let now = Date()
@@ -39,14 +40,15 @@ extension WeatherDetailView{
 
             VStack(spacing: 0) {
                 VStack {
-                     // MARK: Заглавна част
+                    // MARK: Заглавна част
                     VStack(alignment: .leading, spacing: 5) {
                         if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
                             // Ако е текущия ден – показваме текущата стойност
                             if let currentPressure = vm.currentPressure {
                                 Text(String(
                                     format: NSLocalizedString("Pressure_CurrentFormat", comment: "Current pressure display"),
-                                    Int(round(currentPressure))
+                                    formatPressure(currentPressure),  // Форматирана стойност за текущото налягане
+                                    unit  // Добавяме единицата за налягането
                                 ))
                                 .font(.system(size: 16, weight: .semibold))
                             } else {
@@ -55,8 +57,10 @@ extension WeatherDetailView{
                             }
                             Text(String(
                                 format: NSLocalizedString("Pressure_DailyMinMaxFormat", comment: "Today's min/max pressure"),
-                                realMin,
-                                realMax
+                                formatPressure(realMin!),
+                                unit,  // Единица за налягането
+                                formatPressure(realMax!),
+                                unit  // Единица за налягането
                             ))
                             .font(.system(size: 13))
                             .foregroundColor(.gray)
@@ -65,24 +69,25 @@ extension WeatherDetailView{
                             let avgPressure = pressureValues.reduce(0, +) / Double(pressureValues.count)
                             Text(String(
                                 format: NSLocalizedString("Pressure_AverageFormat", comment: "Average pressure display"),
-                                Int(round(avgPressure))
+                                formatPressure(avgPressure),  // Форматирана стойност за средното налягане
+                                unit  // Добавяме единицата за налягането
                             ))
                             .font(.system(size: 16, weight: .semibold))
                             Text(String(
                                 format: NSLocalizedString("Pressure_DailyRangeFormat", comment: "Daily range of pressure"),
-                                realMin,
-                                realMax
+                                formatPressure(realMin!),
+                                formatPressure(realMax!),
+                                unit  // Добавяме единицата за налягането
                             ))
                             .font(.system(size: 13))
                             .foregroundColor(.gray)
                         }
                     }
-
-                     .frame(maxWidth: .infinity, alignment: .leading)
-                     .padding(.horizontal)
-                     .offset(x: -14)
-                     Spacer()
-                 }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .offset(x: -14)
+                    Spacer()
+                }
                
                 Group{
                     // MARK: Ред с иконки (arrow.up / arrow.down / equal) – на всеки 2 часа
@@ -375,7 +380,7 @@ extension WeatherDetailView{
                                     timeString = "--:--"
                                 }
                                 
-                                let labelText = "\(timeString)\n\(Int(round(pVal))) hPa"
+                                let labelText = "\(timeString)\n\(formatPressure(pVal)) \(GlobalState.pressureUnitLabel)" // Използваме formatPressure за форматиране на налягането
                                 let label = Text(labelText)
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundColor(.white)
@@ -417,4 +422,5 @@ extension WeatherDetailView{
         }
     }
     
+
 }

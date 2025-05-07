@@ -37,20 +37,23 @@ extension WeatherDetailView{
                                    + Double(comps.second ?? 0)
             let fractionOfDay = secondsFromMidnight / (24 * 3600)
 
-            
+            let unit = GlobalState.distanceUnitLabel
+
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 5) {
                            if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
                                if let currentVis = vm.currentVisibility {
                                    Text(String(
                                        format: NSLocalizedString("Visibility_CurrentFormat", comment: "Current visibility display"),
-                                       Int(currentVis / 1000)
+                                       Int(round(currentVis)),
+                                       unit
                                    ))
                                    .font(.system(size: 16, weight: .semibold))
 
                                    Text(String(
                                        format: NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
-                                       Int(dailyMinVis), Int(dailyMaxVis)
+                                       Int(round(dailyMinVis)), Int(round(dailyMaxVis)),
+                                       unit
                                    ))
                                    .font(.system(size: 13))
                                    .foregroundColor(.gray)
@@ -63,7 +66,8 @@ extension WeatherDetailView{
                                    .font(.system(size: 16, weight: .semibold))
                                Text(String(
                                    format: NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
-                                   Int(dailyMinVis), Int(dailyMaxVis)
+                                   Int(round(dailyMinVis)), Int(round(dailyMaxVis)),
+                                   unit
                                ))
                                .font(.system(size: 13))
                                .foregroundColor(.gray)
@@ -351,13 +355,12 @@ extension WeatherDetailView{
                                 }
                                 
                                 let labelText = String(
-                                    format: NSLocalizedString(
-                                        "Visibility_TooltipFormat",
-                                        comment: "Tooltip showing time and visibility value, e.g. \"12:00\n5.3 km\""
-                                    ),
+                                    format: NSLocalizedString("Visibility_TooltipFormat", comment: "Tooltip showing time and visibility value, e.g. \"12:00\n5.3 km\""),
                                     timeLabelString,
-                                    interpolatedVis
+                                    interpolatedVis,
+                                    unit
                                 )
+
                                 let label = Text(labelText)
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundColor(.white)

@@ -404,30 +404,15 @@
 "Precip_Tooltip_Format"         = "%@ч\nДъжд: %.1f%@\nСняг: %.1f%@";
 
 /* WeatherDetailView pressureGraphSection */
-/* Current pressure display */
-"Pressure_CurrentFormat"           = "Налягане %d hPa";
-
-/* No current pressure available */
+"Pressure_CurrentFormat"           = "Налягане %@ %@";
 "Pressure_CurrentUnavailable"      = "Налягане: --";
-
-/* Today's min/max pressure */
-"Pressure_DailyMinMaxFormat"       = "Минимално днес %d hPa – максимално %d hPa";
-
-/* Average pressure display */
-"Pressure_AverageFormat"           = "Средно налягане %d hPa";
-
-/* Daily range of pressure */
-"Pressure_DailyRangeFormat"        = "Диапазон за деня: %d–%d hPa";
-
-/* Label for the maximum marker */
-"Visibility_MaxLabel" = "Макс";
-
-/* Label for the minimum marker */
-"Visibility_MinLabel" = "Мин";
-/* Section title for pressure */
-"Pressure_Title" = "Налягане";
-/* Fallback when no pressure data available */
-"Pressure_NoData" = "Няма налични данни за налягането за този ден.";
+"Pressure_DailyMinMaxFormat"       = "Днешно мин %@ %@ – макс %@ %@";
+"Pressure_AverageFormat"           = "Средно налягане %@ %@";
+"Pressure_DailyRangeFormat"        = "Дневен диапазон: %@–%@ %@";
+"Visibility_MaxLabel"              = "Макс";
+"Visibility_MinLabel"              = "Мин";
+"Pressure_Title"                   = "Налягане";
+"Pressure_NoData"                  = "Няма данни за налягане за този ден.";
 
 /* WeatherDetailView uVGraphSection */
 "UVGraphHeader"         = "Днес %@ %d";
@@ -445,15 +430,15 @@
 "UVGraphMaxLabel" = "Макс";
 
 /* WeatherDetailView visibilityGraphSection */
-"Visibility_Title"                  = "Видимост";
-"Visibility_NoData"                 = "Няма налични данни за видимост за този ден.";
-"Visibility_CurrentFormat"          = "Видимост %d км";
-"Visibility_DailyMinMaxFormat"      = "мин %d – макс %d км";
-"Visibility_NoCurrentData"          = "Няма текущи данни за видимост";
-"Visibility_HourlyAverages_NoData"  = "Няма почасови данни.";
-"Visibility_MaxLabel"               = "Макс";
-"Visibility_MinLabel"               = "Мин";
-"Visibility_TooltipFormat"          = "%@\n%.1f км";
+"Visibility_Title"                 = "Видимост";
+"Visibility_NoData"                = "Няма данни за видимост за този ден.";
+"Visibility_CurrentFormat"         = "Видимост %d %@";
+"Visibility_DailyMinMaxFormat"     = "мин %d – макс %d %@";
+"Visibility_NoCurrentData"         = "Няма данни за текущата видимост.";
+"Visibility_HourlyAverages_NoData" = "Няма налични данни на час.";
+"Visibility_MaxLabel"              = "Макс";
+"Visibility_MinLabel"              = "Мин";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
 
 /* WeatherDetailView windGraphSection */
 "WindGraph_Header" = "Скорост и пориви на вятъра";
@@ -608,16 +593,9 @@
 "Forecast_Title" = "Прогноза";
 "DailySummary_Title" = "Обобщение за деня";
 
-/* Подробна прогноза за валежите за днес:
-   1-ви %d = валеж последни 24ч
-   2-ри %d = общи валежи за деня
-   3-ти %d = очаквани валежи следващи 24ч */
-"ForecastPrecip_TodayFormat" = "През последните 24 часа е имало %d мм валеж. Днес общите валежи ще бъдат %d мм. В следващите 24 часа се очакват %d мм валеж.";
+"ForecastPrecip_TodayFormat"    = "През последните 24 ч е имало %.1f%@ валежи. Днес общо ще паднат %.1f%@. В следващите 24 ч се очакват %.1f%@ валежи.";
+"ForecastPrecip_OtherDayFormat" = "На %@ общо ще паднат %.1f%@ валежи.";
 
-/* Прогноза за валежите за друг ден:
-   1-ви %@ = ден от седмицата
-   2-ри %d = общи валежи */
-"ForecastPrecip_OtherDayFormat" = "На %@ общите валежи ще бъдат %d мм.";
 
 /* Section header for precipitation intensity */
 "AboutPrecipitation_Title" = "За интензивността на валежите";
@@ -649,24 +627,20 @@
 
 "Section_Forecast"                     = "Прогноза";
 "Section_DailySummary"                 = "Дневно обобщение";
-"ForecastVisibility_TodayFormat"       = "Днес видимостта ще бъде %@, от %d до %d км.";
-"ForecastVisibility_OtherFormat"       = "На %@ най-ниската видимост ще е %@ при %d км, а най-високата ще е %@ при %d км.";
+"ForecastVisibility_TodayFormat" = "Днес видимостта ще бъде %@, от %d до %d %@.";
+"ForecastVisibility_OtherFormat" = "На %@ най-ниската видимост ще бъде %@ на %d %@, а най-високата ще бъде %@ на %d %@.";
 "Clarity_Foggy"                        = "Мъгливо";
 "Clarity_Hazy"                         = "Замъглено";
 "Clarity_Clear"                        = "Ясно";
 "Clarity_PerfectlyClear"               = "Перфектна видимост";
 
 "AboutVisibility_Title" = "За видимостта";
-"AboutVisibility_Body" = "Видимостта показва колко далеч можете ясно да виждате обекти като сгради и хълмове. Това е мярка за прозрачността на въздуха и не отчита количеството слънчева светлина или наличието на прегради. Видимост от 10 км или повече се счита за ясна.";
+"AboutVisibility_Body" = "Видимостта показва на какво разстояние можеш ясно да виждаш обекти като сгради и хълмове. Тя е мярка за прозрачността на въздуха и не взема предвид количеството слънчева светлина или наличието на пречки. Видимост от или над %@ се счита за ясна.";
 
-/* Section header for today */
+"PressureForecast_Today" = "Налягането в момента е %@ %@ и пада. Днес средното налягане ще бъде %@ %@, а най-ниското налягане ще бъде %@ %@.";
+"PressureForecast_Other" = "На %@, средното налягане ще бъде %@ %@, а най-ниското налягане ще бъде %@ %@.";
 "SectionForecast" = "Прогноза";
-/* Section header for other days */
-"SectionDailySummary" = "Обобщение";
-/* Detailed forecast for today: current, average and low */
-"PressureForecast_Today" = "Налягането в момента е %d hPa и спада. Днес средното налягане ще бъде %d hPa, а най-ниското – %d hPa.";
-/* Forecast for another day: weekday, average and low */
-"PressureForecast_Other" = "На %@ средното налягане ще бъде %d hPa, а най-ниското – %d hPa.";
+"SectionDailySummary" = "Дневна обобщена информация";
 
 /* AdvanceSubscriptionView */
 "Advance Plan" = "Разширен план";

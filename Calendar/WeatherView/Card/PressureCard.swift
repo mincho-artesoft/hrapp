@@ -110,21 +110,19 @@ struct PressureCard: View {
             pressureGauge()
         }
     }
-
-    // Helper to format pressure potentially with locale-specific grouping separator
-    private func formatPressure(_ pressureValue: Double) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal // Use decimal style
-        formatter.maximumFractionDigits = 0 // No decimal places
-        formatter.groupingSeparator = "," // Example: force comma
-        formatter.usesGroupingSeparator = true // Enable grouping
-        return formatter.string(from: NSNumber(value: pressureValue.rounded())) ?? String(format: "%.0f", pressureValue.rounded())
-    }
     
     private func gaugeThreshold(hPa: Double) -> Double {
         // 1 hPa ≈ 0.02953 inHg
         return GlobalState.measurementSystem == "Imperial"
             ? hPa * 0.02953
             : hPa
+    }
+    
+    func formatPressure(_ value: Double) -> String {
+        if GlobalState.measurementSystem == "Imperial" {
+            return String(format: "%.2f", value)
+        } else {
+            return String(format: "%.0f", value)
+        }
     }
 }

@@ -403,30 +403,15 @@
 "Precip_Tooltip_Format"         = "%@h\nRain: %.1f%@\nSnow: %.1f%@";
 
 /* WeatherDetailView pressureGraphSection */
-/* Current pressure display */
-"Pressure_CurrentFormat"           = "Pressure %d hPa";
-
-/* No current pressure available */
+"Pressure_CurrentFormat"           = "Pressure %@ %@";
 "Pressure_CurrentUnavailable"      = "Pressure: --";
-
-/* Today's min/max pressure */
-"Pressure_DailyMinMaxFormat"       = "Today's min %d hPa – max %d hPa";
-
-/* Average pressure display */
-"Pressure_AverageFormat"           = "Pressure Average %d hPa";
-
-/* Daily range of pressure */
-"Pressure_DailyRangeFormat"        = "Daily range: %d–%d hPa";
-/* Label for the maximum marker */
-"Visibility_MaxLabel" = "Max";
-
-/* Label for the minimum marker */
-"Visibility_MinLabel" = "Min";
-/* Section title for pressure */
-"Pressure_Title" = "Pressure";
-/* Fallback when no pressure data available */
-"Pressure_NoData" = "No pressure data available for this day.";
-
+"Pressure_DailyMinMaxFormat"       = "Today's min %@ %@ – max %@ %@";
+"Pressure_AverageFormat"           = "Pressure Average %@ %@";
+"Pressure_DailyRangeFormat"        = "Daily range: %@–%@ %@";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Pressure_Title"                   = "Pressure";
+"Pressure_NoData"                  = "No pressure data available for this day.";
 
 /* WeatherDetailView uVGraphSection */
 "UVGraphHeader"         = "Today's %@ %d";
@@ -444,15 +429,15 @@
 "UVGraphMaxLabel" = "Max";
 
 /* WeatherDetailView visibilityGraphSection */
-"Visibility_Title"                  = "Visibility";
-"Visibility_NoData"                 = "No visibility data available for this day.";
-"Visibility_CurrentFormat"          = "Visibility %d km";
-"Visibility_DailyMinMaxFormat"      = "min %d – max %d km";
-"Visibility_NoCurrentData"          = "Visibility no current data";
-"Visibility_HourlyAverages_NoData"  = "No hourly data available.";
-"Visibility_MaxLabel"               = "Max";
-"Visibility_MinLabel"               = "Min";
-"Visibility_TooltipFormat"          = "%@\n%.1f km";
+"Visibility_Title"                 = "Visibility";
+"Visibility_NoData"                = "No visibility data available for this day.";
+"Visibility_CurrentFormat"         = "Visibility %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – max %d %@";
+"Visibility_NoCurrentData"         = "No current visibility data available.";
+"Visibility_HourlyAverages_NoData" = "No hourly data available.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
 
 /* WeatherDetailView windGraphSection */
 "WindGraph_Header" = "Wind Speed & Gust";
@@ -611,16 +596,9 @@
 "Forecast_Title" = "Forecast";
 "DailySummary_Title" = "Daily Summary";
 
-/* Detailed precipitation forecast for today:
-   1st %d = precipLast24h
-   2nd %d = precipitationAmount
-   3rd %d = precipNext24h */
-"ForecastPrecip_TodayFormat" = "There has been %d mm of precipitation in the last 24 hours. Today's total precipitation will be %d mm. In the next 24 hours, %d mm of precipitation is expected.";
+"ForecastPrecip_TodayFormat"    = "There has been %.1f%@ of precipitation in the last 24 hours. Today's total precipitation will be %.1f%@. In the next 24 hours, %.1f%@ of precipitation is expected.";
+"ForecastPrecip_OtherDayFormat" = "On %@, the total precipitation will be %.1f%@.";
 
-/* Precipitation forecast for another day:
-   1st %@ = weekday name
-   2nd %d  = precipitationAmount */
-"ForecastPrecip_OtherDayFormat" = "On %@, the total precipitation will be %d mm.";
 
 /* Section header for precipitation intensity */
 "AboutPrecipitation_Title" = "About Precipitation Intensity";
@@ -652,24 +630,20 @@
 
 "Section_Forecast"                     = "Forecast";
 "Section_DailySummary"                 = "Daily Summary";
-"ForecastVisibility_TodayFormat"       = "Today, the visibility will be %@, at %d to %d km.";
-"ForecastVisibility_OtherFormat"       = "On %@, the lowest visibility will be %@ at %d km, and the highest will be %@ at %d km.";
+"ForecastVisibility_TodayFormat" = "Today, the visibility will be %@, at %d to %d %@.";
+"ForecastVisibility_OtherFormat" = "On %@, the lowest visibility will be %@ at %d %@, and the highest will be %@ at %d %@.";
 "Clarity_Foggy"                        = "Foggy";
 "Clarity_Hazy"                         = "Hazy";
 "Clarity_Clear"                        = "Clear";
 "Clarity_PerfectlyClear"               = "Perfectly clear";
 
 "AboutVisibility_Title" = "About Visibility";
-"AboutVisibility_Body" = "Visibility tells you how far away you can clearly see objects like buildings and hills. It is a measure of the transparency of the air and does not take into account the amount of sunlight or the presence of obstructions. Visibility at or above 10 km is considered clear.";
+"AboutVisibility_Body" = "Visibility tells you how far away you can clearly see objects like buildings and hills. It is a measure of the transparency of the air and does not take into account the amount of sunlight or the presence of obstructions. Visibility at or above %@ is considered clear.";
 
-/* Section header for today */
+"PressureForecast_Today" = "Pressure is currently %@ %@ and falling. Today, the average pressure will be %@ %@, and the lowest pressure will be %@ %@.";
+"PressureForecast_Other" = "On %@, the average pressure will be %@ %@, and the lowest pressure will be %@ %@.";
 "SectionForecast" = "Forecast";
-/* Section header for other days */
 "SectionDailySummary" = "Daily Summary";
-/* Detailed forecast for today: current, average and low */
-"PressureForecast_Today" = "Pressure is currently %d hPa and falling. Today, the average pressure will be %d hPa, and the lowest pressure will be %d hPa.";
-/* Forecast for another day: weekday, average and low */
-"PressureForecast_Other" = "On %@, the average pressure will be %d hPa, and the lowest pressure will be %d hPa.";
 
 /* AdvanceSubscriptionView */
 "Advance Plan" = "Advance Plan";

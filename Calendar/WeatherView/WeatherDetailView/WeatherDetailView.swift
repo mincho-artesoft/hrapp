@@ -985,12 +985,16 @@ struct WeatherDetailView: View {
             formatter.dateFormat = "EEEE"
             return formatter.string(from: day.date)
         }()
+        let unit = GlobalState.precipitationUnitLabel
+        let last24 = day.precipLast24h
+        let total  = day.precipitationAmount
+        let next24 = day.precipNext24h
 
         VStack(alignment: .leading, spacing: 5) {
             Text(
                 NSLocalizedString(
                     isToday ? "Forecast_Title" : "DailySummary_Title",
-                    comment: "Section header: Forecast vs Daily Summary"
+                    comment: "Section header"
                 )
             )
             .font(.system(size: 16, weight: .semibold))
@@ -1002,9 +1006,9 @@ struct WeatherDetailView: View {
                             "ForecastPrecip_TodayFormat",
                             comment: "Detailed precipitation forecast for today"
                         ),
-                        Int(day.precipLast24h),
-                        Int(day.precipitationAmount),
-                        Int(day.precipNext24h)
+                        last24, unit,
+                        total,  unit,
+                        next24, unit
                     )
                 )
                 .font(.system(size: 14))
@@ -1016,10 +1020,10 @@ struct WeatherDetailView: View {
                     String(
                         format: NSLocalizedString(
                             "ForecastPrecip_OtherDayFormat",
-                            comment: "Precipitation forecast for another day, includes weekday name"
+                            comment: "Precipitation forecast for another day"
                         ),
                         dayName,
-                        Int(day.precipitationAmount)
+                        total, unit
                     )
                 )
                 .font(.system(size: 14))
@@ -1096,6 +1100,8 @@ struct WeatherDetailView: View {
             fmt.dateFormat = "EEEE"
             return fmt.string(from: day.date)
         }()
+        
+        let unit = GlobalState.distanceUnitLabel
         let minVis = Int(round(day.visibilityMin))
         let maxVis = Int(round(day.visibilityMax))
         let avgVis = (minVis + maxVis) / 2
@@ -1118,7 +1124,8 @@ struct WeatherDetailView: View {
                         ),
                         avgClarity,
                         minVis,
-                        maxVis
+                        maxVis,
+                        unit
                     )
                 )
                 .font(.system(size: 14))
@@ -1136,7 +1143,8 @@ struct WeatherDetailView: View {
                         minClarity,
                         minVis,
                         maxClarity,
-                        maxVis
+                        maxVis,
+                        unit
                     )
                 )
                 .font(.system(size: 14))
@@ -1148,6 +1156,7 @@ struct WeatherDetailView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .offset(x: 4, y: 5)
     }
+
 
     // Помощна функция за описание на видимостта
     private func clarityDescription(for km: Int) -> String {
@@ -1163,16 +1172,30 @@ struct WeatherDetailView: View {
 
     @ViewBuilder
     private func aboutVisibilitySection() -> some View {
+        let unit = GlobalState.distanceUnitLabel
+        let clearVisibility = unit == NSLocalizedString("Unit_Distance_km", comment: "kilometers") ? "10 km" : "6.2 miles" // Ако е км, задаваме 10 км, ако е имперична система (мили), слагаме 6.2 мили
+
         VStack(alignment: .leading, spacing: 5) {
             Text(NSLocalizedString("AboutVisibility_Title", comment: "Section title for about visibility"))
                 .font(.system(size: 16, weight: .semibold))
-            Text(NSLocalizedString("AboutVisibility_Body", comment: "Detailed explanation of visibility"))
+            Text(String(
+                format: NSLocalizedString("AboutVisibility_Body", comment: "Detailed explanation of visibility"),
+                clearVisibility
+            ))
                 .font(.system(size: 14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .offset(x: 4, y: 15)
+    }
+
+    func formatPressure(_ value: Double) -> String {
+        if GlobalState.measurementSystem == "Imperial" {
+            return String(format: "%.2f", value)
+        } else {
+            return String(format: "%.0f", value) 
+        }
     }
     
     @ViewBuilder
@@ -1184,15 +1207,15 @@ struct WeatherDetailView: View {
         let pressureValues = hourlyItemsForSelectedDate.map { $0.pressure }
         
         // Изчисляваме средното налягане (ако има данни, иначе fallback)
-        let avgPressure: Int = {
+        let avgPressure: Double = {
             guard !pressureValues.isEmpty else { return 1013 }
-            return Int(round(pressureValues.reduce(0, +) / Double(pressureValues.count)))
+            return pressureValues.reduce(0, +) / Double(pressureValues.count)
         }()
         
         // Извличаме минималното налягане (или fallback)
-        let minPressure: Int = {
+        let minPressure: Double = {
             guard let minVal = pressureValues.min() else { return 1013 }
-            return Int(round(minVal))
+            return minVal
         }()
         
         // Името на деня (например "Saturday")
@@ -1201,6 +1224,9 @@ struct WeatherDetailView: View {
             formatter.dateFormat = "EEEE"
             return formatter.string(from: day.date)
         }()
+        
+        // Получаваме единицата за налягане
+        let unit = GlobalState.pressureUnitLabel
         
         VStack(alignment: .leading, spacing: 5) {
             // Заглавие: "Forecast" или "Daily Summary"
@@ -1214,13 +1240,16 @@ struct WeatherDetailView: View {
             
             if isToday {
                 // Днешна прогноза
-                let currentPressure = Int(round(vm.currentPressure ?? Double(avgPressure)))
+                let currentPressure = vm.currentPressure ?? avgPressure
                 Text(
                     String(
                         format: NSLocalizedString("PressureForecast_Today", comment: ""),
-                        currentPressure,
-                        avgPressure,
-                        minPressure
+                        formatPressure(currentPressure),// Използваме новата функция
+                        unit,
+                        formatPressure(avgPressure), // Използваме новата функция
+                        unit,
+                        formatPressure(minPressure), // Използваме новата функция
+                        unit // Добавяме единицата за налягането
                     )
                 )
                 .font(.system(size: 14))
@@ -1233,8 +1262,10 @@ struct WeatherDetailView: View {
                     String(
                         format: NSLocalizedString("PressureForecast_Other", comment: ""),
                         weekday,
-                        avgPressure,
-                        minPressure
+                        formatPressure(avgPressure), // Използваме новата функция
+                        unit,
+                        formatPressure(minPressure), // Използваме новата функция
+                        unit // Добавяме единицата за налягането
                     )
                 )
                 .font(.system(size: 14))
@@ -1246,7 +1277,6 @@ struct WeatherDetailView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .offset(x: 4, y: 5)
     }
-
 
 
 

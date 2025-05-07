@@ -403,30 +403,15 @@
 "Precip_Tooltip_Format"         = "%@h\nPluie: %.1f%@\nNeige: %.1f%@";
 
 /* WeatherDetailView pressureGraphSection */
-/* Current pressure display */
-"Pressure_CurrentFormat"           = "Pression %d hPa";
-
-/* No current pressure available */
+"Pressure_CurrentFormat"           = "Pression %@ %@";
 "Pressure_CurrentUnavailable"      = "Pression : --";
-
-/* Today's min/max pressure */
-"Pressure_DailyMinMaxFormat"       = "Aujourd’hui min %d hPa – max %d hPa";
-
-/* Average pressure display */
-"Pressure_AverageFormat"           = "Pression moyenne %d hPa";
-
-/* Daily range of pressure */
-"Pressure_DailyRangeFormat"        = "Plage quotidienne : %d–%d hPa";
-/* Label for the maximum marker */
-"Visibility_MaxLabel" = "Max";
-
-/* Label for the minimum marker */
-"Visibility_MinLabel" = "Min";
-/* Section title for pressure */
-"Pressure_Title" = "Pression";
-/* Fallback when no pressure data available */
-"Pressure_NoData" = "Aucune donnée de pression disponible pour cette journée.";
-
+"Pressure_DailyMinMaxFormat"       = "Min %@ %@ – max %@ %@ aujourd'hui";
+"Pressure_AverageFormat"           = "Pression moyenne %@ %@";
+"Pressure_DailyRangeFormat"        = "Plage quotidienne : %@–%@ %@";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Pressure_Title"                   = "Pression";
+"Pressure_NoData"                  = "Aucune donnée de pression disponible pour ce jour.";
 
 /* WeatherDetailView uVGraphSection */
 "UVGraphHeader"         = "Aujourd’hui %@ %d";
@@ -444,15 +429,15 @@
 "UVGraphMaxLabel" = "Max";
 
 /* WeatherDetailView visibilityGraphSection */
-"Visibility_Title"                  = "Visibilité";
-"Visibility_NoData"                 = "Aucune donnée de visibilité disponible pour cette journée.";
-"Visibility_CurrentFormat"          = "Visibilité %d km";
-"Visibility_DailyMinMaxFormat"      = "min %d – max %d km";
-"Visibility_NoCurrentData"          = "Pas de données de visibilité actuelles";
-"Visibility_HourlyAverages_NoData"  = "Aucune donnée horaire disponible.";
-"Visibility_MaxLabel"               = "Max";
-"Visibility_MinLabel"               = "Min";
-"Visibility_TooltipFormat"          = "%@\n%.1f km";
+"Visibility_Title"                 = "Visibilité";
+"Visibility_NoData"                = "Aucune donnée de visibilité pour ce jour.";
+"Visibility_CurrentFormat"         = "Visibilité %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – max %d %@";
+"Visibility_NoCurrentData"         = "Aucune donnée de visibilité actuelle.";
+"Visibility_HourlyAverages_NoData" = "Pas de données horaires disponibles.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
 
 /* WeatherDetailView windGraphSection */
 "WindGraph_Header" = "Vitesse et rafales du vent";
@@ -606,16 +591,9 @@
 "Forecast_Title"                  = "Prévision";
 "DailySummary_Title"              = "Résumé quotidien";
 
-/* Detailed precipitation forecast for today:
-   1st %d = precipLast24h
-   2nd %d = precipitationAmount
-   3rd %d = precipNext24h */
-"ForecastPrecip_TodayFormat"      = "En 24 heures, il est tombé %d mm de précipitations. Aujourd’hui, les précipitations totales seront de %d mm. Dans les prochaines 24 heures, %d mm de précipitations sont attendus.";
+"ForecastPrecip_TodayFormat"    = "Au cours des dernières 24 h, il y a eu %.1f%@ de précipitations. Le total prévu aujourd'hui est de %.1f%@. Dans les prochaines 24 h, %.1f%@ de précipitations sont attendues.";
+"ForecastPrecip_OtherDayFormat" = "Le %@, le total de précipitations sera de %.1f%@.";
 
-/* Precipitation forecast for another day:
-   1st %@ = weekday name
-   2nd %d  = precipitationAmount */
-"ForecastPrecip_OtherDayFormat"   = "Le %@, les précipitations totales seront de %d mm.";
 
 /* Section header for precipitation intensity */
 "AboutPrecipitation_Title" = "À propos de l’intensité des précipitations";
@@ -647,24 +625,20 @@
 
 "Section_Forecast"                     = "Prévision";
 "Section_DailySummary"                 = "Résumé quotidien";
-"ForecastVisibility_TodayFormat"       = "Aujourd'hui, la visibilité sera %@, de %d à %d km.";
-"ForecastVisibility_OtherFormat"       = "Le %@, la visibilité minimale sera %@ à %d km, et la maximale sera %@ à %d km.";
+"ForecastVisibility_TodayFormat" = "Aujourd'hui, la visibilité sera %@, de %d à %d %@.";
+"ForecastVisibility_OtherFormat" = "Le %@, la visibilité la plus basse sera %@ à %d %@, et la plus élevée à %d %@.";
 "Clarity_Foggy"                        = "Brumeux";
 "Clarity_Hazy"                         = "Brume légère";
 "Clarity_Clear"                        = "Clair";
 "Clarity_PerfectlyClear"               = "Parfaitement clair";
 
 "AboutVisibility_Title" = "À propos de la visibilité";
-"AboutVisibility_Body" = "La visibilité indique jusqu’où vous pouvez distinguer clairement des objets tels que des bâtiments et des collines. C’est une mesure de la transparence de l’air et ne prend pas en compte l’intensité lumineuse ni la présence d’obstacles. Une visibilité de 10 km ou plus est considérée comme bonne.";
+"AboutVisibility_Body" = "La visibilité vous indique à quelle distance vous pouvez voir clairement des objets comme des bâtiments et des collines. C'est une mesure de la transparence de l'air et ne prend pas en compte la quantité de lumière solaire ou la présence d'obstructions. Une visibilité égale ou supérieure à %@ est considérée comme claire.";
 
-/* Section header for today */
+"PressureForecast_Today" = "La pression actuelle est %@ %@ et en baisse. Aujourd'hui, la pression moyenne sera %@ %@, et la pression la plus basse sera %@ %@.";
+"PressureForecast_Other" = "Le %@, la pression moyenne sera %@ %@, et la pression la plus basse sera %@ %@.";
 "SectionForecast" = "Prévisions";
-/* Section header for other days */
 "SectionDailySummary" = "Résumé quotidien";
-/* Detailed forecast for today: current, average and low */
-"PressureForecast_Today" = "La pression est actuellement de %d hPa et baisse. Aujourd’hui, la pression moyenne sera de %d hPa, et la plus basse de %d hPa.";
-/* Forecast for another day: weekday, average and low */
-"PressureForecast_Other" = "Le %@, la pression moyenne sera de %d hPa et la plus basse de %d hPa.";
 
 /* AdvanceSubscriptionView */
 "Advance Plan" = "Forfait Avancé";
