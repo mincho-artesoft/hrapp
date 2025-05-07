@@ -1,0 +1,87 @@
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px 60px 20px; // Adjust padding
+  background-color: #f8f9fa; // Slightly different light background
+  min-height: 60vh; // Adjust height as needed
+  overflow: hidden; // Prevent potential overflow issues
+
+  @media (min-width: 768px) { // Tablet breakpoint
+    padding: 60px 40px 80px 40px;
+    min-height: 70vh;
+  }
+
+  @media (min-width: 992px) { // Desktop breakpoint
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-around; // More space than space-between
+    align-items: center;
+    gap: 5%; // Use percentage gap for flexibility
+    padding: 80px 5% 100px 5%; // Use percentage padding
+  }
+}
+
+.hero-content {
+  max-width: 600px;
+  width: 100%; // Ensure it takes width before limiting
+  margin-bottom: 40px; // Space below text on mobile
+
+  @media (min-width: 992px) {
+    flex-basis: 50%; // Roughly half the space
+    max-width: none; // Remove max-width when side-by-side
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-size: clamp(2em, 5vw, 3.5em); // Responsive font size
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: #212529; // Darker text color
+  }
+
+  .subtitle {
+    font-size: clamp(1em, 2.5vw, 1.2em); // Responsive font size
+    color: #495057; // Slightly lighter grey
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    transform: scale(1); // Base scale
+    transition: transform 0.2s ease-in-out; // Add subtle hover effect
+
+    &:hover {
+      transform: scale(1.05); // Slightly enlarge on hover
+    }
+  }
+}
+
+.hero-image {
+  max-width: 400px; // Slightly smaller max on mobile
+  width: 90%; // Use percentage width
+  margin: 0 auto; // Center image
+
+  @media (min-width: 768px) {
+    max-width: 500px; // Larger on tablet
+  }
+
+  @media (min-width: 992px) {
+    flex-basis: 40%; // Slightly less space than text
+    max-width: 550px; // Max width on desktop
+    width: auto; // Let flex-basis control width
+    margin: 0; // Reset margin
+  }
+
+  img {
+    border-radius: 12px; // Slightly more rounded corners
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); // Adjusted shadow
+    width: 50%; // Ensure image fills container
+    height: auto;
+    display: block;
+  }
+}

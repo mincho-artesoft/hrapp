@@ -1,0 +1,146 @@
+/* src/app/components/features/features.component.scss */
+
+.features-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+
+  @media (min-width: 768px) {
+    padding: 80px 40px;
+  }
+  @media (min-width: 1200px) {
+    padding: 100px 5%;
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.8em, 4vw, 2.5em);
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #343a40;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: clamp(1em, 2.5vw, 1.15em);
+  color: #6c757d;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-grid {
+  // No specific grid styles needed on the container
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column; // Mobile: Image(s) on top of text
+  align-items: center;
+  text-align: center;
+  margin-bottom: 70px;
+  gap: 30px; // Space between image container and text container
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row; // Tablet/Desktop: Side-by-side
+    text-align: left;
+    align-items: center; // Center vertically if heights differ significantly
+    gap: 5%;
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.feature-image-container {
+  flex: 1 1 48%; // Slightly adjust basis/target width
+  display: flex;
+  flex-wrap: wrap; // Allow images to wrap within the container
+  gap: 15px; // Gap between images inside the container
+  justify-content: center; // Center images within the container
+  align-items: flex-start; // Align images to the top
+  width: 100%;
+  max-width: 550px; // Limit max width on mobile
+
+  @media (min-width: 768px) {
+    max-width: none;
+    justify-content: flex-start; // Align to start in row mode
+
+    // Target the specific multi-image containers if needed
+    &.multi-view, &.multi-chart {
+      // Example: Make images smaller to fit more side-by-side
+      img {
+        // Default width for wrapped items
+        width: calc(50% - 8px); // Fit 2 side-by-side by default
+
+        @media (min-width: 992px) {
+          // Maybe fit 3 side-by-side on larger screens for charts/views
+          width: calc(33.33% - 10px);
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    // Further adjustments for very large screens if necessary
+    &.multi-chart img {
+      width: calc(25% - 12px); // Example: fit 4 chart thumbs
+    }
+  }
+
+
+  img {
+    max-width: 48%; // Ensure image doesn't overflow its calculated width
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); // Softer shadow
+    display: block;
+    object-fit: contain; // Ensure the whole image is visible, might add whitespace
+  }
+}
+
+.feature-text-container {
+  flex: 1 1 48%; // Adjust basis/target width
+  padding-top: 10px;
+
+  @media (min-width: 768px) {
+    padding-top: 0;
+    align-self: baseline;
+  }
+
+  mat-icon {
+    font-size: 30px; // Slightly smaller icons
+    width: 30px;
+    height: 30px;
+    color: var(--mat-primary-color, #3f51b5);
+    margin-bottom: 15px;
+    margin-right: 8px; // Space between icons if multiple
+    vertical-align: middle; // Align icons better with text start
+  }
+
+  h3 {
+    font-size: clamp(1.3em, 3vw, 1.7em); // Responsive heading
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #212529;
+  }
+
+  p {
+    color: #495057;
+    line-height: 1.7;
+    font-size: clamp(0.95em, 2vw, 1.05em); // Responsive paragraph text
+    margin-bottom: 1em; // Space between paragraphs
+
+    strong { // Highlight keywords
+      color: #343a40;
+      font-weight: 600;
+    }
+  }
+}
