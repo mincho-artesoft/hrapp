@@ -84,7 +84,7 @@ extension WeatherDetailView{
                                     format: NSLocalizedString("WindGraph_SpeedHeader", comment: "Wind Speed header"),
                                     Int(round(vm.currentWindSpeed ?? dailyMaxSpeed))
                                 )
-                            )
+                            ) + Text(" \(GlobalState.speedUnitLabel)")
                             .font(.system(size: 16, weight: .semibold))
                             Text(vm.windDirectionAbbreviation(for: vm.currentWindDirection))
                                 .font(.system(size: 16, weight: .semibold))
@@ -94,10 +94,10 @@ extension WeatherDetailView{
                                 format: NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
                                 Int(round(vm.currentWindGust ?? dailyMaxGust))
                             )
-                        )
+                        ).font(.system(size: 13))
+                            .foregroundColor(.gray) + Text(" \(GlobalState.speedUnitLabel)")
                         .font(.system(size: 13))
                         .foregroundColor(.gray)
-
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
@@ -111,14 +111,15 @@ extension WeatherDetailView{
                                 Int(round(dailyMinWindSpeed)),
                                 Int(round(dailyMaxSpeed))
                             )
-                        )
+                        ) + Text(" \(GlobalState.speedUnitLabel)")
                         .font(.system(size: 16, weight: .semibold))
                         Text(
                             String(
                                 format: NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
                                 Int(round(dailyMaxGust))
                             )
-                        )
+                        ) .font(.system(size: 13))
+                            .foregroundColor(.gray) + Text(" \(GlobalState.speedUnitLabel)")
                         .font(.system(size: 13))
                         .foregroundColor(.gray)
                     }

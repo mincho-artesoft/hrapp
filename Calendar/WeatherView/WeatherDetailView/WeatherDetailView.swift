@@ -562,8 +562,8 @@ struct WeatherDetailView: View {
     // Помощна функция за генериране на динамичен текст за вятъра,
     // базиран на данните за деня и текущите стойности от вю модела (vm).
     func generateWindSummaryText(isToday: Bool,
-                                           speeds: [Double],
-                                           dayItem: DayForecastItem?) -> String {
+                                 speeds: [Double],
+                                 dayItem: DayForecastItem?) -> String {
         // Изчисляваме минималната скорост от часовата прогноза
         let dailyMinWindSpeed = speeds.min() ?? 0
         // Вземаме дневните данни за максимална скорост и порив (ако са налични)
@@ -580,6 +580,8 @@ struct WeatherDetailView: View {
             }
         }()
         
+        let speedUnit = GlobalState.speedUnitLabel // Вземаме динамичната единица за скорост
+
         if isToday {
             // Ако денят е днешен, използваме данните от vm (ако са налични)
             let currentSpeed = vm.currentWindSpeed != nil ? Int(round(vm.currentWindSpeed!)) : Int(round(dailyMaxSpeed))
@@ -593,27 +595,30 @@ struct WeatherDetailView: View {
             return String(
                 format: NSLocalizedString(
                     "WindSummary_Current",
-                    comment: "Summary for today's wind: current speed, direction, range and gusts"
+                    comment: "Summary for today's wind. Params: 1:currentSpeed, 2:speedUnit, 3:direction, 4:minSpeed, 5:maxSpeed, 6:gustSpeed"
                 ),
-                currentSpeed,
-                direction,
-                minSpeed,
-                maxSpeed,
-                gustSpeed
+                currentSpeed,   // %1$d
+                speedUnit,      // %2$@
+                direction,      // %3$@
+                minSpeed,       // %4$d
+                maxSpeed,       // %5$d
+                gustSpeed       // %6$d
             )
         } else {
             // За друг ден – изчисляваме диапазона от часовата прогноза
             let minSpeed = Int(round(dailyMinWindSpeed))
             let maxSpeed = Int(round(dailyMaxSpeed))
             let gustSpeed = Int(round(dailyMaxGust))
+            
             return String(
                 format: NSLocalizedString(
                     "WindSummary_Range",
-                    comment: "Summary for other days’ wind: speed range and gusts"
+                    comment: "Summary for other days’ wind. Params: 1:minSpeed, 2:maxSpeed, 3:speedUnit, 4:gustSpeed"
                 ),
-                minSpeed,
-                maxSpeed,
-                gustSpeed
+                minSpeed,       // %1$d
+                maxSpeed,       // %2$d
+                speedUnit,      // %3$@
+                gustSpeed       // %4$d
             )
         }
     }
@@ -877,7 +882,8 @@ struct WeatherDetailView: View {
                 )
             }
         }()
-        
+        let windSpeedUnit = GlobalState.speedUnitLabel
+
         let format = NSLocalizedString(
             "CurrentDayForecastText",
             comment: "Full summary for today's forecast: temp, condition, precip, wind, range, feels like, UV, humidity"
@@ -889,12 +895,14 @@ struct WeatherDetailView: View {
             precipChanceText,
             windDir,
             Int(round(windGust)),
+            windSpeedUnit,
             Int(round(minTemp)),
             Int(round(maxTemp)),
             Int(round(currentFeelsLike)),
             uvText,
             humidityText
         )
+
     }
 
     private func generateOtherDayForecastText(for day: DayForecastItem) -> String {
@@ -1362,50 +1370,12 @@ struct WeatherDetailView: View {
         return Color(uiColor)
     }
     
+    // Предполагаме, че GlobalState и gradientColor са дефинирани и достъпни.
+    // func gradientColor(for progress: Double) -> Color { ... }
+
     @ViewBuilder
     private func windTableSection() -> some View {
-        // MARK: Beaufort Data
-        let beaufortData: [BeaufortScaleItem] = [
-            .init(bft: 0,
-                  description: NSLocalizedString("Beaufort_0", comment: "Calm"),
-                  kmhRange: NSLocalizedString("BeaufortRange_0", comment: "< 2")),
-            .init(bft: 1,
-                  description: NSLocalizedString("Beaufort_1", comment: "Light air"),
-                  kmhRange: NSLocalizedString("BeaufortRange_1", comment: "2 – 5")),
-            .init(bft: 2,
-                  description: NSLocalizedString("Beaufort_2", comment: "Light breeze"),
-                  kmhRange: NSLocalizedString("BeaufortRange_2", comment: "6 – 11")),
-            .init(bft: 3,
-                  description: NSLocalizedString("Beaufort_3", comment: "Gentle breeze"),
-                  kmhRange: NSLocalizedString("BeaufortRange_3", comment: "12 – 19")),
-            .init(bft: 4,
-                  description: NSLocalizedString("Beaufort_4", comment: "Moderate breeze"),
-                  kmhRange: NSLocalizedString("BeaufortRange_4", comment: "20 – 28")),
-            .init(bft: 5,
-                  description: NSLocalizedString("Beaufort_5", comment: "Fresh breeze"),
-                  kmhRange: NSLocalizedString("BeaufortRange_5", comment: "29 – 38")),
-            .init(bft: 6,
-                  description: NSLocalizedString("Beaufort_6", comment: "Strong breeze"),
-                  kmhRange: NSLocalizedString("BeaufortRange_6", comment: "39 – 49")),
-            .init(bft: 7,
-                  description: NSLocalizedString("Beaufort_7", comment: "High wind"),
-                  kmhRange: NSLocalizedString("BeaufortRange_7", comment: "50 – 61")),
-            .init(bft: 8,
-                  description: NSLocalizedString("Beaufort_8", comment: "Gale"),
-                  kmhRange: NSLocalizedString("BeaufortRange_8", comment: "62 – 74")),
-            .init(bft: 9,
-                  description: NSLocalizedString("Beaufort_9", comment: "Strong gale"),
-                  kmhRange: NSLocalizedString("BeaufortRange_9", comment: "75 – 88")),
-            .init(bft: 10,
-                  description: NSLocalizedString("Beaufort_10", comment: "Storm"),
-                  kmhRange: NSLocalizedString("BeaufortRange_10", comment: "89 – 102")),
-            .init(bft: 11,
-                  description: NSLocalizedString("Beaufort_11", comment: "Violent storm"),
-                  kmhRange: NSLocalizedString("BeaufortRange_11", comment: "103 – 117")),
-            .init(bft: 12,
-                  description: NSLocalizedString("Beaufort_12", comment: "Hurricane-force"),
-                  kmhRange: NSLocalizedString("BeaufortRange_12", comment: "> 118"))
-        ]
+        // beaufortData вече е дефиниран извън тази функция или като член на View структурата.
 
         VStack(alignment: .leading, spacing: 5) {
             // Main Header
@@ -1419,14 +1389,14 @@ struct WeatherDetailView: View {
                 Text(NSLocalizedString("Beaufort_Column_bft", comment: "BFT column header"))
                     .font(.system(size: 13, weight: .medium))
                     .frame(width: 20, alignment: .leading)
-                    .offset(x: 19)
+                    .offset(x: 19) // Може да се наложи корекция на оформлението
                 Text(NSLocalizedString("Beaufort_Column_Description", comment: "Description column header"))
                     .font(.system(size: 13, weight: .medium))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .offset(x: 20)
-                Text(NSLocalizedString("Beaufort_Column_kmh", comment: "km/h column header"))
+                    .offset(x: 20) // Може да се наложи корекция на оформлението
+                Text(GlobalState.speedUnitLabel) // Динамично заглавие на колоната за скорост
                     .font(.system(size: 13, weight: .medium))
-                    .frame(width: 60, alignment: .leading)
+                    .frame(width: 60, alignment: .leading) // Ширината може да се нуждае от корекция
             }
             .foregroundColor(.gray)
             .padding(.horizontal, 16)
@@ -1436,9 +1406,9 @@ struct WeatherDetailView: View {
                 .background(Color.white.opacity(0.2))
                 .padding(.horizontal, 16)
 
-            ForEach(beaufortData) { item in
+            ForEach(beaufortData) { item in // beaufortData вече е от тип [BeaufortScaleItem]
                 let progress = Double(item.bft) / 12.0
-                let circleColor = gradientColor(for: progress)
+                let circleColor = gradientColor(for: progress) // Предполагаме, че тази функция съществува
 
                 VStack(spacing: 0) {
                     HStack(spacing: 12) {
@@ -1449,11 +1419,11 @@ struct WeatherDetailView: View {
                         Text("\(item.bft)")
                             .frame(width: 20, alignment: .leading)
 
-                        Text(item.description)
+                        Text(item.localizedDescription) // Използваме новия метод
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                        Text(item.kmhRange)
-                            .frame(width: 60, alignment: .leading)
+                        Text(item.formattedSpeedRange()) // Използваме новия метод за диапазона
+                            .frame(width: 60, alignment: .leading) // Ширината може да се нуждае от корекция
                     }
                     .font(.system(size: 14))
                     .foregroundColor(.white)
@@ -1466,8 +1436,9 @@ struct WeatherDetailView: View {
                 }
             }
         }
-        .background(Color.black)
+        .background(Color.black) // Предполагам, че това е за целия VStack
     }
+
 
 
     private var aboutFeelsLikeSection: some View {

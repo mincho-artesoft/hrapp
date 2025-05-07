@@ -455,14 +455,14 @@
 "Visibility_TooltipFormat"          = "%@\n%.1f км";
 
 /* WeatherDetailView windGraphSection */
-"WindGraph_Header"              = "Скорость ветра и порывы";
-"WindGraph_NoData"              = "Нет данных о ветре за этот день.";
-"WindGraph_SpeedHeader"         = "Скорость ветра %d км/ч";
-"WindGraph_GustHeader"          = "Порывы до %d км/ч";
-"WindGraph_SpeedRangeHeader"    = "Скорость %d-%d км/ч";
-"WindGraph_MaxSpeedLabel"       = "Макс С";
-"WindGraph_MaxGustLabel"        = "Макс П";
-"WindGraph_DragLabel"           = "%@\nСкорость: %d\nПорыв: %d";
+"WindGraph_Header" = "Скорость и порывы ветра";
+"WindGraph_NoData" = "Нет данных о ветре на этот день.";
+"WindGraph_SpeedHeader" = "Скорость ветра %d";
+"WindGraph_GustHeader" = "Порывы до %d";
+"WindGraph_SpeedRangeHeader" = "Скорость ветра %d–%d";
+"WindGraph_MaxSpeedLabel" = "Макс С";
+"WindGraph_MaxGustLabel" = "Макс П";
+"WindGraph_DragLabel" = "%@\nСкорость: %d\nПорыв: %d";
 
 /* WeatherDetailView */
 "Conditions" = "Погодные условия";
@@ -516,7 +516,7 @@
 "DailySummary"               = "Ежедневный обзор";
 
 /* Current-day forecast */
-"CurrentDayForecastText"     = "%d° сейчас при %@. Вероятность осадков: %@. Ветер из %@ с порывами до %d км/ч. Сегодня от %d° до %d°, ощущается как %d°. %@ и %@.";
+"CurrentDayForecastText" = "%d° сейчас, условия: %@. Вероятность осадков: %@. Ветер с направления %@, порывы до %d %@. Сегодня температура от %d° до %d°, ощущается как %d°. %@ и %@.";
 "UVIndexFormat"              = "УФ-индекс до %d";
 "HumidityFormat"             = "Влажность около %d%%";
 "HumidityRangeFormat"        = "Влажность от %d%% до %d%%";
@@ -556,8 +556,22 @@
 "Rain_Label"                = "Дождь";
 "Snow_Label"                = "Снег";
 
-"WindSummary_Current" = "Ветер сейчас %d км/ч от %@. Сегодня скорость ветра от %d до %d км/ч, порывы до %d км/ч.";
-"WindSummary_Range"   = "Скорость ветра варьируется от %d до %d км/ч, порывы до %d км/ч.";
+// Wind Summary
+// Параметры для WindSummary_Current:
+// %1$d: текущая скорость (целое число)
+// %2$@: единица скорости (строка, напр. "км/ч" или "миль/ч")
+// %3$@: аббревиатура направления (строка, напр. "С", "ЮЗ")
+// %4$d: мин. скорость (целое число)
+// %5$d: макс. скорость (целое число)
+// %6$d: скорость порывов (целое число)
+"WindSummary_Current" = "Ветер сейчас %1$d %2$@, направление %3$@. Сегодня скорость ветра от %4$d до %5$d %2$@, порывы до %6$d %2$@.";
+
+// Параметры для WindSummary_Range:
+// %1$d: мин. скорость (целое число)
+// %2$d: макс. скорость (целое число)
+// %3$@: единица скорости (строка, напр. "км/ч" или "миль/ч")
+// %4$d: скорость порывов (целое число)
+"WindSummary_Range"   = "Скорость ветра от %1$d до %2$d %3$@, порывы до %4$d %3$@.";
 
 "Beaufort_Scale"                = "Шкала Бофорта";
 "Beaufort_Column_bft"           = "bft";

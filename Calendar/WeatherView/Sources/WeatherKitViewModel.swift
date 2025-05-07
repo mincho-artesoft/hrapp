@@ -206,7 +206,7 @@ class WeatherKitViewModel: ObservableObject {
         let speedUnit: UnitSpeed = (GlobalState.measurementSystem == "Imperial")
             ? .milesPerHour
             : .kilometersPerHour
-
+        print("distanceUnit",distanceUnit, "speedUnit", speedUnit)
         // 2. Определяме началото на текущия час
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
@@ -346,8 +346,14 @@ class WeatherKitViewModel: ObservableObject {
 
             // 5. Други стойности
             let uv    = dayData.uvIndex.value
-            let windS = dayData.highWindSpeed?.converted(to: speedUnit).value ?? 0
-            let gust  = dayData.wind.gust?.converted(to: speedUnit).value ?? 0
+            let windS = (dayData.highWindSpeed ?? Measurement(value: 0, unit: .metersPerSecond))
+                .converted(to: speedUnit)
+                .value
+
+            let gust = (dayData.wind.gust ?? Measurement(value: 0, unit: .metersPerSecond))
+                .converted(to: speedUnit)
+                .value
+
 
             // 6. Видимост (Double м → km/miles)
             let visMin = Measurement(value: dayData.minimumVisibility,

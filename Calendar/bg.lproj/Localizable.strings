@@ -456,14 +456,14 @@
 "Visibility_TooltipFormat"          = "%@\n%.1f км";
 
 /* WeatherDetailView windGraphSection */
-"WindGraph_Header"              = "Скорост на вятъра и пориви";
-"WindGraph_NoData"              = "Няма налични данни за вятъра за този ден.";
-"WindGraph_SpeedHeader"         = "Скорост на вятъра %d км/ч";
-"WindGraph_GustHeader"          = "Пориви до %d км/ч";
-"WindGraph_SpeedRangeHeader"    = "Скорост %d-%d км/ч";
-"WindGraph_MaxSpeedLabel"       = "Макс скор";
-"WindGraph_MaxGustLabel"        = "Макс порив";
-"WindGraph_DragLabel"           = "%@\nСкорост: %d\nПорив: %d";
+"WindGraph_Header" = "Скорост и пориви на вятъра";
+"WindGraph_NoData" = "Няма налични данни за вятъра за този ден.";
+"WindGraph_SpeedHeader" = "Скорост на вятъра %d";
+"WindGraph_GustHeader" = "Пориви до %d";
+"WindGraph_SpeedRangeHeader" = "Скорост на вятъра %d–%d";
+"WindGraph_MaxSpeedLabel" = "Макс С";
+"WindGraph_MaxGustLabel" = "Макс П";
+"WindGraph_DragLabel" = "%@\nСкорост: %d\nПорив: %d";
 
 /* WeatherDetailView */
 "Conditions" = "Условия";
@@ -517,7 +517,7 @@
 "DailySummary"               = "Дневен обзор";
 
 /* Current-day forecast */
-"CurrentDayForecastText"     = "%d° сега при %@ условия. Шансът за валежи е %@. Вятър от %@ със силни пориви до %d км/ч. Днешната температура варира от %d° до %d° и се усеща като %d°. %@, и %@.";
+"CurrentDayForecastText" = "%d° в момента с условия %@. Вероятност за валежи: %@. Вятър от %@ с пориви до %d %@. Температурите днес варират от %d° до %d°, усеща се като %d°. %@, и %@.";
 "UVIndexFormat"              = "УВ индекс до %d";
 "HumidityFormat"             = "Влажност около %d%%";
 "HumidityRangeFormat"        = "Влажност от %d%% до %d%%";
@@ -557,14 +557,27 @@
 "Rain_Label"                = "Дъжд";
 "Snow_Label"                = "Сняг";
 
-"WindSummary_Current" = "Вятърът в момента е %d км/ч от %@. Днес скоростите варират от %d до %d км/ч, с пориви до %d км/ч.";
-"WindSummary_Range"   = "Скоростите на вятъра варират от %d до %d км/ч, с пориви до %d км/ч.";
+// Wind Summary
+// Параметри за WindSummary_Current:
+// %1$d: текуща скорост (цяло число)
+// %2$@: единица за скорост (низ, напр. "км/ч" или "mph")
+// %3$@: съкращение за посока (низ, напр. "С", "ЮЗ")
+// %4$d: мин. скорост (цяло число)
+// %5$d: макс. скорост (цяло число)
+// %6$d: скорост на пориви (цяло число)
+"WindSummary_Current" = "Вятърът в момента е %1$d %2$@ от %3$@. Днес скоростта на вятъра е от %4$d до %5$d %2$@, с пориви до %6$d %2$@.";
 
+// Параметри за WindSummary_Range:
+// %1$d: мин. скорост (цяло число)
+// %2$d: макс. скорост (цяло число)
+// %3$@: единица за скорост (низ, напр. "км/ч" или "mph")
+// %4$d: скорост на пориви (цяло число)
+"WindSummary_Range"   = "Скоростта на вятъра е от %1$d до %2$d %3$@, с пориви до %4$d %3$@.";
 "Beaufort_Scale"                = "Скала на Бофорт";
 "Beaufort_Column_bft"           = "bft";
 "Beaufort_Column_Description"   = "Описание";
 "Beaufort_Column_kmh"           = "км/ч";
-"Beaufort_0"                    = "ШЕПОТ";
+"Beaufort_0"                    = "Шепот";
 "Beaufort_1"                    = "Слабо ветрец";
 "Beaufort_2"                    = "Лека бриза";
 "Beaufort_3"                    = "Нежна бриза";

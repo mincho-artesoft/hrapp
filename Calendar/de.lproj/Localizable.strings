@@ -455,14 +455,14 @@
 "Visibility_TooltipFormat"          = "%@\n%.1f km";
 
 /* WeatherDetailView windGraphSection */
-"WindGraph_Header"              = "Windgeschwindigkeit & Böen";
-"WindGraph_NoData"              = "Keine Winddaten für diesen Tag verfügbar.";
-"WindGraph_SpeedHeader"         = "Windgeschwindigkeit %d km/h";
-"WindGraph_GustHeader"          = "Böen bis zu %d km/h";
-"WindGraph_SpeedRangeHeader"    = "Windgeschwindigkeit %d-%d km/h";
-"WindGraph_MaxSpeedLabel"       = "Max S";
-"WindGraph_MaxGustLabel"        = "Max G";
-"WindGraph_DragLabel"           = "%@\nGeschwindigkeit: %d\nBöe: %d";
+"WindGraph_Header" = "Windgeschwindigkeit & Böen";
+"WindGraph_NoData" = "Keine Winddaten für diesen Tag verfügbar.";
+"WindGraph_SpeedHeader" = "Windgeschwindigkeit %d";
+"WindGraph_GustHeader" = "Böen bis zu %d";
+"WindGraph_SpeedRangeHeader" = "Windgeschwindigkeit %d–%d";
+"WindGraph_MaxSpeedLabel" = "Max G";
+"WindGraph_MaxGustLabel" = "Max B";
+"WindGraph_DragLabel" = "%@\nGeschwindigkeit: %d\nBöe: %d";
 
 /* WeatherDetailView */
 "Conditions" = "Wetter";
@@ -516,7 +516,7 @@
 "DailySummary"               = "Tageszusammenfassung";
 
 /* Current-day forecast */
-"CurrentDayForecastText"     = "%d° jetzt mit %@. Niederschlagschance: %@. Wind aus %@ mit Böen bis zu %d km/h. Heute zwischen %d° und %d°, fühlt sich an wie %d°. %@, und %@.";
+"CurrentDayForecastText" = "%d° aktuell mit %@ Bedingungen. Die Niederschlagswahrscheinlichkeit beträgt %@. Wind aus %@ mit Böen bis zu %d %@. Die Temperaturen heute liegen zwischen %d° und %d°, gefühlt wie %d°. %@ und %@.";
 "UVIndexFormat"              = "UV-Index bis %d";
 "HumidityFormat"             = "Luftfeuchtigkeit um %d%%";
 "HumidityRangeFormat"        = "Luftfeuchtigkeit von %d%% bis %d%%";
@@ -556,8 +556,22 @@
 "Rain_Label"                = "Regen";
 "Snow_Label"                = "Schnee";
 
-"WindSummary_Current" = "Der Wind weht derzeit mit %d km/h aus %@. Heute liegen die Windgeschwindigkeiten zwischen %d und %d km/h, mit Böen bis zu %d km/h.";
-"WindSummary_Range"   = "Die Windgeschwindigkeiten liegen zwischen %d und %d km/h, mit Böen bis zu %d km/h.";
+// Wind Summary
+// Parameter für WindSummary_Current:
+// %1$d: aktuelle Geschwindigkeit (Ganzzahl)
+// %2$@: Geschwindigkeitseinheit (Zeichenkette, z.B. "km/h" oder "mph")
+// %3$@: Richtungsabkürzung (Zeichenkette, z.B. "N", "SW")
+// %4$d: min. Geschwindigkeit (Ganzzahl)
+// %5$d: max. Geschwindigkeit (Ganzzahl)
+// %6$d: Böengeschwindigkeit (Ganzzahl)
+"WindSummary_Current" = "Wind aktuell %1$d %2$@ aus %3$@. Heute Windgeschwindigkeiten von %4$d bis %5$d %2$@, mit Böen bis zu %6$d %2$@.";
+
+// Parameter für WindSummary_Range:
+// %1$d: min. Geschwindigkeit (Ganzzahl)
+// %2$d: max. Geschwindigkeit (Ganzzahl)
+// %3$@: Geschwindigkeitseinheit (Zeichenkette, z.B. "km/h" oder "mph")
+// %4$d: Böengeschwindigkeit (Ganzzahl)
+"WindSummary_Range"   = "Windgeschwindigkeiten von %1$d bis %2$d %3$@, mit Böen bis zu %4$d %3$@.";
 
 "Beaufort_Scale"              = "Beaufort-Skala";
 "Beaufort_Column_bft"         = "bft";

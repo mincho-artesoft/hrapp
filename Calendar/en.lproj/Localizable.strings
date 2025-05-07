@@ -455,14 +455,14 @@
 "Visibility_TooltipFormat"          = "%@\n%.1f km";
 
 /* WeatherDetailView windGraphSection */
-"WindGraph_Header"              = "Wind Speed & Gust";
-"WindGraph_NoData"              = "No wind data available for this day.";
-"WindGraph_SpeedHeader"         = "Wind Speed %d km/h";
-"WindGraph_GustHeader"          = "Gusts up to %d km/h";
-"WindGraph_SpeedRangeHeader"    = "Wind Speed %d-%d km/h";
-"WindGraph_MaxSpeedLabel"       = "Max S";
-"WindGraph_MaxGustLabel"        = "Max G";
-"WindGraph_DragLabel"           = "%@\nSpeed: %d\nGust: %d";
+"WindGraph_Header" = "Wind Speed & Gust";
+"WindGraph_NoData" = "No wind data available for this day.";
+"WindGraph_SpeedHeader" = "Wind Speed %d";
+"WindGraph_GustHeader" = "Gusts up to %d";
+"WindGraph_SpeedRangeHeader" = "Wind Speed %d-%d";
+"WindGraph_MaxSpeedLabel" = "Max S";
+"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_DragLabel" = "%@\nSpeed: %d\nGust: %d";
 
 /* WeatherDetailView */
 "Conditions" = "Conditions";
@@ -516,7 +516,7 @@
 "DailySummary"               = "Daily Summary";
 
 /* Current-day forecast */
-"CurrentDayForecastText"     = "%d° now with %@ conditions. There is a precipitation chance of %@. Wind from %@ with gusts up to %d km/h. Today's temperature ranges from %d° to %d° and feels like %d°. %@, and %@.";
+"CurrentDayForecastText" = "%d° now with %@ conditions. There is a precipitation chance of %@. Wind from %@ with gusts up to %d %@. Today's temperature ranges from %d° to %d° and feels like %d°. %@, and %@.";
 "UVIndexFormat"              = "UV index up to %d";
 "HumidityFormat"             = "Humidity around %d%%";
 "HumidityRangeFormat"        = "Humidity from %d%% to %d%%";
@@ -559,8 +559,22 @@
 "Rain_Label"                = "Rain";
 "Snow_Label"                = "Snow";
 
-"WindSummary_Current" = "Wind is currently %d km/h from the %@. Today, wind speeds are %d to %d km/h, with gusts up to %d km/h.";
-"WindSummary_Range"   = "Wind speeds range from %d to %d km/h, with gusts up to %d km/h.";
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Wind is currently %1$d %2$@ from the %3$@. Today, wind speeds are %4$d to %5$d %2$@, with gusts up to %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Wind speeds range from %1$d to %2$d %3$@, with gusts up to %4$d %3$@.";
 
 "Beaufort_Scale"                = "Beaufort Scale";
 "Beaufort_Column_bft"           = "bft";

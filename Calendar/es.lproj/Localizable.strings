@@ -455,14 +455,14 @@
 "Visibility_TooltipFormat"          = "%@\n%.1f km";
 
 /* WeatherDetailView windGraphSection */
-"WindGraph_Header"              = "Velocidad y ráfagas de viento";
-"WindGraph_NoData"              = "No hay datos de viento para este día.";
-"WindGraph_SpeedHeader"         = "Velocidad del viento %d km/h";
-"WindGraph_GustHeader"          = "Ráfagas hasta %d km/h";
-"WindGraph_SpeedRangeHeader"    = "Velocidad %d-%d km/h";
-"WindGraph_MaxSpeedLabel"       = "Máx V";
-"WindGraph_MaxGustLabel"        = "Máx R";
-"WindGraph_DragLabel"           = "%@\nVelocidad: %d\nRáfaga: %d";
+"WindGraph_Header" = "Velocidad y ráfagas de viento";
+"WindGraph_NoData" = "No hay datos de viento disponibles para este día.";
+"WindGraph_SpeedHeader" = "Velocidad del viento %d";
+"WindGraph_GustHeader" = "Ráfagas de hasta %d";
+"WindGraph_SpeedRangeHeader" = "Velocidad del viento %d–%d";
+"WindGraph_MaxSpeedLabel" = "Vel máx";
+"WindGraph_MaxGustLabel" = "Ráf máx";
+"WindGraph_DragLabel" = "%@\nVelocidad: %d\nRáfaga: %d";
 
 /* WeatherDetailView */
 "Conditions" = "Condiciones";
@@ -516,7 +516,7 @@
 "DailySummary"               = "Resumen diario";
 
 /* Current-day forecast */
-"CurrentDayForecastText"     = "%d° ahora con %@. Probabilidad de precipitación: %@. Viento de %@ con ráfagas hasta %d km/h. Hoy entre %d° y %d°, sensación %d°. %@ y %@.";
+"CurrentDayForecastText" = "%d° ahora con condiciones de %@. Probabilidad de precipitación: %@. Viento desde %@ con ráfagas de hasta %d %@. La temperatura de hoy va de %d° a %d°, sensación térmica de %d°. %@ y %@.";
 "UVIndexFormat"              = "Índice UV hasta %d";
 "HumidityFormat"             = "Humedad alrededor de %d%%";
 "HumidityRangeFormat"        = "Humedad de %d%% a %d%%";
@@ -556,8 +556,22 @@
 "Rain_Label"                = "Lluvia";
 "Snow_Label"                = "Nieve";
 
-"WindSummary_Current" = "El viento sopla actualmente a %d km/h desde %@. Hoy las velocidades oscilan entre %d y %d km/h, con ráfagas de hasta %d km/h.";
-"WindSummary_Range"   = "Las velocidades del viento oscilan entre %d y %d km/h, con ráfagas de hasta %d km/h.";
+// Wind Summary
+// Parámetros para WindSummary_Current:
+// %1$d: velocidad actual (entero)
+// %2$@: unidad de velocidad (cadena, ej. "km/h" o "mph")
+// %3$@: abreviatura de dirección (cadena, ej. "N", "SO")
+// %4$d: velocidad mín. (entero)
+// %5$d: velocidad máx. (entero)
+// %6$d: velocidad de ráfaga (entero)
+"WindSummary_Current" = "Viento actual de %1$d %2$@ desde el %3$@. Hoy, velocidades del viento de %4$d a %5$d %2$@, con ráfagas de hasta %6$d %2$@.";
+
+// Parámetros para WindSummary_Range:
+// %1$d: velocidad mín. (entero)
+// %2$d: velocidad máx. (entero)
+// %3$@: unidad de velocidad (cadena, ej. "km/h" o "mph")
+// %4$d: velocidad de ráfaga (entero)
+"WindSummary_Range"   = "Velocidades del viento de %1$d a %2$d %3$@, con ráfagas de hasta %4$d %3$@.";
 
 "Beaufort_Scale"              = "Escala de Beaufort";
 "Beaufort_Column_bft"         = "bft";
