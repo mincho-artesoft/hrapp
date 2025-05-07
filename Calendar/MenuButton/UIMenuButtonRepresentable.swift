@@ -139,6 +139,44 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         )
     }
     
+    private func combinedImage(for tab: Int) -> UIImage? {
+        // Получаваме основната икона и стрелката ("chevron.down") с режим за рендиране "alwaysTemplate"
+        guard let mainImage = UIImage(systemName: "cloud.sun")?.withRenderingMode(.alwaysTemplate),
+              let arrowImage = UIImage(systemName: "chevron.down")?.withRenderingMode(.alwaysTemplate)
+        else {
+            return UIImage(systemName: "cloud.sun")
+        }
+        
+        // Разстояние между основната икона и стрелката
+        let spacing: CGFloat = 4.0
+        
+        // Размери на двете изображения
+        let mainSize = mainImage.size
+        let arrowSize = arrowImage.size
+        
+        // Новите размери на композитното изображение, като използваме оригиналните размери на иконите
+        let compositeWidth = mainSize.width + spacing + arrowSize.width
+        let compositeHeight = max(mainSize.height, arrowSize.height)
+        
+        // Стартираме графичен контекст с новите размери, задавайки по-голям мащаб за резолюция
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: compositeWidth, height: compositeHeight), false, 10.0) // 2.0 увеличава резолюцията
+        
+        // Изчисляваме позициите, за да центрираме иконите вертикално
+        let mainOrigin = CGPoint(x: 0, y: (compositeHeight - mainSize.height) / 2)
+        let arrowOrigin = CGPoint(x: mainSize.width + spacing, y: (compositeHeight - arrowSize.height) / 2)
+        
+        // Рисуваме основната икона от ляво
+        mainImage.draw(at: mainOrigin)
+        // Рисуваме стрелката вдясно
+        arrowImage.draw(at: arrowOrigin)
+        
+        // Вземаме резултатното композитно изображение
+        let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return compositeImage
+    }
+    
     private func imageForTab(_ tab: Int) -> UIImage? {
         switch tab {
         case 1: return UIImage(systemName: "calendar.day.timeline.leading")
@@ -147,8 +185,11 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         case 2: return UIImage(systemName: "12.lane")
         case 4: return UIImage(systemName: "list.bullet")
         case 5: return UIImage(systemName: "align.vertical.top")
-        case 6: return UIImage(systemName: "cloud.sun")
+        case 6:
+            // Ако табът е 6, комбинирай иконата на времето със стрелката
+            return combinedImage(for: 6) // Създайте комбинирано изображение за таб 6
         default: return UIImage(systemName: "calendar")
         }
     }
+
 }

@@ -291,6 +291,7 @@ struct RootView: View {
                                     }
                                 }
                             )
+                            .opacity(selectedTab == 6 ? 0 : 1)
                             .edgesIgnoringSafeArea(.all)
                         }
                     }
@@ -355,7 +356,7 @@ struct RootView: View {
         }
         .onChange(of: selectedTab) {_, newValue in
             if newValue == 6 {
-                draggableMenuAdaptiveBackgroundОpacity = 0.25
+                draggableMenuAdaptiveBackgroundОpacity = 0.35
             }else{
                 draggableMenuAdaptiveBackgroundОpacity = 0.95
             }

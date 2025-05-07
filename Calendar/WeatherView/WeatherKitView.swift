@@ -426,12 +426,12 @@ struct WeatherKitView: View {
                     Spacer()
                     UIMenuButtonRepresentable(
                         currentView: selectedTab,
-                        tintColor: colorScheme == .light ? .black : .white,  // Подаване на желания цвят
+                        tintColor: colorScheme == .light ? .black : .white,
                         onViewChange: { newTab in
                             onViewChange(newTab)
                         }
                     )
-                    .frame(width: 30, height: 30)
+                    .frame(width: 36, height: 36)
                 }
             }
             
