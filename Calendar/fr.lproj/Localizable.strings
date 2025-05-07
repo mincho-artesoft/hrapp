@@ -207,6 +207,9 @@
 "Tap an hour to quickly add a calendar event." = "Touchez une heure pour ajouter rapidement un événement au calendrier.";
 "10-DAY FORECAST" = "PRÉVISIONS SUR 10 JOURS";
 "HighLowLabelFormat" = "Max : %d°   Min : %d°";
+"tomorrow" = "demain";
+"on_day" = "le %@";
+"in_days" = "dans %d jours";
 
 /* Labels */
 "Today" = "Aujourd’hui";
@@ -231,9 +234,9 @@
 
 /* FeelsLikeCard */
 "FEELS LIKE" = "Température ressentie";
-"Similar to the actual temperature." = "Similaire à la température réelle.";
-"Wind is making it feel cooler." = "Le vent le rend plus frais.";
-"Humidity is making it feel warmer." = "L’humidité le rend plus chaud.";
+"similar_to_actual_temp" = "Similaire à la température réelle.";
+"wind_cooler_feel" = "Le vent le rend plus frais.";
+"humidity_warmer_feel" = "L’humidité le rend plus chaud.";
 
 /* HumidityCard */
 "HUMIDITY" = "Humidité";
@@ -252,11 +255,10 @@
 "%d days" = "%d jours";
 
 /* PrecipitationTodayCard */
-"PRECIPITATION" = "Précipitations";
-"mm" = "mm";
-"today" = "aujourd'hui";
-"Next expected is %d mm %@" = "On prévoit %d mm %@.";
-"No precipitation expected soon." = "Aucune précipitation prévue prochainement.";
+"PRECIPITATION_CARD_TITLE" = "PRÉCIPITATIONS";
+"PRECIPITATION_CARD_TODAY_LABEL" = "aujourd'hui";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Prochaine prévue : %1$.0f %2$@ %3$@."; // Ex: "Prochaine prévue : 10 mm lun."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Aucune précipitation attendue prochainement.";
 
 /* PressureCard */
 "PRESSURE" = "PRESSION";
@@ -268,6 +270,8 @@
 "SUNRISE" = "LEVER DU SOLEIL";
 "Sunrise: %@" = "Lever du soleil : %@";
 "Sunset: %@" = "Coucher du soleil : %@";
+"Sunrise" = "Lever du soleil";
+"Sunset" = "Coucher du soleil";
 
 /* UVIndexCard */
 "UV INDEX" = "Indice UV";

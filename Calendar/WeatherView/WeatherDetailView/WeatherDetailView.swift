@@ -619,24 +619,29 @@ struct WeatherDetailView: View {
     }
 
     private func precipitationTotalsSection(for day: DayForecastItem) -> some View {
-        // локализирани единици
-        let mmUnit = NSLocalizedString("UnitMillimeter", comment: "Millimeter unit abbreviation")
-        let cmUnit = NSLocalizedString("UnitCentimeter", comment: "Centimeter unit abbreviation")
-        
+        let liquidUnit = GlobalState.precipitationUnitLabel
+        let snowUnit = GlobalState.measurementSystem == "Imperial"
+            ? NSLocalizedString("Unit_Precipitation_in", comment: "Inch unit abbreviation")
+            : NSLocalizedString("UnitCentimeter", comment: "Centimeter unit abbreviation")
+
+        func formatted(_ value: Double) -> String {
+            return value == 0 ? "0" : String(format: "%.1f", value)
+        }
+
         return VStack(alignment: .leading, spacing: 8) {
             Text(NSLocalizedString("PrecipitationTotals_Title", comment: "Precipitation Totals title"))
                 .font(.system(size: 16, weight: .semibold))
-            
+
             if Calendar.current.isDate(day.date, inSameDayAs: Date()) {
                 // LAST 24 HOURS
                 VStack(alignment: .leading, spacing: 5) {
                     Text(NSLocalizedString("Last24h_Label", comment: "Last 24 hours label"))
                         .font(.caption.weight(.medium))
                         .foregroundColor(.secondary)
-                    
+
                     let rainLast = day.rainLast24h
                     let snowLast = day.snowLast24h
-                    
+
                     if rainLast == 0 && snowLast == 0 {
                         HStack {
                             Label(NSLocalizedString("Total_Label", comment: "Total label"), systemImage: "drop.fill")
@@ -645,7 +650,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(day.precipLast24h)) \(mmUnit)")
+                            Text("\(formatted(day.precipLast24h)) \(liquidUnit)")
                                 .font(.system(size: 14))
                         }
                     } else if snowLast == 0 {
@@ -656,7 +661,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainLast)) \(mmUnit)")
+                            Text("\(formatted(rainLast)) \(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -668,7 +673,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Snow_Label", comment: "Snow label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text(String(format: "%.1f", snowLast) + " \(cmUnit)")
+                            Text("\(formatted(snowLast)) \(snowUnit)")
                                 .font(.system(size: 14))
                         }
                         HStack {
@@ -678,23 +683,23 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainLast)) \(mmUnit)")
+                            Text("\(formatted(rainLast)) \(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
                     }
                 }
                 .padding(.top, 5)
-                
+
                 // NEXT 24 HOURS
                 VStack(alignment: .leading, spacing: 5) {
                     Text(NSLocalizedString("Next24h_Label", comment: "Next 24 hours label"))
                         .font(.caption.weight(.medium))
                         .foregroundColor(.secondary)
-                    
+
                     let rainNext = day.rainNext24h
                     let snowNext = day.snowNext24h
-                    
+
                     if rainNext == 0 && snowNext == 0 {
                         HStack {
                             Label(NSLocalizedString("Total_Label", comment: "Total label"), systemImage: "drop.fill")
@@ -703,7 +708,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(day.precipNext24h)) \(mmUnit)")
+                            Text("\(formatted(day.precipNext24h)) \(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -715,7 +720,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainNext)) \(mmUnit)")
+                            Text("\(formatted(rainNext)) \(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
@@ -727,7 +732,7 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Snow_Label", comment: "Snow label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text(String(format: "%.1f", snowNext) + " \(cmUnit)")
+                            Text("\(formatted(snowNext)) \(snowUnit)")
                                 .font(.system(size: 14))
                         }
                         HStack {
@@ -737,19 +742,19 @@ struct WeatherDetailView: View {
                             Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                                 .font(.system(size: 14))
                             Spacer()
-                            Text("\(Int(rainNext)) \(mmUnit)")
+                            Text("\(formatted(rainNext)) \(liquidUnit)")
                                 .font(.system(size: 14))
                                 .foregroundColor(.blue)
                         }
                     }
                 }
                 .padding(.top, 10)
-                
+
             } else {
-                // Друг ден
+                // ДРУГ ДЕН
                 let rainValue = day.reinAmount
                 let snowValue = day.snowfallAmount
-                
+
                 if rainValue == 0 && snowValue == 0 {
                     HStack {
                         Label(NSLocalizedString("Total_Label", comment: "Total label"), systemImage: "drop.fill")
@@ -758,7 +763,7 @@ struct WeatherDetailView: View {
                         Text(NSLocalizedString("Precipitation_Label", comment: "Precipitation label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(day.precipitationAmount)) \(mmUnit)")
+                        Text("\(formatted(day.precipitationAmount)) \(liquidUnit)")
                             .font(.system(size: 14))
                     }
                 } else if snowValue == 0 {
@@ -769,7 +774,7 @@ struct WeatherDetailView: View {
                         Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(rainValue)) \(mmUnit)")
+                        Text("\(formatted(rainValue)) \(liquidUnit)")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
@@ -781,7 +786,7 @@ struct WeatherDetailView: View {
                         Text(NSLocalizedString("Snow_Label", comment: "Snow label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text(String(format: "%.1f", snowValue) + " \(cmUnit)")
+                        Text("\(formatted(snowValue)) \(snowUnit)")
                             .font(.system(size: 14))
                     }
                     HStack {
@@ -791,7 +796,7 @@ struct WeatherDetailView: View {
                         Text(NSLocalizedString("Rain_Label", comment: "Rain label"))
                             .font(.system(size: 14))
                         Spacer()
-                        Text("\(Int(rainValue)) \(mmUnit)")
+                        Text("\(formatted(rainValue)) \(liquidUnit)")
                             .font(.system(size: 14))
                             .foregroundColor(.blue)
                     }
@@ -800,6 +805,8 @@ struct WeatherDetailView: View {
         }
         .offset(y: -10)
     }
+
+
 
 
     private var aboutWindSpeedAndGustsSection: some View {

@@ -76,7 +76,11 @@ class WeatherKitViewModel: ObservableObject {
                     self.sunsetTime  = todayForecast.sun.sunset
 
                     let pptByType = todayForecast.precipitationAmountByType
-                    self.todayPrecipitationAmount       = pptByType.precipitation.value
+                    
+                    todayPrecipitationAmount = (GlobalState.measurementSystem == "Imperial")
+                        ? pptByType.precipitation.value / 25.4
+                        : pptByType.precipitation.value
+                    
                     self.nextHourPrecipitationChance = todayForecast.precipitationChance
                 } else {
                     self.sunriseTime = nil
@@ -154,6 +158,7 @@ class WeatherKitViewModel: ObservableObject {
         let distanceUnit: UnitLength = (GlobalState.measurementSystem == "Imperial")
             ? .miles
             : .kilometers
+        
         currentVisibility = current.visibility.converted(to: distanceUnit).value
         // 4. Вятър в km/h или mph
         let speedUnit: UnitSpeed = (GlobalState.measurementSystem == "Imperial")
@@ -172,10 +177,10 @@ class WeatherKitViewModel: ObservableObject {
 
         // 6. Валежи (интензитет мм/h → mm/h или in/h)
         let rawIntensityMmPerHour = current.precipitationIntensity.value
-        print("rawIntensityMmPerHour", current.precipitationIntensity.unit)
         currentPrecipitationAmount = (GlobalState.measurementSystem == "Imperial")
             ? rawIntensityMmPerHour / 25.4
             : rawIntensityMmPerHour
+        
 
         // 7. Символ и тренд на налягането
         currentSymbol    = current.symbolName

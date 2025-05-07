@@ -53,13 +53,11 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         self.searchError = error
         self.searchResults = []
-        print("DEBUG: MKLocalSearchCompleter error -> \(error.localizedDescription)")
     }
     
     // MARK: - Избор на конкретен резултат от търсачката
     /// Избиране на конкретен резултат (MKLocalSearchCompletion) – тук правим MKLocalSearch
     func selectCompletion(_ completion: MKLocalSearchCompletion) {
-        print("DEBUG: selected completion: \(completion.title), \(completion.subtitle)")
         
         let request = MKLocalSearch.Request(completion: completion)
         let search = MKLocalSearch(request: request)
@@ -83,7 +81,6 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
                     userInfo: [NSLocalizedDescriptionKey: "No details found for selection."]
                 )
                 self.selectedPlacemark = nil
-                print("DEBUG: No mapItem found for this completion.")
                 return
             }
             
@@ -92,11 +89,9 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
             
             // Печатаме информация за debug
             let coord = mapItem.placemark.coordinate
-            print("DEBUG: Found placemark -> \(coord.latitude), \(coord.longitude)")
             
             // 1) Опитваме да вземем timeZone от MKPlacemark
             if let tz = mapItem.placemark.timeZone {
-                print("DEBUG: placemark.timeZone =", tz)
                 self.weatherKitViewModel.setTimeZone(tz)
                 
                 // Викаме fetchWeather веднага
@@ -107,7 +102,6 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
                 
             } else {
                 // 2) Ако placemark.timeZone е nil, правим reverse geocode
-                print("DEBUG: placemark.timeZone is NIL -> use CLGeocoder")
                 
                 let clLocation = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
                 CLGeocoder().reverseGeocodeLocation(clLocation) { [weak self] placemarks, error in
@@ -118,10 +112,8 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
                     
                     if let first = placemarks?.first {
                         if let tz = first.timeZone {
-                            print("DEBUG: Found timeZone via CLGeocoder ->", tz)
                             self.weatherKitViewModel.setTimeZone(tz)
                         } else {
-                            print("DEBUG: reverseGeocodeLocation returned no timeZone either!")
                         }
                     }
                     

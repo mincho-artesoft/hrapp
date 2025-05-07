@@ -207,6 +207,9 @@
 "Tap an hour to quickly add a calendar event." = "Tap an hour to quickly add a calendar event.";
 "10-DAY FORECAST" = "10-DAY FORECAST";
 "HighLowLabelFormat" = "H:%d°   L:%d°";
+"tomorrow" = "tomorrow";
+"on_day" = "on %@";
+"in_days" = "in %d days";
 
 /* Labels */
 "Today" = "Today";
@@ -231,9 +234,9 @@
 
 /* FeelsLikeCard */
 "FEELS LIKE" = "FEELS LIKE";
-"Similar to the actual temperature." = "Similar to the actual temperature.";
-"Wind is making it feel cooler." = "Wind is making it feel cooler.";
-"Humidity is making it feel warmer." = "Humidity is making it feel warmer.";
+"similar_to_actual_temp" = "Similar to the actual temperature.";
+"wind_cooler_feel" = "Wind is making it feel cooler.";
+"humidity_warmer_feel" = "Humidity is making it feel warmer.";
 
 /* HumidityCard */
 "HUMIDITY" = "HUMIDITY";
@@ -252,11 +255,10 @@
 "%d days" = "%d days";
 
 /* PrecipitationTodayCard */
-"PRECIPITATION" = "PRECIPITATION";
-"mm" = "mm";
-"today" = "today";
-"Next expected is %d mm %@" = "Next expected is %d mm %@.";
-"No precipitation expected soon." = "No precipitation expected soon.";
+"PRECIPITATION_CARD_TITLE" = "PRECIPITATION";
+"PRECIPITATION_CARD_TODAY_LABEL" = "today";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Next expected is %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "No precipitation expected soon.";
 
 /* PressureCard */
 "PRESSURE" = "PRESSURE";
@@ -268,6 +270,9 @@
 "SUNRISE" = "SUNRISE";
 "Sunrise: %@" = "Sunrise: %@";
 "Sunset: %@" = "Sunset: %@";
+"Sunrise" = "Sunrise";
+"Sunset" = "Sunset";
+
 
 /* UVIndexCard */
 "UV INDEX" = "UV INDEX";

@@ -206,6 +206,9 @@
 "Cannot refresh. Location unknown." = "Не може да се опресни. Местоположението е неизвестно.";
 "Tap an hour to quickly add a calendar event." = "Докоснете час, за да добавите бързо събитие в календара.";
 "10-DAY FORECAST" = "10-ДНЕВНА ПРОГНОЗА";
+"tomorrow" = "утре";
+"on_day" = "в %@";
+"in_days" = "след %d дни";
 
 /* Labels */
 "Today" = "Днес";
@@ -230,9 +233,9 @@
 
 /* FeelsLikeCard */
 "FEELS LIKE" = "Възприемана температура";
-"Similar to the actual temperature." = "Подобно на действителната температура.";
-"Wind is making it feel cooler." = "Вятърът я кара да се усеща по-хладно.";
-"Humidity is making it feel warmer." = "Влажността я кара да се усеща по-топло.";
+"similar_to_actual_temp" = "Подобно на действителната температура.";
+"wind_cooler_feel" = "Вятърът я кара да се усеща по-хладно.";
+"humidity_warmer_feel" = "Влажността я кара да се усеща по-топло.";
 
 /* HumidityCard */
 "HUMIDITY" = "Влажност";
@@ -251,11 +254,10 @@
 "%d days" = "%d дни";
 
 /* PrecipitationTodayCard */
-"PRECIPITATION" = "Валежи";
-"mm" = "мм";
-"today" = "днес";
-"Next expected is %d mm %@" = "Очакват се %d мм %@.";
-"No precipitation expected soon." = "Не се очакват валежи скоро.";
+"PRECIPITATION_CARD_TITLE" = "ВАЛЕЖИ";
+"PRECIPITATION_CARD_TODAY_LABEL" = "днес";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Следващи очаквани %1$.0f %2$@ %3$@."; // Напр. "Следващи очаквани 10 мм в Пон."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Не се очакват валежи скоро.";
 
 /* PressureCard */
 "PRESSURE" = "НАЛЯГАНЕ";
@@ -267,6 +269,8 @@
 "SUNRISE" = "ИЗГРЕВ";
 "Sunrise: %@" = "ИЗГРЕВ: %@";
 "Sunset: %@" = "ЗАЛЕЗ: %@";
+"Sunrise" = "Изгрев";
+"Sunset" = "Залез";
 
 /* UVIndexCard */
 "UV INDEX" = "UV индекс";

@@ -207,6 +207,9 @@
 "Tap an hour to quickly add a calendar event." = "Нажмите на час, чтобы быстро добавить событие в календарь.";
 "10-DAY FORECAST" = "ПРОГНОЗ НА 10 ДНЕЙ";
 "HighLowLabelFormat" = "М:%d°   Н:%d°";
+"tomorrow" = "завтра";
+"on_day" = "в %@";
+"in_days" = "через %d дней";
 
 /* Labels */
 "Today" = "Сегодня";
@@ -231,9 +234,9 @@
 
 /* FeelsLikeCard */
 "FEELS LIKE" = "Ощущается как";
-"Similar to the actual temperature." = "Похоже на фактическую температуру.";
-"Wind is making it feel cooler." = "Ветер создаёт ощущение прохлады.";
-"Humidity is making it feel warmer." = "Влажность создаёт ощущение тепла.";
+"similar_to_actual_temp" = "Похоже на фактическую температуру.";
+"wind_cooler_feel" = "Ветер создаёт ощущение прохлады.";
+"humidity_warmer_feel" = "Влажность создаёт ощущение тепла.";
 
 /* HumidityCard */
 "HUMIDITY" = "Влажность";
@@ -252,11 +255,10 @@
 "%d days" = "%d дней";
 
 /* PrecipitationTodayCard */
-"PRECIPITATION" = "Осадки";
-"mm" = "мм";
-"today" = "сегодня";
-"Next expected is %d mm %@" = "Ожидается %d мм %@.";
-"No precipitation expected soon." = "Скоро осадков не ожидается.";
+"PRECIPITATION_CARD_TITLE" = "ОСАДКИ";
+"PRECIPITATION_CARD_TODAY_LABEL" = "сегодня";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Следующее ожидаемое: %1$.0f %2$@ %3$@."; // Напр. "Следующее ожидаемое: 10 мм в Пн."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Осадков в ближайшее время не ожидается.";
 
 /* PressureCard */
 "PRESSURE" = "ДАВЛЕНИЕ";
@@ -268,6 +270,8 @@
 "SUNRISE" = "ВОСХОД";
 "Sunrise: %@" = "Восход: %@";
 "Sunset: %@" = "Закат: %@";
+"Sunrise" = "Восход";
+"Sunset" = "Закат";
 
 /* UVIndexCard */
 "UV INDEX" = "УФ-индекс";

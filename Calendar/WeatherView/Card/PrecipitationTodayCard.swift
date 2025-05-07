@@ -8,36 +8,76 @@ struct PrecipitationTodayCard: View {
     var body: some View {
         WeatherDetailCard {
             // Title - Top Left
-            Label("PRECIPITATION", systemImage: "drop.fill")
-                .symbolRenderingMode(.multicolor) // Blue drop
+            Label(NSLocalizedString("PRECIPITATION_CARD_TITLE", comment: "Title for precipitation card: PRECIPITATION"), systemImage: "drop.fill")
+                .symbolRenderingMode(.multicolor)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
 
+            // Prepare formatted amount before HStack
+            let formattedAmount: String = {
+                guard let amount = amount else { return "0" }
+                
+                if amount == 0 {
+                    return "0"
+                }
+                
+                if GlobalState.measurementSystem == "Imperial" {
+                    return String(format: "%.1f", amount)
+                } else {
+                    return String(format: "%.0f", amount)
+                }
+            }()
+
+
             // Main Value - Below Title
-            HStack(alignment: .firstTextBaseline, spacing: 2) { // Align value and unit
-                 Text(String(format: "%.0f", amount ?? 0)) // No decimal for mm
-                     .font(.system(size: 34, weight: .regular))
-                     .foregroundStyle(.primary)
-                Text(GlobalState.precipitationUnitLabel)
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundStyle(.secondary)
-                 Text("today") // Description separate
-                      .font(.system(size: 12, weight: .regular))
-                      .foregroundStyle(.secondary)
-                      .padding(.leading, 2)
+            // Main Value - Below Title
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                ZStack(alignment: .topTrailing) {
+                    Text(formattedAmount)
+                        .font(.system(size: 34, weight: .regular))
+                        .foregroundStyle(.primary)
+
+                    if GlobalState.measurementSystem == "Imperial" {
+                        Text(GlobalState.precipitationUnitLabel)
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(.primary)
+                            .offset(x: 6, y: 0) // Adjust these values for precise placement
+                    }
+                }
+
+                if GlobalState.measurementSystem != "Imperial" {
+                    Text(GlobalState.precipitationUnitLabel)
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundStyle(.primary)
+                }
+                
+                if GlobalState.measurementSystem == "Imperial" {
+                    Text(NSLocalizedString("PRECIPITATION_CARD_TODAY_LABEL", comment: "Label 'today' for current precipitation"))
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundStyle(.primary)
+                        .padding(.leading, 2)
+                        .offset(x: 0, y: 20) // Adjust these values for precise placement
+                }else{
+                    Text(NSLocalizedString("PRECIPITATION_CARD_TODAY_LABEL", comment: "Label 'today' for current precipitation"))
+                        .font(.system(size: 12, weight: .regular))
+                        .foregroundStyle(.primary)
+                        .padding(.leading, 2)
+                }
             }
 
 
-            Spacer() // Pushes description to the bottom
+            Spacer()
 
             // Description - Bottom Left
-             if let amount = nextExpectedAmount, amount > 0.1, let time = nextExpectedTimeString {
-                // Format matches screenshot "Next expected is 1 mm on Mon."
-                Text("Next expected is \(String(format: "%.0f", amount)) mm \(time).")
+            if let currentNextAmount = nextExpectedAmount, currentNextAmount > 0.1, let time = nextExpectedTimeString {
+                let unitLabel = GlobalState.precipitationUnitLabel
+                let formatString = NSLocalizedString("PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT",
+                                                     comment: "Format string for next expected precipitation. Parameters: %1$.0f (amount), %2$@ (unit), %3$@ (time string). Example: Next expected is 1 mm on Mon.")
+                Text(String(format: formatString, currentNextAmount, unitLabel, time))
                     .font(.system(size: 12))
                     .foregroundStyle(.primary)
             } else {
-                 Text("No precipitation expected soon.") // Simplified message
+                Text(NSLocalizedString("PRECIPITATION_CARD_NONE_EXPECTED", comment: "Message when no precipitation is expected soon."))
                     .font(.system(size: 12))
                     .foregroundStyle(.primary)
             }

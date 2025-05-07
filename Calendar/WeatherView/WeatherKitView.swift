@@ -859,17 +859,23 @@ struct WeatherKitView: View {
         }) {
             let daysUntil = Calendar.current.dateComponents([.day], from: Date(), to: nextDayPrecip.date).day ?? 0
             let timeString: String
+
             if daysUntil <= 1 {
-                timeString = "tomorrow"
+                timeString = NSLocalizedString("tomorrow", comment: "Precipitation forecast for tomorrow")
             } else if daysUntil <= 7 {
-                timeString = "on \(nextDayPrecip.day)"
+                let format = NSLocalizedString("on_day", comment: "Precipitation forecast on specific day")
+                timeString = String(format: format, nextDayPrecip.day)
             } else {
-                timeString = "in \(daysUntil) days"
+                let format = NSLocalizedString("in_days", comment: "Precipitation forecast in X days")
+                timeString = String(format: format, daysUntil)
             }
-            return (amount: 1.0, timeString: timeString)
+
+            return (amount: nextDayPrecip.precipChance, timeString: timeString)
         }
+
         return (amount: nil, timeString: nil)
     }
+
     
     /// Функция, която създава ново събитие за даден ден и избран час.
     /// С използване на текущия календар, който работи с часовата зона на устройството.

@@ -36,8 +36,9 @@ struct FeelsLikeCard: View {
     private func feelsLikeDescription() -> String {
         guard let feels = feelsLike, let current = currentTemp else { return " " }
         let diff = feels - current
-        if abs(diff) < 1.5 { return "Similar to the actual temperature." }
-        else if diff < 0 { return "Wind is making it feel cooler." }
-        else { return "Humidity is making it feel warmer." }
+        if abs(diff) < 1.5 { return NSLocalizedString("similar_to_actual_temp", comment: "") }
+        else if diff < 0 { return NSLocalizedString("wind_cooler_feel", comment: "") }
+        else { return NSLocalizedString("humidity_warmer_feel", comment: "") }
     }
+
 }

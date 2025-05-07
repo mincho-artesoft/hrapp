@@ -207,6 +207,9 @@
 "Tap an hour to quickly add a calendar event." = "Tippen Sie auf eine Stunde, um schnell ein Kalendereintrag hinzuzufügen.";
 "10-DAY FORECAST" = "10-TAGES-VORHERSAGE";
 "HighLowLabelFormat" = "H:%d°   T:%d°";  /* T = Tiefst */
+"tomorrow" = "morgen";
+"on_day" = "am %@";
+"in_days" = "in %d Tagen";
 
 /* Labels */
 "Today" = "Heute";
@@ -231,9 +234,9 @@
 
 /* FeelsLikeCard */
 "FEELS LIKE" = "Gefühlte Temperatur";
-"Similar to the actual temperature." = "Ähnlich zur tatsächlichen Temperatur.";
-"Wind is making it feel cooler." = "Der Wind lässt es kühler erscheinen.";
-"Humidity is making it feel warmer." = "Die Luftfeuchtigkeit lässt es wärmer erscheinen.";
+"similar_to_actual_temp" = "Ähnlich zur tatsächlichen Temperatur.";
+"wind_cooler_feel" = "Der Wind lässt es kühler erscheinen.";
+"humidity_warmer_feel" = "Die Luftfeuchtigkeit lässt es wärmer erscheinen.";
 
 /* HumidityCard */
 "HUMIDITY" = "Luftfeuchtigkeit";
@@ -252,11 +255,10 @@
 "%d days" = "%d Tage";
 
 /* PrecipitationTodayCard */
-"PRECIPITATION" = "Niederschlag";
-"mm" = "mm";
-"today" = "heute";
-"Next expected is %d mm %@" = "Es werden %d mm %@ erwartet.";
-"No precipitation expected soon." = "In Kürze werden keine Niederschläge erwartet.";
+"PRECIPITATION_CARD_TITLE" = "NIEDERSCHLAG";
+"PRECIPITATION_CARD_TODAY_LABEL" = "heute";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Nächster erwarteter: %1$.0f %2$@ %3$@."; // Z.B. "Nächster erwarteter: 10 mm am Mo."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Kein Niederschlag in Kürze erwartet.";
 
 /* PressureCard */
 "PRESSURE" = "DRUCK";
@@ -268,6 +270,8 @@
 "SUNRISE" = "SONNENAUFGANG";
 "Sunrise: %@" = "Sonnenaufgang: %@";
 "Sunset: %@" = "Sonnenuntergang: %@";
+"Sunrise" = "Sonnenaufgang";
+"Sunset" = "Sonnenaufgang";
 
 /* UVIndexCard */
 "UV INDEX" = "UV-Index";
