@@ -48,7 +48,7 @@ struct RootView: View {
 
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
-
+    @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
     var body: some View {
         ZStack {
             Color(.systemBackground).edgesIgnoringSafeArea(.all)
@@ -179,7 +179,7 @@ struct RootView: View {
                         if isPortrait {
                             DraggableMenuView(
                                 menuState: $menuState,
-
+                                adaptiveBackgroundОpacity: $draggableMenuAdaptiveBackgroundОpacity,
                                 // MARK: Bottom‑Left ▸ Today
                                 bottomLeft: {
                                     Button {
@@ -351,6 +351,13 @@ struct RootView: View {
                         reloadSingleDayEventsWithVisibleCalendars()
                     }
                 }
+            }
+        }
+        .onChange(of: selectedTab) {_, newValue in
+            if newValue == 6 {
+                draggableMenuAdaptiveBackgroundОpacity = 0.25
+            }else{
+                draggableMenuAdaptiveBackgroundОpacity = 0.95
             }
         }
     }

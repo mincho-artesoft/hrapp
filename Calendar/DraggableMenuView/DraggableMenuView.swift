@@ -17,10 +17,11 @@ struct DraggableMenuView<
     private let menuCornerRadius: CGFloat = 0
     private let collapsedPeekExtra: CGFloat = 10
     private var topGapWhenExpanded: CGFloat = UIScreen.main.bounds.height * 0.2
+    @Binding var adaptiveBackgroundОpacity: CGFloat
 
     @Environment(\.colorScheme) private var colorScheme
     private var adaptiveBackground: Color {
-        colorScheme == .dark ? .black.opacity(0.95) : .white.opacity(0.95)
+        colorScheme == .dark ? .black.opacity(adaptiveBackgroundОpacity) : .white.opacity(adaptiveBackgroundОpacity)
     }
 
     // MARK: — Binding to external state
@@ -41,6 +42,7 @@ struct DraggableMenuView<
     // MARK: — Init
     init(
         menuState: Binding<MenuState>,
+        adaptiveBackgroundОpacity: Binding<CGFloat>,
         @ViewBuilder bottomLeft: () -> BottomLeftContent,
         @ViewBuilder bottomCenter: () -> BottomCenterContent,
         @ViewBuilder bottomRight: () -> BottomRightContent,
@@ -49,6 +51,7 @@ struct DraggableMenuView<
         onStateChange: @escaping (MenuState) -> Void = { _ in }
     ) {
         self._menuState = menuState
+        self._adaptiveBackgroundОpacity = adaptiveBackgroundОpacity
         self.onStateChange = onStateChange
 
         self.bottomLeftSlot = bottomLeft()
