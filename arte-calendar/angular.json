@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/arte-calendar",
+            "outputPath": "dist/arte-calendar/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -97,6 +97,9 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@jefiozie/ngx-aws-deploy:deploy"
         }
       }
     }
