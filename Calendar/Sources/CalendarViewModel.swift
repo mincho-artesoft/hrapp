@@ -144,7 +144,13 @@ final class CalendarViewModel: ObservableObject {
         else { return }
         
         // ТУК добавяме "https://www.googleapis.com/auth/contacts.readonly"
-        let extraScopes = ["https://www.googleapis.com/auth/contacts.readonly","https://www.googleapis.com/auth/contacts.other.readonly"]
+        // Ако винаги ви трябва календар:
+        let extraScopes = [
+            "https://www.googleapis.com/auth/calendar",           // read-write
+            "https://www.googleapis.com/auth/contacts.readonly",
+            "https://www.googleapis.com/auth/contacts.other.readonly"
+        ]
+
         
         GIDSignIn.sharedInstance.signIn(withPresenting: rootVC, hint: nil, additionalScopes: extraScopes) { signInResult, error in
             if let error = error {

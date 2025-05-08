@@ -114,7 +114,6 @@
     align-self: baseline;
   }
 
-  
   mat-icon {
     font-size: 30px; // Slightly smaller icons
     width: 30px;
@@ -143,41 +142,5 @@
       color: #343a40;
       font-weight: 600;
     }
-  }
-}
-
-.feature-image-container.multi-view {
-  display: flex;
-  flex-wrap: wrap; // Позволява на изображенията да се подреждат на нов ред при нужда
-  gap: 15px;
-  justify-content: center;
-  align-items: flex-start;
-
-  img {
-    width: calc(50% - 8px); // Слагаме 2 изображения в един ред на мобилни устройства
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-  }
-
-  // Променяме при по-големи екрани
-  @media (min-width: 768px) {
-    img {
-      width: calc(33.33% - 10px); // Разпределяме изображенията в 3 колони на таблети и десктоп
-    }
-  }
-
-  // За по-големи екрани с по-голяма ширина, например при 1200px, задаваме 4 изображения в ред
-  @media (min-width: 1200px) {
-    img {
-      width: calc(25% - 12px);
-    }
-  }
-  
-  // Специфичен стил за третото изображение, което ще бъде под останалите
-  .multi-view img:nth-child(3) {
-    width: 100%; // За да заеме цялата ширина под другите
-    margin-top: 15px; // Малка дистанция от горните изображения
   }
 }

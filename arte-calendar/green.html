@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Green Screen</title>
+
+<style>
+  /* запълваме целия прозорец със зелено; без скрол-ленти */
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #00ff00;      /* ярко зелено (chroma key) */
+    overflow: hidden;
+    cursor: pointer;          /* да подсети, че може да се щракне */
+  }
+</style>
+</head>
+
+<body onclick="enterFullscreen()">
+<!-- Нищо друго не ни трябва -->
+<script>
+  /* при първо кликане активираме HTML5 fullscreen */
+  function enterFullscreen() {
+    const el = document.documentElement;          // <html> елементът
+    if (el.requestFullscreen)      el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen(); // Safari, стар Chrome
+    else if (el.msRequestFullscreen)     el.msRequestFullscreen();     // Edge legacy
+  }
+</script>
+</body>
+</html>

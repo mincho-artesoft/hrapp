@@ -1,0 +1,7 @@
+/* header.component.scss */
+.download-btn-ios.mat-mdc-raised-button {      /* 2 класа = 0-2-0 специфичност */
+    --mdc-filled-button-container-color: #007aff;          /* фон */
+    --mdc-filled-button-label-text-color: #fff;            /* текст + икона */
+    --mdc-filled-button-hover-container-color: #0069e0;    /* по-тъмен hover */
+  }
+  
