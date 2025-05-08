@@ -883,23 +883,41 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     }
     
     private func animateSearchBarIn() {
-        searchBar.isHidden         = false
-        searchBar.showsCancelButton = true
-        
+        searchBar.isHidden          = false
+        searchBar.showsCancelButton = true          // ← бутонът вече съществува
+
+        customizeCancelButton()                     // ⏪ тук
+
         let sbHeight: CGFloat = 36
         let finalY = (navBarHeight - sbHeight) / 2
         let finalFrame = CGRect(x: 10, y: finalY,
                                 width: navBar.bounds.width - 20, height: sbHeight)
-        
+
         let startFrame = finalFrame.offsetBy(dx: 0, dy: -navBarHeight)
         searchBar.frame = startFrame
         searchBar.alpha = 0
-        
+
         UIView.animate(withDuration: 0.3) {
             self.searchBar.frame = finalFrame
             self.searchBar.alpha = 1
         }
     }
+    
+    // MARK: - Преоразяване на “Cancel” в xmark
+    private func customizeCancelButton() {
+        guard let cancelBtn = searchBar.value(forKey: "cancelButton") as? UIButton else { return }
+
+        // махаме текста и слагаме SF символ
+        cancelBtn.setTitle("", for: .normal)
+        let img = UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate)
+        cancelBtn.setImage(img, for: .normal)
+
+        // цвят и размер
+
+        cancelBtn.tintColor = .secondaryLabel        // или .label, .secondaryLabel, каквото решиш
+        cancelBtn.frame.size = CGSize(width: 22, height: 22)   // компактно
+    }
+
     private func animateSearchBarOut() {
         let finalFrame = searchBar.frame.offsetBy(dx: 0, dy: -navBarHeight)
         UIView.animate(withDuration: 0.3, animations: {

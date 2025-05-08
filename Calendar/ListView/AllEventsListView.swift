@@ -27,22 +27,29 @@ struct AllEventsListView: View {
         VStack(spacing: 0) {
             // 1) Optional search bar
             if showSearchBar {
-                HStack {
-                    // (LOC) Локализиран placeholder
-                    TextField(LocalizedStringKey("Search events..."), text: $searchText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.leading)
-                    
-                    // (LOC) Локализиран бутон
-                    Button(LocalizedStringKey("Cancel")) {
-                        showSearchBar = false
-                        searchText = ""
-                    }
-                    .padding(.trailing)
-                }
-                .padding(.vertical, 8)
-                .background(.thinMaterial)
-                .transition(.move(edge: .top))
+                TextField(LocalizedStringKey("Search events..."), text: $searchText)
+                    .textFieldStyle(.plain)                         // без вътрешния бордър
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(.thinMaterial)                    // същия blur фон
+                    )
+                    // ⨯ бутонът вътре, долепен вдясно
+                    .overlay(
+                        Button {
+                            showSearchBar = false
+                            searchText = ""
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundColor(.secondary)
+                        }
+                        .padding(.trailing, 8),                     // разстояние от десния ръб
+                        alignment: .trailing
+                    )
+                    .transition(.move(edge: .top))
+                    .padding(.horizontal)                           // външен padding (ако ти трябва)
             }
             
             // 2) Main Content

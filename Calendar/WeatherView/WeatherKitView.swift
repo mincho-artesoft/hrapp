@@ -39,7 +39,30 @@ struct WeatherKitView: View {
     init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange!
+
+        // ① 100 % прозрачно – когато е в scroll-edge (върха)
+        let clear = UINavigationBarAppearance()
+        clear.configureWithTransparentBackground()          // няма фон, няма blur
+
+        // ② 30 % opacity – когато е стандартно (след скрол)
+        let semi = UINavigationBarAppearance()
+        semi.configureWithTransparentBackground()
+        semi.backgroundColor =
+            UIColor.systemBackground.withAlphaComponent(0.30)   // ← смени 0.30 по вкус
+        // (по желание добави blur)
+        // semi.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+
+        // ③ Назначаваме
+        let nav = UINavigationBar.appearance()
+        nav.scrollEdgeAppearance         = clear        // горе → изцяло прозрачно
+        nav.compactScrollEdgeAppearance  = clear        // (landscape compact)
+        nav.standardAppearance           = semi         // скролнато → полупрозрачно
+        nav.compactAppearance            = semi
+
+        // iOS 17+ фиксация – иначе при swipe back мигаше бяло
+        nav.scrollEdgeAppearance?.backgroundColor = .clear
     }
+
     var body: some View {
         ZStack(alignment: .top) {
             // 1) Динамичен фон
@@ -49,10 +72,6 @@ struct WeatherKitView: View {
             // 2) ScrollView съдържащ цялото съдържание, включително и tърсачката (topBar)
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 20) {
-                    // Търсачката с бутони, сега като част от ScrollView
-                    topBar
-                        .padding(.top, 10)
-                    
                     // Текущото време и град
                     currentWeatherHeader
                     
@@ -94,6 +113,33 @@ struct WeatherKitView: View {
             searchResultsOverlay
                 .zIndex(10) // overlay да е над останалото съдържание
         }
+//        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            // Trailing – остава само лупата + менюто, показват се, когато не търсим
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                if !showSearchBar {
+                    Button { withAnimation { showSearchBar = true } } label: {
+                        Image(systemName: "magnifyingglass")
+                    }
+                    .foregroundColor(colorScheme == .light ? .black : .white)
+                    UIMenuButtonRepresentable(
+                        currentView: selectedTab,
+                        tintColor: colorScheme == .light ? .black : .white,
+                        onViewChange: onViewChange
+                    )
+                    .frame(width: 36, height: 36)
+                }
+            }
+        }
+        .safeAreaInset(edge: .top) {          // iOS 15+
+            if showSearchBar {
+                searchField
+                    .padding(.horizontal)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .animation(.easeInOut(duration: 0.25), value: showSearchBar)
+            }
+        }
+
         // Sheet-ове за детайлен изглед при избор на ден или тап върху определени данни
         .sheet(item: $selectedDay) { day in
             WeatherDetailView(
@@ -306,65 +352,6 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - HELPER MAP (съкратено)
-    private let symbolDescriptions: [String: String] = [
-        "sun.max":        "Sunny",
-        "sun.max.fill":   "Sunny",
-        "cloud":          "Cloudy",
-        "cloud.fill":     "Cloudy",
-        "cloud.sun":      "Partly Cloudy",
-        "cloud.sun.fill": "Partly Cloudy",
-        "cloud.rain":         "Rain",
-        "cloud.rain.fill":    "Rain",
-        "cloud.drizzle":      "Drizzle",
-        "cloud.drizzle.fill": "Drizzle",
-        "cloud.snow":      "Snow",
-        "cloud.snow.fill": "Snow",
-        "cloud.bolt":             "Thunderstorm",
-        "cloud.bolt.fill":        "Thunderstorm",
-        "cloud.bolt.rain":        "Thunderstorm",
-        "cloud.bolt.rain.fill":   "Thunderstorm",
-        "cloud.fog":       "Fog",
-        "cloud.fog.fill":  "Fog",
-        "cloud.moon":      "Partly Cloudy Night",
-        "cloud.moon.fill": "Partly Cloudy Night",
-        "moon.stars":      "Clear Night",
-        "moon.stars.fill": "Clear Night",
-        "sun.haze":        "Hazy",
-        "sun.haze.fill":   "Hazy"
-    ]
-    
-    func conditionFromSymbol(_ symbol: String) -> String {
-        if let description = symbolDescriptions[symbol] {
-            return description
-        }
-        if symbol.contains("cloud") {
-            return "Cloudy"
-        }
-        if symbol.contains("sun") {
-            return "Sunny"
-        }
-        if symbol.contains("rain") {
-            return "Rain"
-        }
-        if symbol.contains("snow") {
-            return "Snow"
-        }
-        if symbol.contains("bolt") {
-            return "Thunderstorm"
-        }
-        if symbol.contains("fog") {
-            return "Fog"
-        }
-        if symbol.contains("drizzle") {
-            return "Drizzle"
-        }
-        if symbol.contains("moon") || symbol.contains("stars") {
-            return "Clear Night"
-        }
-        return "Conditions"
-    }
-    
     private var dynamicBackground: some View {
         let condition = vm.currentCondition.lowercased()
         switch condition {
@@ -403,86 +390,41 @@ struct WeatherKitView: View {
         }
     }
     
-    // MARK: - TOP BAR и търсачката
-    private var topBar: some View {
-        HStack {
-            if showSearchBar {
-                searchField
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .leading).combined(with: .opacity),
-                            removal: .move(edge: .leading).combined(with: .opacity)
-                        )
-                    )
-            } else {
-                HStack {
-                    searchButton
-                        .transition(
-                            .asymmetric(
-                                insertion: .move(edge: .leading).combined(with: .opacity),
-                                removal: .move(edge: .leading).combined(with: .opacity)
-                            )
-                        )
-                    Spacer()
-                    UIMenuButtonRepresentable(
-                        currentView: selectedTab,
-                        tintColor: colorScheme == .light ? .black : .white,
-                        onViewChange: { newTab in
-                            onViewChange(newTab)
-                        }
-                    )
-                    .frame(width: 36, height: 36)
-                }
-            }
-            
-            Spacer()
-            
-            if showSearchBar {
-                closeSearchButton
-                    .transition(
-                        .asymmetric(
-                            insertion: .move(edge: .trailing).combined(with: .opacity),
-                            removal: .move(edge: .trailing).combined(with: .opacity)
-                        )
-                    )
-            }
-        }
-        .padding(.horizontal)
-    }
-    
     private var searchField: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(.secondary)
-            TextField("Search for a city...",
-                      text: $locationSearchVM.queryFragment,
-                      onEditingChanged: { editing in
-                          isEditing = editing
-                          if editing && !showSearchBar {
-                              withAnimation { showSearchBar = true }
-                          }
-                      },
-                      onCommit: {
-                          isEditing = false
-                      })
-                .textFieldStyle(.plain)
-                .autocorrectionDisabled(true)
-            
-            if !locationSearchVM.queryFragment.isEmpty {
-                Button {
-                    locationSearchVM.queryFragment = ""
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.secondary)
-                }
+        HStack {
+            TextField(                         // НОВ инициализатор
+                "", text: $locationSearchVM.queryFragment,
+                prompt: Text("Search for a city…")
+                          .foregroundColor(.white.opacity(0.5))   // зелен placeholder
+            )                                     // ← ТУК приключва инициализаторът – без trailing closures
+            .onSubmit {            // еквивалент на onCommit
+                isEditing = false
+            }
+            .onChange(of: locationSearchVM.queryFragment) {
+                isEditing = true   // или ползвай @FocusState, ако ти е по-удобно
+            }
+            .textFieldStyle(.plain)
+            .autocorrectionDisabled(true)
+            .font(.subheadline)
+            .foregroundColor(.white.opacity(0.85))   // цвят на въведения текст
+            .accentColor(.white)
+
+
+            Button(action: hideSearch) {
+                Image(systemName: "xmark")                  // ⨉ вместо текст
+                    .font(.subheadline.weight(.semibold))   // същия размер като преди
+                    .foregroundColor(Color.white.opacity(0.35))            // сив (и в light, и в dark)
             }
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 8)
-        .background(.ultraThinMaterial, in: Capsule())
-        .contentShape(Capsule())
+        .padding(.vertical, 6)
+        .padding(.horizontal, 12)
+        .frame(height: 34)
+        .background(
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .fill(Color.black.opacity(0.35))
+        )
     }
-    
+
     private var searchButton: some View {
         Button {
             withAnimation { showSearchBar = true }
