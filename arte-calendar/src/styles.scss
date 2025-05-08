@@ -6,3 +6,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 span.mat-mdc-list-item-unscoped-content.mdc-list-item__primary-text {
   color: #000 !important;
 }
+
+body .mat-mdc-list-item{
+  overflow: visible !important;
+  .mdc-list-item__content{
+    overflow: visible !important;
+    white-space: normal !important;
+    
+    .mat-mdc-list-item-unscoped-content{
+      overflow: visible !important;
+      display: flex !important;
+    }
+
+    .mat-mdc-list-item-unscoped-content{
+      white-space: normal !important;
+    } 
+
+    
+  }
+
+  .mdc-list-item__primary-text{
+    white-space: normal !important;
+  }
+}
+
+mat-icon.mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color {
+  align-self: center;
+
+}
+

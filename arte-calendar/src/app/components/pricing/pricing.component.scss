@@ -1,3 +1,4 @@
+
 .pricing-section {
   padding: 60px 20px;
   background-color: #f8f9fa;
@@ -42,7 +43,7 @@
 .pricing-card {
   display: flex;
   flex-direction: column;
-  min-height: 480px; /* еднаква височина */
+  min-height: 480px;
   border: 1px solid #dee2e6;
   border-radius: 8px;
   position: relative;
@@ -94,15 +95,12 @@
       padding: 0;
     }
     mat-list-item {
-      display: flex; /* за flex-wrap */
+      display: flex;
       align-items: center;
       font-size: 0.95em;
       padding: 5px 0;
       color: #007aff !important;
-      /* позволяваме основното съдържание да се пренася */
-      overflow: visible !important;
-      text-overflow: clip !important;
-      flex-wrap: wrap !important;
+      flex-wrap: wrap;          /* важна добавка, ако редът е много дълъг */
     }
     mat-icon[mat-list-icon] {
       margin-right: 12px;
@@ -117,21 +115,23 @@
       font-size: 0.85em;
       text-align: center;
       color: #6c757d;
-      margin-top: 15px;
+      // margin-top: 135px;
+      position: absolute;
+      bottom: 42px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
     }
   }
 }
 
-// override на вътрешните .mat-line елементи, за да могат дългите текстове да се пренасят
-// използвайте ::ng-deep или го вкарайте в глобалните стилове, но трябва да е след Material CSS
-::ng-deep .pricing-card mat-list-item {
-  .mat-list-item-content {
-    flex: 1 1 auto !important;
-    overflow: visible !important;
-  }
-  .mat-line {
-    white-space: normal !important;
-    overflow-wrap: break-word !important;
-    word-break: break-word !important;
-  }
+:host ::ng-deep .mat-list-item-content {
+  overflow: visible !important;
 }
+:host ::ng-deep .mat-line {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+}
+
+
