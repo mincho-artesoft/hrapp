@@ -1,9 +1,9 @@
-<section class="pricing-section" id="pricing"> <!-- Add ID -->
+<!-- src/app/components/pricing/pricing.component.html -->
+<section class="pricing-section" id="pricing">
   <h2 class="section-title">Compare plans</h2>
   <p class="section-subtitle">Simple pricing for powerful features. Start free, upgrade anytime.</p>
 
   <div class="pricing-tiers">
-
     <!-- Base Plan -->
     <mat-card class="pricing-card">
       <mat-card-header>
@@ -30,7 +30,7 @@
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon color="primary">check_circle_outline</mat-icon>
-            list-view for events
+            List-view for events
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon color="primary">check_circle_outline</mat-icon>
@@ -38,22 +38,17 @@
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon color="primary">check_circle_outline</mat-icon>
-            Full Weather View & Integration
+            Full Weather View &amp; Integration
           </mat-list-item>
         </mat-list>
       </mat-card-content>
-      <mat-card-actions>
-        <a mat-stroked-button color="primary" class="action-button" href="YOUR_APP_STORE_LINK_HERE" target="_blank" rel="noopener noreferrer">Get Started</a>
-      </mat-card-actions>
     </mat-card>
 
     <!-- Advanced Plan -->
     <mat-card class="pricing-card featured">
-      <div class="popular-badge">Most Popular</div>
       <mat-card-header>
         <mat-card-title>Advanced Plan</mat-card-title>
         <mat-card-subtitle>$0.99<span class="per-month"> / month</span></mat-card-subtitle>
-        <!-- <mat-card-subtitle>$9.99 / year</mat-card-subtitle> -->
       </mat-card-header>
       <mat-card-content>
         <p class="includes-text"><em>Everything in Base, plus:</em></p>
@@ -68,14 +63,11 @@
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
-            Cross-calendar management (iCloud & Google)
+            Cross-calendar management (iCloud &amp; Google)
           </mat-list-item>
         </mat-list>
         <div class="annual-option">(or $9.99 billed annually)</div>
       </mat-card-content>
-      <mat-card-actions>
-        <a mat-raised-button color="primary" class="action-button" href="LINK_TO_UPGRADE_ADVANCED">Choose Advanced</a>
-      </mat-card-actions>
     </mat-card>
 
     <!-- Premium Plan -->
@@ -83,7 +75,6 @@
       <mat-card-header>
         <mat-card-title>Premium Plan</mat-card-title>
         <mat-card-subtitle>$4.99<span class="per-month"> / month</span></mat-card-subtitle>
-        <!-- <mat-card-subtitle>$49.99 / year</mat-card-subtitle> -->
       </mat-card-header>
       <mat-card-content>
         <p class="includes-text"><em>Everything in Advanced, plus:</em></p>
@@ -98,15 +89,11 @@
           </mat-list-item>
           <mat-list-item>
             <mat-icon mat-list-icon color="primary">check_circle</mat-icon>
-            Full Cross-calendar management (iCloud, Google & Microsoft)
+            Full Cross-calendar management (iCloud, Google &amp; Microsoft)
           </mat-list-item>
         </mat-list>
         <div class="annual-option">(or $49.99 billed annually)</div>
       </mat-card-content>
-      <mat-card-actions>
-        <a mat-stroked-button color="primary" class="action-button" href="LINK_TO_UPGRADE_PREMIUM">Choose Premium</a>
-      </mat-card-actions>
     </mat-card>
-
   </div>
 </section>

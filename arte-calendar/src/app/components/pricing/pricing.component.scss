@@ -1,6 +1,8 @@
+/* src/app/components/pricing/pricing.component.scss */
+
 .pricing-section {
   padding: 60px 20px;
-  background-color: #f8f9fa; // Match hero background or choose another light color
+  background-color: #f8f9fa;
 
   @media (min-width: 768px) {
     padding: 80px 40px;
@@ -9,106 +11,117 @@
     padding: 100px 5%;
   }
 
-  // Use shared title styles
-  .section-title, .section-subtitle {
-    // Inherit styles from features.component.scss or define them here if needed
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.8em, 4vw, 2.5em);
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #343a40;
+  }
+  .section-subtitle {
+    text-align: center;
+    font-size: clamp(1em, 2.5vw, 1.15em);
+    color: #6c757d;
+    margin-bottom: 60px;
   }
 }
 
 .pricing-tiers {
-  display: grid; // Use CSS Grid for more control
-  grid-template-columns: 1fr; // Mobile: single column
-  gap: 30px; // Space between cards
-  max-width: 1100px; // Limit overall width of the grid
-  margin: 0 auto; // Center the grid
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
 
-  @media (min-width: 768px) {
-    // Tablet: 2 columns if space allows, otherwise still 1
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); // Auto-fit columns
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  @media (min-width: 992px) {
-    // Desktop: Aim for 3 columns
-    grid-template-columns: repeat(3, 1fr);
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
   }
 }
 
 .pricing-card {
   display: flex;
-  flex-direction: column; // Ensure content stacks vertically
-  border: 1px solid #dee2e6; // Subtle border
-  border-radius: 8px; // Consistent border radius
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; // Hover effect
-  position: relative; // For badge positioning
-  overflow: hidden; // Hide overflowing badge corners if needed
+  flex-direction: column;
+  min-height: 420px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  /* Премахнат hover-ефект */
+  /* transition: transform 0.2s, box-shadow 0.2s; */
+  position: relative;
+  overflow: hidden;
 
-  &:hover {
-    transform: translateY(-5px); // Slight lift on hover
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  /* &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  } */
+
+  mat-card-header,
+  mat-card-title,
+  mat-card-subtitle,
+  .includes-text,
+  mat-list-item {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   mat-card-header {
     text-align: center;
-    padding: 20px 20px 10px 20px; // Adjust padding
-    border-bottom: 1px solid #e9ecef; // Separator line
-    background-color: #ffffff; // White header background
+    padding: 20px 20px 10px;
+    border-bottom: 1px solid #e9ecef;
+    background-color: #fff;
   }
 
   mat-card-title {
-    font-size: 1.5em;
-    font-weight: 600;
+    font-size: 1.5em !important;
+    font-weight: 600 !important;
     margin-bottom: 5px !important;
   }
 
   mat-card-subtitle {
-    font-size: 1.6em; // Larger price
-    font-weight: 700;
-    color: var(--mat-primary-color, #3f51b5);
-    margin-bottom: 10px !important; // Ensure space below subtitle
-    line-height: 1.1;
+    font-size: 1.6em !important;
+    font-weight: 700 !important;
+    color: #007aff !important;
+    margin-bottom: 10px !important;
 
     .per-month {
-      font-size: 0.6em; // Smaller "/ month" text
+      font-size: 0.6em;
       font-weight: 400;
-      //color: #6c757d;
-      color: #00dddd !important;
-      display: inline; // Keep on same line
+      display: inline;
+      color: #007aff !important;
     }
   }
 
   mat-card-content {
-    flex-grow: 1; // Allow content to fill space
+    flex-grow: 1;
     padding: 20px;
-    background-color: #ffffff; // White content background
+    background-color: #fff;
 
     .includes-text {
       font-size: 0.9em;
       font-style: italic;
-      //color: #6c757d;
-      color: #00dddd !important;
-      margin-bottom: 15px;
+      color: #007aff !important;
       text-align: center;
     }
 
     mat-list {
-      padding-top: 0; // Remove default list padding
-      color: #00dddd !important;
+      padding: 0;
     }
 
     mat-list-item {
       font-size: 0.95em;
-      min-height: 40px; // Ensure consistent item height
-      height: auto; // Allow wrapping
-      padding: 5px 0; // Adjust vertical padding
-      color: #00dddd !important;
+      padding: 5px 0;
+      color: #007aff !important;
     }
 
     mat-icon[mat-list-icon] {
-      margin-right: 12px; // More space after icon
+      margin-right: 12px;
       font-size: 20px;
       width: 20px;
       height: 20px;
-      color: #00dddd;
+      color: #007aff !important;
     }
 
     .annual-option {
@@ -119,45 +132,12 @@
     }
   }
 
-  mat-card-actions {
-    padding: 20px;
-    margin-top: auto; // Push actions to the bottom
-    display: flex;
-    justify-content: center;
-    background-color: #f8f9fa; // Slightly different background for actions
-    border-top: 1px solid #e9ecef;
-
-    .action-button { // Target buttons via class
-      width: 85%; // Make buttons reasonably wide
-      padding: 10px 0; // Adjust button padding
-      font-size: 1em;
-      max-width: 250px; // Limit button max width
-    }
-  }
-
-  // Style for the featured plan
   &.featured {
-    border: 2px solid var(--mat-primary-color, #3f51b5);
-    // transform: scale(1.03); // Scaling can sometimes cause layout shifts, use border instead
+    /* рамката вече е като на останалите */
+    border: 1px solid #dee2e6;
 
     .popular-badge {
-      position: absolute;
-      top: -1px; // Position slightly overlapping the top border
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%); // Center and move up
-      background-color: var(--mat-accent-color, #ff4081); // Use accent color
-      color: white;
-      padding: 6px 18px; // Adjust padding
-      border-radius: 20px; // Pill shape
-      font-size: 0.8em;
-      font-weight: 600;
-      z-index: 2; // Ensure badge is above card content
-      white-space: nowrap; // Prevent badge text wrapping
-    }
-
-    // Optionally make the featured button stand out more
-    mat-card-actions .action-button {
-      // Already uses mat-raised-button which is good
+      display: none;
     }
   }
 }
