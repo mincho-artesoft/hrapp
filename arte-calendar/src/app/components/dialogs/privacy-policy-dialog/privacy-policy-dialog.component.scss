@@ -12,7 +12,7 @@
   p, ul {
     line-height: 1.6;
     font-size: 0.95em;
-    color: #666;
+    color: #adadad;
   }
 
   ul {
@@ -26,10 +26,15 @@
 
   strong {
     font-weight: 600;
-    color: #111;
+    color: #adadad;
   }
 }
 
 mat-dialog-actions {
   padding: 8px 24px; // Standard padding for actions
+}
+
+:host ::ng-deep .mat-mdc-unelevated-button {
+  background-color: #007aff !important;
+  color: white;
 }

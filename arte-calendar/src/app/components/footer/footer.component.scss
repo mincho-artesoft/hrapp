@@ -33,3 +33,6 @@
     }
   }
 }
+:host ::ng-deep span.mdc-button__label {
+  color: #6c757d !important;
+}

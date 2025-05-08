@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon'; // Optional
     MatIconModule // Optional
   ],
   templateUrl: './terms-dialog.component.html',
-  styleUrls: ['./terms-dialog.component.scss'] // Can reuse privacy policy styles
+  styleUrls: ['../privacy-policy-dialog/privacy-policy-dialog.component.scss'] // Can reuse privacy policy styles
   // Or create its own SCSS if needed: styleUrls: ['./terms-dialog.component.scss']
 })
 export class TermsDialogComponent { }
