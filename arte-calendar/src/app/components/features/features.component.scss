@@ -142,3 +142,18 @@
     }
   }
 }
+
+.feature-image-container.multi-row {
+  // базова ширина за първите две
+  img {
+    flex: 0 0 48%;
+    max-width: 48%;
+  }
+
+  // третото изображение – нов ред, пълна ширина
+  img:nth-child(3) {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-top: 15px; // разстояние отдолу, ако искате
+  }
+}
