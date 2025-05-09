@@ -24,7 +24,6 @@ class SubscriptionManager: ObservableObject {
     @Published var isLoading = false
 
     private var updatesTask: Task<Void, Never>?
-
     var hasActiveSubscription: Bool { !purchasedProductIDs.isEmpty }
 
     static let shared = SubscriptionManager()
@@ -36,9 +35,9 @@ class SubscriptionManager: ObservableObject {
         startListeningForUpdates()
     }
 
-    deinit {
-        updatesTask?.cancel()
-    }
+    deinit { updatesTask?.cancel() }
+
+    // MARK: - Products --------------------------------------------------------
 
     func loadProducts() async {
         await MainActor.run { isLoading = true }
@@ -63,32 +62,30 @@ class SubscriptionManager: ObservableObject {
         }
     }
 
-    /// Връща true ако може да се селектира/new purchase или upgrade
+    // MARK: - Purchase --------------------------------------------------------
+
     func canPurchase(_ newProduct: Product) -> Bool {
-        // ако няма текуща – винаги може
-        guard hasActiveSubscription else { return true }
-        // ако е текущата – също може
-        if purchasedProductIDs.contains(newProduct.id) {
-            return true
-        }
-        // иначе само ако е upgrade Advance→Premium със същия период
-        return isUpgradeable(to: newProduct)
+        guard hasActiveSubscription else { return true }         // no active sub → OK
+        if purchasedProductIDs.contains(newProduct.id) { return true } // same plan → OK
+        return isUpgradeable(to: newProduct)                     // else only if upgrade
     }
 
     private func isUpgradeable(to newProduct: Product) -> Bool {
         guard let currentID = purchasedProductIDs.first,
-              let current = products.first(where: { $0.id == currentID }),
-              let curUnit = current.subscription?.subscriptionPeriod.unit,
-              let newUnit = newProduct.subscription?.subscriptionPeriod.unit
+              let current   = products.first(where: { $0.id == currentID }),
+              let curUnit   = current.subscription?.subscriptionPeriod.unit,
+              let newUnit   = newProduct.subscription?.subscriptionPeriod.unit
         else { return false }
 
-        return currentID.contains("advance")
-            && newProduct.id.contains("premium")
-            && curUnit == newUnit
+        return currentID.contains("advance") &&
+               newProduct.id.contains("premium") &&
+               curUnit == newUnit
     }
 
     func purchase(_ product: Product) async {
-        if hasActiveSubscription && !isUpgradeable(to: product) && !purchasedProductIDs.contains(product.id) {
+        if hasActiveSubscription &&
+            !isUpgradeable(to: product) &&
+            !purchasedProductIDs.contains(product.id) {
             print("Cannot purchase – already have non-upgradeable subscription.")
             return
         }
@@ -101,26 +98,24 @@ class SubscriptionManager: ObservableObject {
                 await MainActor.run { register(transaction: transaction) }
                 await transaction.finish()
                 await updatePurchasedStatus()
-            case .userCancelled:
-                break
-            case .pending:
-                break
-            @unknown default:
-                break
+            case .userCancelled, .pending: break
+            @unknown default:             break
             }
         } catch {
             print("Purchase failed: \(error)")
         }
     }
 
+    // MARK: - Updates listener -----------------------------------------------
+
     private func startListeningForUpdates() {
         updatesTask = Task.detached(priority: .background) { [weak self] in
-            guard let self = self else { return }
+            guard let self else { return }
             for await verification in StoreTransaction.updates {
                 do {
-                    let transaction = try await self.checkVerified(verification)
-                    await MainActor.run { self.register(transaction: transaction) }
-                    await transaction.finish()
+                    let tx = try await self.checkVerified(verification)
+                    await MainActor.run { self.register(transaction: tx) }
+                    await tx.finish()
                     await self.updatePurchasedStatus()
                 } catch {
                     print("Update verification failed: \(error)")
@@ -129,9 +124,10 @@ class SubscriptionManager: ObservableObject {
         }
     }
 
-    /// Проверява текущите entitlements
+    // MARK: - Entitlements ----------------------------------------------------
+
     func updatePurchasedStatus() async {
-        var activeIDs = Set<String>()
+        var activeIDs   = Set<String>()
         var expiryDates = [String: Date]()
 
         for await verification in StoreTransaction.currentEntitlements {
@@ -148,9 +144,9 @@ class SubscriptionManager: ObservableObject {
             }
         }
 
-        // Ако има поне един premium – махаме всички advance
+        // If any premium sub – drop advance ones
         if activeIDs.contains(where: { $0.contains("premium") }) {
-            activeIDs = activeIDs.filter { $0.contains("premium") }
+            activeIDs   = activeIDs.filter { $0.contains("premium") }
             expiryDates = expiryDates.filter { key, _ in key.contains("premium") }
         }
 
@@ -159,7 +155,6 @@ class SubscriptionManager: ObservableObject {
             self.expirationDates     = expiryDates
         }
     }
-
 
     private func register(transaction: StoreTransaction) {
         guard transaction.revocationDate == nil else { return }
@@ -173,15 +168,16 @@ class SubscriptionManager: ObservableObject {
     func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {
         case .unverified(_, let error): throw error
-        case .verified(let safe):     return safe
+        case .verified(let safe):       return safe
         }
     }
+
+    // MARK: - Sorting helper --------------------------------------------------
 
     var sortedProducts: [Product] {
         products.sorted {
             guard let u1 = $0.subscription?.subscriptionPeriod.unit,
-                  let u2 = $1.subscription?.subscriptionPeriod.unit
-            else { return false }
+                  let u2 = $1.subscription?.subscriptionPeriod.unit else { return false }
             return u1.sortIndex < u2.sortIndex
         }
     }
@@ -200,6 +196,8 @@ class SubscriptionManager: ObservableObject {
         }
     }
 
+    // MARK: - Manage subscription sheet --------------------------------------
+
     @MainActor
     func openManageSubscriptions() async {
         guard let windowScene = UIApplication.shared.connectedScenes
@@ -208,8 +206,9 @@ class SubscriptionManager: ObservableObject {
 
         do {
             try await AppStore.showManageSubscriptions(in: windowScene)
+            // ⚠️  веднага обновяваме статуса, след като листът се затвори
+            await updatePurchasedStatus()
         } catch {
-            // Можеш да логнеш или покажеш грешката на потребителя, ако искаш
             print("Неуспешно показване на управлението на абонаменти: \(error)")
         }
     }
