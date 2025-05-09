@@ -4,11 +4,7 @@ import SwiftUI
 struct AdvanceSubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Image(systemName: "calendar.badge.plus")
-                .font(.system(size: 50))
-                .foregroundColor(.secondary)
-
-            Text("Advance Plan")
+            Text("Advanced Plan")
                 .font(.title.bold())
 
             VStack(alignment: .leading, spacing: 8) {

@@ -358,7 +358,7 @@ struct CalendarsSheetView: View {
         Section {
             Button(action: {
                 if subscriptionManager.subscriptionStatus == .base {
-                    let payload: [String: Any] = ["subscriptionStatusRaw": "Advance"]
+                    let payload: [String: Any] = ["subscriptionStatusRaw": "Advanced"]
                     NotificationCenter.default.post(
                         name: .notificationDraggableMenuViewSub,
                         object: nil,
@@ -372,7 +372,6 @@ struct CalendarsSheetView: View {
                         )
                     }
                 } else {
-                    // Ако вече е Advance или Premium, продължаваме нормално
                     signInWithGoogle()
                 }
             }) {

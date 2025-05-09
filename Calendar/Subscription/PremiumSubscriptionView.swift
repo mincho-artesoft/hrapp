@@ -4,10 +4,6 @@ import SwiftUICore
 struct PremiumSubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Image(systemName: "checkmark.seal.fill")
-                .font(.system(size: 50))
-                .foregroundColor(.secondary)
-
             Text("Premium Plan")
                 .font(.title.bold())
 

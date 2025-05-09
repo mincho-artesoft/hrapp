@@ -643,7 +643,7 @@
 "SectionDailySummary" = "Ежедневное резюме";
 
 /* AdvanceSubscriptionView */
-"Advance Plan" = "Расширенный план";
+"Advanced Plan" = "Расширенный план";
 "All Base Plan features" = "Все функции базового плана";
 "Multi-calendar view" = "Просмотр нескольких календарей";
 "Sync with Google Calendar" = "Синхронизация с Google Календарем";

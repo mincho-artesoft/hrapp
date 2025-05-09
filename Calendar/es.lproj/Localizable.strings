@@ -643,7 +643,7 @@
 "SectionDailySummary" = "Resumen Diario";
 
 /* AdvanceSubscriptionView */
-"Advance Plan" = "Plan Avanzado";
+"Advanced Plan" = "Plan Avanzado";
 "All Base Plan features" = "Todas las funciones del plan base";
 "Multi-calendar view" = "Vista de varios calendarios";
 "Sync with Google Calendar" = "Sincronizar con Google Calendar";

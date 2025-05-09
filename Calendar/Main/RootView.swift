@@ -176,6 +176,19 @@ struct RootView: View {
                         }
                     }
                     .overlay(alignment: .bottom) {
+                        
+                        if menuState == .full {
+                             Color.black.opacity(0.001)
+                                 .ignoresSafeArea()
+                                 .onTapGesture {
+                                     withAnimation(.spring()) {
+                                         menuState = .collapsed
+                                     }
+                                 }
+                                 .transition(.opacity)
+                                 .zIndex(0)              // под менюто, но над останалия интерфейс
+                         }
+                        
                         if isPortrait {
                             DraggableMenuView(
                                 menuState: $menuState,

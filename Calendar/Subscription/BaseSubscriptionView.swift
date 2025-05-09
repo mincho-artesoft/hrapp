@@ -5,10 +5,6 @@ import SwiftUICore
 struct BaseSubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Image(systemName: "gift")
-                .font(.system(size: 50))
-                .foregroundColor(.secondary)
-
             Text("Base Plan")
                 .font(.title.bold())
 
