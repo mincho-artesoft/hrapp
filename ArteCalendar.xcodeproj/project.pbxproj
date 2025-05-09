@@ -301,7 +301,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ArteCalendarASD;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars for Google, Microsoft and iCloud";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_NSContactsUsageDescription = "Това приложение се нуждае от достъп до контактите, за да може да ...";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
@@ -341,7 +341,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ArteCalendarASD;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars for Google, Microsoft and iCloud";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_NSContactsUsageDescription = "Това приложение се нуждае от достъп до контактите, за да може да ...";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
