@@ -73,50 +73,71 @@ struct DraggableMenuView<
     }
 
     // MARK: — View body
+    // MARK: — View body
     var body: some View {
         GeometryReader { geometry in
             let screenHeight = geometry.size.height
             let screenWidth  = geometry.size.width
             let bottomSafe   = geometry.safeAreaInsets.bottom
 
+            // ▸ изчисляваме офсетите
             let clippingHeight  = screenHeight - fixedBottomBarHeight
             let fullOffsetY     = topGapWhenExpanded
             let collapsedOffsetY = max(fullOffsetY,
                                        clippingHeight - handleHeight + collapsedPeekExtra)
 
+            // ▸ текуща позиция
             let dragY      = currentOffsetY + dragGestureTranslationY
             let effectiveY = max(fullOffsetY,
                                  min(collapsedOffsetY, dragY))
 
-            VStack(spacing: 0) {
-                // ▸ 1. Sliding section
-                ZStack(alignment: .top) {
-                    slidingContentView(fullOffsetY: fullOffsetY,
-                                       collapsedOffsetY: collapsedOffsetY)
-                        .background(adaptiveBackground)
-                        .cornerRadius(menuCornerRadius, antialiased: true)
-                        .offset(y: effectiveY)
-                }
-                .frame(width: screenWidth, height: clippingHeight)
-                .clipped()
+            ZStack(alignment: .bottom) {
 
-                // ▸ 2. Bottom static bar
-                bottomBarView(bottomSafeArea: bottomSafe)
-                    .frame(height: fixedBottomBarHeight, alignment: .top)
-                    .background(adaptiveBackground)
+                // 🔹 1. Прозрачен слой, който хваща тап и прибира менюто
+                if menuState == .full {
+                    Color.black.opacity(0.001)              // „hit‑box“
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation(.spring(response: 0.3,
+                                                  dampingFraction: 0.8,
+                                                  blendDuration: 0.3)) {
+                                menuState = .collapsed
+                                onStateChange(.collapsed)
+                                currentOffsetY = collapsedOffsetY
+                            }
+                        }
+                }
+
+                // 🔹 2. Самото плъзгащо се меню
+                VStack(spacing: 0) {
+                    // ▸ 2.1 Горната плъзгаща се част
+                    ZStack(alignment: .top) {
+                        slidingContentView(fullOffsetY: fullOffsetY,
+                                           collapsedOffsetY: collapsedOffsetY)
+                            .background(adaptiveBackground)
+                            .cornerRadius(menuCornerRadius, antialiased: true)
+                            .offset(y: effectiveY)
+                    }
+                    .frame(width: screenWidth, height: clippingHeight)
+                    .clipped()
+
+                    // ▸ 2.2 Долна статична лента
+                    bottomBarView(bottomSafeArea: bottomSafe)
+                        .frame(height: fixedBottomBarHeight, alignment: .top)
+                        .background(adaptiveBackground)
+                }
+                .frame(width: screenWidth)
+                .edgesIgnoringSafeArea([.top, .bottom])
+                .animation(.spring(response: 0.3,
+                                   dampingFraction: 0.8,
+                                   blendDuration: 0.3),
+                           value: effectiveY)
             }
-            .frame(width: screenWidth)
-            .edgesIgnoringSafeArea([.top, .bottom])
-            .animation(.spring(response: 0.3,
-                               dampingFraction: 0.8,
-                               blendDuration: 0.3),
-                       value: effectiveY)
             .onAppear {
-                // Notify initial state
-                onStateChange(menuState)
+                onStateChange(menuState)        // известяваме за началното състояние
             }
             .onChange(of: menuState) { _, newState in
-                // When parent changes state, animate to new offset
+                // менюто е променено отвън → анимираме към новия офсет
                 withAnimation(.spring(response: 0.3,
                                       dampingFraction: 0.8,
                                       blendDuration: 0.3)) {
@@ -128,6 +149,7 @@ struct DraggableMenuView<
         }
         .edgesIgnoringSafeArea(.all)
     }
+
 
     // MARK: — Subviews
     @ViewBuilder

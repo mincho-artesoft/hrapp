@@ -641,7 +641,7 @@
 "SectionDailySummary" = "Résumé quotidien";
 
 /* AdvanceSubscriptionView */
-"Advance Plan" = "Forfait Avancé";
+"Advanced Plan" = "Forfait Avancé";
 "All Base Plan features" = "Toutes les fonctionnalités du forfait de base";
 "Multi-calendar view" = "Affichage multi-calendrier";
 "Sync with Google Calendar" = "Synchroniser avec Google Agenda";
