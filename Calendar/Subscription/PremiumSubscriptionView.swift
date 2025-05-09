@@ -12,10 +12,10 @@ struct PremiumSubscriptionView: View {
                 FeatureRow(feature: "Sync with Microsoft Calendar")
                 FeatureRow(feature: "Sync meets from Microsoft Teams")
             }
-            .padding(.horizontal)
 
             Spacer()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
     }
 }

@@ -1,7 +1,6 @@
 
 import SwiftUICore
 
-// MARK: - Base Subscription View
 struct BaseSubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -16,10 +15,10 @@ struct BaseSubscriptionView: View {
                 FeatureRow(feature: "List view for events")
                 FeatureRow(feature: "Weather view")
             }
-            .padding(.horizontal)
 
             Spacer()
         }
-        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)   // <- ново
+        .padding()                                         // единствен хор. отстъп
     }
 }

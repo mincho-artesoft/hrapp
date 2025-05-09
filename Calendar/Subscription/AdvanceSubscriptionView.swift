@@ -13,10 +13,10 @@ struct AdvanceSubscriptionView: View {
                 FeatureRow(feature: "Sync with Google Calendar")
                 FeatureRow(feature: "Sync meets from Google Meet")
             }
-            .padding(.horizontal)
 
             Spacer()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
     }
 }
