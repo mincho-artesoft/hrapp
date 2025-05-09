@@ -101,7 +101,7 @@ struct SunsetCard: View {
             }
 
         } // End Canvas
-        .frame(height: 60, )
+        .frame(height: 60)
         .overlay(alignment: .bottom) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
