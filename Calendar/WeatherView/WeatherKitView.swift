@@ -10,7 +10,9 @@ struct WeatherKitView: View {
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)
     @State private var eventToEdit: EKEvent? = nil
-
+    @FocusState private var isSearchFieldFocused: Bool
+    @State private var isSelectingHour = false
+    @State private var selectedHourIndex: Int?
     // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel.shared
@@ -118,9 +120,17 @@ struct WeatherKitView: View {
             // Trailing – остава само лупата + менюто, показват се, когато не търсим
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if !showSearchBar {
-                    Button { withAnimation { showSearchBar = true } } label: {
-                        Image(systemName: "magnifyingglass")
-                    }
+                    Button {
+                           withAnimation {
+                               showSearchBar = true
+                           }
+                           // малко след анимацията задаваме фокус
+                           DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                               isSearchFieldFocused = true
+                           }
+                       } label: {
+                           Image(systemName: "magnifyingglass")
+                       }
                     .foregroundColor(colorScheme == .light ? .black : .white)
                     UIMenuButtonRepresentable(
                         currentView: selectedTab,
@@ -314,9 +324,13 @@ struct WeatherKitView: View {
             }
         }
         .sheet(item: $eventToEdit, onDismiss: {
+            // след като свърши редакцията – отпускаме блокирането
+            isSelectingHour = false
+            selectedHourIndex = nil
         }) { theEvent in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
         }
+
         // MARK: - onReceive за Location и други събития
         .onReceive(locationManager.$currentLocation) { location in
             if let loc = location,
@@ -392,17 +406,15 @@ struct WeatherKitView: View {
     
     private var searchField: some View {
         HStack {
-            TextField(                         // НОВ инициализатор
-                "", text: $locationSearchVM.queryFragment,
+            TextField(
+                "",
+                text: $locationSearchVM.queryFragment,
                 prompt: Text("Search for a city…")
-                          .foregroundColor(.white.opacity(0.5))   // зелен placeholder
-            )                                     // ← ТУК приключва инициализаторът – без trailing closures
-            .onSubmit {            // еквивалент на onCommit
-                isEditing = false
-            }
-            .onChange(of: locationSearchVM.queryFragment) {
-                isEditing = true   // или ползвай @FocusState, ако ти е по-удобно
-            }
+                    .foregroundColor(.white.opacity(0.5))
+            )
+            .focused($isSearchFieldFocused)              // ← тук
+            .onSubmit { isEditing = false }
+            .onChange(of: locationSearchVM.queryFragment) { isEditing = true }
             .textFieldStyle(.plain)
             .autocorrectionDisabled(true)
             .font(.subheadline)
@@ -423,28 +435,6 @@ struct WeatherKitView: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(Color.black.opacity(0.35))
         )
-    }
-
-    private var searchButton: some View {
-        Button {
-            withAnimation { showSearchBar = true }
-        } label: {
-            Image(systemName: "magnifyingglass")
-                .font(.title2)
-                .frame(height: 36)
-        }
-        .buttonStyle(.plain)
-    }
-    
-    private var closeSearchButton: some View {
-        Button {
-            hideSearch()
-        } label: {
-            Image(systemName: "xmark")
-                .font(.title2)
-                .frame(width: 30, height: 36)
-        }
-        .buttonStyle(.plain)
     }
     
     private var searchResultsOverlay: some View {
@@ -510,52 +500,64 @@ struct WeatherKitView: View {
     
     private var hourlyForecastCard: some View {
         let isAnyPrecip = vm.next24HourlyForecast.contains { $0.precipChance >= 0.1 }
+
         return VStack(alignment: .leading, spacing: 0) {
-            ScrollView(.horizontal, showsIndicators: false) {
+            DirectionLockedHScroll {
                 HStack(spacing: 25) {
                     ForEach(vm.next24HourlyForecast.indices, id: \.self) { i in
                         let hourItem = vm.next24HourlyForecast[i]
+
                         VStack {
                             Text(hourItem.hour)
                                 .font(.system(size: 14, weight: .medium))
                                 .foregroundColor(.primary)
+
                             Image(systemName: hourItem.symbol)
                                 .symbolVariant(.fill)
                                 .symbolRenderingMode(.multicolor)
                                 .font(.title2)
                                 .frame(height: 30)
                                 .offset(y: hourItem.symbol == "cloud.fill" ? -5 : 0)
+
                             if isAnyPrecip {
                                 if hourItem.precipChance >= 0.1 {
                                     Text("\(Int(hourItem.precipChance * 100))%")
                                         .font(.system(size: 12, weight: .medium))
-                                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: colorScheme == .light ? 0.7 : 1.0))
+                                        .foregroundColor(
+                                            Color(
+                                                hue: 0.55,
+                                                saturation: 0.8,
+                                                brightness: colorScheme == .light ? 0.7 : 1.0
+                                            )
+                                        )
                                 } else {
                                     Text("0%")
                                         .font(.system(size: 12, weight: .medium))
                                         .hidden()
                                 }
                             }
+
                             Text("\(Int(hourItem.temp.rounded()))°")
                                 .font(.system(size: 18, weight: .medium))
                                 .foregroundColor(.primary)
-                        }                        .onTapGesture {
-                            // Пример: ако hourItem.hour е "14", направете преобразуване към Int:
-                            if let tappedHour = Int(hourItem.hour) {
-                                // Предполагаме, че денят е днес (или задайте съответния ден, ако имате модел за това)
-                                let today = Date()
-                                createAndEditNewEvent(from: tappedHour, for: today)
-                            } else {
-                                print("Невалиден формат на часа: \(hourItem.hour)")
-                            }
                         }
+                        .frame(minWidth: 20, idealWidth: 30, maxWidth: 40)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            guard !isSelectingHour,
+                                  let tappedHour = Int(hourItem.hour) else { return }
+                            isSelectingHour = true
+                            selectedHourIndex = i
+                            createAndEditNewEvent(from: tappedHour, for: Date())
+                        }
+                        .disabled(isSelectingHour && selectedHourIndex != i)
                     }
-
                 }
                 .padding(.horizontal, 15)
                 .padding(.vertical, 12)
             }
             .frame(height: 120)
+
             HStack(spacing: 4) {
                 Image(systemName: "info.circle")
                     .font(.system(size: 12))
@@ -567,11 +569,10 @@ struct WeatherKitView: View {
             }
             .padding(.horizontal, 15)
             .padding(.bottom, 5)
-
-
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
+
     
     private var tenDayForecastCard: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -786,8 +787,10 @@ struct WeatherKitView: View {
         showSearchBar = false
         locationSearchVM.queryFragment = ""
         isEditing = false
+        isSearchFieldFocused = false  // ← премахва фокуса и клавиатурата
         hideKeyboard()
     }
+
     
     private func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
@@ -868,4 +871,48 @@ struct WeatherKitView: View {
         }
     }
 
+}
+
+/// Хоризонтален scroll с directional-lock и без vertical bounce
+struct DirectionLockedHScroll<Content: View>: UIViewRepresentable {
+    let content: Content
+
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+
+    func makeUIView(context: Context) -> UIScrollView {
+        // 1) конфигурираме UIScrollView
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = .clear            // ← прозрачно
+        scrollView.alwaysBounceHorizontal = true
+        scrollView.alwaysBounceVertical = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isDirectionalLockEnabled = true
+
+        // 2) „hosting controller“ за SwiftUI съдържанието
+        let host = UIHostingController(rootView: content)
+        host.view.backgroundColor = .clear             // ← прозрачно
+        host.view.isOpaque = false                     // ← важно за прозрачност
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+
+        scrollView.addSubview(host.view)
+        NSLayoutConstraint.activate([
+            host.view.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            host.view.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            host.view.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            host.view.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            host.view.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor)
+        ])
+
+        return scrollView
+    }
+
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
+        // само заменяме корена на host-а
+        if let host = uiView.subviews.compactMap({ $0.next as? UIHostingController<Content> }).first {
+            host.rootView = content
+        }
+    }
 }
