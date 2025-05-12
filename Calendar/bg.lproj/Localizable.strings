@@ -28,6 +28,7 @@
 "Select All" = "Избери всички";
 "Done" = "Готово";
 "No Email" = "Няма имейл";
+"Add Google Calendar" = "Добавяне на Google календар";
 
 /* AddCalendarView */
 "Calendar Name" = "Име на календара";

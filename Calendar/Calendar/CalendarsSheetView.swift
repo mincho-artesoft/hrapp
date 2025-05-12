@@ -15,7 +15,7 @@ struct CalendarsSheetView: View {
     @ObservedObject var viewModel: CalendarViewModel = .shared
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     // MARK: - State
-
+    @State private var showAddGoogleCalendarSheet: StoredGoogleUser? = nil
     @State private var googleSharingInfos: [String: GoogleSharingInfo] = [:]
     @State private var currentGoogleUserID: String? = nil
 
@@ -90,6 +90,9 @@ struct CalendarsSheetView: View {
             if let url = URL(string: "https://www.icloud.com/calendar/") {
                 SafariView(url: url)
             }
+        }
+        .sheet(item: $showAddGoogleCalendarSheet) { gUser in
+            AddGoogleCalendarView(user: gUser)                       // ←✓
         }
         .sheet(isPresented: $showingGoogleSharingSheet) {
             if let userID = currentGoogleUserID,
@@ -200,6 +203,11 @@ struct CalendarsSheetView: View {
                             }
                         }
 
+                        Button(LocalizedStringKey("Add Google Calendar")) {
+                            showAddGoogleCalendarSheet = user                        // ←✓
+                        }
+                        .listRowSeparator(.hidden)
+                        
                         Button(LocalizedStringKey("Sign out")) {
                             viewModel.signOutFromGoogle(user: user)
                         }

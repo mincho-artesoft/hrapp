@@ -36,7 +36,7 @@ struct RootView: View {
     @State private var loadedEndDate: Date   = Date()
 
     // Таймер (например за презареждане)
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 20, on: .main, in: .common).autoconnect()
 
     // Управление на табовете. Според примера: 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar, 6=Weather
     @State private var selectedTab = 1
@@ -200,6 +200,7 @@ struct RootView: View {
                                         pinnedFromDateSingle = today
                                         pinnedToDateSingle   = today
                                         selectedTab = 1
+                                        menuState = .collapsed
                                     } label: {
                                         VStack(spacing: 0) {
                                             Image(systemName: "calendar.badge.checkmark")
@@ -216,6 +217,7 @@ struct RootView: View {
                                 bottomCenter: {
                                     Button {
                                         createAndEditNewEvent(on: Date())
+                                        menuState = .collapsed
                                     } label: {
                                         VStack(spacing: 0) {
                                             Image(systemName: "calendar.badge.plus")
@@ -232,6 +234,7 @@ struct RootView: View {
                                 bottomRight: {
                                     Button {
                                         selectedTab = 6
+                                        menuState = .collapsed
                                     } label: {
                                         VStack(spacing: 0) {
                                             Image(systemName: "cloud.sun.fill")
@@ -275,8 +278,6 @@ struct RootView: View {
                                         CalendarsDropdownRepresentable()
                                             .padding(.vertical, 8)
                                     case 2:
-//                                        Text("N/A")
-//                                             .padding(.vertical, 8)
                                         SubscriptionView()
                                             .padding(.vertical, 8)
                                     default:

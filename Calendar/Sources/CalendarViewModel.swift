@@ -1861,16 +1861,20 @@ import Foundation
 
 /// MARK: MULTI-ACCOUNT: Add `uniqueID: UUID` as a stable identifier
 /// so we can store multiple users even if userID or email are nil/duplicated.
-struct StoredGoogleUser: Codable, Hashable {
+//  StoredGoogleUser.swift  (or wherever the model lives)
+
+struct StoredGoogleUser: Codable, Hashable, Identifiable {   // ← add Identifiable
     let uniqueID: UUID
+    
+    // Identifiable requirement
+    var id: UUID { uniqueID }                                 // ← one-liner
+
     var userID: String?
     var email: String?
     var accessToken: String
     var accessTokenExpiration: Date
     var refreshToken: String?
     var idToken: String?
-    
-    // Ново поле:
     var photoURL: String?
 }
 
@@ -4662,5 +4666,104 @@ extension CalendarViewModel {
         return selected.isEmpty
             ? Set(calendarsDict.keys)
             : Set(selected.keys)
+    }
+}
+
+extension CalendarViewModel{
+    /// Hex string „#RRGGBB“ от UIColor
+    private func hexRGB(from uiColor: UIColor) -> String {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return String(format: "#%02X%02X%02X", Int(r*255), Int(g*255), Int(b*255))
+    }
+
+    /// PATCH /users/me/calendarList/{calendarId}?colorRgbFormat=true
+    private func patchCalendarColor(
+        calendarID: String,
+        background: UIColor,
+        accessToken: String
+    ) async {
+        let hex = hexRGB(from: background)
+        
+        guard
+            let encID = calendarID.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
+            let url   = URL(string:
+                "https://www.googleapis.com/calendar/v3/users/me/calendarList/\(encID)?colorRgbFormat=true")
+        else { return }
+        
+        var req = URLRequest(url: url)
+        req.httpMethod = "PATCH"
+        req.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        req.setValue("application/json",     forHTTPHeaderField: "Content-Type")
+        
+        // Google изчислява подходящ „foregroundColor“; можете да зададете и свой.
+        let body = ["backgroundColor": hex]
+        req.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
+        do {
+            let (_, resp) = try await URLSession.shared.data(for: req)
+            if let http = resp as? HTTPURLResponse, !(200...299).contains(http.statusCode) {
+                print("patchCalendarColor → HTTP\(http.statusCode)")
+            }
+        } catch { print("patchCalendarColor error:", error) }
+    }
+    // MARK: - Create Google calendar then local copy
+    @MainActor
+    func addGoogleCalendar(name: String, color uiColor: UIColor, for user: StoredGoogleUser) async {
+        // 1. Ensure we have a fresh access token
+        var gUser = user
+        if gUser.accessTokenExpiration < Date(), let r = gUser.refreshToken {
+            do {
+                let (newAcc, newExp, newIDT) = try await refreshTokens(refreshToken: r)
+                gUser.accessToken = newAcc
+                gUser.accessTokenExpiration = newExp
+                gUser.idToken = newIDT
+                updateUserInMemory(gUser);  saveAllUsersToUserDefaults()
+            } catch {
+                print("addGoogleCalendar: refresh error →", error); return
+            }
+        }
+
+        // 2. POST to https://www.googleapis.com/calendar/v3/calendars
+        struct CreateBody: Encodable { let summary: String }
+        guard let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars"),
+              let body = try? JSONEncoder().encode(CreateBody(summary: name)) else { return }
+
+        var req = URLRequest(url: url)
+        req.httpMethod = "POST"
+        req.setValue("Bearer \(gUser.accessToken)", forHTTPHeaderField: "Authorization")
+        req.setValue("application/json",               forHTTPHeaderField: "Content-Type")
+        req.httpBody = body
+
+        do {
+            let (data, resp) = try await URLSession.shared.data(for: req)
+            guard let http = resp as? HTTPURLResponse, (200...299).contains(http.statusCode) else {
+                let txt = String(data: data, encoding: .utf8) ?? ""
+                print("addGoogleCalendar: HTTP-\( (resp as? HTTPURLResponse)?.statusCode ?? 0) → \(txt)")
+                return
+            }
+            struct Resp: Decodable { let id: String }
+            let gCalID = try JSONDecoder().decode(Resp.self, from: data).id
+            await patchCalendarColor(calendarID: gCalID,      // ← НОВО
+                                     background: uiColor,
+                                     accessToken: gUser.accessToken)
+            print("✅ Created Google calendar →", gCalID)
+
+            // 3. Create the *local* EKCalendar copy & map it
+            if let localCal = createLocalCalendar(
+                googleCalendarName: name,
+                googleCalendarColor: uiColor
+            ) {
+                var map = googleToLocalCalendarMap(for: gUser.uniqueID)
+                map[gCalID] = localCal.calendarIdentifier
+                setGoogleToLocalCalendarMap(map, for: gUser.uniqueID)
+                // auto-select it if user’s current filters allow
+                selectedCalendarIDs.insert(localCal.calendarIdentifier)
+                reloadCalendars()
+                print("🗓  Local copy created →", localCal.title)
+            }
+        } catch {
+            print("addGoogleCalendar: error →", error)
+        }
     }
 }
