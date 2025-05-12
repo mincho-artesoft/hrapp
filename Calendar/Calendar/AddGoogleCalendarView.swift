@@ -1,23 +1,14 @@
-//
-//  AddGoogleCalendarView.swift
-//  Cloud Calendars for Google, Microsoft and iCloud
-//
-//  Created by Aleksandar Svinarov on 12/5/25.
-//
-
-
+// AddGoogleCalendarView.swift
 import SwiftUI
 import EventKit
 
-/// Very similar to `AddCalendarView`, but calls Google Calendar API first,
-/// then creates the **local copy** and refreshes the ViewModel.
-///
-/// You must pass the *specific* Google user that owns the new calendar.
+/// View for adding a new Google Calendar and returning name + color via callback
 struct AddGoogleCalendarView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var viewModel = CalendarViewModel.shared
 
     let user: StoredGoogleUser
+    let onDone: (String, UIColor) -> Void
 
     @State private var calendarName: String = ""
     @State private var selectedColor: UIColor = .systemBlue
@@ -43,29 +34,20 @@ struct AddGoogleCalendarView: View {
                     }
                 }
             }
-            .navigationTitle("Add Google calendar")
+            .navigationTitle("Add Google Calendar")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
+                    Button("Cancel") {
+                        dismiss()
+                    }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
-                        // 1. копираме нужните стойности,
-                        //    защото след dismiss self вече няма да е на екран
-                        let name  = calendarName.trimmingCharacters(in: .whitespaces)
+                        let name = calendarName.trimmingCharacters(in: .whitespaces)
                         let color = selectedColor
-                        let gUser = user
-                        
-                        // 2. ЗАТВАРЯМЕ шийта веднага
+                        onDone(name, color)
                         dismiss()
-                        
-                        // 3. Стартираме добавянето в Google на заден план
-                        Task {
-                            await viewModel.addGoogleCalendar(name: name,
-                                                              color: color,
-                                                              for: gUser)
-                        }
                     }
                     .disabled(calendarName.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
@@ -73,3 +55,4 @@ struct AddGoogleCalendarView: View {
         }
     }
 }
+

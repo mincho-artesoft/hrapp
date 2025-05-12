@@ -1,3 +1,4 @@
+// CalendarsSheetView.swift
 import SwiftUI
 import EventKit
 import GoogleSignIn
@@ -14,6 +15,7 @@ struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+
     // MARK: - State
     @State private var showAddGoogleCalendarSheet: StoredGoogleUser? = nil
     @State private var googleSharingInfos: [String: GoogleSharingInfo] = [:]
@@ -27,16 +29,17 @@ struct CalendarsSheetView: View {
     @State private var showAddCalendarSheet = false
     @State private var showICloudSheet = false
     @State private var showingGoogleSharingSheet = false
+    @State private var addingGoogleUserID: UUID? = nil
+    @State private var addingGoogleCalendarTitle: String? = nil
+    @State private var addingGoogleCalendarColor: UIColor? = nil
 
-    // MARK: - Init for iOS 14–15 appearance
+    // MARK: - Init for iOS 14–15 appearance
     init() {
-        // Ако трябва съвместимост надолу до iOS 14/15
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
     }
 
     // MARK: - Body
-
     var body: some View {
         VStack(spacing: 0) {
 
@@ -48,7 +51,6 @@ struct CalendarsSheetView: View {
                          : LocalizedStringKey("Select All"))
                         .fontWeight(.semibold)
                 }
-
                 Spacer()
             }
             .padding(.horizontal)
@@ -65,35 +67,54 @@ struct CalendarsSheetView: View {
                 googleSignInSection
                 microsoftSignInSection
             }
-            // ↓ iOS 16+ modifiers ↓
             .scrollContentBackground(.hidden)
             .background(Color.clear)
-            // ако искате изрично и секции да са прозрачни:
             .listRowBackground(Color.clear)
             .listSectionSpacing(8)
+
             Spacer()
             Spacer()
         }
         .background(Color.clear)
         .onAppear(perform: onAppear)
 
-        // Sheets…
+        // MARK: Sheets…
+
+        // Edit local calendar
         .sheet(item: $calendarToEdit, onDismiss: {
             viewModel.reloadCalendars()
         }) { cal in
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
         }
+
+        // Add iCloud Calendar
         .sheet(isPresented: $showAddCalendarSheet) {
             AddCalendarView()
         }
+
+        // Open iCloud share
         .sheet(isPresented: $showICloudSheet) {
             if let url = URL(string: "https://www.icloud.com/calendar/") {
                 SafariView(url: url)
             }
         }
+
+        // Add Google Calendar
         .sheet(item: $showAddGoogleCalendarSheet) { gUser in
-            AddGoogleCalendarView(user: gUser)                       // ←✓
+            AddGoogleCalendarView(user: gUser) { name, color in
+                addingGoogleUserID = gUser.uniqueID
+                addingGoogleCalendarTitle = name
+                addingGoogleCalendarColor = color
+                Task {
+                    await viewModel.addGoogleCalendar(name: name, color: color, for: gUser)
+                    addingGoogleUserID = nil
+                    addingGoogleCalendarTitle = nil
+                    addingGoogleCalendarColor = nil
+                }
+            }
         }
+
+        // Google Calendar Sharing ACL
         .sheet(isPresented: $showingGoogleSharingSheet) {
             if let userID = currentGoogleUserID,
                let info = googleSharingInfos[userID],
@@ -107,12 +128,8 @@ struct CalendarsSheetView: View {
         }
 
         // Persist sharing info
-        .onChange(of: googleSharingInfos) {
-            saveGoogleSharingInfos()
-        }
-        .onChange(of: currentGoogleUserID) {
-            saveCurrentGoogleUserID()
-        }
+        .onChange(of: googleSharingInfos) { saveGoogleSharingInfos() }
+        .onChange(of: currentGoogleUserID)    { saveCurrentGoogleUserID() }
     }
 
     // MARK: - Sections
@@ -131,7 +148,6 @@ struct CalendarsSheetView: View {
                         shareAction: {}
                     )
                     .listRowSeparator(.hidden)
-//                    .listRowBackground(Color.clear)  // → прозрачен ред
                 }
             }
         }
@@ -151,27 +167,22 @@ struct CalendarsSheetView: View {
                         shareAction: {}
                     )
                     .listRowSeparator(.hidden)
-//                    .listRowBackground(Color.clear)
                 }
             }
         }
     }
 
+    // ⚡ Google Section with spinner row
     private var googleSection: some View {
         Group {
             if !viewModel.storedUsers.isEmpty {
-                Section {
-                    Text(LocalizedStringKey("Google calendars"))
-                }
-//                .listRowBackground(Color.clear)
+                Section { Text(LocalizedStringKey("Google calendars")) }
             }
-
             ForEach(viewModel.storedUsers, id: \.uniqueID) { user in
                 let isExpanded = Binding<Bool>(
                     get: { googleExpandedStates[user.uniqueID] ?? true },
                     set: { googleExpandedStates[user.uniqueID] = $0 }
                 )
-
                 Section {
                     DisclosureGroup(isExpanded: isExpanded) {
                         let googleCals = googleCopiedCalendars(for: user)
@@ -199,10 +210,28 @@ struct CalendarsSheetView: View {
                                     }
                                 )
                                 .listRowSeparator(.hidden)
-//                                .listRowBackground(Color.clear)
+                            }
+                            // Temporary spinner row while adding
+                            if addingGoogleUserID == user.uniqueID,
+                               let title = addingGoogleCalendarTitle,
+                               let color = addingGoogleCalendarColor {
+                                HStack(spacing: 16) {
+                                    Circle()
+                                        .fill(Color(uiColor: color))
+                                        .frame(width: 28, height: 28)
+                                    Text(title)
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    ProgressView()
+                                }
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 5)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .fill(Color.clear)
+                                )
                             }
                         }
-
                         Section {
                             Button {
                                 showAddGoogleCalendarSheet = user
@@ -214,7 +243,6 @@ struct CalendarsSheetView: View {
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
                         }
-
                         Section {
                             Button {
                                 viewModel.signOutFromGoogle(user: user)
@@ -232,13 +260,10 @@ struct CalendarsSheetView: View {
                                let photoURL = URL(string: photoURLString) {
                                 AsyncImage(url: photoURL) { phase in
                                     switch phase {
-                                    case .empty:   ProgressView()
-                                    case .success: phase.image?
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                    case .failure: Image(systemName: "person.crop.circle.badge.exclamationmark")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
+                                    case .empty:    ProgressView()
+                                    case .success:  phase.image?.resizable().aspectRatio(contentMode: .fill)
+                                    case .failure:  Image(systemName: "person.crop.circle.badge.exclamationmark")
+                                                        .resizable().aspectRatio(contentMode: .fill)
                                     @unknown default: EmptyView()
                                     }
                                 }
@@ -249,11 +274,9 @@ struct CalendarsSheetView: View {
                                     .resizable()
                                     .frame(width: 28, height: 28)
                             }
-
                             Text(user.email ?? NSLocalizedString("No Email", comment: ""))
                                 .padding(.leading, 4)
                         }
-//                        .listRowBackground(Color.clear)
                     }
                 }
             }
@@ -263,26 +286,19 @@ struct CalendarsSheetView: View {
     private var microsoftSection: some View {
         Group {
             if !viewModel.storedMsUsers.isEmpty {
-                Section {
-                    Text(LocalizedStringKey("Microsoft calendars"))
-                }
-//                .listRowBackground(Color.clear)
+                Section { Text(LocalizedStringKey("Microsoft calendars")) }
             }
-
             ForEach(viewModel.storedMsUsers, id: \.uniqueID) { user in
                 let isExpanded = Binding<Bool>(
                     get: { msExpandedStates[user.uniqueID] ?? true },
                     set: { msExpandedStates[user.uniqueID] = $0 }
                 )
-
                 Section {
                     DisclosureGroup(isExpanded: isExpanded) {
                         let msCals = viewModel.microsoftCopiedCalendars(for: user)
-
                         if msCals.isEmpty {
                             Text(LocalizedStringKey("No synced Microsoft calendars yet."))
-                                .font(.footnote)
-                                .foregroundColor(.secondary)
+                                .font(.footnote).foregroundColor(.secondary)
                                 .listRowBackground(Color.clear)
                         } else {
                             ForEach(msCals, id: \.calendarIdentifier) { cal in
@@ -296,10 +312,8 @@ struct CalendarsSheetView: View {
                                     shareAction: {}
                                 )
                                 .listRowSeparator(.hidden)
-//                                .listRowBackground(Color.clear)
                             }
                         }
-
                         Section {
                             Button {
                                 viewModel.signOutFromMicrosoft(user: user)
@@ -314,13 +328,10 @@ struct CalendarsSheetView: View {
                     } label: {
                         HStack {
                             Image(systemName: "person.circle")
-                                .resizable()
-                                .frame(width: 28, height: 28)
-
+                                .resizable().frame(width: 28, height: 28)
                             Text(user.email ?? NSLocalizedString("No Email", comment: ""))
                                 .padding(.leading, 4)
                         }
-//                        .listRowBackground(Color.clear)
                     }
                 }
             }
@@ -349,7 +360,6 @@ struct CalendarsSheetView: View {
                 }
             }
             .buttonStyle(PlainButtonStyle())
-//            .listRowBackground(Color.clear)
         }
     }
 
@@ -375,7 +385,6 @@ struct CalendarsSheetView: View {
                 }
             }
             .buttonStyle(PlainButtonStyle())
-//            .listRowBackground(Color.clear)
         }
     }
 
@@ -397,14 +406,12 @@ struct CalendarsSheetView: View {
                         )
                     }
                 } else {
-                    signInWithGoogle()
+                    viewModel.signInWithGoogle()
                 }
             }) {
                 HStack {
                     Image("google_icon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 28, height: 28)
+                        .resizable().aspectRatio(contentMode: .fit).frame(width: 28, height: 28)
                     Text("Sign in with Google")
                 }
             }
@@ -412,11 +419,10 @@ struct CalendarsSheetView: View {
         }
     }
 
-
     private var microsoftSignInSection: some View {
         Section {
             Button(action: {
-                if subscriptionManager.subscriptionStatus == .base  || subscriptionManager.subscriptionStatus == .advance{
+                if subscriptionManager.subscriptionStatus == .base  || subscriptionManager.subscriptionStatus == .advance {
                     let payload: [String: Any] = ["subscriptionStatusRaw": "Premium"]
                     NotificationCenter.default.post(
                         name: .notificationDraggableMenuViewSub,
@@ -431,20 +437,16 @@ struct CalendarsSheetView: View {
                         )
                     }
                 } else {
-                    // Ако вече е Advance или Premium, продължаваме нормално
-                    signInWithMicrosoft()
+                    viewModel.signInWithMicrosoft()
                 }
-            } ) {
+            }) {
                 HStack {
                     Image("microsoft_icon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 28, height: 28)
+                        .resizable().aspectRatio(contentMode: .fit).frame(width: 28, height: 28)
                     Text(LocalizedStringKey("Sign in with Microsoft"))
                 }
             }
             .buttonStyle(PlainButtonStyle())
-//            .listRowBackground(Color.clear)
         }
     }
 
@@ -484,16 +486,6 @@ struct CalendarsSheetView: View {
         return map.first(where: { $0.value == cal.calendarIdentifier })?.key
     }
 
-    private func signInWithMicrosoft() {
-        viewModel.signInWithMicrosoft()
-    }
-
-    private func signInWithGoogle() {
-        viewModel.signInWithGoogle()
-    }
-
-    // MARK: - UserDefaults
-
     private func loadGoogleSharingInfos() {
         guard let data = UserDefaults.standard.data(forKey: "GoogleSharingInfos"),
               let infos = try? JSONDecoder().decode([String: GoogleSharingInfo].self, from: data) else { return }
@@ -503,14 +495,12 @@ struct CalendarsSheetView: View {
     private func loadCurrentGoogleUserID() {
         currentGoogleUserID = UserDefaults.standard.string(forKey: "CurrentGoogleUserID")
     }
-    
+
     private func saveGoogleSharingInfos() {
         if let data = try? JSONEncoder().encode(googleSharingInfos) {
             UserDefaults.standard.set(data, forKey: "GoogleSharingInfos")
         }
     }
-
-
 
     private func saveCurrentGoogleUserID() {
         if let id = currentGoogleUserID {
