@@ -11,8 +11,6 @@ struct WeatherKitView: View {
     var onViewChange: ((Int) -> Void)
     @State private var eventToEdit: EKEvent? = nil
     @FocusState private var isSearchFieldFocused: Bool
-    @State private var isSelectingHour = false
-    @State private var selectedHourIndex: Int?
     // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel.shared
@@ -106,6 +104,8 @@ struct WeatherKitView: View {
                 .onTapGesture {
                     if showSearchBar { hideSearch() }
                 }
+                .disabled(eventToEdit != nil)   // докато modal-ът е активен – клетките са неактивни
+
                 .refreshable {
                     refreshWeatherData()
                 }
@@ -324,9 +324,6 @@ struct WeatherKitView: View {
             }
         }
         .sheet(item: $eventToEdit, onDismiss: {
-            // след като свърши редакцията – отпускаме блокирането
-            isSelectingHour = false
-            selectedHourIndex = nil
         }) { theEvent in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
         }
@@ -497,82 +494,6 @@ struct WeatherKitView: View {
         }
         .padding(.vertical, 10)
     }
-    
-    private var hourlyForecastCard: some View {
-        let isAnyPrecip = vm.next24HourlyForecast.contains { $0.precipChance >= 0.1 }
-
-        return VStack(alignment: .leading, spacing: 0) {
-            DirectionLockedHScroll {
-                HStack(spacing: 25) {
-                    ForEach(vm.next24HourlyForecast.indices, id: \.self) { i in
-                        let hourItem = vm.next24HourlyForecast[i]
-
-                        VStack {
-                            Text(hourItem.hour)
-                                .font(.system(size: 14, weight: .medium))
-                                .foregroundColor(.primary)
-
-                            Image(systemName: hourItem.symbol)
-                                .symbolVariant(.fill)
-                                .symbolRenderingMode(.multicolor)
-                                .font(.title2)
-                                .frame(height: 30)
-                                .offset(y: hourItem.symbol == "cloud.fill" ? -5 : 0)
-
-                            if isAnyPrecip {
-                                if hourItem.precipChance >= 0.1 {
-                                    Text("\(Int(hourItem.precipChance * 100))%")
-                                        .font(.system(size: 12, weight: .medium))
-                                        .foregroundColor(
-                                            Color(
-                                                hue: 0.55,
-                                                saturation: 0.8,
-                                                brightness: colorScheme == .light ? 0.7 : 1.0
-                                            )
-                                        )
-                                } else {
-                                    Text("0%")
-                                        .font(.system(size: 12, weight: .medium))
-                                        .hidden()
-                                }
-                            }
-
-                            Text("\(Int(hourItem.temp.rounded()))°")
-                                .font(.system(size: 18, weight: .medium))
-                                .foregroundColor(.primary)
-                        }
-                        .frame(minWidth: 20, idealWidth: 30, maxWidth: 40)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            guard !isSelectingHour,
-                                  let tappedHour = Int(hourItem.hour) else { return }
-                            isSelectingHour = true
-                            selectedHourIndex = i
-                            createAndEditNewEvent(from: tappedHour, for: Date())
-                        }
-                        .disabled(isSelectingHour && selectedHourIndex != i)
-                    }
-                }
-                .padding(.horizontal, 15)
-                .padding(.vertical, 12)
-            }
-            .frame(height: 120)
-
-            HStack(spacing: 4) {
-                Image(systemName: "info.circle")
-                    .font(.system(size: 12))
-                    .foregroundColor(.secondary)
-                Text("Tap an hour to quickly add a calendar event.")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .lineSpacing(3)
-            }
-            .padding(.horizontal, 15)
-            .padding(.bottom, 5)
-        }
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
-    }
-
     
     private var tenDayForecastCard: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -914,5 +835,122 @@ struct DirectionLockedHScroll<Content: View>: UIViewRepresentable {
         if let host = uiView.subviews.compactMap({ $0.next as? UIHostingController<Content> }).first {
             host.rootView = content
         }
+    }
+}
+
+// MARK: - WeatherKitView extension
+extension WeatherKitView {
+
+    /// Готовият изглед-карта за 24-ч прогнозата.
+    /// Използвайте го в тялото на WeatherKitView така:
+    ///
+    ///     hourlyForecastCard
+    ///         .padding(.horizontal, 16)
+    ///
+    private var hourlyForecastCard: some View {
+        HourlyForecastCard(
+            vm: vm,
+            onHourTap: { tappedHour in
+                createAndEditNewEvent(from: tappedHour, for: Date())
+            }
+        )
+        .disabled(eventToEdit != nil)       // блокирайте, докато редактирате event
+    }
+}
+
+// MARK: - HourlyForecastCard
+struct HourlyForecastCard: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @ObservedObject var vm: WeatherKitViewModel
+    var onHourTap: (Int) -> Void
+
+    private var isAnyPrecip: Bool {
+        vm.next24HourlyForecast.contains { $0.precipChance >= 0.1 }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            HourlyStrip(
+                hours: vm.next24HourlyForecast,
+                isAnyPrecip: isAnyPrecip,
+                colorScheme: colorScheme,
+                onHourTap: onHourTap
+            )
+            .frame(height: 120)
+
+            HStack(spacing: 4) {
+                Image(systemName: "info.circle")
+                    .font(.system(size: 12))
+                Text("Tap an hour to quickly add a calendar event.")
+                    .font(.caption)
+            }
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 15)
+            .padding(.bottom, 5)
+        }
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+// MARK: - HourlyStrip
+private struct HourlyStrip: View {
+    let hours: [HourlyForecastItem]
+    let isAnyPrecip: Bool
+    let colorScheme: ColorScheme
+    let onHourTap: (Int) -> Void
+
+    var body: some View {
+        DirectionLockedHScroll {
+            HStack(spacing: 25) {
+                ForEach(hours) { hour in
+                    HourlyCell(
+                        item: hour,
+                        isAnyPrecip: isAnyPrecip,
+                        colorScheme: colorScheme
+                    )
+                    .onTapGesture { onHourTap(Int(hour.hour) ?? 0) }
+                }
+            }
+            .padding(.horizontal, 15)
+            .padding(.vertical, 12)
+        }
+    }
+}
+
+// MARK: - HourlyCell
+private struct HourlyCell: View {
+    let item: HourlyForecastItem
+    let isAnyPrecip: Bool
+    let colorScheme: ColorScheme
+
+    var body: some View {
+        VStack {
+            Text(item.hour)
+                .font(.system(size: 14, weight: .medium))
+
+            Image(systemName: item.symbol)
+                .symbolVariant(.fill)
+                .symbolRenderingMode(.multicolor)
+                .font(.title2)
+                .frame(height: 30)
+                .offset(y: item.symbol == "cloud.fill" ? -5 : 0)
+
+            if isAnyPrecip {
+                Text(item.precipChance >= 0.1 ? "\(Int(item.precipChance * 100))%" : " ")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(
+                        Color(
+                            hue: 0.55,
+                            saturation: 0.8,
+                            brightness: colorScheme == .light ? 0.7 : 1.0
+                        )
+                    )
+            }
+
+            Text("\(Int(item.temp.rounded()))°")
+                .font(.system(size: 18, weight: .medium))
+        }
+        .frame(minWidth: 20, idealWidth: 30, maxWidth: 40)
+        .contentShape(Rectangle())
     }
 }
