@@ -755,7 +755,7 @@ extension CalendarViewModel {
 
         print("Start Google Calendar sync timer (multi-user)…")
         syncTimer?.invalidate() // по желание, ако искаш да си подсигуриш
-        syncTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
+        syncTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             Task {
                 await self.performGoogleCalendarSyncForAllUsers()
@@ -2812,7 +2812,7 @@ extension CalendarViewModel {
         }
 
         print("Start Microsoft Calendar sync timer…")
-        msSyncTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
+        msSyncTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { [weak self] _ in
             Task { [weak self] in
                 await self?.performMicrosoftCalendarSyncForAllUsers()
             }

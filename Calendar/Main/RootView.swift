@@ -369,8 +369,12 @@ struct RootView: View {
         }
         .onChange(of: selectedTab) {_, newValue in
             if newValue == 6 {
+                CalendarViewModel.shared.stopGoogleCalendarSync()
+                CalendarViewModel.shared.stopMicrosoftCalendarSync()
                 draggableMenuAdaptiveBackgroundОpacity = 0.35
             }else{
+                CalendarViewModel.shared.startGoogleCalendarSync()
+                CalendarViewModel.shared.startMicrosoftCalendarSync()
                 draggableMenuAdaptiveBackgroundОpacity = 0.95
             }
         }
