@@ -14,16 +14,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		50D8281C2D80218F004B3545 /* ArteCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArteCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cloud Calendars for Google, Microsoft and iCloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "ArteCalendar" target */ = {
+		50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "Cloud Calendars for Google, Microsoft and iCloud" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 50B2124A2D4111B800ABB8D3 /* ArteCalendar */;
+			target = 50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -31,7 +31,7 @@
 		50B2124D2D4111B800ABB8D3 /* Calendar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "ArteCalendar" target */,
+				50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "Cloud Calendars for Google, Microsoft and iCloud" target */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -65,16 +65,16 @@
 			children = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
 				504D17CF2D678413006E5D6E /* Frameworks */,
-				50D8281C2D80218F004B3545 /* ArteCalendar.app */,
+				50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		50B2124A2D4111B800ABB8D3 /* ArteCalendar */ = {
+		50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "ArteCalendar" */;
+			buildConfigurationList = 50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "Cloud Calendars for Google, Microsoft and iCloud" */;
 			buildPhases = (
 				50B212472D4111B800ABB8D3 /* Sources */,
 				50B212482D4111B800ABB8D3 /* Frameworks */,
@@ -87,7 +87,7 @@
 			fileSystemSynchronizedGroups = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
 			);
-			name = ArteCalendar;
+			name = "Cloud Calendars for Google, Microsoft and iCloud";
 			packageProductDependencies = (
 				50D829892D886BBD004B3545 /* GoogleSignIn */,
 				50D8298B2D886BBD004B3545 /* GoogleSignInSwift */,
@@ -95,7 +95,7 @@
 				50AC17382D9C07280096F29D /* AltIcon */,
 			);
 			productName = Calendar;
-			productReference = 50D8281C2D80218F004B3545 /* ArteCalendar.app */;
+			productReference = 50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +113,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "ArteCalendar" */;
+			buildConfigurationList = 50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "Cloud Calendars for Google, Microsoft and iCloud" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				50B2124A2D4111B800ABB8D3 /* ArteCalendar */,
+				50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */,
 			);
 		};
 /* End PBXProject section */
@@ -301,10 +301,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars for Google, Microsoft and iCloud";
+				INFOPLIST_KEY_CFBundleDisplayName = "ARTE Calendar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_NSContactsUsageDescription = "Това приложение се нуждае от достъп до контактите, за да може да ...";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "ARTE Calendar се нуждае от местоположението ви във фонов режим, за да актуализира напомняния, базирани на геозона.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ARTE Calendar използва вашето местоположение, за да показва локални събития и изгрев/залез за текущата ви позиция.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -321,6 +323,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -341,10 +344,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars for Google, Microsoft and iCloud";
+				INFOPLIST_KEY_CFBundleDisplayName = "ARTE Calendar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
 				INFOPLIST_KEY_NSContactsUsageDescription = "Това приложение се нуждае от достъп до контактите, за да може да ...";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "ARTE Calendar се нуждае от местоположението ви във фонов режим, за да актуализира напомняния, базирани на геозона.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ARTE Calendar използва вашето местоположение, за да показва локални събития и изгрев/залез за текущата ви позиция.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -361,6 +366,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
@@ -371,7 +377,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "ArteCalendar" */ = {
+		50B212462D4111B800ABB8D3 /* Build configuration list for PBXProject "Cloud Calendars for Google, Microsoft and iCloud" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50B212572D4111BA00ABB8D3 /* Debug */,
@@ -380,7 +386,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "ArteCalendar" */ = {
+		50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "Cloud Calendars for Google, Microsoft and iCloud" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				50B2125A2D4111BA00ABB8D3 /* Debug */,

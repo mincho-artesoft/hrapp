@@ -2,96 +2,42 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-
-    <!-- ===== Основни сведения ===== -->
-    <key>CFBundleDevelopmentRegion</key>
-    <string>en</string>
-    <key>CFBundleExecutable</key>
-    <string>$(EXECUTABLE_NAME)</string>
-    <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-    <key>CFBundleInfoDictionaryVersion</key>
-    <string>6.0</string>
-    <key>CFBundleName</key>
-    <string>ArteCalendarASD</string>
-    <key>CFBundleShortVersionString</key>
-    <string>1.0</string>
-    <key>CFBundleVersion</key>
-    <string>4</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-
-    <!-- Името под иконата -->
-    <key>CFBundleDisplayName</key>
-    <string>ARTE Calendar</string>
-
-    <!-- ===== Първична икона ===== -->
-    <key>CFBundleIcons</key>
-    <dict>
-        <key>CFBundlePrimaryIcon</key>
-        <dict>
-            <key>CFBundleIconFiles</key>
-            <array>
-                <string>AppIcon</string>
-            </array>
-        </dict>
-    </dict>
-
-    <!-- ===== URL схеми ===== -->
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
-            </array>
-        </dict>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>msauth.Deksan.CalendarASD</string>
-            </array>
-        </dict>
-    </array>
-
-    <!-- ===== Разрешени междуприложни заявки ===== -->
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>msauthv2</string>
-        <string>msauthv3</string>
-    </array>
-
-    <!-- ===== Поддържани режими в Maps (празно) ===== -->
-    <key>MKDirectionsApplicationSupportedModes</key>
-    <array/>
-
-    <!-- ===== Фонови режими ===== -->
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>location</string>
-        <string>external-accessory</string>
-        <string>bluetooth-central</string>
-        <string>fetch</string>
-        <string>remote-notification</string>
-        <string>nearby-interaction</string>
-        <string>audio</string>
-        <string>processing</string>
-        <string>bluetooth-peripheral</string>
-        <string>voip</string>
-    </array>
-
-    <!-- ===== BGTaskScheduler разрешени идентификатори ===== -->
-    <key>BGTaskSchedulerPermittedIdentifiers</key>
-    <array>
-        <string>com.deksan.calendarasd.refresh</string>
-        <string>com.deksan.calendarasd.processing</string>
-    </array>
-
-    <!-- ===== Privacy (Location) ===== -->
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>ARTE Calendar използва вашето местоположение, за да показва локални събития и изгрев/залез за текущата ви позиция.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>ARTE Calendar се нуждае от местоположението ви във фонов режим, за да актуализира напомняния, базирани на геозона.</string>
-
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.deksan.calendarasd.refresh</string>
+		<string>com.deksan.calendarasd.processing</string>
+	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+		</dict>
+	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msauth.Deksan.CalendarASD</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>msauthv2</string>
+		<string>msauthv3</string>
+	</array>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array/>
 </dict>
 </plist>
