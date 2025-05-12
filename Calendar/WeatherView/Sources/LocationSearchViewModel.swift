@@ -41,25 +41,23 @@ class LocationSearchViewModel: NSObject,
     override init() {
         self.searchCompleter = MKLocalSearchCompleter()
         super.init()
-        
-        // Настройка на completer-а
+
+        // Настройваме търсачката
         searchCompleter.delegate = self
         searchCompleter.resultTypes = [.address]
+
+        // (iOS 15+) напълно изключваме POI
         if #available(iOS 15.0, *) {
             searchCompleter.pointOfInterestFilter = .excludingAll
         }
-        
-        // Наблюдаваме текста и филтрираме дубликатите "умно"
+
+        // Наблюдаваме queryFragment с debounce
         cancellable = $queryFragment
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
-            .removeDuplicates { [weak self] old, new in
-                // Ако списъкът ни е празен → позволи същия текст да мине
-                guard let self else { return old == new }
-                return old == new && !self.searchResults.isEmpty
-            }
+            .removeDuplicates()
             .sink { [weak self] newQuery in
                 guard let self else { return }
-                
+
                 if newQuery.isEmpty {
                     self.searchResults = []
                     self.selectedPlacemark = nil
@@ -70,7 +68,6 @@ class LocationSearchViewModel: NSObject,
                 }
             }
     }
-
 
     // MARK: - MKLocalSearchCompleterDelegate
 

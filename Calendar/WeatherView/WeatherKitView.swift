@@ -323,10 +323,17 @@ struct WeatherKitView: View {
                 )
             }
         }
-        .sheet(item: $eventToEdit, onDismiss: {
-        }) { theEvent in
-            EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
+        .sheet(isPresented: Binding(
+                get: { eventToEdit != nil },
+                set: { if !$0 { eventToEdit = nil } }   // зануляваме при затваряне
+        )) {
+            if let theEvent = eventToEdit {            // unwrap вътре
+                EventEditViewWrapper(eventStore: viewModel.eventStore,
+                                     event: theEvent)
+            }
         }
+
+
 
         // MARK: - onReceive за Location и други събития
         .onReceive(locationManager.$currentLocation) { location in
@@ -811,6 +818,8 @@ struct DirectionLockedHScroll<Content: View>: UIViewRepresentable {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.isDirectionalLockEnabled = true
+        scrollView.delaysContentTouches = false   // изпрати tap веднага
+        scrollView.canCancelContentTouches = true // но все пак може да скролва
 
         // 2) „hosting controller“ за SwiftUI съдържанието
         let host = UIHostingController(rootView: content)
@@ -851,6 +860,8 @@ extension WeatherKitView {
         HourlyForecastCard(
             vm: vm,
             onHourTap: { tappedHour in
+                print(tappedHour)
+
                 createAndEditNewEvent(from: tappedHour, for: Date())
             }
         )
@@ -900,7 +911,7 @@ private struct HourlyStrip: View {
     let onHourTap: (Int) -> Void
 
     var body: some View {
-        DirectionLockedHScroll {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 25) {
                 ForEach(hours) { hour in
                     HourlyCell(
@@ -908,14 +919,19 @@ private struct HourlyStrip: View {
                         isAnyPrecip: isAnyPrecip,
                         colorScheme: colorScheme
                     )
-                    .onTapGesture { onHourTap(Int(hour.hour) ?? 0) }
+                    .contentShape(Rectangle())          // за по-голяма зона за пипане
+                    .onTapGesture {
+                        onHourTap(Int(hour.hour) ?? 0)  // ще отпечата часа
+                    }
                 }
             }
             .padding(.horizontal, 15)
             .padding(.vertical, 12)
         }
+        .scrollIndicators(.hidden)
     }
 }
+
 
 // MARK: - HourlyCell
 private struct HourlyCell: View {
