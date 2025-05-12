@@ -1,7 +1,7 @@
 import UIKit
 import EventKit
 
-public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecognizerDelegate, @preconcurrency UIEditMenuInteractionDelegate {
+public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecognizerDelegate, UIEditMenuInteractionDelegate {
      var highlightedSubColumn: (dayIndex: Int, calIndex: Int)? = nil
     private var editMenuInteraction: UIEditMenuInteraction?
        private var currentTappedDescriptor: EventDescriptor?
