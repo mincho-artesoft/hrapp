@@ -203,17 +203,29 @@ struct CalendarsSheetView: View {
                             }
                         }
 
-                        Button(LocalizedStringKey("Add Google Calendar")) {
-                            showAddGoogleCalendarSheet = user                        // ←✓
+                        Section {
+                            Button {
+                                showAddGoogleCalendarSheet = user
+                            } label: {
+                                Text(LocalizedStringKey("Add Google Calendar"))
+                            }
+                            .buttonStyle(HighlightOnPressButtonStyle(tint: .blue))
+                            .listRowInsets(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                         }
-                        .listRowSeparator(.hidden)
-                        
-                        Button(LocalizedStringKey("Sign out")) {
-                            viewModel.signOutFromGoogle(user: user)
-                        }
-                        .foregroundColor(.red)
-//                        .listRowBackground(Color.clear)
 
+                        Section {
+                            Button {
+                                viewModel.signOutFromGoogle(user: user)
+                            } label: {
+                                Text(LocalizedStringKey("Sign out"))
+                            }
+                            .buttonStyle(HighlightOnPressButtonStyle(tint: .red))
+                            .listRowInsets(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                        }
                     } label: {
                         HStack {
                             if let photoURLString = user.photoURL,
@@ -288,12 +300,17 @@ struct CalendarsSheetView: View {
                             }
                         }
 
-                        Button(LocalizedStringKey("Sign out")) {
-                            viewModel.signOutFromMicrosoft(user: user)
+                        Section {
+                            Button {
+                                viewModel.signOutFromMicrosoft(user: user)
+                            } label: {
+                                Text(LocalizedStringKey("Sign out"))
+                            }
+                            .buttonStyle(HighlightOnPressButtonStyle(tint: .red))
+                            .listRowInsets(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                         }
-                        .foregroundColor(.red)
-//                        .listRowBackground(Color.clear)
-
                     } label: {
                         HStack {
                             Image(systemName: "person.circle")
