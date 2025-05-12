@@ -15,7 +15,6 @@ struct SubscriptionView: View {
     @Environment(\.scenePhase) private var scenePhase   // ← NEW
 
     var body: some View {
-        NavigationView {
             VStack {
                 // Segmented picker
                 Picker("Plan", selection: $selectedCategory) {
@@ -115,7 +114,6 @@ struct SubscriptionView: View {
             } message: {
                 Text(alertMessage)
             }
-        }
         .cornerRadius(10)
         .padding(.horizontal)
     }
