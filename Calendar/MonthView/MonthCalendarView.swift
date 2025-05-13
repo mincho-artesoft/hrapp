@@ -39,6 +39,28 @@ struct MonthCalendarView: View {
         self._currentMonth = State(initialValue: startMonth)
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange
+        
+        // ① 100 % прозрачно – когато е в scroll-edge (върха)
+        let clear = UINavigationBarAppearance()
+        clear.configureWithTransparentBackground()          // няма фон, няма blur
+
+        // ② 30 % opacity – когато е стандартно (след скрол)
+        let semi = UINavigationBarAppearance()
+        semi.configureWithTransparentBackground()
+        semi.backgroundColor =
+            UIColor.systemBackground.withAlphaComponent(0.30)   // ← смени 0.30 по вкус
+        // (по желание добави blur)
+        // semi.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+
+        // ③ Назначаваме
+        let nav = UINavigationBar.appearance()
+        nav.scrollEdgeAppearance         = clear        // горе → изцяло прозрачно
+        nav.compactScrollEdgeAppearance  = clear        // (landscape compact)
+        nav.standardAppearance           = semi         // скролнато → полупрозрачно
+        nav.compactAppearance            = semi
+
+        // iOS 17+ фиксация – иначе при swipe back мигаше бяло
+        nav.scrollEdgeAppearance?.backgroundColor = .clear
     }
     
     var body: some View {
@@ -135,6 +157,7 @@ struct MonthCalendarView: View {
             // Зареждаме събития за текущия месец
             viewModel.loadEvents(for: currentMonth)
         }
+        
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {
@@ -158,8 +181,6 @@ struct MonthCalendarView: View {
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        
         // (E) Full-screen cover (DayView)
         .fullScreenCover(item: $selectedDayForFullScreen) { day in
             NavigationView {
@@ -228,26 +249,7 @@ extension MonthCalendarView {
     private func localizedTabName(_ rawValue: String) -> String {
         return NSLocalizedString(rawValue, comment: "")
     }
-    
-    private func iconName(for tab: Int) -> String {
-        switch tab {
-        case 1:
-            return "calendar.day.timeline.leading"
-        case 3:
-            return "distribute.horizontal.left"
-        case 0:
-            return "calendar"
-        case 2:
-            return "12.lane"
-        case 4:
-            return "list.bullet"
-        case 5:
-            return "align.vertical.top"
-        default:
-            return "calendar"
-        }
-    }
-    
+
     private func moveMonth(by offset: Int) {
         if let newMonth = calendar.date(byAdding: .month, value: offset, to: currentMonth) {
             currentMonth = newMonth

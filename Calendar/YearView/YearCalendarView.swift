@@ -15,6 +15,36 @@ struct YearCalendarView: View {
     @State private var showSearchBar: Bool = false
     @State private var searchText: String = ""
     
+    init(viewModel: CalendarViewModel,
+         selectedTab: Int,
+         onViewChange: ((Int) -> Void)?) {
+        self.viewModel = viewModel
+        self.selectedTab = selectedTab
+        self.onViewChange = onViewChange
+        
+        // ① 100 % прозрачно – когато е в scroll-edge (върха)
+        let clear = UINavigationBarAppearance()
+        clear.configureWithTransparentBackground()          // няма фон, няма blur
+
+        // ② 30 % opacity – когато е стандартно (след скрол)
+        let semi = UINavigationBarAppearance()
+        semi.configureWithTransparentBackground()
+        semi.backgroundColor =
+            UIColor.systemBackground.withAlphaComponent(0.30)   // ← смени 0.30 по вкус
+        // (по желание добави blur)
+        // semi.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+
+        // ③ Назначаваме
+        let nav = UINavigationBar.appearance()
+        nav.scrollEdgeAppearance         = clear        // горе → изцяло прозрачно
+        nav.compactScrollEdgeAppearance  = clear        // (landscape compact)
+        nav.standardAppearance           = semi         // скролнато → полупрозрачно
+        nav.compactAppearance            = semi
+
+        // iOS 17+ фиксация – иначе при swipe back мигаше бяло
+        nav.scrollEdgeAppearance?.backgroundColor = .clear
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             // (A) Търсачка

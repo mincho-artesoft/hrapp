@@ -223,6 +223,7 @@ struct CalendarsSheetView: View {
                                         .foregroundColor(.primary)
                                     Spacer()
                                     ProgressView()
+                                        .tint(.primary) 
                                 }
                                 .padding(.vertical, 4)
                                 .padding(.horizontal, 5)

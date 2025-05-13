@@ -828,7 +828,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
     }
     
-    // MARK: - iOS 14+ menu
     @available(iOS 14.0, *)
     private func buildViewMenu() -> UIMenu {
         // Създаване на иконите за опциите
@@ -839,6 +838,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
+        let vitaHealthImage   = UIImage(systemName: "fork.knife")
 
         // Съществуващите UIAction-и
         let dayAction = UIAction(
@@ -846,7 +846,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             image: dayImage,
             state: currentView == 1 ? .on : .off
         ) { [weak self] _ in
-            self?.showSingleDay = true
             self?.currentView = 1
             self?.onViewChange?(1)
             self?.viewMenuButton.setImage(dayImage, for: .normal)
@@ -857,7 +856,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             image: multiDayImage,
             state: currentView == 3 ? .on : .off
         ) { [weak self] _ in
-            self?.showSingleDay = false
             self?.currentView = 3
             self?.onViewChange?(3)
             self?.viewMenuButton.setImage(multiDayImage, for: .normal)
@@ -930,6 +928,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             self?.viewMenuButton.setImage(weatherImage, for: .normal)
         }
         
+        let vitaHealthAction = UIAction(
+            title: NSLocalizedString("VitaHealth", comment: ""),
+            image: vitaHealthImage,
+            state: currentView == 7 ? .on : .off
+        ) { [weak self] _ in
+            self?.currentView = 7
+            self?.onViewChange?(7)
+            self?.viewMenuButton.setImage(vitaHealthImage, for: .normal)
+        }
+        
         return UIMenu(
             title: "",
             children: [
@@ -939,7 +947,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 yearAction,
                 listAction,
                 multiCalendarAction,
-                weatherAction  // Добавената опция Weather
+                weatherAction,
+                vitaHealthAction
             ]
         )
     }
@@ -961,17 +970,15 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         case 5:
             imageName = "align.vertical.top"
         case 6:
-            imageName = "cloud.sun"  // Иконата за Weather
+            imageName = "cloud.sun"
+        case 7:
+            imageName = "fork.knife"
         default:
             imageName = "calendar"
         }
         
         viewMenuButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
-
-
-   
-    
     // MARK: - DateRangeButton
     @objc private func didTapDateRangeButton() {
         if showCalendar {

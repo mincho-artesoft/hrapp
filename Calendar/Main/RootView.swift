@@ -6,7 +6,6 @@ import CoreLocation
 
 // MARK: - RootView
 struct RootView: View {
-    // Съществуващи променливи
     @State private var selectedCalendars = Set<EKCalendar>()
     @State private var showCalendarChooser = false
     @State private var selectedTabDraggableMenuView = 0
@@ -170,7 +169,15 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
-
+                        case 7:
+                            VitaHealth(
+                                selectedTabRoot: selectedTab,
+                                onViewChange: { newTab in
+                                    selectedTab = newTab
+                                }
+                            )
+                            
+//                                .modelContainer(modelContext)
                         default:
                             Text("N/A")
                         }

@@ -71,8 +71,6 @@ struct AllEventsListView: View {
             }
         }
         .animation(.easeInOut, value: showSearchBar)
-        
-        // 3) Toolbar
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 HStack(spacing: 9) {

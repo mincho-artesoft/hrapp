@@ -141,6 +141,7 @@ struct WeatherKitView: View {
                 }
             }
         }
+        
         .safeAreaInset(edge: .top) {          // iOS 15+
             if showSearchBar {
                 searchField

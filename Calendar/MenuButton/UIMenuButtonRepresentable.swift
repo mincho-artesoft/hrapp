@@ -45,6 +45,7 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         let weatherImage      = UIImage(systemName: "cloud.sun")
+        let vitaHealthImage   = UIImage(systemName: "fork.knife")
         
         let dayAction = UIAction(
             title: NSLocalizedString("Day", comment: "Tab name: Day"),
@@ -125,6 +126,15 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(weatherImage, for: .normal)
         }
         
+        let vitaHealthAction = UIAction(
+            title: NSLocalizedString("VitaHealth", comment: "Tab name: VitaHealth"),
+            image: vitaHealthImage,
+            state: currentView == 7 ? .on : .off
+        ) { _ in
+            onViewChange?(7)
+            button.setImage(vitaHealthImage, for: .normal)
+        }
+        
         return UIMenu(
             title: "",
             children: [
@@ -134,7 +144,8 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
                 yearAction,
                 listAction,
                 multiCalendarAction,
-                weatherAction
+                weatherAction,
+                vitaHealthAction
             ]
         )
     }
@@ -148,6 +159,7 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         case 4: return UIImage(systemName: "list.bullet")
         case 5: return UIImage(systemName: "align.vertical.top")
         case 6: return UIImage(systemName: "cloud.sun")
+        case 7: return UIImage(systemName: "fork.knife")
         default: return UIImage(systemName: "calendar")
         }
     }
