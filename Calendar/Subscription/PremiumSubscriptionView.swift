@@ -8,7 +8,7 @@ struct PremiumSubscriptionView: View {
                 .font(.title.bold())
 
             VStack(alignment: .leading, spacing: 8) {
-                FeatureRow(feature: "All Advance Plan features")
+                FeatureRow(feature: "All Advanced Plan features")
                 FeatureRow(feature: "Sync with Microsoft Calendar")
                 FeatureRow(feature: "Sync meets from Microsoft Teams")
             }
