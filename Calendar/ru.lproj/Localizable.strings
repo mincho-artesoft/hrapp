@@ -644,7 +644,6 @@
 "SectionDailySummary" = "Ежедневное резюме";
 
 /* AdvanceSubscriptionView */
-"Advanced Plan" = "Расширенный план";
 "All Base Plan features" = "Все функции базового плана";
 "Multi-calendar view" = "Просмотр нескольких календарей";
 "Sync with Google Calendar" = "Синхронизация с Google Календарем";
@@ -661,7 +660,6 @@
 
 /* PremiumSubscriptionView */
 "Premium Plan" = "Премиум план";
-"All Advance Plan features" = "Все функции расширенного плана";
 "Sync with Microsoft Calendar" = "Синхронизация с Microsoft Календарем";
 "Sync meets from Microsoft Teams" = "Синхронизация встреч из Microsoft Teams";
 
@@ -670,7 +668,6 @@
 "%d %@ free" = "%d %@ бесплатно";
 
 /* SubscriptionListView */
-"Advance Plans" = "Планы Расширенный";
 "Premium Plans" = "Планы Премиум";
 "You are subscribed to the %@ %@ plan" = "Вы подписаны на план %@ %@";
 "Renews on: %@" = "Продление: %@";
@@ -683,7 +680,9 @@
 
 /* SubscriptionCategory */
 "Base"    = "Базовый";
-"Advance" = "Расширенный";
+"Advanced" = "Расширенный";
+"Advanced Plan" = "Расширенный план";
+"All Advanced Plan features" = "Все функции расширенного плана";
 "Premium" = "Премиум";
 
 /* SubscriptionView Alerts */
@@ -693,7 +692,6 @@
 
 /* SubscriptionStatus */
 "Base"    = "Базовый";
-"Advance" = "Расширенный";
 "Premium" = "Премиум";
 
 /* Subscription period units */

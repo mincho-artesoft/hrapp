@@ -644,7 +644,6 @@
 "SectionDailySummary" = "Дневна обобщена информация";
 
 /* AdvanceSubscriptionView */
-"Advanced Plan" = "Разширен план";
 "All Base Plan features" = "Всички функции на основния план";
 "Multi-calendar view" = "Изглед с няколко календара";
 "Sync with Google Calendar" = "Синхронизиране с Google Календар";
@@ -661,7 +660,6 @@
 
 /* PremiumSubscriptionView */
 "Premium Plan" = "Премиум план";
-"All Advance Plan features" = "Всички функции на разширения план";
 "Sync with Microsoft Calendar" = "Синхронизация с Microsoft Календар";
 "Sync meets from Microsoft Teams" = "Синхронизация на срещи от Microsoft Teams";
 
@@ -670,7 +668,6 @@
 "%d %@ free" = "%d %@ безплатно";
 
 /* SubscriptionListView */
-"Advance Plans" = "Планове Разширен";
 "Premium Plans" = "Планове Премиум";
 "You are subscribed to the %@ %@ plan" = "Вие сте абонирани за %@ %@ план";
 "Renews on: %@" = "Подновява се на: %@";
@@ -683,7 +680,9 @@
 
 /* SubscriptionCategory */
 "Base"    = "Основен";
-"Advance" = "Разширен";
+"Advanced" = "Разширен";
+"Advanced Plan" = "Разширен план";
+"All Advanced Plan features" = "Всички функции на разширения план";
 "Premium" = "Премиум";
 
 /* SubscriptionView Alerts */
@@ -693,7 +692,6 @@
 
 /* SubscriptionStatus */
 "Base"    = "Основен";
-"Advance" = "Разширен";
 "Premium" = "Премиум";
 
 /* Subscription period units */

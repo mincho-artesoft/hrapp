@@ -129,7 +129,7 @@ print("value",value)
         // Филтър за Advance/Premium
         let categoryMatches: (Product) -> Bool = { product in
             switch selectedCategory {
-            case .advance: return product.id.contains("advance")
+            case .advance: return product.id.contains("advanced")
             case .premium: return product.id.contains("premium")
             case .base:    return false
             }

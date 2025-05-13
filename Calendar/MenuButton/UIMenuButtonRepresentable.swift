@@ -45,7 +45,6 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         let weatherImage      = UIImage(systemName: "cloud.sun")
-        let vitaHealthImage   = UIImage(systemName: "fork.knife")
         
         let dayAction = UIAction(
             title: NSLocalizedString("Day", comment: "Tab name: Day"),

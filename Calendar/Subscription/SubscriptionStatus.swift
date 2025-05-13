@@ -3,7 +3,7 @@ import SwiftUI
 /// Статуси на абонацията (по избор)
 enum SubscriptionStatus: String, CaseIterable {
     case base    = "Base"
-    case advance = "Advance"
+    case advance = "Advanced"
     case premium = "Premium"
 
     /// Локализирано заглавие за UI

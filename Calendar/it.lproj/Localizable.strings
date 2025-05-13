@@ -643,7 +643,6 @@
 "SectionDailySummary" = "Riepilogo giornaliero";
 
 /* AdvanceSubscriptionView */
-"Advanced Plan" = "Piano Avanzato";
 "All Base Plan features" = "Tutte le funzionalità del piano base";
 "Multi-calendar view" = "Visualizzazione multi-calendario";
 "Sync with Google Calendar" = "Sincronizzazione con Google Calendar";
@@ -660,7 +659,6 @@
 
 /* PremiumSubscriptionView */
 "Premium Plan" = "Piano Premium";
-"All Advance Plan features" = "Tutte le funzionalità del piano Avanzato";
 "Sync with Microsoft Calendar" = "Sincronizzazione con Microsoft Calendar";
 "Sync meets from Microsoft Teams" = "Sincronizzazione riunioni da Microsoft Teams";
 
@@ -669,7 +667,6 @@
 "%d %@ free" = "%d %@ gratis";
 
 /* SubscriptionListView */
-"Advance Plans" = "Piani Avanzati";
 "Premium Plans" = "Piani Premium";
 "You are subscribed to the %@ %@ plan" = "Sei abbonato al piano %@ %@";
 "Renews on: %@" = "Si rinnova il: %@";
@@ -682,7 +679,9 @@
 
 /* SubscriptionCategory */
 "Base"    = "Base";
-"Advance" = "Avanzato";
+"Advanced" = "Avanzato";
+"Advanced Plan" = "Piano Avanzato";
+"All Advanced Plan features" = "Tutte le funzionalità del piano Avanzato";
 "Premium" = "Premium";
 
 /* SubscriptionView Alerts */
@@ -692,7 +691,6 @@
 
 /* SubscriptionStatus */
 "Base"    = "Base";
-"Advance" = "Avanzato";
 "Premium" = "Premium";
 
 /* Subscription period units */

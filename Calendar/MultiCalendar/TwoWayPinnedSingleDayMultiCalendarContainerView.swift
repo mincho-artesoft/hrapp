@@ -693,7 +693,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
-        let vitaHealthImage   = UIImage(systemName: "fork.knife")
 
         // Съществуващите UIAction-и
         let dayAction = UIAction(
@@ -752,7 +751,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             state: currentView == 5 ? .on : .off
         ) { [weak self] _ in
             if self?.subscriptionManager.subscriptionStatus == .base {
-                let payload: [String: Any] = ["subscriptionStatusRaw": "Advance"]
+                let payload: [String: Any] = ["subscriptionStatusRaw": "Advanced"]
                 NotificationCenter.default.post(
                     name: .notificationDraggableMenuViewSub,
                     object: nil,
