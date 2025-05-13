@@ -48,6 +48,13 @@ struct RootView: View {
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
     @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
+    
+    init() {
+            // Ако няма нищо записано, по подразбиране ще е 1
+            let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
+            _selectedTab = State(initialValue: saved)
+        }
+    
     var body: some View {
         ZStack {
             Color(.systemBackground).edgesIgnoringSafeArea(.all)
@@ -376,6 +383,8 @@ struct RootView: View {
             }
         }
         .onChange(of: selectedTab) {_, newValue in
+            
+            UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
             if newValue == 6 {
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
