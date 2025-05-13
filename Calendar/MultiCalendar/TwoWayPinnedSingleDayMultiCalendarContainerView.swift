@@ -752,7 +752,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             state: currentView == 5 ? .on : .off
         ) { [weak self] _ in
             if self?.subscriptionManager.subscriptionStatus == .base {
-                let payload: [String: Any] = ["subscriptionStatusRaw": "Advance"]
+                let payload: [String: Any] = ["subscriptionStatusRaw": "Advanced"]
                 NotificationCenter.default.post(
                     name: .notificationDraggableMenuViewSub,
                     object: nil,

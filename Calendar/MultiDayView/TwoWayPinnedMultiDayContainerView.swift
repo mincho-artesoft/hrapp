@@ -897,7 +897,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             state: currentView == 5 ? .on : .off
         ) { [weak self] _ in
             if self?.subscriptionManager.subscriptionStatus == .base {
-                let payload: [String: Any] = ["subscriptionStatusRaw": "Advance"]
+                let payload: [String: Any] = ["subscriptionStatusRaw": "Advanced"]
                 NotificationCenter.default.post(
                     name: .notificationDraggableMenuViewSub,
                     object: nil,
@@ -928,16 +928,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             self?.viewMenuButton.setImage(weatherImage, for: .normal)
         }
         
-        let vitaHealthAction = UIAction(
-            title: NSLocalizedString("VitaHealth", comment: ""),
-            image: vitaHealthImage,
-            state: currentView == 7 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 7
-            self?.onViewChange?(7)
-            self?.viewMenuButton.setImage(vitaHealthImage, for: .normal)
-        }
-        
         return UIMenu(
             title: "",
             children: [
@@ -947,8 +937,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 yearAction,
                 listAction,
                 multiCalendarAction,
-                weatherAction,
-                vitaHealthAction
+                weatherAction
             ]
         )
     }

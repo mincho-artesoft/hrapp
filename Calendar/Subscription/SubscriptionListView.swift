@@ -62,7 +62,6 @@ struct SubscriptionListView: View {
            let product = manager.products.first(where: { $0.id == activeID }),
            let expiry = manager.expirationDates[activeID] {
 
-            // 1. rawValue на статуса – това са ключовете "Base", "Advance", "Premium"
             let planTypeKey = manager.subscriptionStatus.rawValue
 
             // 2. Ръчно правим mapping unit → String ключ, точно както в periodUnitOnly, но като String
