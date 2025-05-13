@@ -1,78 +1,68 @@
-
 import SwiftUI
 
-// MARK: - DraggableMenuView (collapsed & full only)
+/// A draggable bottom sheet menu with customizable bottom bar, horizontal & vertical content.
 struct DraggableMenuView<
-    BottomLeftContent: View,
-    BottomCenterContent: View,
-    BottomRightContent: View,
+    BottomBarContent: View,
     HorizontalContent: View,
     VerticalContent: View
 >: View {
 
     // MARK: — Config & Theme
     private let fixedBottomBarHeight: CGFloat = 60
-    private let horizontalContentHeight: CGFloat = 150
     private let handleHeight: CGFloat = 26
-    private let menuCornerRadius: CGFloat = 0
     private let collapsedPeekExtra: CGFloat = 10
     private var topGapWhenExpanded: CGFloat = UIScreen.main.bounds.height * 0.2
-    @Binding var adaptiveBackgroundОpacity: CGFloat
 
+    @Binding var adaptiveBackgroundOpacity: CGFloat
     @Environment(\.colorScheme) private var colorScheme
     private var adaptiveBackground: Color {
-        colorScheme == .dark ? .black.opacity(adaptiveBackgroundОpacity) : .white.opacity(adaptiveBackgroundОpacity)
+        colorScheme == .dark
+            ? .black.opacity(adaptiveBackgroundOpacity)
+            : .white.opacity(adaptiveBackgroundOpacity)
     }
 
-    // MARK: — Binding to external state
+    // MARK: — External bindings & callbacks
     @Binding var menuState: MenuState
     let onStateChange: (MenuState) -> Void
 
-    // MARK: — Slots
-    let bottomLeftSlot: BottomLeftContent
-    let bottomCenterSlot: BottomCenterContent
-    let bottomRightSlot: BottomRightContent
+    // MARK: — Customizable slots
+    let bottomBar: () -> BottomBarContent
     let horizontalScrollContent: HorizontalContent
     let verticalScrollContent: VerticalContent
 
-    // MARK: — Private state
+    // MARK: — Internal state for dragging
     @State private var currentOffsetY: CGFloat
     @GestureState private var dragGestureTranslationY: CGFloat = 0
 
     // MARK: — Init
     init(
         menuState: Binding<MenuState>,
-        adaptiveBackgroundОpacity: Binding<CGFloat>,
-        @ViewBuilder bottomLeft: () -> BottomLeftContent,
-        @ViewBuilder bottomCenter: () -> BottomCenterContent,
-        @ViewBuilder bottomRight: () -> BottomRightContent,
+        adaptiveBackgroundOpacity: Binding<CGFloat>,
+        @ViewBuilder bottomBar: @escaping () -> BottomBarContent,
         @ViewBuilder horizontalContent: () -> HorizontalContent,
         @ViewBuilder verticalContent: () -> VerticalContent,
         onStateChange: @escaping (MenuState) -> Void = { _ in }
     ) {
         self._menuState = menuState
-        self._adaptiveBackgroundОpacity = adaptiveBackgroundОpacity
+        self._adaptiveBackgroundOpacity = adaptiveBackgroundOpacity
         self.onStateChange = onStateChange
 
-        self.bottomLeftSlot = bottomLeft()
-        self.bottomCenterSlot = bottomCenter()
-        self.bottomRightSlot = bottomRight()
+        self.bottomBar = bottomBar
         self.horizontalScrollContent = horizontalContent()
         self.verticalScrollContent = verticalContent()
 
-        // Calculate initial offset based on binding value
-        let fullOff = UIScreen.main.bounds.height * 0.2
+        // Compute initial offsets
+        let fullOffset = UIScreen.main.bounds.height * 0.2
         let clippingHeight = UIScreen.main.bounds.height - fixedBottomBarHeight
-        let collapsedOff = max(fullOff,
-                               clippingHeight - handleHeight + collapsedPeekExtra)
-        _currentOffsetY = State(initialValue:
-            menuState.wrappedValue == .full
-            ? fullOff
-            : collapsedOff
+        let collapsedOffset = max(fullOffset, clippingHeight - handleHeight + collapsedPeekExtra)
+
+        _currentOffsetY = State(
+            initialValue: menuState.wrappedValue == .full
+                ? fullOffset
+                : collapsedOffset
         )
     }
 
-    // MARK: — View body
     // MARK: — View body
     var body: some View {
         GeometryReader { geometry in
@@ -80,27 +70,25 @@ struct DraggableMenuView<
             let screenWidth  = geometry.size.width
             let bottomSafe   = geometry.safeAreaInsets.bottom
 
-            // ▸ изчисляваме офсетите
-            let clippingHeight  = screenHeight - fixedBottomBarHeight
+            // calculate snap positions
             let fullOffsetY     = topGapWhenExpanded
-            let collapsedOffsetY = max(fullOffsetY,
-                                       clippingHeight - handleHeight + collapsedPeekExtra)
+            let clippingHeight  = screenHeight - fixedBottomBarHeight
+            let collapsedOffsetY = max(
+                fullOffsetY,
+                clippingHeight - handleHeight + collapsedPeekExtra
+            )
 
-            // ▸ текуща позиция
+            // current drag position
             let dragY      = currentOffsetY + dragGestureTranslationY
-            let effectiveY = max(fullOffsetY,
-                                 min(collapsedOffsetY, dragY))
+            let effectiveY = max(fullOffsetY, min(collapsedOffsetY, dragY))
 
             ZStack(alignment: .bottom) {
-
-                // 🔹 1. Прозрачен слой, който хваща тап и прибира менюто
+                // 1. Transparent overlay to catch taps and collapse
                 if menuState == .full {
-                    Color.black.opacity(0.001)              // „hit‑box“
+                    Color.black.opacity(0.001)
                         .ignoresSafeArea()
                         .onTapGesture {
-                            withAnimation(.spring(response: 0.3,
-                                                  dampingFraction: 0.8,
-                                                  blendDuration: 0.3)) {
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                                 menuState = .collapsed
                                 onStateChange(.collapsed)
                                 currentOffsetY = collapsedOffsetY
@@ -108,39 +96,31 @@ struct DraggableMenuView<
                         }
                 }
 
-                // 🔹 2. Самото плъзгащо се меню
+                // 2. The draggable menu
                 VStack(spacing: 0) {
-                    // ▸ 2.1 Горната плъзгаща се част
-                    ZStack(alignment: .top) {
-                        slidingContentView(fullOffsetY: fullOffsetY,
-                                           collapsedOffsetY: collapsedOffsetY)
-                            .background(adaptiveBackground)
-                            .cornerRadius(menuCornerRadius, antialiased: true)
-                            .offset(y: effectiveY)
-                    }
-                    .frame(width: screenWidth, height: clippingHeight)
-                    .clipped()
+                    // 2.1 The sliding content
+                    slidingContentView(fullOffsetY: fullOffsetY,
+                                       collapsedOffsetY: collapsedOffsetY)
+                        .background(adaptiveBackground)
+                        .cornerRadius(0, antialiased: true)
+                        .offset(y: effectiveY)
+                        .frame(width: screenWidth, height: screenHeight - fixedBottomBarHeight)
+                        .clipped()
 
-                    // ▸ 2.2 Долна статична лента
+                    // 2.2 The bottom bar
                     bottomBarView(bottomSafeArea: bottomSafe)
-                        .frame(height: fixedBottomBarHeight, alignment: .top)
+                        .frame(height: fixedBottomBarHeight)
                         .background(adaptiveBackground)
                 }
                 .frame(width: screenWidth)
                 .edgesIgnoringSafeArea([.top, .bottom])
-                .animation(.spring(response: 0.3,
-                                   dampingFraction: 0.8,
-                                   blendDuration: 0.3),
-                           value: effectiveY)
+                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: effectiveY)
             }
             .onAppear {
-                onStateChange(menuState)        // известяваме за началното състояние
+                onStateChange(menuState)
             }
             .onChange(of: menuState) { _, newState in
-                // менюто е променено отвън → анимираме към новия офсет
-                withAnimation(.spring(response: 0.3,
-                                      dampingFraction: 0.8,
-                                      blendDuration: 0.3)) {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                     currentOffsetY = (newState == .full)
                         ? fullOffsetY
                         : collapsedOffsetY
@@ -150,59 +130,47 @@ struct DraggableMenuView<
         .edgesIgnoringSafeArea(.all)
     }
 
-
     // MARK: — Subviews
+
     @ViewBuilder
     private func slidingContentView(
         fullOffsetY: CGFloat,
         collapsedOffsetY: CGFloat
     ) -> some View {
         VStack(spacing: 0) {
-            // ▸ handle
+            // Handle
             RoundedRectangle(cornerRadius: 3)
                 .fill(Color.gray.opacity(0.6))
                 .frame(width: 60, height: 6)
                 .padding(.vertical, (handleHeight - 6) / 2)
-                .frame(height: handleHeight)
-                .frame(maxWidth: .infinity)
                 .contentShape(Rectangle())
                 .gesture(
                     dragGesture(fullOffset: fullOffsetY,
                                 collapsedOffset: collapsedOffsetY)
                 )
 
-            // ▸ content
+            // Content
             VStack(spacing: 0) {
                 horizontalScrollContent
                     .frame(maxWidth: .infinity)
                 verticalScrollContent
-                    .padding(.bottom,
-                             fixedBottomBarHeight + handleHeight + 40)
+                    .padding(.bottom, fixedBottomBarHeight + handleHeight + 40)
             }
         }
     }
 
     @ViewBuilder
     private func bottomBarView(bottomSafeArea: CGFloat) -> some View {
-        VStack(spacing: 0) {
-            HStack {
-                Spacer()
-                bottomLeftSlot.frame(maxWidth: .infinity)
-                Spacer()
-                bottomCenterSlot.frame(maxWidth: .infinity)
-                Spacer()
-                bottomRightSlot.frame(maxWidth: .infinity)
-                Spacer()
-            }
-            .padding(.horizontal)
-            .padding(.top, 5)
-
-            Spacer()
+        HStack(spacing: 0) {
+            bottomBar()
         }
+        .padding(.horizontal)
+        .padding(.top, 5)
         .padding(.bottom, bottomSafeArea)
     }
 
     // MARK: — Drag logic
+
     private func dragGesture(
         fullOffset: CGFloat,
         collapsedOffset: CGFloat
@@ -214,9 +182,9 @@ struct DraggableMenuView<
             .onEnded { value in
                 let snapPoints = [collapsedOffset, fullOffset]
                 let predicted = currentOffsetY + value.predictedEndTranslation.height
-                let closest = snapPoints.min {
+                let closest = snapPoints.min(by: {
                     abs($0 - predicted) < abs($1 - predicted)
-                } ?? collapsedOffset
+                }) ?? collapsedOffset
 
                 currentOffsetY = max(fullOffset, min(collapsedOffset, closest))
 
@@ -229,5 +197,5 @@ struct DraggableMenuView<
                 }
             }
     }
-}
 
+}

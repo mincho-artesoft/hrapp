@@ -206,114 +206,126 @@ struct RootView: View {
                         if isPortrait {
                             DraggableMenuView(
                                 menuState: $menuState,
-                                adaptiveBackgroundОpacity: $draggableMenuAdaptiveBackgroundОpacity,
-                                // MARK: Bottom‑Left ▸ Today
-                                bottomLeft: {
-                                    Button {
-                                        let today = Calendar.current.startOfDay(for: Date())
-                                        pinnedFromDateSingle = today
-                                        pinnedToDateSingle   = today
-                                        selectedTab = 1
-                                        menuState = .collapsed
-                                    } label: {
-                                        VStack(spacing: 0) {
-                                            Image(systemName: "calendar.badge.checkmark")
-                                                .font(.system(size: 18))
-                                                .foregroundColor(.blue)
-                                            Text("Today")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.primary)
+                                adaptiveBackgroundOpacity:$draggableMenuAdaptiveBackgroundОpacity,
+                                // MARK: Bottom bar с 3 бутона
+                                bottomBar: {
+                                    HStack{
+                                        Spacer()
+                                        
+                                        Button {
+                                            let today = Calendar.current.startOfDay(for: Date())
+                                            pinnedFromDateSingle = today
+                                            pinnedToDateSingle   = today
+                                            selectedTab = 1
+                                            UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
+                                            menuState = .collapsed
+                                        } label: {
+                                            VStack(spacing: 0) {
+                                                Image(systemName: "calendar.badge.checkmark")
+                                                    .font(.system(size: 18))
+                                                    .foregroundColor(.blue)
+                                                Text("Today")
+                                                    .font(.system(size: 10))
+                                                    .foregroundColor(.primary)
+                                            }
                                         }
-                                    }
-                                },
-
-                                // MARK: Bottom-Center ▸ Add
-                                bottomCenter: {
-                                    Button {
-                                        createAndEditNewEvent(on: Date())
-                                        menuState = .collapsed
-                                    } label: {
-                                        VStack(spacing: 0) {
-                                            Image(systemName: "calendar.badge.plus")
-                                                .font(.system(size: 18))
-                                                .foregroundColor(.blue)
-                                            Text("Add")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.primary)
+                                        .frame(maxWidth: .infinity)
+                                        
+                                        Spacer()
+                                        
+                                        Button {
+                                            createAndEditNewEvent(on: Date())
+                                            menuState = .collapsed
+                                        } label: {
+                                            VStack(spacing: 0) {
+                                                Image(systemName: "calendar.badge.plus")
+                                                    .font(.system(size: 18))
+                                                    .foregroundColor(.blue)
+                                                Text("Add")
+                                                    .font(.system(size: 10))
+                                                    .foregroundColor(.primary)
+                                            }
                                         }
-                                    }
-                                },
-
-                                // MARK: Bottom-Right ▸ Weather
-                                bottomRight: {
-                                    Button {
-                                        selectedTab = 6
-                                        menuState = .collapsed
-                                    } label: {
-                                        VStack(spacing: 0) {
-                                            Image(systemName: "cloud.sun.fill")
-                                                .font(.system(size: 18))
-                                                .foregroundColor(.blue)
-                                            Text("Weather")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.primary)
+                                        .frame(maxWidth: .infinity)
+                                        
+                                        Spacer()
+                                        
+                                        Button {
+                                            selectedTab = 6
+                                            UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
+                                            menuState = .collapsed
+                                        } label: {
+                                            VStack(spacing: 0) {
+                                                Image(systemName: "cloud.sun.fill")
+                                                    .font(.system(size: 18))
+                                                    .foregroundColor(.blue)
+                                                Text("Weather")
+                                                    .font(.system(size: 10))
+                                                    .foregroundColor(.primary)
+                                            }
                                         }
+                                        .frame(maxWidth: .infinity)
+                                        
+                                        Spacer()
+                                        
+                                        Button {
+                                            selectedTab = 7
+                                            UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
+                                            menuState = .collapsed
+                                        } label: {
+                                            VStack(spacing: 0) {
+                                                Image(systemName: "fork.knife")
+                                                    .font(.system(size: 18))
+                                                    .foregroundColor(.blue)
+                                                Text("VitaHealth")
+                                                    .font(.system(size: 10))
+                                                    .foregroundColor(.primary)
+                                            }
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        
+                                        Spacer()
                                     }
+                                    .padding(.top, -20)
                                 },
+                                
                                 // MARK: Horizontal секция (Picker)
                                 horizontalContent: {
                                     Picker("", selection: $selectedTabDraggableMenuView) {
-                                        Label("Calendar",       systemImage: "calendar")
-                                            .frame(maxWidth: .infinity)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.7)
-                                            .tag(0)
-                                        Label("MultiCalendar",  systemImage: "calendar.badge.plus")
-                                            .frame(maxWidth: .infinity)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.7)
-                                            .tag(1)
-                                        Label("Subscriptions",  systemImage: "calendar.circle")
-                                            .frame(maxWidth: .infinity)
-                                            .lineLimit(1)
-                                            .minimumScaleFactor(0.7)
-                                            .tag(2)
+                                        Label("Calendar",      systemImage: "calendar").tag(0)
+                                        Label("MultiCalendar", systemImage: "calendar.badge.plus").tag(1)
+                                        Label("Subscriptions", systemImage: "calendar.circle").tag(2)
                                     }
                                     .pickerStyle(.segmented)
                                 },
-
+                                
                                 // MARK: Vertical секция
                                 verticalContent: {
                                     switch selectedTabDraggableMenuView {
                                     case 0:
-                                        CalendarsSheetView()
-                                            .padding(.vertical, 8)
+                                        CalendarsSheetView().padding(.vertical, 8)
                                     case 1:
-                                        CalendarsDropdownRepresentable()
-                                            .padding(.vertical, 8)
+                                        CalendarsDropdownRepresentable().padding(.vertical, 8)
                                     case 2:
-                                        SubscriptionView()
-                                            .padding(.vertical, 8)
+                                        SubscriptionView().padding(.vertical, 8)
                                     default:
                                         Text("N/A")
                                     }
-
                                 },
-                                onStateChange: { state in        // ← получавате събития тук
+                                
+                                onStateChange: { state in
                                     Task {
                                         accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                                         if accessGranted {
                                             CalendarViewModel.shared.reloadCalendars()
                                             let year = Calendar.current.component(.year, from: Date())
                                             CalendarViewModel.shared.loadEventsForWholeYear(year: year)
-
-                                            // Зареждаме начално, ако желаете
-                                            if selectedTab == 3 {
-                                                loadMultiDayEvents()
-                                            } else if selectedTab == 1 {
-                                                loadSingleDayEvents()
-                                            } else if selectedTab == 5 {
-                                                reloadSingleDayEventsWithVisibleCalendars()
+                                            
+                                            switch selectedTab {
+                                            case 1: loadSingleDayEvents()
+                                            case 3: loadMultiDayEvents()
+                                            case 5: reloadSingleDayEventsWithVisibleCalendars()
+                                            default: break
                                             }
                                         }
                                     }
@@ -385,6 +397,7 @@ struct RootView: View {
         .onChange(of: selectedTab) {_, newValue in
             
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
+            print("newValue",newValue)
             if newValue == 6 {
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
