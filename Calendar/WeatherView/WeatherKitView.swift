@@ -39,28 +39,6 @@ struct WeatherKitView: View {
     init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange!
-
-        // ① 100 % прозрачно – когато е в scroll-edge (върха)
-        let clear = UINavigationBarAppearance()
-        clear.configureWithTransparentBackground()          // няма фон, няма blur
-
-        // ② 30 % opacity – когато е стандартно (след скрол)
-        let semi = UINavigationBarAppearance()
-        semi.configureWithTransparentBackground()
-        semi.backgroundColor =
-            UIColor.systemBackground.withAlphaComponent(0.30)   // ← смени 0.30 по вкус
-        // (по желание добави blur)
-        // semi.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-
-        // ③ Назначаваме
-        let nav = UINavigationBar.appearance()
-        nav.scrollEdgeAppearance         = clear        // горе → изцяло прозрачно
-        nav.compactScrollEdgeAppearance  = clear        // (landscape compact)
-        nav.standardAppearance           = semi         // скролнато → полупрозрачно
-        nav.compactAppearance            = semi
-
-        // iOS 17+ фиксация – иначе при swipe back мигаше бяло
-        nav.scrollEdgeAppearance?.backgroundColor = .clear
     }
 
     var body: some View {
@@ -98,7 +76,12 @@ struct WeatherKitView: View {
                             .padding(.horizontal, 16)
                     }
                     
-                    Spacer().frame(height: 40)
+                    
+                    VStack {
+                        Spacer(minLength: 40) // push down a bit
+                        attributionFooter
+                            .padding(.bottom, 8)
+                    }
                 }
                 // Ако е необходимо, можете да запазите tap gesture за скриване на търсачката
                 .onTapGesture {
@@ -141,8 +124,12 @@ struct WeatherKitView: View {
                 }
             }
         }
-        
-        .safeAreaInset(edge: .top) {          // iOS 15+
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(
+            // намаляме opacity-а на ultraThinMaterial до 10%
+            .ultraThinMaterial.opacity(0.1),
+            for: .navigationBar
+        )        .safeAreaInset(edge: .top) {          // iOS 15+
             if showSearchBar {
                 searchField
                     .padding(.horizontal)
@@ -867,6 +854,23 @@ extension WeatherKitView {
             }
         )
         .disabled(eventToEdit != nil)       // блокирайте, докато редактирате event
+    }
+    
+    @ViewBuilder
+    private var attributionFooter: some View {
+        VStack(spacing: 4) {
+            // 1) Trademark line
+            Text(" Weather")
+                .font(.footnote)
+                .bold()
+
+            // 2) Legal‐attribution link
+            Link("Data provided by Apple Weather", destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+                .font(.footnote)
+                .underline()
+        }
+        .foregroundColor(.secondary)
+        .frame(maxWidth: .infinity)
     }
 }
 
