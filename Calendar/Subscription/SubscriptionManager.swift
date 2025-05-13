@@ -212,4 +212,15 @@ class SubscriptionManager: ObservableObject {
             print("Неуспешно показване на управлението на абонаменти: \(error)")
         }
     }
+    
+    @MainActor
+    func restorePurchases() async {
+        do {
+            try await AppStore.sync()
+            await updatePurchasedStatus()
+        } catch {
+            print("Restore failed: \(error.localizedDescription)")
+        }
+    }
+
 }

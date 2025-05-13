@@ -39,7 +39,7 @@ struct SubscriptionListView: View {
                     }
                 }
                 .padding(.horizontal)
-
+                .padding(.top, -20)
                 ActiveSubscriptionStatusView()
                     .padding(.horizontal)
 
@@ -49,6 +49,7 @@ struct SubscriptionListView: View {
                    manager.canPurchase(product) {
                     PurchaseSectionView(selectedProductID: id)
                         .padding(.horizontal)
+                        .padding(.top, -10)
                 }
             }
         }
@@ -86,40 +87,59 @@ struct SubscriptionListView: View {
                 comment: "Subscription period unit"
             )
 
-            VStack(spacing: 5) {
+            VStack(alignment: .leading, spacing: 10) {
+                // Първата част – Subscription status
                 Text(
-                    String(
-                        format: NSLocalizedString(
-                            "You are subscribed to the %@ %@ plan",
-                            comment: "Status line showing current plan and period"
-                        ),
-                        planTypeLocalized,
-                        periodLocalized
-                    )
-                )
-                .font(.headline)
+                     String(
+                         format: NSLocalizedString(
+                             "SubscriptionStatus",
+                             comment: "Status without the"
+                         ),
+                         planTypeLocalized,
+                         periodLocalized
+                     )
+                 )
+                 .font(.headline)
 
-                Text(
-                    String(
-                        format: NSLocalizedString(
-                            "Renews on: %@",
-                            comment: "Label for renewal date"
-                        ),
-                        DateFormatter.localizedString(from: expiry, dateStyle: .medium, timeStyle: .none)
-                    )
-                )
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+                 Text(
+                     String(
+                         format: NSLocalizedString(
+                             "RenewsOn",
+                             comment: "Label for renewal date"
+                         ),
+                         DateFormatter.localizedString(
+                             from: expiry,
+                             dateStyle: .medium,
+                             timeStyle: .none
+                         )
+                     )
+                 )
+                 .font(.subheadline)
+                 .foregroundColor(.secondary)
 
-                Button(
-                    NSLocalizedString("Manage Subscription", comment: "Button title to open subscription management")
-                ) {
-                    Task { await manager.openManageSubscriptions() }
+                // Вашият HStack с Manage и Restore бутони...
+                HStack {
+                    Button(
+                        NSLocalizedString("Manage Subscription", comment: "Button to open subscription management")
+                    ) {
+                        Task { await manager.openManageSubscriptions() }
+                    }
+                    .font(.footnote)
+
+                    Spacer()
+
+                    Button(
+                        NSLocalizedString("Restore Purchases", comment: "Restore")
+                    ) {
+                        Task { await manager.restorePurchases() }
+                    }
+                    .font(.footnote)
                 }
-                .font(.caption)
-                .padding(.top, 5)
+                .padding(.top, 6)
             }
+            .padding(.top, 10)
             .padding(.vertical)
+
         }
     }
 
@@ -130,14 +150,14 @@ struct SubscriptionListView: View {
            let product = manager.products.first(where: { $0.id == id }) {
             
             VStack(spacing: 15) {
-                if let summary = offerSummary(product: product) {
-                    Text(summary)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                
+//                if let summary = offerSummary(product: product) {
+//                    Text(summary)
+//                        .font(.caption)
+//                        .foregroundColor(.secondary)
+//                        .multilineTextAlignment(.center)
+//                        .fixedSize(horizontal: false, vertical: true)
+//                }
+//                
                 Button {
                     Task { await manager.purchase(product) }
                 } label: {

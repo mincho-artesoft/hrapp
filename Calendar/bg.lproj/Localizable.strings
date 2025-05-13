@@ -679,6 +679,7 @@
 "Subscribe Now" = "Абонирайте се сега";
 "%d %@ free, then %@%@." = "%d %@ безплатно, след това %@%@.";
 "Subscribe for %@%@." = "Абонирайте се за %@%@.";
+"Restore Purchases" = "Възстанови покупки";
 
 /* SubscriptionCategory */
 "Base"    = "Основен";
@@ -700,8 +701,12 @@
 "Yearly"  = "годишен";
 
 /* SubscriptionListView status messages */
-"You are subscribed to the %@ %@ plan" = "Вие сте абонирани за %@ %@ план";
-"Renews on: %@"                         = "Подновява се на: %@";
+/* Статус без „the“ */
+"SubscriptionStatus" = "Абонирани за %@ %@ план.";
+
+/* Етикет за дата на подновяване */
+"RenewsOn"            = "Подновява се на: %@";
+
 "Manage Subscription"                   = "Управление на абонамент";
 
 /* Period units */

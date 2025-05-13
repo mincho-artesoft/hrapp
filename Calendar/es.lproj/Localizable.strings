@@ -30,6 +30,7 @@
 "No Email" = "Sin correo electrónico";
 "Add Google Calendar" = "Añadir calendario de Google";
 
+
 /* AddCalendarView */
 "Calendar Name" = "Nombre del calendario";
 "Account" = "Cuenta";
@@ -679,6 +680,7 @@
 "Subscribe Now" = "Suscribirse ahora";
 "%d %@ free, then %@%@." = "%d %@ gratis, luego %@%@.";
 "Subscribe for %@%@." = "Suscríbete por %@%@.";
+"Restore Purchases" = "Restaurar compras";
 
 /* SubscriptionCategory */
 "Base"    = "Básico";
@@ -700,8 +702,12 @@
 "Yearly"  = "anual";
 
 /* SubscriptionListView status messages */
-"You are subscribed to the %@ %@ plan" = "Estás suscrito al plan %@ %@";
-"Renews on: %@"                         = "Renueva el: %@";
+/* Estado de suscripción sin “Estás” */
+"SubscriptionStatus" = "Suscripción activa: %@ %@.";
+
+/* Etiqueta de fecha de renovación */
+"RenewsOn"            = "Renueva el: %@";
+
 "Manage Subscription"                   = "Administrar suscripción";
 
 /* Period units */

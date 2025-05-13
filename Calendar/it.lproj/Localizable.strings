@@ -678,6 +678,7 @@
 "Subscribe Now" = "Abbonati ora";
 "%d %@ free, then %@%@." = "%d %@ gratis, poi %@%@.";
 "Subscribe for %@%@." = "Abbonati per %@%@.";
+"Restore Purchases" = "Ripristina acquisti";
 
 /* SubscriptionCategory */
 "Base"    = "Base";
@@ -699,8 +700,12 @@
 "Yearly"  = "annuale";
 
 /* SubscriptionListView status messages */
-"You are subscribed to the %@ %@ plan" = "Sei abbonato al piano %@ %@";
-"Renews on: %@"                         = "Si rinnova il: %@";
+/* Stato dell’abbonamento senza “Sei” */
+"SubscriptionStatus" = "Abbonati al piano %@ %@.";
+
+/* Etichetta data di rinnovo */
+"RenewsOn"            = "Rinnovo il: %@";
+
 "Manage Subscription"                   = "Gestisci abbonamento";
 
 /* Period units */

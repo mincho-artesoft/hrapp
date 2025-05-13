@@ -679,6 +679,7 @@
 "Subscribe Now" = "Подписаться сейчас";
 "%d %@ free, then %@%@." = "%d %@ бесплатно, затем %@%@.";
 "Subscribe for %@%@." = "Подписаться за %@%@.";
+"Restore Purchases" = "Восстановить покупки";
 
 /* SubscriptionCategory */
 "Base"    = "Базовый";
@@ -700,8 +701,12 @@
 "Yearly"  = "ежегодно";
 
 /* SubscriptionListView status messages */
-"You are subscribed to the %@ %@ plan" = "Вы подписаны на план %@ %@";
-"Renews on: %@"                         = "Продление: %@";
+/* Статус подписки без «Вы» */
+"SubscriptionStatus" = "Подписка: %@ %@.";
+
+/* Метка даты продления */
+"RenewsOn"            = "Продление: %@";
+
 "Manage Subscription"                   = "Управление подпиской";
 
 /* Period units */

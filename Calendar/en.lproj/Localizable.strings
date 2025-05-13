@@ -682,6 +682,7 @@
 "Subscribe Now" = "Subscribe Now";
 "%d %@ free, then %@%@." = "%d %@ free, then %@%@.";
 "Subscribe for %@%@." = "Subscribe for %@%@.";
+"Restore Purchases" = "Restore Purchases";
 
 /* SubscriptionCategory */
 "Base"    = "Base";
@@ -703,8 +704,12 @@
 "Yearly"  = "Yearly";
 
 /* SubscriptionListView status messages */
-"You are subscribed to the %@ %@ plan" = "You are subscribed to the %@ %@ plan";
-"Renews on: %@"                         = "Renews on: %@";
+/* Status without “the” */
+"SubscriptionStatus" = "Subscribed to %@ %@ plan.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Renews on: %@";
+
 "Manage Subscription"                   = "Manage Subscription";
 
 /* Period units */
