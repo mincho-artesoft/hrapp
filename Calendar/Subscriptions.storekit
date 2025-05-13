@@ -20,7 +20,7 @@
     "_applicationInternalID" : "6744690319",
     "_developerTeamID" : "8293TNMX6S",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 768829673.46104801,
+    "_lastSynchronizedDate" : 768838304.56331003,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -122,6 +122,232 @@
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "Premium Yearly3",
           "subscriptionGroupID" : "21677744",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "21685591",
+      "localizations" : [
+
+      ],
+      "name" : "Cloud.Calendars.Group",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 4,
+          "internalID" : "6745820650",
+          "introductoryOffer" : {
+            "internalID" : "6E2E9448",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P2W"
+          },
+          "localizations" : [
+            {
+              "description" : "Google Календарь и Meet, мес.",
+              "displayName" : "Продвинутый мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Google Cal & Meet, billed monthly",
+              "displayName" : "Advanced Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Google Cal & Meet, monatlich",
+              "displayName" : "Erweitert Monat",
+              "locale" : "de"
+            },
+            {
+              "description" : "Google Cal y Meet, mensual",
+              "displayName" : "Avanzado Mensual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Google Cal & Meet, abo. mensuel",
+              "displayName" : "Avancé Mensuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Google Cal e Meet, mensile",
+              "displayName" : "Avanzato Mensile",
+              "locale" : "it"
+            }
+          ],
+          "productID" : "Cloud.Calendars.Advanced.Monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Advanced Monthly",
+          "subscriptionGroupID" : "21685591",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6745822492",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Microsoft features, monthly billing",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Microsoft, fatturazione mensile",
+              "displayName" : "Premium Mensile",
+              "locale" : "it"
+            },
+            {
+              "description" : "Microsoft, facturación mensual",
+              "displayName" : "Premium Mensual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Microsoft функции, ежемес.",
+              "displayName" : "Премиум мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Microsoft, facturation mensuelle",
+              "displayName" : "Premium Mensuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Microsoft-Features, monatlich",
+              "displayName" : "Premium Monat",
+              "locale" : "de"
+            }
+          ],
+          "productID" : "Cloud.Calendars.Premium.Monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Monthly",
+          "subscriptionGroupID" : "21685591",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "49.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6745822329",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Microsoft-Features, jährlich",
+              "displayName" : "Premium Jahr",
+              "locale" : "de"
+            },
+            {
+              "description" : "Microsoft, facturation annuelle",
+              "displayName" : "Premium Annuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Microsoft, fatturazione annuale",
+              "displayName" : "Premium Annuale",
+              "locale" : "it"
+            },
+            {
+              "description" : "Microsoft функции, ежегодно",
+              "displayName" : "Премиум год.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Microsoft, facturación anual",
+              "displayName" : "Premium Anual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Microsoft features, yearly billing",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "Cloud.Calendars.Premium.Yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Premium Yearly",
+          "subscriptionGroupID" : "21685591",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "6745823447",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Google Cal e Meet, annuale",
+              "displayName" : "Avanzato Annuale",
+              "locale" : "it"
+            },
+            {
+              "description" : "Google Cal & Meet, jährlich",
+              "displayName" : "Erweitert Jahr",
+              "locale" : "de"
+            },
+            {
+              "description" : "Google Календарь и Meet, год.",
+              "displayName" : "Продвинутый год.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Google Cal & Meet, billed yearly",
+              "displayName" : "Advanced Yearly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Google Cal y Meet, anual",
+              "displayName" : "Avanzado Anual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Google Cal & Meet, abo. annuel",
+              "displayName" : "Avancé Annuel",
+              "locale" : "fr"
+            }
+          ],
+          "productID" : "Cloud.Calendars.Advanced.Yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Аdvanced Yearly",
+          "subscriptionGroupID" : "21685591",
           "type" : "RecurringSubscription",
           "winbackOffers" : [
 

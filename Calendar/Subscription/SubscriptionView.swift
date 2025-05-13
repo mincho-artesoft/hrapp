@@ -35,14 +35,14 @@ struct SubscriptionView: View {
                     case .advance:
                         SubscriptionListView(
                             title: "Advance Plans",
-                            products: manager.sortedProducts.filter { $0.id.contains("advance") },
+                            products: manager.sortedProducts.filter { $0.id.localizedCaseInsensitiveContains("advanced") },
                             selectedProductID: $selectedProductID
                         )
 
                     case .premium:
                         SubscriptionListView(
                             title: "Premium Plans",
-                            products: manager.sortedProducts.filter { $0.id.contains("premium") },
+                            products: manager.sortedProducts.filter { $0.id.localizedCaseInsensitiveContains("premium") },
                             selectedProductID: $selectedProductID
                         )
                     }
@@ -76,7 +76,7 @@ struct SubscriptionView: View {
             ) { notification in
                 if let info  = notification.userInfo,
                    let value = info["subscriptionStatusRaw"] as? String {
-
+print("value",value)
                     switch value {
                     case SubscriptionCategory.advance.rawValue:
                         alertMessage = String(

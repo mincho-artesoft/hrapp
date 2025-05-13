@@ -39,26 +39,38 @@ class SubscriptionManager: ObservableObject {
 
     // MARK: - Products --------------------------------------------------------
 
+    @MainActor
     func loadProducts() async {
+        // Показваме spinner-а, докато зареждаме
         await MainActor.run { isLoading = true }
         defer { Task { @MainActor in isLoading = false } }
 
-        let ids = [
-            "ARTE.Calendar.subscription.advance.monthly",
-            "ARTE.Calendar.subscription.advance.yearly",
-            "ARTE.Calendar.subscription.premium.monthly2",
-            "ARTE.Calendar.subscription.premium.yearly2"
+        // 1️⃣  Списък с точните Product ID-та в реда, в който искаме да се
+        //      визуализират (годишните след месечните – или обратно).
+        let ids: [String] = [
+            "Cloud.Calendars.Advanced.Monthly",
+            "Cloud.Calendars.Advanced.Yearly",
+            "Cloud.Calendars.Premium.Monthly",
+            "Cloud.Calendars.Premium.Yearly"
         ]
 
         do {
+            // 2️⃣  Вземаме само продуктите, които StoreKit връща като „достъпни“
             let fetched = try await Product.products(for: ids)
+
+            // 3️⃣  Подреждаме ги по същия ред като `ids`
             await MainActor.run {
                 self.products = ids.compactMap { id in
                     fetched.first(where: { $0.id == id })
                 }
+                // 4️⃣  За дебъг – ще виждате 0, 2 или 4 продукта според статуса им
+                #if DEBUG
+                print("💡 [StoreKit] Loaded products:", self.products.map(\.id))
+                #endif
             }
         } catch {
-            print("Failed to fetch products: \(error)")
+            // 5️⃣  Груб, но полезен печат; можеш да добавиш Crashlytics или Alert
+            print("❌ [StoreKit] Failed to fetch products:", error.localizedDescription)
         }
     }
 
@@ -77,8 +89,8 @@ class SubscriptionManager: ObservableObject {
               let newUnit   = newProduct.subscription?.subscriptionPeriod.unit
         else { return false }
 
-        return currentID.contains("advance") &&
-               newProduct.id.contains("premium") &&
+        return currentID.lowercased().contains("advanced") &&
+               newProduct.id.lowercased().contains("premium") &&
                curUnit == newUnit
     }
 
@@ -187,9 +199,9 @@ class SubscriptionManager: ObservableObject {
             subscriptionStatus = .base
             return
         }
-        if purchasedProductIDs.contains(where: { $0.contains("premium") }) {
+        if purchasedProductIDs.contains(where: { $0.lowercased().contains("premium") }) {
             subscriptionStatus = .premium
-        } else if purchasedProductIDs.contains(where: { $0.contains("advance") }) {
+        } else if purchasedProductIDs.contains(where: { $0.lowercased().contains("advanced") }) {
             subscriptionStatus = .advance
         } else {
             subscriptionStatus = .base
