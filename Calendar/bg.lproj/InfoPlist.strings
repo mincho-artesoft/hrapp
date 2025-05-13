@@ -1,0 +1,8 @@
+/* Име на приложението */
+"CFBundleDisplayName" = "Cloud Calendars";
+
+/* Разрешения */
+"NSCalendarsUsageDescription" = "Cloud Calendars иска достъп до вашите календари.";
+"NSContactsUsageDescription" = "Cloud Calendars иска достъп до вашите контакти.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars иска достъп до вашето местоположение, дори когато не ползвате приложението.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars иска достъп до вашето местоположение, докато ползвате приложението.";

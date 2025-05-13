@@ -1,0 +1,8 @@
+/* Nombre de la app */
+"CFBundleDisplayName" = "Cloud Calendars";
+
+/* Permisos */
+"NSCalendarsUsageDescription" = "Cloud Calendars quiere acceder a tus calendarios.";
+"NSContactsUsageDescription" = "Cloud Calendars quiere acceder a tus contactos.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars quiere acceder a tu ubicación incluso cuando no estés usando la app.";
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars quiere acceder a tu ubicación mientras usas la app.";

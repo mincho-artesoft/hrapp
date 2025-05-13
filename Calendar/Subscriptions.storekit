@@ -20,7 +20,7 @@
     "_applicationInternalID" : "6744690319",
     "_developerTeamID" : "8293TNMX6S",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 767862010.21400499,
+    "_lastSynchronizedDate" : 768829673.46104801,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -72,121 +72,6 @@
     ]
   },
   "subscriptionGroups" : [
-    {
-      "id" : "21677358",
-      "localizations" : [
-
-      ],
-      "name" : "ARTE.Calendar.Advance.Subscription",
-      "subscriptions" : [
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "0.99",
-          "familyShareable" : false,
-          "groupNumber" : 4,
-          "internalID" : "6745216886",
-          "introductoryOffer" : {
-            "internalID" : "8A35F385",
-            "numberOfPeriods" : 1,
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P2W"
-          },
-          "localizations" : [
-
-          ],
-          "productID" : "ARTE.Calendar.subscription.advance.monthly",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Advance Monthly",
-          "subscriptionGroupID" : "21677358",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "9.99",
-          "familyShareable" : false,
-          "groupNumber" : 3,
-          "internalID" : "6745216807",
-          "introductoryOffer" : {
-            "internalID" : "5A7692BF",
-            "numberOfPeriods" : 1,
-            "paymentMode" : "free",
-            "subscriptionPeriod" : "P2W"
-          },
-          "localizations" : [
-
-          ],
-          "productID" : "ARTE.Calendar.subscription.advance.yearly",
-          "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "Advance Yearly",
-          "subscriptionGroupID" : "21677358",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "4.99",
-          "familyShareable" : false,
-          "groupNumber" : 2,
-          "internalID" : "6745218563",
-          "introductoryOffer" : null,
-          "localizations" : [
-
-          ],
-          "productID" : "ARTE.Calendar.subscription.premium.monthly2",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Premium Monthly",
-          "subscriptionGroupID" : "21677358",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "49.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "6745218654",
-          "introductoryOffer" : null,
-          "localizations" : [
-
-          ],
-          "productID" : "ARTE.Calendar.subscription.premium.yearly2",
-          "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "Premium Yearly",
-          "subscriptionGroupID" : "21677358",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        }
-      ]
-    },
     {
       "id" : "21677744",
       "localizations" : [
