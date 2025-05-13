@@ -783,16 +783,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             self?.viewMenuButton.setImage(weatherImage, for: .normal)
         }
         
-        let vitaHealthAction = UIAction(
-            title: NSLocalizedString("VitaHealth", comment: ""),
-            image: vitaHealthImage,
-            state: currentView == 7 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 7
-            self?.onViewChange?(7)
-            self?.viewMenuButton.setImage(vitaHealthImage, for: .normal)
-        }
-        
         return UIMenu(
             title: "",
             children: [
@@ -802,8 +792,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 yearAction,
                 listAction,
                 multiCalendarAction,
-                weatherAction,
-                vitaHealthAction
+                weatherAction
             ]
         )
     }

@@ -126,15 +126,6 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
             button.setImage(weatherImage, for: .normal)
         }
         
-        let vitaHealthAction = UIAction(
-            title: NSLocalizedString("VitaHealth", comment: "Tab name: VitaHealth"),
-            image: vitaHealthImage,
-            state: currentView == 7 ? .on : .off
-        ) { _ in
-            onViewChange?(7)
-            button.setImage(vitaHealthImage, for: .normal)
-        }
-        
         return UIMenu(
             title: "",
             children: [
@@ -144,8 +135,7 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
                 yearAction,
                 listAction,
                 multiCalendarAction,
-                weatherAction,
-                vitaHealthAction
+                weatherAction
             ]
         )
     }

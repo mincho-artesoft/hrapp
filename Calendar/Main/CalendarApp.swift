@@ -7,19 +7,6 @@ import CoreLocation
 
 @main
 struct CalendarApp: App {
-    // Create a single container that includes all your SwiftData models.
-    let container: ModelContainer = {
-        do {
-            return try ModelContainer(for: Profile.self,
-                                      UserSettings.self,
-                                      Food.self,
-                                      Mineral.self,
-                                      Vitamin.self,
-                                      ProfileSelection.self)
-        } catch {
-            fatalError("Failed to create model container: \(error)")
-        }
-    }()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("subscriptionStatus") private var storedSubscriptionStatusRaw: String = SubscriptionCategory.base.rawValue
 
@@ -51,7 +38,6 @@ struct CalendarApp: App {
                        )
                    }
                }
-               .modelContainer(container)
                .onChange(of: locationManager.currentLocation) { _, newLoc in
                    guard let newLoc = newLoc else { return }
                    weatherVM.fetchWeatherForCoords(

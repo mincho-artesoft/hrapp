@@ -176,14 +176,6 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
-                        case 7:
-                            VitaHealth(
-                                selectedTabRoot: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                }
-                            )
-                            
 //                                .modelContainer(modelContext)
                         default:
                             Text("N/A")
@@ -260,24 +252,6 @@ struct RootView: View {
                                                     .font(.system(size: 18))
                                                     .foregroundColor(.blue)
                                                 Text("Weather")
-                                                    .font(.system(size: 10))
-                                                    .foregroundColor(.primary)
-                                            }
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        
-                                        Spacer()
-                                        
-                                        Button {
-                                            selectedTab = 7
-                                            UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
-                                            menuState = .collapsed
-                                        } label: {
-                                            VStack(spacing: 0) {
-                                                Image(systemName: "fork.knife")
-                                                    .font(.system(size: 18))
-                                                    .foregroundColor(.blue)
-                                                Text("VitaHealth")
                                                     .font(.system(size: 10))
                                                     .foregroundColor(.primary)
                                             }
