@@ -81,15 +81,15 @@ struct VitaHealth: View {
             }
                 .overlay(alignment: .bottom) {
                     if menuState == .full {
-                        Color.black.opacity(0.001)
+                        Color.clear                      // 100 % прозрачно
+                            .contentShape(Rectangle())   // прави слоя „кликаем“
                             .ignoresSafeArea()
                             .onTapGesture {
                                 withAnimation(.spring()) {
                                     menuState = .collapsed
                                 }
                             }
-                            .transition(.opacity)
-                            .zIndex(0)              // под менюто, но над останалия интерфейс
+                            .zIndex(0)                   // под менюто, над всичко друго
                     }
                     
                     if isPortrait {
@@ -108,13 +108,21 @@ struct VitaHealth: View {
                                         VStack(spacing: 0) {
                                             Image(systemName: "leaf.fill")
                                                 .font(.system(size: 18))
-                                                .foregroundColor(.blue)
+                                                .foregroundColor(selectedTab == 0 ? .blue : .gray)
                                             Text("Nutrition")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.primary)
+                                                .font(.system(size: 10, weight: selectedTab == 0 ? .semibold : .regular))
+                                                .foregroundColor(selectedTab == 0 ? .blue : .gray)
                                         }
+                                        .padding(6)
+                                        .background(
+                                            selectedTab == 0
+                                            ? Color.blue.opacity(0.15)      // лека подсветка
+                                            : Color.clear
+                                        )
+                                        .clipShape(RoundedRectangle(cornerRadius: 8))
                                     }
                                     .frame(maxWidth: .infinity)
+                                    
                                     Spacer()
                                     
                                     Button {
@@ -124,13 +132,21 @@ struct VitaHealth: View {
                                         VStack(spacing: 0) {
                                             Image(systemName: "fork.knife")
                                                 .font(.system(size: 18))
-                                                .foregroundColor(.blue)
+                                                .foregroundColor(selectedTab == 1 ? .blue : .gray)
                                             Text("Foods")
-                                                .font(.system(size: 10))
-                                                .foregroundColor(.primary)
+                                                .font(.system(size: 10, weight: selectedTab == 1 ? .semibold : .regular))
+                                                .foregroundColor(selectedTab == 1 ? .blue : .gray)
                                         }
+                                        .padding(6)
+                                        .background(
+                                            selectedTab == 1
+                                            ? Color.blue.opacity(0.15)
+                                            : Color.clear
+                                        )
+                                        .clipShape(RoundedRectangle(cornerRadius: 8))
                                     }
                                     .frame(maxWidth: .infinity)
+                                    
                                     Spacer()
                                 }
                                 .padding(.top, -20)
@@ -168,6 +184,7 @@ struct VitaHealth: View {
                                 }
                             }
                         )
+                        .zIndex(1)
                         .edgesIgnoringSafeArea(.all)
                     }
                 }
@@ -207,8 +224,9 @@ struct VitaHealth: View {
                         .presentationDragIndicator(.visible)
                 }
         }
+        .padding(.top, 40)
         .edgesIgnoringSafeArea(.all)                      // както си беше
-        .ignoresSafeArea(.keyboard, edges: .bottom)  
+        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
     
     private func setup() {

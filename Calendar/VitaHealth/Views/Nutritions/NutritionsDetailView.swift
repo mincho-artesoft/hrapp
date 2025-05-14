@@ -40,7 +40,6 @@ struct NutritionsDetailView: View {
     }
     
     var body: some View {
-        ZStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     
@@ -124,14 +123,13 @@ struct NutritionsDetailView: View {
                     .padding()
                 }
             }
-        }
+        
         // Global tap gesture to dismiss any open auto‑complete panels.
         .simultaneousGesture(
             TapGesture().onEnded {
                 NotificationCenter.default.post(name: .dismissAutoComplete, object: nil)
             }
         )
-        .navigationTitle("Nutrition Details")
         .onAppear {
             loadSelections()
             logSavedEvents()
