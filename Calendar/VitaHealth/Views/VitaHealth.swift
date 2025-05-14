@@ -207,6 +207,8 @@ struct VitaHealth: View {
                         .presentationDragIndicator(.visible)
                 }
         }
+        .edgesIgnoringSafeArea(.all)                      // както си беше
+        .ignoresSafeArea(.keyboard, edges: .bottom)  
     }
     
     private func setup() {
