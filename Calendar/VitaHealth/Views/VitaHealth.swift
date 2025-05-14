@@ -6,7 +6,8 @@ struct VitaHealth: View {
     @State private var selectedTabDraggableMenuView = 0
     @State private var menuState: MenuState = .collapsed
     @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
-    
+    @State private var isPresentingNewProfile = false
+    @State private var editingProfile: Profile? = nil
     @State private var selectedTabRoot = 7      // примерен State
     let oldSelectedTab: Int?              // ⬅️ ново
 
@@ -147,7 +148,11 @@ struct VitaHealth: View {
                             verticalContent: {
                                 switch selectedTabDraggableMenuView {
                                 case 0:
-                                    ProfileListView(selectedProfile: $selectedProfile)
+                                    ProfileListView(
+                                        selectedProfile: $selectedProfile,
+                                        isPresentingNewProfile: $isPresentingNewProfile,
+                                        editingProfile: $editingProfile
+                                    )
                                 case 1:
                                     VitaminListView(profile: selectedProfile)
                                 case 2:
@@ -190,6 +195,16 @@ struct VitaHealth: View {
                             }
                         }
                     }
+                }
+                .sheet(isPresented: $isPresentingNewProfile) {
+                    ProfileEditorSheetView()
+                        .presentationDetents([ .fraction(0.95) ])
+                        .presentationDragIndicator(.visible)
+                }
+                .sheet(item: $editingProfile) { profile in
+                    ProfileEditorSheetView(profile: profile)
+                        .presentationDetents([ .fraction(0.95) ])
+                        .presentationDragIndicator(.visible)
                 }
         }
     }

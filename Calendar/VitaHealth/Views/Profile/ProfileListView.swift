@@ -6,12 +6,10 @@ struct ProfileListView: View {
     @Query private var profiles: [Profile]
     @Environment(\.modelContext) private var modelContext
 
-    /// Профил, избран от родителя (например за Nutrition таба)
+    // MARK: – Външни binding-и, идват от VitaHealth
     @Binding var selectedProfile: Profile?
-
-    // MARK: – Sheet-състояния
-    @State private var editingProfile: Profile? = nil      // sheet(item:) за EDIT
-    @State private var isPresentingNewProfile = false      // sheet(isPresented:) за NEW
+    @Binding var isPresentingNewProfile: Bool
+    @Binding var editingProfile: Profile?
 
     // MARK: – UI
     var body: some View {
@@ -21,7 +19,7 @@ struct ProfileListView: View {
             HStack {
                 Spacer()
                 Button {
-                    isPresentingNewProfile.toggle()
+                    isPresentingNewProfile = true
                 } label: {
                     Image(systemName: "plus")
                         .font(.title2)
@@ -30,7 +28,7 @@ struct ProfileListView: View {
             }
             .padding(.horizontal)
 
-            // ScrollView + LazyVStack (вече няма List)
+            // ScrollView + LazyVStack
             ScrollView {
                 GeometryReader { geo in
                     let cardWidth = geo.size.width * 0.9
@@ -42,7 +40,7 @@ struct ProfileListView: View {
                                 .onTapGesture { selectedProfile = profile }
 
                                 // Контекстно меню без preview (iOS 17+)
-                                .contextMenu(menuItems: {
+                                .contextMenu {
                                     Button {
                                         editingProfile = profile
                                     } label: {
@@ -53,31 +51,18 @@ struct ProfileListView: View {
                                     } label: {
                                         Label("Delete", systemImage: "trash")
                                     }
-                                }) {
-                                    row(for: profile)
-                                        .contentShape(Rectangle())
-                                        .frame(width: cardWidth)
+                                } preview: {
+                                    EmptyView()   // забранява default preview
                                 }
+                                .frame(width: cardWidth)
                         }
                     }
                     .padding(.vertical, 8)
-                    .padding(.horizontal)   // хоризонтален “въздух” – преместен върху стека
+                    .padding(.horizontal)   // хоризонтален “въздух”
                 }
             }
         }
         .padding(.top, 10)
-
-        // Sheet-ове за Create / Edit
-        .sheet(isPresented: $isPresentingNewProfile) {
-            ProfileEditorSheetView()
-                .presentationDetents([ .fraction(0.95) ])
-                .presentationDragIndicator(.visible)
-        }
-        .sheet(item: $editingProfile) { profile in
-            ProfileEditorSheetView(profile: profile)
-                .presentationDetents([ .fraction(0.95) ])
-                .presentationDragIndicator(.visible)
-        }
     }
 
     // MARK: – Ред (“карта”) за профил
