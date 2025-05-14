@@ -1,15 +1,8 @@
-//
-//  MineralRowView.swift
-//  VitaHealth
-//
-//  Created by Mincho Milev on 2/3/25.
-//
-
-
 import SwiftUI
 
 struct MineralRowView: View {
-    var mineral: Mineral
+    let mineral: Mineral
+    let demographic: String?
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -17,9 +10,18 @@ struct MineralRowView: View {
                 .font(.headline)
             Text("Unit: \(mineral.unit)")
                 .font(.caption)
-            ForEach(mineral.requirements, id: \.self) { req in
+
+            if let demo = demographic,
+               let req = mineral.requirements.first(where: { $0.demographic == demo }) {
+                // Single demographic block
                 Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
                     .font(.caption2)
+            } else {
+                // All groups (no profile or missing data)
+                ForEach(mineral.requirements, id: \.self) { req in
+                    Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
+                        .font(.caption2)
+                }
             }
         }
         .padding(.vertical, 4)

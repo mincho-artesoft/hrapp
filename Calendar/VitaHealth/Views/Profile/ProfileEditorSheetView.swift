@@ -1,22 +1,30 @@
+//
+//  ProfileEditorSheetView.swift
+//  Cloud Calendars for Google, Microsoft and iCloud
+//
+//  Created by Aleksandar Svinarov on 14/5/25.
+//
+
+
 import SwiftUI
 import SwiftData
 
-struct ProfileEditorView: View {
+struct ProfileEditorSheetView: View {
     // MARK: - Dependencies
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
 
     // MARK: - Incoming values
-    var profile: Profile?            = nil
-    var isEmpty: Bool                = false
-    var selectedTabRoot: Binding<Int>? = nil   // optional
-    var oldSelectedTab: Int? = nil        // ⬅️ ново
+    var profile: Profile?                   = nil
+    var isEmpty: Bool                       = false
+    var selectedTabRoot: Binding<Int>?      = nil
+    var oldSelectedTab: Int?                = nil
 
     // MARK: - Local editable copies
     @State private var name: String
     @State private var birthday: Date
     @State private var gender: String
-    @State private var weight: String          // String for easy binding
+    @State private var weight: String
     @State private var height: String
     @State private var meals: [Meal]
 
@@ -28,16 +36,17 @@ struct ProfileEditorView: View {
 
     // MARK: - Init
     init(
-            profile: Profile? = nil,
-            isEmpty: Bool = false,
-            selectedTabRoot: Binding<Int>? = nil,
-            oldSelectedTab: Int? = nil         // ⬅️ ново
-        ) {
-            self.profile         = profile
-            self.isEmpty         = isEmpty
-            self.selectedTabRoot = selectedTabRoot
-            self.oldSelectedTab  = oldSelectedTab   // ⬅️ ново
-        // populate @State wrappers
+        profile: Profile? = nil,
+        isEmpty: Bool = false,
+        selectedTabRoot: Binding<Int>? = nil,
+        oldSelectedTab: Int? = nil
+    ) {
+        self.profile         = profile
+        self.isEmpty         = isEmpty
+        self.selectedTabRoot = selectedTabRoot
+        self.oldSelectedTab  = oldSelectedTab
+
+        // Populate @State wrappers
         if let p = profile {
             _name     = State(initialValue: p.name)
             _birthday = State(initialValue: p.birthday)
@@ -57,6 +66,7 @@ struct ProfileEditorView: View {
 
     // MARK: - Body
     var body: some View {
+        NavigationStack {
             Form {
                 // PERSONAL
                 Section(header: Text("Personal Information")) {
@@ -92,21 +102,19 @@ struct ProfileEditorView: View {
                     }
                 }
             }
+            .navigationTitle(profile == nil ? "Add Profile" : "Edit Profile")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 // Cancel
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
                         if isEmpty {
-                            selectedTabRoot?.wrappedValue = oldSelectedTab ?? 1   // ⬅️ вече връща към oldSelectedTab
+                            selectedTabRoot?.wrappedValue = oldSelectedTab ?? 1
                         } else {
                             dismiss()
                         }
                     }
                 }
-                ToolbarItem(placement: .principal) {
-                       Text(profile == nil ? "Add Profile" : "Edit Profile")
-                           .font(.headline)          // по желание
-                   }
                 // Save
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") { saveProfile() }
@@ -114,12 +122,21 @@ struct ProfileEditorView: View {
                                   || weight.isEmpty
                                   || height.isEmpty)
                 }
+                // Title in the centre (works in sheet with .inline display mode)
+                ToolbarItem(placement: .principal) {
+                    Text(profile == nil ? "Add Profile" : "Edit Profile")
+                        .font(.headline)
+                }
             }
             .alert("Error", isPresented: $showErrorAlert) {
                 Button("OK", role: .cancel) { }
             } message: {
                 if let msg = errorMessage { Text(msg) }
             }
+        }
+        // Optional: sheet height & drag-indicator
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
     }
 
     // MARK: - Single meal row

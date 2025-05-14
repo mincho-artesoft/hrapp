@@ -3,8 +3,13 @@ import SwiftData
 
 struct VitaHealth: View {
     
+    @State private var selectedTabDraggableMenuView = 0
+    @State private var menuState: MenuState = .collapsed
+    @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
+    
     @State private var selectedTabRoot = 7      // примерен State
     let oldSelectedTab: Int?              // ⬅️ ново
+
 
     let onViewChange: (Int) -> Void
     @Environment(\.modelContext) private var modelContext
@@ -15,7 +20,7 @@ struct VitaHealth: View {
     @State private var selectedProfile: Profile?
     
     /// The selected tab in our TabView.
-    @State private var selectedTab: TabSelection = .nutrition
+    @State private var selectedTab: Int = 0
     
     init(selectedTabRoot: Int,
             oldSelectedTab: Int? = nil,      // ⬅️ ново
@@ -48,104 +53,146 @@ struct VitaHealth: View {
     }
     
     var body: some View {
-        content
-            .onAppear(perform: setup)
-            .onChange(of: profiles.count) { _, newCount in
-                       handleProfileCountChange(newCount)
-                   }
-            .onChange(of: selectedProfile) { _, newProfile in
-                       handleProfileChange(newProfile)
-                   }
-            .onChange(of: selectedTabRoot) { _, newSelectedTabRoot in
-                    onViewChange(newSelectedTabRoot)
-                   }
-            .toolbar {
-                if !profiles.isEmpty {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        HStack(spacing: 9) {
-                            UIMenuButtonRepresentable(
-                                currentView: selectedTabRoot,
-                                onViewChange: { newTab in
-                                    onViewChange(newTab)
-                                }
-                            )
-                            .frame(width: 30, height: 30)
+        GeometryReader { geometry in
+            let isPortrait = geometry.size.height > geometry.size.width
+            
+            VStack {
+                if profiles.isEmpty {
+                    ProfileEditorView(
+                        isEmpty: true,
+                        selectedTabRoot: $selectedTabRoot,
+                        oldSelectedTab: oldSelectedTab       // ⬅️ ново
+                    )
+                } else {
+                    switch selectedTab {
+                    case 0:
+                        if let profile = selectedProfile {
+                            NutritionsDetailView(profile: profile)
+                        } else {
+                            Text("No Profile Selected")
                         }
+                    case 1:
+                        FoodListView()
+                    default:
+                        Text("N/A")
                     }
                 }
             }
-    }
-    
-    // Returns either the AddProfileView (when there are no profiles)
-    // or the TabView when profiles exist.
-    @ViewBuilder
-    var content: some View {
-        if profiles.isEmpty {
-            ProfileEditorView(
-                isEmpty: true,
-                selectedTabRoot: $selectedTabRoot,
-                oldSelectedTab: oldSelectedTab       // ⬅️ ново
-            )
-        } else {
-            TabView(selection: $selectedTab) {
-                tabNutrition
-                tabFoods
-                tabVitamins
-                tabMinerals
-                tabProfiles
-            }
+                .overlay(alignment: .bottom) {
+                    if menuState == .full {
+                        Color.black.opacity(0.001)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation(.spring()) {
+                                    menuState = .collapsed
+                                }
+                            }
+                            .transition(.opacity)
+                            .zIndex(0)              // под менюто, но над останалия интерфейс
+                    }
+                    
+                    if isPortrait {
+                        DraggableMenuView(
+                            menuState: $menuState,
+                            adaptiveBackgroundOpacity:$draggableMenuAdaptiveBackgroundОpacity,
+                            // MARK: Bottom bar с 3 бутона
+                            bottomBar: {
+                                HStack{
+                                    Spacer()
+                                    
+                                    Button {
+                                        menuState = .collapsed
+                                        selectedTab = 0
+                                    } label: {
+                                        VStack(spacing: 0) {
+                                            Image(systemName: "leaf.fill")
+                                                .font(.system(size: 18))
+                                                .foregroundColor(.blue)
+                                            Text("Nutrition")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.primary)
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    Spacer()
+                                    
+                                    Button {
+                                        menuState = .collapsed
+                                        selectedTab = 1
+                                    } label: {
+                                        VStack(spacing: 0) {
+                                            Image(systemName: "fork.knife")
+                                                .font(.system(size: 18))
+                                                .foregroundColor(.blue)
+                                            Text("Foods")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(.primary)
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    Spacer()
+                                }
+                                .padding(.top, -20)
+                            },
+                            
+                            // MARK: Horizontal секция (Picker)
+                            horizontalContent: {
+                                Picker("", selection: $selectedTabDraggableMenuView) {
+                                    Label("Profiles",      systemImage: "person.3").tag(0)
+                                    Label("Vitamins", systemImage: "capsule.fill").tag(1)
+                                    Label("Minerals", systemImage: "cube.box.fill").tag(2)
+                                }
+                                .pickerStyle(.segmented)
+                            },
+                            verticalContent: {
+                                switch selectedTabDraggableMenuView {
+                                case 0:
+                                    ProfileListView(selectedProfile: $selectedProfile)
+                                case 1:
+                                    VitaminListView(profile: selectedProfile)
+                                case 2:
+                                    MineralListView(profile: selectedProfile)
+                                default:
+                                    Text("N/A")
+                                }
+                            },
+                            
+                            onStateChange: { state in
+                                Task {
+                                    
+                                }
+                            }
+                        )
+                        .edgesIgnoringSafeArea(.all)
+                    }
+                }
+                .onAppear(perform: setup)
+                .onChange(of: profiles.count) { _, newCount in
+                    handleProfileCountChange(newCount)
+                }
+                .onChange(of: selectedProfile) { _, newProfile in
+                    handleProfileChange(newProfile)
+                }
+                .onChange(of: selectedTabRoot) { _, newSelectedTabRoot in
+                    onViewChange(newSelectedTabRoot)
+                }
+                .toolbar {
+                    if !profiles.isEmpty {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            HStack(spacing: 9) {
+                                UIMenuButtonRepresentable(
+                                    currentView: selectedTabRoot,
+                                    onViewChange: { newTab in
+                                        onViewChange(newTab)
+                                    }
+                                )
+                                .frame(width: 30, height: 30)
+                            }
+                        }
+                    }
+                }
         }
     }
-    
-    // MARK: - Tab Views
-    
-    var tabNutrition: some View {
-        NavigationView {
-            if let profile = selectedProfile {
-                NutritionsDetailView(profile: profile)
-            } else {
-                Text("No Profile Selected")
-            }
-        }
-        .tabItem { Label("Nutrition", systemImage: "leaf") }
-        .tag(TabSelection.nutrition)
-    }
-    
-    var tabFoods: some View {
-        NavigationStack {
-            FoodListView()
-        }
-        .tabItem { Label("Foods", systemImage: "fork.knife") }
-        .tag(TabSelection.foods)
-    }
-    
-    var tabVitamins: some View {
-        NavigationStack {
-            VitaminListView()
-        }
-        .tabItem { Label("Vitamins", systemImage: "capsule.fill") }
-        .tag(TabSelection.vitamins)
-    }
-    
-    var tabMinerals: some View {
-        NavigationStack {
-            MineralListView()
-        }
-        .tabItem { Label("Minerals", systemImage: "cube.box.fill") }
-        .tag(TabSelection.minerals)
-    }
-    
-    var tabProfiles: some View {
-        NavigationView {
-            // Pass both bindings so that ProfileListView can update the selected profile
-            // and also switch the active tab.
-            ProfileListView(selectedProfile: $selectedProfile, selectedTab: $selectedTab)
-        }
-        .tabItem { Label("Profiles", systemImage: "person.3") }
-        .tag(TabSelection.profiles)
-    }
-    
-    // MARK: - Lifecycle Handlers
     
     private func setup() {
         // Ensure we have a UserSettings instance.

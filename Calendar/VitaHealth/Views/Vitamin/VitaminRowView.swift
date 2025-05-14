@@ -1,25 +1,27 @@
-//
-//  VitaminRowView.swift
-//  VitaHealth
-//
-//  Created by Mincho Milev on 2/3/25.
-//
-
-
 import SwiftUI
 
 struct VitaminRowView: View {
-    var vitamin: Vitamin
-
+    let vitamin: Vitamin
+    let demographic: String?      // какъв етикет да показваме
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(vitamin.name)
                 .font(.headline)
             Text("Unit: \(vitamin.unit)")
                 .font(.caption)
-            ForEach(vitamin.requirements, id: \.self) { req in
+            
+            if let demo = demographic,
+               let req = vitamin.requirements.first(where: { $0.demographic == demo }) {
+                // Само една група
                 Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
                     .font(.caption2)
+            } else {
+                // Всички групи (ако няма профил или конкретните данни липсват)
+                ForEach(vitamin.requirements, id: \.self) { req in
+                    Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
+                        .font(.caption2)
+                }
             }
         }
         .padding(.vertical, 4)

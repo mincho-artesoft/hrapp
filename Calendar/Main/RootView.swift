@@ -10,6 +10,7 @@ struct RootView: View {
     @State private var showCalendarChooser = false
     @State private var selectedTabDraggableMenuView = 0
     @State private var menuState: MenuState = .collapsed
+    @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
 
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
@@ -48,7 +49,6 @@ struct RootView: View {
 
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
-    @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
     
     init() {
             // Ако няма нищо записано, по подразбиране ще е 1
@@ -185,6 +185,7 @@ struct RootView: View {
                                      selectedTab = newTab
                                  }
                              )
+                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         default:
                             Text("N/A")
                         }

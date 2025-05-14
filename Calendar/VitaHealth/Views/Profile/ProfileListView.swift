@@ -2,114 +2,128 @@ import SwiftUI
 import SwiftData
 
 struct ProfileListView: View {
+    // MARK: – Queries & Dependencies
     @Query private var profiles: [Profile]
     @Environment(\.modelContext) private var modelContext
-    /// Binding to the currently selected profile.
+
+    /// Профил, избран от родителя (например за Nutrition таба)
     @Binding var selectedProfile: Profile?
-    /// Binding to the parent's selected tab.
-    @Binding var selectedTab: TabSelection
 
-    // State to track the profile that will be edited.
-    @State private var editingProfile: Profile? = nil
-    @State private var isEditing: Bool = false
+    // MARK: – Sheet-състояния
+    @State private var editingProfile: Profile? = nil      // sheet(item:) за EDIT
+    @State private var isPresentingNewProfile = false      // sheet(isPresented:) за NEW
 
+    // MARK: – UI
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(profiles) { profile in
-                    // Each row is a button that sets the selected profile
-                    // and then switches the parent tab to Nutrition.
-                    Button(action: {
-                        selectedProfile = profile
-                        selectedTab = .nutrition
-                    }) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(profile.name)
-                                    .font(.headline)
-                                    .foregroundColor(.gray)
-                                Text("\(profile.age) y/o")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                            }
-                            Spacer()
-                            // Show a checkmark if this profile is currently selected.
-                            if selectedProfile?.id == profile.id {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.blue)
-                            }
-                        }
-                        .padding(.vertical, 4)
-                    }
-                    // Add swipe actions with an Edit button and a Delete button.
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                        Button {
-                            // Set the profile to edit and trigger navigation.
-                            editingProfile = profile
-                            isEditing = true
-                        } label: {
-                            Label("Edit", systemImage: "pencil")
-                        }
-                        .tint(.blue)
-                        
-                        Button(role: .destructive) {
-                            delete(profile: profile)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }
+        VStack(spacing: 0) {
+
+            // Плюс бутонът горе вдясно
+            HStack {
+                Spacer()
+                Button {
+                    isPresentingNewProfile.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title2)
+                        .padding(8)
                 }
             }
-            .navigationTitle("Profiles")
-            .toolbar {
-                // NavigationLink to add a new profile.
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: ProfileEditorView()) {
-                        Image(systemName: "plus")
+            .padding(.horizontal)
+
+            // ScrollView + LazyVStack (вече няма List)
+            ScrollView {
+                GeometryReader { geo in
+                    let cardWidth = geo.size.width * 0.9
+
+                    LazyVStack(spacing: 12) {
+                        ForEach(profiles) { profile in
+                            row(for: profile)
+                                .contentShape(Rectangle())          // редът става “цял тап”
+                                .onTapGesture { selectedProfile = profile }
+
+                                // Контекстно меню без preview (iOS 17+)
+                                .contextMenu(menuItems: {
+                                    Button {
+                                        editingProfile = profile
+                                    } label: {
+                                        Label("Edit", systemImage: "pencil")
+                                    }
+                                    Button(role: .destructive) {
+                                        delete(profile: profile)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                }) {
+                                    row(for: profile)
+                                        .contentShape(Rectangle())
+                                        .frame(width: cardWidth)
+                                }
+                        }
                     }
+                    .padding(.vertical, 8)
+                    .padding(.horizontal)   // хоризонтален “въздух” – преместен върху стека
                 }
             }
-            // Hidden NavigationLink triggered when editingProfile is set.
-            .background(
-                NavigationLink(
-                    destination: Group {
-                        if let editingProfile = editingProfile {
-                            ProfileEditorView(profile: editingProfile)
-                        } else {
-                            ProfileEditorView()
-                        }
-                    },
-                    isActive: $isEditing,
-                    label: {
-                        EmptyView()
-                    }
-                )
-                .hidden()
-            )
+        }
+        .padding(.top, 10)
+
+        // Sheet-ове за Create / Edit
+        .sheet(isPresented: $isPresentingNewProfile) {
+            ProfileEditorSheetView()
+                .presentationDetents([ .fraction(0.95) ])
+                .presentationDragIndicator(.visible)
+        }
+        .sheet(item: $editingProfile) { profile in
+            ProfileEditorSheetView(profile: profile)
+                .presentationDetents([ .fraction(0.95) ])
+                .presentationDragIndicator(.visible)
         }
     }
 
-    /// Deletes the given profile from SwiftData.
+    // MARK: – Ред (“карта”) за профил
+    @ViewBuilder
+    private func row(for profile: Profile) -> some View {
+        let isSelected = selectedProfile?.id == profile.id
+
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(profile.name)
+                    .font(.headline)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Age: \(profile.age) y/o")
+                    Text(String(format: "Weight: %.1f kg", profile.weight))
+                    Text(String(format: "Height: %.0f cm", profile.height))
+                }
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            }
+
+            Spacer()
+
+            if isSelected {
+                Image(systemName: "checkmark")
+                    .foregroundColor(.blue)
+            }
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 2)
+        )
+        .shadow(radius: 1)
+    }
+
+    // MARK: – Helpers
     private func delete(profile: Profile) {
         withAnimation {
             if profile.id == selectedProfile?.id {
                 selectedProfile = nil
             }
             modelContext.delete(profile)
-            try? modelContext.save()
-        }
-    }
-
-    /// (Optional) Delete using IndexSet if needed elsewhere.
-    private func deleteProfile(at offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                let profile = profiles[index]
-                if profile.id == selectedProfile?.id {
-                    selectedProfile = nil
-                }
-                modelContext.delete(profile)
-            }
             try? modelContext.save()
         }
     }
