@@ -1,14 +1,11 @@
 import SwiftUI
 import SwiftData
 
-// Define the TabSelection enum in the global scope so it’s shared.
-enum TabSelection: Hashable {
-    case nutrition, foods, vitamins, minerals, profiles
-}
-
 struct VitaHealth: View {
     
-    let selectedTabRoot: Int
+    @State private var selectedTabRoot = 7      // примерен State
+    let oldSelectedTab: Int?              // ⬅️ ново
+
     let onViewChange: (Int) -> Void
     @Environment(\.modelContext) private var modelContext
     @Query private var profiles: [Profile]
@@ -21,9 +18,11 @@ struct VitaHealth: View {
     @State private var selectedTab: TabSelection = .nutrition
     
     init(selectedTabRoot: Int,
-         onViewChange: ((Int) -> Void)?) {
-        self.selectedTabRoot = selectedTabRoot
-        self.onViewChange = onViewChange!
+            oldSelectedTab: Int? = nil,      // ⬅️ ново
+            onViewChange: ((Int) -> Void)?) {
+           self._selectedTabRoot = State(initialValue: selectedTabRoot)
+           self.oldSelectedTab   = oldSelectedTab  // ⬅️ ново
+           self.onViewChange     = onViewChange!
         
         // ① 100 % прозрачно – когато е в scroll-edge (върха)
         let clear = UINavigationBarAppearance()
@@ -51,11 +50,19 @@ struct VitaHealth: View {
     var body: some View {
         content
             .onAppear(perform: setup)
-            .onChange(of: profiles.count, perform: handleProfileCountChange)
-            .onChange(of: selectedProfile, perform: handleProfileChange)
+            .onChange(of: profiles.count) { _, newCount in
+                       handleProfileCountChange(newCount)
+                   }
+            .onChange(of: selectedProfile) { _, newProfile in
+                       handleProfileChange(newProfile)
+                   }
+            .onChange(of: selectedTabRoot) { _, newSelectedTabRoot in
+                    onViewChange(newSelectedTabRoot)
+                   }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack(spacing: 9) {
+                if !profiles.isEmpty {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        HStack(spacing: 9) {
                             UIMenuButtonRepresentable(
                                 currentView: selectedTabRoot,
                                 onViewChange: { newTab in
@@ -63,6 +70,7 @@ struct VitaHealth: View {
                                 }
                             )
                             .frame(width: 30, height: 30)
+                        }
                     }
                 }
             }
@@ -73,7 +81,11 @@ struct VitaHealth: View {
     @ViewBuilder
     var content: some View {
         if profiles.isEmpty {
-            ProfileEditorView()
+            ProfileEditorView(
+                isEmpty: true,
+                selectedTabRoot: $selectedTabRoot,
+                oldSelectedTab: oldSelectedTab       // ⬅️ ново
+            )
         } else {
             TabView(selection: $selectedTab) {
                 tabNutrition
