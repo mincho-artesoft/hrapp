@@ -139,7 +139,7 @@ struct NutritionsDetailView: View {
                 updateFoodSelectionsFromEvents(for: currentDay)
             }
         }
-        .onChange(of: selectedDate) { _ in
+        .onChange(of: selectedDate) {
             loadSelections()
             logSavedSelections()
             updateFoodSelectionsFromEvents(for: currentDay)

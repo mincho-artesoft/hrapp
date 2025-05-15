@@ -3,7 +3,7 @@
 //  VitaHealth
 //
 //  Created by Mincho Milev on 2/3/25.
-//  Updated to include fats and proteins
+//  Updated to include fats, proteins and isUserAdded flag
 //
 
 import SwiftUI
@@ -14,9 +14,12 @@ final class Food: Codable, Identifiable {
     var id: UUID = UUID()
     var name: String
     var servingSize: Double
-    var carbohydrates: Double = 0.0  // Default value for migration compatibility
-    var fats: Double = 0.0           // New property
-    var proteins: Double = 0.0       // New property
+    var carbohydrates: Double = 0.0
+    var fats: Double = 0.0
+    var proteins: Double = 0.0
+    /// ‼️ Ново: true → потребителска, false → seed-ната
+    var isUserAdded: Bool = true
+    
     var vitamins: [Nutrient]
     var minerals: [Nutrient]
     
@@ -25,6 +28,7 @@ final class Food: Codable, Identifiable {
          carbohydrates: Double = 0.0,
          fats: Double = 0.0,
          proteins: Double = 0.0,
+         isUserAdded: Bool = true,
          vitamins: [Nutrient] = [],
          minerals: [Nutrient] = []) {
         self.name = name
@@ -32,58 +36,57 @@ final class Food: Codable, Identifiable {
         self.carbohydrates = carbohydrates
         self.fats = fats
         self.proteins = proteins
+        self.isUserAdded = isUserAdded
         self.vitamins = vitamins
         self.minerals = minerals
     }
     
-    // MARK: - Codable Conformance
+    // MARK: - Codable
     
     enum CodingKeys: String, CodingKey {
-        case id, name, servingSize, carbohydrates, fats, proteins, vitamins, minerals
+        case id, name, servingSize, carbohydrates, fats, proteins,
+             isUserAdded, vitamins, minerals
     }
     
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        id            = try container.decode(UUID.self, forKey: .id)
-        name          = try container.decode(String.self, forKey: .name)
-        servingSize   = try container.decode(Double.self, forKey: .servingSize)
-        carbohydrates = try container.decode(Double.self, forKey: .carbohydrates)
-        fats          = try container.decode(Double.self, forKey: .fats)
-        proteins      = try container.decode(Double.self, forKey: .proteins)
-        vitamins      = try container.decode([Nutrient].self, forKey: .vitamins)
-        minerals      = try container.decode([Nutrient].self, forKey: .minerals)
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id            = try c.decode(UUID.self,   forKey: .id)
+        name          = try c.decode(String.self, forKey: .name)
+        servingSize   = try c.decode(Double.self, forKey: .servingSize)
+        carbohydrates = try c.decode(Double.self, forKey: .carbohydrates)
+        fats          = try c.decode(Double.self, forKey: .fats)
+        proteins      = try c.decode(Double.self, forKey: .proteins)
+        isUserAdded   = try c.decodeIfPresent(Bool.self, forKey: .isUserAdded) ?? true
+        vitamins      = try c.decode([Nutrient].self, forKey: .vitamins)
+        minerals      = try c.decode([Nutrient].self, forKey: .minerals)
     }
     
     func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(servingSize, forKey: .servingSize)
-        try container.encode(carbohydrates, forKey: .carbohydrates)
-        try container.encode(fats, forKey: .fats)
-        try container.encode(proteins, forKey: .proteins)
-        try container.encode(vitamins, forKey: .vitamins)
-        try container.encode(minerals, forKey: .minerals)
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(id,            forKey: .id)
+        try c.encode(name,          forKey: .name)
+        try c.encode(servingSize,   forKey: .servingSize)
+        try c.encode(carbohydrates, forKey: .carbohydrates)
+        try c.encode(fats,          forKey: .fats)
+        try c.encode(proteins,      forKey: .proteins)
+        try c.encode(isUserAdded,   forKey: .isUserAdded)
+        try c.encode(vitamins,      forKey: .vitamins)
+        try c.encode(minerals,      forKey: .minerals)
     }
 }
 
 extension Food {
-    /// Creates a persistable Food instance from a DefaultFood struct.
+    /// Създава Food от DefaultFood и маркира като seed-нато (isUserAdded = false)
     static func from(defaultFood: DefaultFood) -> Food {
-        let vitaminNutrients = defaultFood.vitamins.map { (name, amount) in
-            Nutrient(name: name, amount: amount, unit: "IU")
-        }
-        let mineralNutrients = defaultFood.minerals.map { (name, amount) in
-            Nutrient(name: name, amount: amount, unit: "µg")
-        }
-        return Food(
-            name: defaultFood.name,
-            servingSize: defaultFood.servingSize,
-            carbohydrates: defaultFood.carbohydrates,
-            fats: defaultFood.fats,         // Pass new value
-            proteins: defaultFood.proteins,   // Pass new value
-            vitamins: vitaminNutrients,
-            minerals: mineralNutrients
-        )
+        let vits = defaultFood.vitamins.map { Nutrient(name: $0.key, amount: $0.value, unit: "IU") }
+        let mins = defaultFood.minerals.map { Nutrient(name: $0.key, amount: $0.value, unit: "µg") }
+        return Food(name: defaultFood.name,
+                    servingSize: defaultFood.servingSize,
+                    carbohydrates: defaultFood.carbohydrates,
+                    fats: defaultFood.fats,
+                    proteins: defaultFood.proteins,
+                    isUserAdded: false,
+                    vitamins: vits,
+                    minerals: mins)
     }
 }

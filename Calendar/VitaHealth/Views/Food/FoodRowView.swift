@@ -1,11 +1,3 @@
-//
-//  FoodRowView.swift
-//  VitaHealth
-//
-//  Created by Mincho Milev on 2/3/25.
-//
-
-
 import SwiftUI
 
 struct FoodRowView: View {

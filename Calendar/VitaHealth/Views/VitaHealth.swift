@@ -10,7 +10,8 @@ struct VitaHealth: View {
     @State private var editingProfile: Profile? = nil
     @State private var selectedTabRoot = 7      // примерен State
     let oldSelectedTab: Int?              // ⬅️ ново
-
+    @State private var isPresentingNewFood = false
+    @State private var editingFood: Food? = nil
 
     let onViewChange: (Int) -> Void
     @Environment(\.modelContext) private var modelContext
@@ -73,8 +74,10 @@ struct VitaHealth: View {
                             Text("No Profile Selected")
                         }
                     case 1:
-                        FoodListView()
-                    default:
+                        FoodListView(
+                              isPresentingNewFood: $isPresentingNewFood,
+                              editingFood: $editingFood
+                          )                    default:
                         Text("N/A")
                     }
                 }
@@ -221,6 +224,16 @@ struct VitaHealth: View {
                 .sheet(item: $editingProfile) { profile in
                     ProfileEditorSheetView(profile: profile)
                         .presentationDetents([ .fraction(0.95) ])
+                        .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $isPresentingNewFood) {
+                    FoodDetailView()                         // add new
+                        .presentationDetents([.fraction(0.95)])
+                        .presentationDragIndicator(.visible)
+                }
+                .sheet(item: $editingFood) { food in      // edit
+                    FoodDetailView(food: food)
+                        .presentationDetents([.fraction(0.95)])
                         .presentationDragIndicator(.visible)
                 }
         }

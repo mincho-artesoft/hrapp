@@ -90,10 +90,10 @@ struct ProductAutoComplete: View {
                     .focused($isFieldFocused)
                     .padding(.horizontal)
                     .padding(.top, 10)
-                    .onChange(of: searchText) { _ in
+                    .onChange(of: searchText) {
                         debounceSearch()
                     }
-                    .onChange(of: isFieldFocused) { focused in
+                    .onChange(of: isFieldFocused) { _, focused in
                         withAnimation { showSuggestions = focused }
                         if focused { updateFilteredFoods() }
                     }
@@ -201,8 +201,8 @@ struct ProductAutoComplete: View {
             dismissSuggestions()
         }
         .onAppear { updateFilteredFoods() }
-        .onChange(of: foods) { _ in updateFilteredFoods() }
-        .onChange(of: selectedMeal) { _ in updateFilteredFoods() }
+        .onChange(of: foods) {updateFilteredFoods() }
+        .onChange(of: selectedMeal) {updateFilteredFoods() }
     }
     
     // MARK: - Helper Functions

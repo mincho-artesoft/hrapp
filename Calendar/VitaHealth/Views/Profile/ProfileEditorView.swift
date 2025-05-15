@@ -92,6 +92,7 @@ struct ProfileEditorView: View {
                     }
                 }
             }
+            .padding(.top, 50)
             .toolbar {
                 // Cancel
                 ToolbarItem(placement: .navigationBarLeading) {
