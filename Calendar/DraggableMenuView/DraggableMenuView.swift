@@ -98,13 +98,15 @@ struct DraggableMenuView<
 
                 // 2. The draggable menu
                 VStack(spacing: 0) {
+                    let contentHeight = UIScreen.main.bounds.height - fixedBottomBarHeight
+
                     // 2.1 The sliding content
                     slidingContentView(fullOffsetY: fullOffsetY,
                                        collapsedOffsetY: collapsedOffsetY)
                         .background(adaptiveBackground)
                         .cornerRadius(0, antialiased: true)
                         .offset(y: effectiveY)
-                        .frame(width: screenWidth, height: screenHeight - fixedBottomBarHeight)
+                        .frame(width: screenWidth, height: contentHeight)
                         .clipped()
 
                     // 2.2 The bottom bar

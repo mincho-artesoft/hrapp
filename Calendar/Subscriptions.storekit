@@ -20,7 +20,7 @@
     "_applicationInternalID" : "6744690319",
     "_developerTeamID" : "8293TNMX6S",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 768838304.56331003,
+    "_lastSynchronizedDate" : 768839254.67382705,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -148,7 +148,7 @@
           "groupNumber" : 4,
           "internalID" : "6745820650",
           "introductoryOffer" : {
-            "internalID" : "6E2E9448",
+            "internalID" : "7F7B114B",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P2W"
@@ -170,14 +170,14 @@
               "locale" : "de"
             },
             {
-              "description" : "Google Cal y Meet, mensual",
-              "displayName" : "Avanzado Mensual",
-              "locale" : "es_ES"
-            },
-            {
               "description" : "Google Cal & Meet, abo. mensuel",
               "displayName" : "Avancé Mensuel",
               "locale" : "fr"
+            },
+            {
+              "description" : "Google Cal y Meet, mensual",
+              "displayName" : "Avanzado Mensual",
+              "locale" : "es_ES"
             },
             {
               "description" : "Google Cal e Meet, mensile",
@@ -276,9 +276,9 @@
               "locale" : "it"
             },
             {
-              "description" : "Microsoft функции, ежегодно",
-              "displayName" : "Премиум год.",
-              "locale" : "ru"
+              "description" : "Microsoft features, yearly billing",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_US"
             },
             {
               "description" : "Microsoft, facturación anual",
@@ -286,9 +286,9 @@
               "locale" : "es_ES"
             },
             {
-              "description" : "Microsoft features, yearly billing",
-              "displayName" : "Premium Yearly",
-              "locale" : "en_US"
+              "description" : "Microsoft функции, ежегодно",
+              "displayName" : "Премиум год.",
+              "locale" : "ru"
             }
           ],
           "productID" : "Cloud.Calendars.Premium.Yearly",

@@ -693,7 +693,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
-
         // Съществуващите UIAction-и
         let dayAction = UIAction(
             title: NSLocalizedString("Day", comment: ""),

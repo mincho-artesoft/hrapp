@@ -5,6 +5,9 @@ import StoreKit      // ← нужно за Product в child вю-та
 struct SubscriptionView: View {
     @StateObject private var manager = SubscriptionManager.shared
 
+    @State private var showRestoreAlert = false
+    @State private var restoreAlertMessage = ""
+    
     @State private var selectedCategory: SubscriptionCategory = .base
     @State private var selectedProductID: String?
 
@@ -76,7 +79,6 @@ struct SubscriptionView: View {
             ) { notification in
                 if let info  = notification.userInfo,
                    let value = info["subscriptionStatusRaw"] as? String {
-print("value",value)
                     switch value {
                     case SubscriptionCategory.advance.rawValue:
                         alertMessage = String(
@@ -104,7 +106,13 @@ print("value",value)
                     showPlanAlert = true
                 }
             }
-
+            .onChange(of: manager.restorationAlertMessage) { _, newValue in
+                      if let newValue {                         // когато не е nil
+                          restoreAlertMessage = newValue
+                          showRestoreAlert   = true             // отваряме alert-a
+                          manager.restorationAlertMessage = nil // „обработено“
+                      }
+                  }
             // MARK: – системен alert
             .alert(
                 Text(NSLocalizedString("Plan Required", comment: "Alert title when plan missing")),
@@ -114,6 +122,14 @@ print("value",value)
             } message: {
                 Text(alertMessage)
             }
+            .alert(
+                        Text(NSLocalizedString("Restore Purchases", comment: "Alert title")),
+                        isPresented: $showRestoreAlert
+                    ) {
+                        Button("OK", role: .cancel) { }
+                    } message: {
+                        Text(restoreAlertMessage)
+                    }
         .cornerRadius(10)
         .padding(.horizontal)
     }

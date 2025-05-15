@@ -1,3 +1,4 @@
+
 import SwiftUI
 import StoreKit
 import UIKit
@@ -7,6 +8,7 @@ typealias StoreTransaction = StoreKit.Transaction
 @MainActor
 class SubscriptionManager: ObservableObject {
     @AppStorage("subscriptionStatus") private var subscriptionStatusRaw: String = SubscriptionStatus.base.rawValue
+    @Published var restorationAlertMessage: String?       // ← НОВО
 
     var subscriptionStatus: SubscriptionStatus {
         get { SubscriptionStatus(rawValue: subscriptionStatusRaw) ?? .base }
@@ -226,13 +228,34 @@ class SubscriptionManager: ObservableObject {
     }
     
     @MainActor
-    func restorePurchases() async {
-        do {
-            try await AppStore.sync()
-            await updatePurchasedStatus()
-        } catch {
-            print("Restore failed: \(error.localizedDescription)")
-        }
-    }
+       func restorePurchases() async {
+           do {
+               try await AppStore.sync()
+               await updatePurchasedStatus()
 
+               await MainActor.run {
+                   if hasActiveSubscription {
+                       restorationAlertMessage =
+                           NSLocalizedString("Your previous purchases have been successfully restored.",
+                                             comment: "Restore succeeded")
+                   } else {
+                       restorationAlertMessage =
+                           NSLocalizedString("No active subscriptions found to restore.",
+                                             comment: "Nothing to restore")
+                   }
+               }
+           } catch {
+               await MainActor.run {
+                   restorationAlertMessage =
+                       String(
+                           format: NSLocalizedString(
+                               "Failed to restore purchases. Please try again later. (%@)",
+                               comment: "Restore failed"
+                           ),
+                           error.localizedDescription
+                       )
+               }
+           }
+       }
 }
+

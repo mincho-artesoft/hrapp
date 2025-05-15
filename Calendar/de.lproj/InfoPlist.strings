@@ -1,8 +1,9 @@
-/* Anzeigename der App */
 "CFBundleDisplayName" = "Cloud Calendars";
 
-/* Berechtigungen */
-"NSCalendarsUsageDescription" = "Cloud Calendars möchte auf Ihre Kalender zugreifen.";
-"NSContactsUsageDescription" = "Cloud Calendars möchte auf Ihre Kontakte zugreifen.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars möchte auf Ihren Standort zugreifen, auch wenn Sie die App nicht verwenden.";
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars möchte auf Ihren Standort zugreifen, während Sie die App verwenden.";
+"NSCalendarsUsageDescription" = "Cloud Calendars benötigt Zugriff auf Ihre Kalender, um Termine aus iCloud, Google und Microsoft zentral zu verwalten.";
+
+"NSContactsUsageDescription" = "Cloud Calendars verwendet Ihre Kontakte, um das Einladen von Teilnehmern und das Verwalten von Eventdetails zu erleichtern.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars greift auf Ihren Standort zu, auch wenn die App geschlossen ist, um genaue Wettervorhersagen und Ereignisbenachrichtigungen zu liefern.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars nutzt Ihren Standort während der App-Nutzung, um lokale Wetterinformationen direkt in Ihren Kalender zu integrieren.";

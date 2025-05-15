@@ -1,8 +1,9 @@
-/* Название приложения */
 "CFBundleDisplayName" = "Cloud Calendars";
 
-/* Разрешения */
-"NSCalendarsUsageDescription" = "Cloud Calendars хотел бы получить доступ к вашим календарям.";
-"NSContactsUsageDescription" = "Cloud Calendars хотел бы получить доступ к вашим контактам.";
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars хотел бы получить доступ к вашему местоположению, даже когда вы не используете приложение.";
-"NSLocationWhenInUseUsageDescription" = "Cloud Calendars хотел бы получить доступ к вашему местоположению, пока вы используете приложение.";
+"NSCalendarsUsageDescription" = "Cloud Calendars требуется доступ к календарям для объединения событий из iCloud, Google и Microsoft.";
+
+"NSContactsUsageDescription" = "Cloud Calendars использует ваши контакты для удобной отправки приглашений и управления участниками событий.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars использует ваше местоположение даже при закрытом приложении для точных прогнозов погоды и уведомлений о событиях.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars использует ваше местоположение при активном приложении, чтобы интегрировать местный прогноз погоды в ваш календарь.";

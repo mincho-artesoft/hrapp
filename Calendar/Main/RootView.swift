@@ -10,6 +10,7 @@ struct RootView: View {
     @State private var showCalendarChooser = false
     @State private var selectedTabDraggableMenuView = 0
     @State private var menuState: MenuState = .collapsed
+    @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
 
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
@@ -39,6 +40,7 @@ struct RootView: View {
 
     // Управление на табовете. Според примера: 0=Month, 1=Day, 2=Year, 3=MultiDay, 4=AllEventsList, 5=MultiCalendar, 6=Weather
     @State private var selectedTab = 1
+    @State private var oldSelectedTab = 1
 
     // Нови променливи за различните sheet-ове
     @State private var showCalendarsSheet = false      // Показва CalendarsSheetView
@@ -47,7 +49,6 @@ struct RootView: View {
 
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
-    @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
     
     init() {
             // Ако няма нищо записано, по подразбиране ще е 1
@@ -176,13 +177,11 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
-//                                .modelContainer(modelContext)
                         default:
                             Text("N/A")
                         }
                     }
                     .overlay(alignment: .bottom) {
-                        
                         if menuState == .full {
                              Color.black.opacity(0.001)
                                  .ignoresSafeArea()
@@ -257,7 +256,7 @@ struct RootView: View {
                                             }
                                         }
                                         .frame(maxWidth: .infinity)
-                                        
+                                                                                
                                         Spacer()
                                     }
                                     .padding(.top, -20)
@@ -305,7 +304,7 @@ struct RootView: View {
                                     }
                                 }
                             )
-                            .opacity(selectedTab == 6 ? 0 : 1)
+                            .opacity( [6, 7].contains(selectedTab) ? 0 : 1 )
                             .edgesIgnoringSafeArea(.all)
                         }
                     }
@@ -368,10 +367,10 @@ struct RootView: View {
                 }
             }
         }
-        .onChange(of: selectedTab) {_, newValue in
-            
+        .onChange(of: selectedTab) { oldValue, newValue in
+            oldSelectedTab = oldValue
+            print("oldSelectedTab", oldSelectedTab)
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
-            print("newValue",newValue)
             if newValue == 6 {
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()

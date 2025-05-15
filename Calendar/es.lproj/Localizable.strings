@@ -678,6 +678,8 @@
 "%d %@ free, then %@%@." = "%d %@ gratis, luego %@%@.";
 "Subscribe for %@%@." = "Suscríbete por %@%@.";
 "Restore Purchases" = "Restaurar compras";
+"Privacy Policy"     = "Política de privacidad";
+"Terms of Service"   = "Términos de servicio";
 
 /* SubscriptionCategory */
 "Base"    = "Básico";
@@ -737,3 +739,8 @@
 "Unit_Precipitation_in"     = "″";
 "Unit_Pressure_hPa"         = "hPa";
 "Unit_Pressure_inHg"        = "inHg";
+
+"Your previous purchases have been successfully restored." = "Tus compras anteriores se han restaurado correctamente.";
+"No active subscriptions found to restore."                = "No se encontraron suscripciones activas para restaurar.";
+"Failed to restore purchases. Please try again later. (%@)" = "No se pudo restaurar las compras. Por favor, inténtalo de nuevo más tarde. (%@)";
+"Restore Purchases"                                        = "Restaurar compras";

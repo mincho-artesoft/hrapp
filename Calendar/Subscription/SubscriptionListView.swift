@@ -1,19 +1,20 @@
 import SwiftUI
 import StoreKit
+import SafariServices
 
 struct SubscriptionListView: View {
     let title: String
     let products: [Product]
     @Binding var selectedProductID: String?
     @StateObject private var manager = SubscriptionManager.shared
-
+    @State private var presentedURL: URL?
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 // Сравняваме вече локализирани заглавия
                 if title == "Advance Plans"{
                     AdvanceSubscriptionView()
-
+                    
                 }else if title == "Premium Plans"{
                     PremiumSubscriptionView()
                 }
@@ -23,7 +24,7 @@ struct SubscriptionListView: View {
                         let isActive = manager.purchasedProductIDs.contains(product.id)
                         let isSelectedOrActive = isActive || product.id == selectedProductID
                         let canBuy = manager.canPurchase(product)
-
+                        
                         SubscriptionCard(
                             product: product,
                             isActive: isActive,
@@ -41,20 +42,73 @@ struct SubscriptionListView: View {
                 .padding(.horizontal)
                 .padding(.top, -20)
                 ActiveSubscriptionStatusView()
-                    .padding(.horizontal)
-
+                
                 if let id = selectedProductID,
                    let product = manager.products.first(where: { $0.id == id }),
                    !manager.purchasedProductIDs.contains(id),
                    manager.canPurchase(product) {
                     PurchaseSectionView(selectedProductID: id)
                         .padding(.horizontal)
-                        .padding(.top, -10)
                 }
+                // Вашият HStack с Manage и Restore бутони...
+                HStack {
+                    VStack(alignment: .leading, spacing: 10){
+                        Button {
+                            Task { await manager.openManageSubscriptions() }
+                        } label: {
+                            Label(
+                                NSLocalizedString("Manage Subscription",
+                                                  comment: "Button to open subscription management"),
+                                systemImage: "creditcard")
+                        }
+                        .font(.footnote)
+                        
+                        Button {
+                            presentedURL = URL(string: "https://www.cloud-calendars.com/privacy-policy")!
+                        } label: {
+                            Label(
+                                NSLocalizedString("Privacy Policy",
+                                                  comment: "Open privacy policy link"),
+                                systemImage: "lock.shield")
+                        }
+                        .font(.footnote)
+                        
+                    }
+                  
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 10){
+                        Button {
+                            Task { await manager.restorePurchases() }
+                        } label: {
+                            Label(
+                                NSLocalizedString("Restore Purchases",
+                                                  comment: "Restore"),
+                                systemImage: "arrow.trianglehead.2.clockwise")
+                        }
+                        .font(.footnote)
+                        
+                        Button {
+                            presentedURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
+                        } label: {
+                            Label(
+                                NSLocalizedString("Terms of Service",
+                                                  comment: "Open terms of service link"),
+                                systemImage: "doc.text")
+                        }
+                        .font(.footnote)
+                    }
+                }
+                .padding(.horizontal, 25)
+                .padding(.top, 10)
+            }
+            .sheet(item: $presentedURL) { url in
+                SafariView(url: url)
             }
         }
         Spacer()
     }
+    
 
     @ViewBuilder
     private func ActiveSubscriptionStatusView() -> some View {
@@ -115,26 +169,6 @@ struct SubscriptionListView: View {
                  )
                  .font(.subheadline)
                  .foregroundColor(.secondary)
-
-                // Вашият HStack с Manage и Restore бутони...
-                HStack {
-                    Button(
-                        NSLocalizedString("Manage Subscription", comment: "Button to open subscription management")
-                    ) {
-                        Task { await manager.openManageSubscriptions() }
-                    }
-                    .font(.footnote)
-
-                    Spacer()
-
-                    Button(
-                        NSLocalizedString("Restore Purchases", comment: "Restore")
-                    ) {
-                        Task { await manager.restorePurchases() }
-                    }
-                    .font(.footnote)
-                }
-                .padding(.top, 6)
             }
             .padding(.top, 10)
             .padding(.vertical)
@@ -149,14 +183,6 @@ struct SubscriptionListView: View {
            let product = manager.products.first(where: { $0.id == id }) {
             
             VStack(spacing: 15) {
-//                if let summary = offerSummary(product: product) {
-//                    Text(summary)
-//                        .font(.caption)
-//                        .foregroundColor(.secondary)
-//                        .multilineTextAlignment(.center)
-//                        .fixedSize(horizontal: false, vertical: true)
-//                }
-//                
                 Button {
                     Task { await manager.purchase(product) }
                 } label: {
@@ -175,35 +201,6 @@ struct SubscriptionListView: View {
                 }
             }
             .padding(.vertical)
-        }
-    }
-
-    // Връщаме локализирана String
-    private func offerSummary(product: Product) -> String? {
-        let suffix = product.subscription?.subscriptionPeriod.unit.perPeriodString ?? ""
-        let price  = product.displayPrice
-        if let intro = product.subscription?.introductoryOffer {
-            let plural  = intro.period.value > 1
-            let unitTxt = intro.period.unit.noun(plural: plural).lowercased()
-            return String(
-                format: NSLocalizedString(
-                    "%d %@ free, then %@%@.",
-                    comment: "Intro offer summary: free period then price"
-                ),
-                intro.period.value,
-                unitTxt,
-                price,
-                suffix
-            )
-        } else {
-            return String(
-                format: NSLocalizedString(
-                    "Subscribe for %@%@.",
-                    comment: "Standard subscribe summary with price"
-                ),
-                price,
-                suffix
-            )
         }
     }
 }
