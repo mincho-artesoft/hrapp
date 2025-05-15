@@ -1,25 +1,39 @@
+//
+//  FoodListView.swift
+//  VitaHealth
+//
+//  Updated: 2025-05-15
+//  • Sheet-овете са преместени в родителя (VitaHealth)
+//  • Нови binding-и: isPresentingNewRecipe / editingRecipe
+//
+
 import SwiftUI
 import SwiftData
 
 struct FoodListView: View {
+
     // MARK: – Queries & dependencies
     @Query(
-        filter: #Predicate<Food> { $0.isUserAdded == true },
-        sort:   [SortDescriptor(\.name)]
-    ) private var foods: [Food]
-    
+        filter: #Predicate<Food> { $0.isUserAdded },
+        sort:   [SortDescriptor(\Food.name)]
+    )
+    private var foods: [Food]
+
     @Environment(\.modelContext) private var modelContext
 
-    // MARK: – External bindings
-    @Binding var isPresentingNewFood: Bool
-    @Binding var editingFood: Food?
-    
+    // MARK: – External bindings (идват от VitaHealth)
+    @Binding var isPresentingNewFood:     Bool
+    @Binding var editingFood:             Food?
+    @Binding var isPresentingNewRecipe:   Bool
+    @Binding var editingRecipe:           Food?
+
     // MARK: – UI state
-    @State private var searchText: String = ""
+    @State private var searchText = ""
 
     // MARK: – View
     var body: some View {
         VStack(spacing: 0) {
+
             // Search field
             TextField("Search foods",
                       text: $searchText,
@@ -30,19 +44,21 @@ struct FoodListView: View {
             .padding(.horizontal)
             .padding(.bottom, 6)
             .submitLabel(.search)
-            
+
             // Scrollable list of cards
             ScrollView {
                 GeometryReader { geo in
                     let cardWidth = geo.size.width * 0.9
-                    
+
                     LazyVStack(spacing: 12) {
                         ForEach(filteredFoods) { food in
                             row(for: food)
                                 .contentShape(Rectangle())
                                 .contextMenu {
                                     Button {
-                                        editingFood = food
+                                        food.isRecipe
+                                            ? (editingRecipe = food)
+                                            : (editingFood   = food)
                                     } label: {
                                         Label("Edit", systemImage: "pencil")
                                     }
@@ -65,21 +81,25 @@ struct FoodListView: View {
         }
         .padding(.top, 70)
         .toolbar {
-            Button {
-                isPresentingNewFood = true
-            } label: {
+
+            // Добавяне на нова храна
+            Button { isPresentingNewFood = true } label: {
                 Image(systemName: "plus")
             }
-            
-            // Delete all foods
-            Button(role: .destructive) {
-                deleteAllFoods()
-            } label: {
+            .padding(.horizontal, -10)
+
+            // Добавяне на нова рецепта
+            Button { isPresentingNewRecipe = true } label: {
+                Image(systemName: "text.badge.plus")
+            }
+            .padding(.horizontal, -10)
+
+            // Изтрий всички
+            Button(role: .destructive) { deleteAllFoods() } label: {
                 Image(systemName: "trash")
             }
             .padding(.horizontal, -10)
         }
-        
     }
 
     // MARK: – Filtered data

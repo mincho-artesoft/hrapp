@@ -2,294 +2,300 @@
 //  FoodDetailView.swift
 //  VitaHealth
 //
-//  Updated on 2025-05-15
-//  • Добавени полета Fats и Proteins
-//  • isModified, saveFood и init нагласени за новите стойности
+//  Updated: 2025-05-18
+//  • Празно поле, когато стойността е 0 – за макроси, витамини, минерали
+//  • parse(_:) преместена на ниво struct, за да е достъпна навсякъде
+//  • LabeledField показва "" при 0 и форматира красиво числата
 //
 
 import SwiftUI
 import SwiftData
 
+// ─────────────────────────────────────────────────────────────
+// MARK: – FoodDetailView
+// ─────────────────────────────────────────────────────────────
+
 struct FoodDetailView: View {
-    @Environment(\.dismiss) private var dismiss
+
+    // MARK: Dependencies
+    @Environment(\.dismiss)      private var dismiss
     @Environment(\.modelContext) private var modelContext
 
-    // MARK: – Reference data
-    private static let vitaminNames: [String]  = defaultVitaminsList.map(\.name).sorted()
-    private static let mineralNames: [String] = defaultMineralsList.map(\.name).sorted()
-
+    // Сортирани списъци с имената на всички витамини/минерали
+    private static let vitaminNames  = defaultVitaminsList .map(\.name).sorted()
+    private static let mineralNames  = defaultMineralsList .map(\.name).sorted()
     private let allVitamins = Self.vitaminNames
     private let allMinerals = Self.mineralNames
 
-    // MARK: – Editing target
+    // Ако е nil → създаваме нов Food
     private var editingFood: Food?
 
-    // MARK: – Originals (за detect-modified)
+    // MARK: Original values (за modified-check)
     private let initialFoodName: String
-    private let initialServingSize: Double
-    private let initialCarbohydrates: String
-    private let initialFats: String
-    private let initialProteins: String
-    private let initialVitaminAmounts: [String: String]
-    private let initialMineralAmounts: [String: String]
+    private let initialServing:  Double
+    private let initialCarbs:    String
+    private let initialFats:     String
+    private let initialProts:    String
+    private let initialVit:      [String:String]
+    private let initialMin:      [String:String]
 
-    // MARK: – Form state
-    @State private var foodName: String
-    @State private var servingSize: Double
-    @State private var carbohydrates: String
-    @State private var fats: String
-    @State private var proteins: String
-    @State private var vitaminAmounts: [String: String]
-    @State private var mineralAmounts: [String: String]
+    // MARK: Form state
+    @State private var foodName       : String
+    @State private var servingSize    : Double
+    @State private var carbohydrates  : String
+    @State private var fats           : String
+    @State private var proteins       : String
+    @State private var vitaminAmounts : [String:String]
+    @State private var mineralAmounts : [String:String]
 
     // MARK: – Init
     init(food: Food? = nil) {
         self.editingFood = food
 
-        // базови стойности
-        let initName    = food?.name        ?? NSLocalizedString("New Food", comment: "")
-        let initServing = food?.servingSize ?? 200
-        let initCarbs   = food.map { String($0.carbohydrates) } ?? "0"
-        let initFats    = food.map { String($0.fats) }          ?? "0"
-        let initProteins = food.map { String($0.proteins) }     ?? "0"
+        // --- базова информация (празно поле при 0)
+        let name    = food?.name        ?? NSLocalizedString("New Food", comment: "")
+        let serving = food?.servingSize ?? 200
 
-        _foodName      = State(initialValue: initName)
-        _servingSize   = State(initialValue: initServing)
-        _carbohydrates = State(initialValue: initCarbs)
-        _fats          = State(initialValue: initFats)
-        _proteins      = State(initialValue: initProteins)
+        let carbs = food.map { $0.carbohydrates == 0 ? "" : $0.carbohydrates.clean } ?? ""
+        let fats  = food.map { $0.fats          == 0 ? "" : $0.fats.clean          } ?? ""
+        let prots = food.map { $0.proteins      == 0 ? "" : $0.proteins.clean      } ?? ""
 
-        initialFoodName      = initName
-        initialServingSize   = initServing
-        initialCarbohydrates = initCarbs
-        initialFats          = initFats
-        initialProteins      = initProteins
+        _foodName      = State(initialValue: name)
+        _servingSize   = State(initialValue: serving)
+        _carbohydrates = State(initialValue: carbs)
+        _fats          = State(initialValue: fats)
+        _proteins      = State(initialValue: prots)
 
-        // витамини
-        var vDict: [String: String] = [:]
+        initialFoodName = name
+        initialServing  = serving
+        initialCarbs    = carbs
+        initialFats     = fats
+        initialProts    = prots
+
+        // --- витамини (празно поле при 0)
+        var vitDict = [String:String]()
         for v in Self.vitaminNames {
-            vDict[v] = food?.vitamins.first(where: { $0.name == v }).map { String($0.amount) } ?? ""
+            if let amt = food?.vitamins.first(where: { $0.name == v })?.amount,
+               amt > 0 {
+                vitDict[v] = amt.clean
+            } else {
+                vitDict[v] = ""
+            }
         }
-        _vitaminAmounts = State(initialValue: vDict)
-        initialVitaminAmounts = vDict
+        _vitaminAmounts = State(initialValue: vitDict)
+        initialVit      = vitDict
 
-        // минерали
-        var mDict: [String: String] = [:]
+        // --- минерали (празно поле при 0)
+        var minDict = [String:String]()
         for m in Self.mineralNames {
-            mDict[m] = food?.minerals.first(where: { $0.name == m }).map { String($0.amount) } ?? ""
+            if let amt = food?.minerals.first(where: { $0.name == m })?.amount,
+               amt > 0 {
+                minDict[m] = amt.clean
+            } else {
+                minDict[m] = ""
+            }
         }
-        _mineralAmounts = State(initialValue: mDict)
-        initialMineralAmounts = mDict
+        _mineralAmounts = State(initialValue: minDict)
+        initialMin      = minDict
     }
 
-    // MARK: – View
+    // ────────── Helper: parse "1,5" / "1.5"  →  Double ──────────
+    /// При празен низ връща 0.
+    private func parse(_ raw: String) -> Double {
+        let t = raw.trimmingCharacters(in: .whitespaces)
+        if let v = Double(t) { return v }
+        return Double(t.replacingOccurrences(of: ",", with: ".")) ?? 0
+    }
+
+    // ────────── UI ──────────
     var body: some View {
         NavigationStack {
             Form {
-                // — Food Information —
-                Section("Food Information") {
 
-                    LabeledField(label: "Name",     text: $foodName)
-                    LabeledField(label: "Serving (g)",
-                                 value: $servingSize)
-                    LabeledField(label: "Carbs (g)",
-                                 text: $carbohydrates)
-                    LabeledField(label: "Fats (g)",
-                                 text: $fats)
-                    LabeledField(label: "Proteins (g)",
-                                 text: $proteins)
+                // — базова информация —
+                Section("Food Information") {
+                    LabeledField(label: "Name",        text: $foodName)
+                    LabeledField(label: "Serving (g)", value: $servingSize)
+                    LabeledField(label: "Carbs (g)",   text: $carbohydrates)
+                    LabeledField(label: "Fats (g)",    text: $fats)
+                    LabeledField(label: "Proteins (g)",text: $proteins)
                 }
 
-                // — Vitamins —
+                // — витамини —
                 Section("Vitamins (IU)") {
-                    ForEach(allVitamins, id: \.self) { vitamin in
+                    ForEach(allVitamins, id: \.self) { v in
                         NutrientRow(
-                            title: vitamin,
+                            title: v,
                             text: Binding(
-                                get: { vitaminAmounts[vitamin] ?? "" },
-                                set: { vitaminAmounts[vitamin] = $0 }
+                                get: { vitaminAmounts[v] ?? "" },
+                                set: { vitaminAmounts[v] = $0 }
                             )
                         )
                     }
                 }
 
-                // — Minerals —
+                // — минерали —
                 Section("Minerals (µg)") {
-                    ForEach(allMinerals, id: \.self) { mineral in
+                    ForEach(allMinerals, id: \.self) { m in
                         NutrientRow(
-                            title: mineral,
+                            title: m,
                             text: Binding(
-                                get: { mineralAmounts[mineral] ?? "" },
-                                set: { mineralAmounts[mineral] = $0 }
+                                get: { mineralAmounts[m] ?? "" },
+                                set: { mineralAmounts[m] = $0 }
                             )
                         )
                     }
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .principal) {
                     Text(editingFood == nil ? "Add Food" : "Edit Food")
                         .font(.headline)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
                         saveFood()
                         dismiss()
                     }
                     .disabled(!isModified ||
-                              foodName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                              foodName.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }
         }
     }
 
-    // MARK: – Change detection
+    // MARK: – Modified check
     private var isModified: Bool {
-        func trimmed(_ s: String) -> String {
-            s.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
-
-        if trimmed(foodName) != trimmed(initialFoodName) { return true }
-        if abs(servingSize - initialServingSize) > 0.001 { return true }
-
-        let doubleDiff: (String, String) -> Bool = { curr, orig in
-            (Double(trimmed(curr)) ?? 0) != (Double(trimmed(orig)) ?? 0)
-        }
-        if doubleDiff(carbohydrates, initialCarbohydrates) { return true }
-        if doubleDiff(fats,          initialFats)          { return true }
-        if doubleDiff(proteins,      initialProteins)      { return true }
-
-        if !compare(initialVitaminAmounts, vitaminAmounts) { return true }
-        if !compare(initialMineralAmounts, mineralAmounts) { return true }
-
+        func trim(_ s: String) -> String { s.trimmingCharacters(in: .whitespaces) }
+        if trim(foodName) != trim(initialFoodName)   { return true }
+        if abs(servingSize - initialServing) > 0.001 { return true }
+        if trim(carbohydrates) != trim(initialCarbs) { return true }
+        if trim(fats)          != trim(initialFats)  { return true }
+        if trim(proteins)      != trim(initialProts) { return true }
+        if vitaminAmounts != initialVit              { return true }
+        if mineralAmounts != initialMin              { return true }
         return false
     }
 
-    private func compare(_ lhs: [String: String], _ rhs: [String: String]) -> Bool {
-        guard lhs.count == rhs.count else { return false }
-        for (k, v) in lhs {
-            if v.trimmingCharacters(in: .whitespacesAndNewlines) !=
-                (rhs[k] ?? "").trimmingCharacters(in: .whitespacesAndNewlines) {
-                return false
-            }
-        }
-        return true
-    }
-
-    // MARK: – Save
+    // ─────────────────────────────────────────────────────────────
+    // MARK: – SAVE
+    // ─────────────────────────────────────────────────────────────
     private func saveFood() {
-        guard !foodName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        guard !foodName.trimmingCharacters(in: .whitespaces).isEmpty else { return }
 
-        let carbValue  = Double(carbohydrates) ?? 0
-        let fatsValue  = Double(fats)          ?? 0
-        let protValue  = Double(proteins)      ?? 0
+        let carbVal = parse(carbohydrates)
+        let fatVal  = parse(fats)
+        let protVal = parse(proteins)
 
-        let vitaminUnit: (String) -> String = { n in
-            defaultVitaminsList.first { $0.name == n }?.unit ?? ""
-        }
-        let mineralUnit: (String) -> String = { n in
-            defaultMineralsList.first { $0.name == n }?.unit ?? ""
-        }
+        // ─── UPDATE ───
+        if let food = editingFood {
+            food.name          = foodName
+            food.servingSize   = servingSize
+            food.carbohydrates = carbVal
+            food.fats          = fatVal
+            food.proteins      = protVal
 
-        if let foodToEdit = editingFood {
-            // update
-            foodToEdit.name          = foodName
-            foodToEdit.servingSize   = servingSize
-            foodToEdit.carbohydrates = carbValue
-            foodToEdit.fats          = fatsValue
-            foodToEdit.proteins      = protValue
+            syncNutrients(
+                in: &food.vitamins,
+                from: vitaminAmounts,
+                defaultList: defaultVitaminsList.map { ($0.name, $0.unit) },
+                ownerKeyPath: \.vitaminOwner,
+                food: food
+            )
 
-            foodToEdit.vitamins.removeAll()
-            for v in allVitamins {
-                let amt = Double(vitaminAmounts[v] ?? "") ?? 0
-                foodToEdit.vitamins.append(
-                    Nutrient(name: v, amount: amt, unit: vitaminUnit(v))
-                )
-            }
+            syncNutrients(
+                in: &food.minerals,
+                from: mineralAmounts,
+                defaultList: defaultMineralsList.map { ($0.name, $0.unit) },
+                ownerKeyPath: \.mineralOwner,
+                food: food
+            )
 
-            foodToEdit.minerals.removeAll()
-            for m in allMinerals {
-                let amt = Double(mineralAmounts[m] ?? "") ?? 0
-                foodToEdit.minerals.append(
-                    Nutrient(name: m, amount: amt, unit: mineralUnit(m))
-                )
-            }
+        // ─── CREATE ───
         } else {
-            // create
             let newFood = Food(
                 name: foodName,
                 servingSize: servingSize,
-                carbohydrates: carbValue,
-                fats: fatsValue,
-                proteins: protValue
+                carbohydrates: carbVal,
+                fats: fatVal,
+                proteins: protVal
             )
-            for v in allVitamins {
-                let amt = Double(vitaminAmounts[v] ?? "") ?? 0
-                newFood.vitamins.append(
-                    Nutrient(name: v, amount: amt, unit: vitaminUnit(v))
-                )
-            }
-            for m in allMinerals {
-                let amt = Double(mineralAmounts[m] ?? "") ?? 0
-                newFood.minerals.append(
-                    Nutrient(name: m, amount: amt, unit: mineralUnit(m))
-                )
-            }
             modelContext.insert(newFood)
+
+            newFood.vitamins = buildNutrients(
+                from: vitaminAmounts,
+                defaultList: defaultVitaminsList.map { ($0.name, $0.unit) },
+                ownerKeyPath: \.vitaminOwner,
+                food: newFood
+            )
+
+            newFood.minerals = buildNutrients(
+                from: mineralAmounts,
+                defaultList: defaultMineralsList.map { ($0.name, $0.unit) },
+                ownerKeyPath: \.mineralOwner,
+                food: newFood
+            )
         }
 
         try? modelContext.save()
     }
-}
 
-// MARK: – Helper components
-private struct LabeledField: View {
-    let label: String
-    @Binding var text: String
-    var numeric: Bool = false
+    // ─────────────────────────────────────────────────────────────
+    // MARK: – Helpers for nutrients
+    // ─────────────────────────────────────────────────────────────
 
-    init(label: String, text: Binding<String>) {
-        self.label = label
-        self._text = text
-    }
+    /// Създава нови Nutrient обекти за дадената храна
+    private func buildNutrients(
+        from dict: [String:String],
+        defaultList: [(name: String, unit: String)],
+        ownerKeyPath: ReferenceWritableKeyPath<Nutrient, Food?>,
+        food: Food
+    ) -> [Nutrient] {
 
-    init(label: String, value: Binding<Double>) {
-        self.label   = label
-        self._text   = Binding(
-            get: { String(value.wrappedValue) },
-            set: { value.wrappedValue = Double($0) ?? 0 }
-        )
-        self.numeric = true
-    }
+        var units = [String:String]()
+        defaultList.forEach { units[$0.name] = $0.unit }
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(label)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            TextField(label, text: $text)
-                .keyboardType(numeric ? .decimalPad : .default)
-                .textFieldStyle(.roundedBorder)
+        return dict.keys.sorted().compactMap { key in
+            let amt = parse(dict[key] ?? "")
+            guard amt > 0 else { return nil }           // пропускаме празни
+            let n = Nutrient(name: key, amount: amt, unit: units[key] ?? "")
+            n[keyPath: ownerKeyPath] = food
+            modelContext.insert(n)
+            return n
         }
     }
-}
 
-private struct NutrientRow: View {
-    let title: String
-    @Binding var text: String
+    /// Синхронизира съществуващия масив Nutrient с новите стойности
+    private func syncNutrients(
+        in array: inout [Nutrient],
+        from dict: [String:String],
+        defaultList: [(name: String, unit: String)],
+        ownerKeyPath: ReferenceWritableKeyPath<Nutrient, Food?>,
+        food: Food
+    ) {
+        var units = [String:String]()
+        defaultList.forEach { units[$0.name] = $0.unit }
 
-    var body: some View {
-        HStack {
-            Text(title)
-            Spacer()
-            TextField("", text: $text)
-                .multilineTextAlignment(.trailing)
-                .keyboardType(.decimalPad)
-                .textFieldStyle(.roundedBorder)
-                .frame(width: 80)
+        // 1. Обновяваме съществуващи или създаваме нови
+        for key in dict.keys {
+            let amt = parse(dict[key] ?? "")
+            if let existing = array.first(where: { $0.name == key }) {
+                existing.amount = amt
+            } else if amt > 0 {
+                let n = Nutrient(name: key, amount: amt, unit: units[key] ?? "")
+                n[keyPath: ownerKeyPath] = food
+                modelContext.insert(n)
+                array.append(n)
+            }
         }
+
+        // 2. Премахваме празните
+        for n in array.filter({ (dict[$0.name] ?? "").isEmpty }) {
+            modelContext.delete(n)
+        }
+        array.removeAll { (dict[$0.name] ?? "").isEmpty }
     }
 }

@@ -2,8 +2,8 @@
 //  Food.swift
 //  VitaHealth
 //
-//  Created by Mincho Milev on 2/3/25.
-//  Updated to include fats, proteins and isUserAdded flag
+//  Updated: 2025-05-15
+//  • Добавени: ingredients (рецептни компоненти) + isRecipe
 //
 
 import SwiftUI
@@ -11,18 +11,30 @@ import SwiftData
 
 @Model
 final class Food: Codable, Identifiable {
+
+    // MARK: – Базова информация
     var id: UUID = UUID()
     var name: String
-    var servingSize: Double
-    var carbohydrates: Double = 0.0
-    var fats: Double = 0.0
-    var proteins: Double = 0.0
-    /// ‼️ Ново: true → потребителска, false → seed-ната
+    var servingSize: Double                    // g
+    var carbohydrates: Double = 0.0            // g
+    var fats: Double = 0.0                     // g
+    var proteins: Double = 0.0                 // g
+
+    /// true → създадено от потребителя, false → seed-нато
     var isUserAdded: Bool = true
-    
+
+    // MARK: – Микроелементи
     var vitamins: [Nutrient]
     var minerals: [Nutrient]
-    
+
+    // MARK: – Рецепта (опционално)
+    /// Ако списъкът не е празен, обектът се счита за рецепта.
+    var ingredients: [Food] = []
+
+    /// Удобно свойство – връща *true*, когато това `Food` е рецепта
+    var isRecipe: Bool { !ingredients.isEmpty }
+
+    // MARK: – Init
     init(name: String,
          servingSize: Double = 200,
          carbohydrates: Double = 0.0,
@@ -30,24 +42,26 @@ final class Food: Codable, Identifiable {
          proteins: Double = 0.0,
          isUserAdded: Bool = true,
          vitamins: [Nutrient] = [],
-         minerals: [Nutrient] = []) {
-        self.name = name
-        self.servingSize = servingSize
+         minerals: [Nutrient] = [],
+         ingredients: [Food] = []) {
+
+        self.name          = name
+        self.servingSize   = servingSize
         self.carbohydrates = carbohydrates
-        self.fats = fats
-        self.proteins = proteins
-        self.isUserAdded = isUserAdded
-        self.vitamins = vitamins
-        self.minerals = minerals
+        self.fats          = fats
+        self.proteins      = proteins
+        self.isUserAdded   = isUserAdded
+        self.vitamins      = vitamins
+        self.minerals      = minerals
+        self.ingredients   = ingredients
     }
-    
-    // MARK: - Codable
-    
+
+    // MARK: – Codable
     enum CodingKeys: String, CodingKey {
         case id, name, servingSize, carbohydrates, fats, proteins,
-             isUserAdded, vitamins, minerals
+             isUserAdded, vitamins, minerals, ingredients
     }
-    
+
     required init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         id            = try c.decode(UUID.self,   forKey: .id)
@@ -59,8 +73,9 @@ final class Food: Codable, Identifiable {
         isUserAdded   = try c.decodeIfPresent(Bool.self, forKey: .isUserAdded) ?? true
         vitamins      = try c.decode([Nutrient].self, forKey: .vitamins)
         minerals      = try c.decode([Nutrient].self, forKey: .minerals)
+        ingredients   = try c.decodeIfPresent([Food].self, forKey: .ingredients) ?? []
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var c = encoder.container(keyedBy: CodingKeys.self)
         try c.encode(id,            forKey: .id)
@@ -72,21 +87,26 @@ final class Food: Codable, Identifiable {
         try c.encode(isUserAdded,   forKey: .isUserAdded)
         try c.encode(vitamins,      forKey: .vitamins)
         try c.encode(minerals,      forKey: .minerals)
+        try c.encode(ingredients,   forKey: .ingredients)
     }
 }
 
+// MARK: – Factory за seed-нати храни
 extension Food {
-    /// Създава Food от DefaultFood и маркира като seed-нато (isUserAdded = false)
+    /// Създава `Food` от `DefaultFood`; маркира го като seed-нато (isUserAdded = false)
     static func from(defaultFood: DefaultFood) -> Food {
         let vits = defaultFood.vitamins.map { Nutrient(name: $0.key, amount: $0.value, unit: "IU") }
         let mins = defaultFood.minerals.map { Nutrient(name: $0.key, amount: $0.value, unit: "µg") }
-        return Food(name: defaultFood.name,
-                    servingSize: defaultFood.servingSize,
-                    carbohydrates: defaultFood.carbohydrates,
-                    fats: defaultFood.fats,
-                    proteins: defaultFood.proteins,
-                    isUserAdded: false,
-                    vitamins: vits,
-                    minerals: mins)
+        return Food(
+            name: defaultFood.name,
+            servingSize: defaultFood.servingSize,
+            carbohydrates: defaultFood.carbohydrates,
+            fats: defaultFood.fats,
+            proteins: defaultFood.proteins,
+            isUserAdded: false,
+            vitamins: vits,
+            minerals: mins,
+            ingredients: []              // ← важно за seed-нати: не са рецепти
+        )
     }
 }
