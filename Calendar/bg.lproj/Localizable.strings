@@ -677,6 +677,8 @@
 "%d %@ free, then %@%@." = "%d %@ безплатно, след това %@%@.";
 "Subscribe for %@%@." = "Абонирайте се за %@%@.";
 "Restore Purchases" = "Възстанови покупки";
+"Privacy Policy"     = "Политика за поверителност";
+"Terms of Service"   = "Условия за ползване";
 
 /* SubscriptionCategory */
 "Base"    = "Основен";
@@ -736,3 +738,8 @@
 "Unit_Precipitation_in"     = "″";
 "Unit_Pressure_hPa"         = "hPa";
 "Unit_Pressure_inHg"        = "inHg";
+
+"Your previous purchases have been successfully restored." = "Предишните ви покупки бяха успешно възстановени.";
+"No active subscriptions found to restore."                = "Няма активни абонаменти за възстановяване.";
+"Failed to restore purchases. Please try again later. (%@)" = "Неуспешно възстановяване на покупките. Моля, опитайте отново по-късно. (%@)";
+"Restore Purchases"                                        = "Възстановяване на покупки";

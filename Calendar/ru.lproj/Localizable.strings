@@ -677,6 +677,8 @@
 "%d %@ free, then %@%@." = "%d %@ бесплатно, затем %@%@.";
 "Subscribe for %@%@." = "Подписаться за %@%@.";
 "Restore Purchases" = "Восстановить покупки";
+"Privacy Policy"     = "Политика конфиденциальности";
+"Terms of Service"   = "Условия обслуживания";
 
 /* SubscriptionCategory */
 "Base"    = "Базовый";
@@ -736,3 +738,8 @@
 "Unit_Precipitation_in"     = "дюйм";
 "Unit_Pressure_hPa"         = "гПа";
 "Unit_Pressure_inHg"        = "дюйм рт. ст.";
+
+"Your previous purchases have been successfully restored." = "Ваши предыдущие покупки были успешно восстановлены.";
+"No active subscriptions found to restore."                = "Активные подписки для восстановления не найдены.";
+"Failed to restore purchases. Please try again later. (%@)" = "Не удалось восстановить покупки. Пожалуйста, попробуйте позже. (%@)";
+"Restore Purchases"                                        = "Восстановить покупки";
