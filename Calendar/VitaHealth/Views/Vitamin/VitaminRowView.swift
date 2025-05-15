@@ -14,12 +14,12 @@ struct VitaminRowView: View {
             if let demo = demographic,
                let req = vitamin.requirements.first(where: { $0.demographic == demo }) {
                 // Само една група
-                Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
+                Text("\(req.dailyNeed) / \(req.upperLimit)")
                     .font(.caption2)
             } else {
                 // Всички групи (ако няма профил или конкретните данни липсват)
                 ForEach(vitamin.requirements, id: \.self) { req in
-                    Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
+                    Text("\(req.dailyNeed) / \(req.upperLimit)")
                         .font(.caption2)
                 }
             }

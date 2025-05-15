@@ -14,12 +14,12 @@ struct MineralRowView: View {
             if let demo = demographic,
                let req = mineral.requirements.first(where: { $0.demographic == demo }) {
                 // Single demographic block
-                Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
+                Text("\(req.dailyNeed) / \(req.upperLimit)")
                     .font(.caption2)
             } else {
                 // All groups (no profile or missing data)
                 ForEach(mineral.requirements, id: \.self) { req in
-                    Text("\(req.demographic): \(req.dailyNeed) / \(req.upperLimit)")
+                    Text("\(req.dailyNeed) / \(req.upperLimit)")
                         .font(.caption2)
                 }
             }

@@ -52,7 +52,10 @@ struct ProfileListView: View {
                                         Label("Delete", systemImage: "trash")
                                     }
                                 } preview: {
-                                    EmptyView()   // забранява default preview
+                                    row(for: profile)
+                                        .contentShape(Rectangle())          // редът става “цял тап”
+                                        .onTapGesture { selectedProfile = profile }
+                                        .frame(width: cardWidth)
                                 }
                                 .frame(width: cardWidth)
                         }
