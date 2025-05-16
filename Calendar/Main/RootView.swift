@@ -55,6 +55,8 @@ struct RootView: View {
         let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
         if (1...6).contains(saved) {
             _selectedTab = State(initialValue: saved)
+        }else{
+            _selectedTab = State(initialValue: 1)
         }
         
     }
