@@ -73,17 +73,21 @@ struct VitaminListView: View {
                 .submitLabel(.search)
             
             // Списък
-            List {
-                ForEach(filteredVitamins) { vitamin in
-                    VitaminRowView(
-                        vitamin: vitamin,
-                        demographic: profile.map(demographicString)
-                    )
-                    .contentShape(Rectangle())
-                    .listRowBackground(Color(.clear))
+            GeometryReader { geo in
+                let cardHeight = geo.size.height * 0.9
+                List {
+                    ForEach(filteredVitamins) { vitamin in
+                        VitaminRowView(
+                            vitamin: vitamin,
+                            demographic: profile.map(demographicString)
+                        )
+                        .contentShape(Rectangle())
+                        .listRowBackground(Color(.clear))
+                    }
                 }
+                .frame(height: cardHeight)
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
         }
         .padding(.top, 10)
         .background(Color.clear)

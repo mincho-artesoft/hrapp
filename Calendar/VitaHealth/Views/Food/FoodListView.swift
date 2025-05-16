@@ -2,9 +2,8 @@
 //  FoodListView.swift
 //  VitaHealth
 //
-//  Updated: 2025-05-15
-//  • Sheet-овете са преместени в родителя (VitaHealth)
-//  • Нови binding-и: isPresentingNewRecipe / editingRecipe
+//  Updated: 2025-05-16
+//  • Местени бутони „Add Food/Recipe“ под Picker-а; премахнати от тулбара.
 //
 
 import SwiftUI
@@ -29,6 +28,15 @@ struct FoodListView: View {
 
     // MARK: – UI state
     @State private var searchText = ""
+    @State private var filter: Filter = .foods
+
+    // MARK: – Filter options
+    enum Filter: String, CaseIterable, Identifiable {
+        case foods    = "Foods"
+        case recipes  = "Recipes"
+
+        var id: String { rawValue }
+    }
 
     // MARK: – View
     var body: some View {
@@ -45,10 +53,47 @@ struct FoodListView: View {
             .padding(.bottom, 6)
             .submitLabel(.search)
 
-            // Scrollable list of cards
-            ScrollView {
-                GeometryReader { geo in
-                    let cardWidth = geo.size.width * 0.9
+            // Filter picker
+            Picker("Filter", selection: $filter) {
+                ForEach(Filter.allCases) { option in
+                    Text(option.rawValue).tag(option)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
+            .padding(.bottom, 6)
+
+            // Action buttons under picker
+            HStack {
+                Spacer()
+                
+                Button {
+                    if filter == .foods{
+                        isPresentingNewFood = true
+                    }else if filter == .recipes{
+                        isPresentingNewRecipe = true
+                    }
+                    
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title)
+                }
+                
+                Button(role: .destructive) {
+                    deleteAllFoods()
+                } label: {
+                    Image(systemName: "trash")
+                        .font(.title)
+                }
+            }
+            .padding(.vertical, 2)
+            .padding(.horizontal, 20)
+
+            GeometryReader { geo in
+                let cardWidth = geo.size.width * 0.9
+                let cardHeight = geo.size.height * 0.85
+                // Scrollable list of cards
+                ScrollView {
 
                     LazyVStack(spacing: 12) {
                         ForEach(filteredFoods) { food in
@@ -57,8 +102,8 @@ struct FoodListView: View {
                                 .contextMenu {
                                     Button {
                                         food.isRecipe
-                                            ? (editingRecipe = food)
-                                            : (editingFood   = food)
+                                        ? (editingRecipe = food)
+                                        : (editingFood   = food)
                                     } label: {
                                         Label("Edit", systemImage: "pencil")
                                     }
@@ -77,36 +122,24 @@ struct FoodListView: View {
                     .padding(.vertical, 8)
                     .padding(.horizontal)
                 }
+                .frame(height: cardHeight)
             }
         }
         .padding(.top, 70)
-        .toolbar {
-
-            // Добавяне на нова храна
-            Button { isPresentingNewFood = true } label: {
-                Image(systemName: "plus")
-            }
-            .padding(.horizontal, -10)
-
-            // Добавяне на нова рецепта
-            Button { isPresentingNewRecipe = true } label: {
-                Image(systemName: "text.badge.plus")
-            }
-            .padding(.horizontal, -10)
-
-            // Изтрий всички
-            Button(role: .destructive) { deleteAllFoods() } label: {
-                Image(systemName: "trash")
-            }
-            .padding(.horizontal, -10)
-        }
     }
 
     // MARK: – Filtered data
     private var filteredFoods: [Food] {
-        foods.filter {
-            searchText.isEmpty ||
-            $0.name.lowercased().contains(searchText.lowercased())
+        foods.filter { food in
+            let matchesSearch =
+                searchText.isEmpty ||
+                food.name.lowercased().contains(searchText.lowercased())
+
+            let matchesFilter =
+                (filter == .foods   && !food.isRecipe) ||
+                (filter == .recipes &&  food.isRecipe)
+
+            return matchesSearch && matchesFilter
         }
     }
 

@@ -71,16 +71,21 @@ struct MineralListView: View {
                 .submitLabel(.search)
 
             // Mineral list
-            List {
-                ForEach(filteredMinerals) { mineral in
-                    MineralRowView(mineral: mineral,
-                                    demographic: profile.map(demographicString))
+            GeometryReader { geo in
+                let cardHeight = geo.size.height * 0.9
+
+                List {
+                    ForEach(filteredMinerals) { mineral in
+                        MineralRowView(mineral: mineral,
+                                       demographic: profile.map(demographicString))
                         .contentShape(Rectangle())
                         .listRowBackground(Color(.clear))
+                    }
+                    .onDelete(perform: deleteMineral)
                 }
-                .onDelete(perform: deleteMineral)
+                .frame(height: cardHeight)
+                .listStyle(.plain)
             }
-            .listStyle(.plain)
         }
         .padding(.top, 10)
         .background(Color.clear)

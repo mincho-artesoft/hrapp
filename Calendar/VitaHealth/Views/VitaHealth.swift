@@ -120,7 +120,20 @@ struct VitaHealth: View {
                     }
                 }
             }
-            .overlay(alignment: .bottom) { bottomOverlay(isPortrait: isPortrait) }
+            .overlay(alignment: .bottom) {
+                if menuState == .full {
+                     Color.black.opacity(0.001)
+                         .ignoresSafeArea()
+                         .onTapGesture {
+                             withAnimation(.spring()) {
+                                 menuState = .collapsed
+                             }
+                         }
+                         .transition(.opacity)
+                         .zIndex(0)              // под менюто, но над останалия интерфейс
+                 }
+                bottomOverlay(isPortrait: isPortrait)
+            }
             .onAppear(perform: setup)
             .onChange(of: profiles.count)     { _, new in handleProfileCountChange(new) }
             .onChange(of: selectedProfile)    { _, new in handleProfileChange(new) }

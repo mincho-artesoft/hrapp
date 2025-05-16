@@ -28,11 +28,12 @@ struct ProfileListView: View {
             }
             .padding(.horizontal)
 
+            GeometryReader { geo in
+                let cardWidth = geo.size.width * 0.9
+                let cardHeight = geo.size.height * 0.9
+
             // ScrollView + LazyVStack
             ScrollView {
-                GeometryReader { geo in
-                    let cardWidth = geo.size.width * 0.9
-
                     LazyVStack(spacing: 12) {
                         ForEach(profiles) { profile in
                             row(for: profile)
@@ -63,6 +64,7 @@ struct ProfileListView: View {
                     .padding(.vertical, 8)
                     .padding(.horizontal)   // хоризонтален “въздух”
                 }
+                .frame(height: cardHeight)
             }
         }
         .padding(.top, 10)
