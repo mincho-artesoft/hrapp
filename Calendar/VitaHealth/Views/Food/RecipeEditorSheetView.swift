@@ -2,15 +2,15 @@
 //  RecipeEditorSheetView.swift
 //  VitaHealth
 //
-//  Create / edit a recipe with live vitamin & mineral bars.
-//  (Definitions of `NutrientBarView` and `IngredientLine` are expected
-//   elsewhere in the project.)
+//  Create / edit a recipe with live vitamin & mineral bars
+//  + cover image, gallery images, preparation time & instructions
 //
-//  Updated: 2025-05-15
+//  Updated: 2025-05-17
 //
 
 import SwiftUI
 import SwiftData
+import PhotosUI      // за избор на снимки
 
 // ──────────────────────────────────────────────────────────────
 // MARK: – Main sheet
@@ -34,10 +34,20 @@ struct RecipeEditorSheetView: View {
     private let allVitaminNames = defaultVitaminsList.map(\.name).sorted()
     private let allMineralNames = defaultMineralsList.map(\.name).sorted()
 
-    // Form state
-    @State private var recipeName = ""
+    // Form state – базови полета
+    @State private var recipeName    = ""
+    @State private var prepTimeText  = ""              // ← време на приготвяне (мин.)
     @State private var ingredients: [IngredientLine] = []
-    @State private var searchText = ""
+    @State private var searchText    = ""
+
+    // Медия и инструкции
+    @State private var coverPickerItem: PhotosPickerItem? = nil
+    @State private var coverImage:     UIImage?           = nil
+
+    @State private var galleryPickerItems: [PhotosPickerItem] = []
+    @State private var galleryImages:      [UIImage]          = []
+
+    @State private var instructionsText = ""
 
     // ────────── Init
     init(recipe: Food? = nil, profile: Profile? = nil) {
@@ -45,9 +55,26 @@ struct RecipeEditorSheetView: View {
         self.profile = profile
 
         _recipeName = State(initialValue: recipe?.name ?? "")
+        _prepTimeText = State(initialValue: {              // ← NEW
+            if let t = recipe?.preparationTime { return String(t) }
+            return ""
+        }())
+
         if let rec = recipe {
+            // съществуващи съставки
             let lines = rec.ingredients.map { IngredientLine(food: $0, amount: 100) }
             _ingredients = State(initialValue: lines)
+
+            // инструкции
+            _instructionsText = State(initialValue: rec.instructions ?? "")
+
+            // cover image
+            if let d = rec.coverImage, let ui = UIImage(data: d) {
+                _coverImage = State(initialValue: ui)
+            }
+            // gallery
+            let imgs = rec.galleryImages.compactMap { UIImage(data: $0) }
+            _galleryImages = State(initialValue: imgs)
         }
     }
 
@@ -55,16 +82,20 @@ struct RecipeEditorSheetView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 24) {
 
-                    // ─ Name ------------------------------------------------
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Recipe")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        TextField("Name", text: $recipeName)
-                            .textFieldStyle(.roundedBorder)
-                    }
+                    // ─ Name & prep time ------------------------------------
+                    nameSection
+                    prepTimeSection
+
+                    // ─ Cover image ----------------------------------------
+                    coverSection
+
+                    // ─ Gallery images -------------------------------------
+                    gallerySection
+
+                    // ─ Instructions ---------------------------------------
+                    instructionsSection
 
                     // ─ Search + add ---------------------------------------
                     searchSection
@@ -72,37 +103,9 @@ struct RecipeEditorSheetView: View {
                     // ─ Ingredients list -----------------------------------
                     ingredientsSection
 
-                    // ─ Vitamins -------------------------------------------
-                    Text("Vitamins")
-                        .font(.title2.bold())
-                        .padding(.top, 10)
-
-                    ForEach(allVitaminNames, id: \.self) { name in
-                        let amt = vitaminAmounts[name, default: 0]
-                        if let (need, ul, unit) = requirement(for: name, isVitamin: true) {
-                            NutrientBarView(title: name,
-                                            amount: amt,
-                                            unit: unit,
-                                            need: need,
-                                            upper: ul)
-                        }
-                    }
-
-                    // ─ Minerals -------------------------------------------
-                    Text("Minerals")
-                        .font(.title2.bold())
-                        .padding(.top, 10)
-
-                    ForEach(allMineralNames, id: \.self) { name in
-                        let amt = mineralAmounts[name, default: 0]
-                        if let (need, ul, unit) = requirement(for: name, isVitamin: false) {
-                            NutrientBarView(title: name,
-                                            amount: amt,
-                                            unit: unit,
-                                            need: need,
-                                            upper: ul)
-                        }
-                    }
+                    // ─ Vitamins & Minerals --------------------------------
+                    vitaminsSection
+                    mineralsSection
                 }
                 .padding(.horizontal)
                 .padding(.bottom, 40)
@@ -124,6 +127,8 @@ struct RecipeEditorSheetView: View {
                               ingredients.isEmpty)
                 }
             }
+            .onChange(of: coverPickerItem) { _ in loadCoverImage() }
+            .onChange(of: galleryPickerItems) { _ in loadGalleryImages() }
         }
     }
 
@@ -131,6 +136,132 @@ struct RecipeEditorSheetView: View {
     // MARK: – UI sections
     // ──────────────────────────────────────────────────────────
 
+    // Name
+    private var nameSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Recipe")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            TextField("Name", text: $recipeName)
+                .textFieldStyle(.roundedBorder)
+        }
+    }
+
+    // Preparation time (optional)
+    private var prepTimeSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Prep Time (min)")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            TextField("e.g. 45", text: $prepTimeText)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
+        }
+    }
+
+    // Cover image
+    private var coverSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Cover Image")
+                .font(.caption)
+                .foregroundColor(.secondary)
+
+            if let img = coverImage {
+                ZStack(alignment: .topTrailing) {
+                    Image(uiImage: img)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: 200)
+                        .clipped()
+                        .cornerRadius(12)
+
+                    Button {
+                        coverImage = nil
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.title2)
+                            .padding(6)
+                            .background(.ultraThinMaterial, in: Circle())
+                    }
+                }
+            }
+
+            // За да избегнем актора-вида, изчисляваме bool извън closure
+            let hasCover = coverImage != nil
+
+            PhotosPicker(selection: $coverPickerItem,
+                         matching: .images,
+                         photoLibrary: .shared()) {
+                Label(hasCover ? "Change cover…" : "Select cover…",
+                      systemImage: "photo")
+            }
+        }
+    }
+
+    // Gallery images
+    private var gallerySection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Gallery")
+                .font(.caption)
+                .foregroundColor(.secondary)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(galleryImages.indices, id: \.self) { idx in
+                        ZStack(alignment: .topTrailing) {
+                            Image(uiImage: galleryImages[idx])
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 120, height: 120)
+                                .clipped()
+                                .cornerRadius(8)
+
+                            Button {
+                                galleryImages.remove(at: idx)
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .font(.body)
+                                    .padding(4)
+                                    .background(.ultraThinMaterial, in: Circle())
+                            }
+                        }
+                    }
+                    PhotosPicker(selection: $galleryPickerItems,
+                                 maxSelectionCount: 5,
+                                 matching: .images,
+                                 photoLibrary: .shared()) {
+                        VStack {
+                            Image(systemName: "plus")
+                                .font(.title)
+                            Text("Add")
+                                .font(.caption)
+                        }
+                        .frame(width: 120, height: 120)
+                        .foregroundColor(.secondary)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(8)
+                    }
+                }
+            }
+        }
+    }
+
+    // Instructions
+    private var instructionsSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Preparation")
+                .font(.caption)
+                .foregroundColor(.secondary)
+
+            TextEditor(text: $instructionsText)
+                .frame(minHeight: 120)
+                .padding(8)
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(8)
+        }
+    }
+
+    // Search field + results
     private var searchSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             TextField("Search Food", text: $searchText)
@@ -157,6 +288,7 @@ struct RecipeEditorSheetView: View {
         }
     }
 
+    // Ingredients list
     private var ingredientsSection: some View {
         VStack(alignment: .leading, spacing: 4) {
             ForEach($ingredients) { $line in
@@ -179,6 +311,46 @@ struct RecipeEditorSheetView: View {
                     }
                 }
                 .padding(.vertical, 4)
+            }
+        }
+    }
+
+    // Vitamins section
+    private var vitaminsSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Vitamins")
+                .font(.title2.bold())
+                .padding(.top, 10)
+
+            ForEach(allVitaminNames, id: \.self) { name in
+                let amt = vitaminAmounts[name, default: 0]
+                if let (need, ul, unit) = requirement(for: name, isVitamin: true) {
+                    NutrientBarView(title: name,
+                                    amount: amt,
+                                    unit: unit,
+                                    need: need,
+                                    upper: ul)
+                }
+            }
+        }
+    }
+
+    // Minerals section
+    private var mineralsSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Minerals")
+                .font(.title2.bold())
+                .padding(.top, 10)
+
+            ForEach(allMineralNames, id: \.self) { name in
+                let amt = mineralAmounts[name, default: 0]
+                if let (need, ul, unit) = requirement(for: name, isVitamin: false) {
+                    NutrientBarView(title: name,
+                                    amount: amt,
+                                    unit: unit,
+                                    need: need,
+                                    upper: ul)
+                }
             }
         }
     }
@@ -296,7 +468,12 @@ struct RecipeEditorSheetView: View {
                      unit: minUnit($0))
         }
 
+        // превръщаме UIImage → Data
+        let coverData   = coverImage?.jpegData(compressionQuality: 0.8)
+        let galleryData = galleryImages.compactMap { $0.jpegData(compressionQuality: 0.7) }
+
         let foodsOnly = ingredients.map(\.food)
+        let prepTime  = Int(prepTimeText)            // ← NEW (nil, ако текстът е празен/невалиден)
 
         if let edit = recipe {
             // update
@@ -308,6 +485,11 @@ struct RecipeEditorSheetView: View {
             edit.ingredients   = foodsOnly
             edit.vitamins      = vitArray
             edit.minerals      = minArray
+
+            edit.preparationTime = prepTime          // ← NEW
+            edit.coverImage    = coverData
+            edit.galleryImages = galleryData
+            edit.instructions  = instructionsText
         } else {
             // create
             let new = Food(name: recipeName,
@@ -316,9 +498,13 @@ struct RecipeEditorSheetView: View {
                            fats: totalFat,
                            proteins: totalProt,
                            isUserAdded: true,
+                           preparationTime: prepTime,      // ← NEW
                            vitamins: vitArray,
                            minerals: minArray,
-                           ingredients: foodsOnly)
+                           ingredients: foodsOnly,
+                           coverImage: coverData,
+                           galleryImages: galleryData,
+                           instructions: instructionsText)
             modelContext.insert(new)
         }
         try? modelContext.save()
@@ -340,5 +526,32 @@ struct RecipeEditorSheetView: View {
         nf.numberStyle = .decimal
         nf.maximumFractionDigits = 1
         return nf
+    }
+
+    // Загрузка снимки от PhotosPickerItem → UIImage
+    private func loadCoverImage() {
+        guard let item = coverPickerItem else { return }
+        Task {
+            if let data = try? await item.loadTransferable(type: Data.self),
+               let ui = UIImage(data: data) {
+                await MainActor.run { coverImage = ui }
+            }
+        }
+    }
+
+    private func loadGalleryImages() {
+        Task {
+            var newImgs: [UIImage] = []
+            for item in galleryPickerItems {
+                if let data = try? await item.loadTransferable(type: Data.self),
+                   let ui = UIImage(data: data) {
+                    newImgs.append(ui)
+                }
+            }
+            await MainActor.run {
+                galleryImages.append(contentsOf: newImgs)
+                galleryPickerItems = []     // reset
+            }
+        }
     }
 }

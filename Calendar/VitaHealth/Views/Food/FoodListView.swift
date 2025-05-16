@@ -4,6 +4,7 @@
 //
 //  Updated: 2025-05-16
 //  • Местени бутони „Add Food/Recipe“ под Picker-а; премахнати от тулбара.
+//  • Показва броя на продуктите и рецептите (динамично).
 //
 
 import SwiftUI
@@ -38,6 +39,33 @@ struct FoodListView: View {
         var id: String { rawValue }
     }
 
+    // MARK: – Derived data
+    private var foodsOnly:   [Food] { foods.filter { !$0.isRecipe } }
+    private var recipesOnly: [Food] { foods.filter {  $0.isRecipe } }
+
+    private var foodsCountText: String   { "Foods (\(foodsOnly.count))" }
+    private var recipesCountText: String { "Recipes (\(recipesOnly.count))" }
+
+    private var filteredFoods: [Food] {
+        foods.filter { food in
+            let matchesSearch =
+                searchText.isEmpty ||
+                food.name.lowercased().contains(searchText.lowercased())
+
+            let matchesFilter =
+                (filter == .foods   && !food.isRecipe) ||
+                (filter == .recipes &&  food.isRecipe)
+
+            return matchesSearch && matchesFilter
+        }
+    }
+
+    private var currentCountText: String {
+        filter == .foods
+        ? "\(foodsOnly.count) product\(foodsOnly.count == 1 ? "" : "s")"
+        : "\(recipesOnly.count) recipe\(recipesOnly.count == 1 ? "" : "s")"
+    }
+
     // MARK: – View
     var body: some View {
         VStack(spacing: 0) {
@@ -53,32 +81,37 @@ struct FoodListView: View {
             .padding(.bottom, 6)
             .submitLabel(.search)
 
-            // Filter picker
+            // Filter picker with dynamic counts
             Picker("Filter", selection: $filter) {
-                ForEach(Filter.allCases) { option in
-                    Text(option.rawValue).tag(option)
-                }
+                Text(foodsCountText).tag(Filter.foods)
+                Text(recipesCountText).tag(Filter.recipes)
             }
             .pickerStyle(.segmented)
             .padding(.horizontal)
-            .padding(.bottom, 6)
+            .padding(.bottom, 4)
+
+            // Current selection count
+            Text(currentCountText)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .padding(.bottom, 6)
 
             // Action buttons under picker
             HStack {
                 Spacer()
-                
+
                 Button {
-                    if filter == .foods{
+                    if filter == .foods {
                         isPresentingNewFood = true
-                    }else if filter == .recipes{
+                    } else {
                         isPresentingNewRecipe = true
                     }
-                    
+
                 } label: {
                     Image(systemName: "plus")
                         .font(.title)
                 }
-                
+
                 Button(role: .destructive) {
                     deleteAllFoods()
                 } label: {
@@ -90,11 +123,11 @@ struct FoodListView: View {
             .padding(.horizontal, 20)
 
             GeometryReader { geo in
-                let cardWidth = geo.size.width * 0.9
-                let cardHeight = geo.size.height * 0.85
+                let cardWidth  = geo.size.width * 0.9
+                let cardHeight = geo.size.height * 0.88
+
                 // Scrollable list of cards
                 ScrollView {
-
                     LazyVStack(spacing: 12) {
                         ForEach(filteredFoods) { food in
                             row(for: food)
@@ -121,26 +154,12 @@ struct FoodListView: View {
                     }
                     .padding(.vertical, 8)
                     .padding(.horizontal)
+                    Spacer()
                 }
                 .frame(height: cardHeight)
             }
         }
         .padding(.top, 70)
-    }
-
-    // MARK: – Filtered data
-    private var filteredFoods: [Food] {
-        foods.filter { food in
-            let matchesSearch =
-                searchText.isEmpty ||
-                food.name.lowercased().contains(searchText.lowercased())
-
-            let matchesFilter =
-                (filter == .foods   && !food.isRecipe) ||
-                (filter == .recipes &&  food.isRecipe)
-
-            return matchesSearch && matchesFilter
-        }
     }
 
     // MARK: – Single row (card)
