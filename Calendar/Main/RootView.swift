@@ -51,10 +51,15 @@ struct RootView: View {
     @State private var eventToEdit: EKEvent? = nil
     
     init() {
-            // Ако няма нищо записано, по подразбиране ще е 1
-            let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
+        // Ако няма нищо записано, по подразбиране ще е 1
+        let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
+        if (1...7).contains(saved) {
             _selectedTab = State(initialValue: saved)
+        }else{
+            _selectedTab = State(initialValue: 1)
         }
+        
+    }
     
     var body: some View {
         ZStack {
