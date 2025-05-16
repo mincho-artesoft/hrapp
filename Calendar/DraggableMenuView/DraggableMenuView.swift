@@ -88,11 +88,11 @@ struct DraggableMenuView<
                     Color.black.opacity(0.001)
                         .ignoresSafeArea()
                         .onTapGesture {
-                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+//                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                                 menuState = .collapsed
                                 onStateChange(.collapsed)
                                 currentOffsetY = collapsedOffsetY
-                            }
+//                            }
                         }
                 }
 
@@ -116,17 +116,17 @@ struct DraggableMenuView<
                 }
                 .frame(width: screenWidth)
                 .edgesIgnoringSafeArea([.top, .bottom])
-                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: effectiveY)
+//                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: effectiveY)
             }
             .onAppear {
                 onStateChange(menuState)
             }
             .onChange(of: menuState) { _, newState in
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+//                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                     currentOffsetY = (newState == .full)
                         ? fullOffsetY
                         : collapsedOffsetY
-                }
+//                }
             }
         }
         .edgesIgnoringSafeArea(.all)

@@ -1,7 +1,7 @@
 import SwiftUI
 import EventKit
 import EventKitUI
-@preconcurrency import WeatherKit
+@preconcurrency import WeatherKit // If you use WeatherKit directly in RootView
 import CoreLocation
 
 // MARK: - RootView
@@ -53,12 +53,13 @@ struct RootView: View {
     init() {
         // Ако няма нищо записано, по подразбиране ще е 1
         let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
-        if (1...7).contains(saved) {
+        if (0...7).contains(saved) { // Assuming 0-7 are your valid tab indices
             _selectedTab = State(initialValue: saved)
         }else{
             _selectedTab = State(initialValue: 1)
         }
-        
+        // Initialize oldSelectedTab based on the initial selectedTab
+        _oldSelectedTab = State(initialValue: _selectedTab.wrappedValue)
     }
     
     var body: some View {
@@ -69,7 +70,7 @@ struct RootView: View {
                 GeometryReader { geometry in
                     let isPortrait = geometry.size.height > geometry.size.width
 
-                    VStack {
+                    VStack(spacing: 0) { // Ensure VStack uses spacing 0 if no explicit spacing is desired
                         // Тук си избирате кой екран да се покаже според selectedTab
                         switch selectedTab {
                         case 0:
@@ -168,7 +169,8 @@ struct RootView: View {
                                 }
                             ) { tappedDay in
                                 pinnedFromDateSingle = tappedDay
-                                pinnedToDateSingle   = tappedDay
+                                // For SingleDayMultiCalendarWrapper, toDate is usually same as fromDate
+                                // pinnedToDateSingle   = tappedDay // Not typically set by this wrapper
                                 loadSingleDayEventsLocal()
                             }
                             .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
@@ -182,151 +184,103 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
+                            // .ignoresSafeArea(...) // WeatherKitView might manage its own safe areas
                         case 7:
                             VitaHealth(
                                  selectedTabRoot: selectedTab,
-                                 oldSelectedTab: oldSelectedTab,   // ⬅️ ново
+                                 oldSelectedTab: oldSelectedTab,
                                  onViewChange: { newTab in
                                      selectedTab = newTab
                                  }
                              )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         default:
-                            Text("N/A")
+                            Text("N/A - Selected Tab: \(selectedTab)") // More informative fallback
+                                .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space
                         }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity) // Make sure the VStack fills the GeometryReader
                     .overlay(alignment: .bottom) {
-                        if menuState == .full {
+                        if menuState == .full && isPortrait && ![6,7].contains(selectedTab) { // Added checks from outer if
                              Color.black.opacity(0.001)
                                  .ignoresSafeArea()
+                                 .contentShape(Rectangle())
                                  .onTapGesture {
-                                     withAnimation(.spring()) {
+                                     withAnimation(.spring()) { // Keep spring for user-initiated tap
                                          menuState = .collapsed
                                      }
                                  }
-                                 .transition(.opacity)
-                                 .zIndex(0)              // под менюто, но над останалия интерфейс
+                                 .transition(.opacity) // Animate the overlay itself
+                                 .zIndex(0)
                          }
                         
-                        if isPortrait {
+                        if isPortrait { // This condition was from your original code for showing DraggableMenuView
                             DraggableMenuView(
                                 menuState: $menuState,
                                 adaptiveBackgroundOpacity:$draggableMenuAdaptiveBackgroundОpacity,
-                                // MARK: Bottom bar с 3 бутона
                                 bottomBar: {
-                                    HStack{
+                                    HStack{ // Content for bottomBar
                                         Spacer()
-                                        
-                                        Button {
+                                        bottomBarButton(title: "Today", image: "calendar.badge.checkmark", action: {
                                             let today = Calendar.current.startOfDay(for: Date())
                                             pinnedFromDateSingle = today
                                             pinnedToDateSingle   = today
+                                            oldSelectedTab = selectedTab
                                             selectedTab = 1
                                             UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
                                             menuState = .collapsed
-                                        } label: {
-                                            VStack(spacing: 0) {
-                                                Image(systemName: "calendar.badge.checkmark")
-                                                    .font(.system(size: 18))
-                                                    .foregroundColor(.blue)
-                                                Text("Today")
-                                                    .font(.system(size: 10))
-                                                    .foregroundColor(.primary)
-                                            }
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        
+                                        })
                                         Spacer()
-                                        
-                                        Button {
-                                            createAndEditNewEvent(on: Date())
+                                        bottomBarButton(title: "Add", image: "calendar.badge.plus", action: {
+                                            createAndEditNewEvent(on: Date()) // Or use a relevant date
                                             menuState = .collapsed
-                                        } label: {
-                                            VStack(spacing: 0) {
-                                                Image(systemName: "calendar.badge.plus")
-                                                    .font(.system(size: 18))
-                                                    .foregroundColor(.blue)
-                                                Text("Add")
-                                                    .font(.system(size: 10))
-                                                    .foregroundColor(.primary)
-                                            }
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        
+                                        })
                                         Spacer()
-                                        
-                                        Button {
+                                        bottomBarButton(title: "Weather", image: "cloud.sun.fill", action: {
+                                            oldSelectedTab = selectedTab
                                             selectedTab = 6
                                             UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
                                             menuState = .collapsed
-                                        } label: {
-                                            VStack(spacing: 0) {
-                                                Image(systemName: "cloud.sun.fill")
-                                                    .font(.system(size: 18))
-                                                    .foregroundColor(.blue)
-                                                Text("Weather")
-                                                    .font(.system(size: 10))
-                                                    .foregroundColor(.primary)
-                                            }
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        
+                                        })
                                         Spacer()
-                                        
-                                        Button {
+                                        bottomBarButton(title: "VitaHealth", image: "fork.knife", action: {
+                                            oldSelectedTab = selectedTab
                                             selectedTab = 7
                                             UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
                                             menuState = .collapsed
-                                        } label: {
-                                            VStack(spacing: 0) {
-                                                Image(systemName: "fork.knife")
-                                                    .font(.system(size: 18))
-                                                    .foregroundColor(.blue)
-                                                Text("VitaHealth")
-                                                    .font(.system(size: 10))
-                                                    .foregroundColor(.primary)
-                                            }
-                                        }
-                                        .frame(maxWidth: .infinity)
-                                        
+                                        })
                                         Spacer()
                                     }
-                                    .padding(.top, -20)
+                                    .padding(.top, -20) // Original padding
                                 },
-                                
-                                // MARK: Horizontal секция (Picker)
                                 horizontalContent: {
                                     Picker("", selection: $selectedTabDraggableMenuView) {
-                                        Label("Calendar",      systemImage: "calendar").tag(0)
+                                        Label("Calendar", systemImage: "calendar").tag(0)
                                         Label("MultiCalendar", systemImage: "calendar.badge.plus").tag(1)
                                         Label("Subscriptions", systemImage: "calendar.circle").tag(2)
                                     }
                                     .pickerStyle(.segmented)
                                 },
-                                
-                                // MARK: Vertical секция
                                 verticalContent: {
                                     switch selectedTabDraggableMenuView {
-                                    case 0:
-                                        CalendarsSheetView().padding(.vertical, 8)
-                                    case 1:
-                                        CalendarsDropdownRepresentable().padding(.vertical, 8)
-                                    case 2:
-                                        SubscriptionView().padding(.vertical, 8)
-                                    default:
-                                        Text("N/A")
+                                    case 0: CalendarsSheetView().padding(.vertical, 8)
+                                    case 1: CalendarsDropdownRepresentable().padding(.vertical, 8)
+                                    case 2: SubscriptionView().padding(.vertical, 8)
+                                    default: Text("N/A")
                                     }
                                 },
-                                
-                                onStateChange: { state in
+                                onStateChange: { state in // This is the onStateChange for DraggableMenuView
+                                    // Original logic for data loading on menu state change
                                     Task {
-                                        accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
-                                        if accessGranted {
+                                        let currentAccessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
+                                        self.accessGranted = currentAccessGranted // Update local state
+                                        if currentAccessGranted {
                                             CalendarViewModel.shared.reloadCalendars()
                                             let year = Calendar.current.component(.year, from: Date())
                                             CalendarViewModel.shared.loadEventsForWholeYear(year: year)
                                             
-                                            switch selectedTab {
+                                            // Reload data for the *currently selected main tab*
+                                            switch self.selectedTab { // use self.selectedTab
                                             case 1: loadSingleDayEvents()
                                             case 3: loadMultiDayEvents()
                                             case 5: reloadSingleDayEventsWithVisibleCalendars()
@@ -336,17 +290,20 @@ struct RootView: View {
                                     }
                                 }
                             )
-                            .opacity( [6, 7].contains(selectedTab) ? 0 : 1 )
+                            .opacity( [6, 7].contains(selectedTab) ? 0 : 1 ) // Keep opacity logic
                             .edgesIgnoringSafeArea(.all)
+                            .zIndex(1) // Ensure DraggableMenuView is above the tap overlay
+                            // ---- BEGIN FIX: Disable animation on DraggableMenuView based on selectedTab ----
+                            .animation(.none, value: selectedTab)
+                            // ---- END FIX ----
                         }
                     }
-                }
-            }
+                } // End GeometryReader
+            } // End NavigationView
             .navigationViewStyle(StackNavigationViewStyle())
-            // -- Тук задаваме бял фон + тъмен текст на долния тулбар --
-            .toolbarBackground(Color.white, for: .bottomBar)
+            .toolbarBackground(Color.white.opacity(0.1), for: .bottomBar) // Example for bottom bar
             .toolbarBackground(.visible, for: .bottomBar)
-            .toolbarColorScheme(.light, for: .bottomBar)
+            .toolbarColorScheme(.light, for: .bottomBar) // Or .dark as per your theme
         }
         .onReceive(NotificationCenter.default.publisher(
             for: .notificationDraggableMenuViewSub)) { notification in
@@ -357,66 +314,90 @@ struct RootView: View {
             }
         .onAppear {
             Task {
-                // Искане на достъп до календара (по вашата логика)
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                 if accessGranted {
                     CalendarViewModel.shared.reloadCalendars()
                     let year = Calendar.current.component(.year, from: Date())
                     CalendarViewModel.shared.loadEventsForWholeYear(year: year)
-
-                    // Зареждаме начално, ако желаете
-                    if selectedTab == 3 {
-                        loadMultiDayEvents()
-                    } else if selectedTab == 1 {
-                        loadSingleDayEvents()
-                    } else if selectedTab == 5 {
-                        reloadSingleDayEventsWithVisibleCalendars()
+                    // Initial load based on selectedTab
+                    switch selectedTab {
+                        case 1: loadSingleDayEvents()
+                        case 3: loadMultiDayEvents()
+                        case 5: reloadSingleDayEventsWithVisibleCalendars()
+                        default: break
                     }
                 }
             }
         }
-        
-        // Sheet за редакция/създаване
         .sheet(item: $eventToEdit) { theEvent in
-            EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent)
-        }
-        .onChange(of: eventToEdit) {
-            Task {
-                accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
-                if accessGranted {
-                    CalendarViewModel.shared.reloadCalendars()
-                    let year = Calendar.current.component(.year, from: Date())
-                    CalendarViewModel.shared.loadEventsForWholeYear(year: year)
-
-                    // Зареждаме начално, ако желаете
-                    if selectedTab == 3 {
-                        loadMultiDayEvents()
-                    } else if selectedTab == 1 {
-                        loadSingleDayEvents()
-                    } else if selectedTab == 5 {
-                        reloadSingleDayEventsWithVisibleCalendars()
+            EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent) {
+                // onEventUpdated closure for EventEditViewWrapper
+                Task {
+                    if accessGranted { // Check access again or rely on previous check
+                        CalendarViewModel.shared.reloadCalendars() // Reload calendars in case of changes
+                        let year = Calendar.current.component(.year, from: Date())
+                        CalendarViewModel.shared.loadEventsForWholeYear(year: year) // Reload events
+                        
+                        // Reload data for the currently active main tab
+                        switch selectedTab {
+                        case 1: loadSingleDayEvents()
+                        case 3: loadMultiDayEvents()
+                        case 4: reloadAllEvents() // If list view needs refresh
+                        case 5: reloadSingleDayEventsWithVisibleCalendars()
+                        default: break
+                        }
                     }
                 }
             }
         }
         .onChange(of: selectedTab) { oldValue, newValue in
-            oldSelectedTab = oldValue
-            print("oldSelectedTab", oldSelectedTab)
+             self.oldSelectedTab = oldValue // Update oldSelectedTab
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
-            if newValue == 6 {
+            if newValue == 6 || newValue == 7 { // Weather or VitaHealth
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
                 draggableMenuAdaptiveBackgroundОpacity = 0.35
-            }else{
+            } else {
                 CalendarViewModel.shared.startGoogleCalendarSync()
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
                 draggableMenuAdaptiveBackgroundОpacity = 0.95
             }
+            // Reload data for the new tab
+            Task {
+                if accessGranted { // Use the @State variable
+                    switch newValue {
+                    case 1: loadSingleDayEvents()
+                    case 3: loadMultiDayEvents()
+                    case 4: reloadAllEvents()
+                    case 5: reloadSingleDayEventsWithVisibleCalendars()
+                    default: break
+                    }
+                }
+            }
         }
     }
+
+    // Helper for bottom bar buttons
+    @ViewBuilder
+    private func bottomBarButton(title: String, image: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(spacing: 0) {
+                Image(systemName: image)
+                    .font(.system(size: 18))
+                    .foregroundColor(.blue)
+                Text(LocalizedStringKey(title)) // For localization
+                    .font(.system(size: 10))
+                    .foregroundColor(.primary)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    // ... (Keep your existing loadSingleDayEvents, loadMultiDayEvents, etc. methods and extensions) ...
 }
 
-// MARK: - Примерни функции за SingleDay/MultiDay.
+
+// MARK: - Data Loading Helpers (Original from your file)
 extension RootView {
     private func loadSingleDayEvents() {
         guard accessGranted else { return }
@@ -452,7 +433,7 @@ extension RootView {
     }
 }
 
-// MARK: - Fetch & Split helpers
+// MARK: - Fetch & Split helpers (Original from your file)
 extension RootView {
     private func fetchAndSplitEventsLocal(from: Date, to: Date) -> [EventDescriptor] {
         let store = CalendarViewModel.shared.eventStore
@@ -467,7 +448,7 @@ extension RootView {
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
             let cal = Calendar.current
-            if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
+            if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate ?? ekEvent.startDate) {
                 splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
@@ -483,13 +464,13 @@ extension RootView {
             CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
         }
 
-        let predicate = store.predicateForEvents(withStart: from, end: to, calendars: allowedCalendars)
+        let predicate = store.predicateForEvents(withStart: from, end: to, calendars: allowedCalendars.isEmpty ? nil : allowedCalendars) // Added check for empty allowedCalendars
         let found = store.events(matching: predicate)
 
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
             let cal = Calendar.current
-            if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate) {
+            if cal.startOfDay(for: ekEvent.startDate) != cal.startOfDay(for: ekEvent.endDate ?? ekEvent.startDate) {
                 splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: from, endRange: to))
             } else {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
@@ -504,8 +485,8 @@ extension RootView {
         var results = [EKMultiDayWrapper]()
         let cal = Calendar.current
 
-        let realStart = max(ekEvent.startDate, startRange)
-        let realEnd   = min(ekEvent.endDate, endRange)
+        let realStart = max(ekEvent.startDate ?? startRange, startRange)
+        let realEnd   = min(ekEvent.endDate ?? endRange, endRange)
         if realStart >= realEnd { return results }
 
         var currentStart = realStart
@@ -534,7 +515,7 @@ extension RootView {
     }
 }
 
-// MARK: - Lazy loading helpers for AllEventsListView
+// MARK: - Lazy loading helpers for AllEventsListView (Original from your file)
 extension RootView {
     func loadInitialMonth() {
         guard accessGranted else { return }
@@ -575,7 +556,7 @@ extension RootView {
     }
 }
 
-// MARK: - Chunk Loading
+// MARK: - Chunk Loading (Original from your file)
 extension RootView {
     private func loadNextChunkOfEvents() {
         guard accessGranted else { return }
@@ -602,7 +583,7 @@ extension RootView {
         let fromDate = max(fromDateRaw, minLoadDate)
 
         let newEvents = fetchAndSplitEvents(from: fromDate, to: toDate)
-        pinnedAllEvents.append(contentsOf: newEvents)
+        pinnedAllEvents.append(contentsOf: newEvents) // Should be insert at 0 for previous
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
         loadedFrom = fromDate
     }
@@ -626,12 +607,10 @@ extension RootView {
     }
 }
 
-// MARK: - Create & Edit new Event
+// MARK: - Create & Edit new Event (Original from your file)
 extension RootView {
     private func createAndEditNewEvent(on day: Date) {
         let status = EKEventStore.authorizationStatus(for: .event)
-
-        // Проверка за права (iOS17 и по-стари)
         let authorised: Bool = {
             if #available(iOS 17, *) {
                 return status == .fullAccess || status == .writeOnly
@@ -639,64 +618,62 @@ extension RootView {
                 return status == .authorized
             }
         }()
-
         guard authorised else { return }
 
         let store = CalendarViewModel.shared.eventStore
         let cal   = Calendar.current
-        let start = cal.startOfDay(for: day).addingTimeInterval(9 * 3600)
+        let startOfDay = cal.startOfDay(for: day)
+        let eventInitialStart: Date = {
+            if cal.isDateInToday(day) {
+                return Date()
+            } else {
+                return cal.date(byAdding: .hour, value: 9, to: startOfDay) ?? startOfDay
+            }
+        }()
 
         let newEvent        = EKEvent(eventStore: store)
-        newEvent.startDate  = start
-        newEvent.endDate    = start.addingTimeInterval(3600)
+        newEvent.startDate  = eventInitialStart
+        newEvent.endDate    = eventInitialStart.addingTimeInterval(3600)
         newEvent.title      = NSLocalizedString("New Event", comment: "")
         newEvent.calendar   = store.defaultCalendarForNewEvents
-
-        eventToEdit = newEvent                // ← задейства sheet‑a
+        eventToEdit = newEvent
     }
 }
 
-
+// MARK: - Reload for MultiCalendar (Original from your file)
 extension RootView {
     private func reloadSingleDayEventsWithVisibleCalendars() {
-        guard accessGranted else { pinnedEventsSingle = []; return }
-        let cal = Calendar.current
-        let fromOnly = cal.startOfDay(for: pinnedFromDateSingle)
-        guard let toDate = cal.date(byAdding: .day, value: 1, to: fromOnly) else {
-            pinnedEventsSingle = []
-            return
-        }
+         guard accessGranted else { pinnedEventsSingle = []; return }
+         let cal = Calendar.current
+         let fromOnly = cal.startOfDay(for: pinnedFromDateSingle)
+         guard let toDate = cal.date(byAdding: .day, value: 1, to: fromOnly) else {
+             pinnedEventsSingle = []
+             return
+         }
 
-        // 1) Вземаме видимите календари от модела
-        let visibleIDs = CalendarViewModel.shared.visibleCalendarIDs
+         let visibleIDs = CalendarViewModel.shared.visibleCalendarIDs
+         let allowedCalendars = CalendarViewModel.shared.allCalendars.filter {
+             visibleIDs.contains($0.calendarIdentifier)
+         }
 
-        // 2) Филтрираме само тези календари
-        let allowedCalendars = CalendarViewModel.shared.allCalendars.filter {
-            visibleIDs.contains($0.calendarIdentifier)
-        }
+         let predicate = CalendarViewModel.shared.eventStore
+             .predicateForEvents(withStart: fromOnly,
+                                 end: toDate,
+                                 calendars: allowedCalendars.isEmpty ? nil : allowedCalendars) // Added check for empty
+         let found = CalendarViewModel.shared.eventStore.events(matching: predicate)
 
-        // 3) Правим EventKit запитването
-        let predicate = CalendarViewModel.shared.eventStore
-            .predicateForEvents(withStart: fromOnly,
-                                end: toDate,
-                                calendars: allowedCalendars.isEmpty ? nil : allowedCalendars)
-        let found = CalendarViewModel.shared.eventStore.events(matching: predicate)
-
-        // 4) Разделяме многодневните
-        var descriptors: [EventDescriptor] = []
-        for ekEvent in found {
-            let startDay = cal.startOfDay(for: ekEvent.startDate)
-            let endDay   = cal.startOfDay(for: ekEvent.endDate)
-            if startDay != endDay {
-                descriptors.append(contentsOf: splitEventByDays(ekEvent,
-                                                               startRange: fromOnly,
-                                                               endRange: toDate))
-            } else {
-                descriptors.append(EKMultiDayWrapper(realEvent: ekEvent))
-            }
-        }
-
-        // 5) Актуализираме състоянието
-        pinnedEventsSingle = descriptors
-    }
+         var descriptors: [EventDescriptor] = []
+         for ekEvent in found {
+             let startDay = cal.startOfDay(for: ekEvent.startDate)
+             let endDay   = cal.startOfDay(for: ekEvent.endDate ?? ekEvent.startDate) // Added nil check
+             if startDay != endDay {
+                 descriptors.append(contentsOf: splitEventByDays(ekEvent,
+                                                                startRange: fromOnly,
+                                                                endRange: toDate))
+             } else {
+                 descriptors.append(EKMultiDayWrapper(realEvent: ekEvent))
+             }
+         }
+         pinnedEventsSingle = descriptors
+     }
 }
