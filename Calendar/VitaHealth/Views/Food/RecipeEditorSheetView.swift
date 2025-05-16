@@ -263,55 +263,57 @@ struct RecipeEditorSheetView: View {
 
     // — Search field + drop-down (4 видими реда, под полето) —
     private var searchSection: some View {
-        // държим полето и списъка едно под друго
         VStack(alignment: .leading, spacing: 0) {
 
-            // 1. Поле за търсене
+            // 1. Search field
             TextField("Search Food", text: $searchText)
                 .padding(10)
                 .background(Color(.systemBackground))
                 .cornerRadius(8)
                 .shadow(radius: 1)
 
-            // 2. Падащият списък (само ако има резултати)
+            // 2. Dropdown list (only if there are results)
             if !searchResults.isEmpty {
 
-                // параметри
-                let rowHeight: CGFloat  = 44   // височина на ред
-                let visibleRows: CGFloat = 4   // колко да се виждат
+                let rowHeight: CGFloat  = 44
+                let visibleRows: CGFloat = 4
 
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack(spacing: 0) {
                         ForEach(searchResults, id: \.id) { food in
-                            Button { addIngredient(food) } label: {
-                                HStack {
-                                    Text(food.name)
-                                        .lineLimit(1)
-                                        .truncationMode(.tail)
+                            HStack {
+                                Text(food.name)
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
 
-                                    Spacer(minLength: 12)
+                                Spacer(minLength: 12)
 
-                                    Text("\(Int(food.servingSize)) g")
-                                        .foregroundColor(.secondary)
-                                }
-                                .padding(.horizontal, 16)
-                                .frame(height: rowHeight)        // фиксирана височина
+                                Text("\(Int(food.servingSize)) g")
+                                    .foregroundColor(.secondary)
                             }
-                            .buttonStyle(.plain)
+                            .padding(.horizontal, 16)
+                            .frame(height: rowHeight)
+                            .frame(maxWidth: .infinity, alignment: .leading) // full-width tap
+                            .contentShape(Rectangle())                       // tap area = whole row
+                            .onTapGesture {
+                                addIngredient(food)
+                                searchText = ""          // clear field, keep panel open
+                            }
 
                             if food.id != searchResults.last?.id { Divider() }
                         }
                     }
                 }
-                .frame(maxHeight: rowHeight * visibleRows)       // ⬅️ 4 реда
+                .frame(maxHeight: rowHeight * visibleRows)
                 .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(radius: 3)
                 .padding(.top, 4)
             }
         }
-        .zIndex(1)                         // стои над Vitamins секцията
+        .zIndex(1)   // keeps dropdown above Vitamins section
     }
+
 
 
 
@@ -356,13 +358,16 @@ struct RecipeEditorSheetView: View {
                                     amount: amt,
                                     unit: unit,
                                     need: need,
-                                    upper: ul)
+                                    upper: ul,
+                                    allFoods: ingredientFoods,
+                                    ingredients: $ingredients,   // <─ NEW binding
+                                    isVitamin: true)
                 }
             }
         }
     }
 
-    // Minerals section
+    // Minerals section  (аналогично)
     private var mineralsSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Minerals")
@@ -376,11 +381,15 @@ struct RecipeEditorSheetView: View {
                                     amount: amt,
                                     unit: unit,
                                     need: need,
-                                    upper: ul)
+                                    upper: ul,
+                                    allFoods: ingredientFoods,
+                                    ingredients: $ingredients,   // <─ NEW binding
+                                    isVitamin: false)
                 }
             }
         }
     }
+
 
     // ──────────────────────────────────────────────────────────
     // MARK: – Aggregation helpers
@@ -452,9 +461,9 @@ struct RecipeEditorSheetView: View {
 
     private func addIngredient(_ food: Food) {
         if let i = ingredients.firstIndex(where: { $0.food.id == food.id }) {
-            ingredients[i].amount += 50
+            ingredients[i].amount += food.servingSize
         } else {
-            ingredients.append(IngredientLine(food: food, amount: 50))
+            ingredients.append(IngredientLine(food: food, amount: food.servingSize))
         }
         searchText = ""
     }

@@ -1,6 +1,16 @@
+//
+//  NutrientBarView.swift
+//  VitaHealth
+//
+//  Updated: 2025-05-18
+//
+
 import SwiftUI
 
-// Helper for SmartLabelPositioner and CenterAtX to get view width
+// ──────────────────────────────────────────
+// MARK: – Preference-key helpers
+// ──────────────────────────────────────────
+
 private struct WidthPreferenceKey: @preconcurrency PreferenceKey {
     @MainActor static var defaultValue: CGFloat = 0
     @MainActor static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
@@ -8,7 +18,6 @@ private struct WidthPreferenceKey: @preconcurrency PreferenceKey {
     }
 }
 
-// Modifier to position the top amount label intelligently (now handles a VStack of text + arrow)
 private struct SmartLabelPositioner: ViewModifier {
     let valueX: CGFloat
     let barWidth: CGFloat
@@ -16,250 +25,329 @@ private struct SmartLabelPositioner: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .background(
-                GeometryReader { viewGeo in
-                    Color.clear.preference(key: WidthPreferenceKey.self, value: viewGeo.size.width)
-                }
-            )
-            .onPreferenceChange(WidthPreferenceKey.self) { newWidth in
-                 DispatchQueue.main.async {
-                    if newWidth > 0 && abs(newWidth - self.viewWidth) > 0.1 {
-                        self.viewWidth = newWidth
-                    }
-                }
+            .background(GeometryReader {
+                Color.clear.preference(key: WidthPreferenceKey.self,
+                                       value: $0.size.width)
+            })
+            .onPreferenceChange(WidthPreferenceKey.self) { w in
+                DispatchQueue.main.async { if w > 0 { viewWidth = w } }
             }
-            .offset(x: calculateOffsetX())
+            .offset(x: offsetX)
     }
-
-    private func calculateOffsetX() -> CGFloat {
-        let halfViewWidth = viewWidth / 2
-        var idealStartX = valueX - halfViewWidth
-
-        if idealStartX < 0 {
-            idealStartX = 0
-        } else if idealStartX + viewWidth > barWidth {
-            idealStartX = barWidth - viewWidth
-        }
-        if viewWidth > barWidth {
-             return (barWidth - viewWidth) / 2
-        }
-        return idealStartX
+    private var offsetX: CGFloat {
+        if viewWidth > barWidth { return (barWidth - viewWidth) / 2 }
+        return min(max(valueX - viewWidth / 2, 0), barWidth - viewWidth)
     }
 }
 
-// ViewModifier for centering bottom markers horizontally
 private struct CenterAtX: ViewModifier {
     let xTarget: CGFloat
     @State private var viewWidth: CGFloat = 20
 
     func body(content: Content) -> some View {
         content
-            .background(
-                GeometryReader { geo in
-                    Color.clear.preference(key: WidthPreferenceKey.self, value: geo.size.width)
-                }
-            )
-            .onPreferenceChange(WidthPreferenceKey.self) { newWidth in
-                DispatchQueue.main.async {
-                    if newWidth > 0 && abs(newWidth - self.viewWidth) > 0.1 {
-                        self.viewWidth = newWidth
-                    }
-                }
-            }
+            .background(GeometryReader {
+                Color.clear.preference(key: WidthPreferenceKey.self,
+                                       value: $0.size.width)
+            })
+            .onPreferenceChange(WidthPreferenceKey.self) { viewWidth = $0 }
             .offset(x: xTarget - viewWidth / 2)
     }
 }
 
+// ──────────────────────────────────────────
+// MARK: – Main view
+// ──────────────────────────────────────────
 
 struct NutrientBarView: View {
 
-    // MARK: – Input
+    // Core input
     var title:  String
     var amount: Double
     var unit:   String
     var need:   Double
     var upper:  Double
 
-    // MARK: – Constants for appearance
+    // Search + live-editing
+    var allFoods: [Food]                    // pool to search in
+    @Binding var ingredients: [IngredientLine] // live recipe list
+    var isVitamin: Bool
+
+    // MARK: – Local state
+    @State private var isExpanded = false
+    @State private var searchText = ""
+
+    // MARK: – Constants
     private let barHeight:  CGFloat = 8
     private let markerSize: CGFloat = 10
-    private let labelGap:   CGFloat = 1   // Distance between arrow and its text
-    
-    private let captionFontHeight: CGFloat = 14 // Approximate
-    private let caption2FontHeight: CGFloat = 12 // Approximate
-
-    private var amountSectionHeight: CGFloat { markerSize + labelGap + captionFontHeight }
-    
-    // Height for a single, non-offset marker (arrow + gap + text)
-    private var singleMarkerContentHeight: CGFloat { markerSize + labelGap + caption2FontHeight }
-    
-    private let verticalOffsetForOverlappingText: CGFloat = 13
-    private let minHorizontalSeparationForMarkers: CGFloat = 35
-
-    // Total height needed for the bottom markers area.
-    // It's the height of a single marker row, plus potential extra space if one text is offset.
-    private var bottomMarkersAreaHeight: CGFloat {
-        singleMarkerContentHeight + verticalOffsetForOverlappingText
-    }
-    
-    private let barAreaVerticalPadding: CGFloat = 2
-
+    private let labelGap:   CGFloat = 1
+    private let captionH:   CGFloat = 14
+    private let caption2H:  CGFloat = 12
+    private var amountSectionH: CGFloat { markerSize + labelGap + captionH }
+    private var singleMarkerH: CGFloat { markerSize + labelGap + caption2H }
+    private let overlapYOffset: CGFloat = 13
+    private let minMarkerGap:   CGFloat = 35
+    private var bottomAreaH: CGFloat { singleMarkerH + overlapYOffset }
+    private let barVPad: CGFloat = 2
 
     // MARK: – View
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
 
+            // Header row ───────────────────────
             HStack {
-                Text(title)
-                    .font(.headline)
-                    .foregroundColor(.gray)
+                Text(title).font(.headline).foregroundColor(.gray)
                 Spacer()
-                Image(systemName: "chevron.right")
+                Image(systemName: isExpanded ? "chevron.down"
+                                             : "chevron.right")
                     .foregroundColor(.gray)
+                    .onTapGesture { withAnimation { isExpanded.toggle() } }
             }
             .padding(.bottom, 4)
 
-            GeometryReader { geo in
-                let fullW = geo.size.width
-                
-                let barMaxCandidate1 = upper > 0 ? max(amount, upper) : amount
-                let barMaxCandidate2 = max(barMaxCandidate1, need)
-                let barScaleMax = max(barMaxCandidate2, 1.0)
+            // Bar + markers ────────────────────
+            barView
+                .padding(.bottom, isExpanded ? 8 : 0)
 
-                let filledBarWidth = min(CGFloat(amount / barScaleMax) * fullW, fullW)
-                let amountValueX = CGFloat(amount / barScaleMax) * fullW
-                let needMarkerX  = clampedMarkerPos(for: need, barScaleMax: barScaleMax, width: fullW)
-                let upperMarkerX = clampedMarkerPos(for: upper, barScaleMax: barScaleMax, width: fullW)
-
-                let barColor: Color = {
-                    if need > 0 && amount < need { return .red }
-                    else if upper > 0 && amount >= upper { return .red }
-                    else { return .blue }
-                }()
-
-                let markerTextYOffsets: (need: CGFloat, upper: CGFloat) = {
-                    var yOffNeed: CGFloat = 0
-                    var yOffUpper: CGFloat = 0
-                    if need > 0 && upper > 0 {
-                        let hSep = abs(needMarkerX - upperMarkerX)
-                        if hSep < minHorizontalSeparationForMarkers {
-                            if upper > need { yOffUpper = verticalOffsetForOverlappingText }
-                            else if need > upper { yOffNeed = verticalOffsetForOverlappingText }
-                            else { yOffUpper = verticalOffsetForOverlappingText }
-                        }
-                    }
-                    return (yOffNeed, yOffUpper)
-                }()
-                
-                let displayAmount = (amount == 0 && need == 0 && upper == 0 && unit.isEmpty) ? -1.0 : amount
-
-                VStack(alignment: .leading, spacing: 0) {
-                    // ─── Top: Amount Label + Arrow Down ───
-                    ZStack(alignment: .leading) {
-                        if displayAmount >= 0 {
-                            VStack(spacing: labelGap) { // Spacing between text and its arrow
-                                Text(formatValue(amount))
-                                    .font(.caption)
-                                Image(systemName: "arrowtriangle.down.fill")
-                                    .font(.system(size: markerSize))
-                                    .foregroundColor(Color(.systemGray2))
-                            }
-                            .fixedSize()
-                            .modifier(SmartLabelPositioner(valueX: amountValueX, barWidth: fullW))
-                        }
-                    }
-                    .frame(height: amountSectionHeight) // Fixed height for this section
-
-                    // ─── Middle: Bar ───
-                    ZStack(alignment: .leading) {
-                        Rectangle()
-                            .fill(Color(.systemGray5))
-                            .frame(height: barHeight)
-                            .cornerRadius(barHeight / 3)
-
-                        if amount > 0 || (amount == 0 && (need > 0 || unit.lowercased() == "g")) {
-                            Rectangle()
-                                .fill(barColor)
-                                .frame(width: max(0, filledBarWidth), height: barHeight)
-                                .cornerRadius(barHeight / 3)
-                        }
-                    }
-                    .frame(height: barHeight)
-                    .padding(.vertical, barAreaVerticalPadding) // Space between amount arrow and bar, and bar and bottom markers
-
-
-                    // ─── Bottom: Need & Upper Markers (↑) ───
-                    ZStack(alignment: .topLeading) { // Align content to the top
-                        // Invisible spacer to define the full height of the ZStack,
-                        // ensuring enough space for offset text.
-                        // Content will align to the top of this.
-                        Color.clear.frame(height: bottomMarkersAreaHeight)
-
-                        if need > 0 {
-                             bottomMarkerViewContent(value: need, textYOffset: markerTextYOffsets.need)
-                                .modifier(CenterAtX(xTarget: needMarkerX))
-                                // No explicit frame height here, let it take its natural height.
-                                // It will be placed at the top of the ZStack.
-                        }
-
-                        if upper > 0 {
-                             bottomMarkerViewContent(value: upper, textYOffset: markerTextYOffsets.upper)
-                                .modifier(CenterAtX(xTarget: upperMarkerX))
-                                // No explicit frame height here.
-                        }
-                    }
-                    // The ZStack itself takes the full calculated height.
-                    // Content within it is aligned to .topLeading.
-                    .frame(height: bottomMarkersAreaHeight)
-                }
+            // Search & current-items area ──────
+            if isExpanded {
+                searchArea
+                    .transition(.opacity .combined(with: .move(edge: .top)))
             }
-            .frame(height: amountSectionHeight + barHeight + (2 * barAreaVerticalPadding) + bottomMarkersAreaHeight)
         }
     }
 
-    private func bottomMarkerViewContent(value: Double, textYOffset: CGFloat) -> some View {
-        // This VStack's content (arrow + text) determines its own height.
-        // The arrow is at the top. Text is below it, potentially offset further.
-        VStack(spacing: 0) { // Arrow and Text VStack
+    // MARK: – Bar and markers
+    private var barView: some View {
+        GeometryReader { geo in
+            let fullW = geo.size.width
+            let maxVal = max(max(max(amount, upper), need), 1)
+            let filledW = min(CGFloat(amount / maxVal) * fullW, fullW)
+            let amountX = CGFloat(amount / maxVal) * fullW
+            let needX   = clampedX(for: need,  maxVal: maxVal, width: fullW)
+            let upperX  = clampedX(for: upper, maxVal: maxVal, width: fullW)
+
+            let barColor: Color = {
+                if need > 0 && amount < need { .red }
+                else if upper > 0 && amount >= upper { .red }
+                else { .blue }
+            }()
+
+            let overlap: (need: CGFloat, upper: CGFloat) = {
+                guard need > 0, upper > 0,
+                      abs(needX - upperX) < minMarkerGap else { return (0,0) }
+                return (upper > need ? (0, overlapYOffset)
+                                     : (overlapYOffset, 0))
+            }()
+
+            VStack(alignment: .leading, spacing: 0) {
+
+                // Amount label
+                if amount > 0 || unit != "" {
+                    VStack(spacing: labelGap) {
+                        Text(format(amount))
+                            .font(.caption)
+                        Image(systemName: "arrowtriangle.down.fill")
+                            .font(.system(size: markerSize))
+                            .foregroundColor(.secondary)
+                    }
+                    .fixedSize()
+                    .modifier(SmartLabelPositioner(valueX: amountX,
+                                                   barWidth: fullW))
+                    .frame(height: amountSectionH, alignment: .leading)
+                } else {
+                    Color.clear.frame(height: amountSectionH)
+                }
+
+                // The bar
+                ZStack(alignment: .leading) {
+                    Capsule().fill(Color(.systemGray5))
+                        .frame(height: barHeight)
+
+                    if filledW > 0 {
+                        Capsule().fill(barColor)
+                            .frame(width: filledW, height: barHeight)
+                    }
+                }
+                .frame(height: barHeight)
+                .padding(.vertical, barVPad)
+
+                // Need / UL markers
+                ZStack(alignment: .topLeading) {
+                    Color.clear.frame(height: bottomAreaH)
+
+                    if need > 0 {
+                        bottomMarker(value: need, yOff: overlap.need)
+                            .modifier(CenterAtX(xTarget: needX))
+                    }
+                    if upper > 0 {
+                        bottomMarker(value: upper, yOff: overlap.upper)
+                            .modifier(CenterAtX(xTarget: upperX))
+                    }
+                }
+                .frame(height: bottomAreaH)
+            }
+        }
+        .frame(height: amountSectionH + barHeight +
+                      2*barVPad + bottomAreaH)
+    }
+
+    private func bottomMarker(value: Double,
+                              yOff: CGFloat) -> some View {
+        VStack(spacing: 0) {
             Image(systemName: "arrowtriangle.up.fill")
                 .font(.system(size: markerSize))
-                .foregroundColor(Color(.systemGray2))
-                // The arrow itself doesn't need extra padding if labelGap controls text position
-            
-            Text(formatValue(value))
+                .foregroundColor(.secondary)
+            Text(format(value))
                 .font(.caption2)
-                .foregroundColor(Color(.darkGray))
-                .lineLimit(1)
-                .padding(.top, labelGap) // This creates the space between arrow and text
-                .offset(y: textYOffset)  // Additional offset for overlapping case
+                .foregroundColor(.secondary)
+                .padding(.top, labelGap)
+                .offset(y: yOff)
         }
-        .fixedSize() // Crucial for CenterAtX to measure correctly
+        .fixedSize()
     }
 
-    private func clampedMarkerPos(for value: Double, barScaleMax: Double, width: CGFloat) -> CGFloat {
-        guard barScaleMax > 0 else { return markerSize / 2 }
-        guard value >= 0 else { return markerSize / 2 }
-        
-        let rawX = CGFloat(value / barScaleMax) * width
-        let effectiveMinX = markerSize / 4
-        let effectiveMaxX = width - (markerSize / 4)
+    // MARK: – Search + current items
+    private var searchArea: some View {
+        VStack(alignment: .leading, spacing: 12) {
 
-        return min(max(rawX, effectiveMinX), effectiveMaxX)
+            // Search-field
+            TextField("Search foods containing \(title.lowercased())",
+                      text: $searchText)
+                .padding(10)
+                .background(Color(.systemBackground), in: RoundedRectangle(cornerRadius: 8))
+                .shadow(radius: 1)
+
+            // Results dropdown
+            if !filteredResults.isEmpty {
+                let rowH: CGFloat = 44
+                ScrollView {
+                    VStack(spacing: 0) {
+                        ForEach(filteredResults, id: \.id) { food in
+                            HStack {
+                                Text(food.name).lineLimit(1)
+                                Spacer()
+                                Text("\(Int(food.servingSize)) g")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal, 16)
+                            .frame(height: rowH)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .contentShape(Rectangle())          // целият ред е „трап“
+                            .onTapGesture {
+                                add(food)
+                                searchText = ""                 // изчистваме полето, панелът остава
+                            }
+
+                            if food.id != filteredResults.last?.id { Divider() }
+                        }
+
+
+                    }
+                }
+                .frame(maxHeight: rowH * 4)
+                .background(Color(.systemBackground),
+                            in: RoundedRectangle(cornerRadius: 12))
+                .shadow(radius: 3)
+            }
+
+            // Current ingredients that supply this nutrient
+            if !currentIndices.isEmpty {
+                VStack(alignment: .leading, spacing: 4) {
+                    ForEach(currentIndices, id: \.self) { idx in
+                        ingredientRow(index: idx)
+                    }
+                }
+                .padding(.top, 4)
+            }
+        }
+        .padding(.vertical, 4)
     }
 
-    private func formatValue(_ v: Double) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        if v == 0 { return "0" }
-        if abs(v) >= 1000 || (abs(v) >= 10 && floor(v) == v) {
-            numberFormatter.maximumFractionDigits = 0
-        } else if abs(v) >= 0.1 {
-            numberFormatter.maximumFractionDigits = 1
-            if floor(v) == v { numberFormatter.maximumFractionDigits = 0 }
+    // Individual ingredient row (bound editing)
+    @ViewBuilder
+    private func ingredientRow(index idx: Int) -> some View {
+        // Safety – list may shrink while SwiftUI diffing
+        if idx < ingredients.count {
+            HStack {
+                Text(ingredients[idx].food.name)
+                    .lineLimit(1)
+
+                Spacer()
+
+                TextField("",
+                          value: $ingredients[idx].amount,
+                          formatter: amountFormatter)
+                    .keyboardType(.decimalPad)
+                    .frame(width: 60, alignment: .trailing)
+
+                Text("g").foregroundStyle(.secondary)
+
+                Button {
+                    ingredients.remove(at: idx)
+                } label: {
+                    Image(systemName: "trash")
+                        .foregroundStyle(.blue)
+                }
+            }
+            .padding(.vertical, 2)
+        }
+    }
+
+    // MARK: – Helpers
+    private var filteredResults: [Food] {
+        guard !searchText.isEmpty else { return [] }
+        return allFoods
+            .filter { !$0.isRecipe }
+            .filter { foodContainsNutrient($0) &&
+                      $0.name.lowercased().contains(searchText.lowercased()) }
+    }
+
+
+    private func add(_ food: Food) {
+        if let i = ingredients.firstIndex(where: { $0.food.id == food.id }) {
+            ingredients[i].amount += food.servingSize      // bump existing
         } else {
-            numberFormatter.minimumFractionDigits = (v.truncatingRemainder(dividingBy: 1) == 0 && v != 0) ? 0 : 2
-            numberFormatter.maximumFractionDigits = 2
+            ingredients.append(IngredientLine(food: food, amount: food.servingSize))
         }
-        return numberFormatter.string(from: NSNumber(value: v)) ?? (floor(v) == v ? "\(Int(v))" : String(format: "%.1f", v))
+    }
+
+    private var currentIndices: [Int] {
+        ingredients.indices.filter { foodContainsNutrient(ingredients[$0].food) }
+    }
+
+    private func foodContainsNutrient(_ food: Food) -> Bool {
+        if isVitamin {
+            return food.vitamins.contains { $0.name == title && $0.amount > 0 }
+        } else {
+            return food.minerals.contains { $0.name == title && $0.amount > 0 }
+        }
+    }
+
+    private func clampedX(for value: Double,
+                          maxVal: Double,
+                          width: CGFloat) -> CGFloat {
+        guard maxVal > 0, value >= 0 else { return markerSize / 2 }
+        let raw = CGFloat(value / maxVal) * width
+        return min(max(raw, markerSize/4), width - markerSize/4)
+    }
+
+    private func format(_ v: Double) -> String {
+        let n = amountFormatter
+        return n.string(from: NSNumber(value: v)) ?? "\(v)"
+    }
+
+    private var amountFormatter: NumberFormatter {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        if abs(amount) >= 1000 || abs(amount) >= 10 && floor(amount) == amount {
+            nf.maximumFractionDigits = 0
+        } else if abs(amount) >= 0.1 {
+            nf.maximumFractionDigits = floor(amount) == amount ? 0 : 1
+        } else {
+            nf.minimumFractionDigits = 0
+            nf.maximumFractionDigits = 2
+        }
+        return nf
     }
 }
