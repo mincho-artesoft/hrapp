@@ -127,8 +127,8 @@ struct RecipeEditorSheetView: View {
                               ingredients.isEmpty)
                 }
             }
-            .onChange(of: coverPickerItem) { _ in loadCoverImage() }
-            .onChange(of: galleryPickerItems) { _ in loadGalleryImages() }
+            .onChange(of: coverPickerItem) {loadCoverImage() }
+            .onChange(of: galleryPickerItems) {loadGalleryImages() }
         }
     }
 
@@ -261,32 +261,59 @@ struct RecipeEditorSheetView: View {
         }
     }
 
-    // Search field + results
+    // — Search field + drop-down (4 видими реда, под полето) —
     private var searchSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        // държим полето и списъка едно под друго
+        VStack(alignment: .leading, spacing: 0) {
+
+            // 1. Поле за търсене
             TextField("Search Food", text: $searchText)
                 .padding(10)
-                .background(Color(.secondarySystemBackground))
+                .background(Color(.systemBackground))
                 .cornerRadius(8)
+                .shadow(radius: 1)
 
+            // 2. Падащият списък (само ако има резултати)
             if !searchResults.isEmpty {
-                ForEach(searchResults, id: \.id) { food in
-                    Button {
-                        addIngredient(food)
-                    } label: {
-                        HStack {
-                            Text(food.name)
-                            Spacer()
-                            Text("\(Int(food.servingSize)) g")
-                                .foregroundColor(.secondary)
+
+                // параметри
+                let rowHeight: CGFloat  = 44   // височина на ред
+                let visibleRows: CGFloat = 4   // колко да се виждат
+
+                ScrollView(.vertical, showsIndicators: true) {
+                    VStack(spacing: 0) {
+                        ForEach(searchResults, id: \.id) { food in
+                            Button { addIngredient(food) } label: {
+                                HStack {
+                                    Text(food.name)
+                                        .lineLimit(1)
+                                        .truncationMode(.tail)
+
+                                    Spacer(minLength: 12)
+
+                                    Text("\(Int(food.servingSize)) g")
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding(.horizontal, 16)
+                                .frame(height: rowHeight)        // фиксирана височина
+                            }
+                            .buttonStyle(.plain)
+
+                            if food.id != searchResults.last?.id { Divider() }
                         }
-                        .padding(.vertical, 4)
                     }
                 }
-                .buttonStyle(.plain)
+                .frame(maxHeight: rowHeight * visibleRows)       // ⬅️ 4 реда
+                .background(Color(.systemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .shadow(radius: 3)
+                .padding(.top, 4)
             }
         }
+        .zIndex(1)                         // стои над Vitamins секцията
     }
+
+
 
     // Ingredients list
     private var ingredientsSection: some View {

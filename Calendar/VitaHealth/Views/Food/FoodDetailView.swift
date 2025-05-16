@@ -217,7 +217,7 @@ struct FoodDetailView: View {
                               foodName.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
             }
-            .onChange(of: coverPickerItem) { _ in loadCoverImage() }
+            .onChange(of: coverPickerItem) {loadCoverImage() }
         }
     }
 
