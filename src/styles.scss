@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Prevent body from scrolling */
+  font-family: Roboto, "Helvetica Neue", sans-serif; // Or your preferred font
+}
 
 span.mat-mdc-list-item-unscoped-content.mdc-list-item__primary-text {
   color: #000 !important;

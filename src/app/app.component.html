@@ -1,7 +1,9 @@
-<app-header></app-header>
+<div class="app-container">
+    <app-header class="app-header-flex"></app-header>
 
-<main>
-    <router-outlet></router-outlet> <!-- This is where routed components will be displayed -->
-</main>
+    <main class="main-content-flex-scrollable">
+        <router-outlet></router-outlet>
+    </main>
 
-<app-footer></app-footer>
+    <app-footer class="app-footer-flex"></app-footer>
+</div>
