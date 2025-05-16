@@ -18,6 +18,7 @@ final class Food: Codable, Identifiable {
     // MARK: – Базова информация
     var id: UUID = UUID()
     var name: String
+    var subtitle: String? = nil
     var servingSize: Double                    // g
     var carbohydrates: Double = 0.0            // g
     var fats: Double = 0.0                     // g
@@ -50,6 +51,7 @@ final class Food: Codable, Identifiable {
 
     // MARK: – Init
     init(name: String,
+         subtitle: String? = nil,
          servingSize: Double = 200,
          carbohydrates: Double = 0.0,
          fats: Double = 0.0,
@@ -64,6 +66,7 @@ final class Food: Codable, Identifiable {
          instructions: String? = nil) {
 
         self.name            = name
+        self.subtitle    = subtitle
         self.servingSize     = servingSize
         self.carbohydrates   = carbohydrates
         self.fats            = fats
@@ -80,11 +83,10 @@ final class Food: Codable, Identifiable {
 
     // MARK: – Codable
     private enum CodingKeys: String, CodingKey {
-        case id, name, servingSize, carbohydrates, fats, proteins,
-             isUserAdded, preparationTime,            // ⟵ НОВО
-             vitamins, minerals, ingredients,
-             coverImage, galleryImages, instructions
-        // usedInRecipes нарочно липсва – избягваме рекурсия
+        case id, name, subtitle, servingSize, carbohydrates, fats, proteins,
+              isUserAdded, preparationTime,
+              vitamins, minerals, ingredients,
+              coverImage, galleryImages, instructions
     }
 
     required init(from decoder: Decoder) throws {
@@ -92,6 +94,7 @@ final class Food: Codable, Identifiable {
 
         id              = try c.decode(UUID.self,   forKey: .id)
         name            = try c.decode(String.self, forKey: .name)
+        subtitle        = try c.decodeIfPresent(String.self, forKey: .subtitle)
         servingSize     = try c.decode(Double.self, forKey: .servingSize)
         carbohydrates   = try c.decode(Double.self, forKey: .carbohydrates)
         fats            = try c.decode(Double.self, forKey: .fats)
@@ -112,6 +115,7 @@ final class Food: Codable, Identifiable {
 
         try c.encode(id,            forKey: .id)
         try c.encode(name,          forKey: .name)
+        try c.encodeIfPresent(subtitle, forKey: .subtitle)
         try c.encode(servingSize,   forKey: .servingSize)
         try c.encode(carbohydrates, forKey: .carbohydrates)
         try c.encode(fats,          forKey: .fats)

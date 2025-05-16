@@ -2,23 +2,21 @@
 //  RecipeEditorSheetView.swift
 //  VitaHealth
 //
-//  Create / edit a recipe with live vitamin & mineral bars
-//  + cover image, gallery images, preparation time & instructions
-//
-//  Updated: 2025-05-17
+//  Created: 2025-05-18
+//  Rewritten to match FoodDetailView style (Form/Section) – 2025-05-19
 //
 
 import SwiftUI
 import SwiftData
 import PhotosUI      // за избор на снимки
 
-// ──────────────────────────────────────────────────────────────
-// MARK: – Main sheet
-// ──────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
+// MARK: – RecipeEditorSheetView
+// ─────────────────────────────────────────────────────────────
 
 struct RecipeEditorSheetView: View {
 
-    // Вход
+    // MARK: – Dependencies & inputs
     var recipe:  Food?    = nil           // при редакция
     var profile: Profile? = nil           // активен профил за RDA/UL
 
@@ -30,93 +28,148 @@ struct RecipeEditorSheetView: View {
     private var allFoods: [Food]
     private var ingredientFoods: [Food] { allFoods.filter { !$0.isRecipe } }
 
-    // Пълен списък имена (показваме всички барове)
+    // Списъци с всички микронутриенти
     private let allVitaminNames = defaultVitaminsList.map(\.name).sorted()
     private let allMineralNames = defaultMineralsList.map(\.name).sorted()
 
-    // Form state – базови полета
-    @State private var recipeName    = ""
-    @State private var prepTimeText  = ""              // ← време на приготвяне (мин.)
+    // ─────────────────────────────────────────────────────────
+    // MARK: – Form-state
+    // ─────────────────────────────────────────────────────────
+    @State private var recipeName       = ""
+    @State private var recipeSubtitle   = ""
+    @State private var prepTimeText     = ""                 // време на приготвяне (мин.)
     @State private var ingredients: [IngredientLine] = []
-    @State private var searchText    = ""
+    @State private var searchText       = ""
 
     // Медия и инструкции
-    @State private var coverPickerItem: PhotosPickerItem? = nil
-    @State private var coverImage:     UIImage?           = nil
-
+    @State private var coverPickerItem:    PhotosPickerItem?  = nil
+    @State private var coverImage:         UIImage?           = nil
     @State private var galleryPickerItems: [PhotosPickerItem] = []
     @State private var galleryImages:      [UIImage]          = []
-
     @State private var instructionsText = ""
 
-    // ────────── Init
+    // ─────────────────────────────────────────────────────────
+    // MARK: – Init
+    // ─────────────────────────────────────────────────────────
     init(recipe: Food? = nil, profile: Profile? = nil) {
         self.recipe  = recipe
         self.profile = profile
 
-        _recipeName = State(initialValue: recipe?.name ?? "")
-        _prepTimeText = State(initialValue: {              // ← NEW
-            if let t = recipe?.preparationTime { return String(t) }
-            return ""
+        _recipeName     = State(initialValue: recipe?.name ?? "")
+        _recipeSubtitle = State(initialValue: recipe?.subtitle ?? "")
+        _prepTimeText   = State(initialValue: {
+            guard let t = recipe?.preparationTime else { return "" }
+            return String(t)
         }())
 
         if let rec = recipe {
-            // съществуващи съставки
+            // Съставки
             let lines = rec.ingredients.map { IngredientLine(food: $0, amount: 100) }
-            _ingredients = State(initialValue: lines)
+            _ingredients      = State(initialValue: lines)
 
-            // инструкции
+            // Инструкции
             _instructionsText = State(initialValue: rec.instructions ?? "")
 
-            // cover image
+            // Cover
             if let d = rec.coverImage, let ui = UIImage(data: d) {
                 _coverImage = State(initialValue: ui)
             }
-            // gallery
-            let imgs = rec.galleryImages.compactMap { UIImage(data: $0) }
+
+            // Галерия
+            let imgs = rec.galleryImages.compactMap(UIImage.init(data:))
             _galleryImages = State(initialValue: imgs)
         }
     }
 
-    // ────────── View
+    // ─────────────────────────────────────────────────────────
+    // MARK: – Body
+    // ─────────────────────────────────────────────────────────
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
+            Form {
 
-                    // ─ Name & prep time ------------------------------------
-                    nameSection
-                    prepTimeSection
-
-                    // ─ Cover image ----------------------------------------
-                    coverSection
-
-                    // ─ Gallery images -------------------------------------
-                    gallerySection
-
-                    // ─ Instructions ---------------------------------------
-                    instructionsSection
-
-                    // ─ Search + add ---------------------------------------
-                    searchSection
-
-                    // ─ Ingredients list -----------------------------------
-                    ingredientsSection
-
-                    // ─ Vitamins & Minerals --------------------------------
-                    vitaminsSection
-                    mineralsSection
+                // ─ Recipe info ────────────────────────────────────────
+                Section("Recipe Information") {
+                    LabeledField(label: "Name",    text: $recipeName)
+                    LabeledField(label: "SubName", text: $recipeSubtitle)
+                    LabeledField(label: "Prep Time (min)", value: prepTimeBinding)
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 40)
+
+                // ─ Cover image ───────────────────────────────────────
+                Section("Cover Image") { coverImagePicker }
+
+                // ─ Gallery images ────────────────────────────────────
+                Section("Gallery") { galleryImagesView }
+
+                // ─ Preparation instructions ─────────────────────────
+                Section("Preparation") {
+                           ZStack(alignment: .topLeading) {
+                               //--- Placeholder ---
+                               if instructionsText.isEmpty {
+                                   Text("Preparation...")                     // текстът, който искаш
+                                       .foregroundColor(.secondary) // светлосив цвят като на снимката
+                                       .padding(.horizontal, 10)    // отместване навътре,
+                                       .padding(.vertical, 16)      // за да стои както в TextEditor-а
+                               }
+
+                               //--- Самият TextEditor ---
+                               TextEditor(text: $instructionsText)
+                                   .frame(minHeight: 120)
+                                   .padding(8) // вътрешен падинг, за да не опира текста до рамката
+                                   // Ако си на iOS 16+/macOS 13+ и искаш да махнеш
+                                   // фона на scroll view-то:
+                                   .scrollContentBackground(.hidden)
+                           }
+                       }
+
+                // ─ Ingredients: search + list ───────────────────────
+                Section("Add Ingredients") { ingredientsSearchView }
+
+                if !ingredients.isEmpty {
+                    Section("Ingredients") { ingredientsListView }
+                }
+
+                // ─ Vitamins ─────────────────────────────────────────
+                Section("Vitamins (IU)") {
+                    ForEach(allVitaminNames, id: \.self) { name in
+                        if let (need, ul, unit) = requirement(for: name, isVitamin: true) {
+                            NutrientBarView(
+                                title: name,
+                                amount: vitaminAmounts[name, default: 0],
+                                unit: unit,
+                                need: need,
+                                upper: ul,
+                                allFoods: ingredientFoods,
+                                ingredients: $ingredients,
+                                isVitamin: true
+                            )
+                        }
+                    }
+                }
+
+                // ─ Minerals ─────────────────────────────────────────
+                Section("Minerals (µg)") {
+                    ForEach(allMineralNames, id: \.self) { name in
+                        if let (need, ul, unit) = requirement(for: name, isVitamin: false) {
+                            NutrientBarView(
+                                title: name,
+                                amount: mineralAmounts[name, default: 0],
+                                unit: unit,
+                                need: need,
+                                upper: ul,
+                                allFoods: ingredientFoods,
+                                ingredients: $ingredients,
+                                isVitamin: false
+                            )
+                        }
+                    }
+                }
             }
+            .navigationTitle(recipe == nil ? "Add Recipe" : "Edit Recipe")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }
-                }
-                ToolbarItem(placement: .principal) {
-                    Text(recipe == nil ? "Add Recipe" : "Edit Recipe")
-                        .font(.headline)
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
@@ -127,45 +180,17 @@ struct RecipeEditorSheetView: View {
                               ingredients.isEmpty)
                 }
             }
-            .onChange(of: coverPickerItem) {loadCoverImage() }
-            .onChange(of: galleryPickerItems) {loadGalleryImages() }
+            .onChange(of: coverPickerItem)    { loadCoverImage() }
+            .onChange(of: galleryPickerItems) { loadGalleryImages() }
         }
     }
 
-    // ──────────────────────────────────────────────────────────
-    // MARK: – UI sections
-    // ──────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    // MARK: – Sub-views
+    // ─────────────────────────────────────────────────────────
 
-    // Name
-    private var nameSection: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("Recipe")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            TextField("Name", text: $recipeName)
-                .textFieldStyle(.roundedBorder)
-        }
-    }
-
-    // Preparation time (optional)
-    private var prepTimeSection: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text("Prep Time (min)")
-                .font(.caption)
-                .foregroundColor(.secondary)
-            TextField("e.g. 45", text: $prepTimeText)
-                .keyboardType(.numberPad)
-                .textFieldStyle(.roundedBorder)
-        }
-    }
-
-    // Cover image
-    private var coverSection: some View {
+    private var coverImagePicker: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Cover Image")
-                .font(.caption)
-                .foregroundColor(.secondary)
-
             if let img = coverImage {
                 ZStack(alignment: .topTrailing) {
                     Image(uiImage: img)
@@ -175,9 +200,7 @@ struct RecipeEditorSheetView: View {
                         .clipped()
                         .cornerRadius(12)
 
-                    Button {
-                        coverImage = nil
-                    } label: {
+                    Button { coverImage = nil } label: {
                         Image(systemName: "xmark.circle.fill")
                             .font(.title2)
                             .padding(6)
@@ -186,9 +209,7 @@ struct RecipeEditorSheetView: View {
                 }
             }
 
-            // За да избегнем актора-вида, изчисляваме bool извън closure
             let hasCover = coverImage != nil
-
             PhotosPicker(selection: $coverPickerItem,
                          matching: .images,
                          photoLibrary: .shared()) {
@@ -196,85 +217,59 @@ struct RecipeEditorSheetView: View {
                       systemImage: "photo")
             }
         }
+        .padding(.vertical, 4)
     }
 
-    // Gallery images
-    private var gallerySection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Gallery")
-                .font(.caption)
-                .foregroundColor(.secondary)
+    private var galleryImagesView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 12) {
+                ForEach(galleryImages.indices, id: \.self) { idx in
+                    ZStack(alignment: .topTrailing) {
+                        Image(uiImage: galleryImages[idx])
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 120, height: 120)
+                            .clipped()
+                            .cornerRadius(8)
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
-                    ForEach(galleryImages.indices, id: \.self) { idx in
-                        ZStack(alignment: .topTrailing) {
-                            Image(uiImage: galleryImages[idx])
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 120, height: 120)
-                                .clipped()
-                                .cornerRadius(8)
-
-                            Button {
-                                galleryImages.remove(at: idx)
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .font(.body)
-                                    .padding(4)
-                                    .background(.ultraThinMaterial, in: Circle())
-                            }
+                        Button {
+                            galleryImages.remove(at: idx)
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .font(.body)
+                                .padding(4)
+                                .background(.ultraThinMaterial, in: Circle())
                         }
-                    }
-                    PhotosPicker(selection: $galleryPickerItems,
-                                 maxSelectionCount: 5,
-                                 matching: .images,
-                                 photoLibrary: .shared()) {
-                        VStack {
-                            Image(systemName: "plus")
-                                .font(.title)
-                            Text("Add")
-                                .font(.caption)
-                        }
-                        .frame(width: 120, height: 120)
-                        .foregroundColor(.secondary)
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(8)
                     }
                 }
+
+                PhotosPicker(selection: $galleryPickerItems,
+                             maxSelectionCount: 5,
+                             matching: .images,
+                             photoLibrary: .shared()) {
+                    VStack {
+                        Image(systemName: "plus").font(.title)
+                        Text("Add").font(.caption)
+                    }
+                    .frame(width: 120, height: 120)
+                    .foregroundColor(.secondary)
+                    .background(Color(.systemGray4))
+                    .cornerRadius(8)
+                }
             }
+            .padding(.vertical, 4)
         }
     }
 
-    // Instructions
-    private var instructionsSection: some View {
+    private var ingredientsSearchView: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("Preparation")
-                .font(.caption)
-                .foregroundColor(.secondary)
-
-            TextEditor(text: $instructionsText)
-                .frame(minHeight: 120)
-                .padding(8)
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
-        }
-    }
-
-    // — Search field + drop-down (4 видими реда, под полето) —
-    private var searchSection: some View {
-        VStack(alignment: .leading, spacing: 0) {
-
-            // 1. Search field
             TextField("Search Food", text: $searchText)
                 .padding(10)
                 .background(Color(.systemBackground))
                 .cornerRadius(8)
                 .shadow(radius: 1)
 
-            // 2. Dropdown list (only if there are results)
             if !searchResults.isEmpty {
-
                 let rowHeight: CGFloat  = 44
                 let visibleRows: CGFloat = 4
 
@@ -284,20 +279,17 @@ struct RecipeEditorSheetView: View {
                             HStack {
                                 Text(food.name)
                                     .lineLimit(1)
-                                    .truncationMode(.tail)
-
                                 Spacer(minLength: 12)
-
                                 Text("\(Int(food.servingSize)) g")
                                     .foregroundColor(.secondary)
                             }
                             .padding(.horizontal, 16)
                             .frame(height: rowHeight)
-                            .frame(maxWidth: .infinity, alignment: .leading) // full-width tap
-                            .contentShape(Rectangle())                       // tap area = whole row
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .contentShape(Rectangle())
                             .onTapGesture {
                                 addIngredient(food)
-                                searchText = ""          // clear field, keep panel open
+                                searchText = ""
                             }
 
                             if food.id != searchResults.last?.id { Divider() }
@@ -308,92 +300,38 @@ struct RecipeEditorSheetView: View {
                 .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .shadow(radius: 3)
-                .padding(.top, 4)
             }
         }
-        .zIndex(1)   // keeps dropdown above Vitamins section
+        .padding(.vertical, 4)
     }
 
+    private var ingredientsListView: some View {
+        ForEach($ingredients) { $line in
+            HStack {
+                Text(line.food.name)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
+                TextField("", value: $line.amount, formatter: numberFormatter)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 60)
 
+                Text("g").foregroundColor(.secondary)
 
-    // Ingredients list
-    private var ingredientsSection: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            ForEach($ingredients) { $line in
-                HStack {
-                    Text(line.food.name)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    TextField("", value: $line.amount, formatter: numberFormatter)
-                        .keyboardType(.decimalPad)
-                        .multilineTextAlignment(.trailing)
-                        .frame(width: 60)
-
-                    Text("g").foregroundColor(.secondary)
-
-                    Button {
-                        removeIngredient(line)
-                    } label: {
-                        Image(systemName: "trash")
-                            .foregroundColor(.blue)
-                    }
-                }
-                .padding(.vertical, 4)
-            }
-        }
-    }
-
-    // Vitamins section
-    private var vitaminsSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Vitamins")
-                .font(.title2.bold())
-                .padding(.top, 10)
-
-            ForEach(allVitaminNames, id: \.self) { name in
-                let amt = vitaminAmounts[name, default: 0]
-                if let (need, ul, unit) = requirement(for: name, isVitamin: true) {
-                    NutrientBarView(title: name,
-                                    amount: amt,
-                                    unit: unit,
-                                    need: need,
-                                    upper: ul,
-                                    allFoods: ingredientFoods,
-                                    ingredients: $ingredients,   // <─ NEW binding
-                                    isVitamin: true)
+                Button {
+                    removeIngredient(line)
+                } label: {
+                    Image(systemName: "trash")
+                        .foregroundColor(.blue)
                 }
             }
+            .padding(.vertical, 4)
         }
     }
 
-    // Minerals section  (аналогично)
-    private var mineralsSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Minerals")
-                .font(.title2.bold())
-                .padding(.top, 10)
-
-            ForEach(allMineralNames, id: \.self) { name in
-                let amt = mineralAmounts[name, default: 0]
-                if let (need, ul, unit) = requirement(for: name, isVitamin: false) {
-                    NutrientBarView(title: name,
-                                    amount: amt,
-                                    unit: unit,
-                                    need: need,
-                                    upper: ul,
-                                    allFoods: ingredientFoods,
-                                    ingredients: $ingredients,   // <─ NEW binding
-                                    isVitamin: false)
-                }
-            }
-        }
-    }
-
-
-    // ──────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
     // MARK: – Aggregation helpers
-    // ──────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
 
     private var vitaminAmounts: [String: Double] { aggregate(isVitamin: true) }
     private var mineralAmounts: [String: Double] { aggregate(isVitamin: false) }
@@ -455,9 +393,9 @@ struct RecipeEditorSheetView: View {
              ? "Adult Women (19+)" : "Adult Men (19+)"
     }
 
-    // ──────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
     // MARK: – Actions
-    // ──────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
 
     private func addIngredient(_ food: Food) {
         if let i = ingredients.firstIndex(where: { $0.food.id == food.id }) {
@@ -465,7 +403,6 @@ struct RecipeEditorSheetView: View {
         } else {
             ingredients.append(IngredientLine(food: food, amount: food.servingSize))
         }
-        searchText = ""
     }
 
     private func removeIngredient(_ line: IngredientLine) {
@@ -474,9 +411,10 @@ struct RecipeEditorSheetView: View {
 
     private func saveRecipe() {
 
-        // — Aggregate totals —
+        // 1. Тегло на рецептата
         let totalGrams = ingredients.reduce(0) { $0 + $1.amount }
 
+        // 2. Макро-нутриенти
         var totalCarb = 0.0, totalFat = 0.0, totalProt = 0.0
         for line in ingredients {
             let ratio = line.amount / line.food.servingSize
@@ -485,7 +423,7 @@ struct RecipeEditorSheetView: View {
             totalProt += line.food.proteins      * ratio
         }
 
-        // — Aggregate micro-nutrients —
+        // 3. Микро-нутриенти
         let vitUnit: (String) -> String = { n in
             defaultVitaminsList.first { $0.name == n }?.unit ?? ""
         }
@@ -504,16 +442,20 @@ struct RecipeEditorSheetView: View {
                      unit: minUnit($0))
         }
 
-        // превръщаме UIImage → Data
+        // 4. Медия
         let coverData   = coverImage?.jpegData(compressionQuality: 0.8)
-        let galleryData = galleryImages.compactMap { $0.jpegData(compressionQuality: 0.7) }
+        let galleryData = galleryImages.compactMap {
+            $0.jpegData(compressionQuality: 0.7)
+        }
 
+        // 5. Други
         let foodsOnly = ingredients.map(\.food)
-        let prepTime  = Int(prepTimeText)            // ← NEW (nil, ако текстът е празен/невалиден)
+        let prepTime  = Int(prepTimeText)   // nil ако полето е празно / невалидно
 
         if let edit = recipe {
-            // update
+            // UPDATE
             edit.name          = recipeName
+            edit.subtitle      = recipeSubtitle.isEmpty ? nil : recipeSubtitle
             edit.servingSize   = totalGrams
             edit.carbohydrates = totalCarb
             edit.fats          = totalFat
@@ -522,19 +464,20 @@ struct RecipeEditorSheetView: View {
             edit.vitamins      = vitArray
             edit.minerals      = minArray
 
-            edit.preparationTime = prepTime          // ← NEW
+            edit.preparationTime = prepTime
             edit.coverImage    = coverData
             edit.galleryImages = galleryData
             edit.instructions  = instructionsText
         } else {
-            // create
+            // CREATE
             let new = Food(name: recipeName,
+                           subtitle: recipeSubtitle.isEmpty ? nil : recipeSubtitle,
                            servingSize: totalGrams,
                            carbohydrates: totalCarb,
                            fats: totalFat,
                            proteins: totalProt,
                            isUserAdded: true,
-                           preparationTime: prepTime,      // ← NEW
+                           preparationTime: prepTime,
                            vitamins: vitArray,
                            minerals: minArray,
                            ingredients: foodsOnly,
@@ -546,30 +489,15 @@ struct RecipeEditorSheetView: View {
         try? modelContext.save()
     }
 
-    // ──────────────────────────────────────────────────────────
-    // MARK: – Helpers
-    // ──────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    // MARK: – Image loaders
+    // ─────────────────────────────────────────────────────────
 
-    private var searchResults: [Food] {
-        guard !searchText.isEmpty else { return [] }
-        return ingredientFoods.filter {
-            $0.name.lowercased().contains(searchText.lowercased())
-        }
-    }
-
-    private var numberFormatter: NumberFormatter {
-        let nf = NumberFormatter()
-        nf.numberStyle = .decimal
-        nf.maximumFractionDigits = 1
-        return nf
-    }
-
-    // Загрузка снимки от PhotosPickerItem → UIImage
     private func loadCoverImage() {
         guard let item = coverPickerItem else { return }
         Task {
             if let data = try? await item.loadTransferable(type: Data.self),
-               let ui = UIImage(data: data) {
+               let ui   = UIImage(data: data) {
                 await MainActor.run { coverImage = ui }
             }
         }
@@ -586,8 +514,33 @@ struct RecipeEditorSheetView: View {
             }
             await MainActor.run {
                 galleryImages.append(contentsOf: newImgs)
-                galleryPickerItems = []     // reset
+                galleryPickerItems = []   // reset
             }
         }
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // MARK: – Helpers
+    // ─────────────────────────────────────────────────────────
+
+    private var searchResults: [Food] {
+        guard !searchText.isEmpty else { return [] }
+        return ingredientFoods.filter {
+            $0.name.lowercased().contains(searchText.lowercased())
+        }
+    }
+
+    private var numberFormatter: NumberFormatter {
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        nf.maximumFractionDigits = 1
+        return nf
+    }
+
+    private var prepTimeBinding: Binding<Double> {
+        Binding<Double>(
+            get: { Double(prepTimeText.replacingOccurrences(of: ",", with: ".")) ?? 0 },
+            set: { prepTimeText = $0 == 0 ? "" : String(Int($0)) }
+        )
     }
 }

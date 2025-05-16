@@ -48,6 +48,11 @@ struct FoodRowView: View {
             Text(food.name)
                 .font(.headline)
             
+            if let sub = food.subtitle, !sub.isEmpty {
+                   Text(sub)
+                       .font(.subheadline)
+                       .foregroundColor(.secondary)
+               }
             // 2) Втори ред – изображение/placeholder + макроси + грамаж/време
             HStack(alignment: .top, spacing: 12) {
                 

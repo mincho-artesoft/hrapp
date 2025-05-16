@@ -96,11 +96,11 @@ struct NutrientBarView: View {
 
             // Header row ───────────────────────
             HStack {
-                Text(title).font(.headline).foregroundColor(.gray)
+                Text(title).font(.headline).foregroundColor(.secondary)
                 Spacer()
                 Image(systemName: isExpanded ? "chevron.down"
                                              : "chevron.right")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
                     .onTapGesture { withAnimation { isExpanded.toggle() } }
             }
             .padding(.bottom, 4)
@@ -161,7 +161,7 @@ struct NutrientBarView: View {
 
                 // The bar
                 ZStack(alignment: .leading) {
-                    Capsule().fill(Color(.systemGray5))
+                    Capsule().fill(Color(.systemGray4))
                         .frame(height: barHeight)
 
                     if filledW > 0 {

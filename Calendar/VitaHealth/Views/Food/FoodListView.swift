@@ -109,14 +109,14 @@ struct FoodListView: View {
 
                 } label: {
                     Image(systemName: "plus")
-                        .font(.title)
+                        .font(.title2)
                 }
 
                 Button(role: .destructive) {
                     deleteAllFoods()
                 } label: {
                     Image(systemName: "trash")
-                        .font(.title)
+                        .font(.title2)
                 }
             }
             .padding(.vertical, 2)
