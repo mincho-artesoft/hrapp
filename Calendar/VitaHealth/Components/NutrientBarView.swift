@@ -50,8 +50,8 @@ private struct CenterAtX: ViewModifier {
                 Color.clear.preference(key: WidthPreferenceKey.self,
                                        value: $0.size.width)
             })
-            .onPreferenceChange(WidthPreferenceKey.self) { viewWidth = $0 }
-            .offset(x: xTarget - viewWidth / 2)
+//            .onPreferenceChange(WidthPreferenceKey.self) { viewWidth = $0 }
+//            .offset(x: xTarget - viewWidth / 2)
     }
 }
 

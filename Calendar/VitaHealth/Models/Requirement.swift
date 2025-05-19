@@ -12,5 +12,5 @@ struct Requirement: Codable, Hashable, Identifiable {
     var id = UUID()
     var demographic: String
     var dailyNeed: Double
-    var upperLimit: Double
+    var upperLimit: Double?
 }

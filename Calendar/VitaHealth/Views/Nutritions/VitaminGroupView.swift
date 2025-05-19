@@ -80,7 +80,7 @@ struct VitaminGroupView: View {
                             NutrientProgressBarView(
                                 currentValue: current,
                                 dailyNeed: dailyNeed,
-                                upperLimit: upperLimit
+                                upperLimit: upperLimit!
                             )
                             .frame(height: 40)
                         }

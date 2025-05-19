@@ -364,13 +364,13 @@ struct RecipeEditorSheetView: View {
         if isVitamin,
            let vit = defaultVitaminsList.first(where: { $0.name == name }),
            let req = vit.requirements.first(where: { $0.demographic == demo }) {
-            return (req.dailyNeed, req.upperLimit, vit.unit)
+            return ((req.dailyNeed, req.upperLimit, vit.unit) as! (Double, Double, String))
         }
 
         if !isVitamin,
            let min = defaultMineralsList.first(where: { $0.name == name }),
            let req = min.requirements.first(where: { $0.demographic == demo }) {
-            return (req.dailyNeed, req.upperLimit, min.unit)
+            return ((req.dailyNeed, req.upperLimit, min.unit) as! (Double, Double, String))
         }
         return nil
     }
