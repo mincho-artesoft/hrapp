@@ -27,11 +27,22 @@ struct MineralRowView: View {
 
     @ViewBuilder
     private func requirementView(for req: Requirement) -> some View {
+        let formatter: NumberFormatter = {
+            let nf = NumberFormatter()
+            nf.minimumFractionDigits = 0
+            nf.maximumFractionDigits = 2
+            nf.numberStyle = .decimal
+            return nf
+        }()
+
+        let dailyNeedFormatted = formatter.string(from: NSNumber(value: req.dailyNeed)) ?? "\(req.dailyNeed)"
+
         if let upper = req.upperLimit {
-            Text("min: \(req.dailyNeed)  max: \(upper)")
+            let upperFormatted = formatter.string(from: NSNumber(value: upper)) ?? "\(upper)"
+            Text("min: \(dailyNeedFormatted)  max: \(upperFormatted)")
                 .font(.caption2)
         } else {
-            Text("min: \(req.dailyNeed)")
+            Text("min: \(dailyNeedFormatted)")
                 .font(.caption2)
         }
     }

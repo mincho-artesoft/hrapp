@@ -103,6 +103,7 @@ struct VitaHealth: View {
                     case 0:
                         if let profile = selectedProfile {
                             NutritionsDetailView(profile: profile)
+//                            Text("No Profile Selected")
                         } else {
                             Text("No Profile Selected")
                         }
