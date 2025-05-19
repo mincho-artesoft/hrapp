@@ -56,17 +56,21 @@ struct AllEventsListView: View {
             if showSearchBar && !searchText.isEmpty {
                 SearchResultsView(searchText: searchText)
             } else {
-                ScrollViewReader { proxy in
-                    content(proxy: proxy)
-                }
-                .sheet(item: $eventToEdit) { event in
-                    EventEditViewWrapper(
-                        eventStore: CalendarViewModel.shared.eventStore,
-                        event: event,
-                        onEventUpdated: {
-                            loadInitialEvents()
-                        }
-                    )
+                GeometryReader { geo in
+                    ScrollViewReader { proxy in
+                        content(proxy: proxy)
+                    }
+                    .padding(.top,1)
+//                    .frame(height: cardHeight)
+                    .sheet(item: $eventToEdit) { event in
+                        EventEditViewWrapper(
+                            eventStore: CalendarViewModel.shared.eventStore,
+                            event: event,
+                            onEventUpdated: {
+                                loadInitialEvents()
+                            }
+                        )
+                    }
                 }
             }
         }
