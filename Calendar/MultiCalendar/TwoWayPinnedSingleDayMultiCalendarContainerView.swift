@@ -693,7 +693,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
-        let vitaHealthImage   = UIImage(systemName: "fork.knife")
+        let vitaHealthImage   = UIImage(systemName: "fleaf")
 
         // Съществуващите UIAction-и
         let dayAction = UIAction(
@@ -827,7 +827,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         case 6:
             imageName = "cloud.sun"
         case 7:
-            imageName = "fork.knife"
+            imageName = "leaf.fill"
         default:
             imageName = "calendar"
         }
