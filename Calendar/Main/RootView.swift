@@ -241,7 +241,7 @@ struct RootView: View {
                                             menuState = .collapsed
                                         })
                                         Spacer()
-                                        bottomBarButton(title: "VitaHealth", image: "leaf", action: {
+                                        bottomBarButton(title: "VitaHealth", image: "leaf.fill", action: {
                                             oldSelectedTab = selectedTab
                                             selectedTab = 7
                                             UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")

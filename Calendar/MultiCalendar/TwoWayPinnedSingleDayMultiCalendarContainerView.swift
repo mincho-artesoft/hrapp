@@ -827,7 +827,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         case 6:
             imageName = "cloud.sun"
         case 7:
-            imageName = "leaf"
+            imageName = "leaf.fill"
         default:
             imageName = "calendar"
         }
