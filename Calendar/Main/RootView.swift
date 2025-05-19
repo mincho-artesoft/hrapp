@@ -58,8 +58,6 @@ struct RootView: View {
         }else{
             _selectedTab = State(initialValue: 1)
         }
-        // Initialize oldSelectedTab based on the initial selectedTab
-        _oldSelectedTab = State(initialValue: _selectedTab.wrappedValue)
     }
     
     var body: some View {
@@ -184,7 +182,7 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
-                            // .ignoresSafeArea(...) // WeatherKitView might manage its own safe areas
+                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         case 7:
                             VitaHealth(
                                  selectedTabRoot: selectedTab,
