@@ -64,8 +64,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1993"
             endingLineNumber = "1993"
-            landmarkName = "refreshTokens(refreshToken:)"
-            landmarkType = "7">
+            landmarkName = "RefreshResponse"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,8 +80,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1994"
             endingLineNumber = "1994"
-            landmarkName = "refreshTokens(refreshToken:)"
-            landmarkType = "7">
+            landmarkName = "RefreshResponse"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -96,8 +96,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3218"
             endingLineNumber = "3218"
-            landmarkName = "CalendarViewModel"
-            landmarkType = "21">
+            landmarkName = "uploadLocalChangesToMicrosoft(msCalId:user:accessToken:localCalendar:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

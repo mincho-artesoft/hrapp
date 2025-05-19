@@ -4767,3 +4767,150 @@ extension CalendarViewModel{
         }
     }
 }
+
+// MARK: - Quick helpers used by NutritionsDetailView
+extension CalendarViewModel {
+
+    // MARK: – Calendar helper
+    /// Returns the profile‑specific `EKCalendar`.
+    /// • If `profile.calendarID` points to an existing calendar → just return it.
+    /// • If the ID is `nil` **or** the calendar was deleted → recreate it with
+    ///   `createCalendar(for:)`, persist the new ID and return it.
+    @MainActor
+    private func calendar(for profile: Profile) -> EKCalendar? {
+        if let cid = profile.calendarID,
+           let cal = eventStore.calendar(withIdentifier: cid) {
+            return cal
+        }
+
+        // ако няма – ще се опитаме да създадем нов
+        guard let newCal = createCalendar(for: profile) else { return nil }
+        return newCal
+    }
+
+
+    // MARK: – Create / update a single event
+    /// Inserts (or updates, if `existingEventID` is not nil) a *local*
+    /// `EKEvent` **in the profile’s personal calendar**.
+    @MainActor
+    func createEvent(forProfile profile: Profile,
+                     startDate: Date,
+                     endDate: Date,
+                     title: String,
+                     notes: String,
+                     existingEventID: String? = nil) async -> (Bool, String?)
+    {
+        guard let calendar = calendar(for: profile) else {
+            return (false, nil)
+        }
+
+        let event: EKEvent
+        if let id = existingEventID,
+           let found = eventStore.event(withIdentifier: id) {
+            event = found
+        } else {
+            event = EKEvent(eventStore: eventStore)
+            event.calendar = calendar                   // ← profile calendar
+        }
+
+        event.title     = title
+        event.startDate = startDate
+        event.endDate   = endDate
+        event.notes     = notes
+
+        do {
+            try eventStore.save(event, span: .thisEvent, commit: true)
+            return (true, event.eventIdentifier)
+        } catch {
+            print("createEvent(save):", error.localizedDescription)
+            return (false, nil)
+        }
+    }
+
+
+    // MARK: – Delete (local & cloud handled elsewhere)
+    @MainActor
+    func deleteEvent(withIdentifier id: String) async -> Bool {
+        guard let ev = eventStore.event(withIdentifier: id) else { return false }
+
+        do {
+            try eventStore.remove(ev, span: .thisEvent, commit: true)
+            return true
+        } catch {
+            print("deleteEvent(remove):", error.localizedDescription)
+            return false
+        }
+    }
+
+
+    // MARK: – Fetch events only from the profile’s calendar
+    @MainActor
+    func fetchEvents(forProfile profile: Profile,
+                     startDate: Date,
+                     endDate: Date) async -> [EKEvent]
+    {
+        guard let cal = calendar(for: profile) else { return [] }
+
+        let pred = eventStore.predicateForEvents(withStart: startDate,
+                                                 end: endDate,
+                                                 calendars: [cal])
+        return eventStore.events(matching: pred)
+    }
+}
+
+// MARK: - Per-profile private calendar
+extension CalendarViewModel {
+
+    /// Creates (or re-creates if missing) the local calendar for the profile
+    @MainActor
+       @discardableResult               // ← за да може да се извиква и без да се използва резултатът
+       func createCalendar(for profile: Profile) -> EKCalendar? {
+
+           // ако вече имаме валиден календар → само го преименуваме ако е нужно
+           if let id = profile.calendarID,
+              let cal = eventStore.calendar(withIdentifier: id) {
+
+               let wantedName = "\(profile.name) – VitaHealth"
+               if cal.title != wantedName {
+                   cal.title = wantedName
+                   try? eventStore.saveCalendar(cal, commit: true)
+               }
+               return cal
+           }
+
+           // иначе правим нов
+           guard let source = eventStore.sources.first(where: { $0.sourceType == .local })
+                   ?? eventStore.defaultCalendarForNewEvents?.source
+           else { return nil }
+
+           let newCal = EKCalendar(for: .event, eventStore: eventStore)
+           newCal.title  = "\(profile.name) – VitaHealth"
+           newCal.source = source
+           newCal.cgColor = (firstLocalCalendarColor ?? .systemBlue).cgColor
+
+           do {
+               try eventStore.saveCalendar(newCal, commit: true)
+               profile.calendarID = newCal.calendarIdentifier     // ЛИНК към SwiftData-модела
+               reloadCalendars()
+               return newCal                                      // ← Връщаме го!
+           } catch {
+               print("createCalendar(for:):", error.localizedDescription)
+               return nil
+           }
+       }
+
+    /// Deletes the profile’s local calendar (if it still exists)
+    @MainActor
+    func deleteCalendar(for profile: Profile) {
+        guard let id = profile.calendarID,
+              let cal = eventStore.calendar(withIdentifier: id) else { return }
+
+        do {
+            try eventStore.removeCalendar(cal, commit: true)
+            profile.calendarID = nil
+            reloadCalendars()
+        } catch {
+            print("⚠️ deleteCalendar(for:):", error.localizedDescription)
+        }
+    }
+}

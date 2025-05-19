@@ -110,11 +110,11 @@ struct ProfileListView: View {
     // MARK: – Helpers
     private func delete(profile: Profile) {
         withAnimation {
-            if profile.id == selectedProfile?.id {
-                selectedProfile = nil
-            }
+            if profile.id == selectedProfile?.id { selectedProfile = nil }
+            CalendarViewModel.shared.deleteCalendar(for: profile)   // NEW
             modelContext.delete(profile)
             try? modelContext.save()
         }
     }
+
 }

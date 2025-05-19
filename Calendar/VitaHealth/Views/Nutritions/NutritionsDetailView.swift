@@ -1,13 +1,3 @@
-//
-//  NutritionsDetailView.swift
-//  VitaHealth
-//
-//  Created by Mincho Milev on 2/3/25.
-//  Updated to store only minimal food data (quantity and foodName as a plain text string)
-//  in calendar events, then later restore it back to JSON before converting to FoodSelection.
-//  **UPDATED:** Now removes the calendar event when all food selections for a meal are removed.
-//
-
 import SwiftUI
 import SwiftData
 import EventKit
@@ -18,7 +8,8 @@ struct NutritionsDetailView: View {
     @StateObject private var dataSeeder = DataSeeder()
     
     let profile: Profile
-    
+    @ObservedObject private var viewModel = CalendarViewModel.shared
+
     // Daily food selections keyed by the normalized day.
     @State private var dailyFoodSelections: [Date: [FoodSelection]] = [:]
     // The currently selected date.
@@ -187,112 +178,112 @@ struct NutritionsDetailView: View {
     /// Saves the current food selections into the profile and creates/updates corresponding calendar events.
     /// If no selections exist for a meal, the corresponding event is removed from the calendar.
     private func saveSelections() async {
-//        let normalizedDate = currentDay
-//        
-//        // Remove previous selections for this day.
-//        profile.selections.removeAll { selection in
-//            Calendar.current.isDate(selection.date, inSameDayAs: normalizedDate)
-//        }
-//        
-//        var groupedSelections: [String: [FoodSelection]] = [:]
-//        if let selections = dailyFoodSelections[normalizedDate], !selections.isEmpty {
-//            // Save new selections to the profile.
-//            for selection in selections {
-//                let ps = ProfileSelection(
-//                    group: .combined,
-//                    nutrientName: nil,
-//                    food: selection.food,
-//                    quantity: selection.quantity,
-//                    date: normalizedDate,
-//                    meal: selection.meal.name
-//                )
-//                profile.selections.append(ps)
-//                modelContext.insert(ps)
-//                print("Saved selection – food: \(selection.food.name), quantity: \(selection.quantity), meal: \(selection.meal.name)")
-//            }
-//            
-//            // Group selections by meal name.
-//            groupedSelections = Dictionary(grouping: selections, by: { $0.meal.name })
-//            
-//            // For each meal with selections, create or update the corresponding calendar event.
-//            for (mealName, mealSelections) in groupedSelections {
-//                // Get the Meal object from one of the selections.
-//                let meal = mealSelections.first!.meal
-//                
-//                // Build a plain text note with one line per selection: "quantitymg FoodName"
-//                let noteLines = mealSelections.map { "\(formatQuantity($0.quantity))mg \($0.food.name)" }
-//                let noteString = noteLines.joined(separator: "\n")
-//                
-//                // Determine event start and end times.
-//                let calendar = Calendar.current
-//                let startComponents = calendar.dateComponents([.hour, .minute], from: meal.startTime)
-//                let endComponents = calendar.dateComponents([.hour, .minute], from: meal.endTime)
-//                guard let eventStart = calendar.date(bySettingHour: startComponents.hour ?? 0, minute: startComponents.minute ?? 0, second: 0, of: normalizedDate),
-//                      let eventEnd = calendar.date(bySettingHour: endComponents.hour ?? 0, minute: endComponents.minute ?? 0, second: 0, of: normalizedDate) else {
-//                    continue
-//                }
-//                
-//                let eventTitle = "\(mealName) Selections"
-//                let (success, eventID) = await CalendarManager.shared.createEvent(
-//                    forProfile: profile,
-//                    startDate: eventStart,
-//                    endDate: eventEnd,
-//                    title: eventTitle,
-//                    notes: noteString
-//                )
-//                if success {
-//                    // Update our local StoredEvent data.
-//                    if var existing = eventsByDate[normalizedDate] {
-//                        if let idx = existing.firstIndex(where: { $0.mealName == mealName }) {
-//                            existing[idx].jsonDescription = noteString
-//                            existing[idx].ekEventIdentifier = eventID
-//                        } else {
-//                            let newStoredEvent = StoredEvent(date: normalizedDate, jsonDescription: noteString, mealName: mealName, startDate: eventStart, endDate: eventEnd)
-//                            newStoredEvent.ekEventIdentifier = eventID
-//                            existing.append(newStoredEvent)
-//                        }
-//                        eventsByDate[normalizedDate] = existing
-//                    } else {
-//                        let newStoredEvent = StoredEvent(date: normalizedDate, jsonDescription: noteString, mealName: mealName, startDate: eventStart, endDate: eventEnd)
-//                        newStoredEvent.ekEventIdentifier = eventID
-//                        eventsByDate[normalizedDate] = [newStoredEvent]
-//                    }
-//                }
-//            }
-//        } else {
-//            // No selections for this day.
-//            groupedSelections = [:]
-//        }
-//        
-//        // Now remove any calendar events for meals that no longer have any food selections.
-//        if let existingEvents = eventsByDate[normalizedDate] {
-//            let eventsToRemove = existingEvents.filter { event in
-//                return groupedSelections[event.mealName] == nil
-//            }
-//            
-//            for event in eventsToRemove {
-//                if let eventID = event.ekEventIdentifier {
-//                    let success = await CalendarManager.shared.deleteEvent(withIdentifier: eventID)
-//                    if success {
-//                        print("Deleted calendar event for meal: \(event.mealName)")
-//                        modelContext.delete(event)
-//                    } else {
-//                        print("Failed to delete calendar event for meal: \(event.mealName)")
-//                    }
-//                }
-//            }
-//            
-//            // Update our events for the day to only include events that still have selections.
-//            eventsByDate[normalizedDate] = existingEvents.filter { event in
-//                return groupedSelections[event.mealName] != nil
-//            }
-//        }
-//        
-//        try? modelContext.save()
-//        logSavedSelections()
-//        // Merge events (without updating calendar events) and update local selections.
-//        await mergeCalendarAndSwiftDataEvents()
-//        updateFoodSelectionsFromEvents(for: normalizedDate)
+        let normalizedDate = currentDay
+        
+        // Remove previous selections for this day.
+        profile.selections.removeAll { selection in
+            Calendar.current.isDate(selection.date, inSameDayAs: normalizedDate)
+        }
+        
+        var groupedSelections: [String: [FoodSelection]] = [:]
+        if let selections = dailyFoodSelections[normalizedDate], !selections.isEmpty {
+            // Save new selections to the profile.
+            for selection in selections {
+                let ps = ProfileSelection(
+                    group: .combined,
+                    nutrientName: nil,
+                    food: selection.food,
+                    quantity: selection.quantity,
+                    date: normalizedDate,
+                    meal: selection.meal.name
+                )
+                profile.selections.append(ps)
+                modelContext.insert(ps)
+                print("Saved selection – food: \(selection.food.name), quantity: \(selection.quantity), meal: \(selection.meal.name)")
+            }
+            
+            // Group selections by meal name.
+            groupedSelections = Dictionary(grouping: selections, by: { $0.meal.name })
+            
+            // For each meal with selections, create or update the corresponding calendar event.
+            for (mealName, mealSelections) in groupedSelections {
+                // Get the Meal object from one of the selections.
+                let meal = mealSelections.first!.meal
+                
+                // Build a plain text note with one line per selection: "quantitymg FoodName"
+                let noteLines = mealSelections.map { "\(formatQuantity($0.quantity))mg \($0.food.name)" }
+                let noteString = noteLines.joined(separator: "\n")
+                
+                // Determine event start and end times.
+                let calendar = Calendar.current
+                let startComponents = calendar.dateComponents([.hour, .minute], from: meal.startTime)
+                let endComponents = calendar.dateComponents([.hour, .minute], from: meal.endTime)
+                guard let eventStart = calendar.date(bySettingHour: startComponents.hour ?? 0, minute: startComponents.minute ?? 0, second: 0, of: normalizedDate),
+                      let eventEnd = calendar.date(bySettingHour: endComponents.hour ?? 0, minute: endComponents.minute ?? 0, second: 0, of: normalizedDate) else {
+                    continue
+                }
+                
+                let eventTitle = "\(mealName) Selections"
+                let (success, eventID) = await viewModel.createEvent(
+                    forProfile: profile,
+                    startDate: eventStart,
+                    endDate: eventEnd,
+                    title: eventTitle,
+                    notes: noteString
+                )
+                if success {
+                    // Update our local StoredEvent data.
+                    if var existing = eventsByDate[normalizedDate] {
+                        if let idx = existing.firstIndex(where: { $0.mealName == mealName }) {
+                            existing[idx].jsonDescription = noteString
+                            existing[idx].ekEventIdentifier = eventID
+                        } else {
+                            let newStoredEvent = StoredEvent(date: normalizedDate, jsonDescription: noteString, mealName: mealName, startDate: eventStart, endDate: eventEnd)
+                            newStoredEvent.ekEventIdentifier = eventID
+                            existing.append(newStoredEvent)
+                        }
+                        eventsByDate[normalizedDate] = existing
+                    } else {
+                        let newStoredEvent = StoredEvent(date: normalizedDate, jsonDescription: noteString, mealName: mealName, startDate: eventStart, endDate: eventEnd)
+                        newStoredEvent.ekEventIdentifier = eventID
+                        eventsByDate[normalizedDate] = [newStoredEvent]
+                    }
+                }
+            }
+        } else {
+            // No selections for this day.
+            groupedSelections = [:]
+        }
+        
+        // Now remove any calendar events for meals that no longer have any food selections.
+        if let existingEvents = eventsByDate[normalizedDate] {
+            let eventsToRemove = existingEvents.filter { event in
+                return groupedSelections[event.mealName] == nil
+            }
+            
+            for event in eventsToRemove {
+                if let eventID = event.ekEventIdentifier {
+                    let success = await viewModel.deleteEvent(withIdentifier: eventID)
+                    if success {
+                        print("Deleted calendar event for meal: \(event.mealName)")
+                        modelContext.delete(event)
+                    } else {
+                        print("Failed to delete calendar event for meal: \(event.mealName)")
+                    }
+                }
+            }
+            
+            // Update our events for the day to only include events that still have selections.
+            eventsByDate[normalizedDate] = existingEvents.filter { event in
+                return groupedSelections[event.mealName] != nil
+            }
+        }
+        
+        try? modelContext.save()
+        logSavedSelections()
+        // Merge events (without updating calendar events) and update local selections.
+        await mergeCalendarAndSwiftDataEvents()
+        updateFoodSelectionsFromEvents(for: normalizedDate)
     }
     
     // MARK: - New Helper Functions for Text Note Storage
@@ -388,56 +379,56 @@ struct NutritionsDetailView: View {
     /// Merges events from the iOS Calendar with stored SwiftData events.
     /// In this minimal approach, we do not update the calendar event note (which remains minimal).
     private func mergeCalendarAndSwiftDataEvents() async {
-//        let calendar = Calendar.current
-//        let now = Date()
-//        guard let startRange = calendar.date(byAdding: .year, value: -1, to: now),
-//              let endRange = calendar.date(byAdding: .year, value: 1, to: now) else {
-//            return
-//        }
-//        
-//        // Fetch calendar events.
-//        let ekEvents = await CalendarManager.shared.fetchEvents(forProfile: profile, startDate: startRange, endDate: endRange)
-//        
-//        // Fetch stored events from SwiftData.
-//        let fetchRequest = FetchDescriptor<StoredEvent>()
-//        var storedEvents: [StoredEvent] = []
-//        if let fetched = try? modelContext.fetch(fetchRequest) {
-//            storedEvents = fetched
-//        }
-//        
-//        // Build a dictionary keyed by (startTime + mealName).
-//        var mergedDict: [String: StoredEvent] = [:]
-//        for event in storedEvents {
-//            let key = "\(event.startDate.timeIntervalSince1970)_\(event.mealName)"
-//            mergedDict[key] = event
-//        }
-//        
-//        // Process each calendar event.
-//        for ekEvent in ekEvents {
-//            let mealName = ekEvent.title.replacingOccurrences(of: " Selections", with: "")
-//            let key = "\(ekEvent.startDate.timeIntervalSince1970)_\(mealName)"
-//            
-//            let newEvent = StoredEvent(
-//                date: calendar.startOfDay(for: ekEvent.startDate),
-//                jsonDescription: ekEvent.notes ?? "",
-//                mealName: mealName,
-//                startDate: ekEvent.startDate,
-//                endDate: ekEvent.endDate
-//            )
-//            newEvent.ekEventIdentifier = ekEvent.eventIdentifier
-//            // Do not update the event note; leave it as minimal.
-//            mergedDict[key] = newEvent
-//        }
-//        
-//        let mergedEvents = Array(mergedDict.values)
-//        var newEventsByDate: [Date: [StoredEvent]] = [:]
-//        for event in mergedEvents {
-//            let day = calendar.startOfDay(for: event.startDate)
-//            newEventsByDate[day, default: []].append(event)
-//        }
-//        await MainActor.run {
-//            self.eventsByDate = newEventsByDate
-//        }
+        let calendar = Calendar.current
+        let now = Date()
+        guard let startRange = calendar.date(byAdding: .year, value: -1, to: now),
+              let endRange = calendar.date(byAdding: .year, value: 1, to: now) else {
+            return
+        }
+        
+        // Fetch calendar events.
+        let ekEvents = await viewModel.fetchEvents(forProfile: profile, startDate: startRange, endDate: endRange)
+        
+        // Fetch stored events from SwiftData.
+        let fetchRequest = FetchDescriptor<StoredEvent>()
+        var storedEvents: [StoredEvent] = []
+        if let fetched = try? modelContext.fetch(fetchRequest) {
+            storedEvents = fetched
+        }
+        
+        // Build a dictionary keyed by (startTime + mealName).
+        var mergedDict: [String: StoredEvent] = [:]
+        for event in storedEvents {
+            let key = "\(event.startDate.timeIntervalSince1970)_\(event.mealName)"
+            mergedDict[key] = event
+        }
+        
+        // Process each calendar event.
+        for ekEvent in ekEvents {
+            let mealName = ekEvent.title.replacingOccurrences(of: " Selections", with: "")
+            let key = "\(ekEvent.startDate.timeIntervalSince1970)_\(mealName)"
+            
+            let newEvent = StoredEvent(
+                date: calendar.startOfDay(for: ekEvent.startDate),
+                jsonDescription: ekEvent.notes ?? "",
+                mealName: mealName,
+                startDate: ekEvent.startDate,
+                endDate: ekEvent.endDate
+            )
+            newEvent.ekEventIdentifier = ekEvent.eventIdentifier
+            // Do not update the event note; leave it as minimal.
+            mergedDict[key] = newEvent
+        }
+        
+        let mergedEvents = Array(mergedDict.values)
+        var newEventsByDate: [Date: [StoredEvent]] = [:]
+        for event in mergedEvents {
+            let day = calendar.startOfDay(for: event.startDate)
+            newEventsByDate[day, default: []].append(event)
+        }
+        await MainActor.run {
+            self.eventsByDate = newEventsByDate
+        }
     }
     
     /// Updates the daily food selections by parsing the note text from the merged StoredEvents.
@@ -458,20 +449,20 @@ struct NutritionsDetailView: View {
     
     /// Deletes a StoredEvent from both SwiftData and the iOS Calendar.
     private func deleteEvent(event: StoredEvent) {
-//        modelContext.delete(event)
-//        if let eventID = event.ekEventIdentifier {
-//            Task {
-//                let success = await CalendarManager.shared.deleteEvent(withIdentifier: eventID)
-//                if !success {
-//                    print("Failed to delete event from iOS Calendar.")
-//                }
-//            }
-//        }
-//        if var events = eventsByDate[currentDay] {
-//            events.removeAll { $0.id == event.id }
-//            eventsByDate[currentDay] = events
-//        }
-//        try? modelContext.save()
+        modelContext.delete(event)
+        if let eventID = event.ekEventIdentifier {
+            Task {
+                let success = await viewModel.deleteEvent(withIdentifier: eventID)
+                if !success {
+                    print("Failed to delete event from iOS Calendar.")
+                }
+            }
+        }
+        if var events = eventsByDate[currentDay] {
+            events.removeAll { $0.id == event.id }
+            eventsByDate[currentDay] = events
+        }
+        try? modelContext.save()
     }
     
     /// Logs all StoredEvents for debugging.
