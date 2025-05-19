@@ -61,7 +61,7 @@ struct MineralGroupView: View {
                             NutrientProgressBarView(
                                 currentValue: current,
                                 dailyNeed: dailyNeed,
-                                upperLimit: upperLimit!
+                                upperLimit: 0
                             )
                             .frame(height: 40)
                         }

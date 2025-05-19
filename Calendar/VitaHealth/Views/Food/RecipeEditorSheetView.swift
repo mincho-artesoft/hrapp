@@ -364,34 +364,68 @@ struct RecipeEditorSheetView: View {
         if isVitamin,
            let vit = defaultVitaminsList.first(where: { $0.name == name }),
            let req = vit.requirements.first(where: { $0.demographic == demo }) {
-            return ((req.dailyNeed, req.upperLimit, vit.unit) as! (Double, Double, String))
+            if let upper = req.upperLimit{
+                return (req.dailyNeed, upper, vit.unit)
+            }else{
+                return (req.dailyNeed, -1, vit.unit)
+            }
+          
         }
 
         if !isVitamin,
            let min = defaultMineralsList.first(where: { $0.name == name }),
            let req = min.requirements.first(where: { $0.demographic == demo }) {
-            return ((req.dailyNeed, req.upperLimit, min.unit) as! (Double, Double, String))
+            if let upper = req.upperLimit{
+                return (req.dailyNeed, upper, min.unit)
+            }else{
+                return (req.dailyNeed, -1, min.unit)
+            }
         }
         return nil
     }
 
     private func demographicString(for profile: Profile) -> String {
-        let months = Calendar.current.dateComponents([.month],
-                                                     from: profile.birthday,
-                                                     to: Date()).month ?? 0
-        if months < 6  { return "Babies (0-6 months)" }
-        if months < 12 { return "Babies (7-12 months)" }
+        // 0. Ако е маркирана като бременна → Pregnant Women
+//        if profile.selections.contains(where: { $0 == .pregnant }) {
+//            return Demographic.pregnantWomen
+//        }
+//        // 0b. Ако е маркирана като кърмеща → Lactating Women
+//        if profile.selections.contains(where: { $0 == .lactating }) {
+//            return Demographic.lactatingWomen
+//        }
 
+        // 1. Бебета в месеци
+        let months = Calendar.current
+            .dateComponents([.month], from: profile.birthday, to: Date())
+            .month ?? 0
+        if months < 6 { return Demographic.babies0_6m }
+        if months < 12 { return Demographic.babies7_12m }
+
+        // 2. Деца и тийнейджъри (години)
         switch profile.age {
-        case 1..<4:   return "Children (1-3 years)"
-        case 4..<9:   return "Children (4-8 years)"
-        case 9..<14:  return "Children (9-13 years)"
-        case 14..<19: return "Adolescents (14-18 years)"
-        default:      break
+        case 1..<4:   return Demographic.children1_3y
+        case 4..<9:   return Demographic.children4_8y
+        case 9..<14:  return Demographic.children9_13y
+        case 14..<19:
+            return profile.gender.lowercased().hasPrefix("f")
+                ? Demographic.adolescentFemales14_18y
+                : Demographic.adolescentMales14_18y
+        default:
+            // 3. Възрастни
+            let isFemale = profile.gender.lowercased().hasPrefix("f")
+            if isFemale {
+                return profile.age <= 50
+                    ? Demographic.adultWomen19_50y
+                    : Demographic.adultWomen51plusY
+            } else {
+                return profile.age <= 50
+                    ? Demographic.adultMen19_50y
+                    : Demographic.adultMen51plusY
+            }
         }
-        return profile.gender.lowercased().hasPrefix("f")
-             ? "Adult Women (19+)" : "Adult Men (19+)"
     }
+
+
 
     // ─────────────────────────────────────────────────────────
     // MARK: – Actions

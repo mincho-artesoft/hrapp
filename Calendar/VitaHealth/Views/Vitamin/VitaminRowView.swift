@@ -14,16 +14,25 @@ struct VitaminRowView: View {
             if let demo = demographic,
                let req = vitamin.requirements.first(where: { $0.demographic == demo }) {
                 // Само една група
-                Text("\(req.dailyNeed) / \(req.upperLimit)")
-                    .font(.caption2)
+                requirementView(for: req)
             } else {
                 // Всички групи (ако няма профил или конкретните данни липсват)
-                ForEach(vitamin.requirements, id: \.self) { req in
-                    Text("\(req.dailyNeed) / \(req.upperLimit)")
-                        .font(.caption2)
+                ForEach(vitamin.requirements) { req in
+                    requirementView(for: req)
                 }
             }
         }
         .padding(.vertical, 4)
+    }
+    
+    @ViewBuilder
+    private func requirementView(for req: Requirement) -> some View {
+        if let upper = req.upperLimit {
+            Text("min: \(req.dailyNeed)  max: \(upper)")
+                .font(.caption2)
+        } else {
+            Text("min: \(req.dailyNeed)")
+                .font(.caption2)
+        }
     }
 }
