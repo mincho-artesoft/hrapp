@@ -38,9 +38,9 @@ struct FoodDetailView: View {
     private let initialFoodName : String
     private let initialSubtitle : String
     private let initialServing  : Double
-    private let initialCarbs    : String
-    private let initialFats     : String
-    private let initialProts    : String
+//    private let initialCarbs    : String
+//    private let initialFats     : String
+//    private let initialProts    : String
     private let initialVit      : [String:String]
     private let initialMin      : [String:String]
     private let initialCover    : Data?
@@ -51,9 +51,9 @@ struct FoodDetailView: View {
     @State private var foodName       : String
     @State private var foodSubtitle   : String
     @State private var servingSize    : Double
-    @State private var carbohydrates  : String
-    @State private var fats           : String
-    @State private var proteins       : String
+//    @State private var carbohydrates  : String
+//    @State private var fats           : String
+//    @State private var proteins       : String
     @State private var vitaminAmounts : [String:String]
     @State private var mineralAmounts : [String:String]
 
@@ -73,23 +73,23 @@ struct FoodDetailView: View {
         let serving  = food?.servingSize ?? 200
 
         func blankIfZero(_ v: Double) -> String { v == 0 ? "" : v.clean }
-        let carbs = food.map { blankIfZero($0.carbohydrates) } ?? ""
-        let fats  = food.map { blankIfZero($0.fats)          } ?? ""
-        let prots = food.map { blankIfZero($0.proteins)      } ?? ""
+//        let carbs = food.map { blankIfZero($0.carbohydrates) } ?? ""
+//        let fats  = food.map { blankIfZero($0.fats)          } ?? ""
+//        let prots = food.map { blankIfZero($0.proteins)      } ?? ""
 
         _foodName       = State(initialValue: name)
         _foodSubtitle   = State(initialValue: subtitle)
         _servingSize    = State(initialValue: serving)
-        _carbohydrates  = State(initialValue: carbs)
-        _fats           = State(initialValue: fats)
-        _proteins       = State(initialValue: prots)
+//        _carbohydrates  = State(initialValue: carbs)
+//        _fats           = State(initialValue: fats)
+//        _proteins       = State(initialValue: prots)
 
         initialFoodName = name
         initialSubtitle = subtitle
         initialServing  = serving
-        initialCarbs    = carbs
-        initialFats     = fats
-        initialProts    = prots
+//        initialCarbs    = carbs
+//        initialFats     = fats
+//        initialProts    = prots
 
         // — витамини —
         var vit = [String:String]()
@@ -128,9 +128,9 @@ struct FoodDetailView: View {
                     LabeledField(label: "Name",     text: $foodName)
                     LabeledField(label: "SubName",  text: $foodSubtitle)
                     LabeledField(label: "Serving (g)", value: $servingSize)
-                    LabeledField(label: "Carbs (g)",    text: $carbohydrates)
-                    LabeledField(label: "Fats (g)",     text: $fats)
-                    LabeledField(label: "Proteins (g)", text: $proteins)
+//                    LabeledField(label: "Carbs (g)",    text: $carbohydrates)
+//                    LabeledField(label: "Fats (g)",     text: $fats)
+//                    LabeledField(label: "Proteins (g)", text: $proteins)
                 }
 
                 // ─ Cover image ───────────────────────────────────────
@@ -232,9 +232,9 @@ struct FoodDetailView: View {
         if trim(foodName)     != trim(initialFoodName)   { return true }
         if trim(foodSubtitle) != trim(initialSubtitle)   { return true }
         if abs(servingSize - initialServing) > 0.001     { return true }
-        if trim(carbohydrates) != trim(initialCarbs)     { return true }
-        if trim(fats)          != trim(initialFats)      { return true }
-        if trim(proteins)      != trim(initialProts)     { return true }
+//        if trim(carbohydrates) != trim(initialCarbs)     { return true }
+//        if trim(fats)          != trim(initialFats)      { return true }
+//        if trim(proteins)      != trim(initialProts)     { return true }
         if vitaminAmounts != initialVit                  { return true }
         if mineralAmounts != initialMin                  { return true }
 
@@ -251,9 +251,9 @@ struct FoodDetailView: View {
         guard !trimmedName.isEmpty else { return }
         let trimmedSubtitle = foodSubtitle.trimmingCharacters(in: .whitespaces)
 
-        let carbVal   = parse(carbohydrates)
-        let fatVal    = parse(fats)
-        let protVal   = parse(proteins)
+//        let carbVal   = parse(carbohydrates)
+//        let fatVal    = parse(fats)
+//        let protVal   = parse(proteins)
         let coverData = coverImage?.jpegData(compressionQuality: 0.8)
 
         // — UPDATE —
@@ -261,9 +261,9 @@ struct FoodDetailView: View {
             food.name          = trimmedName
             food.subtitle      = trimmedSubtitle.isEmpty ? nil : trimmedSubtitle
             food.servingSize   = servingSize
-            food.carbohydrates = carbVal
-            food.fats          = fatVal
-            food.proteins      = protVal
+//            food.carbohydrates = carbVal
+//            food.fats          = fatVal
+//            food.proteins      = protVal
             food.coverImage    = coverData
 
             syncNutrients(
@@ -288,9 +288,9 @@ struct FoodDetailView: View {
                 name: trimmedName,
                 subtitle: trimmedSubtitle.isEmpty ? nil : trimmedSubtitle,
                 servingSize: servingSize,
-                carbohydrates: carbVal,
-                fats: fatVal,
-                proteins: protVal,
+//                carbohydrates: carbVal,
+//                fats: fatVal,
+//                proteins: protVal,
                 coverImage: coverData
             )
             modelContext.insert(newFood)

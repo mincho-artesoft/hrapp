@@ -459,9 +459,9 @@ struct RecipeEditorSheetView: View {
         var totalCarb = 0.0, totalFat = 0.0, totalProt = 0.0
         for line in ingredients {
             let ratio = line.amount / line.food.servingSize
-            totalCarb += line.food.carbohydrates * ratio
-            totalFat  += line.food.fats          * ratio
-            totalProt += line.food.proteins      * ratio
+//            totalCarb += line.food.carbohydrates * ratio
+//            totalFat  += line.food.fats          * ratio
+//            totalProt += line.food.proteins      * ratio
         }
 
         // 3. Микро-нутриенти
@@ -498,9 +498,9 @@ struct RecipeEditorSheetView: View {
             edit.name          = recipeName
             edit.subtitle      = recipeSubtitle.isEmpty ? nil : recipeSubtitle
             edit.servingSize   = totalGrams
-            edit.carbohydrates = totalCarb
-            edit.fats          = totalFat
-            edit.proteins      = totalProt
+//            edit.carbohydrates = totalCarb
+//            edit.fats          = totalFat
+//            edit.proteins      = totalProt
             edit.ingredients   = foodsOnly
             edit.vitamins      = vitArray
             edit.minerals      = minArray
@@ -514,9 +514,9 @@ struct RecipeEditorSheetView: View {
             let new = Food(name: recipeName,
                            subtitle: recipeSubtitle.isEmpty ? nil : recipeSubtitle,
                            servingSize: totalGrams,
-                           carbohydrates: totalCarb,
-                           fats: totalFat,
-                           proteins: totalProt,
+//                           carbohydrates: totalCarb,
+//                           fats: totalFat,
+//                           proteins: totalProt,
                            isUserAdded: true,
                            preparationTime: prepTime,
                            vitamins: vitArray,

@@ -352,7 +352,7 @@ struct NutritionsDetailView: View {
                 }
                 return nil
             }
-            let food = Food(name: foodName, servingSize: servingSize, carbohydrates: carbohydrates, fats: fats, proteins: proteins, vitamins: vitamins, minerals: minerals)
+            let food = Food(name: foodName, servingSize: servingSize, vitamins: vitamins, minerals: minerals)
             let mealObj = profile.meals.first(where: { $0.name == mealName }) ?? Meal(name: mealName)
             return FoodSelection(food: food, quantity: quantity, meal: mealObj)
         } else {

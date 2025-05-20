@@ -10,13 +10,13 @@ struct FatsGroupView: View {
     
     /// Filters selections to include only those with a positive fat value.
     private var fatSelections: [FoodSelection] {
-        foodSelections.filter { $0.food.fats > 0 }
+        foodSelections.filter { $0.food.macros.fats.total > 0 }
     }
     
     /// Computes the total fats (in grams) from the selected foods.
     private var totalFats: Double {
-        fatSelections.reduce(0.0) { total, selection in
-            total + (selection.food.fats / selection.food.servingSize) * selection.quantity
+        fatSelections.reduce(into: 0.0) { total, selection in
+            total + (selection.food.macros.fats.total / selection.food.servingSize) * selection.quantity
         }
     }
     
@@ -37,7 +37,7 @@ struct FatsGroupView: View {
                 nutrientUnit: "g",
                 nutrientExtractor: { food in
                     // Return a Nutrient instance if this food has a fat value greater than zero.
-                    food.fats > 0 ? Nutrient(name: "Fats", amount: food.fats, unit: "g") : nil
+                    food.macros.fats.total > 0 ? Nutrient(name: "Fats", amount: food.macros.fats.total, unit: "g") : nil
                 },
                 foodSelections: $foodSelections
             )

@@ -82,9 +82,9 @@ struct FoodRowView: View {
                 
                 // Макро-стойности
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Carbs: \(food.carbohydrates, specifier: "%.1f") g")
-                    Text("Fats:  \(food.fats,          specifier: "%.1f") g")
-                    Text("Prot:  \(food.proteins,      specifier: "%.1f") g")
+//                    Text("Carbs: \(food.carbohydrates, specifier: "%.1f") g")
+//                    Text("Fats:  \(food.fats,          specifier: "%.1f") g")
+//                    Text("Prot:  \(food.proteins,      specifier: "%.1f") g")
                 }
                 .font(.subheadline)
                 .fixedSize(horizontal: false, vertical: true)

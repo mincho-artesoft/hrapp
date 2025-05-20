@@ -10,13 +10,13 @@ struct CarbohydrateGroupView: View {
     
     /// Filters selections to include only those with a positive carbohydrate value.
     private var carbSelections: [FoodSelection] {
-        foodSelections.filter { $0.food.carbohydrates > 0 }
+        foodSelections.filter { $0.food.macros.carbs.total > 0 }
     }
     
     /// Computes the total carbohydrates (in grams) from the selected foods.
     private var totalCarbs: Double {
-        carbSelections.reduce(0.0) { total, selection in
-            total + (selection.food.carbohydrates / selection.food.servingSize) * selection.quantity
+        carbSelections.reduce(into: 0.0) { total, selection in
+            total + (selection.food.macros.carbs.total / selection.food.servingSize) * selection.quantity
         }
     }
     
@@ -37,7 +37,7 @@ struct CarbohydrateGroupView: View {
                 nutrientUnit: "g",
                 nutrientExtractor: { food in
                     // Return a Nutrient instance if this food has a carbohydrate value greater than zero.
-                    food.carbohydrates > 0 ? Nutrient(name: "Carbohydrates", amount: food.carbohydrates, unit: "g") : nil
+                    food.macros.carbs.total > 0 ? Nutrient(name: "Carbohydrates", amount: food.macros.carbs.total, unit: "g") : nil
                 },
                 foodSelections: $foodSelections
             )

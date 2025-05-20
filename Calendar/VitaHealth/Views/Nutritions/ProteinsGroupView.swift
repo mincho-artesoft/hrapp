@@ -10,13 +10,13 @@ struct ProteinsGroupView: View {
     
     /// Filters selections to include only those with a positive protein value.
     private var proteinSelections: [FoodSelection] {
-        foodSelections.filter { $0.food.proteins > 0 }
+        foodSelections.filter { $0.food.macros.proteins.total > 0 }
     }
     
     /// Computes the total proteins (in grams) from the selected foods.
     private var totalProteins: Double {
-        proteinSelections.reduce(0.0) { total, selection in
-            total + (selection.food.proteins / selection.food.servingSize) * selection.quantity
+        proteinSelections.reduce(into: 0.0) { total, selection in
+            total + (selection.food.macros.proteins.total / selection.food.servingSize) * selection.quantity
         }
     }
     
@@ -37,7 +37,7 @@ struct ProteinsGroupView: View {
                 nutrientUnit: "g",
                 nutrientExtractor: { food in
                     // Return a Nutrient instance if this food has a protein value greater than zero.
-                    food.proteins > 0 ? Nutrient(name: "Proteins", amount: food.proteins, unit: "g") : nil
+                    food.macros.proteins.total > 0 ? Nutrient(name: "Proteins", amount: food.macros.proteins.total, unit: "g") : nil
                 },
                 foodSelections: $foodSelections
             )
