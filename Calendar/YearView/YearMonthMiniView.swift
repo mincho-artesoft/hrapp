@@ -4,6 +4,7 @@ import EventKit
 struct YearMonthMiniView: View {
     let monthDate: Date
     let eventsByDay: [Date: [EKEvent]]
+    let width: CGFloat
     let onMonthTapped: (Date) -> Void
 
     private var calendar: Calendar {
@@ -40,7 +41,7 @@ struct YearMonthMiniView: View {
                 let headers = rawSymbols.rotated(by: calendar.firstWeekday - 1)
 
                 LazyVGrid(
-                    columns: Array(repeating: GridItem(.fixed(24), spacing: 1), count: 7),
+                    columns: Array(repeating: GridItem(.fixed(width == 180 ? 24 : 21), spacing: 1), count: 7),
                     spacing: 1
                 ) {
                     // 3) Header на дните
@@ -71,7 +72,7 @@ struct YearMonthMiniView: View {
         }
         .contentShape(Rectangle())
         .onTapGesture { onMonthTapped(monthDate) }
-        .frame(width: 180, height: 240)
+        .frame(width: width, height: 240)
     }
 
     private func monthName(_ date: Date) -> String {
