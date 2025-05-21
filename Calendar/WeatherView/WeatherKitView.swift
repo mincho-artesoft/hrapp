@@ -404,11 +404,13 @@ struct WeatherKitView: View {
                 prompt: Text("Search for a city…")
                     .foregroundColor(.white.opacity(0.5))
             )
+            .textInputAutocapitalization(.never)   // без автоматични главни букви
+            .autocorrectionDisabled(true)          // без автокорекция
+            .keyboardType(.asciiCapable)           // изчистена QWERTY, без локални „умни“ предложения
             .focused($isSearchFieldFocused)              // ← тук
             .onSubmit { isEditing = false }
             .onChange(of: locationSearchVM.queryFragment) { isEditing = true }
             .textFieldStyle(.plain)
-            .autocorrectionDisabled(true)
             .font(.subheadline)
             .foregroundColor(.white.opacity(0.85))   // цвят на въведения текст
             .accentColor(.white)
