@@ -1,86 +1,158 @@
+//
+//  LocationSearchViewModel.swift
+//  Weather-Calendar
+//
+
 import Combine
 import MapKit
-import SwiftUI
+import CoreLocation
 
 @MainActor
-class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLocalSearchCompleterDelegate {
-    // ... (същото като по-горе до selectCompletion) ...
+class LocationSearchViewModel: NSObject,
+                               ObservableObject,
+                               @preconcurrency MKLocalSearchCompleterDelegate {
 
+    // MARK: – Public @Published
     @Published var queryFragment: String = ""
     @Published var searchResults: [MKLocalSearchCompletion] = []
     @Published var selectedPlacemark: MKPlacemark? = nil
-    @Published var searchError: String? = nil
+    @Published var searchError: Error? = nil
 
-    private var searchCompleter: MKLocalSearchCompleter
-    private var cancellables = Set<AnyCancellable>()
+    // MARK: – Private
+    private let searchCompleter: MKLocalSearchCompleter
+    private var cancellable: AnyCancellable?
+
+    // Инжектиран WeatherKit модел (singleton)
     private let weatherKitViewModel = WeatherKitViewModel.shared
 
+    // MARK: – Init
     override init() {
         self.searchCompleter = MKLocalSearchCompleter()
         super.init()
-        self.searchCompleter.delegate = self
-        self.searchCompleter.resultTypes = .address
-        $queryFragment
+
+        searchCompleter.delegate = self
+        searchCompleter.filterType            = .locationsOnly   // маха “Query” предложения
+        searchCompleter.resultTypes           = .address         // само адреси
+        searchCompleter.pointOfInterestFilter = .excludingAll    // без POI
+
+        if #available(iOS 17.0, *) {
+            // ➜ показва само населени места (градове / села)
+            searchCompleter.addressFilter = MKAddressFilter(including: .locality)
+        }
+
+        // Debounce + removeDuplicates за по-икономично търсене
+        cancellable = $queryFragment
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .removeDuplicates()
-            .sink { [weak self] currentQuery in
+            .sink { [weak self] newQuery in
                 guard let self = self else { return }
-                if currentQuery.isEmpty {
-                    self.searchResults = []
-                    self.searchError = nil
+
+                if newQuery.isEmpty {
+                    self.searchResults     = []
+                    self.selectedPlacemark = nil
+                    self.searchError       = nil
                 } else {
-                    self.searchCompleter.queryFragment = currentQuery
+                    self.searchCompleter.queryFragment = newQuery
                 }
             }
-            .store(in: &cancellables)
     }
 
+    // MARK: – MKLocalSearchCompleterDelegate
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        self.searchResults = completer.results
+        // ➤ На iOS 17+ системният филтър вече връща само градове
+        if #available(iOS 17.0, *) {
+            self.searchResults = completer.results
+            self.searchError   = nil
+            return
+        }
+
+        // ➤ Ръчно филтриране (iOS 16 и по-стари)
+        let query = queryFragment
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: .diacriticInsensitive, locale: .current)
+            .lowercased()
+
+        self.searchResults = completer.results.filter { item in
+            // 1) Премахваме адреси/улици, които съдържат цифри
+            guard item.title.rangeOfCharacter(from: .decimalDigits) == nil,
+                  item.subtitle.rangeOfCharacter(from: .decimalDigits) == nil else { return false }
+
+            // 2) Градът (частта преди запетаята) трябва да започва с въведения текст
+            let city = item.title.components(separatedBy: ",").first!
+            let normalizedCity = city
+                .folding(options: .diacriticInsensitive, locale: .current)
+                .lowercased()
+
+            return normalizedCity.hasPrefix(query)
+            // ⚠️ НЕ елиминираме дубликати → всички “Sofia, …” остават
+        }
+
         self.searchError = nil
     }
 
-    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+    func completer(_ completer: MKLocalSearchCompleter,
+                   didFailWithError error: Error) {
+        self.searchError   = error
         self.searchResults = []
-        self.searchError = "Location search failed: \(error.localizedDescription)"
-        print("MKLocalSearchCompleter failed with error: \(error.localizedDescription)")
     }
 
-
+    // MARK: – Selecting a completion
     func selectCompletion(_ completion: MKLocalSearchCompletion) {
-        self.searchError = nil
         let request = MKLocalSearch.Request(completion: completion)
-        let search = MKLocalSearch(request: request)
-        let capturedCompletionTitle = completion.title
+        MKLocalSearch(request: request).start { [weak self] response, error in
+            guard let self = self else { return }
 
-        search.start { [weak self] (response, error) in
-            Task { @MainActor in
-                guard let self = self else { return }
-
-                if let error = error {
-                    self.selectedPlacemark = nil
-                    self.searchError = "Failed to get location details: \(error.localizedDescription)"
-                    print("MKLocalSearch failed for completion '\(capturedCompletionTitle)': \(error.localizedDescription)")
-                    return
-                }
-
-                guard let placemark = response?.mapItems.first?.placemark else {
-                    self.selectedPlacemark = nil
-                    self.searchError = "No placemark details found for the selected location."
-                    print("No placemark found for completion '\(capturedCompletionTitle)'")
-                    return
-                }
-                
-                self.selectedPlacemark = placemark
-
-                // Задайте часовата зона, използвайки стойност по подразбиране, ако е nil
-                let timeZoneToSet = placemark.timeZone ?? TimeZone.autoupdatingCurrent // <--- Стойност по подразбиране
-                self.weatherKitViewModel.setTimeZone(timeZoneToSet)
-                if placemark.timeZone == nil {
-                    print("Warning: TimeZone not found for placemark: \(capturedCompletionTitle). Using current device timezone.")
-                }
-
+            if let error = error {
+                self.searchError       = error
+                self.selectedPlacemark = nil
+                return
             }
+
+            guard let mapItem = response?.mapItems.first else {
+                self.searchError = NSError(domain: "LocationSearch",
+                                           code: 1,
+                                           userInfo: [NSLocalizedDescriptionKey:
+                                                      "No details found for selection."])
+                return
+            }
+
+            // Запомняме избрания placemark
+            self.selectedPlacemark = mapItem.placemark
+            let coord = mapItem.placemark.coordinate
+
+            //---------------------------------------------------------
+            // 1) Опитваме директно timeZone от MKPlacemark -- най-точно
+            //---------------------------------------------------------
+            if let tz = mapItem.placemark.timeZone {
+                self.weatherKitViewModel.setTimeZone(tz)
+                self.weatherKitViewModel.fetchWeatherForCoords(
+                    latitude: coord.latitude,
+                    longitude: coord.longitude
+                )
+
+            //---------------------------------------------------------
+            // 2) При липса на tz → reverse geocode за timeZone
+            //---------------------------------------------------------
+            } else {
+                let clLocation = CLLocation(latitude: coord.latitude,
+                                            longitude: coord.longitude)
+                CLGeocoder().reverseGeocodeLocation(clLocation) { [weak self] placemarks, _ in
+                    guard let self = self else { return }
+
+                    if let tz = placemarks?.first?.timeZone {
+                        self.weatherKitViewModel.setTimeZone(tz)
+                    }
+                    self.weatherKitViewModel.fetchWeatherForCoords(
+                        latitude: coord.latitude,
+                        longitude: coord.longitude
+                    )
+                }
+            }
+
+            // Нулираме UI състоянието
+            self.queryFragment  = ""
+            self.searchResults  = []
+            self.searchError    = nil
         }
     }
 }
