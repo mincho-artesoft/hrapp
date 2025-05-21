@@ -294,6 +294,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             // Презентирате го модално в нав. контролер:
             let navVC = UINavigationController(rootViewController: eventVC)
             parentVC.present(navVC, animated: true)
+            ReviewManager.eventCreated()
         }
 
         @MainActor
@@ -308,6 +309,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             editVC.editViewDelegate = self
             
             parentVC.present(editVC, animated: true)
+            ReviewManager.eventCreated()
         }
 
         
@@ -328,6 +330,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             newEvent.startDate = date
             newEvent.endDate   = date.addingTimeInterval(3600)
             presentSystemEditor(newEvent, in: parentVC)
+            ReviewManager.eventCreated()
         }
         
         @MainActor
@@ -345,6 +348,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             newEvent.startDate = date
             newEvent.endDate   = date
             presentSystemEditor(newEvent, in: parentVC)
+            ReviewManager.eventCreated()
         }
 
        
@@ -424,6 +428,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 print("Error saving event: \(error)")
             }
             reloadCurrentRange()
+            ReviewManager.eventCreated()
         }
         
         @MainActor public func applyResizeChanges(
@@ -455,6 +460,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 print("Error saving event: \(error)")
             }
             reloadCurrentRange()
+            ReviewManager.eventCreated()
         }
     }
 }

@@ -849,7 +849,7 @@ extension WeatherKitView {
             vm: vm,
             onHourTap: { tappedHour in
                 print(tappedHour)
-
+                ReviewManager.eventCreated()
                 createAndEditNewEvent(from: tappedHour, for: Date())
             }
         )

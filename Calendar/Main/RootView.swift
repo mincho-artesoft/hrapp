@@ -232,6 +232,7 @@ struct RootView: View {
                                         bottomBarButton(title: "Add", image: "calendar.badge.plus", action: {
                                             createAndEditNewEvent(on: Date()) // Or use a relevant date
                                             menuState = .collapsed
+                                            ReviewManager.eventCreated()     
                                         })
                                         Spacer()
                                         bottomBarButton(title: "Weather", image: "cloud.sun.fill", action: {

@@ -227,31 +227,6 @@ struct AllEventsListView: View {
             .dateFormat(fromTemplate: "j:mm", options: 0, locale: locale)
         return df.string(from: date)
     }
-
-    
-    // MARK: - Създаване на нови събития
-    private func createAndEditNewEvent(on day: Date) {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if #available(iOS 17.0, *) {
-            switch status {
-            case .fullAccess, .writeOnly:
-                presentNewEvent(on: day)
-            case .notDetermined:
-                print("TODO: requestCalendarAccessIfNeeded()")
-            default:
-                // (LOC) Може да го преведете, ако искате да го показвате на екрана
-                print(NSLocalizedString("No calendar access.", comment: "Log message"))
-            }
-        } else {
-            if status == .authorized {
-                presentNewEvent(on: day)
-            } else if status == .notDetermined {
-                print("TODO: requestCalendarAccessIfNeeded()")
-            } else {
-                print(NSLocalizedString("No calendar access.", comment: "Log message"))
-            }
-        }
-    }
     
     private func presentNewEvent(on day: Date) {
         let cal = Calendar.current

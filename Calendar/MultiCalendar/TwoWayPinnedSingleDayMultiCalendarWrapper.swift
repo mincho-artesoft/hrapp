@@ -289,6 +289,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             editVC.event = ekEvent
             editVC.editViewDelegate = self
             parentVC.present(editVC, animated: true)
+            ReviewManager.eventCreated()
         }
         
         @MainActor
@@ -310,6 +311,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             }
 
             presentSystemEditor(newEvent, in: parentVC)
+            ReviewManager.eventCreated()
         }
 
 
@@ -327,6 +329,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
             }
             presentSystemEditor(newEvent, in: parentVC)
+            ReviewManager.eventCreated()
         }
         
         @MainActor public func handleEventDragOrResize(
@@ -403,6 +406,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 print("Error saving event: \(error)")
             }
             reloadCurrentRange()
+            ReviewManager.eventCreated()
         }
         
         @MainActor public func applyResizeChanges(
@@ -434,6 +438,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 print("Error saving event: \(error)")
             }
             reloadCurrentRange()
+            ReviewManager.eventCreated()
         }
         @MainActor
         public func presentSystemDetails(_ ekEvent: EKEvent, in parentVC: UIViewController) {

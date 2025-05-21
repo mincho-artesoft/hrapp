@@ -64,6 +64,9 @@ struct CalendarApp: App {
             switch newPhase {
             case .active:
                 print("App is active. Starting sync timers.")
+                
+                ReviewManager.appLaunched()
+
                 CalendarViewModel.shared.startGoogleCalendarSync()
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
                 

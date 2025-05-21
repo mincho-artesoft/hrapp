@@ -141,6 +141,7 @@ struct MonthCalendarView: View {
                                 },
                                 onDayLongPress: { pressedDay in
                                     createAndEditNewEvent(on: pressedDay)
+                                    ReviewManager.eventCreated()
                                 },
                                 onEventTap: { tappedEvent in
                                     eventToView = tappedEvent
