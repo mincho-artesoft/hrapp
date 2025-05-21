@@ -1,9 +1,10 @@
 import Combine
 import MapKit
-import SwiftUI // За @MainActor
+import SwiftUI
 
 @MainActor
 class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLocalSearchCompleterDelegate {
+    // ... (същото като по-горе до selectCompletion) ...
 
     @Published var queryFragment: String = ""
     @Published var searchResults: [MKLocalSearchCompletion] = []
@@ -12,18 +13,13 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
 
     private var searchCompleter: MKLocalSearchCompleter
     private var cancellables = Set<AnyCancellable>()
-
-    // Добавете референция към споделения WeatherKitViewModel
     private let weatherKitViewModel = WeatherKitViewModel.shared
 
     override init() {
         self.searchCompleter = MKLocalSearchCompleter()
         super.init()
-
         self.searchCompleter.delegate = self
         self.searchCompleter.resultTypes = .address
-        self.searchCompleter.filterType = .locationsOnly
-
         $queryFragment
             .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
             .removeDuplicates()
@@ -50,6 +46,7 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
         print("MKLocalSearchCompleter failed with error: \(error.localizedDescription)")
     }
 
+
     func selectCompletion(_ completion: MKLocalSearchCompletion) {
         self.searchError = nil
         let request = MKLocalSearch.Request(completion: completion)
@@ -57,7 +54,7 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
         let capturedCompletionTitle = completion.title
 
         search.start { [weak self] (response, error) in
-            Task { @MainActor in // Преминаваме към MainActor
+            Task { @MainActor in
                 guard let self = self else { return }
 
                 if let error = error {
@@ -74,12 +71,14 @@ class LocationSearchViewModel: NSObject, ObservableObject, @preconcurrency MKLoc
                     return
                 }
                 
-                self.selectedPlacemark = placemark // Това ще задейства .onReceive в WeatherKitView
+                self.selectedPlacemark = placemark
 
-                // ---- НОВО ----
-                // Задайте часовата зона в WeatherKitViewModel
-                // MKPlacemark.timeZone е NSTimeZone?, което е TimeZone? в Swift.
-                self.weatherKitViewModel.setTimeZone(placemark.timeZone!)
+                // Задайте часовата зона, използвайки стойност по подразбиране, ако е nil
+                let timeZoneToSet = placemark.timeZone ?? TimeZone.autoupdatingCurrent // <--- Стойност по подразбиране
+                self.weatherKitViewModel.setTimeZone(timeZoneToSet)
+                if placemark.timeZone == nil {
+                    print("Warning: TimeZone not found for placemark: \(capturedCompletionTitle). Using current device timezone.")
+                }
 
             }
         }

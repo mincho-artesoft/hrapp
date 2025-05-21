@@ -51,8 +51,8 @@ class WeatherKitViewModel: ObservableObject {
 
     // MARK: - Публични методи
 
-    func setTimeZone(_ tz: TimeZone?) {
-        self.locationTimeZone = tz ?? .autoupdatingCurrent
+    func setTimeZone(_ tz: TimeZone) {
+        self.locationTimeZone = tz
     }
 
     func fetchWeatherForCoords(latitude: Double, longitude: Double) {

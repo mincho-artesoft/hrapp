@@ -971,7 +971,7 @@ private struct HourlyCell: View {
             Text("\(Int(item.temp.rounded()))°")
                 .font(.system(size: 18, weight: .medium))
         }
-        .frame(minWidth: 20, idealWidth: 30, maxWidth: 40)
+        .frame(minWidth: 25, idealWidth: 35, maxWidth: 45)
         .contentShape(Rectangle())
     }
 }
