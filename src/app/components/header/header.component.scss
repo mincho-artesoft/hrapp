@@ -1,5 +1,7 @@
 /* src/app/components/header/header.component.scss */
-
+.spacer {
+  flex: 1;
+}
 .download-btn-ios.mat-mdc-raised-button:not(:disabled) {
     /* само текста и иконата */
     color: #007aff !important;
@@ -9,4 +11,9 @@
   .download-btn-ios.mat-mdc-raised-button .mat-icon {
     color: inherit !important;
   }
-  
+
+  .hide-mobile {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
