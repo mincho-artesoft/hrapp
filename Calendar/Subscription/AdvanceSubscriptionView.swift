@@ -12,6 +12,7 @@ struct AdvanceSubscriptionView: View {
                 FeatureRow(feature: "Multi-calendar view")
                 FeatureRow(feature: "Sync with Google Calendar")
                 FeatureRow(feature: "Sync meets from Google Meet")
+                FeatureRow(feature: "Ads Free")
             }
 
             Spacer()
