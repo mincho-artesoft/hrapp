@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
 		50AC17392D9C07280096F29D /* AltIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 50AC17382D9C07280096F29D /* AltIcon */; };
 		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
 		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
@@ -45,6 +46,7 @@
 			files = (
 				50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */,
 				50AC17392D9C07280096F29D /* AltIcon in Frameworks */,
+				50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */,
 				50D82EE72D92C681004B3545 /* MSAL in Frameworks */,
 				50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */,
 			);
@@ -93,6 +95,7 @@
 				50D8298B2D886BBD004B3545 /* GoogleSignInSwift */,
 				50D82EE62D92C681004B3545 /* MSAL */,
 				50AC17382D9C07280096F29D /* AltIcon */,
+				50964E862DE85D4200564845 /* GoogleMobileAds */,
 			);
 			productName = Calendar;
 			productReference = 50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */;
@@ -133,6 +136,7 @@
 				50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				50D82EE52D92C681004B3545 /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */,
 				50AC17372D9C07280096F29D /* XCRemoteSwiftPackageReference "AltIcon" */,
+				50964E852DE85D4200564845 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 50B212422D4111B800ABB8D3;
@@ -398,6 +402,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		50964E852DE85D4200564845 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.5.0;
+			};
+		};
 		50AC17372D9C07280096F29D /* XCRemoteSwiftPackageReference "AltIcon" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/matt-novoselov/AltIcon.git";
@@ -425,6 +437,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		50964E862DE85D4200564845 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50964E852DE85D4200564845 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		50AC17382D9C07280096F29D /* AltIcon */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50AC17372D9C07280096F29D /* XCRemoteSwiftPackageReference "AltIcon" */;

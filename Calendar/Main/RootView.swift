@@ -53,7 +53,7 @@ struct RootView: View {
     init() {
         // Ако няма нищо записано, по подразбиране ще е 1
         let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
-        if (0...7).contains(saved) { // Assuming 0-7 are your valid tab indices
+        if (0...6).contains(saved) { // Assuming 0-7 are your valid tab indices
             _selectedTab = State(initialValue: saved)
         }else{
             _selectedTab = State(initialValue: 1)
@@ -183,15 +183,6 @@ struct RootView: View {
                                 }
                             )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
-                        case 7:
-                            VitaHealth(
-                                 selectedTabRoot: selectedTab,
-                                 oldSelectedTab: oldSelectedTab,
-                                 onViewChange: { newTab in
-                                     selectedTab = newTab
-                                 }
-                             )
-                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         default:
                             Text("N/A - Selected Tab: \(selectedTab)") // More informative fallback
                                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space
@@ -238,13 +229,6 @@ struct RootView: View {
                                         bottomBarButton(title: "Weather", image: "cloud.sun.fill", action: {
                                             oldSelectedTab = selectedTab
                                             selectedTab = 6
-                                            UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
-                                            menuState = .collapsed
-                                        })
-                                        Spacer()
-                                        bottomBarButton(title: "VitaHealth", image: "leaf.fill", action: {
-                                            oldSelectedTab = selectedTab
-                                            selectedTab = 7
                                             UserDefaults.standard.set(selectedTab, forKey: "selectedTabRoot")
                                             menuState = .collapsed
                                         })

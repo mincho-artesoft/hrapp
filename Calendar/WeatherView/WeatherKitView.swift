@@ -7,6 +7,8 @@ import MapKit
 
 struct WeatherKitView: View {
     
+    @State private var shouldShowAds = true
+
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)
     @State private var eventToEdit: EKEvent? = nil
@@ -57,6 +59,16 @@ struct WeatherKitView: View {
                     hourlyForecastCard
                         .padding(.horizontal, 16)
                     
+                    if  SubscriptionManager.shared.subscriptionStatus == .base {
+                        if shouldShowAds{
+                            BannerAdView(adsBool: $shouldShowAds)
+                                .frame(maxWidth: .infinity)
+                                .frame(minHeight: 50, maxHeight: 120)
+                                .padding(.horizontal, 16)
+                            
+                        }
+                    }
+                   
                     // 10-дневният прогноз
                     tenDayForecastCard
                         .padding(.horizontal, 16)
@@ -132,6 +144,7 @@ struct WeatherKitView: View {
         )        .safeAreaInset(edge: .top) {          // iOS 15+
             if showSearchBar {
                 searchField
+                    .padding(.top, 20)
                     .padding(.horizontal)
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .animation(.easeInOut(duration: 0.25), value: showSearchBar)

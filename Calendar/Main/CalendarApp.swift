@@ -3,28 +3,19 @@ import SwiftData
 import AltIcon
 import UIKit   // UINavigationBarAppearance, UIToolbarAppearance
 import CoreLocation
+import GoogleMobileAds
 @preconcurrency import WeatherKit
 
 @main
 struct CalendarApp: App {
-    // Create a single container that includes all your SwiftData models.
-    let container: ModelContainer = {
-        do {
-            return try ModelContainer(for: Profile.self,
-                                      UserSettings.self,
-                                      Food.self,
-                                      Mineral.self,
-                                      Vitamin.self,
-                                      ProfileSelection.self)
-        } catch {
-            fatalError("Failed to create model container: \(error)")
-        }
-    }()
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @AppStorage("subscriptionStatus") private var storedSubscriptionStatusRaw: String = SubscriptionCategory.base.rawValue
-
+    
     @Environment(\.scenePhase) private var scenePhase
     
+    @State private var isFirstForegroundAppearance = true
+
     // Това е вашият WeatherKit ViewModel:
     @StateObject private var weatherVM = WeatherKitViewModel.shared
     
@@ -36,6 +27,11 @@ struct CalendarApp: App {
             RootView()
                 // Когато се появи RootView, опитваме да вземем текуща локация:
                 .onAppear {
+                    
+                    if  SubscriptionManager.shared.subscriptionStatus == .base {
+                          MobileAds.shared.start(completionHandler: nil)
+                          Task { await AppOpenAdManager.shared.loadAd() }
+                      }
                    // Принтираме при първо показване на RootView:
                    print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
                    
@@ -51,7 +47,6 @@ struct CalendarApp: App {
                        )
                    }
                }
-               .modelContainer(container)
                .onChange(of: locationManager.currentLocation) { _, newLoc in
                    guard let newLoc = newLoc else { return }
                    weatherVM.fetchWeatherForCoords(
@@ -64,6 +59,17 @@ struct CalendarApp: App {
             switch newPhase {
             case .active:
                 print("App is active. Starting sync timers.")
+
+                if  SubscriptionManager.shared.subscriptionStatus == .base {
+                    let delay: UInt64 = isFirstForegroundAppearance ? 10 : 2
+                       isFirstForegroundAppearance = false
+                       
+                       Task {
+                           await AppOpenAdManager.shared.loadAd()
+                           try? await Task.sleep(nanoseconds: delay * 1_000_000_000)
+                           AppOpenAdManager.shared.showAdIfAvailable()
+                       }
+                   }
                 
                 ReviewManager.appLaunched()
 
@@ -132,6 +138,11 @@ struct CalendarApp: App {
 
             case .background:
                 print("App in background. Stop sync timers.")
+                
+                if  SubscriptionManager.shared.subscriptionStatus == .base {
+                    Task { await AppOpenAdManager.shared.loadAd() }
+                    }
+                
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
 

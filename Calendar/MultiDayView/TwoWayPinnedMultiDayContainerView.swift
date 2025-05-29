@@ -838,7 +838,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let listImage         = UIImage(systemName: "list.bullet")
         let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
         let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
-        let vitaHealthImage   = UIImage(systemName: "leaf.fill")
 
         // Съществуващите UIAction-и
         let dayAction = UIAction(
@@ -928,16 +927,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             self?.viewMenuButton.setImage(weatherImage, for: .normal)
         }
         
-        let vitaHealthAction = UIAction(
-            title: NSLocalizedString("VitaHealth", comment: ""),
-            image: vitaHealthImage,
-            state: currentView == 7 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 7
-            self?.onViewChange?(7)
-            self?.viewMenuButton.setImage(vitaHealthImage, for: .normal)
-        }
-        
         return UIMenu(
             title: "",
             children: [
@@ -947,8 +936,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                 yearAction,
                 listAction,
                 multiCalendarAction,
-                weatherAction,
-                vitaHealthAction
+                weatherAction
             ]
         )
     }
@@ -971,8 +959,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             imageName = "align.vertical.top"
         case 6:
             imageName = "cloud.sun"
-        case 7:
-            imageName = "leaf.fill"
         default:
             imageName = "calendar"
         }
