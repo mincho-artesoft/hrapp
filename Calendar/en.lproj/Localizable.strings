@@ -746,3 +746,5 @@
 "No active subscriptions found to restore."                = "No active subscriptions found to restore.";
 "Failed to restore purchases. Please try again later. (%@)" = "Failed to restore purchases. Please try again later. (%@)";
 "Restore Purchases"                                        = "Restore Purchases";
+
+"Ads Free" = "Ads Free";

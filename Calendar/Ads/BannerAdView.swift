@@ -8,7 +8,7 @@ struct BannerAdView: UIViewRepresentable {
     @Binding var adsBool: Bool
     
     /// Your ad-unit ID
-    private let adUnitID = "ca-app-pub-3940256099942544/2934735716"
+    private let adUnitID = "ca-app-pub-2492229660203559/8143467879"
 
     // MARK: - UIViewRepresentable
     func makeUIView(context: Context) -> BannerView {

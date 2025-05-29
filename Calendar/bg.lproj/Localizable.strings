@@ -743,3 +743,5 @@
 "No active subscriptions found to restore."                = "Няма активни абонаменти за възстановяване.";
 "Failed to restore purchases. Please try again later. (%@)" = "Неуспешно възстановяване на покупките. Моля, опитайте отново по-късно. (%@)";
 "Restore Purchases"                                        = "Възстановяване на покупки";
+
+"Ads Free" = "Без реклами";

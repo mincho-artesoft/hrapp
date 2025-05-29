@@ -744,3 +744,5 @@
 "No active subscriptions found to restore."                = "No se encontraron suscripciones activas para restaurar.";
 "Failed to restore purchases. Please try again later. (%@)" = "No se pudo restaurar las compras. Por favor, inténtalo de nuevo más tarde. (%@)";
 "Restore Purchases"                                        = "Restaurar compras";
+
+"Ads Free" = "Sin anuncios";
