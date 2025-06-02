@@ -37,13 +37,14 @@ class LocationSearchViewModel: NSObject,
         super.init()
 
         searchCompleter.delegate = self
-        searchCompleter.filterType            = .locationsOnly   // маха “Query” предложения
-        searchCompleter.resultTypes           = .address         // само адреси
-        searchCompleter.pointOfInterestFilter = .excludingAll    // без POI
+        searchCompleter.filterType            = .locationsOnly
+        searchCompleter.resultTypes           = .address
+        searchCompleter.pointOfInterestFilter = .excludingAll
 
-        if #available(iOS 17.0, *) {
+        if #available(iOS 18.0, *) {
+            // От iOS 18 нагоре можем да използваме вградената филтрация
             searchCompleter.addressFilter = MKAddressFilter(including: .locality)
-            // → връща само населени места, но все пак филтрираме ръчно
+            // все пак може да оставиш и ръчната, ако искаш еднакво поведение
         }
 
         // debounce, за да не стреляме излишни заявки
