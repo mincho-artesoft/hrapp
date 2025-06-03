@@ -1,5 +1,5 @@
 // test private let adUnitID = "ca-app-pub-3940256099942544/5575463023"   // официалният тестов ID за iOS App-Open
-//   private let adUnitID = "ca-app-pub-2492229660203559/2297380292"
+//   private let adUnitID = "ca-app-pub-3759868960530173/8791851472"
 
 
 @preconcurrency import GoogleMobileAds
@@ -15,7 +15,7 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
   private var isShowingAd = false
   private var loadTime: Date?
 
-  private let adUnitID = "ca-app-pub-2492229660203559/2297380292" 
+  private let adUnitID = "ca-app-pub-3759868960530173/8791851472"
 
   /// Зарежда нов спот (ако няма или е експирал).
   func loadAd() async {
