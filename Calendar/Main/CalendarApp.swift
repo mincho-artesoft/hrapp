@@ -25,127 +25,127 @@ struct CalendarApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                // Когато се появи RootView, опитваме да вземем текуща локация:
+            // Когато се появи RootView, опитваме да вземем текуща локация:
                 .onAppear {
                     
                     if  SubscriptionManager.shared.subscriptionStatus == .base {
-                          MobileAds.shared.start(completionHandler: nil)
-                          Task { await AppOpenAdManager.shared.loadAd() }
-                      }
-                   // Принтираме при първо показване на RootView:
-                   print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
-                   
-                   // Пример: ако искаш да вземеш и enum-а от SubscriptionManager:
-                   let statusEnum = SubscriptionManager.shared.subscriptionStatus.rawValue
-                   print("📦 SubscriptionManager status: \(statusEnum)")
-
-                   // Съществуващата ти логика:
-                   if let loc = locationManager.currentLocation {
-                       weatherVM.fetchWeatherForCoords(
-                           latitude: loc.coordinate.latitude,
-                           longitude: loc.coordinate.longitude
-                       )
-                   }
-               }
-               .onChange(of: locationManager.currentLocation) { _, newLoc in
-                   guard let newLoc = newLoc else { return }
-                   weatherVM.fetchWeatherForCoords(
-                       latitude: newLoc.coordinate.latitude,
-                       longitude: newLoc.coordinate.longitude
-                   )
-               }
+                        MobileAds.shared.start(completionHandler: nil)
+                        Task { await AppOpenAdManager.shared.loadAd() }
+                    }
+                    // Принтираме при първо показване на RootView:
+                    print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
+                    
+                    // Пример: ако искаш да вземеш и enum-а от SubscriptionManager:
+                    let statusEnum = SubscriptionManager.shared.subscriptionStatus.rawValue
+                    print("📦 SubscriptionManager status: \(statusEnum)")
+                    
+                    // Съществуващата ти логика:
+                    if let loc = locationManager.currentLocation {
+                        weatherVM.fetchWeatherForCoords(
+                            latitude: loc.coordinate.latitude,
+                            longitude: loc.coordinate.longitude
+                        )
+                    }
+                }
+                .onChange(of: locationManager.currentLocation) { _, newLoc in
+                    guard let newLoc = newLoc else { return }
+                    weatherVM.fetchWeatherForCoords(
+                        latitude: newLoc.coordinate.latitude,
+                        longitude: newLoc.coordinate.longitude
+                    )
+                }
         }
         .onChange(of: scenePhase) { _ /* oldPhase */, newPhase in
             switch newPhase {
             case .active:
                 print("App is active. Starting sync timers.")
-
+                
                 if  SubscriptionManager.shared.subscriptionStatus == .base {
                     let delay: UInt64 = isFirstForegroundAppearance ? 10 : 2
-                       isFirstForegroundAppearance = false
-                       
-                       Task {
-                           await AppOpenAdManager.shared.loadAd()
-                           try? await Task.sleep(nanoseconds: delay * 1_000_000_000)
-                           AppOpenAdManager.shared.showAdIfAvailable()
-                       }
-                   }
+                    isFirstForegroundAppearance = false
+                    
+                    Task {
+                        await AppOpenAdManager.shared.loadAd()
+                        try? await Task.sleep(nanoseconds: delay * 1_000_000_000)
+                        AppOpenAdManager.shared.showAdIfAvailable()
+                    }
+                }
                 
                 ReviewManager.appLaunched()
-
+                
                 CalendarViewModel.shared.startGoogleCalendarSync()
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
                 
                 let locale = Locale.current
-                      let calendar = Calendar.current
-
-                      // 1. Регион
-                      if let regionCode = locale.region?.identifier{
-                          GlobalState.region = regionCode
-                      }
-
-                      // 2. Календар
-                      let calID = String(describing: calendar.identifier)
-                      GlobalState.calendar = calID
-
-                      // 3. Температурна единица
-                      let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
-                      let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
-                      let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
-                      GlobalState.temperatureUnit = unit.symbol
+                let calendar = Calendar.current
                 
-                      // 4. Мерна система
-          
-                      GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
-
-                      // 5. Първи ден от седмицата
-                      GlobalState.firstWeekday = calendar.firstWeekday
-
-                      // 6. Формат на дата
-                      let df = DateFormatter()
-                      df.locale = locale
-                      df.dateStyle = .short
-                      GlobalState.dateFormat = df.dateFormat ?? ""
-
-                      // 7. Формат на числа
-                      let nf = NumberFormatter()
-                      nf.locale = locale
-                      nf.numberStyle = .decimal
-                      let num = 1234567.89 as NSNumber
-                      GlobalState.numberFormat = nf.string(from: num) ?? ""
-
+                // 1. Регион
+                if let regionCode = locale.region?.identifier{
+                    GlobalState.region = regionCode
+                }
+                
+                // 2. Календар
+                let calID = String(describing: calendar.identifier)
+                GlobalState.calendar = calID
+                
+                // 3. Температурна единица
+                let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
+                let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
+                let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
+                GlobalState.temperatureUnit = unit.symbol
+                
+                // 4. Мерна система
+                
+                GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
+                
+                // 5. Първи ден от седмицата
+                GlobalState.firstWeekday = calendar.firstWeekday
+                
+                // 6. Формат на дата
+                let df = DateFormatter()
+                df.locale = locale
+                df.dateStyle = .short
+                GlobalState.dateFormat = df.dateFormat ?? ""
+                
+                // 7. Формат на числа
+                let nf = NumberFormatter()
+                nf.locale = locale
+                nf.numberStyle = .decimal
+                let num = 1234567.89 as NSNumber
+                GlobalState.numberFormat = nf.string(from: num) ?? ""
+                
                 // ——— Твой код за иконите ———
                 let date = Date()
                 let day = calendar.component(.day, from: date)
                 let month = calendar.component(.month, from: date)
                 let weekday = calendar.component(.weekday, from: date)
-
+                
                 let months = ["Jan","Feb","Mar","Apr","May","Jun",
                               "Jul","Aug","Sep","Oct","Nov","Dec"]
                 let weekdaysShort = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-
+                
                 let monthName = months[month - 1]
                 let weekdayNameShort = weekdaysShort[weekday - 1]
                 let weatherType = getCurrentWeatherType()
                 let iconName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_\(weatherType)"
-
+                
                 AltIcon.setAppIcon(iconName)
                 print("Не намирам \(iconName). Слагам fallback (sun).")
                 let fallbackName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_sun"
                 AltIcon.setAppIcon(fallbackName)
                 // ——————————————————————————————
-
-
+                
+                
             case .background:
                 print("App in background. Stop sync timers.")
                 
                 if  SubscriptionManager.shared.subscriptionStatus == .base {
                     Task { await AppOpenAdManager.shared.loadAd() }
-                    }
+                }
                 
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
-
+                
             case .inactive:
                 print("App is inactive.")
                 

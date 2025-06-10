@@ -62,8 +62,8 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1993"
-            endingLineNumber = "1993"
+            startingLineNumber = "2011"
+            endingLineNumber = "2011"
             landmarkName = "RefreshResponse"
             landmarkType = "14">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1994"
-            endingLineNumber = "1994"
+            startingLineNumber = "2012"
+            endingLineNumber = "2012"
             landmarkName = "RefreshResponse"
             landmarkType = "14">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "Calendar/Sources/CalendarViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3218"
-            endingLineNumber = "3218"
+            startingLineNumber = "3236"
+            endingLineNumber = "3236"
             landmarkName = "uploadLocalChangesToMicrosoft(msCalId:user:accessToken:localCalendar:)"
             landmarkType = "7">
          </BreakpointContent>

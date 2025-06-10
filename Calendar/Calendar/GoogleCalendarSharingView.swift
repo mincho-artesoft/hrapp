@@ -1,5 +1,5 @@
 import SwiftUI
-import Contacts
+@preconcurrency import Contacts
 
 struct GoogleCalendarSharingView: View {
     @ObservedObject var viewModel: CalendarViewModel = .shared

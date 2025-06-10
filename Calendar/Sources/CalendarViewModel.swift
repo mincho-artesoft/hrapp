@@ -1,7 +1,7 @@
 import SwiftUI
 import EventKit
 import Combine
-import GoogleSignIn
+@preconcurrency import GoogleSignIn   // silences Sendable enforcement for SDK types
 import MSAL
 import Contacts
 
@@ -138,43 +138,47 @@ final class CalendarViewModel: ObservableObject {
 
     func signInWithGoogle() {
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
-        
-        guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-              let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
+
+        guard
+            let windowScene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+            let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController
         else { return }
-        
-        // ТУК добавяме "https://www.googleapis.com/auth/contacts.readonly"
-        // Ако винаги ви трябва календар:
+
         let extraScopes = [
-            "https://www.googleapis.com/auth/calendar",           // read-write
+            "https://www.googleapis.com/auth/calendar",
             "https://www.googleapis.com/auth/contacts.readonly",
             "https://www.googleapis.com/auth/contacts.other.readonly"
         ]
 
-        
-        GIDSignIn.sharedInstance.signIn(withPresenting: rootVC, hint: nil, additionalScopes: extraScopes) { signInResult, error in
+        GIDSignIn.sharedInstance.signIn(
+            withPresenting: rootVC,
+            hint: nil,
+            additionalScopes: extraScopes
+        ) { [weak self] signInResult, error in
+            guard let self else { return }
+
+            // Early exit / logging are cheap – do them right here
             if let error = error {
-                print("Google Sign In error:", error.localizedDescription)
+                print("Google Sign-In error:", error.localizedDescription)
                 return
             }
-            
-            if let user = signInResult?.user {
-                print("Signed in user:", user.profile?.email ?? "(no email)")
-                self.storeGoogleUserInUserDefaults(user)
-                
-                // Ако сте решили да стартирате синхронизация или да теглите контакти веднага:
-                Task {
-                    // Пример: сваляме контактите
-                    if let newStoredUser = self.storedUsers.last {
-                        await self.performGoogleCalendarSync(for: newStoredUser)
-                        // И тук викаме fetchGoogleContactsAndSaveLocally:
-                        await self.fetchGoogleContactsAndSaveLocally(for: newStoredUser)
-                        await self.fetchGoogleOtherContactsAndSaveLocally(for: newStoredUser)
-                    }
+            guard let gUser = signInResult?.user else { return }
+
+            // Mutate main-actor state *before* the Task
+            Task { @MainActor in
+                self.storeGoogleUserInUserDefaults(gUser)
+
+                if let newStoredUser = self.storedUsers.last {
+                    await self.performGoogleCalendarSync(for: newStoredUser)
+                    await self.fetchGoogleContactsAndSaveLocally(for: newStoredUser)
+                    await self.fetchGoogleOtherContactsAndSaveLocally(for: newStoredUser)
                 }
             }
         }
+
     }
+
     
     func loadAndStoreCurrentEvents() {
         // Пример: взимаме всички локални календари, или разрешените от потребителя
@@ -530,6 +534,29 @@ final class CalendarViewModel: ObservableObject {
             return granted
         }
     }
+    /// Returns `true` when calendar permission is granted.
+    /// Suspends the caller instead of blocking a thread.
+    @MainActor              // we want to be called from UI code
+    private func requestCalendarAccess() async -> Bool {
+        if #available(iOS 17.0, *) {
+            // New, async API – just await it
+            do {
+                return try await eventStore.requestFullAccessToEvents()
+            } catch {
+                print("Calendar access error:", error)
+                return false
+            }
+        } else {
+            // Bridge the old completion-handler API to async/await
+            return await withCheckedContinuation { cont in
+                eventStore.requestAccess(to: .event) { granted, error in
+                    if let error { print("Calendar access error:", error) }
+                    cont.resume(returning: granted)
+                }
+            }
+        }
+    }
+
 
     // MARK: - Load Calendars
     func reloadCalendars() {
@@ -1616,11 +1643,6 @@ extension CalendarViewModel {
         return formatter.string(from: date)
     }
     private func removeVideoCallBlock(from notes: String) -> String {
-        // 1) Пишем RegEx шаблон:
-        //    - "----\( Video Call \)----" (буквално)
-        //    - [\s\S]*? (всички символи, жадно, докато не срещне...)
-        //    - "---===---"
-        //    Разликата между [\s\S] и . (dot) e, че [\s\S] мачва и нови редове.
         let pattern = #"----\( Video Call \)----[\s\S]*?---===---"#
 
         do {
@@ -1888,43 +1910,39 @@ extension CalendarViewModel {
         GIDSignIn.sharedInstance.signOut()
         
         // След това извикваме disconnect, за да изтрием refresh token‑а от keychain‑а
-        GIDSignIn.sharedInstance.disconnect { error in
-            print("test")
-            if let error = error {
-                print("Error disconnecting user: \(error.localizedDescription)")
-            } else {
-                print("User successfully disconnected from Google.")
+        GIDSignIn.sharedInstance.disconnect { [weak self] error in
+            Task { @MainActor in       //  ← hop to main actor
+                guard let self else { return }
+
+                if let error { print("Disconnect error:", error) }
+
+                // 1) remove calendars
+                self.removeLocalGoogleCalendars(forUserID: user.uniqueID)
+
+                // 2) update model
+                self.storedUsers.removeAll { $0.uniqueID == user.uniqueID }
+
+                // 3) purge UserDefaults
+                let prefix = user.uniqueID.uuidString
+                let ud = UserDefaults.standard
+                ud.removeObject(forKey: "GoogleToLocalEventMap_\(prefix)")
+                ud.removeObject(forKey: "GoogleEventUpdatedMap_\(prefix)")
+                ud.removeObject(forKey: "LastSyncDateKey_\(prefix)")
+
+                // 4) clear in-memory maps
+                self.googleToLocalEventMapAll.removeValue(forKey: prefix)
+                self.googleEventUpdatedMapAll.removeValue(forKey: prefix)
+                self.lastSyncDateAll.removeValue(forKey: prefix)
+
+                // 5) stop timer if last user
+                if self.storedUsers.isEmpty { self.stopGoogleCalendarSync() }
+
+                // 6) persist & refresh UI state
+                self.saveAllUsersToUserDefaults()
+                self.reloadCalendars()
             }
-            
-            // Тук продължаваме с премахването на акаунта от нашата логика (UserDefaults, локални календари и т.н.)
-            
-            // 1) Махаме локалните календари, който са копия на Google календарите за този user
-            self.removeLocalGoogleCalendars(forUserID: user.uniqueID)
-            
-            // 2) Премахваме потребителя от масива storedUsers
-            self.storedUsers.removeAll(where: { $0.uniqueID == user.uniqueID })
-            
-            print("storedUsers", self.storedUsers)
-            
-            
-            // 3) Изтриваме user-специфичните речници от UserDefaults
-            UserDefaults.standard.removeObject(forKey: "GoogleToLocalEventMap_\(user.uniqueID.uuidString)")
-            UserDefaults.standard.removeObject(forKey: "GoogleEventUpdatedMap_\(user.uniqueID.uuidString)")
-            UserDefaults.standard.removeObject(forKey: "LastSyncDateKey_\(user.uniqueID.uuidString)")
-            
-            // 4) Премахваме и от речниците в паметта
-            self.googleToLocalEventMapAll.removeValue(forKey: user.uniqueID.uuidString)
-            self.googleEventUpdatedMapAll.removeValue(forKey: user.uniqueID.uuidString)
-            self.lastSyncDateAll.removeValue(forKey: user.uniqueID.uuidString)
-            
-            // 5) Ако вече нямаме други потребители, спираме таймера за синхронизация
-            if self.storedUsers.isEmpty {
-                self.stopGoogleCalendarSync()
-            }
-            self.saveAllUsersToUserDefaults()
-            // 6) Презареждаме локалните календари
-            self.reloadCalendars()
         }
+
     }
     
     
@@ -4624,37 +4642,19 @@ extension CalendarViewModel {
     }
     
     private func syncRequestAccessToCalendar() -> Bool {
-        let semaphore = DispatchSemaphore(value: 0)
-        var accessGranted = false
+        var granted = false
+        let sema = DispatchSemaphore(value: 0)
 
-        if #available(iOS 17.0, *) {
-            // Новият метод за пълно право на Events
-            eventStore.requestFullAccessToEvents { granted, error in
-                if granted {
-                    print("Calendar full access => granted.")
-                } else {
-                    print("Calendar full access => NOT granted or error:", error?.localizedDescription ?? "nil")
-                }
-                accessGranted = granted
-                semaphore.signal()
-            }
-        } else {
-            // Остава старият за по-стари версии
-            eventStore.requestAccess(to: .event) { granted, error in
-                if granted {
-                    print("Calendar access => granted.")
-                } else {
-                    print("Calendar access => NOT granted or error:", error?.localizedDescription ?? "nil")
-                }
-                accessGranted = granted
-                semaphore.signal()
-            }
+        Task {                                   // runs on main actor because
+            granted = await self.requestCalendarAccess()   // ✨ explicit self
+            sema.signal()
         }
 
-        // Блокираме, докато потребителят не отговори
-        semaphore.wait()
-        return accessGranted
+        sema.wait()
+        return granted
     }
+
+
 
 }
 

@@ -1,4 +1,4 @@
-import SwiftUICore
+import SwiftUI
 
 struct TriangleArrow: Shape {
     func path(in rect: CGRect) -> Path {

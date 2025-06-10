@@ -4,6 +4,7 @@ import MapKit
 @preconcurrency import WeatherKit
 
 // MARK: - LOCATION MANAGER
+@MainActor                // <── add this
 class LocationManager: NSObject, ObservableObject {
     let manager = CLLocationManager()
     private let geocoder = CLGeocoder()
@@ -45,33 +46,40 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
     /// Ключовото място, където получаваме GPS координати.
     /// Тук правим reverse geocoding, вземаме timeZone (ако е налична) и тогава fetch-ваме времето.
     @MainActor
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            currentLocation = location
-            
-            geocoder.reverseGeocodeLocation(location) { placemarks, error in
-                if let err = error {
-                    print("Reverse geocoding error: \(err.localizedDescription)")
-                    return
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+
+        guard let location = locations.last else { return }
+        currentLocation = location          // ← already on MainActor here
+
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            guard let self else { return }
+
+            if let error {        // background queue
+                print("Reverse geocoding error:", error.localizedDescription)
+                return
+            }
+            guard let first = placemarks?.first else { return }
+
+            // ⚠️ NOT on the MainActor right now!
+
+            Task { @MainActor [weak self] in      // ← jump back
+                guard let self else { return }
+
+                self.currentCityName = first.locality ?? first.administrativeArea
+
+                if let tz = first.timeZone {
+                    WeatherKitViewModel.shared.setTimeZone(tz)
                 }
-                if let first = placemarks?.first {
-                    // Пример: град/област
-                    self.currentCityName = first.locality ?? first.administrativeArea
-                    
-                    // Ако placemark има timeZone
-                    if let tz = first.timeZone {
-                        WeatherKitViewModel.shared.setTimeZone(tz)
-                    }
-                    
-                    // Викаме fetchWeather всеки път щом има нова локация
-                    WeatherKitViewModel.shared.fetchWeatherForCoords(
-                        latitude: location.coordinate.latitude,
-                        longitude: location.coordinate.longitude
-                    )
-                }
+
+                WeatherKitViewModel.shared.fetchWeatherForCoords(
+                    latitude: location.coordinate.latitude,
+                    longitude: location.coordinate.longitude
+                )
             }
         }
     }
+
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location error: \(error)")

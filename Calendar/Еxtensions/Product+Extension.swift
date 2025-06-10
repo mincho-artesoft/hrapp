@@ -2,7 +2,7 @@
 
 import Foundation
 import StoreKit
-import SwiftUICore
+import SwiftUI
 
 extension Product.SubscriptionPeriod.Unit {
     /// Връща локализирана "noun" версия на единицата (day/week/month/year)

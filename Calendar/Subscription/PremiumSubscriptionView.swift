@@ -1,4 +1,4 @@
-import SwiftUICore
+import SwiftUI
 
 // MARK: - Premium Subscription View
 struct PremiumSubscriptionView: View {

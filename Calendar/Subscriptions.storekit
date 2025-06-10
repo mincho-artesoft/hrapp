@@ -18,117 +18,57 @@
   ],
   "settings" : {
     "_applicationInternalID" : "6744690319",
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
     "_developerTeamID" : "8293TNMX6S",
+    "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 768839254.67382705,
+    "_lastSynchronizedDate" : 771246864.178967,
     "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
     "_storeKitErrors" : [
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Load Products"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Purchase"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Verification"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "App Store Sync"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Subscription Status"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "App Transaction"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Manage Subscriptions Sheet"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Refund Request Sheet"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Offer Code Redeem Sheet"
       }
-    ]
+    ],
+    "_timeRate" : 0
   },
   "subscriptionGroups" : [
-    {
-      "id" : "21677744",
-      "localizations" : [
-
-      ],
-      "name" : "ARTE.Calendar.Premium.Subscription",
-      "subscriptions" : [
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "4.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "6745217579",
-          "introductoryOffer" : null,
-          "localizations" : [
-
-          ],
-          "productID" : "ARTE.Calendar.subscription.Premium.monthly",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Premium Monthly3",
-          "subscriptionGroupID" : "21677744",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "99.99",
-          "familyShareable" : false,
-          "groupNumber" : 2,
-          "internalID" : "6745217529",
-          "introductoryOffer" : null,
-          "localizations" : [
-
-          ],
-          "productID" : "ARTE.Calendar.subscription.Premium.yearly",
-          "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "Premium Yearly3",
-          "subscriptionGroupID" : "21677744",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        }
-      ]
-    },
     {
       "id" : "21685591",
       "localizations" : [
@@ -148,39 +88,39 @@
           "groupNumber" : 4,
           "internalID" : "6745820650",
           "introductoryOffer" : {
-            "internalID" : "7F7B114B",
+            "internalID" : "0619F509",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P2W"
           },
           "localizations" : [
             {
-              "description" : "Google Календарь и Meet, мес.",
-              "displayName" : "Продвинутый мес.",
-              "locale" : "ru"
-            },
-            {
-              "description" : "Google Cal & Meet, billed monthly",
-              "displayName" : "Advanced Monthly",
-              "locale" : "en_US"
-            },
-            {
-              "description" : "Google Cal & Meet, monatlich",
+              "description" : "Google Kalender & Meet, monatlich",
               "displayName" : "Erweitert Monat",
               "locale" : "de"
             },
             {
-              "description" : "Google Cal & Meet, abo. mensuel",
+              "description" : "Календарь и Meet Google, мес.",
+              "displayName" : "Продвинутый мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Google Calendar & Meet, billed monthly",
+              "displayName" : "Advanced Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Calendrier & Meet Google, abo. mensuel",
               "displayName" : "Avancé Mensuel",
               "locale" : "fr"
             },
             {
-              "description" : "Google Cal y Meet, mensual",
+              "description" : "Calendario y Meet Google, mensual",
               "displayName" : "Avanzado Mensual",
               "locale" : "es_ES"
             },
             {
-              "description" : "Google Cal e Meet, mensile",
+              "description" : "Calendario e Meet Google, mensile",
               "displayName" : "Avanzato Mensile",
               "locale" : "it"
             }
@@ -208,34 +148,34 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Microsoft features, monthly billing",
-              "displayName" : "Premium Monthly",
-              "locale" : "en_US"
-            },
-            {
-              "description" : "Microsoft, fatturazione mensile",
+              "description" : "Calendario e Teams MS",
               "displayName" : "Premium Mensile",
               "locale" : "it"
             },
             {
-              "description" : "Microsoft, facturación mensual",
-              "displayName" : "Premium Mensual",
-              "locale" : "es_ES"
-            },
-            {
-              "description" : "Microsoft функции, ежемес.",
+              "description" : "Календарь и Teams MS",
               "displayName" : "Премиум мес.",
               "locale" : "ru"
             },
             {
-              "description" : "Microsoft, facturation mensuelle",
+              "description" : "MS Calendar & Teams sync",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "MS Kalender & Teams Sync",
+              "displayName" : "Premium Monat",
+              "locale" : "de"
+            },
+            {
+              "description" : "Calendrier & Teams MS",
               "displayName" : "Premium Mensuel",
               "locale" : "fr"
             },
             {
-              "description" : "Microsoft-Features, monatlich",
-              "displayName" : "Premium Monat",
-              "locale" : "de"
+              "description" : "Calendario y Teams MS",
+              "displayName" : "Premium Mensual",
+              "locale" : "es_ES"
             }
           ],
           "productID" : "Cloud.Calendars.Premium.Monthly",
@@ -261,34 +201,34 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Microsoft-Features, jährlich",
-              "displayName" : "Premium Jahr",
-              "locale" : "de"
-            },
-            {
-              "description" : "Microsoft, facturation annuelle",
-              "displayName" : "Premium Annuel",
-              "locale" : "fr"
-            },
-            {
-              "description" : "Microsoft, fatturazione annuale",
-              "displayName" : "Premium Annuale",
-              "locale" : "it"
-            },
-            {
-              "description" : "Microsoft features, yearly billing",
+              "description" : "MS Calendar & Teams sync",
               "displayName" : "Premium Yearly",
               "locale" : "en_US"
             },
             {
-              "description" : "Microsoft, facturación anual",
+              "description" : "Календарь и Teams MS",
+              "displayName" : "Премиум год.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Calendario e Teams MS ",
+              "displayName" : "Premium Annuale",
+              "locale" : "it"
+            },
+            {
+              "description" : "Calendrier & Teams MS",
+              "displayName" : "Premium Annuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Calendario y Teams MS",
               "displayName" : "Premium Anual",
               "locale" : "es_ES"
             },
             {
-              "description" : "Microsoft функции, ежегодно",
-              "displayName" : "Премиум год.",
-              "locale" : "ru"
+              "description" : "MS Kalender & Teams Sync",
+              "displayName" : "Premium Jahr",
+              "locale" : "de"
             }
           ],
           "productID" : "Cloud.Calendars.Premium.Yearly",
@@ -314,34 +254,34 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Google Cal e Meet, annuale",
-              "displayName" : "Avanzato Annuale",
-              "locale" : "it"
-            },
-            {
-              "description" : "Google Cal & Meet, jährlich",
-              "displayName" : "Erweitert Jahr",
-              "locale" : "de"
-            },
-            {
-              "description" : "Google Календарь и Meet, год.",
+              "description" : "Календарь и Meet Google",
               "displayName" : "Продвинутый год.",
               "locale" : "ru"
             },
             {
-              "description" : "Google Cal & Meet, billed yearly",
+              "description" : "Google Calendar & Meet sync",
               "displayName" : "Advanced Yearly",
               "locale" : "en_US"
             },
             {
-              "description" : "Google Cal y Meet, anual",
-              "displayName" : "Avanzado Anual",
-              "locale" : "es_ES"
-            },
-            {
-              "description" : "Google Cal & Meet, abo. annuel",
+              "description" : "Calendrier & Meet Google",
               "displayName" : "Avancé Annuel",
               "locale" : "fr"
+            },
+            {
+              "description" : "Google Kalender & Meet Sync",
+              "displayName" : "Erweitert Jahr",
+              "locale" : "de"
+            },
+            {
+              "description" : "Calendario e Meet Google",
+              "displayName" : "Avanzato Annuale",
+              "locale" : "it"
+            },
+            {
+              "description" : "Calendario y Meet Google",
+              "displayName" : "Avanzado Anual",
+              "locale" : "es_ES"
             }
           ],
           "productID" : "Cloud.Calendars.Advanced.Yearly",

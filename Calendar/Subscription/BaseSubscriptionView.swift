@@ -1,5 +1,5 @@
 
-import SwiftUICore
+import SwiftUI
 
 struct BaseSubscriptionView: View {
     var body: some View {

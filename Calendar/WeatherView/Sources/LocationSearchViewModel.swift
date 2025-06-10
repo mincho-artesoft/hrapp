@@ -1,14 +1,3 @@
-//
-//  LocationSearchViewModel.swift
-//  Weather-Calendar
-//
-//  Вариант: показвай само онези населени места (градове/села),
-//  чието име започва с въведения от потребителя текст, без значение
-//  от iOS версията.  Apple-ският `addressFilter(.locality)` остава,
-//  но допълнително филтрираме собственоръчно, за да избегнем
-//  странични предложения (“Kovachevtsi” при търсене на “Pernik” и т.н.).
-//
-
 import Combine
 import MapKit
 import CoreLocation
@@ -110,56 +99,58 @@ class LocationSearchViewModel: NSObject,
         MKLocalSearch(request: request).start { [weak self] response, error in
             guard let self = self else { return }
 
-            // Грешка
-            if let error = error {
-                self.searchError       = error
-                self.selectedPlacemark = nil
-                return
-            }
+            // Spawn a new async context that is explicitly on the main actor
+            Task { @MainActor [weak self] in
+                guard let self = self else { return }
 
-            // Нищо не намерихме
-            guard let mapItem = response?.mapItems.first else {
-                self.searchError = NSError(domain: "LocationSearch",
-                                           code: 1,
-                                           userInfo: [NSLocalizedDescriptionKey:
-                                                      "No details found for selection."])
-                return
-            }
+                if let error {            // -- error handling
+                    self.searchError = error
+                    self.selectedPlacemark = nil
+                    return
+                }
 
-            //---------------------------------------------------------
-            // Записваме placemark и подаваме координатите на WeatherKit
-            //---------------------------------------------------------
-            self.selectedPlacemark = mapItem.placemark
-            let coord = mapItem.placemark.coordinate
+                guard let mapItem = response?.mapItems.first else {
+                    self.searchError = NSError(
+                        domain: "LocationSearch",
+                        code: 1,
+                        userInfo: [NSLocalizedDescriptionKey:
+                                   "No details found for selection."])
+                    return
+                }
 
-            if let tz = mapItem.placemark.timeZone {
-                // най-точно – timeZone директно от MKPlacemark
-                self.weatherKitViewModel.setTimeZone(tz)
-                self.weatherKitViewModel.fetchWeatherForCoords(
-                    latitude: coord.latitude,
-                    longitude: coord.longitude
-                )
-            } else {
-                // резервен reverse-geocode, ако tz липсва
-                let clLocation = CLLocation(latitude: coord.latitude,
-                                            longitude: coord.longitude)
-                CLGeocoder().reverseGeocodeLocation(clLocation) { [weak self] placemarks, _ in
-                    guard let self = self else { return }
+                self.selectedPlacemark = mapItem.placemark
+                let coord             = mapItem.placemark.coordinate
 
-                    if let tz = placemarks?.first?.timeZone {
-                        self.weatherKitViewModel.setTimeZone(tz)
-                    }
+                if let tz = mapItem.placemark.timeZone {
+                    self.weatherKitViewModel.setTimeZone(tz)
                     self.weatherKitViewModel.fetchWeatherForCoords(
                         latitude: coord.latitude,
-                        longitude: coord.longitude
-                    )
-                }
-            }
+                        longitude: coord.longitude)
+                } else {
+                    let clLocation = CLLocation(latitude: coord.latitude,
+                                                longitude: coord.longitude)
 
-            // рестартираме UI състоянието
-            self.queryFragment  = ""
-            self.searchResults  = []
-            self.searchError    = nil
+                    CLGeocoder().reverseGeocodeLocation(clLocation) { [weak self] placemarks, _ in
+                        // again hop to MainActor inside THIS completion
+                        Task { @MainActor [weak self] in
+                            guard let self = self else { return }
+
+                            if let tz = placemarks?.first?.timeZone {
+                                self.weatherKitViewModel.setTimeZone(tz)
+                            }
+                            self.weatherKitViewModel.fetchWeatherForCoords(
+                                latitude: coord.latitude,
+                                longitude: coord.longitude)
+                        }
+                    }
+                }
+
+                // reset UI state
+                self.queryFragment = ""
+                self.searchResults = []
+                self.searchError   = nil
+            }
         }
+
     }
 }
