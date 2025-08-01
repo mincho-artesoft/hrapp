@@ -449,7 +449,10 @@ struct WeatherKitView: View {
             if showSearchBar && isEditing && !locationSearchVM.searchResults.isEmpty {
                 List(locationSearchVM.searchResults, id: \.self) { completion in
                     Button {
-                        locationSearchVM.selectCompletion(completion)
+                        // ✅ FIX: Wrap the async call in a Task
+                        Task {
+                            await locationSearchVM.selectCompletion(completion)
+                        }
                     } label: {
                         VStack(alignment: .leading) {
                             Text(completion.title)
