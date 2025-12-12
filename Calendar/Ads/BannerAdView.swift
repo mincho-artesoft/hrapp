@@ -1,5 +1,3 @@
-// test "ca-app-pub-3940256099942544/2934735716"
-//ca-app-pub-3759868960530173/2434919582
 import SwiftUI
 import GoogleMobileAds
 
@@ -8,7 +6,7 @@ struct BannerAdView: UIViewRepresentable {
     @Binding var adsBool: Bool
     
     /// Your ad-unit ID
-    private let adUnitID = "ca-app-pub-3759868960530173/2434919582"
+    private let adUnitID = "ca-app-pub-2322123786875027/1752770566"
 
     // MARK: - UIViewRepresentable
     func makeUIView(context: Context) -> BannerView {
