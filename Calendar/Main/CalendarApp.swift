@@ -22,16 +22,27 @@ struct CalendarApp: App {
     // Вашият LocationManager (за да вземаме текущата локация на устройството)
     @StateObject private var locationManager = LocationManager()
     
+    // MARK: - Логика за рекламите по дата
+    // Връща true, ако днешната дата е >= 1 април 2026 г.
+    private var areAdsEnabledByDate: Bool {
+        let calendar = Calendar.current
+        let targetDateComponents = DateComponents(year: 2026, month: 4, day: 1)
+        guard let targetDate = calendar.date(from: targetDateComponents) else { return true }
+        return Date() >= targetDate
+    }
+    
     var body: some Scene {
         WindowGroup {
             RootView()
             // Когато се появи RootView, опитваме да вземем текуща локация:
                 .onAppear {
                     
-                    if  SubscriptionManager.shared.subscriptionStatus == .base {
+                    // Проверяваме и статуса на абонамента, И датата
+                    if SubscriptionManager.shared.subscriptionStatus == .base && areAdsEnabledByDate {
                         MobileAds.shared.start(completionHandler: nil)
                         Task { await AppOpenAdManager.shared.loadAd() }
                     }
+                    
                     // Принтираме при първо показване на RootView:
                     print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
                     
@@ -60,7 +71,8 @@ struct CalendarApp: App {
             case .active:
                 print("App is active. Starting sync timers.")
                 
-                if  SubscriptionManager.shared.subscriptionStatus == .base {
+                // Проверяваме и статуса на абонамента, И датата
+                if SubscriptionManager.shared.subscriptionStatus == .base && areAdsEnabledByDate {
                     let delay: UInt64 = isFirstForegroundAppearance ? 10 : 2
                     isFirstForegroundAppearance = false
                     
@@ -139,7 +151,8 @@ struct CalendarApp: App {
             case .background:
                 print("App in background. Stop sync timers.")
                 
-                if  SubscriptionManager.shared.subscriptionStatus == .base {
+                // Проверяваме и статуса на абонамента, И датата
+                if SubscriptionManager.shared.subscriptionStatus == .base && areAdsEnabledByDate {
                     Task { await AppOpenAdManager.shared.loadAd() }
                 }
                 
@@ -156,7 +169,6 @@ struct CalendarApp: App {
     }
     
     /// Функция, която връща типа време, за да съответства на вашите налични икони.
-    /// Списъкът долу покрива всички "cloud-bolt-rain", "cloud-fog", "cloud-heavyrain" и т.н.
     func getCurrentWeatherType() -> String {
         // WeatherKit символ, напр: "cloud.heavyrain.fill", "cloud.bolt.fill", "sun.max.fill"...
         let symbol = weatherVM.currentSymbol

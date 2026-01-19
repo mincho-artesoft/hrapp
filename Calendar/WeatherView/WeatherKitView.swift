@@ -37,6 +37,14 @@ struct WeatherKitView: View {
     @State private var showVisibilityDetail = false
     @State private var showPressureDetail = false
 
+    // MARK: - Логика за рекламите по дата
+    // Връща true, ако днешната дата е >= 1 април 2026 г.
+    private var areAdsEnabledByDate: Bool {
+        let calendar = Calendar.current
+        let targetDateComponents = DateComponents(year: 2026, month: 4, day: 1)
+        guard let targetDate = calendar.date(from: targetDateComponents) else { return true }
+        return Date() >= targetDate
+    }
     
     init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
         self.selectedTab = selectedTab
@@ -59,13 +67,13 @@ struct WeatherKitView: View {
                     hourlyForecastCard
                         .padding(.horizontal, 16)
                     
-                    if  SubscriptionManager.shared.subscriptionStatus == .base {
-                        if shouldShowAds{
+                    // Условие за показване на реклами: Base план И датата е след 1.04.2026
+                    if SubscriptionManager.shared.subscriptionStatus == .base && areAdsEnabledByDate {
+                        if shouldShowAds {
                             BannerAdView(adsBool: $shouldShowAds)
                                 .frame(maxWidth: .infinity)
                                 .frame(minHeight: 50, maxHeight: 120)
                                 .padding(.horizontal, 16)
-                            
                         }
                     }
                    
