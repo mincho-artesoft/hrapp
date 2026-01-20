@@ -50,6 +50,33 @@ struct RootView: View {
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
     
+    // --- НОВО: Променливи за App Promo ---
+    @State private var showAppPromo = false
+    @State private var currentPromoData: AppPromoData? = nil
+    
+    // Следим състоянието на сцената (active, background, inactive)
+    @Environment(\.scenePhase) private var scenePhase
+    
+    // Списък с приложенията за реклама
+    private let promotionalApps: [AppPromoData] = [
+        AppPromoData(
+            appName: "Wise Eating & Fitness Planner",
+            description: "Wise Eating is your AI-powered coach for smarter nutrition and training. It combines modern nutrition science with practical tools to help you plan meals, design workouts, manage your pantry, and understand how food and movement affect your body.",
+            iconName: "WiseEatingIcon", // Уверете се, че тази картинка е в Assets
+            systemImageFallback: "carrot.fill",
+            appStoreURL: "https://apps.apple.com/us/app/wise-eating-fitness-planner/id6751406823", // Сменете с реалния ID
+            accentColor: .green
+        ),
+        AppPromoData(
+            appName: "StoreFront Studio",
+            description: "StoreFront Studio is the elite 3D design environment for iOS and macOS developers. It combines high-fidelity RealityKit rendering with a powerful Rich Text editor to help you transform raw screenshots into professional, high-converting App Store assets.",
+            iconName: "StoreFrontIcon", // Уверете се, че тази картинка е в Assets
+            systemImageFallback: "heart.text.square.fill",
+            appStoreURL: "https://apps.apple.com/us/app/storefront-studio/id6757389314", // Сменете с реалния ID
+            accentColor: .blue
+        )
+    ]
+    
     init() {
         // Ако няма нищо записано, по подразбиране ще е 1
         let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
@@ -223,7 +250,7 @@ struct RootView: View {
                                         bottomBarButton(title: "Add", image: "calendar.badge.plus", action: {
                                             createAndEditNewEvent(on: Date()) // Or use a relevant date
                                             menuState = .collapsed
-                                            ReviewManager.eventCreated()     
+                                            ReviewManager.eventCreated()
                                         })
                                         Spacer()
                                         bottomBarButton(title: "Weather", image: "cloud.sun.fill", action: {
@@ -287,6 +314,12 @@ struct RootView: View {
             .toolbarBackground(Color.white.opacity(0.1), for: .bottomBar) // Example for bottom bar
             .toolbarBackground(.visible, for: .bottomBar)
             .toolbarColorScheme(.light, for: .bottomBar) // Or .dark as per your theme
+            
+            // --- НОВО: Универсален промоционален диалогов прозорец ---
+            if showAppPromo, let data = currentPromoData {
+                AppPromoView(isPresented: $showAppPromo, data: data)
+                    .zIndex(100) // Гарантира, че е най-отгоре
+            }
         }
         .onReceive(NotificationCenter.default.publisher(
             for: .notificationDraggableMenuViewSub)) { notification in
@@ -310,6 +343,16 @@ struct RootView: View {
                         default: break
                     }
                 }
+            }
+            
+            // Пускаме логиката за промоция при първоначално стартиране
+            schedulePromoPresentation()
+        }
+        // --- НОВО: Следим scenePhase, за да пуснем промоцията при връщане от Background ---
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                print("App returned to active state. Scheduling promo...")
+                schedulePromoPresentation()
             }
         }
         .sheet(item: $eventToEdit) { theEvent in
@@ -376,7 +419,41 @@ struct RootView: View {
         .frame(maxWidth: .infinity)
     }
     
-    // ... (Keep your existing loadSingleDayEvents, loadMultiDayEvents, etc. methods and extensions) ...
+    // --- НОВО: Изнесена логика за показване на AppPromo ---
+    private func schedulePromoPresentation() {
+        // Използваме DispatchQueue за забавяне от 10 секунди
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            // 1. Проверяваме дали вече не е показано (за да не се натрупат)
+            guard !showAppPromo else { return }
+            
+            // 2. Не показваме реклама, ако потребителят създава/редактира събитие в момента
+            if eventToEdit == nil {
+                // Ключ за запазване на индекса в UserDefaults
+                let indexKey = "nextPromoAppIndex"
+                var nextIndex = UserDefaults.standard.integer(forKey: indexKey)
+                
+                // Проверка дали имаме приложения в списъка
+                guard !promotionalApps.isEmpty else { return }
+                
+                // Ако индексът е извън граници, нулираме го
+                if nextIndex >= promotionalApps.count {
+                    nextIndex = 0
+                }
+                
+                // Задаваме данните за текущото приложение
+                currentPromoData = promotionalApps[nextIndex]
+                
+                // Показваме прозореца
+                withAnimation(.spring()) {
+                    showAppPromo = true
+                }
+                
+                // Изчисляваме следващия индекс (кръгов цикъл) и го запазваме
+                let indexToSave = (nextIndex + 1) % promotionalApps.count
+                UserDefaults.standard.set(indexToSave, forKey: indexKey)
+            }
+        }
+    }
 }
 
 
