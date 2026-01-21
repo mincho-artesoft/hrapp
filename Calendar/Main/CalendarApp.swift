@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 import AltIcon
-import UIKit   // UINavigationBarAppearance, UIToolbarAppearance
+import UIKit
 import CoreLocation
 import GoogleMobileAds
 @preconcurrency import WeatherKit
@@ -15,15 +15,15 @@ struct CalendarApp: App {
     @Environment(\.scenePhase) private var scenePhase
     
     @State private var isFirstForegroundAppearance = true
+    @State private var hasCheckedIconThisSession = false // Флаг за иконите
 
-    // Това е вашият WeatherKit ViewModel:
+    // Това е вашият WeatherKit ViewModel
     @StateObject private var weatherVM = WeatherKitViewModel.shared
     
-    // Вашият LocationManager (за да вземаме текущата локация на устройството)
+    // ВАЖНО: LocationManager тук се използва само за стартиране на сървисите,
+    // но НЕ трябва да обновява времето директно от този файл.
     @StateObject private var locationManager = LocationManager()
     
-    // MARK: - Логика за рекламите по дата
-    // Връща true, ако днешната дата е >= 1 април 2026 г.
     private var areAdsEnabledByDate: Bool {
         let calendar = Calendar.current
         let targetDateComponents = DateComponents(year: 2026, month: 4, day: 1)
@@ -34,44 +34,32 @@ struct CalendarApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-            // Когато се появи RootView, опитваме да вземем текуща локация:
                 .onAppear {
-                    
-                    // Проверяваме и статуса на абонамента, И датата
+                    // Логика за реклами
                     if SubscriptionManager.shared.subscriptionStatus == .base && areAdsEnabledByDate {
                         MobileAds.shared.start(completionHandler: nil)
                         Task { await AppOpenAdManager.shared.loadAd() }
                     }
-                    
-                    // Принтираме при първо показване на RootView:
                     print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
                     
-                    // Пример: ако искаш да вземеш и enum-а от SubscriptionManager:
-                    let statusEnum = SubscriptionManager.shared.subscriptionStatus.rawValue
-                    print("📦 SubscriptionManager status: \(statusEnum)")
-                    
-                    // Съществуващата ти логика:
-                    if let loc = locationManager.currentLocation {
-                        weatherVM.fetchWeatherForCoords(
-                            latitude: loc.coordinate.latitude,
-                            longitude: loc.coordinate.longitude
-                        )
-                    }
+                    /*
+                     ВАЖНО: Премахнахме първоначалното извикване на weatherVM.fetchWeatherForCoords тук.
+                     WeatherKitView.swift и RootView.swift имат собствена логика (.onAppear/.onReceive),
+                     която ще зареди времето, когато потребителят отвори екрана.
+                     Това предотвратява конфликтите.
+                    */
                 }
-                .onChange(of: locationManager.currentLocation) { _, newLoc in
-                    guard let newLoc = newLoc else { return }
-                    weatherVM.fetchWeatherForCoords(
-                        latitude: newLoc.coordinate.latitude,
-                        longitude: newLoc.coordinate.longitude
-                    )
-                }
+                /*
+                 ВАЖНО: ИЗТРИХМЕ .onChange(of: locationManager.currentLocation).
+                 Това беше причината за бъга! Този блок насилствено презаписваше данните
+                 с GPS локацията, независимо какво е търсил потребителят.
+                */
         }
         .onChange(of: scenePhase) { _ /* oldPhase */, newPhase in
             switch newPhase {
             case .active:
-                print("App is active. Starting sync timers.")
+                print("App is active.")
                 
-                // Проверяваме и статуса на абонамента, И датата
                 if SubscriptionManager.shared.subscriptionStatus == .base && areAdsEnabledByDate {
                     let delay: UInt64 = isFirstForegroundAppearance ? 10 : 2
                     isFirstForegroundAppearance = false
@@ -88,74 +76,14 @@ struct CalendarApp: App {
                 CalendarViewModel.shared.startGoogleCalendarSync()
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
                 
-                let locale = Locale.current
-                let calendar = Calendar.current
-                
-                // 1. Регион
-                if let regionCode = locale.region?.identifier{
-                    GlobalState.region = regionCode
-                }
-                
-                // 2. Календар
-                let calID = String(describing: calendar.identifier)
-                GlobalState.calendar = calID
-                
-                // 3. Температурна единица
-                let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
-                let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
-                let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
-                GlobalState.temperatureUnit = unit.symbol
-                
-                // 4. Мерна система
-                
-                GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
-                
-                // 5. Първи ден от седмицата
-                GlobalState.firstWeekday = calendar.firstWeekday
-                
-                // 6. Формат на дата
-                let df = DateFormatter()
-                df.locale = locale
-                df.dateStyle = .short
-                GlobalState.dateFormat = df.dateFormat ?? ""
-                
-                // 7. Формат на числа
-                let nf = NumberFormatter()
-                nf.locale = locale
-                nf.numberStyle = .decimal
-                let num = 1234567.89 as NSNumber
-                GlobalState.numberFormat = nf.string(from: num) ?? ""
-                
-                // ——— Твой код за иконите ———
-                let date = Date()
-                let day = calendar.component(.day, from: date)
-                let month = calendar.component(.month, from: date)
-                let weekday = calendar.component(.weekday, from: date)
-                
-                let months = ["Jan","Feb","Mar","Apr","May","Jun",
-                              "Jul","Aug","Sep","Oct","Nov","Dec"]
-                let weekdaysShort = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-                
-                let monthName = months[month - 1]
-                let weekdayNameShort = weekdaysShort[weekday - 1]
-                let weatherType = getCurrentWeatherType()
-                let iconName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_\(weatherType)"
-                
-                AltIcon.setAppIcon(iconName)
-                print("Не намирам \(iconName). Слагам fallback (sun).")
-                let fallbackName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_sun"
-                AltIcon.setAppIcon(fallbackName)
-                // ——————————————————————————————
-                
+                setupGlobalState()
+                updateAppIconIfNeeded()
                 
             case .background:
-                print("App in background. Stop sync timers.")
-                
-                // Проверяваме и статуса на абонамента, И датата
+                print("App in background.")
                 if SubscriptionManager.shared.subscriptionStatus == .base && areAdsEnabledByDate {
                     Task { await AppOpenAdManager.shared.loadAd() }
                 }
-                
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
                 
@@ -168,74 +96,93 @@ struct CalendarApp: App {
         }
     }
     
-    /// Функция, която връща типа време, за да съответства на вашите налични икони.
-    func getCurrentWeatherType() -> String {
-        // WeatherKit символ, напр: "cloud.heavyrain.fill", "cloud.bolt.fill", "sun.max.fill"...
-        let symbol = weatherVM.currentSymbol
+    // MARK: - Helper Methods
+    
+    private func setupGlobalState() {
+        let locale = Locale.current
+        let calendar = Calendar.current
         
-        // Ако по някаква причина е празен:
-        guard !symbol.isEmpty else {
-            return "sun"
+        if let regionCode = locale.region?.identifier {
+            GlobalState.region = regionCode
         }
         
-        // Премахваме ".fill" от края, за да остане "cloud.heavyrain" например
+        GlobalState.calendar = String(describing: calendar.identifier)
+        
+        let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
+        let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
+        let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
+        GlobalState.temperatureUnit = unit.symbol
+        
+        GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
+        GlobalState.firstWeekday = calendar.firstWeekday
+        
+        let df = DateFormatter()
+        df.locale = locale
+        df.dateStyle = .short
+        GlobalState.dateFormat = df.dateFormat ?? ""
+        
+        let nf = NumberFormatter()
+        nf.locale = locale
+        nf.numberStyle = .decimal
+        let num = 1234567.89 as NSNumber
+        GlobalState.numberFormat = nf.string(from: num) ?? ""
+    }
+    
+    private func updateAppIconIfNeeded() {
+        guard !hasCheckedIconThisSession else { return }
+        hasCheckedIconThisSession = true
+        
+        let calendar = Calendar.current
+        let date = Date()
+        let day = calendar.component(.day, from: date)
+        let month = calendar.component(.month, from: date)
+        let weekday = calendar.component(.weekday, from: date)
+        
+        let months = ["Jan","Feb","Mar","Apr","May","Jun", "Jul","Aug","Sep","Oct","Nov","Dec"]
+        let weekdaysShort = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+        
+        let monthName = months[month - 1]
+        let weekdayNameShort = weekdaysShort[weekday - 1]
+        let weatherType = getCurrentWeatherType()
+        
+        let iconName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_\(weatherType)"
+        let currentIcon = UIApplication.shared.alternateIconName
+        
+        if currentIcon != iconName {
+            print("Changing app icon to: \(iconName)")
+            AltIcon.setAppIcon(iconName)
+        }
+    }
+    
+    func getCurrentWeatherType() -> String {
+        let symbol = weatherVM.currentSymbol
+        guard !symbol.isEmpty else { return "sun" }
+        
         let cleanedSymbol = symbol.replacingOccurrences(of: ".fill", with: "")
         
-        // Разширен речник със съответствия:
         let symbolMapping: [String: String] = [
-            // ---- "cloud-bolt-rain" ----
             "cloud.bolt.rain": "cloud-bolt-rain",
             "cloud.sun.bolt.rain": "cloud-bolt-rain",
-            
-            // ---- "cloud-bolt" ----
             "cloud.bolt": "cloud-bolt",
             "cloud.sun.bolt": "cloud-bolt",
-            
-            // ---- "cloud-drizzle" ----
             "cloud.drizzle": "cloud-drizzle",
-            
-            // ---- "cloud-fog" ----
             "cloud.fog": "cloud-fog",
-            
-            // ---- "cloud-hail" ---- (ако WeatherKit има "cloud.hail")
             "cloud.hail": "cloud-hail",
-            
-            // ---- "cloud-heavyrain" ----
             "cloud.heavyrain": "cloud-heavyrain",
-            
-            // ---- "cloud-rain" ----
             "cloud.rain": "cloud-rain",
             "cloud.sun.rain": "cloud-rain",
-            
-            // ---- "cloud-sleet" ----
             "cloud.sleet": "cloud-sleet",
-            
-            // ---- "cloud-snow" ----
             "cloud.snow": "cloud-snow",
-            
-            // ---- "cloud-sun" ----
             "cloud.sun": "cloud-sun",
-            
-            // ---- "cloud" ----
             "cloud": "cloud",
-            
-            // ---- "snowflake" ---- (WeatherKit рядко го връща, но ако имате .appiconset)
             "snowflake": "snowflake",
-            
-            // ---- "sun" ---- (което във WeatherKit може да бъде "sun.max", "sun.min")
             "sun.max": "sun",
-            
-            // Примерно, ако има "sun.haze" -> да го броим за "sun":
-            "sun.haze": "sun",
-            
-            // ... добавете още ако ви трябват.
+            "sun.haze": "sun"
         ]
         
-        // Ако имаме съвпадение в речника -> връщаме го.
         if let mapped = symbolMapping[cleanedSymbol] {
             return mapped
         } else {
-            // Иначе - fallback "sun"
             return "sun"
         }
     }
