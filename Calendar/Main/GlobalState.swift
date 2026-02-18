@@ -2,7 +2,7 @@ import Foundation
 
 struct GlobalState {
   
-    private static let emailKey = "PrimaryEmail"
+    private static let emailKey            = "PrimaryEmail"
     private static let regionKey           = "GlobalRegion"
     private static let calendarKey         = "GlobalCalendar"
     private static let temperatureKey      = "GlobalTemperatureUnit"
@@ -126,6 +126,5 @@ extension GlobalState {
             return NSLocalizedString("Unit_Pressure_hPa", comment: "hectopascals")
         }
     }
-    
     
 }
