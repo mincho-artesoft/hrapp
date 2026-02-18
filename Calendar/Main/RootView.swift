@@ -50,10 +50,6 @@ struct RootView: View {
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
     
-    // --- НОВО: Променливи за App Promo ---
-    @State private var showAppPromo = false
-    @State private var currentPromoData: AppPromoData? = nil
-    
     // Следим състоянието на сцената (active, background, inactive)
     @Environment(\.scenePhase) private var scenePhase
     
@@ -314,12 +310,6 @@ struct RootView: View {
             .toolbarBackground(Color.white.opacity(0.1), for: .bottomBar) // Example for bottom bar
             .toolbarBackground(.visible, for: .bottomBar)
             .toolbarColorScheme(.light, for: .bottomBar) // Or .dark as per your theme
-            
-            // --- НОВО: Универсален промоционален диалогов прозорец ---
-            if showAppPromo, let data = currentPromoData {
-                AppPromoView(isPresented: $showAppPromo, data: data)
-                    .zIndex(100) // Гарантира, че е най-отгоре
-            }
         }
         .onReceive(NotificationCenter.default.publisher(
             for: .notificationDraggableMenuViewSub)) { notification in
@@ -345,15 +335,6 @@ struct RootView: View {
                 }
             }
             
-            // Пускаме логиката за промоция при първоначално стартиране
-            schedulePromoPresentation()
-        }
-        // --- НОВО: Следим scenePhase, за да пуснем промоцията при връщане от Background ---
-        .onChange(of: scenePhase) { _, newPhase in
-            if newPhase == .active {
-                print("App returned to active state. Scheduling promo...")
-                schedulePromoPresentation()
-            }
         }
         .sheet(item: $eventToEdit) { theEvent in
             EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent) {
@@ -417,42 +398,6 @@ struct RootView: View {
             }
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    // --- НОВО: Изнесена логика за показване на AppPromo ---
-    private func schedulePromoPresentation() {
-        // Използваме DispatchQueue за забавяне от 10 секунди
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            // 1. Проверяваме дали вече не е показано (за да не се натрупат)
-            guard !showAppPromo else { return }
-            
-            // 2. Не показваме реклама, ако потребителят създава/редактира събитие в момента
-            if eventToEdit == nil {
-                // Ключ за запазване на индекса в UserDefaults
-                let indexKey = "nextPromoAppIndex"
-                var nextIndex = UserDefaults.standard.integer(forKey: indexKey)
-                
-                // Проверка дали имаме приложения в списъка
-                guard !promotionalApps.isEmpty else { return }
-                
-                // Ако индексът е извън граници, нулираме го
-                if nextIndex >= promotionalApps.count {
-                    nextIndex = 0
-                }
-                
-                // Задаваме данните за текущото приложение
-                currentPromoData = promotionalApps[nextIndex]
-                
-                // Показваме прозореца
-                withAnimation(.spring()) {
-                    showAppPromo = true
-                }
-                
-                // Изчисляваме следващия индекс (кръгов цикъл) и го запазваме
-                let indexToSave = (nextIndex + 1) % promotionalApps.count
-                UserDefaults.standard.set(indexToSave, forKey: indexKey)
-            }
-        }
     }
 }
 

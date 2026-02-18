@@ -11,8 +11,14 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
   private var isShowingAd = false
   private var loadTime: Date?
 
-  private let adUnitID = "ca-app-pub-3759868960530173/8791851472"
-
+    #if DEBUG
+    // Google Test ID (За симулатор и тестове на устройство)
+    private let adUnitID = "ca-app-pub-3940256099942544/5575463023"
+    #else
+    // Твоят реален ID (За App Store)
+    private let adUnitID = "ca-app-pub-3759868960530173/8791851472"
+    #endif
+    
   /// Зарежда нов спот (ако няма или е експирал).
   func loadAd() async {
     guard !isLoadingAd, !isAdAvailable() else { return }
@@ -33,28 +39,25 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
 
     @MainActor
     func showAdIfAvailable() {
-        // 1. Ако вече показваме реклама → излизаме.
+        // 1. Ако вече показваме или зареждаме – не прави нищо
         guard !isShowingAd else { return }
 
-        // 2. Ако още няма готова реклама → зареждаме и се връщаме.
-        guard isAdAvailable() else {
-            Task { await loadAd() }   // асинхронно презареждане
+        // 2. Провери дали имаме готова и "прясна" реклама
+        if !isAdAvailable() {
+            // Ако няма готова, просто пусни зареждане за следващия път и излез
+            Task { await loadAd() }
             return
         }
 
-        // 3. Имаме спот → търсим root UIViewController, за да го презентираме.
-        guard let ad = appOpenAd,
-              let root = UIApplication.shared
-                    .connectedScenes
-                    .compactMap({ $0 as? UIWindowScene })        // сцени
-                    .flatMap({ $0.windows })                     // всички прозорци
-                    .first(where: { $0.isKeyWindow })?           // активният прозорец
-                    .rootViewController                          // неговият root VC
-        else { return }
+        // 3. Намери активната сцена и Root ViewController
+        guard let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+              let root = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
+            return
+        }
 
-        // 4. Показваме рекламата.
+        // 4. Покажи рекламата
         isShowingAd = true
-        ad.present(from: root)
+        appOpenAd?.present(from: root)
     }
 
 
