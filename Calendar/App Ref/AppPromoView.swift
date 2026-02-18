@@ -10,91 +10,68 @@ struct AppPromoData: Identifiable, Equatable {
     let accentColor: Color         // Цвят на бутона за конкретното приложение
 }
 
-struct AppPromoView: View {
-    @Binding var isPresented: Bool
-    let data: AppPromoData
+
+struct AppsPromoListView: View {
+    let apps: [AppPromoData]
     
     var body: some View {
-        ZStack {
-            // Тъмен фон
-            Color.black.opacity(0.4)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    withAnimation {
-                        isPresented = false
-                    }
-                }
-            
-            // Картата с промоцията
-            VStack(spacing: 20) {
-                // Бутон за затваряне
-                HStack {
-                    Spacer()
-                    Button {
-                        withAnimation {
-                            isPresented = false
+        ScrollView {
+            VStack(spacing: 16) {
+                ForEach(apps) { app in
+                    HStack(alignment: .top, spacing: 16) {
+                        // Икона на приложението
+                        if let _ = UIImage(named: app.iconName) {
+                            Image(app.iconName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 64, height: 64)
+                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                                .shadow(radius: 2)
+                        } else {
+                            Image(systemName: app.systemImageFallback)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 32, height: 32)
+                                .foregroundColor(app.accentColor)
+                                .frame(width: 64, height: 64)
+                                .background(app.accentColor.opacity(0.15))
+                                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                         }
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.title2)
-                            .foregroundColor(.secondary)
+                        
+                        // Текст и бутон
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(app.appName)
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                            
+                            Text(app.description)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .lineLimit(nil) // ПРОМЯНА: nil позволява неограничен брой редове
+                                .fixedSize(horizontal: false, vertical: true) // Осигурява правилно разпъване във височина
+                                .multilineTextAlignment(.leading)
+                            
+                            // Бутон към App Store
+                            Link(destination: URL(string: app.appStoreURL)!) {
+                                Text("Get")
+                                    .font(.caption.bold())
+                                    .foregroundColor(.white)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 20)
+                                    .background(app.accentColor)
+                                    .clipShape(Capsule())
+                            }
+                            .padding(.top, 4)
+                        }
                     }
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
-                
-                // Икона
-                if let _ = UIImage(named: data.iconName) {
-                    Image(data.iconName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                        .shadow(radius: 5, y: 4)
-                } else {
-                    // Fallback системна икона
-                    Image(systemName: data.systemImageFallback)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 60, height: 60)
-                        .foregroundColor(data.accentColor)
-                        .padding()
-                        .background(data.accentColor.opacity(0.2))
-                        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                }
-
-                // Заглавие
-                Text(data.appName)
-                    .font(.title2.bold())
-                    .foregroundColor(.primary)
-
-                // Описание
-                Text(data.description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal)
-
-                // Бутон към App Store
-                Link(destination: URL(string: data.appStoreURL)!) {
-                    Text("View on the App Store")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, 24)
-                        .frame(maxWidth: .infinity)
-                        .background(data.accentColor)
-                        .clipShape(Capsule())
-                        .shadow(color: data.accentColor.opacity(0.3), radius: 5, x: 0, y: 3)
-                }
-                .padding(.top, 10)
+                Spacer(minLength: 150)
             }
-            .padding(25)
-            .background(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 10)
-            .padding(.horizontal, 40)
+            .padding(.horizontal)
         }
-        .transition(.opacity.combined(with: .scale(scale: 0.9)))
-        .zIndex(100)
     }
 }
+

@@ -53,25 +53,56 @@ struct RootView: View {
     // Следим състоянието на сцената (active, background, inactive)
     @Environment(\.scenePhase) private var scenePhase
     
-    // Списък с приложенията за реклама
     private let promotionalApps: [AppPromoData] = [
         AppPromoData(
             appName: "Wise Eating & Fitness Planner",
             description: "Wise Eating is your AI-powered coach for smarter nutrition and training. It combines modern nutrition science with practical tools to help you plan meals, design workouts, manage your pantry, and understand how food and movement affect your body.",
-            iconName: "WiseEatingIcon", // Уверете се, че тази картинка е в Assets
+            iconName: "WiseEatingIcon",
             systemImageFallback: "carrot.fill",
-            appStoreURL: "https://apps.apple.com/us/app/wise-eating-fitness-planner/id6751406823", // Сменете с реалния ID
+            appStoreURL: "https://apps.apple.com/us/app/wise-eating-fitness-planner/id6751406823",
             accentColor: .green
         ),
         AppPromoData(
             appName: "StoreFront Studio",
             description: "StoreFront Studio is the elite 3D design environment for iOS and macOS developers. It combines high-fidelity RealityKit rendering with a powerful Rich Text editor to help you transform raw screenshots into professional, high-converting App Store assets.",
-            iconName: "StoreFrontIcon", // Уверете се, че тази картинка е в Assets
+            iconName: "StoreFrontIcon",
             systemImageFallback: "heart.text.square.fill",
-            appStoreURL: "https://apps.apple.com/us/app/storefront-studio/id6757389314", // Сменете с реалния ID
+            appStoreURL: "https://apps.apple.com/us/app/storefront-studio/id6757389314",
+            accentColor: .cyan
+        ),
+
+        // ✅ NEW #1
+        AppPromoData(
+            appName: "ReelStudio",
+            description: "ReelStudio is the creator-grade screen recording studio for iOS and macOS. Capture your screen and camera at the same time, control mic + system audio, and export clean MP4s for tutorials, walkthroughs, and product demos. On iOS, you can even play a video inside the app and record it together with your camera for reaction-style and presenter-led content.",
+            iconName: "ReelStudioIcon", // добави в Assets
+            systemImageFallback: "record.circle.fill",
+            appStoreURL: "https://apps.apple.com/us/app/reelstudio/id6758941990", // TODO: сложи реалния линк
+            accentColor: .purple
+        ),
+
+        // ✅ NEW #2
+        AppPromoData(
+            appName: "Cloud Calendars",
+            description: "Cloud Calendars combines advanced scheduling with beautifully integrated weather forecasts, so you can plan with precision. It supports multiple calendar services, intuitive gesture-based editing, built-in meeting links, and detailed hourly/daily forecasts directly inside your schedule.",
+            iconName: "CloudCalendarsIcon", // добави в Assets
+            systemImageFallback: "calendar.badge.clock",
+            appStoreURL: "https://apps.apple.com/us/app/cloud-calendars/id6744690319",
             accentColor: .blue
+        ),
+
+        // ✅ NEW #3
+        AppPromoData(
+            appName: "MarketBrief AI",
+            description: "MarketBrief AI helps you understand market movement with on-device analytics and a multi-agent workflow designed to separate signal from noise. Track real-time price data, explore regime-style probabilities, and use clear dashboards and charts to support your decision-making. Privacy-first: your configurations stay on your device.",
+            iconName: "MarketBriefIcon", // добави в Assets
+            systemImageFallback: "chart.line.uptrend.xyaxis",
+            appStoreURL: "https://apps.apple.com/us/app/market-brief-ai/id6758329388", // TODO: сложи реалния линк
+            accentColor: .blue.opacity(0.75)
         )
     ]
+
+
     
     init() {
         // Ако няма нищо записано, по подразбиране ще е 1
@@ -264,6 +295,7 @@ struct RootView: View {
                                         Label("Calendar", systemImage: "calendar").tag(0)
                                         Label("MultiCalendar", systemImage: "calendar.badge.plus").tag(1)
                                         Label("Subscriptions", systemImage: "calendar.circle").tag(2)
+                                        Label("Apps", systemImage: "square.grid.2x2.fill").tag(3)
                                     }
                                     .pickerStyle(.segmented)
                                 },
@@ -272,6 +304,7 @@ struct RootView: View {
                                     case 0: CalendarsSheetView().padding(.vertical, 8)
                                     case 1: CalendarsDropdownRepresentable().padding(.vertical, 8)
                                     case 2: SubscriptionView().padding(.vertical, 8)
+                                    case 3: AppsPromoListView(apps: promotionalApps).padding(.vertical, 8)
                                     default: Text("N/A")
                                     }
                                 },
