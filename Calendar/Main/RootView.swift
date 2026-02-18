@@ -11,7 +11,7 @@ struct RootView: View {
     @State private var selectedTabDraggableMenuView = 0
     @State private var menuState: MenuState = .collapsed
     @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
-
+    @AppStorage("interstitialTabSwitchCount") private var tabSwitchCounter: Int = 0
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
     private let chunkDays: Int = 30
@@ -358,7 +358,7 @@ struct RootView: View {
             }
         }
         .onChange(of: selectedTab) { oldValue, newValue in
-             self.oldSelectedTab = oldValue // Update oldSelectedTab
+            self.oldSelectedTab = oldValue // Update oldSelectedTab
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
             if newValue == 6 || newValue == 7 { // Weather or VitaHealth
                 CalendarViewModel.shared.stopGoogleCalendarSync()
@@ -369,7 +369,17 @@ struct RootView: View {
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
                 draggableMenuAdaptiveBackgroundОpacity = 0.95
             }
-            // Reload data for the new tab
+            if SubscriptionManager.shared.subscriptionStatus == .base {
+                // Увеличаваме брояча
+                tabSwitchCounter += 1
+                print("🔄 Tab switched. Count (saved): \(tabSwitchCounter)")
+                
+                // Ако стигне 2 (или колкото си решил)
+                if tabSwitchCounter >= 10 {
+                    InterstitialAdManager.shared.showAd()
+                    tabSwitchCounter = 0
+                }
+            }
             Task {
                 if accessGranted { // Use the @State variable
                     switch newValue {

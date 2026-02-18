@@ -36,8 +36,10 @@ struct CalendarApp: App {
                     // Логика за реклами
                     if SubscriptionManager.shared.subscriptionStatus == .base {
                         MobileAds.shared.start(completionHandler: nil)
-                        Task { await AppOpenAdManager.shared.loadAd() }
-
+                        Task {
+                            await AppOpenAdManager.shared.loadAd()
+                            InterstitialAdManager.shared.loadAd()
+                        }
                         // ✅ При първото стартиране НЕ показваме App Open Ad.
                         // ✅ При всяко следващо стартиране/отваряне - показваме.
                         if hasLaunchedBefore {
