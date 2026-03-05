@@ -14,6 +14,9 @@ struct BaseSubscriptionView: View {
                 FeatureRow(feature: "Yearly overview")
                 FeatureRow(feature: "List view for events")
                 FeatureRow(feature: "Weather view")
+                FeatureRow(feature: "Multi-calendar view")
+                FeatureRow(feature: "Sync with Google Calendar")
+                FeatureRow(feature: "Sync meets from Google Meet")
             }
 
             Spacer()

@@ -92,29 +92,15 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
         }
         
         let multiCalendarAction = UIAction(
-            title: NSLocalizedString("MultiCalendar", comment: "Tab name: MultiCalendar"),
-            image: multiCalendarIcon,
-            state: currentView == 5 ? .on : .off
-        ) { _ in
-            if subscriptionManager.subscriptionStatus == .base {
-                let payload: [String: Any] = ["subscriptionStatusRaw": "Advanced"]
-                NotificationCenter.default.post(
-                    name: .notificationDraggableMenuViewSub,
-                    object: nil,
-                    userInfo: payload
-                )
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    NotificationCenter.default.post(
-                        name: .notificationDraggableMenuViewSub,
-                        object: nil,
-                        userInfo: payload
-                    )
-                }
-            } else {
-                onViewChange?(5)
-                button.setImage(multiCalendarIcon, for: .normal)
-            }
-        }
+                   title: NSLocalizedString("MultiCalendar", comment: "Tab name: MultiCalendar"),
+                   image: multiCalendarIcon,
+                   state: currentView == 5 ? .on : .off
+               ) { _ in
+                   // ПРОМЯНА: Премахната е проверката if subscriptionManager.subscriptionStatus == .base
+                   // Директно сменяме вю-то.
+                   onViewChange?(5)
+                   button.setImage(multiCalendarIcon, for: .normal)
+               }
         
         let weatherAction = UIAction(
             title: NSLocalizedString("Weather", comment: "Tab name: Weather"),

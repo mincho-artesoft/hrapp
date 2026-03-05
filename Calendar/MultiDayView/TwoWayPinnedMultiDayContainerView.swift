@@ -895,25 +895,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             image: multiCalendarIcon,
             state: currentView == 5 ? .on : .off
         ) { [weak self] _ in
-            if self?.subscriptionManager.subscriptionStatus == .base {
-                let payload: [String: Any] = ["subscriptionStatusRaw": "Advanced"]
-                NotificationCenter.default.post(
-                    name: .notificationDraggableMenuViewSub,
-                    object: nil,
-                    userInfo: payload
-                )
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    NotificationCenter.default.post(
-                        name: .notificationDraggableMenuViewSub,
-                        object: nil,
-                        userInfo: payload
-                    )
-                }
-            } else {
-                self?.currentView = 5
-                self?.onViewChange?(5)
-                self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
-            }
+            // ПРОМЯНА: Премахната е проверката за абонамент.
+            self?.currentView = 5
+            self?.onViewChange?(5)
+            self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
         }
         
         // Добавяне на нов UIAction за Weather

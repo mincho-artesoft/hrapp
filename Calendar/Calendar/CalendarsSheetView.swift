@@ -392,23 +392,9 @@ struct CalendarsSheetView: View {
     private var googleSignInSection: some View {
         Section {
             Button(action: {
-                if subscriptionManager.subscriptionStatus == .base {
-                    let payload: [String: Any] = ["subscriptionStatusRaw": "Advanced"]
-                    NotificationCenter.default.post(
-                        name: .notificationDraggableMenuViewSub,
-                        object: nil,
-                        userInfo: payload
-                    )
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        NotificationCenter.default.post(
-                            name: .notificationDraggableMenuViewSub,
-                            object: nil,
-                            userInfo: payload
-                        )
-                    }
-                } else {
-                    viewModel.signInWithGoogle()
-                }
+                // ПРОМЯНА: Премахната е проверката за .base план.
+                // Сега директно викаме функцията за вход.
+                viewModel.signInWithGoogle()
             }) {
                 HStack {
                     Image("google_icon")
