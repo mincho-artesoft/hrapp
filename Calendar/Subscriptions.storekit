@@ -24,7 +24,7 @@
     "_developerTeamID" : "8293TNMX6S",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 771246864.178967,
+    "_lastSynchronizedDate" : 794404952.48132396,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
@@ -83,12 +83,12 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "0.99",
+          "displayPrice" : "0.49",
           "familyShareable" : false,
           "groupNumber" : 4,
           "internalID" : "6745820650",
           "introductoryOffer" : {
-            "internalID" : "0619F509",
+            "internalID" : "FD27E308",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P2W"
@@ -123,6 +123,36 @@
               "description" : "Calendario e Meet Google, mensile",
               "displayName" : "Avanzato Mensile",
               "locale" : "it"
+            },
+            {
+              "description" : "Profitez de l’app sans publicités pendant 1 mois.",
+              "displayName" : "Avancé Mensuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Disfruta de la app sin anuncios durante un mes.",
+              "displayName" : "Avanzado Mensual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Usa l’app senza pubblicità per un mese.",
+              "displayName" : "Avanzato Mensile",
+              "locale" : "it"
+            },
+            {
+              "description" : "Используйте приложение без рекламы в течение месяца.",
+              "displayName" : "Продвинутый мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Enjoy the app without ads for one month.",
+              "displayName" : "Advanced Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Nutzen Sie die App einen Monat ohne Werbung.",
+              "displayName" : "Erweitert Monat",
+              "locale" : "de"
             }
           ],
           "productID" : "Cloud.Calendars.Advanced.Monthly",
@@ -211,11 +241,6 @@
               "locale" : "ru"
             },
             {
-              "description" : "Calendario e Teams MS ",
-              "displayName" : "Premium Annuale",
-              "locale" : "it"
-            },
-            {
               "description" : "Calendrier & Teams MS",
               "displayName" : "Premium Annuel",
               "locale" : "fr"
@@ -224,6 +249,11 @@
               "description" : "Calendario y Teams MS",
               "displayName" : "Premium Anual",
               "locale" : "es_ES"
+            },
+            {
+              "description" : "Calendario e Teams MS ",
+              "displayName" : "Premium Annuale",
+              "locale" : "it"
             },
             {
               "description" : "MS Kalender & Teams Sync",
@@ -247,7 +277,7 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "9.99",
+          "displayPrice" : "4.99",
           "familyShareable" : false,
           "groupNumber" : 3,
           "internalID" : "6745823447",
@@ -282,6 +312,36 @@
               "description" : "Calendario y Meet Google",
               "displayName" : "Avanzado Anual",
               "locale" : "es_ES"
+            },
+            {
+              "description" : "Profitez de l’application sans publicités pendant un an",
+              "displayName" : "Avancé Annuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Enjoy the app without ads for one full year.",
+              "displayName" : "Advanced Yearly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Используйте приложение без рекламы целого года",
+              "displayName" : "Продвинутый год.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Nutzen Sie die App ein ganzes Jahr ohne Werbung.",
+              "displayName" : "Erweitert Jahr",
+              "locale" : "de"
+            },
+            {
+              "description" : "Disfruta de la app sin anuncios durante un año.",
+              "displayName" : "Avanzado Anual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Usa l’app senza pubblicità per un anno intero.",
+              "displayName" : "Avanzato Annuale",
+              "locale" : "it"
             }
           ],
           "productID" : "Cloud.Calendars.Advanced.Yearly",
