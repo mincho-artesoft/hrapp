@@ -74,8 +74,12 @@ struct CalendarApp: App {
 
                 // Останалите процеси
                 ReviewManager.appLaunched()
-                CalendarViewModel.shared.startGoogleCalendarSync()
-                CalendarViewModel.shared.startMicrosoftCalendarSync()
+                if AppConfig.googleSyncEnabled {
+                    CalendarViewModel.shared.startGoogleCalendarSync()
+                }
+                if AppConfig.microsoftSyncEnabled {
+                    CalendarViewModel.shared.startMicrosoftCalendarSync()
+                }
 
                 setupGlobalState()
                 updateAppIconIfNeeded()
@@ -85,8 +89,12 @@ struct CalendarApp: App {
                 if SubscriptionManager.shared.subscriptionStatus == .base {
                     Task { await AppOpenAdManager.shared.loadAd() }
                 }
-                CalendarViewModel.shared.stopGoogleCalendarSync()
-                CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                if AppConfig.googleSyncEnabled {
+                    CalendarViewModel.shared.stopGoogleCalendarSync()
+                }
+                if AppConfig.microsoftSyncEnabled {
+                    CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                }
 
             case .inactive:
                 print("App is inactive.")

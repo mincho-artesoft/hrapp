@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3759868960530173~5612581418</string>
+	<key>CFBundleDisplayName</key>
+	<string>$(CFBundleDisplayName)</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>$(NSCalendarsUsageDescription)</string>
+	<key>NSContactsUsageDescription</key>
+	<string>$(NSContactsUsageDescription)</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>$(NSLocationAlwaysAndWhenInUseUsageDescription)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(NSLocationWhenInUseUsageDescription)</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).refresh</string>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).processing</string>
+	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+		</dict>
+	</dict>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array/>
+</dict>
+</plist>

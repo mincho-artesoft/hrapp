@@ -7,15 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		019333A455FDEB0697F489BB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
+		03CAC7E416CE476CD3906720 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CBDA69F5AF446006BBBD2B6 /* InfoPlist.strings */; };
+		1EC0362598D044A1E43E3764 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
+		37A4A4E1423D6F89869EF945 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
 		50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
 		50AC17392D9C07280096F29D /* AltIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 50AC17382D9C07280096F29D /* AltIcon */; };
 		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
 		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
 		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
+		745E08D94A307FA79980C8C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 986648048749440E12CF0F8F /* Foundation.framework */; };
+		A81C2B40A1D06CAC05FB7213 /* AltIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 50AC17382D9C07280096F29D /* AltIcon */; };
+		B4B0A5BA1DB9599845066BB3 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11CE949C51E4FD9F9D911D78 /* it */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cloud Calendars for Google, Microsoft and iCloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5273A6A8ECC2EE835906C79E /* en */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		589940C12271C05444B35E58 /* ru */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		80D4543AD0F8F892D29365A6 /* bg */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		986648048749440E12CF0F8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B3EDE61E8D7770FF3C395794 /* de */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD23AC94CD64CA16DCF537E8 /* fr */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EB234508DDE4F3036125955E /* Dreams Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dreams Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F29DAB02D592B75D935C5E57 /* es */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -23,8 +39,24 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				"Info-Dreams.plist",
 			);
 			target = 50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */;
+		};
+		DD47E85CDD27F857D786B271 /* Exceptions for "Calendar" folder in "Dreams Calendar" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+				"Info-Dreams.plist",
+				bg.lproj/InfoPlist.strings,
+				de.lproj/InfoPlist.strings,
+				en.lproj/InfoPlist.strings,
+				es.lproj/InfoPlist.strings,
+				fr.lproj/InfoPlist.strings,
+				it.lproj/InfoPlist.strings,
+				ru.lproj/InfoPlist.strings,
+			);
+			target = 0F4E31B2658ADA85737C8661 /* Dreams Calendar */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -33,6 +65,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				50D8298E2D886BF9004B3545 /* Exceptions for "Calendar" folder in "Cloud Calendars for Google, Microsoft and iCloud" target */,
+				DD47E85CDD27F857D786B271 /* Exceptions for "Calendar" folder in "Dreams Calendar" target */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -52,12 +85,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		528E9E6E483657C01DA73DEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				745E08D94A307FA79980C8C7 /* Foundation.framework in Frameworks */,
+				019333A455FDEB0697F489BB /* GoogleSignIn in Frameworks */,
+				B4B0A5BA1DB9599845066BB3 /* GoogleSignInSwift in Frameworks */,
+				37A4A4E1423D6F89869EF945 /* MSAL in Frameworks */,
+				A81C2B40A1D06CAC05FB7213 /* AltIcon in Frameworks */,
+				1EC0362598D044A1E43E3764 /* GoogleMobileAds in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019A58F7BD32D33DDD54F01E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				986648048749440E12CF0F8F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		1A975510910266A29533B284 /* DreamsLocalized */ = {
+			isa = PBXGroup;
+			children = (
+				4CBDA69F5AF446006BBBD2B6 /* InfoPlist.strings */,
+			);
+			name = DreamsLocalized;
+			path = DreamsLocalized;
+			sourceTree = "<group>";
+		};
 		504D17CF2D678413006E5D6E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				019A58F7BD32D33DDD54F01E /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -68,12 +132,41 @@
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
 				504D17CF2D678413006E5D6E /* Frameworks */,
 				50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */,
+				EB234508DDE4F3036125955E /* Dreams Calendar.app */,
+				1A975510910266A29533B284 /* DreamsLocalized */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0F4E31B2658ADA85737C8661 /* Dreams Calendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 756444C9A7BB4ADFC7FC0B0B /* Build configuration list for PBXNativeTarget "Dreams Calendar" */;
+			buildPhases = (
+				92DC01A9A9664E1EA1E7DFF4 /* Sources */,
+				528E9E6E483657C01DA73DEB /* Frameworks */,
+				0CE2C432758FC8C2514A5B09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				50B2124D2D4111B800ABB8D3 /* Calendar */,
+			);
+			name = "Dreams Calendar";
+			packageProductDependencies = (
+				50D829892D886BBD004B3545 /* GoogleSignIn */,
+				50D8298B2D886BBD004B3545 /* GoogleSignInSwift */,
+				50D82EE62D92C681004B3545 /* MSAL */,
+				50AC17382D9C07280096F29D /* AltIcon */,
+				50964E862DE85D4200564845 /* GoogleMobileAds */,
+			);
+			productName = "Dreams Calendar";
+			productReference = EB234508DDE4F3036125955E /* Dreams Calendar.app */;
+			productType = "com.apple.product-type.application";
+		};
 		50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50B212592D4111BA00ABB8D3 /* Build configuration list for PBXNativeTarget "Cloud Calendars for Google, Microsoft and iCloud" */;
@@ -111,6 +204,9 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					0F4E31B2658ADA85737C8661 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					50B2124A2D4111B800ABB8D3 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -144,11 +240,20 @@
 			projectRoot = "";
 			targets = (
 				50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */,
+				0F4E31B2658ADA85737C8661 /* Dreams Calendar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0CE2C432758FC8C2514A5B09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03CAC7E416CE476CD3906720 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		50B212492D4111B800ABB8D3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,9 +271,137 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		92DC01A9A9664E1EA1E7DFF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		4CBDA69F5AF446006BBBD2B6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80D4543AD0F8F892D29365A6 /* bg */,
+				B3EDE61E8D7770FF3C395794 /* de */,
+				5273A6A8ECC2EE835906C79E /* en */,
+				F29DAB02D592B75D935C5E57 /* es */,
+				BD23AC94CD64CA16DCF537E8 /* fr */,
+				11CE949C51E4FD9F9D911D78 /* it */,
+				589940C12271C05444B35E58 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		46F902EB04ECAB34C566517D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Calendar/Info-Dreams.plist";
+				INFOPLIST_KEY_CCAppGroupSuiteName = "";
+				INFOPLIST_KEY_CCAppVariant = dreams;
+				INFOPLIST_KEY_CCEnableGoogleSync = NO;
+				INFOPLIST_KEY_CCEnableMicrosoftSync = NO;
+				INFOPLIST_KEY_CCGoogleClientID = "";
+				INFOPLIST_KEY_CCMicrosoftClientID = "";
+				INFOPLIST_KEY_CCMicrosoftRedirectURI = "";
+				INFOPLIST_KEY_CCSubscriptionProductIDs = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dreams Calendar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Dreams Calendar needs access to your calendars to organize events in one place.";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Dreams Calendar uses your contacts to simplify event invitations and attendee details.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Dreams Calendar uses your location to provide weather-aware planning for your events.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Dreams Calendar uses your location while active to show local weather with your events.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.5.5;
+				PRODUCT_BUNDLE_IDENTIFIER = Deksan.DreamsCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DREAMS_APP";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		495802AC5F45222C63871817 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Calendar/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Calendar/Info-Dreams.plist";
+				INFOPLIST_KEY_CCAppGroupSuiteName = "";
+				INFOPLIST_KEY_CCAppVariant = dreams;
+				INFOPLIST_KEY_CCEnableGoogleSync = NO;
+				INFOPLIST_KEY_CCEnableMicrosoftSync = NO;
+				INFOPLIST_KEY_CCGoogleClientID = "";
+				INFOPLIST_KEY_CCMicrosoftClientID = "";
+				INFOPLIST_KEY_CCMicrosoftRedirectURI = "";
+				INFOPLIST_KEY_CCSubscriptionProductIDs = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dreams Calendar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "Dreams Calendar needs access to your calendars to organize events in one place.";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Dreams Calendar uses your contacts to simplify event invitations and attendee details.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Dreams Calendar uses your location to provide weather-aware planning for your events.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Dreams Calendar uses your location while active to show local weather with your events.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.5.5;
+				PRODUCT_BUNDLE_IDENTIFIER = Deksan.DreamsCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) DREAMS_APP";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		50B212572D4111BA00ABB8D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,6 +538,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
+				INFOPLIST_KEY_CCAppGroupSuiteName = "group.ARTE-SOFT.sandBOX";
+				INFOPLIST_KEY_CCAppVariant = cloud;
+				INFOPLIST_KEY_CCEnableGoogleSync = YES;
+				INFOPLIST_KEY_CCEnableMicrosoftSync = YES;
+				INFOPLIST_KEY_CCGoogleClientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com";
+				INFOPLIST_KEY_CCMicrosoftClientID = "5b1a5159-948f-4b5b-ac6a-009df927c665";
+				INFOPLIST_KEY_CCMicrosoftRedirectURI = "msauth.$(PRODUCT_BUNDLE_IDENTIFIER)://auth";
+				INFOPLIST_KEY_CCSubscriptionProductIDs = "Cloud.Calendars.Advanced.Monthly,Cloud.Calendars.Advanced.Yearly,Cloud.Calendars.Premium.Monthly,Cloud.Calendars.Premium.Yearly";
 				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
@@ -329,6 +570,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) CLOUD_APP ENABLE_GOOGLE_SYNC ENABLE_MICROSOFT_SYNC";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,6 +590,14 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Calendar/Info.plist;
+				INFOPLIST_KEY_CCAppGroupSuiteName = "group.ARTE-SOFT.sandBOX";
+				INFOPLIST_KEY_CCAppVariant = cloud;
+				INFOPLIST_KEY_CCEnableGoogleSync = YES;
+				INFOPLIST_KEY_CCEnableMicrosoftSync = YES;
+				INFOPLIST_KEY_CCGoogleClientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com";
+				INFOPLIST_KEY_CCMicrosoftClientID = "5b1a5159-948f-4b5b-ac6a-009df927c665";
+				INFOPLIST_KEY_CCMicrosoftRedirectURI = "msauth.$(PRODUCT_BUNDLE_IDENTIFIER)://auth";
+				INFOPLIST_KEY_CCSubscriptionProductIDs = "Cloud.Calendars.Advanced.Monthly,Cloud.Calendars.Advanced.Yearly,Cloud.Calendars.Premium.Monthly,Cloud.Calendars.Premium.Yearly";
 				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = asd;
@@ -372,6 +622,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) CLOUD_APP ENABLE_GOOGLE_SYNC ENABLE_MICROSOFT_SYNC";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -395,6 +646,15 @@
 			buildConfigurations = (
 				50B2125A2D4111BA00ABB8D3 /* Debug */,
 				50B2125B2D4111BA00ABB8D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		756444C9A7BB4ADFC7FC0B0B /* Build configuration list for PBXNativeTarget "Dreams Calendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46F902EB04ECAB34C566517D /* Release */,
+				495802AC5F45222C63871817 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

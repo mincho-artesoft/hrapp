@@ -1,9 +1,6 @@
 // CalendarsSheetView.swift
 import SwiftUI
 import EventKit
-import GoogleSignIn
-import GoogleSignInSwift
-import MSAL
 import SafariServices
 
 struct GoogleSharingInfo: Codable, Equatable {
@@ -60,12 +57,20 @@ struct CalendarsSheetView: View {
             Form {
                 iCloudSection
                 otherSection
-                googleSection
-                microsoftSection
+                if AppConfig.googleSyncEnabled {
+                    googleSection
+                }
+                if AppConfig.microsoftSyncEnabled {
+                    microsoftSection
+                }
                 addCalendarSection
                 shareCalendarsSection
-                googleSignInSection
-                microsoftSignInSection
+                if AppConfig.googleSyncEnabled {
+                    googleSignInSection
+                }
+                if AppConfig.microsoftSyncEnabled {
+                    microsoftSignInSection
+                }
             }
             .scrollContentBackground(.hidden)
             .background(Color.clear)

@@ -9,8 +9,8 @@ import Contacts
 final class CalendarViewModel: ObservableObject {
     private var msSyncTimer: Timer?
 
-    let kClientID = "5b1a5159-948f-4b5b-ac6a-009df927c665"
-    let kRedirectUri = "msauth.Deksan.CalendarASD://auth"
+    var kClientID: String { AppConfig.microsoftClientID }
+    var kRedirectUri: String { AppConfig.microsoftRedirectURI }
     let kAuthority = "https://login.microsoftonline.com/common"
     let kGraphEndpoint = "https://graph.microsoft.com/"
     
@@ -26,7 +26,7 @@ final class CalendarViewModel: ObservableObject {
     // MARK: - EventKit Store & Properties
     var eventStore: EKEventStore = EKEventStore()
     
-    let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
+    var clientID: String { AppConfig.googleClientID }
     @Published var allCalendars: [EKCalendar] = []
     @Published var eventsByDay: [Date: [EKEvent]] = [:]
     @Published var eventsByID:  [String: EKEvent] = [:]
@@ -70,11 +70,15 @@ final class CalendarViewModel: ObservableObject {
     // MARK: - Init
     init() {
         Task {
-              await refreshTokensForAllUsers()      // Google
-              for msUser in storedMsUsers {         // Microsoft
-                  _ = await refreshMicrosoftTokenIfNeeded(for: msUser)
-              }
-          }
+            if AppConfig.googleSyncEnabled {
+                await refreshTokensForAllUsers()
+            }
+            if AppConfig.microsoftSyncEnabled {
+                for msUser in storedMsUsers {
+                    _ = await refreshMicrosoftTokenIfNeeded(for: msUser)
+                }
+            }
+        }
         // 1) Attempt to load the array of StoredGoogleUsers from UserDefaults
         self.loadAllUsersFromUserDefaults()
         
@@ -87,7 +91,9 @@ final class CalendarViewModel: ObservableObject {
        }
        
        // Possibly start an MS sync timer as well
-       startMicrosoftCalendarSync()
+       if AppConfig.microsoftSyncEnabled {
+           startMicrosoftCalendarSync()
+       }
         
         // 2) Load per-user dictionaries from UserDefaults
         for user in storedUsers {
@@ -95,8 +101,10 @@ final class CalendarViewModel: ObservableObject {
         }
 
         Task {
-            await refreshTokensForAllUsers()
-            startGoogleCalendarSync()
+            if AppConfig.googleSyncEnabled {
+                await refreshTokensForAllUsers()
+                startGoogleCalendarSync()
+            }
         }
         // 3) Reload local calendars from EKEventStore
        
@@ -137,6 +145,11 @@ final class CalendarViewModel: ObservableObject {
     private var oldEventCalendarMap: [String: String] = [:]  // eventID -> calendarID
 
     func signInWithGoogle() {
+        guard AppConfig.googleSyncEnabled, !clientID.isEmpty else {
+            print("Google sync is disabled for this app variant.")
+            return
+        }
+
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
 
         guard
@@ -774,6 +787,8 @@ final class CalendarViewModel: ObservableObject {
 extension CalendarViewModel {
 
     func startGoogleCalendarSync() {
+        guard AppConfig.googleSyncEnabled else { return }
+
         // Проверка дали вече има активен таймер
         guard syncTimer == nil else {
             print("startGoogleCalendarSync: вече има пуснат таймер => няма нужда да пускаме втори.")
@@ -2037,6 +2052,10 @@ extension CalendarViewModel {
 
     @MainActor
     func refreshTokensForAllUsers() async {
+        guard AppConfig.googleSyncEnabled, !clientID.isEmpty else {
+            return
+        }
+
         print("=== refreshTokensForAllUsers START ===")
         
         for user in storedUsers {
@@ -2593,6 +2612,11 @@ struct StoredMicrosoftUser: Codable, Hashable {
 extension CalendarViewModel {
     // Примерен метод за логин
     func signInWithMicrosoft() {
+        guard AppConfig.microsoftSyncEnabled, !kClientID.isEmpty, !kRedirectUri.isEmpty else {
+            print("Microsoft sync is disabled for this app variant.")
+            return
+        }
+
         do {
             let authorityURL = URL(string: kAuthority)!
             let msalConfig = MSALPublicClientApplicationConfig(
@@ -2771,6 +2795,10 @@ extension CalendarViewModel {
     /// MSAL typically handles refresh tokens in the library’s cache,
     /// so you may not need a manual HTTP request for refresh like with Google.
     func refreshMicrosoftTokenIfNeeded(for user: StoredMicrosoftUser) async -> StoredMicrosoftUser? {
+        guard AppConfig.microsoftSyncEnabled, !kClientID.isEmpty, !kRedirectUri.isEmpty else {
+            return user
+        }
+
         if user.accessTokenExpiration > Date() {
             // still valid, no refresh needed
             return user
@@ -2827,6 +2855,8 @@ extension CalendarViewModel {
     }
 
     func startMicrosoftCalendarSync() {
+        guard AppConfig.microsoftSyncEnabled else { return }
+
         // Проверка дали вече има активен таймер
         guard msSyncTimer == nil else {
             print("startMicrosoftCalendarSync: вече има активен таймер => няма нужда да стартираме втори.")

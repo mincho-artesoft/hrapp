@@ -9,8 +9,10 @@ struct PremiumSubscriptionView: View {
 
             VStack(alignment: .leading, spacing: 8) {
                 FeatureRow(feature: "All Advanced Plan features")
-                FeatureRow(feature: "Sync with Microsoft Calendar")
-                FeatureRow(feature: "Sync meets from Microsoft Teams")
+                if AppConfig.microsoftSyncEnabled {
+                    FeatureRow(feature: "Sync with Microsoft Calendar")
+                    FeatureRow(feature: "Sync meets from Microsoft Teams")
+                }
             }
 
             Spacer()

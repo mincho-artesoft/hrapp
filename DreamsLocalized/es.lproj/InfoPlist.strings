@@ -1,0 +1,7 @@
+"NSCalendarsUsageDescription" = "Dreams Calendar necesita acceso a tus calendarios para organizar tus eventos en un solo lugar.";
+
+"NSContactsUsageDescription" = "Dreams Calendar usa tus contactos para facilitar invitaciones y detalles de participantes.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Dreams Calendar usa tu ubicacion para ofrecer informacion del tiempo y contexto util para tus eventos.";
+
+"NSLocationWhenInUseUsageDescription" = "Dreams Calendar usa tu ubicacion mientras esta activa para mostrar el tiempo local junto a tus eventos.";

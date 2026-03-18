@@ -1,5 +1,3 @@
-"CFBundleDisplayName" = "Cloud Calendars";
-
 "NSCalendarsUsageDescription" = "Cloud Calendars richiede l'accesso ai tuoi calendari per unificare eventi da iCloud, Google e Microsoft.";
 
 "NSContactsUsageDescription" = "Cloud Calendars utilizza i tuoi contatti per facilitare l'invio di inviti e gestire i dettagli dei partecipanti.";

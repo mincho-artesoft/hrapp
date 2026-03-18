@@ -394,12 +394,20 @@ struct RootView: View {
             self.oldSelectedTab = oldValue // Update oldSelectedTab
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
             if newValue == 6 || newValue == 7 { // Weather or VitaHealth
-                CalendarViewModel.shared.stopGoogleCalendarSync()
-                CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                if AppConfig.googleSyncEnabled {
+                    CalendarViewModel.shared.stopGoogleCalendarSync()
+                }
+                if AppConfig.microsoftSyncEnabled {
+                    CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                }
                 draggableMenuAdaptiveBackgroundОpacity = 0.35
             } else {
-                CalendarViewModel.shared.startGoogleCalendarSync()
-                CalendarViewModel.shared.startMicrosoftCalendarSync()
+                if AppConfig.googleSyncEnabled {
+                    CalendarViewModel.shared.startGoogleCalendarSync()
+                }
+                if AppConfig.microsoftSyncEnabled {
+                    CalendarViewModel.shared.startMicrosoftCalendarSync()
+                }
                 draggableMenuAdaptiveBackgroundОpacity = 0.95
             }
             if SubscriptionManager.shared.subscriptionStatus == .base {

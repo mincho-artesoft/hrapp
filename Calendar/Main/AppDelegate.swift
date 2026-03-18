@@ -8,7 +8,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     var window: UIWindow?
 
     func applicationWillTerminate(_ application: UIApplication) {
-        if let userDefaults = UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX") {
+        if let suiteName = AppConfig.appGroupSuiteName,
+           let userDefaults = UserDefaults(suiteName: suiteName) {
             userDefaults.set(true, forKey: "isStop")
         }
         

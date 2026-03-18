@@ -49,12 +49,12 @@ class SubscriptionManager: ObservableObject {
 
         // 1️⃣  Списък с точните Product ID-та в реда, в който искаме да се
         //      визуализират (годишните след месечните – или обратно).
-        let ids: [String] = [
-            "Cloud.Calendars.Advanced.Monthly",
-            "Cloud.Calendars.Advanced.Yearly",
-            "Cloud.Calendars.Premium.Monthly",
-            "Cloud.Calendars.Premium.Yearly"
-        ]
+        let ids = AppConfig.subscriptionProductIDs
+
+        guard !ids.isEmpty else {
+            await MainActor.run { self.products = [] }
+            return
+        }
 
         do {
             // 2️⃣  Вземаме само продуктите, които StoreKit връща като „достъпни“
@@ -258,4 +258,3 @@ class SubscriptionManager: ObservableObject {
            }
        }
 }
-

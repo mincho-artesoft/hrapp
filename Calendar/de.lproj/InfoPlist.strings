@@ -1,5 +1,3 @@
-"CFBundleDisplayName" = "Cloud Calendars";
-
 "NSCalendarsUsageDescription" = "Cloud Calendars benötigt Zugriff auf Ihre Kalender, um Termine aus iCloud, Google und Microsoft zentral zu verwalten.";
 
 "NSContactsUsageDescription" = "Cloud Calendars verwendet Ihre Kontakte, um das Einladen von Teilnehmern und das Verwalten von Eventdetails zu erleichtern.";

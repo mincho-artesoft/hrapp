@@ -219,8 +219,8 @@
 	<string>$(NSLocationWhenInUseUsageDescription)</string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.deksan.calendarasd.refresh</string>
-		<string>com.deksan.calendarasd.processing</string>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).refresh</string>
+		<string>$(PRODUCT_BUNDLE_IDENTIFIER).processing</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -243,7 +243,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>msauth.Deksan.CalendarASD</string>
+				<string>msauth.$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			</array>
 		</dict>
 	</array>
