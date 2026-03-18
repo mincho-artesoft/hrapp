@@ -200,6 +200,9 @@ struct YearCalendarView: View {
                 } label: {
                     Image(systemName: "magnifyingglass")
                 }
+                .frame(width: 34, height: 34)
+                .contentShape(Rectangle())
+                .buttonStyle(.plain)
 
                 UIMenuButtonRepresentable(
                     currentView: selectedTab,

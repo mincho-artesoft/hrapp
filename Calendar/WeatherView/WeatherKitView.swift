@@ -431,7 +431,7 @@ struct WeatherKitView: View {
                 } label: {
                     Image(systemName: "magnifyingglass")
                 }
-                .frame(width: 36, height: 36)
+                .frame(width: 34, height: 34)
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
                 .foregroundColor(colorScheme == .light ? .black : .white)
