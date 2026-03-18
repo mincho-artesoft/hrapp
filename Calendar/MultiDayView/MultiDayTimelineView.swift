@@ -173,7 +173,18 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         }
 
         // ------------------------------------------------
-        // (B) „Edit“ бутон
+        // (B) „Detail“ бутон
+        // ------------------------------------------------
+        let detailAction = UIAction(
+            title: NSLocalizedString("Detail", comment: ""),
+            image: UIImage(systemName: "info.circle")
+        ) { _ in
+            self.onEventTap?(descriptor)
+        }
+        children.append(detailAction)
+
+        // ------------------------------------------------
+        // (C) „Edit“ бутон
         // ------------------------------------------------
         let editAction = UIAction(
             title: NSLocalizedString("Edit", comment: ""),
@@ -184,7 +195,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         children.append(editAction)
 
         // ------------------------------------------------
-        // (C) „Duplicate“ бутон
+        // (D) „Duplicate“ бутон
         // ------------------------------------------------
         let duplicateAction = UIAction(
             title: NSLocalizedString("Duplicate", comment: ""),
@@ -196,7 +207,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         children.append(duplicateAction)
 
         // ------------------------------------------------
-        // (D) „Delete“ бутон
+        // (E) „Delete“ бутон
         // ------------------------------------------------
         let deleteAction = UIAction(
             title: NSLocalizedString("Delete", comment: ""),
@@ -209,7 +220,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         children.append(deleteAction)
         
         // ------------------------------------------------
-        // (E) „Add to Google Meet“ (ако няма Meet линк)
+        // (F) „Add to Google Meet“ (ако няма Meet линк)
         // ------------------------------------------------
         if !CalendarViewModel.shared.storedUsers.isEmpty,
            CalendarViewModel.shared.isGoogleCalendarEvent(descriptor),
@@ -225,7 +236,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         }
         
         // ------------------------------------------------
-        // (F) „Add to MS Teams“ (ако няма Teams линк)
+        // (G) „Add to MS Teams“ (ако няма Teams линк)
         // ------------------------------------------------
         if let msUser = CalendarViewModel.shared.findMicrosoftUser(for: descriptor),
            !CalendarViewModel.shared.hasMicrosoftTeamsLink(in: descriptor)

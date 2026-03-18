@@ -11,8 +11,7 @@ struct AllEventsListView: View {
     let onLoadMoreAfter: () -> Void
     let onLoadMoreBefore: () -> Void
     
-    // Локално състояние за редактиране/създаване на събитие
-    @State private var eventToEdit: EKEvent? = nil
+    @State private var eventToView: EKEvent? = nil
     
     // Флаг, за да знаем, че току-що сме заредили стари събития
     @State private var didLoadMoreBefore: Bool = false
@@ -64,14 +63,10 @@ struct AllEventsListView: View {
                     }
                     .padding(.top,1)
 //                    .frame(height: cardHeight)
-                    .sheet(item: $eventToEdit) { event in
-                        EventEditViewWrapper(
-                            eventStore: CalendarViewModel.shared.eventStore,
-                            event: event,
-                            onEventUpdated: {
-                                loadInitialEvents()
-                            }
-                        )
+                    .sheet(item: $eventToView, onDismiss: {
+                        loadInitialEvents()
+                    }) { event in
+                        EventDetailViewWrapper(event: event)
                     }
                 }
             }
@@ -143,9 +138,9 @@ struct AllEventsListView: View {
                     timeString: timeString
                 ) { event in
                     if let multi = event as? EKMultiDayWrapper {
-                        eventToEdit = multi.realEvent
+                        eventToView = multi.realEvent
                     } else if let editableEvent = event as? EKEvent {
-                        eventToEdit = editableEvent
+                        eventToView = editableEvent
                     } else {
                         print("Event type not supported for editing")
                     }
@@ -236,22 +231,4 @@ struct AllEventsListView: View {
         return df.string(from: date)
     }
     
-    private func presentNewEvent(on day: Date) {
-        let cal = Calendar.current
-        let newEvent = EKEvent(eventStore: CalendarViewModel.shared.eventStore)
-        
-        var dateComponents = cal.dateComponents([.year, .month, .day], from: day)
-        let nowComponents = cal.dateComponents([.hour, .minute], from: Date())
-        
-        dateComponents.hour = nowComponents.hour
-        dateComponents.minute = nowComponents.minute
-        
-        let startDate = cal.date(from: dateComponents)!
-        newEvent.startDate = startDate
-        newEvent.endDate   = cal.date(byAdding: .hour, value: 1, to: startDate)!
-        
-        newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
-        newEvent.calendar = CalendarViewModel.shared.eventStore.defaultCalendarForNewEvents
-        eventToEdit = newEvent
-    }
 }
