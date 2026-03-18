@@ -109,44 +109,18 @@ struct WeatherKitView: View {
             searchResultsOverlay
                 .zIndex(10) // overlay да е над останалото съдържание
         }
-//        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            // Trailing – остава само лупата + менюто, показват се, когато не търсим
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                if !showSearchBar {
-                    Button {
-                           withAnimation {
-                               showSearchBar = true
-                           }
-                           // малко след анимацията задаваме фокус
-                           DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                               isSearchFieldFocused = true
-                           }
-                       } label: {
-                           Image(systemName: "magnifyingglass")
-                       }
-                    .foregroundColor(colorScheme == .light ? .black : .white)
-                    UIMenuButtonRepresentable(
-                        currentView: selectedTab,
-                        tintColor: colorScheme == .light ? .black : .white,
-                        onViewChange: onViewChange
-                    )
-                    .frame(width: 36, height: 36)
+        .navigationBarHidden(true)
+        .safeAreaInset(edge: .top) {
+            VStack(spacing: 0) {
+                weatherTopBar
+
+                if showSearchBar {
+                    searchField
+                        .padding(.top, 8)
+                        .padding(.horizontal)
+                        .transition(.move(edge: .top).combined(with: .opacity))
+                        .animation(.easeInOut(duration: 0.25), value: showSearchBar)
                 }
-            }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarBackground(
-            // намаляме opacity-а на ultraThinMaterial до 10%
-            .ultraThinMaterial.opacity(0.1),
-            for: .navigationBar
-        )        .safeAreaInset(edge: .top) {          // iOS 15+
-            if showSearchBar {
-                searchField
-                    .padding(.top, 20)
-                    .padding(.horizontal)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .animation(.easeInOut(duration: 0.25), value: showSearchBar)
             }
         }
 
@@ -441,6 +415,35 @@ struct WeatherKitView: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(Color.black.opacity(0.35))
         )
+    }
+
+    private var weatherTopBar: some View {
+        HStack(spacing: 9) {
+            Spacer()
+            if !showSearchBar {
+                Button {
+                    withAnimation {
+                        showSearchBar = true
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        isSearchFieldFocused = true
+                    }
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+                .foregroundColor(colorScheme == .light ? .black : .white)
+
+                UIMenuButtonRepresentable(
+                    currentView: selectedTab,
+                    tintColor: colorScheme == .light ? .black : .white,
+                    onViewChange: onViewChange
+                )
+                .frame(width: 36, height: 36)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top, 8)
+        .padding(.bottom, 8)
     }
     
     private var searchResultsOverlay: some View {

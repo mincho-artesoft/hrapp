@@ -26,6 +26,7 @@ struct RootView: View {
     @State private var pinnedFromDateSingle: Date = Date()
     @State private var pinnedToDateSingle: Date = Date()
     @State private var pinnedEventsSingle: [EventDescriptor] = []
+    @State private var selectedMonthDate: Date = Date()
 
     @State private var pinnedFromDateMulti: Date = Date()
     @State private var pinnedToDateMulti: Date = Calendar.current.date(byAdding: .day, value: 7, to: Date())!
@@ -128,10 +129,13 @@ struct RootView: View {
                         case 0:
                             MonthCalendarView(
                                 viewModel: CalendarViewModel.shared,
-                                startMonth: Date(),
+                                startMonth: selectedMonthDate,
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
+                                },
+                                onDaySelected: { selectedDay in
+                                    showSingleDayTab(for: selectedDay)
                                 }
                             )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
@@ -162,6 +166,9 @@ struct RootView: View {
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
+                                },
+                                onMonthSelected: { month in
+                                    showMonthTab(for: month)
                                 }
                             )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
@@ -447,6 +454,20 @@ struct RootView: View {
 
 // MARK: - Data Loading Helpers (Original from your file)
 extension RootView {
+    private func showMonthTab(for month: Date) {
+        let normalizedMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: month)) ?? month
+        selectedMonthDate = normalizedMonth
+        selectedTab = 0
+    }
+
+    private func showSingleDayTab(for day: Date) {
+        let normalizedDay = Calendar.current.startOfDay(for: day)
+        pinnedFromDateSingle = normalizedDay
+        pinnedToDateSingle = normalizedDay
+        loadSingleDayEvents()
+        selectedTab = 1
+    }
+
     private func loadSingleDayEvents() {
         guard accessGranted else { return }
         let fromOnly = Calendar.current.startOfDay(for: pinnedFromDateSingle)

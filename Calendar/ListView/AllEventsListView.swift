@@ -25,6 +25,8 @@ struct AllEventsListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            topBar
+
             // 1) Optional search bar
             if showSearchBar {
                 TextField(LocalizedStringKey("Search events..."), text: $searchText)
@@ -75,29 +77,32 @@ struct AllEventsListView: View {
             }
         }
         .animation(.easeInOut, value: showSearchBar)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                HStack(spacing: 9) {
-                    if !showSearchBar {
-                        // (b) Search Button
-                        Button {
-                            showSearchBar = true
-                        } label: {
-                            Image(systemName: "magnifyingglass")
-                        }
-                        
-                        // (c) UIMenuButtonRepresentable
-                        UIMenuButtonRepresentable(
-                            currentView: selectedTab,
-                            onViewChange: { newTab in
-                                onViewChange(newTab)
-                            }
-                        )
-                        .frame(width: 30, height: 30)
-                    }
+        .navigationBarHidden(true)
+    }
+
+    @ViewBuilder
+    private var topBar: some View {
+        HStack(spacing: 9) {
+            Spacer()
+            if !showSearchBar {
+                Button {
+                    showSearchBar = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
                 }
+
+                UIMenuButtonRepresentable(
+                    currentView: selectedTab,
+                    onViewChange: { newTab in
+                        onViewChange(newTab)
+                    }
+                )
+                .frame(width: 30, height: 30)
             }
         }
+        .padding(.horizontal)
+        .padding(.top, 8)
+        .padding(.bottom, 8)
     }
     
     // MARK: - The main List content

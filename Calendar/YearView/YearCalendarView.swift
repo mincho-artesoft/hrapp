@@ -8,9 +8,9 @@ struct YearCalendarView: View {
     
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)?
+    var onMonthSelected: ((Date) -> Void)?
     
     @State private var year: Int = Calendar.current.component(.year, from: Date())
-    @State private var tappedMonthDate: Date? = nil
     @State private var eventToEdit: EKEvent? = nil
     
     // Търсене
@@ -20,10 +20,12 @@ struct YearCalendarView: View {
     // MARK: - Инициализатор
     init(viewModel: CalendarViewModel,
          selectedTab: Int,
-         onViewChange: ((Int) -> Void)?) {
+         onViewChange: ((Int) -> Void)?,
+         onMonthSelected: ((Date) -> Void)? = nil) {
         self.viewModel = viewModel
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange
+        self.onMonthSelected = onMonthSelected
         
         // Настройки за прозрачен/полупрозрачен navigation bar
         let clear = UINavigationBarAppearance()
@@ -44,6 +46,7 @@ struct YearCalendarView: View {
     // MARK: - Тяло
     var body: some View {
         VStack(spacing: 0) {
+            topBar
             
             // (A) Търсачка
             if showSearchBar {
@@ -140,7 +143,7 @@ struct YearCalendarView: View {
                                         eventsByDay: viewModel.eventsByDay,
                                         width: 180,
                                     ) { tappedMonth in
-                                        tappedMonthDate = tappedMonth
+                                        onMonthSelected?(tappedMonth)
                                     }
                                     .padding(8)
                                 } else {
@@ -150,7 +153,7 @@ struct YearCalendarView: View {
                                             eventsByDay: viewModel.eventsByDay,
                                             width: isLandscape ? 180 : 160,
                                         ) { tappedMonth in
-                                            tappedMonthDate = tappedMonth
+                                            onMonthSelected?(tappedMonth)
                                         }
                                         .padding(8)
                                     } else {
@@ -159,7 +162,7 @@ struct YearCalendarView: View {
                                             eventsByDay: viewModel.eventsByDay,
                                             width: 180,
                                         ) { tappedMonth in
-                                            tappedMonthDate = tappedMonth
+                                            onMonthSelected?(tappedMonth)
                                         }
                                         .padding(8)
                                     }
@@ -177,58 +180,39 @@ struct YearCalendarView: View {
             }
         }
         .animation(.easeInOut, value: showSearchBar)
-        
-        // (D) Покривка при избор на месец
-        .fullScreenCover(item: $tappedMonthDate) { monthStart in
-            NavigationView {
-                MonthCalendarView(
-                    viewModel: viewModel,
-                    startMonth: monthStart,
-                    selectedTab: selectedTab,
-                    onViewChange: onViewChange
-                )
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(LocalizedStringKey("Close")) {
-                            tappedMonthDate = nil
-                            viewModel.loadEventsForWholeYear(year: year)
-                        }
-                    }
-                }
-            }
-        }
-        
-        // (E) Sheet за създаване/редактиране на събитие
+
+        // (D) Sheet за създаване/редактиране на събитие
         .sheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEventsForWholeYear(year: year)
         }) { ev in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: ev)
         }
-        
-        // (F) Toolbar – Add, Search, Menu
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                HStack(spacing: 9) {
-                    if !showSearchBar {
-                        // Бутон за търсене
-                        Button {
-                            showSearchBar = true
-                        } label: {
-                            Image(systemName: "magnifyingglass")
-                        }
-                        
-                        // Меню за смяна на изгледи
-                        UIMenuButtonRepresentable(
-                            currentView: selectedTab,
-                            onViewChange: { newTab in
-                                onViewChange?(newTab)
-                            }
-                        )
-                        .frame(width: 30, height: 30)
-                    }
+        .navigationBarHidden(true)
+    }
+
+    @ViewBuilder
+    private var topBar: some View {
+        HStack(spacing: 9) {
+            Spacer()
+            if !showSearchBar {
+                Button {
+                    showSearchBar = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
                 }
+
+                UIMenuButtonRepresentable(
+                    currentView: selectedTab,
+                    onViewChange: { newTab in
+                        onViewChange?(newTab)
+                    }
+                )
+                .frame(width: 30, height: 30)
             }
         }
+        .padding(.horizontal)
+        .padding(.top, 8)
+        .padding(.bottom, 8)
     }
     
     // MARK: - Helper-и

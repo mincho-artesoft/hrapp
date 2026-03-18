@@ -8,6 +8,7 @@ struct MonthCalendarView: View {
     var startMonth: Date
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)?
+    var onDaySelected: ((Date) -> Void)?
     
     @State private var eventToView: EKEvent? = nil
     @State private var eventToEdit: EKEvent? = nil
@@ -15,9 +16,6 @@ struct MonthCalendarView: View {
     @State private var showRepeatingDialog = false
     @State private var repeatingEvent: EKEvent? = nil
     @State private var repeatingNewDate: Date? = nil
-    
-    @State private var selectedDayForFullScreen: Date? = nil
-    @State private var pinnedDayEvents: [EventDescriptor] = []
     
     @State private var currentMonth: Date
     
@@ -33,12 +31,14 @@ struct MonthCalendarView: View {
     init(viewModel: CalendarViewModel,
          startMonth: Date,
          selectedTab: Int,
-         onViewChange: ((Int) -> Void)?) {
+         onViewChange: ((Int) -> Void)?,
+         onDaySelected: ((Date) -> Void)? = nil) {
         self.viewModel = viewModel
         self.startMonth = startMonth
         self._currentMonth = State(initialValue: startMonth)
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange
+        self.onDaySelected = onDaySelected
         
         // ① 100 % прозрачно – когато е в scroll-edge (върха)
         let clear = UINavigationBarAppearance()
@@ -65,6 +65,8 @@ struct MonthCalendarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            topBar
+
             // (A) Търсачка
             if showSearchBar {
                 TextField(LocalizedStringKey("Search events..."), text: $searchText)
@@ -137,7 +139,7 @@ struct MonthCalendarView: View {
                                     handleEventDropped(eventID, on: newDay)
                                 },
                                 onDayTap: { tappedDay in
-                                    selectedDayForFullScreen = tappedDay
+                                    onDaySelected?(tappedDay)
                                 },
                                 onDayLongPress: { pressedDay in
                                     createAndEditNewEvent(on: pressedDay)
@@ -158,75 +160,29 @@ struct MonthCalendarView: View {
             // Зареждаме събития за текущия месец
             viewModel.loadEvents(for: currentMonth)
         }
-        
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                HStack(spacing: 9) {
-                    if !showSearchBar {
-                        // Бутон за търсене
-                        Button {
-                            showSearchBar = true
-                        } label: {
-                            Image(systemName: "magnifyingglass")
-                        }
-                        
-                        // Заместваме SwiftUI Menu с UIMenuButtonRepresentable:
-                        UIMenuButtonRepresentable(
-                            currentView: selectedTab,
-                            onViewChange: { newTab in
-                                onViewChange?(newTab)
-                            }
-                        )
-                        .frame(width: 30, height: 30)
-                    }
-                }
-            }
+        .onChange(of: startMonth) { _, newValue in
+            let normalizedMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: newValue)) ?? newValue
+            guard !calendar.isDate(normalizedMonth, equalTo: currentMonth, toGranularity: .month) else { return }
+            currentMonth = normalizedMonth
+            viewModel.loadEvents(for: currentMonth)
         }
-        // (E) Full-screen cover (DayView)
-        .fullScreenCover(item: $selectedDayForFullScreen) { day in
-            NavigationView {
-                TwoWayPinnedMultiDayWrapper(
-                    fromDate: .constant(day),
-                    toDate: .constant(day),
-                    events: $pinnedDayEvents,
-                    eventStore: viewModel.eventStore,
-                    isSingleDay: true,
-                    selectedTab: selectedTab,
-                    onViewChange: onViewChange
-                ) { tappedDay in
-                    selectedDayForFullScreen = tappedDay
-                }
-                .onAppear {
-                    loadPinnedDayEvents(for: day)
-                }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(LocalizedStringKey("Close")) {
-                            selectedDayForFullScreen = nil
-                            viewModel.loadEvents(for: currentMonth)
-                        }
-                    }
-                }
-                .navigationTitle(LocalizedStringKey("Day View"))
-                .navigationBarTitleDisplayMode(.inline)
-            }
-        }
-        
-        // (F) Sheet за детайлен изглед
+        .navigationBarHidden(true)
+
+        // (E) Sheet за детайлен изглед
         .sheet(item: $eventToView, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { theEvent in
             EventDetailViewWrapper(event: theEvent)
         }
         
-        // (G) Sheet за създаване/редакция
+        // (F) Sheet за създаване/редакция
         .sheet(item: $eventToEdit, onDismiss: {
             viewModel.loadEvents(for: currentMonth)
         }) { theEvent in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
         }
         
-        // (H) Диалог за повтарящо се събитие
+        // (G) Диалог за повтарящо се събитие
         .confirmationDialog(LocalizedStringKey("This is a repeating event."),
                             isPresented: $showRepeatingDialog,
                             titleVisibility: .visible) {
@@ -242,6 +198,31 @@ struct MonthCalendarView: View {
             }
             Button(LocalizedStringKey("Cancel"), role: .cancel) {}
         }
+    }
+
+    @ViewBuilder
+    private var topBar: some View {
+        HStack(spacing: 9) {
+            Spacer()
+            if !showSearchBar {
+                Button {
+                    showSearchBar = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+
+                UIMenuButtonRepresentable(
+                    currentView: selectedTab,
+                    onViewChange: { newTab in
+                        onViewChange?(newTab)
+                    }
+                )
+                .frame(width: 30, height: 30)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top, 8)
+        .padding(.bottom, 8)
     }
 }
 
@@ -334,52 +315,5 @@ extension MonthCalendarView {
         newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
         
         eventToEdit = newEvent
-    }
-
-    private func loadPinnedDayEvents(for day: Date) {
-        let cal = Calendar.current
-        let dayStart = cal.startOfDay(for: day)
-        guard let nextDay = cal.date(byAdding: .day, value: 1, to: dayStart) else { return }
-        
-        let predicate = viewModel.eventStore.predicateForEvents(withStart: dayStart, end: nextDay, calendars: nil)
-        let found = viewModel.eventStore.events(matching: predicate)
-        
-        var splitted: [EventDescriptor] = []
-        for ekEvent in found {
-            let realStart = ekEvent.startDate
-            let realEnd = ekEvent.endDate
-            if let rs = realStart, let re = realEnd, (rs < dayStart || re > nextDay) {
-                splitted.append(contentsOf: splitEventByDays(ekEvent, startRange: dayStart, endRange: nextDay))
-            } else {
-                splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
-            }
-        }
-        pinnedDayEvents = splitted
-    }
-
-    private func splitEventByDays(_ ekEvent: EKEvent,
-                                  startRange: Date,
-                                  endRange: Date) -> [EKMultiDayWrapper] {
-        var results = [EKMultiDayWrapper]()
-        let cal = Calendar.current
-        let realStart = max(ekEvent.startDate ?? startRange, startRange)
-        let realEnd = min(ekEvent.endDate ?? endRange, endRange)
-        if realStart >= realEnd { return results }
-
-        var currentStart = realStart
-        while currentStart < realEnd {
-            guard let endOfDay = cal.date(bySettingHour: 23, minute: 59, second: 59, of: currentStart) else { break }
-            let pieceEnd = min(endOfDay, realEnd)
-            let partial = EKMultiDayWrapper(realEvent: ekEvent,
-                                            partialStart: currentStart,
-                                            partialEnd: pieceEnd)
-            results.append(partial)
-
-            guard let nextDay = cal.date(byAdding: .day, value: 1, to: currentStart),
-                  let morning = cal.date(bySettingHour: 0, minute: 0, second: 0, of: nextDay)
-            else { break }
-            currentStart = morning
-        }
-        return results
     }
 }
