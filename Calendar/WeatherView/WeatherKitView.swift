@@ -431,6 +431,9 @@ struct WeatherKitView: View {
                 } label: {
                     Image(systemName: "magnifyingglass")
                 }
+                .frame(width: 36, height: 36)
+                .contentShape(Rectangle())
+                .buttonStyle(.plain)
                 .foregroundColor(colorScheme == .light ? .black : .white)
 
                 UIMenuButtonRepresentable(
@@ -441,9 +444,13 @@ struct WeatherKitView: View {
                 .frame(width: 36, height: 36)
             }
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal)
         .padding(.top, 8)
         .padding(.bottom, 8)
+        .background(Color.black.opacity(0.001))
+        .contentShape(Rectangle())
+        .zIndex(20)
     }
     
     private var searchResultsOverlay: some View {

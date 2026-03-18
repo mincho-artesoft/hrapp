@@ -95,6 +95,7 @@ class WeatherKitViewModel: ObservableObject {
                 }
 
                 self.errorMessage = nil
+                NotificationCenter.default.post(name: .weatherForecastUpdated, object: nil)
             } catch {
                 print("WeatherKit Error: \(error)")
                 self.errorMessage = "Failed to fetch weather data. Please check your connection or try again later."
@@ -136,6 +137,7 @@ class WeatherKitViewModel: ObservableObject {
         currentMoonEvents = nil
 
         errorMessage = nil
+        NotificationCenter.default.post(name: .weatherForecastUpdated, object: nil)
     }
 
     // MARK: - Current Weather Conversion

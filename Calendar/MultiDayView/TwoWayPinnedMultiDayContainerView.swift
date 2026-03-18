@@ -1,5 +1,6 @@
 import UIKit
 import SwiftUI
+import Foundation
 
 // MARK: - TwoWayPinnedMultiDayContainerView
 public final class TwoWayPinnedMultiDayContainerView: UIView,
@@ -191,6 +192,15 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         btn.tintColor = .systemBlue
         return btn
     }()
+
+    private let closeSearchButton: UIButton = {
+        let btn = UIButton(type: .system)
+        let image = UIImage(systemName: "xmark")
+        btn.setImage(image, for: .normal)
+        btn.tintColor = .secondaryLabel
+        btn.isHidden = true
+        return btn
+    }()
     
     // MARK: - Search functionality (с Cancel)
     private let searchBar: UISearchBar = {
@@ -232,6 +242,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
 //                addEventButton.isHidden = true
                 viewMenuButton.isHidden = true
                 searchButton.isHidden = true
+                closeSearchButton.isHidden = false
                 
                 // Ако showSingleDay = true, оставяме каросела видим, но скриваме бутона:
                 if showSingleDay {
@@ -248,6 +259,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
 //                addEventButton.isHidden = false
                 viewMenuButton.isHidden = false
                 searchButton.isHidden = false
+                closeSearchButton.isHidden = true
                 
                 if showSingleDay {
                     dateRangeButton.isHidden   = true
@@ -298,6 +310,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                name: UIDevice.orientationDidChangeNotification,
                object: nil
            )
+        NotificationCenter.default.addObserver(
+               self,
+               selector: #selector(weatherForecastDidUpdate),
+               name: .weatherForecastUpdated,
+               object: nil
+           )
     }
     
     public required init?(coder: NSCoder) {
@@ -311,6 +329,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                name: UIDevice.orientationDidChangeNotification,
                object: nil
            )
+        NotificationCenter.default.addObserver(
+               self,
+               selector: #selector(weatherForecastDidUpdate),
+               name: .weatherForecastUpdated,
+               object: nil
+           )
     }
     
     deinit {
@@ -320,6 +344,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     @objc private func orientationDidChange() {
         hideCalendarPopup()
+    }
+
+    @objc private func weatherForecastDidUpdate() {
+        setNeedsLayout()
+        layoutIfNeeded()
+        hoursColumnWeatherView.setNeedsDisplay()
+        daysHeaderView.setNeedsDisplay()
     }
     
     // MARK: - Setup
@@ -439,6 +470,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // searchButton
         navBar.addSubview(searchButton)
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        navBar.addSubview(closeSearchButton)
+        closeSearchButton.addTarget(self, action: #selector(closeSearchButtonTapped), for: .touchUpInside)
         
         // Свързваме вюта
         daysHeaderView.leadingInsetForHours = 0
@@ -485,6 +518,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         searchBar.text = ""
         searchBar.becomeFirstResponder()
     }
+
+    @objc private func closeSearchButtonTapped() {
+        isSearching = false
+        searchBar.resignFirstResponder()
+        searchText = ""
+        searchBar.text = ""
+    }
     
     // MARK: - UISearchBarDelegate
     public func searchBar(_ searchBar: UISearchBar, textDidChange text: String) {
@@ -504,14 +544,19 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     private func animateSearchBarIn() {
         searchBar.isHidden          = false
-        searchBar.showsCancelButton = true          // ← бутонът вече съществува
-
-        customizeCancelButton()                     // ⏪ тук
+        searchBar.showsCancelButton = false
 
         let sbHeight: CGFloat = 36
         let finalY = (navBarHeight - sbHeight) / 2
-        let finalFrame = CGRect(x: 10, y: finalY,
-                                width: navBar.bounds.width - 20, height: sbHeight)
+        let closeButtonWidth: CGFloat = 34
+        let spacing: CGFloat = 8
+        let trailingInset: CGFloat = 10
+        let finalFrame = CGRect(
+            x: 10,
+            y: finalY,
+            width: navBar.bounds.width - 20 - closeButtonWidth - spacing - trailingInset,
+            height: sbHeight
+        )
 
         let startFrame = finalFrame.offsetBy(dx: 0, dy: -navBarHeight)
         searchBar.frame = startFrame
@@ -522,22 +567,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             self.searchBar.alpha = 1
         }
     }
-    
-    // MARK: - Преоразяване на “Cancel” в xmark
-    private func customizeCancelButton() {
-        guard let cancelBtn = searchBar.value(forKey: "cancelButton") as? UIButton else { return }
-
-        // махаме текста и слагаме SF символ
-        cancelBtn.setTitle("", for: .normal)
-        let img = UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate)
-        cancelBtn.setImage(img, for: .normal)
-
-        // цвят и размер
-
-        cancelBtn.tintColor = .secondaryLabel        // или .label, .secondaryLabel, каквото решиш
-        cancelBtn.frame.size = CGSize(width: 22, height: 22)   // компактно
-    }
-
     
     private func animateSearchBarOut() {
         let finalFrame = searchBar.frame.offsetBy(dx: 0, dy: -navBarHeight)
@@ -644,6 +673,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         let searchButtonX = menuButtonX - searchBtnSize - margin
         searchButton.frame = CGRect(x: searchButtonX, y: centerY, width: searchBtnSize, height: searchBtnSize)
+        closeSearchButton.frame = CGRect(
+            x: navBar.bounds.width - searchBtnSize - 10,
+            y: centerY,
+            width: searchBtnSize,
+            height: searchBtnSize
+        )
         
         let plusButtonX = searchButtonX - plusBtnSize - margin
 //        addEventButton.frame = CGRect(x: plusButtonX, y: centerY, width: plusBtnSize, height: plusBtnSize)

@@ -151,6 +151,15 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         btn.tintColor = .systemBlue
         return btn
     }()
+
+    private let closeSearchButton: UIButton = {
+        let btn = UIButton(type: .system)
+        let image = UIImage(systemName: "xmark")
+        btn.setImage(image, for: .normal)
+        btn.tintColor = .secondaryLabel
+        btn.isHidden = true
+        return btn
+    }()
     
     private let searchBar: UISearchBar = {
         let sb = UISearchBar()
@@ -346,6 +355,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         navBar.addSubview(searchButton)
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        navBar.addSubview(closeSearchButton)
+        closeSearchButton.addTarget(self, action: #selector(closeSearchButtonTapped), for: .touchUpInside)
         
         weekView.hoursColumnView = hoursColumnView
         
@@ -435,6 +446,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let searchButtonX = menuButtonX - searchBtnSize - margin
         searchButton.frame = CGRect(
             x: searchButtonX,
+            y: centerY,
+            width: searchBtnSize,
+            height: searchBtnSize
+        )
+        closeSearchButton.frame = CGRect(
+            x: navBar.bounds.width - searchBtnSize - 10,
             y: centerY,
             width: searchBtnSize,
             height: searchBtnSize
@@ -830,11 +847,13 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
 //                addEventButton.isHidden      = true
                 viewMenuButton.isHidden      = true
                 searchButton.isHidden        = true
+                closeSearchButton.isHidden   = false
                 animateSearchBarIn()
             } else {
 //                addEventButton.isHidden      = false
                 viewMenuButton.isHidden      = false
                 searchButton.isHidden        = false
+                closeSearchButton.isHidden   = true
                 animateSearchBarOut()
             }
         }
@@ -850,6 +869,13 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         searchText   = ""
         searchBar.text = ""
         searchBar.becomeFirstResponder()
+    }
+
+    @objc private func closeSearchButtonTapped() {
+        isSearching = false
+        searchBar.resignFirstResponder()
+        searchText = ""
+        searchBar.text = ""
     }
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange text: String) {
@@ -869,14 +895,19 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     
     private func animateSearchBarIn() {
         searchBar.isHidden          = false
-        searchBar.showsCancelButton = true          // ← бутонът вече съществува
-
-        customizeCancelButton()                     // ⏪ тук
+        searchBar.showsCancelButton = false
 
         let sbHeight: CGFloat = 36
         let finalY = (navBarHeight - sbHeight) / 2
-        let finalFrame = CGRect(x: 10, y: finalY,
-                                width: navBar.bounds.width - 20, height: sbHeight)
+        let closeButtonWidth: CGFloat = 34
+        let spacing: CGFloat = 8
+        let trailingInset: CGFloat = 10
+        let finalFrame = CGRect(
+            x: 10,
+            y: finalY,
+            width: navBar.bounds.width - 20 - closeButtonWidth - spacing - trailingInset,
+            height: sbHeight
+        )
 
         let startFrame = finalFrame.offsetBy(dx: 0, dy: -navBarHeight)
         searchBar.frame = startFrame
@@ -888,21 +919,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         }
     }
     
-    // MARK: - Преоразяване на “Cancel” в xmark
-    private func customizeCancelButton() {
-        guard let cancelBtn = searchBar.value(forKey: "cancelButton") as? UIButton else { return }
-
-        // махаме текста и слагаме SF символ
-        cancelBtn.setTitle("", for: .normal)
-        let img = UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate)
-        cancelBtn.setImage(img, for: .normal)
-
-        // цвят и размер
-
-        cancelBtn.tintColor = .secondaryLabel        // или .label, .secondaryLabel, каквото решиш
-        cancelBtn.frame.size = CGSize(width: 22, height: 22)   // компактно
-    }
-
     private func animateSearchBarOut() {
         let finalFrame = searchBar.frame.offsetBy(dx: 0, dy: -navBarHeight)
         UIView.animate(withDuration: 0.3, animations: {

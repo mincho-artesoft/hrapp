@@ -67,9 +67,13 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
                     WeatherKitViewModel.shared.setTimeZone(tz)
                 }
 
-                // ВАЖНО: ПРЕМАХНАХМЕ извикването на fetchWeatherForCoords тук!
-                // Това позволява на WeatherKitView.swift да реши дали да зареди времето
-                // за текущата локация (ако не сме търсили) или да запази търсения град.
+                let weatherVM = WeatherKitViewModel.shared
+                if weatherVM.hourlyForecast.isEmpty && weatherVM.dailyForecast.isEmpty {
+                    weatherVM.fetchWeatherForCoords(
+                        latitude: location.coordinate.latitude,
+                        longitude: location.coordinate.longitude
+                    )
+                }
             }
         }
     }
