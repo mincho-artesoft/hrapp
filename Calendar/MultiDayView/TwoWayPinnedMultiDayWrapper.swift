@@ -15,7 +15,8 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     var selectedTab: Int
     var onViewChange: ((Int)->Void)?
     
-    public var onDayLabelTap: ((Date) -> Void)?
+    public var onDayLabelTap: ((Date) -> Void)? = nil
+    public var onMonthLabelTap: ((Date) -> Void)? = nil
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
         
@@ -86,6 +87,10 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         container.onDayLabelTap = { day in
             onDayLabelTap?(day)
         }
+
+        container.onMonthLabelTap = { month in
+            onMonthLabelTap?(month)
+        }
         
         // Настройки за типа изглед (Day, MultiDay и т.н.)
         container.currentView = selectedTab
@@ -129,6 +134,8 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         
         container.currentView = selectedTab
         container.onViewChange = onViewChange
+        container.onDayLabelTap = onDayLabelTap
+        container.onMonthLabelTap = onMonthLabelTap
         
         container.setNeedsLayout()
         container.layoutIfNeeded()

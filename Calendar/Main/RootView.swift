@@ -150,12 +150,16 @@ struct RootView: View {
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
+                                },
+                                onDayLabelTap: { tappedDay in
+                                    pinnedFromDateSingle = tappedDay
+                                    pinnedToDateSingle   = tappedDay
+                                    loadSingleDayEvents()
+                                },
+                                onMonthLabelTap: { month in
+                                    showMonthTab(for: month)
                                 }
-                            ) { tappedDay in
-                                pinnedFromDateSingle = tappedDay
-                                pinnedToDateSingle   = tappedDay
-                                loadSingleDayEvents()
-                            }
+                            )
                             .onAppear { loadSingleDayEvents() }
                             .onReceive(timer) { _ in loadSingleDayEvents() }
                             .ignoresSafeArea(.all)
@@ -183,13 +187,14 @@ struct RootView: View {
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
+                                },
+                                onDayLabelTap: { tappedDay in
+                                    pinnedFromDateSingle = tappedDay
+                                    pinnedToDateSingle   = tappedDay
+                                    loadSingleDayEvents()
+                                    selectedTab = 1
                                 }
-                            ) { tappedDay in
-                                pinnedFromDateSingle = tappedDay
-                                pinnedToDateSingle   = tappedDay
-                                loadSingleDayEvents()
-                                selectedTab = 1
-                            }
+                            )
                             .onAppear { loadMultiDayEvents() }
                             .onReceive(timer) { _ in loadMultiDayEvents() }
                             .ignoresSafeArea(.all)
@@ -225,13 +230,17 @@ struct RootView: View {
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
+                                },
+                                onDayLabelTap: { tappedDay in
+                                    pinnedFromDateSingle = tappedDay
+                                    // For SingleDayMultiCalendarWrapper, toDate is usually same as fromDate
+                                    // pinnedToDateSingle   = tappedDay // Not typically set by this wrapper
+                                    loadSingleDayEventsLocal()
+                                },
+                                onMonthLabelTap: { month in
+                                    showMonthTab(for: month)
                                 }
-                            ) { tappedDay in
-                                pinnedFromDateSingle = tappedDay
-                                // For SingleDayMultiCalendarWrapper, toDate is usually same as fromDate
-                                // pinnedToDateSingle   = tappedDay // Not typically set by this wrapper
-                                loadSingleDayEventsLocal()
-                            }
+                            )
                             .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
                             .onReceive(timer) { _ in loadSingleDayEventsLocal() }
                             .ignoresSafeArea(.all)

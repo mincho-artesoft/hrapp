@@ -89,6 +89,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     public var onDayLabelTap: ((Date) -> Void)? {
         didSet { daysHeaderView.onDayTap = onDayLabelTap }
     }
+    public var onMonthLabelTap: ((Date) -> Void)?
     public var onAddNewEvent: (() -> Void)?
     
     // ---------------------------------------------------------
@@ -117,6 +118,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .label
         label.isHidden  = true
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -331,6 +333,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
         navBar.addSubview(monthLabel)
+        let monthLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(monthLabelTapped))
+        monthLabel.addGestureRecognizer(monthLabelTapGesture)
         
         searchBar.delegate = self
         navBar.addSubview(searchBar)
@@ -399,6 +403,10 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // ---------------------------------------------------------
     // MARK: - Layout
     // ---------------------------------------------------------
+    @objc private func monthLabelTapped() {
+        onMonthLabelTap?(fromDate)
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         

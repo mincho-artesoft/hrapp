@@ -109,6 +109,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             daysHeaderView.onDayTap = onDayLabelTap
         }
     }
+    public var onMonthLabelTap: ((Date) -> Void)?
     
     /// Callback при натискане на бутона “+”
     public var onAddNewEvent: (() -> Void)?
@@ -144,6 +145,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .label
         label.isHidden = true
+        label.isUserInteractionEnabled = true
         return label
     }()
     
@@ -436,6 +438,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // Добавяме monthLabel в navBar
         navBar.addSubview(monthLabel)
+        let monthLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(monthLabelTapped))
+        monthLabel.addGestureRecognizer(monthLabelTapGesture)
         
         // Search bar
         searchBar.delegate = self
@@ -629,6 +633,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // Бутон "+"
     @objc private func addEventButtonTapped() {
         onAddNewEvent?()
+    }
+
+    @objc private func monthLabelTapped() {
+        onMonthLabelTap?(fromDate)
     }
     
     // MARK: - Layout
