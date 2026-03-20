@@ -672,7 +672,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // Подреждаме бутоните в navBar
         let menuBtnSize: CGFloat = 34
         let searchBtnSize: CGFloat = 34
-        let plusBtnSize: CGFloat = 34
         let margin: CGFloat = 8
         
         let menuButtonX = navBar.bounds.width - menuBtnSize - 10
@@ -688,12 +687,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             height: searchBtnSize
         )
         
-        let plusButtonX = searchButtonX - plusBtnSize - margin
-//        addEventButton.frame = CGRect(x: plusButtonX, y: centerY, width: plusBtnSize, height: plusBtnSize)
-        
-        let btnW: CGFloat = 220
+        let btnX: CGFloat = 10
+        let btnW = min(220, searchButtonX - btnX - margin)
         let btnH: CGFloat = 40
-        let btnX = plusButtonX - btnW - margin
         let btnY = (navBar.bounds.height - btnH) / 2
         dateRangeButton.frame = CGRect(x: btnX, y: btnY, width: btnW, height: btnH)
         
