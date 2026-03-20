@@ -285,6 +285,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     fileprivate let navBarHeight: CGFloat = 50
     fileprivate let daysHeaderHeight: CGFloat = 40
     fileprivate let leftColumnWidth: CGFloat = 60
+    fileprivate let bottomScrollPadding: CGFloat = 50
     
     private let topBorder = CALayer()
     private let bottomBorder = CALayer()
@@ -365,6 +366,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         mainScrollView.showsHorizontalScrollIndicator = true
         mainScrollView.showsVerticalScrollIndicator = true
         mainScrollView.bounces = false
+        mainScrollView.contentInsetAdjustmentBehavior = .never
         mainScrollView.layer.zPosition = 1
         mainScrollView.addSubview(weekView)
         addSubview(mainScrollView)
@@ -376,6 +378,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         allDayScrollView.alwaysBounceHorizontal = false
         allDayScrollView.alwaysBounceVertical = false
         allDayScrollView.bounces = false
+        allDayScrollView.contentInsetAdjustmentBehavior = .never
         allDayScrollView.layer.zPosition = 2
         allDayScrollView.addSubview(allDayView)
         addSubview(allDayScrollView)
@@ -383,12 +386,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // hoursColumnScrollView
         hoursColumnScrollView.showsVerticalScrollIndicator = false
         hoursColumnScrollView.isScrollEnabled = false
+        hoursColumnScrollView.contentInsetAdjustmentBehavior = .never
         hoursColumnScrollView.addSubview(hoursColumnView)
         hoursColumnScrollView.layer.zPosition = 3
         addSubview(hoursColumnScrollView)
         
         hoursColumnWeatherScrollView.showsVerticalScrollIndicator = false
         hoursColumnWeatherScrollView.isScrollEnabled = false
+        hoursColumnWeatherScrollView.contentInsetAdjustmentBehavior = .never
         hoursColumnWeatherScrollView.addSubview(hoursColumnWeatherView)
         hoursColumnWeatherScrollView.layer.zPosition = 3
         hoursColumnWeatherScrollView.isUserInteractionEnabled = false
@@ -401,6 +406,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         daysHeaderScrollView.delegate = self
         daysHeaderScrollView.backgroundColor = .secondarySystemBackground
         daysHeaderScrollView.bounces = false
+        daysHeaderScrollView.contentInsetAdjustmentBehavior = .never
         daysHeaderScrollView.addSubview(daysHeaderView)
         daysHeaderScrollView.layer.zPosition = 4
         addSubview(daysHeaderScrollView)
@@ -772,7 +778,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         let totalHours = 25
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
-        let finalHeight = baseHeight + (weekView.topMargin * 2)
+        let finalHeight = baseHeight + (weekView.topMargin * 2) + bottomScrollPadding
         let totalWidth = CGFloat(dayCount) * weekView.dayColumnWidth
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
@@ -838,10 +844,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - UIScrollViewDelegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == mainScrollView {
+            let syncedOffsetY = syncedVerticalOffset(for: scrollView.contentOffset.y)
+            if abs(scrollView.contentOffset.y - syncedOffsetY) > 0.5 {
+                mainScrollView.contentOffset.y = syncedOffsetY
+            }
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x     = scrollView.contentOffset.x
-            hoursColumnScrollView.contentOffset.y = scrollView.contentOffset.y
-            hoursColumnWeatherScrollView.contentOffset.y = scrollView.contentOffset.y
+            hoursColumnScrollView.contentOffset.y = syncedOffsetY
+            hoursColumnWeatherScrollView.contentOffset.y = syncedOffsetY
 
         }
         else if scrollView == daysHeaderScrollView {
@@ -852,6 +862,14 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             mainScrollView.contentOffset.x = scrollView.contentOffset.x
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
         }
+    }
+
+    private func syncedVerticalOffset(for proposedOffsetY: CGFloat) -> CGFloat {
+        let mainMaxOffset = max(0, mainScrollView.contentSize.height - mainScrollView.bounds.height)
+        let hoursMaxOffset = max(0, hoursColumnScrollView.contentSize.height - hoursColumnScrollView.bounds.height)
+        let sharedMaxOffset = min(mainMaxOffset, hoursMaxOffset)
+
+        return min(max(proposedOffsetY, 0), sharedMaxOffset)
     }
     
     // MARK: - Timer
