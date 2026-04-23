@@ -3,7 +3,6 @@ import SwiftUI
 import EventKit
 import GoogleSignIn
 import GoogleSignInSwift
-import MSAL
 import SafariServices
 
 struct GoogleSharingInfo: Codable, Equatable {
@@ -285,6 +284,9 @@ struct CalendarsSheetView: View {
     }
 
     private var microsoftSection: some View {
+        #if targetEnvironment(macCatalyst)
+        EmptyView()
+        #else
         Group {
             if !viewModel.storedMsUsers.isEmpty {
                 Section { Text(LocalizedStringKey("Microsoft calendars")) }
@@ -337,6 +339,7 @@ struct CalendarsSheetView: View {
                 }
             }
         }
+        #endif
     }
 
     private var addCalendarSection: some View {
@@ -407,6 +410,9 @@ struct CalendarsSheetView: View {
     }
 
     private var microsoftSignInSection: some View {
+        #if targetEnvironment(macCatalyst)
+        EmptyView()
+        #else
         Section {
             Button(action: {
                 if subscriptionManager.subscriptionStatus == .base  || subscriptionManager.subscriptionStatus == .advance {
@@ -435,6 +441,7 @@ struct CalendarsSheetView: View {
             }
             .buttonStyle(PlainButtonStyle())
         }
+        #endif
     }
 
     // MARK: - Helper Actions

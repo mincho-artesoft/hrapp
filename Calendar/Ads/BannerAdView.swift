@@ -1,4 +1,17 @@
 import SwiftUI
+
+#if targetEnvironment(macCatalyst)
+struct BannerAdView: View {
+    @Binding var adsBool: Bool
+
+    var body: some View {
+        EmptyView()
+            .onAppear {
+                adsBool = false
+            }
+    }
+}
+#else
 import GoogleMobileAds
 
 struct BannerAdView: UIViewRepresentable {
@@ -58,3 +71,4 @@ struct BannerAdView: UIViewRepresentable {
         }
     }
 }
+#endif

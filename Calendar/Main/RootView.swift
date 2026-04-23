@@ -104,6 +104,22 @@ struct RootView: View {
     ]
 
 
+    private var calendarContentIgnoredSafeAreaEdges: Edge.Set {
+        #if targetEnvironment(macCatalyst)
+        return [.leading, .trailing, .bottom]
+        #else
+        return .all
+        #endif
+    }
+
+    private var showsDraggableMenuInLandscape: Bool {
+        #if targetEnvironment(macCatalyst)
+        return true
+        #else
+        return false
+        #endif
+    }
+
     
     init() {
         // Ако няма нищо записано, по подразбиране ще е 1
@@ -122,6 +138,7 @@ struct RootView: View {
             NavigationView {
                 GeometryReader { geometry in
                     let isPortrait = geometry.size.height > geometry.size.width
+                    let shouldShowDraggableMenu = isPortrait || showsDraggableMenuInLandscape
 
                     VStack(spacing: 0) { // Ensure VStack uses spacing 0 if no explicit spacing is desired
                         // Тук си избирате кой екран да се покаже според selectedTab
@@ -162,7 +179,7 @@ struct RootView: View {
                             )
                             .onAppear { loadSingleDayEvents() }
                             .onReceive(timer) { _ in loadSingleDayEvents() }
-                            .ignoresSafeArea(.all)
+                            .ignoresSafeArea(.container, edges: calendarContentIgnoredSafeAreaEdges)
 
                         case 2:
                             YearCalendarView(
@@ -197,7 +214,7 @@ struct RootView: View {
                             )
                             .onAppear { loadMultiDayEvents() }
                             .onReceive(timer) { _ in loadMultiDayEvents() }
-                            .ignoresSafeArea(.all)
+                            .ignoresSafeArea(.container, edges: calendarContentIgnoredSafeAreaEdges)
 
                         case 4:
                             AllEventsListView(
@@ -243,7 +260,7 @@ struct RootView: View {
                             )
                             .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
                             .onReceive(timer) { _ in loadSingleDayEventsLocal() }
-                            .ignoresSafeArea(.all)
+                            .ignoresSafeArea(.container, edges: calendarContentIgnoredSafeAreaEdges)
 
                         case 6:
                             WeatherKitView(
@@ -260,7 +277,7 @@ struct RootView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity) // Make sure the VStack fills the GeometryReader
                     .overlay(alignment: .bottom) {
-                        if menuState == .full && isPortrait && ![6,7].contains(selectedTab) { // Added checks from outer if
+                        if menuState == .full && shouldShowDraggableMenu && ![6,7].contains(selectedTab) { // Added checks from outer if
                              Color.black.opacity(0.001)
                                  .ignoresSafeArea()
                                  .contentShape(Rectangle())
@@ -273,7 +290,7 @@ struct RootView: View {
                                  .zIndex(0)
                          }
                         
-                        if isPortrait { // This condition was from your original code for showing DraggableMenuView
+                        if shouldShowDraggableMenu { // Catalyst windows are usually landscape but still need the menu.
                             DraggableMenuView(
                                 menuState: $menuState,
                                 adaptiveBackgroundOpacity:$draggableMenuAdaptiveBackgroundОpacity,

@@ -11,7 +11,6 @@ struct DraggableMenuView<
     private let fixedBottomBarHeight: CGFloat = 60
     private let handleHeight: CGFloat = 26
     private let collapsedPeekExtra: CGFloat = 10
-    private var topGapWhenExpanded: CGFloat = UIScreen.main.bounds.height * 0.2
 
     @Binding var adaptiveBackgroundOpacity: CGFloat
     @Environment(\.colorScheme) private var colorScheme
@@ -51,15 +50,10 @@ struct DraggableMenuView<
         self.horizontalScrollContent = horizontalContent()
         self.verticalScrollContent = verticalContent()
 
-        // Compute initial offsets
-        let fullOffset = UIScreen.main.bounds.height * 0.2
-        let clippingHeight = UIScreen.main.bounds.height - fixedBottomBarHeight
-        let collapsedOffset = max(fullOffset, clippingHeight - handleHeight + collapsedPeekExtra)
-
         _currentOffsetY = State(
             initialValue: menuState.wrappedValue == .full
-                ? fullOffset
-                : collapsedOffset
+                ? 0
+                : UIScreen.main.bounds.height
         )
     }
 
@@ -71,7 +65,7 @@ struct DraggableMenuView<
             let bottomSafe   = geometry.safeAreaInsets.bottom
 
             // calculate snap positions
-            let fullOffsetY     = topGapWhenExpanded
+            let fullOffsetY     = screenHeight * 0.2
             let clippingHeight  = screenHeight - fixedBottomBarHeight
             let collapsedOffsetY = max(
                 fullOffsetY,
@@ -98,7 +92,7 @@ struct DraggableMenuView<
 
                 // 2. The draggable menu
                 VStack(spacing: 0) {
-                    let contentHeight = UIScreen.main.bounds.height - fixedBottomBarHeight
+                    let contentHeight = screenHeight - fixedBottomBarHeight
 
                     // 2.1 The sliding content
                     slidingContentView(fullOffsetY: fullOffsetY,
@@ -119,6 +113,9 @@ struct DraggableMenuView<
 //                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: effectiveY)
             }
             .onAppear {
+                currentOffsetY = (menuState == .full)
+                    ? fullOffsetY
+                    : collapsedOffsetY
                 onStateChange(menuState)
             }
             .onChange(of: menuState) { _, newState in

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
-		50AC17392D9C07280096F29D /* AltIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 50AC17382D9C07280096F29D /* AltIcon */; };
+		50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
+		50AC17392D9C07280096F29D /* AltIcon in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50AC17382D9C07280096F29D /* AltIcon */; };
 		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
 		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
-		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
+		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -322,17 +322,18 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -366,17 +367,18 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};

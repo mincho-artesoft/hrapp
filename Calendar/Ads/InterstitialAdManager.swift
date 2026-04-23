@@ -1,3 +1,14 @@
+#if targetEnvironment(macCatalyst)
+import SwiftUI
+
+@MainActor
+final class InterstitialAdManager: ObservableObject {
+    static let shared = InterstitialAdManager()
+
+    func loadAd() {}
+    func showAd() {}
+}
+#else
 import GoogleMobileAds
 import UIKit
 import SwiftUI
@@ -72,3 +83,4 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
         loadAd()
     }
 }
+#endif

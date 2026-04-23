@@ -1,3 +1,12 @@
+#if targetEnvironment(macCatalyst)
+@MainActor
+final class AppOpenAdManager {
+  static let shared = AppOpenAdManager()
+
+  func loadAd() async {}
+  func showAdIfAvailable() {}
+}
+#else
 @preconcurrency import GoogleMobileAds
 import UIKit
 
@@ -77,3 +86,4 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
     return appOpenAd != nil && fresh
   }
 }
+#endif

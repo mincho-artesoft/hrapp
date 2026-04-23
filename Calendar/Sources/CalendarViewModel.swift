@@ -2,7 +2,9 @@ import SwiftUI
 import EventKit
 import Combine
 @preconcurrency import GoogleSignIn   // silences Sendable enforcement for SDK types
+#if !targetEnvironment(macCatalyst)
 import MSAL
+#endif
 import Contacts
 
 @MainActor
@@ -71,13 +73,16 @@ final class CalendarViewModel: ObservableObject {
     init() {
         Task {
               await refreshTokensForAllUsers()      // Google
+              #if !targetEnvironment(macCatalyst)
               for msUser in storedMsUsers {         // Microsoft
                   _ = await refreshMicrosoftTokenIfNeeded(for: msUser)
               }
+              #endif
           }
         // 1) Attempt to load the array of StoredGoogleUsers from UserDefaults
         self.loadAllUsersFromUserDefaults()
         
+        #if !targetEnvironment(macCatalyst)
         // load MS users
        loadAllMsUsersFromUserDefaults()
        
@@ -88,6 +93,7 @@ final class CalendarViewModel: ObservableObject {
        
        // Possibly start an MS sync timer as well
        startMicrosoftCalendarSync()
+        #endif
         
         // 2) Load per-user dictionaries from UserDefaults
         for user in storedUsers {
@@ -2593,6 +2599,10 @@ struct StoredMicrosoftUser: Codable, Hashable {
 extension CalendarViewModel {
     // Примерен метод за логин
     func signInWithMicrosoft() {
+        #if targetEnvironment(macCatalyst)
+        print("Microsoft sign-in is not available in Mac Catalyst because the MSAL package used by this app does not include a Catalyst binary.")
+        return
+        #else
         do {
             let authorityURL = URL(string: kAuthority)!
             let msalConfig = MSALPublicClientApplicationConfig(
@@ -2665,6 +2675,7 @@ extension CalendarViewModel {
         } catch {
             print("MSAL init error:", error)
         }
+        #endif
     }
 
 
@@ -2771,6 +2782,9 @@ extension CalendarViewModel {
     /// MSAL typically handles refresh tokens in the library’s cache,
     /// so you may not need a manual HTTP request for refresh like with Google.
     func refreshMicrosoftTokenIfNeeded(for user: StoredMicrosoftUser) async -> StoredMicrosoftUser? {
+        #if targetEnvironment(macCatalyst)
+        return nil
+        #else
         if user.accessTokenExpiration > Date() {
             // still valid, no refresh needed
             return user
@@ -2824,9 +2838,13 @@ extension CalendarViewModel {
             print("MSAL silent refresh error:", error.localizedDescription)
         }
         return user
+        #endif
     }
 
     func startMicrosoftCalendarSync() {
+        #if targetEnvironment(macCatalyst)
+        return
+        #else
         // Проверка дали вече има активен таймер
         guard msSyncTimer == nil else {
             print("startMicrosoftCalendarSync: вече има активен таймер => няма нужда да стартираме втори.")
@@ -2839,6 +2857,7 @@ extension CalendarViewModel {
                 await self?.performMicrosoftCalendarSyncForAllUsers()
             }
         }
+        #endif
     }
 
     func stopMicrosoftCalendarSync() {

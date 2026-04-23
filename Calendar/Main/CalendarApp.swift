@@ -1,9 +1,11 @@
 import SwiftUI
 import SwiftData
-import AltIcon
 import UIKit
 import CoreLocation
+#if !targetEnvironment(macCatalyst)
+import AltIcon
 import GoogleMobileAds
+#endif
 @preconcurrency import WeatherKit
 
 @main
@@ -35,7 +37,9 @@ struct CalendarApp: App {
                 .onAppear {
                     // Логика за реклами
                     if SubscriptionManager.shared.subscriptionStatus == .base {
+                        #if !targetEnvironment(macCatalyst)
                         MobileAds.shared.start(completionHandler: nil)
+                        #endif
                         Task {
                             await AppOpenAdManager.shared.loadAd()
                             InterstitialAdManager.shared.loadAd()
@@ -130,6 +134,9 @@ struct CalendarApp: App {
     }
 
     private func updateAppIconIfNeeded() {
+        #if targetEnvironment(macCatalyst)
+        return
+        #else
         guard !hasCheckedIconThisSession else { return }
         hasCheckedIconThisSession = true
 
@@ -153,6 +160,7 @@ struct CalendarApp: App {
             print("Changing app icon to: \(iconName)")
             AltIcon.setAppIcon(iconName)
         }
+        #endif
     }
 
     func getCurrentWeatherType() -> String {
