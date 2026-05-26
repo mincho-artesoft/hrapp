@@ -76,29 +76,7 @@ struct TemperatureRangeView: View {
         .frame(height: barHeight)
     }
 
-    // --- Helper Function for Dynamic Gradient Colors (Celsius) ---
-    // (Keep the existing colorGradient function unchanged)
     private func colorGradient(for averageTemperature: Double) -> LinearGradient {
-        let veryColdThreshold: Double = 0
-        let coolThreshold: Double = 12
-        let warmThreshold: Double = 22
-        let hotThreshold: Double = 30
-
-        let purple = Color(hue: 0.75, saturation: 0.7, brightness: 0.7)
-        let darkBlue = Color(hue: 0.65, saturation: 0.8, brightness: 0.8)
-        let cyan = Color(hue: 0.55, saturation: 0.7, brightness: 0.9)
-        let green = Color(hue: 0.33, saturation: 0.6, brightness: 0.8)
-        let yellow = Color(hue: 0.15, saturation: 0.8, brightness: 1.0)
-        let orange = Color(hue: 0.08, saturation: 0.9, brightness: 1.0)
-        let red = Color(hue: 0.0, saturation: 0.9, brightness: 0.9)
-
-        let colors: [Color]
-        if averageTemperature < veryColdThreshold { colors = [purple, darkBlue] }
-        else if averageTemperature < coolThreshold { colors = [darkBlue, cyan] }
-        else if averageTemperature < warmThreshold { colors = [green, yellow] }
-        else if averageTemperature < hotThreshold { colors = [yellow, orange] }
-        else { colors = [orange, red] }
-
-        return LinearGradient(gradient: Gradient(colors: colors), startPoint: .leading, endPoint: .trailing)
+        TemperatureColorScale.bandGradient(for: averageTemperature)
     }
 }

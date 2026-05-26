@@ -1,15 +1,6 @@
 {
-  "originHash" : "c4262b4b636239077a68d833b8943ec6315e70ddf04c602206c03f7f087af4e7",
+  "originHash" : "85f46fa25492a5454a62b019e5aad33b92172e9175fcf8dd95318db523e450a1",
   "pins" : [
-    {
-      "identity" : "alticon",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/matt-novoselov/AltIcon.git",
-      "state" : {
-        "revision" : "6361ba085e4f7b091bb016d5dcb304b22839088e",
-        "version" : "1.0.0"
-      }
-    },
     {
       "identity" : "app-check",
       "kind" : "remoteSourceControl",

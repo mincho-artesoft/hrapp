@@ -1,6 +1,5 @@
 import SwiftUI
 import SwiftData
-import AltIcon
 import UIKit
 import CoreLocation
 import GoogleMobileAds
@@ -20,7 +19,7 @@ struct CalendarApp: App {
 
     @Environment(\.scenePhase) private var scenePhase
 
-    @State private var hasCheckedIconThisSession = false // Флаг за иконите
+    @State private var hasRefreshedWidgetThisSession = false
 
     // Това е вашият WeatherKit ViewModel
     @StateObject private var weatherVM = WeatherKitViewModel.shared
@@ -78,7 +77,7 @@ struct CalendarApp: App {
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
 
                 setupGlobalState()
-                updateAppIconIfNeeded()
+                refreshCalendarWidgetIfNeeded()
 
             case .background:
                 print("App in background.")
@@ -129,62 +128,14 @@ struct CalendarApp: App {
         GlobalState.numberFormat = nf.string(from: num) ?? ""
     }
 
-    private func updateAppIconIfNeeded() {
-        guard !hasCheckedIconThisSession else { return }
-        hasCheckedIconThisSession = true
+    private func refreshCalendarWidgetIfNeeded() {
+        guard !hasRefreshedWidgetThisSession else { return }
+        hasRefreshedWidgetThisSession = true
 
-        let calendar = Calendar.current
-        let date = Date()
-        let day = calendar.component(.day, from: date)
-        let month = calendar.component(.month, from: date)
-        let weekday = calendar.component(.weekday, from: date)
-
-        let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-        let weekdaysShort = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-
-        let monthName = months[month - 1]
-        let weekdayNameShort = weekdaysShort[weekday - 1]
-        let weatherType = getCurrentWeatherType()
-
-        let iconName = "icon_\(monthName)_\(weekdayNameShort)_\(day)_\(weatherType)"
-        let currentIcon = UIApplication.shared.alternateIconName
-
-        if currentIcon != iconName {
-            print("Changing app icon to: \(iconName)")
-            AltIcon.setAppIcon(iconName)
-        }
-    }
-
-    func getCurrentWeatherType() -> String {
-        let symbol = weatherVM.currentSymbol
-        guard !symbol.isEmpty else { return "sun" }
-
-        let cleanedSymbol = symbol.replacingOccurrences(of: ".fill", with: "")
-
-        let symbolMapping: [String: String] = [
-            "cloud.bolt.rain": "cloud-bolt-rain",
-            "cloud.sun.bolt.rain": "cloud-bolt-rain",
-            "cloud.bolt": "cloud-bolt",
-            "cloud.sun.bolt": "cloud-bolt",
-            "cloud.drizzle": "cloud-drizzle",
-            "cloud.fog": "cloud-fog",
-            "cloud.hail": "cloud-hail",
-            "cloud.heavyrain": "cloud-heavyrain",
-            "cloud.rain": "cloud-rain",
-            "cloud.sun.rain": "cloud-rain",
-            "cloud.sleet": "cloud-sleet",
-            "cloud.snow": "cloud-snow",
-            "cloud.sun": "cloud-sun",
-            "cloud": "cloud",
-            "snowflake": "snowflake",
-            "sun.max": "sun",
-            "sun.haze": "sun"
-        ]
-
-        if let mapped = symbolMapping[cleanedSymbol] {
-            return mapped
-        } else {
-            return "sun"
-        }
+        CalendarWidgetStore.saveWeatherSnapshot(
+            symbol: weatherVM.currentSymbol,
+            condition: weatherVM.currentCondition,
+            temperature: weatherVM.currentTemp
+        )
     }
 }

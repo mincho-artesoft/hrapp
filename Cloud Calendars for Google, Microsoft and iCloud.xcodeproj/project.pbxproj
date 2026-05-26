@@ -8,14 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 50964E862DE85D4200564845 /* GoogleMobileAds */; };
-		50AC17392D9C07280096F29D /* AltIcon in Frameworks */ = {isa = PBXBuildFile; productRef = 50AC17382D9C07280096F29D /* AltIcon */; };
 		50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 50D829892D886BBD004B3545 /* GoogleSignIn */; };
 		50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D8298B2D886BBD004B3545 /* GoogleSignInSwift */; };
 		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
+		50E000082DE9000000000008 /* CalendarWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 50E000012DE9000000000001 /* CalendarWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		50E0000A2DE900000000000A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50B212432D4111B800ABB8D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50E000042DE9000000000004;
+			remoteInfo = CalendarWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		50E000092DE9000000000009 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				50E000082DE9000000000008 /* CalendarWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cloud Calendars for Google, Microsoft and iCloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E000012DE9000000000001 /* CalendarWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CalendarWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -25,6 +50,13 @@
 				Info.plist,
 			);
 			target = 50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */;
+		};
+		50E000032DE9000000000003 /* Exceptions for "CalendarWidget" folder in "CalendarWidget" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 50E000042DE9000000000004 /* CalendarWidget */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -37,6 +69,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		50E000022DE9000000000002 /* CalendarWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				50E000032DE9000000000003 /* Exceptions for "CalendarWidget" folder in "CalendarWidget" target */,
+			);
+			path = CalendarWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,10 +85,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				50D8298C2D886BBD004B3545 /* GoogleSignInSwift in Frameworks */,
-				50AC17392D9C07280096F29D /* AltIcon in Frameworks */,
 				50964E872DE85D4200564845 /* GoogleMobileAds in Frameworks */,
 				50D82EE72D92C681004B3545 /* MSAL in Frameworks */,
 				50D8298A2D886BBD004B3545 /* GoogleSignIn in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E000062DE9000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
+				50E000022DE9000000000002 /* CalendarWidget */,
 				504D17CF2D678413006E5D6E /* Frameworks */,
 				50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */,
+				50E000012DE9000000000001 /* CalendarWidget.appex */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,10 +129,12 @@
 				50B212472D4111B800ABB8D3 /* Sources */,
 				50B212482D4111B800ABB8D3 /* Frameworks */,
 				50B212492D4111B800ABB8D3 /* Resources */,
+				50E000092DE9000000000009 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				50E0000B2DE900000000000B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				50B2124D2D4111B800ABB8D3 /* Calendar */,
@@ -94,12 +144,33 @@
 				50D829892D886BBD004B3545 /* GoogleSignIn */,
 				50D8298B2D886BBD004B3545 /* GoogleSignInSwift */,
 				50D82EE62D92C681004B3545 /* MSAL */,
-				50AC17382D9C07280096F29D /* AltIcon */,
 				50964E862DE85D4200564845 /* GoogleMobileAds */,
 			);
 			productName = Calendar;
 			productReference = 50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */;
 			productType = "com.apple.product-type.application";
+		};
+		50E000042DE9000000000004 /* CalendarWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50E0000E2DE900000000000E /* Build configuration list for PBXNativeTarget "CalendarWidget" */;
+			buildPhases = (
+				50E000052DE9000000000005 /* Sources */,
+				50E000062DE9000000000006 /* Frameworks */,
+				50E000072DE9000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				50E000022DE9000000000002 /* CalendarWidget */,
+			);
+			name = CalendarWidget;
+			packageProductDependencies = (
+			);
+			productName = CalendarWidget;
+			productReference = 50E000012DE9000000000001 /* CalendarWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -112,6 +183,9 @@
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					50B2124A2D4111B800ABB8D3 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					50E000042DE9000000000004 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -135,7 +209,6 @@
 			packageReferences = (
 				50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				50D82EE52D92C681004B3545 /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */,
-				50AC17372D9C07280096F29D /* XCRemoteSwiftPackageReference "AltIcon" */,
 				50964E852DE85D4200564845 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -144,12 +217,20 @@
 			projectRoot = "";
 			targets = (
 				50B2124A2D4111B800ABB8D3 /* Cloud Calendars for Google, Microsoft and iCloud */,
+				50E000042DE9000000000004 /* CalendarWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		50B212492D4111B800ABB8D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50E000072DE9000000000007 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -166,7 +247,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50E000052DE9000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50E0000B2DE900000000000B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50E000042DE9000000000004 /* CalendarWidget */;
+			targetProxy = 50E0000A2DE900000000000A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		50B212572D4111BA00ABB8D3 /* Debug */ = {
@@ -297,7 +393,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -341,7 +436,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Calendar/Calendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -380,6 +474,70 @@
 			};
 			name = Release;
 		};
+		50E0000C2DE900000000000C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = CalendarWidget/CalendarWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8293TNMX6S;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CalendarWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.5.6;
+				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD.CalendarWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50E0000D2DE900000000000D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = CalendarWidget/CalendarWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8293TNMX6S;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CalendarWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cloud Calendars";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.5.6;
+				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD.CalendarWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -401,6 +559,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		50E0000E2DE900000000000E /* Build configuration list for PBXNativeTarget "CalendarWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50E0000C2DE900000000000C /* Debug */,
+				50E0000D2DE900000000000D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -410,14 +577,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 12.5.0;
-			};
-		};
-		50AC17372D9C07280096F29D /* XCRemoteSwiftPackageReference "AltIcon" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/matt-novoselov/AltIcon.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
 			};
 		};
 		50D829882D886BBD004B3545 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
@@ -443,11 +602,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50964E852DE85D4200564845 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
-		};
-		50AC17382D9C07280096F29D /* AltIcon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 50AC17372D9C07280096F29D /* XCRemoteSwiftPackageReference "AltIcon" */;
-			productName = AltIcon;
 		};
 		50D829892D886BBD004B3545 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -137,6 +137,7 @@ class WeatherKitViewModel: ObservableObject {
         currentMoonEvents = nil
 
         errorMessage = nil
+        CalendarWidgetStore.clearWeatherSnapshot()
         NotificationCenter.default.post(name: .weatherForecastUpdated, object: nil)
     }
 
@@ -187,6 +188,14 @@ class WeatherKitViewModel: ObservableObject {
         // 7. Символ и тренд на налягането
         currentSymbol    = current.symbolName
         currentCondition = current.condition.description
+        CalendarWidgetStore.saveWeatherSnapshot(
+            symbol: currentSymbol,
+            condition: currentCondition,
+            temperature: currentTemp,
+            windDirectionDegrees: currentWindDirection?.degrees,
+            windDirectionText: windDirectionAbbreviation(for: currentWindDirection),
+            windSpeed: currentWindSpeed
+        )
         switch current.pressureTrend {
         case .falling: pressureTrend = "Falling"
         case .rising:  pressureTrend = "Rising"
@@ -409,6 +418,12 @@ class WeatherKitViewModel: ObservableObject {
             todayMaxTemp = first.maxTemp
         }
         updateMoonPhaseInfo()
+        if let currentMoonEvents {
+            CalendarWidgetStore.saveMoonSnapshot(
+                phaseAssetName: widgetMoonPhaseAssetName(for: currentMoonEvents.phase),
+                phaseDescription: currentMoonEvents.phase.description
+            )
+        }
     }
 
 
@@ -487,6 +502,20 @@ class WeatherKitViewModel: ObservableObject {
         ]
         let key = keys[idx]
         return NSLocalizedString(key, comment: "Wind direction abbreviation")
+    }
+
+    private func widgetMoonPhaseAssetName(for phase: MoonPhase) -> String {
+        switch phase {
+        case .new: return "phase_new"
+        case .full: return "phase_full"
+        case .firstQuarter: return "phase_first_quarter"
+        case .lastQuarter: return "phase_third_quarter"
+        case .waningCrescent: return "phase_waning_crescent"
+        case .waningGibbous: return "phase_waning_gibbous"
+        case .waxingCrescent: return "phase_waxing_crescent"
+        case .waxingGibbous: return "phase_waxing_gibbous"
+        @unknown default: return "phase_full"
+        }
     }
 
 }

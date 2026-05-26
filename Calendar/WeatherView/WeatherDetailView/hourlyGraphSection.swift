@@ -14,24 +14,7 @@ extension WeatherDetailView{
         let yRange = yAxisRange
         let hourMarkers = [0, 6, 12, 18, 24]
         
-        // Определяме цветове и градиент
-        let purple   = Color(hue: 0.75, saturation: 0.7, brightness: 0.7)
-        let darkBlue = Color(hue: 0.65, saturation: 0.8, brightness: 0.8)
-        let cyan     = Color(hue: 0.55, saturation: 0.7, brightness: 0.9)
-        let green    = Color(hue: 0.33, saturation: 0.6, brightness: 0.8)
-        let yellow   = Color(hue: 0.15, saturation: 0.8, brightness: 1.0)
-        let orange   = Color(hue: 0.08, saturation: 0.9, brightness: 1.0)
-        let red      = Color(hue: 0.00, saturation: 0.9, brightness: 0.9)
-        
-        let gradient = Gradient(stops: [
-            .init(color: purple,   location: temperatureToGradientLocation(-10, range: yRange)),
-            .init(color: darkBlue, location: temperatureToGradientLocation(0, range: yRange)),
-            .init(color: cyan,     location: temperatureToGradientLocation(12, range: yRange)),
-            .init(color: green,    location: temperatureToGradientLocation(22, range: yRange)),
-            .init(color: yellow,   location: temperatureToGradientLocation(25, range: yRange)),
-            .init(color: orange,   location: temperatureToGradientLocation(30, range: yRange)),
-            .init(color: red,      location: temperatureToGradientLocation(35, range: yRange))
-        ])
+        let gradient = TemperatureColorScale.graphGradient(range: yRange)
         var feelsLikeMinMax: (min: Double, max: Double) {
             let feelsLikeTemps = hourlyItemsForSelectedDate.map { $0.feelsLikeTemp }
             return (feelsLikeTemps.min() ?? 0, feelsLikeTemps.max() ?? 0)
@@ -574,7 +557,7 @@ extension WeatherDetailView{
         return .white
     }
     
-    func temperatureToGradientLocation(_ temp: Double, range: (min: Double, max: Double)) -> CGFloat {
+    private func temperatureToGradientLocation(_ temp: Double, range: (min: Double, max: Double)) -> CGFloat {
         guard range.max > range.min else { return 0.5 }
         let normalized = (temp - range.min) / (range.max - range.min)
         return CGFloat(max(0.0, min(1.0, normalized)))
