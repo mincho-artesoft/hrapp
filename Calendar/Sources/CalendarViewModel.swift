@@ -405,6 +405,7 @@ final class CalendarViewModel: ObservableObject {
 
         // 6) Накрая записваме newEventCalendarMap като нов „стар“ snapshot
         oldEventCalendarMap = newEventCalendarMap
+        CalendarWidgetStore.saveUpcomingEventsSnapshot()
     }
 
     /// Търси в msToLocalCalendarMapAll дали даденият локален календар (localCalID)

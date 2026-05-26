@@ -341,6 +341,7 @@ struct RootView: View {
                                             case 5: reloadSingleDayEventsWithVisibleCalendars()
                                             default: break
                                             }
+                                            refreshCalendarWidgetEventsSnapshot()
                                         }
                                     }
                                 }
@@ -381,6 +382,9 @@ struct RootView: View {
                         case 5: reloadSingleDayEventsWithVisibleCalendars()
                         default: break
                     }
+                    refreshCalendarWidgetEventsSnapshot()
+                } else {
+                    CalendarWidgetStore.clearUpcomingEventsSnapshot()
                 }
             }
             
@@ -402,6 +406,7 @@ struct RootView: View {
                         case 5: reloadSingleDayEventsWithVisibleCalendars()
                         default: break
                         }
+                        refreshCalendarWidgetEventsSnapshot()
                     }
                 }
             }
@@ -438,9 +443,19 @@ struct RootView: View {
                     case 5: reloadSingleDayEventsWithVisibleCalendars()
                     default: break
                     }
+                    refreshCalendarWidgetEventsSnapshot()
                 }
             }
         }
+    }
+
+    private func refreshCalendarWidgetEventsSnapshot() {
+        guard accessGranted else {
+            CalendarWidgetStore.clearUpcomingEventsSnapshot()
+            return
+        }
+
+        CalendarWidgetStore.saveUpcomingEventsSnapshot()
     }
 
     // Helper for bottom bar buttons

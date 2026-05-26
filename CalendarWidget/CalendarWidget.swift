@@ -17,6 +17,7 @@ private enum WidgetSharedStore {
         static let windSpeedUnit = "calendarWidget.windSpeedUnit"
         static let moonPhaseAssetName = "calendarWidget.moonPhaseAssetName"
         static let moonPhaseDescription = "calendarWidget.moonPhaseDescription"
+        static let upcomingEvents = "calendarWidget.upcomingEvents"
     }
 
     static func snapshot() -> WeatherSnapshot {
@@ -36,6 +37,17 @@ private enum WidgetSharedStore {
             moonPhaseDescription: defaults?.string(forKey: Key.moonPhaseDescription) ?? "Moon"
         )
     }
+
+    static func upcomingEvents() -> [CalendarWidgetUpcomingEvent] {
+        guard
+            let data = UserDefaults(suiteName: appGroupID)?.data(forKey: Key.upcomingEvents),
+            let events = try? JSONDecoder().decode([CalendarWidgetUpcomingEvent].self, from: data)
+        else {
+            return []
+        }
+
+        return events
+    }
 }
 
 private struct WeatherSnapshot {
@@ -49,6 +61,22 @@ private struct WeatherSnapshot {
     let windSpeedUnit: String
     let moonPhaseAssetName: String
     let moonPhaseDescription: String
+}
+
+private struct CalendarWidgetUpcomingEvent: Codable, Identifiable {
+    let id: String
+    let title: String
+    let startDate: Date
+    let endDate: Date
+    let isAllDay: Bool
+    let colorRed: Double
+    let colorGreen: Double
+    let colorBlue: Double
+    let colorAlpha: Double
+
+    var tintColor: Color {
+        Color(red: colorRed, green: colorGreen, blue: colorBlue, opacity: colorAlpha)
+    }
 }
 
 private struct CalendarWidgetTriangleArrow: Shape {
@@ -65,6 +93,7 @@ private struct CalendarWidgetTriangleArrow: Shape {
 private struct CalendarIconEntry: TimelineEntry {
     let date: Date
     let weather: WeatherSnapshot
+    let events: [CalendarWidgetUpcomingEvent]
 
     static let preview = CalendarIconEntry(
         date: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 12)) ?? Date(),
@@ -79,7 +108,15 @@ private struct CalendarIconEntry: TimelineEntry {
             windSpeedUnit: "km/h",
             moonPhaseAssetName: "phase_waxing_gibbous",
             moonPhaseDescription: "Waxing Gibbous"
-        )
+        ),
+        events: [
+            CalendarWidgetUpcomingEvent(id: "1", title: "Team standup", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 9, minute: 30)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 10)) ?? Date(), isAllDay: false, colorRed: 0.16, colorGreen: 0.58, colorBlue: 0.95, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "2", title: "Product review", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 11)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 12)) ?? Date(), isAllDay: false, colorRed: 0.95, colorGreen: 0.42, colorBlue: 0.35, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "3", title: "Lunch with Alex", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 13)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 14)) ?? Date(), isAllDay: false, colorRed: 0.47, colorGreen: 0.80, colorBlue: 0.40, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "4", title: "Design sync", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 15, minute: 30)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 16)) ?? Date(), isAllDay: false, colorRed: 0.72, colorGreen: 0.54, colorBlue: 0.98, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "5", title: "Release prep", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 10)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 11)) ?? Date(), isAllDay: false, colorRed: 1.00, colorGreen: 0.74, colorBlue: 0.20, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "6", title: "Family dinner", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 19)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 21)) ?? Date(), isAllDay: false, colorRed: 0.25, colorGreen: 0.84, colorBlue: 0.76, colorAlpha: 1)
+        ]
     )
 }
 
@@ -89,12 +126,12 @@ private struct CalendarIconProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (CalendarIconEntry) -> Void) {
-        completion(CalendarIconEntry(date: Date(), weather: WidgetSharedStore.snapshot()))
+        completion(CalendarIconEntry(date: Date(), weather: WidgetSharedStore.snapshot(), events: WidgetSharedStore.upcomingEvents()))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<CalendarIconEntry>) -> Void) {
         let now = Date()
-        let entry = CalendarIconEntry(date: now, weather: WidgetSharedStore.snapshot())
+        let entry = CalendarIconEntry(date: now, weather: WidgetSharedStore.snapshot(), events: WidgetSharedStore.upcomingEvents())
         let nextRefresh = Calendar.current.date(byAdding: .minute, value: 30, to: now) ?? now.addingTimeInterval(1800)
         completion(Timeline(entries: [entry], policy: .after(nextRefresh)))
     }
@@ -159,7 +196,7 @@ private struct CalendarIconWidgetView: View {
             // Горна част: Месец/Ден от седмицата и Времето с температурата
             HStack(alignment: .top) {
                 // Лява колона
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .center, spacing: 2) {
                     Text(monthText)
                         .font(.system(size: 24, weight: .regular))
                         .minimumScaleFactor(0.8)
@@ -170,7 +207,8 @@ private struct CalendarIconWidgetView: View {
                 }
                 .foregroundStyle(iconTextColor)
                 .lineLimit(1)
-                .frame(maxHeight: .infinity) // Разтяга колоната до максималната налична височина
+                .frame(width: 82, alignment: .center)
+                .frame(maxHeight: .infinity, alignment: .center) // Разтяга колоната до максималната налична височина
 
                 Spacer()
 
@@ -258,62 +296,119 @@ private struct CalendarIconWidgetView: View {
     }
 
     private var mediumClassicBody: some View {
-        HStack(alignment: .center, spacing: 12) {
-            VStack(alignment: .leading, spacing: 0) {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(monthText)
-                        .font(.system(size: 30, weight: .regular))
-                    Text(weekdayText)
-                        .font(.system(size: 30, weight: .regular))
-                }
-                .lineLimit(1)
-                .minimumScaleFactor(0.75)
+        GeometryReader { geometry in
+            let iconWidth = geometry.size.width * 0.4
+            let listWidth = geometry.size.width * 0.6
 
-                Spacer(minLength: 0)
+            HStack(alignment: .center, spacing: 0) {
+                smallBody
+//                    .padding(.leading, 16)
+//                    .padding(.trailing, 8)
+                    .frame(width: iconWidth)
+                    .frame(maxHeight: .infinity)
 
-                Text(dayText)
-                    .font(.system(size: 88, weight: .regular))
+                mediumClassicEventsList
+//                    .padding(.leading, 8)
+                    .padding(.trailing, 16)
+//                    .padding(.vertical, 8)
+                    .frame(width: listWidth)
+                    .frame(maxHeight: .infinity, alignment: .center)
+            }
+//            .padding(.vertical, 7)
+        }
+    }
+
+    @ViewBuilder
+    private var mediumClassicEventsList: some View {
+        let events = Array(entry.events.prefix(6))
+
+        if events.isEmpty {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("No upcoming events")
+                    .font(.system(size: 15, weight: .medium))
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
+                Text("Calendar")
+                    .font(.system(size: 11, weight: .regular))
+                    .opacity(0.78)
+                    .lineLimit(1)
             }
             .foregroundStyle(iconTextColor)
-            .frame(width: 110, alignment: .leading)
-
-            VStack(alignment: .trailing, spacing: 8) {
-                HStack(alignment: .center, spacing: 8) {
-                    Image(systemName: normalizedSymbol(entry.weather.symbol))
-                        .symbolVariant(.fill)
-                        .symbolRenderingMode(.multicolor)
-                        .font(.system(size: 40, weight: .regular))
-                        .frame(width: 54, height: 40)
-
-                    VStack(alignment: .trailing, spacing: 0) {
-                        Text(temperatureText ?? "--°")
-                            .font(.system(size: 32, weight: .regular))
-                            .lineLimit(1)
-
-                        Text(entry.weather.condition.isEmpty ? "Weather" : entry.weather.condition)
-                            .font(.system(size: 11, weight: .regular))
-                            .lineLimit(1)
-                    }
-                    .foregroundStyle(iconTextColor)
-                }
-
-                HStack(spacing: 10) {
-                    mediumMetricView(
-                        value: shortMoonPhaseText,
-                        imageName: entry.weather.moonPhaseAssetName
-                    )
-                    .frame(width: 78, height: 66)
-
-                    mediumWindView
-                        .frame(width: 78, height: 66)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        } else {
+            VStack(alignment: .leading, spacing: 3) {
+                ForEach(events) { event in
+                    mediumClassicEventRow(event)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
-        .padding(.vertical, 14)
-        .padding(.horizontal, 16)
+    }
+
+    private func mediumClassicEventRow(_ event: CalendarWidgetUpcomingEvent) -> some View {
+        HStack(alignment: .center, spacing: 6) {
+            Capsule()
+                .fill(event.tintColor)
+                .frame(width: 3, height: 15)
+
+            VStack(alignment: .leading, spacing: 0) {
+                Text(event.title.isEmpty ? "Untitled" : event.title)
+                    .font(.system(size: 11, weight: .medium))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+
+                Text(eventScheduleText(event))
+                    .font(.system(size: 9, weight: .regular))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.65)
+                    .opacity(0.78)
+            }
+        }
+        .foregroundStyle(iconTextColor)
+        .frame(height: 16)
+    }
+
+    private func eventScheduleText(_ event: CalendarWidgetUpcomingEvent) -> String {
+        let endDate = eventDisplayEndDate(event)
+        let isMultiDay = !calendar.isDate(event.startDate, inSameDayAs: endDate)
+
+        if event.isAllDay {
+            if isMultiDay {
+                return "\(shortDateText(event.startDate)) - \(shortDateText(endDate)), \(NSLocalizedString("all-day", comment: ""))"
+            }
+
+            return "\(shortDateText(event.startDate)), \(NSLocalizedString("all-day", comment: ""))"
+        }
+
+        if isMultiDay {
+            return "\(shortDateText(event.startDate)) \(shortTimeText(event.startDate)) - \(shortDateText(endDate)) \(shortTimeText(endDate))"
+        }
+
+        return "\(shortDateText(event.startDate)), \(shortTimeText(event.startDate))-\(shortTimeText(endDate))"
+    }
+
+    private func shortDateText(_ date: Date) -> String {
+        if calendar.isDateInToday(date) {
+            return "Today"
+        }
+
+        if calendar.isDateInTomorrow(date) {
+            return "Tomorrow"
+        }
+
+        return date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))
+    }
+
+    private func shortTimeText(_ date: Date) -> String {
+        date.formatted(.dateTime.hour().minute())
+    }
+
+    private func eventDisplayEndDate(_ event: CalendarWidgetUpcomingEvent) -> Date {
+        guard event.isAllDay else {
+            return event.endDate
+        }
+
+        return event.endDate.addingTimeInterval(-1)
     }
 
     private var shortMoonPhaseText: String {

@@ -137,5 +137,6 @@ struct CalendarApp: App {
             condition: weatherVM.currentCondition,
             temperature: weatherVM.currentTemp
         )
+        CalendarWidgetStore.saveUpcomingEventsSnapshot()
     }
 }
