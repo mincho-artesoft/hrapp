@@ -18,6 +18,12 @@ private enum WidgetSharedStore {
         static let moonPhaseAssetName = "calendarWidget.moonPhaseAssetName"
         static let moonPhaseDescription = "calendarWidget.moonPhaseDescription"
         static let upcomingEvents = "calendarWidget.upcomingEvents"
+        static let region = "calendarWidget.global.region"
+        static let calendar = "calendarWidget.global.calendar"
+        static let measurementSystem = "calendarWidget.global.measurementSystem"
+        static let firstWeekday = "calendarWidget.global.firstWeekday"
+        static let dateFormat = "calendarWidget.global.dateFormat"
+        static let numberFormat = "calendarWidget.global.numberFormat"
     }
 
     static func snapshot() -> WeatherSnapshot {
@@ -35,6 +41,20 @@ private enum WidgetSharedStore {
             windSpeedUnit: defaults?.string(forKey: Key.windSpeedUnit) ?? "",
             moonPhaseAssetName: defaults?.string(forKey: Key.moonPhaseAssetName) ?? "phase_full",
             moonPhaseDescription: defaults?.string(forKey: Key.moonPhaseDescription) ?? "Moon"
+        )
+    }
+
+    static func globalSettings() -> GlobalSettingsSnapshot {
+        let defaults = UserDefaults(suiteName: appGroupID)
+
+        return GlobalSettingsSnapshot(
+            region: defaults?.string(forKey: Key.region) ?? "",
+            calendarIdentifier: defaults?.string(forKey: Key.calendar) ?? "",
+            temperatureUnit: defaults?.string(forKey: Key.temperatureUnit) ?? "",
+            measurementSystem: defaults?.string(forKey: Key.measurementSystem) ?? "",
+            firstWeekday: defaults?.integer(forKey: Key.firstWeekday) ?? Calendar.current.firstWeekday,
+            dateFormat: defaults?.string(forKey: Key.dateFormat) ?? "",
+            numberFormat: defaults?.string(forKey: Key.numberFormat) ?? ""
         )
     }
 
@@ -61,6 +81,16 @@ private struct WeatherSnapshot {
     let windSpeedUnit: String
     let moonPhaseAssetName: String
     let moonPhaseDescription: String
+}
+
+private struct GlobalSettingsSnapshot {
+    let region: String
+    let calendarIdentifier: String
+    let temperatureUnit: String
+    let measurementSystem: String
+    let firstWeekday: Int
+    let dateFormat: String
+    let numberFormat: String
 }
 
 private struct CalendarWidgetUpcomingEvent: Codable, Identifiable {
@@ -93,6 +123,7 @@ private struct CalendarWidgetTriangleArrow: Shape {
 private struct CalendarIconEntry: TimelineEntry {
     let date: Date
     let weather: WeatherSnapshot
+    let settings: GlobalSettingsSnapshot
     let events: [CalendarWidgetUpcomingEvent]
 
     static let preview = CalendarIconEntry(
@@ -108,6 +139,15 @@ private struct CalendarIconEntry: TimelineEntry {
             windSpeedUnit: "km/h",
             moonPhaseAssetName: "phase_waxing_gibbous",
             moonPhaseDescription: "Waxing Gibbous"
+        ),
+        settings: GlobalSettingsSnapshot(
+            region: "US",
+            calendarIdentifier: "gregorian",
+            temperatureUnit: UnitTemperature.celsius.symbol,
+            measurementSystem: "Metric",
+            firstWeekday: 1,
+            dateFormat: "M/d/yy",
+            numberFormat: "1,234,567.89"
         ),
         events: [
             CalendarWidgetUpcomingEvent(id: "1", title: "Team standup", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 9, minute: 30)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 10)) ?? Date(), isAllDay: false, colorRed: 0.16, colorGreen: 0.58, colorBlue: 0.95, colorAlpha: 1),
@@ -126,12 +166,13 @@ private struct CalendarIconProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (CalendarIconEntry) -> Void) {
-        completion(CalendarIconEntry(date: Date(), weather: WidgetSharedStore.snapshot(), events: WidgetSharedStore.upcomingEvents()))
+        completion(CalendarIconEntry(date: Date(), weather: WidgetSharedStore.snapshot(), settings: WidgetSharedStore.globalSettings(), events: WidgetSharedStore.upcomingEvents()))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<CalendarIconEntry>) -> Void) {
         let now = Date()
-        let entry = CalendarIconEntry(date: now, weather: WidgetSharedStore.snapshot(), events: WidgetSharedStore.upcomingEvents())
+        let settings = WidgetSharedStore.globalSettings()
+        let entry = CalendarIconEntry(date: now, weather: WidgetSharedStore.snapshot(), settings: settings, events: WidgetSharedStore.upcomingEvents())
         let nextRefresh = Calendar.current.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(900)
         completion(Timeline(entries: [entry], policy: .after(nextRefresh)))
     }
@@ -154,15 +195,33 @@ private struct CalendarIconWidgetView: View {
     }
 
     private var calendar: Calendar {
-        Calendar.current
+        var calendar = Calendar(identifier: calendarIdentifier(from: entry.settings.calendarIdentifier))
+        calendar.locale = widgetLocale
+        calendar.timeZone = .autoupdatingCurrent
+
+        if (1...7).contains(entry.settings.firstWeekday) {
+            calendar.firstWeekday = entry.settings.firstWeekday
+        }
+
+        return calendar
+    }
+
+    private var widgetLocale: Locale {
+        let region = entry.settings.region.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !region.isEmpty else {
+            return Locale.autoupdatingCurrent
+        }
+
+        let languageCode = Locale.autoupdatingCurrent.languageCode ?? "en"
+        return Locale(identifier: "\(languageCode)_\(region)")
     }
 
     private var monthText: String {
-        entry.date.formatted(.dateTime.month(.abbreviated)).uppercased()
+        formattedDate(entry.date, format: "MMM").uppercased()
     }
 
     private var weekdayText: String {
-        entry.date.formatted(.dateTime.weekday(.abbreviated)).uppercased()
+        formattedDate(entry.date, format: "EEE").uppercased()
     }
 
     private var dayText: String {
@@ -173,7 +232,7 @@ private struct CalendarIconWidgetView: View {
         guard let temperature = entry.weather.temperature else {
             return nil
         }
-        return "\(Int(temperature.rounded()))°"
+        return "\(roundedNumberText(temperature))°"
     }
 
     var body: some View {
@@ -324,11 +383,11 @@ private struct CalendarIconWidgetView: View {
 
         if events.isEmpty {
             VStack(alignment: .leading, spacing: 4) {
-                Text("No upcoming events")
+                Text(NSLocalizedString("No upcoming events", comment: "Widget empty events state"))
                     .font(.system(size: 15, weight: .medium))
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
-                Text("Calendar")
+                Text(NSLocalizedString("Calendar", comment: "Calendar label"))
                     .font(.system(size: 11, weight: .regular))
                     .opacity(0.78)
                     .lineLimit(1)
@@ -352,7 +411,7 @@ private struct CalendarIconWidgetView: View {
                 .frame(width: 3, height: 15)
 
             VStack(alignment: .leading, spacing: 0) {
-                Text(event.title.isEmpty ? "Untitled" : event.title)
+                Text(event.title.isEmpty ? NSLocalizedString("Untitled", comment: "Fallback event title") : event.title)
                     .font(.system(size: 11, weight: .medium))
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
@@ -389,18 +448,25 @@ private struct CalendarIconWidgetView: View {
 
     private func shortDateText(_ date: Date) -> String {
         if calendar.isDateInToday(date) {
-            return "Today"
+            return NSLocalizedString("Today", comment: "")
         }
 
         if calendar.isDateInTomorrow(date) {
-            return "Tomorrow"
+            return NSLocalizedString("Tomorrow", comment: "")
         }
 
-        return date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))
+        let dateFormat = entry.settings.dateFormat.trimmingCharacters(in: .whitespacesAndNewlines)
+        return formattedDate(date, format: dateFormat.isEmpty ? "EEE d MMM" : dateFormat)
     }
 
     private func shortTimeText(_ date: Date) -> String {
-        date.formatted(.dateTime.hour().minute())
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.locale = widgetLocale
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none
+        return formatter.string(from: date)
     }
 
     private func eventDisplayEndDate(_ event: CalendarWidgetUpcomingEvent) -> Date {
@@ -413,7 +479,7 @@ private struct CalendarIconWidgetView: View {
 
     private var shortMoonPhaseText: String {
         let text = entry.weather.moonPhaseDescription
-        return text == "Moon" ? "Phase" : text
+        return text == "Moon" ? NSLocalizedString("Phase", comment: "Moon phase fallback label") : text
     }
 
     private var windSpeedText: String {
@@ -421,11 +487,74 @@ private struct CalendarIconWidgetView: View {
             return "--"
         }
 
-        return "\(Int(windSpeed.rounded())) \(entry.weather.windSpeedUnit)"
+        return "\(roundedNumberText(windSpeed)) \(windSpeedUnitText)"
     }
 
     private var windArrowRotation: Angle {
         Angle(degrees: entry.weather.windDirectionDegrees ?? 0)
+    }
+
+    private var windSpeedUnitText: String {
+        if !entry.weather.windSpeedUnit.isEmpty {
+            return entry.weather.windSpeedUnit
+        }
+
+        return entry.settings.measurementSystem == "Imperial" ? "mph" : "km/h"
+    }
+
+    private func formattedDate(_ date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.locale = widgetLocale
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
+
+    private func roundedNumberText(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = widgetLocale
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        formatter.minimumFractionDigits = 0
+
+        let separators = numberSeparators(from: entry.settings.numberFormat)
+        formatter.decimalSeparator = separators.decimal ?? formatter.decimalSeparator
+        formatter.groupingSeparator = separators.grouping ?? formatter.groupingSeparator
+
+        return formatter.string(from: NSNumber(value: value.rounded())) ?? "\(Int(value.rounded()))"
+    }
+
+    private func numberSeparators(from sample: String) -> (grouping: String?, decimal: String?) {
+        let separators = sample.filter { !$0.isNumber }
+        guard !separators.isEmpty else {
+            return (nil, nil)
+        }
+
+        let decimal = separators.last.map(String.init)
+        let grouping = separators.dropLast().first.map(String.init)
+        return (grouping, decimal)
+    }
+
+    private func calendarIdentifier(from value: String) -> Calendar.Identifier {
+        switch value.lowercased() {
+        case "buddhist": return .buddhist
+        case "chinese": return .chinese
+        case "coptic": return .coptic
+        case "ethiopicametealem": return .ethiopicAmeteAlem
+        case "ethiopicametemihret": return .ethiopicAmeteMihret
+        case "hebrew": return .hebrew
+        case "indian": return .indian
+        case "islamic": return .islamic
+        case "islamiccivil": return .islamicCivil
+        case "islamictabular": return .islamicTabular
+        case "islamicummalqura": return .islamicUmmAlQura
+        case "iso8601": return .iso8601
+        case "japanese": return .japanese
+        case "persian": return .persian
+        case "republicofchina": return .republicOfChina
+        default: return .gregorian
+        }
     }
 
     private var mediumWeatherView: some View {
@@ -437,7 +566,7 @@ private struct CalendarIconWidgetView: View {
                     .font(.system(size: 32, weight: .regular))
                     .frame(width: 50, height: 42, alignment: .center)
 
-                mediumCaptionText(entry.weather.condition.isEmpty ? "Weather" : entry.weather.condition)
+                mediumCaptionText(entry.weather.condition.isEmpty ? NSLocalizedString("Weather", comment: "Weather fallback label") : entry.weather.condition)
             }
         }
     }
@@ -613,8 +742,8 @@ struct CalendarIconWidget: Widget {
         StaticConfiguration(kind: kind, provider: CalendarIconProvider()) { entry in
             CalendarIconWidgetView(entry: entry)
         }
-        .configurationDisplayName("Cloud Calendars")
-        .description("Shows today's calendar date with the latest weather from Cloud Calendars.")
+        .configurationDisplayName("Calendar & Weather")
+        .description("Small shows today's date and current weather. Medium adds moon phase and wind.")
         .supportedFamilies([.systemSmall, .systemMedium])
         .contentMarginsDisabled()
     }
@@ -627,26 +756,26 @@ struct CalendarIconClassicWidget: Widget {
         StaticConfiguration(kind: kind, provider: CalendarIconProvider()) { entry in
             CalendarIconWidgetView(entry: entry, mediumLayout: .classic)
         }
-        .configurationDisplayName("Cloud Calendars Classic")
-        .description("Shows today's calendar date with weather, moon, and wind in the classic medium layout.")
+        .configurationDisplayName("Calendar Events")
+        .description("Shows today's date, current weather, and your next calendar events.")
         .supportedFamilies([.systemMedium])
         .contentMarginsDisabled()
     }
 }
 
-#Preview("Small Widget", as: .systemSmall) {
+#Preview("Calendar & Weather / Small", as: .systemSmall) {
     CalendarIconWidget()
 } timeline: {
     CalendarIconEntry.preview
 }
 
-#Preview("Medium Grid Widget", as: .systemMedium) {
+#Preview("Calendar & Weather / Medium", as: .systemMedium) {
     CalendarIconWidget()
 } timeline: {
     CalendarIconEntry.preview
 }
 
-#Preview("Medium Classic Widget", as: .systemMedium) {
+#Preview("Calendar Events / Medium", as: .systemMedium) {
     CalendarIconClassicWidget()
 } timeline: {
     CalendarIconEntry.preview

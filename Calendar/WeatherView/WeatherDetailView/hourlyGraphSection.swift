@@ -35,7 +35,7 @@ extension WeatherDetailView{
                         
                         if showingFeelsLike{
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Feels Like")
+                                Text(NSLocalizedString("Feels Like", comment: "Feels like temperature label"))
                                     .font(.system(size: 14, weight: .medium))
                                     .foregroundColor(.secondary)
                                 HStack(alignment: .top, spacing: 10) {
@@ -46,7 +46,7 @@ extension WeatherDetailView{
                             }
                         } else {
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Actual")
+                                Text(NSLocalizedString("Actual", comment: "Actual temperature label"))
                                     .font(.system(size: 14, weight: .medium))
                                     .foregroundColor(.secondary)
                                 HStack(alignment: .top, spacing: 10) {
@@ -148,7 +148,7 @@ extension WeatherDetailView{
                                 .map { $0.element }
                             
                             if twoHourItemsForIcons.isEmpty {
-                                Text("No hourly data available for this day.")
+                                Text(NSLocalizedString("No hourly data available for this day.", comment: "No hourly data fallback"))
                                     .font(.caption)
                                     .foregroundColor(.gray)
                                     .frame(maxWidth: .infinity, alignment: .center)
@@ -490,7 +490,7 @@ extension WeatherDetailView{
             Button {
                 showingFeelsLike = false
             } label: {
-                Text("Actual")
+                Text(NSLocalizedString("Actual", comment: "Actual temperature label"))
                     .font(.system(size: 12, weight: .medium))
                     .padding(.vertical, 7)
                     .padding(.horizontal, 12)
@@ -505,7 +505,7 @@ extension WeatherDetailView{
             Button {
                 showingFeelsLike = true
             } label: {
-                Text("Feels Like")
+                Text(NSLocalizedString("Feels Like", comment: "Feels like temperature label"))
                     .font(.system(size: 12, weight: .medium))
                     .padding(.vertical, 7)
                     .padding(.horizontal, 12)

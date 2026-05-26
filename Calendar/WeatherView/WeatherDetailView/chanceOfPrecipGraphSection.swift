@@ -169,7 +169,7 @@ extension WeatherDetailView{
                             layerContext.fill(Path(ellipseIn: innerRect), with: .color(Color.blue))
                             let labelPoint = CGPoint(x: highPoint.x, y: highPoint.y - outerRadius - 4)
                             layerContext.draw(
-                                Text("Max")
+                                Text(NSLocalizedString("Max", comment: "Maximum marker label"))
                                     .font(.system(size: 10, weight: .bold))
                                     .foregroundColor(.gray),
                                 at: labelPoint,
@@ -190,7 +190,7 @@ extension WeatherDetailView{
                             layerContext.fill(Path(ellipseIn: innerRect), with: .color(Color.blue))
                             let labelPoint = CGPoint(x: lowPoint.x, y: lowPoint.y - outerRadius - 4)
                             layerContext.draw(
-                                Text("Min")
+                                Text(NSLocalizedString("Min", comment: "Minimum marker label"))
                                     .font(.system(size: 10, weight: .bold))
                                     .foregroundColor(.gray),
                                 at: labelPoint,

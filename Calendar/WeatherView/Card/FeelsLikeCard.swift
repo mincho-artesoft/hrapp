@@ -7,7 +7,7 @@ struct FeelsLikeCard: View {
     var body: some View {
         WeatherDetailCard {
             // Title - Top Left
-            Label("FEELS LIKE", systemImage: "thermometer")
+            Label(NSLocalizedString("FEELS LIKE", comment: "Feels like card title"), systemImage: "thermometer")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
 

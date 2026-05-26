@@ -128,9 +128,9 @@ enum LocationError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .noDetailsFound:
-            return "No details found for the selected location."
+            return NSLocalizedString("No details found for the selected location.", comment: "Location details error")
         case .timeZoneNotFound:
-            return "Could not determine the time zone for the selected location."
+            return NSLocalizedString("Could not determine the time zone for the selected location.", comment: "Location time zone error")
         }
     }
 }

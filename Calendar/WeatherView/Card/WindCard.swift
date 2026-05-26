@@ -105,7 +105,7 @@ struct WindCard: View {
 
     var body: some View {
         WeatherDetailCard {
-            Label("WIND", systemImage: "wind")
+            Label(NSLocalizedString("WIND", comment: "Wind card title"), systemImage: "wind")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
                 .padding(.bottom, 5)
@@ -114,7 +114,7 @@ struct WindCard: View {
                 VStack(alignment: .leading, spacing: 8) {
                     // Основна скорост
                     detailRow(
-                        label: "Wind",
+                        label: LocalizedStringKey("Wind"),
                         value: String(format: "%d %@", Int(windSpeed.rounded()), GlobalState.speedUnitLabel)
                     )
                     Divider().background(.white.opacity(0.3))
@@ -122,7 +122,7 @@ struct WindCard: View {
                     // Пориви, ако има значима разлика
                     if let gust = gustSpeed, gust > windSpeed + 1 {
                         detailRow(
-                            label: "Gusts",
+                            label: LocalizedStringKey("Gusts"),
                             value: String(format: "%d %@", Int(gust.rounded()), GlobalState.speedUnitLabel)
                         )
                         Divider().background(.white.opacity(0.3))
@@ -130,7 +130,7 @@ struct WindCard: View {
 
                     // Посока (напр. "279° WNW")
                     detailRow(
-                        label: "Direction",
+                        label: LocalizedStringKey("Direction"),
                         value: "\(Int(direction?.degrees.rounded() ?? 0))° \(directionAbbreviation)"
                     )
                 }

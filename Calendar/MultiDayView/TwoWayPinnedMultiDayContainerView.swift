@@ -207,7 +207,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     // MARK: - Search functionality (с Cancel)
     private let searchBar: UISearchBar = {
         let sb = UISearchBar()
-        sb.placeholder = "Search events..."
+        sb.placeholder = NSLocalizedString("Search events...", comment: "Search events placeholder")
         sb.isHidden = false
         sb.searchBarStyle = .default
         sb.backgroundImage = UIImage()
@@ -227,7 +227,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             textField.layer.masksToBounds = true
             textField.font = UIFont.systemFont(ofSize: 16)
             textField.attributedPlaceholder = NSAttributedString(
-                string: "Search events...",
+                string: NSLocalizedString("Search events...", comment: "Search events placeholder"),
                 attributes: [.foregroundColor: UIColor.secondaryLabel]
             )
         }

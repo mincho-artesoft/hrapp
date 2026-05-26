@@ -28,7 +28,7 @@ class EmailPickerViewController: UIViewController, UITableViewDataSource, UITabl
         view.addSubview(containerView)
 
         // Title
-        titleLabel.text = "Select Your Email"
+        titleLabel.text = NSLocalizedString("Select Your Email", comment: "Email picker title")
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 17)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ class EmailPickerViewController: UIViewController, UITableViewDataSource, UITabl
         containerView.addSubview(tableView)
 
         // Confirm
-        confirmButton.setTitle("Confirm", for: .normal)
+        confirmButton.setTitle(NSLocalizedString("Confirm", comment: "Confirm selection button"), for: .normal)
         confirmButton.isEnabled = false
         confirmButton.addTarget(self, action: #selector(onConfirm), for: .touchUpInside)
         confirmButton.translatesAutoresizingMaskIntoConstraints = false

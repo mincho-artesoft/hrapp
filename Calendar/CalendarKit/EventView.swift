@@ -310,7 +310,7 @@ open class EventView: UIView {
         }
         
         // Тук сменяме цвета на текста
-        textView.text = "New event"
+        textView.text = NSLocalizedString("New event", comment: "Default event title")
         textView.font = .systemFont(ofSize: 12, weight: .semibold)
         textView.textColor = color.withAlphaComponent(1) // <-- Винаги цвета на event (или първия локален календар)
         

@@ -184,7 +184,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             textField.layer.masksToBounds = true
             textField.font = UIFont.systemFont(ofSize: 16)
             textField.attributedPlaceholder = NSAttributedString(
-                string: "Search events...",
+                string: NSLocalizedString("Search events...", comment: "Search events placeholder"),
                 attributes: [.foregroundColor: UIColor.secondaryLabel]
             )
         }

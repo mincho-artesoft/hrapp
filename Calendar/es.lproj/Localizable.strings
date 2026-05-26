@@ -201,6 +201,10 @@
 "Calendar" = "Calendario";
 "Subscriptions" = "Suscripciones";
 "Weather" = "Tiempo";
+"Get" = "Obtener";
+"Color" = "Color";
+"Search for a city…" = "Buscar una ciudad…";
+"No directions" = "Sin direcciones";
 
 /* WeatherKitView */
 "Search for a city..." = "Buscar ciudad…";
@@ -238,7 +242,7 @@
 "FEELS LIKE" = "Sensación térmica";
 "similar_to_actual_temp" = "Similar a la temperatura real.";
 "wind_cooler_feel" = "El viento hace que se sienta más fresco.";
-"Humidity is making it feel warmer." = "La humedad hace que se sienta más cálido.";
+"humidity_warmer_feel" = "La humedad hace que se sienta más cálido.";
 
 /* HumidityCard */
 "HUMIDITY" = "Humedad";
@@ -746,3 +750,42 @@
 "Restore Purchases"                                        = "Restaurar compras";
 
 "Ads Free" = "Sin anuncios";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Calendario y tiempo";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "El pequeño muestra la fecha de hoy y el tiempo actual. El mediano añade fase lunar y viento.";
+"Calendar Events" = "Eventos del calendario";
+"Shows today's date, current weather, and your next calendar events." = "Muestra la fecha de hoy, el tiempo actual y tus próximos eventos del calendario.";
+"No upcoming events" = "No hay eventos próximos";
+"Tomorrow" = "Mañana";
+"Untitled" = "Sin título";
+"Detail" = "Detalles";
+"Phase" = "Fase";
+"Weather" = "Tiempo";
+"Select Your Email" = "Selecciona tu correo";
+"Confirm" = "Confirmar";
+"Calendar name" = "Nombre del calendario";
+"Sharing: %@" = "Compartir: %@";
+"Loading..." = "Cargando...";
+"Selected Location" = "Ubicación seleccionada";
+"Data provided by Apple Weather" = "Datos proporcionados por Apple Weather";
+"Next" = "Siguiente";
+"No details found for the selected location." = "No se encontraron detalles para la ubicación seleccionada.";
+"Could not determine the time zone for the selected location." = "No se pudo determinar la zona horaria de la ubicación seleccionada.";
+"(No Title)" = "(Sin título)";
+"Choose your e-mail" = "Elige tu correo";
+"It will be treated as your primary address and invitations will not be sent to it." = "Se tratará como tu dirección principal y no se le enviarán invitaciones.";
+"Invalid URL" = "URL no válida";
+"Rate limit or insufficient permission" = "Límite de solicitudes o permisos insuficientes";
+"Network error: %@" = "Error de red: %@";
+"N/A - Selected Tab: %@" = "No disponible - pestaña seleccionada: %@";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating es tu coach con IA para comer y entrenar mejor. Combina ciencia nutricional moderna con herramientas prácticas para planificar comidas, diseñar entrenamientos, gestionar tu despensa y entender cómo la comida y el movimiento afectan a tu cuerpo.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio es un entorno de diseño 3D de alto nivel para desarrolladores de iOS y macOS. Combina renderizado RealityKit de alta fidelidad con un editor de texto enriquecido para crear recursos profesionales de App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio es un estudio de grabación de pantalla para creadores. Captura pantalla y cámara al mismo tiempo, controla micrófono y audio del sistema, y exporta MP4 limpios para tutoriales, recorridos y demos de producto.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars combina planificación avanzada con previsiones meteorológicas integradas para planificar con precisión. Incluye varios servicios de calendario, edición por gestos, enlaces de reuniones y previsiones horarias y diarias.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI te ayuda a entender el movimiento del mercado con análisis en el dispositivo y un flujo multiagente pensado para separar señal y ruido. Sigue precios, probabilidades de régimen y paneles claros para tomar decisiones mejor informadas.";

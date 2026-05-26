@@ -53,7 +53,7 @@ struct AppsPromoListView: View {
                             
                             // Бутон към App Store
                             Link(destination: URL(string: app.appStoreURL)!) {
-                                Text("Get")
+                                Text(LocalizedStringKey("Get"))
                                     .font(.caption.bold())
                                     .foregroundColor(.white)
                                     .padding(.vertical, 6)
@@ -74,4 +74,3 @@ struct AppsPromoListView: View {
         }
     }
 }
-

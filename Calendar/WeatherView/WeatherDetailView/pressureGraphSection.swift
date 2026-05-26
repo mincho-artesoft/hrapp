@@ -100,7 +100,7 @@ extension WeatherDetailView{
                                     .filter { $0.offset % 2 == 0 } // взимаме на всеки 2 часа
                                 
                                 if twoHourPressures.isEmpty {
-                                    Text("No hourly data available for this day.")
+                                    Text(NSLocalizedString("No hourly data available for this day.", comment: "No hourly data fallback"))
                                         .font(.caption)
                                         .foregroundColor(.gray)
                                         .frame(maxWidth: .infinity, alignment: .center)

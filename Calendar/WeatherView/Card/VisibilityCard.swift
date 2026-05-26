@@ -6,7 +6,7 @@ struct VisibilityCard: View {
     var body: some View {
         WeatherDetailCard {
             // Title - Top Left
-            Label("VISIBILITY", systemImage: "eye.fill")
+            Label(NSLocalizedString("VISIBILITY", comment: "Visibility card title"), systemImage: "eye.fill")
                 .symbolRenderingMode(.hierarchical)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)

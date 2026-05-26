@@ -147,7 +147,7 @@ extension WeatherDetailView{
                                     .filter { $0.offset % 2 == 0 }  // 0,2,4,...
                                 
                                 if twoHourItems.isEmpty {
-                                    Text("No directions")
+                                    Text(NSLocalizedString("No directions", comment: "No wind directions fallback"))
                                         .font(.caption)
                                         .foregroundColor(.gray)
                                         .frame(maxWidth: .infinity, alignment: .center)

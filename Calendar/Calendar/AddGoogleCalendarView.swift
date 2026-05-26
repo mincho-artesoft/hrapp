@@ -17,7 +17,7 @@ struct AddGoogleCalendarView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Calendar name", text: $calendarName)
+                    TextField(NSLocalizedString("Calendar name", comment: "Google calendar name placeholder"), text: $calendarName)
                 }
 
                 Section {
@@ -28,22 +28,22 @@ struct AddGoogleCalendarView: View {
                             Circle()
                                 .fill(Color(selectedColor))
                                 .frame(width: 20, height: 20)
-                            Text("Color")
+                            Text(LocalizedStringKey("Color"))
                                 .padding(.leading, 6)
                         }
                     }
                 }
             }
-            .navigationTitle("Add Google Calendar")
+            .navigationTitle(NSLocalizedString("Add Google Calendar", comment: "Add Google calendar screen title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(NSLocalizedString("Cancel", comment: "Cancel button")) {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
+                    Button(NSLocalizedString("Done", comment: "Done button")) {
                         let name = calendarName.trimmingCharacters(in: .whitespaces)
                         let color = selectedColor
                         onDone(name, color)
@@ -55,4 +55,3 @@ struct AddGoogleCalendarView: View {
         }
     }
 }
-

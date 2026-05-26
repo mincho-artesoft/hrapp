@@ -200,6 +200,10 @@
 "Calendar" = "Calendario";
 "Subscriptions" = "Abbonamenti";
 "Weather" = "Meteo";
+"Get" = "Ottieni";
+"Color" = "Colore";
+"Search for a city…" = "Cerca una città…";
+"No directions" = "Nessuna direzione";
 
 /* WeatherKitView */
 "Search for a city..." = "Cerca città…";
@@ -744,3 +748,42 @@
 "Restore Purchases"                                        = "Ripristina acquisti";
 
 "Ads Free"  = "Senza pubblicità";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Calendario e meteo";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Il piccolo mostra la data di oggi e il meteo attuale. Il medio aggiunge fase lunare e vento.";
+"Calendar Events" = "Eventi del calendario";
+"Shows today's date, current weather, and your next calendar events." = "Mostra la data di oggi, il meteo attuale e i tuoi prossimi eventi del calendario.";
+"No upcoming events" = "Nessun evento imminente";
+"Tomorrow" = "Domani";
+"Untitled" = "Senza titolo";
+"Detail" = "Dettagli";
+"Phase" = "Fase";
+"Weather" = "Meteo";
+"Select Your Email" = "Seleziona la tua email";
+"Confirm" = "Conferma";
+"Calendar name" = "Nome calendario";
+"Sharing: %@" = "Condivisione: %@";
+"Loading..." = "Caricamento...";
+"Selected Location" = "Posizione selezionata";
+"Data provided by Apple Weather" = "Dati forniti da Apple Weather";
+"Next" = "Prossima";
+"No details found for the selected location." = "Nessun dettaglio trovato per la posizione selezionata.";
+"Could not determine the time zone for the selected location." = "Impossibile determinare il fuso orario per la posizione selezionata.";
+"(No Title)" = "(Senza titolo)";
+"Choose your e-mail" = "Scegli la tua email";
+"It will be treated as your primary address and invitations will not be sent to it." = "Sarà considerato il tuo indirizzo principale e gli inviti non verranno inviati a questo indirizzo.";
+"Invalid URL" = "URL non valido";
+"Rate limit or insufficient permission" = "Limite di richieste o autorizzazione insufficiente";
+"Network error: %@" = "Errore di rete: %@";
+"N/A - Selected Tab: %@" = "N/D - scheda selezionata: %@";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating è il tuo coach IA per nutrizione e allenamento più intelligenti. Combina scienza nutrizionale moderna con strumenti pratici per pianificare pasti, creare allenamenti, gestire la dispensa e capire come cibo e movimento influenzano il corpo.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio è un ambiente di design 3D di alto livello per sviluppatori iOS e macOS. Combina rendering RealityKit ad alta fedeltà con un potente editor Rich Text per creare materiali professionali per App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio è uno studio di registrazione schermo per creator. Registra schermo e fotocamera insieme, controlla microfono e audio di sistema ed esporta MP4 puliti per tutorial, walkthrough e demo di prodotto.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars combina pianificazione avanzata e previsioni meteo integrate per pianificare con precisione. Supporta più servizi calendario, modifica tramite gesti, link alle riunioni e previsioni orarie e giornaliere dettagliate.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI ti aiuta a capire i movimenti di mercato con analisi sul dispositivo e un flusso multi-agente progettato per separare segnale e rumore. Monitora prezzi, probabilità di regime e dashboard chiare per decisioni più informate.";

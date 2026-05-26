@@ -59,13 +59,13 @@ struct PressureCard: View {
          .frame(width: 80, height: 60) // Gauge area size
          // Overlay for Low/High labels matching screenshot
          .overlay(alignment: .bottomLeading) {
-             Text("Low")
+             Text(NSLocalizedString("Low", comment: "Low pressure label"))
                  .font(.system(size: 10, weight: .medium))
                  .foregroundStyle(.secondary)
                  .offset(x: 5, y: 5) // Position labels
          }
          .overlay(alignment: .bottomTrailing) {
-             Text("High")
+             Text(NSLocalizedString("High", comment: "High pressure label"))
                   .font(.system(size: 10, weight: .medium))
                   .foregroundStyle(.secondary)
                   .offset(x: -5, y: 5) // Position labels
@@ -76,7 +76,7 @@ struct PressureCard: View {
     var body: some View {
         WeatherDetailCard {
             // Title - Top Left
-            Label("PRESSURE", systemImage: "gauge.medium")
+            Label(NSLocalizedString("PRESSURE", comment: "Pressure card title"), systemImage: "gauge.medium")
                 .symbolRenderingMode(.hierarchical)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)

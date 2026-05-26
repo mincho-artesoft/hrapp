@@ -338,7 +338,7 @@ struct WeatherKitView: View {
                     initialLoadComplete = true
                 }
             } else if status == .denied || status == .restricted {
-                vm.errorMessage = "Location access denied. Search for a city or grant access in Settings."
+                vm.errorMessage = NSLocalizedString("Location access denied. Search for a city or grant access in Settings.", comment: "Location permission error")
                 initialLoadComplete = true
             }
         }
@@ -387,7 +387,7 @@ struct WeatherKitView: View {
             TextField(
                 "",
                 text: $locationSearchVM.queryFragment,
-                prompt: Text("Search for a city…")
+                prompt: Text(NSLocalizedString("Search for a city…", comment: "City search placeholder"))
                     .foregroundColor(.white.opacity(0.5))
             )
             .textInputAutocapitalization(.never)   // без автоматични главни букви
@@ -509,7 +509,11 @@ struct WeatherKitView: View {
                 .foregroundColor(.secondary)
                 .font(.system(size: 18, weight: .medium))
             if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
-                Text("H:\(Int(hi.rounded()))°   L:\(Int(lo.rounded()))°")
+                Text(String(
+                    format: NSLocalizedString("HighLowLabelFormat", comment: "High and low temperature label"),
+                    Int(hi.rounded()),
+                    Int(lo.rounded())
+                ))
                     .foregroundColor(.primary)
                     .font(.system(size: 18, weight: .medium))
             }
@@ -691,7 +695,7 @@ struct WeatherKitView: View {
         if !geocodedCityName.isEmpty {
             return geocodedCityName
         }
-        return locationManager.currentCityName ?? "Loading..."
+        return locationManager.currentCityName ?? NSLocalizedString("Loading...", comment: "Loading fallback")
     }
     
     private func refreshWeatherData() {
@@ -707,7 +711,7 @@ struct WeatherKitView: View {
             initialLoadComplete = true
         } else {
             locationManager.manager.requestLocation()
-            vm.errorMessage = "Cannot refresh. Location unknown."
+            vm.errorMessage = NSLocalizedString("Cannot refresh. Location unknown.", comment: "Weather refresh error")
             initialLoadComplete = true
         }
         
@@ -720,7 +724,7 @@ struct WeatherKitView: View {
         vm.fetchWeatherForCoords(latitude: coords.latitude, longitude: coords.longitude)
         initialLoadComplete = true
         
-        let city = placemark.locality ?? placemark.administrativeArea ?? placemark.name ?? "Selected Location"
+        let city = placemark.locality ?? placemark.administrativeArea ?? placemark.name ?? NSLocalizedString("Selected Location", comment: "Selected location fallback")
         self.geocodedCityName = city
         
         hideSearch()
@@ -892,7 +896,7 @@ extension WeatherKitView {
                 .bold()
 
             // 2) Legal‐attribution link
-            Link("Data provided by Apple Weather", destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+            Link(NSLocalizedString("Data provided by Apple Weather", comment: "Weather attribution link"), destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
                 .font(.footnote)
                 .underline()
         }
@@ -924,7 +928,7 @@ struct HourlyForecastCard: View {
             HStack(spacing: 4) {
                 Image(systemName: "info.circle")
                     .font(.system(size: 12))
-                Text("Tap an hour to quickly add a calendar event.")
+                Text(NSLocalizedString("Tap an hour to quickly add a calendar event.", comment: "Hourly forecast tap hint"))
                     .font(.caption)
             }
             .foregroundStyle(.secondary)

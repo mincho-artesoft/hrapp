@@ -7,7 +7,7 @@ struct HumidityCard: View {
     var body: some View {
         WeatherDetailCard {
             // Title - Top Left
-            Label("HUMIDITY", systemImage: "humidity.fill")
+            Label(NSLocalizedString("HUMIDITY", comment: "Humidity card title"), systemImage: "humidity.fill")
                 .symbolRenderingMode(.multicolor) // Blue drop inside
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)

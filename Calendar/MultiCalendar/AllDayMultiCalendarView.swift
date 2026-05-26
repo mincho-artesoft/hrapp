@@ -350,7 +350,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             ghostDesc.dateInterval = DateInterval(start: Date(),
                                                   end: Date().addingTimeInterval(60 * 60))
             ghostDesc.isAllDay = false
-            ghostDesc.text = "New Event"
+            ghostDesc.text = NSLocalizedString("New Event", comment: "Default title for newly created events")
             ghostDesc.color = .systemBlue
             ghostDesc.backgroundColor = .systemBlue
             ghostDesc.textColor = .black

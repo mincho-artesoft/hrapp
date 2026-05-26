@@ -9,7 +9,7 @@ struct MoonCard: View {
     var body: some View {
         WeatherDetailCard {
             // Заголовок локализуется по ключу "MOON PHASE"
-            Label("MOON PHASE", systemImage: moonEvents?.phase.symbolName ?? "moon")
+            Label(NSLocalizedString("MOON PHASE", comment: "Moon phase card title"), systemImage: moonEvents?.phase.symbolName ?? "moon")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
                 .padding(.bottom, 5)
@@ -18,10 +18,10 @@ struct MoonCard: View {
                 // Левая колонка: времена и следующая фаза
                 VStack(alignment: .leading, spacing: 8) {
                     if let events = moonEvents {
-                        detailRow(label: "Moonrise", value: formattedTime(from: events.moonrise))
+                        detailRow(label: LocalizedStringKey("Moonrise"), value: formattedTime(from: events.moonrise))
                         Divider().background(Color.white.opacity(0.3))
 
-                        detailRow(label: "Moonset", value: formattedTime(from: events.moonset))
+                        detailRow(label: LocalizedStringKey("Moonset"), value: formattedTime(from: events.moonset))
                         Divider().background(Color.white.opacity(0.3))
 
                         if let nextPhase = vm.nextMoonPhase,
@@ -37,14 +37,14 @@ struct MoonCard: View {
                                 value: String(format: daysFormat, daysUntil)
                             )
                         } else {
-                            detailRowSmall(label: "Next", value: "Data unavailable")
+                            detailRowSmall(label: LocalizedStringKey("Next"), value: NSLocalizedString("Data unavailable", comment: "Moon phase unavailable fallback"))
                         }
                     } else {
-                        detailRow(label: "Moonrise", value: "--")
+                        detailRow(label: LocalizedStringKey("Moonrise"), value: "--")
                         Divider().background(Color.white.opacity(0.3))
-                        detailRow(label: "Moonset", value: "--")
+                        detailRow(label: LocalizedStringKey("Moonset"), value: "--")
                         Divider().background(Color.white.opacity(0.3))
-                        detailRowSmall(label: "Next", value: "--")
+                        detailRowSmall(label: LocalizedStringKey("Next"), value: "--")
                     }
                 }
 

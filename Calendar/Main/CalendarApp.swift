@@ -132,6 +132,8 @@ struct CalendarApp: App {
         nf.numberStyle = .decimal
         let num = 1234567.89 as NSNumber
         GlobalState.numberFormat = nf.string(from: num) ?? ""
+
+        CalendarWidgetStore.saveGlobalStateSnapshot(reload: false)
     }
 
     private func refreshCalendarWidgetIfNeeded() {
@@ -172,7 +174,10 @@ struct CalendarApp: App {
         CalendarWidgetStore.saveWeatherSnapshot(
             symbol: weatherVM.currentSymbol,
             condition: weatherVM.currentCondition,
-            temperature: weatherVM.currentTemp
+            temperature: weatherVM.currentTemp,
+            windDirectionDegrees: weatherVM.currentWindDirection?.degrees,
+            windDirectionText: weatherVM.windDirectionAbbreviation(for: weatherVM.currentWindDirection),
+            windSpeed: weatherVM.currentWindSpeed
         )
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
     }

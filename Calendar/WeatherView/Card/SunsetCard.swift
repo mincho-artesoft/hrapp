@@ -105,7 +105,7 @@ struct SunsetCard: View {
         .overlay(alignment: .bottom) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Sunrise")
+                    Text(NSLocalizedString("Sunrise", comment: "Sunrise label"))
                         .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.secondary.opacity(0.8))
                     Text(formatTime(sunrise))
@@ -116,7 +116,7 @@ struct SunsetCard: View {
                 Spacer()
 
                 VStack(alignment: .trailing, spacing: 2) {
-                    Text("Sunset")
+                    Text(NSLocalizedString("Sunset", comment: "Sunset label"))
                         .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.secondary.opacity(0.8))
                     Text(formatTime(sunset))
@@ -135,7 +135,7 @@ struct SunsetCard: View {
         // Use the base card styling
         WeatherDetailCard {
             // Card Title Label - Use "SUNRISE" to match the time displayed
-            Label("SUNRISE", systemImage: "sunrise.fill") // Changed icon and label
+            Label(NSLocalizedString("SUNRISE", comment: "Sunrise card title"), systemImage: "sunrise.fill") // Changed icon and label
                 .symbolRenderingMode(.multicolor) // Use colors defined in the symbol
                 .font(.system(size: 10, weight: .medium)) // Title font style
                 .foregroundStyle(.secondary) // Title color
@@ -146,4 +146,3 @@ struct SunsetCard: View {
         }
     }
 }
-

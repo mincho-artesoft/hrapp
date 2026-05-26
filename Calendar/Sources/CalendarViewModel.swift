@@ -1514,7 +1514,7 @@ extension CalendarViewModel {
         
         newEvent.url = URL(string: "gcal://\(gevent.id)")
         
-        newEvent.title = gevent.summary ?? "(No Title)"
+        newEvent.title = gevent.summary ?? NSLocalizedString("(No Title)", comment: "Untitled synced event fallback")
         newEvent.notes = gevent.description
         
         if let gLocation = gevent.location, !gLocation.isEmpty {
@@ -1570,7 +1570,7 @@ extension CalendarViewModel {
     private func updateLocalEvent(_ localEvent: EKEvent,
                                   withGoogleEvent gevent: GoogleEventItem,
                                   inCalendar: EKCalendar) {
-        localEvent.title = gevent.summary ?? "(No Title)"
+        localEvent.title = gevent.summary ?? NSLocalizedString("(No Title)", comment: "Untitled synced event fallback")
         localEvent.notes = gevent.description
         
         if let gLocation = gevent.location, !gLocation.isEmpty {
@@ -1673,8 +1673,8 @@ extension CalendarViewModel {
         // Ask the user which address is theirs
         let chosen = await withCheckedContinuation { (cont: CheckedContinuation<String, Never>) in
             let alert = UIAlertController(
-                title: "Choose your e-mail",
-                message: "It will be treated as your primary address and invitations will not be sent to it.",
+                title: NSLocalizedString("Choose your e-mail", comment: "Primary email picker title"),
+                message: NSLocalizedString("It will be treated as your primary address and invitations will not be sent to it.", comment: "Primary email picker message"),
                 preferredStyle: .actionSheet
             )
             uniqueEmails.forEach { email in
@@ -1682,7 +1682,7 @@ extension CalendarViewModel {
                     cont.resume(returning: email)
                 })
             }
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: .cancel) { _ in
                 // If cancelled, default to the first e-mail in the list
                 cont.resume(returning: "")
             })
@@ -1769,7 +1769,7 @@ extension CalendarViewModel {
             let endDateStr   = localAllDayDateString(event.endDate)
 
             return [
-                "summary"    : event.title ?? "(No Title)",
+                "summary"    : event.title ?? NSLocalizedString("(No Title)", comment: "Untitled synced event fallback"),
                 "description": sanitizedNotes,
                 "start"      : ["date": startDateStr],
                 "end"        : ["date": endDateStr],
@@ -1777,7 +1777,7 @@ extension CalendarViewModel {
             ]
         } else {
             return [
-                "summary"    : event.title ?? "(No Title)",
+                "summary"    : event.title ?? NSLocalizedString("(No Title)", comment: "Untitled synced event fallback"),
                 "description": sanitizedNotes,
                 "start"      : ["dateTime": isoDateString(event.startDate)],
                 "end"        : ["dateTime": isoDateString(event.endDate)],
@@ -1824,9 +1824,9 @@ enum SyncError: Error {
     
     var localizedDescription: String {
         switch self {
-        case .invalidURL: return "Invalid URL"
-        case .rateLimit: return "Rate limit or insufficient permission"
-        case .networkError(let msg): return "Network error: \(msg)"
+        case .invalidURL: return NSLocalizedString("Invalid URL", comment: "Sync error")
+        case .rateLimit: return NSLocalizedString("Rate limit or insufficient permission", comment: "Sync error")
+        case .networkError(let msg): return String(format: NSLocalizedString("Network error: %@", comment: "Sync network error"), msg)
         }
     }
 }

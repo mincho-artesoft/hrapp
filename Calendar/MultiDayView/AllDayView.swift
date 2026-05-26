@@ -290,7 +290,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 end: Date().addingTimeInterval(60 * 60) // 1 hour from now
             )
             ghostDesc.isAllDay = false
-            ghostDesc.text = "New Event"
+            ghostDesc.text = NSLocalizedString("New Event", comment: "Default title for newly created events")
             ghostDesc.color = .systemBlue               // Usually the left border
             ghostDesc.backgroundColor = .systemBlue     // The fill color
             ghostDesc.textColor = .black                // Black text

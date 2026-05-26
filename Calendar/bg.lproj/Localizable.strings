@@ -200,6 +200,10 @@
 "Calendar" = "Календар";
 "Subscriptions" = "Абонаменти";
 "Weather" = "Време";
+"Get" = "Вземи";
+"Color" = "Цвят";
+"Search for a city…" = "Търсене на град…";
+"No directions" = "Няма посоки";
 
 /* WeatherKitView */
 "Search for a city..." = "Търсене на град…";
@@ -745,3 +749,42 @@
 "Restore Purchases"                                        = "Възстановяване на покупки";
 
 "Ads Free" = "Без реклами";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Календар и време";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Малкият показва днешната дата и текущото време. Средният добавя фаза на Луната и вятър.";
+"Calendar Events" = "Календарни събития";
+"Shows today's date, current weather, and your next calendar events." = "Показва днешната дата, текущото време и следващите ви календарни събития.";
+"No upcoming events" = "Няма предстоящи събития";
+"Tomorrow" = "Утре";
+"Untitled" = "Без заглавие";
+"Detail" = "Детайли";
+"Phase" = "Фаза";
+"Weather" = "Време";
+"Select Your Email" = "Изберете имейл";
+"Confirm" = "Потвърди";
+"Calendar name" = "Име на календара";
+"Sharing: %@" = "Споделяне: %@";
+"Loading..." = "Зареждане...";
+"Selected Location" = "Избрано местоположение";
+"Data provided by Apple Weather" = "Данни от Apple Weather";
+"Next" = "Следващо";
+"No details found for the selected location." = "Не са намерени подробности за избраното местоположение.";
+"Could not determine the time zone for the selected location." = "Не може да се определи часовата зона за избраното местоположение.";
+"(No Title)" = "(Без заглавие)";
+"Choose your e-mail" = "Изберете вашия имейл";
+"It will be treated as your primary address and invitations will not be sent to it." = "Ще се използва като основен адрес и поканите няма да се изпращат до него.";
+"Invalid URL" = "Невалиден URL";
+"Rate limit or insufficient permission" = "Ограничение на заявките или недостатъчни права";
+"Network error: %@" = "Мрежова грешка: %@";
+"N/A - Selected Tab: %@" = "Няма данни - избран раздел: %@";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating е вашият AI помощник за по-разумно хранене и тренировки. Комбинира модерна наука за храненето с практични инструменти за планиране на менюта, тренировки, управление на продукти и разбиране как храната и движението влияят на тялото.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio е премиум 3D среда за дизайн за iOS и macOS разработчици. Комбинира RealityKit визуализация с висока точност и мощен Rich Text редактор, за да превръща сурови скрийншоти в професионални App Store материали.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio е студио за запис на екрана за създатели. Записвайте екран и камера едновременно, управлявайте микрофон и системен звук и експортирайте чисти MP4 видеа за уроци, представяния и демонстрации.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars комбинира напреднало планиране с красиво интегрирани прогнози за времето, за да планирате прецизно. Поддържа няколко календарни услуги, жестове за редакция, връзки за срещи и подробни почасови и дневни прогнози.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI ви помага да разбирате движението на пазарите с анализи на устройството и многоагентен работен поток, който отделя сигнала от шума. Следете цени, вероятности за режими и ясни табла за по-информирани решения.";

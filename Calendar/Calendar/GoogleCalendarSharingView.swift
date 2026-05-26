@@ -48,7 +48,7 @@ struct GoogleCalendarSharingView: View {
         NavigationView {
             VStack {
                 if isLoading {
-                    ProgressView("Loading sharing settings…")
+                    ProgressView(NSLocalizedString("Loading sharing settings…", comment: "Sharing settings loading message"))
                 } else {
                     if !errorMessage.isEmpty {
                         Text(errorMessage)
@@ -58,14 +58,14 @@ struct GoogleCalendarSharingView: View {
                     
                     if isUserOwner {
                         List {
-                            Section(header: Text("Shared with these users")) {
+                            Section(header: Text(NSLocalizedString("Shared with these users", comment: "Shared users section title"))) {
                                 ForEach(aclRules.filter { rule in
                                     guard let email = rule.scope?.value else { return true }
                                     return !email.hasSuffix("@group.calendar.google.com")
                                 }) { rule in
                                     let isSelfOwner = (rule.scope?.value == user.email && rule.role == "owner")
                                     HStack {
-                                        Text(rule.scope?.value ?? "Unknown")
+                                        Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: "Unknown email fallback"))
                                             .font(.callout)
                                         Spacer()
                                         
@@ -121,8 +121,8 @@ struct GoogleCalendarSharingView: View {
                                 }
                             }
                             
-                            Section(header: Text("Add New Email")) {
-                                TextField("Email to share", text: $newEmailToShare)
+                            Section(header: Text(NSLocalizedString("Add New Email", comment: "Add sharing email section title"))) {
+                                TextField(NSLocalizedString("Email to share", comment: "Email share field placeholder"), text: $newEmailToShare)
                                     .keyboardType(.emailAddress)
                                     .autocapitalization(.none)
                                     .disableAutocorrection(true)
@@ -158,7 +158,7 @@ struct GoogleCalendarSharingView: View {
                                     }
                                 }
 
-                                Picker("Permission:", selection: $newRole) {
+                                Picker(NSLocalizedString("Permission:", comment: "Sharing permission picker label"), selection: $newRole) {
                                     ForEach(availableRoles, id: \.self) { rawRole in
                                         Text(localizedRoleDisplayName(rawRole))
                                             .tag(rawRole)
@@ -168,7 +168,7 @@ struct GoogleCalendarSharingView: View {
                             }
                             
                             Section {
-                                Button("Add") {
+                                Button(NSLocalizedString("Add", comment: "Add sharing email button")) {
                                     Task {
                                         await addEmailToShare()
                                     }
@@ -178,13 +178,13 @@ struct GoogleCalendarSharingView: View {
                         }
                     } else {
                         List {
-                            Section(header: Text("Shared with these users")) {
+                            Section(header: Text(NSLocalizedString("Shared with these users", comment: "Shared users section title"))) {
                                 ForEach(aclRules.filter { rule in
                                     guard let email = rule.scope?.value else { return true }
                                     return !email.hasSuffix("@group.calendar.google.com")
                                 }) { rule in
                                     HStack {
-                                        Text(rule.scope?.value ?? "Unknown")
+                                        Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: "Unknown email fallback"))
                                             .font(.callout)
                                         Spacer()
                                         Text(localizedRoleDisplayName(rule.role))
@@ -195,11 +195,11 @@ struct GoogleCalendarSharingView: View {
                     }
                 }
             }
-            .navigationTitle("Sharing: \(calendarTitle)")
+            .navigationTitle(String(format: NSLocalizedString("Sharing: %@", comment: "Sharing screen title"), calendarTitle))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button(NSLocalizedString("Done", comment: "Done button")) {
                         dismiss()
                     }
                 }
@@ -246,7 +246,7 @@ struct GoogleCalendarSharingView: View {
             }
         } catch {
             await MainActor.run {
-                errorMessage = "Error loading: \(error.localizedDescription)"
+                errorMessage = String(format: NSLocalizedString("Error loading: %@", comment: "Sharing load error"), error.localizedDescription)
             }
         }
         isLoading = false
@@ -277,7 +277,7 @@ struct GoogleCalendarSharingView: View {
             if let idx = pendingShares.firstIndex(where: { $0.id == pending.id }) {
                 pendingShares.remove(at: idx)
             }
-            errorMessage = "Error adding: \(error.localizedDescription)"
+            errorMessage = String(format: NSLocalizedString("Error adding: %@", comment: "Sharing add error"), error.localizedDescription)
         }
     }
     
@@ -296,7 +296,7 @@ struct GoogleCalendarSharingView: View {
             }
         } catch {
             await MainActor.run {
-                errorMessage = "Error deleting: \(error.localizedDescription)"
+                errorMessage = String(format: NSLocalizedString("Error deleting: %@", comment: "Sharing delete error"), error.localizedDescription)
             }
         }
     }
@@ -312,7 +312,7 @@ struct GoogleCalendarSharingView: View {
             )
         } catch {
             await MainActor.run {
-                errorMessage = "Error updating: \(error.localizedDescription)"
+                errorMessage = String(format: NSLocalizedString("Error updating: %@", comment: "Sharing update error"), error.localizedDescription)
             }
         }
     }
@@ -335,7 +335,7 @@ struct GoogleCalendarSharingView: View {
                 aclRules.remove(at: idx)
             }
         } catch {
-            errorMessage = "Error re-inviting (delete): \(error.localizedDescription)"
+            errorMessage = String(format: NSLocalizedString("Error re-inviting (delete): %@", comment: "Sharing reinvite delete error"), error.localizedDescription)
             pendingResendRuleIDs.remove(rule.id)
             return
         }
@@ -349,7 +349,7 @@ struct GoogleCalendarSharingView: View {
             )
             aclRules.append(newRule)
         } catch {
-            errorMessage = "Error re-inviting (insert): \(error.localizedDescription)"
+            errorMessage = String(format: NSLocalizedString("Error re-inviting (insert): %@", comment: "Sharing reinvite insert error"), error.localizedDescription)
         }
         
         pendingResendRuleIDs.remove(rule.id)
@@ -358,9 +358,9 @@ struct GoogleCalendarSharingView: View {
     // MARK: - Локализация на ролите
     private func localizedRoleDisplayName(_ rawRole: String) -> String {
         switch rawRole {
-        case "reader": return "Reader"
-        case "writer": return "Writer"
-        case "owner":  return "Owner"
+        case "reader": return NSLocalizedString("Reader", comment: "Calendar sharing reader role")
+        case "writer": return NSLocalizedString("Writer", comment: "Calendar sharing writer role")
+        case "owner":  return NSLocalizedString("Owner", comment: "Calendar sharing owner role")
         default:       return rawRole
         }
     }

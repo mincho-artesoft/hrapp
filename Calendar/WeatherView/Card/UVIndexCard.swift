@@ -43,7 +43,7 @@ struct UVIndexCard: View {
             VStack(alignment: .leading, spacing: 4) { // Намален spacing за по-компактен вид
                 // Заглавие - Горе вляво
                 // "UV INDEX" ще бъде автоматично потърсено в Localizable.strings
-                Label("UV INDEX", systemImage: "sun.max.fill")
+                Label(NSLocalizedString("UV INDEX", comment: "UV index card title"), systemImage: "sun.max.fill")
                     .font(.system(size: 10, weight: .medium))
                     .foregroundStyle(.secondary)
                     .symbolRenderingMode(.multicolor) // Жълто слънце
@@ -69,4 +69,3 @@ struct UVIndexCard: View {
         }
     }
 }
-

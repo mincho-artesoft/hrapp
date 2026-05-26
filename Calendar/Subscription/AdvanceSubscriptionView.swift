@@ -4,7 +4,7 @@ import SwiftUI
 struct AdvanceSubscriptionView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Advanced Plan")
+            Text(LocalizedStringKey("Advanced Plan"))
                 .font(.title.bold())
 
             VStack(alignment: .leading, spacing: 8) {

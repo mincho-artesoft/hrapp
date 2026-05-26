@@ -32,12 +32,46 @@ enum CalendarWidgetStore {
         static let moonPhaseAssetName = "calendarWidget.moonPhaseAssetName"
         static let moonPhaseDescription = "calendarWidget.moonPhaseDescription"
         static let upcomingEvents = "calendarWidget.upcomingEvents"
+        static let region = "calendarWidget.global.region"
+        static let calendar = "calendarWidget.global.calendar"
+        static let measurementSystem = "calendarWidget.global.measurementSystem"
+        static let firstWeekday = "calendarWidget.global.firstWeekday"
+        static let dateFormat = "calendarWidget.global.dateFormat"
+        static let numberFormat = "calendarWidget.global.numberFormat"
         static let updatedAt = "calendarWidget.updatedAt"
     }
 
     private static func reloadWidgets() {
         WidgetCenter.shared.reloadTimelines(ofKind: widgetKind)
         WidgetCenter.shared.reloadTimelines(ofKind: classicWidgetKind)
+    }
+
+    static func saveGlobalStateSnapshot(reload: Bool = true) {
+        guard let defaults = UserDefaults(suiteName: appGroupID) else { return }
+
+        saveGlobalStateSnapshot(to: defaults)
+        defaults.set(Date(), forKey: Key.updatedAt)
+        defaults.synchronize()
+
+        if reload {
+            reloadWidgets()
+        }
+    }
+
+    private static func saveGlobalStateSnapshot(to defaults: UserDefaults) {
+        defaults.set(GlobalState.region, forKey: Key.region)
+        defaults.set(GlobalState.calendar, forKey: Key.calendar)
+        defaults.set(GlobalState.temperatureUnit, forKey: Key.temperatureUnit)
+        defaults.set(GlobalState.measurementSystem, forKey: Key.measurementSystem)
+        defaults.set(GlobalState.firstWeekday, forKey: Key.firstWeekday)
+        defaults.set(GlobalState.dateFormat, forKey: Key.dateFormat)
+        defaults.set(GlobalState.numberFormat, forKey: Key.numberFormat)
+        defaults.set(GlobalState.speedUnitLabel, forKey: Key.windSpeedUnit)
+    }
+
+    private static func setOptional<T>(_ value: T?, forKey key: String, in defaults: UserDefaults) {
+        guard let value else { return }
+        defaults.set(value, forKey: key)
     }
 
     static func hasInstalledCalendarWidget() async -> Bool {
@@ -65,14 +99,13 @@ enum CalendarWidgetStore {
     ) {
         guard let defaults = UserDefaults(suiteName: appGroupID) else { return }
 
+        saveGlobalStateSnapshot(to: defaults)
         defaults.set(symbol, forKey: Key.weatherSymbol)
         defaults.set(condition, forKey: Key.weatherCondition)
-        defaults.set(temperature, forKey: Key.temperature)
-        defaults.set(GlobalState.temperatureUnit, forKey: Key.temperatureUnit)
-        defaults.set(windDirectionDegrees, forKey: Key.windDirectionDegrees)
-        defaults.set(windDirectionText, forKey: Key.windDirectionText)
-        defaults.set(windSpeed, forKey: Key.windSpeed)
-        defaults.set(GlobalState.speedUnitLabel, forKey: Key.windSpeedUnit)
+        setOptional(temperature, forKey: Key.temperature, in: defaults)
+        setOptional(windDirectionDegrees, forKey: Key.windDirectionDegrees, in: defaults)
+        setOptional(windDirectionText, forKey: Key.windDirectionText, in: defaults)
+        setOptional(windSpeed, forKey: Key.windSpeed, in: defaults)
         defaults.set(Date(), forKey: Key.updatedAt)
         defaults.synchronize()
 
@@ -82,6 +115,7 @@ enum CalendarWidgetStore {
     static func saveMoonSnapshot(phaseAssetName: String, phaseDescription: String) {
         guard let defaults = UserDefaults(suiteName: appGroupID) else { return }
 
+        saveGlobalStateSnapshot(to: defaults)
         defaults.set(phaseAssetName, forKey: Key.moonPhaseAssetName)
         defaults.set(phaseDescription, forKey: Key.moonPhaseDescription)
         defaults.set(Date(), forKey: Key.updatedAt)
@@ -152,6 +186,7 @@ enum CalendarWidgetStore {
         }
 
         defaults.set(data, forKey: Key.upcomingEvents)
+        saveGlobalStateSnapshot(to: defaults)
         defaults.set(Date(), forKey: Key.updatedAt)
         defaults.synchronize()
 
@@ -162,6 +197,7 @@ enum CalendarWidgetStore {
         guard let defaults = UserDefaults(suiteName: appGroupID) else { return }
 
         defaults.removeObject(forKey: Key.upcomingEvents)
+        saveGlobalStateSnapshot(to: defaults)
         defaults.set(Date(), forKey: Key.updatedAt)
         defaults.synchronize()
 
@@ -181,6 +217,7 @@ enum CalendarWidgetStore {
         defaults.removeObject(forKey: Key.windSpeedUnit)
         defaults.removeObject(forKey: Key.moonPhaseAssetName)
         defaults.removeObject(forKey: Key.moonPhaseDescription)
+        saveGlobalStateSnapshot(to: defaults)
         defaults.set(Date(), forKey: Key.updatedAt)
         defaults.synchronize()
 

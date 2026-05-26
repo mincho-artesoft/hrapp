@@ -816,9 +816,9 @@ struct WeatherDetailView: View {
 
     private var aboutWindSpeedAndGustsSection: some View {
            VStack(alignment:.leading, spacing:5) {
-               Text("About Wind Speed and Gusts")
+               Text(NSLocalizedString("About Wind Speed and Gusts", comment: "Wind speed info title"))
                    .font(.system(size:16, weight:.semibold))
-               Text("The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds.")
+               Text(NSLocalizedString("The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds.", comment: "Wind speed info body"))
                    .font(.system(size:14))
                    .lineSpacing(3)
                    .foregroundColor(.gray)
@@ -829,9 +829,9 @@ struct WeatherDetailView: View {
        /// Секция „About the Beaufort Scale“
        private var aboutBeaufortScaleSection: some View {
            VStack(alignment:.leading, spacing:5) {
-               Text("About the Beaufort Scale")
+               Text(NSLocalizedString("About the Beaufort Scale", comment: "Beaufort info title"))
                    .font(.system(size:16, weight:.semibold))
-               Text("The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range.")
+               Text(NSLocalizedString("The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range.", comment: "Beaufort info body"))
                    .font(.system(size:14))
                    .lineSpacing(3)
                    .foregroundColor(.gray)
@@ -1348,7 +1348,7 @@ struct WeatherDetailView: View {
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
         
         VStack(alignment: .leading, spacing: 5) {
-            Text(Calendar.current.isDate(day.date, inSameDayAs: Date()) ? "Forecast" : "Daily Summary")
+            Text(NSLocalizedString(Calendar.current.isDate(day.date, inSameDayAs: Date()) ? "Forecast" : "Daily Summary", comment: "Wind forecast section title"))
                 .font(.system(size: 16, weight: .semibold))
             Text(generateWindSummaryText(isToday: isToday,
                                           speeds: speeds,
@@ -1549,9 +1549,9 @@ struct WeatherDetailView: View {
 
     private var aboutFeelsLikeSection: some View {
         VStack(alignment:.leading, spacing:5) {
-            Text("About Feels Like Temperature")
+            Text(NSLocalizedString("About Feels Like Temperature", comment: "Feels like info title"))
                 .font(.system(size:16, weight:.semibold))
-            Text("Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind.")
+            Text(NSLocalizedString("Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind.", comment: "Feels like info body"))
                 .font(.system(size:14))
                 .lineSpacing(3)
                 .foregroundColor(.gray)
@@ -1561,7 +1561,7 @@ struct WeatherDetailView: View {
     
     private var optionsSection: some View {
         VStack(alignment:.leading, spacing:10) {
-            Text("Options")
+            Text(NSLocalizedString("Options", comment: "Weather options section title"))
                 .font(.system(size:16, weight:.semibold))
             OptionRow(label:"Temperature", value:"Use system setting (°C)")
             OptionRow(label:"Precipitation", value:"mm, cm")
@@ -1574,10 +1574,10 @@ struct WeatherDetailView: View {
         var body: some View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
-                    Text(label)
+                    Text(NSLocalizedString(label, comment: "Weather option label"))
                         .font(.system(size:14))
                     Spacer()
-                    Text(value)
+                    Text(NSLocalizedString(value, comment: "Weather option value"))
                         .font(.system(size:14))
                         .foregroundColor(.gray)
                     Image(systemName: "chevron.up.chevron.down")
@@ -1608,4 +1608,3 @@ struct WeatherDetailView: View {
          return Date().timeIntervalSince(startOfDay) / (24 * 3600)
      }
 }
-

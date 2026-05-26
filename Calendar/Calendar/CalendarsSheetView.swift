@@ -399,7 +399,7 @@ struct CalendarsSheetView: View {
                 HStack {
                     Image("google_icon")
                         .resizable().aspectRatio(contentMode: .fit).frame(width: 28, height: 28)
-                    Text("Sign in with Google")
+                    Text(LocalizedStringKey("Sign in with Google"))
                 }
             }
             .buttonStyle(PlainButtonStyle())

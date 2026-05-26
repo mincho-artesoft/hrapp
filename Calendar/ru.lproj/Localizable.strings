@@ -200,6 +200,10 @@
 "Calendar" = "Календарь";
 "Subscriptions" = "Подписки";
 "Weather" = "Погода";
+"Get" = "Получить";
+"Color" = "Цвет";
+"Search for a city…" = "Поиск города…";
+"No directions" = "Нет направлений";
 
 /* WeatherKitView */
 "Search for a city..." = "Поиск города…";
@@ -745,3 +749,42 @@
 "Restore Purchases"                                        = "Восстановить покупки";
 
 "Ads Free"  = "Без рекламы";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Календарь и погода";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Малый виджет показывает сегодняшнюю дату и текущую погоду. Средний добавляет фазу Луны и ветер.";
+"Calendar Events" = "События календаря";
+"Shows today's date, current weather, and your next calendar events." = "Показывает сегодняшнюю дату, текущую погоду и ближайшие события календаря.";
+"No upcoming events" = "Нет предстоящих событий";
+"Tomorrow" = "Завтра";
+"Untitled" = "Без названия";
+"Detail" = "Подробности";
+"Phase" = "Фаза";
+"Weather" = "Погода";
+"Select Your Email" = "Выберите e-mail";
+"Confirm" = "Подтвердить";
+"Calendar name" = "Название календаря";
+"Sharing: %@" = "Общий доступ: %@";
+"Loading..." = "Загрузка...";
+"Selected Location" = "Выбранное местоположение";
+"Data provided by Apple Weather" = "Данные предоставлены Apple Weather";
+"Next" = "Далее";
+"No details found for the selected location." = "Для выбранного местоположения не найдены сведения.";
+"Could not determine the time zone for the selected location." = "Не удалось определить часовой пояс для выбранного местоположения.";
+"(No Title)" = "(Без названия)";
+"Choose your e-mail" = "Выберите свой e-mail";
+"It will be treated as your primary address and invitations will not be sent to it." = "Он будет использоваться как основной адрес, и приглашения не будут отправляться на него.";
+"Invalid URL" = "Недействительный URL";
+"Rate limit or insufficient permission" = "Ограничение запросов или недостаточно прав";
+"Network error: %@" = "Ошибка сети: %@";
+"N/A - Selected Tab: %@" = "Н/Д - выбранная вкладка: %@";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating — ваш ИИ-тренер для более разумного питания и тренировок. Приложение объединяет современную нутрициологию и практичные инструменты для планирования питания, тренировок, управления запасами и понимания влияния еды и движения.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio — профессиональная 3D-среда дизайна для разработчиков iOS и macOS. Она сочетает точный рендеринг RealityKit и мощный Rich Text редактор для создания качественных материалов App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio — студия записи экрана для авторов. Записывайте экран и камеру одновременно, управляйте микрофоном и системным звуком и экспортируйте чистые MP4 для уроков, демонстраций и презентаций продукта.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars объединяет продвинутое планирование и красиво встроенные прогнозы погоды, чтобы вы могли планировать точнее. Поддерживает несколько календарных сервисов, жесты редактирования, ссылки на встречи и подробные почасовые и дневные прогнозы.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI помогает понимать движение рынка с аналитикой на устройстве и многоагентным процессом, который отделяет сигнал от шума. Отслеживайте цены, вероятности режимов, понятные панели и графики для более взвешенных решений.";
