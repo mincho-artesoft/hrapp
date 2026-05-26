@@ -3,6 +3,7 @@ import SwiftData
 import UIKit
 import CoreLocation
 import GoogleMobileAds
+import WidgetKit
 @preconcurrency import WeatherKit
 
 @main
@@ -20,6 +21,9 @@ struct CalendarApp: App {
     @Environment(\.scenePhase) private var scenePhase
 
     @State private var hasRefreshedWidgetThisSession = false
+    @State private var widgetRefreshTask: Task<Void, Never>?
+
+    private let widgetRefreshInterval: UInt64 = 15 * 60 * 1_000_000_000
 
     // Това е вашият WeatherKit ViewModel
     @StateObject private var weatherVM = WeatherKitViewModel.shared
@@ -78,6 +82,7 @@ struct CalendarApp: App {
 
                 setupGlobalState()
                 refreshCalendarWidgetIfNeeded()
+                startPeriodicCalendarWidgetRefresh()
 
             case .background:
                 print("App in background.")
@@ -86,6 +91,7 @@ struct CalendarApp: App {
                 }
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                stopPeriodicCalendarWidgetRefresh()
 
             case .inactive:
                 print("App is inactive.")
@@ -131,6 +137,37 @@ struct CalendarApp: App {
     private func refreshCalendarWidgetIfNeeded() {
         guard !hasRefreshedWidgetThisSession else { return }
         hasRefreshedWidgetThisSession = true
+
+        Task { @MainActor in
+            await refreshCalendarWidgetIfInstalled()
+        }
+    }
+
+    private func startPeriodicCalendarWidgetRefresh() {
+        widgetRefreshTask?.cancel()
+        widgetRefreshTask = Task { @MainActor in
+            await refreshCalendarWidgetIfInstalled()
+
+            while !Task.isCancelled {
+                do {
+                    try await Task.sleep(nanoseconds: widgetRefreshInterval)
+                } catch {
+                    return
+                }
+
+                await refreshCalendarWidgetIfInstalled()
+            }
+        }
+    }
+
+    private func stopPeriodicCalendarWidgetRefresh() {
+        widgetRefreshTask?.cancel()
+        widgetRefreshTask = nil
+    }
+
+    @MainActor
+    private func refreshCalendarWidgetIfInstalled() async {
+        guard await CalendarWidgetStore.hasInstalledCalendarWidget() else { return }
 
         CalendarWidgetStore.saveWeatherSnapshot(
             symbol: weatherVM.currentSymbol,

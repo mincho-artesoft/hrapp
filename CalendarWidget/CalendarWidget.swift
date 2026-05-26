@@ -132,7 +132,7 @@ private struct CalendarIconProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<CalendarIconEntry>) -> Void) {
         let now = Date()
         let entry = CalendarIconEntry(date: now, weather: WidgetSharedStore.snapshot(), events: WidgetSharedStore.upcomingEvents())
-        let nextRefresh = Calendar.current.date(byAdding: .minute, value: 30, to: now) ?? now.addingTimeInterval(1800)
+        let nextRefresh = Calendar.current.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(900)
         completion(Timeline(entries: [entry], policy: .after(nextRefresh)))
     }
 }

@@ -40,6 +40,21 @@ enum CalendarWidgetStore {
         WidgetCenter.shared.reloadTimelines(ofKind: classicWidgetKind)
     }
 
+    static func hasInstalledCalendarWidget() async -> Bool {
+        await withCheckedContinuation { continuation in
+            WidgetCenter.shared.getCurrentConfigurations { result in
+                switch result {
+                case .success(let widgets):
+                    continuation.resume(returning: widgets.contains { widget in
+                        widget.kind == widgetKind || widget.kind == classicWidgetKind
+                    })
+                case .failure:
+                    continuation.resume(returning: true)
+                }
+            }
+        }
+    }
+
     static func saveWeatherSnapshot(
         symbol: String,
         condition: String,
@@ -95,11 +110,25 @@ enum CalendarWidgetStore {
         let eventStore = viewModel.eventStore
         let now = Date()
         let end = Calendar.current.date(byAdding: .year, value: 1, to: now) ?? now.addingTimeInterval(31_536_000)
-        let calendars = viewModel.allowedCalendars()
+        let selectedCalendarIDs = viewModel.selectedCalendarIDs
+        guard !selectedCalendarIDs.isEmpty else {
+            saveUpcomingEventSnapshots([])
+            return
+        }
+
+        let calendars = eventStore.calendars(for: .event).filter {
+            selectedCalendarIDs.contains($0.calendarIdentifier)
+        }
+
+        guard !calendars.isEmpty else {
+            saveUpcomingEventSnapshots([])
+            return
+        }
+
         let predicate = eventStore.predicateForEvents(
             withStart: now,
             end: end,
-            calendars: calendars.isEmpty ? nil : calendars
+            calendars: calendars
         )
 
         let snapshots = eventStore.events(matching: predicate)
@@ -112,6 +141,10 @@ enum CalendarWidgetStore {
             .prefix(limit)
             .map(makeUpcomingEventSnapshot)
 
+        saveUpcomingEventSnapshots(snapshots)
+    }
+
+    private static func saveUpcomingEventSnapshots(_ snapshots: [UpcomingEventSnapshot]) {
         guard let defaults = UserDefaults(suiteName: appGroupID),
               let data = try? JSONEncoder().encode(snapshots)
         else {
