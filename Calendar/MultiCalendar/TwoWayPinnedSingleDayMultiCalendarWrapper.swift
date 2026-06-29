@@ -257,6 +257,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             
             // 5) Подаваш към SwiftUI
             parent.events = descriptors
+            EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
         }
 
 

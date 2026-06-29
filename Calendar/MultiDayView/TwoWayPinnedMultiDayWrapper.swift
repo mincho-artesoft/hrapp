@@ -260,6 +260,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 }
             }
             parent.events = splitted
+            EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
         }
         
         private func splitEventByDays(_ ekEvent: EKEvent,

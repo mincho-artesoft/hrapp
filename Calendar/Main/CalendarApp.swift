@@ -36,6 +36,9 @@ struct CalendarApp: App {
         WindowGroup {
             RootView()
                 .onAppear {
+                    EventNotificationManager.shared.configure()
+                    EventNotificationManager.shared.requestAuthorizationOnLaunch()
+
                     // Логика за реклами
                     if SubscriptionManager.shared.subscriptionStatus == .base {
                         MobileAds.shared.start(completionHandler: nil)
@@ -81,6 +84,8 @@ struct CalendarApp: App {
                 CalendarViewModel.shared.startMicrosoftCalendarSync()
 
                 setupGlobalState()
+                EventNotificationManager.shared.refreshAuthorizationStatus()
+                EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
                 refreshCalendarWidgetIfNeeded()
                 startPeriodicCalendarWidgetRefresh()
 

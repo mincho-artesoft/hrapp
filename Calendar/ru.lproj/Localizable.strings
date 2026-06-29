@@ -778,6 +778,11 @@
 "Rate limit or insufficient permission" = "Ограничение запросов или недостаточно прав";
 "Network error: %@" = "Ошибка сети: %@";
 "N/A - Selected Tab: %@" = "Н/Д - выбранная вкладка: %@";
+"Enable Notifications" = "Включить уведомления";
+"Event Notifications" = "Уведомления о событиях";
+"Event alerts are scheduled from your event alert settings." = "Оповещения о событиях планируются согласно настройкам оповещений в событиях.";
+"Allow notifications so event alerts can appear at the right time." = "Разрешите уведомления, чтобы оповещения о событиях появлялись вовремя.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Уведомления для этого приложения выключены. Чтобы включить их, перейдите: Настройки -> Приложения -> Cloud Calendars -> Уведомления -> Разрешить уведомления.";
 "Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
 "Promo.WiseEating.description" = "Wise Eating — ваш ИИ-тренер для более разумного питания и тренировок. Приложение объединяет современную нутрициологию и практичные инструменты для планирования питания, тренировок, управления запасами и понимания влияния еды и движения.";
 "Promo.StoreFront.name" = "StoreFront Studio";

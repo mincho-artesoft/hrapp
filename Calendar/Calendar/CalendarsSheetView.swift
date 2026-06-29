@@ -15,6 +15,7 @@ struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+    @ObservedObject private var notificationManager = EventNotificationManager.shared
 
     // MARK: - State
     @State private var showAddGoogleCalendarSheet: StoredGoogleUser? = nil
@@ -60,6 +61,7 @@ struct CalendarsSheetView: View {
             Form {
                 iCloudSection
                 otherSection
+                notificationSection
                 googleSection
                 microsoftSection
                 addCalendarSection
@@ -170,6 +172,58 @@ struct CalendarsSheetView: View {
                 }
             }
         }
+    }
+
+    @ViewBuilder
+    private var notificationSection: some View {
+        Section {
+            VStack(alignment: .leading, spacing: 10) {
+                Toggle(isOn: notificationToggleBinding) {
+                    HStack(spacing: 12) {
+                        Image(systemName: notificationsToggleIsOn ? "bell.fill" : "bell.slash")
+                            .font(.title3)
+                            .foregroundColor(.blue)
+                            .frame(width: 28, height: 28)
+
+                        Text(LocalizedStringKey("Event Notifications"))
+                            .font(.headline)
+                    }
+                }
+
+                if notificationManager.eventNotificationsEnabled && !notificationManager.notificationsAllowed {
+                    if notificationManager.canAskForPermission {
+                        Text(LocalizedStringKey("Allow notifications so event alerts can appear at the right time."))
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text(LocalizedStringKey("Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications."))
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+            }
+            .padding(.vertical, 6)
+            .listRowSeparator(.hidden)
+            .listRowBackground(Color.clear)
+        }
+    }
+
+    private var notificationsToggleIsOn: Bool {
+        notificationManager.eventNotificationsEnabled && notificationManager.notificationsAllowed
+    }
+
+    private var notificationToggleBinding: Binding<Bool> {
+        Binding(
+            get: { notificationsToggleIsOn },
+            set: { isOn in
+                if isOn {
+                    notificationManager.setEventNotificationsEnabled(true)
+                } else {
+                    notificationManager.setEventNotificationsEnabled(false)
+                }
+            }
+        )
     }
 
     // ⚡ Google Section with spinner row
@@ -441,6 +495,8 @@ struct CalendarsSheetView: View {
 
     private func onAppear() {
         viewModel.reloadCalendars()
+        notificationManager.refreshAuthorizationStatus()
+        notificationManager.rescheduleUpcomingEventNotifications()
         loadGoogleSharingInfos()
         loadCurrentGoogleUserID()
     }
@@ -452,6 +508,7 @@ struct CalendarsSheetView: View {
         } else {
             viewModel.selectedCalendarIDs = allIDs
         }
+        notificationManager.rescheduleUpcomingEventNotifications()
     }
 
     private func toggleCalendar(_ cal: EKCalendar) {
@@ -460,6 +517,7 @@ struct CalendarsSheetView: View {
         } else {
             viewModel.selectedCalendarIDs.insert(cal.calendarIdentifier)
         }
+        notificationManager.rescheduleUpcomingEventNotifications()
     }
 
     private func googleCopiedCalendars(for user: StoredGoogleUser) -> [EKCalendar] {

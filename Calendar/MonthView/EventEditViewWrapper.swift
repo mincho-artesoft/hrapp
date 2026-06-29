@@ -43,6 +43,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
             
             // Ако искаме да презаредим календари или списъци, можем да го направим след леко забавяне:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
+                EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
                 // CalendarViewModel.shared.reloadCalendars()
                 // Извикваме и подадения callback, ако е зададен
                 parent.onEventUpdated?()

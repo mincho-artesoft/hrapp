@@ -116,6 +116,9 @@ final class CalendarViewModel: ObservableObject {
             .sink { newValue in
                 let array = Array(newValue)
                 UserDefaults.standard.set(array, forKey: "SelectedCalendarIDsKey")
+                Task { @MainActor in
+                    EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+                }
             }
             .store(in: &cancellables)
         NotificationCenter.default.addObserver(
@@ -406,6 +409,7 @@ final class CalendarViewModel: ObservableObject {
         // 6) Накрая записваме newEventCalendarMap като нов „стар“ snapshot
         oldEventCalendarMap = newEventCalendarMap
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
+        EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
     }
 
     /// Търси в msToLocalCalendarMapAll дали даденият локален календар (localCalID)
@@ -623,6 +627,7 @@ final class CalendarViewModel: ObservableObject {
             }
         }
         self.eventsByID = tmp
+        EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
     }
     func localOrICloudCalendars() -> [EKCalendar] {
        let googleSyncedIDs = Set(

@@ -777,6 +777,11 @@
 "Rate limit or insufficient permission" = "Limite di richieste o autorizzazione insufficiente";
 "Network error: %@" = "Errore di rete: %@";
 "N/A - Selected Tab: %@" = "N/D - scheda selezionata: %@";
+"Enable Notifications" = "Attiva notifiche";
+"Event Notifications" = "Notifiche eventi";
+"Event alerts are scheduled from your event alert settings." = "Gli avvisi degli eventi vengono programmati in base alle impostazioni di avviso di ogni evento.";
+"Allow notifications so event alerts can appear at the right time." = "Consenti le notifiche affinché gli avvisi degli eventi appaiano al momento giusto.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Le notifiche sono disattivate per questa app. Per attivarle vai su: Impostazioni -> App -> Cloud Calendars -> Notifiche -> Consenti notifiche.";
 "Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
 "Promo.WiseEating.description" = "Wise Eating è il tuo coach IA per nutrizione e allenamento più intelligenti. Combina scienza nutrizionale moderna con strumenti pratici per pianificare pasti, creare allenamenti, gestire la dispensa e capire come cibo e movimento influenzano il corpo.";
 "Promo.StoreFront.name" = "StoreFront Studio";
