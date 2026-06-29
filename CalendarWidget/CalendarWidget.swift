@@ -732,6 +732,7 @@ struct CalendarWidgetBundle: WidgetBundle {
     var body: some Widget {
         CalendarIconWidget()
         CalendarIconClassicWidget()
+        CalendarLiveActivityWidget()
     }
 }
 

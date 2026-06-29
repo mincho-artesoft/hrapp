@@ -1,3 +1,6 @@
+import ActivityKit
+import BackgroundTasks
+import EventKit
 import SwiftUI
 import SwiftData
 import UIKit
@@ -23,7 +26,7 @@ struct CalendarApp: App {
     @State private var hasRefreshedWidgetThisSession = false
     @State private var widgetRefreshTask: Task<Void, Never>?
 
-    private let widgetRefreshInterval: UInt64 = 15 * 60 * 1_000_000_000
+    private let liveActivityRefreshInterval: UInt64 = 5 * 60 * 1_000_000_000
 
     // Това е вашият WeatherKit ViewModel
     @StateObject private var weatherVM = WeatherKitViewModel.shared
@@ -61,6 +64,9 @@ struct CalendarApp: App {
                     print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
                 }
         }
+        .backgroundTask(.appRefresh(CalendarLiveActivityBackgroundRefreshTask.identifier)) {
+            await CalendarLiveActivityBackgroundRefreshTask.run()
+        }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
             case .active:
@@ -87,10 +93,13 @@ struct CalendarApp: App {
                 EventNotificationManager.shared.refreshAuthorizationStatus()
                 EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
                 refreshCalendarWidgetIfNeeded()
+                CalendarLiveActivityManager.shared.update()
                 startPeriodicCalendarWidgetRefresh()
 
             case .background:
                 print("App in background.")
+                CalendarLiveActivityManager.shared.update()
+                CalendarLiveActivityBackgroundRefreshTask.schedule()
                 if SubscriptionManager.shared.subscriptionStatus == .base {
                     Task { await AppOpenAdManager.shared.loadAd() }
                 }
@@ -153,16 +162,16 @@ struct CalendarApp: App {
     private func startPeriodicCalendarWidgetRefresh() {
         widgetRefreshTask?.cancel()
         widgetRefreshTask = Task { @MainActor in
-            await refreshCalendarWidgetIfInstalled()
+            await refreshCalendarSurfaces()
 
             while !Task.isCancelled {
                 do {
-                    try await Task.sleep(nanoseconds: widgetRefreshInterval)
+                    try await Task.sleep(nanoseconds: liveActivityRefreshInterval)
                 } catch {
                     return
                 }
 
-                await refreshCalendarWidgetIfInstalled()
+                await refreshCalendarSurfaces()
             }
         }
     }
@@ -174,16 +183,91 @@ struct CalendarApp: App {
 
     @MainActor
     private func refreshCalendarWidgetIfInstalled() async {
-        guard await CalendarWidgetStore.hasInstalledCalendarWidget() else { return }
+        await refreshCalendarSurfaces()
+    }
 
-        CalendarWidgetStore.saveWeatherSnapshot(
-            symbol: weatherVM.currentSymbol,
-            condition: weatherVM.currentCondition,
-            temperature: weatherVM.currentTemp,
-            windDirectionDegrees: weatherVM.currentWindDirection?.degrees,
-            windDirectionText: weatherVM.windDirectionAbbreviation(for: weatherVM.currentWindDirection),
-            windSpeed: weatherVM.currentWindSpeed
-        )
+    @MainActor
+    private func refreshCalendarSurfaces() async {
+        let hasInstalledCalendarWidget = await CalendarWidgetStore.hasInstalledCalendarWidget()
+
+        if hasInstalledCalendarWidget {
+            CalendarWidgetStore.saveWeatherSnapshot(
+                symbol: weatherVM.currentSymbol,
+                condition: weatherVM.currentCondition,
+                temperature: weatherVM.currentTemp,
+                windDirectionDegrees: weatherVM.currentWindDirection?.degrees,
+                windDirectionText: weatherVM.windDirectionAbbreviation(for: weatherVM.currentWindDirection),
+                windSpeed: weatherVM.currentWindSpeed
+            )
+        }
+
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
+        CalendarLiveActivityManager.shared.update(refreshSnapshot: false)
+    }
+}
+
+@MainActor
+private enum CalendarLiveActivityBackgroundRefreshTask {
+    static let identifier = "com.deksan.calendarasd.refresh"
+    private static let refreshInterval: TimeInterval = 5 * 60
+    private static var schedulingUnavailable = false
+
+    static func schedule() {
+        guard !schedulingUnavailable else { return }
+
+        guard UIApplication.shared.backgroundRefreshStatus == .available else {
+            schedulingUnavailable = true
+            print("Calendar Live Activity refresh was not scheduled because Background App Refresh is unavailable.")
+            return
+        }
+
+        let request = BGAppRefreshTaskRequest(identifier: identifier)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: refreshInterval)
+
+        do {
+            try BGTaskScheduler.shared.submit(request)
+        } catch {
+            let nsError = error as NSError
+            if nsError.domain == BGTaskScheduler.errorDomain,
+               nsError.code == BGTaskScheduler.Error.Code.unavailable.rawValue {
+                schedulingUnavailable = true
+            }
+            print("Could not schedule Calendar Live Activity refresh: \(error.localizedDescription)")
+        }
+    }
+
+    static func run() async {
+        schedule()
+
+        guard canReadCalendar else { return }
+
+        let eventStore = EKEventStore()
+        let selectedCalendarIDs = CalendarWidgetStore.selectedCalendarIDs(for: eventStore)
+        let snapshots = CalendarWidgetStore.makeUpcomingEventSnapshots(
+            from: eventStore,
+            selectedCalendarIDs: selectedCalendarIDs
+        )
+
+        CalendarWidgetStore.saveUpcomingEventSnapshots(snapshots)
+
+        let state = CalendarLiveActivityManager.makeContentState(from: snapshots)
+        let content = ActivityContent(
+            state: state,
+            staleDate: CalendarLiveActivityManager.staleDate(for: state)
+        )
+
+        for activity in Activity<CalendarLiveActivityAttributes>.activities {
+            await activity.update(content)
+        }
+    }
+
+    private static var canReadCalendar: Bool {
+        let status = EKEventStore.authorizationStatus(for: .event)
+
+        if #available(iOS 17.0, *) {
+            return status == .fullAccess
+        } else {
+            return status == .authorized
+        }
     }
 }

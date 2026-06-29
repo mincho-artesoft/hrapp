@@ -200,6 +200,9 @@
 "Calendar" = "Календар";
 "Subscriptions" = "Абонаменти";
 "Weather" = "Време";
+"Live" = "На живо";
+"Stop" = "Стоп";
+"Calendar Live Activity" = "Live Activity на календара";
 "Get" = "Вземи";
 "Color" = "Цвят";
 "Search for a city…" = "Търсене на град…";

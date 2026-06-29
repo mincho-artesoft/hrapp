@@ -7,6 +7,8 @@ enum CalendarWidgetStore {
     static let appGroupID = "group.ARTE-SOFT.sandBOX"
     static let widgetKind = "CalendarIconWidget"
     static let classicWidgetKind = "CalendarIconWidgetClassic"
+    static let selectedCalendarIDsKey = "SelectedCalendarIDsKey"
+    static let hasConfiguredSelectedCalendarIDsKey = "HasConfiguredSelectedCalendarIDsKey"
 
     struct UpcomingEventSnapshot: Codable {
         let id: String
@@ -18,6 +20,17 @@ enum CalendarWidgetStore {
         let colorGreen: Double
         let colorBlue: Double
         let colorAlpha: Double
+    }
+
+    static func upcomingEventsSnapshot() -> [UpcomingEventSnapshot] {
+        guard
+            let data = UserDefaults(suiteName: appGroupID)?.data(forKey: Key.upcomingEvents),
+            let snapshots = try? JSONDecoder().decode([UpcomingEventSnapshot].self, from: data)
+        else {
+            return []
+        }
+
+        return snapshots
     }
 
     private enum Key {
@@ -125,7 +138,7 @@ enum CalendarWidgetStore {
     }
 
     @MainActor
-    static func saveUpcomingEventsSnapshot(limit: Int = 6) {
+    static func saveUpcomingEventsSnapshot(limit: Int = 25) {
         let status = EKEventStore.authorizationStatus(for: .event)
         let hasReadAccess: Bool = {
             if #available(iOS 17.0, *) {
@@ -140,14 +153,48 @@ enum CalendarWidgetStore {
             return
         }
 
-        let viewModel = CalendarViewModel.shared
-        let eventStore = viewModel.eventStore
+        let eventStore = CalendarViewModel.shared.eventStore
+        let selectedCalendarIDs = CalendarViewModel.shared.selectedCalendarIDs
+        saveCalendarSelectionSnapshot(selectedCalendarIDs)
+
+        let snapshots = makeUpcomingEventSnapshots(
+            from: eventStore,
+            selectedCalendarIDs: selectedCalendarIDs,
+            limit: limit
+        )
+
+        saveUpcomingEventSnapshots(snapshots)
+    }
+
+    static func selectedCalendarIDs(for eventStore: EKEventStore) -> Set<String> {
+        if let storedArray = UserDefaults.standard.array(forKey: selectedCalendarIDsKey) as? [String],
+           !storedArray.isEmpty || UserDefaults.standard.bool(forKey: hasConfiguredSelectedCalendarIDsKey) {
+            return Set(storedArray)
+        }
+
+        return Set(eventStore.calendars(for: .event).map(\.calendarIdentifier))
+    }
+
+    static func saveCalendarSelectionSnapshot(_ selectedCalendarIDs: Set<String>) {
+        guard let defaults = UserDefaults(suiteName: appGroupID) else { return }
+
+        let hasConfiguredSelection = UserDefaults.standard.bool(forKey: hasConfiguredSelectedCalendarIDsKey)
+        guard !selectedCalendarIDs.isEmpty || hasConfiguredSelection else { return }
+
+        defaults.set(Array(selectedCalendarIDs), forKey: selectedCalendarIDsKey)
+        defaults.set(hasConfiguredSelection || !selectedCalendarIDs.isEmpty, forKey: hasConfiguredSelectedCalendarIDsKey)
+        defaults.synchronize()
+    }
+
+    static func makeUpcomingEventSnapshots(
+        from eventStore: EKEventStore,
+        selectedCalendarIDs: Set<String>,
+        limit: Int = 25
+    ) -> [UpcomingEventSnapshot] {
         let now = Date()
         let end = Calendar.current.date(byAdding: .year, value: 1, to: now) ?? now.addingTimeInterval(31_536_000)
-        let selectedCalendarIDs = viewModel.selectedCalendarIDs
         guard !selectedCalendarIDs.isEmpty else {
-            saveUpcomingEventSnapshots([])
-            return
+            return []
         }
 
         let calendars = eventStore.calendars(for: .event).filter {
@@ -155,8 +202,7 @@ enum CalendarWidgetStore {
         }
 
         guard !calendars.isEmpty else {
-            saveUpcomingEventSnapshots([])
-            return
+            return []
         }
 
         let predicate = eventStore.predicateForEvents(
@@ -165,20 +211,18 @@ enum CalendarWidgetStore {
             calendars: calendars
         )
 
-        let snapshots = eventStore.events(matching: predicate)
+        return eventStore.events(matching: predicate)
             .filter { event in
-                (event.endDate ?? event.startDate) >= now
+                !event.isAllDay && event.startDate > now
             }
             .sorted { lhs, rhs in
                 lhs.startDate < rhs.startDate
             }
             .prefix(limit)
             .map(makeUpcomingEventSnapshot)
-
-        saveUpcomingEventSnapshots(snapshots)
     }
 
-    private static func saveUpcomingEventSnapshots(_ snapshots: [UpcomingEventSnapshot]) {
+    static func saveUpcomingEventSnapshots(_ snapshots: [UpcomingEventSnapshot]) {
         guard let defaults = UserDefaults(suiteName: appGroupID),
               let data = try? JSONEncoder().encode(snapshots)
         else {

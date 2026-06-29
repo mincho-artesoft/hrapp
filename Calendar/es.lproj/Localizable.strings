@@ -201,6 +201,9 @@
 "Calendar" = "Calendario";
 "Subscriptions" = "Suscripciones";
 "Weather" = "Tiempo";
+"Live" = "En vivo";
+"Stop" = "Detener";
+"Calendar Live Activity" = "Actividad en vivo del calendario";
 "Get" = "Obtener";
 "Color" = "Color";
 "Search for a city…" = "Buscar una ciudad…";

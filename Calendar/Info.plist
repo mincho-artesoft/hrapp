@@ -217,6 +217,14 @@
 	<string>$(NSLocationAlwaysAndWhenInUseUsageDescription)</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(NSLocationWhenInUseUsageDescription)</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>com.deksan.calendarasd.refresh</string>

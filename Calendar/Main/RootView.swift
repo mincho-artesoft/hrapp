@@ -10,6 +10,7 @@ struct RootView: View {
     @State private var showCalendarChooser = false
     @State private var selectedTabDraggableMenuView = 0
     @State private var menuState: MenuState = .collapsed
+    @ObservedObject private var liveActivityManager = CalendarLiveActivityManager.shared
     @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
     @AppStorage("interstitialTabSwitchCount") private var tabSwitchCounter: Int = 0
     @State private var accessGranted = false
@@ -296,6 +297,17 @@ struct RootView: View {
                                             ReviewManager.eventCreated()
                                         })
                                         Spacer()
+                                        if liveActivityManager.isSupported {
+                                            bottomBarButton(
+                                                title: liveActivityManager.isRunning ? "Stop" : "Live",
+                                                image: liveActivityManager.isRunning ? "livephoto.slash" : "livephoto",
+                                                action: {
+                                                    liveActivityManager.toggle()
+                                                    menuState = .collapsed
+                                                }
+                                            )
+                                            Spacer()
+                                        }
                                         bottomBarButton(title: "Weather", image: "cloud.sun.fill", action: {
                                             oldSelectedTab = selectedTab
                                             selectedTab = 6
@@ -392,11 +404,17 @@ struct RootView: View {
                     CalendarWidgetStore.clearUpcomingEventsSnapshot()
                 }
             }
+            liveActivityManager.refreshStatus()
             
         }
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 openPendingEventNotificationDayIfNeeded()
+                if accessGranted {
+                    refreshCalendarWidgetEventsSnapshot()
+                } else {
+                    liveActivityManager.refreshStatus()
+                }
             }
         }
         .sheet(item: $eventToEdit) { theEvent in
@@ -466,6 +484,7 @@ struct RootView: View {
         }
 
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
+        liveActivityManager.update()
     }
 
     private func openDayFromEventNotification(_ notification: Notification) {

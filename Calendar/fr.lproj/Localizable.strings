@@ -200,6 +200,9 @@
 "Calendar" = "Calendrier";
 "Subscriptions" = "Abonnements";
 "Weather" = "Météo";
+"Live" = "En direct";
+"Stop" = "Arrêter";
+"Calendar Live Activity" = "Activité en direct du calendrier";
 
 /* WeatherKitView */
 "Search for a city..." = "Rechercher une ville…";

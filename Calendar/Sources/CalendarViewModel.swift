@@ -66,6 +66,8 @@ final class CalendarViewModel: ObservableObject {
     
     // In multi-account, when we do a sync for one user, we store a snapshot of that user’s googleToLocalEventMap
     private var oldGoogleToLocalEventMap: [String : String] = [:]
+    private let selectedCalendarIDsKey = "SelectedCalendarIDsKey"
+    private let hasConfiguredSelectedCalendarIDsKey = "HasConfiguredSelectedCalendarIDsKey"
 
     // MARK: - Init
     init() {
@@ -103,21 +105,32 @@ final class CalendarViewModel: ObservableObject {
         loadLocalCalendars()
 
         // 4) Load the previously selected calendar IDs
-        if let storedArray = UserDefaults.standard.array(forKey: "SelectedCalendarIDsKey") as? [String],
-           !storedArray.isEmpty {
+        if let storedArray = UserDefaults.standard.array(forKey: selectedCalendarIDsKey) as? [String],
+           !storedArray.isEmpty || UserDefaults.standard.bool(forKey: hasConfiguredSelectedCalendarIDsKey) {
             self.selectedCalendarIDs = Set(storedArray)
+            if !storedArray.isEmpty {
+                UserDefaults.standard.set(true, forKey: hasConfiguredSelectedCalendarIDsKey)
+            }
         } else {
-            let cals = eventStore.calendars(for: .event)
-            self.selectedCalendarIDs = Set(cals.map { $0.calendarIdentifier })
+            ensureDefaultCalendarSelectionIfNeeded()
         }
 
         // 5) Observe changes in selectedCalendarIDs and store them
         $selectedCalendarIDs
             .sink { newValue in
+                let hasConfiguredSelection = UserDefaults.standard.bool(forKey: self.hasConfiguredSelectedCalendarIDsKey)
+                guard !newValue.isEmpty || hasConfiguredSelection || !self.allCalendars.isEmpty else { return }
+
                 let array = Array(newValue)
-                UserDefaults.standard.set(array, forKey: "SelectedCalendarIDsKey")
+                UserDefaults.standard.set(array, forKey: self.selectedCalendarIDsKey)
+                if !newValue.isEmpty {
+                    UserDefaults.standard.set(true, forKey: self.hasConfiguredSelectedCalendarIDsKey)
+                }
+                CalendarWidgetStore.saveCalendarSelectionSnapshot(newValue)
+
                 Task { @MainActor in
                     EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+                    CalendarLiveActivityManager.shared.update()
                 }
             }
             .store(in: &cancellables)
@@ -567,6 +580,7 @@ final class CalendarViewModel: ObservableObject {
     func reloadCalendars() {
         let cals = eventStore.calendars(for: .event)
         self.allCalendars = cals
+        ensureDefaultCalendarSelectionIfNeeded()
 
         // Обновяваме речника (или каквото друго е нужно)
         syncNonOtherCalendarsDict()
@@ -579,6 +593,23 @@ final class CalendarViewModel: ObservableObject {
         } else {
             self.firstLocalCalendarColor = nil
         }
+    }
+
+    private func ensureDefaultCalendarSelectionIfNeeded() {
+        guard !UserDefaults.standard.bool(forKey: hasConfiguredSelectedCalendarIDsKey) else { return }
+        if let storedArray = UserDefaults.standard.array(forKey: selectedCalendarIDsKey) as? [String],
+           !storedArray.isEmpty {
+            selectedCalendarIDs = Set(storedArray)
+            UserDefaults.standard.set(true, forKey: hasConfiguredSelectedCalendarIDsKey)
+            return
+        }
+
+        let allIDs = Set(allCalendars.map(\.calendarIdentifier))
+        guard !allIDs.isEmpty else { return }
+
+        selectedCalendarIDs = allIDs
+        UserDefaults.standard.set(Array(allIDs), forKey: selectedCalendarIDsKey)
+        UserDefaults.standard.set(true, forKey: hasConfiguredSelectedCalendarIDsKey)
     }
 
 

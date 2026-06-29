@@ -200,6 +200,9 @@
 "Calendar" = "Calendar";
 "Subscriptions" = "Subscriptions";
 "Weather" = "Weather";
+"Live" = "Live";
+"Stop" = "Stop";
+"Calendar Live Activity" = "Calendar Live Activity";
 "Get" = "Get";
 "Color" = "Color";
 "Search for a city…" = "Search for a city…";
