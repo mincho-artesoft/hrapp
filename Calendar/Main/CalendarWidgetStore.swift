@@ -16,6 +16,8 @@ enum CalendarWidgetStore {
         let startDate: Date
         let endDate: Date
         let isAllDay: Bool
+        let location: String?
+        let videoCallPlatform: String?
         let colorRed: Double
         let colorGreen: Double
         let colorBlue: Double
@@ -282,10 +284,36 @@ enum CalendarWidgetStore {
             startDate: event.startDate,
             endDate: event.endDate,
             isAllDay: event.isAllDay,
+            location: event.location?.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
+            videoCallPlatform: videoCallPlatform(from: event.notes),
             colorRed: Double(red),
             colorGreen: Double(green),
             colorBlue: Double(blue),
             colorAlpha: Double(alpha)
         )
+    }
+
+    private static func videoCallPlatform(from notes: String?) -> String? {
+        guard let notes,
+              notes.contains("----( Video Call )----")
+        else {
+            return nil
+        }
+
+        let bracketRegex = "\\[([^\\]]+)\\]"
+        guard let matchRange = notes.range(of: bracketRegex, options: .regularExpression) else {
+            return nil
+        }
+
+        return String(notes[matchRange])
+            .trimmingCharacters(in: CharacterSet(charactersIn: "[]"))
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .nilIfEmpty
+    }
+}
+
+private extension String {
+    var nilIfEmpty: String? {
+        isEmpty ? nil : self
     }
 }

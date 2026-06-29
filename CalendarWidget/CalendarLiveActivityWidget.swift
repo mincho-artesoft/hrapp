@@ -17,6 +17,12 @@ struct CalendarLiveActivityEvent: Codable, Hashable, Identifiable {
     let startDate: Date
     let endDate: Date
     let isAllDay: Bool
+    let location: String?
+    let videoCallPlatform: String?
+    let colorRed: Double
+    let colorGreen: Double
+    let colorBlue: Double
+    let colorAlpha: Double
 }
 
 private enum CalendarLiveActivityPalette {
@@ -55,6 +61,8 @@ private enum CalendarLiveActivitySharedStore {
         let startDate: Date
         let endDate: Date
         let isAllDay: Bool
+        let location: String?
+        let videoCallPlatform: String?
         let colorRed: Double
         let colorGreen: Double
         let colorBlue: Double
@@ -92,7 +100,13 @@ private enum CalendarLiveActivitySharedStore {
             title: snapshot.title,
             startDate: snapshot.startDate,
             endDate: snapshot.endDate,
-            isAllDay: snapshot.isAllDay
+            isAllDay: snapshot.isAllDay,
+            location: snapshot.location,
+            videoCallPlatform: snapshot.videoCallPlatform,
+            colorRed: snapshot.colorRed,
+            colorGreen: snapshot.colorGreen,
+            colorBlue: snapshot.colorBlue,
+            colorAlpha: snapshot.colorAlpha
         )
     }
 }
@@ -158,28 +172,44 @@ struct CalendarLiveActivityWidget: Widget {
                 .activityBackgroundTint(CalendarLiveActivityPalette.background)
                 .activitySystemActionForegroundColor(CalendarLiveActivityPalette.accent)
         } dynamicIsland: { context in
-            DynamicIsland {
+            let settings = CalendarLiveActivitySharedStore.globalSettings()
+            return DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    CalendarLiveActivityAppIcon(size: 18)
-                        .padding(.leading, 10)
+                    CalendarLiveActivityExpandedBrandView()
+                        .padding(.leading, 12)
+                        .padding(.top, 9)
                 }
-                DynamicIslandExpandedRegion(.center) {
-                    CalendarLiveActivityEventSummaryView(
-                        state: context.state,
-                        compact: true,
-                        settings: CalendarLiveActivitySharedStore.globalSettings(),
-                        primaryText: .white,
-                        secondaryText: .white.opacity(0.72),
-                        accent: CalendarLiveActivityPalette.accent
+                DynamicIslandExpandedRegion(.trailing) {
+                    CalendarLiveActivityExpandedCountdownView(
+                        event: context.state.nextEvent,
+                        settings: settings
                     )
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 10)
+                    .padding(.trailing, 12)
+                    .padding(.top, 5)
+                }
+                DynamicIslandExpandedRegion(.bottom) {
+                    if let event = context.state.nextEvent {
+                        CalendarLiveActivityEventCardView(event: event, settings: settings)
+                            .padding(.horizontal, 10)
+                            .padding(.top, 0)
+                            .padding(.bottom, 2)
+                    } else {
+                        Text("No upcoming events")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(.white.opacity(0.72))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 18)
+                    }
                 }
             } compactLeading: {
                 CalendarLiveActivityAppIcon(size: 18)
             } compactTrailing: {
                 if let event = context.state.nextEvent {
-                    CalendarLiveActivityCompactCountdownView(event: event)
+                    CalendarLiveActivityCompactCountdownView(
+                        event: event,
+                        settings: CalendarLiveActivitySharedStore.globalSettings()
+                    )
                 } else {
                     Image(systemName: "exclamationmark.circle")
                         .font(.caption2.bold())
@@ -192,21 +222,110 @@ struct CalendarLiveActivityWidget: Widget {
     }
 }
 
-private struct CalendarLiveActivityCompactCountdownView: View {
-    let event: CalendarLiveActivityEvent
+private struct CalendarLiveActivityExpandedBrandView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 1) {
+            Text("CloudCalendars")
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(.white)
+                .lineLimit(1)
+                .minimumScaleFactor(0.65)
+                .allowsTightening(true)
+
+            Text("Next Event")
+                .font(.system(size: 12, weight: .medium))
+                .foregroundStyle(.white.opacity(0.58))
+                .lineLimit(1)
+        }
+    }
+}
+
+private struct CalendarLiveActivityExpandedCountdownView: View {
+    let event: CalendarLiveActivityEvent?
+    let settings: CalendarLiveActivitySettingsSnapshot
+    var labelColor: Color = CalendarLiveActivityPalette.accent
+    var valueColor: Color = .white
+    var iconColor: Color = CalendarLiveActivityPalette.accent
 
     var body: some View {
-        Text(timerInterval: Date()...targetDate, countsDown: true)
+        VStack(alignment: .trailing, spacing: 3) {
+            Text("Starts in")
+                .font(.caption2.weight(.semibold))
+                .foregroundStyle(labelColor)
+
+            HStack(alignment: .firstTextBaseline, spacing: 7) {
+                if let event {
+                    CalendarLiveActivityCountdownValueView(targetDate: event.startDate, settings: settings)
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        .foregroundStyle(valueColor)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.65)
+                } else {
+                    Text("--")
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        .foregroundStyle(valueColor.opacity(0.6))
+                }
+
+                Image(systemName: "clock")
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundStyle(iconColor)
+            }
+        }
+    }
+}
+
+private struct CalendarLiveActivityCompactCountdownView: View {
+    let event: CalendarLiveActivityEvent
+    let settings: CalendarLiveActivitySettingsSnapshot
+
+    var body: some View {
+        CalendarLiveActivityCountdownValueView(targetDate: event.startDate, settings: settings)
             .font(.system(size: 12, weight: .semibold, design: .rounded))
-            .monospacedDigit()
             .foregroundStyle(.white)
             .lineLimit(1)
             .minimumScaleFactor(0.72)
             .frame(width: 42, alignment: .trailing)
     }
+}
 
-    private var targetDate: Date {
-        event.startDate
+private struct CalendarLiveActivityCountdownValueView: View {
+    let targetDate: Date
+    let settings: CalendarLiveActivitySettingsSnapshot
+
+    var body: some View {
+        TimelineView(.periodic(from: Date(), by: 60)) { timeline in
+            Text(Self.localizedRemainingTime(until: targetDate, now: timeline.date, settings: settings))
+                .monospacedDigit()
+        }
+    }
+
+    private static func localizedRemainingTime(
+        until targetDate: Date,
+        now: Date,
+        settings: CalendarLiveActivitySettingsSnapshot
+    ) -> String {
+        let remaining = max(0, targetDate.timeIntervalSince(now))
+        let value: Int
+        let unitKey: String
+
+        if remaining > 24 * 60 * 60 {
+            value = Int(remaining / 86_400)
+            unitKey = value == 1 ? "LiveActivityCountdownDayUnitOne" : "LiveActivityCountdownDayUnitOther"
+        } else if remaining > 60 * 60 {
+            value = Int(remaining / 3_600)
+            unitKey = value == 1 ? "LiveActivityCountdownHourUnitOne" : "LiveActivityCountdownHourUnitOther"
+        } else {
+            value = Int(remaining / 60)
+            unitKey = value == 1 ? "LiveActivityCountdownMinuteUnitOne" : "LiveActivityCountdownMinuteUnitOther"
+        }
+
+        let format = NSLocalizedString(
+            "LiveActivityCountdownFormat",
+            comment: "Live Activity countdown format with value and localized unit"
+        )
+        let unit = NSLocalizedString(unitKey, comment: "Live Activity countdown unit")
+
+        return String(format: format, locale: settings.locale, value, unit)
     }
 }
 
@@ -215,18 +334,154 @@ private struct CalendarLiveActivityContentView: View {
     let settings: CalendarLiveActivitySettingsSnapshot
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 8) {
-                CalendarLiveActivityAppIcon(size: 20)
-                Text("Cloud Calendars")
-                    .font(.headline)
-                    .foregroundStyle(CalendarLiveActivityPalette.primaryText)
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .top, spacing: 10) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("CloudCalendars")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(CalendarLiveActivityPalette.primaryText)
+                    Text("Next Event")
+                        .font(.subheadline)
+                        .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
+                }
+
                 Spacer()
+
+                CalendarLiveActivityExpandedCountdownView(
+                    event: state.nextEvent,
+                    settings: settings,
+                    valueColor: CalendarLiveActivityPalette.primaryText
+                )
             }
 
-            CalendarLiveActivityEventSummaryView(state: state, settings: settings)
+            if let event = state.nextEvent {
+                CalendarLiveActivityEventCardView(event: event, settings: settings)
+            } else {
+                Text("No upcoming events")
+                    .font(.subheadline)
+                    .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
+            }
         }
         .padding(14)
+    }
+}
+
+private struct CalendarLiveActivityEventCardView: View {
+    let event: CalendarLiveActivityEvent
+    let settings: CalendarLiveActivitySettingsSnapshot
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 10) {
+            RoundedRectangle(cornerRadius: 3, style: .continuous)
+                .fill(eventColor)
+                .frame(width: 5, height: markerHeight)
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(event.title.isEmpty ? "Untitled" : event.title)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(eventColor)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+
+                Label(eventTimeRangeText(event), systemImage: event.isAllDay ? "calendar" : "clock")
+                    .font(.system(size: 13, weight: .medium))
+                    .foregroundStyle(eventColor)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.78)
+
+                if let videoCallPlatform = event.videoCallPlatform, !videoCallPlatform.isEmpty {
+                    Label(videoCallPlatform, systemImage: "video")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(eventColor)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.78)
+                }
+
+                if let location = event.location, !location.isEmpty {
+                    Label(location, systemImage: "location.fill")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(eventColor)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.78)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.horizontal, 11)
+        .padding(.vertical, 7)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(eventBackgroundColor)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+    }
+
+    private var eventColor: Color {
+        Color(
+            red: event.colorRed,
+            green: event.colorGreen,
+            blue: event.colorBlue,
+            opacity: max(event.colorAlpha, 0.9)
+        )
+    }
+
+    private var eventBackgroundColor: Color {
+        Color(
+            red: event.colorRed,
+            green: event.colorGreen,
+            blue: event.colorBlue,
+            opacity: 0.3
+        )
+    }
+
+    private var markerHeight: CGFloat {
+        var rows = 2
+        if let videoCallPlatform = event.videoCallPlatform, !videoCallPlatform.isEmpty {
+            rows += 1
+        }
+        if let location = event.location, !location.isEmpty {
+            rows += 1
+        }
+
+        return rows > 2 ? 54 : 42
+    }
+
+    private func eventTimeRangeText(_ event: CalendarLiveActivityEvent) -> String {
+        if event.isAllDay {
+            return NSLocalizedString("all-day", comment: "All-day event label")
+        }
+
+        let calendar = settings.calendar
+
+        if calendar.isDate(event.startDate, inSameDayAs: event.endDate) {
+            return "\(shortTimeText(event.startDate)) - \(shortTimeText(event.endDate))"
+        }
+
+        return "\(shortDateText(event.startDate)) \(shortTimeText(event.startDate)) - \(shortDateText(event.endDate)) \(shortTimeText(event.endDate))"
+    }
+
+    private func shortTimeText(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = settings.calendar
+        formatter.locale = settings.locale
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
+    }
+
+    private func shortDateText(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = settings.calendar
+        formatter.locale = settings.locale
+        formatter.timeZone = .autoupdatingCurrent
+
+        let dateFormat = settings.dateFormat.trimmingCharacters(in: .whitespacesAndNewlines)
+        if dateFormat.isEmpty {
+            formatter.setLocalizedDateFormatFromTemplate("EEE d MMM")
+        } else {
+            formatter.dateFormat = dateFormat
+        }
+
+        return formatter.string(from: date)
     }
 }
 
@@ -250,8 +505,7 @@ private struct CalendarLiveActivityEventSummaryView: View {
                     Image(systemName: "timer")
                         .foregroundStyle(accent)
                     Text("Starts in")
-                    Text(timerInterval: Date()...event.startDate, countsDown: true)
-                        .monospacedDigit()
+                    CalendarLiveActivityCountdownValueView(targetDate: event.startDate, settings: settings)
                 }
                 .font(compact ? .caption2 : .subheadline)
                 .foregroundStyle(secondaryText)

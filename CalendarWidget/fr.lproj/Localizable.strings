@@ -12,5 +12,12 @@
 "Updated" = "Mis à jour";
 "Starts in" = "Commence dans";
 "Now" = "Maintenant";
+"LiveActivityCountdownFormat" = "%1$d %2$@";
+"LiveActivityCountdownMinuteUnitOne" = "min";
+"LiveActivityCountdownMinuteUnitOther" = "min";
+"LiveActivityCountdownHourUnitOne" = "h";
+"LiveActivityCountdownHourUnitOther" = "h";
+"LiveActivityCountdownDayUnitOne" = "jour";
+"LiveActivityCountdownDayUnitOther" = "jours";
 "Phase" = "Phase";
 "Weather" = "Météo";

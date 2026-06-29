@@ -12,5 +12,12 @@
 "Updated" = "Обновено";
 "Starts in" = "Започва след";
 "Now" = "Сега";
+"LiveActivityCountdownFormat" = "%1$d %2$@";
+"LiveActivityCountdownMinuteUnitOne" = "мин";
+"LiveActivityCountdownMinuteUnitOther" = "мин";
+"LiveActivityCountdownHourUnitOne" = "ч";
+"LiveActivityCountdownHourUnitOther" = "ч";
+"LiveActivityCountdownDayUnitOne" = "ден";
+"LiveActivityCountdownDayUnitOther" = "дни";
 "Phase" = "Фаза";
 "Weather" = "Време";

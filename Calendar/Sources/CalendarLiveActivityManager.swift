@@ -16,6 +16,12 @@ struct CalendarLiveActivityEvent: Codable, Hashable, Identifiable {
     let startDate: Date
     let endDate: Date
     let isAllDay: Bool
+    let location: String?
+    let videoCallPlatform: String?
+    let colorRed: Double
+    let colorGreen: Double
+    let colorBlue: Double
+    let colorAlpha: Double
 }
 
 @MainActor
@@ -152,7 +158,13 @@ final class CalendarLiveActivityManager: ObservableObject {
                         title: $0.title,
                         startDate: $0.startDate,
                         endDate: $0.endDate,
-                        isAllDay: $0.isAllDay
+                        isAllDay: $0.isAllDay,
+                        location: $0.location,
+                        videoCallPlatform: $0.videoCallPlatform,
+                        colorRed: $0.colorRed,
+                        colorGreen: $0.colorGreen,
+                        colorBlue: $0.colorBlue,
+                        colorAlpha: $0.colorAlpha
                     )
                 }
         )
