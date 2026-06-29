@@ -34,13 +34,143 @@ private enum CalendarLiveActivityPalette {
 
 private struct CalendarLiveActivityAppIcon: View {
     let size: CGFloat
-    var fallbackColor = CalendarLiveActivityPalette.accent
+    let settings: CalendarLiveActivitySettingsSnapshot
 
     var body: some View {
-        Image(systemName: "calendar")
-            .font(.system(size: size, weight: .semibold))
-            .foregroundStyle(fallbackColor)
+        ZStack {
+            RoundedRectangle(cornerRadius: size * 0.22, style: .continuous)
+                .fill(Self.iconBlue)
+
+            VStack(spacing: 0) {
+                HStack(alignment: .top, spacing: 0) {
+                    VStack(alignment: .center, spacing: size * 0.0125) {
+                        Text(monthText)
+                            .font(.system(size: size * 0.15, weight: .regular))
+                            .minimumScaleFactor(0.45)
+
+                        Text(weekdayText)
+                            .font(.system(size: size * 0.15, weight: .regular))
+                            .minimumScaleFactor(0.45)
+                    }
+                    .foregroundStyle(Self.iconTextColor)
+                    .lineLimit(1)
+                    .frame(width: size * 0.51, alignment: .center)
+                    .frame(maxHeight: .infinity, alignment: .center)
+
+                    Spacer(minLength: 0)
+
+                    VStack(alignment: .center, spacing: size * 0.0125) {
+                        Image(systemName: normalizedSymbol(weatherSymbol))
+                            .symbolVariant(.fill)
+                            .symbolRenderingMode(.multicolor)
+                            .font(.system(size: size * 0.2125, weight: .regular))
+                            .minimumScaleFactor(0.5)
+
+                        if let temperatureText {
+                            Text(temperatureText)
+                                .font(.system(size: size * 0.075, weight: .regular))
+                                .foregroundStyle(Self.iconTextColor)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                        }
+                    }
+                    .frame(maxHeight: .infinity)
+                }
+                .frame(height: size * 0.375)
+                .padding(.top, size * 0.0625)
+                .padding(.horizontal, size * 0.0625)
+
+                HStack {
+                    Spacer(minLength: 0)
+                    Text(dayText)
+                        .font(.system(size: size * 0.5, weight: .regular))
+                        .foregroundStyle(Self.iconTextColor)
+                        .monospacedDigit()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                    Spacer(minLength: 0)
+                }
+                .padding(.bottom, size * 0.0625)
+            }
+        }
+        .frame(width: size, height: size)
+        .drawingGroup()
     }
+
+    private var monthText: String {
+        formattedDate(Date(), format: "MMM").uppercased()
+    }
+
+    private var weekdayText: String {
+        formattedDate(Date(), format: "EEE").uppercased()
+    }
+
+    private var dayText: String {
+        String(settings.calendar.component(.day, from: Date()))
+    }
+
+    private var weatherSymbol: String {
+        UserDefaults(suiteName: Self.appGroupID)?.string(forKey: Self.weatherSymbolKey) ?? "cloud.sun.rain"
+    }
+
+    private var temperatureText: String? {
+        guard let temperature = UserDefaults(suiteName: Self.appGroupID)?.object(forKey: Self.temperatureKey) as? Double else {
+            return nil
+        }
+
+        return "\(roundedNumberText(temperature))°"
+    }
+
+    private func formattedDate(_ date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.calendar = settings.calendar
+        formatter.locale = settings.locale
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
+
+    private func roundedNumberText(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = settings.locale
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        formatter.minimumFractionDigits = 0
+
+        let separators = numberSeparators(from: settings.numberFormat)
+        formatter.decimalSeparator = separators.decimal ?? formatter.decimalSeparator
+        formatter.groupingSeparator = separators.grouping ?? formatter.groupingSeparator
+
+        return formatter.string(from: NSNumber(value: value.rounded())) ?? "\(Int(value.rounded()))"
+    }
+
+    private func numberSeparators(from sample: String) -> (grouping: String?, decimal: String?) {
+        let separators = sample.filter { !$0.isNumber }
+        guard !separators.isEmpty else {
+            return (nil, nil)
+        }
+
+        let decimal = separators.last.map(String.init)
+        let grouping = separators.dropLast().first.map(String.init)
+        return (grouping, decimal)
+    }
+
+    private func normalizedSymbol(_ symbol: String) -> String {
+        let cleanSymbol = symbol.replacingOccurrences(of: ".fill", with: "")
+        return cleanSymbol.isEmpty ? "sun.max" : cleanSymbol
+    }
+
+    private static var iconBlue: Color {
+        Color(red: 20/255, green: 109/255, blue: 179/255)
+    }
+
+    private static var iconTextColor: Color {
+        Color(red: 255/255, green: 248/255, blue: 231/255)
+    }
+
+    private static let appGroupID = "group.ARTE-SOFT.sandBOX"
+    private static let weatherSymbolKey = "calendarWidget.weatherSymbol"
+    private static let temperatureKey = "calendarWidget.temperature"
 }
 
 private enum CalendarLiveActivitySharedStore {
@@ -175,7 +305,7 @@ struct CalendarLiveActivityWidget: Widget {
             let settings = CalendarLiveActivitySharedStore.globalSettings()
             return DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    CalendarLiveActivityExpandedBrandView()
+                    CalendarLiveActivityExpandedBrandView(settings: settings)
                         .padding(.leading, 12)
                         .padding(.top, 9)
                 }
@@ -203,7 +333,7 @@ struct CalendarLiveActivityWidget: Widget {
                     }
                 }
             } compactLeading: {
-                CalendarLiveActivityAppIcon(size: 18)
+                CalendarLiveActivityAppIcon(size: 24, settings: settings)
             } compactTrailing: {
                 if let event = context.state.nextEvent {
                     CalendarLiveActivityCompactCountdownView(
@@ -216,26 +346,35 @@ struct CalendarLiveActivityWidget: Widget {
                         .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
                 }
             } minimal: {
-                CalendarLiveActivityAppIcon(size: 14)
+                CalendarLiveActivityAppIcon(size: 18, settings: settings)
             }
         }
     }
 }
 
 private struct CalendarLiveActivityExpandedBrandView: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 1) {
-            Text("CloudCalendars")
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(.white)
-                .lineLimit(1)
-                .minimumScaleFactor(0.65)
-                .allowsTightening(true)
+    let settings: CalendarLiveActivitySettingsSnapshot
 
-            Text("Next Event")
-                .font(.system(size: 12, weight: .medium))
-                .foregroundStyle(.white.opacity(0.58))
-                .lineLimit(1)
+    var body: some View {
+        HStack(alignment: .center, spacing: 4) {
+            CalendarLiveActivityAppIcon(size: 22, settings: settings)
+
+            VStack(alignment: .leading, spacing: 1) {
+                Text("CloudCalendars")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.45)
+                    .allowsTightening(true)
+
+                Text("Next Event")
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundStyle(.white.opacity(0.58))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.45)
+                    .allowsTightening(true)
+            }
+            .layoutPriority(1)
         }
     }
 }
@@ -336,14 +475,24 @@ private struct CalendarLiveActivityContentView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .top, spacing: 10) {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("CloudCalendars")
-                        .font(.headline.weight(.semibold))
-                        .foregroundStyle(CalendarLiveActivityPalette.primaryText)
-                    Text("Next Event")
-                        .font(.subheadline)
-                        .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
+                HStack(alignment: .center, spacing: 8) {
+                    CalendarLiveActivityAppIcon(size: 34, settings: settings)
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("CloudCalendars")
+                            .font(.headline.weight(.semibold))
+                            .foregroundStyle(CalendarLiveActivityPalette.primaryText)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                            .allowsTightening(true)
+
+                        Text("Next Event")
+                            .font(.subheadline)
+                            .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
+                            .lineLimit(1)
+                    }
                 }
+                .layoutPriority(1)
 
                 Spacer()
 
