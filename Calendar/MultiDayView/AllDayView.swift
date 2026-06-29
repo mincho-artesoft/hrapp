@@ -117,7 +117,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
         
-        let rowHeight: CGFloat = 22
+        let rowHeight: CGFloat = 24
         let baseY: CGFloat = 6
         let gap = style.eventGap
         

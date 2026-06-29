@@ -729,16 +729,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
         
         let availableWidth = bounds.width - leftColumnWidth
-        if dayCount < 4 {
-            let newDayColumnWidth = availableWidth / CGFloat(dayCount)
-            weekView.dayColumnWidth = newDayColumnWidth
-            daysHeaderView.dayColumnWidth = newDayColumnWidth
-            allDayView.dayColumnWidth = newDayColumnWidth
+        let minimumDayColumnWidth: CGFloat = 100
+        let newDayColumnWidth: CGFloat
+        if dayCount > 0 {
+            newDayColumnWidth = max(minimumDayColumnWidth, availableWidth / CGFloat(dayCount))
         } else {
-            weekView.dayColumnWidth = 100
-            daysHeaderView.dayColumnWidth = 100
-            allDayView.dayColumnWidth = 100
+            newDayColumnWidth = minimumDayColumnWidth
         }
+        weekView.dayColumnWidth = newDayColumnWidth
+        daysHeaderView.dayColumnWidth = newDayColumnWidth
+        allDayView.dayColumnWidth = newDayColumnWidth
         
         let totalDaysHeaderWidth = CGFloat(dayCount) * daysHeaderView.dayColumnWidth
         daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)

@@ -15,6 +15,8 @@ open class EventView: UIView {
         view.backgroundColor = .clear
         view.isScrollEnabled = false
         view.clipsToBounds = true
+        view.textContainerInset = .zero
+        view.textContainer.lineFragmentPadding = 0
         return view
     }()
     
@@ -165,6 +167,8 @@ open class EventView: UIView {
 
         // Apply to textView and style view
         textView.attributedText = finalString
+        textView.textContainer.maximumNumberOfLines = event.isAllDay ? 1 : 0
+        textView.textContainer.lineBreakMode = event.isAllDay ? .byTruncatingTail : .byWordWrapping
         backgroundColor = .clear
         layer.backgroundColor = event.backgroundColor.cgColor
         layer.cornerRadius = event.isAllDay ? 9 : 5
@@ -234,7 +238,7 @@ open class EventView: UIView {
         // --- Отклонение наляво за all-day (както преди) ---
         let leftPadding: CGFloat
         if let descriptor = descriptor, descriptor.isAllDay {
-            leftPadding = -3
+            leftPadding = 5
         } else {
             leftPadding = 8
         }
@@ -242,7 +246,7 @@ open class EventView: UIView {
         // --- Отклонение по вертикала за all-day ---
         let topPadding: CGFloat
         if let descriptor = descriptor, descriptor.isAllDay {
-            topPadding = -6
+            topPadding = 2
         } else {
             topPadding = 0
         }
@@ -258,7 +262,7 @@ open class EventView: UIView {
             textView.frame = CGRect(
                 x: bounds.minX + leftPadding,
                 y: bounds.minY + topPadding,
-                width: bounds.width - 6,
+                width: bounds.width - leftPadding - 5,
                 height: bounds.height - topPadding
             )
         }
