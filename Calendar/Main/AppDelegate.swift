@@ -44,4 +44,36 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         [.banner, .list, .sound]
     }
 
+    nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                            didReceive response: UNNotificationResponse) async {
+        let userInfo = response.notification.request.content.userInfo
+        let eventIdentifier = userInfo["eventIdentifier"] as? String
+        let calendarIdentifier = userInfo["calendarIdentifier"] as? String
+        let eventStartDate = userInfo["eventStartDate"] as? TimeInterval
+
+        EventNotificationNavigation.savePending(
+            eventStartDate: eventStartDate,
+            eventIdentifier: eventIdentifier
+        )
+
+        Task { @MainActor in
+            var safeUserInfo: [String: Any] = [:]
+            if let eventIdentifier {
+                safeUserInfo["eventIdentifier"] = eventIdentifier
+            }
+            if let calendarIdentifier {
+                safeUserInfo["calendarIdentifier"] = calendarIdentifier
+            }
+            if let eventStartDate {
+                safeUserInfo["eventStartDate"] = eventStartDate
+            }
+
+            NotificationCenter.default.post(
+                name: .openEventNotificationDay,
+                object: nil,
+                userInfo: safeUserInfo
+            )
+        }
+    }
+
 }

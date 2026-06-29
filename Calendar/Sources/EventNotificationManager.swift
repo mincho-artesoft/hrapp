@@ -12,6 +12,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
         let title: String
         let body: String
         let fireDate: Date
+        let eventStartDate: Date
         let eventIdentifier: String
         let calendarIdentifier: String
 
@@ -22,7 +23,8 @@ final class EventNotificationManager: NSObject, ObservableObject {
             content.sound = .default
             content.userInfo = [
                 "eventIdentifier": eventIdentifier,
-                "calendarIdentifier": calendarIdentifier
+                "calendarIdentifier": calendarIdentifier,
+                "eventStartDate": eventStartDate.timeIntervalSince1970
             ]
 
             let components = Calendar.current.dateComponents(
@@ -265,6 +267,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
                 title: title,
                 body: notificationBody(for: event),
                 fireDate: fireDate,
+                eventStartDate: event.startDate,
                 eventIdentifier: eventIdentifier,
                 calendarIdentifier: event.calendar.calendarIdentifier
             )

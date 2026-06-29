@@ -368,6 +368,10 @@ struct RootView: View {
                         selectedTabDraggableMenuView = 2
                 }
             }
+        .onReceive(NotificationCenter.default.publisher(
+            for: .openEventNotificationDay)) { notification in
+                openDayFromEventNotification(notification)
+            }
         .onAppear {
             Task {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
@@ -383,11 +387,17 @@ struct RootView: View {
                         default: break
                     }
                     refreshCalendarWidgetEventsSnapshot()
+                    openPendingEventNotificationDayIfNeeded()
                 } else {
                     CalendarWidgetStore.clearUpcomingEventsSnapshot()
                 }
             }
             
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                openPendingEventNotificationDayIfNeeded()
+            }
         }
         .sheet(item: $eventToEdit) { theEvent in
             EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent) {
@@ -456,6 +466,54 @@ struct RootView: View {
         }
 
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
+    }
+
+    private func openDayFromEventNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo ?? [:]
+        let targetDate: Date? = {
+            if let timestamp = userInfo["eventStartDate"] as? TimeInterval {
+                return Date(timeIntervalSince1970: timestamp)
+            }
+
+            if let eventIdentifier = userInfo["eventIdentifier"] as? String,
+               let event = CalendarViewModel.shared.eventStore.event(withIdentifier: eventIdentifier) {
+                return event.startDate
+            }
+
+            return nil
+        }()
+
+        menuState = .collapsed
+        draggableMenuAdaptiveBackgroundОpacity = 0.95
+
+        if let targetDate {
+            showSingleDayTab(for: targetDate)
+        } else {
+            selectedTab = 1
+            UserDefaults.standard.set(1, forKey: "selectedTabRoot")
+            loadSingleDayEvents()
+        }
+    }
+
+    private func openPendingEventNotificationDayIfNeeded() {
+        guard let pending = EventNotificationNavigation.consumePending() else { return }
+
+        let userInfo: [String: Any] = {
+            var info: [String: Any] = [:]
+            if let eventStartDate = pending.eventStartDate {
+                info["eventStartDate"] = eventStartDate
+            }
+            if let eventIdentifier = pending.eventIdentifier {
+                info["eventIdentifier"] = eventIdentifier
+            }
+            return info
+        }()
+
+        openDayFromEventNotification(Notification(
+            name: .openEventNotificationDay,
+            object: nil,
+            userInfo: userInfo
+        ))
     }
 
     // Helper for bottom bar buttons
