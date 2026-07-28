@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>How Cloud Calendars Rescued My Schedule and Sanity</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0KOVEMcApdbeLaiDs4hG8TIwvMleKJA..." crossorigin="anonymous">
+        <style>
+      /* ... (omitted for brevity, no changes here) ... */
+      :root {
+        --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        --bg: hsl(210 40% 98%);
+        --surface: hsl(0 0% 100%);
+        --surface-elev: hsl(210 40% 99%);
+        --text: hsl(215 25% 27%);
+        --muted: hsl(215 16% 47%);
+        --muted-2: hsl(215 16% 65%);
+        --heading: hsl(215 32% 17%);
+        --link: hsl(221 83% 53%);
+        --link-hover: hsl(221 83% 46%);
+        --border: hsl(214 32% 91%);
+        --border-strong: hsl(214 28% 80%);
+        --callout-bg: hsl(214 95% 97%);
+        --callout-border: hsl(214 95% 35%);
+        --code-bg: hsl(210 40% 96%);
+        --kbd-bg: hsl(210 12% 96%);
+        --selection: hsl(210 100% 90%);
+        --content-w: 72ch;
+        --radius: 12px;
+        --radius-sm: 8px;
+        --shadow: 0 10px 20px -12px rgb(0 0 0 / 0.16), 0 6px 12px -10px rgb(0 0 0 / 0.12);
+        --step--1: clamp(0.78rem, 0.72rem + 0.3vw, 0.9rem);
+        --step-0: clamp(0.95rem, 0.88rem + 0.45vw, 1.05rem);
+        --step-1: clamp(1.15rem, 1.04rem + 0.7vw, 1.25rem);
+        --step-2: clamp(1.35rem, 1.18rem + 1.1vw, 1.55rem);
+        --step-3: clamp(1.68rem, 1.42rem + 1.6vw, 1.95rem);
+        --step-4: clamp(2.1rem, 1.7rem + 2.3vw, 2.6rem);
+        --space-1: 0.375rem;
+        --space-2: 0.75rem;
+        --space-3: 1rem;
+        --space-4: 1.5rem;
+        --space-5: 2rem;
+        --space-6: 3rem;
+        --hljs-bg: #0b1220;
+        --hljs-fg: #cbd5e1;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: hsl(222 47% 5%);
+          --surface: hsl(222 47% 7%);
+          --surface-elev: hsl(222 47% 9%);
+          --text: hsl(215 20% 84%);
+          --muted: hsl(215 14% 65%);
+          --muted-2: hsl(215 14% 55%);
+          --heading: hsl(210 40% 95%);
+          --link: hsl(217 91% 60%);
+          --link-hover: hsl(217 91% 70%);
+          --border: hsl(215 20% 22%);
+          --border-strong: hsl(215 20% 30%);
+          --callout-bg: hsl(214 95% 12%);
+          --callout-border: hsl(214 95% 35%);
+          --code-bg: hsl(216 28% 14%);
+          --kbd-bg: hsl(216 22% 18%);
+          --hljs-bg: #0a0f1a;
+          --hljs-fg: #d1d5db;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      ::selection { background: var(--selection); }
+      :focus-visible {
+        outline: 3px solid color-mix(in oklab, var(--link) 65%, white);
+        outline-offset: 2px;
+        border-radius: 6px;
+      }
+      body {
+        font-family: var(--font-sans); line-height: 1.7; color: var(--text);
+        background: var(--bg); margin: 0; padding: var(--space-5) var(--space-3);
+        text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased;
+      }
+      main {
+        max-width: var(--content-w); margin: 0 auto; background: var(--surface);
+        padding: clamp(1.25rem, 1rem + 2vw, 2.25rem) clamp(1.25rem, 1rem + 3vw, 3rem);
+        border-radius: var(--radius); box-shadow: var(--shadow);
+        counter-reset: figure-counter table-figure-counter;
+      }
+      :target { scroll-margin-top: 8rem; }
+      .article-meta {
+        color: var(--muted); font-size: var(--step--1); margin-top: -0.75rem;
+        margin-bottom: var(--space-4); border-bottom: 1px solid var(--border);
+        padding-bottom: var(--space-2);
+      }
+      .article-meta p { margin: 0.25rem 0; }
+      .authors { font-weight: 600; color: var(--text); }
+      .citation strong { color: var(--text); }
+      /* --- NEW CSS RULE --- */
+      .corresponding-author strong { color: var(--text); }
+      h1, h2, h3, h4, h5, h6 {
+        color: var(--heading); line-height: 1.25;
+        margin: var(--space-5) 0 var(--space-2); font-weight: 700;
+      }
+      h1 { font-size: var(--step-4); font-weight: 800; margin-top: 0; }
+      h2 { font-size: var(--step-3); padding-bottom: 0.4rem; }
+      h3 { font-size: var(--step-2); }
+      h4 { font-size: var(--step-1); }
+      p, ul, ol, blockquote, figure, .callout { margin: var(--space-3) 0; }
+      ul, ol { padding-left: 1.25rem; }
+      li { margin-bottom: 0.4rem; }
+      li > p { margin: 0.25rem 0; }
+      a {
+        color: var(--link); text-decoration: underline;
+        text-decoration-color: color-mix(in oklab, var(--link) 40%, transparent);
+        text-underline-offset: 2px; transition: color .18s ease, text-decoration-color .18s ease;
+      }
+      a:hover { color: var(--link-hover); text-decoration-color: currentColor; }
+      blockquote {
+        border-left: 4px solid var(--border-strong); padding: 0.25rem 0 0.25rem 1rem;
+        color: var(--muted); font-style: italic;
+        background: color-mix(in oklab, var(--surface) 85%, var(--border) 15%);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      }
+      hr { border: none; border-top: 1px solid var(--border); margin: var(--space-5) 0; }
+      code, kbd, samp {
+        font-family: var(--font-mono); font-size: 0.92em;
+        background: var(--code-bg); padding: 0.15em 0.35em; border-radius: 6px;
+      }
+      kbd { border: 1px solid var(--border-strong); box-shadow: inset 0 -1px 0 0 var(--border); background: var(--kbd-bg); }
+      pre { margin: var(--space-3) 0; }
+      pre code {
+        display: block; padding: 1rem; background: var(--hljs-bg);
+        color: var(--hljs-fg); border-radius: var(--radius-sm);
+        overflow-x: auto; line-height: 1.6;
+      }
+      pre code.hljs { background: var(--hljs-bg); color: var(--hljs-fg); }
+      .hljs-comment,.hljs-quote{color:#94a3b8;font-style:italic}
+      .hljs-keyword,.hljs-doctag,.hljs-formula{color:#c084fc}
+      .hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#f87171}
+      .hljs-literal{color:#22d3ee}
+      .hljs-addition,.hljs-attribute,.hljs-meta .hljs-string,.hljs-regexp,.hljs-string{color:#86efac}
+      .hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#fbbf24}
+      .hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#60a5fa}
+      .hljs-built_in,.hljs-class .hljs-title,.hljs-title.class_{color:#facc15}
+      .hljs-emphasis{font-style:italic}
+      .hljs-strong{font-weight:700}
+      .hljs-link{text-decoration:underline}
+      figure {
+        margin: var(--space-4) 0; padding: 0; border: 1px solid var(--border);
+        border-radius: var(--radius-sm); background: var(--surface); overflow: hidden;
+      }
+      figure img, figure video { display: block; width: 100%; height: auto; }
+      .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; }
+      .video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+      figcaption {
+        padding: 0.75rem 1rem; font-size: var(--step--1); color: var(--muted);
+        background: var(--surface-elev); border-top: 1px solid var(--border);
+      }
+      figcaption::before { font-weight: 700; color: var(--heading); }
+      figure[data-type="code-figure"] > .code-block-container > pre { margin: 0; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+      figure[data-type="code-figure"] > figcaption { border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+      figure[data-type="table-figure"] {
+        overflow-x: auto;
+      }
+      figure[data-type="table-figure"] > table {
+        min-width: 640px;
+        margin-bottom: 0;
+      }
+      figure[data-type="table-figure"] > figcaption {
+        border-top: 1px solid var(--border);
+      }
+      table { border-collapse: collapse; width: 100%; font-size: var(--step-0); }
+      th, td {
+        border: 1px solid var(--border); padding: 0.75rem 0.9rem;
+        text-align: left; vertical-align: top;
+      }
+      th { background: var(--surface-elev); font-weight: 600; position: sticky; top: 0; z-index: 1; }
+      tbody tr:nth-child(even) { background: color-mix(in oklab, var(--surface) 88%, var(--border) 12%); }
+      .callout {
+        background: var(--callout-bg); border-left: 4px solid var(--callout-border);
+        padding: 1rem 1.25rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      }
+      .katex-display { margin: var(--space-3) 0; overflow-x: auto; }
+      .katex-display > .katex { white-space: nowrap; }
+      .visually-hidden {
+        position: absolute !important; width: 1px; height: 1px;
+        padding: 0; margin: -1px; overflow: hidden;
+        clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+      }
+      /* --- Figure & Table Numbering --- */
+      figure[data-type="table-figure"] { counter-increment: table-figure-counter; }
+      figure[data-type="table-figure"] figcaption::before { content: "Table " counter(table-figure-counter) ". "; }
+      figure[data-type="image-figure"],
+      figure[data-type="video-figure"],
+      figure[data-type="code-figure"] { counter-increment: figure-counter; }
+      figure[data-type="image-figure"] p,
+      figure[data-type="video-figure"] p,
+      figure[data-type="code-figure"] p {margin: 0}
+      figure[data-type="image-figure"] figcaption::before,
+      figure[data-type="video-figure"] figcaption::before,
+      figure[data-type="code-figure"] figcaption::before { content: "Figure " counter(figure-counter) ". "; }
+      /* --- Code Block Header Styles --- */
+      .code-block-container { position: relative; }
+      .code-block-container > pre { margin: 0; border-radius: var(--radius-sm); }
+      .code-block-header {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 36px;
+      }
+      .code-block-lang {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        padding: 0 0.75rem;
+        height: 100%;
+        background: color-mix(in oklab, var(--hljs-bg) 75%, transparent);
+        color: var(--muted-2);
+        border: 1px solid var(--border-strong);
+        border-radius: 9999px;
+        text-transform: uppercase;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.05);
+      }
+      .code-block-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 100%;
+        background: color-mix(in oklab, var(--hljs-bg) 75%, transparent);
+        color: var(--muted-2);
+        border: 1px solid var(--border-strong);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2), inset 0 1px 1px rgba(255,255,255,0.05);
+      }
+      .code-block-button:hover {
+        background: var(--border-strong);
+        border-color: var(--muted-2);
+        color: var(--heading);
+      }
+      .code-block-button svg {
+        width: 18px;
+        height: 18px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+      }
+      @media print {
+        body { background: #fff; }
+        main { box-shadow: none; background: #fff; padding: 0; max-width: 100%; }
+        a { color: #000; text-decoration: none; }
+        a[href^="http"]:after { content: " (" attr(href) ")"; font-size: 0.85em; color: #555; }
+        .video-wrapper, .code-block-header { display: none; }
+        figure, table, blockquote { break-inside: avoid; }
+      }
+    </style>
+      </head>
+      <body>
+        <main><h1>How Cloud Calendars Rescued My Schedule and Sanity</h1><div class="article-meta"><p class="authors">Mincho Milev</p><p class="corresponding-author"><strong>Corresponding author:</strong> Mincho Milev (<a href="mailto:mincho.milev@gmail.com">mincho.milev@gmail.com</a>)</p><p class="published-date">Published on September 5, 2025</p><p class="citation"><strong>Citation:</strong>   Milev, M. (2025). How Cloud Calendars Rescued My Schedule and Sanity. <i>Arte Soft Publishing</i>.
+</p></div><p>I used to be a digital juggler. My work life lived in a Microsoft Outlook calendar, my personal appointments were scattered across iCloud, and my side-hustle relied on Google Calendar. My daily routine involved a frantic dance between three different apps, each with its own interface and limitations. I was constantly cross-referencing, double-booking, and dropping balls. Planning my day felt less like a strategy and more like a chaotic reaction to a barrage of notifications.</p><p>Then I found <a href="https://apps.apple.com/us/app/cloud-calendars/id6744690319">Cloud Calendars</a>, and it wasn’t just another app—it was a paradigm shift in how I organize my life.</p><figure data-type="image-figure"><div class="figure-content-wrapper"><div class="figure-content"><p><img src="https://s3.eu-central-1.amazonaws.com/www.arte-soft.com/mincho-milev/7bca8590-0d55-458c-b568-23aad5eb125b/47a04434-0e6a-4691-9364-090f08e736d9.png"></p><figcaption>The unified week view that brought all my calendars into one place.</figcaption></div></div></figure><h2>One Hub to Rule Them All</h2><p>The first thing that struck me about <a href="https://apps.apple.com/us/app/cloud-calendars/id6744690319">Cloud Calendars</a> was its ability to bring all my disparate schedules into one, beautifully unified interface. The setup was seamless. I connected my iCloud, Google, and Microsoft accounts, and suddenly, my chaotic digital life made sense. Work meetings, doctor's appointments, and project deadlines all appeared in a single, color-coded view. The app’s design is clean and intuitive, offering everything from a high-level year overview to a granular hourly grid for the day. For the first time, I could see my entire life at a glance, without switching between apps.</p><h2>Planning with a Weather Eye</h2><p>But Cloud Calendars does something that, in hindsight, seems so obvious yet is profoundly impactful: it integrates weather forecasts directly into the calendar. This isn't just a tiny icon in the corner; it’s a detailed, hour-by-hour forecast alongside my appointments. Planning a client lunch? I can see if the patio will be an option. Scheduling a weekend hike? I know to move it if rain is on the horizon. The dedicated weather hub is a treasure trove of information, with beautiful charts for everything from wind speed to UV index. It’s like having a personal meteorologist who understands my schedule. This feature has saved me from being caught in a downpour on my way to an important meeting more times than I can count.</p><figure data-type="image-figure"><div class="figure-content-wrapper"><div class="figure-content"><p><img src="https://s3.eu-central-1.amazonaws.com/www.arte-soft.com/mincho-milev/7bca8590-0d55-458c-b568-23aad5eb125b/a0163de8-46b5-4b11-af3e-0357db58281b.png"></p><figcaption>The detailed Weather Hub, my go-to for planning any outdoor activity.</figcaption></div></div></figure><figure data-type="image-figure"><div class="figure-content-wrapper"><div class="figure-content"><p><img src="https://s3.eu-central-1.amazonaws.com/www.arte-soft.com/mincho-milev/7bca8590-0d55-458c-b568-23aad5eb125b/73bad651-7af7-4306-ba6e-6b9d2cbd5fcb.png"></p><figcaption>Interactive charts provide a deeper understanding of the forecast.</figcaption></div></div></figure><h2>Effortless and Intuitive</h2><p>Beyond its powerful features, the user experience is what makes <a href="https://apps.apple.com/us/app/cloud-calendars/id6744690319">Cloud Calendars</a> a joy to use. Rescheduling an event is as simple as dragging and dropping it to a new time slot. Need to extend a meeting? Just pull the edge of the event block. It feels natural and fluid, removing the friction I’ve experienced with other calendar apps. The automatic integration with Google Meet and Microsoft Teams is another small but significant time-saver, automatically generating meeting links for my events.</p><figure data-type="image-figure"><div class="figure-content-wrapper"><div class="figure-content"><p><img src="https://s3.eu-central-1.amazonaws.com/www.arte-soft.com/mincho-milev/7bca8590-0d55-458c-b568-23aad5eb125b/ad4cfc43-443e-43c0-85ab-241702d2d0aa.png"></p><figcaption>The day view, where I spend most of my time planning with precision.</figcaption></div></div></figure><h2>A Tool for a Balanced Life</h2><p><a href="https://apps.apple.com/us/app/cloud-calendars/id6744690319">Cloud Calendars</a> has done more than just organize my schedule; it has given me a sense of control and calm. By bringing my personal and professional lives together in one place, I’m better able to see the bigger picture and make smarter decisions about how I spend my time. It’s a powerful tool for anyone who feels overwhelmed by the demands of a busy life. If you're tired of juggling multiple apps and want a more holistic approach to planning, I can't recommend Cloud Calendars enough. It’s the app I never knew I needed, and now I can’t imagine my life without it.</p><p><strong><a href="https://apps.apple.com/us/app/cloud-calendars/id6744690319">Download Cloud Calendars on the App Store</a></strong></p></main>
+        <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const langExt = {
+          javascript: 'js', typescript: 'ts', python: 'py', java: 'java', csharp: 'cs',
+          html: 'html', css: 'css', scss: 'scss', sql: 'sql', json: 'json', bash: 'sh'
+        };
+
+        document.querySelectorAll('.code-block-button[data-action="copy"]').forEach(button => {
+          button.addEventListener('click', () => {
+            const container = button.closest('.code-block-container');
+            const code = container?.querySelector('code');
+            if (code) {
+              navigator.clipboard.writeText(code.textContent || '').then(() => {
+                button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+                button.title = 'Copied!';
+                setTimeout(() => {
+                  button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+                  button.title = 'Copy to clipboard';
+                }, 2000);
+              });
+            }
+          });
+        });
+
+        document.querySelectorAll('.code-block-button[data-action="download"]').forEach(button => {
+          button.addEventListener('click', () => {
+            const container = button.closest('.code-block-container');
+            const code = container?.querySelector('code');
+            const langTag = container?.querySelector('.code-block-lang');
+            const lang = langTag ? langTag.textContent.toLowerCase() : 'txt';
+            const extension = langExt[lang] || 'txt';
+
+            if (code) {
+              const blob = new Blob([code.textContent || ''], { type: 'text/plain' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `snippet.${extension}`;
+              a.click();
+              URL.revokeObjectURL(url);
+            }
+          });
+        });
+      });
+    </script>
+      </body>
+      </html>

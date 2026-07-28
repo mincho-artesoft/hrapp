@@ -1,19 +1,255 @@
-/* src/app/components/header/header.component.scss */
-.spacer {
-  flex: 1;
+@use 'mixins' as *;
+
+:host {
+  --header-h: 72px;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 900;
+  display: block;
 }
-.download-btn-ios.mat-mdc-raised-button:not(:disabled) {
-    /* само текста и иконата */
-    color: #007aff !important;
+
+/* ---------------------------------------------------------------
+   Bar
+--------------------------------------------------------------- */
+.hdr {
+  position: relative;
+  height: var(--header-h);
+  transition: background 0.55s var(--ease-out), border-color 0.55s var(--ease-out);
+  border-bottom: 1px solid transparent;
+
+  &.is-stuck {
+    background: rgba(5, 8, 20, 0.62);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-bottom-color: var(--hair);
   }
-  
-  /* иконата да наследява цвета */
-  .download-btn-ios.mat-mdc-raised-button .mat-icon {
-    color: inherit !important;
+}
+
+.hdr__progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1.5px;
+  transform-origin: left center;
+  scale: 0 1;
+  background: linear-gradient(90deg, var(--aurora-2), var(--aurora-1) 55%, var(--aurora-3));
+  box-shadow: 0 0 12px rgba(56, 224, 240, 0.7);
+  will-change: scale;
+}
+
+.hdr__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* ---------------------------------------------------------------
+   Brand — the real app icon
+--------------------------------------------------------------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-right: auto;
+  @include focus-ring;
+
+  &:hover .brand__mark { transform: rotate(-6deg) scale(1.06); }
+}
+
+.brand__mark {
+  width: 34px;
+  height: 34px;
+  /* the artwork carries its own rounded corners; this only seats it */
+  filter: drop-shadow(0 6px 14px rgba(60, 100, 220, 0.55));
+  transition: transform 0.55s var(--ease-spring);
+}
+
+.brand__text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+
+  span {
+    font-weight: 300;
+    color: var(--ink-3);
   }
 
-  .hide-mobile {
-    @media (max-width: 768px) {
-      display: none;
+  @media (max-width: 360px) { display: none; }
+}
+
+/* ---------------------------------------------------------------
+   Nav
+--------------------------------------------------------------- */
+.hdr__nav {
+  display: flex;
+  gap: 0.25rem;
+
+  @include upto($bp-md) { display: none; }
+}
+
+.hdr__link {
+  position: relative;
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--r-pill);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  transition: color 0.35s var(--ease-out);
+  @include focus-ring;
+
+  span { position: relative; z-index: 1; }
+
+  /* a soft pill that grows in behind the label */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.07);
+    scale: 0.85;
+    opacity: 0;
+    transition: scale 0.4s var(--ease-spring), opacity 0.3s var(--ease-out);
+  }
+
+  &:hover {
+    color: var(--ink);
+    &::before { scale: 1; opacity: 1; }
+  }
+}
+
+/* ---------------------------------------------------------------
+   Actions
+--------------------------------------------------------------- */
+.hdr__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.hdr__cta {
+  padding: 0.62rem 1.15rem;
+  font-size: 0.86rem;
+
+  @include upto($bp-xs) { display: none; }
+}
+
+.hdr__burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.05);
+  place-items: center;
+  @include focus-ring;
+
+  @include upto($bp-md) { display: grid; }
+
+  span,
+  span::before,
+  span::after {
+    display: block;
+    width: 17px;
+    height: 1.6px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform 0.4s var(--ease-out), opacity 0.25s;
+  }
+
+  span {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+    }
+    &::before { top: -5.5px; }
+    &::after  { top: 5.5px; }
+
+    &.is-open {
+      background: transparent;
+      &::before { transform: translateY(5.5px) rotate(45deg); }
+      &::after  { transform: translateY(-5.5px) rotate(-45deg); }
     }
   }
+}
+
+/* ---------------------------------------------------------------
+   Mobile sheet
+--------------------------------------------------------------- */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 899;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: calc(var(--header-h) + 2rem) clamp(1.5rem, 7vw, 3rem) 3rem;
+  background: rgba(4, 6, 15, 0.9);
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s var(--ease-out), visibility 0.45s;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include from($bp-md) { display: none; }
+}
+
+.sheet__nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sheet__link {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--hair);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 8vw, 2.3rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(22px);
+  @include focus-ring;
+
+  .sheet.is-open & {
+    animation: sheet-in 0.6s var(--ease-out) forwards;
+    animation-delay: calc(0.1s + var(--i) * 0.06s);
+  }
+}
+
+.sheet__num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--aurora-2);
+  letter-spacing: 0.1em;
+}
+
+.sheet__cta {
+  width: 100%;
+  opacity: 0;
+
+  .sheet.is-open & {
+    animation: sheet-in 0.6s var(--ease-out) 0.45s forwards;
+  }
+}
+
+@keyframes sheet-in {
+  to { opacity: 1; transform: none; }
+}

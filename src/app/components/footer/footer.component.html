@@ -1,10 +1,73 @@
-<footer class="app-footer">
-    <mat-toolbar>
-        <span class="copyright-text">© {{ currentYear }} Cloud Calendars. All rights reserved.</span>
-        <div class="footer-links">
-            <!-- Change to routerLink directives -->
-            <a mat-button routerLink="/privacy-policy">Privacy Policy</a>
-            <a mat-button routerLink="/terms-of-service">Terms of Service</a>
+<footer class="ftr">
+  <div class="shell">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <a class="brand" routerLink="/" aria-label="Cloud Calendars — home">
+          <img class="brand__mark" src="icons/mark-128.webp" alt="" width="32" height="32" decoding="async" />
+          <span class="brand__text">Cloud<span>Calendars</span></span>
+        </a>
+        <p class="ftr__blurb">
+          Your calendars and the forecast, in one place. Built for iPhone and iPad.
+        </p>
+        <a
+          class="btn btn--ghost ftr__cta"
+          [href]="appStoreUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download on the App Store
+        </a>
+      </div>
+
+      <nav class="ftr__cols" aria-label="Footer">
+        @for (col of columns; track col.title) {
+          <div class="ftr__col">
+            <h3>{{ col.title }}</h3>
+            <ul>
+              @for (l of col.links; track l.href) {
+                <li><a [href]="l.href">{{ l.label }}</a></li>
+              }
+            </ul>
+          </div>
+        }
+
+        <div class="ftr__col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a routerLink="/privacy-policy">Privacy policy</a></li>
+            <li><a routerLink="/terms-of-service">Terms of service</a></li>
+            <li>
+              <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+                 target="_blank" rel="noopener noreferrer">Apple EULA</a>
+            </li>
+          </ul>
         </div>
-    </mat-toolbar>
+
+        <div class="ftr__col">
+          <h3>App</h3>
+          <ul>
+            <li><span>Version {{ version }}</span></li>
+            <li><span>iOS 18 or later</span></li>
+            <li>
+              <a [href]="appStoreUrl" target="_blank" rel="noopener noreferrer">
+                View on the App Store
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <hr class="rule" />
+
+    <div class="ftr__bottom">
+      <p>© {{ year }} {{ developer }}. All rights reserved.</p>
+      <!-- CC BY 4.0 requires attribution, so this line is not optional. -->
+      <p class="ftr__made">
+        Live weather by
+        <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>,
+        CC BY 4.0.
+      </p>
+    </div>
+  </div>
 </footer>

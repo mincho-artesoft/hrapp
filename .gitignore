@@ -1,4 +1,29 @@
+# Dependencies & build output
 /node_modules
 /.angular
+/dist
+/tmp
+/out-tsc
+
+# Editors / OS
 /.idea
-/.dist
+/.vscode
+.DS_Store
+
+# Deployment credentials — never commit.
+# .env.example is committed and shows the shape; .env holds the real AWS keys.
+.env
+
+# Scratch: staging archives, the holding pen for deletions, dumped context.
+/_to_delete
+/*.tar.gz
+/merged_output.txt
+/cc.index.html
+
+# Verification scripts, written against a local preview server. Useful, but
+# not part of the site — delete this block if you would rather keep them.
+/audit.mjs
+/crop.mjs
+/ctl.mjs
+/flow.mjs
+/weather.mjs

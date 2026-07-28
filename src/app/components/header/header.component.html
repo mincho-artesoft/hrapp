@@ -1,17 +1,86 @@
-<!-- src/app/components/header/header.component.html -->
-<mat-toolbar color="primary" class="app-header">
-  <span class="brand-name">Cloud Calendars</span>
-  <span class="spacer"></span>
+<header class="hdr" [class.is-stuck]="isScrolled()">
+  <!-- Reading-progress hairline -->
+  <span
+    class="hdr__progress"
+    [style.scale]="progress() + ' 1'"
+    aria-hidden="true"
+  ></span>
 
-  <a mat-button class="hide-mobile" href="#features">Features</a>
-  <a mat-button class="hide-mobile" href="#pricing">Pricing</a>
+  <div class="hdr__inner shell">
+    <a class="brand" routerLink="/" (click)="closeMenu()" aria-label="Cloud Calendars — home">
+      <img
+        class="brand__mark"
+        src="icons/mark-128.webp"
+        alt=""
+        width="34"
+        height="34"
+        decoding="async"
+      />
+      <span class="brand__text">
+        Cloud<span>Calendars</span>
+      </span>
+    </a>
+
+    <nav class="hdr__nav" aria-label="Primary">
+      @for (item of nav; track item.fragment) {
+        <a class="hdr__link" [href]="'#' + item.fragment">
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="hdr__actions">
+      <a
+        class="btn btn--primary hdr__cta"
+        [href]="appStoreUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Get the app
+      </a>
+
+      <button
+        class="hdr__burger"
+        type="button"
+        [attr.aria-expanded]="menuOpen()"
+        aria-controls="mobile-nav"
+        [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
+        (click)="toggleMenu()"
+      >
+        <span [class.is-open]="menuOpen()"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile sheet -->
+<div
+  id="mobile-nav"
+  class="sheet"
+  [class.is-open]="menuOpen()"
+  [attr.inert]="menuOpen() ? null : ''"
+>
+  <nav class="sheet__nav" aria-label="Mobile">
+    @for (item of nav; track item.fragment; let i = $index) {
+      <a
+        class="sheet__link"
+        [href]="'#' + item.fragment"
+        [style.--i]="i"
+        (click)="closeMenu()"
+      >
+        <span class="sheet__num">0{{ i + 1 }}</span>
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+
   <a
-    mat-raised-button
-    class="download-btn-ios"
-    href="https://apps.apple.com/us/app/cloud-calendars/id6744690319"
+    class="btn btn--primary btn--lg sheet__cta"
+    [href]="appStoreUrl"
     target="_blank"
-    rel="noopener noreferrer">
-    Download App
-    <mat-icon>download</mat-icon>
+    rel="noopener noreferrer"
+    (click)="closeMenu()"
+  >
+    Download on the App Store
   </a>
-</mat-toolbar>
+</div>

@@ -1,28 +1,127 @@
 <!doctype html>
-<html lang="en" style="overflow-y: scroll; overscroll-behavior-y: none">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>ArteCalendar</title>
-    <base href="/">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YESHVTRYB1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+  <meta charset="utf-8" />
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+  <title>Cloud Calendars — your calendar and the weather, in one view</title>
+  <meta name="description" content="Unify iCloud, Google Calendar and Microsoft in one iPhone app, with hourly forecasts built into every day, Home Screen widgets and Live Activities. Free on the App Store." />
+  <meta name="theme-color" content="#04060f" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://www.cloud-calendars.com/" />
 
-        gtag('js', new Date());
+  <!-- Social cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cloud Calendars" />
+  <meta property="og:title" content="Cloud Calendars — your calendar and the weather, in one view" />
+  <meta property="og:description" content="iCloud, Google and Microsoft calendars in one place, with the forecast built into every day." />
+  <meta property="og:url" content="https://www.cloud-calendars.com/" />
+  <meta property="og:image" content="https://www.cloud-calendars.com/assets/images/app-screenshots/single-day-view.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-        gtag('config', 'G-YESHVTRYB1');
-    </script>
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-itunes-app" content="app-id=6744690319" />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+
+  <!-- Fonts are self-hosted and bundled with the stylesheet — no third-party request. -->
+
+  <!-- The hero screenshot is the largest contentful paint; start it early. -->
+  <link rel="preload" as="image" href="assets/images/app-screenshots/single-day-view.webp" fetchpriority="high" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cloud Calendars",
+    "operatingSystem": "iOS 18.0 or later",
+    "applicationCategory": "ProductivityApplication",
+    "downloadUrl": "https://apps.apple.com/us/app/cloud-calendars/id6744690319",
+    "softwareVersion": "1.5.9",
+    "fileSize": "30.3 MB",
+    "image": "https://www.cloud-calendars.com/icons/icon-512.png",
+    "author": { "@type": "Organization", "name": "Arte Soft Ltd." },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.3", "ratingCount": "7" },
+    "offers": [
+      { "@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free" },
+      { "@type": "Offer", "price": "0.49", "priceCurrency": "USD", "name": "Advanced monthly" },
+      { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Advanced yearly" },
+      { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Premium monthly" },
+      { "@type": "Offer", "price": "49.99", "priceCurrency": "USD", "name": "Premium yearly" }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YESHVTRYB1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-YESHVTRYB1');
+  </script>
+
+  <style>
+    /* Inline boot styles so there is never a white flash before the
+       stylesheet and the app bundle arrive. */
+    html { background: #03050c; }
+    body { margin: 0; background: #03050c; }
+
+    .boot {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #03050c;
+      z-index: 99999;
+      transition: opacity 0.6s ease, visibility 0.6s;
+    }
+    .boot--gone { opacity: 0; visibility: hidden; }
+
+    .boot__mark {
+      width: 52px;
+      height: 52px;
+      filter: drop-shadow(0 0 60px rgba(80, 120, 255, 0.75));
+      animation: boot-pulse 1.4s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
+    }
+
+    @keyframes boot-pulse {
+      from { transform: scale(0.86); opacity: 0.55; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .boot__mark { animation: none; }
+    }
+  </style>
 </head>
+
 <body>
-<app-root></app-root>
+  <div class="boot" id="boot"><img class="boot__mark" src="icons/mark-128.webp" alt="" width="52" height="52" /></div>
+
+  <app-root></app-root>
+
+  <script>
+    // Remove the boot screen once Angular has rendered something.
+    (function () {
+      var boot = document.getElementById('boot');
+      if (!boot) return;
+      var done = function () {
+        boot.classList.add('boot--gone');
+        setTimeout(function () { boot.remove(); }, 700);
+      };
+      var observer = new MutationObserver(function () {
+        if (document.querySelector('app-root main')) { observer.disconnect(); done(); }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      setTimeout(done, 4000); // hard fallback
+    })();
+  </script>
 </body>
 </html>

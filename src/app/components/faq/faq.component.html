@@ -1,0 +1,46 @@
+<section class="faq section" id="faq">
+  <div class="shell faq__inner">
+    <header class="faq__head">
+      <p class="eyebrow" appReveal="fade">Questions</p>
+      <h2 class="section-title" appReveal="up" [revealDelay]="60">
+        The things people<br />ask first.
+      </h2>
+      <p class="section-lead" appReveal="up" [revealDelay]="130">
+        Still stuck? Everything about data handling is written out in the
+        <a href="/privacy-policy">privacy policy</a>.
+      </p>
+    </header>
+
+    <div class="faq__list" appReveal="up">
+      @for (item of items; track item.q; let i = $index) {
+        <div class="qa" [class.is-open]="open() === i">
+          <h3>
+            <button
+              type="button"
+              class="qa__q"
+              [attr.aria-expanded]="open() === i"
+              [attr.aria-controls]="'faq-panel-' + i"
+              [id]="'faq-btn-' + i"
+              (click)="toggle(i)"
+            >
+              <span>{{ item.q }}</span>
+              <span class="qa__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+
+          <div
+            class="qa__panel"
+            [id]="'faq-panel-' + i"
+            role="region"
+            [attr.aria-labelledby]="'faq-btn-' + i"
+            [attr.inert]="open() === i ? null : ''"
+          >
+            <div class="qa__panel-inner">
+              <p>{{ item.a }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

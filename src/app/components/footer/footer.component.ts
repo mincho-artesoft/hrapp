@@ -1,27 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { APP_DEVELOPER, APP_STORE_URL, APP_VERSION } from '../../core/app-facts';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    RouterModule
-  ],
+  imports: [RouterLink],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrl: './footer.component.scss',
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
+  readonly year = new Date().getFullYear();
+  readonly appStoreUrl = APP_STORE_URL;
+  readonly developer = APP_DEVELOPER;
+  readonly version = APP_VERSION;
 
-  currentYear: number = new Date().getFullYear();
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  readonly columns = [
+    {
+      title: 'Product',
+      links: [
+        { label: 'Tour', href: '/#showcase' },
+        { label: 'Widgets', href: '/#widgets' },
+        { label: 'Weather hub', href: '/#weather' },
+        { label: 'Features', href: '/#features' },
+        { label: 'Pricing', href: '/#pricing' },
+        { label: 'FAQ', href: '/#faq' },
+      ],
+    },
+  ];
 }

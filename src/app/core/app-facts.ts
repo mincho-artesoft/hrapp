@@ -1,0 +1,77 @@
+/**
+ * Single source of truth for anything that comes from the App Store listing.
+ * Update here when the app ships and the whole site follows.
+ */
+
+export const APP_STORE_URL = 'https://apps.apple.com/us/app/cloud-calendars/id6744690319';
+export const APP_NAME = 'Cloud Calendars';
+export const APP_DEVELOPER = 'Arte Soft Ltd';
+export const APP_VERSION = '1.5.9';
+export const APP_RATING = 4.3;
+export const APP_MIN_IOS = '18.0';
+export const APP_SIZE_MB = 30.3;
+export const SITE_URL = 'https://www.cloud-calendars.com';
+export const SUPPORT_EMAIL = 'support@cloud-calendars.com';
+
+/** Subscription tiers, mirroring the App Store in-app purchase list. */
+export interface Plan {
+  id: string;
+  name: string;
+  tagline: string;
+  monthly: string;
+  yearly?: string;
+  yearlyNote?: string;
+  featured?: boolean;
+  inherits?: string;
+  features: { label: string; strong?: boolean }[];
+}
+
+export const PLANS: Plan[] = [
+  {
+    id: 'free',
+    name: 'Free',
+    tagline: 'Everything you need to run your week.',
+    monthly: '0',
+    features: [
+      { label: 'Day, Week, Month, Year and List views' },
+      { label: 'iCloud calendar sync', strong: true },
+      { label: 'Google Calendar sync', strong: true },
+      { label: 'Full weather hub and in-calendar forecasts' },
+      { label: 'Home Screen widgets' },
+      { label: 'Google Meet links on events' },
+      { label: 'Drag, drop and resize events' },
+    ],
+  },
+  {
+    id: 'advanced',
+    name: 'Advanced',
+    tagline: 'A quieter app and deeper calendar control.',
+    monthly: '0.49',
+    yearly: '4.99',
+    yearlyNote: 'Save 15% yearly',
+    featured: true,
+    inherits: 'Free',
+    features: [
+      { label: 'No ads, anywhere', strong: true },
+      { label: 'Cross-calendar management across iCloud and Google' },
+      { label: 'Google Calendar sharing permissions' },
+      { label: 'Automatic Google Meet link generation' },
+      { label: 'Priority weather refresh' },
+    ],
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    tagline: 'For work calendars that live in Microsoft.',
+    monthly: '4.99',
+    yearly: '49.99',
+    yearlyNote: 'Save 16% yearly',
+    inherits: 'Advanced',
+    features: [
+      { label: 'Microsoft Outlook & Exchange sync', strong: true },
+      { label: 'Automatic Microsoft Teams links', strong: true },
+      { label: 'Full cross-calendar management across all three accounts' },
+      { label: 'Attendee management and invitations' },
+    ],
+  },
+];

@@ -1,0 +1,150 @@
+@use 'mixins' as *;
+
+/* Shared styling for the privacy policy and terms pages.
+   Imported by both page stylesheets so the two never drift apart. */
+
+:host { display: block; }
+
+.legal {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(3rem, 8vw, 6rem));
+  padding-bottom: clamp(4rem, 9vw, 7rem);
+  overflow: hidden;
+}
+
+.legal__aura {
+  position: absolute;
+  inset: -30% -20% auto -20%;
+  height: 80%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 42% at 26% 24%, rgba(77, 124, 255, 0.3), transparent 70%),
+    radial-gradient(34% 38% at 82% 12%, rgba(165, 102, 255, 0.22), transparent 72%);
+  filter: blur(24px);
+}
+
+.legal__inner { max-width: 56rem; }
+
+/* ---------------------------------------------------------------
+   Header
+--------------------------------------------------------------- */
+.legal__head {
+  padding-bottom: 2.25rem;
+  margin-bottom: 2.75rem;
+  border-bottom: 1px solid var(--hair);
+}
+
+.legal__title {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  letter-spacing: -0.045em;
+  margin-bottom: 0.75rem;
+}
+
+.legal__meta {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 1.15rem;
+}
+
+.legal__intro {
+  font-size: var(--t-lead);
+  color: var(--ink-3);
+  max-width: 46rem;
+  line-height: 1.62;
+}
+
+/* ---------------------------------------------------------------
+   Body — plain semantic HTML, styled generously for reading
+--------------------------------------------------------------- */
+.legal__body {
+  font-size: 0.97rem;
+  line-height: 1.78;
+  color: var(--ink-2);
+
+  h3 {
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+    letter-spacing: -0.03em;
+    margin: 2.6rem 0 0.85rem;
+    scroll-margin-top: calc(var(--header-h) + 2rem);
+
+    &:first-child { margin-top: 0; }
+
+    /* accent tick in the margin */
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 0.82em;
+      margin-right: 0.6rem;
+      vertical-align: -0.05em;
+      border-radius: 99px;
+      background: linear-gradient(180deg, var(--aurora-2), var(--aurora-1));
+    }
+  }
+
+  p { margin-bottom: 1.1rem; }
+
+  ul {
+    margin: 0 0 1.4rem;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--ink-3);
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0.15rem;
+      top: 0.72em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--aurora-2);
+      box-shadow: 0 0 8px rgba(56, 224, 240, 0.7);
+    }
+  }
+
+  strong { color: var(--ink); font-weight: 600; }
+
+  a {
+    color: var(--aurora-2);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Back link
+--------------------------------------------------------------- */
+.legal__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 3rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--r-pill);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  border: 1px solid var(--hair-strong);
+  background: rgba(255, 255, 255, 0.045);
+  transition: transform 0.4s var(--ease-out), border-color 0.4s, background 0.4s;
+  @include focus-ring;
+
+  &:hover {
+    transform: translateX(-3px);
+    border-color: rgba(56, 224, 240, 0.45);
+    background: rgba(56, 224, 240, 0.09);
+  }
+}

@@ -1,0 +1,126 @@
+@use 'mixins' as *;
+
+:host { display: block; }
+
+.cta {
+  position: relative;
+  padding-block: clamp(4.5rem, 10vw, 8rem) clamp(3rem, 6vw, 5rem);
+  overflow: hidden;
+  isolation: isolate;
+  border-top: 1px solid var(--hair);
+}
+
+/* A brighter bloom than anywhere else on the page — this is the last
+   thing anyone sees, so it gets the biggest light. */
+.cta__aurora {
+  position: absolute;
+  inset: -40% -20% auto -20%;
+  height: 130%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 44% at 50% 30%, rgba(77, 124, 255, 0.46), transparent 68%),
+    radial-gradient(30% 34% at 22% 58%, rgba(56, 224, 240, 0.3), transparent 70%),
+    radial-gradient(32% 36% at 80% 48%, rgba(165, 102, 255, 0.34), transparent 70%);
+  filter: blur(18px);
+  animation: cta-drift 24s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes cta-drift {
+  from { transform: translate3d(-2%, 0, 0) scale(1); }
+  to   { transform: translate3d(2%, -3%, 0) scale(1.08); }
+}
+
+/* Perspective floor grid, receding to a horizon behind the copy. */
+.cta__grid-floor {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 46%;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(120, 175, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(120, 175, 255, 0.28) 1px, transparent 1px);
+  background-size: 62px 62px;
+  transform: perspective(320px) rotateX(64deg);
+  transform-origin: bottom center;
+  mask-image: linear-gradient(180deg, transparent, #000 42%, transparent 92%);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 42%, transparent 92%);
+  opacity: 0.5;
+  animation: floor-flow 9s linear infinite;
+}
+
+@keyframes floor-flow {
+  to { background-position: 0 62px, 0 62px; }
+}
+
+.cta__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+
+  @include upto($bp-md) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+}
+
+.cta__title {
+  font-size: clamp(2.3rem, 6vw, 4.4rem);
+  letter-spacing: -0.045em;
+  margin-bottom: 1.15rem;
+}
+
+.cta__lead {
+  font-size: var(--t-lead);
+  color: var(--ink-2);
+  max-width: 34rem;
+  margin-bottom: 2rem;
+
+  @include upto($bp-md) { margin-inline: auto; }
+}
+
+.cta__actions {
+  display: flex;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+
+  @include upto($bp-md) { justify-content: center; }
+  @include upto($bp-xs) { .btn { width: 100%; } }
+}
+
+.cta__apple { width: 17px; height: 17px; margin-top: -2px; }
+
+.cta__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--ink-3);
+
+  @include upto($bp-md) { justify-content: center; }
+
+  b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+  }
+}
+
+.cta__device {
+  animation: float 8s var(--ease-in-out) infinite alternate;
+
+  @include upto($bp-md) { display: none; }
+}
+
+@keyframes float {
+  from { translate: 0 -10px; }
+  to   { translate: 0 12px; }
+}

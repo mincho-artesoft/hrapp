@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card'; // Optional
-import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router'; // For back button
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { SeoService } from '../../core/seo.service';
 
 @Component({
   selector: 'app-terms-page',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule, // Optional
-    MatButtonModule,
-    RouterModule
-  ],
+  imports: [RouterLink],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './terms-page.component.html',
-  styleUrls: ['./terms-page.component.scss'] // You can reuse privacy-policy-page.scss
+  styleUrl: './terms-page.component.scss',
 })
-export class TermsPageComponent { }
+export class TermsPageComponent implements OnInit {
+  private readonly seo = inject(SeoService);
+
+  ngOnInit(): void {
+    this.seo.apply({
+      title: 'Terms of Service — Cloud Calendars',
+      description:
+        'The terms governing your use of the Cloud Calendars app, including subscriptions, ' +
+        'third-party calendar connections, licensing and liability.',
+      path: '/terms-of-service',
+    });
+  }
+}

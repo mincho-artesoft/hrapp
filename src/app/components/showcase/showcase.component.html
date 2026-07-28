@@ -1,0 +1,78 @@
+<section class="showcase" id="showcase" #track [style.--steps]="steps.length">
+  <div class="showcase__sticky">
+    <div class="showcase__glow" [style.--hue]="steps[active()].hue" aria-hidden="true"></div>
+
+    <div class="showcase__inner shell">
+      <!-- ---------------------------------------------------------- copy -->
+      <div class="showcase__copy">
+        <p class="eyebrow">The tour</p>
+
+        <div class="showcase__panels">
+          @for (step of steps; track step.id; let i = $index) {
+            <article class="panel" [class.is-active]="i === active()" [attr.aria-hidden]="i !== active()">
+              <span class="panel__kicker">{{ step.kicker }}</span>
+              <h2 class="panel__title">{{ step.title }}</h2>
+              <p class="panel__body">{{ step.body }}</p>
+              <ul class="panel__bullets">
+                @for (b of step.bullets; track b; let bi = $index) {
+                  <li [style.--i]="bi">
+                    <svg viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 10.6l4 4 8-9.2"/>
+                    </svg>
+                    {{ b }}
+                  </li>
+                }
+              </ul>
+            </article>
+          }
+        </div>
+
+        <!-- Step rail -->
+        <ol class="rail" aria-label="Tour steps">
+          @for (step of steps; track step.id; let i = $index) {
+            <li>
+              <button
+                type="button"
+                class="rail__btn"
+                [class.is-active]="i === active()"
+                [class.is-done]="i < active()"
+                [attr.aria-current]="i === active() ? 'step' : null"
+                (click)="goTo(i)"
+              >
+                <!-- The fill is written straight to the element from the rAF
+                     loop, like the covers — a binding here would run change
+                     detection over the whole component on every frame. -->
+                <span class="rail__bar"><span class="rail__fill" #fill></span></span>
+                <span class="rail__label">{{ step.kicker }}</span>
+              </button>
+            </li>
+          }
+        </ol>
+      </div>
+
+      <!-- --------------------------------------------------------- device -->
+      <div class="showcase__stage">
+        <!-- One bloom for the whole carousel rather than one per phone: five
+             blurred radial stacks is a lot of paint for a light that only ever
+             comes from whichever screen is at the front. -->
+        <div class="coverflow__bloom" aria-hidden="true"></div>
+
+        <div class="coverflow" #flow>
+          @for (step of steps; track step.id; let i = $index) {
+            <div class="cover" #cover (click)="goTo(i)">
+              <app-device-frame
+                size="lg"
+                [src]="step.shot"
+                [alt]="step.alt"
+                [glow]="false"
+                [eager]="i === 0"
+              />
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

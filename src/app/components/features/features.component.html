@@ -1,186 +1,99 @@
-<section class="features-section" id="features">
-    <h2 class="section-title">Master Your Day, Command the Elements</h2>
-    <p class="section-subtitle">Discover how Cloud Calendars merges intelligent scheduling with unparalleled weather
-        foresight, giving you ultimate control and clarity.</p>
-    <div class="feature-grid">
-        <!-- Feature 1: Flexible Calendar Views -->
-        <div class="feature-item">
-            <div class="feature-image-container multi-view">
-                <!-- Keep your images here -->
-                <img src="assets/images/app-screenshots/single-day-view.png" loading="lazy"
-                     alt="Cloud Calendars Day View with hourly grid and weather integration">
-                <img src="assets/images/app-screenshots/multi-day-view-v.png" loading="lazy"
-                     alt="Cloud Calendars Week View with daily columns and weather summaries">
-                <img src="assets/images/app-screenshots/month-view.png" loading="lazy"
-                     alt="Cloud Calendars Month View showing event dots and intuitive navigation">
-                <img src="assets/images/app-screenshots/year-view.png" loading="lazy"
-                     alt="Cloud Calendars Year View providing a high-level overview">
-                <img src="assets/images/app-screenshots/list-view.png" loading="lazy"
-                     alt="Cloud Calendars List View offering a chronological agenda">
-                <img src="assets/images/app-screenshots/multi-calndar-view.png" loading="lazy"
-                     alt="Cloud Calendars Multi-Calendar Day View for side-by-side comparison">
-            </div>
-            <div class="feature-text-container">
-                <mat-icon>space_dashboard</mat-icon>
-                <mat-icon>calendar_view_day</mat-icon>
-                <mat-icon>calendar_view_week</mat-icon>
-                <h3>Visualize Your Time, Perfectly: Adaptive Calendar Views</h3>
-                <p>Your life demands flexibility, and so does your calendar. Cloud Calendars offers a full spectrum of
-                    views, from the strategic <strong>Year</strong> overview to the detailed <strong>Month</strong> view
-                    with subtle event indicators. Plan with precision using the dynamic <strong>Week View</strong>
-                    (portrait & landscape) or dive into the hourly granularity of the <strong>Day View</strong>. For a
-                    straightforward agenda, the elegant <strong>List View</strong> keeps you on track. And for managing
-                    multiple streams, the unique <strong>Multi-Calendar Day View</strong> (as seen in your screenshots)
-                    lets you see individual calendars side-by-side, offering unparalleled clarity for complex schedules.
-                    Each view is designed for clarity and power, adapting to your planning style.</p>
-            </div>
+<section class="features section" id="features">
+  <div class="shell">
+    <header class="features__head">
+      <p class="eyebrow" appReveal="fade">Everything else</p>
+      <h2 class="section-title" appReveal="up" [revealDelay]="60">
+        Built for the way<br />
+        <span class="grad-viole">a real week goes.</span>
+      </h2>
+      <p class="section-lead" appReveal="up" [revealDelay]="130">
+        Three accounts, one grid, and a set of gestures that behave the way your
+        hands expect them to.
+      </p>
+    </header>
+
+    <div class="bento">
+      <!-- ============================================ unified sources -->
+      <article class="card bento__tile bento__tile--wide" appReveal="zoom" appTilt [tiltMax]="5">
+        <div class="tile__text">
+          <h3>Three accounts. One grid.</h3>
+          <p>
+            iCloud, Google Calendar and Microsoft Outlook, synced two ways and
+            colour-coded in a single view. Toggle any calendar off when you don’t
+            want to see it — the rest keeps working.
+          </p>
         </div>
 
-        <!-- Feature 2: Intuitive Event Management -->
-        <div class="feature-item">
-            <div class="feature-image-container">
-                <img src="assets/images/app-screenshots/single-day-view.png" loading="lazy"
-                     alt="Events in Cloud Calendars Day View grid demonstrating resize handles">
-                <img src="assets/images/app-screenshots/multi-day-view-v.png" loading="lazy"
-                     alt="Events being dragged and dropped across days in Week View">
-            </div>
-            <div class="feature-text-container">
-                <mat-icon>touch_app</mat-icon>
-                <mat-icon>drag_indicator</mat-icon>
-                <h3>Effortless Control: Fluid Event Management</h3>
-                <p>Reschedule, resize, and reorganize with unparalleled ease. Cloud Calendars redefines event management
-                    with intuitive touch gestures. Need to extend a meeting or shorten an appointment? Simply <em>touch
-                        and drag</em> the top or bottom edge of an event block in the Day or Week views. Shifting plans?
-                    Effortlessly <em>drag and drop</em> events to new time slots or even different days. It’s direct,
-                    fluid control that makes managing even the most dynamic schedules a breeze, as visualized in our
-                    interactive Day and Week views.</p>
-            </div>
+        <!-- Orbiting sources -->
+        <div class="orbit" aria-hidden="true">
+          <span class="orbit__ring orbit__ring--1"></span>
+          <span class="orbit__ring orbit__ring--2"></span>
+          <span class="orbit__ring orbit__ring--3"></span>
+
+          <img class="orbit__core" src="icons/mark-128.webp" alt="" />
+
+          @for (s of sources; track s.id; let i = $index) {
+            <span class="orbit__node" [attr.data-src]="s.id" [style.--i]="i">
+              <span class="orbit__chip">
+                <b>{{ s.name }}</b>
+                <i>{{ s.note }}</i>
+              </span>
+            </span>
+          }
+        </div>
+      </article>
+
+      <!-- ============================================ gestures -->
+      <article class="card bento__tile bento__tile--tall" appReveal="zoom" appTilt [tiltMax]="6">
+        <div class="tile__text">
+          <h3>Drag it. Stretch it. Done.</h3>
+          <p>
+            Grab an event and slide it to a new time or a different day. Pull its top
+            or bottom edge to change how long it runs. No modal, no save button.
+          </p>
         </div>
 
-        <!-- Feature 3: Unified Calendar Sources -->
-        <div class="feature-item">
-            <div class="feature-image-container">
-                <img src="assets/images/app-screenshots/calndar-setting.png" loading="lazy"
-                     alt="Cloud Calendars selection screen showing iCloud and system calendars like Birthdays and Holidays">
-                <img src="assets/images/app-screenshots/multi-calndar-setting.png" loading="lazy"
-                     alt="Cloud Calendars selection screen showing a connected Google Calendar account">
-            </div>
-            <div class="feature-text-container">
-                <mat-icon>cloud_sync</mat-icon>
-                <mat-icon>source_environment</mat-icon>
-                <h3>All Your Worlds, One View: Unified Calendar Sync</h3>
-                <p>Bring harmony to your digital life. Cloud Calendars seamlessly integrates with your existing <strong>iCloud</strong>
-                    calendars, and offers powerful two-way sync for <strong>Google Calendar</strong> (Advanced Plan) and
-                    <strong>Microsoft Outlook/Exchange</strong> (Premium Plan). Effortlessly toggle the visibility of
-                    individual calendars, manage sharing permissions for Google Calendars, and see all your
-                    commitments—personal, professional, and shared—beautifully color-coded in one centralized, elegant
-                    interface. The screenshots showcase how easily you can manage and view calendars from various
-                    sources.</p>
-            </div>
-        </div>
+        <!-- A tiny, looping demonstration of the gesture -->
+        <div class="gesture" aria-hidden="true">
+          <div class="gesture__grid">
+            @for (h of [9,10,11,12,13,14]; track h) {
+              <span class="gesture__row"><em>{{ h }}:00</em></span>
+            }
+          </div>
 
-        <!-- Feature 4: Smart Integrations & Collaboration -->
-        <div class="feature-item">
-            <div class="feature-image-container">
-                <img src="assets/images/app-screenshots/single-day-view.png" loading="lazy"
-                     alt="Event detail in Day View with a Google Meet icon indicating an online meeting">
-                <img src="assets/images/app-screenshots/multi-calndar-view.png" loading="lazy"
-                     alt="Multi-calendar view implying multiple meeting types can be handled">
-            </div>
-            <div class="feature-text-container">
-                <mat-icon>videocam_outline</mat-icon>
-                <mat-icon>group_add</mat-icon>
-                <h3>Seamless Virtual Meetings: Automated & Integrated</h3>
-                <p>Streamline your virtual collaborations. Cloud Calendars intelligently integrates with leading meeting
-                    platforms. When you create an event in a connected Google Calendar, a <strong>Google Meet</strong>
-                    link is automatically generated and attached. Similarly, events in your Microsoft Calendar can
-                    instantly include <strong>Microsoft Teams</strong> meeting links. Manage attendees, send
-                    invitations, and have all meeting details readily available within your event, simplifying
-                    coordination across your preferred platforms.</p>
-            </div>
-        </div>
+          <div class="gesture__event gesture__event--static">
+            <b>Standup</b>
+            <i>9:00 – 9:15</i>
+          </div>
 
-        <!-- Feature 5: Weather Integrated into Calendar -->
-        <div class="feature-item">
-            <div class="feature-image-container multi-row">
-                <img src="assets/images/app-screenshots/single-day-view.png" loading="lazy"
-                     alt="Day view showing hourly weather icons and temperatures alongside events">
-                <img src="assets/images/app-screenshots/multi-day-view-v.png" loading="lazy"
-                     alt="Portrait Week view displaying daily weather summaries with icons and temp ranges">
-                <img src="assets/images/app-screenshots/multi-day-view-h.png" loading="lazy"
-                     alt="Landscape Week View also showing daily weather summaries">
-            </div>
-            <div class="feature-text-container">
-                <mat-icon>thermostat_auto</mat-icon>
-                <mat-icon>wb_cloudy</mat-icon>
-                <h3>Weather-Aware Scheduling: Plan with Foresight</h3>
-                <p>Make smarter scheduling decisions with beautifully integrated weather forecasts. The <strong>Day
-                    View</strong> (pictured) provides at-a-glance hourly weather icons and temperatures right alongside
-                    your schedule. The <strong>Week View</strong>, in both portrait and landscape, displays daily
-                    weather summaries with high/low temperatures and condition icons directly in the day headers.
-                    Whether it's an outdoor activity or just your daily commute, Cloud Calendars keeps you informed,
-                    ensuring you're always prepared for the elements.</p>
-            </div>
-        </div>
+          <div class="gesture__event gesture__event--live">
+            <span class="gesture__handle gesture__handle--top"></span>
+            <b>Design review</b>
+            <i>3:00 PM – 4:00 PM</i>
+            <span class="gesture__handle gesture__handle--bottom"></span>
+          </div>
 
-        <!-- Feature 6: Dedicated Weather Hub -->
-        <div class="feature-item">
-            <div class="feature-image-container">
-                <img src="assets/images/app-screenshots/weather-view-1.png" loading="lazy"
-                     alt="Cloud Calendars Weather Hub showing current temperature, condition, H/L, hourly and 10-day forecast">
-                <img src="assets/images/app-screenshots/weather-view-2.png" loading="lazy"
-                     alt="Weather Hub summary tiles for Wind, Sunrise/Sunset, Moon Phase, Precipitation, Visibility, Humidity, Pressure">
-                <img src="assets/images/app-screenshots/weather-view-3.png" loading="lazy"
-                     alt="Detailed weather tiles for Feels Like and UV Index on the Weather Hub">
-            </div>
-            <div class="feature-text-container">
-                <mat-icon>flare</mat-icon>
-                <mat-icon>explore</mat-icon>
-                <h3>Your Personal Weather Command Center</h3>
-                <p>Dive into a comprehensive Weather Hub for a complete meteorological overview. Experience a rich
-                    dashboard displaying the current <em>temperature</em>, what it truly <em>"Feels Like"</em>, and
-                    daily highs/lows. Visualize the upcoming <em>hourly forecast</em> with an intuitive graph and easily
-                    scroll through the <em>10-day outlook</em>. Essential metrics like <em>Wind</em>,
-                    <em>Sunrise/Sunset</em>, <em>Moon Phase</em>, <em>Precipitation</em>, <em>Visibility</em>, <em>Humidity</em>,
-                    and <em>Pressure</em> are presented in elegant, quick-glance summary tiles. It’s your all-in-one
-                    weather station, perfectly integrated. As seen in the screenshots, this hub is designed for clarity
-                    and depth.</p>
-                <p><strong>Bonus Tip:</strong> Need to schedule around the weather? Tap any hour in the Weather Hub's
-                    hourly forecast to instantly create a new calendar event pre-filled for that time!</p>
-            </div>
+          <span class="gesture__cursor"></span>
         </div>
+      </article>
 
-        <!-- Feature 7: Detailed Weather Metrics & Charts -->
-        <div class="feature-item">
-            <div class="feature-image-container multi-chart">
-                <img src="assets/images/app-screenshots/weather-view-conditions-1.png" loading="lazy"
-                     alt="Detailed hourly temperature chart with actual and feels like options">
-                <img src="assets/images/app-screenshots/weather-view-precipitation.png" loading="lazy"
-                     alt="Detailed hourly precipitation chance and intensity chart">
-                <img src="assets/images/app-screenshots/weather-view-humidity.png" loading="lazy"
-                     alt="Detailed hourly humidity percentage chart with min/max values">
-                <img src="assets/images/app-screenshots/weather-view-uv-index.png" loading="lazy"
-                     alt="Detailed hourly UV Index chart with exposure level categories">
-                <img src="assets/images/app-screenshots/weather-view-visibility.png" loading="lazy"
-                     alt="Detailed hourly visibility distance chart with forecast summary">
-                <img src="assets/images/app-screenshots/weather-view-pressure.png" loading="lazy"
-                     alt="Detailed hourly atmospheric pressure chart with trend icons">
-                <img src="assets/images/app-screenshots/weather-view-wind.png" loading="lazy"
-                     alt="Detailed hourly wind speed, gusts, and direction chart with Beaufort scale">
-                <!-- <img src="assets/images/app-screenshots/weather-view-conditions-2.png" loading="lazy" alt="Another view of a detailed weather chart"> -->
-            </div>
-            <div class="feature-text-container">
-                <mat-icon>stacked_line_chart</mat-icon>
-                <mat-icon>insights</mat-icon>
-                <h3>Uncover Every Nuance: Interactive Weather Detail</h3>
-                <p>For those who crave meteorological depth, Cloud Calendars delivers. Tapping any module in the Weather
-                    Hub reveals stunning, interactive hourly charts. Track <em>Temperature</em> (actual vs. "feels
-                    like"), <em>Precipitation</em> (intensity & chance), <em>UV Index</em> (with clear risk levels),
-                    <em>Wind</em> (speed, gusts, direction, Beaufort scale), <em>Humidity</em> (and dew point), <em>Visibility</em>,
-                    and atmospheric <em>Pressure</em>. These aren't static images; they're dynamic visualizations
-                    allowing you to scrub through the day and see precise values at any given hour. Understand the full
-                    story behind the forecast, as showcased in the detailed chart screenshots.</p>
-            </div>
-        </div>
-    </div> <!-- /.feature-grid -->
+      <!-- ============================================ small tiles -->
+      @for (t of smallTiles; track t.id) {
+        <article
+          class="card bento__tile bento__tile--sm"
+          appReveal="zoom"
+          appTilt
+          [tiltMax]="7"
+          [tiltLift]="12"
+        >
+          <span class="tile__badge">{{ t.badge }}</span>
+          <div class="tile__text">
+            <h3>{{ t.title }}</h3>
+            <p>{{ t.body }}</p>
+          </div>
+          <span class="tile__sheen" aria-hidden="true"></span>
+        </article>
+      }
+    </div>
+  </div>
 </section>

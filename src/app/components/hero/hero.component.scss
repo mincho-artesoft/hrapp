@@ -1,96 +1,520 @@
-.hero-section {
+@use 'mixins' as *;
+
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  padding-top: calc(var(--header-h) + clamp(2rem, 7vh, 5rem));
+  padding-bottom: clamp(3rem, 8vh, 6rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 40px 20px 60px;
-  background-color: #f8f9fa;
-  min-height: 60vh;
+  justify-content: center;
   overflow: hidden;
+  isolation: isolate;
+}
 
-  @media (min-width: 768px) {
-    padding: 60px 40px 80px;
-    min-height: 70vh;
+.hero__scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ---------------------------------------------------------------
+   Rake light — three soft beams crossing the frame. Pure CSS, but
+   it does most of the work of making this feel like a lit set.
+--------------------------------------------------------------- */
+.hero__beams {
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 130%;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(26px);
+  opacity: 0.55;
+
+  span {
+    position: absolute;
+    top: 0;
+    width: 16vw;
+    height: 100%;
+    transform-origin: top center;
+    background: linear-gradient(
+      180deg,
+      rgba(140, 190, 255, 0.32) 0%,
+      rgba(120, 160, 255, 0.12) 38%,
+      transparent 78%
+    );
+    animation: beam-sway 17s var(--ease-in-out) infinite alternate;
   }
 
-  @media (min-width: 992px) {
-    flex-direction: row;
-    text-align: left;
-    justify-content: space-around;
-    align-items: center;
-    gap: 5%;
-    padding: 80px 5% 100px 5%;
+  span:nth-child(1) { left: 8%;  rotate: 13deg;  animation-delay: -3s; }
+  span:nth-child(2) { left: 44%; rotate: -8deg;  animation-delay: -9s; opacity: 0.7; }
+  span:nth-child(3) { left: 76%; rotate: 17deg;  animation-delay: -14s; opacity: 0.55; }
+}
+
+@keyframes beam-sway {
+  from { transform: translateX(-3vw) scaleY(0.94); opacity: 0.55; }
+  to   { transform: translateX(3vw)  scaleY(1.06); opacity: 0.95; }
+}
+
+/* ---------------------------------------------------------------
+   Layout
+--------------------------------------------------------------- */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+
+  @include upto($bp-lg) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+}
+
+.hero__copy {
+  max-width: 40rem;
+}
+
+/* ---------------------------------------------------------------
+   Version badge
+--------------------------------------------------------------- */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.44rem 0.5rem 0.44rem 0.85rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--r-pill);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  color: var(--ink-2);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  animation: badge-in 1s var(--ease-out) 0.15s forwards;
+  transition: border-color 0.4s, background 0.4s, transform 0.4s var(--ease-out);
+  @include focus-ring;
+
+  &:hover {
+    border-color: rgba(56, 224, 240, 0.45);
+    background: rgba(56, 224, 240, 0.09);
+    transform: translateY(-1px);
   }
 
-  .hero-content {
-    max-width: 600px;
+  @include upto($bp-sm) { font-size: 0.72rem; }
+}
+
+.hero__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3ee6a0;
+  box-shadow: 0 0 0 0 rgba(62, 230, 160, 0.7);
+  animation: ping 2.4s var(--ease-out) infinite;
+}
+
+.hero__badge-arrow {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.7rem;
+}
+
+@keyframes ping {
+  0%   { box-shadow: 0 0 0 0 rgba(62, 230, 160, 0.65); }
+  70%  { box-shadow: 0 0 0 9px rgba(62, 230, 160, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(62, 230, 160, 0); }
+}
+
+@keyframes badge-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------
+   Headline — word-by-word rise out of a blur
+--------------------------------------------------------------- */
+.hero__title {
+  font-size: var(--t-hero);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  margin-bottom: 1.35rem;
+}
+
+.hero__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.hero__word {
+  display: inline-block;
+  margin-right: 0.24em;
+  opacity: 0;
+  transform: translate3d(0, 105%, 0) rotateX(-42deg);
+  transform-origin: bottom center;
+  filter: blur(9px);
+  animation: word-rise 1.25s var(--ease-out) forwards;
+  animation-delay: calc(0.24s + var(--i) * 0.075s);
+
+  &:last-child { margin-right: 0; }
+
+  &--accent {
+    @include gradient-text(#9ff6ff, var(--aurora-1));
+    /* the gradient needs a little glow behind it or it reads flat */
+    filter: blur(9px) drop-shadow(0 0 26px rgba(80, 190, 255, 0.45));
+  }
+}
+
+@keyframes word-rise {
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__word {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+  .hero__badge { opacity: 1; animation: none; }
+}
+
+/* ---------------------------------------------------------------
+   Lead, actions, social proof
+--------------------------------------------------------------- */
+.hero__lead {
+  font-size: var(--t-lead);
+  color: var(--ink-3);
+  line-height: 1.62;
+  max-width: 34rem;
+  margin-bottom: 1.9rem;
+
+  @include upto($bp-lg) { margin-inline: auto; }
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 1.6rem;
+
+  @include upto($bp-lg) { justify-content: center; }
+  @include upto($bp-xs) {
+    flex-direction: column;
     width: 100%;
-    margin-bottom: 40px;
+    .btn { width: 100%; }
+  }
+}
 
-    @media (min-width: 992px) {
-      flex-basis: 50%;
-      max-width: none;
-      margin-bottom: 0;
-    }
+.hero__apple {
+  width: 16px;
+  height: 16px;
+  margin-top: -2px;
+}
 
-    h1 {
-      font-size: clamp(2em, 5vw, 3.5em);
-      font-weight: 700;
-      margin-bottom: 20px;
-      line-height: 1.2;
-      color: #212529;
-    }
+.hero__proof {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  font-size: 0.83rem;
+  color: var(--ink-3);
 
-    .subtitle {
-      font-size: clamp(1em, 2.5vw, 1.2em);
-      color: #495057;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
+  @include upto($bp-lg) { justify-content: center; }
+}
 
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 30px;
-      font-size: 1.1em;
-      transform: scale(1);
-      transition: transform 0.2s ease-in-out;
+.hero__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--aurora-5);
 
-      &:hover {
-        transform: scale(1.05);
-      }
+  svg { width: 15px; height: 15px; }
+  svg.is-half { opacity: 0.42; }
+}
 
-      /* само цвета на текста и иконата */
-      color: #007aff !important;
-      mat-icon {
-        color: inherit !important;
-      }
-    }
+.hero__proof-text strong { color: var(--ink); font-weight: 600; }
+
+.hero__proof-sep {
+  width: 1px;
+  height: 13px;
+  background: var(--hair-strong);
+}
+
+/* ---------------------------------------------------------------
+   Device stage
+--------------------------------------------------------------- */
+.hero__stage {
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  @include stage(1500px);
+}
+
+/* The cluster gets its own box, wider than the centre phone, so the
+   flanking phones and the floating chips have somewhere to live. */
+.stage {
+  position: relative;
+  width: min(100%, 44rem);
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  /* the lean is written by HeroComponent, on this element only */
+  will-change: transform;
+  padding-block: 1rem;
+}
+
+.stage__phone {
+  transform-style: preserve-3d;
+  animation: float 8.5s var(--ease-in-out) infinite alternate;
+}
+
+.stage__phone--centre {
+  position: relative;
+  z-index: 3;
+  transform: translateZ(70px);
+  animation-delay: -1.2s;
+}
+
+/* Background depth, not competing subjects. Pushed out to the edges of the
+   stage, knocked back in Z, desaturated and slightly defocused — the eye
+   should register "there are other views" and move straight to the centre
+   phone, which is the only one rendered sharp. */
+.stage__phone--left,
+.stage__phone--right {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  opacity: 0.42;
+  filter: blur(2.5px) saturate(0.72) brightness(0.78);
+  transition: opacity 0.8s var(--ease-out), filter 0.8s var(--ease-out);
+}
+
+.stage__phone--left {
+  left: 0;
+  transform: translate(-4%, -52%) translateZ(-190px) rotateY(30deg) rotateZ(-4deg);
+  animation-delay: -3.6s;
+}
+
+.stage__phone--right {
+  right: 0;
+  transform: translate(4%, -48%) translateZ(-190px) rotateY(-30deg) rotateZ(4deg);
+  animation-delay: -6s;
+}
+
+/* A touch more presence when the pointer is over the cluster. */
+.stage:hover .stage__phone--left,
+.stage:hover .stage__phone--right {
+  opacity: 0.58;
+  filter: blur(1.4px) saturate(0.85) brightness(0.88);
+}
+
+@keyframes float {
+  from { translate: 0 -10px; }
+  to   { translate: 0 12px; }
+}
+
+/* Floor reflection under the cluster */
+.hero__reflection {
+  position: absolute;
+  bottom: -4%;
+  left: 50%;
+  translate: -50% 0;
+  width: 78%;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(96, 150, 255, 0.4),
+    rgba(56, 224, 240, 0.14) 46%,
+    transparent 72%
+  );
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------
+   Floating glass chips
+--------------------------------------------------------------- */
+.chip3d {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 14px;
+  white-space: nowrap;
+  /* Opaque enough to stay legible over a bright screenshot — the earlier,
+     more transparent glass let the phone behind it eat the text. */
+  background:
+    linear-gradient(158deg, rgba(14, 20, 42, 0.92), rgba(8, 12, 28, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  box-shadow:
+    0 20px 44px -14px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  animation: float 7s var(--ease-in-out) infinite alternate;
+
+  b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
   }
 
-  .hero-image {
-    max-width: 400px;
-    width: 90%;
-    margin: 0 auto;
-
-    @media (min-width: 768px) {
-      max-width: 500px;
-    }
-
-    @media (min-width: 992px) {
-      flex-basis: 40%;
-      max-width: 550px;
-      width: auto;
-      margin: 0;
-    }
-
-    img {
-      border-radius: 12px;
-      box-shadow: none !important;  // премахната сянка
-      width: 80%;
-      height: auto;
-      display: block;
-    }
+  i {
+    display: block;
+    font-style: normal;
+    font-size: 0.68rem;
+    color: var(--ink-3);
+    margin-top: 1px;
   }
+
+  @include upto($bp-md) { display: none; }
+}
+
+.chip3d--weather {
+  top: 3%;
+  left: -11%;
+  transform: translateZ(130px) rotateY(15deg);
+  animation-delay: -2s;
+
+  .chip3d__icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: linear-gradient(150deg, #ffd166, #ff8a4c);
+    color: #2b1500;
+    box-shadow: 0 6px 18px -6px rgba(255, 160, 80, 0.8);
+  }
+
+  b { font-size: 1rem; }
+}
+
+.chip3d--meet {
+  bottom: 20%;
+  right: -13%;
+  transform: translateZ(150px) rotateY(-15deg);
+  animation-delay: -5s;
+
+  .chip3d__bar {
+    width: 3px;
+    align-self: stretch;
+    border-radius: 99px;
+    background: linear-gradient(180deg, var(--aurora-2), var(--aurora-1));
+  }
+}
+
+.chip3d--sync {
+  bottom: -5%;
+  left: 3%;
+  transform: translateZ(110px) rotateY(12deg);
+  animation-delay: -3.4s;
+}
+
+.chip3d__avatars {
+  display: inline-flex;
+
+  em {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(10, 16, 34, 0.9);
+    margin-left: -7px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+
+    &:first-child { margin-left: 0; }
+  }
+
+  .is-icloud { background: linear-gradient(140deg, #7dd3fc, #3b82f6); }
+  .is-google { background: linear-gradient(140deg, #34d399, #fbbf24 55%, #ef4444); }
+  .is-ms     { background: linear-gradient(140deg, #38bdf8, #2563eb); }
+}
+
+/* ---------------------------------------------------------------
+   Scroll cue
+--------------------------------------------------------------- */
+/* Pinned to the bottom-left rather than centred: the centre of the frame
+   belongs to the device cluster, and a centred cue collided with it. */
+.hero__scroll {
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 2.75rem);
+  bottom: 1.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink-4);
+  font-size: 0.66rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  @include focus-ring;
+
+  &:hover { color: var(--ink-2); }
+
+  @media (max-width: 900px), (max-height: 700px) { display: none; }
+}
+
+.hero__scroll-track {
+  position: relative;
+  width: 22px;
+  height: 36px;
+  border-radius: 99px;
+  border: 1px solid var(--hair-strong);
+}
+
+.hero__scroll-dot {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  translate: -50% 0;
+  width: 3px;
+  height: 7px;
+  border-radius: 99px;
+  background: var(--aurora-2);
+  animation: scroll-dot 2s var(--ease-in-out) infinite;
+}
+
+@keyframes scroll-dot {
+  0%   { opacity: 0; transform: translateY(-4px); }
+  35%  { opacity: 1; }
+  75%  { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 0; }
+}
+
+/* ---------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------- */
+@include upto($bp-lg) {
+  .hero { min-height: auto; padding-bottom: 2.5rem; }
+  .hero__stage { margin-top: 1rem; }
+}
+
+@include upto($bp-md) {
+  .stage__phone--left,
+  .stage__phone--right { display: none; }
+  .stage__phone--centre { transform: none; }
+  .stage { width: auto; }
 }

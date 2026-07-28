@@ -1,48 +1,14 @@
-.app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; // Crucial: Make the container take the full viewport height
-  overflow: hidden; // Prevent the container itself from ever scrolling
+/* The layout is deliberately minimal: the page scrolls on <body> rather than
+   in an inner container, which is what makes position: sticky, scroll-linked
+   animation and mobile URL-bar collapse all behave correctly. */
+
+:host {
+  display: block;
+  min-height: 100vh;
 }
 
-.app-header-flex {
-  // flex-shrink: 0; // Prevent the header from shrinking if content is too large (usually not needed if height is set)
-  // Define the height of your header. This is important for the middle section's calculation.
-  // Example: MatToolbar often has a default height.
-  // You might set a specific height here or let the content of app-header dictate it.
-  // For this example, let's assume it's controlled by its own component's styles or MatToolbar.
-  // e.g. height: 64px;
-  // If you set a height here, ensure app-header component itself allows for it.
-  background-color: var(--mat-toolbar-container-background-color, #f5f5f5); // Example background
-  z-index: 10; // Keep header above content if there's any overlap during transitions etc.
+main {
+  display: block;
+  position: relative;
+  z-index: 1;
 }
-
-.main-content-flex-scrollable {
-  flex: 1 1 auto; // This is KEY:
-  // flex-grow: 1 (allows it to take up available space)
-  // flex-shrink: 1 (allows it to shrink if necessary, though less relevant here)
-  // flex-basis: auto (its size is based on its content or other flex properties)
-  overflow-y: auto; // Enable vertical scrolling ONLY for this middle section
-  overflow-x: hidden; // Prevent horizontal scrolling in the main content area generally
-
-  // No top/bottom padding needed here because header/footer are part of the flex flow.
-  // However, your *pages* inside <router-outlet> might need their own internal padding.
-  // e.g., the .legal-page-container can have its top/bottom padding.
-}
-
-.app-footer-flex {
-  // flex-shrink: 0; // Prevent the footer from shrinking
-  // Define the height of your footer.
-  // e.g. height: 50px;
-  // Similar to header, height can be set here or by app-footer's own styles.
-  background-color: var(--mat-toolbar-container-background-color, #f5f5f5); // Example background
-  z-index: 10; // Keep footer above content if there's any overlap
-}
-
-// Ensure global styles don't interfere
-// In src/styles.scss
-// html, body {
-//   height: 100%;
-//   margin: 0;
-//   overflow: hidden; /* Prevent body scrollbars */
-// }

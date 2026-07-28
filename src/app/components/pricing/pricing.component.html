@@ -1,108 +1,98 @@
-<section class="pricing-section" id="pricing">
-  <h2 class="section-title">Compare plans</h2>
-  <p class="section-subtitle">
-    Simple pricing for powerful features. Start free, upgrade anytime.
-  </p>
+<section class="pricing section" id="pricing">
+  <div class="shell">
+    <header class="pricing__head">
+      <p class="eyebrow" appReveal="fade">Pricing</p>
+      <h2 class="section-title" appReveal="up" [revealDelay]="60">
+        Free is genuinely free.
+      </h2>
+      <p class="section-lead" appReveal="up" [revealDelay]="130">
+        iCloud sync, Google sync, every view, the whole weather hub and all the
+        widgets cost nothing. Upgrade only if you want the ads gone or your
+        Microsoft calendar in there too.
+      </p>
 
-  <div class="pricing-tiers">
-    <!-- Base Plan -->
-    <mat-card class="pricing-card">
-      <mat-card-header>
-        <mat-card-title>Base Plan</mat-card-title>
-        <mat-card-subtitle>Free</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            Single-day calendar view
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            Multi-day calendar view
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            Monthly calendar view
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            Yearly overview
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            List-view for events
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            iCloud Calendar Sync
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle_outline</mat-icon>
-            Full Weather View &amp; Integration
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+      <div class="toggle" appReveal="up" [revealDelay]="200" role="group" aria-label="Billing period">
+        <span class="toggle__slider" [class.is-yearly]="cycle() === 'yearly'" aria-hidden="true"></span>
+        <button
+          type="button"
+          class="toggle__btn"
+          [class.is-active]="cycle() === 'monthly'"
+          [attr.aria-pressed]="cycle() === 'monthly'"
+          (click)="setCycle('monthly')"
+        >Monthly</button>
+        <button
+          type="button"
+          class="toggle__btn"
+          [class.is-active]="cycle() === 'yearly'"
+          [attr.aria-pressed]="cycle() === 'yearly'"
+          (click)="setCycle('yearly')"
+        >Yearly <em>save more</em></button>
+      </div>
+    </header>
 
-    <!-- Advanced Plan -->
-    <mat-card class="pricing-card featured">
-      <mat-card-header>
-        <mat-card-title>Advanced Plan</mat-card-title>
-        <mat-card-subtitle>
-          $0.99<span class="per-month"> / month</span>
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p class="includes-text"><em>Everything in Base, plus:</em></p>
-        <mat-list>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle</mat-icon>
-            <strong>Google Calendar</strong> Integration
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle</mat-icon>
-            Automatic Google Meet Links
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle</mat-icon>
-            Full Cross-calendar management (iCloud, Google)
-          </mat-list-item>
-            <mat-list-item>
-            <mat-icon mat-list-icon>check_circle</mat-icon>
-            Ads free
-          </mat-list-item>
-        </mat-list>
-        <div class="annual-option">(or $9.99 billed annually)</div>
-      </mat-card-content>
-    </mat-card>
+    <div class="tiers">
+      @for (plan of plans; track plan.id; let i = $index) {
+        <article
+          class="card tier"
+          [class.is-featured]="plan.featured"
+          appReveal="zoom"
+          [revealDelay]="i * 110"
+          appTilt
+          [tiltMax]="5"
+          [tiltLift]="16"
+        >
+          @if (plan.featured) {
+            <span class="tier__flag">Most popular</span>
+          }
 
-    <!-- Premium Plan -->
-    <mat-card class="pricing-card">
-      <mat-card-header>
-        <mat-card-title>Premium Plan</mat-card-title>
-        <mat-card-subtitle>
-          $4.99<span class="per-month"> / month</span>
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p class="includes-text"><em>Everything in Advanced, plus:</em></p>
-        <mat-list>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle</mat-icon>
-            <strong>Microsoft Calendar</strong> Integration
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle</mat-icon>
-            Automatic Microsoft Teams Links
-          </mat-list-item>
-          <mat-list-item>
-            <mat-icon mat-list-icon>check_circle</mat-icon>
-            Full Cross-calendar management (iCloud, Google &amp; Microsoft)
-          </mat-list-item>
-        </mat-list>
-        <div class="annual-option">(or $49.99 billed annually)</div>
-      </mat-card-content>
-    </mat-card>
+          <header class="tier__head">
+            <h3 class="tier__name">{{ plan.name }}</h3>
+            <p class="tier__tagline">{{ plan.tagline }}</p>
+          </header>
+
+          <p class="tier__price">
+            <span class="tier__currency">$</span>
+            <span class="tier__amount">{{ price(plan) }}</span>
+            <span class="tier__period">{{ period(plan) }}</span>
+          </p>
+
+          @if (plan.yearlyNote && cycle() === 'yearly') {
+            <span class="tier__save">{{ plan.yearlyNote }}</span>
+          }
+
+          @if (plan.inherits) {
+            <p class="tier__inherits">Everything in <b>{{ plan.inherits }}</b>, plus:</p>
+          }
+
+          <ul class="tier__list">
+            @for (f of plan.features; track f.label) {
+              <li [class.is-strong]="f.strong">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round" d="M4 10.4l4 4 8-9"/>
+                </svg>
+                <span>{{ f.label }}</span>
+              </li>
+            }
+          </ul>
+
+          <a
+            class="btn tier__cta"
+            [class.btn--primary]="plan.featured"
+            [class.btn--ghost]="!plan.featured"
+            [href]="appStoreUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ plan.monthly === '0' ? 'Download free' : 'Start with ' + plan.name }}
+          </a>
+        </article>
+      }
+    </div>
+
+    <p class="pricing__note" appReveal="fade">
+      Subscriptions renew automatically and are billed through your Apple ID. Cancel any
+      time in your App Store account settings, at least 24 hours before the period ends.
+    </p>
   </div>
 </section>
