@@ -7,6 +7,7 @@ enum CalendarWidgetStore {
     static let appGroupID = "group.ARTE-SOFT.sandBOX"
     static let widgetKind = "CalendarIconWidget"
     static let classicWidgetKind = "CalendarIconWidgetClassic"
+    static let largeEventsWidgetKind = "CalendarIconWidgetLargeEvents"
     static let selectedCalendarIDsKey = "SelectedCalendarIDsKey"
     static let hasConfiguredSelectedCalendarIDsKey = "HasConfiguredSelectedCalendarIDsKey"
 
@@ -44,6 +45,8 @@ enum CalendarWidgetStore {
         static let windDirectionText = "calendarWidget.windDirectionText"
         static let windSpeed = "calendarWidget.windSpeed"
         static let windSpeedUnit = "calendarWidget.windSpeedUnit"
+        static let pressure = "calendarWidget.pressure"
+        static let uvIndex = "calendarWidget.uvIndex"
         static let moonPhaseAssetName = "calendarWidget.moonPhaseAssetName"
         static let moonPhaseDescription = "calendarWidget.moonPhaseDescription"
         static let upcomingEvents = "calendarWidget.upcomingEvents"
@@ -59,6 +62,7 @@ enum CalendarWidgetStore {
     private static func reloadWidgets() {
         WidgetCenter.shared.reloadTimelines(ofKind: widgetKind)
         WidgetCenter.shared.reloadTimelines(ofKind: classicWidgetKind)
+        WidgetCenter.shared.reloadTimelines(ofKind: largeEventsWidgetKind)
     }
 
     static func saveGlobalStateSnapshot(reload: Bool = true) {
@@ -95,7 +99,9 @@ enum CalendarWidgetStore {
                 switch result {
                 case .success(let widgets):
                     continuation.resume(returning: widgets.contains { widget in
-                        widget.kind == widgetKind || widget.kind == classicWidgetKind
+                        widget.kind == widgetKind
+                            || widget.kind == classicWidgetKind
+                            || widget.kind == largeEventsWidgetKind
                     })
                 case .failure:
                     continuation.resume(returning: true)
@@ -110,7 +116,9 @@ enum CalendarWidgetStore {
         temperature: Double?,
         windDirectionDegrees: Double? = nil,
         windDirectionText: String? = nil,
-        windSpeed: Double? = nil
+        windSpeed: Double? = nil,
+        pressure: Double? = nil,
+        uvIndex: Int? = nil
     ) {
         guard let defaults = UserDefaults(suiteName: appGroupID) else { return }
 
@@ -121,6 +129,8 @@ enum CalendarWidgetStore {
         setOptional(windDirectionDegrees, forKey: Key.windDirectionDegrees, in: defaults)
         setOptional(windDirectionText, forKey: Key.windDirectionText, in: defaults)
         setOptional(windSpeed, forKey: Key.windSpeed, in: defaults)
+        setOptional(pressure, forKey: Key.pressure, in: defaults)
+        setOptional(uvIndex, forKey: Key.uvIndex, in: defaults)
         defaults.set(Date(), forKey: Key.updatedAt)
         defaults.synchronize()
 
@@ -261,6 +271,8 @@ enum CalendarWidgetStore {
         defaults.removeObject(forKey: Key.windDirectionText)
         defaults.removeObject(forKey: Key.windSpeed)
         defaults.removeObject(forKey: Key.windSpeedUnit)
+        defaults.removeObject(forKey: Key.pressure)
+        defaults.removeObject(forKey: Key.uvIndex)
         defaults.removeObject(forKey: Key.moonPhaseAssetName)
         defaults.removeObject(forKey: Key.moonPhaseDescription)
         saveGlobalStateSnapshot(to: defaults)

@@ -197,7 +197,9 @@ struct CalendarApp: App {
                 temperature: weatherVM.currentTemp,
                 windDirectionDegrees: weatherVM.currentWindDirection?.degrees,
                 windDirectionText: weatherVM.windDirectionAbbreviation(for: weatherVM.currentWindDirection),
-                windSpeed: weatherVM.currentWindSpeed
+                windSpeed: weatherVM.currentWindSpeed,
+                pressure: weatherVM.currentPressure,
+                uvIndex: weatherVM.currentUVIndex
             )
         }
 

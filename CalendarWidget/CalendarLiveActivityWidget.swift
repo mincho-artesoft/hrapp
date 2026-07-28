@@ -526,7 +526,11 @@ private struct CalendarLiveActivityEventCardView: View {
                 .frame(width: 5, height: markerHeight)
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(event.title.isEmpty ? "Untitled" : event.title)
+                Text(
+                    event.title.isEmpty
+                        ? NSLocalizedString("Untitled", comment: "Fallback event title")
+                        : event.title
+                )
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundStyle(eventColor)
                     .lineLimit(1)
@@ -645,7 +649,11 @@ private struct CalendarLiveActivityEventSummaryView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: compact ? 2 : 5) {
             if let event = state.nextEvent {
-                Text(event.title.isEmpty ? "Untitled" : event.title)
+                Text(
+                    event.title.isEmpty
+                        ? NSLocalizedString("Untitled", comment: "Fallback event title")
+                        : event.title
+                )
                     .font(compact ? .caption.weight(.semibold) : .headline.weight(.semibold))
                     .foregroundStyle(primaryText)
                     .lineLimit(compact ? 1 : 2)

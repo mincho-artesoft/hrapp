@@ -2,6 +2,8 @@
 "Small shows today's date and current weather. Medium adds moon phase and wind." = "Small shows today's date and current weather. Medium adds moon phase and wind.";
 "Calendar Events" = "Calendar Events";
 "Shows today's date, current weather, and your next calendar events." = "Shows today's date, current weather, and your next calendar events.";
+"Calendar Events Large" = "Calendar Events Large";
+"Shows today's date, current weather, and up to 11 upcoming calendar events." = "Shows today's date, current weather, and up to 11 upcoming calendar events.";
 "Today" = "Today";
 "Tomorrow" = "Tomorrow";
 "all-day" = "all-day";
@@ -10,6 +12,7 @@
 "Untitled" = "Untitled";
 "Refresh" = "Refresh";
 "Updated" = "Updated";
+"Next Event" = "Next Event";
 "Starts in" = "Starts in";
 "Now" = "Now";
 "LiveActivityCountdownFormat" = "%1$d %2$@";
@@ -21,3 +24,10 @@
 "LiveActivityCountdownDayUnitOther" = "days";
 "Phase" = "Phase";
 "Weather" = "Weather";
+"Pressure" = "Pressure";
+"UV Index" = "UV Index";
+"Low" = "Low";
+"Moderate" = "Moderate";
+"High" = "High";
+"Very High" = "Very High";
+"Extreme" = "Extreme";

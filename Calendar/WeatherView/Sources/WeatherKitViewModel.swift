@@ -194,7 +194,9 @@ class WeatherKitViewModel: ObservableObject {
             temperature: currentTemp,
             windDirectionDegrees: currentWindDirection?.degrees,
             windDirectionText: windDirectionAbbreviation(for: currentWindDirection),
-            windSpeed: currentWindSpeed
+            windSpeed: currentWindSpeed,
+            pressure: currentPressure,
+            uvIndex: currentUVIndex
         )
         switch current.pressureTrend {
         case .falling: pressureTrend = "Falling"

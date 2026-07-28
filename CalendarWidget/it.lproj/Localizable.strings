@@ -2,6 +2,8 @@
 "Small shows today's date and current weather. Medium adds moon phase and wind." = "Il piccolo mostra la data di oggi e il meteo attuale. Il medio aggiunge fase lunare e vento.";
 "Calendar Events" = "Eventi del calendario";
 "Shows today's date, current weather, and your next calendar events." = "Mostra la data di oggi, il meteo attuale e i tuoi prossimi eventi del calendario.";
+"Calendar Events Large" = "Eventi del calendario (grande)";
+"Shows today's date, current weather, and up to 11 upcoming calendar events." = "Mostra la data di oggi, il meteo attuale e fino a 11 prossimi eventi del calendario.";
 "Today" = "Oggi";
 "Tomorrow" = "Domani";
 "all-day" = "Tutto il giorno";
@@ -10,6 +12,7 @@
 "Untitled" = "Senza titolo";
 "Refresh" = "Aggiorna";
 "Updated" = "Aggiornato";
+"Next Event" = "Prossimo evento";
 "Starts in" = "Inizia tra";
 "Now" = "Ora";
 "LiveActivityCountdownFormat" = "%1$d %2$@";
@@ -21,3 +24,10 @@
 "LiveActivityCountdownDayUnitOther" = "giorni";
 "Phase" = "Fase";
 "Weather" = "Meteo";
+"Pressure" = "Pressione";
+"UV Index" = "Indice UV";
+"Low" = "Basso";
+"Moderate" = "Moderato";
+"High" = "Alto";
+"Very High" = "Molto alto";
+"Extreme" = "Estremo";

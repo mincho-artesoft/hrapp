@@ -5,6 +5,7 @@ private enum WidgetSharedStore {
     static let appGroupID = "group.ARTE-SOFT.sandBOX"
     static let kind = "CalendarIconWidget"
     static let classicKind = "CalendarIconWidgetClassic"
+    static let largeEventsKind = "CalendarIconWidgetLargeEvents"
 
     private enum Key {
         static let weatherSymbol = "calendarWidget.weatherSymbol"
@@ -15,6 +16,8 @@ private enum WidgetSharedStore {
         static let windDirectionText = "calendarWidget.windDirectionText"
         static let windSpeed = "calendarWidget.windSpeed"
         static let windSpeedUnit = "calendarWidget.windSpeedUnit"
+        static let pressure = "calendarWidget.pressure"
+        static let uvIndex = "calendarWidget.uvIndex"
         static let moonPhaseAssetName = "calendarWidget.moonPhaseAssetName"
         static let moonPhaseDescription = "calendarWidget.moonPhaseDescription"
         static let upcomingEvents = "calendarWidget.upcomingEvents"
@@ -39,6 +42,8 @@ private enum WidgetSharedStore {
             windDirectionText: defaults?.string(forKey: Key.windDirectionText) ?? "-",
             windSpeed: defaults?.object(forKey: Key.windSpeed) as? Double,
             windSpeedUnit: defaults?.string(forKey: Key.windSpeedUnit) ?? "",
+            pressure: defaults?.object(forKey: Key.pressure) as? Double,
+            uvIndex: defaults?.object(forKey: Key.uvIndex) as? Int,
             moonPhaseAssetName: defaults?.string(forKey: Key.moonPhaseAssetName) ?? "phase_full",
             moonPhaseDescription: defaults?.string(forKey: Key.moonPhaseDescription) ?? "Moon"
         )
@@ -79,6 +84,8 @@ private struct WeatherSnapshot {
     let windDirectionText: String
     let windSpeed: Double?
     let windSpeedUnit: String
+    let pressure: Double?
+    let uvIndex: Int?
     let moonPhaseAssetName: String
     let moonPhaseDescription: String
 }
@@ -137,6 +144,8 @@ private struct CalendarIconEntry: TimelineEntry {
             windDirectionText: "NE",
             windSpeed: 12,
             windSpeedUnit: "km/h",
+            pressure: 1015,
+            uvIndex: 1,
             moonPhaseAssetName: "phase_waxing_gibbous",
             moonPhaseDescription: "Waxing Gibbous"
         ),
@@ -155,7 +164,12 @@ private struct CalendarIconEntry: TimelineEntry {
             CalendarWidgetUpcomingEvent(id: "3", title: "Lunch with Alex", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 13)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 14)) ?? Date(), isAllDay: false, colorRed: 0.47, colorGreen: 0.80, colorBlue: 0.40, colorAlpha: 1),
             CalendarWidgetUpcomingEvent(id: "4", title: "Design sync", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 15, minute: 30)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 1, hour: 16)) ?? Date(), isAllDay: false, colorRed: 0.72, colorGreen: 0.54, colorBlue: 0.98, colorAlpha: 1),
             CalendarWidgetUpcomingEvent(id: "5", title: "Release prep", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 10)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 11)) ?? Date(), isAllDay: false, colorRed: 1.00, colorGreen: 0.74, colorBlue: 0.20, colorAlpha: 1),
-            CalendarWidgetUpcomingEvent(id: "6", title: "Family dinner", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 19)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 21)) ?? Date(), isAllDay: false, colorRed: 0.25, colorGreen: 0.84, colorBlue: 0.76, colorAlpha: 1)
+            CalendarWidgetUpcomingEvent(id: "6", title: "Family dinner", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 19)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 2, hour: 21)) ?? Date(), isAllDay: false, colorRed: 0.25, colorGreen: 0.84, colorBlue: 0.76, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "7", title: "Project planning", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 9)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 10)) ?? Date(), isAllDay: false, colorRed: 0.34, colorGreen: 0.68, colorBlue: 0.95, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "8", title: "Client call", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 11, minute: 30)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 12, minute: 15)) ?? Date(), isAllDay: false, colorRed: 0.94, colorGreen: 0.51, colorBlue: 0.33, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "9", title: "Focus time", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 14)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 3, hour: 16)) ?? Date(), isAllDay: false, colorRed: 0.55, colorGreen: 0.47, colorBlue: 0.93, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "10", title: "Sprint retrospective", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 4, hour: 10)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 4, hour: 11)) ?? Date(), isAllDay: false, colorRed: 0.45, colorGreen: 0.78, colorBlue: 0.42, colorAlpha: 1),
+            CalendarWidgetUpcomingEvent(id: "11", title: "Doctor appointment", startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 4, hour: 13, minute: 30)) ?? Date(), endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 7, day: 4, hour: 14)) ?? Date(), isAllDay: false, colorRed: 0.91, colorGreen: 0.32, colorBlue: 0.44, colorAlpha: 1)
         ]
     )
 }
@@ -178,20 +192,21 @@ private struct CalendarIconProvider: TimelineProvider {
     }
 }
 
-private enum CalendarMediumLayout {
+private enum CalendarWidgetLayout {
     case grid
     case classic
+    case largeEvents
 }
 
 private struct CalendarIconWidgetView: View {
     @Environment(\.widgetFamily) private var family
 
     let entry: CalendarIconEntry
-    let mediumLayout: CalendarMediumLayout
+    let layout: CalendarWidgetLayout
 
-    init(entry: CalendarIconEntry, mediumLayout: CalendarMediumLayout = .grid) {
+    init(entry: CalendarIconEntry, layout: CalendarWidgetLayout = .grid) {
         self.entry = entry
-        self.mediumLayout = mediumLayout
+        self.layout = layout
     }
 
     private var calendar: Calendar {
@@ -237,9 +252,13 @@ private struct CalendarIconWidgetView: View {
 
     var body: some View {
         Group {
-            switch family {
-            case .systemMedium:
-                mediumBody
+            switch (family, layout) {
+            case (.systemMedium, .grid):
+                mediumGridBody
+            case (.systemMedium, .classic):
+                mediumClassicBody
+            case (.systemLarge, .largeEvents):
+                largeEventsBody
             default:
                 smallBody
             }
@@ -308,16 +327,6 @@ private struct CalendarIconWidgetView: View {
         }
     }
 
-    @ViewBuilder
-    private var mediumBody: some View {
-        switch mediumLayout {
-        case .grid:
-            mediumGridBody
-        case .classic:
-            mediumClassicBody
-        }
-    }
-
     private var mediumGridBody: some View {
         GeometryReader { geometry in
             let verticalInset: CGFloat = 0
@@ -366,7 +375,7 @@ private struct CalendarIconWidgetView: View {
                     .frame(width: iconWidth)
                     .frame(maxHeight: .infinity)
 
-                mediumClassicEventsList
+                classicEventsList(limit: 5, spacing: 1)
 //                    .padding(.leading, 8)
                     .padding(.trailing, 16)
 //                    .padding(.vertical, 8)
@@ -377,9 +386,34 @@ private struct CalendarIconWidgetView: View {
         }
     }
 
+    private var largeEventsBody: some View {
+        GeometryReader { geometry in
+            let iconWidth = geometry.size.width * 0.4
+            let listWidth = geometry.size.width * 0.6
+
+            HStack(alignment: .center, spacing: 0) {
+                ZStack(alignment: .bottomLeading) {
+                    smallBody
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+
+                    largeBottomMetrics
+                        .padding(.horizontal, 14)
+                        .padding(.bottom, 8)
+                }
+                    .frame(width: iconWidth)
+                    .frame(maxHeight: .infinity)
+
+                classicEventsList(limit: 11, spacing: 4)
+                    .padding(.trailing, 16)
+                    .frame(width: listWidth)
+                    .frame(maxHeight: .infinity, alignment: .center)
+            }
+        }
+    }
+
     @ViewBuilder
-    private var mediumClassicEventsList: some View {
-        let events = Array(entry.events.prefix(6))
+    private func classicEventsList(limit: Int, spacing: CGFloat) -> some View {
+        let events = Array(entry.events.prefix(limit))
 
         if events.isEmpty {
             VStack(alignment: .leading, spacing: 4) {
@@ -395,36 +429,254 @@ private struct CalendarIconWidgetView: View {
             .foregroundStyle(iconTextColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         } else {
-            VStack(alignment: .leading, spacing: 3) {
+            VStack(alignment: .leading, spacing: spacing) {
                 ForEach(events) { event in
-                    mediumClassicEventRow(event)
+                    classicEventRow(event)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
     }
 
-    private func mediumClassicEventRow(_ event: CalendarWidgetUpcomingEvent) -> some View {
-        HStack(alignment: .center, spacing: 6) {
+    private func classicEventRow(_ event: CalendarWidgetUpcomingEvent) -> some View {
+        HStack(alignment: .center, spacing: 8) {
             Capsule()
                 .fill(event.tintColor)
-                .frame(width: 3, height: 15)
+                .frame(width: 4, height: 20)
 
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 1) {
                 Text(event.title.isEmpty ? NSLocalizedString("Untitled", comment: "Fallback event title") : event.title)
-                    .font(.system(size: 11, weight: .medium))
+                    .font(.system(size: 13, weight: .medium))
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
 
                 Text(eventScheduleText(event))
-                    .font(.system(size: 9, weight: .regular))
+                    .font(.system(size: 10, weight: .regular))
                     .lineLimit(1)
                     .minimumScaleFactor(0.65)
                     .opacity(0.78)
             }
         }
         .foregroundStyle(iconTextColor)
-        .frame(height: 16)
+        .frame(height: 26)
+    }
+
+    private var largeBottomMetrics: some View {
+        GeometryReader { geometry in
+            let columnSpacing: CGFloat = 8
+            let cellWidth = max(1, (geometry.size.width - columnSpacing) / 2)
+            let cellHeight: CGFloat = 58
+            let verticalStep = max(0, (geometry.size.height - cellHeight) / 3)
+
+            ZStack(alignment: .topLeading) {
+                VStack(spacing: 4) {
+                    Image(entry.weather.moonPhaseAssetName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 48, height: 44)
+
+                    compactMetricCaption(shortMoonPhaseText)
+                }
+                .frame(width: cellWidth, height: cellHeight)
+                .position(x: cellWidth / 2, y: cellHeight / 2)
+
+                VStack(spacing: 4) {
+                    mediumWindCompass
+                        .scaleEffect(0.9)
+                        .frame(width: 44, height: 44)
+
+                    compactMetricCaption("\(entry.weather.windDirectionText) \(windSpeedText)")
+                }
+                .frame(width: cellWidth, height: cellHeight)
+                .position(
+                    x: geometry.size.width - (cellWidth / 2),
+                    y: (cellHeight / 2) + verticalStep
+                )
+
+                compactPressureMetric
+                    .frame(width: cellWidth, height: cellHeight)
+                    .position(
+                        x: cellWidth / 2,
+                        y: (cellHeight / 2) + (verticalStep * 2)
+                    )
+
+                compactUVMetric
+                    .frame(width: cellWidth, height: cellHeight)
+                    .position(
+                        x: geometry.size.width - (cellWidth / 2),
+                        y: (cellHeight / 2) + (verticalStep * 3)
+                    )
+            }
+        }
+        .frame(height: 204)
+    }
+
+    private var compactPressureMetric: some View {
+        VStack(spacing: 2) {
+            HStack(alignment: .firstTextBaseline, spacing: 2) {
+                Text(pressureValueText)
+                    .font(.system(size: 12, weight: .medium))
+
+                Text(pressureUnitText)
+                    .font(.system(size: 6, weight: .regular))
+                    .opacity(0.72)
+            }
+            .foregroundStyle(iconTextColor)
+            .lineLimit(1)
+
+            compactPressureGauge
+                .frame(width: 42, height: 22)
+
+            compactMetricCaption(NSLocalizedString("Pressure", comment: "Pressure metric label"))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var compactUVMetric: some View {
+        VStack(spacing: 3) {
+            HStack(spacing: 3) {
+                Image(systemName: "sun.max.fill")
+                    .symbolRenderingMode(.multicolor)
+                    .font(.system(size: 9, weight: .medium))
+
+                Text("UV \(entry.weather.uvIndex.map(String.init) ?? "--")")
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundStyle(iconTextColor)
+            }
+            .lineLimit(1)
+
+            compactUVBar
+
+            compactMetricCaption(uvCategoryText)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    private var compactPressureGauge: some View {
+        Canvas { context, size in
+            let center = CGPoint(x: size.width / 2, y: size.height * 0.58)
+            let radius = min(size.width * 0.4, size.height * 0.52)
+            let startAngle = Angle.degrees(-225)
+            let endAngle = Angle.degrees(45)
+
+            var arc = Path()
+            arc.addArc(
+                center: center,
+                radius: radius,
+                startAngle: startAngle,
+                endAngle: endAngle,
+                clockwise: false
+            )
+            context.stroke(
+                arc,
+                with: .color(iconTextColor.opacity(0.38)),
+                style: StrokeStyle(lineWidth: 2, lineCap: .round)
+            )
+
+            let needleDegrees = -225 + (270 * pressureGaugeFraction)
+            let needleRadians = needleDegrees * .pi / 180
+            let needleTip = CGPoint(
+                x: center.x + (cos(needleRadians) * radius * 0.82),
+                y: center.y + (sin(needleRadians) * radius * 0.82)
+            )
+
+            var needle = Path()
+            needle.move(to: center)
+            needle.addLine(to: needleTip)
+            context.stroke(
+                needle,
+                with: .color(iconTextColor),
+                style: StrokeStyle(lineWidth: 2.5, lineCap: .round)
+            )
+
+            let hubRect = CGRect(x: center.x - 2, y: center.y - 2, width: 4, height: 4)
+            context.fill(Path(ellipseIn: hubRect), with: .color(iconTextColor))
+        }
+    }
+
+    private var compactUVBar: some View {
+        GeometryReader { geometry in
+            let indicatorWidth: CGFloat = 2
+            let availableWidth = max(0, geometry.size.width - indicatorWidth)
+            let indicatorOffset = availableWidth * uvFraction
+
+            ZStack(alignment: .leading) {
+                LinearGradient(
+                    colors: [.green, .yellow, .orange, .red, .purple],
+                    startPoint: .leading,
+                    endPoint: .trailing
+                )
+                .frame(height: 4)
+                .clipShape(Capsule())
+
+                Capsule()
+                    .fill(iconTextColor)
+                    .frame(width: indicatorWidth, height: 8)
+                    .offset(x: indicatorOffset)
+            }
+            .frame(maxHeight: .infinity)
+        }
+        .frame(height: 8)
+    }
+
+    private var pressureValueText: String {
+        guard let pressure = entry.weather.pressure else {
+            return "--"
+        }
+
+        let formatter = NumberFormatter()
+        formatter.locale = widgetLocale
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = entry.settings.measurementSystem == "Imperial" ? 2 : 0
+        return formatter.string(from: NSNumber(value: pressure)) ?? "--"
+    }
+
+    private var pressureUnitText: String {
+        entry.settings.measurementSystem == "Imperial" ? "inHg" : "hPa"
+    }
+
+    private var pressureGaugeFraction: Double {
+        guard let pressure = entry.weather.pressure else {
+            return 0.5
+        }
+
+        let range = entry.settings.measurementSystem == "Imperial"
+            ? 28.35...31.30
+            : 960...1060
+        return min(1, max(0, (pressure - range.lowerBound) / (range.upperBound - range.lowerBound)))
+    }
+
+    private var uvFraction: Double {
+        min(1, max(0, Double(entry.weather.uvIndex ?? 0) / 11))
+    }
+
+    private var uvCategoryText: String {
+        let key: String
+
+        switch entry.weather.uvIndex ?? 0 {
+        case 0...2:
+            key = "Low"
+        case 3...5:
+            key = "Moderate"
+        case 6...7:
+            key = "High"
+        case 8...10:
+            key = "Very High"
+        default:
+            key = "Extreme"
+        }
+
+        return NSLocalizedString(key, comment: "UV index category")
+    }
+
+    private func compactMetricCaption(_ text: String) -> some View {
+        Text(text)
+            .font(.system(size: 9, weight: .regular))
+            .foregroundStyle(iconTextColor)
+            .lineLimit(1)
+            .minimumScaleFactor(0.45)
+            .frame(maxWidth: .infinity)
     }
 
     private func eventScheduleText(_ event: CalendarWidgetUpcomingEvent) -> String {
@@ -732,6 +984,7 @@ struct CalendarWidgetBundle: WidgetBundle {
     var body: some Widget {
         CalendarIconWidget()
         CalendarIconClassicWidget()
+        CalendarIconLargeEventsWidget()
         CalendarLiveActivityWidget()
     }
 }
@@ -755,7 +1008,7 @@ struct CalendarIconClassicWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: CalendarIconProvider()) { entry in
-            CalendarIconWidgetView(entry: entry, mediumLayout: .classic)
+            CalendarIconWidgetView(entry: entry, layout: .classic)
         }
         .configurationDisplayName("Calendar Events")
         .description("Shows today's date, current weather, and your next calendar events.")
@@ -764,20 +1017,16 @@ struct CalendarIconClassicWidget: Widget {
     }
 }
 
-#Preview("Calendar & Weather / Small", as: .systemSmall) {
-    CalendarIconWidget()
-} timeline: {
-    CalendarIconEntry.preview
-}
+struct CalendarIconLargeEventsWidget: Widget {
+    let kind = WidgetSharedStore.largeEventsKind
 
-#Preview("Calendar & Weather / Medium", as: .systemMedium) {
-    CalendarIconWidget()
-} timeline: {
-    CalendarIconEntry.preview
-}
-
-#Preview("Calendar Events / Medium", as: .systemMedium) {
-    CalendarIconClassicWidget()
-} timeline: {
-    CalendarIconEntry.preview
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: CalendarIconProvider()) { entry in
+            CalendarIconWidgetView(entry: entry, layout: .largeEvents)
+        }
+        .configurationDisplayName("Calendar Events Large")
+        .description("Shows today's date, current weather, and up to 11 upcoming calendar events.")
+        .supportedFamilies([.systemLarge])
+        .contentMarginsDisabled()
+    }
 }

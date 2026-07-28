@@ -2,6 +2,8 @@
 "Small shows today's date and current weather. Medium adds moon phase and wind." = "Малый виджет показывает сегодняшнюю дату и текущую погоду. Средний добавляет фазу Луны и ветер.";
 "Calendar Events" = "События календаря";
 "Shows today's date, current weather, and your next calendar events." = "Показывает сегодняшнюю дату, текущую погоду и ближайшие события календаря.";
+"Calendar Events Large" = "События календаря — большой";
+"Shows today's date, current weather, and up to 11 upcoming calendar events." = "Показывает сегодняшнюю дату, текущую погоду и до 11 ближайших событий календаря.";
 "Today" = "Сегодня";
 "Tomorrow" = "Завтра";
 "all-day" = "Весь день";
@@ -10,6 +12,7 @@
 "Untitled" = "Без названия";
 "Refresh" = "Обновить";
 "Updated" = "Обновлено";
+"Next Event" = "Следующее событие";
 "Starts in" = "Начинается через";
 "Now" = "Сейчас";
 "LiveActivityCountdownFormat" = "%1$d %2$@";
@@ -21,3 +24,10 @@
 "LiveActivityCountdownDayUnitOther" = "дн.";
 "Phase" = "Фаза";
 "Weather" = "Погода";
+"Pressure" = "Давление";
+"UV Index" = "УФ-индекс";
+"Low" = "Низкий";
+"Moderate" = "Умеренный";
+"High" = "Высокий";
+"Very High" = "Очень высокий";
+"Extreme" = "Экстремальный";

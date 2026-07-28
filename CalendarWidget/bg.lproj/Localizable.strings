@@ -2,6 +2,8 @@
 "Small shows today's date and current weather. Medium adds moon phase and wind." = "Малкият показва днешната дата и текущото време. Средният добавя фаза на Луната и вятър.";
 "Calendar Events" = "Календарни събития";
 "Shows today's date, current weather, and your next calendar events." = "Показва днешната дата, текущото време и следващите ви календарни събития.";
+"Calendar Events Large" = "Календарни събития – голям";
+"Shows today's date, current weather, and up to 11 upcoming calendar events." = "Показва днешната дата, текущото време и до 11 предстоящи календарни събития.";
 "Today" = "Днес";
 "Tomorrow" = "Утре";
 "all-day" = "Цял ден";
@@ -10,6 +12,7 @@
 "Untitled" = "Без заглавие";
 "Refresh" = "Обнови";
 "Updated" = "Обновено";
+"Next Event" = "Следващо събитие";
 "Starts in" = "Започва след";
 "Now" = "Сега";
 "LiveActivityCountdownFormat" = "%1$d %2$@";
@@ -21,3 +24,10 @@
 "LiveActivityCountdownDayUnitOther" = "дни";
 "Phase" = "Фаза";
 "Weather" = "Време";
+"Pressure" = "Налягане";
+"UV Index" = "UV индекс";
+"Low" = "Нисък";
+"Moderate" = "Умерен";
+"High" = "Висок";
+"Very High" = "Много висок";
+"Extreme" = "Екстремен";
