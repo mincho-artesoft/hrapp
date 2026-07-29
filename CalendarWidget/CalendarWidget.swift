@@ -465,7 +465,7 @@ private struct CalendarIconWidgetView: View {
         GeometryReader { geometry in
             let columnSpacing: CGFloat = 8
             let cellWidth = max(1, (geometry.size.width - columnSpacing) / 2)
-            let cellHeight: CGFloat = 58
+            let cellHeight: CGFloat = 66
             let verticalStep = max(0, (geometry.size.height - cellHeight) / 3)
 
             ZStack(alignment: .topLeading) {
@@ -525,7 +525,7 @@ private struct CalendarIconWidgetView: View {
             .lineLimit(1)
 
             compactPressureGauge
-                .frame(width: 42, height: 22)
+                .frame(width: 48, height: 36)
 
             compactMetricCaption(NSLocalizedString("Pressure", comment: "Pressure metric label"))
         }
@@ -554,8 +554,11 @@ private struct CalendarIconWidgetView: View {
 
     private var compactPressureGauge: some View {
         Canvas { context, size in
-            let center = CGPoint(x: size.width / 2, y: size.height * 0.58)
-            let radius = min(size.width * 0.4, size.height * 0.52)
+            let diameter = min(size.width, size.height) * 0.8
+            let radius = diameter / 2
+            guard radius > 0 else { return }
+
+            let center = CGPoint(x: size.width / 2, y: size.height / 2)
             let startAngle = Angle.degrees(-225)
             let endAngle = Angle.degrees(45)
 
@@ -569,27 +572,38 @@ private struct CalendarIconWidgetView: View {
             )
             context.stroke(
                 arc,
-                with: .color(iconTextColor.opacity(0.38)),
+                with: .color(iconTextColor.opacity(0.6)),
                 style: StrokeStyle(lineWidth: 2, lineCap: .round)
             )
 
             let needleDegrees = -225 + (270 * pressureGaugeFraction)
             let needleRadians = needleDegrees * .pi / 180
-            let needleTip = CGPoint(
-                x: center.x + (cos(needleRadians) * radius * 0.82),
-                y: center.y + (sin(needleRadians) * radius * 0.82)
-            )
+            let perpendicularRadians = needleRadians + (.pi / 2)
+            let baseRadius = radius * 0.1
 
             var needle = Path()
-            needle.move(to: center)
-            needle.addLine(to: needleTip)
-            context.stroke(
-                needle,
-                with: .color(iconTextColor),
-                style: StrokeStyle(lineWidth: 2.5, lineCap: .round)
-            )
+            needle.move(to: CGPoint(
+                x: center.x + (cos(perpendicularRadians) * baseRadius),
+                y: center.y + (sin(perpendicularRadians) * baseRadius)
+            ))
+            needle.addLine(to: CGPoint(
+                x: center.x + (cos(needleRadians) * radius * 0.9),
+                y: center.y + (sin(needleRadians) * radius * 0.9)
+            ))
+            needle.addLine(to: CGPoint(
+                x: center.x - (cos(perpendicularRadians) * baseRadius),
+                y: center.y - (sin(perpendicularRadians) * baseRadius)
+            ))
+            needle.closeSubpath()
+            context.fill(needle, with: .color(iconTextColor))
 
-            let hubRect = CGRect(x: center.x - 2, y: center.y - 2, width: 4, height: 4)
+            let hubSize = radius * 0.15
+            let hubRect = CGRect(
+                x: center.x - (hubSize / 2),
+                y: center.y - (hubSize / 2),
+                width: hubSize,
+                height: hubSize
+            )
             context.fill(Path(ellipseIn: hubRect), with: .color(iconTextColor))
         }
     }
