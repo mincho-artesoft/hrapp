@@ -36,6 +36,7 @@
 # run output is not — history.jsonl grows every run and report.* is derived.
 /ai-visibility/report.md
 /ai-visibility/report.html
+/.crawler-logs/
 
 # StoreFront inputs and outputs — not site assets.
 /art

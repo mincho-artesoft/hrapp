@@ -45,6 +45,7 @@ import { fileURLToPath } from 'node:url';
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const CFG = JSON.parse(fs.readFileSync(path.join(DIR, 'prompts.json'), 'utf8'));
 const HISTORY = path.join(DIR, 'history.jsonl');
+const DISTRIBUTION = path.join(DIR, 'DISTRIBUTION.md');
 
 const args = new Set(process.argv.slice(2));
 const DRY = args.has('--dry');
@@ -227,7 +228,7 @@ function report() {
     if (!rs.length) return null;
     const hit = rs.filter(r => r.mentioned);
     const avg = hit.length ? (hit.reduce((s, r) => s + r.rank, 0) / hit.length) : null;
-    return { n: rs.length, hits: hit.length, pct: Math.round(hit.length / rs.length * 100),
+    return { n: rs.length, hits: hit.length,
              avgRank: avg ? Math.round(avg * 10) / 10 : null };
   };
 
@@ -237,13 +238,17 @@ function report() {
   md += `the recommendation. A hit rate that climbs while average rank stays at 7 means you\n`;
   md += `have joined the also-ran paragraph at the bottom of the answer.\n\n`;
 
-  md += `## Coverage over time\n\n| date | ${provs.join(' | ')} |\n|${'---|'.repeat(provs.length + 1)}\n`;
+  let coverage = `| date | ${provs.join(' | ')} |\n|${'---|'.repeat(provs.length + 1)}\n`;
   for (const d of dates) {
-    md += `| ${d} | ` + provs.map(p => {
+    coverage += `| ${d} | ` + provs.map(p => {
       const c = cell(d, p);
-      return c ? `${c.hits}/${c.n} (${c.pct}%)${c.avgRank ? `, avg #${c.avgRank}` : ''}` : '—';
+      if (!c) return '—';
+      if (!c.avgRank) return `absent (${c.n} prompts)`;
+      const absent = c.n - c.hits;
+      return `avg #${c.avgRank}${absent ? ` (${absent} absent)` : ''}`;
     }).join(' | ') + ` |\n`;
   }
+  md += `## Average rank over time\n\n${coverage}`;
 
   const latest = dates.at(-1);
   md += `\n## Latest run — ${latest}, by prompt\n\n| prompt | intent | ${provs.join(' | ')} |\n|${'---|'.repeat(provs.length + 2)}\n`;
@@ -279,7 +284,27 @@ function report() {
   }
 
   fs.writeFileSync(path.join(DIR, 'report.md'), md);
+
+  const start = '<!-- ai-visibility-monitor:start -->';
+  const end = '<!-- ai-visibility-monitor:end -->';
+  const block = `${start}
+## Automated visibility trend
+
+Generated from \`history.jsonl\`. Average rank is shown when Cloud Calendars was
+named; \`absent\` means it was not named in any measured answer for that run.
+Hit-rate percentages are deliberately omitted.
+
+${coverage.trimEnd()}
+${end}`;
+  const distribution = fs.readFileSync(DISTRIBUTION, 'utf8');
+  const pattern = new RegExp(`${start}[\\s\\S]*?${end}`);
+  const updated = pattern.test(distribution)
+    ? distribution.replace(pattern, block)
+    : `${distribution.trimEnd()}\n\n---\n\n${block}\n`;
+  fs.writeFileSync(DISTRIBUTION, updated);
+
   console.log(`report.md written — ${dates.length} run(s), ${provs.length} provider(s)`);
+  console.log('DISTRIBUTION.md average-rank table updated');
   return md;
 }
 

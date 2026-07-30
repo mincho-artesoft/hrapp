@@ -8,6 +8,8 @@
 # a deploy either served stale HTML or gave up long-term caching on hashed
 # assets. Here the two are separated: fingerprinted bundles are immutable for a
 # year, HTML is never cached, and the CDN is invalidated at the end.
+# A successful upload also submits the sitemap through IndexNow, and the final
+# step verifies the SEO surface against the deployed CloudFront site.
 #
 #   ./scripts/deploy.sh                   build, upload, invalidate
 #   DRY_RUN=1 ./scripts/deploy.sh         print every AWS call, change nothing
@@ -72,6 +74,13 @@ if [[ -z "$NPM_BIN" ]]; then
   done
 fi
 [[ -n "$NPM_BIN" ]] || die "npm not found. Set NPM_BIN to its path."
+
+NODE_BIN="${NODE_BIN:-$(command -v node || true)}"
+if [[ -z "$NODE_BIN" && -n "$NPM_BIN" ]]; then
+  candidate="$(dirname "$NPM_BIN")/node"
+  [[ -x "$candidate" ]] && NODE_BIN="$candidate"
+fi
+[[ -n "$NODE_BIN" ]] || die "node not found. Set NODE_BIN to its path."
 
 AWS_BIN="${AWS_BIN:-$(command -v aws || true)}"
 if [[ -z "$AWS_BIN" ]]; then
@@ -166,6 +175,17 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
   done
 fi
 
+# --------------------------------------------------------------- IndexNow
+
+if [[ "$INVALIDATE_ONLY" != "1" ]]; then
+  log "Submitting sitemap URLs to IndexNow…"
+  if [[ "$DRY_RUN" == "1" ]]; then
+    printf '\033[90m  would run: node ai-visibility/indexnow.mjs https://%s\033[0m\n' "$SITE_DOMAIN"
+  else
+    "$NODE_BIN" "$ROOT_DIR/ai-visibility/indexnow.mjs" "https://$SITE_DOMAIN"
+  fi
+fi
+
 # ------------------------------------------------------------- invalidation
 
 DISTRIBUTION_ID="${CLOUDFRONT_DISTRIBUTION_ID:-}"
@@ -236,6 +256,13 @@ else
   # a success and behaves like a no-op, which is the worst of both.
   [[ "$ALLOW_NO_CLOUDFRONT" == "1" ]] || die "Deploy incomplete: nothing was invalidated."
   warn "Continuing anyway (ALLOW_NO_CLOUDFRONT=1)."
+fi
+
+log "Running post-deploy live checks…"
+if [[ "$DRY_RUN" == "1" ]]; then
+  printf '\033[90m  would run: node ai-visibility/live-check.mjs https://%s\033[0m\n' "$SITE_DOMAIN"
+else
+  "$NODE_BIN" "$ROOT_DIR/ai-visibility/live-check.mjs" "https://$SITE_DOMAIN"
 fi
 
 log "Done. https://$SITE_DOMAIN"

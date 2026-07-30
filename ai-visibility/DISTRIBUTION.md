@@ -116,3 +116,133 @@ means you have joined the also-ran paragraph at the bottom of the answer.
 
 Keep `prompts.json` stable. Editing the prompts resets the trend, which is the
 only thing here with any value.
+
+## Operational checks and crawler evidence
+
+Every production deploy now performs two machine checks:
+
+1. `indexnow.mjs` reads every URL from the live sitemap and submits it to
+   IndexNow. Its public verification key is hosted at the site root.
+2. After the CloudFront invalidation completes, `live-check.mjs` verifies
+   robots.txt, sitemap.xml and all of its URLs, llms.txt and all of its
+   referenced URLs, plus both JSON-LD blocks on the home page.
+
+The same live verification can be run independently:
+
+```sh
+node ai-visibility/live-check.mjs https://www.cloud-calendars.com
+```
+
+CloudFront standard access logging is configured to the separate bucket
+`cloud-calendars-cdn-logs-e91a0mu1yhgpr` under `cloudfront/`. It is deliberately
+not written into the website bucket. Logging began on 30 July 2026 and is not
+retroactive, so there is no crawler evidence before that date. Fetch and analyse
+the last 30 days with:
+
+```sh
+bash scripts/fetch-crawler-logs.sh
+node ai-visibility/crawler-log.mjs .crawler-logs/cloudfront --days=30
+```
+
+`.crawler-logs/` is gitignored. The analyser separates answer-time fetchers
+(OAI-SearchBot, ChatGPT-User, Claude-User, Perplexity) from indexing crawlers and
+training-corpus crawlers. A GPTBot or CCBot visit is not evidence that the app
+appeared in an answer. The `/llms.txt` line must always be reported, including
+when it says the file was never requested.
+
+The live sitemap is ready to submit in Google Search Console and Bing Webmaster
+Tools. Domain ownership verification and the one-time submissions are human
+account steps and have intentionally not been automated.
+
+---
+
+# Human checklist — the part that actually moves the number
+
+Codex has `CODEX-BRIEF-VISIBILITY.txt`, which makes the effect *measurable*. It
+does not create it. Everything below needs a person with an account, and it is
+where the measured problem actually gets solved.
+
+Ordered by return per hour spent.
+
+## 1. App Store subtitle and keywords — 20 minutes, highest return
+
+`apps.apple.com` was the single most-cited domain in the baseline. It is also
+the only page in this whole document you control completely and can change
+today.
+
+App Store Connect → your app → the localisable fields.
+
+**Subtitle**, limit 30 characters. Pick one — all four fit:
+
+    Calendar with the forecast        26
+    Your calendar + the weather       27
+    Calendar and weather in one       27
+    The forecast, in your calendar    30
+
+**Keywords**, limit 100 characters, comma-separated, **no spaces after the
+commas** — a space costs a character. Never repeat a word already in the app
+name or subtitle; Apple indexes those anyway and repeating wastes the field.
+
+    weather,forecast,rain,outdoor,merge,unify,icloud,google,outlook,widget,agenda,planner,sync,hourly
+
+That is 97 of 100 characters. If you take the subtitle "Calendar with the
+forecast", drop `forecast` from the keywords and you have room for one more.
+
+## 2. Directory listings — an afternoon, mostly waiting
+
+| where | why | what it needs |
+| --- | --- | --- |
+| **AlternativeTo** | Ranks for "alternative to Fantastical", which is literally one of the monitored prompts. Free. | Account, app details, screenshots |
+| **Product Hunt** | Durable citations long after launch day, and the page carries your description verbatim. | Account, prepared copy, images |
+| **SaaSHub / Slant** | Low traffic alone, but they are *comparison* pages, and comparison pages are what a model quotes when asked to compare. | Account, short description |
+
+Run the monitor before and after each one. That is how you learn which listing
+actually did something, instead of doing all of them and knowing nothing.
+
+## 3. The roundup articles — slow, highest ceiling
+
+These seven own the query you most want and none has heard of you:
+
+    thesweetsetup.com   igeeksblog.com   macmyth.com   iapplist.com
+    due.com             latenode.com     pipedrive.com
+
+They are maintained by people and they update. Pitch the gap, not the app:
+*"your list has no calendar that puts the forecast inside the day view"*. Offer
+a promo code. One short specific email each is an afternoon and it works often
+enough to be worth it.
+
+## 4. Reddit — ongoing, as yourself
+
+r/apple, r/iosapps, r/productivity. Answer questions where the app genuinely is
+the answer, and say you built it. Reddit gets cited constantly by
+retrieval-grounded models.
+
+The line stays where it was: you posting, in your own voice, disclosing it is
+yours. Not sock puppets, not seeded threads, not a bot. A discovered astroturf
+campaign is the one outcome here worse than staying invisible.
+
+## What you cannot do, and should stop looking for
+
+**There is no llms.txt registry.** No submission form exists at Google Search
+Console, Bing Webmaster Tools, OpenAI, Anthropic, Google or Perplexity. Hosting
+the file at the root *is* the entire mechanism. Anyone selling "llms.txt
+submission" is selling nothing.
+
+The community directories (llmstxt.site on GitHub, and similar) are catalogues
+of files that exist. They are not consumed by models. Adding yourself takes five
+minutes and changes nothing measurable; do it if you enjoy tidiness, not as
+strategy.
+
+---
+
+<!-- ai-visibility-monitor:start -->
+## Automated visibility trend
+
+Generated from `history.jsonl`. Average rank is shown when Cloud Calendars was
+named; `absent` means it was not named in any measured answer for that run.
+Hit-rate percentages are deliberately omitted.
+
+| date | serp |
+|---|---|
+| 2026-07-29 | avg #1 (3 absent) |
+<!-- ai-visibility-monitor:end -->

@@ -1,0 +1,128 @@
+Work in ~/cloud-calendars. This is the website and marketing repo, not
+StoreFront — nothing here touches the App Store screenshot pipeline.
+
+Read ai-visibility/DISTRIBUTION.md first. It has the measured baseline this
+brief is built on.
+
+
+THE THING TO UNDERSTAND BEFORE ANYTHING ELSE
+
+There is no registry for llms.txt. I checked: no submission form exists at
+Google Search Console, Bing Webmaster Tools, OpenAI, Anthropic, Google or
+Perplexity. It is a file you host, like robots.txt, and nothing more. Any task
+described as "submit our llms.txt" is not a real task and should be reported as
+such rather than approximated.
+
+What CAN be submitted, and what genuinely moves the measured problem, are
+different lists. Yours is below. The rest is a human checklist in
+DISTRIBUTION.md and is explicitly not your job.
+
+
+1. POST-DEPLOY VERIFICATION — do this first, it is small
+
+The four SEO files exist in public/ and reach dist/, but nobody has confirmed
+they are correct once served from CloudFront. Write `ai-visibility/live-check.mjs`
+taking a base URL:
+
+    node ai-visibility/live-check.mjs https://www.cloud-calendars.com
+
+Assert, and exit non-zero on any failure:
+
+  /robots.txt      200, content-type text/plain, contains the Sitemap: line
+  /sitemap.xml     200, content-type xml, parses, and EVERY <loc> in it
+                   returns 200 — including the article, which the deploy script
+                   never uploaded until recently
+  /llms.txt        200, content-type text/plain, and every URL inside it
+                   resolves. A hedge file full of 404s is worse than none.
+  /               200, and the HTML contains both JSON-LD blocks
+                   (SoftwareApplication and FAQPage), each parsing as valid JSON
+
+Wire it into scripts/deploy.sh as a final step, after the CloudFront
+invalidation, so a deploy that breaks one of these says so immediately.
+
+
+2. CRAWLER LOGS — the only honest measurement of whether llms.txt does anything
+
+`ai-visibility/crawler-log.mjs` is written and tested against synthetic logs.
+It needs real ones.
+
+    node ai-visibility/crawler-log.mjs <log-dir> --days=30
+
+Your job: enable access logging and wire it up.
+
+  - Turn on CloudFront standard logging (or S3 server access logging if the
+    bucket is served directly) to a separate bucket or prefix. Do NOT log into
+    the site bucket itself; the deploy script syncs that and would upload logs
+    as site content.
+  - Add a small fetch step — an aws s3 sync into a gitignored local directory —
+    and document it in DISTRIBUTION.md.
+  - Run the analyser and report the output verbatim.
+
+The script separates crawlers by what a hit MEANS, and that distinction is the
+point. OAI-SearchBot, ChatGPT-User, Claude-User and PerplexityBot fetch a page
+because somebody asked a question right now — those hits mean you were in an
+answer. GPTBot and CCBot collect training data, which changes nothing this year
+and possibly nothing ever. Do not let a training-corpus hit be reported as
+evidence the file is working.
+
+If after a month nothing has requested /llms.txt, report exactly that. The file
+stays because it costs nothing, but it stops being called a channel.
+
+
+3. INDEXNOW — the one submission that is real and automatable
+
+Bing accepts URL submissions via IndexNow, and Bing's index feeds Copilot and
+some ChatGPT search results. This is not speculative.
+
+  - Generate a key, host it at /<key>.txt in public/
+  - Add `ai-visibility/indexnow.mjs` that POSTs the sitemap URLs to
+    https://api.indexnow.org/indexnow
+  - Call it from deploy.sh after a successful upload
+
+Also submit sitemap.xml in Google Search Console and Bing Webmaster Tools. Both
+need a human to verify domain ownership once — flag when you are ready and
+Mincho will do that step; do not attempt to create accounts.
+
+
+4. SCHEDULE THE VISIBILITY MONITOR
+
+`ai-visibility/monitor.mjs` runs 12 buyer-intent prompts and appends to
+history.jsonl. It has one measured row, from 29 July, all from web search.
+
+  - Set it up to run weekly with whatever keys are available
+  - After each run, `--report` and commit the table to DISTRIBUTION.md
+  - Report **average rank**, not hit rate. Being named eighth of eight is not a
+    recommendation, and a hit rate that climbs while rank sits at 7 means the
+    app has joined the also-ran paragraph at the bottom of the answer.
+
+Do not edit prompts.json. Changing the prompts resets the trend, which is the
+only thing in that file with any value.
+
+
+WHAT IS NOT YOUR JOB, AND WHY
+
+The measured finding is that Cloud Calendars is absent from every unbranded
+high-intent query while ranking #1 on its own name. Nothing in this brief fixes
+that. The things that fix it are:
+
+  - the App Store subtitle and keyword fields
+  - listings on AlternativeTo, Product Hunt and similar
+  - getting into the roundup articles that own the query
+
+None of those are code. All three need a person with an account, and two need
+someone to write to a human being. The exact strings and the target list are in
+DISTRIBUTION.md under "Human checklist". Do not attempt any of them, do not
+create accounts, and do not send email.
+
+Your four tasks make the effect measurable. They do not create it. Please do not
+report task 1-4 completion as progress on visibility, because it is not.
+
+
+REPORT
+
+  - live-check output against the deployed site
+  - crawler-log output, verbatim, including the llms.txt line whatever it says
+  - whether IndexNow is wired and what it returned
+  - the monitor's first scheduled run
+
+Stop after that.

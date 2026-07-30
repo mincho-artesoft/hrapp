@@ -9,7 +9,10 @@
     "test": "ng test",
     "deploy": "bash scripts/deploy.sh",
     "deploy:dry": "DRY_RUN=1 bash scripts/deploy.sh",
-    "deploy:invalidate": "INVALIDATE_ONLY=1 bash scripts/deploy.sh"
+    "deploy:invalidate": "INVALIDATE_ONLY=1 bash scripts/deploy.sh",
+    "visibility:live": "node ai-visibility/live-check.mjs https://www.cloud-calendars.com",
+    "visibility:indexnow": "node ai-visibility/indexnow.mjs https://www.cloud-calendars.com",
+    "visibility:logs": "bash scripts/fetch-crawler-logs.sh && node ai-visibility/crawler-log.mjs .crawler-logs/cloudfront --days=30"
   },
   "private": true,
   "dependencies": {
