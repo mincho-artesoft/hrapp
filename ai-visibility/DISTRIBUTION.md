@@ -133,11 +133,11 @@ The same live verification can be run independently:
 node ai-visibility/live-check.mjs https://www.cloud-calendars.com
 ```
 
-CloudFront standard access logging is configured to the separate bucket
-`cloud-calendars-cdn-logs-e91a0mu1yhgpr` under `cloudfront/`. It is deliberately
-not written into the website bucket. Logging began on 30 July 2026 and is not
-retroactive, so there is no crawler evidence before that date. Fetch and analyse
-the last 30 days with:
+CloudFront standard access logging is currently **paused** as of 30 July 2026.
+The separate bucket `cloud-calendars-cdn-logs-e91a0mu1yhgpr` and the fetch tool
+remain in place so collection can be resumed later without rebuilding the
+workflow. No logs are written into the website bucket. If logging is re-enabled,
+fetch and analyse the last 30 days with:
 
 ```sh
 bash scripts/fetch-crawler-logs.sh
