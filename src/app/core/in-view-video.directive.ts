@@ -25,6 +25,13 @@ import { isBrowser, prefersReducedMotion } from './motion';
  * keeping half a megabyte off the critical path. Playback is started here, when
  * the section actually scrolls into view.
  *
+ * The poster is handled the same way, for the same reason. A `poster` attribute
+ * is fetched at page load no matter what `preload` says — measured at 40 kB on a
+ * section that sits several screens down — so the template carries
+ * `data-poster` instead and this directive promotes it once the clip is worth
+ * showing. Until then the element is an empty box inside a dark bezel on a dark
+ * page, which is not something a visitor can see.
+ *
  * Once the visitor touches the button their intent wins: a deliberate pause is
  * not undone by scrolling away and back, and under `prefers-reduced-motion`
  * nothing starts until they ask for it.
@@ -62,6 +69,7 @@ export class InViewVideoDirective implements AfterViewInit, OnDestroy {
     video.addEventListener('pause', this.onPause);
 
     if (!('IntersectionObserver' in window)) {
+      this.applyPoster();
       if (!prefersReducedMotion()) this.start();
       return;
     }
@@ -69,6 +77,9 @@ export class InViewVideoDirective implements AfterViewInit, OnDestroy {
     this.observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Before anything else, and regardless of playback intent: a paused
+          // clip should still show its poster rather than an empty rectangle.
+          this.applyPoster();
           if (this.intent === 'pause') return;
           if (prefersReducedMotion() && this.intent !== 'play') return;
           this.start();
@@ -77,7 +88,9 @@ export class InViewVideoDirective implements AfterViewInit, OnDestroy {
           if (!video.paused) video.pause();
         }
       },
-      { threshold: 0.25 },
+      // rootMargin gives the poster a head start: 300px of lead time is
+      // enough for it to decode before the section is actually looked at.
+      { threshold: 0.25, rootMargin: '300px 0px' },
     );
 
     this.observer.observe(video);
@@ -99,6 +112,18 @@ export class InViewVideoDirective implements AfterViewInit, OnDestroy {
     this.observer?.disconnect();
     this.video.removeEventListener('play', this.onPlay);
     this.video.removeEventListener('pause', this.onPause);
+  }
+
+  /**
+   * Move `data-poster` onto `poster`. Idempotent — the attribute is cleared, so
+   * a second call does nothing.
+   */
+  private applyPoster(): void {
+    const video = this.video;
+    const src = video.dataset['poster'];
+    if (!src) return;
+    video.poster = src;
+    delete video.dataset['poster'];
   }
 
   private start(): void {

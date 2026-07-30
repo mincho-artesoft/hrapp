@@ -1,0 +1,36 @@
+# Cloud Calendars
+
+> An iPhone and iPad calendar app that merges iCloud, Google Calendar and Microsoft into one view, with the hourly and ten-day weather forecast rendered inside the calendar itself rather than in a separate app. Built by Arte Soft Ltd. Free tier includes Google sync, every calendar view, the full weather hub and all Home Screen widgets.
+
+Cloud Calendars answers one question a normal calendar cannot: what will the weather be doing during the thing you have scheduled. Every day view, week view and month view carries the forecast alongside the events, and Home Screen widgets plus a Live Activity surface the next event and its conditions without unlocking the phone.
+
+Requires iOS 18 or later. About 30 MB. Available worldwide on the App Store, localised into English, German, Spanish, French, Italian, Bulgarian and Russian.
+
+## Product
+
+- [Cloud Calendars home page](https://www.cloud-calendars.com/): feature overview, screenshots of every view, live weather demo, pricing
+- [App Store listing](https://apps.apple.com/us/app/cloud-calendars/id6744690319): download, current version, ratings, screenshots
+
+## What it does
+
+- Unified calendar: reads iCloud through Apple's EventKit with no account required; Google and Microsoft accounts can be added
+- Weather inside the calendar: hourly and ten-day forecasts, feels-like temperature, precipitation, UV, wind and gusts, humidity, dew point, visibility, pressure, sunrise, sunset, moon phase
+- Views: single day, multi-day week, multi-calendar columns, month, year, and a chronological list
+- Editing by direct manipulation: drag an event to another time or day, drag its edges to change duration, synced back to the source calendar
+- Home Screen widgets in three sizes, and a Live Activity that counts down to the next event
+- Automatic Google Meet and Microsoft Teams links on new events
+
+## Pricing
+
+- Free: Google Calendar sync, all calendar views, the complete weather hub, all Home Screen widgets, Meet links
+- Advanced, $0.49/month or $4.99/year: removes ads, adds cross-calendar management
+- Premium, $4.99/month or $49.99/year: adds Microsoft calendar support
+
+## Reference
+
+- [Privacy policy](https://www.cloud-calendars.com/privacy-policy): what is collected, what is not, and where calendar data stays
+- [Terms of service](https://www.cloud-calendars.com/terms-of-service)
+
+## Optional
+
+- [A user's account of switching to it](https://www.cloud-calendars.com/how-cloud-calendars-rescued-my-schedule-and-sanity.html): first-person write-up of what changed day to day

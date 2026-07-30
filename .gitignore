@@ -18,7 +18,6 @@
 /_to_delete
 /*.tar.gz
 /merged_output.txt
-/cc.index.html
 
 # Verification scripts, written against a local preview server. Useful, but
 # not part of the site — delete this block if you would rather keep them.
@@ -27,3 +26,27 @@
 /ctl.mjs
 /flow.mjs
 /weather.mjs
+/perf-audit.mjs
+/detail-audit.mjs
+/scroll-audit.mjs
+/seo-audit.mjs
+/route-audit.mjs
+
+# AI-visibility monitor: the scripts and prompt list are worth keeping, the
+# run output is not — history.jsonl grows every run and report.* is derived.
+/ai-visibility/report.md
+/ai-visibility/report.html
+
+# StoreFront inputs and outputs — not site assets.
+/art
+/shots
+/exports
+
+# StoreFront working files. They live here because the spec's asset paths are
+# relative to it and art/ shots/ exports/ sit alongside — but none of it is
+# part of the website, and none of it is deployed (only public/ reaches dist).
+/cloud-calendars.storefront.json
+/verify.py
+/ai-visibility/history.jsonl
+/cc.index.html
+/__pycache__

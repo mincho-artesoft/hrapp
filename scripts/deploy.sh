@@ -141,6 +141,21 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
   aws_do s3 cp "$DIST_DIR/index.html" "s3://$NG_DEPLOY_AWS_BUCKET/index.html" \
     --only-show-errors --cache-control "$NEVER" --content-type "text/html"
 
+  # Standalone .html pages that are not the SPA shell — the long-form article,
+  # for one. Pass 1 only takes js/css/media, pass 2 excludes *.html, and the
+  # copies above name index.html explicitly, so before this loop existed any
+  # other HTML file in dist was silently never uploaded. It is in sitemap.xml,
+  # so a missing file here is a soft 404 that we are actively advertising.
+  shopt -s nullglob
+  for page in "$DIST_DIR"/*.html; do
+    name="$(basename "$page")"
+    [[ "$name" == "index.html" ]] && continue
+    log "     standalone page → /$name"
+    aws_do s3 cp "$page" "s3://$NG_DEPLOY_AWS_BUCKET/$name" \
+      --only-show-errors --cache-control "$SHORT" --content-type "text/html"
+  done
+  shopt -u nullglob
+
   # The Angular routes are client-side only. Uploading index.html under each
   # route key makes a direct hit on /privacy-policy resolve without relying on
   # a CloudFront custom-error rule.

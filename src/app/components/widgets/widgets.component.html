@@ -36,11 +36,15 @@
              its own aspect ratio, so neither a crop nor a letterbox is
              possible, whatever the footage is re-recorded at. -->
         <div class="widgets__shell">
+          <!-- data-poster, not poster: a poster attribute is fetched at page load
+               whatever preload says, and this section sits several screens down.
+               InViewVideoDirective promotes it to a real poster as the section
+               approaches. -->
           <video
             appInViewVideo
             #clip="inViewVideo"
             class="home-video"
-            poster="assets/video/widgets-poster.jpg"
+            data-poster="assets/video/widgets-poster.webp"
             preload="none"
             width="640"
             height="1392"

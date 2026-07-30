@@ -32,8 +32,13 @@
 
   <!-- Fonts are self-hosted and bundled with the stylesheet — no third-party request. -->
 
-  <!-- The hero screenshot is the largest contentful paint; start it early. -->
-  <link rel="preload" as="image" href="assets/images/app-screenshots/single-day-view.webp" fetchpriority="high" />
+  <!-- The hero screenshot is the largest contentful paint on a wide viewport,
+       so start it early there. On a phone the hero stacks and this image sits
+       about 850px down — below a 745px fold — where a high-priority preload
+       only competes with the bundle for bandwidth and moves LCP nowhere.
+       Measured: LCP on mobile is text, at 596ms. -->
+  <link rel="preload" as="image" href="assets/images/app-screenshots/single-day-view.webp"
+        fetchpriority="high" media="(min-width: 900px)" />
 
   <script type="application/ld+json">
   {
@@ -55,6 +60,75 @@
       { "@type": "Offer", "price": "4.99", "priceCurrency": "USD", "name": "Premium monthly" },
       { "@type": "Offer", "price": "49.99", "priceCurrency": "USD", "name": "Premium yearly" }
     ]
+  }
+  </script>
+
+  <!-- The FAQ section, marked up so an answer engine can quote it directly.
+       Generated from faq.component.ts, which is the only copy of these
+       strings — Google requires the marked-up answer to match the visible
+       one, and hand-copying them is how that quietly stops being true. -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+          {
+              "@type": "Question",
+              "name": "Do I need an account to use Cloud Calendars?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The app reads the calendars already on your iPhone through Apple’s own EventKit, so iCloud works the moment you grant permission. You only sign in to Google or Microsoft if you want those calendars in there too."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Is Google Calendar sync really free?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Google sync, every calendar view, the complete weather hub, all the Home Screen widgets and Google Meet links are in the free tier. Advanced removes ads and adds cross-calendar management; Premium adds Microsoft."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Where does the weather data come from?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Forecasts are fetched for your current or chosen location and cover hourly and ten-day outlooks, feels-like temperature, precipitation, UV, wind and gusts, humidity and dew point, visibility, pressure, sunrise and sunset, and moon phase."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Can I change an event by dragging it?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "That is the main way to edit. Drag an event to another time or another day, or pull its top or bottom edge to change the duration. Changes sync straight back to the source calendar."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "What do the widgets show?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Three sizes. Small gives the date with the current condition and temperature. Medium adds conditions, moon phase and wind direction. Large puts your next few events beside the forecast. A Live Activity counts down to your next event."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "Which devices are supported?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "iPhone and iPad running iOS 18 or later. The app is about 30 MB."
+              }
+          },
+          {
+              "@type": "Question",
+              "name": "How do I cancel a subscription?",
+              "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Subscriptions are handled by Apple, so you cancel in your App Store account settings. Do it at least 24 hours before the period ends and you will not be charged again."
+              }
+          }
+      ]
   }
   </script>
 

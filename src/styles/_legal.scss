@@ -65,7 +65,11 @@
   line-height: 1.78;
   color: var(--ink-2);
 
-  h3 {
+  /* h2, not h3. These are the top-level sections of a page whose only other
+     heading is the h1 in the masthead, so h3 skipped a level — an accessibility
+     fault and one Lighthouse flags. Sizes below are unchanged; only the tag
+     differs, so the pages look identical. */
+  h2 {
     font-size: clamp(1.15rem, 2.2vw, 1.4rem);
     letter-spacing: -0.03em;
     margin: 2.6rem 0 0.85rem;
