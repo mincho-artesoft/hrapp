@@ -46,3 +46,6 @@ arte-calendar/package.json
 arte-calendar/package.json
 /arte-calendar/node_modules
 merged_output.txt
+
+# Coverage data written next to the project by instrumented runs
+*.profraw
