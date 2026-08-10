@@ -21,7 +21,10 @@ enum TemperatureColorScale {
         ])
     }
 
-    static func bandGradient(for temperature: Double) -> LinearGradient {
+    static func bandGradient(
+        for temperature: Double,
+        layoutDirection: LayoutDirection
+    ) -> LinearGradient {
         let colors: [Color]
         if temperature < displayValue(forCelsius: 0) {
             colors = [purple, darkBlue]
@@ -35,7 +38,13 @@ enum TemperatureColorScale {
             colors = [orange, red]
         }
 
-        return LinearGradient(gradient: Gradient(colors: colors), startPoint: .leading, endPoint: .trailing)
+        let startPoint: UnitPoint = layoutDirection == .rightToLeft ? .trailing : .leading
+        let endPoint: UnitPoint = layoutDirection == .rightToLeft ? .leading : .trailing
+        return LinearGradient(
+            gradient: Gradient(colors: colors),
+            startPoint: startPoint,
+            endPoint: endPoint
+        )
     }
 
     private static func gradientLocation(forCelsius celsius: Double, range: (min: Double, max: Double)) -> CGFloat {

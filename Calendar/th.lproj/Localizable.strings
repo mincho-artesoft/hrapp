@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "ไม่มีการระบุอีเมล";
+"Please enter a valid email to continue." = "กรุณากรอกอีเมล์ที่ถูกต้องเพื่อดำเนินการต่อ";
+"Your email" = "อีเมลของคุณ";
+"Save" = "บันทึก";
+"Login" = "เข้าสู่ระบบ";
+"Logout" = "ออกจากระบบ";
+
+/* RootView */
+"N/A" = "ไม่มี";
+"Calendars" = "ปฏิทิน";
+"Inbox" = "กล่องจดหมาย";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "อื่นๆ";
+"Google calendars" = "Google ปฏิทิน";
+"No synced Google calendars yet." = "ยังไม่มีปฏิทิน Google ที่ซิงค์";
+"Microsoft calendars" = "Microsoft ปฏิทิน";
+"No synced Microsoft calendars yet." = "ยังไม่มีปฏิทิน Microsoft ที่ซิงค์";
+"Sign out" = "ออกจากระบบ";
+"Add iCloud Calendar" = "เพิ่ม iCloud ปฏิทิน";
+"Share calendars with iCloud Calendar" = "แชร์ปฏิทินด้วย iCloud ปฏิทิน";
+"Sign in with Google" = "ลงชื่อเข้าใช้ด้วย Google";
+"Sign in with Microsoft" = "ลงชื่อเข้าใช้ด้วย Microsoft";
+"Deselect All" = "ยกเลิกการเลือกทั้งหมด";
+"Select All" = "เลือกทั้งหมด";
+"No Email" = "ไม่มีอีเมล";
+"Add Google Calendar" = "เพิ่ม Google ปฏิทิน";
+
+/* AddCalendarView */
+"Calendar Name" = "ชื่อปฏิทิน";
+"Account" = "บัญชี";
+"COLOR" = "สี";
+"NOTIFICATIONS" = "การแจ้งเตือน";
+"Event Alerts" = "การแจ้งเตือนเหตุการณ์";
+"Allow events on this calendar to display alerts." = "อนุญาตให้กิจกรรมในปฏิทินนี้แสดงการแจ้งเตือน";
+"Add Calendar" = "เพิ่มปฏิทิน";
+
+/* Colors */
+"Red" = "สีแดง";
+"Orange" = "ส้ม";
+"Yellow" = "สีเหลือง";
+"Green" = "สีเขียว";
+"Blue" = "สีฟ้า";
+"Purple" = "สีม่วง";
+"Brown" = "สีน้ำตาล";
+"Custom" = "กำหนดเอง";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "สีของปฏิทิน";
+"Custom..." = "กำหนดเอง...";
+
+/* EditCalendarView */
+"Edit Calendar" = "แก้ไขปฏิทิน";
+"Delete Calendar" = "ลบปฏิทิน";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "กำลังโหลดการตั้งค่าการแชร์...";
+"Shared with these users" = "แชร์กับผู้ใช้เหล่านี้";
+"Add New Email" = "เพิ่มอีเมลใหม่";
+"Email to share" = "ส่งอีเมลเพื่อแบ่งปัน";
+"Permission:" = "การอนุญาต:";
+"Add" = "เพิ่ม";
+"Sharing:" = "การแบ่งปัน:";
+"Done" = "เสร็จแล้ว";
+
+"Error loading: %@" = "เกิดข้อผิดพลาดในการโหลด: %@";
+"Error adding: %@" = "เกิดข้อผิดพลาดในการเพิ่ม: %@";
+"Error deleting: %@" = "เกิดข้อผิดพลาดในการลบ: %@";
+"Error updating: %@" = "เกิดข้อผิดพลาดในการอัปเดต: %@";
+"Error re-inviting (delete): %@" = "เกิดข้อผิดพลาดในการเชิญใหม่ (ลบ): %@";
+"Error re-inviting (insert): %@" = "เกิดข้อผิดพลาดในการเชิญใหม่ (แทรก): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "ผู้อ่าน";
+"Writer" = "นักเขียน";
+"Owner"  = "เจ้าของ";
+
+/* MonthCalendarView */
+"Day View" = "มุมมองรายวัน";
+"This is a repeating event." = "นี่เป็นเหตุการณ์ที่เกิดซ้ำ";
+"Save for This Event Only" = "บันทึกสำหรับกิจกรรมนี้เท่านั้น";
+"Save for Future Events" = "บันทึกไว้สำหรับกิจกรรมในอนาคต";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "อาทิตย์";
+"Mon" = "จันทร์";
+"Tue" = "อ";
+"Wed" = "พ";
+"Thu" = "พฤ";
+"Fri" = "ศุกร์";
+"Sat" = "ส";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "ปิด";
+
+/* AllEventsListView */
+"No calendar access." = "ไม่มีการเข้าถึงปฏิทิน";
+
+/* EventRowView */
+"Ends" = "สิ้นสุด";
+
+/* SearchEventRowView */
+"No Title" = "ไม่มีชื่อเรื่อง";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "เข้าร่วมการประชุม";
+"Edit" = "แก้ไข";
+"Duplicate" = "ทำซ้ำ";
+"Delete" = "ลบ";
+"Add to Google Meet" = "เพิ่มไปที่ Google Meet";
+"Add to Microsoft Teams" = "เพิ่มไปที่ Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "ไม่ได้เลือกช่วง";
+"all-day" = "ตลอดทั้งวัน";
+"Search events..." = "ค้นหากิจกรรม...";
+"Day" = "วัน";
+"MultiDay" = "หลายวัน";
+"Month" = "เดือน";
+"Year" = "ปี";
+"List" = "รายการ";
+"MultiCalendar" = "หลายปฏิทิน";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "กิจกรรมใหม่";
+"All-day event" = "กิจกรรมตลอดทั้งวัน";
+"Recurring Event" = "เหตุการณ์ที่เกิดซ้ำ";
+"This event is part of a series. Update which events?" = "กิจกรรมนี้เป็นส่วนหนึ่งของซีรีส์ อัพเดตกิจกรรมอะไรบ้าง?";
+"This Event Only" = "เฉพาะงานนี้เท่านั้น";
+"All Future Events" = "เหตุการณ์ในอนาคตทั้งหมด";
+"Cancel" = "ยกเลิก";
+
+/* DraggableMenuView */
+"Calendar" = "ปฏิทิน";
+"Subscriptions" = "การสมัครรับข้อมูล";
+"Live" = "สด";
+"Stop" = "หยุด";
+"Calendar Live Activity" = "กิจกรรมสดของปฏิทิน";
+"Get" = "รับ";
+"Color" = "สี";
+"Search for a city…" = "ค้นหาเมือง...";
+"No directions" = "ไม่มีทิศทาง";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "การเข้าถึงตำแหน่งถูกปฏิเสธ ค้นหาเมืองหรือให้สิทธิ์การเข้าถึงในการตั้งค่า";
+"Cannot refresh. Location unknown." = "ไม่สามารถรีเฟรชได้ ไม่ทราบตำแหน่ง";
+"10-DAY FORECAST" = "การคาดการณ์ 10 วัน";
+"HighLowLabelFormat" = "สูงสุด:%d° ต่ำสุด:%d°";
+"tomorrow" = "พรุ่งนี้";
+"on_day" = "บน %@";
+"in_days" = "ใน %d วัน";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "กิจกรรมใหม่";
+
+/* Search placeholder */
+"Search for a city..." = "ค้นหาเมือง...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "แตะหนึ่งชั่วโมงเพื่อเพิ่มกิจกรรมในปฏิทินอย่างรวดเร็ว";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "รู้สึกเหมือน";
+"similar_to_actual_temp" = "คล้ายกับอุณหภูมิจริง";
+"wind_cooler_feel" = "ลมทำให้รู้สึกเย็นลง";
+"humidity_warmer_feel" = "ความชื้นทำให้รู้สึกอบอุ่นขึ้น";
+
+/* HumidityCard */
+"HUMIDITY" = "ความชื้น";
+"The dew point is %d° right now." = "จุดน้ำค้างอยู่ที่ %d° ในขณะนี้";
+"dewPoint.current" = "จุดน้ำค้างอยู่ที่ %d° ในขณะนี้";
+
+/* MoonCard */
+"MOON PHASE" = "ข้างขึ้นข้างแรม";
+"Moonrise" = "พระจันทร์ขึ้น";
+"Moonset" = "พระจันทร์ตก";
+"Next %@" = "ถัดไป %@";
+"Data unavailable" = "ข้อมูลไม่พร้อมใช้งาน";
+"%d day" = "%d วัน";
+"%d days" = "%d วัน";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "ปริมาณน้ำฝน";
+"PRECIPITATION_CARD_TODAY_LABEL" = "วันนี้";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "คาดว่าถัดไปคือ %1$.0f %2$@ %3$@"; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "คาดว่าจะไม่มีฝนในเร็วๆ นี้";
+
+/* PressureCard */
+"PRESSURE" = "ความดัน";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "พระอาทิตย์ขึ้น";
+"Sunrise: %@" = "พระอาทิตย์ขึ้น: %@";
+"Sunset: %@" = "พระอาทิตย์ตก: %@";
+"Sunrise" = "พระอาทิตย์ขึ้น";
+"Sunset" = "พระอาทิตย์ตก";
+
+
+/* UVIndexCard */
+"UV INDEX" = "ดัชนียูวี";
+"Low" = "ต่ำ";
+"Moderate" = "ปานกลาง";
+"High" = "สูง";
+"Very High" = "สูงมาก";
+"Extreme" = "สุดขีด";
+
+/* VisibilityCard */
+"VISIBILITY" = "การมองเห็น";
+"km" = "km";
+"Perfectly clear view." = "มุมมองที่ชัดเจนสมบูรณ์แบบ";
+"Excellent visibility." = "ทัศนวิสัยดีเยี่ยม";
+"Good visibility." = "ทัศนวิสัยที่ดี";
+"Moderate visibility." = "ทัศนวิสัยปานกลาง";
+"Poor visibility." = "ทัศนวิสัยไม่ดี";
+"Very poor visibility." = "ทัศนวิสัยแย่มาก";
+"visibility.perfect"   = "มุมมองที่ชัดเจนสมบูรณ์แบบ";
+"visibility.excellent" = "ทัศนวิสัยดีเยี่ยม";
+"visibility.good"      = "ทัศนวิสัยที่ดี";
+"visibility.moderate"  = "ทัศนวิสัยปานกลาง";
+"visibility.poor"      = "ทัศนวิสัยไม่ดี";
+"visibility.verypoor"  = "ทัศนวิสัยแย่มาก";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "ลม";
+"Gusts" = "ลมกระโชกแรง";
+"Direction" = "ทิศทาง";
+"km/h" = "km/h";
+"Compass_N" = "เอ็น";
+"Compass_S" = "ส";
+"Compass_W" = "ว";
+"Compass_E" = "อี";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "ดึงข้อมูลสภาพอากาศไม่สำเร็จ โปรดตรวจสอบการเชื่อมต่อของคุณหรือลองอีกครั้งในภายหลัง";
+"Falling" = "ล้ม";
+"Rising" = "เพิ่มขึ้น";
+"Steady" = "มั่นคง";
+"Unknown" = "ไม่ทราบ";
+"Sunny" = "ซันนี่";
+"Cloudy" = "มีเมฆมาก";
+"Partly Cloudy" = "มีเมฆเป็นบางส่วน";
+"Drizzle" = "ฝนตกปรอยๆ";
+"Thunderstorm" = "พายุฝนฟ้าคะนอง";
+"Fog" = "หมอก";
+"Partly Cloudy Night" = "กลางคืนมีเมฆมาก";
+"Clear Night" = "เคลียร์ไนท์";
+"Hazy" = "หมอก";
+"Today" = "วันนี้";
+"Now" = "ตอนนี้";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "เอ็น";
+"cardinal.NNE" = "เอ็นเอ็นอี";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "อี.อี";
+"cardinal.E"   = "อี";
+"cardinal.ESE" = "อีเอสอี";
+"cardinal.SE"  = "เอส";
+"cardinal.SSE" = "สสส";
+"cardinal.S"   = "ส";
+"cardinal.SSW" = "สสว";
+"cardinal.SW"  = "สว";
+"cardinal.WSW" = "สสว";
+"cardinal.W"   = "ว";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "นว";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "มีโอกาสเกิดฝนตก";
+"Today's chance: %d%%" = "โอกาสของวันนี้: %d%%";
+"%@'s chance: %d%%" = "%@ โอกาส: %d%%";
+"Max" = "สูงสุด";
+"Min" = "นาที";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "โอกาสที่ฝนจะตกในแต่ละวันมีแนวโน้มที่จะสูงกว่าโอกาสในแต่ละชั่วโมง";
+"ChanceOfPrecipitation_Title" = "มีโอกาสเกิดฝนตก";
+"TodaysChance"                = "โอกาสของวันนี้: %d%%";
+"OtherDayChance"              = "%@ โอกาส: %d%%";
+"DailyChanceExplanation"      = "โอกาสที่ฝนจะตกในแต่ละวันมีแนวโน้มที่จะสูงกว่าโอกาสในแต่ละชั่วโมง";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "อุณหภูมิที่รู้สึกได้";
+"Actual" = "จริง";
+"No hourly data available for this day." = "ไม่มีข้อมูลรายชั่วโมงสำหรับวันนี้";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "อุณหภูมิจะเป็นอย่างไรอันเป็นผลจากความชื้น แสงแดด หรือลม";
+"The actual air temperature." = "อุณหภูมิอากาศที่เกิดขึ้นจริง";
+"HighLabelFormat" = "สูงสุด: %d°";
+"LowLabelFormat" = "ต่ำสุด: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "ฮ";
+"HourlyGraph_LowLabel"  = "ล";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "ความชื้น";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "ความชื้น %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "ความชื้นเฉลี่ย %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "ต่ำสุดของวันนี้ %d%% – สูงสุด %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "สูงสุด";
+"ChartMarker_Min"           = "นาที";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "ฝน: %.1f%@ หิมะ: %.1f%@";
+"Precip_Total_RainFormat"       = "ฝน: %.1f%@";
+"Precip_Total_SnowFormat"       = "หิมะ: %.1f%@";
+"Precip_Total_None"             = "ปริมาณน้ำฝน: 0%@";
+"Precip_Bars_Subtitle"          = "แถบรายชั่วโมงสำหรับฝนและหิมะ (%@)";
+"Precip_Level_Light"            = "เบา";
+"Precip_Level_Moderate"         = "ปานกลาง";
+"Precip_Level_Heavy"            = "หนัก";
+"Precip_Tooltip_Format"         = "%@ชม\nฝน: %.1f%@\nหิมะ: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "ความดัน %@ %@";
+"Pressure_CurrentUnavailable"      = "ความดัน: --";
+"Pressure_DailyMinMaxFormat"       = "ต่ำสุดของวันนี้ %@ %@ – สูงสุด %@ %@";
+"Pressure_AverageFormat"           = "ความดันเฉลี่ย %@ %@";
+"Pressure_DailyRangeFormat"        = "ช่วงรายวัน: %@–%@ %@";
+"Pressure_Title"                   = "ความกดดัน";
+"Pressure_NoData"                  = "ไม่มีข้อมูลความกดดันสำหรับวันนี้";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "%@ %d วันนี้";
+"UVGraphNoHourlyData"   = "ไม่มีข้อมูลรายชั่วโมงสำหรับวันนี้";
+"UVGraphNowLabel"       = "ตอนนี้ %@";
+"UVCategory_None"       = "ไม่มี";
+"UVCategory_Low"        = "ต่ำ";
+"UVCategory_Moderate"   = "ปานกลาง";
+"UVCategory_High"       = "สูง";
+"UVCategory_VeryHigh"   = "สูงมาก";
+"UVCategory_Extreme"    = "สุดขีด";
+"UVAdvice_None"         = "คาดว่าวันนี้จะมีระดับ UV ปานกลางหรือสูงกว่านี้";
+"UVAdvice_Range"        = "แนะนำให้ทาครีมกันแดด ระดับรังสียูวีอยู่ระหว่าง %@ ถึง %@ ถึงระหว่าง %@ และ %@";
+"UVGraphMaxLabel" = "สูงสุด";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "การมองเห็น";
+"Visibility_NoData"                = "ไม่มีข้อมูลการเปิดเผยสำหรับวันนี้";
+"Visibility_CurrentFormat"         = "การมองเห็น %d %@";
+"Visibility_DailyMinMaxFormat"     = "ต่ำสุด %d – สูงสุด %d %@";
+"Visibility_NoCurrentData"         = "ไม่มีข้อมูลการเปิดเผยในปัจจุบัน";
+"Visibility_HourlyAverages_NoData" = "ไม่มีข้อมูลรายชั่วโมง";
+"Visibility_MaxLabel"              = "สูงสุด";
+"Visibility_MinLabel"              = "นาที";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "ความเร็วลมและลมกระโชกแรง";
+"WindGraph_NoData" = "ไม่มีข้อมูลลมสำหรับวันนี้";
+"WindGraph_SpeedHeader" = "ความเร็วลม %d";
+"WindGraph_GustHeader" = "ลมกระโชกแรงถึง %d";
+"WindGraph_SpeedRangeHeader" = "ความเร็วลม %d-%d";
+"WindGraph_MaxSpeedLabel" = "ความเร็วสูงสุด";
+"WindGraph_MaxGustLabel" = "ลมกระโชกสูงสุด";
+"WindGraph_DragLabel" = "%@\nความเร็ว: %d\nลมกระโชกแรง: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "สรุปรายวัน";
+
+"Precipitation Totals" = "ผลรวมปริมาณน้ำฝน";
+"LAST 24 HOURS" = "24 ชั่วโมงที่ผ่านมา";
+"NEXT 24 HOURS" = "24 ชั่วโมงถัดไป";
+"Total" = "รวม";
+"Rain" = "ฝน";
+"Snow" = "หิมะ";
+
+"About Wind Speed and Gusts" = "เกี่ยวกับความเร็วลมและลมกระโชกแรง";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "ความเร็วลมคำนวณโดยใช้ค่าเฉลี่ยในช่วงเวลาสั้นๆ ลมกระโชกคือลมกระโชกสั้นๆ ที่สูงกว่าค่าเฉลี่ยนี้ โดยทั่วไปลมกระโชกจะกินเวลาไม่เกิน 20 วินาที";
+
+"About the Beaufort Scale" = "เกี่ยวกับมาตราส่วนโบฟอร์ต";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "ระดับลมโบฟอร์ตแสดงให้เห็นว่าลมมีกำลังหรือแรงเพียงใดที่ความเร็วที่กำหนด ระดับโบฟอร์ตอาจทำให้เข้าใจได้ง่ายขึ้นว่าลมจะแรงแค่ไหนหรือส่งผลต่อลมมากน้อยเพียงใด แต่ละค่าบนสเกลจะสอดคล้องกับช่วงความเร็วลม";
+
+"About Feels Like Temperature" = "เกี่ยวกับอุณหภูมิที่รู้สึกได้";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "อุณหภูมิที่รู้สึกได้บอกว่ารู้สึกร้อนหรือหนาวเพียงใด และอาจแตกต่างจากอุณหภูมิจริง โดยได้รับอิทธิพลจากความชื้น แสงแดด และลม";
+
+"Options" = "ตัวเลือก";
+"Temperature" = "อุณหภูมิ";
+"Use system setting (°C)" = "ใช้การตั้งค่าระบบ (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "เงื่อนไข";
+"UV Index" = "ดัชนีรังสียูวี";
+"Wind" = "ลม";
+"Precipitation" = "ปริมาณน้ำฝน";
+"Humidity" = "ความชื้น";
+"Visibility" = "การมองเห็น";
+"Pressure" = "ความกดดัน";
+
+/* Fallback key */
+"displayedCondition" = "แสดงสภาพ";
+
+/* Titles */
+"Forecast"                   = "พยากรณ์";
+"DailySummary"               = "สรุปรายวัน";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° ขณะนี้มีเงื่อนไข %@ มีโอกาสเกิดฝนตกที่ %@ ลมตั้งแต่ %@ และมีลมกระโชกได้ถึง %d %@ อุณหภูมิวันนี้อยู่ระหว่าง %d° ถึง %d° และรู้สึกเหมือน %d° %@ และ %@";
+"UVIndexFormat"              = "ดัชนีรังสียูวีสูงถึง %d";
+"HumidityFormat"             = "ความชื้นประมาณ %d%%";
+"HumidityRangeFormat"        = "ความชื้นตั้งแต่ %d%% ถึง %d%%";
+"NA"                         = "ไม่มี";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@ ต่ำสุดคือ %d° และสูงสุดคือ %d° อุณหภูมิจะรู้สึกเหมือน %d° ถึง %d° คาดว่าจะมีลมตั้งแต่ %@ %@";
+"NoPrecipLast24h"            = "ไม่มีการบันทึกปริมาณฝนใน 24 ชั่วโมงที่ผ่านมา";
+"RainLast24h" = "มีฝนตก %d mm ในช่วง 24 ชั่วโมงที่ผ่านมา";
+"SnowAndRainLast24h" = "ในช่วง 24 ชั่วโมงที่ผ่านมา มีหิมะ %@ cm และฝน %d mm";
+
+/* compass abbreviations */
+"Dir_N"   = "เอ็น";
+"Dir_NNE" = "เอ็นเอ็นอี";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "อี.อี";
+"Dir_E"   = "อี";
+"Dir_ESE" = "อีเอสอี";
+"Dir_SE"  = "เอส";
+"Dir_SSE" = "สสส";
+"Dir_S"   = "ส";
+"Dir_SSW" = "สสว";
+"Dir_SW"  = "สว";
+"Dir_WSW" = "สสว";
+"Dir_W"   = "ว";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "นว";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "ผลรวมปริมาณน้ำฝน";
+"Last24h_Label"             = "24 ชั่วโมงที่ผ่านมา";
+"Next24h_Label"             = "24 ชั่วโมงถัดไป";
+"Total_Label"               = "รวม";
+"Precipitation_Label"       = "ปริมาณน้ำฝน";
+"Rain_Label"                = "ฝน";
+"Snow_Label"                = "หิมะ";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "ขณะนี้ลมอยู่ที่ %1$d %2$@ จาก %3$@ วันนี้ ความเร็วลมอยู่ที่ %4$d ถึง %5$d %2$@ โดยมีลมกระโชกได้ถึง %6$d %2$@";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "ความเร็วลมมีตั้งแต่ %1$d ถึง %2$d %3$@ โดยมีลมกระโชกได้ถึง %4$d %3$@";
+
+"Beaufort_Scale"                = "โบฟอร์ต สเกล";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "คำอธิบาย";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "สงบ";
+"Beaufort_1"                    = "อากาศเบา";
+"Beaufort_2"                    = "ลมพัดเบาๆ";
+"Beaufort_3"                    = "สายลมอ่อนโยน";
+"Beaufort_4"                    = "ลมพัดปานกลาง";
+"Beaufort_5"                    = "สายลมสดชื่น";
+"Beaufort_6"                    = "ลมแรง";
+"Beaufort_7"                    = "ลมแรง";
+"Beaufort_8"                    = "เกล";
+"Beaufort_9"                    = "ลมแรง";
+"Beaufort_10"                   = "พายุ";
+"Beaufort_11"                   = "พายุรุนแรง";
+"Beaufort_12"                   = "พลังพายุเฮอริเคน";
+"BeaufortRange_0"               = "<2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "มีปริมาณฝน %.1f%@ ใน 24 ชั่วโมงที่ผ่านมา ปริมาณฝนรวมของวันนี้จะเป็น %.1f%@ ใน 24 ชั่วโมงข้างหน้า คาดว่าจะมีปริมาณฝน %.1f%@";
+"ForecastPrecip_OtherDayFormat" = "ในวันที่ %@ ปริมาณฝนทั้งหมดจะเป็น %.1f%@";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "เกี่ยวกับความเข้มข้นของฝน";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"ความรุนแรงคำนวณจากปริมาณฝนหรือหิมะที่ตกต่อชั่วโมง และใช้บอกว่าฝนหรือหิมะจะรู้สึกหนักเพียงใด นอกจากนี้ยังใช้กับหยาดน้ำฟ้าประเภทอื่น เช่น ฝนผสมหิมะและหยาดน้ำฟ้าแบบผสมในฤดูหนาว ฝนตกหนักหรือพายุหิมะรุนแรงอาจมีความรุนแรงระดับ “หนัก” ขณะที่ฝนทั่วไปหรือฝนปรอยเบาอาจมีความรุนแรงระดับ “ปานกลาง” หรือ “เบา”";
+
+/* Section titles */
+"Forecast_Title"               = "พยากรณ์";
+"DailySummary_Title"           = "สรุปรายวัน";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "จุดน้ำค้างอยู่ที่ %d° ถึง %d°";
+"DewPoint_FutureFormat"        = "จุดน้ำค้างจะเป็น %d° ถึง %d°";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "วันนี้ความชื้นเฉลี่ยอยู่ที่ %d%% %@";
+"ForecastHumidity_Other"       = "ในวันที่ %@ ความชื้นเฉลี่ยจะอยู่ที่ %d%%\n%@";
+
+"AboutPressure_Title"  = "เกี่ยวกับ ความดัน";
+"AboutPressure_Body"   = "การเปลี่ยนแปลงความกดอากาศอย่างรวดเร็วอย่างมีนัยสำคัญถูกนำมาใช้ในการทำนายการเปลี่ยนแปลงของสภาพอากาศ ตัวอย่างเช่น ความกดอากาศที่ลดลงอาจหมายความว่าฝนหรือหิมะกำลังจะมา และความกดอากาศที่เพิ่มขึ้นอาจหมายความว่าสภาพอากาศจะดีขึ้น ความดันเรียกอีกอย่างว่าความดันบรรยากาศหรือความดันบรรยากาศ";
+
+"AboutHumidity_Title"  = "เกี่ยวกับความชื้นสัมพัทธ์";
+"AboutHumidity_Body"   = "ความชื้นสัมพัทธ์ หรือที่เรียกกันทั่วไปว่าความชื้น คือปริมาณความชื้นในอากาศเมื่อเปรียบเทียบกับสิ่งที่อากาศสามารถกักเก็บได้ อากาศสามารถกักเก็บความชื้นได้มากขึ้นที่อุณหภูมิสูงขึ้น ความชื้นสัมพัทธ์ใกล้ 100% หมายความว่าอาจมีน้ำค้างหรือหมอก";
+
+"AboutDewPoint_Title" = "เกี่ยวกับจุดน้ำค้าง";
+"AboutDewPoint_Body"  = "จุดน้ำค้างคืออุณหภูมิที่ต้องลดลงเพื่อให้น้ำค้างก่อตัว อาจเป็นวิธีที่มีประโยชน์ในการบอกว่าอากาศรู้สึกชื้นแค่ไหน ยิ่งจุดน้ำค้างสูงเท่าไรก็ยิ่งรู้สึกชื้นมากขึ้นเท่านั้น จุดน้ำค้างที่ตรงกับอุณหภูมิปัจจุบันหมายความว่าความชื้นสัมพัทธ์คือ 100% และอาจมีน้ำค้างหรือหมอก";
+
+"Section_Forecast"                     = "พยากรณ์";
+"Section_DailySummary"                 = "สรุปรายวัน";
+"ForecastVisibility_TodayFormat" = "วันนี้ การมองเห็นจะเป็น %@ ที่ %d ถึง %d %@";
+"ForecastVisibility_OtherFormat" = "ในวันที่ %@ การมองเห็นต่ำสุดจะเป็น %@ ที่ %d %@ และสูงสุดจะเป็น %@ ที่ %d %@";
+"Clarity_Foggy"                        = "มีหมอกหนา";
+"Clarity_Hazy"                         = "หมอก";
+"Clarity_Clear"                        = "ชัดเจน";
+"Clarity_PerfectlyClear"               = "ชัดเจนสมบูรณ์แบบ";
+
+"AboutVisibility_Title" = "เกี่ยวกับการมองเห็น";
+"AboutVisibility_Body" = "การมองเห็นจะบอกคุณว่าคุณสามารถมองเห็นวัตถุต่างๆ เช่น อาคารและเนินเขาได้อย่างชัดเจนจากระยะไกลเพียงใด เป็นการวัดความโปร่งใสของอากาศและไม่คำนึงถึงปริมาณแสงแดดหรือสิ่งกีดขวาง ทัศนวิสัยที่หรือสูงกว่า %@ ถือว่าชัดเจน";
+
+"PressureForecast_Today" = "ความกดอากาศขณะนี้ %@ %@ และกำลังลดลง วันนี้ ความกดอากาศเฉลี่ยจะอยู่ที่ %@ %@ และความกดอากาศต่ำสุดจะอยู่ที่ %@ %@";
+"PressureForecast_Other" = "บน %@ ความดันเฉลี่ยจะเป็น %@ %@ และความดันต่ำสุดจะเป็น %@ %@";
+"SectionForecast" = "พยากรณ์";
+"SectionDailySummary" = "สรุปรายวัน";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "คุณสมบัติแผนเริ่มต้นทั้งหมด";
+"Multi-calendar view" = "มุมมองหลายปฏิทิน";
+"Sync with Google Calendar" = "ซิงค์กับ Google ปฏิทิน";
+"Sync meets from Google Meet" = "ซิงค์ตรงกับจาก Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "แผนพื้นฐาน";
+"Single-day calendar view" = "มุมมองปฏิทินวันเดียว";
+"Multi-day calendar view" = "มุมมองปฏิทินแบบหลายวัน";
+"Monthly calendar view" = "มุมมองปฏิทินรายเดือน";
+"Yearly overview" = "ภาพรวมรายปี";
+"List view for events" = "มุมมองรายการสำหรับกิจกรรม";
+"Weather view" = "มุมมองสภาพอากาศ";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "แผนระดับพรีเมียม";
+"Sync with Microsoft Calendar" = "ซิงค์กับ Microsoft ปฏิทิน";
+"Sync meets from Microsoft Teams" = "ซิงค์ตรงกับจาก Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "เทียบเท่ากับ %@ ต่อเดือน";
+"%d %@ free" = "%d %@ ฟรี";
+
+/* SubscriptionListView */
+"Premium Plans" = "แผนระดับพรีเมียม";
+"You are subscribed to the %@ %@ plan" = "คุณได้สมัครรับแผน %@ %@";
+"Renews on: %@" = "ต่ออายุเมื่อ: %@";
+"Start Free Trial" = "เริ่มทดลองใช้ฟรี";
+"Subscribe Now" = "สมัครสมาชิกตอนนี้";
+"%d %@ free, then %@%@." = "%d %@ ฟรี จากนั้น %@%@";
+"Subscribe for %@%@." = "สมัครสมาชิก %@%@";
+"Privacy Policy"     = "นโยบายความเป็นส่วนตัว";
+"Terms of Service"   = "ข้อกำหนดในการให้บริการ";
+
+/* SubscriptionCategory */
+"Advanced" = "ขั้นสูง";
+"Advanced Plan" = "แผนขั้นสูง";
+"All Advanced Plan features" = "คุณสมบัติแผนขั้นสูงทั้งหมด";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "คุณต้องมีแผน %@ ที่ใช้งานอยู่จึงจะเข้าถึงส่วนนี้ได้";
+"Plan Required" = "แผนที่จำเป็น";
+"OK" = "ตกลง";
+
+/* SubscriptionStatus */
+"Base"    = "ฐาน";
+"Premium" = "พรีเมี่ยม";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "สมัครสมาชิกแผน %@ %@";
+
+/* Label for renewal date */
+"RenewsOn"            = "ต่ออายุเมื่อ: %@";
+
+"Manage Subscription"                   = "จัดการการสมัครสมาชิก";
+
+/* Period units */
+"Daily"     = "รายวัน";
+"Weekly"    = "รายสัปดาห์";
+"Monthly"   = "รายเดือน";
+"Yearly"    = "เป็นประจำทุกปี";
+"Recurring" = "เกิดซ้ำ";
+
+/* units */
+"day"   = "วัน";
+"days"  = "วัน";
+"week"  = "สัปดาห์";
+"weeks" = "สัปดาห์";
+"month"  = "เดือน";
+"months" = "เดือน";
+"year"   = "ปี";
+"years"  = "ปี";
+
+/* YearMonthMiniView */
+"weekday.headers" = "อา,จ,อ,พ,พฤ,ศ,ส";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "การซื้อครั้งก่อนของคุณได้รับการคืนค่าเรียบร้อยแล้ว";
+"No active subscriptions found to restore."                = "ไม่พบการสมัครใช้งานที่จะกู้คืน";
+"Failed to restore purchases. Please try again later. (%@)" = "ไม่สามารถกู้คืนการซื้อได้ โปรดลองอีกครั้งในภายหลัง (%@)";
+"Restore Purchases"                                        = "คืนค่าการซื้อ";
+
+"Ads Free" = "โฆษณาฟรี";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "ปฏิทินและสภาพอากาศ";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "วิดเจ็ตขนาดเล็กแสดงวันที่วันนี้และสภาพอากาศปัจจุบัน ส่วนขนาดกลางจะแสดงข้างขึ้นข้างแรมและลมเพิ่มเติม";
+"Calendar Events" = "กิจกรรมในปฏิทิน";
+"Shows today's date, current weather, and your next calendar events." = "แสดงวันที่วันนี้ สภาพอากาศปัจจุบัน และกิจกรรมในปฏิทินครั้งต่อไปของคุณ";
+"No upcoming events" = "ไม่มีกิจกรรมที่กำลังจะเกิดขึ้น";
+"Tomorrow" = "พรุ่งนี้";
+"Untitled" = "ไม่มีชื่อ";
+"Detail" = "รายละเอียด";
+"Phase" = "เฟส";
+"Weather" = "สภาพอากาศ";
+"Select Your Email" = "เลือกอีเมลของคุณ";
+"Confirm" = "ยืนยัน";
+"Calendar name" = "ชื่อปฏิทิน";
+"Sharing: %@" = "การแบ่งปัน: %@";
+"Loading..." = "กำลังโหลด...";
+"Selected Location" = "ตำแหน่งที่เลือก";
+"Data provided by Apple Weather" = "ข้อมูลมาจาก Apple Weather";
+"Next" = "ถัดไป";
+"No details found for the selected location." = "ไม่พบรายละเอียดสำหรับสถานที่ที่เลือก";
+"Could not determine the time zone for the selected location." = "ไม่สามารถระบุเขตเวลาสำหรับสถานที่ที่เลือกได้";
+"(No Title)" = "(ไม่มีชื่อเรื่อง)";
+"Choose your e-mail" = "เลือกอีเมลของคุณ";
+"It will be treated as your primary address and invitations will not be sent to it." = "จะถือเป็นที่อยู่หลักของคุณและคำเชิญจะไม่ถูกส่งไปยังที่อยู่ดังกล่าว";
+"Invalid URL" = "URL ไม่ถูกต้อง";
+"Rate limit or insufficient permission" = "ขีดจำกัดอัตราหรือการอนุญาตไม่เพียงพอ";
+"Network error: %@" = "ข้อผิดพลาดของเครือข่าย: %@";
+"N/A - Selected Tab: %@" = "ไม่มีข้อมูล - แท็บที่เลือก: %@";
+"Enable Notifications" = "เปิดใช้งานการแจ้งเตือน";
+"Event Notifications" = "การแจ้งเตือนเหตุการณ์";
+"Event alerts are scheduled from your event alert settings." = "การแจ้งเตือนกิจกรรมกำหนดไว้จากการตั้งค่าการแจ้งเตือนกิจกรรมของคุณ";
+"Allow notifications so event alerts can appear at the right time." = "อนุญาตการแจ้งเตือนเพื่อให้การแจ้งเตือนกิจกรรมปรากฏขึ้นในเวลาที่เหมาะสม";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "การแจ้งเตือนสำหรับแอปนี้ปิดอยู่ หากต้องการเปิดใช้งาน ให้ไปที่: การตั้งค่า -> แอป -> Cloud Calendars -> การแจ้งเตือน -> อนุญาตการแจ้งเตือน";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating เป็นโค้ชที่ขับเคลื่อนด้วย AI เพื่อโภชนาการและการฝึกอบรมที่ชาญฉลาดยิ่งขึ้น โดยผสมผสานวิทยาศาสตร์โภชนาการสมัยใหม่เข้ากับเครื่องมือที่ใช้งานได้จริงเพื่อช่วยคุณวางแผนมื้ออาหาร ออกแบบการออกกำลังกาย จัดการตู้กับข้าว และทำความเข้าใจว่าอาหารและการเคลื่อนไหวส่งผลต่อร่างกายของคุณอย่างไร";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio คือสภาพแวดล้อมการออกแบบ 3D ขั้นสูงสำหรับนักพัฒนา iOS และ macOS โดยผสานการเรนเดอร์ RealityKit ที่แม่นยำเข้ากับเครื่องมือแก้ไขข้อความแบบจัดรูปแบบที่ทรงพลัง เพื่อเปลี่ยนภาพหน้าจอดิบให้เป็นสื่อระดับมืออาชีพสำหรับ App Store";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio คือสตูดิโอบันทึกหน้าจอระดับผู้สร้างสำหรับ iOS และ macOS จับภาพหน้าจอและกล้องของคุณในเวลาเดียวกัน ควบคุมไมโครโฟน + เสียงของระบบ และส่งออก MP4 ที่ชัดเจนสำหรับบทช่วยสอน บทสรุป และการสาธิตผลิตภัณฑ์ บน iOS คุณยังสามารถเล่นวิดีโอภายในแอปและบันทึกร่วมกับกล้องของคุณสำหรับเนื้อหาแบบโต้ตอบและนำโดยผู้นำเสนอ";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars ผสมผสานการตั้งเวลาขั้นสูงเข้ากับการพยากรณ์อากาศแบบบูรณาการอย่างสวยงาม เพื่อให้คุณสามารถวางแผนได้อย่างแม่นยำ รองรับบริการปฏิทินที่หลากหลาย การแก้ไขด้วยท่าทางที่ใช้งานง่าย ลิงก์การประชุมในตัว และการคาดการณ์รายชั่วโมง/รายวันโดยละเอียดภายในกำหนดการของคุณโดยตรง";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI ช่วยให้คุณเข้าใจความเคลื่อนไหวของตลาดด้วยการวิเคราะห์บนอุปกรณ์และเวิร์กโฟลว์หลายตัวแทนที่ออกแบบมาเพื่อแยกสัญญาณออกจากสัญญาณรบกวน ติดตามข้อมูลราคาแบบเรียลไทม์ สำรวจความน่าจะเป็นในรูปแบบระบอบการปกครอง และใช้แดชบอร์ดและแผนภูมิที่ชัดเจนเพื่อสนับสนุนการตัดสินใจของคุณ ความเป็นส่วนตัวเป็นอันดับแรก: การกำหนดค่าของคุณยังคงอยู่บนอุปกรณ์ของคุณ";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "แอป";
+"Plan" = "แผน";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "พายุหิมะ";
+"WeatherCondition.blowingDust" = "ฝุ่น";
+"WeatherCondition.blowingSnow" = "หิมะพัด";
+"WeatherCondition.breezy" = "ลมอ่อน";
+"WeatherCondition.clear" = "ท้องฟ้าโปร่ง";
+"WeatherCondition.cloudy" = "เมฆมาก";
+"WeatherCondition.drizzle" = "ละอองฝน";
+"WeatherCondition.flurries" = "หิมะปรอย";
+"WeatherCondition.foggy" = "หมอก";
+"WeatherCondition.freezingDrizzle" = "ละอองฝนหนาวจัด";
+"WeatherCondition.freezingRain" = "ฝนตกหนาวจัด";
+"WeatherCondition.frigid" = "หนาว";
+"WeatherCondition.hail" = "ลูกเห็บ";
+"WeatherCondition.haze" = "ฝุ่นควัน";
+"WeatherCondition.heavyRain" = "ฝนตกหนัก";
+"WeatherCondition.heavySnow" = "หิมะตกหนัก";
+"WeatherCondition.hot" = "อากาศร้อน";
+"WeatherCondition.hurricane" = "พายุเฮอร์ริเคน";
+"WeatherCondition.isolatedThunderstorms" = "พายุฝนฟ้าคะนองเป็นแห่งๆ";
+"WeatherCondition.mostlyClear" = "ท้องฟ้าโปร่งเป็นส่วนมาก";
+"WeatherCondition.mostlyCloudy" = "เมฆเป็นส่วนมาก";
+"WeatherCondition.partlyCloudy" = "เมฆเป็นบางส่วน";
+"WeatherCondition.rain" = "ฝน";
+"WeatherCondition.scatteredThunderstorms" = "พายุฝนฟ้าคะนองกระจาย";
+"WeatherCondition.sleet" = "ฝนน้ำแข็ง";
+"WeatherCondition.smoky" = "ควัน";
+"WeatherCondition.snow" = "หิมะ";
+"WeatherCondition.strongStorms" = "พายุฝนฟ้าคะนองหนัก";
+"WeatherCondition.sunFlurries" = "หิมะปรอยและมีแสงแดด";
+"WeatherCondition.sunShowers" = "ฝนตกและมีแสงแดด";
+"WeatherCondition.thunderstorms" = "พายุฝนฟ้าคะนอง";
+"WeatherCondition.tropicalStorm" = "พายุโซนร้อน";
+"WeatherCondition.windy" = "ลมแรง";
+"WeatherCondition.wintryMix" = "ฝนผสม";
+"MoonPhase.new" = "แรม 15 ค่ำ";
+"MoonPhase.waxingCrescent" = "เสี้ยวข้างขึ้น";
+"MoonPhase.firstQuarter" = "ขึ้น 8 ค่ำ";
+"MoonPhase.waxingGibbous" = "ข้างขึ้น";
+"MoonPhase.full" = "จันทร์เต็มดวง";
+"MoonPhase.waningGibbous" = "ข้างแรม";
+"MoonPhase.lastQuarter" = "แรม 8 ค่ำ";
+"MoonPhase.waningCrescent" = "เสี้ยวข้างแรม";

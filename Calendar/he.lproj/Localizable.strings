@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "לא סופק כתובת דוא\"ל.";
+"Please enter a valid email to continue." = "אנא הזן כתובת דוא\"ל חוקית כדי להמשיך.";
+"Your email" = "הדוא\"ל שלך";
+"Save" = "שמור";
+"Login" = "התחברות";
+"Logout" = "התנתקות";
+
+/* RootView */
+"N/A" = "לא רלוונטי";
+"Calendars" = "יומנים";
+"Inbox" = "תיבת דואר נכנס";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "אחר";
+"Google calendars" = "Google יומנים";
+"No synced Google calendars yet." = "אין עדיין יומנים Google מסונכרנים.";
+"Microsoft calendars" = "Microsoft יומנים";
+"No synced Microsoft calendars yet." = "עדיין אין יומנים Microsoft מסונכרנים.";
+"Sign out" = "יציאה";
+"Add iCloud Calendar" = "הוספת iCloud לוח שנה";
+"Share calendars with iCloud Calendar" = "שתף לוחות שנה עם iCloud לוח שנה";
+"Sign in with Google" = "התחברות עם Google";
+"Sign in with Microsoft" = "התחברות עם Microsoft";
+"Deselect All" = "בטל בחירה של הכל";
+"Select All" = "בחר הכל";
+"No Email" = "אין אימייל";
+"Add Google Calendar" = "הוספת Google לוח שנה";
+
+/* AddCalendarView */
+"Calendar Name" = "לוח שנה שם";
+"Account" = "חשבון";
+"COLOR" = "צבע";
+"NOTIFICATIONS" = "התראות";
+"Event Alerts" = "התראות אירועים";
+"Allow events on this calendar to display alerts." = "אפשר הצגת התראות לאירועים בלוח שנה זה.";
+"Add Calendar" = "הוסף לוח שנה";
+
+/* Colors */
+"Red" = "אדום";
+"Orange" = "כתום";
+"Yellow" = "צהוב";
+"Green" = "ירוק";
+"Blue" = "כחול";
+"Purple" = "סגול";
+"Brown" = "חום";
+"Custom" = "מותאם אישית";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "צבע לוח שנה";
+"Custom..." = "מותאם אישית...";
+
+/* EditCalendarView */
+"Edit Calendar" = "ערוך לוח שנה";
+"Delete Calendar" = "מחק לוח שנה";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "טוען הגדרות שיתוף…";
+"Shared with these users" = "משותף עם משתמשים אלה";
+"Add New Email" = "הוסף אימייל חדש";
+"Email to share" = "אימייל לשיתוף";
+"Permission:" = "הרשאה:";
+"Add" = "הוסף";
+"Sharing:" = "שיתוף:";
+"Done" = "בוצע";
+
+"Error loading: %@" = "שגיאה בטעינה: %@";
+"Error adding: %@" = "שגיאה בהוספה: %@";
+"Error deleting: %@" = "שגיאה במחיקה: %@";
+"Error updating: %@" = "שגיאה בעדכון: %@";
+"Error re-inviting (delete): %@" = "שגיאה בהזמנה מחדש (מחיקה): %@";
+"Error re-inviting (insert): %@" = "שגיאה בהזמנה מחדש (הכנסה): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "קורא";
+"Writer" = "כותב";
+"Owner"  = "בעלים";
+
+/* MonthCalendarView */
+"Day View" = "תצוגת יום";
+"This is a repeating event." = "זהו אירוע חוזר.";
+"Save for This Event Only" = "שמירה לאירוע זה בלבד";
+"Save for Future Events" = "שמירה לאירועים עתידיים";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "ראשון";
+"Mon" = "שני";
+"Tue" = "שלישי";
+"Wed" = "רביעי";
+"Thu" = "חמישי";
+"Fri" = "שישי";
+"Sat" = "שבת";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "סגור";
+
+/* AllEventsListView */
+"No calendar access." = "אין גישה ללוח השנה.";
+
+/* EventRowView */
+"Ends" = "סיום";
+
+/* SearchEventRowView */
+"No Title" = "ללא כותרת";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "הצטרף לפגישה";
+"Edit" = "עריכה";
+"Duplicate" = "כפילות";
+"Delete" = "מחק";
+"Add to Google Meet" = "הוסף ל-Google Meet";
+"Add to Microsoft Teams" = "הוסף ל-Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "לא נבחר טווח";
+"all-day" = "כל היום";
+"Search events..." = "חיפוש אירועים...";
+"Day" = "יום";
+"MultiDay" = "ריבוי ימים";
+"Month" = "חודש";
+"Year" = "שנה";
+"List" = "רשימה";
+"MultiCalendar" = "ריבוי לוחות שנה";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "אירוע חדש";
+"All-day event" = "אירוע כל היום";
+"Recurring Event" = "אירוע חוזר";
+"This event is part of a series. Update which events?" = "אירוע זה הוא חלק מסדרה. אילו אירועים לעדכן?";
+"This Event Only" = "אירוע זה בלבד";
+"All Future Events" = "כל האירועים העתידיים";
+"Cancel" = "ביטול";
+
+/* DraggableMenuView */
+"Calendar" = "לוח שנה";
+"Subscriptions" = "מנויים";
+"Live" = "שידור חי";
+"Stop" = "עצירה";
+"Calendar Live Activity" = "פעילות חיה בלוח שנה";
+"Get" = "קבל";
+"Color" = "צבע";
+"Search for a city…" = "חפש עיר…";
+"No directions" = "אין הוראות הגעה";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "גישה למיקום נדחתה. חפש עיר או הענק גישה בהגדרות.";
+"Cannot refresh. Location unknown." = "לא ניתן לרענן. מיקום לא ידוע.";
+"10-DAY FORECAST" = "תחזית ל-10 ימים";
+"HighLowLabelFormat" = "גבוהה:%d° נמוכה:%d°";
+"tomorrow" = "מחר";
+"on_day" = "בתאריך %@";
+"in_days" = "בעוד %d ימים";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "חדש אירוע";
+
+/* Search placeholder */
+"Search for a city..." = "חפש עיר…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "הקש על שעה כדי להוסיף במהירות אירוע בלוח שנה.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "מרגיש כמו";
+"similar_to_actual_temp" = "דומה לטמפרטורה בפועל.";
+"wind_cooler_feel" = "הרוח גורמת לתחושה קרירה יותר.";
+"humidity_warmer_feel" = "הלחות גורמת לתחושה חמה יותר.";
+
+/* HumidityCard */
+"HUMIDITY" = "לחות";
+"The dew point is %d° right now." = "נקודת הטל היא %d° כרגע.";
+"dewPoint.current" = "נקודת הטל היא %d° כרגע.";
+
+/* MoonCard */
+"MOON PHASE" = "שלב הירח";
+"Moonrise" = "זריחה";
+"Moonset" = "שקיעה";
+"Next %@" = "הבא %@";
+"Data unavailable" = "נתונים אינם זמינים";
+"%d day" = "%d יום";
+"%d days" = "%d ימים";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "משקעים";
+"PRECIPITATION_CARD_TODAY_LABEL" = "היום";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "הבא הצפוי הוא %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "לא צפוי משקעים בקרוב.";
+
+/* PressureCard */
+"PRESSURE" = "לחץ";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "זריחה";
+"Sunrise: %@" = "זריחה: %@";
+"Sunset: %@" = "שקיעה: %@";
+"Sunrise" = "זריחה";
+"Sunset" = "שקיעה";
+
+
+/* UVIndexCard */
+"UV INDEX" = "מדד UV";
+"Low" = "נמוך";
+"Moderate" = "בינוני";
+"High" = "גבוה";
+"Very High" = "מאוד גבוה";
+"Extreme" = "קיצוני";
+
+/* VisibilityCard */
+"VISIBILITY" = "ראות";
+"km" = "km";
+"Perfectly clear view." = "ראות ברורה לחלוטין.";
+"Excellent visibility." = "ראות מצוינת.";
+"Good visibility." = "ראות טובה.";
+"Moderate visibility." = "ראות בינונית.";
+"Poor visibility." = "ראות גרועה.";
+"Very poor visibility." = "ראות גרועה מאוד.";
+"visibility.perfect"   = "ראות ברורה לחלוטין.";
+"visibility.excellent" = "ראות מצוינת.";
+"visibility.good"      = "ראות טובה.";
+"visibility.moderate"  = "ראות בינונית.";
+"visibility.poor"      = "ראות גרועה.";
+"visibility.verypoor"  = "ראות גרועה מאוד.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "רוח";
+"Gusts" = "משבים";
+"Direction" = "כיוון";
+"km/h" = "km/h";
+"Compass_N" = "צפון";
+"Compass_S" = "דרום";
+"Compass_W" = "מערב";
+"Compass_E" = "מזרח";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "נכשלה אחזור נתוני מזג האוויר. אנא בדוק את החיבור שלך או נסה שוב מאוחר יותר.";
+"Falling" = "ירידה";
+"Rising" = "עלייה";
+"Steady" = "יציב";
+"Unknown" = "לא ידוע";
+"Sunny" = "שמשי";
+"Cloudy" = "מעונן";
+"Partly Cloudy" = "מעונן חלקית";
+"Drizzle" = "טפטוף";
+"Thunderstorm" = "סופת רעמים";
+"Fog" = "ערפל";
+"Partly Cloudy Night" = "לילה מעונן חלקית";
+"Clear Night" = "בהיר לילה";
+"Hazy" = "מעורפל";
+"Today" = "היום";
+"Now" = "עכשיו";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "צפון";
+"cardinal.NNE" = "צפון-צפון-מזרח";
+"cardinal.NE"  = "צפון-מזרח";
+"cardinal.ENE" = "מזרח-מזרח";
+"cardinal.E"   = "מזרח";
+"cardinal.ESE" = "דרום-מזרח";
+"cardinal.SE"  = "דרום-מזרח";
+"cardinal.SSE" = "דרום-מזרח";
+"cardinal.S"   = "דרום";
+"cardinal.SSW" = "דרום-דרום-מזרח";
+"cardinal.SW"  = "דרום-מערב";
+"cardinal.WSW" = "דרום-מערב";
+"cardinal.W"   = "מערב";
+"cardinal.WNW" = "דרום-מערב";
+"cardinal.NW"  = "מערב-מערב";
+"cardinal.NNW" = "צפון-מערב";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "סיכוי לגשם";
+"Today's chance: %d%%" = "הסיכוי להיום: %d%%";
+"%@'s chance: %d%%" = "סיכוי של %@: %d%%";
+"Max" = "מקסימום";
+"Min" = "מינימום";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "הסיכוי היומי למשקעים נוטה להיות גבוה יותר מהסיכוי לכל שעה.";
+"ChanceOfPrecipitation_Title" = "סיכוי לגשם";
+"TodaysChance"                = "הסיכוי להיום: %d%%";
+"OtherDayChance"              = "סיכוי של %@: %d%%";
+"DailyChanceExplanation"      = "הסיכוי היומי למשקעים נוטה להיות גבוה יותר מהסיכוי לכל שעה.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "טמפרטורה מורגשת";
+"Actual" = "ממשי";
+"No hourly data available for this day." = "אין נתונים זמינים לפי שעה ליום זה.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "מהי התחושה של הטמפרטורה כתוצאה מלחות, אור שמש או רוח.";
+"The actual air temperature." = "טמפרטורת האוויר בפועל.";
+"HighLabelFormat" = "גבוהה: %d°";
+"LowLabelFormat" = "נמוכה: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "ח";
+"HourlyGraph_LowLabel"  = "ל";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "לחות";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "לחות %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "לחות ממוצעת %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "המינימום של היום %d%% – מקסימום %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "מקסימום";
+"ChartMarker_Min"           = "מינימום";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "גשם: %.1f%@, שלג: %.1f%@";
+"Precip_Total_RainFormat"       = "גשם: %.1f%@";
+"Precip_Total_SnowFormat"       = "שלג: %.1f%@";
+"Precip_Total_None"             = "משקעים: 0%@";
+"Precip_Bars_Subtitle"          = "ברים לפי שעה עבור גשם ושלג (%@).";
+"Precip_Level_Light"            = "אור";
+"Precip_Level_Moderate"         = "בינוני";
+"Precip_Level_Heavy"            = "כבד";
+"Precip_Tooltip_Format"         = "%@h\nגשם: %.1f%@\nשלג: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "לחץ %@ %@";
+"Pressure_CurrentUnavailable"      = "לחץ: --";
+"Pressure_DailyMinMaxFormat"       = "המינימום של היום %@ %@ – מקסימום %@ %@";
+"Pressure_AverageFormat"           = "ממוצע לחץ %@ %@";
+"Pressure_DailyRangeFormat"        = "טווח יומי: %@–%@ %@";
+"Pressure_Title"                   = "לחץ";
+"Pressure_NoData"                  = "אין נתוני לחץ זמינים ליום זה.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "%@ %d של היום";
+"UVGraphNoHourlyData"   = "אין נתונים זמינים לפי שעה ליום זה.";
+"UVGraphNowLabel"       = "עכשיו, %@";
+"UVCategory_None"       = "אין";
+"UVCategory_Low"        = "נמוך";
+"UVCategory_Moderate"   = "בינוני";
+"UVCategory_High"       = "גבוה";
+"UVCategory_VeryHigh"   = "מאוד גבוה";
+"UVCategory_Extreme"    = "קיצוני";
+"UVAdvice_None"         = "לא צפויות רמות UV מתונות או גבוהות יותר ליום זה.";
+"UVAdvice_Range"        = "מומלץ להגן על השמש. רמות UV נעות בין %@ ל-%@, הגיעו בין %@ ל-%@.";
+"UVGraphMaxLabel" = "מקסימום";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "ראות";
+"Visibility_NoData"                = "אין נתוני ראות זמינים ליום זה.";
+"Visibility_CurrentFormat"         = "ראות %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – מקסימום %d %@";
+"Visibility_NoCurrentData"         = "אין נתוני ראות עדכניים זמינים.";
+"Visibility_HourlyAverages_NoData" = "אין נתונים לפי שעה זמינים.";
+"Visibility_MaxLabel"              = "מקסימום";
+"Visibility_MinLabel"              = "מינימום";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "מהירות רוח ומשב רוח";
+"WindGraph_NoData" = "אין נתוני רוח זמינים ליום זה.";
+"WindGraph_SpeedHeader" = "מהירות רוח %d";
+"WindGraph_GustHeader" = "משבי רוח עד %d";
+"WindGraph_SpeedRangeHeader" = "מהירות רוח %d-%d";
+"WindGraph_MaxSpeedLabel" = "מהירות מרבית";
+"WindGraph_MaxGustLabel" = "משב מרבי";
+"WindGraph_DragLabel" = "%@\nמהירות: %d\nמשב רוח: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "סיכום יומי";
+
+"Precipitation Totals" = "סכומי משקעים";
+"LAST 24 HOURS" = "24 השעות האחרונות";
+"NEXT 24 HOURS" = "24 השעות הבאות";
+"Total" = "סך הכל";
+"Rain" = "גשם";
+"Snow" = "שלג";
+
+"About Wind Speed and Gusts" = "על מהירות הרוח והמשבים";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "מהירות הרוח מחושבת באמצעות הממוצע על פני פרק זמן קצר. משבים הם פרצי רוח קצרים מעל הממוצע הזה. משב משב נמשך בדרך כלל פחות מ-20 שניות.";
+
+"About the Beaufort Scale" = "על סולם הבופור";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "סולם הרוחות של בופור מבטא עד כמה הרוח חזקה או חזקה במהירות נתונה. סולם הבופור עשוי להקל על ההבנה של תחושת הרוח או מידת ההשפעה של הרוח. כל ערך בסולם מתאים לטווח מהירות הרוח.";
+
+"About Feels Like Temperature" = "על הטמפרטורה המורגשת";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "הטמפרטורה המורגשת מציינת עד כמה חם או קר מרגיש בחוץ, והיא עשויה להיות שונה מהטמפרטורה בפועל. היא מושפעת מלחות, מאור השמש ומהרוח.";
+
+"Options" = "אפשרויות";
+"Temperature" = "טמפרטורה";
+"Use system setting (°C)" = "השתמש בהגדרת המערכת (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "תנאים";
+"UV Index" = "UV אינדקס";
+"Wind" = "רוח";
+"Precipitation" = "משקעים";
+"Humidity" = "לחות";
+"Visibility" = "ראות";
+"Pressure" = "לחץ";
+
+/* Fallback key */
+"displayedCondition" = "מוצג מצב";
+
+/* Titles */
+"Forecast"                   = "תחזית";
+"DailySummary"               = "סיכום יומי";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° עכשיו עם תנאים %@. יש סיכוי למשקעים של %@. רוח מ-%@ עם משבים עד %d %@. הטמפרטורה של היום נעה בין %d° ל-%d° ומרגישה כמו %d°. %@, ו-%@.";
+"UVIndexFormat"              = "אינדקס UV עד %d";
+"HumidityFormat"             = "לחות סביב %d%%";
+"HumidityRangeFormat"        = "לחות מ-%d%% עד %d%%";
+"NA"                         = "לא רלוונטי";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "הנמוך של %@ הוא %d° והגבוה הוא %d°. הטמפרטורה תרגיש כמו %d° עד %d°. צפויה רוח מ-%@. %@";
+"NoPrecipLast24h"            = "לא נרשמו משקעים ב-24 השעות האחרונות.";
+"RainLast24h" = "ירדו %d mm גשם ב־24 השעות האחרונות.";
+"SnowAndRainLast24h" = "ב־24 השעות האחרונות נמדדו %@ cm שלג ו־%d mm גשם.";
+
+/* compass abbreviations */
+"Dir_N"   = "צפון";
+"Dir_NNE" = "צפון-צפון-מזרח";
+"Dir_NE"  = "צפון-מזרח";
+"Dir_ENE" = "מזרח-מזרח";
+"Dir_E"   = "מזרח";
+"Dir_ESE" = "דרום-מזרח";
+"Dir_SE"  = "דרום-מזרח";
+"Dir_SSE" = "דרום-מזרח";
+"Dir_S"   = "דרום";
+"Dir_SSW" = "דרום-דרום-מזרח";
+"Dir_SW"  = "דרום-מערב";
+"Dir_WSW" = "דרום-מערב";
+"Dir_W"   = "מערב";
+"Dir_WNW" = "דרום-מערב";
+"Dir_NW"  = "מערב-מערב";
+"Dir_NNW" = "צפון-מערב";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "סכומי משקעים";
+"Last24h_Label"             = "24 השעות האחרונות";
+"Next24h_Label"             = "24 השעות הבאות";
+"Total_Label"               = "סך הכל";
+"Precipitation_Label"       = "משקעים";
+"Rain_Label"                = "גשם";
+"Snow_Label"                = "שלג";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "הרוח כרגע היא %1$d %2$@ מה-%3$@. כיום, מהירויות הרוח הן %4$d עד %5$d %2$@, עם משבים עד %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "מהירויות הרוח נעות בין %1$d ל-%2$d %3$@, עם משבים עד %4$d %3$@.";
+
+"Beaufort_Scale"                = "סולם בופור";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "תיאור";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "רגוע";
+"Beaufort_1"                    = "אוויר קל";
+"Beaufort_2"                    = "רוח קלה";
+"Beaufort_3"                    = "רוח עדינה";
+"Beaufort_4"                    = "רוח מתונה";
+"Beaufort_5"                    = "משב רוח רענן";
+"Beaufort_6"                    = "רוח חזקה";
+"Beaufort_7"                    = "רוח חזקה";
+"Beaufort_8"                    = "גייל";
+"Beaufort_9"                    = "סערה חזקה";
+"Beaufort_10"                   = "סערה";
+"Beaufort_11"                   = "סערה אלימה";
+"Beaufort_12"                   = "כוח הוריקן";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 - 5";
+"BeaufortRange_2"               = "6 - 11";
+"BeaufortRange_3"               = "12 - 19";
+"BeaufortRange_4"               = "20 - 28";
+"BeaufortRange_5"               = "29 - 38";
+"BeaufortRange_6"               = "39 - 49";
+"BeaufortRange_7"               = "50 - 61";
+"BeaufortRange_8"               = "62 - 74";
+"BeaufortRange_9"               = "75 - 88";
+"BeaufortRange_10"              = "89 - 102";
+"BeaufortRange_11"              = "103 - 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "ירדו %.1f%@ של משקעים ב-24 השעות האחרונות. סך המשקעים היום יהיה %.1f%@. ב-24 השעות הקרובות צפויים %.1f%@ של משקעים.";
+"ForecastPrecip_OtherDayFormat" = "ב-%@, סך המשקעים יהיה %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "לגבי עוצמת המשקעים";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"העוצמה מחושבת לפי כמות הגשם או השלג שיורדת בשעה, ונועדה לציין עד כמה הגשם או השלג יורגשו כחזקים. היא משמשת גם לסוגי משקעים אחרים, כגון גשם מעורב בשלג ותערובת חורפית. למטר כבד או לסופת שלגים עזה יכולה להיות עוצמה ״חזקה״, בעוד שלגשם רגיל או לטפטוף קל יותר יכולה להיות עוצמה ״בינונית״ או ״קלה״.";
+
+/* Section titles */
+"Forecast_Title"               = "תחזית";
+"DailySummary_Title"           = "סיכום יומי";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "נקודת הטל היא %d° עד %d°.";
+"DewPoint_FutureFormat"        = "נקודת הטל תהיה %d° עד %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "כיום, הלחות הממוצעת היא %d%%. %@";
+"ForecastHumidity_Other"       = "ב-%@, הלחות הממוצעת תהיה %d%%.\n%@";
+
+"AboutPressure_Title"  = "לגבי לחץ";
+"AboutPressure_Body"   = "שינויים משמעותיים ומהירים בלחץ משמשים לניבוי שינויים במזג האוויר. לדוגמה, ירידה בלחץ יכולה לגרום לכך שגשם או שלג בדרך, ולחץ עולה יכול לגרום לכך שמזג האוויר ישתפר. לחץ נקרא גם לחץ ברומטרי או לחץ אטמוספרי.";
+
+"AboutHumidity_Title"  = "על לחות יחסית";
+"AboutHumidity_Body"   = "לחות יחסית, המכונה בדרך כלל לחות, היא כמות הלחות באוויר בהשוואה למה שהאוויר יכול להחזיק. האוויר יכול להחזיק יותר לחות בטמפרטורות גבוהות יותר. לחות יחסית קרובה ל-100% פירושה שייתכן שיש טל או ערפל.";
+
+"AboutDewPoint_Title" = "לגבי נקודת הטל";
+"AboutDewPoint_Body"  = "נקודת הטל היא מה שהטמפרטורה צריכה לרדת אליה כדי להיווצר טל. זו יכולה להיות דרך שימושית לדעת עד כמה האוויר מרגיש לח - ככל שנקודת הטל גבוהה יותר, כך הוא מרגיש לח יותר. נקודת טל התואמת את הטמפרטורה הנוכחית פירושה שהלחות היחסית היא 100%, וייתכן שיש טל או ערפל.";
+
+"Section_Forecast"                     = "תחזית";
+"Section_DailySummary"                 = "סיכום יומי";
+"ForecastVisibility_TodayFormat" = "היום, הראות תהיה %@, ב-%d עד %d %@.";
+"ForecastVisibility_OtherFormat" = "ב-%@, הראות הנמוכה ביותר תהיה %@ ב-%d %@, והגבוהה ביותר תהיה %@ ב-%d %@.";
+"Clarity_Foggy"                        = "ערפילי";
+"Clarity_Hazy"                         = "מעורפל";
+"Clarity_Clear"                        = "ברור";
+"Clarity_PerfectlyClear"               = "ברור לחלוטין";
+
+"AboutVisibility_Title" = "לגבי נראות";
+"AboutVisibility_Body" = "הראות אומרת לך כמה רחוק אתה יכול לראות בבירור עצמים כמו בניינים וגבעות. זהו מדד לשקיפות האוויר ואינו לוקח בחשבון את כמות אור השמש או נוכחות של חסימות. הראות ב-%@ או מעליו נחשבת ברורה.";
+
+"PressureForecast_Today" = "הלחץ כרגע הוא %@ %@ ויורד. היום, הלחץ הממוצע יהיה %@ %@, והלחץ הנמוך ביותר יהיה %@ %@.";
+"PressureForecast_Other" = "ב-%@, הלחץ הממוצע יהיה %@ %@, והלחץ הנמוך ביותר יהיה %@ %@.";
+"SectionForecast" = "תחזית";
+"SectionDailySummary" = "סיכום יומי";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "כל התכונות של תוכנית הבסיס";
+"Multi-calendar view" = "תצוגה מרובה לוחות שנה";
+"Sync with Google Calendar" = "סנכרן עם Google לוח שנה";
+"Sync meets from Google Meet" = "סנכרון פגישות מ-Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "תוכנית בסיס";
+"Single-day calendar view" = "תצוגת לוח שנה של יום אחד";
+"Multi-day calendar view" = "תצוגת לוח שנה מרובה ימים";
+"Monthly calendar view" = "תצוגת לוח שנה חודשי";
+"Yearly overview" = "סקירה שנתית";
+"List view for events" = "תצוגת רשימה עבור אירועים";
+"Weather view" = "נוף מזג אוויר";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "תוכנית פרימיום";
+"Sync with Microsoft Calendar" = "סנכרן עם Microsoft לוח שנה";
+"Sync meets from Microsoft Teams" = "סנכרון פגישות מ-Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "שווה ערך ל-%@ לחודש";
+"%d %@ free" = "%d %@ חינם";
+
+/* SubscriptionListView */
+"Premium Plans" = "תוכניות פרימיום";
+"You are subscribed to the %@ %@ plan" = "אתה מנוי לתוכנית %@ %@";
+"Renews on: %@" = "מתחדש ב: %@";
+"Start Free Trial" = "התחל ניסיון חינם";
+"Subscribe Now" = "הירשם עכשיו";
+"%d %@ free, then %@%@." = "%d %@ חינם, ואז %@%@.";
+"Subscribe for %@%@." = "הירשם ל-%@%@.";
+"Privacy Policy"     = "מדיניות פרטיות";
+"Terms of Service"   = "תנאים והגבלות";
+
+/* SubscriptionCategory */
+"Advanced" = "מתקדם";
+"Advanced Plan" = "תוכנית מתקדמת";
+"All Advanced Plan features" = "כל תכונות התוכנית המתקדמת";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "אתה צריך תוכנית %@ פעילה כדי לגשת לקטע הזה.";
+"Plan Required" = "נדרשת תוכנית";
+"OK" = "בסדר";
+
+/* SubscriptionStatus */
+"Base"    = "בסיס";
+"Premium" = "פרימיום";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "נרשם לתוכנית %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "מתחדש ב: %@";
+
+"Manage Subscription"                   = "ניהול מנוי";
+
+/* Period units */
+"Daily"     = "יומי";
+"Weekly"    = "שבועי";
+"Monthly"   = "חודשי";
+"Yearly"    = "מדי שנה";
+"Recurring" = "חוזר";
+
+/* units */
+"day"   = "יום";
+"days"  = "ימים";
+"week"  = "שבוע";
+"weeks" = "שבועות";
+"month"  = "חודש";
+"months" = "חודשים";
+"year"   = "שנה";
+"years"  = "שנים";
+
+/* YearMonthMiniView */
+"weekday.headers" = "א׳,ב׳,ג׳,ד׳,ה׳,ו׳,ש׳";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "הרכישות הקודמות שלך שוחזרו בהצלחה.";
+"No active subscriptions found to restore."                = "לא נמצאו מנויים פעילים לשחזור.";
+"Failed to restore purchases. Please try again later. (%@)" = "שחזור הרכישות נכשל. אנא נסה שוב מאוחר יותר. (%@)";
+"Restore Purchases"                                        = "שחזור רכישות";
+
+"Ads Free" = "פרסומות חינם";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "לוח שנה ומזג אוויר";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "הווידג׳ט הקטן מציג את התאריך של היום ואת מזג האוויר הנוכחי. הבינוני מוסיף את מופע הירח ואת הרוח.";
+"Calendar Events" = "אירועי לוח שנה";
+"Shows today's date, current weather, and your next calendar events." = "מציג את התאריך של היום, מזג האוויר הנוכחי ואירועי היומן הבאים שלך.";
+"No upcoming events" = "אין אירועים קרובים";
+"Tomorrow" = "מחר";
+"Untitled" = "ללא כותרת";
+"Detail" = "פירוט";
+"Phase" = "שלב";
+"Weather" = "מזג אוויר";
+"Select Your Email" = "בחר את האימייל שלך";
+"Confirm" = "אשר";
+"Calendar name" = "שם לוח שנה";
+"Sharing: %@" = "שיתוף: %@";
+"Loading..." = "טוען...";
+"Selected Location" = "מיקום נבחר";
+"Data provided by Apple Weather" = "נתונים מסופקים על ידי Apple Weather";
+"Next" = "הבא";
+"No details found for the selected location." = "לא נמצאו פרטים עבור המיקום הנבחר.";
+"Could not determine the time zone for the selected location." = "לא ניתן לקבוע את אזור הזמן עבור המיקום שנבחר.";
+"(No Title)" = "(ללא כותרת)";
+"Choose your e-mail" = "בחר את הדואר האלקטרוני שלך";
+"It will be treated as your primary address and invitations will not be sent to it." = "זה יטופל ככתובת הראשית שלך והזמנות לא יישלחו אליה.";
+"Invalid URL" = "כתובת אתר לא חוקית";
+"Rate limit or insufficient permission" = "מגבלת תעריף או הרשאה לא מספקת";
+"Network error: %@" = "שגיאת רשת: %@";
+"N/A - Selected Tab: %@" = "לא רלוונטי - כרטיסייה נבחרת: %@";
+"Enable Notifications" = "הפעל התראות";
+"Event Notifications" = "התראות על אירועים";
+"Event alerts are scheduled from your event alert settings." = "התראות על אירועים מתוזמנות מהגדרות ההתראות על האירועים שלך.";
+"Allow notifications so event alerts can appear at the right time." = "אפשר התראות כך שהתראות על אירועים יוכלו להופיע בזמן הנכון.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "הודעות כבויות עבור אפליקציה זו. כדי לאפשר אותם עבור אל: הגדרות -> אפליקציות -> Cloud Calendars -> התראות -> אפשר התראות.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating הוא המאמן המופעל על ידי AI לתזונה ואימונים חכמים יותר. הוא משלב מדע תזונה מודרני עם כלים מעשיים שיעזרו לך לתכנן ארוחות, לעצב אימונים, לנהל את המזווה שלך ולהבין כיצד אוכל ותנועה משפיעים על הגוף שלך.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio היא סביבת עיצוב תלת־ממד מתקדמת למפתחי iOS ו־macOS. היא משלבת עיבוד מדויק באמצעות RealityKit עם עורך רב־עוצמה לטקסט מעוצב, כדי להפוך צילומי מסך גולמיים לחומרים מקצועיים עבור App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio הוא אולפן הקלטות מסך בדרגת יוצר עבור iOS ו- macOS. צלם את המסך והמצלמה שלך בו-זמנית, שלט במיקרופון + אודיו של המערכת ויצא קובצי MP4 נקיים להדרכות, הדרכה והדגמות מוצר. ב-iOS, אתה יכול אפילו להפעיל סרטון בתוך האפליקציה ולהקליט אותו יחד עם המצלמה שלך לתוכן בסגנון תגובה ותוכן בהנחיית מגישים.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars משלב תזמון מתקדם עם תחזיות מזג אוויר משולבות להפליא, כך שתוכל לתכנן בדיוק. הוא תומך במספר שירותי לוח שנה, עריכה אינטואיטיבית המבוססת על מחוות, קישורי פגישות מובנים ותחזיות מפורטות לפי שעות/יומיות ישירות בתוך לוח הזמנים שלך.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI עוזר לך להבין את תנועת השוק עם ניתוח במכשיר וזרימת עבודה מרובה סוכנים שנועדה להפריד בין אות לרעש. עקוב אחר נתוני מחירים בזמן אמת, חקור הסתברויות בסגנון משטר, והשתמש בלוחות מחוונים ותרשימים ברורים כדי לתמוך בקבלת ההחלטות שלך. הפרטיות תחילה: התצורות שלך נשארות במכשיר שלך.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "אפליקציות";
+"Plan" = "תוכנית";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "סופת שלגים";
+"WeatherCondition.blowingDust" = "אבק";
+"WeatherCondition.blowingSnow" = "שלג מתעופף";
+"WeatherCondition.breezy" = "משבי רוח קלים";
+"WeatherCondition.clear" = "בהיר";
+"WeatherCondition.cloudy" = "מעונן";
+"WeatherCondition.drizzle" = "טפטוף";
+"WeatherCondition.flurries" = "שלג קל";
+"WeatherCondition.foggy" = "ערפל";
+"WeatherCondition.freezingDrizzle" = "טפטוף קופא";
+"WeatherCondition.freezingRain" = "גשם קופא";
+"WeatherCondition.frigid" = "קר";
+"WeatherCondition.hail" = "ברד";
+"WeatherCondition.haze" = "אובך";
+"WeatherCondition.heavyRain" = "גשם כבד";
+"WeatherCondition.heavySnow" = "שלג כבד";
+"WeatherCondition.hot" = "חם";
+"WeatherCondition.hurricane" = "הוריקן";
+"WeatherCondition.isolatedThunderstorms" = "סופות רעמים מקומיות";
+"WeatherCondition.mostlyClear" = "בהיר לרוב";
+"WeatherCondition.mostlyCloudy" = "מעונן לרוב";
+"WeatherCondition.partlyCloudy" = "מעונן חלקית";
+"WeatherCondition.rain" = "גשם";
+"WeatherCondition.scatteredThunderstorms" = "סופות רעמים פזורות";
+"WeatherCondition.sleet" = "גשם מעורב בשלג";
+"WeatherCondition.smoky" = "עשן";
+"WeatherCondition.snow" = "שלג";
+"WeatherCondition.strongStorms" = "סופת רעמים חזקה";
+"WeatherCondition.sunFlurries" = "שמשי עם שלג קל";
+"WeatherCondition.sunShowers" = "שמשי עם ממטרים";
+"WeatherCondition.thunderstorms" = "סופת רעמים";
+"WeatherCondition.tropicalStorm" = "סופה טרופית";
+"WeatherCondition.windy" = "רוחות ערות";
+"WeatherCondition.wintryMix" = "משקעים חורפיים משולבים";
+"MoonPhase.new" = "מולד הירח";
+"MoonPhase.waxingCrescent" = "קעור מתמלא";
+"MoonPhase.firstQuarter" = "רבע ראשון";
+"MoonPhase.waxingGibbous" = "קמור מתמלא";
+"MoonPhase.full" = "ירח מלא";
+"MoonPhase.waningGibbous" = "קמור מתמעט";
+"MoonPhase.lastQuarter" = "רבע אחרון";
+"MoonPhase.waningCrescent" = "קעור מתמעט";

@@ -43,15 +43,13 @@ extension WeatherDetailView{
                 VStack(alignment: .leading, spacing: 5) {
                            if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
                                if let currentVis = vm.currentVisibility {
-                                   Text(String(
-                                       format: NSLocalizedString("Visibility_CurrentFormat", comment: "Current visibility display"),
+                                   Text(localizedFormat(NSLocalizedString("Visibility_CurrentFormat", comment: "Current visibility display"),
                                        Int(round(currentVis)),
                                        unit
                                    ))
                                    .font(.system(size: 16, weight: .semibold))
 
-                                   Text(String(
-                                       format: NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
+                                   Text(localizedFormat(NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
                                        Int(round(dailyMinVis)), Int(round(dailyMaxVis)),
                                        unit
                                    ))
@@ -64,8 +62,7 @@ extension WeatherDetailView{
                            } else {
                                Text(NSLocalizedString("Visibility_Title", comment: "Section title for visibility"))
                                    .font(.system(size: 16, weight: .semibold))
-                               Text(String(
-                                   format: NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
+                               Text(localizedFormat(NSLocalizedString("Visibility_DailyMinMaxFormat", comment: "Daily min/max visibility"),
                                    Int(round(dailyMinVis)), Int(round(dailyMaxVis)),
                                    unit
                                ))
@@ -96,7 +93,7 @@ extension WeatherDetailView{
                                                                   .padding(.vertical)
                                 } else {
                                     ForEach(twoHourAverages.indices, id: \.self) { i in
-                                        Text("\(twoHourAverages[i])")
+                                        Text(localizedIntegerString(twoHourAverages[i]))
                                             .font(.system(size: 12, weight: .bold))
                                             .frame(maxWidth: .infinity)
                                     }
@@ -114,6 +111,7 @@ extension WeatherDetailView{
                     }
                     .frame(height: 20)
                     .padding(.horizontal, graphPadding)
+                    .environment(\.layoutDirection, .leftToRight)
                     .offset(y: 20)
                     
                     // MARK: - Main line chart
@@ -155,7 +153,7 @@ extension WeatherDetailView{
                             // Label on the right (e.g. "10", "20", etc.)
                             let labelPoint = CGPoint(x: origin.x + graphWidth + 15, y: yPos)
                             context.draw(
-                                Text("\(Int(marker))")
+                                Text(localizedIntegerString(Int(marker)))
                                     .font(.system(size: 10))
                                     .foregroundColor(.gray),
                                 at: labelPoint,
@@ -300,7 +298,7 @@ extension WeatherDetailView{
                             let xPos = origin.x + (CGFloat(hour) * (graphWidth / 24.0))
                             let labelPoint = CGPoint(x: xPos, y: origin.y + 14)
                             context.draw(
-                                Text(String(format: "%02d", hour))
+                                Text(localizedFormat("%02d", hour))
                                     .font(.system(size: 11))
                                     .foregroundColor(.gray),
                                 at: labelPoint,
@@ -346,16 +344,14 @@ extension WeatherDetailView{
                                     let totalInterval = upperDate.timeIntervalSince(lowerDate)
                                     let interpolatedDate = lowerDate.addingTimeInterval(totalInterval * Double(t))
                                     
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "HH:mm"
-                                    dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
-                                    timeLabelString = dateFormatter.string(from: interpolatedDate)
+                                    timeLabelString = appTimeFormatter(
+                                        timeZone: WeatherKitViewModel.shared.locationTimeZone
+                                    ).string(from: interpolatedDate)
                                 } else {
                                     timeLabelString = "--:--"
                                 }
                                 
-                                let labelText = String(
-                                    format: NSLocalizedString("Visibility_TooltipFormat", comment: "Tooltip showing time and visibility value, e.g. \"12:00\n5.3 km\""),
+                                let labelText = localizedFormat(NSLocalizedString("Visibility_TooltipFormat", comment: "Tooltip showing time and visibility value, e.g. \"12:00\n5.3 km\""),
                                     timeLabelString,
                                     interpolatedVis,
                                     unit

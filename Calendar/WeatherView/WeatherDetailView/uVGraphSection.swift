@@ -35,8 +35,7 @@ extension WeatherDetailView {
                 // Заглавната част
                 VStack(alignment: .leading, spacing: 5) {
                     Text(
-                        String(
-                            format: NSLocalizedString("UVGraphHeader", comment: "Header for UV graph: {category} {index}"),
+                        localizedFormat(NSLocalizedString("UVGraphHeader", comment: "Header for UV graph: {category} {index}"),
                             uvCategory(for: dailyMaxUV),
                             dailyMaxUV
                         )
@@ -79,7 +78,7 @@ extension WeatherDetailView {
                                     .padding(.vertical)
                             } else {
                                 ForEach(twoHourAverages.indices, id: \.self) { index in
-                                    Text("\(twoHourAverages[index])")
+                                    Text(localizedIntegerString(twoHourAverages[index]))
                                         .font(.system(size: 12, weight: .bold))
                                         .frame(maxWidth: .infinity)
                                 }
@@ -98,6 +97,7 @@ extension WeatherDetailView {
                 }
                 .frame(height: 20)
                 .padding(.horizontal, graphPadding)
+                .environment(\.layoutDirection, .leftToRight)
                 
                 // Графична част с Canvas – увеличена височина
                 Canvas { context, size in
@@ -138,7 +138,7 @@ extension WeatherDetailView {
                         // Надпис вдясно (числовия маркер)
                         let rightLabelPoint = CGPoint(x: origin.x + graphContentWidth + 15, y: yPos)
                         context.draw(
-                            Text("\(Int(marker))")
+                            Text(localizedIntegerString(Int(marker)))
                                 .font(.system(size: 10))
                                 .foregroundColor(.gray),
                             at: rightLabelPoint,
@@ -286,7 +286,7 @@ extension WeatherDetailView {
                         let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                         let textPoint = CGPoint(x: xPos, y: origin.y + 14)
                         context.draw(
-                            Text(String(format: "%02d", hour))
+                            Text(localizedFormat("%02d", hour))
                                 .font(.system(size: 11))
                                 .foregroundColor(.gray),
                             at: textPoint,
@@ -318,9 +318,9 @@ extension WeatherDetailView {
                             verticalPath.addLine(to: CGPoint(x: dotPoint.x, y: effectiveHeight - graphPadding))
                             context.stroke(verticalPath, with: .color(.white.opacity(0.5)), lineWidth: 1)
                             
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "HH:mm"
-                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone
+                            let dateFormatter = appTimeFormatter(
+                                timeZone: WeatherKitViewModel.shared.locationTimeZone
+                            )
                             let timeLabelString: String = {
                                 if lowerIdx < hourlyItemsForSelectedDate.count, upperIdx < hourlyItemsForSelectedDate.count {
                                     let d1 = hourlyItemsForSelectedDate[lowerIdx].date
@@ -333,7 +333,7 @@ extension WeatherDetailView {
                                 }
                             }()
                             
-                            let combinedLabel = Text("\(timeLabelString)\n\(interpolatedUV)")
+                            let combinedLabel = Text(timeLabelString + "\n" + localizedIntegerString(interpolatedUV))
                                 .font(.system(size: 12, weight: .bold))
                                 .foregroundColor(.white)
                             
@@ -369,8 +369,7 @@ extension WeatherDetailView {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(
-                            String(
-                                format: NSLocalizedString("UVGraphNowLabel", comment: "Now, {time}"),
+                            localizedFormat(NSLocalizedString("UVGraphNowLabel", comment: "Now, {time}"),
                                 currentTimeString
                             )
                         )
@@ -416,8 +415,9 @@ extension WeatherDetailView {
             let earliestDate = calendar.date(byAdding: .hour, value: earliestHourIndex, to: startOfSelectedDay)!
             let latestDate   = calendar.date(byAdding: .hour, value: latestHourIndex, to: startOfSelectedDay)!
             
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
+            let formatter = appTimeFormatter(
+                timeZone: WeatherKitViewModel.shared.locationTimeZone
+            )
             let earliestStr = formatter.string(from: earliestDate)
             let latestStr   = formatter.string(from: latestDate)
             
@@ -427,8 +427,7 @@ extension WeatherDetailView {
             // Локализиран форматен низ за съвет с диапазон и часове
             let format = NSLocalizedString("UVAdvice_Range", comment: "Sun protection recommended. UV levels range from {minCategory} to {maxCategory}, reached between {earliestStr} and {latestStr}.")
             
-            return String(
-                format: format,
+            return localizedFormat(format,
                 minCategory,
                 maxCategory,
                 earliestStr,

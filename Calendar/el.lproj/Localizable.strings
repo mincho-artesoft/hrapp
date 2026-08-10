@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Δεν δόθηκε email.";
+"Please enter a valid email to continue." = "Εισαγάγετε ένα έγκυρο email για να συνεχίσετε.";
+"Your email" = "Το email σας";
+"Save" = "Αποθήκευση";
+"Login" = "Είσοδος";
+"Logout" = "Αποσύνδεση";
+
+/* RootView */
+"N/A" = "Μη διαθέσιμο";
+"Calendars" = "Ημερολόγια";
+"Inbox" = "Εισερχόμενα";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Άλλο";
+"Google calendars" = "Google ημερολόγια";
+"No synced Google calendars yet." = "Δεν υπάρχουν ακόμη συγχρονισμένα ημερολόγια Google.";
+"Microsoft calendars" = "Microsoft ημερολόγια";
+"No synced Microsoft calendars yet." = "Δεν υπάρχουν ακόμη συγχρονισμένα ημερολόγια Microsoft.";
+"Sign out" = "Αποσυνδεθείτε";
+"Add iCloud Calendar" = "Προσθήκη ημερολογίου iCloud";
+"Share calendars with iCloud Calendar" = "Κοινή χρήση ημερολογίων με το Ημερολόγιο iCloud";
+"Sign in with Google" = "Συνδεθείτε με Google";
+"Sign in with Microsoft" = "Συνδεθείτε με Microsoft";
+"Deselect All" = "Καταργήστε την επιλογή όλων";
+"Select All" = "Επιλέξτε Όλα";
+"No Email" = "Χωρίς email";
+"Add Google Calendar" = "Προσθήκη ημερολογίου Google";
+
+/* AddCalendarView */
+"Calendar Name" = "Όνομα ημερολογίου";
+"Account" = "Λογαριασμός";
+"COLOR" = "ΧΡΩΜΑ";
+"NOTIFICATIONS" = "ΚΟΙΝΟΠΟΙΗΣΕΙΣ";
+"Event Alerts" = "Ειδοποιήσεις συμβάντων";
+"Allow events on this calendar to display alerts." = "Να επιτρέπεται στα συμβάντα σε αυτό το ημερολόγιο να εμφανίζουν ειδοποιήσεις.";
+"Add Calendar" = "Προσθήκη ημερολογίου";
+
+/* Colors */
+"Red" = "Κόκκινο";
+"Orange" = "Πορτοκαλί";
+"Yellow" = "Κίτρινο";
+"Green" = "Πράσινο";
+"Blue" = "Μπλε";
+"Purple" = "Μωβ";
+"Brown" = "Καφέ";
+"Custom" = "Προσαρμοσμένο";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Χρώμα ημερολογίου";
+"Custom..." = "Προσαρμοσμένο...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Επεξεργασία ημερολογίου";
+"Delete Calendar" = "Διαγραφή Ημερολογίου";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Φόρτωση ρυθμίσεων κοινής χρήσης…";
+"Shared with these users" = "Κοινή χρήση με αυτούς τους χρήστες";
+"Add New Email" = "Προσθήκη νέου email";
+"Email to share" = "Email για κοινή χρήση";
+"Permission:" = "Άδεια:";
+"Add" = "Προσθήκη";
+"Sharing:" = "Κοινή χρήση:";
+"Done" = "Έγινε";
+
+"Error loading: %@" = "Σφάλμα φόρτωσης: %@";
+"Error adding: %@" = "Σφάλμα κατά την προσθήκη: %@";
+"Error deleting: %@" = "Σφάλμα κατά τη διαγραφή: %@";
+"Error updating: %@" = "Σφάλμα ενημέρωσης: %@";
+"Error re-inviting (delete): %@" = "Σφάλμα κατά την εκ νέου πρόσκληση (διαγραφή): %@";
+"Error re-inviting (insert): %@" = "Σφάλμα κατά την εκ νέου πρόσκληση (εισαγωγή): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Αναγνώστης";
+"Writer" = "Συγγραφέας";
+"Owner"  = "Ιδιοκτήτης";
+
+/* MonthCalendarView */
+"Day View" = "Θέα ημέρας";
+"This is a repeating event." = "Αυτό είναι ένα επαναλαμβανόμενο γεγονός.";
+"Save for This Event Only" = "Αποθήκευση μόνο για αυτήν την εκδήλωση";
+"Save for Future Events" = "Αποθήκευση για μελλοντικές εκδηλώσεις";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Κυρ";
+"Mon" = "Δευτ";
+"Tue" = "Τρ";
+"Wed" = "Τετ";
+"Thu" = "Πέμ";
+"Fri" = "Παρ";
+"Sat" = "Σάβ";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Κλείσιμο";
+
+/* AllEventsListView */
+"No calendar access." = "Δεν υπάρχει πρόσβαση στο ημερολόγιο.";
+
+/* EventRowView */
+"Ends" = "Τελειώνει";
+
+/* SearchEventRowView */
+"No Title" = "Χωρίς τίτλο";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Συμμετοχή στη συνάντηση";
+"Edit" = "Επεξεργασία";
+"Duplicate" = "Διπλότυπο";
+"Delete" = "Διαγραφή";
+"Add to Google Meet" = "Προσθήκη στο Google Meet";
+"Add to Microsoft Teams" = "Προσθήκη στο Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Δεν υπάρχει επιλεγμένο εύρος";
+"all-day" = "ολοήμερο";
+"Search events..." = "Αναζήτηση συμβάντων...";
+"Day" = "Ημέρα";
+"MultiDay" = "Πολυήμερο";
+"Month" = "Μήνας";
+"Year" = "έτος";
+"List" = "Λίστα";
+"MultiCalendar" = "Πολυημερολόγιο";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Νέα εκδήλωση";
+"All-day event" = "Ολοήμερη εκδήλωση";
+"Recurring Event" = "Επαναλαμβανόμενο συμβάν";
+"This event is part of a series. Update which events?" = "Αυτή η εκδήλωση είναι μέρος μιας σειράς. Ενημερώστε ποιες εκδηλώσεις;";
+"This Event Only" = "Μόνο αυτή η εκδήλωση";
+"All Future Events" = "Όλα τα μελλοντικά γεγονότα";
+"Cancel" = "Ακύρωση";
+
+/* DraggableMenuView */
+"Calendar" = "Ημερολόγιο";
+"Subscriptions" = "Συνδρομές";
+"Live" = "Ζωντανά";
+"Stop" = "Σταμάτα";
+"Calendar Live Activity" = "Ημερολόγιο Ζωντανή δραστηριότητα";
+"Get" = "Αποκτήστε";
+"Color" = "Χρώμα";
+"Search for a city…" = "Αναζήτηση πόλης…";
+"No directions" = "Δεν υπάρχουν οδηγίες";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Δεν επιτρέπεται η πρόσβαση στην τοποθεσία. Αναζητήστε μια πόλη ή παραχωρήστε πρόσβαση στις Ρυθμίσεις.";
+"Cannot refresh. Location unknown." = "Δεν είναι δυνατή η ανανέωση. Άγνωστη τοποθεσία.";
+"10-DAY FORECAST" = "ΠΡΟΒΛΕΨΗ 10 ΗΜΕΡΩΝ";
+"HighLowLabelFormat" = "Υψ.:%d° Χαμ.:%d°";
+"tomorrow" = "αύριο";
+"on_day" = "στις %@";
+"in_days" = "σε %d ημέρες";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Νέα Εκδήλωση";
+
+/* Search placeholder */
+"Search for a city..." = "Αναζήτηση πόλης…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Πατήστε μια ώρα για να προσθέσετε γρήγορα ένα συμβάν ημερολογίου.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "ΑΙΣΘΑΝΕΤΑΙ ΣΑΝ";
+"similar_to_actual_temp" = "Παρόμοια με την πραγματική θερμοκρασία.";
+"wind_cooler_feel" = "Ο άνεμος το κάνει να νιώθει πιο δροσερό.";
+"humidity_warmer_feel" = "Η υγρασία το κάνει να αισθάνεται πιο ζεστό.";
+
+/* HumidityCard */
+"HUMIDITY" = "ΥΓΡΑΣΙΑ";
+"The dew point is %d° right now." = "Το σημείο δρόσου είναι %d° αυτή τη στιγμή.";
+"dewPoint.current" = "Το σημείο δρόσου είναι %d° αυτή τη στιγμή.";
+
+/* MoonCard */
+"MOON PHASE" = "ΦΑΣΗ ΣΕΛΗΝΗΣ";
+"Moonrise" = "Ανατολή Σελήνης";
+"Moonset" = "Δύση του φεγγαριού";
+"Next %@" = "Επόμενο %@";
+"Data unavailable" = "Τα δεδομένα δεν είναι διαθέσιμα";
+"%d day" = "%d ημέρα";
+"%d days" = "%d ημέρες";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "ΒΡΟΧΗ";
+"PRECIPITATION_CARD_TODAY_LABEL" = "σήμερα";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Το επόμενο αναμενόμενο είναι %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Δεν αναμένεται βροχόπτωση σύντομα.";
+
+/* PressureCard */
+"PRESSURE" = "ΠΙΕΣΗ";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "ΑΝΑΤΟΛΗ ΗΛΙΟΥ";
+"Sunrise: %@" = "Ανατολή ηλίου: %@";
+"Sunset: %@" = "Ηλιοβασίλεμα: %@";
+"Sunrise" = "Ανατολή του ηλίου";
+"Sunset" = "Ηλιοβασίλεμα";
+
+
+/* UVIndexCard */
+"UV INDEX" = "ΔΕΙΚΤΗΣ UV";
+"Low" = "Χαμηλό";
+"Moderate" = "Μέτρια";
+"High" = "Ψηλά";
+"Very High" = "Πολύ ψηλά";
+"Extreme" = "Ακραίο";
+
+/* VisibilityCard */
+"VISIBILITY" = "ΟΡΑΤΟΤΗΤΑ";
+"km" = "km";
+"Perfectly clear view." = "Απόλυτα καθαρή θέα.";
+"Excellent visibility." = "Εξαιρετική ορατότητα.";
+"Good visibility." = "Καλή ορατότητα.";
+"Moderate visibility." = "Μέτρια ορατότητα.";
+"Poor visibility." = "Κακή ορατότητα.";
+"Very poor visibility." = "Πολύ κακή ορατότητα.";
+"visibility.perfect"   = "Απόλυτα καθαρή θέα.";
+"visibility.excellent" = "Εξαιρετική ορατότητα.";
+"visibility.good"      = "Καλή ορατότητα.";
+"visibility.moderate"  = "Μέτρια ορατότητα.";
+"visibility.poor"      = "Κακή ορατότητα.";
+"visibility.verypoor"  = "Πολύ κακή ορατότητα.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Άνεμος";
+"Gusts" = "Ριπές";
+"Direction" = "Κατεύθυνση";
+"km/h" = "km/h";
+"Compass_N" = "Ν";
+"Compass_S" = "Σ";
+"Compass_W" = "W";
+"Compass_E" = "Ε";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Αποτυχία λήψης δεδομένων καιρού. Ελέγξτε τη σύνδεσή σας ή δοκιμάστε ξανά αργότερα.";
+"Falling" = "Πτώση";
+"Rising" = "Ανεβαίνει";
+"Steady" = "Σταθερά";
+"Unknown" = "Άγνωστο";
+"Sunny" = "Ηλιόλουστη";
+"Cloudy" = "Συννεφιά";
+"Partly Cloudy" = "Μερική συννεφιά";
+"Drizzle" = "Ψιλόβροχο";
+"Thunderstorm" = "καταιγίδα";
+"Fog" = "Ομίχλη";
+"Partly Cloudy Night" = "Μερικώς συννεφιασμένη νύχτα";
+"Clear Night" = "Καθαρή Νύχτα";
+"Hazy" = "Μουντός";
+"Today" = "Σήμερα";
+"Now" = "Τώρα";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "Ν";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "ΒΑ";
+"cardinal.ENE" = "ΕΝΕ";
+"cardinal.E"   = "Ε";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "Σ";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "ΝΔ";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "ΒΔ";
+"cardinal.NNW" = "ΒΝΔ";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Πιθανότητα βροχόπτωσης";
+"Today's chance: %d%%" = "Η σημερινή ευκαιρία: %d%%";
+"%@'s chance: %d%%" = "Ευκαιρία %@: %d%%";
+"Max" = "Μέγ";
+"Min" = "Ελάχ";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Η ημερήσια πιθανότητα βροχόπτωσης τείνει να είναι μεγαλύτερη από την πιθανότητα για κάθε ώρα.";
+"ChanceOfPrecipitation_Title" = "Πιθανότητα βροχόπτωσης";
+"TodaysChance"                = "Η σημερινή ευκαιρία: %d%%";
+"OtherDayChance"              = "Ευκαιρία %@: %d%%";
+"DailyChanceExplanation"      = "Η ημερήσια πιθανότητα βροχόπτωσης τείνει να είναι μεγαλύτερη από την πιθανότητα για κάθε ώρα.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Αισθητή θερμοκρασία";
+"Actual" = "Πραγματικό";
+"No hourly data available for this day." = "Δεν υπάρχουν διαθέσιμα ωριαία δεδομένα για αυτήν την ημέρα.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Πώς είναι η θερμοκρασία ως αποτέλεσμα της υγρασίας, του ηλιακού φωτός ή του ανέμου.";
+"The actual air temperature." = "Η πραγματική θερμοκρασία του αέρα.";
+"HighLabelFormat" = "Υψ.: %d°";
+"LowLabelFormat" = "Χαμ.: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "Λ";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Υγρασία";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Υγρασία %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Μέση υγρασία %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Ελάχιστο σημερινό %d%% – μέγιστο %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Μέγ";
+"ChartMarker_Min"           = "Ελάχ";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Βροχή: %.1f%@, Χιόνι: %.1f%@";
+"Precip_Total_RainFormat"       = "Βροχή: %.1f%@";
+"Precip_Total_SnowFormat"       = "Χιόνι: %.1f%@";
+"Precip_Total_None"             = "Βροχόπτωση: 0%@";
+"Precip_Bars_Subtitle"          = "Ωριαία μπαρ για βροχή και χιόνι (%@).";
+"Precip_Level_Light"            = "Φως";
+"Precip_Level_Moderate"         = "Μέτρια";
+"Precip_Level_Heavy"            = "Βαριά";
+"Precip_Tooltip_Format"         = "%@h\nΒροχή: %.1f%@\nΧιόνι: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Πίεση %@%@";
+"Pressure_CurrentUnavailable"      = "Πίεση: --";
+"Pressure_DailyMinMaxFormat"       = "Το σημερινό λεπτό %@ %@ – μέγιστο %@ %@";
+"Pressure_AverageFormat"           = "Μέση πίεση %@ %@";
+"Pressure_DailyRangeFormat"        = "Ημερήσιο εύρος: %@–%@ %@";
+"Pressure_Title"                   = "Πίεση";
+"Pressure_NoData"                  = "Δεν υπάρχουν διαθέσιμα δεδομένα πίεσης για αυτήν την ημέρα.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Η σημερινή %@ %d";
+"UVGraphNoHourlyData"   = "Δεν υπάρχουν διαθέσιμα ωριαία δεδομένα για αυτήν την ημέρα.";
+"UVGraphNowLabel"       = "Τώρα, %@";
+"UVCategory_None"       = "Κανένα";
+"UVCategory_Low"        = "Χαμηλό";
+"UVCategory_Moderate"   = "Μέτρια";
+"UVCategory_High"       = "Ψηλά";
+"UVCategory_VeryHigh"   = "Πολύ ψηλά";
+"UVCategory_Extreme"    = "Ακραίο";
+"UVAdvice_None"         = "Δεν αναμένονται μέτρια ή υψηλότερα επίπεδα UV για αυτήν την ημέρα.";
+"UVAdvice_Range"        = "Συνιστάται αντηλιακή προστασία. Τα επίπεδα υπεριώδους ακτινοβολίας κυμαίνονται από %@ έως %@, επιτυγχάνονται μεταξύ %@ και %@.";
+"UVGraphMaxLabel" = "Μέγ";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Ορατότητα";
+"Visibility_NoData"                = "Δεν υπάρχουν διαθέσιμα δεδομένα ορατότητας για αυτήν την ημέρα.";
+"Visibility_CurrentFormat"         = "Ορατότητα %d %@";
+"Visibility_DailyMinMaxFormat"     = "ελάχ. %d – μέγιστο %d %@";
+"Visibility_NoCurrentData"         = "Δεν υπάρχουν διαθέσιμα τρέχοντα δεδομένα ορατότητας.";
+"Visibility_HourlyAverages_NoData" = "Δεν υπάρχουν διαθέσιμα ωριαία δεδομένα.";
+"Visibility_MaxLabel"              = "Μέγ";
+"Visibility_MinLabel"              = "Ελάχ";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Ταχύτητα ανέμου & ριπή";
+"WindGraph_NoData" = "Δεν υπάρχουν διαθέσιμα δεδομένα ανέμου για αυτήν την ημέρα.";
+"WindGraph_SpeedHeader" = "Ταχύτητα ανέμου %d";
+"WindGraph_GustHeader" = "Ριπές έως %d";
+"WindGraph_SpeedRangeHeader" = "Ταχύτητα ανέμου %d-%d";
+"WindGraph_MaxSpeedLabel" = "Μέγ. ταχύτητα";
+"WindGraph_MaxGustLabel" = "Μέγ. ριπή";
+"WindGraph_DragLabel" = "%@\nΤαχύτητα: %d\nΡιπή: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Ημερήσια Περίληψη";
+
+"Precipitation Totals" = "Σύνολα βροχοπτώσεων";
+"LAST 24 HOURS" = "ΤΕΛΕΥΤΑΙΕΣ 24 ΩΡΕΣ";
+"NEXT 24 HOURS" = "ΕΠΟΜΕΝΕΣ 24 ΩΡΕΣ";
+"Total" = "Σύνολο";
+"Rain" = "Βροχή";
+"Snow" = "χιόνι";
+
+"About Wind Speed and Gusts" = "Σχετικά με την ταχύτητα του ανέμου και τις ριπές";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Η ταχύτητα του ανέμου υπολογίζεται χρησιμοποιώντας τον μέσο όρο σε σύντομο χρονικό διάστημα. Οι ριπές είναι σύντομες ριπές ανέμου πάνω από αυτόν τον μέσο όρο. Μια ριπή διαρκεί συνήθως λιγότερο από 20 δευτερόλεπτα.";
+
+"About the Beaufort Scale" = "Σχετικά με την κλίμακα Μποφόρ";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Η κλίμακα ανέμου Μποφόρ εκφράζει πόσο δυνατός ή δυνατός είναι ο άνεμος σε μια δεδομένη ταχύτητα. Η κλίμακα μποφόρ μπορεί να διευκολύνει την κατανόηση του πόσο θα φυσάει ή πόσο θα μπορούσε να έχει ο άνεμος. Κάθε τιμή στην κλίμακα αντιστοιχεί σε ένα εύρος ταχύτητας ανέμου.";
+
+"About Feels Like Temperature" = "Σχετικά με την αισθητή θερμοκρασία";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Η αισθητή θερμοκρασία δείχνει πόσο ζεστός ή κρύος γίνεται αντιληπτός ο καιρός και μπορεί να διαφέρει από την πραγματική θερμοκρασία. Επηρεάζεται από την υγρασία, την ηλιακή ακτινοβολία και τον άνεμο.";
+
+"Options" = "Επιλογές";
+"Temperature" = "Θερμοκρασία";
+"Use system setting (°C)" = "Χρήση ρύθμισης συστήματος (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Προϋποθέσεις";
+"UV Index" = "Δείκτης UV";
+"Wind" = "Άνεμος";
+"Precipitation" = "Κατακρήμνιση";
+"Humidity" = "Υγρασία";
+"Visibility" = "Ορατότητα";
+"Pressure" = "Πίεση";
+
+/* Fallback key */
+"displayedCondition" = "εμφανιζόμενη Κατάσταση";
+
+/* Titles */
+"Forecast"                   = "Πρόβλεψη";
+"DailySummary"               = "Ημερήσια Περίληψη";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° τώρα με συνθήκες %@. Υπάρχει πιθανότητα υετού %@. Άνεμος από %@ με ριπές έως %d %@. Η σημερινή θερμοκρασία κυμαίνεται από %d° έως %d° και μοιάζει με %d°. %@ και %@.";
+"UVIndexFormat"              = "Δείκτης UV έως %d";
+"HumidityFormat"             = "Υγρασία περίπου %d%%";
+"HumidityRangeFormat"        = "Υγρασία από %d%% έως %d%%";
+"NA" = "Μη διαθέσιμο";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Το χαμηλό του %@ είναι %d° και το υψηλό είναι %d°. Η θερμοκρασία θα είναι από %d° έως %d°. Αναμένεται άνεμος από %@. %@";
+"NoPrecipLast24h"            = "Δεν καταγράφηκε βροχόπτωση τις τελευταίες 24 ώρες.";
+"RainLast24h"                = "Έβρεξε %d mm τις τελευταίες 24 ώρες.";
+"SnowAndRainLast24h"         = "Τις τελευταίες 24 ώρες, το χιόνι είχε %@ cm και η βροχή %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "Ν";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "ΒΑ";
+"Dir_ENE" = "ΕΝΕ";
+"Dir_E"   = "Ε";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "Σ";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "ΝΔ";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "ΒΔ";
+"Dir_NNW" = "ΒΝΔ";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Σύνολα βροχοπτώσεων";
+"Last24h_Label"             = "ΤΕΛΕΥΤΑΙΕΣ 24 ΩΡΕΣ";
+"Next24h_Label"             = "ΕΠΟΜΕΝΕΣ 24 ΩΡΕΣ";
+"Total_Label"               = "Σύνολο";
+"Precipitation_Label"       = "Κατακρήμνιση";
+"Rain_Label"                = "Βροχή";
+"Snow_Label"                = "χιόνι";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Αυτή τη στιγμή ο άνεμος είναι %1$d %2$@ από το %3$@. Σήμερα, οι ταχύτητες του ανέμου είναι %4$d έως %5$d %2$@, με ριπές έως %6$d%2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Οι ταχύτητες ανέμου κυμαίνονται από %1$d έως %2$d %3$@, με ριπές έως %4$d%3$@.";
+
+"Beaufort_Scale"                = "Κλίμακα Μποφόρ";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Περιγραφή";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Ηρεμία";
+"Beaufort_1"                    = "Ελαφρύς αέρας";
+"Beaufort_2"                    = "Ελαφρύ αεράκι";
+"Beaufort_3"                    = "Απαλό αεράκι";
+"Beaufort_4"                    = "Μέτριο αεράκι";
+"Beaufort_5"                    = "Φρέσκο αεράκι";
+"Beaufort_6"                    = "Δυνατό αεράκι";
+"Beaufort_7"                    = "Ισχυρός άνεμος";
+"Beaufort_8"                    = "Γκέιλ";
+"Beaufort_9"                    = "Ισχυρή θύελλα";
+"Beaufort_10"                   = "Καταιγίδα";
+"Beaufort_11"                   = "Σφοδρή καταιγίδα";
+"Beaufort_12"                   = "Τυφώνας-δύναμη";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50-61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Υπήρξε %.1f%@ υετού τις τελευταίες 24 ώρες. Η συνολική βροχόπτωση σήμερα θα είναι %.1f%@. Τις επόμενες 24 ώρες αναμένεται %.1f%@ υετού.";
+"ForecastPrecip_OtherDayFormat" = "Στις %@, η συνολική βροχόπτωση θα είναι %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Σχετικά με την ένταση της βροχόπτωσης";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Η ένταση υπολογίζεται με βάση την ποσότητα βροχής ή χιονιού που πέφτει ανά ώρα και δείχνει πόσο δυνατή θα είναι η αίσθηση της βροχής ή του χιονιού. Χρησιμοποιείται επίσης για άλλους τύπους υετού, όπως το χιονόνερο και τα μικτά χειμερινά φαινόμενα. Μια νεροποντή ή μια ισχυρή χιονοθύελλα μπορεί να έχει «ισχυρή» ένταση, ενώ μια συνηθισμένη βροχή ή ένα ελαφρύτερο ψιλόβροχο μπορεί να έχει «μέτρια» ή «ασθενή» ένταση.";
+
+/* Section titles */
+"Forecast_Title"               = "Πρόβλεψη";
+"DailySummary_Title"           = "Ημερήσια Περίληψη";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Το σημείο δρόσου είναι %d° έως %d°.";
+"DewPoint_FutureFormat"        = "Το σημείο δρόσου θα είναι %d° έως %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Σήμερα, η μέση υγρασία είναι %d%%. %@";
+"ForecastHumidity_Other"       = "Στις %@, η μέση υγρασία θα είναι %d%%.\n%@";
+
+"AboutPressure_Title"  = "Σχετικά με την πίεση";
+"AboutPressure_Body"   = "Σημαντικές, γρήγορες αλλαγές στην πίεση χρησιμοποιούνται για την πρόβλεψη αλλαγών στον καιρό. Για παράδειγμα, μια πτώση της πίεσης μπορεί να σημαίνει ότι πλησιάζει βροχή ή χιόνι και η αύξηση της πίεσης μπορεί να σημαίνει ότι ο καιρός θα βελτιωθεί. Η πίεση ονομάζεται επίσης βαρομετρική πίεση ή ατμοσφαιρική πίεση.";
+
+"AboutHumidity_Title"  = "Σχετικά με τη σχετική υγρασία";
+"AboutHumidity_Body"   = "Η σχετική υγρασία, κοινώς γνωστή ως υγρασία, είναι η ποσότητα υγρασίας στον αέρα σε σύγκριση με αυτή που μπορεί να κρατήσει ο αέρας. Ο αέρας μπορεί να κρατήσει περισσότερη υγρασία σε υψηλότερες θερμοκρασίες. Μια σχετική υγρασία κοντά στο 100% σημαίνει ότι μπορεί να υπάρχει δροσιά ή ομίχλη.";
+
+"AboutDewPoint_Title" = "Σχετικά με το σημείο δρόσου";
+"AboutDewPoint_Body"  = "Το σημείο δρόσου είναι αυτό στο οποίο θα πρέπει να πέσει η θερμοκρασία για να σχηματιστεί δροσιά. Μπορεί να είναι ένας χρήσιμος τρόπος για να πείτε πόσο υγρός αισθάνεται ο αέρας - όσο υψηλότερο είναι το σημείο δρόσου, τόσο πιο υγρός αισθάνεται. Ένα σημείο δρόσου που ταιριάζει με την τρέχουσα θερμοκρασία σημαίνει ότι η σχετική υγρασία είναι 100% και μπορεί να υπάρχει δροσιά ή ομίχλη.";
+
+"Section_Forecast"                     = "Πρόβλεψη";
+"Section_DailySummary"                 = "Ημερήσια Περίληψη";
+"ForecastVisibility_TodayFormat" = "Σήμερα, η ορατότητα θα είναι %@, στις %d έως %d %@.";
+"ForecastVisibility_OtherFormat" = "Στις %@, η χαμηλότερη ορατότητα θα είναι %@ σε %d %@ και η υψηλότερη θα είναι %@ σε %d %@.";
+"Clarity_Foggy"                        = "Ομίχλη";
+"Clarity_Hazy"                         = "Μουντός";
+"Clarity_Clear"                        = "Καθαρό";
+"Clarity_PerfectlyClear"               = "Απόλυτα καθαρό";
+
+"AboutVisibility_Title" = "Σχετικά με την ορατότητα";
+"AboutVisibility_Body" = "Η ορατότητα σάς λέει πόσο μακριά μπορείτε να δείτε καθαρά αντικείμενα όπως κτίρια και λόφους. Είναι ένα μέτρο της διαφάνειας του αέρα και δεν λαμβάνει υπόψη την ποσότητα του ηλιακού φωτός ή την παρουσία εμποδίων. Η ορατότητα σε ή πάνω από %@ θεωρείται καθαρή.";
+
+"PressureForecast_Today" = "Η πίεση αυτή τη στιγμή είναι %@ %@ και πέφτει. Σήμερα, η μέση πίεση θα είναι %@ %@ και η χαμηλότερη πίεση θα είναι %@ %@.";
+"PressureForecast_Other" = "Στις %@, η μέση πίεση θα είναι %@ %@ και η χαμηλότερη πίεση θα είναι %@ %@.";
+"SectionForecast" = "Πρόβλεψη";
+"SectionDailySummary" = "Ημερήσια Περίληψη";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Όλα τα χαρακτηριστικά του Βασικού Σχεδίου";
+"Multi-calendar view" = "Προβολή πολλαπλού ημερολογίου";
+"Sync with Google Calendar" = "Συγχρονισμός με το Ημερολόγιο Google";
+"Sync meets from Google Meet" = "Συγχρονισμός συναντήσεων από Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Βασικό Σχέδιο";
+"Single-day calendar view" = "Μονοήμερη προβολή ημερολογίου";
+"Multi-day calendar view" = "Πολυήμερη προβολή ημερολογίου";
+"Monthly calendar view" = "Μηνιαία προβολή ημερολογίου";
+"Yearly overview" = "Ετήσια επισκόπηση";
+"List view for events" = "Προβολή λίστας για εκδηλώσεις";
+"Weather view" = "Προβολή καιρού";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Πρόγραμμα Premium";
+"Sync with Microsoft Calendar" = "Συγχρονισμός με το Ημερολόγιο Microsoft";
+"Sync meets from Microsoft Teams" = "Συγχρονισμός συναντήσεων από Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Ισοδυναμεί με %@ ανά μήνα";
+"%d %@ free" = "%d %@ δωρεάν";
+
+/* SubscriptionListView */
+"Premium Plans" = "Premium σχέδια";
+"You are subscribed to the %@ %@ plan" = "Έχετε εγγραφεί στο πρόγραμμα %@ %@";
+"Renews on: %@" = "Ανανεώνεται στις: %@";
+"Start Free Trial" = "Ξεκινήστε τη δωρεάν δοκιμή";
+"Subscribe Now" = "Εγγραφείτε τώρα";
+"%d %@ free, then %@%@." = "%d %@ δωρεάν, μετά %@%@.";
+"Subscribe for %@%@." = "Εγγραφείτε για %@%@.";
+"Privacy Policy"     = "Πολιτική Απορρήτου";
+"Terms of Service"   = "Όροι Παροχής Υπηρεσιών";
+
+/* SubscriptionCategory */
+"Advanced" = "Προχωρημένο";
+"Advanced Plan" = "Προηγμένο σχέδιο";
+"All Advanced Plan features" = "Όλες οι λειτουργίες του Προηγμένου Σχεδίου";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Χρειάζεστε ένα ενεργό σχέδιο %@ για να αποκτήσετε πρόσβαση σε αυτήν την ενότητα.";
+"Plan Required" = "Απαιτείται σχέδιο";
+"OK" = "ΟΚ";
+
+/* SubscriptionStatus */
+"Base"    = "Βάση";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Εγγεγραμμένος στο πρόγραμμα %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Ανανεώνεται στις: %@";
+
+"Manage Subscription"                   = "Διαχείριση συνδρομής";
+
+/* Period units */
+"Daily"     = "Καθημερινά";
+"Weekly"    = "Εβδομαδιαία";
+"Monthly"   = "Μηνιαία";
+"Yearly"    = "Ετήσιο";
+"Recurring" = "Επαναλαμβανόμενο";
+
+/* units */
+"day"   = "ημέρα";
+"days"  = "ημέρες";
+"week"  = "εβδομάδα";
+"weeks" = "εβδομάδες";
+"month"  = "μήνα";
+"months" = "μήνες";
+"year"   = "έτος";
+"years"  = "χρόνια";
+
+/* YearMonthMiniView */
+"weekday.headers" = "Κ,Δ,Τ,Τ,Π,Π,Σ";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Οι προηγούμενες αγορές σας έχουν αποκατασταθεί με επιτυχία.";
+"No active subscriptions found to restore."                = "Δεν βρέθηκαν ενεργές συνδρομές για επαναφορά.";
+"Failed to restore purchases. Please try again later. (%@)" = "Αποτυχία επαναφοράς αγορών. Δοκιμάστε ξανά αργότερα. (%@)";
+"Restore Purchases"                                        = "Επαναφορά αγορών";
+
+"Ads Free" = "Διαφημίσεις Δωρεάν";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Ημερολόγιο & Καιρός";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Το μικρό γραφικό στοιχείο εμφανίζει τη σημερινή ημερομηνία και τον τρέχοντα καιρό. Το μεσαίο προσθέτει τη φάση της Σελήνης και τον άνεμο.";
+"Calendar Events" = "Εκδηλώσεις ημερολογίου";
+"Shows today's date, current weather, and your next calendar events." = "Εμφανίζει τη σημερινή ημερομηνία, τον τρέχοντα καιρό και τα επόμενα συμβάντα του ημερολογίου σας.";
+"No upcoming events" = "Δεν υπάρχουν επερχόμενες εκδηλώσεις";
+"Tomorrow" = "Αύριο";
+"Untitled" = "Χωρίς τίτλο";
+"Detail" = "Λεπτομέρεια";
+"Phase" = "Φάση";
+"Weather" = "Καιρός";
+"Select Your Email" = "Επιλέξτε το email σας";
+"Confirm" = "Επιβεβαίωση";
+"Calendar name" = "Όνομα ημερολογίου";
+"Sharing: %@" = "Κοινή χρήση: %@";
+"Loading..." = "Φόρτωση...";
+"Selected Location" = "Επιλεγμένη τοποθεσία";
+"Data provided by Apple Weather" = "Τα δεδομένα παρέχονται από Apple Weather";
+"Next" = "Επόμενο";
+"No details found for the selected location." = "Δεν βρέθηκαν λεπτομέρειες για την επιλεγμένη τοποθεσία.";
+"Could not determine the time zone for the selected location." = "Δεν ήταν δυνατός ο προσδιορισμός της ζώνης ώρας για την επιλεγμένη τοποθεσία.";
+"(No Title)" = "(Χωρίς τίτλο)";
+"Choose your e-mail" = "Επιλέξτε το email σας";
+"It will be treated as your primary address and invitations will not be sent to it." = "Θα αντιμετωπίζεται ως η κύρια διεύθυνσή σας και δεν θα αποστέλλονται προσκλήσεις σε αυτήν.";
+"Invalid URL" = "Μη έγκυρη διεύθυνση URL";
+"Rate limit or insufficient permission" = "Όριο τιμών ή ανεπαρκής άδεια";
+"Network error: %@" = "Σφάλμα δικτύου: %@";
+"N/A - Selected Tab: %@" = "Μη διαθέσιμο – επιλεγμένη καρτέλα: %@";
+"Enable Notifications" = "Ενεργοποίηση Ειδοποιήσεων";
+"Event Notifications" = "Ειδοποιήσεις συμβάντων";
+"Event alerts are scheduled from your event alert settings." = "Οι ειδοποιήσεις συμβάντων προγραμματίζονται από τις ρυθμίσεις ειδοποιήσεων συμβάντων.";
+"Allow notifications so event alerts can appear at the right time." = "Επιτρέψτε τις ειδοποιήσεις, ώστε οι ειδοποιήσεις συμβάντων να εμφανίζονται την κατάλληλη στιγμή.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Οι ειδοποιήσεις είναι απενεργοποιημένες για αυτήν την εφαρμογή. Για να τα ενεργοποιήσετε, μεταβείτε στις: Ρυθμίσεις -> Εφαρμογές -> Cloud Calendars -> Ειδοποιήσεις -> Να επιτρέπονται οι ειδοποιήσεις.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Το Wise Eating είναι ο προπονητής σας με τεχνητή νοημοσύνη για πιο έξυπνη διατροφή και προπόνηση. Συνδυάζει τη σύγχρονη επιστήμη της διατροφής με πρακτικά εργαλεία για να σας βοηθήσει να προγραμματίσετε γεύματα, να σχεδιάσετε προπονήσεις, να διαχειριστείτε το ντουλάπι σας και να κατανοήσετε πώς το φαγητό και η κίνηση επηρεάζουν το σώμα σας.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "Το StoreFront Studio είναι ένα προηγμένο περιβάλλον σχεδίασης 3D για προγραμματιστές iOS και macOS. Συνδυάζει ακριβή απόδοση RealityKit με ένα ισχυρό πρόγραμμα επεξεργασίας εμπλουτισμένου κειμένου, ώστε να μετατρέπετε ακατέργαστα στιγμιότυπα οθόνης σε επαγγελματικό υλικό για το App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "Το ReelStudio είναι το στούντιο ηχογράφησης οθόνης για δημιουργούς για iOS και macOS. Τραβήξτε την οθόνη και την κάμερά σας ταυτόχρονα, ελέγξτε τον ήχο μικροφώνου + συστήματος και εξάγετε καθαρά MP4 για σεμινάρια, περιγραφές και επιδείξεις προϊόντων. Στο iOS, μπορείτε ακόμη και να αναπαράγετε ένα βίντεο μέσα στην εφαρμογή και να το εγγράψετε μαζί με την κάμερά σας για περιεχόμενο σε στυλ αντίδρασης και με παρουσιαστή.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Το Cloud Calendars συνδυάζει προηγμένο προγραμματισμό με όμορφα ενσωματωμένες προγνώσεις καιρού, ώστε να μπορείτε να προγραμματίζετε με ακρίβεια. Υποστηρίζει πολλαπλές υπηρεσίες ημερολογίου, διαισθητική επεξεργασία που βασίζεται σε χειρονομίες, ενσωματωμένους συνδέσμους συσκέψεων και λεπτομερείς ωριαίες/ημερήσιες προβλέψεις απευθείας μέσα στο πρόγραμμά σας.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "Το MarketBrief AI σάς βοηθά να κατανοήσετε την κίνηση της αγοράς με αναλυτικά στοιχεία στη συσκευή και μια ροή εργασίας πολλαπλών παραγόντων που έχει σχεδιαστεί για να διαχωρίζει το σήμα από το θόρυβο. Παρακολουθήστε δεδομένα τιμών σε πραγματικό χρόνο, εξερευνήστε πιθανότητες τύπου καθεστώτος και χρησιμοποιήστε σαφείς πίνακες εργαλείων και γραφήματα για να υποστηρίξετε τη λήψη των αποφάσεών σας. Πρώτα απόρρητο: οι διαμορφώσεις σας παραμένουν στη συσκευή σας.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Εφαρμογές";
+"Plan" = "Πρόγραμμα";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Χιονοθύελλα";
+"WeatherCondition.blowingDust" = "Σκόνη";
+"WeatherCondition.blowingSnow" = "Αιωρούμενο χιόνι";
+"WeatherCondition.breezy" = "Ασθενής άνεμος";
+"WeatherCondition.clear" = "Αίθριος";
+"WeatherCondition.cloudy" = "Νεφελώδης";
+"WeatherCondition.drizzle" = "Ψιλόβροχο";
+"WeatherCondition.flurries" = "Ελαφριά χιονόπτωση";
+"WeatherCondition.foggy" = "Ομίχλη";
+"WeatherCondition.freezingDrizzle" = "Παγωμένο ψιλόβροχο";
+"WeatherCondition.freezingRain" = "Παγωμένη βροχή";
+"WeatherCondition.frigid" = "Κρύο";
+"WeatherCondition.hail" = "Χαλάζι";
+"WeatherCondition.haze" = "Καταχνιά";
+"WeatherCondition.heavyRain" = "Ισχυρή βροχόπτωση";
+"WeatherCondition.heavySnow" = "Ισχυρή χιονόπτωση";
+"WeatherCondition.hot" = "Ζέστη";
+"WeatherCondition.hurricane" = "Τυφώνας";
+"WeatherCondition.isolatedThunderstorms" = "Τοπικές καταιγίδες";
+"WeatherCondition.mostlyClear" = "Κυρίως αίθριος";
+"WeatherCondition.mostlyCloudy" = "Κυρίως νεφελώδης";
+"WeatherCondition.partlyCloudy" = "Μερικές νεφώσεις";
+"WeatherCondition.rain" = "Βροχή";
+"WeatherCondition.scatteredThunderstorms" = "Σποραδικές καταιγίδες";
+"WeatherCondition.sleet" = "Χιονόνερο";
+"WeatherCondition.smoky" = "Καπνός";
+"WeatherCondition.snow" = "Χιόνι";
+"WeatherCondition.strongStorms" = "Ισχυρή καταιγίδα";
+"WeatherCondition.sunFlurries" = "Ελαφριά χιονόπτωση με ήλιο";
+"WeatherCondition.sunShowers" = "Μπόρες με ήλιο";
+"WeatherCondition.thunderstorms" = "Καταιγίδα";
+"WeatherCondition.tropicalStorm" = "Τροπική καταιγίδα";
+"WeatherCondition.windy" = "Ανεμώδης";
+"WeatherCondition.wintryMix" = "Παγωμένος υετός";
+"MoonPhase.new" = "Νέα σελήνη";
+"MoonPhase.waxingCrescent" = "Αύξων μηνίσκος";
+"MoonPhase.firstQuarter" = "Πρώτο τέταρτο";
+"MoonPhase.waxingGibbous" = "Αύξων αμφίκυρτος";
+"MoonPhase.full" = "Πανσέληνος";
+"MoonPhase.waningGibbous" = "Φθίνων αμφίκυρτος";
+"MoonPhase.lastQuarter" = "Τελευταίο τέταρτο";
+"MoonPhase.waningCrescent" = "Φθίνων μηνίσκος";

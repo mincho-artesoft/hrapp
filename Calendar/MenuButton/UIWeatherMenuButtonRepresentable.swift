@@ -7,6 +7,8 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIButton {
         let button = UIButton(type: .system)
+        let isRTL = context.environment.layoutDirection == .rightToLeft
+        button.semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
 
         var config = UIButton.Configuration.plain()
         config.baseForegroundColor = .white
@@ -16,7 +18,7 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
         config.imagePadding = 4
 
         // взимаме композитното изображение и го правим template
-        if let img = combinedImage(for: currentView)?
+        if let img = combinedImage(for: currentView, isRTL: isRTL)?
             .withRenderingMode(.alwaysTemplate) {
             config.image = img
         }
@@ -29,11 +31,13 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
 
     func updateUIView(_ uiView: UIButton, context: Context) {
         guard var config = uiView.configuration else { return }
+        let isRTL = context.environment.layoutDirection == .rightToLeft
+        uiView.semanticContentAttribute = isRTL ? .forceRightToLeft : .forceLeftToRight
 
         config.baseForegroundColor = .white
         config.background.backgroundColor = UIColor.systemGray6
 
-        if let img = combinedImage(for: currentView)?
+        if let img = combinedImage(for: currentView, isRTL: isRTL)?
             .withRenderingMode(.alwaysTemplate) {
             config.image = img
         }
@@ -137,7 +141,7 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
     }
     
     /// Създава композитна икона, която комбинира основната икона (от ляво) и стрелката (отдясно)
-    private func combinedImage(for tab: Int) -> UIImage? {
+    private func combinedImage(for tab: Int, isRTL: Bool) -> UIImage? {
         // Получаваме основната икона и стрелката ("chevron.down") с режим за рендиране "alwaysTemplate"
         guard let mainImage = imageForTab(tab)?.withRenderingMode(.alwaysTemplate),
               let arrowImage = UIImage(systemName: "chevron.down")?.withRenderingMode(.alwaysTemplate)
@@ -160,8 +164,14 @@ struct UIWeatherMenuButtonRepresentable: UIViewRepresentable {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: compositeWidth, height: compositeHeight), false, 0)
         
         // Изчисляваме позициите, за да центрираме иконите вертикално
-        let mainOrigin = CGPoint(x: 0, y: (compositeHeight - mainSize.height) / 2)
-        let arrowOrigin = CGPoint(x: mainSize.width + spacing, y: (compositeHeight - arrowSize.height) / 2)
+        let mainOrigin = CGPoint(
+            x: isRTL ? arrowSize.width + spacing : 0,
+            y: (compositeHeight - mainSize.height) / 2
+        )
+        let arrowOrigin = CGPoint(
+            x: isRTL ? 0 : mainSize.width + spacing,
+            y: (compositeHeight - arrowSize.height) / 2
+        )
         
         // Рисуваме основната икона от ляво
         mainImage.draw(at: mainOrigin)

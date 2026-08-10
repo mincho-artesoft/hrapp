@@ -195,14 +195,38 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"en-CA",
 				Base,
-				no,
+				ja,
+				"zh-Hans",
+				"zh-Hant",
+				ko,
 				fr,
+				"fr-CA",
 				ru,
 				es,
 				de,
 				bg,
 				it,
+				pt,
+				tr,
+				ar,
+				nl,
+				pl,
+				id,
+				th,
+				vi,
+				ms,
+				hi,
+				sv,
+				da,
+				nb,
+				fi,
+				el,
+				cs,
+				ro,
+				hu,
+				he,
 			);
 			mainGroup = 50B212422D4111B800ABB8D3;
 			minimizedProjectReferenceProxies = 1;
@@ -418,7 +442,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -461,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -492,7 +516,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD.CalendarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -524,7 +548,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = Deksan.CalendarASD.CalendarWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

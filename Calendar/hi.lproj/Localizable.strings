@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "कोई ईमेल प्रदान नहीं किया गया.";
+"Please enter a valid email to continue." = "जारी रखने के लिए कृपया एक वैध ईमेल दर्ज करें।";
+"Your email" = "आपका ईमेल";
+"Save" = "सहेजें";
+"Login" = "लॉग इन करें";
+"Logout" = "लॉगआउट करें";
+
+/* RootView */
+"N/A" = "एन/ए";
+"Calendars" = "कैलेंडर";
+"Inbox" = "इनबॉक्स";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "अन्य";
+"Google calendars" = "Google कैलेंडर";
+"No synced Google calendars yet." = "अभी तक कोई समन्वयित Google कैलेंडर नहीं।";
+"Microsoft calendars" = "Microsoft कैलेंडर";
+"No synced Microsoft calendars yet." = "अभी तक कोई समन्वयित Microsoft कैलेंडर नहीं।";
+"Sign out" = "साइन आउट करें";
+"Add iCloud Calendar" = "iCloud कैलेंडर जोड़ें";
+"Share calendars with iCloud Calendar" = "iCloud कैलेंडर के साथ कैलेंडर साझा करें";
+"Sign in with Google" = "Google के साथ साइन इन करें";
+"Sign in with Microsoft" = "Microsoft के साथ साइन इन करें";
+"Deselect All" = "सभी को अचयनित करें";
+"Select All" = "सभी का चयन करें";
+"No Email" = "कोई ईमेल नहीं";
+"Add Google Calendar" = "Google कैलेंडर जोड़ें";
+
+/* AddCalendarView */
+"Calendar Name" = "कैलेंडर का नाम";
+"Account" = "खाता";
+"COLOR" = "रंग";
+"NOTIFICATIONS" = "सूचनाएं";
+"Event Alerts" = "इवेंट अलर्ट";
+"Allow events on this calendar to display alerts." = "इस कैलेंडर पर ईवेंट को अलर्ट प्रदर्शित करने की अनुमति दें।";
+"Add Calendar" = "कैलेंडर जोड़ें";
+
+/* Colors */
+"Red" = "लाल";
+"Orange" = "नारंगी";
+"Yellow" = "पीला";
+"Green" = "हरा";
+"Blue" = "नीला";
+"Purple" = "बैंगनी";
+"Brown" = "भूरा";
+"Custom" = "कस्टम";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "कैलेंडर का रंग";
+"Custom..." = "कस्टम...";
+
+/* EditCalendarView */
+"Edit Calendar" = "कैलेंडर संपादित करें";
+"Delete Calendar" = "कैलेंडर हटाएँ";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "साझाकरण सेटिंग लोड हो रही है...";
+"Shared with these users" = "इन उपयोगकर्ताओं के साथ साझा किया गया";
+"Add New Email" = "नया ईमेल जोड़ें";
+"Email to share" = "साझा करने के लिए ईमेल करें";
+"Permission:" = "अनुमति:";
+"Add" = "जोड़ें";
+"Sharing:" = "साझा करना:";
+"Done" = "हो गया";
+
+"Error loading: %@" = "लोड करने में त्रुटि: %@";
+"Error adding: %@" = "जोड़ने में त्रुटि: %@";
+"Error deleting: %@" = "हटाने में त्रुटि: %@";
+"Error updating: %@" = "अद्यतन करने में त्रुटि: %@";
+"Error re-inviting (delete): %@" = "पुनः आमंत्रित करने में त्रुटि (हटाएं): %@";
+"Error re-inviting (insert): %@" = "पुनः आमंत्रित करने में त्रुटि (सम्मिलित करें): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "पाठक";
+"Writer" = "लेखक";
+"Owner"  = "मालिक";
+
+/* MonthCalendarView */
+"Day View" = "दिन का दृश्य";
+"This is a repeating event." = "यह एक दोहराई जाने वाली घटना है.";
+"Save for This Event Only" = "केवल इस इवेंट के लिए सहेजें";
+"Save for Future Events" = "भविष्य की घटनाओं के लिए सहेजें";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "रवि";
+"Mon" = "सोम";
+"Tue" = "मंगल";
+"Wed" = "बुध";
+"Thu" = "गुरु";
+"Fri" = "शुक्र";
+"Sat" = "शनि";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "बंद करें";
+
+/* AllEventsListView */
+"No calendar access." = "कोई कैलेंडर पहुंच नहीं.";
+
+/* EventRowView */
+"Ends" = "समाप्त होता है";
+
+/* SearchEventRowView */
+"No Title" = "कोई शीर्षक नहीं";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "मीटिंग में शामिल हों";
+"Edit" = "संपादित करें";
+"Duplicate" = "डुप्लिकेट";
+"Delete" = "हटाएँ";
+"Add to Google Meet" = "Google Meet में जोड़ें";
+"Add to Microsoft Teams" = "Microsoft Teams में जोड़ें";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "कोई चयनित सीमा नहीं";
+"all-day" = "सारा दिन";
+"Search events..." = "ईवेंट खोजें...";
+"Day" = "दिन";
+"MultiDay" = "मल्टीडे";
+"Month" = "महीना";
+"Year" = "वर्ष";
+"List" = "सूची";
+"MultiCalendar" = "मल्टीकैलेंडर";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "नई घटना";
+"All-day event" = "पूरे दिन का आयोजन";
+"Recurring Event" = "आवर्ती घटना";
+"This event is part of a series. Update which events?" = "यह आयोजन एक शृंखला का हिस्सा है. कौन से इवेंट अपडेट करें?";
+"This Event Only" = "केवल यह इवेंट";
+"All Future Events" = "भविष्य की सभी घटनाएँ";
+"Cancel" = "रद्द करें";
+
+/* DraggableMenuView */
+"Calendar" = "कैलेंडर";
+"Subscriptions" = "सदस्यताएँ";
+"Live" = "जियो";
+"Stop" = "रुकें";
+"Calendar Live Activity" = "कैलेंडर लाइव गतिविधि";
+"Get" = "प्राप्त करें";
+"Color" = "रंग";
+"Search for a city…" = "कोई शहर खोजें...";
+"No directions" = "कोई दिशा-निर्देश नहीं";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "स्थान पहुंच अस्वीकृत. किसी शहर को खोजें या सेटिंग्स में पहुँच प्रदान करें।";
+"Cannot refresh. Location unknown." = "ताज़ा नहीं किया जा सकता. स्थान अज्ञात.";
+"10-DAY FORECAST" = "10-दिन का पूर्वानुमान";
+"HighLowLabelFormat" = "अधिकतम:%d° न्यूनतम:%d°";
+"tomorrow" = "कल";
+"on_day" = "%@ पर";
+"in_days" = "%d दिनों में";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "नई घटना";
+
+/* Search placeholder */
+"Search for a city..." = "कोई शहर खोजें...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "किसी कैलेंडर ईवेंट को शीघ्रता से जोड़ने के लिए एक घंटा टैप करें।";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "ऐसा लगता है";
+"similar_to_actual_temp" = "वास्तविक तापमान के समान.";
+"wind_cooler_feel" = "हवा ठंडक का अहसास करा रही है।";
+"humidity_warmer_feel" = "नमी के कारण गर्मी का अहसास हो रहा है।";
+
+/* HumidityCard */
+"HUMIDITY" = "आर्द्रता";
+"The dew point is %d° right now." = "अभी ओस बिंदु %d° है।";
+"dewPoint.current" = "अभी ओस बिंदु %d° है।";
+
+/* MoonCard */
+"MOON PHASE" = "चंद्रमा चरण";
+"Moonrise" = "चन्द्रोदय";
+"Moonset" = "चन्द्रास्त";
+"Next %@" = "अगला %@";
+"Data unavailable" = "डेटा अनुपलब्ध";
+"%d day" = "%d दिन";
+"%d days" = "%d दिन";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "वर्षा";
+"PRECIPITATION_CARD_TODAY_LABEL" = "आज";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "अगली उम्मीद %1$.0f %2$@ %3$@ है।"; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "जल्द ही वर्षा की कोई उम्मीद नहीं है.";
+
+/* PressureCard */
+"PRESSURE" = "दबाव";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "सूर्योदय";
+"Sunrise: %@" = "सूर्योदय: %@";
+"Sunset: %@" = "सूर्यास्त: %@";
+"Sunrise" = "सूर्योदय";
+"Sunset" = "सूर्यास्त";
+
+
+/* UVIndexCard */
+"UV INDEX" = "यूवी सूचकांक";
+"Low" = "नीचा";
+"Moderate" = "मध्यम";
+"High" = "ऊँचा";
+"Very High" = "बहुत ऊँचा";
+"Extreme" = "अति";
+
+/* VisibilityCard */
+"VISIBILITY" = "दृश्यता";
+"km" = "km";
+"Perfectly clear view." = "बिल्कुल साफ़ दृश्य.";
+"Excellent visibility." = "उत्कृष्ट दृश्यता.";
+"Good visibility." = "अच्छी दृश्यता.";
+"Moderate visibility." = "मध्यम दृश्यता.";
+"Poor visibility." = "खराब दृश्यता.";
+"Very poor visibility." = "बहुत कम दृश्यता.";
+"visibility.perfect"   = "बिल्कुल साफ़ दृश्य.";
+"visibility.excellent" = "उत्कृष्ट दृश्यता.";
+"visibility.good"      = "अच्छी दृश्यता.";
+"visibility.moderate"  = "मध्यम दृश्यता.";
+"visibility.poor"      = "खराब दृश्यता.";
+"visibility.verypoor"  = "बहुत कम दृश्यता.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "हवा";
+"Gusts" = "झोंके";
+"Direction" = "दिशा";
+"km/h" = "km/h";
+"Compass_N" = "एन";
+"Compass_S" = "एस";
+"Compass_W" = "डब्ल्यू";
+"Compass_E" = "ई";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "मौसम डेटा लाने में विफल. कृपया अपना कनेक्शन जांचें या बाद में पुनः प्रयास करें।";
+"Falling" = "गिरना";
+"Rising" = "बढ़ रहा है";
+"Steady" = "स्थिर";
+"Unknown" = "अज्ञात";
+"Sunny" = "सनी";
+"Cloudy" = "बादल छाए रहेंगे";
+"Partly Cloudy" = "आंशिक रूप से बादल छाए रहेंगे";
+"Drizzle" = "बूंदाबांदी";
+"Thunderstorm" = "आंधी";
+"Fog" = "कोहरा";
+"Partly Cloudy Night" = "आंशिक रूप से बादल छाए रहेंगे रात";
+"Clear Night" = "साफ़ रात";
+"Hazy" = "धुँधला";
+"Today" = "आज";
+"Now" = "अभी";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "एन";
+"cardinal.NNE" = "एनएनई";
+"cardinal.NE"  = "पूर्वोत्तर";
+"cardinal.ENE" = "ईएनई";
+"cardinal.E"   = "ई";
+"cardinal.ESE" = "ईएसई";
+"cardinal.SE"  = "एसई";
+"cardinal.SSE" = "एसएसई";
+"cardinal.S"   = "एस";
+"cardinal.SSW" = "एसएसडब्ल्यू";
+"cardinal.SW"  = "दप";
+"cardinal.WSW" = "डब्ल्यूएसडब्ल्यू";
+"cardinal.W"   = "डब्ल्यू";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "एनडब्ल्यू";
+"cardinal.NNW" = "एनएनडब्ल्यू";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "वर्षा की संभावना";
+"Today's chance: %d%%" = "आज का मौका: %d%%";
+"%@'s chance: %d%%" = "%@ का मौका: %d%%";
+"Max" = "अधिकतम";
+"Min" = "न्यूनतम";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "वर्षा की दैनिक संभावना प्रत्येक घंटे की संभावना से अधिक होती है।";
+"ChanceOfPrecipitation_Title" = "वर्षा की संभावना";
+"TodaysChance"                = "आज का मौका: %d%%";
+"OtherDayChance"              = "%@ का मौका: %d%%";
+"DailyChanceExplanation"      = "वर्षा की दैनिक संभावना प्रत्येक घंटे की संभावना से अधिक होती है।";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "ऐसा लगता है";
+"Actual" = "वास्तविक";
+"No hourly data available for this day." = "इस दिन के लिए कोई प्रति घंटा डेटा उपलब्ध नहीं है.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "आर्द्रता, धूप या हवा के परिणामस्वरूप तापमान कैसा महसूस होता है।";
+"The actual air temperature." = "वास्तविक हवा का तापमान.";
+"HighLabelFormat" = "अधिकतम: %d°";
+"LowLabelFormat" = "न्यूनतम: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "एच";
+"HourlyGraph_LowLabel"  = "एल";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "आर्द्रता";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "आर्द्रता %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "आर्द्रता औसत %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "आज का न्यूनतम %d%% – अधिकतम %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "अधिकतम";
+"ChartMarker_Min"           = "न्यूनतम";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "बारिश: %.1f%@, बर्फ: %.1f%@";
+"Precip_Total_RainFormat"       = "बारिश: %.1f%@";
+"Precip_Total_SnowFormat"       = "हिमपात: %.1f%@";
+"Precip_Total_None"             = "वर्षा: 0%@";
+"Precip_Bars_Subtitle"          = "बारिश और बर्फबारी के लिए प्रति घंटा बार (%@)।";
+"Precip_Level_Light"            = "रोशनी";
+"Precip_Level_Moderate"         = "मध्यम";
+"Precip_Level_Heavy"            = "भारी";
+"Precip_Tooltip_Format"         = "%@h\nबारिश: %.1f%@\nहिमपात: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "दबाव %@ %@";
+"Pressure_CurrentUnavailable"      = "दबाव:--";
+"Pressure_DailyMinMaxFormat"       = "आज का न्यूनतम %@ %@ – अधिकतम %@ %@";
+"Pressure_AverageFormat"           = "दबाव औसत %@ %@";
+"Pressure_DailyRangeFormat"        = "दैनिक सीमा: %@–%@ %@";
+"Pressure_Title"                   = "दबाव";
+"Pressure_NoData"                  = "इस दिन के लिए कोई दबाव डेटा उपलब्ध नहीं है।";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "आज का %@ %d";
+"UVGraphNoHourlyData"   = "इस दिन के लिए कोई प्रति घंटा डेटा उपलब्ध नहीं है.";
+"UVGraphNowLabel"       = "अब, %@";
+"UVCategory_None"       = "कोई नहीं";
+"UVCategory_Low"        = "नीचा";
+"UVCategory_Moderate"   = "मध्यम";
+"UVCategory_High"       = "ऊँचा";
+"UVCategory_VeryHigh"   = "बहुत ऊँचा";
+"UVCategory_Extreme"    = "अति";
+"UVAdvice_None"         = "इस दिन कोई मध्यम या उच्च यूवी स्तर की उम्मीद नहीं है।";
+"UVAdvice_Range"        = "धूप से बचाव की सलाह दी जाती है। यूवी स्तर %@ से %@ तक होता है, %@ और %@ के बीच पहुँच जाता है।";
+"UVGraphMaxLabel" = "अधिकतम";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "दृश्यता";
+"Visibility_NoData"                = "इस दिन के लिए कोई दृश्यता डेटा उपलब्ध नहीं है.";
+"Visibility_CurrentFormat"         = "दृश्यता %d %@";
+"Visibility_DailyMinMaxFormat"     = "न्यूनतम %d – अधिकतम %d %@";
+"Visibility_NoCurrentData"         = "कोई वर्तमान दृश्यता डेटा उपलब्ध नहीं है.";
+"Visibility_HourlyAverages_NoData" = "कोई प्रति घंटा डेटा उपलब्ध नहीं है.";
+"Visibility_MaxLabel"              = "अधिकतम";
+"Visibility_MinLabel"              = "न्यूनतम";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "हवा की गति और झोंका";
+"WindGraph_NoData" = "इस दिन के लिए कोई पवन डेटा उपलब्ध नहीं है।";
+"WindGraph_SpeedHeader" = "हवा की गति %d";
+"WindGraph_GustHeader" = "%d तक झोंके";
+"WindGraph_SpeedRangeHeader" = "हवा की गति %d-%d";
+"WindGraph_MaxSpeedLabel" = "अधिकतम गति";
+"WindGraph_MaxGustLabel" = "अधिकतम झोंका";
+"WindGraph_DragLabel" = "%@\nगति: %d\nझोंका: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "दैनिक सारांश";
+
+"Precipitation Totals" = "वर्षा का कुल योग";
+"LAST 24 HOURS" = "पिछले 24 घंटे";
+"NEXT 24 HOURS" = "अगले 24 घंटे";
+"Total" = "कुल";
+"Rain" = "वर्षा";
+"Snow" = "हिमपात";
+
+"About Wind Speed and Gusts" = "हवा की गति और झोंकों के बारे में";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "हवा की गति की गणना थोड़े समय के औसत का उपयोग करके की जाती है। झोंके इस औसत से ऊपर हवा के छोटे झोंके हैं। एक झोंका आमतौर पर 20 सेकंड से कम समय तक रहता है।";
+
+"About the Beaufort Scale" = "ब्यूफोर्ट स्केल के बारे में";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "ब्यूफोर्ट पवन पैमाना यह व्यक्त करता है कि किसी निश्चित गति पर हवा कितनी तीव्र या तेज़ है। ब्यूफोर्ट स्केल से यह समझना आसान हो सकता है कि हवा कितनी तेज़ होगी या हवा का कितना प्रभाव हो सकता है। पैमाने पर प्रत्येक मान हवा की गति सीमा से मेल खाता है।";
+
+"About Feels Like Temperature" = "तापमान जैसा महसूस होने के बारे में";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "फील लाइक बताता है कि कितना गर्म या ठंडा महसूस होता है और यह वास्तविक तापमान से भिन्न हो सकता है। ऐसा महसूस होता है कि तापमान आर्द्रता, धूप और हवा से प्रभावित होता है।";
+
+"Options" = "विकल्प";
+"Temperature" = "तापमान";
+"Use system setting (°C)" = "सिस्टम सेटिंग का उपयोग करें (डिग्री सेल्सियस)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "शर्तें";
+"UV Index" = "यूवी सूचकांक";
+"Wind" = "हवा";
+"Precipitation" = "वर्षा";
+"Humidity" = "आर्द्रता";
+"Visibility" = "दृश्यता";
+"Pressure" = "दबाव";
+
+/* Fallback key */
+"displayedCondition" = "प्रदर्शित शर्त";
+
+/* Titles */
+"Forecast"                   = "पूर्वानुमान";
+"DailySummary"               = "दैनिक सारांश";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° अब %@ शर्तों के साथ। %@ की वर्षा होने की संभावना है। %@ से %d %@ तक की झोंकों के साथ हवा। आज का तापमान %d° से %d° तक है और %d° जैसा महसूस होता है। %@, और %@.";
+"UVIndexFormat"              = "यूवी सूचकांक %d तक";
+"HumidityFormat"             = "%d%% के आसपास आर्द्रता";
+"HumidityRangeFormat"        = "आर्द्रता %d%% से %d%% तक";
+"NA"                         = "एन/ए";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@ का निम्नतम %d° है और उच्चतम %d° है। तापमान %d° से %d° जैसा महसूस होगा। %@ से हवा चलने की उम्मीद है। %@";
+"NoPrecipLast24h"            = "पिछले 24 घंटों में कोई वर्षा दर्ज नहीं की गई।";
+"RainLast24h" = "पिछले 24 घंटों में %d mm बारिश हुई।";
+"SnowAndRainLast24h" = "पिछले 24 घंटों में %@ cm बर्फ़ और %d mm बारिश मापी गई।";
+
+/* compass abbreviations */
+"Dir_N"   = "एन";
+"Dir_NNE" = "एनएनई";
+"Dir_NE"  = "पूर्वोत्तर";
+"Dir_ENE" = "ईएनई";
+"Dir_E"   = "ई";
+"Dir_ESE" = "ईएसई";
+"Dir_SE"  = "एसई";
+"Dir_SSE" = "एसएसई";
+"Dir_S"   = "एस";
+"Dir_SSW" = "एसएसडब्ल्यू";
+"Dir_SW"  = "दप";
+"Dir_WSW" = "डब्ल्यूएसडब्ल्यू";
+"Dir_W"   = "डब्ल्यू";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "एनडब्ल्यू";
+"Dir_NNW" = "एनएनडब्ल्यू";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "वर्षा का कुल योग";
+"Last24h_Label"             = "पिछले 24 घंटे";
+"Next24h_Label"             = "अगले 24 घंटे";
+"Total_Label"               = "कुल";
+"Precipitation_Label"       = "वर्षा";
+"Rain_Label"                = "वर्षा";
+"Snow_Label"                = "हिमपात";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "हवा इस समय %3$@ से %1$d %2$@ है। आज, हवा की गति %4$d से %5$d %2$@ है, झोंकों के साथ %6$d %2$@ तक है।";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "हवा की गति %1$d से %2$d %3$@ तक होती है, झोंकों के साथ %4$d %3$@ तक होती है।";
+
+"Beaufort_Scale"                = "ब्यूफोर्ट स्केल";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "विवरण";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "शांत";
+"Beaufort_1"                    = "हल्की हवा";
+"Beaufort_2"                    = "हल्की हवा";
+"Beaufort_3"                    = "हल्की हवा";
+"Beaufort_4"                    = "मध्यम हवा";
+"Beaufort_5"                    = "ताज़ी हवा";
+"Beaufort_6"                    = "तेज़ हवा";
+"Beaufort_7"                    = "तेज़ हवा";
+"Beaufort_8"                    = "आंधी";
+"Beaufort_9"                    = "तेज़ आँधी";
+"Beaufort_10"                   = "तूफ़ान";
+"Beaufort_11"                   = "प्रचंड तूफ़ान";
+"Beaufort_12"                   = "तूफ़ान-बल";
+"BeaufortRange_0"               = "<2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29-38";
+"BeaufortRange_6"               = "39 - 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89-102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "पिछले 24 घंटों में %.1f%@ वर्षा हुई है। आज की कुल वर्षा %.1f%@ होगी। अगले 24 घंटों में %.1f%@ बारिश होने का अनुमान है।";
+"ForecastPrecip_OtherDayFormat" = "%@ पर, कुल वर्षा %.1f%@ होगी।";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "वर्षा की तीव्रता के बारे में";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"तीव्रता की गणना प्रति घंटे होने वाली बारिश या बर्फबारी की मात्रा के आधार पर की जाती है और यह बताती है कि बारिश या बर्फबारी कितनी तेज़ महसूस होगी। इसका उपयोग ओलावृष्टि-मिश्रित बारिश और शीतकालीन मिश्रण जैसे अन्य वर्षण प्रकारों के लिए भी किया जाता है। मूसलाधार बारिश या तेज़ बर्फीले तूफ़ान की तीव्रता “भारी” हो सकती है, जबकि सामान्य बारिश या हल्की बूंदाबांदी की तीव्रता “मध्यम” या “हल्की” हो सकती है।";
+
+/* Section titles */
+"Forecast_Title"               = "पूर्वानुमान";
+"DailySummary_Title"           = "दैनिक सारांश";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "ओस बिंदु %d° से %d° है।";
+"DewPoint_FutureFormat"        = "ओस बिंदु %d° से %d° होगा।";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "आज औसत आर्द्रता %d%% है। %@";
+"ForecastHumidity_Other"       = "%@ पर, औसत आर्द्रता %d%% होगी।\n%@";
+
+"AboutPressure_Title"  = "दबाव के बारे में";
+"AboutPressure_Body"   = "मौसम में बदलाव की भविष्यवाणी करने के लिए दबाव में महत्वपूर्ण, तीव्र बदलाव का उपयोग किया जाता है। उदाहरण के लिए, दबाव में गिरावट का मतलब यह हो सकता है कि बारिश या बर्फबारी होने वाली है, और बढ़ते दबाव का मतलब यह हो सकता है कि मौसम में सुधार होगा। दबाव को बैरोमीटरिक दबाव या वायुमंडलीय दबाव भी कहा जाता है।";
+
+"AboutHumidity_Title"  = "सापेक्ष आर्द्रता के बारे में";
+"AboutHumidity_Body"   = "सापेक्ष आर्द्रता, जिसे आमतौर पर आर्द्रता के रूप में जाना जाता है, हवा में नमी की वह मात्रा है जो हवा धारण कर सकती है। उच्च तापमान पर हवा अधिक नमी धारण कर सकती है। 100% के करीब सापेक्ष आर्द्रता का मतलब है कि ओस या कोहरा हो सकता है।";
+
+"AboutDewPoint_Title" = "ओस बिंदु के बारे में";
+"AboutDewPoint_Body"  = "ओस बिंदु वह है जहां ओस बनने के लिए तापमान का गिरना आवश्यक है। यह बताने का एक उपयोगी तरीका हो सकता है कि हवा कितनी आर्द्र महसूस होती है - ओस बिंदु जितना अधिक होगा, उतनी अधिक आर्द्र महसूस होगी। एक ओस बिंदु जो वर्तमान तापमान से मेल खाता है, इसका मतलब है कि सापेक्ष आर्द्रता 100% है, और ओस या कोहरा हो सकता है।";
+
+"Section_Forecast"                     = "पूर्वानुमान";
+"Section_DailySummary"                 = "दैनिक सारांश";
+"ForecastVisibility_TodayFormat" = "आज दृश्यता %@, %d से %d %@ तक रहेगी।";
+"ForecastVisibility_OtherFormat" = "%@ पर, सबसे कम दृश्यता %@ %d %@ पर होगी, और उच्चतम दृश्यता %@ %d %@ पर होगी।";
+"Clarity_Foggy"                        = "धूमिल";
+"Clarity_Hazy"                         = "धुँधला";
+"Clarity_Clear"                        = "स्पष्ट";
+"Clarity_PerfectlyClear"               = "बिल्कुल स्पष्ट";
+
+"AboutVisibility_Title" = "दृश्यता के बारे में";
+"AboutVisibility_Body" = "दृश्यता आपको बताती है कि आप कितनी दूर की इमारतों और पहाड़ियों जैसी वस्तुओं को स्पष्ट रूप से देख सकते हैं। यह हवा की पारदर्शिता का एक माप है और इसमें सूर्य के प्रकाश की मात्रा या अवरोधों की उपस्थिति को ध्यान में नहीं रखा जाता है। %@ पर या उससे ऊपर दृश्यता स्पष्ट मानी जाती है।";
+
+"PressureForecast_Today" = "दबाव वर्तमान में %@ %@ है और गिर रहा है। आज औसत दबाव %@ %@ होगा, और सबसे कम दबाव %@ %@ होगा।";
+"PressureForecast_Other" = "%@ पर, औसत दबाव %@ %@ होगा, और सबसे कम दबाव %@ %@ होगा।";
+"SectionForecast" = "पूर्वानुमान";
+"SectionDailySummary" = "दैनिक सारांश";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "सभी आधार योजना सुविधाएँ";
+"Multi-calendar view" = "बहु-कैलेंडर दृश्य";
+"Sync with Google Calendar" = "Google कैलेंडर के साथ सिंक करें";
+"Sync meets from Google Meet" = "सिंक Google Meet से मिलता है";
+
+/* BaseSubscriptionView */
+"Base Plan" = "आधार योजना";
+"Single-day calendar view" = "एक दिवसीय कैलेंडर दृश्य";
+"Multi-day calendar view" = "बहु-दिवसीय कैलेंडर दृश्य";
+"Monthly calendar view" = "मासिक कैलेंडर दृश्य";
+"Yearly overview" = "वार्षिक सिंहावलोकन";
+"List view for events" = "घटनाओं के लिए सूची दृश्य";
+"Weather view" = "मौसम का दृश्य";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "प्रीमियम योजना";
+"Sync with Microsoft Calendar" = "Microsoft कैलेंडर के साथ सिंक करें";
+"Sync meets from Microsoft Teams" = "सिंक Microsoft Teams से मिलता है";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "प्रति माह %@ के बराबर";
+"%d %@ free" = "%d %@ निःशुल्क";
+
+/* SubscriptionListView */
+"Premium Plans" = "प्रीमियम योजनाएँ";
+"You are subscribed to the %@ %@ plan" = "आपने %@ %@ योजना की सदस्यता ले ली है";
+"Renews on: %@" = "नवीनीकृत: %@";
+"Start Free Trial" = "निःशुल्क परीक्षण प्रारंभ करें";
+"Subscribe Now" = "अभी सदस्यता लें";
+"%d %@ free, then %@%@." = "%d %@ मुफ़्त, फिर %@%@।";
+"Subscribe for %@%@." = "%@%@ के लिए सदस्यता लें।";
+"Privacy Policy"     = "गोपनीयता नीति";
+"Terms of Service"   = "सेवा की शर्तें";
+
+/* SubscriptionCategory */
+"Advanced" = "उन्नत";
+"Advanced Plan" = "उन्नत योजना";
+"All Advanced Plan features" = "सभी उन्नत योजना सुविधाएँ";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "इस अनुभाग तक पहुंचने के लिए आपको एक सक्रिय %@ योजना की आवश्यकता है।";
+"Plan Required" = "योजना आवश्यक";
+"OK" = "ठीक है";
+
+/* SubscriptionStatus */
+"Base"    = "आधार";
+"Premium" = "प्रीमियम";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "%@ %@ योजना की सदस्यता ली।";
+
+/* Label for renewal date */
+"RenewsOn"            = "नवीनीकृत: %@";
+
+"Manage Subscription"                   = "सदस्यता प्रबंधित करें";
+
+/* Period units */
+"Daily"     = "दैनिक";
+"Weekly"    = "साप्ताहिक";
+"Monthly"   = "मासिक";
+"Yearly"    = "वार्षिक";
+"Recurring" = "आवर्ती";
+
+/* units */
+"day"   = "दिन";
+"days"  = "दिन";
+"week"  = "सप्ताह";
+"weeks" = "सप्ताह";
+"month"  = "महीना";
+"months" = "महीने";
+"year"   = "वर्ष";
+"years"  = "साल";
+
+/* YearMonthMiniView */
+"weekday.headers" = "र,सो,मं,बु,गु,शु,श";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "आपकी पिछली खरीदारी सफलतापूर्वक बहाल कर दी गई है.";
+"No active subscriptions found to restore."                = "पुनर्स्थापित करने के लिए कोई सक्रिय सदस्यता नहीं मिली.";
+"Failed to restore purchases. Please try again later. (%@)" = "खरीदारी बहाल करने में विफल. कृपया बाद में पुन: प्रयास करें। (%@)";
+"Restore Purchases"                                        = "खरीदारी पुनर्स्थापित करें";
+
+"Ads Free" = "विज्ञापन मुक्त";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "कैलेंडर और मौसम";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "छोटा विजेट आज की तारीख और वर्तमान मौसम दिखाता है। मध्यम विजेट में चंद्रमा की कला और हवा की जानकारी भी दिखाई जाती है।";
+"Calendar Events" = "कैलेंडर घटनाएँ";
+"Shows today's date, current weather, and your next calendar events." = "आज की तारीख, वर्तमान मौसम और आपके अगले कैलेंडर कार्यक्रम दिखाता है।";
+"No upcoming events" = "कोई आगामी ईवेंट नहीं";
+"Tomorrow" = "कल";
+"Untitled" = "शीर्षकहीन";
+"Detail" = "विवरण";
+"Phase" = "चरण";
+"Weather" = "मौसम";
+"Select Your Email" = "अपना ईमेल चुनें";
+"Confirm" = "पुष्टि करें";
+"Calendar name" = "कैलेंडर का नाम";
+"Sharing: %@" = "साझा करना: %@";
+"Loading..." = "लोड हो रहा है...";
+"Selected Location" = "चयनित स्थान";
+"Data provided by Apple Weather" = "Apple Weather द्वारा प्रदान किया गया डेटा";
+"Next" = "अगला";
+"No details found for the selected location." = "चयनित स्थान के लिए कोई विवरण नहीं मिला.";
+"Could not determine the time zone for the selected location." = "चयनित स्थान के लिए समय क्षेत्र निर्धारित नहीं किया जा सका.";
+"(No Title)" = "(कोई शीर्षक नहीं)";
+"Choose your e-mail" = "अपना ई-मेल चुनें";
+"It will be treated as your primary address and invitations will not be sent to it." = "इसे आपका प्राथमिक पता माना जाएगा और इस पर निमंत्रण नहीं भेजे जाएंगे।";
+"Invalid URL" = "अमान्य यूआरएल";
+"Rate limit or insufficient permission" = "दर सीमा या अपर्याप्त अनुमति";
+"Network error: %@" = "नेटवर्क त्रुटि: %@";
+"N/A - Selected Tab: %@" = "एन/ए - चयनित टैब: %@";
+"Enable Notifications" = "सूचनाएं सक्षम करें";
+"Event Notifications" = "घटना सूचनाएं";
+"Event alerts are scheduled from your event alert settings." = "इवेंट अलर्ट आपकी इवेंट अलर्ट सेटिंग से शेड्यूल किए जाते हैं।";
+"Allow notifications so event alerts can appear at the right time." = "सूचनाओं को अनुमति दें ताकि इवेंट अलर्ट सही समय पर दिखाई दे सकें।";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "इस ऐप के लिए सूचनाएं बंद हैं. उन्हें सक्षम करने के लिए यहां जाएं: सेटिंग्स -> ऐप्स -> Cloud Calendars -> नोटिफिकेशन -> नोटिफिकेशन की अनुमति दें।";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "बेहतर पोषण और प्रशिक्षण के लिए वाइज ईटिंग आपका एआई-संचालित कोच है। यह आधुनिक पोषण विज्ञान को व्यावहारिक उपकरणों के साथ जोड़ता है ताकि आपको भोजन की योजना बनाने, वर्कआउट डिजाइन करने, अपनी पेंट्री प्रबंधित करने और यह समझने में मदद मिल सके कि भोजन और गतिविधि आपके शरीर को कैसे प्रभावित करते हैं।";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio, iOS और macOS डेवलपर के लिए एक उन्नत 3D डिज़ाइन परिवेश है। यह सटीक RealityKit रेंडरिंग को शक्तिशाली स्वरूपित-पाठ संपादक के साथ जोड़ता है, ताकि कच्चे स्क्रीनशॉट को पेशेवर App Store सामग्री में बदला जा सके।";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio, iOS और macOS के लिए क्रिएटर-ग्रेड स्क्रीन रिकॉर्डिंग स्टूडियो है। एक ही समय में अपनी स्क्रीन और कैमरे को कैप्चर करें, माइक + सिस्टम ऑडियो को नियंत्रित करें, और ट्यूटोरियल, वॉकथ्रू और उत्पाद डेमो के लिए स्वच्छ MP4 निर्यात करें। iOS पर, आप ऐप के अंदर एक वीडियो भी चला सकते हैं और प्रतिक्रिया-शैली और प्रस्तुतकर्ता-आधारित सामग्री के लिए इसे अपने कैमरे के साथ रिकॉर्ड कर सकते हैं।";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars खूबसूरती से एकीकृत मौसम पूर्वानुमान के साथ उन्नत शेड्यूलिंग को जोड़ती है, ताकि आप सटीकता के साथ योजना बना सकें। यह कई कैलेंडर सेवाओं, सहज ज्ञान युक्त इशारा-आधारित संपादन, अंतर्निहित मीटिंग लिंक और सीधे आपके शेड्यूल के अंदर विस्तृत प्रति घंटा/दैनिक पूर्वानुमान का समर्थन करता है।";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI आपको ऑन-डिवाइस एनालिटिक्स और सिग्नल को शोर से अलग करने के लिए डिज़ाइन किए गए मल्टी-एजेंट वर्कफ़्लो के साथ बाज़ार की हलचल को समझने में मदद करता है। वास्तविक समय मूल्य डेटा को ट्रैक करें, शासन-शैली की संभावनाओं का पता लगाएं, और अपने निर्णय लेने में सहायता के लिए स्पष्ट डैशबोर्ड और चार्ट का उपयोग करें। गोपनीयता-प्रथम: आपकी कॉन्फ़िगरेशन आपके डिवाइस पर रहती है।";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "ऐप्स";
+"Plan" = "प्लान";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "बर्फ़ीला तूफ़ान";
+"WeatherCondition.blowingDust" = "धूल";
+"WeatherCondition.blowingSnow" = "उड़ती बर्फ़बारी";
+"WeatherCondition.breezy" = "हल्की हवा";
+"WeatherCondition.clear" = "साफ़";
+"WeatherCondition.cloudy" = "बादल";
+"WeatherCondition.drizzle" = "बूँदाबाँदी";
+"WeatherCondition.flurries" = "हल्की बर्फ़";
+"WeatherCondition.foggy" = "कोहरा";
+"WeatherCondition.freezingDrizzle" = "बर्फ़ीली बूँदाबाँदी";
+"WeatherCondition.freezingRain" = "बर्फ़ीली बारिश";
+"WeatherCondition.frigid" = "ठंड";
+"WeatherCondition.hail" = "ओले";
+"WeatherCondition.haze" = "धुँध";
+"WeatherCondition.heavyRain" = "भारी बारिश";
+"WeatherCondition.heavySnow" = "भारी बर्फ़बारी";
+"WeatherCondition.hot" = "गर्म";
+"WeatherCondition.hurricane" = "उष्णकटिबंधीय चक्रवात";
+"WeatherCondition.isolatedThunderstorms" = "गरज के साथ थोड़ा तूफ़ान";
+"WeatherCondition.mostlyClear" = "ज़्यादातर साफ़";
+"WeatherCondition.mostlyCloudy" = "ज़्यादातर बादल";
+"WeatherCondition.partlyCloudy" = "थोड़े बादल";
+"WeatherCondition.rain" = "बारिश";
+"WeatherCondition.scatteredThunderstorms" = "छुटपुट गरज के साथ तूफ़ान";
+"WeatherCondition.sleet" = "बारिश के साथ ओले";
+"WeatherCondition.smoky" = "धुआँ";
+"WeatherCondition.snow" = "बर्फ़बारी";
+"WeatherCondition.strongStorms" = "भारी गरज के साथ तूफ़ान";
+"WeatherCondition.sunFlurries" = "धूप के साथ हल्की बर्फ़बारी";
+"WeatherCondition.sunShowers" = "धूप के साथ बौछारें";
+"WeatherCondition.thunderstorms" = "गरज के साथ तूफ़ान";
+"WeatherCondition.tropicalStorm" = "ट्रॉपिकल तूफ़ान";
+"WeatherCondition.windy" = "तेज़ हवा";
+"WeatherCondition.wintryMix" = "बारिश के साथ बर्फ़बारी";
+"MoonPhase.new" = "अमावस्या";
+"MoonPhase.waxingCrescent" = "शुक्ल पक्ष की प्रतिपदा से सप्तमी";
+"MoonPhase.firstQuarter" = "शुक्ल पक्ष की अष्टमी";
+"MoonPhase.waxingGibbous" = "शुक्ल पक्ष की नवमी से चतुर्दशी";
+"MoonPhase.full" = "पूर्णिमा";
+"MoonPhase.waningGibbous" = "कृष्ण पक्ष की प्रतिपदा से सप्तमी";
+"MoonPhase.lastQuarter" = "कृष्ण पक्ष की अष्टमी";
+"MoonPhase.waningCrescent" = "कृष्ण पक्ष की नवमी से चतुर्दशी";

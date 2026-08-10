@@ -14,6 +14,7 @@ class WeatherKitViewModel: ObservableObject {
     @Published var currentTemp: Double?
     @Published var currentSymbol: String = "cloud"
     @Published var currentCondition: String = "—"
+    @Published var currentConditionLocalizationKey: String = ""
     @Published var currentFeelsLike: Double?
     @Published var currentHumidity: Double?
     @Published var currentPressure: Double?
@@ -98,7 +99,10 @@ class WeatherKitViewModel: ObservableObject {
                 NotificationCenter.default.post(name: .weatherForecastUpdated, object: nil)
             } catch {
                 print("WeatherKit Error: \(error)")
-                self.errorMessage = "Failed to fetch weather data. Please check your connection or try again later."
+                self.errorMessage = NSLocalizedString(
+                    "Failed to fetch weather data. Please check your connection or try again later.",
+                    comment: "Weather loading error"
+                )
             }
         }
     }
@@ -107,6 +111,7 @@ class WeatherKitViewModel: ObservableObject {
         currentTemp = nil
         currentSymbol = "cloud"
         currentCondition = "—"
+        currentConditionLocalizationKey = ""
         currentFeelsLike = nil
         currentHumidity = nil
         currentPressure = nil
@@ -187,10 +192,11 @@ class WeatherKitViewModel: ObservableObject {
 
         // 7. Символ и тренд на налягането
         currentSymbol    = current.symbolName
-        currentCondition = current.condition.description
+        currentConditionLocalizationKey = weatherConditionLocalizationKey(current.condition)
+        currentCondition = localizedWeatherCondition(current.condition)
         CalendarWidgetStore.saveWeatherSnapshot(
             symbol: currentSymbol,
-            condition: currentCondition,
+            condition: currentConditionLocalizationKey,
             temperature: currentTemp,
             windDirectionDegrees: currentWindDirection?.degrees,
             windDirectionText: windDirectionAbbreviation(for: currentWindDirection),
@@ -423,7 +429,7 @@ class WeatherKitViewModel: ObservableObject {
         if let currentMoonEvents {
             CalendarWidgetStore.saveMoonSnapshot(
                 phaseAssetName: widgetMoonPhaseAssetName(for: currentMoonEvents.phase),
-                phaseDescription: currentMoonEvents.phase.description
+                phaseDescription: moonPhaseLocalizationKey(currentMoonEvents.phase)
             )
         }
     }
@@ -444,7 +450,7 @@ class WeatherKitViewModel: ObservableObject {
 
         for forecast in dailyForecast {
             if let m = forecast.moon, m.phase != currentPhase {
-                nextMoonPhase = m.phase.description
+                nextMoonPhase = localizedMoonPhase(m.phase)
                 if let diff = calendar.dateComponents([.day], from: Date(), to: forecast.date).day {
                     daysUntilNextMoonPhase = diff
                 }
@@ -455,25 +461,41 @@ class WeatherKitViewModel: ObservableObject {
 
     // MARK: - Помощни форматиращи
 
+    private func weatherConditionLocalizationKey(_ condition: WeatherCondition) -> String {
+        "WeatherCondition.\(condition.rawValue)"
+    }
+
+    private func localizedWeatherCondition(_ condition: WeatherCondition) -> String {
+        NSLocalizedString(
+            weatherConditionLocalizationKey(condition),
+            comment: "Weather condition"
+        )
+    }
+
+    func moonPhaseLocalizationKey(_ phase: MoonPhase) -> String {
+        "MoonPhase.\(phase.rawValue)"
+    }
+
+    func localizedMoonPhase(_ phase: MoonPhase) -> String {
+        NSLocalizedString(
+            moonPhaseLocalizationKey(phase),
+            comment: "Moon phase"
+        )
+    }
+
     private func hourString(from date: Date) -> String {
-        let fmt = DateFormatter()
-        fmt.dateFormat = "HH"
-        fmt.timeZone = locationTimeZone
+        let fmt = appTimeFormatter(timeZone: locationTimeZone, includesMinutes: false)
         return fmt.string(from: date)
     }
 
     private func weekdayString(from date: Date) -> String {
-        let fmt = DateFormatter()
-        fmt.dateFormat = "E"
-        fmt.timeZone = locationTimeZone
+        let fmt = appDateFormatter(template: "E", timeZone: locationTimeZone)
         return fmt.string(from: date)
     }
 
     func formatTime(_ date: Date?) -> String {
         guard let date = date else { return "--:--" }
-        let fmt = DateFormatter()
-        fmt.timeStyle = .short
-        fmt.timeZone = locationTimeZone
+        let fmt = appTimeFormatter(timeZone: locationTimeZone)
         return fmt.string(from: date)
     }
 

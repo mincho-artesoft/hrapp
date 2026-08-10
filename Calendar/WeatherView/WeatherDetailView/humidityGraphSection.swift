@@ -42,8 +42,7 @@ extension WeatherDetailView {
             VStack(alignment: .leading, spacing: 5) {
                 if Calendar.current.isDate(selectedDate, inSameDayAs: now) {
                     if let currentHumidity = vm.currentHumidity {
-                        Text(String(
-                            format: NSLocalizedString("Humidity_CurrentFormat", comment: "Label for current humidity"),
+                        Text(localizedFormat(NSLocalizedString("Humidity_CurrentFormat", comment: "Label for current humidity"),
                             Int(currentHumidity * 100)
                         ))
                         .font(.system(size: 16, weight: .semibold))
@@ -52,15 +51,13 @@ extension WeatherDetailView {
                             .font(.system(size: 16, weight: .semibold))
                     }
                 } else {
-                    Text(String(
-                        format: NSLocalizedString("Humidity_AvgFormat", comment: "Label for average humidity"),
+                    Text(localizedFormat(NSLocalizedString("Humidity_AvgFormat", comment: "Label for average humidity"),
                         Int(averageHumidity * 100)
                     ))
                     .font(.system(size: 16, weight: .semibold))
                 }
 
-                Text(String(
-                    format: NSLocalizedString("Humidity_MinMaxFormat", comment: "Label for humidity min/max"),
+                Text(localizedFormat(NSLocalizedString("Humidity_MinMaxFormat", comment: "Label for humidity min/max"),
                     Int(dailyMinH * 100),
                     Int(dailyMaxH * 100)
                 ))
@@ -83,7 +80,7 @@ extension WeatherDetailView {
                                 let avgHum = block.map { $0.humidity }.reduce(0, +) / Double(block.count)
                                 let avgPct = Int(round(avgHum * 100))
                                 
-                                Text("\(avgPct)%")
+                                Text(localizedFormat("%d%%", avgPct))
                                     .font(.system(size: 12, weight: .bold))
                                     .frame(maxWidth: .infinity)
                             }
@@ -100,6 +97,7 @@ extension WeatherDetailView {
                 }
                 .frame(height: 20)
                 .padding(.horizontal, graphPadding)
+                .environment(\.layoutDirection, .leftToRight)
                 .offset(y: 35)
                 
                 // MARK: - Canvas базиран график
@@ -132,7 +130,7 @@ extension WeatherDetailView {
                         
                         let labelPt = CGPoint(x: origin.x + chartWidth + 15, y: yPos)
                         context.draw(
-                            Text("\(Int(marker * 100))%")
+                            Text(localizedFormat("%d%%", Int(marker * 100)))
                                 .font(.system(size: 8))
                                 .foregroundColor(.gray),
                             at: labelPt,
@@ -255,7 +253,7 @@ extension WeatherDetailView {
                         let xPos = origin.x + (CGFloat(hour) * (chartWidth / 24.0))
                         let labelPoint = CGPoint(x: xPos, y: origin.y + 14)
                         context.draw(
-                            Text(String(format: "%02d", hour))
+                            Text(localizedFormat("%02d", hour))
                                 .font(.system(size: 11))
                                 .foregroundColor(.gray),
                             at: labelPoint,
@@ -300,13 +298,16 @@ extension WeatherDetailView {
                                 value: Int(secondsOffset),
                                 to: startOfSelectedDay
                             )!
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "HH:mm"
-                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone
-                            let timeLabel = dateFormatter.string(from: interpolatedDate)
+                            let timeLabel = appTimeFormatter(
+                                timeZone: WeatherKitViewModel.shared.locationTimeZone
+                            ).string(from: interpolatedDate)
 
                             // 6) Текст на етикета
-                            let labelText = "\(timeLabel)\n\(Int(round(hVal * 100)))%"
+                            let labelText = localizedFormat(
+                                "%@\n%d%%",
+                                timeLabel,
+                                Int(round(hVal * 100))
+                            )
                             let label = Text(labelText)
                                 .font(.system(size: 12, weight: .bold))
                                 .foregroundColor(.white)

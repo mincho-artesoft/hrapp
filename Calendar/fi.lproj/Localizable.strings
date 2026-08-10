@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Sähköpostia ei annettu.";
+"Please enter a valid email to continue." = "Anna kelvollinen sähköpostiosoite jatkaaksesi.";
+"Your email" = "Sähköpostisi";
+"Save" = "Tallenna";
+"Login" = "Kirjaudu sisään";
+"Logout" = "Kirjaudu ulos";
+
+/* RootView */
+"N/A" = "Ei käytössä";
+"Calendars" = "Kalenterit";
+"Inbox" = "Saapuneet";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Muut";
+"Google calendars" = "Google kalenterit";
+"No synced Google calendars yet." = "Ei vielä synkronoituja Google kalentereita.";
+"Microsoft calendars" = "Microsoft kalenterit";
+"No synced Microsoft calendars yet." = "Ei vielä synkronoituja Microsoft kalentereita.";
+"Sign out" = "Kirjaudu ulos";
+"Add iCloud Calendar" = "Lisää iCloud kalenteri";
+"Share calendars with iCloud Calendar" = "Jaa kalentereita iCloud Kalenterin kanssa";
+"Sign in with Google" = "Kirjaudu sisään numerolla Google";
+"Sign in with Microsoft" = "Kirjaudu sisään numerolla Microsoft";
+"Deselect All" = "Poista kaikki valinta";
+"Select All" = "Valitse Kaikki";
+"No Email" = "Ei sähköpostia";
+"Add Google Calendar" = "Lisää Google kalenteri";
+
+/* AddCalendarView */
+"Calendar Name" = "Kalenterin nimi";
+"Account" = "Tili";
+"COLOR" = "VÄRI";
+"NOTIFICATIONS" = "ILMOITUKSET";
+"Event Alerts" = "Tapahtumahälytykset";
+"Allow events on this calendar to display alerts." = "Salli tämän kalenterin tapahtumien näyttää hälytyksiä.";
+"Add Calendar" = "Lisää kalenteri";
+
+/* Colors */
+"Red" = "Punainen";
+"Orange" = "Oranssi";
+"Yellow" = "Keltainen";
+"Green" = "Vihreä";
+"Blue" = "Sininen";
+"Purple" = "Violetti";
+"Brown" = "Ruskea";
+"Custom" = "Mukautettu";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Kalenterin väri";
+"Custom..." = "Mukautettu...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Muokkaa kalenteria";
+"Delete Calendar" = "Poista kalenteri";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Ladataan jakamisasetuksia…";
+"Shared with these users" = "Jaettu näiden käyttäjien kanssa";
+"Add New Email" = "Lisää uusi sähköposti";
+"Email to share" = "Sähköposti jakaaksesi";
+"Permission:" = "Lupa:";
+"Add" = "Lisää";
+"Sharing:" = "Jakaminen:";
+"Done" = "Valmis";
+
+"Error loading: %@" = "Virhe latauksessa: %@";
+"Error adding: %@" = "Virhe lisättäessä: %@";
+"Error deleting: %@" = "Virhe poistettaessa: %@";
+"Error updating: %@" = "Virhe päivityksessä: %@";
+"Error re-inviting (delete): %@" = "Virhe kutsuttaessa uudelleen (poista): %@";
+"Error re-inviting (insert): %@" = "Virhe kutsuttaessa uudelleen (lisää): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Lukija";
+"Writer" = "Kirjoittaja";
+"Owner"  = "Omistaja";
+
+/* MonthCalendarView */
+"Day View" = "Päivänäkymä";
+"This is a repeating event." = "Tämä on toistuva tapahtuma.";
+"Save for This Event Only" = "Tallenna vain tätä tapahtumaa varten";
+"Save for Future Events" = "Säästä tulevia tapahtumia varten";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "su";
+"Mon" = "ma";
+"Tue" = "ti";
+"Wed" = "ke";
+"Thu" = "to";
+"Fri" = "pe";
+"Sat" = "la";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Sulje";
+
+/* AllEventsListView */
+"No calendar access." = "Ei pääsyä kalenteriin.";
+
+/* EventRowView */
+"Ends" = "Päättyy";
+
+/* SearchEventRowView */
+"No Title" = "Ei otsikkoa";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Liity kokoukseen";
+"Edit" = "Muokkaa";
+"Duplicate" = "Kopioi";
+"Delete" = "Poista";
+"Add to Google Meet" = "Lisää Google Meet";
+"Add to Microsoft Teams" = "Lisää Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Ei valittua aluetta";
+"all-day" = "koko päivän";
+"Search events..." = "Hae tapahtumia...";
+"Day" = "päivä";
+"MultiDay" = "Monipäiväinen";
+"Month" = "Kuukausi";
+"Year" = "vuosi";
+"List" = "Luettelo";
+"MultiCalendar" = "Monikalenteri";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Uusi tapahtuma";
+"All-day event" = "Koko päivän tapahtuma";
+"Recurring Event" = "Toistuva tapahtuma";
+"This event is part of a series. Update which events?" = "Tämä tapahtuma on osa sarjaa. Päivitä mitkä tapahtumat?";
+"This Event Only" = "Vain tämä tapahtuma";
+"All Future Events" = "Kaikki tulevaisuuden tapahtumat";
+"Cancel" = "Peruuta";
+
+/* DraggableMenuView */
+"Calendar" = "Kalenteri";
+"Subscriptions" = "Tilaukset";
+"Live" = "Livenä";
+"Stop" = "Pysähdy";
+"Calendar Live Activity" = "Kalenterin reaaliaikainen toiminto";
+"Get" = "Hanki";
+"Color" = "Väri";
+"Search for a city…" = "Etsi kaupunki…";
+"No directions" = "Ei ohjeita";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Sijainnin käyttö estetty. Hae kaupunkia tai myönnä käyttöoikeus asetuksista.";
+"Cannot refresh. Location unknown." = "Ei voi päivittää. Sijainti tuntematon.";
+"10-DAY FORECAST" = "10 PÄIVÄN ENNUSTE";
+"HighLowLabelFormat" = "Ylin:%d° Alin:%d°";
+"tomorrow" = "huomenna";
+"on_day" = "osoitteessa %@";
+"in_days" = "%d päivässä";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Uusi Tapahtuma";
+
+/* Search placeholder */
+"Search for a city..." = "Etsi kaupunki…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Napauta tuntia lisätäksesi nopeasti kalenteritapahtuman.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "TUNTUU";
+"similar_to_actual_temp" = "Samanlainen kuin todellinen lämpötila.";
+"wind_cooler_feel" = "Tuuli tekee olosta viileämmän.";
+"humidity_warmer_feel" = "Kosteus saa sen tuntumaan lämpimämmältä.";
+
+/* HumidityCard */
+"HUMIDITY" = "KOSTEUS";
+"The dew point is %d° right now." = "Kastepiste on tällä hetkellä %d°.";
+"dewPoint.current" = "Kastepiste on tällä hetkellä %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "KUU VAIHE";
+"Moonrise" = "Kuunnousu";
+"Moonset" = "Kuunlasku";
+"Next %@" = "Seuraava %@";
+"Data unavailable" = "Tietoja ei ole saatavilla";
+"%d day" = "%d päivä";
+"%d days" = "%d päivää";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "SATE";
+"PRECIPITATION_CARD_TODAY_LABEL" = "tänään";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Seuraavaksi odotetaan %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Pian ei odoteta sadetta.";
+
+/* PressureCard */
+"PRESSURE" = "PAINE";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "Auringonnousu";
+"Sunrise: %@" = "Auringonnousu: %@";
+"Sunset: %@" = "Auringonlasku: %@";
+"Sunrise" = "Auringonnousu";
+"Sunset" = "Auringonlasku";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UV-INDEKSI";
+"Low" = "Matala";
+"Moderate" = "Kohtalainen";
+"High" = "Korkea";
+"Very High" = "Erittäin korkea";
+"Extreme" = "Äärimmäistä";
+
+/* VisibilityCard */
+"VISIBILITY" = "NÄKYVYYS";
+"km" = "km";
+"Perfectly clear view." = "Täysin selkeä näkymä.";
+"Excellent visibility." = "Erinomainen näkyvyys.";
+"Good visibility." = "Hyvä näkyvyys.";
+"Moderate visibility." = "Kohtalainen näkyvyys.";
+"Poor visibility." = "Huono näkyvyys.";
+"Very poor visibility." = "Erittäin huono näkyvyys.";
+"visibility.perfect"   = "Täysin selkeä näkymä.";
+"visibility.excellent" = "Erinomainen näkyvyys.";
+"visibility.good"      = "Hyvä näkyvyys.";
+"visibility.moderate"  = "Kohtalainen näkyvyys.";
+"visibility.poor"      = "Huono näkyvyys.";
+"visibility.verypoor"  = "Erittäin huono näkyvyys.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Tuuli";
+"Gusts" = "Puuskissa";
+"Direction" = "Suunta";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Säätietojen nouto epäonnistui. Tarkista yhteys tai yritä myöhemmin uudelleen.";
+"Falling" = "Putoaminen";
+"Rising" = "Nousemassa";
+"Steady" = "Vakaa";
+"Unknown" = "Tuntematon";
+"Sunny" = "Aurinkoinen";
+"Cloudy" = "Pilvistä";
+"Partly Cloudy" = "Puolipilvistä";
+"Drizzle" = "Tihkusadetta";
+"Thunderstorm" = "Ukkosmyrsky";
+"Fog" = "Sumua";
+"Partly Cloudy Night" = "Puolipilvistä yö";
+"Clear Night" = "Selkeä yö";
+"Hazy" = "Sumuinen";
+"Today" = "Tänään";
+"Now" = "Nyt";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Sateen mahdollisuus";
+"Today's chance: %d%%" = "Tämän päivän mahdollisuus: %d%%";
+"%@'s chance: %d%%" = "%@:n mahdollisuus: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Päivittäinen sateen mahdollisuus on yleensä suurempi kuin kunkin tunnin mahdollisuus.";
+"ChanceOfPrecipitation_Title" = "Sateen mahdollisuus";
+"TodaysChance"                = "Tämän päivän mahdollisuus: %d%%";
+"OtherDayChance"              = "%@:n mahdollisuus: %d%%";
+"DailyChanceExplanation"      = "Päivittäinen sateen mahdollisuus on yleensä suurempi kuin kunkin tunnin mahdollisuus.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Tuntumalämpötila";
+"Actual" = "Todellinen";
+"No hourly data available for this day." = "Tuntikohtaisia tietoja ei ole saatavilla tälle päivälle.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Miltä lämpötila tuntuu kosteuden, auringonvalon tai tuulen seurauksena.";
+"The actual air temperature." = "Todellinen ilman lämpötila.";
+"HighLabelFormat" = "Ylin: %d°";
+"LowLabelFormat" = "Alin: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Kosteus";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Kosteus %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Kosteuden keskiarvo %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Tämän päivän min %d%% – max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Sade: %.1f%@, Lunta: %.1f%@";
+"Precip_Total_RainFormat"       = "Sade: %.1f%@";
+"Precip_Total_SnowFormat"       = "Lunta: %.1f%@";
+"Precip_Total_None"             = "Sademäärä: 0%@";
+"Precip_Bars_Subtitle"          = "Sateen ja lumen tuntipalkit (%@).";
+"Precip_Level_Light"            = "Kevyt";
+"Precip_Level_Moderate"         = "Kohtalainen";
+"Precip_Level_Heavy"            = "Raskas";
+"Precip_Tooltip_Format"         = "%@h\nSade: %.1f%@\nLunta: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Paine %@ %@";
+"Pressure_CurrentUnavailable"      = "Paine: --";
+"Pressure_DailyMinMaxFormat"       = "Tämän päivän min %@ %@ – max %@ %@";
+"Pressure_AverageFormat"           = "Paine keskiarvo %@ %@";
+"Pressure_DailyRangeFormat"        = "Päivittäinen vaihteluväli: %@–%@ %@";
+"Pressure_Title"                   = "Paine";
+"Pressure_NoData"                  = "Ei painetietoja saatavilla tälle päivälle.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Tämän päivän %@ %d";
+"UVGraphNoHourlyData"   = "Tuntikohtaisia tietoja ei ole saatavilla tälle päivälle.";
+"UVGraphNowLabel"       = "Nyt %@";
+"UVCategory_None"       = "Ei mitään";
+"UVCategory_Low"        = "Matala";
+"UVCategory_Moderate"   = "Kohtalainen";
+"UVCategory_High"       = "Korkea";
+"UVCategory_VeryHigh"   = "Erittäin korkea";
+"UVCategory_Extreme"    = "Äärimmäistä";
+"UVAdvice_None"         = "Tälle päivälle ei odoteta kohtalaista tai korkeampaa UV-tasoa.";
+"UVAdvice_Range"        = "Aurinkosuoja suositellaan. UV-tasot vaihtelevat välillä %@ – %@, saavutettu %@ ja %@ välillä.";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Näkyvyys";
+"Visibility_NoData"                = "Näkyvyystietoja ei ole saatavilla tälle päivälle.";
+"Visibility_CurrentFormat"         = "Näkyvyys %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – maksimi %d %@";
+"Visibility_NoCurrentData"         = "Nykyisiä näkyvyystietoja ei ole saatavilla.";
+"Visibility_HourlyAverages_NoData" = "Tuntikohtaisia tietoja ei ole saatavilla.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Tuulen nopeus ja puuski";
+"WindGraph_NoData" = "Tuulitietoja ei ole saatavilla tälle päivälle.";
+"WindGraph_SpeedHeader" = "Tuulen nopeus %d";
+"WindGraph_GustHeader" = "Puuskissa jopa %d";
+"WindGraph_SpeedRangeHeader" = "Tuulen nopeus %d-%d";
+"WindGraph_MaxSpeedLabel" = "Suurin nopeus";
+"WindGraph_MaxGustLabel" = "Suurin puuska";
+"WindGraph_DragLabel" = "%@\nNopeus: %d\nPuuski: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Päivittäinen yhteenveto";
+
+"Precipitation Totals" = "Sademäärät";
+"LAST 24 HOURS" = "VIIMEISET 24 TUNTIA";
+"NEXT 24 HOURS" = "SEURAAVA 24 TUNTIA";
+"Total" = "Yhteensä";
+"Rain" = "Sade";
+"Snow" = "Lunta";
+
+"About Wind Speed and Gusts" = "Tietoja tuulen nopeudesta ja puuskista";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Tuulen nopeus lasketaan käyttämällä lyhyen ajan keskiarvoa. Puuskat ovat lyhyitä tämän keskiarvon yläpuolella olevia tuulenpurkauksia. Puuska kestää yleensä alle 20 sekuntia.";
+
+"About the Beaufort Scale" = "Tietoja Beaufortin asteikosta";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Beaufortin tuuliasteikko ilmaisee kuinka voimakas tai voimakas tuuli on tietyllä nopeudella. Beaufort-asteikko voi auttaa ymmärtämään, kuinka tuulliselta se tuntuu tai kuinka paljon tuulella voi olla vaikutusta. Jokainen asteikon arvo vastaa tuulen nopeusaluetta.";
+
+"About Feels Like Temperature" = "Tietoja tuntumalämpötilasta";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Tuntumalämpötila kertoo, kuinka lämpimältä tai kylmältä ilma tuntuu, ja se voi poiketa todellisesta lämpötilasta. Siihen vaikuttavat ilmankosteus, auringonpaiste ja tuuli.";
+
+"Options" = "Vaihtoehdot";
+"Temperature" = "Lämpötila";
+"Use system setting (°C)" = "Käytä järjestelmäasetusta (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "ehdot";
+"UV Index" = "UV-indeksi";
+"Wind" = "Tuuli";
+"Precipitation" = "Sademäärä";
+"Humidity" = "Kosteus";
+"Visibility" = "Näkyvyys";
+"Pressure" = "Paine";
+
+/* Fallback key */
+"displayedCondition" = "näytetty kunto";
+
+/* Titles */
+"Forecast"                   = "Ennuste";
+"DailySummary"               = "Päivittäinen yhteenveto";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° nyt %@ ehdoilla. Sateen mahdollisuus %@. Tuuli alkaen %@, puuskissa jopa %d %@. Tämän päivän lämpötila vaihtelee %d°:sta %d°:een ja tuntuu %d°:lta. %@ ja %@.";
+"UVIndexFormat"              = "UV-indeksi jopa %d";
+"HumidityFormat"             = "Kosteus noin %d%%";
+"HumidityRangeFormat"        = "Kosteus %d%% - %d%%";
+"NA"                         = "Ei käytössä";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@:n alin on %d° ja ylin on %d°. Lämpötila tuntuu %d° - %d°. Odotettavissa on tuulta %@. %@";
+"NoPrecipLast24h"            = "Ei sadetta viimeisen 24 tunnin aikana.";
+"RainLast24h"                = "Vettä on satanut %d mm viimeisen 24 tunnin aikana.";
+"SnowAndRainLast24h"         = "Viimeisen 24 tunnin aikana lunta %@ cm ja sadetta %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Sademäärät";
+"Last24h_Label"             = "VIIMEISET 24 TUNTIA";
+"Next24h_Label"             = "SEURAAVA 24 TUNTIA";
+"Total_Label"               = "Yhteensä";
+"Precipitation_Label"       = "Sademäärä";
+"Rain_Label"                = "Sade";
+"Snow_Label"                = "Lunta";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Tuuli on tällä hetkellä %1$d %2$@ kohteesta %3$@. Tuulen nopeudet ovat tänään %4$d - %5$d %2$@, puuskissa jopa %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Tuulen nopeus vaihtelee välillä %1$d – %2$d %3$@, puuskissa jopa %4$d %3$@.";
+
+"Beaufort_Scale"                = "Beaufortin asteikko";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Kuvaus";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Rauhallinen";
+"Beaufort_1"                    = "Kevyt ilma";
+"Beaufort_2"                    = "Kevyt tuulta";
+"Beaufort_3"                    = "Lempeä tuuli";
+"Beaufort_4"                    = "Kohtalainen tuuli";
+"Beaufort_5"                    = "Raikas tuulta";
+"Beaufort_6"                    = "Voimakas tuuli";
+"Beaufort_7"                    = "Kova tuuli";
+"Beaufort_8" = "Myrskytuuli";
+"Beaufort_9"                    = "Voimakas myrsky";
+"Beaufort_10"                   = "Myrsky";
+"Beaufort_11"                   = "Raju myrsky";
+"Beaufort_12"                   = "Hurrikaani-voima";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2-5";
+"BeaufortRange_2"               = "6-11";
+"BeaufortRange_3"               = "12-19";
+"BeaufortRange_4"               = "20-28";
+"BeaufortRange_5"               = "29-38";
+"BeaufortRange_6"               = "39-49";
+"BeaufortRange_7"               = "50-61";
+"BeaufortRange_8"               = "62-74";
+"BeaufortRange_9"               = "75-88";
+"BeaufortRange_10"              = "89-102";
+"BeaufortRange_11"              = "103-117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Viimeisen 24 tunnin aikana on satanut %.1f%@. Päivän kokonaissademäärä on %.1f%@. Seuraavien 24 tunnin aikana on odotettavissa sademäärää %.1f%@.";
+"ForecastPrecip_OtherDayFormat" = "Päivänä %@ kokonaissademäärä on %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Tietoja sateen intensiteetistä";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Voimakkuus lasketaan tunnissa satavan veden tai lumen määrän perusteella, ja se kertoo, kuinka voimakkaalta sade tai lumisade tuntuu. Sitä käytetään myös muille sadetyypeille, kuten räntäsateelle ja talviselle sekoitussateelle. Kaatosateen tai voimakkaan lumimyrskyn voimakkuus voi olla ”voimakas”, kun taas tavallisen sateen tai kevyen tihkusateen voimakkuus voi olla ”kohtalainen” tai ”heikko”.";
+
+/* Section titles */
+"Forecast_Title"               = "Ennuste";
+"DailySummary_Title"           = "Päivittäinen yhteenveto";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Kastepiste on %d° - %d°.";
+"DewPoint_FutureFormat"        = "Kastepiste on %d° - %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Nykyään keskimääräinen kosteus on %d%%. %@";
+"ForecastHumidity_Other"       = "%@:n keskimääräinen kosteus on %d%%.\n%@";
+
+"AboutPressure_Title"  = "Tietoja paineesta";
+"AboutPressure_Body"   = "Merkittäviä, nopeita paineen muutoksia käytetään ennustamaan sään muutoksia. Esimerkiksi paineen lasku voi tarkoittaa, että sataa tai lunta on tulossa, ja paineen nousu voi tarkoittaa, että sää paranee. Painetta kutsutaan myös ilmanpaineeksi tai ilmanpaineeksi.";
+
+"AboutHumidity_Title"  = "Tietoja suhteellisesta kosteudesta";
+"AboutHumidity_Body"   = "Suhteellinen kosteus, joka tunnetaan yleisesti vain kosteudena, on ilman kosteuden määrä verrattuna siihen, mitä ilma voi sisältää. Ilma voi sitoa enemmän kosteutta korkeammissa lämpötiloissa. Lähes 100 %:n suhteellinen kosteus tarkoittaa, että siellä voi olla kastetta tai sumua.";
+
+"AboutDewPoint_Title" = "Tietoja kastepisteestä";
+"AboutDewPoint_Body"  = "Kastepiste on se, johon lämpötilan pitäisi laskea, jotta kaste muodostuu. Se voi olla hyödyllinen tapa kertoa, kuinka kostealta ilma tuntuu – mitä korkeampi kastepiste, sitä kosteammalta se tuntuu. Nykyistä lämpötilaa vastaava kastepiste tarkoittaa, että suhteellinen kosteus on 100 %, ja siellä voi olla kastetta tai sumua.";
+
+"Section_Forecast"                     = "Ennuste";
+"Section_DailySummary"                 = "Päivittäinen yhteenveto";
+"ForecastVisibility_TodayFormat" = "Tänään näkyvyys on %@, %d - %d %@.";
+"ForecastVisibility_OtherFormat" = "Päivällä %@ pienin näkyvyys on %@ klo %d %@ ja korkein %@ klo %d %@.";
+"Clarity_Foggy"                        = "Sumuinen";
+"Clarity_Hazy"                         = "Sumuinen";
+"Clarity_Clear"                        = "Selkeä";
+"Clarity_PerfectlyClear"               = "Täysin selkeä";
+
+"AboutVisibility_Title" = "Tietoja näkyvyydestä";
+"AboutVisibility_Body" = "Näkyvyys kertoo, kuinka kaukana näet selvästi esineet, kuten rakennukset ja kukkulat. Se mittaa ilman läpinäkyvyyttä, eikä se ota huomioon auringonvalon määrää tai esteitä. Näkyvyys arvossa %@ tai sen yläpuolella katsotaan selväksi.";
+
+"PressureForecast_Today" = "Paine on tällä hetkellä %@ %@ ja laskee. Tänään keskipaine on %@ %@ ja alin paine %@ %@.";
+"PressureForecast_Other" = "Päivällä %@ keskimääräinen paine on %@ %@ ja alin paine on %@ %@.";
+"SectionForecast" = "Ennuste";
+"SectionDailySummary" = "Päivittäinen yhteenveto";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Kaikki perussuunnitelman ominaisuudet";
+"Multi-calendar view" = "Monikalenterinäkymä";
+"Sync with Google Calendar" = "Synkronoi Google-kalenterin kanssa";
+"Sync meets from Google Meet" = "Synkronointi tapaa Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Perussuunnitelma";
+"Single-day calendar view" = "Yhden päivän kalenterinäkymä";
+"Multi-day calendar view" = "Monipäiväinen kalenterinäkymä";
+"Monthly calendar view" = "Kuukausittainen kalenterinäkymä";
+"Yearly overview" = "Vuosikatsaus";
+"List view for events" = "Listanäkymä tapahtumista";
+"Weather view" = "Säänäkymä";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Premium-suunnitelma";
+"Sync with Microsoft Calendar" = "Synkronoi Microsoft-kalenterin kanssa";
+"Sync meets from Microsoft Teams" = "Synkronointi tapaa Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Vastaa %@ kuukaudessa";
+"%d %@ free" = "%d %@ ilmainen";
+
+/* SubscriptionListView */
+"Premium Plans" = "Premium-suunnitelmat";
+"You are subscribed to the %@ %@ plan" = "Olet tilannut %@ %@ -paketin";
+"Renews on: %@" = "Uusitaan: %@";
+"Start Free Trial" = "Aloita ilmainen kokeilu";
+"Subscribe Now" = "Tilaa nyt";
+"%d %@ free, then %@%@." = "%d %@ ilmainen, sitten %@%@.";
+"Subscribe for %@%@." = "Tilaa %@%@.";
+"Privacy Policy"     = "Tietosuojakäytäntö";
+"Terms of Service"   = "Palveluehdot";
+
+/* SubscriptionCategory */
+"Advanced" = "Edistynyt";
+"Advanced Plan" = "Edistynyt tilaus";
+"All Advanced Plan features" = "Kaikki edistyneen tilauksen ominaisuudet";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Tarvitset aktiivisen %@-suunnitelman päästäksesi tähän osioon.";
+"Plan Required" = "Suunnitelma vaaditaan";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Pohja";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Tilannut %@ %@ -paketin.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Uusitaan: %@";
+
+"Manage Subscription"                   = "Hallinnoi tilausta";
+
+/* Period units */
+"Daily"     = "Päivittäin";
+"Weekly"    = "viikoittain";
+"Monthly"   = "Kuukausittain";
+"Yearly"    = "Vuosittain";
+"Recurring" = "Toistuva";
+
+/* units */
+"day"   = "päivä";
+"days"  = "päivää";
+"week"  = "viikolla";
+"weeks" = "viikkoa";
+"month"  = "kuukausi";
+"months" = "kuukautta";
+"year"   = "vuosi";
+"years"  = "vuotta";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S,M,T,K,T,P,L";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Aiemmat ostoksesi on palautettu onnistuneesti.";
+"No active subscriptions found to restore."                = "Palautattavia aktiivisia tilauksia ei löytynyt.";
+"Failed to restore purchases. Please try again later. (%@)" = "Ostosten palauttaminen epäonnistui. Yritä myöhemmin uudelleen. (%@)";
+"Restore Purchases"                                        = "Palauta ostokset";
+
+"Ads Free" = "Mainokset ilmaiseksi";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalenteri & Sää";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Pieni näyttää tämän päivän päivämäärän ja nykyisen sään. Keskikokoinen lisää kuun vaiheen ja tuulen.";
+"Calendar Events" = "Kalenteri Tapahtumat";
+"Shows today's date, current weather, and your next calendar events." = "Näyttää tämän päivän päivämäärän, nykyisen sään ja seuraavat kalenteritapahtumasi.";
+"No upcoming events" = "Ei tulevia tapahtumia";
+"Tomorrow" = "Huomenna";
+"Untitled" = "Nimetön";
+"Detail" = "Yksityiskohta";
+"Phase" = "Vaihe";
+"Weather" = "Sää";
+"Select Your Email" = "Valitse Sähköpostisi";
+"Confirm" = "Vahvista";
+"Calendar name" = "Kalenterin nimi";
+"Sharing: %@" = "Jakaminen: %@";
+"Loading..." = "Ladataan...";
+"Selected Location" = "Valittu sijainti";
+"Data provided by Apple Weather" = "Tiedot tarjoaa Apple Weather";
+"Next" = "Seuraavaksi";
+"No details found for the selected location." = "Valitusta sijainnista ei löytynyt tietoja.";
+"Could not determine the time zone for the selected location." = "Valitun sijainnin aikavyöhykettä ei voitu määrittää.";
+"(No Title)" = "(Ei otsikkoa)";
+"Choose your e-mail" = "Valitse sähköpostiosoitteesi";
+"It will be treated as your primary address and invitations will not be sent to it." = "Sitä käsitellään ensisijaisena osoitteesi, eikä siihen lähetetä kutsuja.";
+"Invalid URL" = "Virheellinen URL-osoite";
+"Rate limit or insufficient permission" = "Hintarajoitus tai riittämätön lupa";
+"Network error: %@" = "Verkkovirhe: %@";
+"N/A - Selected Tab: %@" = "Ei käytössä – Valittu välilehti: %@";
+"Enable Notifications" = "Ota ilmoitukset käyttöön";
+"Event Notifications" = "Tapahtuma-ilmoitukset";
+"Event alerts are scheduled from your event alert settings." = "Tapahtumahälytykset ajoitetaan tapahtumahälytysasetuksistasi.";
+"Allow notifications so event alerts can appear at the right time." = "Salli ilmoitukset, jotta tapahtumahälytykset näkyvät oikeaan aikaan.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Ilmoitukset on poistettu käytöstä tässä sovelluksessa. Ota ne käyttöön siirtymällä kohtaan Asetukset -> Sovellukset -> Cloud Calendars -> Ilmoitukset -> Salli ilmoitukset.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating on tekoälyllä toimiva valmentajasi älykkäämpään ravitsemukseen ja harjoitteluun. Siinä yhdistyvät moderni ravitsemustiede käytännöllisiin työkaluihin, joiden avulla voit suunnitella aterioita, suunnitella harjoituksia, hallita ruokakomeroasi ja ymmärtää, kuinka ruoka ja liike vaikuttavat kehoosi.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio on edistynyt 3D-suunnitteluympäristö iOS- ja macOS-kehittäjille. Se yhdistää tarkan RealityKit-renderöinnin tehokkaaseen muotoillun tekstin editoriin, jolla raakakuvakaappaukset voi muuntaa ammattimaisiksi App Store -materiaaleiksi.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio on luojatason näytön tallennusstudio iOS ja macOS. Tallenna näyttösi ja kamerasi samaan aikaan, ohjaa mikrofonia ja järjestelmän ääntä ja vie puhtaita MP4-tiedostoja opetusohjelmia, esittelyjä ja tuote-esittelyjä varten. iOS-sovelluksella voit jopa toistaa videon sovelluksen sisällä ja tallentaa sen yhdessä kamerasi kanssa reaktiotyyppistä ja esittäjän ohjaamaa sisältöä varten.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars yhdistää edistyneen ajoituksen kauniisti integroituihin sääennusteisiin, joten voit suunnitella tarkasti. Se tukee useita kalenteripalveluita, intuitiivista elepohjaista muokkausta, sisäänrakennettuja kokouslinkkejä ja yksityiskohtaisia ​​tunti-/päiväennusteita suoraan aikataulusi sisällä.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI auttaa ymmärtämään markkinoiden liikkeitä laitteen sisäisen analytiikan ja usean agentin työnkulun avulla, joka on suunniteltu erottamaan signaalit kohinasta. Seuraa reaaliaikaisia ​​hintatietoja, tutki järjestelmätyylisiä todennäköisyyksiä ja käytä selkeitä kojetauluja ja kaavioita päätöksenteon tueksi. Tietosuoja ensin: määritykset pysyvät laitteessasi.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Apit";
+"Plan" = "Tilaus";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Lumimyrskyä";
+"WeatherCondition.blowingDust" = "Pölyistä";
+"WeatherCondition.blowingSnow" = "Lumituiskua";
+"WeatherCondition.breezy" = "Kohtalaista tuulta";
+"WeatherCondition.clear" = "Selkeää";
+"WeatherCondition.cloudy" = "Pilvistä";
+"WeatherCondition.drizzle" = "Tihkusadetta";
+"WeatherCondition.flurries" = "Kevyttä lumisadetta";
+"WeatherCondition.foggy" = "Sumuista";
+"WeatherCondition.freezingDrizzle" = "Jäätävää tihkusadetta";
+"WeatherCondition.freezingRain" = "Jäätävää sadetta";
+"WeatherCondition.frigid" = "Kylmää";
+"WeatherCondition.hail" = "Raekuuroja";
+"WeatherCondition.haze" = "Usvaa";
+"WeatherCondition.heavyRain" = "Runsasta sadetta";
+"WeatherCondition.heavySnow" = "Runsasta lumisadetta";
+"WeatherCondition.hot" = "Kuumaa";
+"WeatherCondition.hurricane" = "Hurrikaani";
+"WeatherCondition.isolatedThunderstorms" = "Yksittäisiä ukkosmyrskyjä";
+"WeatherCondition.mostlyClear" = "Lähinnä selkeää";
+"WeatherCondition.mostlyCloudy" = "Lähinnä pilvistä";
+"WeatherCondition.partlyCloudy" = "Puolipilvistä";
+"WeatherCondition.rain" = "Vesisadetta";
+"WeatherCondition.scatteredThunderstorms" = "Paikoittain ukkosta";
+"WeatherCondition.sleet" = "Räntäsadetta";
+"WeatherCondition.smoky" = "Savuista";
+"WeatherCondition.snow" = "Lumisadetta";
+"WeatherCondition.strongStorms" = "Kovaa ukkosta";
+"WeatherCondition.sunFlurries" = "Aurinkoista ja lumikuuroja";
+"WeatherCondition.sunShowers" = "Aurinkoista ja vesikuuroja";
+"WeatherCondition.thunderstorms" = "Ukkosta";
+"WeatherCondition.tropicalStorm" = "Trooppista myrskyä";
+"WeatherCondition.windy" = "Tuulista";
+"WeatherCondition.wintryMix" = "Jäätävää sadetta";
+"MoonPhase.new" = "Uusikuu";
+"MoonPhase.waxingCrescent" = "Kasvava sirppi";
+"MoonPhase.firstQuarter" = "Ensimmäinen neljännes";
+"MoonPhase.waxingGibbous" = "Kasvava kupera kuu";
+"MoonPhase.full" = "Täysikuu";
+"MoonPhase.waningGibbous" = "Vähenevä kupera kuu";
+"MoonPhase.lastQuarter" = "Viime neljännes";
+"MoonPhase.waningCrescent" = "Vähenevä sirppi";

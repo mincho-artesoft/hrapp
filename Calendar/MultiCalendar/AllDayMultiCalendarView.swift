@@ -134,7 +134,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         let allCals = calendarVM.calendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-        let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+        let sortedCals = arrangedForLayoutDirection(
+            calsToShow.sorted { $0.1.title < $1.1.title },
+            in: self
+        )
         
         let numberOfCalendars = max(1, sortedCals.count)
         let subColumnWidth = dayColumnWidth / CGFloat(numberOfCalendars)
@@ -208,7 +211,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         let allCals = calendarVM.calendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-        let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+        let sortedCals = arrangedForLayoutDirection(
+            calsToShow.sorted { $0.1.title < $1.1.title },
+            in: self
+        )
         let numberOfCalendars = max(1, sortedCals.count)
         if dayCount == 0 || numberOfCalendars == 0 {
             ctx.restoreGState()
@@ -383,7 +389,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             let allCals = CalendarViewModel.shared.calendarsDict
             let selectedCals = allCals.filter { $0.value.selected }
             let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-            let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+            let sortedCals = arrangedForLayoutDirection(
+                calsToShow.sorted { $0.1.title < $1.1.title },
+                in: self
+            )
             let numCalendars = max(1, sortedCals.count)
             let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
             
@@ -444,7 +453,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let allCals = CalendarViewModel.shared.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+                let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.1.title < $1.1.title },
+                    in: self
+                )
                 let numCalendars = max(1, sortedCals.count)
                 let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
                 
@@ -485,7 +497,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let allCals = CalendarViewModel.shared.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+                let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.1.title < $1.1.title },
+                    in: self
+                )
                 let numCalendars = max(1, sortedCals.count)
                 let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
                 
@@ -582,7 +597,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     let allCals = CalendarViewModel.shared.calendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                    let sortedCalsSorted = sortedCals.sorted { $0.1.title < $1.1.title }
+                    let sortedCalsSorted = arrangedForLayoutDirection(
+                        sortedCals.sorted { $0.1.title < $1.1.title },
+                        in: self
+                    )
                     
                     let relativeX = evView.frame.midX
                         - CGFloat(newDayIndex) * dayColumnWidth
@@ -621,7 +639,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let allCals = CalendarViewModel.shared.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                let sortedCalsSorted = sortedCals.sorted { $0.1.title < $1.1.title }
+                let sortedCalsSorted = arrangedForLayoutDirection(
+                    sortedCals.sorted { $0.1.title < $1.1.title },
+                    in: self
+                )
                 
                 let numCalendars = max(1, sortedCalsSorted.count)
                 let subColumnWidth = container.weekView.dayColumnWidth / CGFloat(numCalendars)
@@ -684,7 +705,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         // Ако няма селектирани, взимаме всички:
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         // Сортираме
-        let sortedCals = calsToShow.sorted { $0.1.title < $1.1.title }
+        let sortedCals = arrangedForLayoutDirection(
+            calsToShow.sorted { $0.1.title < $1.1.title },
+            in: self
+        )
         let numCals = max(1, sortedCals.count)
         
         // subColumnWidth = общата ширина на деня / брой календари

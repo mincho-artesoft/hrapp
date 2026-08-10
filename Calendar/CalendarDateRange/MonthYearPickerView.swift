@@ -5,10 +5,11 @@ import UIKit
 // =====================================================================
 public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    private let months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ]
+    private lazy var months: [String] = {
+        let formatter = DateFormatter()
+        formatter.locale = .appFormatting
+        return formatter.standaloneMonthSymbols ?? formatter.monthSymbols
+    }()
 
     public var years: [Int] = []
     private let monthRowsMultiplier = 10_000
@@ -49,16 +50,28 @@ public class MonthYearPickerView: UIPickerView, UIPickerViewDataSource, UIPicker
     }
 
     public func pickerView(_ pickerView: UIPickerView,
-                           titleForRow row: Int,
-                           forComponent component: Int) -> String? {
+                           viewForRow row: Int,
+                           forComponent component: Int,
+                           reusing view: UIView?) -> UIView {
+        let label = (view as? UILabel) ?? UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.textColor = .label
+        label.useAdaptiveSingleLine(minimumScale: 0.45)
+
         if component == 0 {
             let mIndex = row % months.count
-            return months[mIndex]
+            label.text = months[mIndex]
         } else {
             let yIndex = row % years.count
             let realYear = years[yIndex]
-            return "\(realYear)"
+            label.text = localizedIntegerString(realYear)
         }
+        return label
+    }
+
+    public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        component == 0 ? pickerView.bounds.width * 0.62 : pickerView.bounds.width * 0.32
     }
 
     public func pickerView(_ pickerView: UIPickerView,

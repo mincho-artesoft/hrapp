@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct PressureCard: View {
+    @Environment(\.layoutDirection) private var layoutDirection
+
     let pressure: Double? // hPa
     let trend: String?
 
@@ -25,7 +27,10 @@ struct PressureCard: View {
              if let p = pressure {
                  pressureFraction = max(0.0, min(1.0, (p - minPressure) / pressureRange))
              }
-             let needleAngle = startAngle + (totalAngle * pressureFraction)
+             let visualPressureFraction = layoutDirection == .rightToLeft
+                ? 1 - pressureFraction
+                : pressureFraction
+             let needleAngle = startAngle + (totalAngle * visualPressureFraction)
 
              // 1. Draw the gauge background arc (subtle)
              let gaugePath = Path { path in
@@ -62,12 +67,14 @@ struct PressureCard: View {
              Text(NSLocalizedString("Low", comment: "Low pressure label"))
                  .font(.system(size: 10, weight: .medium))
                  .foregroundStyle(.secondary)
+                 .adaptiveSingleLine(minimumScale: 0.4)
                  .offset(x: 5, y: 5) // Position labels
          }
          .overlay(alignment: .bottomTrailing) {
              Text(NSLocalizedString("High", comment: "High pressure label"))
                   .font(.system(size: 10, weight: .medium))
                   .foregroundStyle(.secondary)
+                  .adaptiveSingleLine(minimumScale: 0.4)
                   .offset(x: -5, y: 5) // Position labels
          }
          .padding(.bottom, 10) // Padding below gauge
@@ -80,13 +87,14 @@ struct PressureCard: View {
                 .symbolRenderingMode(.hierarchical)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .adaptiveSingleLine(minimumScale: 0.4)
 
             // Main Value - Below Title
             HStack(alignment: .firstTextBaseline, spacing: 2) {
                  if let pres = pressure {
                      // Format with comma using NumberFormatter if desired for locale
                      Text(formatPressure(pres))
-                     // Text(String(format: "%.0f", pres.rounded())) // Original formatting
+                     // Text(localizedFormat("%.0f", pres.rounded())) // Original formatting
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
                      Text(GlobalState.pressureUnitLabel)
@@ -120,9 +128,9 @@ struct PressureCard: View {
     
     func formatPressure(_ value: Double) -> String {
         if GlobalState.measurementSystem == "Imperial" {
-            return String(format: "%.2f", value)
+            return localizedFormat("%.2f", value)
         } else {
-            return String(format: "%.0f", value)
+            return localizedFormat("%.0f", value)
         }
     }
 }

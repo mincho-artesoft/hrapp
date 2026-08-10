@@ -10,10 +10,11 @@ struct FeelsLikeCard: View {
             Label(NSLocalizedString("FEELS LIKE", comment: "Feels like card title"), systemImage: "thermometer")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .adaptiveSingleLine(minimumScale: 0.4)
 
             // Main Value - Below title
             if let temp = feelsLike {
-                Text("\(Int(temp.rounded()))°")
+                Text(localizedFormat("%d°", Int(temp.rounded())))
                     .font(.system(size: 34, weight: .regular)) // Large regular font
                     .foregroundStyle(.primary)
             } else {

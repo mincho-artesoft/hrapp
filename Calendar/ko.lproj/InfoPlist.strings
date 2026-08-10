@@ -1,0 +1,9 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars에서는 원활한 예약을 위해 iCloud, Google, Microsoft 캘린더의 이벤트를 통합하려면 캘린더 액세스가 필요합니다.";
+
+"NSContactsUsageDescription" = "Cloud Calendars는 연락처를 사용하여 이벤트 초대를 단순화하고 참가자 세부정보를 손쉽게 관리합니다.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars는 앱이 종료된 경우에도 위치에 액세스하여 정확한 일기 예보와 예정된 이벤트에 대한 적시 알림을 제공합니다.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars는 활동하는 동안 사용자의 위치를 사용하여 정확한 지역 일기 예보를 캘린더에 직접 통합합니다.";

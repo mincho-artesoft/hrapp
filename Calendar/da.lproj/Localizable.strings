@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Der blev ikke angivet nogen e-mail.";
+"Please enter a valid email to continue." = "Indtast venligst en gyldig e-mail for at fortsætte.";
+"Your email" = "Din e-mail";
+"Save" = "Gem";
+"Login" = "Log ind";
+"Logout" = "Log ud";
+
+/* RootView */
+"N/A" = "Ikke tilgængelig";
+"Calendars" = "Kalendere";
+"Inbox" = "Indbakke";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Andet";
+"Google calendars" = "Google kalendere";
+"No synced Google calendars yet." = "Ingen synkroniserede Google-kalendere endnu.";
+"Microsoft calendars" = "Microsoft kalendere";
+"No synced Microsoft calendars yet." = "Ingen synkroniserede Microsoft-kalendere endnu.";
+"Sign out" = "Log ud";
+"Add iCloud Calendar" = "Tilføj iCloud Kalender";
+"Share calendars with iCloud Calendar" = "Del kalendere med iCloud Kalender";
+"Sign in with Google" = "Log ind med Google";
+"Sign in with Microsoft" = "Log ind med Microsoft";
+"Deselect All" = "Fravælg Alle";
+"Select All" = "Vælg alle";
+"No Email" = "Ingen e-mail";
+"Add Google Calendar" = "Tilføj Google Kalender";
+
+/* AddCalendarView */
+"Calendar Name" = "Kalender navn";
+"Account" = "Konto";
+"COLOR" = "FARVE";
+"NOTIFICATIONS" = "MEDDELELSER";
+"Event Alerts" = "Begivenhedsadvarsler";
+"Allow events on this calendar to display alerts." = "Tillad, at begivenheder i denne kalender viser advarsler.";
+"Add Calendar" = "Tilføj kalender";
+
+/* Colors */
+"Red" = "Rød";
+"Orange" = "Orange";
+"Yellow" = "Gul";
+"Green" = "Grøn";
+"Blue" = "Blå";
+"Purple" = "Lilla";
+"Brown" = "Brun";
+"Custom" = "Brugerdefineret";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Kalender farve";
+"Custom..." = "Brugerdefineret...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Rediger kalender";
+"Delete Calendar" = "Slet kalender";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Indlæser delingsindstillinger...";
+"Shared with these users" = "Delt med disse brugere";
+"Add New Email" = "Tilføj ny e-mail";
+"Email to share" = "E-mail for at dele";
+"Permission:" = "Tilladelse:";
+"Add" = "Tilføj";
+"Sharing:" = "Deling:";
+"Done" = "Færdig";
+
+"Error loading: %@" = "Fejl ved indlæsning: %@";
+"Error adding: %@" = "Fejl ved tilføjelse af: %@";
+"Error deleting: %@" = "Fejl ved sletning: %@";
+"Error updating: %@" = "Fejl ved opdatering: %@";
+"Error re-inviting (delete): %@" = "Fejl ved geninvitation (slet): %@";
+"Error re-inviting (insert): %@" = "Fejl ved geninvitation (indsæt): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Læser";
+"Writer" = "Forfatter";
+"Owner"  = "Ejer";
+
+/* MonthCalendarView */
+"Day View" = "Dagsvisning";
+"This is a repeating event." = "Dette er en gentagelsesbegivenhed.";
+"Save for This Event Only" = "Gem kun til denne begivenhed";
+"Save for Future Events" = "Gem til fremtidige begivenheder";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Sol";
+"Mon" = "man";
+"Tue" = "tir";
+"Wed" = "ons";
+"Thu" = "tor";
+"Fri" = "fre";
+"Sat" = "Lør";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Luk";
+
+/* AllEventsListView */
+"No calendar access." = "Ingen kalenderadgang.";
+
+/* EventRowView */
+"Ends" = "Slutter";
+
+/* SearchEventRowView */
+"No Title" = "Ingen titel";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Deltag i mødet";
+"Edit" = "Rediger";
+"Duplicate" = "Duplikat";
+"Delete" = "Slet";
+"Add to Google Meet" = "Føj til Google Meet";
+"Add to Microsoft Teams" = "Føj til Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Intet valgt område";
+"all-day" = "hele dagen";
+"Search events..." = "Søg begivenheder...";
+"Day" = "dag";
+"MultiDay" = "Flere dage";
+"Month" = "Måned";
+"Year" = "år";
+"List" = "Liste";
+"MultiCalendar" = "Multikalender";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Ny begivenhed";
+"All-day event" = "Heldagsbegivenhed";
+"Recurring Event" = "Tilbagevendende begivenhed";
+"This event is part of a series. Update which events?" = "Denne begivenhed er en del af en serie. Opdater hvilke begivenheder?";
+"This Event Only" = "Kun denne begivenhed";
+"All Future Events" = "Alle fremtidige begivenheder";
+"Cancel" = "Annuller";
+
+/* DraggableMenuView */
+"Calendar" = "Kalender";
+"Subscriptions" = "Abonnementer";
+"Live" = "Direkte";
+"Stop" = "Stop";
+"Calendar Live Activity" = "Kalenderaktivitet i realtid";
+"Get" = "Få";
+"Color" = "Farve";
+"Search for a city…" = "Søg efter en by...";
+"No directions" = "Ingen retninger";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Placeringsadgang nægtet. Søg efter en by, eller giv adgang i Indstillinger.";
+"Cannot refresh. Location unknown." = "Kan ikke opdatere. Beliggenhed ukendt.";
+"10-DAY FORECAST" = "10-DAGES PROGNOSE";
+"HighLowLabelFormat" = "Maks.:%d° Min.:%d°";
+"tomorrow" = "i morgen";
+"on_day" = "på %@";
+"in_days" = "om %d dage";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Ny begivenhed";
+
+/* Search placeholder */
+"Search for a city..." = "Søg efter en by...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Tryk på en time for hurtigt at tilføje en kalenderbegivenhed.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "FØLES SOM";
+"similar_to_actual_temp" = "Svarende til den faktiske temperatur.";
+"wind_cooler_feel" = "Vinden får det til at føles køligere.";
+"humidity_warmer_feel" = "Fugtighed får det til at føles varmere.";
+
+/* HumidityCard */
+"HUMIDITY" = "FUGTIGHED";
+"The dew point is %d° right now." = "Dugpunktet er %d° lige nu.";
+"dewPoint.current" = "Dugpunktet er %d° lige nu.";
+
+/* MoonCard */
+"MOON PHASE" = "MÅNEFASE";
+"Moonrise" = "Måneopgang";
+"Moonset" = "Månenedgang";
+"Next %@" = "Næste %@";
+"Data unavailable" = "Data er ikke tilgængelig";
+"%d day" = "%d dag";
+"%d days" = "%d dage";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "NEDBØR";
+"PRECIPITATION_CARD_TODAY_LABEL" = "i dag";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Næste forventet er %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Der forventes ingen nedbør snart.";
+
+/* PressureCard */
+"PRESSURE" = "TRYK";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "SOLOPGANG";
+"Sunrise: %@" = "Solopgang: %@";
+"Sunset: %@" = "Solnedgang: %@";
+"Sunrise" = "Solopgang";
+"Sunset" = "Solnedgang";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UV-INDEKS";
+"Low" = "Lav";
+"Moderate" = "Moderat";
+"High" = "Høj";
+"Very High" = "Meget høj";
+"Extreme" = "Ekstrem";
+
+/* VisibilityCard */
+"VISIBILITY" = "SYNLIGHED";
+"km" = "km";
+"Perfectly clear view." = "Helt klart udsyn.";
+"Excellent visibility." = "Fremragende synlighed.";
+"Good visibility." = "God synlighed.";
+"Moderate visibility." = "Moderat synlighed.";
+"Poor visibility." = "Dårlig udsyn.";
+"Very poor visibility." = "Meget dårlig sigtbarhed.";
+"visibility.perfect"   = "Helt klart udsyn.";
+"visibility.excellent" = "Fremragende synlighed.";
+"visibility.good"      = "God synlighed.";
+"visibility.moderate"  = "Moderat synlighed.";
+"visibility.poor"      = "Dårlig udsyn.";
+"visibility.verypoor"  = "Meget dårlig sigtbarhed.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Vind";
+"Gusts" = "Vindstød";
+"Direction" = "Retning";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Vejrdata kunne ikke hentes. Tjek venligst din forbindelse, eller prøv igen senere.";
+"Falling" = "Falder";
+"Rising" = "Stigende";
+"Steady" = "Stabil";
+"Unknown" = "Ukendt";
+"Sunny" = "Solrigt";
+"Cloudy" = "Overskyet";
+"Partly Cloudy" = "Delvis skyet";
+"Drizzle" = "Støvregn";
+"Thunderstorm" = "Tordenvejr";
+"Fog" = "Tåge";
+"Partly Cloudy Night" = "Delvist overskyet nat";
+"Clear Night" = "Klar nat";
+"Hazy" = "Diset";
+"Today" = "I dag";
+"Now" = "Nu";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNV";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Mulighed for nedbør";
+"Today's chance: %d%%" = "Dagens chance: %d%%";
+"%@'s chance: %d%%" = "%@s chance: %d%%";
+"Max" = "Maks";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Den daglige chance for nedbør har en tendens til at være højere end chancen for hver time.";
+"ChanceOfPrecipitation_Title" = "Mulighed for nedbør";
+"TodaysChance"                = "Dagens chance: %d%%";
+"OtherDayChance"              = "%@s chance: %d%%";
+"DailyChanceExplanation"      = "Den daglige chance for nedbør har en tendens til at være højere end chancen for hver time.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Oplevet temperatur";
+"Actual" = "Faktisk";
+"No hourly data available for this day." = "Ingen timedata tilgængelige for denne dag.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Hvordan føles temperaturen som følge af fugt, sollys eller vind.";
+"The actual air temperature." = "Den faktiske lufttemperatur.";
+"HighLabelFormat" = "Maks.: %d°";
+"LowLabelFormat" = "Min.: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Fugtighed";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Fugtighed %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Fugtighed Gns. %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Dagens min. %d%% – maks. %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Maks";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Regn: %.1f%@, Sne: %.1f%@";
+"Precip_Total_RainFormat"       = "Regn: %.1f%@";
+"Precip_Total_SnowFormat"       = "Sne: %.1f%@";
+"Precip_Total_None"             = "Nedbør: 0%@";
+"Precip_Bars_Subtitle"          = "Timestænger for regn og sne (%@).";
+"Precip_Level_Light"            = "Lys";
+"Precip_Level_Moderate"         = "Moderat";
+"Precip_Level_Heavy"            = "Tung";
+"Precip_Tooltip_Format"         = "%@h\nRegn: %.1f%@\nSne: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Tryk %@ %@";
+"Pressure_CurrentUnavailable"      = "Tryk: --";
+"Pressure_DailyMinMaxFormat"       = "Dagens min. %@ %@ – maks. %@ %@";
+"Pressure_AverageFormat"           = "Trykgennemsnit %@ %@";
+"Pressure_DailyRangeFormat"        = "Daglig rækkevidde: %@–%@ %@";
+"Pressure_Title"                   = "Tryk";
+"Pressure_NoData"                  = "Der er ingen tilgængelige trykdata for denne dag.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Dagens %@ %d";
+"UVGraphNoHourlyData"   = "Ingen timedata tilgængelige for denne dag.";
+"UVGraphNowLabel"       = "Nu, %@";
+"UVCategory_None"       = "Ingen";
+"UVCategory_Low"        = "Lav";
+"UVCategory_Moderate"   = "Moderat";
+"UVCategory_High"       = "Høj";
+"UVCategory_VeryHigh"   = "Meget høj";
+"UVCategory_Extreme"    = "Ekstrem";
+"UVAdvice_None"         = "Der forventes ingen moderate eller højere UV-niveauer denne dag.";
+"UVAdvice_Range"        = "Solbeskyttelse anbefales. UV-niveauer spænder fra %@ til %@, nået mellem %@ og %@.";
+"UVGraphMaxLabel" = "Maks";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Synlighed";
+"Visibility_NoData"                = "Der er ingen tilgængelige synlighedsdata for denne dag.";
+"Visibility_CurrentFormat"         = "Synlighed %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – maks. %d %@";
+"Visibility_NoCurrentData"         = "Ingen aktuelle synlighedsdata tilgængelige.";
+"Visibility_HourlyAverages_NoData" = "Ingen timedata tilgængelige.";
+"Visibility_MaxLabel"              = "Maks";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Vindhastighed og vindstød";
+"WindGraph_NoData" = "Ingen vinddata tilgængelige for denne dag.";
+"WindGraph_SpeedHeader" = "Vindhastighed %d";
+"WindGraph_GustHeader" = "Vindstød op til %d";
+"WindGraph_SpeedRangeHeader" = "Vindhastighed %d-%d";
+"WindGraph_MaxSpeedLabel" = "Maks. hastighed";
+"WindGraph_MaxGustLabel" = "Maks. vindstød";
+"WindGraph_DragLabel" = "%@\nHastighed: %d\nVindstød: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Daglig oversigt";
+
+"Precipitation Totals" = "Nedbør i alt";
+"LAST 24 HOURS" = "SIDSTE 24 TIMER";
+"NEXT 24 HOURS" = "NÆSTE 24 TIMER";
+"Total" = "I alt";
+"Rain" = "Regn";
+"Snow" = "Sne";
+
+"About Wind Speed and Gusts" = "Om vindhastighed og vindstød";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Vindhastigheden beregnes ud fra gennemsnittet over en kort periode. Vindstød er korte vindstød over dette gennemsnit. Et vindstød varer typisk under 20 sekunder.";
+
+"About the Beaufort Scale" = "Om Beaufort-skalaen";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Beaufort vindskalaen udtrykker, hvor kraftig eller stærk vinden er ved en given hastighed. Beaufort-skalaen kan gøre det lettere at forstå, hvor blæsende det vil føles, eller hvor meget virkning vinden kan have. Hver værdi på skalaen svarer til et vindhastighedsområde.";
+
+"About Feels Like Temperature" = "Om oplevet temperatur";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Den oplevede temperatur angiver, hvor varmt eller koldt det føles, og kan afvige fra den faktiske temperatur. Den påvirkes af luftfugtighed, sollys og vind.";
+
+"Options" = "Valgmuligheder";
+"Temperature" = "Temperatur";
+"Use system setting (°C)" = "Brug systemindstilling (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Forhold";
+"UV Index" = "UV-indeks";
+"Wind" = "Vind";
+"Precipitation" = "Nedbør";
+"Humidity" = "Fugtighed";
+"Visibility" = "Synlighed";
+"Pressure" = "Tryk";
+
+/* Fallback key */
+"displayedCondition" = "vist tilstand";
+
+/* Titles */
+"Forecast"                   = "Prognose";
+"DailySummary"               = "Daglig oversigt";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° nu med %@ betingelser. Der er en risiko for nedbør på %@. Vind fra %@ med vindstød op til %d %@. Dagens temperatur varierer fra %d° til %d° og føles som %d°. %@ og %@.";
+"UVIndexFormat"              = "UV-indeks op til %d";
+"HumidityFormat"             = "Luftfugtighed omkring %d%%";
+"HumidityRangeFormat"        = "Luftfugtighed fra %d%% til %d%%";
+"NA" = "Ikke tilgængelig";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@s laveste er %d° og den højeste er %d°. Temperaturen vil føles som %d° til %d°. Der forventes vind fra %@. %@";
+"NoPrecipLast24h"            = "Der er ikke registreret nedbør de seneste 24 timer.";
+"RainLast24h"                = "Det har regnet %d mm i de sidste 24 timer.";
+"SnowAndRainLast24h"         = "I de sidste 24 timer har sneen målt %@ cm og regn %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNV";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Nedbør i alt";
+"Last24h_Label"             = "SIDSTE 24 TIMER";
+"Next24h_Label"             = "NÆSTE 24 TIMER";
+"Total_Label"               = "I alt";
+"Precipitation_Label"       = "Nedbør";
+"Rain_Label"                = "Regn";
+"Snow_Label"                = "Sne";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Vinden er i øjeblikket %1$d %2$@ fra %3$@. I dag er vindhastighederne %4$d til %5$d %2$@, med vindstød op til %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Vindhastighederne varierer fra %1$d til %2$d %3$@, med vindstød op til %4$d %3$@.";
+
+"Beaufort_Scale"                = "Beaufort skala";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Beskrivelse";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Rolig";
+"Beaufort_1"                    = "Let luft";
+"Beaufort_2"                    = "Let brise";
+"Beaufort_3"                    = "Blid brise";
+"Beaufort_4"                    = "Moderat brise";
+"Beaufort_5"                    = "Frisk brise";
+"Beaufort_6"                    = "Stærk brise";
+"Beaufort_7"                    = "Høj vind";
+"Beaufort_8" = "Hård kuling";
+"Beaufort_9"                    = "Stærk kuling";
+"Beaufort_10"                   = "Storm";
+"Beaufort_11"                   = "Voldsom storm";
+"Beaufort_12"                   = "Orkanstyrke";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Der har været %.1f%@ nedbør inden for de sidste 24 timer. Dagens samlede nedbør vil være %.1f%@. I de næste 24 timer forventes der %.1f%@ nedbør.";
+"ForecastPrecip_OtherDayFormat" = "På %@ vil den samlede nedbør være %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Om nedbørsintensitet";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensiteten beregnes ud fra, hvor meget regn eller sne der falder pr. time, og angiver, hvor kraftig regnen eller sneen vil føles. Den bruges også til andre nedbørstyper såsom slud og vinterblanding. Et skybrud eller en kraftig snestorm kan have en “kraftig” intensitet, mens almindelig regn eller lettere støvregn kan have en “moderat” eller “let” intensitet.";
+
+/* Section titles */
+"Forecast_Title"               = "Prognose";
+"DailySummary_Title"           = "Daglig oversigt";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Dugpunktet er %d° til %d°.";
+"DewPoint_FutureFormat"        = "Dugpunktet vil være %d° til %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "I dag er den gennemsnitlige luftfugtighed %d%%. %@";
+"ForecastHumidity_Other"       = "På %@ vil den gennemsnitlige luftfugtighed være %d%%.\n%@";
+
+"AboutPressure_Title"  = "Om pres";
+"AboutPressure_Body"   = "Betydelige, hurtige trykændringer bruges til at forudsige ændringer i vejret. Eksempelvis kan et trykfald betyde, at regn eller sne er på vej, og stigende tryk kan betyde, at vejret bliver bedre. Tryk kaldes også barometertryk eller atmosfærisk tryk.";
+
+"AboutHumidity_Title"  = "Om relativ luftfugtighed";
+"AboutHumidity_Body"   = "Relativ luftfugtighed, almindeligvis kendt som fugt, er mængden af fugt i luften sammenlignet med, hvad luften kan holde. Luften kan holde på mere fugt ved højere temperaturer. En relativ luftfugtighed tæt på 100% betyder, at der kan være dug eller tåge.";
+
+"AboutDewPoint_Title" = "Om Dugpunkt";
+"AboutDewPoint_Body"  = "Dugpunktet er, hvad temperaturen skal falde til, for at dug kan dannes. Det kan være en nyttig måde at fortælle, hvor fugtig luften føles - jo højere dugpunktet er, jo mere fugtigt føles den. Et dugpunkt, der matcher den aktuelle temperatur, betyder, at den relative luftfugtighed er 100 %, og der kan være dug eller tåge.";
+
+"Section_Forecast"                     = "Prognose";
+"Section_DailySummary"                 = "Daglig oversigt";
+"ForecastVisibility_TodayFormat" = "I dag vil sigtbarheden være %@, ved %d til %d %@.";
+"ForecastVisibility_OtherFormat" = "På %@ vil den laveste sigtbarhed være %@ ved %d %@, og den højeste vil være %@ ved %d %@.";
+"Clarity_Foggy"                        = "Tåget";
+"Clarity_Hazy"                         = "Diset";
+"Clarity_Clear"                        = "Ryd";
+"Clarity_PerfectlyClear"               = "Helt overskueligt";
+
+"AboutVisibility_Title" = "Om synlighed";
+"AboutVisibility_Body" = "Synlighed fortæller dig, hvor langt væk du tydeligt kan se objekter som bygninger og bakker. Det er et mål for luftens gennemsigtighed og tager ikke højde for mængden af ​​sollys eller tilstedeværelsen af ​​forhindringer. Sigtbarhed ved eller over %@ betragtes som klar.";
+
+"PressureForecast_Today" = "Trykket er i øjeblikket %@ %@ og faldende. I dag vil det gennemsnitlige tryk være %@ %@, og det laveste tryk vil være %@ %@.";
+"PressureForecast_Other" = "På %@ vil det gennemsnitlige tryk være %@ %@, og det laveste tryk vil være %@ %@.";
+"SectionForecast" = "Prognose";
+"SectionDailySummary" = "Daglig oversigt";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Alle funktioner i grundabonnementet";
+"Multi-calendar view" = "Multi-kalender visning";
+"Sync with Google Calendar" = "Synkroniser med Google Kalender";
+"Sync meets from Google Meet" = "Synkroniser møder fra Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Grundplan";
+"Single-day calendar view" = "En-dags kalendervisning";
+"Multi-day calendar view" = "Multi-dages kalendervisning";
+"Monthly calendar view" = "Månedlig kalendervisning";
+"Yearly overview" = "Årsoversigt";
+"List view for events" = "Listevisning for begivenheder";
+"Weather view" = "Vejrudsigt";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Premium-plan";
+"Sync with Microsoft Calendar" = "Synkroniser med Microsoft Kalender";
+"Sync meets from Microsoft Teams" = "Synkroniser møder fra Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Svarer til %@ om måneden";
+"%d %@ free" = "%d %@ gratis";
+
+/* SubscriptionListView */
+"Premium Plans" = "Premium-planer";
+"You are subscribed to the %@ %@ plan" = "Du abonnerer på %@ %@ planen";
+"Renews on: %@" = "Fornyer den: %@";
+"Start Free Trial" = "Start gratis prøveperiode";
+"Subscribe Now" = "Abonner nu";
+"%d %@ free, then %@%@." = "%d %@ gratis, derefter %@%@.";
+"Subscribe for %@%@." = "Abonner på %@%@.";
+"Privacy Policy"     = "Privatlivspolitik";
+"Terms of Service"   = "Servicevilkår";
+
+/* SubscriptionCategory */
+"Advanced" = "Avanceret";
+"Advanced Plan" = "Avanceret plan";
+"All Advanced Plan features" = "Alle funktioner i det avancerede abonnement";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Du skal have en aktiv %@-plan for at få adgang til denne sektion.";
+"Plan Required" = "Plan påkrævet";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Basis";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Abonner på %@ %@ plan.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Fornyer den: %@";
+
+"Manage Subscription"                   = "Administrer abonnement";
+
+/* Period units */
+"Daily"     = "Dagligt";
+"Weekly"    = "Ugentligt";
+"Monthly"   = "Månedligt";
+"Yearly"    = "Årligt";
+"Recurring" = "Tilbagevendende";
+
+/* units */
+"day"   = "dag";
+"days"  = "dage";
+"week"  = "uge";
+"weeks" = "uger";
+"month"  = "måned";
+"months" = "måneder";
+"year"   = "år";
+"years"  = "år";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S,M,T,O,T,F,L";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Dine tidligere køb er blevet gendannet.";
+"No active subscriptions found to restore."                = "Ingen aktive abonnementer fundet at gendanne.";
+"Failed to restore purchases. Please try again later. (%@)" = "Kunne ikke gendanne køb. Prøv venligst igen senere. (%@)";
+"Restore Purchases"                                        = "Gendan køb";
+
+"Ads Free" = "Annoncer gratis";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalender og vejr";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Lille viser dagens dato og det aktuelle vejr. Mellem tilføjer månefase og vind.";
+"Calendar Events" = "Kalenderbegivenheder";
+"Shows today's date, current weather, and your next calendar events." = "Viser dagens dato, det aktuelle vejr og dine næste kalenderbegivenheder.";
+"No upcoming events" = "Ingen kommende begivenheder";
+"Tomorrow" = "I morgen";
+"Untitled" = "Uden titel";
+"Detail" = "Detalje";
+"Phase" = "Fase";
+"Weather" = "Vejret";
+"Select Your Email" = "Vælg din e-mail";
+"Confirm" = "Bekræft";
+"Calendar name" = "Kalendernavn";
+"Sharing: %@" = "Deling: %@";
+"Loading..." = "Indlæser...";
+"Selected Location" = "Valgt placering";
+"Data provided by Apple Weather" = "Data leveret af Apple Weather";
+"Next" = "Næste";
+"No details found for the selected location." = "Ingen detaljer fundet for den valgte placering.";
+"Could not determine the time zone for the selected location." = "Kunne ikke bestemme tidszonen for den valgte placering.";
+"(No Title)" = "(Ingen titel)";
+"Choose your e-mail" = "Vælg din e-mail";
+"It will be treated as your primary address and invitations will not be sent to it." = "Den vil blive behandlet som din primære adresse, og invitationer vil ikke blive sendt til den.";
+"Invalid URL" = "Ugyldig URL";
+"Rate limit or insufficient permission" = "Satsgrænse eller utilstrækkelig tilladelse";
+"Network error: %@" = "Netværksfejl: %@";
+"N/A - Selected Tab: %@" = "Ikke tilgængelig – valgt fane: %@";
+"Enable Notifications" = "Aktiver meddelelser";
+"Event Notifications" = "Begivenhedsmeddelelser";
+"Event alerts are scheduled from your event alert settings." = "Begivenhedsadvarsler er planlagt fra dine indstillinger for begivenhedsunderretninger.";
+"Allow notifications so event alerts can appear at the right time." = "Tillad notifikationer, så hændelsesadvarsler kan vises på det rigtige tidspunkt.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Notifikationer er slået fra for denne app. For at aktivere dem skal du gå til: Indstillinger -> Apps -> Cloud Calendars -> Underretninger -> Tillad meddelelser.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating er din AI-drevne coach til smartere ernæring og træning. Den kombinerer moderne ernæringsvidenskab med praktiske værktøjer til at hjælpe dig med at planlægge måltider, designe træning, styre dit spisekammer og forstå, hvordan mad og bevægelse påvirker din krop.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio er et avanceret 3D-designmiljø til iOS- og macOS-udviklere. Det kombinerer præcis RealityKit-gengivelse med en effektiv editor til formateret tekst, så du kan omdanne rå skærmbilleder til professionelle materialer til App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio er skærmoptagelsesstudiet af skabergrad for iOS og macOS. Optag din skærm og dit kamera på samme tid, styr mikrofon + systemlyd, og eksporter rene MP4'er til tutorials, gennemgange og produktdemoer. På iOS kan du endda afspille en video inde i appen og optage den sammen med dit kamera til reaktionsstil og præsentationsstyret indhold.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars kombinerer avanceret planlægning med smukt integrerede vejrudsigter, så du kan planlægge med præcision. Det understøtter flere kalendertjenester, intuitiv gestus-baseret redigering, indbyggede mødelinks og detaljerede time-/daglige prognoser direkte i din tidsplan.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI hjælper dig med at forstå markedsbevægelser med analyse på enheden og en arbejdsgang med flere agenter, der er udviklet til at adskille signal fra støj. Følg prisdata i realtid, undersøg sandsynligheder for markedsregimer, og brug overskuelige dashboards og diagrammer som støtte for dine beslutninger. Privatliv først: Dine konfigurationer bliver på enheden.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Apps";
+"Plan" = "Abonnement";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Snestorm";
+"WeatherCondition.blowingDust" = "Støv";
+"WeatherCondition.blowingSnow" = "Snefygning";
+"WeatherCondition.breezy" = "Frisk vind";
+"WeatherCondition.clear" = "Klart vejr";
+"WeatherCondition.cloudy" = "Skyet";
+"WeatherCondition.drizzle" = "Støvregn";
+"WeatherCondition.flurries" = "Lette snebyger";
+"WeatherCondition.foggy" = "Tåge";
+"WeatherCondition.freezingDrizzle" = "Fint isslag";
+"WeatherCondition.freezingRain" = "Isslag";
+"WeatherCondition.frigid" = "Koldt";
+"WeatherCondition.hail" = "Hagl";
+"WeatherCondition.haze" = "Dis";
+"WeatherCondition.heavyRain" = "Kraftig regn";
+"WeatherCondition.heavySnow" = "Kraftigt snefald";
+"WeatherCondition.hot" = "Varmt";
+"WeatherCondition.hurricane" = "Orkan";
+"WeatherCondition.isolatedThunderstorms" = "Isoleret tordenvejr";
+"WeatherCondition.mostlyClear" = "Mest klart vejr";
+"WeatherCondition.mostlyCloudy" = "Mest skyet";
+"WeatherCondition.partlyCloudy" = "Delvist skyet";
+"WeatherCondition.rain" = "Regn";
+"WeatherCondition.scatteredThunderstorms" = "Spredt tordenvejr";
+"WeatherCondition.sleet" = "Slud";
+"WeatherCondition.smoky" = "Røg";
+"WeatherCondition.snow" = "Sne";
+"WeatherCondition.strongStorms" = "Kraftigt tordenvejr";
+"WeatherCondition.sunFlurries" = "Sol og lette snebyger";
+"WeatherCondition.sunShowers" = "Sol og byger";
+"WeatherCondition.thunderstorms" = "Tordenvejr";
+"WeatherCondition.tropicalStorm" = "Tropisk Storm";
+"WeatherCondition.windy" = "Blæsende";
+"WeatherCondition.wintryMix" = "Vintervejr";
+"MoonPhase.new" = "Nymåne";
+"MoonPhase.waxingCrescent" = "Tiltagende måne";
+"MoonPhase.firstQuarter" = "Første kvarter";
+"MoonPhase.waxingGibbous" = "Tiltagende måne";
+"MoonPhase.full" = "Fuldmåne";
+"MoonPhase.waningGibbous" = "Aftagende måne";
+"MoonPhase.lastQuarter" = "Halvmåne (sidste kvarter)";
+"MoonPhase.waningCrescent" = "Aftagende måne";

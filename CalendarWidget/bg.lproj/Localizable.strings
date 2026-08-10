@@ -16,8 +16,8 @@
 "Starts in" = "Започва след";
 "Now" = "Сега";
 "LiveActivityCountdownFormat" = "%1$d %2$@";
-"LiveActivityCountdownMinuteUnitOne" = "мин";
-"LiveActivityCountdownMinuteUnitOther" = "мин";
+"LiveActivityCountdownMinuteUnitOne" = "min";
+"LiveActivityCountdownMinuteUnitOther" = "min";
 "LiveActivityCountdownHourUnitOne" = "ч";
 "LiveActivityCountdownHourUnitOther" = "ч";
 "LiveActivityCountdownDayUnitOne" = "ден";
@@ -31,3 +31,54 @@
 "High" = "Висок";
 "Very High" = "Много висок";
 "Extreme" = "Екстремен";
+
+/* Application and compass labels */
+"AppDisplayName" = "Cloud Calendars";
+"Compass_N" = "С";
+"Compass_S" = "Ю";
+"Compass_W" = "З";
+"Compass_E" = "И";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Виелица";
+"WeatherCondition.blowingDust" = "Прах";
+"WeatherCondition.blowingSnow" = "Сняг и вятър";
+"WeatherCondition.breezy" = "Ветровито";
+"WeatherCondition.clear" = "Ясно";
+"WeatherCondition.cloudy" = "Облачно";
+"WeatherCondition.drizzle" = "Ръмеж";
+"WeatherCondition.flurries" = "Вихрушки";
+"WeatherCondition.foggy" = "Мъгла";
+"WeatherCondition.freezingDrizzle" = "Суграшица";
+"WeatherCondition.freezingRain" = "Леден дъжд";
+"WeatherCondition.frigid" = "Студено";
+"WeatherCondition.hail" = "Градушка";
+"WeatherCondition.haze" = "Мараня";
+"WeatherCondition.heavyRain" = "Силен дъжд";
+"WeatherCondition.heavySnow" = "Силен снеговалеж";
+"WeatherCondition.hot" = "Горещо";
+"WeatherCondition.hurricane" = "Ураган";
+"WeatherCondition.isolatedThunderstorms" = "Отделни гръмотевични бури";
+"WeatherCondition.mostlyClear" = "Предимно ясно";
+"WeatherCondition.mostlyCloudy" = "Предимно облачно";
+"WeatherCondition.partlyCloudy" = "Частично облачно";
+"WeatherCondition.rain" = "Дъжд";
+"WeatherCondition.scatteredThunderstorms" = "Разкъсани гръмотевични бури";
+"WeatherCondition.sleet" = "Суграшица";
+"WeatherCondition.smoky" = "Дим";
+"WeatherCondition.snow" = "Сняг";
+"WeatherCondition.strongStorms" = "Силни гръмотевични бури";
+"WeatherCondition.sunFlurries" = "Слаб снеговалеж със слънце";
+"WeatherCondition.sunShowers" = "Слънчево с превалявания";
+"WeatherCondition.thunderstorms" = "Гръмотевична буря";
+"WeatherCondition.tropicalStorm" = "Тропическа буря";
+"WeatherCondition.windy" = "Ветровито";
+"WeatherCondition.wintryMix" = "Зимни валежи";
+"MoonPhase.new" = "Новолуние";
+"MoonPhase.waxingCrescent" = "Изгряващ полумесец";
+"MoonPhase.firstQuarter" = "Първа четвърт";
+"MoonPhase.waxingGibbous" = "Растяща луна";
+"MoonPhase.full" = "Пълнолуние";
+"MoonPhase.waningGibbous" = "Намаляваща луна";
+"MoonPhase.lastQuarter" = "Последна четвърт";
+"MoonPhase.waningCrescent" = "Залязващ полумесец";

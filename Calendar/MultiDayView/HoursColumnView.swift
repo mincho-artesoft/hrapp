@@ -29,16 +29,28 @@ public final class HoursColumnView: UIView {
         backgroundColor = .systemGray6
     }
 
-    /// Проверява дали системният часовник е 12-часов (според потребителските настройки)
-    private var uses12HourClock: Bool {
-        let localeForDetection = Locale.autoupdatingCurrent
-        let fmt = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: localeForDetection) ?? ""
-        return fmt.contains("a")
-    }
+    private lazy var hourFormatter: DateFormatter = {
+        appTimeFormatter()
+    }()
+
+    private lazy var hourMinuteFormatter: DateFormatter = {
+        appTimeFormatter()
+    }()
+
+    private lazy var minuteNumberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = .appFormatting
+        formatter.numberStyle = .decimal
+        formatter.minimumIntegerDigits = 2
+        formatter.maximumFractionDigits = 0
+        formatter.usesGroupingSeparator = false
+        return formatter
+    }()
 
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
+        let isRTL = effectiveUserInterfaceLayoutDirection == .rightToLeft
 
         // 1) Изчисляваме fractionCur
         var fractionCur: CGFloat = -1
@@ -66,8 +78,8 @@ public final class HoursColumnView: UIView {
             // Малка чертичка
             ctx.setStrokeColor(UIColor.lightGray.cgColor)
             ctx.setLineWidth(0.5)
-            ctx.move(to: CGPoint(x: bounds.width - 5, y: y))
-            ctx.addLine(to: CGPoint(x: bounds.width, y: y))
+            ctx.move(to: CGPoint(x: isRTL ? 0 : bounds.width - 5, y: y))
+            ctx.addLine(to: CGPoint(x: isRTL ? 5 : bounds.width, y: y))
             ctx.strokePath()
 
             // Текст
@@ -80,7 +92,7 @@ public final class HoursColumnView: UIView {
                 ]
             )
             let size = attrStr.size()
-            let textX = bounds.width - size.width - 4
+            let textX = isRTL ? 4 : bounds.width - size.width - 4
             let textY = y - size.height/2
             attrStr.draw(at: CGPoint(x: textX, y: textY))
         }
@@ -93,7 +105,8 @@ public final class HoursColumnView: UIView {
                 let baseY = extraMarginTopBottom + CGFloat(h) * hourHeight
                 let yPos = baseY + CGFloat(m)/60.0 * hourHeight
 
-                let minuteStr = String(format: ".%02d", m)
+                let localizedMinute = minuteNumberFormatter.string(from: NSNumber(value: m)) ?? String(m)
+                let minuteStr = ".\(localizedMinute)"
                 let attr = NSAttributedString(
                     string: minuteStr,
                     attributes: [
@@ -102,7 +115,7 @@ public final class HoursColumnView: UIView {
                     ]
                 )
                 let size = attr.size()
-                let textX = bounds.width - size.width - 4
+                let textX = isRTL ? 4 : bounds.width - size.width - 4
                 let textY = yPos - size.height/2
                 attr.draw(at: CGPoint(x: textX, y: textY))
             }
@@ -120,7 +133,7 @@ public final class HoursColumnView: UIView {
                 .foregroundColor: UIColor.systemRed
             ]
             let size = (currentTimeText as NSString).size(withAttributes: attrs)
-            let textX = bounds.width - size.width - 4
+            let textX = isRTL ? 4 : bounds.width - size.width - 4
             let textY = yPos - size.height/2
             (currentTimeText as NSString).draw(at: CGPoint(x: textX, y: textY), withAttributes: attrs)
         }
@@ -129,25 +142,21 @@ public final class HoursColumnView: UIView {
     // MARK: - Форматиране на низове
 
     private func hourString(_ hour: Int) -> String {
-        if uses12HourClock {
-            let hrMod12 = hour % 12
-            let displayHour = hrMod12 == 0 ? 12 : hrMod12
-            let ampm = hour < 12 ? "AM" : "PM"
-            return "\(displayHour) \(ampm)"
-        } else {
-            // 24-часов формат винаги с ":00"
-            return String(format: "%02d:00", hour)
-        }
+        hourFormatter.string(from: dateForTime(hour: hour, minute: 0))
     }
 
     private func hourMinuteString(hour: Int, minute: Int) -> String {
-        if uses12HourClock {
-            let hrMod12 = hour % 12
-            let displayHour = hrMod12 == 0 ? 12 : hrMod12
-            let ampm = hour < 12 ? "AM" : "PM"
-            return String(format: "%d:%02d \(ampm)", displayHour, minute)
-        } else {
-            return String(format: "%02d:%02d", hour, minute)
-        }
+        hourMinuteFormatter.string(from: dateForTime(hour: hour, minute: minute))
+    }
+
+    private func dateForTime(hour: Int, minute: Int) -> Date {
+        var components = DateComponents()
+        components.calendar = Calendar.autoupdatingCurrent
+        components.year = 2001
+        components.month = 1
+        components.day = 1
+        components.hour = hour
+        components.minute = minute
+        return components.date ?? Date(timeIntervalSince1970: 0)
     }
 }

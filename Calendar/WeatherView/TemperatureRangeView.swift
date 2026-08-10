@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct TemperatureRangeView: View {
+    @Environment(\.layoutDirection) private var layoutDirection
+
     let day: DayForecastItem
     let globalMin: Double
     let globalMax: Double
@@ -25,26 +27,31 @@ struct TemperatureRangeView: View {
             // Clamp fractions between 0 and 1
             let clampedMinFraction = max(0, min(1, dayMinFraction))
             let clampedMaxFraction = max(0, min(1, dayMaxFraction))
-            // Calculate pixel positions and width for the bar
-            let startX = clampedMinFraction * totalWidth
-            let endX = clampedMaxFraction * totalWidth
+            // Keep the low end next to the minimum label and the high end next
+            // to the maximum label in both interface directions.
+            let minX = (layoutDirection == .rightToLeft ? 1 - clampedMinFraction : clampedMinFraction) * totalWidth
+            let maxX = (layoutDirection == .rightToLeft ? 1 - clampedMaxFraction : clampedMaxFraction) * totalWidth
+            let segmentStartX = min(minX, maxX)
+            let segmentEndX = max(minX, maxX)
             // Ensure segmentWidth is at least the diameter for rounded ends
-            let segmentWidth = max(barHeight, endX - startX)
+            let segmentWidth = max(barHeight, segmentEndX - segmentStartX)
+            let segmentCenterX = (segmentStartX + segmentEndX) / 2
 
             let averageTemp = (day.minTemp + day.maxTemp) / 2.0
-            let gradient = colorGradient(for: averageTemp)
+            let gradient = colorGradient(for: averageTemp, layoutDirection: layoutDirection)
 
-            ZStack(alignment: .leading) {
+            ZStack {
                 // Background bar (full width, light gray)
                 RoundedRectangle(cornerRadius: barCornerRadius)
                     .fill(Color.gray.opacity(0.4))
-                    .frame(height: barHeight)
+                    .frame(width: totalWidth, height: barHeight)
+                    .position(x: totalWidth / 2, y: geometry.size.height / 2)
 
                 // Active segment with dynamic gradient
                 RoundedRectangle(cornerRadius: barCornerRadius)
                     .fill(gradient)
                     .frame(width: segmentWidth, height: barHeight)
-                    .offset(x: startX) // Position the colored segment
+                    .position(x: segmentCenterX, y: geometry.size.height / 2)
 
                 // --- NEW: Current Temperature Dot ---
                 if isToday, let temp = currentTemp {
@@ -53,7 +60,15 @@ struct TemperatureRangeView: View {
                     // Clamp fraction
                     let clampedCurrentFraction = max(0, min(1, currentTempFraction))
                     // Calculate pixel position for the dot's center
-                    let dotCenterX = clampedCurrentFraction * totalWidth
+                    let rawDotCenterX = (
+                        layoutDirection == .rightToLeft
+                            ? 1 - clampedCurrentFraction
+                            : clampedCurrentFraction
+                    ) * totalWidth
+                    let dotCenterX = min(
+                        totalWidth - dotSize / 2,
+                        max(dotSize / 2, rawDotCenterX)
+                    )
 
                     // Draw the dot
                     Circle()
@@ -63,8 +78,7 @@ struct TemperatureRangeView: View {
                         .overlay(
                             Circle().stroke(Color.black.opacity(0.2), lineWidth: 0.5)
                         )
-                        // Position the dot. Offset by -dotSize/2 to center it.
-                        .offset(x: dotCenterX - (dotSize / 2))
+                        .position(x: dotCenterX, y: geometry.size.height / 2)
                 }
                 // ---------------------------------
             }
@@ -76,7 +90,13 @@ struct TemperatureRangeView: View {
         .frame(height: barHeight)
     }
 
-    private func colorGradient(for averageTemperature: Double) -> LinearGradient {
-        TemperatureColorScale.bandGradient(for: averageTemperature)
+    private func colorGradient(
+        for averageTemperature: Double,
+        layoutDirection: LayoutDirection
+    ) -> LinearGradient {
+        TemperatureColorScale.bandGradient(
+            for: averageTemperature,
+            layoutDirection: layoutDirection
+        )
     }
 }

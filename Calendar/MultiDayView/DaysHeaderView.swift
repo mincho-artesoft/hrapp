@@ -4,7 +4,13 @@ import UIKit
 public final class DaysHeaderView: UIView {
     
     // Широчината на всяка колона за ден – по подразбиране 100 точки.
-    public var dayColumnWidth: CGFloat = 100
+    public var dayColumnWidth: CGFloat = 100 {
+        didSet {
+            guard abs(dayColumnWidth - oldValue) > 0.5 else { return }
+            updateTexts()
+            setNeedsLayout()
+        }
+    }
     
     // Отстъп за часовете – тук може да оставите 0 или малка стойност.
     public var leadingInsetForHours: CGFloat = 0
@@ -92,7 +98,9 @@ public final class DaysHeaderView: UIView {
             lbl.tag = i
             lbl.numberOfLines = 0
             lbl.adjustsFontSizeToFitWidth = true
-            lbl.minimumScaleFactor = 0.7
+            lbl.minimumScaleFactor = 0.4
+            lbl.allowsDefaultTighteningForTruncation = true
+            lbl.lineBreakMode = .byWordWrapping
             
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleLabelTap(_:)))
             lbl.isUserInteractionEnabled = true
@@ -117,8 +125,10 @@ public final class DaysHeaderView: UIView {
     // MARK: - Обновяване на атрибутния текст (дата + иконка + температурен диапазон)
     
     private func updateTexts() {
-        let df = DateFormatter()
-        df.dateFormat = "EEE, d MMM"
+        let df = appShortDateFormatter(
+            includesYear: false,
+            includesWeekday: true
+        )
         
         let todayOnly = calendarForLabels.startOfDay(for: Date())
         
@@ -131,15 +141,18 @@ public final class DaysHeaderView: UIView {
             }
             
             let isToday = (calendarForLabels.startOfDay(for: currentDay) == todayOnly)
+            let dateString = df.string(from: currentDay)
+            let dateFontSize = fittedFontSize(
+                for: dateString,
+                maximum: 12,
+                minimum: 6,
+                weight: .semibold,
+                availableWidth: dayColumnWidth - 4
+            )
             let baseAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 12, weight: .semibold),
+                .font: UIFont.systemFont(ofSize: dateFontSize, weight: .semibold),
                 .foregroundColor: isToday ? UIColor.systemOrange : UIColor.label
             ]
-            let tempAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 10, weight: .regular)
-            ]
-            
-            let dateString = df.string(from: currentDay)
             let baseAttrStr = NSAttributedString(string: dateString, attributes: baseAttributes)
             let completeAttrStr = NSMutableAttributedString(attributedString: baseAttrStr)
             
@@ -158,7 +171,7 @@ public final class DaysHeaderView: UIView {
                         let originalSize = iconImage.size
                         let aspectRatio = originalSize.width / originalSize.height
                         let newWidth = desiredHeight * aspectRatio
-                        let yOffset: CGFloat =  -3
+                        let yOffset: CGFloat = -3
 
                         if traitCollection.userInterfaceStyle == .dark {
                             let multicolorIcon = iconImage.withRenderingMode(.alwaysOriginal)
@@ -179,9 +192,21 @@ public final class DaysHeaderView: UIView {
 
                     
                     completeAttrStr.append(NSAttributedString(string: " ", attributes: baseAttributes))
-                    let tempString = String(format: "%d°/%d°",
-                                            Int(round(forecast.minTemp)),
-                                            Int(round(forecast.maxTemp)))
+                    let tempString = localizedFormat(
+                        "%d°/%d°",
+                        Int(round(forecast.minTemp)),
+                        Int(round(forecast.maxTemp))
+                    )
+                    let temperatureFontSize = fittedFontSize(
+                        for: tempString,
+                        maximum: 10,
+                        minimum: 7,
+                        weight: .regular,
+                        availableWidth: dayColumnWidth - 22
+                    )
+                    let tempAttributes: [NSAttributedString.Key: Any] = [
+                        .font: UIFont.systemFont(ofSize: temperatureFontSize, weight: .regular)
+                    ]
                     let tempAttrStr = NSAttributedString(string: tempString, attributes: tempAttributes)
                     completeAttrStr.append(tempAttrStr)
                 }
@@ -189,6 +214,19 @@ public final class DaysHeaderView: UIView {
             
             lbl.attributedText = completeAttrStr
         }
+    }
+
+    private func fittedFontSize(
+        for text: String,
+        maximum: CGFloat,
+        minimum: CGFloat,
+        weight: UIFont.Weight,
+        availableWidth: CGFloat
+    ) -> CGFloat {
+        let font = UIFont.systemFont(ofSize: maximum, weight: weight)
+        let measuredWidth = (text as NSString).size(withAttributes: [.font: font]).width
+        guard measuredWidth > 0, availableWidth > 0 else { return minimum }
+        return min(maximum, max(minimum, maximum * availableWidth / measuredWidth))
     }
     
     // MARK: - Помощни функции за иконите
@@ -261,8 +299,10 @@ public final class DaysHeaderView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
+        let isRTL = effectiveUserInterfaceLayoutDirection == .rightToLeft
         for (i, lbl) in labels.enumerated() {
-            let x = leadingInsetForHours + CGFloat(i) * dayColumnWidth
+            let visualIndex = isRTL ? (labels.count - 1 - i) : i
+            let x = leadingInsetForHours + CGFloat(visualIndex) * dayColumnWidth
             lbl.frame = CGRect(x: x, y: 0, width: dayColumnWidth, height: bounds.height)
         }
     }

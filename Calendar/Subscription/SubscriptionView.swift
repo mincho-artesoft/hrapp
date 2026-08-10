@@ -19,15 +19,16 @@ struct SubscriptionView: View {
 
     var body: some View {
             VStack {
-                // Segmented picker
-                Picker("Plan", selection: $selectedCategory) {
+                Picker("", selection: $selectedCategory) {
                     ForEach(SubscriptionCategory.allCases) { category in
-                        Text(category.title).tag(category)
+                        Text(category.title)
+                            .tag(category)
                     }
                 }
+                .pickerStyle(.segmented)
+                .labelsHidden()
                 .padding(.top)
                 .padding(.horizontal)
-                .pickerStyle(.segmented)
 
                 // Tab content
                 Group {
@@ -81,8 +82,7 @@ struct SubscriptionView: View {
                    let value = info["subscriptionStatusRaw"] as? String {
                     switch value {
                     case SubscriptionCategory.advance.rawValue:
-                        alertMessage = String(
-                            format: NSLocalizedString(
+                        alertMessage = localizedFormat(NSLocalizedString(
                                 "You need an active %@ plan to access this section.",
                                 comment: "Alert when user tries to access Advance without subscription"
                             ),
@@ -91,8 +91,7 @@ struct SubscriptionView: View {
                         selectedCategory = .advance
 
                     case SubscriptionCategory.premium.rawValue:
-                        alertMessage = String(
-                            format: NSLocalizedString(
+                        alertMessage = localizedFormat(NSLocalizedString(
                                 "You need an active %@ plan to access this section.",
                                 comment: "Alert when user tries to access Premium without subscription"
                             ),
@@ -132,6 +131,8 @@ struct SubscriptionView: View {
                     }
         .cornerRadius(10)
         .padding(.horizontal)
+        .minimumScaleFactor(0.4)
+        .allowsTightening(true)
     }
 
     /// Избира „първия, който може да се купи“ за текущия таб

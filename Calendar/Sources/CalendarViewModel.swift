@@ -1574,6 +1574,7 @@ extension CalendarViewModel {
         if let startStr = gevent.start?.date {
             newEvent.isAllDay = true
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.dateFormat = "yyyy-MM-dd"
             if let startDate = formatter.date(from: startStr) {
                 newEvent.startDate = startDate
@@ -1636,6 +1637,7 @@ extension CalendarViewModel {
         if let startStr = gevent.start?.date {
             localEvent.isAllDay = true
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.dateFormat = "yyyy-MM-dd"
             if let startDate = formatter.date(from: startStr) {
                 localEvent.startDate = startDate
@@ -1669,6 +1671,7 @@ extension CalendarViewModel {
     
     private func localAllDayDateString(_ date: Date) -> String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
@@ -3601,6 +3604,7 @@ extension CalendarViewModel {
 
         if localEvent.isAllDay {
             let fmt = DateFormatter()
+            fmt.locale       = Locale(identifier: "en_US_POSIX")
             fmt.timeZone     = .init(secondsFromGMT: 0)
             fmt.dateFormat   = "yyyy-MM-dd"
 
@@ -3783,6 +3787,7 @@ extension CalendarViewModel {
         } else if let dateOnlyStr = msEvent.start?.date {
             // Вариант: само дата ("2025-03-27") => all-day
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.dateFormat = "yyyy-MM-dd"
             if let dateVal = formatter.date(from: dateOnlyStr) {
                 newEvent.startDate = dateVal
@@ -3800,6 +3805,7 @@ extension CalendarViewModel {
             }
         } else if let endDateOnlyStr = msEvent.end?.date {
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.dateFormat = "yyyy-MM-dd"
             if let dateVal = formatter.date(from: endDateOnlyStr) {
                 newEvent.endDate = dateVal
@@ -3857,6 +3863,7 @@ extension CalendarViewModel {
             }
         } else if let dateOnlyStr = msEvent.start?.date {
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.dateFormat = "yyyy-MM-dd"
             if let dateVal = formatter.date(from: dateOnlyStr) {
                 localEvent.startDate = dateVal
@@ -3871,6 +3878,7 @@ extension CalendarViewModel {
             }
         } else if let dateOnlyStr = msEvent.end?.date {
             let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.dateFormat = "yyyy-MM-dd"
             if let dateVal = formatter.date(from: dateOnlyStr) {
                 localEvent.endDate = dateVal

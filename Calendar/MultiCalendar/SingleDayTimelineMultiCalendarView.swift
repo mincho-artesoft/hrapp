@@ -23,6 +23,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     // MARK: - Local DateFormatter (for debug prints)
     private static let localFormatter: DateFormatter = {
         let df = DateFormatter()
+        df.locale = .appFormatting
         df.dateFormat = "yyyy-MM-dd HH:mm"
         df.timeZone = TimeZone.current
         return df
@@ -425,7 +426,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             let allCals = calendarVM.calendarsDict
                  let selectedCals = allCals.filter { $0.value.selected }
                  let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                 let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                 let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    in: self
+                 )
 
                  let subCount = max(sortedCals.count, 1)
                  let subColumnWidth = dayColumnWidth / CGFloat(subCount)
@@ -515,7 +519,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             let allCals = calendarVM.calendarsDict
             let selectedCals = allCals.filter { $0.value.selected }
             let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-            let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+            let sortedCals = arrangedForLayoutDirection(
+                calsToShow.sorted { $0.value.title < $1.value.title },
+                in: self
+            )
 
             let subCount = max(sortedCals.count, 1)
             let subColumnWidth = dayColumnWidth / CGFloat(subCount)
@@ -570,7 +577,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let allCals = calendarVM.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    in: self
+                )
 
                 // 3) Разделяме деня на под‑колони
                 let subCount = max(sortedCals.count, 1)
@@ -635,9 +645,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         // Sort them by title:
         // $0.1 == the (title, color, selected) in the first tuple
         // $1.1 == the (title, color, selected) in the second tuple
-        let sortedCals = calsToShow.sorted {
-            $0.1.title < $1.1.title
-        }
+        let sortedCals = arrangedForLayoutDirection(
+            calsToShow.sorted { $0.1.title < $1.1.title },
+            in: self
+        )
         
         // Number of sub‑columns = number of (selected) calendars
         let numberOfSubcolumns = max(1, sortedCals.count)
@@ -1054,7 +1065,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let allCals = calendarVM.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    in: self
+                )
 
                 let subCount = max(sortedCals.count, 1)
                 let subColumnWidth = dayColumnWidth / CGFloat(subCount)
@@ -1164,7 +1178,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let allCals = calendarVM.calendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                    let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                    let sortedCals = arrangedForLayoutDirection(
+                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        in: self
+                    )
 
                     let subCount = max(sortedCals.count, 1)
                     let subColumnWidth = dayColumnWidth / CGFloat(subCount)
@@ -1228,7 +1245,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let allCals = calendarVM.calendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                    let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                    let sortedCals = arrangedForLayoutDirection(
+                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        in: self
+                    )
 
                     let subCount = max(sortedCals.count, 1)
                     let subColumnWidth = dayColumnWidth / CGFloat(subCount)
@@ -1354,7 +1374,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let allCals = calendarVM.calendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                    let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                    let sortedCals = arrangedForLayoutDirection(
+                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        in: self
+                    )
                     let numCalendars = max(1, sortedCals.count)
                     
                     // ii) subColumnWidth
@@ -1400,7 +1423,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let allCals = calendarVM.calendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
-                    let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                    let sortedCals = arrangedForLayoutDirection(
+                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        in: self
+                    )
                     let numCalendars = max(1, sortedCals.count)
                     
                     // ii) subColumnWidth
@@ -1561,7 +1587,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let allCals = calendarVM.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    in: self
+                )
                 let numCalendars = max(1, sortedCals.count)
                 let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
 
@@ -1621,7 +1650,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let allCals = calendarVM.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    in: self
+                )
                 let subCount = max(1, sortedCals.count)
 
                 let subColumnWidth = dayColumnWidth / CGFloat(subCount)
@@ -1803,7 +1835,10 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let allCals = calendarVM.calendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
-                let sortedCals = calsToShow.sorted { $0.value.title < $1.value.title }
+                let sortedCals = arrangedForLayoutDirection(
+                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    in: self
+                )
 
                 let subCount = max(sortedCals.count, 1)
                 let subColumnWidth = dayColumnWidth / CGFloat(subCount)

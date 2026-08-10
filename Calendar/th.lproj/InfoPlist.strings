@@ -1,0 +1,9 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars ต้องมีการเข้าถึงปฏิทินเพื่อรวมกิจกรรมของคุณจากปฏิทิน iCloud, Google และ Microsoft ทำให้สามารถกำหนดเวลาได้อย่างราบรื่น";
+
+"NSContactsUsageDescription" = "Cloud Calendars ใช้ผู้ติดต่อของคุณเพื่อทำให้การเชิญเข้าร่วมกิจกรรมง่ายขึ้น และจัดการรายละเอียดผู้เข้าร่วมได้อย่างง่ายดาย";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars เข้าถึงตำแหน่งของคุณแม้ในขณะที่แอปปิดอยู่ ให้การพยากรณ์อากาศที่แม่นยำและการแจ้งเตือนอย่างทันท่วงทีสำหรับกิจกรรมตามกำหนดการของคุณ";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars ใช้ตำแหน่งของคุณขณะใช้งานเพื่อรวมการพยากรณ์อากาศในท้องถิ่นที่แม่นยำลงในปฏิทินของคุณโดยตรง";

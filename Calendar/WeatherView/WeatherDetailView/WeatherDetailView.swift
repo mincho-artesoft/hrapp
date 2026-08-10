@@ -50,10 +50,10 @@ struct WeatherDetailView: View {
     }
     
     private func hourString(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH"
-        formatter.timeZone = vm.locationTimeZone // Сега използва избраната часова зона
-        return formatter.string(from: date)
+        appTimeFormatter(
+            timeZone: vm.locationTimeZone,
+            includesMinutes: false
+        ).string(from: date)
     }
 
     
@@ -74,7 +74,7 @@ struct WeatherDetailView: View {
                 let placeholder = HourlyForecastItem(
                     id: hourDate,
                     date: hourDate,
-                    hour: String(format: "%02d", hourOffset),
+                    hour: localizedFormat("%02d", hourOffset),
                     temp: 0,
                     feelsLikeTemp: 0,
                     symbol: "nosign",
@@ -105,10 +105,7 @@ struct WeatherDetailView: View {
     
     // MARK: - Date Formatters - Keep as is
     private var headerDateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, d MMMM yyyy"
-        formatter.timeZone = vm.locationTimeZone
-        return formatter
+        appDateFormatter(template: "EEEEdMMMMy", timeZone: vm.locationTimeZone)
     }
 
     
@@ -466,9 +463,7 @@ struct WeatherDetailView: View {
     }
     
     var currentTimeString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: Date())
+        appTimeFormatter().string(from: Date())
     }
     private func hourOfDay(from date: Date) -> Int {
         return Calendar.current.component(.hour, from: date)
@@ -592,8 +587,7 @@ struct WeatherDetailView: View {
             let maxSpeed = Int(round(dailyMaxSpeed))
             let gustSpeed = Int(round(dailyMaxGust))
             
-            return String(
-                format: NSLocalizedString(
+            return localizedFormat(NSLocalizedString(
                     "WindSummary_Current",
                     comment: "Summary for today's wind. Params: 1:currentSpeed, 2:speedUnit, 3:direction, 4:minSpeed, 5:maxSpeed, 6:gustSpeed"
                 ),
@@ -610,8 +604,7 @@ struct WeatherDetailView: View {
             let maxSpeed = Int(round(dailyMaxSpeed))
             let gustSpeed = Int(round(dailyMaxGust))
             
-            return String(
-                format: NSLocalizedString(
+            return localizedFormat(NSLocalizedString(
                     "WindSummary_Range",
                     comment: "Summary for other days’ wind. Params: 1:minSpeed, 2:maxSpeed, 3:speedUnit, 4:gustSpeed"
                 ),
@@ -630,7 +623,7 @@ struct WeatherDetailView: View {
             : NSLocalizedString("UnitCentimeter", comment: "Centimeter unit abbreviation")
 
         func formatted(_ value: Double) -> String {
-            return value == 0 ? "0" : String(format: "%.1f", value)
+            return value == 0 ? "0" : localizedFormat("%.1f", value)
         }
 
         return VStack(alignment: .leading, spacing: 8) {
@@ -853,9 +846,9 @@ struct WeatherDetailView: View {
         // precipChanceText остава с %% вече форматирано
         let precipChanceText: String = {
             if let chance = vm.nextHourPrecipitationChance {
-                return String(format: "%d%%", Int(chance * 100))
+                return localizedFormat("%d%%", Int(chance * 100))
             } else if let chance = day.precipChance {
-                return String(format: "%d%%", Int(chance * 100))
+                return localizedFormat("%d%%", Int(chance * 100))
             }
             return NSLocalizedString("NA", comment: "Fallback when not available")
         }()
@@ -868,15 +861,14 @@ struct WeatherDetailView: View {
         
         let uvText: String = {
             let uv = vm.currentUVIndex ?? day.maxUV
-            return String(format: NSLocalizedString("UVIndexFormat", comment: "UV index format"), uv)
+            return localizedFormat(NSLocalizedString("UVIndexFormat", comment: "UV index format"), uv)
         }()
         
         let humidityText: String = {
             if let hum = vm.currentHumidity {
-                return String(format: NSLocalizedString("HumidityFormat", comment: "Current humidity"), Int(round(hum*100)))
+                return localizedFormat(NSLocalizedString("HumidityFormat", comment: "Current humidity"), Int(round(hum*100)))
             } else {
-                return String(
-                    format: NSLocalizedString("HumidityRangeFormat", comment: "Humidity range"),
+                return localizedFormat(NSLocalizedString("HumidityRangeFormat", comment: "Humidity range"),
                     Int(round(day.humidityMin * 100)),
                     Int(round(day.humidityMax * 100))
                 )
@@ -888,8 +880,7 @@ struct WeatherDetailView: View {
             "CurrentDayForecastText",
             comment: "Full summary for today's forecast: temp, condition, precip, wind, range, feels like, UV, humidity"
         )
-        return String(
-            format: format,
+        return localizedFormat(format,
             Int(round(currentTemp)),
             condition,
             precipChanceText,
@@ -906,9 +897,10 @@ struct WeatherDetailView: View {
     }
 
     private func generateOtherDayForecastText(for day: DayForecastItem) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        let dayName = formatter.string(from: day.date)
+        let dayName = appDateFormatter(
+            template: "EEEE",
+            timeZone: vm.locationTimeZone
+        ).string(from: day.date)
         
         let feelsLikeMin = day.minTemp - 3.0
         let feelsLikeMax = day.maxTemp - 3.0
@@ -918,14 +910,12 @@ struct WeatherDetailView: View {
             if day.rainLast24h == 0 && day.snowLast24h == 0 {
                 return NSLocalizedString("NoPrecipLast24h", comment: "No precip in last 24h")
             } else if day.snowLast24h == 0 {
-                return String(
-                    format: NSLocalizedString("RainLast24h", comment: "Rain in last 24h"),
+                return localizedFormat(NSLocalizedString("RainLast24h", comment: "Rain in last 24h"),
                     Int(round(day.rainLast24h))
                 )
             } else {
-                return String(
-                    format: NSLocalizedString("SnowAndRainLast24h", comment: "Snow & rain in last 24h"),
-                    String(format: "%.1f", day.snowLast24h),
+                return localizedFormat(NSLocalizedString("SnowAndRainLast24h", comment: "Snow & rain in last 24h"),
+                    localizedFormat("%.1f", day.snowLast24h),
                     Int(round(day.rainLast24h))
                 )
             }
@@ -935,8 +925,7 @@ struct WeatherDetailView: View {
             "OtherDayForecastText",
             comment: "Full summary for another day: dayName, low, high, feelsLike-range, wind, precipSummary"
         )
-        return String(
-            format: format,
+        return localizedFormat(format,
             dayName,
             Int(round(day.minTemp)),
             Int(round(day.maxTemp)),
@@ -981,9 +970,10 @@ struct WeatherDetailView: View {
     private func forecastPrecipitationSection(for day: DayForecastItem) -> some View {
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
         let dayName: String = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE"
-            return formatter.string(from: day.date)
+            appDateFormatter(
+                template: "EEEE",
+                timeZone: vm.locationTimeZone
+            ).string(from: day.date)
         }()
         let unit = GlobalState.precipitationUnitLabel
         let last24 = day.precipLast24h
@@ -1001,8 +991,7 @@ struct WeatherDetailView: View {
 
             if isToday {
                 Text(
-                    String(
-                        format: NSLocalizedString(
+                    localizedFormat(NSLocalizedString(
                             "ForecastPrecip_TodayFormat",
                             comment: "Detailed precipitation forecast for today"
                         ),
@@ -1017,8 +1006,7 @@ struct WeatherDetailView: View {
                 .multilineTextAlignment(.leading)
             } else {
                 Text(
-                    String(
-                        format: NSLocalizedString(
+                    localizedFormat(NSLocalizedString(
                             "ForecastPrecip_OtherDayFormat",
                             comment: "Precipitation forecast for another day"
                         ),
@@ -1041,9 +1029,10 @@ struct WeatherDetailView: View {
     private func forecastHumiditySection(for day: DayForecastItem) -> some View {
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
         let dayName: String = {
-            let fmt = DateFormatter()
-            fmt.dateFormat = "EEEE"
-            return fmt.string(from: day.date)
+            appDateFormatter(
+                template: "EEEE",
+                timeZone: vm.locationTimeZone
+            ).string(from: day.date)
         }()
         let avgHumidity = Int(round(((day.humidityMin + day.humidityMax) / 2) * 100))
         let dewPointMin = Int(round(day.minTemp - ((100 - (day.humidityMin * 100)) / 5)))
@@ -1053,8 +1042,7 @@ struct WeatherDetailView: View {
         let dewKey = isToday
             ? "DewPoint_CurrentFormat"
             : "DewPoint_FutureFormat"
-        let dewText = String(
-            format: NSLocalizedString(dewKey, comment: "Dew point sentence"),
+        let dewText = localizedFormat(NSLocalizedString(dewKey, comment: "Dew point sentence"),
             dewPointMin, dewPointMax
         )
 
@@ -1066,8 +1054,7 @@ struct WeatherDetailView: View {
             .font(.system(size: 16, weight: .semibold))
 
             if isToday {
-                Text(String(
-                    format: NSLocalizedString("ForecastHumidity_Today", comment: "Today humidity summary"),
+                Text(localizedFormat(NSLocalizedString("ForecastHumidity_Today", comment: "Today humidity summary"),
                     avgHumidity,
                     dewText
                 ))
@@ -1076,8 +1063,7 @@ struct WeatherDetailView: View {
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.leading)
             } else {
-                Text(String(
-                    format: NSLocalizedString("ForecastHumidity_Other", comment: "Other day humidity summary"),
+                Text(localizedFormat(NSLocalizedString("ForecastHumidity_Other", comment: "Other day humidity summary"),
                     dayName,
                     avgHumidity,
                     dewText
@@ -1096,9 +1082,10 @@ struct WeatherDetailView: View {
     private func forecastVisibilitySection(for day: DayForecastItem) -> some View {
         let isToday = Calendar.current.isDate(day.date, inSameDayAs: Date())
         let dayName: String = {
-            let fmt = DateFormatter()
-            fmt.dateFormat = "EEEE"
-            return fmt.string(from: day.date)
+            appDateFormatter(
+                template: "EEEE",
+                timeZone: vm.locationTimeZone
+            ).string(from: day.date)
         }()
         
         let unit = GlobalState.distanceUnitLabel
@@ -1117,8 +1104,7 @@ struct WeatherDetailView: View {
 
             if isToday {
                 Text(
-                    String(
-                        format: NSLocalizedString(
+                    localizedFormat(NSLocalizedString(
                             "ForecastVisibility_TodayFormat",
                             comment: "Today, the visibility will be %@, at %d to %d km."
                         ),
@@ -1134,14 +1120,14 @@ struct WeatherDetailView: View {
                 .multilineTextAlignment(.leading)
             } else {
                 Text(
-                    String(
-                        format: NSLocalizedString(
+                    localizedFormat(NSLocalizedString(
                             "ForecastVisibility_OtherFormat",
                             comment: "On %@, the lowest visibility will be %@ at %d km, and the highest will be %@ at %d km."
                         ),
                         dayName,
                         minClarity,
                         minVis,
+                        unit,
                         maxClarity,
                         maxVis,
                         unit
@@ -1178,8 +1164,7 @@ struct WeatherDetailView: View {
         VStack(alignment: .leading, spacing: 5) {
             Text(NSLocalizedString("AboutVisibility_Title", comment: "Section title for about visibility"))
                 .font(.system(size: 16, weight: .semibold))
-            Text(String(
-                format: NSLocalizedString("AboutVisibility_Body", comment: "Detailed explanation of visibility"),
+            Text(localizedFormat(NSLocalizedString("AboutVisibility_Body", comment: "Detailed explanation of visibility"),
                 clearVisibility
             ))
                 .font(.system(size: 14))
@@ -1192,9 +1177,9 @@ struct WeatherDetailView: View {
 
     func formatPressure(_ value: Double) -> String {
         if GlobalState.measurementSystem == "Imperial" {
-            return String(format: "%.2f", value)
+            return localizedFormat("%.2f", value)
         } else {
-            return String(format: "%.0f", value) 
+            return localizedFormat("%.0f", value)
         }
     }
     
@@ -1220,9 +1205,10 @@ struct WeatherDetailView: View {
         
         // Името на деня (например "Saturday")
         let weekday: String = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE"
-            return formatter.string(from: day.date)
+            appDateFormatter(
+                template: "EEEE",
+                timeZone: vm.locationTimeZone
+            ).string(from: day.date)
         }()
         
         // Получаваме единицата за налягане
@@ -1242,8 +1228,7 @@ struct WeatherDetailView: View {
                 // Днешна прогноза
                 let currentPressure = vm.currentPressure ?? avgPressure
                 Text(
-                    String(
-                        format: NSLocalizedString("PressureForecast_Today", comment: ""),
+                    localizedFormat(NSLocalizedString("PressureForecast_Today", comment: ""),
                         formatPressure(currentPressure),// Използваме новата функция
                         unit,
                         formatPressure(avgPressure), // Използваме новата функция
@@ -1259,8 +1244,7 @@ struct WeatherDetailView: View {
             } else {
                 // Прогноза за бъдещ/минал ден
                 Text(
-                    String(
-                        format: NSLocalizedString("PressureForecast_Other", comment: ""),
+                    localizedFormat(NSLocalizedString("PressureForecast_Other", comment: ""),
                         weekday,
                         formatPressure(avgPressure), // Използваме новата функция
                         unit,
@@ -1485,6 +1469,7 @@ struct WeatherDetailView: View {
             // Main Header
             Text(NSLocalizedString("Beaufort_Scale", comment: "Beaufort Scale title"))
                 .font(.system(size: 16, weight: .semibold))
+                .adaptiveSingleLine(minimumScale: 0.45)
                 .offset(y: -5)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -1492,10 +1477,12 @@ struct WeatherDetailView: View {
             HStack(spacing: 12) {
                 Text(NSLocalizedString("Beaufort_Column_bft", comment: "BFT column header"))
                     .font(.system(size: 13, weight: .medium))
+                    .adaptiveSingleLine(minimumScale: 0.4)
                     .frame(width: 20, alignment: .leading)
                     .offset(x: 19)
                 Text(NSLocalizedString("Beaufort_Column_Description", comment: "Description column header"))
                     .font(.system(size: 13, weight: .medium))
+                    .adaptiveSingleLine(minimumScale: 0.4)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .offset(x: 20)
                 Text(GlobalState.speedUnitLabel)
@@ -1521,10 +1508,11 @@ struct WeatherDetailView: View {
                             .fill(circleColor)
                             .frame(width: 10, height: 10)
 
-                        Text("\(item.bft)")
+                        Text(localizedIntegerString(item.bft))
                             .frame(width: 20, alignment: .leading)
 
                         Text(item.description)
+                            .fixedSize(horizontal: false, vertical: true)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                         // Use the selected range from beaufortRanges (km/h or mph)
@@ -1596,10 +1584,10 @@ struct WeatherDetailView: View {
        }
      
      private func weekdayString(from date: Date) -> String {
-         let formatter = DateFormatter()
-         formatter.dateFormat = "E"
-         formatter.timeZone = vm.locationTimeZone
-         return formatter.string(from: date)
+         appDateFormatter(
+            template: "E",
+            timeZone: vm.locationTimeZone
+         ).string(from: date)
      }
      
      // Пример за изчисление на fractionOfDay в графичните функции

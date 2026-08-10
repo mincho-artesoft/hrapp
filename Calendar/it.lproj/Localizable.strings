@@ -8,7 +8,6 @@
 
 /* RootView */
 "N/A" = "N/D";
-"Today" = "Oggi";
 "Calendars" = "Calendari";
 "Inbox" = "Posta in arrivo";
 
@@ -21,12 +20,11 @@
 "No synced Microsoft calendars yet." = "Nessun calendario Microsoft sincronizzato.";
 "Sign out" = "Disconnetti";
 "Add iCloud Calendar" = "Aggiungi calendario iCloud";
-"Share calendars with iCloud Calendar" = "Condividi calendari con iCloud Calendar";
+"Share calendars with iCloud Calendar" = "Condividi calendari con Calendario iCloud";
 "Sign in with Google" = "Accedi con Google";
 "Sign in with Microsoft" = "Accedi con Microsoft";
 "Deselect All" = "Deseleziona tutto";
 "Select All" = "Seleziona tutto";
-"Done" = "Fatto";
 "No Email" = "Nessuna email";
 "Add Google Calendar" = "Aggiungi calendario Google";
 
@@ -38,7 +36,6 @@
 "Event Alerts" = "Avvisi evento";
 "Allow events on this calendar to display alerts." = "Consenti a questo calendario di mostrare avvisi per gli eventi.";
 "Add Calendar" = "Aggiungi calendario";
-"Cancel" = "Annulla";
 
 /* Colors */
 "Red" = "Rosso";
@@ -65,7 +62,6 @@
 "Email to share" = "Email da condividere";
 "Permission:" = "Autorizzazione:";
 "Add" = "Aggiungi";
-"Unknown" = "Sconosciuto";
 "Sharing:" = "Condivisione:";
 "Done" = "Fatto";
 
@@ -82,22 +78,12 @@
 "Owner"  = "Proprietario";
 
 /* MonthCalendarView */
-"Search events..." = "Cerca eventi...";
-"Cancel" = "Annulla";
-"Close" = "Chiudi";
 "Day View" = "Vista giornaliera";
 "This is a repeating event." = "Questo è un evento ricorrente.";
 "Save for This Event Only" = "Salva solo per questo evento";
 "Save for Future Events" = "Salva per gli eventi futuri";
-"New Event" = "Nuovo evento";
 
 /* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
-"Day" = "Giorno";
-"MultiDay" = "MultiGiorno";
-"Month" = "Mese";
-"Year" = "Anno";
-"List" = "Elenco";
-"MultiCalendar" = "MultiCalendario";
 
 /* WeekdayHeaderView */
 "Sun" = "Dom";
@@ -109,63 +95,26 @@
 "Sat" = "Sab";
 
 /* UIMenuButtonRepresentable */
-"Day" = "Giorno";
-"MultiDay" = "MultiGiorno";
-"Month" = "Mese";
-"Year" = "Anno";
-"List" = "Elenco";
-"MultiCalendar" = "MultiCalendario";
 
 /* YearCalendarView */
-"Search events..." = "Cerca eventi...";
-"Cancel" = "Annulla";
 "Close" = "Chiudi";
-"New Event" = "Nuovo evento";
 
 /* AllEventsListView */
-"Search events..." = "Cerca eventi...";
-"Cancel" = "Annulla";
-"New Event" = "Nuovo evento";
 "No calendar access." = "Nessun accesso al calendario.";
 
 /* EventRowView */
-"all-day" = "Tutto il giorno";
 "Ends" = "Termina";
 
 /* SearchEventRowView */
 "No Title" = "Senza titolo";
-"all-day" = "Tutto il giorno";
 
 /* BasicEvent */
-"New event" = "Nuovo evento";
 
 /* SingleDayTimelineMultiCalendarView */
-"Join Meeting" = "Partecipa alla riunione";
-"Edit" = "Modifica";
-"Duplicate" = "Duplica";
-"Delete" = "Elimina";
-"Add to Google Meet" = "Aggiungi a Google Meet";
-"Add to Microsoft Teams" = "Aggiungi a Microsoft Teams";
-"New Event" = "Nuovo evento";
 
 /* TwoWayPinnedSingleDayMultiCalendarContainerView */
-"Search events..." = "Cerca eventi...";
-"all-day" = "Tutto il giorno";
-"Day" = "Giorno";
-"MultiDay" = "MultiGiorno";
-"Month" = "Mese";
-"Year" = "Anno";
-"List" = "Elenco";
-"MultiCalendar" = "MultiCalendario";
 
 /* TwoWayPinnedSingleDayMultiCalendarWrapper */
-"New event" = "Nuovo evento";
-"All-day event" = "Evento di tutto il giorno";
-"Recurring Event" = "Evento ricorrente";
-"This event is part of a series. Update which events?" = "Questo evento fa parte di una serie. Aggiornare quali eventi?";
-"This Event Only" = "Solo questo evento";
-"All Future Events" = "Tutti i futuri eventi";
-"Cancel" = "Annulla";
 
 /* MultiDayTimelineView */
 "Join Meeting" = "Partecipa alla riunione";
@@ -174,7 +123,6 @@
 "Delete" = "Elimina";
 "Add to Google Meet" = "Aggiungi a Google Meet";
 "Add to Microsoft Teams" = "Aggiungi a Microsoft Teams";
-"New Event" = "Nuovo evento";
 
 /* TwoWayPinnedMultiDayContainerView */
 "No selected range" = "Nessun intervallo selezionato";
@@ -199,20 +147,17 @@
 /* DraggableMenuView */
 "Calendar" = "Calendario";
 "Subscriptions" = "Abbonamenti";
-"Weather" = "Meteo";
-"Live" = "Live";
+"Live" = "In diretta";
 "Stop" = "Stop";
-"Calendar Live Activity" = "Attività live del calendario";
+"Calendar Live Activity" = "Attività in tempo reale del calendario";
 "Get" = "Ottieni";
 "Color" = "Colore";
 "Search for a city…" = "Cerca una città…";
 "No directions" = "Nessuna direzione";
 
 /* WeatherKitView */
-"Search for a city..." = "Cerca città…";
 "Location access denied. Search for a city or grant access in Settings." = "Accesso alla posizione negato. Cerca una città o concedi l’accesso in Impostazioni.";
 "Cannot refresh. Location unknown." = "Impossibile aggiornare. Posizione sconosciuta.";
-"Tap an hour to quickly add a calendar event." = "Tocca un’ora per aggiungere rapidamente un evento al calendario.";
 "10-DAY FORECAST" = "PREVISIONE A 10 GIORNI";
 "HighLowLabelFormat" = "Max: %d°   Min: %d°";
 "tomorrow" = "domani";
@@ -220,15 +165,6 @@
 "in_days" = "tra %d giorni";
 
 /* Labels */
-"Today" = "Oggi";
-"Now" = "Adesso";
-"Conditions" = "Condizioni";
-"UV Index" = "Indice UV";
-"Wind" = "Vento";
-"Precipitation" = "Precipitazioni";
-"Humidity" = "Umidità";
-"Visibility" = "Visibilità";
-"Pressure" = "Pressione";
 
 /* Calendar event */
 "New Event" = "Nuovo evento";
@@ -256,8 +192,6 @@
 "Moonrise" = "Sorgere della luna";
 "Moonset" = "Tramonto della luna";
 "Next %@" = "Prossima %@";
-"day" = "giorno";
-"days" = "giorni";
 "Data unavailable" = "Dati non disponibili";
 "%d day"  = "%d giorno";
 "%d days" = "%d giorni";
@@ -271,8 +205,6 @@
 /* PressureCard */
 "PRESSURE" = "PRESSIONE";
 "hPa" = "hPa";
-"Low" = "Basso";
-"High" = "Alto";
 
 /* SunsetCard */
 "SUNRISE" = "ALBA";
@@ -308,7 +240,6 @@
 
 /* WindCard */
 "WIND" = "VENTO";
-"Wind" = "Vento";
 "Gusts" = "Raffiche";
 "Direction" = "Direzione";
 "km/h" = "km/h";
@@ -326,15 +257,12 @@
 "Sunny" = "Soleggiato";
 "Cloudy" = "Nuvoloso";
 "Partly Cloudy" = "Parzialmente nuvoloso";
-"Rain" = "Pioggia";
 "Drizzle" = "Pioviggine";
-"Snow" = "Neve";
 "Thunderstorm" = "Temporale";
 "Fog" = "Nebbia";
 "Partly Cloudy Night" = "Parzialmente nuvoloso (notte)";
 "Clear Night" = "Notte serena";
 "Hazy" = "Foschia";
-"Conditions" = "Condizioni";
 "Today" = "Oggi";
 "Now" = "Ora";
 
@@ -415,15 +343,12 @@
 "Pressure_DailyMinMaxFormat"       = "Min %@ %@ – max %@ %@ di oggi";
 "Pressure_AverageFormat"           = "Pressione media %@ %@";
 "Pressure_DailyRangeFormat"        = "Gamma giornaliera: %@–%@ %@";
-"Visibility_MaxLabel"              = "Max";
-"Visibility_MinLabel"              = "Min";
 "Pressure_Title"                   = "Pressione";
 "Pressure_NoData"                  = "Nessun dato sulla pressione disponibile per questo giorno.";
 
 /* WeatherDetailView uVGraphSection */
 "UVGraphHeader"         = "Oggi %@ %d";
 "UVGraphNoHourlyData"   = "Nessun dato orario disponibile per questo giorno.";
-"UVGraphMaxLabel"       = "Max";
 "UVGraphNowLabel"       = "Ora, %@";
 "UVCategory_None"       = "Nessuno";
 "UVCategory_Low"        = "Basso";
@@ -457,22 +382,13 @@
 "WindGraph_DragLabel" = "%@\nVelocità: %d\nRaffica: %d";
 
 /* WeatherDetailView */
-"Conditions" = "Condizioni";
-"UV Index" = "Indice UV";
-"Wind" = "Vento";
-"Precipitation" = "Precipitazioni";
-"Humidity" = "Umidità";
-"Visibility" = "Visibilità";
-"Pressure" = "Pressione";
 
-"Forecast" = "Previsioni";
 "Daily Summary" = "Riepilogo giornaliero";
 
 "Precipitation Totals" = "Totale precipitazioni";
 "LAST 24 HOURS" = "ULTIME 24 ORE";
 "NEXT 24 HOURS" = "PROSSIME 24 ORE";
 "Total" = "Totale";
-"Precipitation" = "Precipitazioni";
 "Rain" = "Pioggia";
 "Snow" = "Neve";
 
@@ -488,7 +404,6 @@
 "Options" = "Opzioni";
 "Temperature" = "Temperatura";
 "Use system setting (°C)" = "Usa impostazioni di sistema (°C)";
-"Precipitation" = "Precipitazioni";
 "mm, cm" = "mm, cm";
 
 /* Dynamic label titles */
@@ -537,8 +452,8 @@
 "Dir_NW"  = "NO";
 "Dir_NNW" = "NNO";
 
-"UnitMillimeter"     = "mm";
-"UnitCentimeter"     = "cm";
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
 
 "PrecipitationTotals_Title" = "Totali precipitazioni";
 "Last24h_Label"             = "ULTIME 24 H";
@@ -566,9 +481,9 @@
 "WindSummary_Range"   = "Velocità del vento da %1$d a %2$d %3$@, con raffiche fino a %4$d %3$@.";
 
 "Beaufort_Scale"                = "Scala Beaufort";
-"Beaufort_Column_bft"           = "bft";
+"Beaufort_Column_bft" = "bft";
 "Beaufort_Column_Description"   = "Descrizione";
-"Beaufort_Column_kmh"           = "km/h";
+"Beaufort_Column_kmh" = "km/h";
 "Beaufort_0"                    = "Calma piatta";
 "Beaufort_1"                    = "Brezza leggera";
 "Beaufort_2"                    = "Brezza leggera";
@@ -597,8 +512,6 @@
 "BeaufortRange_12"              = "> 118";
 
 /* Section header: Forecast vs Daily Summary */
-"Forecast_Title"                  = "Previsioni";
-"DailySummary_Title"              = "Riepilogo giornaliero";
 
 "ForecastPrecip_TodayFormat"    = "Nelle ultime 24 h ci sono stati %.1f%@ di precipitazioni. Il totale di oggi sarà di %.1f%@. Nelle prossime 24 h sono previsti %.1f%@ di precipitazioni.";
 "ForecastPrecip_OtherDayFormat" = "Il %@ ci sarà un totale di %.1f%@ di precipitazioni.";
@@ -677,21 +590,17 @@
 "Premium Plans" = "Piani Premium";
 "You are subscribed to the %@ %@ plan" = "Sei abbonato al piano %@ %@";
 "Renews on: %@" = "Si rinnova il: %@";
-"Manage Subscription" = "Gestisci abbonamento";
 "Start Free Trial" = "Inizia prova gratuita";
 "Subscribe Now" = "Abbonati ora";
 "%d %@ free, then %@%@." = "%d %@ gratis, poi %@%@.";
 "Subscribe for %@%@." = "Abbonati per %@%@.";
-"Restore Purchases" = "Ripristina acquisti";
 "Privacy Policy"     = "Informativa sulla privacy";
 "Terms of Service"   = "Termini di servizio";
 
 /* SubscriptionCategory */
-"Base"    = "Base";
 "Advanced" = "Avanzato";
 "Advanced Plan" = "Piano Avanzato";
 "All Advanced Plan features" = "Tutte le funzionalità del piano Avanzato";
-"Premium" = "Premium";
 
 /* SubscriptionView Alerts */
 "You need an active %@ plan to access this section." = "È necessario un piano %@ attivo per accedere a questa sezione.";
@@ -703,8 +612,6 @@
 "Premium" = "Premium";
 
 /* Subscription period units */
-"Monthly" = "mensile";
-"Yearly"  = "annuale";
 
 /* SubscriptionListView status messages */
 /* Stato dell’abbonamento senza “Sei” */
@@ -736,14 +643,14 @@
 "weekday.headers" = "D,L,M,M,G,V,S";
 
 /* GlobalState */
-"Unit_Speed_kmh"            = "km/h";
-"Unit_Speed_mph"            = "mph";
-"Unit_Distance_km"          = "km";
-"Unit_Distance_mi"          = "mi";
-"Unit_Precipitation_mm"     = "mm";
-"Unit_Precipitation_in"     = "″";
-"Unit_Pressure_hPa"         = "hPa";
-"Unit_Pressure_inHg"        = "inHg";
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
 
 "Your previous purchases have been successfully restored." = "I tuoi acquisti precedenti sono stati ripristinati con successo.";
 "No active subscriptions found to restore."                = "Nessun abbonamento attivo da ripristinare.";
@@ -754,7 +661,7 @@
 
 /* Shared widget and fallback labels */
 "Calendar & Weather" = "Calendario e meteo";
-"Small shows today's date and current weather. Medium adds moon phase and wind." = "Il piccolo mostra la data di oggi e il meteo attuale. Il medio aggiunge fase lunare e vento.";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Il widget piccolo mostra la data di oggi e il meteo attuale. Quello medio aggiunge la fase lunare e il vento.";
 "Calendar Events" = "Eventi del calendario";
 "Shows today's date, current weather, and your next calendar events." = "Mostra la data di oggi, il meteo attuale e i tuoi prossimi eventi del calendario.";
 "No upcoming events" = "Nessun evento imminente";
@@ -788,10 +695,59 @@
 "Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
 "Promo.WiseEating.description" = "Wise Eating è il tuo coach IA per nutrizione e allenamento più intelligenti. Combina scienza nutrizionale moderna con strumenti pratici per pianificare pasti, creare allenamenti, gestire la dispensa e capire come cibo e movimento influenzano il corpo.";
 "Promo.StoreFront.name" = "StoreFront Studio";
-"Promo.StoreFront.description" = "StoreFront Studio è un ambiente di design 3D di alto livello per sviluppatori iOS e macOS. Combina rendering RealityKit ad alta fedeltà con un potente editor Rich Text per creare materiali professionali per App Store.";
+"Promo.StoreFront.description" = "StoreFront Studio è un ambiente di progettazione 3D avanzato per sviluppatori iOS e macOS. Combina il rendering accurato di RealityKit con un potente editor di testo formattato per creare materiali professionali per App Store.";
 "Promo.ReelStudio.name" = "ReelStudio";
 "Promo.ReelStudio.description" = "ReelStudio è uno studio di registrazione schermo per creator. Registra schermo e fotocamera insieme, controlla microfono e audio di sistema ed esporta MP4 puliti per tutorial, walkthrough e demo di prodotto.";
 "Promo.CloudCalendars.name" = "Cloud Calendars";
 "Promo.CloudCalendars.description" = "Cloud Calendars combina pianificazione avanzata e previsioni meteo integrate per pianificare con precisione. Supporta più servizi calendario, modifica tramite gesti, link alle riunioni e previsioni orarie e giornaliere dettagliate.";
 "Promo.MarketBrief.name" = "MarketBrief AI";
 "Promo.MarketBrief.description" = "MarketBrief AI ti aiuta a capire i movimenti di mercato con analisi sul dispositivo e un flusso multi-agente progettato per separare segnale e rumore. Monitora prezzi, probabilità di regime e dashboard chiare per decisioni più informate.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "App";
+"Plan" = "Piano";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Bufera";
+"WeatherCondition.blowingDust" = "Pulviscolo";
+"WeatherCondition.blowingSnow" = "Bufera di neve";
+"WeatherCondition.breezy" = "Brezza";
+"WeatherCondition.clear" = "Sereno";
+"WeatherCondition.cloudy" = "Nuvoloso";
+"WeatherCondition.drizzle" = "Pioviggine";
+"WeatherCondition.flurries" = "Folate di neve";
+"WeatherCondition.foggy" = "Nebbia";
+"WeatherCondition.freezingDrizzle" = "Pioggia congelante";
+"WeatherCondition.freezingRain" = "Pioggia gelata";
+"WeatherCondition.frigid" = "Freddo";
+"WeatherCondition.hail" = "Grandine";
+"WeatherCondition.haze" = "Caligine";
+"WeatherCondition.heavyRain" = "Forti piogge";
+"WeatherCondition.heavySnow" = "Forte nevicata";
+"WeatherCondition.hot" = "Caldo";
+"WeatherCondition.hurricane" = "Uragano";
+"WeatherCondition.isolatedThunderstorms" = "Temporali isolati";
+"WeatherCondition.mostlyClear" = "Prevalentemente sereno";
+"WeatherCondition.mostlyCloudy" = "Prevalentemente nuvoloso";
+"WeatherCondition.partlyCloudy" = "Parzialmente nuvoloso";
+"WeatherCondition.rain" = "Pioggia";
+"WeatherCondition.scatteredThunderstorms" = "Temporali sparsi";
+"WeatherCondition.sleet" = "Granuli di ghiaccio";
+"WeatherCondition.smoky" = "Fumo";
+"WeatherCondition.snow" = "Neve";
+"WeatherCondition.strongStorms" = "Forti temporali";
+"WeatherCondition.sunFlurries" = "Folate di neve a ciel sereno";
+"WeatherCondition.sunShowers" = "Rovesci a ciel sereno";
+"WeatherCondition.thunderstorms" = "Temporale";
+"WeatherCondition.tropicalStorm" = "Tempesta tropicale";
+"WeatherCondition.windy" = "Ventoso";
+"WeatherCondition.wintryMix" = "Pioggia/neve";
+"MoonPhase.new" = "Luna nuova";
+"MoonPhase.waxingCrescent" = "Luna crescente";
+"MoonPhase.firstQuarter" = "Primo quarto";
+"MoonPhase.waxingGibbous" = "Gibbosa crescente";
+"MoonPhase.full" = "Luna piena";
+"MoonPhase.waningGibbous" = "Gibbosa calante";
+"MoonPhase.lastQuarter" = "Ultimo quarto";
+"MoonPhase.waningCrescent" = "Luna calante";

@@ -34,13 +34,13 @@ struct DayCellView: View {
             VStack(spacing: 4) {
                 // Денят (ако е днес, показваме червен кръг)
                 if calendar.isDateInToday(day) {
-                    Text("\(dayNumber(day))")
+                    Text(dayNumber(day))
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(6)
                         .background(Circle().fill(Color.red))
                 } else {
-                    Text("\(dayNumber(day))")
+                    Text(dayNumber(day))
                         .font(.subheadline)
                         .foregroundColor(isInCurrentMonth(day) ? .primary : .gray)
                 }
@@ -54,7 +54,7 @@ struct DayCellView: View {
                     ForEach(events.prefix(3), id: \.eventIdentifier) { event in
                         eventCapsule(event)
                     }
-                    Text("... +\(events.count - 3)")
+                    Text(localizedFormat("... +%d", events.count - 3))
                         .font(.caption2)
                         .foregroundColor(.blue)
                 }
@@ -80,6 +80,8 @@ struct DayCellView: View {
             .font(.caption2)
             .foregroundColor(.white)
             .lineLimit(1)
+            .minimumScaleFactor(0.45)
+            .allowsTightening(true)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
             .background(color)
@@ -106,7 +108,7 @@ struct DayCellView: View {
     }
 
     private func dayNumber(_ date: Date) -> String {
-        String(calendar.component(.day, from: date))
+        localizedIntegerString(calendar.component(.day, from: date))
     }
 
     private func isInCurrentMonth(_ date: Date) -> Bool {

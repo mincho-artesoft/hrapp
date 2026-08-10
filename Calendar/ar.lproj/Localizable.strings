@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "لم يتم توفير البريد الإلكتروني.";
+"Please enter a valid email to continue." = "الرجاء إدخال بريد إلكتروني صالح للمتابعة.";
+"Your email" = "البريد الإلكتروني الخاص بك";
+"Save" = "حفظ";
+"Login" = "تسجيل الدخول";
+"Logout" = "تسجيل الخروج";
+
+/* RootView */
+"N/A" = "لا يوجد";
+"Calendars" = "التقاويم";
+"Inbox" = "البريد الوارد";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "أخرى";
+"Google calendars" = "Google التقويمات";
+"No synced Google calendars yet." = "لا توجد تقويمات Google متزامنة حتى الآن.";
+"Microsoft calendars" = "Microsoft التقويمات";
+"No synced Microsoft calendars yet." = "لا توجد تقويمات Microsoft متزامنة حتى الآن.";
+"Sign out" = "تسجيل الخروج";
+"Add iCloud Calendar" = "إضافة iCloud التقويم";
+"Share calendars with iCloud Calendar" = "مشاركة التقاويم مع iCloud التقويم";
+"Sign in with Google" = "تسجيل الدخول باستخدام Google";
+"Sign in with Microsoft" = "تسجيل الدخول باستخدام Microsoft";
+"Deselect All" = "قم بإلغاء تحديد الكل";
+"Select All" = "حدد الكل";
+"No Email" = "لا البريد الإلكتروني";
+"Add Google Calendar" = "إضافة Google التقويم";
+
+/* AddCalendarView */
+"Calendar Name" = "اسم التقويم";
+"Account" = "الحساب";
+"COLOR" = "اللون";
+"NOTIFICATIONS" = "الإخطارات";
+"Event Alerts" = "تنبيهات الحدث";
+"Allow events on this calendar to display alerts." = "السماح للأحداث في هذا التقويم بعرض التنبيهات.";
+"Add Calendar" = "إضافة التقويم";
+
+/* Colors */
+"Red" = "أحمر";
+"Orange" = "برتقالي";
+"Yellow" = "أصفر";
+"Green" = "أخضر";
+"Blue" = "أزرق";
+"Purple" = "أرجواني";
+"Brown" = "براون";
+"Custom" = "مخصص";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "لون التقويم";
+"Custom..." = "مخصص...";
+
+/* EditCalendarView */
+"Edit Calendar" = "تحرير التقويم";
+"Delete Calendar" = "حذف التقويم";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "جارٍ تحميل إعدادات المشاركة…";
+"Shared with these users" = "تمت مشاركتها مع هؤلاء المستخدمين";
+"Add New Email" = "إضافة بريد إلكتروني جديد";
+"Email to share" = "البريد الإلكتروني للمشاركة";
+"Permission:" = "إذن:";
+"Add" = "أضف";
+"Sharing:" = "المشاركة:";
+"Done" = "تم";
+
+"Error loading: %@" = "خطأ في التحميل: %@";
+"Error adding: %@" = "خطأ في الإضافة: %@";
+"Error deleting: %@" = "حدث خطأ أثناء الحذف: %@";
+"Error updating: %@" = "حدث خطأ أثناء التحديث: %@";
+"Error re-inviting (delete): %@" = "خطأ في إعادة الدعوة (حذف): %@";
+"Error re-inviting (insert): %@" = "حدث خطأ أثناء إعادة الدعوة (أدخل): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "القارئ";
+"Writer" = "كاتب";
+"Owner"  = "المالك";
+
+/* MonthCalendarView */
+"Day View" = "عرض اليوم";
+"This is a repeating event." = "وهذا حدث متكرر.";
+"Save for This Event Only" = "حفظ لهذا الحدث فقط";
+"Save for Future Events" = "حفظ للأحداث المستقبلية";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "الشمس";
+"Mon" = "الاثنين";
+"Tue" = "الثلاثاء";
+"Wed" = "الأربعاء";
+"Thu" = "الخميس";
+"Fri" = "الجمعة";
+"Sat" = "جلس";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "إغلاق";
+
+/* AllEventsListView */
+"No calendar access." = "لا يمكن الوصول إلى التقويم.";
+
+/* EventRowView */
+"Ends" = "ينتهي";
+
+/* SearchEventRowView */
+"No Title" = "لا يوجد عنوان";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "الانضمام إلى الاجتماع";
+"Edit" = "تحرير";
+"Duplicate" = "مكررة";
+"Delete" = "حذف";
+"Add to Google Meet" = "أضف إلى Google Meet";
+"Add to Microsoft Teams" = "أضف إلى Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "لا يوجد نطاق محدد";
+"all-day" = "طوال اليوم";
+"Search events..." = "أحداث البحث...";
+"Day" = "يوم";
+"MultiDay" = "متعدد الأيام";
+"Month" = "شهر";
+"Year" = "سنة";
+"List" = "قائمة";
+"MultiCalendar" = "تقويم متعدد";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "حدث جديد";
+"All-day event" = "حدث طوال اليوم";
+"Recurring Event" = "حدث متكرر";
+"This event is part of a series. Update which events?" = "هذا الحدث هو جزء من سلسلة. تحديث أي الأحداث؟";
+"This Event Only" = "هذا الحدث فقط";
+"All Future Events" = "جميع الأحداث المستقبلية";
+"Cancel" = "إلغاء";
+
+/* DraggableMenuView */
+"Calendar" = "التقويم";
+"Subscriptions" = "الاشتراكات";
+"Live" = "مباشر";
+"Stop" = "توقف";
+"Calendar Live Activity" = "تقويم النشاط المباشر";
+"Get" = "احصل على";
+"Color" = "اللون";
+"Search for a city…" = "ابحث عن مدينة…";
+"No directions" = "لا توجد اتجاهات";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "تم رفض الوصول إلى الموقع. ابحث عن مدينة أو امنح حق الوصول إليها في الإعدادات.";
+"Cannot refresh. Location unknown." = "لا يمكن التحديث. الموقع غير معروف.";
+"10-DAY FORECAST" = "توقعات لمدة 10 أيام";
+"HighLowLabelFormat" = "العظمى:%d° الصغرى:%d°";
+"tomorrow" = "غدا";
+"on_day" = "على %@";
+"in_days" = "في %d أيام";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "حدث جديد";
+
+/* Search placeholder */
+"Search for a city..." = "ابحث عن مدينة…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "انقر فوق ساعة لإضافة حدث تقويم بسرعة.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "يشعر وكأنه";
+"similar_to_actual_temp" = "مماثلة لدرجة الحرارة الفعلية.";
+"wind_cooler_feel" = "الرياح تجعلها تشعر بالبرودة.";
+"humidity_warmer_feel" = "الرطوبة تجعلها تشعر بالدفء.";
+
+/* HumidityCard */
+"HUMIDITY" = "الرطوبة";
+"The dew point is %d° right now." = "نقطة الندى هي %d° الآن.";
+"dewPoint.current" = "نقطة الندى هي %d° الآن.";
+
+/* MoonCard */
+"MOON PHASE" = "مرحلة القمر";
+"Moonrise" = "طلوع القمر";
+"Moonset" = "غروب القمر";
+"Next %@" = "التالي %@";
+"Data unavailable" = "البيانات غير متوفرة";
+"%d day" = "%d يوم";
+"%d days" = "%d أيام";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "هطول الأمطار";
+"PRECIPITATION_CARD_TODAY_LABEL" = "اليوم";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "المتوقع التالي هو %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "لا يتوقع هطول الأمطار قريبا.";
+
+/* PressureCard */
+"PRESSURE" = "الضغط";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "شروق الشمس";
+"Sunrise: %@" = "شروق الشمس: %@";
+"Sunset: %@" = "غروب الشمس: %@";
+"Sunrise" = "شروق الشمس";
+"Sunset" = "غروب الشمس";
+
+
+/* UVIndexCard */
+"UV INDEX" = "مؤشر الأشعة فوق البنفسجية";
+"Low" = "منخفض";
+"Moderate" = "معتدل";
+"High" = "عالية";
+"Very High" = "عالية جدًا";
+"Extreme" = "المدقع";
+
+/* VisibilityCard */
+"VISIBILITY" = "الرؤية";
+"km" = "km";
+"Perfectly clear view." = "رؤية واضحة تمامًا.";
+"Excellent visibility." = "رؤية ممتازة.";
+"Good visibility." = "رؤية جيدة.";
+"Moderate visibility." = "رؤية معتدلة.";
+"Poor visibility." = "ضعف الرؤية.";
+"Very poor visibility." = "رؤية سيئة للغاية.";
+"visibility.perfect"   = "رؤية واضحة تمامًا.";
+"visibility.excellent" = "رؤية ممتازة.";
+"visibility.good"      = "رؤية جيدة.";
+"visibility.moderate"  = "رؤية معتدلة.";
+"visibility.poor"      = "ضعف الرؤية.";
+"visibility.verypoor"  = "رؤية سيئة للغاية.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "الرياح";
+"Gusts" = "هبوب";
+"Direction" = "الاتجاه";
+"km/h" = "km/h";
+"Compass_N" = "ن";
+"Compass_S" = "س";
+"Compass_W" = "دبليو";
+"Compass_E" = "ه";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "فشل في جلب بيانات الطقس. يرجى التحقق من الاتصال أو المحاولة مرة أخرى لاحقًا.";
+"Falling" = "السقوط";
+"Rising" = "ارتفاع";
+"Steady" = "ثابت";
+"Unknown" = "غير معروف";
+"Sunny" = "مشمس";
+"Cloudy" = "غائم";
+"Partly Cloudy" = "غائم جزئيا";
+"Drizzle" = "رذاذ";
+"Thunderstorm" = "عاصفة رعدية";
+"Fog" = "ضباب";
+"Partly Cloudy Night" = "ليلة غائمة جزئيا";
+"Clear Night" = "ليلة صافية";
+"Hazy" = "ضبابي";
+"Today" = "اليوم";
+"Now" = "الآن";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "ن";
+"cardinal.NNE" = "شمال شرق";
+"cardinal.NE"  = "شمال شرق";
+"cardinal.ENE" = "ايني";
+"cardinal.E"   = "ه";
+"cardinal.ESE" = "إي إس إي";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "س";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "جنوب غرب";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "دبليو";
+"cardinal.WNW" = "غرب غرب";
+"cardinal.NW"  = "شمال غرب";
+"cardinal.NNW" = "شمال غرب";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "فرصة هطول الأمطار";
+"Today's chance: %d%%" = "فرصة اليوم: %d%%";
+"%@'s chance: %d%%" = "فرصة %@: %d%%";
+"Max" = "ماكس";
+"Min" = "دقيقة";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "تميل الفرصة اليومية لهطول الأمطار إلى أن تكون أعلى من الفرصة لكل ساعة.";
+"ChanceOfPrecipitation_Title" = "فرصة هطول الأمطار";
+"TodaysChance"                = "فرصة اليوم: %d%%";
+"OtherDayChance"              = "فرصة %@: %d%%";
+"DailyChanceExplanation"      = "تميل الفرصة اليومية لهطول الأمطار إلى أن تكون أعلى من الفرصة لكل ساعة.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "يشعر وكأنه";
+"Actual" = "فعلي";
+"No hourly data available for this day." = "لا توجد بيانات كل ساعة متاحة لهذا اليوم.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "كيف تبدو درجة الحرارة نتيجة للرطوبة أو ضوء الشمس أو الرياح.";
+"The actual air temperature." = "درجة حرارة الهواء الفعلية.";
+"HighLabelFormat" = "العظمى: %d°";
+"LowLabelFormat" = "الصغرى: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "ح";
+"HourlyGraph_LowLabel"  = "ل";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "الرطوبة";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "الرطوبة %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "متوسط الرطوبة %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "الحد الأدنى اليوم %d%% – الحد الأقصى %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "ماكس";
+"ChartMarker_Min"           = "دقيقة";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "المطر: %.1f%@، الثلج: %.1f%@";
+"Precip_Total_RainFormat"       = "المطر: %.1f%@";
+"Precip_Total_SnowFormat"       = "الثلج: %.1f%@";
+"Precip_Total_None"             = "هطول: 0%@";
+"Precip_Bars_Subtitle"          = "أشرطة كل ساعة للأمطار والثلوج (%@).";
+"Precip_Level_Light"            = "ضوء";
+"Precip_Level_Moderate"         = "معتدل";
+"Precip_Level_Heavy"            = "ثقيل";
+"Precip_Tooltip_Format"         = "%@h\nالمطر: %.1f%@\nالثلج: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "الضغط %@ %@";
+"Pressure_CurrentUnavailable"      = "الضغط: --";
+"Pressure_DailyMinMaxFormat"       = "الحد الأدنى اليوم %@ %@ – الحد الأقصى %@ %@";
+"Pressure_AverageFormat"           = "متوسط الضغط %@ %@";
+"Pressure_DailyRangeFormat"        = "النطاق اليومي: %@–%@ %@";
+"Pressure_Title"                   = "الضغط";
+"Pressure_NoData"                  = "لا توجد بيانات الضغط المتاحة لهذا اليوم.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "اليوم %@ %d";
+"UVGraphNoHourlyData"   = "لا توجد بيانات كل ساعة متاحة لهذا اليوم.";
+"UVGraphNowLabel"       = "الآن، %@";
+"UVCategory_None"       = "لا شيء";
+"UVCategory_Low"        = "منخفض";
+"UVCategory_Moderate"   = "معتدل";
+"UVCategory_High"       = "عالية";
+"UVCategory_VeryHigh"   = "عالية جدًا";
+"UVCategory_Extreme"    = "المدقع";
+"UVAdvice_None"         = "لا يُتوقع وجود مستويات متوسطة أو أعلى من الأشعة فوق البنفسجية لهذا اليوم.";
+"UVAdvice_Range"        = "يوصى بالحماية من الشمس. تتراوح مستويات الأشعة فوق البنفسجية من %@ إلى %@، ويتم الوصول إليها بين %@ و%@.";
+"UVGraphMaxLabel" = "ماكس";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "الرؤية";
+"Visibility_NoData"                = "لا توجد بيانات الرؤية المتاحة لهذا اليوم.";
+"Visibility_CurrentFormat"         = "الرؤية %d %@";
+"Visibility_DailyMinMaxFormat"     = "الحد الأدنى %d – الحد الأقصى %d %@";
+"Visibility_NoCurrentData"         = "لا توجد بيانات الرؤية الحالية المتاحة.";
+"Visibility_HourlyAverages_NoData" = "لا توجد بيانات متاحة كل ساعة.";
+"Visibility_MaxLabel"              = "ماكس";
+"Visibility_MinLabel"              = "دقيقة";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "سرعة الرياح والهبوب";
+"WindGraph_NoData" = "لا توجد بيانات الرياح المتاحة لهذا اليوم.";
+"WindGraph_SpeedHeader" = "سرعة الرياح %d";
+"WindGraph_GustHeader" = "تصل الرياح إلى %d";
+"WindGraph_SpeedRangeHeader" = "سرعة الرياح %d-%d";
+"WindGraph_MaxSpeedLabel" = "أقصى سرعة";
+"WindGraph_MaxGustLabel" = "أقصى هبّة";
+"WindGraph_DragLabel" = "%@\nالسرعة: %d\nالعاصفة: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "ملخص يومي";
+
+"Precipitation Totals" = "إجمالي هطول الأمطار";
+"LAST 24 HOURS" = "آخر 24 ساعة";
+"NEXT 24 HOURS" = "الـ 24 ساعة القادمة";
+"Total" = "المجموع";
+"Rain" = "المطر";
+"Snow" = "ثلج";
+
+"About Wind Speed and Gusts" = "حول سرعة الرياح وهبوبها";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "يتم حساب سرعة الرياح باستخدام المتوسط خلال فترة زمنية قصيرة. العواصف هي رشقات نارية قصيرة من الرياح فوق هذا المتوسط. تستمر العاصفة عادة أقل من 20 ثانية.";
+
+"About the Beaufort Scale" = "نبذة عن مقياس بوفورت";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "يعبر مقياس الرياح بوفورت عن مدى قوة أو قوة الرياح عند سرعة معينة. قد يُسهّل مقياس بوفورت فهم مدى الشعور بالرياح أو مدى التأثير الذي يمكن أن تحدثه الرياح. تتوافق كل قيمة على المقياس مع نطاق سرعة الرياح.";
+
+"About Feels Like Temperature" = "حول يشعر وكأنه درجة الحرارة";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "ينقل \"يشعر وكأنه\" مدى الشعور بالدفء أو البرودة ويمكن أن يكون مختلفًا عن درجة الحرارة الفعلية. تتأثر درجة الحرارة التي تشعر بها بالرطوبة وأشعة الشمس والرياح.";
+
+"Options" = "خيارات";
+"Temperature" = "درجة الحرارة";
+"Use system setting (°C)" = "استخدام إعداد النظام (درجة مئوية)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "الشروط";
+"UV Index" = "مؤشر الأشعة فوق البنفسجية";
+"Wind" = "الرياح";
+"Precipitation" = "هطول الأمطار";
+"Humidity" = "الرطوبة";
+"Visibility" = "الرؤية";
+"Pressure" = "الضغط";
+
+/* Fallback key */
+"displayedCondition" = "الحالة المعروضة";
+
+/* Titles */
+"Forecast"                   = "توقعات";
+"DailySummary"               = "ملخص يومي";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° الآن بشروط %@. هناك فرصة لهطول الأمطار %@. الرياح من %@ تصل هباتها إلى %d %@. تتراوح درجة الحرارة اليوم من %d° إلى %d° وتبدو وكأنها %d°. %@ و %@.";
+"UVIndexFormat"              = "مؤشر الأشعة فوق البنفسجية يصل إلى %d";
+"HumidityFormat"             = "الرطوبة حول %d%%";
+"HumidityRangeFormat"        = "الرطوبة من %d%% إلى %d%%";
+"NA"                         = "لا يوجد";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "الحد الأدنى لـ %@ هو %d° والأعلى هو %d°. ستشعر بدرجة الحرارة مثل %d° إلى %d°. من المتوقع أن تكون الرياح من %@. %@";
+"NoPrecipLast24h"            = "لم يتم تسجيل هطول الأمطار خلال 24 ساعة الماضية.";
+"RainLast24h" = "هطلت أمطار %d mm خلال الـ 24 ساعة الماضية.";
+"SnowAndRainLast24h" = "بلغ قياس الثلوج %@ cm والأمطار %d mm خلال الـ 24 ساعة الماضية.";
+
+/* compass abbreviations */
+"Dir_N"   = "ن";
+"Dir_NNE" = "شمال شرق";
+"Dir_NE"  = "شمال شرق";
+"Dir_ENE" = "ايني";
+"Dir_E"   = "ه";
+"Dir_ESE" = "إي إس إي";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "س";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "جنوب غرب";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "دبليو";
+"Dir_WNW" = "غرب غرب";
+"Dir_NW"  = "شمال غرب";
+"Dir_NNW" = "شمال غرب";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "إجمالي هطول الأمطار";
+"Last24h_Label"             = "آخر 24 ساعة";
+"Next24h_Label"             = "الـ 24 ساعة القادمة";
+"Total_Label"               = "المجموع";
+"Precipitation_Label"       = "هطول الأمطار";
+"Rain_Label"                = "المطر";
+"Snow_Label"                = "ثلج";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "الرياح حاليا %1$d %2$@ من %3$@. تتراوح سرعة الرياح اليوم من %4$d إلى %5$d %2$@، مع هبات تصل إلى %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "وتتراوح سرعة الرياح من %1$d إلى %2$d %3$@، وتصل إلى %4$d %3$@.";
+
+"Beaufort_Scale"                = "مقياس بوفورت";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "الوصف";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "الهدوء";
+"Beaufort_1"                    = "هواء خفيف";
+"Beaufort_2"                    = "نسيم خفيف";
+"Beaufort_3"                    = "نسيم لطيف";
+"Beaufort_4"                    = "نسيم معتدل";
+"Beaufort_5"                    = "نسيم منعش";
+"Beaufort_6"                    = "نسيم قوي";
+"Beaufort_7"                    = "الرياح العاتية";
+"Beaufort_8"                    = "عاصفة";
+"Beaufort_9"                    = "عاصفة قوية";
+"Beaufort_10"                   = "عاصفة";
+"Beaufort_11"                   = "عاصفة عنيفة";
+"Beaufort_12"                   = "قوة الإعصار";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 - 5";
+"BeaufortRange_2"               = "6 - 11";
+"BeaufortRange_3"               = "12 - 19";
+"BeaufortRange_4"               = "20 - 28";
+"BeaufortRange_5"               = "29 - 38";
+"BeaufortRange_6"               = "39 - 49";
+"BeaufortRange_7"               = "50 - 61";
+"BeaufortRange_8"               = "62 - 74";
+"BeaufortRange_9"               = "75 - 88";
+"BeaufortRange_10"              = "89 - 102";
+"BeaufortRange_11"              = "103 - 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "كان هناك %.1f%@ هطول الأمطار خلال الـ 24 ساعة الماضية. إجمالي هطول الأمطار اليوم سيكون %.1f%@. من المتوقع هطول %.1f%@ خلال الـ 24 ساعة القادمة.";
+"ForecastPrecip_OtherDayFormat" = "في %@، سيكون إجمالي هطول الأمطار %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "حول كثافة هطول الأمطار";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"تُحسب الشدة بناءً على كمية المطر أو الثلج التي تهطل في الساعة، وتهدف إلى توضيح مدى شدة المطر أو الثلج. وتُستخدم أيضًا مع أنواع أخرى من الهطول مثل المطر الثلجي والمزيج الشتوي. قد تكون شدة الأمطار الغزيرة أو العاصفة الثلجية القوية «شديدة»، بينما قد تكون شدة الأمطار المعتدلة أو الرذاذ الخفيف «متوسطة» أو «خفيفة».";
+
+/* Section titles */
+"Forecast_Title"               = "توقعات";
+"DailySummary_Title"           = "ملخص يومي";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "نقطة الندى هي %d° إلى %d°.";
+"DewPoint_FutureFormat"        = "ستكون نقطة الندى %d° إلى %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "اليوم متوسط الرطوبة %d%%. %@";
+"ForecastHumidity_Other"       = "في %@ متوسط الرطوبة سيكون %d%%.\n%@";
+
+"AboutPressure_Title"  = "حول الضغط";
+"AboutPressure_Body"   = "تُستخدم التغيرات الكبيرة والسريعة في الضغط للتنبؤ بالتغيرات في الطقس. على سبيل المثال، انخفاض الضغط يمكن أن يعني أن المطر أو الثلج على الطريق، وارتفاع الضغط يمكن أن يعني أن الطقس سوف يتحسن. ويسمى الضغط أيضًا بالضغط الجوي أو الضغط الجوي.";
+
+"AboutHumidity_Title"  = "حول الرطوبة النسبية";
+"AboutHumidity_Body"   = "الرطوبة النسبية، والمعروفة عمومًا بالرطوبة، هي كمية الرطوبة الموجودة في الهواء مقارنة بما يمكن أن يحمله الهواء. يمكن للهواء أن يحمل المزيد من الرطوبة في درجات الحرارة المرتفعة. الرطوبة النسبية القريبة من 100% تعني احتمال وجود ندى أو ضباب.";
+
+"AboutDewPoint_Title" = "حول نقطة الندى";
+"AboutDewPoint_Body"  = "نقطة الندى هي ما يجب أن تنخفض درجة الحرارة إليه لتكوين الندى. قد تكون هذه طريقة مفيدة لمعرفة مدى رطوبة الهواء، فكلما ارتفعت نقطة الندى، زاد الشعور بالرطوبة. نقطة الندى التي تطابق درجة الحرارة الحالية تعني أن الرطوبة النسبية 100%، وقد يكون هناك ندى أو ضباب.";
+
+"Section_Forecast"                     = "توقعات";
+"Section_DailySummary"                 = "ملخص يومي";
+"ForecastVisibility_TodayFormat" = "ستكون الرؤية اليوم %@، عند %d إلى %d %@.";
+"ForecastVisibility_OtherFormat" = "على %@، أدنى مستوى رؤية سيكون %@ عند %d %@، والأعلى سيكون %@ عند %d %@.";
+"Clarity_Foggy"                        = "ضبابي";
+"Clarity_Hazy"                         = "ضبابي";
+"Clarity_Clear"                        = "واضح";
+"Clarity_PerfectlyClear"               = "واضح تماما";
+
+"AboutVisibility_Title" = "حول الرؤية";
+"AboutVisibility_Body" = "تخبرك ميزة الرؤية إلى أي مدى يمكنك رؤية الأشياء بوضوح مثل المباني والتلال. وهو مقياس لشفافية الهواء ولا يأخذ في الاعتبار كمية ضوء الشمس أو وجود العوائق. تعتبر الرؤية عند %@ أو أعلى منها واضحة.";
+
+"PressureForecast_Today" = "الضغط حاليا %@ %@ وينخفض. اليوم متوسط ​​الضغط %@ %@ والضغط الأدنى %@ %@.";
+"PressureForecast_Other" = "في %@، سيكون متوسط الضغط %@ %@، وأقل ضغط سيكون %@ %@.";
+"SectionForecast" = "توقعات";
+"SectionDailySummary" = "ملخص يومي";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "جميع ميزات الخطة الأساسية";
+"Multi-calendar view" = "عرض متعدد التقويمات";
+"Sync with Google Calendar" = "مزامنة مع Google التقويم";
+"Sync meets from Google Meet" = "تجتمع المزامنة من Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "الخطة الأساسية";
+"Single-day calendar view" = "عرض تقويم ليوم واحد";
+"Multi-day calendar view" = "عرض تقويم متعدد الأيام";
+"Monthly calendar view" = "عرض التقويم الشهري";
+"Yearly overview" = "نظرة عامة سنوية";
+"List view for events" = "عرض القائمة للأحداث";
+"Weather view" = "عرض الطقس";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "الخطة المميزة";
+"Sync with Microsoft Calendar" = "مزامنة مع Microsoft التقويم";
+"Sync meets from Microsoft Teams" = "تجتمع المزامنة من Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "أي ما يعادل %@ شهريًا";
+"%d %@ free" = "%d %@ مجاني";
+
+/* SubscriptionListView */
+"Premium Plans" = "خطط مميزة";
+"You are subscribed to the %@ %@ plan" = "أنت مشترك في خطة %@ %@";
+"Renews on: %@" = "يتم التجديد في: %@";
+"Start Free Trial" = "ابدأ النسخة التجريبية المجانية";
+"Subscribe Now" = "اشترك الآن";
+"%d %@ free, then %@%@." = "%d %@ مجاناً ثم %@%@.";
+"Subscribe for %@%@." = "اشترك في %@%@.";
+"Privacy Policy"     = "سياسة الخصوصية";
+"Terms of Service"   = "شروط الخدمة";
+
+/* SubscriptionCategory */
+"Advanced" = "متقدم";
+"Advanced Plan" = "الخطة المتقدمة";
+"All Advanced Plan features" = "جميع ميزات الخطة المتقدمة";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "أنت بحاجة إلى خطة %@ نشطة للوصول إلى هذا القسم.";
+"Plan Required" = "الخطة مطلوبة";
+"OK" = "حسنًا";
+
+/* SubscriptionStatus */
+"Base"    = "قاعدة";
+"Premium" = "قسط";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "مشترك في خطة %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "يتم التجديد في: %@";
+
+"Manage Subscription"                   = "إدارة الاشتراك";
+
+/* Period units */
+"Daily"     = "يوميا";
+"Weekly"    = "أسبوعيا";
+"Monthly"   = "شهريا";
+"Yearly"    = "سنويا";
+"Recurring" = "متكرر";
+
+/* units */
+"day"   = "يوم";
+"days"  = "أيام";
+"week"  = "أسبوع";
+"weeks" = "أسابيع";
+"month"  = "شهر";
+"months" = "أشهر";
+"year"   = "سنة";
+"years"  = "سنوات";
+
+/* YearMonthMiniView */
+"weekday.headers" = "ح,ن,ث,ر,خ,ج,س";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "تمت استعادة مشترياتك السابقة بنجاح.";
+"No active subscriptions found to restore."                = "لم يتم العثور على اشتراكات نشطة لاستعادتها.";
+"Failed to restore purchases. Please try again later. (%@)" = "فشل في استعادة المشتريات. يرجى المحاولة مرة أخرى في وقت لاحق. (%@)";
+"Restore Purchases"                                        = "استعادة المشتريات";
+
+"Ads Free" = "إعلانات مجانية";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "التقويم والطقس";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "يعرض الحجم الصغير تاريخ اليوم والطقس الحالي. ويضيف الحجم المتوسط طور القمر والرياح.";
+"Calendar Events" = "أحداث التقويم";
+"Shows today's date, current weather, and your next calendar events." = "يعرض تاريخ اليوم والطقس الحالي وأحداث التقويم التالية.";
+"No upcoming events" = "لا توجد أحداث قادمة";
+"Tomorrow" = "غدا";
+"Untitled" = "بدون عنوان";
+"Detail" = "التفاصيل";
+"Phase" = "المرحلة";
+"Weather" = "الطقس";
+"Select Your Email" = "حدد بريدك الإلكتروني";
+"Confirm" = "تأكيد";
+"Calendar name" = "اسم التقويم";
+"Sharing: %@" = "المشاركة: %@";
+"Loading..." = "جار التحميل...";
+"Selected Location" = "الموقع المحدد";
+"Data provided by Apple Weather" = "البيانات مقدمة من Apple Weather";
+"Next" = "التالي";
+"No details found for the selected location." = "لم يتم العثور على تفاصيل للموقع المحدد.";
+"Could not determine the time zone for the selected location." = "تعذر تحديد المنطقة الزمنية للموقع المحدد.";
+"(No Title)" = "(بدون عنوان)";
+"Choose your e-mail" = "اختر بريدك الإلكتروني";
+"It will be treated as your primary address and invitations will not be sent to it." = "سيتم التعامل معه على أنه عنوانك الأساسي ولن يتم إرسال الدعوات إليه.";
+"Invalid URL" = "عنوان URL غير صالح";
+"Rate limit or insufficient permission" = "حد المعدل أو إذن غير كاف";
+"Network error: %@" = "خطأ في الشبكة: %@";
+"N/A - Selected Tab: %@" = "غير متوفر - علامة التبويب المحددة: %@";
+"Enable Notifications" = "تمكين الإخطارات";
+"Event Notifications" = "إشعارات الأحداث";
+"Event alerts are scheduled from your event alert settings." = "تتم جدولة تنبيهات الأحداث من إعدادات تنبيه الأحداث الخاصة بك.";
+"Allow notifications so event alerts can appear at the right time." = "السماح بالإشعارات حتى تظهر تنبيهات الأحداث في الوقت المناسب.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "تم إيقاف الإشعارات لهذا التطبيق. لتمكينها، انتقل إلى: الإعدادات -> التطبيقات -> Cloud Calendars -> الإشعارات -> السماح بالإشعارات.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating هو مدربك المدعوم بالذكاء الاصطناعي للحصول على تغذية وتدريب أكثر ذكاءً. فهو يجمع بين علوم التغذية الحديثة والأدوات العملية لمساعدتك في تخطيط وجبات الطعام، وتصميم التمارين، وإدارة مخزنك، وفهم كيفية تأثير الطعام والحركة على جسمك.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio هي بيئة تصميم ثلاثية الأبعاد متقدمة لمطوري iOS وmacOS. تجمع بين العرض الدقيق باستخدام RealityKit ومحرر قوي للنص المنسق لمساعدتك على تحويل لقطات الشاشة الخام إلى مواد احترافية لمتجر App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio هو استوديو تسجيل الشاشة من فئة المبدعين لـ iOS وmacOS. التقط شاشتك والكاميرا في نفس الوقت، وتحكم في صوت الميكروفون + النظام، وقم بتصدير ملفات MP4 النظيفة للحصول على البرامج التعليمية والإرشادات التفصيلية والعروض التوضيحية للمنتج. على iOS، يمكنك أيضًا تشغيل مقطع فيديو داخل التطبيق وتسجيله مع الكاميرا للحصول على محتوى بأسلوب التفاعل والمحتوى الذي يقوده مقدم العرض.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "يجمع Cloud Calendars بين الجدولة المتقدمة والتنبؤات الجوية المتكاملة بشكل جميل، حتى تتمكن من التخطيط بدقة. وهو يدعم خدمات التقويم المتعددة، والتحرير البديهي القائم على الإيماءات، وروابط الاجتماعات المضمنة، والتنبؤات التفصيلية لكل ساعة/يومية مباشرةً داخل جدولك الزمني.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI يساعدك على فهم حركة السوق من خلال التحليلات الموجودة على الجهاز وسير العمل متعدد الوكلاء المصمم لفصل الإشارة عن الضوضاء. تتبع بيانات الأسعار في الوقت الفعلي، واستكشف احتمالات نمط النظام، واستخدم لوحات المعلومات والرسوم البيانية الواضحة لدعم عملية اتخاذ القرار. الخصوصية أولاً: تبقى تكويناتك على جهازك.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "التطبيقات";
+"Plan" = "الخطة";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "عاصفة ثلجية";
+"WeatherCondition.blowingDust" = "غبار";
+"WeatherCondition.blowingSnow" = "زوبعة ثلجية";
+"WeatherCondition.breezy" = "نسيمي";
+"WeatherCondition.clear" = "صافٍ";
+"WeatherCondition.cloudy" = "غائم";
+"WeatherCondition.drizzle" = "رذاذ";
+"WeatherCondition.flurries" = "موجات";
+"WeatherCondition.foggy" = "ضباب";
+"WeatherCondition.freezingDrizzle" = "رذاذ متجمد";
+"WeatherCondition.freezingRain" = "أمطار متجمدة";
+"WeatherCondition.frigid" = "بارد";
+"WeatherCondition.hail" = "بَرَد";
+"WeatherCondition.haze" = "ضباب خفيف";
+"WeatherCondition.heavyRain" = "أمطار غزيرة";
+"WeatherCondition.heavySnow" = "ثلوج كثيفة";
+"WeatherCondition.hot" = "حار";
+"WeatherCondition.hurricane" = "إعصار";
+"WeatherCondition.isolatedThunderstorms" = "عواصف رعدية منعزلة";
+"WeatherCondition.mostlyClear" = "صافٍ أغلب الوقت";
+"WeatherCondition.mostlyCloudy" = "غائم أغلب الوقت";
+"WeatherCondition.partlyCloudy" = "غائم جزئيًا";
+"WeatherCondition.rain" = "أمطار";
+"WeatherCondition.scatteredThunderstorms" = "عواصف رعدية متناثرة";
+"WeatherCondition.sleet" = "أمطار متجمدة";
+"WeatherCondition.smoky" = "دخان";
+"WeatherCondition.snow" = "ثلوج";
+"WeatherCondition.strongStorms" = "عاصفة رعدية شديدة";
+"WeatherCondition.sunFlurries" = "مشمس مع موجات";
+"WeatherCondition.sunShowers" = "مشمس مع زخات";
+"WeatherCondition.thunderstorms" = "عاصفة رعدية";
+"WeatherCondition.tropicalStorm" = "عاصفة استوائية";
+"WeatherCondition.windy" = "عاصف";
+"WeatherCondition.wintryMix" = "خليط شتوي";
+"MoonPhase.new" = "قمر جديد";
+"MoonPhase.waxingCrescent" = "هلال";
+"MoonPhase.firstQuarter" = "التربيع الأول";
+"MoonPhase.waxingGibbous" = "أحدب متزايد";
+"MoonPhase.full" = "قمر مكتمل";
+"MoonPhase.waningGibbous" = "أحدب متناقص";
+"MoonPhase.lastQuarter" = "التربيع الأخير";
+"MoonPhase.waningCrescent" = "محاق";

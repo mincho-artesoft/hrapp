@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "没有提供电子邮件。";
+"Please enter a valid email to continue." = "请输入有效的电子邮件以继续。";
+"Your email" = "您的电子邮件";
+"Save" = "保存";
+"Login" = "登录";
+"Logout" = "退出";
+
+/* RootView */
+"N/A" = "不适用";
+"Calendars" = "日历";
+"Inbox" = "收件箱";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "其他";
+"Google calendars" = "Google 日历";
+"No synced Google calendars yet." = "尚未同步 Google 日历。";
+"Microsoft calendars" = "Microsoft 日历";
+"No synced Microsoft calendars yet." = "尚未同步 Microsoft 日历。";
+"Sign out" = "退出";
+"Add iCloud Calendar" = "添加iCloud日历";
+"Share calendars with iCloud Calendar" = "与 iCloud 日历共享日历";
+"Sign in with Google" = "使用Google登录";
+"Sign in with Microsoft" = "使用Microsoft登录";
+"Deselect All" = "取消全选";
+"Select All" = "选择全部";
+"No Email" = "没有电子邮件";
+"Add Google Calendar" = "添加Google日历";
+
+/* AddCalendarView */
+"Calendar Name" = "日历名称";
+"Account" = "账户";
+"COLOR" = "颜色";
+"NOTIFICATIONS" = "通知";
+"Event Alerts" = "事件提醒";
+"Allow events on this calendar to display alerts." = "允许此日历上的事件显示警报。";
+"Add Calendar" = "添加日历";
+
+/* Colors */
+"Red" = "红色";
+"Orange" = "橙色";
+"Yellow" = "黄色";
+"Green" = "绿色";
+"Blue" = "蓝色";
+"Purple" = "紫色";
+"Brown" = "棕色";
+"Custom" = "定制";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "日历颜色";
+"Custom..." = "定制...";
+
+/* EditCalendarView */
+"Edit Calendar" = "编辑日历";
+"Delete Calendar" = "删除日历";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "正在加载共享设置...";
+"Shared with these users" = "与这些用户共享";
+"Add New Email" = "添加新电子邮件";
+"Email to share" = "电子邮件分享";
+"Permission:" = "权限：";
+"Add" = "添加";
+"Sharing:" = "分享：";
+"Done" = "完成";
+
+"Error loading: %@" = "加载错误：%@";
+"Error adding: %@" = "添加错误：%@";
+"Error deleting: %@" = "删除时出错：%@";
+"Error updating: %@" = "更新时出错：%@";
+"Error re-inviting (delete): %@" = "重新邀请（删除）时出错：%@";
+"Error re-inviting (insert): %@" = "重新邀请时出错（插入）：%@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "读者";
+"Writer" = "作家";
+"Owner"  = "业主";
+
+/* MonthCalendarView */
+"Day View" = "日景";
+"This is a repeating event." = "这是一个重复的事件。";
+"Save for This Event Only" = "仅为本次活动保存";
+"Save for Future Events" = "为未来活动储蓄";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "太阳";
+"Mon" = "周一";
+"Tue" = "星期二";
+"Wed" = "周三";
+"Thu" = "星期四";
+"Fri" = "周五";
+"Sat" = "星期六";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "关闭";
+
+/* AllEventsListView */
+"No calendar access." = "没有日历访问权限。";
+
+/* EventRowView */
+"Ends" = "结束";
+
+/* SearchEventRowView */
+"No Title" = "无标题";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "加入会议";
+"Edit" = "编辑";
+"Duplicate" = "重复";
+"Delete" = "删除";
+"Add to Google Meet" = "添加到Google Meet";
+"Add to Microsoft Teams" = "添加到Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "没有选择范围";
+"all-day" = "全天";
+"Search events..." = "搜索事件...";
+"Day" = "日";
+"MultiDay" = "多日";
+"Month" = "月份";
+"Year" = "年份";
+"List" = "列表";
+"MultiCalendar" = "多日历";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "新活动";
+"All-day event" = "全天活动";
+"Recurring Event" = "重复事件";
+"This event is part of a series. Update which events?" = "该活动是系列活动的一部分。更新哪些活动？";
+"This Event Only" = "仅限本次活动";
+"All Future Events" = "所有未来事件";
+"Cancel" = "取消";
+
+/* DraggableMenuView */
+"Calendar" = "日历";
+"Subscriptions" = "订阅";
+"Live" = "直播";
+"Stop" = "停止";
+"Calendar Live Activity" = "日历实时活动";
+"Get" = "获取";
+"Color" = "颜色";
+"Search for a city…" = "搜索一个城市...";
+"No directions" = "没有方向";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "位置访问被拒绝。搜索城市或在“设置”中授予访问权限。";
+"Cannot refresh. Location unknown." = "无法刷新。位置未知。";
+"10-DAY FORECAST" = "10 天预测";
+"HighLowLabelFormat" = "高:%d° 低:%d°";
+"tomorrow" = "明天";
+"on_day" = "在%@";
+"in_days" = "在%d天内";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "新活动";
+
+/* Search placeholder */
+"Search for a city..." = "搜索一个城市...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "点击一个小时即可快速添加日历事件。";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "感觉就像";
+"similar_to_actual_temp" = "与实际温度相似。";
+"wind_cooler_feel" = "风使人感觉凉爽。";
+"humidity_warmer_feel" = "湿度让人感觉更温暖。";
+
+/* HumidityCard */
+"HUMIDITY" = "湿度";
+"The dew point is %d° right now." = "现在露点是 %d°。";
+"dewPoint.current" = "现在露点是 %d°。";
+
+/* MoonCard */
+"MOON PHASE" = "月相";
+"Moonrise" = "月出";
+"Moonset" = "月落";
+"Next %@" = "下一个%@";
+"Data unavailable" = "数据不可用";
+"%d day" = "%d日";
+"%d days" = "%d 天";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "降水量";
+"PRECIPITATION_CARD_TODAY_LABEL" = "今天";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "下一个预计是%1$.0f%2$@%3$@。"; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "预计很快不会有降水。";
+
+/* PressureCard */
+"PRESSURE" = "压力";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "日出";
+"Sunrise: %@" = "日出：%@";
+"Sunset: %@" = "日落：%@";
+"Sunrise" = "日出";
+"Sunset" = "日落";
+
+
+/* UVIndexCard */
+"UV INDEX" = "紫外线指数";
+"Low" = "低";
+"Moderate" = "中等";
+"High" = "高";
+"Very High" = "非常高";
+"Extreme" = "极限";
+
+/* VisibilityCard */
+"VISIBILITY" = "能见度";
+"km" = "km";
+"Perfectly clear view." = "视野非常清晰。";
+"Excellent visibility." = "极佳的能见度。";
+"Good visibility." = "能见度好。";
+"Moderate visibility." = "能见度适中。";
+"Poor visibility." = "能见度差。";
+"Very poor visibility." = "能见度非常差。";
+"visibility.perfect"   = "视野非常清晰。";
+"visibility.excellent" = "极佳的能见度。";
+"visibility.good"      = "能见度好。";
+"visibility.moderate"  = "能见度适中。";
+"visibility.poor"      = "能见度差。";
+"visibility.verypoor"  = "能见度非常差。";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "风";
+"Gusts" = "阵风";
+"Direction" = "方向";
+"km/h" = "km/h";
+"Compass_N" = "氮";
+"Compass_S" = "S";
+"Compass_W" = "瓦";
+"Compass_E" = "乙";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "获取天气数据失败。请检查您的连接或稍后重试。";
+"Falling" = "坠落";
+"Rising" = "上升中";
+"Steady" = "稳定";
+"Unknown" = "未知";
+"Sunny" = "阳光明媚";
+"Cloudy" = "多云";
+"Partly Cloudy" = "晴间多云";
+"Drizzle" = "细雨";
+"Thunderstorm" = "雷暴";
+"Fog" = "雾";
+"Partly Cloudy Night" = "夜间晴间多云";
+"Clear Night" = "晴夜";
+"Hazy" = "朦胧";
+"Today" = "今天";
+"Now" = "现在";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "氮";
+"cardinal.NNE" = "北北东";
+"cardinal.NE"  = "东北";
+"cardinal.ENE" = "埃尼";
+"cardinal.E"   = "乙";
+"cardinal.ESE" = "欧洲经济环境局";
+"cardinal.SE"  = "东南欧";
+"cardinal.SSE" = "上证所";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "西西南";
+"cardinal.W"   = "瓦";
+"cardinal.WNW" = "西西北";
+"cardinal.NW"  = "西北";
+"cardinal.NNW" = "西北西北";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "降水机会";
+"Today's chance: %d%%" = "今天的机会：%d%%";
+"%@'s chance: %d%%" = "%@的机会：%d%%";
+"Max" = "最大";
+"Min" = "最小";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "每日降水的机会往往高于每小时降水的机会。";
+"ChanceOfPrecipitation_Title" = "降水机会";
+"TodaysChance"                = "今天的机会：%d%%";
+"OtherDayChance"              = "%@的机会：%d%%";
+"DailyChanceExplanation"      = "每日降水的机会往往高于每小时降水的机会。";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "体感温度";
+"Actual" = "实际";
+"No hourly data available for this day." = "这一天没有可用的每小时数据。";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "由于湿度、阳光或风而导致的温度感觉如何。";
+"The actual air temperature." = "实际气温。";
+"HighLabelFormat" = "最高：%d°";
+"LowLabelFormat" = "最低：%d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "湿度";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "湿度%d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "平均湿度 %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "今天的最小值%d%% – 最大值%d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "最大";
+"ChartMarker_Min"           = "最小";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "雨：%.1f%@，雪：%.1f%@";
+"Precip_Total_RainFormat"       = "雨：%.1f%@";
+"Precip_Total_SnowFormat"       = "雪：%.1f%@";
+"Precip_Total_None"             = "降水量：0%@";
+"Precip_Bars_Subtitle"          = "每小时雨雪时段 (%@)。";
+"Precip_Level_Light"            = "光";
+"Precip_Level_Moderate"         = "中等";
+"Precip_Level_Heavy"            = "重型";
+"Precip_Tooltip_Format"         = "%@h\n雨：%.1f%@\n雪：%.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "压力 %@ %@";
+"Pressure_CurrentUnavailable"      = "压力：--";
+"Pressure_DailyMinMaxFormat"       = "今天的最小值 %@ %@ – 最大值 %@ %@";
+"Pressure_AverageFormat"           = "平均压力 %@ %@";
+"Pressure_DailyRangeFormat"        = "每日范围：%@–%@ %@";
+"Pressure_Title"                   = "压力";
+"Pressure_NoData"                  = "当天没有可用的压力数据。";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "今天%@%d";
+"UVGraphNoHourlyData"   = "这一天没有可用的每小时数据。";
+"UVGraphNowLabel"       = "现在，%@";
+"UVCategory_None"       = "无";
+"UVCategory_Low"        = "低";
+"UVCategory_Moderate"   = "中等";
+"UVCategory_High"       = "高";
+"UVCategory_VeryHigh"   = "非常高";
+"UVCategory_Extreme"    = "极限";
+"UVAdvice_None"         = "预计这一天不会出现中等或更高的紫外线水平。";
+"UVAdvice_Range"        = "建议防晒。紫外线水平范围为%@至%@，达到%@至%@之间。";
+"UVGraphMaxLabel" = "最大";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "能见度";
+"Visibility_NoData"                = "当天没有可用的能见度数据。";
+"Visibility_CurrentFormat"         = "能见度 %d %@";
+"Visibility_DailyMinMaxFormat"     = "最小值 %d – 最大值 %d %@";
+"Visibility_NoCurrentData"         = "目前没有可用的可见性数据。";
+"Visibility_HourlyAverages_NoData" = "没有可用的每小时数据。";
+"Visibility_MaxLabel"              = "最大";
+"Visibility_MinLabel"              = "最小";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "风速和阵风";
+"WindGraph_NoData" = "今天没有可用的风力数据。";
+"WindGraph_SpeedHeader" = "风速%d";
+"WindGraph_GustHeader" = "阵风高达%d";
+"WindGraph_SpeedRangeHeader" = "风速%d-%d";
+"WindGraph_MaxSpeedLabel" = "最大风速";
+"WindGraph_MaxGustLabel" = "最大阵风";
+"WindGraph_DragLabel" = "%@\n速度：%d\n阵风：%d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "每日总结";
+
+"Precipitation Totals" = "总降水量";
+"LAST 24 HOURS" = "过去 24 小时";
+"NEXT 24 HOURS" = "未来 24 小时";
+"Total" = "总计";
+"Rain" = "雨";
+"Snow" = "雪";
+
+"About Wind Speed and Gusts" = "关于风速和阵风";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "风速是使用短时间内的平均值计算的。阵风是指高于平均水平的短时阵风。阵风通常持续不到 20 秒。";
+
+"About the Beaufort Scale" = "关于蒲福氏量表";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "蒲福风级表示给定速度下风的强度。蒲福风级可以让您更容易地了解风的强度或风可能产生的影响。刻度上的每个值对应一个风速范围。";
+
+"About Feels Like Temperature" = "关于体感温度";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "体感温度表示实际感觉有多热或多冷，可能与实际气温不同。它会受到湿度、阳光和风的影响。";
+
+"Options" = "选项";
+"Temperature" = "温度";
+"Use system setting (°C)" = "使用系统设置 (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "条件";
+"UV Index" = "紫外线指数";
+"Wind" = "风";
+"Precipitation" = "降水量";
+"Humidity" = "湿度";
+"Visibility" = "能见度";
+"Pressure" = "压力";
+
+/* Fallback key */
+"displayedCondition" = "显示条件";
+
+/* Titles */
+"Forecast"                   = "预测";
+"DailySummary"               = "每日总结";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° 现在具有 %@ 条件。有%@降水的机会。风速为%@，阵风可达%d%@。今天的气温范围是%d°到%d°，感觉像是%d°。 %@和%@。";
+"UVIndexFormat"              = "紫外线指数高达%d";
+"HumidityFormat"             = "湿度%d%%左右";
+"HumidityRangeFormat"        = "湿度从%d%%到%d%%";
+"NA"                         = "不适用";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@ 的最低值是%d°，最高值是%d°。感觉温度为 %d° 至 %d°。预计%@有风。 %@";
+"NoPrecipLast24h"            = "过去 24 小时内没有记录到降水。";
+"RainLast24h" = "过去 24 小时内降雨量为 %d mm。";
+"SnowAndRainLast24h" = "过去 24 小时内降雪量为 %@ cm，降雨量为 %d mm。";
+
+/* compass abbreviations */
+"Dir_N"   = "氮";
+"Dir_NNE" = "北北东";
+"Dir_NE"  = "东北";
+"Dir_ENE" = "埃尼";
+"Dir_E"   = "乙";
+"Dir_ESE" = "欧洲经济环境局";
+"Dir_SE"  = "东南欧";
+"Dir_SSE" = "上证所";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "西西南";
+"Dir_W"   = "瓦";
+"Dir_WNW" = "西西北";
+"Dir_NW"  = "西北";
+"Dir_NNW" = "西北西北";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "总降水量";
+"Last24h_Label"             = "过去 24 小时";
+"Next24h_Label"             = "未来 24 小时";
+"Total_Label"               = "总计";
+"Precipitation_Label"       = "降水量";
+"Rain_Label"                = "雨";
+"Snow_Label"                = "雪";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "目前风速为 %3$@ 至 %1$d %2$@。今天，风速为%4$d至%5$d%2$@，阵风可达%6$d%2$@。";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "风速范围为%1$d至%2$d%3$@，阵风可达%4$d%3$@。";
+
+"Beaufort_Scale"                = "蒲福氏量级";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "描述";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "冷静";
+"Beaufort_1"                    = "轻空气";
+"Beaufort_2"                    = "微风";
+"Beaufort_3"                    = "微风徐徐";
+"Beaufort_4"                    = "微风";
+"Beaufort_5"                    = "清新的微风";
+"Beaufort_6"                    = "强风";
+"Beaufort_7"                    = "大风";
+"Beaufort_8"                    = "大风";
+"Beaufort_9"                    = "强风";
+"Beaufort_10"                   = "风暴";
+"Beaufort_11"                   = "猛烈风暴";
+"Beaufort_12"                   = "飓风力";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "过去 24 小时内有%.1f%@ 降水量。今天的总降水量为%.1f%@。未来24小时预计有%.1f%@降雨。";
+"ForecastPrecip_OtherDayFormat" = "%@，总降水量为%.1f%@。";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "关于降水强度";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"强度根据每小时的降雨量或降雪量计算，用于表示雨雪的猛烈程度。它也适用于雨夹雪和冬季混合降水等其他降水类型。暴雨或强烈暴雪的强度可能为“强”，而普通降雨或较小的毛毛雨的强度可能为“中等”或“弱”。";
+
+/* Section titles */
+"Forecast_Title"               = "预测";
+"DailySummary_Title"           = "每日总结";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "露点为%d°至%d°。";
+"DewPoint_FutureFormat"        = "露点将为 %d° 至 %d°。";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "今天，平均湿度为%d%%。 %@";
+"ForecastHumidity_Other"       = "在%@，平均湿度为%d%%。\n%@";
+
+"AboutPressure_Title"  = "关于压力";
+"AboutPressure_Body"   = "显着、快速的压力变化可用于预测天气变化。例如，气压下降可能意味着雨或雪即将来临，而气压上升可能意味着天气将会好转。压力也称为大气压或大气压。";
+
+"AboutHumidity_Title"  = "关于相对湿度";
+"AboutHumidity_Body"   = "相对湿度，通常称为湿度，是指空气中的水分含量与空气所能容纳的水分含量之比。空气在较高温度下可以容纳更多水分。相对湿度接近 100% 意味着可能有露水或雾气。";
+
+"AboutDewPoint_Title" = "关于露点";
+"AboutDewPoint_Body"  = "露点是温度需要降到什么程度才能形成露水。这是一种了解空气湿度的有用方法——露点越高，感觉越潮湿。露点与当前温度相匹配，表示相对湿度为100%，可能有露水或雾气。";
+
+"Section_Forecast"                     = "预测";
+"Section_DailySummary"                 = "每日总结";
+"ForecastVisibility_TodayFormat" = "今天，能见度为%@，%d至%d%@。";
+"ForecastVisibility_OtherFormat" = "%@，最低能见度为%@，%d%@，最高能见度为%@，%d%@。";
+"Clarity_Foggy"                        = "有雾";
+"Clarity_Hazy"                         = "朦胧";
+"Clarity_Clear"                        = "清除";
+"Clarity_PerfectlyClear"               = "完全清晰";
+
+"AboutVisibility_Title" = "关于可见性";
+"AboutVisibility_Body" = "能见度告诉您可以清楚地看到建筑物和山丘等物体的距离有多远。它是空气透明度的衡量标准，不考虑阳光的量或障碍物的存在。能见度等于或高于 %@ 时被视为晴朗。";
+
+"PressureForecast_Today" = "目前压力为%@%@并且正在下降。今天平均气压为%@%@，最低气压为%@%@。";
+"PressureForecast_Other" = "在%@，平均压力为%@%@，最低压力为%@%@。";
+"SectionForecast" = "预测";
+"SectionDailySummary" = "每日总结";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "所有基本计划功能";
+"Multi-calendar view" = "多日历视图";
+"Sync with Google Calendar" = "与Google日历同步";
+"Sync meets from Google Meet" = "同步会议来自Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "基本计划";
+"Single-day calendar view" = "单日日历视图";
+"Multi-day calendar view" = "多日日历视图";
+"Monthly calendar view" = "月历视图";
+"Yearly overview" = "年度概览";
+"List view for events" = "事件的列表视图";
+"Weather view" = "天气视图";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "高级计划";
+"Sync with Microsoft Calendar" = "与Microsoft日历同步";
+"Sync meets from Microsoft Teams" = "同步会议来自Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "相当于每月%@";
+"%d %@ free" = "%d %@ 免费";
+
+/* SubscriptionListView */
+"Premium Plans" = "高级计划";
+"You are subscribed to the %@ %@ plan" = "您已订阅 %@ %@ 计划";
+"Renews on: %@" = "更新时间：%@";
+"Start Free Trial" = "开始免费试用";
+"Subscribe Now" = "立即订阅";
+"%d %@ free, then %@%@." = "%d %@ 免费，然后%@%@。";
+"Subscribe for %@%@." = "订阅%@%@。";
+"Privacy Policy"     = "隐私政策";
+"Terms of Service"   = "服务条款";
+
+/* SubscriptionCategory */
+"Advanced" = "高级";
+"Advanced Plan" = "高级计划";
+"All Advanced Plan features" = "所有高级计划功能";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "您需要有效的 %@ 计划才能访问此部分。";
+"Plan Required" = "需要计划";
+"OK" = "好的";
+
+/* SubscriptionStatus */
+"Base"    = "基地";
+"Premium" = "高级版";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "订阅了%@%@计划。";
+
+/* Label for renewal date */
+"RenewsOn"            = "更新时间：%@";
+
+"Manage Subscription"                   = "管理订阅";
+
+/* Period units */
+"Daily"     = "每日";
+"Weekly"    = "每周";
+"Monthly"   = "每月";
+"Yearly"    = "每年";
+"Recurring" = "重复出现";
+
+/* units */
+"day"   = "日";
+"days"  = "天";
+"week"  = "周";
+"weeks" = "周";
+"month"  = "月";
+"months" = "月";
+"year"   = "年";
+"years"  = "年";
+
+/* YearMonthMiniView */
+"weekday.headers" = "日,一,二,三,四,五,六";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "您之前的购买已成功恢复。";
+"No active subscriptions found to restore."                = "未找到可恢复的活动订阅。";
+"Failed to restore purchases. Please try again later. (%@)" = "无法恢复购买。请稍后重试。 (%@)";
+"Restore Purchases"                                        = "恢复购买";
+
+"Ads Free" = "无广告";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "日历和天气";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "小号组件显示今天的日期和当前天气。中号组件还会显示月相和风况。";
+"Calendar Events" = "日历活动";
+"Shows today's date, current weather, and your next calendar events." = "显示今天的日期、当前天气和您的下一个日历活动。";
+"No upcoming events" = "没有即将举行的活动";
+"Tomorrow" = "明天";
+"Untitled" = "无题";
+"Detail" = "详情";
+"Phase" = "阶段";
+"Weather" = "天气";
+"Select Your Email" = "选择您的电子邮件";
+"Confirm" = "确认";
+"Calendar name" = "日历名称";
+"Sharing: %@" = "分享：%@";
+"Loading..." = "加载中...";
+"Selected Location" = "选定地点";
+"Data provided by Apple Weather" = "数据由Apple Weather提供";
+"Next" = "下一步";
+"No details found for the selected location." = "未找到所选位置的详细信息。";
+"Could not determine the time zone for the selected location." = "无法确定所选位置的时区。";
+"(No Title)" = "（无标题）";
+"Choose your e-mail" = "选择您的电子邮件";
+"It will be treated as your primary address and invitations will not be sent to it." = "它将被视为您的主要地址，并且不会向该地址发送邀请。";
+"Invalid URL" = "无效网址";
+"Rate limit or insufficient permission" = "速率限制或权限不足";
+"Network error: %@" = "网络错误：%@";
+"N/A - Selected Tab: %@" = "不适用 - 所选选项卡：%@";
+"Enable Notifications" = "启用通知";
+"Event Notifications" = "活动通知";
+"Event alerts are scheduled from your event alert settings." = "事件警报是根据您的事件警报设置安排的。";
+"Allow notifications so event alerts can appear at the right time." = "允许通知，以便事件警报可以在正确的时间出现。";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "此应用程序的通知已关闭。要启用它们，请转到：设置 -> 应用程序 -> Cloud Calendars -> 通知 -> 允许通知。";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating 是您的人工智能教练，可实现更智能的营养和训练。它将现代营养科学与实用工具相结合，帮助您计划膳食、设计锻炼、管理食品储藏室以及了解食物和运动如何影响您的身体。";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio 是面向 iOS 和 macOS 开发者的高级 3D 设计环境。它将精确的 RealityKit 渲染与强大的富文本编辑器相结合，帮助您将原始屏幕截图转换为专业的 App Store 素材。";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio是iOS和macOS的创作者级屏幕录制工作室。同时捕获屏幕和相机，控制麦克风 + 系统音频，并导出干净的 MP4 以用于教程、演练和产品演示。在iOS上，您甚至可以在应用程序内播放视频并用相机将其录制，以获得反应式和演示者主导的内容。";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars 将先进的日程安排与完美集成的天气预报相结合，让您可以精确计划。它支持多种日历服务、直观的基于手势的编辑、内置会议链接以及直接在您的日程安排中提供详细的每小时/每日预测。";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI 通过设备上分析和旨在将信号与噪音分离的多代理工作流程，帮助您了解市场动态。跟踪实时价格数据，探索制度式概率，并使用清晰的仪表板和图表来支持您的决策。隐私第一：您的配置保留在您的设备上。";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "应用";
+"Plan" = "方案";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "暴风雪";
+"WeatherCondition.blowingDust" = "沙尘";
+"WeatherCondition.blowingSnow" = "飞雪";
+"WeatherCondition.breezy" = "微风";
+"WeatherCondition.clear" = "晴朗无云";
+"WeatherCondition.cloudy" = "多云";
+"WeatherCondition.drizzle" = "微雨";
+"WeatherCondition.flurries" = "阵雪";
+"WeatherCondition.foggy" = "雾";
+"WeatherCondition.freezingDrizzle" = "冻细雨";
+"WeatherCondition.freezingRain" = "冻雨";
+"WeatherCondition.frigid" = "寒冷";
+"WeatherCondition.hail" = "冰雹";
+"WeatherCondition.haze" = "雾霾";
+"WeatherCondition.heavyRain" = "暴雨";
+"WeatherCondition.heavySnow" = "大雪";
+"WeatherCondition.hot" = "炎热";
+"WeatherCondition.hurricane" = "飓风";
+"WeatherCondition.isolatedThunderstorms" = "局地雷暴雨";
+"WeatherCondition.mostlyClear" = "大部晴朗无云";
+"WeatherCondition.mostlyCloudy" = "大部多云";
+"WeatherCondition.partlyCloudy" = "局部多云";
+"WeatherCondition.rain" = "下雨";
+"WeatherCondition.scatteredThunderstorms" = "局部雷暴雨";
+"WeatherCondition.sleet" = "雨夹雪";
+"WeatherCondition.smoky" = "烟雾";
+"WeatherCondition.snow" = "下雪";
+"WeatherCondition.strongStorms" = "强雷暴";
+"WeatherCondition.sunFlurries" = "太阳雪";
+"WeatherCondition.sunShowers" = "太阳雨";
+"WeatherCondition.thunderstorms" = "雷暴雨";
+"WeatherCondition.tropicalStorm" = "热带风暴";
+"WeatherCondition.windy" = "有风";
+"WeatherCondition.wintryMix" = "混合雨雪";
+"MoonPhase.new" = "新月";
+"MoonPhase.waxingCrescent" = "蛾眉月";
+"MoonPhase.firstQuarter" = "上弦月";
+"MoonPhase.waxingGibbous" = "盈凸月";
+"MoonPhase.full" = "满月";
+"MoonPhase.waningGibbous" = "亏凸月";
+"MoonPhase.lastQuarter" = "下弦月";
+"MoonPhase.waningCrescent" = "残月";

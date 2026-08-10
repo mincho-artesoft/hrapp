@@ -12,6 +12,7 @@ struct MoonCard: View {
             Label(NSLocalizedString("MOON PHASE", comment: "Moon phase card title"), systemImage: moonEvents?.phase.symbolName ?? "moon")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .adaptiveSingleLine(minimumScale: 0.4)
                 .padding(.bottom, 5)
 
             HStack(alignment: .center, spacing: 15) {
@@ -34,7 +35,7 @@ struct MoonCard: View {
                             )
                             detailRowSmall(
                                 label: nextKey,
-                                value: String(format: daysFormat, daysUntil)
+                                value: localizedFormat(daysFormat, daysUntil)
                             )
                         } else {
                             detailRowSmall(label: LocalizedStringKey("Next"), value: NSLocalizedString("Data unavailable", comment: "Moon phase unavailable fallback"))
@@ -57,9 +58,10 @@ struct MoonCard: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 120, height: 120)
-                        Text(events.phase.description)
+                        Text(vm.localizedMoonPhase(events.phase))
                             .font(.system(size: 16, weight: .medium))
                             .foregroundStyle(.primary)
+                            .adaptiveSingleLine(minimumScale: 0.4)
                     } else {
                         Image("moon")
                             .resizable()
@@ -81,9 +83,12 @@ struct MoonCard: View {
         HStack {
             Text(label)
                 .font(.system(size: 16, weight: .medium))
+                .adaptiveSingleLine(minimumScale: 0.4)
+                .layoutPriority(1)
             Spacer()
             Text(value)
                 .font(.system(size: 16, weight: .regular))
+                .adaptiveSingleLine(minimumScale: 0.5)
         }
     }
 
@@ -92,19 +97,21 @@ struct MoonCard: View {
         HStack {
             Text(label)
                 .font(.system(size: 14, weight: .medium))
+                .adaptiveSingleLine(minimumScale: 0.4)
+                .layoutPriority(1)
             Spacer()
             Text(value)
                 .font(.system(size: 14, weight: .regular))
+                .adaptiveSingleLine(minimumScale: 0.45)
         }
     }
 
     /// Форматирует время в коротком виде (например "14:07") или возвращает "--".
     private func formattedTime(from date: Date?) -> String {
         guard let date = date else { return "--" }
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.timeZone = WeatherKitViewModel.shared.locationTimeZone
-        return formatter.string(from: date)
+        return appTimeFormatter(
+            timeZone: WeatherKitViewModel.shared.locationTimeZone
+        ).string(from: date)
     }
 
     /// Возвращает имя картинки для заданной фазы луны.

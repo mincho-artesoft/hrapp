@@ -8,7 +8,6 @@
 
 /* RootView */
 "N/A" = "Няма данни";
-"Today" = "Днес";
 "Calendars" = "Календари";
 "Inbox" = "Входящи";
 
@@ -21,12 +20,11 @@
 "No synced Microsoft calendars yet." = "Няма синхронизирани Microsoft календари.";
 "Sign out" = "Изход";
 "Add iCloud Calendar" = "Добави iCloud календар";
-"Share calendars with iCloud Calendar" = "Сподели календари с iCloud Calendar";
+"Share calendars with iCloud Calendar" = "Споделяне на календари с iCloud календара";
 "Sign in with Google" = "Вход с Google";
 "Sign in with Microsoft" = "Вход с Microsoft";
 "Deselect All" = "Премахни всички";
 "Select All" = "Избери всички";
-"Done" = "Готово";
 "No Email" = "Няма имейл";
 "Add Google Calendar" = "Добавяне на Google календар";
 
@@ -38,7 +36,6 @@
 "Event Alerts" = "Известия за събития";
 "Allow events on this calendar to display alerts." = "Позволи събитията в този календар да показват известия.";
 "Add Calendar" = "Добави календар";
-"Cancel" = "Отмени";
 
 /* Colors */
 "Red" = "Червен";
@@ -65,7 +62,6 @@
 "Email to share" = "Имейл за споделяне";
 "Permission:" = "Права:";
 "Add" = "Добави";
-"Unknown" = "Неизвестно";
 "Sharing:" = "Споделяне:";
 "Done" = "Готово";
 
@@ -82,22 +78,12 @@
 "Owner"  = "Собственик";
 
 /* MonthCalendarView */
-"Search events..." = "Търсене на събития…";
-"Cancel" = "Отмени";
-"Close" = "Затвори";
 "Day View" = "Дневен изглед";
 "This is a repeating event." = "Това е повтарящо се събитие.";
 "Save for This Event Only" = "Запази само за това събитие";
 "Save for Future Events" = "Запази за бъдещи събития";
-"New Event" = "Ново събитие";
 
 /* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
-"Day" = "Ден";
-"MultiDay" = "Многодневен";
-"Month" = "Месец";
-"Year" = "Година";
-"List" = "Списък";
-"MultiCalendar" = "Мултикалендар";
 
 /* WeekdayHeaderView */
 "Sun" = "Нд";
@@ -109,63 +95,26 @@
 "Sat" = "Сб";
 
 /* UIMenuButtonRepresentable */
-"Day" = "Ден";
-"MultiDay" = "Многодневен";
-"Month" = "Месец";
-"Year" = "Година";
-"List" = "Списък";
-"MultiCalendar" = "Мултикалендар";
 
 /* YearCalendarView */
-"Search events..." = "Търсене на събития…";
-"Cancel" = "Отмени";
 "Close" = "Затвори";
-"New Event" = "Ново събитие";
 
 /* AllEventsListView */
-"Search events..." = "Търсене на събития…";
-"Cancel" = "Отмени";
-"New Event" = "Ново събитие";
 "No calendar access." = "Няма достъп до календара.";
 
 /* EventRowView */
-"all-day" = "Цял ден";
 "Ends" = "Край";
 
 /* SearchEventRowView */
 "No Title" = "Без заглавие";
-"all-day" = "Цял ден";
 
 /* BasicEvent */
-"New event" = "Ново събитие";
 
 /* SingleDayTimelineMultiCalendarView */
-"Join Meeting" = "Присъедини се към среща";
-"Edit" = "Редактиране";
-"Duplicate" = "Дублиране";
-"Delete" = "Изтриване";
-"Add to Google Meet" = "Добави в Google Meet";
-"Add to Microsoft Teams" = "Добави в Microsoft Teams";
-"New Event" = "Ново събитие";
 
 /* TwoWayPinnedSingleDayMultiCalendarContainerView */
-"Search events..." = "Търсене на събития…";
-"all-day" = "Цял ден";
-"Day" = "Ден";
-"MultiDay" = "Многодневен";
-"Month" = "Месец";
-"Year" = "Година";
-"List" = "Списък";
-"MultiCalendar" = "Мултикалендар";
 
 /* TwoWayPinnedSingleDayMultiCalendarWrapper */
-"New event" = "Ново събитие";
-"All-day event" = "Целодневно събитие";
-"Recurring Event" = "Повтарящо се събитие";
-"This event is part of a series. Update which events?" = "Това събитие е част от серия. Кои събития искате да актуализирате?";
-"This Event Only" = "Само това събитие";
-"All Future Events" = "Всички бъдещи събития";
-"Cancel" = "Отмени";
 
 /* MultiDayTimelineView */
 "Join Meeting" = "Присъедини се към среща";
@@ -174,7 +123,6 @@
 "Delete" = "Изтриване";
 "Add to Google Meet" = "Добави в Google Meet";
 "Add to Microsoft Teams" = "Добави в Microsoft Teams";
-"New Event" = "Ново събитие";
 
 /* TwoWayPinnedMultiDayContainerView */
 "No selected range" = "Няма избран период";
@@ -199,35 +147,23 @@
 /* DraggableMenuView */
 "Calendar" = "Календар";
 "Subscriptions" = "Абонаменти";
-"Weather" = "Време";
 "Live" = "На живо";
 "Stop" = "Стоп";
-"Calendar Live Activity" = "Live Activity на календара";
+"Calendar Live Activity" = "Активност на живо на календара";
 "Get" = "Вземи";
 "Color" = "Цвят";
 "Search for a city…" = "Търсене на град…";
 "No directions" = "Няма посоки";
 
 /* WeatherKitView */
-"Search for a city..." = "Търсене на град…";
 "Location access denied. Search for a city or grant access in Settings." = "Достъпът до местоположение е отказан. Потърсете град или предоставете достъп в Настройки.";
 "Cannot refresh. Location unknown." = "Не може да се опресни. Местоположението е неизвестно.";
-"Tap an hour to quickly add a calendar event." = "Докоснете час, за да добавите бързо събитие в календара.";
 "10-DAY FORECAST" = "10-ДНЕВНА ПРОГНОЗА";
 "tomorrow" = "утре";
 "on_day" = "в %@";
 "in_days" = "след %d дни";
 
 /* Labels */
-"Today" = "Днес";
-"Now" = "Сега";
-"Conditions" = "Условия";
-"UV Index" = "UV индекс";
-"Wind" = "Вятър";
-"Precipitation" = "Валежи";
-"Humidity" = "Влажност";
-"Visibility" = "Видимост";
-"Pressure" = "Налягане";
 
 /* Calendar event */
 "New Event" = "Ново събитие";
@@ -255,8 +191,6 @@
 "Moonrise" = "Изгрев на Луната";
 "Moonset" = "Залез на Луната";
 "Next %@" = "Следваща %@";
-"day" = "ден";
-"days" = "дни";
 "Data unavailable" = "Няма данни";
 "%d day"  = "%d ден";
 "%d days" = "%d дни";
@@ -270,8 +204,6 @@
 /* PressureCard */
 "PRESSURE" = "НАЛЯГАНЕ";
 "hPa" = "hPa";
-"Low" = "Ниско";
-"High" = "Високо";
 
 /* SunsetCard */
 "SUNRISE" = "ИЗГРЕВ";
@@ -289,8 +221,7 @@
 "Extreme" = "Екстремен";
 
 /* VisibilityCard */
-"VISIBILITY" = "Видимост";
-"km" = "км";
+"km" = "km";
 "Perfectly clear view." = "Перфектна видимост.";
 "Excellent visibility." = "Отлична видимост.";
 "Good visibility." = "Добра видимост.";
@@ -308,10 +239,9 @@
 
 /* WindCard */
 "WIND" = "ВЯТЪР";
-"Wind" = "Вятър";
 "Gusts" = "Пориви";
 "Direction" = "Посока";
-"km/h" = "км/ч";
+"km/h" = "km/h";
 "Compass_N" = "С";
 "Compass_S" = "Ю";
 "Compass_W" = "З";
@@ -327,15 +257,12 @@
 "Sunny" = "Слънчево";
 "Cloudy" = "Облачно";
 "Partly Cloudy" = "Частично облачно";
-"Rain" = "Дъжд";
 "Drizzle" = "Моросене";
-"Snow" = "Сняг";
 "Thunderstorm" = "Гръмотевична буря";
 "Fog" = "Мъгла";
 "Partly Cloudy Night" = "Частично облачно нощем";
 "Clear Night" = "Ясна нощ";
 "Hazy" = "Мъгливо";
-"Conditions" = "Условия";
 "Today" = "Днес";
 "Now" = "Сега";
 
@@ -374,7 +301,7 @@
 "Feels Like" = "Възприемана температура";
 "Actual" = "Реална температура";
 "No hourly data available for this day." = "Няма часови данни за този ден.";
-"What the temperature feels like as a result of humidity, sunlight or wind." = "Как температурaта се усеща в резултат на влажност, слънчева светлина или вятър.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Как се усеща температурата в резултат на влажността, слънчевата светлина или вятъра.";
 "The actual air temperature." = "Действителната въздушна температура.";
 "HighLabelFormat" = "В: %d°";
 "LowLabelFormat"  = "Н: %d°";
@@ -417,15 +344,12 @@
 "Pressure_DailyMinMaxFormat"       = "Днешно мин %@ %@ – макс %@ %@";
 "Pressure_AverageFormat"           = "Средно налягане %@ %@";
 "Pressure_DailyRangeFormat"        = "Дневен диапазон: %@–%@ %@";
-"Visibility_MaxLabel"              = "Макс";
-"Visibility_MinLabel"              = "Мин";
 "Pressure_Title"                   = "Налягане";
 "Pressure_NoData"                  = "Няма данни за налягане за този ден.";
 
 /* WeatherDetailView uVGraphSection */
 "UVGraphHeader"         = "Днес %@ %d";
 "UVGraphNoHourlyData"   = "Няма налични почасови данни за този ден.";
-"UVGraphMaxLabel"       = "Макс";
 "UVGraphNowLabel"       = "Сега, %@";
 "UVCategory_None"       = "Няма";
 "UVCategory_Low"        = "Нисък";
@@ -459,22 +383,13 @@
 "WindGraph_DragLabel" = "%@\nСкорост: %d\nПорив: %d";
 
 /* WeatherDetailView */
-"Conditions" = "Условия";
-"UV Index" = "UV Индекс";
-"Wind" = "Вятър";
-"Precipitation" = "Валежи";
-"Humidity" = "Влажност";
-"Visibility" = "Видимост";
-"Pressure" = "Налягане";
 
-"Forecast" = "Прогноза";
 "Daily Summary" = "Дневен преглед";
 
 "Precipitation Totals" = "Общо валежи";
 "LAST 24 HOURS" = "ПОСЛЕДНИ 24 ЧАСА";
 "NEXT 24 HOURS" = "СЛЕДВАЩИ 24 ЧАСА";
 "Total" = "Общо";
-"Precipitation" = "Валежи";
 "Rain" = "Дъжд";
 "Snow" = "Сняг";
 
@@ -490,8 +405,7 @@
 "Options" = "Опции";
 "Temperature" = "Температура";
 "Use system setting (°C)" = "Използвай системни настройки (°C)";
-"Precipitation" = "Валежи";
-"mm, cm" = "мм, см";
+"mm, cm" = "mm, cm";
 
 /* Dynamic label titles */
 "Conditions" = "Условия";
@@ -539,8 +453,8 @@
 "Dir_NW"  = "СЗ";
 "Dir_NNW" = "ССЗ";
 
-"UnitMillimeter"     = "мм";
-"UnitCentimeter"     = "см";
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
 
 "PrecipitationTotals_Title" = "Суми на валежите";
 "Last24h_Label"             = "ПОСЛЕДНИ 24 ЧАСА";
@@ -567,9 +481,9 @@
 // %4$d: скорост на пориви (цяло число)
 "WindSummary_Range"   = "Скоростта на вятъра е от %1$d до %2$d %3$@, с пориви до %4$d %3$@.";
 "Beaufort_Scale"                = "Скала на Бофорт";
-"Beaufort_Column_bft"           = "bft";
+"Beaufort_Column_bft" = "bft";
 "Beaufort_Column_Description"   = "Описание";
-"Beaufort_Column_kmh"           = "км/ч";
+"Beaufort_Column_kmh" = "km/h";
 "Beaufort_0"                    = "Шепот";
 "Beaufort_1"                    = "Слабо ветрец";
 "Beaufort_2"                    = "Лека бриза";
@@ -598,8 +512,6 @@
 "BeaufortRange_12"              = "> 118";
 
 /* Заглавие на секцията: Прогноза срещу Дневен преглед */
-"Forecast_Title" = "Прогноза";
-"DailySummary_Title" = "Обобщение за деня";
 
 "ForecastPrecip_TodayFormat"    = "През последните 24 ч е имало %.1f%@ валежи. Днес общо ще паднат %.1f%@. В следващите 24 ч се очакват %.1f%@ валежи.";
 "ForecastPrecip_OtherDayFormat" = "На %@ общо ще паднат %.1f%@ валежи.";
@@ -678,21 +590,17 @@
 "Premium Plans" = "Планове Премиум";
 "You are subscribed to the %@ %@ plan" = "Вие сте абонирани за %@ %@ план";
 "Renews on: %@" = "Подновява се на: %@";
-"Manage Subscription" = "Управление на абонамент";
 "Start Free Trial" = "Започнете безплатен пробен период";
 "Subscribe Now" = "Абонирайте се сега";
 "%d %@ free, then %@%@." = "%d %@ безплатно, след това %@%@.";
 "Subscribe for %@%@." = "Абонирайте се за %@%@.";
-"Restore Purchases" = "Възстанови покупки";
 "Privacy Policy"     = "Политика за поверителност";
 "Terms of Service"   = "Условия за ползване";
 
 /* SubscriptionCategory */
-"Base"    = "Основен";
 "Advanced" = "Разширен";
 "Advanced Plan" = "Разширен план";
 "All Advanced Plan features" = "Всички функции на разширения план";
-"Premium" = "Премиум";
 
 /* SubscriptionView Alerts */
 "You need an active %@ plan to access this section." = "Необходим е активен %@ план, за да достъпите този раздел.";
@@ -704,8 +612,6 @@
 "Premium" = "Премиум";
 
 /* Subscription period units */
-"Monthly" = "месечен";
-"Yearly"  = "годишен";
 
 /* SubscriptionListView status messages */
 /* Статус без „the“ */
@@ -737,14 +643,14 @@
 "weekday.headers" = "Н,П,В,С,Ч,П,С";
 
 /* GlobalState */
-"Unit_Speed_kmh"            = "км/ч";
-"Unit_Speed_mph"            = "mph";
-"Unit_Distance_km"          = "км";
-"Unit_Distance_mi"          = "mi";
-"Unit_Precipitation_mm"     = "мм";
-"Unit_Precipitation_in"     = "″";
-"Unit_Pressure_hPa"         = "hPa";
-"Unit_Pressure_inHg"        = "inHg";
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
 
 "Your previous purchases have been successfully restored." = "Предишните ви покупки бяха успешно възстановени.";
 "No active subscriptions found to restore."                = "Няма активни абонаменти за възстановяване.";
@@ -789,10 +695,59 @@
 "Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
 "Promo.WiseEating.description" = "Wise Eating е вашият AI помощник за по-разумно хранене и тренировки. Комбинира модерна наука за храненето с практични инструменти за планиране на менюта, тренировки, управление на продукти и разбиране как храната и движението влияят на тялото.";
 "Promo.StoreFront.name" = "StoreFront Studio";
-"Promo.StoreFront.description" = "StoreFront Studio е премиум 3D среда за дизайн за iOS и macOS разработчици. Комбинира RealityKit визуализация с висока точност и мощен Rich Text редактор, за да превръща сурови скрийншоти в професионални App Store материали.";
+"Promo.StoreFront.description" = "StoreFront Studio е професионална 3D среда за дизайн за разработчици на iOS и macOS. Комбинира прецизно визуализиране с RealityKit и мощен редактор за форматиран текст, за да превръща необработени екранни снимки в професионални материали за App Store.";
 "Promo.ReelStudio.name" = "ReelStudio";
 "Promo.ReelStudio.description" = "ReelStudio е студио за запис на екрана за създатели. Записвайте екран и камера едновременно, управлявайте микрофон и системен звук и експортирайте чисти MP4 видеа за уроци, представяния и демонстрации.";
 "Promo.CloudCalendars.name" = "Cloud Calendars";
 "Promo.CloudCalendars.description" = "Cloud Calendars комбинира напреднало планиране с красиво интегрирани прогнози за времето, за да планирате прецизно. Поддържа няколко календарни услуги, жестове за редакция, връзки за срещи и подробни почасови и дневни прогнози.";
 "Promo.MarketBrief.name" = "MarketBrief AI";
 "Promo.MarketBrief.description" = "MarketBrief AI ви помага да разбирате движението на пазарите с анализи на устройството и многоагентен работен поток, който отделя сигнала от шума. Следете цени, вероятности за режими и ясни табла за по-информирани решения.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Приложения";
+"Plan" = "План";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Виелица";
+"WeatherCondition.blowingDust" = "Прах";
+"WeatherCondition.blowingSnow" = "Сняг и вятър";
+"WeatherCondition.breezy" = "Ветровито";
+"WeatherCondition.clear" = "Ясно";
+"WeatherCondition.cloudy" = "Облачно";
+"WeatherCondition.drizzle" = "Ръмеж";
+"WeatherCondition.flurries" = "Вихрушки";
+"WeatherCondition.foggy" = "Мъгла";
+"WeatherCondition.freezingDrizzle" = "Суграшица";
+"WeatherCondition.freezingRain" = "Леден дъжд";
+"WeatherCondition.frigid" = "Студено";
+"WeatherCondition.hail" = "Градушка";
+"WeatherCondition.haze" = "Мараня";
+"WeatherCondition.heavyRain" = "Силен дъжд";
+"WeatherCondition.heavySnow" = "Силен снеговалеж";
+"WeatherCondition.hot" = "Горещо";
+"WeatherCondition.hurricane" = "Ураган";
+"WeatherCondition.isolatedThunderstorms" = "Отделни гръмотевични бури";
+"WeatherCondition.mostlyClear" = "Предимно ясно";
+"WeatherCondition.mostlyCloudy" = "Предимно облачно";
+"WeatherCondition.partlyCloudy" = "Частично облачно";
+"WeatherCondition.rain" = "Дъжд";
+"WeatherCondition.scatteredThunderstorms" = "Разкъсани гръмотевични бури";
+"WeatherCondition.sleet" = "Суграшица";
+"WeatherCondition.smoky" = "Дим";
+"WeatherCondition.snow" = "Сняг";
+"WeatherCondition.strongStorms" = "Силни гръмотевични бури";
+"WeatherCondition.sunFlurries" = "Слаб снеговалеж със слънце";
+"WeatherCondition.sunShowers" = "Слънчево с превалявания";
+"WeatherCondition.thunderstorms" = "Гръмотевична буря";
+"WeatherCondition.tropicalStorm" = "Тропическа буря";
+"WeatherCondition.windy" = "Ветровито";
+"WeatherCondition.wintryMix" = "Зимни валежи";
+"MoonPhase.new" = "Новолуние";
+"MoonPhase.waxingCrescent" = "Изгряващ полумесец";
+"MoonPhase.firstQuarter" = "Първа четвърт";
+"MoonPhase.waxingGibbous" = "Растяща луна";
+"MoonPhase.full" = "Пълнолуние";
+"MoonPhase.waningGibbous" = "Намаляваща луна";
+"MoonPhase.lastQuarter" = "Последна четвърт";
+"MoonPhase.waningCrescent" = "Залязващ полумесец";

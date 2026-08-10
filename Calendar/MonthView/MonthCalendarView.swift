@@ -65,33 +65,14 @@ struct MonthCalendarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            topBar
-
-            // (A) Търсачка
             if showSearchBar {
-                TextField(LocalizedStringKey("Search events..."), text: $searchText)
-                    .textFieldStyle(.plain)                         // без вътрешния бордър
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(.thinMaterial)                    // същия blur фон
-                    )
-                    // ⨯ бутонът вътре, долепен вдясно
-                    .overlay(
-                        Button {
-                            showSearchBar = false
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.trailing, 8),                     // разстояние от десния ръб
-                        alignment: .trailing
-                    )
+                CalendarEventSearchField(text: $searchText) {
+                    showSearchBar = false
+                    searchText = ""
+                }
                     .transition(.move(edge: .top))
-                    .padding(.horizontal)                           // външен padding (ако ти трябва)
+            } else {
+                topBar
             }
             
             // (B) Навигация за месеца
@@ -100,17 +81,18 @@ struct MonthCalendarView: View {
                     Button {
                         moveMonth(by: -1)
                     } label: {
-                        Image(systemName: "chevron.left")
+                        Image(systemName: "chevron.backward")
                     }
                     
                     Text(localizedFormattedMonthYear(currentMonth))
                         .font(.headline)
+                        .adaptiveSingleLine(minimumScale: 0.5)
                         .frame(maxWidth: .infinity)
                     
                     Button {
                         moveMonth(by: 1)
                     } label: {
-                        Image(systemName: "chevron.right")
+                        Image(systemName: "chevron.forward")
                     }
                 }
                 .padding(.horizontal)
@@ -208,9 +190,14 @@ struct MonthCalendarView: View {
                 Button {
                     showSearchBar = true
                 } label: {
-                    Image(systemName: "magnifyingglass")
+                    Image(uiImage: CalendarSearchAppearance.iconImage)
+                        .renderingMode(.template)
+                        .foregroundStyle(.blue)
                 }
-                .frame(width: 34, height: 34)
+                .frame(
+                    width: CalendarSearchAppearance.buttonSize,
+                    height: CalendarSearchAppearance.buttonSize
+                )
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
 
@@ -243,10 +230,7 @@ extension MonthCalendarView {
     }
     
     private func localizedFormattedMonthYear(_ date: Date) -> String {
-        let df = DateFormatter()
-        df.locale = Locale.current
-        df.setLocalizedDateFormatFromTemplate("yyyyMMMM")
-        return df.string(from: date)
+        appDateFormatter(template: "yMMMM").string(from: date)
     }
 
     private func handleEventDropped(_ eventID: String, on newDate: Date) {

@@ -10,11 +10,12 @@ struct VisibilityCard: View {
                 .symbolRenderingMode(.hierarchical)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .adaptiveSingleLine(minimumScale: 0.4)
 
             // Main Value - Below Title
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 if let vis = visibilityKm {
-                    Text(String(format: "%.0f", vis))
+                    Text(localizedFormat("%.0f", vis))
                         .font(.system(size: 34, weight: .regular))
                         .foregroundStyle(.primary)
                     Text(GlobalState.distanceUnitLabel)
@@ -36,6 +37,7 @@ struct VisibilityCard: View {
             Text(LocalizedStringKey(visibilityDescriptionKey(for: visibilityKm)))
                 .font(.system(size: 12))
                 .foregroundStyle(.primary)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 

@@ -19,6 +19,10 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UINavigationController {
         let pickerVC = CalendarDateRangePickerViewController()
+        pickerVC.usesRightToLeftLayout = context.environment.layoutDirection == .rightToLeft
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        pickerVC.view.semanticContentAttribute = semanticDirection
         pickerVC.delegate = context.coordinator
         
         // Подаваме зададените стойности
@@ -33,6 +37,7 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
         
         // 1) Създаваме UINavigationController
         let navController = UINavigationController(rootViewController: pickerVC)
+        navController.view.semanticContentAttribute = semanticDirection
         
         // 2) Презентация "над" текущия екран
         navController.modalPresentationStyle = .overFullScreen
@@ -44,7 +49,10 @@ struct CalendarDateRangePickerWrapper: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // Ако трябва да се обновява нещо динамично
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        uiViewController.view.semanticContentAttribute = semanticDirection
+        uiViewController.topViewController?.view.semanticContentAttribute = semanticDirection
     }
     
     func makeCoordinator() -> Coordinator {

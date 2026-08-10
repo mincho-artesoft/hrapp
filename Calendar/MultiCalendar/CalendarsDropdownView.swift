@@ -123,6 +123,8 @@ public class CalendarsDropdownView: UIView {
             titleLabel.text = title
             titleLabel.font = .systemFont(ofSize: 16, weight: .regular)
             titleLabel.textColor = .label
+            titleLabel.useAdaptiveSingleLine(minimumScale: 0.45)
+            titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
             
             rowStack.addArrangedSubview(circleView)
             rowStack.addArrangedSubview(titleLabel)

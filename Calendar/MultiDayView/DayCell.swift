@@ -14,11 +14,13 @@ class DayCell: UICollectionViewCell {
         dayOfWeekLabel.font = .systemFont(ofSize: 12, weight: .regular)
         dayOfWeekLabel.textAlignment = .center
         dayOfWeekLabel.textColor = .secondaryLabel
+        dayOfWeekLabel.useAdaptiveSingleLine(minimumScale: 0.4)
         
         // Числото на деня – по‐едро
         dayNumberLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         dayNumberLabel.textAlignment = .center
         dayNumberLabel.textColor = .label
+        dayNumberLabel.useAdaptiveSingleLine(minimumScale: 0.6)
         
         // Важно: да може да се изрязва съдържанието, ако е със заоблени ъгли.
         dayNumberLabel.clipsToBounds = true
@@ -69,13 +71,11 @@ class DayCell: UICollectionViewCell {
         let calendar = Calendar.current
         
         // Еднобуквен ден: EEEEE
-        let weekdayFormatter = DateFormatter()
-        weekdayFormatter.dateFormat = "EEEEE"
+        let weekdayFormatter = appDateFormatter(template: "EEEEE")
         dayOfWeekLabel.text = weekdayFormatter.string(from: date).uppercased()
         
         // Число на датата
-        let dayNumberFormatter = DateFormatter()
-        dayNumberFormatter.dateFormat = "d"
+        let dayNumberFormatter = appDateFormatter(template: "d")
         dayNumberLabel.text = dayNumberFormatter.string(from: date)
         
         // Проверка дали е „днес“
@@ -114,4 +114,3 @@ class DayCell: UICollectionViewCell {
         }
     }
 }
-

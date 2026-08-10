@@ -12,6 +12,7 @@ struct PrecipitationTodayCard: View {
                 .symbolRenderingMode(.multicolor)
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .adaptiveSingleLine(minimumScale: 0.4)
 
             // Prepare formatted amount before HStack
             let formattedAmount: String = {
@@ -22,9 +23,9 @@ struct PrecipitationTodayCard: View {
                 }
                 
                 if GlobalState.measurementSystem == "Imperial" {
-                    return String(format: "%.1f", amount)
+                    return localizedFormat("%.1f", amount)
                 } else {
-                    return String(format: "%.0f", amount)
+                    return localizedFormat("%.0f", amount)
                 }
             }()
 
@@ -55,12 +56,14 @@ struct PrecipitationTodayCard: View {
                     Text(NSLocalizedString("PRECIPITATION_CARD_TODAY_LABEL", comment: "Label 'today' for current precipitation"))
                         .font(.system(size: 12, weight: .regular))
                         .foregroundStyle(.primary)
+                        .adaptiveSingleLine(minimumScale: 0.4)
                         .padding(.leading, 2)
                         .offset(x: 0, y: 20) // Adjust these values for precise placement
                 }else{
                     Text(NSLocalizedString("PRECIPITATION_CARD_TODAY_LABEL", comment: "Label 'today' for current precipitation"))
                         .font(.system(size: 12, weight: .regular))
                         .foregroundStyle(.primary)
+                        .adaptiveSingleLine(minimumScale: 0.4)
                         .padding(.leading, 2)
                 }
             }
@@ -73,13 +76,15 @@ struct PrecipitationTodayCard: View {
                 let unitLabel = GlobalState.precipitationUnitLabel
                 let formatString = NSLocalizedString("PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT",
                                                      comment: "Format string for next expected precipitation. Parameters: %1$.0f (amount), %2$@ (unit), %3$@ (time string). Example: Next expected is 1 mm on Mon.")
-                Text(String(format: formatString, currentNextAmount, unitLabel, time))
+                Text(localizedFormat(formatString, currentNextAmount, unitLabel, time))
                     .font(.system(size: 12))
                     .foregroundStyle(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
             } else {
                 Text(NSLocalizedString("PRECIPITATION_CARD_NONE_EXPECTED", comment: "Message when no precipitation is expected soon."))
                     .font(.system(size: 12))
                     .foregroundStyle(.primary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
     }

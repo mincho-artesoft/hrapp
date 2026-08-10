@@ -25,6 +25,8 @@ struct EventDetailViewWrapper: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UINavigationController {
         let eventVC = EKEventViewController()
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
         eventVC.event = event
         eventVC.delegate = context.coordinator
         
@@ -32,12 +34,17 @@ struct EventDetailViewWrapper: UIViewControllerRepresentable {
         eventVC.allowsEditing = true
         // Позволява тап върху календара
         eventVC.allowsCalendarPreview = true
+        eventVC.view.semanticContentAttribute = semanticDirection
         
         let nav = UINavigationController(rootViewController: eventVC)
+        nav.view.semanticContentAttribute = semanticDirection
         return nav
     }
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
-        // Няма нужда от update
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        uiViewController.view.semanticContentAttribute = semanticDirection
+        uiViewController.topViewController?.view.semanticContentAttribute = semanticDirection
     }
 }

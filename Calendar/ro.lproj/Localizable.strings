@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Nu a fost furnizată nicio adresă de e-mail.";
+"Please enter a valid email to continue." = "Vă rugăm să introduceți o adresă de e-mail validă pentru a continua.";
+"Your email" = "Adresa dvs. de e-mail";
+"Save" = "Salvare";
+"Login" = "Autentificare";
+"Logout" = "Deconectare";
+
+/* RootView */
+"N/A" = "Indisponibil";
+"Calendars" = "Calendare";
+"Inbox" = "Mesaje primite";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Altele";
+"Google calendars" = "Google calendare";
+"No synced Google calendars yet." = "Încă nu există calendare Google sincronizate.";
+"Microsoft calendars" = "Microsoft calendare";
+"No synced Microsoft calendars yet." = "Încă nu există calendare Microsoft sincronizate.";
+"Sign out" = "Deconectare";
+"Add iCloud Calendar" = "Adăugați un calendar iCloud";
+"Share calendars with iCloud Calendar" = "Partajați calendare cu Calendar iCloud";
+"Sign in with Google" = "Conectați-vă cu Google";
+"Sign in with Microsoft" = "Conectați-vă cu Microsoft";
+"Deselect All" = "Deselectați tot";
+"Select All" = "Selectați tot";
+"No Email" = "Fără e-mail";
+"Add Google Calendar" = "Adăugați Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "Calendar Nume";
+"Account" = "Cont";
+"COLOR" = "CULOARE";
+"NOTIFICATIONS" = "NOTIFICĂRI";
+"Event Alerts" = "Alerte evenimente";
+"Allow events on this calendar to display alerts." = "Permiteți evenimentelor din acest calendar să afișeze alerte.";
+"Add Calendar" = "Adăugați calendar";
+
+/* Colors */
+"Red" = "Roșu";
+"Orange" = "Portocaliu";
+"Yellow" = "Galben";
+"Green" = "Verde";
+"Blue" = "Albastru";
+"Purple" = "Mov";
+"Brown" = "Maro";
+"Custom" = "Personalizat";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Culoare calendar";
+"Custom..." = "Personalizat...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Editați calendarul";
+"Delete Calendar" = "Ștergeți calendarul";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Se încarcă partajarea setări…";
+"Shared with these users" = "Partajat cu acești utilizatori";
+"Add New Email" = "Adăugați o adresă de e-mail nouă";
+"Email to share" = "Adresă de e-mail de partajat";
+"Permission:" = "Permisiune:";
+"Add" = "Adăugați";
+"Sharing:" = "Partajare:";
+"Done" = "Gata";
+
+"Error loading: %@" = "Eroare la încărcare: %@";
+"Error adding: %@" = "Eroare la adăugare: %@";
+"Error deleting: %@" = "Eroare la ștergere: %@";
+"Error updating: %@" = "Eroare la actualizare: %@";
+"Error re-inviting (delete): %@" = "Eroare la reinvitare (ștergere): %@";
+"Error re-inviting (insert): %@" = "Eroare la reinvitare (inserare): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Cititor";
+"Writer" = "Scriitor";
+"Owner"  = "Proprietar";
+
+/* MonthCalendarView */
+"Day View" = "Vizualizare zilnică";
+"This is a repeating event." = "Acesta este un eveniment repetitiv.";
+"Save for This Event Only" = "Salvați doar pentru acest eveniment";
+"Save for Future Events" = "Salvați pentru evenimente viitoare";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Duminică";
+"Mon" = "Luni";
+"Tue" = "Marți";
+"Wed" = "Miercuri";
+"Thu" = "Joi";
+"Fri" = "Vineri";
+"Sat" = "Sâmbătă";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Închideți";
+
+/* AllEventsListView */
+"No calendar access." = "Fără acces la calendar.";
+
+/* EventRowView */
+"Ends" = "Se termină";
+
+/* SearchEventRowView */
+"No Title" = "Fără titlu";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Alătură-te întâlnirii";
+"Edit" = "Editează";
+"Duplicate" = "Duplicare";
+"Delete" = "Șterge";
+"Add to Google Meet" = "Adăugați la Google Meet";
+"Add to Microsoft Teams" = "Adăugați la Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Fără interval selectat";
+"all-day" = "toată ziua";
+"Search events..." = "Căutați evenimente...";
+"Day" = "Zi";
+"MultiDay" = "Zile multiple";
+"Month" = "Lună";
+"Year" = "An";
+"List" = "Listă";
+"MultiCalendar" = "Calendar multiplu";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Eveniment nou";
+"All-day event" = "Eveniment toată ziua";
+"Recurring Event" = "Eveniment recurent";
+"This event is part of a series. Update which events?" = "Acest eveniment face parte dintr-o serie. Actualizați ce evenimente?";
+"This Event Only" = "Numai acest eveniment";
+"All Future Events" = "Toate evenimentele viitoare";
+"Cancel" = "Anulați";
+
+/* DraggableMenuView */
+"Calendar" = "Calendar";
+"Subscriptions" = "Abonamente";
+"Live" = "În direct";
+"Stop" = "Oprire";
+"Calendar Live Activity" = "Activitate în timp real a calendarului";
+"Get" = "Obține";
+"Color" = "Culoare";
+"Search for a city…" = "Căutați un oraș…";
+"No directions" = "Fără indicații de orientare";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Accesul la locație refuzat. Căutați un oraș sau acordați acces în Setări.";
+"Cannot refresh. Location unknown." = "Nu se poate actualiza. Locație necunoscută.";
+"10-DAY FORECAST" = "PROGNOZĂ PE 10 ZILE";
+"HighLowLabelFormat" = "Max.:%d° Min.:%d°";
+"tomorrow" = "mâine";
+"on_day" = "pe %@";
+"in_days" = "în %d zile";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Nou Eveniment";
+
+/* Search placeholder */
+"Search for a city..." = "Căutați un oraș…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Atingeți o oră pentru a adăuga rapid un eveniment din calendar.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "SE SIMTE CA";
+"similar_to_actual_temp" = "Similar cu temperatura reală.";
+"wind_cooler_feel" = "Vântul face ca temperatura să se simtă mai răcoroasă.";
+"humidity_warmer_feel" = "Umiditatea face ca temperatura să se simtă mai caldă.";
+
+/* HumidityCard */
+"HUMIDITY" = "UMIDITATE";
+"The dew point is %d° right now." = "Punctul de rouă este %d° acum.";
+"dewPoint.current" = "Punctul de rouă este %d° acum.";
+
+/* MoonCard */
+"MOON PHASE" = "FAZA LUNĂ";
+"Moonrise" = "Răsărit de Lună";
+"Moonset" = "Apus de Lună";
+"Next %@" = "Următoarea %@";
+"Data unavailable" = "Date indisponibile";
+"%d day" = "%d zi";
+"%d days" = "%d zile";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "PRECIPITĂȚI";
+"PRECIPITATION_CARD_TODAY_LABEL" = "astăzi";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Următoarea dată așteptată este %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Nu se așteaptă precipitații în curând.";
+
+/* PressureCard */
+"PRESSURE" = "PRESIUNE";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "RĂSĂRIT DE SOARE";
+"Sunrise: %@" = "Răsărit de soare: %@";
+"Sunset: %@" = "Apus de soare: %@";
+"Sunrise" = "Răsărit de soare";
+"Sunset" = "Apus de soare";
+
+
+/* UVIndexCard */
+"UV INDEX" = "INDEX UV";
+"Low" = "Scăzută";
+"Moderate" = "Moderat";
+"High" = "Ridicată";
+"Very High" = "Foarte Ridicată";
+"Extreme" = "Extremă";
+
+/* VisibilityCard */
+"VISIBILITY" = "VIZIBILITATE";
+"km" = "km";
+"Perfectly clear view." = "Vedere perfect clară.";
+"Excellent visibility." = "Vizibilitate excelentă.";
+"Good visibility." = "Vizibilitate bună.";
+"Moderate visibility." = "Vizibilitate moderată.";
+"Poor visibility." = "Vizibilitate slabă.";
+"Very poor visibility." = "Vizibilitate foarte slabă.";
+"visibility.perfect"   = "Vedere perfect clară.";
+"visibility.excellent" = "Vizibilitate excelentă.";
+"visibility.good"      = "Vizibilitate bună.";
+"visibility.moderate"  = "Vizibilitate moderată.";
+"visibility.poor"      = "Vizibilitate slabă.";
+"visibility.verypoor"  = "Vizibilitate foarte slabă.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Vânt";
+"Gusts" = "Rafale";
+"Direction" = "Direcție";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "V";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Nu s-au putut prelua datele meteo. Vă rugăm să verificați conexiunea sau să încercați din nou mai târziu.";
+"Falling" = "În scădere";
+"Rising" = "În creștere";
+"Steady" = "Stabil";
+"Unknown" = "Necunoscut";
+"Sunny" = "Însorit";
+"Cloudy" = "Înorat";
+"Partly Cloudy" = "Parțial înnorat";
+"Drizzle" = "Burniță";
+"Thunderstorm" = "Furtună";
+"Fog" = "Ceață";
+"Partly Cloudy Night" = "Noapte parțial înnorat";
+"Clear Night" = "Senin Noapte";
+"Hazy" = "Cețos";
+"Today" = "Astăzi";
+"Now" = "Acum";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SV";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "V";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NV";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Șansa de precipitații";
+"Today's chance: %d%%" = "Șansa de astăzi: %d%%";
+"%@'s chance: %d%%" = "Șansa lui %@: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Șansa zilnică de precipitații tinde să fie mai mare decât șansa pentru fiecare oră.";
+"ChanceOfPrecipitation_Title" = "Șansa de precipitații";
+"TodaysChance"                = "Șansa de astăzi: %d%%";
+"OtherDayChance"              = "Șansa lui %@: %d%%";
+"DailyChanceExplanation"      = "Șansa zilnică de precipitații tinde să fie mai mare decât șansa pentru fiecare oră.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Temperatura resimțită";
+"Actual" = "Temperatura reală";
+"No hourly data available for this day." = "Nu sunt disponibile date orare pentru această zi.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Temperatura resimțită ca urmare a umidității, luminii solare sau vântului.";
+"The actual air temperature." = "Temperatura reală a aerului.";
+"HighLabelFormat" = "Max.: %d°";
+"LowLabelFormat" = "Min.: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Umiditate";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Umiditate %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Umiditate medie %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Minima de astăzi %d%% – max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Ploaie: %.1f%@, Zăpadă: %.1f%@";
+"Precip_Total_RainFormat"       = "Ploaie: %.1f%@";
+"Precip_Total_SnowFormat"       = "Zăpadă: %.1f%@";
+"Precip_Total_None"             = "Precipitații: 0%@";
+"Precip_Bars_Subtitle"          = "Bare orare pentru ploaie și zăpadă (%@).";
+"Precip_Level_Light"            = "Lumină";
+"Precip_Level_Moderate"         = "Moderat";
+"Precip_Level_Heavy"            = "Grele";
+"Precip_Tooltip_Format"         = "%@h\nPloaie: %.1f%@\nZăpadă: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Presiune %@ %@";
+"Pressure_CurrentUnavailable"      = "Presiune: --";
+"Pressure_DailyMinMaxFormat"       = "Minima de astăzi %@ %@ – max %@ %@";
+"Pressure_AverageFormat"           = "Presiune medie %@ %@";
+"Pressure_DailyRangeFormat"        = "Interval zilnic: %@–%@ %@";
+"Pressure_Title"                   = "Presiune";
+"Pressure_NoData"                  = "Nu există date despre presiune disponibile pentru această zi.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Azi %@ %d";
+"UVGraphNoHourlyData"   = "Nu sunt disponibile date orare pentru această zi.";
+"UVGraphNowLabel"       = "Acum, %@";
+"UVCategory_None"       = "Niciuna";
+"UVCategory_Low"        = "Scăzută";
+"UVCategory_Moderate"   = "Moderat";
+"UVCategory_High"       = "Ridicată";
+"UVCategory_VeryHigh"   = "Foarte Ridicată";
+"UVCategory_Extreme"    = "Extremă";
+"UVAdvice_None"         = "Nu sunt așteptate niveluri UV moderate sau mai ridicate pentru această zi.";
+"UVAdvice_Range"        = "Se recomanda protectie solara. Nivelurile UV variază de la %@ la %@, atins între %@ și %@.";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Vizibilitate";
+"Visibility_NoData"                = "Nu există date de vizibilitate disponibile pentru această zi.";
+"Visibility_CurrentFormat"         = "Vizibilitate %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – max %d %@";
+"Visibility_NoCurrentData"         = "Nu sunt disponibile date actuale privind vizibilitatea.";
+"Visibility_HourlyAverages_NoData" = "Nu sunt disponibile date orare.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Viteza vântului și rafală";
+"WindGraph_NoData" = "Nu sunt disponibile date de vânt pentru această zi.";
+"WindGraph_SpeedHeader" = "Viteza vântului %d";
+"WindGraph_GustHeader" = "Rafale până la %d";
+"WindGraph_SpeedRangeHeader" = "Viteza vântului %d-%d";
+"WindGraph_MaxSpeedLabel" = "Viteză max.";
+"WindGraph_MaxGustLabel" = "Rafală max.";
+"WindGraph_DragLabel" = "%@\nViteză: %d\nRafală: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Rezumat zilnic";
+
+"Precipitation Totals" = "Totaluri de precipitații";
+"LAST 24 HOURS" = "ULTIMELE 24 ORE";
+"NEXT 24 HOURS" = "Următoarele 24 de ore";
+"Total" = "Total";
+"Rain" = "Ploaie";
+"Snow" = "Ninsoare";
+
+"About Wind Speed and Gusts" = "Despre viteza vântului și rafale";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Viteza vântului este calculată folosind media pe o perioadă scurtă de timp. Rafalele sunt rafale scurte de vânt peste această medie. O rafală durează de obicei sub 20 de secunde.";
+
+"About the Beaufort Scale" = "Despre scara Beaufort";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Scara vântului Beaufort exprimă cât de puternic sau puternic este vântul la o anumită viteză. Scara Beaufort poate face mai ușor de înțeles cât de vânt se va simți sau cât de mult efect ar putea avea vântul. Fiecare valoare de pe scară corespunde unui interval de viteză a vântului.";
+
+"About Feels Like Temperature" = "Despre temperatura resimțită";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Temperatura resimțită arată cât de cald sau de rece se simte afară și poate diferi de temperatura reală. Este influențată de umiditate, lumina soarelui și vânt.";
+
+"Options" = "Opțiuni";
+"Temperature" = "Temperatura";
+"Use system setting (°C)" = "Utilizați setarea sistemului (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Condiții";
+"UV Index" = "Indice UV";
+"Wind" = "Vânt";
+"Precipitation" = "Precipitații";
+"Humidity" = "Umiditate";
+"Visibility" = "Vizibilitate";
+"Pressure" = "Presiune";
+
+/* Fallback key */
+"displayedCondition" = "condiție afișată";
+
+/* Titles */
+"Forecast"                   = "Prognoza";
+"DailySummary"               = "Rezumat zilnic";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° acum cu condiții %@. Există o șansă de precipitații de %@. Vânt de la %@ cu rafale de până la %d %@. Temperatura de astăzi variază de la %d° la %d° și se simte ca %d°. %@ și %@.";
+"UVIndexFormat"              = "Index UV până la %d";
+"HumidityFormat"             = "Umiditate în jur de %d%%";
+"HumidityRangeFormat"        = "Umiditate de la %d%% la %d%%";
+"NA" = "Indisponibil";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Minima lui %@ este %d°, iar maxima este %d°. Temperatura va fi de la %d° la %d°. Se așteaptă vânt de la %@. %@";
+"NoPrecipLast24h"            = "Nu au fost înregistrate precipitații în ultimele 24 de ore.";
+"RainLast24h"                = "A plouat %d mm în ultimele 24 de ore.";
+"SnowAndRainLast24h"         = "În ultimele 24 de ore, ninsoarea a măsurat %@ cm și ploaie %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SV";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "V";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NV";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Totaluri de precipitații";
+"Last24h_Label"             = "ULTIMELE 24 ORE";
+"Next24h_Label"             = "Următoarele 24 de ore";
+"Total_Label"               = "Total";
+"Precipitation_Label"       = "Precipitații";
+"Rain_Label"                = "Ploaie";
+"Snow_Label"                = "Ninsoare";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Vântul bate în prezent %1$d %2$@ de la %3$@. Astăzi, vitezele vântului sunt de la %4$d la %5$d %2$@, cu rafale de până la %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Vitezele vântului variază de la %1$d la %2$d %3$@, cu rafale de până la %4$d %3$@.";
+
+"Beaufort_Scale"                = "Scara Beaufort";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Descriere";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Calm";
+"Beaufort_1"                    = "Aer ușor";
+"Beaufort_2"                    = "Adiere ușoară";
+"Beaufort_3"                    = "Adiere blândă";
+"Beaufort_4"                    = "Adiere moderată";
+"Beaufort_5"                    = "Adiere proaspătă";
+"Beaufort_6"                    = "Adiere puternică";
+"Beaufort_7"                    = "Vânt puternic";
+"Beaufort_8" = "Vijelie";
+"Beaufort_9"                    = "Furtună puternică";
+"Beaufort_10"                   = "Furtună";
+"Beaufort_11"                   = "Furtună violentă";
+"Beaufort_12"                   = "Forța uraganului";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Au fost %.1f%@ de precipitații în ultimele 24 de ore. Precipitațiile totale de astăzi vor fi %.1f%@. În următoarele 24 de ore sunt de așteptat %.1f%@ de precipitații.";
+"ForecastPrecip_OtherDayFormat" = "Pe %@, precipitațiile totale vor fi %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Despre intensitatea precipitațiilor";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensitatea este calculată pe baza cantității de ploaie sau zăpadă care cade într-o oră și indică cât de puternică va fi resimțită ploaia sau ninsoarea. Este folosită și pentru alte tipuri de precipitații, cum ar fi lapovița și amestecul de iarnă. O aversă torențială sau o furtună puternică de zăpadă poate avea intensitate „puternică”, în timp ce o ploaie obișnuită sau o burniță mai ușoară poate avea intensitate „moderată” sau „slabă”.";
+
+/* Section titles */
+"Forecast_Title"               = "Prognoza";
+"DailySummary_Title"           = "Rezumat zilnic";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Punctul de rouă este de la %d° la %d°.";
+"DewPoint_FutureFormat"        = "Punctul de rouă va fi de la %d° la %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Astăzi, umiditatea medie este %d%%. %@";
+"ForecastHumidity_Other"       = "Pe %@, umiditatea medie va fi %d%%.\n%@";
+
+"AboutPressure_Title"  = "Despre presiune";
+"AboutPressure_Body"   = "Schimbările semnificative și rapide ale presiunii sunt folosite pentru a prezice schimbările vremii. De exemplu, o scădere a presiunii poate însemna că ploaia sau zăpada sunt pe drum, iar creșterea presiunii poate însemna că vremea se va îmbunătăți. Presiunea se mai numește și presiune barometrică sau presiune atmosferică.";
+
+"AboutHumidity_Title"  = "Despre umiditatea relativă";
+"AboutHumidity_Body"   = "Umiditatea relativă, cunoscută în mod obișnuit ca umiditate, este cantitatea de umiditate din aer în comparație cu ceea ce poate reține aerul. Aerul poate reține mai multă umiditate la temperaturi mai ridicate. O umiditate relativă aproape de 100% înseamnă că poate fi rouă sau ceață.";
+
+"AboutDewPoint_Title" = "Despre punctul de rouă";
+"AboutDewPoint_Body"  = "Punctul de rouă este la care ar trebui să scadă temperatura pentru ca roua să se formeze. Poate fi o modalitate utilă de a spune cât de umed se simte aerul - cu cât este mai mare punctul de rouă, cu atât se simte mai umed. Un punct de rouă care se potrivește cu temperatura actuală înseamnă că umiditatea relativă este de 100% și poate exista rouă sau ceață.";
+
+"Section_Forecast"                     = "Prognoza";
+"Section_DailySummary"                 = "Rezumat zilnic";
+"ForecastVisibility_TodayFormat" = "Astăzi, vizibilitatea va fi %@, de la %d la %d %@.";
+"ForecastVisibility_OtherFormat" = "Pe %@, cea mai scăzută vizibilitate va fi %@ la %d %@, iar cea mai mare va fi %@ la %d %@.";
+"Clarity_Foggy"                        = "Cețos";
+"Clarity_Hazy"                         = "Cețos";
+"Clarity_Clear"                        = "Clar";
+"Clarity_PerfectlyClear"               = "Perfect clar";
+
+"AboutVisibility_Title" = "Despre vizibilitate";
+"AboutVisibility_Body" = "Vizibilitatea vă spune cât de departe puteți vedea clar obiecte precum clădiri și dealuri. Este o măsură a transparenței aerului și nu ia în considerare cantitatea de lumină solară sau prezența obstacolelor. Vizibilitatea la sau peste %@ este considerată clară.";
+
+"PressureForecast_Today" = "Presiunea este în prezent %@ %@ și scade. Astăzi, presiunea medie va fi %@ %@, iar cea mai mică presiune va fi %@ %@.";
+"PressureForecast_Other" = "Pe %@, presiunea medie va fi %@ %@, iar cea mai joasă presiune va fi %@ %@.";
+"SectionForecast" = "Prognoza";
+"SectionDailySummary" = "Rezumat zilnic";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Toate caracteristicile Planului de bază";
+"Multi-calendar view" = "Vedere cu mai multe calendare";
+"Sync with Google Calendar" = "Sincronizați cu Google Calendar";
+"Sync meets from Google Meet" = "Sincronizați întâlnirile de la Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Planul de bază";
+"Single-day calendar view" = "Vizualizare calendar pentru o singură zi";
+"Multi-day calendar view" = "Vizualizare calendar de mai multe zile";
+"Monthly calendar view" = "Vizualizarea calendarului lunar";
+"Yearly overview" = "Prezentare generală anuală";
+"List view for events" = "Vizualizare listă pentru evenimente";
+"Weather view" = "Vedere meteo";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Plan Premium";
+"Sync with Microsoft Calendar" = "Sincronizați cu Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Sincronizați întâlnirile de la Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Echivalent cu %@ pe lună";
+"%d %@ free" = "%d %@ gratuit";
+
+/* SubscriptionListView */
+"Premium Plans" = "Planuri Premium";
+"You are subscribed to the %@ %@ plan" = "Sunteți abonat la planul %@ %@";
+"Renews on: %@" = "Se reînnoiește pe: %@";
+"Start Free Trial" = "Începeți proba gratuită";
+"Subscribe Now" = "Abonați-vă acum";
+"%d %@ free, then %@%@." = "%d %@ gratuit, apoi %@%@.";
+"Subscribe for %@%@." = "Abonați-vă la %@%@.";
+"Privacy Policy"     = "Politica de confidențialitate";
+"Terms of Service"   = "Termeni și condiții";
+
+/* SubscriptionCategory */
+"Advanced" = "Avansat";
+"Advanced Plan" = "Plan avansat";
+"All Advanced Plan features" = "Toate caracteristicile Planului Avansat";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Aveți nevoie de un plan activ %@ pentru a accesa această secțiune.";
+"Plan Required" = "Plan obligatoriu";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Baza";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Abonat la planul %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Se reînnoiește pe: %@";
+
+"Manage Subscription"                   = "Gestionați abonamentul";
+
+/* Period units */
+"Daily"     = "Zilnic";
+"Weekly"    = "Săptămânal";
+"Monthly"   = "Lunar";
+"Yearly"    = "Anual";
+"Recurring" = "Recurente";
+
+/* units */
+"day"   = "zi";
+"days"  = "zile";
+"week"  = "saptamana";
+"weeks" = "săptămâni";
+"month"  = "luna";
+"months" = "luni";
+"year"   = "an";
+"years"  = "ani";
+
+/* YearMonthMiniView */
+"weekday.headers" = "D,L,M,M,J,V,S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Achizițiile dvs. anterioare au fost restaurate cu succes.";
+"No active subscriptions found to restore."                = "Nu s-au găsit abonamente active de restabilit.";
+"Failed to restore purchases. Please try again later. (%@)" = "Nu s-au restabilit achizițiile. Vă rugăm să încercați din nou mai târziu. (%@)";
+"Restore Purchases"                                        = "Restabiliți achizițiile";
+
+"Ads Free" = "Reclame gratuite";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Calendar și vreme";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Widgetul mic afișează data de astăzi și vremea actuală. Cel mediu adaugă faza Lunii și vântul.";
+"Calendar Events" = "Evenimente din calendar";
+"Shows today's date, current weather, and your next calendar events." = "Afișează data de astăzi, vremea curentă și următoarele evenimente din calendar.";
+"No upcoming events" = "Nu există evenimente viitoare";
+"Tomorrow" = "Mâine";
+"Untitled" = "Fără titlu";
+"Detail" = "Detaliu";
+"Phase" = "faza";
+"Weather" = "Vreme";
+"Select Your Email" = "Selectați e-mailul dvs";
+"Confirm" = "Confirmați";
+"Calendar name" = "Numele calendarului";
+"Sharing: %@" = "Distribuire: %@";
+"Loading..." = "Se încarcă...";
+"Selected Location" = "Locație selectată";
+"Data provided by Apple Weather" = "Date furnizate de Apple Weather";
+"Next" = "În continuare";
+"No details found for the selected location." = "Nu s-au găsit detalii pentru locația selectată.";
+"Could not determine the time zone for the selected location." = "Nu s-a putut determina fusul orar pentru locația selectată.";
+"(No Title)" = "(Fără titlu)";
+"Choose your e-mail" = "Alege-ți adresa de e-mail";
+"It will be treated as your primary address and invitations will not be sent to it." = "Va fi tratată ca adresă principală și invitațiile nu vor fi trimise către aceasta.";
+"Invalid URL" = "Adresă URL nevalidă";
+"Rate limit or insufficient permission" = "Limită de tarif sau permisiune insuficientă";
+"Network error: %@" = "Eroare de rețea: %@";
+"N/A - Selected Tab: %@" = "Indisponibil – fila selectată: %@";
+"Enable Notifications" = "Activați notificările";
+"Event Notifications" = "Notificări de evenimente";
+"Event alerts are scheduled from your event alert settings." = "Alertele de evenimente sunt programate din setările dvs. de alertă de eveniment.";
+"Allow notifications so event alerts can appear at the right time." = "Permite notificări, astfel încât alertele de evenimente să poată apărea la momentul potrivit.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Notificările sunt dezactivate pentru această aplicație. Pentru a le activa, accesați: Setări -> Aplicații -> Cloud Calendars -> Notificări -> Permite notificări.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating este antrenorul tău bazat pe inteligență artificială pentru o nutriție și antrenament mai inteligente. Combină știința modernă a nutriției cu instrumente practice pentru a vă ajuta să planificați mesele, să proiectați antrenamente, să vă gestionați cămară și să înțelegeți cum alimentele și mișcarea vă afectează corpul.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio este un mediu avansat de design 3D pentru dezvoltatorii iOS și macOS. Combină redarea precisă RealityKit cu un editor puternic de text formatat pentru a transforma capturile de ecran brute în materiale profesionale pentru App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio este studioul de înregistrare a ecranului de calitate pentru creatori pentru iOS și macOS. Capturați ecranul și camera în același timp, controlați microfonul + sunetul sistemului și exportați MP4-uri curate pentru tutoriale, tutoriale și demonstrații de produse. Pe iOS, puteți chiar să redați un videoclip în interiorul aplicației și să îl înregistrați împreună cu camera dvs. pentru conținut în stil de reacție și condus de prezentator.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars combină programarea avansată cu prognozele meteo frumos integrate, astfel încât să puteți planifica cu precizie. Acceptă mai multe servicii de calendar, editare intuitivă bazată pe gesturi, link-uri pentru întâlniri încorporate și prognoze detaliate orare/zilice direct în programul dvs.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI vă ajută să înțelegeți mișcarea pieței cu analize pe dispozitiv și un flux de lucru cu mai mulți agenți conceput pentru a separa semnalul de zgomot. Urmăriți datele de preț în timp real, explorați probabilitățile în stilul regimului și utilizați tablouri de bord și diagrame clare pentru a vă sprijini luarea deciziilor. În primul rând confidențialitatea: configurațiile dvs. rămân pe dispozitiv.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplicații";
+"Plan" = "Plan";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Viscol";
+"WeatherCondition.blowingDust" = "Praf";
+"WeatherCondition.blowingSnow" = "Zăpadă spulberată";
+"WeatherCondition.breezy" = "Vânt moderat";
+"WeatherCondition.clear" = "Senin";
+"WeatherCondition.cloudy" = "Înnorat";
+"WeatherCondition.drizzle" = "Burniță";
+"WeatherCondition.flurries" = "Fulguieli";
+"WeatherCondition.foggy" = "Ceață";
+"WeatherCondition.freezingDrizzle" = "Burniță înghețată";
+"WeatherCondition.freezingRain" = "Ploaie înghețată";
+"WeatherCondition.frigid" = "Rece";
+"WeatherCondition.hail" = "Grindină";
+"WeatherCondition.haze" = "Pâclă";
+"WeatherCondition.heavyRain" = "Ploaie abundentă";
+"WeatherCondition.heavySnow" = "Ninsoare puternică";
+"WeatherCondition.hot" = "Caniculă";
+"WeatherCondition.hurricane" = "Uragan";
+"WeatherCondition.isolatedThunderstorms" = "Furtuni izolate";
+"WeatherCondition.mostlyClear" = "Predominant senin";
+"WeatherCondition.mostlyCloudy" = "Mai mult înnorat";
+"WeatherCondition.partlyCloudy" = "Parțial înnorat";
+"WeatherCondition.rain" = "Ploaie";
+"WeatherCondition.scatteredThunderstorms" = "Furtuni răzlețe";
+"WeatherCondition.sleet" = "Lapoviță";
+"WeatherCondition.smoky" = "Fum";
+"WeatherCondition.snow" = "Ninsoare";
+"WeatherCondition.strongStorms" = "Furtună puternică";
+"WeatherCondition.sunFlurries" = "Fulguieli cu soare";
+"WeatherCondition.sunShowers" = "Averse cu soare";
+"WeatherCondition.thunderstorms" = "Furtună cu fulgere";
+"WeatherCondition.tropicalStorm" = "Furtună tropicală";
+"WeatherCondition.windy" = "Vânt puternic";
+"WeatherCondition.wintryMix" = "Mixte";
+"MoonPhase.new" = "Lună nouă";
+"MoonPhase.waxingCrescent" = "Concavă în creștere";
+"MoonPhase.firstQuarter" = "Primul pătrar";
+"MoonPhase.waxingGibbous" = "Convexă în creștere";
+"MoonPhase.full" = "Lună plină";
+"MoonPhase.waningGibbous" = "Convexă în descreștere";
+"MoonPhase.lastQuarter" = "Ultimul pătrar";
+"MoonPhase.waningCrescent" = "Concavă în descreștere";

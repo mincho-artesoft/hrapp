@@ -24,33 +24,14 @@ struct AllEventsListView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            topBar
-
-            // 1) Optional search bar
             if showSearchBar {
-                TextField(LocalizedStringKey("Search events..."), text: $searchText)
-                    .textFieldStyle(.plain)                         // без вътрешния бордър
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(.thinMaterial)                    // същия blur фон
-                    )
-                    // ⨯ бутонът вътре, долепен вдясно
-                    .overlay(
-                        Button {
-                            showSearchBar = false
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.trailing, 8),                     // разстояние от десния ръб
-                        alignment: .trailing
-                    )
+                CalendarEventSearchField(text: $searchText) {
+                    showSearchBar = false
+                    searchText = ""
+                }
                     .transition(.move(edge: .top))
-                    .padding(.horizontal)                           // външен padding (ако ти трябва)
+            } else {
+                topBar
             }
             
             // 2) Main Content
@@ -83,9 +64,14 @@ struct AllEventsListView: View {
                 Button {
                     showSearchBar = true
                 } label: {
-                    Image(systemName: "magnifyingglass")
+                    Image(uiImage: CalendarSearchAppearance.iconImage)
+                        .renderingMode(.template)
+                        .foregroundStyle(.blue)
                 }
-                .frame(width: 34, height: 34)
+                .frame(
+                    width: CalendarSearchAppearance.buttonSize,
+                    height: CalendarSearchAppearance.buttonSize
+                )
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
 
@@ -211,8 +197,11 @@ struct AllEventsListView: View {
         let currentYear = calendar.component(.year, from: Date())
         let targetYear = calendar.component(.year, from: date)
         
-        let df = DateFormatter()
-        df.dateFormat = (targetYear == currentYear) ? "EEEE — MMM d" : "EEEE — MMM d, yyyy"
+        let df = appShortDateFormatter(
+            includesYear: targetYear != currentYear,
+            includesWeekday: true,
+            usesFullWeekday: true
+        )
         
         return df.string(from: date).uppercased()
     }
@@ -222,13 +211,7 @@ struct AllEventsListView: View {
     }
     
     func timeString(_ date: Date) -> String {
-        let locale = Locale.autoupdatingCurrent
-        let df = DateFormatter()
-        df.locale = locale
-        // "j:mm" дава например "1:05 PM" или "13:05" в зависимост от настройките
-        df.dateFormat = DateFormatter
-            .dateFormat(fromTemplate: "j:mm", options: 0, locale: locale)
-        return df.string(from: date)
+        appTimeFormatter().string(from: date)
     }
     
 }

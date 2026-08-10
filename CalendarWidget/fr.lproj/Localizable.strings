@@ -1,5 +1,5 @@
 "Calendar & Weather" = "Calendrier et météo";
-"Small shows today's date and current weather. Medium adds moon phase and wind." = "Le petit affiche la date du jour et la météo actuelle. Le moyen ajoute la phase de la Lune et le vent.";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Le petit widget affiche la date du jour et la météo actuelle. Le moyen ajoute la phase de la Lune et le vent.";
 "Calendar Events" = "Événements du calendrier";
 "Shows today's date, current weather, and your next calendar events." = "Affiche la date du jour, la météo actuelle et vos prochains événements du calendrier.";
 "Calendar Events Large" = "Événements du calendrier (grand)";
@@ -31,3 +31,54 @@
 "High" = "Élevé";
 "Very High" = "Très élevé";
 "Extreme" = "Extrême";
+
+/* Application and compass labels */
+"AppDisplayName" = "Cloud Calendars";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "O";
+"Compass_E" = "E";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Blizzard";
+"WeatherCondition.blowingDust" = "Poussière";
+"WeatherCondition.blowingSnow" = "Tempête de neige";
+"WeatherCondition.breezy" = "Vent faible";
+"WeatherCondition.clear" = "Temps clair";
+"WeatherCondition.cloudy" = "Nuageux";
+"WeatherCondition.drizzle" = "Bruine";
+"WeatherCondition.flurries" = "Faibles chutes de neige";
+"WeatherCondition.foggy" = "Brouillard";
+"WeatherCondition.freezingDrizzle" = "Bruine verglaçante";
+"WeatherCondition.freezingRain" = "Pluie verglaçante";
+"WeatherCondition.frigid" = "Froid";
+"WeatherCondition.hail" = "Grêle";
+"WeatherCondition.haze" = "Brume";
+"WeatherCondition.heavyRain" = "Fortes pluies";
+"WeatherCondition.heavySnow" = "Gros flocons";
+"WeatherCondition.hot" = "Temps chaud";
+"WeatherCondition.hurricane" = "Ouragan";
+"WeatherCondition.isolatedThunderstorms" = "Orages isolés";
+"WeatherCondition.mostlyClear" = "Ciel plutôt dégagé";
+"WeatherCondition.mostlyCloudy" = "Nuages prédominants";
+"WeatherCondition.partlyCloudy" = "Belles éclaircies";
+"WeatherCondition.rain" = "Pluie";
+"WeatherCondition.scatteredThunderstorms" = "Orages épars";
+"WeatherCondition.sleet" = "Neige fondue";
+"WeatherCondition.smoky" = "Fumée";
+"WeatherCondition.snow" = "Neige";
+"WeatherCondition.strongStorms" = "Orage violent";
+"WeatherCondition.sunFlurries" = "Ensoleillé avec chutes de neige";
+"WeatherCondition.sunShowers" = "Ensoleillé avec averses";
+"WeatherCondition.thunderstorms" = "Orage";
+"WeatherCondition.tropicalStorm" = "Tempête tropicale";
+"WeatherCondition.windy" = "Venteux";
+"WeatherCondition.wintryMix" = "Précipitations hivernales";
+"MoonPhase.new" = "Nouvelle lune";
+"MoonPhase.waxingCrescent" = "Premier croissant";
+"MoonPhase.firstQuarter" = "Premier quartier";
+"MoonPhase.waxingGibbous" = "Gibbeuse croissante";
+"MoonPhase.full" = "Pleine lune";
+"MoonPhase.waningGibbous" = "Gibbeuse décroissante";
+"MoonPhase.lastQuarter" = "Dernier quartier";
+"MoonPhase.waningCrescent" = "Dernier croissant";

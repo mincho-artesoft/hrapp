@@ -26,6 +26,7 @@ private enum WidgetSharedStore {
         static let measurementSystem = "calendarWidget.global.measurementSystem"
         static let firstWeekday = "calendarWidget.global.firstWeekday"
         static let dateFormat = "calendarWidget.global.dateFormat"
+        static let timeFormat = "calendarWidget.global.timeFormat"
         static let numberFormat = "calendarWidget.global.numberFormat"
     }
 
@@ -59,6 +60,7 @@ private enum WidgetSharedStore {
             measurementSystem: defaults?.string(forKey: Key.measurementSystem) ?? "",
             firstWeekday: defaults?.integer(forKey: Key.firstWeekday) ?? Calendar.current.firstWeekday,
             dateFormat: defaults?.string(forKey: Key.dateFormat) ?? "",
+            timeFormat: defaults?.string(forKey: Key.timeFormat) ?? "",
             numberFormat: defaults?.string(forKey: Key.numberFormat) ?? ""
         )
     }
@@ -97,6 +99,7 @@ private struct GlobalSettingsSnapshot {
     let measurementSystem: String
     let firstWeekday: Int
     let dateFormat: String
+    let timeFormat: String
     let numberFormat: String
 }
 
@@ -156,6 +159,7 @@ private struct CalendarIconEntry: TimelineEntry {
             measurementSystem: "Metric",
             firstWeekday: 1,
             dateFormat: "M/d/yy",
+            timeFormat: "h:mm a",
             numberFormat: "1,234,567.89"
         ),
         events: [
@@ -200,6 +204,7 @@ private enum CalendarWidgetLayout {
 
 private struct CalendarIconWidgetView: View {
     @Environment(\.widgetFamily) private var family
+    @Environment(\.layoutDirection) private var layoutDirection
 
     let entry: CalendarIconEntry
     let layout: CalendarWidgetLayout
@@ -240,7 +245,7 @@ private struct CalendarIconWidgetView: View {
     }
 
     private var dayText: String {
-        String(calendar.component(.day, from: entry.date))
+        roundedNumberText(Double(calendar.component(.day, from: entry.date)))
     }
 
     private var temperatureText: String? {
@@ -263,6 +268,8 @@ private struct CalendarIconWidgetView: View {
                 smallBody
             }
         }
+        .minimumScaleFactor(0.4)
+        .allowsTightening(true)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .containerBackground(for: .widget) {
             widgetBackground
@@ -285,6 +292,7 @@ private struct CalendarIconWidgetView: View {
                 }
                 .foregroundStyle(iconTextColor)
                 .lineLimit(1)
+                .allowsTightening(true)
                 .frame(width: 82, alignment: .center)
                 .frame(maxHeight: .infinity, alignment: .center) // Разтяга колоната до максималната налична височина
 
@@ -425,6 +433,8 @@ private struct CalendarIconWidgetView: View {
                     .font(.system(size: 11, weight: .regular))
                     .opacity(0.78)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.45)
+                    .allowsTightening(true)
             }
             .foregroundStyle(iconTextColor)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -523,6 +533,8 @@ private struct CalendarIconWidgetView: View {
             }
             .foregroundStyle(iconTextColor)
             .lineLimit(1)
+            .minimumScaleFactor(0.45)
+            .allowsTightening(true)
 
             compactPressureGauge
                 .frame(width: 48, height: 36)
@@ -539,11 +551,13 @@ private struct CalendarIconWidgetView: View {
                     .symbolRenderingMode(.multicolor)
                     .font(.system(size: 9, weight: .medium))
 
-                Text("UV \(entry.weather.uvIndex.map(String.init) ?? "--")")
+                Text("UV \(entry.weather.uvIndex.map { roundedNumberText(Double($0)) } ?? "--")")
                     .font(.system(size: 11, weight: .medium))
                     .foregroundStyle(iconTextColor)
             }
             .lineLimit(1)
+            .minimumScaleFactor(0.45)
+            .allowsTightening(true)
 
             compactUVBar
 
@@ -576,7 +590,10 @@ private struct CalendarIconWidgetView: View {
                 style: StrokeStyle(lineWidth: 2, lineCap: .round)
             )
 
-            let needleDegrees = -225 + (270 * pressureGaugeFraction)
+            let visualPressureFraction = layoutDirection == .rightToLeft
+                ? 1 - pressureGaugeFraction
+                : pressureGaugeFraction
+            let needleDegrees = -225 + (270 * visualPressureFraction)
             let needleRadians = needleDegrees * .pi / 180
             let perpendicularRadians = needleRadians + (.pi / 2)
             let baseRadius = radius * 0.1
@@ -612,13 +629,16 @@ private struct CalendarIconWidgetView: View {
         GeometryReader { geometry in
             let indicatorWidth: CGFloat = 2
             let availableWidth = max(0, geometry.size.width - indicatorWidth)
-            let indicatorOffset = availableWidth * uvFraction
+            let visualUVFraction = layoutDirection == .rightToLeft ? 1 - uvFraction : uvFraction
+            let indicatorCenterX = indicatorWidth / 2 + availableWidth * visualUVFraction
+            let gradientStart: UnitPoint = layoutDirection == .rightToLeft ? .trailing : .leading
+            let gradientEnd: UnitPoint = layoutDirection == .rightToLeft ? .leading : .trailing
 
-            ZStack(alignment: .leading) {
+            ZStack {
                 LinearGradient(
                     colors: [.green, .yellow, .orange, .red, .purple],
-                    startPoint: .leading,
-                    endPoint: .trailing
+                    startPoint: gradientStart,
+                    endPoint: gradientEnd
                 )
                 .frame(height: 4)
                 .clipShape(Capsule())
@@ -626,7 +646,7 @@ private struct CalendarIconWidgetView: View {
                 Capsule()
                     .fill(iconTextColor)
                     .frame(width: indicatorWidth, height: 8)
-                    .offset(x: indicatorOffset)
+                    .position(x: indicatorCenterX, y: geometry.size.height / 2)
             }
             .frame(maxHeight: .infinity)
         }
@@ -689,6 +709,7 @@ private struct CalendarIconWidgetView: View {
             .font(.system(size: 9, weight: .regular))
             .foregroundStyle(iconTextColor)
             .lineLimit(1)
+            .allowsTightening(true)
             .minimumScaleFactor(0.45)
             .frame(maxWidth: .infinity)
     }
@@ -730,8 +751,11 @@ private struct CalendarIconWidgetView: View {
         formatter.calendar = calendar
         formatter.locale = widgetLocale
         formatter.timeZone = .autoupdatingCurrent
-        formatter.timeStyle = .short
         formatter.dateStyle = .none
+        let timeFormat = entry.settings.timeFormat.trimmingCharacters(in: .whitespacesAndNewlines)
+        formatter.dateFormat = timeFormat.isEmpty
+            ? DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: widgetLocale)
+            : timeFormat
         return formatter.string(from: date)
     }
 
@@ -744,8 +768,39 @@ private struct CalendarIconWidgetView: View {
     }
 
     private var shortMoonPhaseText: String {
-        let text = entry.weather.moonPhaseDescription
-        return text == "Moon" ? NSLocalizedString("Phase", comment: "Moon phase fallback label") : text
+        let storedValue = entry.weather.moonPhaseDescription
+
+        if storedValue.hasPrefix("MoonPhase.") {
+            return NSLocalizedString(storedValue, comment: "Moon phase")
+        }
+
+        let phaseKey: String? = switch entry.weather.moonPhaseAssetName {
+        case "phase_new": "MoonPhase.new"
+        case "phase_waxing_crescent": "MoonPhase.waxingCrescent"
+        case "phase_first_quarter": "MoonPhase.firstQuarter"
+        case "phase_waxing_gibbous": "MoonPhase.waxingGibbous"
+        case "phase_full": "MoonPhase.full"
+        case "phase_waning_gibbous": "MoonPhase.waningGibbous"
+        case "phase_third_quarter": "MoonPhase.lastQuarter"
+        case "phase_waning_crescent": "MoonPhase.waningCrescent"
+        default: nil
+        }
+
+        if let phaseKey {
+            return NSLocalizedString(phaseKey, comment: "Moon phase")
+        }
+
+        return storedValue == "Moon"
+            ? NSLocalizedString("Phase", comment: "Moon phase fallback label")
+            : storedValue
+    }
+
+    private var weatherConditionText: String {
+        let storedValue = entry.weather.condition
+        guard storedValue.hasPrefix("WeatherCondition.") else {
+            return storedValue
+        }
+        return NSLocalizedString(storedValue, comment: "Weather condition")
     }
 
     private var windSpeedText: String {
@@ -788,7 +843,8 @@ private struct CalendarIconWidgetView: View {
         formatter.decimalSeparator = separators.decimal ?? formatter.decimalSeparator
         formatter.groupingSeparator = separators.grouping ?? formatter.groupingSeparator
 
-        return formatter.string(from: NSNumber(value: value.rounded())) ?? "\(Int(value.rounded()))"
+        return formatter.string(from: NSNumber(value: value.rounded()))
+            ?? String(format: "%.0f", locale: widgetLocale, value.rounded())
     }
 
     private func numberSeparators(from sample: String) -> (grouping: String?, decimal: String?) {
@@ -832,7 +888,7 @@ private struct CalendarIconWidgetView: View {
                     .font(.system(size: 32, weight: .regular))
                     .frame(width: 50, height: 42, alignment: .center)
 
-                mediumCaptionText(entry.weather.condition.isEmpty ? NSLocalizedString("Weather", comment: "Weather fallback label") : entry.weather.condition)
+                mediumCaptionText(weatherConditionText.isEmpty ? NSLocalizedString("Weather", comment: "Weather fallback label") : weatherConditionText)
             }
         }
     }
@@ -879,19 +935,19 @@ private struct CalendarIconWidgetView: View {
                     .rotationEffect(.degrees(Double(i) * 6))
             }
 
-            Text("N")
+            Text(NSLocalizedString("Compass_N", comment: "North compass direction"))
                 .font(.system(size: 8, weight: .medium))
                 .foregroundStyle(iconTextColor.opacity(0.82))
                 .offset(y: -letterOffset)
-            Text("S")
+            Text(NSLocalizedString("Compass_S", comment: "South compass direction"))
                 .font(.system(size: 8, weight: .medium))
                 .foregroundStyle(iconTextColor.opacity(0.82))
                 .offset(y: letterOffset)
-            Text("W")
+            Text(NSLocalizedString("Compass_W", comment: "West compass direction"))
                 .font(.system(size: 8, weight: .medium))
                 .foregroundStyle(iconTextColor.opacity(0.82))
                 .offset(x: -letterOffset)
-            Text("E")
+            Text(NSLocalizedString("Compass_E", comment: "East compass direction"))
                 .font(.system(size: 8, weight: .medium))
                 .foregroundStyle(iconTextColor.opacity(0.82))
                 .offset(x: letterOffset)
@@ -945,6 +1001,8 @@ private struct CalendarIconWidgetView: View {
             .font(.system(size: 11, weight: .regular))
             .foregroundStyle(iconTextColor)
             .lineLimit(1)
+            .minimumScaleFactor(0.45)
+            .allowsTightening(true)
             .frame(height: 13, alignment: .top)
             .frame(maxWidth: .infinity, alignment: .center)
     }

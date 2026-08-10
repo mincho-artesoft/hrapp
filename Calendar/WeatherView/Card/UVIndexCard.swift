@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct UVIndexCard: View {
+    @Environment(\.layoutDirection) private var layoutDirection
+
     let uvIndex: Int?
     // Уверете се, че `categoryInfo.description` съдържа КЛЮЧА за локализация (напр. "Low", "Moderate")
     // А `categoryInfo.color` е цветът, асоцииран с тази категория.
@@ -15,11 +17,18 @@ struct UVIndexCard: View {
             let fraction = min(1.0, max(0.0, Double(uvIndex ?? 0) / maxUV))
             let indicatorWidth: CGFloat = 3 // Ширина на белия индикатор
             // Изчисляване на позицията за *центъра* на индикатора
-            let indicatorCenterX = (totalWidth - indicatorWidth) * fraction + (indicatorWidth / 2)
+            let visualFraction = layoutDirection == .rightToLeft ? 1 - fraction : fraction
+            let indicatorCenterX = (totalWidth - indicatorWidth) * visualFraction + (indicatorWidth / 2)
+            let gradientStart: UnitPoint = layoutDirection == .rightToLeft ? .trailing : .leading
+            let gradientEnd: UnitPoint = layoutDirection == .rightToLeft ? .leading : .trailing
 
-            ZStack(alignment: .leading) {
+            ZStack {
                 // Градиентен фон на лентата
-                LinearGradient(gradient: Gradient(colors: [.green, .yellow, .orange, .red, .purple]), startPoint: .leading, endPoint: .trailing)
+                LinearGradient(
+                    gradient: Gradient(colors: [.green, .yellow, .orange, .red, .purple]),
+                    startPoint: gradientStart,
+                    endPoint: gradientEnd
+                )
                     .frame(height: barHeight)
                     .clipShape(Capsule()) // Заоблени краища
 
@@ -46,13 +55,16 @@ struct UVIndexCard: View {
                 Label(NSLocalizedString("UV INDEX", comment: "UV index card title"), systemImage: "sun.max.fill")
                     .font(.system(size: 10, weight: .medium))
                     .foregroundStyle(.secondary)
+                    .adaptiveSingleLine(minimumScale: 0.4)
                     .symbolRenderingMode(.multicolor) // Жълто слънце
 
                 // Основна стойност - Под заглавието
-                Text(uvIndex != nil ? "\(uvIndex!)" : "–") // Показва тире, ако uvIndex е nil
+                Text(uvIndex.map { localizedIntegerString($0) } ?? "–") // Показва тире, ако uvIndex е nil
                     .font(.system(size: 34, weight: .regular)) // Стандартно тегло
                     .foregroundStyle(.primary)
                     .lineLimit(1) // Гарантира, че е на един ред
+                    .minimumScaleFactor(0.5)
+                    .allowsTightening(true)
 
                 // Описание на категорията - Под основната стойност
                 // categoryInfo.description (който е ключ) ще бъде потърсен в Localizable.strings
@@ -60,6 +72,8 @@ struct UVIndexCard: View {
                     .font(.system(size: 12, weight: .regular)) // Стандартно тегло
                     .foregroundStyle(.primary)
                     .lineLimit(1)
+                    .minimumScaleFactor(0.4)
+                    .allowsTightening(true)
 
                 Spacer(minLength: 8) // Минимално разстояние, за да бутне лентата надолу
 

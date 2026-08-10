@@ -1,0 +1,9 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars requires calendar access to unify your events from iCloud, Google, and Microsoft calendars, enabling seamless scheduling.";
+
+"NSContactsUsageDescription" = "Cloud Calendars uses your contacts to simplify event invitations and manage participant details effortlessly.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars accesses your location even when the app is closed, providing accurate weather forecasts and timely alerts for your scheduled events.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars uses your location while active to integrate precise local weather forecasts directly into your calendar.";

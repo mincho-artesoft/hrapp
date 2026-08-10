@@ -17,12 +17,17 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         vc.eventStore = eventStore
         vc.event = event
         vc.editViewDelegate = context.coordinator
+        vc.view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
+            ? .forceRightToLeft
+            : .forceLeftToRight
         
         return vc
     }
     
     func updateUIViewController(_ uiViewController: EKEventEditViewController, context: Context) {
-        // Няма нужда да правим update
+        uiViewController.view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
+            ? .forceRightToLeft
+            : .forceLeftToRight
     }
     
     func makeCoordinator() -> Coordinator {

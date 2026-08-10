@@ -11,6 +11,9 @@ struct CalendarsDropdownRepresentable: UIViewRepresentable {
     
     func makeUIView(context: Context) -> CalendarsDropdownView {
         let view = CalendarsDropdownView()
+        view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
+            ? .forceRightToLeft
+            : .forceLeftToRight
         view.setCalendarsInfo(viewModel.calendarsDict)
         
         // двупосочна връзка SwiftUI ↔ UIKit
@@ -21,6 +24,9 @@ struct CalendarsDropdownRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: CalendarsDropdownView, context: Context) {
+        uiView.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
+            ? .forceRightToLeft
+            : .forceLeftToRight
         // при всяка промяна от SwiftUI – опресняваме UIKit‑компонента
         uiView.setCalendarsInfo(viewModel.calendarsDict)
     }

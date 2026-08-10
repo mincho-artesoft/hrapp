@@ -29,17 +29,16 @@ extension WeatherDetailView{
                 // build localized subtitle
                 let subtitle: String = {
                     if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
-                        return String(
-                            format: NSLocalizedString("TodaysChance",
+                        return localizedFormat(NSLocalizedString("TodaysChance",
                                                      comment: "Subtitle for today's precipitation chance"),
                             todayChance
                         )
                     } else {
-                        let formatter = DateFormatter()
-                        formatter.dateFormat = "EEEE"
-                        let dayName = formatter.string(from: selectedDate)
-                        return String(
-                            format: NSLocalizedString("OtherDayChance",
+                        let dayName = appDateFormatter(
+                            template: "EEEE",
+                            timeZone: WeatherKitViewModel.shared.locationTimeZone
+                        ).string(from: selectedDate)
+                        return localizedFormat(NSLocalizedString("OtherDayChance",
                                                      comment: "Subtitle for another day's precipitation chance"),
                             dayName, todayChance
                         )
@@ -91,7 +90,7 @@ extension WeatherDetailView{
                     context.stroke(hLine, with: .color(.gray.opacity(0.3)), style: StrokeStyle(lineWidth: 0.5))
                     let labelPoint = CGPoint(x: origin.x + graphContentWidth + 15, y: yPos)
                     context.draw(
-                        Text("\(Int(marker * 100))%")
+                        Text(localizedFormat("%d%%", Int(marker * 100)))
                             .font(.system(size: 8))
                             .foregroundColor(.gray),
                         at: labelPoint,
@@ -205,7 +204,7 @@ extension WeatherDetailView{
                     let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                     let textPoint = CGPoint(x: xPos, y: origin.y + 14)
                     context.draw(
-                        Text(String(format: "%02d", hour))
+                        Text(localizedFormat("%02d", hour))
                             .font(.system(size: 11))
                             .foregroundColor(.gray),
                         at: textPoint,
@@ -279,17 +278,15 @@ extension WeatherDetailView{
                             let totalInterval = upperDate.timeIntervalSince(lowerDate)
                             let interpolatedDate = lowerDate.addingTimeInterval(totalInterval * Double(t))
 
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "HH:mm"
-                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
-
-                            timeLabelString = dateFormatter.string(from: interpolatedDate)
+                            timeLabelString = appTimeFormatter(
+                                timeZone: WeatherKitViewModel.shared.locationTimeZone
+                            ).string(from: interpolatedDate)
                         } else {
                             timeLabelString = "--:--"
                         }
 
                         // 8) Създаваме етикета с времето и процента
-                        let combinedLabel = Text("\(timeLabelString)\n\(precipPercent)%")
+                        let combinedLabel = Text(timeLabelString + "\n" + localizedFormat("%d%%", precipPercent))
                             .font(.system(size: 12, weight: .bold))
                             .foregroundColor(.white)
 

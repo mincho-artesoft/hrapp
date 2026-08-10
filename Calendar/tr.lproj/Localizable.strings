@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Hiçbir e-posta sağlanmadı.";
+"Please enter a valid email to continue." = "Devam etmek için lütfen geçerli bir e-posta girin.";
+"Your email" = "E-postanız";
+"Save" = "Kaydet";
+"Login" = "Giriş yap";
+"Logout" = "Oturumu kapat";
+
+/* RootView */
+"N/A" = "Yok";
+"Calendars" = "Takvimler";
+"Inbox" = "Gelen kutusu";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Diğer";
+"Google calendars" = "Google takvimler";
+"No synced Google calendars yet." = "Henüz senkronize edilmiş Google takvimi yok.";
+"Microsoft calendars" = "Microsoft takvimler";
+"No synced Microsoft calendars yet." = "Henüz senkronize edilmiş Microsoft takvimi yok.";
+"Sign out" = "Oturumu kapat";
+"Add iCloud Calendar" = "iCloud Takvim Ekle";
+"Share calendars with iCloud Calendar" = "Takvimleri iCloud Takvim ile paylaşın";
+"Sign in with Google" = "Google ile oturum açın";
+"Sign in with Microsoft" = "Microsoft ile oturum açın";
+"Deselect All" = "Tümünün Seçimini Kaldır";
+"Select All" = "Tümünü Seç";
+"No Email" = "E-posta Yok";
+"Add Google Calendar" = "Google Takvim Ekle";
+
+/* AddCalendarView */
+"Calendar Name" = "Takvim Adı";
+"Account" = "Hesap";
+"COLOR" = "RENK";
+"NOTIFICATIONS" = "BİLDİRİMLER";
+"Event Alerts" = "Etkinlik Uyarıları";
+"Allow events on this calendar to display alerts." = "Bu takvimdeki etkinliklerin uyarı göstermesine izin ver.";
+"Add Calendar" = "Takvim Ekle";
+
+/* Colors */
+"Red" = "Kırmızı";
+"Orange" = "Turuncu";
+"Yellow" = "Sarı";
+"Green" = "Yeşil";
+"Blue" = "Mavi";
+"Purple" = "Mor";
+"Brown" = "Kahverengi";
+"Custom" = "Özel";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Takvim Rengi";
+"Custom..." = "Özel...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Takvimi Düzenle";
+"Delete Calendar" = "Takvimi Sil";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Paylaşım ayarları yükleniyor…";
+"Shared with these users" = "Bu kullanıcılarla paylaşıldı";
+"Add New Email" = "Yeni E-posta Ekle";
+"Email to share" = "Paylaşmak için e-posta";
+"Permission:" = "İzin:";
+"Add" = "Ekle";
+"Sharing:" = "Paylaşım:";
+"Done" = "Bitti";
+
+"Error loading: %@" = "Yükleme hatası: %@";
+"Error adding: %@" = "Ekleme hatası: %@";
+"Error deleting: %@" = "Silinirken hata oluştu: %@";
+"Error updating: %@" = "Güncelleme hatası: %@";
+"Error re-inviting (delete): %@" = "Yeniden davet etme hatası (silme): %@";
+"Error re-inviting (insert): %@" = "Yeniden davet etme hatası (ekleyin): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Okuyucu";
+"Writer" = "yazar";
+"Owner"  = "Sahip";
+
+/* MonthCalendarView */
+"Day View" = "Gün Görünümü";
+"This is a repeating event." = "Bu tekrarlanan bir olaydır.";
+"Save for This Event Only" = "Yalnızca Bu Etkinlik İçin Kaydet";
+"Save for Future Events" = "Gelecekteki Etkinlikler için Kaydet";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Güneş";
+"Mon" = "Pazartesi";
+"Tue" = "Salı";
+"Wed" = "Çar";
+"Thu" = "Per";
+"Fri" = "Cuma";
+"Sat" = "Cumartesi";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Kapat";
+
+/* AllEventsListView */
+"No calendar access." = "Takvim erişimi yok.";
+
+/* EventRowView */
+"Ends" = "biter";
+
+/* SearchEventRowView */
+"No Title" = "Başlık Yok";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Toplantıya Katılın";
+"Edit" = "Düzenle";
+"Duplicate" = "Çoğalt";
+"Delete" = "Sil";
+"Add to Google Meet" = "Google Meet'a ekle";
+"Add to Microsoft Teams" = "Microsoft Teams'a ekle";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Seçili aralık yok";
+"all-day" = "tüm gün";
+"Search events..." = "Etkinlikleri ara...";
+"Day" = "Gün";
+"MultiDay" = "Çok Günlü";
+"Month" = "Ay";
+"Year" = "Yıl";
+"List" = "Liste";
+"MultiCalendar" = "Çoklu Takvim";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Yeni etkinlik";
+"All-day event" = "Tüm gün süren etkinlik";
+"Recurring Event" = "Tekrarlanan Etkinlik";
+"This event is part of a series. Update which events?" = "Bu etkinlik bir serinin parçasıdır. Hangi etkinlikler güncellensin?";
+"This Event Only" = "Yalnızca Bu Etkinlik";
+"All Future Events" = "Gelecekteki Tüm Etkinlikler";
+"Cancel" = "İptal";
+
+/* DraggableMenuView */
+"Calendar" = "Takvim";
+"Subscriptions" = "Abonelikler";
+"Live" = "Canlı";
+"Stop" = "Durdur";
+"Calendar Live Activity" = "Takvim Canlı Etkinliği";
+"Get" = "Al";
+"Color" = "Renk";
+"Search for a city…" = "Bir şehir arayın…";
+"No directions" = "Yol tarifi yok";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Konum erişimi reddedildi. Ayarlar'da bir şehir arayın veya erişim izni verin.";
+"Cannot refresh. Location unknown." = "Yenilenemiyor. Yer bilinmiyor.";
+"10-DAY FORECAST" = "10 GÜNLÜK TAHMİN";
+"HighLowLabelFormat" = "Yüksek:%d° Düşük:%d°";
+"tomorrow" = "yarın";
+"on_day" = "%@ üzerinde";
+"in_days" = "%d gün içinde";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Yeni Etkinlik";
+
+/* Search placeholder */
+"Search for a city..." = "Bir şehir arayın…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Hızlı bir şekilde takvim etkinliği eklemek için bir saate dokunun.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "GİBİ HİSSETTİRİYOR";
+"similar_to_actual_temp" = "Gerçek sıcaklığa benzer.";
+"wind_cooler_feel" = "Rüzgar havayı serinletiyor.";
+"humidity_warmer_feel" = "Nem daha sıcak hissettiriyor.";
+
+/* HumidityCard */
+"HUMIDITY" = "NEM";
+"The dew point is %d° right now." = "Çiy noktası şu anda %d°.";
+"dewPoint.current" = "Çiy noktası şu anda %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "AY FAZI";
+"Moonrise" = "Ayın Doğuşu";
+"Moonset" = "Ay batışı";
+"Next %@" = "Sonraki %@";
+"Data unavailable" = "Veri mevcut değil";
+"%d day" = "%d gün";
+"%d days" = "%d gün";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "YAĞIŞ";
+"PRECIPITATION_CARD_TODAY_LABEL" = "bugün";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Sonraki beklenen ise %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Yakın zamanda yağış beklenmiyor.";
+
+/* PressureCard */
+"PRESSURE" = "BASINÇ";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "GÜNEŞ DOĞUMU";
+"Sunrise: %@" = "Gündoğumu: %@";
+"Sunset: %@" = "Gün batımı: %@";
+"Sunrise" = "Gündoğumu";
+"Sunset" = "Gün batımı";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UV ENDEKSİ";
+"Low" = "Düşük";
+"Moderate" = "Orta";
+"High" = "Yüksek";
+"Very High" = "Çok Yüksek";
+"Extreme" = "Aşırı";
+
+/* VisibilityCard */
+"VISIBILITY" = "GÖRÜNÜRLÜK";
+"km" = "km";
+"Perfectly clear view." = "Mükemmel netlikte görüş.";
+"Excellent visibility." = "Mükemmel görünürlük.";
+"Good visibility." = "İyi görünürlük.";
+"Moderate visibility." = "Orta görünürlük.";
+"Poor visibility." = "Zayıf görünürlük.";
+"Very poor visibility." = "Görüş çok zayıf.";
+"visibility.perfect"   = "Mükemmel netlikte görüş.";
+"visibility.excellent" = "Mükemmel görünürlük.";
+"visibility.good"      = "İyi görünürlük.";
+"visibility.moderate"  = "Orta görünürlük.";
+"visibility.poor"      = "Zayıf görünürlük.";
+"visibility.verypoor"  = "Görüş çok zayıf.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Rüzgar";
+"Gusts" = "Rüzgarlar";
+"Direction" = "Yön";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "e";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Hava durumu verileri getirilemedi. Lütfen bağlantınızı kontrol edin veya daha sonra tekrar deneyin.";
+"Falling" = "Düşme";
+"Rising" = "Yükseliyor";
+"Steady" = "Sabit";
+"Unknown" = "Bilinmiyor";
+"Sunny" = "güneşli";
+"Cloudy" = "Bulutlu";
+"Partly Cloudy" = "Parçalı Bulutlu";
+"Drizzle" = "Çiseleyen yağmur";
+"Thunderstorm" = "Fırtına";
+"Fog" = "Sis";
+"Partly Cloudy Night" = "Parçalı Bulutlu Gece";
+"Clear Night" = "Açık Gece";
+"Hazy" = "Puslu";
+"Today" = "Bugün";
+"Now" = "Şimdi";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "Kuzeydoğu";
+"cardinal.NE"  = "kuzeydoğu";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "e";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "GD";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "GGB";
+"cardinal.SW"  = "GB";
+"cardinal.WSW" = "BGB";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "Kuzeybatı";
+"cardinal.NNW" = "Kuzeybatı";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Yağış Olasılığı";
+"Today's chance: %d%%" = "Bugünün şansı: %d%%";
+"%@'s chance: %d%%" = "%@'nin şansı: %d%%";
+"Max" = "Maksimum";
+"Min" = "Min.";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Günlük yağış ihtimali, her saat başına düşen yağış ihtimalinden daha yüksek olma eğilimindedir.";
+"ChanceOfPrecipitation_Title" = "Yağış Olasılığı";
+"TodaysChance"                = "Bugünün şansı: %d%%";
+"OtherDayChance"              = "%@'nin şansı: %d%%";
+"DailyChanceExplanation"      = "Günlük yağış ihtimali, her saat başına düşen yağış ihtimalinden daha yüksek olma eğilimindedir.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "öyle hissettiriyor";
+"Actual" = "Gerçek";
+"No hourly data available for this day." = "Bu gün için saatlik veri mevcut değil.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Nem, güneş ışığı veya rüzgar nedeniyle sıcaklığın nasıl hissedildiği.";
+"The actual air temperature." = "Gerçek hava sıcaklığı.";
+"HighLabelFormat" = "Yüksek: %d°";
+"LowLabelFormat" = "Düşük: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Nem";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Nem %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Nem Ortalama %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Bugünün minimum %d%% – maksimum %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Maksimum";
+"ChartMarker_Min"           = "Min.";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Yağmur: %.1f%@, Kar: %.1f%@";
+"Precip_Total_RainFormat"       = "Yağmur: %.1f%@";
+"Precip_Total_SnowFormat"       = "Kar: %.1f%@";
+"Precip_Total_None"             = "Yağış: 0%@";
+"Precip_Bars_Subtitle"          = "Yağmur ve kar için saatlik barlar (%@).";
+"Precip_Level_Light"            = "Işık";
+"Precip_Level_Moderate"         = "Orta";
+"Precip_Level_Heavy"            = "Ağır";
+"Precip_Tooltip_Format"         = "%@h\nYağmur: %.1f%@\nKar: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Basınç %@ %@";
+"Pressure_CurrentUnavailable"      = "Basınç: --";
+"Pressure_DailyMinMaxFormat"       = "Bugünün minimum %@ %@ – maksimum %@ %@";
+"Pressure_AverageFormat"           = "Basınç Ortalaması %@ %@";
+"Pressure_DailyRangeFormat"        = "Günlük aralık: %@–%@ %@";
+"Pressure_Title"                   = "Basınç";
+"Pressure_NoData"                  = "Bu gün için basınç verisi mevcut değil.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Bugünün %@ %d";
+"UVGraphNoHourlyData"   = "Bu gün için saatlik veri mevcut değil.";
+"UVGraphNowLabel"       = "Şimdi, %@";
+"UVCategory_None"       = "Yok";
+"UVCategory_Low"        = "Düşük";
+"UVCategory_Moderate"   = "Orta";
+"UVCategory_High"       = "Yüksek";
+"UVCategory_VeryHigh"   = "Çok Yüksek";
+"UVCategory_Extreme"    = "Aşırı";
+"UVAdvice_None"         = "Bu gün için orta veya daha yüksek UV seviyeleri beklenmiyor.";
+"UVAdvice_Range"        = "Güneşten korunma önerilir. UV seviyeleri %@ ile %@ arasında değişir ve %@ ile %@ arasında ulaşılır.";
+"UVGraphMaxLabel" = "Maksimum";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Görünürlük";
+"Visibility_NoData"                = "Bu güne ait görünürlük verisi yok.";
+"Visibility_CurrentFormat"         = "Görünürlük %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – maksimum %d %@";
+"Visibility_NoCurrentData"         = "Mevcut görünürlük verisi yok.";
+"Visibility_HourlyAverages_NoData" = "Saatlik veri mevcut değil.";
+"Visibility_MaxLabel"              = "Maksimum";
+"Visibility_MinLabel"              = "Min.";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Rüzgar Hızı ve Rüzgar";
+"WindGraph_NoData" = "Bu gün için rüzgar verisi mevcut değil.";
+"WindGraph_SpeedHeader" = "Rüzgar Hızı %d";
+"WindGraph_GustHeader" = "%d'a kadar rüzgarlar";
+"WindGraph_SpeedRangeHeader" = "Rüzgar Hızı %d-%d";
+"WindGraph_MaxSpeedLabel" = "Maks. hız";
+"WindGraph_MaxGustLabel" = "Maks. hamle";
+"WindGraph_DragLabel" = "%@\nHız: %d\nRüzgar: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Günlük Özet";
+
+"Precipitation Totals" = "Yağış Toplamları";
+"LAST 24 HOURS" = "SON 24 SAAT";
+"NEXT 24 HOURS" = "SONRAKİ 24 SAAT";
+"Total" = "Toplam";
+"Rain" = "Yağmur";
+"Snow" = "Kar";
+
+"About Wind Speed and Gusts" = "Rüzgar Hızı ve Rüzgarlar Hakkında";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Rüzgar hızı, kısa bir sürenin ortalaması kullanılarak hesaplanır. Rüzgarlar bu ortalamanın üzerindeki kısa rüzgar patlamalarıdır. Bir rüzgar genellikle 20 saniyenin altında sürer.";
+
+"About the Beaufort Scale" = "Beaufort Ölçeği Hakkında";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Beaufort rüzgar ölçeği, belirli bir hızda rüzgarın ne kadar kuvvetli veya kuvvetli olduğunu ifade eder. Beaufort ölçeği, ne kadar rüzgar hissedeceğini veya rüzgarın ne kadar etki yaratabileceğini anlamayı kolaylaştırabilir. Ölçekteki her değer bir rüzgar hızı aralığına karşılık gelir.";
+
+"About Feels Like Temperature" = "Sıcaklık Gibi Hissetme Hakkında";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Gibi Hissediyor, ne kadar sıcak veya soğuk hissettiğini ve gerçek sıcaklıktan farklı olabileceğini aktarır. Hissedilen sıcaklık nemden, güneş ışığından ve rüzgardan etkilenir.";
+
+"Options" = "Seçenekler";
+"Temperature" = "Sıcaklık";
+"Use system setting (°C)" = "Sistem ayarını kullanın (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Koşullar";
+"UV Index" = "UV İndeksi";
+"Wind" = "Rüzgar";
+"Precipitation" = "Yağış";
+"Humidity" = "Nem";
+"Visibility" = "Görünürlük";
+"Pressure" = "Basınç";
+
+/* Fallback key */
+"displayedCondition" = "görüntülenen Durum";
+
+/* Titles */
+"Forecast"                   = "Tahmin";
+"DailySummary"               = "Günlük Özet";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° şimdi %@ koşullarıyla. %@ yağış ihtimali var. %@'den %d %@'ye kadar rüzgarlar. Bugünün sıcaklığı %d° ile %d° arasında değişiyor ve %d° gibi hissediliyor. %@ ve %@.";
+"UVIndexFormat"              = "UV indeksi %d'a kadar";
+"HumidityFormat"             = "Çevredeki nem %d%%";
+"HumidityRangeFormat"        = "Nem %d%% ile %d%% arası";
+"NA"                         = "Yok";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@'nin düşük değeri %d° ve yüksek değeri %d°'dir. Sıcaklık %d° ila %d° arasında hissedilecek. %@ yönünden rüzgar bekleniyor. %@";
+"NoPrecipLast24h"            = "Son 24 saatte yağış kaydedilmedi.";
+"RainLast24h"                = "Son 24 saatte %d mm yağmur yağdı.";
+"SnowAndRainLast24h"         = "Son 24 saatte kar %@ cm, yağmur ise %d mm olarak ölçüldü.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "Kuzeydoğu";
+"Dir_NE"  = "kuzeydoğu";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "e";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "GD";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "GGB";
+"Dir_SW"  = "GB";
+"Dir_WSW" = "BGB";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "Kuzeybatı";
+"Dir_NNW" = "Kuzeybatı";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Yağış Toplamları";
+"Last24h_Label"             = "SON 24 SAAT";
+"Next24h_Label"             = "SONRAKİ 24 SAAT";
+"Total_Label"               = "Toplam";
+"Precipitation_Label"       = "Yağış";
+"Rain_Label"                = "Yağmur";
+"Snow_Label"                = "Kar";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Rüzgar şu anda %3$@ yönünden %1$d %2$@ yönünde. Bugün rüzgar hızları %4$d ile %5$d %2$@ arasında ve %6$d %2$@'ye kadar rüzgarlar var.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Rüzgar hızları %1$d ila %2$d %3$@ arasında değişir ve %4$d %3$@'ye kadar sert rüzgarlar bulunur.";
+
+"Beaufort_Scale"                = "Beaufort Ölçeği";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Açıklama";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Sakin";
+"Beaufort_1"                    = "Hafif hava";
+"Beaufort_2"                    = "Hafif esinti";
+"Beaufort_3"                    = "Hafif esinti";
+"Beaufort_4"                    = "Orta derecede esinti";
+"Beaufort_5"                    = "Taze esinti";
+"Beaufort_6"                    = "Güçlü esinti";
+"Beaufort_7"                    = "Şiddetli rüzgar";
+"Beaufort_8"                    = "Fırtına";
+"Beaufort_9"                    = "Güçlü fırtına";
+"Beaufort_10"                   = "Fırtına";
+"Beaufort_11"                   = "Şiddetli fırtına";
+"Beaufort_12"                   = "Kasırga kuvveti";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Son 24 saatte %.1f%@ yağış oluştu. Bugünün toplam yağış miktarı %.1f%@ olacak. Önümüzdeki 24 saatte %.1f%@ yağış bekleniyor.";
+"ForecastPrecip_OtherDayFormat" = "%@ tarihinde toplam yağış %.1f%@ olacak.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Yağış Yoğunluğu Hakkında";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Yoğunluk, saatte yağan yağmur veya kar miktarına göre hesaplanır ve yağmurun ya da karın ne kadar şiddetli hissedileceğini belirtir. Sulu kar ve kış karışımı gibi diğer yağış türleri için de kullanılır. Sağanak yağmur veya şiddetli kar fırtınası “şiddetli” yoğunluğa sahip olabilirken, ortalama bir yağmur ya da hafif çiseleme “orta” veya “hafif” yoğunluğa sahip olabilir.";
+
+/* Section titles */
+"Forecast_Title"               = "Tahmin";
+"DailySummary_Title"           = "Günlük Özet";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Çiy noktası %d° ila %d° arasındadır.";
+"DewPoint_FutureFormat"        = "Çiy noktası %d° ila %d° olacaktır.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Bugün ortalama nem %d%%. %@";
+"ForecastHumidity_Other"       = "%@ tarihinde ortalama nem %d%% olacaktır.\n%@";
+
+"AboutPressure_Title"  = "Basınç Hakkında";
+"AboutPressure_Body"   = "Hava koşullarındaki değişiklikleri tahmin etmek için basınçtaki önemli, hızlı değişiklikler kullanılır. Örneğin, basınçtaki bir düşüş yağmur veya karın yolda olduğu anlamına gelebilir ve basınçtaki bir artış havanın düzeleceği anlamına gelebilir. Basınca aynı zamanda barometrik basınç veya atmosferik basınç da denir.";
+
+"AboutHumidity_Title"  = "Bağıl Nem Hakkında";
+"AboutHumidity_Body"   = "Yaygın olarak nem olarak bilinen bağıl nem, havanın taşıyabileceği nem miktarıyla karşılaştırıldığında havadaki nem miktarıdır. Hava, yüksek sıcaklıklarda daha fazla nem tutabilir. %100'e yakın bir bağıl nem, çiy veya sis olabileceği anlamına gelir.";
+
+"AboutDewPoint_Title" = "Çiy Noktası Hakkında";
+"AboutDewPoint_Body"  = "Çiy noktası, çiğ oluşması için sıcaklığın düşmesi gereken noktadır. Havanın ne kadar nemli olduğunu anlamanın yararlı bir yolu olabilir; çiğlenme noktası ne kadar yüksekse, o kadar nemli hissedilir. Geçerli sıcaklıkla eşleşen bir çiy noktası, bağıl nemin %100 olduğu anlamına gelir ve çiy veya sis oluşabilir.";
+
+"Section_Forecast"                     = "Tahmin";
+"Section_DailySummary"                 = "Günlük Özet";
+"ForecastVisibility_TodayFormat" = "Bugün görünürlük %@, %d ile %d %@ arasında olacak.";
+"ForecastVisibility_OtherFormat" = "%1$@ tarihinde en düşük görünürlük %3$d %4$@ ile %2$@, en yüksek görünürlük ise %6$d %7$@ ile %5$@ olacaktır.";
+"Clarity_Foggy"                        = "Sisli";
+"Clarity_Hazy"                         = "Puslu";
+"Clarity_Clear"                        = "Temizle";
+"Clarity_PerfectlyClear"               = "Tamamen net";
+
+"AboutVisibility_Title" = "Görünürlük Hakkında";
+"AboutVisibility_Body" = "Görünürlük, binalar ve tepeler gibi nesneleri ne kadar uzakta net bir şekilde görebileceğinizi belirtir. Bu, havanın şeffaflığının bir ölçüsüdür ve güneş ışığının miktarını veya engellerin varlığını hesaba katmaz. %@ veya üzerinde görünürlük net kabul edilir.";
+
+"PressureForecast_Today" = "Basınç şu anda %@ %@ ve düşüyor. Bugün ortalama basınç %@ %@, en düşük basınç ise %@ %@ olacak.";
+"PressureForecast_Other" = "%@'da ortalama basınç %@ %@ olacak ve en düşük basınç %@ %@ olacaktır.";
+"SectionForecast" = "Tahmin";
+"SectionDailySummary" = "Günlük Özet";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Tüm Temel Plan özellikleri";
+"Multi-calendar view" = "Çoklu takvim görünümü";
+"Sync with Google Calendar" = "Google Takvim ile senkronize et";
+"Sync meets from Google Meet" = "Senkronizasyon Google Meet'dan buluşuyor";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Temel Plan";
+"Single-day calendar view" = "Tek günlük takvim görünümü";
+"Multi-day calendar view" = "Çok günlük takvim görünümü";
+"Monthly calendar view" = "Aylık takvim görünümü";
+"Yearly overview" = "Yıllık genel bakış";
+"List view for events" = "Etkinlikler için liste görünümü";
+"Weather view" = "Hava durumu görünümü";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Prim Planı";
+"Sync with Microsoft Calendar" = "Microsoft Takvim ile senkronize et";
+"Sync meets from Microsoft Teams" = "Senkronizasyon Microsoft Teams'dan buluşuyor";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Aylık %@'ye eşdeğer";
+"%d %@ free" = "%d %@ ücretsiz";
+
+/* SubscriptionListView */
+"Premium Plans" = "Premium Planlar";
+"You are subscribed to the %@ %@ plan" = "%@ %@ planına abone oldunuz";
+"Renews on: %@" = "Yenilenme tarihi: %@";
+"Start Free Trial" = "Ücretsiz Denemeyi Başlat";
+"Subscribe Now" = "Şimdi Abone Ol";
+"%d %@ free, then %@%@." = "%d %@ ücretsiz, ardından %@%@.";
+"Subscribe for %@%@." = "%@%@ için abone olun.";
+"Privacy Policy"     = "Gizlilik Politikası";
+"Terms of Service"   = "Hizmet Şartları";
+
+/* SubscriptionCategory */
+"Advanced" = "Gelişmiş";
+"Advanced Plan" = "Gelişmiş Plan";
+"All Advanced Plan features" = "Tüm Gelişmiş Plan özellikleri";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Bu bölüme erişmek için aktif bir %@ planına ihtiyacınız var.";
+"Plan Required" = "Plan Gerekli";
+"OK" = "tamam";
+
+/* SubscriptionStatus */
+"Base"    = "Baz";
+"Premium" = "prim";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "%@ %@ planına abone oldum.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Yenilenme tarihi: %@";
+
+"Manage Subscription"                   = "Aboneliği Yönet";
+
+/* Period units */
+"Daily"     = "Günlük";
+"Weekly"    = "Haftalık";
+"Monthly"   = "Aylık";
+"Yearly"    = "yıllık";
+"Recurring" = "Tekrarlanan";
+
+/* units */
+"day"   = "gün";
+"days"  = "günler";
+"week"  = "hafta";
+"weeks" = "haftalar";
+"month"  = "ay";
+"months" = "aylar";
+"year"   = "yıl";
+"years"  = "yıllar";
+
+/* YearMonthMiniView */
+"weekday.headers" = "P,P,S,Ç,P,C,C";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Önceki satın alımlarınız başarıyla geri yüklendi.";
+"No active subscriptions found to restore."                = "Geri yüklenecek etkin abonelik bulunamadı.";
+"Failed to restore purchases. Please try again later. (%@)" = "Satın alınanlar geri yüklenemedi. Lütfen daha sonra tekrar deneyin. (%@)";
+"Restore Purchases"                                        = "Satın Alınanları Geri Yükle";
+
+"Ads Free" = "Reklamlar Ücretsiz";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Takvim ve Hava Durumu";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Küçük araç takımı bugünün tarihini ve mevcut hava durumunu gösterir. Orta boy, ay evresini ve rüzgârı da gösterir.";
+"Calendar Events" = "Takvim Etkinlikleri";
+"Shows today's date, current weather, and your next calendar events." = "Bugünün tarihini, mevcut hava durumunu ve bir sonraki takvim etkinliklerinizi gösterir.";
+"No upcoming events" = "Yaklaşan etkinlik yok";
+"Tomorrow" = "Yarın";
+"Untitled" = "İsimsiz";
+"Detail" = "Detay";
+"Phase" = "Aşama";
+"Weather" = "Hava Durumu";
+"Select Your Email" = "E-postanızı Seçin";
+"Confirm" = "Onayla";
+"Calendar name" = "Takvim adı";
+"Sharing: %@" = "Paylaşım: %@";
+"Loading..." = "Yükleniyor...";
+"Selected Location" = "Seçilen Konum";
+"Data provided by Apple Weather" = "Veriler Apple Weather tarafından sağlanmıştır";
+"Next" = "Sonraki";
+"No details found for the selected location." = "Seçilen konum için ayrıntı bulunamadı.";
+"Could not determine the time zone for the selected location." = "Seçilen konumun saat dilimi belirlenemedi.";
+"(No Title)" = "(Başlık Yok)";
+"Choose your e-mail" = "E-postanızı seçin";
+"It will be treated as your primary address and invitations will not be sent to it." = "Ana adresiniz olarak kabul edilecek ve davetiyeler bu adrese gönderilmeyecektir.";
+"Invalid URL" = "Geçersiz URL";
+"Rate limit or insufficient permission" = "Hız sınırı veya yetersiz izin";
+"Network error: %@" = "Ağ hatası: %@";
+"N/A - Selected Tab: %@" = "Yok - Seçilen Sekme: %@";
+"Enable Notifications" = "Bildirimleri Etkinleştir";
+"Event Notifications" = "Etkinlik Bildirimleri";
+"Event alerts are scheduled from your event alert settings." = "Etkinlik uyarıları, etkinlik uyarısı ayarlarınızdan planlanır.";
+"Allow notifications so event alerts can appear at the right time." = "Etkinlik uyarılarının doğru zamanda görünebilmesi için bildirimlere izin verin.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Bu uygulama için bildirimler kapatıldı. Bunları etkinleştirmek için şuraya gidin: Ayarlar -> Uygulamalar -> Cloud Calendars -> Bildirimler -> Bildirimlere İzin Ver.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating, daha akıllı beslenme ve antrenman için yapay zeka destekli koçunuzdur. Yemek planlamanıza, antrenman tasarlamanıza, kilerinizi yönetmenize ve yiyecek ve hareketin vücudunuzu nasıl etkilediğini anlamanıza yardımcı olacak modern beslenme bilimini pratik araçlarla birleştirir.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio, iOS ve macOS geliştiricileri için gelişmiş bir 3D tasarım ortamıdır. Ham ekran görüntülerini profesyonel App Store materyallerine dönüştürmek için doğru RealityKit işlemeyi güçlü bir biçimlendirilmiş metin düzenleyiciyle birleştirir.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio, iOS ve macOS için içerik oluşturucu düzeyinde ekran kayıt stüdyosudur. Ekranınızı ve kameranızı aynı anda yakalayın, mikrofon + sistem sesini kontrol edin ve eğitimler, izlenecek yollar ve ürün demoları için temiz MP4'leri dışa aktarın. iOS'de, uygulama içinde bir video bile oynatabilir ve tepki tarzı ve sunum yapan kişinin yönlendirdiği içerik için kameranızla birlikte kaydedebilirsiniz.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars gelişmiş planlamayı güzel bir şekilde entegre edilmiş hava durumu tahminleriyle birleştirir, böylece hassas bir şekilde plan yapabilirsiniz. Birden fazla takvim hizmetini, sezgisel jest tabanlı düzenlemeyi, yerleşik toplantı bağlantılarını ve doğrudan programınızın içinde ayrıntılı saatlik/günlük tahminleri destekler.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI, sinyali gürültüden ayırmak için tasarlanmış cihaz içi analizler ve çok aracılı iş akışıyla piyasa hareketini anlamanıza yardımcı olur. Gerçek zamanlı fiyat verilerini takip edin, rejim tarzı olasılıkları keşfedin ve karar vermenizi desteklemek için anlaşılır gösterge tabloları ve grafikler kullanın. Önce gizlilik: yapılandırmalarınız cihazınızda kalır.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Uygulamalar";
+"Plan" = "Plan";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Tipi";
+"WeatherCondition.blowingDust" = "Tozlu";
+"WeatherCondition.blowingSnow" = "Savrulan Kar";
+"WeatherCondition.breezy" = "Esintili";
+"WeatherCondition.clear" = "Açık";
+"WeatherCondition.cloudy" = "Bulutlu";
+"WeatherCondition.drizzle" = "Çiseleyen Yağmur";
+"WeatherCondition.flurries" = "Kar Fırtınalı";
+"WeatherCondition.foggy" = "Sisli";
+"WeatherCondition.freezingDrizzle" = "Donan Hafif Yağmurlu";
+"WeatherCondition.freezingRain" = "Donan Yağmurlu";
+"WeatherCondition.frigid" = "Soğuk";
+"WeatherCondition.hail" = "Dolu";
+"WeatherCondition.haze" = "Puslu";
+"WeatherCondition.heavyRain" = "Şiddetli Yağmur";
+"WeatherCondition.heavySnow" = "Yoğun Karlı";
+"WeatherCondition.hot" = "Sıcak";
+"WeatherCondition.hurricane" = "Kasırga";
+"WeatherCondition.isolatedThunderstorms" = "Yer Yer Gök Gürültülü Fırtına";
+"WeatherCondition.mostlyClear" = "Az Bulutlu ve Açık";
+"WeatherCondition.mostlyCloudy" = "Çok Bulutlu";
+"WeatherCondition.partlyCloudy" = "Parçalı Bulutlu";
+"WeatherCondition.rain" = "Yağmurlu";
+"WeatherCondition.scatteredThunderstorms" = "Aralıklarla Gök Gürültülü Fırtınalı";
+"WeatherCondition.sleet" = "Sulu Karlı";
+"WeatherCondition.smoky" = "Dumanlı";
+"WeatherCondition.snow" = "Karlı";
+"WeatherCondition.strongStorms" = "Kuvvetli Gök Gürültülü Fırtınalı";
+"WeatherCondition.sunFlurries" = "Güneşli Kar";
+"WeatherCondition.sunShowers" = "Güneşli Hafif Yağış";
+"WeatherCondition.thunderstorms" = "Gök Gürültülü Fırtınalı";
+"WeatherCondition.tropicalStorm" = "Tropik Fırtına";
+"WeatherCondition.windy" = "Rüzgârlı";
+"WeatherCondition.wintryMix" = "Karla Karışık Yağmur";
+"MoonPhase.new" = "Yeni Ay";
+"MoonPhase.waxingCrescent" = "Büyüyen Hilal";
+"MoonPhase.firstQuarter" = "İlk Dördün";
+"MoonPhase.waxingGibbous" = "Büyüyen Şişkin";
+"MoonPhase.full" = "Dolunay";
+"MoonPhase.waningGibbous" = "Küçülen Şişkin Ay";
+"MoonPhase.lastQuarter" = "Son Dördün";
+"MoonPhase.waningCrescent" = "Küçülen Hilal";

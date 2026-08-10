@@ -141,6 +141,12 @@ struct CalendarApp: App {
         df.dateStyle = .short
         GlobalState.dateFormat = df.dateFormat ?? ""
 
+        GlobalState.timeFormat = DateFormatter.dateFormat(
+            fromTemplate: "j:mm",
+            options: 0,
+            locale: locale
+        ) ?? "HH:mm"
+
         let nf = NumberFormatter()
         nf.locale = locale
         nf.numberStyle = .decimal
@@ -193,7 +199,9 @@ struct CalendarApp: App {
         if hasInstalledCalendarWidget {
             CalendarWidgetStore.saveWeatherSnapshot(
                 symbol: weatherVM.currentSymbol,
-                condition: weatherVM.currentCondition,
+                condition: weatherVM.currentConditionLocalizationKey.isEmpty
+                    ? weatherVM.currentCondition
+                    : weatherVM.currentConditionLocalizationKey,
                 temperature: weatherVM.currentTemp,
                 windDirectionDegrees: weatherVM.currentWindDirection?.degrees,
                 windDirectionText: weatherVM.windDirectionAbbreviation(for: weatherVM.currentWindDirection),

@@ -22,6 +22,7 @@ public class CalendarDateRangePickerViewController: UIViewController {
     public var maximumDate: Date?
     public var selectedStartDate: Date?
     public var selectedEndDate: Date?
+    public var usesRightToLeftLayout = false
 
     // Тук може да изберете цвета на „кръга“:
     public var selectedColor = UIColor(
@@ -60,6 +61,9 @@ public class CalendarDateRangePickerViewController: UIViewController {
         // Важно: ако колекцията е .systemBackground, ще покрие прозрачността
         // => правим я .clear
         collectionView.backgroundColor = .clear
+        collectionView.semanticContentAttribute = usesRightToLeftLayout
+            ? .forceRightToLeft
+            : .forceLeftToRight
         collectionView.dataSource = self
         collectionView.delegate = self
 
@@ -74,6 +78,9 @@ public class CalendarDateRangePickerViewController: UIViewController {
 
         // 3) MonthYearPickerView
         monthYearPickerView.translatesAutoresizingMaskIntoConstraints = false
+        monthYearPickerView.semanticContentAttribute = usesRightToLeftLayout
+            ? .forceRightToLeft
+            : .forceLeftToRight
         monthYearPickerView.isHidden = true
         view.addSubview(monthYearPickerView)
         
@@ -124,9 +131,10 @@ public class CalendarDateRangePickerViewController: UIViewController {
         monthLabel.text = getMonthLabel(date: currentMonth)
         monthLabel.font = UIFont.boldSystemFont(ofSize: 17)
         monthLabel.textColor = .label
+        monthLabel.useAdaptiveSingleLine(minimumScale: 0.45)
         monthLabel.sizeToFit()
 
-        arrowImageView.image = UIImage(systemName: "chevron.right")
+        arrowImageView.image = UIImage(systemName: "chevron.forward")
         arrowImageView.tintColor = .systemBlue
         arrowImageView.contentMode = .scaleAspectFit
 
@@ -134,6 +142,10 @@ public class CalendarDateRangePickerViewController: UIViewController {
         let leftStack = UIStackView(arrangedSubviews: [monthLabel, arrowImageView])
         leftStack.axis = .horizontal
         leftStack.spacing = 4
+        monthLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        leftStack.widthAnchor.constraint(
+            lessThanOrEqualToConstant: UIScreen.main.bounds.width * 0.55
+        ).isActive = true
 
         // Задаваме layoutMargins => това „бутва“ съдържанието навътре
         leftStack.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
@@ -145,15 +157,13 @@ public class CalendarDateRangePickerViewController: UIViewController {
 
         // Правим го customView на UIBarButtonItem
         let labelItem = UIBarButtonItem(customView: leftStack)
-        navigationItem.leftBarButtonItem = labelItem
-
-        // 7) Бутоните chevron.left и chevron.right
+        // 7) Бутоните за предишен и следващ месец
         let prevMonthButton = UIButton(type: .system)
-        prevMonthButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        prevMonthButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         prevMonthButton.addTarget(self, action: #selector(didTapPrevMonth), for: .touchUpInside)
 
         let nextMonthButton = UIButton(type: .system)
-        nextMonthButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        nextMonthButton.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
         nextMonthButton.addTarget(self, action: #selector(didTapNextMonth), for: .touchUpInside)
 
         // Слагаме двата бутона в един stack
@@ -166,7 +176,13 @@ public class CalendarDateRangePickerViewController: UIViewController {
         rightStack.isLayoutMarginsRelativeArrangement = true
 
         let rightBarButtonItem = UIBarButtonItem(customView: rightStack)
-        navigationItem.rightBarButtonItem = rightBarButtonItem
+        if usesRightToLeftLayout {
+            navigationItem.rightBarButtonItem = labelItem
+            navigationItem.leftBarButtonItem = rightBarButtonItem
+        } else {
+            navigationItem.leftBarButtonItem = labelItem
+            navigationItem.rightBarButtonItem = rightBarButtonItem
+        }
 
 
         // 8) Добавяме Pan Gesture, за да поддържаме drag-selection
@@ -302,7 +318,7 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
            let dayOfMonth = indexPath.item - (7 + blankItems) + 1
            let date = getDate(dayOfMonth: dayOfMonth, baseMonth: currentMonth)
            cell.date = date
-           cell.label.text = "\(dayOfMonth)"
+           cell.label.text = localizedIntegerString(dayOfMonth)
 
            // === Останалата ви логика за today/selection/etc. ===
            let today = Date()
@@ -317,11 +333,19 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
                } else {
                    if areSameDay(dateA: date, dateB: start) {
                        cell.selectedColor = isToday ? .systemRed : self.selectedColor
-                       cell.addLine(from: cell.bounds.width/2, to: cell.bounds.width)
+                       if usesRightToLeftLayout {
+                           cell.addLine(from: 0, to: cell.bounds.width / 2)
+                       } else {
+                           cell.addLine(from: cell.bounds.width / 2, to: cell.bounds.width)
+                       }
                        cell.addCircle()
                    } else if areSameDay(dateA: date, dateB: end) {
                        cell.selectedColor = isToday ? .systemRed : self.selectedColor
-                       cell.addLine(from: 0, to: cell.bounds.width/2)
+                       if usesRightToLeftLayout {
+                           cell.addLine(from: cell.bounds.width / 2, to: cell.bounds.width)
+                       } else {
+                           cell.addLine(from: 0, to: cell.bounds.width / 2)
+                       }
                        cell.addCircle()
                    } else if isBefore(dateA: start, dateB: date),
                              isBefore(dateA: date, dateB: end) {
@@ -443,9 +467,7 @@ extension CalendarDateRangePickerViewController {
     }
 
     func getMonthLabel(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM yyyy"
-        return formatter.string(from: date)
+        appDateFormatter(template: "MMMMy").string(from: date)
     }
 
     func getWeekdayLabel(weekday: Int) -> String {
@@ -462,9 +484,7 @@ extension CalendarDateRangePickerViewController {
             return "???"
         }
 
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEE"
-        return formatter.string(from: date)
+        return appDateFormatter(template: "EEE").string(from: date)
     }
 
     func getWeekday(date: Date) -> Int {

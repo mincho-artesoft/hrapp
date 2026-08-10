@@ -40,7 +40,7 @@ struct MiniDayCellView: View {
                     .offset(y: 1)
             }
             
-            Text("\(dayNumber)")
+            Text(localizedIntegerString(dayNumber))
                 .font(.system(size: 12))
                 .foregroundColor(
                     isToday

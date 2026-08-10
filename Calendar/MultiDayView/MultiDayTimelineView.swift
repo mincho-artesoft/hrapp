@@ -17,6 +17,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     // MARK: - Local DateFormatter (for debug prints)
     private static let localFormatter: DateFormatter = {
         let df = DateFormatter()
+        df.locale = .appFormatting
         df.dateFormat = "yyyy-MM-dd HH:mm"
         df.timeZone = TimeZone.current
         return df
@@ -574,10 +575,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                     let yEnd   = topMargin + dateToY(end)
                     
                     // X е „началото на деня“ + офсет за номер на колона
-                    let x = leadingInsetForHours
-                            + CGFloat(dayIndex) * dayColumnWidth
+                    let x = dayOriginX(for: dayIndex)
                             + style.eventGap
-                            + columnWidth * CGFloat(colIndex)
+                            + columnWidth * CGFloat(
+                                usesRightToLeftLayout ? (columns.count - 1 - colIndex) : colIndex
+                            )
                     
                     // Ширината е columnWidth, но оставяме малък gap
                     let w = columnWidth - style.eventGap
@@ -643,7 +645,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                         // v2 е “по-късният”
                         let oldF = v2.frame
                         v2.frame = CGRect(
-                            x: oldF.minX + 6,
+                            x: usesRightToLeftLayout ? oldF.minX : oldF.minX + 6,
                             y: oldF.minY,
                             width: max(1, oldF.width - 6),
                             height: oldF.height
@@ -652,7 +654,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                         // v1 е “по-късният”
                         let oldF = v1.frame
                         v1.frame = CGRect(
-                            x: oldF.minX + 6,
+                            x: usesRightToLeftLayout ? oldF.minX : oldF.minX + 6,
                             y: oldF.minY,
                             width: max(1, oldF.width - 6),
                             height: oldF.height
@@ -801,9 +803,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             hiddenView.updateWithDescriptor(event: partialWrapper)
             
             let dayIndex = dayIndexFor(partialDayStart)
-            let x = leadingInsetForHours
-                    + CGFloat(dayIndex) * dayColumnWidth
-                    + style.eventGap
+            let x = dayOriginX(for: dayIndex) + style.eventGap
             let fromY = topMargin + dateToY(partialDayStart)
             let toY   = topMargin + dateToY(partialDayEnd)
             let w = dayColumnWidth - 2 * style.eventGap
@@ -1040,7 +1040,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                     let topY = topMargin + CGFloat(hoursOffset) * hourHeight
                     var finalY = sliceFrameInContainer.minY - (dateToY(desc.dateInterval.start) - topY) - 10
                     
-                    let localX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+                    let localX = dayOriginX(for: dayIndex)
                     // Конвертираме точка (localX, 0) от self към container:
                     let containerPoint = self.convert(CGPoint(x: localX, y: 0), to: container)
                     
@@ -1321,8 +1321,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             let frameSelf = container.convert(finalFrame, to: self)
             
             let midX = frameSelf.midX
-            var dayIndex = Int(floor((midX - leadingInsetForHours) / dayColumnWidth))
-            dayIndex = max(0, min(dayIndex, dayCount - 1))
+            let dayIndex = clampedDayIndex(atX: midX)
             
             let topY = frameSelf.minY
             let hourOffset = (topY - topMargin) / hourHeight
@@ -1504,7 +1503,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                 addSubview(ghost)
                 
                 let dayIndex = dayIndexFor(thisDesc.dateInterval.start)
-                let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                let ghostX = dayOriginX(for: dayIndex) + 2
                 let ghostY = sliceFrameInSelf.minY
                 let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                 let ghostH = sliceFrameInSelf.height
@@ -1584,14 +1583,12 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             }
             
             // (2) Смятаме dayIndex от X
-            let newDayIndexRaw = Int((currPointInSelf.x - leadingInsetForHours) / dayColumnWidth)
-            var clampedDayIndex = max(0, min(newDayIndexRaw, dayCount - 1))
+            var targetDayIndex = self.clampedDayIndex(atX: currPointInSelf.x)
             
             // (3) Всички dayIndex от ghost-ове => min, max
             let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                 let midX = gv.frame.midX
-                let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                return max(0, min(di, dayCount - 1))
+                return self.clampedDayIndex(atX: midX)
             }
             guard !allGhostDayIndexes.isEmpty else { break }
             
@@ -1601,12 +1598,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                 let maxSliceIndex = allGhostDayIndexes.max()!
                 
                 if d.isTop {
-                    if clampedDayIndex >= maxSliceIndex && (missingAfter || (!missingBefore && !missingAfter)){
-                        clampedDayIndex = maxSliceIndex
+                    if targetDayIndex >= maxSliceIndex && (missingAfter || (!missingBefore && !missingAfter)){
+                        targetDayIndex = maxSliceIndex
                         if let ghostAtMax = draggingGhosts.values.first(where: { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                            return di == maxSliceIndex
+                            return self.clampedDayIndex(atX: midX) == maxSliceIndex
                         }) {
                             let newBottomY = ghostAtMax.frame.maxY
                             let potentialTopY = f.origin.y
@@ -1622,12 +1618,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                         }
                     }
                 } else {
-                    if clampedDayIndex <= minSliceIndex && (missingBefore || (!missingBefore && !missingAfter)) {
-                        clampedDayIndex = minSliceIndex
+                    if targetDayIndex <= minSliceIndex && (missingBefore || (!missingBefore && !missingAfter)) {
+                        targetDayIndex = minSliceIndex
                         if let ghostAtMin = draggingGhosts.values.first(where: { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                            return di == minSliceIndex
+                            return self.clampedDayIndex(atX: midX) == minSliceIndex
                         }) {
                             let oldBottomY = f.maxY
                             let newTopY = ghostAtMin.frame.minY
@@ -1644,13 +1639,13 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             let limitDayIndex = d.isTop ? dayIndexFor(d.startInterval.end)
                                         : dayIndexFor(d.startInterval.start)
             if d.isTop {
-                clampedDayIndex = min(clampedDayIndex, limitDayIndex)
+                targetDayIndex = min(targetDayIndex, limitDayIndex)
             } else {
-                clampedDayIndex = max(clampedDayIndex, limitDayIndex)
+                targetDayIndex = max(targetDayIndex, limitDayIndex)
             }
             
             // (6) Накрая нагласяме X & width
-            let newX = leadingInsetForHours + CGFloat(clampedDayIndex) * dayColumnWidth + 2
+            let newX = dayOriginX(for: targetDayIndex) + 2
             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
             f.origin.x = newX
             f.size.width = ghostW
@@ -1658,12 +1653,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             ghost.frame = f
             
             // NEW: Проверяваме дали се е сменил dayIndex и принтираме
-            if clampedDayIndex != d.lastDayIndex {
+            if targetDayIndex != d.lastDayIndex {
                 if draggingGhosts.count > 1 {
                     let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                         let midX = gv.frame.midX
-                        let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                        return max(0, min(di, dayCount - 1))
+                        return self.clampedDayIndex(atX: midX)
                     }
                     if !allGhostDayIndexes.contains(d.lastDayIndex) {
                         let ghost = createEventView()
@@ -1673,7 +1667,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                         addSubview(ghost)
                         
                         let dayIndex = d.lastDayIndex
-                        let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                        let ghostX = dayOriginX(for: dayIndex) + 2
                         let ghostY = 10
                         let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                         let ghostH = 24 * 50 - 3
@@ -1691,11 +1685,10 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                         d.totalDay = d.totalDay + 1
                     }
                 } else {
-                    if isTop && d.lastDayIndex > clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
+                    if isTop && d.lastDayIndex > targetDayIndex && d.originalDayIndex ==  d.lastDayIndex{
                         let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                            return max(0, min(di, dayCount - 1))
+                            return self.clampedDayIndex(atX: midX)
                         }
                         if !allGhostDayIndexes.contains(d.lastDayIndex) {
                             let ghost = createEventView()
@@ -1705,7 +1698,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                             addSubview(ghost)
                             
                             let dayIndex = d.lastDayIndex
-                            let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                            let ghostX = dayOriginX(for: dayIndex) + 2
                             let ghostY = 10
                             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                             let ghostH = d.originalFrame.maxY - 10
@@ -1729,11 +1722,10 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                             d.originalFrame = ghostFrame2
                             d.totalDay = d.totalDay + 1
                         }
-                    }else if !isTop && d.lastDayIndex < clampedDayIndex && d.originalDayIndex ==  d.lastDayIndex{
+                    }else if !isTop && d.lastDayIndex < targetDayIndex && d.originalDayIndex ==  d.lastDayIndex{
                         let allGhostDayIndexes: [Int] = draggingGhosts.values.compactMap { gv in
                             let midX = gv.frame.midX
-                            let di = Int((midX - leadingInsetForHours) / dayColumnWidth)
-                            return max(0, min(di, dayCount - 1))
+                            return self.clampedDayIndex(atX: midX)
                         }
                         if !allGhostDayIndexes.contains(d.lastDayIndex) {
                             let ghost = createEventView()
@@ -1743,7 +1735,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                             addSubview(ghost)
                             
                             let dayIndex = d.lastDayIndex
-                            let ghostX = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex) + 2
+                            let ghostX = dayOriginX(for: dayIndex) + 2
                             let ghostY = d.originalFrame.minY
                             let ghostW = dayColumnWidth - style.eventGap * 2 - 2
                             let ghostH = 24 * 50 + 10 - d.originalFrame.minY
@@ -1771,7 +1763,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                     }
                 }
                 // Обновяваме lastDayIndex
-                d.lastDayIndex = clampedDayIndex
+                d.lastDayIndex = targetDayIndex
                 eventView.layer.setValue(d, forKey: DRAG_DATA_KEY)
             }
             
@@ -1785,11 +1777,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             updateAutoScrollDirection(for: gesture)
             
             // (9) Скриваме slice-ове извън обхвата
-            let boundaryDayIndex = clampedDayIndex
+            let boundaryDayIndex = targetDayIndex
             for (origView, ghostView) in draggingGhosts {
                 if origView == eventView { continue }
                 let ghostMidX = ghostView.frame.midX
-                let ghostDayIndex = Int((ghostMidX - leadingInsetForHours) / dayColumnWidth)
+                let ghostDayIndex = self.clampedDayIndex(atX: ghostMidX)
                 
                 if d.isTop {
                     if ghostDayIndex <= boundaryDayIndex {
@@ -1915,6 +1907,40 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
 
 
     // MARK: - dayIndex, etc.
+    private var usesRightToLeftLayout: Bool {
+        effectiveUserInterfaceLayoutDirection == .rightToLeft
+    }
+
+    private func visualDayIndex(for dayIndex: Int) -> Int {
+        usesRightToLeftLayout ? (dayCount - 1 - dayIndex) : dayIndex
+    }
+
+    private func dayOriginX(for dayIndex: Int) -> CGFloat {
+        leadingInsetForHours + CGFloat(visualDayIndex(for: dayIndex)) * dayColumnWidth
+    }
+
+    private func dayIndex(atX x: CGFloat) -> Int? {
+        guard dayColumnWidth > 0, x >= leadingInsetForHours else { return nil }
+        let visualIndex = Int(floor((x - leadingInsetForHours) / dayColumnWidth))
+        guard visualIndex >= 0, visualIndex < dayCount else { return nil }
+        return usesRightToLeftLayout ? (dayCount - 1 - visualIndex) : visualIndex
+    }
+
+    private func clampedDayIndex(atX x: CGFloat) -> Int {
+        guard dayCount > 0, dayColumnWidth > 0 else { return 0 }
+        let visualIndex = Int(floor((x - leadingInsetForHours) / dayColumnWidth))
+        let clampedVisualIndex = max(0, min(visualIndex, dayCount - 1))
+        return usesRightToLeftLayout ? (dayCount - 1 - clampedVisualIndex) : clampedVisualIndex
+    }
+
+    func dayIndexFromX(_ x: CGFloat) -> Int? {
+        dayIndex(atX: x)
+    }
+
+    func clampedDayIndexFromX(_ x: CGFloat) -> Int {
+        clampedDayIndex(atX: x)
+    }
+
     private func dayIndexFor(_ date: Date) -> Int {
         let cal = Calendar.current
         let startOnly = cal.startOfDay(for: fromDate)
@@ -1935,9 +1961,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         let localY = y - topMargin
         let midX = frameInTimeline.midX
         
-        if midX < leadingInsetForHours { return nil }
-        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex >= dayCount { return nil }
+        guard let dayIndex = dayIndex(atX: midX) else { return nil }
         
         let dayDate = dayStartDate(for: dayIndex)
         
@@ -1971,7 +1995,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         
         // 2) Оцветяваме "подсветените" колони (highlightedDayIndexes)
         for dayIndex in 0..<dayCount {
-            let colX = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth
+            let colX = dayOriginX(for: dayIndex)
             let colRect = CGRect(x: colX, y: 0, width: dayColumnWidth, height: bounds.height)
             
             if highlightedDayIndexes.contains(dayIndex) {
@@ -2048,7 +2072,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         let fullLineEndX   = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
 
         // Тясната част върху самия текущ ден
-        let currentDayX  = leadingInsetForHours + dayColumnWidth * CGFloat(dayIndex)
+        let currentDayX  = dayOriginX(for: dayIndex)
         let currentDayX2 = currentDayX + dayColumnWidth
 
         // 1) Полупрозрачна линия през всички колони
@@ -2147,9 +2171,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     
     func dateFromPoint(_ point: CGPoint) -> Date? {
         let localY = point.y - topMargin
-        if point.x < leadingInsetForHours { return nil }
-        let dayIndex = Int((point.x - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex >= dayCount { return nil }
+        guard let dayIndex = dayIndex(atX: point.x) else { return nil }
         
         let cal = Calendar.current
         if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate)) {
@@ -2241,9 +2263,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     func dateFromFrame(_ frame: CGRect) -> Date? {
         let topY = frame.minY - topMargin
         let midX = frame.midX
-        if midX < leadingInsetForHours { return nil }
-        let dayIndex = Int((midX - leadingInsetForHours) / dayColumnWidth)
-        if dayIndex < 0 || dayIndex >= dayCount { return nil }
+        guard let dayIndex = dayIndex(atX: midX) else { return nil }
         
         let cal = Calendar.current
         if let dayDate = cal.date(byAdding: .day, value: dayIndex, to: cal.startOfDay(for: fromDate)) {
@@ -2294,13 +2314,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
 
     /// Връща dayIndex, върху който попада `frame` (според midX), или nil, ако е извън диапазона.
     private func dayIndexForFrame(_ frame: CGRect) -> Int? {
-        let midX = frame.midX
-        let rawIndex = (midX - leadingInsetForHours) / dayColumnWidth
-        let i = Int(floor(rawIndex))
-        if i < 0 || i >= dayCount {
-            return nil
-        }
-        return i
+        dayIndex(atX: frame.midX)
     }
     public func clearAllHighlights() {
         self.highlightedDayIndexes.removeAll()

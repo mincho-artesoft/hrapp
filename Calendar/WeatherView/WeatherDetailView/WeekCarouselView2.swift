@@ -29,7 +29,7 @@ struct WeekCarouselView2: View {
         TabView {
             let weeks = generateWeeks(from: today, numberOfWeeks: numberOfWeeks)
             ForEach(weeks, id: \.self) { weekDates in
-                HStack(spacing: 20) {
+                HStack(spacing: 0) {
                     ForEach(weekDates, id: \.self) { day in
                         let isSelectable = isDaySelectable(day)
                         // Използваме customCalendar за сравнение на датите.
@@ -40,6 +40,7 @@ struct WeekCarouselView2: View {
                             Text(weekdayString(for: day))
                                 .font(.system(size: 14, weight: .medium))
                                 .foregroundColor(.primary)
+                                .adaptiveSingleLine(minimumScale: 0.4)
                             
                             // Показваме денят (напр. 7, 8, 9...) – ако е избран, стои в кръг с цвят
                             Text(dayNumberFormatter.string(from: day))
@@ -51,6 +52,7 @@ struct WeekCarouselView2: View {
                                         .fill(isSelected ? Color.blue : Color.clear)
                                 )
                         }
+                        .frame(maxWidth: .infinity)
                         .opacity(isSelectable ? 1.0 : 0.4)
                         .onTapGesture {
                             guard isSelectable else { return }
@@ -116,17 +118,18 @@ struct WeekCarouselView2: View {
     
     // Функция за получаване на краткото име на деня (напр. "Mon"), използвайки избраната часова зона.
     private func weekdayString(for date: Date) -> String {
-        let df = DateFormatter()
-        df.dateFormat = "EEE" // например: "Mon", "Tue"
-        df.timeZone = WeatherKitViewModel.shared.locationTimeZone
+        let df = appDateFormatter(
+            template: "EEE",
+            timeZone: WeatherKitViewModel.shared.locationTimeZone
+        )
         return df.string(from: date)
     }
     
     // Formatter за денят от месеца (напр. "7"), отново с зададена timeZone.
     private var dayNumberFormatter: DateFormatter {
-        let f = DateFormatter()
-        f.dateFormat = "d"
-        f.timeZone = WeatherKitViewModel.shared.locationTimeZone
-        return f
+        appDateFormatter(
+            template: "d",
+            timeZone: WeatherKitViewModel.shared.locationTimeZone
+        )
     }
 }

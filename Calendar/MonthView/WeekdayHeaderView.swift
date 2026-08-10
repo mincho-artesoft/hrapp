@@ -18,6 +18,7 @@ struct WeekdayHeaderView: View {
             ForEach(weekdaySymbols, id: \.self) { dayName in
                 Text(dayName)
                     .font(.caption)
+                    .adaptiveSingleLine(minimumScale: 0.4)
                     .frame(maxWidth: .infinity)
             }
         }

@@ -54,6 +54,7 @@ private struct CalendarLiveActivityAppIcon: View {
                     }
                     .foregroundStyle(Self.iconTextColor)
                     .lineLimit(1)
+                    .allowsTightening(true)
                     .frame(width: size * 0.51, alignment: .center)
                     .frame(maxHeight: .infinity, alignment: .center)
 
@@ -106,7 +107,7 @@ private struct CalendarLiveActivityAppIcon: View {
     }
 
     private var dayText: String {
-        String(settings.calendar.component(.day, from: Date()))
+        roundedNumberText(Double(settings.calendar.component(.day, from: Date())))
     }
 
     private var weatherSymbol: String {
@@ -141,7 +142,8 @@ private struct CalendarLiveActivityAppIcon: View {
         formatter.decimalSeparator = separators.decimal ?? formatter.decimalSeparator
         formatter.groupingSeparator = separators.grouping ?? formatter.groupingSeparator
 
-        return formatter.string(from: NSNumber(value: value.rounded())) ?? "\(Int(value.rounded()))"
+        return formatter.string(from: NSNumber(value: value.rounded()))
+            ?? String(format: "%.0f", locale: settings.locale, value.rounded())
     }
 
     private func numberSeparators(from sample: String) -> (grouping: String?, decimal: String?) {
@@ -181,6 +183,7 @@ private enum CalendarLiveActivitySharedStore {
         static let calendar = "calendarWidget.global.calendar"
         static let firstWeekday = "calendarWidget.global.firstWeekday"
         static let dateFormat = "calendarWidget.global.dateFormat"
+        static let timeFormat = "calendarWidget.global.timeFormat"
         static let numberFormat = "calendarWidget.global.numberFormat"
         static let upcomingEvents = "calendarWidget.upcomingEvents"
     }
@@ -207,6 +210,7 @@ private enum CalendarLiveActivitySharedStore {
             calendarIdentifier: defaults?.string(forKey: Key.calendar) ?? "",
             firstWeekday: defaults?.integer(forKey: Key.firstWeekday) ?? Calendar.current.firstWeekday,
             dateFormat: defaults?.string(forKey: Key.dateFormat) ?? "",
+            timeFormat: defaults?.string(forKey: Key.timeFormat) ?? "",
             numberFormat: defaults?.string(forKey: Key.numberFormat) ?? ""
         )
     }
@@ -246,6 +250,7 @@ private struct CalendarLiveActivitySettingsSnapshot {
     let calendarIdentifier: String
     let firstWeekday: Int
     let dateFormat: String
+    let timeFormat: String
     let numberFormat: String
 
     var locale: Locale {
@@ -360,7 +365,7 @@ private struct CalendarLiveActivityExpandedBrandView: View {
             CalendarLiveActivityAppIcon(size: 22, settings: settings)
 
             VStack(alignment: .leading, spacing: 1) {
-                Text("CloudCalendars")
+                Text(NSLocalizedString("AppDisplayName", comment: "Localized app name"))
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(.white)
                     .lineLimit(1)
@@ -391,6 +396,9 @@ private struct CalendarLiveActivityExpandedCountdownView: View {
             Text("Starts in")
                 .font(.caption2.weight(.semibold))
                 .foregroundStyle(labelColor)
+                .lineLimit(1)
+                .minimumScaleFactor(0.4)
+                .allowsTightening(true)
 
             HStack(alignment: .firstTextBaseline, spacing: 7) {
                 if let event {
@@ -479,7 +487,7 @@ private struct CalendarLiveActivityContentView: View {
                     CalendarLiveActivityAppIcon(size: 34, settings: settings)
 
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("CloudCalendars")
+                        Text(NSLocalizedString("AppDisplayName", comment: "Localized app name"))
                             .font(.headline.weight(.semibold))
                             .foregroundStyle(CalendarLiveActivityPalette.primaryText)
                             .lineLimit(1)
@@ -490,6 +498,8 @@ private struct CalendarLiveActivityContentView: View {
                             .font(.subheadline)
                             .foregroundStyle(CalendarLiveActivityPalette.secondaryText)
                             .lineLimit(1)
+                            .minimumScaleFactor(0.45)
+                            .allowsTightening(true)
                     }
                 }
                 .layoutPriority(1)
@@ -617,7 +627,10 @@ private struct CalendarLiveActivityEventCardView: View {
         formatter.locale = settings.locale
         formatter.timeZone = .autoupdatingCurrent
         formatter.dateStyle = .none
-        formatter.timeStyle = .short
+        let timeFormat = settings.timeFormat.trimmingCharacters(in: .whitespacesAndNewlines)
+        formatter.dateFormat = timeFormat.isEmpty
+            ? DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: settings.locale)
+            : timeFormat
         return formatter.string(from: date)
     }
 
@@ -667,6 +680,8 @@ private struct CalendarLiveActivityEventSummaryView: View {
                 .font(compact ? .caption2 : .subheadline)
                 .foregroundStyle(secondaryText)
                 .lineLimit(1)
+                .minimumScaleFactor(0.4)
+                .allowsTightening(true)
 
                 HStack(spacing: 5) {
                     Image(systemName: event.isAllDay ? "calendar" : "clock")
@@ -676,6 +691,8 @@ private struct CalendarLiveActivityEventSummaryView: View {
                 .font(compact ? .caption2 : .subheadline)
                 .foregroundStyle(secondaryText)
                 .lineLimit(1)
+                .minimumScaleFactor(0.4)
+                .allowsTightening(true)
             } else {
                 Text("No upcoming events")
                     .font(compact ? .caption : .subheadline)
@@ -708,7 +725,10 @@ private struct CalendarLiveActivityEventSummaryView: View {
         formatter.locale = settings.locale
         formatter.timeZone = .autoupdatingCurrent
         formatter.dateStyle = .none
-        formatter.timeStyle = .short
+        let timeFormat = settings.timeFormat.trimmingCharacters(in: .whitespacesAndNewlines)
+        formatter.dateFormat = timeFormat.isEmpty
+            ? DateFormatter.dateFormat(fromTemplate: "j:mm", options: 0, locale: settings.locale)
+            : timeFormat
         return formatter.string(from: date)
     }
 

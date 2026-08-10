@@ -1,0 +1,9 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars vaatii kalenterin käyttöoikeuden yhdistääkseen tapahtumasi kalentereista iCloud, Google ja Microsoft, mikä mahdollistaa saumattoman ajoituksen.";
+
+"NSContactsUsageDescription" = "Cloud Calendars käyttää yhteystietojasi tapahtumakutsujen yksinkertaistamiseen ja osallistujien tietojen hallintaan vaivattomasti.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars käyttää sijaintiasi, vaikka sovellus on suljettu, ja tarjoaa tarkat sääennusteet ja oikea-aikaiset hälytykset ajoitetuista tapahtumistasi.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars käyttää sijaintiasi aktiivisena integroidakseen tarkat paikalliset sääennusteet suoraan kalenteriisi.";

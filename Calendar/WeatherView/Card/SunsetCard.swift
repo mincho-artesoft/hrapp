@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct SunsetCard: View {
+    @Environment(\.layoutDirection) private var layoutDirection
+
     let sunrise: Date?
     let sunset: Date?
     let formatTime: (Date?) -> String // Expects a function like vm.formatTime
@@ -38,10 +40,12 @@ struct SunsetCard: View {
             }
 
             // Ъгли за дъгата
-            let startAngle = Angle.degrees(180)
             let currentSweepDegrees = sunFraction * 180.0
-            let endAngleProgress = Angle.degrees(180.0 + currentSweepDegrees)
-            let finalSunAngle = endAngleProgress
+            let finalSunAngle = Angle.degrees(
+                layoutDirection == .rightToLeft
+                    ? 360.0 - currentSweepDegrees
+                    : 180.0 + currentSweepDegrees
+            )
 
             // 3) Позиция на слънцето по дъгата
             let sunX = center.x + radius * CGFloat(cos(finalSunAngle.radians))
@@ -51,7 +55,7 @@ struct SunsetCard: View {
             // 4) Цялата пунктирана дъга (background arc)
             let fullArcPath = Path { path in
                 path.addArc(center: center, radius: radius,
-                            startAngle: startAngle, endAngle: .degrees(360), clockwise: false)
+                            startAngle: .degrees(180), endAngle: .degrees(360), clockwise: false)
             }
             context.stroke(fullArcPath,
                            with: .color(.secondary.opacity(0.7)),
@@ -108,6 +112,7 @@ struct SunsetCard: View {
                     Text(NSLocalizedString("Sunrise", comment: "Sunrise label"))
                         .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.secondary.opacity(0.8))
+                        .adaptiveSingleLine(minimumScale: 0.4)
                     Text(formatTime(sunrise))
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundStyle(.primary)
@@ -119,6 +124,7 @@ struct SunsetCard: View {
                     Text(NSLocalizedString("Sunset", comment: "Sunset label"))
                         .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.secondary.opacity(0.8))
+                        .adaptiveSingleLine(minimumScale: 0.4)
                     Text(formatTime(sunset))
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundStyle(.primary)
@@ -139,6 +145,7 @@ struct SunsetCard: View {
                 .symbolRenderingMode(.multicolor) // Use colors defined in the symbol
                 .font(.system(size: 10, weight: .medium)) // Title font style
                 .foregroundStyle(.secondary) // Title color
+                .adaptiveSingleLine(minimumScale: 0.4)
 
 
             // Add the Sun Arc Canvas View

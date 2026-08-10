@@ -33,6 +33,7 @@ struct YearMonthMiniView: View {
             VStack(spacing: 8) {
                 Text(monthName(monthDate))
                     .font(.headline)
+                    .adaptiveSingleLine(minimumScale: 0.5)
                     .padding(.top, 8)
 
                 let allGridDays = calendar.generateDatesForMonthGridAligned(for: monthDate)
@@ -49,6 +50,7 @@ struct YearMonthMiniView: View {
                         Text(headers[i])
                             .font(.caption)
                             .foregroundColor(.secondary)
+                            .adaptiveSingleLine(minimumScale: 0.4)
                             .frame(maxWidth: .infinity)
                     }
 
@@ -76,8 +78,6 @@ struct YearMonthMiniView: View {
     }
 
     private func monthName(_ date: Date) -> String {
-        let df = DateFormatter()
-        df.dateFormat = "MMM"
-        return df.string(from: date)
+        appDateFormatter(template: "MMM").string(from: date)
     }
 }

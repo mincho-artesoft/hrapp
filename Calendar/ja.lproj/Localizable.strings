@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "メールアドレスが入力されていません。";
+"Please enter a valid email to continue." = "続行するには、有効なメールアドレスを入力してください。";
+"Your email" = "メールアドレス";
+"Save" = "保存";
+"Login" = "ログイン";
+"Logout" = "ログアウト";
+
+/* RootView */
+"N/A" = "該当なし";
+"Calendars" = "カレンダー";
+"Inbox" = "受信トレイ";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "その他";
+"Google calendars" = "Google個のカレンダー";
+"No synced Google calendars yet." = "同期されたGoogle個のカレンダーはありません。";
+"Microsoft calendars" = "Microsoft カレンダー";
+"No synced Microsoft calendars yet." = "同期済みのMicrosoft カレンダーはまだありません。";
+"Sign out" = "サインアウト";
+"Add iCloud Calendar" = "iCloud カレンダーを追加";
+"Share calendars with iCloud Calendar" = "iCloud カレンダーとカレンダーを共有";
+"Sign in with Google" = "Google でサインイン";
+"Sign in with Microsoft" = "Microsoft でサインイン";
+"Deselect All" = "すべて選択解除";
+"Select All" = "すべて選択";
+"No Email" = "メールアドレスなし";
+"Add Google Calendar" = "Google カレンダーを追加";
+
+/* AddCalendarView */
+"Calendar Name" = "カレンダー名";
+"Account" = "アカウント";
+"COLOR" = "色";
+"NOTIFICATIONS" = "通知";
+"Event Alerts" = "イベントアラート";
+"Allow events on this calendar to display alerts." = "このカレンダーのイベントでアラートを表示することを許可する。";
+"Add Calendar" = "カレンダーを追加";
+
+/* Colors */
+"Red" = "赤";
+"Orange" = "オレンジ";
+"Yellow" = "黄色";
+"Green" = "緑";
+"Blue" = "青";
+"Purple" = "紫";
+"Brown" = "茶色";
+"Custom" = "カスタム";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "カレンダーの色";
+"Custom..." = "カスタム...";
+
+/* EditCalendarView */
+"Edit Calendar" = "カレンダーを編集";
+"Delete Calendar" = "カレンダーを削除";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "共有設定を読み込んでいます…";
+"Shared with these users" = "これらのユーザーと共有しています";
+"Add New Email" = "新規追加メール";
+"Email to share" = "共有するメール";
+"Permission:" = "権限:";
+"Add" = "追加";
+"Sharing:" = "共有:";
+"Done" = "完了";
+
+"Error loading: %@" = "読み込みエラー: %@";
+"Error adding: %@" = "追加エラー: %@";
+"Error deleting: %@" = "削除エラー: %@";
+"Error updating: %@" = "更新エラー: %@";
+"Error re-inviting (delete): %@" = "再招待エラー (削除): %@";
+"Error re-inviting (insert): %@" = "再招待エラー (挿入): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "リーダー";
+"Writer" = "ライター";
+"Owner"  = "オーナー";
+
+/* MonthCalendarView */
+"Day View" = "日表示";
+"This is a repeating event." = "これは繰り返し発生するイベントです。";
+"Save for This Event Only" = "このイベントのみ保存";
+"Save for Future Events" = "今後のイベントに保存";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "日";
+"Mon" = "月";
+"Tue" = "火";
+"Wed" = "水";
+"Thu" = "木";
+"Fri" = "金";
+"Sat" = "土";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "閉じる";
+
+/* AllEventsListView */
+"No calendar access." = "カレンダーへのアクセスなし。";
+
+/* EventRowView */
+"Ends" = "終了";
+
+/* SearchEventRowView */
+"No Title" = "タイトルなし";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "ミーティングに参加";
+"Edit" = "編集";
+"Duplicate" = "複製";
+"Delete" = "削除";
+"Add to Google Meet" = "Google Meetに追加";
+"Add to Microsoft Teams" = "Microsoft Teamsに追加";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "範囲が選択されていません";
+"all-day" = "終日";
+"Search events..." = "イベントを検索...";
+"Day" = "日";
+"MultiDay" = "複数日";
+"Month" = "月";
+"Year" = "年";
+"List" = "リスト";
+"MultiCalendar" = "複数カレンダー";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "新規イベント";
+"All-day event" = "終日イベント";
+"Recurring Event" = "定期イベント";
+"This event is part of a series. Update which events?" = "このイベントはシリーズの一部です。どのイベントを更新しますか？";
+"This Event Only" = "このイベントのみ";
+"All Future Events" = "今後のすべてのイベント";
+"Cancel" = "キャンセル";
+
+/* DraggableMenuView */
+"Calendar" = "カレンダー";
+"Subscriptions" = "購読";
+"Live" = "ライブ";
+"Stop" = "停止";
+"Calendar Live Activity" = "カレンダーライブアクティビティ";
+"Get" = "取得";
+"Color" = "色";
+"Search for a city…" = "都市を検索…";
+"No directions" = "ルート検索なし";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "位置情報へのアクセスが拒否されました。都市を検索するか、設定でアクセスを許可してください。";
+"Cannot refresh. Location unknown." = "更新できません。場所が不明です。";
+"10-DAY FORECAST" = "10日間予報";
+"HighLowLabelFormat" = "最高気温：%d° 最低気温：%d°";
+"tomorrow" = "明日";
+"on_day" = "%@日";
+"in_days" = "%d日後";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "新規イベント";
+
+/* Search placeholder */
+"Search for a city..." = "都市を検索…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "時間をタップして、カレンダーにイベントをすばやく追加します。";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "体感温度いいね！";
+"similar_to_actual_temp" = "実際の気温とほぼ同じです。";
+"wind_cooler_feel" = "風が吹いているので、体感温度はもっと低く感じます。";
+"humidity_warmer_feel" = "湿気のせいで暖かく感じられます。";
+
+/* HumidityCard */
+"HUMIDITY" = "湿度";
+"The dew point is %d° right now." = "現在の露点は%d°です。";
+"dewPoint.current" = "現在の露点は%d°です。";
+
+/* MoonCard */
+"MOON PHASE" = "ムーンフェイズ";
+"Moonrise" = "月の出";
+"Moonset" = "月の入り";
+"Next %@" = "次へ %@";
+"Data unavailable" = "データが利用できない";
+"%d day" = "%d日";
+"%d days" = "%d 日";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "降水量";
+"PRECIPITATION_CARD_TODAY_LABEL" = "今日";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "次に予想されるのは %1$.0f %2$@ %3$@ です。"; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "すぐに降水は予想されません。";
+
+/* PressureCard */
+"PRESSURE" = "圧力";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "日の出";
+"Sunrise: %@" = "日の出: %@";
+"Sunset: %@" = "日没: %@";
+"Sunrise" = "日の出";
+"Sunset" = "日没";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UVインデックス";
+"Low" = "低い";
+"Moderate" = "中等度";
+"High" = "高";
+"Very High" = "非常に高い";
+"Extreme" = "エクストリーム";
+
+/* VisibilityCard */
+"VISIBILITY" = "可視性";
+"km" = "km";
+"Perfectly clear view." = "完璧にクリアな視界。";
+"Excellent visibility." = "優れた視認性。";
+"Good visibility." = "視認性が良い。";
+"Moderate visibility." = "適度な視認性。";
+"Poor visibility." = "視界が悪い。";
+"Very poor visibility." = "視界が非常に悪い。";
+"visibility.perfect"   = "完璧にクリアな視界。";
+"visibility.excellent" = "優れた視認性。";
+"visibility.good"      = "視認性が良い。";
+"visibility.moderate"  = "適度な視認性。";
+"visibility.poor"      = "視界が悪い。";
+"visibility.verypoor"  = "視界が非常に悪い。";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "風速";
+"Gusts" = "突風";
+"Direction" = "方向";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "気象データの取得に失敗しました。接続を確認するか、後でもう一度試してください。";
+"Falling" = "落ちる";
+"Rising" = "上昇中";
+"Steady" = "安定した";
+"Unknown" = "不明";
+"Sunny" = "晴れ";
+"Cloudy" = "曇り";
+"Partly Cloudy" = "時々曇り";
+"Drizzle" = "霧雨";
+"Thunderstorm" = "雷雨";
+"Fog" = "霧";
+"Partly Cloudy Night" = "時々曇りの夜";
+"Clear Night" = "クリアナイト";
+"Hazy" = "かすんでいる";
+"Today" = "今日";
+"Now" = "現在";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "北東";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "南西南西";
+"cardinal.SW"  = "サウスウェールズ州";
+"cardinal.WSW" = "ウェストサウスウェールズ州";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "西北西";
+"cardinal.NW"  = "北西";
+"cardinal.NNW" = "北西北西";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "降水確率";
+"Today's chance: %d%%" = "今日のチャンス: %d%%";
+"%@'s chance: %d%%" = "%@ のチャンス: %d%%";
+"Max" = "マックス";
+"Min" = "分";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "1 日の降水確率は、時間ごとの降水確率よりも高くなる傾向があります。";
+"ChanceOfPrecipitation_Title" = "降水確率";
+"TodaysChance"                = "今日のチャンス: %d%%";
+"OtherDayChance"              = "%@ のチャンス: %d%%";
+"DailyChanceExplanation"      = "1 日の降水確率は、時間ごとの降水確率よりも高くなる傾向があります。";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "体感温度";
+"Actual" = "実際の";
+"No hourly data available for this day." = "この日の時間別データはありません。";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "湿度、日光、風の影響で温度がどのように感じられるか。";
+"The actual air temperature." = "実際の気温。";
+"HighLabelFormat" = "最高: %d°";
+"LowLabelFormat" = "最低: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "湿度";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "湿度 %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "平均湿度 %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "今日の最小値 %d%% – 最大値 %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "マックス";
+"ChartMarker_Min"           = "分";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "雨: %.1f%@、雪: %.1f%@";
+"Precip_Total_RainFormat"       = "雨: %.1f%@";
+"Precip_Total_SnowFormat"       = "雪: %.1f%@";
+"Precip_Total_None"             = "降水量: 0%@";
+"Precip_Bars_Subtitle"          = "雨と雪の時間バー (%@)。";
+"Precip_Level_Light"            = "ライト";
+"Precip_Level_Moderate"         = "中等度";
+"Precip_Level_Heavy"            = "重い";
+"Precip_Tooltip_Format"         = "%@h\n雨: %.1f%@\n雪: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "圧力 %@ %@";
+"Pressure_CurrentUnavailable"      = "圧力: --";
+"Pressure_DailyMinMaxFormat"       = "今日の最小値 %@ %@ – 最大値 %@ %@";
+"Pressure_AverageFormat"           = "平均圧力 %@ %@";
+"Pressure_DailyRangeFormat"        = "日次範囲: %@–%@ %@";
+"Pressure_Title"                   = "気圧";
+"Pressure_NoData"                  = "この日の気圧データはありません。";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "今日の%@ %d";
+"UVGraphNoHourlyData"   = "この日の時間別データはありません。";
+"UVGraphNowLabel"       = "さて、%@";
+"UVCategory_None"       = "なし";
+"UVCategory_Low"        = "低い";
+"UVCategory_Moderate"   = "中等度";
+"UVCategory_High"       = "高";
+"UVCategory_VeryHigh"   = "非常に高い";
+"UVCategory_Extreme"    = "エクストリーム";
+"UVAdvice_None"         = "この日は中程度以上の紫外線レベルは予想されません。";
+"UVAdvice_Range"        = "日焼け止めをお勧めします。 UV レベルの範囲は %@ から %@ で、%@ と %@ の間に達します。";
+"UVGraphMaxLabel" = "マックス";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "視程";
+"Visibility_NoData"                = "この日の視程データはありません。";
+"Visibility_CurrentFormat"         = "可視性 %d %@";
+"Visibility_DailyMinMaxFormat"     = "最小%d – 最大%d %@";
+"Visibility_NoCurrentData"         = "現在の可視性データはありません。";
+"Visibility_HourlyAverages_NoData" = "時間ごとのデータはありません。";
+"Visibility_MaxLabel"              = "マックス";
+"Visibility_MinLabel"              = "分";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "風速と突風";
+"WindGraph_NoData" = "この日の風データはありません。";
+"WindGraph_SpeedHeader" = "風速 %d";
+"WindGraph_GustHeader" = "%dまでの突風";
+"WindGraph_SpeedRangeHeader" = "風速 %d-%d";
+"WindGraph_MaxSpeedLabel" = "最大風速";
+"WindGraph_MaxGustLabel" = "最大瞬間風速";
+"WindGraph_DragLabel" = "%@\n速度: %d\nガスト: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "毎日のサマリー";
+
+"Precipitation Totals" = "降水量の合計";
+"LAST 24 HOURS" = "過去 24 時間";
+"NEXT 24 HOURS" = "次の 24 時間";
+"Total" = "合計";
+"Rain" = "雨";
+"Snow" = "雪";
+
+"About Wind Speed and Gusts" = "風速と突風について";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "風速は、短期間の平均を使用して計算されます。突風とは、この平均を超える短時間の突風です。突風は通常 20 秒以内に続きます。";
+
+"About the Beaufort Scale" = "ビューフォートスケールについて";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "ビューフォート風速計は、特定の速度での風の強さを表します。ビューフォートスケールを使用すると、風がどのくらい強いと感じるか、または風の影響がどの程度あるかを理解しやすくなります。スケール上の各値は風速範囲に対応します。";
+
+"About Feels Like Temperature" = "体感温度について";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "体感温度は実際にどの程度暑く、または寒く感じるかを示し、実際の気温と異なる場合があります。湿度、日差し、風の影響を受けます。";
+
+"Options" = "オプション";
+"Temperature" = "温度";
+"Use system setting (°C)" = "システム設定を使用 (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "気象状況";
+"UV Index" = "紫外線指数";
+"Wind" = "風速";
+"Precipitation" = "降水量";
+"Humidity" = "湿度";
+"Visibility" = "視程";
+"Pressure" = "気圧";
+
+/* Fallback key */
+"displayedCondition" = "表示状態";
+
+/* Titles */
+"Forecast"                   = "予報";
+"DailySummary"               = "毎日のサマリー";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "現在%d°、%@ の条件です。降水確率は%@です。 %@ から%d %@ までの突風を伴う風。今日の気温は%d°から%d°で、体感温度は%d°くらいです。 %@、および%@。";
+"UVIndexFormat"              = "UV指数は%dまで";
+"HumidityFormat"             = "%d%%付近の湿度";
+"HumidityRangeFormat"        = "湿度 %d%% から %d%%";
+"NA"                         = "該当なし";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@の安値は%d°、高値は%d°です。体感温度は%d°から%d°くらいです。 %@からの風が予想されます。 %@";
+"NoPrecipLast24h"            = "過去 24 時間に降水量は記録されていません。";
+"RainLast24h"                = "過去 24 時間に %d mm の雨が降りました。";
+"SnowAndRainLast24h"         = "過去 24 時間の降雪量は %@ cm、雨量は %d mm でした。";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "北東";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "南西南西";
+"Dir_SW"  = "サウスウェールズ州";
+"Dir_WSW" = "ウェストサウスウェールズ州";
+"Dir_W"   = "W";
+"Dir_WNW" = "西北西";
+"Dir_NW"  = "北西";
+"Dir_NNW" = "北西北西";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "降水量の合計";
+"Last24h_Label"             = "過去 24 時間";
+"Next24h_Label"             = "次の 24 時間";
+"Total_Label"               = "合計";
+"Precipitation_Label"       = "降水量";
+"Rain_Label"                = "雨";
+"Snow_Label"                = "雪";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "現在の風向きは%3$@から%1$d%2$@です。今日の風速は%4$dから%5$d%2$@、最大突風は%6$d%2$@です。";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "風速の範囲は %1$d から %2$d %3$@ で、最大突風は %4$d %3$@ になります。";
+
+"Beaufort_Scale"                = "ビューフォートスケール";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "説明";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "穏やかな";
+"Beaufort_1"                    = "軽い空気";
+"Beaufort_2"                    = "そよ風";
+"Beaufort_3"                    = "優しい風";
+"Beaufort_4"                    = "適度な風";
+"Beaufort_5"                    = "さわやかな風";
+"Beaufort_6"                    = "強い風";
+"Beaufort_7"                    = "強風";
+"Beaufort_8"                    = "ゲイル";
+"Beaufort_9"                    = "強い強風";
+"Beaufort_10"                   = "嵐";
+"Beaufort_11"                   = "激しい嵐";
+"Beaufort_12"                   = "ハリケーンフォース";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2～5";
+"BeaufortRange_2"               = "6～11";
+"BeaufortRange_3"               = "12～19日";
+"BeaufortRange_4"               = "20～28日";
+"BeaufortRange_5"               = "29～38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "過去 24 時間の降水量は %.1f%@ でした。今日の総降水量は%.1f%@になります。今後 24 時間の降水量は、%.1f%@ となる見込みです。";
+"ForecastPrecip_OtherDayFormat" = "%@ の総降水量は %.1f%@ になります。";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "降水強度について";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"強度は、1時間あたりに降る雨または雪の量に基づいて計算され、雨や雪がどの程度激しく感じられるかを示します。みぞれや雨雪など、ほかの降水タイプにも使用されます。土砂降りや激しい吹雪は「強い」強度になることがあり、平均的な雨や弱い霧雨は「中程度」または「弱い」強度になることがあります。";
+
+/* Section titles */
+"Forecast_Title"               = "予報";
+"DailySummary_Title"           = "毎日のサマリー";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "露点は%d°～%d°です。";
+"DewPoint_FutureFormat"        = "露点は%d°～%d°となります。";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "今日の平均湿度は%d%%です。 %@";
+"ForecastHumidity_Other"       = "%@ の平均湿度は %d%% になります。\n%@";
+
+"AboutPressure_Title"  = "圧力について";
+"AboutPressure_Body"   = "気圧の大幅な急速な変化は、天気の変化を予測するために使用されます。たとえば、気圧の低下は雨または雪が降る可能性があることを意味し、気圧の上昇は天気が回復することを意味する可能性があります。圧力は気圧または大気圧とも呼ばれます。";
+
+"AboutHumidity_Title"  = "相対湿度について";
+"AboutHumidity_Body"   = "相対湿度は一般に湿度として知られており、空気が保持できる水分と比較した空気中の水分量です。空気は温度が高くなるほど、より多くの水分を保持できます。相対湿度が 100% に近いということは、結露や霧が発生する可能性があることを意味します。";
+
+"AboutDewPoint_Title" = "露点について";
+"AboutDewPoint_Body"  = "露点は、露が発生するために温度が下がる必要がある温度です。これは、空気の湿度がどの程度であるかを知るのに役立ちます。露点が高いほど、より湿度が高く感じられます。露点が現在の温度と一致するということは、相対湿度が 100% であることを意味し、結露や霧が発生する可能性があります。";
+
+"Section_Forecast"                     = "予報";
+"Section_DailySummary"                 = "毎日のサマリー";
+"ForecastVisibility_TodayFormat" = "今日の視程は%@、%dから%d%@です。";
+"ForecastVisibility_OtherFormat" = "%1$@ では、視程が最も低くなるのは %3$d %4$@ の %2$@ で、視程が最も高くなるのは %6$d %7$@ の %5$@ になります。";
+"Clarity_Foggy"                        = "霧深い";
+"Clarity_Hazy"                         = "かすんでいる";
+"Clarity_Clear"                        = "クリア";
+"Clarity_PerfectlyClear"               = "完全にクリア";
+
+"AboutVisibility_Title" = "可視性について";
+"AboutVisibility_Body" = "可視性は、建物や丘などのオブジェクトがどのくらい遠くまではっきりと見えるかを示します。これは空気の透明度の尺度であり、太陽光の量や障害物の存在は考慮されません。視程が%@以上であればクリアとみなされます。";
+
+"PressureForecast_Today" = "現在、圧力は %@ %@ で低下しています。今日の平均気圧は %@ %@、最低気圧は %@ %@ となります。";
+"PressureForecast_Other" = "%@ では、平均圧力は %@ %@ となり、最低圧力は %@ %@ となります。";
+"SectionForecast" = "予報";
+"SectionDailySummary" = "毎日のサマリー";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "基本プランのすべての機能";
+"Multi-calendar view" = "マルチカレンダービュー";
+"Sync with Google Calendar" = "Google カレンダーと同期";
+"Sync meets from Google Meet" = "Google Meet から同期が集まります";
+
+/* BaseSubscriptionView */
+"Base Plan" = "基本プラン";
+"Single-day calendar view" = "1 日分のカレンダー ビュー";
+"Multi-day calendar view" = "複数日のカレンダービュー";
+"Monthly calendar view" = "月間カレンダービュー";
+"Yearly overview" = "年間概要";
+"List view for events" = "イベントのリストビュー";
+"Weather view" = "天気図";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "プレミアムプラン";
+"Sync with Microsoft Calendar" = "Microsoft カレンダーと同期";
+"Sync meets from Microsoft Teams" = "Microsoft Teams から同期が集まります";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "月額 %@ に相当";
+"%d %@ free" = "%d %@ 無料";
+
+/* SubscriptionListView */
+"Premium Plans" = "プレミアムプラン";
+"You are subscribed to the %@ %@ plan" = "%@ %@ プランに加入しています";
+"Renews on: %@" = "更新日: %@";
+"Start Free Trial" = "無料トライアルを開始する";
+"Subscribe Now" = "今すぐ購読する";
+"%d %@ free, then %@%@." = "%d %@ が無料、次に %@%@ です。";
+"Subscribe for %@%@." = "%@%@ を購読してください。";
+"Privacy Policy"     = "プライバシーポリシー";
+"Terms of Service"   = "利用規約";
+
+/* SubscriptionCategory */
+"Advanced" = "上級者向け";
+"Advanced Plan" = "アドバンスプラン";
+"All Advanced Plan features" = "アドバンスト プランのすべての機能";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "このセクションにアクセスするには、有効な %@ プランが必要です。";
+"Plan Required" = "プランが必要です";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "ベース";
+"Premium" = "プレミアム";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "%@ %@ プランに加入しました。";
+
+/* Label for renewal date */
+"RenewsOn"            = "更新日: %@";
+
+"Manage Subscription"                   = "サブスクリプションの管理";
+
+/* Period units */
+"Daily"     = "毎日";
+"Weekly"    = "毎週";
+"Monthly"   = "毎月";
+"Yearly"    = "毎年";
+"Recurring" = "繰り返し発生する";
+
+/* units */
+"day"   = "日";
+"days"  = "日";
+"week"  = "週";
+"weeks" = "週";
+"month"  = "月";
+"months" = "月";
+"year"   = "年";
+"years"  = "年";
+
+/* YearMonthMiniView */
+"weekday.headers" = "日,月,火,水,木,金,土";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "以前の購入は正常に復元されました。";
+"No active subscriptions found to restore."                = "復元するアクティブなサブスクリプションが見つかりません。";
+"Failed to restore purchases. Please try again later. (%@)" = "購入を復元できませんでした。後でもう一度試してください。 (%@)";
+"Restore Purchases"                                        = "購入を復元する";
+
+"Ads Free" = "広告なし";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "カレンダーと天気";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "小サイズは今日の日付と現在の天気を表示します。中サイズでは月相と風も表示します。";
+"Calendar Events" = "カレンダーイベント";
+"Shows today's date, current weather, and your next calendar events." = "今日の日付、現在の天気、次のカレンダーイベントを表示します。";
+"No upcoming events" = "今後のイベントはありません";
+"Tomorrow" = "明日";
+"Untitled" = "無題";
+"Detail" = "詳細";
+"Phase" = "フェーズ";
+"Weather" = "天気";
+"Select Your Email" = "メールアドレスを選択してください";
+"Confirm" = "確認する";
+"Calendar name" = "カレンダー名";
+"Sharing: %@" = "共有: %@";
+"Loading..." = "読み込み中...";
+"Selected Location" = "選択した場所";
+"Data provided by Apple Weather" = "データ提供: Apple Weather";
+"Next" = "次へ";
+"No details found for the selected location." = "選択した場所の詳細が見つかりません。";
+"Could not determine the time zone for the selected location." = "選択した場所のタイムゾーンを特定できませんでした。";
+"(No Title)" = "(タイトルなし)";
+"Choose your e-mail" = "電子メールを選択してください";
+"It will be treated as your primary address and invitations will not be sent to it." = "これはメインのアドレスとして扱われ、招待状は送信されません。";
+"Invalid URL" = "無効な URL";
+"Rate limit or insufficient permission" = "レート制限または不十分な権限";
+"Network error: %@" = "ネットワークエラー: %@";
+"N/A - Selected Tab: %@" = "該当なし - 選択したタブ: %@";
+"Enable Notifications" = "通知を有効にする";
+"Event Notifications" = "イベント通知";
+"Event alerts are scheduled from your event alert settings." = "イベント アラートは、イベント アラート設定からスケジュールされます。";
+"Allow notifications so event alerts can appear at the right time." = "通知を許可すると、イベント アラートが適切なタイミングで表示されます。";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "このアプリの通知はオフになっています。有効にするには、[設定] -> [アプリ] -> [Cloud Calendars] -> [通知] -> [通知を許可] に移動します。";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating は、よりスマートな栄養とトレーニングのための AI を活用したコーチです。現代の栄養学と実践的なツールを組み合わせて、食事の計画、トレーニングの計画、食料庫の管理、食事と運動が体に与える影響の理解に役立ちます。";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio は、iOS および macOS 開発者向けの高度な 3D デザイン環境です。正確な RealityKit レンダリングと強力な書式付きテキストエディタを組み合わせ、未加工のスクリーンショットをプロ品質の App Store 素材に変換できます。";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio は、iOS と macOS のためのクリエイターグレードの画面収録スタジオです。画面とカメラを同時にキャプチャし、マイクとシステムオーディオを制御し、チュートリアル、ウォークスルー、製品デモ用にクリーンな MP4 をエクスポートします。 iOS では、アプリ内でビデオを再生し、カメラと一緒に録画して、リアクション スタイルやプレゼンター主導のコンテンツを作成することもできます。";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars は、高度なスケジューリングと美しく統合された天気予報を組み合わせているため、正確に計画を立てることができます。複数のカレンダー サービス、直感的なジェスチャー ベースの編集、組み込みの会議リンク、スケジュール内での詳細な時間/日の予測を直接サポートします。";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI は、信号とノイズを分離するように設計されたオンデバイス分析とマルチエージェント ワークフローにより、市場の動きを理解するのに役立ちます。リアルタイムの価格データを追跡し、体制スタイルの確率を調査し、明確なダッシュボードとチャートを使用して意思決定をサポートします。プライバシー第一: 設定はデバイス上に残ります。";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "アプリ";
+"Plan" = "プラン";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "猛吹雪";
+"WeatherCondition.blowingDust" = "ちり煙霧";
+"WeatherCondition.blowingSnow" = "地吹雪";
+"WeatherCondition.breezy" = "やや強風";
+"WeatherCondition.clear" = "快晴";
+"WeatherCondition.cloudy" = "曇り";
+"WeatherCondition.drizzle" = "霧雨";
+"WeatherCondition.flurries" = "にわか雪";
+"WeatherCondition.foggy" = "霧";
+"WeatherCondition.freezingDrizzle" = "着氷性の霧雨";
+"WeatherCondition.freezingRain" = "着氷性の雨";
+"WeatherCondition.frigid" = "寒い";
+"WeatherCondition.hail" = "霰または雹";
+"WeatherCondition.haze" = "もや";
+"WeatherCondition.heavyRain" = "激しい雨";
+"WeatherCondition.heavySnow" = "大雪";
+"WeatherCondition.hot" = "暑い";
+"WeatherCondition.hurricane" = "ハリケーン";
+"WeatherCondition.isolatedThunderstorms" = "ところにより雷雨";
+"WeatherCondition.mostlyClear" = "ほぼ快晴";
+"WeatherCondition.mostlyCloudy" = "曇り時々晴れ";
+"WeatherCondition.partlyCloudy" = "やや曇り";
+"WeatherCondition.rain" = "雨";
+"WeatherCondition.scatteredThunderstorms" = "ところにより雷雨";
+"WeatherCondition.sleet" = "みぞれ";
+"WeatherCondition.smoky" = "煙霧";
+"WeatherCondition.snow" = "雪";
+"WeatherCondition.strongStorms" = "激しい雷雨";
+"WeatherCondition.sunFlurries" = "日差しのあるにわか雪";
+"WeatherCondition.sunShowers" = "天気雨";
+"WeatherCondition.thunderstorms" = "雷雨";
+"WeatherCondition.tropicalStorm" = "熱帯低気圧";
+"WeatherCondition.windy" = "強風";
+"WeatherCondition.wintryMix" = "雨または雪";
+"MoonPhase.new" = "新月";
+"MoonPhase.waxingCrescent" = "三日月";
+"MoonPhase.firstQuarter" = "上弦";
+"MoonPhase.waxingGibbous" = "十日夜";
+"MoonPhase.full" = "満月";
+"MoonPhase.waningGibbous" = "寝待月";
+"MoonPhase.lastQuarter" = "下弦";
+"MoonPhase.waningCrescent" = "有明月";

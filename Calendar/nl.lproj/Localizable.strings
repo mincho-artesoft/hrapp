@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Er is geen e-mail opgegeven.";
+"Please enter a valid email to continue." = "Voer een geldig e-mailadres in om door te gaan.";
+"Your email" = "Uw e-mail";
+"Save" = "Opslaan";
+"Login" = "Inloggen";
+"Logout" = "Uitloggen";
+
+/* RootView */
+"N/A" = "N.v.t";
+"Calendars" = "Kalenders";
+"Inbox" = "Postvak IN";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Anders";
+"Google calendars" = "Google kalenders";
+"No synced Google calendars yet." = "Nog geen gesynchroniseerde Google-agenda's.";
+"Microsoft calendars" = "Microsoft kalenders";
+"No synced Microsoft calendars yet." = "Nog geen gesynchroniseerde Microsoft-agenda's.";
+"Sign out" = "Meld u af";
+"Add iCloud Calendar" = "Voeg iCloud Kalender toe";
+"Share calendars with iCloud Calendar" = "Deel agenda's met iCloud Agenda";
+"Sign in with Google" = "Log in met Google";
+"Sign in with Microsoft" = "Log in met Microsoft";
+"Deselect All" = "Deselecteer Alles";
+"Select All" = "Selecteer Alles";
+"No Email" = "Geen e-mail";
+"Add Google Calendar" = "Voeg Google Kalender toe";
+
+/* AddCalendarView */
+"Calendar Name" = "Kalendernaam";
+"Account" = "Rekening";
+"COLOR" = "KLEUR";
+"NOTIFICATIONS" = "MELDINGEN";
+"Event Alerts" = "Gebeurteniswaarschuwingen";
+"Allow events on this calendar to display alerts." = "Sta toe dat gebeurtenissen in deze agenda waarschuwingen weergeven.";
+"Add Calendar" = "Kalender toevoegen";
+
+/* Colors */
+"Red" = "Rood";
+"Orange" = "Oranje";
+"Yellow" = "Geel";
+"Green" = "Groen";
+"Blue" = "Blauw";
+"Purple" = "Paars";
+"Brown" = "Bruin";
+"Custom" = "Aangepast";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Kalenderkleur";
+"Custom..." = "Aangepast...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Agenda bewerken";
+"Delete Calendar" = "Kalender verwijderen";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Instellingen voor delen laden…";
+"Shared with these users" = "Gedeeld met deze gebruikers";
+"Add New Email" = "Voeg nieuwe e-mail toe";
+"Email to share" = "E-mail om te delen";
+"Permission:" = "Toestemming:";
+"Add" = "Toevoegen";
+"Sharing:" = "Delen:";
+"Done" = "Klaar";
+
+"Error loading: %@" = "Fout bij laden: %@";
+"Error adding: %@" = "Fout bij toevoegen: %@";
+"Error deleting: %@" = "Fout bij verwijderen: %@";
+"Error updating: %@" = "Fout bij updaten: %@";
+"Error re-inviting (delete): %@" = "Fout bij opnieuw uitnodigen (verwijderen): %@";
+"Error re-inviting (insert): %@" = "Fout bij opnieuw uitnodigen (invoegen): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Lezer";
+"Writer" = "Schrijver";
+"Owner"  = "Eigenaar";
+
+/* MonthCalendarView */
+"Day View" = "Dagweergave";
+"This is a repeating event." = "Dit is een zich herhalende gebeurtenis.";
+"Save for This Event Only" = "Bewaar alleen voor dit evenement";
+"Save for Future Events" = "Bewaar voor toekomstige evenementen";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Zon";
+"Mon" = "ma";
+"Tue" = "di";
+"Wed" = "wo";
+"Thu" = "Do";
+"Fri" = "Vr";
+"Sat" = "Zat";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Sluiten";
+
+/* AllEventsListView */
+"No calendar access." = "Geen agendatoegang.";
+
+/* EventRowView */
+"Ends" = "Eindigt";
+
+/* SearchEventRowView */
+"No Title" = "Geen titel";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Neem deel aan de vergadering";
+"Edit" = "Bewerken";
+"Duplicate" = "Duplicaat";
+"Delete" = "Verwijderen";
+"Add to Google Meet" = "Toevoegen aan Google Meet";
+"Add to Microsoft Teams" = "Toevoegen aan Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Geen geselecteerd bereik";
+"all-day" = "de hele dag";
+"Search events..." = "Zoek evenementen...";
+"Day" = "Dag";
+"MultiDay" = "Meerdaags";
+"Month" = "Maand";
+"Year" = "Jaar";
+"List" = "Lijst";
+"MultiCalendar" = "MultiKalender";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Nieuw evenement";
+"All-day event" = "Hele dag evenement";
+"Recurring Event" = "Terugkerend evenement";
+"This event is part of a series. Update which events?" = "Dit evenement maakt deel uit van een serie. Welke evenementen updaten?";
+"This Event Only" = "Alleen dit evenement";
+"All Future Events" = "Alle toekomstige evenementen";
+"Cancel" = "Annuleer";
+
+/* DraggableMenuView */
+"Calendar" = "Kalender";
+"Subscriptions" = "Abonnementen";
+"Live" = "Leef";
+"Stop" = "Stop";
+"Calendar Live Activity" = "Live-activiteit in agenda";
+"Get" = "Krijg";
+"Color" = "Kleur";
+"Search for a city…" = "Zoek een stad…";
+"No directions" = "Geen routebeschrijving";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Locatietoegang geweigerd. Zoek naar een stad of verleen toegang via Instellingen.";
+"Cannot refresh. Location unknown." = "Kan niet vernieuwen. Locatie onbekend.";
+"10-DAY FORECAST" = "VOORSPELLING VOOR 10 DAGEN";
+"HighLowLabelFormat" = "Hoog:%d° Laag:%d°";
+"tomorrow" = "morgen";
+"on_day" = "op %@";
+"in_days" = "over %d dagen";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Nieuw evenement";
+
+/* Search placeholder */
+"Search for a city..." = "Zoek een stad…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Tik op een uur om snel een agenda-evenement toe te voegen.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "VOELT ZOALS";
+"similar_to_actual_temp" = "Vergelijkbaar met de werkelijke temperatuur.";
+"wind_cooler_feel" = "De wind zorgt ervoor dat het koeler aanvoelt.";
+"humidity_warmer_feel" = "Door de luchtvochtigheid voelt het warmer aan.";
+
+/* HumidityCard */
+"HUMIDITY" = "VOCHTIGHEID";
+"The dew point is %d° right now." = "Het dauwpunt is momenteel %d°.";
+"dewPoint.current" = "Het dauwpunt is momenteel %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "MAANFASE";
+"Moonrise" = "Maanopkomst";
+"Moonset" = "Maanondergang";
+"Next %@" = "Volgende %@";
+"Data unavailable" = "Gegevens niet beschikbaar";
+"%d day" = "%d dag";
+"%d days" = "%d dagen";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "Neerslag";
+"PRECIPITATION_CARD_TODAY_LABEL" = "vandaag";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Het volgende verwachte is %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Binnenkort geen neerslag verwacht.";
+
+/* PressureCard */
+"PRESSURE" = "DRUK";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "ZONSOPGANG";
+"Sunrise: %@" = "Zonsopgang: %@";
+"Sunset: %@" = "Zonsondergang: %@";
+"Sunrise" = "Zonsopgang";
+"Sunset" = "Zonsondergang";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UV-INDEX";
+"Low" = "Laag";
+"Moderate" = "Matig";
+"High" = "Hoog";
+"Very High" = "Zeer hoog";
+"Extreme" = "Extreem";
+
+/* VisibilityCard */
+"VISIBILITY" = "ZICHTBAARHEID";
+"km" = "km";
+"Perfectly clear view." = "Perfect helder zicht.";
+"Excellent visibility." = "Uitstekend zicht.";
+"Good visibility." = "Goed zicht.";
+"Moderate visibility." = "Matige zichtbaarheid.";
+"Poor visibility." = "Slecht zicht.";
+"Very poor visibility." = "Zeer slecht zicht.";
+"visibility.perfect"   = "Perfect helder zicht.";
+"visibility.excellent" = "Uitstekend zicht.";
+"visibility.good"      = "Goed zicht.";
+"visibility.moderate"  = "Matige zichtbaarheid.";
+"visibility.poor"      = "Slecht zicht.";
+"visibility.verypoor"  = "Zeer slecht zicht.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Wind";
+"Gusts" = "Windstoten";
+"Direction" = "Richting";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Kan weergegevens niet ophalen. Controleer uw verbinding of probeer het later opnieuw.";
+"Falling" = "Vallen";
+"Rising" = "Stijgend";
+"Steady" = "Stabiel";
+"Unknown" = "Onbekend";
+"Sunny" = "Zonnig";
+"Cloudy" = "Bewolkt";
+"Partly Cloudy" = "Gedeeltelijk bewolkt";
+"Drizzle" = "Motregen";
+"Thunderstorm" = "Onweer";
+"Fog" = "Mist";
+"Partly Cloudy Night" = "Gedeeltelijk bewolkte nacht";
+"Clear Night" = "Heldere nacht";
+"Hazy" = "Wazig";
+"Today" = "Vandaag";
+"Now" = "Nu";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NO";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "ZW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Kans op neerslag";
+"Today's chance: %d%%" = "De kans van vandaag: %d%%";
+"%@'s chance: %d%%" = "De kans van %@: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "De dagelijkse kans op neerslag is meestal groter dan de kans op elk uur.";
+"ChanceOfPrecipitation_Title" = "Kans op neerslag";
+"TodaysChance"                = "De kans van vandaag: %d%%";
+"OtherDayChance"              = "De kans van %@: %d%%";
+"DailyChanceExplanation"      = "De dagelijkse kans op neerslag is meestal groter dan de kans op elk uur.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Gevoelstemperatuur";
+"Actual" = "Werkelijk";
+"No hourly data available for this day." = "Er zijn geen uurgegevens beschikbaar voor deze dag.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Hoe de temperatuur aanvoelt als gevolg van vochtigheid, zonlicht of wind.";
+"The actual air temperature." = "De werkelijke luchttemperatuur.";
+"HighLabelFormat" = "Hoog: %d°";
+"LowLabelFormat" = "Laag: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Vochtigheid";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Vochtigheid %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Vochtigheid Gem. %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Min %d%% vandaag – max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Regen: %.1f%@, Sneeuw: %.1f%@";
+"Precip_Total_RainFormat"       = "Regen: %.1f%@";
+"Precip_Total_SnowFormat"       = "Sneeuw: %.1f%@";
+"Precip_Total_None"             = "Neerslag: 0%@";
+"Precip_Bars_Subtitle"          = "Uurbalken voor regen en sneeuw (%@).";
+"Precip_Level_Light"            = "Licht";
+"Precip_Level_Moderate"         = "Matig";
+"Precip_Level_Heavy"            = "Zwaar";
+"Precip_Tooltip_Format"         = "%@u\nRegen: %.1f%@\nSneeuw: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Druk %@ %@";
+"Pressure_CurrentUnavailable"      = "Druk: --";
+"Pressure_DailyMinMaxFormat"       = "Min %@ %@ vandaag – max %@ %@";
+"Pressure_AverageFormat"           = "Drukgemiddelde %@ %@";
+"Pressure_DailyRangeFormat"        = "Dagelijks bereik: %@–%@ %@";
+"Pressure_Title"                   = "Druk";
+"Pressure_NoData"                  = "Er zijn geen drukgegevens beschikbaar voor deze dag.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "%@ %d van vandaag";
+"UVGraphNoHourlyData"   = "Er zijn geen uurgegevens beschikbaar voor deze dag.";
+"UVGraphNowLabel"       = "Nu, %@";
+"UVCategory_None"       = "Geen";
+"UVCategory_Low"        = "Laag";
+"UVCategory_Moderate"   = "Matig";
+"UVCategory_High"       = "Hoog";
+"UVCategory_VeryHigh"   = "Zeer hoog";
+"UVCategory_Extreme"    = "Extreem";
+"UVAdvice_None"         = "Er worden voor deze dag geen matige of hogere UV-niveaus verwacht.";
+"UVAdvice_Range"        = "Bescherming tegen de zon aanbevolen. UV-niveaus variëren van %@ tot %@ en worden bereikt tussen %@ en %@.";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Zichtbaarheid";
+"Visibility_NoData"                = "Er zijn geen zichtbaarheidsgegevens beschikbaar voor deze dag.";
+"Visibility_CurrentFormat"         = "Zichtbaarheid %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – max %d %@";
+"Visibility_NoCurrentData"         = "Er zijn geen actuele zichtbaarheidsgegevens beschikbaar.";
+"Visibility_HourlyAverages_NoData" = "Geen uurgegevens beschikbaar.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Windsnelheid en windvlaag";
+"WindGraph_NoData" = "Er zijn geen windgegevens beschikbaar voor deze dag.";
+"WindGraph_SpeedHeader" = "Windsnelheid %d";
+"WindGraph_GustHeader" = "Windstoten tot %d";
+"WindGraph_SpeedRangeHeader" = "Windsnelheid %d-%d";
+"WindGraph_MaxSpeedLabel" = "Max. snelheid";
+"WindGraph_MaxGustLabel" = "Max. windvlaag";
+"WindGraph_DragLabel" = "%@\nSnelheid: %d\nWindvlaag: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Dagelijkse samenvatting";
+
+"Precipitation Totals" = "Neerslagtotalen";
+"LAST 24 HOURS" = "LAATSTE 24 UUR";
+"NEXT 24 HOURS" = "VOLGENDE 24 UUR";
+"Total" = "Totaal";
+"Rain" = "Regen";
+"Snow" = "Sneeuw";
+
+"About Wind Speed and Gusts" = "Over windsnelheid en windstoten";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "De windsnelheid wordt berekend op basis van het gemiddelde over een korte periode. Windstoten zijn korte windstoten boven dit gemiddelde. Een windstoot duurt doorgaans minder dan 20 seconden.";
+
+"About the Beaufort Scale" = "Over de schaal van Beaufort";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "De windschaal van Beaufort drukt uit hoe krachtig of sterk de wind is bij een bepaalde snelheid. De schaal van Beaufort kan het gemakkelijker maken om te begrijpen hoe winderig het zal aanvoelen of hoeveel effect de wind kan hebben. Elke waarde op de schaal komt overeen met een windsnelheidsbereik.";
+
+"About Feels Like Temperature" = "Over de gevoelstemperatuur";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "De gevoelstemperatuur geeft aan hoe warm of koud het aanvoelt en kan afwijken van de werkelijke temperatuur. Ze wordt beïnvloed door luchtvochtigheid, zonlicht en wind.";
+
+"Options" = "Opties";
+"Temperature" = "Temperatuur";
+"Use system setting (°C)" = "Gebruik systeeminstelling (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Voorwaarden";
+"UV Index" = "UV-index";
+"Wind" = "Wind";
+"Precipitation" = "Neerslag";
+"Humidity" = "Vochtigheid";
+"Visibility" = "Zichtbaarheid";
+"Pressure" = "Druk";
+
+/* Fallback key */
+"displayedCondition" = "weergegevenConditie";
+
+/* Titles */
+"Forecast"                   = "Voorspelling";
+"DailySummary"               = "Dagelijkse samenvatting";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° nu met %@ voorwaarden. Er is een neerslagkans van %@. Wind van %@ met windstoten tot %d %@. De temperatuur van vandaag varieert van %d° tot %d° en voelt aan als %d°. %@ en %@.";
+"UVIndexFormat"              = "UV-index tot %d";
+"HumidityFormat"             = "Vochtigheid rond %d%%";
+"HumidityRangeFormat"        = "Luchtvochtigheid van %d%% tot %d%%";
+"NA"                         = "N.v.t";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "De laagste waarde van %@ is %d° en de hoogste waarde is %d°. De temperatuur zal aanvoelen als %d° tot %d°. Er wordt wind verwacht van %@. %@";
+"NoPrecipLast24h"            = "Er is de afgelopen 24 uur geen neerslag geregistreerd.";
+"RainLast24h"                = "Het regende %d mm in de afgelopen 24 uur.";
+"SnowAndRainLast24h"         = "In de afgelopen 24 uur was de hoeveelheid sneeuw %@ cm en de regen %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NO";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "ZW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Neerslagtotalen";
+"Last24h_Label"             = "LAATSTE 24 UUR";
+"Next24h_Label"             = "VOLGENDE 24 UUR";
+"Total_Label"               = "Totaal";
+"Precipitation_Label"       = "Neerslag";
+"Rain_Label"                = "Regen";
+"Snow_Label"                = "Sneeuw";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "De wind is momenteel %1$d %2$@ uit de %3$@. Vandaag zijn de windsnelheden %4$d tot %5$d %2$@, met windstoten tot %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Windsnelheden variëren van %1$d tot %2$d %3$@, met windstoten tot %4$d %3$@.";
+
+"Beaufort_Scale"                = "Beaufort-schaal";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Beschrijving";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Kalm";
+"Beaufort_1"                    = "Lichte lucht";
+"Beaufort_2"                    = "Licht briesje";
+"Beaufort_3"                    = "Zacht briesje";
+"Beaufort_4"                    = "Matige wind";
+"Beaufort_5"                    = "Frisse bries";
+"Beaufort_6"                    = "Sterke wind";
+"Beaufort_7"                    = "Harde wind";
+"Beaufort_8" = "Stormachtig";
+"Beaufort_9"                    = "Sterke storm";
+"Beaufort_10"                   = "Storm";
+"Beaufort_11"                   = "Heftige storm";
+"Beaufort_12"                   = "Orkaankracht";
+"BeaufortRange_0"               = "<2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Er is de afgelopen 24 uur %.1f%@ neerslag gevallen. De totale neerslag van vandaag zal %.1f%@ zijn. De komende 24 uur wordt %.1f%@ neerslag verwacht.";
+"ForecastPrecip_OtherDayFormat" = "Op %@ zal de totale neerslag %.1f%@ zijn.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Over neerslagintensiteit";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"De intensiteit wordt berekend op basis van de hoeveelheid regen of sneeuw die per uur valt en geeft aan hoe zwaar de regen of sneeuw zal aanvoelen. Deze wordt ook gebruikt voor andere neerslagtypen, zoals natte sneeuw en winterse neerslag. Een stortbui of zware sneeuwstorm kan een ‘zware’ intensiteit hebben, terwijl gemiddelde regen of lichte motregen een ‘matige’ of ‘lichte’ intensiteit kan hebben.";
+
+/* Section titles */
+"Forecast_Title"               = "Voorspelling";
+"DailySummary_Title"           = "Dagelijkse samenvatting";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Het dauwpunt is %d° tot %d°.";
+"DewPoint_FutureFormat"        = "Het dauwpunt zal %d° tot %d° zijn.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Vandaag is de gemiddelde luchtvochtigheid %d%%. %@";
+"ForecastHumidity_Other"       = "Op %@ zal de gemiddelde luchtvochtigheid %d%% zijn.\n%@";
+
+"AboutPressure_Title"  = "Over druk";
+"AboutPressure_Body"   = "Significante, snelle drukveranderingen worden gebruikt om veranderingen in het weer te voorspellen. Een drukval kan bijvoorbeeld betekenen dat er regen of sneeuw op komst is, en een stijgende druk kan betekenen dat het weer verbetert. Druk wordt ook barometrische druk of atmosferische druk genoemd.";
+
+"AboutHumidity_Title"  = "Over relatieve vochtigheid";
+"AboutHumidity_Body"   = "Relatieve vochtigheid, algemeen bekend als vochtigheid, is de hoeveelheid vocht in de lucht vergeleken met wat de lucht kan bevatten. Bij hogere temperaturen kan de lucht meer vocht vasthouden. Een relatieve luchtvochtigheid van bijna 100% betekent dat er dauw of mist kan zijn.";
+
+"AboutDewPoint_Title" = "Over dauwpunt";
+"AboutDewPoint_Body"  = "Het dauwpunt is het punt waarop de temperatuur moet dalen voordat er dauw kan ontstaan. Het kan een nuttige manier zijn om te bepalen hoe vochtig de lucht aanvoelt: hoe hoger het dauwpunt, hoe vochtiger de lucht aanvoelt. Een dauwpunt dat overeenkomt met de huidige temperatuur betekent dat de relatieve luchtvochtigheid 100% is en dat er sprake kan zijn van dauw of mist.";
+
+"Section_Forecast"                     = "Voorspelling";
+"Section_DailySummary"                 = "Dagelijkse samenvatting";
+"ForecastVisibility_TodayFormat" = "Vandaag is de zichtbaarheid %@, bij %d tot %d %@.";
+"ForecastVisibility_OtherFormat" = "Op %@ is de laagste zichtbaarheid %@ bij %d %@, en de hoogste zichtbaarheid %@ bij %d %@.";
+"Clarity_Foggy"                        = "Mistig";
+"Clarity_Hazy"                         = "Wazig";
+"Clarity_Clear"                        = "Duidelijk";
+"Clarity_PerfectlyClear"               = "Volkomen duidelijk";
+
+"AboutVisibility_Title" = "Over zichtbaarheid";
+"AboutVisibility_Body" = "Zichtbaarheid vertelt u hoe ver u objecten zoals gebouwen en heuvels duidelijk kunt zien. Het is een maatstaf voor de transparantie van de lucht en houdt geen rekening met de hoeveelheid zonlicht of de aanwezigheid van obstakels. Zichtbaarheid op of boven %@ wordt als duidelijk beschouwd.";
+
+"PressureForecast_Today" = "De druk is momenteel %@ %@ en daalt. Vandaag zal de gemiddelde druk %@ %@ zijn, en de laagste druk zal %@ %@ zijn.";
+"PressureForecast_Other" = "Op %@ zal de gemiddelde druk %@ %@ zijn, en de laagste druk zal %@ %@ zijn.";
+"SectionForecast" = "Voorspelling";
+"SectionDailySummary" = "Dagelijkse samenvatting";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Alle basisplanfuncties";
+"Multi-calendar view" = "Weergave met meerdere kalenders";
+"Sync with Google Calendar" = "Synchroniseren met Google Agenda";
+"Sync meets from Google Meet" = "Synchronisatiebijeenkomsten vanaf Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Basisplan";
+"Single-day calendar view" = "Kalenderweergave voor één dag";
+"Multi-day calendar view" = "Meerdaagse kalenderweergave";
+"Monthly calendar view" = "Maandelijkse kalenderweergave";
+"Yearly overview" = "Jaaroverzicht";
+"List view for events" = "Lijstweergave voor evenementen";
+"Weather view" = "Weerweergave";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Premium-abonnement";
+"Sync with Microsoft Calendar" = "Synchroniseren met Microsoft Agenda";
+"Sync meets from Microsoft Teams" = "Synchronisatiebijeenkomsten vanaf Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Gelijk aan %@ per maand";
+"%d %@ free" = "%d %@ gratis";
+
+/* SubscriptionListView */
+"Premium Plans" = "Premium-abonnementen";
+"You are subscribed to the %@ %@ plan" = "U bent geabonneerd op het %@ %@ abonnement";
+"Renews on: %@" = "Verlengt op: %@";
+"Start Free Trial" = "Gratis proefperiode starten";
+"Subscribe Now" = "Abonneer je nu";
+"%d %@ free, then %@%@." = "%d %@ gratis, daarna %@%@.";
+"Subscribe for %@%@." = "Abonneer u op %@%@.";
+"Privacy Policy"     = "Privacybeleid";
+"Terms of Service"   = "Servicevoorwaarden";
+
+/* SubscriptionCategory */
+"Advanced" = "Geavanceerd";
+"Advanced Plan" = "Geavanceerd abonnement";
+"All Advanced Plan features" = "Alle geavanceerde abonnementsfuncties";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "U heeft een actief %@-abonnement nodig om toegang te krijgen tot deze sectie.";
+"Plan Required" = "Plan vereist";
+"OK" = "Oké";
+
+/* SubscriptionStatus */
+"Base"    = "Basis";
+"Premium" = "Premie";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Geabonneerd op het %@ %@ abonnement.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Verlengt op: %@";
+
+"Manage Subscription"                   = "Beheer abonnement";
+
+/* Period units */
+"Daily"     = "Dagelijks";
+"Weekly"    = "Wekelijks";
+"Monthly"   = "Maandelijks";
+"Yearly"    = "Jaarlijks";
+"Recurring" = "Terugkerend";
+
+/* units */
+"day"   = "dag";
+"days"  = "dagen";
+"week"  = "week";
+"weeks" = "weken";
+"month"  = "maand";
+"months" = "maanden";
+"year"   = "jaar";
+"years"  = "jaren";
+
+/* YearMonthMiniView */
+"weekday.headers" = "Z,M,D,W,D,V,Z";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Uw eerdere aankopen zijn succesvol hersteld.";
+"No active subscriptions found to restore."                = "Er zijn geen actieve abonnementen gevonden die kunnen worden hersteld.";
+"Failed to restore purchases. Please try again later. (%@)" = "Kan aankopen niet herstellen. Probeer het later opnieuw. (%@)";
+"Restore Purchases"                                        = "Aankopen herstellen";
+
+"Ads Free" = "Advertenties gratis";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalender en weer";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Klein toont de datum van vandaag en het huidige weer. Middelgroot voegt de maanfase en wind toe.";
+"Calendar Events" = "Agenda-evenementen";
+"Shows today's date, current weather, and your next calendar events." = "Toont de datum van vandaag, het huidige weer en uw volgende agenda-evenementen.";
+"No upcoming events" = "Geen aankomende evenementen";
+"Tomorrow" = "Morgen";
+"Untitled" = "Zonder titel";
+"Detail" = "Details";
+"Phase" = "Fase";
+"Weather" = "Weer";
+"Select Your Email" = "Selecteer uw e-mailadres";
+"Confirm" = "Bevestig";
+"Calendar name" = "Naam van agenda";
+"Sharing: %@" = "Delen: %@";
+"Loading..." = "Laden...";
+"Selected Location" = "Geselecteerde locatie";
+"Data provided by Apple Weather" = "Gegevens verstrekt door Apple Weather";
+"Next" = "Volgende";
+"No details found for the selected location." = "Er zijn geen details gevonden voor de geselecteerde locatie.";
+"Could not determine the time zone for the selected location." = "Kan de tijdzone voor de geselecteerde locatie niet bepalen.";
+"(No Title)" = "(Geen titel)";
+"Choose your e-mail" = "Kies uw e-mailadres";
+"It will be treated as your primary address and invitations will not be sent to it." = "Het wordt behandeld als uw primaire adres en er worden geen uitnodigingen naartoe gestuurd.";
+"Invalid URL" = "Ongeldige URL";
+"Rate limit or insufficient permission" = "Tarieflimiet of onvoldoende toestemming";
+"Network error: %@" = "Netwerkfout: %@";
+"N/A - Selected Tab: %@" = "N.v.t. - Geselecteerd tabblad: %@";
+"Enable Notifications" = "Meldingen inschakelen";
+"Event Notifications" = "Gebeurtenismeldingen";
+"Event alerts are scheduled from your event alert settings." = "Gebeurteniswaarschuwingen worden gepland via uw instellingen voor gebeurteniswaarschuwingen.";
+"Allow notifications so event alerts can appear at the right time." = "Sta meldingen toe, zodat gebeurteniswaarschuwingen op het juiste moment kunnen verschijnen.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Meldingen zijn uitgeschakeld voor deze app. Om ze in te schakelen, ga naar: Instellingen -> Apps -> Cloud Calendars -> Meldingen -> Meldingen toestaan.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating is jouw AI-aangedreven coach voor slimmere voeding en training. Het combineert moderne voedingswetenschap met praktische hulpmiddelen om u te helpen bij het plannen van maaltijden, het ontwerpen van trainingen, het beheren van uw voorraadkast en het begrijpen hoe voedsel en beweging uw lichaam beïnvloeden.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio is een geavanceerde 3D-ontwerpomgeving voor iOS- en macOS-ontwikkelaars. Het combineert nauwkeurige RealityKit-weergave met een krachtige editor voor opgemaakte tekst om ruwe schermafbeeldingen om te zetten in professioneel App Store-materiaal.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio is de schermopnamestudio van makerskwaliteit voor iOS en macOS. Leg uw scherm en camera tegelijkertijd vast, bedien de microfoon en systeemaudio en exporteer schone MP4's voor tutorials, walkthroughs en productdemo's. Op iOS kun je zelfs een video afspelen in de app en deze samen met je camera opnemen voor reactiestijl en door de presentator geleide inhoud.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars combineert geavanceerde planning met prachtig geïntegreerde weersvoorspellingen, zodat u nauwkeurig kunt plannen. Het ondersteunt meerdere agendaservices, intuïtief op gebaren gebaseerd bewerken, ingebouwde vergaderingslinks en gedetailleerde uur-/dagprognoses direct in uw planning.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI helpt u marktbewegingen te begrijpen met analyses op het apparaat en een werkstroom met meerdere agents die signalen van ruis scheidt. Volg realtime koersgegevens, verken kansen voor marktregimes en gebruik duidelijke dashboards en grafieken om uw beslissingen te ondersteunen. Privacy voorop: uw configuraties blijven op uw apparaat.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Apps";
+"Plan" = "Abonnement";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Sneeuwstorm";
+"WeatherCondition.blowingDust" = "Stof";
+"WeatherCondition.blowingSnow" = "Stuifsneeuw";
+"WeatherCondition.breezy" = "Matige wind";
+"WeatherCondition.clear" = "Helder";
+"WeatherCondition.cloudy" = "Zwaar­bewolkt";
+"WeatherCondition.drizzle" = "Motregen";
+"WeatherCondition.flurries" = "Sneeuwvlagen";
+"WeatherCondition.foggy" = "Mist";
+"WeatherCondition.freezingDrizzle" = "Lichte ijzel";
+"WeatherCondition.freezingRain" = "IJzel";
+"WeatherCondition.frigid" = "Koud";
+"WeatherCondition.hail" = "Hagel";
+"WeatherCondition.haze" = "Nevel";
+"WeatherCondition.heavyRain" = "Zware regen";
+"WeatherCondition.heavySnow" = "Zware sneeuwval";
+"WeatherCondition.hot" = "Zeer warm";
+"WeatherCondition.hurricane" = "Orkaan";
+"WeatherCondition.isolatedThunderstorms" = "Op enkele plaatsen onweer";
+"WeatherCondition.mostlyClear" = "Overwegend helder";
+"WeatherCondition.mostlyCloudy" = "Half­bewolkt";
+"WeatherCondition.partlyCloudy" = "Licht­bewolkt";
+"WeatherCondition.rain" = "Regen";
+"WeatherCondition.scatteredThunderstorms" = "Hier en daar onweer";
+"WeatherCondition.sleet" = "IJsregen";
+"WeatherCondition.smoky" = "Rook";
+"WeatherCondition.snow" = "Sneeuw";
+"WeatherCondition.strongStorms" = "Zware onweersbui";
+"WeatherCondition.sunFlurries" = "Winterse neerslag bij zonneschijn";
+"WeatherCondition.sunShowers" = "Lichte regen bij zonneschijn";
+"WeatherCondition.thunderstorms" = "Onweer";
+"WeatherCondition.tropicalStorm" = "Tropische storm";
+"WeatherCondition.windy" = "Wind";
+"WeatherCondition.wintryMix" = "Winterse neerslag";
+"MoonPhase.new" = "Nieuwe maan";
+"MoonPhase.waxingCrescent" = "Jonge maan";
+"MoonPhase.firstQuarter" = "Eerste kwartier";
+"MoonPhase.waxingGibbous" = "Wassende maan";
+"MoonPhase.full" = "Volle maan";
+"MoonPhase.waningGibbous" = "Afnemende maan";
+"MoonPhase.lastQuarter" = "Laatste kwartier";
+"MoonPhase.waningCrescent" = "Asgrauwe maan";

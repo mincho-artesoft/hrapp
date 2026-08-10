@@ -27,9 +27,7 @@ struct SearchEventRowView: View {
 
     /// Форматиране на часа
     private func timeString(_ date: Date) -> String {
-        let df = DateFormatter()
-        df.dateFormat = "h:mma"  // или използвайте локализирана формата
-        return df.string(from: date)
+        appTimeFormatter().string(from: date)
     }
 
     var body: some View {

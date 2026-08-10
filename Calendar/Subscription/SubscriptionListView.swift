@@ -19,7 +19,13 @@ struct SubscriptionListView: View {
                     PremiumSubscriptionView()
                 }
                 
-                HStack(spacing: 10) {
+                LazyVGrid(
+                    columns: Array(
+                        repeating: GridItem(.flexible(), spacing: 10),
+                        count: min(max(products.count, 1), 2)
+                    ),
+                    spacing: 10
+                ) {
                     ForEach(products) { product in
                         let isActive = manager.purchasedProductIDs.contains(product.id)
                         let isSelectedOrActive = isActive || product.id == selectedProductID
@@ -37,6 +43,7 @@ struct SubscriptionListView: View {
                         }
                         .disabled(!canBuy)
                         .opacity(!canBuy ? 0.6 : 1.0)
+                        .frame(maxWidth: .infinity)
                     }
                 }
                 .padding(.horizontal)
@@ -51,7 +58,7 @@ struct SubscriptionListView: View {
                         .padding(.horizontal)
                 }
                 // Вашият HStack с Manage и Restore бутони...
-                HStack {
+                HStack(alignment: .top, spacing: 12) {
                     VStack(alignment: .leading, spacing: 10){
                         Button {
                             Task { await manager.openManageSubscriptions() }
@@ -62,6 +69,8 @@ struct SubscriptionListView: View {
                                 systemImage: "creditcard")
                         }
                         .font(.footnote)
+                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Button {
                             presentedURL = URL(string: "https://www.cloud-calendars.com/privacy-policy")!
@@ -72,10 +81,11 @@ struct SubscriptionListView: View {
                                 systemImage: "lock.shield")
                         }
                         .font(.footnote)
+                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                     }
-                  
-                    Spacer()
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
                     VStack(alignment: .leading, spacing: 10){
                         Button {
@@ -87,6 +97,8 @@ struct SubscriptionListView: View {
                                 systemImage: "arrow.trianglehead.2.clockwise")
                         }
                         .font(.footnote)
+                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Button {
                             presentedURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
@@ -97,7 +109,10 @@ struct SubscriptionListView: View {
                                 systemImage: "doc.text")
                         }
                         .font(.footnote)
+                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal, 25)
                 .padding(.top, 10)
@@ -143,8 +158,7 @@ struct SubscriptionListView: View {
             VStack(alignment: .leading, spacing: 10) {
                 // Първата част – Subscription status
                 Text(
-                     String(
-                         format: NSLocalizedString(
+                     localizedFormat(NSLocalizedString(
                              "SubscriptionStatus",
                              comment: "Status without the"
                          ),
@@ -155,8 +169,7 @@ struct SubscriptionListView: View {
                  .font(.headline)
 
                  Text(
-                     String(
-                         format: NSLocalizedString(
+                     localizedFormat(NSLocalizedString(
                              "RenewsOn",
                              comment: "Label for renewal date"
                          ),
@@ -192,6 +205,7 @@ struct SubscriptionListView: View {
                     
                     Text(labelKey)
                         .font(.headline.weight(.semibold))
+                        .adaptiveSingleLine(minimumScale: 0.45)
                         .padding(.vertical, 12)
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity)

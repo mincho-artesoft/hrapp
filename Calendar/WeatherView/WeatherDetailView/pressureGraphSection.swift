@@ -45,8 +45,7 @@ extension WeatherDetailView{
                         if Calendar.current.isDate(selectedDate, inSameDayAs: Date()) {
                             // Ако е текущия ден – показваме текущата стойност
                             if let currentPressure = vm.currentPressure {
-                                Text(String(
-                                    format: NSLocalizedString("Pressure_CurrentFormat", comment: "Current pressure display"),
+                                Text(localizedFormat(NSLocalizedString("Pressure_CurrentFormat", comment: "Current pressure display"),
                                     formatPressure(currentPressure),  // Форматирана стойност за текущото налягане
                                     unit  // Добавяме единицата за налягането
                                 ))
@@ -55,8 +54,7 @@ extension WeatherDetailView{
                                 Text(NSLocalizedString("Pressure_CurrentUnavailable", comment: "No current pressure available"))
                                     .font(.system(size: 16, weight: .semibold))
                             }
-                            Text(String(
-                                format: NSLocalizedString("Pressure_DailyMinMaxFormat", comment: "Today's min/max pressure"),
+                            Text(localizedFormat(NSLocalizedString("Pressure_DailyMinMaxFormat", comment: "Today's min/max pressure"),
                                 formatPressure(realMin!),
                                 unit,  // Единица за налягането
                                 formatPressure(realMax!),
@@ -67,14 +65,12 @@ extension WeatherDetailView{
                         } else {
                             // За друг ден – показваме средната стойност и диапазона
                             let avgPressure = pressureValues.reduce(0, +) / Double(pressureValues.count)
-                            Text(String(
-                                format: NSLocalizedString("Pressure_AverageFormat", comment: "Average pressure display"),
+                            Text(localizedFormat(NSLocalizedString("Pressure_AverageFormat", comment: "Average pressure display"),
                                 formatPressure(avgPressure),  // Форматирана стойност за средното налягане
                                 unit  // Добавяме единицата за налягането
                             ))
                             .font(.system(size: 16, weight: .semibold))
-                            Text(String(
-                                format: NSLocalizedString("Pressure_DailyRangeFormat", comment: "Daily range of pressure"),
+                            Text(localizedFormat(NSLocalizedString("Pressure_DailyRangeFormat", comment: "Daily range of pressure"),
                                 formatPressure(realMin!),
                                 formatPressure(realMax!),
                                 unit  // Добавяме единицата за налягането
@@ -146,6 +142,7 @@ extension WeatherDetailView{
                     }
                     .frame(height: 20)
                     .padding(.horizontal, graphPadding)
+                    .environment(\.layoutDirection, .leftToRight)
                     .offset(y: 20)  // може да коригирате offset според визията си
                     
                     
@@ -187,7 +184,7 @@ extension WeatherDetailView{
                             // Надпис вдясно
                             let labelPt = CGPoint(x: origin.x + contentWidth + 15, y: yPos)
                             context.draw(
-                                Text("\(Int(marker))")
+                                Text(localizedIntegerString(Int(marker)))
                                     .font(.system(size: 8)) // може да нагласите размера
                                     .foregroundColor(.gray),
                                 at: labelPt,
@@ -327,7 +324,7 @@ extension WeatherDetailView{
                             let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
                             let textPoint = CGPoint(x: xPos, y: origin.y + 14)
                             context.draw(
-                                Text(String(format: "%02d", hour))
+                                Text(localizedFormat("%02d", hour))
                                     .font(.system(size: 11))
                                     .foregroundColor(.gray),
                                 at: textPoint,
@@ -372,10 +369,9 @@ extension WeatherDetailView{
                                     let totalInterval = d2.timeIntervalSince(d1)
                                     let interpolatedDate = d1.addingTimeInterval(totalInterval * Double(t))
                                     
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "HH:mm"
-                                    dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
-                                    timeString = dateFormatter.string(from: interpolatedDate)
+                                    timeString = appTimeFormatter(
+                                        timeZone: WeatherKitViewModel.shared.locationTimeZone
+                                    ).string(from: interpolatedDate)
                                 } else {
                                     timeString = "--:--"
                                 }

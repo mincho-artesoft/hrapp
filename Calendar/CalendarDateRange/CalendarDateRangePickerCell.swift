@@ -34,6 +34,7 @@ public class CalendarDateRangePickerCell: UICollectionViewCell {
         label.font = UIFont(name: "HelveticaNeue", size: 18.0)
         label.textColor = defaultTextColor
         label.textAlignment = .center
+        label.useAdaptiveSingleLine(minimumScale: 0.4)
 
         self.addSubview(label)
     }
@@ -84,4 +85,3 @@ public class CalendarDateRangePickerCell: UICollectionViewCell {
         label.textColor = .white
     }
 }
-

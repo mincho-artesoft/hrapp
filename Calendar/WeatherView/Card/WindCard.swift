@@ -83,7 +83,7 @@ struct WindCard: View {
 
             // Текстова индикация на скоростта
             VStack(spacing: -6) {
-                Text(String(format: "%.0f", windSpeed))
+                Text(localizedFormat("%.0f", windSpeed))
                     .font(.system(size: 20, weight: .medium))
                 Text(GlobalState.speedUnitLabel)
                     .font(.system(size: 6, weight: .medium))
@@ -98,8 +98,11 @@ struct WindCard: View {
     private func detailRow(label: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(label)
+                .adaptiveSingleLine(minimumScale: 0.4)
+                .layoutPriority(1)
             Spacer()
             Text(value)
+                .adaptiveSingleLine(minimumScale: 0.45)
         }
     }
 
@@ -108,6 +111,7 @@ struct WindCard: View {
             Label(NSLocalizedString("WIND", comment: "Wind card title"), systemImage: "wind")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .adaptiveSingleLine(minimumScale: 0.4)
                 .padding(.bottom, 5)
 
             HStack(spacing: 15) {
@@ -115,7 +119,7 @@ struct WindCard: View {
                     // Основна скорост
                     detailRow(
                         label: LocalizedStringKey("Wind"),
-                        value: String(format: "%d %@", Int(windSpeed.rounded()), GlobalState.speedUnitLabel)
+                        value: localizedFormat("%d %@", Int(windSpeed.rounded()), GlobalState.speedUnitLabel)
                     )
                     Divider().background(.white.opacity(0.3))
 
@@ -123,7 +127,7 @@ struct WindCard: View {
                     if let gust = gustSpeed, gust > windSpeed + 1 {
                         detailRow(
                             label: LocalizedStringKey("Gusts"),
-                            value: String(format: "%d %@", Int(gust.rounded()), GlobalState.speedUnitLabel)
+                            value: localizedFormat("%d %@", Int(gust.rounded()), GlobalState.speedUnitLabel)
                         )
                         Divider().background(.white.opacity(0.3))
                     }
@@ -131,7 +135,11 @@ struct WindCard: View {
                     // Посока (напр. "279° WNW")
                     detailRow(
                         label: LocalizedStringKey("Direction"),
-                        value: "\(Int(direction?.degrees.rounded() ?? 0))° \(directionAbbreviation)"
+                        value: localizedFormat(
+                            "%d° %@",
+                            Int(direction?.degrees.rounded() ?? 0),
+                            directionAbbreviation
+                        )
                     )
                 }
 

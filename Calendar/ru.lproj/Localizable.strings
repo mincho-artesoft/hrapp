@@ -8,7 +8,6 @@
 
 /* RootView */
 "N/A" = "Н/Д";
-"Today" = "Сегодня";
 "Calendars" = "Календари";
 "Inbox" = "Входящие";
 
@@ -21,12 +20,11 @@
 "No synced Microsoft calendars yet." = "Пока нет синхронизированных календарей Microsoft.";
 "Sign out" = "Выйти";
 "Add iCloud Calendar" = "Добавить календарь iCloud";
-"Share calendars with iCloud Calendar" = "Поделиться календарями через iCloud Calendar";
+"Share calendars with iCloud Calendar" = "Поделиться календарями через Календарь iCloud";
 "Sign in with Google" = "Войти через Google";
 "Sign in with Microsoft" = "Войти через Microsoft";
 "Deselect All" = "Отменить выбор всех";
 "Select All" = "Выбрать все";
-"Done" = "Готово";
 "No Email" = "Нет эл. почты";
 "Add Google Calendar" = "Добавить календарь Google";
 
@@ -38,7 +36,6 @@
 "Event Alerts" = "Уведомления о событиях";
 "Allow events on this calendar to display alerts." = "Разрешить событиям в этом календаре отображать уведомления.";
 "Add Calendar" = "Добавить календарь";
-"Cancel" = "Отмена";
 
 /* Colors */
 "Red" = "Красный";
@@ -65,7 +62,6 @@
 "Email to share" = "Адрес для совместного доступа";
 "Permission:" = "Права:";
 "Add" = "Добавить";
-"Unknown" = "Неизвестно";
 "Sharing:" = "Совместный доступ:";
 "Done" = "Готово";
 
@@ -82,22 +78,12 @@
 "Owner"  = "Владелец";
 
 /* MonthCalendarView */
-"Search events..." = "Поиск событий…";
-"Cancel" = "Отмена";
-"Close" = "Закрыть";
 "Day View" = "Дневной вид";
 "This is a repeating event." = "Это повторяющееся событие.";
 "Save for This Event Only" = "Сохранить только для этого события";
 "Save for Future Events" = "Сохранить для будущих событий";
-"New Event" = "Новое событие";
 
 /* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
-"Day" = "День";
-"MultiDay" = "Несколько дней";
-"Month" = "Месяц";
-"Year" = "Год";
-"List" = "Список";
-"MultiCalendar" = "МультиКалендарь";
 
 /* WeekdayHeaderView */
 "Sun" = "Вс";
@@ -109,63 +95,26 @@
 "Sat" = "Сб";
 
 /* UIMenuButtonRepresentable */
-"Day" = "День";
-"MultiDay" = "Несколько дней";
-"Month" = "Месяц";
-"Year" = "Год";
-"List" = "Список";
-"MultiCalendar" = "МультиКалендарь";
 
 /* YearCalendarView */
-"Search events..." = "Поиск событий…";
-"Cancel" = "Отмена";
 "Close" = "Закрыть";
-"New Event" = "Новое событие";
 
 /* AllEventsListView */
-"Search events..." = "Поиск событий…";
-"Cancel" = "Отмена";
-"New Event" = "Новое событие";
 "No calendar access." = "Нет доступа к календарю.";
 
 /* EventRowView */
-"all-day" = "Весь день";
 "Ends" = "Завершение";
 
 /* SearchEventRowView */
 "No Title" = "Без названия";
-"all-day" = "Весь день";
 
 /* BasicEvent */
-"New event" = "Новое событие";
 
 /* SingleDayTimelineMultiCalendarView */
-"Join Meeting" = "Присоединиться к совещанию";
-"Edit" = "Редактировать";
-"Duplicate" = "Дублировать";
-"Delete" = "Удалить";
-"Add to Google Meet" = "Добавить в Google Meet";
-"Add to Microsoft Teams" = "Добавить в Microsoft Teams";
-"New Event" = "Новое событие";
 
 /* TwoWayPinnedSingleDayMultiCalendarContainerView */
-"Search events..." = "Поиск событий…";
-"all-day" = "Весь день";
-"Day" = "День";
-"MultiDay" = "Несколько дней";
-"Month" = "Месяц";
-"Year" = "Год";
-"List" = "Список";
-"MultiCalendar" = "МультиКалендарь";
 
 /* TwoWayPinnedSingleDayMultiCalendarWrapper */
-"New event" = "Новое событие";
-"All-day event" = "Событие на весь день";
-"Recurring Event" = "Повторяющееся событие";
-"This event is part of a series. Update which events?" = "Это событие является частью серии. Какие события хотите изменить?";
-"This Event Only" = "Только это событие";
-"All Future Events" = "Все будущие события";
-"Cancel" = "Отмена";
 
 /* MultiDayTimelineView */
 "Join Meeting" = "Присоединиться к совещанию";
@@ -174,7 +123,6 @@
 "Delete" = "Удалить";
 "Add to Google Meet" = "Добавить в Google Meet";
 "Add to Microsoft Teams" = "Добавить в Microsoft Teams";
-"New Event" = "Новое событие";
 
 /* TwoWayPinnedMultiDayContainerView */
 "No selected range" = "Не выбран период";
@@ -199,20 +147,17 @@
 /* DraggableMenuView */
 "Calendar" = "Календарь";
 "Subscriptions" = "Подписки";
-"Weather" = "Погода";
-"Live" = "Live";
+"Live" = "В эфире";
 "Stop" = "Стоп";
-"Calendar Live Activity" = "Live Activity календаря";
+"Calendar Live Activity" = "Активность календаря в реальном времени";
 "Get" = "Получить";
 "Color" = "Цвет";
 "Search for a city…" = "Поиск города…";
 "No directions" = "Нет направлений";
 
 /* WeatherKitView */
-"Search for a city..." = "Поиск города…";
 "Location access denied. Search for a city or grant access in Settings." = "Доступ к геолокации запрещён. Найдите город или разрешите доступ в Настройках.";
 "Cannot refresh. Location unknown." = "Не удалось обновить. Местоположение неизвестно.";
-"Tap an hour to quickly add a calendar event." = "Нажмите на час, чтобы быстро добавить событие в календарь.";
 "10-DAY FORECAST" = "ПРОГНОЗ НА 10 ДНЕЙ";
 "HighLowLabelFormat" = "М:%d°   Н:%d°";
 "tomorrow" = "завтра";
@@ -220,15 +165,6 @@
 "in_days" = "через %d дней";
 
 /* Labels */
-"Today" = "Сегодня";
-"Now" = "Сейчас";
-"Conditions" = "Условия";
-"UV Index" = "УФ-индекс";
-"Wind" = "Ветер";
-"Precipitation" = "Осадки";
-"Humidity" = "Влажность";
-"Visibility" = "Видимость";
-"Pressure" = "Давление";
 
 /* Calendar event */
 "New Event" = "Новое событие";
@@ -256,8 +192,6 @@
 "Moonrise" = "Восход луны";
 "Moonset" = "Закат луны";
 "Next %@" = "Следующая %@";
-"day" = "день";
-"days" = "дней";
 "Data unavailable" = "Данные недоступны";
 "%d day"  = "%d день";
 "%d days" = "%d дней";
@@ -271,8 +205,6 @@
 /* PressureCard */
 "PRESSURE" = "ДАВЛЕНИЕ";
 "hPa" = "hPa";
-"Low" = "Низко";
-"High" = "Высоко";
 
 /* SunsetCard */
 "SUNRISE" = "ВОСХОД";
@@ -290,8 +222,7 @@
 "Extreme" = "Экстремальный";
 
 /* VisibilityCard */
-"VISIBILITY" = "ВИДИМОСТЬ";
-"km" = "км";
+"km" = "km";
 "Perfectly clear view." = "Совершенно чистая видимость.";
 "Excellent visibility." = "Отличная видимость.";
 "Good visibility." = "Хорошая видимость.";
@@ -309,10 +240,9 @@
 
 /* WindCard */
 "WIND" = "ВЕТЕР";
-"Wind" = "Ветер";
 "Gusts" = "Порывы";
 "Direction" = "Направление";
-"km/h" = "км/ч";
+"km/h" = "km/h";
 "Compass_N" = "С";
 "Compass_S" = "Ю";
 "Compass_W" = "З";
@@ -328,15 +258,12 @@
 "Sunny" = "Солнечно";
 "Cloudy" = "Облачно";
 "Partly Cloudy" = "Переменная облачность";
-"Rain" = "Дождь";
 "Drizzle" = "Морось";
-"Snow" = "Снег";
 "Thunderstorm" = "Гроза";
 "Fog" = "Туман";
 "Partly Cloudy Night" = "Переменная облачность (ночь)";
 "Clear Night" = "Ясная ночь";
 "Hazy" = "Мглистый";
-"Conditions" = "Условия";
 "Today" = "Сегодня";
 "Now" = "Сейчас";
 
@@ -416,15 +343,12 @@
 "Pressure_DailyMinMaxFormat"       = "Минимум %@ %@ – максимум %@ %@ сегодня";
 "Pressure_AverageFormat"           = "Среднее давление %@ %@";
 "Pressure_DailyRangeFormat"        = "Ежедневный диапазон: %@–%@ %@";
-"Visibility_MaxLabel"              = "Макс";
-"Visibility_MinLabel"              = "Мин";
 "Pressure_Title"                   = "Давление";
 "Pressure_NoData"                  = "Данные о давлении отсутствуют на этот день.";
 
 /* WeatherDetailView uVGraphSection */
 "UVGraphHeader"         = "Сегодня %@ %d";
 "UVGraphNoHourlyData"   = "Нет почасовых данных для этого дня.";
-"UVGraphMaxLabel"       = "Макс";
 "UVGraphNowLabel"       = "Сейчас, %@";
 "UVCategory_None"       = "Нет";
 "UVCategory_Low"        = "Низкий";
@@ -458,22 +382,13 @@
 "WindGraph_DragLabel" = "%@\nСкорость: %d\nПорыв: %d";
 
 /* WeatherDetailView */
-"Conditions" = "Погодные условия";
-"UV Index" = "УФ-индекс";
-"Wind" = "Ветер";
-"Precipitation" = "Осадки";
-"Humidity" = "Влажность";
-"Visibility" = "Видимость";
-"Pressure" = "Давление";
 
-"Forecast" = "Прогноз";
 "Daily Summary" = "Дневной обзор";
 
 "Precipitation Totals" = "Итог осадков";
 "LAST 24 HOURS" = "ПОСЛЕДНИЕ 24 ЧАСА";
 "NEXT 24 HOURS" = "СЛЕДУЮЩИЕ 24 ЧАСА";
 "Total" = "Итого";
-"Precipitation" = "Осадки";
 "Rain" = "Дождь";
 "Snow" = "Снег";
 
@@ -489,8 +404,7 @@
 "Options" = "Настройки";
 "Temperature" = "Температура";
 "Use system setting (°C)" = "Использовать системные настройки (°C)";
-"Precipitation" = "Осадки";
-"mm, cm" = "мм, см";
+"mm, cm" = "mm, cm";
 
 /* Dynamic label titles */
 "Conditions" = "Условия";
@@ -518,8 +432,8 @@
 /* Other-day forecast */
 "OtherDayForecastText"       = "Минимум на %@: %d°, максимум: %d°. Будет ощущаться как %d°–%d°. Ветер из %@. %@";
 "NoPrecipLast24h"            = "Осадков нет за последние 24 ч.";
-"RainLast24h"                = "За последние 24 ч. выпало %d мм дождя.";
-"SnowAndRainLast24h"         = "За последние 24 ч. снег %@ см и дождь %d мм.";
+"RainLast24h" = "За последние 24 ч. выпало %d mm дождя.";
+"SnowAndRainLast24h" = "За последние 24 ч. выпало %@ cm снега и %d mm дождя.";
 
 "Dir_N"   = "С";
 "Dir_NNE" = "ССВ";
@@ -538,8 +452,8 @@
 "Dir_NW"  = "СЗ";
 "Dir_NNW" = "ССЗ";
 
-"UnitMillimeter"     = "мм";
-"UnitCentimeter"     = "см";
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
 
 "PrecipitationTotals_Title" = "Общие осадки";
 "Last24h_Label"             = "ЗА ПОСЛЕДНИЕ 24 Ч";
@@ -567,9 +481,9 @@
 "WindSummary_Range"   = "Скорость ветра от %1$d до %2$d %3$@, порывы до %4$d %3$@.";
 
 "Beaufort_Scale"                = "Шкала Бофорта";
-"Beaufort_Column_bft"           = "bft";
+"Beaufort_Column_bft" = "bft";
 "Beaufort_Column_Description"   = "Описание";
-"Beaufort_Column_kmh"           = "км/ч";
+"Beaufort_Column_kmh" = "km/h";
 "Beaufort_0"                    = "Штиль";
 "Beaufort_1"                    = "Слабый ветер";
 "Beaufort_2"                    = "Легкий ветер";
@@ -598,10 +512,8 @@
 "BeaufortRange_12"              = "> 118";
 
 /* Section header: Forecast vs Daily Summary */
-"Forecast_Title"                  = "Прогноз";
-"DailySummary_Title"              = "Краткий обзор";
 
-"ForecastPrecip_TodayFormat"    = "За последние 24 ч выпало %.1f%@ осадков. Сегодня ожидается всего %.1f@%. В ближайшие 24 ч прогнозируется %.1f%@ осадков.";
+"ForecastPrecip_TodayFormat"    = "За последние 24 ч выпало %.1f%@ осадков. Сегодня ожидается всего %.1f%@. В ближайшие 24 ч прогнозируется %.1f%@ осадков.";
 "ForecastPrecip_OtherDayFormat" = "В %@ выпадет в общей сложности %.1f%@ осадков.";
 
 
@@ -678,21 +590,17 @@
 "Premium Plans" = "Планы Премиум";
 "You are subscribed to the %@ %@ plan" = "Вы подписаны на план %@ %@";
 "Renews on: %@" = "Продление: %@";
-"Manage Subscription" = "Управление подпиской";
 "Start Free Trial" = "Начать бесплатный пробный период";
 "Subscribe Now" = "Подписаться сейчас";
 "%d %@ free, then %@%@." = "%d %@ бесплатно, затем %@%@.";
 "Subscribe for %@%@." = "Подписаться за %@%@.";
-"Restore Purchases" = "Восстановить покупки";
 "Privacy Policy"     = "Политика конфиденциальности";
 "Terms of Service"   = "Условия обслуживания";
 
 /* SubscriptionCategory */
-"Base"    = "Базовый";
 "Advanced" = "Расширенный";
 "Advanced Plan" = "Расширенный план";
 "All Advanced Plan features" = "Все функции расширенного плана";
-"Premium" = "Премиум";
 
 /* SubscriptionView Alerts */
 "You need an active %@ plan to access this section." = "Чтобы получить доступ к этому разделу, нужен активный план %@.";
@@ -704,8 +612,6 @@
 "Premium" = "Премиум";
 
 /* Subscription period units */
-"Monthly" = "ежемесячно";
-"Yearly"  = "ежегодно";
 
 /* SubscriptionListView status messages */
 /* Статус подписки без «Вы» */
@@ -737,14 +643,14 @@
 "weekday.headers" = "В,П,В,С,Ч,П,С";
 
 /* GlobalState */
-"Unit_Speed_kmh"            = "км/ч";
-"Unit_Speed_mph"            = "миль/ч";
-"Unit_Distance_km"          = "км";
-"Unit_Distance_mi"          = "ми";
-"Unit_Precipitation_mm"     = "мм";
-"Unit_Precipitation_in"     = "дюйм";
-"Unit_Pressure_hPa"         = "гПа";
-"Unit_Pressure_inHg"        = "дюйм рт. ст.";
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
 
 "Your previous purchases have been successfully restored." = "Ваши предыдущие покупки были успешно восстановлены.";
 "No active subscriptions found to restore."                = "Активные подписки для восстановления не найдены.";
@@ -764,7 +670,7 @@
 "Detail" = "Подробности";
 "Phase" = "Фаза";
 "Weather" = "Погода";
-"Select Your Email" = "Выберите e-mail";
+"Select Your Email" = "Выберите адрес электронной почты";
 "Confirm" = "Подтвердить";
 "Calendar name" = "Название календаря";
 "Sharing: %@" = "Общий доступ: %@";
@@ -775,7 +681,7 @@
 "No details found for the selected location." = "Для выбранного местоположения не найдены сведения.";
 "Could not determine the time zone for the selected location." = "Не удалось определить часовой пояс для выбранного местоположения.";
 "(No Title)" = "(Без названия)";
-"Choose your e-mail" = "Выберите свой e-mail";
+"Choose your e-mail" = "Выберите адрес электронной почты";
 "It will be treated as your primary address and invitations will not be sent to it." = "Он будет использоваться как основной адрес, и приглашения не будут отправляться на него.";
 "Invalid URL" = "Недействительный URL";
 "Rate limit or insufficient permission" = "Ограничение запросов или недостаточно прав";
@@ -789,10 +695,59 @@
 "Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
 "Promo.WiseEating.description" = "Wise Eating — ваш ИИ-тренер для более разумного питания и тренировок. Приложение объединяет современную нутрициологию и практичные инструменты для планирования питания, тренировок, управления запасами и понимания влияния еды и движения.";
 "Promo.StoreFront.name" = "StoreFront Studio";
-"Promo.StoreFront.description" = "StoreFront Studio — профессиональная 3D-среда дизайна для разработчиков iOS и macOS. Она сочетает точный рендеринг RealityKit и мощный Rich Text редактор для создания качественных материалов App Store.";
+"Promo.StoreFront.description" = "StoreFront Studio — профессиональная 3D-среда дизайна для разработчиков iOS и macOS. Она сочетает точную визуализацию RealityKit и мощный редактор форматированного текста для создания качественных материалов App Store.";
 "Promo.ReelStudio.name" = "ReelStudio";
 "Promo.ReelStudio.description" = "ReelStudio — студия записи экрана для авторов. Записывайте экран и камеру одновременно, управляйте микрофоном и системным звуком и экспортируйте чистые MP4 для уроков, демонстраций и презентаций продукта.";
 "Promo.CloudCalendars.name" = "Cloud Calendars";
 "Promo.CloudCalendars.description" = "Cloud Calendars объединяет продвинутое планирование и красиво встроенные прогнозы погоды, чтобы вы могли планировать точнее. Поддерживает несколько календарных сервисов, жесты редактирования, ссылки на встречи и подробные почасовые и дневные прогнозы.";
 "Promo.MarketBrief.name" = "MarketBrief AI";
 "Promo.MarketBrief.description" = "MarketBrief AI помогает понимать движение рынка с аналитикой на устройстве и многоагентным процессом, который отделяет сигнал от шума. Отслеживайте цены, вероятности режимов, понятные панели и графики для более взвешенных решений.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Приложения";
+"Plan" = "План";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Снежная буря";
+"WeatherCondition.blowingDust" = "Пыль";
+"WeatherCondition.blowingSnow" = "Метель";
+"WeatherCondition.breezy" = "Слегка ветрено";
+"WeatherCondition.clear" = "Ясно";
+"WeatherCondition.cloudy" = "Облачно";
+"WeatherCondition.drizzle" = "Изморось";
+"WeatherCondition.flurries" = "Легкий снегопад";
+"WeatherCondition.foggy" = "Туман";
+"WeatherCondition.freezingDrizzle" = "Замерзающая морось";
+"WeatherCondition.freezingRain" = "Замерзающий дождь";
+"WeatherCondition.frigid" = "Холодно";
+"WeatherCondition.hail" = "Град";
+"WeatherCondition.haze" = "Дымка";
+"WeatherCondition.heavyRain" = "Ливень";
+"WeatherCondition.heavySnow" = "Сильный снегопад";
+"WeatherCondition.hot" = "Жарко";
+"WeatherCondition.hurricane" = "Ураган";
+"WeatherCondition.isolatedThunderstorms" = "Местами грозы";
+"WeatherCondition.mostlyClear" = "В основном ясно";
+"WeatherCondition.mostlyCloudy" = "В основном облачно";
+"WeatherCondition.partlyCloudy" = "Временами облачно";
+"WeatherCondition.rain" = "Дождь";
+"WeatherCondition.scatteredThunderstorms" = "Местами грозы";
+"WeatherCondition.sleet" = "Ледяной дождь";
+"WeatherCondition.smoky" = "Смог";
+"WeatherCondition.snow" = "Снег";
+"WeatherCondition.strongStorms" = "Сильная гроза";
+"WeatherCondition.sunFlurries" = "Легкий снегопад с солнцем";
+"WeatherCondition.sunShowers" = "Дождь с солнцем";
+"WeatherCondition.thunderstorms" = "Гроза";
+"WeatherCondition.tropicalStorm" = "Тропический шторм";
+"WeatherCondition.windy" = "Ветрено";
+"WeatherCondition.wintryMix" = "Снег с дождем";
+"MoonPhase.new" = "Новолуние";
+"MoonPhase.waxingCrescent" = "Растущий серп";
+"MoonPhase.firstQuarter" = "1‑я четверть";
+"MoonPhase.waxingGibbous" = "Прибывающая луна";
+"MoonPhase.full" = "Полнолуние";
+"MoonPhase.waningGibbous" = "Убывающая луна";
+"MoonPhase.lastQuarter" = "3‑я четверть";
+"MoonPhase.waningCrescent" = "Убывающий серп";

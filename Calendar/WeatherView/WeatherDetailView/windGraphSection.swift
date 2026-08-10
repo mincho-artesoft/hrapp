@@ -80,8 +80,7 @@ extension WeatherDetailView{
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
                             Text(
-                                String(
-                                    format: NSLocalizedString("WindGraph_SpeedHeader", comment: "Wind Speed header"),
+                                localizedFormat(NSLocalizedString("WindGraph_SpeedHeader", comment: "Wind Speed header"),
                                     Int(round(vm.currentWindSpeed ?? dailyMaxSpeed))
                                 )
                             ) + Text(" \(GlobalState.speedUnitLabel)")
@@ -90,8 +89,7 @@ extension WeatherDetailView{
                                 .font(.system(size: 16, weight: .semibold))
                         }
                         Text(
-                            String(
-                                format: NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
+                            localizedFormat(NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
                                 Int(round(vm.currentWindGust ?? dailyMaxGust))
                             )
                         ).font(.system(size: 13))
@@ -106,16 +104,14 @@ extension WeatherDetailView{
                     // За друг ден – показваме само "Wind" и под него сив текст с "Gusts up to" и максималния порив
                     VStack(alignment: .leading, spacing: 5) {
                         Text(
-                            String(
-                                format: NSLocalizedString("WindGraph_SpeedRangeHeader", comment: "Wind speed range header"),
+                            localizedFormat(NSLocalizedString("WindGraph_SpeedRangeHeader", comment: "Wind speed range header"),
                                 Int(round(dailyMinWindSpeed)),
                                 Int(round(dailyMaxSpeed))
                             )
                         ) + Text(" \(GlobalState.speedUnitLabel)")
                         .font(.system(size: 16, weight: .semibold))
                         Text(
-                            String(
-                                format: NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
+                            localizedFormat(NSLocalizedString("WindGraph_GustHeader", comment: "Gust header"),
                                 Int(round(dailyMaxGust))
                             )
                         ) .font(.system(size: 13))
@@ -173,6 +169,7 @@ extension WeatherDetailView{
                     }
                     .frame(height: 20)
                     .padding(.horizontal, graphPadding)
+                    .environment(\.layoutDirection, .leftToRight)
                     .offset(y: 25)
                     
                     // Canvas за рисуване на самата графика
@@ -210,7 +207,7 @@ extension WeatherDetailView{
                             // Етикети вдясно
                             let labelPt = CGPoint(x: origin.x + contentWidth + 15, y: yPos)
                             context.draw(
-                                Text("\(Int(marker))")
+                                Text(localizedIntegerString(Int(marker)))
                                     .font(.system(size: 10))
                                     .foregroundColor(.gray),
                                 at: labelPt,
@@ -349,7 +346,7 @@ extension WeatherDetailView{
                             let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24.0))
                             let textPoint = CGPoint(x: xPos, y: origin.y + 14)
                             context.draw(
-                                Text(String(format: "%02d", hour))
+                                Text(localizedFormat("%02d", hour))
                                     .font(.system(size: 11))
                                     .foregroundColor(.gray),
                                 at: textPoint,
@@ -405,10 +402,9 @@ extension WeatherDetailView{
                                     let d2 = hourlyItemsForSelectedDate[upperIdx].date
                                     let dt = d2.timeIntervalSince(d1) * Double(t)
                                     let newDate = d1.addingTimeInterval(dt)
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "HH:mm"
-                                    dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
-                                    timeText = dateFormatter.string(from: newDate)
+                                    timeText = appTimeFormatter(
+                                        timeZone: WeatherKitViewModel.shared.locationTimeZone
+                                    ).string(from: newDate)
                                 }
                                 
                                 // Определяме приблизителния час от драг позицията
@@ -424,8 +420,7 @@ extension WeatherDetailView{
                                 }
                                 let textPoint = CGPoint(x: textX, y: spdPt.y - 30)
                                 
-                                let labelText = String(
-                                    format: NSLocalizedString("WindGraph_DragLabel", comment: "Drag label with time, speed and gust"),
+                                let labelText = localizedFormat(NSLocalizedString("WindGraph_DragLabel", comment: "Drag label with time, speed and gust"),
                                     timeText,
                                     Int(round(sVal)),
                                     Int(round(gVal))

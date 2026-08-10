@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Không có email được cung cấp.";
+"Please enter a valid email to continue." = "Vui lòng nhập email hợp lệ để tiếp tục.";
+"Your email" = "Email của bạn";
+"Save" = "Lưu";
+"Login" = "Đăng nhập";
+"Logout" = "Đăng xuất";
+
+/* RootView */
+"N/A" = "không áp dụng";
+"Calendars" = "Lịch";
+"Inbox" = "Hộp thư đến";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Khác";
+"Google calendars" = "lịch Google";
+"No synced Google calendars yet." = "Chưa có lịch Google nào được đồng bộ hóa.";
+"Microsoft calendars" = "lịch Microsoft";
+"No synced Microsoft calendars yet." = "Chưa có lịch Microsoft nào được đồng bộ hóa.";
+"Sign out" = "Đăng xuất";
+"Add iCloud Calendar" = "Thêm lịch iCloud";
+"Share calendars with iCloud Calendar" = "Chia sẻ lịch với Lịch iCloud";
+"Sign in with Google" = "Đăng nhập bằng Google";
+"Sign in with Microsoft" = "Đăng nhập bằng Microsoft";
+"Deselect All" = "Bỏ chọn tất cả";
+"Select All" = "Chọn tất cả";
+"No Email" = "Không có email";
+"Add Google Calendar" = "Thêm lịch Google";
+
+/* AddCalendarView */
+"Calendar Name" = "Tên lịch";
+"Account" = "Tài khoản";
+"COLOR" = "MÀU SẮC";
+"NOTIFICATIONS" = "THÔNG BÁO";
+"Event Alerts" = "Cảnh báo sự kiện";
+"Allow events on this calendar to display alerts." = "Cho phép các sự kiện trên lịch này hiển thị thông báo.";
+"Add Calendar" = "Thêm lịch";
+
+/* Colors */
+"Red" = "màu đỏ";
+"Orange" = "trái cam";
+"Yellow" = "màu vàng";
+"Green" = "màu xanh lá cây";
+"Blue" = "Màu xanh";
+"Purple" = "Màu tím";
+"Brown" = "nâu";
+"Custom" = "tùy chỉnh";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Màu lịch";
+"Custom..." = "Tùy chỉnh...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Chỉnh sửa lịch";
+"Delete Calendar" = "Xóa lịch";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Đang tải cài đặt chia sẻ…";
+"Shared with these users" = "Được chia sẻ với những người dùng này";
+"Add New Email" = "Thêm email mới";
+"Email to share" = "Email để chia sẻ";
+"Permission:" = "Giấy phép:";
+"Add" = "Thêm";
+"Sharing:" = "Chia sẻ:";
+"Done" = "Xong";
+
+"Error loading: %@" = "Lỗi tải: %@";
+"Error adding: %@" = "Lỗi khi thêm: %@";
+"Error deleting: %@" = "Lỗi xóa: %@";
+"Error updating: %@" = "Lỗi cập nhật: %@";
+"Error re-inviting (delete): %@" = "Lỗi mời lại (xóa): %@";
+"Error re-inviting (insert): %@" = "Lỗi mời lại (chèn): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "đầu đọc";
+"Writer" = "Nhà văn";
+"Owner"  = "chủ sở hữu";
+
+/* MonthCalendarView */
+"Day View" = "Xem ngày";
+"This is a repeating event." = "Đây là một sự kiện lặp đi lặp lại.";
+"Save for This Event Only" = "Chỉ lưu cho sự kiện này";
+"Save for Future Events" = "Lưu cho các sự kiện trong tương lai";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "mặt trời";
+"Mon" = "Thứ hai";
+"Tue" = "thứ ba";
+"Wed" = "Thứ tư";
+"Thu" = "Thứ năm";
+"Fri" = "Thứ Sáu";
+"Sat" = "Thứ bảy";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Đóng";
+
+/* AllEventsListView */
+"No calendar access." = "Không có quyền truy cập lịch.";
+
+/* EventRowView */
+"Ends" = "Kết thúc";
+
+/* SearchEventRowView */
+"No Title" = "Không có tiêu đề";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Tham gia cuộc họp";
+"Edit" = "Chỉnh sửa";
+"Duplicate" = "trùng lặp";
+"Delete" = "Xóa";
+"Add to Google Meet" = "Thêm vào Google Meet";
+"Add to Microsoft Teams" = "Thêm vào Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Không có phạm vi được chọn";
+"all-day" = "cả ngày";
+"Search events..." = "Tìm kiếm sự kiện...";
+"Day" = "ngày";
+"MultiDay" = "nhiều ngày";
+"Month" = "Tháng";
+"Year" = "Năm";
+"List" = "Danh sách";
+"MultiCalendar" = "Đa Lịch";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Sự kiện mới";
+"All-day event" = "Sự kiện cả ngày";
+"Recurring Event" = "Sự kiện định kỳ";
+"This event is part of a series. Update which events?" = "Sự kiện này là một phần của một chuỗi. Cập nhật sự kiện nào?";
+"This Event Only" = "Chỉ sự kiện này";
+"All Future Events" = "Tất cả các sự kiện trong tương lai";
+"Cancel" = "Hủy bỏ";
+
+/* DraggableMenuView */
+"Calendar" = "Lịch";
+"Subscriptions" = "Đăng ký";
+"Live" = "Trực tiếp";
+"Stop" = "Dừng lại";
+"Calendar Live Activity" = "Lịch hoạt động trực tiếp";
+"Get" = "Nhận";
+"Color" = "Màu sắc";
+"Search for a city…" = "Tìm kiếm thành phố…";
+"No directions" = "Không có chỉ đường";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Quyền truy cập vị trí bị từ chối. Tìm kiếm thành phố hoặc cấp quyền truy cập trong Cài đặt.";
+"Cannot refresh. Location unknown." = "Không thể làm mới. Vị trí không rõ.";
+"10-DAY FORECAST" = "DỰ BÁO 10 NGÀY";
+"HighLowLabelFormat" = "Cao:%d° Thấp:%d°";
+"tomorrow" = "ngày mai";
+"on_day" = "trên %@";
+"in_days" = "trong %d ngày";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Sự kiện mới";
+
+/* Search placeholder */
+"Search for a city..." = "Tìm kiếm thành phố…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Nhấn vào một giờ để nhanh chóng thêm sự kiện vào lịch.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "CẢM NHẬN THÍCH";
+"similar_to_actual_temp" = "Tương tự như nhiệt độ thực tế.";
+"wind_cooler_feel" = "Gió làm người ta cảm thấy mát mẻ hơn.";
+"humidity_warmer_feel" = "Độ ẩm khiến người ta cảm thấy ấm áp hơn.";
+
+/* HumidityCard */
+"HUMIDITY" = "ĐỘ ẨM";
+"The dew point is %d° right now." = "Điểm sương hiện tại là %d°.";
+"dewPoint.current" = "Điểm sương hiện tại là %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "GIAI ĐOẠN MẶT TRĂNG";
+"Moonrise" = "Trăng mọc";
+"Moonset" = "Trăng lặn";
+"Next %@" = "Tiếp theo %@";
+"Data unavailable" = "Dữ liệu không có sẵn";
+"%d day" = "%d ngày";
+"%d days" = "%d ngày";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "MƯA";
+"PRECIPITATION_CARD_TODAY_LABEL" = "hôm nay";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Dự kiến tiếp theo là %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Dự kiến sẽ không có mưa sớm.";
+
+/* PressureCard */
+"PRESSURE" = "ÁP LỰC";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "MẶT TRỜI";
+"Sunrise: %@" = "Bình minh: %@";
+"Sunset: %@" = "Hoàng hôn: %@";
+"Sunrise" = "Bình minh";
+"Sunset" = "Hoàng hôn";
+
+
+/* UVIndexCard */
+"UV INDEX" = "CHỈ SỐ UV";
+"Low" = "Thấp";
+"Moderate" = "Trung bình";
+"High" = "Cao";
+"Very High" = "Rất cao";
+"Extreme" = "Cực đoan";
+
+/* VisibilityCard */
+"VISIBILITY" = "TẦM NHÌN";
+"km" = "km";
+"Perfectly clear view." = "Tầm nhìn hoàn toàn rõ ràng.";
+"Excellent visibility." = "Khả năng hiển thị tuyệt vời.";
+"Good visibility." = "Khả năng hiển thị tốt.";
+"Moderate visibility." = "Tầm nhìn vừa phải.";
+"Poor visibility." = "Tầm nhìn kém.";
+"Very poor visibility." = "Tầm nhìn rất kém.";
+"visibility.perfect"   = "Tầm nhìn hoàn toàn rõ ràng.";
+"visibility.excellent" = "Khả năng hiển thị tuyệt vời.";
+"visibility.good"      = "Khả năng hiển thị tốt.";
+"visibility.moderate"  = "Tầm nhìn vừa phải.";
+"visibility.poor"      = "Tầm nhìn kém.";
+"visibility.verypoor"  = "Tầm nhìn rất kém.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Gió";
+"Gusts" = "Gió giật";
+"Direction" = "Hướng";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Không tìm nạp được dữ liệu thời tiết. Vui lòng kiểm tra kết nối của bạn hoặc thử lại sau.";
+"Falling" = "Rơi";
+"Rising" = "Đang tăng";
+"Steady" = "Ổn định";
+"Unknown" = "Không xác định";
+"Sunny" = "Nắng";
+"Cloudy" = "Nhiều mây";
+"Partly Cloudy" = "Có mây rải rác";
+"Drizzle" = "Mưa phùn";
+"Thunderstorm" = "Sấm sét";
+"Fog" = "Sương mù";
+"Partly Cloudy Night" = "Đêm ít mây";
+"Clear Night" = "Đêm trong trẻo";
+"Hazy" = "mơ hồ";
+"Today" = "hôm nay";
+"Now" = "bây giờ";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "ĐB";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "Tây Bắc";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Khả năng có mưa";
+"Today's chance: %d%%" = "Cơ hội hôm nay: %d%%";
+"%@'s chance: %d%%" = "Cơ hội của %@: %d%%";
+"Max" = "Tối đa";
+"Min" = "tối thiểu";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Khả năng có mưa hàng ngày có xu hướng cao hơn khả năng có mưa từng giờ.";
+"ChanceOfPrecipitation_Title" = "Khả năng có mưa";
+"TodaysChance"                = "Cơ hội hôm nay: %d%%";
+"OtherDayChance"              = "Cơ hội của %@: %d%%";
+"DailyChanceExplanation"      = "Khả năng có mưa hàng ngày có xu hướng cao hơn khả năng có mưa từng giờ.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Nhiệt độ cảm nhận";
+"Actual" = "thực tế";
+"No hourly data available for this day." = "Không có dữ liệu hàng giờ cho ngày này.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Nhiệt độ như thế nào do độ ẩm, ánh sáng mặt trời hoặc gió.";
+"The actual air temperature." = "Nhiệt độ không khí thực tế.";
+"HighLabelFormat" = "Cao: %d°";
+"LowLabelFormat" = "Thấp: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Độ ẩm";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Độ ẩm %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Độ ẩm trung bình %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Tối thiểu hôm nay %d%% – tối đa %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Tối đa";
+"ChartMarker_Min"           = "tối thiểu";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Mưa: %.1f%@, Tuyết: %.1f%@";
+"Precip_Total_RainFormat"       = "Mưa: %.1f%@";
+"Precip_Total_SnowFormat"       = "Tuyết: %.1f%@";
+"Precip_Total_None"             = "Lượng mưa: 0%@";
+"Precip_Bars_Subtitle"          = "Thanh mưa và tuyết hàng giờ (%@).";
+"Precip_Level_Light"            = "Ánh sáng";
+"Precip_Level_Moderate"         = "Trung bình";
+"Precip_Level_Heavy"            = "Nặng";
+"Precip_Tooltip_Format"         = "%@h\nMưa: %.1f%@\nTuyết: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Áp suất %@ %@";
+"Pressure_CurrentUnavailable"      = "Áp lực: --";
+"Pressure_DailyMinMaxFormat"       = "Tối thiểu hôm nay %@ %@ – tối đa %@ %@";
+"Pressure_AverageFormat"           = "Áp suất trung bình %@ %@";
+"Pressure_DailyRangeFormat"        = "Phạm vi hàng ngày: %@–%@ %@";
+"Pressure_Title"                   = "Áp lực";
+"Pressure_NoData"                  = "Không có dữ liệu áp suất có sẵn cho ngày này.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "%@ %d của ngày hôm nay";
+"UVGraphNoHourlyData"   = "Không có dữ liệu hàng giờ cho ngày này.";
+"UVGraphNowLabel"       = "Bây giờ, %@";
+"UVCategory_None"       = "không có";
+"UVCategory_Low"        = "Thấp";
+"UVCategory_Moderate"   = "Trung bình";
+"UVCategory_High"       = "Cao";
+"UVCategory_VeryHigh"   = "Rất cao";
+"UVCategory_Extreme"    = "Cực đoan";
+"UVAdvice_None"         = "Dự kiến sẽ không có mức tia UV ở mức trung bình hoặc cao hơn trong ngày này.";
+"UVAdvice_Range"        = "Khuyến cáo chống nắng. Mức UV dao động từ %@ đến %@, đạt từ %@ đến %@.";
+"UVGraphMaxLabel" = "Tối đa";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Khả năng hiển thị";
+"Visibility_NoData"                = "Không có dữ liệu về khả năng hiển thị cho ngày này.";
+"Visibility_CurrentFormat"         = "Tầm nhìn %d %@";
+"Visibility_DailyMinMaxFormat"     = "tối thiểu %d – tối đa %d %@";
+"Visibility_NoCurrentData"         = "Không có sẵn dữ liệu hiển thị hiện tại.";
+"Visibility_HourlyAverages_NoData" = "Không có dữ liệu hàng giờ có sẵn.";
+"Visibility_MaxLabel"              = "Tối đa";
+"Visibility_MinLabel"              = "tối thiểu";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Tốc độ gió và gió giật";
+"WindGraph_NoData" = "Không có dữ liệu gió có sẵn cho ngày này.";
+"WindGraph_SpeedHeader" = "Tốc độ gió %d";
+"WindGraph_GustHeader" = "Gió giật lên tới %d";
+"WindGraph_SpeedRangeHeader" = "Tốc độ gió %d-%d";
+"WindGraph_MaxSpeedLabel" = "Tốc độ tối đa";
+"WindGraph_MaxGustLabel" = "Gió giật tối đa";
+"WindGraph_DragLabel" = "%@\nTốc độ: %d\nGió giật: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Tóm tắt hàng ngày";
+
+"Precipitation Totals" = "Tổng lượng mưa";
+"LAST 24 HOURS" = "24 GIỜ CUỐI CÙNG";
+"NEXT 24 HOURS" = "24 GIỜ TỚI";
+"Total" = "Tổng cộng";
+"Rain" = "Mưa";
+"Snow" = "Tuyết";
+
+"About Wind Speed and Gusts" = "Về tốc độ gió và gió giật";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Tốc độ gió được tính bằng cách sử dụng giá trị trung bình trong một khoảng thời gian ngắn. Gió giật là những đợt gió ngắn trên mức trung bình này. Một cơn gió giật thường kéo dài dưới 20 giây.";
+
+"About the Beaufort Scale" = "Giới thiệu về thang đo Beaufort";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Thang gió Beaufort biểu thị mức độ mạnh hay mạnh của gió ở một tốc độ nhất định. Thang đo Beaufort có thể giúp bạn dễ dàng hiểu được cảm giác gió như thế nào hoặc mức độ ảnh hưởng của gió. Mỗi giá trị trên thang đo tương ứng với một phạm vi tốc độ gió.";
+
+"About Feels Like Temperature" = "Giới thiệu về nhiệt độ cảm nhận";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Nhiệt độ cảm nhận cho biết thời tiết mang lại cảm giác nóng hay lạnh như thế nào và có thể khác với nhiệt độ thực tế. Giá trị này chịu ảnh hưởng của độ ẩm, ánh nắng và gió.";
+
+"Options" = "Tùy chọn";
+"Temperature" = "Nhiệt độ";
+"Use system setting (°C)" = "Sử dụng cài đặt hệ thống (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Điều kiện";
+"UV Index" = "Chỉ số UV";
+"Wind" = "Gió";
+"Precipitation" = "Lượng mưa";
+"Humidity" = "Độ ẩm";
+"Visibility" = "Khả năng hiển thị";
+"Pressure" = "Áp lực";
+
+/* Fallback key */
+"displayedCondition" = "hiển thịĐiều kiện";
+
+/* Titles */
+"Forecast"                   = "Dự báo";
+"DailySummary"               = "Tóm tắt hàng ngày";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° hiện có điều kiện %@. Khả năng có mưa là %@. Gió từ %@ với gió giật lên tới %d %@. Nhiệt độ hôm nay dao động từ %d° đến %d° và có cảm giác như %d°. %@ và %@.";
+"UVIndexFormat"              = "Chỉ số UV lên tới %d";
+"HumidityFormat"             = "Độ ẩm khoảng %d%%";
+"HumidityRangeFormat"        = "Độ ẩm từ %d%% đến %d%%";
+"NA"                         = "không áp dụng";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Mức thấp của %@ là %d° và mức cao là %d°. Nhiệt độ sẽ có cảm giác như %d° đến %d°. Dự kiến ​​sẽ có gió từ %@. %@";
+"NoPrecipLast24h"            = "Không có lượng mưa nào được ghi nhận trong 24 giờ qua.";
+"RainLast24h"                = "Trời mưa %d mm trong 24 giờ qua.";
+"SnowAndRainLast24h"         = "Trong 24 giờ qua, lượng tuyết đo được là %@ cm và mưa %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "ĐB";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "Tây Bắc";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Tổng lượng mưa";
+"Last24h_Label"             = "24 GIỜ CUỐI CÙNG";
+"Next24h_Label"             = "24 GIỜ TỚI";
+"Total_Label"               = "Tổng cộng";
+"Precipitation_Label"       = "Lượng mưa";
+"Rain_Label"                = "Mưa";
+"Snow_Label"                = "Tuyết";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Gió hiện là %1$d %2$@ từ %3$@. Ngày nay, tốc độ gió là %4$d đến %5$d %2$@, với gió giật lên tới %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Tốc độ gió dao động từ %1$d đến %2$d %3$@, với gió giật lên tới %4$d %3$@.";
+
+"Beaufort_Scale"                = "Thang đo Beaufort";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Mô tả";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Bình tĩnh";
+"Beaufort_1"                    = "Không khí nhẹ nhàng";
+"Beaufort_2"                    = "Gió nhẹ";
+"Beaufort_3"                    = "Gió nhẹ nhàng";
+"Beaufort_4"                    = "Gió vừa phải";
+"Beaufort_5"                    = "Làn gió trong lành";
+"Beaufort_6"                    = "Gió mạnh";
+"Beaufort_7"                    = "Gió lớn";
+"Beaufort_8"                    = "cơn gió mạnh";
+"Beaufort_9"                    = "Gió mạnh";
+"Beaufort_10"                   = "Bão";
+"Beaufort_11"                   = "Cơn bão dữ dội";
+"Beaufort_12"                   = "Bão-lực";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Đã có %.1f%@ lượng mưa trong 24 giờ qua. Tổng lượng mưa hôm nay sẽ là %.1f%@. Dự kiến ​​trong 24 giờ tới, lượng mưa sẽ là %.1f%@.";
+"ForecastPrecip_OtherDayFormat" = "Trên %@, tổng lượng mưa sẽ là %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Về cường độ mưa";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Cường độ được tính dựa trên lượng mưa hoặc tuyết rơi mỗi giờ và dùng để cho biết mưa hoặc tuyết sẽ có cảm giác mạnh đến mức nào. Chỉ số này cũng được dùng cho các dạng giáng thủy khác như mưa tuyết và hỗn hợp mùa đông. Một trận mưa xối xả hoặc bão tuyết lớn có thể có cường độ “mạnh”, trong khi mưa thông thường hoặc mưa phùn nhẹ hơn có thể có cường độ “vừa” hoặc “nhẹ”.";
+
+/* Section titles */
+"Forecast_Title"               = "Dự báo";
+"DailySummary_Title"           = "Tóm tắt hàng ngày";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Điểm sương là %d° đến %d°.";
+"DewPoint_FutureFormat"        = "Điểm sương sẽ là %d° đến %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Hôm nay, độ ẩm trung bình là %d%%. %@";
+"ForecastHumidity_Other"       = "Trên %@, độ ẩm trung bình sẽ là %d%%.\n%@";
+
+"AboutPressure_Title"  = "Về áp lực";
+"AboutPressure_Body"   = "Những thay đổi nhanh chóng, đáng kể về áp suất được sử dụng để dự đoán những thay đổi của thời tiết. Ví dụ, áp suất giảm có thể có nghĩa là sắp có mưa hoặc tuyết và áp suất tăng có thể có nghĩa là thời tiết sẽ được cải thiện. Áp suất còn được gọi là áp suất khí quyển hoặc áp suất khí quyển.";
+
+"AboutHumidity_Title"  = "Về độ ẩm tương đối";
+"AboutHumidity_Body"   = "Độ ẩm tương đối, thường được gọi là độ ẩm, là lượng hơi ẩm trong không khí so với những gì không khí có thể giữ được. Không khí có thể giữ được nhiều độ ẩm hơn ở nhiệt độ cao hơn. Độ ẩm tương đối gần 100% nghĩa là có thể có sương hoặc sương mù.";
+
+"AboutDewPoint_Title" = "Về điểm sương";
+"AboutDewPoint_Body"  = "Điểm sương là nhiệt độ cần giảm xuống để sương hình thành. Đây có thể là một cách hữu ích để biết độ ẩm của không khí - điểm sương càng cao thì cảm giác càng ẩm. Điểm sương phù hợp với nhiệt độ hiện tại có nghĩa là độ ẩm tương đối là 100% và có thể có sương hoặc sương mù.";
+
+"Section_Forecast"                     = "Dự báo";
+"Section_DailySummary"                 = "Tóm tắt hàng ngày";
+"ForecastVisibility_TodayFormat" = "Hôm nay, mức độ hiển thị sẽ là %@, ở mức %d đến %d %@.";
+"ForecastVisibility_OtherFormat" = "Trên %@, mức hiển thị thấp nhất sẽ là %@ tại %d %@ và mức hiển thị cao nhất sẽ là %@ tại %d %@.";
+"Clarity_Foggy"                        = "có sương mù";
+"Clarity_Hazy"                         = "mơ hồ";
+"Clarity_Clear"                        = "Xóa";
+"Clarity_PerfectlyClear"               = "Hoàn toàn rõ ràng";
+
+"AboutVisibility_Title" = "Giới thiệu về khả năng hiển thị";
+"AboutVisibility_Body" = "Khả năng hiển thị cho bạn biết bạn có thể nhìn rõ các vật thể như tòa nhà và ngọn đồi ở khoảng cách bao xa. Nó là thước đo độ trong suốt của không khí và không tính đến lượng ánh sáng mặt trời hoặc sự hiện diện của vật cản. Tầm nhìn bằng hoặc cao hơn %@ được coi là rõ ràng.";
+
+"PressureForecast_Today" = "Áp suất hiện tại là %@ %@ và đang giảm. Hôm nay, áp suất trung bình sẽ là %@ %@, áp suất thấp nhất sẽ là %@ %@.";
+"PressureForecast_Other" = "Trên %@, áp suất trung bình sẽ là %@ %@, và áp suất thấp nhất sẽ là %@ %@.";
+"SectionForecast" = "Dự báo";
+"SectionDailySummary" = "Tóm tắt hàng ngày";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Tất cả tính năng của Gói cơ bản";
+"Multi-calendar view" = "Xem nhiều lịch";
+"Sync with Google Calendar" = "Đồng bộ hóa với Lịch Google";
+"Sync meets from Google Meet" = "Đồng bộ hóa đáp ứng từ Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Gói cơ bản";
+"Single-day calendar view" = "Xem lịch một ngày";
+"Multi-day calendar view" = "Xem lịch nhiều ngày";
+"Monthly calendar view" = "Xem lịch hàng tháng";
+"Yearly overview" = "Tổng quan hàng năm";
+"List view for events" = "Chế độ xem danh sách cho các sự kiện";
+"Weather view" = "Xem thời tiết";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Gói cao cấp";
+"Sync with Microsoft Calendar" = "Đồng bộ hóa với Lịch Microsoft";
+"Sync meets from Microsoft Teams" = "Đồng bộ hóa đáp ứng từ Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Tương đương với %@ mỗi tháng";
+"%d %@ free" = "%d %@ miễn phí";
+
+/* SubscriptionListView */
+"Premium Plans" = "Gói cao cấp";
+"You are subscribed to the %@ %@ plan" = "Bạn đã đăng ký gói %@ %@";
+"Renews on: %@" = "Gia hạn vào: %@";
+"Start Free Trial" = "Bắt đầu dùng thử miễn phí";
+"Subscribe Now" = "Đăng ký ngay";
+"%d %@ free, then %@%@." = "%d %@ miễn phí, sau đó %@%@.";
+"Subscribe for %@%@." = "Đăng ký %@%@.";
+"Privacy Policy"     = "Chính sách bảo mật";
+"Terms of Service"   = "Điều khoản dịch vụ";
+
+/* SubscriptionCategory */
+"Advanced" = "Nâng cao";
+"Advanced Plan" = "Kế hoạch nâng cao";
+"All Advanced Plan features" = "Tất cả các tính năng của Gói nâng cao";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Bạn cần có gói %@ đang hoạt động để truy cập phần này.";
+"Plan Required" = "Kế hoạch cần thiết";
+"OK" = "được rồi";
+
+/* SubscriptionStatus */
+"Base"    = "Căn cứ";
+"Premium" = "Cao cấp";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Đã đăng ký gói %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Gia hạn vào: %@";
+
+"Manage Subscription"                   = "Quản lý đăng ký";
+
+/* Period units */
+"Daily"     = "hàng ngày";
+"Weekly"    = "hàng tuần";
+"Monthly"   = "hàng tháng";
+"Yearly"    = "Hàng năm";
+"Recurring" = "Định kỳ";
+
+/* units */
+"day"   = "ngày";
+"days"  = "ngày";
+"week"  = "tuần";
+"weeks" = "tuần";
+"month"  = "tháng";
+"months" = "tháng";
+"year"   = "năm";
+"years"  = "năm";
+
+/* YearMonthMiniView */
+"weekday.headers" = "CN,T2,T3,T4,T5,T6,T7";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Các giao dịch mua trước đó của bạn đã được khôi phục thành công.";
+"No active subscriptions found to restore."                = "Không tìm thấy đăng ký đang hoạt động nào để khôi phục.";
+"Failed to restore purchases. Please try again later. (%@)" = "Không thể khôi phục giao dịch mua. Vui lòng thử lại sau. (%@)";
+"Restore Purchases"                                        = "Khôi phục mua hàng";
+
+"Ads Free" = "Quảng cáo miễn phí";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Lịch & Thời tiết";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Tiện ích nhỏ hiển thị ngày hôm nay và thời tiết hiện tại. Tiện ích vừa bổ sung pha Mặt Trăng và gió.";
+"Calendar Events" = "Sự kiện lịch";
+"Shows today's date, current weather, and your next calendar events." = "Hiển thị ngày hôm nay, thời tiết hiện tại và các sự kiện lịch tiếp theo của bạn.";
+"No upcoming events" = "Không có sự kiện sắp tới";
+"Tomorrow" = "Ngày mai";
+"Untitled" = "Không có tiêu đề";
+"Detail" = "Chi tiết";
+"Phase" = "Giai đoạn";
+"Weather" = "Thời tiết";
+"Select Your Email" = "Chọn email của bạn";
+"Confirm" = "Xác nhận";
+"Calendar name" = "Tên lịch";
+"Sharing: %@" = "Chia sẻ: %@";
+"Loading..." = "Đang tải...";
+"Selected Location" = "Vị trí đã chọn";
+"Data provided by Apple Weather" = "Dữ liệu được cung cấp bởi Apple Weather";
+"Next" = "Tiếp theo";
+"No details found for the selected location." = "Không tìm thấy chi tiết nào cho vị trí đã chọn.";
+"Could not determine the time zone for the selected location." = "Không thể xác định múi giờ cho vị trí đã chọn.";
+"(No Title)" = "(Không có tiêu đề)";
+"Choose your e-mail" = "Chọn email của bạn";
+"It will be treated as your primary address and invitations will not be sent to it." = "Địa chỉ này sẽ được coi là địa chỉ chính của bạn và lời mời sẽ không được gửi tới địa chỉ đó.";
+"Invalid URL" = "URL không hợp lệ";
+"Rate limit or insufficient permission" = "Giới hạn tỷ lệ hoặc không đủ quyền";
+"Network error: %@" = "Lỗi mạng: %@";
+"N/A - Selected Tab: %@" = "Không áp dụng - Tab đã chọn: %@";
+"Enable Notifications" = "Bật thông báo";
+"Event Notifications" = "Thông báo sự kiện";
+"Event alerts are scheduled from your event alert settings." = "Cảnh báo sự kiện được lên lịch từ cài đặt cảnh báo sự kiện của bạn.";
+"Allow notifications so event alerts can appear at the right time." = "Cho phép thông báo để cảnh báo sự kiện có thể xuất hiện vào đúng thời điểm.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Thông báo bị tắt cho ứng dụng này. Để bật chúng, hãy đi tới: Cài đặt -> Ứng dụng -> Cloud Calendars -> Thông báo -> Cho phép thông báo.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Dining là huấn luyện viên hỗ trợ AI của bạn để có chế độ dinh dưỡng và tập luyện thông minh hơn. Nó kết hợp khoa học dinh dưỡng hiện đại với các công cụ thiết thực để giúp bạn lên kế hoạch cho bữa ăn, thiết kế bài tập, quản lý tủ đựng thức ăn và hiểu thức ăn và chuyển động ảnh hưởng đến cơ thể bạn như thế nào.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio là môi trường thiết kế 3D nâng cao dành cho nhà phát triển iOS và macOS. Ứng dụng kết hợp khả năng kết xuất RealityKit chính xác với trình chỉnh sửa văn bản có định dạng mạnh mẽ để biến ảnh chụp màn hình thô thành tài liệu App Store chuyên nghiệp.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio là phòng thu màn hình dành cho người sáng tạo dành cho iOS và macOS. Chụp màn hình và máy ảnh của bạn cùng lúc, điều khiển micrô + âm thanh hệ thống và xuất các tệp MP4 sạch để làm hướng dẫn, hướng dẫn và demo sản phẩm. Trên iOS, bạn thậm chí có thể phát video bên trong ứng dụng và ghi lại video đó bằng máy ảnh của mình để có nội dung theo phong cách phản ứng và do người thuyết trình dẫn dắt.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars kết hợp lập kế hoạch nâng cao với tính năng dự báo thời tiết được tích hợp đẹp mắt để bạn có thể lập kế hoạch một cách chính xác. Nó hỗ trợ nhiều dịch vụ lịch, chỉnh sửa dựa trên cử chỉ trực quan, liên kết cuộc họp tích hợp và dự báo chi tiết hàng giờ/hàng ngày ngay trong lịch trình của bạn.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI giúp bạn hiểu diễn biến thị trường bằng phân tích trên thiết bị và quy trình làm việc đa tác nhân được thiết kế để tách tín hiệu khỏi nhiễu. Theo dõi dữ liệu giá theo thời gian thực, khám phá xác suất theo kiểu chế độ và sử dụng bảng điều khiển và biểu đồ rõ ràng để hỗ trợ việc ra quyết định của bạn. Ưu tiên quyền riêng tư: cấu hình của bạn vẫn được lưu trên thiết bị của bạn.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Ứng dụng";
+"Plan" = "Gói";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Bão tuyết";
+"WeatherCondition.blowingDust" = "Bụi";
+"WeatherCondition.blowingSnow" = "Tuyết thổi mạnh";
+"WeatherCondition.breezy" = "Gió nhẹ";
+"WeatherCondition.clear" = "Quang mây";
+"WeatherCondition.cloudy" = "Có mây";
+"WeatherCondition.drizzle" = "Mưa phùn";
+"WeatherCondition.flurries" = "Mưa phùn tuyết";
+"WeatherCondition.foggy" = "Sương mù";
+"WeatherCondition.freezingDrizzle" = "Mưa phùn băng";
+"WeatherCondition.freezingRain" = "Mưa băng";
+"WeatherCondition.frigid" = "Lạnh";
+"WeatherCondition.hail" = "Mưa đá";
+"WeatherCondition.haze" = "Sương mù nhẹ";
+"WeatherCondition.heavyRain" = "Mưa lớn";
+"WeatherCondition.heavySnow" = "Tuyết rơi nhiều";
+"WeatherCondition.hot" = "Nóng";
+"WeatherCondition.hurricane" = "Bão lốc";
+"WeatherCondition.isolatedThunderstorms" = "Giông bão diện hẹp";
+"WeatherCondition.mostlyClear" = "Trời quang mây";
+"WeatherCondition.mostlyCloudy" = "Trời nhiều mây";
+"WeatherCondition.partlyCloudy" = "Có mây vài nơi";
+"WeatherCondition.rain" = "Mưa";
+"WeatherCondition.scatteredThunderstorms" = "Giông bão rải rác";
+"WeatherCondition.sleet" = "Mưa tuyết";
+"WeatherCondition.smoky" = "Khói";
+"WeatherCondition.snow" = "Tuyết";
+"WeatherCondition.strongStorms" = "Giông bão mạnh";
+"WeatherCondition.sunFlurries" = "Mưa phùn tuyết bóng mây";
+"WeatherCondition.sunShowers" = "Mưa bóng mây";
+"WeatherCondition.thunderstorms" = "Giông bão";
+"WeatherCondition.tropicalStorm" = "Bão nhiệt đới";
+"WeatherCondition.windy" = "Có gió";
+"WeatherCondition.wintryMix" = "Mưa và tuyết hỗn hợp";
+"MoonPhase.new" = "Trăng non";
+"MoonPhase.waxingCrescent" = "Lưỡi liềm đầu tháng";
+"MoonPhase.firstQuarter" = "Thượng huyền";
+"MoonPhase.waxingGibbous" = "Khuyết đầu tháng";
+"MoonPhase.full" = "Trăng tròn";
+"MoonPhase.waningGibbous" = "Khuyết cuối tháng";
+"MoonPhase.lastQuarter" = "Hạ huyền";
+"MoonPhase.waningCrescent" = "Lưỡi liềm cuối tháng";

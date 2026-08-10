@@ -14,15 +14,16 @@ struct SubscriptionCard: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(product.periodUnitOnly)
                         .font(.headline)
+                        .adaptiveSingleLine(minimumScale: 0.4)
                     Text(product.displayPrice)
                         .font(.title2.weight(.semibold))
+                        .adaptiveSingleLine(minimumScale: 0.55)
                     
-                    // → локализирано чрез NSLocalizedString + String(format:)
+                    // → локализирано чрез NSLocalizedString + localizedFormat()
                     if let monthly = product.pricePerMonth,
                        product.subscription?.subscriptionPeriod.unit == .year {
                         Text(
-                            String(
-                                format: NSLocalizedString(
+                            localizedFormat(NSLocalizedString(
                                     "Equivalent to %@ per month",
                                     comment: "Equivalent monthly price"
                                 ),
@@ -31,14 +32,14 @@ struct SubscriptionCard: View {
                         )
                         .font(.caption)
                         .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
                     }
 
                     if !isActive, let intro = product.subscription?.introductoryOffer {
                         let plural = intro.period.value > 1
                         let unit = intro.period.unit.noun(plural: plural).lowercased()
                         Text(
-                            String(
-                                format: NSLocalizedString(
+                            localizedFormat(NSLocalizedString(
                                     "%d %@ free",
                                     comment: "Introductory free period"
                                 ),
@@ -48,10 +49,12 @@ struct SubscriptionCard: View {
                         )
                         .font(.subheadline.weight(.medium))
                         .foregroundColor(.orange)
+                        .fixedSize(horizontal: false, vertical: true)
                         .padding(.top, 2)
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
+                .frame(maxWidth: .infinity, alignment: .leading)
 
                 Spacer()
 

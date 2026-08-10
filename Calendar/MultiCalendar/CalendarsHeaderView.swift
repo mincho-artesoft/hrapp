@@ -1,6 +1,13 @@
 import UIKit
 import EventKit
 
+@MainActor
+func arrangedForLayoutDirection<Element>(_ values: [Element], in view: UIView) -> [Element] {
+    view.effectiveUserInterfaceLayoutDirection == .rightToLeft
+        ? Array(values.reversed())
+        : values
+}
+
 final class CalendarsHeaderView: UIView {
     /// Данни за всеки календар: [calendarID: (title, color, selected)]
     var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:] {
@@ -44,7 +51,10 @@ final class CalendarsHeaderView: UIView {
         }
 
         // 3) Сортираме ги по .title
-        let sortedCals = calsToDraw.sorted { $0.1.title < $1.1.title }
+        let sortedCals = arrangedForLayoutDirection(
+            calsToDraw.sorted { $0.1.title < $1.1.title },
+            in: self
+        )
 
         // 4) Създаваме UILabel за всеки, в сортиран ред
         for (_, info) in sortedCals {
@@ -52,6 +62,7 @@ final class CalendarsHeaderView: UIView {
             label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
             label.text = info.title
             label.textAlignment = .center
+            label.useAdaptiveSingleLine(minimumScale: 0.4)
 //            label.layer.cornerRadius = 8
 //            label.layer.masksToBounds = true
             label.textColor = info.color
@@ -73,29 +84,14 @@ final class CalendarsHeaderView: UIView {
         let totalWidth = bounds.width
         let isLandscape = bounds.width > bounds.height
 
-        // Ако колоните са 4 или повече -> фиксирана ширина
-        // Ако са < 4 -> разпределяме по цялата ширина
+        // Keep the same responsive rule as the timeline: common calendar
+        // counts fit completely; very large selections stay scrollable.
         let actualColumnWidth: CGFloat
-        if isLandscape {
-            if count < 7 {
-                actualColumnWidth = totalWidth / CGFloat(count)
-            } else {
-                if calendarsDict.values.filter({ $0.selected }).count > 0 {
-                    actualColumnWidth = defaultColumnWidth
-                } else {
-                    actualColumnWidth = totalWidth / CGFloat(count)
-                }
-            }
+        let fullyVisibleCalendarLimit = isLandscape ? 10 : 8
+        if count <= fullyVisibleCalendarLimit {
+            actualColumnWidth = totalWidth / CGFloat(count)
         } else {
-            if count < 4 {
-                actualColumnWidth = totalWidth / CGFloat(count)
-            } else {
-                if calendarsDict.values.filter({ $0.selected }).count > 0 {
-                    actualColumnWidth = defaultColumnWidth
-                } else {
-                    actualColumnWidth = totalWidth / CGFloat(count)
-                }
-            }
+            actualColumnWidth = max(52, defaultColumnWidth * 0.52)
         }
         
         for (index, lbl) in labelViews.enumerated() {

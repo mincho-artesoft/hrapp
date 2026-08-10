@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Nebyl poskytnut žádný e-mail.";
+"Please enter a valid email to continue." = "Chcete-li pokračovat, zadejte platný e-mail.";
+"Your email" = "Váš email";
+"Save" = "Uložit";
+"Login" = "Přihlášení";
+"Logout" = "Odhlášení";
+
+/* RootView */
+"N/A" = "Není k dispozici";
+"Calendars" = "Kalendáře";
+"Inbox" = "Doručená pošta";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Jiné";
+"Google calendars" = "Google kalendáře";
+"No synced Google calendars yet." = "Zatím žádné synchronizované kalendáře Google.";
+"Microsoft calendars" = "Microsoft kalendáře";
+"No synced Microsoft calendars yet." = "Zatím žádné synchronizované kalendáře Microsoft.";
+"Sign out" = "Odhlaste se";
+"Add iCloud Calendar" = "Přidat kalendář iCloud";
+"Share calendars with iCloud Calendar" = "Sdílet kalendáře s Kalendářem na iCloudu";
+"Sign in with Google" = "Přihlaste se pomocí Google";
+"Sign in with Microsoft" = "Přihlaste se pomocí Microsoft";
+"Deselect All" = "Zrušte výběr všech";
+"Select All" = "Vyberte Vše";
+"No Email" = "Žádný e-mail";
+"Add Google Calendar" = "Přidat kalendář Google";
+
+/* AddCalendarView */
+"Calendar Name" = "Název kalendáře";
+"Account" = "účet";
+"COLOR" = "BARVA";
+"NOTIFICATIONS" = "OZNÁMENÍ";
+"Event Alerts" = "Upozornění na události";
+"Allow events on this calendar to display alerts." = "Povolit událostem v tomto kalendáři zobrazovat upozornění.";
+"Add Calendar" = "Přidat kalendář";
+
+/* Colors */
+"Red" = "Červená";
+"Orange" = "Oranžová";
+"Yellow" = "Žlutá";
+"Green" = "Zelená";
+"Blue" = "Modrá";
+"Purple" = "Fialová";
+"Brown" = "Hnědá";
+"Custom" = "Vlastní";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Barva kalendáře";
+"Custom..." = "Vlastní...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Upravit kalendář";
+"Delete Calendar" = "Smazat kalendář";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Načítání nastavení sdílení…";
+"Shared with these users" = "Sdíleno s těmito uživateli";
+"Add New Email" = "Přidat nový e-mail";
+"Email to share" = "E-mail pro sdílení";
+"Permission:" = "Oprávnění:";
+"Add" = "Přidat";
+"Sharing:" = "Sdílení:";
+"Done" = "Hotovo";
+
+"Error loading: %@" = "Chyba při načítání: %@";
+"Error adding: %@" = "Chyba při přidávání: %@";
+"Error deleting: %@" = "Chyba při mazání: %@";
+"Error updating: %@" = "Chyba při aktualizaci: %@";
+"Error re-inviting (delete): %@" = "Chyba při opětovném pozvání (smazání): %@";
+"Error re-inviting (insert): %@" = "Chyba při opětovném pozvání (vložení): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Čtenář";
+"Writer" = "Spisovatel";
+"Owner"  = "vlastník";
+
+/* MonthCalendarView */
+"Day View" = "Denní pohled";
+"This is a repeating event." = "Toto je opakující se událost.";
+"Save for This Event Only" = "Uložit pouze pro tuto událost";
+"Save for Future Events" = "Uložit pro budoucí události";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Slunce";
+"Mon" = "Po";
+"Tue" = "út";
+"Wed" = "St";
+"Thu" = "Čt";
+"Fri" = "pá";
+"Sat" = "So";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Zavřít";
+
+/* AllEventsListView */
+"No calendar access." = "Žádný přístup ke kalendáři.";
+
+/* EventRowView */
+"Ends" = "Končí";
+
+/* SearchEventRowView */
+"No Title" = "Bez názvu";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Připojte se ke schůzce";
+"Edit" = "Upravit";
+"Duplicate" = "Duplicitní";
+"Delete" = "Smazat";
+"Add to Google Meet" = "Přidat do Google Meet";
+"Add to Microsoft Teams" = "Přidat do Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Žádný vybraný rozsah";
+"all-day" = "celodenní";
+"Search events..." = "Hledat události...";
+"Day" = "den";
+"MultiDay" = "Vícedenní";
+"Month" = "měsíc";
+"Year" = "rok";
+"List" = "Seznam";
+"MultiCalendar" = "MultiKalendář";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Nová událost";
+"All-day event" = "Celodenní akce";
+"Recurring Event" = "Opakující se událost";
+"This event is part of a series. Update which events?" = "Tato událost je součástí seriálu. Aktualizovat, které události?";
+"This Event Only" = "Pouze tato událost";
+"All Future Events" = "Všechny budoucí události";
+"Cancel" = "Zrušit";
+
+/* DraggableMenuView */
+"Calendar" = "Kalendář";
+"Subscriptions" = "Předplatné";
+"Live" = "Živě";
+"Stop" = "Přestaň";
+"Calendar Live Activity" = "Živá aktivita kalendáře";
+"Get" = "Získejte";
+"Color" = "Barva";
+"Search for a city…" = "Vyhledejte město…";
+"No directions" = "Žádné pokyny";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Přístup k poloze byl odepřen. Vyhledejte město nebo udělte přístup v Nastavení.";
+"Cannot refresh. Location unknown." = "Nelze obnovit. Místo neznámé.";
+"10-DAY FORECAST" = "PŘEDPOVĚĎ NA 10 DNÍ";
+"HighLowLabelFormat" = "Max.:%d° Min.:%d°";
+"tomorrow" = "zítra";
+"on_day" = "na %@";
+"in_days" = "za %d dní";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Nová událost";
+
+/* Search placeholder */
+"Search for a city..." = "Vyhledejte město…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Klepnutím na hodinu rychle přidáte událost kalendáře.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "CÍTÍ SE JAKO";
+"similar_to_actual_temp" = "Podobně jako skutečná teplota.";
+"wind_cooler_feel" = "Díky větru se cítí chladněji.";
+"humidity_warmer_feel" = "Díky vlhkosti je pocitově teplejší.";
+
+/* HumidityCard */
+"HUMIDITY" = "VLHKOST";
+"The dew point is %d° right now." = "Rosný bod je právě teď %d°.";
+"dewPoint.current" = "Rosný bod je právě teď %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "FÁZE MĚSÍCE";
+"Moonrise" = "Východ měsíce";
+"Moonset" = "Západ Měsíce";
+"Next %@" = "Další %@";
+"Data unavailable" = "Data nedostupná";
+"%d day" = "%d den";
+"%d days" = "%d dnů";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "SRÁŽKY";
+"PRECIPITATION_CARD_TODAY_LABEL" = "dnes";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Další očekávaná hodnota je %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Brzy se neočekávají žádné srážky.";
+
+/* PressureCard */
+"PRESSURE" = "TLAK";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "VÝCHOD SLUNCE";
+"Sunrise: %@" = "Východ slunce: %@";
+"Sunset: %@" = "Západ slunce: %@";
+"Sunrise" = "Východ slunce";
+"Sunset" = "Západ slunce";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UV INDEX";
+"Low" = "Nízká";
+"Moderate" = "Mírný";
+"High" = "Vysoká";
+"Very High" = "Velmi vysoká";
+"Extreme" = "Extrémní";
+
+/* VisibilityCard */
+"VISIBILITY" = "VIDITELNOST";
+"km" = "km";
+"Perfectly clear view." = "Dokonale čistý výhled.";
+"Excellent visibility." = "Výborná viditelnost.";
+"Good visibility." = "Dobrá viditelnost.";
+"Moderate visibility." = "Střední viditelnost.";
+"Poor visibility." = "Špatná viditelnost.";
+"Very poor visibility." = "Velmi špatná viditelnost.";
+"visibility.perfect"   = "Dokonale čistý výhled.";
+"visibility.excellent" = "Výborná viditelnost.";
+"visibility.good"      = "Dobrá viditelnost.";
+"visibility.moderate"  = "Střední viditelnost.";
+"visibility.poor"      = "Špatná viditelnost.";
+"visibility.verypoor"  = "Velmi špatná viditelnost.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Vítr";
+"Gusts" = "Poryvy";
+"Direction" = "Směr";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Nepodařilo se načíst údaje o počasí. Zkontrolujte připojení nebo to zkuste znovu později.";
+"Falling" = "Padající";
+"Rising" = "Stoupající";
+"Steady" = "Stabilní";
+"Unknown" = "Neznámý";
+"Sunny" = "Slunečno";
+"Cloudy" = "Zataženo";
+"Partly Cloudy" = "Částečně oblačno";
+"Drizzle" = "Mrholení";
+"Thunderstorm" = "Bouřka";
+"Fog" = "mlha";
+"Partly Cloudy Night" = "Částečně oblačno";
+"Clear Night" = "Jasná noc";
+"Hazy" = "Zamlžený";
+"Today" = "dnes";
+"Now" = "Teď";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WWW";
+"cardinal.NW"  = "SZ";
+"cardinal.NNW" = "SSZ";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Možnost srážek";
+"Today's chance: %d%%" = "Dnešní šance: %d%%";
+"%@'s chance: %d%%" = "Šance %@: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Denní pravděpodobnost srážek bývá vyšší než pravděpodobnost pro každou hodinu.";
+"ChanceOfPrecipitation_Title" = "Možnost srážek";
+"TodaysChance"                = "Dnešní šance: %d%%";
+"OtherDayChance"              = "Šance %@: %d%%";
+"DailyChanceExplanation"      = "Denní pravděpodobnost srážek bývá vyšší než pravděpodobnost pro každou hodinu.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Pocit jako";
+"Actual" = "Skutečné";
+"No hourly data available for this day." = "Pro tento den nejsou k dispozici žádné hodinové údaje.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Jaká je pocitová teplota v důsledku vlhkosti, slunečního záření nebo větru.";
+"The actual air temperature." = "Skutečná teplota vzduchu.";
+"HighLabelFormat" = "Max.: %d°";
+"LowLabelFormat" = "Min.: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Vlhkost";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Vlhkost %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Průměrná vlhkost %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Dnešní min %d%% – max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Déšť: %.1f%@, Sníh: %.1f%@";
+"Precip_Total_RainFormat"       = "Déšť: %.1f%@";
+"Precip_Total_SnowFormat"       = "Sníh: %.1f%@";
+"Precip_Total_None"             = "Srážky: 0%@";
+"Precip_Bars_Subtitle"          = "Hodinové pruhy pro déšť a sníh (%@).";
+"Precip_Level_Light"            = "Světlo";
+"Precip_Level_Moderate"         = "Mírný";
+"Precip_Level_Heavy"            = "Těžký";
+"Precip_Tooltip_Format"         = "%@h\nDéšť: %.1f%@\nSníh: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Tlak %@ %@";
+"Pressure_CurrentUnavailable"      = "Tlak: --";
+"Pressure_DailyMinMaxFormat"       = "Dnešní min %@ %@ – max %@ %@";
+"Pressure_AverageFormat"           = "Průměrný tlak %@ %@";
+"Pressure_DailyRangeFormat"        = "Denní rozsah: %@–%@ %@";
+"Pressure_Title"                   = "Tlak";
+"Pressure_NoData"                  = "Pro tento den nejsou k dispozici žádné údaje o tlaku.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Dnešní %@ %d";
+"UVGraphNoHourlyData"   = "Pro tento den nejsou k dispozici žádné hodinové údaje.";
+"UVGraphNowLabel"       = "Nyní, %@";
+"UVCategory_None"       = "žádný";
+"UVCategory_Low"        = "Nízká";
+"UVCategory_Moderate"   = "Mírný";
+"UVCategory_High"       = "Vysoká";
+"UVCategory_VeryHigh"   = "Velmi vysoká";
+"UVCategory_Extreme"    = "Extrémní";
+"UVAdvice_None"         = "Pro tento den se neočekávají žádné střední nebo vyšší úrovně UV záření.";
+"UVAdvice_Range"        = "Doporučuje se ochrana proti slunci. Úrovně UV se pohybují od %@ do %@, dosahují mezi %@ a %@.";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Viditelnost";
+"Visibility_NoData"                = "Pro tento den nejsou k dispozici žádné údaje o viditelnosti.";
+"Visibility_CurrentFormat"         = "Viditelnost %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – max %d %@";
+"Visibility_NoCurrentData"         = "Nejsou k dispozici žádné aktuální údaje o viditelnosti.";
+"Visibility_HourlyAverages_NoData" = "Nejsou k dispozici žádné hodinové údaje.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Rychlost a poryv větru";
+"WindGraph_NoData" = "Pro tento den nejsou k dispozici žádné údaje o větru.";
+"WindGraph_SpeedHeader" = "Rychlost větru %d";
+"WindGraph_GustHeader" = "Nárazy až %d";
+"WindGraph_SpeedRangeHeader" = "Rychlost větru %d-%d";
+"WindGraph_MaxSpeedLabel" = "Max. rychlost";
+"WindGraph_MaxGustLabel" = "Max. náraz";
+"WindGraph_DragLabel" = "%@\nRychlost: %d\nPoryv: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Denní shrnutí";
+
+"Precipitation Totals" = "Srážkové úhrny";
+"LAST 24 HOURS" = "POSLEDNÍCH 24 HODIN";
+"NEXT 24 HOURS" = "DALŠÍCH 24 HODIN";
+"Total" = "Celkem";
+"Rain" = "déšť";
+"Snow" = "Sníh";
+
+"About Wind Speed and Gusts" = "O rychlosti větru a nárazech";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Rychlost větru se vypočítává pomocí průměru za krátké časové období. Poryvy jsou krátké nárazy větru nad tento průměr. Poryv obvykle trvá méně než 20 sekund.";
+
+"About the Beaufort Scale" = "O Beaufortově stupnici";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Beaufortova stupnice větru vyjadřuje, jak silný nebo silný je vítr při dané rychlosti. Beaufortova stupnice může usnadnit pochopení toho, jak bude vítr cítit nebo jak velký vliv by vítr mohl mít. Každá hodnota na stupnici odpovídá rozsahu rychlosti větru.";
+
+"About Feels Like Temperature" = "O pocitech jako teplota";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Pocit jakoby vyjadřuje, jak teplý nebo studený je pocit, a může se lišit od skutečné teploty. Pocitová teplota je ovlivněna vlhkostí, slunečním zářením a větrem.";
+
+"Options" = "Možnosti";
+"Temperature" = "Teplota";
+"Use system setting (°C)" = "Použít systémové nastavení (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Podmínky";
+"UV Index" = "UV index";
+"Wind" = "Vítr";
+"Precipitation" = "Srážky";
+"Humidity" = "Vlhkost";
+"Visibility" = "Viditelnost";
+"Pressure" = "Tlak";
+
+/* Fallback key */
+"displayedCondition" = "zobrazený Stav";
+
+/* Titles */
+"Forecast"                   = "Předpověď";
+"DailySummary"               = "Denní shrnutí";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° nyní s podmínkami %@. Existuje pravděpodobnost srážek %@. Vítr %@ s nárazy až %d %@. Dnešní teplota se pohybuje od %d° do %d° a připadá mi jako %d°. %@ a %@.";
+"UVIndexFormat"              = "UV index až %d";
+"HumidityFormat"             = "Vlhkost kolem %d%%";
+"HumidityRangeFormat"        = "Vlhkost od %d%% do %d%%";
+"NA" = "Není k dispozici";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Nízká hodnota %@ je %d° a nejvyšší hodnota je %d°. Teplota se bude cítit jako %d° až %d°. Očekává se vítr %@. %@";
+"NoPrecipLast24h"            = "Za posledních 24 hodin nebyly zaznamenány žádné srážky.";
+"RainLast24h"                = "Za posledních 24 hodin napršelo %d mm.";
+"SnowAndRainLast24h"         = "Za posledních 24 hodin naměřil sníh %@ cm a déšť %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WWW";
+"Dir_NW"  = "SZ";
+"Dir_NNW" = "SSZ";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Srážkové úhrny";
+"Last24h_Label"             = "POSLEDNÍCH 24 HODIN";
+"Next24h_Label"             = "DALŠÍCH 24 HODIN";
+"Total_Label"               = "Celkem";
+"Precipitation_Label"       = "Srážky";
+"Rain_Label"                = "déšť";
+"Snow_Label"                = "Sníh";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Vítr je aktuálně %1$d %2$@ od %3$@. Dnes jsou rychlosti větru %4$d až %5$d %2$@, s nárazy až %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Rychlosti větru se pohybují od %1$d do %2$d %3$@, s nárazy až %4$d %3$@.";
+
+"Beaufort_Scale"                = "Beaufortova stupnice";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Popis";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Klid";
+"Beaufort_1"                    = "Lehký vzduch";
+"Beaufort_2"                    = "Lehký vánek";
+"Beaufort_3"                    = "Jemný vánek";
+"Beaufort_4"                    = "Mírný vánek";
+"Beaufort_5"                    = "Svěží vánek";
+"Beaufort_6"                    = "Silný vánek";
+"Beaufort_7"                    = "Silný vítr";
+"Beaufort_8" = "Vichřice";
+"Beaufort_9"                    = "Silná vichřice";
+"Beaufort_10"                   = "Bouře";
+"Beaufort_11"                   = "Prudká bouře";
+"Beaufort_12"                   = "Síla hurikánu";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12–19";
+"BeaufortRange_4"               = "20–28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39–49";
+"BeaufortRange_7"               = "50–61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75–88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Za posledních 24 hodin spadlo %.1f%@ srážek. Dnešní úhrn srážek bude %.1f%@. V příštích 24 hodinách se očekává %.1f%@ srážek.";
+"ForecastPrecip_OtherDayFormat" = "Na %@ bude úhrn srážek %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "O intenzitě srážek";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intenzita se vypočítává podle množství deště nebo sněhu, které spadne za hodinu, a vyjadřuje, jak silně bude déšť nebo sníh působit. Používá se také pro jiné typy srážek, například déšť se sněhem a zimní směs. Liják nebo silná sněhová bouře mohou mít „silnou“ intenzitu, zatímco běžný déšť nebo slabší mrholení mohou mít „střední“ či „slabou“ intenzitu.";
+
+/* Section titles */
+"Forecast_Title"               = "Předpověď";
+"DailySummary_Title"           = "Denní shrnutí";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Rosný bod je %d° až %d°.";
+"DewPoint_FutureFormat"        = "Rosný bod bude %d° až %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Dnes je průměrná vlhkost %d%%. %@";
+"ForecastHumidity_Other"       = "Na %@ bude průměrná vlhkost %d%%.\n%@";
+
+"AboutPressure_Title"  = "O tlaku";
+"AboutPressure_Body"   = "K předpovědi změn počasí se používají výrazné, rychlé změny tlaku. Například pokles tlaku může znamenat, že déšť nebo sníh je na cestě, a stoupající tlak může znamenat, že se počasí zlepší. Tlak se také nazývá barometrický tlak nebo atmosférický tlak.";
+
+"AboutHumidity_Title"  = "O relativní vlhkosti";
+"AboutHumidity_Body"   = "Relativní vlhkost, běžně známá jako vlhkost, je množství vlhkosti ve vzduchu ve srovnání s tím, co vzduch dokáže pojmout. Vzduch pojme více vlhkosti při vyšších teplotách. Relativní vlhkost blízko 100 % znamená, že může být rosa nebo mlha.";
+
+"AboutDewPoint_Title" = "O Rosném bodu";
+"AboutDewPoint_Body"  = "Rosný bod je teplota, na kterou by musela klesnout, aby se vytvořila rosa. Může to být užitečný způsob, jak zjistit, jak je vzduch vlhký – čím vyšší je rosný bod, tím vlhčí je. Rosný bod, který odpovídá aktuální teplotě, znamená, že relativní vlhkost je 100% a může se objevit rosa nebo mlha.";
+
+"Section_Forecast"                     = "Předpověď";
+"Section_DailySummary"                 = "Denní shrnutí";
+"ForecastVisibility_TodayFormat" = "Dnes bude viditelnost %@, při %d až %d %@.";
+"ForecastVisibility_OtherFormat" = "Na %@ bude nejnižší viditelnost %@ na %d %@ a nejvyšší bude %@ na %d %@.";
+"Clarity_Foggy"                        = "Mlha";
+"Clarity_Hazy"                         = "Zamlžený";
+"Clarity_Clear"                        = "Jasný";
+"Clarity_PerfectlyClear"               = "Naprosto jasné";
+
+"AboutVisibility_Title" = "O viditelnosti";
+"AboutVisibility_Body" = "Viditelnost vám říká, jak daleko můžete jasně vidět objekty, jako jsou budovy a kopce. Je to míra průhlednosti vzduchu a nebere v úvahu množství slunečního světla nebo přítomnost překážek. Viditelnost při nebo nad %@ se považuje za jasnou.";
+
+"PressureForecast_Today" = "Tlak je aktuálně %@ %@ a klesá. Dnes bude průměrný tlak %@ %@ a nejnižší tlak bude %@ %@.";
+"PressureForecast_Other" = "Na %@ bude průměrný tlak %@ %@ a nejnižší tlak bude %@ %@.";
+"SectionForecast" = "Předpověď";
+"SectionDailySummary" = "Denní shrnutí";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Všechny funkce základního plánu";
+"Multi-calendar view" = "Multi-kalendářní pohled";
+"Sync with Google Calendar" = "Synchronizujte s kalendářem Google";
+"Sync meets from Google Meet" = "Synchronizovat schůzky od Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Základní plán";
+"Single-day calendar view" = "Jednodenní zobrazení kalendáře";
+"Multi-day calendar view" = "Zobrazení vícedenního kalendáře";
+"Monthly calendar view" = "Zobrazení měsíčního kalendáře";
+"Yearly overview" = "Roční přehled";
+"List view for events" = "Zobrazení seznamu událostí";
+"Weather view" = "Pohled na počasí";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Prémiový plán";
+"Sync with Microsoft Calendar" = "Synchronizujte s kalendářem Microsoft";
+"Sync meets from Microsoft Teams" = "Synchronizovat schůzky od Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Ekvivalent %@ za měsíc";
+"%d %@ free" = "%d %@ zdarma";
+
+/* SubscriptionListView */
+"Premium Plans" = "Prémiové plány";
+"You are subscribed to the %@ %@ plan" = "Jste přihlášeni k odběru plánu %@ %@";
+"Renews on: %@" = "Obnovení dne: %@";
+"Start Free Trial" = "Spusťte bezplatnou zkušební verzi";
+"Subscribe Now" = "Přihlaste se k odběru";
+"%d %@ free, then %@%@." = "%d %@ zdarma, poté %@%@.";
+"Subscribe for %@%@." = "Přihlaste se k odběru %@%@.";
+"Privacy Policy"     = "Zásady ochrany osobních údajů";
+"Terms of Service"   = "Podmínky služby";
+
+/* SubscriptionCategory */
+"Advanced" = "Pokročilé";
+"Advanced Plan" = "Pokročilý plán";
+"All Advanced Plan features" = "Všechny funkce pokročilého plánu";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Pro přístup do této sekce potřebujete aktivní plán %@.";
+"Plan Required" = "Je vyžadován plán";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Základna";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Přihlášen k odběru plánu %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Obnovení dne: %@";
+
+"Manage Subscription"                   = "Spravovat předplatné";
+
+/* Period units */
+"Daily"     = "Denně";
+"Weekly"    = "Týdenní";
+"Monthly"   = "Měsíční";
+"Yearly"    = "Ročně";
+"Recurring" = "Opakující se";
+
+/* units */
+"day"   = "den";
+"days"  = "dní";
+"week"  = "týden";
+"weeks" = "týdnů";
+"month"  = "měsíc";
+"months" = "měsíce";
+"year"   = "rok";
+"years"  = "let";
+
+/* YearMonthMiniView */
+"weekday.headers" = "N,P,Ú,S,Č,P,S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Vaše předchozí nákupy byly úspěšně obnoveny.";
+"No active subscriptions found to restore."                = "Nebyla nalezena žádná aktivní předplatná k obnovení.";
+"Failed to restore purchases. Please try again later. (%@)" = "Nákupy se nepodařilo obnovit. Zkuste to znovu později. (%@)";
+"Restore Purchases"                                        = "Obnovit nákupy";
+
+"Ads Free" = "Reklamy zdarma";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalendář a počasí";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Malý widget zobrazuje dnešní datum a aktuální počasí. Střední navíc zobrazuje fázi Měsíce a vítr.";
+"Calendar Events" = "Kalendář událostí";
+"Shows today's date, current weather, and your next calendar events." = "Zobrazuje dnešní datum, aktuální počasí a další události v kalendáři.";
+"No upcoming events" = "Žádné nadcházející události";
+"Tomorrow" = "zítra";
+"Untitled" = "Bez názvu";
+"Detail" = "Detail";
+"Phase" = "Fáze";
+"Weather" = "Počasí";
+"Select Your Email" = "Vyberte Váš e-mail";
+"Confirm" = "Potvrďte";
+"Calendar name" = "Název kalendáře";
+"Sharing: %@" = "Sdílení: %@";
+"Loading..." = "Načítání...";
+"Selected Location" = "Vybraná lokalita";
+"Data provided by Apple Weather" = "Data poskytuje Apple Weather";
+"Next" = "Další";
+"No details found for the selected location." = "Pro vybrané místo nebyly nalezeny žádné podrobnosti.";
+"Could not determine the time zone for the selected location." = "Nelze určit časové pásmo pro vybrané místo.";
+"(No Title)" = "(Bez názvu)";
+"Choose your e-mail" = "Vyberte svůj e-mail";
+"It will be treated as your primary address and invitations will not be sent to it." = "Bude považována za vaši primární adresu a pozvánky na ni nebudou zasílány.";
+"Invalid URL" = "Neplatná adresa URL";
+"Rate limit or insufficient permission" = "Omezení sazby nebo nedostatečné oprávnění";
+"Network error: %@" = "Chyba sítě: %@";
+"N/A - Selected Tab: %@" = "Není k dispozici – vybraná karta: %@";
+"Enable Notifications" = "Povolit oznámení";
+"Event Notifications" = "Upozornění na události";
+"Event alerts are scheduled from your event alert settings." = "Upozornění na události se plánují z nastavení upozornění na události.";
+"Allow notifications so event alerts can appear at the right time." = "Povolte upozornění, aby se upozornění na události mohla objevit ve správný čas.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Oznámení jsou pro tuto aplikaci vypnutá. Chcete-li je povolit, přejděte na: Nastavení -> Aplikace -> Cloud Calendars -> Oznámení -> Povolit oznámení.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating je váš trenér s umělou inteligencí pro chytřejší výživu a trénink. Kombinuje moderní vědu o výživě s praktickými nástroji, které vám pomohou naplánovat jídlo, navrhnout cvičení, spravovat spíž a pochopit, jak jídlo a pohyb ovlivňují vaše tělo.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio je pokročilé 3D návrhové prostředí pro vývojáře iOS a macOS. Kombinuje přesné vykreslování RealityKit s výkonným editorem formátovaného textu, který pomáhá proměnit neupravené snímky obrazovky v profesionální materiály pro App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio je studio pro nahrávání obrazovky na úrovni tvůrců pro iOS a macOS. Zachyťte obrazovku a kameru současně, ovládejte mikrofon + systémový zvuk a exportujte čisté MP4 pro výukové programy, návody a ukázky produktů. Na iOS můžete dokonce přehrávat video v aplikaci a nahrávat je spolu s kamerou pro reakční styl a obsah vedený prezentujícím.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars kombinuje pokročilé plánování s krásně integrovanými předpověďmi počasí, takže můžete plánovat s přesností. Podporuje více kalendářových služeb, intuitivní úpravy založené na gestech, vestavěné odkazy na schůzky a podrobné hodinové/denní předpovědi přímo ve vašem plánu.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI vám pomůže porozumět pohybu trhu pomocí analýzy na zařízení a víceagentního pracovního postupu navrženého k oddělení signálu od šumu. Sledujte údaje o cenách v reálném čase, prozkoumejte pravděpodobnosti ve stylu režimu a používejte přehledné řídicí panely a grafy k podpoře vašeho rozhodování. Ochrana osobních údajů: vaše konfigurace zůstanou na vašem zařízení.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplikace";
+"Plan" = "Plán";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Sněhová bouře";
+"WeatherCondition.blowingDust" = "Prach";
+"WeatherCondition.blowingSnow" = "Sněhová vánice";
+"WeatherCondition.breezy" = "Větrno";
+"WeatherCondition.clear" = "Jasno";
+"WeatherCondition.cloudy" = "Oblačno";
+"WeatherCondition.drizzle" = "Mrholení";
+"WeatherCondition.flurries" = "Sněhové přeháňky";
+"WeatherCondition.foggy" = "Mlha";
+"WeatherCondition.freezingDrizzle" = "Mrznoucí mrholení";
+"WeatherCondition.freezingRain" = "Mrznoucí déšť";
+"WeatherCondition.frigid" = "Chladno";
+"WeatherCondition.hail" = "Krupobití";
+"WeatherCondition.haze" = "Opar";
+"WeatherCondition.heavyRain" = "Hustý déšť";
+"WeatherCondition.heavySnow" = "Husté sněžení";
+"WeatherCondition.hot" = "Horko";
+"WeatherCondition.hurricane" = "Hurikán";
+"WeatherCondition.isolatedThunderstorms" = "Ojediněle bouřky";
+"WeatherCondition.mostlyClear" = "Převážně jasno";
+"WeatherCondition.mostlyCloudy" = "Převážně oblačno";
+"WeatherCondition.partlyCloudy" = "Částečně zataženo";
+"WeatherCondition.rain" = "Déšť";
+"WeatherCondition.scatteredThunderstorms" = "Místně občasné bouřky";
+"WeatherCondition.sleet" = "Kroupy";
+"WeatherCondition.smoky" = "Kouř";
+"WeatherCondition.snow" = "Sníh";
+"WeatherCondition.strongStorms" = "Silné bouřky";
+"WeatherCondition.sunFlurries" = "Slunečno se sněžením";
+"WeatherCondition.sunShowers" = "Slunečno s deštěm";
+"WeatherCondition.thunderstorms" = "Bouřka";
+"WeatherCondition.tropicalStorm" = "Tropická bouřka";
+"WeatherCondition.windy" = "Větrno";
+"WeatherCondition.wintryMix" = "Smíšené srážky";
+"MoonPhase.new" = "Novoluní";
+"MoonPhase.waxingCrescent" = "Přibývající měsíc po novu";
+"MoonPhase.firstQuarter" = "První čtvrt";
+"MoonPhase.waxingGibbous" = "Přibývající před úplňkem";
+"MoonPhase.full" = "Úplněk";
+"MoonPhase.waningGibbous" = "Ubývající měsíc po úplňku";
+"MoonPhase.lastQuarter" = "Poslední čtvrt";
+"MoonPhase.waningCrescent" = "Ubývající měsíc před novem";

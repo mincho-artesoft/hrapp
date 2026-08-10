@@ -159,8 +159,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     private let dateRangeButton: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.setTitle("Няма избран период", for: .normal)
+        btn.setTitle(
+            NSLocalizedString("No selected range", comment: "No selected date range"),
+            for: .normal
+        )
         btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        btn.useAdaptiveTitle(minimumScale: 0.4)
         btn.layer.cornerRadius = 8
         btn.backgroundColor = .systemGray5
         btn.setTitleColor(.label, for: .normal)
@@ -188,9 +192,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     /// NEW: Бутон с лупичка
     private let searchButton: UIButton = {
-        let btn = UIButton(type: .system)
-        let image = UIImage(systemName: "magnifyingglass")
+        let btn = UIButton(type: .custom)
+        let image = CalendarSearchAppearance.iconImage.withRenderingMode(.alwaysTemplate)
         btn.setImage(image, for: .normal)
+        btn.imageView?.contentMode = .center
         btn.tintColor = .systemBlue
         return btn
     }()
@@ -226,6 +231,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             textField.layer.cornerRadius = 8
             textField.layer.masksToBounds = true
             textField.font = UIFont.systemFont(ofSize: 16)
+            textField.adjustsFontSizeToFitWidth = true
+            textField.minimumFontSize = 10
             textField.attributedPlaceholder = NSAttributedString(
                 string: NSLocalizedString("Search events...", comment: "Search events placeholder"),
                 attributes: [.foregroundColor: UIColor.secondaryLabel]
@@ -236,6 +243,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }()
     
     private var searchHostingController: UIHostingController<SearchResultsView>?
+    private var searchFieldHostingController: UIHostingController<CalendarEventSearchField>?
     
     private var isSearching: Bool = false {
         didSet {
@@ -244,7 +252,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
 //                addEventButton.isHidden = true
                 viewMenuButton.isHidden = true
                 searchButton.isHidden = true
-                closeSearchButton.isHidden = false
+                closeSearchButton.isHidden = true
                 
                 // Ако showSingleDay = true, оставяме каросела видим, но скриваме бутона:
                 if showSingleDay {
@@ -286,6 +294,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     fileprivate let daysHeaderHeight: CGFloat = 40
     fileprivate let leftColumnWidth: CGFloat = 60
     fileprivate let bottomScrollPadding: CGFloat = 50
+
+    private var usesRightToLeftLayout: Bool {
+        effectiveUserInterfaceLayoutDirection == .rightToLeft
+    }
     
     private let topBorder = CALayer()
     private let bottomBorder = CALayer()
@@ -296,6 +308,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     private var redrawTimer: Timer?
     private var isInSecondPass = false
+    private var lastHorizontalContentWidth: CGFloat = -1
+    private var lastHorizontalLayoutWasRTL: Bool?
     
     // Доп. изглед за фон зад navBar (ако желаем да добавим отместване)
     private let topBackgroundView = UIView()
@@ -420,10 +434,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // MARK: - allDayTitleLabel
         allDayTitleLabel.text = " " + NSLocalizedString("all-day", comment: "")
         allDayTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-        allDayTitleLabel.numberOfLines = 1
-        allDayTitleLabel.adjustsFontSizeToFitWidth = true
-        allDayTitleLabel.minimumScaleFactor = 0.5   // може да намалява до 50% от оригиналния размер
-        allDayTitleLabel.lineBreakMode = .byTruncatingTail
+        allDayTitleLabel.useAdaptiveSingleLine(minimumScale: 0.4)
         allDayTitleLabel.backgroundColor = .secondarySystemBackground
         allDayTitleLabel.layer.zPosition = 6
         addSubview(allDayTitleLabel)
@@ -446,10 +457,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         navBar.addSubview(monthLabel)
         let monthLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(monthLabelTapped))
         monthLabel.addGestureRecognizer(monthLabelTapGesture)
-        
-        // Search bar
-        searchBar.delegate = self
-        navBar.addSubview(searchBar)
         
         // singleDayCarousel
         addSubview(singleDayCarousel)
@@ -480,8 +487,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // searchButton
         navBar.addSubview(searchButton)
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
-        navBar.addSubview(closeSearchButton)
-        closeSearchButton.addTarget(self, action: #selector(closeSearchButtonTapped), for: .touchUpInside)
         
         // Свързваме вюта
         daysHeaderView.leadingInsetForHours = 0
@@ -525,15 +530,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     @objc private func searchButtonTapped() {
         isSearching = true
         searchText = ""
-        searchBar.text = ""
-        searchBar.becomeFirstResponder()
     }
 
     @objc private func closeSearchButtonTapped() {
         isSearching = false
-        searchBar.resignFirstResponder()
         searchText = ""
-        searchBar.text = ""
     }
     
     // MARK: - UISearchBarDelegate
@@ -553,41 +554,41 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }
     
     private func animateSearchBarIn() {
-        searchBar.isHidden          = false
-        searchBar.showsCancelButton = false
+        searchFieldHostingController?.view.removeFromSuperview()
 
-        let sbHeight: CGFloat = 36
-        let finalY = (navBarHeight - sbHeight) / 2
-        let closeButtonWidth: CGFloat = 34
-        let spacing: CGFloat = 8
-        let trailingInset: CGFloat = 10
-        let finalFrame = CGRect(
-            x: 10,
-            y: finalY,
-            width: navBar.bounds.width - 20 - closeButtonWidth - spacing - trailingInset,
-            height: sbHeight
+        let binding = Binding<String>(
+            get: { [weak self] in self?.searchText ?? "" },
+            set: { [weak self] in self?.searchText = $0 }
         )
+        let field = CalendarEventSearchField(text: binding) { [weak self] in
+            self?.closeSearchButtonTapped()
+        }
+        let controller = UIHostingController(rootView: field)
+        controller.view.backgroundColor = .clear
+        controller.view.frame = navBar.bounds
+        controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        controller.view.alpha = 0
+        controller.view.transform = CGAffineTransform(translationX: 0, y: -navBarHeight)
+        searchFieldHostingController = controller
+        navBar.addSubview(controller.view)
 
-        let startFrame = finalFrame.offsetBy(dx: 0, dy: -navBarHeight)
-        searchBar.frame = startFrame
-        searchBar.alpha = 0
-
-        UIView.animate(withDuration: 0.3) {
-            self.searchBar.frame = finalFrame
-            self.searchBar.alpha = 1
+        UIView.animate(withDuration: 0.25) {
+            controller.view.alpha = 1
+            controller.view.transform = .identity
         }
     }
     
     private func animateSearchBarOut() {
-        let finalFrame = searchBar.frame.offsetBy(dx: 0, dy: -navBarHeight)
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.searchBar.frame = finalFrame
-            self.searchBar.alpha = 0
+        guard let controller = searchFieldHostingController else { return }
+
+        UIView.animate(withDuration: 0.25, animations: {
+            controller.view.alpha = 0
+            controller.view.transform = CGAffineTransform(translationX: 0, y: -self.navBarHeight)
         }, completion: { _ in
-            self.searchBar.isHidden = true
-            self.searchBar.showsCancelButton = false
-            self.searchBar.text = ""
+            controller.view.removeFromSuperview()
+            if self.searchFieldHostingController === controller {
+                self.searchFieldHostingController = nil
+            }
         })
     }
     
@@ -606,6 +607,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         cornerView.isHidden = shouldShow
         allDayTitleLabel.isHidden = shouldShow
         daysHeaderScrollView.isHidden = shouldShow
+        if shouldShow {
+            singleDayCarousel.isHidden = true
+        }
         
         guard shouldShow == true else {
             searchHostingController?.view.removeFromSuperview()
@@ -627,12 +631,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             bringSubviewToFront(hc.view)
             let navBarBottom = CGFloat(navBarHeight)
             hc.view.layer.zPosition = 9
-                hc.view.frame = CGRect(
-                    x: 0,
-                    y: navBarBottom + 60,
-                    width: bounds.width,
-                    height: bounds.height - navBarBottom
-                )
+            hc.view.frame = CGRect(
+                x: 0,
+                y: navBarBottom,
+                width: bounds.width,
+                height: bounds.height - navBarBottom
+            )
         }
     }
     
@@ -650,6 +654,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         super.layoutSubviews()
         
         let isLandscape = bounds.width > bounds.height
+        let isRTL = usesRightToLeftLayout
         let topOffset: CGFloat = isLandscape ? 0 : 53.5
         
         // 1. Фон зад navBar (ако има)
@@ -660,16 +665,13 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width - 2, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        // Ако сме в режим showSingleDay и не сме в пейзажен режим, показваме monthLabel с името на месеца
+        // Подготвяме името на месеца. Рамката му се изчислява след
+        // бутоните, за да използва точно свободната ширина.
         if showSingleDay && !isLandscape {
-            let df = DateFormatter()
-            df.dateFormat = "LLLL"
+            let df = appDateFormatter(template: "LLLL")
             monthLabel.text = df.string(from: fromDate)
             monthLabel.textColor = .systemBlue
-            monthLabel.sizeToFit()
-            let mlX: CGFloat = 10
-            let mlY = (navBarHeight - monthLabel.bounds.height) / 2
-            monthLabel.frame = CGRect(x: mlX, y: mlY, width: monthLabel.bounds.width, height: monthLabel.bounds.height)
+            monthLabel.useAdaptiveSingleLine(minimumScale: 0.4)
             monthLabel.isHidden = false
         } else {
             monthLabel.isHidden = true
@@ -677,24 +679,45 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // Подреждаме бутоните в navBar
         let menuBtnSize: CGFloat = 34
-        let searchBtnSize: CGFloat = 34
+        let searchBtnSize = CalendarSearchAppearance.buttonSize
         let margin: CGFloat = 8
         
-        let menuButtonX = navBar.bounds.width - menuBtnSize - 10
+        let menuButtonX = isRTL ? 10 : navBar.bounds.width - menuBtnSize - 10
         let centerY = (navBar.bounds.height - menuBtnSize) / 2
         viewMenuButton.frame = CGRect(x: menuButtonX, y: centerY, width: menuBtnSize, height: menuBtnSize)
         
-        let searchButtonX = menuButtonX - searchBtnSize - margin
-        searchButton.frame = CGRect(x: searchButtonX, y: centerY, width: searchBtnSize, height: searchBtnSize)
+        let searchButtonX = isRTL
+            ? menuButtonX + menuBtnSize + margin
+            : menuButtonX - searchBtnSize - margin
+        let searchCenterY = (navBar.bounds.height - searchBtnSize) / 2
+        searchButton.frame = CGRect(x: searchButtonX, y: searchCenterY, width: searchBtnSize, height: searchBtnSize)
         closeSearchButton.frame = CGRect(
-            x: navBar.bounds.width - searchBtnSize - 10,
-            y: centerY,
+            x: isRTL ? 10 : navBar.bounds.width - searchBtnSize - 10,
+            y: searchCenterY,
             width: searchBtnSize,
             height: searchBtnSize
         )
+
+        if showSingleDay && !isLandscape {
+            let labelLeading: CGFloat = 10
+            let labelTrailing = isRTL
+                ? navBar.bounds.width - (searchButtonX + searchBtnSize + margin)
+                : searchButtonX - margin
+            let availableMonthWidth = max(0, labelTrailing - labelLeading)
+            monthLabel.frame = CGRect(
+                x: isRTL ? navBar.bounds.width - labelLeading - availableMonthWidth : labelLeading,
+                y: 0,
+                width: availableMonthWidth,
+                height: navBar.bounds.height
+            )
+            monthLabel.textAlignment = isRTL ? .right : .left
+        }
         
-        let btnX: CGFloat = 10
-        let btnW = min(220, searchButtonX - btnX - margin)
+        let btnX: CGFloat = isRTL ? searchButtonX + searchBtnSize + margin : 10
+        let availableButtonWidth = isRTL
+            ? navBar.bounds.width - btnX - 10
+            : searchButtonX - btnX - margin
+        let btnW = max(0, availableButtonWidth)
         let btnH: CGFloat = 40
         let btnY = (navBar.bounds.height - btnH) / 2
         dateRangeButton.frame = CGRect(x: btnX, y: btnY, width: btnW, height: btnH)
@@ -720,8 +743,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // 4. Days Header – позициониране на cornerView и daysHeaderScrollView
         let yMain = singleDayCarousel.frame.maxY
-        cornerView.frame = CGRect(x: 0, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
-        daysHeaderScrollView.frame = CGRect(x: leftColumnWidth, y: yMain, width: bounds.width - leftColumnWidth, height: daysHeaderHeight)
+        let hoursColumnX = isRTL ? bounds.width - leftColumnWidth : 0
+        let timelineX: CGFloat = isRTL ? 0 : leftColumnWidth
+        cornerView.frame = CGRect(x: hoursColumnX, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
+        daysHeaderScrollView.frame = CGRect(x: timelineX, y: yMain, width: bounds.width - leftColumnWidth, height: daysHeaderHeight)
         
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
@@ -729,10 +754,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
         
         let availableWidth = bounds.width - leftColumnWidth
+        // A day column must remain readable. When the selected range needs more
+        // horizontal space than the viewport, the synchronized header, all-day
+        // area and timeline scroll instead of squeezing every day on screen.
+        // There is intentionally no maximum width: shorter ranges may expand to
+        // use all of the available space.
         let minimumDayColumnWidth: CGFloat = 100
         let newDayColumnWidth: CGFloat
         if dayCount > 0 {
-            newDayColumnWidth = max(minimumDayColumnWidth, availableWidth / CGFloat(dayCount))
+            newDayColumnWidth = max(
+                minimumDayColumnWidth,
+                availableWidth / CGFloat(dayCount)
+            )
         } else {
             newDayColumnWidth = minimumDayColumnWidth
         }
@@ -750,8 +783,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let oldOffset = allDayScrollView.contentOffset
         let allDayH = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
-        allDayTitleLabel.frame = CGRect(x: 0, y: allDayY, width: leftColumnWidth, height: allDayH)
-        allDayScrollView.frame = CGRect(x: leftColumnWidth, y: allDayY, width: bounds.width - leftColumnWidth, height: allDayH)
+        allDayTitleLabel.frame = CGRect(x: hoursColumnX, y: allDayY, width: leftColumnWidth, height: allDayH)
+        allDayScrollView.frame = CGRect(x: timelineX, y: allDayY, width: bounds.width - leftColumnWidth, height: allDayH)
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayFullH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
@@ -769,12 +802,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // 6. Hours Column and Main ScrollView
         let hoursColumnY = allDayY + allDayH
-        hoursColumnScrollView.frame = CGRect(x: 0, y: hoursColumnY, width: leftColumnWidth, height: bounds.height - hoursColumnY)
-        hoursColumnWeatherScrollView.frame = CGRect(x: bounds.width - 50,
+        hoursColumnScrollView.frame = CGRect(x: hoursColumnX, y: hoursColumnY, width: leftColumnWidth, height: bounds.height - hoursColumnY)
+        hoursColumnWeatherScrollView.frame = CGRect(x: isRTL ? 0 : bounds.width - 50,
                                     y: hoursColumnY,
                                     width: 50,
                                     height: bounds.height - hoursColumnY)
-        mainScrollView.frame = CGRect(x: leftColumnWidth, y: hoursColumnY, width: bounds.width - leftColumnWidth, height: bounds.height - hoursColumnY)
+        mainScrollView.frame = CGRect(x: timelineX, y: hoursColumnY, width: bounds.width - leftColumnWidth, height: bounds.height - hoursColumnY)
         
         let totalHours = 25
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
@@ -786,6 +819,21 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         hoursColumnWeatherScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
         hoursColumnWeatherView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
+
+        if lastHorizontalLayoutWasRTL != isRTL || abs(lastHorizontalContentWidth - totalWidth) > 0.5 {
+            let initialOffsetX = isRTL ? max(0, totalWidth - mainScrollView.bounds.width) : 0
+            mainScrollView.setContentOffset(
+                CGPoint(x: initialOffsetX, y: mainScrollView.contentOffset.y),
+                animated: false
+            )
+            daysHeaderScrollView.setContentOffset(CGPoint(x: initialOffsetX, y: 0), animated: false)
+            allDayScrollView.setContentOffset(
+                CGPoint(x: initialOffsetX, y: allDayScrollView.contentOffset.y),
+                animated: false
+            )
+            lastHorizontalContentWidth = totalWidth
+            lastHorizontalLayoutWasRTL = isRTL
+        }
         let nowOnly = cal.startOfDay(for: Date())
         hoursColumnView.isCurrentDayInWeek = (nowOnly >= fromOnly && nowOnly <= toOnly)
         hoursColumnView.currentTime = hoursColumnView.isCurrentDayInWeek ? Date() : nil
@@ -1189,9 +1237,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }
     
     private func fmt(_ d: Date) -> String {
-        let df = DateFormatter()
-        df.dateStyle = .medium
-        return df.string(from: d)
+        appShortDateFormatter().string(from: d)
     }
     
     // MARK: - UIGestureRecognizerDelegate

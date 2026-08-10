@@ -31,6 +31,7 @@ class EmailPickerViewController: UIViewController, UITableViewDataSource, UITabl
         titleLabel.text = NSLocalizedString("Select Your Email", comment: "Email picker title")
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 17)
+        titleLabel.useAdaptiveSingleLine(minimumScale: 0.45)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(titleLabel)
 
@@ -42,6 +43,7 @@ class EmailPickerViewController: UIViewController, UITableViewDataSource, UITabl
 
         // Confirm
         confirmButton.setTitle(NSLocalizedString("Confirm", comment: "Confirm selection button"), for: .normal)
+        confirmButton.useAdaptiveTitle(minimumScale: 0.45)
         confirmButton.isEnabled = false
         confirmButton.addTarget(self, action: #selector(onConfirm), for: .touchUpInside)
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +81,7 @@ class EmailPickerViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tv: UITableView, cellForRowAt idx: IndexPath) -> UITableViewCell {
         let cell = tv.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = emails[idx.row]
+        cell.textLabel?.useAdaptiveSingleLine(minimumScale: 0.55)
         cell.accessoryType = (idx.row == selectedIndex) ? .checkmark : .none
         return cell
     }

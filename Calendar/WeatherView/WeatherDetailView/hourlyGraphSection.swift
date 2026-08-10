@@ -39,7 +39,7 @@ extension WeatherDetailView{
                                     .font(.system(size: 14, weight: .medium))
                                     .foregroundColor(.secondary)
                                 HStack(alignment: .top, spacing: 10) {
-                                    Text("\(Int(round(vm.currentFeelsLike!)))°")
+                                    Text(localizedFormat("%d°", Int(round(vm.currentFeelsLike!))))
                                         .font(.system(size: 70, weight: .thin))
                                         .foregroundColor(.white)
                                 }
@@ -50,19 +50,17 @@ extension WeatherDetailView{
                                     .font(.system(size: 14, weight: .medium))
                                     .foregroundColor(.secondary)
                                 HStack(alignment: .top, spacing: 10) {
-                                    Text("\(Int(round(vm.currentTemp!)))°")
+                                    Text(localizedFormat("%d°", Int(round(vm.currentTemp!))))
                                         .font(.system(size: 70, weight: .thin))
                                         .foregroundColor(.white)
                                     
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text(String(
-                                            format: NSLocalizedString("HighLabelFormat", comment: "Max temperature label"),
+                                        Text(localizedFormat(NSLocalizedString("HighLabelFormat", comment: "Max temperature label"),
                                             Int(round(dayItem.maxTemp))
                                         ))
                                         .font(.system(size: 14, weight: .regular))
 
-                                        Text(String(
-                                            format: NSLocalizedString("LowLabelFormat", comment: "Min temperature label"),
+                                        Text(localizedFormat(NSLocalizedString("LowLabelFormat", comment: "Min temperature label"),
                                             Int(round(dayItem.minTemp))
                                         ))
                                         .font(.system(size: 14, weight: .regular))
@@ -91,19 +89,19 @@ extension WeatherDetailView{
                                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                                     // Ако showingFeelsLike == true, показваме feels like max; иначе реалният max
                                     if showingFeelsLike {
-                                        Text("\(Int(round(feelsLikeMinMax.max)))°")
+                                        Text(localizedFormat("%d°", Int(round(feelsLikeMinMax.max))))
                                             .font(.system(size: 40, weight: .medium))
                                             .foregroundColor(.white)
                                         // Показваме и feels like min – можете да оцветите различно (например в сиво)
-                                        Text("\(Int(round(feelsLikeMinMax.min)))°")
+                                        Text(localizedFormat("%d°", Int(round(feelsLikeMinMax.min))))
                                             .font(.system(size: 40, weight: .medium))
                                             .foregroundColor(.gray)
                                     } else {
                                         // При нормално състояние показваме реалните температури от dayItem
-                                        Text("\(Int(round(dayItem.maxTemp)))°")
+                                        Text(localizedFormat("%d°", Int(round(dayItem.maxTemp))))
                                             .font(.system(size: 40, weight: .medium))
                                             .foregroundColor(.white)
-                                        Text("\(Int(round(dayItem.minTemp)))°")
+                                        Text(localizedFormat("%d°", Int(round(dayItem.minTemp))))
                                             .font(.system(size: 40, weight: .medium))
                                             .foregroundColor(.gray)
                                     }
@@ -183,6 +181,7 @@ extension WeatherDetailView{
                 }
                 .frame(height: 20)
                 .padding(.horizontal, graphPadding)
+                .environment(\.layoutDirection, .leftToRight)
                 .padding(.bottom, -15)
                 
                 
@@ -218,7 +217,7 @@ extension WeatherDetailView{
                         let textX = origin.x + graphContentWidth + 15
                         let textPoint = CGPoint(x: textX, y: yPos)
                         context.draw(
-                            Text("\(Int(round(tempLabelValue)))°")
+                            Text(localizedFormat("%d°", Int(round(tempLabelValue))))
                                 .font(.system(size: 10))
                                 .foregroundColor(.gray),
                             at: textPoint,
@@ -339,7 +338,7 @@ extension WeatherDetailView{
                         let xPos = origin.x + (CGFloat(hour) * (graphContentWidth / 24.0))
                         let textPoint = CGPoint(x: xPos, y: origin.y + 14)
                         context.draw(
-                            Text(String(format: "%02d", hour))
+                            Text(localizedFormat("%02d", hour))
                                 .font(.system(size: 11))
                                 .foregroundColor(.gray),
                             at: textPoint,
@@ -438,11 +437,9 @@ extension WeatherDetailView{
                             let secondsOffset = (fractionIndex - CGFloat(lowerIndex)) * 3600.0
                             let interpolatedDate = baseDate.addingTimeInterval(TimeInterval(secondsOffset))
                             
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "HH:mm"
-                            dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
-
-                            let exactTime = dateFormatter.string(from: interpolatedDate)
+                            let exactTime = appTimeFormatter(
+                                timeZone: WeatherKitViewModel.shared.locationTimeZone
+                            ).string(from: interpolatedDate)
                             
                             // 7) We want the text to go on the left side if hour >= 12
                             let hourOfDrag = Double(lowerIndex) + Double(t) // an approximate “hour index”
@@ -458,7 +455,7 @@ extension WeatherDetailView{
                             }
                             
                             // 8) Draw the label
-                            let labelText = Text("\(exactTime)\n\(Int(round(interpolatedTemp)))°")
+                            let labelText = Text(exactTime + "\n" + localizedFormat("%d°", Int(round(interpolatedTemp))))
                                 .font(.system(size: 12, weight: .bold))
                                 .foregroundColor(.white)
                             
@@ -492,6 +489,7 @@ extension WeatherDetailView{
             } label: {
                 Text(NSLocalizedString("Actual", comment: "Actual temperature label"))
                     .font(.system(size: 12, weight: .medium))
+                    .adaptiveSingleLine(minimumScale: 0.4)
                     .padding(.vertical, 7)
                     .padding(.horizontal, 12)
                     .frame(maxWidth: .infinity)
@@ -507,6 +505,7 @@ extension WeatherDetailView{
             } label: {
                 Text(NSLocalizedString("Feels Like", comment: "Feels like temperature label"))
                     .font(.system(size: 12, weight: .medium))
+                    .adaptiveSingleLine(minimumScale: 0.4)
                     .padding(.vertical, 7)
                     .padding(.horizontal, 12)
                     .frame(maxWidth: .infinity)

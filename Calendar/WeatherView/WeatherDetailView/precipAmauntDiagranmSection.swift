@@ -35,38 +35,33 @@ extension WeatherDetailView {
                     let totalSnow = hourlyData.reduce(0) { $0 + $1.snowfallAmount }
 
                     if totalRain > 0 && totalSnow > 0 {
-                        Text(String(
-                            format: NSLocalizedString("Precip_Total_RainSnowFormat", comment: ""),
+                        Text(localizedFormat(NSLocalizedString("Precip_Total_RainSnowFormat", comment: ""),
                             totalRain, unit,
                             totalSnow, unit
                         ))
                         .font(.system(size: 16, weight: .semibold))
                     }
                     else if totalRain > 0 {
-                        Text(String(
-                            format: NSLocalizedString("Precip_Total_RainFormat", comment: ""),
+                        Text(localizedFormat(NSLocalizedString("Precip_Total_RainFormat", comment: ""),
                             totalRain, unit
                         ))
                         .font(.system(size: 16, weight: .semibold))
                     }
                     else if totalSnow > 0 {
-                        Text(String(
-                            format: NSLocalizedString("Precip_Total_SnowFormat", comment: ""),
+                        Text(localizedFormat(NSLocalizedString("Precip_Total_SnowFormat", comment: ""),
                             totalSnow, unit
                         ))
                         .font(.system(size: 16, weight: .semibold))
                     }
                     else {
-                        Text(String(
-                            format: NSLocalizedString("Precip_Total_None", comment: ""),
+                        Text(localizedFormat(NSLocalizedString("Precip_Total_None", comment: ""),
                             unit
                         ))
                         .font(.system(size: 16, weight: .semibold))
                     }
 
                     // подзаглавие
-                    Text(String(
-                        format: NSLocalizedString("Precip_Bars_Subtitle", comment: ""),
+                    Text(localizedFormat(NSLocalizedString("Precip_Bars_Subtitle", comment: ""),
                         unit
                     ))
                     .font(.system(size: 13))
@@ -95,6 +90,7 @@ extension WeatherDetailView {
                 }
                 .frame(height: 20)
                 .padding(.horizontal, graphPadding)
+                .environment(\.layoutDirection, .leftToRight)
                 .offset(y: 20)
                 
                 // -- Графиката (Canvas) с барове за валеж --
@@ -133,7 +129,7 @@ extension WeatherDetailView {
                         
                         let labelPt = CGPoint(x: origin.x + contentWidth + 15, y: lineY)
                         context.draw(
-                            Text("\(Int(marker))")
+                            Text(localizedIntegerString(Int(marker)))
                                 .font(.system(size: 10))
                                 .foregroundColor(.gray),
                             at: labelPt,
@@ -244,7 +240,7 @@ extension WeatherDetailView {
                         let xPos = origin.x + (CGFloat(hour) * (contentWidth / 24))
                         let textPoint = CGPoint(x: xPos, y: origin.y + 14)
                         context.draw(
-                            Text(String(format: "%02d", hour))
+                            Text(localizedFormat("%02d", hour))
                                 .font(.system(size: 11))
                                 .foregroundColor(.gray),
                             at: textPoint,
@@ -266,16 +262,15 @@ extension WeatherDetailView {
                                 highlightLine.addLine(to: CGPoint(x: highlightX, y: origin.y))
                                 context.stroke(highlightLine, with: .color(.white.opacity(0.5)), lineWidth: 1)
                                 
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "HH"
-                                dateFormatter.timeZone = WeatherKitViewModel.shared.locationTimeZone // или вашият custom timeZone
-                                let hourStr = dateFormatter.string(from: item.date)
+                                let hourStr = appTimeFormatter(
+                                    timeZone: WeatherKitViewModel.shared.locationTimeZone,
+                                    includesMinutes: false
+                                ).string(from: item.date)
                                 let rVal = item.precipitationAmount
                                 let sVal = item.snowfallAmount
 
                                 let unit = GlobalState.precipitationUnitLabel
-                                let labelText = String(
-                                    format: NSLocalizedString("Precip_Tooltip_Format", comment: ""),
+                                let labelText = localizedFormat(NSLocalizedString("Precip_Tooltip_Format", comment: ""),
                                     hourStr,
                                     rVal, unit,
                                     sVal, unit

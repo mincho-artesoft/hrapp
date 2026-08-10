@@ -345,7 +345,9 @@ struct WeatherKitView: View {
     }
     
     private var dynamicBackground: some View {
-        let condition = vm.currentCondition.lowercased()
+        let condition = vm.currentConditionLocalizationKey.isEmpty
+            ? vm.currentSymbol.lowercased()
+            : vm.currentConditionLocalizationKey.lowercased()
         switch condition {
         case _ where condition.contains("sun"), _ where condition.contains("clear"):
             return AnyView(
@@ -429,9 +431,13 @@ struct WeatherKitView: View {
                         isSearchFieldFocused = true
                     }
                 } label: {
-                    Image(systemName: "magnifyingglass")
+                    Image(uiImage: CalendarSearchAppearance.iconImage)
+                        .renderingMode(.template)
                 }
-                .frame(width: 34, height: 34)
+                .frame(
+                    width: CalendarSearchAppearance.buttonSize,
+                    height: CalendarSearchAppearance.buttonSize
+                )
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
                 .foregroundColor(colorScheme == .light ? .black : .white)
@@ -493,9 +499,10 @@ struct WeatherKitView: View {
             Text(displayedCityName())
                 .font(.system(size: 34, weight: .regular))
                 .foregroundColor(.primary)
+                .adaptiveSingleLine(minimumScale: 0.5)
             HStack(alignment: .lastTextBaseline, spacing: 8) {
                 if let temp = vm.currentTemp {
-                    Text("\(Int(temp.rounded()))°")
+                    Text(localizedFormat("%d°", Int(temp.rounded())))
                         .font(.system(size: 96, weight: .thin))
                         .foregroundColor(.primary)
                 } else {
@@ -508,14 +515,15 @@ struct WeatherKitView: View {
             Text(vm.currentCondition)
                 .foregroundColor(.secondary)
                 .font(.system(size: 18, weight: .medium))
+                .adaptiveSingleLine(minimumScale: 0.45)
             if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
-                Text(String(
-                    format: NSLocalizedString("HighLowLabelFormat", comment: "High and low temperature label"),
+                Text(localizedFormat(NSLocalizedString("HighLowLabelFormat", comment: "High and low temperature label"),
                     Int(hi.rounded()),
                     Int(lo.rounded())
                 ))
                     .foregroundColor(.primary)
                     .font(.system(size: 18, weight: .medium))
+                    .adaptiveSingleLine(minimumScale: 0.5)
             }
         }
         .padding(.vertical, 10)
@@ -526,6 +534,7 @@ struct WeatherKitView: View {
             Label("10-DAY FORECAST", systemImage: "calendar")
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
+                .adaptiveSingleLine(minimumScale: 0.4)
                 .padding(.horizontal, 15)
                 .padding(.top, 12)
                 .padding(.bottom, 5)
@@ -575,6 +584,7 @@ struct WeatherKitView: View {
             Text(dayItem.day)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.primary)
+                .adaptiveSingleLine(minimumScale: 0.45)
                 .frame(width: 55, alignment: .leading)
             HStack(spacing: 5) {
                 Image(systemName: dayItem.symbol)
@@ -583,7 +593,7 @@ struct WeatherKitView: View {
                     .font(.title3)
                     .frame(width: 30)
                 if let chance = dayItem.precipChance, chance >= 0.1 {
-                    Text("\(Int((chance * 100).rounded()))%")
+                    Text(localizedFormat("%d%%", Int((chance * 100).rounded())))
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: colorScheme == .light ? 0.7 : 1.0))
                         .frame(width: 35)
@@ -593,7 +603,7 @@ struct WeatherKitView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text("\(Int(dayItem.minTemp.rounded()))°")
+            Text(localizedFormat("%d°", Int(dayItem.minTemp.rounded())))
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.secondary)
                 .frame(width: 35, alignment: .trailing)
@@ -607,7 +617,7 @@ struct WeatherKitView: View {
             )
             .frame(width: 80)
             
-            Text("\(Int(dayItem.maxTemp.rounded()))°")
+            Text(localizedFormat("%d°", Int(dayItem.maxTemp.rounded())))
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.primary)
                 .frame(width: 35, alignment: .trailing)
@@ -756,10 +766,10 @@ struct WeatherKitView: View {
                 timeString = NSLocalizedString("tomorrow", comment: "Precipitation forecast for tomorrow")
             } else if daysUntil <= 7 {
                 let format = NSLocalizedString("on_day", comment: "Precipitation forecast on specific day")
-                timeString = String(format: format, nextDayPrecip.day)
+                timeString = localizedFormat(format, nextDayPrecip.day)
             } else {
                 let format = NSLocalizedString("in_days", comment: "Precipitation forecast in X days")
-                timeString = String(format: format, daysUntil)
+                timeString = localizedFormat(format, daysUntil)
             }
 
             return (amount: nextDayPrecip.precipChance, timeString: timeString)
@@ -831,6 +841,9 @@ struct DirectionLockedHScroll<Content: View>: UIViewRepresentable {
     func makeUIView(context: Context) -> UIScrollView {
         // 1) конфигурираме UIScrollView
         let scrollView = UIScrollView()
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        scrollView.semanticContentAttribute = semanticDirection
         scrollView.backgroundColor = .clear            // ← прозрачно
         scrollView.alwaysBounceHorizontal = true
         scrollView.alwaysBounceVertical = false
@@ -842,6 +855,7 @@ struct DirectionLockedHScroll<Content: View>: UIViewRepresentable {
 
         // 2) „hosting controller“ за SwiftUI съдържанието
         let host = UIHostingController(rootView: content)
+        host.view.semanticContentAttribute = semanticDirection
         host.view.backgroundColor = .clear             // ← прозрачно
         host.view.isOpaque = false                     // ← важно за прозрачност
         host.view.translatesAutoresizingMaskIntoConstraints = false
@@ -859,8 +873,12 @@ struct DirectionLockedHScroll<Content: View>: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIScrollView, context: Context) {
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        uiView.semanticContentAttribute = semanticDirection
         // само заменяме корена на host-а
         if let host = uiView.subviews.compactMap({ $0.next as? UIHostingController<Content> }).first {
+            host.view.semanticContentAttribute = semanticDirection
             host.rootView = content
         }
     }
@@ -988,7 +1006,11 @@ private struct HourlyCell: View {
                 .offset(y: item.symbol == "cloud.fill" ? -5 : 0)
 
             if isAnyPrecip {
-                Text(item.precipChance >= 0.1 ? "\(Int(item.precipChance * 100))%" : " ")
+                Text(
+                    item.precipChance >= 0.1
+                        ? localizedFormat("%d%%", Int(item.precipChance * 100))
+                        : " "
+                )
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(
                         Color(
@@ -999,7 +1021,7 @@ private struct HourlyCell: View {
                     )
             }
 
-            Text("\(Int(item.temp.rounded()))°")
+            Text(localizedFormat("%d°", Int(item.temp.rounded())))
                 .font(.system(size: 18, weight: .medium))
         }
         .frame(minWidth: 25, idealWidth: 35, maxWidth: 45)

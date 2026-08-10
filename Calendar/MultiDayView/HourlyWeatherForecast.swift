@@ -77,7 +77,7 @@ public final class HoursColumnWeatherView: UIView {
                 let yCenter = extraMarginTopBottom + CGFloat(forecast.hour) * hourHeight
                 
                 // Подготовка на температурата (напр. "23°")
-                let tempText = String(format: "%.0f°", forecast.temperature)
+                let tempText = localizedFormat("%.0f°", forecast.temperature)
                 let tempAttributes: [NSAttributedString.Key: Any] = [
                     .font: UIFont.systemFont(ofSize: 10, weight: .regular),
                     .foregroundColor: UIColor.label

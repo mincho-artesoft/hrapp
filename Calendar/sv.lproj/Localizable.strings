@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Ingen e-postadress angavs.";
+"Please enter a valid email to continue." = "Ange en giltig e-postadress för att fortsätta.";
+"Your email" = "Din e-postadress";
+"Save" = "Spara";
+"Login" = "Logga in";
+"Logout" = "Logga ut";
+
+/* RootView */
+"N/A" = "Ej tillgänglig";
+"Calendars" = "Kalendrar";
+"Inbox" = "Inkorg";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Annat";
+"Google calendars" = "Google kalendrar";
+"No synced Google calendars yet." = "Inga synkroniserade Google kalendrar ännu.";
+"Microsoft calendars" = "Microsoft kalendrar";
+"No synced Microsoft calendars yet." = "Inga synkroniserade Microsoft kalendrar ännu.";
+"Sign out" = "Logga ut";
+"Add iCloud Calendar" = "Lägg till iCloud Kalender";
+"Share calendars with iCloud Calendar" = "Dela kalendrar med iCloud Kalender";
+"Sign in with Google" = "Logga in med Google";
+"Sign in with Microsoft" = "Logga in med Microsoft";
+"Deselect All" = "Avmarkera alla";
+"Select All" = "Markera alla";
+"No Email" = "Ingen e-post";
+"Add Google Calendar" = "Lägg till Google Kalender";
+
+/* AddCalendarView */
+"Calendar Name" = "Kalender Namn";
+"Account" = "Konto";
+"COLOR" = "FÄRG";
+"NOTIFICATIONS" = "MEDDELANDEN";
+"Event Alerts" = "Händelseaviseringar";
+"Allow events on this calendar to display alerts." = "Tillåt att händelser i den här kalendern visar aviseringar.";
+"Add Calendar" = "Lägg till kalender";
+
+/* Colors */
+"Red" = "Röd";
+"Orange" = "Orange";
+"Yellow" = "Gul";
+"Green" = "Grön";
+"Blue" = "Blå";
+"Purple" = "Lila";
+"Brown" = "Brun";
+"Custom" = "Anpassad";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Kalenderfärg";
+"Custom..." = "Anpassad...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Redigera kalender";
+"Delete Calendar" = "Ta bort kalender";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Laddar delningsinställningar…";
+"Shared with these users" = "Delad med dessa användare";
+"Add New Email" = "Lägg till ny e-postadress";
+"Email to share" = "E-postadress att dela";
+"Permission:" = "Behörighet:";
+"Add" = "Lägg till";
+"Sharing:" = "Delning:";
+"Done" = "Klar";
+
+"Error loading: %@" = "Fel vid inläsning: %@";
+"Error adding: %@" = "Fel vid tillägg: %@";
+"Error deleting: %@" = "Fel vid borttagning: %@";
+"Error updating: %@" = "Fel vid uppdatering: %@";
+"Error re-inviting (delete): %@" = "Fel vid återinbjudan (borttagning): %@";
+"Error re-inviting (insert): %@" = "Fel vid återinbjudan (infoga): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Läsare";
+"Writer" = "Skribent";
+"Owner"  = "Ägare";
+
+/* MonthCalendarView */
+"Day View" = "Dagsvy";
+"This is a repeating event." = "Detta är en återkommande händelse.";
+"Save for This Event Only" = "Spara endast för denna händelse";
+"Save for Future Events" = "Spara för framtida händelser";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Sön";
+"Mon" = "Mån";
+"Tue" = "Tis";
+"Wed" = "Ons";
+"Thu" = "Tor";
+"Fri" = "Fre";
+"Sat" = "Lör";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Stäng";
+
+/* AllEventsListView */
+"No calendar access." = "Ingen kalenderåtkomst.";
+
+/* EventRowView */
+"Ends" = "Slutar";
+
+/* SearchEventRowView */
+"No Title" = "Ingen titel";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Gå med i möte";
+"Edit" = "Redigera";
+"Duplicate" = "Duplicera";
+"Delete" = "Radera";
+"Add to Google Meet" = "Lägg till i Google Meet";
+"Add to Microsoft Teams" = "Lägg till i Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Inget valt intervall";
+"all-day" = "heldag";
+"Search events..." = "Sök händelser...";
+"Day" = "Dag";
+"MultiDay" = "Flerdagar";
+"Month" = "Månad";
+"Year" = "År";
+"List" = "Lista";
+"MultiCalendar" = "Flerkalender";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Ny händelse";
+"All-day event" = "Heldagshändelse";
+"Recurring Event" = "Återkommande händelse";
+"This event is part of a series. Update which events?" = "Denna händelse är en del av en serie. Uppdatera vilka händelser?";
+"This Event Only" = "Endast denna händelse";
+"All Future Events" = "Alla framtida händelser";
+"Cancel" = "Avbryt";
+
+/* DraggableMenuView */
+"Calendar" = "Kalender";
+"Subscriptions" = "Prenumerationer";
+"Live" = "Direkt";
+"Stop" = "Stopp";
+"Calendar Live Activity" = "Kalenderaktivitet i realtid";
+"Get" = "Hämta";
+"Color" = "Färg";
+"Search for a city…" = "Sök efter en stad…";
+"No directions" = "Inga vägbeskrivningar";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Platsåtkomst nekad. Sök efter en stad eller bevilja åtkomst i Inställningar.";
+"Cannot refresh. Location unknown." = "Kan inte uppdatera. Plats okänd.";
+"10-DAY FORECAST" = "10-DAGARS PROGNOS";
+"HighLowLabelFormat" = "Högst:%d° Lägst:%d°";
+"tomorrow" = "imorgon";
+"on_day" = "på %@";
+"in_days" = "om %d dagar";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Ny Händelse";
+
+/* Search placeholder */
+"Search for a city..." = "Sök efter en stad…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Tryck på en timme för att snabbt lägga till en kalenderhändelse.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "KÄNNS SOM";
+"similar_to_actual_temp" = "Liknar den faktiska temperaturen.";
+"wind_cooler_feel" = "Vinden gör att det känns svalare.";
+"humidity_warmer_feel" = "Fuktigheten gör att det känns varmare.";
+
+/* HumidityCard */
+"HUMIDITY" = "FUKTIGHET";
+"The dew point is %d° right now." = "Daggpunkten är %d° just nu.";
+"dewPoint.current" = "Daggpunkten är %d° just nu.";
+
+/* MoonCard */
+"MOON PHASE" = "MÅNFAS";
+"Moonrise" = "Månuppgång";
+"Moonset" = "Månnedgång";
+"Next %@" = "Nästa %@";
+"Data unavailable" = "Data ej tillgänglig";
+"%d day" = "%d dag";
+"%d days" = "%d dagar";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "NEDERBÖRD";
+"PRECIPITATION_CARD_TODAY_LABEL" = "idag";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Nästa förväntade är %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Ingen nederbörd förväntas inom kort.";
+
+/* PressureCard */
+"PRESSURE" = "TRYCK";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "SOLUPPGÅNG";
+"Sunrise: %@" = "Soluppgång: %@";
+"Sunset: %@" = "Solnedgång: %@";
+"Sunrise" = "Soluppgång";
+"Sunset" = "Solnedgång";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UV-INDEX";
+"Low" = "Lågt";
+"Moderate" = "Måttligt";
+"High" = "Högt";
+"Very High" = "Mycket Hög";
+"Extreme" = "Extrem";
+
+/* VisibilityCard */
+"VISIBILITY" = "SIKT";
+"km" = "km";
+"Perfectly clear view." = "Helt fri sikt.";
+"Excellent visibility." = "Utmärkt sikt.";
+"Good visibility." = "God sikt.";
+"Moderate visibility." = "Måttlig sikt.";
+"Poor visibility." = "Dålig sikt.";
+"Very poor visibility." = "Mycket dålig sikt.";
+"visibility.perfect"   = "Helt fri sikt.";
+"visibility.excellent" = "Utmärkt sikt.";
+"visibility.good"      = "God sikt.";
+"visibility.moderate"  = "Måttlig sikt.";
+"visibility.poor"      = "Dålig sikt.";
+"visibility.verypoor"  = "Mycket dålig sikt.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Vind";
+"Gusts" = "Vindbyar";
+"Direction" = "Riktning";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "V";
+"Compass_E" = "Ö";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Det gick inte att hämta väderdata. Kontrollera din anslutning eller försök igen senare.";
+"Falling" = "Fallande";
+"Rising" = "Stigande";
+"Steady" = "Stadig";
+"Unknown" = "Okänd";
+"Sunny" = "Sol";
+"Cloudy" = "Molnigt";
+"Partly Cloudy" = "Delvis molnigt";
+"Drizzle" = "Duggregn";
+"Thunderstorm" = "Åska";
+"Fog" = "Dimma";
+"Partly Cloudy Night" = "Delvis molnig natt";
+"Clear Night" = "Klart Natt";
+"Hazy" = "Disigt";
+"Today" = "Idag";
+"Now" = "Nu";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNO";
+"cardinal.NE"  = "NO";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "Ö";
+"cardinal.ESE" = "OSO";
+"cardinal.SE"  = "SO";
+"cardinal.SSE" = "SSO";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSV";
+"cardinal.SW"  = "SV";
+"cardinal.WSW" = "WSV";
+"cardinal.W"   = "V";
+"cardinal.WNW" = "VNV";
+"cardinal.NW"  = "NV";
+"cardinal.NNW" = "NNV";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Risk för nederbörd";
+"Today's chance: %d%%" = "Dagens risk: %d%%";
+"%@'s chance: %d%%" = "%@s chans: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Den dagliga risken för nederbörd tenderar att vara högre än risken för varje timme.";
+"ChanceOfPrecipitation_Title" = "Risk för nederbörd";
+"TodaysChance"                = "Dagens risk: %d%%";
+"OtherDayChance"              = "%@s chans: %d%%";
+"DailyChanceExplanation"      = "Den dagliga risken för nederbörd tenderar att vara högre än risken för varje timme.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Upplevd temperatur";
+"Actual" = "Faktiskt";
+"No hourly data available for this day." = "Inga timdata tillgängliga för denna dag.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Hur temperaturen känns som på grund av luftfuktighet, solljus eller vind.";
+"The actual air temperature." = "Den faktiska lufttemperaturen.";
+"HighLabelFormat" = "Högst: %d°";
+"LowLabelFormat" = "Lägst: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Fuktighet";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Luftfuktighet %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Genomsnittlig luftfuktighet %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Dagens min %d%% – max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Regn: %.1f%@, Snö: %.1f%@";
+"Precip_Total_RainFormat"       = "Regn: %.1f%@";
+"Precip_Total_SnowFormat"       = "Snö: %.1f%@";
+"Precip_Total_None"             = "Nederbörd: 0%@";
+"Precip_Bars_Subtitle"          = "Barer varje timme för regn och snö (%@).";
+"Precip_Level_Light"            = "Ljus";
+"Precip_Level_Moderate"         = "Måttligt";
+"Precip_Level_Heavy"            = "Tung";
+"Precip_Tooltip_Format"         = "%@h\nRegn: %.1f%@\nSnö: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Tryck %@ %@";
+"Pressure_CurrentUnavailable"      = "Tryck: --";
+"Pressure_DailyMinMaxFormat"       = "Dagens min %@ %@ – max %@ %@";
+"Pressure_AverageFormat"           = "Tryckmedelvärde %@ %@";
+"Pressure_DailyRangeFormat"        = "Daglig räckvidd: %@–%@ %@";
+"Pressure_Title"                   = "Tryck";
+"Pressure_NoData"                  = "Inga tryckdata tillgängliga för denna dag.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Dagens %@ %d";
+"UVGraphNoHourlyData"   = "Inga timdata tillgängliga för denna dag.";
+"UVGraphNowLabel"       = "Nu, %@";
+"UVCategory_None"       = "Inga";
+"UVCategory_Low"        = "Lågt";
+"UVCategory_Moderate"   = "Måttligt";
+"UVCategory_High"       = "Högt";
+"UVCategory_VeryHigh"   = "Mycket Hög";
+"UVCategory_Extreme"    = "Extrem";
+"UVAdvice_None"         = "Inga måttliga eller högre UV-nivåer förväntas denna dag.";
+"UVAdvice_Range"        = "Solskydd rekommenderas. UV-nivåer sträcker sig från %@ till %@, nådde mellan %@ och %@.";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Sikt";
+"Visibility_NoData"                = "Inga synlighetsdata tillgängliga för denna dag.";
+"Visibility_CurrentFormat"         = "Synlighet %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – max %d %@";
+"Visibility_NoCurrentData"         = "Ingen aktuell synlighetsdata tillgänglig.";
+"Visibility_HourlyAverages_NoData" = "Ingen timdata tillgänglig.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Vindhastighet & vindbyar";
+"WindGraph_NoData" = "Inga vinddata tillgängliga för denna dag.";
+"WindGraph_SpeedHeader" = "Vindhastighet %d";
+"WindGraph_GustHeader" = "Vindbyar upp till %d";
+"WindGraph_SpeedRangeHeader" = "Vindhastighet %d-%d";
+"WindGraph_MaxSpeedLabel" = "Maxhastighet";
+"WindGraph_MaxGustLabel" = "Maxby";
+"WindGraph_DragLabel" = "%@\nHastighet: %d\nVindby: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Daglig sammanfattning";
+
+"Precipitation Totals" = "Nederbördssummor";
+"LAST 24 HOURS" = "SENAST 24 TIMMAR";
+"NEXT 24 HOURS" = "NÄSTA 24 TIMMAR";
+"Total" = "Totalt";
+"Rain" = "Regn";
+"Snow" = "Snö";
+
+"About Wind Speed and Gusts" = "Om vindhastighet och vindbyar";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Vindhastigheten beräknas med hjälp av medelvärdet över en kort tidsperiod. Vindbyar är korta vindbyar över detta genomsnitt. En vindby varar vanligtvis under 20 sekunder.";
+
+"About the Beaufort Scale" = "Om Beaufortskalan";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Beaufort vindskalan uttrycker hur kraftig eller stark vinden är vid en given hastighet. Beaufortskalan kan göra det lättare att förstå hur blåsigt det kommer att kännas eller hur stor effekt vinden kan ha. Varje värde på skalan motsvarar ett vindhastighetsområde.";
+
+"About Feels Like Temperature" = "Om upplevd temperatur";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Den upplevda temperaturen visar hur varmt eller kallt det känns och kan skilja sig från den faktiska temperaturen. Den påverkas av luftfuktighet, solljus och vind.";
+
+"Options" = "Alternativ";
+"Temperature" = "Temperatur";
+"Use system setting (°C)" = "Använd systeminställning (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Förhållanden";
+"UV Index" = "UV-index";
+"Wind" = "Vind";
+"Precipitation" = "Nederbörd";
+"Humidity" = "Fuktighet";
+"Visibility" = "Sikt";
+"Pressure" = "Tryck";
+
+/* Fallback key */
+"displayedCondition" = "visat skick";
+
+/* Titles */
+"Forecast"                   = "Prognos";
+"DailySummary"               = "Daglig sammanfattning";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° nu med %@-förhållanden. Det finns en risk för nederbörd på %@. Vind från %@ med vindbyar upp till %d %@. Dagens temperatur sträcker sig från %d° till %d° och känns som %d°. %@ och %@.";
+"UVIndexFormat"              = "UV-index upp till %d";
+"HumidityFormat"             = "Luftfuktighet runt %d%%";
+"HumidityRangeFormat"        = "Luftfuktighet från %d%% till %d%%";
+"NA" = "Ej tillgänglig";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@s lägsta är %d° och det högsta är %d°. Temperaturen kommer att kännas som %d° till %d°. Vind från %@ väntas. %@";
+"NoPrecipLast24h"            = "Ingen nederbörd registrerad under de senaste 24 timmarna.";
+"RainLast24h"                = "Det har regnat %d mm under de senaste 24 timmarna.";
+"SnowAndRainLast24h"         = "Under de senaste 24 timmarna har snö uppmätt %@ cm och regn %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNO";
+"Dir_NE"  = "NO";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "Ö";
+"Dir_ESE" = "OSO";
+"Dir_SE"  = "SO";
+"Dir_SSE" = "SSO";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSV";
+"Dir_SW"  = "SV";
+"Dir_WSW" = "WSV";
+"Dir_W"   = "V";
+"Dir_WNW" = "VNV";
+"Dir_NW"  = "NV";
+"Dir_NNW" = "NNV";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Nederbördssummor";
+"Last24h_Label"             = "SENAST 24 TIMMAR";
+"Next24h_Label"             = "NÄSTA 24 TIMMAR";
+"Total_Label"               = "Totalt";
+"Precipitation_Label"       = "Nederbörd";
+"Rain_Label"                = "Regn";
+"Snow_Label"                = "Snö";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Vinden är för närvarande %1$d %2$@ från %3$@. Idag är vindhastigheterna %4$d till %5$d %2$@, med vindbyar upp till %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Vindhastigheterna sträcker sig från %1$d till %2$d %3$@, med vindbyar upp till %4$d %3$@.";
+
+"Beaufort_Scale"                = "Beaufort skala";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Beskrivning";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Lugn";
+"Beaufort_1"                    = "Lätt luft";
+"Beaufort_2"                    = "Lätt bris";
+"Beaufort_3"                    = "Svag bris";
+"Beaufort_4"                    = "Måttlig bris";
+"Beaufort_5"                    = "Frisk bris";
+"Beaufort_6"                    = "Stark bris";
+"Beaufort_7"                    = "Hög vind";
+"Beaufort_8" = "Hård kuling";
+"Beaufort_9"                    = "Stark kuling";
+"Beaufort_10"                   = "Storm";
+"Beaufort_11"                   = "Våldsam storm";
+"Beaufort_12"                   = "Orkanstyrka";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Det har fallit %.1f%@ nederbörd under de senaste 24 timmarna. Dagens totala nederbörd blir %.1f%@. Under de kommande 24 timmarna väntas %.1f%@ nederbörd.";
+"ForecastPrecip_OtherDayFormat" = "Den %@ kommer den totala nederbörden att vara %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Om nederbördsintensitet";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensiteten beräknas utifrån hur mycket regn eller snö som faller per timme och anger hur kraftigt regnet eller snön kommer att kännas. Den används också för andra nederbördstyper, såsom snöblandat regn och vinterblandning. Ett skyfall eller en kraftig snöstorm kan ha ”kraftig” intensitet, medan normalt regn eller lättare duggregn kan ha ”måttlig” eller ”lätt” intensitet.";
+
+/* Section titles */
+"Forecast_Title"               = "Prognos";
+"DailySummary_Title"           = "Daglig sammanfattning";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Daggpunkten är %d° till %d°.";
+"DewPoint_FutureFormat"        = "Daggpunkten kommer att vara %d° till %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Idag är den genomsnittliga luftfuktigheten %d%%. %@";
+"ForecastHumidity_Other"       = "På %@ kommer den genomsnittliga luftfuktigheten att vara %d%%.\n%@";
+
+"AboutPressure_Title"  = "Om tryck";
+"AboutPressure_Body"   = "Betydande, snabba tryckförändringar används för att förutsäga förändringar i vädret. Ett tryckfall kan till exempel innebära att regn eller snö är på väg, och stigande tryck kan innebära att vädret blir bättre. Tryck kallas också barometertryck eller atmosfärstryck.";
+
+"AboutHumidity_Title"  = "Om relativ luftfuktighet";
+"AboutHumidity_Body"   = "Relativ luftfuktighet, vanligen känd som fuktighet, är mängden fukt i luften jämfört med vad luften kan hålla. Luften kan hålla mer fukt vid högre temperaturer. En relativ luftfuktighet nära 100% betyder att det kan finnas dagg eller dimma.";
+
+"AboutDewPoint_Title" = "Om daggpunkten";
+"AboutDewPoint_Body"  = "Daggpunkten är vad temperaturen skulle behöva sjunka till för att dagg ska bildas. Det kan vara ett användbart sätt att berätta hur fuktig luften känns - ju högre daggpunkten är, desto fuktigare känns den. En daggpunkt som matchar den aktuella temperaturen betyder att den relativa luftfuktigheten är 100 % och att det kan finnas dagg eller dimma.";
+
+"Section_Forecast"                     = "Prognos";
+"Section_DailySummary"                 = "Daglig sammanfattning";
+"ForecastVisibility_TodayFormat" = "Idag kommer sikten att vara %@, vid %d till %d %@.";
+"ForecastVisibility_OtherFormat" = "På %@ kommer den lägsta sikten att vara %@ vid %d %@, och den högsta kommer att vara %@ vid %d %@.";
+"Clarity_Foggy"                        = "Dimmigt";
+"Clarity_Hazy"                         = "Disigt";
+"Clarity_Clear"                        = "Rensa";
+"Clarity_PerfectlyClear"               = "Helt klart";
+
+"AboutVisibility_Title" = "Om synlighet";
+"AboutVisibility_Body" = "Sikten talar om hur långt bort du tydligt kan se föremål som byggnader och kullar. Det är ett mått på luftens genomskinlighet och tar inte hänsyn till mängden solljus eller förekomsten av hinder. Sikt vid eller över %@ anses vara fri.";
+
+"PressureForecast_Today" = "Trycket är för närvarande %@ %@ och faller. Idag kommer medeltrycket att vara %@ %@, och det lägsta trycket kommer att vara %@ %@.";
+"PressureForecast_Other" = "På %@ kommer medeltrycket att vara %@ %@, och det lägsta trycket kommer att vara %@ %@.";
+"SectionForecast" = "Prognos";
+"SectionDailySummary" = "Daglig sammanfattning";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Alla funktioner i grundabonnemanget";
+"Multi-calendar view" = "Flerkalendervy";
+"Sync with Google Calendar" = "Synkronisera med Google Kalender";
+"Sync meets from Google Meet" = "Synkronisera möten från Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Basplan";
+"Single-day calendar view" = "Endags kalendervy";
+"Multi-day calendar view" = "Flerdagars kalendervy";
+"Monthly calendar view" = "Månatlig kalendervy";
+"Yearly overview" = "Årsöversikt";
+"List view for events" = "Listvy för händelser";
+"Weather view" = "Vädervy";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Premiumplan";
+"Sync with Microsoft Calendar" = "Synkronisera med Microsoft Kalender";
+"Sync meets from Microsoft Teams" = "Synkronisera möten från Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Motsvarar %@ per månad";
+"%d %@ free" = "%d %@ gratis";
+
+/* SubscriptionListView */
+"Premium Plans" = "Premiumplaner";
+"You are subscribed to the %@ %@ plan" = "Du prenumererar på planen %@ %@";
+"Renews on: %@" = "Förnyas på: %@";
+"Start Free Trial" = "Starta gratis provperiod";
+"Subscribe Now" = "Prenumerera nu";
+"%d %@ free, then %@%@." = "%d %@ gratis, sedan %@%@.";
+"Subscribe for %@%@." = "Prenumerera på %@%@.";
+"Privacy Policy"     = "Sekretesspolicy";
+"Terms of Service"   = "Användarvillkor";
+
+/* SubscriptionCategory */
+"Advanced" = "Avancerat";
+"Advanced Plan" = "Avancerad plan";
+"All Advanced Plan features" = "Alla funktioner för avancerad plan";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Du behöver en aktiv %@-plan för att komma åt det här avsnittet.";
+"Plan Required" = "Plan krävs";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Bas";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Prenumererar på %@ %@ plan.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Förnyas på: %@";
+
+"Manage Subscription"                   = "Hantera prenumeration";
+
+/* Period units */
+"Daily"     = "Dagligen";
+"Weekly"    = "Varje vecka";
+"Monthly"   = "Månadsvis";
+"Yearly"    = "Årligen";
+"Recurring" = "Återkommande";
+
+/* units */
+"day"   = "dag";
+"days"  = "dagar";
+"week"  = "vecka";
+"weeks" = "veckor";
+"month"  = "månad";
+"months" = "månader";
+"year"   = "år";
+"years"  = "år";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S,M,T,O,T,F,L";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Dina tidigare köp har återställts.";
+"No active subscriptions found to restore."                = "Inga aktiva prenumerationer hittades att återställa.";
+"Failed to restore purchases. Please try again later. (%@)" = "Det gick inte att återställa köp. Försök igen senare. (%@)";
+"Restore Purchases"                                        = "Återställ inköp";
+
+"Ads Free" = "Annonser gratis";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalender & väder";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Liten visar dagens datum och aktuellt väder. Mellanstor lägger till månfas och vind.";
+"Calendar Events" = "Kalenderhändelser";
+"Shows today's date, current weather, and your next calendar events." = "Visar dagens datum, aktuellt väder och dina nästa kalenderhändelser.";
+"No upcoming events" = "Inga kommande evenemang";
+"Tomorrow" = "Imorgon";
+"Untitled" = "Namnlös";
+"Detail" = "Detalj";
+"Phase" = "Fas";
+"Weather" = "Väder";
+"Select Your Email" = "Välj din e-post";
+"Confirm" = "Bekräfta";
+"Calendar name" = "Kalendernamn";
+"Sharing: %@" = "Delning: %@";
+"Loading..." = "Laddar...";
+"Selected Location" = "Vald plats";
+"Data provided by Apple Weather" = "Data tillhandahålls av Apple Weather";
+"Next" = "Nästa";
+"No details found for the selected location." = "Inga detaljer hittades för den valda platsen.";
+"Could not determine the time zone for the selected location." = "Det gick inte att bestämma tidszonen för den valda platsen.";
+"(No Title)" = "(Ingen titel)";
+"Choose your e-mail" = "Välj din e-postadress";
+"It will be treated as your primary address and invitations will not be sent to it." = "Den kommer att behandlas som din primära adress och inbjudningar kommer inte att skickas till den.";
+"Invalid URL" = "Ogiltig webbadress";
+"Rate limit or insufficient permission" = "Prisgräns eller otillräckligt tillstånd";
+"Network error: %@" = "Nätverksfel: %@";
+"N/A - Selected Tab: %@" = "Ej tillgänglig – vald flik: %@";
+"Enable Notifications" = "Aktivera aviseringar";
+"Event Notifications" = "Händelsemeddelanden";
+"Event alerts are scheduled from your event alert settings." = "Händelsevarningar schemaläggs från dina inställningar för händelsevarningar.";
+"Allow notifications so event alerts can appear at the right time." = "Tillåt aviseringar så att händelseaviseringar kan visas vid rätt tidpunkt.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Aviseringar är avstängda för den här appen. För att aktivera dem, gå till: Inställningar -> Appar -> Cloud Calendars -> Aviseringar -> Tillåt aviseringar.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating är din AI-drivna coach för smartare kost och träning. Den kombinerar modern näringsvetenskap med praktiska verktyg för att hjälpa dig att planera måltider, designa träningspass, hantera ditt skafferi och förstå hur mat och rörelse påverkar din kropp.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio är en avancerad 3D-designmiljö för iOS- och macOS-utvecklare. Den kombinerar exakt RealityKit-rendering med en kraftfull redigerare för formaterad text för att omvandla råa skärmbilder till professionellt App Store-material.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio är skärminspelningsstudion av skapande kvalitet för iOS och macOS. Fånga din skärm och kamera samtidigt, styr mikrofon + systemljud och exportera rena MP4-filer för självstudier, genomgångar och produktdemos. På iOS kan du till och med spela upp en video i appen och spela in den tillsammans med din kamera för reaktionsstil och presentatörstyrt innehåll.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars kombinerar avancerad schemaläggning med vackert integrerade väderprognoser, så att du kan planera med precision. Den stöder flera kalendertjänster, intuitiv gestbaserad redigering, inbyggda möteslänkar och detaljerade prognoser per timme/dag direkt i ditt schema.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI hjälper dig att förstå marknadsrörelser med analys på enheten och ett arbetsflöde för flera agenter utformat för att separera signal från brus. Spåra prisdata i realtid, utforska sannolikheter i regimstil och använd tydliga instrumentpaneler och diagram för att stödja ditt beslutsfattande. Sekretess-först: dina konfigurationer stannar på din enhet.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Appar";
+"Plan" = "Abonnemang";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Snöstorm";
+"WeatherCondition.blowingDust" = "Damm";
+"WeatherCondition.blowingSnow" = "Snöblåst";
+"WeatherCondition.breezy" = "Bris";
+"WeatherCondition.clear" = "Klart";
+"WeatherCondition.cloudy" = "Molnigt";
+"WeatherCondition.drizzle" = "Duggregn";
+"WeatherCondition.flurries" = "Snöbyar";
+"WeatherCondition.foggy" = "Dimma";
+"WeatherCondition.freezingDrizzle" = "Underkylt duggregn";
+"WeatherCondition.freezingRain" = "Underkylt regn";
+"WeatherCondition.frigid" = "Kallt";
+"WeatherCondition.hail" = "Hagel";
+"WeatherCondition.haze" = "Dis";
+"WeatherCondition.heavyRain" = "Kraftigt regn";
+"WeatherCondition.heavySnow" = "Tungt snöfall";
+"WeatherCondition.hot" = "Varmt";
+"WeatherCondition.hurricane" = "Orkan";
+"WeatherCondition.isolatedThunderstorms" = "Lokala åskbyar";
+"WeatherCondition.mostlyClear" = "Mestadels klart";
+"WeatherCondition.mostlyCloudy" = "Växlande molnighet";
+"WeatherCondition.partlyCloudy" = "Halvklart";
+"WeatherCondition.rain" = "Regn";
+"WeatherCondition.scatteredThunderstorms" = "Spridda åskbyar";
+"WeatherCondition.sleet" = "Iskorn";
+"WeatherCondition.smoky" = "Rök";
+"WeatherCondition.snow" = "Snö";
+"WeatherCondition.strongStorms" = "Starka åskbyar";
+"WeatherCondition.sunFlurries" = "Sol och snöbyar";
+"WeatherCondition.sunShowers" = "Sol och regnskurar";
+"WeatherCondition.thunderstorms" = "Åska";
+"WeatherCondition.tropicalStorm" = "Tropisk storm";
+"WeatherCondition.windy" = "Blåsigt";
+"WeatherCondition.wintryMix" = "Snöblandat regn";
+"MoonPhase.new" = "Nymåne";
+"MoonPhase.waxingCrescent" = "Tilltagande halvmåne";
+"MoonPhase.firstQuarter" = "Första kvarteret";
+"MoonPhase.waxingGibbous" = "Tilltagande fullmåne";
+"MoonPhase.full" = "Fullmåne";
+"MoonPhase.waningGibbous" = "Avtagande fullmåne";
+"MoonPhase.lastQuarter" = "Sista kvarteret";
+"MoonPhase.waningCrescent" = "Avtagande halvmåne";

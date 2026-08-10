@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Nie podano adresu e-mail.";
+"Please enter a valid email to continue." = "Aby kontynuować, wpisz prawidłowy adres e-mail.";
+"Your email" = "Twój e-mail";
+"Save" = "Zapisz";
+"Login" = "Zaloguj się";
+"Logout" = "Wyloguj się";
+
+/* RootView */
+"N/A" = "Nie dotyczy";
+"Calendars" = "Kalendarze";
+"Inbox" = "Skrzynka odbiorcza";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Inne";
+"Google calendars" = "Google kalendarze";
+"No synced Google calendars yet." = "Nie zsynchronizowano jeszcze kalendarzy Google.";
+"Microsoft calendars" = "Microsoft kalendarze";
+"No synced Microsoft calendars yet." = "Nie zsynchronizowano jeszcze kalendarzy Microsoft.";
+"Sign out" = "Wyloguj się";
+"Add iCloud Calendar" = "Dodaj kalendarz iCloud";
+"Share calendars with iCloud Calendar" = "Udostępniaj kalendarze za pomocą Kalendarza iCloud";
+"Sign in with Google" = "Zaloguj się za pomocą Google";
+"Sign in with Microsoft" = "Zaloguj się za pomocą Microsoft";
+"Deselect All" = "Odznacz wszystko";
+"Select All" = "Wybierz wszystko";
+"No Email" = "Brak e-maila";
+"Add Google Calendar" = "Dodaj kalendarz Google";
+
+/* AddCalendarView */
+"Calendar Name" = "Nazwa kalendarza";
+"Account" = "Konto";
+"COLOR" = "KOLOR";
+"NOTIFICATIONS" = "POWIADOMIENIA";
+"Event Alerts" = "Alerty zdarzeń";
+"Allow events on this calendar to display alerts." = "Zezwól wydarzeniom w tym kalendarzu na wyświetlanie alertów.";
+"Add Calendar" = "Dodaj kalendarz";
+
+/* Colors */
+"Red" = "Czerwony";
+"Orange" = "Pomarańczowy";
+"Yellow" = "Żółty";
+"Green" = "Zielony";
+"Blue" = "Niebieski";
+"Purple" = "Fioletowy";
+"Brown" = "Brązowy";
+"Custom" = "Niestandardowe";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Kolor kalendarza";
+"Custom..." = "Niestandardowe...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Edytuj kalendarz";
+"Delete Calendar" = "Usuń kalendarz";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Ładowanie ustawień udostępniania…";
+"Shared with these users" = "Udostępniono tym użytkownikom";
+"Add New Email" = "Dodaj nowy e-mail";
+"Email to share" = "Wyślij e-mailem, aby udostępnić";
+"Permission:" = "Pozwolenie:";
+"Add" = "Dodaj";
+"Sharing:" = "Udostępnianie:";
+"Done" = "Gotowe";
+
+"Error loading: %@" = "Błąd ładowania: %@";
+"Error adding: %@" = "Błąd podczas dodawania: %@";
+"Error deleting: %@" = "Błąd podczas usuwania: %@";
+"Error updating: %@" = "Błąd aktualizacji: %@";
+"Error re-inviting (delete): %@" = "Błąd podczas ponownego zapraszania (usuwania): %@";
+"Error re-inviting (insert): %@" = "Błąd podczas ponownego zaproszenia (wstaw): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Czytelnik";
+"Writer" = "Pisarz";
+"Owner"  = "Właściciel";
+
+/* MonthCalendarView */
+"Day View" = "Widok dzienny";
+"This is a repeating event." = "Jest to wydarzenie powtarzające się.";
+"Save for This Event Only" = "Zapisz tylko dla tego wydarzenia";
+"Save for Future Events" = "Zapisz na przyszłe wydarzenia";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "niedziela";
+"Mon" = "pon";
+"Tue" = "wt";
+"Wed" = "śr";
+"Thu" = "czw";
+"Fri" = "piątek";
+"Sat" = "sob";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Zamknij";
+
+/* AllEventsListView */
+"No calendar access." = "Brak dostępu do kalendarza.";
+
+/* EventRowView */
+"Ends" = "Kończy się";
+
+/* SearchEventRowView */
+"No Title" = "Brak tytułu";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Dołącz do spotkania";
+"Edit" = "Edytuj";
+"Duplicate" = "Duplikat";
+"Delete" = "Usuń";
+"Add to Google Meet" = "Dodaj do Google Meet";
+"Add to Microsoft Teams" = "Dodaj do Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Nie wybrano zakresu";
+"all-day" = "cały dzień";
+"Search events..." = "Wyszukaj wydarzenia...";
+"Day" = "Dzień";
+"MultiDay" = "Wielodniowe";
+"Month" = "Miesiąc";
+"Year" = "Rok";
+"List" = "Lista";
+"MultiCalendar" = "MultiKalendarz";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Nowe wydarzenie";
+"All-day event" = "Impreza całodniowa";
+"Recurring Event" = "Wydarzenie cykliczne";
+"This event is part of a series. Update which events?" = "To wydarzenie jest częścią cyklu. Zaktualizować które wydarzenia?";
+"This Event Only" = "Tylko to wydarzenie";
+"All Future Events" = "Wszystkie przyszłe wydarzenia";
+"Cancel" = "Anuluj";
+
+/* DraggableMenuView */
+"Calendar" = "Kalendarz";
+"Subscriptions" = "Subskrypcje";
+"Live" = "Na żywo";
+"Stop" = "Zatrzymaj się";
+"Calendar Live Activity" = "Aktywność na żywo w kalendarzu";
+"Get" = "Zdobądź";
+"Color" = "Kolor";
+"Search for a city…" = "Wyszukaj miasto…";
+"No directions" = "Brak wskazówek";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Odmowa dostępu do lokalizacji. Wyszukaj miasto lub przyznaj dostęp w Ustawieniach.";
+"Cannot refresh. Location unknown." = "Nie można odświeżyć. Lokalizacja nieznana.";
+"10-DAY FORECAST" = "PROGNOZA NA 10 DNI";
+"HighLowLabelFormat" = "Maks.:%d° Min.:%d°";
+"tomorrow" = "jutro";
+"on_day" = "na %@";
+"in_days" = "za %d dni";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Nowe wydarzenie";
+
+/* Search placeholder */
+"Search for a city..." = "Wyszukaj miasto…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Stuknij godzinę, aby szybko dodać wydarzenie w kalendarzu.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "CZUJE SIĘ";
+"similar_to_actual_temp" = "Temperatura podobna do rzeczywistej.";
+"wind_cooler_feel" = "Wiatr sprawia, że jest chłodniej.";
+"humidity_warmer_feel" = "Wilgotność sprawia, że jest cieplej.";
+
+/* HumidityCard */
+"HUMIDITY" = "WILGOTNOŚĆ";
+"The dew point is %d° right now." = "Punkt rosy wynosi teraz %d°.";
+"dewPoint.current" = "Punkt rosy wynosi teraz %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "FAZA KSIĘŻYCA";
+"Moonrise" = "Wschód Księżyca";
+"Moonset" = "Zachód Księżyca";
+"Next %@" = "Następny %@";
+"Data unavailable" = "Dane niedostępne";
+"%d day" = "%d dzień";
+"%d days" = "%d dni";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "OPady";
+"PRECIPITATION_CARD_TODAY_LABEL" = "dzisiaj";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Następnym oczekiwanym jest %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "W najbliższym czasie nie należy spodziewać się opadów.";
+
+/* PressureCard */
+"PRESSURE" = "CIŚNIENIE";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "WSCHÓD";
+"Sunrise: %@" = "Wschód słońca: %@";
+"Sunset: %@" = "Zachód słońca: %@";
+"Sunrise" = "Wschód słońca";
+"Sunset" = "Zachód słońca";
+
+
+/* UVIndexCard */
+"UV INDEX" = "INDEKS UV";
+"Low" = "Niski";
+"Moderate" = "Umiarkowane";
+"High" = "Wysoka";
+"Very High" = "Bardzo wysoki";
+"Extreme" = "Ekstremalne";
+
+/* VisibilityCard */
+"VISIBILITY" = "WIDOCZNOŚĆ";
+"km" = "km";
+"Perfectly clear view." = "Idealnie wyraźny widok.";
+"Excellent visibility." = "Doskonała widoczność.";
+"Good visibility." = "Dobra widoczność.";
+"Moderate visibility." = "Umiarkowana widoczność.";
+"Poor visibility." = "Słaba widoczność.";
+"Very poor visibility." = "Bardzo słaba widoczność.";
+"visibility.perfect"   = "Idealnie wyraźny widok.";
+"visibility.excellent" = "Doskonała widoczność.";
+"visibility.good"      = "Dobra widoczność.";
+"visibility.moderate"  = "Umiarkowana widoczność.";
+"visibility.poor"      = "Słaba widoczność.";
+"visibility.verypoor"  = "Bardzo słaba widoczność.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Wiatr";
+"Gusts" = "Porywy";
+"Direction" = "Kierunek";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Nie udało się pobrać danych o pogodzie. Sprawdź połączenie lub spróbuj ponownie później.";
+"Falling" = "Upadek";
+"Rising" = "Powstanie";
+"Steady" = "Stały";
+"Unknown" = "Nieznany";
+"Sunny" = "Słoneczny";
+"Cloudy" = "Pochmurno";
+"Partly Cloudy" = "Częściowe zachmurzenie";
+"Drizzle" = "Mżawka";
+"Thunderstorm" = "Burza";
+"Fog" = "Mgła";
+"Partly Cloudy Night" = "Częściowo pochmurna noc";
+"Clear Night" = "Jasna noc";
+"Hazy" = "Mgliste";
+"Today" = "Dzisiaj";
+"Now" = "Teraz";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "północno-zachodni";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Szansa na opady";
+"Today's chance: %d%%" = "Dzisiejsza szansa: %d%%";
+"%@'s chance: %d%%" = "Szansa %@: %d%%";
+"Max" = "Maks";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Dzienna szansa na opady jest zwykle większa niż szansa na każdą godzinę.";
+"ChanceOfPrecipitation_Title" = "Szansa na opady";
+"TodaysChance"                = "Dzisiejsza szansa: %d%%";
+"OtherDayChance"              = "Szansa %@: %d%%";
+"DailyChanceExplanation"      = "Dzienna szansa na opady jest zwykle większa niż szansa na każdą godzinę.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Temperatura odczuwalna";
+"Actual" = "Rzeczywisty";
+"No hourly data available for this day." = "Brak danych godzinowych dla tego dnia.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Jaka jest temperatura odczuwalna pod wpływem wilgoci, światła słonecznego lub wiatru.";
+"The actual air temperature." = "Rzeczywista temperatura powietrza.";
+"HighLabelFormat" = "Maks.: %d°";
+"LowLabelFormat" = "Min.: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Wilgotność";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Wilgotność %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Średnia wilgotność %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Dzisiejsza min. %d%% – maks. %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Maks";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Deszcz: %.1f%@, Śnieg: %.1f%@";
+"Precip_Total_RainFormat"       = "Deszcz: %.1f%@";
+"Precip_Total_SnowFormat"       = "Śnieg: %.1f%@";
+"Precip_Total_None"             = "Opady: 0%@";
+"Precip_Bars_Subtitle"          = "Paski godzinowe dotyczące deszczu i śniegu (%@).";
+"Precip_Level_Light"            = "Światło";
+"Precip_Level_Moderate"         = "Umiarkowane";
+"Precip_Level_Heavy"            = "Ciężki";
+"Precip_Tooltip_Format"         = "%@h\nDeszcz: %.1f%@\nŚnieg: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Ciśnienie %@ %@";
+"Pressure_CurrentUnavailable"      = "Ciśnienie: --";
+"Pressure_DailyMinMaxFormat"       = "Dzisiejsza min %@ %@ – max %@ %@";
+"Pressure_AverageFormat"           = "Średnie ciśnienie %@ %@";
+"Pressure_DailyRangeFormat"        = "Dzienny zakres: %@–%@ %@";
+"Pressure_Title"                   = "Ciśnienie";
+"Pressure_NoData"                  = "Brak danych dotyczących ciśnienia na ten dzień.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Dzisiejsze %@ %d";
+"UVGraphNoHourlyData"   = "Brak danych godzinowych dla tego dnia.";
+"UVGraphNowLabel"       = "Teraz %@";
+"UVCategory_None"       = "Żadne";
+"UVCategory_Low"        = "Niski";
+"UVCategory_Moderate"   = "Umiarkowane";
+"UVCategory_High"       = "Wysoka";
+"UVCategory_VeryHigh"   = "Bardzo wysoki";
+"UVCategory_Extreme"    = "Ekstremalne";
+"UVAdvice_None"         = "Na ten dzień nie należy spodziewać się umiarkowanego ani wyższego poziomu promieniowania UV.";
+"UVAdvice_Range"        = "Zalecana ochrona przeciwsłoneczna. Poziomy UV wahają się od %@ do %@, osiągane są pomiędzy %@ i %@.";
+"UVGraphMaxLabel" = "Maks";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Widoczność";
+"Visibility_NoData"                = "Brak danych o widoczności dla tego dnia.";
+"Visibility_CurrentFormat"         = "Widoczność %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – maks %d %@";
+"Visibility_NoCurrentData"         = "Brak dostępnych aktualnych danych o widoczności.";
+"Visibility_HourlyAverages_NoData" = "Brak danych godzinowych.";
+"Visibility_MaxLabel"              = "Maks";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Prędkość i podmuch wiatru";
+"WindGraph_NoData" = "Brak danych o wietrze na ten dzień.";
+"WindGraph_SpeedHeader" = "Prędkość wiatru %d";
+"WindGraph_GustHeader" = "Porywy do %d";
+"WindGraph_SpeedRangeHeader" = "Prędkość wiatru %d-%d";
+"WindGraph_MaxSpeedLabel" = "Maks. prędkość";
+"WindGraph_MaxGustLabel" = "Maks. poryw";
+"WindGraph_DragLabel" = "%@\nPrędkość: %d\nPodmuch: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Podsumowanie dnia";
+
+"Precipitation Totals" = "Sumy opadów";
+"LAST 24 HOURS" = "OSTATNIE 24 GODZINY";
+"NEXT 24 HOURS" = "NASTĘPNE 24 GODZINY";
+"Total" = "Razem";
+"Rain" = "Deszcz";
+"Snow" = "Śnieg";
+
+"About Wind Speed and Gusts" = "O prędkości wiatru i porywach";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Prędkość wiatru oblicza się na podstawie średniej z krótkiego okresu czasu. Porywy to krótkie porywy wiatru powyżej tej średniej. Podmuch zwykle trwa poniżej 20 sekund.";
+
+"About the Beaufort Scale" = "O skali Beauforta";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Skala wiatru Beauforta wyraża siłę i siłę wiatru przy danej prędkości. Skala Beauforta może ułatwić zrozumienie, jak będzie wietrznie i jaki wpływ może mieć wiatr. Każda wartość na skali odpowiada zakresowi prędkości wiatru.";
+
+"About Feels Like Temperature" = "O odczuwalnej temperaturze";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Temperatura odczuwalna wskazuje, jak ciepło lub zimno jest odczuwane, i może różnić się od rzeczywistej temperatury. Wpływają na nią wilgotność, nasłonecznienie i wiatr.";
+
+"Options" = "Opcje";
+"Temperature" = "Temperatura";
+"Use system setting (°C)" = "Użyj ustawienia systemowego (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Warunki";
+"UV Index" = "Indeks UV";
+"Wind" = "Wiatr";
+"Precipitation" = "Opady";
+"Humidity" = "Wilgotność";
+"Visibility" = "Widoczność";
+"Pressure" = "Ciśnienie";
+
+/* Fallback key */
+"displayedCondition" = "wyświetlany stan";
+
+/* Titles */
+"Forecast"                   = "Prognoza";
+"DailySummary"               = "Podsumowanie dnia";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° teraz z warunkami %@. Prawdopodobieństwo opadów wyniesie %@. Wiatr od %@ w porywach do %d %@. Dzisiejsza temperatura waha się od %d° do %d°, a odczuwalna wynosi %d°. %@ i %@.";
+"UVIndexFormat"              = "Indeks UV do %d";
+"HumidityFormat"             = "Wilgotność wokół %d%%";
+"HumidityRangeFormat"        = "Wilgotność od %d%% do %d%%";
+"NA"                         = "Nie dotyczy";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "Najniższa wartość %@ to %d°, a najwyższa to %d°. Odczuwalna temperatura będzie wynosić od %d° do %d°. Oczekiwany wiatr od %@. %@";
+"NoPrecipLast24h"            = "W ciągu ostatnich 24 godzin nie zarejestrowano żadnych opadów.";
+"RainLast24h"                = "W ciągu ostatnich 24 godzin padało %d mm.";
+"SnowAndRainLast24h"         = "W ciągu ostatnich 24 godzin opady śniegu wyniosły %@ cm, a deszczu %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "północno-zachodni";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Sumy opadów";
+"Last24h_Label"             = "OSTATNIE 24 GODZINY";
+"Next24h_Label"             = "NASTĘPNE 24 GODZINY";
+"Total_Label"               = "Razem";
+"Precipitation_Label"       = "Opady";
+"Rain_Label"                = "Deszcz";
+"Snow_Label"                = "Śnieg";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Wiatr jest obecnie %1$d %2$@ z %3$@. Dziś prędkość wiatru wynosi od %4$d do %5$d %2$@, w porywach do %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Prędkości wiatru wahają się od %1$d do %2$d %3$@, w porywach do %4$d %3$@.";
+
+"Beaufort_Scale"                = "Skala Beauforta";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Opis";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Spokojny";
+"Beaufort_1"                    = "Lekkie powietrze";
+"Beaufort_2"                    = "Lekki wietrzyk";
+"Beaufort_3"                    = "Delikatny wietrzyk";
+"Beaufort_4"                    = "Umiarkowany wiatr";
+"Beaufort_5"                    = "Świeży powiew";
+"Beaufort_6"                    = "Silny wietrzyk";
+"Beaufort_7"                    = "Silny wiatr";
+"Beaufort_8" = "Wicher";
+"Beaufort_9"                    = "Silna wichura";
+"Beaufort_10"                   = "Burza";
+"Beaufort_11"                   = "Gwałtowna burza";
+"Beaufort_12"                   = "Siła huraganu";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "W ciągu ostatnich 24 godzin spadło %.1f%@ opadów. Całkowite opady w dniu dzisiejszym wyniosą %.1f%@. W ciągu najbliższych 24 godzin spodziewane jest %.1f%@ opadów.";
+"ForecastPrecip_OtherDayFormat" = "W dniu %@ suma opadów wyniesie %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Informacje o intensywności opadów";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensywność jest obliczana na podstawie ilości deszczu lub śniegu spadającego w ciągu godziny i ma wskazywać, jak silny będzie deszcz lub śnieg. Jest również używana dla innych rodzajów opadów, takich jak deszcz ze śniegiem i opady mieszane. Ulewa lub silna śnieżyca może mieć „dużą” intensywność, natomiast zwykły deszcz lub lżejsza mżawka może mieć „umiarkowaną” albo „małą” intensywność.";
+
+/* Section titles */
+"Forecast_Title"               = "Prognoza";
+"DailySummary_Title"           = "Podsumowanie dnia";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Punkt rosy wynosi od %d° do %d°.";
+"DewPoint_FutureFormat"        = "Punkt rosy będzie wynosić od %d° do %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Dziś średnia wilgotność wynosi %d%%. %@";
+"ForecastHumidity_Other"       = "W dniu %@ średnia wilgotność wyniesie %d%%.\n%@";
+
+"AboutPressure_Title"  = "O ciśnieniu";
+"AboutPressure_Body"   = "Znaczące, szybkie zmiany ciśnienia służą do przewidywania zmian pogody. Na przykład spadek ciśnienia może oznaczać nadejście deszczu lub śniegu, a wzrost ciśnienia może oznaczać poprawę pogody. Ciśnienie nazywane jest również ciśnieniem barometrycznym lub ciśnieniem atmosferycznym.";
+
+"AboutHumidity_Title"  = "O wilgotności względnej";
+"AboutHumidity_Body"   = "Wilgotność względna, powszechnie znana jako wilgotność, to ilość wilgoci w powietrzu w porównaniu z jej zawartością. Powietrze może pomieścić więcej wilgoci w wyższych temperaturach. Wilgotność względna bliska 100% oznacza, że ​​może występować rosa lub mgła.";
+
+"AboutDewPoint_Title" = "O punkcie rosy";
+"AboutDewPoint_Body"  = "Punkt rosy to temperatura, do której musi spaść, aby pojawiła się rosa. Może to być przydatny sposób na określenie stopnia wilgotności powietrza — im wyższy punkt rosy, tym bardziej odczuwalna wilgotność. Punkt rosy odpowiadający aktualnej temperaturze oznacza, że ​​wilgotność względna wynosi 100% i może występować rosa lub mgła.";
+
+"Section_Forecast"                     = "Prognoza";
+"Section_DailySummary"                 = "Podsumowanie dnia";
+"ForecastVisibility_TodayFormat" = "Dzisiaj widoczność będzie wynosić %@, od %d do %d %@.";
+"ForecastVisibility_OtherFormat" = "W dniu %@ najniższa widoczność będzie %@ w %d %@, a najwyższa %@ w %d %@.";
+"Clarity_Foggy"                        = "Mglisty";
+"Clarity_Hazy"                         = "Mgliste";
+"Clarity_Clear"                        = "Jasne";
+"Clarity_PerfectlyClear"               = "Idealnie jasne";
+
+"AboutVisibility_Title" = "O widoczności";
+"AboutVisibility_Body" = "Widoczność informuje, z jakiej odległości wyraźnie widać obiekty takie jak budynki i wzgórza. Jest miarą przezroczystości powietrza i nie uwzględnia ilości światła słonecznego ani obecności przeszkód. Widoczność na poziomie %@ lub wyższym jest uznawana za dobrą.";
+
+"PressureForecast_Today" = "Ciśnienie wynosi obecnie %@ %@ i spada. Dzisiaj średnie ciśnienie wyniesie %@ %@, a najniższe ciśnienie wyniesie %@ %@.";
+"PressureForecast_Other" = "W dniu %@ średnie ciśnienie wyniesie %@ %@, a najniższe ciśnienie wyniesie %@ %@.";
+"SectionForecast" = "Prognoza";
+"SectionDailySummary" = "Podsumowanie dnia";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Wszystkie funkcje planu podstawowego";
+"Multi-calendar view" = "Widok wielu kalendarzy";
+"Sync with Google Calendar" = "Synchronizuj z kalendarzem Google";
+"Sync meets from Google Meet" = "Synchronizacja spotyka się z Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Plan podstawowy";
+"Single-day calendar view" = "Widok kalendarza jednodniowego";
+"Multi-day calendar view" = "Widok kalendarza wielodniowego";
+"Monthly calendar view" = "Widok kalendarza miesięcznego";
+"Yearly overview" = "Przegląd roczny";
+"List view for events" = "Widok listy wydarzeń";
+"Weather view" = "Widok pogody";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Plan premium";
+"Sync with Microsoft Calendar" = "Synchronizuj z kalendarzem Microsoft";
+"Sync meets from Microsoft Teams" = "Synchronizacja spotyka się z Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Równowartość %@ miesięcznie";
+"%d %@ free" = "%d %@ bezpłatnie";
+
+/* SubscriptionListView */
+"Premium Plans" = "Plany premium";
+"You are subscribed to the %@ %@ plan" = "Jesteś subskrybentem planu %@ %@";
+"Renews on: %@" = "Odnawia się: %@";
+"Start Free Trial" = "Rozpocznij bezpłatny okres próbny";
+"Subscribe Now" = "Subskrybuj teraz";
+"%d %@ free, then %@%@." = "%d %@ wolne, następnie %@%@.";
+"Subscribe for %@%@." = "Subskrybuj %@%@.";
+"Privacy Policy"     = "Polityka prywatności";
+"Terms of Service"   = "Warunki świadczenia usług";
+
+/* SubscriptionCategory */
+"Advanced" = "Zaawansowane";
+"Advanced Plan" = "Plan zaawansowany";
+"All Advanced Plan features" = "Wszystkie funkcje planu zaawansowanego";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Aby uzyskać dostęp do tej sekcji, potrzebujesz aktywnego planu %@.";
+"Plan Required" = "Wymagany plan";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Baza";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Subskrybujesz plan %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Odnawia się: %@";
+
+"Manage Subscription"                   = "Zarządzaj subskrypcją";
+
+/* Period units */
+"Daily"     = "Codziennie";
+"Weekly"    = "Co tydzień";
+"Monthly"   = "Miesięcznie";
+"Yearly"    = "Rocznie";
+"Recurring" = "Powtarzające się";
+
+/* units */
+"day"   = "dzień";
+"days"  = "dni";
+"week"  = "tydzień";
+"weeks" = "tygodnie";
+"month"  = "miesiąc";
+"months" = "miesiące";
+"year"   = "rok";
+"years"  = "lata";
+
+/* YearMonthMiniView */
+"weekday.headers" = "N,P,W,Ś,C,P,S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Twoje poprzednie zakupy zostały pomyślnie przywrócone.";
+"No active subscriptions found to restore."                = "Nie znaleziono aktywnych subskrypcji do przywrócenia.";
+"Failed to restore purchases. Please try again later. (%@)" = "Nie udało się przywrócić zakupów. Spróbuj ponownie później. (%@)";
+"Restore Purchases"                                        = "Przywróć zakupy";
+
+"Ads Free" = "Bez reklam";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalendarz i pogoda";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Mały widżet pokazuje dzisiejszą datę i aktualną pogodę. Średni dodaje fazę Księżyca i wiatr.";
+"Calendar Events" = "Wydarzenia w kalendarzu";
+"Shows today's date, current weather, and your next calendar events." = "Pokazuje dzisiejszą datę, aktualną pogodę i następne wydarzenia w kalendarzu.";
+"No upcoming events" = "Brak nadchodzących wydarzeń";
+"Tomorrow" = "Jutro";
+"Untitled" = "Bez tytułu";
+"Detail" = "Szczegół";
+"Phase" = "Faza";
+"Weather" = "Pogoda";
+"Select Your Email" = "Wybierz swój e-mail";
+"Confirm" = "Potwierdź";
+"Calendar name" = "Nazwa kalendarza";
+"Sharing: %@" = "Udostępnianie: %@";
+"Loading..." = "Ładowanie...";
+"Selected Location" = "Wybrana lokalizacja";
+"Data provided by Apple Weather" = "Dane dostarczone przez Apple Weather";
+"Next" = "Następny";
+"No details found for the selected location." = "Nie znaleziono szczegółów dla wybranej lokalizacji.";
+"Could not determine the time zone for the selected location." = "Nie można określić strefy czasowej dla wybranej lokalizacji.";
+"(No Title)" = "(Brak tytułu)";
+"Choose your e-mail" = "Wybierz swój e-mail";
+"It will be treated as your primary address and invitations will not be sent to it." = "Będzie on traktowany jako Twój adres podstawowy i zaproszenia nie będą na niego wysyłane.";
+"Invalid URL" = "Nieprawidłowy adres URL";
+"Rate limit or insufficient permission" = "Limit szybkości lub niewystarczające pozwolenie";
+"Network error: %@" = "Błąd sieci: %@";
+"N/A - Selected Tab: %@" = "Nie dotyczy – wybrana karta: %@";
+"Enable Notifications" = "Włącz powiadomienia";
+"Event Notifications" = "Powiadomienia o wydarzeniach";
+"Event alerts are scheduled from your event alert settings." = "Alerty o wydarzeniach są planowane w ustawieniach alertów o wydarzeniach.";
+"Allow notifications so event alerts can appear at the right time." = "Zezwalaj na powiadomienia, aby alerty o zdarzeniach pojawiały się we właściwym czasie.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Powiadomienia są wyłączone w tej aplikacji. Aby je włączyć, przejdź do: Ustawienia -> Aplikacje -> Cloud Calendars -> Powiadomienia -> Zezwalaj na powiadomienia.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating to Twój trener oparty na sztucznej inteligencji, który pomoże Ci mądrzej odżywiać się i trenować. Łączy w sobie nowoczesną naukę o żywieniu z praktycznymi narzędziami, które pomogą Ci planować posiłki, projektować treningi, zarządzać spiżarnią i zrozumieć, jak jedzenie i ruch wpływają na Twój organizm.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio to zaawansowane środowisko projektowania 3D dla programistów iOS i macOS. Łączy precyzyjne renderowanie RealityKit z wydajnym edytorem tekstu sformatowanego, aby przekształcać surowe zrzuty ekranu w profesjonalne materiały do App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio to studio nagrań ekranowych klasy twórczej dla iOS i macOS. Przechwytuj jednocześnie ekran i kamerę, steruj mikrofonem i dźwiękiem systemowym oraz eksportuj czyste pliki MP4 do samouczków, instruktaży i demonstracji produktów. Na iOS możesz nawet odtwarzać wideo w aplikacji i nagrywać je razem z kamerą, aby uzyskać treści w stylu reakcji i prowadzone przez prezentera.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars łączy zaawansowane planowanie z pięknie zintegrowanymi prognozami pogody, dzięki czemu możesz planować z precyzją. Obsługuje wiele usług kalendarza, intuicyjną edycję opartą na gestach, wbudowane łącza do spotkań i szczegółowe prognozy godzinowe/dzienne bezpośrednio w harmonogramie.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI pomaga zrozumieć ruch na rynku dzięki analizom na urządzeniu i wieloagentowemu przepływowi pracy zaprojektowanemu w celu oddzielenia sygnału od szumu. Śledź dane cenowe w czasie rzeczywistym, badaj prawdopodobieństwa w stylu reżimu i korzystaj z przejrzystych pulpitów nawigacyjnych i wykresów wspierających proces decyzyjny. Prywatność przede wszystkim: Twoje konfiguracje pozostają na Twoim urządzeniu.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplikacje";
+"Plan" = "Plan";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Zamieć śnieżna";
+"WeatherCondition.blowingDust" = "Kurz";
+"WeatherCondition.blowingSnow" = "Zawieje śnieżne";
+"WeatherCondition.breezy" = "Lekko wietrznie";
+"WeatherCondition.clear" = "Pogodnie";
+"WeatherCondition.cloudy" = "Pochmurnie";
+"WeatherCondition.drizzle" = "Mżawka";
+"WeatherCondition.flurries" = "Lekki śnieg";
+"WeatherCondition.foggy" = "Mgła";
+"WeatherCondition.freezingDrizzle" = "Marznąca mżawka";
+"WeatherCondition.freezingRain" = "Marznący deszcz";
+"WeatherCondition.frigid" = "Zimno";
+"WeatherCondition.hail" = "Grad";
+"WeatherCondition.haze" = "Zamglenie";
+"WeatherCondition.heavyRain" = "Ulewa";
+"WeatherCondition.heavySnow" = "Intensywny śnieg";
+"WeatherCondition.hot" = "Gorąco";
+"WeatherCondition.hurricane" = "Huragan";
+"WeatherCondition.isolatedThunderstorms" = "Pojedyncze burze";
+"WeatherCondition.mostlyClear" = "Głównie bez chmur";
+"WeatherCondition.mostlyCloudy" = "Głównie chmury";
+"WeatherCondition.partlyCloudy" = "Trochę chmur";
+"WeatherCondition.rain" = "Deszcz";
+"WeatherCondition.scatteredThunderstorms" = "Lokalne burze";
+"WeatherCondition.sleet" = "Deszcz ze śniegiem";
+"WeatherCondition.smoky" = "Dym";
+"WeatherCondition.snow" = "Śnieg";
+"WeatherCondition.strongStorms" = "Silna burza";
+"WeatherCondition.sunFlurries" = "Słońce i lekki śnieg";
+"WeatherCondition.sunShowers" = "Słońce i przelotne opady";
+"WeatherCondition.thunderstorms" = "Burza z piorunami";
+"WeatherCondition.tropicalStorm" = "Burza tropikalna";
+"WeatherCondition.windy" = "Wietrznie";
+"WeatherCondition.wintryMix" = "Deszcz/śnieg";
+"MoonPhase.new" = "Nów";
+"MoonPhase.waxingCrescent" = "Po nowiu";
+"MoonPhase.firstQuarter" = "Pierwsza kwadra";
+"MoonPhase.waxingGibbous" = "Po pierwszej kwadrze";
+"MoonPhase.full" = "Pełnia";
+"MoonPhase.waningGibbous" = "Po pełni";
+"MoonPhase.lastQuarter" = "Ostatnia kwadra";
+"MoonPhase.waningCrescent" = "Po ostatniej kwadrze";

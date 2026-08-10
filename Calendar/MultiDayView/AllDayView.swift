@@ -125,7 +125,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         for dayIndex in 0..<dayCount {
             let dayEvents = grouped[dayIndex] ?? []
             for (i, attr) in dayEvents.enumerated() {
-                let x = leadingInsetForHours + CGFloat(dayIndex) * dayColumnWidth + gap
+                let x = dayOriginX(for: dayIndex) + gap
                 let y = baseY + CGFloat(i) * rowHeight + gap
                 let w = dayColumnWidth - gap * 2
                 let h = rowHeight - gap * 2
@@ -152,7 +152,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         // 1) Highlight all columns in highlightedDayIndices
         for idx in highlightedDayIndices {
             guard idx >= 0 && idx < dayCount else { continue }
-            let colX = leadingInsetForHours + CGFloat(idx) * dayColumnWidth
+            let colX = dayOriginX(for: idx)
             let highlightRect = CGRect(x: colX, y: 0,
                                        width: dayColumnWidth, height: bounds.height)
             ctx.setFillColor(UIColor.systemGray.withAlphaComponent(0.10).cgColor)
@@ -400,9 +400,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 for (sliceView, _) in multiDayDraggingOriginalFrames {
                     let sliceFrameInTimeline = self.convert(sliceView.frame, to: container.weekView)
                     let midX = sliceFrameInTimeline.midX
-                    var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
-                                       / container.weekView.dayColumnWidth)
-                    dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
+                    let dayIndex = container.weekView.clampedDayIndexFromX(midX)
                     dayIndexes.insert(dayIndex)
                 }
                 
@@ -416,9 +414,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 let topMargin  = container.weekView.topMargin
                 let localY     = evFrameInTimeline.minY - topMargin
                 let midX       = evFrameInTimeline.midX
-                var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
-                                   / container.weekView.dayColumnWidth)
-                dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
+                let dayIndex = container.weekView.clampedDayIndexFromX(midX)
                 
                 let dayDate    = container.weekView.dayStartDate(for: dayIndex)
                 let hourOffset = localY / hourHeight
@@ -513,9 +509,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
                 let topMargin  = container.weekView.topMargin
                 let midX       = evFrameInTimeline.midX
                 
-                var dayIndex = Int((midX - container.weekView.leadingInsetForHours)
-                                   / container.weekView.dayColumnWidth)
-                dayIndex = max(0, min(dayIndex, container.weekView.dayCount - 1))
+                let dayIndex = container.weekView.clampedDayIndexFromX(midX)
                 
                 let localY = evFrameInTimeline.minY - topMargin
                 let hourOffset = localY / hourHeight
@@ -652,6 +646,10 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     }
     
     // MARK: - Брой дни и пр.
+
+    private var usesRightToLeftLayout: Bool {
+        effectiveUserInterfaceLayoutDirection == .rightToLeft
+    }
     
     private var dayCount: Int {
         let cal = Calendar.current
@@ -668,11 +666,20 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         let comps = cal.dateComponents([.day], from: startOnly, to: dateOnly)
         return comps.day ?? 0
     }
+
+    private func visualDayIndex(for dayIndex: Int) -> Int {
+        usesRightToLeftLayout ? (dayCount - 1 - dayIndex) : dayIndex
+    }
+
+    private func dayOriginX(for dayIndex: Int) -> CGFloat {
+        leadingInsetForHours + CGFloat(visualDayIndex(for: dayIndex)) * dayColumnWidth
+    }
     
     func dayIndexFromMidX(_ x: CGFloat) -> Int? {
         let colX = x - leadingInsetForHours
-        let idx = Int(floor(colX / dayColumnWidth))
-        return (idx >= 0 && idx < dayCount) ? idx : nil
+        let visualIndex = Int(floor(colX / dayColumnWidth))
+        guard visualIndex >= 0 && visualIndex < dayCount else { return nil }
+        return usesRightToLeftLayout ? (dayCount - 1 - visualIndex) : visualIndex
     }
     
     private func dayDateByAddingDays(_ dayIndex: Int) -> Date? {

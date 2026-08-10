@@ -16,6 +16,9 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIButton {
         let button = UIButton(type: .system)
+        button.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
+            ? .forceRightToLeft
+            : .forceLeftToRight
         
         // Задаваме цвета на бутона, който ще е .systemBlue, ако не е подаден различен
         button.tintColor = tintColor
@@ -32,6 +35,9 @@ struct UIMenuButtonRepresentable: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIButton, context: Context) {
+        uiView.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
+            ? .forceRightToLeft
+            : .forceLeftToRight
         uiView.tintColor = tintColor
         uiView.setImage(imageForTab(currentView), for: .normal)
         uiView.menu = buildViewMenu(for: uiView)

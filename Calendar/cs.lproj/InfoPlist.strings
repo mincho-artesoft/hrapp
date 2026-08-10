@@ -1,0 +1,9 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars vyžaduje přístup ke kalendáři pro sjednocení vašich událostí z kalendářů iCloud, Google a Microsoft, což umožňuje bezproblémové plánování.";
+
+"NSContactsUsageDescription" = "Cloud Calendars používá vaše kontakty ke zjednodušení pozvánek na události a snadné správě podrobností o účastnících.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars přistupuje k vaší poloze, i když je aplikace zavřená, poskytuje přesné předpovědi počasí a včasná upozornění na vaše naplánované události.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars využívá vaši polohu, když je aktivní, k integraci přesných místních předpovědí počasí přímo do vašeho kalendáře.";

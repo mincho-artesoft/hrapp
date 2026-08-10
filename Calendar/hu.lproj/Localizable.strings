@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Nem adtak meg e-mailt.";
+"Please enter a valid email to continue." = "A folytatáshoz adjon meg egy érvényes e-mail-címet.";
+"Your email" = "Az Ön email címe";
+"Save" = "Mentés";
+"Login" = "Bejelentkezés";
+"Logout" = "Kijelentkezés";
+
+/* RootView */
+"N/A" = "Nem érhető el";
+"Calendars" = "Naptárak";
+"Inbox" = "Beérkezett üzenetek";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Egyéb";
+"Google calendars" = "Google naptárak";
+"No synced Google calendars yet." = "Még nincsenek szinkronizált Google naptárak.";
+"Microsoft calendars" = "Microsoft naptárak";
+"No synced Microsoft calendars yet." = "Még nincsenek szinkronizált Microsoft naptárak.";
+"Sign out" = "Jelentkezzen ki";
+"Add iCloud Calendar" = "iCloud naptár hozzáadása";
+"Share calendars with iCloud Calendar" = "Naptárak megosztása a iCloud Naptárral";
+"Sign in with Google" = "Jelentkezzen be a következővel: Google";
+"Sign in with Microsoft" = "Jelentkezzen be a következővel: Microsoft";
+"Deselect All" = "Törölje az Összes kijelölését";
+"Select All" = "Válassza az Összes lehetőséget";
+"No Email" = "Nincs e-mail";
+"Add Google Calendar" = "Google naptár hozzáadása";
+
+/* AddCalendarView */
+"Calendar Name" = "Naptár neve";
+"Account" = "fiók";
+"COLOR" = "SZÍN";
+"NOTIFICATIONS" = "ÉRTESÍTÉSEK";
+"Event Alerts" = "Eseményriasztások";
+"Allow events on this calendar to display alerts." = "A naptár eseményei figyelmeztetések megjelenítésének engedélyezése.";
+"Add Calendar" = "Naptár hozzáadása";
+
+/* Colors */
+"Red" = "Piros";
+"Orange" = "narancssárga";
+"Yellow" = "sárga";
+"Green" = "zöld";
+"Blue" = "kék";
+"Purple" = "Lila";
+"Brown" = "Barna";
+"Custom" = "Egyedi";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Naptár színe";
+"Custom..." = "Egyedi...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Naptár szerkesztése";
+"Delete Calendar" = "Naptár törlése";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Megosztási beállítások betöltése…";
+"Shared with these users" = "Megosztva ezekkel a felhasználókkal";
+"Add New Email" = "Új e-mail hozzáadása";
+"Email to share" = "E-mail a megosztáshoz";
+"Permission:" = "Engedély:";
+"Add" = "Hozzáadás";
+"Sharing:" = "Megosztás:";
+"Done" = "Kész";
+
+"Error loading: %@" = "Hiba a betöltés során: %@";
+"Error adding: %@" = "Hiba a hozzáadásakor: %@";
+"Error deleting: %@" = "Hiba a törléskor: %@";
+"Error updating: %@" = "Hiba a frissítés során: %@";
+"Error re-inviting (delete): %@" = "Hiba az újrahíváskor (törlés): %@";
+"Error re-inviting (insert): %@" = "Hiba az újrahívásnál (beszúrás): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Olvasó";
+"Writer" = "Író";
+"Owner"  = "Tulajdonos";
+
+/* MonthCalendarView */
+"Day View" = "Napi nézet";
+"This is a repeating event." = "Ez egy ismétlődő esemény.";
+"Save for This Event Only" = "Mentés csak erre az eseményre";
+"Save for Future Events" = "Mentse el a jövőbeli eseményekre";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "V";
+"Mon" = "Hétfő";
+"Tue" = "kedd";
+"Wed" = "Sze";
+"Thu" = "cs";
+"Fri" = "Péntek";
+"Sat" = "Szo";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Bezárás";
+
+/* AllEventsListView */
+"No calendar access." = "Nincs hozzáférés a naptárhoz.";
+
+/* EventRowView */
+"Ends" = "Véget ér";
+
+/* SearchEventRowView */
+"No Title" = "Nincs cím";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Csatlakozás a találkozóhoz";
+"Edit" = "Szerkesztés";
+"Duplicate" = "Megkettőzés";
+"Delete" = "Törölje";
+"Add to Google Meet" = "Hozzáadás ehhez: Google Meet";
+"Add to Microsoft Teams" = "Hozzáadás ehhez: Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Nincs kiválasztott tartomány";
+"all-day" = "egész nap";
+"Search events..." = "Események keresése...";
+"Day" = "nap";
+"MultiDay" = "Többnapos";
+"Month" = "hónap";
+"Year" = "év";
+"List" = "Lista";
+"MultiCalendar" = "Több naptár";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Új esemény";
+"All-day event" = "Egész napos rendezvény";
+"Recurring Event" = "Ismétlődő esemény";
+"This event is part of a series. Update which events?" = "Ez az esemény egy sorozat része. Milyen események frissítése?";
+"This Event Only" = "Csak ez az esemény";
+"All Future Events" = "Minden jövőbeli esemény";
+"Cancel" = "Mégse";
+
+/* DraggableMenuView */
+"Calendar" = "Naptár";
+"Subscriptions" = "Előfizetések";
+"Live" = "Élőben";
+"Stop" = "Állj";
+"Calendar Live Activity" = "Naptár élő tevékenység";
+"Get" = "Kap";
+"Color" = "Szín";
+"Search for a city…" = "Keress egy várost…";
+"No directions" = "Nincs útbaigazítás";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "A helyhez való hozzáférés megtagadva. Keressen egy várost, vagy engedélyezze a hozzáférést a Beállításokban.";
+"Cannot refresh. Location unknown." = "Nem lehet frissíteni. Hely ismeretlen.";
+"10-DAY FORECAST" = "10 NAPOS ELŐREJELZÉS";
+"HighLowLabelFormat" = "Max.:%d° Min.:%d°";
+"tomorrow" = "holnap";
+"on_day" = "itt: %@";
+"in_days" = "%d napon belül";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Új esemény";
+
+/* Search placeholder */
+"Search for a city..." = "Keress egy várost…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Érintse meg az órát egy naptári esemény gyors hozzáadásához.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "ÚGY ÉRZI";
+"similar_to_actual_temp" = "Hasonló a tényleges hőmérséklethez.";
+"wind_cooler_feel" = "A szél hűvösebbé teszi.";
+"humidity_warmer_feel" = "A páratartalom melegebbé teszi.";
+
+/* HumidityCard */
+"HUMIDITY" = "PÁRA";
+"The dew point is %d° right now." = "A harmatpont jelenleg %d°.";
+"dewPoint.current" = "A harmatpont jelenleg %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "HOLD FÁZIS";
+"Moonrise" = "Holdkelte";
+"Moonset" = "Holdnyugta";
+"Next %@" = "Következő %@";
+"Data unavailable" = "Az adatok nem állnak rendelkezésre";
+"%d day" = "%d nap";
+"%d days" = "%d nap";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "CSAPADÉK";
+"PRECIPITATION_CARD_TODAY_LABEL" = "ma";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "A következő várható %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Csapadék hamarosan nem várható.";
+
+/* PressureCard */
+"PRESSURE" = "NYOMÁS";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "NAPFELVÉTEL";
+"Sunrise: %@" = "Napkelte: %@";
+"Sunset: %@" = "Naplemente: %@";
+"Sunrise" = "Napkelte";
+"Sunset" = "Naplemente";
+
+
+/* UVIndexCard */
+"UV INDEX" = "UV INDEX";
+"Low" = "Alacsony";
+"Moderate" = "Mérsékelt";
+"High" = "Magas";
+"Very High" = "Nagyon magas";
+"Extreme" = "Extrém";
+
+/* VisibilityCard */
+"VISIBILITY" = "LÁTHATÓSÁG";
+"km" = "km";
+"Perfectly clear view." = "Tökéletesen tiszta kilátás.";
+"Excellent visibility." = "Kiváló láthatóság.";
+"Good visibility." = "Jó láthatóság.";
+"Moderate visibility." = "Mérsékelt láthatóság.";
+"Poor visibility." = "Rossz látási viszonyok.";
+"Very poor visibility." = "Nagyon rossz látási viszonyok.";
+"visibility.perfect"   = "Tökéletesen tiszta kilátás.";
+"visibility.excellent" = "Kiváló láthatóság.";
+"visibility.good"      = "Jó láthatóság.";
+"visibility.moderate"  = "Mérsékelt láthatóság.";
+"visibility.poor"      = "Rossz látási viszonyok.";
+"visibility.verypoor"  = "Nagyon rossz látási viszonyok.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Szél";
+"Gusts" = "Lökések";
+"Direction" = "Irány";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Nem sikerült lekérni az időjárási adatokat. Kérjük, ellenőrizze a kapcsolatot, vagy próbálja újra később.";
+"Falling" = "Esés";
+"Rising" = "Felemelkedés";
+"Steady" = "Állandó";
+"Unknown" = "Ismeretlen";
+"Sunny" = "Napos";
+"Cloudy" = "Felhős";
+"Partly Cloudy" = "Helyenként felhős";
+"Drizzle" = "Szitálás";
+"Thunderstorm" = "Zivatar";
+"Fog" = "Köd";
+"Partly Cloudy Night" = "Helyenként felhős éjszaka";
+"Clear Night" = "Tiszta éjszaka";
+"Hazy" = "ködös";
+"Today" = "Ma";
+"Now" = "Most";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "ÉNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Csapadék valószínűsége";
+"Today's chance: %d%%" = "A mai esély: %d%%";
+"%@'s chance: %d%%" = "%@ esélye: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "A csapadék napi esélye általában nagyobb, mint az egyes órákra jellemző.";
+"ChanceOfPrecipitation_Title" = "Csapadék valószínűsége";
+"TodaysChance"                = "A mai esély: %d%%";
+"OtherDayChance"              = "%@ esélye: %d%%";
+"DailyChanceExplanation"      = "A csapadék napi esélye általában nagyobb, mint az egyes órákra jellemző.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Hőérzet";
+"Actual" = "Aktuális";
+"No hourly data available for this day." = "Erre a napra nem állnak rendelkezésre óránkénti adatok.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Milyen a hőmérséklet a páratartalom, a napfény vagy a szél hatására.";
+"The actual air temperature." = "A tényleges levegő hőmérséklet.";
+"HighLabelFormat" = "Max.: %d°";
+"LowLabelFormat" = "Min.: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Páratartalom";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Páratartalom %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Páratartalom Átl. %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Mai minimum %d%% – max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Eső: %.1f%@, hó: %.1f%@";
+"Precip_Total_RainFormat"       = "Eső: %.1f%@";
+"Precip_Total_SnowFormat"       = "Hó: %.1f%@";
+"Precip_Total_None"             = "Csapadék: 0%@";
+"Precip_Bars_Subtitle"          = "Óránkénti sávok esőre és hóra (%@).";
+"Precip_Level_Light"            = "Fény";
+"Precip_Level_Moderate"         = "Mérsékelt";
+"Precip_Level_Heavy"            = "Nehéz";
+"Precip_Tooltip_Format"         = "%@h\nEső: %.1f%@\nHó: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Nyomás %@ %@";
+"Pressure_CurrentUnavailable"      = "Nyomás: --";
+"Pressure_DailyMinMaxFormat"       = "Mai minimum %@ %@ – max %@ %@";
+"Pressure_AverageFormat"           = "Nyomásátlag %@ %@";
+"Pressure_DailyRangeFormat"        = "Napi tartomány: %@–%@ %@";
+"Pressure_Title"                   = "Nyomás";
+"Pressure_NoData"                  = "Erre a napra nem állnak rendelkezésre nyomásadatok.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "A mai %@ %d";
+"UVGraphNoHourlyData"   = "Erre a napra nem állnak rendelkezésre óránkénti adatok.";
+"UVGraphNowLabel"       = "Most, %@";
+"UVCategory_None"       = "Egyik sem";
+"UVCategory_Low"        = "Alacsony";
+"UVCategory_Moderate"   = "Mérsékelt";
+"UVCategory_High"       = "Magas";
+"UVCategory_VeryHigh"   = "Nagyon magas";
+"UVCategory_Extreme"    = "Extrém";
+"UVAdvice_None"         = "Ezen a napon mérsékelt vagy magasabb UV-sugárzás nem várható.";
+"UVAdvice_Range"        = "Fényvédelem javasolt. Az UV-szint %@ és %@ között van, %@ és %@ között érhető el.";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Láthatóság";
+"Visibility_NoData"                = "Erre a napra nem állnak rendelkezésre láthatósági adatok.";
+"Visibility_CurrentFormat"         = "Láthatóság %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – max %d %@";
+"Visibility_NoCurrentData"         = "Jelenleg nem állnak rendelkezésre láthatósági adatok.";
+"Visibility_HourlyAverages_NoData" = "Nem állnak rendelkezésre óránkénti adatok.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Szélsebesség és széllökés";
+"WindGraph_NoData" = "Erre a napra nem állnak rendelkezésre széladatok.";
+"WindGraph_SpeedHeader" = "Szélsebesség %d";
+"WindGraph_GustHeader" = "Legfeljebb %d széllökések";
+"WindGraph_SpeedRangeHeader" = "Szélsebesség %d-%d";
+"WindGraph_MaxSpeedLabel" = "Max. sebesség";
+"WindGraph_MaxGustLabel" = "Max. széllökés";
+"WindGraph_DragLabel" = "%@\nSebesség: %d\nLökés: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Napi összefoglaló";
+
+"Precipitation Totals" = "Csapadékösszeg";
+"LAST 24 HOURS" = "UTOLSÓ 24 ÓRA";
+"NEXT 24 HOURS" = "KÖVETKEZŐ 24 ÓRA";
+"Total" = "Összesen";
+"Rain" = "Eső";
+"Snow" = "hó";
+
+"About Wind Speed and Gusts" = "A szélsebességről és a széllökésekről";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "A szélsebességet a rövid időszak átlagából számítják ki. A széllökések az átlag feletti rövid széllökések. Egy széllökés általában 20 másodpercnél rövidebb ideig tart.";
+
+"About the Beaufort Scale" = "A Beaufort-skáláról";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "A Beaufort szélskála azt fejezi ki, hogy adott sebesség mellett milyen erős vagy erős a szél. A Beaufort-skála megkönnyítheti annak megértését, hogy milyen szeles lesz, vagy milyen hatással lehet a szél. A skála minden értéke egy szélsebesség-tartománynak felel meg.";
+
+"About Feels Like Temperature" = "A hőérzetről";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "A hőérzet azt mutatja meg, mennyire érezzük melegnek vagy hidegnek az időt, és eltérhet a tényleges hőmérséklettől. A páratartalom, a napsugárzás és a szél befolyásolja.";
+
+"Options" = "Opciók";
+"Temperature" = "Hőmérséklet";
+"Use system setting (°C)" = "Rendszerbeállítás használata (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Feltételek";
+"UV Index" = "UV-index";
+"Wind" = "Szél";
+"Precipitation" = "Csapadék";
+"Humidity" = "Páratartalom";
+"Visibility" = "Láthatóság";
+"Pressure" = "Nyomás";
+
+/* Fallback key */
+"displayedCondition" = "megjelenített állapot";
+
+/* Titles */
+"Forecast"                   = "Előrejelzés";
+"DailySummary"               = "Napi összefoglaló";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° most %@ feltételekkel. %@ csapadék valószínű. A szél %@ felől, széllökések %d %@-ig terjednek. A mai hőmérséklet %d° és %d° között mozog, és %d°-nak tűnik. %@ és %@.";
+"UVIndexFormat"              = "UV index %d-ig";
+"HumidityFormat"             = "Páratartalom %d%%";
+"HumidityRangeFormat"        = "Páratartalom %d%% és %d%% között";
+"NA" = "Nem érhető el";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "A %@ legalacsonyabb értéke %d°, a legmagasabb pedig %d°. A hőmérséklet %d° és %d° között lesz. A szél %@ felől várható. %@";
+"NoPrecipLast24h"            = "Az elmúlt 24 órában nem regisztráltak csapadékot.";
+"RainLast24h"                = "%d mm eső esett az elmúlt 24 órában.";
+"SnowAndRainLast24h"         = "Az elmúlt 24 órában havazás %@ cm, eső %d mm volt.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "ÉNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Csapadékösszeg";
+"Last24h_Label"             = "UTOLSÓ 24 ÓRA";
+"Next24h_Label"             = "KÖVETKEZŐ 24 ÓRA";
+"Total_Label"               = "Összesen";
+"Precipitation_Label"       = "Csapadék";
+"Rain_Label"                = "Eső";
+"Snow_Label"                = "hó";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "A szél jelenleg %1$d %2$@ innen: %3$@. Ma a szél sebessége %4$d és %5$d %2$@ között van, széllökések pedig %6$d %2$@ között mozognak.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "A szél sebessége %1$d és %2$d %3$@ között van, széllökésekkel %4$d %3$@-ig terjed.";
+
+"Beaufort_Scale"                = "Beaufort skála";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Leírás";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Nyugodt";
+"Beaufort_1"                    = "Könnyű levegő";
+"Beaufort_2"                    = "Enyhe szellő";
+"Beaufort_3"                    = "Enyhe szellő";
+"Beaufort_4"                    = "Mérsékelt szellő";
+"Beaufort_5"                    = "Friss szellő";
+"Beaufort_6"                    = "Erős szellő";
+"Beaufort_7"                    = "Erős szél";
+"Beaufort_8" = "Viharos szél";
+"Beaufort_9"                    = "Erős szélvihar";
+"Beaufort_10"                   = "Vihar";
+"Beaufort_11"                   = "Heves vihar";
+"Beaufort_12"                   = "Hurrikán-erő";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2-5";
+"BeaufortRange_2"               = "6-11";
+"BeaufortRange_3"               = "12-19";
+"BeaufortRange_4"               = "20-28";
+"BeaufortRange_5"               = "29-38";
+"BeaufortRange_6"               = "39-49";
+"BeaufortRange_7"               = "50-61";
+"BeaufortRange_8"               = "62-74";
+"BeaufortRange_9"               = "75-88";
+"BeaufortRange_10"              = "89-102";
+"BeaufortRange_11"              = "103-117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "%.1f%@ csapadék esett az elmúlt 24 órában. A mai nap összesített csapadéka %.1f%@ lesz. A következő 24 órában %.1f%@ csapadék várható.";
+"ForecastPrecip_OtherDayFormat" = "%@ napon a teljes csapadék %.1f%@ lesz.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "A csapadék intenzitásáról";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Az intenzitást az óránként lehulló eső vagy hó mennyisége alapján számítjuk ki, és azt jelzi, hogy mennyire erősnek érződik majd az eső vagy a havazás. Más csapadéktípusoknál, például havas esőnél és téli vegyes csapadéknál is használjuk. Egy felhőszakadás vagy erős hóvihar intenzitása lehet „erős”, míg az átlagos eső vagy enyhébb szitálás intenzitása lehet „mérsékelt” vagy „gyenge”.";
+
+/* Section titles */
+"Forecast_Title"               = "Előrejelzés";
+"DailySummary_Title"           = "Napi összefoglaló";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "A harmatpont %d° és %d° között van.";
+"DewPoint_FutureFormat"        = "A harmatpont %d° és %d° között lesz.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Ma az átlagos páratartalom %d%%. %@";
+"ForecastHumidity_Other"       = "A %@ napon az átlagos páratartalom %d%% lesz.\n%@";
+
+"AboutPressure_Title"  = "A nyomásról";
+"AboutPressure_Body"   = "A jelentős, gyors nyomásváltozásokat az időjárás változásainak előrejelzésére használják. Például a nyomásesés azt jelentheti, hogy eső vagy hó esik, az emelkedő nyomás pedig azt, hogy az időjárás javulni fog. A nyomást légköri nyomásnak vagy légköri nyomásnak is nevezik.";
+
+"AboutHumidity_Title"  = "A relatív páratartalomról";
+"AboutHumidity_Body"   = "A relatív páratartalom, más néven páratartalom, a levegőben lévő nedvesség mennyisége ahhoz képest, amit a levegő el tud tartani. Magasabb hőmérsékleten a levegő több nedvességet képes megtartani. A 100% körüli relatív páratartalom azt jelenti, hogy harmat vagy köd lehet.";
+
+"AboutDewPoint_Title" = "Harmatpontról";
+"AboutDewPoint_Body"  = "A harmatpont az, amelyre a hőmérsékletnek le kell esnie a harmat kialakulásához. Hasznos módja lehet annak megállapítására, hogy mennyire párás a levegő – minél magasabb a harmatpont, annál nedvesebbnek érzi magát. Az aktuális hőmérsékletnek megfelelő harmatpont azt jelenti, hogy a relatív páratartalom 100%, és előfordulhat harmat vagy köd.";
+
+"Section_Forecast"                     = "Előrejelzés";
+"Section_DailySummary"                 = "Napi összefoglaló";
+"ForecastVisibility_TodayFormat" = "Ma a láthatóság %@, %d és %d %@ között lesz.";
+"ForecastVisibility_OtherFormat" = "A %@ napon a legalacsonyabb láthatóság %@ a %d %@, a legmagasabb pedig %@ a %d %@ időpontban.";
+"Clarity_Foggy"                        = "Ködös";
+"Clarity_Hazy"                         = "ködös";
+"Clarity_Clear"                        = "Világos";
+"Clarity_PerfectlyClear"               = "Tökéletesen tiszta";
+
+"AboutVisibility_Title" = "A láthatóságról";
+"AboutVisibility_Body" = "A láthatóság megmutatja, milyen távolról láthat tisztán olyan tárgyakat, mint az épületek és dombok. Ez a levegő átlátszóságának mértéke, és nem veszi figyelembe a napfény mennyiségét vagy az akadályok jelenlétét. A %@ feletti vagy a feletti láthatóság tisztanak tekinthető.";
+
+"PressureForecast_Today" = "A nyomás jelenleg %@ %@ és csökken. Ma az átlagos nyomás %@ %@, a legalacsonyabb nyomás pedig %@ %@ lesz.";
+"PressureForecast_Other" = "A %@ napon az átlagos nyomás %@ %@, a legalacsonyabb nyomás pedig %@ %@ lesz.";
+"SectionForecast" = "Előrejelzés";
+"SectionDailySummary" = "Napi összefoglaló";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Az alapterv összes funkciója";
+"Multi-calendar view" = "Több naptár nézet";
+"Sync with Google Calendar" = "Szinkronizálás a Google naptárral";
+"Sync meets from Google Meet" = "Szinkronizálás találkozik innen: Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Alapterv";
+"Single-day calendar view" = "Egynapos naptárnézet";
+"Multi-day calendar view" = "Több napos naptár nézet";
+"Monthly calendar view" = "Havi naptár nézet";
+"Yearly overview" = "Éves áttekintés";
+"List view for events" = "Események listája";
+"Weather view" = "Időjárás nézet";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Prémium csomag";
+"Sync with Microsoft Calendar" = "Szinkronizálás a Microsoft naptárral";
+"Sync meets from Microsoft Teams" = "Szinkronizálás találkozik innen: Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Havi %@-nak felel meg";
+"%d %@ free" = "%d %@ ingyenes";
+
+/* SubscriptionListView */
+"Premium Plans" = "Prémium tervek";
+"You are subscribed to the %@ %@ plan" = "Ön előfizetett a %@ %@ csomagra";
+"Renews on: %@" = "Megújul: %@";
+"Start Free Trial" = "Indítsa el az ingyenes próbaverziót";
+"Subscribe Now" = "Iratkozz fel most";
+"%d %@ free, then %@%@." = "%d %@ ingyenes, majd %@%@.";
+"Subscribe for %@%@." = "Feliratkozás a %@%@ szolgáltatásra.";
+"Privacy Policy"     = "Adatvédelmi szabályzat";
+"Terms of Service"   = "Szolgáltatási feltételek";
+
+/* SubscriptionCategory */
+"Advanced" = "Haladó";
+"Advanced Plan" = "Speciális terv";
+"All Advanced Plan features" = "A speciális csomag összes funkciója";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "A szakasz eléréséhez aktív %@ előfizetésre van szüksége.";
+"Plan Required" = "Terv szükséges";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Alap";
+"Premium" = "Prémium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Előfizetett a %@ %@ csomagra.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Megújul: %@";
+
+"Manage Subscription"                   = "Előfizetés kezelése";
+
+/* Period units */
+"Daily"     = "Naponta";
+"Weekly"    = "Hetente";
+"Monthly"   = "Havonta";
+"Yearly"    = "Évente";
+"Recurring" = "Visszatérő";
+
+/* units */
+"day"   = "napon";
+"days"  = "napokon";
+"week"  = "héten";
+"weeks" = "hétig";
+"month"  = "hónapban";
+"months" = "hónap";
+"year"   = "évben";
+"years"  = "év";
+
+/* YearMonthMiniView */
+"weekday.headers" = "V,H,K,Sz,Cs,P,Sz";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Korábbi vásárlásait sikeresen visszaállítottuk.";
+"No active subscriptions found to restore."                = "Nem találhatók visszaállítandó aktív előfizetések.";
+"Failed to restore purchases. Please try again later. (%@)" = "Nem sikerült visszaállítani a vásárlásokat. Kérjük, próbálja újra később. (%@)";
+"Restore Purchases"                                        = "Vásárlások visszaállítása";
+
+"Ads Free" = "Ads Ingyenes";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Naptár és időjárás";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "A kis widget a mai dátumot és az aktuális időjárást mutatja. A közepes a holdfázist és a szelet is megjeleníti.";
+"Calendar Events" = "Események naptárban";
+"Shows today's date, current weather, and your next calendar events." = "Megjeleníti a mai dátumot, az aktuális időjárást és a következő naptári eseményeket.";
+"No upcoming events" = "Nincsenek közelgő események";
+"Tomorrow" = "Holnap";
+"Untitled" = "Cím nélkül";
+"Detail" = "Részlet";
+"Phase" = "fázis";
+"Weather" = "Időjárás";
+"Select Your Email" = "Válassza ki az Ön e-mail címét";
+"Confirm" = "Erősítse meg";
+"Calendar name" = "A naptár neve";
+"Sharing: %@" = "Megosztás: %@";
+"Loading..." = "Betöltés...";
+"Selected Location" = "Kiválasztott hely";
+"Data provided by Apple Weather" = "Az adatokat: Apple Weather";
+"Next" = "Következő";
+"No details found for the selected location." = "Nem találhatók részletek a kiválasztott helyhez.";
+"Could not determine the time zone for the selected location." = "Nem sikerült meghatározni a kiválasztott hely időzónáját.";
+"(No Title)" = "(Nincs cím)";
+"Choose your e-mail" = "Válassza ki az e-mail címét";
+"It will be treated as your primary address and invitations will not be sent to it." = "Ezt az elsődleges címként kezeljük, és nem küldünk rá meghívókat.";
+"Invalid URL" = "Érvénytelen URL";
+"Rate limit or insufficient permission" = "Díjkorlát vagy nem elegendő engedély";
+"Network error: %@" = "Hálózati hiba: %@";
+"N/A - Selected Tab: %@" = "Nem érhető el – kiválasztott lap: %@";
+"Enable Notifications" = "Értesítések engedélyezése";
+"Event Notifications" = "Eseményértesítések";
+"Event alerts are scheduled from your event alert settings." = "Az eseményriasztások ütemezése az eseményriasztási beállításokból történik.";
+"Allow notifications so event alerts can appear at the right time." = "Engedélyezze az értesítéseket, hogy az eseményriasztások a megfelelő időben jelenjenek meg.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Az értesítések ki vannak kapcsolva ennél az alkalmazásnál. Az engedélyezésükhöz lépjen a Beállítások -> Alkalmazások -> Cloud Calendars -> Értesítések -> Értesítések engedélyezése menüpontra.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "A Wise Eating az Ön mesterséges intelligenciájú edzője az intelligensebb táplálkozáshoz és edzéshez. A modern táplálkozástudományt praktikus eszközökkel ötvözi, amelyek segítenek megtervezni az étkezéseket, megtervezni az edzéseket, kezelni a kamrát, és megérteni, hogyan hatnak az ételek és a mozgás a testére.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "A StoreFront Studio fejlett 3D tervezési környezet iOS- és macOS-fejlesztőknek. A pontos RealityKit-megjelenítést hatékony formázottszöveg-szerkesztővel ötvözi, hogy a nyers képernyőképekből professzionális App Store-anyagok készülhessenek.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "A ReelStudio a iOS és macOS készítői szintű képernyőfelvételi stúdiója. Rögzítse egyszerre a képernyőt és a kamerát, vezérelje a mikrofont és a rendszerhangot, és exportáljon tiszta MP4-eket oktatóanyagokhoz, bemutatókhoz és termékbemutatókhoz. A iOS-n akár videót is lejátszhat az alkalmazáson belül, és rögzítheti a kamerával együtt, hogy reakcióstílusú és előadó által vezetett tartalmat kapjon.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "A Cloud Calendars a fejlett ütemezést gyönyörűen integrált időjárás-előrejelzésekkel kombinálja, így Ön pontosan tervezhet. Támogatja a több naptárszolgáltatást, az intuitív, kézmozdulatokon alapuló szerkesztést, a beépített értekezlet-hivatkozásokat és a részletes óránkénti/napi előrejelzéseket közvetlenül az ütemtervben.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "A MarketBrief AI segít megérteni a piaci mozgást az eszközön található elemzésekkel és egy többügynököt tartalmazó munkafolyamattal, amely a jel és a zaj elkülönítésére szolgál. Kövesse nyomon a valós idejű áradatokat, fedezze fel a rendszerszerű valószínűségeket, és világos irányítópultokat és diagramokat használjon a döntéshozatal támogatására. Az adatvédelem mindenekelőtt: a konfigurációk az eszközön maradnak.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Alkalmazások";
+"Plan" = "Csomag";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Hóvihar";
+"WeatherCondition.blowingDust" = "Por";
+"WeatherCondition.blowingSnow" = "Hófúvás";
+"WeatherCondition.breezy" = "Szellős idő";
+"WeatherCondition.clear" = "Derült";
+"WeatherCondition.cloudy" = "Felhős";
+"WeatherCondition.drizzle" = "Szitálás";
+"WeatherCondition.flurries" = "Hószállingózás";
+"WeatherCondition.foggy" = "Köd";
+"WeatherCondition.freezingDrizzle" = "Ónos szitálás";
+"WeatherCondition.freezingRain" = "Ónos eső";
+"WeatherCondition.frigid" = "Hideg";
+"WeatherCondition.hail" = "Jégeső";
+"WeatherCondition.haze" = "Légköri homály";
+"WeatherCondition.heavyRain" = "Heves eső";
+"WeatherCondition.heavySnow" = "Heves havazás";
+"WeatherCondition.hot" = "Forró";
+"WeatherCondition.hurricane" = "Hurrikán";
+"WeatherCondition.isolatedThunderstorms" = "Lokális zivatarok";
+"WeatherCondition.mostlyClear" = "Többnyire derült";
+"WeatherCondition.mostlyCloudy" = "Többnyire felhős";
+"WeatherCondition.partlyCloudy" = "Részben felhős";
+"WeatherCondition.rain" = "Eső";
+"WeatherCondition.scatteredThunderstorms" = "Szórványos zivatarok";
+"WeatherCondition.sleet" = "Havas eső";
+"WeatherCondition.smoky" = "Füst";
+"WeatherCondition.snow" = "Havazás";
+"WeatherCondition.strongStorms" = "Heves zivatar";
+"WeatherCondition.sunFlurries" = "Napsütés és hószállingózás";
+"WeatherCondition.sunShowers" = "Napsütés és zápor";
+"WeatherCondition.thunderstorms" = "Zivatar";
+"WeatherCondition.tropicalStorm" = "Trópusi vihar";
+"WeatherCondition.windy" = "Szeles";
+"WeatherCondition.wintryMix" = "Vegyes téli";
+"MoonPhase.new" = "Újhold";
+"MoonPhase.waxingCrescent" = "Növekvő holdsarló";
+"MoonPhase.firstQuarter" = "Első negyed";
+"MoonPhase.waxingGibbous" = "Növekvő hold";
+"MoonPhase.full" = "Telihold";
+"MoonPhase.waningGibbous" = "Fogyó hold";
+"MoonPhase.lastQuarter" = "Utolsó negyed";
+"MoonPhase.waningCrescent" = "Fogyó holdsarló";

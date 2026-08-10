@@ -16,8 +16,8 @@
 "Starts in" = "Начинается через";
 "Now" = "Сейчас";
 "LiveActivityCountdownFormat" = "%1$d %2$@";
-"LiveActivityCountdownMinuteUnitOne" = "мин";
-"LiveActivityCountdownMinuteUnitOther" = "мин";
+"LiveActivityCountdownMinuteUnitOne" = "min";
+"LiveActivityCountdownMinuteUnitOther" = "min";
 "LiveActivityCountdownHourUnitOne" = "ч";
 "LiveActivityCountdownHourUnitOther" = "ч";
 "LiveActivityCountdownDayUnitOne" = "день";
@@ -31,3 +31,54 @@
 "High" = "Высокий";
 "Very High" = "Очень высокий";
 "Extreme" = "Экстремальный";
+
+/* Application and compass labels */
+"AppDisplayName" = "Cloud Calendars";
+"Compass_N" = "С";
+"Compass_S" = "Ю";
+"Compass_W" = "З";
+"Compass_E" = "В";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Снежная буря";
+"WeatherCondition.blowingDust" = "Пыль";
+"WeatherCondition.blowingSnow" = "Метель";
+"WeatherCondition.breezy" = "Слегка ветрено";
+"WeatherCondition.clear" = "Ясно";
+"WeatherCondition.cloudy" = "Облачно";
+"WeatherCondition.drizzle" = "Изморось";
+"WeatherCondition.flurries" = "Легкий снегопад";
+"WeatherCondition.foggy" = "Туман";
+"WeatherCondition.freezingDrizzle" = "Замерзающая морось";
+"WeatherCondition.freezingRain" = "Замерзающий дождь";
+"WeatherCondition.frigid" = "Холодно";
+"WeatherCondition.hail" = "Град";
+"WeatherCondition.haze" = "Дымка";
+"WeatherCondition.heavyRain" = "Ливень";
+"WeatherCondition.heavySnow" = "Сильный снегопад";
+"WeatherCondition.hot" = "Жарко";
+"WeatherCondition.hurricane" = "Ураган";
+"WeatherCondition.isolatedThunderstorms" = "Местами грозы";
+"WeatherCondition.mostlyClear" = "В основном ясно";
+"WeatherCondition.mostlyCloudy" = "В основном облачно";
+"WeatherCondition.partlyCloudy" = "Временами облачно";
+"WeatherCondition.rain" = "Дождь";
+"WeatherCondition.scatteredThunderstorms" = "Местами грозы";
+"WeatherCondition.sleet" = "Ледяной дождь";
+"WeatherCondition.smoky" = "Смог";
+"WeatherCondition.snow" = "Снег";
+"WeatherCondition.strongStorms" = "Сильная гроза";
+"WeatherCondition.sunFlurries" = "Легкий снегопад с солнцем";
+"WeatherCondition.sunShowers" = "Дождь с солнцем";
+"WeatherCondition.thunderstorms" = "Гроза";
+"WeatherCondition.tropicalStorm" = "Тропический шторм";
+"WeatherCondition.windy" = "Ветрено";
+"WeatherCondition.wintryMix" = "Снег с дождем";
+"MoonPhase.new" = "Новолуние";
+"MoonPhase.waxingCrescent" = "Растущий серп";
+"MoonPhase.firstQuarter" = "1‑я четверть";
+"MoonPhase.waxingGibbous" = "Прибывающая луна";
+"MoonPhase.full" = "Полнолуние";
+"MoonPhase.waningGibbous" = "Убывающая луна";
+"MoonPhase.lastQuarter" = "3‑я четверть";
+"MoonPhase.waningCrescent" = "Убывающий серп";

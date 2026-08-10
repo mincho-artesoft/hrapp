@@ -1,0 +1,9 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars को आपके ईवेंट को iCloud, Google, और Microsoft कैलेंडर से एकीकृत करने के लिए कैलेंडर एक्सेस की आवश्यकता होती है, जिससे निर्बाध शेड्यूलिंग सक्षम होती है।";
+
+"NSContactsUsageDescription" = "Cloud Calendars ईवेंट आमंत्रणों को सरल बनाने और प्रतिभागी विवरणों को सहजता से प्रबंधित करने के लिए आपके संपर्कों का उपयोग करता है।";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars ऐप बंद होने पर भी आपके स्थान तक पहुंचता है, सटीक मौसम पूर्वानुमान और आपके निर्धारित कार्यक्रमों के लिए समय पर अलर्ट प्रदान करता है।";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars सटीक स्थानीय मौसम पूर्वानुमानों को सीधे आपके कैलेंडर में एकीकृत करने के लिए सक्रिय रहते हुए आपके स्थान का उपयोग करता है।";

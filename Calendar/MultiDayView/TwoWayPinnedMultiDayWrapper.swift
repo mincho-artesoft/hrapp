@@ -19,6 +19,9 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     public var onMonthLabelTap: ((Date) -> Void)? = nil
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        vc.view.semanticContentAttribute = semanticDirection
         
         // Ако ще представяте този контролер модално и искате
         // да е fullscreen, можете да активирате:
@@ -26,6 +29,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         // vc.modalPresentationStyle = .fullScreen
 
         let container = TwoWayPinnedMultiDayContainerView()
+        container.semanticContentAttribute = semanticDirection
         container.onEventDeleted = { descriptor in
                // Когато в MultiDayTimelineView натиснат „Delete“ (и реално изтриете EventKit event),
                // Накрая искаме да презаредим диапазона:
@@ -123,6 +127,11 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 as? TwoWayPinnedMultiDayContainerView else {
             return
         }
+
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        uiViewController.view.semanticContentAttribute = semanticDirection
+        container.semanticContentAttribute = semanticDirection
         
         container.showSingleDay = isSingleDay
         container.fromDate = fromDate

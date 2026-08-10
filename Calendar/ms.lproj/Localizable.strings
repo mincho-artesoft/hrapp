@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "Tiada e-mel diberikan.";
+"Please enter a valid email to continue." = "Sila masukkan e-mel yang sah untuk meneruskan.";
+"Your email" = "e-mel anda";
+"Save" = "Jimat";
+"Login" = "Log masuk";
+"Logout" = "Log keluar";
+
+/* RootView */
+"N/A" = "T/A";
+"Calendars" = "Kalendar";
+"Inbox" = "Peti masuk";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Lain-lain";
+"Google calendars" = "Google kalendar";
+"No synced Google calendars yet." = "Tiada kalendar Google disegerakkan lagi.";
+"Microsoft calendars" = "Microsoft kalendar";
+"No synced Microsoft calendars yet." = "Tiada kalendar Microsoft disegerakkan lagi.";
+"Sign out" = "Log keluar";
+"Add iCloud Calendar" = "Tambahkan iCloud Kalendar";
+"Share calendars with iCloud Calendar" = "Kongsi kalendar dengan iCloud Kalendar";
+"Sign in with Google" = "Log masuk dengan Google";
+"Sign in with Microsoft" = "Log masuk dengan Microsoft";
+"Deselect All" = "Nyahpilih Semua";
+"Select All" = "Pilih Semua";
+"No Email" = "Tiada E-mel";
+"Add Google Calendar" = "Tambahkan Google Kalendar";
+
+/* AddCalendarView */
+"Calendar Name" = "Nama Kalendar";
+"Account" = "Akaun";
+"COLOR" = "WARNA";
+"NOTIFICATIONS" = "PEMBERITAHUAN";
+"Event Alerts" = "Makluman Acara";
+"Allow events on this calendar to display alerts." = "Benarkan acara pada kalendar ini memaparkan makluman.";
+"Add Calendar" = "Tambah Kalendar";
+
+/* Colors */
+"Red" = "merah";
+"Orange" = "Jingga";
+"Yellow" = "kuning";
+"Green" = "hijau";
+"Blue" = "Biru";
+"Purple" = "Ungu";
+"Brown" = "coklat";
+"Custom" = "Adat";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Warna Kalendar";
+"Custom..." = "tersuai...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Edit Kalendar";
+"Delete Calendar" = "Padamkan Kalendar";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Memuatkan tetapan perkongsian…";
+"Shared with these users" = "Dikongsi dengan pengguna ini";
+"Add New Email" = "Tambah E-mel Baharu";
+"Email to share" = "E-mel untuk dikongsi";
+"Permission:" = "kebenaran:";
+"Add" = "Tambah";
+"Sharing:" = "Perkongsian:";
+"Done" = "Selesai";
+
+"Error loading: %@" = "Ralat memuatkan: %@";
+"Error adding: %@" = "Ralat menambah: %@";
+"Error deleting: %@" = "Ralat semasa memadam: %@";
+"Error updating: %@" = "Ralat mengemas kini: %@";
+"Error re-inviting (delete): %@" = "Ralat semasa menjemput semula (padam): %@";
+"Error re-inviting (insert): %@" = "Ralat semasa menjemput semula (masukkan): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Pembaca";
+"Writer" = "Penulis";
+"Owner"  = "Pemilik";
+
+/* MonthCalendarView */
+"Day View" = "Pemandangan Hari";
+"This is a repeating event." = "Ini adalah peristiwa yang berulang.";
+"Save for This Event Only" = "Simpan untuk Acara Ini Sahaja";
+"Save for Future Events" = "Simpan untuk Acara Masa Depan";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Matahari";
+"Mon" = "isn";
+"Tue" = "Sel";
+"Wed" = "Rabu";
+"Thu" = "Kha";
+"Fri" = "Jum";
+"Sat" = "Sab";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "tutup";
+
+/* AllEventsListView */
+"No calendar access." = "Tiada akses kalendar.";
+
+/* EventRowView */
+"Ends" = "tamat";
+
+/* SearchEventRowView */
+"No Title" = "Tiada Tajuk";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Sertai Mesyuarat";
+"Edit" = "Sunting";
+"Duplicate" = "Pendua";
+"Delete" = "Padam";
+"Add to Google Meet" = "Tambahkan pada Google Meet";
+"Add to Microsoft Teams" = "Tambahkan pada Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Tiada julat yang dipilih";
+"all-day" = "sepanjang hari";
+"Search events..." = "Cari acara...";
+"Day" = "Hari";
+"MultiDay" = "Berbilang Hari";
+"Month" = "bulan";
+"Year" = "tahun";
+"List" = "Senaraikan";
+"MultiCalendar" = "BerbilangKalendar";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Acara baru";
+"All-day event" = "Acara sepanjang hari";
+"Recurring Event" = "Peristiwa Berulang";
+"This event is part of a series. Update which events?" = "Acara ini adalah sebahagian daripada siri. Kemas kini acara yang mana?";
+"This Event Only" = "Acara Ini Sahaja";
+"All Future Events" = "Semua Peristiwa Masa Depan";
+"Cancel" = "Batal";
+
+/* DraggableMenuView */
+"Calendar" = "Kalendar";
+"Subscriptions" = "Langganan";
+"Live" = "Langsung";
+"Stop" = "Berhenti";
+"Calendar Live Activity" = "Aktiviti Langsung Kalendar";
+"Get" = "Dapatkan";
+"Color" = "warna";
+"Search for a city…" = "Cari bandar…";
+"No directions" = "Tiada arah";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Akses lokasi ditolak. Cari bandar atau berikan akses dalam Tetapan.";
+"Cannot refresh. Location unknown." = "Tidak boleh muat semula. Lokasi tidak diketahui.";
+"10-DAY FORECAST" = "RAMALAN 10 HARI";
+"HighLowLabelFormat" = "Tertinggi:%d° Terendah:%d°";
+"tomorrow" = "esok";
+"on_day" = "pada %@";
+"in_days" = "dalam %d hari";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Acara Baru";
+
+/* Search placeholder */
+"Search for a city..." = "Cari bandar…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Ketik sejam untuk menambah acara kalendar dengan cepat.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "RASA MACAM";
+"similar_to_actual_temp" = "Sama dengan suhu sebenar.";
+"wind_cooler_feel" = "Angin membuat ia berasa lebih sejuk.";
+"humidity_warmer_feel" = "Kelembapan menjadikannya lebih hangat.";
+
+/* HumidityCard */
+"HUMIDITY" = "KELEMBAPAN";
+"The dew point is %d° right now." = "Takat embun ialah %d° sekarang.";
+"dewPoint.current" = "Takat embun ialah %d° sekarang.";
+
+/* MoonCard */
+"MOON PHASE" = "FASA BULAN";
+"Moonrise" = "Bulan terbit";
+"Moonset" = "Bulan terbenam";
+"Next %@" = "Seterusnya %@";
+"Data unavailable" = "Data tidak tersedia";
+"%d day" = "%d hari";
+"%d days" = "%d hari";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "KERETAPAN";
+"PRECIPITATION_CARD_TODAY_LABEL" = "hari ini";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Seterusnya dijangka ialah %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Tiada hujan dijangka tidak lama lagi.";
+
+/* PressureCard */
+"PRESSURE" = "TEKANAN";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "MATAHARI TERBIT";
+"Sunrise: %@" = "Matahari terbit: %@";
+"Sunset: %@" = "Matahari terbenam: %@";
+"Sunrise" = "matahari terbit";
+"Sunset" = "matahari terbenam";
+
+
+/* UVIndexCard */
+"UV INDEX" = "INDEKS UV";
+"Low" = "rendah";
+"Moderate" = "Sederhana";
+"High" = "tinggi";
+"Very High" = "Sangat Tinggi";
+"Extreme" = "melampau";
+
+/* VisibilityCard */
+"VISIBILITY" = "KELIHATAN";
+"km" = "km";
+"Perfectly clear view." = "Pandangan yang sangat jelas.";
+"Excellent visibility." = "Keterlihatan yang sangat baik.";
+"Good visibility." = "Keterlihatan yang baik.";
+"Moderate visibility." = "Keterlihatan sederhana.";
+"Poor visibility." = "Keterlihatan lemah.";
+"Very poor visibility." = "Keterlihatan yang sangat lemah.";
+"visibility.perfect"   = "Pandangan yang sangat jelas.";
+"visibility.excellent" = "Keterlihatan yang sangat baik.";
+"visibility.good"      = "Keterlihatan yang baik.";
+"visibility.moderate"  = "Keterlihatan sederhana.";
+"visibility.poor"      = "Keterlihatan lemah.";
+"visibility.verypoor"  = "Keterlihatan yang sangat lemah.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "Angin";
+"Gusts" = "tiupan angin";
+"Direction" = "Arah";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Gagal mengambil data cuaca. Sila semak sambungan anda atau cuba lagi kemudian.";
+"Falling" = "Jatuh";
+"Rising" = "Meningkat";
+"Steady" = "mantap";
+"Unknown" = "Tidak diketahui";
+"Sunny" = "cerah";
+"Cloudy" = "mendung";
+"Partly Cloudy" = "Sebahagian Mendung";
+"Drizzle" = "Hujan renyai-renyai";
+"Thunderstorm" = "Ribut petir";
+"Fog" = "kabut";
+"Partly Cloudy Night" = "Malam Sebahagian Mendung";
+"Clear Night" = "Malam yang cerah";
+"Hazy" = "Jerebu";
+"Today" = "Hari ini";
+"Now" = "Sekarang";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Peluang Hujan";
+"Today's chance: %d%%" = "Peluang hari ini: %d%%";
+"%@'s chance: %d%%" = "Peluang %@: %d%%";
+"Max" = "Maks";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Peluang hujan harian cenderung lebih tinggi daripada peluang untuk setiap jam.";
+"ChanceOfPrecipitation_Title" = "Peluang Hujan";
+"TodaysChance"                = "Peluang hari ini: %d%%";
+"OtherDayChance"              = "Peluang %@: %d%%";
+"DailyChanceExplanation"      = "Peluang hujan harian cenderung lebih tinggi daripada peluang untuk setiap jam.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Suhu terasa";
+"Actual" = "sebenarnya";
+"No hourly data available for this day." = "Tiada data setiap jam tersedia untuk hari ini.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Apakah perasaan suhu akibat kelembapan, cahaya matahari atau angin.";
+"The actual air temperature." = "Suhu udara sebenar.";
+"HighLabelFormat" = "Tertinggi: %d°";
+"LowLabelFormat" = "Terendah: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Kelembapan";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Kelembapan %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Purata Kelembapan %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Minimum hari ini %d%% – maks %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Maks";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Hujan: %.1f%@, Salji: %.1f%@";
+"Precip_Total_RainFormat"       = "Hujan: %.1f%@";
+"Precip_Total_SnowFormat"       = "Salji: %.1f%@";
+"Precip_Total_None"             = "Kerpasan: 0%@";
+"Precip_Bars_Subtitle"          = "Bar setiap jam untuk hujan & salji (%@).";
+"Precip_Level_Light"            = "Cahaya";
+"Precip_Level_Moderate"         = "Sederhana";
+"Precip_Level_Heavy"            = "berat";
+"Precip_Tooltip_Format"         = "%@j\nHujan: %.1f%@\nSalji: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Tekanan %@ %@";
+"Pressure_CurrentUnavailable"      = "Tekanan: --";
+"Pressure_DailyMinMaxFormat"       = "Minimum hari ini %@ %@ – maks %@ %@";
+"Pressure_AverageFormat"           = "Purata Tekanan %@ %@";
+"Pressure_DailyRangeFormat"        = "Julat harian: %@–%@ %@";
+"Pressure_Title"                   = "Tekanan";
+"Pressure_NoData"                  = "Tiada data tekanan tersedia untuk hari ini.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "%@ %d hari ini";
+"UVGraphNoHourlyData"   = "Tiada data setiap jam tersedia untuk hari ini.";
+"UVGraphNowLabel"       = "Sekarang, %@";
+"UVCategory_None"       = "tiada";
+"UVCategory_Low"        = "rendah";
+"UVCategory_Moderate"   = "Sederhana";
+"UVCategory_High"       = "tinggi";
+"UVCategory_VeryHigh"   = "Sangat Tinggi";
+"UVCategory_Extreme"    = "melampau";
+"UVAdvice_None"         = "Tiada tahap UV sederhana atau lebih tinggi dijangka untuk hari ini.";
+"UVAdvice_Range"        = "Perlindungan matahari disyorkan. Tahap UV berjulat daripada %@ hingga %@, dicapai antara %@ dan %@.";
+"UVGraphMaxLabel" = "Maks";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Keterlihatan";
+"Visibility_NoData"                = "Tiada data keterlihatan tersedia untuk hari ini.";
+"Visibility_CurrentFormat"         = "Keterlihatan %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d – maks %d %@";
+"Visibility_NoCurrentData"         = "Tiada data keterlihatan semasa tersedia.";
+"Visibility_HourlyAverages_NoData" = "Tiada data setiap jam tersedia.";
+"Visibility_MaxLabel"              = "Maks";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Kelajuan Angin & Tiupan";
+"WindGraph_NoData" = "Tiada data angin tersedia untuk hari ini.";
+"WindGraph_SpeedHeader" = "Kelajuan Angin %d";
+"WindGraph_GustHeader" = "Tiupan angin sehingga %d";
+"WindGraph_SpeedRangeHeader" = "Kelajuan Angin %d-%d";
+"WindGraph_MaxSpeedLabel" = "Kelajuan maks.";
+"WindGraph_MaxGustLabel" = "Tiupan maks.";
+"WindGraph_DragLabel" = "%@\nKelajuan: %d\nTiupan: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Ringkasan Harian";
+
+"Precipitation Totals" = "Jumlah Kerpasan";
+"LAST 24 HOURS" = "24 JAM TERAKHIR";
+"NEXT 24 HOURS" = "24 JAM SETERUSNYA";
+"Total" = "Jumlah";
+"Rain" = "hujan";
+"Snow" = "salji";
+
+"About Wind Speed and Gusts" = "Mengenai Kelajuan Angin dan Tiupan";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Kelajuan angin dikira menggunakan purata dalam tempoh masa yang singkat. Tiupan angin ialah hembusan angin pendek melebihi purata ini. Tiupan angin biasanya berlangsung di bawah 20 saat.";
+
+"About the Beaufort Scale" = "Mengenai Skala Beaufort";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Skala angin Beaufort menyatakan betapa kuat atau kuatnya angin pada kelajuan tertentu. Skala Beaufort mungkin memudahkan untuk memahami perasaan berangin atau kesan yang boleh diberikan oleh angin. Setiap nilai pada skala sepadan dengan julat kelajuan angin.";
+
+"About Feels Like Temperature" = "Mengenai suhu terasa";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Suhu terasa menunjukkan betapa panas atau sejuknya keadaan dirasakan dan boleh berbeza daripada suhu sebenar. Ia dipengaruhi oleh kelembapan, cahaya matahari dan angin.";
+
+"Options" = "Pilihan";
+"Temperature" = "Suhu";
+"Use system setting (°C)" = "Gunakan tetapan sistem (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "syarat";
+"UV Index" = "Indeks UV";
+"Wind" = "Angin";
+"Precipitation" = "kerpasan";
+"Humidity" = "Kelembapan";
+"Visibility" = "Keterlihatan";
+"Pressure" = "Tekanan";
+
+/* Fallback key */
+"displayedCondition" = "dipaparkanKeadaan";
+
+/* Titles */
+"Forecast"                   = "Ramalan";
+"DailySummary"               = "Ringkasan Harian";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° kini dengan keadaan %@. Terdapat kemungkinan kerpasan %@. Angin dari %@ dengan tiupan sehingga %d %@. Suhu hari ini berjulat dari %d° hingga %d° dan terasa seperti %d°. %@, dan %@.";
+"UVIndexFormat"              = "Indeks UV sehingga %d";
+"HumidityFormat"             = "Kelembapan sekitar %d%%";
+"HumidityRangeFormat"        = "Kelembapan dari %d%% hingga %d%%";
+"NA"                         = "T/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@ rendah ialah %d° dan tinggi ialah %d°. Suhu akan terasa seperti %d° hingga %d°. Angin dari %@ dijangka. %@";
+"NoPrecipLast24h"            = "Tiada kerpasan direkodkan dalam tempoh 24 jam yang lalu.";
+"RainLast24h"                = "Hujan turun %d mm dalam tempoh 24 jam yang lalu.";
+"SnowAndRainLast24h"         = "Dalam 24 jam yang lalu, salji berukuran %@ cm dan hujan %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Jumlah Kerpasan";
+"Last24h_Label"             = "24 JAM TERAKHIR";
+"Next24h_Label"             = "24 JAM SETERUSNYA";
+"Total_Label"               = "Jumlah";
+"Precipitation_Label"       = "kerpasan";
+"Rain_Label"                = "hujan";
+"Snow_Label"                = "salji";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Angin pada masa ini %1$d %2$@ daripada %3$@. Hari ini, kelajuan angin ialah %4$d hingga %5$d %2$@, dengan tiupan angin sehingga %6$d %2$@.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Kelajuan angin berjulat dari %1$d hingga %2$d %3$@, dengan tiupan tiupan sehingga %4$d %3$@.";
+
+"Beaufort_Scale"                = "Skala Beaufort";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Penerangan";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Tenang";
+"Beaufort_1"                    = "Udara ringan";
+"Beaufort_2"                    = "Angin sepoi-sepoi";
+"Beaufort_3"                    = "Angin sepoi-sepoi";
+"Beaufort_4"                    = "Angin sederhana";
+"Beaufort_5"                    = "Angin segar";
+"Beaufort_6"                    = "Angin yang kuat";
+"Beaufort_7"                    = "Angin kencang";
+"Beaufort_8" = "Angin kencang";
+"Beaufort_9"                    = "Angin yang kuat";
+"Beaufort_10"                   = "ribut";
+"Beaufort_11"                   = "ribut ganas";
+"Beaufort_12"                   = "Kuasa taufan";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Terdapat %.1f%@ kerpasan dalam tempoh 24 jam yang lalu. Jumlah hujan hari ini ialah %.1f%@. Dalam 24 jam seterusnya, %.1f%@ hujan dijangkakan.";
+"ForecastPrecip_OtherDayFormat" = "Pada %@, jumlah kerpasan ialah %.1f%@.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Mengenai Intensiti Kerpasan";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Keamatan dikira berdasarkan jumlah hujan atau salji yang turun setiap jam dan bertujuan untuk menunjukkan betapa lebatnya hujan atau salji. Ia juga digunakan untuk jenis kerpasan lain seperti hujan batu bercampur air dan campuran musim sejuk. Hujan lebat atau ribut salji yang kuat boleh mempunyai keamatan “lebat”, manakala hujan biasa atau gerimis yang lebih ringan boleh mempunyai keamatan “sederhana” atau “ringan”.";
+
+/* Section titles */
+"Forecast_Title"               = "Ramalan";
+"DailySummary_Title"           = "Ringkasan Harian";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Takat embun ialah %d° hingga %d°.";
+"DewPoint_FutureFormat"        = "Takat embun ialah %d° hingga %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Hari ini, purata kelembapan ialah %d%%. %@";
+"ForecastHumidity_Other"       = "Pada %@, purata kelembapan ialah %d%%.\n%@";
+
+"AboutPressure_Title"  = "Mengenai Tekanan";
+"AboutPressure_Body"   = "Perubahan tekanan yang ketara dan pantas digunakan untuk meramalkan perubahan cuaca. Sebagai contoh, penurunan tekanan boleh bermakna bahawa hujan atau salji sedang dalam perjalanan, dan tekanan yang meningkat boleh bermakna cuaca akan bertambah baik. Tekanan juga dipanggil tekanan barometrik atau tekanan atmosfera.";
+
+"AboutHumidity_Title"  = "Mengenai Kelembapan Relatif";
+"AboutHumidity_Body"   = "Kelembapan relatif, biasanya dikenali hanya sebagai kelembapan, ialah jumlah kelembapan di udara berbanding dengan apa yang boleh ditahan oleh udara. Udara boleh menahan lebih banyak lembapan pada suhu yang lebih tinggi. Kelembapan relatif hampir 100% bermakna mungkin terdapat embun atau kabus.";
+
+"AboutDewPoint_Title" = "Mengenai takat embun";
+"AboutDewPoint_Body"  = "Takat embun ialah suhu yang perlu turun untuk embun terbentuk. Ia boleh menjadi cara yang berguna untuk mengetahui rasa lembap udara — semakin tinggi takat embun, semakin lembap rasanya. Titik embun yang sepadan dengan suhu semasa bermakna kelembapan relatif ialah 100%, dan mungkin terdapat embun atau kabus.";
+
+"Section_Forecast"                     = "Ramalan";
+"Section_DailySummary"                 = "Ringkasan Harian";
+"ForecastVisibility_TodayFormat" = "Hari ini, keterlihatan ialah %@, pada %d hingga %d %@.";
+"ForecastVisibility_OtherFormat" = "Pada %@, keterlihatan paling rendah ialah %@ pada %d %@ dan yang tertinggi ialah %@ pada %d %@.";
+"Clarity_Foggy"                        = "berkabus";
+"Clarity_Hazy"                         = "Jerebu";
+"Clarity_Clear"                        = "Jelas";
+"Clarity_PerfectlyClear"               = "Sangat jelas";
+
+"AboutVisibility_Title" = "Mengenai Keterlihatan";
+"AboutVisibility_Body" = "Keterlihatan memberitahu anda sejauh mana anda boleh melihat dengan jelas objek seperti bangunan dan bukit. Ia adalah ukuran ketelusan udara dan tidak mengambil kira jumlah cahaya matahari atau kehadiran halangan. Keterlihatan pada atau lebih tinggi %@ dianggap jelas.";
+
+"PressureForecast_Today" = "Tekanan pada masa ini %@ %@ dan jatuh. Hari ini, tekanan purata ialah %@ %@, dan tekanan terendah ialah %@ %@.";
+"PressureForecast_Other" = "Pada %@, tekanan purata ialah %@ %@, dan tekanan terendah ialah %@ %@.";
+"SectionForecast" = "Ramalan";
+"SectionDailySummary" = "Ringkasan Harian";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Semua ciri Pelan Asas";
+"Multi-calendar view" = "Paparan berbilang kalendar";
+"Sync with Google Calendar" = "Segerakkan dengan Google Kalendar";
+"Sync meets from Google Meet" = "Penyegerakan bertemu daripada Google Meet";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Pelan Asas";
+"Single-day calendar view" = "Paparan kalendar sehari";
+"Multi-day calendar view" = "Paparan kalendar berbilang hari";
+"Monthly calendar view" = "Paparan kalendar bulanan";
+"Yearly overview" = "Gambaran keseluruhan tahunan";
+"List view for events" = "Paparan senarai untuk acara";
+"Weather view" = "Pandangan cuaca";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Pelan Premium";
+"Sync with Microsoft Calendar" = "Segerakkan dengan Microsoft Kalendar";
+"Sync meets from Microsoft Teams" = "Penyegerakan bertemu daripada Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Bersamaan dengan %@ sebulan";
+"%d %@ free" = "%d %@ percuma";
+
+/* SubscriptionListView */
+"Premium Plans" = "Pelan Premium";
+"You are subscribed to the %@ %@ plan" = "Anda melanggan pelan %@ %@";
+"Renews on: %@" = "Dibaharui pada: %@";
+"Start Free Trial" = "Mulakan Percubaan Percuma";
+"Subscribe Now" = "Langgan Sekarang";
+"%d %@ free, then %@%@." = "%d %@ percuma, kemudian %@%@.";
+"Subscribe for %@%@." = "Langgan %@%@.";
+"Privacy Policy"     = "Dasar Privasi";
+"Terms of Service"   = "Syarat Perkhidmatan";
+
+/* SubscriptionCategory */
+"Advanced" = "Maju";
+"Advanced Plan" = "Rancangan Lanjutan";
+"All Advanced Plan features" = "Semua ciri Rancangan Lanjutan";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Anda memerlukan pelan %@ aktif untuk mengakses bahagian ini.";
+"Plan Required" = "Pelan Diperlukan";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base"    = "Pangkalan";
+"Premium" = "Premium";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Melanggan pelan %@ %@.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Dibaharui pada: %@";
+
+"Manage Subscription"                   = "Urus Langganan";
+
+/* Period units */
+"Daily"     = "Setiap hari";
+"Weekly"    = "Mingguan";
+"Monthly"   = "Bulanan";
+"Yearly"    = "setiap tahun";
+"Recurring" = "Berulang";
+
+/* units */
+"day"   = "hari";
+"days"  = "hari";
+"week"  = "minggu";
+"weeks" = "minggu";
+"month"  = "bulan";
+"months" = "bulan";
+"year"   = "tahun";
+"years"  = "tahun";
+
+/* YearMonthMiniView */
+"weekday.headers" = "A,I,S,R,K,J,S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "Pembelian anda sebelum ini telah berjaya dipulihkan.";
+"No active subscriptions found to restore."                = "Tiada langganan aktif ditemui untuk dipulihkan.";
+"Failed to restore purchases. Please try again later. (%@)" = "Gagal memulihkan pembelian. Sila cuba lagi kemudian. (%@)";
+"Restore Purchases"                                        = "Pulihkan Pembelian";
+
+"Ads Free" = "Iklan Percuma";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalendar & Cuaca";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Widget kecil memaparkan tarikh hari ini dan cuaca semasa. Widget sederhana turut memaparkan fasa bulan dan angin.";
+"Calendar Events" = "Acara Kalendar";
+"Shows today's date, current weather, and your next calendar events." = "Menunjukkan tarikh hari ini, cuaca semasa dan acara kalendar anda yang seterusnya.";
+"No upcoming events" = "Tiada acara akan datang";
+"Tomorrow" = "Esok";
+"Untitled" = "Tidak bertajuk";
+"Detail" = "Perincian";
+"Phase" = "fasa";
+"Weather" = "Cuaca";
+"Select Your Email" = "Pilih E-mel Anda";
+"Confirm" = "sahkan";
+"Calendar name" = "Nama kalendar";
+"Sharing: %@" = "Perkongsian: %@";
+"Loading..." = "Memuatkan...";
+"Selected Location" = "Lokasi Terpilih";
+"Data provided by Apple Weather" = "Data disediakan oleh Apple Weather";
+"Next" = "Seterusnya";
+"No details found for the selected location." = "Tiada butiran ditemui untuk lokasi yang dipilih.";
+"Could not determine the time zone for the selected location." = "Tidak dapat menentukan zon waktu untuk lokasi yang dipilih.";
+"(No Title)" = "(Tiada Tajuk)";
+"Choose your e-mail" = "Pilih e-mel anda";
+"It will be treated as your primary address and invitations will not be sent to it." = "Ia akan dianggap sebagai alamat utama anda dan jemputan tidak akan dihantar kepadanya.";
+"Invalid URL" = "URL tidak sah";
+"Rate limit or insufficient permission" = "Had kadar atau kebenaran tidak mencukupi";
+"Network error: %@" = "Ralat rangkaian: %@";
+"N/A - Selected Tab: %@" = "T/A – Tab dipilih: %@";
+"Enable Notifications" = "Dayakan Pemberitahuan";
+"Event Notifications" = "Pemberitahuan Acara";
+"Event alerts are scheduled from your event alert settings." = "Makluman acara dijadualkan daripada tetapan makluman acara anda.";
+"Allow notifications so event alerts can appear at the right time." = "Benarkan pemberitahuan supaya makluman acara boleh muncul pada masa yang sesuai.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Pemberitahuan dimatikan untuk apl ini. Untuk membolehkannya pergi ke: Tetapan -> Apl -> Cloud Calendars -> Pemberitahuan -> Benarkan Pemberitahuan.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating ialah jurulatih anda yang dikuasakan AI untuk pemakanan dan latihan yang lebih bijak. Ia menggabungkan sains pemakanan moden dengan alat praktikal untuk membantu anda merancang makanan, mereka bentuk senaman, mengurus pantri anda dan memahami cara makanan dan pergerakan mempengaruhi badan anda.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio ialah persekitaran reka bentuk 3D canggih untuk pembangun iOS dan macOS. Ia menggabungkan pemaparan RealityKit yang tepat dengan editor teks berformat yang berkuasa untuk menukar tangkapan skrin mentah kepada bahan App Store profesional.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio ialah studio rakaman skrin gred pencipta untuk iOS dan macOS. Tangkap skrin dan kamera anda pada masa yang sama, kawal mikrofon + audio sistem dan eksport MP4 bersih untuk tutorial, panduan dan tunjuk cara produk. Pada iOS, anda juga boleh memainkan video di dalam apl dan merakamnya bersama kamera anda untuk gaya reaksi dan kandungan yang diterajui penyampai.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars menggabungkan penjadualan lanjutan dengan ramalan cuaca bersepadu yang indah, supaya anda boleh merancang dengan tepat. Ia menyokong berbilang perkhidmatan kalendar, pengeditan berasaskan gerak isyarat intuitif, pautan mesyuarat terbina dalam dan ramalan terperinci setiap jam/harian terus dalam jadual anda.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI membantu anda memahami pergerakan pasaran dengan analitis pada peranti dan aliran kerja berbilang ejen yang direka untuk memisahkan isyarat daripada hingar. Jejaki data harga masa nyata, terokai kebarangkalian gaya rejim dan gunakan papan pemuka serta carta yang jelas untuk menyokong pembuatan keputusan anda. Privasi diutamakan: konfigurasi anda kekal pada peranti anda.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplikasi";
+"Plan" = "Pelan";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Ribut Salji";
+"WeatherCondition.blowingDust" = "Debu";
+"WeatherCondition.blowingSnow" = "Salji Terbang";
+"WeatherCondition.breezy" = "Berangin Sepoi";
+"WeatherCondition.clear" = "Cerah";
+"WeatherCondition.cloudy" = "Mendung";
+"WeatherCondition.drizzle" = "Gerimis";
+"WeatherCondition.flurries" = "Salji Lari";
+"WeatherCondition.foggy" = "Kabus";
+"WeatherCondition.freezingDrizzle" = "Gerimis Sejuk Beku";
+"WeatherCondition.freezingRain" = "Hujan Sejuk Beku";
+"WeatherCondition.frigid" = "Sejuk";
+"WeatherCondition.hail" = "Hujan Batu";
+"WeatherCondition.haze" = "Jerebu";
+"WeatherCondition.heavyRain" = "Hujan Lebat";
+"WeatherCondition.heavySnow" = "Salji Lebat";
+"WeatherCondition.hot" = "Panas";
+"WeatherCondition.hurricane" = "Taufan";
+"WeatherCondition.isolatedThunderstorms" = "Ribut Petir Pencilan";
+"WeatherCondition.mostlyClear" = "Umumnya Cerah";
+"WeatherCondition.mostlyCloudy" = "Amnya Mendung";
+"WeatherCondition.partlyCloudy" = "Agak Mendung";
+"WeatherCondition.rain" = "Hujan";
+"WeatherCondition.scatteredThunderstorms" = "Ribut Petir Berserak";
+"WeatherCondition.sleet" = "Hujan Beku";
+"WeatherCondition.smoky" = "Asap";
+"WeatherCondition.snow" = "Salji";
+"WeatherCondition.strongStorms" = "Ribut Petir Kencang";
+"WeatherCondition.sunFlurries" = "Salji Lari Panas";
+"WeatherCondition.sunShowers" = "Hujan Panas";
+"WeatherCondition.thunderstorms" = "Ribut Petir";
+"WeatherCondition.tropicalStorm" = "Ribut Tropika";
+"WeatherCondition.windy" = "Berangin";
+"WeatherCondition.wintryMix" = "Campuran Sejuk";
+"MoonPhase.new" = "Anak Bulan";
+"MoonPhase.waxingCrescent" = "Sabit Membesar";
+"MoonPhase.firstQuarter" = "Suku Pertama";
+"MoonPhase.waxingGibbous" = "Purnama Besar";
+"MoonPhase.full" = "Bulan Purnama";
+"MoonPhase.waningGibbous" = "Purnama Surut";
+"MoonPhase.lastQuarter" = "Suku Terakhir";
+"MoonPhase.waningCrescent" = "Sabit Surut";

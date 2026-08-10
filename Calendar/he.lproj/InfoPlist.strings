@@ -1,0 +1,9 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars דורש גישה ליומן כדי לאחד את האירועים שלך מלוחות השנה iCloud, Google ו-Microsoft, מה שמאפשר תזמון חלק.";
+
+"NSContactsUsageDescription" = "Cloud Calendars משתמש באנשי הקשר שלך כדי לפשט הזמנות לאירועים ולנהל את פרטי המשתתפים ללא מאמץ.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars ניגש למיקום שלך גם כשהאפליקציה סגורה, מספק תחזיות מזג אוויר מדויקות והתראות בזמן עבור האירועים המתוזמנים שלך.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars משתמש במיקום שלך בזמן שהוא פעיל כדי לשלב תחזיות מזג אוויר מקומיות מדויקות ישירות בלוח השנה שלך.";

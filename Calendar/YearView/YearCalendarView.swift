@@ -46,32 +46,14 @@ struct YearCalendarView: View {
     // MARK: - Тяло
     var body: some View {
         VStack(spacing: 0) {
-            topBar
-            
-            // (A) Търсачка
             if showSearchBar {
-                TextField(LocalizedStringKey("Search events..."), text: $searchText)
-                    .textFieldStyle(.plain)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(.thinMaterial)
-                    )
-                    .overlay(
-                        Button {
-                            showSearchBar = false
-                            searchText = ""
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.subheadline.weight(.semibold))
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.trailing, 8),
-                        alignment: .trailing
-                    )
+                CalendarEventSearchField(text: $searchText) {
+                    showSearchBar = false
+                    searchText = ""
+                }
                     .transition(.move(edge: .top))
-                    .padding(.horizontal)
+            } else {
+                topBar
             }
             
             // (B) Header с навигация по години (скрит при активно търсене)
@@ -81,18 +63,19 @@ struct YearCalendarView: View {
                         year -= 1
                         viewModel.loadEventsForWholeYear(year: year)
                     }) {
-                        Image(systemName: "chevron.left")
+                        Image(systemName: "chevron.backward")
                     }
                     
-                    Text(String(year))
+                    Text(localizedIntegerString(year))
                         .font(.headline)
+                        .adaptiveSingleLine(minimumScale: 0.6)
                         .frame(maxWidth: .infinity)
                     
                     Button(action: {
                         year += 1
                         viewModel.loadEventsForWholeYear(year: year)
                     }) {
-                        Image(systemName: "chevron.right")
+                        Image(systemName: "chevron.forward")
                     }
                 }
                 .padding(.vertical, 8)
@@ -198,9 +181,14 @@ struct YearCalendarView: View {
                 Button {
                     showSearchBar = true
                 } label: {
-                    Image(systemName: "magnifyingglass")
+                    Image(uiImage: CalendarSearchAppearance.iconImage)
+                        .renderingMode(.template)
+                        .foregroundStyle(.blue)
                 }
-                .frame(width: 34, height: 34)
+                .frame(
+                    width: CalendarSearchAppearance.buttonSize,
+                    height: CalendarSearchAppearance.buttonSize
+                )
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
 

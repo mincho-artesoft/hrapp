@@ -18,8 +18,12 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
 
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        vc.view.semanticContentAttribute = semanticDirection
         
         let container = TwoWayPinnedSingleDayMultiCalendarContainerView()
+        container.semanticContentAttribute = semanticDirection
         
         container.fromDate = fromDate
         container.onEventDeleted = { descriptor in
@@ -120,6 +124,11 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
             return
         }
+
+        let semanticDirection: UISemanticContentAttribute =
+            context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
+        uiViewController.view.semanticContentAttribute = semanticDirection
+        container.semanticContentAttribute = semanticDirection
         
         container.fromDate = fromDate
         

@@ -1,0 +1,757 @@
+/* RequestEmailView */
+"No email was provided." = "이메일이 제공되지 않았습니다.";
+"Please enter a valid email to continue." = "계속하려면 유효한 이메일을 입력하세요.";
+"Your email" = "귀하의 이메일";
+"Save" = "저장";
+"Login" = "로그인";
+"Logout" = "로그아웃";
+
+/* RootView */
+"N/A" = "해당 없음";
+"Calendars" = "달력";
+"Inbox" = "받은편지함";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "기타";
+"Google calendars" = "Google 캘린더";
+"No synced Google calendars yet." = "아직 동기화된 Google 캘린더가 없습니다.";
+"Microsoft calendars" = "Microsoft 캘린더";
+"No synced Microsoft calendars yet." = "아직 동기화된 Microsoft 캘린더가 없습니다.";
+"Sign out" = "로그아웃";
+"Add iCloud Calendar" = "iCloud 캘린더 추가";
+"Share calendars with iCloud Calendar" = "iCloud 캘린더와 캘린더 공유";
+"Sign in with Google" = "Google로 로그인";
+"Sign in with Microsoft" = "Microsoft로 로그인";
+"Deselect All" = "모두 선택 해제";
+"Select All" = "모두 선택";
+"No Email" = "이메일 없음";
+"Add Google Calendar" = "Google 캘린더 추가";
+
+/* AddCalendarView */
+"Calendar Name" = "달력 이름";
+"Account" = "계정";
+"COLOR" = "색상";
+"NOTIFICATIONS" = "알림";
+"Event Alerts" = "이벤트 알림";
+"Allow events on this calendar to display alerts." = "이 캘린더의 이벤트가 알림을 표시하도록 허용합니다.";
+"Add Calendar" = "캘린더 추가";
+
+/* Colors */
+"Red" = "빨간색";
+"Orange" = "오렌지";
+"Yellow" = "노란색";
+"Green" = "녹색";
+"Blue" = "블루";
+"Purple" = "보라색";
+"Brown" = "브라운";
+"Custom" = "맞춤";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "달력 색상";
+"Custom..." = "맞춤...";
+
+/* EditCalendarView */
+"Edit Calendar" = "달력 편집";
+"Delete Calendar" = "캘린더 삭제";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "공유 설정 로드 중…";
+"Shared with these users" = "다음 사용자와 공유됨";
+"Add New Email" = "새 이메일 추가";
+"Email to share" = "공유할 이메일";
+"Permission:" = "허가:";
+"Add" = "추가";
+"Sharing:" = "공유:";
+"Done" = "완료";
+
+"Error loading: %@" = "로드 중 오류 발생: %@";
+"Error adding: %@" = "추가 오류: %@";
+"Error deleting: %@" = "삭제 오류: %@";
+"Error updating: %@" = "업데이트 중 오류 발생: %@";
+"Error re-inviting (delete): %@" = "재초대(삭제) 중 오류 발생: %@";
+"Error re-inviting (insert): %@" = "다시 초대하는 중 오류 발생(삽입): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "리더";
+"Writer" = "작가";
+"Owner"  = "소유자";
+
+/* MonthCalendarView */
+"Day View" = "일별 보기";
+"This is a repeating event." = "이는 반복되는 이벤트입니다.";
+"Save for This Event Only" = "이 이벤트에만 저장";
+"Save for Future Events" = "향후 이벤트를 위해 저장";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "태양";
+"Mon" = "월";
+"Tue" = "화요일";
+"Wed" = "수요일";
+"Thu" = "목";
+"Fri" = "금";
+"Sat" = "토요일";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "닫기";
+
+/* AllEventsListView */
+"No calendar access." = "캘린더에 액세스할 수 없습니다.";
+
+/* EventRowView */
+"Ends" = "종료";
+
+/* SearchEventRowView */
+"No Title" = "제목 없음";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "회의 참가";
+"Edit" = "편집";
+"Duplicate" = "중복";
+"Delete" = "삭제";
+"Add to Google Meet" = "Google Meet에 추가";
+"Add to Microsoft Teams" = "Microsoft Teams에 추가";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "선택한 범위가 없습니다.";
+"all-day" = "하루 종일";
+"Search events..." = "이벤트 검색...";
+"Day" = "일";
+"MultiDay" = "다중일";
+"Month" = "월";
+"Year" = "연도";
+"List" = "목록";
+"MultiCalendar" = "멀티캘린더";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "새로운 이벤트";
+"All-day event" = "종일 이벤트";
+"Recurring Event" = "반복 이벤트";
+"This event is part of a series. Update which events?" = "이 이벤트는 시리즈의 일부입니다. 어떤 이벤트를 업데이트하시겠습니까?";
+"This Event Only" = "이번 이벤트만";
+"All Future Events" = "모든 향후 이벤트";
+"Cancel" = "취소";
+
+/* DraggableMenuView */
+"Calendar" = "달력";
+"Subscriptions" = "구독";
+"Live" = "라이브";
+"Stop" = "중지";
+"Calendar Live Activity" = "캘린더 실시간 활동";
+"Get" = "받기";
+"Color" = "색상";
+"Search for a city…" = "도시 검색…";
+"No directions" = "방향 없음";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "위치 접근이 거부되었습니다. 도시를 검색하거나 설정에서 액세스 권한을 부여하세요.";
+"Cannot refresh. Location unknown." = "새로 고칠 수 없습니다. 위치를 알 수 없습니다.";
+"10-DAY FORECAST" = "10일 예측";
+"HighLowLabelFormat" = "최고:%d° 최저:%d°";
+"tomorrow" = "내일";
+"on_day" = "%@에";
+"in_days" = "%d일 후";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "새로운 이벤트";
+
+/* Search placeholder */
+"Search for a city..." = "도시 검색…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "캘린더 이벤트를 빠르게 추가하려면 시간을 탭하세요.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "같은 느낌";
+"similar_to_actual_temp" = "실제온도와 비슷합니다.";
+"wind_cooler_feel" = "바람이 불어서 기분이 더 시원해졌습니다.";
+"humidity_warmer_feel" = "습도 때문에 더 따뜻해지는 것 같아요.";
+
+/* HumidityCard */
+"HUMIDITY" = "습도";
+"The dew point is %d° right now." = "현재 이슬점은 %d°입니다.";
+"dewPoint.current" = "현재 이슬점은 %d°입니다.";
+
+/* MoonCard */
+"MOON PHASE" = "문 페이즈";
+"Moonrise" = "월출";
+"Moonset" = "월몰";
+"Next %@" = "다음 %@";
+"Data unavailable" = "데이터를 사용할 수 없음";
+"%d day" = "%d일";
+"%d days" = "%d일";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "강수량";
+"PRECIPITATION_CARD_TODAY_LABEL" = "오늘";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "다음으로 예상되는 것은 %1$.0f %2$@ %3$@입니다."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "곧 강수량이 없을 것으로 예상됩니다.";
+
+/* PressureCard */
+"PRESSURE" = "압력";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "일출";
+"Sunrise: %@" = "일출: %@";
+"Sunset: %@" = "일몰 시간: %@";
+"Sunrise" = "일출";
+"Sunset" = "일몰";
+
+
+/* UVIndexCard */
+"UV INDEX" = "자외선 지수";
+"Low" = "낮음";
+"Moderate" = "보통";
+"High" = "높음";
+"Very High" = "매우 높음";
+"Extreme" = "극한";
+
+/* VisibilityCard */
+"VISIBILITY" = "가시성";
+"km" = "km";
+"Perfectly clear view." = "완벽하게 선명한 시야.";
+"Excellent visibility." = "뛰어난 가시성.";
+"Good visibility." = "가시성이 좋습니다.";
+"Moderate visibility." = "적당한 가시성.";
+"Poor visibility." = "가시성이 좋지 않습니다.";
+"Very poor visibility." = "가시성이 매우 나쁩니다.";
+"visibility.perfect"   = "완벽하게 선명한 시야.";
+"visibility.excellent" = "뛰어난 가시성.";
+"visibility.good"      = "가시성이 좋습니다.";
+"visibility.moderate"  = "적당한 가시성.";
+"visibility.poor"      = "가시성이 좋지 않습니다.";
+"visibility.verypoor"  = "가시성이 매우 나쁩니다.";
+"visibility.unknown"   = "—";
+
+/* WindCard */
+"WIND" = "바람";
+"Gusts" = "돌풍";
+"Direction" = "방향";
+"km/h" = "km/h";
+"Compass_N" = "엔";
+"Compass_S" = "S";
+"Compass_W" = "여";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "날씨 데이터를 가져오지 못했습니다. 연결을 확인하거나 나중에 다시 시도해 주세요.";
+"Falling" = "떨어지는";
+"Rising" = "상승";
+"Steady" = "꾸준한";
+"Unknown" = "알 수 없음";
+"Sunny" = "써니";
+"Cloudy" = "흐림";
+"Partly Cloudy" = "부분적으로 흐림";
+"Drizzle" = "이슬비";
+"Thunderstorm" = "뇌우";
+"Fog" = "안개";
+"Partly Cloudy Night" = "부분적으로 흐린 밤";
+"Clear Night" = "맑은 밤";
+"Hazy" = "흐릿한";
+"Today" = "오늘";
+"Now" = "지금";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "엔";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "북동쪽";
+"cardinal.ENE" = "에네";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "남서";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "여";
+"cardinal.WNW" = "북서쪽";
+"cardinal.NW"  = "북서쪽";
+"cardinal.NNW" = "뉴뉴얼";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "강수확률";
+"Today's chance: %d%%" = "오늘의 기회: %d%%";
+"%@'s chance: %d%%" = "%@의 기회: %d%%";
+"Max" = "맥스";
+"Min" = "최소";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "일일 강수 확률은 매 시간 강수 확률보다 높은 경향이 있습니다.";
+"ChanceOfPrecipitation_Title" = "강수확률";
+"TodaysChance"                = "오늘의 기회: %d%%";
+"OtherDayChance"              = "%@의 기회: %d%%";
+"DailyChanceExplanation"      = "일일 강수 확률은 매 시간 강수 확률보다 높은 경향이 있습니다.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "체감 온도";
+"Actual" = "실제";
+"No hourly data available for this day." = "이 날짜에는 시간별 데이터가 없습니다.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "습도, 햇빛 또는 바람의 결과로 온도가 어떻게 느껴지는지.";
+"The actual air temperature." = "실제 기온.";
+"HighLabelFormat" = "최고: %d°";
+"LowLabelFormat" = "최저: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "엘";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "습도";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "습도 %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "습도 평균 %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "오늘의 최소 %d%% – 최대 %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "맥스";
+"ChartMarker_Min"           = "최소";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "비: %.1f%@, 눈: %.1f%@";
+"Precip_Total_RainFormat"       = "비: %.1f%@";
+"Precip_Total_SnowFormat"       = "눈: %.1f%@";
+"Precip_Total_None"             = "강수량: 0%@";
+"Precip_Bars_Subtitle"          = "비와 눈에 대한 시간별 막대(%@).";
+"Precip_Level_Light"            = "빛";
+"Precip_Level_Moderate"         = "보통";
+"Precip_Level_Heavy"            = "헤비";
+"Precip_Tooltip_Format"         = "%@시간\n비: %.1f%@\n눈: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "압력 %@ %@";
+"Pressure_CurrentUnavailable"      = "압력: --";
+"Pressure_DailyMinMaxFormat"       = "오늘의 최소 %@ %@ – 최대 %@ %@";
+"Pressure_AverageFormat"           = "압력 평균 %@ %@";
+"Pressure_DailyRangeFormat"        = "일일 범위: %@–%@ %@";
+"Pressure_Title"                   = "압력";
+"Pressure_NoData"                  = "해당 날짜에 대한 기압 데이터가 없습니다.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "오늘의 %@ %d";
+"UVGraphNoHourlyData"   = "이 날짜에는 시간별 데이터가 없습니다.";
+"UVGraphNowLabel"       = "이제 %@";
+"UVCategory_None"       = "없음";
+"UVCategory_Low"        = "낮음";
+"UVCategory_Moderate"   = "보통";
+"UVCategory_High"       = "높음";
+"UVCategory_VeryHigh"   = "매우 높음";
+"UVCategory_Extreme"    = "극한";
+"UVAdvice_None"         = "이날은 보통 수준 이상의 UV 수준이 예상되지 않습니다.";
+"UVAdvice_Range"        = "자외선 차단을 권장합니다. UV 수준의 범위는 %@에서 %@까지이며 %@에서 %@ 사이에 도달합니다.";
+"UVGraphMaxLabel" = "맥스";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "가시성";
+"Visibility_NoData"                = "이 날짜에는 가시성 데이터가 없습니다.";
+"Visibility_CurrentFormat"         = "가시성 %d %@";
+"Visibility_DailyMinMaxFormat"     = "최소 %d – 최대 %d %@";
+"Visibility_NoCurrentData"         = "현재 공개 상태 데이터가 없습니다.";
+"Visibility_HourlyAverages_NoData" = "시간별 데이터가 없습니다.";
+"Visibility_MaxLabel"              = "맥스";
+"Visibility_MinLabel"              = "최소";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "풍속 및 돌풍";
+"WindGraph_NoData" = "이 날의 바람 데이터가 없습니다.";
+"WindGraph_SpeedHeader" = "풍속 %d";
+"WindGraph_GustHeader" = "최대 %d 돌풍";
+"WindGraph_SpeedRangeHeader" = "풍속 %d-%d";
+"WindGraph_MaxSpeedLabel" = "최대 풍속";
+"WindGraph_MaxGustLabel" = "최대 돌풍";
+"WindGraph_DragLabel" = "%@\n속도: %d\n돌풍: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "일일 요약";
+
+"Precipitation Totals" = "강수량 합계";
+"LAST 24 HOURS" = "지난 24시간";
+"NEXT 24 HOURS" = "다음 24시간";
+"Total" = "합계";
+"Rain" = "비";
+"Snow" = "눈";
+
+"About Wind Speed and Gusts" = "풍속과 돌풍에 대하여";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "풍속은 짧은 시간 동안의 평균을 사용하여 계산됩니다. 돌풍은 이 평균보다 짧은 바람의 폭발입니다. 돌풍은 일반적으로 20초 미만 동안 지속됩니다.";
+
+"About the Beaufort Scale" = "보퍼트 척도 정보";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "보퍼트 풍력 규모는 주어진 속도에서 바람이 얼마나 강력하거나 강한지를 나타냅니다. 보퍼트 척도를 사용하면 바람이 얼마나 강하게 느껴지는지, 바람이 얼마나 많은 영향을 미칠 수 있는지를 더 쉽게 이해할 수 있습니다. 눈금의 각 값은 풍속 범위에 해당합니다.";
+
+"About Feels Like Temperature" = "체감 온도 정보";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "체감 온도는 실제로 얼마나 덥거나 춥게 느껴지는지를 나타내며 실제 기온과 다를 수 있습니다. 습도, 햇빛, 바람의 영향을 받습니다.";
+
+"Options" = "옵션";
+"Temperature" = "온도";
+"Use system setting (°C)" = "시스템 설정 사용(°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "조건";
+"UV Index" = "자외선 지수";
+"Wind" = "바람";
+"Precipitation" = "강수량";
+"Humidity" = "습도";
+"Visibility" = "가시성";
+"Pressure" = "압력";
+
+/* Fallback key */
+"displayedCondition" = "표시조건";
+
+/* Titles */
+"Forecast"                   = "예측";
+"DailySummary"               = "일일 요약";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° 이제 %@ 조건이 적용됩니다. 강수 확률은 %@입니다. %@부터 최대 %d %@까지 돌풍이 불고 있습니다. 오늘의 기온은 %d°에서 %d° 사이이고 체감온도는 %d°입니다. %@ 및 %@.";
+"UVIndexFormat"              = "자외선 지수 최대 %d";
+"HumidityFormat"             = "주변 습도 %d%%";
+"HumidityRangeFormat"        = "습도 %d%% ~ %d%%";
+"NA"                         = "해당 없음";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@의 최저점은 %d°이고 최고점은 %d°입니다. 기온은 %d°~%d° 정도가 될 것으로 예상됩니다. %@의 바람이 예상됩니다. %@";
+"NoPrecipLast24h"            = "지난 24시간 동안 강수량이 기록되지 않았습니다.";
+"RainLast24h"                = "지난 24시간 동안 %dmm의 비가 내렸습니다.";
+"SnowAndRainLast24h"         = "지난 24시간 동안 눈은 %@cm, 비는 %dmm 측정되었습니다.";
+
+/* compass abbreviations */
+"Dir_N"   = "엔";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "북동쪽";
+"Dir_ENE" = "에네";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "남서";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "여";
+"Dir_WNW" = "북서쪽";
+"Dir_NW"  = "북서쪽";
+"Dir_NNW" = "뉴뉴얼";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "강수량 합계";
+"Last24h_Label"             = "지난 24시간";
+"Next24h_Label"             = "다음 24시간";
+"Total_Label"               = "합계";
+"Precipitation_Label"       = "강수량";
+"Rain_Label"                = "비";
+"Snow_Label"                = "눈";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "현재 %3$@의 바람은 %1$d %2$@입니다. 오늘 풍속은 %4$d~%5$d %2$@이며 돌풍은 최대 %6$d %2$@입니다.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "풍속은 %1$d부터 %2$d %3$@까지이며 최대 돌풍은 %4$d %3$@입니다.";
+
+"Beaufort_Scale"                = "보퍼트 척도";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "설명";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "진정";
+"Beaufort_1"                    = "가벼운 공기";
+"Beaufort_2"                    = "가벼운 바람";
+"Beaufort_3"                    = "부드러운 바람";
+"Beaufort_4"                    = "적당한 바람";
+"Beaufort_5"                    = "신선한 바람";
+"Beaufort_6"                    = "강한 바람";
+"Beaufort_7"                    = "강풍";
+"Beaufort_8"                    = "강풍";
+"Beaufort_9"                    = "강한 강풍";
+"Beaufort_10"                   = "폭풍";
+"Beaufort_11"                   = "격렬한 폭풍";
+"Beaufort_12"                   = "허리케인급";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2 – 5";
+"BeaufortRange_2"               = "6 – 11";
+"BeaufortRange_3"               = "12 – 19";
+"BeaufortRange_4"               = "20 – 28";
+"BeaufortRange_5"               = "29 – 38";
+"BeaufortRange_6"               = "39 – 49";
+"BeaufortRange_7"               = "50 – 61";
+"BeaufortRange_8"               = "62 – 74";
+"BeaufortRange_9"               = "75 – 88";
+"BeaufortRange_10"              = "89 – 102";
+"BeaufortRange_11"              = "103 – 117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "지난 24시간 동안 %.1f%@의 강수량이 있었습니다. 오늘 총 강수량은 %.1f%@입니다. 앞으로 24시간 동안 %.1f%@의 강수량이 예상됩니다.";
+"ForecastPrecip_OtherDayFormat" = "%@의 총 강수량은 %.1f%@입니다.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "강수강도에 대하여";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"강도는 시간당 내리는 비나 눈의 양을 기준으로 계산되며, 비나 눈이 얼마나 강하게 느껴질지를 나타냅니다. 진눈깨비와 겨울철 혼합 강수 같은 다른 강수 유형에도 사용됩니다. 폭우나 강한 눈보라는 “강함” 강도로 나타날 수 있고, 보통의 비나 약한 이슬비는 “보통” 또는 “약함” 강도로 나타날 수 있습니다.";
+
+/* Section titles */
+"Forecast_Title"               = "예측";
+"DailySummary_Title"           = "일일 요약";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "이슬점은 %d° ~ %d°입니다.";
+"DewPoint_FutureFormat"        = "이슬점은 %d° ~ %d°입니다.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "오늘 평균 습도는 %d%%입니다. %@";
+"ForecastHumidity_Other"       = "%@의 평균 습도는 %d%%입니다.\n%@";
+
+"AboutPressure_Title"  = "압력에 대하여";
+"AboutPressure_Body"   = "중요하고 급격한 기압 변화는 날씨 변화를 예측하는 데 사용됩니다. 예를 들어, 기압이 낮아지면 비나 눈이 곧 올 것이라는 뜻일 수 있고, 기압이 높아지면 날씨가 좋아질 것이라는 의미일 수 있습니다. 압력은 기압 또는 대기압이라고도 합니다.";
+
+"AboutHumidity_Title"  = "상대습도 정보";
+"AboutHumidity_Body"   = "일반적으로 습도라고 알려진 상대습도는 공기가 보유할 수 있는 수분의 양과 비교하여 공기 중 수분의 양을 나타냅니다. 공기는 온도가 높을수록 더 많은 수분을 함유할 수 있습니다. 상대습도가 100%에 가까우면 이슬이나 안개가 있을 수 있음을 의미합니다.";
+
+"AboutDewPoint_Title" = "이슬점 정보";
+"AboutDewPoint_Body"  = "이슬점은 이슬이 형성되기 위해 온도가 떨어져야 하는 온도입니다. 이는 공기가 얼마나 습하다고 느끼는지 알려주는 유용한 방법이 될 수 있습니다. 이슬점이 높을수록 더 습한 느낌이 듭니다. 현재 온도와 일치하는 이슬점은 상대습도 100%를 의미하며, 이슬이나 안개가 있을 수 있습니다.";
+
+"Section_Forecast"                     = "예측";
+"Section_DailySummary"                 = "일일 요약";
+"ForecastVisibility_TodayFormat" = "오늘 공개 범위는 %@, %d부터 %d %@까지입니다.";
+"ForecastVisibility_OtherFormat" = "%1$@에서 가장 낮은 가시성은 %3$d %4$@에서 %2$@이고, 가장 높은 가시성은 %6$d %7$@에서 %5$@입니다.";
+"Clarity_Foggy"                        = "안개";
+"Clarity_Hazy"                         = "흐릿한";
+"Clarity_Clear"                        = "지우기";
+"Clarity_PerfectlyClear"               = "완벽하게 투명함";
+
+"AboutVisibility_Title" = "가시성 정보";
+"AboutVisibility_Body" = "가시성은 건물이나 언덕과 같은 물체를 얼마나 멀리서 명확하게 볼 수 있는지를 나타냅니다. 이는 공기의 투명도를 측정하는 것이며 햇빛의 양이나 장애물의 존재 여부를 고려하지 않습니다. %@ 이상의 가시성은 깨끗한 것으로 간주됩니다.";
+
+"PressureForecast_Today" = "현재 압력은 %@ %@이며 떨어지고 있습니다. 오늘 평균 기압은 %@ %@, 최저 기압은 %@ %@가 되겠습니다.";
+"PressureForecast_Other" = "%@에서 평균 기압은 %@ %@이고, 최저 기압은 %@ %@입니다.";
+"SectionForecast" = "예측";
+"SectionDailySummary" = "일일 요약";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "모든 기본 요금제 기능";
+"Multi-calendar view" = "다중 캘린더 보기";
+"Sync with Google Calendar" = "Google 캘린더와 동기화";
+"Sync meets from Google Meet" = "동기화는 Google Meet에서 이루어집니다.";
+
+/* BaseSubscriptionView */
+"Base Plan" = "기본 계획";
+"Single-day calendar view" = "일일 달력 보기";
+"Multi-day calendar view" = "여러 날의 달력 보기";
+"Monthly calendar view" = "월별 달력 보기";
+"Yearly overview" = "연간 개요";
+"List view for events" = "이벤트 목록 보기";
+"Weather view" = "날씨 보기";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "프리미엄 플랜";
+"Sync with Microsoft Calendar" = "Microsoft 캘린더와 동기화";
+"Sync meets from Microsoft Teams" = "동기화는 Microsoft Teams에서 이루어집니다.";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "월 %@ 상당";
+"%d %@ free" = "%d %@ 무료";
+
+/* SubscriptionListView */
+"Premium Plans" = "프리미엄 플랜";
+"You are subscribed to the %@ %@ plan" = "%@ %@ 요금제에 가입하셨습니다.";
+"Renews on: %@" = "갱신 날짜: %@";
+"Start Free Trial" = "무료 평가판 시작";
+"Subscribe Now" = "지금 구독하세요";
+"%d %@ free, then %@%@." = "%d %@는 무료이고, 그 다음에는 %@%@입니다.";
+"Subscribe for %@%@." = "%@%@을 구독하세요.";
+"Privacy Policy"     = "개인 정보 보호 정책";
+"Terms of Service"   = "서비스 약관";
+
+/* SubscriptionCategory */
+"Advanced" = "고급";
+"Advanced Plan" = "고급 계획";
+"All Advanced Plan features" = "모든 고급 계획 기능";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "이 섹션에 액세스하려면 활성 %@ 계획이 필요합니다.";
+"Plan Required" = "필요한 계획";
+"OK" = "알았어";
+
+/* SubscriptionStatus */
+"Base"    = "베이스";
+"Premium" = "프리미엄";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "%@ %@ 요금제를 구독했습니다.";
+
+/* Label for renewal date */
+"RenewsOn"            = "갱신 날짜: %@";
+
+"Manage Subscription"                   = "구독 관리";
+
+/* Period units */
+"Daily"     = "매일";
+"Weekly"    = "주간";
+"Monthly"   = "월간";
+"Yearly"    = "매년";
+"Recurring" = "반복";
+
+/* units */
+"day"   = "일";
+"days"  = "일";
+"week"  = "주";
+"weeks" = "주";
+"month"  = "달";
+"months" = "개월";
+"year"   = "년";
+"years"  = "년";
+
+/* YearMonthMiniView */
+"weekday.headers" = "일,월,화,수,목,금,토";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "mph";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "이전 구매가 성공적으로 복원되었습니다.";
+"No active subscriptions found to restore."                = "복원할 활성 구독이 없습니다.";
+"Failed to restore purchases. Please try again later. (%@)" = "구매를 복원하지 못했습니다. 나중에 다시 시도해 주세요. (%@)";
+"Restore Purchases"                                        = "구매 복원";
+
+"Ads Free" = "광고 무료";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "달력 및 날씨";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "소형 위젯은 오늘 날짜와 현재 날씨를 표시합니다. 중형 위젯에는 달의 위상과 바람도 표시됩니다.";
+"Calendar Events" = "캘린더 이벤트";
+"Shows today's date, current weather, and your next calendar events." = "오늘 날짜, 현재 날씨, 다음 캘린더 이벤트를 표시합니다.";
+"No upcoming events" = "다가오는 이벤트가 없습니다";
+"Tomorrow" = "내일";
+"Untitled" = "제목 없음";
+"Detail" = "세부정보";
+"Phase" = "위상";
+"Weather" = "날씨";
+"Select Your Email" = "이메일을 선택하세요";
+"Confirm" = "확인";
+"Calendar name" = "달력 이름";
+"Sharing: %@" = "공유: %@";
+"Loading..." = "로드 중...";
+"Selected Location" = "선택한 위치";
+"Data provided by Apple Weather" = "Apple Weather에서 제공한 데이터";
+"Next" = "다음";
+"No details found for the selected location." = "선택한 위치에 대한 세부정보를 찾을 수 없습니다.";
+"Could not determine the time zone for the selected location." = "선택한 위치의 시간대를 확인할 수 없습니다.";
+"(No Title)" = "(제목 없음)";
+"Choose your e-mail" = "이메일을 선택하세요";
+"It will be treated as your primary address and invitations will not be sent to it." = "이 주소는 귀하의 기본 주소로 처리되며 초대장은 해당 주소로 전송되지 않습니다.";
+"Invalid URL" = "잘못된 URL";
+"Rate limit or insufficient permission" = "속도 제한 또는 권한 부족";
+"Network error: %@" = "네트워크 오류: %@";
+"N/A - Selected Tab: %@" = "해당 없음 - 선택한 탭: %@";
+"Enable Notifications" = "알림 활성화";
+"Event Notifications" = "이벤트 알림";
+"Event alerts are scheduled from your event alert settings." = "이벤트 알림은 이벤트 알림 설정에서 예약됩니다.";
+"Allow notifications so event alerts can appear at the right time." = "이벤트 알림이 적시에 표시될 수 있도록 알림을 허용하세요.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "이 앱의 알림이 꺼져 있습니다. 활성화하려면 설정 -> 앱 -> Cloud Calendars -> 알림 -> 알림 허용으로 이동하세요.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating은 더욱 스마트한 영양 섭취와 훈련을 위한 AI 기반 코치입니다. 현대 영양 과학과 실용적인 도구를 결합하여 식사 계획, 운동 설계, 식료품 저장실 관리, 음식과 움직임이 신체에 미치는 영향을 이해하는 데 도움을 줍니다.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio는 iOS 및 macOS 개발자를 위한 고급 3D 디자인 환경입니다. 정확한 RealityKit 렌더링과 강력한 서식 있는 텍스트 편집기를 결합하여 원본 스크린샷을 전문적인 App Store 자료로 바꿀 수 있습니다.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio는 iOS 및 macOS를 위한 크리에이터급 화면 녹화 스튜디오입니다. 화면과 카메라를 동시에 캡처하고, 마이크 + 시스템 오디오를 제어하고, 튜토리얼, 연습 및 제품 데모를 위해 깨끗한 MP4를 내보냅니다. iOS에서는 앱 내에서 동영상을 재생하고 반응 스타일 및 발표자 주도 콘텐츠를 위해 카메라와 함께 녹화할 수도 있습니다.";
+"Promo.CloudCalendars.name" = "Cloud Calendars";
+"Promo.CloudCalendars.description" = "Cloud Calendars는 고급 일정과 아름답게 통합된 일기 예보를 결합하여 정확한 계획을 세울 수 있습니다. 다양한 캘린더 서비스, 직관적인 동작 기반 편집, 내장된 회의 링크, 일정 내에서 직접 시간별/일별 자세한 예측을 지원합니다.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI는 신호와 잡음을 분리하도록 설계된 기기 내 분석 및 다중 에이전트 워크플로를 통해 시장 동향을 이해하는 데 도움이 됩니다. 실시간 가격 데이터를 추적하고, 정권 스타일의 확률을 탐색하고, 명확한 대시보드와 차트를 사용하여 의사 결정을 지원하세요. 개인 정보 보호 우선: 구성이 장치에 유지됩니다.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "앱";
+"Plan" = "요금제";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "눈보라";
+"WeatherCondition.blowingDust" = "먼지";
+"WeatherCondition.blowingSnow" = "날린눈";
+"WeatherCondition.breezy" = "미풍";
+"WeatherCondition.clear" = "청명함";
+"WeatherCondition.cloudy" = "흐림";
+"WeatherCondition.drizzle" = "이슬비";
+"WeatherCondition.flurries" = "눈발";
+"WeatherCondition.foggy" = "안개";
+"WeatherCondition.freezingDrizzle" = "결빙성의 진눈깨비";
+"WeatherCondition.freezingRain" = "얼음비";
+"WeatherCondition.frigid" = "추움";
+"WeatherCondition.hail" = "우박";
+"WeatherCondition.haze" = "실안개";
+"WeatherCondition.heavyRain" = "호우";
+"WeatherCondition.heavySnow" = "폭설";
+"WeatherCondition.hot" = "더움";
+"WeatherCondition.hurricane" = "태풍";
+"WeatherCondition.isolatedThunderstorms" = "천둥 번개를 동반한 국지성 폭풍우";
+"WeatherCondition.mostlyClear" = "대체로 청명함";
+"WeatherCondition.mostlyCloudy" = "대체로 흐림";
+"WeatherCondition.partlyCloudy" = "부분적으로 흐림";
+"WeatherCondition.rain" = "비";
+"WeatherCondition.scatteredThunderstorms" = "천둥 번개를 동반한 산발적인 폭풍우";
+"WeatherCondition.sleet" = "진눈깨비";
+"WeatherCondition.smoky" = "연기";
+"WeatherCondition.snow" = "눈";
+"WeatherCondition.strongStorms" = "천둥 번개를 동반한 집중호우";
+"WeatherCondition.sunFlurries" = "여우눈";
+"WeatherCondition.sunShowers" = "여우비";
+"WeatherCondition.thunderstorms" = "뇌우";
+"WeatherCondition.tropicalStorm" = "열대 폭풍";
+"WeatherCondition.windy" = "바람";
+"WeatherCondition.wintryMix" = "진눈깨비";
+"MoonPhase.new" = "삭월";
+"MoonPhase.waxingCrescent" = "초승달";
+"MoonPhase.firstQuarter" = "상현";
+"MoonPhase.waxingGibbous" = "상현망간의 달";
+"MoonPhase.full" = "보름달";
+"MoonPhase.waningGibbous" = "하현망간의 달";
+"MoonPhase.lastQuarter" = "하현";
+"MoonPhase.waningCrescent" = "그믐달";

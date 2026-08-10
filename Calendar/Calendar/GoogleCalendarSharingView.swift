@@ -71,10 +71,15 @@ struct GoogleCalendarSharingView: View {
                                         
                                         if isSelfOwner {
                                             Text(localizedRoleDisplayName(rule.role))
+                                                .adaptiveSingleLine(minimumScale: 0.4)
+                                                .layoutPriority(1)
                                         } else {
                                             Picker("", selection: binding(for: rule)) {
                                                 ForEach(availableRoles, id: \.self) { rawRole in
                                                     Text(localizedRoleDisplayName(rawRole))
+                                                        .lineLimit(1)
+                                                        .minimumScaleFactor(0.4)
+                                                        .allowsTightening(true)
                                                         .tag(rawRole)
                                                 }
                                             }
@@ -115,6 +120,8 @@ struct GoogleCalendarSharingView: View {
                                             .font(.callout)
                                         Spacer()
                                         Text(localizedRoleDisplayName(item.role))
+                                            .adaptiveSingleLine(minimumScale: 0.4)
+                                            .layoutPriority(1)
                                         ProgressView()
                                             .padding(.leading, 4)
                                     }
@@ -188,6 +195,8 @@ struct GoogleCalendarSharingView: View {
                                             .font(.callout)
                                         Spacer()
                                         Text(localizedRoleDisplayName(rule.role))
+                                            .adaptiveSingleLine(minimumScale: 0.4)
+                                            .layoutPriority(1)
                                     }
                                 }
                             }
@@ -195,7 +204,7 @@ struct GoogleCalendarSharingView: View {
                     }
                 }
             }
-            .navigationTitle(String(format: NSLocalizedString("Sharing: %@", comment: "Sharing screen title"), calendarTitle))
+            .navigationTitle(localizedFormat(NSLocalizedString("Sharing: %@", comment: "Sharing screen title"), calendarTitle))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -246,7 +255,7 @@ struct GoogleCalendarSharingView: View {
             }
         } catch {
             await MainActor.run {
-                errorMessage = String(format: NSLocalizedString("Error loading: %@", comment: "Sharing load error"), error.localizedDescription)
+                errorMessage = localizedFormat(NSLocalizedString("Error loading: %@", comment: "Sharing load error"), error.localizedDescription)
             }
         }
         isLoading = false
@@ -277,7 +286,7 @@ struct GoogleCalendarSharingView: View {
             if let idx = pendingShares.firstIndex(where: { $0.id == pending.id }) {
                 pendingShares.remove(at: idx)
             }
-            errorMessage = String(format: NSLocalizedString("Error adding: %@", comment: "Sharing add error"), error.localizedDescription)
+            errorMessage = localizedFormat(NSLocalizedString("Error adding: %@", comment: "Sharing add error"), error.localizedDescription)
         }
     }
     
@@ -296,7 +305,7 @@ struct GoogleCalendarSharingView: View {
             }
         } catch {
             await MainActor.run {
-                errorMessage = String(format: NSLocalizedString("Error deleting: %@", comment: "Sharing delete error"), error.localizedDescription)
+                errorMessage = localizedFormat(NSLocalizedString("Error deleting: %@", comment: "Sharing delete error"), error.localizedDescription)
             }
         }
     }
@@ -312,7 +321,7 @@ struct GoogleCalendarSharingView: View {
             )
         } catch {
             await MainActor.run {
-                errorMessage = String(format: NSLocalizedString("Error updating: %@", comment: "Sharing update error"), error.localizedDescription)
+                errorMessage = localizedFormat(NSLocalizedString("Error updating: %@", comment: "Sharing update error"), error.localizedDescription)
             }
         }
     }
@@ -335,7 +344,7 @@ struct GoogleCalendarSharingView: View {
                 aclRules.remove(at: idx)
             }
         } catch {
-            errorMessage = String(format: NSLocalizedString("Error re-inviting (delete): %@", comment: "Sharing reinvite delete error"), error.localizedDescription)
+            errorMessage = localizedFormat(NSLocalizedString("Error re-inviting (delete): %@", comment: "Sharing reinvite delete error"), error.localizedDescription)
             pendingResendRuleIDs.remove(rule.id)
             return
         }
@@ -349,7 +358,7 @@ struct GoogleCalendarSharingView: View {
             )
             aclRules.append(newRule)
         } catch {
-            errorMessage = String(format: NSLocalizedString("Error re-inviting (insert): %@", comment: "Sharing reinvite insert error"), error.localizedDescription)
+            errorMessage = localizedFormat(NSLocalizedString("Error re-inviting (insert): %@", comment: "Sharing reinvite insert error"), error.localizedDescription)
         }
         
         pendingResendRuleIDs.remove(rule.id)

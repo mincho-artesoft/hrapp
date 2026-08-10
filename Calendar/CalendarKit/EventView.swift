@@ -129,23 +129,16 @@ open class EventView: UIView {
             let calendar = Calendar.current
             let spansDays = !calendar.isDate(start, inSameDayAs: end)
 
-            // Detect 12h vs 24h clock
-            let locale = Locale.autoupdatingCurrent
-            let uses12Hour: Bool = {
-                let fmt = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: locale) ?? ""
-                return fmt.contains("a")
-            }()
-
-            let formatter = DateFormatter()
-            formatter.locale = locale
-            if uses12Hour {
-                formatter.dateFormat = spansDays ? "MMM d h:mm a" : "h:mm a"
-            } else {
-                formatter.dateFormat = spansDays ? "MMM d HH:mm" : "HH:mm"
-            }
-
-            let startStr = formatter.string(from: start)
-            let endStr   = formatter.string(from: end)
+            let timeFormatter = appTimeFormatter()
+            let dateFormatter = appShortDateFormatter(includesYear: false)
+            let startTime = timeFormatter.string(from: start)
+            let endTime = timeFormatter.string(from: end)
+            let startStr = spansDays
+                ? "\(dateFormatter.string(from: start)) \(startTime)"
+                : startTime
+            let endStr = spansDays
+                ? "\(dateFormatter.string(from: end)) \(endTime)"
+                : endTime
             finalString.append(
                 NSAttributedString(
                     string: " \(startStr) - \(endStr)",

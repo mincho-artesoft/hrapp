@@ -255,7 +255,7 @@ struct RootView: View {
                             )
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         default:
-                            Text(String(format: NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), "\(selectedTab)")) // More informative fallback
+                            Text(localizedFormat(NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), localizedIntegerString(selectedTab))) // More informative fallback
                                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space
                         }
                     }
@@ -320,10 +320,10 @@ struct RootView: View {
                                 },
                                 horizontalContent: {
                                     Picker("", selection: $selectedTabDraggableMenuView) {
-                                        Label("Calendar", systemImage: "calendar").tag(0)
-                                        Label("MultiCalendar", systemImage: "calendar.badge.plus").tag(1)
-                                        Label("Subscriptions", systemImage: "calendar.circle").tag(2)
-                                        Label("Apps", systemImage: "square.grid.2x2.fill").tag(3)
+                                        Text("Calendar").tag(0)
+                                        Text("MultiCalendar").tag(1)
+                                        Text("Subscriptions").tag(2)
+                                        Text("Apps").tag(3)
                                     }
                                     .pickerStyle(.segmented)
                                 },
@@ -373,6 +373,8 @@ struct RootView: View {
             .toolbarBackground(.visible, for: .bottomBar)
             .toolbarColorScheme(.light, for: .bottomBar) // Or .dark as per your theme
         }
+        .minimumScaleFactor(0.4)
+        .allowsTightening(true)
         .onReceive(NotificationCenter.default.publisher(
             for: .notificationDraggableMenuViewSub)) { notification in
                 if notification.userInfo != nil{
@@ -546,10 +548,13 @@ struct RootView: View {
                 Text(LocalizedStringKey(title)) // For localization
                     .font(.system(size: 10))
                     .foregroundColor(.primary)
+                    .adaptiveSingleLine(minimumScale: 0.4)
+                    .frame(maxWidth: .infinity)
             }
         }
         .frame(maxWidth: .infinity)
     }
+
 }
 
 

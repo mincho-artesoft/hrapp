@@ -55,6 +55,7 @@ enum CalendarWidgetStore {
         static let measurementSystem = "calendarWidget.global.measurementSystem"
         static let firstWeekday = "calendarWidget.global.firstWeekday"
         static let dateFormat = "calendarWidget.global.dateFormat"
+        static let timeFormat = "calendarWidget.global.timeFormat"
         static let numberFormat = "calendarWidget.global.numberFormat"
         static let updatedAt = "calendarWidget.updatedAt"
     }
@@ -84,6 +85,7 @@ enum CalendarWidgetStore {
         defaults.set(GlobalState.measurementSystem, forKey: Key.measurementSystem)
         defaults.set(GlobalState.firstWeekday, forKey: Key.firstWeekday)
         defaults.set(GlobalState.dateFormat, forKey: Key.dateFormat)
+        defaults.set(GlobalState.timeFormat, forKey: Key.timeFormat)
         defaults.set(GlobalState.numberFormat, forKey: Key.numberFormat)
         defaults.set(GlobalState.speedUnitLabel, forKey: Key.windSpeedUnit)
     }

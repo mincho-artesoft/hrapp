@@ -247,8 +247,7 @@ class SubscriptionManager: ObservableObject {
            } catch {
                await MainActor.run {
                    restorationAlertMessage =
-                       String(
-                           format: NSLocalizedString(
+                       localizedFormat(NSLocalizedString(
                                "Failed to restore purchases. Please try again later. (%@)",
                                comment: "Restore failed"
                            ),

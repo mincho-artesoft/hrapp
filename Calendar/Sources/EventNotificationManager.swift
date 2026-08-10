@@ -287,9 +287,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
             return NSLocalizedString("All-day event", comment: "All-day event notification body")
         }
 
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
+        let formatter = appTimeFormatter()
 
         if let endDate = event.endDate {
             return "\(formatter.string(from: event.startDate)) - \(formatter.string(from: endDate))"
