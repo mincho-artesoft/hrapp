@@ -35,6 +35,13 @@ struct CalendarApp: App {
     // но НЕ трябва да обновява времето директно от този файл.
     @StateObject private var locationManager = LocationManager()
 
+    init() {
+        #if DEBUG
+        // Must run before RootView.init, which reads the persisted tab.
+        MainActor.assumeIsolated { ScreenshotMode.applyIfNeeded() }
+        #endif
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()
