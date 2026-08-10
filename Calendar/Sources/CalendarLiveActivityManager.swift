@@ -144,6 +144,11 @@ final class CalendarLiveActivityManager: ObservableObject {
         from snapshots: [CalendarWidgetStore.UpcomingEventSnapshot]
     ) -> CalendarLiveActivityAttributes.ContentState {
         let now = Date()
+        // Every ActivityKit request must keep its combined attributes and
+        // content state below 4 KB. The UI only renders the next event; retain
+        // two additional events so it can roll forward without sending the
+        // entire widget snapshot to ActivityKit.
+        let maximumEventCount = 3
 
         return CalendarLiveActivityAttributes.ContentState(
             updatedAt: Date(),
@@ -152,6 +157,7 @@ final class CalendarLiveActivityManager: ObservableObject {
                 .sorted { lhs, rhs in
                     lhs.startDate < rhs.startDate
                 }
+                .prefix(maximumEventCount)
                 .map {
                     CalendarLiveActivityEvent(
                         id: $0.id,

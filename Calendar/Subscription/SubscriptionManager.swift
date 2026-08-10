@@ -197,6 +197,22 @@ class SubscriptionManager: ObservableObject {
     }
 
     private func updateSubscriptionStatus() {
+        #if DEBUG
+        // Marketing captures must not contain ads: App Review rejects
+        // screenshots showing a test-mode ad banner, and a real one would put
+        // another company's artwork in our store listing. Reporting premium
+        // suppresses them at the source, rather than trying to catch each
+        // banner as it appears.
+        //
+        // Gated on the screenshot flag rather than on DEBUG alone, so a debug
+        // build a developer runs by hand still exercises the real entitlement
+        // path and the paywall stays testable.
+        if ScreenshotMode.isActive {
+            subscriptionStatus = .premium
+            return
+        }
+        #endif
+
         guard !purchasedProductIDs.isEmpty else {
             subscriptionStatus = .base
             return
