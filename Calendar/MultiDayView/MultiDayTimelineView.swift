@@ -536,12 +536,13 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             // Сортираме ги по начален час (по-ранните -> по-нагоре)
             let sorted = eventsForDay.sorted { $0.descriptor.dateInterval.start < $1.descriptor.dateInterval.start }
             
-            // Локален масив от "колони" (масиви EventLayoutAttributes),
-            // за да разпределим евентите, които се застъпват, в отделни колони
-            var columns: [[EventLayoutAttributes]] = []
+            // Независимите времеви групи трябва да се оразмеряват отделно.
+            // Иначе една застъпена двойка свива всички събития за целия ден.
+            for overlapGroup in makeOverlapGroups(from: sorted) {
+                var columns: [[EventLayoutAttributes]] = []
             
             // 4) Разпределяме евентите по колони на база дали се застъпват
-            for attr in sorted {
+            for attr in overlapGroup {
                 var placed = false
                 for c in 0..<columns.count {
                     // Ако този attr НЕ се застъпва с нищо в columns[c],
@@ -565,8 +566,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             let columnWidth = (dayColumnWidth - style.eventGap * 2) / colCount
             
             // Обхождаме всяка колона поотделно
-            for (colIndex, columnEvents) in columns.enumerated() {
-                for attr in columnEvents {
+                for (colIndex, columnEvents) in columns.enumerated() {
+                    for attr in columnEvents {
                     let start = attr.descriptor.dateInterval.start
                     let end   = attr.descriptor.dateInterval.end
                     
@@ -623,6 +624,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
                             }
                         }
                     }
+                    }
                 }
             }
         }
@@ -675,6 +677,35 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
 
 
     
+    private func makeOverlapGroups(
+        from sortedEvents: [EventLayoutAttributes]
+    ) -> [[EventLayoutAttributes]] {
+        var groups: [[EventLayoutAttributes]] = []
+        var currentGroup: [EventLayoutAttributes] = []
+        var currentGroupEnd: Date?
+
+        for event in sortedEvents {
+            let interval = event.descriptor.dateInterval
+
+            if let groupEnd = currentGroupEnd, interval.start < groupEnd {
+                currentGroup.append(event)
+                currentGroupEnd = max(groupEnd, interval.end)
+            } else {
+                if !currentGroup.isEmpty {
+                    groups.append(currentGroup)
+                }
+                currentGroup = [event]
+                currentGroupEnd = interval.end
+            }
+        }
+
+        if !currentGroup.isEmpty {
+            groups.append(currentGroup)
+        }
+
+        return groups
+    }
+
     private func isOverlapping(_ candidate: EventLayoutAttributes,
                                in columnEvents: [EventLayoutAttributes]) -> Bool
     {
@@ -685,13 +716,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             let evStart = ev.descriptor.dateInterval.start
             let evEnd   = ev.descriptor.dateInterval.end
             
-            // 1) Стандартна проверка за реално застъпване на два интервала
             let intervalsOverlap = (evStart < candEnd && candStart < evEnd)
-            
-            // 2) Проверка за разлика в началата под 40 минути
-            let diffStartTimes = abs(candStart.timeIntervalSince(evStart)) < 40 * 60
-            
-            if intervalsOverlap && diffStartTimes {
+
+            if intervalsOverlap {
                 return true
             }
         }
