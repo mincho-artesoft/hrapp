@@ -3,17 +3,17 @@
 # Everything here is a public marketing site. There is nothing to hide from a
 # crawler and no admin surface, so the only rules are the ones that stop bots
 # wasting their budget on files that are not pages.
+#
+# Note: do not disallow /app-ads.txt or the JS/CSS bundles. AdMob's crawler
+# obeys robots.txt, so a disallowed /app-ads.txt fails app authorization, and
+# the app is client-rendered (index.html ships an empty <app-root>), so a
+# search engine that cannot fetch main-*.js sees a blank page.
 
 User-agent: *
 Allow: /
 
-# Fingerprinted build output. Never a landing page, changes every deploy.
-Disallow: /*.js$
-Disallow: /*.css$
+# Binary media. Not pages, and nothing a renderer needs.
 Disallow: /media/
-
-# Ads.txt is for the IAB crawlers, not for search.
-Disallow: /app-ads.txt
 
 Sitemap: https://www.cloud-calendars.com/sitemap.xml
 
