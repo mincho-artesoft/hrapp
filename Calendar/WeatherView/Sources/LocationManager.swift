@@ -17,6 +17,9 @@ class LocationManager: NSObject, ObservableObject {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
+        #if DEBUG
+        if ScreenshotMode.isActive { return }
+        #endif
         manager.requestWhenInUseAuthorization()
     }
 }
@@ -24,6 +27,9 @@ class LocationManager: NSObject, ObservableObject {
 extension LocationManager: @preconcurrency CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self.authorizationStatus = status
+        #if DEBUG
+        if ScreenshotMode.isActive { return }
+        #endif
         
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
@@ -42,6 +48,10 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
     @MainActor
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
+
+        #if DEBUG
+        if ScreenshotMode.isActive { return }
+        #endif
 
         guard let location = locations.last else { return }
         currentLocation = location

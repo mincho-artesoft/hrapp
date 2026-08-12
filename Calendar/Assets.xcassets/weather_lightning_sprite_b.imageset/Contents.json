@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "weather_lightning_sprite_b.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

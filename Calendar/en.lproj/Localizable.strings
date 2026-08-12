@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "Waning Gibbous";
 "MoonPhase.lastQuarter" = "Last Quarter";
 "MoonPhase.waningCrescent" = "Waning Crescent";
+"WeatherAlert.Preview.Tornado" = "Tornado warning: seek secure shelter immediately.";
+"WeatherAlert.Preview.Source" = "Weather Service";
+"WeatherAlert.Preview.Region" = "Forecast area";

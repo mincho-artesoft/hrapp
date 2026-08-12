@@ -54,6 +54,11 @@ struct WeatherKitView: View {
                 VStack(spacing: 20) {
                     // Текущото време и град
                     currentWeatherHeader
+
+                    if !vm.weatherAlerts.isEmpty {
+                        weatherAlertsSection
+                            .padding(.horizontal, 16)
+                    }
                     
                     // Часов прогноз – хоризонтален ScrollView
                     hourlyForecastCard
@@ -110,6 +115,7 @@ struct WeatherKitView: View {
                 .zIndex(10) // overlay да е над останалото съдържание
         }
         .navigationBarHidden(true)
+        .preferredColorScheme(weatherBackgroundUsesDarkInterface ? .dark : nil)
         .safeAreaInset(edge: .top) {
             VStack(spacing: 0) {
                 weatherTopBar
@@ -311,7 +317,8 @@ struct WeatherKitView: View {
 
         // MARK: - onReceive за Location и други събития
         .onReceive(locationManager.$currentLocation) { location in
-            if let loc = location,
+            if !weatherPreviewIsActive,
+               let loc = location,
                !showSearchBar,
                geocodedCityName.isEmpty,
                !initialLoadComplete {
@@ -327,7 +334,9 @@ struct WeatherKitView: View {
             handleSelectedLocation(placemark: placemark)
         }
         .onReceive(locationManager.$authorizationStatus) { status in
-            if status == .authorizedWhenInUse || status == .authorizedAlways {
+            if weatherPreviewIsActive {
+                return
+            } else if status == .authorizedWhenInUse || status == .authorizedAlways {
                 if locationManager.currentLocation == nil {
                     locationManager.manager.requestLocation()
                 } else if !initialLoadComplete && !showSearchBar && geocodedCityName.isEmpty {
@@ -345,43 +354,29 @@ struct WeatherKitView: View {
     }
     
     private var dynamicBackground: some View {
-        let condition = vm.currentConditionLocalizationKey.isEmpty
-            ? vm.currentSymbol.lowercased()
-            : vm.currentConditionLocalizationKey.lowercased()
-        switch condition {
-        case _ where condition.contains("sun"), _ where condition.contains("clear"):
-            return AnyView(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.yellow, Color.blue]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-        case _ where condition.contains("rain"):
-            return AnyView(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.gray]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-        case _ where condition.contains("cloud"):
-            return AnyView(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.gray, Color.blue.opacity(0.4)]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-        default:
-            return AnyView(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.gray.opacity(0.5)]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-            )
-        }
+        WeatherSceneBackground(
+            conditionKey: vm.currentConditionLocalizationKey,
+            symbolName: vm.currentSymbol,
+            sunrise: vm.sunriseTime,
+            sunset: vm.sunsetTime,
+            moonrise: vm.currentMoonEvents?.moonrise,
+            moonset: vm.currentMoonEvents?.moonset,
+            moonPhase: weatherPreviewMoonPhase ?? vm.currentMoonEvents?.phase.rawValue,
+            precipitationType: vm.currentPrecipitationType,
+            cloudCover: vm.currentCloudCover,
+            windSpeedKPH: normalizedWindSpeedKPH(vm.currentWindSpeed),
+            windGustKPH: normalizedWindSpeedKPH(vm.currentWindGust),
+            windDirectionDegrees: vm.currentWindDirection?.degrees,
+            observationDate: weatherPreviewObservationDate
+        )
+        .id("\(vm.currentConditionLocalizationKey)|\(vm.currentSymbol)|\(vm.currentPrecipitationType ?? "none")")
+        .transition(.opacity)
+        .animation(.easeInOut(duration: 0.8), value: vm.currentConditionLocalizationKey)
+    }
+
+    private func normalizedWindSpeedKPH(_ speed: Double?) -> Double? {
+        guard let speed else { return nil }
+        return GlobalState.measurementSystem == "Imperial" ? speed * 1.609_344 : speed
     }
     
     private var searchField: some View {
@@ -494,6 +489,83 @@ struct WeatherKitView: View {
     }
     
     // MARK: - MAIN WEATHER SUBVIEWS
+    private var weatherAlertsSection: some View {
+        VStack(spacing: 10) {
+            ForEach(vm.weatherAlerts) { alert in
+                weatherAlertCard(alert)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func weatherAlertCard(_ alert: WeatherAlertDisplayItem) -> some View {
+        let content = HStack(alignment: .top, spacing: 12) {
+            Image(systemName: alert.severity == .extreme ? "exclamationmark.triangle.fill" : "exclamationmark.shield.fill")
+                .font(.system(size: 22, weight: .semibold))
+                .foregroundStyle(weatherAlertAccent(alert.severity))
+                .frame(width: 28)
+
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 8) {
+                    Text(weatherAlertSeverityTitle(alert.severity))
+                        .font(.caption.weight(.bold))
+                        .textCase(.uppercase)
+                    Spacer(minLength: 8)
+                    Text(alert.source)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
+
+                Text(alert.summary)
+                    .font(.subheadline.weight(.semibold))
+                    .multilineTextAlignment(.leading)
+
+                if let region = alert.region, !region.isEmpty {
+                    Label(region, systemImage: "mappin.and.ellipse")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+        }
+        .foregroundStyle(.primary)
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            weatherAlertAccent(alert.severity).opacity(0.16),
+            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(weatherAlertAccent(alert.severity).opacity(0.55), lineWidth: 1)
+        }
+
+        if let detailsURL = alert.detailsURL {
+            Link(destination: detailsURL) { content }
+                .buttonStyle(.plain)
+        } else {
+            content
+        }
+    }
+
+    private func weatherAlertAccent(_ severity: WeatherSeverity) -> Color {
+        switch severity {
+        case .extreme: return .red
+        case .severe: return .orange
+        case .moderate: return .yellow
+        case .minor: return .blue
+        case .unknown: return .gray
+        @unknown default: return .gray
+        }
+    }
+
+    private func weatherAlertSeverityTitle(_ severity: WeatherSeverity) -> String {
+        // WeatherKit supplies this label already localized by the system. It
+        // therefore follows every supported app language, including future
+        // languages, without maintaining a second translation table here.
+        severity.description
+    }
+
     private var currentWeatherHeader: some View {
         VStack(spacing: 10) {
             Text(displayedCityName())
@@ -702,10 +774,61 @@ struct WeatherKitView: View {
     }
     
     private func displayedCityName() -> String {
+        if weatherPreviewIsActive {
+            return "Weather Preview"
+        }
         if !geocodedCityName.isEmpty {
             return geocodedCityName
         }
         return locationManager.currentCityName ?? NSLocalizedString("Loading...", comment: "Loading fallback")
+    }
+
+    private var weatherPreviewIsActive: Bool {
+        #if DEBUG
+        ScreenshotMode.weatherPreviewCondition != nil
+        #else
+        false
+        #endif
+    }
+
+    private var weatherPreviewObservationDate: Date? {
+        #if DEBUG
+        guard ScreenshotMode.weatherPreviewSky == "night" else { return nil }
+        var calendar = Calendar.current
+        calendar.timeZone = vm.locationTimeZone
+        return calendar.date(bySettingHour: 23, minute: 12, second: 0, of: Date())
+        #else
+        nil
+        #endif
+    }
+
+    private var weatherPreviewMoonPhase: String? {
+        #if DEBUG
+        guard ScreenshotMode.weatherPreviewSky == "night" else { return nil }
+        return ScreenshotMode.weatherPreviewMoonPhase ?? "waxingGibbous"
+        #else
+        nil
+        #endif
+    }
+
+    private var weatherBackgroundIsNight: Bool {
+        let date = weatherPreviewObservationDate ?? Date()
+        if let sunrise = vm.sunriseTime,
+           let sunset = vm.sunsetTime,
+           sunset > sunrise {
+            return date < sunrise || date >= sunset
+        }
+        let symbol = vm.currentSymbol.lowercased()
+        return symbol.contains("moon") || symbol.contains("night")
+    }
+
+    private var weatherBackgroundUsesDarkInterface: Bool {
+        if weatherBackgroundIsNight { return true }
+        let condition = vm.currentConditionLocalizationKey.lowercased()
+        return condition.contains("thunder")
+            || condition.contains("storm")
+            || condition.contains("hurricane")
+            || condition.contains("heavyrain")
     }
     
     private func refreshWeatherData() {

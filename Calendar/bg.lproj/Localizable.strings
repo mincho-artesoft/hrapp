@@ -751,3 +751,6 @@
 "MoonPhase.waningGibbous" = "Намаляваща луна";
 "MoonPhase.lastQuarter" = "Последна четвърт";
 "MoonPhase.waningCrescent" = "Залязващ полумесец";
+"WeatherAlert.Preview.Tornado" = "Предупреждение за торнадо: незабавно потърсете сигурно убежище.";
+"WeatherAlert.Preview.Source" = "Метеорологична служба";
+"WeatherAlert.Preview.Region" = "Районът на прогнозата";

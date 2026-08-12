@@ -4,6 +4,15 @@ import CoreLocation
 import MapKit
 @preconcurrency import WeatherKit
 
+struct WeatherAlertDisplayItem: Identifiable, Equatable {
+    let id: String
+    let summary: String
+    let source: String
+    let region: String?
+    let severity: WeatherSeverity
+    let detailsURL: URL?
+}
+
 @MainActor
 class WeatherKitViewModel: ObservableObject {
     // Singleton
@@ -30,6 +39,8 @@ class WeatherKitViewModel: ObservableObject {
     // Нови параметри за валежи
     @Published var currentPrecipitationAmount: Double?    // ще пази стойността на precipitationIntensity
     @Published var currentCloudCover: Double?
+    @Published var currentPrecipitationType: String?
+    @Published var weatherAlerts: [WeatherAlertDisplayItem] = []
 
     // MARK: - Прогнози
     @Published var todayMinTemp: Double?
@@ -60,14 +71,16 @@ class WeatherKitViewModel: ObservableObject {
         Task {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
-                let (current, hourlyData, dailyData) = try await weatherService.weather(
+                let (current, hourlyData, dailyData, alerts) = try await weatherService.weather(
                     for: loc,
-                    including: .current, .hourly, .daily
+                    including: .current, .hourly, .daily, .alerts
                 )
 
                 updateCurrentWeather(current)
                 updateHourlyForecast(hourlyData.forecast)
                 updateDailyForecast(dailyData.forecast)
+                updateCurrentPrecipitationType(hourlyData.forecast, relativeTo: current.date)
+                updateWeatherAlerts(alerts)
 
                 var calendar = Calendar.current
                 calendar.timeZone = locationTimeZone
@@ -136,6 +149,8 @@ class WeatherKitViewModel: ObservableObject {
 
         currentPrecipitationAmount = nil
         currentCloudCover = nil
+        currentPrecipitationType = nil
+        weatherAlerts = []
 
         nextMoonPhase = nil
         daysUntilNextMoonPhase = nil
@@ -210,6 +225,42 @@ class WeatherKitViewModel: ObservableObject {
         case .steady:  pressureTrend = "Steady"
         @unknown default:
             pressureTrend = "Unknown"
+        }
+    }
+
+    private func updateCurrentPrecipitationType(
+        _ hours: [HourWeather],
+        relativeTo observationDate: Date
+    ) {
+        let closest = hours.min {
+            abs($0.date.timeIntervalSince(observationDate))
+                < abs($1.date.timeIntervalSince(observationDate))
+        }
+        currentPrecipitationType = closest?.precipitation.rawValue
+    }
+
+    private func updateWeatherAlerts(_ alerts: [WeatherAlert]?) {
+        weatherAlerts = (alerts ?? []).map { alert in
+            WeatherAlertDisplayItem(
+                id: "\(alert.source)|\(alert.summary)|\(alert.region ?? "")",
+                summary: alert.summary,
+                source: alert.source,
+                region: alert.region,
+                severity: alert.severity,
+                detailsURL: alert.detailsURL
+            )
+        }
+        .sorted { severityRank($0.severity) > severityRank($1.severity) }
+    }
+
+    private func severityRank(_ severity: WeatherSeverity) -> Int {
+        switch severity {
+        case .extreme: return 4
+        case .severe: return 3
+        case .moderate: return 2
+        case .minor: return 1
+        case .unknown: return 0
+        @unknown default: return 0
         }
     }
 

@@ -1,0 +1,13 @@
+{
+  "images" : [
+    {
+      "filename" : "weather_frost_edges.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

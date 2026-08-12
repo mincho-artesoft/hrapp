@@ -535,6 +535,15 @@ final class CalendarViewModel: ObservableObject {
     }
 
     func requestCalendarAccessIfNeeded() async -> Bool {
+        #if DEBUG
+        // Weather preview captures do not read or edit calendar data. Avoid a
+        // system permission sheet covering deterministic animation videos on a
+        // freshly-created simulator; normal app launches are unchanged.
+        if ScreenshotMode.isActive {
+            self.accessGranted = false
+            return false
+        }
+        #endif
         let status = EKEventStore.authorizationStatus(for: .event)
         if status == .notDetermined {
             do {
