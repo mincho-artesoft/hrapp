@@ -214,6 +214,12 @@
 "Sunset" = "Gün batımı";
 
 
+"Sunrise and Sunset" = "Gündoğumu ve günbatımı";
+"First Light" = "İlk ışık";
+"Solar Noon" = "Güneş öğlesi";
+"Last Light" = "Son ışık";
+"Total Daylight" = "Toplam gün ışığı";
+
 /* UVIndexCard */
 "UV INDEX" = "UV ENDEKSİ";
 "Low" = "Düşük";

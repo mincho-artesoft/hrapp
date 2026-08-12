@@ -5,6 +5,12 @@ import CoreLocation
 import MapKit
 @preconcurrency import WeatherKit
 
+private let weatherPrecipitationAccent = Color(
+    hue: 0.55,
+    saturation: 0.8,
+    brightness: 1.0
+)
+
 private struct SavedRegionWeatherSummary: Equatable {
     let temperature: Double
     let lowTemperature: Double
@@ -31,7 +37,6 @@ struct WeatherKitView: View {
     let viewModel = CalendarViewModel.shared
 
     @StateObject private var locationSearchVM = LocationSearchViewModel()
-    @Environment(\.colorScheme) var colorScheme
 
     // MARK: - UI State
     @State private var showSearchBar = false
@@ -56,6 +61,7 @@ struct WeatherKitView: View {
     @State private var showHumidityDetail = false
     @State private var showVisibilityDetail = false
     @State private var showPressureDetail = false
+    @State private var showSolarDetail = false
 
     
     init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
@@ -63,6 +69,7 @@ struct WeatherKitView: View {
         self.onViewChange = onViewChange!
         #if DEBUG
         _showSavedRegions = State(initialValue: ScreenshotMode.weatherPreviewSavedRegionsOpen)
+        _showSolarDetail = State(initialValue: ScreenshotMode.weatherPreviewSolarDetail)
         #endif
     }
 
@@ -136,6 +143,28 @@ struct WeatherKitView: View {
             // 3) Overlay със списък с резултати от търсенето
             searchResultsOverlay
                 .zIndex(10) // overlay да е над останалото съдържание
+
+            #if DEBUG
+            if ScreenshotMode.weatherPreviewSolarCard {
+                VStack {
+                    Spacer()
+
+                    SunsetCard(
+                        sunrise: vm.sunriseTime,
+                        sunset: vm.sunsetTime,
+                        formatTime: vm.formatTime,
+                        observationDate: weatherPreviewObservationDate
+                    )
+                    .frame(height: 132)
+                    .padding(.horizontal, 16)
+
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.black.opacity(0.18))
+                .zIndex(200)
+            }
+            #endif
         }
         .navigationBarHidden(true)
         .onAppear {
@@ -351,6 +380,13 @@ struct WeatherKitView: View {
                 )
             }
         }
+        .sheet(isPresented: $showSolarDetail) {
+            SolarDetailSheet(
+                days: vm.solarDayForecast,
+                timeZone: vm.locationTimeZone,
+                observationDate: weatherPreviewObservationDate ?? Date()
+            )
+        }
         .sheet(isPresented: Binding(
                 get: { eventToEdit != nil },
                 set: { if !$0 { eventToEdit = nil } }   // зануляваме при затваряне
@@ -402,6 +438,10 @@ struct WeatherKitView: View {
         .onReceive(NotificationCenter.default.publisher(for: .openWeatherNotification)) { _ in
             selectCurrentLocation()
         }
+        // The Weather experience has one intentional visual language. Keep
+        // semantic labels, materials, controls and every presented subview on
+        // the same palette regardless of the device's Light/Dark appearance.
+        .colorScheme(.dark)
     }
     
     private var dynamicBackground: some View {
@@ -477,7 +517,7 @@ struct WeatherKitView: View {
                 .frame(width: 36, height: 36)
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
-                .foregroundColor(colorScheme == .light ? .black : .white)
+                .foregroundColor(.white)
                 .accessibilityLabel(NSLocalizedString("Saved Regions", comment: "Saved weather regions"))
             }
 
@@ -500,11 +540,11 @@ struct WeatherKitView: View {
                 )
                 .contentShape(Rectangle())
                 .buttonStyle(.plain)
-                .foregroundColor(colorScheme == .light ? .black : .white)
+                .foregroundColor(.white)
 
                 UIMenuButtonRepresentable(
                     currentView: selectedTab,
-                    tintColor: colorScheme == .light ? .black : .white,
+                    tintColor: .white,
                     onViewChange: onViewChange
                 )
                 .frame(width: 36, height: 36)
@@ -561,14 +601,14 @@ struct WeatherKitView: View {
                 .padding(.top, 8)
             }
             .toolbarBackground(.hidden, for: .navigationBar)
-            .toolbarColorScheme(colorScheme, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(NSLocalizedString("Done", comment: "Done button")) {
                         closeSavedRegions()
                     }
                     .font(.body.weight(.semibold))
-                    .foregroundStyle(colorScheme == .dark ? Color.white : Color.accentColor)
+                    .foregroundStyle(Color.white)
                 }
             }
         }
@@ -577,27 +617,20 @@ struct WeatherKitView: View {
         }
         .background(savedRegionsBaseColor.ignoresSafeArea())
         .presentationBackground(savedRegionsBaseColor)
+        .foregroundStyle(Color.white)
+        .colorScheme(.dark)
     }
 
     private var savedRegionsBackgroundColors: [Color] {
-        if colorScheme == .dark {
-            return [
-                Color(red: 0.04, green: 0.12, blue: 0.22),
-                Color(red: 0.04, green: 0.25, blue: 0.42),
-                Color(red: 0.03, green: 0.13, blue: 0.24)
-            ]
-        }
         return [
-            Color(red: 0.88, green: 0.95, blue: 1.00),
-            Color(red: 0.70, green: 0.87, blue: 0.98),
-            Color(red: 0.92, green: 0.96, blue: 0.99)
+            Color(red: 0.04, green: 0.12, blue: 0.22),
+            Color(red: 0.04, green: 0.25, blue: 0.42),
+            Color(red: 0.03, green: 0.13, blue: 0.24)
         ]
     }
 
     private var savedRegionsBaseColor: Color {
-        colorScheme == .dark
-            ? Color(red: 0.04, green: 0.12, blue: 0.22)
-            : Color(red: 0.88, green: 0.95, blue: 1.00)
+        Color(red: 0.04, green: 0.12, blue: 0.22)
     }
 
     private var currentLocationCard: some View {
@@ -654,28 +687,18 @@ struct WeatherKitView: View {
 
         return ZStack {
             RoundedRectangle(cornerRadius: 27, style: .continuous)
-                .fill(
-                    colorScheme == .dark
-                        ? Color.white.opacity(0.08)
-                        : Color.accentColor.opacity(0.08)
-                )
+                .fill(Color.white.opacity(0.08))
                 .overlay {
                     RoundedRectangle(cornerRadius: 27, style: .continuous)
                         .strokeBorder(
-                            colorScheme == .dark
-                                ? Color.white.opacity(0.72)
-                                : Color.accentColor.opacity(0.70),
+                            Color.white.opacity(0.72),
                             style: StrokeStyle(lineWidth: 2, dash: [10, 8])
                         )
                 }
                 .overlay {
                     Image(systemName: "arrow.down.to.line.compact")
                         .font(.system(size: 28, weight: .semibold))
-                        .foregroundStyle(
-                            colorScheme == .dark
-                                ? Color.white.opacity(0.86)
-                                : Color.accentColor.opacity(0.88)
-                        )
+                        .foregroundStyle(Color.white.opacity(0.86))
                 }
                 .frame(height: 170)
                 .opacity(isActive ? 1 : 0)
@@ -739,15 +762,13 @@ struct WeatherKitView: View {
         .background(savedRegionsSearchBackground, in: Capsule())
         .overlay {
             Capsule()
-                .stroke(Color.primary.opacity(colorScheme == .dark ? 0.10 : 0.08), lineWidth: 1)
+                .stroke(Color.white.opacity(0.10), lineWidth: 1)
         }
-        .shadow(color: .black.opacity(colorScheme == .dark ? 0.12 : 0.08), radius: 8, y: 3)
+        .shadow(color: .black.opacity(0.12), radius: 8, y: 3)
     }
 
     private var savedRegionsSearchBackground: Color {
-        colorScheme == .dark
-            ? Color.black.opacity(0.32)
-            : Color(uiColor: .secondarySystemBackground).opacity(0.94)
+        Color.black.opacity(0.32)
     }
 
     private var savedRegionsSearchResults: some View {
@@ -791,9 +812,7 @@ struct WeatherKitView: View {
             }
         }
         .background(
-            colorScheme == .dark
-                ? Color.black.opacity(0.26)
-                : Color(uiColor: .secondarySystemBackground).opacity(0.96),
+            Color.black.opacity(0.26),
             in: RoundedRectangle(cornerRadius: 18, style: .continuous)
         )
         .overlay {
@@ -961,12 +980,7 @@ struct WeatherKitView: View {
     }
 
     private func regionLocalTime(timeZone: TimeZone) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = .current
-        formatter.timeZone = timeZone
-        formatter.timeStyle = .short
-        formatter.dateStyle = .none
-        return formatter.string(from: Date())
+        appTimeFormatter(timeZone: timeZone).string(from: Date())
     }
 
     private func loadSavedRegionsWeather() async {
@@ -1228,22 +1242,22 @@ struct WeatherKitView: View {
         VStack(spacing: 10) {
             Text(displayedCityName())
                 .font(.system(size: 34, weight: .regular))
-                .foregroundColor(.primary)
+                .foregroundColor(.white)
                 .adaptiveSingleLine(minimumScale: 0.5)
             HStack(alignment: .lastTextBaseline, spacing: 8) {
                 if let temp = vm.currentTemp {
                     Text(localizedFormat("%d°", Int(temp.rounded())))
                         .font(.system(size: 96, weight: .thin))
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
                 } else {
                     Text("—°")
                         .font(.system(size: 96, weight: .thin))
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .center)
             Text(vm.currentCondition)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white.opacity(0.62))
                 .font(.system(size: 18, weight: .medium))
                 .adaptiveSingleLine(minimumScale: 0.45)
             if let hi = vm.todayMaxTemp, let lo = vm.todayMinTemp {
@@ -1251,7 +1265,7 @@ struct WeatherKitView: View {
                     Int(hi.rounded()),
                     Int(lo.rounded())
                 ))
-                    .foregroundColor(.primary)
+                    .foregroundColor(.white)
                     .font(.system(size: 18, weight: .medium))
                     .adaptiveSingleLine(minimumScale: 0.5)
             }
@@ -1301,6 +1315,7 @@ struct WeatherKitView: View {
             }
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+        .colorScheme(.dark)
     }
     
     private func dailyForecastRow(
@@ -1325,7 +1340,7 @@ struct WeatherKitView: View {
                 if let chance = dayItem.precipChance, chance >= 0.1 {
                     Text(localizedFormat("%d%%", Int((chance * 100).rounded())))
                         .font(.system(size: 11, weight: .semibold))
-                        .foregroundColor(Color(hue: 0.55, saturation: 0.8, brightness: colorScheme == .light ? 0.7 : 1.0))
+                        .foregroundColor(weatherPrecipitationAccent)
                         .frame(width: 35)
                 } else {
                     Spacer().frame(width: 35)
@@ -1390,8 +1405,13 @@ struct WeatherKitView: View {
             SunsetCard(
                 sunrise: vm.sunriseTime,
                 sunset: vm.sunsetTime,
-                formatTime: vm.formatTime
+                formatTime: vm.formatTime,
+                observationDate: weatherPreviewObservationDate
             )
+            .contentShape(Rectangle())
+            .onTapGesture {
+                showSolarDetail = true
+            }
             MoonCard(
                 moonEvents: vm.currentMoonEvents
             )
@@ -1451,10 +1471,20 @@ struct WeatherKitView: View {
 
     private var weatherPreviewObservationDate: Date? {
         #if DEBUG
-        guard ScreenshotMode.weatherPreviewSky == "night" else { return nil }
         var calendar = Calendar.current
         calendar.timeZone = vm.locationTimeZone
-        return calendar.date(bySettingHour: 23, minute: 12, second: 0, of: Date())
+        switch ScreenshotMode.weatherPreviewSky {
+        case "day":
+            return calendar.date(bySettingHour: 13, minute: 27, second: 0, of: Date())
+        case "night":
+            return calendar.date(bySettingHour: 23, minute: 12, second: 0, of: Date())
+        case "sunrise":
+            return calendar.date(bySettingHour: 6, minute: 22, second: 0, of: Date())
+        case "sunset":
+            return calendar.date(bySettingHour: 20, minute: 20, second: 0, of: Date())
+        default:
+            return nil
+        }
         #else
         nil
         #endif
@@ -1741,14 +1771,13 @@ extension WeatherKitView {
                 .font(.footnote)
                 .underline()
         }
-        .foregroundColor(.secondary)
+        .foregroundColor(.white.opacity(0.62))
         .frame(maxWidth: .infinity)
     }
 }
 
 // MARK: - HourlyForecastCard
 struct HourlyForecastCard: View {
-    @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var vm: WeatherKitViewModel
     var onHourTap: (Int) -> Void
 
@@ -1760,8 +1789,9 @@ struct HourlyForecastCard: View {
         VStack(alignment: .leading, spacing: 0) {
             HourlyStrip(
                 hours: vm.next24HourlyForecast,
+                solarEvents: vm.next24SolarEvents,
+                timeZone: vm.locationTimeZone,
                 isAnyPrecip: isAnyPrecip,
-                colorScheme: colorScheme,
                 onHourTap: onHourTap
             )
             .frame(height: 120)
@@ -1777,28 +1807,49 @@ struct HourlyForecastCard: View {
             .padding(.bottom, 5)
         }
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
+        .colorScheme(.dark)
     }
 }
 
 // MARK: - HourlyStrip
 private struct HourlyStrip: View {
     let hours: [HourlyForecastItem]
+    let solarEvents: [SolarForecastEvent]
+    let timeZone: TimeZone
     let isAnyPrecip: Bool
-    let colorScheme: ColorScheme
     let onHourTap: (Int) -> Void
+
+    private var entries: [HourlyStripEntry] {
+        let hourEntries = hours.map(HourlyStripEntry.hour)
+        let solarEntries = solarEvents.map(HourlyStripEntry.solar)
+        return (hourEntries + solarEntries).sorted { lhs, rhs in
+            if lhs.date == rhs.date { return lhs.sortPriority < rhs.sortPriority }
+            return lhs.date < rhs.date
+        }
+    }
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 25) {
-                ForEach(hours) { hour in
-                    HourlyCell(
-                        item: hour,
-                        isAnyPrecip: isAnyPrecip,
-                        colorScheme: colorScheme
-                    )
-                    .contentShape(Rectangle())          // за по-голяма зона за пипане
-                    .onTapGesture {
-                        onHourTap(Int(hour.hour) ?? 0)  // ще отпечата часа
+                ForEach(entries) { entry in
+                    switch entry {
+                    case .hour(let hour):
+                        HourlyCell(
+                            item: hour,
+                            isAnyPrecip: isAnyPrecip
+                        )
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            var calendar = Calendar.current
+                            calendar.timeZone = timeZone
+                            onHourTap(calendar.component(.hour, from: hour.date))
+                        }
+                    case .solar(let event):
+                        SolarForecastCell(
+                            event: event,
+                            timeZone: timeZone,
+                            reservesPrecipitationRow: isAnyPrecip
+                        )
                     }
                 }
             }
@@ -1809,12 +1860,76 @@ private struct HourlyStrip: View {
     }
 }
 
+private enum HourlyStripEntry: Identifiable {
+    case hour(HourlyForecastItem)
+    case solar(SolarForecastEvent)
+
+    var id: String {
+        switch self {
+        case .hour(let item): return "hour-\(item.id.timeIntervalSinceReferenceDate)"
+        case .solar(let event): return "solar-\(event.id)"
+        }
+    }
+
+    var date: Date {
+        switch self {
+        case .hour(let item): return item.date
+        case .solar(let event): return event.date
+        }
+    }
+
+    var sortPriority: Int {
+        switch self {
+        case .hour: return 0
+        case .solar: return 1
+        }
+    }
+}
+
+private struct SolarForecastCell: View {
+    let event: SolarForecastEvent
+    let timeZone: TimeZone
+    let reservesPrecipitationRow: Bool
+
+    private var formattedTime: String {
+        let formatter = DateFormatter()
+        formatter.locale = .current
+        formatter.timeZone = timeZone
+        formatter.setLocalizedDateFormatFromTemplate("jm")
+        return formatter.string(from: event.date)
+    }
+
+    var body: some View {
+        VStack {
+            Text(event.kind.localizedTitle)
+                .font(.system(size: 12, weight: .medium))
+                .adaptiveSingleLine(minimumScale: 0.55)
+
+            Image(systemName: event.kind.symbolName)
+                .symbolRenderingMode(.multicolor)
+                .font(.title2)
+                .frame(height: 30)
+
+            if reservesPrecipitationRow {
+                Text(" ")
+                    .font(.system(size: 12, weight: .medium))
+            }
+
+            Text(formattedTime)
+                .font(.system(size: 14, weight: .semibold))
+                .adaptiveSingleLine(minimumScale: 0.6)
+        }
+        .frame(minWidth: 52, idealWidth: 62, maxWidth: 74)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(event.kind.localizedTitle), \(formattedTime)")
+    }
+}
+
 
 // MARK: - HourlyCell
 private struct HourlyCell: View {
     let item: HourlyForecastItem
     let isAnyPrecip: Bool
-    let colorScheme: ColorScheme
 
     var body: some View {
         VStack {
@@ -1835,13 +1950,7 @@ private struct HourlyCell: View {
                         : " "
                 )
                     .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(
-                        Color(
-                            hue: 0.55,
-                            saturation: 0.8,
-                            brightness: colorScheme == .light ? 0.7 : 1.0
-                        )
-                    )
+                    .foregroundColor(weatherPrecipitationAccent)
             }
 
             Text(localizedFormat("%d°", Int(item.temp.rounded())))

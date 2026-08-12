@@ -214,6 +214,12 @@
 "Sunset" = "सूर्यास्त";
 
 
+"Sunrise and Sunset" = "सूर्योदय और सूर्यास्त";
+"First Light" = "पहली रोशनी";
+"Solar Noon" = "सौर दोपहर";
+"Last Light" = "अंतिम रोशनी";
+"Total Daylight" = "कुल दिन का प्रकाश";
+
 /* UVIndexCard */
 "UV INDEX" = "यूवी सूचकांक";
 "Low" = "नीचा";

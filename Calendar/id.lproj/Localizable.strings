@@ -214,6 +214,12 @@
 "Sunset" = "Matahari terbenam";
 
 
+"Sunrise and Sunset" = "Matahari terbit dan terbenam";
+"First Light" = "Cahaya pertama";
+"Solar Noon" = "Tengah hari matahari";
+"Last Light" = "Cahaya terakhir";
+"Total Daylight" = "Total siang hari";
+
 /* UVIndexCard */
 "UV INDEX" = "INDEKS UV";
 "Low" = "Rendah";

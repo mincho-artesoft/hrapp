@@ -253,6 +253,7 @@ struct RootView: View {
                                     selectedTab = newTab
                                 }
                             )
+                            .colorScheme(.dark)
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
                         default:
                             Text(localizedFormat(NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), localizedIntegerString(selectedTab))) // More informative fallback

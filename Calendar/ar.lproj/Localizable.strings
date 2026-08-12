@@ -214,6 +214,12 @@
 "Sunset" = "غروب الشمس";
 
 
+"Sunrise and Sunset" = "شروق الشمس وغروبها";
+"First Light" = "أول ضوء";
+"Solar Noon" = "الظهر الشمسي";
+"Last Light" = "آخر ضوء";
+"Total Daylight" = "إجمالي ضوء النهار";
+
 /* UVIndexCard */
 "UV INDEX" = "مؤشر الأشعة فوق البنفسجية";
 "Low" = "منخفض";

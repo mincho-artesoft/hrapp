@@ -214,6 +214,12 @@
 "Sunset" = "Auringonlasku";
 
 
+"Sunrise and Sunset" = "Auringonnousu ja -lasku";
+"First Light" = "Ensimmäinen valo";
+"Solar Noon" = "Aurinkokeskipäivä";
+"Last Light" = "Viimeinen valo";
+"Total Daylight" = "Päivänvalon kokonaiskesto";
+
 /* UVIndexCard */
 "UV INDEX" = "UV-INDEKSI";
 "Low" = "Matala";

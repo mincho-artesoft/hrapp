@@ -214,6 +214,12 @@
 "Sunset" = "พระอาทิตย์ตก";
 
 
+"Sunrise and Sunset" = "พระอาทิตย์ขึ้นและตก";
+"First Light" = "แสงแรก";
+"Solar Noon" = "เที่ยงสุริยะ";
+"Last Light" = "แสงสุดท้าย";
+"Total Daylight" = "ระยะเวลากลางวันทั้งหมด";
+
 /* UVIndexCard */
 "UV INDEX" = "ดัชนียูวี";
 "Low" = "ต่ำ";

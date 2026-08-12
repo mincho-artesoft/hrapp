@@ -213,6 +213,12 @@
 "Sunrise" = "Alba";
 "Sunset" = "Tramonto";
 
+"Sunrise and Sunset" = "Alba e tramonto";
+"First Light" = "Prima luce";
+"Solar Noon" = "Mezzogiorno solare";
+"Last Light" = "Ultima luce";
+"Total Daylight" = "Luce diurna totale";
+
 /* UVIndexCard */
 "UV INDEX" = "Indice UV";
 "Low" = "Basso";

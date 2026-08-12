@@ -212,6 +212,12 @@
 "Sunrise" = "Изгрев";
 "Sunset" = "Залез";
 
+"Sunrise and Sunset" = "Изгрев и залез";
+"First Light" = "Първа светлина";
+"Solar Noon" = "Слънчево пладне";
+"Last Light" = "Последна светлина";
+"Total Daylight" = "Обща продължителност на деня";
+
 /* UVIndexCard */
 "UV INDEX" = "UV индекс";
 "Low" = "Нисък";

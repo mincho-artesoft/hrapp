@@ -214,6 +214,12 @@
 "Sunset" = "Solnedgang";
 
 
+"Sunrise and Sunset" = "Soloppgang og solnedgang";
+"First Light" = "Første lys";
+"Solar Noon" = "Solmiddag";
+"Last Light" = "Siste lys";
+"Total Daylight" = "Total dagslys";
+
 /* UVIndexCard */
 "UV INDEX" = "UV-INDEKS";
 "Low" = "Lavt";

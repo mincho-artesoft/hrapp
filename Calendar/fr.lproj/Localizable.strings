@@ -209,6 +209,12 @@
 "Sunrise" = "Lever du soleil";
 "Sunset" = "Coucher du soleil";
 
+"Sunrise and Sunset" = "Lever et coucher du soleil";
+"First Light" = "Premières lueurs";
+"Solar Noon" = "Midi solaire";
+"Last Light" = "Dernières lueurs";
+"Total Daylight" = "Durée totale du jour";
+
 /* UVIndexCard */
 "UV INDEX" = "Indice UV";
 "Low" = "Faible";

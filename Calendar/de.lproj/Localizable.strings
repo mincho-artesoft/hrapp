@@ -212,7 +212,13 @@
 "Sunrise: %@" = "Sonnenaufgang: %@";
 "Sunset: %@" = "Sonnenuntergang: %@";
 "Sunrise" = "Sonnenaufgang";
-"Sunset" = "Sonnenaufgang";
+"Sunset" = "Sonnenuntergang";
+
+"Sunrise and Sunset" = "Sonnenaufgang und Sonnenuntergang";
+"First Light" = "Erstes Licht";
+"Solar Noon" = "Sonnenmittag";
+"Last Light" = "Letztes Licht";
+"Total Daylight" = "Gesamte Tageslänge";
 
 /* UVIndexCard */
 "UV INDEX" = "UV-Index";

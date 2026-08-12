@@ -89,6 +89,14 @@ enum ScreenshotMode {
 
     static var isActive: Bool { configuration != nil }
 
+    static var weatherPreviewSolarDetail: Bool {
+        isActive && UserDefaults.standard.bool(forKey: "WeatherPreviewSolarDetail")
+    }
+
+    static var weatherPreviewSolarCard: Bool {
+        isActive && UserDefaults.standard.bool(forKey: "WeatherPreviewSolarCard")
+    }
+
     /// Called as early as possible, before any view reads persisted state.
     @MainActor
     static func applyIfNeeded() {
@@ -191,9 +199,20 @@ private extension WeatherKitViewModel {
     func applyWeatherPreview(condition: String) {
         let profile = weatherPreviewProfile(for: condition)
         let conditionKey = "WeatherCondition.\(condition)"
-        let now = Date()
+        let actualNow = Date()
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
+        let now: Date
+        switch ScreenshotMode.weatherPreviewSky {
+        case "day":
+            now = calendar.date(bySettingHour: 13, minute: 27, second: 0, of: actualNow) ?? actualNow
+        case "sunrise":
+            now = calendar.date(bySettingHour: 5, minute: 42, second: 0, of: actualNow) ?? actualNow
+        case "sunset":
+            now = calendar.date(bySettingHour: 19, minute: 48, second: 0, of: actualNow) ?? actualNow
+        default:
+            now = actualNow
+        }
 
         currentTemp = profile.temperature
         currentSymbol = profile.symbol
@@ -231,6 +250,34 @@ private extension WeatherKitViewModel {
         todayMaxTemp = profile.temperature + 5
         sunriseTime = calendar.date(bySettingHour: 6, minute: 24, second: 0, of: now)
         sunsetTime = calendar.date(bySettingHour: 20, minute: 31, second: 0, of: now)
+        let tomorrowSunrise = calendar.date(
+            byAdding: .day,
+            value: 1,
+            to: sunriseTime ?? now
+        )
+        next24SolarEvents = [
+            sunriseTime.map { SolarForecastEvent(kind: .sunrise, date: $0) },
+            sunsetTime.map { SolarForecastEvent(kind: .sunset, date: $0) },
+            tomorrowSunrise.map { SolarForecastEvent(kind: .sunrise, date: $0) }
+        ]
+        .compactMap { $0 }
+        .filter { $0.date >= now && $0.date <= now.addingTimeInterval(24 * 60 * 60) }
+        .sorted { $0.date < $1.date }
+        solarDayForecast = (0..<10).compactMap { offset in
+            guard let day = calendar.date(byAdding: .day, value: offset, to: now),
+                  let sunrise = calendar.date(bySettingHour: 6, minute: 24 + min(offset, 5), second: 0, of: day),
+                  let sunset = calendar.date(bySettingHour: 20, minute: 31 - min(offset * 2, 18), second: 0, of: day) else {
+                return nil
+            }
+            return SolarDayForecast(
+                date: day,
+                firstLight: sunrise.addingTimeInterval(-31 * 60),
+                sunrise: sunrise,
+                solarNoon: Date(timeIntervalSince1970: (sunrise.timeIntervalSince1970 + sunset.timeIntervalSince1970) / 2),
+                sunset: sunset,
+                lastLight: sunset.addingTimeInterval(31 * 60)
+            )
+        }
         todayPrecipitationAmount = profile.precipitationChance * 7.5
         nextHourPrecipitationChance = profile.precipitationChance
         errorMessage = nil

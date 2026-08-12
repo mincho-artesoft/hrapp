@@ -113,6 +113,11 @@ private enum WeatherPrecipitationKind {
     case snow
 }
 
+private enum WeatherTwilightKind {
+    case sunrise
+    case sunset
+}
+
 private struct WeatherSceneDescriptor {
     let kind: WeatherSceneKind
     let isNight: Bool
@@ -328,6 +333,66 @@ private struct WeatherSceneDescriptor {
         }
         let obstruction = max(cloudCoverage, atmosphericObstruction)
         return pow(max(0, 1 - obstruction), 1.35)
+    }
+
+    var twilightKind: WeatherTwilightKind? {
+        let sunriseStrength = transitionStrength(
+            around: sunrise,
+            before: 90 * 60,
+            after: 75 * 60
+        )
+        let sunsetStrength = transitionStrength(
+            around: sunset,
+            before: 105 * 60,
+            after: 80 * 60
+        )
+        guard max(sunriseStrength, sunsetStrength) > 0.001 else { return nil }
+        return sunriseStrength >= sunsetStrength ? .sunrise : .sunset
+    }
+
+    /// Warm light is strongest at the actual rise/set time and eases to zero
+    /// before and after it. Dense cloud cover scatters and desaturates that
+    /// light, but never removes it entirely.
+    var twilightStrength: Double {
+        let raw = max(
+            transitionStrength(around: sunrise, before: 90 * 60, after: 75 * 60),
+            transitionStrength(around: sunset, before: 105 * 60, after: 80 * 60)
+        )
+        return raw * (1 - cloudCoverage * 0.52)
+    }
+
+    var cloudTwilightTint: Color? {
+        guard let twilightKind, twilightStrength > 0.001 else { return nil }
+        let target: (red: Double, green: Double, blue: Double)
+        switch twilightKind {
+        case .sunrise:
+            target = (1.00, 0.58, 0.48)
+        case .sunset:
+            target = (1.00, 0.39, 0.20)
+        }
+        let amount = min(0.78, twilightStrength * 0.84)
+        return Color(
+            red: 1 - (1 - target.red) * amount,
+            green: 1 - (1 - target.green) * amount,
+            blue: 1 - (1 - target.blue) * amount
+        )
+    }
+
+    private func transitionStrength(
+        around eventDate: Date?,
+        before: TimeInterval,
+        after: TimeInterval
+    ) -> Double {
+        guard let eventDate else { return 0 }
+        let delta = observationDate.timeIntervalSince(eventDate)
+        let linear: Double
+        if delta < 0 {
+            linear = 1 + delta / before
+        } else {
+            linear = 1 - delta / after
+        }
+        let clamped = min(max(linear, 0), 1)
+        return clamped * clamped * (3 - 2 * clamped)
     }
 
     var sunProgress: Double? {
@@ -567,6 +632,64 @@ private enum WeatherSceneRenderer {
                 endPoint: CGPoint(x: size.width * 0.85, y: size.height)
             )
         )
+
+        drawTwilightSky(scene: scene, in: &context, size: size)
+    }
+
+    private static func drawTwilightSky(
+        scene: WeatherSceneDescriptor,
+        in context: inout GraphicsContext,
+        size: CGSize
+    ) {
+        guard let kind = scene.twilightKind, scene.twilightStrength > 0.001 else { return }
+        let strength = scene.twilightStrength
+        let colors: [Gradient.Stop]
+        let horizonColor: Color
+        let horizonX: CGFloat
+
+        switch kind {
+        case .sunrise:
+            colors = [
+                .init(color: Color(red: 0.23, green: 0.16, blue: 0.42).opacity(0.34 * strength), location: 0),
+                .init(color: Color(red: 0.82, green: 0.32, blue: 0.43).opacity(0.54 * strength), location: 0.46),
+                .init(color: Color(red: 1.00, green: 0.68, blue: 0.28).opacity(0.78 * strength), location: 0.78),
+                .init(color: Color(red: 1.00, green: 0.84, blue: 0.54).opacity(0.26 * strength), location: 1)
+            ]
+            horizonColor = Color(red: 1.00, green: 0.63, blue: 0.25)
+            horizonX = size.width * 0.14
+        case .sunset:
+            colors = [
+                .init(color: Color(red: 0.20, green: 0.10, blue: 0.34).opacity(0.38 * strength), location: 0),
+                .init(color: Color(red: 0.70, green: 0.16, blue: 0.28).opacity(0.58 * strength), location: 0.45),
+                .init(color: Color(red: 1.00, green: 0.37, blue: 0.10).opacity(0.82 * strength), location: 0.78),
+                .init(color: Color(red: 1.00, green: 0.68, blue: 0.25).opacity(0.28 * strength), location: 1)
+            ]
+            horizonColor = Color(red: 1.00, green: 0.31, blue: 0.08)
+            horizonX = size.width * 0.86
+        }
+
+        let rect = CGRect(origin: .zero, size: size)
+        context.fill(
+            Path(rect),
+            with: .linearGradient(
+                Gradient(stops: colors),
+                startPoint: CGPoint(x: size.width * 0.5, y: 0),
+                endPoint: CGPoint(x: size.width * 0.5, y: size.height * 0.82)
+            )
+        )
+        context.fill(
+            Path(rect),
+            with: .radialGradient(
+                Gradient(colors: [
+                    horizonColor.opacity(0.72 * strength),
+                    horizonColor.opacity(0.18 * strength),
+                    .clear
+                ]),
+                center: CGPoint(x: horizonX, y: size.height * 0.35),
+                startRadius: 0,
+                endRadius: max(size.width, size.height) * 0.72
+            )
+        )
     }
 
     private static func drawStars(
@@ -727,7 +850,7 @@ private enum WeatherSceneRenderer {
                 drawFallbackCloud(
                     center: CGPoint(x: placement.rect.midX, y: placement.rect.midY),
                     scale: placement.rect.width / 180,
-                    color: .white.opacity(0.58),
+                    color: (scene.cloudTwilightTint ?? .white).opacity(0.58),
                     in: &context
                 )
                 continue
@@ -757,6 +880,7 @@ private enum WeatherSceneRenderer {
                 in: placement.rect,
                 opacity: placement.opacity * (1 - crossfade),
                 blur: placement.blur,
+                tint: scene.cloudTwilightTint,
                 context: &context
             )
             drawCloudSprite(
@@ -764,6 +888,7 @@ private enum WeatherSceneRenderer {
                 in: placement.rect,
                 opacity: placement.opacity * crossfade,
                 blur: placement.blur,
+                tint: scene.cloudTwilightTint,
                 context: &context
             )
         }
@@ -927,7 +1052,10 @@ private enum WeatherSceneRenderer {
                 layer.addFilter(.blur(radius: 34 + CGFloat(index) * 7))
                 layer.fill(
                     Path(ellipseIn: CGRect(x: x, y: y, width: width, height: size.height * 0.15)),
-                    with: .color(Color.white.opacity((0.045 + Double(index) * 0.012) * scene.cloudCoverage))
+                    with: .color(
+                        (scene.cloudTwilightTint ?? .white)
+                            .opacity((0.045 + Double(index) * 0.012) * scene.cloudCoverage)
+                    )
                 )
             }
         }
@@ -938,6 +1066,7 @@ private enum WeatherSceneRenderer {
         in rect: CGRect,
         opacity: Double,
         blur: Double,
+        tint: Color?,
         context: inout GraphicsContext
     ) {
         guard opacity > 0.001 else { return }
@@ -945,6 +1074,9 @@ private enum WeatherSceneRenderer {
             layer.opacity = opacity
             if blur > 0.05 {
                 layer.addFilter(.blur(radius: blur))
+            }
+            if let tint {
+                layer.addFilter(.colorMultiply(tint))
             }
             layer.draw(layer.resolve(image), in: rect)
         }

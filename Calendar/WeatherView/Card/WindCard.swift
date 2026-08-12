@@ -10,8 +10,6 @@ struct WindCard: View {
     /// Абревиатура на посоката („N“, „NE“, „E“ и т.н.)
     let directionAbbreviation: String
 
-    @Environment(\.colorScheme) private var colorScheme
-
     // Маркирано като ViewBuilder, за да може да го ползва SwiftUI
     @ViewBuilder
     private func windCompass() -> some View {
@@ -74,12 +72,12 @@ struct WindCard: View {
             .offset(y: -compassSize * 0.15)
             .rotationEffect((direction ?? .zero) + .degrees(180))
 
-            // Централен полупрозрачен кръг
+            // Плътен централен кръг: цветът остава еднакъв върху всеки
+            // метеорологичен фон и при всяка системна тема.
             Circle()
-                .fill(.ultraThinMaterial)
+                .fill(Color(red: 0.20, green: 0.25, blue: 0.30))
                 .frame(width: coverCircleRadius * 1.3,
                        height: coverCircleRadius * 1.3)
-                .brightness(colorScheme == .dark ? 0.01 : 0.1)
 
             // Текстова индикация на скоростта
             VStack(spacing: -6) {

@@ -214,6 +214,12 @@
 "Sunset" = "Pôr do sol";
 
 
+"Sunrise and Sunset" = "Nascer e pôr do sol";
+"First Light" = "Primeira luz";
+"Solar Noon" = "Meio-dia solar";
+"Last Light" = "Última luz";
+"Total Daylight" = "Luz do dia total";
+
 /* UVIndexCard */
 "UV INDEX" = "ÍNDICE UV";
 "Low" = "Baixo";

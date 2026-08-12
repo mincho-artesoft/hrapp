@@ -214,6 +214,12 @@
 "Sunset" = "日落";
 
 
+"Sunrise and Sunset" = "日出與日落";
+"First Light" = "晨光初現";
+"Solar Noon" = "太陽正午";
+"Last Light" = "暮光消失";
+"Total Daylight" = "日照總時長";
+
 /* UVIndexCard */
 "UV INDEX" = "紫外線指數";
 "Low" = "低";

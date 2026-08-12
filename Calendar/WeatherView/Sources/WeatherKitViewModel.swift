@@ -51,6 +51,8 @@ class WeatherKitViewModel: ObservableObject {
     @Published var nextHourPrecipitationChance: Double?
 
     @Published var next24HourlyForecast: [HourlyForecastItem] = []
+    @Published var next24SolarEvents: [SolarForecastEvent] = []
+    @Published var solarDayForecast: [SolarDayForecast] = []
     @Published var hourlyForecast: [HourlyForecastItem] = []
     @Published var dailyForecast: [DayForecastItem] = []
 
@@ -97,6 +99,7 @@ class WeatherKitViewModel: ObservableObject {
                 updateCurrentWeather(current)
                 updateHourlyForecast(hourlyData.forecast)
                 updateDailyForecast(dailyData.forecast)
+                updateSolarEvents(dailyData.forecast, relativeTo: current.date)
                 updateCurrentPrecipitationType(hourlyData.forecast, relativeTo: current.date)
                 updateWeatherAlerts(alerts)
 
@@ -171,6 +174,8 @@ class WeatherKitViewModel: ObservableObject {
 
         hourlyForecast = []
         next24HourlyForecast = []
+        next24SolarEvents = []
+        solarDayForecast = []
         dailyForecast = []
 
         currentPrecipitationAmount = nil
@@ -383,6 +388,36 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     // MARK: - Daily Forecast Conversion
+    private func updateSolarEvents(_ days: [DayWeather], relativeTo observationDate: Date) {
+        let start = max(observationDate, Date())
+        let end = start.addingTimeInterval(24 * 60 * 60)
+
+        solarDayForecast = days.prefix(10).map { day in
+            SolarDayForecast(
+                date: day.date,
+                firstLight: day.sun.civilDawn,
+                sunrise: day.sun.sunrise,
+                solarNoon: day.sun.solarNoon,
+                sunset: day.sun.sunset,
+                lastLight: day.sun.civilDusk
+            )
+        }
+
+        next24SolarEvents = days
+            .flatMap { day -> [SolarForecastEvent] in
+                var events: [SolarForecastEvent] = []
+                if let sunrise = day.sun.sunrise {
+                    events.append(.init(kind: .sunrise, date: sunrise))
+                }
+                if let sunset = day.sun.sunset {
+                    events.append(.init(kind: .sunset, date: sunset))
+                }
+                return events
+            }
+            .filter { $0.date >= start && $0.date <= end }
+            .sorted { $0.date < $1.date }
+    }
+
     private func updateDailyForecast(_ days: [DayWeather]) {
         // 1. Избиране на базови единици
         let tempUnit: UnitTemperature = (GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol)

@@ -213,6 +213,12 @@
 "Sunrise" = "Восход";
 "Sunset" = "Закат";
 
+"Sunrise and Sunset" = "Восход и закат";
+"First Light" = "Первый свет";
+"Solar Noon" = "Солнечный полдень";
+"Last Light" = "Последний свет";
+"Total Daylight" = "Общая продолжительность дня";
+
 /* UVIndexCard */
 "UV INDEX" = "УФ-индекс";
 "Low" = "Низкий";

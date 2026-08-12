@@ -214,6 +214,12 @@
 "Sunset" = "Zonsondergang";
 
 
+"Sunrise and Sunset" = "Zonsopkomst en zonsondergang";
+"First Light" = "Eerste licht";
+"Solar Noon" = "Zonnemiddag";
+"Last Light" = "Laatste licht";
+"Total Daylight" = "Totale daglichtduur";
+
 /* UVIndexCard */
 "UV INDEX" = "UV-INDEX";
 "Low" = "Laag";
