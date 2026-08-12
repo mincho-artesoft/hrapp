@@ -34,7 +34,7 @@ final class SavedWeatherRegionsStore: ObservableObject {
     @Published private(set) var selectedRegionID: UUID?
 
     private let regionsKey = "SavedWeatherRegions.v1"
-    private let selectedRegionKey = "SelectedSavedWeatherRegionID.v1"
+    private let legacySelectedRegionKey = "SelectedSavedWeatherRegionID.v1"
 
     private init() {
         load()
@@ -78,11 +78,6 @@ final class SavedWeatherRegionsStore: ObservableObject {
 
     func select(_ id: UUID?) {
         selectedRegionID = id
-        if let id {
-            UserDefaults.standard.set(id.uuidString, forKey: selectedRegionKey)
-        } else {
-            UserDefaults.standard.removeObject(forKey: selectedRegionKey)
-        }
     }
 
     func remove(_ id: UUID) {
@@ -135,11 +130,11 @@ final class SavedWeatherRegionsStore: ObservableObject {
            let decoded = try? JSONDecoder().decode([SavedWeatherRegion].self, from: data) {
             regions = decoded
         }
-        if let rawID = UserDefaults.standard.string(forKey: selectedRegionKey),
-           let id = UUID(uuidString: rawID),
-           regions.contains(where: { $0.id == id }) {
-            selectedRegionID = id
-        }
+        // The selected saved region is intentionally session-only. A fresh
+        // launch always starts at the device's real GPS location, while saved
+        // regions and their custom order remain persisted.
+        selectedRegionID = nil
+        UserDefaults.standard.removeObject(forKey: legacySelectedRegionKey)
     }
 
     private func persist() {

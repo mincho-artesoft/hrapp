@@ -70,7 +70,11 @@ final class EventNotificationManager: NSObject, ObservableObject {
     }
 
     func configure() {
-        UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as? UNUserNotificationCenterDelegate
+        // AppDelegate installs the notification-center delegate during app
+        // launch. Do not replace it here: SwiftUI can expose its internal
+        // UIApplication delegate proxy, which does not conform to
+        // UNUserNotificationCenterDelegate and would silently set this to nil.
+        print("🌦️ [WeatherAlerts] Keeping notification-center delegate installed by AppDelegate")
         refreshAuthorizationStatus()
     }
 
@@ -86,6 +90,12 @@ final class EventNotificationManager: NSObject, ObservableObject {
                     self.requestAuthorization()
                 } else {
                     self.rescheduleUpcomingEventNotifications()
+                    Task {
+                        await WeatherAlertNotificationManager.shared.checkForNewGPSAlerts(
+                            force: true,
+                            reason: "notification-settings-loaded"
+                        )
+                    }
                 }
             }
         }
@@ -167,6 +177,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
 
     private func requestAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
+            print("🌦️ [WeatherAlerts] Notification authorization request completed: granted=\(granted), error=\(error?.localizedDescription ?? "none")")
             if let error {
                 print("Notification authorization error:", error.localizedDescription)
             }
@@ -175,6 +186,14 @@ final class EventNotificationManager: NSObject, ObservableObject {
                 guard let self else { return }
                 self.refreshAuthorizationStatus()
                 self.rescheduleUpcomingEventNotifications()
+                if granted {
+                    Task {
+                        await WeatherAlertNotificationManager.shared.checkForNewGPSAlerts(
+                            force: true,
+                            reason: "notification-permission-granted"
+                        )
+                    }
+                }
             }
         }
     }

@@ -372,7 +372,9 @@ struct WeatherKitView: View {
                !initialLoadComplete {
                 vm.fetchWeatherForCoords(
                     latitude: loc.coordinate.latitude,
-                    longitude: loc.coordinate.longitude
+                    longitude: loc.coordinate.longitude,
+                    isGPSLocation: true,
+                    gpsDisplayName: locationManager.currentCityName
                 )
                 initialLoadComplete = true
             }
@@ -386,7 +388,9 @@ struct WeatherKitView: View {
                 } else if !initialLoadComplete && !showSearchBar && geocodedCityName.isEmpty {
                     vm.fetchWeatherForCoords(
                         latitude: locationManager.currentLocation!.coordinate.latitude,
-                        longitude: locationManager.currentLocation!.coordinate.longitude
+                        longitude: locationManager.currentLocation!.coordinate.longitude,
+                        isGPSLocation: true,
+                        gpsDisplayName: locationManager.currentCityName
                     )
                     initialLoadComplete = true
                 }
@@ -394,6 +398,9 @@ struct WeatherKitView: View {
                 vm.errorMessage = NSLocalizedString("Location access denied. Search for a city or grant access in Settings.", comment: "Location permission error")
                 initialLoadComplete = true
             }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .openWeatherNotification)) { _ in
+            selectCurrentLocation()
         }
     }
     
@@ -1096,7 +1103,9 @@ struct WeatherKitView: View {
         }
         vm.fetchWeatherForCoords(
             latitude: location.coordinate.latitude,
-            longitude: location.coordinate.longitude
+            longitude: location.coordinate.longitude,
+            isGPSLocation: true,
+            gpsDisplayName: locationManager.currentCityName
         )
         initialLoadComplete = true
     }
@@ -1479,7 +1488,12 @@ struct WeatherKitView: View {
            let region = savedRegions.regions.first(where: { $0.id == selectedID }) {
             selectSavedRegion(region)
         } else if let loc = locationManager.currentLocation {
-            vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
+            vm.fetchWeatherForCoords(
+                latitude: loc.coordinate.latitude,
+                longitude: loc.coordinate.longitude,
+                isGPSLocation: true,
+                gpsDisplayName: locationManager.currentCityName
+            )
             initialLoadComplete = true
         } else {
             locationManager.manager.requestLocation()

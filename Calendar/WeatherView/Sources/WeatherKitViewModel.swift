@@ -67,7 +67,12 @@ class WeatherKitViewModel: ObservableObject {
         self.locationTimeZone = tz
     }
 
-    func fetchWeatherForCoords(latitude: Double, longitude: Double) {
+    func fetchWeatherForCoords(
+        latitude: Double,
+        longitude: Double,
+        isGPSLocation: Bool = false,
+        gpsDisplayName: String? = nil
+    ) {
         Task {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
@@ -76,11 +81,32 @@ class WeatherKitViewModel: ObservableObject {
                     including: .current, .hourly, .daily, .alerts
                 )
 
+                print(
+                    String(
+                        format: "🌦️ [WeatherAlerts] Forecast response: %.5f,%.5f gps=%@ alerts=%d",
+                        latitude,
+                        longitude,
+                        isGPSLocation ? "true" : "false",
+                        alerts?.count ?? 0
+                    )
+                )
+                if !isGPSLocation, !(alerts?.isEmpty ?? true) {
+                    print("🌦️ [WeatherAlerts] Alerts belong to a searched/saved region; GPS-only notifications intentionally skipped")
+                }
+
                 updateCurrentWeather(current)
                 updateHourlyForecast(hourlyData.forecast)
                 updateDailyForecast(dailyData.forecast)
                 updateCurrentPrecipitationType(hourlyData.forecast, relativeTo: current.date)
                 updateWeatherAlerts(alerts)
+
+                if isGPSLocation {
+                    await WeatherAlertNotificationManager.shared.processFetchedGPSAlerts(
+                        alerts,
+                        location: loc,
+                        displayName: gpsDisplayName
+                    )
+                }
 
                 var calendar = Calendar.current
                 calendar.timeZone = locationTimeZone

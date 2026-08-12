@@ -386,6 +386,12 @@ struct RootView: View {
             for: .openEventNotificationDay)) { notification in
                 openDayFromEventNotification(notification)
             }
+        .onReceive(NotificationCenter.default.publisher(
+            for: .openWeatherNotification)) { _ in
+                menuState = .collapsed
+                selectedTab = 6
+                UserDefaults.standard.set(6, forKey: "selectedTabRoot")
+            }
         .onAppear {
             Task {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()

@@ -99,6 +99,12 @@ struct CalendarApp: App {
                 setupGlobalState()
                 EventNotificationManager.shared.refreshAuthorizationStatus()
                 EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+                Task {
+                    await WeatherAlertNotificationManager.shared.checkForNewGPSAlerts(
+                        force: true,
+                        reason: "app-active"
+                    )
+                }
                 refreshCalendarWidgetIfNeeded()
                 CalendarLiveActivityManager.shared.update()
                 startPeriodicCalendarWidgetRefresh()
@@ -255,6 +261,12 @@ private enum CalendarLiveActivityBackgroundRefreshTask {
 
     static func run() async {
         schedule()
+
+        // Weather warning notifications intentionally use only the last real
+        // GPS coordinate, never a selected or saved weather region.
+        await WeatherAlertNotificationManager.shared.checkForNewGPSAlerts(
+            reason: "background-refresh"
+        )
 
         guard canReadCalendar else { return }
 

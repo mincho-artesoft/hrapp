@@ -31,6 +31,8 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
         if ScreenshotMode.isActive { return }
         #endif
         
+        print("🌦️ [WeatherAlerts] Location authorization changed: \(status.rawValue)")
+
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
@@ -54,7 +56,22 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
         #endif
 
         guard let location = locations.last else { return }
+        print(
+            String(
+                format: "🌦️ [WeatherAlerts] CLLocationManager update: %.5f,%.5f accuracy=%.0fm age=%.0fs",
+                location.coordinate.latitude,
+                location.coordinate.longitude,
+                location.horizontalAccuracy,
+                max(0, Date().timeIntervalSince(location.timestamp))
+            )
+        )
         currentLocation = location
+        Task {
+            await WeatherAlertNotificationManager.shared.recordGPSLocation(location)
+            await WeatherAlertNotificationManager.shared.checkForNewGPSAlerts(
+                reason: "gps-location-update"
+            )
+        }
 
         // Извършваме Reverse Geocoding, за да намерим името на града и часовата зона
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
@@ -71,6 +88,12 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
                 guard let self else { return }
 
                 self.currentCityName = first.locality ?? first.administrativeArea
+                Task {
+                    await WeatherAlertNotificationManager.shared.updateGPSDisplayName(
+                        self.currentCityName,
+                        for: location
+                    )
+                }
 
                 // Само задаваме часовата зона, ако е налична
                 if let tz = first.timeZone {
@@ -81,7 +104,9 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
                 if weatherVM.hourlyForecast.isEmpty && weatherVM.dailyForecast.isEmpty {
                     weatherVM.fetchWeatherForCoords(
                         latitude: location.coordinate.latitude,
-                        longitude: location.coordinate.longitude
+                        longitude: location.coordinate.longitude,
+                        isGPSLocation: true,
+                        gpsDisplayName: self.currentCityName
                     )
                 }
             }
@@ -89,6 +114,6 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location error: \(error)")
+        print("🌦️ [WeatherAlerts] CLLocationManager failed: \(error)")
     }
 }

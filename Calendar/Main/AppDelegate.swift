@@ -10,6 +10,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
+        print("🌦️ [WeatherAlerts] AppDelegate installed as notification-center delegate")
         return true
     }
 
@@ -41,12 +42,32 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
     nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter,
                                             willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
-        [.banner, .list, .sound]
+        if notification.request.identifier.hasPrefix("weather.gps.alert.") {
+            print("🌦️ [WeatherAlerts] iOS is presenting foreground notification id=\(notification.request.identifier)")
+        } else if notification.request.identifier.hasPrefix("calendar.event.alarm.")
+                    || notification.request.content.userInfo["eventIdentifier"] != nil {
+            print("📅 [EventNotifications] iOS is presenting foreground event notification id=\(notification.request.identifier)")
+        }
+        return [.banner, .list, .sound]
     }
 
     nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter,
                                             didReceive response: UNNotificationResponse) async {
         let userInfo = response.notification.request.content.userInfo
+
+        if userInfo["weatherAlertGPS"] as? Bool == true {
+            print("🌦️ [WeatherAlerts] User opened a GPS weather-alert notification")
+            UserDefaults.standard.set(6, forKey: "selectedTabRoot")
+            await MainActor.run {
+                SavedWeatherRegionsStore.shared.select(nil)
+                NotificationCenter.default.post(
+                    name: .openWeatherNotification,
+                    object: nil
+                )
+            }
+            return
+        }
+
         let eventIdentifier = userInfo["eventIdentifier"] as? String
         let calendarIdentifier = userInfo["calendarIdentifier"] as? String
         let eventStartDate = userInfo["eventStartDate"] as? TimeInterval
