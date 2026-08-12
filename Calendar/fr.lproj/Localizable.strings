@@ -751,3 +751,6 @@
 "MoonPhase.waningGibbous" = "Gibbeuse décroissante";
 "MoonPhase.lastQuarter" = "Dernier quartier";
 "MoonPhase.waningCrescent" = "Dernier croissant";
+"Saved Regions" = "Régions enregistrées";
+"Current Location" = "Position actuelle";
+"Reorder Region" = "Réorganiser la région";

@@ -593,13 +593,31 @@ private enum WeatherSceneRenderer {
         in context: inout GraphicsContext,
         size: CGSize
     ) {
-        if let sunProgress = scene.sunProgress {
+        let sun = scene.sunProgress.map {
+            (progress: $0, center: celestialCenter(progress: $0, size: size))
+        }
+        let moon = scene.moonProgress.map {
+            (progress: $0, center: celestialCenter(progress: $0, size: size))
+        }
+
+        // The Sun and Moon use the same visual sky arc. Their real rise/set
+        // data can occasionally map them to almost the same screen point even
+        // though the simplified 2D projection cannot represent their separate
+        // azimuths. Never stack the solar disc behind the lunar photo: it
+        // creates an artificial bright circle in the middle of the Moon.
+        let bodyRadius = min(size.width, size.height) * 0.115
+        let bodiesOverlap: Bool = {
+            guard let sun, let moon else { return false }
+            return hypot(sun.center.x - moon.center.x, sun.center.y - moon.center.y) < bodyRadius * 2.4
+        }()
+
+        if let sun, !(bodiesOverlap && scene.isNight) {
             drawCelestialBody(
                 isNight: false,
                 time: time,
-                center: celestialCenter(progress: sunProgress, size: size),
+                center: sun.center,
                 moonPhase: nil,
-                celestialProgress: sunProgress,
+                celestialProgress: sun.progress,
                 opacity: max(0.015, 1 - scene.cloudCoverage * 1.12),
                 in: &context,
                 size: size,
@@ -607,13 +625,13 @@ private enum WeatherSceneRenderer {
             )
         }
 
-        if let moonProgress = scene.moonProgress {
+        if let moon, !(bodiesOverlap && !scene.isNight) {
             drawCelestialBody(
                 isNight: true,
                 time: time,
-                center: celestialCenter(progress: moonProgress, size: size),
+                center: moon.center,
                 moonPhase: scene.moonPhase ?? "full",
-                celestialProgress: moonProgress,
+                celestialProgress: moon.progress,
                 opacity: (scene.isNight ? 1 : 0.48) * max(0.02, 1 - scene.cloudCoverage * 1.08),
                 in: &context,
                 size: size
@@ -717,7 +735,12 @@ private enum WeatherSceneRenderer {
 
             let lastFrame = max(1, frames.count - 1)
             let cycleLength = Double(lastFrame * 2)
-            let rawProgress = (time * scene.cloudMorphFramesPerSecond * (0.82 + placement.depth * 0.36) + hash(index, 24) * cycleLength)
+            let morphDepthFactor = 0.52 + placement.depth * 0.82
+            let morphVariation = 0.78 + hash(index, 29) * 0.44
+            let rawProgress = (
+                time * scene.cloudMorphFramesPerSecond * morphDepthFactor * morphVariation
+                    + hash(index, 24) * cycleLength
+            )
                 .truncatingRemainder(dividingBy: cycleLength)
             let frameProgress = rawProgress <= Double(lastFrame)
                 ? rawProgress
@@ -836,8 +859,15 @@ private enum WeatherSceneRenderer {
                 * cloudWidth * CGFloat(0.010 + hash(index, 28) * 0.012)
             let centerY = baseY + windLift + organicLift
 
-            let windSpeed = (2.8 + min(scene.effectiveWindKPH, 150) * 0.24)
-                * (0.70 + depth * 0.48)
+            // Perspective is deliberately stronger than a linear multiplier:
+            // high/distant clouds drift slowly while low/near clouds cross the
+            // screen much faster. All layers still share WeatherKit's wind
+            // direction and sustained/gust-weighted base speed.
+            let depthParallax = 0.32 + pow(depth, 1.45) * 1.55
+            let individualVariation = 0.82 + hash(index, 29) * 0.36
+            let windSpeed = (1.2 + min(scene.effectiveWindKPH, 150) * 0.22)
+                * depthParallax
+                * individualVariation
             let travel = Double(size.width + cloudWidth)
             let phase = hash(index, 20) * travel
             let rawX = phase + time * windSpeed * direction.dx
@@ -878,8 +908,16 @@ private enum WeatherSceneRenderer {
         in context: inout GraphicsContext,
         size: CGSize
     ) {
-        let drift = CGFloat(time * (1.5 + scene.effectiveWindKPH * 0.035))
         for index in 0..<3 {
+            let depth = Double(index) / 2
+            let depthParallax = 0.38 + pow(depth, 1.35) * 0.92
+            let layerVariation = 0.84 + hash(index, 30) * 0.32
+            let drift = CGFloat(
+                time
+                    * (0.8 + scene.effectiveWindKPH * 0.038)
+                    * depthParallax
+                    * layerVariation
+            )
             let width = size.width * CGFloat(0.78 + hash(index, 27) * 0.28)
             let xTravel = size.width + width
             let rawX = CGFloat(hash(index, 28)) * xTravel + drift * CGFloat(scene.cloudTravelVector.dx)

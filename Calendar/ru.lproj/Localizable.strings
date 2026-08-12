@@ -751,3 +751,6 @@
 "MoonPhase.waningGibbous" = "Убывающая луна";
 "MoonPhase.lastQuarter" = "3‑я четверть";
 "MoonPhase.waningCrescent" = "Убывающий серп";
+"Saved Regions" = "Сохранённые регионы";
+"Current Location" = "Текущее местоположение";
+"Reorder Region" = "Изменить порядок региона";

@@ -102,6 +102,30 @@ enum ScreenshotMode {
             WeatherKitViewModel.shared.applyWeatherPreview(condition: condition)
         }
 
+        if configuration.screen == .weather,
+           defaults.bool(forKey: "WeatherPreviewSavedRegions") {
+            let store = SavedWeatherRegionsStore.shared
+            let sofia = store.save(
+                name: "София",
+                subtitle: "България",
+                coordinate: .init(latitude: 42.6977, longitude: 23.3219),
+                timeZone: TimeZone(identifier: "Europe/Sofia")
+            )
+            _ = store.save(
+                name: "Пловдив",
+                subtitle: "България",
+                coordinate: .init(latitude: 42.1354, longitude: 24.7453),
+                timeZone: TimeZone(identifier: "Europe/Sofia")
+            )
+            _ = store.save(
+                name: "Лондон",
+                subtitle: "Обединено кралство",
+                coordinate: .init(latitude: 51.5072, longitude: -0.1276),
+                timeZone: TimeZone(identifier: "Europe/London")
+            )
+            store.select(sofia.id)
+        }
+
         // The seeder creates one set of calendars per language, named for that
         // language, so switching the screenshot language is a matter of
         // selecting a different four - no tapping through the drawer, and no
@@ -122,6 +146,9 @@ enum ScreenshotMode {
     static var weatherPreviewMoonPhase: String? { configuration?.weatherPreviewMoonPhase }
     static var weatherPreviewPrecipitation: String? { configuration?.weatherPreviewPrecipitation }
     static var weatherPreviewAlert: String? { configuration?.weatherPreviewAlert }
+    static var weatherPreviewSavedRegionsOpen: Bool {
+        UserDefaults.standard.bool(forKey: "WeatherPreviewSavedRegionsOpen")
+    }
 
     /// Set by the container once its content has been laid out. The harness
     /// waits for this rather than sleeping a fixed number of seconds.

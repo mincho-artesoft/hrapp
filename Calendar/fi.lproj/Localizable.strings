@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "Vähenevä kupera kuu";
 "MoonPhase.lastQuarter" = "Viime neljännes";
 "MoonPhase.waningCrescent" = "Vähenevä sirppi";
+"Saved Regions" = "Tallennetut alueet";
+"Current Location" = "Nykyinen sijainti";
+"Reorder Region" = "Järjestä alue uudelleen";

@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "Avtagande fullmåne";
 "MoonPhase.lastQuarter" = "Sista kvarteret";
 "MoonPhase.waningCrescent" = "Avtagande halvmåne";
+"Saved Regions" = "Sparade regioner";
+"Current Location" = "Nuvarande plats";
+"Reorder Region" = "Ändra ordning på region";

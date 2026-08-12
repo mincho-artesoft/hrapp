@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "ข้างแรม";
 "MoonPhase.lastQuarter" = "แรม 8 ค่ำ";
 "MoonPhase.waningCrescent" = "เสี้ยวข้างแรม";
+"Saved Regions" = "ภูมิภาคที่บันทึกไว้";
+"Current Location" = "ตำแหน่งปัจจุบัน";
+"Reorder Region" = "จัดลำดับภูมิภาคใหม่";

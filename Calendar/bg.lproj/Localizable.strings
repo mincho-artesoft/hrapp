@@ -754,3 +754,7 @@
 "WeatherAlert.Preview.Tornado" = "Предупреждение за торнадо: незабавно потърсете сигурно убежище.";
 "WeatherAlert.Preview.Source" = "Метеорологична служба";
 "WeatherAlert.Preview.Region" = "Районът на прогнозата";
+"Saved Regions" = "Запазени региони";
+"Current Location" = "Текущо местоположение";
+"Reorder Region" = "Пренареждане на регион";
+"WeatherAlert.Preview.HighTemperature" = "Жълт код за високи температури";

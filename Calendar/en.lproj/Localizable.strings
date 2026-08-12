@@ -758,3 +758,7 @@
 "WeatherAlert.Preview.Tornado" = "Tornado warning: seek secure shelter immediately.";
 "WeatherAlert.Preview.Source" = "Weather Service";
 "WeatherAlert.Preview.Region" = "Forecast area";
+"Saved Regions" = "Saved Regions";
+"Current Location" = "Current Location";
+"Reorder Region" = "Reorder Region";
+"WeatherAlert.Preview.HighTemperature" = "Yellow warning for high temperature";

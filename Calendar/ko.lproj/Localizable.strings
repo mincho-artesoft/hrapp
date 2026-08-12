@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "하현망간의 달";
 "MoonPhase.lastQuarter" = "하현";
 "MoonPhase.waningCrescent" = "그믐달";
+"Saved Regions" = "저장된 지역";
+"Current Location" = "현재 위치";
+"Reorder Region" = "지역 순서 변경";

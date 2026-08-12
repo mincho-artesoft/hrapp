@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "寝待月";
 "MoonPhase.lastQuarter" = "下弦";
 "MoonPhase.waningCrescent" = "有明月";
+"Saved Regions" = "保存済みの地域";
+"Current Location" = "現在地";
+"Reorder Region" = "地域を並べ替える";

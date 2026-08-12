@@ -11,14 +11,14 @@ class LocationSearchViewModel: NSObject,
     @Published var queryFragment: String = ""
     @Published var searchResults: [MKLocalSearchCompletion] = []
     @Published var selectedPlacemark: MKPlacemark? = nil
+    @Published var selectedSearchTitle: String? = nil
+    @Published var selectedSearchSubtitle: String? = nil
+    @Published var selectedTimeZone: TimeZone? = nil
     @Published var searchError: Error? = nil
 
     // MARK: – Private Properties
     private let searchCompleter: MKLocalSearchCompleter
     private var cancellable: AnyCancellable?
-
-    // A singleton instance for your weather view model
-    private let weatherKitViewModel = WeatherKitViewModel.shared
 
     // MARK: – Initializer
     override init() {
@@ -41,7 +41,6 @@ class LocationSearchViewModel: NSObject,
                 guard let self = self else { return }
                 if text.isEmpty {
                     self.searchResults = []
-                    self.selectedPlacemark = nil
                     self.searchError = nil
                 } else {
                     self.searchCompleter.queryFragment = text
@@ -78,19 +77,17 @@ class LocationSearchViewModel: NSObject,
                 throw LocationError.noDetailsFound
             }
 
-            self.selectedPlacemark = mapItem.placemark
-            let coordinate = mapItem.placemark.coordinate
+            self.selectedSearchTitle = completion.title
+            self.selectedSearchSubtitle = completion.subtitle
             
             // Attempt to get the time zone directly from the placemark.
             // If it's not available, fall back to reverse geocoding.
             let timeZone = try await findTimeZone(for: mapItem.placemark)
-            weatherKitViewModel.setTimeZone(timeZone)
-            
-            // Fetch weather for the selected location.
-            weatherKitViewModel.fetchWeatherForCoords(
-                latitude: coordinate.latitude,
-                longitude: coordinate.longitude
-            )
+            WeatherKitViewModel.shared.setTimeZone(timeZone)
+            self.selectedTimeZone = timeZone
+            // Publish the placemark only after all metadata is ready; the
+            // Weather view reacts to this value by saving and loading it.
+            self.selectedPlacemark = mapItem.placemark
 
             // Reset UI state after selection
             self.queryFragment = ""

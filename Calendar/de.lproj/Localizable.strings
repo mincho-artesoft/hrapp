@@ -752,3 +752,6 @@
 "MoonPhase.waningGibbous" = "Abnehmender Mond";
 "MoonPhase.lastQuarter" = "Letztes Viertel";
 "MoonPhase.waningCrescent" = "Abnehmende Sichel";
+"Saved Regions" = "Gespeicherte Regionen";
+"Current Location" = "Aktueller Standort";
+"Reorder Region" = "Region neu anordnen";

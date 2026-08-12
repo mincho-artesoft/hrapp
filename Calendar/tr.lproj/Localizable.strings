@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "Küçülen Şişkin Ay";
 "MoonPhase.lastQuarter" = "Son Dördün";
 "MoonPhase.waningCrescent" = "Küçülen Hilal";
+"Saved Regions" = "Kaydedilen bölgeler";
+"Current Location" = "Mevcut konum";
+"Reorder Region" = "Bölgeyi yeniden sırala";

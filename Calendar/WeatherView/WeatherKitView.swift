@@ -5,6 +5,17 @@ import CoreLocation
 import MapKit
 @preconcurrency import WeatherKit
 
+private struct SavedRegionWeatherSummary: Equatable {
+    let temperature: Double
+    let lowTemperature: Double
+    let highTemperature: Double
+    let condition: String
+    let conditionKey: String
+    let symbolName: String
+    let alertSummary: String?
+    let isDaylight: Bool
+}
+
 struct WeatherKitView: View {
     
     @State private var shouldShowAds = true
@@ -16,6 +27,7 @@ struct WeatherKitView: View {
     // MARK: - State Objects
     @StateObject private var locationManager = LocationManager()
     @StateObject private var vm = WeatherKitViewModel.shared
+    @StateObject private var savedRegions = SavedWeatherRegionsStore.shared
     let viewModel = CalendarViewModel.shared
 
     @StateObject private var locationSearchVM = LocationSearchViewModel()
@@ -27,6 +39,14 @@ struct WeatherKitView: View {
     @State private var geocodedCityName = ""
     @State private var selectedDay: DayForecastItem? = nil
     @State private var initialLoadComplete = false
+    @State private var showSavedRegions = false
+    @State private var didRestoreSavedRegion = false
+    @State private var savedRegionWeather: [UUID: SavedRegionWeatherSummary] = [:]
+    @State private var currentLocationWeather: SavedRegionWeatherSummary?
+    @State private var finishedLoadingRegionWeatherIDs: Set<UUID> = []
+    @State private var finishedLoadingCurrentLocationWeather = false
+    @State private var savedRegionInsertionIndex: Int?
+    @State private var isShowingUnsavedSearchLocation = false
 
     // Sheets за различни детайли
     @State private var showFeelsLikeDetail = false
@@ -41,6 +61,9 @@ struct WeatherKitView: View {
     init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange!
+        #if DEBUG
+        _showSavedRegions = State(initialValue: ScreenshotMode.weatherPreviewSavedRegionsOpen)
+        #endif
     }
 
     var body: some View {
@@ -115,7 +138,24 @@ struct WeatherKitView: View {
                 .zIndex(10) // overlay да е над останалото съдържание
         }
         .navigationBarHidden(true)
-        .preferredColorScheme(weatherBackgroundUsesDarkInterface ? .dark : nil)
+        .onAppear {
+            guard !didRestoreSavedRegion else { return }
+            didRestoreSavedRegion = true
+            #if DEBUG
+            if ScreenshotMode.weatherPreviewSavedRegionsOpen {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                    openSavedRegions()
+                }
+                return
+            }
+            #endif
+            guard !weatherPreviewIsActive,
+                  let selectedID = savedRegions.selectedRegionID,
+                  let region = savedRegions.regions.first(where: { $0.id == selectedID }) else {
+                return
+            }
+            selectSavedRegion(region)
+        }
         .safeAreaInset(edge: .top) {
             VStack(spacing: 0) {
                 weatherTopBar
@@ -129,6 +169,14 @@ struct WeatherKitView: View {
                 }
             }
         }
+        .overlay {
+            if showSavedRegions {
+                savedRegionsScreen
+                    .transition(.move(edge: .leading))
+                    .zIndex(100)
+            }
+        }
+        .animation(.easeInOut(duration: 0.34), value: showSavedRegions)
 
         // Sheet-ове за детайлен изглед при избор на ден или тап върху определени данни
         .sheet(item: $selectedDay) { day in
@@ -329,10 +377,6 @@ struct WeatherKitView: View {
                 initialLoadComplete = true
             }
         }
-        .onReceive(locationSearchVM.$selectedPlacemark) { placemark in
-            guard let placemark = placemark else { return }
-            handleSelectedLocation(placemark: placemark)
-        }
         .onReceive(locationManager.$authorizationStatus) { status in
             if weatherPreviewIsActive {
                 return
@@ -416,6 +460,20 @@ struct WeatherKitView: View {
 
     private var weatherTopBar: some View {
         HStack(spacing: 9) {
+            if !showSearchBar {
+                Button {
+                    openSavedRegions()
+                } label: {
+                    Image(systemName: "list.bullet")
+                        .font(.system(size: 22, weight: .medium))
+                }
+                .frame(width: 36, height: 36)
+                .contentShape(Rectangle())
+                .buttonStyle(.plain)
+                .foregroundColor(colorScheme == .light ? .black : .white)
+                .accessibilityLabel(NSLocalizedString("Saved Regions", comment: "Saved weather regions"))
+            }
+
             Spacer()
             if !showSearchBar {
                 Button {
@@ -453,15 +511,606 @@ struct WeatherKitView: View {
         .contentShape(Rectangle())
         .zIndex(20)
     }
+
+    private var savedRegionsScreen: some View {
+        NavigationStack {
+            ZStack {
+                LinearGradient(
+                    colors: savedRegionsBackgroundColors,
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                    .ignoresSafeArea()
+
+                VStack(spacing: 12) {
+                    savedRegionsSearchField
+
+                    if !locationSearchVM.queryFragment.isEmpty {
+                        savedRegionsSearchResults
+                    } else {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            VStack(spacing: 0) {
+                                currentLocationCard
+
+                                savedRegionDropPlaceholder(at: 0)
+
+                                ForEach(Array(savedRegions.regions.enumerated()), id: \.element.id) { index, region in
+                                    savedRegionListCard(
+                                        region,
+                                        isSelected: !isShowingUnsavedSearchLocation
+                                            && savedRegions.selectedRegionID == region.id
+                                    )
+                                    savedRegionDropPlaceholder(at: index + 1)
+                                }
+                            }
+                            .padding(.bottom, 24)
+                        }
+                        .refreshable {
+                            await loadSavedRegionsWeather()
+                        }
+                    }
+                }
+                .padding(.horizontal, 14)
+                .padding(.top, 8)
+            }
+            .toolbarBackground(.hidden, for: .navigationBar)
+            .toolbarColorScheme(colorScheme, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(NSLocalizedString("Done", comment: "Done button")) {
+                        closeSavedRegions()
+                    }
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(colorScheme == .dark ? Color.white : Color.accentColor)
+                }
+            }
+        }
+        .task {
+            await loadSavedRegionsWeather()
+        }
+        .background(savedRegionsBaseColor.ignoresSafeArea())
+        .presentationBackground(savedRegionsBaseColor)
+    }
+
+    private var savedRegionsBackgroundColors: [Color] {
+        if colorScheme == .dark {
+            return [
+                Color(red: 0.04, green: 0.12, blue: 0.22),
+                Color(red: 0.04, green: 0.25, blue: 0.42),
+                Color(red: 0.03, green: 0.13, blue: 0.24)
+            ]
+        }
+        return [
+            Color(red: 0.88, green: 0.95, blue: 1.00),
+            Color(red: 0.70, green: 0.87, blue: 0.98),
+            Color(red: 0.92, green: 0.96, blue: 0.99)
+        ]
+    }
+
+    private var savedRegionsBaseColor: Color {
+        colorScheme == .dark
+            ? Color(red: 0.04, green: 0.12, blue: 0.22)
+            : Color(red: 0.88, green: 0.95, blue: 1.00)
+    }
+
+    private var currentLocationCard: some View {
+        savedRegionWeatherCard(
+            name: locationManager.currentCityName
+                ?? NSLocalizedString("Current Location", comment: "Current weather location"),
+            subtitle: regionLocalTime(timeZone: .current),
+            summary: currentLocationWeather,
+            isLoading: !finishedLoadingCurrentLocationWeather,
+            isSelected: !isShowingUnsavedSearchLocation && savedRegions.selectedRegionID == nil,
+            isCurrentLocation: true,
+            reorderToken: nil,
+            isDropTarget: false
+        ) {
+            selectCurrentLocation()
+        }
+    }
+
+    @ViewBuilder
+    private func savedRegionListCard(
+        _ region: SavedWeatherRegion,
+        isSelected: Bool
+    ) -> some View {
+        let card = savedRegionWeatherCard(
+            name: region.name,
+            subtitle: regionLocalTime(for: region),
+            summary: savedRegionWeather[region.id],
+            isLoading: !finishedLoadingRegionWeatherIDs.contains(region.id),
+            isSelected: isSelected,
+            isCurrentLocation: false,
+            reorderToken: region.id.uuidString,
+            isDropTarget: false
+        ) {
+            selectSavedRegion(region)
+        }
+
+        card.contextMenu {
+            Button(role: .destructive) {
+                let wasSelected = savedRegions.selectedRegionID == region.id
+                savedRegions.remove(region.id)
+                savedRegionWeather[region.id] = nil
+                finishedLoadingRegionWeatherIDs.remove(region.id)
+                if wasSelected {
+                    selectCurrentLocation()
+                }
+            } label: {
+                Label(NSLocalizedString("Delete", comment: "Delete action"), systemImage: "trash")
+            }
+        }
+    }
+
+    private func savedRegionDropPlaceholder(at insertionIndex: Int) -> some View {
+        let isActive = savedRegionInsertionIndex == insertionIndex
+
+        return ZStack {
+            RoundedRectangle(cornerRadius: 27, style: .continuous)
+                .fill(
+                    colorScheme == .dark
+                        ? Color.white.opacity(0.08)
+                        : Color.accentColor.opacity(0.08)
+                )
+                .overlay {
+                    RoundedRectangle(cornerRadius: 27, style: .continuous)
+                        .strokeBorder(
+                            colorScheme == .dark
+                                ? Color.white.opacity(0.72)
+                                : Color.accentColor.opacity(0.70),
+                            style: StrokeStyle(lineWidth: 2, dash: [10, 8])
+                        )
+                }
+                .overlay {
+                    Image(systemName: "arrow.down.to.line.compact")
+                        .font(.system(size: 28, weight: .semibold))
+                        .foregroundStyle(
+                            colorScheme == .dark
+                                ? Color.white.opacity(0.86)
+                                : Color.accentColor.opacity(0.88)
+                        )
+                }
+                .frame(height: 170)
+                .opacity(isActive ? 1 : 0)
+        }
+        .frame(maxWidth: .infinity)
+        // The active row reserves the full card height plus the same 14-point
+        // separation on both sides. Clipping keeps the animated placeholder
+        // inside that reserved row instead of drawing over its neighbours.
+        .frame(height: isActive ? 198 : 14)
+        .clipped()
+        .background(Color.primary.opacity(0.001))
+        .contentShape(Rectangle())
+        .dropDestination(for: String.self) { items, _ in
+            guard let value = items.first,
+                  let draggedID = UUID(uuidString: value) else {
+                return false
+            }
+            withAnimation(.snappy(duration: 0.28)) {
+                savedRegions.move(draggedID, toInsertionIndex: insertionIndex)
+                savedRegionInsertionIndex = nil
+            }
+            return true
+        } isTargeted: { isTargeted in
+            withAnimation(.snappy(duration: 0.22)) {
+                if isTargeted {
+                    savedRegionInsertionIndex = insertionIndex
+                } else if savedRegionInsertionIndex == insertionIndex {
+                    savedRegionInsertionIndex = nil
+                }
+            }
+        }
+        .animation(.snappy(duration: 0.22), value: isActive)
+    }
+
+    private var savedRegionsSearchField: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(Color.primary.opacity(0.78))
+            TextField(
+                "",
+                text: $locationSearchVM.queryFragment,
+                prompt: Text(NSLocalizedString("Search for a city…", comment: "City search placeholder"))
+                    .foregroundStyle(Color.secondary)
+            )
+            .textInputAutocapitalization(.never)
+            .autocorrectionDisabled(true)
+            .foregroundStyle(Color.primary)
+
+            if !locationSearchVM.queryFragment.isEmpty {
+                Button {
+                    locationSearchVM.queryFragment = ""
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(Color.secondary)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 14)
+        .frame(height: 48)
+        .background(savedRegionsSearchBackground, in: Capsule())
+        .overlay {
+            Capsule()
+                .stroke(Color.primary.opacity(colorScheme == .dark ? 0.10 : 0.08), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(colorScheme == .dark ? 0.12 : 0.08), radius: 8, y: 3)
+    }
+
+    private var savedRegionsSearchBackground: Color {
+        colorScheme == .dark
+            ? Color.black.opacity(0.32)
+            : Color(uiColor: .secondarySystemBackground).opacity(0.94)
+    }
+
+    private var savedRegionsSearchResults: some View {
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(locationSearchVM.searchResults, id: \.self) { completion in
+                    Button {
+                        Task {
+                            await locationSearchVM.selectCompletion(completion)
+                            if let placemark = locationSearchVM.selectedPlacemark {
+                                handleSelectedLocation(placemark: placemark, saveRegion: true)
+                                locationSearchVM.queryFragment = ""
+                                await loadSavedRegionsWeather()
+                            }
+                        }
+                    } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "mappin.circle.fill")
+                                .foregroundStyle(Color.accentColor.opacity(0.86))
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(completion.title)
+                                    .foregroundStyle(Color.primary)
+                                if !completion.subtitle.isEmpty {
+                                    Text(completion.subtitle)
+                                        .font(.caption)
+                                        .foregroundStyle(Color.secondary)
+                                }
+                            }
+                            Spacer()
+                            Image(systemName: "plus.circle")
+                                .foregroundStyle(Color.accentColor.opacity(0.84))
+                        }
+                        .padding(.horizontal, 14)
+                        .frame(minHeight: 58)
+                    }
+                    .buttonStyle(.plain)
+                    if completion != locationSearchVM.searchResults.last {
+                        Divider().overlay(Color.primary.opacity(0.10))
+                    }
+                }
+            }
+        }
+        .background(
+            colorScheme == .dark
+                ? Color.black.opacity(0.26)
+                : Color(uiColor: .secondarySystemBackground).opacity(0.96),
+            in: RoundedRectangle(cornerRadius: 18, style: .continuous)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+        }
+    }
+
+    @ViewBuilder
+    private func savedRegionWeatherCard(
+        name: String,
+        subtitle: String,
+        summary: SavedRegionWeatherSummary?,
+        isLoading: Bool,
+        isSelected: Bool,
+        isCurrentLocation: Bool,
+        reorderToken: String?,
+        isDropTarget: Bool,
+        action: @escaping () -> Void
+    ) -> some View {
+        let card = Button(action: action) {
+            ZStack {
+                savedRegionCardBackground(summary)
+
+                HStack(alignment: .top, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        HStack(spacing: 7) {
+                            Text(name)
+                                .font(.title2.weight(.bold))
+                                .lineLimit(1)
+                            if isSelected {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .font(.subheadline)
+                            }
+                        }
+                        if isCurrentLocation {
+                            Label(
+                                NSLocalizedString("Current Location", comment: "Current GPS weather location"),
+                                systemImage: "location.fill"
+                            )
+                            .font(.caption2.weight(.bold))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(.black.opacity(0.22), in: Capsule())
+                        }
+                        Text(subtitle)
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(.white.opacity(0.84))
+
+                        Spacer(minLength: 18)
+
+                        if let alert = summary?.alertSummary, !alert.isEmpty {
+                            Label(alert, systemImage: "exclamationmark.triangle.fill")
+                                .font(.caption.weight(.semibold))
+                                .lineLimit(2)
+                        } else {
+                            Text(summary?.condition ?? "—")
+                                .font(.subheadline.weight(.medium))
+                                .lineLimit(1)
+                        }
+                    }
+
+                    Spacer(minLength: 8)
+
+                    VStack(alignment: .trailing, spacing: 8) {
+                        if let summary {
+                            Text(localizedFormat("%d°", Int(summary.temperature.rounded())))
+                                .font(.system(size: 56, weight: .light, design: .rounded))
+                                .monospacedDigit()
+                            Text(
+                                localizedFormat(
+                                    NSLocalizedString(
+                                        "HighLowLabelFormat",
+                                        comment: "High and low temperature label"
+                                    ),
+                                    Int(summary.highTemperature.rounded()),
+                                    Int(summary.lowTemperature.rounded())
+                                )
+                            )
+                            .font(.subheadline.weight(.semibold))
+                            .monospacedDigit()
+                        } else if isLoading {
+                            ProgressView()
+                                .tint(.white)
+                                .frame(width: 56, height: 56)
+                        } else {
+                            Text("—")
+                                .font(.system(size: 48, weight: .light))
+                                .frame(width: 56, height: 56)
+                        }
+
+                        if reorderToken != nil {
+                            Image(systemName: "line.3.horizontal")
+                                .font(.body.weight(.semibold))
+                                .foregroundStyle(.white.opacity(0.74))
+                                .frame(width: 40, height: 28)
+                                .contentShape(Rectangle())
+                                .accessibilityLabel(
+                                    NSLocalizedString("Reorder Region", comment: "Reorder a saved weather region")
+                                )
+                        }
+                    }
+                }
+                .foregroundStyle(.white)
+                .padding(17)
+            }
+            .frame(height: 170)
+            .clipShape(RoundedRectangle(cornerRadius: 27, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 27, style: .continuous)
+                    .stroke(
+                        isDropTarget ? Color.cyan.opacity(0.95) : Color.white.opacity(isSelected ? 0.60 : 0.14),
+                        lineWidth: isDropTarget ? 3 : (isSelected ? 2 : 1)
+                    )
+            }
+            .shadow(color: .black.opacity(0.22), radius: 10, y: 5)
+        }
+        .buttonStyle(.plain)
+
+        if let reorderToken {
+            card.draggable(reorderToken)
+        } else {
+            card
+        }
+    }
+
+    private func savedRegionCardBackground(_ summary: SavedRegionWeatherSummary?) -> some View {
+        let key = summary?.conditionKey.lowercased() ?? ""
+        let colors: [Color]
+        if summary?.isDaylight == false {
+            colors = [Color(red: 0.10, green: 0.18, blue: 0.30), Color(red: 0.03, green: 0.07, blue: 0.14)]
+        } else if key.contains("clear") || key.contains("hot") {
+            colors = [Color(red: 0.39, green: 0.69, blue: 0.92), Color(red: 0.18, green: 0.45, blue: 0.73)]
+        } else if key.contains("thunder") || key.contains("storm") || key.contains("hurricane") {
+            colors = [Color(red: 0.25, green: 0.31, blue: 0.39), Color(red: 0.08, green: 0.12, blue: 0.18)]
+        } else if key.contains("rain") || key.contains("drizzle") {
+            colors = [Color(red: 0.31, green: 0.52, blue: 0.65), Color(red: 0.12, green: 0.27, blue: 0.40)]
+        } else if key.contains("snow") || key.contains("sleet") || key.contains("frigid") {
+            colors = [Color(red: 0.55, green: 0.72, blue: 0.84), Color(red: 0.28, green: 0.48, blue: 0.65)]
+        } else {
+            colors = [Color(red: 0.35, green: 0.56, blue: 0.71), Color(red: 0.16, green: 0.34, blue: 0.49)]
+        }
+
+        return ZStack {
+            LinearGradient(colors: colors, startPoint: .topLeading, endPoint: .bottomTrailing)
+            Circle()
+                .fill(.white.opacity(0.11))
+                .frame(width: 150, height: 150)
+                .blur(radius: 20)
+                .offset(x: 125, y: -55)
+            if let symbolName = summary?.symbolName {
+                Image(systemName: symbolName)
+                    .font(.system(size: 92, weight: .thin))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(.white.opacity(0.12))
+                    .offset(x: 112, y: 24)
+            }
+        }
+    }
+
+    private func regionLocalTime(for region: SavedWeatherRegion) -> String {
+        regionLocalTime(
+            timeZone: region.timeZoneIdentifier.flatMap(TimeZone.init(identifier:)) ?? .current
+        )
+    }
+
+    private func regionLocalTime(timeZone: TimeZone) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = .current
+        formatter.timeZone = timeZone
+        formatter.timeStyle = .short
+        formatter.dateStyle = .none
+        return formatter.string(from: Date())
+    }
+
+    private func loadSavedRegionsWeather() async {
+        let regions = savedRegions.regions
+        let service = WeatherService.shared
+        let usesFahrenheit = GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol
+
+        #if DEBUG
+        if ScreenshotMode.weatherPreviewSavedRegionsOpen {
+            let previewConditions: [(String, String, Double, Double, Double)] = [
+                ("WeatherCondition.clear", "sun.max.fill", 32, 17, 32),
+                ("WeatherCondition.partlyCloudy", "cloud.sun.fill", 27, 16, 29),
+                ("WeatherCondition.cloudy", "cloud.fill", 14, 14, 21),
+                ("WeatherCondition.rain", "cloud.rain.fill", 19, 13, 22)
+            ]
+            for (index, region) in regions.enumerated() {
+                let item = previewConditions[index % previewConditions.count]
+                savedRegionWeather[region.id] = SavedRegionWeatherSummary(
+                    temperature: item.2,
+                    lowTemperature: item.3,
+                    highTemperature: item.4,
+                    condition: NSLocalizedString(item.0, comment: "Preview saved region condition"),
+                    conditionKey: item.0,
+                    symbolName: item.1,
+                    alertSummary: index == 0
+                        ? NSLocalizedString("WeatherAlert.Preview.HighTemperature", comment: "Preview high temperature alert")
+                        : nil,
+                    isDaylight: index != 2
+                )
+                finishedLoadingRegionWeatherIDs.insert(region.id)
+            }
+            finishedLoadingCurrentLocationWeather = true
+            return
+        }
+        #endif
+
+        finishedLoadingRegionWeatherIDs.subtract(regions.map(\.id))
+        finishedLoadingCurrentLocationWeather = locationManager.currentLocation == nil
+
+        await withTaskGroup(of: (UUID, SavedRegionWeatherSummary?).self) { group in
+            for region in regions {
+                group.addTask {
+                    let location = CLLocation(latitude: region.latitude, longitude: region.longitude)
+                    do {
+                        let (current, daily, alerts) = try await service.weather(
+                            for: location,
+                            including: .current, .daily, .alerts
+                        )
+                        return (
+                            region.id,
+                            Self.makeSavedRegionWeatherSummary(
+                                current: current,
+                                daily: daily.forecast,
+                                alerts: alerts,
+                                usesFahrenheit: usesFahrenheit
+                            )
+                        )
+                    } catch {
+                        return (region.id, nil)
+                    }
+                }
+            }
+
+            for await (id, summary) in group {
+                if let summary {
+                    savedRegionWeather[id] = summary
+                }
+                finishedLoadingRegionWeatherIDs.insert(id)
+            }
+        }
+
+        if let location = locationManager.currentLocation {
+            do {
+                let (current, daily, alerts) = try await service.weather(
+                    for: location,
+                    including: .current, .daily, .alerts
+                )
+                currentLocationWeather = Self.makeSavedRegionWeatherSummary(
+                    current: current,
+                    daily: daily.forecast,
+                    alerts: alerts,
+                    usesFahrenheit: usesFahrenheit
+                )
+            } catch {
+                currentLocationWeather = nil
+            }
+            finishedLoadingCurrentLocationWeather = true
+        }
+    }
+
+    private nonisolated static func makeSavedRegionWeatherSummary(
+        current: CurrentWeather,
+        daily: [DayWeather],
+        alerts: [WeatherAlert]?,
+        usesFahrenheit: Bool
+    ) -> SavedRegionWeatherSummary {
+        let tempUnit: UnitTemperature = usesFahrenheit ? .fahrenheit : .celsius
+        let day = daily.first
+        let conditionKey = "WeatherCondition.\(current.condition.rawValue)"
+        return SavedRegionWeatherSummary(
+            temperature: current.temperature.converted(to: tempUnit).value,
+            lowTemperature: day?.lowTemperature.converted(to: tempUnit).value ?? current.temperature.converted(to: tempUnit).value,
+            highTemperature: day?.highTemperature.converted(to: tempUnit).value ?? current.temperature.converted(to: tempUnit).value,
+            condition: NSLocalizedString(conditionKey, comment: "Saved region weather condition"),
+            conditionKey: conditionKey,
+            symbolName: current.symbolName,
+            alertSummary: alerts?.first?.summary,
+            isDaylight: current.isDaylight
+        )
+    }
+
+    private func selectSavedRegion(_ region: SavedWeatherRegion) {
+        isShowingUnsavedSearchLocation = false
+        savedRegions.select(region.id)
+        geocodedCityName = region.name
+        if let identifier = region.timeZoneIdentifier,
+           let timeZone = TimeZone(identifier: identifier) {
+            vm.setTimeZone(timeZone)
+        }
+        vm.clearWeatherData()
+        vm.fetchWeatherForCoords(latitude: region.latitude, longitude: region.longitude)
+        initialLoadComplete = true
+    }
+
+    private func selectCurrentLocation() {
+        isShowingUnsavedSearchLocation = false
+        savedRegions.select(nil)
+        geocodedCityName = ""
+        vm.clearWeatherData()
+        guard let location = locationManager.currentLocation else {
+            locationManager.manager.requestLocation()
+            initialLoadComplete = false
+            return
+        }
+        vm.fetchWeatherForCoords(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
+        initialLoadComplete = true
+    }
     
     private var searchResultsOverlay: some View {
         Group {
             if showSearchBar && isEditing && !locationSearchVM.searchResults.isEmpty {
                 List(locationSearchVM.searchResults, id: \.self) { completion in
                     Button {
-                        // ✅ FIX: Wrap the async call in a Task
                         Task {
                             await locationSearchVM.selectCompletion(completion)
+                            if let placemark = locationSearchVM.selectedPlacemark {
+                                handleSelectedLocation(placemark: placemark, saveRegion: false)
+                            }
                         }
                     } label: {
                         VStack(alignment: .leading) {
@@ -822,24 +1471,14 @@ struct WeatherKitView: View {
         return symbol.contains("moon") || symbol.contains("night")
     }
 
-    private var weatherBackgroundUsesDarkInterface: Bool {
-        if weatherBackgroundIsNight { return true }
-        let condition = vm.currentConditionLocalizationKey.lowercased()
-        return condition.contains("thunder")
-            || condition.contains("storm")
-            || condition.contains("hurricane")
-            || condition.contains("heavyrain")
-    }
-    
     private func refreshWeatherData() {
         vm.clearWeatherData()
         initialLoadComplete = false
-        
-        if !geocodedCityName.isEmpty,
-           let placemark = locationSearchVM.selectedPlacemark {
-            handleSelectedLocation(placemark: placemark)
-        }
-        else if let loc = locationManager.currentLocation {
+
+        if let selectedID = savedRegions.selectedRegionID,
+           let region = savedRegions.regions.first(where: { $0.id == selectedID }) {
+            selectSavedRegion(region)
+        } else if let loc = locationManager.currentLocation {
             vm.fetchWeatherForCoords(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
             initialLoadComplete = true
         } else {
@@ -851,16 +1490,63 @@ struct WeatherKitView: View {
         if showSearchBar { hideSearch() }
     }
     
-    private func handleSelectedLocation(placemark: MKPlacemark) {
+    private func handleSelectedLocation(
+        placemark: MKPlacemark,
+        saveRegion: Bool
+    ) {
         vm.clearWeatherData()
         let coords = placemark.coordinate
+        let city = locationSearchVM.selectedSearchTitle
+            ?? placemark.locality
+            ?? placemark.administrativeArea
+            ?? placemark.name
+            ?? NSLocalizedString("Selected Location", comment: "Selected location fallback")
+        if saveRegion {
+            isShowingUnsavedSearchLocation = false
+            let savedRegion = savedRegions.save(
+                name: city,
+                subtitle: locationSearchVM.selectedSearchSubtitle,
+                coordinate: coords,
+                timeZone: locationSearchVM.selectedTimeZone ?? placemark.timeZone
+            )
+            geocodedCityName = savedRegion.name
+        } else {
+            isShowingUnsavedSearchLocation = true
+            geocodedCityName = city
+            if let timeZone = locationSearchVM.selectedTimeZone ?? placemark.timeZone {
+                vm.setTimeZone(timeZone)
+            }
+        }
         vm.fetchWeatherForCoords(latitude: coords.latitude, longitude: coords.longitude)
         initialLoadComplete = true
-        
-        let city = placemark.locality ?? placemark.administrativeArea ?? placemark.name ?? NSLocalizedString("Selected Location", comment: "Selected location fallback")
-        self.geocodedCityName = city
-        
-        hideSearch()
+
+        if saveRegion {
+            locationSearchVM.queryFragment = ""
+            locationSearchVM.searchResults = []
+            isEditing = false
+            isSearchFieldFocused = false
+            hideKeyboard()
+        } else {
+            hideSearch()
+        }
+    }
+
+    private func openSavedRegions() {
+        hideKeyboard()
+        withAnimation(.easeInOut(duration: 0.34)) {
+            showSavedRegions = true
+        }
+    }
+
+    private func closeSavedRegions() {
+        locationSearchVM.queryFragment = ""
+        locationSearchVM.searchResults = []
+        isEditing = false
+        isSearchFieldFocused = false
+        hideKeyboard()
+        withAnimation(.easeInOut(duration: 0.34)) {
+            showSavedRegions = false
+        }
     }
     
     private func hideSearch() {

@@ -755,3 +755,6 @@
 "MoonPhase.waningGibbous" = "Waning Gibbous";
 "MoonPhase.lastQuarter" = "Last Quarter";
 "MoonPhase.waningCrescent" = "Waning Crescent";
+"Saved Regions" = "Saved Regions";
+"Current Location" = "Current Location";
+"Reorder Region" = "Reorder Region";
