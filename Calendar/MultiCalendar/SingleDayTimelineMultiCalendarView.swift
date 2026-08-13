@@ -207,7 +207,18 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         children.append(editAction)
 
         // ------------------------------------------------
-        // (D) „Duplicate“ бутон
+        // (D) Share the event as an App Clip invocation link
+        // ------------------------------------------------
+        let shareAction = UIAction(
+            title: NSLocalizedString("Share", comment: "Share event action"),
+            image: UIImage(systemName: "square.and.arrow.up")
+        ) { _ in
+            EventAppClipSharing.present(for: descriptor, from: self)
+        }
+        children.append(shareAction)
+
+        // ------------------------------------------------
+        // (E) „Duplicate“ бутон
         // ------------------------------------------------
         let duplicateAction = UIAction(
             title: NSLocalizedString("Duplicate", comment: ""),
@@ -219,7 +230,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         children.append(duplicateAction)
 
         // ------------------------------------------------
-        // (E) „Delete“ бутон
+        // (F) „Delete“ бутон
         // ------------------------------------------------
         let deleteAction = UIAction(
             title: NSLocalizedString("Delete", comment: ""),
