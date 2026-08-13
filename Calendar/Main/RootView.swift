@@ -87,17 +87,6 @@ struct RootView: View {
             accentColor: .purple
         ),
 
-        // ✅ NEW #2
-        AppPromoData(
-            appName: NSLocalizedString("Promo.CloudCalendars.name", comment: "Promoted app name"),
-            description: NSLocalizedString("Promo.CloudCalendars.description", comment: "Promoted app description"),
-            iconName: "CloudCalendarsIcon", // добави в Assets
-            systemImageFallback: "calendar.badge.clock",
-            appStoreURL: "https://apps.apple.com/us/app/cloud-calendars/id6744690319",
-            accentColor: .blue
-        ),
-
-        // ✅ NEW #3
         AppPromoData(
             appName: NSLocalizedString("Promo.MarketBrief.name", comment: "Promoted app name"),
             description: NSLocalizedString("Promo.MarketBrief.description", comment: "Promoted app description"),

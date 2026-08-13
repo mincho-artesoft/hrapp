@@ -20,8 +20,10 @@ enum EventSharePromptSettings {
 @MainActor
 final class EventSharePromptManager: ObservableObject {
     static let shared = EventSharePromptManager()
+    static let displayDuration: TimeInterval = 10
 
     @Published private(set) var event: EKEvent?
+    @Published private(set) var dismissalDeadline: Date?
     private var dismissalWorkItem: DispatchWorkItem?
 
     private init() {}
@@ -32,6 +34,7 @@ final class EventSharePromptManager: ObservableObject {
         else { return }
 
         dismissalWorkItem?.cancel()
+        dismissalDeadline = Date().addingTimeInterval(Self.displayDuration)
         self.event = event
 
         let workItem = DispatchWorkItem { [weak self] in
@@ -40,13 +43,25 @@ final class EventSharePromptManager: ObservableObject {
             }
         }
         dismissalWorkItem = workItem
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: workItem)
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + Self.displayDuration,
+            execute: workItem
+        )
     }
 
     func dismiss() {
         dismissalWorkItem?.cancel()
         dismissalWorkItem = nil
+        dismissalDeadline = nil
         event = nil
+    }
+
+    func remainingFraction(at date: Date) -> Double {
+        guard let dismissalDeadline else { return 0 }
+        return min(
+            1,
+            max(0, dismissalDeadline.timeIntervalSince(date) / Self.displayDuration)
+        )
     }
 
     func disableAndDismiss() {
@@ -69,6 +84,13 @@ struct EventSharePromptView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
+            TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { context in
+                ProgressView(value: manager.remainingFraction(at: context.date))
+                    .progressViewStyle(.linear)
+                    .tint(.blue)
+            }
+            .accessibilityHidden(true)
+
             HStack(spacing: 10) {
                 Image(systemName: "square.and.arrow.up")
                     .font(.headline)
@@ -86,7 +108,9 @@ struct EventSharePromptView: View {
                     Text(LocalizedStringKey("Don't ask again"))
                         .font(.subheadline.weight(.semibold))
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
+                        .frame(height: 54)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8)
                 }
                 .buttonStyle(.bordered)
 
@@ -96,7 +120,9 @@ struct EventSharePromptView: View {
                     Label(LocalizedStringKey("Share"), systemImage: "square.and.arrow.up")
                         .font(.subheadline.weight(.semibold))
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
+                        .frame(height: 54)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8)
                 }
                 .buttonStyle(.borderedProminent)
             }

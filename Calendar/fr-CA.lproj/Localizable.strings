@@ -710,8 +710,6 @@
 "Promo.StoreFront.description" = "StoreFront Studio est un environnement de conception 3D haut de gamme pour les développeurs iOS et macOS. Il associe un rendu RealityKit fidèle à un puissant éditeur de texte enrichi pour créer des ressources App Store professionnelles.";
 "Promo.ReelStudio.name" = "ReelStudio";
 "Promo.ReelStudio.description" = "ReelStudio est un studio d'enregistrement d'écran pour créateurs. Capturez l'écran et la caméra en même temps, contrôlez le micro et l'audio système, puis exportez des MP4 propres pour tutoriels, présentations et démos produit.";
-"Promo.CloudCalendars.name" = "Cloud Calendars";
-"Promo.CloudCalendars.description" = "Cloud Calendars associe une planification avancée à des prévisions météo joliment intégrées pour planifier avec précision. L'app prend en charge plusieurs services de calendrier, l'édition gestuelle, les liens de réunion et les prévisions horaires et quotidiennes.";
 "Promo.MarketBrief.name" = "MarketBrief AI";
 "Promo.MarketBrief.description" = "MarketBrief AI vous aide à comprendre les mouvements du marché avec des analyses sur l'appareil et un flux multi-agent conçu pour séparer le signal du bruit. Suivez les prix, les probabilités de régime et des tableaux de bord clairs.";
 

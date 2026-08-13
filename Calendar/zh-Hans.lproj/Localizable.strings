@@ -714,8 +714,6 @@
 "Promo.StoreFront.description" = "StoreFront Studio 是面向 iOS 和 macOS 开发者的高级 3D 设计环境。它将精确的 RealityKit 渲染与强大的富文本编辑器相结合，帮助您将原始屏幕截图转换为专业的 App Store 素材。";
 "Promo.ReelStudio.name" = "ReelStudio";
 "Promo.ReelStudio.description" = "ReelStudio是iOS和macOS的创作者级屏幕录制工作室。同时捕获屏幕和相机，控制麦克风 + 系统音频，并导出干净的 MP4 以用于教程、演练和产品演示。在iOS上，您甚至可以在应用程序内播放视频并用相机将其录制，以获得反应式和演示者主导的内容。";
-"Promo.CloudCalendars.name" = "Cloud Calendars";
-"Promo.CloudCalendars.description" = "Cloud Calendars 将先进的日程安排与完美集成的天气预报相结合，让您可以精确计划。它支持多种日历服务、直观的基于手势的编辑、内置会议链接以及直接在您的日程安排中提供详细的每小时/每日预测。";
 "Promo.MarketBrief.name" = "MarketBrief AI";
 "Promo.MarketBrief.description" = "MarketBrief AI 通过设备上分析和旨在将信号与噪音分离的多代理工作流程，帮助您了解市场动态。跟踪实时价格数据，探索制度式概率，并使用清晰的仪表板和图表来支持您的决策。隐私第一：您的配置保留在您的设备上。";
 
