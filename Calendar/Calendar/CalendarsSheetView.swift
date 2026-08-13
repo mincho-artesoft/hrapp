@@ -35,9 +35,11 @@ struct CalendarsSheetView: View {
     @State private var addingGoogleCalendarColor: UIColor? = nil
     @State private var weatherAlertNotificationsEnabled =
         WeatherAlertNotificationManager.notificationsEnabled
+    private let bottomContentInset: CGFloat
 
     // MARK: - Init for iOS 14–15 appearance
-    init() {
+    init(bottomContentInset: CGFloat = 0) {
+        self.bottomContentInset = bottomContentInset
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
     }
@@ -70,6 +72,17 @@ struct CalendarsSheetView: View {
                 shareCalendarsSection
                 googleSignInSection
                 microsoftSignInSection
+
+                if bottomContentInset > 0 {
+                    Section {
+                        Color.clear
+                            .frame(height: bottomContentInset)
+                            .listRowInsets(EdgeInsets())
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
+                            .accessibilityHidden(true)
+                    }
+                }
             }
             .scrollContentBackground(.hidden)
             .background(Color.clear)

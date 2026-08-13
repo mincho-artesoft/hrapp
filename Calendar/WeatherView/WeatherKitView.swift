@@ -28,6 +28,7 @@ struct WeatherKitView: View {
 
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)
+    var onSavedRegionsPresentationChange: (Bool) -> Void
     @State private var eventToEdit: EKEvent? = nil
     @FocusState private var isSearchFieldFocused: Bool
     // MARK: - State Objects
@@ -65,9 +66,14 @@ struct WeatherKitView: View {
     @State private var showMoonDetail = false
 
     
-    init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
+    init(
+        selectedTab: Int,
+        onViewChange: ((Int) -> Void)? = nil,
+        onSavedRegionsPresentationChange: @escaping (Bool) -> Void = { _ in }
+    ) {
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange!
+        self.onSavedRegionsPresentationChange = onSavedRegionsPresentationChange
         #if DEBUG
         _showSavedRegions = State(initialValue: ScreenshotMode.weatherPreviewSavedRegionsOpen)
         _showSolarDetail = State(initialValue: ScreenshotMode.weatherPreviewSolarDetail)
@@ -130,6 +136,12 @@ struct WeatherKitView: View {
                         attributionFooter
                             .padding(.bottom, 8)
                     }
+
+                    // Keep the legal attribution and the final weather card
+                    // above the shared draggable handle and bottom bar.
+                    Spacer()
+                        .frame(height: 96)
+                        .accessibilityHidden(true)
                 }
                 // Ако е необходимо, можете да запазите tap gesture за скриване на търсачката
                 .onTapGesture {
@@ -170,6 +182,7 @@ struct WeatherKitView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
+            onSavedRegionsPresentationChange(showSavedRegions)
             guard !didRestoreSavedRegion else { return }
             didRestoreSavedRegion = true
             #if DEBUG
@@ -600,7 +613,10 @@ struct WeatherKitView: View {
                                     savedRegionDropPlaceholder(at: index + 1)
                                 }
                             }
-                            .padding(.bottom, 24)
+                            // The saved-regions list has its own scroll view;
+                            // reserve room for the shared draggable handle and
+                            // bottom bar here as well.
+                            .padding(.bottom, 120)
                         }
                         .refreshable {
                             await loadSavedRegionsWeather()
@@ -820,6 +836,7 @@ struct WeatherKitView: View {
                     }
                 }
             }
+            .padding(.bottom, 120)
         }
         .background(
             Color.black.opacity(0.26),
@@ -1591,6 +1608,7 @@ struct WeatherKitView: View {
 
     private func openSavedRegions() {
         hideKeyboard()
+        onSavedRegionsPresentationChange(true)
         withAnimation(.easeInOut(duration: 0.34)) {
             showSavedRegions = true
         }
@@ -1602,6 +1620,7 @@ struct WeatherKitView: View {
         isEditing = false
         isSearchFieldFocused = false
         hideKeyboard()
+        onSavedRegionsPresentationChange(false)
         withAnimation(.easeInOut(duration: 0.34)) {
             showSavedRegions = false
         }

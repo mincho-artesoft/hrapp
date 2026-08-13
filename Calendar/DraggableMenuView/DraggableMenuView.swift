@@ -14,11 +14,13 @@ struct DraggableMenuView<
     private var topGapWhenExpanded: CGFloat = UIScreen.main.bounds.height * 0.2
 
     @Binding var adaptiveBackgroundOpacity: CGFloat
+    let backgroundOverride: Color?
     @Environment(\.colorScheme) private var colorScheme
     private var adaptiveBackground: Color {
-        colorScheme == .dark
-            ? .black.opacity(adaptiveBackgroundOpacity)
-            : .white.opacity(adaptiveBackgroundOpacity)
+        if let backgroundOverride { return backgroundOverride }
+        return colorScheme == .dark
+            ? Color.black.opacity(adaptiveBackgroundOpacity)
+            : Color.white.opacity(adaptiveBackgroundOpacity)
     }
 
     // MARK: — External bindings & callbacks
@@ -38,6 +40,7 @@ struct DraggableMenuView<
     init(
         menuState: Binding<MenuState>,
         adaptiveBackgroundOpacity: Binding<CGFloat>,
+        backgroundOverride: Color? = nil,
         @ViewBuilder bottomBar: @escaping () -> BottomBarContent,
         @ViewBuilder horizontalContent: () -> HorizontalContent,
         @ViewBuilder verticalContent: () -> VerticalContent,
@@ -45,6 +48,7 @@ struct DraggableMenuView<
     ) {
         self._menuState = menuState
         self._adaptiveBackgroundOpacity = adaptiveBackgroundOpacity
+        self.backgroundOverride = backgroundOverride
         self.onStateChange = onStateChange
 
         self.bottomBar = bottomBar

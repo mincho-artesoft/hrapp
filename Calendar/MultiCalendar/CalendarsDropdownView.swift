@@ -13,6 +13,13 @@ public class CalendarsDropdownView: UIView {
     private var dict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
 
     public var onSelectionChanged: (([String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]) -> Void)?
+
+    public var bottomContentInset: CGFloat = 0 {
+        didSet {
+            scrollView.contentInset.bottom = bottomContentInset
+            scrollView.verticalScrollIndicatorInsets.bottom = bottomContentInset
+        }
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

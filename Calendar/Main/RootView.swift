@@ -11,7 +11,9 @@ struct RootView: View {
     @State private var selectedTabDraggableMenuView = 0
     @State private var menuState: MenuState = .collapsed
     @ObservedObject private var liveActivityManager = CalendarLiveActivityManager.shared
+    @ObservedObject private var weatherMenuViewModel = WeatherKitViewModel.shared
     @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
+    @State private var weatherSavedRegionsIsPresented = false
     @AppStorage("interstitialTabSwitchCount") private var tabSwitchCounter: Int = 0
     @State private var accessGranted = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
@@ -54,6 +56,7 @@ struct RootView: View {
     
     // Следим състоянието на сцената (active, background, inactive)
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.colorScheme) private var systemColorScheme
     
     private let promotionalApps: [AppPromoData] = [
         AppPromoData(
@@ -251,6 +254,9 @@ struct RootView: View {
                                 selectedTab: selectedTab,
                                 onViewChange: { newTab in
                                     selectedTab = newTab
+                                },
+                                onSavedRegionsPresentationChange: { isPresented in
+                                    weatherSavedRegionsIsPresented = isPresented
                                 }
                             )
                             .colorScheme(.dark)
@@ -262,7 +268,7 @@ struct RootView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity) // Make sure the VStack fills the GeometryReader
                     .overlay(alignment: .bottom) {
-                        if menuState == .full && isPortrait && ![6,7].contains(selectedTab) { // Added checks from outer if
+                        if menuState == .full && isPortrait && selectedTab != 7 {
                              Color.black.opacity(0.001)
                                  .ignoresSafeArea()
                                  .contentShape(Rectangle())
@@ -279,6 +285,7 @@ struct RootView: View {
                             DraggableMenuView(
                                 menuState: $menuState,
                                 adaptiveBackgroundOpacity:$draggableMenuAdaptiveBackgroundОpacity,
+                                backgroundOverride: weatherDraggableMenuBackground,
                                 bottomBar: {
                                     HStack{ // Content for bottomBar
                                         Spacer()
@@ -330,8 +337,8 @@ struct RootView: View {
                                 },
                                 verticalContent: {
                                     switch selectedTabDraggableMenuView {
-                                    case 0: CalendarsSheetView().padding(.vertical, 8)
-                                    case 1: CalendarsDropdownRepresentable().padding(.vertical, 8)
+                                    case 0: CalendarsSheetView(bottomContentInset: 128).padding(.vertical, 8)
+                                    case 1: CalendarsDropdownRepresentable(bottomContentInset: 128).padding(.vertical, 8)
                                     case 2: SubscriptionView().padding(.vertical, 8)
                                     case 3: AppsPromoListView(apps: promotionalApps).padding(.vertical, 8)
                                     default: Text(NSLocalizedString("N/A", comment: "Not available fallback"))
@@ -359,7 +366,18 @@ struct RootView: View {
                                     }
                                 }
                             )
-                            .opacity( [6, 7].contains(selectedTab) ? 0 : 1 ) // Keep opacity logic
+                            // Weather uses the same draggable menu and bottom
+                            // navigation as every calendar section. Only the
+                            // optional VitaHealth tab remains excluded.
+                            .opacity(selectedTab == 7 ? 0 : 1)
+                            // Weather has a permanent dark visual language.
+                            // The menu is a sibling of WeatherKitView, so it
+                            // must receive that scheme explicitly instead of
+                            // inheriting the device's Light/Dark appearance.
+                            .environment(
+                                \.colorScheme,
+                                selectedTab == 6 ? .dark : systemColorScheme
+                            )
                             .edgesIgnoringSafeArea(.all)
                             .zIndex(1) // Ensure DraggableMenuView is above the tap overlay
                             // ---- BEGIN FIX: Disable animation on DraggableMenuView based on selectedTab ----
@@ -394,6 +412,12 @@ struct RootView: View {
                 UserDefaults.standard.set(6, forKey: "selectedTabRoot")
             }
         .onAppear {
+            // The collapsed Weather menu is transparent so the live weather
+            // scene continues seamlessly behind its handle and controls.
+            if selectedTab == 6 {
+                draggableMenuAdaptiveBackgroundОpacity = 0
+            }
+
             Task {
                 accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                 if accessGranted {
@@ -451,7 +475,11 @@ struct RootView: View {
         .onChange(of: selectedTab) { oldValue, newValue in
             self.oldSelectedTab = oldValue // Update oldSelectedTab
             UserDefaults.standard.set(newValue, forKey: "selectedTabRoot")
-            if newValue == 6 || newValue == 7 { // Weather or VitaHealth
+            if newValue == 6 {
+                CalendarViewModel.shared.stopGoogleCalendarSync()
+                CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                draggableMenuAdaptiveBackgroundОpacity = 0
+            } else if newValue == 7 { // VitaHealth
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
                 draggableMenuAdaptiveBackgroundОpacity = 0.35
@@ -551,15 +579,31 @@ struct RootView: View {
             VStack(spacing: 0) {
                 Image(systemName: image)
                     .font(.system(size: 18))
-                    .foregroundColor(.blue)
+                    .foregroundColor(selectedTab == 6 ? .white : .blue)
                 Text(LocalizedStringKey(title)) // For localization
                     .font(.system(size: 10))
-                    .foregroundColor(.primary)
+                    .foregroundColor(selectedTab == 6 ? .white : .primary)
                     .adaptiveSingleLine(minimumScale: 0.4)
                     .frame(maxWidth: .infinity)
             }
         }
         .frame(maxWidth: .infinity)
+    }
+
+    private var weatherDraggableMenuBackground: Color? {
+        guard selectedTab == 6 else { return nil }
+
+        if weatherSavedRegionsIsPresented {
+            // Exact final stop of savedRegionsBackgroundColors.
+            return Color(red: 0.03, green: 0.13, blue: 0.24)
+        }
+
+        return WeatherSceneBackground.bottomSkyColor(
+            conditionKey: weatherMenuViewModel.currentConditionLocalizationKey,
+            symbolName: weatherMenuViewModel.currentSymbol,
+            sunrise: weatherMenuViewModel.sunriseTime,
+            sunset: weatherMenuViewModel.sunsetTime
+        )
     }
 
 }

@@ -50,6 +50,35 @@ struct WeatherSceneBackground: View {
         self.observationDate = observationDate
     }
 
+    /// The opaque colour at the lower edge of the same sky palette used by
+    /// the full weather scene. It lets fixed chrome continue the scene without
+    /// showing cards through it or introducing an unrelated black strip.
+    @MainActor
+    static func bottomSkyColor(
+        conditionKey: String,
+        symbolName: String,
+        sunrise: Date?,
+        sunset: Date?,
+        observationDate: Date = Date()
+    ) -> Color {
+        let scene = WeatherSceneDescriptor(
+            conditionKey: conditionKey,
+            symbolName: symbolName,
+            observationDate: observationDate,
+            sunrise: sunrise,
+            sunset: sunset,
+            moonrise: nil,
+            moonset: nil,
+            moonPhase: nil,
+            precipitationType: nil,
+            cloudCover: nil,
+            windSpeedKPH: nil,
+            windGustKPH: nil,
+            windDirectionDegrees: nil
+        )
+        return WeatherSceneRenderer.skyColors(for: scene).last ?? Color.black
+    }
+
     var body: some View {
         TimelineView(.animation(minimumInterval: 1.0 / 60.0, paused: reduceMotion)) { timeline in
             let currentDate = observationDate ?? timeline.date
@@ -585,7 +614,7 @@ private enum WeatherSceneRenderer {
         }
     }
 
-    private static func drawSky(scene: WeatherSceneDescriptor, in context: inout GraphicsContext, size: CGSize) {
+    static func skyColors(for scene: WeatherSceneDescriptor) -> [Color] {
         let colors: [Color]
         if scene.isNight {
             switch scene.kind {
@@ -622,6 +651,12 @@ private enum WeatherSceneRenderer {
                 colors = [Color(red: 0.50, green: 0.29, blue: 0.16), Color(red: 0.75, green: 0.50, blue: 0.27), Color(red: 0.88, green: 0.69, blue: 0.39)]
             }
         }
+
+        return colors
+    }
+
+    private static func drawSky(scene: WeatherSceneDescriptor, in context: inout GraphicsContext, size: CGSize) {
+        let colors = skyColors(for: scene)
 
         let rect = CGRect(origin: .zero, size: size)
         context.fill(

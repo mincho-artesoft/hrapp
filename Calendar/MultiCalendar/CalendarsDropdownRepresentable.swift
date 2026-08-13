@@ -8,12 +8,14 @@ import EventKit
 struct CalendarsDropdownRepresentable: UIViewRepresentable {
     /// Може да е @ObservedObject, ако CalendarViewModel е ObservableObject
     @ObservedObject var viewModel: CalendarViewModel = .shared
+    var bottomContentInset: CGFloat = 0
     
     func makeUIView(context: Context) -> CalendarsDropdownView {
         let view = CalendarsDropdownView()
         view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
             ? .forceRightToLeft
             : .forceLeftToRight
+        view.bottomContentInset = bottomContentInset
         view.setCalendarsInfo(viewModel.calendarsDict)
         
         // двупосочна връзка SwiftUI ↔ UIKit
@@ -27,6 +29,7 @@ struct CalendarsDropdownRepresentable: UIViewRepresentable {
         uiView.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
             ? .forceRightToLeft
             : .forceLeftToRight
+        uiView.bottomContentInset = bottomContentInset
         // при всяка промяна от SwiftUI – опресняваме UIKit‑компонента
         uiView.setCalendarsInfo(viewModel.calendarsDict)
     }
