@@ -302,7 +302,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         }
         @MainActor
         public func presentSystemDetails(_ ekEvent: EKEvent, in parentVC: UIViewController) {
-            let eventVC = EKEventViewController()
+            let eventVC = ShareableEventViewController()
             eventVC.event = ekEvent
             eventVC.delegate = self
             eventVC.allowsEditing = true              // Показва „Edit“ и „Delete Event“

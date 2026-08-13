@@ -8,11 +8,52 @@ import UIKit
 enum EventAppClipSharing {
     static let appClipBundleIdentifier = "Deksan.CalendarASD.Clip"
 
+    static func invocationURL(for event: EKEvent) -> URL? {
+        let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        guard !title.isEmpty,
+              let start = event.startDate,
+              let end = event.endDate
+        else { return nil }
+
+        return invocationURL(
+            title: title,
+            start: start,
+            end: end,
+            isAllDay: event.isAllDay,
+            timeZone: event.timeZone ?? .current,
+            color: event.calendar?.cgColor.map(UIColor.init(cgColor:)) ?? .systemBlue,
+            location: event.location
+        )
+    }
+
     static func invocationURL(for descriptor: EventDescriptor) -> URL? {
         let event = (descriptor as? EKMultiDayWrapper)?.realEvent
         let start = event?.startDate ?? descriptor.dateInterval.start
         let end = event?.endDate ?? descriptor.dateInterval.end
         let timeZone = event?.timeZone ?? .current
+
+        return invocationURL(
+            title: descriptor.text,
+            start: start,
+            end: end,
+            isAllDay: descriptor.isAllDay,
+            timeZone: timeZone,
+            color: descriptor.color,
+            location: event?.location
+        )
+    }
+
+    private static func invocationURL(
+        title: String,
+        start: Date,
+        end: Date,
+        isAllDay: Bool,
+        timeZone: TimeZone,
+        color: UIColor,
+        location: String?
+    ) -> URL? {
+        let normalizedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !normalizedTitle.isEmpty else { return nil }
 
         var components = URLComponents()
         components.scheme = "https"
@@ -21,15 +62,15 @@ enum EventAppClipSharing {
 
         var queryItems = [
             URLQueryItem(name: "p", value: appClipBundleIdentifier),
-            URLQueryItem(name: "title", value: limited(descriptor.text, to: 120)),
+            URLQueryItem(name: "title", value: limited(normalizedTitle, to: 120)),
             URLQueryItem(name: "start", value: String(start.timeIntervalSince1970)),
             URLQueryItem(name: "end", value: String(end.timeIntervalSince1970)),
-            URLQueryItem(name: "allDay", value: descriptor.isAllDay ? "1" : "0"),
+            URLQueryItem(name: "allDay", value: isAllDay ? "1" : "0"),
             URLQueryItem(name: "timeZone", value: timeZone.identifier),
-            URLQueryItem(name: "color", value: colorHex(descriptor.color))
+            URLQueryItem(name: "color", value: colorHex(color))
         ]
 
-        if let location = event?.location?.trimmingCharacters(in: .whitespacesAndNewlines),
+        if let location = location?.trimmingCharacters(in: .whitespacesAndNewlines),
            !location.isEmpty {
             queryItems.append(URLQueryItem(name: "location", value: limited(location, to: 160)))
         }
@@ -58,6 +99,22 @@ enum EventAppClipSharing {
         }
 
         guard let presenter = presentingViewController(from: sourceView) else { return }
+        presenter.present(activityController, animated: true)
+    }
+
+    @MainActor
+    static func present(
+        for event: EKEvent,
+        from presenter: UIViewController,
+        sourceBarButtonItem: UIBarButtonItem
+    ) {
+        guard let url = invocationURL(for: event) else { return }
+
+        let activityController = UIActivityViewController(
+            activityItems: [url],
+            applicationActivities: nil
+        )
+        activityController.popoverPresentationController?.barButtonItem = sourceBarButtonItem
         presenter.present(activityController, animated: true)
     }
 

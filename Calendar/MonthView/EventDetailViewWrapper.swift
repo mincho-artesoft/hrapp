@@ -1,6 +1,69 @@
 import SwiftUI
 import EventKitUI
 
+/// Keeps Apple's event details intact and adds our App Clip share action to
+/// the leading navigation-bar group beside the system Edit action.
+final class ShareableEventViewController: EKEventViewController {
+    private var eventEditButton: UIBarButtonItem?
+
+    private lazy var eventShareButton = UIBarButtonItem(
+        image: UIImage(systemName: "square.and.arrow.up"),
+        style: .plain,
+        target: self,
+        action: #selector(shareEvent)
+    )
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // EKEventViewController creates its Edit item internally. Configuring
+        // after it appears lets us retain its private target/action while only
+        // changing the presentation from text to a pencil icon.
+        configureLeadingButtonsIfNeeded()
+    }
+
+    private func configureLeadingButtonsIfNeeded() {
+        // Remove an older placement if this controller is shown again after a
+        // system edit flow, while leaving the system close button untouched.
+        let trailingItems = (navigationItem.rightBarButtonItems ?? [])
+            .filter { $0 !== eventShareButton }
+        navigationItem.setRightBarButtonItems(trailingItems, animated: false)
+
+        var leadingItems = navigationItem.leftBarButtonItems ?? []
+        if eventEditButton == nil,
+           let systemEditButton = leadingItems.first(where: { $0 !== eventShareButton }) {
+            let pencilButton = UIBarButtonItem(
+                image: UIImage(systemName: "pencil"),
+                style: systemEditButton.style,
+                target: systemEditButton.target,
+                action: systemEditButton.action
+            )
+            pencilButton.accessibilityLabel = NSLocalizedString("Edit", comment: "Edit event button")
+            pencilButton.accessibilityIdentifier = "eventDetail.edit"
+
+            if let index = leadingItems.firstIndex(where: { $0 === systemEditButton }) {
+                leadingItems[index] = pencilButton
+            }
+            eventEditButton = pencilButton
+        }
+
+        eventShareButton.accessibilityLabel = NSLocalizedString("Share", comment: "Share event button")
+        eventShareButton.accessibilityIdentifier = "eventDetail.share"
+        leadingItems.removeAll(where: { $0 === eventShareButton })
+        leadingItems.insert(eventShareButton, at: min(1, leadingItems.count))
+        navigationItem.setLeftBarButtonItems(leadingItems, animated: false)
+    }
+
+    @objc private func shareEvent() {
+        guard let event else { return }
+        EventAppClipSharing.present(
+            for: event,
+            from: self,
+            sourceBarButtonItem: eventShareButton
+        )
+    }
+}
+
 /// Обвивка, която вгражда системния детайлен изглед (EKEventViewController).
 struct EventDetailViewWrapper: UIViewControllerRepresentable {
     let event: EKEvent
@@ -24,7 +87,7 @@ struct EventDetailViewWrapper: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> UINavigationController {
-        let eventVC = EKEventViewController()
+        let eventVC = ShareableEventViewController()
         let semanticDirection: UISemanticContentAttribute =
             context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
         eventVC.event = event
