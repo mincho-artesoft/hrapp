@@ -182,6 +182,10 @@ struct WeatherDetailView: View {
                             hourlyGraphSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
+
+                            WeatherRotatingAdPlacement()
+                                .padding(.horizontal)
+                                .padding(.bottom, 24)
                             
                             chanceOfPrecipGraphSection()
                                 .padding(.horizontal)
@@ -213,6 +217,10 @@ struct WeatherDetailView: View {
                             uVGraphSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
+
+                            WeatherRotatingAdPlacement()
+                                .padding(.horizontal)
+                                .padding(.bottom, 24)
                             
                         case 2:
                             windGraphSection()
@@ -226,6 +234,10 @@ struct WeatherDetailView: View {
                                     .padding(.horizontal)
                                     .padding(.bottom)
                             }
+
+                            WeatherRotatingAdPlacement()
+                                .padding(.horizontal)
+                                .padding(.bottom, 24)
                             
                             windTableSection()
                                 .padding(.horizontal)
@@ -242,11 +254,14 @@ struct WeatherDetailView: View {
                             precipAmauntDiagranmSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
+
+                            WeatherRotatingAdPlacement()
+                                .padding(.horizontal)
+                                .padding(.bottom, 24)
                             
                             chanceOfPrecipGraphSection()
                                 .padding(.horizontal)
                                 .padding(.bottom)
-                                .offset(x: 5, y: -45)
                             
                             if let todayForecast = allDailyItems.first(where: {
                                 Calendar.current.isDate($0.date, inSameDayAs: selectedDate)
@@ -254,7 +269,6 @@ struct WeatherDetailView: View {
                                 precipitationTotalsSection(for: todayForecast)
                                     .padding(.horizontal)
                                     .padding(.bottom)
-                                    .offset(x: 5, y: -45)
                             }
                             
                             if let selectedDayForecast = allDailyItems.first(where: {
@@ -282,6 +296,10 @@ struct WeatherDetailView: View {
                                     .padding(.horizontal)
                                     .padding(.bottom)
                             }
+
+                            WeatherRotatingAdPlacement()
+                                .padding(.horizontal)
+                                .padding(.bottom, 24)
                           
                             aboutHumiditySection()
                                 .padding(.horizontal)
@@ -303,6 +321,10 @@ struct WeatherDetailView: View {
                                     .padding(.horizontal)
                                     .padding(.bottom)
                             }
+
+                            WeatherRotatingAdPlacement()
+                                .padding(.horizontal)
+                                .padding(.bottom, 24)
                             
                             aboutVisibilitySection()
                                 .padding(.horizontal)
@@ -320,6 +342,10 @@ struct WeatherDetailView: View {
                                     .padding(.horizontal)
                                     .padding(.bottom)
                             }
+
+                            WeatherRotatingAdPlacement()
+                                .padding(.horizontal)
+                                .padding(.bottom, 24)
                             
                             aboutPressureSection()
                                 .padding(.horizontal)
@@ -801,7 +827,6 @@ struct WeatherDetailView: View {
                 }
             }
         }
-        .offset(y: -10)
     }
 
 
@@ -962,7 +987,7 @@ struct WeatherDetailView: View {
             .lineSpacing(3)
             .foregroundColor(.gray)
         }
-        .offset(x: -2, y: -10)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
 
@@ -1021,7 +1046,6 @@ struct WeatherDetailView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: -60)
     }
 
 
@@ -1075,7 +1099,6 @@ struct WeatherDetailView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: -40)
     }
     
     @ViewBuilder
@@ -1140,7 +1163,6 @@ struct WeatherDetailView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: 5)
     }
 
 
@@ -1172,7 +1194,6 @@ struct WeatherDetailView: View {
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: 15)
     }
 
     func formatPressure(_ value: Double) -> String {
@@ -1259,7 +1280,6 @@ struct WeatherDetailView: View {
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: 5)
     }
 
 
@@ -1275,7 +1295,6 @@ struct WeatherDetailView: View {
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: 15)
     }
 
     @ViewBuilder
@@ -1289,7 +1308,6 @@ struct WeatherDetailView: View {
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: -40)
     }
 
     @ViewBuilder
@@ -1303,7 +1321,6 @@ struct WeatherDetailView: View {
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: -40)
     }
     
     @ViewBuilder
@@ -1320,7 +1337,6 @@ struct WeatherDetailView: View {
                 .foregroundColor(.gray)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(x: 4, y: -60)
     }
 
     
@@ -1343,7 +1359,6 @@ struct WeatherDetailView: View {
                 .multilineTextAlignment(.leading) // Подравняване на много редове
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .offset(y: -10)
     }
 
     struct BeaufortScaleItem: Identifiable {
@@ -1544,7 +1559,7 @@ struct WeatherDetailView: View {
                 .lineSpacing(3)
                 .foregroundColor(.gray)
         }
-        .offset(x: -4, y:-10)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     private var optionsSection: some View {

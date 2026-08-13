@@ -91,6 +91,7 @@ struct MoonDetailSheet: View {
                     LazyVStack(spacing: 18) {
                         selectedDaySummary
                         moonCalendarCard
+                        WeatherRotatingAdPlacement()
                         tenDayMoonForecastCard
                     }
                     .padding(.horizontal, 16)

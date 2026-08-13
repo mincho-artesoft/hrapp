@@ -47,6 +47,8 @@ struct SolarDetailSheet: View {
                             solarTimesCard(displayedDay)
                         }
 
+                        WeatherRotatingAdPlacement()
+
                         if !days.isEmpty {
                             upcomingDaysCard
                         }

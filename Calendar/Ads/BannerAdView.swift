@@ -4,6 +4,7 @@ import GoogleMobileAds
 struct BannerAdView: UIViewRepresentable {
     /// A single source of truth that SwiftUI can react to
     @Binding var adsBool: Bool
+    let adWidth: CGFloat
 
     #if DEBUG
     // Google Test ID за банери
@@ -15,8 +16,7 @@ struct BannerAdView: UIViewRepresentable {
     
     // MARK: - UIViewRepresentable
     func makeUIView(context: Context) -> BannerView {
-        let width   = UIScreen.main.bounds.width
-        let adSize  = currentOrientationAnchoredAdaptiveBanner(width: width)
+        let adSize = currentOrientationAnchoredAdaptiveBanner(width: adWidth)
 
         let banner  = BannerView(adSize: adSize)
         banner.adUnitID            = adUnitID

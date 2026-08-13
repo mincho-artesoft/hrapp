@@ -23,8 +23,6 @@ private struct SavedRegionWeatherSummary: Equatable {
 }
 
 struct WeatherKitView: View {
-    
-    @State private var shouldShowAds = true
 
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)
@@ -102,14 +100,10 @@ struct WeatherKitView: View {
                     hourlyForecastCard
                         .padding(.horizontal, 16)
                     
-                    // Условие за показване на реклами: Base план И датата е след 1.04.2026
-                    if SubscriptionManager.shared.subscriptionStatus == .base{
-                        if shouldShowAds {
-                            BannerAdView(adsBool: $shouldShowAds)
-                            .frame(height: 60)
-                            .padding(.vertical, 8)
-                        }
-                    }
+                    // Participates in the persisted Weather-wide
+                    // banner -> native -> banner rotation.
+                    WeatherRotatingAdPlacement(nativeHorizontalPadding: 16)
+                        .padding(.vertical, 8)
                    
                     // 10-дневният прогноз
                     tenDayForecastCard
@@ -1827,7 +1821,9 @@ struct HourlyForecastCard: View {
                 isAnyPrecip: isAnyPrecip,
                 onHourTap: onHourTap
             )
-            .frame(height: 120)
+            // A rainy forecast adds a dedicated percentage row. Give that row
+            // real vertical space instead of letting SwiftUI compress its text.
+            .frame(height: isAnyPrecip ? 132 : 120)
 
             HStack(spacing: 4) {
                 Image(systemName: "info.circle")
@@ -1946,7 +1942,8 @@ private struct SolarForecastCell: View {
 
             if reservesPrecipitationRow {
                 Text(" ")
-                    .font(.system(size: 12, weight: .medium))
+                    .font(.system(size: 11, weight: .semibold))
+                    .frame(height: 14)
             }
 
             Text(formattedTime)
@@ -1985,8 +1982,10 @@ private struct HourlyCell: View {
                         ? localizedFormat("%d%%", Int(item.precipChance * 100))
                         : " "
                 )
-                    .font(.system(size: 12, weight: .medium))
+                    // Match the 10-day precipitation percentage style.
+                    .font(.system(size: 11, weight: .semibold))
                     .foregroundColor(weatherPrecipitationAccent)
+                    .frame(height: 14)
             }
 
             Text(localizedFormat("%d°", Int(item.temp.rounded())))

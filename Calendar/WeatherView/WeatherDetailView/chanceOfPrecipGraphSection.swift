@@ -342,7 +342,8 @@ extension WeatherDetailView{
                 .lineSpacing(3)
             Spacer()
         }
-        .offset(x: 2, y: -10)
+        .padding(.leading, 2)
+        .padding(.top, 8)
         
     }
     
