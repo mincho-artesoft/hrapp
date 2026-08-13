@@ -286,6 +286,7 @@ struct RootView: View {
                                 menuState: $menuState,
                                 adaptiveBackgroundOpacity:$draggableMenuAdaptiveBackgroundОpacity,
                                 backgroundOverride: weatherDraggableMenuBackground,
+                                backgroundDimmingOpacity: selectedTab == 6 ? 0.35 : 0,
                                 bottomBar: {
                                     HStack{ // Content for bottomBar
                                         Spacer()
@@ -594,7 +595,6 @@ struct RootView: View {
         guard selectedTab == 6 else { return nil }
 
         if weatherSavedRegionsIsPresented {
-            // Exact final stop of savedRegionsBackgroundColors.
             return Color(red: 0.03, green: 0.13, blue: 0.24)
         }
 
@@ -602,8 +602,31 @@ struct RootView: View {
             conditionKey: weatherMenuViewModel.currentConditionLocalizationKey,
             symbolName: weatherMenuViewModel.currentSymbol,
             sunrise: weatherMenuViewModel.sunriseTime,
-            sunset: weatherMenuViewModel.sunsetTime
+            sunset: weatherMenuViewModel.sunsetTime,
+            observationDate: weatherMenuObservationDate
         )
+    }
+
+    private var weatherMenuObservationDate: Date {
+        #if DEBUG
+        var calendar = Calendar.current
+        calendar.timeZone = weatherMenuViewModel.locationTimeZone
+        let now = Date()
+        switch ScreenshotMode.weatherPreviewSky {
+        case "day":
+            return calendar.date(bySettingHour: 13, minute: 27, second: 0, of: now) ?? now
+        case "night":
+            return calendar.date(bySettingHour: 23, minute: 12, second: 0, of: now) ?? now
+        case "sunrise":
+            return calendar.date(bySettingHour: 6, minute: 22, second: 0, of: now) ?? now
+        case "sunset":
+            return calendar.date(bySettingHour: 20, minute: 20, second: 0, of: now) ?? now
+        default:
+            return now
+        }
+        #else
+        return Date()
+        #endif
     }
 
 }

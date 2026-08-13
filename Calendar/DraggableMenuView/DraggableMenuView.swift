@@ -15,12 +15,22 @@ struct DraggableMenuView<
 
     @Binding var adaptiveBackgroundOpacity: CGFloat
     let backgroundOverride: Color?
+    let backgroundDimmingOpacity: CGFloat
     @Environment(\.colorScheme) private var colorScheme
     private var adaptiveBackground: Color {
         if let backgroundOverride { return backgroundOverride }
         return colorScheme == .dark
             ? Color.black.opacity(adaptiveBackgroundOpacity)
             : Color.white.opacity(adaptiveBackgroundOpacity)
+    }
+
+    private var menuBackground: some View {
+        ZStack {
+            adaptiveBackground
+            if backgroundDimmingOpacity > 0 {
+                Color.black.opacity(backgroundDimmingOpacity)
+            }
+        }
     }
 
     // MARK: — External bindings & callbacks
@@ -41,6 +51,7 @@ struct DraggableMenuView<
         menuState: Binding<MenuState>,
         adaptiveBackgroundOpacity: Binding<CGFloat>,
         backgroundOverride: Color? = nil,
+        backgroundDimmingOpacity: CGFloat = 0,
         @ViewBuilder bottomBar: @escaping () -> BottomBarContent,
         @ViewBuilder horizontalContent: () -> HorizontalContent,
         @ViewBuilder verticalContent: () -> VerticalContent,
@@ -49,6 +60,7 @@ struct DraggableMenuView<
         self._menuState = menuState
         self._adaptiveBackgroundOpacity = adaptiveBackgroundOpacity
         self.backgroundOverride = backgroundOverride
+        self.backgroundDimmingOpacity = min(max(backgroundDimmingOpacity, 0), 1)
         self.onStateChange = onStateChange
 
         self.bottomBar = bottomBar
@@ -107,7 +119,7 @@ struct DraggableMenuView<
                     // 2.1 The sliding content
                     slidingContentView(fullOffsetY: fullOffsetY,
                                        collapsedOffsetY: collapsedOffsetY)
-                        .background(adaptiveBackground)
+                        .background(menuBackground)
                         .cornerRadius(0, antialiased: true)
                         .offset(y: effectiveY)
                         .frame(width: screenWidth, height: contentHeight)
@@ -116,7 +128,7 @@ struct DraggableMenuView<
                     // 2.2 The bottom bar
                     bottomBarView(bottomSafeArea: bottomSafe)
                         .frame(height: fixedBottomBarHeight)
-                        .background(adaptiveBackground)
+                        .background(menuBackground)
                 }
                 .frame(width: screenWidth)
                 .edgesIgnoringSafeArea([.top, .bottom])
