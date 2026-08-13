@@ -25,6 +25,7 @@ struct CalendarApp: App {
 
     @State private var hasRefreshedWidgetThisSession = false
     @State private var widgetRefreshTask: Task<Void, Never>?
+    @State private var pendingSharedEvent: SharedEventImportPayload?
 
     private let liveActivityRefreshInterval: UInt64 = 5 * 60 * 1_000_000_000
 
@@ -39,6 +40,14 @@ struct CalendarApp: App {
         #if DEBUG
         // Must run before RootView.init, which reads the persisted tab.
         MainActor.assumeIsolated { ScreenshotMode.applyIfNeeded() }
+
+        // Xcode's App Clip local experience supplies this value. Supporting it
+        // in the full app as well makes the handoff screen testable locally.
+        if let rawURL = ProcessInfo.processInfo.environment["_XCAppClipURL"],
+           let url = URL(string: rawURL),
+           let payload = SharedEventImportPayload(url: url) {
+            _pendingSharedEvent = State(initialValue: payload)
+        }
         #endif
     }
 
@@ -61,6 +70,7 @@ struct CalendarApp: App {
                         if hasLaunchedBefore {
                             Task {
                                 try? await Task.sleep(nanoseconds: 2_000_000_000)
+                                guard pendingSharedEvent == nil else { return }
                                 AppOpenAdManager.shared.showAdIfAvailable()
                             }
                         } else {
@@ -69,6 +79,25 @@ struct CalendarApp: App {
                     }
 
                     print("👀 onAppear — абонаментен панел: \(storedSubscriptionStatusRaw)")
+
+                    if pendingSharedEvent == nil {
+                        pendingSharedEvent = SharedEventImportHandoffStore.takePendingPayload()
+                    }
+                }
+                .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
+                    guard let url = activity.webpageURL,
+                          let payload = SharedEventImportPayload(url: url)
+                    else { return }
+                    SharedEventImportHandoffStore.clearPendingPayload()
+                    pendingSharedEvent = payload
+                }
+                .onOpenURL { url in
+                    guard let payload = SharedEventImportPayload(url: url) else { return }
+                    SharedEventImportHandoffStore.clearPendingPayload()
+                    pendingSharedEvent = payload
+                }
+                .sheet(item: $pendingSharedEvent) { payload in
+                    SharedEventImportView(payload: payload)
                 }
         }
         .backgroundTask(.appRefresh(CalendarLiveActivityBackgroundRefreshTask.identifier)) {
@@ -85,7 +114,14 @@ struct CalendarApp: App {
 
                     // ✅ Показваме само ако НЕ е първо стартиране.
                     if hasLaunchedBefore {
-                        AppOpenAdManager.shared.showAdIfAvailable()
+                        Task {
+                            // Universal-link delivery follows activation. This
+                            // short delay lets the shared-event route win over
+                            // the app-open ad when the app is already installed.
+                            try? await Task.sleep(for: .milliseconds(600))
+                            guard pendingSharedEvent == nil else { return }
+                            AppOpenAdManager.shared.showAdIfAvailable()
+                        }
                     } else {
                         hasLaunchedBefore = true
                     }

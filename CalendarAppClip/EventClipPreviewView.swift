@@ -118,7 +118,7 @@ struct EventClipPreviewView: View {
 
     private var appStoreButton: some View {
         Link(destination: URL(string: "https://apps.apple.com/app/cloud-calendars/id6744690319")!) {
-            Label("Open Cloud Calendars", systemImage: "arrow.down.app.fill")
+            Label("Download Cloud Calendars", systemImage: "arrow.down.app.fill")
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
@@ -126,6 +126,7 @@ struct EventClipPreviewView: View {
                 .foregroundStyle(Color(red: 0.02, green: 0.20, blue: 0.38))
         }
     }
+
 }
 
 #Preview {

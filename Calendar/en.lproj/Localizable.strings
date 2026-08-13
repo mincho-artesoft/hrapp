@@ -772,3 +772,14 @@
 "Reorder Region" = "Reorder Region";
 "WeatherAlert.Preview.HighTemperature" = "Yellow warning for high temperature";
 "Illumination" = "Illumination";
+"Shared event" = "Shared event";
+"Add to Calendar" = "Add to Calendar";
+"Event added" = "Event added";
+"Already in your calendar" = "Already in your calendar";
+"Unable to add event" = "Unable to add event";
+"Calendar Access Required" = "Calendar Access Required";
+"Allow calendar access in Settings to add this event." = "Allow calendar access in Settings to add this event.";
+"Open Settings" = "Open Settings";
+"Adding…" = "Adding…";
+"Couldn’t find a writable calendar." = "Couldn’t find a writable calendar.";
+"Please try again." = "Please try again.";

@@ -768,3 +768,14 @@
 "Current Location" = "Bieżące położenie";
 "Reorder Region" = "Zmień kolejność regionu";
 "Illumination" = "Oświetlenie";
+"Shared event" = "Udostępnione wydarzenie";
+"Add to Calendar" = "Dodaj do kalendarza";
+"Event added" = "Wydarzenie dodane";
+"Already in your calendar" = "Już jest w Twoim kalendarzu";
+"Unable to add event" = "Nie można dodać wydarzenia";
+"Calendar Access Required" = "Wymagany dostęp do kalendarza";
+"Allow calendar access in Settings to add this event." = "Zezwól na dostęp do kalendarza w Ustawieniach, aby dodać to wydarzenie.";
+"Open Settings" = "Otwórz Ustawienia";
+"Adding…" = "Dodawanie…";
+"Couldn’t find a writable calendar." = "Nie znaleziono kalendarza z możliwością zapisu.";
+"Please try again." = "Spróbuj ponownie.";

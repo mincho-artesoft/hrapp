@@ -768,3 +768,14 @@
 "Current Location" = "Locația actuală";
 "Reorder Region" = "Reordonează regiunea";
 "Illumination" = "Iluminare";
+"Shared event" = "Eveniment partajat";
+"Add to Calendar" = "Adaugă în calendar";
+"Event added" = "Eveniment adăugat";
+"Already in your calendar" = "Este deja în calendar";
+"Unable to add event" = "Evenimentul nu poate fi adăugat";
+"Calendar Access Required" = "Este necesar accesul la calendar";
+"Allow calendar access in Settings to add this event." = "Permite accesul la calendar din Configurări pentru a adăuga acest eveniment.";
+"Open Settings" = "Deschide Configurări";
+"Adding…" = "Se adaugă…";
+"Couldn’t find a writable calendar." = "Nu a fost găsit un calendar editabil.";
+"Please try again." = "Încearcă din nou.";

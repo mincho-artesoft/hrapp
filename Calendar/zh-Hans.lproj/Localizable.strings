@@ -768,3 +768,14 @@
 "Current Location" = "当前位置";
 "Reorder Region" = "重新排列地区";
 "Illumination" = "月面亮度";
+"Shared event" = "共享日程";
+"Add to Calendar" = "添加到日历";
+"Event added" = "日程已添加";
+"Already in your calendar" = "已在你的日历中";
+"Unable to add event" = "无法添加日程";
+"Calendar Access Required" = "需要日历访问权限";
+"Allow calendar access in Settings to add this event." = "请在“设置”中允许访问日历以添加此日程。";
+"Open Settings" = "打开设置";
+"Adding…" = "正在添加…";
+"Couldn’t find a writable calendar." = "找不到可写入的日历。";
+"Please try again." = "请重试。";

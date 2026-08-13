@@ -768,3 +768,14 @@
 "Current Location" = "Aktuel lokalitet";
 "Reorder Region" = "Omarranger område";
 "Illumination" = "Belysning";
+"Shared event" = "Delt begivenhed";
+"Add to Calendar" = "Føj til kalender";
+"Event added" = "Begivenheden er tilføjet";
+"Already in your calendar" = "Findes allerede i din kalender";
+"Unable to add event" = "Begivenheden kunne ikke tilføjes";
+"Calendar Access Required" = "Kalenderadgang kræves";
+"Allow calendar access in Settings to add this event." = "Tillad kalenderadgang i Indstillinger for at tilføje denne begivenhed.";
+"Open Settings" = "Åbn Indstillinger";
+"Adding…" = "Tilføjer…";
+"Couldn’t find a writable calendar." = "Der blev ikke fundet en kalender, der kan skrives til.";
+"Please try again." = "Prøv igen.";

@@ -768,3 +768,14 @@
 "Current Location" = "Jelenlegi helyzet";
 "Reorder Region" = "Régió átrendezése";
 "Illumination" = "Megvilágítás";
+"Shared event" = "Megosztott esemény";
+"Add to Calendar" = "Hozzáadás a naptárhoz";
+"Event added" = "Esemény hozzáadva";
+"Already in your calendar" = "Már szerepel a naptáradban";
+"Unable to add event" = "Az esemény nem adható hozzá";
+"Calendar Access Required" = "Naptárhozzáférés szükséges";
+"Allow calendar access in Settings to add this event." = "Az esemény hozzáadásához engedélyezd a naptárhozzáférést a Beállításokban.";
+"Open Settings" = "Beállítások megnyitása";
+"Adding…" = "Hozzáadás…";
+"Couldn’t find a writable calendar." = "Nem található írható naptár.";
+"Please try again." = "Próbáld újra.";

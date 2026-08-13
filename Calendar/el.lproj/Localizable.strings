@@ -768,3 +768,14 @@
 "Current Location" = "Τρέχουσα τοποθεσία";
 "Reorder Region" = "Αναδιάταξη περιοχής";
 "Illumination" = "Φωτισμός";
+"Shared event" = "Κοινόχρηστο συμβάν";
+"Add to Calendar" = "Προσθήκη στο ημερολόγιο";
+"Event added" = "Το συμβάν προστέθηκε";
+"Already in your calendar" = "Υπάρχει ήδη στο ημερολόγιό σας";
+"Unable to add event" = "Δεν ήταν δυνατή η προσθήκη του συμβάντος";
+"Calendar Access Required" = "Απαιτείται πρόσβαση στο ημερολόγιο";
+"Allow calendar access in Settings to add this event." = "Επιτρέψτε την πρόσβαση στο ημερολόγιο από τις Ρυθμίσεις για να προσθέσετε αυτό το συμβάν.";
+"Open Settings" = "Άνοιγμα Ρυθμίσεων";
+"Adding…" = "Προσθήκη…";
+"Couldn’t find a writable calendar." = "Δεν βρέθηκε ημερολόγιο με δυνατότητα εγγραφής.";
+"Please try again." = "Δοκιμάστε ξανά.";

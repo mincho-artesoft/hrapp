@@ -768,3 +768,14 @@
 "Current Location" = "目前位置";
 "Reorder Region" = "重新排列地區";
 "Illumination" = "月面亮度";
+"Shared event" = "共享行程";
+"Add to Calendar" = "加入行事曆";
+"Event added" = "行程已加入";
+"Already in your calendar" = "已在你的行事曆中";
+"Unable to add event" = "無法加入行程";
+"Calendar Access Required" = "需要行事曆取用權限";
+"Allow calendar access in Settings to add this event." = "請在「設定」中允許取用行事曆，以加入此行程。";
+"Open Settings" = "打開設定";
+"Adding…" = "正在加入…";
+"Couldn’t find a writable calendar." = "找不到可寫入的行事曆。";
+"Please try again." = "請再試一次。";

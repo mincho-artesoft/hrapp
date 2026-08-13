@@ -768,3 +768,14 @@
 "Current Location" = "現在地";
 "Reorder Region" = "地域を並べ替える";
 "Illumination" = "月面の明るさ";
+"Shared event" = "共有イベント";
+"Add to Calendar" = "カレンダーに追加";
+"Event added" = "イベントを追加しました";
+"Already in your calendar" = "すでにカレンダーにあります";
+"Unable to add event" = "イベントを追加できません";
+"Calendar Access Required" = "カレンダーへのアクセスが必要です";
+"Allow calendar access in Settings to add this event." = "このイベントを追加するには、設定でカレンダーへのアクセスを許可してください。";
+"Open Settings" = "設定を開く";
+"Adding…" = "追加中…";
+"Couldn’t find a writable calendar." = "書き込み可能なカレンダーが見つかりませんでした。";
+"Please try again." = "もう一度お試しください。";

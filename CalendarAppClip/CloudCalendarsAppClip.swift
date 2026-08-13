@@ -8,6 +8,7 @@ struct CloudCalendarsAppClip: App {
         #if DEBUG
         if let rawURL = ProcessInfo.processInfo.environment["_XCAppClipURL"],
            let url = URL(string: rawURL) {
+            AppClipEventHandoffStore.save(url)
             _payload = State(initialValue: SharedEventPayload(url: url))
         }
         #endif
@@ -18,9 +19,11 @@ struct CloudCalendarsAppClip: App {
             EventClipPreviewView(payload: payload)
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
                     guard let url = activity.webpageURL else { return }
+                    AppClipEventHandoffStore.save(url)
                     payload = SharedEventPayload(url: url)
                 }
                 .onOpenURL { url in
+                    AppClipEventHandoffStore.save(url)
                     payload = SharedEventPayload(url: url)
                 }
         }

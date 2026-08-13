@@ -768,3 +768,14 @@
 "Current Location" = "वर्तमान स्थान";
 "Reorder Region" = "क्षेत्र का क्रम बदलें";
 "Illumination" = "प्रकाशित भाग";
+"Shared event" = "साझा इवेंट";
+"Add to Calendar" = "कैलेंडर में जोड़ें";
+"Event added" = "इवेंट जोड़ दिया गया";
+"Already in your calendar" = "आपके कैलेंडर में पहले से मौजूद है";
+"Unable to add event" = "इवेंट नहीं जोड़ा जा सका";
+"Calendar Access Required" = "कैलेंडर ऐक्सेस आवश्यक है";
+"Allow calendar access in Settings to add this event." = "इस इवेंट को जोड़ने के लिए सेटिंग्स में कैलेंडर ऐक्सेस की अनुमति दें।";
+"Open Settings" = "सेटिंग्स खोलें";
+"Adding…" = "जोड़ा जा रहा है…";
+"Couldn’t find a writable calendar." = "लिखने योग्य कैलेंडर नहीं मिला।";
+"Please try again." = "कृपया फिर से कोशिश करें।";

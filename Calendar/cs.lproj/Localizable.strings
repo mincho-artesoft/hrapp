@@ -768,3 +768,14 @@
 "Current Location" = "Aktuální poloha";
 "Reorder Region" = "Změnit pořadí oblasti";
 "Illumination" = "Osvětlení";
+"Shared event" = "Sdílená událost";
+"Add to Calendar" = "Přidat do kalendáře";
+"Event added" = "Událost byla přidána";
+"Already in your calendar" = "Již je ve vašem kalendáři";
+"Unable to add event" = "Událost nelze přidat";
+"Calendar Access Required" = "Je vyžadován přístup ke kalendáři";
+"Allow calendar access in Settings to add this event." = "Chcete-li tuto událost přidat, povolte přístup ke kalendáři v Nastavení.";
+"Open Settings" = "Otevřít Nastavení";
+"Adding…" = "Přidávání…";
+"Couldn’t find a writable calendar." = "Nepodařilo se najít kalendář, do kterého lze zapisovat.";
+"Please try again." = "Zkuste to znovu.";

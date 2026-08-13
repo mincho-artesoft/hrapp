@@ -768,3 +768,14 @@
 "Reorder Region" = "Пренареждане на регион";
 "WeatherAlert.Preview.HighTemperature" = "Жълт код за високи температури";
 "Illumination" = "Осветеност";
+"Shared event" = "Споделено събитие";
+"Add to Calendar" = "Добави в календара";
+"Event added" = "Събитието е добавено";
+"Already in your calendar" = "Вече е в календара ви";
+"Unable to add event" = "Събитието не може да бъде добавено";
+"Calendar Access Required" = "Необходим е достъп до календара";
+"Allow calendar access in Settings to add this event." = "Разрешете достъп до календара в Настройки, за да добавите това събитие.";
+"Open Settings" = "Отвори Настройки";
+"Adding…" = "Добавяне…";
+"Couldn’t find a writable calendar." = "Не е намерен календар с право за запис.";
+"Please try again." = "Опитайте отново.";

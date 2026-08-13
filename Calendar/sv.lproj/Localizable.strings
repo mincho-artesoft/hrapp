@@ -768,3 +768,14 @@
 "Current Location" = "Nuvarande plats";
 "Reorder Region" = "Ändra ordning på region";
 "Illumination" = "Belysning";
+"Shared event" = "Delad aktivitet";
+"Add to Calendar" = "Lägg till i kalender";
+"Event added" = "Aktiviteten har lagts till";
+"Already in your calendar" = "Finns redan i din kalender";
+"Unable to add event" = "Det gick inte att lägga till aktiviteten";
+"Calendar Access Required" = "Kalenderåtkomst krävs";
+"Allow calendar access in Settings to add this event." = "Tillåt kalenderåtkomst i Inställningar för att lägga till aktiviteten.";
+"Open Settings" = "Öppna Inställningar";
+"Adding…" = "Lägger till…";
+"Couldn’t find a writable calendar." = "Ingen skrivbar kalender hittades.";
+"Please try again." = "Försök igen.";

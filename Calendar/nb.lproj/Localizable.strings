@@ -768,3 +768,14 @@
 "Current Location" = "Nåværende posisjon";
 "Reorder Region" = "Endre rekkefølge på område";
 "Illumination" = "Belysning";
+"Shared event" = "Delt hendelse";
+"Add to Calendar" = "Legg til i kalender";
+"Event added" = "Hendelsen er lagt til";
+"Already in your calendar" = "Finnes allerede i kalenderen din";
+"Unable to add event" = "Kunne ikke legge til hendelsen";
+"Calendar Access Required" = "Kalendertilgang kreves";
+"Allow calendar access in Settings to add this event." = "Tillat kalendertilgang i Innstillinger for å legge til denne hendelsen.";
+"Open Settings" = "Åpne Innstillinger";
+"Adding…" = "Legger til…";
+"Couldn’t find a writable calendar." = "Fant ingen kalender det kan skrives til.";
+"Please try again." = "Prøv igjen.";

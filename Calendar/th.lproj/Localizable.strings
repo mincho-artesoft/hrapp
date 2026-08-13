@@ -768,3 +768,14 @@
 "Current Location" = "ตำแหน่งปัจจุบัน";
 "Reorder Region" = "จัดลำดับภูมิภาคใหม่";
 "Illumination" = "ความสว่าง";
+"Shared event" = "กิจกรรมที่แชร์";
+"Add to Calendar" = "เพิ่มไปยังปฏิทิน";
+"Event added" = "เพิ่มกิจกรรมแล้ว";
+"Already in your calendar" = "มีอยู่ในปฏิทินของคุณแล้ว";
+"Unable to add event" = "ไม่สามารถเพิ่มกิจกรรมได้";
+"Calendar Access Required" = "จำเป็นต้องเข้าถึงปฏิทิน";
+"Allow calendar access in Settings to add this event." = "อนุญาตการเข้าถึงปฏิทินในการตั้งค่าเพื่อเพิ่มกิจกรรมนี้";
+"Open Settings" = "เปิดการตั้งค่า";
+"Adding…" = "กำลังเพิ่ม…";
+"Couldn’t find a writable calendar." = "ไม่พบปฏิทินที่สามารถเขียนได้";
+"Please try again." = "โปรดลองอีกครั้ง";

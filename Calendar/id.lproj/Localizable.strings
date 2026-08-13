@@ -768,3 +768,14 @@
 "Current Location" = "Lokasi saat ini";
 "Reorder Region" = "Susun ulang wilayah";
 "Illumination" = "Pencahayaan";
+"Shared event" = "Acara bersama";
+"Add to Calendar" = "Tambahkan ke Kalender";
+"Event added" = "Acara ditambahkan";
+"Already in your calendar" = "Sudah ada di kalender Anda";
+"Unable to add event" = "Tidak dapat menambahkan acara";
+"Calendar Access Required" = "Akses Kalender Diperlukan";
+"Allow calendar access in Settings to add this event." = "Izinkan akses kalender di Pengaturan untuk menambahkan acara ini.";
+"Open Settings" = "Buka Pengaturan";
+"Adding…" = "Menambahkan…";
+"Couldn’t find a writable calendar." = "Tidak dapat menemukan kalender yang dapat ditulisi.";
+"Please try again." = "Silakan coba lagi.";

@@ -768,3 +768,14 @@
 "Current Location" = "الموقع الحالي";
 "Reorder Region" = "إعادة ترتيب المنطقة";
 "Illumination" = "الإضاءة";
+"Shared event" = "حدث مشترك";
+"Add to Calendar" = "إضافة إلى التقويم";
+"Event added" = "تمت إضافة الحدث";
+"Already in your calendar" = "موجود بالفعل في تقويمك";
+"Unable to add event" = "تعذّرت إضافة الحدث";
+"Calendar Access Required" = "يلزم الوصول إلى التقويم";
+"Allow calendar access in Settings to add this event." = "اسمح بالوصول إلى التقويم من الإعدادات لإضافة هذا الحدث.";
+"Open Settings" = "فتح الإعدادات";
+"Adding…" = "جارٍ الإضافة…";
+"Couldn’t find a writable calendar." = "تعذّر العثور على تقويم قابل للكتابة.";
+"Please try again." = "يُرجى المحاولة مرة أخرى.";

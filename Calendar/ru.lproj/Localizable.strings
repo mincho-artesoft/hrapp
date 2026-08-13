@@ -764,3 +764,14 @@
 "Current Location" = "Текущее местоположение";
 "Reorder Region" = "Изменить порядок региона";
 "Illumination" = "Освещённость";
+"Shared event" = "Общее событие";
+"Add to Calendar" = "Добавить в календарь";
+"Event added" = "Событие добавлено";
+"Already in your calendar" = "Уже есть в вашем календаре";
+"Unable to add event" = "Не удалось добавить событие";
+"Calendar Access Required" = "Требуется доступ к календарю";
+"Allow calendar access in Settings to add this event." = "Разрешите доступ к календарю в Настройках, чтобы добавить это событие.";
+"Open Settings" = "Открыть Настройки";
+"Adding…" = "Добавление…";
+"Couldn’t find a writable calendar." = "Не найден календарь, доступный для записи.";
+"Please try again." = "Повторите попытку.";

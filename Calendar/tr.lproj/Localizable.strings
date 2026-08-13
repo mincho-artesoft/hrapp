@@ -768,3 +768,14 @@
 "Current Location" = "Mevcut konum";
 "Reorder Region" = "Bölgeyi yeniden sırala";
 "Illumination" = "Aydınlanma";
+"Shared event" = "Paylaşılan etkinlik";
+"Add to Calendar" = "Takvime Ekle";
+"Event added" = "Etkinlik eklendi";
+"Already in your calendar" = "Zaten takviminizde";
+"Unable to add event" = "Etkinlik eklenemedi";
+"Calendar Access Required" = "Takvim Erişimi Gerekli";
+"Allow calendar access in Settings to add this event." = "Bu etkinliği eklemek için Ayarlar’dan takvim erişimine izin verin.";
+"Open Settings" = "Ayarları Aç";
+"Adding…" = "Ekleniyor…";
+"Couldn’t find a writable calendar." = "Yazılabilir bir takvim bulunamadı.";
+"Please try again." = "Lütfen tekrar deneyin.";

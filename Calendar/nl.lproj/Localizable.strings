@@ -768,3 +768,14 @@
 "Current Location" = "Huidige locatie";
 "Reorder Region" = "Regio opnieuw ordenen";
 "Illumination" = "Verlichting";
+"Shared event" = "Gedeelde activiteit";
+"Add to Calendar" = "Voeg toe aan agenda";
+"Event added" = "Activiteit toegevoegd";
+"Already in your calendar" = "Staat al in je agenda";
+"Unable to add event" = "Activiteit kan niet worden toegevoegd";
+"Calendar Access Required" = "Toegang tot agenda vereist";
+"Allow calendar access in Settings to add this event." = "Sta agendatoegang toe in Instellingen om deze activiteit toe te voegen.";
+"Open Settings" = "Open Instellingen";
+"Adding…" = "Toevoegen…";
+"Couldn’t find a writable calendar." = "Er is geen beschrijfbare agenda gevonden.";
+"Please try again." = "Probeer het opnieuw.";

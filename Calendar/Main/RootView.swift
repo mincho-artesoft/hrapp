@@ -412,6 +412,24 @@ struct RootView: View {
                 selectedTab = 6
                 UserDefaults.standard.set(6, forKey: "selectedTabRoot")
             }
+        .onReceive(NotificationCenter.default.publisher(
+            for: .sharedEventImported)) { _ in
+                Task {
+                    accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
+                    guard accessGranted else { return }
+                    CalendarViewModel.shared.reloadCalendars()
+                    let year = Calendar.current.component(.year, from: Date())
+                    CalendarViewModel.shared.loadEventsForWholeYear(year: year)
+                    switch selectedTab {
+                    case 1: loadSingleDayEvents()
+                    case 3: loadMultiDayEvents()
+                    case 4: reloadAllEvents()
+                    case 5: reloadSingleDayEventsWithVisibleCalendars()
+                    default: break
+                    }
+                    refreshCalendarWidgetEventsSnapshot()
+                }
+            }
         .onAppear {
             // The collapsed Weather menu is transparent so the live weather
             // scene continues seamlessly behind its handle and controls.

@@ -768,3 +768,14 @@
 "Current Location" = "Nykyinen sijainti";
 "Reorder Region" = "Järjestä alue uudelleen";
 "Illumination" = "Valaistus";
+"Shared event" = "Jaettu tapahtuma";
+"Add to Calendar" = "Lisää kalenteriin";
+"Event added" = "Tapahtuma lisätty";
+"Already in your calendar" = "On jo kalenterissasi";
+"Unable to add event" = "Tapahtumaa ei voitu lisätä";
+"Calendar Access Required" = "Kalenterin käyttöoikeus vaaditaan";
+"Allow calendar access in Settings to add this event." = "Salli kalenterin käyttö Asetuksissa, jotta voit lisätä tämän tapahtuman.";
+"Open Settings" = "Avaa Asetukset";
+"Adding…" = "Lisätään…";
+"Couldn’t find a writable calendar." = "Muokattavaa kalenteria ei löytynyt.";
+"Please try again." = "Yritä uudelleen.";

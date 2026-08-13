@@ -768,3 +768,14 @@
 "Current Location" = "Vị trí hiện tại";
 "Reorder Region" = "Sắp xếp lại khu vực";
 "Illumination" = "Độ chiếu sáng";
+"Shared event" = "Sự kiện được chia sẻ";
+"Add to Calendar" = "Thêm vào Lịch";
+"Event added" = "Đã thêm sự kiện";
+"Already in your calendar" = "Đã có trong lịch của bạn";
+"Unable to add event" = "Không thể thêm sự kiện";
+"Calendar Access Required" = "Cần quyền truy cập Lịch";
+"Allow calendar access in Settings to add this event." = "Cho phép truy cập Lịch trong Cài đặt để thêm sự kiện này.";
+"Open Settings" = "Mở Cài đặt";
+"Adding…" = "Đang thêm…";
+"Couldn’t find a writable calendar." = "Không tìm thấy lịch có thể ghi.";
+"Please try again." = "Vui lòng thử lại.";

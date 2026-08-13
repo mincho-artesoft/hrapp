@@ -768,3 +768,14 @@
 "Current Location" = "현재 위치";
 "Reorder Region" = "지역 순서 변경";
 "Illumination" = "달의 밝기";
+"Shared event" = "공유된 이벤트";
+"Add to Calendar" = "캘린더에 추가";
+"Event added" = "이벤트가 추가됨";
+"Already in your calendar" = "이미 캘린더에 있음";
+"Unable to add event" = "이벤트를 추가할 수 없음";
+"Calendar Access Required" = "캘린더 접근 권한 필요";
+"Allow calendar access in Settings to add this event." = "이 이벤트를 추가하려면 설정에서 캘린더 접근을 허용하세요.";
+"Open Settings" = "설정 열기";
+"Adding…" = "추가 중…";
+"Couldn’t find a writable calendar." = "기록 가능한 캘린더를 찾을 수 없습니다.";
+"Please try again." = "다시 시도해 주세요.";
