@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Megosztási előugró ablak";
+"Would you like to share this event?" = "Szeretnéd megosztani ezt az eseményt?";
+"Don't ask again" = "Ne kérdezze újra";
 "No email was provided." = "Nem adtak meg e-mailt.";
 "Please enter a valid email to continue." = "A folytatáshoz adjon meg egy érvényes e-mail-címet.";
 "Your email" = "Az Ön email címe";

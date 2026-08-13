@@ -12,6 +12,7 @@ struct RootView: View {
     @State private var menuState: MenuState = .collapsed
     @ObservedObject private var liveActivityManager = CalendarLiveActivityManager.shared
     @ObservedObject private var weatherMenuViewModel = WeatherKitViewModel.shared
+    @ObservedObject private var eventSharePromptManager = EventSharePromptManager.shared
     @State private var draggableMenuAdaptiveBackgroundОpacity: CGFloat = 0.95
     @State private var weatherSavedRegionsIsPresented = false
     @AppStorage("interstitialTabSwitchCount") private var tabSwitchCounter: Int = 0
@@ -395,6 +396,16 @@ struct RootView: View {
         }
         .minimumScaleFactor(0.4)
         .allowsTightening(true)
+        .overlay(alignment: .top) {
+            if eventSharePromptManager.event != nil {
+                EventSharePromptView(manager: eventSharePromptManager)
+                    .padding(.horizontal, 16)
+                    .safeAreaPadding(.top, 8)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .zIndex(100)
+            }
+        }
+        .animation(.spring(response: 0.35, dampingFraction: 0.86), value: eventSharePromptManager.event != nil)
         .onReceive(NotificationCenter.default.publisher(
             for: .notificationDraggableMenuViewSub)) { notification in
                 if notification.userInfo != nil{

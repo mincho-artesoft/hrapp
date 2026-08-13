@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Popup för delning";
+"Would you like to share this event?" = "Vill du dela den här aktiviteten?";
+"Don't ask again" = "Fråga inte igen";
 "No email was provided." = "Ingen e-postadress angavs.";
 "Please enter a valid email to continue." = "Ange en giltig e-postadress för att fortsätta.";
 "Your email" = "Din e-postadress";

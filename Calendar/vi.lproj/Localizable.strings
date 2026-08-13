@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Cửa sổ bật lên chia sẻ";
+"Would you like to share this event?" = "Bạn có muốn chia sẻ sự kiện này không?";
+"Don't ask again" = "Đừng hỏi lại";
 "No email was provided." = "Không có email được cung cấp.";
 "Please enter a valid email to continue." = "Vui lòng nhập email hợp lệ để tiếp tục.";
 "Your email" = "Email của bạn";

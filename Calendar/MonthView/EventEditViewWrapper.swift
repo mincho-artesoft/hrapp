@@ -36,9 +36,11 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
     
     class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
         let parent: EventEditViewWrapper
+        let eventWasNew: Bool
         
         init(_ parent: EventEditViewWrapper) {
             self.parent = parent
+            self.eventWasNew = parent.event.eventIdentifier == nil
         }
         
         @MainActor func eventEditViewController(_ controller: EKEventEditViewController,
@@ -49,6 +51,11 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
             // Ако искаме да презаредим календари или списъци, можем да го направим след леко забавяне:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
                 EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+                if action == .saved,
+                   eventWasNew,
+                   let event = controller.event {
+                    EventSharePromptManager.shared.show(for: event)
+                }
                 // CalendarViewModel.shared.reloadCalendars()
                 // Извикваме и подадения callback, ако е зададен
                 parent.onEventUpdated?()

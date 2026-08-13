@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Pop-up voor delen";
+"Would you like to share this event?" = "Wil je deze activiteit delen?";
+"Don't ask again" = "Niet opnieuw vragen";
 "No email was provided." = "Er is geen e-mail opgegeven.";
 "Please enter a valid email to continue." = "Voer een geldig e-mailadres in om door te gaan.";
 "Your email" = "Uw e-mail";

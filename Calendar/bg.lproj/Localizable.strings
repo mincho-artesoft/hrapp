@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Изскачащ прозорец за споделяне";
+"Would you like to share this event?" = "Искате ли да споделите това събитие?";
+"Don't ask again" = "Не питай отново";
 "No email was provided." = "Не е предоставен имейл адрес.";
 "Please enter a valid email to continue." = "Моля, въведете валиден имейл, за да продължите.";
 "Your email" = "Вашият имейл";

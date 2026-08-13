@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "शेयर पॉप-अप";
+"Would you like to share this event?" = "क्या आप यह इवेंट शेयर करना चाहते हैं?";
+"Don't ask again" = "फिर न पूछें";
 "No email was provided." = "कोई ईमेल प्रदान नहीं किया गया.";
 "Please enter a valid email to continue." = "जारी रखने के लिए कृपया एक वैध ईमेल दर्ज करें।";
 "Your email" = "आपका ईमेल";

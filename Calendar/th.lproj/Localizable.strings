@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "ป๊อปอัปการแชร์";
+"Would you like to share this event?" = "คุณต้องการแชร์กิจกรรมนี้หรือไม่";
+"Don't ask again" = "ไม่ต้องถามอีก";
 "No email was provided." = "ไม่มีการระบุอีเมล";
 "Please enter a valid email to continue." = "กรุณากรอกอีเมล์ที่ถูกต้องเพื่อดำเนินการต่อ";
 "Your email" = "อีเมลของคุณ";

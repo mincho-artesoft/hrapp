@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Vyskakovací okno sdílení";
+"Would you like to share this event?" = "Chcete tuto událost sdílet?";
+"Don't ask again" = "Příště se neptat";
 "No email was provided." = "Nebyl poskytnut žádný e-mail.";
 "Please enter a valid email to continue." = "Chcete-li pokračovat, zadejte platný e-mail.";
 "Your email" = "Váš email";

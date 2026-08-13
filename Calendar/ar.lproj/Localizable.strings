@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "نافذة المشاركة المنبثقة";
+"Would you like to share this event?" = "هل ترغب في مشاركة هذا الحدث؟";
+"Don't ask again" = "لا تسأل مرة أخرى";
 "No email was provided." = "لم يتم توفير البريد الإلكتروني.";
 "Please enter a valid email to continue." = "الرجاء إدخال بريد إلكتروني صالح للمتابعة.";
 "Your email" = "البريد الإلكتروني الخاص بك";

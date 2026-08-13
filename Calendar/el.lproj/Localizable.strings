@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Αναδυόμενο παράθυρο κοινοποίησης";
+"Would you like to share this event?" = "Θέλετε να κοινοποιήσετε αυτό το γεγονός;";
+"Don't ask again" = "Να μην ερωτηθώ ξανά";
 "No email was provided." = "Δεν δόθηκε email.";
 "Please enter a valid email to continue." = "Εισαγάγετε ένα έγκυρο email για να συνεχίσετε.";
 "Your email" = "Το email σας";

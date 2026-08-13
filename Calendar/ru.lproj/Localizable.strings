@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Окно отправки";
+"Would you like to share this event?" = "Хотите поделиться этим событием?";
+"Don't ask again" = "Больше не спрашивать";
 "No email was provided." = "Не был указан адрес электронной почты.";
 "Please enter a valid email to continue." = "Пожалуйста, введите действительный адрес электронной почты, чтобы продолжить.";
 "Your email" = "Ваш адрес электронной почты";

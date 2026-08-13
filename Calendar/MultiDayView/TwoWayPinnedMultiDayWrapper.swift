@@ -174,6 +174,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         
         let parent: TwoWayPinnedMultiDayWrapper
         var currentlyEditingEventID: String? = nil
+        var currentlyEditingEventWasNew = false
 
         init(_ parent: TwoWayPinnedMultiDayWrapper) {
             self.parent = parent
@@ -183,10 +184,16 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction)
         {
+            let shouldOfferSharing = action == .saved && currentlyEditingEventWasNew
+            let completedEvent = controller.event
             defer {
                 controller.dismiss(animated: true) {
                     self.reloadCurrentRange()
+                    if shouldOfferSharing, let completedEvent {
+                        EventSharePromptManager.shared.show(for: completedEvent)
+                    }
                 }
+                currentlyEditingEventWasNew = false
             }
             switch action {
             case .canceled:
@@ -318,6 +325,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         public func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
             // Запомняме идентификатора:
             self.currentlyEditingEventID = ekEvent.eventIdentifier
+            self.currentlyEditingEventWasNew = ekEvent.eventIdentifier == nil
             
             let editVC = EKEventEditViewController()
             

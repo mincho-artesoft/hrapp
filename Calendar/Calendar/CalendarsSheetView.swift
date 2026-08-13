@@ -35,6 +35,8 @@ struct CalendarsSheetView: View {
     @State private var addingGoogleCalendarColor: UIColor? = nil
     @State private var weatherAlertNotificationsEnabled =
         WeatherAlertNotificationManager.notificationsEnabled
+    @AppStorage(EventSharePromptSettings.userDefaultsKey)
+    private var eventSharePromptEnabled = true
     private let bottomContentInset: CGFloat
 
     // MARK: - Init for iOS 14–15 appearance
@@ -223,6 +225,24 @@ struct CalendarsSheetView: View {
                     }
                 }
 
+                Divider()
+
+                Toggle(isOn: eventSharePromptToggleBinding) {
+                    HStack(spacing: 12) {
+                        Image(
+                            systemName: eventSharePromptEnabled
+                                ? "square.and.arrow.up.fill"
+                                : "square.and.arrow.up"
+                        )
+                        .font(.title3)
+                        .foregroundColor(.blue)
+                        .frame(width: 28, height: 28)
+
+                        Text(LocalizedStringKey("Share Pop-up"))
+                            .font(.headline)
+                    }
+                }
+
                 if weatherAlertNotificationsEnabled
                     && !notificationManager.eventNotificationsEnabled
                     && !notificationManager.notificationsAllowed {
@@ -291,6 +311,19 @@ struct CalendarsSheetView: View {
 
                 if isOn {
                     notificationManager.requestSystemNotificationAuthorizationIfNeeded()
+                }
+            }
+        )
+    }
+
+    private var eventSharePromptToggleBinding: Binding<Bool> {
+        Binding(
+            get: { eventSharePromptEnabled },
+            set: { isEnabled in
+                eventSharePromptEnabled = isEnabled
+                EventSharePromptSettings.setEnabled(isEnabled)
+                if !isEnabled {
+                    EventSharePromptManager.shared.dismiss()
                 }
             }
         )

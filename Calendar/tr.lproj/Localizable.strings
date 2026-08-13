@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Paylaşım açılır penceresi";
+"Would you like to share this event?" = "Bu etkinliği paylaşmak ister misiniz?";
+"Don't ask again" = "Bir daha sorma";
 "No email was provided." = "Hiçbir e-posta sağlanmadı.";
 "Please enter a valid email to continue." = "Devam etmek için lütfen geçerli bir e-posta girin.";
 "Your email" = "E-postanız";

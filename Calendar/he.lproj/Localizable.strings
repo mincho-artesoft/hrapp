@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "חלון קופץ לשיתוף";
+"Would you like to share this event?" = "האם ברצונך לשתף את האירוע הזה?";
+"Don't ask again" = "אל תשאל שוב";
 "No email was provided." = "לא סופק כתובת דוא\"ל.";
 "Please enter a valid email to continue." = "אנא הזן כתובת דוא\"ל חוקית כדי להמשיך.";
 "Your email" = "הדוא\"ל שלך";

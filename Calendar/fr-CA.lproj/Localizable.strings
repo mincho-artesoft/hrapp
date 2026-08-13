@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Fenêtre de partage";
+"Would you like to share this event?" = "Souhaitez-vous partager cet événement ?";
+"Don't ask again" = "Ne plus demander";
 "No email was provided." = "Aucune adresse e-mail n'a été fournie.";
 "Please enter a valid email to continue." = "Veuillez saisir une adresse e-mail valide pour continuer.";
 "Your email" = "Votre e-mail";

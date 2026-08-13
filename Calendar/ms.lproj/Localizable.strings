@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Tetingkap timbul perkongsian";
+"Would you like to share this event?" = "Adakah anda mahu berkongsi acara ini?";
+"Don't ask again" = "Jangan tanya lagi";
 "No email was provided." = "Tiada e-mel diberikan.";
 "Please enter a valid email to continue." = "Sila masukkan e-mel yang sah untuk meneruskan.";
 "Your email" = "e-mel anda";

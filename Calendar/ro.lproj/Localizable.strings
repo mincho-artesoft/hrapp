@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Fereastră de partajare";
+"Would you like to share this event?" = "Doriți să distribuiți acest eveniment?";
+"Don't ask again" = "Nu mai întreba";
 "No email was provided." = "Nu a fost furnizată nicio adresă de e-mail.";
 "Please enter a valid email to continue." = "Vă rugăm să introduceți o adresă de e-mail validă pentru a continua.";
 "Your email" = "Adresa dvs. de e-mail";

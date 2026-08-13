@@ -1,6 +1,116 @@
 import Foundation
 import EventKit
+import SwiftUI
 import UIKit
+
+enum EventSharePromptSettings {
+    static let userDefaultsKey = "eventSharePromptEnabled"
+
+    static var isEnabled: Bool {
+        let defaults = UserDefaults.standard
+        guard defaults.object(forKey: userDefaultsKey) != nil else { return true }
+        return defaults.bool(forKey: userDefaultsKey)
+    }
+
+    static func setEnabled(_ isEnabled: Bool) {
+        UserDefaults.standard.set(isEnabled, forKey: userDefaultsKey)
+    }
+}
+
+@MainActor
+final class EventSharePromptManager: ObservableObject {
+    static let shared = EventSharePromptManager()
+
+    @Published private(set) var event: EKEvent?
+    private var dismissalWorkItem: DispatchWorkItem?
+
+    private init() {}
+
+    func show(for event: EKEvent) {
+        guard EventSharePromptSettings.isEnabled,
+              EventAppClipSharing.invocationURL(for: event) != nil
+        else { return }
+
+        dismissalWorkItem?.cancel()
+        self.event = event
+
+        let workItem = DispatchWorkItem { [weak self] in
+            Task { @MainActor in
+                self?.dismiss()
+            }
+        }
+        dismissalWorkItem = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: workItem)
+    }
+
+    func dismiss() {
+        dismissalWorkItem?.cancel()
+        dismissalWorkItem = nil
+        event = nil
+    }
+
+    func disableAndDismiss() {
+        EventSharePromptSettings.setEnabled(false)
+        dismiss()
+    }
+
+    func share() {
+        guard let event else { return }
+        dismiss()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            EventAppClipSharing.present(for: event)
+        }
+    }
+}
+
+struct EventSharePromptView: View {
+    @ObservedObject var manager: EventSharePromptManager
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 10) {
+                Image(systemName: "square.and.arrow.up")
+                    .font(.headline)
+                    .foregroundStyle(.blue)
+
+                Text(LocalizedStringKey("Would you like to share this event?"))
+                    .font(.headline)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            HStack(spacing: 10) {
+                Button {
+                    manager.disableAndDismiss()
+                } label: {
+                    Text(LocalizedStringKey("Don't ask again"))
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                }
+                .buttonStyle(.bordered)
+
+                Button {
+                    manager.share()
+                } label: {
+                    Label(LocalizedStringKey("Share"), systemImage: "square.and.arrow.up")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        }
+        .padding(16)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .stroke(Color.white.opacity(0.16), lineWidth: 1)
+        }
+        .shadow(color: .black.opacity(0.25), radius: 18, y: 8)
+        .accessibilityElement(children: .contain)
+    }
+}
 
 /// Builds the invocation URL used by the Event Preview App Clip and presents
 /// the system share sheet. The URL intentionally contains only the event data
@@ -118,6 +228,30 @@ enum EventAppClipSharing {
         presenter.present(activityController, animated: true)
     }
 
+    @MainActor
+    static func present(for event: EKEvent) {
+        guard let url = invocationURL(for: event),
+              let presenter = activePresentingViewController()
+        else { return }
+
+        let activityController = UIActivityViewController(
+            activityItems: [url],
+            applicationActivities: nil
+        )
+
+        if let popover = activityController.popoverPresentationController {
+            popover.sourceView = presenter.view
+            popover.sourceRect = CGRect(
+                x: presenter.view.bounds.midX,
+                y: presenter.view.bounds.minY + 80,
+                width: 1,
+                height: 1
+            )
+        }
+
+        presenter.present(activityController, animated: true)
+    }
+
     private static func limited(_ value: String, to maximumLength: Int) -> String {
         String(value.prefix(maximumLength))
     }
@@ -145,5 +279,25 @@ enum EventAppClipSharing {
             current = presented
         }
         return current
+    }
+
+    @MainActor
+    private static func activePresentingViewController() -> UIViewController? {
+        let activeScene = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .first { $0.activationState == .foregroundActive }
+        var current = activeScene?.windows.first(where: \.isKeyWindow)?.rootViewController
+
+        while true {
+            if let presented = current?.presentedViewController {
+                current = presented
+            } else if let navigation = current as? UINavigationController {
+                current = navigation.visibleViewController
+            } else if let tab = current as? UITabBarController {
+                current = tab.selectedViewController
+            } else {
+                return current
+            }
+        }
     }
 }

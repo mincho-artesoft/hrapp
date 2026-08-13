@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Jakamisen ponnahdusikkuna";
+"Would you like to share this event?" = "Haluatko jakaa tämän tapahtuman?";
+"Don't ask again" = "Älä kysy uudelleen";
 "No email was provided." = "Sähköpostia ei annettu.";
 "Please enter a valid email to continue." = "Anna kelvollinen sähköpostiosoite jatkaaksesi.";
 "Your email" = "Sähköpostisi";

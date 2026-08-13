@@ -168,6 +168,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         }
         
         let parent: TwoWayPinnedSingleDayMultiCalendarWrapper
+        var currentlyEditingEventWasNew = false
         
         init(_ parent: TwoWayPinnedSingleDayMultiCalendarWrapper) {
             self.parent = parent
@@ -176,8 +177,14 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         @MainActor public func eventEditViewController(_ controller: EKEventEditViewController,
                                             didCompleteWith action: EKEventEditViewAction) {
+            let shouldOfferSharing = action == .saved && currentlyEditingEventWasNew
+            let completedEvent = controller.event
+            currentlyEditingEventWasNew = false
             controller.dismiss(animated: true) {
                 self.reloadCurrentRange()
+                if shouldOfferSharing, let completedEvent {
+                    EventSharePromptManager.shared.show(for: completedEvent)
+                }
             }
         }
         
@@ -301,6 +308,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         }
         
         @MainActor public func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+            currentlyEditingEventWasNew = ekEvent.eventIdentifier == nil
             let editVC = EKEventEditViewController()
             editVC.eventStore = parent.eventStore
             editVC.event = ekEvent

@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "共有ポップアップ";
+"Would you like to share this event?" = "このイベントを共有しますか？";
+"Don't ask again" = "今後は確認しない";
 "No email was provided." = "メールアドレスが入力されていません。";
 "Please enter a valid email to continue." = "続行するには、有効なメールアドレスを入力してください。";
 "Your email" = "メールアドレス";

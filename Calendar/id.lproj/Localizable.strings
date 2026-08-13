@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Pop-up berbagi";
+"Would you like to share this event?" = "Apakah Anda ingin membagikan acara ini?";
+"Don't ask again" = "Jangan tanya lagi";
 "No email was provided." = "Tidak ada email yang diberikan.";
 "Please enter a valid email to continue." = "Silakan masukkan email yang valid untuk melanjutkan.";
 "Your email" = "email Anda";

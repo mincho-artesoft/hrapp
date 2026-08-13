@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "分享弹窗";
+"Would you like to share this event?" = "要分享此日程吗？";
+"Don't ask again" = "不再询问";
 "No email was provided." = "没有提供电子邮件。";
 "Please enter a valid email to continue." = "请输入有效的电子邮件以继续。";
 "Your email" = "您的电子邮件";

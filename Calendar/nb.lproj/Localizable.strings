@@ -1,4 +1,7 @@
 /* RequestEmailView */
+"Share Pop-up" = "Delingsvindu";
+"Would you like to share this event?" = "Vil du dele denne hendelsen?";
+"Don't ask again" = "Ikke spør igjen";
 "No email was provided." = "Ingen e-post ble oppgitt.";
 "Please enter a valid email to continue." = "Skriv inn en gyldig e-postadresse for å fortsette.";
 "Your email" = "Din e-post";

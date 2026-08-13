@@ -302,6 +302,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         do {
             try store.save(newEv, span: .thisEvent, commit: true)
             print("Duplicated: \(original.title ?? "") → \(newEv.title ?? "")")
+            EventSharePromptManager.shared.show(for: newEv)
         } catch {
             print("Error duplicating:", error)
         }
