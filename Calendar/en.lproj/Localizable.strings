@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "N/A - Selected Tab: %@";
 "Enable Notifications" = "Enable Notifications";
 "Event Notifications" = "Event Notifications";
+"Weather Alert Notifications" = "Weather Alert Notifications";
+"Allow notifications so weather alerts can appear." = "Allow notifications so weather alerts can appear.";
 "Event alerts are scheduled from your event alert settings." = "Event alerts are scheduled from your event alert settings.";
 "Allow notifications so event alerts can appear at the right time." = "Allow notifications so event alerts can appear at the right time.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications.";
@@ -768,3 +770,4 @@
 "Current Location" = "Current Location";
 "Reorder Region" = "Reorder Region";
 "WeatherAlert.Preview.HighTemperature" = "Yellow warning for high temperature";
+"Illumination" = "Illumination";

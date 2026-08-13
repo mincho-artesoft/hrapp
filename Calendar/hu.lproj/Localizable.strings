@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Nem érhető el – kiválasztott lap: %@";
 "Enable Notifications" = "Értesítések engedélyezése";
 "Event Notifications" = "Eseményértesítések";
+"Weather Alert Notifications" = "Időjárási riasztások";
+"Allow notifications so weather alerts can appear." = "Engedélyezze az értesítéseket az időjárási riasztások fogadásához.";
 "Event alerts are scheduled from your event alert settings." = "Az eseményriasztások ütemezése az eseményriasztási beállításokból történik.";
 "Allow notifications so event alerts can appear at the right time." = "Engedélyezze az értesítéseket, hogy az eseményriasztások a megfelelő időben jelenjenek meg.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Az értesítések ki vannak kapcsolva ennél az alkalmazásnál. Az engedélyezésükhöz lépjen a Beállítások -> Alkalmazások -> Cloud Calendars -> Értesítések -> Értesítések engedélyezése menüpontra.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Mentett régiók";
 "Current Location" = "Jelenlegi helyzet";
 "Reorder Region" = "Régió átrendezése";
+"Illumination" = "Megvilágítás";

@@ -695,6 +695,8 @@
 "N/A - Selected Tab: %@" = "Н/Д - выбранная вкладка: %@";
 "Enable Notifications" = "Включить уведомления";
 "Event Notifications" = "Уведомления о событиях";
+"Weather Alert Notifications" = "Уведомления о погодных предупреждениях";
+"Allow notifications so weather alerts can appear." = "Разрешите уведомления, чтобы получать предупреждения о погоде.";
 "Event alerts are scheduled from your event alert settings." = "Оповещения о событиях планируются согласно настройкам оповещений в событиях.";
 "Allow notifications so event alerts can appear at the right time." = "Разрешите уведомления, чтобы оповещения о событиях появлялись вовремя.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Уведомления для этого приложения выключены. Чтобы включить их, перейдите: Настройки -> Приложения -> Cloud Calendars -> Уведомления -> Разрешить уведомления.";
@@ -760,3 +762,4 @@
 "Saved Regions" = "Сохранённые регионы";
 "Current Location" = "Текущее местоположение";
 "Reorder Region" = "Изменить порядок региона";
+"Illumination" = "Освещённость";

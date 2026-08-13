@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "該当なし - 選択したタブ: %@";
 "Enable Notifications" = "通知を有効にする";
 "Event Notifications" = "イベント通知";
+"Weather Alert Notifications" = "気象警報の通知";
+"Allow notifications so weather alerts can appear." = "気象警報を受け取るには通知を許可してください。";
 "Event alerts are scheduled from your event alert settings." = "イベント アラートは、イベント アラート設定からスケジュールされます。";
 "Allow notifications so event alerts can appear at the right time." = "通知を許可すると、イベント アラートが適切なタイミングで表示されます。";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "このアプリの通知はオフになっています。有効にするには、[設定] -> [アプリ] -> [Cloud Calendars] -> [通知] -> [通知を許可] に移動します。";
@@ -764,3 +766,4 @@
 "Saved Regions" = "保存済みの地域";
 "Current Location" = "現在地";
 "Reorder Region" = "地域を並べ替える";
+"Illumination" = "月面の明るさ";

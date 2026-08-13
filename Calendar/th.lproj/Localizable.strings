@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "ไม่มีข้อมูล - แท็บที่เลือก: %@";
 "Enable Notifications" = "เปิดใช้งานการแจ้งเตือน";
 "Event Notifications" = "การแจ้งเตือนเหตุการณ์";
+"Weather Alert Notifications" = "การแจ้งเตือนคำเตือนสภาพอากาศ";
+"Allow notifications so weather alerts can appear." = "อนุญาตการแจ้งเตือนเพื่อรับคำเตือนสภาพอากาศ";
 "Event alerts are scheduled from your event alert settings." = "การแจ้งเตือนกิจกรรมกำหนดไว้จากการตั้งค่าการแจ้งเตือนกิจกรรมของคุณ";
 "Allow notifications so event alerts can appear at the right time." = "อนุญาตการแจ้งเตือนเพื่อให้การแจ้งเตือนกิจกรรมปรากฏขึ้นในเวลาที่เหมาะสม";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "การแจ้งเตือนสำหรับแอปนี้ปิดอยู่ หากต้องการเปิดใช้งาน ให้ไปที่: การตั้งค่า -> แอป -> Cloud Calendars -> การแจ้งเตือน -> อนุญาตการแจ้งเตือน";
@@ -764,3 +766,4 @@
 "Saved Regions" = "ภูมิภาคที่บันทึกไว้";
 "Current Location" = "ตำแหน่งปัจจุบัน";
 "Reorder Region" = "จัดลำดับภูมิภาคใหม่";
+"Illumination" = "ความสว่าง";

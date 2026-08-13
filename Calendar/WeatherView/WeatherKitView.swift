@@ -62,6 +62,7 @@ struct WeatherKitView: View {
     @State private var showVisibilityDetail = false
     @State private var showPressureDetail = false
     @State private var showSolarDetail = false
+    @State private var showMoonDetail = false
 
     
     init(selectedTab: Int, onViewChange: ((Int) -> Void)? = nil) {
@@ -70,6 +71,7 @@ struct WeatherKitView: View {
         #if DEBUG
         _showSavedRegions = State(initialValue: ScreenshotMode.weatherPreviewSavedRegionsOpen)
         _showSolarDetail = State(initialValue: ScreenshotMode.weatherPreviewSolarDetail)
+        _showMoonDetail = State(initialValue: ScreenshotMode.weatherPreviewMoonDetail)
         #endif
     }
 
@@ -383,6 +385,14 @@ struct WeatherKitView: View {
         .sheet(isPresented: $showSolarDetail) {
             SolarDetailSheet(
                 days: vm.solarDayForecast,
+                timeZone: vm.locationTimeZone,
+                observationDate: weatherPreviewObservationDate ?? Date(),
+                coordinate: vm.locationCoordinate
+            )
+        }
+        .sheet(isPresented: $showMoonDetail) {
+            MoonDetailSheet(
+                forecastDays: vm.dailyForecast,
                 timeZone: vm.locationTimeZone,
                 observationDate: weatherPreviewObservationDate ?? Date()
             )
@@ -1415,6 +1425,10 @@ struct WeatherKitView: View {
             MoonCard(
                 moonEvents: vm.currentMoonEvents
             )
+            .contentShape(Rectangle())
+            .onTapGesture {
+                showMoonDetail = true
+            }
             HStack(spacing: 15) {
                 let nextRainInfo = findNextPrecipitationEvent()
                 PrecipitationTodayCard(
@@ -1900,10 +1914,11 @@ private struct SolarForecastCell: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             Text(event.kind.localizedTitle)
-                .font(.system(size: 12, weight: .medium))
+                .font(.system(size: 14, weight: .medium))
                 .adaptiveSingleLine(minimumScale: 0.55)
+                .frame(height: 17)
 
             Image(systemName: event.kind.symbolName)
                 .symbolRenderingMode(.multicolor)
@@ -1916,8 +1931,9 @@ private struct SolarForecastCell: View {
             }
 
             Text(formattedTime)
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: 18, weight: .medium))
                 .adaptiveSingleLine(minimumScale: 0.6)
+                .frame(height: 22)
         }
         .frame(minWidth: 52, idealWidth: 62, maxWidth: 74)
         .accessibilityElement(children: .ignore)
@@ -1932,9 +1948,10 @@ private struct HourlyCell: View {
     let isAnyPrecip: Bool
 
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             Text(item.hour)
                 .font(.system(size: 14, weight: .medium))
+                .frame(height: 17)
 
             Image(systemName: item.symbol)
                 .symbolVariant(.fill)
@@ -1955,6 +1972,7 @@ private struct HourlyCell: View {
 
             Text(localizedFormat("%d°", Int(item.temp.rounded())))
                 .font(.system(size: 18, weight: .medium))
+                .frame(height: 22)
         }
         .frame(minWidth: 25, idealWidth: 35, maxWidth: 45)
         .contentShape(Rectangle())

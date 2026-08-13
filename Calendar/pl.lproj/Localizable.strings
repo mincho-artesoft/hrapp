@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Nie dotyczy – wybrana karta: %@";
 "Enable Notifications" = "Włącz powiadomienia";
 "Event Notifications" = "Powiadomienia o wydarzeniach";
+"Weather Alert Notifications" = "Powiadomienia o ostrzeżeniach pogodowych";
+"Allow notifications so weather alerts can appear." = "Zezwól na powiadomienia, aby otrzymywać ostrzeżenia pogodowe.";
 "Event alerts are scheduled from your event alert settings." = "Alerty o wydarzeniach są planowane w ustawieniach alertów o wydarzeniach.";
 "Allow notifications so event alerts can appear at the right time." = "Zezwalaj na powiadomienia, aby alerty o zdarzeniach pojawiały się we właściwym czasie.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Powiadomienia są wyłączone w tej aplikacji. Aby je włączyć, przejdź do: Ustawienia -> Aplikacje -> Cloud Calendars -> Powiadomienia -> Zezwalaj na powiadomienia.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Zapisane regiony";
 "Current Location" = "Bieżące położenie";
 "Reorder Region" = "Zmień kolejność regionu";
+"Illumination" = "Oświetlenie";

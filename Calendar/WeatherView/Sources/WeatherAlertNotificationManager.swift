@@ -1,7 +1,7 @@
 import CoreLocation
 import CryptoKit
 import Foundation
-import UserNotifications
+@preconcurrency import UserNotifications
 @preconcurrency import WeatherKit
 
 /// Checks WeatherKit only for the device's last real GPS position and emits a
@@ -10,6 +10,15 @@ actor WeatherAlertNotificationManager {
     static let shared = WeatherAlertNotificationManager()
 
     private static let logPrefix = "🌦️ [WeatherAlerts]"
+    private static let notificationsEnabledKey = "WeatherAlertNotificationsEnabled"
+
+    /// Weather warnings are opted in by default, but can only be delivered
+    /// after the user has granted the app's shared iOS notification permission.
+    nonisolated static var notificationsEnabled: Bool {
+        let defaults = UserDefaults.standard
+        guard defaults.object(forKey: notificationsEnabledKey) != nil else { return true }
+        return defaults.bool(forKey: notificationsEnabledKey)
+    }
 
     private struct StoredGPSLocation: Codable {
         let latitude: Double
@@ -39,6 +48,19 @@ actor WeatherAlertNotificationManager {
     private var directCheckIsRunning = false
 
     private init() {}
+
+    func setNotificationsEnabled(_ enabled: Bool) async {
+        UserDefaults.standard.set(enabled, forKey: Self.notificationsEnabledKey)
+        log("Weather alert notifications were \(enabled ? "enabled" : "disabled") by the user")
+
+        if enabled {
+            await checkForNewGPSAlerts(force: true, reason: "weather-alert-toggle-enabled")
+        } else {
+            UserDefaults.standard.removeObject(forKey: activeAlertFingerprintsKey)
+            UserDefaults.standard.removeObject(forKey: lastSuccessfulCheckKey)
+            cancelPendingWeatherAlertNotifications()
+        }
+    }
 
     func recordGPSLocation(_ location: CLLocation, displayName: String? = nil) {
         guard location.horizontalAccuracy >= 0 else {
@@ -122,6 +144,11 @@ actor WeatherAlertNotificationManager {
     ) async {
         log("Starting alert check (reason=\(reason), force=\(force))")
 
+        guard Self.notificationsEnabled else {
+            log("Stopped: weather alert notifications are disabled in the app")
+            return
+        }
+
         guard !directCheckIsRunning else {
             log("Stopped: another direct GPS alert check is already running")
             return
@@ -203,6 +230,11 @@ actor WeatherAlertNotificationManager {
         logAlerts(alerts ?? [], source: "visible GPS forecast")
         recordGPSLocation(location, displayName: displayName)
 
+        guard Self.notificationsEnabled else {
+            log("Did not notify: weather alert notifications are disabled in the app")
+            return
+        }
+
         let center = UNUserNotificationCenter.current()
         let settings = await center.notificationSettings()
         logNotificationSettings(settings)
@@ -221,6 +253,11 @@ actor WeatherAlertNotificationManager {
         gps: StoredGPSLocation,
         center: UNUserNotificationCenter
     ) async {
+        guard Self.notificationsEnabled else {
+            log("Did not deliver alerts: weather alert notifications are disabled in the app")
+            return
+        }
+
         let defaults = UserDefaults.standard
         let alertEntries = alerts.map { alert in
             (alert: alert, fingerprint: fingerprint(for: alert, gps: gps))
@@ -288,6 +325,24 @@ actor WeatherAlertNotificationManager {
 
         defaults.set(Array(recordedFingerprints).sorted(), forKey: activeAlertFingerprintsKey)
         log("Saved \(recordedFingerprints.count) active alert fingerprint(s)")
+    }
+
+    private func cancelPendingWeatherAlertNotifications() {
+        let prefix = notificationPrefix
+        let center = UNUserNotificationCenter.current()
+
+        center.getPendingNotificationRequests { requests in
+            let identifiers = requests
+                .map(\.identifier)
+                .filter { $0.hasPrefix(prefix) }
+
+            guard !identifiers.isEmpty else { return }
+            center.removePendingNotificationRequests(withIdentifiers: identifiers)
+            print(
+                "\(Self.logPrefix) Cancelled \(identifiers.count) "
+                    + "pending weather alert notification(s)"
+            )
+        }
     }
 
     private func storedGPSLocation(

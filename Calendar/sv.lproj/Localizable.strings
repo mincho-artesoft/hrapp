@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Ej tillgänglig – vald flik: %@";
 "Enable Notifications" = "Aktivera aviseringar";
 "Event Notifications" = "Händelsemeddelanden";
+"Weather Alert Notifications" = "Notiser om vädervarningar";
+"Allow notifications so weather alerts can appear." = "Tillåt notiser för att få vädervarningar.";
 "Event alerts are scheduled from your event alert settings." = "Händelsevarningar schemaläggs från dina inställningar för händelsevarningar.";
 "Allow notifications so event alerts can appear at the right time." = "Tillåt aviseringar så att händelseaviseringar kan visas vid rätt tidpunkt.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Aviseringar är avstängda för den här appen. För att aktivera dem, gå till: Inställningar -> Appar -> Cloud Calendars -> Aviseringar -> Tillåt aviseringar.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Sparade regioner";
 "Current Location" = "Nuvarande plats";
 "Reorder Region" = "Ändra ordning på region";
+"Illumination" = "Belysning";

@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "N.v.t. - Geselecteerd tabblad: %@";
 "Enable Notifications" = "Meldingen inschakelen";
 "Event Notifications" = "Gebeurtenismeldingen";
+"Weather Alert Notifications" = "Meldingen voor weerwaarschuwingen";
+"Allow notifications so weather alerts can appear." = "Sta meldingen toe om weerwaarschuwingen te ontvangen.";
 "Event alerts are scheduled from your event alert settings." = "Gebeurteniswaarschuwingen worden gepland via uw instellingen voor gebeurteniswaarschuwingen.";
 "Allow notifications so event alerts can appear at the right time." = "Sta meldingen toe, zodat gebeurteniswaarschuwingen op het juiste moment kunnen verschijnen.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Meldingen zijn uitgeschakeld voor deze app. Om ze in te schakelen, ga naar: Instellingen -> Apps -> Cloud Calendars -> Meldingen -> Meldingen toestaan.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Opgeslagen regio’s";
 "Current Location" = "Huidige locatie";
 "Reorder Region" = "Regio opnieuw ordenen";
+"Illumination" = "Verlichting";

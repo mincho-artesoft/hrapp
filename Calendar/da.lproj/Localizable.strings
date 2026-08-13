@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Ikke tilgængelig – valgt fane: %@";
 "Enable Notifications" = "Aktiver meddelelser";
 "Event Notifications" = "Begivenhedsmeddelelser";
+"Weather Alert Notifications" = "Notifikationer om vejradvarsler";
+"Allow notifications so weather alerts can appear." = "Tillad notifikationer for at modtage vejradvarsler.";
 "Event alerts are scheduled from your event alert settings." = "Begivenhedsadvarsler er planlagt fra dine indstillinger for begivenhedsunderretninger.";
 "Allow notifications so event alerts can appear at the right time." = "Tillad notifikationer, så hændelsesadvarsler kan vises på det rigtige tidspunkt.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Notifikationer er slået fra for denne app. For at aktivere dem skal du gå til: Indstillinger -> Apps -> Cloud Calendars -> Underretninger -> Tillad meddelelser.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Gemte områder";
 "Current Location" = "Aktuel lokalitet";
 "Reorder Region" = "Omarranger område";
+"Illumination" = "Belysning";

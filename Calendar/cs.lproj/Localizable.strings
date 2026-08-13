@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Není k dispozici – vybraná karta: %@";
 "Enable Notifications" = "Povolit oznámení";
 "Event Notifications" = "Upozornění na události";
+"Weather Alert Notifications" = "Upozornění na výstrahy počasí";
+"Allow notifications so weather alerts can appear." = "Povolte oznámení, aby se mohly zobrazovat výstrahy počasí.";
 "Event alerts are scheduled from your event alert settings." = "Upozornění na události se plánují z nastavení upozornění na události.";
 "Allow notifications so event alerts can appear at the right time." = "Povolte upozornění, aby se upozornění na události mohla objevit ve správný čas.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Oznámení jsou pro tuto aplikaci vypnutá. Chcete-li je povolit, přejděte na: Nastavení -> Aplikace -> Cloud Calendars -> Oznámení -> Povolit oznámení.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Uložené oblasti";
 "Current Location" = "Aktuální poloha";
 "Reorder Region" = "Změnit pořadí oblasti";
+"Illumination" = "Osvětlení";

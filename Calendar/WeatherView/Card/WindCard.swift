@@ -106,7 +106,11 @@ struct WindCard: View {
 
     var body: some View {
         WeatherDetailCard {
-            Label(NSLocalizedString("WIND", comment: "Wind card title"), systemImage: "wind")
+            Label(
+                NSLocalizedString("WIND", comment: "Wind card title")
+                    .uppercased(with: .appFormatting),
+                systemImage: "wind"
+            )
                 .font(.system(size: 10, weight: .medium))
                 .foregroundStyle(.secondary)
                 .adaptiveSingleLine(minimumScale: 0.4)

@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "T/A - Tab yang Dipilih: %@";
 "Enable Notifications" = "Aktifkan Notifikasi";
 "Event Notifications" = "Pemberitahuan Acara";
+"Weather Alert Notifications" = "Pemberitahuan peringatan cuaca";
+"Allow notifications so weather alerts can appear." = "Izinkan pemberitahuan untuk menerima peringatan cuaca.";
 "Event alerts are scheduled from your event alert settings." = "Peringatan acara dijadwalkan dari pengaturan peringatan acara Anda.";
 "Allow notifications so event alerts can appear at the right time." = "Izinkan notifikasi agar peringatan acara dapat muncul pada waktu yang tepat.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Notifikasi dinonaktifkan untuk aplikasi ini. Untuk mengaktifkannya, buka: Pengaturan -> Aplikasi -> Cloud Calendars -> Notifikasi -> Izinkan Notifikasi.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Wilayah tersimpan";
 "Current Location" = "Lokasi saat ini";
 "Reorder Region" = "Susun ulang wilayah";
+"Illumination" = "Pencahayaan";

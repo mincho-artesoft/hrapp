@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "غير متوفر - علامة التبويب المحددة: %@";
 "Enable Notifications" = "تمكين الإخطارات";
 "Event Notifications" = "إشعارات الأحداث";
+"Weather Alert Notifications" = "إشعارات تحذيرات الطقس";
+"Allow notifications so weather alerts can appear." = "اسمح بالإشعارات لتظهر تحذيرات الطقس.";
 "Event alerts are scheduled from your event alert settings." = "تتم جدولة تنبيهات الأحداث من إعدادات تنبيه الأحداث الخاصة بك.";
 "Allow notifications so event alerts can appear at the right time." = "السماح بالإشعارات حتى تظهر تنبيهات الأحداث في الوقت المناسب.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "تم إيقاف الإشعارات لهذا التطبيق. لتمكينها، انتقل إلى: الإعدادات -> التطبيقات -> Cloud Calendars -> الإشعارات -> السماح بالإشعارات.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "المناطق المحفوظة";
 "Current Location" = "الموقع الحالي";
 "Reorder Region" = "إعادة ترتيب المنطقة";
+"Illumination" = "الإضاءة";

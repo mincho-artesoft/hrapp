@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "לא רלוונטי - כרטיסייה נבחרת: %@";
 "Enable Notifications" = "הפעל התראות";
 "Event Notifications" = "התראות על אירועים";
+"Weather Alert Notifications" = "התראות מזג אוויר";
+"Allow notifications so weather alerts can appear." = "יש לאפשר התראות כדי לקבל אזהרות מזג אוויר.";
 "Event alerts are scheduled from your event alert settings." = "התראות על אירועים מתוזמנות מהגדרות ההתראות על האירועים שלך.";
 "Allow notifications so event alerts can appear at the right time." = "אפשר התראות כך שהתראות על אירועים יוכלו להופיע בזמן הנכון.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "הודעות כבויות עבור אפליקציה זו. כדי לאפשר אותם עבור אל: הגדרות -> אפליקציות -> Cloud Calendars -> התראות -> אפשר התראות.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "אזורים שמורים";
 "Current Location" = "המיקום הנוכחי";
 "Reorder Region" = "שינוי סדר האזור";
+"Illumination" = "הארה";

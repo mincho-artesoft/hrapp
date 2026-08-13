@@ -116,6 +116,14 @@ final class EventNotificationManager: NSObject, ObservableObject {
         }
     }
 
+    /// Requests the app-wide iOS notification permission without changing the
+    /// user's separate preference for calendar event reminders.
+    func requestSystemNotificationAuthorizationIfNeeded() {
+        if canAskForPermission {
+            requestAuthorization()
+        }
+    }
+
     func requestAuthorizationFromSettingsSection() {
         if !eventNotificationsEnabled {
             setEventNotificationsEnabled(true)

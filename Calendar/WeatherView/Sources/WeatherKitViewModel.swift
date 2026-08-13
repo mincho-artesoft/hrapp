@@ -62,6 +62,7 @@ class WeatherKitViewModel: ObservableObject {
     @Published var daysUntilNextMoonPhase: Int?
 
     var locationTimeZone: TimeZone = .current
+    @Published var locationCoordinate: CLLocationCoordinate2D?
 
     // MARK: - Публични методи
 
@@ -75,6 +76,10 @@ class WeatherKitViewModel: ObservableObject {
         isGPSLocation: Bool = false,
         gpsDisplayName: String? = nil
     ) {
+        locationCoordinate = CLLocationCoordinate2D(
+            latitude: latitude,
+            longitude: longitude
+        )
         Task {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
@@ -186,6 +191,7 @@ class WeatherKitViewModel: ObservableObject {
         nextMoonPhase = nil
         daysUntilNextMoonPhase = nil
         currentMoonEvents = nil
+        locationCoordinate = nil
 
         errorMessage = nil
         CalendarWidgetStore.clearWeatherSnapshot()

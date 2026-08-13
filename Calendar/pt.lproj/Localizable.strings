@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "N/D – guia selecionada: %@";
 "Enable Notifications" = "Habilitar notificações";
 "Event Notifications" = "Notificações de eventos";
+"Weather Alert Notifications" = "Notificações de alertas meteorológicos";
+"Allow notifications so weather alerts can appear." = "Permita notificações para receber alertas meteorológicos.";
 "Event alerts are scheduled from your event alert settings." = "Os alertas de eventos são programados nas configurações de alerta de eventos.";
 "Allow notifications so event alerts can appear at the right time." = "Permita notificações para que alertas de eventos possam aparecer no momento certo.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "As notificações estão desativadas para este aplicativo. Para habilitá-los, vá para: Configurações -> Aplicativos -> Cloud Calendars -> Notificações -> Permitir Notificações.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Regiões guardadas";
 "Current Location" = "Localização atual";
 "Reorder Region" = "Reordenar região";
+"Illumination" = "Iluminação";

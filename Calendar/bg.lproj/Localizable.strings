@@ -695,6 +695,8 @@
 "N/A - Selected Tab: %@" = "Няма данни - избран раздел: %@";
 "Enable Notifications" = "Разрешаване на нотификации";
 "Event Notifications" = "Нотификации за събития";
+"Weather Alert Notifications" = "Нотификации за метеорологични предупреждения";
+"Allow notifications so weather alerts can appear." = "Разрешете нотификациите, за да получавате метеорологични предупреждения.";
 "Event alerts are scheduled from your event alert settings." = "Напомнянията се планират според настройките за аларми в събитията.";
 "Allow notifications so event alerts can appear at the right time." = "Разрешете нотификациите, за да се показват напомнянията за събития навреме.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Нотификациите са изключени за това приложение. За да ги разрешите, отидете на: Настройки -> Приложения -> Cloud Calendars -> Известия -> Разреши известия.";
@@ -764,3 +766,4 @@
 "Current Location" = "Текущо местоположение";
 "Reorder Region" = "Пренареждане на регион";
 "WeatherAlert.Preview.HighTemperature" = "Жълт код за високи температури";
+"Illumination" = "Осветеност";

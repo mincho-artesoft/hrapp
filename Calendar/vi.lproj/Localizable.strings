@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Không áp dụng - Tab đã chọn: %@";
 "Enable Notifications" = "Bật thông báo";
 "Event Notifications" = "Thông báo sự kiện";
+"Weather Alert Notifications" = "Thông báo cảnh báo thời tiết";
+"Allow notifications so weather alerts can appear." = "Cho phép thông báo để nhận cảnh báo thời tiết.";
 "Event alerts are scheduled from your event alert settings." = "Cảnh báo sự kiện được lên lịch từ cài đặt cảnh báo sự kiện của bạn.";
 "Allow notifications so event alerts can appear at the right time." = "Cho phép thông báo để cảnh báo sự kiện có thể xuất hiện vào đúng thời điểm.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Thông báo bị tắt cho ứng dụng này. Để bật chúng, hãy đi tới: Cài đặt -> Ứng dụng -> Cloud Calendars -> Thông báo -> Cho phép thông báo.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Khu vực đã lưu";
 "Current Location" = "Vị trí hiện tại";
 "Reorder Region" = "Sắp xếp lại khu vực";
+"Illumination" = "Độ chiếu sáng";

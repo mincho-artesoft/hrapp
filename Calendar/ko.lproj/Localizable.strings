@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "해당 없음 - 선택한 탭: %@";
 "Enable Notifications" = "알림 활성화";
 "Event Notifications" = "이벤트 알림";
+"Weather Alert Notifications" = "기상 경보 알림";
+"Allow notifications so weather alerts can appear." = "기상 경보를 받으려면 알림을 허용하세요.";
 "Event alerts are scheduled from your event alert settings." = "이벤트 알림은 이벤트 알림 설정에서 예약됩니다.";
 "Allow notifications so event alerts can appear at the right time." = "이벤트 알림이 적시에 표시될 수 있도록 알림을 허용하세요.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "이 앱의 알림이 꺼져 있습니다. 활성화하려면 설정 -> 앱 -> Cloud Calendars -> 알림 -> 알림 허용으로 이동하세요.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "저장된 지역";
 "Current Location" = "현재 위치";
 "Reorder Region" = "지역 순서 변경";
+"Illumination" = "달의 밝기";

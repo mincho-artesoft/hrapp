@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Yok - Seçilen Sekme: %@";
 "Enable Notifications" = "Bildirimleri Etkinleştir";
 "Event Notifications" = "Etkinlik Bildirimleri";
+"Weather Alert Notifications" = "Hava durumu uyarı bildirimleri";
+"Allow notifications so weather alerts can appear." = "Hava durumu uyarılarını almak için bildirimlere izin verin.";
 "Event alerts are scheduled from your event alert settings." = "Etkinlik uyarıları, etkinlik uyarısı ayarlarınızdan planlanır.";
 "Allow notifications so event alerts can appear at the right time." = "Etkinlik uyarılarının doğru zamanda görünebilmesi için bildirimlere izin verin.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Bu uygulama için bildirimler kapatıldı. Bunları etkinleştirmek için şuraya gidin: Ayarlar -> Uygulamalar -> Cloud Calendars -> Bildirimler -> Bildirimlere İzin Ver.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Kaydedilen bölgeler";
 "Current Location" = "Mevcut konum";
 "Reorder Region" = "Bölgeyi yeniden sırala";
+"Illumination" = "Aydınlanma";

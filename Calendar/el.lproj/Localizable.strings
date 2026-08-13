@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Μη διαθέσιμο – επιλεγμένη καρτέλα: %@";
 "Enable Notifications" = "Ενεργοποίηση Ειδοποιήσεων";
 "Event Notifications" = "Ειδοποιήσεις συμβάντων";
+"Weather Alert Notifications" = "Ειδοποιήσεις προειδοποιήσεων καιρού";
+"Allow notifications so weather alerts can appear." = "Επιτρέψτε τις ειδοποιήσεις για να λαμβάνετε προειδοποιήσεις καιρού.";
 "Event alerts are scheduled from your event alert settings." = "Οι ειδοποιήσεις συμβάντων προγραμματίζονται από τις ρυθμίσεις ειδοποιήσεων συμβάντων.";
 "Allow notifications so event alerts can appear at the right time." = "Επιτρέψτε τις ειδοποιήσεις, ώστε οι ειδοποιήσεις συμβάντων να εμφανίζονται την κατάλληλη στιγμή.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Οι ειδοποιήσεις είναι απενεργοποιημένες για αυτήν την εφαρμογή. Για να τα ενεργοποιήσετε, μεταβείτε στις: Ρυθμίσεις -> Εφαρμογές -> Cloud Calendars -> Ειδοποιήσεις -> Να επιτρέπονται οι ειδοποιήσεις.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Αποθηκευμένες περιοχές";
 "Current Location" = "Τρέχουσα τοποθεσία";
 "Reorder Region" = "Αναδιάταξη περιοχής";
+"Illumination" = "Φωτισμός";

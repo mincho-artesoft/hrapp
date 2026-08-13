@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "不適用 - 所選選項卡：%@";
 "Enable Notifications" = "啟用通知";
 "Event Notifications" = "活動通知";
+"Weather Alert Notifications" = "天氣警報通知";
+"Allow notifications so weather alerts can appear." = "允許通知以接收天氣警報。";
 "Event alerts are scheduled from your event alert settings." = "事件警報是根據您的事件警報設定安排的。";
 "Allow notifications so event alerts can appear at the right time." = "允許通知，以便事件警報可以在正確的時間出現。";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "此應用程式的通知已關閉。要啟用它們，請前往：設定 -> 應用程式 -> Cloud Calendars -> 通知 -> 允許通知。";
@@ -764,3 +766,4 @@
 "Saved Regions" = "已儲存的地區";
 "Current Location" = "目前位置";
 "Reorder Region" = "重新排列地區";
+"Illumination" = "月面亮度";

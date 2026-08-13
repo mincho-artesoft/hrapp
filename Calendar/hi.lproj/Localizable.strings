@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "एन/ए - चयनित टैब: %@";
 "Enable Notifications" = "सूचनाएं सक्षम करें";
 "Event Notifications" = "घटना सूचनाएं";
+"Weather Alert Notifications" = "मौसम चेतावनी सूचनाएं";
+"Allow notifications so weather alerts can appear." = "मौसम चेतावनियां प्राप्त करने के लिए सूचनाओं की अनुमति दें।";
 "Event alerts are scheduled from your event alert settings." = "इवेंट अलर्ट आपकी इवेंट अलर्ट सेटिंग से शेड्यूल किए जाते हैं।";
 "Allow notifications so event alerts can appear at the right time." = "सूचनाओं को अनुमति दें ताकि इवेंट अलर्ट सही समय पर दिखाई दे सकें।";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "इस ऐप के लिए सूचनाएं बंद हैं. उन्हें सक्षम करने के लिए यहां जाएं: सेटिंग्स -> ऐप्स -> Cloud Calendars -> नोटिफिकेशन -> नोटिफिकेशन की अनुमति दें।";
@@ -764,3 +766,4 @@
 "Saved Regions" = "सहेजे गए क्षेत्र";
 "Current Location" = "वर्तमान स्थान";
 "Reorder Region" = "क्षेत्र का क्रम बदलें";
+"Illumination" = "प्रकाशित भाग";

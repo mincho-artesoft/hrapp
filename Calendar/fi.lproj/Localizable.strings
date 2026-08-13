@@ -699,6 +699,8 @@
 "N/A - Selected Tab: %@" = "Ei käytössä – Valittu välilehti: %@";
 "Enable Notifications" = "Ota ilmoitukset käyttöön";
 "Event Notifications" = "Tapahtuma-ilmoitukset";
+"Weather Alert Notifications" = "Säävaroitusilmoitukset";
+"Allow notifications so weather alerts can appear." = "Salli ilmoitukset, jotta voit vastaanottaa säävaroituksia.";
 "Event alerts are scheduled from your event alert settings." = "Tapahtumahälytykset ajoitetaan tapahtumahälytysasetuksistasi.";
 "Allow notifications so event alerts can appear at the right time." = "Salli ilmoitukset, jotta tapahtumahälytykset näkyvät oikeaan aikaan.";
 "Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Ilmoitukset on poistettu käytöstä tässä sovelluksessa. Ota ne käyttöön siirtymällä kohtaan Asetukset -> Sovellukset -> Cloud Calendars -> Ilmoitukset -> Salli ilmoitukset.";
@@ -764,3 +766,4 @@
 "Saved Regions" = "Tallennetut alueet";
 "Current Location" = "Nykyinen sijainti";
 "Reorder Region" = "Järjestä alue uudelleen";
+"Illumination" = "Valaistus";

@@ -33,6 +33,8 @@ struct CalendarsSheetView: View {
     @State private var addingGoogleUserID: UUID? = nil
     @State private var addingGoogleCalendarTitle: String? = nil
     @State private var addingGoogleCalendarColor: UIColor? = nil
+    @State private var weatherAlertNotificationsEnabled =
+        WeatherAlertNotificationManager.notificationsEnabled
 
     // MARK: - Init for iOS 14–15 appearance
     init() {
@@ -190,6 +192,39 @@ struct CalendarsSheetView: View {
                     }
                 }
 
+                Divider()
+
+                Toggle(isOn: weatherNotificationToggleBinding) {
+                    HStack(spacing: 12) {
+                        Image(
+                            systemName: weatherNotificationsToggleIsOn
+                                ? "exclamationmark.triangle.fill"
+                                : "exclamationmark.triangle"
+                        )
+                        .font(.title3)
+                        .foregroundColor(.orange)
+                        .frame(width: 28, height: 28)
+
+                        Text(LocalizedStringKey("Weather Alert Notifications"))
+                            .font(.headline)
+                    }
+                }
+
+                if weatherAlertNotificationsEnabled
+                    && !notificationManager.eventNotificationsEnabled
+                    && !notificationManager.notificationsAllowed {
+                    if notificationManager.canAskForPermission {
+                        Text(LocalizedStringKey("Allow notifications so weather alerts can appear."))
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text(LocalizedStringKey("Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications."))
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+
                 if notificationManager.eventNotificationsEnabled && !notificationManager.notificationsAllowed {
                     if notificationManager.canAskForPermission {
                         Text(LocalizedStringKey("Allow notifications so event alerts can appear at the right time."))
@@ -221,6 +256,28 @@ struct CalendarsSheetView: View {
                     notificationManager.setEventNotificationsEnabled(true)
                 } else {
                     notificationManager.setEventNotificationsEnabled(false)
+                }
+            }
+        )
+    }
+
+    private var weatherNotificationsToggleIsOn: Bool {
+        weatherAlertNotificationsEnabled && notificationManager.notificationsAllowed
+    }
+
+    private var weatherNotificationToggleBinding: Binding<Bool> {
+        Binding(
+            get: { weatherNotificationsToggleIsOn },
+            set: { isOn in
+                weatherAlertNotificationsEnabled = isOn
+
+                Task {
+                    await WeatherAlertNotificationManager.shared
+                        .setNotificationsEnabled(isOn)
+                }
+
+                if isOn {
+                    notificationManager.requestSystemNotificationAuthorizationIfNeeded()
                 }
             }
         )
@@ -495,6 +552,7 @@ struct CalendarsSheetView: View {
 
     private func onAppear() {
         viewModel.reloadCalendars()
+        weatherAlertNotificationsEnabled = WeatherAlertNotificationManager.notificationsEnabled
         notificationManager.refreshAuthorizationStatus()
         notificationManager.rescheduleUpcomingEventNotifications()
         loadGoogleSharingInfos()

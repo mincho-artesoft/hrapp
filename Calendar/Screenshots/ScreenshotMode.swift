@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import CoreLocation
 
 #if DEBUG
 
@@ -95,6 +96,10 @@ enum ScreenshotMode {
 
     static var weatherPreviewSolarCard: Bool {
         isActive && UserDefaults.standard.bool(forKey: "WeatherPreviewSolarCard")
+    }
+
+    static var weatherPreviewMoonDetail: Bool {
+        isActive && UserDefaults.standard.bool(forKey: "WeatherPreviewMoonDetail")
     }
 
     /// Called as early as possible, before any view reads persisted state.
@@ -200,6 +205,7 @@ private extension WeatherKitViewModel {
         let profile = weatherPreviewProfile(for: condition)
         let conditionKey = "WeatherCondition.\(condition)"
         let actualNow = Date()
+        locationCoordinate = CLLocationCoordinate2D(latitude: 42.6977, longitude: 23.3219)
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
         let now: Date

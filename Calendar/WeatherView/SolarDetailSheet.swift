@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreLocation
 
 /// A dedicated detail surface for the solar cycle. It deliberately does not
 /// reuse `WeatherDetailView`: solar events have their own data and layout.
@@ -8,6 +9,7 @@ struct SolarDetailSheet: View {
     let days: [SolarDayForecast]
     let timeZone: TimeZone
     let observationDate: Date
+    let coordinate: CLLocationCoordinate2D?
 
     private var calendar: Calendar {
         var calendar = Calendar.current
@@ -47,6 +49,10 @@ struct SolarDetailSheet: View {
 
                         if !days.isEmpty {
                             upcomingDaysCard
+                        }
+
+                        if let coordinate {
+                            monthlyAveragesCard(coordinate)
                         }
                     }
                     .padding(.horizontal, 16)
@@ -224,6 +230,88 @@ struct SolarDetailSheet: View {
         )
     }
 
+    private func monthlyAveragesCard(_ coordinate: CLLocationCoordinate2D) -> some View {
+        let months = solarMonthSummaries(coordinate)
+
+        return VStack(alignment: .leading, spacing: 0) {
+            Label(
+                NSLocalizedString("Sunrise and Sunset", comment: "Monthly solar heading"),
+                systemImage: "calendar"
+            )
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+
+            Divider()
+
+            ForEach(Array(months.enumerated()), id: \.element.id) { index, month in
+                SolarMonthRow(summary: month, timeZone: timeZone)
+                    .padding(.horizontal, 16)
+
+                if index < months.count - 1 {
+                    Divider().padding(.leading, 16)
+                }
+            }
+        }
+        .background(
+            Color.white.opacity(0.15),
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
+    }
+
+    private func solarMonthSummaries(_ coordinate: CLLocationCoordinate2D) -> [SolarMonthSummary] {
+        // Always present one calendar year in its natural order instead of a
+        // rolling twelve-month window that begins with the current month.
+        guard let yearStart = calendar.date(
+            from: calendar.dateComponents([.year], from: observationDate)
+        ) else { return [] }
+
+        return (0..<12).compactMap { offset in
+            guard let monthStart = calendar.date(byAdding: .month, value: offset, to: yearStart),
+                  let dayRange = calendar.range(of: .day, in: .month, for: monthStart) else {
+                return nil
+            }
+
+            let events = dayRange.compactMap { day -> (Date, Date)? in
+                guard let date = calendar.date(byAdding: .day, value: day - 1, to: monthStart) else { return nil }
+                return SolarCycleCalculator.events(
+                    on: date,
+                    coordinate: coordinate,
+                    timeZone: timeZone
+                )
+            }
+
+            let sunriseMinutes = events.map { localMinute($0.0) }
+            let sunsetMinutes = events.map { localMinute($0.1) }
+            let representativeDay = calendar.date(byAdding: .day, value: min(14, dayRange.count - 1), to: monthStart)
+
+            return SolarMonthSummary(
+                month: monthStart,
+                sunrise: representativeDay.flatMap { dateAtAverageMinute(sunriseMinutes, on: $0) },
+                sunset: representativeDay.flatMap { dateAtAverageMinute(sunsetMinutes, on: $0) }
+            )
+        }
+    }
+
+    private func localMinute(_ date: Date) -> Double {
+        let components = calendar.dateComponents([.hour, .minute, .second], from: date)
+        return Double(components.hour ?? 0) * 60
+            + Double(components.minute ?? 0)
+            + Double(components.second ?? 0) / 60
+    }
+
+    private func dateAtAverageMinute(_ values: [Double], on date: Date) -> Date? {
+        guard !values.isEmpty else { return nil }
+        let average = values.reduce(0, +) / Double(values.count)
+        return calendar.date(
+            bySettingHour: Int(average / 60),
+            minute: Int(average.rounded()) % 60,
+            second: 0,
+            of: date
+        )
+    }
+
     private func solarTimeRow(_ title: String, systemImage: String, value: String) -> some View {
         HStack(spacing: 12) {
             Image(systemName: systemImage)
@@ -277,6 +365,188 @@ struct SolarDetailSheet: View {
         formatter.unitsStyle = .full
         return formatter.localizedString(for: date, relativeTo: observationDate)
     }
+}
+
+private struct SolarMonthSummary: Identifiable {
+    let month: Date
+    let sunrise: Date?
+    let sunset: Date?
+
+    var id: Date { month }
+}
+
+private struct SolarMonthRow: View {
+    @Environment(\.layoutDirection) private var layoutDirection
+
+    let summary: SolarMonthSummary
+    let timeZone: TimeZone
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Text(appDateFormatter(template: "MMM", timeZone: timeZone).string(from: summary.month))
+                .font(.subheadline.weight(.semibold))
+                .frame(width: 48, alignment: .leading)
+                .lineLimit(1)
+
+            Text(formatTime(summary.sunrise))
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .monospacedDigit()
+                .frame(width: 58, alignment: .trailing)
+
+            GeometryReader { proxy in
+                let start = fractionOfDay(summary.sunrise)
+                let end = fractionOfDay(summary.sunset)
+                let span = max(0, end - start)
+                let width = max(5, proxy.size.width * span)
+                let physicalStart = layoutDirection == .rightToLeft ? 1 - end : start
+                let centerX = proxy.size.width * (physicalStart + span / 2)
+
+                ZStack {
+                    Capsule()
+                        .fill(Color.white.opacity(0.08))
+                        .frame(height: 6)
+
+                    if summary.sunrise != nil, summary.sunset != nil {
+                        Capsule()
+                            .fill(
+                                LinearGradient(
+                                    colors: [.orange, .yellow, .cyan],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .frame(width: width, height: 6)
+                            .position(x: centerX, y: 4)
+                    }
+                }
+            }
+            .frame(height: 8)
+
+            Text(formatTime(summary.sunset))
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .monospacedDigit()
+                .frame(width: 58, alignment: .leading)
+        }
+        .frame(minHeight: 52)
+        .accessibilityElement(children: .combine)
+    }
+
+    private func fractionOfDay(_ date: Date?) -> Double {
+        guard let date else { return 0 }
+        var calendar = Calendar.current
+        calendar.timeZone = timeZone
+        let components = calendar.dateComponents([.hour, .minute, .second], from: date)
+        let seconds = Double(components.hour ?? 0) * 3_600
+            + Double(components.minute ?? 0) * 60
+            + Double(components.second ?? 0)
+        return max(0, min(1, seconds / 86_400))
+    }
+
+    private func formatTime(_ date: Date?) -> String {
+        guard let date else { return "—" }
+        return appTimeFormatter(timeZone: timeZone).string(from: date)
+    }
+}
+
+private enum SolarCycleCalculator {
+    private static let zenith = 90.833
+
+    static func events(
+        on date: Date,
+        coordinate: CLLocationCoordinate2D,
+        timeZone: TimeZone
+    ) -> (sunrise: Date, sunset: Date)? {
+        guard let sunrise = event(
+            on: date,
+            coordinate: coordinate,
+            timeZone: timeZone,
+            isSunrise: true
+        ), let sunset = event(
+            on: date,
+            coordinate: coordinate,
+            timeZone: timeZone,
+            isSunrise: false
+        ) else { return nil }
+        return (sunrise, sunset)
+    }
+
+    private static func event(
+        on date: Date,
+        coordinate: CLLocationCoordinate2D,
+        timeZone: TimeZone,
+        isSunrise: Bool
+    ) -> Date? {
+        var localCalendar = Calendar(identifier: .gregorian)
+        localCalendar.timeZone = timeZone
+        let localComponents = localCalendar.dateComponents([.year, .month, .day], from: date)
+        guard let year = localComponents.year,
+              let month = localComponents.month,
+              let day = localComponents.day,
+              let dayOfYear = localCalendar.ordinality(of: .day, in: .year, for: date) else {
+            return nil
+        }
+
+        let longitudeHour = coordinate.longitude / 15
+        let approximateTime = Double(dayOfYear)
+            + ((isSunrise ? 6 : 18) - longitudeHour) / 24
+        let meanAnomaly = 0.9856 * approximateTime - 3.289
+        var trueLongitude = meanAnomaly
+            + 1.916 * sin(degreesToRadians(meanAnomaly))
+            + 0.020 * sin(2 * degreesToRadians(meanAnomaly))
+            + 282.634
+        trueLongitude = normalizedDegrees(trueLongitude)
+
+        var rightAscension = radiansToDegrees(
+            atan(0.91764 * tan(degreesToRadians(trueLongitude)))
+        )
+        rightAscension = normalizedDegrees(rightAscension)
+        rightAscension += floor(trueLongitude / 90) * 90 - floor(rightAscension / 90) * 90
+        rightAscension /= 15
+
+        let sinDeclination = 0.39782 * sin(degreesToRadians(trueLongitude))
+        let cosDeclination = cos(asin(sinDeclination))
+        let latitudeRadians = degreesToRadians(coordinate.latitude)
+        let cosHourAngle = (
+            cos(degreesToRadians(zenith)) - sinDeclination * sin(latitudeRadians)
+        ) / (cosDeclination * cos(latitudeRadians))
+
+        guard (-1...1).contains(cosHourAngle) else { return nil }
+        let hourAngleDegrees = isSunrise
+            ? 360 - radiansToDegrees(acos(cosHourAngle))
+            : radiansToDegrees(acos(cosHourAngle))
+        let localMeanTime = hourAngleDegrees / 15
+            + rightAscension
+            - 0.06571 * approximateTime
+            - 6.622
+        let universalHour = normalizedHours(localMeanTime - longitudeHour)
+
+        var utcCalendar = Calendar(identifier: .gregorian)
+        utcCalendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        guard let utcBase = utcCalendar.date(from: DateComponents(year: year, month: month, day: day)) else {
+            return nil
+        }
+
+        let baseEvent = utcBase.addingTimeInterval(universalHour * 3_600)
+        return [-1, 0, 1]
+            .map { baseEvent.addingTimeInterval(Double($0) * 86_400) }
+            .first { localCalendar.isDate($0, inSameDayAs: date) }
+            ?? baseEvent
+    }
+
+    private static func normalizedDegrees(_ value: Double) -> Double {
+        let remainder = value.truncatingRemainder(dividingBy: 360)
+        return remainder >= 0 ? remainder : remainder + 360
+    }
+
+    private static func normalizedHours(_ value: Double) -> Double {
+        let remainder = value.truncatingRemainder(dividingBy: 24)
+        return remainder >= 0 ? remainder : remainder + 24
+    }
+
+    private static func degreesToRadians(_ value: Double) -> Double { value * .pi / 180 }
+    private static func radiansToDegrees(_ value: Double) -> Double { value * 180 / .pi }
 }
 
 private struct SolarDayRow: View {
