@@ -108,11 +108,14 @@ struct EventSharePromptView: View {
                     Text(LocalizedStringKey("Don't ask again"))
                         .font(.subheadline.weight(.semibold))
                         .frame(maxWidth: .infinity)
-                        .frame(height: 54)
+                        .frame(maxHeight: .infinity)
                         .lineLimit(2)
-                        .minimumScaleFactor(0.8)
+                        .minimumScaleFactor(0.72)
                 }
-                .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+                .frame(height: 48)
+                .background(Color.white.opacity(0.72), in: Capsule())
+                .buttonStyle(.plain)
 
                 Button {
                     manager.share()
@@ -120,11 +123,15 @@ struct EventSharePromptView: View {
                     Label(LocalizedStringKey("Share"), systemImage: "square.and.arrow.up")
                         .font(.subheadline.weight(.semibold))
                         .frame(maxWidth: .infinity)
-                        .frame(height: 54)
+                        .frame(maxHeight: .infinity)
                         .lineLimit(2)
-                        .minimumScaleFactor(0.8)
+                        .minimumScaleFactor(0.72)
                 }
-                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity)
+                .frame(height: 48)
+                .foregroundStyle(.white)
+                .background(Color.blue, in: Capsule())
+                .buttonStyle(.plain)
             }
         }
         .padding(16)
