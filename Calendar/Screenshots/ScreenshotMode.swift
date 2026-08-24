@@ -75,11 +75,25 @@ enum ScreenshotMode {
             return nil
         }
 
-        let hour = defaults.object(forKey: "ScreenshotScrollHour") as? Int
+        // A launch argument arrives in the argument domain as a string, so
+        // `object(forKey:) as? Int` is always nil for `-ScreenshotScrollHour 9`
+        // and the timeline silently kept scrolling to "now". Presence is
+        // checked separately from the value because `integer(forKey:)` cannot
+        // distinguish an absent key from a literal 0, and hour 0 is valid.
+        var scrollHour: Int?
+        if defaults.object(forKey: "ScreenshotScrollHour") != nil {
+            let hour = defaults.integer(forKey: "ScreenshotScrollHour")
+            guard (0...23).contains(hour) else {
+                assertionFailure("-ScreenshotScrollHour \(hour) is not an hour of the day")
+                return nil
+            }
+            scrollHour = hour
+        }
+
         return Configuration(
             screen: screen,
             calendarLocale: defaults.string(forKey: "ScreenshotCalendarLocale"),
-            scrollHour: hour.flatMap { (0...23).contains($0) ? $0 : nil },
+            scrollHour: scrollHour,
             weatherPreviewCondition: defaults.string(forKey: "WeatherPreviewCondition"),
             weatherPreviewSky: defaults.string(forKey: "WeatherPreviewSky"),
             weatherPreviewMoonPhase: defaults.string(forKey: "WeatherPreviewMoonPhase"),
@@ -105,8 +119,31 @@ enum ScreenshotMode {
     /// Called as early as possible, before any view reads persisted state.
     @MainActor
     static func applyIfNeeded() {
-        guard let configuration else { return }
+        let shared = UserDefaults(suiteName: appGroupID)
+
+        guard let configuration else {
+            // A capture on this simulator may have pinned a zone here. A
+            // normal launch must not inherit it, or the widget would keep
+            // formatting in whichever city the last screenshot run staged.
+            shared?.removeObject(forKey: sharedTimeZoneKey)
+            return
+        }
+
+        // The widget and the Live Activity each run in their own process, and
+        // neither inherits the `TZ` the harness exports for this one, so on a
+        // simulator they format in the host Mac's zone. Handing them the zone
+        // this process is actually using is what keeps the Live Activity card
+        // and the Lock Screen clock directly above it telling the same time.
+        shared?.set(TimeZone.current.identifier, forKey: sharedTimeZoneKey)
+
         let defaults = UserDefaults.standard
+
+        // Cleared here rather than by the harness, so the flag can only ever
+        // describe the launch that is running. A stale `true` left by the
+        // previous frame would let the next screenshot be taken before that
+        // screen had laid out - the exact failure waiting on it is meant to
+        // remove.
+        defaults.removeObject(forKey: readyKey)
 
         defaults.set(configuration.screen.rootTab, forKey: "selectedTabRoot")
 
@@ -149,7 +186,9 @@ enum ScreenshotMode {
     }
 
     /// Read by the day/multi-day container instead of scrolling to "now", so
-    /// every language's capture shows the same window of the day.
+    /// every language's capture shows the same window of the day. The hour is
+    /// placed at the top of the visible timeline, not its centre: `9` means
+    /// the day starts at 9.
     static var pinnedScrollHour: Int? { configuration?.scrollHour }
 
     /// When present, live location callbacks must not replace the deterministic
@@ -163,8 +202,11 @@ enum ScreenshotMode {
         UserDefaults.standard.bool(forKey: "WeatherPreviewSavedRegionsOpen")
     }
 
-    /// Set by the container once its content has been laid out. The harness
-    /// waits for this rather than sleeping a fixed number of seconds.
+    /// Set by the container once its content has been laid out and parked at
+    /// its final scroll offset. The harness polls
+    /// `defaults read Deksan.CalendarASD ScreenshotReady` and shoots when it
+    /// turns 1, rather than sleeping a fixed number of seconds. Cleared on
+    /// every launch by `applyIfNeeded`.
     static func markReady() {
         guard isActive else { return }
         UserDefaults.standard.set(true, forKey: readyKey)
@@ -173,16 +215,45 @@ enum ScreenshotMode {
 
     static let readyKey = "ScreenshotReady"
 
+    /// Shared with the widget extension, which reads it as
+    /// `WidgetTimeZone.overrideKey`. Both live in the app group because the
+    /// standard domain is per-process and the widget cannot see this one.
+    static let appGroupID = "group.ARTE-SOFT.sandBOX"
+    static let sharedTimeZoneKey = "calendarWidget.global.timeZone"
+
+    /// Waits briefly for EventKit rather than trusting the first answer.
+    ///
+    /// `applyIfNeeded` runs from `CalendarApp.init()`, which is early enough
+    /// that the store sometimes reports no calendars at all - not because the
+    /// seed is missing but because it has not finished loading. Asking again
+    /// costs a few hundred milliseconds on the rare launch that needs it.
+    @MainActor
+    private static func seededCalendars(withPrefix prefix: String) -> [String] {
+        let store = CalendarViewModel.shared.eventStore
+        for attempt in 0..<10 {
+            let matching = store.calendars(for: .event)
+                .filter { $0.title.hasPrefix(prefix) }
+                .map(\.calendarIdentifier)
+            if !matching.isEmpty { return matching }
+            if attempt < 9 { Thread.sleep(forTimeInterval: 0.2) }
+        }
+        return []
+    }
+
     @MainActor
     private static func selectCalendars(forLocale locale: String) {
-        let store = CalendarViewModel.shared.eventStore
         let prefix = "\(locale.uppercased()) · "
-        let matching = store.calendars(for: .event)
-            .filter { $0.title.hasPrefix(prefix) }
-            .map(\.calendarIdentifier)
+        let matching = seededCalendars(withPrefix: prefix)
 
         guard !matching.isEmpty else {
-            assertionFailure("No seeded calendars titled \(prefix)…; run seed-locale.sh --locale all first")
+            // Deliberately not an assertion. This runs from init(), so a trap
+            // here takes the whole process down before a window exists, and
+            // the harness sees a device that will not come to the foreground
+            // rather than a message about calendars. That cost an hour of
+            // chasing a Live Activity that "would not start". A capture with
+            // the wrong calendars is visible in the frame and caught by
+            // tools/audit.py; a launch crash is neither.
+            print("ScreenshotMode: no seeded calendars titled \(prefix)…; run seed-locale.sh all <date> first")
             return
         }
         UserDefaults.standard.set(matching, forKey: "SelectedCalendarIDsKey")

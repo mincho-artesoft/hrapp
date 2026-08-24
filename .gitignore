@@ -49,3 +49,9 @@ merged_output.txt
 
 # Coverage data written next to the project by instrumented runs
 *.profraw
+
+# Generated Blender cloud bakes — rebuild with art/sky/bake_cloud_basis.py
+art/sky/build/
+
+# Python bytecode from the sky bake scripts
+__pycache__/

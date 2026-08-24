@@ -670,6 +670,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         if !didScrollToNow {
                 scrollToCurrentTime()
                 didScrollToNow = true
+                #if DEBUG
+                ScreenshotMode.markReady()
+                #endif
             }
     }
 
@@ -1019,19 +1022,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     }
     
     private func scrollToCurrentTime() {
-        let now = Date()
-        let cal = Calendar.current
-        let comps = cal.dateComponents([.hour, .minute], from: now)
-        guard let hour = comps.hour, let minute = comps.minute else { return }
-
-        // Пресмятаме честичното число на часа
-        let hoursFloat = CGFloat(hour) + CGFloat(minute) / 60.0
-        // y-координата на линията „сега“
-        let yNow = -158 + hoursFloat * weekView.hourHeight
-
-        // Искаме yNow да е в средата на екрана:
-        let midScreenY = mainScrollView.bounds.height / 2
-        var targetOffsetY = yNow - midScreenY
+        guard var targetOffsetY = initialVerticalOffset() else { return }
 
         // Ограничаваме до валидния диапазон
         let maxOffsetY = max(0, mainScrollView.contentSize.height - mainScrollView.bounds.height)
@@ -1040,5 +1031,28 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         // Скролваме без анимация
         mainScrollView.setContentOffset(CGPoint(x: mainScrollView.contentOffset.x, y: targetOffsetY), animated: false)
         hoursColumnScrollView.setContentOffset(CGPoint(x: 0, y: targetOffsetY), animated: false)
+    }
+
+    /// Where the timeline sits on first layout. See the note on the same
+    /// method in `TwoWayPinnedMultiDayContainerView`.
+    private func initialVerticalOffset() -> CGFloat? {
+        #if DEBUG
+        if let pinnedHour = ScreenshotMode.pinnedScrollHour {
+            return -158 + CGFloat(pinnedHour) * weekView.hourHeight
+        }
+        #endif
+
+        let now = Date()
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.hour, .minute], from: now)
+        guard let hour = comps.hour, let minute = comps.minute else { return nil }
+
+        // Пресмятаме честичното число на часа
+        let hoursFloat = CGFloat(hour) + CGFloat(minute) / 60.0
+        // y-координата на линията „сега“
+        let yNow = -158 + hoursFloat * weekView.hourHeight
+
+        // Искаме yNow да е в средата на екрана:
+        return yNow - mainScrollView.bounds.height / 2
     }
 }

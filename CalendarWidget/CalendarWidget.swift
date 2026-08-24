@@ -1,6 +1,34 @@
 import SwiftUI
 import WidgetKit
 
+/// The zone the widget and the Live Activity format their times in.
+///
+/// Normally the device's own. The catch is that both run in their own
+/// processes, and neither inherits the `TZ` the screenshot harness exports for
+/// the app: on a simulator they fall back to the *host Mac's* zone. The
+/// Vietnamese marketing capture printed a 19:30 dinner as "15:30 - 17:30"
+/// beside a Lock Screen clock reading 19:05, and said "starts in 24 min" under
+/// both - three times, no two agreeing, because the countdown is derived from
+/// the instant and only the formatted window was wrong.
+///
+/// Screenshot mode writes the story's zone into the shared container so every
+/// process formats against the same clock. The key is read only in DEBUG, and
+/// a normal launch clears it, so a shipped widget always follows the device.
+enum WidgetTimeZone {
+    static let overrideKey = "calendarWidget.global.timeZone"
+
+    static var current: TimeZone {
+        #if DEBUG
+        if let identifier = UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX")?
+            .string(forKey: overrideKey),
+           let zone = TimeZone(identifier: identifier) {
+            return zone
+        }
+        #endif
+        return .autoupdatingCurrent
+    }
+}
+
 private enum WidgetSharedStore {
     static let appGroupID = "group.ARTE-SOFT.sandBOX"
     static let kind = "CalendarIconWidget"
@@ -217,7 +245,7 @@ private struct CalendarIconWidgetView: View {
     private var calendar: Calendar {
         var calendar = Calendar(identifier: calendarIdentifier(from: entry.settings.calendarIdentifier))
         calendar.locale = widgetLocale
-        calendar.timeZone = .autoupdatingCurrent
+        calendar.timeZone = WidgetTimeZone.current
 
         if (1...7).contains(entry.settings.firstWeekday) {
             calendar.firstWeekday = entry.settings.firstWeekday
@@ -750,7 +778,7 @@ private struct CalendarIconWidgetView: View {
         let formatter = DateFormatter()
         formatter.calendar = calendar
         formatter.locale = widgetLocale
-        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeZone = WidgetTimeZone.current
         formatter.dateStyle = .none
         let timeFormat = entry.settings.timeFormat.trimmingCharacters(in: .whitespacesAndNewlines)
         formatter.dateFormat = timeFormat.isEmpty
@@ -827,7 +855,7 @@ private struct CalendarIconWidgetView: View {
         let formatter = DateFormatter()
         formatter.calendar = calendar
         formatter.locale = widgetLocale
-        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeZone = WidgetTimeZone.current
         formatter.dateFormat = format
         return formatter.string(from: date)
     }

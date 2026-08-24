@@ -294,6 +294,23 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     fileprivate let daysHeaderHeight: CGFloat = 40
     fileprivate let leftColumnWidth: CGFloat = 60
     fileprivate let bottomScrollPadding: CGFloat = 50
+    fileprivate let weatherStripWidth: CGFloat = 50
+
+    /// Whether the hourly weather strip is drawn beside the timeline.
+    ///
+    /// Layout has to know this before the strip is filled in, because in a
+    /// mirrored layout the timeline gives up the strip's width to it. Kept as
+    /// one property rather than repeating the test, so the two cannot drift.
+    fileprivate var showsWeatherStrip: Bool {
+        guard showSingleDay else { return false }
+        let calendar = Calendar.current
+        let offset = calendar.dateComponents(
+            [.day],
+            from: calendar.startOfDay(for: Date()),
+            to: calendar.startOfDay(for: fromDate)
+        ).day ?? -1
+        return (0...9).contains(offset)
+    }
 
     private var usesRightToLeftLayout: Bool {
         effectiveUserInterfaceLayoutDirection == .rightToLeft
@@ -743,17 +760,28 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // 4. Days Header – позициониране на cornerView и daysHeaderScrollView
         let yMain = singleDayCarousel.frame.maxY
+        // The weather strip is an overlay rather than a column in the layout.
+        // Left to right that is harmless: it sits over the trailing edge of
+        // the timeline, where an event block carries no text. Mirrored, it
+        // lands on the leading edge -- precisely where the event's time and
+        // location are drawn -- and Arabic and Hebrew came back with
+        // temperatures printed across "Ferry Building". So in a mirrored
+        // layout the timeline gives the strip its width back instead of
+        // running underneath it. Left-to-right keeps the overlay it has
+        // always had, and is unchanged.
+        let timelineInset: CGFloat = (isRTL && showsWeatherStrip) ? weatherStripWidth : 0
         let hoursColumnX = isRTL ? bounds.width - leftColumnWidth : 0
-        let timelineX: CGFloat = isRTL ? 0 : leftColumnWidth
+        let timelineX: CGFloat = isRTL ? timelineInset : leftColumnWidth
+        let timelineWidth = bounds.width - leftColumnWidth - timelineInset
         cornerView.frame = CGRect(x: hoursColumnX, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
-        daysHeaderScrollView.frame = CGRect(x: timelineX, y: yMain, width: bounds.width - leftColumnWidth, height: daysHeaderHeight)
+        daysHeaderScrollView.frame = CGRect(x: timelineX, y: yMain, width: timelineWidth, height: daysHeaderHeight)
         
         let cal = Calendar.current
         let fromOnly = cal.startOfDay(for: fromDate)
         let toOnly   = cal.startOfDay(for: toDate)
         let dayCount = (cal.dateComponents([.day], from: fromOnly, to: toOnly).day ?? 0) + 1
         
-        let availableWidth = bounds.width - leftColumnWidth
+        let availableWidth = timelineWidth
         // A day column must remain readable. When the selected range needs more
         // horizontal space than the viewport, the synchronized header, all-day
         // area and timeline scroll instead of squeezing every day on screen.
@@ -784,7 +812,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let allDayH = allDayView.desiredHeight()
         let allDayFullH = allDayView.contentHeight
         allDayTitleLabel.frame = CGRect(x: hoursColumnX, y: allDayY, width: leftColumnWidth, height: allDayH)
-        allDayScrollView.frame = CGRect(x: timelineX, y: allDayY, width: bounds.width - leftColumnWidth, height: allDayH)
+        allDayScrollView.frame = CGRect(x: timelineX, y: allDayY, width: timelineWidth, height: allDayH)
         let totalAllDayWidth = CGFloat(dayCount) * allDayView.dayColumnWidth
         allDayScrollView.contentSize = CGSize(width: totalAllDayWidth, height: allDayFullH)
         allDayView.frame = CGRect(x: 0, y: 0, width: totalAllDayWidth, height: allDayFullH)
@@ -807,7 +835,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
                                     y: hoursColumnY,
                                     width: 50,
                                     height: bounds.height - hoursColumnY)
-        mainScrollView.frame = CGRect(x: timelineX, y: hoursColumnY, width: bounds.width - leftColumnWidth, height: bounds.height - hoursColumnY)
+        mainScrollView.frame = CGRect(x: timelineX, y: hoursColumnY, width: timelineWidth, height: bounds.height - hoursColumnY)
         
         let totalHours = 25
         let baseHeight = CGFloat(totalHours) * weekView.hourHeight
@@ -848,9 +876,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // 7. Интеграция на данните за прогнозата
         // Ако сме в режим showSingleDay и fromDate е в интервала [днес, днес + 9 дни],
         // вземаме данни от WeatherKitViewModel.shared.hourlyForecast за избрания ден.
-        let todayDay = cal.startOfDay(for: Date())
-        let daysDifference = cal.dateComponents([.day], from: todayDay, to: fromOnly).day ?? -1
-        if showSingleDay, daysDifference >= 0, daysDifference <= 9 {
+        if showsWeatherStrip {
             hoursColumnWeatherView.displayWeatherForecast = true
             
             let weatherVM = WeatherKitViewModel.shared
@@ -885,6 +911,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         if !didScrollToNow {
               scrollToCurrentTime()
               didScrollToNow = true
+              #if DEBUG
+              // The timeline is laid out and parked at its final offset. The
+              // capture harness waits for this instead of sleeping a fixed
+              // number of seconds and hoping.
+              ScreenshotMode.markReady()
+              #endif
           }
     }
 
@@ -1267,19 +1299,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }
 
     private func scrollToCurrentTime() {
-        let now = Date()
-        let cal = Calendar.current
-        let comps = cal.dateComponents([.hour, .minute], from: now)
-        guard let hour = comps.hour, let minute = comps.minute else { return }
-
-        // Пресмятаме честичното число на часа
-        let hoursFloat = CGFloat(hour) + CGFloat(minute) / 60.0
-        // y-координата на линията „сега“
-        let yNow = 10 + hoursFloat * weekView.hourHeight
-
-        // Искаме yNow да е в средата на екрана:
-        let midScreenY = mainScrollView.bounds.height / 2
-        var targetOffsetY = yNow - midScreenY
+        guard var targetOffsetY = initialVerticalOffset() else { return }
 
         // Ограничаваме до валидния диапазон
         let maxOffsetY = max(0, mainScrollView.contentSize.height - mainScrollView.bounds.height)
@@ -1289,6 +1309,37 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         mainScrollView.setContentOffset(CGPoint(x: mainScrollView.contentOffset.x, y: targetOffsetY), animated: false)
         hoursColumnScrollView.setContentOffset(CGPoint(x: 0, y: targetOffsetY), animated: false)
         hoursColumnWeatherScrollView.setContentOffset(CGPoint(x: 0, y: targetOffsetY), animated: false)
+    }
+
+    /// Where the timeline sits on first layout.
+    private func initialVerticalOffset() -> CGFloat? {
+        #if DEBUG
+        if let pinnedHour = ScreenshotMode.pinnedScrollHour {
+            // A marketing capture pins the timeline so that every language
+            // shows the same window of the day. Centring on "now" is right for
+            // someone opening the app and wrong for a screenshot set, where it
+            // leaves each language scrolled to whatever time its capture
+            // happened to run - a set shot across an afternoon then reads as
+            // several different moments rather than one.
+            //
+            // The hour goes to the top of the visible timeline rather than its
+            // middle, so -ScreenshotScrollHour 9 means "the day starts at 9".
+            return 10 + CGFloat(pinnedHour) * weekView.hourHeight
+        }
+        #endif
+
+        let now = Date()
+        let cal = Calendar.current
+        let comps = cal.dateComponents([.hour, .minute], from: now)
+        guard let hour = comps.hour, let minute = comps.minute else { return nil }
+
+        // Пресмятаме честичното число на часа
+        let hoursFloat = CGFloat(hour) + CGFloat(minute) / 60.0
+        // y-координата на линията „сега“
+        let yNow = 10 + hoursFloat * weekView.hourHeight
+
+        // Искаме yNow да е в средата на екрана:
+        return yNow - mainScrollView.bounds.height / 2
     }
 
 }

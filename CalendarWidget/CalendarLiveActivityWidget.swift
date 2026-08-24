@@ -126,7 +126,7 @@ private struct CalendarLiveActivityAppIcon: View {
         let formatter = DateFormatter()
         formatter.calendar = settings.calendar
         formatter.locale = settings.locale
-        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeZone = WidgetTimeZone.current
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
@@ -266,7 +266,7 @@ private struct CalendarLiveActivitySettingsSnapshot {
     var calendar: Calendar {
         var calendar = Calendar(identifier: calendarIdentifierValue)
         calendar.locale = locale
-        calendar.timeZone = .autoupdatingCurrent
+        calendar.timeZone = WidgetTimeZone.current
 
         if (1...7).contains(firstWeekday) {
             calendar.firstWeekday = firstWeekday
@@ -625,7 +625,7 @@ private struct CalendarLiveActivityEventCardView: View {
         let formatter = DateFormatter()
         formatter.calendar = settings.calendar
         formatter.locale = settings.locale
-        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeZone = WidgetTimeZone.current
         formatter.dateStyle = .none
         let timeFormat = settings.timeFormat.trimmingCharacters(in: .whitespacesAndNewlines)
         formatter.dateFormat = timeFormat.isEmpty
@@ -638,7 +638,7 @@ private struct CalendarLiveActivityEventCardView: View {
         let formatter = DateFormatter()
         formatter.calendar = settings.calendar
         formatter.locale = settings.locale
-        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeZone = WidgetTimeZone.current
 
         let dateFormat = settings.dateFormat.trimmingCharacters(in: .whitespacesAndNewlines)
         if dateFormat.isEmpty {
@@ -723,7 +723,7 @@ private struct CalendarLiveActivityEventSummaryView: View {
         let formatter = DateFormatter()
         formatter.calendar = settings.calendar
         formatter.locale = settings.locale
-        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeZone = WidgetTimeZone.current
         formatter.dateStyle = .none
         let timeFormat = settings.timeFormat.trimmingCharacters(in: .whitespacesAndNewlines)
         formatter.dateFormat = timeFormat.isEmpty
@@ -736,7 +736,7 @@ private struct CalendarLiveActivityEventSummaryView: View {
         let formatter = DateFormatter()
         formatter.calendar = settings.calendar
         formatter.locale = settings.locale
-        formatter.timeZone = .autoupdatingCurrent
+        formatter.timeZone = WidgetTimeZone.current
 
         let dateFormat = settings.dateFormat.trimmingCharacters(in: .whitespacesAndNewlines)
         if dateFormat.isEmpty {
