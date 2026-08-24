@@ -2,8 +2,61 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.deksan.calendarasd.refresh</string>
+		<string>com.deksan.calendarasd.processing</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>$(CFBundleDisplayName)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Cloud Calendars Icon</string>
+			</array>
+		</dict>
+	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>msauth.Deksan.CalendarASD</string>
+			</array>
+		</dict>
+	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3759868960530173~5612581418</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>msauthv2</string>
+		<string>msauthv3</string>
+	</array>
+	<key>MKDirectionsApplicationSupportedModes</key>
+	<array/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>$(NSCalendarsUsageDescription)</string>
+	<key>NSContactsUsageDescription</key>
+	<string>$(NSContactsUsageDescription)</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>$(NSLocationAlwaysAndWhenInUseUsageDescription)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(NSLocationWhenInUseUsageDescription)</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
+	<true/>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -50,10 +103,10 @@
 			<key>SKAdNetworkIdentifier</key>
 			<string>s39g8k73mm.skadnetwork</string>
 		</dict>
-        <dict>
-           <key>SKAdNetworkIdentifier</key>
-           <string>wg4vff78zm.skadnetwork</string>
-        </dict>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>wg4vff78zm.skadnetwork</string>
+		</dict>
 		<dict>
 			<key>SKAdNetworkIdentifier</key>
 			<string>3qy4746246.skadnetwork</string>
@@ -207,60 +260,9 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>$(CFBundleDisplayName)</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>$(NSCalendarsUsageDescription)</string>
-	<key>NSContactsUsageDescription</key>
-	<string>$(NSContactsUsageDescription)</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(NSLocationAlwaysAndWhenInUseUsageDescription)</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(NSLocationWhenInUseUsageDescription)</string>
-	<key>NSSupportsLiveActivities</key>
-	<true/>
-	<key>NSSupportsLiveActivitiesFrequentUpdates</key>
-	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
 	</array>
-	<key>BGTaskSchedulerPermittedIdentifiers</key>
-	<array>
-		<string>com.deksan.calendarasd.refresh</string>
-		<string>com.deksan.calendarasd.processing</string>
-	</array>
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>Cloud Calendars Icon</string>
-			</array>
-		</dict>
-	</dict>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>msauth.Deksan.CalendarASD</string>
-			</array>
-		</dict>
-	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>msauthv2</string>
-		<string>msauthv3</string>
-	</array>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array/>
 </dict>
 </plist>
