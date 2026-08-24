@@ -780,3 +780,8 @@
 "Adding…" = "जोड़ा जा रहा है…";
 "Couldn’t find a writable calendar." = "लिखने योग्य कैलेंडर नहीं मिला।";
 "Please try again." = "कृपया फिर से कोशिश करें।";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "प्लान बदलें";
+"Current Plan" = "मौजूदा प्लान";
+"You can change your plan or billing period at any time." = "आप कभी भी अपना प्लान या बिलिंग अवधि बदल सकते हैं।";

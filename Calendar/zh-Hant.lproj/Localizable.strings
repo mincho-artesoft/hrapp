@@ -780,3 +780,8 @@
 "Adding…" = "正在加入…";
 "Couldn’t find a writable calendar." = "找不到可寫入的行事曆。";
 "Please try again." = "請再試一次。";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "更改方案";
+"Current Plan" = "目前方案";
+"You can change your plan or billing period at any time." = "您可以隨時更改方案或計費週期。";

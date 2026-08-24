@@ -776,3 +776,8 @@
 "Adding…" = "Добавление…";
 "Couldn’t find a writable calendar." = "Не найден календарь, доступный для записи.";
 "Please try again." = "Повторите попытку.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Сменить план";
+"Current Plan" = "Текущий план";
+"You can change your plan or billing period at any time." = "Вы можете сменить план или период оплаты в любое время.";

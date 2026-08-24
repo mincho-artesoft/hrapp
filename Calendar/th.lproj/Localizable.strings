@@ -780,3 +780,8 @@
 "Adding…" = "กำลังเพิ่ม…";
 "Couldn’t find a writable calendar." = "ไม่พบปฏิทินที่สามารถเขียนได้";
 "Please try again." = "โปรดลองอีกครั้ง";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "เปลี่ยนแผน";
+"Current Plan" = "แผนปัจจุบัน";
+"You can change your plan or billing period at any time." = "คุณสามารถเปลี่ยนแผนหรือรอบการเรียกเก็บเงินได้ทุกเมื่อ";

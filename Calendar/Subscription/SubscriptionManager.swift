@@ -11,7 +11,22 @@ class SubscriptionManager: ObservableObject {
     @Published var restorationAlertMessage: String?       // ← НОВО
 
     var subscriptionStatus: SubscriptionStatus {
-        get { SubscriptionStatus(rawValue: subscriptionStatusRaw) ?? .base }
+        get {
+            #if DEBUG
+            // A marketing capture is a premium session. Every ad decision in
+            // the app keys off `== .base`, so answering here turns off the
+            // banner, the interstitial and the app-open ad in one place rather
+            // than three.
+            //
+            // Worth doing because an AdMob test ad in an App Store preview is
+            // an automatic rejection. No screenshot ever caught one -- each is
+            // a fresh, short-lived launch -- but a minute-long screen
+            // recording relaunches the app mid-clip, and the first take of the
+            // Japanese preview came back with "Test mode" across it.
+            if ScreenshotMode.isActive { return .premium }
+            #endif
+            return SubscriptionStatus(rawValue: subscriptionStatusRaw) ?? .base
+        }
         set {
             subscriptionStatusRaw = newValue.rawValue
             objectWillChange.send()
@@ -78,32 +93,21 @@ class SubscriptionManager: ObservableObject {
 
     // MARK: - Purchase --------------------------------------------------------
 
-    func canPurchase(_ newProduct: Product) -> Bool {
-        guard hasActiveSubscription else { return true }         // no active sub → OK
-        if purchasedProductIDs.contains(newProduct.id) { return true } // same plan → OK
-        return isUpgradeable(to: newProduct)                     // else only if upgrade
+    /// True while `product` is the plan the customer is subscribed to right now.
+    func isCurrentPlan(_ product: Product) -> Bool {
+        purchasedProductIDs.contains(product.id)
     }
 
-    private func isUpgradeable(to newProduct: Product) -> Bool {
-        guard let currentID = purchasedProductIDs.first,
-              let current   = products.first(where: { $0.id == currentID }),
-              let curUnit   = current.subscription?.subscriptionPeriod.unit,
-              let newUnit   = newProduct.subscription?.subscriptionPeriod.unit
-        else { return false }
-
-        return currentID.lowercased().contains("advanced") &&
-               newProduct.id.lowercased().contains("premium") &&
-               curUnit == newUnit
-    }
-
+    // All four plans share one App Store subscription group
+    // (Cloud.Calendars.Group), so the store resolves a second purchase into an
+    // upgrade, a downgrade or a duration change of the active one -- it cannot
+    // leave a customer paying for two of them at once. The app used to allow
+    // only an Advanced -> Premium move at the same period, which left a
+    // subscriber no way to switch between the monthly and the yearly duration
+    // of their own tier. App Review read that as the durations being separate
+    // products (guideline 3.1.2(b)), so the decision now belongs to StoreKit,
+    // which is the only place that can make it correctly anyway.
     func purchase(_ product: Product) async {
-        if hasActiveSubscription &&
-            !isUpgradeable(to: product) &&
-            !purchasedProductIDs.contains(product.id) {
-            print("Cannot purchase – already have non-upgradeable subscription.")
-            return
-        }
-
         do {
             let result = try await product.purchase()
             switch result {

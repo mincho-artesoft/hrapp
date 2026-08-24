@@ -780,3 +780,8 @@
 "Adding…" = "Menambah…";
 "Couldn’t find a writable calendar." = "Kalendar yang boleh ditulis tidak ditemui.";
 "Please try again." = "Sila cuba lagi.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Tukar Pelan";
+"Current Plan" = "Pelan Semasa";
+"You can change your plan or billing period at any time." = "Anda boleh menukar pelan atau tempoh pengebilan pada bila-bila masa.";

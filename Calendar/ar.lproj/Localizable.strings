@@ -780,3 +780,8 @@
 "Adding…" = "جارٍ الإضافة…";
 "Couldn’t find a writable calendar." = "تعذّر العثور على تقويم قابل للكتابة.";
 "Please try again." = "يُرجى المحاولة مرة أخرى.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "تغيير الخطة";
+"Current Plan" = "الخطة الحالية";
+"You can change your plan or billing period at any time." = "يمكنك تغيير خطتك أو فترة الفوترة في أي وقت.";

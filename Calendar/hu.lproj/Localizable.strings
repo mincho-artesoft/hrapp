@@ -780,3 +780,8 @@
 "Adding…" = "Hozzáadás…";
 "Couldn’t find a writable calendar." = "Nem található írható naptár.";
 "Please try again." = "Próbáld újra.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Csomagváltás";
+"Current Plan" = "Jelenlegi csomag";
+"You can change your plan or billing period at any time." = "A csomagot vagy a számlázási időszakot bármikor módosíthatja.";

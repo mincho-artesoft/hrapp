@@ -780,3 +780,8 @@
 "Adding…" = "Dodawanie…";
 "Couldn’t find a writable calendar." = "Nie znaleziono kalendarza z możliwością zapisu.";
 "Please try again." = "Spróbuj ponownie.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Zmień plan";
+"Current Plan" = "Bieżący plan";
+"You can change your plan or billing period at any time." = "Plan lub okres rozliczeniowy możesz zmienić w dowolnym momencie.";

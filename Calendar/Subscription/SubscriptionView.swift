@@ -154,9 +154,7 @@ struct SubscriptionView: View {
 
         // Търсим първия REAL selectable
         if let firstSelectable = manager.sortedProducts.first(where: { product in
-            categoryMatches(product) &&
-            manager.canPurchase(product) &&
-            !manager.purchasedProductIDs.contains(product.id)
+            categoryMatches(product) && !manager.purchasedProductIDs.contains(product.id)
         }) {
             selectedProductID = firstSelectable.id
         } else {

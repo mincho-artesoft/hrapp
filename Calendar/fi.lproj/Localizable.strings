@@ -780,3 +780,8 @@
 "Adding…" = "Lisätään…";
 "Couldn’t find a writable calendar." = "Muokattavaa kalenteria ei löytynyt.";
 "Please try again." = "Yritä uudelleen.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Vaihda tilaus";
+"Current Plan" = "Nykyinen tilaus";
+"You can change your plan or billing period at any time." = "Voit vaihtaa tilausta tai laskutusjaksoa milloin tahansa.";

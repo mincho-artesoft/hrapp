@@ -27,33 +27,38 @@ struct SubscriptionListView: View {
                     spacing: 10
                 ) {
                     ForEach(products) { product in
-                        let isActive = manager.purchasedProductIDs.contains(product.id)
-                        let isSelectedOrActive = isActive || product.id == selectedProductID
-                        let canBuy = manager.canPurchase(product)
-                        
                         SubscriptionCard(
                             product: product,
-                            isActive: isActive,
-                            isSelected: isSelectedOrActive,
+                            isActive: manager.isCurrentPlan(product),
+                            isSelected: product.id == selectedProductID,
                             expirationDate: manager.expirationDates[product.id]
                         ) {
-                            if canBuy {
-                                selectedProductID = product.id
-                            }
+                            selectedProductID = product.id
                         }
-                        .disabled(!canBuy)
-                        .opacity(!canBuy ? 0.6 : 1.0)
                         .frame(maxWidth: .infinity)
                     }
                 }
                 .padding(.horizontal)
                 .padding(.top, -20)
+
+                // Every plan sits in the same subscription group, so switching
+                // is always available. Saying so on the paywall keeps a
+                // subscriber from assuming the duration they did not pick is
+                // out of reach once one card is marked as current.
+                Text(NSLocalizedString("You can change your plan or billing period at any time.",
+                                       comment: "Note that all plans belong to one subscription group"))
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                    .padding(.top, 12)
+
                 ActiveSubscriptionStatusView()
                 
                 if let id = selectedProductID,
                    let product = manager.products.first(where: { $0.id == id }),
-                   !manager.purchasedProductIDs.contains(id),
-                   manager.canPurchase(product) {
+                   !manager.isCurrentPlan(product) {
                     PurchaseSectionView(selectedProductID: id)
                         .padding(.horizontal)
                 }
@@ -199,9 +204,15 @@ struct SubscriptionListView: View {
                 Button {
                     Task { await manager.purchase(product) }
                 } label: {
-                    let labelKey = product.subscription?.introductoryOffer != nil
-                        ? NSLocalizedString("Start Free Trial", comment: "Button to start trial")
-                        : NSLocalizedString("Subscribe Now", comment: "Button to subscribe immediately")
+                    let labelKey: String = {
+                        if manager.hasActiveSubscription {
+                            return NSLocalizedString("Change Plan",
+                                                     comment: "Button to move to another plan or duration")
+                        }
+                        return product.subscription?.introductoryOffer != nil
+                            ? NSLocalizedString("Start Free Trial", comment: "Button to start trial")
+                            : NSLocalizedString("Subscribe Now", comment: "Button to subscribe immediately")
+                    }()
                     
                     Text(labelKey)
                         .font(.headline.weight(.semibold))

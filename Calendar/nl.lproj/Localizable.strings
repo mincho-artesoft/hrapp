@@ -780,3 +780,8 @@
 "Adding…" = "Toevoegen…";
 "Couldn’t find a writable calendar." = "Er is geen beschrijfbare agenda gevonden.";
 "Please try again." = "Probeer het opnieuw.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Abonnement wijzigen";
+"Current Plan" = "Huidig abonnement";
+"You can change your plan or billing period at any time." = "U kunt uw abonnement of factuurperiode op elk moment wijzigen.";

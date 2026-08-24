@@ -780,3 +780,8 @@
 "Adding…" = "מוסיף…";
 "Couldn’t find a writable calendar." = "לא נמצא לוח שנה שניתן לכתוב אליו.";
 "Please try again." = "נא לנסות שוב.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "החלפת תוכנית";
+"Current Plan" = "התוכנית הנוכחית";
+"You can change your plan or billing period at any time." = "אפשר לשנות את התוכנית או את תקופת החיוב בכל עת.";

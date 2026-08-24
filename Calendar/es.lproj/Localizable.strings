@@ -777,3 +777,8 @@
 "Adding…" = "Añadiendo…";
 "Couldn’t find a writable calendar." = "No se encontró un calendario editable.";
 "Please try again." = "Inténtalo de nuevo.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Cambiar de plan";
+"Current Plan" = "Plan actual";
+"You can change your plan or billing period at any time." = "Puedes cambiar de plan o de periodo de facturación cuando quieras.";

@@ -780,3 +780,8 @@
 "Adding…" = "Đang thêm…";
 "Couldn’t find a writable calendar." = "Không tìm thấy lịch có thể ghi.";
 "Please try again." = "Vui lòng thử lại.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Đổi gói";
+"Current Plan" = "Gói hiện tại";
+"You can change your plan or billing period at any time." = "Bạn có thể đổi gói hoặc chu kỳ thanh toán bất cứ lúc nào.";

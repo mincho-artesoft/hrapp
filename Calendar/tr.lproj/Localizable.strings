@@ -780,3 +780,8 @@
 "Adding…" = "Ekleniyor…";
 "Couldn’t find a writable calendar." = "Yazılabilir bir takvim bulunamadı.";
 "Please try again." = "Lütfen tekrar deneyin.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Planı Değiştir";
+"Current Plan" = "Mevcut Plan";
+"You can change your plan or billing period at any time." = "Planınızı veya faturalandırma dönemini istediğiniz zaman değiştirebilirsiniz.";

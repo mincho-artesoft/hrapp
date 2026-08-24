@@ -780,3 +780,8 @@
 "Adding…" = "Добавяне…";
 "Couldn’t find a writable calendar." = "Не е намерен календар с право за запис.";
 "Please try again." = "Опитайте отново.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Смяна на плана";
+"Current Plan" = "Текущ план";
+"You can change your plan or billing period at any time." = "Можете да смените плана или периода на плащане по всяко време.";

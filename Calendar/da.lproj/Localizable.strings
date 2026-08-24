@@ -780,3 +780,8 @@
 "Adding…" = "Tilføjer…";
 "Couldn’t find a writable calendar." = "Der blev ikke fundet en kalender, der kan skrives til.";
 "Please try again." = "Prøv igen.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Skift abonnement";
+"Current Plan" = "Nuværende abonnement";
+"You can change your plan or billing period at any time." = "Du kan når som helst skifte abonnement eller betalingsperiode.";

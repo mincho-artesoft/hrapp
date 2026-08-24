@@ -780,3 +780,8 @@
 "Adding…" = "Adding…";
 "Couldn’t find a writable calendar." = "Couldn’t find a writable calendar.";
 "Please try again." = "Please try again.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Change Plan";
+"Current Plan" = "Current Plan";
+"You can change your plan or billing period at any time." = "You can change your plan or billing period at any time.";

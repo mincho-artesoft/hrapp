@@ -780,3 +780,8 @@
 "Adding…" = "追加中…";
 "Couldn’t find a writable calendar." = "書き込み可能なカレンダーが見つかりませんでした。";
 "Please try again." = "もう一度お試しください。";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "プランを変更";
+"Current Plan" = "現在のプラン";
+"You can change your plan or billing period at any time." = "プランや請求期間はいつでも変更できます。";

@@ -780,3 +780,8 @@
 "Adding…" = "Se adaugă…";
 "Couldn’t find a writable calendar." = "Nu a fost găsit un calendar editabil.";
 "Please try again." = "Încearcă din nou.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Schimbă planul";
+"Current Plan" = "Planul curent";
+"You can change your plan or billing period at any time." = "Poți schimba planul sau perioada de facturare oricând.";

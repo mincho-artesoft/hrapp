@@ -35,6 +35,14 @@ struct SubscriptionCard: View {
                         .fixedSize(horizontal: false, vertical: true)
                     }
 
+                    if isActive {
+                        Text(NSLocalizedString("Current Plan",
+                                               comment: "Marks the plan the customer is subscribed to"))
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(.green)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+
                     if !isActive, let intro = product.subscription?.introductoryOffer {
                         let plural = intro.period.value > 1
                         let unit = intro.period.unit.noun(plural: plural).lowercased()

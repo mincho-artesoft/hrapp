@@ -780,3 +780,8 @@
 "Adding…" = "Προσθήκη…";
 "Couldn’t find a writable calendar." = "Δεν βρέθηκε ημερολόγιο με δυνατότητα εγγραφής.";
 "Please try again." = "Δοκιμάστε ξανά.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Αλλαγή προγράμματος";
+"Current Plan" = "Τρέχον πρόγραμμα";
+"You can change your plan or billing period at any time." = "Μπορείτε να αλλάξετε το πρόγραμμα ή την περίοδο χρέωσης οποιαδήποτε στιγμή.";
