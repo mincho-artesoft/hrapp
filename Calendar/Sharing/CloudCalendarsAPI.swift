@@ -7,7 +7,11 @@ import Foundation
 /// letting an organiser move or cancel an event and have that reach people who
 /// already added it.
 enum CloudCalendarsAPI {
-    static let baseURL = URL(string: "https://fvgboufkah.execute-api.us-east-1.amazonaws.com")!
+    /// The API's own domain rather than the generated execute-api hostname.
+    /// That hostname belongs to one API in one region, so anything shipped
+    /// against it is pinned to today's deployment; this one can be pointed
+    /// elsewhere without another App Store release.
+    static let baseURL = URL(string: "https://api.cloud-calendars.com")!
 
     struct Session: Codable, Equatable {
         let calendarId: String
