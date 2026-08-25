@@ -781,3 +781,10 @@
 "Change Plan" = "Changer de formule";
 "Current Plan" = "Formule actuelle";
 "You can change your plan or billing period at any time." = "Vous pouvez changer de formule ou de période de facturation à tout moment.";
+"Invites" = "Invitations";
+"Cancelled" = "Annulé";
+"Invitations go to" = "Les invitations vont dans";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Les invitations que vous acceptez arrivent ici et restent à jour. Si l’expéditeur en annule une, elle reste visible, barrée.";
+"Sample shared event" = "Exemple d’événement partagé";
+"Sofia" = "Sofia";
+"Team lunch" = "Déjeuner d’équipe";

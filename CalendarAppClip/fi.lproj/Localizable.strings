@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Lataa Cloud Calendars";
 "Sample shared event" = "Jaetun tapahtuman esimerkki";
 "Sofia" = "Sofia";
+"Add to Calendar" = "Lisää kalenteriin";
+"You’ll see it update if the time changes or the event is called off." = "Näet muutoksen, jos aika vaihtuu tai tapahtuma perutaan.";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Lisääminen siirtää tapahtuman kalenterisovellukseesi. Tämä App Clip ei koskaan lue kalentereitasi.";

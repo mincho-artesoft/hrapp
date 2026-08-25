@@ -45,8 +45,12 @@ enum SharedEventImporter {
             store.calendar(withIdentifier: identifier)
         }
 
+        // With no explicit choice the invite goes to its own calendar rather
+        // than into whichever calendar happens to be the default, so somebody
+        // else's event never quietly mixes in with your own.
         let destination = [
             requestedCalendar,
+            SharedInviteCalendar.destination(in: store),
             store.defaultCalendarForNewEvents,
             viewModel.pickFirstWritableSelectedCalendar(),
             store.calendars(for: .event).first(where: \.allowsContentModifications)
@@ -67,6 +71,11 @@ enum SharedEventImporter {
 
         do {
             try store.save(event, span: .thisEvent, commit: true)
+            // Remembered so a later change or cancellation from the sender can
+            // be applied to this copy rather than added as a second event.
+            if payload.isSyncable {
+                SharedInviteTracker.record(payload: payload, localEventIdentifier: event.eventIdentifier)
+            }
             EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
             NotificationCenter.default.post(name: .sharedEventImported, object: nil)
             return .added

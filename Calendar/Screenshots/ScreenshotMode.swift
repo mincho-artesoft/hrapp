@@ -1,4 +1,5 @@
 import Foundation
+import EventKit
 import SwiftUI
 import CoreLocation
 
@@ -53,8 +54,18 @@ enum ScreenshotMode {
         }
     }
 
+    /// Which part of the invitation flow to stage. Invitations arrive through
+    /// a link, and a capture cannot follow one, so the payload is built here
+    /// from the same URL parsing the real thing uses.
+    enum InviteScene: String {
+        case importSheet = "import"
+        case cancelled
+        case settings
+    }
+
     struct Configuration {
         var screen: Screen
+        var inviteScene: InviteScene?
         var calendarLocale: String?
         var scrollHour: Int?
         var weatherPreviewCondition: String?
@@ -68,6 +79,9 @@ enum ScreenshotMode {
     static let configuration: Configuration? = {
         let defaults = UserDefaults.standard
         guard defaults.bool(forKey: "ScreenshotMode") else { return nil }
+
+        let inviteScene = defaults.string(forKey: "ScreenshotSharedInvite")
+            .flatMap(InviteScene.init(rawValue:))
 
         let rawScreen = defaults.string(forKey: "ScreenshotScreen") ?? Screen.day.rawValue
         guard let screen = Screen(rawValue: rawScreen) else {
@@ -92,6 +106,7 @@ enum ScreenshotMode {
 
         return Configuration(
             screen: screen,
+            inviteScene: inviteScene,
             calendarLocale: defaults.string(forKey: "ScreenshotCalendarLocale"),
             scrollHour: scrollHour,
             weatherPreviewCondition: defaults.string(forKey: "WeatherPreviewCondition"),
@@ -211,6 +226,113 @@ enum ScreenshotMode {
         guard isActive else { return }
         UserDefaults.standard.set(true, forKey: readyKey)
         UserDefaults.standard.synchronize()
+    }
+
+    /// A staged invitation, built by parsing a link exactly as an arriving one
+    /// would be. Returns nil if the flow is not being captured.
+    /// Puts two invitations in the calendar - one live, one called off - so a
+    /// capture shows the contrast the strikethrough is there to draw.
+    @MainActor
+    static func stageCancelledInvite() {
+        guard configuration?.inviteScene == .cancelled else { return }
+
+        let store = CalendarViewModel.shared.eventStore
+
+        // Unlike the import capture, this one keeps whichever invites calendar
+        // already exists rather than making a per-language one: the shot is of
+        // the timeline, where the calendar's name never appears, and a fresh
+        // calendar each run would leave the previous run's events behind in the
+        // old one.
+        guard let calendar = SharedInviteCalendar.dedicated(in: store) else { return }
+
+        // Clear the day across every non-seeded calendar. Earlier runs of this
+        // capture made their own invites calendars, and their events would
+        // otherwise pile up side by side, one column per language.
+        let dayStart = Calendar.current.startOfDay(for: Date())
+        let dayEnd = dayStart.addingTimeInterval(86_400)
+        let ours = store.calendars(for: .event).filter {
+            $0.allowsContentModifications && !$0.title.contains(" · ")
+        }
+        if !ours.isEmpty {
+            let existing = store.events(matching: store.predicateForEvents(
+                withStart: dayStart, end: dayEnd, calendars: ours
+            ))
+            for event in existing { try? store.remove(event, span: .thisEvent, commit: false) }
+            try? store.commit()
+        }
+
+        func make(title: String, hour: Int) -> EKEvent? {
+            let event = EKEvent(eventStore: store)
+            event.title = title
+            event.startDate = Calendar.current.date(bySettingHour: hour, minute: 0, second: 0, of: Date())
+            event.endDate = event.startDate?.addingTimeInterval(3_600)
+            event.calendar = calendar
+            event.location = NSLocalizedString("Sofia", comment: "")
+            do { try store.save(event, span: .thisEvent, commit: true); return event }
+            catch { print("Screenshot invite could not be saved - \(error.localizedDescription)"); return nil }
+        }
+
+        _ = make(title: NSLocalizedString("Sample shared event", comment: ""), hour: 10)
+
+        let marker = NSLocalizedString("Cancelled", comment: "")
+        guard let called = make(title: "\(marker): \(NSLocalizedString("Team lunch", comment: ""))", hour: 12),
+              let identifier = called.eventIdentifier
+        else { return }
+
+        SharedInviteTracker.update(
+            SharedInviteTracker.Invite(
+                eventID: "screenshot-cancelled",
+                feedID: "screenshotfeedidentifier",
+                localEventIdentifier: identifier,
+                isCancelled: true,
+                lastSequence: 1
+            )
+        )
+
+        // applyIfNeeded selects only the calendars seeded for this language, so
+        // without this the invites calendar is filtered out of the timeline and
+        // the capture comes back empty.
+        var selected = CalendarViewModel.shared.selectedCalendarIDs
+        selected.insert(calendar.calendarIdentifier)
+        CalendarViewModel.shared.selectedCalendarIDs = selected
+        UserDefaults.standard.set(Array(selected), forKey: "SelectedCalendarIDsKey")
+        CalendarViewModel.shared.reloadCalendars()
+    }
+
+    @MainActor
+    static func stagedInvite() -> SharedEventImportPayload? {
+        guard configuration?.inviteScene == .importSheet else { return nil }
+
+        // A fresh simulator has no writable calendar at all, so the picker
+        // would sit on its spinner. Making the invites calendar here gives it
+        // something real to show - and it is the entry the capture is meant to
+        // demonstrate anyway.
+        SharedInviteCalendar.forgetDedicatedForCapture()
+        _ = SharedInviteCalendar.dedicated(in: CalendarViewModel.shared.eventStore)
+
+        let start = Calendar.current.date(
+            bySettingHour: 15, minute: 30, second: 0,
+            of: Date().addingTimeInterval(2 * 86_400)
+        ) ?? Date().addingTimeInterval(2 * 86_400)
+
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "appclip.apple.com"
+        components.path = "/id"
+        components.queryItems = [
+            URLQueryItem(name: "p", value: SharedEventImportPayload.appClipBundleIdentifier),
+            URLQueryItem(name: "e", value: "screenshot-sample"),
+            URLQueryItem(name: "c", value: "screenshotfeedidentifier"),
+            URLQueryItem(name: "title", value: NSLocalizedString("Sample shared event", comment: "")),
+            URLQueryItem(name: "start", value: String(start.timeIntervalSince1970)),
+            URLQueryItem(name: "end", value: String(start.addingTimeInterval(3_600).timeIntervalSince1970)),
+            URLQueryItem(name: "allDay", value: "0"),
+            URLQueryItem(name: "timeZone", value: TimeZone.current.identifier),
+            URLQueryItem(name: "color", value: "#0A84FF"),
+            URLQueryItem(name: "location", value: NSLocalizedString("Sofia", comment: ""))
+        ]
+
+        return components.url.flatMap(SharedEventImportPayload.init(url:))
     }
 
     static let readyKey = "ScreenshotReady"

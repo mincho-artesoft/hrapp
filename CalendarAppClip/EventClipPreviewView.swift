@@ -36,6 +36,9 @@ struct EventClipPreviewView: View {
                 VStack(spacing: 22) {
                     header
                     eventCard
+                    if subscriptionURL != nil {
+                        subscribeButton
+                    }
                     privacyNote
                     appStoreButton
                 }
@@ -105,9 +108,43 @@ struct EventClipPreviewView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
+    /// The sender's feed, if this link carries one. Links made before sync
+    /// existed have no feed, and those simply show no subscribe button.
+    private var subscriptionURL: URL? {
+        guard let feedID = payload.feedID, !feedID.isEmpty else { return nil }
+        return URL(string: "webcal://cal.cloud-calendars.com/f/\(feedID).ics")
+    }
+
+    /// Subscribing is what turns a static invite into one that stays correct:
+    /// the calendar app re-reads the feed on its own, so a change of time or a
+    /// cancellation arrives without the sender having to send anything again.
+    @ViewBuilder
+    private var subscribeButton: some View {
+        if let subscriptionURL {
+            VStack(spacing: 8) {
+                Link(destination: subscriptionURL) {
+                    Label("Add to Calendar", systemImage: "calendar.badge.plus")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(payload.eventColor.opacity(0.95), in: Capsule())
+                        .foregroundStyle(.white)
+                }
+
+                Text("You’ll see it update if the time changes or the event is called off.")
+                    .font(.footnote)
+                    .foregroundStyle(.white.opacity(0.66))
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+    }
+
     private var privacyNote: some View {
         Label {
-            Text("This App Clip only previews the event. It doesn’t access your calendars.")
+            Text(subscriptionURL == nil
+                 ? "This App Clip only previews the event. It doesn’t access your calendars."
+                 : "Adding the event hands it to your calendar app. This App Clip never reads your calendars.")
         } icon: {
             Image(systemName: "lock.shield")
         }

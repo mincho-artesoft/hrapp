@@ -785,3 +785,10 @@
 "Change Plan" = "Planı Değiştir";
 "Current Plan" = "Mevcut Plan";
 "You can change your plan or billing period at any time." = "Planınızı veya faturalandırma dönemini istediğiniz zaman değiştirebilirsiniz.";
+"Invites" = "Davetler";
+"Cancelled" = "İptal edildi";
+"Invitations go to" = "Davetlerin gideceği yer";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Kabul ettiğin davetler buraya eklenir ve güncel kalır. Gönderen iptal ederse, davet üstü çizili olarak görünmeye devam eder.";
+"Sample shared event" = "Örnek paylaşılan etkinlik";
+"Sofia" = "Sofya";
+"Team lunch" = "Ekip yemeği";

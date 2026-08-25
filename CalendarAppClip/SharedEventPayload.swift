@@ -10,6 +10,15 @@ struct SharedEventPayload: Equatable {
     var timeZone: TimeZone
     var eventColorHex: String
 
+    /// Stable id of the shared event. Becomes the `UID` when the event is
+    /// synced, so a later update replaces this entry instead of duplicating it.
+    /// Absent on links generated before sync existed.
+    var eventID: String?
+
+    /// The sender's personal calendar feed. Present so the recipient can offer
+    /// to subscribe and keep receiving updates for this and every future invite.
+    var feedID: String?
+
     var eventColor: Color {
         Color(hex: eventColorHex) ?? .blue
     }
@@ -31,7 +40,9 @@ struct SharedEventPayload: Equatable {
         isAllDay: Bool,
         location: String?,
         timeZone: TimeZone,
-        eventColorHex: String
+        eventColorHex: String,
+        eventID: String? = nil,
+        feedID: String? = nil
     ) {
         self.title = title
         self.start = start
@@ -40,6 +51,8 @@ struct SharedEventPayload: Equatable {
         self.location = location
         self.timeZone = timeZone
         self.eventColorHex = eventColorHex
+        self.eventID = eventID
+        self.feedID = feedID
     }
 
     init(url: URL) {
@@ -60,7 +73,9 @@ struct SharedEventPayload: Equatable {
             location: values["location"].flatMap { $0.isEmpty ? nil : $0 },
             timeZone: values["timeZone"].flatMap(TimeZone.init(identifier:)) ?? .current,
             eventColorHex: values["color"].flatMap { $0.isEmpty ? nil : $0 }
-                ?? fallback.eventColorHex
+                ?? fallback.eventColorHex,
+            eventID: values["e"].flatMap { $0.isEmpty ? nil : $0 },
+            feedID: values["c"].flatMap { $0.isEmpty ? nil : $0 }
         )
     }
 }

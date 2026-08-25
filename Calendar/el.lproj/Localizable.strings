@@ -785,3 +785,10 @@
 "Change Plan" = "Αλλαγή προγράμματος";
 "Current Plan" = "Τρέχον πρόγραμμα";
 "You can change your plan or billing period at any time." = "Μπορείτε να αλλάξετε το πρόγραμμα ή την περίοδο χρέωσης οποιαδήποτε στιγμή.";
+"Invites" = "Προσκλήσεις";
+"Cancelled" = "Ακυρώθηκε";
+"Invitations go to" = "Οι προσκλήσεις πηγαίνουν σε";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Οι προσκλήσεις που δέχεστε προστίθενται εδώ και μένουν ενημερωμένες. Αν ο αποστολέας ακυρώσει κάποια, παραμένει ορατή διαγραμμένη.";
+"Sample shared event" = "Δείγμα κοινόχρηστου συμβάντος";
+"Sofia" = "Σόφια";
+"Team lunch" = "Γεύμα ομάδας";

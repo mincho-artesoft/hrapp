@@ -158,6 +158,17 @@ open class EventView: UIView {
             finalString.append(NSAttributedString(string: " \(loc)", attributes: textAttributes))
         }
 
+        // An invitation the organiser called off stays visible with a line
+        // through it, the way Apple's Calendar shows one. Seeing that a meeting
+        // was cancelled is more use than finding a gap where it used to be.
+        if let identifier = wrapper.realEvent.eventIdentifier,
+           SharedInviteTracker.isCancelled(localEventIdentifier: identifier) {
+            finalString.addAttributes(
+                [.strikethroughStyle: NSUnderlineStyle.single.rawValue],
+                range: NSRange(location: 0, length: finalString.length)
+            )
+        }
+
         // Apply to textView and style view
         textView.attributedText = finalString
         textView.textContainer.maximumNumberOfLines = event.isAllDay ? 1 : 0

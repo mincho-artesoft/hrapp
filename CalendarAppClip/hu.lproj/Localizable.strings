@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Cloud Calendars letöltése";
 "Sample shared event" = "Megosztott mintaesemény";
 "Sofia" = "Szófia";
+"Add to Calendar" = "Hozzáadás a naptárhoz";
+"You’ll see it update if the time changes or the event is called off." = "Látni fogod a módosítást, ha változik az időpont vagy elmarad az esemény.";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "A hozzáadás átadja az eseményt a naptáralkalmazásodnak. Ez az App Clip soha nem olvassa a naptáraidat.";

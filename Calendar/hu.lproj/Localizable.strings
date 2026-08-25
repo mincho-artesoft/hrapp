@@ -785,3 +785,10 @@
 "Change Plan" = "Csomagváltás";
 "Current Plan" = "Jelenlegi csomag";
 "You can change your plan or billing period at any time." = "A csomagot vagy a számlázási időszakot bármikor módosíthatja.";
+"Invites" = "Meghívók";
+"Cancelled" = "Lemondva";
+"Invitations go to" = "A meghívók ide kerülnek";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Az elfogadott meghívók ide kerülnek és naprakészek maradnak. Ha a küldő lemond egyet, áthúzva látható marad.";
+"Sample shared event" = "Példa megosztott eseményre";
+"Sofia" = "Szófia";
+"Team lunch" = "Csapatebéd";

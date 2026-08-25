@@ -785,3 +785,10 @@
 "Change Plan" = "Vaihda tilaus";
 "Current Plan" = "Nykyinen tilaus";
 "You can change your plan or billing period at any time." = "Voit vaihtaa tilausta tai laskutusjaksoa milloin tahansa.";
+"Invites" = "Kutsut";
+"Cancelled" = "Peruttu";
+"Invitations go to" = "Kutsut tallennetaan";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Hyväksymäsi kutsut lisätään tänne ja pidetään ajan tasalla. Jos lähettäjä peruu jonkin, se jää näkyviin yliviivattuna.";
+"Sample shared event" = "Esimerkki jaetusta tapahtumasta";
+"Sofia" = "Sofia";
+"Team lunch" = "Tiimin lounas";

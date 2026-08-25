@@ -395,6 +395,17 @@ struct RootView: View {
             }
         }
         .animation(.spring(response: 0.35, dampingFraction: 0.86), value: eventSharePromptManager.event != nil)
+        #if DEBUG
+        .onAppear {
+            // Opens the drawer straight to the calendars tab, where the invites
+            // setting lives. Reaching it by tapping is the sort of navigation
+            // ScreenshotMode exists to avoid.
+            if ScreenshotMode.configuration?.inviteScene == .settings {
+                selectedTabDraggableMenuView = 0
+                menuState = .full
+            }
+        }
+        #endif
         .onReceive(NotificationCenter.default.publisher(
             for: .notificationDraggableMenuViewSub)) { notification in
                 if notification.userInfo != nil{

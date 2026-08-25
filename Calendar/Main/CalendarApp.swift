@@ -83,6 +83,14 @@ struct CalendarApp: App {
                     if pendingSharedEvent == nil {
                         pendingSharedEvent = SharedEventImportHandoffStore.takePendingPayload()
                     }
+
+                    #if DEBUG
+                    ScreenshotMode.stageCancelledInvite()
+                    if let staged = ScreenshotMode.stagedInvite() {
+                        pendingSharedEvent = staged
+                        ScreenshotMode.markReady()
+                    }
+                    #endif
                 }
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
                     guard let url = activity.webpageURL,
@@ -107,6 +115,11 @@ struct CalendarApp: App {
             switch newPhase {
             case .active:
                 print("App is active.")
+
+                // Invitations added inside the app are static copies until
+                // something re-reads their feed; doing it on activation is
+                // when the person is most likely to be looking at them.
+                Task { await SharedInviteRefresher.refreshAll() }
 
                 // ПРОВЕРКА ЗА РЕКЛАМИ
                 if SubscriptionManager.shared.subscriptionStatus == .base {

@@ -781,3 +781,10 @@
 "Change Plan" = "Сменить план";
 "Current Plan" = "Текущий план";
 "You can change your plan or billing period at any time." = "Вы можете сменить план или период оплаты в любое время.";
+"Invites" = "Приглашения";
+"Cancelled" = "Отменено";
+"Invitations go to" = "Приглашения попадают в";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Принятые приглашения попадают сюда и остаются актуальными. Если отправитель отменит одно, оно останется видимым, зачёркнутым.";
+"Sample shared event" = "Пример общего события";
+"Sofia" = "София";
+"Team lunch" = "Обед с командой";

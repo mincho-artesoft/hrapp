@@ -785,3 +785,10 @@
 "Change Plan" = "เปลี่ยนแผน";
 "Current Plan" = "แผนปัจจุบัน";
 "You can change your plan or billing period at any time." = "คุณสามารถเปลี่ยนแผนหรือรอบการเรียกเก็บเงินได้ทุกเมื่อ";
+"Invites" = "คำเชิญ";
+"Cancelled" = "ยกเลิกแล้ว";
+"Invitations go to" = "คำเชิญไปที่";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "คำเชิญที่คุณตอบรับจะถูกเพิ่มที่นี่และอัปเดตอยู่เสมอ หากผู้ส่งยกเลิก คำเชิญจะยังแสดงอยู่โดยมีเส้นขีดทับ";
+"Sample shared event" = "ตัวอย่างกิจกรรมที่แชร์";
+"Sofia" = "โซเฟีย";
+"Team lunch" = "มื้อเที่ยงกับทีม";

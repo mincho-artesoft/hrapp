@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Scarica Cloud Calendars";
 "Sample shared event" = "Evento condiviso di esempio";
 "Sofia" = "Sofia";
+"Add to Calendar" = "Aggiungi al calendario";
+"You’ll see it update if the time changes or the event is called off." = "Vedrai l’aggiornamento se l’orario cambia o l’evento viene annullato.";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "L’aggiunta passa l’evento alla tua app Calendario. Questo App Clip non legge mai i tuoi calendari.";

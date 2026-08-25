@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Last ned Cloud Calendars";
 "Sample shared event" = "Eksempel på delt hendelse";
 "Sofia" = "Sofia";
+"Add to Calendar" = "Legg til i kalender";
+"You’ll see it update if the time changes or the event is called off." = "Du ser oppdateringen hvis tidspunktet endres eller hendelsen avlyses.";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Når du legger den til, sendes hendelsen til kalenderappen din. Denne App Clip-en leser aldri kalenderne dine.";

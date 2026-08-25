@@ -37,6 +37,9 @@ struct CalendarsSheetView: View {
         WeatherAlertNotificationManager.notificationsEnabled
     @AppStorage(EventSharePromptSettings.userDefaultsKey)
     private var eventSharePromptEnabled = true
+    /// Empty means the app's own Invites calendar, made on first use.
+    @AppStorage(SharedInviteCalendar.destinationKey)
+    private var invitesCalendarIdentifier = ""
     private let bottomContentInset: CGFloat
 
     // MARK: - Init for iOS 14–15 appearance
@@ -71,6 +74,7 @@ struct CalendarsSheetView: View {
                 googleSection
                 microsoftSection
                 addCalendarSection
+                invitesSection
                 shareCalendarsSection
                 googleSignInSection
                 microsoftSignInSection
@@ -519,6 +523,35 @@ struct CalendarsSheetView: View {
             }
             .buttonStyle(PlainButtonStyle())
         }
+    }
+
+    /// Where invitations from other people land. Kept apart from your own
+    /// calendars by default so somebody else's event never quietly mixes in.
+    private var invitesSection: some View {
+        Section {
+            Picker(selection: $invitesCalendarIdentifier) {
+                Text(LocalizedStringKey("Invites")).tag("")
+                ForEach(writableCalendars, id: \.calendarIdentifier) { calendar in
+                    Text(calendar.title).tag(calendar.calendarIdentifier)
+                }
+            } label: {
+                HStack {
+                    Image(systemName: "envelope.badge")
+                        .foregroundStyle(Color.indigo)
+                        .frame(width: 28, height: 28)
+                    Text(LocalizedStringKey("Invitations go to"))
+                }
+            }
+        } footer: {
+            Text(LocalizedStringKey("Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it."))
+        }
+    }
+
+    private var writableCalendars: [EKCalendar] {
+        CalendarViewModel.shared.eventStore
+            .calendars(for: .event)
+            .filter(\.allowsContentModifications)
+            .sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
     }
 
     private var shareCalendarsSection: some View {

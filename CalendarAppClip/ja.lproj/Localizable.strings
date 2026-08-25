@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Cloud Calendarsをダウンロード";
 "Sample shared event" = "共有予定のサンプル";
 "Sofia" = "ソフィア";
+"Add to Calendar" = "カレンダーに追加";
+"You’ll see it update if the time changes or the event is called off." = "時刻が変わったり予定が取り消されたりすると、更新が反映されます。";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "追加すると、予定はカレンダーAppに引き渡されます。このApp Clipがカレンダーを読み取ることはありません。";

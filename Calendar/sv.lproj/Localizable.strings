@@ -785,3 +785,10 @@
 "Change Plan" = "Byt plan";
 "Current Plan" = "Nuvarande plan";
 "You can change your plan or billing period at any time." = "Du kan när som helst byta plan eller betalningsperiod.";
+"Invites" = "Inbjudningar";
+"Cancelled" = "Inställt";
+"Invitations go to" = "Inbjudningar hamnar i";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Inbjudningar du tackar ja till hamnar här och hålls uppdaterade. Ställer avsändaren in en blir den kvar överstruken.";
+"Sample shared event" = "Exempel på delad händelse";
+"Sofia" = "Sofia";
+"Team lunch" = "Teamlunch";

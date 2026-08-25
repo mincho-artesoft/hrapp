@@ -539,7 +539,11 @@ final class CalendarViewModel: ObservableObject {
         // Weather preview captures do not read or edit calendar data. Avoid a
         // system permission sheet covering deterministic animation videos on a
         // freshly-created simulator; normal app launches are unchanged.
-        if ScreenshotMode.isActive {
+        //
+        // Scoped to the weather screen: captures of the invitation flow do read
+        // calendars, and refusing here left their calendar picker spinning on
+        // an empty list for the whole shoot.
+        if ScreenshotMode.isActive, ScreenshotMode.configuration?.screen == .weather {
             self.accessGranted = false
             return false
         }

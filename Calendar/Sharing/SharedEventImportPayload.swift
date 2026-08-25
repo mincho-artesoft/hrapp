@@ -13,7 +13,22 @@ struct SharedEventImportPayload: Identifiable, Equatable {
     let timeZone: TimeZone
     let eventColorHex: String
 
+    /// Stable id of the event on the sender's side. Kept so that a later
+    /// change to the same event can be matched to the copy we imported
+    /// instead of adding a second one.
+    let eventID: String?
+
+    /// The feed this invite can be re-read from. Absent on links made before
+    /// syncing existed, and those simply never update.
+    let feedID: String?
+
     var id: String { sourceURL.absoluteString }
+
+    /// True when this invite can be kept up to date; both ids are needed.
+    var isSyncable: Bool {
+        guard let eventID, let feedID else { return false }
+        return !eventID.isEmpty && !feedID.isEmpty
+    }
 
     var eventColor: Color {
         Color(sharedEventHex: eventColorHex) ?? .blue
@@ -55,6 +70,8 @@ struct SharedEventImportPayload: Identifiable, Equatable {
         self.location = rawLocation.flatMap { $0.isEmpty ? nil : String($0.prefix(160)) }
         self.timeZone = values["timeZone"].flatMap(TimeZone.init(identifier:)) ?? .current
         self.eventColorHex = Self.validColorHex(rawColor) ? rawColor : "#0A84FF"
+        self.eventID = values["e"].flatMap { $0.isEmpty ? nil : $0 }
+        self.feedID = values["c"].flatMap { $0.isEmpty ? nil : $0 }
     }
 
     private static func validColorHex(_ value: String) -> Bool {

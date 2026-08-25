@@ -327,7 +327,11 @@ struct SharedEventImportView: View {
                 return sourceComparison == .orderedAscending
             }
 
+        // The invites destination comes first, so the sheet opens on whatever
+        // the setting says. Preselecting the system default here would quietly
+        // override that choice on every invitation.
         let preferredCalendar = [
+            SharedInviteCalendar.destination(in: viewModel.eventStore),
             viewModel.eventStore.defaultCalendarForNewEvents,
             viewModel.pickFirstWritableSelectedCalendar(),
             writableCalendars.first

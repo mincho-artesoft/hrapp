@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Cloud Calendars 다운로드";
 "Sample shared event" = "공유 이벤트 예시";
 "Sofia" = "소피아";
+"Add to Calendar" = "캘린더에 추가";
+"You’ll see it update if the time changes or the event is called off." = "시간이 바뀌거나 이벤트가 취소되면 업데이트된 내용이 표시됩니다.";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "추가하면 이벤트가 캘린더 앱으로 전달됩니다. 이 App Clip은 캘린더를 읽지 않습니다.";

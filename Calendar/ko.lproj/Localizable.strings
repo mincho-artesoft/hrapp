@@ -785,3 +785,10 @@
 "Change Plan" = "요금제 변경";
 "Current Plan" = "현재 요금제";
 "You can change your plan or billing period at any time." = "언제든지 요금제나 결제 주기를 변경할 수 있습니다.";
+"Invites" = "초대";
+"Cancelled" = "취소됨";
+"Invitations go to" = "초대 저장 위치";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "수락한 초대가 여기에 추가되고 최신 상태로 유지됩니다. 보낸 사람이 취소하면 취소선이 그어진 채로 남습니다.";
+"Sample shared event" = "공유된 이벤트 예시";
+"Sofia" = "소피아";
+"Team lunch" = "팀 점심";

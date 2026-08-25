@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Cloud Calendars’ı İndir";
 "Sample shared event" = "Örnek paylaşılan etkinlik";
 "Sofia" = "Sofya";
+"Add to Calendar" = "Takvime Ekle";
+"You’ll see it update if the time changes or the event is called off." = "Saat değişirse veya etkinlik iptal edilirse güncellemeyi görürsün.";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Eklediğinde etkinlik takvim uygulamana aktarılır. Bu App Clip takvimlerini asla okumaz.";

@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "ดาวน์โหลด Cloud Calendars";
 "Sample shared event" = "ตัวอย่างกิจกรรมที่แชร์";
 "Sofia" = "โซเฟีย";
+"Add to Calendar" = "เพิ่มลงในปฏิทิน";
+"You’ll see it update if the time changes or the event is called off." = "คุณจะเห็นการอัปเดตหากเวลาเปลี่ยนหรือกิจกรรมถูกยกเลิก";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "การเพิ่มจะส่งกิจกรรมไปยังแอปปฏิทินของคุณ App Clip นี้ไม่เคยอ่านปฏิทินของคุณ";

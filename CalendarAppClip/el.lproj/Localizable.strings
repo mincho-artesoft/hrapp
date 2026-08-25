@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "Λήψη Cloud Calendars";
 "Sample shared event" = "Δείγμα κοινόχρηστου γεγονότος";
 "Sofia" = "Σόφια";
+"Add to Calendar" = "Προσθήκη στο Ημερολόγιο";
+"You’ll see it update if the time changes or the event is called off." = "Θα δείτε την αλλαγή αν αλλάξει η ώρα ή ακυρωθεί το συμβάν.";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Η προσθήκη παραδίδει το συμβάν στην εφαρμογή ημερολογίου σας. Αυτό το App Clip δεν διαβάζει ποτέ τα ημερολόγιά σας.";

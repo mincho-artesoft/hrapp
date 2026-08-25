@@ -785,3 +785,10 @@
 "Change Plan" = "更改套餐";
 "Current Plan" = "当前套餐";
 "You can change your plan or billing period at any time." = "您可以随时更改套餐或计费周期。";
+"Invites" = "邀请";
+"Cancelled" = "已取消";
+"Invitations go to" = "邀请存放于";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "你接受的邀请会加到这里并保持更新。若发送者取消，邀请仍会显示，并带上删除线。";
+"Sample shared event" = "共享日程示例";
+"Sofia" = "索非亚";
+"Team lunch" = "团队午餐";

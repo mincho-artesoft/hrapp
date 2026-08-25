@@ -785,3 +785,10 @@
 "Change Plan" = "プランを変更";
 "Current Plan" = "現在のプラン";
 "You can change your plan or billing period at any time." = "プランや請求期間はいつでも変更できます。";
+"Invites" = "招待";
+"Cancelled" = "中止";
+"Invitations go to" = "招待の保存先";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "受け入れた招待はここに追加され、最新の状態に保たれます。送信者が取り消した場合は、取り消し線付きで残ります。";
+"Sample shared event" = "共有された予定の例";
+"Sofia" = "ソフィア";
+"Team lunch" = "チームランチ";

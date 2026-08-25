@@ -6,3 +6,6 @@
 "Download Cloud Calendars" = "下载 Cloud Calendars";
 "Sample shared event" = "共享日程示例";
 "Sofia" = "索非亚";
+"Add to Calendar" = "添加到日历";
+"You’ll see it update if the time changes or the event is called off." = "如果时间变动或日程取消，你会看到更新。";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "添加后，日程会交给你的日历 App。此轻 App 不会读取你的日历。";
