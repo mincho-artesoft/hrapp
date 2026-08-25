@@ -7,3 +7,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars heeft toegang tot uw locatie, zelfs als de app gesloten is, en biedt nauwkeurige weersvoorspellingen en tijdige waarschuwingen voor uw geplande evenementen.";
 
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars gebruikt uw locatie terwijl deze actief is om nauwkeurige lokale weersvoorspellingen rechtstreeks in uw agenda te integreren.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars vereist agendatoegang om uw evenementen uit de agenda's iCloud, Google en Microsoft te verenigen, waardoor een naadloze planning mogelijk wordt.";

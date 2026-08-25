@@ -7,3 +7,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars uygulama kapalıyken bile konumunuza erişerek, doğru hava durumu tahminleri ve planlanmış etkinlikleriniz için zamanında uyarılar sağlar.";
 
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars kesin yerel hava durumu tahminlerini doğrudan takviminize entegre etmek için etkinken konumunuzu kullanır.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars, iCloud, Google ve Microsoft takvimlerindeki etkinliklerinizi birleştirmek için takvim erişimi gerektirir ve kesintisiz planlamaya olanak tanır.";

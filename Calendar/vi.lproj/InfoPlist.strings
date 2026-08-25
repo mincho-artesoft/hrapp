@@ -7,3 +7,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars truy cập vị trí của bạn ngay cả khi ứng dụng bị đóng, cung cấp dự báo thời tiết chính xác và cảnh báo kịp thời cho các sự kiện đã lên lịch của bạn.";
 
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars sử dụng vị trí của bạn khi hoạt động để tích hợp dự báo thời tiết địa phương chính xác trực tiếp vào lịch của bạn.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars yêu cầu quyền truy cập vào lịch để thống nhất các sự kiện của bạn từ các lịch iCloud, Google và Microsoft, cho phép lập lịch liền mạch.";

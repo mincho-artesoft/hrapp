@@ -7,3 +7,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars يصل إلى موقعك حتى عندما يكون التطبيق مغلقًا، مما يوفر تنبؤات جوية دقيقة وتنبيهات في الوقت المناسب للأحداث المجدولة.";
 
 "NSLocationWhenInUseUsageDescription" = "يستخدم Cloud Calendars موقعك أثناء نشاطك لدمج تنبؤات الطقس المحلية الدقيقة مباشرة في التقويم الخاص بك.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars يتطلب الوصول إلى التقويم لتوحيد الأحداث الخاصة بك من التقويمات iCloud، Google، وMicrosoft، مما يتيح جدولة سلسة.";

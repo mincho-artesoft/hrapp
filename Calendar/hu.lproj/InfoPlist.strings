@@ -7,3 +7,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "A Cloud Calendars akkor is hozzáfér a tartózkodási helyéhez, ha az alkalmazás be van zárva, így pontos időjárás-előrejelzést és időszerű riasztást biztosít az ütemezett eseményekről.";
 
 "NSLocationWhenInUseUsageDescription" = "A Cloud Calendars aktív állapotban használja az Ön tartózkodási helyét, hogy a pontos helyi időjárás-előrejelzéseket közvetlenül a naptárába integrálja.";
+
+"NSCalendarsFullAccessUsageDescription" = "A Cloud Calendars naptári hozzáférést igényel, hogy egyesítse a iCloud, Google és Microsoft naptárak eseményeit, lehetővé téve a zökkenőmentes ütemezést.";

@@ -7,3 +7,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars kommer åt din plats även när appen är stängd, vilket ger korrekta väderprognoser och snabba varningar för dina schemalagda händelser.";
 
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars använder din position medan den är aktiv för att integrera exakta lokala väderprognoser direkt i din kalender.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars kräver kalenderåtkomst för att förena dina händelser från kalendrarna iCloud, Google och Microsoft, vilket möjliggör sömlös schemaläggning.";

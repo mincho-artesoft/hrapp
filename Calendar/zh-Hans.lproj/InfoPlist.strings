@@ -7,3 +7,5 @@
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "即使应用程序关闭，Cloud Calendars 也会访问您的位置，为您的预定活动提供准确的天气预报和及时警报。";
 
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars 在活动时使用您的位置将精确的当地天气预报直接集成到您的日历中。";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars 需要日历访问权限来统一 iCloud、Google 和 Microsoft 日历中的事件，从而实现无缝安排。";
