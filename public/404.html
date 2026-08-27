@@ -1,0 +1,120 @@
+<!doctype html>
+<!--
+  A real 404.
+
+  Both CloudFront and the S3 website endpoint used to rewrite every missing
+  path to index.html with a 200. That was correct while the site was a
+  client-rendered app: the shell had to boot before the router could decide
+  what the URL meant. Every route is prerendered now, so the rewrite bought
+  nothing and cost something — a search engine that requests a mistyped URL was
+  told the home page lives there too, which is the definition of a soft 404.
+
+  This page is deliberately static and self-contained. It is served for paths
+  that do not exist, where nothing about the app bundle can be assumed.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found — Cloud Calendars</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --void: #03050c;
+        --surface: #0b1024;
+        --ink: #f4f7ff;
+        --ink-2: rgba(226, 234, 255, 0.74);
+        --ink-3: rgba(210, 222, 255, 0.5);
+        --aurora-1: #4d7cff;
+        --aurora-2: #38e0f0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        background: radial-gradient(120% 90% at 50% 0%, var(--surface), var(--void) 70%);
+        color: var(--ink);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      main {
+        max-width: 32rem;
+        text-align: center;
+      }
+      .code {
+        font-size: 0.75rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-3);
+        margin: 0 0 1.25rem;
+      }
+      h1 {
+        font-size: clamp(1.6rem, 4vw, 2.25rem);
+        line-height: 1.2;
+        margin: 0 0 0.75rem;
+        text-wrap: balance;
+        background: linear-gradient(100deg, var(--ink), var(--aurora-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p {
+        color: var(--ink-2);
+        margin: 0 0 2rem;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+      }
+      a {
+        display: inline-block;
+        padding: 0.7rem 1.4rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 1px solid rgba(226, 234, 255, 0.18);
+        color: var(--ink);
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      a.primary {
+        background: var(--aurora-1);
+        border-color: transparent;
+      }
+      a:hover,
+      a:focus-visible {
+        border-color: var(--aurora-2);
+        background: rgba(56, 224, 240, 0.12);
+      }
+      a.primary:hover,
+      a.primary:focus-visible {
+        background: var(--aurora-2);
+        color: var(--void);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code">404</p>
+      <h1>That page is not here</h1>
+      <p>
+        The address may be mistyped, or the page may have moved. The articles and the app are both
+        one step away.
+      </p>
+      <div class="links">
+        <a class="primary" href="/">Home</a>
+        <a href="/articles/">All articles</a>
+      </div>
+    </main>
+  </body>
+</html>

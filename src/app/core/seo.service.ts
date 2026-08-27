@@ -26,6 +26,25 @@ export interface SeoInput {
 }
 
 /**
+ * A route path as the absolute URL that actually serves it.
+ *
+ * The trailing slash is not cosmetic. The site is hosted from an S3 website
+ * endpoint, which resolves a directory to its index.html only when the request
+ * ends in a slash and answers 302 otherwise. Emitting the slashless form meant
+ * every canonical URL on the site temporarily redirected to the page that then
+ * pointed its canonical back at the redirect -- 217 pages each telling a
+ * crawler that their real address was somewhere else.
+ *
+ * So the URL advertised is the one that returns 200. Everything downstream --
+ * hreflang, og:url, and the sitemap, which is generated from these very tags --
+ * inherits it from here.
+ */
+function absolute(path: string): string {
+  if (path === '/' || path === '') return `${SITE_URL}/`;
+  return `${SITE_URL}/${path.replace(/^\/+/, '').replace(/\/+$/, '')}/`;
+}
+
+/**
  * Per-route title, description, canonical URL and social cards.
  *
  * This is a single-page app, so without this every route would inherit the
@@ -47,7 +66,7 @@ export class SeoService {
   private readonly doc = inject(DOCUMENT);
 
   apply(input: SeoInput): void {
-    const url = `${SITE_URL}${input.path === '/' ? '' : input.path}`;
+    const url = absolute(input.path);
     const image = input.image ?? `${SITE_URL}/assets/images/app-screenshots/single-day-view.png`;
 
     this.title.setTitle(input.title);
@@ -96,7 +115,7 @@ export class SeoService {
       const link = this.doc.createElement('link');
       link.rel = 'alternate';
       link.hreflang = item.hreflang;
-      link.href = `${SITE_URL}${item.path === '/' ? '' : item.path}`;
+      link.href = absolute(item.path);
       this.doc.head.appendChild(link);
     }
   }

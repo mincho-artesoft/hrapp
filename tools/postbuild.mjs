@@ -22,13 +22,25 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist/arte-calendar/browser');
 const ORIGIN = 'https://www.cloud-calendars.com';
 
-/** Every index.html under dist, as repository-relative paths. */
+/**
+ * Every page under dist.
+ *
+ * Prerendered routes are directories holding an index.html, but not every page
+ * is one: the long-form article is a hand-written file sitting at the top
+ * level. Walking only index.html quietly dropped it from the sitemap while it
+ * stayed live and reachable, which is the worst of both -- a real page that
+ * search engines are not told about.
+ *
+ * index.csr.html is the client-render shell Angular emits alongside the
+ * prerendered output. It is a page in no sense that matters and must never be
+ * advertised.
+ */
 function pages(dir, out = []) {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
     if (statSync(path).isDirectory()) {
       if (name !== 'media') pages(path, out);
-    } else if (name === 'index.html') {
+    } else if (name.endsWith('.html') && name !== 'index.csr.html') {
       out.push(path);
     }
   }
@@ -100,7 +112,9 @@ ${body}
 );
 
 // llms.txt: the same list in the form a language model can read cheaply.
-const articles = urls.filter((u) => u.loc.includes('/articles/') && !u.loc.endsWith('/articles'));
+// An article URL has a slug after /articles/. The hubs end there, so matching
+// on the segment alone would count all twenty-nine of them as articles.
+const articles = urls.filter((u) => /\/articles\/[^/]+\/$/.test(u.loc));
 const llms = readFileSync(join(ROOT, 'public/llms.txt'), 'utf8')
   .split('\n## Articles')[0]
   .trimEnd();

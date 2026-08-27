@@ -158,17 +158,6 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
     --cache-control "$NEVER" --content-type "text/html; charset=utf-8"
 fi
 
-# --------------------------------------------------------------- IndexNow
-
-if [[ "$INVALIDATE_ONLY" != "1" ]]; then
-  log "Submitting sitemap URLs to IndexNow…"
-  if [[ "$DRY_RUN" == "1" ]]; then
-    printf '\033[90m  would run: node ai-visibility/indexnow.mjs https://%s\033[0m\n' "$SITE_DOMAIN"
-  else
-    "$NODE_BIN" "$ROOT_DIR/ai-visibility/indexnow.mjs" "https://$SITE_DOMAIN"
-  fi
-fi
-
 # ------------------------------------------------------------- invalidation
 
 DISTRIBUTION_ID="${CLOUDFRONT_DISTRIBUTION_ID:-}"
@@ -239,6 +228,17 @@ else
   # a success and behaves like a no-op, which is the worst of both.
   [[ "$ALLOW_NO_CLOUDFRONT" == "1" ]] || die "Deploy incomplete: nothing was invalidated."
   warn "Continuing anyway (ALLOW_NO_CLOUDFRONT=1)."
+fi
+
+# --------------------------------------------------------------- IndexNow
+
+if [[ "$INVALIDATE_ONLY" != "1" ]]; then
+  log "Submitting sitemap URLs to IndexNow…"
+  if [[ "$DRY_RUN" == "1" ]]; then
+    printf '\033[90m  would run: node ai-visibility/indexnow.mjs https://%s\033[0m\n' "$SITE_DOMAIN"
+  else
+    "$NODE_BIN" "$ROOT_DIR/ai-visibility/indexnow.mjs" "https://$SITE_DOMAIN"
+  fi
 fi
 
 log "Running post-deploy live checks…"
