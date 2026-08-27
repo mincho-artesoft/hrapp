@@ -11,7 +11,7 @@
         </p>
         <a
           class="btn btn--ghost ftr__cta"
-          [href]="appStoreUrl"
+          [href]="appStoreUrl()"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -49,7 +49,7 @@
             <li><span>Version {{ version }}</span></li>
             <li><span>iOS 18 or later</span></li>
             <li>
-              <a [href]="appStoreUrl" target="_blank" rel="noopener noreferrer">
+              <a [href]="appStoreUrl()" target="_blank" rel="noopener noreferrer">
                 View on the App Store
               </a>
             </li>

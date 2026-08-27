@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import { APP_DEVELOPER, APP_STORE_URL, APP_VERSION } from '../../core/app-facts';
 
 @Component({
@@ -13,7 +14,10 @@ import { APP_DEVELOPER, APP_STORE_URL, APP_VERSION } from '../../core/app-facts'
 })
 export class FooterComponent {
   readonly year = new Date().getFullYear();
-  readonly appStoreUrl = APP_STORE_URL;
+  private readonly active = inject(ActiveLocaleService);
+
+  /** Follows the language of the page being read, not the site default. */
+  readonly appStoreUrl = this.active.storeHref;
   readonly developer = APP_DEVELOPER;
   readonly version = APP_VERSION;
 

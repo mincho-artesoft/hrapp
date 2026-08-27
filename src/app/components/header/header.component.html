@@ -32,7 +32,7 @@
     <div class="hdr__actions">
       <a
         class="btn btn--primary hdr__cta"
-        [href]="appStoreUrl"
+        [href]="appStoreUrl()"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -76,7 +76,7 @@
 
   <a
     class="btn btn--primary btn--lg sheet__cta"
-    [href]="appStoreUrl"
+    [href]="appStoreUrl()"
     target="_blank"
     rel="noopener noreferrer"
     (click)="closeMenu()"

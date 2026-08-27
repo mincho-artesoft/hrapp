@@ -7,6 +7,7 @@ import { CONTENT, contentFor, localesWith } from '../../content/registry';
 import { ArticleChrome, ClaimRow, LocalisedArticle } from '../../content/types';
 import { APP_STORE_URL } from '../../core/app-facts';
 import { DEFAULT_LOCALE, Locale, localePath, storeUrl } from '../../core/locales';
+import { storeCta } from '../../core/store-cta';
 import { SeoService } from '../../core/seo.service';
 
 interface SeeAlsoLink {
@@ -38,6 +39,7 @@ export class ArticlePageComponent {
   readonly seeAlso: SeeAlsoLink[] = [];
   readonly updated: string = '';
   readonly store: string;
+  readonly storeLabel: string;
 
   constructor() {
     const route = inject(ActivatedRoute).snapshot;
@@ -48,6 +50,7 @@ export class ArticlePageComponent {
     this.chrome = content.chrome;
     this.article = content.articles[slug];
     this.store = storeUrl(this.locale, APP_STORE_URL);
+    this.storeLabel = storeCta(this.locale.code);
 
     const facts = ARTICLE_FACTS[slug];
     if (!this.article || !facts) return;

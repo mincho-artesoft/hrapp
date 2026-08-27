@@ -1,13 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  inject,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ScrollService } from '../../core/scroll.service';
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import { APP_STORE_URL } from '../../core/app-facts';
 
 interface NavItem {
@@ -26,7 +21,10 @@ interface NavItem {
 export class HeaderComponent {
   private readonly scroll = inject(ScrollService);
 
-  readonly appStoreUrl = APP_STORE_URL;
+  private readonly active = inject(ActiveLocaleService);
+
+  /** Follows the language of the page being read, not the site default. */
+  readonly appStoreUrl = this.active.storeHref;
   readonly isScrolled = this.scroll.isScrolled;
   readonly progress = this.scroll.progress;
   readonly menuOpen = signal(false);
