@@ -1,5 +1,7 @@
 import { LOCALES, Locale } from '../core/locales';
 import { CHROME_EN_US } from './en-US/chrome';
+import { ARTICLES_DE_DE } from './de-DE/articles';
+import { CHROME_DE_DE } from './de-DE/chrome';
 import { COMPARE_EN_US } from './en-US/articles-compare';
 import { PLANNING_EN_US } from './en-US/articles-planning';
 import { SHARING_EN_US } from './en-US/articles-sharing';
@@ -32,6 +34,10 @@ export const CONTENT: Readonly<Record<string, ArticleLocale>> = {
       ...PLANNING_EN_US,
       ...COMPARE_EN_US,
     },
+  },
+  'de-DE': {
+    chrome: CHROME_DE_DE,
+    articles: ARTICLES_DE_DE,
   },
 };
 
