@@ -1,13 +1,45 @@
 import { Routes } from '@angular/router';
 
-// Import your new page components (we'll create these next)
+import { LIVE_LOCALES } from './content/registry';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsPageComponent } from './pages/terms-page/terms-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component'; // We'll create a simple home page
+
+/**
+ * Routes, one set per published language.
+ *
+ * The locale travels in `data` rather than being parsed back out of the URL by
+ * every component. A component that re-derived it would have to know about the
+ * slug scheme, and two of them would eventually disagree.
+ *
+ * Only languages that have articles get article routes. Generating them for
+ * all twenty-nine would build a page for every unwritten translation: blank,
+ * indexed, and pointed at by the hreflang set of the article that does exist.
+ */
+const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
+  const prefix = locale.slug ? `${locale.slug}/` : '';
+  return [
+    {
+      path: `${prefix}articles`,
+      loadComponent: () =>
+        import('./pages/articles-page/articles-page.component').then(
+          (m) => m.ArticlesPageComponent,
+        ),
+      data: { locale },
+    },
+    {
+      path: `${prefix}articles/:slug`,
+      loadComponent: () =>
+        import('./pages/article-page/article-page.component').then((m) => m.ArticlePageComponent),
+      data: { locale },
+    },
+  ];
+});
 
 export const routes: Routes = [
-    { path: '', component: HomePageComponent, pathMatch: 'full' }, // Default route to home
-    { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
-    { path: 'terms-of-service', component: TermsPageComponent },
-    { path: '**', redirectTo: '' } // Optional: Redirect unknown paths to home
+  { path: '', component: HomePageComponent, pathMatch: 'full' },
+  ...articleRoutes,
+  { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
+  { path: 'terms-of-service', component: TermsPageComponent },
+  { path: '**', redirectTo: '' },
 ];

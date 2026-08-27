@@ -1,7 +1,9 @@
+import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { SITE_URL } from './app-facts';
+import { Locale } from './locales';
 
 export interface SeoInput {
   title: string;
@@ -10,6 +12,17 @@ export interface SeoInput {
   path: string;
   image?: string;
   noindex?: boolean;
+  /** The language this page is written in. Sets <html lang> and og:locale. */
+  locale?: Locale;
+  /**
+   * The same page in other languages.
+   *
+   * Search engines read hreflang as a claim each page makes about the whole
+   * group, and discard a group whose members disagree about who belongs to it.
+   * So every page in a set has to list every member, itself included — which is
+   * why the caller passes the full list rather than "the others".
+   */
+  alternates?: readonly { hreflang: string; path: string }[];
 }
 
 /**
@@ -22,6 +35,16 @@ export interface SeoInput {
 export class SeoService {
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
+  /**
+   * Injected rather than taken from the global scope.
+   *
+   * There is no global `document` under platform-server; Angular provides one
+   * through this token. A `typeof document === 'undefined'` guard therefore
+   * returns early during prerendering, and everything it protects silently
+   * does not happen — which is how every article shipped with the home page's
+   * canonical URL and no hreflang at all, while looking correct in a browser.
+   */
+  private readonly doc = inject(DOCUMENT);
 
   apply(input: SeoInput): void {
     const url = `${SITE_URL}${input.path === '/' ? '' : input.path}`;
@@ -44,7 +67,38 @@ export class SeoService {
     this.set('twitter:description', input.description);
     this.set('twitter:image', image);
 
+    if (input.locale) {
+      this.setProperty('og:locale', input.locale.code.replace('-', '_'));
+      this.doc.documentElement.setAttribute('lang', input.locale.hreflang);
+      this.doc.documentElement.setAttribute('dir', input.locale.dir);
+    }
+
     this.setCanonical(url);
+    this.setAlternates(input.alternates ?? []);
+  }
+
+  /**
+   * Rewrites the whole hreflang set on every navigation.
+   *
+   * Stale links are worse than missing ones: a set left over from the previous
+   * article points search engines at translations of a different page, and
+   * they will believe it.
+   */
+  private setAlternates(items: readonly { hreflang: string; path: string }[]): void {
+    for (const stale of Array.from(
+      this.doc.querySelectorAll<HTMLLinkElement>('link[rel="alternate"][hreflang]'),
+    )) {
+      stale.remove();
+    }
+    if (items.length < 2) return;
+
+    for (const item of items) {
+      const link = this.doc.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = item.hreflang;
+      link.href = `${SITE_URL}${item.path === '/' ? '' : item.path}`;
+      this.doc.head.appendChild(link);
+    }
   }
 
   private set(name: string, content: string): void {
@@ -56,12 +110,11 @@ export class SeoService {
   }
 
   private setCanonical(url: string): void {
-    if (typeof document === 'undefined') return;
-    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    let link = this.doc.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!link) {
-      link = document.createElement('link');
+      link = this.doc.createElement('link');
       link.rel = 'canonical';
-      document.head.appendChild(link);
+      this.doc.head.appendChild(link);
     }
     link.href = url;
   }

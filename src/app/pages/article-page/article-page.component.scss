@@ -1,0 +1,60 @@
+.article {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 72px) 20px 80px;
+  display: grid;
+  gap: clamp(28px, 4vw, 44px);
+}
+
+.article__crumbs {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.article__lede {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 1.55;
+}
+
+.article__belief {
+  padding: 18px 22px;
+  border-left: 3px solid currentColor;
+  opacity: 0.9;
+}
+
+.article__section p + p {
+  margin-top: 0.9em;
+}
+
+.article__numbers table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.article__numbers th,
+.article__numbers td {
+  padding: 10px 8px;
+  text-align: start;
+  border-bottom: 1px solid rgb(128 128 128 / 0.25);
+  font-variant-numeric: tabular-nums;
+}
+
+.article__practical ol,
+.article__related ul {
+  padding-inline-start: 1.2em;
+  display: grid;
+  gap: 8px;
+}
+
+.article__foot {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.article__updated {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.65;
+}

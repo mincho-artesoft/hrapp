@@ -1,0 +1,116 @@
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+
+import { ARTICLE_FACTS } from '../../content/article-facts';
+import { contentFor } from '../../content/registry';
+import { ArticleChrome, Family } from '../../content/types';
+import { DEFAULT_LOCALE, Locale, localePath } from '../../core/locales';
+import { SeoService } from '../../core/seo.service';
+
+interface Card {
+  readonly slug: string;
+  readonly path: string;
+  readonly title: string;
+  readonly description: string;
+}
+
+interface Group {
+  readonly family: Family;
+  readonly heading: string;
+  readonly cards: Card[];
+}
+
+/** The index of everything written in one language, grouped by theme. */
+@Component({
+  selector: 'cc-articles-page',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink],
+  template: `
+    <div class="hub">
+      <h1>{{ chrome.allArticles }}</h1>
+      @for (group of groups; track group.family) {
+        <section>
+          <h2>{{ group.heading }}</h2>
+          <ul>
+            @for (card of group.cards; track card.slug) {
+              <li>
+                <a [routerLink]="card.path">{{ card.title }}</a>
+                <p>{{ card.description }}</p>
+              </li>
+            }
+          </ul>
+        </section>
+      }
+    </div>
+  `,
+  styles: [
+    `
+      .hub {
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: clamp(32px, 6vw, 72px) 20px 80px;
+        display: grid;
+        gap: clamp(28px, 4vw, 44px);
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 18px;
+      }
+
+      li p {
+        margin: 4px 0 0;
+        opacity: 0.75;
+      }
+    `,
+  ],
+})
+export class ArticlesPageComponent {
+  readonly locale: Locale;
+  readonly chrome: ArticleChrome;
+  readonly groups: Group[] = [];
+
+  constructor() {
+    const route = inject(ActivatedRoute).snapshot;
+    this.locale = (route.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE;
+
+    const content = contentFor(this.locale.code);
+    this.chrome = content.chrome;
+
+    const headings: Record<Family, string> = {
+      weather: this.chrome.familyWeather,
+      unify: this.chrome.familyUnify,
+      widgets: this.chrome.familyWidgets,
+      sharing: this.chrome.familySharing,
+      planning: this.chrome.familyPlanning,
+      compare: this.chrome.familyCompare,
+    };
+
+    // Grouped in the order the families are declared, so the hub reads the same
+    // way in every language rather than following each translation's alphabet.
+    const order: Family[] = ['weather', 'unify', 'widgets', 'sharing', 'planning', 'compare'];
+    for (const family of order) {
+      const cards = Object.entries(content.articles)
+        .filter(([slug]) => ARTICLE_FACTS[slug]?.family === family)
+        .map(([slug, article]) => ({
+          slug,
+          path: localePath(this.locale, `/articles/${slug}`),
+          title: article.short,
+          description: article.description,
+        }));
+      if (cards.length) this.groups.push({ family, heading: headings[family], cards });
+    }
+
+    inject(SeoService).apply({
+      title: `${this.chrome.allArticles} — Cloud Calendars`,
+      description:
+        'Guides to planning around the weather, one calendar for every account, widgets and sharing.',
+      path: localePath(this.locale, '/articles'),
+      locale: this.locale,
+    });
+  }
+}
