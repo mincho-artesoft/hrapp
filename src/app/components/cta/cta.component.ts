@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { DeviceFrameComponent } from '../device-frame/device-frame.component';
 import { RevealDirective } from '../../core/reveal.directive';
-import { APP_MIN_IOS, APP_RATING, APP_SIZE_MB, APP_STORE_URL } from '../../core/app-facts';
+import { APP_MIN_IOS, APP_RATING, APP_RATING_COUNT, APP_SIZE_MB, APP_STORE_URL } from '../../core/app-facts';
 
 @Component({
   selector: 'app-cta',
@@ -15,6 +15,7 @@ import { APP_MIN_IOS, APP_RATING, APP_SIZE_MB, APP_STORE_URL } from '../../core/
 export class CtaComponent {
   readonly appStoreUrl = APP_STORE_URL;
   readonly rating = APP_RATING;
+  readonly ratingCount = APP_RATING_COUNT;
   readonly minIos = APP_MIN_IOS;
   readonly sizeMb = APP_SIZE_MB;
 }

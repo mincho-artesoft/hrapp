@@ -13,7 +13,7 @@ import { DeviceFrameComponent } from '../device-frame/device-frame.component';
 import { RevealDirective } from '../../core/reveal.directive';
 import { ScrollService } from '../../core/scroll.service';
 import { isBrowser, prefersReducedMotion } from '../../core/motion';
-import { APP_STORE_URL, APP_VERSION, APP_RATING } from '../../core/app-facts';
+import { APP_STORE_URL, APP_VERSION, APP_RATING_COUNT, APP_RATING } from '../../core/app-facts';
 
 interface TitleLine {
   text: string;
@@ -49,6 +49,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   readonly appStoreUrl = APP_STORE_URL;
   readonly version = APP_VERSION;
   readonly rating = APP_RATING;
+  readonly ratingCount = APP_RATING_COUNT;
 
   /** Split into lines and words so each can be animated independently. */
   readonly titleLines: TitleLine[] = [

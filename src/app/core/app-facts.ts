@@ -5,11 +5,16 @@
 
 export const APP_STORE_URL = 'https://apps.apple.com/us/app/cloud-calendars/id6744690319';
 export const APP_NAME = 'Cloud Calendars';
-export const APP_DEVELOPER = 'Arte Soft Ltd';
-export const APP_VERSION = '1.5.9';
-export const APP_RATING = 4.3;
+/** Exactly as Apple prints it. EOOD is the Bulgarian single-member limited
+ *  form; a reader matching this against a receipt will not find 'Ltd'. */
+export const APP_DEVELOPER = 'ARTE SOFT EOOD';
+export const APP_VERSION = '1.6.1';
+/** Verified against the store 2026-08-27. Quote it with the count below:
+ *  an average without its sample size is a claim without a scale. */
+export const APP_RATING = 4.4;
+export const APP_RATING_COUNT = 8;
 export const APP_MIN_IOS = '18.0';
-export const APP_SIZE_MB = 30.3;
+export const APP_SIZE_MB = 35.3;
 export const SITE_URL = 'https://www.cloud-calendars.com';
 export const SUPPORT_EMAIL = 'support@cloud-calendars.com';
 

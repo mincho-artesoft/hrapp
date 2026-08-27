@@ -47,7 +47,7 @@
       </div>
 
       <div class="hero__proof" appReveal="fade" [revealDelay]="880">
-        <div class="hero__stars" [attr.aria-label]="rating + ' out of 5 on the App Store'">
+        <div class="hero__stars" [attr.aria-label]="rating + ' out of 5 from ' + ratingCount + ' App Store ratings'">
           @for (s of [1,2,3,4,5]; track s) {
             <svg viewBox="0 0 24 24" [class.is-half]="s === 5" aria-hidden="true">
               <path fill="currentColor" d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4 6.2 20.5l1.1-6.5L2.6 9.4l6.5-.9z"/>
