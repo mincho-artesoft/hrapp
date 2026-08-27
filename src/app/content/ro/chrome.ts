@@ -1,0 +1,22 @@
+import { ArticleChrome } from '../types';
+
+/** The words every article in this language shares. */
+export const CHROME_RO: ArticleChrome = {
+  allArticles: 'Toate articolele',
+  commonBelief: 'Ce presupun aproape toți',
+  whatIsTrue: 'Ce se întâmplă de fapt',
+  theNumbers: 'Cifrele',
+  colWhat: 'Ce descrie',
+  colValue: 'Valoare',
+  practical: 'Ce să faceți',
+  seeAlso: 'Citiți și',
+  updated: 'Ultima verificare',
+  ctaLine: 'Calendarul dumneavoastră și prognoza într-o singură vedere — pe iPhone și iPad.',
+  gallery: 'Cum arată',
+  familyWeather: 'Vremea',
+  familyUnify: 'O vedere, toate conturile',
+  familyWidgets: 'Widgeturi și ecran principal',
+  familySharing: 'Partajare',
+  familyPlanning: 'Planificare și editare',
+  familyCompare: 'Cost și comparație',
+};

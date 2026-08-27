@@ -14,6 +14,30 @@ import { SHARING_EN_US } from './en-US/articles-sharing';
 import { UNIFY_EN_US } from './en-US/articles-unify';
 import { WIDGETS_EN_US } from './en-US/articles-widgets';
 import { WEATHER_EN_US } from './en-US/articles-weather';
+import { ARTICLES_NL_NL } from './nl-NL/articles';
+import { CHROME_NL_NL } from './nl-NL/chrome';
+import { ARTICLES_PT_BR } from './pt-BR/articles';
+import { CHROME_PT_BR } from './pt-BR/chrome';
+import { ARTICLES_PL } from './pl/articles';
+import { CHROME_PL } from './pl/chrome';
+import { ARTICLES_RU } from './ru/articles';
+import { CHROME_RU } from './ru/chrome';
+import { ARTICLES_SV } from './sv/articles';
+import { CHROME_SV } from './sv/chrome';
+import { ARTICLES_DA } from './da/articles';
+import { CHROME_DA } from './da/chrome';
+import { ARTICLES_NO } from './no/articles';
+import { CHROME_NO } from './no/chrome';
+import { ARTICLES_FI } from './fi/articles';
+import { CHROME_FI } from './fi/chrome';
+import { ARTICLES_CS } from './cs/articles';
+import { CHROME_CS } from './cs/chrome';
+import { ARTICLES_HU } from './hu/articles';
+import { CHROME_HU } from './hu/chrome';
+import { ARTICLES_RO } from './ro/articles';
+import { CHROME_RO } from './ro/chrome';
+import { ARTICLES_EL } from './el/articles';
+import { CHROME_EL } from './el/chrome';
 import { ArticleLocale } from './types';
 
 /**
@@ -56,6 +80,54 @@ export const CONTENT: Readonly<Partial<Record<LocaleCode, ArticleLocale>>> = {
   it: {
     chrome: CHROME_IT,
     articles: ARTICLES_IT,
+  },
+  'nl-NL': {
+    chrome: CHROME_NL_NL,
+    articles: ARTICLES_NL_NL,
+  },
+  'pt-BR': {
+    chrome: CHROME_PT_BR,
+    articles: ARTICLES_PT_BR,
+  },
+  pl: {
+    chrome: CHROME_PL,
+    articles: ARTICLES_PL,
+  },
+  ru: {
+    chrome: CHROME_RU,
+    articles: ARTICLES_RU,
+  },
+  sv: {
+    chrome: CHROME_SV,
+    articles: ARTICLES_SV,
+  },
+  da: {
+    chrome: CHROME_DA,
+    articles: ARTICLES_DA,
+  },
+  no: {
+    chrome: CHROME_NO,
+    articles: ARTICLES_NO,
+  },
+  fi: {
+    chrome: CHROME_FI,
+    articles: ARTICLES_FI,
+  },
+  cs: {
+    chrome: CHROME_CS,
+    articles: ARTICLES_CS,
+  },
+  hu: {
+    chrome: CHROME_HU,
+    articles: ARTICLES_HU,
+  },
+  ro: {
+    chrome: CHROME_RO,
+    articles: ARTICLES_RO,
+  },
+  el: {
+    chrome: CHROME_EL,
+    articles: ARTICLES_EL,
   },
 };
 
