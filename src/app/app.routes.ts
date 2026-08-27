@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { LIVE_LOCALES } from './content/registry';
+import { DEFAULT_LOCALE, LOCALES } from './core/locales';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsPageComponent } from './pages/terms-page/terms-page.component';
@@ -16,6 +17,21 @@ import { TermsPageComponent } from './pages/terms-page/terms-page.component';
  * all twenty-nine would build a page for every unwritten translation: blank,
  * indexed, and pointed at by the hreflang set of the article that does exist.
  */
+/**
+ * The home page, once per language.
+ *
+ * The articles were translated first, which left a language switcher that
+ * worked on every page except the one most people arrive at. A reader could
+ * choose Japanese and land back on English, which reads as the switcher being
+ * broken rather than the page being untranslated.
+ */
+const homeRoutes: Routes = LOCALES.map((locale) => ({
+  path: locale.slug,
+  component: HomePageComponent,
+  pathMatch: 'full' as const,
+  data: { locale },
+}));
+
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
   return [
@@ -37,9 +53,9 @@ const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
 });
 
 export const routes: Routes = [
-  { path: '', component: HomePageComponent, pathMatch: 'full' },
+  { path: '', component: HomePageComponent, pathMatch: 'full', data: { locale: DEFAULT_LOCALE } },
+  ...homeRoutes,
   ...articleRoutes,
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
   { path: 'terms-of-service', component: TermsPageComponent },
-  { path: '**', redirectTo: '' },
 ];

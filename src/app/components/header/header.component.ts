@@ -1,8 +1,17 @@
-import { ChangeDetectionStrategy, Component, HostListener, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ScrollService } from '../../core/scroll.service';
 import { ActiveLocaleService } from '../../core/active-locale.service';
+import { storeCta } from '../../core/store-cta';
+import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 import { APP_STORE_URL } from '../../core/app-facts';
 
 interface NavItem {
@@ -13,7 +22,7 @@ interface NavItem {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, LanguageSwitcherComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -29,13 +38,22 @@ export class HeaderComponent {
   readonly progress = this.scroll.progress;
   readonly menuOpen = signal(false);
 
-  readonly nav: NavItem[] = [
-    { label: 'Tour', fragment: 'showcase' },
-    { label: 'Widgets', fragment: 'widgets' },
-    { label: 'Weather', fragment: 'weather' },
-    { label: 'Features', fragment: 'features' },
-    { label: 'Pricing', fragment: 'pricing' },
-  ];
+  readonly copy = this.active.copy;
+  readonly storeCta = computed(() => storeCta(this.active.locale().code));
+  /** The article hub in this reader's language. */
+  readonly articlesHref = computed(() => this.active.path('/articles') + '/');
+
+  /** Labels come from the active language; the fragments never change. */
+  readonly nav = computed<NavItem[]>(() => {
+    const n = this.copy().nav;
+    return [
+      { label: n.tour, fragment: 'showcase' },
+      { label: n.widgets, fragment: 'widgets' },
+      { label: n.weather, fragment: 'weather' },
+      { label: n.features, fragment: 'features' },
+      { label: n.pricing, fragment: 'pricing' },
+    ];
+  });
 
   toggleMenu(): void {
     this.menuOpen.update((v) => !v);

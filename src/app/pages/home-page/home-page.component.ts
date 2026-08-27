@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { HeroComponent } from '../../components/hero/hero.component';
 import { MarqueeComponent } from '../../components/marquee/marquee.component';
@@ -9,6 +10,8 @@ import { FeaturesComponent } from '../../components/features/features.component'
 import { PricingComponent } from '../../components/pricing/pricing.component';
 import { FaqComponent } from '../../components/faq/faq.component';
 import { CtaComponent } from '../../components/cta/cta.component';
+import { homeCopyFor } from '../../content/home/registry';
+import { DEFAULT_LOCALE, LOCALES, Locale, localePath } from '../../core/locales';
 import { SeoService } from '../../core/seo.service';
 
 @Component({
@@ -30,14 +33,25 @@ import { SeoService } from '../../core/seo.service';
 })
 export class HomePageComponent implements OnInit {
   private readonly seo = inject(SeoService);
+  private readonly route = inject(ActivatedRoute);
 
   ngOnInit(): void {
+    const locale = (this.route.snapshot.data['locale'] as Locale | undefined) ?? DEFAULT_LOCALE;
+    const copy = homeCopyFor(locale.code);
+
     this.seo.apply({
-      title: 'Cloud Calendars — your calendar and the weather, in one view',
-      description:
-        'Unify iCloud, Google Calendar and Microsoft in one iPhone app, with hourly ' +
-        'forecasts built into every day, Home Screen widgets and Live Activities. Free on the App Store.',
-      path: '/',
+      title: copy.metaTitle,
+      description: copy.metaDescription,
+      path: localePath(locale, '/'),
+      locale,
+      // The home page exists in every language, translated or not: an
+      // untranslated one falls back to English copy rather than 404ing, and
+      // listing it here is what lets a reader who arrives in the wrong
+      // language find their own.
+      alternates: LOCALES.map((other) => ({
+        hreflang: other.hreflang,
+        path: localePath(other, '/'),
+      })),
     });
   }
 }
