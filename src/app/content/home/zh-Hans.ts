@@ -18,7 +18,7 @@ export const HOME_ZH_HANS: HomeCopy = {
     language: '语言',
   },
   hero: {
-    badge: '版本 {v} — 实时活动与日程通知',
+    badge: '版本 {v} — 分享出去的日程现在会自己保持最新',
     title: ['你的日历。', '你的天空。', '一个视图。'],
     lead: '你手上的每一本日历——iCloud、Google、Microsoft——都在同一个地方，预报就长在那一天里面。别再猜下午是什么样子了。',
     seeItMove: '看它动起来',

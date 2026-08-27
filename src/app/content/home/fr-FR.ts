@@ -18,7 +18,7 @@ export const HOME_FR_FR: HomeCopy = {
     language: 'Langue',
   },
   hero: {
-    badge: 'Version {v} — activités en direct et notifications d’événement',
+    badge: 'Version {v} — les événements partagés se tiennent désormais à jour tout seuls',
     title: ['Votre agenda.', 'Votre ciel.', 'Une seule vue.'],
     lead: 'Tous les agendas que vous avez — iCloud, Google, Microsoft — au même endroit, avec la prévision intégrée à la journée elle-même. Fini les suppositions sur l’après-midi.',
     seeItMove: 'Le voir en mouvement',

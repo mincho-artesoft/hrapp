@@ -26,7 +26,7 @@ export const HOME_EN_US: HomeCopy = {
   },
 
   hero: {
-    badge: 'Version {v} — Live Activities & event notifications',
+    badge: 'Version {v} — shared events now keep themselves up to date',
     title: ['Your calendar.', 'Your sky.', 'One view.'],
     lead: 'Every calendar you own — iCloud, Google, Microsoft — in one place, with the forecast built into the day itself. Stop guessing what the afternoon looks like.',
     seeItMove: 'See it in motion',

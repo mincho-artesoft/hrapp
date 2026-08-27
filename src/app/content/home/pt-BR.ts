@@ -18,7 +18,7 @@ export const HOME_PT_BR: HomeCopy = {
     language: 'Idioma',
   },
   hero: {
-    badge: 'Versão {v} — atividades ao vivo e avisos de compromissos',
+    badge: 'Versão {v} — compromissos compartilhados agora se mantêm atualizados sozinhos',
     title: ['Sua agenda.', 'Seu céu.', 'Uma só vista.'],
     lead: 'Todas as agendas que você tem — iCloud, Google, Microsoft — em um só lugar, com a previsão dentro do próprio dia. Pare de adivinhar como vai ser a tarde.',
     seeItMove: 'Ver em movimento',

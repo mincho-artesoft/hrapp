@@ -18,7 +18,7 @@ export const HOME_ZH_HANT: HomeCopy = {
     language: '語言',
   },
   hero: {
-    badge: '版本 {v} — 即時動態與行程通知',
+    badge: '版本 {v} — 分享出去的行程現在會自己保持最新',
     title: ['你的行事曆。', '你的天空。', '一個檢視。'],
     lead: '你手上的每一本行事曆——iCloud、Google、Microsoft——都在同一個地方，預報就長在那一天裡面。別再猜下午是什麼樣子了。',
     seeItMove: '看它動起來',

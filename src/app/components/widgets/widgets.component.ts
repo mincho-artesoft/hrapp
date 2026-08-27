@@ -18,7 +18,7 @@ import { InViewVideoDirective } from '../../core/in-view-video.directive';
  */
 // The copy is per language; the icons are not.
 import { ActiveLocaleService } from '../../core/active-locale.service';
-import { APP_VERSION } from '../../core/app-facts';
+import { WIDGETS_SINCE } from '../../core/app-facts';
 @Component({
   selector: 'app-widgets',
   standalone: true,
@@ -31,7 +31,7 @@ export class WidgetsComponent {
   private readonly active = inject(ActiveLocaleService);
 
   readonly copy = computed(() => this.active.copy().widgets);
-  readonly eyebrow = computed(() => this.copy().eyebrow.replace('{v}', APP_VERSION));
+  readonly eyebrow = computed(() => this.copy().eyebrow.replace('{v}', WIDGETS_SINCE));
 
   /** Icons stay in code; the words come from the language. */
   private readonly icons = ['grid', 'lock', 'bell'];

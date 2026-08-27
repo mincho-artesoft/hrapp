@@ -18,7 +18,7 @@ export const HOME_DE_DE: HomeCopy = {
     language: 'Sprache',
   },
   hero: {
-    badge: 'Version {v} — Live-Aktivitäten und Terminbenachrichtigungen',
+    badge: 'Version {v} — geteilte Termine halten sich jetzt selbst aktuell',
     title: ['Ihr Kalender.', 'Ihr Himmel.', 'Eine Ansicht.'],
     lead: 'Jeder Kalender, den Sie haben — iCloud, Google, Microsoft — an einem Ort, mit der Vorhersage im Tag selbst. Schluss mit dem Raten, wie der Nachmittag aussieht.',
     seeItMove: 'In Bewegung sehen',

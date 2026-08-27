@@ -18,7 +18,7 @@ export const HOME_CS: HomeCopy = {
     language: 'Jazyk',
   },
   hero: {
-    badge: 'Verze {v} — živé aktivity a upozornění na události',
+    badge: 'Verze {v} — sdílené události se teď udržují aktuální samy',
     title: ['Váš kalendář.', 'Vaše obloha.', 'Jeden pohled.'],
     lead: 'Každý kalendář, který máte — iCloud, Google, Microsoft — na jednom místě, s předpovědí uvnitř samotného dne. Přestaňte hádat, jak bude odpoledne vypadat.',
     seeItMove: 'Podívat se v pohybu',

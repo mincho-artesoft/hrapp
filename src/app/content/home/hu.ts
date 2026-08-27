@@ -18,7 +18,7 @@ export const HOME_HU: HomeCopy = {
     language: 'Nyelv',
   },
   hero: {
-    badge: '{v} verzió — élő tevékenységek és eseményértesítések',
+    badge: '{v} verzió — a megosztott események mostantól maguktól frissülnek',
     title: ['Az Ön naptára.', 'Az Ön ege.', 'Egyetlen nézet.'],
     lead: 'Minden naptára — iCloud, Google, Microsoft — egy helyen, az előrejelzéssel magába a napba építve. Ne találgassa többé, milyen lesz a délután.',
     seeItMove: 'Nézze meg mozgásban',

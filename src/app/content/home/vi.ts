@@ -18,7 +18,7 @@ export const HOME_VI: HomeCopy = {
     language: 'Ngôn ngữ',
   },
   hero: {
-    badge: 'Phiên bản {v} — hoạt động trực tiếp và thông báo sự kiện',
+    badge: 'Phiên bản {v} — sự kiện đã chia sẻ giờ tự cập nhật',
     title: ['Lịch của bạn.', 'Bầu trời của bạn.', 'Một khung nhìn.'],
     lead: 'Mọi cuốn lịch bạn có — iCloud, Google, Microsoft — ở cùng một nơi, với dự báo dựng ngay trong chính ngày đó. Thôi đoán xem buổi chiều sẽ ra sao.',
     seeItMove: 'Xem nó chuyển động',

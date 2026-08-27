@@ -18,7 +18,7 @@ export const HOME_NO: HomeCopy = {
     language: 'Språk',
   },
   hero: {
-    badge: 'Versjon {v} — sanntidsaktiviteter og varsler om hendelser',
+    badge: 'Versjon {v} — delte hendelser holder seg nå oppdatert selv',
     title: ['Kalenderen din.', 'Himmelen din.', 'Én visning.'],
     lead: 'Hver eneste kalender du har — iCloud, Google, Microsoft — på ett sted, med værmeldingen bygget inn i selve dagen. Slutt å gjette hvordan ettermiddagen ser ut.',
     seeItMove: 'Se det i bevegelse',

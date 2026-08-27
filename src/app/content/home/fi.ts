@@ -18,7 +18,7 @@ export const HOME_FI: HomeCopy = {
     language: 'Kieli',
   },
   hero: {
-    badge: 'Versio {v} — reaaliaikaiset toiminnot ja tapahtumailmoitukset',
+    badge: 'Versio {v} — jaetut tapahtumat pysyvät nyt itse ajan tasalla',
     title: ['Sinun kalenterisi.', 'Sinun taivaasi.', 'Yksi näkymä.'],
     lead: 'Jokainen kalenteri, joka sinulla on — iCloud, Google, Microsoft — yhdessä paikassa, ennuste itse päivän sisään rakennettuna. Lopeta arvailu siitä, miltä iltapäivä näyttää.',
     seeItMove: 'Katso liikkeessä',

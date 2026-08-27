@@ -18,7 +18,7 @@ export const HOME_RO: HomeCopy = {
     language: 'Limbă',
   },
   hero: {
-    badge: 'Versiunea {v} — activități live și notificări pentru evenimente',
+    badge: 'Versiunea {v} — evenimentele partajate se actualizează acum singure',
     title: ['Calendarul dumneavoastră.', 'Cerul dumneavoastră.', 'O singură vedere.'],
     lead: 'Fiecare calendar pe care îl aveți — iCloud, Google, Microsoft — într-un singur loc, cu prognoza construită în ziua însăși. Nu mai ghiciți cum arată după-amiaza.',
     seeItMove: 'Vedeți-l în mișcare',

@@ -18,7 +18,7 @@ export const HOME_NL_NL: HomeCopy = {
     language: 'Taal',
   },
   hero: {
-    badge: 'Versie {v} — live activiteiten en meldingen bij afspraken',
+    badge: 'Versie {v} — gedeelde afspraken houden zichzelf nu bij',
     title: ['Uw agenda.', 'Uw lucht.', 'Eén weergave.'],
     lead: 'Elke agenda die u heeft — iCloud, Google, Microsoft — op één plek, met de verwachting in de dag zelf. Stop met gissen hoe de middag eruitziet.',
     seeItMove: 'Zie het bewegen',

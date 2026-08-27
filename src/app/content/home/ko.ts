@@ -18,7 +18,7 @@ export const HOME_KO: HomeCopy = {
     language: '언어',
   },
   hero: {
-    badge: '버전 {v} — 실시간 활동과 일정 알림',
+    badge: '버전 {v} — 공유한 일정이 이제 스스로 최신 상태를 유지합니다',
     title: ['당신의 달력.', '당신의 하늘.', '하나의 화면.'],
     lead: '가지고 있는 모든 달력 — iCloud, Google, Microsoft — 을 한곳에, 예보는 하루 안에 들어 있습니다. 오후가 어떨지 짐작하는 일은 이제 그만.',
     seeItMove: '움직이는 모습 보기',

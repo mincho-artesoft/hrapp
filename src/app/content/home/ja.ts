@@ -18,7 +18,7 @@ export const HOME_JA: HomeCopy = {
     language: '言語',
   },
   hero: {
-    badge: 'バージョン {v} — ライブアクティビティと予定の通知',
+    badge: 'バージョン {v} — 共有した予定が自動で最新に保たれます',
     title: ['あなたのカレンダー。', 'あなたの空。', 'ひとつの画面。'],
     lead: 'お持ちのカレンダーすべて — iCloud、Google、Microsoft — をひとつの場所に。予報は日そのものの中にあります。午後がどうなるかを推測するのは、もう終わりです。',
     seeItMove: '動きを見る',

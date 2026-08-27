@@ -18,7 +18,7 @@ export const HOME_ID: HomeCopy = {
     language: 'Bahasa',
   },
   hero: {
-    badge: 'Versi {v} — aktivitas langsung dan pemberitahuan acara',
+    badge: 'Versi {v} — acara yang dibagikan kini memperbarui dirinya sendiri',
     title: ['Kalender Anda.', 'Langit Anda.', 'Satu tampilan.'],
     lead: 'Setiap kalender yang Anda punya — iCloud, Google, Microsoft — di satu tempat, dengan prakiraan tertanam di dalam harinya sendiri. Berhenti menebak seperti apa sorenya.',
     seeItMove: 'Lihat bergerak',

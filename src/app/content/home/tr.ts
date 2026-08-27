@@ -18,7 +18,7 @@ export const HOME_TR: HomeCopy = {
     language: 'Dil',
   },
   hero: {
-    badge: 'Sürüm {v} — canlı etkinlikler ve etkinlik bildirimleri',
+    badge: 'Sürüm {v} — paylaşılan etkinlikler artık kendini güncel tutuyor',
     title: ['Takviminiz.', 'Gökyüzünüz.', 'Tek görünüm.'],
     lead: 'Sahip olduğunuz her takvim — iCloud, Google, Microsoft — tek yerde, tahmin günün kendisine yerleşmiş halde. Öğleden sonranın nasıl olacağını tahmin etmeyi bırakın.',
     seeItMove: 'Hareket halinde görün',
