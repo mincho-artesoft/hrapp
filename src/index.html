@@ -63,74 +63,11 @@
   }
   </script>
 
-  <!-- The FAQ section, marked up so an answer engine can quote it directly.
-       Generated from faq.component.ts, which is the only copy of these
-       strings — Google requires the marked-up answer to match the visible
-       one, and hand-copying them is how that quietly stops being true. -->
-  <script type="application/ld+json">
-  {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-          {
-              "@type": "Question",
-              "name": "Do I need an account to use Cloud Calendars?",
-              "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No. The app reads the calendars already on your iPhone through Apple’s own EventKit, so iCloud works the moment you grant permission. You only sign in to Google or Microsoft if you want those calendars in there too."
-              }
-          },
-          {
-              "@type": "Question",
-              "name": "Is Google Calendar sync really free?",
-              "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes. Google sync, every calendar view, the complete weather hub, all the Home Screen widgets and Google Meet links are in the free tier. Advanced removes ads and adds cross-calendar management; Premium adds Microsoft."
-              }
-          },
-          {
-              "@type": "Question",
-              "name": "Where does the weather data come from?",
-              "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Forecasts are fetched for your current or chosen location and cover hourly and ten-day outlooks, feels-like temperature, precipitation, UV, wind and gusts, humidity and dew point, visibility, pressure, sunrise and sunset, and moon phase."
-              }
-          },
-          {
-              "@type": "Question",
-              "name": "Can I change an event by dragging it?",
-              "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "That is the main way to edit. Drag an event to another time or another day, or pull its top or bottom edge to change the duration. Changes sync straight back to the source calendar."
-              }
-          },
-          {
-              "@type": "Question",
-              "name": "What do the widgets show?",
-              "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Three sizes. Small gives the date with the current condition and temperature. Medium adds conditions, moon phase and wind direction. Large puts your next few events beside the forecast. A Live Activity counts down to your next event."
-              }
-          },
-          {
-              "@type": "Question",
-              "name": "Which devices are supported?",
-              "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "iPhone and iPad running iOS 18 or later. The app is about 30 MB."
-              }
-          },
-          {
-              "@type": "Question",
-              "name": "How do I cancel a subscription?",
-              "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Subscriptions are handled by Apple, so you cancel in your App Store account settings. Do it at least 24 hours before the period ends and you will not be charged again."
-              }
-          }
-      ]
-  }
-  </script>
+  <!-- The FAQPage markup is emitted by faq.component.ts, per language, from
+       the same object the section renders. It used to be hand-copied here;
+       when the FAQ was translated the copy stayed English, so twenty-nine
+       pages carried English markup over translated prose. Generating it from
+       the one source is the only arrangement where that cannot recur. -->
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YESHVTRYB1"></script>

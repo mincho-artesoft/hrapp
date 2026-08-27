@@ -128,8 +128,50 @@ ${articles.map((a) => `- ${a.loc}`).join('\n')}
 `,
 );
 
+// --------------------------------------------------------------- link check
+//
+// Twenty-eight broken links shipped to production before this existed: a
+// locale-aware href was built by appending to a path that had no trailing
+// slash, so every translated home page linked to '/japrivacy-policy/' and
+// friends. Each one returned 404 and nothing complained.
+//
+// A prerendered site knows every address it has, so a link to one it does not
+// have is a build error rather than something to find later in Search Console.
+const built = new Set(
+  pages(DIST).map((f) => {
+    const rel = relative(DIST, f).replace(/\\/g, '/');
+    return rel.endsWith('/index.html') ? `/${rel.slice(0, -'index.html'.length)}` : `/${rel}`;
+  }),
+);
+built.add('/');
+
+const broken = new Map();
+for (const file of pages(DIST)) {
+  const html = readFileSync(file, 'utf8');
+  for (const [, href] of html.matchAll(/href="(\/[^"#?]*)"/g)) {
+    // Non-page assets are served straight from the bucket and are not in the
+    // page set; only routes are checked here.
+    if (/\.(js|css|xml|txt|ico|png|jpe?g|webp|avif|svg|mp4|webm|woff2?)$/.test(href)) continue;
+    if (href.startsWith('/media/') || href.startsWith('/assets/')) continue;
+    const target = href.endsWith('/') ? href : `${href}/`;
+    if (built.has(target) || built.has(href)) continue;
+    if (!broken.has(href)) broken.set(href, new Set());
+    broken.get(href).add(`/${relative(DIST, file)}`);
+  }
+}
+
+if (broken.size) {
+  console.error(`\npostbuild: ${broken.size} internal link(s) point at pages that were not built:`);
+  for (const [href, from] of broken) {
+    const where = [...from].slice(0, 3).join(', ');
+    const more = from.size > 3 ? ` (+${from.size - 3} more)` : '';
+    console.error(`  ${href}\n      linked from ${where}${more}`);
+  }
+  process.exit(1);
+}
+
 const withAlternates = urls.filter((u) => u.alternates.length > 1).length;
 console.log(
   `postbuild: sitemap (${urls.length} urls, ${withAlternates} with alternates), ` +
-    `llms.txt (${articles.length} articles)`,
+    `llms.txt (${articles.length} articles), ${built.size} pages, every internal link resolves`,
 );
