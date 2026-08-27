@@ -190,14 +190,21 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'sharing-one-event-not-your-calendar',
     family: 'sharing',
     intent: 'editing',
-    claims: [],
+    claims: [
+      { id: 'refreshHint', value: '1' },
+      { id: 'linkLength', value: '22' },
+      { id: 'sharePrice', value: '0' },
+    ],
     updated: '2026-08-27',
   },
   'a-calendar-that-is-yours-to-share': {
     slug: 'a-calendar-that-is-yours-to-share',
     family: 'sharing',
     intent: 'editing',
-    claims: [],
+    claims: [
+      { id: 'refreshHint', value: '1' },
+      { id: 'sharePrice', value: '0' },
+    ],
     updated: '2026-08-27',
   },
   'who-can-see-what-in-google-calendar': {
@@ -211,7 +218,10 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     slug: 'inviting-people-who-do-not-have-the-app',
     family: 'sharing',
     intent: 'editing',
-    claims: [],
+    claims: [
+      { id: 'linkLength', value: '22' },
+      { id: 'sharePrice', value: '0' },
+    ],
     updated: '2026-08-27',
   },
   'keeping-track-of-who-replied': {
