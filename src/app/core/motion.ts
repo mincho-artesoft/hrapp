@@ -1,3 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID, inject } from '@angular/core';
+
 /**
  * Motion + capability helpers.
  *
@@ -6,17 +9,33 @@
  * static — still good-looking — version instead of a janky one.
  */
 
+/**
+ * True only in a real browser.
+ *
+ * Deliberately asks Angular rather than sniffing for `window`. The prerenderer
+ * runs the application against a DOM shim in which `window` and `document` are
+ * both defined, so a `typeof window` check passes on the server — and every
+ * browser-only branch behind it runs during the build, then dies on the first
+ * API the shim does not implement. That is exactly how this site failed to
+ * prerender: `cancelAnimationFrame is not defined`.
+ *
+ * Must be called from an injection context, so capture it into a field:
+ *
+ *     private readonly browser = isBrowser();
+ *
+ * and read `this.browser` from methods.
+ */
 export function isBrowser(): boolean {
-  return typeof window !== 'undefined' && typeof document !== 'undefined';
+  return isPlatformBrowser(inject(PLATFORM_ID));
 }
 
 export function prefersReducedMotion(): boolean {
-  if (!isBrowser() || !window.matchMedia) return false;
+  if (typeof window === 'undefined' || !window.matchMedia) return false;
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
 export function isCoarsePointer(): boolean {
-  if (!isBrowser() || !window.matchMedia) return false;
+  if (typeof window === 'undefined' || !window.matchMedia) return false;
   return window.matchMedia('(pointer: coarse)').matches;
 }
 
@@ -25,8 +44,8 @@ export function isCoarsePointer(): boolean {
  * Deliberately conservative — a beautiful CSS fallback beats a 12fps canvas.
  */
 export function canRunHeavyScene(): boolean {
-  if (!isBrowser()) return false;
   if (prefersReducedMotion()) return false;
+  if (typeof navigator === 'undefined') return false;
 
   const cores = (navigator as Navigator & { hardwareConcurrency?: number }).hardwareConcurrency ?? 4;
   const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
@@ -51,7 +70,7 @@ export function canRunHeavyScene(): boolean {
 }
 
 export function supportsWebGL(): boolean {
-  if (!isBrowser()) return false;
+  if (typeof document === 'undefined') return false;
   try {
     const canvas = document.createElement('canvas');
     const gl =

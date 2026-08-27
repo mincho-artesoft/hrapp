@@ -29,6 +29,9 @@ export type RevealKind = 'up' | 'zoom' | 'left' | 'right' | 'rotate' | 'fade';
 export class RevealDirective implements AfterViewInit, OnDestroy {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly zone = inject(NgZone);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
 
   /** Animation flavour. */
   @Input('appReveal') kind: RevealKind | '' = 'up';
@@ -49,7 +52,7 @@ export class RevealDirective implements AfterViewInit, OnDestroy {
       el.style.setProperty('--reveal-delay', `${this.revealDelay}ms`);
     }
 
-    if (!isBrowser() || prefersReducedMotion() || !('IntersectionObserver' in window)) {
+    if (!this.browser || prefersReducedMotion() || !('IntersectionObserver' in window)) {
       el.classList.add('is-revealed');
       return;
     }

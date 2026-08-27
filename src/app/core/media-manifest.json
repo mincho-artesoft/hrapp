@@ -1,0 +1,511 @@
+{
+ "base": "/media/panel",
+ "widths": {
+  "iPad": [
+   480,
+   960
+  ],
+  "iPhone": [
+   340,
+   680
+  ]
+ },
+ "locales": {
+  "ar-SA": {
+   "iPad": [
+    "01-live",
+    "02-widgets",
+    "03-week-right",
+    "04-week-left",
+    "05-hook"
+   ],
+   "iPhone": [
+    "01-live",
+    "02-widgets",
+    "03-week-right",
+    "04-week-left",
+    "05-hook"
+   ]
+  },
+  "cs": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "da": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "de-DE": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "el": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "en-CA": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "en-US": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "es-ES": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "fi": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "fr-CA": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "fr-FR": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "he": {
+   "iPad": [
+    "01-live",
+    "02-widgets",
+    "03-week-right",
+    "04-week-left",
+    "05-hook"
+   ],
+   "iPhone": [
+    "01-live",
+    "02-widgets",
+    "03-week-right",
+    "04-week-left",
+    "05-hook"
+   ]
+  },
+  "hi": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "hu": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "id": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "it": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "ja": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "ko": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "ms": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "nl-NL": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "no": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "pl": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "pt-BR": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "ro": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "ru": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "sv": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "th": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "tr": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "vi": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "zh-Hans": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  },
+  "zh-Hant": {
+   "iPad": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ],
+   "iPhone": [
+    "01-hook",
+    "02-week-left",
+    "03-week-right",
+    "04-widgets",
+    "05-live"
+   ]
+  }
+ }
+}

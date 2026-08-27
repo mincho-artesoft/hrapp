@@ -25,6 +25,9 @@ export interface PointerState {
 export class ScrollService {
   private readonly zone = inject(NgZone);
   private readonly destroyRef = inject(DestroyRef);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
 
   /** Raw scrollTop in px. */
   readonly scrollY = signal(0);
@@ -48,7 +51,7 @@ export class ScrollService {
   private calm = false;
 
   constructor() {
-    if (!isBrowser()) return;
+    if (!this.browser) return;
 
     this.calm = prefersReducedMotion();
 
@@ -123,7 +126,7 @@ export class ScrollService {
   };
 
   private dispose(): void {
-    if (!isBrowser()) return;
+    if (!this.browser) return;
     cancelAnimationFrame(this.rafId);
     this.running = false;
     window.removeEventListener('scroll', this.onScroll);

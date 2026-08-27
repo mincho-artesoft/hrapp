@@ -43,6 +43,9 @@ import { isBrowser, prefersReducedMotion } from './motion';
 })
 export class InViewVideoDirective implements AfterViewInit, OnDestroy {
   private readonly host = inject(ElementRef<HTMLVideoElement>);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
   private observer?: IntersectionObserver;
 
   /** What we want. Not always what the element is doing yet — play() is async. */
@@ -59,7 +62,7 @@ export class InViewVideoDirective implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    if (!isBrowser()) return;
+    if (!this.browser) return;
 
     const video = this.video;
 

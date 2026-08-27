@@ -104,6 +104,9 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
 
   private readonly weather = inject(WeatherService);
   private readonly cdr = inject(ChangeDetectorRef);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
   private observer?: IntersectionObserver;
   private searchTimer?: ReturnType<typeof setTimeout>;
 
@@ -244,7 +247,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
   // ------------------------------------------------------------- lifecycle
 
   ngAfterViewInit(): void {
-    if (!isBrowser()) return;
+    if (!this.browser) return;
 
     const stored = this.restore();
     if (stored) this.place.set(stored);

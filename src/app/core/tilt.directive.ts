@@ -27,6 +27,9 @@ import { clamp, isBrowser, isCoarsePointer, lerp, prefersReducedMotion } from '.
 export class TiltDirective implements AfterViewInit, OnDestroy {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly zone = inject(NgZone);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
 
   /** Maximum rotation in degrees. */
   @Input() tiltMax = 9;
@@ -49,7 +52,7 @@ export class TiltDirective implements AfterViewInit, OnDestroy {
   private curAmount = 0;
 
   ngAfterViewInit(): void {
-    if (!isBrowser() || prefersReducedMotion() || isCoarsePointer()) return;
+    if (!this.browser || prefersReducedMotion() || isCoarsePointer()) return;
 
     this.enabled = true;
     const el = this.host.nativeElement as HTMLElement;

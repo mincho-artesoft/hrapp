@@ -102,6 +102,9 @@ export class WebglBackdropComponent implements AfterViewInit, OnDestroy {
 
   private readonly zone = inject(NgZone);
   private readonly scroll = inject(ScrollService);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
 
   readonly live = signal(false);
 
@@ -122,7 +125,7 @@ export class WebglBackdropComponent implements AfterViewInit, OnDestroy {
   // --------------------------------------------------------------- lifecycle
 
   ngAfterViewInit(): void {
-    if (!isBrowser() || !canRunHeavyScene()) return;
+    if (!this.browser || !canRunHeavyScene()) return;
 
     // Never block first paint on the 3D scene.
     const boot = () => this.zone.runOutsideAngular(() => { void this.init(); });
@@ -311,14 +314,16 @@ export class WebglBackdropComponent implements AfterViewInit, OnDestroy {
   // ----------------------------------------------------------------- cleanup
 
   private dispose(): void {
+    // Nothing below exists on the server. The prerenderer destroys every
+    // component when it finishes a page, so an unguarded teardown fails the
+    // build rather than the browser — which is how this one was found.
+    if (!this.browser) return;
+
     cancelAnimationFrame(this.rafId);
     this.offFrame?.();
     this.resizeObserver?.disconnect();
     this.intersection?.disconnect();
-
-    if (isBrowser()) {
-      document.removeEventListener('visibilitychange', this.onVisibility);
-    }
+    document.removeEventListener('visibilitychange', this.onVisibility);
 
     if (this.worker) {
       const worker = this.worker;

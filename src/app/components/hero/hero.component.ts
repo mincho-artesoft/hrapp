@@ -39,6 +39,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   @ViewChild('stage') private stageRef?: ElementRef<HTMLElement>;
 
   private readonly scroll = inject(ScrollService);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
   private off?: () => void;
   private observer?: IntersectionObserver;
   private visible = true;
@@ -63,7 +66,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
    */
   ngAfterViewInit(): void {
     const el = this.stageRef?.nativeElement;
-    if (!el || !isBrowser() || prefersReducedMotion()) return;
+    if (!el || !this.browser || prefersReducedMotion()) return;
 
     this.observer = new IntersectionObserver(([e]) => { this.visible = e.isIntersecting; });
     this.observer.observe(el);

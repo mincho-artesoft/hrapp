@@ -56,6 +56,9 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('fill') private fillRefs!: QueryList<ElementRef<HTMLElement>>;
 
   private readonly scroll = inject(ScrollService);
+  /** Captured here because a field initialiser is an injection context;
+   *  method bodies are not. */
+  private readonly browser = isBrowser();
   private off?: () => void;
   private observer?: IntersectionObserver;
   private onScreen = false;
@@ -134,7 +137,7 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
   ];
 
   ngAfterViewInit(): void {
-    if (!isBrowser()) return;
+    if (!this.browser) return;
 
     this.covers = this.coverRefs.map((r) => r.nativeElement);
     this.fills = this.fillRefs.map((r) => r.nativeElement);
