@@ -9,6 +9,12 @@ import { HOME_PT_BR } from './pt-BR';
 import { HOME_PL } from './pl';
 import { HOME_RU } from './ru';
 import { HOME_SV } from './sv';
+import { HOME_DA } from './da';
+import { HOME_NO } from './no';
+import { HOME_FI } from './fi';
+import { HOME_CS } from './cs';
+import { HOME_HU } from './hu';
+import { HOME_RO } from './ro';
 import { HomeCopy } from './types';
 
 /**
@@ -21,6 +27,12 @@ import { HomeCopy } from './types';
  */
 export const HOME_COPY: Readonly<Partial<Record<LocaleCode, HomeCopy>>> = {
   'en-US': HOME_EN_US,
+  'ro': HOME_RO,
+  'hu': HOME_HU,
+  'cs': HOME_CS,
+  'fi': HOME_FI,
+  'no': HOME_NO,
+  'da': HOME_DA,
   'sv': HOME_SV,
   'ru': HOME_RU,
   'pl': HOME_PL,
