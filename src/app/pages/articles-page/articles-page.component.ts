@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { ARTICLE_FACTS } from '../../content/article-facts';
-import { contentFor } from '../../content/registry';
+import { contentFor, LIVE_LOCALES } from '../../content/registry';
 import { ArticleChrome, Family } from '../../content/types';
 import { DEFAULT_LOCALE, Locale, localePath } from '../../core/locales';
 import { SeoService } from '../../core/seo.service';
@@ -105,12 +105,32 @@ export class ArticlesPageComponent {
       if (cards.length) this.groups.push({ family, heading: headings[family], cards });
     }
 
+    // The description is composed from the family headings this language
+    // already carries rather than translated separately. A hub page honestly
+    // is its list of topics, and building the sentence this way means all
+    // twenty-nine hubs describe themselves in their own language instead of
+    // sharing one English sentence.
+    const topics = [
+      this.chrome.familyWeather,
+      this.chrome.familyUnify,
+      this.chrome.familyWidgets,
+      this.chrome.familySharing,
+      this.chrome.familyPlanning,
+      this.chrome.familyCompare,
+    ].join(' · ');
+
     inject(SeoService).apply({
       title: `${this.chrome.allArticles} — Cloud Calendars`,
-      description:
-        'Guides to planning around the weather, one calendar for every account, widgets and sharing.',
+      description: `${this.chrome.allArticles}: ${topics}`,
       path: localePath(this.locale, '/articles'),
       locale: this.locale,
+      // The hub exists in every published language, so its alternate set is
+      // simply the published languages. Without this, twenty-nine near-identical
+      // pages faced a search engine with nothing saying they were translations.
+      alternates: LIVE_LOCALES.map((other) => ({
+        hreflang: other.hreflang,
+        path: localePath(other, '/articles'),
+      })),
     });
   }
 }

@@ -146,33 +146,16 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
     --exclude "*.js" --exclude "*.css" --exclude "media/*" --exclude "*.html" \
     --cache-control "$SHORT"
 
-  log "3/3  HTML → never cached"
-  aws_do s3 cp "$DIST_DIR/index.html" "s3://$NG_DEPLOY_AWS_BUCKET/index.html" \
-    --only-show-errors --cache-control "$NEVER" --content-type "text/html"
-
-  # Standalone .html pages that are not the SPA shell — the long-form article,
-  # for one. Pass 1 only takes js/css/media, pass 2 excludes *.html, and the
-  # copies above name index.html explicitly, so before this loop existed any
-  # other HTML file in dist was silently never uploaded. It is in sitemap.xml,
-  # so a missing file here is a soft 404 that we are actively advertising.
-  shopt -s nullglob
-  for page in "$DIST_DIR"/*.html; do
-    name="$(basename "$page")"
-    [[ "$name" == "index.html" ]] && continue
-    log "     standalone page → /$name"
-    aws_do s3 cp "$page" "s3://$NG_DEPLOY_AWS_BUCKET/$name" \
-      --only-show-errors --cache-control "$SHORT" --content-type "text/html"
-  done
-  shopt -u nullglob
-
-  # The Angular routes are client-side only. Uploading index.html under each
-  # route key makes a direct hit on /privacy-policy resolve without relying on
-  # a CloudFront custom-error rule.
-  for route in privacy-policy terms-of-service; do
-    log "     SPA fallback → /$route"
-    aws_do s3 cp "$DIST_DIR/index.html" "s3://$NG_DEPLOY_AWS_BUCKET/$route" \
-      --only-show-errors --cache-control "$NEVER" --content-type "text/html"
-  done
+  # Every route is a real prerendered file now, so this is a plain recursive
+  # sync rather than the old arrangement: one index.html copied to a hand-kept
+  # list of route keys. That list had two failure modes -- a new route nobody
+  # added served a 404, and every route served the same empty <app-root>, so
+  # the 216 pages built above would never have reached the web at all.
+  log "3/3  prerendered HTML → never cached"
+  aws_do s3 sync "$DIST_DIR" "s3://$NG_DEPLOY_AWS_BUCKET" \
+    "${sync_flags[@]}" \
+    --exclude "*" --include "*.html" \
+    --cache-control "$NEVER" --content-type "text/html; charset=utf-8"
 fi
 
 # --------------------------------------------------------------- IndexNow

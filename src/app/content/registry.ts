@@ -38,6 +38,30 @@ import { ARTICLES_RO } from './ro/articles';
 import { CHROME_RO } from './ro/chrome';
 import { ARTICLES_EL } from './el/articles';
 import { CHROME_EL } from './el/chrome';
+import { ARTICLES_TR } from './tr/articles';
+import { CHROME_TR } from './tr/chrome';
+import { ARTICLES_ID } from './id/articles';
+import { CHROME_ID } from './id/chrome';
+import { ARTICLES_MS } from './ms/articles';
+import { CHROME_MS } from './ms/chrome';
+import { ARTICLES_VI } from './vi/articles';
+import { CHROME_VI } from './vi/chrome';
+import { ARTICLES_JA } from './ja/articles';
+import { CHROME_JA } from './ja/chrome';
+import { ARTICLES_KO } from './ko/articles';
+import { CHROME_KO } from './ko/chrome';
+import { ARTICLES_ZH_HANS } from './zh-Hans/articles';
+import { CHROME_ZH_HANS } from './zh-Hans/chrome';
+import { ARTICLES_ZH_HANT } from './zh-Hant/articles';
+import { CHROME_ZH_HANT } from './zh-Hant/chrome';
+import { ARTICLES_HI } from './hi/articles';
+import { CHROME_HI } from './hi/chrome';
+import { ARTICLES_TH } from './th/articles';
+import { CHROME_TH } from './th/chrome';
+import { ARTICLES_AR_SA } from './ar-SA/articles';
+import { CHROME_AR_SA } from './ar-SA/chrome';
+import { ARTICLES_HE } from './he/articles';
+import { CHROME_HE } from './he/chrome';
 import { ArticleLocale } from './types';
 
 /**
@@ -128,6 +152,54 @@ export const CONTENT: Readonly<Partial<Record<LocaleCode, ArticleLocale>>> = {
   el: {
     chrome: CHROME_EL,
     articles: ARTICLES_EL,
+  },
+  tr: {
+    chrome: CHROME_TR,
+    articles: ARTICLES_TR,
+  },
+  id: {
+    chrome: CHROME_ID,
+    articles: ARTICLES_ID,
+  },
+  ms: {
+    chrome: CHROME_MS,
+    articles: ARTICLES_MS,
+  },
+  vi: {
+    chrome: CHROME_VI,
+    articles: ARTICLES_VI,
+  },
+  ja: {
+    chrome: CHROME_JA,
+    articles: ARTICLES_JA,
+  },
+  ko: {
+    chrome: CHROME_KO,
+    articles: ARTICLES_KO,
+  },
+  'zh-Hans': {
+    chrome: CHROME_ZH_HANS,
+    articles: ARTICLES_ZH_HANS,
+  },
+  'zh-Hant': {
+    chrome: CHROME_ZH_HANT,
+    articles: ARTICLES_ZH_HANT,
+  },
+  hi: {
+    chrome: CHROME_HI,
+    articles: ARTICLES_HI,
+  },
+  th: {
+    chrome: CHROME_TH,
+    articles: ARTICLES_TH,
+  },
+  'ar-SA': {
+    chrome: CHROME_AR_SA,
+    articles: ARTICLES_AR_SA,
+  },
+  he: {
+    chrome: CHROME_HE,
+    articles: ARTICLES_HE,
   },
 };
 

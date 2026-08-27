@@ -5,9 +5,12 @@
 # wasting their budget on files that are not pages.
 #
 # Note: do not disallow /app-ads.txt or the JS/CSS bundles. AdMob's crawler
-# obeys robots.txt, so a disallowed /app-ads.txt fails app authorization, and
-# the app is client-rendered (index.html ships an empty <app-root>), so a
-# search engine that cannot fetch main-*.js sees a blank page.
+# obeys robots.txt, so a disallowed /app-ads.txt fails app authorization.
+#
+# The pages are prerendered now -- every route ships as real HTML, so a crawler
+# that never runs JavaScript still sees the words. The bundles stay allowed
+# anyway: blocking them makes a page look broken to a renderer that does run
+# them, which is a worse signal than the bandwidth is worth.
 
 User-agent: *
 Allow: /
