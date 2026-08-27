@@ -1,6 +1,10 @@
 import { LOCALES, Locale } from '../core/locales';
 import { CHROME_EN_US } from './en-US/chrome';
+import { COMPARE_EN_US } from './en-US/articles-compare';
+import { PLANNING_EN_US } from './en-US/articles-planning';
 import { SHARING_EN_US } from './en-US/articles-sharing';
+import { UNIFY_EN_US } from './en-US/articles-unify';
+import { WIDGETS_EN_US } from './en-US/articles-widgets';
 import { WEATHER_EN_US } from './en-US/articles-weather';
 import { ArticleLocale } from './types';
 
@@ -20,7 +24,14 @@ import { ArticleLocale } from './types';
 export const CONTENT: Readonly<Record<string, ArticleLocale>> = {
   'en-US': {
     chrome: CHROME_EN_US,
-    articles: { ...WEATHER_EN_US, ...SHARING_EN_US },
+    articles: {
+      ...WEATHER_EN_US,
+      ...UNIFY_EN_US,
+      ...WIDGETS_EN_US,
+      ...SHARING_EN_US,
+      ...PLANNING_EN_US,
+      ...COMPARE_EN_US,
+    },
   },
 };
 
