@@ -15,6 +15,12 @@ import { HOME_FI } from './fi';
 import { HOME_CS } from './cs';
 import { HOME_HU } from './hu';
 import { HOME_RO } from './ro';
+import { HOME_EL } from './el';
+import { HOME_TR } from './tr';
+import { HOME_ID } from './id';
+import { HOME_MS } from './ms';
+import { HOME_VI } from './vi';
+import { HOME_JA } from './ja';
 import { HomeCopy } from './types';
 
 /**
@@ -27,6 +33,12 @@ import { HomeCopy } from './types';
  */
 export const HOME_COPY: Readonly<Partial<Record<LocaleCode, HomeCopy>>> = {
   'en-US': HOME_EN_US,
+  'ja': HOME_JA,
+  'vi': HOME_VI,
+  'ms': HOME_MS,
+  'id': HOME_ID,
+  'tr': HOME_TR,
+  'el': HOME_EL,
   'ro': HOME_RO,
   'hu': HOME_HU,
   'cs': HOME_CS,
