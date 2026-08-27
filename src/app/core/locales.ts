@@ -320,3 +320,41 @@ export function localePath(locale: Locale, path: string): string {
 export function storeUrl(locale: Locale, base: string): string {
   return base.replace(/\/[a-z]{2}\/app\//, `/${locale.storefront}/app/`);
 }
+
+/**
+ * Every code that {@link LOCALES} actually contains.
+ *
+ * Written out rather than derived so the content registry can be keyed by it.
+ * Its whole job is to turn a typo — 'it-IT' where the App Store says 'it' —
+ * into a compile error instead of a language that silently publishes nothing.
+ */
+export type LocaleCode =
+  | 'en-US'
+  | 'ar-SA'
+  | 'cs'
+  | 'da'
+  | 'de-DE'
+  | 'el'
+  | 'es-ES'
+  | 'fi'
+  | 'fr-FR'
+  | 'he'
+  | 'hi'
+  | 'hu'
+  | 'id'
+  | 'it'
+  | 'ja'
+  | 'ko'
+  | 'ms'
+  | 'nl-NL'
+  | 'no'
+  | 'pl'
+  | 'pt-BR'
+  | 'ro'
+  | 'ru'
+  | 'sv'
+  | 'th'
+  | 'tr'
+  | 'vi'
+  | 'zh-Hans'
+  | 'zh-Hant';

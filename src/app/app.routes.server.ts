@@ -1,6 +1,6 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 
-import { CONTENT, LIVE_LOCALES } from './content/registry';
+import { contentFor, LIVE_LOCALES } from './content/registry';
 
 /**
  * Which routes the build renders, and how.
@@ -21,7 +21,7 @@ export const serverRoutes: ServerRoute[] = [
     path: locale.slug ? `${locale.slug}/articles/:slug` : 'articles/:slug',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () =>
-      Object.keys(CONTENT[locale.code].articles).map((slug) => ({ slug })),
+      Object.keys(contentFor(locale.code).articles).map((slug) => ({ slug })),
   })),
   { path: '**', renderMode: RenderMode.Prerender },
 ];

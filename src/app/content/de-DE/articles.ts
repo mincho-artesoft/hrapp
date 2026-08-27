@@ -260,4 +260,216 @@ export const ARTICLES_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
     ],
     seeAlso: ['icloud-google-and-outlook-in-one-view'],
   },
+
+  'three-calendar-apps-is-two-too-many': {
+    title: 'Drei Kalender-Apps sind zwei zu viel',
+    short: 'Drei Apps sind zwei zu viel',
+    description:
+      'Zwischen Kalender-Apps zu wechseln ist kein Arbeitsablauf, sondern eine Steuer. Was sie kostet und wie ihre Abschaffung aussieht.',
+    lede: 'Niemand hat sich entschieden, drei Kalender-Apps zu führen. Es ist Konto für Konto passiert, und jede einzelne Ergänzung wirkte vernünftig.',
+    commonBelief:
+      'Dass App-Wechsel eine kleine Unbequemlichkeit sind und nicht die Quelle des eigentlichen Problems.',
+    sections: [
+      {
+        heading: 'Der Preis ist nicht das Tippen',
+        body: [
+          'Zwei Sekunden Umschalten sind nichts. Teuer ist, dass Sie Terminfragen aus unvollständiger Information beantworten, weil jedes Mal alle drei zu prüfen mehr Mühe ist, als die Frage zu verdienen scheint.',
+          'Also antworten Sie aus der App, die gerade offen ist, und korrigieren später. Die Korrektur ist der teure Teil, und sie landet auch im Kalender von jemand anderem.',
+        ],
+      },
+      {
+        heading: 'Was tatsächlich wahr sein muss',
+        body: [
+          'Ein Ort muss Ja oder Nein zu Ihrer Zeit sagen können. Das ist die ganze Anforderung, und keine Anordnung erfüllt sie, bei der die Antwort in mehr als einer App liegt.',
+          'Alles andere — welche App, welche Farben, welche Ansichten — ist Geschmack. Das hier ist Struktur.',
+        ],
+      },
+    ],
+    claims: {
+      accounts: 'Kontotypen, die eine Ansicht fassen kann',
+    },
+    practical: [
+      'Wählen Sie die App, die alle Ihre Konten hält, nicht die, die Ihnen einzeln am besten gefällt.',
+      'Wandern Sie über Konten, nicht über Termine — die Termine bleiben, wo sie sind.',
+      'Löschen Sie die anderen Apps, sobald die Ansicht vollständig ist, sonst schauen Sie weiter hinein.',
+    ],
+    seeAlso: ['icloud-google-and-outlook-in-one-view'],
+  },
+
+  'the-widget-that-shows-what-is-next': {
+    title: 'Ein Widget, das eine einzige Frage beantwortet',
+    short: 'Das Widget für das Nächste',
+    description:
+      'Die meisten Kalender-Widgets versuchen, ein kleiner Kalender zu sein. Die nützlichen beantworten die eine Frage, die Sie zwanzigmal am Tag stellen.',
+    lede: 'Sie entsperren Ihr Telefon nicht, um im Kalender zu blättern. Sie entsperren es, um zu erfahren, was als Nächstes kommt und wie viel Zeit bleibt.',
+    commonBelief: 'Dass ein gutes Kalender-Widget eine Monatsansicht in klein ist.',
+    sections: [
+      {
+        heading: 'Kleine Flächen bestrafen Dichte',
+        body: [
+          'Ein in ein Widget gequetschter Monat ist im Vorbeigehen unlesbar — und im Vorbeigehen ist die einzige Art, wie ein Widget je gelesen wird. Am Ende öffnen Sie doch die App, und das Widget hat Platz gekostet, ohne etwas zu geben.',
+          'Das Widget, das seinen Platz verdient, zeigt das Nächste, die Uhrzeit und, wenn es zählt, wie der Himmel dort aussieht.',
+        ],
+      },
+      {
+        heading: 'Warum das Wetter aus demselben Grund dazugehört',
+        body: [
+          'Die zwei Dinge, die Sie vor dem Aufbrechen wissen wollen, sind wann und wie es draußen ist. Auf zwei Widgets verteilt entsteht das Zwei-App-Problem noch einmal, nur auf kleinerem Bildschirm.',
+          'Ein Blick, beide Antworten, kein Entsperren.',
+        ],
+      },
+    ],
+    claims: {
+      views: 'Ansichten in der App selbst, wenn Sie sie doch öffnen',
+    },
+    practical: [
+      'Legen Sie das Widget dorthin, wo Ihr Daumen landet, nicht dorthin, wo es ordentlich aussieht.',
+      'Nehmen Sie eine größere Größe nur, wenn Sie wirklich mehr als den nächsten Eintrag lesen.',
+      'Prüfen Sie direkt nach dem Kalender das Wetter, nehmen Sie ein Widget, das beides trägt.',
+    ],
+    seeAlso: ['a-countdown-to-your-next-meeting'],
+  },
+
+  'a-countdown-to-your-next-meeting': {
+    title: 'Ein Countdown auf dem Sperrbildschirm bis zum Nächsten',
+    short: 'Countdown bis zum Termin',
+    description:
+      'Eine Live-Aktivität macht aus „wann ist es“ ein „wie lange habe ich noch“ — und das war die eigentliche Frage.',
+    lede: 'Zwischen „der Termin ist um drei“ und „ich habe elf Minuten“ liegt ein großer praktischer Unterschied, und nur eines von beidem ändert, was Sie als Nächstes tun.',
+    commonBelief: 'Dass eine Benachrichtigung ein paar Minuten vorher reicht.',
+    sections: [
+      {
+        heading: 'Eine Uhrzeit ist keine Dauer',
+        body: [
+          '„Drei Uhr“ zu lesen zwingt Sie zu einer Rechnung gegen eine Uhr, die Sie erst suchen müssen. „Elf Minuten“ nicht. Das Zweite ist handlungsfähig, das Erste ist ein Nachschlagen.',
+          'Am wichtigsten ist das in den zwanzig Minuten vor etwas — genau dann, wenn Menschen sich verschätzen.',
+        ],
+      },
+      {
+        heading: 'Warum es auf dem Sperrbildschirm lebt',
+        body: [
+          'Der Countdown aktualisiert sich an Ort und Stelle, ein Blick genügt. Keine App zu öffnen, keine Meldung wegzuwischen, und die Information stimmt jedes Mal, wenn Sie hinsehen — statt einmal zu stimmen, als sie ausgelöst wurde.',
+          'Eine einzelne Erinnerung fünf Minuten vorher sagt dasselbe genau einmal und hört dann auf zu helfen.',
+        ],
+      },
+    ],
+    claims: {},
+    practical: [
+      'Verlassen Sie sich für die letzte halbe Stunde auf den Countdown und für den Vortag auf Erinnerungen.',
+      'Brechen Sie regelmäßig zu spät auf, beobachten Sie die Zahl statt eine frühere Erinnerung zu setzen — die Erinnerung ist leicht wegzuwischen, die Zahl nicht.',
+    ],
+    seeAlso: ['the-widget-that-shows-what-is-next'],
+  },
+
+  'drag-an-event-to-move-it': {
+    title: 'Einen Termin verschieben, indem man ihn zieht',
+    short: 'Ziehen statt Formular',
+    description:
+      'Umplanen sollte eine Geste kosten, kein Formular. Warum direkte Manipulation im Kalender mehr zählt als fast überall sonst.',
+    lede: 'Termin öffnen, Zeitfeld antippen, Rad drehen, sichern: vier Schritte für etwas, das Sie mit dem Finger schon gezeigt hatten.',
+    commonBelief: 'Dass ein Formular genau ist und Ziehen ungefähr.',
+    sections: [
+      {
+        heading: 'Das Formular ist nicht genauer',
+        body: [
+          'Ein Zug landet auf dem Raster, und das Raster ist in den Einheiten, in denen Sie ohnehin planen. Sie sind nicht ungenau; Sie arbeiten in der Auflösung, die der Tag hat.',
+          'Wo Genauigkeit wirklich zählt — ein Flug, eine Buchung auf die Minute — gibt es das Formular weiterhin. Es hört nur auf, der Normalfall für die neunzig Prozent zu sein, die „eine Stunde später“ heißen.',
+        ],
+      },
+      {
+        heading: 'Verschieben ist häufiger als Anlegen',
+        body: [
+          'Die meiste Kalenderarbeit ist Umräumen, nicht Eintragen. Wer das einmal bemerkt, sieht, dass eine App, die das Anlegen elegant und das Umräumen mühsam macht, die seltenere Hälfte optimiert hat.',
+          'Ziehen und in der Größe ändern macht aus dem Umräumen das, was es im Kopf ohnehin ist: das hier, aber später, und ein bisschen länger.',
+        ],
+      },
+    ],
+    claims: {},
+    practical: [
+      'Ziehen Sie für alles Ungefähre, öffnen Sie den Termin für alles Exakte.',
+      'Ändern Sie die Dauer an der Kante, statt eine Endzeit zu tippen.',
+      'In der Wochenansicht verschiebt ein Zug über Tage hinweg Datum und Uhrzeit gemeinsam.',
+    ],
+    seeAlso: ['icloud-google-and-outlook-in-one-view'],
+  },
+
+  'free-google-sync-without-adverts': {
+    title: 'Kostenlose Google-Synchronisierung — und wofür die Werbung bezahlt',
+    short: 'Kostenlos, und die Werbung',
+    description:
+      'Was die kostenlose Stufe wirklich enthält, wo Werbung erscheint und was ihre Entfernung kostet. Klar gesagt, weil die meisten Apps das nicht tun.',
+    lede: 'Kostenlose Kalender-Apps sind meist kostenlos, weil etwas anderes verkauft wird. Es lohnt sich zu wissen, was — bevor man ihr seine Woche anvertraut.',
+    commonBelief:
+      'Dass eine kostenlose Stufe eine Testphase ist und die richtige App hinter der Bezahlschranke liegt.',
+    sections: [
+      {
+        heading: 'Was kostenlos tatsächlich abdeckt',
+        body: [
+          'Alle Ansichten, iCloud-Synchronisierung, Google-Synchronisierung, das gesamte Wetter im Kalender, Widgets, Meet-Links an Terminen und Bearbeiten per Ziehen. Kein Test dieser Dinge — diese Dinge.',
+          'Liegen Ihre Kalender bei Apple und Google, was bei den meisten der Fall ist, dann ist die kostenlose Stufe die App.',
+        ],
+      },
+      {
+        heading: 'Was die Werbung tut und was ihre Entfernung kostet',
+        body: [
+          'Die kostenlose Stufe trägt Werbung. Sie zu entfernen ist die günstigste bezahlte Stufe, und Werbung zu entfernen ist ehrlich gesagt das meiste, wofür diese Stufe da ist.',
+          'Das so zu sagen scheint besser als die übliche Anordnung, in der die werbefreie Stufe mit Funktionen gebündelt wird, nach denen niemand gefragt hat, damit der Preis nach mehr aussieht.',
+        ],
+      },
+    ],
+    claims: {
+      price: 'Preis der kostenlosen Stufe',
+      advancedMonthly: 'Monatlicher Preis ohne Werbung, in Dollar',
+    },
+    practical: [
+      'Fangen Sie kostenlos an; die Synchronisierung, die Sie brauchen, ist wahrscheinlich schon da.',
+      'Zahlen Sie, um Werbung loszuwerden, nicht weil Sie erwarten, dass die App sich ändert.',
+      'Die oberste Stufe lohnt sich nur, wenn Ihr Arbeitskalender bei Microsoft liegt.',
+    ],
+    seeAlso: ['what-a-subscription-actually-buys', 'icloud-google-and-outlook-in-one-view'],
+  },
+
+  'what-a-subscription-actually-buys': {
+    title: 'Was ein Abonnement tatsächlich bringt, Stufe für Stufe',
+    short: 'Was ein Abo bringt',
+    description:
+      'Zwei bezahlte Stufen, was sie trennt, und wie Sie erkennen, welche — wenn überhaupt — Ihre ist. Jahres- und Monatspreise nebeneinander.',
+    lede: 'Zwei Stufen reichen für Verwirrung, wenn niemand klar sagt, was sie trennt. Was sie trennt, ist Microsoft.',
+    commonBelief: 'Dass die höhere Stufe dieselben Funktionen sind, nur mehr davon.',
+    sections: [
+      {
+        heading: 'Die erste Stufe entfernt die Werbung',
+        body: [
+          'Sie bringt außerdem die Verwaltung von Terminen über iCloud- und Google-Kalender hinweg, Google-Freigaberechte, automatische Meet-Links und schnellere Wetteraktualisierung. Gekauft wird sie aber wegen der Werbung.',
+          'Zu diesem Preis ist sie ungefähr ein Kaffee im Jahr, und sie ist die Stufe, die zu den meisten passt, die überhaupt etwas zahlen wollen.',
+        ],
+      },
+      {
+        heading: 'Die zweite Stufe ist für Microsoft',
+        body: [
+          'Outlook- und Exchange-Synchronisierung, Teams-Links, kontenübergreifende Verwaltung samt Arbeit, Verwaltung von Teilnehmern. Sie kostet eine Größenordnung mehr, weil die Verbindung das auch tut.',
+          'Liegt Ihr Arbeitskalender nicht bei Microsoft, enthält diese Stufe nichts für Sie, und Sie sollten sie nicht kaufen.',
+        ],
+      },
+      {
+        heading: 'Jahr gegen Monat',
+        body: [
+          'Beide Stufen sind im Jahr günstiger. Die Ersparnis ist maßvoll statt dramatisch — nehmen Sie das Jahr, wenn Sie sicher sind, und den Monat, wenn Sie noch überlegen.',
+          'Keines von beidem ist eine Falle: Nach einer Kündigung stehen Sie auf der kostenlosen Stufe, und Ihre Kalender sind unversehrt, weil die Termine nie uns gehört haben.',
+        ],
+      },
+    ],
+    claims: {
+      advancedMonthly: 'Erste Stufe, monatlich, in Dollar',
+      advancedYearly: 'Erste Stufe, jährlich, in Dollar',
+      premiumMonthly: 'Zweite Stufe, monatlich, in Dollar',
+      premiumYearly: 'Zweite Stufe, jährlich, in Dollar',
+    },
+    practical: [
+      'Kaufen Sie die erste Stufe, um Werbung zu entfernen, nicht um den Kalender freizuschalten.',
+      'Kaufen Sie die zweite nur, wenn Ihre Arbeit bei Microsoft lebt.',
+      'Nehmen Sie das Jahr, sobald Sie sicher sind; die Ersparnis ist echt, aber klein.',
+    ],
+    seeAlso: ['free-google-sync-without-adverts'],
+  },
 };
