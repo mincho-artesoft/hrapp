@@ -2,21 +2,17 @@
   <div class="widgets__inner shell">
     <!-- ------------------------------------------------------------ copy -->
     <div class="widgets__copy">
-      <p class="eyebrow" appReveal="fade">New in {{ '1.5' }}</p>
+      <p class="eyebrow" appReveal="fade">{{ eyebrow() }}</p>
 
       <h2 class="section-title" appReveal="up" [revealDelay]="60">
-        Your day, before<br />
-        <span class="grad-cyan">you unlock anything.</span>
+        {{ copy().title[0] }}<br />
+        <span class="grad-cyan">{{ copy().title[1] }}</span>
       </h2>
 
-      <p class="section-lead" appReveal="up" [revealDelay]="140">
-        Cloud Calendars lives on the Home Screen and the Lock Screen, not just
-        inside an app icon. Widgets carry the date, the forecast and what’s
-        next; a Live Activity counts down to it.
-      </p>
+      <p class="section-lead" appReveal="up" [revealDelay]="140">{{ copy().lead }}</p>
 
       <ul class="points" appRevealStagger="110">
-        @for (p of points; track p.title) {
+        @for (p of points(); track p.title) {
           <li class="points__item" appReveal="left">
             <span class="points__icon" [attr.data-icon]="p.icon" aria-hidden="true"></span>
             <div>

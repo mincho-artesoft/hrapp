@@ -1,14 +1,14 @@
-<section class="showcase" id="showcase" #track [style.--steps]="steps.length">
+<section class="showcase" id="showcase" #track [style.--steps]="steps().length">
   <div class="showcase__sticky">
-    <div class="showcase__glow" [style.--hue]="steps[active()].hue" aria-hidden="true"></div>
+    <div class="showcase__glow" [style.--hue]="steps()[active()].hue" aria-hidden="true"></div>
 
     <div class="showcase__inner shell">
       <!-- ---------------------------------------------------------- copy -->
       <div class="showcase__copy">
-        <p class="eyebrow">The tour</p>
+        <p class="eyebrow">{{ copy().eyebrow }}</p>
 
         <div class="showcase__panels">
-          @for (step of steps; track step.id; let i = $index) {
+          @for (step of steps(); track step.id; let i = $index) {
             <article class="panel" [class.is-active]="i === active()" [attr.aria-hidden]="i !== active()">
               <span class="panel__kicker">{{ step.kicker }}</span>
               <h2 class="panel__title">{{ step.title }}</h2>
@@ -31,7 +31,7 @@
 
         <!-- Step rail -->
         <ol class="rail" aria-label="Tour steps">
-          @for (step of steps; track step.id; let i = $index) {
+          @for (step of steps(); track step.id; let i = $index) {
             <li>
               <button
                 type="button"
@@ -60,7 +60,7 @@
         <div class="coverflow__bloom" aria-hidden="true"></div>
 
         <div class="coverflow" #flow>
-          @for (step of steps; track step.id; let i = $index) {
+          @for (step of steps(); track step.id; let i = $index) {
             <div class="cover" #cover (click)="goTo(i)">
               <app-device-frame
                 size="lg"

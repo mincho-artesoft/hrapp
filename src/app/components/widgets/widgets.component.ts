@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
 import { RevealDirective, RevealStaggerDirective } from '../../core/reveal.directive';
 import { TiltDirective } from '../../core/tilt.directive';
@@ -16,35 +16,26 @@ import { InViewVideoDirective } from '../../core/in-view-video.directive';
  * The clip only loads once the section scrolls into view — see
  * InViewVideoDirective.
  */
+// The copy is per language; the icons are not.
+import { ActiveLocaleService } from '../../core/active-locale.service';
+import { APP_VERSION } from '../../core/app-facts';
 @Component({
   selector: 'app-widgets',
   standalone: true,
-  imports: [
-    RevealDirective,
-    RevealStaggerDirective,
-    TiltDirective,
-    InViewVideoDirective,
-  ],
+  imports: [RevealDirective, RevealStaggerDirective, TiltDirective, InViewVideoDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './widgets.component.html',
   styleUrl: './widgets.component.scss',
 })
 export class WidgetsComponent {
-  readonly points = [
-    {
-      icon: 'stack',
-      title: 'Three widget sizes',
-      body: 'Small for the date and temperature, medium for conditions, moon phase and wind, large for the day’s agenda alongside the forecast.',
-    },
-    {
-      icon: 'bolt',
-      title: 'Live Activity on the Lock Screen',
-      body: 'Your next event counts down in the Dynamic Island and on the Lock Screen, so you never have to open anything to know how long you have.',
-    },
-    {
-      icon: 'bell',
-      title: 'Notifications that arrive in time',
-      body: 'Event reminders that respect travel time and tell you what the weather is doing when you get there.',
-    },
-  ];
+  private readonly active = inject(ActiveLocaleService);
+
+  readonly copy = computed(() => this.active.copy().widgets);
+  readonly eyebrow = computed(() => this.copy().eyebrow.replace('{v}', APP_VERSION));
+
+  /** Icons stay in code; the words come from the language. */
+  private readonly icons = ['grid', 'lock', 'bell'];
+  readonly points = computed(() =>
+    this.copy().items.map((item, i) => ({ ...item, icon: this.icons[i] ?? 'grid' })),
+  );
 }

@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ActiveLocaleService } from '../../core/active-locale.service';
-import { APP_DEVELOPER, APP_STORE_URL, APP_VERSION } from '../../core/app-facts';
+import { storeCta } from '../../core/store-cta';
+import { APP_DEVELOPER, APP_MIN_IOS, APP_STORE_URL, APP_VERSION } from '../../core/app-facts';
 
 @Component({
   selector: 'app-footer',
@@ -20,18 +21,32 @@ export class FooterComponent {
   readonly appStoreUrl = this.active.storeHref;
   readonly developer = APP_DEVELOPER;
   readonly version = APP_VERSION;
+  readonly minIos = APP_MIN_IOS;
+  readonly versionLine = computed(() => this.copy().footer.version.replace('{v}', APP_VERSION));
+  readonly iosLine = computed(() => this.copy().footer.iosOrLater.replace('{v}', APP_MIN_IOS));
 
-  readonly columns = [
-    {
-      title: 'Product',
-      links: [
-        { label: 'Tour', href: '/#showcase' },
-        { label: 'Widgets', href: '/#widgets' },
-        { label: 'Weather hub', href: '/#weather' },
-        { label: 'Features', href: '/#features' },
-        { label: 'Pricing', href: '/#pricing' },
-        { label: 'FAQ', href: '/#faq' },
-      ],
-    },
-  ];
+  readonly copy = this.active.copy;
+  readonly storeCta = computed(() => storeCta(this.active.locale().code));
+
+  /** Fragment links point at the home page of the reader's own language. */
+  readonly productLinks = computed(() => {
+    const n = this.copy().nav;
+    const home = this.active.path('/');
+    const base = home.endsWith('/') ? home : `${home}/`;
+    return [
+      { label: n.tour, href: `${base}#showcase` },
+      { label: n.widgets, href: `${base}#widgets` },
+      { label: n.weather, href: `${base}#weather` },
+      { label: n.features, href: `${base}#features` },
+      { label: n.pricing, href: `${base}#pricing` },
+      { label: n.faq, href: `${base}#faq` },
+      { label: n.articles, href: `${this.active.path('/articles')}/` },
+    ];
+  });
+
+  readonly rights = computed(() =>
+    this.copy()
+      .footer.rights.replace('{year}', String(this.year))
+      .replace('{developer}', APP_DEVELOPER),
+  );
 }

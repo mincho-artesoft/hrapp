@@ -8,22 +8,24 @@ import {
   ViewChild,
   ViewChildren,
   inject,
+  computed,
   signal,
 } from '@angular/core';
 
 import { DeviceFrameComponent } from '../device-frame/device-frame.component';
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import { ScrollService } from '../../core/scroll.service';
 import { clamp, isBrowser, prefersReducedMotion } from '../../core/motion';
 
 export interface ShowcaseStep {
-  id: string;
-  kicker: string;
-  title: string;
-  body: string;
-  shot: string;
-  alt: string;
-  bullets: string[];
-  hue: string;
+  readonly id: string;
+  readonly kicker: string;
+  readonly title: string;
+  readonly body: string;
+  readonly shot: string;
+  readonly alt: string;
+  readonly bullets: readonly string[];
+  readonly hue: string;
 }
 
 /**
@@ -73,68 +75,26 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
 
   readonly active = signal(0);
 
-  readonly steps: ShowcaseStep[] = [
-    {
-      id: 'day',
-      kicker: 'Day view',
-      title: 'The hour-by-hour plan, with the sky attached',
-      body:
-        'An hourly grid where every row carries its own forecast. You see the ' +
-        '3pm meeting and the 3pm rain in the same glance — no second app, no guessing.',
-      shot: 'assets/images/app-screenshots/single-day-view.webp',
-      alt: 'Day view with an hourly grid, events and hourly weather icons',
-      bullets: ['Live "now" line', 'Hourly temperature', 'Drag to reschedule'],
-      hue: '210',
-    },
-    {
-      id: 'week',
-      kicker: 'Week view',
-      title: 'A whole week you can actually read',
-      body:
-        'Seven columns, each headed by its own high, low and condition. Rotate to ' +
-        'landscape for the full spread. Grab an event and slide it to another day.',
-      shot: 'assets/images/app-screenshots/multi-day-view-v.webp',
-      alt: 'Week view with daily columns, each showing a weather summary',
-      bullets: ['Portrait & landscape', 'Daily high / low', 'Drag across days'],
-      hue: '190',
-    },
-    {
-      id: 'multi',
-      kicker: 'Multi-calendar',
-      title: 'Work and life, side by side instead of stacked',
-      body:
-        'Give each calendar its own column and stop untangling colour-coded overlap. ' +
-        'The one view that makes a shared household or a split work week make sense.',
-      shot: 'assets/images/app-screenshots/multi-calndar-view.webp',
-      alt: 'Multi-calendar day view with each calendar in its own column',
-      bullets: ['One column per calendar', 'Colour coded', 'Toggle any source'],
-      hue: '265',
-    },
-    {
-      id: 'month',
-      kicker: 'Month & year',
-      title: 'Pull back far enough to see the shape of things',
-      body:
-        'Month view marks every day that has something on it. Year view puts twelve ' +
-        'months on one screen — the fastest way to find a free week.',
-      shot: 'assets/images/app-screenshots/month-view.webp',
-      alt: 'Month view with event indicators on each day',
-      bullets: ['Event density at a glance', 'Twelve-month overview', 'Jump to any date'],
-      hue: '285',
-    },
-    {
-      id: 'list',
-      kicker: 'List view',
-      title: 'When you just want to know what is next',
-      body:
-        'A clean chronological agenda. No grid, no columns — just the next thing, ' +
-        'and the thing after that.',
-      shot: 'assets/images/app-screenshots/list-view.webp',
-      alt: 'List view showing a chronological agenda of upcoming events',
-      bullets: ['Chronological', 'Skim-friendly', 'Search any event'],
-      hue: '165',
-    },
+  private readonly active_ = inject(ActiveLocaleService);
+  readonly copy = computed(() => this.active_.copy().showcase);
+
+  /**
+   * Screenshot and hue live here; kicker, title, body, alt and bullets come
+   * from the language. Pairing them by position rather than merging the two
+   * into one translated object keeps a translator from ever being able to
+   * point a panel at the wrong image.
+   */
+  private readonly visuals = [
+    { id: 'day', shot: 'assets/images/app-screenshots/single-day-view.webp', hue: '210' },
+    { id: 'week', shot: 'assets/images/app-screenshots/multi-day-view-v.webp', hue: '190' },
+    { id: 'multi', shot: 'assets/images/app-screenshots/multi-calndar-view.webp', hue: '265' },
+    { id: 'month', shot: 'assets/images/app-screenshots/month-view.webp', hue: '35' },
+    { id: 'list', shot: 'assets/images/app-screenshots/list-view.webp', hue: '150' },
   ];
+
+  readonly steps = computed<ShowcaseStep[]>(() =>
+    this.visuals.map((v, i) => ({ ...v, ...this.copy().panels[i] })),
+  );
 
   ngAfterViewInit(): void {
     if (!this.browser) return;
@@ -194,13 +154,13 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
 
       const p = clamp(-r.top / total);
       // Bias slightly so the first step is fully readable before it advances.
-      const scaled = clamp(p * 1.06) * this.steps.length;
-      const index = Math.min(this.steps.length - 1, Math.floor(scaled));
+      const scaled = clamp(p * 1.06) * this.steps().length;
+      const index = Math.min(this.steps().length - 1, Math.floor(scaled));
 
       // Half a step behind `scaled`, so a cover is dead centre in the middle
       // of its step rather than at its start — which also makes the copy swap
       // land exactly as the carousel passes the midpoint between two phones.
-      const last = this.steps.length - 1;
+      const last = this.steps().length - 1;
       this.layout(Math.max(0, Math.min(last, scaled - 0.5)));
       this.setRail(index, scaled - index);
 
@@ -221,7 +181,7 @@ export class ShowcaseComponent implements AfterViewInit, OnDestroy {
   goTo(index: number): void {
     const track = this.trackRef.nativeElement;
     const total = track.offsetHeight - window.innerHeight;
-    const y = track.offsetTop + (total * (index + 0.5)) / this.steps.length;
+    const y = track.offsetTop + (total * (index + 0.5)) / this.steps().length;
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
 

@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ChangeDetectorRef,
+  computed,
   ElementRef,
   OnDestroy,
   ViewChild,
@@ -14,6 +15,7 @@ import { DeviceFrameComponent } from '../device-frame/device-frame.component';
 import { RevealDirective, RevealStaggerDirective } from '../../core/reveal.directive';
 import { TiltDirective } from '../../core/tilt.directive';
 import { isBrowser } from '../../core/motion';
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import {
   DaySample,
   DEFAULT_PLACE,
@@ -100,6 +102,12 @@ function toPath(series: number[], smooth = true): string {
   styleUrl: './weather-hub.component.scss',
 })
 export class WeatherHubComponent implements AfterViewInit, OnDestroy {
+  private readonly localeCopy = inject(ActiveLocaleService);
+  readonly copy = computed(() => this.localeCopy.copy().weather);
+  readonly liveFrom = computed(() =>
+    this.copy().liveFrom.replace('{t}', this.snapshot()?.observedAt ?? ''),
+  );
+
   @ViewChild('root', { static: true }) private rootRef!: ElementRef<HTMLElement>;
 
   private readonly weather = inject(WeatherService);
@@ -134,7 +142,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
       label: 'Feels like',
       value: '66',
       unit: '°',
-      caption: 'Two degrees below actual — the wind is doing it.',
+      caption: this.copy().readings.feelsLike,
       accent: '#ff9f45',
       series: [0.32, 0.28, 0.3, 0.44, 0.62, 0.78, 0.9, 0.84, 0.7, 0.52, 0.4, 0.34],
       kind: 'line',
@@ -144,7 +152,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
       label: 'Precipitation',
       value: '38',
       unit: '%',
-      caption: 'A band moving through between 4 and 7pm.',
+      caption: this.copy().readings.precipitation,
       accent: '#4fa8ff',
       series: [0.05, 0.05, 0.1, 0.08, 0.15, 0.42, 0.78, 0.92, 0.6, 0.25, 0.1, 0.05],
       kind: 'bars',
@@ -154,7 +162,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
       label: 'UV index',
       value: '6',
       unit: '',
-      caption: 'High around noon. Cover up between 11 and 3.',
+      caption: this.copy().readings.uv,
       accent: '#ffd166',
       series: [0, 0.04, 0.18, 0.42, 0.7, 0.92, 1, 0.86, 0.6, 0.32, 0.1, 0],
       kind: 'line',
@@ -164,7 +172,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
       label: 'Wind',
       value: '9',
       unit: 'mph',
-      caption: 'West-south-west, gusting to 17 late afternoon.',
+      caption: this.copy().readings.wind,
       accent: '#5ce1e6',
       series: [0.3, 0.34, 0.3, 0.38, 0.46, 0.5, 0.62, 0.82, 0.74, 0.58, 0.44, 0.36],
       kind: 'line',
@@ -174,7 +182,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
       label: 'Humidity',
       value: '64',
       unit: '%',
-      caption: 'Dew point 55° — comfortable.',
+      caption: this.copy().readings.humidity,
       accent: '#8ab4ff',
       series: [0.78, 0.8, 0.76, 0.68, 0.58, 0.5, 0.46, 0.5, 0.6, 0.7, 0.76, 0.8],
       kind: 'line',
@@ -184,7 +192,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
       label: 'Pressure',
       value: '1014',
       unit: 'hPa',
-      caption: 'Rising steadily since dawn.',
+      caption: this.copy().readings.pressure,
       accent: '#c39cff',
       series: [0.34, 0.36, 0.4, 0.44, 0.5, 0.56, 0.6, 0.66, 0.72, 0.78, 0.82, 0.86],
       kind: 'line',
@@ -206,9 +214,7 @@ export class WeatherHubComponent implements AfterViewInit, OnDestroy {
 
   get hourly(): { h: string; t: string; icon: string }[] {
     const live = this.snapshot()?.hourly;
-    return live
-      ? live.map((s) => ({ h: s.label, t: s.temp, icon: s.icon }))
-      : this.fallbackHourly;
+    return live ? live.map((s) => ({ h: s.label, t: s.temp, icon: s.icon })) : this.fallbackHourly;
   }
 
   get daily(): DaySample[] {

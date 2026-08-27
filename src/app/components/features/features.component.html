@@ -1,27 +1,20 @@
 <section class="features section" id="features">
   <div class="shell">
     <header class="features__head">
-      <p class="eyebrow" appReveal="fade">Everything else</p>
+      <p class="eyebrow" appReveal="fade">{{ copy().eyebrow }}</p>
       <h2 class="section-title" appReveal="up" [revealDelay]="60">
-        Built for the way<br />
-        <span class="grad-viole">a real week goes.</span>
+        {{ copy().title[0] }}<br />
+        <span class="grad-viole">{{ copy().title[1] }}</span>
       </h2>
-      <p class="section-lead" appReveal="up" [revealDelay]="130">
-        Three accounts, one grid, and a set of gestures that behave the way your
-        hands expect them to.
-      </p>
+      <p class="section-lead" appReveal="up" [revealDelay]="130">{{ copy().lead }}</p>
     </header>
 
     <div class="bento">
       <!-- ============================================ unified sources -->
       <article class="card bento__tile bento__tile--wide" appReveal="zoom" appTilt [tiltMax]="5">
         <div class="tile__text">
-          <h3>Three accounts. One grid.</h3>
-          <p>
-            iCloud, Google Calendar and Microsoft Outlook, synced two ways and
-            colour-coded in a single view. Toggle any calendar off when you don’t
-            want to see it — the rest keeps working.
-          </p>
+          <h3>{{ copy().unified.title }}</h3>
+          <p>{{ copy().unified.body }}</p>
         </div>
 
         <!-- Orbiting sources -->
@@ -32,7 +25,7 @@
 
           <img class="orbit__core" src="icons/mark-128.webp" alt="" />
 
-          @for (s of sources; track s.id; let i = $index) {
+          @for (s of sources(); track s.id; let i = $index) {
             <span class="orbit__node" [attr.data-src]="s.id" [style.--i]="i">
               <span class="orbit__chip">
                 <b>{{ s.name }}</b>
@@ -46,11 +39,8 @@
       <!-- ============================================ gestures -->
       <article class="card bento__tile bento__tile--tall" appReveal="zoom" appTilt [tiltMax]="6">
         <div class="tile__text">
-          <h3>Drag it. Stretch it. Done.</h3>
-          <p>
-            Grab an event and slide it to a new time or a different day. Pull its top
-            or bottom edge to change how long it runs. No modal, no save button.
-          </p>
+          <h3>{{ copy().gestures.title }}</h3>
+          <p>{{ copy().gestures.body }}</p>
         </div>
 
         <!-- A tiny, looping demonstration of the gesture -->
@@ -78,7 +68,7 @@
       </article>
 
       <!-- ============================================ small tiles -->
-      @for (t of smallTiles; track t.id) {
+      @for (t of smallTiles(); track t.title) {
         <article
           class="card bento__tile bento__tile--sm"
           appReveal="zoom"

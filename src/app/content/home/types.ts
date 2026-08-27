@@ -73,6 +73,10 @@ export interface HomeCopy {
     readonly freeToStart: string;
     readonly scroll: string;
     readonly ratingLabel: string;
+    /** Alt text for the three phones in the hero. */
+    readonly altMonth: string;
+    readonly altDay: string;
+    readonly altWeather: string;
   };
 
   /** The scrolling capability strip under the hero. */
@@ -90,6 +94,11 @@ export interface HomeCopy {
     readonly searchPlaceholder: string;
     readonly searching: string;
     readonly alt: string;
+    /** Shown when the live fetch fails and the sample data stands in. */
+    readonly unavailable: string;
+    /** "Live from Open-Meteo, as of {t}." — {t} is the observation time. */
+    readonly liveFrom: string;
+    readonly tapAnHour: string;
     readonly readings: {
       readonly feelsLike: string;
       readonly precipitation: string;
@@ -119,6 +128,7 @@ export interface HomeCopy {
     readonly mostPopular: string;
     /** "Everything in {tier}, plus:" — {tier} is substituted. */
     readonly everythingIn: string;
+    readonly forever: string;
     readonly perMonth: string;
     readonly perYear: string;
     readonly downloadFree: string;
@@ -144,6 +154,7 @@ export interface HomeCopy {
     readonly fromRatings: string;
     readonly download: string;
     readonly requiresIos: string;
+    readonly alt: string;
   };
 
   readonly footer: {

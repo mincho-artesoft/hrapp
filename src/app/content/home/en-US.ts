@@ -34,6 +34,9 @@ export const HOME_EN_US: HomeCopy = {
     freeToStart: 'Free to start — no account needed',
     scroll: 'Scroll',
     ratingLabel: '{r} out of 5 from {n} App Store ratings',
+    altMonth: 'Cloud Calendars month view with event indicators on every day',
+    altDay: 'Cloud Calendars day view showing an hourly grid with weather beside each hour',
+    altWeather: 'Cloud Calendars weather hub with hourly and ten-day forecast',
   },
 
   marquee: [
@@ -123,6 +126,9 @@ export const HOME_EN_US: HomeCopy = {
     searchPlaceholder: 'Try another city — anywhere',
     searching: 'Searching…',
     alt: 'Weather hub showing current temperature, hourly graph and ten-day forecast',
+    unavailable: 'Live forecast unavailable right now — showing sample data.',
+    liveFrom: 'Live from Open-Meteo, as of {t}.',
+    tapAnHour: 'In the app, tap an hour to drop an event straight onto it.',
     readings: {
       feelsLike: 'Two degrees below actual — the wind is doing it.',
       precipitation: 'A band moving through between 4 and 7pm.',
@@ -175,8 +181,9 @@ export const HOME_EN_US: HomeCopy = {
     billingPeriod: 'Billing period',
     mostPopular: 'Most popular',
     everythingIn: 'Everything in {tier}, plus:',
-    perMonth: '/mo',
-    perYear: '/yr',
+    forever: 'forever',
+    perMonth: '/ month',
+    perYear: '/ year',
     downloadFree: 'Download free',
     startWith: 'Start with {tier}',
     note: 'Subscriptions renew automatically and are billed through your Apple ID. Cancel any time in your App Store account settings, at least 24 hours before the period ends.',
@@ -263,6 +270,7 @@ export const HOME_EN_US: HomeCopy = {
     fromRatings: 'from {n} ratings',
     download: 'download',
     requiresIos: 'requires iOS {v}',
+    alt: 'Cloud Calendars week view with weather in every day header',
   },
 
   footer: {

@@ -1,18 +1,17 @@
 <section class="faq section" id="faq">
   <div class="shell faq__inner">
     <header class="faq__head">
-      <p class="eyebrow" appReveal="fade">Questions</p>
+      <p class="eyebrow" appReveal="fade">{{ copy().eyebrow }}</p>
       <h2 class="section-title" appReveal="up" [revealDelay]="60">
-        The things people<br />ask first.
+        {{ copy().title[0] }}<br />{{ copy().title[1] }}
       </h2>
-      <p class="section-lead" appReveal="up" [revealDelay]="130">
-        Still stuck? Everything about data handling is written out in the
-        <a href="/privacy-policy">privacy policy</a>.
-      </p>
+      <!-- prettier-ignore -->
+      <p class="section-lead" appReveal="up" [revealDelay]="130">{{ leadBefore() }}<a
+        [href]="privacyHref()">{{ copy().privacyLink }}</a>{{ leadAfter() }}</p>
     </header>
 
     <div class="faq__list" appReveal="up">
-      @for (item of items; track item.q; let i = $index) {
+      @for (item of items(); track item.q; let i = $index) {
         <div class="qa" [class.is-open]="open() === i">
           <h3>
             <button

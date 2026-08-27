@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import { RevealDirective } from '../../core/reveal.directive';
 import { TiltDirective } from '../../core/tilt.directive';
 
@@ -12,37 +13,19 @@ import { TiltDirective } from '../../core/tilt.directive';
   styleUrl: './features.component.scss',
 })
 export class FeaturesComponent {
-  /** Sources shown orbiting in the "one place" tile. */
-  readonly sources = [
-    { id: 'icloud', name: 'iCloud', note: 'Two-way' },
-    { id: 'google', name: 'Google', note: 'Two-way' },
-    { id: 'microsoft', name: 'Microsoft', note: 'Premium' },
-  ];
+  private readonly active = inject(ActiveLocaleService);
+  readonly copy = computed(() => this.active.copy().features);
 
-  readonly smallTiles = [
-    {
-      id: 'links',
-      title: 'Meeting links, generated for you',
-      body:
-        'Create an event on a Google calendar and a Meet link is attached. Create one ' +
-        'on Microsoft and you get a Teams link. Nobody has to paste anything.',
-      badge: 'Meet · Teams',
-    },
-    {
-      id: 'forecast',
-      title: 'Turn a forecast into a plan',
-      body:
-        'Tap any hour in the weather hub and a new event opens, already set to that ' +
-        'time. Find the dry window, then book it.',
-      badge: 'One tap',
-    },
-    {
-      id: 'privacy',
-      title: 'Your calendar stays yours',
-      body:
-        'Events are read through Apple, Google and Microsoft’s own APIs and rendered ' +
-        'on device. Nothing is sold, and there is no account to create.',
-      badge: 'No account',
-    },
-  ];
+  /** Sources shown orbiting in the "one place" tile. The names are brands and
+   *  stay as they are; only the note beside each one is translated. */
+  readonly sources = computed(() => {
+    const n = this.copy().sourceNotes;
+    return [
+      { id: 'icloud', name: 'iCloud', note: n.twoWay },
+      { id: 'google', name: 'Google', note: n.twoWay },
+      { id: 'microsoft', name: 'Microsoft', note: n.premium },
+    ];
+  });
+
+  readonly smallTiles = computed(() => this.copy().tiles);
 }

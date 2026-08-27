@@ -1,16 +1,12 @@
 <section class="weather section" id="weather" #root>
   <div class="shell">
     <header class="weather__head">
-      <p class="eyebrow" appReveal="fade">Weather hub</p>
+      <p class="eyebrow" appReveal="fade">{{ copy().eyebrow }}</p>
       <h2 class="section-title" appReveal="up" [revealDelay]="60">
-        A weather station,<br />
-        <span class="grad-warm">parked in your calendar.</span>
+        {{ copy().title[0] }}<br />
+        <span class="grad-warm">{{ copy().title[1] }}</span>
       </h2>
-      <p class="section-lead" appReveal="up" [revealDelay]="130">
-        Temperature, feels-like, precipitation, UV, wind, humidity, visibility and
-        pressure — each one a scrubable hourly chart. Tap any hour in the forecast
-        and the app opens a new event already set to that time.
-      </p>
+      <p class="section-lead" appReveal="up" [revealDelay]="130">{{ copy().lead }}</p>
     </header>
 
     <div class="weather__body">
@@ -20,7 +16,7 @@
           <app-device-frame
             size="lg"
             src="assets/images/app-screenshots/weather-view-1.webp"
-            alt="Weather hub showing current temperature, hourly graph and ten-day forecast"
+            [alt]="copy().alt"
           />
         </div>
       </div>
@@ -41,7 +37,7 @@
           <div class="panelbar">
             <div class="finder">
             <label class="finder__field">
-              <span class="sr-only">Search for a city</span>
+              <span class="sr-only">{{ copy().searchLabel }}</span>
               <svg class="finder__icon" viewBox="0 0 20 20" aria-hidden="true">
                 <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.8" />
                 <path d="M13.5 13.5 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -49,7 +45,7 @@
               <input
                 type="search"
                 class="finder__input"
-                placeholder="Try another city — anywhere"
+                [placeholder]="copy().searchPlaceholder"
                 autocomplete="off"
                 spellcheck="false"
                 role="combobox"
@@ -155,12 +151,11 @@
           <p class="hourly__hint">
             <span aria-hidden="true">↳</span>
             @if (offline()) {
-              Live forecast unavailable right now — showing sample data.
+              {{ copy().unavailable }}
             } @else if (snapshot()) {
-              Live from Open-Meteo, as of {{ snapshot()!.observedAt }}. In the app,
-              tap an hour to drop an event straight onto it.
+              {{ liveFrom() }} {{ copy().tapAnHour }}
             } @else {
-              Tap an hour to drop an event straight onto it.
+              {{ copy().tapAnHour }}
             }
           </p>
         </div>

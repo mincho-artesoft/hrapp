@@ -5,13 +5,16 @@ import {
   ElementRef,
   OnDestroy,
   ViewChild,
+  computed,
   inject,
 } from '@angular/core';
 
 import { WebglBackdropComponent } from '../webgl-backdrop/webgl-backdrop.component';
 import { DeviceFrameComponent } from '../device-frame/device-frame.component';
 import { RevealDirective } from '../../core/reveal.directive';
+import { ActiveLocaleService } from '../../core/active-locale.service';
 import { ScrollService } from '../../core/scroll.service';
+import { storeCta } from '../../core/store-cta';
 import { isBrowser, prefersReducedMotion } from '../../core/motion';
 import { APP_STORE_URL, APP_VERSION, APP_RATING_COUNT, APP_RATING } from '../../core/app-facts';
 
@@ -51,12 +54,22 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   readonly rating = APP_RATING;
   readonly ratingCount = APP_RATING_COUNT;
 
-  /** Split into lines and words so each can be animated independently. */
-  readonly titleLines: TitleLine[] = [
-    line('Your calendar.'),
-    line('Your sky.', true),
-    line('One view.'),
-  ];
+  private readonly active = inject(ActiveLocaleService);
+  readonly copy = computed(() => this.active.copy().hero);
+  readonly appStore = this.active.storeHref;
+  readonly storeCta = computed(() => storeCta(this.active.locale().code));
+  readonly badge = computed(() => this.copy().badge.replace('{v}', APP_VERSION));
+  readonly ratingLabel = computed(() =>
+    this.copy()
+      .ratingLabel.replace('{r}', String(APP_RATING))
+      .replace('{n}', String(APP_RATING_COUNT)),
+  );
+
+  /** Split into lines and words so each can be animated independently. The
+   *  middle line is the accented one in every language. */
+  readonly titleLines = computed<TitleLine[]>(() =>
+    this.copy().title.map((text, i) => line(text, i === 1)),
+  );
 
   /**
    * The device cluster leans toward the pointer.
@@ -69,7 +82,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     const el = this.stageRef?.nativeElement;
     if (!el || !this.browser || prefersReducedMotion()) return;
 
-    this.observer = new IntersectionObserver(([e]) => { this.visible = e.isIntersecting; });
+    this.observer = new IntersectionObserver(([e]) => {
+      this.visible = e.isIntersecting;
+    });
     this.observer.observe(el);
 
     let lastX = 0;

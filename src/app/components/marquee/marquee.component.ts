@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+
+import { ActiveLocaleService } from '../../core/active-locale.service';
 
 /**
  * A slow ticker of what the app does.
@@ -16,7 +18,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div class="marquee__track">
         @for (pass of [0, 1]; track pass) {
           <ul class="marquee__list">
-            @for (item of items; track item) {
+            @for (item of items(); track item) {
               <li>
                 <span class="marquee__dot"></span>
                 {{ item }}
@@ -27,28 +29,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
     </div>
     <p class="sr-only">
-      Cloud Calendars supports iCloud, Google Calendar and Microsoft sync, day,
-      week, month, year and list views, hourly weather, Home Screen widgets,
-      Live Activities, Google Meet and Microsoft Teams links.
+      Cloud Calendars supports iCloud, Google Calendar and Microsoft sync, day, week, month, year
+      and list views, hourly weather, Home Screen widgets, Live Activities, Google Meet and
+      Microsoft Teams links.
     </p>
   `,
   styleUrl: './marquee.component.scss',
 })
 export class MarqueeComponent {
-  readonly items = [
-    'iCloud sync',
-    'Google Calendar',
-    'Microsoft Outlook',
-    'Hourly forecasts',
-    'Home Screen widgets',
-    'Live Activities',
-    'Google Meet links',
-    'Microsoft Teams links',
-    'Day · Week · Month · Year',
-    'Drag to reschedule',
-    'Moon phase',
-    'UV index',
-    'Wind & gusts',
-    'No account required',
-  ];
+  private readonly active = inject(ActiveLocaleService);
+  readonly items = computed(() => this.active.copy().marquee);
 }
