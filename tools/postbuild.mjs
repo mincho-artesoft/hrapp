@@ -15,6 +15,7 @@
  * Run after `ng build`; see the "build" script in package.json.
  */
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { join, relative, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -100,7 +101,7 @@ writeFileSync(
 
   Each entry is a canonical URL. Its xhtml:link alternates are copied out of
   the page's own <head>, so a language appears here only where it is published
-  -- four articles carry all 29 languages, twelve carry five, and the rest are
+  — four articles carry all 29 languages, twelve carry five, and the rest are
   English only. Claiming otherwise would send crawlers to pages that do not
   exist.
 -->
@@ -110,6 +111,36 @@ ${body}
 </urlset>
 `,
 );
+
+// A sitemap that does not parse is worth nothing, and nothing else in the build
+// would notice: it is served with the right content type, at status 200, and
+// looks perfectly fine to curl. Search Console reports it as "Sitemap is HTML"
+// with zero pages discovered, which points nowhere near the real cause. This
+// exists because a literal "--" in the XML comment above — an ordinary dash in
+// English prose — silently invalidated every sitemap this generator produced.
+{
+  const xml = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
+
+  // XML forbids "--" anywhere inside a comment, including in prose.
+  for (const [, body] of xml.matchAll(/<!--([\s\S]*?)-->/g)) {
+    if (body.includes('--')) {
+      console.error('postbuild: the sitemap comment contains "--", which XML forbids');
+      process.exit(1);
+    }
+  }
+
+  // And let a real parser have the last word where one is installed. xmllint
+  // ships with macOS and most Linux images; where it is missing we still have
+  // the check above, so skip rather than fail.
+  const probe = spawnSync('xmllint', ['--noout', '-'], { input: xml, encoding: 'utf8' });
+  if (probe.error?.code === 'ENOENT') {
+    console.warn('postbuild: xmllint not found, sitemap checked for comment syntax only');
+  } else if (probe.status !== 0) {
+    console.error('postbuild: sitemap is not well-formed XML');
+    console.error(probe.stderr.trim().split('\n').slice(0, 4).join('\n'));
+    process.exit(1);
+  }
+}
 
 // llms.txt: the same list in the form a language model can read cheaply.
 // An article URL has a slug after /articles/. The hubs end there, so matching
