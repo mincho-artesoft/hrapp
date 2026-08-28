@@ -5,6 +5,14 @@
 #   ./scripts/fetch-crawler-logs.sh
 #   node ai-visibility/crawler-log.mjs .crawler-logs/cloudfront --days=30
 #
+# This reads logs; it does not cause them to exist. Access logging is a setting
+# on the distribution, and it can be switched off without anything here saying
+# so -- which is what happened between 2026-07-30 and 2026-08-28. The month in
+# which the site grew from four pages to 245 therefore has no record of who
+# crawled it. The check below refuses to analyse a bucket that cannot be
+# receiving anything, because "no crawlers" and "no data" look identical in a
+# report and mean opposite things.
+#
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -27,6 +35,18 @@ done
 
 AWS_BIN="${AWS_BIN:-$(command -v aws || true)}"
 [[ -n "$AWS_BIN" ]] || die "AWS CLI not found."
+
+# Logging off means an empty bucket, and an empty bucket means an analysis that
+# reports "no crawlers" when the truth is "no data". Refuse to be that.
+if [[ -n "${CLOUDFRONT_DISTRIBUTION_ID:-}" ]]; then
+  enabled=$(AWS_ACCESS_KEY_ID="$NG_DEPLOY_AWS_ACCESS_KEY_ID" \
+            AWS_SECRET_ACCESS_KEY="$NG_DEPLOY_AWS_SECRET_ACCESS_KEY" \
+            AWS_DEFAULT_REGION="$NG_DEPLOY_AWS_REGION" \
+            "$AWS_BIN" cloudfront get-distribution-config \
+              --id "$CLOUDFRONT_DISTRIBUTION_ID" \
+              --query 'DistributionConfig.Logging.Enabled' --output text 2>/dev/null || echo unknown)
+  [[ "$enabled" == "True" ]] || die "Access logging is $enabled on $CLOUDFRONT_DISTRIBUTION_ID. Turn it on before trusting any analysis of this bucket."
+fi
 
 prefix="${CRAWLER_LOG_PREFIX:-cloudfront/}"
 prefix="${prefix#/}"
