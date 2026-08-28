@@ -53,6 +53,14 @@ function decodeXml(value) {
 }
 
 function parseSitemap(xml) {
+  // Check the comments before discarding them. Stripping them first is what let
+  // an unparseable sitemap pass this check for weeks: XML forbids "--" inside a
+  // comment, the generator's header prose contained one, and the only construct
+  // that made the file invalid was the first thing thrown away here.
+  for (const [, body] of xml.matchAll(/<!--([\s\S]*?)-->/g)) {
+    assert(!body.includes('--'), 'sitemap.xml has "--" inside a comment, which XML forbids');
+  }
+
   const clean = xml
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/<\?[\s\S]*?\?>/g, '')
