@@ -792,3 +792,31 @@
 "Sample shared event" = "Voorbeeld van gedeelde activiteit";
 "Sofia" = "Sofia";
 "Team lunch" = "Teamlunch";
+
+/* Booking */
+"Booking page" = "Boekingspagina";
+"Your name" = "Je naam";
+"Display name" = "Weergavenaam";
+"Source calendar" = "Bronagenda";
+"Booked meetings land here, and your busy times here block new bookings." = "Geboekte afspraken komen hier terecht, en je bezette tijden hier blokkeren nieuwe boekingen.";
+"Meeting types" = "Soorten afspraken";
+"%lld min" = "%lld min";
+"Add meeting type" = "Soort afspraak toevoegen";
+"Weekly hours" = "Wekelijkse uren";
+"Save booking page" = "Boekingspagina opslaan";
+"Your booking page is live" = "Je boekingspagina staat live";
+"Share this link — anyone can book one of your open times." = "Deel deze link — iedereen kan een van je vrije tijden boeken.";
+"Share link" = "Link delen";
+"Edit settings" = "Instellingen bewerken";
+"Add at least one meeting type." = "Voeg minstens één soort afspraak toe.";
+"Turn on at least one day with valid hours." = "Schakel minstens één dag met geldige uren in.";
+"Set up a booking page" = "Een boekingspagina instellen";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Laat mensen je vrije tijden boeken. Afspraken komen terecht in de agenda die je kiest, en je bezette tijden houden die tijdslots vrij.";
+"Approve on this device" = "Goedkeuren op dit apparaat";
+"Set up web booking" = "Webboeking instellen";
+"You're all set" = "Je bent helemaal klaar";
+"Couldn't approve" = "Goedkeuren mislukt";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Keur het koppelen van deze browser aan je agenda goed, zodat je op het web een boekingspagina kunt maken — gratis, omdat je de app hebt.";
+"Linking…" = "Koppelen…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Ga terug naar je browser — die is klaar om het instellen van je boekingspagina af te ronden.";
+"The code may have expired. Reopen the QR on the web and try again." = "De code is mogelijk verlopen. Open de QR-code opnieuw op het web en probeer het nog eens.";

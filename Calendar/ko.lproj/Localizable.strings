@@ -792,3 +792,31 @@
 "Sample shared event" = "공유된 이벤트 예시";
 "Sofia" = "소피아";
 "Team lunch" = "팀 점심";
+
+/* Booking */
+"Booking page" = "예약 페이지";
+"Your name" = "이름";
+"Display name" = "표시 이름";
+"Source calendar" = "사용할 캘린더";
+"Booked meetings land here, and your busy times here block new bookings." = "예약된 미팅은 여기에 추가되고, 여기의 바쁜 시간은 새 예약을 차단합니다.";
+"Meeting types" = "미팅 유형";
+"%lld min" = "%lld분";
+"Add meeting type" = "미팅 유형 추가";
+"Weekly hours" = "주간 예약 가능 시간";
+"Save booking page" = "예약 페이지 저장";
+"Your booking page is live" = "예약 페이지가 활성화되었습니다";
+"Share this link — anyone can book one of your open times." = "이 링크를 공유하면 누구나 비어 있는 시간에 예약할 수 있습니다.";
+"Share link" = "링크 공유";
+"Edit settings" = "설정 편집";
+"Add at least one meeting type." = "미팅 유형을 하나 이상 추가하세요.";
+"Turn on at least one day with valid hours." = "유효한 시간으로 하루 이상을 켜세요.";
+"Set up a booking page" = "예약 페이지 설정";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "다른 사람이 비어 있는 시간을 예약할 수 있습니다. 미팅은 선택한 캘린더에 추가되고, 바쁜 시간은 해당 시간대를 비워 둡니다.";
+"Approve on this device" = "이 기기에서 승인";
+"Set up web booking" = "웹 예약 설정";
+"You're all set" = "모두 완료되었습니다";
+"Couldn't approve" = "승인할 수 없습니다";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "이 브라우저를 캘린더에 연결하도록 승인하면 웹에서 예약 페이지를 만들 수 있습니다. 앱이 있으므로 무료입니다.";
+"Linking…" = "연결 중…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "브라우저로 돌아가세요. 예약 페이지 설정을 마칠 준비가 되었습니다.";
+"The code may have expired. Reopen the QR on the web and try again." = "코드가 만료되었을 수 있습니다. 웹에서 QR을 다시 열고 다시 시도하세요.";

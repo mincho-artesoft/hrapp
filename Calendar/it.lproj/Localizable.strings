@@ -788,3 +788,31 @@
 "Sample shared event" = "Esempio di evento condiviso";
 "Sofia" = "Sofia";
 "Team lunch" = "Pranzo di team";
+
+/* Booking */
+"Booking page" = "Pagina di prenotazione";
+"Your name" = "Il tuo nome";
+"Display name" = "Nome visualizzato";
+"Source calendar" = "Calendario di origine";
+"Booked meetings land here, and your busy times here block new bookings." = "Le riunioni prenotate finiscono qui, e i tuoi impegni qui bloccano le nuove prenotazioni.";
+"Meeting types" = "Tipi di riunione";
+"%lld min" = "%lld min";
+"Add meeting type" = "Aggiungi tipo di riunione";
+"Weekly hours" = "Orari settimanali";
+"Save booking page" = "Salva pagina di prenotazione";
+"Your booking page is live" = "La tua pagina di prenotazione è attiva";
+"Share this link — anyone can book one of your open times." = "Condividi questo link — chiunque può prenotare uno dei tuoi orari liberi.";
+"Share link" = "Condividi link";
+"Edit settings" = "Modifica impostazioni";
+"Add at least one meeting type." = "Aggiungi almeno un tipo di riunione.";
+"Turn on at least one day with valid hours." = "Attiva almeno un giorno con orari validi.";
+"Set up a booking page" = "Crea una pagina di prenotazione";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Consenti agli altri di prenotare i tuoi orari liberi. Le riunioni finiscono sul calendario che scegli, e i tuoi impegni mantengono liberi quegli spazi.";
+"Approve on this device" = "Approva su questo dispositivo";
+"Set up web booking" = "Configura la prenotazione web";
+"You're all set" = "È tutto pronto";
+"Couldn't approve" = "Impossibile approvare";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Approva il collegamento di questo browser al tuo calendario per creare una pagina di prenotazione sul web — gratis, perché hai l’app.";
+"Linking…" = "Collegamento in corso…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Torna al browser — è pronto per completare la configurazione della tua pagina di prenotazione.";
+"The code may have expired. Reopen the QR on the web and try again." = "Il codice potrebbe essere scaduto. Riapri il QR sul web e riprova.";

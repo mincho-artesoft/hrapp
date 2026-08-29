@@ -796,3 +796,31 @@
 "Sample shared event" = "Sample shared event";
 "Sofia" = "Sofia";
 "Team lunch" = "Team lunch";
+
+/* Booking */
+"Booking page" = "Booking page";
+"Your name" = "Your name";
+"Display name" = "Display name";
+"Source calendar" = "Source calendar";
+"Booked meetings land here, and your busy times here block new bookings." = "Booked meetings land here, and your busy times here block new bookings.";
+"Meeting types" = "Meeting types";
+"%lld min" = "%lld min";
+"Add meeting type" = "Add meeting type";
+"Weekly hours" = "Weekly hours";
+"Save booking page" = "Save booking page";
+"Your booking page is live" = "Your booking page is live";
+"Share this link — anyone can book one of your open times." = "Share this link — anyone can book one of your open times.";
+"Share link" = "Share link";
+"Edit settings" = "Edit settings";
+"Add at least one meeting type." = "Add at least one meeting type.";
+"Turn on at least one day with valid hours." = "Turn on at least one day with valid hours.";
+"Set up a booking page" = "Set up a booking page";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free.";
+"Approve on this device" = "Approve on this device";
+"Set up web booking" = "Set up web booking";
+"You're all set" = "You're all set";
+"Couldn't approve" = "Couldn't approve";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app.";
+"Linking…" = "Linking…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Head back to your browser — it's ready to finish setting up your booking page.";
+"The code may have expired. Reopen the QR on the web and try again." = "The code may have expired. Reopen the QR on the web and try again.";

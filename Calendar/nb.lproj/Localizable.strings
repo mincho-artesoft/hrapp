@@ -792,3 +792,31 @@
 "Sample shared event" = "Eksempel på delt hendelse";
 "Sofia" = "Sofia";
 "Team lunch" = "Teamlunsj";
+
+/* Booking */
+"Booking page" = "Bookingside";
+"Your name" = "Navnet ditt";
+"Display name" = "Visningsnavn";
+"Source calendar" = "Kildekalender";
+"Booked meetings land here, and your busy times here block new bookings." = "Bookede møter havner her, og de opptatte tidene dine her blokkerer nye bookinger.";
+"Meeting types" = "Møtetyper";
+"%lld min" = "%lld min";
+"Add meeting type" = "Legg til møtetype";
+"Weekly hours" = "Ukentlige tider";
+"Save booking page" = "Lagre bookingside";
+"Your booking page is live" = "Bookingsiden din er live";
+"Share this link — anyone can book one of your open times." = "Del denne lenken — hvem som helst kan booke en av de ledige tidene dine.";
+"Share link" = "Del lenke";
+"Edit settings" = "Rediger innstillinger";
+"Add at least one meeting type." = "Legg til minst én møtetype.";
+"Turn on at least one day with valid hours." = "Slå på minst én dag med gyldige tider.";
+"Set up a booking page" = "Sett opp en bookingside";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "La folk booke de ledige tidene dine. Møter havner i kalenderen du velger, og de opptatte tidene dine holder de tidene ledige.";
+"Approve on this device" = "Godkjenn på denne enheten";
+"Set up web booking" = "Sett opp nettbooking";
+"You're all set" = "Alt er klart";
+"Couldn't approve" = "Kunne ikke godkjenne";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Godkjenn at denne nettleseren kobles til kalenderen din, slik at du kan lage en bookingside på nettet — gratis, fordi du har appen.";
+"Linking…" = "Kobler…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Gå tilbake til nettleseren din — den er klar til å fullføre oppsettet av bookingsiden din.";
+"The code may have expired. Reopen the QR on the web and try again." = "Koden kan ha utløpt. Åpne QR-koden på nettet på nytt, og prøv igjen.";

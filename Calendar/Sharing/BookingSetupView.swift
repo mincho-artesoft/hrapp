@@ -203,7 +203,10 @@ struct BookingSetupView: View {
         let meetingTypes = types
             .filter { !$0.name.trimmingCharacters(in: .whitespaces).isEmpty }
             .map { CloudCalendarsAPI.MeetingType(id: $0.serverID, name: $0.name.trimmingCharacters(in: .whitespaces), durationMinutes: $0.duration, location: nil, description: nil) }
-        guard !meetingTypes.isEmpty else { errorMessage = "Add at least one meeting type."; return }
+        guard !meetingTypes.isEmpty else {
+            errorMessage = NSLocalizedString("Add at least one meeting type.", comment: "Booking setup validation")
+            return
+        }
 
         let cal = Calendar.current
         let availability: [CloudCalendarsAPI.AvailabilityRule] = days.compactMap { d in
@@ -213,7 +216,10 @@ struct BookingSetupView: View {
             guard e > s else { return nil }
             return CloudCalendarsAPI.AvailabilityRule(day: d.weekday, start: s, end: e)
         }
-        guard !availability.isEmpty else { errorMessage = "Turn on at least one day with valid hours."; return }
+        guard !availability.isEmpty else {
+            errorMessage = NSLocalizedString("Turn on at least one day with valid hours.", comment: "Booking setup validation")
+            return
+        }
 
         phase = .saving
         do {

@@ -166,22 +166,22 @@ struct BookingPairingView: View {
 
     private var title: String {
         switch phase {
-        case .confirm, .working: return "Set up web booking"
-        case .done: return "You're all set"
-        case .failed: return "Couldn't approve"
+        case .confirm, .working: return NSLocalizedString("Set up web booking", comment: "Pairing sheet title")
+        case .done: return NSLocalizedString("You're all set", comment: "Pairing sheet title")
+        case .failed: return NSLocalizedString("Couldn't approve", comment: "Pairing sheet title")
         }
     }
 
     private var subtitle: String {
         switch phase {
         case .confirm:
-            return "Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app."
+            return NSLocalizedString("Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app.", comment: "Pairing sheet body")
         case .working:
-            return "Linking…"
+            return NSLocalizedString("Linking…", comment: "Pairing sheet body")
         case .done:
-            return "Head back to your browser — it's ready to finish setting up your booking page."
+            return NSLocalizedString("Head back to your browser — it's ready to finish setting up your booking page.", comment: "Pairing sheet body")
         case .failed:
-            return "The code may have expired. Reopen the QR on the web and try again."
+            return NSLocalizedString("The code may have expired. Reopen the QR on the web and try again.", comment: "Pairing sheet body")
         }
     }
 }

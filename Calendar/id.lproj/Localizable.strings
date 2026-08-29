@@ -792,3 +792,31 @@
 "Sample shared event" = "Contoh acara yang dibagikan";
 "Sofia" = "Sofia";
 "Team lunch" = "Makan siang tim";
+
+/* Booking */
+"Booking page" = "Halaman pemesanan";
+"Your name" = "Nama Anda";
+"Display name" = "Nama tampilan";
+"Source calendar" = "Kalender sumber";
+"Booked meetings land here, and your busy times here block new bookings." = "Rapat yang dipesan masuk ke sini, dan waktu sibuk Anda di sini memblokir pemesanan baru.";
+"Meeting types" = "Jenis rapat";
+"%lld min" = "%lld mnt";
+"Add meeting type" = "Tambahkan jenis rapat";
+"Weekly hours" = "Jam mingguan";
+"Save booking page" = "Simpan halaman pemesanan";
+"Your booking page is live" = "Halaman pemesanan Anda aktif";
+"Share this link — anyone can book one of your open times." = "Bagikan tautan ini — siapa pun dapat memesan salah satu waktu luang Anda.";
+"Share link" = "Bagikan tautan";
+"Edit settings" = "Edit pengaturan";
+"Add at least one meeting type." = "Tambahkan setidaknya satu jenis rapat.";
+"Turn on at least one day with valid hours." = "Aktifkan setidaknya satu hari dengan jam yang valid.";
+"Set up a booking page" = "Siapkan halaman pemesanan";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Biarkan orang memesan waktu luang Anda. Rapat masuk ke kalender yang Anda pilih, dan waktu sibuk Anda menjaga slot tersebut tetap kosong.";
+"Approve on this device" = "Setujui di perangkat ini";
+"Set up web booking" = "Siapkan pemesanan web";
+"You're all set" = "Semua sudah siap";
+"Couldn't approve" = "Tidak dapat menyetujui";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Setujui penautan browser ini ke kalender Anda agar Anda dapat membuat halaman pemesanan di web — gratis, karena Anda memiliki aplikasinya.";
+"Linking…" = "Menautkan…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Kembali ke browser Anda — sudah siap untuk menyelesaikan penyiapan halaman pemesanan Anda.";
+"The code may have expired. Reopen the QR on the web and try again." = "Kode mungkin telah kedaluwarsa. Buka kembali QR di web dan coba lagi.";

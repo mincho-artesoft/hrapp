@@ -69,13 +69,13 @@ struct CalendarsSheetView: View {
 
             // Main content
             Form {
+                bookingSection
                 iCloudSection
                 otherSection
                 notificationSection
                 googleSection
                 microsoftSection
                 addCalendarSection
-                bookingSection
                 invitesSection
                 shareCalendarsSection
                 googleSignInSection

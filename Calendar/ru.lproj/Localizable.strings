@@ -788,3 +788,31 @@
 "Sample shared event" = "Пример общего события";
 "Sofia" = "София";
 "Team lunch" = "Обед с командой";
+
+/* Booking */
+"Booking page" = "Страница бронирования";
+"Your name" = "Ваше имя";
+"Display name" = "Отображаемое имя";
+"Source calendar" = "Исходный календарь";
+"Booked meetings land here, and your busy times here block new bookings." = "Забронированные встречи попадают сюда, а ваши занятые часы здесь блокируют новые бронирования.";
+"Meeting types" = "Типы встреч";
+"%lld min" = "%lld мин";
+"Add meeting type" = "Добавить тип встречи";
+"Weekly hours" = "Часы по дням недели";
+"Save booking page" = "Сохранить страницу бронирования";
+"Your booking page is live" = "Ваша страница бронирования активна";
+"Share this link — anyone can book one of your open times." = "Поделитесь этой ссылкой — любой может забронировать одно из ваших свободных окон.";
+"Share link" = "Поделиться ссылкой";
+"Edit settings" = "Изменить настройки";
+"Add at least one meeting type." = "Добавьте хотя бы один тип встречи.";
+"Turn on at least one day with valid hours." = "Включите хотя бы один день с корректными часами.";
+"Set up a booking page" = "Настроить страницу бронирования";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Позвольте другим бронировать ваши свободные окна. Встречи попадают в выбранный вами календарь, а занятые часы защищают эти интервалы от бронирования.";
+"Approve on this device" = "Подтвердить на этом устройстве";
+"Set up web booking" = "Настроить онлайн-бронирование";
+"You're all set" = "Всё готово";
+"Couldn't approve" = "Не удалось подтвердить";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Подтвердите привязку этого браузера к вашему календарю, чтобы создать страницу бронирования в интернете — бесплатно, потому что у вас есть приложение.";
+"Linking…" = "Привязка…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Вернитесь в браузер — он готов завершить настройку вашей страницы бронирования.";
+"The code may have expired. Reopen the QR on the web and try again." = "Возможно, срок действия кода истёк. Откройте QR-код на сайте заново и попробуйте ещё раз.";

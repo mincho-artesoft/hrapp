@@ -792,3 +792,31 @@
 "Sample shared event" = "Ukázková sdílená událost";
 "Sofia" = "Sofie";
 "Team lunch" = "Týmový oběd";
+
+/* Booking */
+"Booking page" = "Rezervační stránka";
+"Your name" = "Vaše jméno";
+"Display name" = "Zobrazované jméno";
+"Source calendar" = "Zdrojový kalendář";
+"Booked meetings land here, and your busy times here block new bookings." = "Rezervované schůzky přijdou sem a vaše obsazené časy zde blokují nové rezervace.";
+"Meeting types" = "Typy schůzek";
+"%lld min" = "%lld min";
+"Add meeting type" = "Přidat typ schůzky";
+"Weekly hours" = "Hodiny v týdnu";
+"Save booking page" = "Uložit rezervační stránku";
+"Your booking page is live" = "Vaše rezervační stránka je aktivní";
+"Share this link — anyone can book one of your open times." = "Sdílejte tento odkaz — kdokoli si může zarezervovat jeden z vašich volných termínů.";
+"Share link" = "Sdílet odkaz";
+"Edit settings" = "Upravit nastavení";
+"Add at least one meeting type." = "Přidejte alespoň jeden typ schůzky.";
+"Turn on at least one day with valid hours." = "Zapněte alespoň jeden den s platnými hodinami.";
+"Set up a booking page" = "Nastavit rezervační stránku";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Nechte ostatní rezervovat vaše volné termíny. Schůzky přijdou do kalendáře, který zvolíte, a vaše obsazené časy tyto termíny chrání před rezervací.";
+"Approve on this device" = "Schválit na tomto zařízení";
+"Set up web booking" = "Nastavit rezervace na webu";
+"You're all set" = "Vše je připraveno";
+"Couldn't approve" = "Schválení se nezdařilo";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Schvalte propojení tohoto prohlížeče s vaším kalendářem, abyste mohli vytvořit rezervační stránku na webu — zdarma, protože máte aplikaci.";
+"Linking…" = "Propojování…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Vraťte se do prohlížeče — je připraven dokončit nastavení vaší rezervační stránky.";
+"The code may have expired. Reopen the QR on the web and try again." = "Kód mohl vypršet. Znovu otevřete QR na webu a zkuste to znovu.";

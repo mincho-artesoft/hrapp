@@ -792,3 +792,31 @@
 "Sample shared event" = "حدث مشترك تجريبي";
 "Sofia" = "صوفيا";
 "Team lunch" = "غداء الفريق";
+
+/* Booking */
+"Booking page" = "صفحة الحجز";
+"Your name" = "اسمك";
+"Display name" = "الاسم المعروض";
+"Source calendar" = "التقويم المصدر";
+"Booked meetings land here, and your busy times here block new bookings." = "تظهر الاجتماعات المحجوزة هنا، وتمنع أوقات انشغالك هنا الحجوزات الجديدة.";
+"Meeting types" = "أنواع الاجتماعات";
+"%lld min" = "%lld دقيقة";
+"Add meeting type" = "إضافة نوع اجتماع";
+"Weekly hours" = "ساعات الأسبوع";
+"Save booking page" = "حفظ صفحة الحجز";
+"Your booking page is live" = "صفحة الحجز الخاصة بك أصبحت مباشرة";
+"Share this link — anyone can book one of your open times." = "شارك هذا الرابط — يمكن لأي شخص حجز أحد أوقاتك المتاحة.";
+"Share link" = "مشاركة الرابط";
+"Edit settings" = "تعديل الإعدادات";
+"Add at least one meeting type." = "أضِف نوع اجتماع واحدًا على الأقل.";
+"Turn on at least one day with valid hours." = "فعّل يومًا واحدًا على الأقل بساعات صالحة.";
+"Set up a booking page" = "إعداد صفحة حجز";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "دع الآخرين يحجزون أوقاتك المتاحة. تظهر الاجتماعات في التقويم الذي تختاره، وتمنع أوقات انشغالك الحجز في تلك الفترات.";
+"Approve on this device" = "الموافقة على هذا الجهاز";
+"Set up web booking" = "إعداد الحجز عبر الويب";
+"You're all set" = "كل شيء جاهز";
+"Couldn't approve" = "تعذّرت الموافقة";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "وافق على ربط هذا المتصفح بتقويمك حتى تتمكن من إنشاء صفحة حجز على الويب — مجانًا، لأنك تمتلك التطبيق.";
+"Linking…" = "جارٍ الربط…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "عُد إلى متصفحك — إنه جاهز لإكمال إعداد صفحة الحجز الخاصة بك.";
+"The code may have expired. Reopen the QR on the web and try again." = "ربما انتهت صلاحية الرمز. أعد فتح رمز QR على الويب وحاول مرة أخرى.";

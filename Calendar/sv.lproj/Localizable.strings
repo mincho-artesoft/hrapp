@@ -792,3 +792,31 @@
 "Sample shared event" = "Exempel på delad händelse";
 "Sofia" = "Sofia";
 "Team lunch" = "Teamlunch";
+
+/* Booking */
+"Booking page" = "Bokningssida";
+"Your name" = "Ditt namn";
+"Display name" = "Visningsnamn";
+"Source calendar" = "Källkalender";
+"Booked meetings land here, and your busy times here block new bookings." = "Bokade möten hamnar här, och dina upptagna tider här blockerar nya bokningar.";
+"Meeting types" = "Mötestyper";
+"%lld min" = "%lld min";
+"Add meeting type" = "Lägg till mötestyp";
+"Weekly hours" = "Veckotider";
+"Save booking page" = "Spara bokningssida";
+"Your booking page is live" = "Din bokningssida är live";
+"Share this link — anyone can book one of your open times." = "Dela den här länken — vem som helst kan boka en av dina lediga tider.";
+"Share link" = "Dela länk";
+"Edit settings" = "Redigera inställningar";
+"Add at least one meeting type." = "Lägg till minst en mötestyp.";
+"Turn on at least one day with valid hours." = "Aktivera minst en dag med giltiga tider.";
+"Set up a booking page" = "Skapa en bokningssida";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Låt andra boka dina lediga tider. Möten hamnar i kalendern du väljer, och dina upptagna tider håller de tiderna lediga.";
+"Approve on this device" = "Godkänn på den här enheten";
+"Set up web booking" = "Konfigurera webbokning";
+"You're all set" = "Allt är klart";
+"Couldn't approve" = "Kunde inte godkänna";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Godkänn att den här webbläsaren länkas till din kalender så att du kan skapa en bokningssida på webben — gratis, eftersom du har appen.";
+"Linking…" = "Länkar…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Gå tillbaka till din webbläsare — den är redo att slutföra konfigurationen av din bokningssida.";
+"The code may have expired. Reopen the QR on the web and try again." = "Koden kan ha upphört att gälla. Öppna QR-koden på webben igen och försök igen.";

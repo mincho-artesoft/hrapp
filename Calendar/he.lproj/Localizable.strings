@@ -792,3 +792,31 @@
 "Sample shared event" = "אירוע משותף לדוגמה";
 "Sofia" = "סופיה";
 "Team lunch" = "ארוחת צהריים צוותית";
+
+/* Booking */
+"Booking page" = "עמוד הזמנות";
+"Your name" = "השם שלך";
+"Display name" = "שם תצוגה";
+"Source calendar" = "יומן מקור";
+"Booked meetings land here, and your busy times here block new bookings." = "פגישות שנקבעות מופיעות כאן, והזמנים התפוסים שלך כאן חוסמים הזמנות חדשות.";
+"Meeting types" = "סוגי פגישות";
+"%lld min" = "%lld דק׳";
+"Add meeting type" = "הוספת סוג פגישה";
+"Weekly hours" = "שעות שבועיות";
+"Save booking page" = "שמירת עמוד ההזמנות";
+"Your booking page is live" = "עמוד ההזמנות שלך פעיל";
+"Share this link — anyone can book one of your open times." = "שתף את הקישור הזה — כל אחד יכול להזמין אחד מהזמנים הפנויים שלך.";
+"Share link" = "שיתוף קישור";
+"Edit settings" = "עריכת הגדרות";
+"Add at least one meeting type." = "הוסף לפחות סוג פגישה אחד.";
+"Turn on at least one day with valid hours." = "הפעל לפחות יום אחד עם שעות תקינות.";
+"Set up a booking page" = "הגדרת עמוד הזמנות";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "אפשר לאנשים להזמין את הזמנים הפנויים שלך. הפגישות מופיעות ביומן שתבחר, והזמנים התפוסים שלך מונעים הזמנות בזמנים אלה.";
+"Approve on this device" = "אישור במכשיר הזה";
+"Set up web booking" = "הגדרת הזמנות באינטרנט";
+"You're all set" = "הכול מוכן";
+"Couldn't approve" = "האישור נכשל";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "אשר את קישור הדפדפן הזה ליומן שלך כדי שתוכל ליצור עמוד הזמנות באינטרנט — בחינם, כי יש לך את האפליקציה.";
+"Linking…" = "מקשר…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "חזור לדפדפן — הוא מוכן להשלים את הגדרת עמוד ההזמנות שלך.";
+"The code may have expired. Reopen the QR on the web and try again." = "ייתכן שתוקף הקוד פג. פתח מחדש את קוד ה-QR באינטרנט ונסה שוב.";

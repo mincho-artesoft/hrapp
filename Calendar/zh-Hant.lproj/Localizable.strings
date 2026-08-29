@@ -792,3 +792,31 @@
 "Sample shared event" = "共享活動範例";
 "Sofia" = "索菲亞";
 "Team lunch" = "團隊午餐";
+
+/* Booking */
+"Booking page" = "預約頁面";
+"Your name" = "你的姓名";
+"Display name" = "顯示名稱";
+"Source calendar" = "使用的行事曆";
+"Booked meetings land here, and your busy times here block new bookings." = "已預約的會議會顯示在這裡，你在此的忙碌時間會阻擋新的預約。";
+"Meeting types" = "會議類型";
+"%lld min" = "%lld 分鐘";
+"Add meeting type" = "新增會議類型";
+"Weekly hours" = "每週可預約時間";
+"Save booking page" = "儲存預約頁面";
+"Your booking page is live" = "你的預約頁面已上線";
+"Share this link — anyone can book one of your open times." = "分享此連結——任何人都可以預約你的空閒時段。";
+"Share link" = "分享連結";
+"Edit settings" = "編輯設定";
+"Add at least one meeting type." = "請至少新增一種會議類型。";
+"Turn on at least one day with valid hours." = "請至少開啟一天並設定有效時間。";
+"Set up a booking page" = "設定預約頁面";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "讓他人預約你的空閒時段。會議會加入你選擇的行事曆，你的忙碌時間會保留這些時段。";
+"Approve on this device" = "在此裝置上核准";
+"Set up web booking" = "設定網頁預約";
+"You're all set" = "全部完成";
+"Couldn't approve" = "無法核准";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "核准將此瀏覽器連結到你的行事曆，即可在網頁上建立預約頁面——因為你已安裝App，所以免費。";
+"Linking…" = "連結中…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "返回瀏覽器——它已準備好完成預約頁面的設定。";
+"The code may have expired. Reopen the QR on the web and try again." = "驗證碼可能已過期。請在網頁上重新開啟 QR 碼後再試。";

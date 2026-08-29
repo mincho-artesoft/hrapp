@@ -792,3 +792,31 @@
 "Sample shared event" = "Contoh acara dikongsi";
 "Sofia" = "Sofia";
 "Team lunch" = "Makan tengah hari pasukan";
+
+/* Booking */
+"Booking page" = "Halaman tempahan";
+"Your name" = "Nama anda";
+"Display name" = "Nama paparan";
+"Source calendar" = "Kalendar sumber";
+"Booked meetings land here, and your busy times here block new bookings." = "Mesyuarat yang ditempah masuk ke sini, dan waktu sibuk anda di sini menyekat tempahan baharu.";
+"Meeting types" = "Jenis mesyuarat";
+"%lld min" = "%lld min";
+"Add meeting type" = "Tambah jenis mesyuarat";
+"Weekly hours" = "Waktu mingguan";
+"Save booking page" = "Simpan halaman tempahan";
+"Your booking page is live" = "Halaman tempahan anda telah aktif";
+"Share this link — anyone can book one of your open times." = "Kongsi pautan ini — sesiapa sahaja boleh menempah salah satu masa lapang anda.";
+"Share link" = "Kongsi pautan";
+"Edit settings" = "Edit tetapan";
+"Add at least one meeting type." = "Tambah sekurang-kurangnya satu jenis mesyuarat.";
+"Turn on at least one day with valid hours." = "Hidupkan sekurang-kurangnya satu hari dengan waktu yang sah.";
+"Set up a booking page" = "Sediakan halaman tempahan";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Benarkan orang menempah masa lapang anda. Mesyuarat masuk ke kalendar yang anda pilih, dan waktu sibuk anda memastikan slot itu kekal kosong.";
+"Approve on this device" = "Luluskan pada peranti ini";
+"Set up web booking" = "Sediakan tempahan web";
+"You're all set" = "Anda sudah bersedia";
+"Couldn't approve" = "Tidak dapat meluluskan";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Luluskan pemautan pelayar ini ke kalendar anda supaya anda boleh mencipta halaman tempahan di web — percuma, kerana anda memiliki aplikasi ini.";
+"Linking…" = "Memaut…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Kembali ke pelayar anda — ia sudah bersedia untuk menyelesaikan penyediaan halaman tempahan anda.";
+"The code may have expired. Reopen the QR on the web and try again." = "Kod mungkin telah tamat tempoh. Buka semula QR di web dan cuba lagi.";

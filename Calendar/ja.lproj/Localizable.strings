@@ -792,3 +792,31 @@
 "Sample shared event" = "共有された予定の例";
 "Sofia" = "ソフィア";
 "Team lunch" = "チームランチ";
+
+/* Booking */
+"Booking page" = "予約ページ";
+"Your name" = "お名前";
+"Display name" = "表示名";
+"Source calendar" = "使用するカレンダー";
+"Booked meetings land here, and your busy times here block new bookings." = "予約された会議はここに追加され、ここでの予定は新しい予約をブロックします。";
+"Meeting types" = "会議の種類";
+"%lld min" = "%lld 分";
+"Add meeting type" = "会議の種類を追加";
+"Weekly hours" = "週の予約可能時間";
+"Save booking page" = "予約ページを保存";
+"Your booking page is live" = "予約ページが公開されました";
+"Share this link — anyone can book one of your open times." = "このリンクを共有すれば、誰でも空いている時間に予約できます。";
+"Share link" = "リンクを共有";
+"Edit settings" = "設定を編集";
+"Add at least one meeting type." = "会議の種類を少なくとも1つ追加してください。";
+"Turn on at least one day with valid hours." = "有効な時間帯で少なくとも1日を有効にしてください。";
+"Set up a booking page" = "予約ページを設定";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "空いている時間を予約してもらえます。会議は選んだカレンダーに追加され、予定のある時間はその枠を確保します。";
+"Approve on this device" = "このデバイスで承認";
+"Set up web booking" = "Web予約を設定";
+"You're all set" = "準備完了です";
+"Couldn't approve" = "承認できませんでした";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "このブラウザをカレンダーに連携することを承認すると、Web上で予約ページを作成できます。アプリをお持ちなので無料です。";
+"Linking…" = "連携中…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "ブラウザに戻ってください。予約ページの設定を完了する準備ができています。";
+"The code may have expired. Reopen the QR on the web and try again." = "コードの有効期限が切れた可能性があります。Web上でQRを再表示してもう一度お試しください。";

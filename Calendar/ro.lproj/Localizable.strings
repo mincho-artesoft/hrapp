@@ -792,3 +792,31 @@
 "Sample shared event" = "Exemplu de eveniment partajat";
 "Sofia" = "Sofia";
 "Team lunch" = "Prânz cu echipa";
+
+/* Booking */
+"Booking page" = "Pagină de programări";
+"Your name" = "Numele tău";
+"Display name" = "Nume afișat";
+"Source calendar" = "Calendar sursă";
+"Booked meetings land here, and your busy times here block new bookings." = "Întâlnirile programate ajung aici, iar perioadele tale ocupate de aici blochează noile programări.";
+"Meeting types" = "Tipuri de întâlnire";
+"%lld min" = "%lld min";
+"Add meeting type" = "Adaugă tip de întâlnire";
+"Weekly hours" = "Program săptămânal";
+"Save booking page" = "Salvează pagina de programări";
+"Your booking page is live" = "Pagina ta de programări este activă";
+"Share this link — anyone can book one of your open times." = "Distribuie acest link — oricine poate rezerva unul dintre intervalele tale libere.";
+"Share link" = "Distribuie linkul";
+"Edit settings" = "Editează setările";
+"Add at least one meeting type." = "Adaugă cel puțin un tip de întâlnire.";
+"Turn on at least one day with valid hours." = "Activează cel puțin o zi cu un program valid.";
+"Set up a booking page" = "Creează o pagină de programări";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Permite-le altora să rezerve intervalele tale libere. Întâlnirile ajung în calendarul pe care îl alegi, iar perioadele tale ocupate păstrează libere acele intervale.";
+"Approve on this device" = "Aprobă pe acest dispozitiv";
+"Set up web booking" = "Configurează programările online";
+"You're all set" = "Gata, totul e pregătit";
+"Couldn't approve" = "Aprobarea nu a reușit";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Aprobă asocierea acestui browser cu calendarul tău ca să poți crea o pagină de programări pe web — gratuit, pentru că ai aplicația.";
+"Linking…" = "Se asociază…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Întoarce-te în browser — este pregătit să finalizeze configurarea paginii tale de programări.";
+"The code may have expired. Reopen the QR on the web and try again." = "Este posibil ca acest cod să fi expirat. Redeschide codul QR pe web și încearcă din nou.";

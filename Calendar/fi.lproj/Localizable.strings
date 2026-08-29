@@ -792,3 +792,31 @@
 "Sample shared event" = "Esimerkki jaetusta tapahtumasta";
 "Sofia" = "Sofia";
 "Team lunch" = "Tiimin lounas";
+
+/* Booking */
+"Booking page" = "Varaussivu";
+"Your name" = "Nimesi";
+"Display name" = "Näyttönimi";
+"Source calendar" = "Lähdekalenteri";
+"Booked meetings land here, and your busy times here block new bookings." = "Varatut tapaamiset ilmestyvät tänne, ja täällä näkyvät varatut aikasi estävät uudet varaukset.";
+"Meeting types" = "Tapaamistyypit";
+"%lld min" = "%lld min";
+"Add meeting type" = "Lisää tapaamistyyppi";
+"Weekly hours" = "Viikkoajat";
+"Save booking page" = "Tallenna varaussivu";
+"Your booking page is live" = "Varaussivusi on julkaistu";
+"Share this link — anyone can book one of your open times." = "Jaa tämä linkki — kuka tahansa voi varata jonkin vapaista ajoistasi.";
+"Share link" = "Jaa linkki";
+"Edit settings" = "Muokkaa asetuksia";
+"Add at least one meeting type." = "Lisää vähintään yksi tapaamistyyppi.";
+"Turn on at least one day with valid hours." = "Ota käyttöön vähintään yksi päivä, jolla on kelvolliset ajat.";
+"Set up a booking page" = "Luo varaussivu";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Anna ihmisten varata vapaita aikojasi. Tapaamiset ilmestyvät valitsemaasi kalenteriin, ja varatut aikasi estävät varaukset niinä aikoina.";
+"Approve on this device" = "Hyväksy tällä laitteella";
+"Set up web booking" = "Määritä verkkovaraus";
+"You're all set" = "Kaikki valmista";
+"Couldn't approve" = "Hyväksyntä epäonnistui";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Hyväksy tämän selaimen yhdistäminen kalenteriisi, jotta voit luoda varaussivun verkossa — maksutta, koska sinulla on sovellus.";
+"Linking…" = "Yhdistetään…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Palaa selaimeen — se on valmis viimeistelemään varaussivusi määrityksen.";
+"The code may have expired. Reopen the QR on the web and try again." = "Koodi on saattanut vanhentua. Avaa QR uudelleen verkossa ja yritä uudelleen.";

@@ -792,3 +792,31 @@
 "Sample shared event" = "Δείγμα κοινόχρηστου συμβάντος";
 "Sofia" = "Σόφια";
 "Team lunch" = "Γεύμα ομάδας";
+
+/* Booking */
+"Booking page" = "Σελίδα κρατήσεων";
+"Your name" = "Το όνομά σας";
+"Display name" = "Εμφανιζόμενο όνομα";
+"Source calendar" = "Ημερολόγιο προέλευσης";
+"Booked meetings land here, and your busy times here block new bookings." = "Οι κλεισμένες συναντήσεις καταλήγουν εδώ, ενώ οι κατειλημμένες ώρες σας εδώ μπλοκάρουν νέες κρατήσεις.";
+"Meeting types" = "Τύποι συνάντησης";
+"%lld min" = "%lld λεπτά";
+"Add meeting type" = "Προσθήκη τύπου συνάντησης";
+"Weekly hours" = "Εβδομαδιαίες ώρες";
+"Save booking page" = "Αποθήκευση σελίδας κρατήσεων";
+"Your booking page is live" = "Η σελίδα κρατήσεών σας είναι ενεργή";
+"Share this link — anyone can book one of your open times." = "Κοινοποιήστε αυτόν τον σύνδεσμο — οποιοσδήποτε μπορεί να κλείσει μία από τις ελεύθερες ώρες σας.";
+"Share link" = "Κοινοποίηση συνδέσμου";
+"Edit settings" = "Επεξεργασία ρυθμίσεων";
+"Add at least one meeting type." = "Προσθέστε τουλάχιστον έναν τύπο συνάντησης.";
+"Turn on at least one day with valid hours." = "Ενεργοποιήστε τουλάχιστον μία ημέρα με έγκυρες ώρες.";
+"Set up a booking page" = "Ρυθμίστε μια σελίδα κρατήσεων";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Αφήστε τους άλλους να κλείνουν τις ελεύθερες ώρες σας. Οι συναντήσεις καταλήγουν στο ημερολόγιο που επιλέγετε και οι κατειλημμένες ώρες σας κρατούν αυτά τα διαστήματα ελεύθερα από κρατήσεις.";
+"Approve on this device" = "Έγκριση σε αυτή τη συσκευή";
+"Set up web booking" = "Ρύθμιση διαδικτυακών κρατήσεων";
+"You're all set" = "Είστε έτοιμοι";
+"Couldn't approve" = "Δεν ήταν δυνατή η έγκριση";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Εγκρίνετε τη σύνδεση αυτού του προγράμματος περιήγησης με το ημερολόγιό σας, για να δημιουργήσετε μια σελίδα κρατήσεων στο web — δωρεάν, επειδή έχετε την εφαρμογή.";
+"Linking…" = "Σύνδεση…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Επιστρέψτε στο πρόγραμμα περιήγησής σας — είναι έτοιμο να ολοκληρώσει τη ρύθμιση της σελίδας κρατήσεών σας.";
+"The code may have expired. Reopen the QR on the web and try again." = "Ο κωδικός μπορεί να έχει λήξει. Ανοίξτε ξανά το QR στο web και δοκιμάστε ξανά.";

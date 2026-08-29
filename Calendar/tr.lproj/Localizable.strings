@@ -792,3 +792,31 @@
 "Sample shared event" = "Örnek paylaşılan etkinlik";
 "Sofia" = "Sofya";
 "Team lunch" = "Ekip yemeği";
+
+/* Booking */
+"Booking page" = "Rezervasyon sayfası";
+"Your name" = "Adınız";
+"Display name" = "Görünen ad";
+"Source calendar" = "Kaynak takvim";
+"Booked meetings land here, and your busy times here block new bookings." = "Alınan randevular buraya düşer ve buradaki meşgul saatleriniz yeni rezervasyonları engeller.";
+"Meeting types" = "Görüşme türleri";
+"%lld min" = "%lld dk";
+"Add meeting type" = "Görüşme türü ekle";
+"Weekly hours" = "Haftalık saatler";
+"Save booking page" = "Rezervasyon sayfasını kaydet";
+"Your booking page is live" = "Rezervasyon sayfanız yayında";
+"Share this link — anyone can book one of your open times." = "Bu bağlantıyı paylaşın — herkes uygun saatlerinizden birini rezerve edebilir.";
+"Share link" = "Bağlantıyı paylaş";
+"Edit settings" = "Ayarları düzenle";
+"Add at least one meeting type." = "En az bir görüşme türü ekleyin.";
+"Turn on at least one day with valid hours." = "Geçerli saatlere sahip en az bir günü açın.";
+"Set up a booking page" = "Rezervasyon sayfası oluşturun";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "İnsanların uygun saatlerinizi rezerve etmesine izin verin. Randevular seçtiğiniz takvime düşer ve meşgul saatleriniz bu zaman dilimlerini yeni rezervasyonlara kapalı tutar.";
+"Approve on this device" = "Bu cihazda onaylayın";
+"Set up web booking" = "Web rezervasyonunu ayarlayın";
+"You're all set" = "Her şey hazır";
+"Couldn't approve" = "Onaylanamadı";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Web üzerinde bir rezervasyon sayfası oluşturabilmeniz için bu tarayıcının takviminize bağlanmasını onaylayın — uygulamaya sahip olduğunuz için ücretsiz.";
+"Linking…" = "Bağlanıyor…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Tarayıcınıza geri dönün — rezervasyon sayfanızın kurulumunu tamamlamaya hazır.";
+"The code may have expired. Reopen the QR on the web and try again." = "Kodun süresi dolmuş olabilir. Web üzerinde QR kodunu yeniden açın ve tekrar deneyin.";
