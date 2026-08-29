@@ -57,6 +57,21 @@ export interface ManageBooking {
   } | null;
 }
 
+/** One row on the "my bookings" page, resolved from a magic-link session. */
+export interface MyBooking {
+  manageToken: string;
+  manageUrl: string;
+  handle: string;
+  displayName: string;
+  timeZone: string;
+  status: string;
+  title: string;
+  start: string;
+  end: string;
+  location: string | null;
+  typeName: string | null;
+}
+
 /** One weekly opening: `day` 0–6 (Sun–Sat), `start`/`end` minutes from local midnight. */
 export interface AvailabilityRule {
   day: number;
@@ -146,6 +161,21 @@ export class BookingApiService {
   /** Cancel the booking. */
   async cancelBooking(token: string): Promise<void> {
     await this.post(`/manage/${encodeURIComponent(token)}/cancel`, {});
+  }
+
+  // ── "my bookings" (passwordless magic link) ───────────────────────────────
+
+  /** Ask for a sign-in link to be e-mailed. Always resolves; never reveals
+   *  whether the address has bookings. */
+  async login(email: string): Promise<void> {
+    await this.post('/me/login', { email });
+  }
+
+  /** Every booking the signed-in e-mail owns, across all owners. */
+  async myBookings(session: string): Promise<{ email: string; bookings: MyBooking[] }> {
+    return this.get<{ email: string; bookings: MyBooking[] }>(
+      `/me/bookings?s=${encodeURIComponent(session)}`,
+    );
   }
 
   // ── owner setup ───────────────────────────────────────────────────────────

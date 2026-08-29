@@ -176,3 +176,41 @@ export interface BookingManageCopy {
   /** Shown on the booking confirmation, linking to this page. */
   readonly manageLinkLabel: string;
 }
+
+/**
+ * The "my bookings" page (`/bookings`), where a person signs in with a magic
+ * link e-mailed to the address they booked with, and sees every meeting they
+ * have booked across every owner — no account, no password.
+ */
+export interface BookingMineCopy {
+  readonly seoTitle: string;
+  readonly seoDescription: string;
+
+  readonly eyebrow: string;
+  readonly title: string;
+  readonly lead: string;
+
+  // Sign-in
+  readonly emailLabel: string;
+  readonly emailPlaceholder: string;
+  readonly sendLink: string;
+  readonly sending: string;
+  readonly checkEmailTitle: string;
+  readonly checkEmailSub: string;
+
+  // List
+  readonly upcoming: string;
+  readonly past: string;
+  readonly noBookings: string;
+  readonly withLabel: string;
+  readonly manage: string;
+  readonly cancelledBadge: string;
+
+  // States
+  readonly expired: string;
+  readonly genericError: string;
+  readonly signOut: string;
+  readonly backHome: string;
+  /** Header/nav label linking here. */
+  readonly navLabel: string;
+}

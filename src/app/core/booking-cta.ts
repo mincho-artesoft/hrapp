@@ -44,3 +44,40 @@ export const BOOK_NAV: Readonly<Record<string, string>> = {
 export function bookNav(code: string): string {
   return BOOK_NAV[code] ?? BOOK_NAV['en-US'];
 }
+
+/** "My bookings", the header link to the passwordless `/bookings` view. */
+export const MINE_NAV: Readonly<Record<string, string>> = {
+  'en-US': 'My bookings',
+  'ar-SA': 'حجوزاتي',
+  cs: 'Moje rezervace',
+  da: 'Mine bookinger',
+  'de-DE': 'Meine Buchungen',
+  el: 'Οι κρατήσεις μου',
+  'es-ES': 'Mis reservas',
+  fi: 'Varaukseni',
+  'fr-FR': 'Mes réservations',
+  he: 'ההזמנות שלי',
+  hi: 'मेरी बुकिंग',
+  hu: 'Foglalásaim',
+  id: 'Pemesanan saya',
+  it: 'Le mie prenotazioni',
+  ja: '予約一覧',
+  ko: '내 예약',
+  ms: 'Tempahan saya',
+  'nl-NL': 'Mijn boekingen',
+  no: 'Mine bookinger',
+  pl: 'Moje rezerwacje',
+  'pt-BR': 'Meus agendamentos',
+  ro: 'Rezervările mele',
+  ru: 'Мои записи',
+  sv: 'Mina bokningar',
+  th: 'การจองของฉัน',
+  tr: 'Randevularım',
+  vi: 'Lịch của tôi',
+  'zh-Hans': '我的预约',
+  'zh-Hant': '我的預約',
+};
+
+export function mineNav(code: string): string {
+  return MINE_NAV[code] ?? MINE_NAV['en-US'];
+}

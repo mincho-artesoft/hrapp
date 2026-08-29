@@ -79,6 +79,20 @@ const bookingManageRoutes: Routes = LOCALES.map((locale) => ({
   data: { locale },
 }));
 
+/**
+ * "My bookings" at `/bookings` — the passwordless magic-link view of every
+ * meeting an e-mail has booked. Noindex, browser-rendered; the session token
+ * rides in `?s=`, so there is one static file per language.
+ */
+const bookingMineRoutes: Routes = LOCALES.map((locale) => ({
+  path: locale.slug ? `${locale.slug}/bookings` : 'bookings',
+  loadComponent: () =>
+    import('./pages/booking-mine-page/booking-mine-page.component').then(
+      (m) => m.BookingMinePageComponent,
+    ),
+  data: { locale },
+}));
+
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
   return [
@@ -105,6 +119,7 @@ export const routes: Routes = [
   ...bookingRoutes,
   ...bookingSetupRoutes,
   ...bookingManageRoutes,
+  ...bookingMineRoutes,
   ...articleRoutes,
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
   { path: 'terms-of-service', component: TermsPageComponent },

@@ -164,6 +164,17 @@
   @include upto($bp-md) { display: none; }
 }
 
+/* A quiet text link to the passwordless "my bookings" view. */
+.hdr__mine {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  white-space: nowrap;
+  transition: color 0.25s var(--ease-out);
+  &:hover { color: var(--ink); }
+  @include upto($bp-md) { display: none; }
+}
+
 .hdr__book-dot {
   width: 7px;
   height: 7px;
@@ -189,6 +200,16 @@
 
   .sheet.is-open & {
     animation: sheet-in 0.6s var(--ease-out) 0.4s forwards;
+  }
+}
+
+.sheet__mine {
+  text-align: center;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  opacity: 0;
+  .sheet.is-open & {
+    animation: sheet-in 0.6s var(--ease-out) 0.5s forwards;
   }
 }
 
