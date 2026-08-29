@@ -1,0 +1,107 @@
+@use 'mixins' as *;
+
+.avg { user-select: none; }
+.avg__hint { color: var(--ink-3); font-size: var(--t-small); margin: 0 0 0.8rem; }
+
+$gutter: 46px;
+
+.avg__head {
+  display: grid;
+  grid-template-columns: $gutter repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 0.3rem;
+}
+.avg__gutter-head { }
+.avg__wd {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-3);
+  padding-bottom: 0.2rem;
+}
+
+.avg__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: $gutter repeat(7, 1fr);
+  gap: 2px;
+  border: 1px solid var(--hair);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.avg__gutter {
+  position: relative;
+}
+.avg__hour {
+  position: absolute;
+  right: 4px;
+  top: 0;
+  transform: translateY(-0.55em);
+  font-size: 0.66rem;
+  color: var(--ink-4);
+  font-variant-numeric: tabular-nums;
+}
+
+.avg__col {
+  position: relative;
+  cursor: crosshair;
+  touch-action: none;
+  border-inline-start: 1px solid var(--hair);
+  &:hover { background: rgba(255, 255, 255, 0.015); }
+}
+.avg__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 1px solid var(--hair);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.avg__block {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  border-radius: 6px;
+  padding: 2px 4px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(77, 124, 255, 0.42), rgba(56, 224, 240, 0.26));
+  border: 1px solid var(--aurora-1);
+  box-shadow: inset 2px 0 0 var(--aurora-2);
+  color: var(--ink);
+  &.is-draft { opacity: 0.7; border-style: dashed; }
+}
+.avg__block-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  display: block;
+}
+.avg__x {
+  position: absolute;
+  top: 1px;
+  inset-inline-end: 1px;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--ink);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  &:hover { background: rgba(0, 0, 0, 0.45); }
+}
+
+@include upto($bp-sm) {
+  .avg__wd { font-size: 0.6rem; }
+  .avg__block-label { font-size: 0.55rem; }
+}

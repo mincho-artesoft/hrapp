@@ -55,6 +55,12 @@ const entries = [];
 for (const file of pages(DIST)) {
   const html = readFileSync(file, 'utf8');
 
+  // A page that tells crawlers not to index it has no business in the sitemap,
+  // whose entire purpose is to invite indexing. The owner-setup form is the
+  // first such page: a tool reached from a CTA, prerendered so it is served at
+  // all, but noindex so it never competes with the public booking page.
+  if (/<meta name="robots" content="noindex/i.test(html)) continue;
+
   // The canonical is what the page says its own address is. Trusting it rather
   // than deriving one from the file path means a canonical bug shows up here
   // as a wrong sitemap instead of hiding behind a plausible-looking URL.

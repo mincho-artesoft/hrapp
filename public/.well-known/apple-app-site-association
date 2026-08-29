@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["8293TNMX6S.Deksan.CalendarASD"],
+        "components": [
+          {
+            "/": "/pair",
+            "?": { "code": "?*" },
+            "comment": "Booking pairing: open the installed app to approve a web setup. Scoped to /pair only so ordinary links into the site keep opening in the browser."
+          }
+        ]
+      }
+    ]
+  },
+  "appclips": {
+    "apps": ["8293TNMX6S.Deksan.CalendarASD.Clip"]
+  }
+}

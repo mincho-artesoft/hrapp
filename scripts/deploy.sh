@@ -156,6 +156,18 @@ if [[ "$INVALIDATE_ONLY" != "1" ]]; then
     "${sync_flags[@]}" \
     --exclude "*" --include "*.html" \
     --cache-control "$NEVER" --content-type "text/html; charset=utf-8"
+
+  # The Apple App Site Association file has no extension, so the syncs above
+  # would leave it as application/octet-stream. Apple's swcd fetches it directly
+  # (it follows no redirects) and expects application/json, so re-put that one
+  # object with the right content type. Without this the associated-domains and
+  # App Clip experiences silently fail to verify.
+  AASA="$DIST_DIR/.well-known/apple-app-site-association"
+  if [[ -f "$AASA" ]]; then
+    log "4/4  apple-app-site-association → application/json"
+    aws_do s3 cp "$AASA" "s3://$NG_DEPLOY_AWS_BUCKET/.well-known/apple-app-site-association" \
+      --only-show-errors --content-type "application/json" --cache-control "max-age=3600"
+  fi
 fi
 
 # ------------------------------------------------------------- invalidation

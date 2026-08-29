@@ -1,0 +1,113 @@
+@use 'mixins' as *;
+
+.setup {
+  min-height: calc(100vh - var(--header-h));
+  padding: clamp(1.4rem, 4vw, 3rem) 0 5rem;
+}
+.setup__shell {
+  width: min(760px, 92vw);
+  margin-inline: auto;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.setup__head { text-align: center; margin-bottom: 0.4rem; }
+.setup__title { font-family: var(--font-display); font-size: var(--t-h2); margin: 0.3rem 0 0; }
+.setup__lead { color: var(--ink-2); margin: 0.6rem auto 0; max-width: 52ch; }
+
+.setup__card { padding: clamp(1.2rem, 3vw, 1.7rem); }
+.setup__h2 { font-family: var(--font-display); font-size: var(--t-h3); margin: 0 0 0.2rem; }
+.setup__hint { color: var(--ink-3); font-size: var(--t-small); margin: 0 0 1rem; }
+
+.setup__grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; @include upto($bp-sm) { grid-template-columns: 1fr; } }
+.setup__grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; @include upto($bp-sm) { grid-template-columns: 1fr; } }
+
+.setup__field {
+  display: block;
+  margin-bottom: 0.9rem;
+  > span { display: block; color: var(--ink-2); font-size: var(--t-small); margin-bottom: 0.35rem; }
+  &:last-child { margin-bottom: 0; }
+  &--sm { max-width: 100%; }
+}
+.setup__field input,
+.setup__field select,
+.setup__num input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--r-sm);
+  padding: 0.7rem 0.85rem;
+  color: var(--ink);
+  font: inherit;
+  &:focus { outline: none; border-color: var(--aurora-1); box-shadow: 0 0 0 3px var(--aurora-1-soft); }
+}
+.setup__num { display: flex; align-items: center; gap: 0.5rem; span { color: var(--ink-3); font-size: var(--t-small); } }
+
+/* Meeting type block */
+.setup__type {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--r-md);
+  margin-bottom: 0.9rem;
+}
+.setup__remove {
+  background: none; border: 0; color: var(--aurora-4);
+  font-size: var(--t-small); cursor: pointer; padding: 0.2rem 0;
+}
+.setup__add { margin-top: 0.2rem; }
+
+/* Weekly hours */
+.setup__days { display: grid; gap: 0.5rem; }
+.setup__day {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--r-sm);
+  transition: opacity 0.2s var(--ease-out);
+  &.is-off { opacity: 0.55; }
+  @include upto($bp-sm) { flex-wrap: wrap; gap: 0.5rem; }
+}
+.setup__toggle {
+  display: flex; align-items: center; gap: 0.6rem;
+  min-width: 9.5rem; cursor: pointer;
+  input { width: 18px; height: 18px; accent-color: var(--aurora-1); }
+}
+.setup__day-name { font-weight: 600; text-transform: capitalize; }
+.setup__hours {
+  display: flex; gap: 0.8rem; margin-inline-start: auto;
+  &.is-hidden { visibility: hidden; }
+  label { display: flex; align-items: center; gap: 0.4rem; }
+  input { padding: 0.45rem 0.6rem; }
+  @include upto($bp-sm) { margin-inline-start: 0; width: 100%; }
+}
+.setup__mini { color: var(--ink-3); font-size: 0.75rem; }
+
+.setup__err { color: var(--aurora-4); text-align: center; margin: 0; }
+.setup__actions { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; margin-top: 0.4rem; }
+.setup__spin {
+  display: inline-block; width: 16px; height: 16px; vertical-align: -2px;
+  border-radius: 50%; border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff;
+  animation: setup-spin 0.8s linear infinite; margin-inline-end: 0.4rem;
+}
+@keyframes setup-spin { to { transform: rotate(360deg); } }
+
+/* Success */
+.setup__done { display: grid; justify-items: center; gap: 1rem; text-align: center; }
+.setup__check {
+  width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 1.8rem; color: var(--void);
+  background: linear-gradient(135deg, var(--aurora-2), #52e39b); box-shadow: var(--glow-cyan);
+}
+.setup__result { width: 100%; padding: 1.3rem 1.5rem; text-align: start; }
+.setup__result-label { font-weight: 600; margin: 0 0 0.7rem; }
+.setup__link { display: flex; gap: 0.5rem; @include upto($bp-sm) { flex-direction: column; } }
+.setup__link input {
+  flex: 1; background: var(--surface); border: 1px solid var(--hair-strong);
+  border-radius: var(--r-sm); padding: 0.7rem 0.85rem; color: var(--ink); font: inherit;
+}
+.setup__keep { color: var(--ink-3); font-size: var(--t-small); margin: 0.8rem 0 0; }
+
+@media (prefers-reduced-motion: reduce) { .setup__spin { animation: none; } }

@@ -33,6 +33,10 @@
     </nav>
 
     <div class="hdr__actions">
+      <a class="hdr__book" [href]="bookingHref()">
+        <span class="hdr__book-dot" aria-hidden="true"></span>{{ bookingLabel() }}
+      </a>
+
       <app-language-switcher />
 
       <a
@@ -78,6 +82,10 @@
       </a>
     }
   </nav>
+
+  <a class="btn btn--ghost btn--lg sheet__book" [href]="bookingHref()" (click)="closeMenu()">
+    {{ bookingLabel() }}
+  </a>
 
   <a
     class="btn btn--primary btn--lg sheet__cta"

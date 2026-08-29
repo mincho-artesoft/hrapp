@@ -32,6 +32,53 @@ const homeRoutes: Routes = LOCALES.map((locale) => ({
   data: { locale },
 }));
 
+/**
+ * The booking page, once per language.
+ *
+ * One static path each — `/book`, `/es/book`, and so on — all pointing at the
+ * same component. The owner's handle rides in on `?c=xxxx` rather than in the
+ * path, so there is nothing to enumerate: the prerendered page is the empty
+ * landing pitch, and the scheduler for a specific owner is drawn in the browser
+ * from the query string. A query string cannot make the static host serve a
+ * different file, which is exactly why the handle is not a path segment.
+ */
+const bookingRoutes: Routes = LOCALES.map((locale) => ({
+  path: locale.slug ? `${locale.slug}/book` : 'book',
+  loadComponent: () =>
+    import('./pages/booking-page/booking-page.component').then((m) => m.BookingPageComponent),
+  data: { locale },
+}));
+
+/**
+ * The owner-setup form, once per language, at `/book/setup`.
+ *
+ * A separate route from `/book` — the public page is prerendered and indexable,
+ * this is a noindex tool reached from that page's CTA. Both are static files on
+ * the same bucket; the setup page does its work (register, save) in the browser.
+ */
+const bookingSetupRoutes: Routes = LOCALES.map((locale) => ({
+  path: locale.slug ? `${locale.slug}/book/setup` : 'book/setup',
+  loadComponent: () =>
+    import('./pages/booking-setup-page/booking-setup-page.component').then(
+      (m) => m.BookingSetupPageComponent,
+    ),
+  data: { locale },
+}));
+
+/**
+ * The invitee's manage page at `/booking/manage` — reached from a tokenised
+ * link in the confirmation e-mail, so noindex and browser-rendered like setup.
+ * The token rides in `?t=`, so there is one static file per language.
+ */
+const bookingManageRoutes: Routes = LOCALES.map((locale) => ({
+  path: locale.slug ? `${locale.slug}/booking/manage` : 'booking/manage',
+  loadComponent: () =>
+    import('./pages/booking-manage-page/booking-manage-page.component').then(
+      (m) => m.BookingManagePageComponent,
+    ),
+  data: { locale },
+}));
+
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
   return [
@@ -55,6 +102,9 @@ const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
 export const routes: Routes = [
   { path: '', component: HomePageComponent, pathMatch: 'full', data: { locale: DEFAULT_LOCALE } },
   ...homeRoutes,
+  ...bookingRoutes,
+  ...bookingSetupRoutes,
+  ...bookingManageRoutes,
   ...articleRoutes,
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
   { path: 'terms-of-service', component: TermsPageComponent },

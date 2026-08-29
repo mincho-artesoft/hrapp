@@ -1,0 +1,134 @@
+<section class="setup" [attr.dir]="locale.dir">
+  <div class="setup__shell">
+    @if (mode() !== 'done') {
+      <header class="setup__head">
+        <p class="eyebrow">{{ copy.eyebrow }}</p>
+        <h1 class="setup__title">{{ editing() ? copy.saveChanges : copy.title }}</h1>
+        <p class="setup__lead">{{ copy.lead }}</p>
+      </header>
+
+      <!-- Profile -->
+      <div class="card setup__card">
+        <h2 class="setup__h2">{{ copy.profileTitle }}</h2>
+        <div class="setup__grid2">
+          <label class="setup__field">
+            <span>{{ copy.yourName }}</span>
+            <input type="text" [(ngModel)]="form.displayName" [placeholder]="copy.yourNamePlaceholder" name="displayName" />
+          </label>
+          <label class="setup__field">
+            <span>{{ copy.timeZone }}</span>
+            <select [(ngModel)]="form.timeZone" name="timeZone">
+              @for (z of zones(); track z) { <option [value]="z">{{ z }}</option> }
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- Meeting types -->
+      <div class="card setup__card">
+        <h2 class="setup__h2">{{ copy.typesTitle }}</h2>
+        <p class="setup__hint">{{ copy.typesHint }}</p>
+
+        @for (t of types; track $index) {
+          <div class="setup__type">
+            <div class="setup__grid2">
+              <label class="setup__field">
+                <span>{{ copy.typeName }}</span>
+                <input type="text" [(ngModel)]="t.name" [placeholder]="copy.typeNamePlaceholder" [name]="'tn' + $index" />
+              </label>
+              <label class="setup__field setup__field--sm">
+                <span>{{ copy.duration }}</span>
+                <select [(ngModel)]="t.durationMinutes" [name]="'td' + $index">
+                  @for (d of durations; track d) { <option [value]="d">{{ d }} {{ copy.minutesUnit }}</option> }
+                </select>
+              </label>
+            </div>
+            <label class="setup__field">
+              <span>{{ copy.locationLabel }}</span>
+              <input type="text" [(ngModel)]="t.location" [placeholder]="copy.locationPlaceholder" [name]="'tl' + $index" />
+            </label>
+            <label class="setup__field">
+              <span>{{ copy.descriptionLabel }}</span>
+              <input type="text" [(ngModel)]="t.description" [placeholder]="copy.descriptionPlaceholder" [name]="'tde' + $index" />
+            </label>
+            @if (types.length > 1) {
+              <button type="button" class="setup__remove" (click)="removeType($index)">{{ copy.removeType }}</button>
+            }
+          </div>
+        }
+        <button type="button" class="btn btn--ghost setup__add" (click)="addType()">+ {{ copy.addType }}</button>
+      </div>
+
+      <!-- Weekly hours — a MultiDayView-style grid: drag to add openings, × to remove -->
+      <div class="card setup__card">
+        <h2 class="setup__h2">{{ copy.availabilityTitle }}</h2>
+        <app-availability-grid
+          [windows]="availability()"
+          (windowsChange)="availability.set($event)"
+          [dayLabels]="dayLabels()"
+          [hint]="copy.availabilityHint"
+        />
+      </div>
+
+      <!-- Rules -->
+      <div class="card setup__card">
+        <h2 class="setup__h2">{{ copy.rulesTitle }}</h2>
+        <div class="setup__grid3">
+          <label class="setup__field">
+            <span>{{ copy.slotInterval }}</span>
+            <select [(ngModel)]="form.slotIntervalMinutes" name="interval">
+              @for (i of intervals; track i) { <option [value]="i">{{ i }} {{ copy.minutesUnit }}</option> }
+            </select>
+          </label>
+          <label class="setup__field">
+            <span>{{ copy.minNotice }}</span>
+            <div class="setup__num"><input type="number" min="0" [(ngModel)]="form.minNoticeHours" name="notice" /><span>{{ copy.hours }}</span></div>
+          </label>
+          <label class="setup__field">
+            <span>{{ copy.maxAdvance }}</span>
+            <div class="setup__num"><input type="number" min="1" [(ngModel)]="form.maxAdvanceDays" name="advance" /><span>{{ copy.days }}</span></div>
+          </label>
+        </div>
+      </div>
+
+      @if (errorMsg()) { <p class="setup__err">{{ errorMsg() }}</p> }
+
+      <div class="setup__actions">
+        <button type="button" class="btn btn--primary btn--lg" [disabled]="mode() === 'saving'" (click)="submit()">
+          @if (mode() === 'saving') { <span class="setup__spin"></span> {{ copy.saving }} }
+          @else { {{ editing() ? copy.saveChanges : copy.create }} }
+        </button>
+        <a class="btn btn--ghost" routerLink="{{ locale.slug ? '/' + locale.slug : '/' }}">{{ copy.backHome }}</a>
+      </div>
+    }
+
+    <!-- Success -->
+    @if (mode() === 'done') {
+      <div class="setup__done">
+        <div class="setup__check">✓</div>
+        <h1 class="setup__title">{{ copy.successTitle }}</h1>
+        <p class="setup__lead">{{ copy.successLead }}</p>
+
+        <div class="card setup__result">
+          <p class="setup__result-label">{{ copy.shareLabel }}</p>
+          <div class="setup__link">
+            <input type="text" [value]="shareUrl" readonly (focus)="$any($event.target).select()" />
+            <button type="button" class="btn btn--primary" (click)="copyLink()">{{ copiedLink() ? copy.copied : copy.copy }}</button>
+          </div>
+          <p class="setup__keep">{{ copy.keepNote }}</p>
+        </div>
+
+        <div class="card setup__result">
+          <p class="setup__result-label">{{ copy.subscribeLabel }}</p>
+          <p class="setup__hint">{{ copy.subscribeHint }}</p>
+          <a class="btn btn--ghost" [href]="webcalUrl">{{ copy.subscribeAction }}</a>
+        </div>
+
+        <div class="setup__actions">
+          <a class="btn btn--primary btn--lg" [href]="shareUrl" target="_blank" rel="noopener">{{ copy.openPage }}</a>
+          <button type="button" class="btn btn--ghost" (click)="editAgain()">{{ copy.editAgain }}</button>
+        </div>
+      </div>
+    }
+  </div>
+</section>

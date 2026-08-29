@@ -1,0 +1,123 @@
+<section class="mg" [attr.dir]="locale.dir">
+  <div class="mg__shell">
+    @if (mode() === 'loading') {
+      <div class="mg__center"><span class="mg__spin"></span></div>
+    }
+
+    @if (mode() === 'error') {
+      <div class="mg__center mg__msg">
+        <p>{{ errorMsg() }}</p>
+        <a class="btn btn--ghost" routerLink="{{ locale.slug ? '/' + locale.slug : '/' }}">{{ copy.backHome }}</a>
+      </div>
+    }
+
+    <!-- Current booking -->
+    @if (mode() === 'view' && booking(); as b) {
+      <p class="eyebrow">{{ copy.eyebrow }}</p>
+      <h1 class="mg__title">{{ copy.title }}</h1>
+      <div class="card mg__card">
+        <p class="mg__evt">{{ b.event.title }}</p>
+        @if (b.type?.description) { <p class="mg__desc">{{ b.type?.description }}</p> }
+        <p class="mg__row"><span class="mg__k">{{ copy.whenLabel }}</span> {{ currentWhen() }} · {{ viewerTz }}</p>
+        @if (b.event.location) { <p class="mg__row">◉ {{ b.event.location }}</p> }
+        <p class="mg__row mg__with">{{ b.displayName }}</p>
+      </div>
+      <div class="mg__actions">
+        <button type="button" class="btn btn--primary btn--lg" (click)="startReschedule()">{{ copy.reschedule }}</button>
+        <button type="button" class="btn btn--ghost" (click)="askCancel()">{{ copy.cancel }}</button>
+      </div>
+    }
+
+    <!-- Reschedule: pick a new time -->
+    @if (mode() === 'reschedule') {
+      <p class="eyebrow">{{ copy.eyebrow }}</p>
+      <h1 class="mg__title">{{ copy.pickNew }}</h1>
+      @if (errorMsg()) { <p class="mg__err">{{ errorMsg() }}</p> }
+
+      <div class="mg__strip" role="tablist">
+        @for (d of days(); track d.key) {
+          <button
+            type="button"
+            class="mg__day"
+            [class.is-active]="d.key === selectedDayKey()"
+            [class.is-empty]="d.count === 0"
+            [disabled]="d.count === 0"
+            (click)="chooseDay(d.key)"
+          >
+            <span class="mg__wd">{{ d.weekdayShort }}</span>
+            <span class="mg__n" [class.is-today]="d.isToday">{{ d.dayNum }}</span>
+            @if (d.count > 0) { <span class="mg__dot"></span> }
+          </button>
+        }
+      </div>
+
+      <p class="mg__dayLabel">{{ selectedDayLabel() }}</p>
+
+      @if (dayTimes().length > 0) {
+        <div class="mg__times">
+          @for (s of dayTimes(); track s.start) {
+            <button type="button" class="mg__time" (click)="chooseSlot(s)">{{ slotTime(s) }}</button>
+          }
+        </div>
+      } @else {
+        <div class="mg__empty">{{ copy.noTimes }}</div>
+      }
+
+      <div class="mg__actions">
+        <button type="button" class="btn btn--ghost" (click)="backToView()">{{ copy.keepCurrent }}</button>
+      </div>
+    }
+
+    <!-- Confirm the move -->
+    @if (mode() === 'confirm') {
+      <p class="eyebrow">{{ copy.eyebrow }}</p>
+      <h1 class="mg__title">{{ copy.confirmMove }}</h1>
+      <div class="card mg__card">
+        <p class="mg__row"><strong>{{ selectedSlotRange() }}</strong></p>
+        <p class="mg__row mg__k">{{ viewerTz }}</p>
+      </div>
+      @if (errorMsg()) { <p class="mg__err">{{ errorMsg() }}</p> }
+      <div class="mg__actions">
+        <button type="button" class="btn btn--primary btn--lg" [disabled]="submitting()" (click)="confirmMove()">
+          @if (submitting()) { <span class="mg__spin mg__spin--sm"></span> } @else { {{ copy.confirmMove }} }
+        </button>
+        <button type="button" class="btn btn--ghost" (click)="backToPick()">{{ copy.keepCurrent }}</button>
+      </div>
+    }
+
+    <!-- Moved -->
+    @if (mode() === 'moved') {
+      <div class="mg__done">
+        <div class="mg__check">✓</div>
+        <h1 class="mg__title">{{ copy.movedTitle }}</h1>
+        <p class="mg__sub">{{ copy.movedSub }}</p>
+        <a class="btn btn--ghost" routerLink="{{ locale.slug ? '/' + locale.slug : '/' }}">{{ copy.backHome }}</a>
+      </div>
+    }
+
+    <!-- Cancel confirm -->
+    @if (mode() === 'cancel') {
+      <div class="mg__done">
+        <h1 class="mg__title">{{ copy.cancelTitle }}</h1>
+        <p class="mg__sub">{{ copy.cancelBody }}</p>
+        @if (errorMsg()) { <p class="mg__err">{{ errorMsg() }}</p> }
+        <div class="mg__actions">
+          <button type="button" class="btn btn--danger btn--lg" [disabled]="submitting()" (click)="confirmCancel()">
+            @if (submitting()) { <span class="mg__spin mg__spin--sm"></span> } @else { {{ copy.cancelConfirm }} }
+          </button>
+          <button type="button" class="btn btn--ghost" (click)="backToView()">{{ copy.keepIt }}</button>
+        </div>
+      </div>
+    }
+
+    <!-- Cancelled -->
+    @if (mode() === 'cancelled') {
+      <div class="mg__done">
+        <div class="mg__check mg__check--muted">✕</div>
+        <h1 class="mg__title">{{ copy.cancelledTitle }}</h1>
+        <p class="mg__sub">{{ copy.cancelledSub }}</p>
+        <a class="btn btn--ghost" routerLink="{{ locale.slug ? '/' + locale.slug : '/' }}">{{ copy.backHome }}</a>
+      </div>
+    }
+  </div>
+</section>
