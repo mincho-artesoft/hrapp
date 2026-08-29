@@ -114,6 +114,20 @@ export interface SavedBooking {
   bookingUrl: string;
 }
 
+/** One booking as the owner sees it, from GET /booking/events. */
+export interface OwnerBooking {
+  id: string;
+  title: string;
+  start: string;
+  end: string;
+  location: string | null;
+  status: string;
+  organizerName: string | null;
+  organizerEmail: string | null;
+  sequence: number;
+  updatedAt: string | null;
+}
+
 const API = 'https://api.cloud-calendars.com';
 
 @Injectable({ providedIn: 'root' })
@@ -198,6 +212,24 @@ export class BookingApiService {
   /** Owner-gated: load the current booking config for editing. */
   async myBooking(token: string): Promise<SavedBooking> {
     return this.get<SavedBooking>('/booking', token);
+  }
+
+  // ── owner-side management of incoming bookings ────────────────────────────
+
+  /** Owner-gated: every booking made against this owner's page. */
+  async ownerBookings(token: string): Promise<OwnerBooking[]> {
+    const res = await this.get<{ events: OwnerBooking[] }>('/booking/events', token);
+    return res.events ?? [];
+  }
+
+  /** Owner-gated: decline (cancel) one booking by its event id. */
+  async ownerCancel(token: string, eventId: string): Promise<void> {
+    await this.post(`/booking/events/${encodeURIComponent(eventId)}/cancel`, {}, token);
+  }
+
+  /** Owner-gated: move one booking to a new start time. */
+  async ownerReschedule(token: string, eventId: string, start: string): Promise<void> {
+    await this.post(`/booking/events/${encodeURIComponent(eventId)}/reschedule`, { start }, token);
   }
 
   private async get<T>(path: string, token?: string): Promise<T> {

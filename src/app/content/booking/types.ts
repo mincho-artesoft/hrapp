@@ -214,3 +214,37 @@ export interface BookingMineCopy {
   /** Header/nav label linking here. */
   readonly navLabel: string;
 }
+
+/**
+ * The owner's view of who has booked them, shown on the setup page once a
+ * returning owner is recognised in this browser. From here the host can decline
+ * a meeting or move it to another open time; the guest is notified by e-mail.
+ *
+ * Its own interface and fallback registry, like {@link BookingSetupCopy}: it is
+ * a tool behind an owner's link, so it can fill in languages as they land and
+ * fall back to English until then.
+ */
+export interface OwnerManageCopy {
+  /** Section heading over the list of incoming bookings. */
+  readonly title: string;
+  /** One line under the heading explaining what the host can do here. */
+  readonly hint: string;
+  /** Shown when the host has no upcoming bookings. */
+  readonly empty: string;
+  /** While the list is loading. */
+  readonly loading: string;
+  /** The "decline" (cancel) action on a booking. */
+  readonly decline: string;
+  /** Native-confirm text before a decline goes through. */
+  readonly declineConfirm: string;
+  /** The "reschedule" (move) action on a booking. */
+  readonly reschedule: string;
+  /** Heading over the list of new times when moving a booking. */
+  readonly pickNew: string;
+  /** Shown when no open times exist in the reschedule window. */
+  readonly noTimes: string;
+  /** Dismiss the reschedule picker, leaving the booking where it is. */
+  readonly keepTime: string;
+  /** Shown when a decline or move fails. */
+  readonly error: string;
+}

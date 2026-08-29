@@ -7,6 +7,81 @@
         <p class="setup__lead">{{ copy.lead }}</p>
       </header>
 
+      <!-- Incoming bookings the owner can decline or move (returning owner only) -->
+      @if (editing()) {
+        <div class="card setup__card mng">
+          <h2 class="setup__h2">{{ manageCopy.title }}</h2>
+          <p class="setup__hint">{{ manageCopy.hint }}</p>
+
+          @if (bookingsLoading() && upcoming().length === 0) {
+            <p class="mng__muted">{{ manageCopy.loading }}</p>
+          } @else if (upcoming().length === 0) {
+            <p class="mng__muted">{{ manageCopy.empty }}</p>
+          } @else {
+            <ul class="mng__list">
+              @for (b of upcoming(); track b.id) {
+                <li class="mng__item">
+                  <div class="mng__rowline">
+                    <div class="mng__info">
+                      <p class="mng__title">{{ b.title }}</p>
+                      <p class="mng__when">{{ whenLabel(b.start) }}</p>
+                      @if (b.organizerEmail) { <p class="mng__email">{{ b.organizerEmail }}</p> }
+                    </div>
+                    <div class="mng__actions">
+                      <button
+                        type="button"
+                        class="mng__resched"
+                        [class.is-open]="reschedulingId() === b.id"
+                        [disabled]="busyId() === b.id"
+                        (click)="toggleReschedule(b)"
+                      >{{ manageCopy.reschedule }}</button>
+                      <button
+                        type="button"
+                        class="mng__decline"
+                        [disabled]="busyId() === b.id"
+                        (click)="decline(b)"
+                      >{{ manageCopy.decline }}</button>
+                    </div>
+                  </div>
+
+                  @if (reschedulingId() === b.id) {
+                    <div class="mng__picker">
+                      <p class="mng__pick-head">{{ manageCopy.pickNew }}</p>
+                      @if (rescheduleLoading()) {
+                        <p class="mng__muted">{{ manageCopy.loading }}</p>
+                      } @else if (rescheduleGroups().length === 0) {
+                        <p class="mng__muted">{{ manageCopy.noTimes }}</p>
+                      } @else {
+                        @for (g of rescheduleGroups(); track g.label) {
+                          <div class="mng__day">
+                            <span class="mng__day-label">{{ g.label }}</span>
+                            <div class="mng__slots">
+                              @for (s of g.slots; track s.start) {
+                                <button
+                                  type="button"
+                                  class="mng__slot"
+                                  [disabled]="busyId() === b.id"
+                                  (click)="pickNewTime(b, s.start)"
+                                >{{ s.time }}</button>
+                              }
+                            </div>
+                          </div>
+                        }
+                      }
+                      <button type="button" class="mng__keep" (click)="closeReschedule()">
+                        {{ manageCopy.keepTime }}
+                      </button>
+                    </div>
+                  }
+                </li>
+              }
+            </ul>
+          }
+
+          @if (manageError()) { <p class="setup__err">{{ manageError() }}</p> }
+        </div>
+      }
+
       <!-- Profile -->
       <div class="card setup__card">
         <h2 class="setup__h2">{{ copy.profileTitle }}</h2>

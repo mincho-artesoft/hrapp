@@ -111,3 +111,104 @@
 .setup__keep { color: var(--ink-3); font-size: var(--t-small); margin: 0.8rem 0 0; }
 
 @media (prefers-reduced-motion: reduce) { .setup__spin { animation: none; } }
+
+/* ---------------------------------------------------------------
+   Incoming bookings — the owner declines or moves a meeting
+--------------------------------------------------------------- */
+.mng__muted { color: var(--ink-3); font-size: var(--t-small); margin: 0.2rem 0 0; }
+
+.mng__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+
+.mng__item {
+  position: relative;
+  padding: 0.9rem 1rem 0.9rem 1.1rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--r-md);
+  overflow: hidden;
+
+  /* a bright leading bar, echoing the confirmation e-mail and the app card */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--aurora-2), var(--aurora-1) 55%, var(--aurora-3));
+  }
+}
+
+.mng__rowline {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  @include upto($bp-sm) { flex-direction: column; gap: 0.6rem; }
+}
+.mng__info { flex: 1; min-width: 0; }
+.mng__title { font-weight: 600; margin: 0; }
+.mng__when { color: var(--ink-2); font-size: var(--t-small); margin: 0.15rem 0 0; }
+.mng__email { color: var(--ink-3); font-size: 0.75rem; margin: 0.15rem 0 0; word-break: break-all; }
+
+.mng__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  @include upto($bp-sm) { width: 100%; }
+}
+.mng__resched,
+.mng__decline {
+  font: inherit;
+  font-size: var(--t-small);
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: background 0.25s var(--ease-out), border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+  &:disabled { opacity: 0.5; cursor: default; }
+}
+.mng__resched {
+  border: 1px solid var(--aurora-1);
+  background: var(--aurora-1-soft);
+  color: var(--ink);
+  &:hover:not(:disabled) { background: var(--aurora-1); }
+  &.is-open { background: var(--aurora-1); }
+}
+.mng__decline {
+  border: 1px solid var(--hair-strong);
+  background: transparent;
+  color: var(--ink-3);
+  &:hover:not(:disabled) { border-color: var(--aurora-4); color: var(--aurora-4); }
+}
+
+/* The new-time picker, unfolded under a booking */
+.mng__picker {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--hair);
+}
+.mng__pick-head { font-weight: 600; font-size: var(--t-small); margin: 0 0 0.6rem; }
+.mng__day { display: flex; gap: 0.8rem; margin-bottom: 0.6rem; @include upto($bp-sm) { flex-direction: column; gap: 0.35rem; } }
+.mng__day-label { min-width: 6.5rem; color: var(--ink-2); font-size: var(--t-small); padding-top: 0.35rem; }
+.mng__slots { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.mng__slot {
+  font: inherit;
+  font-size: var(--t-small);
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--hair-strong);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+  &:hover:not(:disabled) { border-color: var(--aurora-1); background: var(--aurora-1-soft); }
+  &:disabled { opacity: 0.5; cursor: default; }
+}
+.mng__keep {
+  margin-top: 0.4rem;
+  background: none;
+  border: 0;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: var(--t-small);
+  cursor: pointer;
+  &:hover { color: var(--ink); }
+}
