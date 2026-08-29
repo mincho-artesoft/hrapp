@@ -134,6 +134,135 @@ enum CloudCalendarsAPI {
         )
     }
 
+    // MARK: - Booking pairing
+
+    /// Authorises a web browser to set up a booking page under this device's
+    /// calendar. The browser opens `/book/setup`, shows a QR whose short code
+    /// lands here; approving hands that browser a token for this calendar and,
+    /// because the approval came from an installed app, marks the owner entitled
+    /// to publish without paying. The code is single-use and short-lived.
+    static func pairApprove(code: String, session: Session) async throws {
+        try await sendIgnoringResponse(
+            "/pair/approve",
+            method: "POST",
+            body: ["code": code],
+            bearer: session.deviceToken
+        )
+    }
+
+    // MARK: - Booking (owner setup on the app path)
+
+    /// One weekly opening: `day` 0–6 (Sun–Sat), start/end minutes from local midnight.
+    struct AvailabilityRule: Codable, Equatable {
+        var day: Int
+        var start: Int
+        var end: Int
+    }
+
+    struct MeetingType: Codable, Equatable {
+        var id: String?
+        var name: String
+        var durationMinutes: Int
+        var location: String?
+        var description: String?
+    }
+
+    /// The owner's booking-page configuration, as the server stores it.
+    struct BookingConfig: Codable, Equatable {
+        var handle: String?
+        var enabled: Bool
+        var displayName: String
+        var timeZone: String
+        var contactEmail: String?
+        var sourceCalendarId: String?
+        var meetingTypes: [MeetingType]
+        var availability: [AvailabilityRule]
+        var slotIntervalMinutes: Int
+        var minNoticeHours: Int
+        var maxAdvanceDays: Int
+    }
+
+    struct SavedBooking: Decodable {
+        let bookingUrl: String
+        let config: BookingConfig
+    }
+
+    /// A confirmed booking, for mirroring into the owner's real calendar.
+    struct BookingEvent: Decodable, Equatable {
+        let id: String
+        let title: String
+        let start: Date
+        let end: Date
+        let location: String?
+        let status: String
+        let organizerName: String?
+        let organizerEmail: String?
+        let sequence: Int
+        let updatedAt: Date?
+    }
+
+    /// Create or update the owner's booking page.
+    static func saveBooking(_ config: BookingConfig, session: Session) async throws -> SavedBooking {
+        var body: [String: Any] = [
+            "enabled": config.enabled,
+            "displayName": config.displayName,
+            "timeZone": config.timeZone,
+            "slotIntervalMinutes": config.slotIntervalMinutes,
+            "minNoticeHours": config.minNoticeHours,
+            "maxAdvanceDays": config.maxAdvanceDays,
+            "meetingTypes": config.meetingTypes.map { t -> [String: Any] in
+                var m: [String: Any] = ["name": t.name, "durationMinutes": t.durationMinutes]
+                if let id = t.id { m["id"] = id }
+                if let l = t.location { m["location"] = l }
+                if let d = t.description { m["description"] = d }
+                return m
+            },
+            "availability": config.availability.map { ["day": $0.day, "start": $0.start, "end": $0.end] }
+        ]
+        if let email = config.contactEmail { body["contactEmail"] = email }
+        if let src = config.sourceCalendarId { body["sourceCalendarId"] = src }
+        return try await send("/booking", method: "PUT", body: body, bearer: session.deviceToken)
+    }
+
+    /// The current booking config, or nil if the owner has not set one up.
+    static func getBooking(session: Session) async throws -> SavedBooking? {
+        do {
+            let saved: SavedBooking = try await send("/booking", method: "GET", body: nil, bearer: session.deviceToken)
+            return saved
+        } catch Failure.http(let code, _) where code == 404 {
+            return nil
+        }
+    }
+
+    /// Push the busy blocks read from the owner's chosen calendar, so the public
+    /// page never offers a time they are already committed in.
+    static func setBusy(
+        blocks: [(start: Date, end: Date)],
+        sourceCalendarId: String?,
+        session: Session
+    ) async throws {
+        let iso = ISO8601DateFormatter()
+        var body: [String: Any] = [
+            "blocks": blocks.map { ["start": iso.string(from: $0.start), "end": iso.string(from: $0.end)] }
+        ]
+        if let src = sourceCalendarId { body["sourceCalendarId"] = src }
+        try await sendIgnoringResponse("/booking/busy", method: "PUT", body: body, bearer: session.deviceToken)
+    }
+
+    /// The confirmed bookings on this calendar, for mirroring into the owner's
+    /// real calendar. `since` narrows it to what changed.
+    static func listBookingEvents(since: Date? = nil, session: Session) async throws -> [BookingEvent] {
+        var path = "/booking/events"
+        if let since {
+            path += "?since=\(ISO8601DateFormatter().string(from: since))"
+        }
+        struct Wrap: Decodable { let events: [BookingEvent] }
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let data = try await sendIgnoringResponse(path, method: "GET", body: nil, bearer: session.deviceToken)
+        return (try decoder.decode(Wrap.self, from: data)).events
+    }
+
     // MARK: - Transport
 
     /// Decoding wrapper. Split from `sendIgnoringResponse` so that calls with

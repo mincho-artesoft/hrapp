@@ -28,6 +28,7 @@ struct CalendarsSheetView: View {
     @State private var msExpandedStates: [UUID: Bool] = [:]
     @State private var calendarToEdit: EKCalendar? = nil
     @State private var showAddCalendarSheet = false
+    @State private var showBookingSetup = false
     @State private var showICloudSheet = false
     @State private var showingGoogleSharingSheet = false
     @State private var addingGoogleUserID: UUID? = nil
@@ -74,6 +75,7 @@ struct CalendarsSheetView: View {
                 googleSection
                 microsoftSection
                 addCalendarSection
+                bookingSection
                 invitesSection
                 shareCalendarsSection
                 googleSignInSection
@@ -113,6 +115,11 @@ struct CalendarsSheetView: View {
         // Add iCloud Calendar
         .sheet(isPresented: $showAddCalendarSheet) {
             AddCalendarView()
+        }
+
+        // Set up a public booking page
+        .sheet(isPresented: $showBookingSetup) {
+            BookingSetupView()
         }
 
         // Open iCloud share
@@ -544,6 +551,29 @@ struct CalendarsSheetView: View {
             }
         } footer: {
             Text(LocalizedStringKey("Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it."))
+        }
+    }
+
+    /// Turn a calendar into a public booking page people can book times on.
+    private var bookingSection: some View {
+        Section {
+            Button {
+                showBookingSetup = true
+            } label: {
+                HStack {
+                    Image(systemName: "calendar.badge.clock")
+                        .foregroundStyle(Color.blue)
+                        .frame(width: 28, height: 28)
+                    Text(LocalizedStringKey("Set up a booking page"))
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.tertiary)
+                }
+            }
+            .tint(.primary)
+        } footer: {
+            Text(LocalizedStringKey("Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free."))
         }
     }
 

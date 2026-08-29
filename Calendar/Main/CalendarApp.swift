@@ -26,6 +26,7 @@ struct CalendarApp: App {
     @State private var hasRefreshedWidgetThisSession = false
     @State private var widgetRefreshTask: Task<Void, Never>?
     @State private var pendingSharedEvent: SharedEventImportPayload?
+    @State private var pendingPairing: BookingPairingRequest?
 
     private let liveActivityRefreshInterval: UInt64 = 5 * 60 * 1_000_000_000
 
@@ -84,6 +85,12 @@ struct CalendarApp: App {
                         pendingSharedEvent = SharedEventImportHandoffStore.takePendingPayload()
                     }
 
+                    // A code the App Clip stashed before the person installed:
+                    // finish the pairing the clip could not do itself.
+                    if pendingPairing == nil {
+                        pendingPairing = BookingPairing.takeHandoff()
+                    }
+
                     #if DEBUG
                     ScreenshotMode.stageCancelledInvite()
                     if let staged = ScreenshotMode.stagedInvite() {
@@ -93,19 +100,31 @@ struct CalendarApp: App {
                     #endif
                 }
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
-                    guard let url = activity.webpageURL,
-                          let payload = SharedEventImportPayload(url: url)
-                    else { return }
+                    guard let url = activity.webpageURL else { return }
+                    // A booking-pairing link is checked first so it never gets
+                    // mistaken for an event-share URL; the paths do not overlap.
+                    if let pairing = BookingPairing.request(from: url) {
+                        pendingPairing = pairing
+                        return
+                    }
+                    guard let payload = SharedEventImportPayload(url: url) else { return }
                     SharedEventImportHandoffStore.clearPendingPayload()
                     pendingSharedEvent = payload
                 }
                 .onOpenURL { url in
+                    if let pairing = BookingPairing.request(from: url) {
+                        pendingPairing = pairing
+                        return
+                    }
                     guard let payload = SharedEventImportPayload(url: url) else { return }
                     SharedEventImportHandoffStore.clearPendingPayload()
                     pendingSharedEvent = payload
                 }
                 .sheet(item: $pendingSharedEvent) { payload in
                     SharedEventImportView(payload: payload)
+                }
+                .sheet(item: $pendingPairing) { pairing in
+                    BookingPairingView(request: pairing)
                 }
         }
         .backgroundTask(.appRefresh(CalendarLiveActivityBackgroundRefreshTask.identifier)) {
@@ -120,6 +139,10 @@ struct CalendarApp: App {
                 // something re-reads their feed; doing it on activation is
                 // when the person is most likely to be looking at them.
                 Task { await SharedInviteRefresher.refreshAll() }
+
+                // If this device runs a booking page, keep it in step with the
+                // real calendar: push busy times up, pull new bookings down.
+                Task { await BookingManager.refresh() }
 
                 // ПРОВЕРКА ЗА РЕКЛАМИ
                 if SubscriptionManager.shared.subscriptionStatus == .base {

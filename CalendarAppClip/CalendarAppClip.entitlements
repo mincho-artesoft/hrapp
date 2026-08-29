@@ -10,5 +10,9 @@
 	<array>
 		<string>$(AppIdentifierPrefix)Deksan.CalendarASD</string>
 	</array>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>appclips:www.cloud-calendars.com</string>
+	</array>
 </dict>
 </plist>
