@@ -1,0 +1,8 @@
+node_modules/
+dist/
+build-staging/
+*.log
+.staging-endpoint
+.endpoint
+.DS_Store
+*.zip
