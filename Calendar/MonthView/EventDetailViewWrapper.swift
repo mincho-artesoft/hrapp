@@ -23,6 +23,22 @@ final class ShareableEventViewController: EKEventViewController {
     }
 
     private func configureLeadingButtonsIfNeeded() {
+        let isReadOnly = event.map(SharedInviteTracker.isReadOnly) ?? false
+
+        if isReadOnly {
+            // With editing disabled, leave EventKit's own close/done item
+            // untouched. EventKit keeps its local Delete Event action at the
+            // bottom of the details screen.
+            let leadingItems = (navigationItem.leftBarButtonItems ?? [])
+                .filter { $0 !== eventShareButton }
+            navigationItem.setLeftBarButtonItems(leadingItems, animated: false)
+
+            let trailingItems = (navigationItem.rightBarButtonItems ?? [])
+                .filter { $0 !== eventShareButton }
+            navigationItem.setRightBarButtonItems(trailingItems, animated: false)
+            return
+        }
+
         // Remove an older placement if this controller is shown again after a
         // system edit flow, while leaving the system close button untouched.
         let trailingItems = (navigationItem.rightBarButtonItems ?? [])
@@ -55,13 +71,14 @@ final class ShareableEventViewController: EKEventViewController {
     }
 
     @objc private func shareEvent() {
-        guard let event else { return }
+        guard let event, !SharedInviteTracker.isReadOnly(event) else { return }
         EventAppClipSharing.present(
             for: event,
             from: self,
             sourceBarButtonItem: eventShareButton
         )
     }
+
 }
 
 /// Обвивка, която вгражда системния детайлен изглед (EKEventViewController).
@@ -78,6 +95,12 @@ struct EventDetailViewWrapper: UIViewControllerRepresentable {
         /// Извиква се при натискане на "Done" или когато затворим прозореца.
         @MainActor func eventViewController(_ controller: EKEventViewController,
                                  didCompleteWith action: EKEventViewAction) {
+            if action == .deleted,
+               let identifier = parent.event.eventIdentifier {
+                SharedInviteTracker.forget(localEventIdentifier: identifier)
+                EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+                NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+            }
             controller.dismiss(animated: true)
         }
     }
@@ -93,8 +116,9 @@ struct EventDetailViewWrapper: UIViewControllerRepresentable {
         eventVC.event = event
         eventVC.delegate = context.coordinator
         
-        // Показваме бутони Edit/Delete
-        eventVC.allowsEditing = true
+        // Received App Clip invitations are read-only inside the app. Their
+        // dedicated trash action above still allows local removal.
+        eventVC.allowsEditing = !SharedInviteTracker.isReadOnly(event)
         // Позволява тап върху календара
         eventVC.allowsCalendarPreview = true
         eventVC.view.semanticContentAttribute = semanticDirection

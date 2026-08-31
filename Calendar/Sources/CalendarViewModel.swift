@@ -423,6 +423,7 @@ final class CalendarViewModel: ObservableObject {
         oldEventCalendarMap = newEventCalendarMap
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
         EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+        SharedEventSyncManager.eventStoreDidChange()
     }
 
     /// Търси в msToLocalCalendarMapAll дали даденият локален календар (localCalID)

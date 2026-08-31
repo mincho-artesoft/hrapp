@@ -115,10 +115,10 @@ struct CalendarApp: App {
             case .active:
                 print("App is active.")
 
-                // Invitations added inside the app are static copies until
-                // something re-reads their feed; doing it on activation is
-                // when the person is most likely to be looking at them.
-                Task { await SharedInviteRefresher.refreshAll() }
+                // Uses the same 20-second foreground cadence as the Google and
+                // Microsoft sync loops. It pushes organiser edits and pulls
+                // updated invite feeds, with an immediate pass on activation.
+                SharedEventSyncManager.start()
 
                 // If this device runs a booking page, keep it in step with the
                 // real calendar: push busy times up, pull new bookings down.
@@ -170,6 +170,7 @@ struct CalendarApp: App {
                 }
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
+                SharedEventSyncManager.stop()
                 stopPeriodicCalendarWidgetRefresh()
 
             case .inactive:

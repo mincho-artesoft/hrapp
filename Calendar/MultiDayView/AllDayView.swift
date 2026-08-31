@@ -218,6 +218,16 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         addSubview(ev)
         return ev
     }
+
+    public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer is UILongPressGestureRecognizer,
+           let eventView = gestureRecognizer.view as? EventView,
+           let descriptor = eventViewToDescriptor[eventView],
+           SharedInviteTracker.isReadOnly(descriptor) {
+            return false
+        }
+        return true
+    }
     
     // MARK: - Gesture Handling
     
@@ -235,7 +245,9 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
 
     @objc private func handleEventViewPan(_ gesture: UIPanGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
-              let descriptor = eventViewToDescriptor[evView] else { return }
+              let descriptor = eventViewToDescriptor[evView],
+              !SharedInviteTracker.isReadOnly(descriptor)
+        else { return }
         let point = gesture.location(in: self)
         switch gesture.state {
         // ─────────────────────────────────────────────────────────────────────────────

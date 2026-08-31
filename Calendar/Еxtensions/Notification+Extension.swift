@@ -7,5 +7,6 @@ extension Notification.Name {
     static let openEventNotificationDay = Notification.Name("openEventNotificationDay")
     static let openWeatherNotification = Notification.Name("openWeatherNotification")
     static let sharedEventImported = Notification.Name("sharedEventImported")
+    static let sharedEventsTrackingChanged = Notification.Name("sharedEventsTrackingChanged")
 
 }

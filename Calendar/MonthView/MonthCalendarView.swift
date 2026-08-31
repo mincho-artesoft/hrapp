@@ -234,7 +234,9 @@ extension MonthCalendarView {
     }
 
     private func handleEventDropped(_ eventID: String, on newDate: Date) {
-        guard let droppedEvent = viewModel.eventsByID[eventID] else { return }
+        guard let droppedEvent = viewModel.eventsByID[eventID],
+              !SharedInviteTracker.isReadOnly(droppedEvent)
+        else { return }
         
         if droppedEvent.hasRecurrenceRules {
             repeatingEvent = droppedEvent
@@ -246,6 +248,7 @@ extension MonthCalendarView {
     }
 
     private func moveEvent(_ event: EKEvent, to newDate: Date, span: EKSpan) {
+        guard !SharedInviteTracker.isReadOnly(event) else { return }
         let cal = Calendar.current
         let duration = event.endDate.timeIntervalSince(event.startDate)
         let startHour = cal.component(.hour, from: event.startDate)

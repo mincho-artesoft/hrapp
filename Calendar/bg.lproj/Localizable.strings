@@ -789,6 +789,11 @@
 "You can change your plan or billing period at any time." = "Можете да смените плана или периода на плащане по всяко време.";
 "Invites" = "Покани";
 "Cancelled" = "Отменено";
+"Shared by me" = "Споделени от мен";
+"Shared with me" = "Споделени с мен";
+"No shared events yet." = "Все още няма споделени събития.";
+"No one has shared an event with you yet." = "Все още няма събития, споделени с вас.";
+"Events you send from the share sheet appear here." = "Събитията, които изпращате от екрана за споделяне, се показват тук.";
 "Invitations go to" = "Поканите отиват в";
 "Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Поканите, които приемате, се добавят тук и се поддържат актуални. Ако подателят отмени някоя, тя остава видима, зачертана.";
 "Sample shared event" = "Примерно споделено събитие";
@@ -822,3 +827,5 @@
 "Linking…" = "Свързване…";
 "Head back to your browser — it's ready to finish setting up your booking page." = "Върнете се към браузъра си — той е готов да завърши настройването на страницата ви за резервации.";
 "The code may have expired. Reopen the QR on the web and try again." = "Кодът може да е изтекъл. Отворете отново QR кода в интернет и опитайте пак.";
+"Read-only shared event" = "Споделено събитие само за четене";
+"Remove from My Calendar" = "Премахване от моя календар";

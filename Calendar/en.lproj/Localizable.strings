@@ -793,6 +793,11 @@
 "You can change your plan or billing period at any time." = "You can change your plan or billing period at any time.";
 "Invites" = "Invites";
 "Cancelled" = "Cancelled";
+"Shared by me" = "Shared by me";
+"Shared with me" = "Shared with me";
+"No shared events yet." = "No shared events yet.";
+"No one has shared an event with you yet." = "No one has shared an event with you yet.";
+"Events you send from the share sheet appear here." = "Events you send from the share sheet appear here.";
 "Invitations go to" = "Invitations go to";
 "Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it.";
 "Sample shared event" = "Sample shared event";
@@ -826,3 +831,5 @@
 "Linking…" = "Linking…";
 "Head back to your browser — it's ready to finish setting up your booking page." = "Head back to your browser — it's ready to finish setting up your booking page.";
 "The code may have expired. Reopen the QR on the web and try again." = "The code may have expired. Reopen the QR on the web and try again.";
+"Read-only shared event" = "Read-only shared event";
+"Remove from My Calendar" = "Remove from My Calendar";

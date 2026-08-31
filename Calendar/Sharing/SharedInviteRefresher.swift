@@ -12,7 +12,7 @@ enum SharedInviteRefresher {
 
     @discardableResult
     static func refreshAll() async -> Int {
-        let invites = SharedInviteTracker.tracked().values.filter { !$0.isCancelled }
+        let invites = SharedInviteTracker.tracked().values
         guard !invites.isEmpty else { return 0 }
 
         var changed = 0
@@ -24,10 +24,21 @@ enum SharedInviteRefresher {
 
     /// Returns true when the local copy was actually altered.
     private static func refresh(_ invite: SharedInviteTracker.Invite) async -> Bool {
-        guard let url = URL(string: "https://\(feedHost)/f/\(invite.feedID).ics") else { return false }
+        guard var components = URLComponents(
+            string: "https://\(feedHost)/f/\(invite.feedID).ics"
+        ) else { return false }
+
+        // Every foreground poll must see the latest S3 object. The query value
+        // also avoids an intermediary CDN returning its cached previous body.
+        components.queryItems = [
+            URLQueryItem(name: "refresh", value: String(Int(Date().timeIntervalSince1970)))
+        ]
+        guard let url = components.url else { return false }
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
+        request.setValue("no-cache", forHTTPHeaderField: "Cache-Control")
 
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await URLSession.shared.data(for: request)
             if let http = response as? HTTPURLResponse, http.statusCode == 404 {
                 // The sender revoked this feed. The event stays where it is -
                 // silently deleting somebody's calendar entry would be worse
@@ -47,9 +58,11 @@ enum SharedInviteRefresher {
     }
 
     private static func apply(_ remote: ICSEvent, to invite: SharedInviteTracker.Invite) -> Bool {
-        // SEQUENCE only ever goes up, so an equal or lower one means we have
-        // already applied this revision and can skip the EventKit write.
-        guard remote.sequence > invite.lastSequence else { return false }
+        // Older server revisions must never overwrite a newer one. An equal
+        // revision is intentionally still compared with EventKit: recipients
+        // can edit this writable local copy from another calendar app, and the
+        // organiser's S3 version must win again on the next refresh.
+        guard remote.sequence >= invite.lastSequence else { return false }
 
         let store = CalendarViewModel.shared.eventStore
         guard let event = store.event(withIdentifier: invite.localEventIdentifier) else {
@@ -61,6 +74,8 @@ enum SharedInviteRefresher {
 
         var updated = invite
         updated.lastSequence = remote.sequence
+        updated.isCancelled = remote.isCancelled
+        var eventChanged = false
 
         if remote.isCancelled {
             // EKEvent.status is read-only, so the cancellation is carried in
@@ -70,20 +85,54 @@ enum SharedInviteRefresher {
                 "Cancelled",
                 comment: "Prefix on an invitation the organiser called off"
             )
-            let title = event.title ?? ""
-            if !title.hasPrefix("\(marker):") {
-                event.title = "\(marker): \(title)"
+            let remoteTitle = remote.summary?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let baseTitle = (remoteTitle?.isEmpty == false ? remoteTitle : nil)
+                ?? (event.title ?? "").replacingOccurrences(of: "\(marker): ", with: "")
+            let expectedTitle = "\(marker): \(baseTitle)"
+            if event.title != expectedTitle {
+                event.title = expectedTitle
+                eventChanged = true
             }
-            updated.isCancelled = true
         } else {
-            if let start = remote.start { event.startDate = start }
-            if let end = remote.end { event.endDate = max(end, event.startDate) }
-            if let summary = remote.summary, !summary.isEmpty { event.title = summary }
-            event.location = remote.location
+            if let summary = remote.summary,
+               !summary.isEmpty,
+               event.title != summary {
+                event.title = summary
+                eventChanged = true
+            }
         }
 
+        if let start = remote.start,
+           abs(event.startDate.timeIntervalSince(start)) >= 0.5 {
+            event.startDate = start
+            eventChanged = true
+        }
+        if let end = remote.end {
+            let safeEnd = max(end, event.startDate)
+            if abs(event.endDate.timeIntervalSince(safeEnd)) >= 0.5 {
+                event.endDate = safeEnd
+                eventChanged = true
+            }
+        }
+        if let isAllDay = remote.isAllDay,
+           event.isAllDay != isAllDay {
+            event.isAllDay = isAllDay
+            eventChanged = true
+        }
+
+        let remoteLocation = normalized(remote.location)
+        if normalized(event.location) != remoteLocation {
+            event.location = remoteLocation.isEmpty ? nil : remoteLocation
+            eventChanged = true
+        }
+
+        let trackingChanged = updated != invite
+        guard eventChanged || trackingChanged else { return false }
+
         do {
-            try store.save(event, span: .thisEvent, commit: true)
+            if eventChanged {
+                try store.save(event, span: .thisEvent, commit: true)
+            }
             SharedInviteTracker.update(updated)
             EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
             NotificationCenter.default.post(name: .sharedEventImported, object: nil)
@@ -92,6 +141,10 @@ enum SharedInviteRefresher {
             print("Invite update could not be saved - \(error.localizedDescription)")
             return false
         }
+    }
+
+    private static func normalized(_ value: String?) -> String {
+        value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
 }
 
@@ -103,6 +156,7 @@ struct ICSEvent {
     var location: String?
     var start: Date?
     var end: Date?
+    var isAllDay: Bool?
     var sequence: Int = 0
     var isCancelled: Bool = false
 
@@ -122,7 +176,9 @@ struct ICSEvent {
                 case "UID":       event.uid = value
                 case "SUMMARY":   event.summary = unescaped(value)
                 case "LOCATION":  event.location = unescaped(value)
-                case "DTSTART":   event.start = date(from: value, parameters: name)
+                case "DTSTART":
+                    event.start = date(from: value, parameters: name)
+                    event.isAllDay = name.contains("VALUE=DATE")
                 case "DTEND":     event.end = date(from: value, parameters: name)
                 case "SEQUENCE":  event.sequence = Int(value) ?? 0
                 case "STATUS":    event.isCancelled = value.uppercased() == "CANCELLED"

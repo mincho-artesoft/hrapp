@@ -113,7 +113,16 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     }
     
     public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        true
+        if gestureRecognizer is UILongPressGestureRecognizer {
+            let eventView = (gestureRecognizer.view as? EventView)
+                ?? (gestureRecognizer.view?.superview as? EventView)
+            if let eventView,
+               let descriptor = eventViewToDescriptor[eventView],
+               SharedInviteTracker.isReadOnly(descriptor) {
+                return false
+            }
+        }
+        return true
     }
     
     /// iOS ви пита: „Какво меню да покажа?“
@@ -123,6 +132,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         suggestedActions: [UIMenuElement]
     ) -> UIMenu? {
         guard let descriptor = currentTappedDescriptor else { return nil }
+        let isReadOnly = SharedInviteTracker.isReadOnly(descriptor)
         
         // ------------------------------------------------
         // Проверка дали евентът вече има някакъв видео линк:
@@ -187,42 +197,46 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         // ------------------------------------------------
         // (C) „Edit“ бутон
         // ------------------------------------------------
-        let editAction = UIAction(
-            title: NSLocalizedString("Edit", comment: ""),
-            image: UIImage(systemName: "square.and.pencil")
-        ) { action in
-            self.onEventTap?(descriptor)
-        }
-        children.append(editAction)
+        if !isReadOnly {
+            let editAction = UIAction(
+                title: NSLocalizedString("Edit", comment: ""),
+                image: UIImage(systemName: "square.and.pencil")
+            ) { _ in
+                self.onEventTap?(descriptor)
+            }
+            children.append(editAction)
 
         // ------------------------------------------------
         // (D) Share the event as an App Clip invocation link
         // ------------------------------------------------
-        let shareAction = UIAction(
-            title: NSLocalizedString("Share", comment: "Share event action"),
-            image: UIImage(systemName: "square.and.arrow.up")
-        ) { _ in
-            EventAppClipSharing.present(for: descriptor, from: self)
-        }
-        children.append(shareAction)
+            let shareAction = UIAction(
+                title: NSLocalizedString("Share", comment: "Share event action"),
+                image: UIImage(systemName: "square.and.arrow.up")
+            ) { _ in
+                EventAppClipSharing.present(for: descriptor, from: self)
+            }
+            children.append(shareAction)
 
         // ------------------------------------------------
         // (E) „Duplicate“ бутон
         // ------------------------------------------------
-        let duplicateAction = UIAction(
-            title: NSLocalizedString("Duplicate", comment: ""),
-            image: UIImage(systemName: "doc.on.doc")
-        ) { action in
-            self.duplicateEventInStore(descriptor)
-            self.onEventDuplicated?(descriptor)
+            let duplicateAction = UIAction(
+                title: NSLocalizedString("Duplicate", comment: ""),
+                image: UIImage(systemName: "doc.on.doc")
+            ) { _ in
+                self.duplicateEventInStore(descriptor)
+                self.onEventDuplicated?(descriptor)
+            }
+            children.append(duplicateAction)
         }
-        children.append(duplicateAction)
 
         // ------------------------------------------------
         // (F) „Delete“ бутон
         // ------------------------------------------------
         let deleteAction = UIAction(
-            title: NSLocalizedString("Delete", comment: ""),
+            title: isReadOnly
+                ? NSLocalizedString("Remove from My Calendar", comment: "Delete a received shared event locally")
+                : NSLocalizedString("Delete", comment: ""),
             image: UIImage(systemName: "trash"),
             attributes: .destructive
         ) { action in
@@ -234,7 +248,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         // ------------------------------------------------
         // (F) „Add to Google Meet“ (ако няма Meet линк)
         // ------------------------------------------------
-        if !CalendarViewModel.shared.storedUsers.isEmpty,
+        if !isReadOnly,
+           !CalendarViewModel.shared.storedUsers.isEmpty,
            CalendarViewModel.shared.isGoogleCalendarEvent(descriptor),
            !CalendarViewModel.shared.hasGoogleMeetLink(in: descriptor)
         {
@@ -250,7 +265,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         // ------------------------------------------------
         // (G) „Add to MS Teams“ (ако няма Teams линк)
         // ------------------------------------------------
-        if let msUser = CalendarViewModel.shared.findMicrosoftUser(for: descriptor),
+        if !isReadOnly,
+           let msUser = CalendarViewModel.shared.findMicrosoftUser(for: descriptor),
            !CalendarViewModel.shared.hasMicrosoftTeamsLink(in: descriptor)
         {
             let teamsAction = UIAction(
@@ -274,11 +290,15 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     private func deleteEventFromStore(_ descriptor: EventDescriptor) {
         guard let multi = descriptor as? EKMultiDayWrapper else { return }
         let realEv = multi.realEvent
+        let localIdentifier = realEv.eventIdentifier
         
         let store = CalendarViewModel.shared.eventStore // или откъдето си пазите EKEventStore
         
         do {
             try store.remove(realEv, span: .thisEvent, commit: true)
+            if let localIdentifier {
+                SharedInviteTracker.forget(localEventIdentifier: localIdentifier)
+            }
 //            print("Deleted event: \(realEv.title ?? "")")
         } catch {
             print("Error:", error)
@@ -924,6 +944,10 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         
         // 2) Активираме „edit“ режима за ново-селектирания
         guard let descriptor = eventViewToDescriptor[evView] else { return }
+        guard !SharedInviteTracker.isReadOnly(descriptor) else {
+            setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
+            return
+        }
         
         // Ако е многодневно, маркираме всички slice-ове на същото EKEvent
         if descriptor is EKMultiDayWrapper {
@@ -989,7 +1013,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     
     @objc private func handleEventViewPan(_ gesture: UILongPressGestureRecognizer) {
         guard let evView = gesture.view as? EventView,
-              let descriptor = eventViewToDescriptor[evView] else { return }
+              let descriptor = eventViewToDescriptor[evView],
+              !SharedInviteTracker.isReadOnly(descriptor)
+        else { return }
         
         var minsingEvent: [EventView] = []
         switch gesture.state {
@@ -1445,7 +1471,8 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         guard
             let handleView = gesture.view as? EventResizeHandleView,
             let eventView = handleView.superview as? EventView,
-            let desc = eventViewToDescriptor[eventView]
+            let desc = eventViewToDescriptor[eventView],
+            !SharedInviteTracker.isReadOnly(desc)
         else { return }
         isFirstResize = false
         let isTop = (handleView.tag == 0)  // Горна дръжка => tag = 0, Долна => tag = 1

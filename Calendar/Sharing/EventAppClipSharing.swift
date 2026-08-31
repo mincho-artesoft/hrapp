@@ -30,6 +30,7 @@ final class EventSharePromptManager: ObservableObject {
 
     func show(for event: EKEvent) {
         guard EventSharePromptSettings.isEnabled,
+              !SharedInviteTracker.isReadOnly(event),
               EventAppClipSharing.invocationURL(for: event) != nil
         else { return }
 
@@ -184,32 +185,16 @@ enum EventShareEndpoint {
 /// Stable identifiers that let a shared event be updated later instead of
 /// duplicated.
 ///
-/// `feedID` names this user's personal calendar feed. It is generated once on
-/// first share and then never changes, because every invite this user sends
-/// flows into that one subscribable feed.
-///
 /// `shareID(for:)` returns a stable identifier for a given event, so resharing
 /// the same event yields the same id. That is what lets a later update or
 /// cancellation replace the original entry rather than create a second one -
 /// the id becomes the `UID` in the generated `.ics`.
 enum EventShareIdentity {
     private static let appGroupIdentifier = "group.ARTE-SOFT.sandBOX"
-    private static let feedIDKey = "eventShare.feedID"
     private static let shareIDMapKey = "eventShare.shareIDsByEvent"
 
     private static var sharedDefaults: UserDefaults {
         UserDefaults(suiteName: appGroupIdentifier) ?? .standard
-    }
-
-    static var feedID: String {
-        let defaults = sharedDefaults
-        if let existing = defaults.string(forKey: feedIDKey), !existing.isEmpty {
-            return existing
-        }
-
-        let generated = randomIdentifier(length: 22)
-        defaults.set(generated, forKey: feedIDKey)
-        return generated
     }
 
     static func shareID(for event: EKEvent) -> String {
@@ -230,6 +215,12 @@ enum EventShareIdentity {
         return generated
     }
 
+    /// Used once to seed the new "Shared by me" list from shares created by
+    /// older builds, before successful share-sheet completions were tracked.
+    static var knownShareIDsByEvent: [String: String] {
+        sharedDefaults.dictionary(forKey: shareIDMapKey) as? [String: String] ?? [:]
+    }
+
     /// URL-safe alphabet with the look-alike characters removed, so an id
     /// survives being read aloud or retyped.
     private static let alphabet = Array(
@@ -238,6 +229,333 @@ enum EventShareIdentity {
 
     private static func randomIdentifier(length: Int) -> String {
         String((0..<length).compactMap { _ in alphabet.randomElement() })
+    }
+}
+
+/// A local index of events the person actually sent from the system share
+/// sheet. Event content still lives in EventKit and on the scoped server feed;
+/// this small record only makes the Sharing screen fast and available offline.
+@MainActor
+enum SharedOutgoingEventTracker {
+    struct Snapshot: Codable, Equatable {
+        let title: String
+        let start: Date
+        let end: Date
+        let isAllDay: Bool
+        let location: String?
+    }
+
+    struct SentEvent: Codable, Equatable, Identifiable {
+        let eventID: String
+        var localEventIdentifier: String?
+        var feedID: String?
+        var title: String
+        var start: Date
+        var end: Date
+        var isAllDay: Bool
+        var location: String?
+        var sharedAt: Date
+        /// The exact local state last accepted by the API. The display fields
+        /// above are refreshed from EventKit, so they cannot also be used to
+        /// decide whether something still needs uploading.
+        var lastUploadedSnapshot: Snapshot?
+        /// Nil in records written by older builds, false/true thereafter.
+        var isCancelled: Bool?
+
+        var id: String { eventID }
+    }
+
+    private static let appGroupIdentifier = "group.ARTE-SOFT.sandBOX"
+    private static let storageKey = "eventShare.sentEvents.v1"
+    private static let migrationKey = "eventShare.sentEventsMigrated.v1"
+
+    private static var defaults: UserDefaults {
+        UserDefaults(suiteName: appGroupIdentifier) ?? .standard
+    }
+
+    static func record(url: URL, localEventIdentifier: String?) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
+
+        var values: [String: String] = [:]
+        for item in components.queryItems ?? [] where values[item.name] == nil {
+            values[item.name] = item.value ?? ""
+        }
+
+        guard let eventID = values["e"], !eventID.isEmpty,
+              let title = values["title"], !title.isEmpty,
+              let startTimestamp = values["start"].flatMap(TimeInterval.init),
+              let endTimestamp = values["end"].flatMap(TimeInterval.init)
+        else { return }
+
+        let feedID = values["c"].flatMap { $0.isEmpty ? nil : $0 }
+        let parsedSnapshot = Snapshot(
+            title: title,
+            start: Date(timeIntervalSince1970: startTimestamp),
+            end: Date(timeIntervalSince1970: endTimestamp),
+            isAllDay: values["allDay"] == "1",
+            location: values["location"].flatMap { $0.isEmpty ? nil : $0 }
+        )
+        let eventSnapshot = localEventIdentifier
+            .flatMap { CalendarViewModel.shared.eventStore.event(withIdentifier: $0) }
+            .flatMap(snapshot(for:))
+
+        var all = load()
+        all[eventID] = SentEvent(
+            eventID: eventID,
+            localEventIdentifier: localEventIdentifier ?? all[eventID]?.localEventIdentifier,
+            feedID: feedID,
+            title: title,
+            start: parsedSnapshot.start,
+            end: parsedSnapshot.end,
+            isAllDay: parsedSnapshot.isAllDay,
+            location: parsedSnapshot.location,
+            sharedAt: Date(),
+            lastUploadedSnapshot: feedID == nil ? nil : (eventSnapshot ?? parsedSnapshot),
+            isCancelled: false
+        )
+        save(all)
+        NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+    }
+
+    static func sentEvents(in eventStore: EKEventStore) -> [SentEvent] {
+        migrateLegacySharesIfNeeded(in: eventStore)
+
+        var all = load()
+        var changed = false
+
+        for (id, record) in all {
+            guard let localEventIdentifier = record.localEventIdentifier,
+                  let event = eventStore.event(withIdentifier: localEventIdentifier)
+            else { continue }
+
+            var refreshed = record
+            refreshed.title = event.title ?? record.title
+            refreshed.start = event.startDate
+            refreshed.end = event.endDate
+            refreshed.isAllDay = event.isAllDay
+            refreshed.location = event.location
+
+            if refreshed != record {
+                all[id] = refreshed
+                changed = true
+            }
+        }
+
+        if changed { save(all) }
+        return all.values.sorted {
+            if $0.start == $1.start { return $0.sharedAt > $1.sharedAt }
+            return $0.start < $1.start
+        }
+    }
+
+    /// Pushes edits made to the organiser's original EventKit events into the
+    /// scoped feeds already handed to recipients. A missing original is sent
+    /// as a cancellation once, rather than deleting recipients' local copies.
+    @discardableResult
+    static func syncAll(in eventStore: EKEventStore) async -> Int {
+        guard let session = CalendarFeedSession.existing else { return 0 }
+
+        var changedCount = 0
+        for original in load().values {
+            guard let localIdentifier = original.localEventIdentifier,
+                  let event = eventStore.event(withIdentifier: localIdentifier)
+            else {
+                // A legacy entry with no feed was never syncable, so there is
+                // no remote recipient to notify about its deletion.
+                guard original.feedID != nil, original.isCancelled != true else { continue }
+                do {
+                    try await CloudCalendarsAPI.cancelEvent(id: original.eventID, session: session)
+                    updatePersisted(original.eventID) { current in
+                        current.isCancelled = true
+                    }
+                    changedCount += 1
+                } catch {
+                    print("Shared-event cancellation failed for \(original.eventID) - \(error.localizedDescription)")
+                }
+                continue
+            }
+
+            // A received copy can never become a new owner revision, even if
+            // corrupt local bookkeeping accidentally put it in both indexes.
+            guard !SharedInviteTracker.isReadOnly(event),
+                  let currentSnapshot = snapshot(for: event)
+            else { continue }
+
+            let needsFeedRecovery = original.feedID == nil
+            guard needsFeedRecovery
+                    || currentSnapshot != original.lastUploadedSnapshot
+                    || original.isCancelled == true
+            else { continue }
+
+            let upload = SharedEventUpload(
+                id: original.eventID,
+                title: currentSnapshot.title,
+                start: currentSnapshot.start,
+                end: currentSnapshot.end,
+                isAllDay: currentSnapshot.isAllDay,
+                location: currentSnapshot.location,
+                organizerName: nil,
+                organizerEmail: nil
+            )
+
+            do {
+                try await CloudCalendarsAPI.upsertEvent(upload, session: session)
+                // Older builds knew the stable event id but did not persist the
+                // scoped feed id. Grant creation is idempotent for an event, so
+                // this recovers the exact feed the recipient already follows.
+                let recoveredFeedID: String?
+                if needsFeedRecovery {
+                    let grant = try await CloudCalendarsAPI.createGrant(
+                        role: "viewer",
+                        eventId: original.eventID,
+                        feedName: currentSnapshot.title,
+                        session: session
+                    )
+                    recoveredFeedID = grant.feedId
+                } else {
+                    recoveredFeedID = original.feedID
+                }
+
+                updatePersisted(original.eventID) { current in
+                    current.feedID = recoveredFeedID
+                    current.title = currentSnapshot.title
+                    current.start = currentSnapshot.start
+                    current.end = currentSnapshot.end
+                    current.isAllDay = currentSnapshot.isAllDay
+                    current.location = currentSnapshot.location
+                    current.lastUploadedSnapshot = currentSnapshot
+                    current.isCancelled = false
+                }
+                changedCount += 1
+            } catch {
+                print("Shared-event upload failed for \(original.eventID) - \(error.localizedDescription)")
+            }
+        }
+
+        if changedCount > 0 {
+            NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+        }
+        return changedCount
+    }
+
+    private static func migrateLegacySharesIfNeeded(in eventStore: EKEventStore) {
+        guard !defaults.bool(forKey: migrationKey) else { return }
+
+        var all = load()
+        for (localEventIdentifier, eventID) in EventShareIdentity.knownShareIDsByEvent {
+            guard all[eventID] == nil,
+                  let event = eventStore.event(withIdentifier: localEventIdentifier),
+                  let start = event.startDate,
+                  let end = event.endDate
+            else { continue }
+
+            all[eventID] = SentEvent(
+                eventID: eventID,
+                localEventIdentifier: localEventIdentifier,
+                feedID: nil,
+                title: event.title ?? NSLocalizedString("Shared event", comment: "Fallback shared event title"),
+                start: start,
+                end: end,
+                isAllDay: event.isAllDay,
+                location: event.location,
+                sharedAt: Date(),
+                lastUploadedSnapshot: nil,
+                isCancelled: nil
+            )
+        }
+
+        save(all)
+        defaults.set(true, forKey: migrationKey)
+    }
+
+    private static func load() -> [String: SentEvent] {
+        guard let data = defaults.data(forKey: storageKey),
+              let decoded = try? JSONDecoder().decode([String: SentEvent].self, from: data)
+        else { return [:] }
+        return decoded
+    }
+
+    private static func save(_ all: [String: SentEvent]) {
+        guard let data = try? JSONEncoder().encode(all) else { return }
+        defaults.set(data, forKey: storageKey)
+    }
+
+    private static func snapshot(for event: EKEvent) -> Snapshot? {
+        guard let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !title.isEmpty,
+              let start = event.startDate,
+              let end = event.endDate
+        else { return nil }
+
+        return Snapshot(
+            title: title,
+            start: start,
+            end: end,
+            isAllDay: event.isAllDay,
+            location: event.location
+        )
+    }
+
+    private static func updatePersisted(
+        _ eventID: String,
+        update: (inout SentEvent) -> Void
+    ) {
+        // Re-read after every network await so a share completed in the
+        // meantime cannot be overwritten by an older in-memory dictionary.
+        var all = load()
+        guard var current = all[eventID] else { return }
+        update(&current)
+        all[eventID] = current
+        save(all)
+    }
+}
+
+/// App Clip shares use the same foreground cadence as the Google and Microsoft
+/// synchronisers: push organiser edits, then pull recipient feeds every 20s.
+@MainActor
+enum SharedEventSyncManager {
+    private static let interval: TimeInterval = 20
+    private static var timer: Timer?
+    private static var changeTask: Task<Void, Never>?
+    private static var isSyncing = false
+
+    static func start() {
+        guard timer == nil else { return }
+
+        Task { await syncNow() }
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
+            Task { @MainActor in
+                await syncNow()
+            }
+        }
+    }
+
+    static func stop() {
+        timer?.invalidate()
+        timer = nil
+        changeTask?.cancel()
+        changeTask = nil
+    }
+
+    /// EventKit can emit several notifications for one Save. Debouncing keeps
+    /// immediate sync responsive without producing duplicate API revisions.
+    static func eventStoreDidChange() {
+        changeTask?.cancel()
+        changeTask = Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(700))
+            guard !Task.isCancelled else { return }
+            await syncNow()
+        }
+    }
+
+    static func syncNow() async {
+        guard !isSyncing else { return }
+        isSyncing = true
+        defer { isSyncing = false }
+
+        let store = CalendarViewModel.shared.eventStore
+        _ = await SharedOutgoingEventTracker.syncAll(in: store)
+        _ = await SharedInviteRefresher.refreshAll()
     }
 }
 
@@ -309,11 +627,17 @@ enum EventAppClipSharing {
         components.path = EventShareEndpoint.path
 
         // `e` and `c` are what make the event syncable later: `e` is its stable
-        // UID, `c` names the sender's personal feed. The inline fields below are
-        // kept so the App Clip can draw the event with no network round-trip.
+        // UID, while `c` is the server-issued id of the scoped S3 feed. Never
+        // invent `c` locally: a link must not claim to sync unless that file
+        // really exists. The inline fields let the App Clip render offline.
         var queryItems = EventShareEndpoint.routingQueryItems + [
             URLQueryItem(name: "e", value: shareID),
-            URLQueryItem(name: "c", value: feedID ?? EventShareIdentity.feedID),
+        ]
+        if let feedID = feedID?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !feedID.isEmpty {
+            queryItems.append(URLQueryItem(name: "c", value: feedID))
+        }
+        queryItems += [
             URLQueryItem(name: "title", value: limited(normalizedTitle, to: 120)),
             URLQueryItem(name: "start", value: String(start.timeIntervalSince1970)),
             URLQueryItem(name: "end", value: String(end.timeIntervalSince1970)),
@@ -345,6 +669,10 @@ enum EventAppClipSharing {
     /// be the worse trade.
     @MainActor
     private static func syncedFeedID(for event: EKEvent) async -> String? {
+        // A received invitation follows somebody else's scoped feed. Never
+        // turn the recipient's local EventKit copy into a new server revision.
+        guard !SharedInviteTracker.isReadOnly(event) else { return nil }
+
         guard let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines),
               !title.isEmpty,
               let start = event.startDate,
@@ -382,6 +710,7 @@ enum EventAppClipSharing {
 
     @MainActor
     static func shareableURL(for event: EKEvent) async -> URL? {
+        guard !SharedInviteTracker.isReadOnly(event) else { return nil }
         let feedID = await syncedFeedID(for: event)
         return invocationURL(for: event, feedID: feedID)
     }
@@ -396,6 +725,7 @@ enum EventAppClipSharing {
         guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else {
             return invocationURL(for: descriptor)
         }
+        guard !SharedInviteTracker.isReadOnly(event) else { return nil }
         let feedID = await syncedFeedID(for: event)
         return invocationURL(for: descriptor, feedID: feedID)
     }
@@ -406,7 +736,12 @@ enum EventAppClipSharing {
     static func present(for descriptor: EventDescriptor, from sourceView: UIView) {
         Task { @MainActor in
             guard let url = await shareableURL(for: descriptor) else { return }
-            presentSheet(with: url, from: presentingViewController(from: sourceView)) { popover in
+            let localEventIdentifier = (descriptor as? EKMultiDayWrapper)?.realEvent.eventIdentifier
+            presentSheet(
+                with: url,
+                localEventIdentifier: localEventIdentifier,
+                from: presentingViewController(from: sourceView)
+            ) { popover in
                 popover.sourceView = sourceView
                 popover.sourceRect = CGRect(
                     x: sourceView.bounds.midX,
@@ -426,7 +761,11 @@ enum EventAppClipSharing {
     ) {
         Task { @MainActor in
             guard let url = await shareableURL(for: event) else { return }
-            presentSheet(with: url, from: presenter) { popover in
+            presentSheet(
+                with: url,
+                localEventIdentifier: event.eventIdentifier,
+                from: presenter
+            ) { popover in
                 popover.barButtonItem = sourceBarButtonItem
             }
         }
@@ -439,7 +778,11 @@ enum EventAppClipSharing {
                   let presenter = activePresentingViewController()
             else { return }
 
-            presentSheet(with: url, from: presenter) { popover in
+            presentSheet(
+                with: url,
+                localEventIdentifier: event.eventIdentifier,
+                from: presenter
+            ) { popover in
                 popover.sourceView = presenter.view
                 popover.sourceRect = CGRect(
                     x: presenter.view.bounds.midX,
@@ -456,6 +799,7 @@ enum EventAppClipSharing {
     @MainActor
     private static func presentSheet(
         with url: URL,
+        localEventIdentifier: String?,
         from presenter: UIViewController?,
         configurePopover: (UIPopoverPresentationController) -> Void
     ) {
@@ -465,6 +809,15 @@ enum EventAppClipSharing {
             activityItems: [url],
             applicationActivities: nil
         )
+        activityController.completionWithItemsHandler = { _, completed, _, _ in
+            guard completed else { return }
+            Task { @MainActor in
+                SharedOutgoingEventTracker.record(
+                    url: url,
+                    localEventIdentifier: localEventIdentifier
+                )
+            }
+        }
         if let popover = activityController.popoverPresentationController {
             configurePopover(popover)
         }

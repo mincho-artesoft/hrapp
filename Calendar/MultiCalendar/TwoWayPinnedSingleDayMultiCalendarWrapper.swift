@@ -162,6 +162,10 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
     // MARK: - Coordinator
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate, @preconcurrency EKEventViewDelegate {
         @MainActor public func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
+            if action == .deleted,
+               let identifier = controller.event?.eventIdentifier {
+                SharedInviteTracker.forget(localEventIdentifier: identifier)
+            }
             controller.dismiss(animated: true) {
                 self.reloadCurrentRange()
             }
@@ -308,6 +312,10 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         }
         
         @MainActor public func presentSystemEditor(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+            guard !SharedInviteTracker.isReadOnly(ekEvent) else {
+                presentSystemDetails(ekEvent, in: parentVC)
+                return
+            }
             currentlyEditingEventWasNew = ekEvent.eventIdentifier == nil
             let editVC = EKEventEditViewController()
             editVC.eventStore = parent.eventStore
@@ -365,6 +373,10 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         ) {
             if let multi = descriptor as? EKMultiDayWrapper {
                 let ev = multi.realEvent
+                guard !SharedInviteTracker.isReadOnly(ev) else {
+                    reloadCurrentRange()
+                    return
+                }
                 if ev.hasRecurrenceRules {
                     askUserForRecurring(event: ev, newDate: newDate, isResize: isResize)
                 } else {
@@ -416,6 +428,10 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             span: EKSpan,
             isAllDay: Bool
         ) {
+            guard !SharedInviteTracker.isReadOnly(event) else {
+                reloadCurrentRange()
+                return
+            }
             guard let oldStart = event.startDate, let oldEnd = event.endDate else { return }
             if isAllDay {
                 event.startDate = newStartDate
@@ -440,6 +456,10 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             forcedNewDate: Date,
             span: EKSpan
         ) {
+            guard !SharedInviteTracker.isReadOnly(event) else {
+                reloadCurrentRange()
+                return
+            }
             if let multi = descriptor as? EKMultiDayWrapper {
                 let originalInterval = multi.dateInterval
                 let distanceToStart = forcedNewDate.timeIntervalSince(originalInterval.start)
@@ -470,7 +490,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             let eventVC = ShareableEventViewController()
             eventVC.event = ekEvent
             eventVC.delegate = self
-            eventVC.allowsEditing = true              // Показва „Edit“ и „Delete Event“
+            eventVC.allowsEditing = !SharedInviteTracker.isReadOnly(ekEvent)
             eventVC.allowsCalendarPreview = true      // Разрешава тап върху датата/календара
 
             // Презентирате го модално в нав. контролер:

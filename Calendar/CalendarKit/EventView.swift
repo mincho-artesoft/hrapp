@@ -19,7 +19,7 @@ open class EventView: UIView {
         view.textContainer.lineFragmentPadding = 0
         return view
     }()
-    
+
     /// Resize Handle views showing up when editing the event.
     /// The top handle has a tag of `0` and the bottom has a tag of `1`
     public private(set) lazy var eventResizeHandles = [EventResizeHandleView(), EventResizeHandleView()]
@@ -48,6 +48,7 @@ open class EventView: UIView {
     public func updateWithDescriptor(event: EventDescriptor) {
         descriptor = event
         guard let wrapper = event as? EKMultiDayWrapper else { return }
+        let isReadOnly = SharedInviteTracker.isReadOnly(wrapper.realEvent)
         
         // Calendar info
         let eventCalendar = wrapper.realEvent.calendar
@@ -95,10 +96,25 @@ open class EventView: UIView {
             finalString.append(NSAttributedString(string: " ", attributes: textAttributes))
         }
 
-        // 2) Title
+        // 2) Received-event lock, followed by one space and the title.
+        if isReadOnly {
+            let lockAttachment = NSTextAttachment()
+            lockAttachment.image = UIImage(systemName: "lock.fill")?
+                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+            lockAttachment.bounds = CGRect(
+                x: 0,
+                y: -1,
+                width: iconSize.width,
+                height: iconSize.height
+            )
+            finalString.append(NSAttributedString(attachment: lockAttachment))
+            finalString.append(NSAttributedString(string: " ", attributes: textAttributes))
+        }
+
+        // 3) Title
         finalString.append(NSAttributedString(string: wrapper.text, attributes: textAttributes))
 
-        // 3) Video call line
+        // 4) Video call line
         if let notes = wrapper.realEvent.notes,
            notes.contains("----( Video Call )----") {
             let bracketRegex = "\\[([^\\]]+)\\]"
@@ -115,7 +131,7 @@ open class EventView: UIView {
             }
         }
 
-        // 4) Time display (with 12h/24h detection)
+        // 5) Time display (with 12h/24h detection)
         if !event.isAllDay {
             finalString.append(NSAttributedString(string: "\n"))
             let clockIcon = NSTextAttachment()
@@ -147,7 +163,7 @@ open class EventView: UIView {
             )
         }
 
-        // 5) Location line
+        // 6) Location line
         if let loc = wrapper.realEvent.location, !loc.isEmpty {
             finalString.append(NSAttributedString(string: "\n"))
             let locAttachment = NSTextAttachment()
@@ -179,7 +195,7 @@ open class EventView: UIView {
         color = event.color
         eventResizeHandles.forEach {
             $0.borderColor = event.color
-            $0.isHidden = event.editedEvent == nil
+            $0.isHidden = isReadOnly || event.editedEvent == nil
         }
         setNeedsDisplay()
         setNeedsLayout()

@@ -76,10 +76,18 @@ struct DayCellView: View {
     private func eventCapsule(_ event: EKEvent) -> some View {
         let color = Color(UIColor(cgColor: event.calendar.cgColor ?? UIColor.systemGray.cgColor))
 
-        return Text(event.title)
+        return HStack(spacing: 2) {
+            if SharedInviteTracker.isReadOnly(event) {
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 7, weight: .semibold))
+                    .accessibilityLabel(LocalizedStringKey("Read-only shared event"))
+            }
+
+            Text(event.title)
+                .lineLimit(1)
+        }
             .font(.caption2)
             .foregroundColor(.white)
-            .lineLimit(1)
             .minimumScaleFactor(0.45)
             .allowsTightening(true)
             .padding(.horizontal, 6)

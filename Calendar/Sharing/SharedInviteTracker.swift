@@ -54,6 +54,33 @@ enum SharedInviteTracker {
         save(all)
     }
 
+    /// Imported invitations are writable EventKit copies, but inside this app
+    /// the organiser's S3 feed remains their source of truth. Keeping this
+    /// decision here gives every editor, drag gesture, and share action the
+    /// same answer.
+    static func isReadOnly(_ event: EKEvent) -> Bool {
+        guard let identifier = event.eventIdentifier else { return false }
+        return invite(localEventIdentifier: identifier) != nil
+    }
+
+    static func isReadOnly(_ descriptor: EventDescriptor) -> Bool {
+        guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return false }
+        return isReadOnly(event)
+    }
+
+    static func invite(localEventIdentifier: String) -> Invite? {
+        tracked().values.first { $0.localEventIdentifier == localEventIdentifier }
+    }
+
+    /// Called after the recipient deliberately removes their local copy. The
+    /// feed must be forgotten too, otherwise a future refresh could recreate
+    /// something the person explicitly removed.
+    static func forget(localEventIdentifier: String) {
+        guard let invite = invite(localEventIdentifier: localEventIdentifier) else { return }
+        forget(eventID: invite.eventID)
+        NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+    }
+
     /// Whether this event was called off by whoever sent it. The app draws such
     /// events struck through rather than removing them - the same thing Apple's
     /// Calendar does, and for the same reason: seeing that a meeting was called

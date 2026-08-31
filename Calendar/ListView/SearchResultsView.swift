@@ -116,12 +116,16 @@ struct SearchResultsView: View {
             }
         }
         .sheet(item: $eventToEdit) { event in
-            EventEditViewWrapper(
-                eventStore: CalendarViewModel.shared.eventStore,
-                event: event
-            ) {
-                let currentYear = Calendar.current.component(.year, from: Date())
-                viewModel.loadEventsForWholeYear(year: currentYear)
+            if SharedInviteTracker.isReadOnly(event) {
+                EventDetailViewWrapper(event: event)
+            } else {
+                EventEditViewWrapper(
+                    eventStore: CalendarViewModel.shared.eventStore,
+                    event: event
+                ) {
+                    let currentYear = Calendar.current.component(.year, from: Date())
+                    viewModel.loadEventsForWholeYear(year: currentYear)
+                }
             }
         }
     }
