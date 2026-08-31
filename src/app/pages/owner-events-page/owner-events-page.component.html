@@ -1,0 +1,116 @@
+<section class="oe" [attr.dir]="locale.dir">
+  <div class="oe__shell">
+    <header class="oe__head">
+      <p class="eyebrow">Cloud Calendars</p>
+      <h1 class="oe__title">{{ copy.ownerTitle }}</h1>
+      <p class="oe__lead">{{ copy.ownerLead }}</p>
+    </header>
+
+    @if (ready() && !signedIn()) {
+      <div class="card oe__card oe__signin">
+        <p>{{ copy.ownerLead }}</p>
+        <a class="btn btn--primary" [href]="setupHref">{{ copy.ownerEntry }}</a>
+      </div>
+    } @else if (ready()) {
+      @if (justShared(); as s) {
+        <div class="card oe__shared">
+          <div class="oe__check">✓</div>
+          <p class="oe__shared-title">{{ s.title }}</p>
+          <p class="oe__result-label">{{ copy.shareLabel }}</p>
+          <div class="oe__link">
+            <input type="text" [value]="s.publicUrl" readonly (focus)="$any($event.target).select()" />
+            <button type="button" class="btn btn--primary" (click)="copyLink(s.publicUrl)">{{ copied() ? copy.copied : copy.copy }}</button>
+          </div>
+          <a class="oe__open" [href]="s.publicUrl" target="_blank" rel="noopener">{{ s.publicUrl }}</a>
+        </div>
+      }
+
+      <!-- Create -->
+      <div class="card oe__card">
+        <h2 class="oe__h2">{{ copy.newEventHeading }}</h2>
+        <label class="oe__field">
+          <span>{{ copy.fTitle }}</span>
+          <input type="text" [(ngModel)]="form.title" [placeholder]="copy.fTitlePlaceholder" name="t" />
+        </label>
+        <div class="oe__grid2">
+          <label class="oe__field"><span>{{ copy.fStart }}</span><input type="datetime-local" [(ngModel)]="form.start" name="s" /></label>
+          <label class="oe__field"><span>{{ copy.fEnd }}</span><input type="datetime-local" [(ngModel)]="form.end" name="e" /></label>
+        </div>
+        <label class="oe__field">
+          <span>{{ copy.fLocation }}</span>
+          <input type="text" [(ngModel)]="form.location" [placeholder]="copy.fLocationPlaceholder" name="l" />
+        </label>
+        <label class="oe__field">
+          <span>{{ copy.fDescription }}</span>
+          <input type="text" [(ngModel)]="form.description" [placeholder]="copy.fDescriptionPlaceholder" name="d" />
+        </label>
+        <label class="oe__field oe__field--sm">
+          <span>{{ copy.fCapacity }}</span>
+          <input type="number" min="1" [(ngModel)]="form.capacity" [placeholder]="copy.fCapacityPlaceholder" name="c" />
+        </label>
+        @if (errorMsg()) { <p class="oe__err">{{ errorMsg() }}</p> }
+        <button type="button" class="btn btn--primary btn--lg" [disabled]="creating()" (click)="create()">
+          {{ creating() ? copy.publishing : copy.publishCta }}
+        </button>
+      </div>
+
+      <!-- List -->
+      <div class="oe__list">
+        <h2 class="oe__h2">{{ copy.yourEventsHeading }}</h2>
+        @if (events().length === 0) {
+          <p class="oe__muted">{{ copy.noEvents }}</p>
+        } @else {
+          @for (ev of events(); track ev.id) {
+            <div class="card oe__item" [class.is-off]="ev.status === 'cancelled'">
+              <div class="oe__item-row">
+                <div class="oe__item-info">
+                  <p class="oe__item-title">{{ ev.title }}</p>
+                  <p class="oe__item-when">{{ whenText(ev) }}</p>
+                </div>
+                <div class="oe__item-meta">
+                  @if (ev.status === 'cancelled') {
+                    <span class="oe__badge">{{ copy.cancelledBadge }}</span>
+                  } @else {
+                    <span class="oe__count">{{ ev.registrants }} {{ copy.registeredCount }}</span>
+                  }
+                </div>
+              </div>
+
+              @if (ev.status !== 'cancelled') {
+                <div class="oe__actions">
+                  @if (ev.publicUrl) {
+                    <button type="button" class="oe__act" (click)="copyLink(ev.publicUrl!)">{{ copy.copy }}</button>
+                  }
+                  <button type="button" class="oe__act" (click)="toggleRegistrants(ev)">
+                    {{ expandedId() === ev.id ? copy.hideRegistrants : copy.viewRegistrants }}
+                  </button>
+                  <button type="button" class="oe__act" [class.is-open]="reschedulingId() === ev.id" (click)="startReschedule(ev)">{{ copy.changeTime }}</button>
+                  <button type="button" class="oe__act oe__act--danger" [disabled]="busyId() === ev.id" (click)="cancelEvent(ev)">{{ copy.cancelEvent }}</button>
+                </div>
+
+                @if (reschedulingId() === ev.id) {
+                  <div class="oe__resched">
+                    <input type="datetime-local" [ngModel]="newStart()" (ngModelChange)="newStart.set($event)" name="ns" />
+                    <button type="button" class="btn btn--primary" [disabled]="!newStart() || busyId() === ev.id" (click)="confirmReschedule(ev)">{{ copy.changeTime }}</button>
+                  </div>
+                }
+
+                @if (expandedId() === ev.id) {
+                  <div class="oe__regs">
+                    @if (registrants().length === 0) {
+                      <p class="oe__muted">{{ copy.noEvents }}</p>
+                    } @else {
+                      @for (r of registrants(); track r.email) {
+                        <div class="oe__reg"><span>{{ r.name }}</span><span class="oe__reg-email">{{ r.email }}</span></div>
+                      }
+                    }
+                  </div>
+                }
+              }
+            </div>
+          }
+        }
+      </div>
+    }
+  </div>
+</section>

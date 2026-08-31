@@ -23,6 +23,7 @@ import {
 import { bookingSetupCopyFor } from '../../content/booking/setup-registry';
 import { ownerManageCopyFor } from '../../content/booking/owner-manage-registry';
 import { bookingLinkCopyFor } from '../../content/booking/link-registry';
+import { eventCopyFor } from '../../content/booking/event-registry';
 import {
   AvailabilityGridComponent,
   AvailabilityWindow,
@@ -57,6 +58,9 @@ export class BookingSetupPageComponent implements OnInit {
   /** The "already have the app? link this browser" entry to the pairing screen. */
   protected linkEntry = bookingLinkCopyFor(DEFAULT_LOCALE.code).entryLink;
   protected linkHref = '/book/link/';
+  /** Entry to the shareable-events page. */
+  protected eventsEntry = eventCopyFor(DEFAULT_LOCALE.code).ownerEntry;
+  protected eventsHref = '/book/events/';
 
   protected readonly mode = signal<'form' | 'saving' | 'done'>('form');
   protected readonly errorMsg = signal<string | null>(null);
@@ -130,6 +134,8 @@ export class BookingSetupPageComponent implements OnInit {
     this.manageCopy = ownerManageCopyFor(this.locale.code);
     this.linkEntry = bookingLinkCopyFor(this.locale.code).entryLink;
     this.linkHref = localePath(this.locale, '/book/link') + '/';
+    this.eventsEntry = eventCopyFor(this.locale.code).ownerEntry;
+    this.eventsHref = localePath(this.locale, '/book/events') + '/';
 
     this.seo.apply({
       title: this.copy.seoTitle,

@@ -72,6 +72,71 @@ export interface MyBooking {
   typeName: string | null;
 }
 
+/** What an owner sends to publish a shareable fixed-date event. */
+export interface SharedEventInput {
+  title: string;
+  start: string;
+  end: string;
+  location?: string | null;
+  description?: string | null;
+  capacity?: number | null;
+}
+
+/** A shareable event as its owner sees it. */
+export interface OwnerSharedEvent {
+  id: string;
+  handle: string | null;
+  title: string;
+  start: string;
+  end: string;
+  location: string | null;
+  description: string | null;
+  capacity: number | null;
+  status: string;
+  registrants: number;
+  publicUrl: string | null;
+}
+
+/** The public view of a shareable event, before someone registers. */
+export interface PublicEvent {
+  handle: string;
+  title: string;
+  start: string;
+  end: string;
+  location: string | null;
+  description: string | null;
+  displayName: string;
+  timeZone: string;
+  capacity: number | null;
+  spotsLeft: number | null;
+  closed: boolean;
+  cancelled: boolean;
+}
+
+export interface EventRegistrant {
+  name: string;
+  email: string;
+  registeredAt: string;
+}
+
+/** What the registrant's manage page shows, resolved from their token. */
+export interface RegistrationView {
+  name: string;
+  email: string;
+  cancelled: boolean;
+  displayName: string;
+  timeZone: string;
+  event: { title: string; start: string; end: string; location: string | null };
+}
+
+export interface EventRegisterResult {
+  registered: boolean;
+  already?: boolean;
+  event: { title: string; start: string; end: string; location: string | null };
+  invitee: { feedUrl: string; webcal: string };
+  manage: { token: string; url: string };
+}
+
 /** One weekly opening: `day` 0–6 (Sun–Sat), `start`/`end` minutes from local midnight. */
 export interface AvailabilityRule {
   day: number;
@@ -190,6 +255,67 @@ export class BookingApiService {
     return this.get<{ email: string; bookings: MyBooking[] }>(
       `/me/bookings?s=${encodeURIComponent(session)}`,
     );
+  }
+
+  // ── shareable fixed-date events ───────────────────────────────────────────
+
+  /** Owner-gated: publish a shareable fixed-date event, returns its public link. */
+  async createSharedEvent(token: string, input: SharedEventInput): Promise<OwnerSharedEvent & { publicUrl: string }> {
+    const res = await this.post<{ event: OwnerSharedEvent; publicUrl: string }>('/shared-events', input, token);
+    return { ...res.event, publicUrl: res.publicUrl } as any;
+  }
+
+  /** Owner-gated: every shareable event this owner has published. */
+  async ownerSharedEvents(token: string): Promise<OwnerSharedEvent[]> {
+    const res = await this.get<{ events: OwnerSharedEvent[] }>('/shared-events', token);
+    return res.events ?? [];
+  }
+
+  /** Owner-gated: who has registered for one event. */
+  async eventRegistrants(token: string, eventId: string): Promise<EventRegistrant[]> {
+    const res = await this.get<{ registrants: EventRegistrant[] }>(
+      `/shared-events/${encodeURIComponent(eventId)}/registrants`, token,
+    );
+    return res.registrants ?? [];
+  }
+
+  /** Owner-gated: move a shareable event; every registrant is notified. */
+  async rescheduleSharedEvent(token: string, eventId: string, start: string): Promise<void> {
+    await this.post(`/shared-events/${encodeURIComponent(eventId)}/reschedule`, { start }, token);
+  }
+
+  /** Owner-gated: cancel a shareable event; every registrant is notified. */
+  async cancelSharedEvent(token: string, eventId: string): Promise<void> {
+    await this.post(`/shared-events/${encodeURIComponent(eventId)}/cancel`, {}, token);
+  }
+
+  /** Public: the event behind a shared link. */
+  async publicEvent(handle: string): Promise<PublicEvent> {
+    return this.get<PublicEvent>(`/e/${encodeURIComponent(handle)}`);
+  }
+
+  /** Public: register for an event with just a name and e-mail. */
+  async registerForEvent(handle: string, payload: { name: string; email: string }): Promise<EventRegisterResult> {
+    const res = await fetch(`${API}/e/${encodeURIComponent(handle)}/register`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new BookingError(res.status, body.error ?? 'Registration failed');
+    }
+    return res.json();
+  }
+
+  /** Public: resolve a registrant's token to their spot. */
+  async registration(token: string): Promise<RegistrationView> {
+    return this.get<RegistrationView>(`/registration/${encodeURIComponent(token)}`);
+  }
+
+  /** Public: cancel your own registration. */
+  async cancelRegistration(token: string): Promise<void> {
+    await this.post(`/registration/${encodeURIComponent(token)}/cancel`, {});
   }
 
   // ── pairing: link this browser to the installed app ──────────────────────

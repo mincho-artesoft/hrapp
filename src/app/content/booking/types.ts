@@ -286,3 +286,81 @@ export interface BookingLinkCopy {
   /** Link from here back to creating a brand-new standalone page. */
   readonly newInstead: string;
 }
+
+/**
+ * Shareable fixed-date events: the attendee-facing pages (the public event page
+ * at `/event?e=…` and the registrant's manage page at `/event/manage?t=…`) and
+ * the owner's create/manage page at `/book/events`. One event, many people
+ * register with just their e-mail; each gets only that event plus notifications.
+ */
+export interface EventCopy {
+  // --- Public event page (/event) ---
+  readonly seoTitle: string;
+  readonly seoDescription: string;
+  readonly eyebrow: string;
+  readonly hostedBy: string;
+  readonly whenLabel: string;
+  readonly whereLabel: string;
+  /** Rendered after a number, e.g. "3 spots left". */
+  readonly spotsLeft: string;
+  readonly full: string;
+  readonly cancelledNotice: string;
+  readonly registerHeading: string;
+  readonly nameLabel: string;
+  readonly namePlaceholder: string;
+  readonly emailLabel: string;
+  readonly emailPlaceholder: string;
+  readonly registerCta: string;
+  readonly registering: string;
+  readonly doneTitle: string;
+  readonly doneSub: string;
+  readonly addToCalendar: string;
+  readonly alreadyRegistered: string;
+  readonly genericError: string;
+  readonly backHome: string;
+
+  // --- Registrant manage (/event/manage) ---
+  readonly yourSpotTitle: string;
+  readonly cancelSpot: string;
+  readonly cancelSpotConfirm: string;
+  readonly keepSpot: string;
+  readonly spotCancelledTitle: string;
+  readonly spotCancelledSub: string;
+  readonly regNotFound: string;
+
+  // --- Owner create/manage (/book/events) ---
+  readonly ownerSeoTitle: string;
+  readonly ownerSeoDescription: string;
+  readonly ownerTitle: string;
+  readonly ownerLead: string;
+  readonly newEventHeading: string;
+  readonly fTitle: string;
+  readonly fTitlePlaceholder: string;
+  readonly fStart: string;
+  readonly fEnd: string;
+  readonly fLocation: string;
+  readonly fLocationPlaceholder: string;
+  readonly fDescription: string;
+  readonly fDescriptionPlaceholder: string;
+  readonly fCapacity: string;
+  readonly fCapacityPlaceholder: string;
+  readonly publishCta: string;
+  readonly publishing: string;
+  readonly shareLabel: string;
+  readonly copy: string;
+  readonly copied: string;
+  readonly yourEventsHeading: string;
+  readonly noEvents: string;
+  /** Rendered after a number, e.g. "5 registered". */
+  readonly registeredCount: string;
+  readonly viewRegistrants: string;
+  readonly hideRegistrants: string;
+  readonly changeTime: string;
+  readonly cancelEvent: string;
+  readonly cancelEventConfirm: string;
+  readonly cancelledBadge: string;
+  /** Link on the booking-setup page pointing here. */
+  readonly ownerEntry: string;
+  readonly errNeedTitle: string;
+  readonly errNeedTime: string;
+}

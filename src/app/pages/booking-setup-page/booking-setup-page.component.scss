@@ -14,9 +14,15 @@
 .setup__head { text-align: center; margin-bottom: 0.4rem; }
 .setup__title { font-family: var(--font-display); font-size: var(--t-h2); margin: 0.3rem 0 0; }
 .setup__lead { color: var(--ink-2); margin: 0.6rem auto 0; max-width: 52ch; }
+.setup__entries {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .setup__pairlink {
   display: inline-block;
-  margin-top: 0.9rem;
   color: var(--aurora-1);
   font-size: var(--t-small);
   font-weight: 600;

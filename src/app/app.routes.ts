@@ -107,6 +107,33 @@ const bookingLinkRoutes: Routes = LOCALES.map((locale) => ({
   data: { locale },
 }));
 
+/**
+ * Shareable fixed-date events. The public event page at `/event` (reads `?e=`),
+ * the registrant's manage page at `/event/manage` (reads `?t=`), and the owner's
+ * create/manage page at `/book/events`. All noindex, browser-rendered; the
+ * handle/token ride in the query, so one static file per language each.
+ */
+const eventRoutes: Routes = LOCALES.flatMap((locale) => {
+  const p = (path: string) => (locale.slug ? `${locale.slug}/${path}` : path);
+  return [
+    {
+      path: p('event'),
+      loadComponent: () => import('./pages/event-page/event-page.component').then((m) => m.EventPageComponent),
+      data: { locale },
+    },
+    {
+      path: p('event/manage'),
+      loadComponent: () => import('./pages/event-manage-page/event-manage-page.component').then((m) => m.EventManagePageComponent),
+      data: { locale },
+    },
+    {
+      path: p('book/events'),
+      loadComponent: () => import('./pages/owner-events-page/owner-events-page.component').then((m) => m.OwnerEventsPageComponent),
+      data: { locale },
+    },
+  ];
+});
+
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
   return [
@@ -135,6 +162,7 @@ export const routes: Routes = [
   ...bookingManageRoutes,
   ...bookingMineRoutes,
   ...bookingLinkRoutes,
+  ...eventRoutes,
   ...articleRoutes,
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
   { path: 'terms-of-service', component: TermsPageComponent },
