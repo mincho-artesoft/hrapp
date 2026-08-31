@@ -22,6 +22,7 @@ import {
 } from '../../core/booking-api.service';
 import { bookingSetupCopyFor } from '../../content/booking/setup-registry';
 import { ownerManageCopyFor } from '../../content/booking/owner-manage-registry';
+import { bookingLinkCopyFor } from '../../content/booking/link-registry';
 import {
   AvailabilityGridComponent,
   AvailabilityWindow,
@@ -53,6 +54,9 @@ export class BookingSetupPageComponent implements OnInit {
   protected locale: Locale = DEFAULT_LOCALE;
   protected copy = bookingSetupCopyFor(DEFAULT_LOCALE.code);
   protected manageCopy = ownerManageCopyFor(DEFAULT_LOCALE.code);
+  /** The "already have the app? link this browser" entry to the pairing screen. */
+  protected linkEntry = bookingLinkCopyFor(DEFAULT_LOCALE.code).entryLink;
+  protected linkHref = '/book/link/';
 
   protected readonly mode = signal<'form' | 'saving' | 'done'>('form');
   protected readonly errorMsg = signal<string | null>(null);
@@ -124,6 +128,8 @@ export class BookingSetupPageComponent implements OnInit {
     this.locale = (this.route.snapshot.data['locale'] as Locale) ?? DEFAULT_LOCALE;
     this.copy = bookingSetupCopyFor(this.locale.code);
     this.manageCopy = ownerManageCopyFor(this.locale.code);
+    this.linkEntry = bookingLinkCopyFor(this.locale.code).entryLink;
+    this.linkHref = localePath(this.locale, '/book/link') + '/';
 
     this.seo.apply({
       title: this.copy.seoTitle,
@@ -166,9 +172,12 @@ export class BookingSetupPageComponent implements OnInit {
         description: t.description ?? '',
       }));
       this.availability.set(c.availability.map((r) => ({ day: r.day, start: r.start, end: r.end })));
-    } catch {
-      // A stale or revoked token: fall back to a fresh form rather than trap them.
-      this.clearToken();
+    } catch (e) {
+      // A 404 means "signed in but no booking page yet" — e.g. an owner who just
+      // paired this browser to their app account. Keep the token so saving writes
+      // to THEIR calendar (a fresh empty form, not editing). Only a genuine auth
+      // failure (401) should drop the token and fall back to a brand-new page.
+      if (e instanceof BookingError && e.status === 401) this.clearToken();
     }
   }
 

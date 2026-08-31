@@ -248,3 +248,41 @@ export interface OwnerManageCopy {
   /** Shown when a decline or move fails. */
   readonly error: string;
 }
+
+/**
+ * The pairing screen (`/book/link`), where an owner who already uses the iOS app
+ * links this browser to their existing account by scanning a QR (or, on the same
+ * phone, tapping through to the app). The app approves; the browser then manages
+ * the owner's real booking page from the web.
+ */
+export interface BookingLinkCopy {
+  readonly seoTitle: string;
+  readonly seoDescription: string;
+
+  readonly eyebrow: string;
+  readonly title: string;
+  readonly lead: string;
+
+  /** Instruction under the QR, for scanning from another device. */
+  readonly scanHint: string;
+  /** Divider between the QR and the same-device button. */
+  readonly or: string;
+  /** Button that opens the app to approve, on the same phone. */
+  readonly openApp: string;
+
+  /** While polling for the app's approval. */
+  readonly waiting: string;
+  /** Briefly, once approved, before redirecting to the owner's page. */
+  readonly approved: string;
+  /** When the short-lived code has expired. */
+  readonly expired: string;
+  /** Get a fresh code after expiry. */
+  readonly refresh: string;
+  /** On any failure. */
+  readonly error: string;
+
+  /** Link on the setup page that brings an app owner here. */
+  readonly entryLink: string;
+  /** Link from here back to creating a brand-new standalone page. */
+  readonly newInstead: string;
+}

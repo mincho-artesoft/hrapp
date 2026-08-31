@@ -5,6 +5,9 @@
         <p class="eyebrow">{{ copy.eyebrow }}</p>
         <h1 class="setup__title">{{ editing() ? copy.saveChanges : copy.title }}</h1>
         <p class="setup__lead">{{ copy.lead }}</p>
+        @if (!editing()) {
+          <a class="setup__pairlink" [href]="linkHref">{{ linkEntry }} →</a>
+        }
       </header>
 
       <!-- Incoming bookings the owner can decline or move (returning owner only) -->

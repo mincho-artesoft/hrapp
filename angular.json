@@ -20,6 +20,7 @@
             "outputPath": "dist/arte-calendar",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "allowedCommonJsDependencies": ["qrcode-generator"],
             "polyfills": [
               "zone.js"
             ],

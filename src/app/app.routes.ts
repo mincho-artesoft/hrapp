@@ -93,6 +93,20 @@ const bookingMineRoutes: Routes = LOCALES.map((locale) => ({
   data: { locale },
 }));
 
+/**
+ * "Link your app" at `/book/link` — where an owner who already uses the iOS app
+ * pairs this browser (QR + universal link) to manage their real booking page
+ * from the web. Noindex, browser-rendered; no query params, one file per locale.
+ */
+const bookingLinkRoutes: Routes = LOCALES.map((locale) => ({
+  path: locale.slug ? `${locale.slug}/book/link` : 'book/link',
+  loadComponent: () =>
+    import('./pages/booking-link-page/booking-link-page.component').then(
+      (m) => m.BookingLinkPageComponent,
+    ),
+  data: { locale },
+}));
+
 const articleRoutes: Routes = LIVE_LOCALES.flatMap((locale) => {
   const prefix = locale.slug ? `${locale.slug}/` : '';
   return [
@@ -120,6 +134,7 @@ export const routes: Routes = [
   ...bookingSetupRoutes,
   ...bookingManageRoutes,
   ...bookingMineRoutes,
+  ...bookingLinkRoutes,
   ...articleRoutes,
   { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
   { path: 'terms-of-service', component: TermsPageComponent },

@@ -192,6 +192,24 @@ export class BookingApiService {
     );
   }
 
+  // ── pairing: link this browser to the installed app ──────────────────────
+
+  /** Start a pairing: returns the QR `code` (shown to the app) and a `secret`
+   *  the browser keeps to read back the token the app mints. */
+  async pairStart(): Promise<{ code: string; secret: string; expiresInSeconds: number }> {
+    return this.post('/pair/start', {});
+  }
+
+  /** Poll a pairing. Once the app approves, `status` is 'approved' and `webToken`
+   *  is present exactly once — the browser's key to the owner's real calendar. */
+  async pairStatus(
+    code: string,
+    secret: string,
+  ): Promise<{ status: string; webToken?: string; calId?: string }> {
+    const q = new URLSearchParams({ code, secret }).toString();
+    return this.get(`/pair/status?${q}`);
+  }
+
   // ── owner setup ───────────────────────────────────────────────────────────
 
   /**
