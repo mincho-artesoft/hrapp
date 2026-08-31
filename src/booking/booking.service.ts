@@ -238,7 +238,7 @@ export class BookingService {
       confirmed: true,
       event: { id: eventId, title: event.title, start: startISO, end: event.end, location: event.location },
       invitee: { feedUrl: this.core.feedUrl(inviteeFeedId), webcal },
-      manage: { token: manageToken, url: `${this.SITE_URL}/booking/manage?t=${manageToken}` },
+      manage: { token: manageToken, url: `${this.SITE_URL}/booking/manage/?t=${manageToken}` },
     });
   }
 

@@ -151,7 +151,7 @@ export class EmailService {
    */
   async notifyBooking(kind: string, { config, event, name, email, manageToken, webcal, by }: any): Promise<void> {
     const when = this.fmtWhen(event.start, event.end, config?.timeZone);
-    const manageUrl = `${this.SITE_URL}/booking/manage?t=${manageToken}`;
+    const manageUrl = `${this.SITE_URL}/booking/manage/?t=${manageToken}`;
     const location = event.location ?? null;
     const title = event.title;
 
@@ -172,6 +172,48 @@ export class EmailService {
       }[kind];
       await this.sendEmail(ownerEmail, ownerSubj, this.ownerHtml(kind, { title, when, name, email }));
     }
+  }
+
+  private registrationHtml(kind: string, { title, when, location, webcal, manageUrl }: any): string {
+    const heading = {
+      registered: 'You’re registered',
+      moved: 'The event moved',
+      cancelled: 'Event cancelled',
+    }[kind];
+    const intro = {
+      registered: 'You’re on the list. Add it to your calendar below.',
+      moved: 'The organizer moved this event to a new time.',
+      cancelled: 'The organizer cancelled this event. Nothing more to do.',
+    }[kind];
+
+    let body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">${this.esc(heading)}</h1>
+    <p style="margin:0 auto 22px;max-width:40ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">${this.esc(intro)}</p>
+    ${this.eventBlock(title, this.detailRow('🗓', when) + (location ? this.detailRow('📍', location) : ''))}`;
+
+    if (kind !== 'cancelled') {
+      if (webcal) body += `<div style="text-align:center;margin:24px 0 0;">${this.button(webcal, 'Add to calendar')}</div>`;
+      if (manageUrl) body += `<p style="margin:16px 0 0;text-align:center;color:rgba(255,255,255,0.55);font-size:13px;">Can’t make it? <a href="${this.esc(manageUrl)}" style="color:${this.ACCENT};text-decoration:underline;">Cancel your spot</a>.</p>`;
+    }
+    return this.shell(body);
+  }
+
+  /**
+   * Notify one registrant of a shareable fixed-date event. `kind` is
+   * 'registered' | 'moved' | 'cancelled'. Guarded like every send: a no-op with
+   * no EMAIL_FROM configured.
+   */
+  async notifyRegistration(kind: string, { event, email, webcal, manageToken, timeZone }: any): Promise<void> {
+    const when = this.fmtWhen(event.start, event.end, timeZone);
+    const manageUrl = manageToken ? `${this.SITE_URL}/event/manage/?t=${manageToken}` : null;
+    const subj = {
+      registered: `Registered: ${event.title}`,
+      moved: `Moved: ${event.title}`,
+      cancelled: `Cancelled: ${event.title}`,
+    }[kind];
+    await this.sendEmail(
+      email, subj,
+      this.registrationHtml(kind, { title: event.title, when, location: event.location ?? null, webcal, manageUrl }),
+    );
   }
 
   /** The passwordless sign-in link to the "my bookings" page. */

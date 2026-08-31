@@ -10,6 +10,8 @@ import { PairingController } from './pairing/pairing.controller';
 import { PairingService } from './pairing/pairing.service';
 import { BillingController } from './billing/billing.controller';
 import { BillingService } from './billing/billing.service';
+import { SharedEventController } from './shared-event/shared-event.controller';
+import { SharedEventService } from './shared-event/shared-event.service';
 
 @Module({
   imports: [CoreModule],
@@ -19,6 +21,7 @@ import { BillingService } from './billing/billing.service';
     MeController,
     PairingController,
     BillingController,
+    SharedEventController,
   ],
   providers: [
     CalendarService,
@@ -26,6 +29,7 @@ import { BillingService } from './billing/billing.service';
     MeService,
     PairingService,
     BillingService,
+    SharedEventService,
   ],
 })
 export class AppModule {}

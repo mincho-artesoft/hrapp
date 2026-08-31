@@ -44,7 +44,7 @@ export class MeService {
         createdAt: new Date().toISOString(),
         expiresAt: Date.now() + SESSION_TTL_DAYS * 86400_000,
       });
-      await this.email.sendLoginLink(email, `${this.SITE_URL}/bookings?s=${token}`);
+      await this.email.sendLoginLink(email, `${this.SITE_URL}/bookings/?s=${token}`);
     }
     return result(200, { sent: true });
   }
@@ -72,7 +72,7 @@ export class MeService {
       const type = config?.meetingTypes.find((t: any) => t.id === m.typeId) ?? null;
       bookings.push({
         manageToken: ref.manageToken,
-        manageUrl: `${this.SITE_URL}/booking/manage?t=${ref.manageToken}`,
+        manageUrl: `${this.SITE_URL}/booking/manage/?t=${ref.manageToken}`,
         handle: m.handle,
         displayName: config?.displayName ?? 'Cloud Calendars',
         timeZone: config?.timeZone ?? 'UTC',

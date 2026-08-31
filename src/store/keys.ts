@@ -34,4 +34,11 @@ export const keys = {
   session: (token: string) => `idx/session/${token}.json`, // magic-link session -> {emailHash,email}
   inviteeIndex: (emailHash: string) => `idx/invitee/${emailHash}/`, // prefix: all of one person's bookings
   inviteeBooking: (emailHash: string, token: string) => `idx/invitee/${emailHash}/${token}.json`,
+
+  // Shareable fixed-date events: one event, many registrants, each with their
+  // own scoped feed. The event itself is a normal calendar event (keys.event),
+  // marked createdBy:'shared'; these index the public handle and the registrants.
+  eventPub: (handle: string) => `idx/eventpub/${handle}.json`, // public handle -> {calId, eventId}
+  eventRegs: (calId: string, eventId: string) => `idx/eventreg/${calId}/${eventId}/`, // prefix: all registrants
+  eventReg: (calId: string, eventId: string, token: string) => `idx/eventreg/${calId}/${eventId}/${token}.json`,
 };
