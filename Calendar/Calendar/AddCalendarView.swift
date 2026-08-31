@@ -48,11 +48,11 @@ struct AddCalendarView: View {
             .navigationBarTitle(LocalizedStringKey("Add Calendar"), displayMode: .inline)
             .navigationBarItems(
                 leading:
-                    Button(LocalizedStringKey("Cancel")) {
+                    AppToolbarTextButton("Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     },
                 trailing:
-                    Button(LocalizedStringKey("Done")) {
+                    AppToolbarTextButton("Done") {
                         createCalendar()
                     }
                     .disabled(calendarName.trimmingCharacters(in: .whitespaces).isEmpty)

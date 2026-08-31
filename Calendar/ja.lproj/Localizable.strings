@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "カレンダー";
 "Subscriptions" = "購読";
+"Settings" = "設定";
+"Sharing" = "共有";
 "Live" = "ライブ";
 "Stop" = "停止";
 "Calendar Live Activity" = "カレンダーライブアクティビティ";

@@ -367,7 +367,12 @@ extension UIButton {
     func useAdaptiveTitle(minimumScale: CGFloat = 0.4) {
         titleLabel?.useAdaptiveSingleLine(minimumScale: minimumScale)
         titleLabel?.textAlignment = .center
-        contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        contentEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: AppButtonLayout.textHorizontalPadding,
+            bottom: 0,
+            right: AppButtonLayout.textHorizontalPadding
+        )
     }
 }
 

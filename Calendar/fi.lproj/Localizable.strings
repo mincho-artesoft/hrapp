@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Kalenteri";
 "Subscriptions" = "Tilaukset";
+"Settings" = "Asetukset";
+"Sharing" = "Jakaminen";
 "Live" = "Livenä";
 "Stop" = "Pysähdy";
 "Calendar Live Activity" = "Kalenterin reaaliaikainen toiminto";

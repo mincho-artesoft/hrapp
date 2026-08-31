@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Календар";
 "Subscriptions" = "Абонаменти";
+"Settings" = "Настройки";
+"Sharing" = "Споделяне";
 "Live" = "На живо";
 "Stop" = "Стоп";
 "Calendar Live Activity" = "Активност на живо на календара";

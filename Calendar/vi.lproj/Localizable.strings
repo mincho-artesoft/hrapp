@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Lịch";
 "Subscriptions" = "Đăng ký";
+"Settings" = "Cài đặt";
+"Sharing" = "Chia sẻ";
 "Live" = "Trực tiếp";
 "Stop" = "Dừng lại";
 "Calendar Live Activity" = "Lịch hoạt động trực tiếp";

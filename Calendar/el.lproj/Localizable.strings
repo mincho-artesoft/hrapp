@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Ημερολόγιο";
 "Subscriptions" = "Συνδρομές";
+"Settings" = "Ρυθμίσεις";
+"Sharing" = "Κοινοποίηση";
 "Live" = "Ζωντανά";
 "Stop" = "Σταμάτα";
 "Calendar Live Activity" = "Ημερολόγιο Ζωντανή δραστηριότητα";

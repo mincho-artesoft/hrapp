@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Kalendář";
 "Subscriptions" = "Předplatné";
+"Settings" = "Nastavení";
+"Sharing" = "Sdílení";
 "Live" = "Živě";
 "Stop" = "Přestaň";
 "Calendar Live Activity" = "Živá aktivita kalendáře";

@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "ปฏิทิน";
 "Subscriptions" = "การสมัครรับข้อมูล";
+"Settings" = "การตั้งค่า";
+"Sharing" = "การแชร์";
 "Live" = "สด";
 "Stop" = "หยุด";
 "Calendar Live Activity" = "กิจกรรมสดของปฏิทิน";

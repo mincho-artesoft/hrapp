@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "달력";
 "Subscriptions" = "구독";
+"Settings" = "설정";
+"Sharing" = "공유";
 "Live" = "라이브";
 "Stop" = "중지";
 "Calendar Live Activity" = "캘린더 실시간 활동";

@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "לוח שנה";
 "Subscriptions" = "מנויים";
+"Settings" = "הגדרות";
+"Sharing" = "שיתוף";
 "Live" = "שידור חי";
 "Stop" = "עצירה";
 "Calendar Live Activity" = "פעילות חיה בלוח שנה";

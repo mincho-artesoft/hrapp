@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Takvim";
 "Subscriptions" = "Abonelikler";
+"Settings" = "Ayarlar";
+"Sharing" = "Paylaşım";
 "Live" = "Canlı";
 "Stop" = "Durdur";
 "Calendar Live Activity" = "Takvim Canlı Etkinliği";

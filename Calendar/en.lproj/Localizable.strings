@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Calendar";
 "Subscriptions" = "Subscriptions";
+"Settings" = "Settings";
+"Sharing" = "Sharing";
 "Live" = "Live";
 "Stop" = "Stop";
 "Calendar Live Activity" = "Calendar Live Activity";

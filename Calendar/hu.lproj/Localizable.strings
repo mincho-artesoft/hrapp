@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Naptár";
 "Subscriptions" = "Előfizetések";
+"Settings" = "Beállítások";
+"Sharing" = "Megosztás";
 "Live" = "Élőben";
 "Stop" = "Állj";
 "Calendar Live Activity" = "Naptár élő tevékenység";

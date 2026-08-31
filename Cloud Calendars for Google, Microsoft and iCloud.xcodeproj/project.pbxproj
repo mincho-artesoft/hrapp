@@ -13,7 +13,7 @@
 		50D82EE72D92C681004B3545 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 50D82EE62D92C681004B3545 /* MSAL */; };
 		50E000082DE9000000000008 /* CalendarWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 50E000012DE9000000000001 /* CalendarWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		50F000082DF0000000000008 /* CalendarAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 50F000012DF0000000000001 /* CalendarAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		50F100022DF0000000000002 /* Cloud Calendars Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 50F100012DF0000000000001 /* Cloud Calendars Icon.icon */; };
+		50F100022DF0000000000002 /* Calendar/Cloud Calendars Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 50F100012DF0000000000001 /* Calendar/Cloud Calendars Icon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cloud Calendars for Google, Microsoft and iCloud.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50E000012DE9000000000001 /* CalendarWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CalendarWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F000012DF0000000000001 /* CalendarAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		50F100012DF0000000000001 /* Cloud Calendars Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Calendar/Cloud Calendars Icon.icon"; sourceTree = "<group>"; };
+		50F100012DF0000000000001 /* Calendar/Cloud Calendars Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = "Calendar/Cloud Calendars Icon.icon"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -152,6 +152,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		508AC7B33045506700411EB1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				50F100012DF0000000000001 /* Calendar/Cloud Calendars Icon.icon */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		50B212422D4111B800ABB8D3 = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +170,7 @@
 				50D8281C2D80218F004B3545 /* Cloud Calendars for Google, Microsoft and iCloud.app */,
 				50E000012DE9000000000001 /* CalendarWidget.appex */,
 				50F000012DF0000000000001 /* CalendarAppClip.app */,
+				508AC7B33045506700411EB1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -339,7 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50F100022DF0000000000002 /* Cloud Calendars Icon.icon in Resources */,
+				50F100022DF0000000000002 /* Calendar/Cloud Calendars Icon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

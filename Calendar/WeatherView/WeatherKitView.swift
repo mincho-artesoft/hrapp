@@ -624,7 +624,9 @@ struct WeatherKitView: View {
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(NSLocalizedString("Done", comment: "Done button")) {
+                    AppToolbarTextButton(
+                        localizedTitle: NSLocalizedString("Done", comment: "Done button")
+                    ) {
                         closeSavedRegions()
                     }
                     .font(.body.weight(.semibold))

@@ -4,12 +4,6 @@ import EventKit
 import GoogleSignIn
 import GoogleSignInSwift
 import MSAL
-import SafariServices
-
-struct GoogleSharingInfo: Codable, Equatable {
-    var calID: String
-    var calTitle: String
-}
 
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -19,28 +13,16 @@ struct CalendarsSheetView: View {
 
     // MARK: - State
     @State private var showAddGoogleCalendarSheet: StoredGoogleUser? = nil
-    @State private var googleSharingInfos: [String: GoogleSharingInfo] = [:]
-    @State private var currentGoogleUserID: String? = nil
-
     @State private var iCloudExpanded = true
     @State private var isOtherExpanded = true
     @State private var googleExpandedStates: [UUID: Bool] = [:]
     @State private var msExpandedStates: [UUID: Bool] = [:]
     @State private var calendarToEdit: EKCalendar? = nil
     @State private var showAddCalendarSheet = false
-    @State private var showBookingSetup = false
     @State private var showICloudSheet = false
-    @State private var showingGoogleSharingSheet = false
     @State private var addingGoogleUserID: UUID? = nil
     @State private var addingGoogleCalendarTitle: String? = nil
     @State private var addingGoogleCalendarColor: UIColor? = nil
-    @State private var weatherAlertNotificationsEnabled =
-        WeatherAlertNotificationManager.notificationsEnabled
-    @AppStorage(EventSharePromptSettings.userDefaultsKey)
-    private var eventSharePromptEnabled = true
-    /// Empty means the app's own Invites calendar, made on first use.
-    @AppStorage(SharedInviteCalendar.destinationKey)
-    private var invitesCalendarIdentifier = ""
     private let bottomContentInset: CGFloat
 
     // MARK: - Init for iOS 14–15 appearance
@@ -69,14 +51,11 @@ struct CalendarsSheetView: View {
 
             // Main content
             Form {
-                bookingSection
                 iCloudSection
                 otherSection
-                notificationSection
                 googleSection
                 microsoftSection
                 addCalendarSection
-                invitesSection
                 shareCalendarsSection
                 googleSignInSection
                 microsoftSignInSection
@@ -117,11 +96,6 @@ struct CalendarsSheetView: View {
             AddCalendarView()
         }
 
-        // Set up a public booking page
-        .sheet(isPresented: $showBookingSetup) {
-            BookingSetupView()
-        }
-
         // Open iCloud share
         .sheet(isPresented: $showICloudSheet) {
             if let url = URL(string: "https://www.icloud.com/calendar/") {
@@ -144,22 +118,6 @@ struct CalendarsSheetView: View {
             }
         }
 
-        // Google Calendar Sharing ACL
-        .sheet(isPresented: $showingGoogleSharingSheet) {
-            if let userID = currentGoogleUserID,
-               let info = googleSharingInfos[userID],
-               let user = viewModel.storedUsers.first(where: { $0.uniqueID.uuidString == userID }) {
-                GoogleCalendarSharingView(
-                    googleCalID: info.calID,
-                    user: user,
-                    calendarTitle: info.calTitle
-                )
-            }
-        }
-
-        // Persist sharing info
-        .onChange(of: googleSharingInfos) { saveGoogleSharingInfos() }
-        .onChange(of: currentGoogleUserID)    { saveCurrentGoogleUserID() }
     }
 
     // MARK: - Sections
@@ -202,144 +160,6 @@ struct CalendarsSheetView: View {
         }
     }
 
-    @ViewBuilder
-    private var notificationSection: some View {
-        Section {
-            VStack(alignment: .leading, spacing: 10) {
-                Toggle(isOn: notificationToggleBinding) {
-                    HStack(spacing: 12) {
-                        Image(systemName: notificationsToggleIsOn ? "bell.fill" : "bell.slash")
-                            .font(.title3)
-                            .foregroundColor(.blue)
-                            .frame(width: 28, height: 28)
-
-                        Text(LocalizedStringKey("Event Notifications"))
-                            .font(.headline)
-                    }
-                }
-
-                Divider()
-
-                Toggle(isOn: weatherNotificationToggleBinding) {
-                    HStack(spacing: 12) {
-                        Image(
-                            systemName: weatherNotificationsToggleIsOn
-                                ? "exclamationmark.triangle.fill"
-                                : "exclamationmark.triangle"
-                        )
-                        .font(.title3)
-                        .foregroundColor(.orange)
-                        .frame(width: 28, height: 28)
-
-                        Text(LocalizedStringKey("Weather Alert Notifications"))
-                            .font(.headline)
-                    }
-                }
-
-                Divider()
-
-                Toggle(isOn: eventSharePromptToggleBinding) {
-                    HStack(spacing: 12) {
-                        Image(
-                            systemName: eventSharePromptEnabled
-                                ? "square.and.arrow.up.fill"
-                                : "square.and.arrow.up"
-                        )
-                        .font(.title3)
-                        .foregroundColor(.blue)
-                        .frame(width: 28, height: 28)
-
-                        Text(LocalizedStringKey("Share Pop-up"))
-                            .font(.headline)
-                    }
-                }
-
-                if weatherAlertNotificationsEnabled
-                    && !notificationManager.eventNotificationsEnabled
-                    && !notificationManager.notificationsAllowed {
-                    if notificationManager.canAskForPermission {
-                        Text(LocalizedStringKey("Allow notifications so weather alerts can appear."))
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                    } else {
-                        Text(LocalizedStringKey("Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications."))
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-
-                if notificationManager.eventNotificationsEnabled && !notificationManager.notificationsAllowed {
-                    if notificationManager.canAskForPermission {
-                        Text(LocalizedStringKey("Allow notifications so event alerts can appear at the right time."))
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                    } else {
-                        Text(LocalizedStringKey("Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications."))
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-            }
-            .padding(.vertical, 6)
-            .listRowSeparator(.hidden)
-            .listRowBackground(Color.clear)
-        }
-    }
-
-    private var notificationsToggleIsOn: Bool {
-        notificationManager.eventNotificationsEnabled && notificationManager.notificationsAllowed
-    }
-
-    private var notificationToggleBinding: Binding<Bool> {
-        Binding(
-            get: { notificationsToggleIsOn },
-            set: { isOn in
-                if isOn {
-                    notificationManager.setEventNotificationsEnabled(true)
-                } else {
-                    notificationManager.setEventNotificationsEnabled(false)
-                }
-            }
-        )
-    }
-
-    private var weatherNotificationsToggleIsOn: Bool {
-        weatherAlertNotificationsEnabled && notificationManager.notificationsAllowed
-    }
-
-    private var weatherNotificationToggleBinding: Binding<Bool> {
-        Binding(
-            get: { weatherNotificationsToggleIsOn },
-            set: { isOn in
-                weatherAlertNotificationsEnabled = isOn
-
-                Task {
-                    await WeatherAlertNotificationManager.shared
-                        .setNotificationsEnabled(isOn)
-                }
-
-                if isOn {
-                    notificationManager.requestSystemNotificationAuthorizationIfNeeded()
-                }
-            }
-        )
-    }
-
-    private var eventSharePromptToggleBinding: Binding<Bool> {
-        Binding(
-            get: { eventSharePromptEnabled },
-            set: { isEnabled in
-                eventSharePromptEnabled = isEnabled
-                EventSharePromptSettings.setEnabled(isEnabled)
-                if !isEnabled {
-                    EventSharePromptManager.shared.dismiss()
-                }
-            }
-        )
-    }
-
     // ⚡ Google Section with spinner row
     private var googleSection: some View {
         Group {
@@ -367,15 +187,8 @@ struct CalendarsSheetView: View {
                                     toggleAction: toggleCalendar,
                                     editAction: {},
                                     showEditButton: false,
-                                    showShareButton: (user.refreshToken?.isEmpty == false),
-                                    shareAction: {
-                                        if let googleCalID = findGoogleCalID(cal, user: user) {
-                                            googleSharingInfos[user.uniqueID.uuidString] =
-                                                GoogleSharingInfo(calID: googleCalID, calTitle: cal.title)
-                                            currentGoogleUserID = user.uniqueID.uuidString
-                                            showingGoogleSharingSheet = true
-                                        }
-                                    }
+                                    showShareButton: false,
+                                    shareAction: {}
                                 )
                                 .listRowSeparator(.hidden)
                             }
@@ -399,6 +212,7 @@ struct CalendarsSheetView: View {
                                     RoundedRectangle(cornerRadius: 24)
                                         .fill(Color.clear)
                                 )
+                                .padding(.leading, -32)
                             }
                         }
                         Section {
@@ -532,58 +346,6 @@ struct CalendarsSheetView: View {
         }
     }
 
-    /// Where invitations from other people land. Kept apart from your own
-    /// calendars by default so somebody else's event never quietly mixes in.
-    private var invitesSection: some View {
-        Section {
-            Picker(selection: $invitesCalendarIdentifier) {
-                Text(LocalizedStringKey("Invites")).tag("")
-                ForEach(writableCalendars, id: \.calendarIdentifier) { calendar in
-                    Text(calendar.title).tag(calendar.calendarIdentifier)
-                }
-            } label: {
-                HStack {
-                    Image(systemName: "envelope.badge")
-                        .foregroundStyle(Color.indigo)
-                        .frame(width: 28, height: 28)
-                    Text(LocalizedStringKey("Invitations go to"))
-                }
-            }
-        } footer: {
-            Text(LocalizedStringKey("Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it."))
-        }
-    }
-
-    /// Turn a calendar into a public booking page people can book times on.
-    private var bookingSection: some View {
-        Section {
-            Button {
-                showBookingSetup = true
-            } label: {
-                HStack {
-                    Image(systemName: "calendar.badge.clock")
-                        .foregroundStyle(Color.blue)
-                        .frame(width: 28, height: 28)
-                    Text(LocalizedStringKey("Set up a booking page"))
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                        .font(.footnote.weight(.semibold))
-                        .foregroundStyle(.tertiary)
-                }
-            }
-            .tint(.primary)
-        } footer: {
-            Text(LocalizedStringKey("Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free."))
-        }
-    }
-
-    private var writableCalendars: [EKCalendar] {
-        CalendarViewModel.shared.eventStore
-            .calendars(for: .event)
-            .filter(\.allowsContentModifications)
-            .sorted { $0.title.localizedCaseInsensitiveCompare($1.title) == .orderedAscending }
-    }
-
     private var shareCalendarsSection: some View {
         Section {
             Button { showICloudSheet = true } label: {
@@ -598,14 +360,15 @@ struct CalendarsSheetView: View {
                                     Color(red: 0.09, green: 0.44, blue: 0.94),
                                     Color(red: 0.04, green: 0.35, blue: 0.92)
                                 ]),
-                                startPoint: .leading, endPoint: .trailing
+                                startPoint: .leading,
+                                endPoint: .trailing
                             )
                         )
                         .frame(width: 28, height: 28)
                     Text(LocalizedStringKey("Share calendars with iCloud Calendar"))
                 }
             }
-            .buttonStyle(PlainButtonStyle())
+            .buttonStyle(.plain)
         }
     }
 
@@ -661,11 +424,8 @@ struct CalendarsSheetView: View {
 
     private func onAppear() {
         viewModel.reloadCalendars()
-        weatherAlertNotificationsEnabled = WeatherAlertNotificationManager.notificationsEnabled
         notificationManager.refreshAuthorizationStatus()
         notificationManager.rescheduleUpcomingEventNotifications()
-        loadGoogleSharingInfos()
-        loadCurrentGoogleUserID()
     }
 
     private func toggleSelectAll() {
@@ -693,32 +453,4 @@ struct CalendarsSheetView: View {
         return viewModel.allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
     }
 
-    private func findGoogleCalID(_ cal: EKCalendar, user: StoredGoogleUser) -> String? {
-        let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
-        return map.first(where: { $0.value == cal.calendarIdentifier })?.key
-    }
-
-    private func loadGoogleSharingInfos() {
-        guard let data = UserDefaults.standard.data(forKey: "GoogleSharingInfos"),
-              let infos = try? JSONDecoder().decode([String: GoogleSharingInfo].self, from: data) else { return }
-        googleSharingInfos = infos
-    }
-
-    private func loadCurrentGoogleUserID() {
-        currentGoogleUserID = UserDefaults.standard.string(forKey: "CurrentGoogleUserID")
-    }
-
-    private func saveGoogleSharingInfos() {
-        if let data = try? JSONEncoder().encode(googleSharingInfos) {
-            UserDefaults.standard.set(data, forKey: "GoogleSharingInfos")
-        }
-    }
-
-    private func saveCurrentGoogleUserID() {
-        if let id = currentGoogleUserID {
-            UserDefaults.standard.set(id, forKey: "CurrentGoogleUserID")
-        } else {
-            UserDefaults.standard.removeObject(forKey: "CurrentGoogleUserID")
-        }
-    }
 }

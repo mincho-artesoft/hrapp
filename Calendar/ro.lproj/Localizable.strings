@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Calendar";
 "Subscriptions" = "Abonamente";
+"Settings" = "Setări";
+"Sharing" = "Partajare";
 "Live" = "În direct";
 "Stop" = "Oprire";
 "Calendar Live Activity" = "Activitate în timp real a calendarului";

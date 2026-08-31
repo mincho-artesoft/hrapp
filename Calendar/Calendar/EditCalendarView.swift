@@ -67,13 +67,11 @@ struct EditCalendarView: View {
             .navigationBarTitle(LocalizedStringKey("Edit Calendar"), displayMode: .inline)
             .navigationBarItems(
                 leading:
-                    // Вместо "Cancel"
-                    Button(LocalizedStringKey("Cancel")) {
+                    AppToolbarTextButton("Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     },
                 trailing:
-                    // Вместо "Done"
-                    Button(LocalizedStringKey("Done")) {
+                    AppToolbarTextButton("Done") {
                         updateCalendar()
                     }
                     .disabled(calendarName.trimmingCharacters(in: .whitespaces).isEmpty)

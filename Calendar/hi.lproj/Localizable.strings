@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "कैलेंडर";
 "Subscriptions" = "सदस्यताएँ";
+"Settings" = "सेटिंग्स";
+"Sharing" = "साझा करना";
 "Live" = "जियो";
 "Stop" = "रुकें";
 "Calendar Live Activity" = "कैलेंडर लाइव गतिविधि";

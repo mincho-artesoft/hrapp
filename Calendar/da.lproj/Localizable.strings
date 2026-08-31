@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Kalender";
 "Subscriptions" = "Abonnementer";
+"Settings" = "Indstillinger";
+"Sharing" = "Deling";
 "Live" = "Direkte";
 "Stop" = "Stop";
 "Calendar Live Activity" = "Kalenderaktivitet i realtid";

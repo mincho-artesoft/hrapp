@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "التقويم";
 "Subscriptions" = "الاشتراكات";
+"Settings" = "الإعدادات";
+"Sharing" = "المشاركة";
 "Live" = "مباشر";
 "Stop" = "توقف";
 "Calendar Live Activity" = "تقويم النشاط المباشر";

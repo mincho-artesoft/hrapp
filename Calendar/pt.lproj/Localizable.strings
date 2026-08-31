@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Calendário";
 "Subscriptions" = "Assinaturas";
+"Settings" = "Definições";
+"Sharing" = "Partilha";
 "Live" = "Ao vivo";
 "Stop" = "Pare";
 "Calendar Live Activity" = "Atividade ao vivo do calendário";

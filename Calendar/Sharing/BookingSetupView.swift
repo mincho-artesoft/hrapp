@@ -49,7 +49,7 @@ struct BookingSetupView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { dismiss() }
+                    AppToolbarTextButton("Close") { dismiss() }
                 }
             }
         }

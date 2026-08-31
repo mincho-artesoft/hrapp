@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "Kalendar";
 "Subscriptions" = "Langganan";
+"Settings" = "Tetapan";
+"Sharing" = "Perkongsian";
 "Live" = "Langsung";
 "Stop" = "Berhenti";
 "Calendar Live Activity" = "Aktiviti Langsung Kalendar";

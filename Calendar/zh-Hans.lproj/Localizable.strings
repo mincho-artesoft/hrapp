@@ -151,6 +151,8 @@
 /* DraggableMenuView */
 "Calendar" = "日历";
 "Subscriptions" = "订阅";
+"Settings" = "设置";
+"Sharing" = "共享";
 "Live" = "直播";
 "Stop" = "停止";
 "Calendar Live Activity" = "日历实时活动";

@@ -38,12 +38,16 @@ struct AddGoogleCalendarView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(NSLocalizedString("Cancel", comment: "Cancel button")) {
+                    AppToolbarTextButton(
+                        localizedTitle: NSLocalizedString("Cancel", comment: "Cancel button")
+                    ) {
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(NSLocalizedString("Done", comment: "Done button")) {
+                    AppToolbarTextButton(
+                        localizedTitle: NSLocalizedString("Done", comment: "Done button")
+                    ) {
                         let name = calendarName.trimmingCharacters(in: .whitespaces)
                         let color = selectedColor
                         onDone(name, color)

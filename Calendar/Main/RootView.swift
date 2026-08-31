@@ -318,13 +318,10 @@ struct RootView: View {
                                     .padding(.top, -20) // Original padding
                                 },
                                 horizontalContent: {
-                                    Picker("", selection: $selectedTabDraggableMenuView) {
-                                        Text("Calendar").tag(0)
-                                        Text("MultiCalendar").tag(1)
-                                        Text("Subscriptions").tag(2)
-                                        Text("Apps").tag(3)
-                                    }
-                                    .pickerStyle(.segmented)
+                                    DraggableMenuSectionPicker(
+                                        selection: $selectedTabDraggableMenuView
+                                    )
+                                    .padding(.horizontal, 8)
                                 },
                                 verticalContent: {
                                     switch selectedTabDraggableMenuView {
@@ -332,6 +329,8 @@ struct RootView: View {
                                     case 1: CalendarsDropdownRepresentable(bottomContentInset: 128).padding(.vertical, 8)
                                     case 2: SubscriptionView().padding(.vertical, 8)
                                     case 3: AppsPromoListView(apps: promotionalApps).padding(.vertical, 8)
+                                    case 4: SharingSheetView(bottomContentInset: 128).padding(.vertical, 8)
+                                    case 5: SettingsSheetView(bottomContentInset: 128).padding(.vertical, 8)
                                     default: Text(NSLocalizedString("N/A", comment: "Not available fallback"))
                                     }
                                 },
@@ -397,11 +396,11 @@ struct RootView: View {
         .animation(.spring(response: 0.35, dampingFraction: 0.86), value: eventSharePromptManager.event != nil)
         #if DEBUG
         .onAppear {
-            // Opens the drawer straight to the calendars tab, where the invites
-            // setting lives. Reaching it by tapping is the sort of navigation
+            // Opens the drawer straight to Sharing, where the invites setting
+            // lives. Reaching it by tapping is the sort of navigation
             // ScreenshotMode exists to avoid.
             if ScreenshotMode.configuration?.inviteScene == .settings {
-                selectedTabDraggableMenuView = 0
+                selectedTabDraggableMenuView = 4
                 menuState = .full
             }
         }

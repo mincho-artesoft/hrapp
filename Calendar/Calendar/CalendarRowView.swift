@@ -64,5 +64,8 @@ struct CalendarRowView: View {
                       ? Color(UIColor.systemGray4.withAlphaComponent(0.5))
                       : Color.clear)
         )
+        // DisclosureGroup adds about 32 pt only on the leading side of its content.
+        // Cancel that inset so the row uses the smaller, trailing-side margin on both sides.
+        .padding(.leading, -32)
     }
 }
