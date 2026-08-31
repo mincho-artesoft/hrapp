@@ -52,32 +52,35 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     }
 
     nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                            didReceive response: UNNotificationResponse) async {
+                                            didReceive response: UNNotificationResponse,
+                                            withCompletionHandler completionHandler: @escaping @Sendable () -> Void) {
         let userInfo = response.notification.request.content.userInfo
+        let isWeatherAlert = userInfo["weatherAlertGPS"] as? Bool == true
+        let eventIdentifier = userInfo["eventIdentifier"] as? String
+        let calendarIdentifier = userInfo["calendarIdentifier"] as? String
+        let eventStartDate = userInfo["eventStartDate"] as? TimeInterval
 
-        if userInfo["weatherAlertGPS"] as? Bool == true {
-            print("🌦️ [WeatherAlerts] User opened a GPS weather-alert notification")
-            UserDefaults.standard.set(6, forKey: "selectedTabRoot")
-            await MainActor.run {
+        DispatchQueue.main.async {
+            // UIKit continues launch/state-restoration work after this callback finishes,
+            // so both notification handling and completion must stay on the main thread.
+            defer { completionHandler() }
+
+            if isWeatherAlert {
+                print("🌦️ [WeatherAlerts] User opened a GPS weather-alert notification")
+                UserDefaults.standard.set(6, forKey: "selectedTabRoot")
                 SavedWeatherRegionsStore.shared.select(nil)
                 NotificationCenter.default.post(
                     name: .openWeatherNotification,
                     object: nil
                 )
+                return
             }
-            return
-        }
 
-        let eventIdentifier = userInfo["eventIdentifier"] as? String
-        let calendarIdentifier = userInfo["calendarIdentifier"] as? String
-        let eventStartDate = userInfo["eventStartDate"] as? TimeInterval
+            EventNotificationNavigation.savePending(
+                eventStartDate: eventStartDate,
+                eventIdentifier: eventIdentifier
+            )
 
-        EventNotificationNavigation.savePending(
-            eventStartDate: eventStartDate,
-            eventIdentifier: eventIdentifier
-        )
-
-        Task { @MainActor in
             var safeUserInfo: [String: Any] = [:]
             if let eventIdentifier {
                 safeUserInfo["eventIdentifier"] = eventIdentifier

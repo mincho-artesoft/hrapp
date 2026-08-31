@@ -45,9 +45,9 @@ enum SharedEventImporter {
             store.calendar(withIdentifier: identifier)
         }
 
-        // With no explicit choice the invite goes to its own calendar rather
-        // than into whichever calendar happens to be the default, so somebody
-        // else's event never quietly mixes in with your own.
+        // The import sheet normally supplies an explicit choice. If it does
+        // not, use the remembered destination or the system default; importing
+        // an invitation must never create a calendar behind the user's back.
         let destination = [
             requestedCalendar,
             SharedInviteCalendar.destination(in: store),

@@ -7,7 +7,6 @@ struct AddCalendarView: View {
 
     @State private var calendarName: String = ""
     @State private var selectedColor: UIColor = .systemGreen
-    @State private var eventAlertsEnabled: Bool = true
 
     private let accountName: String = "iCloud"
 
@@ -36,14 +35,6 @@ struct AddCalendarView: View {
                     }
                 }
 
-                Section(header: Text(LocalizedStringKey("NOTIFICATIONS"))) {
-                    Toggle(isOn: $eventAlertsEnabled) {
-                        Text(LocalizedStringKey("Event Alerts"))
-                    }
-                    Text(LocalizedStringKey("Allow events on this calendar to display alerts."))
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                }
             }
             .navigationBarTitle(LocalizedStringKey("Add Calendar"), displayMode: .inline)
             .navigationBarItems(

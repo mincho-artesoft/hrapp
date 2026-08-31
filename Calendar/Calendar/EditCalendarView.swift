@@ -9,7 +9,6 @@ struct EditCalendarView: View {
 
     @State private var calendarName: String
     @State private var selectedColor: UIColor
-    @State private var eventAlertsEnabled: Bool = true
 
     init(eventStore: EKEventStore, calendar: EKCalendar) {
         self.eventStore = eventStore
@@ -43,13 +42,6 @@ struct EditCalendarView: View {
                                 .padding(.leading, 8)
                         }
                     }
-                }
-
-                Section(header: Text(LocalizedStringKey("NOTIFICATIONS")).foregroundColor(.secondary)) {
-                    Toggle(LocalizedStringKey("Event Alerts"), isOn: $eventAlertsEnabled)
-                    Text(LocalizedStringKey("Allow events on this calendar to display alerts."))
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
                 }
 
                 // Delete

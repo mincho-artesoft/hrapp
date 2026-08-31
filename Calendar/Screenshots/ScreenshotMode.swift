@@ -238,12 +238,9 @@ enum ScreenshotMode {
 
         let store = CalendarViewModel.shared.eventStore
 
-        // Unlike the import capture, this one keeps whichever invites calendar
-        // already exists rather than making a per-language one: the shot is of
-        // the timeline, where the calendar's name never appears, and a fresh
-        // calendar each run would leave the previous run's events behind in the
-        // old one.
-        guard let calendar = SharedInviteCalendar.dedicated(in: store) else { return }
+        // Screenshot fixtures use the same destination rule as a real import
+        // and never manufacture a calendar of their own.
+        guard let calendar = SharedInviteCalendar.destination(in: store) else { return }
 
         // Clear the day across every non-seeded calendar. Earlier runs of this
         // capture made their own invites calendars, and their events would
@@ -302,13 +299,6 @@ enum ScreenshotMode {
     @MainActor
     static func stagedInvite() -> SharedEventImportPayload? {
         guard configuration?.inviteScene == .importSheet else { return nil }
-
-        // A fresh simulator has no writable calendar at all, so the picker
-        // would sit on its spinner. Making the invites calendar here gives it
-        // something real to show - and it is the entry the capture is meant to
-        // demonstrate anyway.
-        SharedInviteCalendar.forgetDedicatedForCapture()
-        _ = SharedInviteCalendar.dedicated(in: CalendarViewModel.shared.eventStore)
 
         let start = Calendar.current.date(
             bySettingHour: 15, minute: 30, second: 0,

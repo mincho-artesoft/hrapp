@@ -35,8 +35,12 @@ struct SharedEventImportPayload: Identifiable, Equatable {
     }
 
     init?(url: URL) {
-        guard url.scheme?.lowercased() == "https",
-              url.host?.lowercased() == "appclip.apple.com",
+        let scheme = url.scheme?.lowercased()
+        let host = url.host?.lowercased()
+        let isAppClipLink = scheme == "https" && host == "appclip.apple.com"
+        let isFullAppHandoff = scheme == "cloudcalendars" && host == "shared-event"
+
+        guard isAppClipLink || isFullAppHandoff,
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { return nil }
 
@@ -45,7 +49,7 @@ struct SharedEventImportPayload: Identifiable, Equatable {
             values[item.name] = item.value ?? ""
         }
 
-        guard values["p"] == Self.appClipBundleIdentifier,
+        guard (isFullAppHandoff || values["p"] == Self.appClipBundleIdentifier),
               let rawTitle = values["title"]?.trimmingCharacters(in: .whitespacesAndNewlines),
               !rawTitle.isEmpty,
               let startTimestamp = values["start"].flatMap(TimeInterval.init),

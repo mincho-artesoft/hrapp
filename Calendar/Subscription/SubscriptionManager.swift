@@ -13,19 +13,13 @@ class SubscriptionManager: ObservableObject {
     var subscriptionStatus: SubscriptionStatus {
         get {
             #if DEBUG
-            // A marketing capture is a premium session. Every ad decision in
-            // the app keys off `== .base`, so answering here turns off the
-            // banner, the interstitial and the app-open ad in one place rather
-            // than three.
-            //
-            // Worth doing because an AdMob test ad in an App Store preview is
-            // an automatic rejection. No screenshot ever caught one -- each is
-            // a fresh, short-lived launch -- but a minute-long screen
-            // recording relaunches the app mid-clip, and the first take of the
-            // Japanese preview came back with "Test mode" across it.
-            if ScreenshotMode.isActive { return .premium }
-            #endif
+            // Debug builds intentionally unlock the highest tier. Keeping the
+            // override in the manager makes every feature gate and ad check
+            // see the same value, without affecting Release/App Store builds.
+            return .premium
+            #else
             return SubscriptionStatus(rawValue: subscriptionStatusRaw) ?? .base
+            #endif
         }
         set {
             subscriptionStatusRaw = newValue.rawValue
@@ -202,21 +196,8 @@ class SubscriptionManager: ObservableObject {
 
     private func updateSubscriptionStatus() {
         #if DEBUG
-        // Marketing captures must not contain ads: App Review rejects
-        // screenshots showing a test-mode ad banner, and a real one would put
-        // another company's artwork in our store listing. Reporting premium
-        // suppresses them at the source, rather than trying to catch each
-        // banner as it appears.
-        //
-        // Gated on the screenshot flag rather than on DEBUG alone, so a debug
-        // build a developer runs by hand still exercises the real entitlement
-        // path and the paywall stays testable.
-        if ScreenshotMode.isActive {
-            subscriptionStatus = .premium
-            return
-        }
-        #endif
-
+        subscriptionStatus = .premium
+        #else
         guard !purchasedProductIDs.isEmpty else {
             subscriptionStatus = .base
             return
@@ -228,6 +209,7 @@ class SubscriptionManager: ObservableObject {
         } else {
             subscriptionStatus = .base
         }
+        #endif
     }
 
     // MARK: - Manage subscription sheet --------------------------------------
@@ -277,4 +259,3 @@ class SubscriptionManager: ObservableObject {
            }
        }
 }
-

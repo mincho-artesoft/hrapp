@@ -5,6 +5,13 @@ import GoogleSignIn
 import GoogleSignInSwift
 import MSAL
 
+private struct GoogleCalendarSharingTarget: Identifiable {
+    let id = UUID()
+    let googleCalendarID: String
+    let user: StoredGoogleUser
+    let calendarTitle: String
+}
+
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
@@ -23,6 +30,7 @@ struct CalendarsSheetView: View {
     @State private var addingGoogleUserID: UUID? = nil
     @State private var addingGoogleCalendarTitle: String? = nil
     @State private var addingGoogleCalendarColor: UIColor? = nil
+    @State private var googleCalendarSharingTarget: GoogleCalendarSharingTarget?
     private let bottomContentInset: CGFloat
 
     // MARK: - Init for iOS 14–15 appearance
@@ -118,6 +126,15 @@ struct CalendarsSheetView: View {
             }
         }
 
+        // Manage sharing for the Google calendar selected from its row.
+        .sheet(item: $googleCalendarSharingTarget) { target in
+            GoogleCalendarSharingView(
+                googleCalID: target.googleCalendarID,
+                user: target.user,
+                calendarTitle: target.calendarTitle
+            )
+        }
+
     }
 
     // MARK: - Sections
@@ -187,8 +204,19 @@ struct CalendarsSheetView: View {
                                     toggleAction: toggleCalendar,
                                     editAction: {},
                                     showEditButton: false,
-                                    showShareButton: false,
-                                    shareAction: {}
+                                    showShareButton: user.refreshToken?.isEmpty == false,
+                                    shareAction: {
+                                        guard let googleCalendarID = googleCalendarID(
+                                            for: cal,
+                                            user: user
+                                        ) else { return }
+
+                                        googleCalendarSharingTarget = GoogleCalendarSharingTarget(
+                                            googleCalendarID: googleCalendarID,
+                                            user: user,
+                                            calendarTitle: cal.title
+                                        )
+                                    }
                                 )
                                 .listRowSeparator(.hidden)
                             }
@@ -451,6 +479,15 @@ struct CalendarsSheetView: View {
         let map = viewModel.googleToLocalCalendarMap(for: user.uniqueID)
         let localIDs = Set(map.values)
         return viewModel.allCalendars.filter { localIDs.contains($0.calendarIdentifier) }
+    }
+
+    private func googleCalendarID(
+        for calendar: EKCalendar,
+        user: StoredGoogleUser
+    ) -> String? {
+        viewModel.googleToLocalCalendarMap(for: user.uniqueID)
+            .first { $0.value == calendar.calendarIdentifier }?
+            .key
     }
 
 }

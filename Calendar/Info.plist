@@ -33,6 +33,12 @@
 				<string>msauth.Deksan.CalendarASD</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>cloudcalendars</string>
+			</array>
+		</dict>
 	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3759868960530173~5612581418</string>
