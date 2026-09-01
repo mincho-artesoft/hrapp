@@ -67,6 +67,26 @@ export class CalendarController {
     return reply(res, await this.svc.inviteEventRecipients(req.principal, id, body ?? {}));
   }
 
+  @Get('event-invitations/pending')
+  @UseGuards(AuthGuard)
+  async pendingEventInvitations(@Req() req: any, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.pendingEventInvitations(req.principal));
+  }
+
+  @Post('event-invitations/pending/:eventId/decline')
+  @UseGuards(AuthGuard)
+  async declinePendingEventInvitation(
+    @Req() req: any,
+    @Param('eventId') eventId: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(
+      res,
+      await this.svc.declinePendingEventInvitation(req.principal, eventId, body ?? {}),
+    );
+  }
+
   @Put('events/:id/recipients/:userId')
   @UseGuards(AuthGuard)
   async updateEventRecipientAccess(

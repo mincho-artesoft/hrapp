@@ -708,11 +708,21 @@ export class CalendarService {
     }
     if (!saved) return result(404, { error: 'no such event' });
 
-    await Promise.all(removedRecipients
+    const removalDeletes: Promise<any>[] = removedRecipients
       .filter((recipient: any) => Boolean(recipient?.userId))
       .map((recipient: any) => this.store.del(
         this.keys.receivedInvite(String(recipient.userId), eventId),
-      )));
+      ));
+    for (const recipient of removedRecipients) {
+      for (const email of this.recipientEmails(recipient)) {
+        removalDeletes.push(this.store.del(this.keys.pendingEventInvitation(
+          this.core.emailHash(email),
+          principal.calId,
+          eventId,
+        )));
+      }
+    }
+    await Promise.all(removalDeletes);
 
     return result(200, {
       recipients: saved.event.recipients.map((recipient: any) => this.publicRecipient(recipient)),
@@ -867,6 +877,31 @@ export class CalendarService {
     if (!saved && recipientLimitReached) return result(429, { error: 'recipient limit reached' });
     if (!saved) return result(404, { error: 'no such event' });
 
+    const pendingInvitationEmails = new Set(
+      (Array.isArray(saved.event.recipients) ? saved.event.recipients : [])
+        .map((recipient: any) => this.pendingInvitationEmail(recipient))
+        .filter(Boolean),
+    );
+    await Promise.all(invitations
+      .filter((invitation) => pendingInvitationEmails.has(invitation.email))
+      .map((invitation) => this.store.putJSON(
+        this.keys.pendingEventInvitation(
+          this.core.emailHash(invitation.email),
+          principal.calId,
+          eventId,
+        ),
+        {
+          ownerCalId: principal.calId,
+          eventId,
+          feedId,
+          eventUrl: rawEventURL,
+          senderName,
+          senderEmail,
+          invitedAt: now,
+          updatedAt: now,
+        },
+      )));
+
     const timeZone = eventURL.searchParams.get('timeZone') ?? 'UTC';
     await Promise.all(invitations.map((invitation) => this.email.sendSharedEventInvitation({
       email: invitation.email,
@@ -884,6 +919,177 @@ export class CalendarService {
       .filter((recipient: any) => this.recipientEmails(recipient).some((email) => invitedEmails.has(email)))
       .map((recipient: any) => this.publicRecipient(recipient));
     return result(201, { recipients, invitedCount: invitations.length });
+  }
+
+  /** Lists unaccepted event invitations addressed to any verified e-mail on
+   * the current account. The private S3 index avoids scanning every calendar,
+   * while every result is still revalidated against the canonical event. */
+  async pendingEventInvitations(principal: any): Promise<ApiResult> {
+    const account = await this.store.getJSON(this.keys.principal(principal.principalId));
+    const emails = [...new Set(
+      this.recipientIdentities(account).map((identity) => identity.email),
+    )];
+    if (emails.length === 0) return result(200, { invitations: [] });
+
+    const indexed = (await Promise.all(emails.map(async (email) => {
+      const prefix = this.keys.pendingEventInvitations(this.core.emailHash(email));
+      const objectKeys = await this.store.listKeys(prefix);
+      const values = await Promise.all(objectKeys.map(async (key) => ({
+        key,
+        email,
+        ref: await this.store.getJSON(key),
+      })));
+      return values;
+    }))).flat();
+
+    const invitations = new Map<string, any>();
+    const staleKeys: string[] = [];
+    const now = Date.now();
+
+    for (const indexedValue of indexed) {
+      const ref = indexedValue.ref;
+      const ownerCalId = String(ref?.ownerCalId ?? '');
+      const eventId = String(ref?.eventId ?? '');
+      const feedId = String(ref?.feedId ?? '');
+      if (!ownerCalId || !eventId || !feedId) {
+        staleKeys.push(indexedValue.key);
+        continue;
+      }
+
+      const event = await this.store.getJSON(this.keys.event(ownerCalId, eventId));
+      const recipient = (Array.isArray(event?.recipients) ? event.recipients : [])
+        .find((value: any) => this.pendingInvitationEmail(value) === indexedValue.email);
+      const start = new Date(String(event?.start ?? ''));
+      const end = new Date(String(event?.end ?? ''));
+      if (!event
+          || event.status === 'cancelled'
+          || !recipient
+          || !Number.isFinite(start.getTime())
+          || !Number.isFinite(end.getTime())
+          || end.getTime() <= now) {
+        staleKeys.push(indexedValue.key);
+        continue;
+      }
+
+      let eventUrl: URL;
+      try {
+        eventUrl = new URL(String(ref?.eventUrl ?? ''));
+      } catch {
+        staleKeys.push(indexedValue.key);
+        continue;
+      }
+      if (eventUrl.protocol !== 'https:'
+          || eventUrl.searchParams.get('e') !== eventId
+          || eventUrl.searchParams.get('c') !== feedId) {
+        staleKeys.push(indexedValue.key);
+        continue;
+      }
+
+      eventUrl.searchParams.set('title', String(event.title ?? 'Shared event').slice(0, 120));
+      eventUrl.searchParams.set('start', String(start.getTime() / 1000));
+      eventUrl.searchParams.set('end', String(end.getTime() / 1000));
+      eventUrl.searchParams.set('allDay', event.allDay ? '1' : '0');
+      if (event.location) eventUrl.searchParams.set('location', String(event.location).slice(0, 160));
+      else eventUrl.searchParams.delete('location');
+      if (event.url) eventUrl.searchParams.set('eventURL', String(event.url).slice(0, 1024));
+      else eventUrl.searchParams.delete('eventURL');
+
+      const identity = `${ownerCalId}:${eventId}`;
+      const invitation = {
+        id: hashKey(identity),
+        eventId,
+        feedId,
+        title: String(event.title ?? 'Shared event').slice(0, 120),
+        start: start.toISOString(),
+        end: end.toISOString(),
+        allDay: Boolean(event.allDay),
+        location: event.location == null ? null : String(event.location).slice(0, 160),
+        access: this.recipientAccess(recipient),
+        invitedAt: recipient.invitedAt ?? ref.invitedAt ?? null,
+        senderName: ref.senderName ?? event.organizerName ?? 'Cloud Calendars',
+        senderEmail: normalizeEmail(ref.senderEmail ?? event.organizerEmail),
+        eventUrl: eventUrl.toString(),
+        color: eventUrl.searchParams.get('color') ?? '#0A84FF',
+      };
+      const previous = invitations.get(identity);
+      if (!previous
+          || (previous.access === 'reader' && invitation.access === 'writer')) {
+        invitations.set(identity, invitation);
+      }
+    }
+
+    await Promise.all(staleKeys.map((key) => this.store.del(key)));
+    return result(200, {
+      invitations: [...invitations.values()].sort((a, b) =>
+        String(b.invitedAt ?? '').localeCompare(String(a.invitedAt ?? '')),
+      ),
+    });
+  }
+
+  /** Declines an e-mail invitation for every verified identity linked to the
+   * current account. A later re-invite remains possible because declining is
+   * not recorded as an owner revocation. */
+  async declinePendingEventInvitation(
+    principal: any,
+    eventId: string,
+    body: any,
+  ): Promise<ApiResult> {
+    const feedId = String(body.feedId ?? '');
+    if (!eventId || !feedId) {
+      return result(400, { error: 'eventId and feedId are required' });
+    }
+
+    const feedIndex = await this.store.getJSON(this.keys.feedIndex(feedId));
+    if (!feedIndex?.calId) return result(404, { error: 'no such invitation' });
+    const acl = await this.store.getJSON(this.keys.acl(feedIndex.calId));
+    if (acl?.feeds?.[feedId]?.scope?.eventId !== eventId) {
+      return result(403, { error: 'feed is not scoped to this event' });
+    }
+
+    const account = await this.store.getJSON(this.keys.principal(principal.principalId));
+    const identityEmails = new Set(
+      this.recipientIdentities(account).map((identity) => identity.email),
+    );
+    if (identityEmails.size === 0) {
+      return result(422, {
+        code: 'email_required',
+        error: 'a verified email identity is required to decline this invitation',
+      });
+    }
+
+    const declinedEmails: string[] = [];
+    const now = new Date().toISOString();
+    const saved = await this.mutateEvent(feedIndex.calId, eventId, (event) => {
+      if (!event) return null;
+      const recipients = Array.isArray(event.recipients) ? event.recipients : [];
+      const matchingEmails = recipients
+        .map((recipient: any) => this.pendingInvitationEmail(recipient))
+        .filter((email: string | null): email is string =>
+          email != null && identityEmails.has(email),
+        );
+      if (matchingEmails.length === 0) return null;
+      declinedEmails.push(...matchingEmails);
+      const remaining = recipients.filter((recipient: any) => {
+        const email = this.pendingInvitationEmail(recipient);
+        return email == null || !identityEmails.has(email);
+      });
+      return {
+        ...event,
+        recipients: remaining,
+        recipientCount: remaining.length,
+        recipientsUpdatedAt: now,
+      };
+    });
+    if (!saved) return result(404, { error: 'pending invitation not found' });
+
+    await Promise.all([...new Set(declinedEmails)].map((email) => this.store.del(
+      this.keys.pendingEventInvitation(
+        this.core.emailHash(email),
+        feedIndex.calId,
+        eventId,
+      ),
+    )));
+    return result(200, { declined: true });
   }
 
   async updateEventRecipientAccess(
@@ -1048,6 +1254,13 @@ export class CalendarService {
       };
     });
     if (!saved) return result(404, { error: 'shared event no longer exists' });
+    await Promise.all(identities.map((identity) => this.store.del(
+      this.keys.pendingEventInvitation(
+        this.core.emailHash(identity.email),
+        feedIndex.calId,
+        eventId,
+      ),
+    )));
     const recipient = saved.event.recipients.find(
       (value: any) => value?.userId === principal.principalId,
     );
@@ -1213,6 +1426,18 @@ export class CalendarService {
       updatedAt: new Date().toISOString(),
     } : null);
     if (!saved) return result(404, { error: 'no such event' });
+    const pendingIndexDeletes: Promise<any>[] = [];
+    for (const recipient of Array.isArray(saved.event.recipients) ? saved.event.recipients : []) {
+      const email = this.pendingInvitationEmail(recipient);
+      if (email) {
+        pendingIndexDeletes.push(this.store.del(this.keys.pendingEventInvitation(
+          this.core.emailHash(email),
+          calId,
+          eventId,
+        )));
+      }
+    }
+    await Promise.all(pendingIndexDeletes);
     await this.core.regenerate(calId, eventId);
     return result(200, { event: saved.event });
   }

@@ -17,6 +17,9 @@ export const keys = {
   eventFeed: (calId: string, eventId: string) => `idx/eventfeed/${calId}/${eventId}.json`,
   receivedInvites: (principalId: string) => `principal/${principalId}/received/`,
   receivedInvite: (principalId: string, eventId: string) => `principal/${principalId}/received/${eventId}.json`,
+  pendingEventInvitations: (emailHash: string) => `idx/event-invite-email/${emailHash}/`,
+  pendingEventInvitation: (emailHash: string, calId: string, eventId: string) =>
+    `idx/event-invite-email/${emailHash}/${encodeURIComponent(calId)}--${encodeURIComponent(eventId)}.json`,
 
   // Booking (Calendly-style scheduling on top of a calendar)
   booking: (calId: string) => `cal/${calId}/booking.json`, // owner's availability config
