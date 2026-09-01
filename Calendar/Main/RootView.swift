@@ -423,6 +423,10 @@ struct RootView: View {
                 UserDefaults.standard.set(6, forKey: "selectedTabRoot")
             }
         .onReceive(NotificationCenter.default.publisher(
+            for: .openPendingEventInvitations)) { _ in
+                showPendingEventInvitations()
+            }
+        .onReceive(NotificationCenter.default.publisher(
             for: .sharedEventImported)) { _ in
                 Task {
                     accessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
@@ -443,6 +447,10 @@ struct RootView: View {
         .onAppear {
             // The collapsed Weather menu is transparent so the live weather
             // scene continues seamlessly behind its handle and controls.
+            if PendingEventInvitationNavigation.hasOpenRequest {
+                showPendingEventInvitations()
+            }
+
             if selectedTab == 6 {
                 draggableMenuAdaptiveBackgroundОpacity = 0
             }
@@ -551,6 +559,11 @@ struct RootView: View {
 
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
         liveActivityManager.update()
+    }
+
+    private func showPendingEventInvitations() {
+        selectedTabDraggableMenuView = 4
+        menuState = .full
     }
 
     private func openDayFromEventNotification(_ notification: Notification) {

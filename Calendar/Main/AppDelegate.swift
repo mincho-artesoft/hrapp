@@ -59,11 +59,20 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         let eventIdentifier = userInfo["eventIdentifier"] as? String
         let calendarIdentifier = userInfo["calendarIdentifier"] as? String
         let eventStartDate = userInfo["eventStartDate"] as? TimeInterval
+        let pendingInvitationID = userInfo["pendingEventInvitationID"] as? String
+        let notificationIdentifier = response.notification.request.identifier
 
         DispatchQueue.main.async {
             // UIKit continues launch/state-restoration work after this callback finishes,
             // so both notification handling and completion must stay on the main thread.
             defer { completionHandler() }
+
+            if pendingInvitationID != nil
+                || notificationIdentifier.hasPrefix("shared.event.invitation.") {
+                print("📨 [EventInvitations] User opened a pending invitation notification")
+                PendingEventInvitationNavigation.requestOpen()
+                return
+            }
 
             if isWeatherAlert {
                 print("🌦️ [WeatherAlerts] User opened a GPS weather-alert notification")

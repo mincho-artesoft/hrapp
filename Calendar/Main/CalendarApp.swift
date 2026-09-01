@@ -120,6 +120,11 @@ struct CalendarApp: App {
                 // updated invite feeds, with an immediate pass on activation.
                 SharedEventSyncManager.start()
 
+                // Keep checking e-mail invitations while the app is visible.
+                // The manager persists seen IDs, so each invitation can show
+                // at most one local foreground notification.
+                PendingEventInvitationManager.shared.startForegroundPolling()
+
                 // If this device runs a booking page, keep it in step with the
                 // real calendar: push busy times up, pull new bookings down.
                 Task { await BookingManager.refresh() }
@@ -171,6 +176,7 @@ struct CalendarApp: App {
                 CalendarViewModel.shared.stopGoogleCalendarSync()
                 CalendarViewModel.shared.stopMicrosoftCalendarSync()
                 SharedEventSyncManager.stop()
+                PendingEventInvitationManager.shared.stopForegroundPolling()
                 stopPeriodicCalendarWidgetRefresh()
 
             case .inactive:

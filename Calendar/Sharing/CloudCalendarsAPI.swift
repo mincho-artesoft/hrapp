@@ -1,6 +1,8 @@
 import CoreLocation
+import Combine
 import EventKit
 import Foundation
+import UserNotifications
 
 struct SharedEventAlarm: Codable, Equatable {
     let relativeOffset: TimeInterval?
@@ -251,6 +253,40 @@ enum CloudCalendarsAPI {
         var id: String { email.lowercased() }
     }
 
+    struct PendingEventInvitation: Decodable, Equatable, Identifiable {
+        let id: String
+        let eventId: String
+        let feedId: String
+        let title: String
+        let start: String
+        let end: String
+        let allDay: Bool
+        let location: String?
+        let access: EventAccess
+        let invitedAt: String?
+        let senderName: String
+        let senderEmail: String?
+        let eventUrl: String
+        let color: String
+
+        var startDate: Date? { Self.date(start) }
+        var endDate: Date? { Self.date(end) }
+        var sourceURL: URL? { URL(string: eventUrl) }
+        var importPayload: SharedEventImportPayload? {
+            sourceURL.flatMap(SharedEventImportPayload.init(url:))
+        }
+
+        private static func date(_ value: String) -> Date? {
+            let fractional = ISO8601DateFormatter()
+            fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            return fractional.date(from: value) ?? ISO8601DateFormatter().date(from: value)
+        }
+    }
+
+    private struct PendingEventInvitationsResponse: Decodable {
+        let invitations: [PendingEventInvitation]
+    }
+
     private struct EventRecipientsResponse: Decodable {
         let recipients: [EventRecipient]
     }
@@ -427,6 +463,30 @@ enum CloudCalendarsAPI {
             bearer: session.deviceToken
         )
         return response.recipients
+    }
+
+    static func pendingEventInvitations(
+        session: Session
+    ) async throws -> [PendingEventInvitation] {
+        let response: PendingEventInvitationsResponse = try await send(
+            "/event-invitations/pending",
+            method: "GET",
+            body: nil,
+            bearer: session.deviceToken
+        )
+        return response.invitations
+    }
+
+    static func declinePendingEventInvitation(
+        eventId: String,
+        feedId: String,
+        session: Session
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/event-invitations/pending/\(eventId)/decline",
+            body: ["feedId": feedId],
+            bearer: session.deviceToken
+        )
     }
 
     static func updateEventRecipientAccess(
@@ -768,6 +828,138 @@ enum CloudCalendarsAPI {
         }
 
         return data
+    }
+}
+
+@MainActor
+final class PendingEventInvitationManager: ObservableObject {
+    static let shared = PendingEventInvitationManager()
+
+    @Published private(set) var invitations: [CloudCalendarsAPI.PendingEventInvitation] = []
+    @Published private(set) var isLoading = false
+    @Published private(set) var errorMessage: String?
+
+    private let defaults = UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX") ?? .standard
+    private let seenInvitationIDsKey = "pendingEventInvitations.seenIDs.v1"
+    private var pendingNotificationRefresh = false
+    private var foregroundPollingTask: Task<Void, Never>?
+
+    private init() {}
+
+    func startForegroundPolling() {
+        guard foregroundPollingTask == nil else { return }
+        foregroundPollingTask = Task { [weak self] in
+            while !Task.isCancelled {
+                guard let self else { return }
+                await self.refresh(notifyForNewInvitations: true)
+                do {
+                    try await Task.sleep(for: .seconds(20))
+                } catch {
+                    return
+                }
+            }
+        }
+    }
+
+    func stopForegroundPolling() {
+        foregroundPollingTask?.cancel()
+        foregroundPollingTask = nil
+    }
+
+    func refresh(notifyForNewInvitations: Bool = false) async {
+        guard !isLoading else {
+            pendingNotificationRefresh = pendingNotificationRefresh
+                || notifyForNewInvitations
+            return
+        }
+        guard let session = CalendarFeedSession.existing else {
+            invitations = []
+            errorMessage = nil
+            return
+        }
+
+        isLoading = true
+        defer {
+            isLoading = false
+            if pendingNotificationRefresh {
+                pendingNotificationRefresh = false
+                Task {
+                    await self.refresh(notifyForNewInvitations: true)
+                }
+            }
+        }
+        do {
+            let loaded = try await CloudCalendarsAPI.pendingEventInvitations(session: session)
+            let sorted = loaded.sorted {
+                ($0.startDate ?? .distantFuture) < ($1.startDate ?? .distantFuture)
+            }
+            let seen = Set(defaults.stringArray(forKey: seenInvitationIDsKey) ?? [])
+            let newInvitations = sorted.filter { !seen.contains($0.id) }
+
+            invitations = sorted
+            errorMessage = nil
+
+            if notifyForNewInvitations {
+                var updatedSeen = seen
+                updatedSeen.formUnion(sorted.map(\.id))
+                if updatedSeen.count > 500 {
+                    updatedSeen = Set(Array(updatedSeen).suffix(500))
+                }
+                defaults.set(Array(updatedSeen), forKey: seenInvitationIDsKey)
+
+                if !newInvitations.isEmpty {
+                    await postNotifications(for: newInvitations)
+                }
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    private func postNotifications(
+        for invitations: [CloudCalendarsAPI.PendingEventInvitation]
+    ) async {
+        let center = UNUserNotificationCenter.current()
+        guard await notificationsAreAuthorized(center) else { return }
+
+        for invitation in invitations {
+            let content = UNMutableNotificationContent()
+            content.title = NSLocalizedString(
+                "New event invitation",
+                comment: "Pending shared-event invitation notification title"
+            )
+            content.body = localizedFormat(
+                NSLocalizedString(
+                    "%@ invited you to %@",
+                    comment: "Pending shared-event invitation notification body"
+                ),
+                invitation.senderName,
+                invitation.title
+            )
+            content.sound = .default
+            content.userInfo = ["pendingEventInvitationID": invitation.id]
+            let request = UNNotificationRequest(
+                identifier: "shared.event.invitation.\(invitation.id)",
+                content: content,
+                trigger: nil
+            )
+            try? await center.add(request)
+        }
+    }
+
+    private func notificationsAreAuthorized(
+        _ center: UNUserNotificationCenter
+    ) async -> Bool {
+        await withCheckedContinuation { continuation in
+            center.getNotificationSettings { settings in
+                let status = settings.authorizationStatus
+                continuation.resume(returning:
+                    status == .authorized
+                        || status == .provisional
+                        || status == .ephemeral
+                )
+            }
+        }
     }
 }
 

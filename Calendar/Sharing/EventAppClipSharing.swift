@@ -511,10 +511,7 @@ enum SharedOutgoingEventTracker {
     static func record(url: URL, localEventIdentifier: String?) {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return }
 
-        var values: [String: String] = [:]
-        for item in components.queryItems ?? [] where values[item.name] == nil {
-            values[item.name] = item.value ?? ""
-        }
+        let values = components.sharedEventFormQueryValues
 
         guard let eventID = values["e"], !eventID.isEmpty,
               let title = values["title"], !title.isEmpty,
@@ -1494,9 +1491,7 @@ enum EventAppClipSharing {
 
     private static func sharedEventValue(named name: String, from url: URL) -> String? {
         URLComponents(url: url, resolvingAgainstBaseURL: false)?
-            .queryItems?
-            .first(where: { $0.name == name })?
-            .value
+            .sharedEventFormQueryValues[name]
     }
 
     @MainActor

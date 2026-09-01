@@ -24,6 +24,7 @@ private struct SharedEventDayGroup<Item>: Identifiable {
 }
 
 private enum SharedEventsDestination: String, Identifiable {
+    case pending
     case sent
     case received
 
@@ -31,6 +32,7 @@ private enum SharedEventsDestination: String, Identifiable {
 
     var title: LocalizedStringKey {
         switch self {
+        case .pending: "Pending invitations"
         case .sent: "Shared by me"
         case .received: "Shared with me"
         }
@@ -40,6 +42,7 @@ private enum SharedEventsDestination: String, Identifiable {
 struct SharingSheetView: View {
     @ObservedObject private var viewModel: CalendarViewModel = .shared
     @ObservedObject private var cloudAccountManager = CloudAccountManager.shared
+    @ObservedObject private var pendingInvitationManager = PendingEventInvitationManager.shared
 
     @State private var showBookingSetup = false
     @State private var showCloudAccount = false
@@ -47,6 +50,9 @@ struct SharingSheetView: View {
     @State private var receivedEvents: [ReceivedSharedEvent] = []
     @State private var selectedSentEvent: SharedOutgoingEventTracker.SentEvent?
     @State private var selectedReceivedEvent: EKEvent?
+    @State private var selectedPendingInvitation: SharedEventImportPayload?
+    @State private var pendingInvitationActionIDs: Set<String> = []
+    @State private var pendingInvitationErrorMessage: String?
     @State private var sharedEventsDestination: SharedEventsDestination?
     @State private var showSharedEventsSearch = false
     @State private var sharedEventsSearchText = ""
@@ -87,6 +93,11 @@ struct SharingSheetView: View {
         .onAppear {
             viewModel.reloadCalendars()
             reloadSharedEvents()
+            openPendingInvitationsIfRequested()
+            Task { await pendingInvitationManager.refresh() }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .openPendingEventInvitations)) { _ in
+            openPendingInvitationsIfRequested()
         }
         .onReceive(NotificationCenter.default.publisher(for: .sharedEventsTrackingChanged)) { _ in
             reloadSharedEvents()
@@ -99,6 +110,9 @@ struct SharingSheetView: View {
         }
         .onReceive(expiryRefreshTimer) { _ in
             reloadSharedEvents()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
+            Task { await pendingInvitationManager.refresh() }
         }
         .sheet(isPresented: $showBookingSetup) {
             BookingSetupView()
@@ -114,6 +128,14 @@ struct SharingSheetView: View {
     private var sharingNavigationSection: some View {
         Section {
             cloudAccountButton
+
+            sharedEventsNavigationButton(
+                title: "Pending invitations",
+                count: pendingInvitationManager.invitations.count,
+                systemImage: "envelope.badge.fill",
+                color: .orange,
+                destination: .pending
+            )
 
             sharedEventsNavigationButton(
                 title: "Shared by me",
@@ -229,6 +251,11 @@ struct SharingSheetView: View {
         }
     }
 
+    private func openPendingInvitationsIfRequested() {
+        guard PendingEventInvitationNavigation.consumeOpenRequest() else { return }
+        sharedEventsDestination = .pending
+    }
+
     private func sharedEventsNavigationButton(
         title: LocalizedStringKey,
         count: Int,
@@ -250,12 +277,23 @@ struct SharingSheetView: View {
                     Text(title)
                         .font(.body.weight(.semibold))
                         .foregroundStyle(.primary)
-                    Text(count == 1 ? "1 upcoming event" : "\(count) upcoming events")
+                    Text(sharedEventsCountText(count, destination: destination))
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
 
                 Spacer(minLength: 8)
+
+                if destination == .pending, count > 0 {
+                    Text(verbatim: "\(count)")
+                        .font(.caption2.weight(.bold))
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.65)
+                        .frame(width: 26, height: 26)
+                        .background(color, in: Circle())
+                        .accessibilityLabel("\(count) pending invitations")
+                }
 
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
@@ -266,10 +304,20 @@ struct SharingSheetView: View {
         .buttonStyle(.plain)
     }
 
+    private func sharedEventsCountText(
+        _ count: Int,
+        destination: SharedEventsDestination
+    ) -> String {
+        if destination == .pending {
+            return count == 1 ? "1 pending invitation" : "\(count) pending invitations"
+        }
+        return count == 1 ? "1 upcoming event" : "\(count) upcoming events"
+    }
+
     private func sharedEventsList(_ destination: SharedEventsDestination) -> some View {
         NavigationStack {
             VStack(spacing: 0) {
-                if showSharedEventsSearch {
+                if showSharedEventsSearch, destination != .pending {
                     CalendarEventSearchField(text: $sharedEventsSearchText) {
                         showSharedEventsSearch = false
                         sharedEventsSearchText = ""
@@ -291,11 +339,36 @@ struct SharingSheetView: View {
             .sheet(item: $selectedReceivedEvent, onDismiss: reloadSharedEvents) { event in
                 EventDetailViewWrapper(event: event)
             }
+            .sheet(item: $selectedPendingInvitation, onDismiss: {
+                Task { await pendingInvitationManager.refresh() }
+            }) { payload in
+                SharedEventImportView(payload: payload)
+            }
             .onAppear {
                 showSharedEventsSearch = false
                 sharedEventsSearchText = ""
+                if destination == .pending {
+                    Task { await pendingInvitationManager.refresh() }
+                }
+            }
+            .alert(
+                "Unable to update invitation",
+                isPresented: pendingInvitationErrorIsPresented
+            ) {
+                Button("OK", role: .cancel) {
+                    pendingInvitationErrorMessage = nil
+                }
+            } message: {
+                Text(pendingInvitationErrorMessage ?? "Please try again.")
             }
         }
+    }
+
+    private var pendingInvitationErrorIsPresented: Binding<Bool> {
+        Binding(
+            get: { pendingInvitationErrorMessage != nil },
+            set: { if !$0 { pendingInvitationErrorMessage = nil } }
+        )
     }
 
     private func sharedEventsListHeader(_ destination: SharedEventsDestination) -> some View {
@@ -315,21 +388,27 @@ struct SharingSheetView: View {
                 .lineLimit(1)
                 .frame(maxWidth: .infinity)
 
-            Button {
-                showSharedEventsSearch = true
-            } label: {
-                Image(uiImage: CalendarSearchAppearance.iconImage)
-                    .renderingMode(.template)
-                    .foregroundStyle(.blue)
+            if destination == .pending {
+                Color.clear
+                    .frame(width: 72, height: CalendarSearchAppearance.buttonSize)
+                    .accessibilityHidden(true)
+            } else {
+                Button {
+                    showSharedEventsSearch = true
+                } label: {
+                    Image(uiImage: CalendarSearchAppearance.iconImage)
+                        .renderingMode(.template)
+                        .foregroundStyle(.blue)
+                }
+                .frame(
+                    width: CalendarSearchAppearance.buttonSize,
+                    height: CalendarSearchAppearance.buttonSize
+                )
+                .contentShape(Rectangle())
+                .buttonStyle(.plain)
+                .frame(width: 72, alignment: .trailing)
+                .accessibilityLabel("Search events")
             }
-            .frame(
-                width: CalendarSearchAppearance.buttonSize,
-                height: CalendarSearchAppearance.buttonSize
-            )
-            .contentShape(Rectangle())
-            .buttonStyle(.plain)
-            .frame(width: 72, alignment: .trailing)
-            .accessibilityLabel("Search events")
         }
         .padding(.horizontal, 16)
         .padding(.top, 8)
@@ -345,6 +424,28 @@ struct SharingSheetView: View {
     @ViewBuilder
     private func sharedEventsListContent(_ destination: SharedEventsDestination) -> some View {
         switch destination {
+        case .pending:
+            if pendingInvitationManager.isLoading
+                && pendingInvitationManager.invitations.isEmpty {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else if pendingInvitationManager.invitations.isEmpty {
+                sharedEventsEmptyState(
+                    title: "No pending invitations.",
+                    systemImage: "envelope.open"
+                )
+            } else {
+                List {
+                    ForEach(pendingInvitationManager.invitations) { invitation in
+                        pendingInvitationRow(invitation)
+                    }
+                }
+                .listStyle(.plain)
+                .refreshable {
+                    await pendingInvitationManager.refresh()
+                }
+            }
+
         case .sent:
             let filtered = sentEvents.filter {
                 sharedEventMatchesSearch(
@@ -444,6 +545,99 @@ struct SharingSheetView: View {
                 }
                 .listStyle(.plain)
             }
+        }
+    }
+
+    private func pendingInvitationRow(
+        _ invitation: CloudCalendarsAPI.PendingEventInvitation
+    ) -> some View {
+        let isUpdating = pendingInvitationActionIDs.contains(invitation.id)
+
+        return VStack(alignment: .leading, spacing: 7) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(invitation.title)
+                    .font(.body.weight(.semibold))
+                    .lineLimit(2)
+
+                Spacer(minLength: 8)
+
+                Text(invitation.access.title)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(invitation.access == .writer ? Color.green : Color.secondary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(.thinMaterial, in: Capsule())
+                    .fixedSize()
+            }
+
+            Text("From \(invitation.senderName)")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+
+            if let start = invitation.startDate,
+               let end = invitation.endDate {
+                Text(eventDateText(
+                    start: start,
+                    end: end,
+                    isAllDay: invitation.allDay
+                ))
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+            }
+
+            if let location = invitation.location, !location.isEmpty {
+                Label(location, systemImage: "location")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+            }
+
+            HStack(spacing: 10) {
+                Button(role: .destructive) {
+                    Task { await declinePendingInvitation(invitation) }
+                } label: {
+                    Text("Decline")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .tint(.red)
+
+                Button {
+                    selectedPendingInvitation = invitation.importPayload
+                } label: {
+                    Text("Accept")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(invitation.importPayload == nil)
+            }
+            .controlSize(.small)
+            .disabled(isUpdating)
+        }
+        .padding(.vertical, 6)
+    }
+
+    @MainActor
+    private func declinePendingInvitation(
+        _ invitation: CloudCalendarsAPI.PendingEventInvitation
+    ) async {
+        guard !pendingInvitationActionIDs.contains(invitation.id),
+              let session = CalendarFeedSession.existing
+        else { return }
+
+        pendingInvitationActionIDs.insert(invitation.id)
+        defer { pendingInvitationActionIDs.remove(invitation.id) }
+
+        do {
+            try await CloudCalendarsAPI.declinePendingEventInvitation(
+                eventId: invitation.eventId,
+                feedId: invitation.feedId,
+                session: session
+            )
+            pendingInvitationErrorMessage = nil
+            await pendingInvitationManager.refresh()
+        } catch {
+            pendingInvitationErrorMessage = error.localizedDescription
         }
     }
 
@@ -784,6 +978,12 @@ private struct SharedEventAccessSheet: View {
                 }
             }
             .task { await loadRecipients() }
+            .onReceive(
+                NotificationCenter.default.publisher(for: .sharedEventRecipientsChanged)
+            ) { notification in
+                guard notification.object as? String == event.eventID else { return }
+                Task { await loadRecipients() }
+            }
             .interactiveDismissDisabled(isSaving)
             .confirmationDialog(
                 "Remove Access?",

@@ -211,6 +211,10 @@ struct EventEmailInvitationsView: View {
                 session: session
             )
             onSent()
+            NotificationCenter.default.post(
+                name: .sharedEventRecipientsChanged,
+                object: eventID
+            )
             NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
             dismiss()
         } catch {

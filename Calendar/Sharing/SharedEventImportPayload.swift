@@ -1,6 +1,38 @@
 import Foundation
 import SwiftUI
 
+extension URLComponents {
+    /// Server invitation links use form-style query encoding, where a raw `+`
+    /// represents a space. Decode the percent escapes only after normalising
+    /// those separators so an actual plus encoded as `%2B` remains a plus.
+    var sharedEventFormQueryValues: [String: String] {
+        guard let percentEncodedQuery else { return [:] }
+
+        var values: [String: String] = [:]
+        for pair in percentEncodedQuery.split(
+            separator: "&",
+            omittingEmptySubsequences: false
+        ) {
+            let parts = pair.split(
+                separator: "=",
+                maxSplits: 1,
+                omittingEmptySubsequences: false
+            )
+            let encodedName = parts.first.map(String.init) ?? ""
+            let encodedValue = parts.count > 1 ? String(parts[1]) : ""
+            let name = Self.decodeSharedEventFormComponent(encodedName)
+            guard values[name] == nil else { continue }
+            values[name] = Self.decodeSharedEventFormComponent(encodedValue)
+        }
+        return values
+    }
+
+    private static func decodeSharedEventFormComponent(_ value: String) -> String {
+        let spacesNormalised = value.replacingOccurrences(of: "+", with: " ")
+        return spacesNormalised.removingPercentEncoding ?? spacesNormalised
+    }
+}
+
 struct SharedEventImportPayload: Identifiable, Equatable {
     static let appClipBundleIdentifier = "Deksan.CalendarASD.Clip"
 
@@ -48,10 +80,7 @@ struct SharedEventImportPayload: Identifiable, Equatable {
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { return nil }
 
-        var values: [String: String] = [:]
-        for item in components.queryItems ?? [] where values[item.name] == nil {
-            values[item.name] = item.value ?? ""
-        }
+        let values = components.sharedEventFormQueryValues
 
         guard (isFullAppHandoff || isServerInvitationLink || values["p"] == Self.appClipBundleIdentifier),
               let rawTitle = values["title"]?.trimmingCharacters(in: .whitespacesAndNewlines),

@@ -272,6 +272,9 @@ final class CloudAccountManager: NSObject, ObservableObject {
             clearError(for: provider)
             NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
             await SharedEventRecovery.restoreFromServer()
+            await PendingEventInvitationManager.shared.refresh(
+                notifyForNewInvitations: true
+            )
         } catch {
             setError(error.localizedDescription, for: provider)
         }
