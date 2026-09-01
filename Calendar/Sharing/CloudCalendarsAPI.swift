@@ -253,6 +253,69 @@ enum CloudCalendarsAPI {
         var id: String { email.lowercased() }
     }
 
+    struct ICloudCalendarRecipient: Codable, Equatable, Identifiable {
+        let id: String
+        let email: String
+        var access: EventAccess
+        let invitedAt: String?
+        let updatedAt: String?
+    }
+
+    struct ICloudCalendarSharing: Codable, Equatable, Identifiable {
+        let id: String
+        let title: String
+        let color: String
+        let timeZone: String
+        let recipients: [ICloudCalendarRecipient]
+    }
+
+    struct SharedICloudCalendarEvent: Codable, Equatable, Identifiable {
+        let id: String
+        let title: String
+        let start: String
+        let end: String
+        let allDay: Bool
+        let location: String?
+        let url: String?
+        let details: SharedEventDetails?
+
+        var startDate: Date? { Self.date(start) }
+        var endDate: Date? { Self.date(end) }
+
+        private static func date(_ value: String) -> Date? {
+            let fractional = ISO8601DateFormatter()
+            fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            return fractional.date(from: value) ?? ISO8601DateFormatter().date(from: value)
+        }
+    }
+
+    struct SharedICloudCalendar: Decodable, Equatable, Identifiable {
+        let id: String
+        let ownerId: String
+        let ownerEmail: String?
+        let calendarId: String
+        let title: String
+        let color: String
+        let timeZone: String
+        let access: EventAccess
+        let invitedAt: String?
+        let updatedAt: String?
+        let events: [SharedICloudCalendarEvent]?
+        let eventsUpdatedAt: String?
+        let windowStart: String?
+        let windowEnd: String?
+
+        var windowStartDate: Date? { Self.date(windowStart) }
+        var windowEndDate: Date? { Self.date(windowEnd) }
+
+        private static func date(_ value: String?) -> Date? {
+            guard let value else { return nil }
+            let fractional = ISO8601DateFormatter()
+            fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            return fractional.date(from: value) ?? ISO8601DateFormatter().date(from: value)
+        }
+    }
+
     struct PendingEventInvitation: Decodable, Equatable, Identifiable {
         let id: String
         let eventId: String
@@ -298,6 +361,14 @@ enum CloudCalendarsAPI {
     private struct EventInvitationsResponse: Decodable {
         let recipients: [EventRecipient]
         let invitedCount: Int
+    }
+
+    private struct ICloudCalendarSharingResponse: Decodable {
+        let calendar: ICloudCalendarSharing
+    }
+
+    private struct SharedICloudCalendarsResponse: Decodable {
+        let calendars: [SharedICloudCalendar]
     }
 
     struct ReceivedInviteAccess: Decodable, Equatable {
@@ -523,6 +594,99 @@ enum CloudCalendarsAPI {
             bearer: session.deviceToken
         )
         return response.recipients
+    }
+
+    // MARK: - iCloud calendar sharing
+
+    static func iCloudCalendarSharing(
+        calendarId: String,
+        session: Session
+    ) async throws -> ICloudCalendarSharing {
+        let response: ICloudCalendarSharingResponse = try await send(
+            "/icloud-calendars/\(calendarId)/sharing",
+            method: "GET",
+            body: nil,
+            bearer: session.deviceToken
+        )
+        return response.calendar
+    }
+
+    static func iCloudCalendarsSharedWithMe(
+        session: Session
+    ) async throws -> [SharedICloudCalendar] {
+        let response: SharedICloudCalendarsResponse = try await send(
+            "/icloud-calendars-shared-with-me",
+            method: "GET",
+            body: nil,
+            bearer: session.deviceToken
+        )
+        return response.calendars
+    }
+
+    static func acceptICloudCalendarInvitation(
+        ownerId: String,
+        calendarId: String,
+        session: Session
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/icloud-calendar-invites/accept",
+            body: [
+                "ownerId": ownerId,
+                "calendarId": calendarId
+            ],
+            bearer: session.deviceToken
+        )
+    }
+
+    static func saveICloudCalendarSharing(
+        calendarId: String,
+        title: String,
+        color: String,
+        timeZone: String,
+        recipients: [(email: String, access: EventAccess)],
+        session: Session
+    ) async throws -> ICloudCalendarSharing {
+        let response: ICloudCalendarSharingResponse = try await send(
+            "/icloud-calendars/\(calendarId)/sharing",
+            method: "PUT",
+            body: [
+                "title": title,
+                "color": color,
+                "timeZone": timeZone,
+                "recipients": recipients.map {
+                    ["email": $0.email, "access": $0.access.rawValue]
+                }
+            ],
+            bearer: session.deviceToken
+        )
+        return response.calendar
+    }
+
+    static func saveICloudCalendarEvents(
+        calendarId: String,
+        events: [SharedICloudCalendarEvent],
+        windowStart: Date,
+        windowEnd: Date,
+        session: Session
+    ) async throws {
+        let encoder = JSONEncoder()
+        let eventObjects: [[String: Any]] = try events.map { event in
+            let data = try encoder.encode(event)
+            guard let object = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                throw Failure.malformedResponse
+            }
+            return object
+        }
+        try await sendIgnoringResponse(
+            "/icloud-calendars/\(calendarId)/events",
+            method: "PUT",
+            body: [
+                "windowStart": ISO8601DateFormatter().string(from: windowStart),
+                "windowEnd": ISO8601DateFormatter().string(from: windowEnd),
+                "events": eventObjects
+            ],
+            bearer: session.deviceToken
+        )
     }
 
     static func cancelEvent(id: String, session: Session) async throws {

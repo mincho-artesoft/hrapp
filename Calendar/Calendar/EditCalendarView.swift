@@ -1,5 +1,6 @@
 import SwiftUI
 import EventKit
+import CryptoKit
 
 struct EditCalendarView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -72,11 +73,23 @@ struct EditCalendarView: View {
     }
 
     private func updateCalendar() {
+        let rawCalendarIdentifier = calendar.calendarIdentifier
         calendar.title   = calendarName
         calendar.cgColor = selectedColor.cgColor
         
         do {
             try eventStore.saveCalendar(calendar, commit: true)
+
+            let updatedTitle = calendarName
+            let updatedColor = selectedColor
+            Task { @MainActor in
+                await updateSharedCalendarMetadataIfNeeded(
+                    rawCalendarIdentifier: rawCalendarIdentifier,
+                    title: updatedTitle,
+                    color: updatedColor
+                )
+            }
+
             eventStore.reset()
 
             // Опресняваме списъка с календари в ViewModel
@@ -86,6 +99,66 @@ struct EditCalendarView: View {
         } catch {
             print("Error updating calendar: \(error.localizedDescription)")
         }
+    }
+
+    @MainActor
+    private func updateSharedCalendarMetadataIfNeeded(
+        rawCalendarIdentifier: String,
+        title: String,
+        color: UIColor
+    ) async {
+        guard let session = CalendarFeedSession.existing else { return }
+
+        let calendarID = SHA256.hash(data: Data(rawCalendarIdentifier.utf8))
+            .map { String(format: "%02x", $0) }
+            .joined()
+
+        do {
+            let existing = try await CloudCalendarsAPI.iCloudCalendarSharing(
+                calendarId: calendarID,
+                session: session
+            )
+
+            // A missing record is represented by an empty title. Avoid creating
+            // server state for calendars that have never been shared.
+            guard !existing.title.isEmpty else { return }
+
+            SharedICloudCalendarLocalStore.registerOwnedCalendar(
+                shareID: calendarID,
+                localCalendarIdentifier: rawCalendarIdentifier
+            )
+
+            _ = try await CloudCalendarsAPI.saveICloudCalendarSharing(
+                calendarId: calendarID,
+                title: title,
+                color: colorHex(color),
+                timeZone: existing.timeZone,
+                recipients: existing.recipients.map {
+                    (email: $0.email, access: $0.access)
+                },
+                session: session
+            )
+            _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: eventStore)
+            NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
+        } catch {
+            print("Error syncing shared calendar metadata: \(error.localizedDescription)")
+        }
+    }
+
+    private func colorHex(_ color: UIColor) -> String {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+            return "#0088FF"
+        }
+        return String(
+            format: "#%02X%02X%02X",
+            Int((red * 255).rounded()),
+            Int((green * 255).rounded()),
+            Int((blue * 255).rounded())
+        )
     }
 
     private func deleteCalendar() {

@@ -49,10 +49,13 @@ struct SearchEventRowView: View {
             // Заглавие
             Text(event.title?.isEmpty == false
                  ? event.title!
-                 : NSLocalizedString("No Title", comment: "Fallback if an event has no title"))
+                : NSLocalizedString("No Title", comment: "Fallback if an event has no title"))
                 .font(.body)
                 .foregroundColor(.primary)
-                .strikethrough(SharedInviteTracker.shouldAppearStruckThrough(event))
+                .strikethrough(
+                    SharedInviteTracker.shouldAppearStruckThrough(event),
+                    color: Color(uiColor: eventColor)
+                )
 
             Spacer()
 

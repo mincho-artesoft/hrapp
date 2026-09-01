@@ -5,12 +5,15 @@ struct CloudCalendarsAppClip: App {
     @State private var payload = SharedEventPayload.example
     @State private var pairing: ClipPairingRequest?
     @State private var bookings: ClipBookingsRequest?
+    @State private var sharedCalendar: ClipSharedCalendar?
 
     init() {
         #if DEBUG
         if let rawURL = ProcessInfo.processInfo.environment["_XCAppClipURL"],
            let url = URL(string: rawURL) {
-            if let request = ClipBookingPairing.request(from: url) {
+            if let calendar = ClipSharedCalendar(url: url) {
+                _sharedCalendar = State(initialValue: calendar)
+            } else if let request = ClipBookingPairing.request(from: url) {
                 _pairing = State(initialValue: request)
             } else if let request = ClipMyBookings.request(from: url) {
                 _bookings = State(initialValue: request)
@@ -29,6 +32,8 @@ struct CloudCalendarsAppClip: App {
                     MyBookingsClipView(request: bookings)
                 } else if let pairing {
                     ClipBookingPairingView(request: pairing)
+                } else if let sharedCalendar {
+                    CalendarClipPreviewView(calendar: sharedCalendar)
                 } else {
                     EventClipPreviewView(payload: payload)
                 }
@@ -46,6 +51,10 @@ struct CloudCalendarsAppClip: App {
     /// The three invocation shapes — pairing, "my bookings", and a shared event —
     /// are mutually exclusive, so first match wins.
     private func route(_ url: URL) {
+        if let calendar = ClipSharedCalendar(url: url) {
+            sharedCalendar = calendar
+            return
+        }
         if let request = ClipBookingPairing.request(from: url) {
             pairing = request
             return

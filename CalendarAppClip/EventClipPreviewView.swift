@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 struct EventClipPreviewView: View {
     let payload: SharedEventPayload
@@ -37,8 +36,8 @@ struct EventClipPreviewView: View {
                 VStack(spacing: 22) {
                     header
                     eventCard
-                    privacyNote
                     primaryAction
+                    privacyNote
                 }
                 .padding(.horizontal, 22)
                 .padding(.vertical, 28)
@@ -108,11 +107,7 @@ struct EventClipPreviewView: View {
 
     private var privacyNote: some View {
         Label {
-            if fullAppImportURL == nil {
-                Text("This App Clip only previews the event. Download Cloud Calendars to add it to your calendar.")
-            } else {
-                Text("Adding the event hands it to your calendar app. This App Clip never reads your calendars.")
-            }
+            Text("This App Clip only previews the event. Download Cloud Calendars to add it to your calendar.")
         } icon: {
             Image(systemName: "lock.shield")
         }
@@ -121,67 +116,8 @@ struct EventClipPreviewView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    @ViewBuilder
     private var primaryAction: some View {
-        if let fullAppImportURL {
-            importButton(destination: fullAppImportURL)
-        } else {
-            appStoreButton
-        }
-    }
-
-    private var fullAppImportURL: URL? {
-        guard
-            let feedID = payload.feedID?.trimmingCharacters(in: .whitespacesAndNewlines),
-            !feedID.isEmpty
-        else {
-            return nil
-        }
-
-        var components = URLComponents()
-        components.scheme = "cloudcalendars"
-        components.host = "shared-event"
-        components.queryItems = [
-            URLQueryItem(name: "e", value: payload.eventID),
-            URLQueryItem(name: "c", value: feedID),
-            URLQueryItem(name: "title", value: payload.title),
-            URLQueryItem(name: "start", value: String(payload.start.timeIntervalSince1970)),
-            URLQueryItem(name: "end", value: String(payload.end.timeIntervalSince1970)),
-            URLQueryItem(name: "allDay", value: payload.isAllDay ? "1" : "0"),
-            URLQueryItem(name: "timeZone", value: payload.timeZone.identifier),
-            URLQueryItem(name: "color", value: payload.eventColorHex),
-            URLQueryItem(name: "location", value: payload.location)
-        ]
-        return components.url
-    }
-
-    private func importButton(destination: URL) -> some View {
-        VStack(spacing: 8) {
-            Button {
-                openFullApp(destination)
-            } label: {
-                Label("Add to Calendar", systemImage: "calendar.badge.plus")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(payload.eventColor, in: Capsule())
-                    .foregroundStyle(.white)
-            }
-
-            Text("You’ll see it update if the time changes or the event is called off.")
-                .font(.footnote)
-                .multilineTextAlignment(.center)
-                .foregroundStyle(.white.opacity(0.72))
-        }
-    }
-
-    private func openFullApp(_ destination: URL) {
-        UIApplication.shared.open(destination, options: [:]) { opened in
-            guard !opened,
-                  let appStoreURL = URL(string: "https://apps.apple.com/app/cloud-calendars/id6744690319")
-            else { return }
-            UIApplication.shared.open(appStoreURL)
-        }
+        appStoreButton
     }
 
     private var appStoreButton: some View {

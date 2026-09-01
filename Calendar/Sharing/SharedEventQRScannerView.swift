@@ -1,9 +1,14 @@
 import SwiftUI
 import VisionKit
 
+enum CloudCalendarsScannedShare {
+    case event(SharedEventImportPayload)
+    case calendar(SharedCalendarInvitationPayload)
+}
+
 @MainActor
 struct SharedEventQRScannerView: View {
-    let onScanned: (SharedEventImportPayload) -> Void
+    let onScanned: (CloudCalendarsScannedShare) -> Void
 
     @Environment(\.dismiss) private var dismiss
     @State private var errorMessage: String?
@@ -27,13 +32,13 @@ struct SharedEventQRScannerView: View {
                     ContentUnavailableView(
                         "QR scanner unavailable",
                         systemImage: "camera.fill",
-                        description: Text("Use a device with an available camera to scan an event QR code.")
+                        description: Text("Use a device with an available camera to scan a Cloud Calendars QR code.")
                     )
                     .foregroundStyle(.white)
                     .padding(24)
                 }
             }
-            .navigationTitle("Scan Event QR Code")
+            .navigationTitle("Scan QR Code")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.black.opacity(0.72), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
@@ -61,7 +66,7 @@ struct SharedEventQRScannerView: View {
                 .shadow(color: .black.opacity(0.45), radius: 8)
                 .accessibilityHidden(true)
 
-            Text("Place a Cloud Calendars event QR code inside the frame.")
+            Text("Place a Cloud Calendars event or calendar QR code inside the frame.")
                 .font(.subheadline.weight(.medium))
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.white)
@@ -83,14 +88,19 @@ struct SharedEventQRScannerView: View {
 
     private func handleScannedValue(_ rawValue: String) {
         let trimmed = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard let url = URL(string: trimmed),
-              let payload = SharedEventImportPayload(url: url)
-        else {
-            errorMessage = "This QR code does not contain a Cloud Calendars event."
+        guard let url = URL(string: trimmed) else {
+            errorMessage = "This QR code does not contain a Cloud Calendars share."
             return
         }
 
-        onScanned(payload)
+        if let payload = SharedEventImportPayload(url: url) {
+            onScanned(.event(payload))
+        } else if let payload = SharedCalendarInvitationPayload(url: url) {
+            onScanned(.calendar(payload))
+        } else {
+            errorMessage = "This QR code does not contain a Cloud Calendars event or calendar."
+            return
+        }
         dismiss()
     }
 }

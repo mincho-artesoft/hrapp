@@ -1,6 +1,7 @@
 // CalendarsSheetView.swift
 import SwiftUI
 import EventKit
+import CryptoKit
 import GoogleSignIn
 import GoogleSignInSwift
 import MSAL
@@ -12,6 +13,15 @@ private struct GoogleCalendarSharingTarget: Identifiable {
     let calendarTitle: String
 }
 
+private struct ICloudCalendarSharingTarget: Identifiable {
+    let id = UUID()
+    let calendarID: String
+    let calendarTitle: String
+    let calendarColor: String
+    let timeZone: String
+    let localCalendarIdentifier: String
+}
+
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
@@ -21,6 +31,7 @@ struct CalendarsSheetView: View {
     // MARK: - State
     @State private var showAddGoogleCalendarSheet: StoredGoogleUser? = nil
     @State private var iCloudExpanded = true
+    @State private var sharedICloudExpanded = true
     @State private var isOtherExpanded = true
     @State private var googleExpandedStates: [UUID: Bool] = [:]
     @State private var msExpandedStates: [UUID: Bool] = [:]
@@ -31,6 +42,15 @@ struct CalendarsSheetView: View {
     @State private var addingGoogleCalendarTitle: String? = nil
     @State private var addingGoogleCalendarColor: UIColor? = nil
     @State private var googleCalendarSharingTarget: GoogleCalendarSharingTarget?
+    @State private var iCloudCalendarSharingTarget: ICloudCalendarSharingTarget?
+    @State private var sharedICloudCalendars: [CloudCalendarsAPI.SharedICloudCalendar] = []
+    @State private var isLoadingSharedICloudCalendars = false
+    @State private var sharedICloudCalendarsError: String?
+    private let sharedICloudRefreshTimer = Timer.publish(
+        every: 20,
+        on: .main,
+        in: .common
+    ).autoconnect()
     private let bottomContentInset: CGFloat
 
     // MARK: - Init for iOS 14–15 appearance
@@ -60,6 +80,7 @@ struct CalendarsSheetView: View {
             // Main content
             Form {
                 iCloudSection
+                sharedWithMeICloudSection
                 otherSection
                 googleSection
                 microsoftSection
@@ -88,7 +109,16 @@ struct CalendarsSheetView: View {
             Spacer()
         }
         .background(Color.clear)
-        .onAppear(perform: onAppear)
+        .onAppear {
+            onAppear()
+            Task { await loadSharedICloudCalendars() }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
+            Task { await loadSharedICloudCalendars() }
+        }
+        .onReceive(sharedICloudRefreshTimer) { _ in
+            Task { await loadSharedICloudCalendars() }
+        }
 
         // MARK: Sheets…
 
@@ -135,6 +165,18 @@ struct CalendarsSheetView: View {
             )
         }
 
+        .sheet(item: $iCloudCalendarSharingTarget) { target in
+            ICloudCalendarSharingView(
+                calendarID: target.calendarID,
+                calendarTitle: target.calendarTitle,
+                calendarColor: target.calendarColor,
+                timeZone: target.timeZone,
+                localCalendarIdentifier: target.localCalendarIdentifier
+            )
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
+        }
+
     }
 
     // MARK: - Sections
@@ -142,15 +184,29 @@ struct CalendarsSheetView: View {
     private var iCloudSection: some View {
         Section {
             DisclosureGroup(LocalizedStringKey("iCloud"), isExpanded: $iCloudExpanded) {
-                ForEach(viewModel.localOrICloudCalendars(), id: \.calendarIdentifier) { cal in
+                ForEach(
+                    viewModel.localOrICloudCalendars().filter {
+                        !SharedICloudCalendarLocalStore.allLocalCalendarIdentifiers
+                            .contains($0.calendarIdentifier)
+                    },
+                    id: \.calendarIdentifier
+                ) { cal in
                     CalendarRowView(
                         calendar: cal,
                         isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
                         toggleAction: toggleCalendar,
                         editAction: { calendarToEdit = cal },
                         showEditButton: true,
-                        showShareButton: false,
-                        shareAction: {}
+                        showShareButton: true,
+                        shareAction: {
+                            iCloudCalendarSharingTarget = ICloudCalendarSharingTarget(
+                                calendarID: iCloudCalendarShareID(for: cal),
+                                calendarTitle: cal.title,
+                                calendarColor: calendarColorHex(cal),
+                                timeZone: TimeZone.current.identifier,
+                                localCalendarIdentifier: cal.calendarIdentifier
+                            )
+                        }
                     )
                     .listRowSeparator(.hidden)
                 }
@@ -158,10 +214,92 @@ struct CalendarsSheetView: View {
         }
     }
 
+    private var sharedWithMeICloudSection: some View {
+        Section {
+            DisclosureGroup(
+                LocalizedStringKey("Shared with me"),
+                isExpanded: $sharedICloudExpanded
+            ) {
+                if CalendarFeedSession.existing == nil {
+                    Text("Sign in to see calendars shared with you.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .listRowSeparator(.hidden)
+                } else if isLoadingSharedICloudCalendars && sharedICloudCalendars.isEmpty {
+                    HStack(spacing: 10) {
+                        ProgressView()
+                        Text("Loading shared calendars…")
+                            .foregroundStyle(.secondary)
+                    }
+                    .listRowSeparator(.hidden)
+                } else if let sharedICloudCalendarsError,
+                          sharedICloudCalendars.isEmpty {
+                    Label(sharedICloudCalendarsError, systemImage: "exclamationmark.circle.fill")
+                        .font(.footnote)
+                        .foregroundStyle(.red)
+                        .listRowSeparator(.hidden)
+                } else if sharedICloudCalendars.isEmpty {
+                    Text("No calendars have been shared with you yet.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .listRowSeparator(.hidden)
+                } else {
+                    ForEach(sharedICloudCalendars) { calendar in
+                        let localCalendar = SharedICloudCalendarLocalStore.localCalendar(
+                            for: calendar,
+                            in: viewModel.eventStore
+                        )
+                        SharedICloudCalendarRow(
+                            calendar: calendar,
+                            localCalendar: localCalendar,
+                            isSelected: localCalendar.map {
+                                viewModel.selectedCalendarIDs.contains($0.calendarIdentifier)
+                            } ?? false,
+                            toggleAction: {
+                                guard let localCalendar else { return }
+                                toggleCalendar(localCalendar)
+                            }
+                        )
+                            .listRowSeparator(.hidden)
+                    }
+                }
+            }
+        }
+    }
+
+    private func iCloudCalendarShareID(for calendar: EKCalendar) -> String {
+        SHA256.hash(data: Data(calendar.calendarIdentifier.utf8))
+            .map { String(format: "%02x", $0) }
+            .joined()
+    }
+
+    private func calendarColorHex(_ calendar: EKCalendar) -> String {
+        let color = UIColor(cgColor: calendar.cgColor ?? UIColor.systemBlue.cgColor)
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        guard color.getRed(&red, green: &green, blue: &blue, alpha: &alpha) else {
+            return "#0088FF"
+        }
+        return String(
+            format: "#%02X%02X%02X",
+            Int((red * 255).rounded()),
+            Int((green * 255).rounded()),
+            Int((blue * 255).rounded())
+        )
+    }
+
     private var otherSection: some View {
         Section {
             DisclosureGroup(LocalizedStringKey("Other"), isExpanded: $isOtherExpanded) {
-                ForEach(viewModel.otherCalendars(), id: \.calendarIdentifier) { cal in
+                ForEach(
+                    viewModel.otherCalendars().filter {
+                        !SharedICloudCalendarLocalStore.allLocalCalendarIdentifiers
+                            .contains($0.calendarIdentifier)
+                    },
+                    id: \.calendarIdentifier
+                ) { cal in
                     CalendarRowView(
                         calendar: cal,
                         isSelected: viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier),
@@ -456,6 +594,51 @@ struct CalendarsSheetView: View {
         notificationManager.rescheduleUpcomingEventNotifications()
     }
 
+    @MainActor
+    private func loadSharedICloudCalendars() async {
+        guard let session = CalendarFeedSession.existing else {
+            sharedICloudCalendars = []
+            sharedICloudCalendarsError = nil
+            return
+        }
+        guard !isLoadingSharedICloudCalendars else { return }
+        isLoadingSharedICloudCalendars = true
+        defer { isLoadingSharedICloudCalendars = false }
+        do {
+            let fetchedCalendars = try await CloudCalendarsAPI
+                .iCloudCalendarsSharedWithMe(session: session)
+
+            var reconciliationError: Error?
+            var shouldReloadCalendars = false
+            for sharedCalendar in fetchedCalendars {
+                do {
+                    let result = try SharedICloudCalendarLocalStore.reconcile(
+                        sharedCalendar,
+                        in: viewModel.eventStore
+                    )
+                    if result.created {
+                        viewModel.selectedCalendarIDs.insert(
+                            result.calendar.calendarIdentifier
+                        )
+                    }
+                    shouldReloadCalendars = shouldReloadCalendars || result.changed
+                } catch {
+                    reconciliationError = error
+                }
+            }
+
+            if sharedICloudCalendars != fetchedCalendars {
+                sharedICloudCalendars = fetchedCalendars
+            }
+            if shouldReloadCalendars {
+                viewModel.reloadCalendars()
+            }
+            sharedICloudCalendarsError = reconciliationError?.localizedDescription
+        } catch {
+            sharedICloudCalendarsError = error.localizedDescription
+        }
+    }
+
     private func toggleSelectAll() {
         let allIDs = Set(viewModel.allCalendars.map { $0.calendarIdentifier })
         if viewModel.selectedCalendarIDs.count == allIDs.count {
@@ -490,4 +673,85 @@ struct CalendarsSheetView: View {
             .key
     }
 
+}
+
+private struct SharedICloudCalendarRow: View {
+    let calendar: CloudCalendarsAPI.SharedICloudCalendar
+    let localCalendar: EKCalendar?
+    let isSelected: Bool
+    let toggleAction: () -> Void
+
+    var body: some View {
+        HStack(spacing: 16) {
+            Button(action: toggleAction) {
+                HStack(spacing: 16) {
+                    ZStack {
+                        Circle()
+                            .fill(calendarColor)
+                            .frame(width: 28, height: 28)
+
+                        if isSelected {
+                            Image(systemName: "checkmark")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundStyle(.white)
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(calendar.title)
+                            .foregroundStyle(.primary)
+                            .lineLimit(1)
+
+                        if let ownerEmail = calendar.ownerEmail, !ownerEmail.isEmpty {
+                            Text(ownerEmail)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(1)
+                                .truncationMode(.middle)
+                        }
+                    }
+                }
+            }
+            .buttonStyle(.plain)
+            .disabled(localCalendar == nil)
+
+            Spacer(minLength: 8)
+
+            Text(calendar.access.title)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(
+                    calendar.access == .writer
+                        ? Color.green
+                        : Color(uiColor: .secondaryLabel)
+                )
+                .padding(.horizontal, 9)
+                .padding(.vertical, 5)
+                .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
+        }
+        .padding(.vertical, 4)
+        .padding(.horizontal, 5)
+        .background(
+            RoundedRectangle(cornerRadius: 24)
+                .fill(
+                    isSelected
+                        ? Color(uiColor: UIColor.systemGray4.withAlphaComponent(0.5))
+                        : Color.clear
+                )
+        )
+        .padding(.leading, -32)
+    }
+
+    private var calendarColor: Color {
+        let raw = calendar.color.trimmingCharacters(
+            in: CharacterSet.alphanumerics.inverted
+        )
+        guard raw.count == 6, let value = UInt64(raw, radix: 16) else {
+            return .blue
+        }
+        return Color(
+            red: Double((value >> 16) & 0xFF) / 255,
+            green: Double((value >> 8) & 0xFF) / 255,
+            blue: Double(value & 0xFF) / 255
+        )
+    }
 }

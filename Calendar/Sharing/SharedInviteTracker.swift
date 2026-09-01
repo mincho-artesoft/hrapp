@@ -25,6 +25,8 @@ enum SharedInviteTracker {
         var receiptRecorded: Bool? = nil
 
         var effectiveAccess: CloudCalendarsAPI.EventAccess { access ?? .reader }
+        /// Owner cancellation and revoked recipient access both leave a frozen
+        /// local copy that is drawn struck through.
         var shouldAppearStruckThrough: Bool { isCancelled || isRevoked == true }
     }
 
@@ -189,8 +191,9 @@ enum SharedInviteTracker {
         }
     }
 
-    /// A cancelled or access-revoked event remains visible so the recipient can
-    /// understand what happened instead of seeing an unexplained empty slot.
+    /// An owner-cancelled or access-revoked event remains visible so the
+    /// recipient can understand what happened instead of seeing an unexplained
+    /// empty slot.
     static func shouldAppearStruckThrough(localEventIdentifier: String) -> Bool {
         tracked().values.contains {
             $0.localEventIdentifier == localEventIdentifier && $0.shouldAppearStruckThrough

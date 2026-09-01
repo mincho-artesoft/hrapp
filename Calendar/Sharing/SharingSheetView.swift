@@ -58,7 +58,9 @@ struct SharingSheetView: View {
     @State private var sharedEventsSearchText = ""
     @State private var showQRScanner = false
     @State private var pendingScannedEvent: SharedEventImportPayload?
+    @State private var pendingScannedCalendar: SharedCalendarInvitationPayload?
     @State private var scannedEvent: SharedEventImportPayload?
+    @State private var scannedCalendar: SharedCalendarInvitationPayload?
 
     private let expiryRefreshTimer = Timer.publish(
         every: 60,
@@ -120,6 +122,22 @@ struct SharingSheetView: View {
         .fullScreenCover(isPresented: $showCloudAccount) {
             cloudAccountView
         }
+        .fullScreenCover(isPresented: $showQRScanner, onDismiss: presentScannedEvent) {
+            SharedEventQRScannerView { share in
+                switch share {
+                case .event(let payload):
+                    pendingScannedEvent = payload
+                case .calendar(let payload):
+                    pendingScannedCalendar = payload
+                }
+            }
+        }
+        .sheet(item: $scannedEvent) { payload in
+            SharedEventImportView(payload: payload)
+        }
+        .sheet(item: $scannedCalendar) { payload in
+            SharedCalendarInvitationView(payload: payload)
+        }
         .fullScreenCover(item: $sharedEventsDestination) { destination in
             sharedEventsList(destination)
         }
@@ -127,6 +145,8 @@ struct SharingSheetView: View {
 
     private var sharingNavigationSection: some View {
         Section {
+            scanEventQRCodeButton
+
             cloudAccountButton
 
             sharedEventsNavigationButton(
@@ -153,10 +173,43 @@ struct SharingSheetView: View {
                 destination: .received
             )
 
-            bookingButton
-        } footer: {
-            Text(LocalizedStringKey("Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free."))
+            // Temporarily hidden. Keep the booking flow implemented so this
+            // can be restored without rebuilding the feature.
+            // bookingButton
+
+            // Booking footer hidden together with the button:
+            // "Let people book your open times. Meetings land on the calendar
+            // you choose, and your busy times keep those slots free."
         }
+    }
+
+    private var scanEventQRCodeButton: some View {
+        Button { showQRScanner = true } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "qrcode.viewfinder")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.blue)
+                    .frame(width: 38, height: 38)
+                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Scan QR Code")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text("Open a shared event or calendar")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 8)
+
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
     }
 
     private var cloudAccountButton: some View {
@@ -208,22 +261,6 @@ struct SharingSheetView: View {
                     CloudAccountSignInContent()
                         .padding(.vertical, 4)
                 }
-
-                Section {
-                    Button { showQRScanner = true } label: {
-                        HStack(spacing: 10) {
-                            Image(systemName: "qrcode.viewfinder")
-                                .font(.title3.weight(.semibold))
-                            Text("Scan Event QR Code")
-                                .font(.body.weight(.semibold))
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 7)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
-                    .listRowBackground(Color.clear)
-                }
             }
             .navigationTitle("Cloud Calendars account")
             .navigationBarTitleDisplayMode(.inline)
@@ -232,22 +269,20 @@ struct SharingSheetView: View {
                     Button("Close") { showCloudAccount = false }
                 }
             }
-            .fullScreenCover(isPresented: $showQRScanner, onDismiss: presentScannedEvent) {
-                SharedEventQRScannerView { payload in
-                    pendingScannedEvent = payload
-                }
-            }
-            .sheet(item: $scannedEvent) { payload in
-                SharedEventImportView(payload: payload)
-            }
         }
     }
 
     private func presentScannedEvent() {
-        guard let payload = pendingScannedEvent else { return }
-        pendingScannedEvent = nil
-        DispatchQueue.main.async {
-            scannedEvent = payload
+        if let payload = pendingScannedEvent {
+            pendingScannedEvent = nil
+            DispatchQueue.main.async {
+                scannedEvent = payload
+            }
+        } else if let payload = pendingScannedCalendar {
+            pendingScannedCalendar = nil
+            DispatchQueue.main.async {
+                scannedCalendar = payload
+            }
         }
     }
 
@@ -755,7 +790,7 @@ struct SharingSheetView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(title)
                     .font(.body)
-                    .strikethrough(isCancelled)
+                    .strikethrough(isCancelled, color: color)
                     .foregroundStyle(.primary)
 
                 if let location, !location.isEmpty {

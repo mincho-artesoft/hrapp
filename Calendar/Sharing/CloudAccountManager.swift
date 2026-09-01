@@ -275,6 +275,14 @@ final class CloudAccountManager: NSObject, ObservableObject {
             await PendingEventInvitationManager.shared.refresh(
                 notifyForNewInvitations: true
             )
+        } catch CalendarFeedSession.SessionError.emailRequired where provider == "apple" {
+            setError(
+                NSLocalizedString(
+                    "Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email.",
+                    comment: "Sign in with Apple previously authorized without a reusable email"
+                ),
+                for: provider
+            )
         } catch {
             setError(error.localizedDescription, for: provider)
         }

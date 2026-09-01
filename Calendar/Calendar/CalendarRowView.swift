@@ -37,21 +37,21 @@ struct CalendarRowView: View {
             
             Spacer()
             
+            // Бутон „Share“, ако showShareButton == true
+            if showShareButton {
+                Button(action: shareAction) {
+                    Image(systemName: "person.2.fill")
+                        .foregroundColor(.blue)   // Или Color(UIColor.systemBlue)
+                }
+                .buttonStyle(.plain)
+            }
+
             // Бутон „Edit“ (ако е разрешено)
             if showEditButton && calendar.allowsContentModifications {
                 Button(action: { editAction() }) {
                     Image(systemName: "info.circle")
                         .foregroundColor(.blue)
                         .font(.system(size: 18))
-                }
-                .buttonStyle(.plain)
-            }
-
-            // Бутон „Share“, ако showShareButton == true
-            if showShareButton {
-                Button(action: shareAction) {
-                    Image(systemName: "person.2.fill")
-                        .foregroundColor(.blue)   // Или Color(UIColor.systemBlue)
                 }
                 .buttonStyle(.plain)
             }

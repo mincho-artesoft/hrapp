@@ -956,9 +956,11 @@ enum SharedEventSyncManager {
 
         let store = CalendarViewModel.shared.eventStore
         await SharedEventRecovery.restoreFromServer(force: false)
+        _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: store)
         _ = await SharedOutgoingEventTracker.syncAll(in: store)
         _ = await SharedOutgoingEventTracker.pullRemoteChanges(in: store)
         _ = await SharedInviteRefresher.refreshAll()
+        _ = await SharedICloudCalendarLocalStore.refreshAll()
     }
 }
 

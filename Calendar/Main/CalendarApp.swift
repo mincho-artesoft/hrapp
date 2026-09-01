@@ -26,6 +26,7 @@ struct CalendarApp: App {
     @State private var hasRefreshedWidgetThisSession = false
     @State private var widgetRefreshTask: Task<Void, Never>?
     @State private var pendingSharedEvent: SharedEventImportPayload?
+    @State private var pendingSharedCalendar: SharedCalendarInvitationPayload?
 
     private let liveActivityRefreshInterval: UInt64 = 5 * 60 * 1_000_000_000
 
@@ -44,9 +45,12 @@ struct CalendarApp: App {
         // Xcode's App Clip local experience supplies this value. Supporting it
         // in the full app as well makes the handoff screen testable locally.
         if let rawURL = ProcessInfo.processInfo.environment["_XCAppClipURL"],
-           let url = URL(string: rawURL),
-           let payload = SharedEventImportPayload(url: url) {
-            _pendingSharedEvent = State(initialValue: payload)
+           let url = URL(string: rawURL) {
+            if let calendar = SharedCalendarInvitationPayload(url: url) {
+                _pendingSharedCalendar = State(initialValue: calendar)
+            } else if let payload = SharedEventImportPayload(url: url) {
+                _pendingSharedEvent = State(initialValue: payload)
+            }
         }
         #endif
     }
@@ -94,17 +98,28 @@ struct CalendarApp: App {
                 }
                 .onContinueUserActivity(NSUserActivityTypeBrowsingWeb) { activity in
                     guard let url = activity.webpageURL else { return }
+                    if let calendar = SharedCalendarInvitationPayload(url: url) {
+                        pendingSharedCalendar = calendar
+                        return
+                    }
                     guard let payload = SharedEventImportPayload(url: url) else { return }
                     SharedEventImportHandoffStore.clearPendingPayload()
                     pendingSharedEvent = payload
                 }
                 .onOpenURL { url in
+                    if let calendar = SharedCalendarInvitationPayload(url: url) {
+                        pendingSharedCalendar = calendar
+                        return
+                    }
                     guard let payload = SharedEventImportPayload(url: url) else { return }
                     SharedEventImportHandoffStore.clearPendingPayload()
                     pendingSharedEvent = payload
                 }
                 .sheet(item: $pendingSharedEvent) { payload in
                     SharedEventImportView(payload: payload)
+                }
+                .sheet(item: $pendingSharedCalendar) { payload in
+                    SharedCalendarInvitationView(payload: payload)
                 }
         }
         .backgroundTask(.appRefresh(CalendarLiveActivityBackgroundRefreshTask.identifier)) {

@@ -56,7 +56,10 @@ struct EventRowView: View {
             Text(event.text)
                 .font(.body)
                 .foregroundColor(.primary)
-                .strikethrough(SharedInviteTracker.shouldAppearStruckThrough(event))
+                .strikethrough(
+                    SharedInviteTracker.shouldAppearStruckThrough(event),
+                    color: Color(uiColor: event.color)
+                )
             
             Spacer()
             

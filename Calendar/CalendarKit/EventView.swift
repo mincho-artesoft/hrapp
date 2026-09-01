@@ -174,12 +174,16 @@ open class EventView: UIView {
             finalString.append(NSAttributedString(string: " \(loc)", attributes: textAttributes))
         }
 
-        // Cancelled and access-revoked invitations stay visible with a line
-        // through them instead of leaving an unexplained gap in the calendar.
+        // Invitations cancelled by their owner or whose access was revoked stay
+        // visible with a line through them. Keep the line explicitly in the
+        // event colour so every text fragment uses the same appearance.
         if let identifier = wrapper.realEvent.eventIdentifier,
            SharedInviteTracker.shouldAppearStruckThrough(localEventIdentifier: identifier) {
             finalString.addAttributes(
-                [.strikethroughStyle: NSUnderlineStyle.single.rawValue],
+                [
+                    .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+                    .strikethroughColor: event.color
+                ],
                 range: NSRange(location: 0, length: finalString.length)
             )
         }
