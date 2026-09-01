@@ -71,6 +71,13 @@ final class CloudAccountManager: NSObject, ObservableObject {
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(
             clientID: CalendarViewModel.shared.clientID
         )
+        performGoogleSignIn(with: presenter, hasRetriedAfterKeychainError: false)
+    }
+
+    private func performGoogleSignIn(
+        with presenter: UIViewController,
+        hasRetriedAfterKeychainError: Bool
+    ) {
         GIDSignIn.sharedInstance.signIn(
             withPresenting: presenter,
             hint: nil,
@@ -82,12 +89,53 @@ final class CloudAccountManager: NSObject, ObservableObject {
             let token = result?.user.idToken?.tokenString
             let name = result?.user.profile?.name
             let errorMessage = error?.localizedDescription
+            let errorDomain = (error as NSError?)?.domain
+            let errorCode = (error as NSError?)?.code
 
-            Task { @MainActor [weak self, token, name, errorMessage] in
+            Task { @MainActor [weak self, token, name, errorMessage, errorDomain, errorCode] in
                 guard let self else { return }
                 guard let token, !token.isEmpty else {
+                    if errorDomain == "com.google.GIDSignIn",
+                       errorCode == -2,
+                       !hasRetriedAfterKeychainError {
+                        // GIDSignIn error -2 means its secure session could not
+                        // be read or written. Remove only the unusable SDK
+                        // session and retry once so a stale simulator keychain
+                        // item does not permanently block Cloud Account login.
+                        GIDSignIn.sharedInstance.signOut()
+                        try? await Task.sleep(for: .milliseconds(250))
+
+                        guard let retryPresenter = Self.presentingViewController() else {
+                            self.isSigningIn = false
+                            self.setError(
+                                NSLocalizedString(
+                                    "Google sign-in couldn’t open. Please try again.",
+                                    comment: "Google sign-in presenter unavailable after keychain recovery"
+                                ),
+                                for: "google"
+                            )
+                            return
+                        }
+
+                        self.performGoogleSignIn(
+                            with: retryPresenter,
+                            hasRetriedAfterKeychainError: true
+                        )
+                        return
+                    }
+
                     self.isSigningIn = false
-                    self.setError(errorMessage, for: "google")
+                    if errorDomain == "com.google.GIDSignIn", errorCode == -2 {
+                        self.setError(
+                            NSLocalizedString(
+                                "Google sign-in couldn’t save its secure session. Close and reopen the app, then try again.",
+                                comment: "Google Sign-In keychain failure after automatic retry"
+                            ),
+                            for: "google"
+                        )
+                    } else {
+                        self.setError(errorMessage, for: "google")
+                    }
                     return
                 }
 
