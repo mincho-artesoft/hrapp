@@ -17,9 +17,21 @@ export const keys = {
   eventFeed: (calId: string, eventId: string) => `idx/eventfeed/${calId}/${eventId}.json`,
   receivedInvites: (principalId: string) => `principal/${principalId}/received/`,
   receivedInvite: (principalId: string, eventId: string) => `principal/${principalId}/received/${eventId}.json`,
+  receivedICloudCalendars: (principalId: string) =>
+    `principal/${principalId}/received-icloud-calendars/`,
+  receivedICloudCalendar: (principalId: string, ownerId: string, calendarId: string) =>
+    `principal/${principalId}/received-icloud-calendars/${encodeURIComponent(ownerId)}--${encodeURIComponent(calendarId)}.json`,
   pendingEventInvitations: (emailHash: string) => `idx/event-invite-email/${emailHash}/`,
   pendingEventInvitation: (emailHash: string, calId: string, eventId: string) =>
     `idx/event-invite-email/${emailHash}/${encodeURIComponent(calId)}--${encodeURIComponent(eventId)}.json`,
+  icloudCalendarSharing: (principalId: string, calendarId: string) =>
+    `principal/${principalId}/icloud-calendars/${calendarId}.json`,
+  icloudCalendarEvents: (principalId: string, calendarId: string) =>
+    `principal/${principalId}/icloud-calendar-events/${calendarId}.json`,
+  pendingICloudCalendarInvitations: (emailHash: string) =>
+    `idx/icloud-calendar-invite-email/${emailHash}/`,
+  pendingICloudCalendarInvitation: (emailHash: string, principalId: string, calendarId: string) =>
+    `idx/icloud-calendar-invite-email/${emailHash}/${encodeURIComponent(principalId)}--${encodeURIComponent(calendarId)}.json`,
 
   // Booking (Calendly-style scheduling on top of a calendar)
   booking: (calId: string) => `cal/${calId}/booking.json`, // owner's availability config

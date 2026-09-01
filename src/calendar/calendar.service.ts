@@ -123,14 +123,24 @@ export class CalendarService {
       });
     }
 
-    const principalId = caller?.principalId ?? randomId(16);
     const emailIndexKey = this.keys.accountEmail(this.core.emailHash(claimedEmail));
     const emailOwner = await this.store.getJSON(emailIndexKey);
-    if (emailOwner && emailOwner.principalId !== principalId) {
+    if (caller && emailOwner && emailOwner.principalId !== caller.principalId) {
       return result(409, { error: 'this email is already linked to another Cloud Calendars account' });
     }
 
-    let calId = caller?.calId;
+    // A verified e-mail is itself a stable recovery identity. When somebody
+    // first used Google and later chooses Apple (or Microsoft) with the same
+    // verified address, attach the new provider to that existing principal
+    // instead of creating a competing account and returning 409.
+    const emailPrincipal = !caller && emailOwner?.principalId
+      ? await this.store.getJSON(this.keys.principal(String(emailOwner.principalId)))
+      : null;
+    const principalId = caller?.principalId
+      ?? emailPrincipal?.id
+      ?? randomId(16);
+
+    let calId = caller?.calId ?? emailPrincipal?.calId;
     let ownerFeedId: string;
     if (!calId) {
       ({ calId, ownerFeedId } = await this.core.createCalendar(principalId, body));
@@ -162,13 +172,14 @@ export class CalendarService {
       id: identityId,
     });
 
-    return result(201, {
+    const reusedAccount = Boolean(caller || emailPrincipal);
+    return result(reusedAccount ? 200 : 201, {
       calendarId: calId, deviceToken,
       feedId: ownerFeedId, feedUrl: this.core.feedUrl(ownerFeedId),
       email: claimedEmail, provider: identity.provider,
       ownerId: principalId,
       identities: this.publicIdentities(principal),
-      created: !caller,
+      created: !reusedAccount,
     });
   }
 
@@ -1092,6 +1103,571 @@ export class CalendarService {
     return result(200, { declined: true });
   }
 
+  /** Returns the app-managed sharing metadata for one local iCloud calendar.
+   * The client sends only a SHA-256 fingerprint, never EventKit's raw calendar
+   * identifier. Records are also namespaced by the authenticated principal. */
+  async iCloudCalendarSharing(principal: any, calendarId: string): Promise<ApiResult> {
+    if (!validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'invalid iCloud calendar identifier' });
+    }
+    const record = await this.store.getJSON(
+      this.keys.icloudCalendarSharing(principal.principalId, calendarId),
+    );
+    if (record && record.schemaVersion !== 2) {
+      return this.saveICloudCalendarSharing(principal, calendarId, {
+        title: record.title,
+        color: record.color,
+        timeZone: record.timeZone,
+        recipients: (Array.isArray(record.recipients) ? record.recipients : []).map(
+          (recipient: any) => ({
+            email: recipient.email,
+            access: recipient.access,
+          }),
+        ),
+      });
+    }
+    return result(200, {
+      calendar: record ?? {
+        id: calendarId,
+        title: '',
+        color: '#0088FF',
+        timeZone: 'UTC',
+        recipients: [],
+      },
+    });
+  }
+
+  /** Lists calendars addressed to any verified e-mail linked to the current
+   * Cloud Calendars account. Each e-mail index is revalidated against the
+   * owner's canonical record so removed access disappears immediately. */
+  async iCloudCalendarsSharedWithMe(principal: any): Promise<ApiResult> {
+    const account = await this.store.getJSON(this.keys.principal(principal.principalId));
+    const emails = [...new Set(
+      this.recipientIdentities(account).map((identity) => identity.email),
+    )];
+    if (emails.length === 0) return result(200, { calendars: [] });
+
+    const indexed = (await Promise.all(emails.map(async (email) => {
+      const prefix = this.keys.pendingICloudCalendarInvitations(
+        this.core.emailHash(email),
+      );
+      const objectKeys = await this.store.listKeys(prefix);
+      return Promise.all(objectKeys.map(async (key) => ({
+        key,
+        email,
+        ref: await this.store.getJSON(key),
+      })));
+    }))).flat();
+
+    const calendars = new Map<string, any>();
+    const staleKeys: string[] = [];
+    const ownerEmailCache = new Map<string, string | null>();
+
+    for (const indexedValue of indexed) {
+      const ownerId = String(indexedValue.ref?.ownerId ?? '');
+      const calendarId = String(indexedValue.ref?.calendarId ?? '');
+      if (!ownerId || !validICloudCalendarShareId(calendarId)) {
+        staleKeys.push(indexedValue.key);
+        continue;
+      }
+
+      const calendar = await this.store.getJSON(
+        this.keys.icloudCalendarSharing(ownerId, calendarId),
+      );
+      const recipient = (Array.isArray(calendar?.recipients) ? calendar.recipients : [])
+        .find((value: any) => normalizeEmail(value?.email) === indexedValue.email);
+      if (!calendar || !recipient) {
+        staleKeys.push(indexedValue.key);
+        continue;
+      }
+
+      if (!ownerEmailCache.has(ownerId)) {
+        const ownerAccount = await this.store.getJSON(this.keys.principal(ownerId));
+        ownerEmailCache.set(
+          ownerId,
+          this.recipientIdentities(ownerAccount)[0]?.email ?? null,
+        );
+      }
+
+      const identity = `${ownerId}:${calendarId}`;
+      const calendarEvents = await this.store.getJSON(
+        this.keys.icloudCalendarEvents(ownerId, calendarId),
+      );
+      const sharedCalendar = {
+        id: hashKey(identity),
+        ownerId,
+        ownerEmail: ownerEmailCache.get(ownerId) ?? null,
+        calendarId,
+        title: String(calendar.title ?? 'Shared calendar').slice(0, 512),
+        color: /^#[0-9a-fA-F]{6}$/.test(String(calendar.color ?? ''))
+          ? String(calendar.color).toUpperCase()
+          : '#0088FF',
+        timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
+        access: recipient.access === 'writer' ? 'writer' : 'reader',
+        invitedAt: recipient.invitedAt ?? indexedValue.ref?.invitedAt ?? null,
+        updatedAt: calendar.updatedAt ?? recipient.updatedAt ?? null,
+        events: Array.isArray(calendarEvents?.events) ? calendarEvents.events : [],
+        eventsUpdatedAt: calendarEvents?.updatedAt ?? null,
+        windowStart: calendarEvents?.windowStart ?? null,
+        windowEnd: calendarEvents?.windowEnd ?? null,
+      };
+      const previous = calendars.get(identity);
+      if (!previous
+          || (previous.access === 'reader' && sharedCalendar.access === 'writer')) {
+        calendars.set(identity, sharedCalendar);
+      }
+    }
+
+    await Promise.all(staleKeys.map((key) => this.store.del(key)));
+    return result(200, {
+      calendars: [...calendars.values()].sort((a, b) =>
+        a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }),
+      ),
+    });
+  }
+
+  async iCloudCalendarInvitationLanding(
+    query: any,
+  ): Promise<{ status: number; html: string }> {
+    const ownerId = boundedQueryValue(query?.o, 128);
+    const calendarId = boundedQueryValue(query?.c, 128);
+    if (!ownerId || !calendarId || !validICloudCalendarShareId(calendarId)) {
+      return {
+        status: 400,
+        html: eventInvitationErrorPage('Invalid calendar invitation'),
+      };
+    }
+    const calendar = await this.store.getJSON(
+      this.keys.icloudCalendarSharing(ownerId, calendarId),
+    );
+    if (!calendar) {
+      return {
+        status: 404,
+        html: eventInvitationErrorPage('This calendar invitation is not available yet'),
+      };
+    }
+
+    const deepLink = new URL('cloudcalendars://shared-calendar');
+    deepLink.searchParams.set('o', ownerId);
+    deepLink.searchParams.set('c', calendarId);
+    deepLink.searchParams.set('title', calendar.title ?? 'Shared calendar');
+    deepLink.searchParams.set('color', calendar.color ?? '#0088FF');
+    const title = escapeHTML(calendar.title ?? 'Shared calendar');
+    const color = /^#[0-9a-fA-F]{6}$/.test(String(calendar.color ?? ''))
+      ? String(calendar.color)
+      : '#0088FF';
+    return {
+      status: 200,
+      html: eventInvitationDocument(`
+        <section class="card" style="--event-color:${escapeHTML(color)}">
+          <h1>${title}</h1>
+          <p>A calendar was shared with you through Cloud Calendars.</p>
+          <div class="actions">
+            <a class="primary" href="${escapeHTML(deepLink.toString())}">Open in Cloud Calendars</a>
+          </div>
+        </section>`, String(calendar.title ?? 'Shared calendar')),
+    };
+  }
+
+  /** Accepts an App Clip, QR, or link invitation into the recipient's
+   * Cloud Calendars account. Unlike importing a single event, this does not
+   * create a new EventKit calendar on the device: the canonical S3 share and
+   * the recipient's "Shared with me" index remain the source of truth. */
+  async acceptICloudCalendarInvitation(principal: any, body: any): Promise<ApiResult> {
+    const ownerId = boundedPlainText(body.ownerId, 128);
+    const calendarId = boundedPlainText(body.calendarId, 128);
+    if (!ownerId || !calendarId || !validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'ownerId and a valid calendarId are required' });
+    }
+    if (ownerId === principal.principalId) {
+      return result(409, { error: 'the owner already has full calendar access' });
+    }
+
+    const calendarKey = this.keys.icloudCalendarSharing(ownerId, calendarId);
+    const [calendar, account, ownerAccount] = await Promise.all([
+      this.store.getJSON(calendarKey),
+      this.store.getJSON(this.keys.principal(principal.principalId)),
+      this.store.getJSON(this.keys.principal(ownerId)),
+    ]);
+    if (!calendar) return result(404, { error: 'shared calendar no longer exists' });
+
+    const identities = this.recipientIdentities(account);
+    if (identities.length === 0) {
+      return result(422, {
+        code: 'email_required',
+        error: 'a verified email identity is required to receive shared calendars',
+      });
+    }
+
+    const identityEmails = new Set(identities.map((identity) => identity.email));
+    const existingRecipients = Array.isArray(calendar.recipients)
+      ? calendar.recipients
+      : [];
+    const matchesCurrentUser = (recipient: any) => {
+      if (recipient?.userId === principal.principalId) return true;
+      const emails = [
+        normalizeEmail(recipient?.email),
+        normalizeEmail(recipient?.invitedEmail),
+        ...(Array.isArray(recipient?.emails)
+          ? recipient.emails.map(normalizeEmail)
+          : []),
+      ].filter((email): email is string => Boolean(email));
+      return emails.some((email) => identityEmails.has(email));
+    };
+    const matchingRecipients = existingRecipients.filter(matchesCurrentUser);
+    const existing = matchingRecipients.find(
+      (recipient: any) => recipient?.userId === principal.principalId,
+    ) ?? matchingRecipients[0];
+    const email = normalizeEmail(existing?.email) ?? identities[0].email;
+    const now = new Date().toISOString();
+    const access = matchingRecipients.some(
+      (recipient: any) => recipient?.access === 'writer',
+    ) ? 'writer' : 'reader';
+    const recipient = {
+      id: principal.principalId,
+      userId: principal.principalId,
+      email,
+      invitedEmail: normalizeEmail(existing?.invitedEmail) ?? email,
+      emails: [...new Set(identities.map((identity) => identity.email))],
+      identities: identities.map((identity) => ({
+        provider: identity.provider,
+        email: identity.email,
+      })),
+      access,
+      isPending: false,
+      invitedAt: existing?.invitedAt ?? now,
+      acceptedAt: existing?.acceptedAt ?? now,
+      updatedAt: now,
+    };
+    const recipients = existingRecipients
+      .filter((value: any) => !matchesCurrentUser(value));
+    recipients.push(recipient);
+    recipients.sort((a: any, b: any) =>
+      String(a?.email ?? '').localeCompare(String(b?.email ?? '')),
+    );
+    const savedCalendar = {
+      ...calendar,
+      recipients,
+      recipientCount: recipients.length,
+      updatedAt: now,
+    };
+
+    const ownerIdentities = this.recipientIdentities(ownerAccount);
+    const invitationRef = {
+      ownerId,
+      calendarId,
+      title: String(calendar.title ?? 'Shared calendar').slice(0, 512),
+      color: /^#[0-9a-fA-F]{6}$/.test(String(calendar.color ?? ''))
+        ? String(calendar.color).toUpperCase()
+        : '#0088FF',
+      timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
+      email,
+      recipientId: principal.principalId,
+      userId: principal.principalId,
+      access,
+      isPending: false,
+      invitedAt: recipient.invitedAt,
+      acceptedAt: recipient.acceptedAt,
+      updatedAt: now,
+    };
+    await Promise.all([
+      this.store.putJSON(calendarKey, savedCalendar),
+      this.store.putJSON(this.keys.pendingICloudCalendarInvitation(
+        this.core.emailHash(email),
+        ownerId,
+        calendarId,
+      ), invitationRef),
+      this.store.putJSON(this.keys.receivedICloudCalendar(
+        principal.principalId,
+        ownerId,
+        calendarId,
+      ), {
+        ...invitationRef,
+        ownerEmail: ownerIdentities[0]?.email ?? null,
+      }),
+    ]);
+    return result(201, {
+      accepted: true,
+      calendar: {
+        id: hashKey(`${ownerId}:${calendarId}`),
+        ownerId,
+        ownerEmail: ownerIdentities[0]?.email ?? null,
+        calendarId,
+        title: invitationRef.title,
+        color: invitationRef.color,
+        timeZone: invitationRef.timeZone,
+        access,
+        invitedAt: invitationRef.invitedAt,
+        updatedAt: now,
+      },
+    });
+  }
+
+  /** Saves the canonical calendar share object and all recipient indexes in
+   * S3. As with shared events, a recipient is linked to a stable principal
+   * whenever their verified e-mail already belongs to an app account. */
+  async saveICloudCalendarSharing(
+    principal: any,
+    calendarId: string,
+    body: any,
+  ): Promise<ApiResult> {
+    if (!validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'invalid iCloud calendar identifier' });
+    }
+    const title = boundedPlainText(body.title, 512);
+    if (!title) return result(400, { error: 'calendar title is required' });
+    const color = /^#[0-9a-fA-F]{6}$/.test(String(body.color ?? ''))
+      ? String(body.color).toUpperCase()
+      : '#0088FF';
+    const timeZone = safeTimeZone(boundedPlainText(body.timeZone, 128)) ?? 'UTC';
+    const rawRecipients = Array.isArray(body.recipients) ? body.recipients : [];
+    if (rawRecipients.length > 100) {
+      return result(400, { error: 'no more than 100 recipients are allowed' });
+    }
+
+    const recipientsByEmail = new Map<string, { email: string; access: 'reader' | 'writer' }>();
+    for (const raw of rawRecipients) {
+      const email = normalizeEmail(raw?.email);
+      const access = String(raw?.access ?? '').toLowerCase();
+      if (!email) return result(400, { error: 'every recipient requires a valid email' });
+      if (!['reader', 'writer'].includes(access)) {
+        return result(400, { error: "access must be 'reader' or 'writer'" });
+      }
+      recipientsByEmail.set(email, { email, access: access as 'reader' | 'writer' });
+    }
+
+    const key = this.keys.icloudCalendarSharing(principal.principalId, calendarId);
+    const [existing, ownerAccount] = await Promise.all([
+      this.store.getJSON(key),
+      this.store.getJSON(this.keys.principal(principal.principalId)),
+    ]);
+    const ownerIdentities = this.recipientIdentities(ownerAccount);
+    const ownerEmails = new Set(ownerIdentities.map((identity) => identity.email));
+    for (const email of recipientsByEmail.keys()) {
+      if (ownerEmails.has(email)) {
+        return result(400, { error: 'the owner already has full calendar access' });
+      }
+    }
+    const existingByEmail = new Map<string, any>();
+    for (const recipient of Array.isArray(existing?.recipients) ? existing.recipients : []) {
+      const email = normalizeEmail(recipient?.email);
+      if (email) existingByEmail.set(email, recipient);
+    }
+    const now = new Date().toISOString();
+    const recipients = await Promise.all(
+      [...recipientsByEmail.values()]
+        .sort((a, b) => a.email.localeCompare(b.email))
+        .map(async (recipient) => {
+          const previous = existingByEmail.get(recipient.email);
+          const accountRef = await this.store.getJSON(
+            this.keys.accountEmail(this.core.emailHash(recipient.email)),
+          );
+          const recipientPrincipalId = accountRef?.principalId
+            && accountRef.principalId !== principal.principalId
+            ? String(accountRef.principalId)
+            : null;
+          const recipientAccount = recipientPrincipalId
+            ? await this.store.getJSON(this.keys.principal(recipientPrincipalId))
+            : null;
+          const identities = this.recipientIdentities(recipientAccount).map((identity) => ({
+            provider: identity.provider,
+            email: identity.email,
+          }));
+          const emails = [...new Set([
+            recipient.email,
+            ...identities.map((identity) => identity.email),
+          ])];
+          return {
+            id: recipientPrincipalId ?? `invited:${hashKey(recipient.email)}`,
+            userId: recipientPrincipalId,
+            email: recipient.email,
+            invitedEmail: recipient.email,
+            emails,
+            identities,
+            access: recipient.access,
+            isPending: recipientPrincipalId == null,
+            invitedAt: previous?.invitedAt ?? now,
+            acceptedAt: recipientPrincipalId
+              ? previous?.acceptedAt ?? now
+              : null,
+            updatedAt: now,
+          };
+        }),
+    );
+    const calendar = {
+      schemaVersion: 2,
+      id: calendarId,
+      ownerId: principal.principalId,
+      owner: {
+        id: principal.principalId,
+        emails: [...ownerEmails],
+        identities: ownerIdentities.map((identity) => ({
+          provider: identity.provider,
+          email: identity.email,
+        })),
+      },
+      title,
+      color,
+      timeZone,
+      recipients,
+      recipientCount: recipients.length,
+      createdAt: existing?.createdAt ?? now,
+      updatedAt: now,
+    };
+    await this.store.putJSON(key, calendar);
+
+    const previousEmails = new Set<string>(existingByEmail.keys());
+    const currentEmails = new Set<string>(recipients.map((recipient) => recipient.email));
+    const indexes: Promise<any>[] = [];
+    for (const email of previousEmails) {
+      if (!currentEmails.has(email)) {
+        indexes.push(this.store.del(this.keys.pendingICloudCalendarInvitation(
+          this.core.emailHash(email),
+          principal.principalId,
+          calendarId,
+        )));
+        const previousUserId = existingByEmail.get(email)?.userId;
+        if (previousUserId) {
+          indexes.push(this.store.del(this.keys.receivedICloudCalendar(
+            String(previousUserId),
+            principal.principalId,
+            calendarId,
+          )));
+        }
+      }
+    }
+    for (const recipient of recipients) {
+      const previousUserId = existingByEmail.get(recipient.email)?.userId;
+      if (previousUserId && previousUserId !== recipient.userId) {
+        indexes.push(this.store.del(this.keys.receivedICloudCalendar(
+          String(previousUserId),
+          principal.principalId,
+          calendarId,
+        )));
+      }
+      indexes.push(this.store.putJSON(this.keys.pendingICloudCalendarInvitation(
+        this.core.emailHash(recipient.email),
+        principal.principalId,
+        calendarId,
+      ), {
+        ownerId: principal.principalId,
+        calendarId,
+        title,
+        color,
+        timeZone,
+        email: recipient.email,
+        recipientId: recipient.id,
+        userId: recipient.userId,
+        access: recipient.access,
+        isPending: recipient.isPending,
+        invitedAt: recipient.invitedAt,
+        acceptedAt: recipient.acceptedAt,
+        updatedAt: now,
+      }));
+      if (recipient.userId) {
+        indexes.push(this.store.putJSON(this.keys.receivedICloudCalendar(
+          recipient.userId,
+          principal.principalId,
+          calendarId,
+        ), {
+          ownerId: principal.principalId,
+          ownerEmail: ownerIdentities[0]?.email ?? null,
+          calendarId,
+          title,
+          color,
+          timeZone,
+          recipientId: recipient.id,
+          access: recipient.access,
+          invitedAt: recipient.invitedAt,
+          acceptedAt: recipient.acceptedAt,
+          updatedAt: now,
+        }));
+      }
+    }
+    await Promise.all(indexes);
+    return result(existing ? 200 : 201, { calendar });
+  }
+
+  /** Stores the portable EventKit snapshot for one shared iCloud calendar.
+   * Calendar metadata and event content are separate S3 objects so changing a
+   * recipient never risks replacing a newer event snapshot (and vice versa). */
+  async saveICloudCalendarEvents(
+    principal: any,
+    calendarId: string,
+    body: any,
+  ): Promise<ApiResult> {
+    if (!validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'invalid iCloud calendar identifier' });
+    }
+    const sharing = await this.store.getJSON(
+      this.keys.icloudCalendarSharing(principal.principalId, calendarId),
+    );
+    if (!sharing) {
+      return result(404, { error: 'calendar must be shared before its events can sync' });
+    }
+
+    const rawEvents = Array.isArray(body.events) ? body.events : null;
+    if (!rawEvents) return result(400, { error: 'events must be an array' });
+    if (rawEvents.length > 5000) {
+      return result(400, { error: 'no more than 5000 calendar events are allowed' });
+    }
+    const windowStart = validISODate(body.windowStart);
+    const windowEnd = validISODate(body.windowEnd);
+    if (!windowStart || !windowEnd || Date.parse(windowEnd) < Date.parse(windowStart)) {
+      return result(400, { error: 'a valid sync window is required' });
+    }
+
+    const eventsById = new Map<string, any>();
+    for (const raw of rawEvents) {
+      const id = String(raw?.id ?? '').toLowerCase();
+      if (!validICloudCalendarShareId(id)) {
+        return result(400, { error: 'every event requires a valid identifier' });
+      }
+      const title = boundedPlainText(raw?.title, 512);
+      const start = validISODate(raw?.start);
+      const end = validISODate(raw?.end);
+      if (!title || !start || !end || Date.parse(end) < Date.parse(start)) {
+        return result(400, { error: 'every event requires a title, start, and end' });
+      }
+      const location = optionalPlainText(raw?.location, 2048);
+      const eventUrl = optionalEventURL(raw?.url);
+      if (eventUrl === undefined && raw?.url != null && raw?.url !== '') {
+        return result(400, { error: 'an event URL is invalid' });
+      }
+      eventsById.set(id, {
+        id,
+        title,
+        start,
+        end,
+        allDay: Boolean(raw?.allDay),
+        location,
+        url: eventUrl ?? null,
+        details: sanitizeEventDetails(raw?.details),
+      });
+    }
+
+    const now = new Date().toISOString();
+    const snapshot = {
+      schemaVersion: 1,
+      ownerId: principal.principalId,
+      calendarId,
+      windowStart,
+      windowEnd,
+      events: [...eventsById.values()].sort((a, b) =>
+        a.start === b.start ? a.id.localeCompare(b.id) : a.start.localeCompare(b.start),
+      ),
+      updatedAt: now,
+    };
+    await this.store.putJSON(
+      this.keys.icloudCalendarEvents(principal.principalId, calendarId),
+      snapshot,
+    );
+    return result(200, {
+      eventCount: snapshot.events.length,
+      updatedAt: now,
+    });
+  }
+
   async updateEventRecipientAccess(
     principal: any,
     eventId: string,
@@ -1523,6 +2099,49 @@ function normalizeEmail(value: unknown): string | null {
   if (!email || email.length > 320) return null;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
   return email;
+}
+
+function validICloudCalendarShareId(value: unknown): boolean {
+  return /^[0-9a-f]{64}$/i.test(String(value ?? ''));
+}
+
+function boundedPlainText(value: unknown, maximumLength: number): string | null {
+  if (typeof value !== 'string') return null;
+  const normalized = value.trim();
+  if (!normalized || normalized.length > maximumLength) return null;
+  if (/[\u0000-\u001f\u007f]/.test(normalized)) return null;
+  return normalized;
+}
+
+function optionalPlainText(value: unknown, maximumLength: number): string | null {
+  if (value == null || value === '') return null;
+  if (typeof value !== 'string') return null;
+  const normalized = value.trim();
+  if (!normalized || normalized.length > maximumLength) return null;
+  if (/[\u0000-\u001f\u007f]/.test(normalized)) return null;
+  return normalized;
+}
+
+function validISODate(value: unknown): string | null {
+  if (typeof value !== 'string' || value.length > 64 || Number.isNaN(Date.parse(value))) {
+    return null;
+  }
+  return new Date(value).toISOString();
+}
+
+/** `null` is a valid empty URL; `undefined` means validation failed. */
+function optionalEventURL(value: unknown): string | null | undefined {
+  if (value == null || value === '') return null;
+  if (typeof value !== 'string'
+      || value.length > 1024
+      || /[\u0000-\u001f\u007f]/.test(value)) {
+    return undefined;
+  }
+  const scheme = value.match(/^([A-Za-z][A-Za-z0-9+.-]*):/)?.[1]?.toLowerCase();
+  if (scheme && ['cloudcalendars', 'gcal', 'mscal'].includes(scheme)) {
+    return undefined;
+  }
+  return value;
 }
 
 function boundedQueryValue(value: unknown, maximumLength: number): string | null {

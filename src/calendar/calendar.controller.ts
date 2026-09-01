@@ -87,6 +87,63 @@ export class CalendarController {
     );
   }
 
+  @Get('icloud-calendars/:id/sharing')
+  @UseGuards(AuthGuard)
+  async iCloudCalendarSharing(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.iCloudCalendarSharing(req.principal, id));
+  }
+
+  @Get('icloud-calendars-shared-with-me')
+  @UseGuards(AuthGuard)
+  async iCloudCalendarsSharedWithMe(
+    @Req() req: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.iCloudCalendarsSharedWithMe(req.principal));
+  }
+
+  @Get('icloud-calendar-invites/open')
+  async iCloudCalendarInvitationLanding(@Query() query: any, @Res() res: Response) {
+    const page = await this.svc.iCloudCalendarInvitationLanding(query ?? {});
+    res.status(page.status).type('html').send(page.html);
+  }
+
+  @Post('icloud-calendar-invites/accept')
+  @UseGuards(AuthGuard)
+  async acceptICloudCalendarInvitation(
+    @Req() req: any,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.acceptICloudCalendarInvitation(req.principal, body ?? {}));
+  }
+
+  @Put('icloud-calendars/:id/sharing')
+  @UseGuards(AuthGuard)
+  async saveICloudCalendarSharing(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.saveICloudCalendarSharing(req.principal, id, body ?? {}));
+  }
+
+  @Put('icloud-calendars/:id/events')
+  @UseGuards(AuthGuard)
+  async saveICloudCalendarEvents(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.saveICloudCalendarEvents(req.principal, id, body ?? {}));
+  }
+
   @Put('events/:id/recipients/:userId')
   @UseGuards(AuthGuard)
   async updateEventRecipientAccess(
