@@ -21,7 +21,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
     @Published private(set) var account: Account?
     @Published private(set) var isSigningIn = false
-    @Published var errorMessage: String?
+    @Published private var providerErrors: [String: String] = [:]
 
     private var appleAuthorizationController: ASAuthorizationController?
 
@@ -29,6 +29,22 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
     func isLinked(_ provider: String) -> Bool {
         account?.identity(for: provider) != nil
+    }
+
+    func errorMessage(for provider: String) -> String? {
+        providerErrors[provider]
+    }
+
+    private func clearError(for provider: String) {
+        providerErrors.removeValue(forKey: provider)
+    }
+
+    private func setError(_ message: String?, for provider: String) {
+        guard let message, !message.isEmpty else {
+            clearError(for: provider)
+            return
+        }
+        providerErrors[provider] = message
     }
 
     private override init() {
@@ -50,7 +66,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
     func signInWithGoogle() {
         guard !isSigningIn, let presenter = Self.presentingViewController() else { return }
         isSigningIn = true
-        errorMessage = nil
+        clearError(for: "google")
 
         GIDSignIn.sharedInstance.configuration = GIDConfiguration(
             clientID: CalendarViewModel.shared.clientID
@@ -71,7 +87,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
                 guard let self else { return }
                 guard let token, !token.isEmpty else {
                     self.isSigningIn = false
-                    self.errorMessage = errorMessage
+                    self.setError(errorMessage, for: "google")
                     return
                 }
 
@@ -95,7 +111,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         controller.presentationContextProvider = self
         appleAuthorizationController = controller
         isSigningIn = true
-        errorMessage = nil
+        clearError(for: "apple")
         controller.performRequests()
     }
 
@@ -104,21 +120,24 @@ final class CloudAccountManager: NSObject, ObservableObject {
         switch result {
         case .failure(let error):
             isSigningIn = false
-            errorMessage = error.localizedDescription
+            setError(error.localizedDescription, for: "apple")
         case .success(let authorization):
             guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
                   let tokenData = credential.identityToken,
                   let token = String(data: tokenData, encoding: .utf8)
             else {
-                errorMessage = NSLocalizedString(
-                    "Apple did not return an identity token.",
-                    comment: "Sign in with Apple missing token"
+                setError(
+                    NSLocalizedString(
+                        "Apple did not return an identity token.",
+                        comment: "Sign in with Apple missing token"
+                    ),
+                    for: "apple"
                 )
                 return
             }
 
             let name = PersonNameComponentsFormatter().string(from: credential.fullName ?? .init())
-            errorMessage = nil
+            clearError(for: "apple")
             Task {
                 await authenticate(
                     provider: "apple",
@@ -155,7 +174,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
             parameters.promptType = .selectAccount
 
             isSigningIn = true
-            errorMessage = nil
+            clearError(for: "microsoft")
             application.acquireToken(with: parameters) { result, error in
                 let token = result?.accessToken
                 let name = result?.account.username
@@ -165,7 +184,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
                     guard let self else { return }
                     guard let token, !token.isEmpty else {
                         self.isSigningIn = false
-                        self.errorMessage = errorMessage
+                        self.setError(errorMessage, for: "microsoft")
                         return
                     }
                     await self.authenticate(provider: "microsoft", token: token, name: name)
@@ -173,14 +192,17 @@ final class CloudAccountManager: NSObject, ObservableObject {
             }
         } catch {
             isSigningIn = false
-            errorMessage = error.localizedDescription
+            setError(error.localizedDescription, for: "microsoft")
         }
     }
 
     func requestMicrosoftSubscription() {
-        errorMessage = NSLocalizedString(
-            "A Premium subscription is required to connect Microsoft.",
-            comment: "Microsoft identity subscription requirement"
+        setError(
+            NSLocalizedString(
+                "A Premium subscription is required to connect Microsoft.",
+                comment: "Microsoft identity subscription requirement"
+            ),
+            for: "microsoft"
         )
         let payload: [String: Any] = ["subscriptionStatusRaw": "Premium"]
         NotificationCenter.default.post(
@@ -201,8 +223,9 @@ final class CloudAccountManager: NSObject, ObservableObject {
         // Do not call GIDSignIn.signOut(): that SDK session may belong to one of
         // the independent Google Calendar connections shown below this account.
         CalendarFeedSession.forget()
+        SharedInviteTracker.demoteAllToReader()
         account = nil
-        errorMessage = nil
+        providerErrors.removeAll()
         NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
     }
 
@@ -218,7 +241,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         }
 
         isSigningIn = true
-        errorMessage = nil
+        clearError(for: provider)
         Task {
             defer { isSigningIn = false }
             do {
@@ -229,7 +252,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
                 )
                 NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
             } catch {
-                errorMessage = error.localizedDescription
+                setError(error.localizedDescription, for: provider)
             }
         }
     }
@@ -246,11 +269,11 @@ final class CloudAccountManager: NSObject, ObservableObject {
                 identities: normalizedIdentities(from: session),
                 ownerId: session.ownerId
             )
-            errorMessage = nil
+            clearError(for: provider)
             NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
             await SharedEventRecovery.restoreFromServer()
         } catch {
-            errorMessage = error.localizedDescription
+            setError(error.localizedDescription, for: provider)
         }
     }
 
@@ -342,7 +365,7 @@ struct CloudAccountSignInContent: View {
             if manager.isSignedIn {
                 HStack {
                     Label("App Clip sharing account", systemImage: "checkmark.shield.fill")
-                        .font(.footnote.weight(.medium))
+                        .font(.subheadline.weight(.medium))
                         .foregroundStyle(.green)
                     Spacer()
                 }
@@ -355,14 +378,9 @@ struct CloudAccountSignInContent: View {
                     Text("Signing in…")
                         .foregroundStyle(.secondary)
                 }
-                .font(.footnote)
+                .font(.subheadline)
             }
 
-            if let error = manager.errorMessage {
-                Text(error)
-                    .font(.footnote)
-                    .foregroundStyle(.red)
-            }
         }
     }
 
@@ -375,18 +393,21 @@ struct CloudAccountSignInContent: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Sign in with at least one account")
-                    .font(.subheadline.weight(.semibold))
-                Text("Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account.")
-                    .font(.footnote)
+                    .font(.body.weight(.semibold))
+                    .fixedSize(horizontal: false, vertical: true)
+                Text("Use Apple, Google, or Microsoft.")
+                    .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
-                Text("You must share a verified email during sign-in. People will use it to find and invite you to calendars and events.")
-                    .font(.footnote)
+                Text("A verified email is required to share, recover, or use access granted by an owner.")
+                    .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding(14)
+        .fixedSize(horizontal: false, vertical: true)
+        .layoutPriority(1)
         .background(Color.blue.opacity(colorScheme == .dark ? 0.16 : 0.08))
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
@@ -399,32 +420,36 @@ struct CloudAccountSignInContent: View {
         systemImage: String? = nil,
         action: @escaping () -> Void
     ) -> some View {
-        if manager.isLinked(provider) {
-            connectedProviderRow(
-                provider: provider,
-                title: title,
-                assetName: assetName,
-                systemImage: systemImage
-            )
-        } else {
-            Button(action: action) {
-                providerLabel(
+        VStack(alignment: .leading, spacing: 6) {
+            if manager.isLinked(provider) {
+                connectedProviderRow(
+                    provider: provider,
                     title: title,
                     assetName: assetName,
                     systemImage: systemImage
-                ) {
-                    Text("Connect")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.blue)
+                )
+            } else {
+                Button(action: action) {
+                    providerLabel(
+                        title: title,
+                        assetName: assetName,
+                        systemImage: systemImage
+                    ) {
+                        Text("Connect")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.blue)
+                    }
                 }
+                .buttonStyle(.plain)
+                .disabled(manager.isSigningIn)
             }
-            .buttonStyle(.plain)
-            .disabled(manager.isSigningIn)
+
+            providerError(for: provider)
         }
     }
 
     private var microsoftRow: some View {
-        Group {
+        VStack(alignment: .leading, spacing: 6) {
             if manager.isLinked("microsoft") {
                 connectedProviderRow(
                     provider: "microsoft",
@@ -446,7 +471,7 @@ struct CloudAccountSignInContent: View {
                                 .foregroundStyle(.blue)
                         } else {
                             Label("Premium", systemImage: "lock.fill")
-                                .font(.caption.weight(.semibold))
+                                .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(.secondary)
                         }
                     }
@@ -454,6 +479,27 @@ struct CloudAccountSignInContent: View {
                 .buttonStyle(.plain)
                 .disabled(manager.isSigningIn)
             }
+
+            providerError(for: "microsoft")
+        }
+    }
+
+    @ViewBuilder
+    private func providerError(for provider: String) -> some View {
+        if let error = manager.errorMessage(for: provider) {
+            HStack(alignment: .top, spacing: 8) {
+                Image(systemName: "exclamationmark.circle.fill")
+                    .padding(.top, 1)
+                Text(error)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .font(.subheadline)
+            .foregroundStyle(.red)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(Color.red.opacity(colorScheme == .dark ? 0.16 : 0.08))
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         }
     }
 
@@ -469,7 +515,7 @@ struct CloudAccountSignInContent: View {
                     Image(systemName: "checkmark.circle.fill")
                     Text("Connected")
                 }
-                .font(.caption.weight(.semibold))
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.green)
             } subtitle: {
                 manager.account?.identity(for: provider)?.email
@@ -479,9 +525,9 @@ struct CloudAccountSignInContent: View {
                 manager.signOut(provider: provider)
             } label: {
                 Label("Sign Out", systemImage: "rectangle.portrait.and.arrow.right")
-                    .font(.footnote.weight(.semibold))
+                    .font(.subheadline.weight(.semibold))
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 7)
+                    .padding(.vertical, 10)
             }
             .buttonStyle(.plain)
             .foregroundStyle(.red)
@@ -519,7 +565,7 @@ struct CloudAccountSignInContent: View {
                     .foregroundStyle(.primary)
                 if let subtitle = subtitle(), !subtitle.isEmpty {
                     Text(subtitle)
-                        .font(.caption)
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }
@@ -542,6 +588,11 @@ struct CloudAccountSignInContent: View {
 struct CloudAccountSignInView: View {
     @ObservedObject private var manager = CloudAccountManager.shared
     @Environment(\.dismiss) private var dismiss
+    var onDone: (() -> Void)?
+
+    init(onDone: (() -> Void)? = nil) {
+        self.onDone = onDone
+    }
 
     var body: some View {
         NavigationStack {
@@ -550,8 +601,6 @@ struct CloudAccountSignInView: View {
                     CloudAccountSignInContent()
                 } header: {
                     Text("Cloud Calendars account")
-                } footer: {
-                    Text("These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync.")
                 }
             }
             .navigationTitle("Sign In")
@@ -561,7 +610,13 @@ struct CloudAccountSignInView: View {
                     Button("Close") { dismiss() }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") { dismiss() }
+                    Button("Done") {
+                        if let onDone {
+                            onDone()
+                        } else {
+                            dismiss()
+                        }
+                    }
                         .disabled(!manager.isSignedIn)
                 }
             }

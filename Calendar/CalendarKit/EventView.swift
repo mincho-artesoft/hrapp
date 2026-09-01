@@ -174,11 +174,10 @@ open class EventView: UIView {
             finalString.append(NSAttributedString(string: " \(loc)", attributes: textAttributes))
         }
 
-        // An invitation the organiser called off stays visible with a line
-        // through it, the way Apple's Calendar shows one. Seeing that a meeting
-        // was cancelled is more use than finding a gap where it used to be.
+        // Cancelled and access-revoked invitations stay visible with a line
+        // through them instead of leaving an unexplained gap in the calendar.
         if let identifier = wrapper.realEvent.eventIdentifier,
-           SharedInviteTracker.isCancelled(localEventIdentifier: identifier) {
+           SharedInviteTracker.shouldAppearStruckThrough(localEventIdentifier: identifier) {
             finalString.addAttributes(
                 [.strikethroughStyle: NSUnderlineStyle.single.rawValue],
                 range: NSRange(location: 0, length: finalString.length)

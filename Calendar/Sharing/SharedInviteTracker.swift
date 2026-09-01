@@ -15,10 +15,31 @@ enum SharedInviteTracker {
         let feedID: String
         var localEventIdentifier: String
         var isCancelled: Bool = false
+        /// `nil` keeps records written by older builds decodable. A revoked
+        /// invitation stays in EventKit, but is frozen and drawn struck through.
+        var isRevoked: Bool? = nil
         var lastSequence: Int = 0
+        /// Optional keeps invitations written by older app builds decodable.
+        var access: CloudCalendarsAPI.EventAccess? = nil
+        var lastSyncedSnapshot: SharedOutgoingEventTracker.Snapshot? = nil
+        var receiptRecorded: Bool? = nil
+
+        var effectiveAccess: CloudCalendarsAPI.EventAccess { access ?? .reader }
+        var shouldAppearStruckThrough: Bool { isCancelled || isRevoked == true }
     }
 
     private static let storageKey = "sharedInvites.tracked"
+    private static let anonymousRecipientKey = "sharedInvites.anonymousRecipientID"
+
+    static var anonymousRecipientID: String {
+        if let value = UserDefaults.standard.string(forKey: anonymousRecipientKey),
+           !value.isEmpty {
+            return value
+        }
+        let value = UUID().uuidString
+        UserDefaults.standard.set(value, forKey: anonymousRecipientKey)
+        return value
+    }
 
     static func record(payload: SharedEventImportPayload, localEventIdentifier: String?) {
         guard let eventID = payload.eventID,
@@ -27,10 +48,20 @@ enum SharedInviteTracker {
         else { return }
 
         var all = tracked()
+        let previous = all[eventID]
+        let localSnapshot = CalendarViewModel.shared.eventStore
+            .event(withIdentifier: localEventIdentifier)
+            .flatMap(SharedOutgoingEventTracker.snapshot(for:))
         all[eventID] = Invite(
             eventID: eventID,
             feedID: feedID,
-            localEventIdentifier: localEventIdentifier
+            localEventIdentifier: localEventIdentifier,
+            isCancelled: previous?.isCancelled ?? false,
+            isRevoked: false,
+            lastSequence: previous?.lastSequence ?? 0,
+            access: previous?.access ?? .reader,
+            lastSyncedSnapshot: previous?.lastSyncedSnapshot ?? localSnapshot,
+            receiptRecorded: previous?.receiptRecorded
         )
         save(all)
     }
@@ -50,13 +81,20 @@ enum SharedInviteTracker {
 
     static func forget(eventID: String) {
         var all = tracked()
-        all.removeValue(forKey: eventID)
+        let removed = all.removeValue(forKey: eventID)
         save(all)
-        if let session = CalendarFeedSession.existing {
+        if let removed {
             Task {
-                try? await CloudCalendarsAPI.forgetReceivedInvite(
+                if let session = CalendarFeedSession.existing {
+                    try? await CloudCalendarsAPI.forgetReceivedInvite(
+                        eventId: eventID,
+                        session: session
+                    )
+                }
+                try? await CloudCalendarsAPI.forgetAnonymousReceivedInvite(
                     eventId: eventID,
-                    session: session
+                    feedId: removed.feedID,
+                    anonymousRecipientId: anonymousRecipientID
                 )
             }
         }
@@ -67,12 +105,17 @@ enum SharedInviteTracker {
         localEventIdentifier: String
     ) {
         var all = tracked()
+        let previous = all[remote.id]
         all[remote.id] = Invite(
             eventID: remote.id,
             feedID: remote.feedId,
             localEventIdentifier: localEventIdentifier,
             isCancelled: remote.isCancelled,
-            lastSequence: remote.sequence ?? 0
+            isRevoked: false,
+            lastSequence: remote.sequence ?? 0,
+            access: remote.access ?? previous?.access ?? .reader,
+            lastSyncedSnapshot: previous?.lastSyncedSnapshot,
+            receiptRecorded: true
         )
         save(all)
     }
@@ -87,7 +130,8 @@ enum SharedInviteTracker {
     /// same answer.
     static func isReadOnly(_ event: EKEvent) -> Bool {
         guard let identifier = event.eventIdentifier else { return false }
-        return invite(localEventIdentifier: identifier) != nil
+        guard let invite = invite(localEventIdentifier: identifier) else { return false }
+        return invite.isRevoked == true || invite.effectiveAccess == .reader
     }
 
     static func isReadOnly(_ descriptor: EventDescriptor) -> Bool {
@@ -97,6 +141,33 @@ enum SharedInviteTracker {
 
     static func invite(localEventIdentifier: String) -> Invite? {
         tracked().values.first { $0.localEventIdentifier == localEventIdentifier }
+    }
+
+    static func isReceived(_ event: EKEvent) -> Bool {
+        guard let identifier = event.eventIdentifier else { return false }
+        return invite(localEventIdentifier: identifier) != nil
+    }
+
+    static func demoteAllToReader() {
+        var all = tracked()
+        var changed = false
+        for eventID in Array(all.keys) {
+            guard all[eventID]?.effectiveAccess != .reader else { continue }
+            all[eventID]?.access = .reader
+            changed = true
+        }
+        guard changed else { return }
+        save(all)
+        NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+        NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+    }
+
+    static func markReceiptRecorded(eventID: String) {
+        var all = tracked()
+        guard var invite = all[eventID], invite.receiptRecorded != true else { return }
+        invite.receiptRecorded = true
+        all[eventID] = invite
+        save(all)
     }
 
     /// Called after the recipient deliberately removes their local copy. The
@@ -116,6 +187,26 @@ enum SharedInviteTracker {
         tracked().values.contains {
             $0.localEventIdentifier == localEventIdentifier && $0.isCancelled
         }
+    }
+
+    /// A cancelled or access-revoked event remains visible so the recipient can
+    /// understand what happened instead of seeing an unexplained empty slot.
+    static func shouldAppearStruckThrough(localEventIdentifier: String) -> Bool {
+        tracked().values.contains {
+            $0.localEventIdentifier == localEventIdentifier && $0.shouldAppearStruckThrough
+        }
+    }
+
+    static func shouldAppearStruckThrough(_ event: EKEvent) -> Bool {
+        guard let identifier = event.eventIdentifier else { return false }
+        return shouldAppearStruckThrough(localEventIdentifier: identifier)
+    }
+
+    static func shouldAppearStruckThrough(_ descriptor: EventDescriptor) -> Bool {
+        if let wrapper = descriptor as? EKMultiDayWrapper {
+            return shouldAppearStruckThrough(wrapper.realEvent)
+        }
+        return false
     }
 
     private static func save(_ all: [String: Invite]) {

@@ -1,4 +1,194 @@
+import CoreLocation
+import EventKit
 import Foundation
+
+struct SharedEventAlarm: Codable, Equatable {
+    let relativeOffset: TimeInterval?
+    let absoluteDate: String?
+
+    init(alarm: EKAlarm) {
+        if let absoluteDate = alarm.absoluteDate {
+            self.absoluteDate = ISO8601DateFormatter().string(from: absoluteDate)
+            self.relativeOffset = nil
+        } else {
+            self.absoluteDate = nil
+            self.relativeOffset = alarm.relativeOffset
+        }
+    }
+
+    func makeAlarm() -> EKAlarm? {
+        if let absoluteDate,
+           let date = ISO8601DateFormatter().date(from: absoluteDate) {
+            return EKAlarm(absoluteDate: date)
+        }
+        if let relativeOffset { return EKAlarm(relativeOffset: relativeOffset) }
+        return nil
+    }
+}
+
+struct SharedEventLocation: Codable, Equatable {
+    let title: String
+    let latitude: Double?
+    let longitude: Double?
+    let radius: Double
+
+    init(location: EKStructuredLocation) {
+        title = location.title ?? ""
+        latitude = location.geoLocation?.coordinate.latitude
+        longitude = location.geoLocation?.coordinate.longitude
+        radius = location.radius
+    }
+
+    func makeLocation() -> EKStructuredLocation {
+        let location = EKStructuredLocation(title: title)
+        if let latitude, let longitude {
+            location.geoLocation = CLLocation(latitude: latitude, longitude: longitude)
+        }
+        location.radius = radius
+        return location
+    }
+}
+
+struct SharedEventRecurrenceDay: Codable, Equatable {
+    let weekday: Int
+    let weekNumber: Int
+}
+
+struct SharedEventRecurrenceRule: Codable, Equatable {
+    let frequency: Int
+    let interval: Int
+    let daysOfTheWeek: [SharedEventRecurrenceDay]?
+    let daysOfTheMonth: [Int]?
+    let monthsOfTheYear: [Int]?
+    let weeksOfTheYear: [Int]?
+    let daysOfTheYear: [Int]?
+    let setPositions: [Int]?
+    let endDate: String?
+    let occurrenceCount: Int?
+
+    init(rule: EKRecurrenceRule) {
+        frequency = rule.frequency.rawValue
+        interval = rule.interval
+        daysOfTheWeek = rule.daysOfTheWeek?.map {
+            .init(weekday: $0.dayOfTheWeek.rawValue, weekNumber: $0.weekNumber)
+        }
+        daysOfTheMonth = rule.daysOfTheMonth?.map(\.intValue)
+        monthsOfTheYear = rule.monthsOfTheYear?.map(\.intValue)
+        weeksOfTheYear = rule.weeksOfTheYear?.map(\.intValue)
+        daysOfTheYear = rule.daysOfTheYear?.map(\.intValue)
+        setPositions = rule.setPositions?.map(\.intValue)
+        endDate = rule.recurrenceEnd?.endDate.map { ISO8601DateFormatter().string(from: $0) }
+        let count = rule.recurrenceEnd?.occurrenceCount ?? 0
+        occurrenceCount = count > 0 ? count : nil
+    }
+
+    func makeRule() -> EKRecurrenceRule? {
+        guard let frequency = EKRecurrenceFrequency(rawValue: frequency), interval > 0 else {
+            return nil
+        }
+        let recurrenceDays = daysOfTheWeek?.compactMap { value -> EKRecurrenceDayOfWeek? in
+            guard let weekday = EKWeekday(rawValue: value.weekday) else { return nil }
+            return EKRecurrenceDayOfWeek(dayOfTheWeek: weekday, weekNumber: value.weekNumber)
+        }
+        let recurrenceEnd: EKRecurrenceEnd?
+        if let endDate, let date = ISO8601DateFormatter().date(from: endDate) {
+            recurrenceEnd = EKRecurrenceEnd(end: date)
+        } else if let occurrenceCount, occurrenceCount > 0 {
+            recurrenceEnd = EKRecurrenceEnd(occurrenceCount: occurrenceCount)
+        } else {
+            recurrenceEnd = nil
+        }
+        return EKRecurrenceRule(
+            recurrenceWith: frequency,
+            interval: interval,
+            daysOfTheWeek: recurrenceDays,
+            daysOfTheMonth: daysOfTheMonth?.map(NSNumber.init(value:)),
+            monthsOfTheYear: monthsOfTheYear?.map(NSNumber.init(value:)),
+            weeksOfTheYear: weeksOfTheYear?.map(NSNumber.init(value:)),
+            daysOfTheYear: daysOfTheYear?.map(NSNumber.init(value:)),
+            setPositions: setPositions?.map(NSNumber.init(value:)),
+            end: recurrenceEnd
+        )
+    }
+}
+
+struct SharedEventParticipant: Codable, Equatable {
+    let name: String?
+    let email: String?
+    let role: Int
+    let type: Int
+    let status: Int
+    let isCurrentUser: Bool
+
+    init(participant: EKParticipant) {
+        name = participant.name
+        email = participant.url.absoluteString
+            .replacingOccurrences(of: "mailto:", with: "", options: [.anchored, .caseInsensitive])
+            .removingPercentEncoding
+        role = participant.participantRole.rawValue
+        type = participant.participantType.rawValue
+        status = participant.participantStatus.rawValue
+        isCurrentUser = participant.isCurrentUser
+    }
+}
+
+struct SharedEventDetails: Codable, Equatable {
+    let notes: String?
+    let timeZone: String?
+    let availability: Int
+    let alarms: [SharedEventAlarm]
+    let recurrenceRules: [SharedEventRecurrenceRule]
+    let structuredLocation: SharedEventLocation?
+    let organizer: SharedEventParticipant?
+    let attendees: [SharedEventParticipant]
+
+    init(event: EKEvent) {
+        notes = event.notes
+        timeZone = event.timeZone?.identifier
+        availability = event.availability.rawValue
+        alarms = (event.alarms ?? []).map(SharedEventAlarm.init(alarm:))
+        recurrenceRules = (event.recurrenceRules ?? []).map(SharedEventRecurrenceRule.init(rule:))
+        structuredLocation = event.structuredLocation.map(SharedEventLocation.init(location:))
+        organizer = event.organizer.map(SharedEventParticipant.init(participant:))
+        attendees = (event.attendees ?? []).map(SharedEventParticipant.init(participant:))
+    }
+
+    func applyWritableFields(to event: EKEvent) {
+        event.notes = notes
+        event.timeZone = timeZone.flatMap(TimeZone.init(identifier:))
+        if let availability = EKEventAvailability(rawValue: availability),
+           availability != .notSupported {
+            event.availability = availability
+        }
+        for alarm in event.alarms ?? [] { event.removeAlarm(alarm) }
+        for alarm in alarms.compactMap({ $0.makeAlarm() }) { event.addAlarm(alarm) }
+        for rule in event.recurrenceRules ?? [] { event.removeRecurrenceRule(rule) }
+        for rule in recurrenceRules.compactMap({ $0.makeRule() }) { event.addRecurrenceRule(rule) }
+        event.structuredLocation = structuredLocation?.makeLocation()
+    }
+
+    /// EventKit exposes organizer and attendees as read-only. Compare only the
+    /// fields that this app can restore on the recipient's local event so an
+    /// unchanged feed does not cause a save on every foreground refresh.
+    func matchesWritableFields(of event: EKEvent) -> Bool {
+        let current = SharedEventDetails(event: event)
+        let availabilityMatches = availability == EKEventAvailability.notSupported.rawValue
+            || availability == current.availability
+        return notes == current.notes
+            && timeZone == current.timeZone
+            && availabilityMatches
+            && alarms == current.alarms
+            && recurrenceRules == current.recurrenceRules
+            && structuredLocation == current.structuredLocation
+    }
+
+    var payload: [String: Any]? {
+        guard let data = try? JSONEncoder().encode(self),
+              let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+        else { return nil }
+        return object
+    }
+}
 
 /// Client for the calendar sync service.
 ///
@@ -20,6 +210,64 @@ enum CloudCalendarsAPI {
         var id: String { provider }
     }
 
+    enum EventAccess: String, Codable, CaseIterable, Identifiable {
+        case reader
+        case writer
+
+        var id: String { rawValue }
+        var title: String {
+            switch self {
+            case .reader: "Reader"
+            case .writer: "Writer"
+            }
+        }
+    }
+
+    struct EventRecipient: Codable, Equatable, Identifiable {
+        let id: String
+        let userId: String?
+        let isAnonymous: Bool
+        let emails: [String]
+        let identities: [AccountIdentity]
+        var access: EventAccess
+        let acceptedAt: String?
+        let invitedAt: String?
+        let updatedAt: String?
+
+        var displayEmail: String {
+            if isAnonymous { return "Anonymous recipient" }
+            return emails.first ?? identities.compactMap(\.email).first ?? "Cloud Calendars user"
+        }
+
+        var isPendingInvitation: Bool {
+            !isAnonymous && userId == nil
+        }
+    }
+
+    struct EventInvitation: Equatable, Identifiable {
+        let email: String
+        let access: EventAccess
+
+        var id: String { email.lowercased() }
+    }
+
+    private struct EventRecipientsResponse: Decodable {
+        let recipients: [EventRecipient]
+    }
+
+    private struct EventRecipientResponse: Decodable {
+        let recipient: EventRecipient
+    }
+
+    private struct EventInvitationsResponse: Decodable {
+        let recipients: [EventRecipient]
+        let invitedCount: Int
+    }
+
+    struct ReceivedInviteAccess: Decodable, Equatable {
+        let access: EventAccess
+    }
+
     struct Session: Codable, Equatable {
         let calendarId: String
         let deviceToken: String
@@ -38,9 +286,13 @@ enum CloudCalendarsAPI {
         let end: String
         let allDay: Bool
         let location: String?
+        let url: String?
+        let details: SharedEventDetails?
         let status: String?
         let sequence: Int?
         let feedId: String
+        let localEventIdentifier: String?
+        let access: EventAccess?
 
         var startDate: Date? { Self.date(start) }
         var endDate: Date? { Self.date(end) }
@@ -130,14 +382,87 @@ enum CloudCalendarsAPI {
 
     static func upsertEvent(
         _ event: SharedEventUpload,
-        session: Session
+        session: Session,
+        receivedFeedId: String? = nil
     ) async throws {
+        var body = event.payload
+        if let receivedFeedId { body["feedId"] = receivedFeedId }
         try await sendIgnoringResponse(
             "/events/\(event.id)",
             method: "PUT",
-            body: event.payload,
+            body: body,
             bearer: session.deviceToken
         )
+    }
+
+    static func eventRecipients(
+        eventId: String,
+        session: Session
+    ) async throws -> [EventRecipient] {
+        let response: EventRecipientsResponse = try await send(
+            "/events/\(eventId)/recipients",
+            method: "GET",
+            body: nil,
+            bearer: session.deviceToken
+        )
+        return response.recipients
+    }
+
+    @discardableResult
+    static func inviteEventRecipients(
+        eventId: String,
+        eventURL: URL,
+        invitations: [EventInvitation],
+        session: Session
+    ) async throws -> [EventRecipient] {
+        let invitationPayload: [[String: Any]] = invitations.map {
+            ["email": $0.email, "access": $0.access.rawValue]
+        }
+        let response: EventInvitationsResponse = try await send(
+            "/events/\(eventId)/invitations",
+            body: [
+                "eventUrl": eventURL.absoluteString,
+                "invitations": invitationPayload
+            ],
+            bearer: session.deviceToken
+        )
+        return response.recipients
+    }
+
+    static func updateEventRecipientAccess(
+        eventId: String,
+        recipientId: String,
+        access: EventAccess,
+        session: Session
+    ) async throws -> EventRecipient {
+        let response: EventRecipientResponse = try await send(
+            "/events/\(eventId)/recipients/\(recipientId)",
+            method: "PUT",
+            body: ["access": access.rawValue],
+            bearer: session.deviceToken
+        )
+        return response.recipient
+    }
+
+    static func saveEventRecipientChanges(
+        eventId: String,
+        accessByRecipientID: [String: EventAccess],
+        removedRecipientIDs: Set<String>,
+        session: Session
+    ) async throws -> [EventRecipient] {
+        let updates: [[String: Any]] = accessByRecipientID.map {
+            ["id": $0.key, "access": $0.value.rawValue]
+        }
+        let response: EventRecipientsResponse = try await send(
+            "/events/\(eventId)/recipients",
+            method: "PUT",
+            body: [
+                "updates": updates,
+                "removedIds": Array(removedRecipientIDs)
+            ],
+            bearer: session.deviceToken
+        )
+        return response.recipients
     }
 
     static func cancelEvent(id: String, session: Session) async throws {
@@ -189,13 +514,67 @@ enum CloudCalendarsAPI {
     static func rememberReceivedInvite(
         eventId: String,
         feedId: String,
+        localEventIdentifier: String? = nil,
+        anonymousRecipientId: String? = nil,
         session: Session
     ) async throws {
+        var body: [String: Any] = ["eventId": eventId, "feedId": feedId]
+        if let localEventIdentifier { body["localEventIdentifier"] = localEventIdentifier }
+        if let anonymousRecipientId { body["anonymousRecipientId"] = anonymousRecipientId }
         try await sendIgnoringResponse(
             "/received-invites",
-            body: ["eventId": eventId, "feedId": feedId],
+            body: body,
             bearer: session.deviceToken
         )
+    }
+
+    static func rememberAnonymousReceivedInvite(
+        eventId: String,
+        feedId: String,
+        anonymousRecipientId: String
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/received-invites/anonymous",
+            body: [
+                "eventId": eventId,
+                "feedId": feedId,
+                "anonymousRecipientId": anonymousRecipientId
+            ],
+            bearer: nil
+        )
+    }
+
+    static func forgetAnonymousReceivedInvite(
+        eventId: String,
+        feedId: String,
+        anonymousRecipientId: String
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/received-invites/anonymous/forget",
+            body: [
+                "eventId": eventId,
+                "feedId": feedId,
+                "anonymousRecipientId": anonymousRecipientId
+            ],
+            bearer: nil
+        )
+    }
+
+    static func anonymousReceivedInviteAccess(
+        eventId: String,
+        feedId: String,
+        anonymousRecipientId: String
+    ) async throws -> EventAccess {
+        let response: ReceivedInviteAccess = try await send(
+            "/received-invites/anonymous/access",
+            body: [
+                "eventId": eventId,
+                "feedId": feedId,
+                "anonymousRecipientId": anonymousRecipientId
+            ],
+            bearer: nil
+        )
+        return response.access
     }
 
     static func forgetReceivedInvite(eventId: String, session: Session) async throws {
@@ -205,6 +584,19 @@ enum CloudCalendarsAPI {
             body: nil,
             bearer: session.deviceToken
         )
+    }
+
+    static func receivedInviteAccess(
+        eventId: String,
+        session: Session
+    ) async throws -> EventAccess {
+        let response: ReceivedInviteAccess = try await send(
+            "/received-invites/\(eventId)/access",
+            method: "GET",
+            body: nil,
+            bearer: session.deviceToken
+        )
+        return response.access
     }
 
     // MARK: - Booking pairing
@@ -379,9 +771,8 @@ enum CloudCalendarsAPI {
     }
 }
 
-/// The event as the service stores it. Deliberately narrower than `EKEvent`:
-/// notes, attendees and calendar identifiers are never uploaded, because a
-/// shared event should carry only what the recipient needs to see.
+/// The event as the service stores it. Provider-owned identifiers and the
+/// destination calendar stay local, while all portable event content is sent.
 struct SharedEventUpload {
     let id: String
     let title: String
@@ -389,6 +780,9 @@ struct SharedEventUpload {
     let end: Date
     let isAllDay: Bool
     let location: String?
+    let url: URL?
+    let details: SharedEventDetails
+    let localEventIdentifier: String?
     let organizerName: String?
     let organizerEmail: String?
 
@@ -397,9 +791,12 @@ struct SharedEventUpload {
             "title": title,
             "start": ISO8601DateFormatter().string(from: start),
             "end": ISO8601DateFormatter().string(from: end),
-            "allDay": isAllDay
+            "allDay": isAllDay,
+            "url": url?.absoluteString ?? NSNull()
         ]
         if let location { body["location"] = location }
+        if let details = details.payload { body["details"] = details }
+        if let localEventIdentifier { body["localEventIdentifier"] = localEventIdentifier }
         if let organizerName { body["organizerName"] = organizerName }
         if let organizerEmail { body["organizerEmail"] = organizerEmail }
         return body

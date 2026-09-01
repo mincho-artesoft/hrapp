@@ -54,7 +54,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCAppClipURL"
-            value = "https://appclip.apple.com/id?p=Deksan.CalendarASD.Clip&amp;e=JMLPn7AjVTma&amp;c=M7vPRQwJuD6sU2N3x9Yrq3&amp;title=New%20event&amp;start=1788182400.0&amp;end=1788186000.0&amp;allDay=0&amp;timeZone=Europe/Sofia&amp;color=%230088FF"
+            value = "https://appclip.apple.com/id?p=Deksan.CalendarASD.Clip&amp;e=J5827gmsnmRf&amp;c=zjNEya6gtAuiTKkV27XspN&amp;title=New%20event%20add2d&amp;start=1788255600.0&amp;end=1788259200.0&amp;allDay=0&amp;timeZone=Europe/Sofia&amp;color=%230088FF&amp;location=Varna%0ABulgaria&amp;eventURL=das22"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

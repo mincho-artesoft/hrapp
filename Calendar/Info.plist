@@ -53,6 +53,8 @@
 	<array/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>$(NSCalendarsUsageDescription)</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Cloud Calendars uses the camera to scan event QR codes.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>$(NSContactsUsageDescription)</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

@@ -15,6 +15,13 @@ enum SharedInviteRefresher {
         let invites = SharedInviteTracker.tracked().values
         guard !invites.isEmpty else { return 0 }
 
+        let store = CalendarViewModel.shared.eventStore
+        for invite in invites {
+            if let event = store.event(withIdentifier: invite.localEventIdentifier) {
+                EventShareIdentity.removeLegacyMarker(from: event, store: store)
+            }
+        }
+
         var changed = 0
         for invite in invites where await refresh(invite) {
             changed += 1
@@ -23,38 +30,182 @@ enum SharedInviteRefresher {
     }
 
     /// Returns true when the local copy was actually altered.
-    private static func refresh(_ invite: SharedInviteTracker.Invite) async -> Bool {
+    private static func refresh(_ original: SharedInviteTracker.Invite) async -> Bool {
+        // Revocation freezes the recipient's copy. It remains in their chosen
+        // calendar until they delete it locally, but no longer talks to S3.
+        guard original.isRevoked != true else { return false }
+
+        var invite = original
+        var accessChanged = false
+
+        if invite.receiptRecorded != true {
+            do {
+                if let session = CalendarFeedSession.existing {
+                    try await CloudCalendarsAPI.rememberReceivedInvite(
+                        eventId: invite.eventID,
+                        feedId: invite.feedID,
+                        localEventIdentifier: invite.localEventIdentifier,
+                        anonymousRecipientId: SharedInviteTracker.anonymousRecipientID,
+                        session: session
+                    )
+                } else {
+                    try await CloudCalendarsAPI.rememberAnonymousReceivedInvite(
+                        eventId: invite.eventID,
+                        feedId: invite.feedID,
+                        anonymousRecipientId: SharedInviteTracker.anonymousRecipientID
+                    )
+                }
+                invite.receiptRecorded = true
+                SharedInviteTracker.update(invite)
+            } catch {
+                print("Invite receipt could not be recorded for \(invite.eventID) - \(error.localizedDescription)")
+            }
+        }
+
+        if let session = CalendarFeedSession.existing {
+            do {
+                let access = try await CloudCalendarsAPI.receivedInviteAccess(
+                    eventId: invite.eventID,
+                    session: session
+                )
+                if invite.effectiveAccess != access {
+                    invite.access = access
+                    SharedInviteTracker.update(invite)
+                    accessChanged = true
+                }
+            } catch CloudCalendarsAPI.Failure.http(let code, _) where code == 404 {
+                return markRevokedInvite(invite)
+            } catch CloudCalendarsAPI.Failure.http(let code, _) where code == 403 {
+                if invite.effectiveAccess != .reader {
+                    invite.access = .reader
+                    SharedInviteTracker.update(invite)
+                    accessChanged = true
+                }
+            } catch {
+                print("Invite access refresh failed for \(invite.eventID) - \(error.localizedDescription)")
+            }
+        } else {
+            do {
+                _ = try await CloudCalendarsAPI.anonymousReceivedInviteAccess(
+                    eventId: invite.eventID,
+                    feedId: invite.feedID,
+                    anonymousRecipientId: SharedInviteTracker.anonymousRecipientID
+                )
+            } catch CloudCalendarsAPI.Failure.http(let code, _)
+                where code == 403 || code == 404 {
+                return markRevokedInvite(invite)
+            } catch {
+                print("Anonymous invite access refresh failed for \(invite.eventID) - \(error.localizedDescription)")
+            }
+
+            if invite.effectiveAccess != .reader {
+                // Writer is an account permission. A signed-out device can still
+                // receive and follow the event, but must fall back to Reader.
+                invite.access = .reader
+                SharedInviteTracker.update(invite)
+                accessChanged = true
+            }
+        }
+
+        if accessChanged {
+            NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+            NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+        }
+
+        do {
+            let remote = try await fetchRemote(invite)
+
+            // At an unchanged server revision, a Writer's local difference is
+            // a new edit. Push it before the normal pull step can restore the
+            // old S3 value. A newer server revision always wins first.
+            if invite.effectiveAccess == .writer,
+               remote.sequence == invite.lastSequence,
+               let session = CalendarFeedSession.existing,
+               let event = CalendarViewModel.shared.eventStore
+                .event(withIdentifier: invite.localEventIdentifier),
+               let current = SharedOutgoingEventTracker.snapshot(for: event),
+               let baseline = invite.lastSyncedSnapshot,
+               current != baseline {
+                let upload = SharedEventUpload(
+                    id: invite.eventID,
+                    title: current.title,
+                    start: current.start,
+                    end: current.end,
+                    isAllDay: current.isAllDay,
+                    location: current.location,
+                    url: current.url.flatMap(URL.init(string:)),
+                    details: current.details ?? SharedEventDetails(event: event),
+                    localEventIdentifier: nil,
+                    organizerName: nil,
+                    organizerEmail: nil
+                )
+                do {
+                    try await CloudCalendarsAPI.upsertEvent(
+                        upload,
+                        session: session,
+                        receivedFeedId: invite.feedID
+                    )
+                    invite.lastSequence = remote.sequence + 1
+                    invite.lastSyncedSnapshot = current
+                    SharedInviteTracker.update(invite)
+
+                    if let latest = try? await fetchRemote(invite),
+                       latest.sequence >= invite.lastSequence {
+                        _ = apply(latest, to: invite)
+                        return true
+                    }
+                    NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+                    return true
+                } catch CloudCalendarsAPI.Failure.http(let code, _) where code == 403 {
+                    invite.access = .reader
+                    SharedInviteTracker.update(invite)
+                    _ = apply(remote, to: invite)
+                    return true
+                }
+            }
+
+            return apply(remote, to: invite) || accessChanged
+        } catch CloudCalendarsAPI.Failure.http(let code, _) where code == 404 {
+            return markRevokedInvite(invite) || accessChanged
+        } catch {
+            print("Invite refresh failed for \(invite.eventID) - \(error.localizedDescription)")
+            return accessChanged
+        }
+    }
+
+    private static func markRevokedInvite(_ invite: SharedInviteTracker.Invite) -> Bool {
+        guard invite.isRevoked != true else { return false }
+        var updated = invite
+        updated.isRevoked = true
+        updated.access = .reader
+        SharedInviteTracker.update(updated)
+        NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+        NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+        return true
+    }
+
+    private static func fetchRemote(_ invite: SharedInviteTracker.Invite) async throws -> ICSEvent {
         guard var components = URLComponents(
             string: "https://\(feedHost)/f/\(invite.feedID).ics"
-        ) else { return false }
+        ) else { throw URLError(.badURL) }
 
         // Every foreground poll must see the latest S3 object. The query value
         // also avoids an intermediary CDN returning its cached previous body.
         components.queryItems = [
-            URLQueryItem(name: "refresh", value: String(Int(Date().timeIntervalSince1970)))
+            URLQueryItem(name: "refresh", value: UUID().uuidString)
         ]
-        guard let url = components.url else { return false }
+        guard let url = components.url else { throw URLError(.badURL) }
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
         request.setValue("no-cache", forHTTPHeaderField: "Cache-Control")
 
-        do {
-            let (data, response) = try await URLSession.shared.data(for: request)
-            if let http = response as? HTTPURLResponse, http.statusCode == 404 {
-                // The sender revoked this feed. The event stays where it is -
-                // silently deleting somebody's calendar entry would be worse
-                // than leaving a copy that no longer updates.
-                SharedInviteTracker.forget(eventID: invite.eventID)
-                return false
-            }
-            guard let text = String(data: data, encoding: .utf8),
-                  let remote = ICSEvent.first(withUID: invite.eventID, in: text)
-            else { return false }
-
-            return apply(remote, to: invite)
-        } catch {
-            print("Invite refresh failed for \(invite.eventID) - \(error.localizedDescription)")
-            return false
+        let (data, response) = try await URLSession.shared.data(for: request)
+        if let http = response as? HTTPURLResponse, http.statusCode == 404 {
+            throw CloudCalendarsAPI.Failure.http(404, "Shared feed was revoked")
         }
+        guard let text = String(data: data, encoding: .utf8),
+              let remote = ICSEvent.first(withUID: invite.eventID, in: text)
+        else { throw CloudCalendarsAPI.Failure.malformedResponse }
+        return remote
     }
 
     private static func apply(_ remote: ICSEvent, to invite: SharedInviteTracker.Invite) -> Bool {
@@ -69,6 +220,20 @@ enum SharedInviteRefresher {
             // The person deleted it themselves; stop tracking rather than
             // resurrecting an event they threw away.
             SharedInviteTracker.forget(eventID: invite.eventID)
+            return false
+        }
+        EventShareIdentity.removeLegacyMarker(from: event, store: store)
+
+        // A poll with the same server revision must not write the same values
+        // back to EventKit. EKEventViewController observes every EventKit save,
+        // so those redundant writes make an already-open details screen flash.
+        // A Reader edit made from another calendar app still differs from this
+        // baseline and is restored from S3 below; Writer edits are uploaded by
+        // refresh(_:) before this method is reached.
+        if remote.sequence == invite.lastSequence,
+           let baseline = invite.lastSyncedSnapshot,
+           SharedOutgoingEventTracker.snapshot(for: event) == baseline,
+           invite.isCancelled == remote.isCancelled {
             return false
         }
 
@@ -126,13 +291,38 @@ enum SharedInviteRefresher {
             eventChanged = true
         }
 
+        let providerManagedURL = ["gcal", "mscal"].contains(
+            event.url?.scheme?.lowercased() ?? ""
+        )
+        if !providerManagedURL, event.url != remote.url {
+            event.url = remote.url
+            eventChanged = true
+        }
+
+        if let details = remote.details,
+           !details.matchesWritableFields(of: event) {
+            details.applyWritableFields(to: event)
+            eventChanged = true
+        }
+
         let trackingChanged = updated != invite
         guard eventChanged || trackingChanged else { return false }
 
         do {
             if eventChanged {
-                try store.save(event, span: .thisEvent, commit: true)
+                let span: EKSpan = event.hasRecurrenceRules ? .futureEvents : .thisEvent
+                try store.save(event, span: span, commit: true)
+                updated.localEventIdentifier = event.eventIdentifier
             }
+
+            // EventKit may normalize alarms, time zones, structured locations,
+            // or identifiers while saving. Persist its canonical post-save
+            // state so the next 20-second poll does not mistake normalization
+            // for a local edit and save the event again.
+            let persistedEvent = store.event(withIdentifier: updated.localEventIdentifier)
+            updated.lastSyncedSnapshot = persistedEvent
+                .flatMap(SharedOutgoingEventTracker.snapshot(for:))
+                ?? SharedOutgoingEventTracker.snapshot(for: event)
             SharedInviteTracker.update(updated)
             EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
             NotificationCenter.default.post(name: .sharedEventImported, object: nil)
@@ -149,9 +339,9 @@ enum SharedInviteRefresher {
 }
 
 /// Rebuilds the local tracker indexes from the authenticated account. EventKit
-/// events survive an app reinstall, while UserDefaults does not; marker URLs
-/// make the original copies identifiable even when their title/time changed
-/// before the last server upload.
+/// events survive an app reinstall, while UserDefaults does not. Opaque local
+/// identifiers are kept in private account metadata, with event fields as a
+/// fallback when EventKit changes an identifier during a full calendar sync.
 @MainActor
 enum SharedEventRecovery {
     private static var restoredAccountKey: String?
@@ -169,6 +359,8 @@ enum SharedEventRecovery {
                 try? await CloudCalendarsAPI.rememberReceivedInvite(
                     eventId: invite.eventID,
                     feedId: invite.feedID,
+                    localEventIdentifier: invite.localEventIdentifier,
+                    anonymousRecipientId: SharedInviteTracker.anonymousRecipientID,
                     session: session
                 )
             }
@@ -179,30 +371,33 @@ enum SharedEventRecovery {
             for remote in state.outgoing {
                 let local = findEvent(
                     remote,
-                    markerHost: "shared-event",
-                    preferredIdentifier: outgoingIdentifier(for: remote.id, in: store),
+                    preferredIdentifier: outgoingIdentifier(for: remote.id, in: store)
+                        ?? remote.localEventIdentifier,
                     store: store
                 )
                 SharedOutgoingEventTracker.restore(
                     remote,
                     localEventIdentifier: local?.eventIdentifier
                 )
-                if let local {
-                    EventShareIdentity.embedOwnerID(remote.id, in: local, store: store)
-                }
             }
 
             for remote in state.received {
                 let preferred = SharedInviteTracker.invite(eventID: remote.id)?.localEventIdentifier
                 let local = findEvent(
                     remote,
-                    markerHost: "received-event",
-                    preferredIdentifier: preferred,
+                    preferredIdentifier: preferred ?? remote.localEventIdentifier,
                     store: store
                 ) ?? createReceivedEvent(remote, store: store)
 
                 if let identifier = local?.eventIdentifier {
                     SharedInviteTracker.restore(remote, localEventIdentifier: identifier)
+                    try? await CloudCalendarsAPI.rememberReceivedInvite(
+                        eventId: remote.id,
+                        feedId: remote.feedId,
+                        localEventIdentifier: identifier,
+                        anonymousRecipientId: SharedInviteTracker.anonymousRecipientID,
+                        session: session
+                    )
                 }
             }
 
@@ -234,12 +429,12 @@ enum SharedEventRecovery {
 
     private static func findEvent(
         _ remote: CloudCalendarsAPI.RemoteSharedEvent,
-        markerHost: String,
         preferredIdentifier: String?,
         store: EKEventStore
     ) -> EKEvent? {
         if let preferredIdentifier,
            let preferred = store.event(withIdentifier: preferredIdentifier) {
+            EventShareIdentity.removeLegacyMarker(from: preferred, store: store)
             return preferred
         }
         guard let start = remote.startDate, let end = remote.endDate else { return nil }
@@ -251,13 +446,7 @@ enum SharedEventRecovery {
         )
         let candidates = store.events(matching: predicate)
 
-        if let marked = candidates.first(where: {
-            EventShareIdentity.embeddedShareID(in: $0, host: markerHost) == remote.id
-        }) {
-            return marked
-        }
-
-        return candidates.first { event in
+        let matched = candidates.first { event in
             let title = (event.title ?? "")
                 .replacingOccurrences(
                     of: "\(NSLocalizedString("Cancelled", comment: "")): ",
@@ -269,6 +458,10 @@ enum SharedEventRecovery {
                 && event.isAllDay == remote.allDay
                 && normalized(event.location) == normalized(remote.location)
         }
+        if let matched {
+            EventShareIdentity.removeLegacyMarker(from: matched, store: store)
+        }
+        return matched
     }
 
     private static func createReceivedEvent(
@@ -294,7 +487,8 @@ enum SharedEventRecovery {
         event.endDate = max(start, end)
         event.isAllDay = remote.allDay
         event.location = remote.location
-        event.url = EventShareIdentity.receivedMarkerURL(eventID: remote.id)
+        event.url = remote.url.flatMap(URL.init(string:))
+        remote.details?.applyWritableFields(to: event)
         event.calendar = destination
 
         do {
@@ -317,6 +511,8 @@ struct ICSEvent {
     var uid: String
     var summary: String?
     var location: String?
+    var url: URL?
+    var details: SharedEventDetails?
     var start: Date?
     var end: Date?
     var isAllDay: Bool?
@@ -339,6 +535,11 @@ struct ICSEvent {
                 case "UID":       event.uid = value
                 case "SUMMARY":   event.summary = unescaped(value)
                 case "LOCATION":  event.location = unescaped(value)
+                case "URL":       event.url = URL(string: value)
+                case "X-CLOUD-CALENDARS-METADATA":
+                    if let data = Data(base64Encoded: value) {
+                        event.details = try? JSONDecoder().decode(SharedEventDetails.self, from: data)
+                    }
                 case "DTSTART":
                     event.start = date(from: value, parameters: name)
                     event.isAllDay = name.contains("VALUE=DATE")

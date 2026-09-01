@@ -10,6 +10,7 @@ struct SharedEventImportPayload: Identifiable, Equatable {
     let end: Date
     let isAllDay: Bool
     let location: String?
+    let eventURL: URL?
     let timeZone: TimeZone
     let eventColorHex: String
 
@@ -38,9 +39,12 @@ struct SharedEventImportPayload: Identifiable, Equatable {
         let scheme = url.scheme?.lowercased()
         let host = url.host?.lowercased()
         let isAppClipLink = scheme == "https" && host == "appclip.apple.com"
+        let isServerInvitationLink = scheme == "https"
+            && host == "api.cloud-calendars.com"
+            && url.path == "/event-invites/open"
         let isFullAppHandoff = scheme == "cloudcalendars" && host == "shared-event"
 
-        guard isAppClipLink || isFullAppHandoff,
+        guard isAppClipLink || isServerInvitationLink || isFullAppHandoff,
               let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { return nil }
 
@@ -49,7 +53,7 @@ struct SharedEventImportPayload: Identifiable, Equatable {
             values[item.name] = item.value ?? ""
         }
 
-        guard (isFullAppHandoff || values["p"] == Self.appClipBundleIdentifier),
+        guard (isFullAppHandoff || isServerInvitationLink || values["p"] == Self.appClipBundleIdentifier),
               let rawTitle = values["title"]?.trimmingCharacters(in: .whitespacesAndNewlines),
               !rawTitle.isEmpty,
               let startTimestamp = values["start"].flatMap(TimeInterval.init),
@@ -72,6 +76,7 @@ struct SharedEventImportPayload: Identifiable, Equatable {
         self.end = end
         self.isAllDay = values["allDay"] == "1"
         self.location = rawLocation.flatMap { $0.isEmpty ? nil : String($0.prefix(160)) }
+        self.eventURL = values["eventURL"].flatMap(Self.safeEventURL)
         self.timeZone = values["timeZone"].flatMap(TimeZone.init(identifier:)) ?? .current
         self.eventColorHex = Self.validColorHex(rawColor) ? rawColor : "#0A84FF"
         self.eventID = values["e"].flatMap { $0.isEmpty ? nil : $0 }
@@ -81,6 +86,18 @@ struct SharedEventImportPayload: Identifiable, Equatable {
     private static func validColorHex(_ value: String) -> Bool {
         let normalized = value.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         return normalized.count == 6 && UInt64(normalized, radix: 16) != nil
+    }
+
+    private static func safeEventURL(_ value: String) -> URL? {
+        guard value.count <= 1_024,
+              !value.unicodeScalars.contains(where: CharacterSet.controlCharacters.contains),
+              let url = URL(string: value)
+        else { return nil }
+        if let scheme = url.scheme?.lowercased(),
+           ["cloudcalendars", "gcal", "mscal"].contains(scheme) {
+            return nil
+        }
+        return url
     }
 }
 

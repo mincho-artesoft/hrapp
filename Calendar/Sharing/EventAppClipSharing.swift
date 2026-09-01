@@ -1,5 +1,7 @@
 import Foundation
+import CoreImage.CIFilterBuiltins
 import EventKit
+import MessageUI
 import SwiftUI
 import UIKit
 
@@ -18,6 +20,203 @@ enum EventSharePromptSettings {
 }
 
 @MainActor
+private final class WeakViewControllerBox {
+    weak var controller: UIViewController?
+}
+
+@MainActor
+private final class EventShareMailDelegate: NSObject, @preconcurrency MFMailComposeViewControllerDelegate {
+    private let onComplete: (MFMailComposeResult) -> Void
+
+    init(onComplete: @escaping (MFMailComposeResult) -> Void) {
+        self.onComplete = onComplete
+    }
+
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        controller.dismiss(animated: true) { [onComplete] in
+            onComplete(result)
+        }
+    }
+}
+
+@MainActor
+private struct EventShareMethodPicker: View {
+    let eventTitle: String
+    let onAppClip: () -> Void
+    let onEmail: () -> Void
+    let onQRCode: () -> Void
+    let onCancel: () -> Void
+
+    var body: some View {
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 18) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(eventTitle)
+                        .font(.title3.weight(.semibold))
+                        .lineLimit(2)
+                    Text("Choose how to share this synced event.")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+
+                VStack(spacing: 12) {
+                    methodButton(
+                        title: "App Clip",
+                        subtitle: "Messages, AirDrop, and more",
+                        systemImage: "appclip",
+                        color: .blue,
+                        action: onAppClip
+                    )
+                    methodButton(
+                        title: "Email",
+                        subtitle: "Invite people and assign access",
+                        systemImage: "envelope.fill",
+                        color: .orange,
+                        action: onEmail
+                    )
+                    methodButton(
+                        title: "QR Code",
+                        subtitle: "Let someone scan the event",
+                        systemImage: "qrcode",
+                        color: .purple,
+                        action: onQRCode
+                    )
+                }
+
+                Spacer(minLength: 0)
+            }
+            .padding(20)
+            .background(Color(uiColor: .systemGroupedBackground))
+            .navigationTitle("Share Event")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button(action: onCancel) {
+                        Image(systemName: "xmark")
+                    }
+                    .accessibilityLabel("Cancel")
+                }
+            }
+        }
+    }
+
+    private func methodButton(
+        title: LocalizedStringKey,
+        subtitle: LocalizedStringKey,
+        systemImage: String,
+        color: Color,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            HStack(spacing: 14) {
+                Image(systemName: systemImage)
+                    .font(.title2.weight(.semibold))
+                    .foregroundStyle(color)
+                    .frame(width: 42, height: 42)
+                    .background(color.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text(subtitle)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                }
+
+                Spacer(minLength: 8)
+                Image(systemName: "chevron.right")
+                    .font(.footnote.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+            }
+            .padding(14)
+            .background(Color(uiColor: .secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18))
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+@MainActor
+private struct EventShareQRCodeView: View {
+    let eventTitle: String
+    let url: URL
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var copied = false
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 22) {
+                    VStack(spacing: 5) {
+                        Text(eventTitle)
+                            .font(.title2.weight(.bold))
+                            .multilineTextAlignment(.center)
+                        Text("Scan to open this event")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    if let image = qrImage {
+                        Image(uiImage: image)
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 290)
+                            .padding(18)
+                            .background(.white, in: RoundedRectangle(cornerRadius: 24))
+                            .shadow(color: .black.opacity(0.08), radius: 16, y: 6)
+                            .accessibilityLabel("QR code for \(eventTitle)")
+                    }
+
+                    Text(url.absoluteString)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                        .textSelection(.enabled)
+
+                    Button {
+                        UIPasteboard.general.url = url
+                        copied = true
+                    } label: {
+                        Label(copied ? "Copied" : "Copy Link", systemImage: copied ? "checkmark" : "doc.on.doc")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .controlSize(.large)
+                }
+                .padding(24)
+            }
+            .background(Color(uiColor: .systemGroupedBackground))
+            .navigationTitle("QR Code")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
+                }
+            }
+        }
+    }
+
+    private var qrImage: UIImage? {
+        let filter = CIFilter.qrCodeGenerator()
+        filter.message = Data(url.absoluteString.utf8)
+        filter.correctionLevel = "M"
+        guard let output = filter.outputImage?.transformed(
+            by: CGAffineTransform(scaleX: 12, y: 12)
+        ), let cgImage = CIContext().createCGImage(output, from: output.extent)
+        else { return nil }
+        return UIImage(cgImage: cgImage)
+    }
+}
+
+@MainActor
 final class EventSharePromptManager: ObservableObject {
     static let shared = EventSharePromptManager()
     static let displayDuration: TimeInterval = 10
@@ -30,7 +229,7 @@ final class EventSharePromptManager: ObservableObject {
 
     func show(for event: EKEvent) {
         guard EventSharePromptSettings.isEnabled,
-              !SharedInviteTracker.isReadOnly(event),
+              !SharedInviteTracker.isReceived(event),
               EventAppClipSharing.invocationURL(for: event) != nil
         else { return }
 
@@ -146,34 +345,34 @@ struct EventSharePromptView: View {
     }
 }
 
-/// Where invite links point.
-///
-/// Today this is Apple's default App Clip host, which needs no domain setup but
-/// only resolves on iOS. Flip `usesAppleHost` to `false` once the web landing
-/// page is live on cloud-calendars.com (AASA + assetlinks.json) and Android and
-/// desktop recipients get a real page instead of nothing.
-///
-/// The query-parameter names are deliberately identical on both hosts, so
-/// `SharedEventPayload` needs no change when this flips - only the host, the
-/// path, and the Apple-specific `p` parameter differ.
+/// The App Clip is one delivery channel. Email and QR use a separate server
+/// landing URL so they work without invoking or depending on the App Clip.
+/// Both links carry the same bounded preview fields and scoped S3 feed id.
 enum EventShareEndpoint {
-    static let usesAppleHost = true
-
     static var appClipBundleIdentifier: String { EventAppClipSharing.appClipBundleIdentifier }
 
     private static let appleHost = "appclip.apple.com"
     private static let applePath = "/id"
-    private static let webHost   = "cloud-calendars.com"
-    private static let webPath   = "/i"
+    private static let serverHost = "api.cloud-calendars.com"
+    private static let serverPath = "/event-invites/open"
 
-    static var host: String { usesAppleHost ? appleHost : webHost }
-    static var path: String { usesAppleHost ? applePath : webPath }
+    static var appClipHost: String { appleHost }
+    static var appClipPath: String { applePath }
+    static var appClipRoutingQueryItems: [URLQueryItem] {
+        [URLQueryItem(name: "p", value: appClipBundleIdentifier)]
+    }
 
-    /// Apple routes to the clip through `p`; our own host will not need it.
-    static var routingQueryItems: [URLQueryItem] {
-        usesAppleHost
-            ? [URLQueryItem(name: "p", value: appClipBundleIdentifier)]
-            : []
+    static func serverInvitationURL(from appClipURL: URL) -> URL? {
+        guard var components = URLComponents(
+            url: appClipURL,
+            resolvingAgainstBaseURL: false
+        ) else { return nil }
+
+        components.scheme = "https"
+        components.host = serverHost
+        components.path = serverPath
+        components.queryItems = components.queryItems?.filter { $0.name != "p" }
+        return components.url
     }
 
     /// The subscribable personal-calendar feed for a given feed identifier.
@@ -215,28 +414,28 @@ enum EventShareIdentity {
         return generated
     }
 
-    static func ownerMarkerURL(eventID: String) -> URL? {
-        URL(string: "cloudcalendars://shared-event/\(eventID)")
-    }
-
-    static func receivedMarkerURL(eventID: String) -> URL? {
-        URL(string: "cloudcalendars://received-event/\(eventID)")
-    }
-
-    static func embeddedShareID(in event: EKEvent, host: String) -> String? {
-        guard event.url?.scheme == "cloudcalendars",
-              event.url?.host == host
-        else { return nil }
-        return event.url?.pathComponents.last.flatMap { $0.isEmpty ? nil : $0 }
-    }
-
-    static func embedOwnerID(_ eventID: String, in event: EKEvent, store: EKEventStore) {
-        guard embeddedShareID(in: event, host: "shared-event") != eventID,
-              let marker = ownerMarkerURL(eventID: eventID),
+    /// EventKit has no private writable metadata slot. Older builds used the
+    /// visible URL field as an identifier; remove only those legacy values and
+    /// leave any real URL created by the organiser untouched.
+    static func removeLegacyMarker(from event: EKEvent, store: EKEventStore) {
+        guard event.url?.scheme?.lowercased() == "cloudcalendars",
+              ["shared-event", "received-event"].contains(event.url?.host ?? ""),
               event.calendar.allowsContentModifications
         else { return }
-        event.url = marker
+        event.url = nil
         try? store.save(event, span: .thisEvent, commit: true)
+    }
+
+    /// Provider bookkeeping URLs are not event content and must never be sent
+    /// to another person. EventKit also accepts relative/custom URL values, so
+    /// preserve those instead of silently dropping anything that is not HTTP.
+    static func shareableURL(from event: EKEvent) -> URL? {
+        guard let url = event.url, url.absoluteString.count <= 1_024 else { return nil }
+        let internalSchemes = ["cloudcalendars", "gcal", "mscal"]
+        if let scheme = url.scheme?.lowercased(), internalSchemes.contains(scheme) {
+            return nil
+        }
+        return url
     }
 
     /// Used once to seed the new "Shared by me" list from shares created by
@@ -267,6 +466,9 @@ enum SharedOutgoingEventTracker {
         let end: Date
         let isAllDay: Bool
         let location: String?
+        let url: String?
+        /// Optional keeps records made by older app builds decodable.
+        let details: SharedEventDetails?
     }
 
     struct SentEvent: Codable, Equatable, Identifiable {
@@ -288,6 +490,12 @@ enum SharedOutgoingEventTracker {
         /// False for a server-restored event that could not yet be matched to
         /// EventKit. Such a record must not be mistaken for a local deletion.
         var tracksLocalDeletion: Bool?
+        /// Version 1 moved the local EventKit identifier out of the visible
+        /// URL; version 2 also persists the complete portable event content.
+        var serverMetadataVersion: Int?
+        /// Last revision observed from the canonical S3 event. Optional keeps
+        /// records from older builds decodable.
+        var lastServerSequence: Int? = nil
 
         var id: String { eventID }
     }
@@ -320,7 +528,9 @@ enum SharedOutgoingEventTracker {
             start: Date(timeIntervalSince1970: startTimestamp),
             end: Date(timeIntervalSince1970: endTimestamp),
             isAllDay: values["allDay"] == "1",
-            location: values["location"].flatMap { $0.isEmpty ? nil : $0 }
+            location: values["location"].flatMap { $0.isEmpty ? nil : $0 },
+            url: values["eventURL"].flatMap { $0.isEmpty ? nil : $0 },
+            details: nil
         )
         let eventSnapshot = localEventIdentifier
             .flatMap { CalendarViewModel.shared.eventStore.event(withIdentifier: $0) }
@@ -339,7 +549,8 @@ enum SharedOutgoingEventTracker {
             sharedAt: Date(),
             lastUploadedSnapshot: feedID == nil ? nil : (eventSnapshot ?? parsedSnapshot),
             isCancelled: false,
-            tracksLocalDeletion: true
+            tracksLocalDeletion: true,
+            serverMetadataVersion: feedID == nil ? nil : 2
         )
         save(all)
         NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
@@ -355,6 +566,8 @@ enum SharedOutgoingEventTracker {
             guard let localEventIdentifier = record.localEventIdentifier,
                   let event = eventStore.event(withIdentifier: localEventIdentifier)
             else { continue }
+
+            EventShareIdentity.removeLegacyMarker(from: event, store: eventStore)
 
             var refreshed = record
             refreshed.title = event.title ?? record.title
@@ -406,18 +619,19 @@ enum SharedOutgoingEventTracker {
                 continue
             }
 
+            EventShareIdentity.removeLegacyMarker(from: event, store: eventStore)
+
             // A received copy can never become a new owner revision, even if
             // corrupt local bookkeeping accidentally put it in both indexes.
-            guard !SharedInviteTracker.isReadOnly(event),
+            guard !SharedInviteTracker.isReceived(event),
                   let currentSnapshot = snapshot(for: event)
             else { continue }
-
-            EventShareIdentity.embedOwnerID(original.eventID, in: event, store: eventStore)
 
             let needsFeedRecovery = original.feedID == nil
             guard needsFeedRecovery
                     || currentSnapshot != original.lastUploadedSnapshot
                     || original.isCancelled == true
+                    || original.serverMetadataVersion != 2
             else { continue }
 
             let upload = SharedEventUpload(
@@ -427,6 +641,9 @@ enum SharedOutgoingEventTracker {
                 end: currentSnapshot.end,
                 isAllDay: currentSnapshot.isAllDay,
                 location: currentSnapshot.location,
+                url: currentSnapshot.url.flatMap(URL.init(string:)),
+                details: currentSnapshot.details ?? SharedEventDetails(event: event),
+                localEventIdentifier: event.eventIdentifier,
                 organizerName: nil,
                 organizerEmail: nil
             )
@@ -458,6 +675,7 @@ enum SharedOutgoingEventTracker {
                     current.location = currentSnapshot.location
                     current.lastUploadedSnapshot = currentSnapshot
                     current.isCancelled = false
+                    current.serverMetadataVersion = 2
                 }
                 changedCount += 1
             } catch {
@@ -494,7 +712,8 @@ enum SharedOutgoingEventTracker {
                 sharedAt: Date(),
                 lastUploadedSnapshot: nil,
                 isCancelled: nil,
-                tracksLocalDeletion: true
+                tracksLocalDeletion: true,
+                serverMetadataVersion: nil
             )
         }
 
@@ -512,10 +731,15 @@ enum SharedOutgoingEventTracker {
             start: start,
             end: end,
             isAllDay: remote.allDay,
-            location: remote.location
+            location: remote.location,
+            url: remote.url,
+            details: remote.details
         )
         var all = load()
         let previous = all[remote.id]
+        let recoveredLocalSnapshot = (localEventIdentifier ?? previous?.localEventIdentifier)
+            .flatMap { CalendarViewModel.shared.eventStore.event(withIdentifier: $0) }
+            .flatMap(snapshot(for:))
         all[remote.id] = SentEvent(
             eventID: remote.id,
             localEventIdentifier: localEventIdentifier ?? previous?.localEventIdentifier,
@@ -526,11 +750,120 @@ enum SharedOutgoingEventTracker {
             isAllDay: remote.allDay,
             location: remote.location,
             sharedAt: previous?.sharedAt ?? Date(),
-            lastUploadedSnapshot: remoteSnapshot,
+            // Recovery discovers server state; it does not mean EventKit has
+            // applied it yet. Preserve the prior upload baseline, or use the
+            // recovered local event as the baseline, so the pull phase (not a
+            // stale owner upload) resolves a newer Writer revision.
+            lastUploadedSnapshot: previous?.lastUploadedSnapshot
+                ?? recoveredLocalSnapshot
+                ?? remoteSnapshot,
             isCancelled: remote.isCancelled,
-            tracksLocalDeletion: (localEventIdentifier ?? previous?.localEventIdentifier) != nil
+            tracksLocalDeletion: (localEventIdentifier ?? previous?.localEventIdentifier) != nil,
+            serverMetadataVersion: remote.details == nil
+                ? previous?.serverMetadataVersion
+                : 2,
+            lastServerSequence: previous?.lastServerSequence
         )
         save(all)
+    }
+
+    /// Pulls Writer edits back into the owner's original EventKit event. Local
+    /// owner edits are pushed first by `syncAll`; if that upload failed, the
+    /// differing snapshot below deliberately protects the unsent local work.
+    @discardableResult
+    static func pullRemoteChanges(in eventStore: EKEventStore) async -> Int {
+        guard let session = CalendarFeedSession.existing else { return 0 }
+        let state: CloudCalendarsAPI.SharedState
+        do {
+            state = try await CloudCalendarsAPI.sharedState(session: session)
+        } catch {
+            print("Shared owner refresh failed - \(error.localizedDescription)")
+            return 0
+        }
+
+        var changedCount = 0
+        for remote in state.outgoing {
+            guard var record = load()[remote.id],
+                  let identifier = record.localEventIdentifier,
+                  let event = eventStore.event(withIdentifier: identifier),
+                  let remoteSequence = remote.sequence,
+                  record.lastServerSequence == nil || remoteSequence > record.lastServerSequence!
+            else { continue }
+
+            if let current = snapshot(for: event),
+               let uploaded = record.lastUploadedSnapshot,
+               current != uploaded {
+                continue
+            }
+
+            var eventChanged = false
+            let expectedTitle = remote.isCancelled
+                ? "\(NSLocalizedString("Cancelled", comment: "")): \(remote.title)"
+                : remote.title
+            if event.title != expectedTitle {
+                event.title = expectedTitle
+                eventChanged = true
+            }
+            if let start = remote.startDate,
+               abs(event.startDate.timeIntervalSince(start)) >= 0.5 {
+                event.startDate = start
+                eventChanged = true
+            }
+            if let end = remote.endDate {
+                let safeEnd = max(event.startDate, end)
+                if abs(event.endDate.timeIntervalSince(safeEnd)) >= 0.5 {
+                    event.endDate = safeEnd
+                    eventChanged = true
+                }
+            }
+            if event.isAllDay != remote.allDay {
+                event.isAllDay = remote.allDay
+                eventChanged = true
+            }
+            if normalized(event.location) != normalized(remote.location) {
+                event.location = normalized(remote.location).isEmpty ? nil : remote.location
+                eventChanged = true
+            }
+            let remoteURL = remote.url.flatMap(URL.init(string:))
+            let providerManagedURL = ["gcal", "mscal"].contains(
+                event.url?.scheme?.lowercased() ?? ""
+            )
+            if !providerManagedURL, event.url != remoteURL {
+                event.url = remoteURL
+                eventChanged = true
+            }
+            if let details = remote.details,
+               !details.matchesWritableFields(of: event) {
+                details.applyWritableFields(to: event)
+                eventChanged = true
+            }
+
+            do {
+                if eventChanged {
+                    let span: EKSpan = event.hasRecurrenceRules ? .futureEvents : .thisEvent
+                    try eventStore.save(event, span: span, commit: true)
+                    record.localEventIdentifier = event.eventIdentifier
+                }
+                record.title = remote.title
+                record.start = remote.startDate ?? record.start
+                record.end = remote.endDate ?? record.end
+                record.isAllDay = remote.allDay
+                record.location = remote.location
+                record.isCancelled = remote.isCancelled
+                record.lastServerSequence = remoteSequence
+                record.lastUploadedSnapshot = snapshot(for: event)
+                updatePersisted(remote.id) { $0 = record }
+                changedCount += 1
+            } catch {
+                print("Shared owner event could not be refreshed - \(error.localizedDescription)")
+            }
+        }
+
+        if changedCount > 0 {
+            NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+            NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+        }
+        return changedCount
     }
 
     private static func load() -> [String: SentEvent] {
@@ -545,7 +878,7 @@ enum SharedOutgoingEventTracker {
         defaults.set(data, forKey: storageKey)
     }
 
-    private static func snapshot(for event: EKEvent) -> Snapshot? {
+    static func snapshot(for event: EKEvent) -> Snapshot? {
         guard let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines),
               !title.isEmpty,
               let start = event.startDate,
@@ -557,7 +890,9 @@ enum SharedOutgoingEventTracker {
             start: start,
             end: end,
             isAllDay: event.isAllDay,
-            location: event.location
+            location: event.location,
+            url: EventShareIdentity.shareableURL(from: event)?.absoluteString,
+            details: SharedEventDetails(event: event)
         )
     }
 
@@ -572,6 +907,10 @@ enum SharedOutgoingEventTracker {
         update(&current)
         all[eventID] = current
         save(all)
+    }
+
+    private static func normalized(_ value: String?) -> String {
+        value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
     }
 }
 
@@ -621,17 +960,22 @@ enum SharedEventSyncManager {
         let store = CalendarViewModel.shared.eventStore
         await SharedEventRecovery.restoreFromServer(force: false)
         _ = await SharedOutgoingEventTracker.syncAll(in: store)
+        _ = await SharedOutgoingEventTracker.pullRemoteChanges(in: store)
         _ = await SharedInviteRefresher.refreshAll()
     }
 }
 
 /// Builds the invocation URL used by the Event Preview App Clip and presents
-/// the system share sheet. The URL intentionally contains only the event data
-/// needed for a preview; calendar identifiers and notes are never shared.
+/// the system share sheet. The visible URL intentionally contains only preview
+/// data; complete event content travels through the scoped S3-backed feed.
 enum EventAppClipSharing {
     static let appClipBundleIdentifier = "Deksan.CalendarASD.Clip"
 
-    static func invocationURL(for event: EKEvent, feedID: String? = nil) -> URL? {
+    static func invocationURL(
+        for event: EKEvent,
+        feedID: String? = nil,
+        shareID explicitShareID: String? = nil
+    ) -> URL? {
         let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         guard !title.isEmpty,
               let start = event.startDate,
@@ -646,7 +990,8 @@ enum EventAppClipSharing {
             timeZone: event.timeZone ?? .current,
             color: event.calendar?.cgColor.map(UIColor.init(cgColor:)) ?? .systemBlue,
             location: event.location,
-            shareID: EventShareIdentity.shareID(for: event),
+            eventURL: EventShareIdentity.shareableURL(from: event),
+            shareID: explicitShareID ?? EventShareIdentity.shareID(for: event),
             feedID: feedID
         )
     }
@@ -665,6 +1010,7 @@ enum EventAppClipSharing {
             timeZone: timeZone,
             color: descriptor.color,
             location: event?.location,
+            eventURL: event.flatMap(EventShareIdentity.shareableURL(from:)),
             shareID: event.map(EventShareIdentity.shareID(for:))
                 ?? EventShareIdentity.shareID(
                     forEventKey: "\(descriptor.text)|\(start.timeIntervalSince1970)"
@@ -681,6 +1027,7 @@ enum EventAppClipSharing {
         timeZone: TimeZone,
         color: UIColor,
         location: String?,
+        eventURL: URL?,
         shareID: String,
         feedID: String? = nil
     ) -> URL? {
@@ -689,14 +1036,14 @@ enum EventAppClipSharing {
 
         var components = URLComponents()
         components.scheme = "https"
-        components.host = EventShareEndpoint.host
-        components.path = EventShareEndpoint.path
+        components.host = EventShareEndpoint.appClipHost
+        components.path = EventShareEndpoint.appClipPath
 
         // `e` and `c` are what make the event syncable later: `e` is its stable
         // UID, while `c` is the server-issued id of the scoped S3 feed. Never
         // invent `c` locally: a link must not claim to sync unless that file
         // really exists. The inline fields let the App Clip render offline.
-        var queryItems = EventShareEndpoint.routingQueryItems + [
+        var queryItems = EventShareEndpoint.appClipRoutingQueryItems + [
             URLQueryItem(name: "e", value: shareID),
         ]
         if let feedID = feedID?.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -715,6 +1062,11 @@ enum EventAppClipSharing {
         if let location = location?.trimmingCharacters(in: .whitespacesAndNewlines),
            !location.isEmpty {
             queryItems.append(URLQueryItem(name: "location", value: limited(location, to: 160)))
+        }
+        if let eventURL {
+            queryItems.append(
+                URLQueryItem(name: "eventURL", value: limited(eventURL.absoluteString, to: 1_024))
+            )
         }
 
         components.queryItems = queryItems
@@ -737,7 +1089,7 @@ enum EventAppClipSharing {
     private static func syncedFeedID(for event: EKEvent) async -> String? {
         // A received invitation follows somebody else's scoped feed. Never
         // turn the recipient's local EventKit copy into a new server revision.
-        guard !SharedInviteTracker.isReadOnly(event) else { return nil }
+        guard !SharedInviteTracker.isReceived(event) else { return nil }
 
         guard let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines),
               !title.isEmpty,
@@ -748,9 +1100,8 @@ enum EventAppClipSharing {
         do {
             let session = try await CalendarFeedSession.current()
             let shareID = EventShareIdentity.shareID(for: event)
-            EventShareIdentity.embedOwnerID(
-                shareID,
-                in: event,
+            EventShareIdentity.removeLegacyMarker(
+                from: event,
                 store: CalendarViewModel.shared.eventStore
             )
             let upload = SharedEventUpload(
@@ -760,6 +1111,9 @@ enum EventAppClipSharing {
                 end: end,
                 isAllDay: event.isAllDay,
                 location: event.location,
+                url: EventShareIdentity.shareableURL(from: event),
+                details: SharedEventDetails(event: event),
+                localEventIdentifier: event.eventIdentifier,
                 organizerName: nil,
                 organizerEmail: nil
             )
@@ -783,7 +1137,7 @@ enum EventAppClipSharing {
     @MainActor
     static func shareableURL(for event: EKEvent) async -> URL? {
         guard CloudAccountManager.shared.isSignedIn,
-              !SharedInviteTracker.isReadOnly(event),
+              !SharedInviteTracker.isReceived(event),
               let feedID = await syncedFeedID(for: event)
         else { return nil }
         return invocationURL(for: event, feedID: feedID)
@@ -798,7 +1152,7 @@ enum EventAppClipSharing {
         // registering it would create a second event rather than revise the
         // first. Those are shared as plain one-off links.
         guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return nil }
-        guard !SharedInviteTracker.isReadOnly(event) else { return nil }
+        guard !SharedInviteTracker.isReceived(event) else { return nil }
         guard let feedID = await syncedFeedID(for: event) else { return nil }
         return invocationURL(for: descriptor, feedID: feedID)
     }
@@ -809,7 +1163,9 @@ enum EventAppClipSharing {
     static func present(for descriptor: EventDescriptor, from sourceView: UIView) {
         let presenter = presentingViewController(from: sourceView)
         guard CloudAccountManager.shared.isSignedIn else {
-            presentAccountSignIn(from: presenter)
+            presentAccountSignIn(from: presenter) {
+                present(for: descriptor, from: sourceView)
+            }
             return
         }
         Task { @MainActor in
@@ -841,7 +1197,13 @@ enum EventAppClipSharing {
         sourceBarButtonItem: UIBarButtonItem
     ) {
         guard CloudAccountManager.shared.isSignedIn else {
-            presentAccountSignIn(from: presenter)
+            presentAccountSignIn(from: presenter) {
+                present(
+                    for: event,
+                    from: presenter,
+                    sourceBarButtonItem: sourceBarButtonItem
+                )
+            }
             return
         }
         Task { @MainActor in
@@ -863,7 +1225,9 @@ enum EventAppClipSharing {
     static func present(for event: EKEvent) {
         let presenter = activePresentingViewController()
         guard CloudAccountManager.shared.isSignedIn else {
-            presentAccountSignIn(from: presenter)
+            presentAccountSignIn(from: presenter) {
+                present(for: event)
+            }
             return
         }
         Task { @MainActor in
@@ -889,16 +1253,86 @@ enum EventAppClipSharing {
         }
     }
 
-    /// One place that builds the share sheet, so the three entry points cannot
-    /// drift apart in how they anchor it on iPad.
+    /// Presents the app's three intentional delivery paths before handing the
+    /// App Clip path to the broad system share sheet.
     @MainActor
     private static func presentSheet(
         with url: URL,
         localEventIdentifier: String?,
         from presenter: UIViewController?,
-        configurePopover: (UIPopoverPresentationController) -> Void
+        configurePopover: @escaping (UIPopoverPresentationController) -> Void
     ) {
         guard let presenter else { return }
+
+        let controllerBox = WeakViewControllerBox()
+        let title = sharedEventTitle(from: url)
+        guard let serverInvitationURL = EventShareEndpoint.serverInvitationURL(from: url) else {
+            presentSyncError(from: presenter)
+            return
+        }
+        let picker = EventShareMethodPicker(
+            eventTitle: title,
+            onAppClip: {
+                controllerBox.controller?.dismiss(animated: true) {
+                    Task { @MainActor in
+                        presentSystemShareSheet(
+                            with: url,
+                            localEventIdentifier: localEventIdentifier,
+                            from: presenter,
+                            configurePopover: configurePopover
+                        )
+                    }
+                }
+            },
+            onEmail: {
+                controllerBox.controller?.dismiss(animated: true) {
+                    Task { @MainActor in
+                        presentEmailInvitations(
+                            with: serverInvitationURL,
+                            eventTitle: title,
+                            localEventIdentifier: localEventIdentifier,
+                            from: presenter
+                        )
+                    }
+                }
+            },
+            onQRCode: {
+                controllerBox.controller?.dismiss(animated: true) {
+                    Task { @MainActor in
+                        recordCompletedShare(
+                            url: serverInvitationURL,
+                            localEventIdentifier: localEventIdentifier
+                        )
+                        presentQRCode(
+                            with: serverInvitationURL,
+                            eventTitle: title,
+                            from: presenter
+                        )
+                    }
+                }
+            },
+            onCancel: {
+                controllerBox.controller?.dismiss(animated: true)
+            }
+        )
+        let controller = UIHostingController(rootView: picker)
+        controllerBox.controller = controller
+        controller.modalPresentationStyle = .pageSheet
+        if let sheet = controller.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.selectedDetentIdentifier = .medium
+            sheet.prefersGrabberVisible = true
+        }
+        presenter.present(controller, animated: true)
+    }
+
+    @MainActor
+    private static func presentSystemShareSheet(
+        with url: URL,
+        localEventIdentifier: String?,
+        from presenter: UIViewController,
+        configurePopover: (UIPopoverPresentationController) -> Void
+    ) {
 
         let activityController = UIActivityViewController(
             activityItems: [url],
@@ -907,7 +1341,7 @@ enum EventAppClipSharing {
         activityController.completionWithItemsHandler = { _, completed, _, _ in
             guard completed else { return }
             Task { @MainActor in
-                SharedOutgoingEventTracker.record(
+                recordCompletedShare(
                     url: url,
                     localEventIdentifier: localEventIdentifier
                 )
@@ -920,9 +1354,169 @@ enum EventAppClipSharing {
     }
 
     @MainActor
-    private static func presentAccountSignIn(from presenter: UIViewController?) {
+    private static func presentEmailInvitations(
+        with url: URL,
+        eventTitle: String,
+        localEventIdentifier: String?,
+        from presenter: UIViewController
+    ) {
+        guard let eventID = sharedEventValue(named: "e", from: url), !eventID.isEmpty else {
+            presentSyncError(from: presenter)
+            return
+        }
+
+        let controller = UIHostingController(
+            rootView: EventEmailInvitationsView(
+                eventID: eventID,
+                eventTitle: eventTitle,
+                eventURL: url
+            ) {
+                recordCompletedShare(
+                    url: url,
+                    localEventIdentifier: localEventIdentifier
+                )
+            }
+        )
+        controller.modalPresentationStyle = .pageSheet
+        if let sheet = controller.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.selectedDetentIdentifier = .large
+            sheet.prefersGrabberVisible = true
+        }
+        presenter.present(controller, animated: true)
+    }
+
+    @MainActor
+    private static func presentEmail(
+        with url: URL,
+        eventTitle: String,
+        localEventIdentifier: String?,
+        from presenter: UIViewController
+    ) {
+        let subject = String(
+            format: NSLocalizedString("Shared event: %@", comment: "Shared-event email subject"),
+            eventTitle
+        )
+        let body = String(
+            format: NSLocalizedString(
+                "Open this event with Cloud Calendars:\n\n%@",
+                comment: "Shared-event email body"
+            ),
+            url.absoluteString
+        )
+
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.setSubject(subject)
+            mail.setMessageBody(body, isHTML: false)
+            let delegate = EventShareMailDelegate { result in
+                if result == .sent {
+                    recordCompletedShare(
+                        url: url,
+                        localEventIdentifier: localEventIdentifier
+                    )
+                }
+                activeMailDelegate = nil
+            }
+            activeMailDelegate = delegate
+            mail.mailComposeDelegate = delegate
+            presenter.present(mail, animated: true)
+            return
+        }
+
+        var components = URLComponents()
+        components.scheme = "mailto"
+        components.queryItems = [
+            URLQueryItem(name: "subject", value: subject),
+            URLQueryItem(name: "body", value: body)
+        ]
+        guard let mailURL = components.url else { return }
+        UIApplication.shared.open(mailURL) { opened in
+            guard opened else {
+                Task { @MainActor in
+                    presentMailUnavailable(from: presenter)
+                }
+                return
+            }
+            Task { @MainActor in
+                recordCompletedShare(
+                    url: url,
+                    localEventIdentifier: localEventIdentifier
+                )
+            }
+        }
+    }
+
+    @MainActor
+    private static func presentQRCode(
+        with url: URL,
+        eventTitle: String,
+        from presenter: UIViewController
+    ) {
+        let controller = UIHostingController(
+            rootView: EventShareQRCodeView(eventTitle: eventTitle, url: url)
+        )
+        controller.modalPresentationStyle = .pageSheet
+        if let sheet = controller.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.selectedDetentIdentifier = .large
+            sheet.prefersGrabberVisible = true
+        }
+        presenter.present(controller, animated: true)
+    }
+
+    @MainActor
+    private static func presentMailUnavailable(from presenter: UIViewController) {
+        let alert = UIAlertController(
+            title: NSLocalizedString("Mail is not configured", comment: "Email unavailable title"),
+            message: NSLocalizedString(
+                "Add a Mail account on this device, then try again.",
+                comment: "Email unavailable message"
+            ),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        presenter.present(alert, animated: true)
+    }
+
+    @MainActor
+    private static func recordCompletedShare(url: URL, localEventIdentifier: String?) {
+        SharedOutgoingEventTracker.record(
+            url: url,
+            localEventIdentifier: localEventIdentifier
+        )
+    }
+
+    private static func sharedEventTitle(from url: URL) -> String {
+        sharedEventValue(named: "title", from: url)
+            ?? NSLocalizedString("Shared event", comment: "Fallback shared event title")
+    }
+
+    private static func sharedEventValue(named name: String, from url: URL) -> String? {
+        URLComponents(url: url, resolvingAgainstBaseURL: false)?
+            .queryItems?
+            .first(where: { $0.name == name })?
+            .value
+    }
+
+    @MainActor
+    private static var activeMailDelegate: EventShareMailDelegate?
+
+    @MainActor
+    private static func presentAccountSignIn(
+        from presenter: UIViewController?,
+        onAuthenticated: @escaping @MainActor () -> Void
+    ) {
         guard let presenter, presenter.presentedViewController == nil else { return }
         let controller = UIHostingController(rootView: CloudAccountSignInView())
+        controller.rootView = CloudAccountSignInView { [weak controller] in
+            // Wait for UIKit's dismissal completion. Presenting an activity
+            // controller while the login sheet is still being removed is
+            // ignored, which is why a fixed async delay is not reliable.
+            controller?.dismiss(animated: true) {
+                Task { @MainActor in onAuthenticated() }
+            }
+        }
         controller.modalPresentationStyle = .pageSheet
         if let sheet = controller.sheetPresentationController {
             sheet.detents = [.large()]

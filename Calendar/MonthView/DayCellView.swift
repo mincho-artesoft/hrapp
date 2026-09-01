@@ -85,6 +85,7 @@ struct DayCellView: View {
 
             Text(event.title)
                 .lineLimit(1)
+                .strikethrough(SharedInviteTracker.shouldAppearStruckThrough(event))
         }
             .font(.caption2)
             .foregroundColor(.white)

@@ -12,8 +12,8 @@ struct GoogleCalendarSharingView: View {
 
     @State private var aclRules: [GoogleCalendarACLRule] = []
     @State private var isLoading = false
-    @State private var newEmailToShare = ""
-    @State private var newRole: String = "reader"
+    @State private var shareDrafts = [ShareDraft()]
+    @State private var isAddingShares = false
     @State private var errorMessage = ""
     
     /// Локално „op cache“:
@@ -30,13 +30,27 @@ struct GoogleCalendarSharingView: View {
         let role: String
     }
 
+    struct ShareDraft: Identifiable {
+        let id: UUID
+        var email: String
+        var role: String
+
+        init(id: UUID = UUID(), email: String = "", role: String = "reader") {
+            self.id = id
+            self.email = email
+            self.role = role
+        }
+    }
+
     // --- За autocomplete ---
     @State private var allEmails: [String] = []
     @State private var filteredEmails: [String] = []
+    @State private var autocompleteDraftID: UUID?
+    @FocusState private var focusedShareDraftID: UUID?
     
     // Този флаг ни позволява да пропуснем ЕДНО фокусиране/рефилтриране,
     // когато потребителят току-що е избрал предложение.
-    @State private var skipNextRefilter = false
+    @State private var skipNextRefilterDraftID: UUID?
 
     var isUserOwner: Bool {
         aclRules.contains { rule in
@@ -64,123 +78,60 @@ struct GoogleCalendarSharingView: View {
                                     return !email.hasSuffix("@group.calendar.google.com")
                                 }) { rule in
                                     let isSelfOwner = (rule.scope?.value == user.email && rule.role == "owner")
-                                    HStack {
-                                        Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: "Unknown email fallback"))
-                                            .font(.callout)
-                                        Spacer()
-                                        
-                                        if isSelfOwner {
-                                            Text(localizedRoleDisplayName(rule.role))
-                                                .adaptiveSingleLine(minimumScale: 0.4)
-                                                .layoutPriority(1)
-                                        } else {
-                                            Picker("", selection: binding(for: rule)) {
-                                                ForEach(availableRoles, id: \.self) { rawRole in
-                                                    Text(localizedRoleDisplayName(rawRole))
-                                                        .lineLimit(1)
-                                                        .minimumScaleFactor(0.4)
-                                                        .allowsTightening(true)
-                                                        .tag(rawRole)
-                                                }
-                                            }
-                                            .pickerStyle(.menu)
-                                        }
-
-                                        if pendingResendRuleIDs.contains(rule.id) {
-                                            ProgressView()
-                                                .padding(.trailing, 8)
-                                        } else if !isSelfOwner {
-                                            Button(action: {
-                                                Task {
-                                                    await resendAclInvitation(for: rule)
-                                                }
-                                            }) {
-                                                Image(systemName: "arrow.clockwise")
-                                            }
-                                            .buttonStyle(BorderlessButtonStyle())
-                                            .padding(.trailing, 8)
-                                        }
-                                        
-                                        if !isSelfOwner {
-                                            Button(action: {
-                                                Task {
-                                                    await deleteAclRule(rule)
-                                                }
-                                            }) {
-                                                Image(systemName: "xmark")
-                                            }
-                                            .buttonStyle(BorderlessButtonStyle())
-                                        }
-                                    }
+                                    aclRuleRow(rule, canManage: !isSelfOwner)
                                 }
                                 
                                 ForEach(pendingShares) { item in
-                                    HStack {
-                                        Text(item.email)
-                                            .font(.callout)
-                                        Spacer()
-                                        Text(localizedRoleDisplayName(item.role))
-                                            .adaptiveSingleLine(minimumScale: 0.4)
-                                            .layoutPriority(1)
-                                        ProgressView()
-                                            .padding(.leading, 4)
-                                    }
+                                    pendingShareRow(item)
                                 }
                             }
                             
                             Section(header: Text(NSLocalizedString("Add New Email", comment: "Add sharing email section title"))) {
-                                TextField(NSLocalizedString("Email to share", comment: "Email share field placeholder"), text: $newEmailToShare)
-                                    .keyboardType(.emailAddress)
-                                    .autocapitalization(.none)
-                                    .disableAutocorrection(true)
-                                    .onChange(of: newEmailToShare) { _ /* oldValue */, newValue in
-                                           // 1) Ако skipNextRefilter е true, пропускаме еднократно
-                                           if skipNextRefilter {
-                                               skipNextRefilter = false
-                                               return
-                                           }
-                                           // 2) Ако полето е празно => няма предложения
-                                           if newValue.isEmpty {
-                                               filteredEmails = []
-                                               return
-                                           }
-                                           // 3) Иначе филтрираме
-                                           filteredEmails = allEmails.filter {
-                                               $0.localizedCaseInsensitiveContains(newValue)
-                                           }
-                                       }
-                                
-                                // Показваме autocomplete предложения
-                                if !filteredEmails.isEmpty && !newEmailToShare.isEmpty {
-                                    ForEach(filteredEmails, id: \.self) { email in
-                                        Text(email)
-                                            .onTapGesture {
-                                                // При избор: попълваме полето
-                                                newEmailToShare = email
-                                                // Зануляваме списъка
-                                                filteredEmails = []
-                                                // Слагаме флаг, за да пропуснем филтриране в onChange
-                                                skipNextRefilter = true
-                                            }
-                                    }
-                                }
+                                ForEach($shareDrafts) { $draft in
+                                    newGoogleShareRow($draft)
 
-                                Picker(NSLocalizedString("Permission:", comment: "Sharing permission picker label"), selection: $newRole) {
-                                    ForEach(availableRoles, id: \.self) { rawRole in
-                                        Text(localizedRoleDisplayName(rawRole))
-                                            .tag(rawRole)
+                                    if autocompleteDraftID == draft.id,
+                                       !filteredEmails.isEmpty,
+                                       !draft.email.isEmpty {
+                                        ForEach(filteredEmails, id: \.self) { email in
+                                            Button {
+                                                selectSuggestedEmail(email, for: draft.id)
+                                            } label: {
+                                                Label(email, systemImage: "person.crop.circle")
+                                                    .foregroundStyle(.primary)
+                                            }
+                                            .buttonStyle(.plain)
+                                        }
                                     }
                                 }
-                                .pickerStyle(MenuPickerStyle())
+                                .onDelete(perform: removeShareDrafts)
+
+                                Button {
+                                    addShareDraft()
+                                } label: {
+                                    Label("Add another person", systemImage: "person.badge.plus")
+                                }
+                                .disabled(isAddingShares)
                             }
                             
                             Section {
-                                Button(NSLocalizedString("Add", comment: "Add sharing email button")) {
+                                Button {
                                     Task {
-                                        await addEmailToShare()
+                                        await addEmailsToShare()
+                                    }
+                                } label: {
+                                    HStack {
+                                        Spacer()
+                                        if isAddingShares {
+                                            ProgressView()
+                                                .padding(.trailing, 6)
+                                        }
+                                        Label(isAddingShares ? "Adding…" : "Add", systemImage: "person.badge.plus")
+                                        .font(.body.weight(.semibold))
+                                        Spacer()
                                     }
                                 }
-                                .disabled(newEmailToShare.isEmpty)
+                                .disabled(isAddingShares || !hasEnteredShareEmail)
                             }
                         }
                     } else {
@@ -190,14 +141,7 @@ struct GoogleCalendarSharingView: View {
                                     guard let email = rule.scope?.value else { return true }
                                     return !email.hasSuffix("@group.calendar.google.com")
                                 }) { rule in
-                                    HStack {
-                                        Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: "Unknown email fallback"))
-                                            .font(.callout)
-                                        Spacer()
-                                        Text(localizedRoleDisplayName(rule.role))
-                                            .adaptiveSingleLine(minimumScale: 0.4)
-                                            .layoutPriority(1)
-                                    }
+                                    aclRuleRow(rule, canManage: false)
                                 }
                             }
                         }
@@ -223,6 +167,197 @@ struct GoogleCalendarSharingView: View {
             }
         }
     }
+
+    private func newGoogleShareRow(_ draft: Binding<ShareDraft>) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: "person.crop.circle")
+                .font(.title3)
+                .foregroundStyle(.blue)
+
+            TextField(
+                NSLocalizedString("Email to share", comment: "Email share field placeholder"),
+                text: draft.email
+            )
+            .keyboardType(.emailAddress)
+            .textInputAutocapitalization(.never)
+            .autocorrectionDisabled()
+            .focused($focusedShareDraftID, equals: draft.wrappedValue.id)
+            .submitLabel(.next)
+            .onSubmit {
+                addShareDraft()
+            }
+            .onChange(of: draft.wrappedValue.email) { _, newValue in
+                updateEmailSuggestions(newValue, for: draft.wrappedValue.id)
+            }
+
+            Menu {
+                ForEach(availableRoles, id: \.self) { rawRole in
+                    Button {
+                        draft.wrappedValue.role = rawRole
+                    } label: {
+                        if draft.wrappedValue.role == rawRole {
+                            Label(
+                                localizedRoleDisplayName(rawRole),
+                                systemImage: "checkmark"
+                            )
+                        } else {
+                            Text(localizedRoleDisplayName(rawRole))
+                        }
+                    }
+                }
+            } label: {
+                HStack(spacing: 5) {
+                    Text(localizedRoleDisplayName(draft.wrappedValue.role))
+                    Image(systemName: "chevron.up.chevron.down")
+                        .font(.caption2.weight(.bold))
+                }
+                .font(.subheadline.weight(.semibold))
+                .fixedSize()
+            }
+            .accessibilityLabel(
+                NSLocalizedString("Permission:", comment: "Sharing permission picker label")
+            )
+
+            if shareDrafts.count > 1 {
+                Button(role: .destructive) {
+                    removeShareDraft(id: draft.wrappedValue.id)
+                } label: {
+                    Image(systemName: "minus.circle.fill")
+                        .foregroundStyle(.red)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Remove invitation")
+            }
+        }
+        .padding(.vertical, 4)
+        .disabled(isAddingShares)
+    }
+
+    @ViewBuilder
+    private func aclRuleRow(
+        _ rule: GoogleCalendarACLRule,
+        canManage: Bool
+    ) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "person.crop.circle.fill")
+                .font(.title2)
+                .foregroundStyle(.blue)
+                .padding(.top, 2)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(rule.scope?.value ?? NSLocalizedString("Unknown", comment: "Unknown email fallback"))
+                    .font(.body.weight(.medium))
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+
+                if canManage {
+                    if pendingResendRuleIDs.contains(rule.id) {
+                        ProgressView()
+                            .controlSize(.small)
+                            .frame(height: 20)
+                    } else {
+                        Button {
+                            Task { await resendAclInvitation(for: rule) }
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "arrow.clockwise")
+                                Text("Resend")
+                            }
+                            .font(.caption.weight(.semibold))
+                            .padding(.vertical, 2)
+                        }
+                        .buttonStyle(.borderless)
+                        .fixedSize(horizontal: true, vertical: true)
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            HStack(alignment: .center, spacing: 7) {
+                if canManage {
+                    Menu {
+                        ForEach(availableRoles, id: \.self) { rawRole in
+                            Button {
+                                binding(for: rule).wrappedValue = rawRole
+                            } label: {
+                                if rule.role == rawRole {
+                                    Label(
+                                        localizedRoleDisplayName(rawRole),
+                                        systemImage: "checkmark"
+                                    )
+                                } else {
+                                    Text(localizedRoleDisplayName(rawRole))
+                                }
+                            }
+                        }
+                    } label: {
+                        HStack(spacing: 5) {
+                            Text(localizedRoleDisplayName(rule.role))
+                            Image(systemName: "chevron.up.chevron.down")
+                                .font(.caption2.weight(.bold))
+                        }
+                        .font(.subheadline.weight(.semibold))
+                        .frame(minWidth: 68, alignment: .trailing)
+                        .fixedSize(horizontal: true, vertical: true)
+                    }
+                    .buttonStyle(.borderless)
+                    .fixedSize(horizontal: true, vertical: true)
+
+                    Button(role: .destructive) {
+                        Task { await deleteAclRule(rule) }
+                    } label: {
+                        Image(systemName: "person.crop.circle.badge.minus")
+                            .font(.body)
+                            .foregroundStyle(.red)
+                            .frame(width: 28, height: 28)
+                    }
+                    .buttonStyle(.borderless)
+                    .accessibilityLabel("Remove Access")
+                } else {
+                    Text(localizedRoleDisplayName(rule.role))
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: true, vertical: true)
+                }
+            }
+            .fixedSize(horizontal: true, vertical: true)
+            .layoutPriority(2)
+        }
+        .fixedSize(horizontal: false, vertical: true)
+        .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+    }
+
+    private func pendingShareRow(_ item: PendingShare) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: "person.crop.circle.fill")
+                .font(.title2)
+                .foregroundStyle(.blue)
+                .padding(.top, 2)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(item.email)
+                    .font(.body.weight(.medium))
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+
+                Text("Invitation pending")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            Text(localizedRoleDisplayName(item.role))
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: true, vertical: true)
+
+            ProgressView()
+                .controlSize(.small)
+                .frame(width: 28, height: 28)
+        }
+        .fixedSize(horizontal: false, vertical: true)
+        .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+    }
     
     // MARK: - Bindings
     private func binding(for rule: GoogleCalendarACLRule) -> Binding<String> {
@@ -241,6 +376,93 @@ struct GoogleCalendarSharingView: View {
                 }
             }
         )
+    }
+
+    private var hasEnteredShareEmail: Bool {
+        shareDrafts.contains {
+            !$0.email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        }
+    }
+
+    private func addShareDraft() {
+        let draft = ShareDraft()
+        shareDrafts.append(draft)
+        autocompleteDraftID = nil
+        filteredEmails = []
+        focusedShareDraftID = draft.id
+    }
+
+    private func removeShareDrafts(at offsets: IndexSet) {
+        let removedIDs = offsets.compactMap { index in
+            shareDrafts.indices.contains(index) ? shareDrafts[index].id : nil
+        }
+        shareDrafts.remove(atOffsets: offsets)
+        if shareDrafts.isEmpty { shareDrafts = [ShareDraft()] }
+        if let autocompleteDraftID, removedIDs.contains(autocompleteDraftID) {
+            self.autocompleteDraftID = nil
+            filteredEmails = []
+        }
+    }
+
+    private func removeShareDraft(id: UUID) {
+        shareDrafts.removeAll { $0.id == id }
+        if shareDrafts.isEmpty { shareDrafts = [ShareDraft()] }
+        if autocompleteDraftID == id {
+            autocompleteDraftID = nil
+            filteredEmails = []
+        }
+    }
+
+    private func updateEmailSuggestions(_ value: String, for draftID: UUID) {
+        if skipNextRefilterDraftID == draftID {
+            skipNextRefilterDraftID = nil
+            return
+        }
+
+        autocompleteDraftID = draftID
+        let query = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else {
+            filteredEmails = []
+            return
+        }
+        filteredEmails = allEmails.filter {
+            $0.localizedCaseInsensitiveContains(query)
+        }
+    }
+
+    private func selectSuggestedEmail(_ email: String, for draftID: UUID) {
+        guard let index = shareDrafts.firstIndex(where: { $0.id == draftID }) else { return }
+        skipNextRefilterDraftID = draftID
+        shareDrafts[index].email = email
+        autocompleteDraftID = nil
+        filteredEmails = []
+    }
+
+    private func validatedShareDrafts() -> [ShareDraft]? {
+        let entered = shareDrafts.compactMap { draft -> ShareDraft? in
+            let email = draft.email
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+                .lowercased()
+            guard !email.isEmpty else { return nil }
+            return ShareDraft(id: draft.id, email: email, role: draft.role)
+        }
+        guard !entered.isEmpty else { return nil }
+
+        if let invalid = entered.first(where: { !CalendarFeedSession.validEmail($0.email) }) {
+            errorMessage = "Enter a valid email address for \(invalid.email)."
+            return nil
+        }
+
+        let uniqueEmails = Set(entered.map { $0.email })
+        guard uniqueEmails.count == entered.count else {
+            errorMessage = "Each email address can appear only once."
+            return nil
+        }
+        guard entered.count <= 50 else {
+            errorMessage = "You can add up to 50 people at once."
+            return nil
+        }
+        return entered
     }
 
     // MARK: - Data ops
@@ -263,32 +485,43 @@ struct GoogleCalendarSharingView: View {
         isLoading = false
     }
     
-    private func addEmailToShare() async {
-        guard !newEmailToShare.isEmpty else { return }
-        
-        let pending = PendingShare(email: newEmailToShare, role: newRole)
-        pendingShares.append(pending)
-        
-        let localEmail = newEmailToShare
-        let localRole = newRole
-        newEmailToShare = ""
-        
-        do {
-            let newRule = try await viewModel.insertGoogleCalendarAcl(
-                googleCalendarID: googleCalID,
-                accessToken: user.accessToken,
-                emailToShare: localEmail,
-                ruleRole: localRole
-            )
-            if let idx = pendingShares.firstIndex(where: { $0.id == pending.id }) {
-                pendingShares.remove(at: idx)
+    private func addEmailsToShare() async {
+        guard !isAddingShares, let drafts = validatedShareDrafts() else { return }
+
+        isAddingShares = true
+        errorMessage = ""
+        focusedShareDraftID = nil
+        autocompleteDraftID = nil
+        filteredEmails = []
+        defer { isAddingShares = false }
+
+        let pending = drafts.map { PendingShare(email: $0.email, role: $0.role) }
+        pendingShares.append(contentsOf: pending)
+
+        var failedDrafts: [ShareDraft] = []
+        var failedEmails: [String] = []
+
+        for (draft, pendingItem) in zip(drafts, pending) {
+            do {
+                let newRule = try await viewModel.insertGoogleCalendarAcl(
+                    googleCalendarID: googleCalID,
+                    accessToken: user.accessToken,
+                    emailToShare: draft.email,
+                    ruleRole: draft.role
+                )
+                aclRules.append(newRule)
+            } catch {
+                failedDrafts.append(draft)
+                failedEmails.append(draft.email)
             }
-            aclRules.append(newRule)
-        } catch {
-            if let idx = pendingShares.firstIndex(where: { $0.id == pending.id }) {
-                pendingShares.remove(at: idx)
-            }
-            errorMessage = localizedFormat(NSLocalizedString("Error adding: %@", comment: "Sharing add error"), error.localizedDescription)
+
+            pendingShares.removeAll { $0.id == pendingItem.id }
+        }
+
+        shareDrafts = failedDrafts.isEmpty ? [ShareDraft()] : failedDrafts
+        if !failedEmails.isEmpty {
+            errorMessage = "Could not add: \(failedEmails.joined(separator: ", "))."
+            focusedShareDraftID = failedDrafts.first?.id
         }
     }
     

@@ -6,53 +6,41 @@ enum SharedEventImporter {
     enum Result {
         case added
         case alreadyExists
-        case signInRequired
         case permissionDenied
         case noWritableCalendar
         case failed
     }
 
     static func eventAlreadyExists(_ payload: SharedEventImportPayload) -> Bool {
-        guard canReadEvents else { return false }
-
-        let store = CalendarViewModel.shared.eventStore
-        let predicate = store.predicateForEvents(
-            withStart: payload.start.addingTimeInterval(-2),
-            end: payload.end.addingTimeInterval(2),
-            calendars: nil
-        )
-
-        return store.events(matching: predicate).contains { event in
-            event.title?.trimmingCharacters(in: .whitespacesAndNewlines) == payload.title
-                && abs(event.startDate.timeIntervalSince(payload.start)) < 1
-                && abs(event.endDate.timeIntervalSince(payload.end)) < 1
-                && event.isAllDay == payload.isAllDay
-                && normalized(event.location) == normalized(payload.location)
-        }
+        matchingEvent(for: payload) != nil
     }
 
     static func add(
         _ payload: SharedEventImportPayload,
         toCalendarWithIdentifier calendarIdentifier: String?
     ) async -> Result {
-        guard let session = CalendarFeedSession.existing else { return .signInRequired }
-        if let eventID = payload.eventID, let feedID = payload.feedID {
-            do {
-                // Persist the recipient relationship before touching EventKit,
-                // so a reinstall during the local save cannot lose the invite.
-                try await CloudCalendarsAPI.rememberReceivedInvite(
-                    eventId: eventID,
-                    feedId: feedID,
-                    session: session
-                )
-            } catch {
-                print("Received invite could not be attached to the account: \(error.localizedDescription)")
-                return .failed
-            }
-        }
-
         guard await requestFullCalendarAccess() else { return .permissionDenied }
-        guard !eventAlreadyExists(payload) else { return .alreadyExists }
+        let session = CalendarFeedSession.existing
+
+        if let existingEvent = matchingEvent(for: payload) {
+            EventShareIdentity.removeLegacyMarker(
+                from: existingEvent,
+                store: CalendarViewModel.shared.eventStore
+            )
+            if payload.isSyncable {
+                SharedInviteTracker.record(
+                    payload: payload,
+                    localEventIdentifier: existingEvent.eventIdentifier
+                )
+            }
+            await remember(
+                payload,
+                localEventIdentifier: existingEvent.eventIdentifier,
+                session: session
+            )
+            if payload.isSyncable { _ = await SharedInviteRefresher.refreshAll() }
+            return .alreadyExists
+        }
 
         let viewModel = CalendarViewModel.shared
         let store = viewModel.eventStore
@@ -84,10 +72,8 @@ enum SharedEventImporter {
         event.isAllDay = payload.isAllDay
         event.location = payload.location
         event.timeZone = payload.timeZone
+        event.url = payload.eventURL
         event.calendar = destination
-        if let eventID = payload.eventID {
-            event.url = EventShareIdentity.receivedMarkerURL(eventID: eventID)
-        }
 
         do {
             try store.save(event, span: .thisEvent, commit: true)
@@ -96,12 +82,70 @@ enum SharedEventImporter {
             if payload.isSyncable {
                 SharedInviteTracker.record(payload: payload, localEventIdentifier: event.eventIdentifier)
             }
+            await remember(
+                payload,
+                localEventIdentifier: event.eventIdentifier,
+                session: session
+            )
+            // The App Clip URL deliberately stays compact. Pull the full S3
+            // representation now so notes, alarms and recurrence arrive in
+            // the same import action instead of waiting for the next poll.
+            if payload.isSyncable { _ = await SharedInviteRefresher.refreshAll() }
             EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
             NotificationCenter.default.post(name: .sharedEventImported, object: nil)
             return .added
         } catch {
             print("Shared event import failed: \(error.localizedDescription)")
             return .failed
+        }
+    }
+
+    private static func remember(
+        _ payload: SharedEventImportPayload,
+        localEventIdentifier: String?,
+        session: CloudCalendarsAPI.Session?
+    ) async {
+        guard let eventID = payload.eventID,
+              let feedID = payload.feedID
+        else { return }
+        do {
+            if let session {
+                try await CloudCalendarsAPI.rememberReceivedInvite(
+                    eventId: eventID,
+                    feedId: feedID,
+                    localEventIdentifier: localEventIdentifier,
+                    anonymousRecipientId: SharedInviteTracker.anonymousRecipientID,
+                    session: session
+                )
+            } else {
+                try await CloudCalendarsAPI.rememberAnonymousReceivedInvite(
+                    eventId: eventID,
+                    feedId: feedID,
+                    anonymousRecipientId: SharedInviteTracker.anonymousRecipientID
+                )
+            }
+            SharedInviteTracker.markReceiptRecorded(eventID: eventID)
+        } catch {
+            print("Received invite could not be attached to the account: \(error.localizedDescription)")
+        }
+    }
+
+    private static func matchingEvent(for payload: SharedEventImportPayload) -> EKEvent? {
+        guard canReadEvents else { return nil }
+
+        let store = CalendarViewModel.shared.eventStore
+        let predicate = store.predicateForEvents(
+            withStart: payload.start.addingTimeInterval(-2),
+            end: payload.end.addingTimeInterval(2),
+            calendars: nil
+        )
+
+        return store.events(matching: predicate).first { event in
+            event.title?.trimmingCharacters(in: .whitespacesAndNewlines) == payload.title
+                && abs(event.startDate.timeIntervalSince(payload.start)) < 1
+                && abs(event.endDate.timeIntervalSince(payload.end)) < 1
+                && event.isAllDay == payload.isAllDay
+                && normalized(event.location) == normalized(payload.location)
         }
     }
 

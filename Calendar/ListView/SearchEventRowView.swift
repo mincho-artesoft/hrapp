@@ -52,6 +52,7 @@ struct SearchEventRowView: View {
                  : NSLocalizedString("No Title", comment: "Fallback if an event has no title"))
                 .font(.body)
                 .foregroundColor(.primary)
+                .strikethrough(SharedInviteTracker.shouldAppearStruckThrough(event))
 
             Spacer()
 

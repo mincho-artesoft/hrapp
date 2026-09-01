@@ -321,7 +321,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             eventVC.event = ekEvent
             eventVC.delegate = self
             eventVC.allowsEditing = !SharedInviteTracker.isReadOnly(ekEvent)
-            eventVC.allowsCalendarPreview = true      // Разрешава тап върху датата/календара
+            eventVC.allowsCalendarPreview = !SharedInviteTracker.isReadOnly(ekEvent)
 
             // Презентирате го модално в нав. контролер:
             let navVC = UINavigationController(rootViewController: eventVC)
