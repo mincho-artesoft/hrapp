@@ -27,11 +27,13 @@ struct SharedEventImportView: View {
     let payload: SharedEventImportPayload
 
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var cloudAccount = CloudAccountManager.shared
     @State private var importState: ImportState = .ready
     @State private var importAlert: ImportAlert?
     @State private var writableCalendars: [EKCalendar] = []
     @State private var selectedCalendarIdentifier = ""
     @State private var isCalendarPickerPresented = false
+    @State private var isCloudAccountPresented = false
 
     private var dateText: String {
         let formatter = DateFormatter()
@@ -55,9 +57,13 @@ struct SharedEventImportView: View {
             ScrollView {
                 VStack(spacing: 22) {
                     eventPreview
-                    calendarPicker
-                    statusView
-                    primaryButton
+                    if cloudAccount.isSignedIn {
+                        calendarPicker
+                        statusView
+                        primaryButton
+                    } else {
+                        accountGate
+                    }
                 }
                 .padding(.horizontal, 22)
                 .padding(.vertical, 24)
@@ -78,6 +84,14 @@ struct SharedEventImportView: View {
             if SharedEventImporter.eventAlreadyExists(payload) {
                 importState = .alreadyExists
             }
+            if !cloudAccount.isSignedIn {
+                isCloudAccountPresented = true
+            }
+        }
+        .sheet(isPresented: $isCloudAccountPresented) {
+            CloudAccountSignInView()
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
         }
         .alert(item: $importAlert) { alert in
             switch alert {
@@ -107,6 +121,31 @@ struct SharedEventImportView: View {
         }
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
+    }
+
+    private var accountGate: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Label("Sign in to continue", systemImage: "person.crop.circle.badge.checkmark")
+                .font(.headline)
+            Text("Your account keeps this shared event recoverable after reinstalling the app.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            Button {
+                isCloudAccountPresented = true
+            } label: {
+                Label("Open account sign-in", systemImage: "person.crop.circle.badge.checkmark")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(
+            Color(uiColor: .secondarySystemGroupedBackground),
+            in: RoundedRectangle(cornerRadius: 14, style: .continuous)
+        )
     }
 
     private var calendarPicker: some View {
@@ -298,6 +337,8 @@ struct SharedEventImportView: View {
                 dismiss()
             case .alreadyExists:
                 dismiss()
+            case .signInRequired:
+                importState = .ready
             case .permissionDenied:
                 importState = .ready
                 importAlert = .permission

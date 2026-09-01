@@ -215,6 +215,30 @@ enum EventShareIdentity {
         return generated
     }
 
+    static func ownerMarkerURL(eventID: String) -> URL? {
+        URL(string: "cloudcalendars://shared-event/\(eventID)")
+    }
+
+    static func receivedMarkerURL(eventID: String) -> URL? {
+        URL(string: "cloudcalendars://received-event/\(eventID)")
+    }
+
+    static func embeddedShareID(in event: EKEvent, host: String) -> String? {
+        guard event.url?.scheme == "cloudcalendars",
+              event.url?.host == host
+        else { return nil }
+        return event.url?.pathComponents.last.flatMap { $0.isEmpty ? nil : $0 }
+    }
+
+    static func embedOwnerID(_ eventID: String, in event: EKEvent, store: EKEventStore) {
+        guard embeddedShareID(in: event, host: "shared-event") != eventID,
+              let marker = ownerMarkerURL(eventID: eventID),
+              event.calendar.allowsContentModifications
+        else { return }
+        event.url = marker
+        try? store.save(event, span: .thisEvent, commit: true)
+    }
+
     /// Used once to seed the new "Shared by me" list from shares created by
     /// older builds, before successful share-sheet completions were tracked.
     static var knownShareIDsByEvent: [String: String] {
@@ -261,6 +285,9 @@ enum SharedOutgoingEventTracker {
         var lastUploadedSnapshot: Snapshot?
         /// Nil in records written by older builds, false/true thereafter.
         var isCancelled: Bool?
+        /// False for a server-restored event that could not yet be matched to
+        /// EventKit. Such a record must not be mistaken for a local deletion.
+        var tracksLocalDeletion: Bool?
 
         var id: String { eventID }
     }
@@ -311,7 +338,8 @@ enum SharedOutgoingEventTracker {
             location: parsedSnapshot.location,
             sharedAt: Date(),
             lastUploadedSnapshot: feedID == nil ? nil : (eventSnapshot ?? parsedSnapshot),
-            isCancelled: false
+            isCancelled: false,
+            tracksLocalDeletion: true
         )
         save(all)
         NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
@@ -362,7 +390,10 @@ enum SharedOutgoingEventTracker {
             else {
                 // A legacy entry with no feed was never syncable, so there is
                 // no remote recipient to notify about its deletion.
-                guard original.feedID != nil, original.isCancelled != true else { continue }
+                guard original.feedID != nil,
+                      original.isCancelled != true,
+                      original.tracksLocalDeletion != false
+                else { continue }
                 do {
                     try await CloudCalendarsAPI.cancelEvent(id: original.eventID, session: session)
                     updatePersisted(original.eventID) { current in
@@ -380,6 +411,8 @@ enum SharedOutgoingEventTracker {
             guard !SharedInviteTracker.isReadOnly(event),
                   let currentSnapshot = snapshot(for: event)
             else { continue }
+
+            EventShareIdentity.embedOwnerID(original.eventID, in: event, store: eventStore)
 
             let needsFeedRecovery = original.feedID == nil
             guard needsFeedRecovery
@@ -460,12 +493,44 @@ enum SharedOutgoingEventTracker {
                 location: event.location,
                 sharedAt: Date(),
                 lastUploadedSnapshot: nil,
-                isCancelled: nil
+                isCancelled: nil,
+                tracksLocalDeletion: true
             )
         }
 
         save(all)
         defaults.set(true, forKey: migrationKey)
+    }
+
+    static func restore(
+        _ remote: CloudCalendarsAPI.RemoteSharedEvent,
+        localEventIdentifier: String?
+    ) {
+        guard let start = remote.startDate, let end = remote.endDate else { return }
+        let remoteSnapshot = Snapshot(
+            title: remote.title,
+            start: start,
+            end: end,
+            isAllDay: remote.allDay,
+            location: remote.location
+        )
+        var all = load()
+        let previous = all[remote.id]
+        all[remote.id] = SentEvent(
+            eventID: remote.id,
+            localEventIdentifier: localEventIdentifier ?? previous?.localEventIdentifier,
+            feedID: remote.feedId,
+            title: remote.title,
+            start: start,
+            end: end,
+            isAllDay: remote.allDay,
+            location: remote.location,
+            sharedAt: previous?.sharedAt ?? Date(),
+            lastUploadedSnapshot: remoteSnapshot,
+            isCancelled: remote.isCancelled,
+            tracksLocalDeletion: (localEventIdentifier ?? previous?.localEventIdentifier) != nil
+        )
+        save(all)
     }
 
     private static func load() -> [String: SentEvent] {
@@ -554,6 +619,7 @@ enum SharedEventSyncManager {
         defer { isSyncing = false }
 
         let store = CalendarViewModel.shared.eventStore
+        await SharedEventRecovery.restoreFromServer(force: false)
         _ = await SharedOutgoingEventTracker.syncAll(in: store)
         _ = await SharedInviteRefresher.refreshAll()
     }
@@ -681,8 +747,14 @@ enum EventAppClipSharing {
 
         do {
             let session = try await CalendarFeedSession.current()
+            let shareID = EventShareIdentity.shareID(for: event)
+            EventShareIdentity.embedOwnerID(
+                shareID,
+                in: event,
+                store: CalendarViewModel.shared.eventStore
+            )
             let upload = SharedEventUpload(
-                id: EventShareIdentity.shareID(for: event),
+                id: shareID,
                 title: title,
                 start: start,
                 end: end,
@@ -710,23 +782,24 @@ enum EventAppClipSharing {
 
     @MainActor
     static func shareableURL(for event: EKEvent) async -> URL? {
-        guard !SharedInviteTracker.isReadOnly(event) else { return nil }
-        let feedID = await syncedFeedID(for: event)
+        guard CloudAccountManager.shared.isSignedIn,
+              !SharedInviteTracker.isReadOnly(event),
+              let feedID = await syncedFeedID(for: event)
+        else { return nil }
         return invocationURL(for: event, feedID: feedID)
     }
 
     @MainActor
     static func shareableURL(for descriptor: EventDescriptor) async -> URL? {
+        guard CloudAccountManager.shared.isSignedIn else { return nil }
         // Only a descriptor backed by a real EventKit event has an identity
         // stable enough to update later. A synthetic one - a placeholder drawn
         // for a multi-day span, say - would get a different id next time, so
         // registering it would create a second event rather than revise the
         // first. Those are shared as plain one-off links.
-        guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else {
-            return invocationURL(for: descriptor)
-        }
+        guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return nil }
         guard !SharedInviteTracker.isReadOnly(event) else { return nil }
-        let feedID = await syncedFeedID(for: event)
+        guard let feedID = await syncedFeedID(for: event) else { return nil }
         return invocationURL(for: descriptor, feedID: feedID)
     }
 
@@ -734,13 +807,21 @@ enum EventAppClipSharing {
 
     @MainActor
     static func present(for descriptor: EventDescriptor, from sourceView: UIView) {
+        let presenter = presentingViewController(from: sourceView)
+        guard CloudAccountManager.shared.isSignedIn else {
+            presentAccountSignIn(from: presenter)
+            return
+        }
         Task { @MainActor in
-            guard let url = await shareableURL(for: descriptor) else { return }
+            guard let url = await shareableURL(for: descriptor) else {
+                presentSyncError(from: presenter)
+                return
+            }
             let localEventIdentifier = (descriptor as? EKMultiDayWrapper)?.realEvent.eventIdentifier
             presentSheet(
                 with: url,
                 localEventIdentifier: localEventIdentifier,
-                from: presentingViewController(from: sourceView)
+                from: presenter
             ) { popover in
                 popover.sourceView = sourceView
                 popover.sourceRect = CGRect(
@@ -759,8 +840,15 @@ enum EventAppClipSharing {
         from presenter: UIViewController,
         sourceBarButtonItem: UIBarButtonItem
     ) {
+        guard CloudAccountManager.shared.isSignedIn else {
+            presentAccountSignIn(from: presenter)
+            return
+        }
         Task { @MainActor in
-            guard let url = await shareableURL(for: event) else { return }
+            guard let url = await shareableURL(for: event) else {
+                presentSyncError(from: presenter)
+                return
+            }
             presentSheet(
                 with: url,
                 localEventIdentifier: event.eventIdentifier,
@@ -773,10 +861,17 @@ enum EventAppClipSharing {
 
     @MainActor
     static func present(for event: EKEvent) {
+        let presenter = activePresentingViewController()
+        guard CloudAccountManager.shared.isSignedIn else {
+            presentAccountSignIn(from: presenter)
+            return
+        }
         Task { @MainActor in
-            guard let url = await shareableURL(for: event),
-                  let presenter = activePresentingViewController()
-            else { return }
+            guard let presenter else { return }
+            guard let url = await shareableURL(for: event) else {
+                presentSyncError(from: presenter)
+                return
+            }
 
             presentSheet(
                 with: url,
@@ -822,6 +917,34 @@ enum EventAppClipSharing {
             configurePopover(popover)
         }
         presenter.present(activityController, animated: true)
+    }
+
+    @MainActor
+    private static func presentAccountSignIn(from presenter: UIViewController?) {
+        guard let presenter, presenter.presentedViewController == nil else { return }
+        let controller = UIHostingController(rootView: CloudAccountSignInView())
+        controller.modalPresentationStyle = .pageSheet
+        if let sheet = controller.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.selectedDetentIdentifier = .large
+            sheet.prefersGrabberVisible = true
+        }
+        presenter.present(controller, animated: true)
+    }
+
+    @MainActor
+    private static func presentSyncError(from presenter: UIViewController?) {
+        guard let presenter, presenter.presentedViewController == nil else { return }
+        let alert = UIAlertController(
+            title: NSLocalizedString("Unable to share event", comment: "Share sync failure title"),
+            message: NSLocalizedString(
+                "The event could not be saved to your Cloud Calendars account. Please try again.",
+                comment: "Share sync failure message"
+            ),
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        presenter.present(alert, animated: true)
     }
 
     // MARK: - Formatting

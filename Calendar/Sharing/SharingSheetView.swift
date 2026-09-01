@@ -29,6 +29,7 @@ struct SharingSheetView: View {
 
     var body: some View {
         Form {
+            cloudAccountSection
             sharedByMeSection
             sharedWithMeSection
             bookingSection
@@ -63,6 +64,20 @@ struct SharingSheetView: View {
         }
         .sheet(isPresented: $showBookingSetup) {
             BookingSetupView()
+        }
+    }
+
+    private var cloudAccountSection: some View {
+        Section {
+            CloudAccountSignInContent()
+                .padding(.vertical, 4)
+        } header: {
+            Text("Cloud Calendars account")
+        } footer: {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Required for synced App Clip events and recovery after reinstalling.")
+                Text("These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync.")
+            }
         }
     }
 

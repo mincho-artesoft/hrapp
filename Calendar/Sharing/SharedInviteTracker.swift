@@ -52,6 +52,33 @@ enum SharedInviteTracker {
         var all = tracked()
         all.removeValue(forKey: eventID)
         save(all)
+        if let session = CalendarFeedSession.existing {
+            Task {
+                try? await CloudCalendarsAPI.forgetReceivedInvite(
+                    eventId: eventID,
+                    session: session
+                )
+            }
+        }
+    }
+
+    static func restore(
+        _ remote: CloudCalendarsAPI.RemoteSharedEvent,
+        localEventIdentifier: String
+    ) {
+        var all = tracked()
+        all[remote.id] = Invite(
+            eventID: remote.id,
+            feedID: remote.feedId,
+            localEventIdentifier: localEventIdentifier,
+            isCancelled: remote.isCancelled,
+            lastSequence: remote.sequence ?? 0
+        )
+        save(all)
+    }
+
+    static func invite(eventID: String) -> Invite? {
+        tracked()[eventID]
     }
 
     /// Imported invitations are writable EventKit copies, but inside this app

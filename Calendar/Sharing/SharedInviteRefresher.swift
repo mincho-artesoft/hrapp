@@ -148,6 +148,169 @@ enum SharedInviteRefresher {
     }
 }
 
+/// Rebuilds the local tracker indexes from the authenticated account. EventKit
+/// events survive an app reinstall, while UserDefaults does not; marker URLs
+/// make the original copies identifiable even when their title/time changed
+/// before the last server upload.
+@MainActor
+enum SharedEventRecovery {
+    private static var restoredAccountKey: String?
+
+    static func restoreFromServer(force: Bool = true) async {
+        guard let session = CalendarFeedSession.existing else { return }
+        let accountKey = session.ownerId ?? session.calendarId
+        guard force || restoredAccountKey != accountKey else { return }
+        guard hasCalendarAccess else { return }
+
+        do {
+            // One-time migration for invites accepted before account-backed
+            // recovery existed.
+            for invite in SharedInviteTracker.tracked().values {
+                try? await CloudCalendarsAPI.rememberReceivedInvite(
+                    eventId: invite.eventID,
+                    feedId: invite.feedID,
+                    session: session
+                )
+            }
+
+            let state = try await CloudCalendarsAPI.sharedState(session: session)
+            let store = CalendarViewModel.shared.eventStore
+
+            for remote in state.outgoing {
+                let local = findEvent(
+                    remote,
+                    markerHost: "shared-event",
+                    preferredIdentifier: outgoingIdentifier(for: remote.id, in: store),
+                    store: store
+                )
+                SharedOutgoingEventTracker.restore(
+                    remote,
+                    localEventIdentifier: local?.eventIdentifier
+                )
+                if let local {
+                    EventShareIdentity.embedOwnerID(remote.id, in: local, store: store)
+                }
+            }
+
+            for remote in state.received {
+                let preferred = SharedInviteTracker.invite(eventID: remote.id)?.localEventIdentifier
+                let local = findEvent(
+                    remote,
+                    markerHost: "received-event",
+                    preferredIdentifier: preferred,
+                    store: store
+                ) ?? createReceivedEvent(remote, store: store)
+
+                if let identifier = local?.eventIdentifier {
+                    SharedInviteTracker.restore(remote, localEventIdentifier: identifier)
+                }
+            }
+
+            restoredAccountKey = accountKey
+            NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+            NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+        } catch {
+            print("Shared-event account recovery failed - \(error.localizedDescription)")
+        }
+    }
+
+    private static var hasCalendarAccess: Bool {
+        EKEventStore.authorizationStatus(for: .event) == .fullAccess
+    }
+
+    private static func outgoingIdentifier(
+        for eventID: String,
+        in store: EKEventStore
+    ) -> String? {
+        if let identifier = SharedOutgoingEventTracker.sentEvents(in: store)
+            .first(where: { $0.eventID == eventID })?
+            .localEventIdentifier {
+            return identifier
+        }
+        return EventShareIdentity.knownShareIDsByEvent
+            .first(where: { $0.value == eventID })?
+            .key
+    }
+
+    private static func findEvent(
+        _ remote: CloudCalendarsAPI.RemoteSharedEvent,
+        markerHost: String,
+        preferredIdentifier: String?,
+        store: EKEventStore
+    ) -> EKEvent? {
+        if let preferredIdentifier,
+           let preferred = store.event(withIdentifier: preferredIdentifier) {
+            return preferred
+        }
+        guard let start = remote.startDate, let end = remote.endDate else { return nil }
+
+        let predicate = store.predicateForEvents(
+            withStart: start.addingTimeInterval(-24 * 60 * 60),
+            end: end.addingTimeInterval(24 * 60 * 60),
+            calendars: nil
+        )
+        let candidates = store.events(matching: predicate)
+
+        if let marked = candidates.first(where: {
+            EventShareIdentity.embeddedShareID(in: $0, host: markerHost) == remote.id
+        }) {
+            return marked
+        }
+
+        return candidates.first { event in
+            let title = (event.title ?? "")
+                .replacingOccurrences(
+                    of: "\(NSLocalizedString("Cancelled", comment: "")): ",
+                    with: ""
+                )
+            return title == remote.title
+                && abs(event.startDate.timeIntervalSince(start)) < 1
+                && abs(event.endDate.timeIntervalSince(end)) < 1
+                && event.isAllDay == remote.allDay
+                && normalized(event.location) == normalized(remote.location)
+        }
+    }
+
+    private static func createReceivedEvent(
+        _ remote: CloudCalendarsAPI.RemoteSharedEvent,
+        store: EKEventStore
+    ) -> EKEvent? {
+        guard let start = remote.startDate,
+              let end = remote.endDate,
+              let destination = [
+                SharedInviteCalendar.destination(in: store),
+                store.defaultCalendarForNewEvents,
+                CalendarViewModel.shared.pickFirstWritableSelectedCalendar(),
+                store.calendars(for: .event).first(where: \.allowsContentModifications)
+              ].compactMap({ $0 }).first(where: \.allowsContentModifications)
+        else { return nil }
+
+        let event = EKEvent(eventStore: store)
+        let cancelledPrefix = NSLocalizedString("Cancelled", comment: "")
+        event.title = remote.isCancelled
+            ? "\(cancelledPrefix): \(remote.title)"
+            : remote.title
+        event.startDate = start
+        event.endDate = max(start, end)
+        event.isAllDay = remote.allDay
+        event.location = remote.location
+        event.url = EventShareIdentity.receivedMarkerURL(eventID: remote.id)
+        event.calendar = destination
+
+        do {
+            try store.save(event, span: .thisEvent, commit: true)
+            return event
+        } catch {
+            print("Recovered invite could not be written to EventKit - \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    private static func normalized(_ value: String?) -> String {
+        value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+    }
+}
+
 /// The handful of iCalendar fields an invite needs. Deliberately not a general
 /// parser: it reads feeds this app produced, whose shape is known.
 struct ICSEvent {

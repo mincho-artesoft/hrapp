@@ -829,3 +829,35 @@
 "The code may have expired. Reopen the QR on the web and try again." = "Кодът може да е изтекъл. Отворете отново QR кода в интернет и опитайте пак.";
 "Read-only shared event" = "Споделено събитие само за четене";
 "Remove from My Calendar" = "Премахване от моя календар";
+
+/* Акаунт само за App Clip споделяне и възстановяване */
+"Cloud Calendars account" = "Акаунт в Cloud Calendars";
+"App Clip sharing account" = "Акаунт за App Clip споделяне";
+"Required for synced App Clip events and recovery after reinstalling." = "Необходим е за синхронизирани App Clip събития и възстановяване след преинсталиране.";
+"Continue with Google" = "Продължи с Google";
+"Sign Out" = "Изход";
+"Signing in…" = "Влизане…";
+"Sign In" = "Вход";
+"Done" = "Готово";
+"Sign in to continue" = "Влезте, за да продължите";
+"Your account keeps this shared event recoverable after reinstalling the app." = "Акаунтът ви позволява това споделено събитие да бъде възстановено след преинсталиране на приложението.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Този акаунт притежава App Clip споделянията и ги възстановява след преинсталиране. Той е отделен от входовете за доставчици на календари.";
+"Sign in with Google or Apple to share and receive synced events." = "Влезте с Google или Apple, за да споделяте и получавате синхронизирани събития.";
+"Apple did not return an identity token." = "Apple не върна токен за самоличност.";
+"Unable to share event" = "Събитието не може да бъде споделено";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "Събитието не можа да бъде запазено в акаунта ви в Cloud Calendars. Опитайте отново.";
+"Google" = "Google";
+"Apple" = "Apple";
+"Microsoft" = "Microsoft";
+"Connect" = "Свържи";
+"Connected" = "Свързан";
+"Sign in with at least one account" = "Влезте с поне един акаунт";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "Свържете Google, Apple, Microsoft или и трите. Всяка свързана идентичност отваря един и същ акаунт за споделени събития.";
+"A Premium subscription is required to connect Microsoft." = "За свързване с Microsoft е необходим Premium абонамент.";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "Тези идентичности са само за App Clip споделяне и възстановяване. Те остават отделни от входовете и синхронизацията на доставчиците на календари.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Влезте с Google, Apple или Microsoft, за да споделяте и получавате синхронизирани събития.";
+"Share a verified email during sign-in to use synced events and invitations." = "Споделете потвърден email при вход, за да използвате синхронизирани събития и покани.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "При вход трябва да споделите потвърден email. По него хората ще могат да ви намират и канят в календари и събития.";
+"Manage connected accounts" = "Управление на свързаните акаунти";
+"Apple, Google, and Microsoft" = "Apple, Google и Microsoft";
+"Open account sign-in" = "Отвори входа за акаунт";

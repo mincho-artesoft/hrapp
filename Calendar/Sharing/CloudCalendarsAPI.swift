@@ -13,12 +13,51 @@ enum CloudCalendarsAPI {
     /// elsewhere without another App Store release.
     static let baseURL = URL(string: "https://api.cloud-calendars.com")!
 
+    struct AccountIdentity: Codable, Equatable, Identifiable {
+        let provider: String
+        let email: String?
+
+        var id: String { provider }
+    }
+
     struct Session: Codable, Equatable {
         let calendarId: String
         let deviceToken: String
         let feedId: String
         let feedUrl: String
         var email: String?
+        var provider: String?
+        var ownerId: String?
+        var identities: [AccountIdentity]?
+    }
+
+    struct RemoteSharedEvent: Decodable, Equatable, Identifiable {
+        let id: String
+        let title: String
+        let start: String
+        let end: String
+        let allDay: Bool
+        let location: String?
+        let status: String?
+        let sequence: Int?
+        let feedId: String
+
+        var startDate: Date? { Self.date(start) }
+        var endDate: Date? { Self.date(end) }
+        var isCancelled: Bool { status == "cancelled" }
+
+        private static func date(_ value: String) -> Date? {
+            let fractional = ISO8601DateFormatter()
+            fractional.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            return fractional.date(from: value) ?? ISO8601DateFormatter().date(from: value)
+        }
+    }
+
+    struct SharedState: Decodable, Equatable {
+        let ownerId: String
+        let identities: [AccountIdentity]?
+        let outgoing: [RemoteSharedEvent]
+        let received: [RemoteSharedEvent]
     }
 
     struct Grant: Codable, Equatable {
@@ -68,6 +107,15 @@ enum CloudCalendarsAPI {
         if let name { body["name"] = name }
 
         return try await send("/resolve", body: body, bearer: existing?.deviceToken)
+    }
+
+    static func unlinkIdentity(provider: String, session: Session) async throws -> Session {
+        try await send(
+            "/identities/\(provider)",
+            method: "DELETE",
+            body: nil,
+            bearer: session.deviceToken
+        )
     }
 
     /// Fallback for a device with no Google or Microsoft account signed in.
@@ -128,6 +176,31 @@ enum CloudCalendarsAPI {
     static func revokeGrant(feedId: String, session: Session) async throws {
         try await sendIgnoringResponse(
             "/grants/\(feedId)",
+            method: "DELETE",
+            body: nil,
+            bearer: session.deviceToken
+        )
+    }
+
+    static func sharedState(session: Session) async throws -> SharedState {
+        try await send("/shared-state", method: "GET", body: nil, bearer: session.deviceToken)
+    }
+
+    static func rememberReceivedInvite(
+        eventId: String,
+        feedId: String,
+        session: Session
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/received-invites",
+            body: ["eventId": eventId, "feedId": feedId],
+            bearer: session.deviceToken
+        )
+    }
+
+    static func forgetReceivedInvite(eventId: String, session: Session) async throws {
+        try await sendIgnoringResponse(
+            "/received-invites/\(eventId)",
             method: "DELETE",
             body: nil,
             bearer: session.deviceToken

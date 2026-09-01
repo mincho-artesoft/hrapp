@@ -833,3 +833,35 @@
 "The code may have expired. Reopen the QR on the web and try again." = "The code may have expired. Reopen the QR on the web and try again.";
 "Read-only shared event" = "Read-only shared event";
 "Remove from My Calendar" = "Remove from My Calendar";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars account";
+"App Clip sharing account" = "App Clip sharing account";
+"Required for synced App Clip events and recovery after reinstalling." = "Required for synced App Clip events and recovery after reinstalling.";
+"Continue with Google" = "Continue with Google";
+"Sign Out" = "Sign Out";
+"Signing in…" = "Signing in…";
+"Sign In" = "Sign In";
+"Done" = "Done";
+"Sign in to continue" = "Sign in to continue";
+"Your account keeps this shared event recoverable after reinstalling the app." = "Your account keeps this shared event recoverable after reinstalling the app.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins.";
+"Sign in with Google or Apple to share and receive synced events." = "Sign in with Google or Apple to share and receive synced events.";
+"Apple did not return an identity token." = "Apple did not return an identity token.";
+"Unable to share event" = "Unable to share event";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "The event could not be saved to your Cloud Calendars account. Please try again.";
+"Google" = "Google";
+"Apple" = "Apple";
+"Microsoft" = "Microsoft";
+"Connect" = "Connect";
+"Connected" = "Connected";
+"Sign in with at least one account" = "Sign in with at least one account";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account.";
+"A Premium subscription is required to connect Microsoft." = "A Premium subscription is required to connect Microsoft.";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Sign in with Google, Apple, or Microsoft to share and receive synced events.";
+"Share a verified email during sign-in to use synced events and invitations." = "Share a verified email during sign-in to use synced events and invitations.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "You must share a verified email during sign-in. People will use it to find and invite you to calendars and events.";
+"Manage connected accounts" = "Manage connected accounts";
+"Apple, Google, and Microsoft" = "Apple, Google, and Microsoft";
+"Open account sign-in" = "Open account sign-in";

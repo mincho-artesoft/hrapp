@@ -6,6 +6,7 @@ enum SharedEventImporter {
     enum Result {
         case added
         case alreadyExists
+        case signInRequired
         case permissionDenied
         case noWritableCalendar
         case failed
@@ -34,6 +35,22 @@ enum SharedEventImporter {
         _ payload: SharedEventImportPayload,
         toCalendarWithIdentifier calendarIdentifier: String?
     ) async -> Result {
+        guard let session = CalendarFeedSession.existing else { return .signInRequired }
+        if let eventID = payload.eventID, let feedID = payload.feedID {
+            do {
+                // Persist the recipient relationship before touching EventKit,
+                // so a reinstall during the local save cannot lose the invite.
+                try await CloudCalendarsAPI.rememberReceivedInvite(
+                    eventId: eventID,
+                    feedId: feedID,
+                    session: session
+                )
+            } catch {
+                print("Received invite could not be attached to the account: \(error.localizedDescription)")
+                return .failed
+            }
+        }
+
         guard await requestFullCalendarAccess() else { return .permissionDenied }
         guard !eventAlreadyExists(payload) else { return .alreadyExists }
 
@@ -68,6 +85,9 @@ enum SharedEventImporter {
         event.location = payload.location
         event.timeZone = payload.timeZone
         event.calendar = destination
+        if let eventID = payload.eventID {
+            event.url = EventShareIdentity.receivedMarkerURL(eventID: eventID)
+        }
 
         do {
             try store.save(event, span: .thisEvent, commit: true)
@@ -86,33 +106,19 @@ enum SharedEventImporter {
     }
 
     private static var canReadEvents: Bool {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        if #available(iOS 17.0, *) {
-            return status == .fullAccess
-        }
-        return status == .authorized
+        EKEventStore.authorizationStatus(for: .event) == .fullAccess
     }
 
     private static func requestFullCalendarAccess() async -> Bool {
         let store = CalendarViewModel.shared.eventStore
         let status = EKEventStore.authorizationStatus(for: .event)
 
-        if #available(iOS 17.0, *) {
-            if status == .fullAccess { return true }
-            guard status == .notDetermined || status == .writeOnly else { return false }
-            do {
-                return try await store.requestFullAccessToEvents()
-            } catch {
-                return false
-            }
-        }
-
-        if status == .authorized { return true }
-        guard status == .notDetermined else { return false }
-        return await withCheckedContinuation { continuation in
-            store.requestAccess(to: .event) { granted, _ in
-                continuation.resume(returning: granted)
-            }
+        if status == .fullAccess { return true }
+        guard status == .notDetermined || status == .writeOnly else { return false }
+        do {
+            return try await store.requestFullAccessToEvents()
+        } catch {
+            return false
         }
     }
 
