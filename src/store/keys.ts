@@ -13,7 +13,10 @@ export const keys = {
   token: (hash: string) => `idx/token/${hash}.json`,
   principal: (id: string) => `principal/${id}.json`,
   identity: (provider: string, hash: string) => `idx/${provider}/${hash}.json`,
+  accountEmail: (hash: string) => `idx/account-email/${hash}.json`,
   eventFeed: (calId: string, eventId: string) => `idx/eventfeed/${calId}/${eventId}.json`,
+  receivedInvites: (principalId: string) => `principal/${principalId}/received/`,
+  receivedInvite: (principalId: string, eventId: string) => `principal/${principalId}/received/${eventId}.json`,
 
   // Booking (Calendly-style scheduling on top of a calendar)
   booking: (calId: string) => `cal/${calId}/booking.json`, // owner's availability config

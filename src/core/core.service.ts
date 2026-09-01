@@ -151,9 +151,18 @@ export class CoreService {
 
   /** Issues a device token for an existing principal. Each device gets its own,
    *  so one can later be revoked without signing the others out. */
-  async issueToken(principalId: string, calId: string): Promise<string> {
+  async issueToken(
+    principalId: string,
+    calId: string,
+    identity?: { provider: string; id: string } | null,
+  ): Promise<string> {
     const deviceToken = randomId(32);
-    await this.store.putJSON(this.store.keys.token(hashKey(deviceToken)), { principalId, calId });
+    await this.store.putJSON(this.store.keys.token(hashKey(deviceToken)), {
+      principalId,
+      calId,
+      identityProvider: identity?.provider ?? null,
+      identityId: identity?.id ?? null,
+    });
     return deviceToken;
   }
 }

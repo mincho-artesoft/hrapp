@@ -62,16 +62,16 @@ export class StoreService {
   }
 
   /**
-   * Feeds are written with a short max-age rather than the CDN default because a
-   * calendar client that caches a cancellation for an hour is showing the user a
-   * meeting that no longer exists.
+   * Shared-event recipients poll while the app is active. Revalidation keeps a
+   * CDN or URLSession from serving the previous revision during that poll;
+   * otherwise even the app's 20-second sync can remain stale for another minute.
    */
   async putFeed(key: string, ics: string): Promise<void> {
     await this.s3.send(new PutObjectCommand({
       Bucket: this.bucket, Key: key,
       Body: ics,
       ContentType: 'text/calendar; charset=utf-8',
-      CacheControl: 'max-age=60',
+      CacheControl: 'no-cache, max-age=0, must-revalidate',
     }));
   }
 

@@ -34,7 +34,13 @@ export class PairingService {
     if (rec.status !== 'pending') return result(409, { error: 'pairing code already used' });
     if (Date.now() > rec.expiresAt) return result(410, { error: 'pairing code expired' });
 
-    const webToken = await this.core.issueToken(principal.principalId, principal.calId);
+    const webToken = await this.core.issueToken(
+      principal.principalId,
+      principal.calId,
+      principal.identityId
+        ? { provider: principal.identityProvider, id: principal.identityId }
+        : null,
+    );
     await this.core.grantEntitlement(principal.principalId, 'app', 'pair');
     Object.assign(rec, {
       status: 'approved',
