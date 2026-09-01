@@ -20,9 +20,19 @@ export class StoreService {
   private readonly s3 = new S3Client({});
 
   async getJSON(key: string): Promise<any> {
+    return (await this.getJSONWithETag(key))?.value ?? null;
+  }
+
+  /** Reads the object together with the exact version marker needed for an
+   * optimistic conditional update. */
+  async getJSONWithETag(key: string): Promise<{ value: any; etag: string } | null> {
     try {
       const res = await this.s3.send(new GetObjectCommand({ Bucket: this.bucket, Key: key }));
-      return JSON.parse(await res.Body.transformToString());
+      if (!res.ETag) throw new Error(`S3 returned no ETag for ${key}`);
+      return {
+        value: JSON.parse(await res.Body.transformToString()),
+        etag: res.ETag,
+      };
     } catch (err: any) {
       if (err.name === 'NoSuchKey' || err.$metadata?.httpStatusCode === 404) return null;
       throw err;
@@ -57,6 +67,26 @@ export class StoreService {
       return true;
     } catch (err: any) {
       if (err.name === 'PreconditionFailed' || err.$metadata?.httpStatusCode === 412) return false;
+      throw err;
+    }
+  }
+
+  /** Replaces an object only if nobody changed it after the corresponding
+   * getJSONWithETag read. Callers retry on false, merging the newer value. */
+  async putJSONIfMatch(key: string, value: any, etag: string): Promise<boolean> {
+    try {
+      await this.s3.send(new PutObjectCommand({
+        Bucket: this.bucket, Key: key,
+        Body: JSON.stringify(value),
+        ContentType: 'application/json',
+        IfMatch: etag,
+      }));
+      return true;
+    } catch (err: any) {
+      if (err.name === 'PreconditionFailed'
+          || err.name === 'ConditionalRequestConflict'
+          || err.$metadata?.httpStatusCode === 409
+          || err.$metadata?.httpStatusCode === 412) return false;
       throw err;
     }
   }

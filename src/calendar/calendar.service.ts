@@ -4,6 +4,7 @@ import { CoreService } from '../core/core.service';
 import { ApiResult, result } from '../common/api-result';
 import { randomId, hashKey } from '../util/ids';
 import { verifyAppleIdToken, verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
+import { EmailService } from '../email/email.service';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? null;
 const APPLE_CLIENT_IDS = (process.env.APPLE_CLIENT_IDS ?? 'Deksan.CalendarASD')
@@ -13,7 +14,11 @@ const APPLE_CLIENT_IDS = (process.env.APPLE_CLIENT_IDS ?? 'Deksan.CalendarASD')
 
 @Injectable()
 export class CalendarService {
-  constructor(private readonly store: StoreService, private readonly core: CoreService) {}
+  constructor(
+    private readonly store: StoreService,
+    private readonly core: CoreService,
+    private readonly email: EmailService,
+  ) {}
 
   private get keys() { return this.store.keys; }
 
@@ -168,52 +173,218 @@ export class CalendarService {
   }
 
   async upsertEvent(principal: any, eventId: string, body: any): Promise<ApiResult> {
-    const calId = body.calendarId ?? principal.calId;
+    const receivedFeedId = typeof body.feedId === 'string' ? body.feedId : '';
+    let recipientWriter = false;
+    let calId = body.calendarId ?? principal.calId;
+
+    // A signed-in recipient with Writer access edits the owner's canonical
+    // object. The opaque feed id binds the request to the exact invite; the
+    // private received-invite reference prevents somebody from guessing an
+    // event id and writing to it.
+    if (receivedFeedId) {
+      const ref = await this.store.getJSON(
+        this.keys.receivedInvite(principal.principalId, eventId),
+      );
+      if (!ref || ref.feedId !== receivedFeedId || !ref.ownerCalId) {
+        return result(403, { error: 'this account has not received that event' });
+      }
+      const receivedEvent = await this.store.getJSON(this.keys.event(ref.ownerCalId, eventId));
+      const recipient = (Array.isArray(receivedEvent?.recipients) ? receivedEvent.recipients : [])
+        .find((value: any) => value?.userId === principal.principalId);
+      if (this.recipientAccess(recipient) !== 'writer') {
+        return result(403, { error: 'Reader access cannot edit this event' });
+      }
+      calId = ref.ownerCalId;
+      recipientWriter = true;
+    }
+
     const acl = await this.store.getJSON(this.keys.acl(calId));
     if (!acl) return result(404, { error: 'no such calendar' });
 
     const role = this.core.roleOf(acl, principal.principalId);
-    if (!this.core.CAN_WRITE.has(role)) return result(403, { error: 'not allowed to write' });
-
-    const existing = await this.store.getJSON(this.keys.event(calId, eventId));
-    if (existing && role === 'contributor' && existing.createdBy !== principal.principalId) {
-      return result(403, { error: 'contributors may only edit their own events' });
+    if (!recipientWriter && !this.core.CAN_WRITE.has(role)) {
+      return result(403, { error: 'not allowed to write' });
     }
 
     if (!body.start || !body.end) return result(400, { error: 'start and end are required' });
 
+    let eventUrl: string | null | undefined;
+    if (Object.prototype.hasOwnProperty.call(body, 'url')) {
+      if (body.url == null || body.url === '') {
+        eventUrl = null;
+      } else {
+        const rawUrl = String(body.url);
+        if (rawUrl.length > 1024 || /[\u0000-\u001f\u007f]/.test(rawUrl)) {
+          return result(400, { error: 'url must be up to 1024 characters without control characters' });
+        }
+        // EventKit permits relative/custom URL values. Preserve user-entered
+        // content, but reject schemes reserved for local provider bookkeeping.
+        const scheme = rawUrl.match(/^([A-Za-z][A-Za-z0-9+.-]*):/)?.[1]?.toLowerCase();
+        if (scheme && ['cloudcalendars', 'gcal', 'mscal'].includes(scheme)) {
+          return result(400, { error: 'url uses an internal calendar scheme' });
+        }
+        eventUrl = rawUrl;
+      }
+    }
+    const localEventIdentifier = typeof body.localEventIdentifier === 'string'
+      ? body.localEventIdentifier.slice(0, 512)
+      : undefined;
+    let eventDetails: any | undefined;
+    if (Object.prototype.hasOwnProperty.call(body, 'details')) {
+      if (body.details != null && (typeof body.details !== 'object' || Array.isArray(body.details))) {
+        return result(400, { error: 'details must be an object' });
+      }
+      eventDetails = sanitizeEventDetails(body.details);
+    }
+
     const identities = await this.identitiesFor(principal);
     const primaryIdentity = this.primaryIdentity(principal, identities);
-    const event = {
-      id: eventId,
-      // SEQUENCE must increase on every change or calendar clients treat the
-      // update as a duplicate and keep showing the old time.
-      sequence: existing ? (existing.sequence ?? 0) + 1 : 0,
-      title: body.title ?? existing?.title ?? '',
-      start: body.start,
-      end: body.end,
-      allDay: body.allDay ?? false,
-      location: body.location ?? null,
-      description: body.description ?? null,
-      organizerName: body.organizerName ?? existing?.organizerName ?? null,
-      organizerEmail: body.organizerEmail ?? existing?.organizerEmail ?? null,
-      status: 'confirmed',
-      ownerId: existing?.ownerId ?? principal.principalId,
-      ownerIdentityId: existing?.ownerIdentityId ?? primaryIdentity?.id ?? null,
-      ownerIdentityProvider: existing?.ownerIdentityProvider ?? primaryIdentity?.provider ?? null,
-      ownerIdentityIds: {
-        ...(existing?.ownerIdentityIds ?? {}),
-        ...Object.fromEntries(
-          Object.entries(identities).map(([provider, value]: [string, any]) => [provider, value.id]),
-        ),
-      },
-      createdBy: existing?.createdBy ?? principal.principalId,
-      updatedAt: new Date().toISOString(),
-    };
+    let contributorForbidden = false;
+    let missingReceivedEvent = false;
+    const saved = await this.mutateEvent(calId, eventId, (existing) => {
+      if (!existing && recipientWriter) {
+        missingReceivedEvent = true;
+        return null;
+      }
+      if (existing && !recipientWriter
+          && role === 'contributor' && existing.createdBy !== principal.principalId) {
+        contributorForbidden = true;
+        return null;
+      }
+      return {
+        ...(existing ?? {}),
+        id: eventId,
+        // SEQUENCE must increase on every change or calendar clients treat the
+        // update as a duplicate and keep showing the old time.
+        sequence: existing ? (existing.sequence ?? 0) + 1 : 0,
+        title: body.title ?? existing?.title ?? '',
+        start: body.start,
+        end: body.end,
+        allDay: body.allDay ?? false,
+        location: body.location ?? null,
+        url: eventUrl !== undefined ? eventUrl : (existing?.url ?? null),
+        details: eventDetails !== undefined ? eventDetails : (existing?.details ?? null),
+        // Keep DESCRIPTION populated for older feed consumers while `details`
+        // remains the canonical lossless EventKit representation.
+        description: eventDetails !== undefined
+          ? (eventDetails?.notes ?? null)
+          : (body.description ?? existing?.description ?? null),
+        organizerName: body.organizerName ?? existing?.organizerName ?? null,
+        organizerEmail: body.organizerEmail ?? existing?.organizerEmail ?? null,
+        status: 'confirmed',
+        ownerId: existing?.ownerId ?? principal.principalId,
+        ownerIdentityId: existing?.ownerIdentityId ?? primaryIdentity?.id ?? null,
+        ownerIdentityProvider: existing?.ownerIdentityProvider ?? primaryIdentity?.provider ?? null,
+        ownerIdentityIds: {
+          ...(existing?.ownerIdentityIds ?? {}),
+          ...(recipientWriter ? {} : Object.fromEntries(
+            Object.entries(identities).map(([provider, value]: [string, any]) => [provider, value.id]),
+          )),
+        },
+        createdBy: existing?.createdBy ?? principal.principalId,
+        ownerLocalEventIdentifier:
+          recipientWriter
+            ? existing?.ownerLocalEventIdentifier ?? null
+            : localEventIdentifier ?? existing?.ownerLocalEventIdentifier ?? null,
+        updatedAt: new Date().toISOString(),
+      };
+    });
+    if (!saved && contributorForbidden) {
+      return result(403, { error: 'contributors may only edit their own events' });
+    }
+    if (!saved && missingReceivedEvent) return result(404, { error: 'shared event no longer exists' });
+    if (!saved) return result(409, { error: 'event could not be updated' });
 
-    await this.store.putJSON(this.keys.event(calId, eventId), event);
     await this.core.regenerate(calId, eventId);
-    return result(existing ? 200 : 201, { event });
+    return result(saved.previous ? 200 : 201, { event: saved.event });
+  }
+
+  /** Resolves an opaque scoped feed from an Email/QR URL and renders a small
+   * server-owned landing page. The URL contains a bounded preview so the app's
+   * scanner can import immediately, while this page verifies it against S3 and
+   * builds a full-app deep link from the canonical event. */
+  async eventInvitationLanding(query: any): Promise<{ status: number; html: string }> {
+    const eventId = boundedQueryValue(query?.e, 128);
+    const feedId = boundedQueryValue(query?.c, 128);
+    if (!eventId || !feedId) {
+      return {
+        status: 400,
+        html: eventInvitationErrorPage('Invalid event invitation'),
+      };
+    }
+
+    const feedIndex = await this.store.getJSON(this.keys.feedIndex(feedId));
+    if (!feedIndex?.calId) {
+      return {
+        status: 404,
+        html: eventInvitationErrorPage('This event invitation is no longer available'),
+      };
+    }
+
+    const acl = await this.store.getJSON(this.keys.acl(feedIndex.calId));
+    if (acl?.feeds?.[feedId]?.scope?.eventId !== eventId) {
+      return {
+        status: 404,
+        html: eventInvitationErrorPage('This event invitation is no longer available'),
+      };
+    }
+
+    const event = await this.store.getJSON(this.keys.event(feedIndex.calId, eventId));
+    if (!event) {
+      return {
+        status: 404,
+        html: eventInvitationErrorPage('This event invitation is no longer available'),
+      };
+    }
+
+    const start = new Date(String(event.start ?? ''));
+    const end = new Date(String(event.end ?? ''));
+    if (!Number.isFinite(start.getTime()) || !Number.isFinite(end.getTime())) {
+      return {
+        status: 422,
+        html: eventInvitationErrorPage('This event invitation has invalid dates'),
+      };
+    }
+
+    const timeZone = safeTimeZone(boundedQueryValue(query?.timeZone, 128)) ?? 'UTC';
+    const color = /^#[0-9a-f]{6}$/i.test(boundedQueryValue(query?.color, 16) ?? '')
+      ? String(boundedQueryValue(query?.color, 16))
+      : '#0A84FF';
+    const title = String(event.title ?? 'Shared event').slice(0, 120);
+    const location = event.location == null ? null : String(event.location).slice(0, 160);
+    const eventURL = event.url == null ? null : String(event.url).slice(0, 1024);
+    const isAllDay = Boolean(event.allDay);
+
+    const deepLinkParams = new URLSearchParams({
+      e: eventId,
+      c: feedId,
+      title,
+      start: String(start.getTime() / 1000),
+      end: String(end.getTime() / 1000),
+      allDay: isAllDay ? '1' : '0',
+      timeZone,
+      color,
+    });
+    if (location) deepLinkParams.set('location', location);
+    if (eventURL) deepLinkParams.set('eventURL', eventURL);
+
+    const fullAppURL = `cloudcalendars://shared-event?${deepLinkParams.toString()}`;
+    const feedURL = `https://${this.core.FEED_HOST}/f/${encodeURIComponent(feedId)}.ics`;
+    const when = formatInvitationDate(start, end, timeZone, isAllDay);
+    const cancelled = event.status === 'cancelled';
+
+    return {
+      status: 200,
+      html: eventInvitationPage({
+        title,
+        when,
+        location,
+        color,
+        fullAppURL,
+        feedURL,
+        cancelled,
+      }),
+    };
   }
 
   /** Removes one recovery identity while preserving the stable account and its
@@ -315,7 +486,12 @@ export class CalendarService {
       if (identityBackfilled) {
         await this.store.putJSON(this.keys.event(principal.calId, event.id), event);
       }
-      outgoing.push({ ...event, feedId: feed.feedId });
+      const { ownerLocalEventIdentifier, ...publicEvent } = event;
+      outgoing.push({
+        ...publicEvent,
+        feedId: feed.feedId,
+        localEventIdentifier: ownerLocalEventIdentifier ?? null,
+      });
     }
 
     const receivedKeys = await this.store.listKeys(this.keys.receivedInvites(principal.principalId));
@@ -323,7 +499,25 @@ export class CalendarService {
     const received: any[] = [];
     for (const ref of refs.filter(Boolean)) {
       const event = await this.store.getJSON(this.keys.event(ref.ownerCalId, ref.eventId));
-      if (event) received.push({ ...event, feedId: ref.feedId });
+      if (event) {
+        // A recipient may read the event itself, never the other recipients'
+        // account IDs or email addresses. That list is owner-only metadata.
+        const {
+          recipients,
+          recipientCount,
+          recipientsUpdatedAt,
+          ownerLocalEventIdentifier,
+          ...publicEvent
+        } = event;
+        const recipient = (Array.isArray(event.recipients) ? event.recipients : [])
+          .find((value: any) => value?.userId === principal.principalId);
+        received.push({
+          ...publicEvent,
+          feedId: ref.feedId,
+          localEventIdentifier: ref.localEventIdentifier ?? null,
+          access: this.recipientAccess(recipient),
+        });
+      }
     }
 
     const account = await this.store.getJSON(this.keys.principal(principal.principalId));
@@ -372,6 +566,397 @@ export class CalendarService {
     }));
   }
 
+  private recipientAccess(recipient: any): 'reader' | 'writer' {
+    return recipient?.access === 'writer' ? 'writer' : 'reader';
+  }
+
+  private recipientEmails(recipient: any): string[] {
+    const values = [
+      ...(Array.isArray(recipient?.emails) ? recipient.emails : []),
+      ...(Array.isArray(recipient?.identities)
+        ? recipient.identities.map((identity: any) => identity?.email)
+        : []),
+      recipient?.invitedEmail,
+    ];
+    return [...new Set(values.map(normalizeEmail).filter(Boolean))] as string[];
+  }
+
+  private pendingInvitationEmail(recipient: any): string | null {
+    if (recipient?.userId || recipient?.anonymousId) return null;
+    return normalizeEmail(recipient?.invitedEmail)
+      ?? this.recipientEmails(recipient)[0]
+      ?? null;
+  }
+
+  private recipientId(recipient: any): string {
+    if (recipient?.anonymousId && !recipient?.userId) {
+      return `anonymous:${String(recipient.anonymousId)}`;
+    }
+    if (recipient?.userId) return String(recipient.userId);
+    const email = this.pendingInvitationEmail(recipient);
+    return email ? `invited:${hashKey(email)}` : '';
+  }
+
+  private publicRecipient(recipient: any): any {
+    const isAnonymous = Boolean(recipient?.anonymousId) && !recipient?.userId;
+    const invitationEmail = this.pendingInvitationEmail(recipient);
+    const recipientId = this.recipientId(recipient);
+    return {
+      id: recipientId,
+      userId: recipient?.userId ? String(recipient.userId) : null,
+      isAnonymous,
+      emails: this.recipientEmails(recipient),
+      identities: Array.isArray(recipient?.identities)
+        ? recipient.identities.map((identity: any) => ({
+          provider: String(identity?.provider ?? ''),
+          email: normalizeEmail(identity?.email),
+        })).filter((identity: any) => identity.provider)
+        : [],
+      access: this.recipientAccess(recipient),
+      acceptedAt: recipient?.acceptedAt ?? null,
+      invitedAt: recipient?.invitedAt ?? (invitationEmail ? recipient?.updatedAt ?? null : null),
+      updatedAt: recipient?.updatedAt ?? null,
+    };
+  }
+
+  /** Recipient identities are private event metadata visible only to owner. */
+  async eventRecipients(principal: any, eventId: string): Promise<ApiResult> {
+    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
+    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
+      return result(403, { error: 'only the owner may view event recipients' });
+    }
+    const event = await this.store.getJSON(this.keys.event(principal.calId, eventId));
+    if (!event) return result(404, { error: 'no such event' });
+    const recipients = (Array.isArray(event.recipients) ? event.recipients : [])
+      .map((recipient: any) => this.publicRecipient(recipient));
+    return result(200, { recipients });
+  }
+
+  /** Applies every role change and removal from the owner's Save action in one
+   * optimistic S3 mutation. Removed identities are retained as private revoke
+   * tombstones so an old invitation link cannot silently restore access. */
+  async saveEventRecipientChanges(principal: any, eventId: string, body: any): Promise<ApiResult> {
+    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
+    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
+      return result(403, { error: 'only the owner may change event access' });
+    }
+
+    const rawUpdates = Array.isArray(body.updates) ? body.updates : [];
+    const rawRemovedIds = Array.isArray(body.removedIds) ? body.removedIds : [];
+    if (rawUpdates.length > 1000 || rawRemovedIds.length > 1000) {
+      return result(400, { error: 'too many recipient changes' });
+    }
+    const updates = new Map<string, 'reader' | 'writer'>();
+    for (const raw of rawUpdates) {
+      const id = String(raw?.id ?? '');
+      const access = String(raw?.access ?? '').toLowerCase();
+      if (!id || !['reader', 'writer'].includes(access)) {
+        return result(400, { error: 'every update requires an id and Reader or Writer access' });
+      }
+      updates.set(id, access as 'reader' | 'writer');
+    }
+    const removedIds = new Set<string>(
+      rawRemovedIds
+        .map((value: any) => String(value ?? ''))
+        .filter((value: string) => Boolean(value)),
+    );
+    for (const removedId of removedIds) updates.delete(removedId);
+
+    let missingRecipientId: string | null = null;
+    let removedRecipients: any[] = [];
+    const now = new Date().toISOString();
+    const saved = await this.mutateEvent(principal.calId, eventId, (event) => {
+      if (!event) return null;
+      const recipients = Array.isArray(event.recipients) ? [...event.recipients] : [];
+      const byId = new Map(recipients.map((recipient: any) => [this.recipientId(recipient), recipient]));
+      for (const id of [...updates.keys(), ...removedIds]) {
+        if (!byId.has(id)) {
+          missingRecipientId = id;
+          return null;
+        }
+      }
+
+      removedRecipients = recipients.filter((recipient: any) =>
+        removedIds.has(this.recipientId(recipient)),
+      );
+      const remaining = recipients
+        .filter((recipient: any) => !removedIds.has(this.recipientId(recipient)))
+        .map((recipient: any) => {
+          const access = updates.get(this.recipientId(recipient));
+          return access ? { ...recipient, access, updatedAt: now } : recipient;
+        });
+      const revokedRecipients = [
+        ...(Array.isArray(event.revokedRecipients) ? event.revokedRecipients : []),
+        ...removedRecipients.map((recipient: any) => ({
+          recipientId: this.recipientId(recipient),
+          userId: recipient?.userId ?? null,
+          anonymousId: recipient?.anonymousId ?? null,
+          emails: this.recipientEmails(recipient),
+          revokedAt: now,
+        })),
+      ].slice(-2000);
+      return {
+        ...event,
+        recipients: remaining,
+        recipientCount: remaining.length,
+        revokedRecipients,
+        recipientsUpdatedAt: now,
+      };
+    });
+    if (!saved && missingRecipientId) {
+      return result(409, { error: `recipient ${missingRecipientId} changed; reload and try again` });
+    }
+    if (!saved) return result(404, { error: 'no such event' });
+
+    await Promise.all(removedRecipients
+      .filter((recipient: any) => Boolean(recipient?.userId))
+      .map((recipient: any) => this.store.del(
+        this.keys.receivedInvite(String(recipient.userId), eventId),
+      )));
+
+    return result(200, {
+      recipients: saved.event.recipients.map((recipient: any) => this.publicRecipient(recipient)),
+    });
+  }
+
+  /** Stores e-mail recipients and their event role before acceptance, then
+   * sends the scoped server invitation URL to each address through SES. */
+  async inviteEventRecipients(principal: any, eventId: string, body: any): Promise<ApiResult> {
+    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
+    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
+      return result(403, { error: 'only the owner may invite event recipients' });
+    }
+
+    const rawInvitations = Array.isArray(body.invitations) ? body.invitations : [];
+    if (rawInvitations.length === 0 || rawInvitations.length > 50) {
+      return result(400, { error: 'between 1 and 50 invitations are required' });
+    }
+
+    const invitationByEmail = new Map<string, { email: string; access: 'reader' | 'writer' }>();
+    for (const raw of rawInvitations) {
+      const email = normalizeEmail(raw?.email);
+      const access = String(raw?.access ?? '').toLowerCase();
+      if (!email) return result(400, { error: 'every invitation requires a valid email' });
+      if (!['reader', 'writer'].includes(access)) {
+        return result(400, { error: "access must be 'reader' or 'writer'" });
+      }
+      invitationByEmail.set(email, { email, access: access as 'reader' | 'writer' });
+    }
+    const invitations = [...invitationByEmail.values()];
+
+    const rawEventURL = String(body.eventUrl ?? '');
+    if (!rawEventURL || rawEventURL.length > 8192) {
+      return result(400, { error: 'a valid eventUrl is required' });
+    }
+    let eventURL: URL;
+    try {
+      eventURL = new URL(rawEventURL);
+    } catch {
+      return result(400, { error: 'eventUrl is invalid' });
+    }
+    const feedId = eventURL.searchParams.get('c') ?? '';
+    const isServerInvitation = eventURL.hostname === 'api.cloud-calendars.com'
+      && eventURL.pathname === '/event-invites/open';
+    const isLegacyAppClipInvitation = eventURL.hostname === 'appclip.apple.com'
+      && eventURL.pathname === '/id'
+      && eventURL.searchParams.get('p') === 'Deksan.CalendarASD.Clip';
+    if (eventURL.protocol !== 'https:'
+        || (!isServerInvitation && !isLegacyAppClipInvitation)
+        || eventURL.searchParams.get('e') !== eventId
+        || !feedId) {
+      return result(400, { error: 'eventUrl is not a matching Cloud Calendars invitation link' });
+    }
+    const feedIndex = await this.store.getJSON(this.keys.feedIndex(feedId));
+    if (feedIndex?.calId !== principal.calId
+        || acl?.feeds?.[feedId]?.scope?.eventId !== eventId) {
+      return result(403, { error: 'eventUrl does not belong to this shared event' });
+    }
+
+    const existingEvent = await this.store.getJSON(this.keys.event(principal.calId, eventId));
+    if (!existingEvent) return result(404, { error: 'no such event' });
+    const [ownerAccount, calendarMeta] = await Promise.all([
+      this.store.getJSON(this.keys.principal(principal.principalId)),
+      this.store.getJSON(this.keys.meta(principal.calId)),
+    ]);
+    const ownerIdentities = this.recipientIdentities(ownerAccount);
+    const senderIdentity = ownerIdentities.find((identity) =>
+      identity.provider === principal.identityProvider,
+    ) ?? ownerIdentities[0];
+    const senderEmail = senderIdentity?.email ?? null;
+    const senderName = String(
+      existingEvent.organizerName
+        || calendarMeta?.name
+        || senderEmail
+        || 'Cloud Calendars',
+    ).slice(0, 160);
+
+    const now = new Date().toISOString();
+    let recipientLimitReached = false;
+    const saved = await this.mutateEvent(principal.calId, eventId, (event) => {
+      if (!event) return null;
+      let recipients = Array.isArray(event.recipients) ? [...event.recipients] : [];
+      let revokedRecipients = Array.isArray(event.revokedRecipients)
+        ? [...event.revokedRecipients]
+        : [];
+
+      for (const invitation of invitations) {
+        revokedRecipients = revokedRecipients.filter((revoked: any) => {
+          const revokedEmails = Array.isArray(revoked?.emails)
+            ? revoked.emails.map(normalizeEmail).filter(Boolean)
+            : [];
+          return !revokedEmails.includes(invitation.email);
+        });
+        const acceptedIndex = recipients.findIndex((recipient: any) =>
+          Boolean(recipient?.userId) && this.recipientEmails(recipient).includes(invitation.email),
+        );
+        const pendingIndex = recipients.findIndex((recipient: any) =>
+          this.pendingInvitationEmail(recipient) === invitation.email,
+        );
+
+        if (acceptedIndex >= 0) {
+          recipients[acceptedIndex] = {
+            ...recipients[acceptedIndex],
+            access: invitation.access,
+            invitedAt: recipients[acceptedIndex]?.invitedAt ?? now,
+            invitationSentAt: now,
+            updatedAt: now,
+          };
+          if (pendingIndex >= 0 && pendingIndex !== acceptedIndex) {
+            recipients.splice(pendingIndex, 1);
+          }
+          continue;
+        }
+
+        if (pendingIndex >= 0) {
+          recipients[pendingIndex] = {
+            ...recipients[pendingIndex],
+            invitedEmail: invitation.email,
+            emails: [invitation.email],
+            access: invitation.access,
+            invitationSentAt: now,
+            updatedAt: now,
+          };
+          continue;
+        }
+
+        if (recipients.length >= 1000) {
+          recipientLimitReached = true;
+          return null;
+        }
+        recipients.push({
+          invitationId: hashKey(invitation.email),
+          invitedEmail: invitation.email,
+          emails: [invitation.email],
+          identities: [],
+          access: invitation.access,
+          invitedAt: now,
+          invitationSentAt: now,
+          updatedAt: now,
+        });
+      }
+
+      recipients = recipients.filter((recipient: any) => Boolean(this.recipientId(recipient)));
+      return {
+        ...event,
+        recipients,
+        recipientCount: recipients.length,
+        revokedRecipients,
+        recipientsUpdatedAt: now,
+      };
+    });
+    if (!saved && recipientLimitReached) return result(429, { error: 'recipient limit reached' });
+    if (!saved) return result(404, { error: 'no such event' });
+
+    const timeZone = eventURL.searchParams.get('timeZone') ?? 'UTC';
+    await Promise.all(invitations.map((invitation) => this.email.sendSharedEventInvitation({
+      email: invitation.email,
+      access: invitation.access,
+      event: saved.event,
+      eventUrl: rawEventURL,
+      timeZone,
+      senderName,
+      senderEmail,
+      eventColor: eventURL.searchParams.get('color'),
+    })));
+
+    const invitedEmails = new Set(invitations.map((invitation) => invitation.email));
+    const recipients = saved.event.recipients
+      .filter((recipient: any) => this.recipientEmails(recipient).some((email) => invitedEmails.has(email)))
+      .map((recipient: any) => this.publicRecipient(recipient));
+    return result(201, { recipients, invitedCount: invitations.length });
+  }
+
+  async updateEventRecipientAccess(
+    principal: any,
+    eventId: string,
+    recipientId: string,
+    body: any,
+  ): Promise<ApiResult> {
+    const access = String(body.access ?? '').toLowerCase();
+    if (!['reader', 'writer'].includes(access)) {
+      return result(400, { error: "access must be 'reader' or 'writer'" });
+    }
+    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
+    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
+      return result(403, { error: 'only the owner may change event access' });
+    }
+
+    let missingRecipient = false;
+    const now = new Date().toISOString();
+    const saved = await this.mutateEvent(principal.calId, eventId, (event) => {
+      if (!event) return null;
+      const recipients = Array.isArray(event.recipients) ? [...event.recipients] : [];
+      const index = recipients.findIndex((recipient: any) => this.recipientId(recipient) === recipientId);
+      if (index < 0) {
+        missingRecipient = true;
+        return null;
+      }
+      recipients[index] = { ...recipients[index], access, updatedAt: now };
+      return { ...event, recipients, recipientsUpdatedAt: now };
+    });
+    if (!saved && missingRecipient) return result(404, { error: 'recipient has not accepted this event' });
+    if (!saved) return result(404, { error: 'no such event' });
+    return result(200, { recipient: this.publicRecipient(
+      saved.event.recipients.find((recipient: any) => this.recipientId(recipient) === recipientId),
+    ) });
+  }
+
+  private async mutateEvent(
+    calId: string,
+    eventId: string,
+    mutation: (existing: any | null) => any | null,
+  ): Promise<{ previous: any | null; event: any } | null> {
+    const key = this.keys.event(calId, eventId);
+    for (let attempt = 0; attempt < 10; attempt += 1) {
+      const loaded = await this.store.getJSONWithETag(key);
+      const previous = loaded?.value ?? null;
+      const event = mutation(previous);
+      if (!event) return null;
+      const written = loaded
+        ? await this.store.putJSONIfMatch(key, event, loaded.etag)
+        : await this.store.putJSONIfAbsent(key, event);
+      if (written) return { previous, event };
+    }
+    throw new Error('event changed too many times; retry the request');
+  }
+
+  private recipientIdentities(account: any): Array<{
+    provider: string;
+    identityId: string;
+    email: string;
+  }> {
+    return Object.entries(account?.identities ?? {})
+      .map(([provider, value]: [string, any]) => ({
+        provider,
+        identityId: String(value?.id ?? ''),
+        email: normalizeEmail(value?.email),
+      }))
+      .filter((identity): identity is { provider: string; identityId: string; email: string } =>
+        Boolean(identity.identityId && identity.email),
+      )
+      .sort((a, b) => a.provider.localeCompare(b.provider));
+  }
+
   /** Associates a received scoped feed with the signed-in recipient. */
   async rememberReceivedInvite(principal: any, body: any): Promise<ApiResult> {
     const eventId = String(body.eventId ?? '');
@@ -384,14 +969,234 @@ export class CalendarService {
     const grant = acl?.feeds?.[feedId];
     if (grant?.scope?.eventId !== eventId) return result(403, { error: 'feed is not scoped to this event' });
 
+    const account = await this.store.getJSON(this.keys.principal(principal.principalId));
+    const identities = this.recipientIdentities(account);
+    if (identities.length === 0) {
+      return result(422, {
+        code: 'email_required',
+        error: 'a verified email identity is required to receive shared events',
+      });
+    }
+
+    const sharedEvent = await this.store.getJSON(this.keys.event(feedIndex.calId, eventId));
+    const identityEmails = new Set(identities.map((identity) => identity.email));
+    const accessRevoked = (Array.isArray(sharedEvent?.revokedRecipients)
+      ? sharedEvent.revokedRecipients
+      : []).some((revoked: any) =>
+      revoked?.userId === principal.principalId
+        || (Array.isArray(revoked?.emails)
+          && revoked.emails.map(normalizeEmail).filter(Boolean)
+            .some((email: string) => identityEmails.has(email))),
+    );
+    if (accessRevoked) return result(403, { error: 'event access was removed by the owner' });
+
+    const now = new Date().toISOString();
+    const previousRef = await this.store.getJSON(
+      this.keys.receivedInvite(principal.principalId, eventId),
+    );
+    const localEventIdentifier = typeof body.localEventIdentifier === 'string'
+      ? body.localEventIdentifier.slice(0, 512)
+      : previousRef?.localEventIdentifier ?? null;
     await this.store.putJSON(this.keys.receivedInvite(principal.principalId, eventId), {
-      eventId, feedId, ownerCalId: feedIndex.calId, recordedAt: new Date().toISOString(),
+      eventId,
+      feedId,
+      ownerCalId: feedIndex.calId,
+      localEventIdentifier,
+      recordedAt: previousRef?.recordedAt ?? now,
+      updatedAt: now,
     });
-    return result(201, { remembered: true });
+
+    const saved = await this.mutateEvent(feedIndex.calId, eventId, (event) => {
+      if (!event) return null;
+      const anonymousId = this.anonymousRecipientHash(body.anonymousRecipientId);
+      let recipients = (Array.isArray(event.recipients) ? [...event.recipients] : [])
+        // Signing in upgrades the same installation from an anonymous row to
+        // its verified user row instead of showing the owner two recipients.
+        .filter((value: any) => !anonymousId || value?.anonymousId !== anonymousId);
+      const identityEmails = new Set(identities.map((identity) => identity.email));
+      const matchingInvitations = recipients.filter((value: any) => {
+        const invitedEmail = this.pendingInvitationEmail(value);
+        return invitedEmail != null && identityEmails.has(invitedEmail);
+      });
+      recipients = recipients.filter((value: any) => !matchingInvitations.includes(value));
+      const existingIndex = recipients.findIndex((value: any) =>
+        value?.userId === principal.principalId,
+      );
+      const existing = existingIndex >= 0 ? recipients[existingIndex] : null;
+      const invitedAsWriter = matchingInvitations.some((value: any) =>
+        this.recipientAccess(value) === 'writer',
+      );
+      const recipient = {
+        userId: principal.principalId,
+        emails: [...new Set(identities.map((identity) => identity.email))],
+        identities,
+        access: invitedAsWriter ? 'writer' : this.recipientAccess(existing ?? matchingInvitations[0]),
+        invitedAt: existing?.invitedAt
+          ?? matchingInvitations.map((value: any) => value?.invitedAt).filter(Boolean).sort()[0]
+          ?? null,
+        acceptedAt: existing?.acceptedAt ?? now,
+        updatedAt: now,
+      };
+      if (existingIndex >= 0) recipients[existingIndex] = recipient;
+      else recipients.push(recipient);
+      recipients.sort((a: any, b: any) => String(a.userId).localeCompare(String(b.userId)));
+      return {
+        ...event,
+        recipients,
+        recipientCount: recipients.length,
+        recipientsUpdatedAt: now,
+      };
+    });
+    if (!saved) return result(404, { error: 'shared event no longer exists' });
+    const recipient = saved.event.recipients.find(
+      (value: any) => value?.userId === principal.principalId,
+    );
+    return result(201, {
+      remembered: true,
+      recipientCount: saved.event.recipientCount,
+      access: this.recipientAccess(recipient),
+    });
+  }
+
+  private anonymousRecipientHash(value: unknown): string | null {
+    const raw = String(value ?? '').trim();
+    if (!/^[A-Za-z0-9-]{16,128}$/.test(raw)) return null;
+    return hashKey(raw);
+  }
+
+  private async scopedEventForFeed(eventId: string, feedId: string): Promise<any | null> {
+    const feedIndex = await this.store.getJSON(this.keys.feedIndex(feedId));
+    if (!feedIndex) return null;
+    const acl = await this.store.getJSON(this.keys.acl(feedIndex.calId));
+    if (acl?.feeds?.[feedId]?.scope?.eventId !== eventId) return null;
+    return feedIndex;
+  }
+
+  /** Anonymous acceptance is intentionally Reader-only. The installation id
+   * is hashed before storage and cannot be used to recover an account. */
+  async rememberAnonymousReceivedInvite(body: any): Promise<ApiResult> {
+    const eventId = String(body.eventId ?? '');
+    const feedId = String(body.feedId ?? '');
+    const anonymousId = this.anonymousRecipientHash(body.anonymousRecipientId);
+    if (!eventId || !feedId || !anonymousId) {
+      return result(400, { error: 'eventId, feedId and anonymousRecipientId are required' });
+    }
+    const feedIndex = await this.scopedEventForFeed(eventId, feedId);
+    if (!feedIndex) return result(403, { error: 'feed is not scoped to this event' });
+
+    const now = new Date().toISOString();
+    let recipientLimitReached = false;
+    let accessRevoked = false;
+    const saved = await this.mutateEvent(feedIndex.calId, eventId, (event) => {
+      if (!event) return null;
+      if ((Array.isArray(event.revokedRecipients) ? event.revokedRecipients : [])
+        .some((value: any) => value?.anonymousId === anonymousId)) {
+        accessRevoked = true;
+        return null;
+      }
+      const recipients = Array.isArray(event.recipients) ? [...event.recipients] : [];
+      const index = recipients.findIndex((value: any) => value?.anonymousId === anonymousId);
+      if (index < 0 && recipients.length >= 1000) {
+        recipientLimitReached = true;
+        return null;
+      }
+      const recipient = {
+        anonymousId,
+        access: 'reader',
+        acceptedAt: index >= 0 ? recipients[index]?.acceptedAt ?? now : now,
+        updatedAt: now,
+      };
+      if (index >= 0) recipients[index] = recipient;
+      else recipients.push(recipient);
+      return {
+        ...event,
+        recipients,
+        recipientCount: recipients.length,
+        recipientsUpdatedAt: now,
+      };
+    });
+    if (!saved && accessRevoked) return result(403, { error: 'event access was removed by the owner' });
+    if (!saved && recipientLimitReached) return result(429, { error: 'recipient limit reached' });
+    if (!saved) return result(404, { error: 'shared event no longer exists' });
+    return result(201, {
+      remembered: true,
+      recipientCount: saved.event.recipientCount,
+      access: 'reader',
+    });
+  }
+
+  async forgetAnonymousReceivedInvite(body: any): Promise<ApiResult> {
+    const eventId = String(body.eventId ?? '');
+    const feedId = String(body.feedId ?? '');
+    const anonymousId = this.anonymousRecipientHash(body.anonymousRecipientId);
+    if (!eventId || !feedId || !anonymousId) {
+      return result(400, { error: 'eventId, feedId and anonymousRecipientId are required' });
+    }
+    const feedIndex = await this.scopedEventForFeed(eventId, feedId);
+    if (!feedIndex) return result(403, { error: 'feed is not scoped to this event' });
+    const now = new Date().toISOString();
+    await this.mutateEvent(feedIndex.calId, eventId, (event) => {
+      if (!event) return null;
+      const recipients = (Array.isArray(event.recipients) ? event.recipients : [])
+        .filter((value: any) => value?.anonymousId !== anonymousId);
+      return {
+        ...event,
+        recipients,
+        recipientCount: recipients.length,
+        recipientsUpdatedAt: now,
+      };
+    });
+    return result(200, { forgotten: true });
+  }
+
+  async anonymousReceivedInviteAccess(body: any): Promise<ApiResult> {
+    const eventId = String(body.eventId ?? '');
+    const feedId = String(body.feedId ?? '');
+    const anonymousId = this.anonymousRecipientHash(body.anonymousRecipientId);
+    if (!eventId || !feedId || !anonymousId) {
+      return result(400, { error: 'eventId, feedId and anonymousRecipientId are required' });
+    }
+    const feedIndex = await this.scopedEventForFeed(eventId, feedId);
+    if (!feedIndex) return result(403, { error: 'feed is not scoped to this event' });
+    const event = await this.store.getJSON(this.keys.event(feedIndex.calId, eventId));
+    if (!event) return result(404, { error: 'shared event no longer exists' });
+    const recipient = (Array.isArray(event.recipients) ? event.recipients : [])
+      .find((value: any) => value?.anonymousId === anonymousId);
+    if (!recipient) return result(404, { error: 'anonymous event access was removed' });
+    return result(200, { access: 'reader' });
+  }
+
+  async receivedInviteAccess(principal: any, eventId: string): Promise<ApiResult> {
+    const ref = await this.store.getJSON(
+      this.keys.receivedInvite(principal.principalId, eventId),
+    );
+    if (!ref?.ownerCalId) return result(404, { error: 'received event is not registered' });
+    const event = await this.store.getJSON(this.keys.event(ref.ownerCalId, eventId));
+    if (!event) return result(404, { error: 'shared event no longer exists' });
+    const recipient = (Array.isArray(event.recipients) ? event.recipients : [])
+      .find((value: any) => value?.userId === principal.principalId);
+    if (!recipient) return result(404, { error: 'recipient is no longer registered' });
+    return result(200, { access: this.recipientAccess(recipient) });
   }
 
   async forgetReceivedInvite(principal: any, eventId: string): Promise<ApiResult> {
-    await this.store.del(this.keys.receivedInvite(principal.principalId, eventId));
+    const refKey = this.keys.receivedInvite(principal.principalId, eventId);
+    const ref = await this.store.getJSON(refKey);
+    if (ref?.ownerCalId) {
+      const now = new Date().toISOString();
+      await this.mutateEvent(ref.ownerCalId, eventId, (event) => {
+        if (!event) return null;
+        const recipients = (Array.isArray(event.recipients) ? event.recipients : [])
+          .filter((value: any) => value?.userId !== principal.principalId);
+        return {
+          ...event,
+          recipients,
+          recipientCount: recipients.length,
+          recipientsUpdatedAt: now,
+        };
+      });
+    }
+    await this.store.del(refKey);
     return result(200, { forgotten: true });
   }
 
@@ -401,16 +1206,15 @@ export class CalendarService {
     if (!acl) return result(404, { error: 'no such calendar' });
     if (!this.core.CAN_WRITE.has(this.core.roleOf(acl, principal.principalId))) return result(403, { error: 'not allowed' });
 
-    const existing = await this.store.getJSON(this.keys.event(calId, eventId));
-    if (!existing) return result(404, { error: 'no such event' });
-
-    existing.status = 'cancelled';
-    existing.sequence = (existing.sequence ?? 0) + 1;
-    existing.updatedAt = new Date().toISOString();
-
-    await this.store.putJSON(this.keys.event(calId, eventId), existing);
+    const saved = await this.mutateEvent(calId, eventId, (existing) => existing ? {
+      ...existing,
+      status: 'cancelled',
+      sequence: (existing.sequence ?? 0) + 1,
+      updatedAt: new Date().toISOString(),
+    } : null);
+    if (!saved) return result(404, { error: 'no such event' });
     await this.core.regenerate(calId, eventId);
-    return result(200, { event: existing });
+    return result(200, { event: saved.event });
   }
 
   async createGrant(principal: any, body: any): Promise<ApiResult> {
@@ -494,4 +1298,214 @@ function normalizeEmail(value: unknown): string | null {
   if (!email || email.length > 320) return null;
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
   return email;
+}
+
+function boundedQueryValue(value: unknown, maximumLength: number): string | null {
+  const candidate = Array.isArray(value) ? value[0] : value;
+  if (typeof candidate !== 'string') return null;
+  const normalized = candidate.trim();
+  if (!normalized || normalized.length > maximumLength) return null;
+  if (/[\u0000-\u001f\u007f]/.test(normalized)) return null;
+  return normalized;
+}
+
+function safeTimeZone(value: string | null): string | null {
+  if (!value) return null;
+  try {
+    new Intl.DateTimeFormat('en-US', { timeZone: value }).format(new Date());
+    return value;
+  } catch {
+    return null;
+  }
+}
+
+function formatInvitationDate(
+  start: Date,
+  end: Date,
+  timeZone: string,
+  isAllDay: boolean,
+): string {
+  const options: Intl.DateTimeFormatOptions = isAllDay
+    ? { dateStyle: 'full', timeZone }
+    : { dateStyle: 'full', timeStyle: 'short', timeZone };
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  try {
+    return formatter.formatRange(start, end);
+  } catch {
+    return `${formatter.format(start)} – ${formatter.format(end)}`;
+  }
+}
+
+function escapeHTML(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function eventInvitationDocument(content: string, title: string): string {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src https: data:; base-uri 'none'; form-action 'none'" />
+  <title>${escapeHTML(title)} · Cloud Calendars</title>
+  <style>
+    :root { color-scheme: dark; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background:linear-gradient(145deg,#061a33,#0b4d7a); color:#fff; }
+    main { width:min(100%,560px); }
+    .brand { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:24px; font-weight:750; }
+    .brand span:first-child { display:grid; place-items:center; width:42px; height:42px; border-radius:12px; background:#147ee8; font-size:24px; }
+    .card { padding:28px; border:1px solid rgba(255,255,255,.16); border-radius:28px; background:rgba(255,255,255,.10); box-shadow:0 24px 70px rgba(0,0,0,.25); backdrop-filter:blur(16px); }
+    h1 { margin:0 0 10px; font-size:clamp(26px,7vw,38px); line-height:1.08; overflow-wrap:anywhere; }
+    p { margin:0; color:rgba(255,255,255,.72); line-height:1.5; }
+    .details { margin:24px 0; padding:18px; border-left:4px solid var(--event-color,#0A84FF); border-radius:14px; background:rgba(0,0,0,.16); }
+    .detail { display:flex; gap:10px; margin:8px 0; color:rgba(255,255,255,.88); }
+    .actions { display:grid; gap:12px; }
+    a { display:block; padding:15px 18px; border-radius:999px; text-align:center; text-decoration:none; font-weight:750; }
+    .primary { background:#fff; color:#07335a; }
+    .secondary { border:1px solid rgba(255,255,255,.32); color:#fff; }
+    .hint { margin-top:18px; text-align:center; font-size:13px; }
+    .cancelled { display:inline-block; margin-bottom:14px; padding:6px 10px; border-radius:999px; background:#ff453a; font-weight:750; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand"><span>🗓</span><span>Cloud Calendars</span></div>
+    ${content}
+  </main>
+</body>
+</html>`;
+}
+
+function eventInvitationErrorPage(message: string): string {
+  return eventInvitationDocument(`
+    <section class="card">
+      <h1>${escapeHTML(message)}</h1>
+      <p>Ask the sender for a new event link.</p>
+    </section>`, message);
+}
+
+function eventInvitationPage(input: {
+  title: string;
+  when: string;
+  location: string | null;
+  color: string;
+  fullAppURL: string;
+  feedURL: string;
+  cancelled: boolean;
+}): string {
+  const location = input.location
+    ? `<div class="detail"><span>📍</span><span>${escapeHTML(input.location)}</span></div>`
+    : '';
+  const cancelled = input.cancelled ? '<div class="cancelled">Cancelled</div>' : '';
+  return eventInvitationDocument(`
+    <section class="card" style="--event-color:${escapeHTML(input.color)}">
+      ${cancelled}
+      <h1>${escapeHTML(input.title)}</h1>
+      <p>Shared with you through Cloud Calendars.</p>
+      <div class="details">
+        <div class="detail"><span>🗓</span><span>${escapeHTML(input.when)}</span></div>
+        ${location}
+      </div>
+      <div class="actions">
+        <a class="primary" href="${escapeHTML(input.fullAppURL)}">Open in Cloud Calendars</a>
+        <a class="secondary" href="${escapeHTML(input.feedURL)}">Download calendar event</a>
+      </div>
+      <p class="hint">This link opens the full app. It does not use the App Clip.</p>
+    </section>`, input.title);
+}
+
+/** Bounded, JSON-only copy of the portable EventKit fields. Feed URLs are
+ * capabilities, so even authenticated owner input must not be allowed to grow
+ * an S3 object without limit or inject arbitrary structures into recipients. */
+function sanitizeEventDetails(value: any): any {
+  if (!value) return null;
+
+  const text = (input: unknown, max: number): string | null => {
+    if (typeof input !== 'string') return null;
+    return input.slice(0, max);
+  };
+  const integer = (input: unknown, fallback = 0): number =>
+    Number.isSafeInteger(input) ? Number(input) : fallback;
+  const integerList = (input: unknown, max = 64): number[] | null =>
+    Array.isArray(input)
+      ? input.filter(Number.isSafeInteger).slice(0, max).map(Number)
+      : null;
+  const participant = (input: any): any | null => {
+    if (!input || typeof input !== 'object' || Array.isArray(input)) return null;
+    return {
+      name: text(input.name, 512),
+      email: normalizeEmail(input.email),
+      role: integer(input.role),
+      type: integer(input.type),
+      status: integer(input.status),
+      isCurrentUser: Boolean(input.isCurrentUser),
+    };
+  };
+
+  const structured = value.structuredLocation;
+  const latitude = typeof structured?.latitude === 'number' ? structured.latitude : Number.NaN;
+  const longitude = typeof structured?.longitude === 'number' ? structured.longitude : Number.NaN;
+  const radius = typeof structured?.radius === 'number' ? structured.radius : Number.NaN;
+  const structuredLocation = structured && typeof structured === 'object' && !Array.isArray(structured)
+    ? {
+      title: text(structured.title, 1024) ?? '',
+      latitude: Number.isFinite(latitude) && latitude >= -90 && latitude <= 90 ? latitude : null,
+      longitude: Number.isFinite(longitude) && longitude >= -180 && longitude <= 180 ? longitude : null,
+      radius: Number.isFinite(radius) && radius >= 0 ? Math.min(radius, 10000000) : 0,
+    }
+    : null;
+
+  const alarms = Array.isArray(value.alarms) ? value.alarms.slice(0, 32).map((alarm: any) => {
+    const relative = typeof alarm?.relativeOffset === 'number'
+      ? alarm.relativeOffset
+      : Number.NaN;
+    const absolute = text(alarm?.absoluteDate, 64);
+    return {
+      relativeOffset: Number.isFinite(relative) ? relative : null,
+      absoluteDate: absolute && !Number.isNaN(Date.parse(absolute)) ? absolute : null,
+    };
+  }).filter((alarm: any) => alarm.relativeOffset != null || alarm.absoluteDate != null) : [];
+
+  const recurrenceRules = Array.isArray(value.recurrenceRules)
+    ? value.recurrenceRules.slice(0, 8).map((rule: any) => ({
+      frequency: Math.max(0, Math.min(3, integer(rule?.frequency))),
+      interval: Math.max(1, Math.min(1000, integer(rule?.interval, 1))),
+      daysOfTheWeek: Array.isArray(rule?.daysOfTheWeek)
+        ? rule.daysOfTheWeek.slice(0, 32).map((day: any) => ({
+          weekday: Math.max(1, Math.min(7, integer(day?.weekday, 1))),
+          weekNumber: Math.max(-53, Math.min(53, integer(day?.weekNumber))),
+        }))
+        : null,
+      daysOfTheMonth: integerList(rule?.daysOfTheMonth),
+      monthsOfTheYear: integerList(rule?.monthsOfTheYear),
+      weeksOfTheYear: integerList(rule?.weeksOfTheYear),
+      daysOfTheYear: integerList(rule?.daysOfTheYear),
+      setPositions: integerList(rule?.setPositions),
+      endDate: typeof rule?.endDate === 'string' && !Number.isNaN(Date.parse(rule.endDate))
+        ? rule.endDate.slice(0, 64)
+        : null,
+      occurrenceCount: Number.isSafeInteger(rule?.occurrenceCount) && rule.occurrenceCount > 0
+        ? Math.min(rule.occurrenceCount, 100000)
+        : null,
+    }))
+    : [];
+
+  return {
+    notes: text(value.notes, 20000),
+    timeZone: text(value.timeZone, 128),
+    availability: Math.max(-1, Math.min(3, integer(value.availability))),
+    alarms,
+    recurrenceRules,
+    structuredLocation,
+    organizer: participant(value.organizer),
+    attendees: Array.isArray(value.attendees)
+      ? value.attendees.slice(0, 250).map(participant).filter(Boolean)
+      : [],
+  };
 }

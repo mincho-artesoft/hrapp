@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2';
+import { Attachment, SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2';
+import QRCode from 'qrcode';
+
+const PNGJS: any = require('pngjs');
 
 /**
  * Booking e-mails: confirmation, reschedule, cancellation, and the passwordless
@@ -23,7 +26,12 @@ export class EmailService {
     return Boolean(this.EMAIL_FROM);
   }
 
-  private async sendEmail(to: string, subject: string, html: string): Promise<void> {
+  private async sendEmail(
+    to: string,
+    subject: string,
+    html: string,
+    options: { attachments?: Attachment[]; replyTo?: string | null } = {},
+  ): Promise<void> {
     if (!this.ses || !this.EMAIL_FROM) {
       console.log(`[email skipped — not configured] "${subject}" → ${to}`);
       return;
@@ -33,10 +41,12 @@ export class EmailService {
         new SendEmailCommand({
           FromEmailAddress: this.EMAIL_FROM,
           Destination: { ToAddresses: [to] },
+          ReplyToAddresses: options.replyTo ? [options.replyTo] : undefined,
           Content: {
             Simple: {
               Subject: { Data: subject, Charset: 'UTF-8' },
               Body: { Html: { Data: html, Charset: 'UTF-8' } },
+              Attachments: options.attachments?.length ? options.attachments : undefined,
             },
           },
         }),
@@ -58,6 +68,33 @@ export class EmailService {
       return `${date} · ${t(startISO)}–${t(endISO)} (${tz})`;
     } catch {
       return `${startISO} – ${endISO}`;
+    }
+  }
+
+  private fmtAppClipEvent(
+    startISO: string,
+    endISO: string,
+    timeZone?: string,
+    isAllDay = false,
+  ): { date: string; time: string | null } {
+    const tz = timeZone || 'UTC';
+    try {
+      const date = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      }).format(new Date(startISO));
+      if (isAllDay) return { date, time: null };
+      const formatTime = (iso: string) => new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+        hour: 'numeric',
+        minute: '2-digit',
+      }).format(new Date(iso));
+      return { date, time: `${formatTime(startISO)} – ${formatTime(endISO)}` };
+    } catch {
+      return { date: startISO, time: isAllDay ? null : `${startISO} – ${endISO}` };
     }
   }
 
@@ -86,8 +123,8 @@ export class EmailService {
     return `<a href="${this.esc(href)}" style="display:inline-block;background:${this.ACCENT};color:#ffffff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 30px;border-radius:999px;">${this.esc(label)}</a>`;
   }
 
-  private detailRow(icon: string, text: string): string {
-    return `<div style="margin-top:8px;color:#cdd9f2;font-size:14px;">${icon}&nbsp;&nbsp;${this.esc(text)}</div>`;
+  private detailRow(icon: string, text: string, color = '#cdd9f2'): string {
+    return `<div style="margin-top:8px;color:${color};font-size:14px;">${icon}&nbsp;&nbsp;${this.esc(text)}</div>`;
   }
 
   /** The event, drawn like the App Clip's card: a tinted panel with an accent bar. */
@@ -101,6 +138,114 @@ export class EmailService {
       </td>
     </tr>
   </table>`;
+  }
+
+  private appClipEventBlock({ title, date, time, location, eventColor }: any): string {
+    const color = this.validEventColor(eventColor);
+    const red = Number.parseInt(color.slice(1, 3), 16);
+    const green = Number.parseInt(color.slice(3, 5), 16);
+    const blue = Number.parseInt(color.slice(5, 7), 16);
+    const tint = `rgba(${red},${green},${blue},0.30)`;
+    const icon = (name: string, alt: string) => `<img src="cid:shared-event-${name}" width="14" height="14" alt="${alt}" style="display:inline-block;width:14px;height:14px;margin:0 7px 0 0;vertical-align:-2px;border:0;" />`;
+    const detail = (iconName: string, iconAlt: string, value: string) => `<div style="margin-top:7px;color:${color};font-size:14px;font-weight:600;line-height:18px;">
+      ${icon(iconName, iconAlt)}${this.esc(value)}
+    </div>`;
+    return `<div style="margin:0 4px 10px;color:rgba(255,255,255,0.72);font-size:13px;font-weight:600;line-height:18px;">
+      ${icon('calendar', 'Date')}${this.esc(date)}
+    </div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${tint};border-radius:5px;">
+    <tr>
+      <td width="3" style="width:3px;background:${color};border-radius:5px 0 0 5px;font-size:0;line-height:0;">&nbsp;</td>
+      <td style="padding:6px 8px;color:${color};">
+        <div style="font-weight:700;font-size:16px;line-height:20px;color:${color};">${this.esc(title)}</div>
+        ${time ? detail('clock', 'Time', time) : ''}
+        ${location ? detail('location', 'Location', location) : ''}
+      </td>
+    </tr>
+  </table>`;
+  }
+
+  private validEventColor(value: unknown): string {
+    const color = String(value ?? '');
+    return /^#[0-9a-fA-F]{6}$/.test(color) ? color.toUpperCase() : this.ACCENT;
+  }
+
+  /** Small raster equivalents of the App Clip's SF Symbols. CID-hosted PNGs
+   * render consistently in Gmail, unlike Unicode clock/location glyphs. */
+  private invitationIconPng(
+    kind: 'calendar' | 'clock' | 'location',
+    requestedColor: string,
+  ): Buffer {
+    const size = 40;
+    const png = new PNGJS.PNG({ width: size, height: size, colorType: 6 });
+    const color = this.validEventColor(requestedColor);
+    const red = Number.parseInt(color.slice(1, 3), 16);
+    const green = Number.parseInt(color.slice(3, 5), 16);
+    const blue = Number.parseInt(color.slice(5, 7), 16);
+
+    const pixel = (x: number, y: number, alpha = 255) => {
+      const px = Math.round(x);
+      const py = Math.round(y);
+      if (px < 0 || py < 0 || px >= size || py >= size) return;
+      const offset = (py * size + px) * 4;
+      png.data[offset] = red;
+      png.data[offset + 1] = green;
+      png.data[offset + 2] = blue;
+      png.data[offset + 3] = Math.max(png.data[offset + 3], alpha);
+    };
+    const brush = (x: number, y: number, radius = 2) => {
+      for (let dy = -radius; dy <= radius; dy += 1) {
+        for (let dx = -radius; dx <= radius; dx += 1) {
+          if ((dx * dx) + (dy * dy) <= radius * radius) pixel(x + dx, y + dy);
+        }
+      }
+    };
+    const line = (x1: number, y1: number, x2: number, y2: number, radius = 2) => {
+      const steps = Math.max(Math.abs(x2 - x1), Math.abs(y2 - y1)) * 2;
+      for (let step = 0; step <= steps; step += 1) {
+        const progress = steps === 0 ? 0 : step / steps;
+        brush(x1 + ((x2 - x1) * progress), y1 + ((y2 - y1) * progress), radius);
+      }
+    };
+    const circle = (centerX: number, centerY: number, radius: number, stroke = 2) => {
+      for (let degree = 0; degree < 360; degree += 1) {
+        const angle = degree * Math.PI / 180;
+        brush(
+          centerX + (Math.cos(angle) * radius),
+          centerY + (Math.sin(angle) * radius),
+          stroke,
+        );
+      }
+    };
+
+    if (kind === 'clock') {
+      circle(20, 20, 13, 2);
+      line(20, 20, 20, 11, 2);
+      line(20, 20, 27, 20, 2);
+      brush(20, 20, 2);
+    } else if (kind === 'location') {
+      line(6, 18, 34, 6, 2);
+      line(34, 6, 22, 34, 2);
+      line(22, 34, 18, 23, 2);
+      line(18, 23, 6, 18, 2);
+      line(18, 23, 34, 6, 2);
+    } else {
+      line(8, 10, 32, 10, 2);
+      line(32, 10, 32, 33, 2);
+      line(32, 33, 8, 33, 2);
+      line(8, 33, 8, 10, 2);
+      line(8, 16, 32, 16, 2);
+      line(14, 6, 14, 12, 2);
+      line(26, 6, 26, 12, 2);
+      brush(14, 22, 2);
+      brush(20, 22, 2);
+      brush(26, 22, 2);
+      brush(14, 28, 2);
+      brush(20, 28, 2);
+      brush(26, 28, 2);
+    }
+
+    return PNGJS.PNG.sync.write(png);
   }
 
   private inviteeHtml(kind: string, { title, when, location, manageUrl, webcal, by }: any): string {
@@ -213,6 +358,104 @@ export class EmailService {
     await this.sendEmail(
       email, subj,
       this.registrationHtml(kind, { title: event.title, when, location: event.location ?? null, webcal, manageUrl }),
+    );
+  }
+
+  /** Sends an owner-created App Clip event invitation. The recipient role is
+   * already stored on the canonical S3 event before this method is called. */
+  async sendSharedEventInvitation({
+    email,
+    access,
+    event,
+    eventUrl,
+    timeZone,
+    senderName,
+    senderEmail,
+    eventColor,
+  }: any): Promise<void> {
+    const eventDateTime = this.fmtAppClipEvent(
+      event.start,
+      event.end,
+      timeZone,
+      Boolean(event.allDay),
+    );
+    const role = access === 'writer' ? 'Writer' : 'Reader';
+    const fromName = String(senderName || senderEmail || 'Cloud Calendars');
+    const fromLine = senderEmail
+      ? `${this.esc(fromName)} &lt;<a href="mailto:${this.esc(senderEmail)}" style="color:${this.ACCENT};text-decoration:none;">${this.esc(senderEmail)}</a>&gt;`
+      : this.esc(fromName);
+    const permission = access === 'writer'
+      ? 'You can edit this event after signing in with this e-mail address.'
+      : 'You can view this event and keep it synchronized.';
+    const color = this.validEventColor(eventColor);
+    const calendarIcon = this.invitationIconPng('calendar', '#CDD9F2');
+    const clockIcon = this.invitationIconPng('clock', color);
+    const locationIcon = this.invitationIconPng('location', color);
+    let qrImage: Buffer | null = null;
+    try {
+      qrImage = await QRCode.toBuffer(eventUrl, {
+        type: 'png',
+        width: 300,
+        margin: 2,
+        errorCorrectionLevel: 'M',
+        color: { dark: '#08213FFF', light: '#FFFFFFFF' },
+      });
+    } catch (err: any) {
+      console.error(`[QR generation failed] ${err?.message ?? err}`);
+    }
+    const qrBlock = qrImage
+      ? `<div style="margin:24px auto 0;text-align:center;">
+          <div style="display:inline-block;background:#ffffff;padding:14px;border-radius:18px;">
+            <img src="cid:shared-event-qr" width="240" height="240" alt="QR code to open the event" style="display:block;width:240px;height:240px;" />
+          </div>
+          <p style="margin:10px 0 0;color:rgba(255,255,255,0.62);font-size:13px;">Scan with Cloud Calendars</p>
+        </div>`
+      : '';
+    const body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">Event invitation</h1>
+    <p style="margin:0 auto 8px;max-width:44ch;color:rgba(255,255,255,0.78);font-size:15px;text-align:center;">From <strong style="color:#ffffff;">${fromLine}</strong></p>
+    <p style="margin:0 auto 22px;max-width:40ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">You were invited as <strong style="color:#ffffff;">${role}</strong>. ${permission}</p>
+    ${this.appClipEventBlock({
+      title: event.title,
+      date: eventDateTime.date,
+      time: eventDateTime.time,
+      location: event.location,
+      eventColor: color,
+    })}
+    <div style="text-align:center;margin:24px 0 0;">${this.button(eventUrl, 'Open event')}</div>
+    ${qrBlock}
+    <p style="margin:16px 0 0;text-align:center;color:rgba(255,255,255,0.48);font-size:12px;">Sign in with ${this.esc(email)} to use the assigned access.</p>`;
+    const inlineIcon = (
+      rawContent: Buffer,
+      fileName: string,
+      contentId: string,
+      description: string,
+    ): Attachment => ({
+      RawContent: rawContent,
+      ContentDisposition: 'INLINE',
+      FileName: fileName,
+      ContentId: contentId,
+      ContentDescription: description,
+      ContentTransferEncoding: 'BASE64',
+      ContentType: 'image/png',
+    });
+    const attachments: Attachment[] = [
+      inlineIcon(calendarIcon, 'event-calendar.png', 'shared-event-calendar', 'Event date'),
+      inlineIcon(clockIcon, 'event-clock.png', 'shared-event-clock', 'Event time'),
+      inlineIcon(locationIcon, 'event-location.png', 'shared-event-location', 'Event location'),
+    ];
+    if (qrImage) {
+      attachments.push(inlineIcon(
+        qrImage,
+        'cloud-calendars-event-qr.png',
+        'shared-event-qr',
+        'Cloud Calendars event QR code',
+      ));
+    }
+    await this.sendEmail(
+      email,
+      `${fromName} invited you: ${event.title}`,
+      this.shell(body),
+      { attachments, replyTo: senderEmail },
     );
   }
 

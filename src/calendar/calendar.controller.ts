@@ -31,6 +31,57 @@ export class CalendarController {
     return reply(res, await this.svc.cancelEvent(req.principal, id, query ?? {}));
   }
 
+  /** Public landing page used by Email and QR sharing. It deliberately opens
+   * the full Cloud Calendars app and never invokes the App Clip. */
+  @Get('event-invites/open')
+  async eventInvitationLanding(@Query() query: any, @Res() res: Response) {
+    const page = await this.svc.eventInvitationLanding(query ?? {});
+    res.status(page.status).type('html').send(page.html);
+  }
+
+  @Get('events/:id/recipients')
+  @UseGuards(AuthGuard)
+  async eventRecipients(@Req() req: any, @Param('id') id: string, @Res({ passthrough: true }) res: Response) {
+    return reply(res, await this.svc.eventRecipients(req.principal, id));
+  }
+
+  @Put('events/:id/recipients')
+  @UseGuards(AuthGuard)
+  async saveEventRecipientChanges(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.saveEventRecipientChanges(req.principal, id, body ?? {}));
+  }
+
+  @Post('events/:id/invitations')
+  @UseGuards(AuthGuard)
+  async inviteEventRecipients(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.inviteEventRecipients(req.principal, id, body ?? {}));
+  }
+
+  @Put('events/:id/recipients/:userId')
+  @UseGuards(AuthGuard)
+  async updateEventRecipientAccess(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Param('userId') recipientId: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(
+      res,
+      await this.svc.updateEventRecipientAccess(req.principal, id, recipientId, body ?? {}),
+    );
+  }
+
   @Get('shared-state')
   @UseGuards(AuthGuard)
   async sharedState(@Req() req: any, @Res({ passthrough: true }) res: Response) {
@@ -53,10 +104,44 @@ export class CalendarController {
     return reply(res, await this.svc.rememberReceivedInvite(req.principal, body ?? {}));
   }
 
+  @Post('received-invites/anonymous')
+  async rememberAnonymousReceivedInvite(
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.rememberAnonymousReceivedInvite(body ?? {}));
+  }
+
+  @Post('received-invites/anonymous/forget')
+  async forgetAnonymousReceivedInvite(
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.forgetAnonymousReceivedInvite(body ?? {}));
+  }
+
+  @Post('received-invites/anonymous/access')
+  async anonymousReceivedInviteAccess(
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.anonymousReceivedInviteAccess(body ?? {}));
+  }
+
   @Delete('received-invites/:eventId')
   @UseGuards(AuthGuard)
   async forgetReceivedInvite(@Req() req: any, @Param('eventId') eventId: string, @Res({ passthrough: true }) res: Response) {
     return reply(res, await this.svc.forgetReceivedInvite(req.principal, eventId));
+  }
+
+  @Get('received-invites/:eventId/access')
+  @UseGuards(AuthGuard)
+  async receivedInviteAccess(
+    @Req() req: any,
+    @Param('eventId') eventId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.receivedInviteAccess(req.principal, eventId));
   }
 
   @Post('grants')
