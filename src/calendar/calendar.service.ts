@@ -1176,7 +1176,18 @@ export class CalendarService {
       );
       const recipient = (Array.isArray(calendar?.recipients) ? calendar.recipients : [])
         .find((value: any) => normalizeEmail(value?.email) === indexedValue.email);
-      if (!calendar || !recipient) {
+      const revokedAt = boundedPlainText(
+        indexedValue.ref?.revokedAt ?? calendar?.deletedAt,
+        128,
+      );
+      const revokedReason = revokedAt
+        ? boundedPlainText(
+          indexedValue.ref?.revokedReason
+            ?? (calendar?.deletedAt ? 'owner_deleted' : 'access_removed'),
+          64,
+        ) ?? 'access_removed'
+        : null;
+      if ((!calendar || !recipient) && !revokedAt) {
         staleKeys.push(indexedValue.key);
         continue;
       }
@@ -1190,22 +1201,34 @@ export class CalendarService {
       }
 
       const identity = `${ownerId}:${calendarId}`;
-      const calendarEvents = await this.store.getJSON(
-        this.keys.icloudCalendarEvents(ownerId, calendarId),
-      );
+      const calendarEvents = calendar
+        ? await this.store.getJSON(this.keys.icloudCalendarEvents(ownerId, calendarId))
+        : null;
       const sharedCalendar = {
         id: hashKey(identity),
         ownerId,
         ownerEmail: ownerEmailCache.get(ownerId) ?? null,
         calendarId,
-        title: String(calendar.title ?? 'Shared calendar').slice(0, 512),
-        color: /^#[0-9a-fA-F]{6}$/.test(String(calendar.color ?? ''))
-          ? String(calendar.color).toUpperCase()
+        title: String(calendar?.title ?? indexedValue.ref?.title ?? 'Shared calendar').slice(0, 512),
+        color: /^#[0-9a-fA-F]{6}$/.test(
+          String(calendar?.color ?? indexedValue.ref?.color ?? ''),
+        )
+          ? String(calendar?.color ?? indexedValue.ref?.color).toUpperCase()
           : '#0088FF',
-        timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
-        access: recipient.access === 'writer' ? 'writer' : 'reader',
-        invitedAt: recipient.invitedAt ?? indexedValue.ref?.invitedAt ?? null,
-        updatedAt: calendar.updatedAt ?? recipient.updatedAt ?? null,
+        timeZone: safeTimeZone(
+          String(calendar?.timeZone ?? indexedValue.ref?.timeZone ?? ''),
+        ) ?? 'UTC',
+        access: (recipient?.access ?? indexedValue.ref?.access) === 'writer'
+          ? 'writer'
+          : 'reader',
+        invitedAt: recipient?.invitedAt ?? indexedValue.ref?.invitedAt ?? null,
+        updatedAt: calendar?.updatedAt
+          ?? recipient?.updatedAt
+          ?? indexedValue.ref?.updatedAt
+          ?? null,
+        isRevoked: Boolean(revokedAt),
+        revokedAt: revokedAt ?? null,
+        revokedReason,
         events: Array.isArray(calendarEvents?.events) ? calendarEvents.events : [],
         eventsUpdatedAt: calendarEvents?.updatedAt ?? null,
         windowStart: calendarEvents?.windowStart ?? null,
@@ -1213,7 +1236,10 @@ export class CalendarService {
       };
       const previous = calendars.get(identity);
       if (!previous
-          || (previous.access === 'reader' && sharedCalendar.access === 'writer')) {
+          || (previous.isRevoked && !sharedCalendar.isRevoked)
+          || (previous.isRevoked === sharedCalendar.isRevoked
+            && previous.access === 'reader'
+            && sharedCalendar.access === 'writer')) {
         calendars.set(identity, sharedCalendar);
       }
     }
@@ -1240,10 +1266,10 @@ export class CalendarService {
     const calendar = await this.store.getJSON(
       this.keys.icloudCalendarSharing(ownerId, calendarId),
     );
-    if (!calendar) {
+    if (!calendar || calendar.deletedAt) {
       return {
         status: 404,
-        html: eventInvitationErrorPage('This calendar invitation is not available yet'),
+        html: eventInvitationErrorPage('This calendar invitation is no longer available'),
       };
     }
 
@@ -1289,7 +1315,9 @@ export class CalendarService {
       this.store.getJSON(this.keys.principal(principal.principalId)),
       this.store.getJSON(this.keys.principal(ownerId)),
     ]);
-    if (!calendar) return result(404, { error: 'shared calendar no longer exists' });
+    if (!calendar || calendar.deletedAt) {
+      return result(404, { error: 'shared calendar no longer exists' });
+    }
 
     const identities = this.recipientIdentities(account);
     if (identities.length === 0) {
@@ -1513,6 +1541,7 @@ export class CalendarService {
       recipientCount: recipients.length,
       createdAt: existing?.createdAt ?? now,
       updatedAt: now,
+      deletedAt: null,
     };
     await this.store.putJSON(key, calendar);
 
@@ -1521,18 +1550,37 @@ export class CalendarService {
     const indexes: Promise<any>[] = [];
     for (const email of previousEmails) {
       if (!currentEmails.has(email)) {
-        indexes.push(this.store.del(this.keys.pendingICloudCalendarInvitation(
+        const previousRecipient = existingByEmail.get(email);
+        const tombstone = {
+          ownerId: principal.principalId,
+          ownerEmail: ownerIdentities[0]?.email ?? null,
+          calendarId,
+          title,
+          color,
+          timeZone,
+          email,
+          recipientId: previousRecipient?.id ?? null,
+          userId: previousRecipient?.userId ?? null,
+          access: previousRecipient?.access === 'writer' ? 'writer' : 'reader',
+          isPending: false,
+          invitedAt: previousRecipient?.invitedAt ?? null,
+          acceptedAt: previousRecipient?.acceptedAt ?? null,
+          updatedAt: now,
+          revokedAt: now,
+          revokedReason: 'access_removed',
+        };
+        indexes.push(this.store.putJSON(this.keys.pendingICloudCalendarInvitation(
           this.core.emailHash(email),
           principal.principalId,
           calendarId,
-        )));
-        const previousUserId = existingByEmail.get(email)?.userId;
+        ), tombstone));
+        const previousUserId = previousRecipient?.userId;
         if (previousUserId) {
-          indexes.push(this.store.del(this.keys.receivedICloudCalendar(
+          indexes.push(this.store.putJSON(this.keys.receivedICloudCalendar(
             String(previousUserId),
             principal.principalId,
             calendarId,
-          )));
+          ), tombstone));
         }
       }
     }
@@ -1563,6 +1611,8 @@ export class CalendarService {
         invitedAt: recipient.invitedAt,
         acceptedAt: recipient.acceptedAt,
         updatedAt: now,
+        revokedAt: null,
+        revokedReason: null,
       }));
       if (recipient.userId) {
         indexes.push(this.store.putJSON(this.keys.receivedICloudCalendar(
@@ -1581,11 +1631,83 @@ export class CalendarService {
           invitedAt: recipient.invitedAt,
           acceptedAt: recipient.acceptedAt,
           updatedAt: now,
+          revokedAt: null,
+          revokedReason: null,
         }));
       }
     }
     await Promise.all(indexes);
     return result(existing ? 200 : 201, { calendar });
+  }
+
+  /** Keeps the last shared snapshot as a tombstone when the owner deletes the
+   * local calendar. Recipients retain a frozen, struck-through copy instead of
+   * seeing the calendar and all of its events disappear without explanation. */
+  async deleteICloudCalendarSharing(
+    principal: any,
+    calendarId: string,
+  ): Promise<ApiResult> {
+    if (!validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'invalid iCloud calendar identifier' });
+    }
+
+    const key = this.keys.icloudCalendarSharing(principal.principalId, calendarId);
+    const [calendar, ownerAccount] = await Promise.all([
+      this.store.getJSON(key),
+      this.store.getJSON(this.keys.principal(principal.principalId)),
+    ]);
+    // Deletion is intentionally idempotent. A local calendar that was never
+    // shared has no server record and therefore needs no recipient tombstone.
+    if (!calendar) return result(200, { deleted: true });
+
+    const now = calendar.deletedAt ?? new Date().toISOString();
+    const ownerEmail = this.recipientIdentities(ownerAccount)[0]?.email ?? null;
+    const deletedCalendar = {
+      ...calendar,
+      deletedAt: now,
+      updatedAt: now,
+    };
+    const indexes: Promise<any>[] = [this.store.putJSON(key, deletedCalendar)];
+
+    for (const recipient of Array.isArray(calendar.recipients) ? calendar.recipients : []) {
+      const email = normalizeEmail(recipient?.email);
+      if (!email) continue;
+      const tombstone = {
+        ownerId: principal.principalId,
+        ownerEmail,
+        calendarId,
+        title: String(calendar.title ?? 'Shared calendar').slice(0, 512),
+        color: /^#[0-9a-fA-F]{6}$/.test(String(calendar.color ?? ''))
+          ? String(calendar.color).toUpperCase()
+          : '#0088FF',
+        timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
+        email,
+        recipientId: recipient?.id ?? null,
+        userId: recipient?.userId ?? null,
+        access: recipient?.access === 'writer' ? 'writer' : 'reader',
+        isPending: false,
+        invitedAt: recipient?.invitedAt ?? null,
+        acceptedAt: recipient?.acceptedAt ?? null,
+        updatedAt: now,
+        revokedAt: now,
+        revokedReason: 'owner_deleted',
+      };
+      indexes.push(this.store.putJSON(this.keys.pendingICloudCalendarInvitation(
+        this.core.emailHash(email),
+        principal.principalId,
+        calendarId,
+      ), tombstone));
+      if (recipient?.userId) {
+        indexes.push(this.store.putJSON(this.keys.receivedICloudCalendar(
+          String(recipient.userId),
+          principal.principalId,
+          calendarId,
+        ), tombstone));
+      }
+    }
+
+    await Promise.all(indexes);
+    return result(200, { deleted: true, deletedAt: now });
   }
 
   /** Stores the portable EventKit snapshot for one shared iCloud calendar.
@@ -1604,6 +1726,9 @@ export class CalendarService {
     );
     if (!sharing) {
       return result(404, { error: 'calendar must be shared before its events can sync' });
+    }
+    if (sharing.deletedAt) {
+      return result(409, { error: 'deleted calendars can no longer sync events' });
     }
 
     const rawEvents = Array.isArray(body.events) ? body.events : null;

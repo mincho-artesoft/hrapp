@@ -133,6 +133,16 @@ export class CalendarController {
     return reply(res, await this.svc.saveICloudCalendarSharing(req.principal, id, body ?? {}));
   }
 
+  @Delete('icloud-calendars/:id/sharing')
+  @UseGuards(AuthGuard)
+  async deleteICloudCalendarSharing(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.deleteICloudCalendarSharing(req.principal, id));
+  }
+
   @Put('icloud-calendars/:id/events')
   @UseGuards(AuthGuard)
   async saveICloudCalendarEvents(
