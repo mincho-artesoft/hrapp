@@ -31,6 +31,7 @@ final class ShareableEventViewController: EKEventViewController, UIGestureRecogn
 
     private func configureLeadingButtonsIfNeeded() {
         let isReadOnly = event.map(SharedInviteTracker.isReadOnly) ?? false
+        let canShare = event.map(SharedInviteTracker.canShare) ?? false
 
         if isReadOnly {
             // Keep EventKit's details unchanged. The existing Calendar row is
@@ -69,15 +70,17 @@ final class ShareableEventViewController: EKEventViewController, UIGestureRecogn
             eventEditButton = pencilButton
         }
 
-        eventShareButton.accessibilityLabel = NSLocalizedString("Share", comment: "Share event button")
-        eventShareButton.accessibilityIdentifier = "eventDetail.share"
         leadingItems.removeAll(where: { $0 === eventShareButton })
-        leadingItems.insert(eventShareButton, at: min(1, leadingItems.count))
+        if canShare {
+            eventShareButton.accessibilityLabel = NSLocalizedString("Share", comment: "Share event button")
+            eventShareButton.accessibilityIdentifier = "eventDetail.share"
+            leadingItems.insert(eventShareButton, at: min(1, leadingItems.count))
+        }
         navigationItem.setLeftBarButtonItems(leadingItems, animated: false)
     }
 
     @objc private func shareEvent() {
-        guard let event, !SharedInviteTracker.isReadOnly(event) else { return }
+        guard let event, SharedInviteTracker.canShare(event) else { return }
         EventAppClipSharing.present(
             for: event,
             from: self,
@@ -318,7 +321,7 @@ struct EventDetailViewWrapper: UIViewControllerRepresentable {
                                  didCompleteWith action: EKEventViewAction) {
             if action == .deleted,
                let identifier = parent.event.eventIdentifier {
-                SharedInviteTracker.forget(localEventIdentifier: identifier)
+                SharedInviteTracker.localEventWasDeleted(localEventIdentifier: identifier)
                 EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
                 NotificationCenter.default.post(name: .sharedEventImported, object: nil)
             }

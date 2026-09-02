@@ -45,7 +45,7 @@ struct EventEmailInvitationsView: View {
                 } header: {
                     Text("People")
                 } footer: {
-                    Text("Reader can view and sync the event. Writer can also edit it after signing in with the invited email.")
+                    Text("Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email.")
                 }
 
                 if let errorMessage {

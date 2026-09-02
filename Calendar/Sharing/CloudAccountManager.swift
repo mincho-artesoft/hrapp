@@ -1,6 +1,6 @@
 import AuthenticationServices
-@preconcurrency import GoogleSignIn
-@preconcurrency import MSAL
+import CryptoKit
+import Foundation
 import SwiftUI
 import UIKit
 
@@ -8,6 +8,101 @@ import UIKit
 /// the Google/Microsoft accounts connected as calendar data sources.
 @MainActor
 final class CloudAccountManager: NSObject, ObservableObject {
+    private struct OAuthConfiguration: Sendable {
+        let provider: String
+        let clientID: String
+        let authorizationEndpoint: URL
+        let tokenEndpoint: URL
+        let redirectURI: String
+        let callbackScheme: String
+        let scopes: String
+        let backendToken: BackendToken
+
+        enum BackendToken: Sendable {
+            case identityToken
+            case accessToken
+        }
+
+        static let google = OAuthConfiguration(
+            provider: "google",
+            clientID: "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com",
+            authorizationEndpoint: URL(string: "https://accounts.google.com/o/oauth2/v2/auth")!,
+            tokenEndpoint: URL(string: "https://oauth2.googleapis.com/token")!,
+            redirectURI: "com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr:/oauthredirect",
+            callbackScheme: "com.googleusercontent.apps.540859420644-a5mnvraqupd7l804e0s4e60doddqlktr",
+            scopes: "openid email profile",
+            backendToken: .identityToken
+        )
+
+        static let microsoft = OAuthConfiguration(
+            provider: "microsoft",
+            clientID: "5b1a5159-948f-4b5b-ac6a-009df927c665",
+            authorizationEndpoint: URL(string: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize")!,
+            tokenEndpoint: URL(string: "https://login.microsoftonline.com/common/oauth2/v2.0/token")!,
+            redirectURI: "msauth.Deksan.CalendarASD://auth",
+            callbackScheme: "msauth.Deksan.CalendarASD",
+            scopes: "openid profile email User.Read",
+            backendToken: .accessToken
+        )
+    }
+
+    private struct OAuthTokenResponse: Decodable, Sendable {
+        let accessToken: String?
+        let idToken: String?
+        let error: String?
+        let errorDescription: String?
+
+        enum CodingKeys: String, CodingKey {
+            case accessToken = "access_token"
+            case idToken = "id_token"
+            case error
+            case errorDescription = "error_description"
+        }
+    }
+
+    private struct IdentityTokenClaims: Decodable, Sendable {
+        let name: String?
+        let email: String?
+    }
+
+    private enum OAuthError: LocalizedError {
+        case invalidAuthorizationURL
+        case invalidCallback
+        case stateMismatch
+        case authorizationFailed(String)
+        case missingCode
+        case tokenExchangeFailed(String)
+        case missingToken
+        case couldNotStart
+
+        var errorDescription: String? {
+            switch self {
+            case .invalidAuthorizationURL, .invalidCallback:
+                NSLocalizedString(
+                    "The sign-in response was invalid. Please try again.",
+                    comment: "OAuth invalid response"
+                )
+            case .stateMismatch:
+                NSLocalizedString(
+                    "The sign-in response couldn’t be verified. Please try again.",
+                    comment: "OAuth state mismatch"
+                )
+            case .authorizationFailed(let message), .tokenExchangeFailed(let message):
+                message
+            case .missingCode, .missingToken:
+                NSLocalizedString(
+                    "The provider didn’t return the information required to sign in.",
+                    comment: "OAuth missing authorization data"
+                )
+            case .couldNotStart:
+                NSLocalizedString(
+                    "Sign-in couldn’t open. Please try again.",
+                    comment: "OAuth browser session could not start"
+                )
+            }
+        }
+    }
+
     struct Account: Equatable {
         let identities: [CloudCalendarsAPI.AccountIdentity]
         let ownerId: String?
@@ -24,6 +119,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
     @Published private var providerErrors: [String: String] = [:]
 
     private var appleAuthorizationController: ASAuthorizationController?
+    private var webAuthenticationSession: ASWebAuthenticationSession?
 
     var isSignedIn: Bool { account?.identities.isEmpty == false }
 
@@ -49,10 +145,10 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
     private override init() {
         super.init()
-        reloadFromKeychain()
+        reloadFromStorage()
     }
 
-    func reloadFromKeychain() {
+    func reloadFromStorage() {
         guard let session = CalendarFeedSession.existing else {
             account = nil
             return
@@ -64,84 +160,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
     }
 
     func signInWithGoogle() {
-        guard !isSigningIn, let presenter = Self.presentingViewController() else { return }
-        isSigningIn = true
-        clearError(for: "google")
-
-        GIDSignIn.sharedInstance.configuration = GIDConfiguration(
-            clientID: CalendarViewModel.shared.clientID
-        )
-        performGoogleSignIn(with: presenter, hasRetriedAfterKeychainError: false)
-    }
-
-    private func performGoogleSignIn(
-        with presenter: UIViewController,
-        hasRetriedAfterKeychainError: Bool
-    ) {
-        GIDSignIn.sharedInstance.signIn(
-            withPresenting: presenter,
-            hint: nil,
-            additionalScopes: []
-        ) { result, error in
-            // GIDSignIn's result is not Sendable. Copy only primitive values
-            // before hopping back to the main actor instead of moving the SDK
-            // object across the concurrency boundary.
-            let token = result?.user.idToken?.tokenString
-            let name = result?.user.profile?.name
-            let errorMessage = error?.localizedDescription
-            let errorDomain = (error as NSError?)?.domain
-            let errorCode = (error as NSError?)?.code
-
-            Task { @MainActor [weak self, token, name, errorMessage, errorDomain, errorCode] in
-                guard let self else { return }
-                guard let token, !token.isEmpty else {
-                    if errorDomain == "com.google.GIDSignIn",
-                       errorCode == -2,
-                       !hasRetriedAfterKeychainError {
-                        // GIDSignIn error -2 means its secure session could not
-                        // be read or written. Remove only the unusable SDK
-                        // session and retry once so a stale simulator keychain
-                        // item does not permanently block Cloud Account login.
-                        GIDSignIn.sharedInstance.signOut()
-                        try? await Task.sleep(for: .milliseconds(250))
-
-                        guard let retryPresenter = Self.presentingViewController() else {
-                            self.isSigningIn = false
-                            self.setError(
-                                NSLocalizedString(
-                                    "Google sign-in couldn’t open. Please try again.",
-                                    comment: "Google sign-in presenter unavailable after keychain recovery"
-                                ),
-                                for: "google"
-                            )
-                            return
-                        }
-
-                        self.performGoogleSignIn(
-                            with: retryPresenter,
-                            hasRetriedAfterKeychainError: true
-                        )
-                        return
-                    }
-
-                    self.isSigningIn = false
-                    if errorDomain == "com.google.GIDSignIn", errorCode == -2 {
-                        self.setError(
-                            NSLocalizedString(
-                                "Google sign-in couldn’t save its secure session. Close and reopen the app, then try again.",
-                                comment: "Google Sign-In keychain failure after automatic retry"
-                            ),
-                            for: "google"
-                        )
-                    } else {
-                        self.setError(errorMessage, for: "google")
-                    }
-                    return
-                }
-
-                await self.authenticate(provider: "google", token: token, name: name)
-            }
-        }
+        startOAuth(.google)
     }
 
     func configureAppleRequest(_ request: ASAuthorizationAppleIDRequest) {
@@ -174,6 +193,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
                   let tokenData = credential.identityToken,
                   let token = String(data: tokenData, encoding: .utf8)
             else {
+                isSigningIn = false
                 setError(
                     NSLocalizedString(
                         "Apple did not return an identity token.",
@@ -203,45 +223,220 @@ final class CloudAccountManager: NSObject, ObservableObject {
             requestMicrosoftSubscription()
             return
         }
-        guard !isSigningIn, let presenter = Self.presentingViewController() else { return }
+        startOAuth(.microsoft)
+    }
 
-        do {
-            let viewModel = CalendarViewModel.shared
-            let authority = try MSALAADAuthority(url: URL(string: viewModel.kAuthority)!)
-            let config = MSALPublicClientApplicationConfig(
-                clientId: viewModel.kClientID,
-                redirectUri: viewModel.kRedirectUri,
-                authority: authority
-            )
-            let application = try MSALPublicClientApplication(configuration: config)
-            let webParameters = MSALWebviewParameters(authPresentationViewController: presenter)
-            let parameters = MSALInteractiveTokenParameters(
-                scopes: ["User.Read"],
-                webviewParameters: webParameters
-            )
-            parameters.promptType = .selectAccount
+    /// Uses an ephemeral browser OAuth session and PKCE. Provider access and
+    /// identity tokens are held only long enough to establish the app's own
+    /// server session; neither GoogleSignIn nor MSAL gets a chance to create a
+    /// Keychain item for this dedicated sharing identity.
+    private func startOAuth(_ configuration: OAuthConfiguration) {
+        guard !isSigningIn else { return }
 
-            isSigningIn = true
-            clearError(for: "microsoft")
-            application.acquireToken(with: parameters) { result, error in
-                let token = result?.accessToken
-                let name = result?.account.username
-                let errorMessage = error?.localizedDescription
+        let codeVerifier = Self.randomURLSafeValue()
+        let state = Self.randomURLSafeValue()
+        let nonce = Self.randomURLSafeValue()
 
-                Task { @MainActor [weak self, token, name, errorMessage] in
-                    guard let self else { return }
-                    guard let token, !token.isEmpty else {
-                        self.isSigningIn = false
-                        self.setError(errorMessage, for: "microsoft")
-                        return
+        guard let authorizationURL = Self.authorizationURL(
+            for: configuration,
+            codeVerifier: codeVerifier,
+            state: state,
+            nonce: nonce
+        ) else {
+            setError(OAuthError.invalidAuthorizationURL.localizedDescription, for: configuration.provider)
+            return
+        }
+
+        isSigningIn = true
+        clearError(for: configuration.provider)
+
+        let session = ASWebAuthenticationSession(
+            url: authorizationURL,
+            callbackURLScheme: configuration.callbackScheme
+        ) { [weak self] callbackURL, error in
+            let errorDescription = error?.localizedDescription
+            let errorCode = (error as NSError?)?.code
+            let errorDomain = (error as NSError?)?.domain
+
+            Task { @MainActor [weak self, callbackURL, errorDescription, errorCode, errorDomain] in
+                guard let self else { return }
+                self.webAuthenticationSession = nil
+
+                if errorDomain == ASWebAuthenticationSessionError.errorDomain,
+                   errorCode == ASWebAuthenticationSessionError.canceledLogin.rawValue {
+                    self.isSigningIn = false
+                    self.clearError(for: configuration.provider)
+                    return
+                }
+
+                guard let callbackURL else {
+                    self.isSigningIn = false
+                    self.setError(
+                        errorDescription ?? OAuthError.invalidCallback.localizedDescription,
+                        for: configuration.provider
+                    )
+                    return
+                }
+
+                do {
+                    let code = try Self.authorizationCode(
+                        from: callbackURL,
+                        expectedState: state
+                    )
+                    let response = try await Self.exchangeAuthorizationCode(
+                        code,
+                        codeVerifier: codeVerifier,
+                        configuration: configuration
+                    )
+                    let token: String?
+                    switch configuration.backendToken {
+                    case .identityToken:
+                        token = response.idToken
+                    case .accessToken:
+                        token = response.accessToken
                     }
-                    await self.authenticate(provider: "microsoft", token: token, name: name)
+                    guard let token, !token.isEmpty else {
+                        throw OAuthError.missingToken
+                    }
+
+                    let claims = response.idToken.flatMap(Self.identityClaims(from:))
+                    await self.authenticate(
+                        provider: configuration.provider,
+                        token: token,
+                        name: claims?.name ?? claims?.email
+                    )
+                } catch {
+                    self.isSigningIn = false
+                    self.setError(error.localizedDescription, for: configuration.provider)
                 }
             }
-        } catch {
-            isSigningIn = false
-            setError(error.localizedDescription, for: "microsoft")
         }
+        session.presentationContextProvider = self
+        session.prefersEphemeralWebBrowserSession = true
+        webAuthenticationSession = session
+
+        guard session.start() else {
+            webAuthenticationSession = nil
+            isSigningIn = false
+            setError(OAuthError.couldNotStart.localizedDescription, for: configuration.provider)
+            return
+        }
+    }
+
+    private static func authorizationURL(
+        for configuration: OAuthConfiguration,
+        codeVerifier: String,
+        state: String,
+        nonce: String
+    ) -> URL? {
+        var components = URLComponents(
+            url: configuration.authorizationEndpoint,
+            resolvingAgainstBaseURL: false
+        )
+        components?.queryItems = [
+            URLQueryItem(name: "client_id", value: configuration.clientID),
+            URLQueryItem(name: "redirect_uri", value: configuration.redirectURI),
+            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "scope", value: configuration.scopes),
+            URLQueryItem(name: "code_challenge", value: codeChallenge(for: codeVerifier)),
+            URLQueryItem(name: "code_challenge_method", value: "S256"),
+            URLQueryItem(name: "state", value: state),
+            URLQueryItem(name: "nonce", value: nonce),
+            URLQueryItem(name: "prompt", value: "select_account")
+        ]
+        return components?.url
+    }
+
+    private static func authorizationCode(
+        from callbackURL: URL,
+        expectedState: String
+    ) throws -> String {
+        guard let components = URLComponents(url: callbackURL, resolvingAgainstBaseURL: false) else {
+            throw OAuthError.invalidCallback
+        }
+        let values = Dictionary(
+            uniqueKeysWithValues: (components.queryItems ?? []).map { ($0.name, $0.value ?? "") }
+        )
+        guard values["state"] == expectedState else { throw OAuthError.stateMismatch }
+        if let providerError = values["error"], !providerError.isEmpty {
+            throw OAuthError.authorizationFailed(
+                values["error_description"]?.replacingOccurrences(of: "+", with: " ")
+                    ?? providerError
+            )
+        }
+        guard let code = values["code"], !code.isEmpty else { throw OAuthError.missingCode }
+        return code
+    }
+
+    private static func exchangeAuthorizationCode(
+        _ code: String,
+        codeVerifier: String,
+        configuration: OAuthConfiguration
+    ) async throws -> OAuthTokenResponse {
+        var request = URLRequest(url: configuration.tokenEndpoint)
+        request.httpMethod = "POST"
+        request.setValue(
+            "application/x-www-form-urlencoded; charset=utf-8",
+            forHTTPHeaderField: "Content-Type"
+        )
+        request.httpBody = formEncoded([
+            "client_id": configuration.clientID,
+            "code": code,
+            "code_verifier": codeVerifier,
+            "grant_type": "authorization_code",
+            "redirect_uri": configuration.redirectURI,
+            "scope": configuration.scopes
+        ])
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        guard let http = response as? HTTPURLResponse else {
+            throw OAuthError.tokenExchangeFailed(
+                NSLocalizedString("The provider returned an invalid response.", comment: "OAuth invalid token response")
+            )
+        }
+        let decoded = try JSONDecoder().decode(OAuthTokenResponse.self, from: data)
+        guard (200..<300).contains(http.statusCode) else {
+            throw OAuthError.tokenExchangeFailed(
+                decoded.errorDescription ?? decoded.error ?? HTTPURLResponse.localizedString(forStatusCode: http.statusCode)
+            )
+        }
+        return decoded
+    }
+
+    private static func formEncoded(_ values: [String: String]) -> Data {
+        let allowed = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-._~"))
+        let body = values.keys.sorted().map { key in
+            let encodedKey = key.addingPercentEncoding(withAllowedCharacters: allowed) ?? key
+            let value = values[key] ?? ""
+            let encodedValue = value.addingPercentEncoding(withAllowedCharacters: allowed) ?? value
+            return "\(encodedKey)=\(encodedValue)"
+        }.joined(separator: "&")
+        return Data(body.utf8)
+    }
+
+    private static func randomURLSafeValue() -> String {
+        UUID().uuidString.replacingOccurrences(of: "-", with: "")
+            + UUID().uuidString.replacingOccurrences(of: "-", with: "")
+    }
+
+    private static func codeChallenge(for verifier: String) -> String {
+        Data(SHA256.hash(data: Data(verifier.utf8)))
+            .base64EncodedString()
+            .replacingOccurrences(of: "+", with: "-")
+            .replacingOccurrences(of: "/", with: "_")
+            .replacingOccurrences(of: "=", with: "")
+    }
+
+    private static func identityClaims(from token: String) -> IdentityTokenClaims? {
+        let parts = token.split(separator: ".")
+        guard parts.count > 1 else { return nil }
+        var payload = String(parts[1])
+            .replacingOccurrences(of: "-", with: "+")
+            .replacingOccurrences(of: "_", with: "/")
+        let padding = (4 - payload.count % 4) % 4
+        payload.append(String(repeating: "=", count: padding))
+        guard let data = Data(base64Encoded: payload) else { return nil }
+        return try? JSONDecoder().decode(IdentityTokenClaims.self, from: data)
     }
 
     func requestMicrosoftSubscription() {
@@ -268,8 +463,8 @@ final class CloudAccountManager: NSObject, ObservableObject {
     }
 
     func signOut() {
-        // Do not call GIDSignIn.signOut(): that SDK session may belong to one of
-        // the independent Google Calendar connections shown below this account.
+        // The browser OAuth session is ephemeral and provider tokens are never
+        // retained. Calendar provider sessions remain entirely independent.
         CalendarFeedSession.forget()
         SharedInviteTracker.demoteAllToReader()
         account = nil
@@ -387,6 +582,17 @@ extension CloudAccountManager: ASAuthorizationControllerDelegate {
 
 extension CloudAccountManager: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        Self.presentingViewController()?.view.window
+            ?? UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap(\.windows)
+                .first
+            ?? ASPresentationAnchor()
+    }
+}
+
+extension CloudAccountManager: ASWebAuthenticationPresentationContextProviding {
+    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         Self.presentingViewController()?.view.window
             ?? UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }

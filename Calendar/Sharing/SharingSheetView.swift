@@ -5,6 +5,7 @@ import SwiftUI
 
 private struct ReceivedSharedEvent: Identifiable {
     let id: String
+    let feedID: String
     let localEventIdentifier: String
     let title: String
     let start: Date
@@ -14,6 +15,29 @@ private struct ReceivedSharedEvent: Identifiable {
     let isCancelled: Bool
     let isRevoked: Bool
     let access: CloudCalendarsAPI.EventAccess
+}
+
+private struct SharedEventAccessTarget: Identifiable {
+    let eventID: String
+    let feedID: String?
+    let localEventIdentifier: String?
+    let title: String
+
+    var id: String { eventID }
+
+    init(_ event: SharedOutgoingEventTracker.SentEvent) {
+        eventID = event.eventID
+        feedID = event.feedID
+        localEventIdentifier = event.localEventIdentifier
+        title = event.title
+    }
+
+    init(_ event: ReceivedSharedEvent) {
+        eventID = event.id
+        feedID = event.feedID
+        localEventIdentifier = event.localEventIdentifier
+        title = event.title
+    }
 }
 
 private struct SharedEventDayGroup<Item>: Identifiable {
@@ -48,7 +72,7 @@ struct SharingSheetView: View {
     @State private var showCloudAccount = false
     @State private var sentEvents: [SharedOutgoingEventTracker.SentEvent] = []
     @State private var receivedEvents: [ReceivedSharedEvent] = []
-    @State private var selectedSentEvent: SharedOutgoingEventTracker.SentEvent?
+    @State private var selectedEventAccessTarget: SharedEventAccessTarget?
     @State private var selectedReceivedEvent: EKEvent?
     @State private var selectedPendingInvitation: SharedEventImportPayload?
     @State private var pendingInvitationActionIDs: Set<String> = []
@@ -366,7 +390,7 @@ struct SharingSheetView: View {
             }
             .animation(.easeInOut, value: showSharedEventsSearch)
             .toolbar(.hidden, for: .navigationBar)
-            .sheet(item: $selectedSentEvent) { event in
+            .sheet(item: $selectedEventAccessTarget) { event in
                 SharedEventAccessSheet(event: event)
                     .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
@@ -516,7 +540,9 @@ struct SharingSheetView: View {
                                         localEventIdentifier: event.localEventIdentifier,
                                         fallback: .blue
                                     ),
-                                    optionsAction: { selectedSentEvent = event }
+                                    optionsAction: {
+                                        selectedEventAccessTarget = SharedEventAccessTarget(event)
+                                    }
                                 )
                             }
                         } header: {
@@ -566,6 +592,11 @@ struct SharingSheetView: View {
                                     ),
                                     access: event.access,
                                     accessWasRemoved: event.isRevoked,
+                                    optionsAction: event.access == .owner && !event.isRevoked
+                                        ? {
+                                            selectedEventAccessTarget = SharedEventAccessTarget(event)
+                                        }
+                                        : nil,
                                     infoAction: {
                                         selectedReceivedEvent = viewModel.eventStore.event(
                                             withIdentifier: event.localEventIdentifier
@@ -835,16 +866,6 @@ struct SharingSheetView: View {
                 }
 
                 HStack(spacing: 2) {
-                    if let infoAction {
-                        Button(action: infoAction) {
-                            Image(systemName: "info.circle")
-                                .font(.body.weight(.semibold))
-                                .frame(width: 30, height: 30)
-                        }
-                        .buttonStyle(.borderless)
-                        .accessibilityLabel("Event details")
-                    }
-
                     if let optionsAction {
                         Button(action: optionsAction) {
                             Image(systemName: "person.2.fill")
@@ -853,6 +874,16 @@ struct SharingSheetView: View {
                         }
                         .buttonStyle(.borderless)
                         .accessibilityLabel("Manage event access")
+                    }
+
+                    if let infoAction {
+                        Button(action: infoAction) {
+                            Image(systemName: "info.circle")
+                                .font(.body.weight(.semibold))
+                                .frame(width: 30, height: 30)
+                        }
+                        .buttonStyle(.borderless)
+                        .accessibilityLabel("Event details")
                     }
                 }
             }
@@ -906,6 +937,7 @@ struct SharingSheetView: View {
 
             return ReceivedSharedEvent(
                 id: invite.eventID,
+                feedID: invite.feedID,
                 localEventIdentifier: invite.localEventIdentifier,
                 title: event.title ?? NSLocalizedString("Shared event", comment: "Fallback shared event title"),
                 start: start,
@@ -926,7 +958,7 @@ struct SharingSheetView: View {
 }
 
 private struct SharedEventAccessSheet: View {
-    let event: SharedOutgoingEventTracker.SentEvent
+    let event: SharedEventAccessTarget
 
     @Environment(\.dismiss) private var dismiss
     @State private var recipients: [CloudCalendarsAPI.EventRecipient] = []
@@ -946,7 +978,7 @@ private struct SharedEventAccessSheet: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(editableEvent?.title ?? event.title)
                             .font(.headline)
-                        Text("Choose whether each signed-in recipient is a Reader or Writer.")
+                        Text("Choose Reader, Writer, or Owner. Owners can also share this event and manage access.")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
@@ -1108,7 +1140,17 @@ private struct SharedEventAccessSheet: View {
             .frame(maxWidth: .infinity, alignment: .leading)
 
             HStack(alignment: .center, spacing: 7) {
-                if recipient.isAnonymous {
+                if recipient.belongsToOriginalOwner {
+                    HStack(spacing: 5) {
+                        Image(systemName: "lock.fill")
+                            .font(.caption)
+                        Text(CloudCalendarsAPI.EventAccess.owner.title)
+                    }
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: true, vertical: true)
+                    .accessibilityLabel("Original sharer, Owner access")
+                } else if recipient.isAnonymous {
                     Text(CloudCalendarsAPI.EventAccess.reader.title)
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.secondary)
@@ -1118,6 +1160,7 @@ private struct SharedEventAccessSheet: View {
                     Menu {
                         accessButton(.reader, recipient: recipient)
                         accessButton(.writer, recipient: recipient)
+                        accessButton(.owner, recipient: recipient)
                     } label: {
                         HStack(spacing: 5) {
                             Text(recipient.access.title)
@@ -1132,17 +1175,19 @@ private struct SharedEventAccessSheet: View {
                     .fixedSize(horizontal: true, vertical: true)
                 }
 
-                Button(role: .destructive) {
-                    recipientPendingRemoval = recipient
-                } label: {
-                    Image(systemName: "person.crop.circle.badge.minus")
-                        .font(.body)
-                        .foregroundStyle(.red)
-                        .frame(width: 28, height: 28)
+                if !recipient.belongsToOriginalOwner {
+                    Button(role: .destructive) {
+                        recipientPendingRemoval = recipient
+                    } label: {
+                        Image(systemName: "person.crop.circle.badge.minus")
+                            .font(.body)
+                            .foregroundStyle(.red)
+                            .frame(width: 28, height: 28)
+                    }
+                    .buttonStyle(.borderless)
+                    .disabled(isSaving)
+                    .accessibilityLabel("Remove Access")
                 }
-                .buttonStyle(.borderless)
-                .disabled(isSaving)
-                .accessibilityLabel("Remove Access")
             }
             .fixedSize(horizontal: true, vertical: true)
             .layoutPriority(2)
@@ -1193,11 +1238,14 @@ private struct SharedEventAccessSheet: View {
         _ access: CloudCalendarsAPI.EventAccess,
         for recipient: CloudCalendarsAPI.EventRecipient
     ) {
-        guard let index = recipients.firstIndex(where: { $0.id == recipient.id }) else { return }
+        guard !recipient.belongsToOriginalOwner,
+              let index = recipients.firstIndex(where: { $0.id == recipient.id })
+        else { return }
         recipients[index].access = access
     }
 
     private func stageRemoval(of recipient: CloudCalendarsAPI.EventRecipient) {
+        guard !recipient.belongsToOriginalOwner else { return }
         removedRecipientIDs.insert(recipient.id)
         recipients.removeAll { $0.id == recipient.id }
         recipientPendingRemoval = nil

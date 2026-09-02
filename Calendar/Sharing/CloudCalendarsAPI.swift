@@ -215,12 +215,16 @@ enum CloudCalendarsAPI {
     enum EventAccess: String, Codable, CaseIterable, Identifiable {
         case reader
         case writer
+        case owner
 
         var id: String { rawValue }
+        static let calendarSharingCases: [Self] = [.reader, .writer, .owner]
+
         var title: String {
             switch self {
             case .reader: "Reader"
             case .writer: "Writer"
+            case .owner: "Owner"
             }
         }
     }
@@ -232,6 +236,7 @@ enum CloudCalendarsAPI {
         let emails: [String]
         let identities: [AccountIdentity]
         var access: EventAccess
+        let isOriginalOwner: Bool?
         let acceptedAt: String?
         let invitedAt: String?
         let updatedAt: String?
@@ -244,6 +249,8 @@ enum CloudCalendarsAPI {
         var isPendingInvitation: Bool {
             !isAnonymous && userId == nil
         }
+
+        var belongsToOriginalOwner: Bool { isOriginalOwner == true }
     }
 
     struct EventInvitation: Equatable, Identifiable {
@@ -263,6 +270,10 @@ enum CloudCalendarsAPI {
 
     struct ICloudCalendarSharing: Codable, Equatable, Identifiable {
         let id: String
+        let ownerId: String?
+        let ownerEmail: String?
+        let currentAccess: EventAccess?
+        let isOriginalOwner: Bool?
         let title: String
         let color: String
         let timeZone: String
@@ -605,10 +616,15 @@ enum CloudCalendarsAPI {
 
     static func iCloudCalendarSharing(
         calendarId: String,
+        ownerId: String? = nil,
         session: Session
     ) async throws -> ICloudCalendarSharing {
+        var path = "/icloud-calendars/\(calendarId)/sharing"
+        if let ownerId, !ownerId.isEmpty {
+            path += "?ownerId=\(ownerId.urlQueryEncoded)"
+        }
         let response: ICloudCalendarSharingResponse = try await send(
-            "/icloud-calendars/\(calendarId)/sharing",
+            path,
             method: "GET",
             body: nil,
             bearer: session.deviceToken
@@ -645,23 +661,26 @@ enum CloudCalendarsAPI {
 
     static func saveICloudCalendarSharing(
         calendarId: String,
+        ownerId: String? = nil,
         title: String,
         color: String,
         timeZone: String,
         recipients: [(email: String, access: EventAccess)],
         session: Session
     ) async throws -> ICloudCalendarSharing {
+        var body: [String: Any] = [
+            "title": title,
+            "color": color,
+            "timeZone": timeZone,
+            "recipients": recipients.map {
+                ["email": $0.email, "access": $0.access.rawValue]
+            }
+        ]
+        if let ownerId, !ownerId.isEmpty { body["ownerId"] = ownerId }
         let response: ICloudCalendarSharingResponse = try await send(
             "/icloud-calendars/\(calendarId)/sharing",
             method: "PUT",
-            body: [
-                "title": title,
-                "color": color,
-                "timeZone": timeZone,
-                "recipients": recipients.map {
-                    ["email": $0.email, "access": $0.access.rawValue]
-                }
-            ],
+            body: body,
             bearer: session.deviceToken
         )
         return response.calendar
@@ -681,6 +700,7 @@ enum CloudCalendarsAPI {
 
     static func saveICloudCalendarEvents(
         calendarId: String,
+        ownerId: String? = nil,
         events: [SharedICloudCalendarEvent],
         windowStart: Date,
         windowEnd: Date,
@@ -694,14 +714,16 @@ enum CloudCalendarsAPI {
             }
             return object
         }
+        var body: [String: Any] = [
+            "windowStart": ISO8601DateFormatter().string(from: windowStart),
+            "windowEnd": ISO8601DateFormatter().string(from: windowEnd),
+            "events": eventObjects
+        ]
+        if let ownerId, !ownerId.isEmpty { body["ownerId"] = ownerId }
         try await sendIgnoringResponse(
             "/icloud-calendars/\(calendarId)/events",
             method: "PUT",
-            body: [
-                "windowStart": ISO8601DateFormatter().string(from: windowStart),
-                "windowEnd": ISO8601DateFormatter().string(from: windowEnd),
-                "events": eventObjects
-            ],
+            body: body,
             bearer: session.deviceToken
         )
     }
@@ -990,7 +1012,7 @@ enum CloudCalendarsAPI {
         body: [String: Any]?,
         bearer: String?
     ) async throws -> Data {
-        var request = URLRequest(url: baseURL.appendingPathComponent(path))
+        var request = URLRequest(url: requestURL(for: path))
         request.httpMethod = method
         request.timeoutInterval = 20
 
@@ -1009,6 +1031,23 @@ enum CloudCalendarsAPI {
         }
 
         return data
+    }
+
+    private static func requestURL(for path: String) -> URL {
+        let parts = path.split(separator: "?", maxSplits: 1, omittingEmptySubsequences: false)
+        let url = baseURL.appendingPathComponent(String(parts[0]))
+        guard parts.count == 2,
+              var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+            return url
+        }
+        components.percentEncodedQuery = String(parts[1])
+        return components.url ?? url
+    }
+}
+
+private extension String {
+    var urlQueryEncoded: String {
+        addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? self
     }
 }
 

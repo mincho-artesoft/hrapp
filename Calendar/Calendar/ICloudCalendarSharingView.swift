@@ -8,6 +8,8 @@ struct ICloudCalendarSharingView: View {
     let calendarColor: String
     let timeZone: String
     let localCalendarIdentifier: String
+    let originalOwnerID: String?
+    let originalOwnerEmail: String?
 
     @Environment(\.dismiss) private var dismiss
     @State private var recipients: [CloudCalendarsAPI.ICloudCalendarRecipient] = []
@@ -65,6 +67,7 @@ struct ICloudCalendarSharingView: View {
             .sheet(isPresented: $showEmailInvitations) {
                 ICloudCalendarEmailInvitationsView(
                     calendarID: calendarID,
+                    originalOwnerID: originalOwnerID,
                     calendarTitle: calendarTitle,
                     calendarColor: calendarColor,
                     timeZone: timeZone,
@@ -229,7 +232,7 @@ struct ICloudCalendarSharingView: View {
     }
 
     private var appClipURL: URL? {
-        guard let ownerID = CalendarFeedSession.existing?.ownerId else { return nil }
+        guard let ownerID = canonicalOwnerID else { return nil }
         var components = URLComponents(string: "https://appclip.apple.com/id")
         components?.queryItems = [
             URLQueryItem(name: "p", value: "Deksan.CalendarASD.Clip"),
@@ -243,7 +246,7 @@ struct ICloudCalendarSharingView: View {
     }
 
     private var calendarInvitationURL: URL? {
-        guard let ownerID = CalendarFeedSession.existing?.ownerId else { return nil }
+        guard let ownerID = canonicalOwnerID else { return nil }
         var components = URLComponents(
             url: CloudCalendarsAPI.baseURL.appendingPathComponent("/icloud-calendar-invites/open"),
             resolvingAgainstBaseURL: false
@@ -281,17 +284,29 @@ struct ICloudCalendarSharingView: View {
     }
 
     private var ownerEmail: String {
+        if let originalOwnerEmail, !originalOwnerEmail.isEmpty {
+            return originalOwnerEmail
+        }
         let session = CalendarFeedSession.existing
         return session?.email
             ?? session?.identities?.compactMap(\.email).first
             ?? "Cloud Calendars account"
     }
 
+    private var canonicalOwnerID: String? {
+        originalOwnerID ?? CalendarFeedSession.existing?.ownerId
+    }
+
+    private var isOriginalOwner: Bool {
+        guard let originalOwnerID else { return true }
+        return originalOwnerID == CalendarFeedSession.existing?.ownerId
+    }
+
     private func accessPicker(
         access: Binding<CloudCalendarsAPI.EventAccess>
     ) -> some View {
         Menu {
-            ForEach(CloudCalendarsAPI.EventAccess.allCases) { option in
+            ForEach(CloudCalendarsAPI.EventAccess.calendarSharingCases) { option in
                 Button {
                     access.wrappedValue = option
                 } label: {
@@ -325,11 +340,13 @@ struct ICloudCalendarSharingView: View {
         do {
             var sharing = try await CloudCalendarsAPI.iCloudCalendarSharing(
                 calendarId: calendarID,
+                ownerId: originalOwnerID,
                 session: session
             )
-            if sharing.title.isEmpty {
+            if sharing.title.isEmpty && isOriginalOwner {
                 sharing = try await CloudCalendarsAPI.saveICloudCalendarSharing(
                     calendarId: calendarID,
+                    ownerId: originalOwnerID,
                     title: calendarTitle,
                     color: calendarColor,
                     timeZone: timeZone,
@@ -337,13 +354,15 @@ struct ICloudCalendarSharingView: View {
                     session: session
                 )
             }
-            SharedICloudCalendarLocalStore.registerOwnedCalendar(
-                shareID: calendarID,
-                localCalendarIdentifier: localCalendarIdentifier
-            )
-            _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
-                in: CalendarViewModel.shared.eventStore
-            )
+            if isOriginalOwner {
+                SharedICloudCalendarLocalStore.registerOwnedCalendar(
+                    shareID: calendarID,
+                    localCalendarIdentifier: localCalendarIdentifier
+                )
+                _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
+                    in: CalendarViewModel.shared.eventStore
+                )
+            }
             recipients = sharing.recipients
             errorMessage = nil
         } catch {
@@ -364,6 +383,7 @@ struct ICloudCalendarSharingView: View {
         do {
             let sharing = try await CloudCalendarsAPI.saveICloudCalendarSharing(
                 calendarId: calendarID,
+                ownerId: originalOwnerID,
                 title: calendarTitle,
                 color: calendarColor,
                 timeZone: timeZone,
@@ -373,13 +393,15 @@ struct ICloudCalendarSharingView: View {
                 session: session
             )
             recipients = sharing.recipients
-            SharedICloudCalendarLocalStore.registerOwnedCalendar(
-                shareID: calendarID,
-                localCalendarIdentifier: localCalendarIdentifier
-            )
-            _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
-                in: CalendarViewModel.shared.eventStore
-            )
+            if isOriginalOwner {
+                SharedICloudCalendarLocalStore.registerOwnedCalendar(
+                    shareID: calendarID,
+                    localCalendarIdentifier: localCalendarIdentifier
+                )
+                _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
+                    in: CalendarViewModel.shared.eventStore
+                )
+            }
             errorMessage = nil
             dismiss()
         } catch {
@@ -397,6 +419,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
     }
 
     let calendarID: String
+    let originalOwnerID: String?
     let calendarTitle: String
     let calendarColor: String
     let timeZone: String
@@ -441,7 +464,9 @@ private struct ICloudCalendarEmailInvitationsView: View {
                 } header: {
                     Text("People")
                 } footer: {
-                    Text("Reader can view the calendar. Writer can also change its events in Cloud Calendars.")
+                    Text(
+                        "Reader can view. Writer can edit events. Owner can also share the calendar and manage access."
+                    )
                 }
 
                 if let errorMessage {
@@ -532,7 +557,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
         access: Binding<CloudCalendarsAPI.EventAccess>
     ) -> some View {
         Menu {
-            ForEach(CloudCalendarsAPI.EventAccess.allCases) { option in
+            ForEach(CloudCalendarsAPI.EventAccess.calendarSharingCases) { option in
                 Button {
                     access.wrappedValue = option
                 } label: {
@@ -603,6 +628,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
             let session = try await CalendarFeedSession.current()
             let sharing = try await CloudCalendarsAPI.saveICloudCalendarSharing(
                 calendarId: calendarID,
+                ownerId: originalOwnerID,
                 title: calendarTitle,
                 color: calendarColor,
                 timeZone: timeZone,

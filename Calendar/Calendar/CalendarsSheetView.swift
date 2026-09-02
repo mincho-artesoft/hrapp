@@ -20,6 +20,8 @@ private struct ICloudCalendarSharingTarget: Identifiable {
     let calendarColor: String
     let timeZone: String
     let localCalendarIdentifier: String
+    let originalOwnerID: String?
+    let originalOwnerEmail: String?
 }
 
 struct CalendarsSheetView: View {
@@ -171,7 +173,9 @@ struct CalendarsSheetView: View {
                 calendarTitle: target.calendarTitle,
                 calendarColor: target.calendarColor,
                 timeZone: target.timeZone,
-                localCalendarIdentifier: target.localCalendarIdentifier
+                localCalendarIdentifier: target.localCalendarIdentifier,
+                originalOwnerID: target.originalOwnerID,
+                originalOwnerEmail: target.originalOwnerEmail
             )
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
@@ -204,7 +208,9 @@ struct CalendarsSheetView: View {
                                 calendarTitle: cal.title,
                                 calendarColor: calendarColorHex(cal),
                                 timeZone: TimeZone.current.identifier,
-                                localCalendarIdentifier: cal.calendarIdentifier
+                                localCalendarIdentifier: cal.calendarIdentifier,
+                                originalOwnerID: nil,
+                                originalOwnerEmail: nil
                             )
                         }
                     )
@@ -258,7 +264,18 @@ struct CalendarsSheetView: View {
                             toggleAction: {
                                 guard let localCalendar else { return }
                                 toggleCalendar(localCalendar)
-                            }
+                            },
+                            manageSharingAction: calendar.access == .owner && !calendar.isRevoked ? {
+                                iCloudCalendarSharingTarget = ICloudCalendarSharingTarget(
+                                    calendarID: calendar.calendarId,
+                                    calendarTitle: calendar.title,
+                                    calendarColor: calendar.color,
+                                    timeZone: calendar.timeZone,
+                                    localCalendarIdentifier: localCalendar?.calendarIdentifier ?? "",
+                                    originalOwnerID: calendar.ownerId,
+                                    originalOwnerEmail: calendar.ownerEmail
+                                )
+                            } : nil
                         )
                             .listRowSeparator(.hidden)
                     }
@@ -680,6 +697,7 @@ private struct SharedICloudCalendarRow: View {
     let localCalendar: EKCalendar?
     let isSelected: Bool
     let toggleAction: () -> Void
+    let manageSharingAction: (() -> Void)?
 
     var body: some View {
         HStack(spacing: 16) {
@@ -734,6 +752,16 @@ private struct SharedICloudCalendarRow: View {
             .padding(.horizontal, 9)
             .padding(.vertical, 5)
             .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
+
+            if let manageSharingAction {
+                Button(action: manageSharingAction) {
+                    Image(systemName: "person.2.fill")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.blue)
+                }
+                .buttonStyle(.borderless)
+                .accessibilityLabel("Manage calendar sharing")
+            }
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 5)

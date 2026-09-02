@@ -40,7 +40,18 @@ struct CalendarApp: App {
     init() {
         #if DEBUG
         // Must run before RootView.init, which reads the persisted tab.
-        MainActor.assumeIsolated { ScreenshotMode.applyIfNeeded() }
+        MainActor.assumeIsolated {
+            ScreenshotMode.applyIfNeeded()
+
+            if ProcessInfo.processInfo.environment["CLOUD_CALENDARS_STORAGE_SELF_TEST"] == "1" {
+                let succeeded = CalendarFeedSession.runStorageSelfTest()
+                UserDefaults.standard.set(
+                    succeeded,
+                    forKey: "CloudCalendarsStorageSelfTestSucceeded"
+                )
+                print("📁 [CloudAccount] Protected storage self-test=\(succeeded)")
+            }
+        }
 
         // Xcode's App Clip local experience supplies this value. Supporting it
         // in the full app as well makes the handoff screen testable locally.

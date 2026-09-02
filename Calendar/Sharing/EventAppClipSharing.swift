@@ -586,6 +586,10 @@ enum SharedOutgoingEventTracker {
         }
     }
 
+    static func sentEvent(localEventIdentifier: String) -> SentEvent? {
+        load().values.first { $0.localEventIdentifier == localEventIdentifier }
+    }
+
     /// Pushes edits made to the organiser's original EventKit events into the
     /// scoped feeds already handed to recipients. A missing original is sent
     /// as a cancellation once, rather than deleting recipients' local copies.
@@ -618,6 +622,13 @@ enum SharedOutgoingEventTracker {
 
             EventShareIdentity.removeLegacyMarker(from: event, store: eventStore)
 
+            // Cancellation is a terminal server state. Pulling a cancellation
+            // adds the visible “Cancelled:” marker to EventKit; that marker is
+            // not a user edit and must never be uploaded as a fresh confirmed
+            // revision on the next 20-second push cycle. Reactivation, if we
+            // add it later, must be an explicit API action.
+            guard original.isCancelled != true else { continue }
+
             // A received copy can never become a new owner revision, even if
             // corrupt local bookkeeping accidentally put it in both indexes.
             guard !SharedInviteTracker.isReceived(event),
@@ -627,7 +638,6 @@ enum SharedOutgoingEventTracker {
             let needsFeedRecovery = original.feedID == nil
             guard needsFeedRecovery
                     || currentSnapshot != original.lastUploadedSnapshot
-                    || original.isCancelled == true
                     || original.serverMetadataVersion != 2
             else { continue }
 
@@ -1135,10 +1145,50 @@ enum EventAppClipSharing {
 
     @MainActor
     static func shareableURL(for event: EKEvent) async -> URL? {
-        guard CloudAccountManager.shared.isSignedIn,
-              !SharedInviteTracker.isReceived(event),
-              let feedID = await syncedFeedID(for: event)
-        else { return nil }
+        guard CloudAccountManager.shared.isSignedIn else { return nil }
+
+        if let identifier = event.eventIdentifier,
+           let invite = SharedInviteTracker.invite(localEventIdentifier: identifier) {
+            guard invite.isRevoked != true, invite.effectiveAccess == .owner else { return nil }
+            // Forward the canonical event and its original scoped feed. A
+            // delegated Owner must never create a second S3 event or become
+            // indistinguishable from the first sharer.
+            guard let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines),
+                  !title.isEmpty,
+                  let start = event.startDate,
+                  let end = event.endDate
+            else { return nil }
+            do {
+                let session = try await CalendarFeedSession.current()
+                try await CloudCalendarsAPI.upsertEvent(
+                    SharedEventUpload(
+                        id: invite.eventID,
+                        title: title,
+                        start: start,
+                        end: end,
+                        isAllDay: event.isAllDay,
+                        location: event.location,
+                        url: EventShareIdentity.shareableURL(from: event),
+                        details: SharedEventDetails(event: event),
+                        localEventIdentifier: nil,
+                        organizerName: nil,
+                        organizerEmail: nil
+                    ),
+                    session: session,
+                    receivedFeedId: invite.feedID
+                )
+            } catch {
+                print("Share: delegated Owner upload failed - \(error.localizedDescription)")
+                return nil
+            }
+            return invocationURL(
+                for: event,
+                feedID: invite.feedID,
+                shareID: invite.eventID
+            )
+        }
+
+        guard let feedID = await syncedFeedID(for: event) else { return nil }
         return invocationURL(for: event, feedID: feedID)
     }
 
@@ -1151,7 +1201,9 @@ enum EventAppClipSharing {
         // registering it would create a second event rather than revise the
         // first. Those are shared as plain one-off links.
         guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return nil }
-        guard !SharedInviteTracker.isReceived(event) else { return nil }
+        if SharedInviteTracker.isReceived(event) {
+            return await shareableURL(for: event)
+        }
         guard let feedID = await syncedFeedID(for: event) else { return nil }
         return invocationURL(for: descriptor, feedID: feedID)
     }
@@ -1480,6 +1532,13 @@ enum EventAppClipSharing {
 
     @MainActor
     private static func recordCompletedShare(url: URL, localEventIdentifier: String?) {
+        if let localEventIdentifier,
+           SharedInviteTracker.invite(localEventIdentifier: localEventIdentifier) != nil {
+            // A delegated Owner is forwarding the first sharer's canonical
+            // event. It belongs in Shared with me, not Shared by me.
+            NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+            return
+        }
         SharedOutgoingEventTracker.record(
             url: url,
             localEventIdentifier: localEventIdentifier

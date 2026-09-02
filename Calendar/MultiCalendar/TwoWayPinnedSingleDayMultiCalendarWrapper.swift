@@ -163,16 +163,19 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate, @preconcurrency EKEventViewDelegate {
         @MainActor public func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
             if action == .deleted,
-               let identifier = controller.event?.eventIdentifier {
-                SharedInviteTracker.forget(localEventIdentifier: identifier)
+               let identifier = currentlyViewingEventID ?? controller.event?.eventIdentifier {
+                SharedInviteTracker.localEventWasDeleted(localEventIdentifier: identifier)
             }
+            currentlyViewingEventID = nil
             controller.dismiss(animated: true) {
                 self.reloadCurrentRange()
             }
         }
         
         let parent: TwoWayPinnedSingleDayMultiCalendarWrapper
+        var currentlyViewingEventID: String?
         var currentlyEditingEventWasNew = false
+        var currentlyEditingEventID: String?
         
         init(_ parent: TwoWayPinnedSingleDayMultiCalendarWrapper) {
             self.parent = parent
@@ -183,6 +186,12 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                                             didCompleteWith action: EKEventEditViewAction) {
             let shouldOfferSharing = action == .saved && currentlyEditingEventWasNew
             let completedEvent = controller.event
+            if action == .deleted, let currentlyEditingEventID {
+                SharedInviteTracker.localEventWasDeleted(
+                    localEventIdentifier: currentlyEditingEventID
+                )
+            }
+            currentlyEditingEventID = nil
             currentlyEditingEventWasNew = false
             controller.dismiss(animated: true) {
                 self.reloadCurrentRange()
@@ -317,6 +326,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 return
             }
             currentlyEditingEventWasNew = ekEvent.eventIdentifier == nil
+            currentlyEditingEventID = ekEvent.eventIdentifier
             let editVC = EKEventEditViewController()
             editVC.eventStore = parent.eventStore
             editVC.event = ekEvent
@@ -487,6 +497,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         }
         @MainActor
         public func presentSystemDetails(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+            currentlyViewingEventID = ekEvent.eventIdentifier
             let eventVC = ShareableEventViewController()
             eventVC.event = ekEvent
             eventVC.delegate = self

@@ -136,6 +136,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     ) -> UIMenu? {
         guard let descriptor = currentTappedDescriptor else { return nil }
         let isReadOnly = SharedInviteTracker.isReadOnly(descriptor)
+        let canShare = SharedInviteTracker.canShare(descriptor)
         
         // ------------------------------------------------
         // Проверка дали евентът вече има някакъв видео линк:
@@ -208,9 +209,12 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
             children.append(editAction)
 
+        }
+
         // ------------------------------------------------
         // (D) Share the event as an App Clip invocation link
         // ------------------------------------------------
+        if canShare {
             let shareAction = UIAction(
                 title: NSLocalizedString("Share", comment: "Share event action"),
                 image: UIImage(systemName: "square.and.arrow.up")
@@ -218,10 +222,12 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 EventAppClipSharing.present(for: descriptor, from: self)
             }
             children.append(shareAction)
+        }
 
         // ------------------------------------------------
         // (E) „Duplicate“ бутон
         // ------------------------------------------------
+        if !isReadOnly {
             let duplicateAction = UIAction(
                 title: NSLocalizedString("Duplicate", comment: ""),
                 image: UIImage(systemName: "doc.on.doc")
@@ -236,9 +242,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         // (F) „Delete“ бутон
         // ------------------------------------------------
         let deleteAction = UIAction(
-            title: isReadOnly
-                ? NSLocalizedString("Remove from My Calendar", comment: "Delete a received shared event locally")
-                : NSLocalizedString("Delete", comment: ""),
+            title: SharedInviteTracker.deletionAffectsEveryone(descriptor)
+                ? NSLocalizedString("Cancel for Everyone", comment: "Cancel a shared event for every recipient")
+                : SharedInviteTracker.isReceived(descriptor)
+                    ? NSLocalizedString("Remove from My Calendar", comment: "Delete a received shared event locally")
+                    : NSLocalizedString("Delete", comment: ""),
             image: UIImage(systemName: "trash"),
             attributes: .destructive
         ) { action in
@@ -296,7 +304,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         do {
             try store.remove(realEv, span: .thisEvent, commit: true)
             if let localIdentifier {
-                SharedInviteTracker.forget(localEventIdentifier: localIdentifier)
+                SharedInviteTracker.localEventWasDeleted(localEventIdentifier: localIdentifier)
             }
 //            print("Deleted event: \(realEv.title ?? "")")
         } catch {

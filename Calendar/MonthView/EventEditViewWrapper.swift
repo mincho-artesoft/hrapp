@@ -37,10 +37,12 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
     class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate {
         let parent: EventEditViewWrapper
         let eventWasNew: Bool
+        let originalEventIdentifier: String?
         
         init(_ parent: EventEditViewWrapper) {
             self.parent = parent
             self.eventWasNew = parent.event.eventIdentifier == nil
+            self.originalEventIdentifier = parent.event.eventIdentifier
         }
         
         @MainActor func eventEditViewController(_ controller: EKEventEditViewController,
@@ -55,6 +57,11 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
                    eventWasNew,
                    let event = controller.event {
                     EventSharePromptManager.shared.show(for: event)
+                }
+                if action == .deleted, let originalEventIdentifier {
+                    SharedInviteTracker.localEventWasDeleted(
+                        localEventIdentifier: originalEventIdentifier
+                    )
                 }
                 // CalendarViewModel.shared.reloadCalendars()
                 // Извикваме и подадения callback, ако е зададен

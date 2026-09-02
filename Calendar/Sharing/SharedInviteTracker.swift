@@ -147,6 +147,21 @@ enum SharedInviteTracker {
         return isReadOnly(event)
     }
 
+    /// Locally-created events remain shareable by their creator. A received
+    /// event may be forwarded only when the first sharer explicitly delegated
+    /// Owner access to this signed-in recipient.
+    static func canShare(_ event: EKEvent) -> Bool {
+        guard let identifier = event.eventIdentifier,
+              let invite = invite(localEventIdentifier: identifier)
+        else { return true }
+        return invite.isRevoked != true && invite.effectiveAccess == .owner
+    }
+
+    static func canShare(_ descriptor: EventDescriptor) -> Bool {
+        guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return true }
+        return canShare(event)
+    }
+
     static func invite(localEventIdentifier: String) -> Invite? {
         tracked().values.first { $0.localEventIdentifier == localEventIdentifier }
     }
@@ -154,6 +169,11 @@ enum SharedInviteTracker {
     static func isReceived(_ event: EKEvent) -> Bool {
         guard let identifier = event.eventIdentifier else { return false }
         return invite(localEventIdentifier: identifier) != nil
+    }
+
+    static func isReceived(_ descriptor: EventDescriptor) -> Bool {
+        guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return false }
+        return isReceived(event)
     }
 
     static func demoteAllToReader() {
@@ -187,6 +207,40 @@ enum SharedInviteTracker {
         NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
     }
 
+    /// Called after EventKit has deleted one local copy. Reader and Writer
+    /// removals stop only that recipient's tracking. A delegated Owner keeps
+    /// the record just long enough for the refresher to cancel the canonical
+    /// S3 event, which also reaches the first sharer and every other recipient.
+    static func localEventWasDeleted(localEventIdentifier: String) {
+        guard let invite = invite(localEventIdentifier: localEventIdentifier) else {
+            // A missing locally-created shared event is translated into a
+            // server cancellation by SharedOutgoingEventTracker.
+            SharedEventSyncManager.eventStoreDidChange()
+            return
+        }
+
+        if invite.isRevoked != true, invite.effectiveAccess == .owner {
+            Task { await SharedInviteRefresher.refreshAll() }
+        } else {
+            forget(eventID: invite.eventID)
+        }
+        NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
+        NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+    }
+
+    static func deletionAffectsEveryone(_ event: EKEvent) -> Bool {
+        guard let identifier = event.eventIdentifier else { return false }
+        if let invite = invite(localEventIdentifier: identifier) {
+            return invite.isRevoked != true && invite.effectiveAccess == .owner
+        }
+        return SharedOutgoingEventTracker.sentEvent(localEventIdentifier: identifier) != nil
+    }
+
+    static func deletionAffectsEveryone(_ descriptor: EventDescriptor) -> Bool {
+        guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return false }
+        return deletionAffectsEveryone(event)
+    }
+
     /// Whether this event was called off by whoever sent it. The app draws such
     /// events struck through rather than removing them - the same thing Apple's
     /// Calendar does, and for the same reason: seeing that a meeting was called
@@ -214,7 +268,17 @@ enum SharedInviteTracker {
             return true
         }
         guard let identifier = event.eventIdentifier else { return false }
-        return shouldAppearStruckThrough(localEventIdentifier: identifier)
+        if shouldAppearStruckThrough(localEventIdentifier: identifier) {
+            return true
+        }
+
+        // The first sharer's EventKit copy is tracked by the outgoing index,
+        // not by `Invite`. A delegated Owner cancellation updates that index
+        // and prefixes the title with “Cancelled:”, so include the same state
+        // in the visual strike-through decision as for recipient copies.
+        return SharedOutgoingEventTracker
+            .sentEvent(localEventIdentifier: identifier)?
+            .isCancelled == true
     }
 
     static func shouldAppearStruckThrough(_ descriptor: EventDescriptor) -> Bool {

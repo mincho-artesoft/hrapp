@@ -1,5 +1,4 @@
 import Foundation
-import Security
 
 /// Owns the device's link to the sync service.
 ///
@@ -15,6 +14,7 @@ enum CalendarFeedSession {
     enum SessionError: LocalizedError {
         case signInRequired
         case emailRequired
+        case sessionStorageFailed
 
         var errorDescription: String? {
             switch self {
@@ -28,12 +28,17 @@ enum CalendarFeedSession {
                     "Share a verified email during sign-in to use synced events and invitations.",
                     comment: "Verified email required error"
                 )
+            case .sessionStorageFailed:
+                NSLocalizedString(
+                    "Cloud Calendars couldn’t save the session on this device. Please try again.",
+                    comment: "Cloud account sandbox persistence error"
+                )
             }
         }
     }
 
-    private static let keychainService = "com.cloudcalendars.feedsession"
-    private static let keychainAccount = "session"
+    private static let storageDirectoryName = "CloudCalendars"
+    private static let storageFileName = "feed-session.json"
 
     private static var cached: CloudCalendarsAPI.Session?
 
@@ -57,16 +62,15 @@ enum CalendarFeedSession {
 
     private static var rawExisting: CloudCalendarsAPI.Session? {
         if let cached { return cached }
-        guard let stored = loadFromKeychain() else { return nil }
+        guard let stored = loadFromStorage() else { return nil }
         cached = stored
         return stored
     }
 
     static func forget() {
         cached = nil
-        var query = baseQuery()
-        query[kSecClass as String] = kSecClassGenericPassword
-        SecItemDelete(query as CFDictionary)
+        guard let url = try? storageURL(createDirectory: false) else { return }
+        try? FileManager.default.removeItem(at: url)
     }
 
     /// Disconnects one provider while retaining the stable shared-events
@@ -79,7 +83,7 @@ enum CalendarFeedSession {
             session: session
         )
         guard sessionHasVerifiedEmail(updated) else { throw SessionError.emailRequired }
-        store(updated)
+        try store(updated)
         return updated
     }
 
@@ -142,7 +146,7 @@ enum CalendarFeedSession {
             ownerId: resolved.ownerId,
             identities: identitiesByProvider.values.sorted { $0.provider < $1.provider }
         )
-        store(authenticated)
+        try store(authenticated)
         return authenticated
     }
 
@@ -157,42 +161,85 @@ enum CalendarFeedSession {
         return (session.identities ?? []).contains { validEmail($0.email) }
     }
 
-    // MARK: - Keychain
+    // MARK: - Device-local storage
     //
-    // The device token is a bearer credential for someone's calendar, so it
-    // belongs in the keychain rather than in UserDefaults - and with
-    // ThisDeviceOnly, because a token restored onto a second device from a
-    // backup would have both of them writing as the same client.
+    // The sharing session deliberately does not use Keychain. It lives in the
+    // app's private Application Support directory with iOS data protection and
+    // therefore disappears on uninstall. A user can recover the server account
+    // by signing in again with any linked identity.
 
-    private static func baseQuery() -> [String: Any] {
-        [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrService as String: keychainService,
-            kSecAttrAccount as String: keychainAccount
-        ]
+    private static func storageURL(createDirectory: Bool) throws -> URL {
+        guard let root = FileManager.default.urls(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask
+        ).first else {
+            throw SessionError.sessionStorageFailed
+        }
+
+        let directory = root.appendingPathComponent(
+            storageDirectoryName,
+            isDirectory: true
+        )
+        if createDirectory {
+            do {
+                try FileManager.default.createDirectory(
+                    at: directory,
+                    withIntermediateDirectories: true,
+                    attributes: [
+                        .protectionKey: FileProtectionType.completeUntilFirstUserAuthentication
+                    ]
+                )
+            } catch {
+                throw SessionError.sessionStorageFailed
+            }
+        }
+        return directory.appendingPathComponent(storageFileName, isDirectory: false)
     }
 
-    private static func store(_ session: CloudCalendarsAPI.Session) {
+    private static func store(_ session: CloudCalendarsAPI.Session) throws {
+        do {
+            let data = try JSONEncoder().encode(session)
+            let url = try storageURL(createDirectory: true)
+            try data.write(
+                to: url,
+                options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication]
+            )
+        } catch {
+            throw SessionError.sessionStorageFailed
+        }
+
+        // Never expose an in-memory authenticated account unless its session is
+        // durably stored. Otherwise the UI would look connected only until the
+        // next launch.
         cached = session
-        guard let data = try? JSONEncoder().encode(session) else { return }
-
-        var query = baseQuery()
-        SecItemDelete(query as CFDictionary)
-        query[kSecValueData as String] = data
-        query[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-        SecItemAdd(query as CFDictionary, nil)
     }
 
-    private static func loadFromKeychain() -> CloudCalendarsAPI.Session? {
-        var query = baseQuery()
-        query[kSecReturnData as String] = true
-        query[kSecMatchLimit as String] = kSecMatchLimitOne
-
-        var item: CFTypeRef?
-        guard SecItemCopyMatching(query as CFDictionary, &item) == errSecSuccess,
-              let data = item as? Data
+    private static func loadFromStorage() -> CloudCalendarsAPI.Session? {
+        guard let url = try? storageURL(createDirectory: false),
+              let data = try? Data(contentsOf: url)
         else { return nil }
-
         return try? JSONDecoder().decode(CloudCalendarsAPI.Session.self, from: data)
     }
+
+    #if DEBUG
+    /// Opt-in launch-time smoke test for the exact protected-file mechanism.
+    static func runStorageSelfTest() -> Bool {
+        do {
+            let sessionURL = try storageURL(createDirectory: true)
+            let probeURL = sessionURL
+                .deletingLastPathComponent()
+                .appendingPathComponent("storage-probe", isDirectory: false)
+            let probe = Data("cloud-calendars-storage-probe".utf8)
+            try probe.write(
+                to: probeURL,
+                options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication]
+            )
+            let loaded = try Data(contentsOf: probeURL)
+            try FileManager.default.removeItem(at: probeURL)
+            return loaded == probe
+        } catch {
+            return false
+        }
+    }
+    #endif
 }

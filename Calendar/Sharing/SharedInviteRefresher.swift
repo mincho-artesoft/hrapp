@@ -35,6 +35,36 @@ enum SharedInviteRefresher {
         // calendar until they delete it locally, but no longer talks to S3.
         guard original.isRevoked != true else { return false }
 
+        // Removing a received Writer/Reader copy is strictly local. Removing a
+        // delegated Owner copy is different: Owner is allowed to call off the
+        // canonical event for everybody, including the first sharer. Handle
+        // this before fetching the feed so the missing EventKit copy is not
+        // mistaken for an ordinary local opt-out.
+        if CalendarViewModel.shared.eventStore.event(
+            withIdentifier: original.localEventIdentifier
+        ) == nil {
+            if original.effectiveAccess == .owner,
+               let session = CalendarFeedSession.existing {
+                do {
+                    try await CloudCalendarsAPI.cancelEvent(
+                        id: original.eventID,
+                        session: session
+                    )
+                    SharedInviteTracker.forget(eventID: original.eventID)
+                    return true
+                } catch {
+                    print("Delegated Owner cancellation failed for \(original.eventID) - \(error.localizedDescription)")
+                    // Keep the tracking record so the next sync can retry the
+                    // cancellation instead of silently degrading to a local
+                    // removal.
+                    return false
+                }
+            }
+            if original.effectiveAccess == .owner { return false }
+            SharedInviteTracker.forget(eventID: original.eventID)
+            return true
+        }
+
         var invite = original
         var accessChanged = false
 
@@ -99,7 +129,7 @@ enum SharedInviteRefresher {
             }
 
             if invite.effectiveAccess != .reader {
-                // Writer is an account permission. A signed-out device can still
+                // Writer and Owner are account permissions. A signed-out device can still
                 // receive and follow the event, but must fall back to Reader.
                 invite.access = .reader
                 SharedInviteTracker.update(invite)
@@ -118,7 +148,7 @@ enum SharedInviteRefresher {
             // At an unchanged server revision, a Writer's local difference is
             // a new edit. Push it before the normal pull step can restore the
             // old S3 value. A newer server revision always wins first.
-            if invite.effectiveAccess == .writer,
+            if invite.effectiveAccess == .writer || invite.effectiveAccess == .owner,
                remote.sequence == invite.lastSequence,
                let session = CalendarFeedSession.existing,
                let event = CalendarViewModel.shared.eventStore

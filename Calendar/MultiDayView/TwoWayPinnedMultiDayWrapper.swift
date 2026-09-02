@@ -168,15 +168,17 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     public class Coordinator: NSObject, @preconcurrency EKEventEditViewDelegate, @preconcurrency EKEventViewDelegate {
         @MainActor public func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
                 if action == .deleted,
-                   let identifier = controller.event?.eventIdentifier {
-                    SharedInviteTracker.forget(localEventIdentifier: identifier)
+                   let identifier = currentlyViewingEventID ?? controller.event?.eventIdentifier {
+                    SharedInviteTracker.localEventWasDeleted(localEventIdentifier: identifier)
                 }
+                currentlyViewingEventID = nil
                 controller.dismiss(animated: true) {
                     self.reloadCurrentRange()
                 }
         }
         
         let parent: TwoWayPinnedMultiDayWrapper
+        var currentlyViewingEventID: String?
         var currentlyEditingEventID: String? = nil
         var currentlyEditingEventWasNew = false
 
@@ -197,6 +199,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                         EventSharePromptManager.shared.show(for: completedEvent)
                     }
                 }
+                currentlyEditingEventID = nil
                 currentlyEditingEventWasNew = false
             }
             switch action {
@@ -248,6 +251,9 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                             print("Не го намираме в eventStore => вече е изтрито.")
                         }
                     }
+                }
+                if let identifier = self.currentlyEditingEventID {
+                    SharedInviteTracker.localEventWasDeleted(localEventIdentifier: identifier)
                 }
                 
             @unknown default:
@@ -317,6 +323,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         }
         @MainActor
         public func presentSystemDetails(_ ekEvent: EKEvent, in parentVC: UIViewController) {
+            currentlyViewingEventID = ekEvent.eventIdentifier
             let eventVC = ShareableEventViewController()
             eventVC.event = ekEvent
             eventVC.delegate = self
