@@ -12,6 +12,7 @@ enum SharedICloudCalendarLocalStore {
     private static let defaultsKey = "SharedICloudCalendarLocalIdentifiers"
     private static let eventDefaultsKey = "SharedICloudCalendarLocalEventIdentifiers.v1"
     private static let ownedDefaultsKey = "SharedICloudCalendarOwnedIdentifiers.v1"
+    private static let revokedDefaultsKey = "SharedICloudCalendarRevokedShareIDs.v1"
     private static var isRefreshing = false
     private static var isUploading = false
     private static var didDiscoverOwnedCalendars = false
@@ -27,6 +28,27 @@ enum SharedICloudCalendarLocalStore {
 
     static var allLocalCalendarIdentifiers: Set<String> {
         Set(identifiers.values)
+    }
+
+    /// Safe for the synchronous event-rendering paths. Those views need to
+    /// decide whether to draw a strike-through without starting an async sync.
+    nonisolated static func isRevoked(localCalendarIdentifier: String) -> Bool {
+        let mappings = UserDefaults.standard.dictionary(
+            forKey: "SharedICloudCalendarLocalIdentifiers"
+        ) as? [String: String] ?? [:]
+        let revoked = Set(
+            UserDefaults.standard.stringArray(
+                forKey: "SharedICloudCalendarRevokedShareIDs.v1"
+            ) ?? []
+        )
+        return mappings.contains {
+            $0.value == localCalendarIdentifier && revoked.contains($0.key)
+        }
+    }
+
+    private static var revokedShareIDs: Set<String> {
+        get { Set(UserDefaults.standard.stringArray(forKey: revokedDefaultsKey) ?? []) }
+        set { UserDefaults.standard.set(Array(newValue).sorted(), forKey: revokedDefaultsKey) }
     }
 
     private static var eventIdentifiers: [String: [String: String]] {
@@ -56,6 +78,24 @@ enum SharedICloudCalendarLocalStore {
         ownedIdentifiers = values
     }
 
+    static func markOwnedCalendarDeleted(shareID: String) async {
+        guard let session = CalendarFeedSession.existing else { return }
+        do {
+            try await CloudCalendarsAPI.deleteICloudCalendarSharing(
+                calendarId: shareID,
+                session: session
+            )
+            var values = ownedIdentifiers
+            values.removeValue(forKey: shareID)
+            ownedIdentifiers = values
+        } catch {
+            print(
+                "Shared calendar deletion sync failed for \(shareID): "
+                    + error.localizedDescription
+            )
+        }
+    }
+
     /// Pushes the current owner-side EventKit calendar to the canonical S3
     /// snapshot. Metadata is included on every pass, which also repairs name
     /// and color changes made from the normal calendar editor.
@@ -75,7 +115,18 @@ enum SharedICloudCalendarLocalStore {
 
         for (shareID, localIdentifier) in ownedIdentifiers {
             guard let localCalendar = eventStore.calendar(withIdentifier: localIdentifier) else {
-                validMappings.removeValue(forKey: shareID)
+                do {
+                    try await CloudCalendarsAPI.deleteICloudCalendarSharing(
+                        calendarId: shareID,
+                        session: session
+                    )
+                    validMappings.removeValue(forKey: shareID)
+                } catch {
+                    print(
+                        "Shared calendar deletion sync failed for \(shareID): "
+                            + error.localizedDescription
+                    )
+                }
                 continue
             }
 
@@ -225,9 +276,13 @@ enum SharedICloudCalendarLocalStore {
         _ sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar,
         in eventStore: EKEventStore
     ) throws -> (calendar: EKCalendar, created: Bool, changed: Bool) {
+        let revocationChanged = setRevoked(
+            sharedCalendar.isRevoked,
+            shareID: sharedCalendar.id
+        )
         if let existing = localCalendar(for: sharedCalendar, in: eventStore) {
             let color = uiColor(sharedCalendar.color)
-            var changed = false
+            var changed = revocationChanged
             if existing.title != sharedCalendar.title
                 || !colorsMatch(existing.cgColor, color.cgColor) {
                 existing.title = sharedCalendar.title
@@ -260,6 +315,19 @@ enum SharedICloudCalendarLocalStore {
         identifiers = updated
         _ = try reconcileEvents(sharedCalendar, into: calendar, eventStore: eventStore)
         return (calendar, true, true)
+    }
+
+    @discardableResult
+    private static func setRevoked(_ revoked: Bool, shareID: String) -> Bool {
+        var values = revokedShareIDs
+        let changed: Bool
+        if revoked {
+            changed = values.insert(shareID).inserted
+        } else {
+            changed = values.remove(shareID) != nil
+        }
+        if changed { revokedShareIDs = values }
+        return changed
     }
 
     private static func portableEvent(

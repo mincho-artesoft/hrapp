@@ -304,6 +304,11 @@ enum CloudCalendarsAPI {
         let eventsUpdatedAt: String?
         let windowStart: String?
         let windowEnd: String?
+        let revokedAt: String?
+        let revokedReason: String?
+
+        var isRevoked: Bool { revokedAt != nil }
+        var wasDeletedByOwner: Bool { revokedReason == "owner_deleted" }
 
         var windowStartDate: Date? { Self.date(windowStart) }
         var windowEndDate: Date? { Self.date(windowEnd) }
@@ -660,6 +665,18 @@ enum CloudCalendarsAPI {
             bearer: session.deviceToken
         )
         return response.calendar
+    }
+
+    static func deleteICloudCalendarSharing(
+        calendarId: String,
+        session: Session
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/icloud-calendars/\(calendarId)/sharing",
+            method: "DELETE",
+            body: nil,
+            bearer: session.deviceToken
+        )
     }
 
     static func saveICloudCalendarEvents(

@@ -16,6 +16,7 @@ struct ICloudCalendarSharingView: View {
     @State private var errorMessage: String?
     @State private var showQRCode = false
     @State private var showEmailInvitations = false
+    @State private var recipientPendingRemoval: CloudCalendarsAPI.ICloudCalendarRecipient?
 
     var body: some View {
         NavigationStack {
@@ -75,6 +76,27 @@ struct ICloudCalendarSharingView: View {
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
             }
+            .confirmationDialog(
+                "Remove calendar access?",
+                isPresented: Binding(
+                    get: { recipientPendingRemoval != nil },
+                    set: { if !$0 { recipientPendingRemoval = nil } }
+                ),
+                presenting: recipientPendingRemoval
+            ) { recipient in
+                Button("Remove Access", role: .destructive) {
+                    recipients.removeAll { $0.id == recipient.id }
+                    recipientPendingRemoval = nil
+                }
+                Button("Cancel", role: .cancel) {
+                    recipientPendingRemoval = nil
+                }
+            } message: { recipient in
+                Text(
+                    "Stop sharing this calendar with \(recipient.email)? "
+                        + "After Save, their frozen copy and its events will remain visible with a line through them."
+                )
+            }
         }
     }
 
@@ -106,7 +128,7 @@ struct ICloudCalendarSharingView: View {
                         accessPicker(access: $recipient.access)
 
                         Button(role: .destructive) {
-                            recipients.removeAll { $0.id == recipient.id }
+                            recipientPendingRemoval = recipient
                         } label: {
                             Image(systemName: "person.crop.circle.badge.minus")
                                 .font(.title3)

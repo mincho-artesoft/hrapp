@@ -177,8 +177,7 @@ open class EventView: UIView {
         // Invitations cancelled by their owner or whose access was revoked stay
         // visible with a line through them. Keep the line explicitly in the
         // event colour so every text fragment uses the same appearance.
-        if let identifier = wrapper.realEvent.eventIdentifier,
-           SharedInviteTracker.shouldAppearStruckThrough(localEventIdentifier: identifier) {
+        if SharedInviteTracker.shouldAppearStruckThrough(wrapper.realEvent) {
             finalString.addAttributes(
                 [
                     .strikethroughStyle: NSUnderlineStyle.single.rawValue,

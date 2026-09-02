@@ -162,12 +162,22 @@ struct EditCalendarView: View {
     }
 
     private func deleteCalendar() {
+        let rawCalendarIdentifier = calendar.calendarIdentifier
+        let sharedCalendarID = SHA256.hash(data: Data(rawCalendarIdentifier.utf8))
+            .map { String(format: "%02x", $0) }
+            .joined()
         do {
             try eventStore.removeCalendar(calendar, commit: true)
             eventStore.reset()
 
+            Task { @MainActor in
+                await SharedICloudCalendarLocalStore.markOwnedCalendarDeleted(
+                    shareID: sharedCalendarID
+                )
+            }
+
             // Ако calendar е бил селектиран, махаме го от selectedCalendarIDs
-            CalendarViewModel.shared.selectedCalendarIDs.remove(calendar.calendarIdentifier)
+            CalendarViewModel.shared.selectedCalendarIDs.remove(rawCalendarIdentifier)
 
             // Reload в ViewModel
             CalendarViewModel.shared.reloadCalendars()

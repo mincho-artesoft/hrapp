@@ -131,6 +131,12 @@ enum SharedInviteTracker {
     /// decision here gives every editor, drag gesture, and share action the
     /// same answer.
     static func isReadOnly(_ event: EKEvent) -> Bool {
+        if let calendarIdentifier = event.calendar?.calendarIdentifier,
+           SharedICloudCalendarLocalStore.isRevoked(
+                localCalendarIdentifier: calendarIdentifier
+           ) {
+            return true
+        }
         guard let identifier = event.eventIdentifier else { return false }
         guard let invite = invite(localEventIdentifier: identifier) else { return false }
         return invite.isRevoked == true || invite.effectiveAccess == .reader
@@ -201,6 +207,12 @@ enum SharedInviteTracker {
     }
 
     static func shouldAppearStruckThrough(_ event: EKEvent) -> Bool {
+        if let calendarIdentifier = event.calendar?.calendarIdentifier,
+           SharedICloudCalendarLocalStore.isRevoked(
+                localCalendarIdentifier: calendarIdentifier
+           ) {
+            return true
+        }
         guard let identifier = event.eventIdentifier else { return false }
         return shouldAppearStruckThrough(localEventIdentifier: identifier)
     }

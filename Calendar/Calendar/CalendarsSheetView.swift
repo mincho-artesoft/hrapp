@@ -701,6 +701,7 @@ private struct SharedICloudCalendarRow: View {
                         Text(calendar.title)
                             .foregroundStyle(.primary)
                             .lineLimit(1)
+                            .strikethrough(calendar.isRevoked, color: calendarColor)
 
                         if let ownerEmail = calendar.ownerEmail, !ownerEmail.isEmpty {
                             Text(ownerEmail)
@@ -717,16 +718,22 @@ private struct SharedICloudCalendarRow: View {
 
             Spacer(minLength: 8)
 
-            Text(calendar.access.title)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(
-                    calendar.access == .writer
+            Text(
+                calendar.isRevoked
+                    ? (calendar.wasDeletedByOwner ? "Deleted by owner" : "Access removed")
+                    : calendar.access.title
+            )
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(
+                calendar.isRevoked
+                    ? Color.red
+                    : (calendar.access == .writer
                         ? Color.green
-                        : Color(uiColor: .secondaryLabel)
-                )
-                .padding(.horizontal, 9)
-                .padding(.vertical, 5)
-                .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
+                        : Color(uiColor: .secondaryLabel))
+            )
+            .padding(.horizontal, 9)
+            .padding(.vertical, 5)
+            .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 5)
