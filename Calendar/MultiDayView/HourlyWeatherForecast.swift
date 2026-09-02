@@ -52,6 +52,7 @@ public final class HoursColumnWeatherView: UIView {
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard UIGraphicsGetCurrentContext() != nil else { return }
+        let isRTL = effectiveUserInterfaceLayoutDirection == .rightToLeft
         
         // Широчина на зоната за прогнозна информация (вляво)
         let forecastAreaWidth: CGFloat = displayWeatherForecast ? 40 : 0
@@ -97,9 +98,12 @@ public final class HoursColumnWeatherView: UIView {
                     let newHeight = fixedWidth * aspectRatio
                     
                     // Позициониране на иконата (с фиксиран offset)
-                    let iconX = (forecastAreaWidth - fixedWidth) / 2
+                    let iconX = (forecastAreaWidth - fixedWidth) / 2 + 15
+                    let resolvedIconX = isRTL
+                        ? bounds.width - iconX - fixedWidth
+                        : iconX
                     let iconTopY = yCenter - newHeight / 2
-                    let iconRect = CGRect(x: iconX + 15,
+                    let iconRect = CGRect(x: resolvedIconX,
                                           y: iconTopY + 20,
                                           width: fixedWidth,
                                           height: newHeight)

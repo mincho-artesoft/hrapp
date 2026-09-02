@@ -270,7 +270,7 @@ struct ICloudCalendarSharingView: View {
                 Text(ownerEmail)
                     .lineLimit(1)
                     .truncationMode(.middle)
-                Text("Owner")
+                Text("Original creator")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

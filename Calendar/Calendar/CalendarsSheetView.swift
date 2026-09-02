@@ -24,6 +24,14 @@ private struct ICloudCalendarSharingTarget: Identifiable {
     let originalOwnerEmail: String?
 }
 
+private struct SharedICloudCalendarEditTarget: Identifiable {
+    let id = UUID()
+    let calendar: EKCalendar
+    let ownerID: String
+    let calendarID: String
+    let access: CloudCalendarsAPI.EventAccess
+}
+
 struct CalendarsSheetView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: CalendarViewModel = .shared
@@ -45,6 +53,7 @@ struct CalendarsSheetView: View {
     @State private var addingGoogleCalendarColor: UIColor? = nil
     @State private var googleCalendarSharingTarget: GoogleCalendarSharingTarget?
     @State private var iCloudCalendarSharingTarget: ICloudCalendarSharingTarget?
+    @State private var sharedICloudCalendarEditTarget: SharedICloudCalendarEditTarget?
     @State private var sharedICloudCalendars: [CloudCalendarsAPI.SharedICloudCalendar] = []
     @State private var isLoadingSharedICloudCalendars = false
     @State private var sharedICloudCalendarsError: String?
@@ -129,6 +138,22 @@ struct CalendarsSheetView: View {
             viewModel.reloadCalendars()
         }) { cal in
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
+        }
+
+        .sheet(item: $sharedICloudCalendarEditTarget, onDismiss: {
+            viewModel.reloadCalendars()
+            Task { await loadSharedICloudCalendars() }
+        }) { target in
+            EditCalendarView(
+                eventStore: viewModel.eventStore,
+                calendar: target.calendar,
+                sharedContext: SharedCalendarEditContext(
+                    ownerID: target.ownerID,
+                    calendarID: target.calendarID,
+                    access: target.access,
+                    isOriginalCreator: false
+                )
+            )
         }
 
         // Add iCloud Calendar
@@ -275,7 +300,19 @@ struct CalendarsSheetView: View {
                                     originalOwnerID: calendar.ownerId,
                                     originalOwnerEmail: calendar.ownerEmail
                                 )
-                            } : nil
+                            } : nil,
+                            editAction: calendar.access == .owner && !calendar.isRevoked
+                                ? localCalendar.map { editableCalendar in
+                                    {
+                                        sharedICloudCalendarEditTarget = SharedICloudCalendarEditTarget(
+                                            calendar: editableCalendar,
+                                            ownerID: calendar.ownerId,
+                                            calendarID: calendar.calendarId,
+                                            access: calendar.access
+                                        )
+                                    }
+                                }
+                                : nil
                         )
                             .listRowSeparator(.hidden)
                     }
@@ -622,35 +659,18 @@ struct CalendarsSheetView: View {
         isLoadingSharedICloudCalendars = true
         defer { isLoadingSharedICloudCalendars = false }
         do {
+            // Push permitted Writer/Owner changes before reading the latest
+            // server snapshot. Reconciling the fetched payload directly here
+            // used to overwrite a local edit before the foreground sync could
+            // upload it.
+            _ = await SharedICloudCalendarLocalStore.refreshAll()
             let fetchedCalendars = try await CloudCalendarsAPI
                 .iCloudCalendarsSharedWithMe(session: session)
-
-            var reconciliationError: Error?
-            var shouldReloadCalendars = false
-            for sharedCalendar in fetchedCalendars {
-                do {
-                    let result = try SharedICloudCalendarLocalStore.reconcile(
-                        sharedCalendar,
-                        in: viewModel.eventStore
-                    )
-                    if result.created {
-                        viewModel.selectedCalendarIDs.insert(
-                            result.calendar.calendarIdentifier
-                        )
-                    }
-                    shouldReloadCalendars = shouldReloadCalendars || result.changed
-                } catch {
-                    reconciliationError = error
-                }
-            }
 
             if sharedICloudCalendars != fetchedCalendars {
                 sharedICloudCalendars = fetchedCalendars
             }
-            if shouldReloadCalendars {
-                viewModel.reloadCalendars()
-            }
-            sharedICloudCalendarsError = reconciliationError?.localizedDescription
+            sharedICloudCalendarsError = nil
         } catch {
             sharedICloudCalendarsError = error.localizedDescription
         }
@@ -698,6 +718,7 @@ private struct SharedICloudCalendarRow: View {
     let isSelected: Bool
     let toggleAction: () -> Void
     let manageSharingAction: (() -> Void)?
+    let editAction: (() -> Void)?
 
     var body: some View {
         HStack(spacing: 16) {
@@ -752,6 +773,16 @@ private struct SharedICloudCalendarRow: View {
             .padding(.horizontal, 9)
             .padding(.vertical, 5)
             .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
+
+            if let editAction {
+                Button(action: editAction) {
+                    Image(systemName: "pencil")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(.blue)
+                }
+                .buttonStyle(.borderless)
+                .accessibilityLabel("Edit shared calendar")
+            }
 
             if let manageSharingAction {
                 Button(action: manageSharingAction) {

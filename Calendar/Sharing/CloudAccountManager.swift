@@ -467,6 +467,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         // retained. Calendar provider sessions remain entirely independent.
         CalendarFeedSession.forget()
         SharedInviteTracker.demoteAllToReader()
+        SharedICloudCalendarLocalStore.demoteAllToReader()
         account = nil
         providerErrors.removeAll()
         NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)

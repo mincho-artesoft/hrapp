@@ -13,9 +13,17 @@ enum SharedICloudCalendarLocalStore {
     private static let eventDefaultsKey = "SharedICloudCalendarLocalEventIdentifiers.v1"
     private static let ownedDefaultsKey = "SharedICloudCalendarOwnedIdentifiers.v1"
     private static let revokedDefaultsKey = "SharedICloudCalendarRevokedShareIDs.v1"
+    private static let accessDefaultsKey = "SharedICloudCalendarAccessByShareID.v1"
+    private static let syncBaselineDefaultsKey = "SharedICloudCalendarSyncBaselines.v1"
     private static var isRefreshing = false
     private static var isUploading = false
     private static var didDiscoverOwnedCalendars = false
+
+    private struct SyncBaseline: Codable, Equatable {
+        let eventFingerprint: String
+        let title: String
+        let color: String
+    }
 
     private static var identifiers: [String: String] {
         get {
@@ -28,6 +36,50 @@ enum SharedICloudCalendarLocalStore {
 
     static var allLocalCalendarIdentifiers: Set<String> {
         Set(identifiers.values)
+    }
+
+    /// Calendar-level shares use the same permission semantics as event
+    /// shares. Keep the lookup synchronous because drag, edit, and EventKit
+    /// detail views must decide immediately whether an event is writable.
+    nonisolated static func access(
+        localCalendarIdentifier: String
+    ) -> CloudCalendarsAPI.EventAccess? {
+        let mappings = UserDefaults.standard.dictionary(
+            forKey: "SharedICloudCalendarLocalIdentifiers"
+        ) as? [String: String] ?? [:]
+        guard let shareID = mappings.first(where: {
+            $0.value == localCalendarIdentifier
+        })?.key else { return nil }
+        let rawValues = UserDefaults.standard.dictionary(
+            forKey: "SharedICloudCalendarAccessByShareID.v1"
+        ) as? [String: String] ?? [:]
+        return rawValues[shareID].flatMap(CloudCalendarsAPI.EventAccess.init(rawValue:))
+            ?? .reader
+    }
+
+    nonisolated static func isShared(
+        localCalendarIdentifier: String
+    ) -> Bool {
+        let mappings = UserDefaults.standard.dictionary(
+            forKey: "SharedICloudCalendarLocalIdentifiers"
+        ) as? [String: String] ?? [:]
+        return mappings.values.contains(localCalendarIdentifier)
+    }
+
+    nonisolated static func canEditEvents(
+        localCalendarIdentifier: String
+    ) -> Bool {
+        guard !isRevoked(localCalendarIdentifier: localCalendarIdentifier),
+              let access = access(localCalendarIdentifier: localCalendarIdentifier)
+        else { return false }
+        return access == .writer || access == .owner
+    }
+
+    nonisolated static func canManageSharing(
+        localCalendarIdentifier: String
+    ) -> Bool {
+        !isRevoked(localCalendarIdentifier: localCalendarIdentifier)
+            && access(localCalendarIdentifier: localCalendarIdentifier) == .owner
     }
 
     /// Safe for the synchronous event-rendering paths. Those views need to
@@ -49,6 +101,39 @@ enum SharedICloudCalendarLocalStore {
     private static var revokedShareIDs: Set<String> {
         get { Set(UserDefaults.standard.stringArray(forKey: revokedDefaultsKey) ?? []) }
         set { UserDefaults.standard.set(Array(newValue).sorted(), forKey: revokedDefaultsKey) }
+    }
+
+    private static var accessByShareID: [String: String] {
+        get {
+            UserDefaults.standard.dictionary(forKey: accessDefaultsKey)
+                as? [String: String] ?? [:]
+        }
+        set { UserDefaults.standard.set(newValue, forKey: accessDefaultsKey) }
+    }
+
+    private static var syncBaselines: [String: SyncBaseline] {
+        get {
+            guard let data = UserDefaults.standard.data(forKey: syncBaselineDefaultsKey),
+                  let decoded = try? JSONDecoder().decode(
+                    [String: SyncBaseline].self,
+                    from: data
+                  )
+            else { return [:] }
+            return decoded
+        }
+        set {
+            guard let data = try? JSONEncoder().encode(newValue) else { return }
+            UserDefaults.standard.set(data, forKey: syncBaselineDefaultsKey)
+        }
+    }
+
+    /// A signed-out device must never retain Writer/Owner capabilities from a
+    /// previous authenticated session. The next successful refresh restores
+    /// the roles granted by the canonical calendar record.
+    static func demoteAllToReader() {
+        var values = accessByShareID
+        for shareID in identifiers.keys { values[shareID] = CloudCalendarsAPI.EventAccess.reader.rawValue }
+        accessByShareID = values
     }
 
     private static var eventIdentifiers: [String: [String: String]] {
@@ -157,7 +242,7 @@ enum SharedICloudCalendarLocalStore {
                     calendars: [localCalendar]
                 )
                 let events = eventStore.events(matching: predicate)
-                    .compactMap(portableEvent)
+                    .compactMap { portableEvent($0) }
                     .sorted {
                         if $0.start == $1.start { return $0.id < $1.id }
                         return $0.start < $1.start
@@ -249,6 +334,15 @@ enum SharedICloudCalendarLocalStore {
             var changed = 0
 
             for sharedCalendar in sharedCalendars {
+                if try await uploadReceivedChangesIfNeeded(
+                    sharedCalendar,
+                    in: eventStore,
+                    session: session
+                ) {
+                    changed += 1
+                    continue
+                }
+
                 let result = try reconcile(sharedCalendar, in: eventStore)
                 if result.created {
                     CalendarViewModel.shared.selectedCalendarIDs.insert(
@@ -258,6 +352,7 @@ enum SharedICloudCalendarLocalStore {
                 if result.changed {
                     changed += 1
                 }
+                setSyncBaseline(for: sharedCalendar)
             }
 
             if changed > 0 {
@@ -280,9 +375,13 @@ enum SharedICloudCalendarLocalStore {
             sharedCalendar.isRevoked,
             shareID: sharedCalendar.id
         )
+        let accessChanged = setAccess(
+            sharedCalendar.access,
+            shareID: sharedCalendar.id
+        )
         if let existing = localCalendar(for: sharedCalendar, in: eventStore) {
             let color = uiColor(sharedCalendar.color)
-            var changed = revocationChanged
+            var changed = revocationChanged || accessChanged
             if existing.title != sharedCalendar.title
                 || !colorsMatch(existing.cgColor, color.cgColor) {
                 existing.title = sharedCalendar.title
@@ -317,6 +416,167 @@ enum SharedICloudCalendarLocalStore {
         return (calendar, true, true)
     }
 
+    /// Uploads edits made in a received calendar before the next pull can
+    /// overwrite them. Reader calendars never enter this path. Writer may
+    /// change events; Owner may additionally change calendar metadata and
+    /// manage sharing through the dedicated sharing view.
+    private static func uploadReceivedChangesIfNeeded(
+        _ sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar,
+        in eventStore: EKEventStore,
+        session: CloudCalendarsAPI.Session
+    ) async throws -> Bool {
+        guard !sharedCalendar.isRevoked,
+              sharedCalendar.access == .writer || sharedCalendar.access == .owner,
+              let localCalendar = localCalendar(for: sharedCalendar, in: eventStore),
+              let baseline = syncBaselines[sharedCalendar.id]
+        else { return false }
+
+        let range = syncWindow()
+        let events = portableEvents(
+            for: sharedCalendar,
+            localCalendar: localCalendar,
+            in: eventStore,
+            windowStart: range.start,
+            windowEnd: range.end
+        )
+        let currentEventFingerprint = eventFingerprint(events)
+        let currentTitle = localCalendar.title
+        let currentColor = colorHex(localCalendar.cgColor)
+        let eventsChanged = currentEventFingerprint != baseline.eventFingerprint
+        let metadataChanged = sharedCalendar.access == .owner
+            && (currentTitle != baseline.title || currentColor != baseline.color)
+
+        guard eventsChanged || metadataChanged else { return false }
+
+        if metadataChanged {
+            _ = try await CloudCalendarsAPI.saveICloudCalendarSharing(
+                calendarId: sharedCalendar.calendarId,
+                ownerId: sharedCalendar.ownerId,
+                title: currentTitle,
+                color: currentColor,
+                timeZone: sharedCalendar.timeZone,
+                recipients: try await currentRecipients(
+                    for: sharedCalendar,
+                    session: session
+                ),
+                session: session
+            )
+        }
+        if eventsChanged {
+            try await CloudCalendarsAPI.saveICloudCalendarEvents(
+                calendarId: sharedCalendar.calendarId,
+                ownerId: sharedCalendar.ownerId,
+                events: events,
+                windowStart: range.start,
+                windowEnd: range.end,
+                session: session
+            )
+        }
+
+        var baselines = syncBaselines
+        baselines[sharedCalendar.id] = SyncBaseline(
+            eventFingerprint: currentEventFingerprint,
+            title: metadataChanged ? currentTitle : sharedCalendar.title,
+            color: metadataChanged ? currentColor : sharedCalendar.color.uppercased()
+        )
+        syncBaselines = baselines
+        return true
+    }
+
+    private static func currentRecipients(
+        for sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar,
+        session: CloudCalendarsAPI.Session
+    ) async throws -> [(email: String, access: CloudCalendarsAPI.EventAccess)] {
+        let sharing = try await CloudCalendarsAPI.iCloudCalendarSharing(
+            calendarId: sharedCalendar.calendarId,
+            ownerId: sharedCalendar.ownerId,
+            session: session
+        )
+        return sharing.recipients.map { (email: $0.email, access: $0.access) }
+    }
+
+    private static func setAccess(
+        _ access: CloudCalendarsAPI.EventAccess,
+        shareID: String
+    ) -> Bool {
+        var values = accessByShareID
+        let rawValue = access.rawValue
+        guard values[shareID] != rawValue else { return false }
+        values[shareID] = rawValue
+        accessByShareID = values
+        return true
+    }
+
+    private static func setSyncBaseline(
+        for sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar
+    ) {
+        var baselines = syncBaselines
+        baselines[sharedCalendar.id] = SyncBaseline(
+            eventFingerprint: eventFingerprint(sharedCalendar.events ?? []),
+            title: sharedCalendar.title,
+            color: sharedCalendar.color.uppercased()
+        )
+        syncBaselines = baselines
+    }
+
+    private static func syncWindow() -> (start: Date, end: Date) {
+        let calendar = Calendar.current
+        return (
+            calendar.date(byAdding: .year, value: -1, to: Date()) ?? Date(),
+            calendar.date(byAdding: .year, value: 3, to: Date()) ?? Date()
+        )
+    }
+
+    private static func portableEvents(
+        for sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar,
+        localCalendar: EKCalendar,
+        in eventStore: EKEventStore,
+        windowStart: Date,
+        windowEnd: Date
+    ) -> [CloudCalendarsAPI.SharedICloudCalendarEvent] {
+        var allMappings = eventIdentifiers
+        var mapping = allMappings[sharedCalendar.id] ?? [:]
+        let remoteIDByLocalIdentifier = Dictionary(
+            uniqueKeysWithValues: mapping.map { ($0.value, $0.key) }
+        )
+        let predicate = eventStore.predicateForEvents(
+            withStart: windowStart,
+            end: windowEnd,
+            calendars: [localCalendar]
+        )
+        let portable: [CloudCalendarsAPI.SharedICloudCalendarEvent] = eventStore
+            .events(matching: predicate)
+            .compactMap { event -> CloudCalendarsAPI.SharedICloudCalendarEvent? in
+                let localIdentifier = event.eventIdentifier ?? event.calendarItemIdentifier
+                let remoteID = remoteIDByLocalIdentifier[localIdentifier]
+                guard let item = portableEvent(event, eventID: remoteID) else { return nil }
+                mapping[item.id] = localIdentifier
+                return item
+            }
+        let events = portable.sorted {
+            if $0.start == $1.start { return $0.id < $1.id }
+            return $0.start < $1.start
+        }
+        allMappings[sharedCalendar.id] = mapping
+        eventIdentifiers = allMappings
+        return events
+    }
+
+    private static func eventFingerprint(
+        _ events: [CloudCalendarsAPI.SharedICloudCalendarEvent]
+    ) -> String {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        let sorted = events.sorted {
+            if $0.start == $1.start { return $0.id < $1.id }
+            return $0.start < $1.start
+        }
+        guard let data = try? encoder.encode(sorted) else { return "" }
+        return SHA256.hash(data: data)
+            .map { String(format: "%02x", $0) }
+            .joined()
+    }
+
     @discardableResult
     private static func setRevoked(_ revoked: Bool, shareID: String) -> Bool {
         var values = revokedShareIDs
@@ -331,7 +591,8 @@ enum SharedICloudCalendarLocalStore {
     }
 
     private static func portableEvent(
-        _ event: EKEvent
+        _ event: EKEvent,
+        eventID explicitEventID: String? = nil
     ) -> CloudCalendarsAPI.SharedICloudCalendarEvent? {
         guard let title = event.title?.trimmingCharacters(in: .whitespacesAndNewlines),
               !title.isEmpty,
@@ -339,7 +600,7 @@ enum SharedICloudCalendarLocalStore {
               let end = event.endDate
         else { return nil }
         let rawIdentifier = event.eventIdentifier ?? event.calendarItemIdentifier
-        let eventID = SHA256.hash(data: Data(rawIdentifier.utf8))
+        let eventID = explicitEventID ?? SHA256.hash(data: Data(rawIdentifier.utf8))
             .map { String(format: "%02x", $0) }
             .joined()
         return .init(
@@ -422,6 +683,27 @@ enum SharedICloudCalendarLocalStore {
                 if localEvent.startDate < windowEnd && localEvent.endDate > windowStart {
                     try eventStore.remove(localEvent, span: .thisEvent, commit: true)
                     mapping.removeValue(forKey: remoteID)
+                    changed = true
+                }
+            }
+
+            // Reader is a server-backed, read-only mirror. EventKit calendars
+            // themselves cannot be marked read-only, so remove any unmatched
+            // local event that another app managed to create in that mirror.
+            // Writer/Owner events are intentionally kept and uploaded by the
+            // next foreground sync.
+            if sharedCalendar.access == .reader || sharedCalendar.isRevoked {
+                let mappedLocalIdentifiers = Set(mapping.values)
+                let predicate = eventStore.predicateForEvents(
+                    withStart: windowStart,
+                    end: windowEnd,
+                    calendars: [localCalendar]
+                )
+                for localEvent in eventStore.events(matching: predicate) {
+                    let identifier = localEvent.eventIdentifier
+                        ?? localEvent.calendarItemIdentifier
+                    guard !mappedLocalIdentifiers.contains(identifier) else { continue }
+                    try eventStore.remove(localEvent, span: .thisEvent, commit: true)
                     changed = true
                 }
             }

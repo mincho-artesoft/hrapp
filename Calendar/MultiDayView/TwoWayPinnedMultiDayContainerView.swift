@@ -295,12 +295,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     fileprivate let leftColumnWidth: CGFloat = 60
     fileprivate let bottomScrollPadding: CGFloat = 50
     fileprivate let weatherStripWidth: CGFloat = 50
-
     /// Whether the hourly weather strip is drawn beside the timeline.
-    ///
-    /// Layout has to know this before the strip is filled in, because in a
-    /// mirrored layout the timeline gives up the strip's width to it. Kept as
-    /// one property rather than repeating the test, so the two cannot drift.
     fileprivate var showsWeatherStrip: Bool {
         guard showSingleDay else { return false }
         let calendar = Calendar.current
@@ -760,19 +755,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // 4. Days Header – позициониране на cornerView и daysHeaderScrollView
         let yMain = singleDayCarousel.frame.maxY
-        // The weather strip is an overlay rather than a column in the layout.
-        // Left to right that is harmless: it sits over the trailing edge of
-        // the timeline, where an event block carries no text. Mirrored, it
-        // lands on the leading edge -- precisely where the event's time and
-        // location are drawn -- and Arabic and Hebrew came back with
-        // temperatures printed across "Ferry Building". So in a mirrored
-        // layout the timeline gives the strip its width back instead of
-        // running underneath it. Left-to-right keeps the overlay it has
-        // always had, and is unchanged.
-        let timelineInset: CGFloat = (isRTL && showsWeatherStrip) ? weatherStripWidth : 0
+        // The hourly forecast is an overlay in both directions. The timeline
+        // therefore keeps its full width and event blocks continue underneath
+        // the forecast strip, exactly mirroring the existing LTR behaviour.
         let hoursColumnX = isRTL ? bounds.width - leftColumnWidth : 0
-        let timelineX: CGFloat = isRTL ? timelineInset : leftColumnWidth
-        let timelineWidth = bounds.width - leftColumnWidth - timelineInset
+        let timelineX: CGFloat = isRTL ? 0 : leftColumnWidth
+        let timelineWidth = bounds.width - leftColumnWidth
         cornerView.frame = CGRect(x: hoursColumnX, y: yMain, width: leftColumnWidth, height: daysHeaderHeight)
         daysHeaderScrollView.frame = CGRect(x: timelineX, y: yMain, width: timelineWidth, height: daysHeaderHeight)
         
@@ -831,9 +819,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // 6. Hours Column and Main ScrollView
         let hoursColumnY = allDayY + allDayH
         hoursColumnScrollView.frame = CGRect(x: hoursColumnX, y: hoursColumnY, width: leftColumnWidth, height: bounds.height - hoursColumnY)
-        hoursColumnWeatherScrollView.frame = CGRect(x: isRTL ? 0 : bounds.width - 50,
+        hoursColumnWeatherScrollView.frame = CGRect(x: isRTL ? 0 : bounds.width - weatherStripWidth,
                                     y: hoursColumnY,
-                                    width: 50,
+                                    width: weatherStripWidth,
                                     height: bounds.height - hoursColumnY)
         mainScrollView.frame = CGRect(x: timelineX, y: hoursColumnY, width: timelineWidth, height: bounds.height - hoursColumnY)
         
@@ -844,9 +832,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         mainScrollView.contentSize = CGSize(width: totalWidth, height: finalHeight)
         weekView.frame = CGRect(x: 0, y: 0, width: totalWidth, height: finalHeight)
         hoursColumnScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
-        hoursColumnWeatherScrollView.contentSize = CGSize(width: leftColumnWidth, height: finalHeight)
+        hoursColumnWeatherScrollView.contentSize = CGSize(width: weatherStripWidth, height: finalHeight)
         hoursColumnView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
-        hoursColumnWeatherView.frame = CGRect(x: 0, y: 0, width: leftColumnWidth, height: finalHeight)
+        hoursColumnWeatherView.frame = CGRect(x: 0, y: 0, width: weatherStripWidth, height: finalHeight)
 
         if lastHorizontalLayoutWasRTL != isRTL || abs(lastHorizontalContentWidth - totalWidth) > 0.5 {
             let initialOffsetX = isRTL ? max(0, totalWidth - mainScrollView.bounds.width) : 0

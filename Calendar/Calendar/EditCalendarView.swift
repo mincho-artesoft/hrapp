@@ -2,18 +2,31 @@ import SwiftUI
 import EventKit
 import CryptoKit
 
+struct SharedCalendarEditContext {
+    let ownerID: String
+    let calendarID: String
+    let access: CloudCalendarsAPI.EventAccess
+    let isOriginalCreator: Bool
+}
+
 struct EditCalendarView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let eventStore: EKEventStore
     var calendar: EKCalendar
+    let sharedContext: SharedCalendarEditContext?
 
     @State private var calendarName: String
     @State private var selectedColor: UIColor
 
-    init(eventStore: EKEventStore, calendar: EKCalendar) {
+    init(
+        eventStore: EKEventStore,
+        calendar: EKCalendar,
+        sharedContext: SharedCalendarEditContext? = nil
+    ) {
         self.eventStore = eventStore
         self.calendar   = calendar
+        self.sharedContext = sharedContext
 
         // Първоначални стойности
         _calendarName = State(initialValue: calendar.title)
@@ -45,14 +58,18 @@ struct EditCalendarView: View {
                     }
                 }
 
-                // Delete
-                Section {
-                    Button(role: .destructive) {
-                        deleteCalendar()
-                    } label: {
-                        // Вместо "Delete Calendar" ползвате локализиран ключ
-                        Text(LocalizedStringKey("Delete Calendar"))
-                            .frame(maxWidth: .infinity, alignment: .center)
+                // Only the first creator may delete the canonical shared
+                // calendar. Delegated Owners can edit and manage access, but
+                // deliberately never receive a destructive calendar action.
+                if sharedContext?.isOriginalCreator != false {
+                    Section {
+                        Button(role: .destructive) {
+                            deleteCalendar()
+                        } label: {
+                            // Вместо "Delete Calendar" ползвате локализиран ключ
+                            Text(LocalizedStringKey("Delete Calendar"))
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
                     }
                 }
             }
@@ -109,13 +126,16 @@ struct EditCalendarView: View {
     ) async {
         guard let session = CalendarFeedSession.existing else { return }
 
-        let calendarID = SHA256.hash(data: Data(rawCalendarIdentifier.utf8))
-            .map { String(format: "%02x", $0) }
-            .joined()
+        let calendarID = sharedContext?.calendarID
+            ?? SHA256.hash(data: Data(rawCalendarIdentifier.utf8))
+                .map { String(format: "%02x", $0) }
+                .joined()
+        let ownerID = sharedContext?.ownerID
 
         do {
             let existing = try await CloudCalendarsAPI.iCloudCalendarSharing(
                 calendarId: calendarID,
+                ownerId: ownerID,
                 session: session
             )
 
@@ -123,13 +143,16 @@ struct EditCalendarView: View {
             // server state for calendars that have never been shared.
             guard !existing.title.isEmpty else { return }
 
-            SharedICloudCalendarLocalStore.registerOwnedCalendar(
-                shareID: calendarID,
-                localCalendarIdentifier: rawCalendarIdentifier
-            )
+            if sharedContext == nil || sharedContext?.isOriginalCreator == true {
+                SharedICloudCalendarLocalStore.registerOwnedCalendar(
+                    shareID: calendarID,
+                    localCalendarIdentifier: rawCalendarIdentifier
+                )
+            }
 
             _ = try await CloudCalendarsAPI.saveICloudCalendarSharing(
                 calendarId: calendarID,
+                ownerId: ownerID,
                 title: title,
                 color: colorHex(color),
                 timeZone: existing.timeZone,
@@ -138,7 +161,11 @@ struct EditCalendarView: View {
                 },
                 session: session
             )
-            _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: eventStore)
+            if sharedContext == nil || sharedContext?.isOriginalCreator == true {
+                _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: eventStore)
+            } else {
+                _ = await SharedICloudCalendarLocalStore.refreshAll()
+            }
             NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
         } catch {
             print("Error syncing shared calendar metadata: \(error.localizedDescription)")
@@ -162,6 +189,7 @@ struct EditCalendarView: View {
     }
 
     private func deleteCalendar() {
+        guard sharedContext?.isOriginalCreator != false else { return }
         let rawCalendarIdentifier = calendar.calendarIdentifier
         let sharedCalendarID = SHA256.hash(data: Data(rawCalendarIdentifier.utf8))
             .map { String(format: "%02x", $0) }

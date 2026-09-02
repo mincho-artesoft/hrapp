@@ -132,10 +132,12 @@ enum SharedInviteTracker {
     /// same answer.
     static func isReadOnly(_ event: EKEvent) -> Bool {
         if let calendarIdentifier = event.calendar?.calendarIdentifier,
-           SharedICloudCalendarLocalStore.isRevoked(
+           SharedICloudCalendarLocalStore.isShared(
                 localCalendarIdentifier: calendarIdentifier
            ) {
-            return true
+            return !SharedICloudCalendarLocalStore.canEditEvents(
+                localCalendarIdentifier: calendarIdentifier
+            )
         }
         guard let identifier = event.eventIdentifier else { return false }
         guard let invite = invite(localEventIdentifier: identifier) else { return false }
@@ -151,6 +153,14 @@ enum SharedInviteTracker {
     /// event may be forwarded only when the first sharer explicitly delegated
     /// Owner access to this signed-in recipient.
     static func canShare(_ event: EKEvent) -> Bool {
+        if let calendarIdentifier = event.calendar?.calendarIdentifier,
+           SharedICloudCalendarLocalStore.isShared(
+                localCalendarIdentifier: calendarIdentifier
+           ) {
+            return SharedICloudCalendarLocalStore.canManageSharing(
+                localCalendarIdentifier: calendarIdentifier
+            )
+        }
         guard let identifier = event.eventIdentifier,
               let invite = invite(localEventIdentifier: identifier)
         else { return true }

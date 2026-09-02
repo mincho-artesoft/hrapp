@@ -2,6 +2,8 @@ import UIKit
 
 
 public final class HoursColumnView: UIView {
+    private let labelInset: CGFloat = 4
+
     // Височина на един "час" в пиксели
     public var hourHeight: CGFloat = 50
     public var extraMarginTopBottom: CGFloat = 10
@@ -84,17 +86,13 @@ public final class HoursColumnView: UIView {
 
             // Текст
             let hourStr = hourString(hour)
-            let attrStr = NSAttributedString(
-                string: hourStr,
-                attributes: [
-                    .font: majorFont,
-                    .foregroundColor: UIColor.label
-                ]
+            drawTimeLabel(
+                hourStr,
+                centeredAt: y,
+                font: majorFont,
+                color: .label,
+                isRTL: isRTL
             )
-            let size = attrStr.size()
-            let textX = isRTL ? 4 : bounds.width - size.width - 4
-            let textY = y - size.height/2
-            attrStr.draw(at: CGPoint(x: textX, y: textY))
         }
 
         // 3) Маркер за конкретна минута
@@ -107,17 +105,13 @@ public final class HoursColumnView: UIView {
 
                 let localizedMinute = minuteNumberFormatter.string(from: NSNumber(value: m)) ?? String(m)
                 let minuteStr = ".\(localizedMinute)"
-                let attr = NSAttributedString(
-                    string: minuteStr,
-                    attributes: [
-                        .font: minorFont,
-                        .foregroundColor: minorColor
-                    ]
+                drawTimeLabel(
+                    minuteStr,
+                    centeredAt: yPos,
+                    font: minorFont,
+                    color: minorColor,
+                    isRTL: isRTL
                 )
-                let size = attr.size()
-                let textX = isRTL ? 4 : bounds.width - size.width - 4
-                let textY = yPos - size.height/2
-                attr.draw(at: CGPoint(x: textX, y: textY))
             }
         }
 
@@ -128,15 +122,47 @@ public final class HoursColumnView: UIView {
             let minutePart = Int(round((fractionCur - CGFloat(hourPart)) * 60))
             let currentTimeText = hourMinuteString(hour: hourPart, minute: minutePart)
 
-            let attrs: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 11, weight: .semibold),
-                .foregroundColor: UIColor.systemRed
-            ]
-            let size = (currentTimeText as NSString).size(withAttributes: attrs)
-            let textX = isRTL ? 4 : bounds.width - size.width - 4
-            let textY = yPos - size.height/2
-            (currentTimeText as NSString).draw(at: CGPoint(x: textX, y: textY), withAttributes: attrs)
+            drawTimeLabel(
+                currentTimeText,
+                centeredAt: yPos,
+                font: UIFont.systemFont(ofSize: 11, weight: .semibold),
+                color: .systemRed,
+                isRTL: isRTL
+            )
         }
+    }
+
+    /// Draw the label against the edge shared with the timeline. Using a
+    /// fixed, inset rectangle instead of positioning a measured bidi string
+    /// keeps Arabic/Hebrew labels inside the column and makes the RTL layout
+    /// an exact spatial mirror of the LTR one.
+    private func drawTimeLabel(
+        _ text: String,
+        centeredAt y: CGFloat,
+        font: UIFont,
+        color: UIColor,
+        isRTL: Bool
+    ) {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = isRTL ? .left : .right
+        paragraph.baseWritingDirection = isRTL ? .rightToLeft : .leftToRight
+        paragraph.lineBreakMode = .byClipping
+
+        let lineHeight = ceil(font.lineHeight)
+        let labelRect = CGRect(
+            x: labelInset,
+            y: y - lineHeight / 2,
+            width: max(0, bounds.width - labelInset * 2),
+            height: lineHeight + 1
+        )
+        (text as NSString).draw(
+            in: labelRect,
+            withAttributes: [
+                .font: font,
+                .foregroundColor: color,
+                .paragraphStyle: paragraph
+            ]
+        )
     }
 
     // MARK: - Форматиране на низове
