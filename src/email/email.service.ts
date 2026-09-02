@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Attachment, SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2';
+import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2';
 import QRCode from 'qrcode';
 
 const PNGJS: any = require('pngjs');
@@ -17,6 +17,7 @@ export class EmailService {
   private readonly EMAIL_FROM = process.env.EMAIL_FROM ?? null;
   private readonly EMAIL_REGION = process.env.EMAIL_REGION ?? process.env.AWS_REGION ?? 'us-east-1';
   private readonly SITE_URL = process.env.SITE_URL ?? 'https://www.cloud-calendars.com';
+  private readonly API_URL = process.env.API_URL ?? 'https://api.cloud-calendars.com';
   private readonly ses = this.EMAIL_FROM ? new SESv2Client({ region: this.EMAIL_REGION }) : null;
 
   private readonly ACCENT = '#5b9bff';
@@ -30,7 +31,7 @@ export class EmailService {
     to: string,
     subject: string,
     html: string,
-    options: { attachments?: Attachment[]; replyTo?: string | null } = {},
+    options: { replyTo?: string | null } = {},
   ): Promise<void> {
     if (!this.ses || !this.EMAIL_FROM) {
       console.log(`[email skipped — not configured] "${subject}" → ${to}`);
@@ -45,8 +46,10 @@ export class EmailService {
           Content: {
             Simple: {
               Subject: { Data: subject, Charset: 'UTF-8' },
-              Body: { Html: { Data: html, Charset: 'UTF-8' } },
-              Attachments: options.attachments?.length ? options.attachments : undefined,
+              Body: {
+                Html: { Data: html, Charset: 'UTF-8' },
+                Text: { Data: this.plainText(html), Charset: 'UTF-8' },
+              },
             },
           },
         }),
@@ -102,6 +105,25 @@ export class EmailService {
     return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  /** A real text alternative keeps the invitation readable in clients that
+   * suppress HTML or remote images. */
+  private plainText(html: string): string {
+    return html
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<(br|\/p|\/div|\/h[1-6]|\/tr)>/gi, '\n')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&amp;/gi, '&')
+      .replace(/&lt;/gi, '<')
+      .replace(/&gt;/gi, '>')
+      .replace(/&#39;/gi, "'")
+      .replace(/&quot;/gi, '"')
+      .replace(/[ \t]+/g, ' ')
+      .replace(/\n\s+/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
   /** One visual shell so the e-mails read as one product. */
   private shell(bodyHtml: string): string {
     return `<!doctype html><html><body style="margin:0;padding:0;background:#08213f;">
@@ -146,8 +168,15 @@ export class EmailService {
     const green = Number.parseInt(color.slice(3, 5), 16);
     const blue = Number.parseInt(color.slice(5, 7), 16);
     const tint = `rgba(${red},${green},${blue},0.30)`;
-    const icon = (name: string, alt: string) => `<img src="cid:shared-event-${name}" width="14" height="14" alt="${alt}" style="display:inline-block;width:14px;height:14px;margin:0 7px 0 0;vertical-align:-2px;border:0;" />`;
-    const detail = (iconName: string, iconAlt: string, value: string) => `<div style="margin-top:7px;color:${color};font-size:14px;font-weight:600;line-height:18px;">
+    const icon = (name: 'calendar' | 'clock' | 'location', alt: string) => {
+      const iconColor = name === 'calendar' ? '#CDD9F2' : color;
+      return `<img src="${this.esc(this.sharedEventIconURL(name, iconColor))}" width="14" height="14" alt="${alt}" style="display:inline-block;width:14px;height:14px;margin:0 7px 0 0;vertical-align:-2px;border:0;" />`;
+    };
+    const detail = (
+      iconName: 'clock' | 'location',
+      iconAlt: string,
+      value: string,
+    ) => `<div style="margin-top:7px;color:${color};font-size:14px;font-weight:600;line-height:18px;">
       ${icon(iconName, iconAlt)}${this.esc(value)}
     </div>`;
     return `<div style="margin:0 4px 10px;color:rgba(255,255,255,0.72);font-size:13px;font-weight:600;line-height:18px;">
@@ -168,6 +197,22 @@ export class EmailService {
   private validEventColor(value: unknown): string {
     const color = String(value ?? '');
     return /^#[0-9a-fA-F]{6}$/.test(color) ? color.toUpperCase() : this.ACCENT;
+  }
+
+  private sharedEventIconURL(
+    kind: 'calendar' | 'clock' | 'location',
+    color: string,
+  ): string {
+    const url = new URL('/email-assets/shared-event-icon', this.API_URL);
+    url.searchParams.set('kind', kind);
+    url.searchParams.set('color', this.validEventColor(color));
+    return url.toString();
+  }
+
+  private sharedEventQRCodeURL(eventUrl: string): string {
+    const url = new URL('/email-assets/shared-event-qr', this.API_URL);
+    url.searchParams.set('url', eventUrl);
+    return url.toString();
   }
 
   /** Small raster equivalents of the App Clip's SF Symbols. CID-hosted PNGs
@@ -246,6 +291,37 @@ export class EmailService {
     }
 
     return PNGJS.PNG.sync.write(png);
+  }
+
+  sharedEventIconPng(kind: unknown, color: unknown): Buffer | null {
+    if (!['calendar', 'clock', 'location'].includes(String(kind ?? ''))) return null;
+    return this.invitationIconPng(
+      String(kind) as 'calendar' | 'clock' | 'location',
+      this.validEventColor(color),
+    );
+  }
+
+  async sharedEventQRCodePng(value: unknown): Promise<Buffer | null> {
+    const raw = String(value ?? '');
+    if (!raw || raw.length > 2_048) return null;
+    try {
+      const url = new URL(raw);
+      const apiHost = new URL(this.API_URL).hostname;
+      if (url.protocol !== 'https:'
+          || url.hostname !== apiHost
+          || url.pathname !== '/event-invites/open') {
+        return null;
+      }
+      return await QRCode.toBuffer(url.toString(), {
+        type: 'png',
+        width: 300,
+        margin: 2,
+        errorCorrectionLevel: 'M',
+        color: { dark: '#08213FFF', light: '#FFFFFFFF' },
+      });
+    } catch {
+      return null;
+    }
   }
 
   private inviteeHtml(kind: string, { title, when, location, manageUrl, webcal, by }: any): string {
@@ -379,38 +455,23 @@ export class EmailService {
       timeZone,
       Boolean(event.allDay),
     );
-    const role = access === 'writer' ? 'Writer' : 'Reader';
+    const role = access === 'owner' ? 'Owner' : access === 'writer' ? 'Writer' : 'Reader';
     const fromName = String(senderName || senderEmail || 'Cloud Calendars');
     const fromLine = senderEmail
       ? `${this.esc(fromName)} &lt;<a href="mailto:${this.esc(senderEmail)}" style="color:${this.ACCENT};text-decoration:none;">${this.esc(senderEmail)}</a>&gt;`
       : this.esc(fromName);
-    const permission = access === 'writer'
-      ? 'You can edit this event after signing in with this e-mail address.'
-      : 'You can view this event and keep it synchronized.';
+    const permission = access === 'owner'
+      ? 'You can edit, share, and manage access after signing in with this e-mail address.'
+      : access === 'writer'
+        ? 'You can edit this event after signing in with this e-mail address.'
+        : 'You can view this event and keep it synchronized.';
     const color = this.validEventColor(eventColor);
-    const calendarIcon = this.invitationIconPng('calendar', '#CDD9F2');
-    const clockIcon = this.invitationIconPng('clock', color);
-    const locationIcon = this.invitationIconPng('location', color);
-    let qrImage: Buffer | null = null;
-    try {
-      qrImage = await QRCode.toBuffer(eventUrl, {
-        type: 'png',
-        width: 300,
-        margin: 2,
-        errorCorrectionLevel: 'M',
-        color: { dark: '#08213FFF', light: '#FFFFFFFF' },
-      });
-    } catch (err: any) {
-      console.error(`[QR generation failed] ${err?.message ?? err}`);
-    }
-    const qrBlock = qrImage
-      ? `<div style="margin:24px auto 0;text-align:center;">
+    const qrBlock = `<div style="margin:24px auto 0;text-align:center;">
           <div style="display:inline-block;background:#ffffff;padding:14px;border-radius:18px;">
-            <img src="cid:shared-event-qr" width="240" height="240" alt="QR code to open the event" style="display:block;width:240px;height:240px;" />
+            <img src="${this.esc(this.sharedEventQRCodeURL(eventUrl))}" width="240" height="240" alt="QR code to open the event" style="display:block;width:240px;height:240px;" />
           </div>
           <p style="margin:10px 0 0;color:rgba(255,255,255,0.62);font-size:13px;">Scan with Cloud Calendars</p>
-        </div>`
-      : '';
+        </div>`;
     const body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">Event invitation</h1>
     <p style="margin:0 auto 8px;max-width:44ch;color:rgba(255,255,255,0.78);font-size:15px;text-align:center;">From <strong style="color:#ffffff;">${fromLine}</strong></p>
     <p style="margin:0 auto 22px;max-width:40ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">You were invited as <strong style="color:#ffffff;">${role}</strong>. ${permission}</p>
@@ -424,38 +485,11 @@ export class EmailService {
     <div style="text-align:center;margin:24px 0 0;">${this.button(eventUrl, 'Open event')}</div>
     ${qrBlock}
     <p style="margin:16px 0 0;text-align:center;color:rgba(255,255,255,0.48);font-size:12px;">Sign in with ${this.esc(email)} to use the assigned access.</p>`;
-    const inlineIcon = (
-      rawContent: Buffer,
-      fileName: string,
-      contentId: string,
-      description: string,
-    ): Attachment => ({
-      RawContent: rawContent,
-      ContentDisposition: 'INLINE',
-      FileName: fileName,
-      ContentId: contentId,
-      ContentDescription: description,
-      ContentTransferEncoding: 'BASE64',
-      ContentType: 'image/png',
-    });
-    const attachments: Attachment[] = [
-      inlineIcon(calendarIcon, 'event-calendar.png', 'shared-event-calendar', 'Event date'),
-      inlineIcon(clockIcon, 'event-clock.png', 'shared-event-clock', 'Event time'),
-      inlineIcon(locationIcon, 'event-location.png', 'shared-event-location', 'Event location'),
-    ];
-    if (qrImage) {
-      attachments.push(inlineIcon(
-        qrImage,
-        'cloud-calendars-event-qr.png',
-        'shared-event-qr',
-        'Cloud Calendars event QR code',
-      ));
-    }
     await this.sendEmail(
       email,
       `${fromName} invited you: ${event.title}`,
       this.shell(body),
-      { attachments, replyTo: senderEmail },
+      { replyTo: senderEmail },
     );
   }
 

@@ -12,6 +12,23 @@ const APPLE_CLIENT_IDS = (process.env.APPLE_CLIENT_IDS ?? 'Deksan.CalendarASD')
   .map((value) => value.trim())
   .filter(Boolean);
 
+type EventAccessRole = 'reader' | 'writer' | 'owner';
+
+type EventManagementContext = {
+  calId: string;
+  event: any;
+  originalOwnerId: string;
+  isOriginalOwner: boolean;
+};
+
+type ICloudCalendarAccessContext = {
+  ownerId: string;
+  calendarId: string;
+  calendar: any | null;
+  access: EventAccessRole;
+  isOriginalOwner: boolean;
+};
+
 @Injectable()
 export class CalendarService {
   constructor(
@@ -21,6 +38,14 @@ export class CalendarService {
   ) {}
 
   private get keys() { return this.store.keys; }
+
+  sharedEventEmailIcon(kind: unknown, color: unknown): Buffer | null {
+    return this.email.sharedEventIconPng(kind, color);
+  }
+
+  async sharedEventEmailQRCode(value: unknown): Promise<Buffer | null> {
+    return this.email.sharedEventQRCodePng(value);
+  }
 
   /** Anonymous registration — the device holds the only key to this calendar. */
   async register(body: any): Promise<ApiResult> {
@@ -202,7 +227,7 @@ export class CalendarService {
       const receivedEvent = await this.store.getJSON(this.keys.event(ref.ownerCalId, eventId));
       const recipient = (Array.isArray(receivedEvent?.recipients) ? receivedEvent.recipients : [])
         .find((value: any) => value?.userId === principal.principalId);
-      if (this.recipientAccess(recipient) !== 'writer') {
+      if (!this.recipientCanEdit(recipient)) {
         return result(403, { error: 'Reader access cannot edit this event' });
       }
       calId = ref.ownerCalId;
@@ -252,9 +277,18 @@ export class CalendarService {
     const primaryIdentity = this.primaryIdentity(principal, identities);
     let contributorForbidden = false;
     let missingReceivedEvent = false;
+    let cancelledEventUpdate = false;
     const saved = await this.mutateEvent(calId, eventId, (existing) => {
       if (!existing && recipientWriter) {
         missingReceivedEvent = true;
+        return null;
+      }
+      // Cancellation is terminal. The iOS client adds a visible
+      // “Cancelled:” marker to its EventKit copy; a later background edit push
+      // must not turn that marker into a new confirmed server revision.
+      // A future restore feature must use a dedicated, explicit endpoint.
+      if (existing?.status === 'cancelled') {
+        cancelledEventUpdate = true;
         return null;
       }
       if (existing && !recipientWriter
@@ -302,6 +336,9 @@ export class CalendarService {
     });
     if (!saved && contributorForbidden) {
       return result(403, { error: 'contributors may only edit their own events' });
+    }
+    if (!saved && cancelledEventUpdate) {
+      return result(409, { error: 'cancelled events cannot be edited or reactivated' });
     }
     if (!saved && missingReceivedEvent) return result(404, { error: 'shared event no longer exists' });
     if (!saved) return result(409, { error: 'event could not be updated' });
@@ -577,8 +614,59 @@ export class CalendarService {
     }));
   }
 
-  private recipientAccess(recipient: any): 'reader' | 'writer' {
+  private recipientAccess(recipient: any): EventAccessRole {
+    if (recipient?.access === 'owner') return 'owner';
     return recipient?.access === 'writer' ? 'writer' : 'reader';
+  }
+
+  private recipientCanEdit(recipient: any): boolean {
+    const access = this.recipientAccess(recipient);
+    return access === 'writer' || access === 'owner';
+  }
+
+  private eventAccessRank(access: EventAccessRole): number {
+    if (access === 'owner') return 2;
+    if (access === 'writer') return 1;
+    return 0;
+  }
+
+  /** Resolves one canonical event for either its first sharer or a signed-in
+   * recipient with delegated Owner access. The received reference is private
+   * to that principal, so knowing an event id alone never grants management. */
+  private async eventManagementContext(
+    principal: any,
+    eventId: string,
+  ): Promise<EventManagementContext | null> {
+    const [localEvent, localAcl] = await Promise.all([
+      this.store.getJSON(this.keys.event(principal.calId, eventId)),
+      this.store.getJSON(this.keys.acl(principal.calId)),
+    ]);
+    if (localEvent && this.core.roleOf(localAcl, principal.principalId) === 'owner') {
+      return {
+        calId: principal.calId,
+        event: localEvent,
+        originalOwnerId: String(
+          localEvent.ownerId ?? localEvent.createdBy ?? principal.principalId,
+        ),
+        isOriginalOwner: true,
+      };
+    }
+
+    const ref = await this.store.getJSON(
+      this.keys.receivedInvite(principal.principalId, eventId),
+    );
+    if (!ref?.ownerCalId) return null;
+    const event = await this.store.getJSON(this.keys.event(ref.ownerCalId, eventId));
+    if (!event) return null;
+    const recipient = (Array.isArray(event.recipients) ? event.recipients : [])
+      .find((value: any) => value?.userId === principal.principalId);
+    if (this.recipientAccess(recipient) !== 'owner') return null;
+    return {
+      calId: String(ref.ownerCalId),
+      event,
+      originalOwnerId: String(event.ownerId ?? event.createdBy ?? ''),
+      isOriginalOwner: false,
+    };
   }
 
   private recipientEmails(recipient: any): string[] {
@@ -624,32 +712,56 @@ export class CalendarService {
         })).filter((identity: any) => identity.provider)
         : [],
       access: this.recipientAccess(recipient),
+      isOriginalOwner: false,
       acceptedAt: recipient?.acceptedAt ?? null,
       invitedAt: recipient?.invitedAt ?? (invitationEmail ? recipient?.updatedAt ?? null : null),
       updatedAt: recipient?.updatedAt ?? null,
     };
   }
 
+  private async publicOriginalOwner(
+    context: EventManagementContext,
+  ): Promise<any> {
+    const ownerAccount = context.originalOwnerId
+      ? await this.store.getJSON(this.keys.principal(context.originalOwnerId))
+      : null;
+    const identities = this.recipientIdentities(ownerAccount);
+    return {
+      id: `owner:${context.originalOwnerId || context.calId}`,
+      userId: context.originalOwnerId || null,
+      isAnonymous: false,
+      emails: [...new Set(identities.map((identity) => identity.email))],
+      identities: identities.map((identity) => ({
+        provider: identity.provider,
+        email: identity.email,
+      })),
+      access: 'owner',
+      isOriginalOwner: true,
+      acceptedAt: context.event.createdAt ?? null,
+      invitedAt: null,
+      updatedAt: context.event.updatedAt ?? null,
+    };
+  }
+
   /** Recipient identities are private event metadata visible only to owner. */
   async eventRecipients(principal: any, eventId: string): Promise<ApiResult> {
-    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
-    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
-      return result(403, { error: 'only the owner may view event recipients' });
+    const context = await this.eventManagementContext(principal, eventId);
+    if (!context) {
+      return result(403, { error: 'Owner access is required to view event recipients' });
     }
-    const event = await this.store.getJSON(this.keys.event(principal.calId, eventId));
-    if (!event) return result(404, { error: 'no such event' });
-    const recipients = (Array.isArray(event.recipients) ? event.recipients : [])
+    const originalOwner = await this.publicOriginalOwner(context);
+    const recipients = (Array.isArray(context.event.recipients) ? context.event.recipients : [])
       .map((recipient: any) => this.publicRecipient(recipient));
-    return result(200, { recipients });
+    return result(200, { recipients: [originalOwner, ...recipients] });
   }
 
   /** Applies every role change and removal from the owner's Save action in one
    * optimistic S3 mutation. Removed identities are retained as private revoke
    * tombstones so an old invitation link cannot silently restore access. */
   async saveEventRecipientChanges(principal: any, eventId: string, body: any): Promise<ApiResult> {
-    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
-    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
-      return result(403, { error: 'only the owner may change event access' });
+    const context = await this.eventManagementContext(principal, eventId);
+    if (!context) {
+      return result(403, { error: 'Owner access is required to change event access' });
     }
 
     const rawUpdates = Array.isArray(body.updates) ? body.updates : [];
@@ -657,14 +769,16 @@ export class CalendarService {
     if (rawUpdates.length > 1000 || rawRemovedIds.length > 1000) {
       return result(400, { error: 'too many recipient changes' });
     }
-    const updates = new Map<string, 'reader' | 'writer'>();
+    const updates = new Map<string, EventAccessRole>();
     for (const raw of rawUpdates) {
       const id = String(raw?.id ?? '');
       const access = String(raw?.access ?? '').toLowerCase();
-      if (!id || !['reader', 'writer'].includes(access)) {
-        return result(400, { error: 'every update requires an id and Reader or Writer access' });
+      if (!id || !['reader', 'writer', 'owner'].includes(access)) {
+        return result(400, {
+          error: 'every update requires an id and Reader, Writer, or Owner access',
+        });
       }
-      updates.set(id, access as 'reader' | 'writer');
+      updates.set(id, access as EventAccessRole);
     }
     const removedIds = new Set<string>(
       rawRemovedIds
@@ -672,11 +786,15 @@ export class CalendarService {
         .filter((value: string) => Boolean(value)),
     );
     for (const removedId of removedIds) updates.delete(removedId);
+    const originalOwnerRecipientId = `owner:${context.originalOwnerId || context.calId}`;
+    if (updates.has(originalOwnerRecipientId) || removedIds.has(originalOwnerRecipientId)) {
+      return result(403, { error: "the original owner's access cannot be changed" });
+    }
 
     let missingRecipientId: string | null = null;
     let removedRecipients: any[] = [];
     const now = new Date().toISOString();
-    const saved = await this.mutateEvent(principal.calId, eventId, (event) => {
+    const saved = await this.mutateEvent(context.calId, eventId, (event) => {
       if (!event) return null;
       const recipients = Array.isArray(event.recipients) ? [...event.recipients] : [];
       const byId = new Map(recipients.map((recipient: any) => [this.recipientId(recipient), recipient]));
@@ -728,7 +846,7 @@ export class CalendarService {
       for (const email of this.recipientEmails(recipient)) {
         removalDeletes.push(this.store.del(this.keys.pendingEventInvitation(
           this.core.emailHash(email),
-          principal.calId,
+          context.calId,
           eventId,
         )));
       }
@@ -736,32 +854,36 @@ export class CalendarService {
     await Promise.all(removalDeletes);
 
     return result(200, {
-      recipients: saved.event.recipients.map((recipient: any) => this.publicRecipient(recipient)),
+      recipients: [
+        await this.publicOriginalOwner({ ...context, event: saved.event }),
+        ...saved.event.recipients.map((recipient: any) => this.publicRecipient(recipient)),
+      ],
     });
   }
 
   /** Stores e-mail recipients and their event role before acceptance, then
    * sends the scoped server invitation URL to each address through SES. */
   async inviteEventRecipients(principal: any, eventId: string, body: any): Promise<ApiResult> {
-    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
-    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
-      return result(403, { error: 'only the owner may invite event recipients' });
+    const context = await this.eventManagementContext(principal, eventId);
+    if (!context) {
+      return result(403, { error: 'Owner access is required to invite event recipients' });
     }
+    const acl = await this.store.getJSON(this.keys.acl(context.calId));
 
     const rawInvitations = Array.isArray(body.invitations) ? body.invitations : [];
     if (rawInvitations.length === 0 || rawInvitations.length > 50) {
       return result(400, { error: 'between 1 and 50 invitations are required' });
     }
 
-    const invitationByEmail = new Map<string, { email: string; access: 'reader' | 'writer' }>();
+    const invitationByEmail = new Map<string, { email: string; access: EventAccessRole }>();
     for (const raw of rawInvitations) {
       const email = normalizeEmail(raw?.email);
       const access = String(raw?.access ?? '').toLowerCase();
       if (!email) return result(400, { error: 'every invitation requires a valid email' });
-      if (!['reader', 'writer'].includes(access)) {
-        return result(400, { error: "access must be 'reader' or 'writer'" });
+      if (!['reader', 'writer', 'owner'].includes(access)) {
+        return result(400, { error: "access must be 'reader', 'writer', or 'owner'" });
       }
-      invitationByEmail.set(email, { email, access: access as 'reader' | 'writer' });
+      invitationByEmail.set(email, { email, access: access as EventAccessRole });
     }
     const invitations = [...invitationByEmail.values()];
 
@@ -788,12 +910,12 @@ export class CalendarService {
       return result(400, { error: 'eventUrl is not a matching Cloud Calendars invitation link' });
     }
     const feedIndex = await this.store.getJSON(this.keys.feedIndex(feedId));
-    if (feedIndex?.calId !== principal.calId
+    if (feedIndex?.calId !== context.calId
         || acl?.feeds?.[feedId]?.scope?.eventId !== eventId) {
       return result(403, { error: 'eventUrl does not belong to this shared event' });
     }
 
-    const existingEvent = await this.store.getJSON(this.keys.event(principal.calId, eventId));
+    const existingEvent = await this.store.getJSON(this.keys.event(context.calId, eventId));
     if (!existingEvent) return result(404, { error: 'no such event' });
     const [ownerAccount, calendarMeta] = await Promise.all([
       this.store.getJSON(this.keys.principal(principal.principalId)),
@@ -805,15 +927,15 @@ export class CalendarService {
     ) ?? ownerIdentities[0];
     const senderEmail = senderIdentity?.email ?? null;
     const senderName = String(
-      existingEvent.organizerName
-        || calendarMeta?.name
+      calendarMeta?.name
         || senderEmail
+        || existingEvent.organizerName
         || 'Cloud Calendars',
     ).slice(0, 160);
 
     const now = new Date().toISOString();
     let recipientLimitReached = false;
-    const saved = await this.mutateEvent(principal.calId, eventId, (event) => {
+    const saved = await this.mutateEvent(context.calId, eventId, (event) => {
       if (!event) return null;
       let recipients = Array.isArray(event.recipients) ? [...event.recipients] : [];
       let revokedRecipients = Array.isArray(event.revokedRecipients)
@@ -898,11 +1020,11 @@ export class CalendarService {
       .map((invitation) => this.store.putJSON(
         this.keys.pendingEventInvitation(
           this.core.emailHash(invitation.email),
-          principal.calId,
+          context.calId,
           eventId,
         ),
         {
-          ownerCalId: principal.calId,
+          ownerCalId: context.calId,
           eventId,
           feedId,
           eventUrl: rawEventURL,
@@ -1024,7 +1146,7 @@ export class CalendarService {
       };
       const previous = invitations.get(identity);
       if (!previous
-          || (previous.access === 'reader' && invitation.access === 'writer')) {
+          || this.eventAccessRank(invitation.access) > this.eventAccessRank(previous.access)) {
         invitations.set(identity, invitation);
       }
     }
@@ -1103,18 +1225,103 @@ export class CalendarService {
     return result(200, { declined: true });
   }
 
+  /** Resolves the one canonical calendar share for its first owner or for a
+   * recipient identified by a verified account e-mail. Only the first owner
+   * may create a missing record; delegated access always requires an existing
+   * canonical S3 object. */
+  private async iCloudCalendarAccessContext(
+    principal: any,
+    calendarId: string,
+    requestedOwnerId?: unknown,
+    allowMissingOriginal = false,
+  ): Promise<ICloudCalendarAccessContext | null> {
+    const ownerId = boundedPlainText(requestedOwnerId, 128)
+      ?? String(principal.principalId);
+    const calendar = await this.store.getJSON(
+      this.keys.icloudCalendarSharing(ownerId, calendarId),
+    );
+
+    if (ownerId === principal.principalId) {
+      if (!calendar && !allowMissingOriginal) return null;
+      return {
+        ownerId,
+        calendarId,
+        calendar,
+        access: 'owner',
+        isOriginalOwner: true,
+      };
+    }
+    if (!calendar || calendar.deletedAt) return null;
+
+    const account = await this.store.getJSON(
+      this.keys.principal(principal.principalId),
+    );
+    const identityEmails = new Set(
+      this.recipientIdentities(account).map((identity) => identity.email),
+    );
+    const recipient = (Array.isArray(calendar.recipients) ? calendar.recipients : [])
+      .find((value: any) => {
+        if (value?.userId === principal.principalId) return true;
+        return this.recipientEmails(value).some((email) => identityEmails.has(email));
+      });
+    if (!recipient) return null;
+    return {
+      ownerId,
+      calendarId,
+      calendar,
+      access: this.recipientAccess(recipient),
+      isOriginalOwner: false,
+    };
+  }
+
+  private async publicICloudCalendarSharing(
+    context: ICloudCalendarAccessContext,
+  ): Promise<any> {
+    const ownerAccount = await this.store.getJSON(this.keys.principal(context.ownerId));
+    const ownerIdentities = this.recipientIdentities(ownerAccount);
+    const calendar = context.calendar ?? {
+      schemaVersion: 2,
+      id: context.calendarId,
+      ownerId: context.ownerId,
+      title: '',
+      color: '#0088FF',
+      timeZone: 'UTC',
+      recipients: [],
+    };
+    return {
+      ...calendar,
+      ownerId: context.ownerId,
+      ownerEmail: ownerIdentities[0]?.email ?? null,
+      currentAccess: context.access,
+      isOriginalOwner: context.isOriginalOwner,
+    };
+  }
+
   /** Returns the app-managed sharing metadata for one local iCloud calendar.
    * The client sends only a SHA-256 fingerprint, never EventKit's raw calendar
    * identifier. Records are also namespaced by the authenticated principal. */
-  async iCloudCalendarSharing(principal: any, calendarId: string): Promise<ApiResult> {
+  async iCloudCalendarSharing(
+    principal: any,
+    calendarId: string,
+    ownerId?: unknown,
+  ): Promise<ApiResult> {
     if (!validICloudCalendarShareId(calendarId)) {
       return result(400, { error: 'invalid iCloud calendar identifier' });
     }
-    const record = await this.store.getJSON(
-      this.keys.icloudCalendarSharing(principal.principalId, calendarId),
+    const context = await this.iCloudCalendarAccessContext(
+      principal,
+      calendarId,
+      ownerId,
+      true,
     );
+    if (!context) return result(403, { error: 'calendar access is required' });
+    if (!context.isOriginalOwner && context.access !== 'owner') {
+      return result(403, { error: 'Owner access is required to manage calendar sharing' });
+    }
+    const record = context.calendar;
     if (record && record.schemaVersion !== 2) {
       return this.saveICloudCalendarSharing(principal, calendarId, {
+        ownerId: context.ownerId,
         title: record.title,
         color: record.color,
         timeZone: record.timeZone,
@@ -1127,13 +1334,7 @@ export class CalendarService {
       });
     }
     return result(200, {
-      calendar: record ?? {
-        id: calendarId,
-        title: '',
-        color: '#0088FF',
-        timeZone: 'UTC',
-        recipients: [],
-      },
+      calendar: await this.publicICloudCalendarSharing(context),
     });
   }
 
@@ -1218,9 +1419,9 @@ export class CalendarService {
         timeZone: safeTimeZone(
           String(calendar?.timeZone ?? indexedValue.ref?.timeZone ?? ''),
         ) ?? 'UTC',
-        access: (recipient?.access ?? indexedValue.ref?.access) === 'writer'
-          ? 'writer'
-          : 'reader',
+        access: this.recipientAccess({
+          access: recipient?.access ?? indexedValue.ref?.access,
+        }),
         invitedAt: recipient?.invitedAt ?? indexedValue.ref?.invitedAt ?? null,
         updatedAt: calendar?.updatedAt
           ?? recipient?.updatedAt
@@ -1238,8 +1439,8 @@ export class CalendarService {
       if (!previous
           || (previous.isRevoked && !sharedCalendar.isRevoked)
           || (previous.isRevoked === sharedCalendar.isRevoked
-            && previous.access === 'reader'
-            && sharedCalendar.access === 'writer')) {
+            && this.eventAccessRank(sharedCalendar.access)
+              > this.eventAccessRank(previous.access))) {
         calendars.set(identity, sharedCalendar);
       }
     }
@@ -1348,9 +1549,10 @@ export class CalendarService {
     ) ?? matchingRecipients[0];
     const email = normalizeEmail(existing?.email) ?? identities[0].email;
     const now = new Date().toISOString();
-    const access = matchingRecipients.some(
-      (recipient: any) => recipient?.access === 'writer',
-    ) ? 'writer' : 'reader';
+    const access = matchingRecipients
+      .map((value: any) => this.recipientAccess(value))
+      .sort((a, b) => this.eventAccessRank(b) - this.eventAccessRank(a))[0]
+      ?? 'reader';
     const recipient = {
       id: principal.principalId,
       userId: principal.principalId,
@@ -1442,6 +1644,16 @@ export class CalendarService {
     if (!validICloudCalendarShareId(calendarId)) {
       return result(400, { error: 'invalid iCloud calendar identifier' });
     }
+    const context = await this.iCloudCalendarAccessContext(
+      principal,
+      calendarId,
+      body.ownerId,
+      true,
+    );
+    if (!context || context.access !== 'owner') {
+      return result(403, { error: 'Owner access is required to manage calendar sharing' });
+    }
+    const ownerId = context.ownerId;
     const title = boundedPlainText(body.title, 512);
     if (!title) return result(400, { error: 'calendar title is required' });
     const color = /^#[0-9a-fA-F]{6}$/.test(String(body.color ?? ''))
@@ -1453,22 +1665,20 @@ export class CalendarService {
       return result(400, { error: 'no more than 100 recipients are allowed' });
     }
 
-    const recipientsByEmail = new Map<string, { email: string; access: 'reader' | 'writer' }>();
+    const recipientsByEmail = new Map<string, { email: string; access: EventAccessRole }>();
     for (const raw of rawRecipients) {
       const email = normalizeEmail(raw?.email);
       const access = String(raw?.access ?? '').toLowerCase();
       if (!email) return result(400, { error: 'every recipient requires a valid email' });
-      if (!['reader', 'writer'].includes(access)) {
-        return result(400, { error: "access must be 'reader' or 'writer'" });
+      if (!['reader', 'writer', 'owner'].includes(access)) {
+        return result(400, { error: "access must be 'reader', 'writer', or 'owner'" });
       }
-      recipientsByEmail.set(email, { email, access: access as 'reader' | 'writer' });
+      recipientsByEmail.set(email, { email, access: access as EventAccessRole });
     }
 
-    const key = this.keys.icloudCalendarSharing(principal.principalId, calendarId);
-    const [existing, ownerAccount] = await Promise.all([
-      this.store.getJSON(key),
-      this.store.getJSON(this.keys.principal(principal.principalId)),
-    ]);
+    const key = this.keys.icloudCalendarSharing(ownerId, calendarId);
+    const existing = context.calendar;
+    const ownerAccount = await this.store.getJSON(this.keys.principal(ownerId));
     const ownerIdentities = this.recipientIdentities(ownerAccount);
     const ownerEmails = new Set(ownerIdentities.map((identity) => identity.email));
     for (const email of recipientsByEmail.keys()) {
@@ -1491,7 +1701,7 @@ export class CalendarService {
             this.keys.accountEmail(this.core.emailHash(recipient.email)),
           );
           const recipientPrincipalId = accountRef?.principalId
-            && accountRef.principalId !== principal.principalId
+            && accountRef.principalId !== ownerId
             ? String(accountRef.principalId)
             : null;
           const recipientAccount = recipientPrincipalId
@@ -1525,9 +1735,10 @@ export class CalendarService {
     const calendar = {
       schemaVersion: 2,
       id: calendarId,
-      ownerId: principal.principalId,
+      ownerId,
+      ownerEmail: ownerIdentities[0]?.email ?? null,
       owner: {
-        id: principal.principalId,
+        id: ownerId,
         emails: [...ownerEmails],
         identities: ownerIdentities.map((identity) => ({
           provider: identity.provider,
@@ -1552,7 +1763,7 @@ export class CalendarService {
       if (!currentEmails.has(email)) {
         const previousRecipient = existingByEmail.get(email);
         const tombstone = {
-          ownerId: principal.principalId,
+          ownerId,
           ownerEmail: ownerIdentities[0]?.email ?? null,
           calendarId,
           title,
@@ -1561,7 +1772,7 @@ export class CalendarService {
           email,
           recipientId: previousRecipient?.id ?? null,
           userId: previousRecipient?.userId ?? null,
-          access: previousRecipient?.access === 'writer' ? 'writer' : 'reader',
+          access: this.recipientAccess(previousRecipient),
           isPending: false,
           invitedAt: previousRecipient?.invitedAt ?? null,
           acceptedAt: previousRecipient?.acceptedAt ?? null,
@@ -1571,14 +1782,14 @@ export class CalendarService {
         };
         indexes.push(this.store.putJSON(this.keys.pendingICloudCalendarInvitation(
           this.core.emailHash(email),
-          principal.principalId,
+          ownerId,
           calendarId,
         ), tombstone));
         const previousUserId = previousRecipient?.userId;
         if (previousUserId) {
           indexes.push(this.store.putJSON(this.keys.receivedICloudCalendar(
             String(previousUserId),
-            principal.principalId,
+            ownerId,
             calendarId,
           ), tombstone));
         }
@@ -1589,16 +1800,16 @@ export class CalendarService {
       if (previousUserId && previousUserId !== recipient.userId) {
         indexes.push(this.store.del(this.keys.receivedICloudCalendar(
           String(previousUserId),
-          principal.principalId,
+          ownerId,
           calendarId,
         )));
       }
       indexes.push(this.store.putJSON(this.keys.pendingICloudCalendarInvitation(
         this.core.emailHash(recipient.email),
-        principal.principalId,
+        ownerId,
         calendarId,
       ), {
-        ownerId: principal.principalId,
+        ownerId,
         calendarId,
         title,
         color,
@@ -1617,10 +1828,10 @@ export class CalendarService {
       if (recipient.userId) {
         indexes.push(this.store.putJSON(this.keys.receivedICloudCalendar(
           recipient.userId,
-          principal.principalId,
+          ownerId,
           calendarId,
         ), {
-          ownerId: principal.principalId,
+          ownerId,
           ownerEmail: ownerIdentities[0]?.email ?? null,
           calendarId,
           title,
@@ -1637,7 +1848,9 @@ export class CalendarService {
       }
     }
     await Promise.all(indexes);
-    return result(existing ? 200 : 201, { calendar });
+    return result(existing ? 200 : 201, {
+      calendar: await this.publicICloudCalendarSharing({ ...context, calendar }),
+    });
   }
 
   /** Keeps the last shared snapshot as a tombstone when the owner deletes the
@@ -1684,7 +1897,7 @@ export class CalendarService {
         email,
         recipientId: recipient?.id ?? null,
         userId: recipient?.userId ?? null,
-        access: recipient?.access === 'writer' ? 'writer' : 'reader',
+        access: this.recipientAccess(recipient),
         isPending: false,
         invitedAt: recipient?.invitedAt ?? null,
         acceptedAt: recipient?.acceptedAt ?? null,
@@ -1721,12 +1934,18 @@ export class CalendarService {
     if (!validICloudCalendarShareId(calendarId)) {
       return result(400, { error: 'invalid iCloud calendar identifier' });
     }
-    const sharing = await this.store.getJSON(
-      this.keys.icloudCalendarSharing(principal.principalId, calendarId),
+    const context = await this.iCloudCalendarAccessContext(
+      principal,
+      calendarId,
+      body.ownerId,
     );
-    if (!sharing) {
+    if (!context) {
       return result(404, { error: 'calendar must be shared before its events can sync' });
     }
+    if (context.access === 'reader') {
+      return result(403, { error: 'Reader access cannot edit calendar events' });
+    }
+    const sharing = context.calendar;
     if (sharing.deletedAt) {
       return result(409, { error: 'deleted calendars can no longer sync events' });
     }
@@ -1774,7 +1993,7 @@ export class CalendarService {
     const now = new Date().toISOString();
     const snapshot = {
       schemaVersion: 1,
-      ownerId: principal.principalId,
+      ownerId: context.ownerId,
       calendarId,
       windowStart,
       windowEnd,
@@ -1784,7 +2003,7 @@ export class CalendarService {
       updatedAt: now,
     };
     await this.store.putJSON(
-      this.keys.icloudCalendarEvents(principal.principalId, calendarId),
+      this.keys.icloudCalendarEvents(context.ownerId, calendarId),
       snapshot,
     );
     return result(200, {
@@ -1800,17 +2019,20 @@ export class CalendarService {
     body: any,
   ): Promise<ApiResult> {
     const access = String(body.access ?? '').toLowerCase();
-    if (!['reader', 'writer'].includes(access)) {
-      return result(400, { error: "access must be 'reader' or 'writer'" });
+    if (!['reader', 'writer', 'owner'].includes(access)) {
+      return result(400, { error: "access must be 'reader', 'writer', or 'owner'" });
     }
-    const acl = await this.store.getJSON(this.keys.acl(principal.calId));
-    if (this.core.roleOf(acl, principal.principalId) !== 'owner') {
-      return result(403, { error: 'only the owner may change event access' });
+    const context = await this.eventManagementContext(principal, eventId);
+    if (!context) {
+      return result(403, { error: 'Owner access is required to change event access' });
+    }
+    if (recipientId === `owner:${context.originalOwnerId || context.calId}`) {
+      return result(403, { error: "the original owner's access cannot be changed" });
     }
 
     let missingRecipient = false;
     const now = new Date().toISOString();
-    const saved = await this.mutateEvent(principal.calId, eventId, (event) => {
+    const saved = await this.mutateEvent(context.calId, eventId, (event) => {
       if (!event) return null;
       const recipients = Array.isArray(event.recipients) ? [...event.recipients] : [];
       const index = recipients.findIndex((recipient: any) => this.recipientId(recipient) === recipientId);
@@ -1930,14 +2152,16 @@ export class CalendarService {
         value?.userId === principal.principalId,
       );
       const existing = existingIndex >= 0 ? recipients[existingIndex] : null;
-      const invitedAsWriter = matchingInvitations.some((value: any) =>
-        this.recipientAccess(value) === 'writer',
-      );
+      const grantedAccess = [existing, ...matchingInvitations]
+        .filter(Boolean)
+        .map((value: any) => this.recipientAccess(value))
+        .sort((a, b) => this.eventAccessRank(b) - this.eventAccessRank(a))[0]
+        ?? 'reader';
       const recipient = {
         userId: principal.principalId,
         emails: [...new Set(identities.map((identity) => identity.email))],
         identities,
-        access: invitedAsWriter ? 'writer' : this.recipientAccess(existing ?? matchingInvitations[0]),
+        access: grantedAccess,
         invitedAt: existing?.invitedAt
           ?? matchingInvitations.map((value: any) => value?.invitedAt).filter(Boolean).sort()[0]
           ?? null,
@@ -2115,13 +2339,25 @@ export class CalendarService {
   }
 
   async cancelEvent(principal: any, eventId: string, query: any): Promise<ApiResult> {
-    const calId = query.calendarId ?? principal.calId;
-    const acl = await this.store.getJSON(this.keys.acl(calId));
-    if (!acl) return result(404, { error: 'no such calendar' });
-    if (!this.core.CAN_WRITE.has(this.core.roleOf(acl, principal.principalId))) return result(403, { error: 'not allowed' });
+    // Cancellation is an event-management operation, not a normal calendar
+    // write. Besides the first sharer, a signed-in recipient explicitly given
+    // Owner access must therefore be able to cancel the canonical object too.
+    // Resolve through the private received-invite reference so an event id on
+    // its own never grants this permission.
+    const context = await this.eventManagementContext(principal, eventId);
+    if (!context) {
+      return result(403, { error: 'Owner access is required to cancel this event' });
+    }
+    const calId = context.calId;
 
     const saved = await this.mutateEvent(calId, eventId, (existing) => existing ? {
       ...existing,
+      // Older clients temporarily wrote the presentation-only cancellation
+      // prefix back into the canonical title. Keep cancellation as metadata;
+      // the clients render the label/strikethrough themselves.
+      title: typeof existing.title === 'string'
+        ? existing.title.replace(/^Cancelled:\s+/i, '')
+        : existing.title,
       status: 'cancelled',
       sequence: (existing.sequence ?? 0) + 1,
       updatedAt: new Date().toISOString(),

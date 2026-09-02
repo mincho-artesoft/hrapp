@@ -39,6 +39,28 @@ export class CalendarController {
     res.status(page.status).type('html').send(page.html);
   }
 
+  @Get('email-assets/shared-event-icon')
+  async sharedEventEmailIcon(@Query() query: any, @Res() res: Response) {
+    const image = this.svc.sharedEventEmailIcon(query?.kind, query?.color);
+    if (!image) {
+      res.status(400).type('text/plain').send('Invalid icon request');
+      return;
+    }
+    res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
+    res.status(200).type('png').send(image);
+  }
+
+  @Get('email-assets/shared-event-qr')
+  async sharedEventEmailQRCode(@Query('url') url: string | undefined, @Res() res: Response) {
+    const image = await this.svc.sharedEventEmailQRCode(url);
+    if (!image) {
+      res.status(400).type('text/plain').send('Invalid QR request');
+      return;
+    }
+    res.setHeader('Cache-Control', 'private, max-age=300');
+    res.status(200).type('png').send(image);
+  }
+
   @Get('events/:id/recipients')
   @UseGuards(AuthGuard)
   async eventRecipients(@Req() req: any, @Param('id') id: string, @Res({ passthrough: true }) res: Response) {
@@ -92,9 +114,10 @@ export class CalendarController {
   async iCloudCalendarSharing(
     @Req() req: any,
     @Param('id') id: string,
+    @Query('ownerId') ownerId: string | undefined,
     @Res({ passthrough: true }) res: Response,
   ) {
-    return reply(res, await this.svc.iCloudCalendarSharing(req.principal, id));
+    return reply(res, await this.svc.iCloudCalendarSharing(req.principal, id, ownerId));
   }
 
   @Get('icloud-calendars-shared-with-me')
