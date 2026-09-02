@@ -1872,6 +1872,9 @@ export class CalendarService {
     // Deletion is intentionally idempotent. A local calendar that was never
     // shared has no server record and therefore needs no recipient tombstone.
     if (!calendar) return result(200, { deleted: true });
+    if (String(calendar.ownerId ?? principal.principalId) !== principal.principalId) {
+      return result(403, { error: 'only the original creator may delete this calendar' });
+    }
 
     const now = calendar.deletedAt ?? new Date().toISOString();
     const ownerEmail = this.recipientIdentities(ownerAccount)[0]?.email ?? null;
