@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars wykorzystuje Twoją lokalizację, gdy jest aktywny, aby zintegrować dokładne lokalne prognozy pogody bezpośrednio z Twoim kalendarzem.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars wymaga dostępu do kalendarza, aby ujednolicić wydarzenia z kalendarzy iCloud, Google i Microsoft, umożliwiając bezproblemowe planowanie.";
+
+"NSCameraUsageDescription" = "Cloud Calendars używa kamery do skanowania kodów QR udostępnionych wydarzeń i kalendarzy.";

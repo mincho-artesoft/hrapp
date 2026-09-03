@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars משתמש במיקום שלך בזמן שהוא פעיל כדי לשלב תחזיות מזג אוויר מקומיות מדויקות ישירות בלוח השנה שלך.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars דורש גישה ליומן כדי לאחד את האירועים שלך מלוחות השנה iCloud, Google ו-Microsoft, מה שמאפשר תזמון חלק.";
+
+"NSCameraUsageDescription" = "Cloud Calendars משתמש במצלמה כדי לסרוק קודי QR של אירועים ולוחות שנה משותפים.";

@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars использует ваше местоположение при активном приложении, чтобы интегрировать местный прогноз погоды в ваш календарь.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars требуется доступ к календарям для объединения событий из iCloud, Google и Microsoft.";
+
+"NSCameraUsageDescription" = "Cloud Calendars использует камеру для сканирования QR-кодов общих событий и календарей.";

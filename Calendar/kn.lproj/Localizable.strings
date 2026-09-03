@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld ಘಟನೆ";
+"%lld events" = "%lld ಘಟನೆಗಳು";
+"Share Pop-up" = "ಪಾಪ್ ಅಪ್ ಹಂಚಿಕೆ";
+"Would you like to share this event?" = "ಈ ಘಟನೆಯನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ನೀವು ಬಯಸುವಿರಾ?";
+"Don't ask again" = "ಮತ್ತೆ ಕೇಳಬೇಡ";
+"No email was provided." = "ಯಾವುದೇ ಇಮೇಲ್ ಒದಗಿಸಲಾಗಿಲ್ಲ.";
+"Please enter a valid email to continue." = "ಮುಂದುವರಿಸಲು ದಯವಿಟ್ಟು ಮಾನ್ಯ ಇಮೇಲ್ ನಮೂದಿಸಿ.";
+"Your email" = "ನಿಮ್ಮ ಇಮೇಲ್";
+"Save" = "ಉಳಿಸಿ";
+"Login" = "ಲಾಗಿನ್";
+"Logout" = "ಲೋಗೌಟ್";
+
+/* RootView */
+"N/A" = "ಎ/ಎ";
+"Calendars" = "ಕ್ಯಾಲೆಂಡರ್ಗಳು";
+"Inbox" = "ಇನ್ಬಾಕ್ಸ್";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "ಇತರರು";
+"Google calendars" = "Google calendarಗಳು";
+"No synced Google calendars yet." = "ಸಿಂಕ್ರೊನೈಸ್ ಮಾಡದಿರುವುದು Google calendarಇನ್ನೂ.";
+"Microsoft calendars" = "Microsoft calendarಗಳು";
+"No synced Microsoft calendars yet." = "ಸಿಂಕ್ರೊನೈಸ್ ಮಾಡದಿರುವುದು Microsoft calendarಇನ್ನೂ.";
+"Sign out" = "ಸೈನ್ ಅಪ್ ಮಾಡಿ";
+"Add iCloud Calendar" = "ಸೇರಿಸಿ iCloud ಕ್ಯಾಲೆಂಡರ್";
+"Share calendars with iCloud Calendar" = "ಕ್ಯಾಲೆಂಡರ್ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ iCloud ಕ್ಯಾಲೆಂಡರ್";
+"Sign in with Google" = "ಸೈನ್ ಇನ್ ಮಾಡಿ Google";
+"Sign in with Microsoft" = "ಸೈನ್ ಇನ್ ಮಾಡಿ Microsoft";
+"Deselect All" = "ಎಲ್ಲವನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+"Select All" = "ಎಲ್ಲಾ ಆಯ್ಕೆಮಾಡಿ";
+"No Email" = "ಇಮೇಲ್ ಇಲ್ಲ";
+"Add Google Calendar" = "ಸೇರಿಸಿ Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "ಕ್ಯಾಲೆಂಡರ್ ಹೆಸರು";
+"Account" = "ಖಾತೆ";
+"COLOR" = "ಬಣ್ಣ";
+"NOTIFICATIONS" = "ಅಧಿಸೂಚನೆಗಳು";
+"Event Alerts" = "ಘಟನೆ ಎಚ್ಚರಿಕೆಗಳು";
+"Allow events on this calendar to display alerts." = "ಈ ಕ್ಯಾಲೆಂಡರ್ನಲ್ಲಿನ ಘಟನೆಗಳು ಎಚ್ಚರಿಕೆಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಅನುಮತಿಸಿ.";
+"Add Calendar" = "ಕ್ಯಾಲೆಂಡರ್ ಸೇರಿಸಿ";
+
+/* Colors */
+"Red" = "ಕೆಂಪು";
+"Orange" = "ಕಿತ್ತಳೆ";
+"Yellow" = "ಹಳದಿ";
+"Green" = "ಹಸಿರು";
+"Blue" = "ನೀಲಿ";
+"Purple" = "ಕಂದು ಬಣ್ಣ";
+"Brown" = "ಕಂದು";
+"Custom" = "ಕಸ್ಟಮ್";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "ಕ್ಯಾಲೆಂಡರ್ ಬಣ್ಣ";
+"Custom..." = "ಕಸ್ಟಮ್.";
+
+/* EditCalendarView */
+"Edit Calendar" = "ಕ್ಯಾಲೆಂಡರ್ ಸಂಪಾದಿಸಿ";
+"Delete Calendar" = "ಕ್ಯಾಲೆಂಡರ್ ಅಳಿಸಿ";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "ಹಂಚಿಕೆ ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಲೋಡ್...";
+"Shared with these users" = "ಈ ಬಳಕೆದಾರರೊಂದಿಗೆ ಹಂಚಿಕೊಂಡಿದೆ";
+"Add New Email" = "ಹೊಸ ಇಮೇಲ್ ಸೇರಿಸಿ";
+"Email to share" = "ಹಂಚಿಕೊಳ್ಳಲು ಇಮೇಲ್";
+"Permission:" = "ಅನುಮತಿಃ";
+"Add" = "ಸೇರಿಸಿ";
+"Sharing:" = "ಹಂಚಿಕೆಃ";
+"Done" = "ಮುಗಿದಿದೆ";
+
+"Error loading: %@" = "ದೋಷ ಲೋಡ್ಃ %@";
+"Error adding: %@" = "ಸೇರಿಸಿದ ದೋಷಃ %@";
+"Error deleting: %@" = "ದೋಷ ಅಳಿಸುವಿಕೆಃ %@";
+"Error updating: %@" = "ದೋಷ ನವೀಕರಣಃ %@";
+"Error re-inviting (delete): %@" = "ಮರುಹಂಚಿಕೆ (ವಿಸರ್ಜನೆ) ದೋಷಃ %@";
+"Error re-inviting (insert): %@" = "ದೋಷ ಮರು-ಹೆಸರು (ಸೇರಿಸಿ): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "ಓದುಗ";
+"Writer" = "ಬರಹಗಾರ";
+"Owner"  = "ಮಾಲೀಕರು";
+
+/* MonthCalendarView */
+"Day View" = "ದಿನ ವೀಕ್ಷಣೆ";
+"This is a repeating event." = "ಇದು ಪುನರಾವರ್ತಿತ ಘಟನೆ.";
+"Save for This Event Only" = "ಈ ಘಟನೆಗೆ ಮಾತ್ರ";
+"Save for Future Events" = "ಭವಿಷ್ಯದ ಘಟನೆಗಳಿಗಾಗಿ ಉಳಿಸಿ";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "ಸೂರ್ಯ";
+"Mon" = "ಮಾಂ";
+"Tue" = "ಮಂಗಳವಾರ";
+"Wed" = "ವಿವಾಹ";
+"Thu" = "ಠೂ";
+"Fri" = "ಶುಕ್ರವಾರ";
+"Sat" = "ಸ್ಯಾಟ್";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "ಹತ್ತಿರ";
+
+/* AllEventsListView */
+"No calendar access." = "ಕ್ಯಾಲೆಂಡರ್ ಪ್ರವೇಶವಿಲ್ಲ.";
+
+/* EventRowView */
+"Ends" = "ಅಂತ್ಯಗಳು";
+
+/* SearchEventRowView */
+"No Title" = "ಶೀರ್ಷಿಕೆ ಇಲ್ಲ";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "ಸಭೆಯಲ್ಲಿ ಸೇರಿ";
+"Edit" = "ಸಂಪಾದಿಸಿ";
+"Duplicate" = "ಡ್ಯುಪ್ಲಿ";
+"Delete" = "ಅಳಿಸು";
+"Share" = "ಹಂಚಿಕೆ";
+"Add to Google Meet" = "ಸೇರಿಸಿ Google ಭೇಟಿ";
+"Add to Microsoft Teams" = "ಸೇರಿಸಿ Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "ಆಯ್ಕೆ ಮಾಡದ ವ್ಯಾಪ್ತಿ";
+"all-day" = "ದಿನವಿಡೀ";
+"Search events..." = "ಹುಡುಕಾಟ ಘಟನೆಗಳು.";
+"Day" = "ದಿನ";
+"MultiDay" = "ಬಹುದಿನ";
+"Month" = "ತಿಂಗಳು";
+"Year" = "ವರ್ಷ";
+"List" = "ಪಟ್ಟಿ";
+"MultiCalendar" = "ಬಹು ಕ್ಯಾಲೆಂಡರ್";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "ಹೊಸ ಘಟನೆ";
+"All-day event" = "ಇಡೀ ದಿನ ನಡೆಯುವ ಘಟನೆ";
+"Recurring Event" = "ಪುನರಾವರ್ತಿತ ಘಟನೆ";
+"This event is part of a series. Update which events?" = "ಈ ಘಟನೆ ಸರಣಿಯ ಭಾಗವಾಗಿದೆ. ಯಾವ ಘಟನೆಗಳನ್ನು ನವೀಕರಿಸುವುದು?";
+"This Event Only" = "ಈ ಘಟನೆ ಮಾತ್ರ";
+"All Future Events" = "ಭವಿಷ್ಯದಲ್ಲಿ ಸಂಭವಿಸುವ ಎಲ್ಲಾ ಘಟನೆಗಳು";
+"Cancel" = "ರದ್ದು";
+
+/* DraggableMenuView */
+"Calendar" = "ಕ್ಯಾಲೆಂಡರ್";
+"Subscriptions" = "ಅಬೊನಾಮೆನ್ಸ್";
+"Settings" = "ಸೆಟ್ಟಿಂಗ್ಗಳು";
+"Sharing" = "ಹಂಚಿಕೆ";
+"Live" = "ಲೈವ್";
+"Stop" = "ನಿಲ್ಲಿಸಿ";
+"Calendar Live Activity" = "ಕ್ಯಾಲೆಂಡರ್ ಲೈವ್ ಚಟುವಟಿಕೆ";
+"Get" = "ಪಡೆಯಿರಿ";
+"Color" = "ಬಣ್ಣ";
+"Search for a city…" = "ಒಂದು ನಗರ ಹುಡುಕಿ.";
+"No directions" = "ಯಾವುದೇ ನಿರ್ದೇಶನಗಳಿಲ್ಲ";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ನಿರಾಕರಿಸಲಾಗಿದೆ. ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ನಗರವನ್ನು ಹುಡುಕಿ ಅಥವಾ ಪ್ರವೇಶವನ್ನು ನೀಡಿ.";
+"Cannot refresh. Location unknown." = "ಸ್ಥಳ ತಿಳಿದಿಲ್ಲ.";
+"10-DAY FORECAST" = "ಹತ್ತು ದಿನಗಳ ಮುನ್ನೋಟ";
+"HighLowLabelFormat" = "ಎಚ್:%d° L:%d°";
+"tomorrow" = "ನಾಳೆ";
+"on_day" = "ಮೇಲೆ %@";
+"in_days" = "ರಲ್ಲಿ %d ದಿನಗಳು";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "ಹೊಸ ಘಟನೆ";
+
+/* Search placeholder */
+"Search for a city..." = "ಒಂದು ನಗರ ಹುಡುಕಿ.";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "ಕ್ಯಾಲೆಂಡರ್ ಘಟನೆಯನ್ನು ತ್ವರಿತವಾಗಿ ಸೇರಿಸಲು ಒಂದು ಗಂಟೆಯನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "ಭಾವನೆ";
+"similar_to_actual_temp" = "ನಿಜವಾದ ತಾಪಮಾನಕ್ಕೆ ಹೋಲುತ್ತದೆ.";
+"wind_cooler_feel" = "ಗಾಳಿ ತಂಪಾಗಿರುತ್ತದೆ.";
+"humidity_warmer_feel" = "ಆರ್ದ್ರತೆಯು ಅದನ್ನು ಬೆಚ್ಚಗಾಗಿಸುತ್ತದೆ.";
+
+/* HumidityCard */
+"HUMIDITY" = "ಆರ್ದ್ರತೆ";
+"The dew point is %d° right now." = "ದೋವಿನ ಬಿಂದುವು %dಈಗಲೇ.";
+"dewPoint.current" = "ದೋವಿನ ಬಿಂದುವು %dಈಗಲೇ.";
+
+/* MoonCard */
+"MOON PHASE" = "ಚಂದ್ರನ ಹಂತ";
+"Moonrise" = "ಚಂದ್ರನ ಉದಯ";
+"Moonset" = "ಚಂದ್ರನ";
+"Next %@" = "ಮುಂದಿನದು %@";
+"Data unavailable" = "ಡೇಟಾ ಲಭ್ಯವಿಲ್ಲ";
+"%d day" = "%d ದಿನ";
+"%d days" = "%d ದಿನಗಳು";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "ಪ್ರೆಸಿಪಿಟೇಶನ್";
+"PRECIPITATION_CARD_TODAY_LABEL" = "ಇಂದು";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "ಮುಂದಿನ ನಿರೀಕ್ಷೆಯೆಂದರೆ %1$.0f %2$@ %3$@. ."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "ಶೀಘ್ರದಲ್ಲಿ ಮಳೆ ನಿರೀಕ್ಷೆಯಿಲ್ಲ.";
+
+/* PressureCard */
+"PRESSURE" = "ಒತ್ತಡ";
+"hPa" = "ಎಚ್ಪಿಎ";
+
+/* SunsetCard */
+"SUNRISE" = "ಸೂರ್ಯೋದಯ";
+"Sunrise: %@" = "ಸೂರ್ಯೋದಯಃ %@";
+"Sunset: %@" = "ಸೂರ್ಯಾಸ್ತ: %@";
+"Sunrise" = "ಸೂರ್ಯೋದಯ";
+"Sunset" = "ಸೂರ್ಯಾಸ್ತ";
+
+
+"Sunrise and Sunset" = "ಸೂರ್ಯೋದಯ ಮತ್ತು ಸೂರ್ಯಾಸ್ತ";
+"First Light" = "ಮೊದಲ ಬೆಳಕು";
+"Solar Noon" = "ಸೌರ ಮಧ್ಯಾಹ್ನ";
+"Last Light" = "ಕೊನೆಯ ಬೆಳಕು";
+"Total Daylight" = "ಒಟ್ಟು ಹಗಲು ಬೆಳಕು";
+
+/* UVIndexCard */
+"UV INDEX" = "UV ಸೂಚ್ಯಂಕ";
+"Low" = "ಕಡಿಮೆ";
+"Moderate" = "ಮಧ್ಯಮ";
+"High" = "ಉನ್ನತ";
+"Very High" = "ಬಹಳ ಎತ್ತರ";
+"Extreme" = "ತೀವ್ರ";
+
+/* VisibilityCard */
+"VISIBILITY" = "ಗೋಚರತೆ";
+"km" = "ಕಿಮೀ";
+"Perfectly clear view." = "ಸಂಪೂರ್ಣವಾಗಿ ಸ್ಪಷ್ಟ ನೋಟ.";
+"Excellent visibility." = "ಅತ್ಯುತ್ತಮ ಗೋಚರತೆ.";
+"Good visibility." = "ಉತ್ತಮ ಗೋಚರತೆ.";
+"Moderate visibility." = "ಮಧ್ಯಮ ಗೋಚರತೆ.";
+"Poor visibility." = "ಕಡಿಮೆ ಗೋಚರತೆ.";
+"Very poor visibility." = "ಬಹಳ ಕಡಿಮೆ ಗೋಚರತೆ.";
+"visibility.perfect"   = "ಸಂಪೂರ್ಣವಾಗಿ ಸ್ಪಷ್ಟ ನೋಟ.";
+"visibility.excellent" = "ಅತ್ಯುತ್ತಮ ಗೋಚರತೆ.";
+"visibility.good"      = "ಉತ್ತಮ ಗೋಚರತೆ.";
+"visibility.moderate"  = "ಮಧ್ಯಮ ಗೋಚರತೆ.";
+"visibility.poor"      = "ಕಡಿಮೆ ಗೋಚರತೆ.";
+"visibility.verypoor"  = "ಬಹಳ ಕಡಿಮೆ ಗೋಚರತೆ.";
+"visibility.unknown"   = "";
+
+/* WindCard */
+"WIND" = "ಗಾಳಿ";
+"Gusts" = "ರುಚಿ";
+"Direction" = "ದಿಕ್ಕು";
+"km/h" = "ಕಿಮೀ/ಗಂಟೆ";
+"Compass_N" = "ಎನ್";
+"Compass_S" = "ಎಸ್";
+"Compass_W" = "W";
+"Compass_E" = "ಇ";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "ಹವಾಮಾನ ದತ್ತಾಂಶವನ್ನು ಪಡೆಯುವಲ್ಲಿ ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"Falling" = "ಬಿದ್ದು";
+"Rising" = "ಏರಿಕೆ";
+"Steady" = "ಸ್ಥಿರ";
+"Unknown" = "ಅಜ್ಞಾತ";
+"Sunny" = "ಸನ್ನಿ";
+"Cloudy" = "ಮೋಡ";
+"Partly Cloudy" = "ಭಾಗಶಃ ಮೋಡ";
+"Drizzle" = "ಡ್ರಿಜ್ಲ್";
+"Thunderstorm" = "ಗಗನಗಾಳಿ";
+"Fog" = "ಮಂಜು";
+"Partly Cloudy Night" = "ಭಾಗಶಃ ಮೋಡದ ರಾತ್ರಿ";
+"Clear Night" = "ಸ್ಪಷ್ಟವಾದ ರಾತ್ರಿ";
+"Hazy" = "ಹ್ಯಾಸಿ";
+"Today" = "ಇಂದು";
+"Now" = "ಈಗ";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "ಎನ್";
+"cardinal.NNE" = "ಎನ್ ಎನ್";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ಎನ್ಇ";
+"cardinal.E"   = "ಇ";
+"cardinal.ESE" = "ಎಎಸ್ಇ";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "ಎಸ್ಎಸ್ಇ";
+"cardinal.S"   = "ಎಸ್";
+"cardinal.SSW" = "ಎಸ್ಎಸ್ಡಬ್ಲ್ಯೂ";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "ಎನ್ಎನ್ಡಬ್ಲ್ಯೂ";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "ಮಳೆ ಸಾಧ್ಯತೆ";
+"Today's chance: %d%%" = "ಇಂದಿನ ಅವಕಾಶಃ %d%%";
+"%@'s chance: %d%%" = "%@ಅವಕಾಶ: %d%%";
+"Max" = "ಮ್ಯಾಕ್ಸ್";
+"Min" = "ಮಿನಿ";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "ಪ್ರತಿದಿನ ಮಳೆ ಸಾಧ್ಯತೆ ಪ್ರತಿ ಗಂಟೆಗಿಂತ ಹೆಚ್ಚಿರುತ್ತದೆ.";
+"ChanceOfPrecipitation_Title" = "ಮಳೆ ಸಾಧ್ಯತೆ";
+"TodaysChance"                = "ಇಂದಿನ ಅವಕಾಶಃ %d%%";
+"OtherDayChance"              = "%@ಅವಕಾಶ: %d%%";
+"DailyChanceExplanation"      = "ಪ್ರತಿದಿನ ಮಳೆ ಸಾಧ್ಯತೆ ಪ್ರತಿ ಗಂಟೆಗಿಂತ ಹೆಚ್ಚಿರುತ್ತದೆ.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "ಭಾವನೆ";
+"Actual" = "ನಿಜವಾದ";
+"No hourly data available for this day." = "ಈ ದಿನಕ್ಕೆ ಯಾವುದೇ ಗಂಟೆಯ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "ತೇವಾಂಶ, ಸೂರ್ಯನ ಬೆಳಕು ಅಥವಾ ಗಾಳಿಯ ಪರಿಣಾಮವಾಗಿ ತಾಪಮಾನ ಹೇಗಿರುತ್ತದೆ.";
+"The actual air temperature." = "ನಿಜವಾದ ಗಾಳಿಯ ಉಷ್ಣತೆ.";
+"HighLabelFormat" = "ಎಚ್: %d°";
+"LowLabelFormat"  = "ಎಲ್: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "ಎಚ್";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "ಆರ್ದ್ರತೆ";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "ಆರ್ದ್ರತೆ %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "ಆರ್ದ್ರತೆ Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "ಇಂದಿನ ಮಿನಿ %d%%  ಗರಿಷ್ಠ %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "ಮ್ಯಾಕ್ಸ್";
+"ChartMarker_Min"           = "ಮಿನಿ";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "ಮಳೆಃ %.1f%@, ಸ್ನೋ: %.1f%@";
+"Precip_Total_RainFormat"       = "ಮಳೆಃ %.1f%@";
+"Precip_Total_SnowFormat"       = "ಹಿಮ: %.1f%@";
+"Precip_Total_None"             = "ಮಳೆಃ 0%@";
+"Precip_Bars_Subtitle"          = "ಮಳೆ ಮತ್ತು ಹಿಮಕ್ಕಾಗಿ ಗಂಟೆಯ ಬಾರ್ಗಳು (%@)";
+"Precip_Level_Light"            = "ಬೆಳಕು";
+"Precip_Level_Moderate"         = "ಮಧ್ಯಮ";
+"Precip_Level_Heavy"            = "ಭಾರೀ";
+"Precip_Tooltip_Format"         = "%@h\nಮಳೆಃ %.1f%@\nಹಿಮ: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "ಒತ್ತಡ %@ %@";
+"Pressure_CurrentUnavailable"      = "ಒತ್ತಡಃ --";
+"Pressure_DailyMinMaxFormat"       = "ಇಂದಿನ ಮಿನಿ %@ %@  ಗರಿಷ್ಠ %@ %@";
+"Pressure_AverageFormat"           = "ಒತ್ತಡದ ಸರಾಸರಿ %@ %@";
+"Pressure_DailyRangeFormat"        = "ದೈನಂದಿನ ವ್ಯಾಪ್ತಿಃ %@%@ %@";
+"Pressure_Title"                   = "ಒತ್ತಡ";
+"Pressure_NoData"                  = "ಈ ದಿನಕ್ಕೆ ಯಾವುದೇ ಒತ್ತಡದ ಮಾಹಿತಿಯಿಲ್ಲ.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "ಇಂದಿನ %@ %d";
+"UVGraphNoHourlyData"   = "ಈ ದಿನಕ್ಕೆ ಯಾವುದೇ ಗಂಟೆಯ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ.";
+"UVGraphNowLabel"       = "ಈಗ, %@";
+"UVCategory_None"       = "ಯಾವುದೂ ಇಲ್ಲ";
+"UVCategory_Low"        = "ಕಡಿಮೆ";
+"UVCategory_Moderate"   = "ಮಧ್ಯಮ";
+"UVCategory_High"       = "ಉನ್ನತ";
+"UVCategory_VeryHigh"   = "ಬಹಳ ಎತ್ತರ";
+"UVCategory_Extreme"    = "ತೀವ್ರ";
+"UVAdvice_None"         = "ಈ ದಿನ ಮಧ್ಯಮ ಅಥವಾ ಹೆಚ್ಚಿನ UV ಮಟ್ಟಗಳು ನಿರೀಕ್ಷಿಸಲ್ಪಡುವುದಿಲ್ಲ.";
+"UVAdvice_Range"        = "ಸೂರ್ಯನ ರಕ್ಷಣೆ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ. %@ ಗೆ %@, ನಡುವೆ ತಲುಪಿತು %@ ಮತ್ತು %@. .";
+"UVGraphMaxLabel" = "ಮ್ಯಾಕ್ಸ್";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "ಗೋಚರತೆ";
+"Visibility_NoData"                = "ಈ ದಿನಕ್ಕೆ ಯಾವುದೇ ಗೋಚರತೆ ಮಾಹಿತಿಯಿಲ್ಲ.";
+"Visibility_CurrentFormat"         = "ಗೋಚರತೆ %d %@";
+"Visibility_DailyMinMaxFormat"     = "ನಿಮಿಷ %d  ಗರಿಷ್ಠ %d %@";
+"Visibility_NoCurrentData"         = "ಪ್ರಸ್ತುತ ಗೋಚರತೆ ಮಾಹಿತಿಯಿಲ್ಲ.";
+"Visibility_HourlyAverages_NoData" = "ಗಂಟೆಯ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ.";
+"Visibility_MaxLabel"              = "ಮ್ಯಾಕ್ಸ್";
+"Visibility_MinLabel"              = "ಮಿನಿ";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "ಗಾಳಿಯ ವೇಗ ಮತ್ತು ಗಸ್ಟ್";
+"WindGraph_NoData" = "ಈ ದಿನಕ್ಕೆ ಗಾಳಿಯ ಮಾಹಿತಿಯಿಲ್ಲ.";
+"WindGraph_SpeedHeader" = "ಗಾಳಿಯ ವೇಗ %d";
+"WindGraph_GustHeader" = "ಅಪ್ ರುಚಿ %d";
+"WindGraph_SpeedRangeHeader" = "ಗಾಳಿಯ ವೇಗ %d- ನಾನು .%d";
+"WindGraph_MaxSpeedLabel" = "ಮ್ಯಾಕ್ಸ್ ಎಸ್";
+"WindGraph_MaxGustLabel" = "ಮ್ಯಾಕ್ಸ್ ಜಿ";
+"WindGraph_DragLabel" = "%@\nವೇಗ: %d\nಗಸ್ಟ್: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "ದೈನಂದಿನ ಸಂಕ್ಷಿಪ್ತ";
+
+"Precipitation Totals" = "ಮಳೆ ಪ್ರಮಾಣ";
+"LAST 24 HOURS" = "ಕಳೆದ 24 ಗಂಟೆಗಳು";
+"NEXT 24 HOURS" = "ಮುಂದಿನ 24 ಗಂಟೆಗಳು";
+"Total" = "ಒಟ್ಟು";
+"Rain" = "ಮಳೆ";
+"Snow" = "ಹಿಮ";
+
+"About Wind Speed and Gusts" = "ಗಾಳಿಯ ವೇಗ ಮತ್ತು ಗಾಸ್ಟ್ ಬಗ್ಗೆ";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "ಗಾಳಿಯ ವೇಗವನ್ನು ಅಲ್ಪಾವಧಿಯ ಸರಾಸರಿ ಬಳಸಿ ಲೆಕ್ಕಹಾಕಲಾಗುತ್ತದೆ. ಗಾಸ್ಟ್ಗಳು ಈ ಸರಾಸರಿಗಿಂತ ಕಡಿಮೆ ಗಾಳಿಯ ಸ್ಫೋಟಗಳಾಗಿವೆ. ಒಂದು ಸ್ಫೋಟವು ವಿಶಿಷ್ಟವಾಗಿ 20 ಸೆಕೆಂಡುಗಳಿಗಿಂತ ಕಡಿಮೆ ಇರುತ್ತದೆ.";
+
+"About the Beaufort Scale" = "ಬೋಫೋರ್ಟ್ ಪ್ರಮಾಣದ ಬಗ್ಗೆ";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "ಬೋಫೋರ್ಟ್ ಗಾಳಿಯ ಪ್ರಮಾಣವು ಒಂದು ನಿರ್ದಿಷ್ಟ ವೇಗದಲ್ಲಿ ಗಾಳಿಯ ಬಲ ಅಥವಾ ಬಲವನ್ನು ವ್ಯಕ್ತಪಡಿಸುತ್ತದೆ. ಬೋಫೋರ್ಟ್ ಪ್ರಮಾಣವು ಗಾಳಿಯ ಗಾಳಿ ಎಷ್ಟು ಗಾಳಿ ಬೀಳುತ್ತದೆ ಅಥವಾ ಗಾಳಿಯ ಪರಿಣಾಮ ಎಷ್ಟು ಪರಿಣಾಮ ಬೀರಬಹುದು ಎಂಬುದನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸುಲಭಗೊಳಿಸುತ್ತದೆ. ಈ ಪ್ರಮಾಣದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ಮೌಲ್ಯವು ಗಾಳಿಯ ವೇಗ ವ್ಯಾಪ್ತಿಯೊಂದಿಗೆ ಅನುರೂಪವಾಗಿದೆ.";
+
+"About Feels Like Temperature" = "ತಾಪಮಾನದ ಬಗ್ಗೆ";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "ಈ ರೀತಿಯ ಉಷ್ಣಾಂಶವು ತೇವಾಂಶ, ಸೂರ್ಯನ ಬೆಳಕು ಮತ್ತು ಗಾಳಿಯಿಂದ ಪ್ರಭಾವಿತವಾಗಿರುತ್ತದೆ.";
+
+"Options" = "ಆಯ್ಕೆಗಳು";
+"Temperature" = "ತಾಪಮಾನ";
+"Use system setting (°C)" = "ವ್ಯವಸ್ಥೆಯ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಬಳಸಿ (°C)";
+"mm, cm" = "ಮಿಮೀ, ಸೆಂ";
+
+/* Dynamic label titles */
+"Conditions" = "ಷರತ್ತುಗಳು";
+"UV Index" = "UV ಸೂಚ್ಯಂಕ";
+"Wind" = "ಗಾಳಿ";
+"Precipitation" = "ಮಳೆ";
+"Humidity" = "ಆರ್ದ್ರತೆ";
+"Visibility" = "ಗೋಚರತೆ";
+"Pressure" = "ಒತ್ತಡ";
+
+/* Fallback key */
+"displayedCondition" = "ಪ್ರದರ್ಶಿಸಲಾಗಿದೆನಿಯಮ";
+
+/* Titles */
+"Forecast"                   = "ಮುನ್ಸೂಚನೆ";
+"DailySummary"               = "ದೈನಂದಿನ ಸಂಕ್ಷಿಪ್ತ";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° ಈಗ ಜೊತೆ %@ ಮಳೆ ಸಾಧ್ಯತೆ ಇದೆ %@. . ಗಾಳಿ %@ ವರೆಗೆ ಆವರಿಸಿರುವ %d %@ಇಂದಿನ ತಾಪಮಾನವು %d° ಗೆ %d° ಮತ್ತು ಭಾವನೆ %d- %@ಮತ್ತು %@. .";
+"UVIndexFormat"              = "UV ಸೂಚ್ಯಂಕ %d";
+"HumidityFormat"             = "ಸುತ್ತಮುತ್ತಲಿನ ಆರ್ದ್ರತೆ %d%%";
+"HumidityRangeFormat"        = "ಆರ್ದ್ರತೆ %d%% ಗೆ %d%%";
+"NA"                         = "ಎ/ಎ";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@ಕಡಿಮೆ %d° ಮತ್ತು ಉನ್ನತ %d°. ತಾಪಮಾನವು %d° ಗೆ %d°. ಗಾಳಿ %@ ನಿರೀಕ್ಷಿಸಲಾಗಿದೆ. %@";
+"NoPrecipLast24h"            = "ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ ಯಾವುದೇ ಮಳೆ ದಾಖಲಾಗಿಲ್ಲ.";
+"RainLast24h"                = "ಮಳೆ ಬಿದ್ದಿತ್ತು %d ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ";
+"SnowAndRainLast24h"         = "ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿ, ಹಿಮ %@ ಸೆಂ ಮತ್ತು ಮಳೆ %d ಮಿ.";
+
+/* compass abbreviations */
+"Dir_N"   = "ಎನ್";
+"Dir_NNE" = "ಎನ್ ಎನ್";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ಎನ್ಇ";
+"Dir_E"   = "ಇ";
+"Dir_ESE" = "ಎಎಸ್ಇ";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "ಎಸ್ಎಸ್ಇ";
+"Dir_S"   = "ಎಸ್";
+"Dir_SSW" = "ಎಸ್ಎಸ್ಡಬ್ಲ್ಯೂ";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "ಎನ್ಎನ್ಡಬ್ಲ್ಯೂ";
+
+/* units */
+"UnitMillimeter" = "ಮಂ";
+"UnitCentimeter" = "ಸೆಂ";
+
+/* common labels */
+"PrecipitationTotals_Title" = "ಮಳೆ ಪ್ರಮಾಣ";
+"Last24h_Label"             = "ಕಳೆದ 24 ಗಂಟೆಗಳು";
+"Next24h_Label"             = "ಮುಂದಿನ 24 ಗಂಟೆಗಳು";
+"Total_Label"               = "ಒಟ್ಟು";
+"Precipitation_Label"       = "ಮಳೆ";
+"Rain_Label"                = "ಮಳೆ";
+"Snow_Label"                = "ಹಿಮ";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "ಗಾಳಿ ಪ್ರಸ್ತುತ %1$d %2$@ ದಿಂದ %3$@ಇಂದು, ಗಾಳಿಯ ವೇಗವು %4$d ಗೆ %5$d %2$@, ವರೆಗೆ ಆವರಿಸುತ್ತದೆ %6$d %2$@. .";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "ಗಾಳಿಯ ವೇಗಗಳು %1$d ಗೆ %2$d %3$@, ವರೆಗೆ ಆವರಿಸುತ್ತದೆ %4$d %3$@. .";
+
+"Beaufort_Scale"                = "ಬೋಫರ್ಟ್ ಪ್ರಮಾಣ";
+"Beaufort_Column_bft" = "ಬಿಎಫ್ಟಿ";
+"Beaufort_Column_Description"   = "ವಿವರಣೆ";
+"Beaufort_Column_kmh" = "ಕಿಮೀ/ಗಂಟೆ";
+"Beaufort_0"                    = "ಶಾಂತವಾಗಿರಿ";
+"Beaufort_1"                    = "ಹಗುರವಾದ ಗಾಳಿ";
+"Beaufort_2"                    = "ಹಗುರವಾದ ಗಾಳಿ";
+"Beaufort_3"                    = "ಸೌಮ್ಯವಾದ ಗಾಳಿ";
+"Beaufort_4"                    = "ಮಧ್ಯಮ ಗಾಳಿ";
+"Beaufort_5"                    = "ತಾಜಾ ಗಾಳಿ";
+"Beaufort_6"                    = "ಬಲವಾದ ಗಾಳಿ";
+"Beaufort_7"                    = "ಗಾಳಿ";
+"Beaufort_8"                    = "ಗೇಲ್";
+"Beaufort_9"                    = "ಬಲವಾದ ಗಾಳಿ";
+"Beaufort_10"                   = "ಬಿರುಗಾಳಿ";
+"Beaufort_11"                   = "ಪ್ರಬಲ ಬಿರುಗಾಳಿ";
+"Beaufort_12"                   = "ಚಂಡಮಾರುತದ ಶಕ್ತಿ";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "ಆಗಿತ್ತು %.1f%@ ಕಳೆದ 24 ಗಂಟೆಗಳಲ್ಲಿನ ಮಳೆ ಪ್ರಮಾಣವನ್ನು %.1f%@ಮುಂದಿನ 24 ಗಂಟೆಗಳಲ್ಲಿ, %.1f%@ ಮಳೆ ನಿರೀಕ್ಷಿಸಲಾಗಿದೆ.";
+"ForecastPrecip_OtherDayFormat" = "ಮೇಲೆ %@, ಒಟ್ಟು ಮಳೆ %.1f%@. .";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "ಮಳೆ ಪ್ರಮಾಣದ ಬಗ್ಗೆ";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "ಮುನ್ಸೂಚನೆ";
+"DailySummary_Title"           = "ದೈನಂದಿನ ಸಂಕ್ಷಿಪ್ತ";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "ದೋವಿನ ಬಿಂದುವು %d° ಗೆ %d-";
+"DewPoint_FutureFormat"        = "ದೋವಿನ ಬಿಂದುವು %d° ಗೆ %d-";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "ಇಂದು, ಸರಾಸರಿ ಆರ್ದ್ರತೆ %d%%. . %@";
+"ForecastHumidity_Other"       = "ಮೇಲೆ %@, ಸರಾಸರಿ ಆರ್ದ್ರತೆ %d%%. .\n%@";
+
+"AboutPressure_Title"  = "ಒತ್ತಡದ ಬಗ್ಗೆ";
+"AboutPressure_Body"   = "ಹವಾಮಾನದಲ್ಲಿನ ಬದಲಾವಣೆಗಳನ್ನು ಊಹಿಸಲು ಒತ್ತಡದಲ್ಲಿನ ಮಹತ್ವದ, ವೇಗದ ಬದಲಾವಣೆಗಳನ್ನು ಬಳಸಲಾಗುತ್ತದೆ. ಉದಾಹರಣೆಗೆ, ಒತ್ತಡದಲ್ಲಿನ ಇಳಿಕೆ ಮಳೆ ಅಥವಾ ಹಿಮವು ಬರುತ್ತಿದೆ ಎಂದು ಅರ್ಥೈಸಬಹುದು, ಮತ್ತು ಒತ್ತಡದ ಏರಿಕೆ ಹವಾಮಾನವು ಸುಧಾರಿಸುತ್ತದೆ ಎಂದು ಅರ್ಥೈಸಬಹುದು. ಒತ್ತಡವನ್ನು ಬ್ಯಾರೊಮೆಟ್ರಿಕ್ ಒತ್ತಡ ಅಥವಾ ವಾತಾವರಣದ ಒತ್ತಡ ಎಂದೂ ಕರೆಯಲಾಗುತ್ತದೆ.";
+
+"AboutHumidity_Title"  = "ಸಾಪೇಕ್ಷ ಆರ್ದ್ರತೆ";
+"AboutHumidity_Body"   = "ಸಾಪೇಕ್ಷ ಆರ್ದ್ರತೆ, ಸಾಮಾನ್ಯವಾಗಿ ಆರ್ದ್ರತೆ ಎಂದು ಕರೆಯಲ್ಪಡುತ್ತದೆ, ಇದು ಗಾಳಿಯಲ್ಲಿರುವ ಆರ್ದ್ರತೆಯ ಪ್ರಮಾಣವನ್ನು ಗಾಳಿಯು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುವುದಕ್ಕಿಂತ ಹೋಲಿಸಿದರೆ ಸೂಚಿಸುತ್ತದೆ. ಹೆಚ್ಚಿನ ತಾಪಮಾನದಲ್ಲಿ ಗಾಳಿಯು ಹೆಚ್ಚು ಆರ್ದ್ರತೆಯನ್ನು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳಬಹುದು.% mಅಲ್ಲಿ ದೋಸೆ ಅಥವಾ ಮಂಜು ಇರಬಹುದು.";
+
+"AboutDewPoint_Title" = "ದಾವ್ ಪಾಯಿಂಟ್ ಬಗ್ಗೆ";
+"AboutDewPoint_Body"  = "ದೋವಿನ ಬಿಂದುವು ದೋವಿನ ರಚನೆಗೆ ತಾಪಮಾನವು ಬೀಳಬೇಕಾಗುತ್ತದೆ. ಇದು ಗಾಳಿಯು ಎಷ್ಟು ಆರ್ದ್ರವಾಗಿದೆ ಎಂಬುದನ್ನು ಹೇಳಲು ಉಪಯುಕ್ತ ಮಾರ್ಗವಾಗಿದೆ  ದೋವಿನ ಬಿಂದುವು ಹೆಚ್ಚು ಎತ್ತರವಾಗುವುದರಿಂದ ಅದು ಹೆಚ್ಚು ಆರ್ದ್ರವಾಗಿರುತ್ತದೆ. ಪ್ರಸ್ತುತ ತಾಪಮಾನಕ್ಕೆ ಹೊಂದಿಕೆಯಾಗುವ ದೋವಿನ ಬಿಂದು ಎಂದರೆ ಸಾಪೇಕ್ಷ ಆರ್ದ್ರತೆ 100% ಆಗಿದೆ, ಮತ್ತು ದೋನಿ ಅಥವಾ ಮಂಜು ಇರಬಹುದು.";
+
+"Section_Forecast"                     = "ಮುನ್ಸೂಚನೆ";
+"Section_DailySummary"                 = "ದೈನಂದಿನ ಸಂಕ್ಷಿಪ್ತ";
+"ForecastVisibility_TodayFormat" = "ಇಂದು, ಗೋಚರತೆ %@, ನಲ್ಲಿ %d ಗೆ %d %@. .";
+"ForecastVisibility_OtherFormat" = "ಮೇಲೆ %@, ಕಡಿಮೆ ಗೋಚರತೆ ಇರುತ್ತದೆ %@ ನಲ್ಲಿ %d %@ಮತ್ತು ಅತ್ಯುನ್ನತವಾದದ್ದು %@ ನಲ್ಲಿ %d %@. .";
+"Clarity_Foggy"                        = "ಮಂಜು";
+"Clarity_Hazy"                         = "ಹ್ಯಾಸಿ";
+"Clarity_Clear"                        = "ಸ್ಪಷ್ಟ";
+"Clarity_PerfectlyClear"               = "ಸಂಪೂರ್ಣವಾಗಿ ಸ್ಪಷ್ಟ";
+
+"AboutVisibility_Title" = "ಗೋಚರತೆ";
+"AboutVisibility_Body" = "ಗೋಚರತೆ ಎಂದರೆ ಕಟ್ಟಡಗಳು ಮತ್ತು ಬೆಟ್ಟಗಳಂತಹ ವಸ್ತುಗಳನ್ನು ಎಷ್ಟು ದೂರದಲ್ಲಿ ನೀವು ಸ್ಪಷ್ಟವಾಗಿ ನೋಡಬಹುದು ಎಂಬುದನ್ನು ಸೂಚಿಸುತ್ತದೆ. ಇದು ಗಾಳಿಯ ಪಾರದರ್ಶಕತೆಯ ಅಳತೆಯಾಗಿದೆ ಮತ್ತು ಸೂರ್ಯನ ಬೆಳಕಿನ ಪ್ರಮಾಣ ಅಥವಾ ಅಡೆತಡೆಗಳ ಉಪಸ್ಥಿತಿಯನ್ನು ಗಣನೆಗೆ ತೆಗೆದುಕೊಳ್ಳುವುದಿಲ್ಲ. %@ ಸ್ಪಷ್ಟವಾಗಿ ಪರಿಗಣಿಸಲಾಗಿದೆ.";
+
+"PressureForecast_Today" = "ಒತ್ತಡ ಪ್ರಸ್ತುತ %@ %@ ಇಂದು, ಸರಾಸರಿ ಒತ್ತಡವು %@ %@, ಮತ್ತು ಕಡಿಮೆ ಒತ್ತಡ %@ %@. .";
+"PressureForecast_Other" = "ಮೇಲೆ %@, ಸರಾಸರಿ ಒತ್ತಡವು %@ %@, ಮತ್ತು ಕಡಿಮೆ ಒತ್ತಡ %@ %@. .";
+"SectionForecast" = "ಮುನ್ಸೂಚನೆ";
+"SectionDailySummary" = "ದೈನಂದಿನ ಸಂಕ್ಷಿಪ್ತ";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "ಎಲ್ಲಾ ಬೇಸ್ ಪ್ಲಾನ್ ವೈಶಿಷ್ಟ್ಯಗಳು";
+"Multi-calendar view" = "ಬಹು ಕ್ಯಾಲೆಂಡರ್ ವೀಕ್ಷಣೆ";
+"Sync with Google Calendar" = "ಸಿಂಕ್ರೊನೈಸ್ Google Calendar";
+"Sync meets from Google Meet" = "ಸಿಂಕ್ ಸಭೆಗಳು Google ಭೇಟಿ";
+
+/* BaseSubscriptionView */
+"Base Plan" = "ಮೂಲ ಯೋಜನೆ";
+"Single-day calendar view" = "ಏಕ ದಿನದ ಕ್ಯಾಲೆಂಡರ್ ವೀಕ್ಷಣೆ";
+"Multi-day calendar view" = "ಬಹುದಿನಗಳ ಕ್ಯಾಲೆಂಡರ್ ವೀಕ್ಷಣೆ";
+"Monthly calendar view" = "ಮಾಸಿಕ ಕ್ಯಾಲೆಂಡರ್ ವೀಕ್ಷಣೆ";
+"Yearly overview" = "ವಾರ್ಷಿಕ ಅವಲೋಕನ";
+"List view for events" = "ಘಟನೆಗಳ ಪಟ್ಟಿ ವೀಕ್ಷಣೆ";
+"Weather view" = "ಹವಾಮಾನ ವೀಕ್ಷಣೆ";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "ಪ್ರೀಮಿಯಂ ಯೋಜನೆ";
+"Sync with Microsoft Calendar" = "ಸಿಂಕ್ರೊನೈಸ್ Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "ಸಿಂಕ್ ಸಭೆಗಳು Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "ಸಮನಾಗಿರುತ್ತದೆ %@ ತಿಂಗಳಿಗೆ";
+"%d %@ free" = "%d %@ ಉಚಿತ";
+
+/* SubscriptionListView */
+"Premium Plans" = "ಪ್ರೀಮಿಯಂ ಯೋಜನೆಗಳು";
+"You are subscribed to the %@ %@ plan" = "ನೀವು ಈ ಒಪ್ಪಂದಕ್ಕೆ ಸಹಿ ಹಾಕಿದ್ದೀರಿ %@ %@ ಯೋಜನೆ";
+"Renews on: %@" = "ನವೀಕರಿಸಲಾಗಿದೆಃ %@";
+"Start Free Trial" = "ಉಚಿತ ಪ್ರಯೋಗವನ್ನು ಪ್ರಾರಂಭಿಸಿ";
+"Subscribe Now" = "ಈಗ ಸೈನ್ ಅಪ್ ಮಾಡಿ";
+"%d %@ free, then %@%@." = "%d %@ ಉಚಿತ, ನಂತರ %@%@. .";
+"Subscribe for %@%@." = "ಸೈನ್ ಅಪ್ ಮಾಡಿ %@%@. .";
+"Privacy Policy"     = "ಗೌಪ್ಯತೆ ನೀತಿ";
+"Terms of Service"   = "ಸೇವೆ ನಿಯಮಗಳು";
+
+/* SubscriptionCategory */
+"Advanced" = "ಮುಂದುವರಿದ";
+"Advanced Plan" = "ಮುಂದುವರಿದ ಯೋಜನೆ";
+"All Advanced Plan features" = "ಎಲ್ಲಾ ಸುಧಾರಿತ ಯೋಜನೆ ವೈಶಿಷ್ಟ್ಯಗಳು";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "ನೀವು ಸಕ್ರಿಯ ಅಗತ್ಯವಿದೆ %@ ಈ ವಿಭಾಗಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಯೋಜಿಸಿ.";
+"Plan Required" = "ಯೋಜನೆ ಅಗತ್ಯ";
+"OK" = "ಸರಿ .";
+
+/* SubscriptionStatus */
+"Base"    = "ಮೂಲ";
+"Premium" = "ಪ್ರೀಮಿಯಂ";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "ಅಧಿಸೂಚನೆ %@ %@ ಯೋಜನೆ.";
+
+/* Label for renewal date */
+"RenewsOn"            = "ನವೀಕರಿಸಲಾಗಿದೆಃ %@";
+
+"Manage Subscription"                   = "ಚಂದಾದಾರಿಕೆಯನ್ನು ನಿರ್ವಹಿಸಿ";
+
+/* Period units */
+"Daily"     = "ದಿನನಿತ್ಯ";
+"Weekly"    = "ವಾರಕ್ಕೊಮ್ಮೆ";
+"Monthly"   = "ಮಾಸಿಕ";
+"Yearly"    = "ವಾರ್ಷಿಕ";
+"Recurring" = "ಪುನರಾವರ್ತಿತ";
+
+/* units */
+"day"   = "ದಿನ";
+"days"  = "ದಿನಗಳು";
+"week"  = "ವಾರದ";
+"weeks" = "ವಾರಗಳು";
+"month"  = "ತಿಂಗಳು";
+"months" = "ತಿಂಗಳುಗಳು";
+"year"   = "ವರ್ಷ";
+"years"  = "ವರ್ಷಗಳು";
+
+/* YearMonthMiniView */
+"weekday.headers" = "ಎಂ, ಟಿ, ಡಬ್ಲ್ಯೂ, ಟಿ, ಎಫ್, ಎಸ್";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "ಕಿಮೀ/ಗಂಟೆ";
+"Unit_Speed_mph" = "ಮೈಲಿಗಾಲ";
+"Unit_Distance_km" = "ಕಿಮೀ";
+"Unit_Distance_mi" = "ಮಿ";
+"Unit_Precipitation_mm" = "ಮಂ";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "ಎಚ್ಪಿಎ";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "ನಿಮ್ಮ ಹಿಂದಿನ ಖರೀದಿಗಳನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಪುನಃಸ್ಥಾಪಿಸಲಾಗಿದೆ.";
+"No active subscriptions found to restore."                = "ಯಾವುದೇ ಸಕ್ರಿಯ ಚಂದಾದಾರಿಕೆಗಳು ಪುನಃಸ್ಥಾಪಿಸಲು ಕಂಡುಬಂದಿಲ್ಲ.";
+"Failed to restore purchases. Please try again later. (%@)" = "ಖರೀದಿಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲು ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.%@)";
+"Restore Purchases"                                        = "ಖರೀದಿಗಳನ್ನು ಪುನಃಸ್ಥಾಪಿಸಿ";
+
+"Ads Free" = "ಜಾಹೀರಾತುಗಳು ಉಚಿತ";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "ಕ್ಯಾಲೆಂಡರ್ & ಹವಾಮಾನ";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "ಸಣ್ಣ ಪ್ರದರ್ಶನಗಳು ಇಂದಿನ ದಿನಾಂಕ ಮತ್ತು ಪ್ರಸ್ತುತ ಹವಾಮಾನವನ್ನು ತೋರಿಸುತ್ತವೆ. ಮಧ್ಯಮವು ಚಂದ್ರನ ಹಂತ ಮತ್ತು ಗಾಳಿಯನ್ನು ಸೇರಿಸುತ್ತದೆ.";
+"Calendar Events" = "ಕ್ಯಾಲೆಂಡರ್ ಘಟನೆಗಳು";
+"Shows today's date, current weather, and your next calendar events." = "ಇಂದಿನ ದಿನಾಂಕ, ಪ್ರಸ್ತುತ ಹವಾಮಾನ ಮತ್ತು ನಿಮ್ಮ ಮುಂದಿನ ಕ್ಯಾಲೆಂಡರ್ ಘಟನೆಗಳನ್ನು ತೋರಿಸುತ್ತದೆ.";
+"No upcoming events" = "ಯಾವುದೇ ಮುಂಬರುವ ಘಟನೆಗಳು ಇಲ್ಲ";
+"Tomorrow" = "ನಾಳೆ";
+"Untitled" = "ಹೆಸರಿಲ್ಲದ";
+"Detail" = "ವಿವರ";
+"Phase" = "ಹಂತ";
+"Weather" = "ಹವಾಮಾನ";
+"Select Your Email" = "ನಿಮ್ಮ ಇಮೇಲ್ ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+"Confirm" = "ದೃಢೀಕರಿಸಿ";
+"Calendar name" = "ಕ್ಯಾಲೆಂಡರ್ ಹೆಸರು";
+"Sharing: %@" = "ಹಂಚಿಕೆಃ %@";
+"Loading..." = "ಲೋಡ್.";
+"Selected Location" = "ಸ್ಥಳ ಆಯ್ಕೆ";
+"Data provided by Apple Weather" = "ಆಪಲ್ ಹವಾಮಾನ ವಲಯದ ಮಾಹಿತಿ";
+"Next" = "ಮುಂದಿನದು";
+"No details found for the selected location." = "ಆಯ್ಕೆಮಾಡಿದ ಸ್ಥಳಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಯಾವುದೇ ವಿವರಗಳು ಕಂಡುಬಂದಿಲ್ಲ.";
+"Could not determine the time zone for the selected location." = "ಆಯ್ಕೆಮಾಡಿದ ಸ್ಥಳಕ್ಕೆ ಸಮಯ ವಲಯವನ್ನು ನಿರ್ಧರಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.";
+"(No Title)" = "(ಶೀರ್ಷಿಕೆ ಇಲ್ಲ)";
+"Choose your e-mail" = "ನಿಮ್ಮ ಇಮೇಲ್ ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ";
+"It will be treated as your primary address and invitations will not be sent to it." = "ನಿಮ್ಮ ಮುಖ್ಯ ವಿಳಾಸವಾಗಿ ಇದನ್ನು ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ಆಮಂತ್ರಣಗಳನ್ನು ಅದಕ್ಕೆ ಕಳುಹಿಸಲಾಗುವುದಿಲ್ಲ.";
+"Invalid URL" = "ಅಮಾನ್ಯ URL";
+"Rate limit or insufficient permission" = "ದರ ಮಿತಿ ಅಥವಾ ಅಸಮರ್ಪಕ ಅನುಮತಿ";
+"Network error: %@" = "ನೆಟ್ವರ್ಕ್ ದೋಷಃ %@";
+"N/A - Selected Tab: %@" = "ಎ/ಎ - ಆಯ್ಕೆ ಮಾಡಿದ ಟ್ಯಾಬ್ಃ %@";
+"Enable Notifications" = "ಅಧಿಸೂಚನೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ";
+"Event Notifications" = "ಘಟನೆಗಳ ಅಧಿಸೂಚನೆಗಳು";
+"Weather Alert Notifications" = "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆ ಅಧಿಸೂಚನೆಗಳು";
+"Allow notifications so weather alerts can appear." = "ಅಧಿಸೂಚನೆಗಳನ್ನು ಅನುಮತಿಸಿ ಇದರಿಂದ ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು ಕಾಣಿಸಿಕೊಳ್ಳಬಹುದು.";
+"Event alerts are scheduled from your event alert settings." = "ನಿಮ್ಮ ಘಟನೆ ಎಚ್ಚರಿಕೆ ಸೆಟ್ಟಿಂಗ್ಗಳಿಂದ ಘಟನೆ ಎಚ್ಚರಿಕೆಗಳನ್ನು ನಿಗದಿಪಡಿಸಲಾಗಿದೆ.";
+"Allow notifications so event alerts can appear at the right time." = "ಸರಿಯಾದ ಸಮಯದಲ್ಲಿ ಘಟನೆಗಳ ಎಚ್ಚರಿಕೆಗಳು ಕಾಣಿಸಿಕೊಳ್ಳುವಂತೆ ಅಧಿಸೂಚನೆಗಳನ್ನು ಅನುಮತಿಸಿ.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "ಈ ಅಪ್ಲಿಕೇಶನ್ ಅಧಿಸೂಚನೆಗಳನ್ನು ಆಫ್ ಮಾಡಲಾಗಿದೆ. ಅವುಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಹೋಗಿಃ ಸೆಟ್ಟಿಂಗ್ಗಳು -> ಅಪ್ಲಿಕೇಶನ್ಗಳು -> Cloud Calendars -> ಅಧಿಸೂಚನೆಗಳು -> ಅಧಿಸೂಚನೆಗಳನ್ನು ಅನುಮತಿಸಿ.";
+"Promo.WiseEating.name" = "ಬುದ್ಧಿವಂತ ಆಹಾರ ಮತ್ತು ಫಿಟ್ನೆಸ್ ಯೋಜನೆ";
+"Promo.WiseEating.description" = "ಬುದ್ಧಿವಂತ ಆಹಾರವು ನಿಮ್ಮ ಬುದ್ಧಿವಂತ ಪೋಷಣೆ ಮತ್ತು ತರಬೇತಿಗಾಗಿ ನಿಮ್ಮ AI ಚಾಲಿತ ತರಬೇತುದಾರ. ಇದು ಆಧುನಿಕ ಪೌಷ್ಟಿಕಾಂಶ ವಿಜ್ಞಾನವನ್ನು ಪ್ರಾಯೋಗಿಕ ಸಾಧನಗಳೊಂದಿಗೆ ಸಂಯೋಜಿಸುತ್ತದೆ, ಅದು ನಿಮಗೆ ಊಟವನ್ನು ಯೋಜಿಸಲು, ವ್ಯಾಯಾಮವನ್ನು ವಿನ್ಯಾಸಗೊಳಿಸಲು, ನಿಮ್ಮ ಸಂಗ್ರಹವನ್ನು ನಿರ್ವಹಿಸಲು ಮತ್ತು ಆಹಾರ ಮತ್ತು ಚಲನೆಯು ನಿಮ್ಮ ದೇಹದ ಮೇಲೆ ಹೇಗೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ ಎಂಬುದನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.";
+"Promo.StoreFront.name" = "ಸ್ಟೋರ್ಫ್ರಂಟ್ ಸ್ಟುಡಿಯೋ";
+"Promo.StoreFront.description" = "ಸ್ಟೋರ್ಫ್ರಂಟ್ ಸ್ಟುಡಿಯೋ ಐಒಎಸ್ ಮತ್ತು ಮ್ಯಾಕೋಸ್ ಡೆವಲಪರ್ಗಳಿಗೆ ಉನ್ನತ ಮಟ್ಟದ 3D ವಿನ್ಯಾಸ ಪರಿಸರವಾಗಿದೆ. ಇದು ಪ್ರಬಲವಾದ ರಿಚ್ ಟೆಕ್ಸ್ಟ್ ಸಂಪಾದಕದೊಂದಿಗೆ ಹೆಚ್ಚಿನ ನಿಷ್ಠೆಯನ್ನು ಹೊಂದಿರುವ ರಿಯಾಲಿಟಿ ಕಿಟ್ ರೆಂಡರಿಂಗ್ ಅನ್ನು ಸಂಯೋಜಿಸುತ್ತದೆ. ಇದು ಕಚ್ಚಾ ಸ್ಕ್ರೀನ್ಶಾಟ್ಗಳನ್ನು ವೃತ್ತಿಪರ, ಹೆಚ್ಚು ಪರಿವರ್ತಿಸುವ ಆಪ್ ಸ್ಟೋರ್ ಸ್ವತ್ತುಗಳಾಗಿ ಪರಿವರ್ತಿಸಲು ನಿಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.";
+"Promo.ReelStudio.name" = "ರಿಲ್ ಸ್ಟುಡಿಯೋ";
+"Promo.ReelStudio.description" = "ರೀಲ್ಸ್ಟುಡಿಯೋ ಎನ್ನುವುದು ಐಒಎಸ್ ಮತ್ತು ಮ್ಯಾಕೋಸ್ಗಾಗಿ ಸೃಷ್ಟಿಕರ್ತ-ಗ್ರೇಡ್ ಸ್ಕ್ರೀನ್ ರೆಕಾರ್ಡಿಂಗ್ ಸ್ಟುಡಿಯೋ. ನಿಮ್ಮ ಪರದೆಯ ಮತ್ತು ಕ್ಯಾಮೆರಾದೊಂದಿಗೆ ಏಕಕಾಲದಲ್ಲಿ ಸೆರೆಹಿಡಿಯಿರಿ, ಮೈಕ್ರೋ + ಸಿಸ್ಟಮ್ ಆಡಿಯೊವನ್ನು ನಿಯಂತ್ರಿಸಿ ಮತ್ತು ಟ್ಯುಟೋರಿಯಲ್ಗಳು, ವಾಕ್ಥ್ರೂಗಳು ಮತ್ತು ಉತ್ಪನ್ನ ಡೆಮೊಗಳಿಗಾಗಿ ಕ್ಲೀನ್ ಎಂಪಿ 4 ಗಳನ್ನು ರಫ್ತು ಮಾಡಿ. ಐಒಎಸ್ನಲ್ಲಿ, ನೀವು ಅಪ್ಲಿಕೇಶನ್ನಲ್ಲಿ ವೀಡಿಯೊವನ್ನು ಪ್ಲೇ ಮಾಡಬಹುದು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ ಶೈಲಿಯ ಮತ್ತು ಪ್ರೆಸೆಂಟರ್-ನೇತೃತ್ವದ ವಿಷಯಕ್ಕಾಗಿ ನಿಮ್ಮ ಕ್ಯಾಮೆರಾದೊಂದಿಗೆ ಅದನ್ನು ರೆಕಾರ್ಡ್ ಮಾಡಬಹುದು.";
+"Promo.MarketBrief.name" = "ಮಾರುಕಟ್ಟೆ ಬ್ರೀಫ್ AI";
+"Promo.MarketBrief.description" = "ಮಾರ್ಕೆಟ್ ಬ್ರೀಫ್ AI ಸಾಧನದಲ್ಲಿನ ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಶಬ್ದದಿಂದ ಸಿಗ್ನಲ್ ಅನ್ನು ಪ್ರತ್ಯೇಕಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಬಹು-ಏಜೆಂಟ್ ಕೆಲಸದ ಹರಿವಿನೊಂದಿಗೆ ಮಾರುಕಟ್ಟೆ ಚಲನೆಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ನಿಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ. ನೈಜ-ಸಮಯದ ಬೆಲೆ ಡೇಟಾವನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ, ಆಡಳಿತ ಶೈಲಿಯ ಸಂಭವನೀಯತೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ ಮತ್ತು ನಿಮ್ಮ ನಿರ್ಧಾರ ತೆಗೆದುಕೊಳ್ಳುವಿಕೆಯನ್ನು ಬೆಂಬಲಿಸಲು ಸ್ಪಷ್ಟ ಡ್ಯಾಶ್ಬೋರ್ಡ್ಗಳು ಮತ್ತು ಚಾರ್ಟ್ಗಳನ್ನು ಬಳಸಿ. ಗೌಪ್ಯತೆ-ಮೊದಲನೆಯದಾಗಿಃ ನಿಮ್ಮ ಸಂರಚನೆಗಳು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಉಳಿಯುತ್ತವೆ.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "ಅಪ್ಲಿಕೇಶನ್ಗಳು";
+"Plan" = "ಯೋಜನೆ";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "ಹಿಮಭರಿತ";
+"WeatherCondition.blowingDust" = "ಧೂಳು";
+"WeatherCondition.blowingSnow" = "ಬಿರುಗಾಳಿ";
+"WeatherCondition.breezy" = "ಬ್ರೀಝಿ";
+"WeatherCondition.clear" = "ಸ್ಪಷ್ಟ";
+"WeatherCondition.cloudy" = "ಮೋಡ";
+"WeatherCondition.drizzle" = "ಡ್ರಿಜ್ಲ್";
+"WeatherCondition.flurries" = "ಹೊಳಪುಗಳು";
+"WeatherCondition.foggy" = "ಮಂಜು";
+"WeatherCondition.freezingDrizzle" = "ಶೀತಲೀಕರಣದ ಡ್ರಿಜ್ಲ್";
+"WeatherCondition.freezingRain" = "ಮಳೆ";
+"WeatherCondition.frigid" = "ಶೀತ";
+"WeatherCondition.hail" = "ಹಾಯ್";
+"WeatherCondition.haze" = "ಮಂಜು";
+"WeatherCondition.heavyRain" = "ಭಾರೀ ಮಳೆ";
+"WeatherCondition.heavySnow" = "ಭಾರೀ ಹಿಮ";
+"WeatherCondition.hot" = "ಬಿಸಿ";
+"WeatherCondition.hurricane" = "ಚಂಡಮಾರುತ";
+"WeatherCondition.isolatedThunderstorms" = "ಪ್ರತ್ಯೇಕವಾದ ಗದ್ದಲ";
+"WeatherCondition.mostlyClear" = "ಹೆಚ್ಚಾಗಿ ಸ್ಪಷ್ಟ";
+"WeatherCondition.mostlyCloudy" = "ಹೆಚ್ಚಾಗಿ ಮೋಡ";
+"WeatherCondition.partlyCloudy" = "ಭಾಗಶಃ ಮೋಡ";
+"WeatherCondition.rain" = "ಮಳೆ";
+"WeatherCondition.scatteredThunderstorms" = "ವಿಕಸನಗೊಂಡ ಗುಡುಗು";
+"WeatherCondition.sleet" = "ಸ್ಲೀಟ್";
+"WeatherCondition.smoky" = "ಧೂಮಪಾನ";
+"WeatherCondition.snow" = "ಹಿಮ";
+"WeatherCondition.strongStorms" = "ತೀವ್ರವಾದ ಗಗನಗಾಳಿ";
+"WeatherCondition.sunFlurries" = "ಸನ್ ಫ್ಲರ್ರೀಸ್";
+"WeatherCondition.sunShowers" = "ಸೂರ್ಯನ ಶವರ್ಗಳು";
+"WeatherCondition.thunderstorms" = "ಗಗನಗಾಳಿ";
+"WeatherCondition.tropicalStorm" = "ಉಷ್ಣವಲಯದ ಬಿರುಗಾಳಿ";
+"WeatherCondition.windy" = "ಗಾಳಿ";
+"WeatherCondition.wintryMix" = "ಚಳಿಗಾಲದ ಮಿಶ್ರಣ";
+"MoonPhase.new" = "ಹೊಸ ಚಂದ್ರ";
+"MoonPhase.waxingCrescent" = "ಸ್ಯಾಕ್ಸಿಂಗ್ ಮೆಸೆಂಜರ್";
+"MoonPhase.firstQuarter" = "ಮೊದಲ ತ್ರೈಮಾಸಿಕ";
+"MoonPhase.waxingGibbous" = "ಸ್ಯಾಕ್ಸಿಂಗ್ ಗಿಬ್ಬಸ್";
+"MoonPhase.full" = "ಪೂರ್ಣ ಚಂದ್ರ";
+"MoonPhase.waningGibbous" = "ಕ್ಷೀಣಿಸುತ್ತಿರುವ ಗಿಬ್ಬಸ್";
+"MoonPhase.lastQuarter" = "ಕೊನೆಯ ತ್ರೈಮಾಸಿಕ";
+"MoonPhase.waningCrescent" = "ಕ್ಷೀಣಿಸುತ್ತಿರುವ ಅರ್ಧಚಂದ್ರ";
+"WeatherAlert.Preview.Tornado" = "ಸುಂಟರಗಾಳಿ ಎಚ್ಚರಿಕೆಃ ತಕ್ಷಣ ಸುರಕ್ಷಿತ ಆಶ್ರಯ ಪಡೆಯಿರಿ.";
+"WeatherAlert.Preview.Source" = "ಹವಾಮಾನ ಸೇವೆ";
+"WeatherAlert.Preview.Region" = "ಮುನ್ಸೂಚನೆ ಪ್ರದೇಶ";
+"Saved Regions" = "ಉಳಿತಾಯಗೊಂಡ ಪ್ರದೇಶಗಳು";
+"Current Location" = "ಪ್ರಸ್ತುತ ಸ್ಥಳ";
+"Reorder Region" = "ಮರುಸಂಘಟನೆ ಪ್ರದೇಶ";
+"WeatherAlert.Preview.HighTemperature" = "ಹೆಚ್ಚಿನ ತಾಪಮಾನಕ್ಕೆ ಹಳದಿ ಎಚ್ಚರಿಕೆ";
+"Illumination" = "ಬೆಳಕು";
+"Shared event" = "ಹಂಚಿದ ಘಟನೆ";
+"Add to Calendar" = "ಕ್ಯಾಲೆಂಡರ್ಗೆ ಸೇರಿಸಿ";
+"Event added" = "ಘಟನೆ ಸೇರಿಸಲಾಗಿದೆ";
+"Already in your calendar" = "ಈಗಾಗಲೇ ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್ನಲ್ಲಿ";
+"Unable to add event" = "ಘಟನೆ ಸೇರಿಸಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ";
+"Calendar Access Required" = "ಕ್ಯಾಲೆಂಡರ್ ಪ್ರವೇಶ ಅಗತ್ಯವಿದೆ";
+"Allow calendar access in Settings to add this event." = "ಈ ಘಟನೆಯನ್ನು ಸೇರಿಸಲು ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ ಕ್ಯಾಲೆಂಡರ್ ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಿ.";
+"Open Settings" = "ತೆರೆದ ಸೆಟ್ಟಿಂಗ್ಗಳು";
+"Adding…" = "ಸೇರಿಸುವ.";
+"Couldn’t find a writable calendar." = "ಬರೆಯಬಹುದಾದ ಕ್ಯಾಲೆಂಡರ್ ಸಿಗಲಿಲ್ಲ.";
+"Please try again." = "ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "ಯೋಜನೆಯನ್ನು ಬದಲಾಯಿಸಿ";
+"Current Plan" = "ಪ್ರಸ್ತುತ ಯೋಜನೆ";
+"You can change your plan or billing period at any time." = "ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ಯೋಜನೆಯನ್ನು ಅಥವಾ ಬಿಲ್ಲಿಂಗ್ ಅವಧಿಯನ್ನು ಬದಲಾಯಿಸಬಹುದು.";
+"Invites" = "ಆಹ್ವಾನಗಳು";
+"Cancelled" = "ರದ್ದು";
+"Shared by me" = "ನನ್ನಿಂದ ಹಂಚಿಕೊಂಡ";
+"Shared with me" = "ನನ್ನೊಂದಿಗೆ ಹಂಚಿಕೊಂಡ";
+"No shared events yet." = "ಇನ್ನೂ ಯಾವುದೇ ಹಂಚಿಕೆಯ ಘಟನೆಗಳು ಇಲ್ಲ.";
+"No one has shared an event with you yet." = "ನಿಮ್ಮೊಂದಿಗೆ ಇನ್ನೂ ಯಾರೂ ಘಟನೆಯನ್ನು ಹಂಚಿಕೊಂಡಿಲ್ಲ.";
+"Events you send from the share sheet appear here." = "ನೀವು ಶೇರು ಶೀಟ್ನಿಂದ ಕಳುಹಿಸುವ ಘಟನೆಗಳು ಇಲ್ಲಿ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ.";
+"Invitations go to" = "ಆಹ್ವಾನಗಳು";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "ನೀವು ಸ್ವೀಕರಿಸಿದ ಆಮಂತ್ರಣಗಳನ್ನು ಇಲ್ಲಿ ಸೇರಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ನವೀಕರಿಸಲಾಗುತ್ತದೆ. ಕಳುಹಿಸುವವರು ಒಂದು ಆಮಂತ್ರಣವನ್ನು ಆಫ್ ಮಾಡಿದರೆ, ಅದು ಅದರ ಮೂಲಕ ಒಂದು ಸಾಲಿನೊಂದಿಗೆ ಗೋಚರಿಸುತ್ತದೆ.";
+"Sample shared event" = "ಮಾದರಿ ಹಂಚಿದ ಘಟನೆ";
+"Sofia" = "ಸೋಫಿಯಾ";
+"Team lunch" = "ತಂಡದ ಊಟ";
+
+/* Booking */
+"Booking page" = "ಬುಕಿಂಗ್ ಪುಟ";
+"Your name" = "ನಿಮ್ಮ ಹೆಸರು";
+"Display name" = "ಪ್ರದರ್ಶನ ಹೆಸರು";
+"Source calendar" = "ಮೂಲ ಕ್ಯಾಲೆಂಡರ್";
+"Booked meetings land here, and your busy times here block new bookings." = "ಕಾಯ್ದಿರಿಸಿದ ಸಭೆಗಳು ಇಲ್ಲಿಗೆ ಬರುತ್ತವೆ, ಮತ್ತು ನಿಮ್ಮ ಬಿಡುವಿಲ್ಲದ ಸಮಯಗಳು ಇಲ್ಲಿ ಹೊಸ ಕಾಯ್ದಿರಿಸುವಿಕೆಯನ್ನು ತಡೆಯುತ್ತವೆ.";
+"Meeting types" = "ಸಭೆಗಳ ಪ್ರಕಾರಗಳು";
+"%lld min" = "%lld ನಿಮಿಷ";
+"Add meeting type" = "ಸಭೆ ಪ್ರಕಾರವನ್ನು ಸೇರಿಸಿ";
+"Weekly hours" = "ವಾರದ ಗಂಟೆಗಳು";
+"Save booking page" = "ಬುಕಿಂಗ್ ಪುಟವನ್ನು ಉಳಿಸಿ";
+"Your booking page is live" = "ನಿಮ್ಮ ಬುಕಿಂಗ್ ಪುಟವು ಲೈವ್ ಆಗಿದೆ";
+"Share this link — anyone can book one of your open times." = "ಈ ಲಿಂಕ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಿ  ನಿಮ್ಮ ಮುಕ್ತ ಸಮಯಗಳಲ್ಲಿ ಒಂದನ್ನು ಯಾರಾದರೂ ಕಾಯ್ದಿರಿಸಬಹುದು.";
+"Share link" = "ಹಂಚಿಕೆ ಲಿಂಕ್";
+"Edit settings" = "ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಸಂಪಾದಿಸಿ";
+"Add at least one meeting type." = "ಕನಿಷ್ಠ ಒಂದು ಸಭೆ ಪ್ರಕಾರವನ್ನು ಸೇರಿಸಿ.";
+"Turn on at least one day with valid hours." = "ಕನಿಷ್ಠ ಒಂದು ದಿನವನ್ನು ಸಕಾಲಿಕ ಸಮಯದೊಂದಿಗೆ ಆನ್ ಮಾಡಿ.";
+"Set up a booking page" = "ಬುಕಿಂಗ್ ಪುಟವನ್ನು ಸ್ಥಾಪಿಸಿ";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "ನಿಮ್ಮ ತೆರೆದ ಸಮಯಗಳನ್ನು ಜನರು ಕಾಯ್ದಿರಿಸಲಿ. ಸಭೆಗಳು ನಿಮ್ಮ ಆಯ್ಕೆ ಕ್ಯಾಲೆಂಡರ್ನಲ್ಲಿ ಇರುತ್ತವೆ, ಮತ್ತು ನಿಮ್ಮ ಬಿಡುವಿಲ್ಲದ ಸಮಯಗಳು ಆ ಸ್ಲಾಟ್ಗಳನ್ನು ಉಚಿತವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳುತ್ತವೆ.";
+"Approve on this device" = "ಈ ಸಾಧನದಲ್ಲಿ ಅನುಮೋದನೆ";
+"Set up web booking" = "ವೆಬ್ ಬುಕಿಂಗ್ ಅನ್ನು ಸ್ಥಾಪಿಸಿ";
+"You're all set" = "ನೀವು ಎಲ್ಲಾ ಸಿದ್ಧವಾಗಿದೆ";
+"Couldn't approve" = "ಅನುಮೋದಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "ಈ ಬ್ರೌಸರ್ ಅನ್ನು ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್ಗೆ ಲಿಂಕ್ ಮಾಡಲು ಅನುಮೋದಿಸಿ ಆದ್ದರಿಂದ ನೀವು ವೆಬ್ನಲ್ಲಿ ಬುಕಿಂಗ್ ಪುಟವನ್ನು ರಚಿಸಬಹುದು  ಉಚಿತವಾಗಿ, ಏಕೆಂದರೆ ನೀವು ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಹೊಂದಿದ್ದೀರಿ.";
+"Linking…" = "ಸಂಪರ್ಕಿಸುವಿಕೆ.";
+"Head back to your browser — it's ready to finish setting up your booking page." = "ನಿಮ್ಮ ಬ್ರೌಸರ್ಗೆ ಹಿಂತಿರುಗಿ  ನಿಮ್ಮ ಬುಕಿಂಗ್ ಪುಟವನ್ನು ಹೊಂದಿಸಲು ಸಿದ್ಧವಾಗಿದೆ.";
+"The code may have expired. Reopen the QR on the web and try again." = "ಕೋಡ್ ಅವಧಿ ಮುಗಿದಿರಬಹುದು. QR ವೆಬ್ನಲ್ಲಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"Read-only shared event" = "ಓದಲು ಮಾತ್ರ ಹಂಚಿಕೆಯ ಘಟನೆ";
+"Remove from My Calendar" = "ನನ್ನ ಕ್ಯಾಲೆಂಡರ್ನಿಂದ ತೆಗೆದುಹಾಕಿ";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars ಖಾತೆ";
+"App Clip sharing account" = "App Clip ಹಂಚಿಕೆ ಖಾತೆ";
+"Required for synced App Clip events and recovery after reinstalling." = "ಸಿಂಕ್ರೊನೈಸ್ ಮಾಡಲು ಅಗತ್ಯವಿದೆ App Clip ಘಟನೆಗಳು ಮತ್ತು ಮರುಸ್ಥಾಪನೆಯ ನಂತರ ಚೇತರಿಕೆ.";
+"Continue with Google" = "ಮುಂದುವರಿಸಿ Google";
+"Sign Out" = "ಸೈನ್ ಅಪ್ ಮಾಡಿ";
+"Signing in…" = "ಸೈನ್ ಇನ್ ಮಾಡಿ.";
+"Sign In" = "ಸೈನ್ ಇನ್ ಮಾಡಿ";
+"Sign in to continue" = "ಮುಂದುವರಿಸಲು ಸೈನ್ ಇನ್ ಮಾಡಿ";
+"Your account keeps this shared event recoverable after reinstalling the app." = "ನಿಮ್ಮ ಖಾತೆಯು ಈ ಹಂಚಿಕೆಯ ಘಟನೆಯನ್ನು ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಮರುಸ್ಥಾಪಿಸಿದ ನಂತರ ಮರುಸ್ಥಾಪಿಸಬಹುದಾಗಿದೆ.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "ಈ ಖಾತೆಯು ಮಾಲೀಕತ್ವವನ್ನು ಹೊಂದಿದೆ App Clip ಕ್ಯಾಲೆಂಡರ್ ಒದಗಿಸುವವರ ಲಾಗಿನ್ಗಳಿಂದ ಪ್ರತ್ಯೇಕವಾಗಿದೆ.";
+"Sign in with Google or Apple to share and receive synced events." = "ಸೈನ್ ಇನ್ ಮಾಡಿ Google ಅಥವಾ ಆಪಲ್ ಹಂಚಿಕೊಳ್ಳಲು ಮತ್ತು ಸಿಂಕ್ರೊನೈಸ್ ಘಟನೆಗಳು ಸ್ವೀಕರಿಸಲು.";
+"Apple did not return an identity token." = "ಆಪಲ್ ಗುರುತಿನ ಚಿಹ್ನೆಯನ್ನು ಹಿಂದಿರುಗಿಸಲಿಲ್ಲ.";
+"Unable to share event" = "ಘಟನೆ ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "ಈವೆಂಟ್ ನಿಮ್ಮ Cloud Calendars ಖಾತೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"Google" = "Google";
+"Apple" = "ಆಪಲ್";
+"Microsoft" = "Microsoft";
+"Connect" = "ಸಂಪರ್ಕ";
+"Connected" = "ಸಂಪರ್ಕಿತ";
+"Sign in with at least one account" = "ಕನಿಷ್ಠ ಒಂದು ಖಾತೆಯೊಂದಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "ಸಂಪರ್ಕ Google, ಆಪಲ್, Microsoftಸಂಪರ್ಕಿತ ಪ್ರತಿಯೊಂದು ಗುರುತಿನಲ್ಲೂ ಅದೇ ಹಂಚಿಕೆಯ ಘಟನೆಗಳ ಖಾತೆ ತೆರೆಯುತ್ತದೆ.";
+"A Premium subscription is required to connect Microsoft." = "ಸಂಪರ್ಕಿಸಲು ಪ್ರೀಮಿಯಂ ಚಂದಾದಾರಿಕೆ ಅಗತ್ಯವಿದೆ Microsoft. .";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "ಈ ಗುರುತನ್ನು ಮಾತ್ರ App Clip ಹಂಚಿಕೆ ಮತ್ತು ಮರುಪಡೆಯುವಿಕೆ. ಅವು ಕ್ಯಾಲೆಂಡರ್ ಪೂರೈಕೆದಾರರ ಲಾಗಿನ್ಗಳಿಂದ ಪ್ರತ್ಯೇಕವಾಗಿರುತ್ತವೆ ಮತ್ತು ಸಿಂಕ್ ಆಗುತ್ತವೆ.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "ಸೈನ್ ಇನ್ ಮಾಡಿ Google, ಆಪಲ್, ಅಥವಾ Microsoft ಸಕಾಲಿಕ ಘಟನೆಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲು ಮತ್ತು ಸ್ವೀಕರಿಸಲು.";
+"Share a verified email during sign-in to use synced events and invitations." = "ಸಿನಕ್ರೊನೈಸ್ಡ್ ಘಟನೆಗಳು ಮತ್ತು ಆಹ್ವಾನಗಳನ್ನು ಬಳಸಲು ಸೈನ್ ಇನ್ ಮಾಡುವಾಗ ಪರಿಶೀಲಿಸಿದ ಇಮೇಲ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಿ.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "ಸೈನ್ ಇನ್ ಮಾಡುವಾಗ ನೀವು ಪರಿಶೀಲಿಸಿದ ಇಮೇಲ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಬೇಕು. ಜನರು ಅದನ್ನು ಕ್ಯಾಲೆಂಡರ್ಗಳು ಮತ್ತು ಘಟನೆಗಳಿಗೆ ನಿಮ್ಮನ್ನು ಹುಡುಕಲು ಮತ್ತು ಆಹ್ವಾನಿಸಲು ಬಳಸುತ್ತಾರೆ.";
+"Manage connected accounts" = "ಸಂಪರ್ಕಿತ ಖಾತೆಗಳನ್ನು ನಿರ್ವಹಿಸುವುದು";
+"Apple, Google, and Microsoft" = "ಆಪಲ್, Googleಮತ್ತು Microsoft";
+"Open account sign-in" = "ಖಾತೆ ತೆರೆಯಿರಿ";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "ಮಾಲೀಕರು ನೀಡಿದ ಪ್ರವೇಶವನ್ನು ಹಂಚಿಕೊಳ್ಳಲು, ಮರುಪಡೆಯಲು ಅಥವಾ ಬಳಸಲು ಪರಿಶೀಲಿಸಿದ ಇಮೇಲ್ ಅಗತ್ಯವಿದೆ.";
+"Accept" = "ಒಪ್ಪಿಕೊಳ್ಳು";
+"Access removed" = "ಪ್ರವೇಶವನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ";
+"Add a Mail account on this device, then try again." = "ಈ ಸಾಧನದಲ್ಲಿ Mail ಖಾತೆಯನ್ನು ಸೇರಿಸಿ, ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"Add a writable calendar before moving this event." = "ಈ ಘಟನೆಯನ್ನು ಚಲಿಸುವ ಮೊದಲು ಬರೆಯಬಹುದಾದ ಕ್ಯಾಲೆಂಡರ್ ಅನ್ನು ಸೇರಿಸಿ.";
+"Add everyone who should receive this calendar and choose their access." = "ಈ ಕ್ಯಾಲೆಂಡರ್ ಅನ್ನು ಸ್ವೀಕರಿಸುವ ಪ್ರತಿಯೊಬ್ಬರನ್ನು ಸೇರಿಸಿ ಮತ್ತು ಅವರ ಪ್ರವೇಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.";
+"Add everyone who should receive this event and choose their access." = "ಈ ಘಟನೆಯನ್ನು ಸ್ವೀಕರಿಸುವ ಪ್ರತಿಯೊಬ್ಬರನ್ನು ಸೇರಿಸಿ ಮತ್ತು ಅವರ ಪ್ರವೇಶವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "ಸೇವ್ ನಂತರ, %@ ಅವರ ಸ್ಥಳೀಯ ಪ್ರತಿಗಳು ಓದಲು ಮಾತ್ರ ಉಳಿದುಕೊಳ್ಳುತ್ತವೆ.";
+"Anonymous recipient" = "ಅನಾಮಧೇಯ ಸ್ವೀಕರಿಸುವವರು";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "ಆಪಲ್ ಇಮೇಲ್ ಅನ್ನು ಮರಳಿ ಕಳುಹಿಸಲಿಲ್ಲ. ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ, ಆಪಲ್ ಐಡಿ ಅನ್ನು ಬಳಸುವುದನ್ನು ನಿಲ್ಲಿಸಿ Cloud Calendars, ನಂತರ ಮತ್ತೆ ಸಂಪರ್ಕಿಸಿ ಮತ್ತು ನನ್ನ ಇಮೇಲ್ ಹಂಚಿಕೊಳ್ಳಿ ಆಯ್ಕೆಮಾಡಿ.";
+"Calendar invitation" = "ಕ್ಯಾಲೆಂಡರ್ ಆಹ್ವಾನ";
+"Cancel for Everyone" = "ಎಲ್ಲರನ್ನೂ ರದ್ದುಗೊಳಿಸುವುದು";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "ಓದುಗ, ಬರಹಗಾರ ಅಥವಾ ಮಾಲೀಕ ಆಯ್ಕೆಮಾಡಿ. ಮಾಲೀಕರು ಈ ಘಟನೆಯನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಮತ್ತು ಪ್ರವೇಶವನ್ನು ನಿರ್ವಹಿಸಬಹುದು.";
+"Choose how to share this synced event." = "ಈ ಸಂಶ್ಲೇಷಿತ ಘಟನೆಯನ್ನು ಹೇಗೆ ಹಂಚಿಕೊಳ್ಳುವುದು ಎಂಬುದನ್ನು ಆರಿಸಿ.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars ಈ ಸಾಧನದಲ್ಲಿ ಸೆಷನ್ ಅನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"Cloud Calendars user" = "Cloud Calendars ಬಳಕೆದಾರ";
+"Could not add: %@." = "ಸೇರಿಸಲಾರದೆಃ %@. .";
+"Custom on this device" = "ಈ ಸಾಧನಕ್ಕೆ ಕಸ್ಟಮ್";
+"Decline" = "ಕುಸಿತ";
+"Default from creator" = "ಸೃಷ್ಟಿಕರ್ತರಿಂದ ಡೀಫಾಲ್ಟ್";
+"Deleted by owner" = "ಮಾಲೀಕರಿಂದ ಅಳಿಸಲಾಗಿದೆ";
+"Each email address can appear only once." = "ಪ್ರತಿ ಇಮೇಲ್ ವಿಳಾಸವು ಒಮ್ಮೆ ಮಾತ್ರ ಕಾಣಿಸಿಕೊಳ್ಳಬಹುದು.";
+"Enter a valid email address for %@." = "ಒಂದು ಮಾನ್ಯ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ %@. .";
+"From %@" = "ನಿಂದ %@";
+"Invitation pending" = "ಆಹ್ವಾನ ಕಾಯುತ್ತಿದೆ";
+"Loading shared calendars…" = "ಹಂಚಿದ ಕ್ಯಾಲೆಂಡರ್ಗಳನ್ನು ಲೋಡ್ ಮಾಡುವುದು.";
+"Mail is not configured" = "ಮೇಲ್ ಅನ್ನು ಕಾನ್ಫಿಗರ್ ಮಾಡಲಾಗಿಲ್ಲ";
+"Manage calendar sharing" = "ಕ್ಯಾಲೆಂಡರ್ ಹಂಚಿಕೆ ನಿರ್ವಹಿಸಿ";
+"New calendar invitation" = "ಹೊಸ ಕ್ಯಾಲೆಂಡರ್ ಆಹ್ವಾನ";
+"New event invitation" = "ಹೊಸ ಕಾರ್ಯಕ್ರಮದ ಆಹ್ವಾನ";
+"No calendars have been shared with you yet." = "ಇನ್ನೂ ನಿಮ್ಮೊಂದಿಗೆ ಯಾವುದೇ ಕ್ಯಾಲೆಂಡರ್ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಲಾಗಿಲ್ಲ.";
+"Open a shared event or calendar" = "ಹಂಚಿದ ಘಟನೆ ಅಥವಾ ಕ್ಯಾಲೆಂಡರ್ ತೆರೆಯಿರಿ";
+"Open this event with Cloud Calendars:\n\n%@" = "ಈ ಘಟನೆಯನ್ನು ತೆರೆಯಿರಿ Cloud Calendars:\n\n%@";
+"Original creator" = "ಮೂಲ ಸೃಷ್ಟಿಕರ್ತ";
+"People" = "ಜನರು";
+"People appear here after they add the event." = "ಘಟನೆಯನ್ನು ಸೇರಿಸಿದ ನಂತರ ಜನರು ಇಲ್ಲಿಗೆ ಬರುತ್ತಾರೆ.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "ಒಂದು ಸ್ಥಾನ Cloud Calendars ಘಟನೆ ಅಥವಾ ಕ್ಯಾಲೆಂಡರ್ QR ಫ್ರೇಮ್ ಒಳಗೆ ಕೋಡ್.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "ಓದುಗರು ವೀಕ್ಷಿಸಬಹುದು ಮತ್ತು ಸಿಂಕ್ ಮಾಡಬಹುದು. ಬರಹಗಾರರು ಸಂಪಾದಿಸಬಹುದು. ಆಹ್ವಾನಿತ ಇಮೇಲ್ನೊಂದಿಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿದ ನಂತರ ಮಾಲೀಕರು ಪ್ರವೇಶವನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಮತ್ತು ನಿರ್ವಹಿಸಬಹುದು.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "ಓದುಗರು ವೀಕ್ಷಿಸಬಹುದು. ಬರಹಗಾರರು ಘಟನೆಗಳನ್ನು ಸಂಪಾದಿಸಬಹುದು. ಮಾಲೀಕರು ಕ್ಯಾಲೆಂಡರ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಬಹುದು ಮತ್ತು ಪ್ರವೇಶವನ್ನು ನಿರ್ವಹಿಸಬಹುದು.";
+"Remove" = "ತೆಗೆದುಹಾಕಿ";
+"Remove Shared Calendar?" = "ಹಂಚಿದ ಕ್ಯಾಲೆಂಡರ್ ತೆಗೆದುಹಾಕಿ?";
+"Remove from My Calendars" = "ನನ್ನ ಕ್ಯಾಲೆಂಡರ್ಗಳಿಂದ ತೆಗೆದುಹಾಕಿ";
+"Resend" = "ಮರುಪಡೆಯಿರಿ";
+"Scan QR Code" = "ಸ್ಕ್ಯಾನ್ QR ಕೋಡ್";
+"Scan to open this calendar" = "ಈ ಕ್ಯಾಲೆಂಡರ್ ತೆರೆಯಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ";
+"Scan to open this event" = "ಈ ಘಟನೆಯನ್ನು ತೆರೆಯಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ";
+"Server returned %lld: %@" = "ಸರ್ವರ್ ಮರುಪಡೆಯಲಾಗಿದೆ %lld: %@";
+"Shared calendar" = "ಹಂಚಿದ ಕ್ಯಾಲೆಂಡರ್";
+"Shared calendar information" = "ಹಂಚಿದ ಕ್ಯಾಲೆಂಡರ್ ಮಾಹಿತಿ";
+"Shared event: %@" = "ಹಂಚಿದ ಘಟನೆಃ %@";
+"Sign in or manage accounts" = "ಖಾತೆಗಳನ್ನು ಸೈನ್ ಇನ್ ಮಾಡಿ ಅಥವಾ ನಿರ್ವಹಿಸಿ";
+"Sign in to manage event access." = "ಘಟನೆ ಪ್ರವೇಶವನ್ನು ನಿರ್ವಹಿಸಲು ಸೈನ್ ಇನ್ ಮಾಡಿ.";
+"Sign in to save event access." = "ಘಟನೆ ಪ್ರವೇಶವನ್ನು ಉಳಿಸಲು ಸೈನ್ ಇನ್ ಮಾಡಿ.";
+"Sign in to see calendars shared with you." = "ನಿಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಂಡ ಕ್ಯಾಲೆಂಡರ್ಗಳನ್ನು ನೋಡಲು ಸೈನ್ ಇನ್ ಮಾಡಿ.";
+"Sign-in couldn’t open. Please try again." = "ನೋಂದಣಿ ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "ಈ ಕ್ಯಾಲೆಂಡರ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳುವುದನ್ನು ನಿಲ್ಲಿಸಿ %@Save ನಂತರ, ಅವರ ಫ್ರೀಜ್ ಪ್ರತಿಯನ್ನು ಮತ್ತು ಅದರ ಘಟನೆಗಳು ಅವುಗಳ ಮೂಲಕ ಒಂದು ಸಾಲು ಗೋಚರಿಸುತ್ತದೆ.";
+"The calendar and its events will be removed only from this device." = "ಕ್ಯಾಲೆಂಡರ್ ಮತ್ತು ಅದರ ಘಟನೆಗಳನ್ನು ಈ ಸಾಧನದಿಂದ ಮಾತ್ರ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ.";
+"The provider didn’t return the information required to sign in." = "ಸೈನ್ ಇನ್ ಮಾಡಲು ಅಗತ್ಯವಾದ ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸುವವರು ಹಿಂದಿರುಗಿಸಲಿಲ್ಲ.";
+"The provider returned an invalid response." = "ಪೂರೈಕೆದಾರರು ಅಮಾನ್ಯ ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಿದರು.";
+"The sign-in response couldn’t be verified. Please try again." = "ಸೈನ್ ಇನ್ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಪರಿಶೀಲಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"The sign-in response was invalid. Please try again." = "ಸೈನ್ ಇನ್ ಪ್ರತಿಕ್ರಿಯೆ ಅಮಾನ್ಯವಾಗಿತ್ತು. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
+"This changes only your local copy. Shared event details stay read-only." = "ಇದು ನಿಮ್ಮ ಸ್ಥಳೀಯ ಪ್ರತಿ ಮಾತ್ರ ಬದಲಾಯಿಸುತ್ತದೆ. ಹಂಚಿದ ಘಟನೆಯ ವಿವರಗಳು ಓದಲು ಮಾತ್ರ ಉಳಿಯುತ್ತವೆ.";
+"This color changes only on this device." = "ಈ ಸಾಧನದಲ್ಲಿ ಮಾತ್ರ ಈ ಬಣ್ಣ ಬದಲಾಗುತ್ತದೆ.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "ಈ QR ಕೋಡ್ ಒಂದು Cloud Calendars ಘಟನೆ ಅಥವಾ ಕ್ಯಾಲೆಂಡರ್.";
+"This QR code does not contain a Cloud Calendars share." = "ಈ QR ಕೋಡ್ ಒಂದು Cloud Calendars ಹಂಚಿಕೊಳ್ಳಿ.";
+"This removes only your local copy. Other people keep access." = "ಇದು ನಿಮ್ಮ ಸ್ಥಳೀಯ ನಕಲನ್ನು ಮಾತ್ರ ತೆಗೆದುಹಾಕುತ್ತದೆ. ಇತರ ಜನರು ಪ್ರವೇಶವನ್ನು ಉಳಿಸಿಕೊಳ್ಳುತ್ತಾರೆ.";
+"Try again" = "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ";
+"Unable to Update Calendar" = "ಕ್ಯಾಲೆಂಡರ್ ಅನ್ನು ನವೀಕರಿಸಲಾಗಲಿಲ್ಲ";
+"Unable to add calendar" = "ಕ್ಯಾಲೆಂಡರ್ ಸೇರಿಸಲಾಗಲಿಲ್ಲ";
+"Unreadable response from the server" = "ಸರ್ವರ್ನಿಂದ ಓದಲಾಗದ ಪ್ರತಿಕ್ರಿಯೆ";
+"Use Apple, Google, or Microsoft." = "ಆಪಲ್ ಬಳಸಿ, Googleಅಥವಾ Microsoft. .";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "ಲಭ್ಯವಿರುವ ಕ್ಯಾಮೆರಾ ಹೊಂದಿರುವ ಸಾಧನವನ್ನು ಬಳಸಿ Cloud Calendars QR ಕೋಡ್.";
+"You can add up to 50 people at once." = "ನೀವು 50 ಜನರನ್ನು ಒಂದೇ ಸಮಯದಲ್ಲಿ ಸೇರಿಸಬಹುದು.";
+"You can send up to 50 invitations at once." = "ನೀವು 50 ಆಹ್ವಾನಗಳನ್ನು ಒಂದೇ ಸಮಯದಲ್ಲಿ ಕಳುಹಿಸಬಹುದು.";
+"%lld connected account" = "%lld ಸಂಪರ್ಕಿತ ಖಾತೆ";
+"%lld connected accounts" = "%lld ಸಂಪರ್ಕಿತ ಖಾತೆಗಳು";
+"%lld pending invitation" = "%lld ಆಹ್ವಾನಕ್ಕಾಗಿ ಕಾಯುತ್ತಿರುವುದು";
+"%lld pending invitations" = "%lld ಕಾಯುತ್ತಿರುವ ಆಹ್ವಾನಗಳು";
+"%lld upcoming event" = "%lld ಮುಂಬರುವ ಘಟನೆ";
+"%lld upcoming events" = "%lld ಮುಂಬರುವ ಘಟನೆಗಳು";
+"%@ invited you to %@" = "%@ ನಿಮ್ಮನ್ನು ಆಹ್ವಾನಿಸಿ %@";

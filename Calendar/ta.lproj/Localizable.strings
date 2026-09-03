@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld நிகழ்வு";
+"%lld events" = "%lld நிகழ்வுகள்";
+"Share Pop-up" = "பகிர்வு பாப்-அப்";
+"Would you like to share this event?" = "இந்த நிகழ்வை பகிர்ந்து கொள்ள விரும்புகிறீர்களா?";
+"Don't ask again" = "மீண்டும் கேட்க வேண்டாம்";
+"No email was provided." = "மின்னஞ்சல் எதுவும் வழங்கப்படவில்லை.";
+"Please enter a valid email to continue." = "தொடர செல்லுபடியாகும் மின்னஞ்சலை உள்ளிடவும்.";
+"Your email" = "உங்கள் மின்னஞ்சல்";
+"Save" = "சேமி";
+"Login" = "உள்நுழைவு";
+"Logout" = "பதிவு";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "காலண்டர்கள்";
+"Inbox" = "அஞ்சல் பெட்டி";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "மற்றவை";
+"Google calendars" = "Google calendarஅ";
+"No synced Google calendars yet." = "ஒத்திசைவு இல்லை Google calendarஇன்னும் இல்லை.";
+"Microsoft calendars" = "Microsoft calendarஅ";
+"No synced Microsoft calendars yet." = "ஒத்திசைவு இல்லை Microsoft calendarஇன்னும் இல்லை.";
+"Sign out" = "பதிவு செய்யுங்கள்";
+"Add iCloud Calendar" = "சேர்க்கவும் iCloud காலண்டர்";
+"Share calendars with iCloud Calendar" = "காலண்டர்களை பகிர்ந்து கொள்ளவும் iCloud காலண்டர்";
+"Sign in with Google" = "பதிவு செய்யவும் Google";
+"Sign in with Microsoft" = "பதிவு செய்யவும் Microsoft";
+"Deselect All" = "அனைத்தையும் நீக்கவும்";
+"Select All" = "அனைத்தையும் தேர்ந்தெடுக்கவும்";
+"No Email" = "மின்னஞ்சல் இல்லை";
+"Add Google Calendar" = "சேர்க்கவும் Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "காலண்டர் பெயர்";
+"Account" = "கணக்கு";
+"COLOR" = "நிறம்";
+"NOTIFICATIONS" = "அறிவிப்புகள்";
+"Event Alerts" = "நிகழ்வு எச்சரிக்கைகள்";
+"Allow events on this calendar to display alerts." = "இந்த காலண்டரில் நிகழ்வுகள் எச்சரிக்கைகளை காண்பிக்க அனுமதிக்கிறது.";
+"Add Calendar" = "காலண்டர் சேர்க்கவும்";
+
+/* Colors */
+"Red" = "சிவப்பு";
+"Orange" = "ஆரஞ்சு";
+"Yellow" = "மஞ்சள்";
+"Green" = "பச்சை";
+"Blue" = "நீல நிறம்";
+"Purple" = "பர்பல்";
+"Brown" = "பழுப்பு நிறம்";
+"Custom" = "தனிப்பயன்";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "காலண்டர் நிறம்";
+"Custom..." = "வழக்கமான...";
+
+/* EditCalendarView */
+"Edit Calendar" = "காலண்டர் திருத்தவும்";
+"Delete Calendar" = "காலண்டரை நீக்கவும்";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "பகிர்வு அமைப்புகளை ஏற்றும்...";
+"Shared with these users" = "இந்த பயனர்களுடன் பகிரப்பட்டது";
+"Add New Email" = "புதிய மின்னஞ்சல் சேர்க்கவும்";
+"Email to share" = "பகிர்ந்து கொள்ள மின்னஞ்சல்";
+"Permission:" = "அனுமதிஃ";
+"Add" = "சேர்க்கவும்";
+"Sharing:" = "பகிர்வுஃ";
+"Done" = "முடிந்தது";
+
+"Error loading: %@" = "தவறு ஏற்றல்ஃ %@";
+"Error adding: %@" = "சேர்க்கும் தவறுஃ %@";
+"Error deleting: %@" = "பிழை நீக்குதல்ஃ %@";
+"Error updating: %@" = "தவறு புதுப்பித்தல்ஃ %@";
+"Error re-inviting (delete): %@" = "திருப்பி அழைக்கும் தவறு (நீக்குதல்): %@";
+"Error re-inviting (insert): %@" = "தவறு மறு அழைப்பு (சேர்க்கவும்): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "வாசகர்";
+"Writer" = "எழுத்தாளர்";
+"Owner"  = "உரிமையாளர்";
+
+/* MonthCalendarView */
+"Day View" = "பகல் பார்வை";
+"This is a repeating event." = "இது மீண்டும் மீண்டும் நிகழும் நிகழ்வு.";
+"Save for This Event Only" = "இந்த நிகழ்வுக்கு மட்டும்";
+"Save for Future Events" = "எதிர்கால நிகழ்வுகளுக்கு சேமிப்பு";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "சூரியன்";
+"Mon" = "மாநகராட்சி";
+"Tue" = "செவ்வாய்";
+"Wed" = "திருமணமான";
+"Thu" = "த்யூ";
+"Fri" = "சனிக்கிழமை";
+"Sat" = "சட்";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "நெருக்கமாக";
+
+/* AllEventsListView */
+"No calendar access." = "காலண்டர் அணுகல் இல்லை.";
+
+/* EventRowView */
+"Ends" = "முடிவுகள்";
+
+/* SearchEventRowView */
+"No Title" = "தலைப்பு இல்லை";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "கூட்டத்தில் சேரவும்";
+"Edit" = "திருத்தவும்";
+"Duplicate" = "இரட்டை";
+"Delete" = "நீக்கவும்";
+"Share" = "பகிர்வு";
+"Add to Google Meet" = "சேர்க்கவும் Google சந்திக்க";
+"Add to Microsoft Teams" = "சேர்க்கவும் Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "தேர்ந்தெடுக்கப்பட்ட வரம்பு இல்லை";
+"all-day" = "நாள் முழுவதும்";
+"Search events..." = "தேடல் நிகழ்வுகள்...";
+"Day" = "நாள்";
+"MultiDay" = "பல நாள்";
+"Month" = "மாதம்";
+"Year" = "ஆண்டு";
+"List" = "பட்டியல்";
+"MultiCalendar" = "பல காலண்டர்";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "புதிய நிகழ்வு";
+"All-day event" = "நாள் முழுவதும் நடைபெறும் நிகழ்வு";
+"Recurring Event" = "மீண்டும் மீண்டும் நிகழும் நிகழ்வு";
+"This event is part of a series. Update which events?" = "இந்த நிகழ்வு ஒரு தொடரின் ஒரு பகுதியாகும். எந்த நிகழ்வுகளை புதுப்பிப்பது?";
+"This Event Only" = "இந்த நிகழ்வு மட்டும்";
+"All Future Events" = "எதிர்கால நிகழ்வுகள்";
+"Cancel" = "ரத்து செய்ய";
+
+/* DraggableMenuView */
+"Calendar" = "காலண்டர்";
+"Subscriptions" = "பதிவுகள்";
+"Settings" = "அமைப்புகள்";
+"Sharing" = "பகிர்வு";
+"Live" = "வாழ்க";
+"Stop" = "நிறுத்து";
+"Calendar Live Activity" = "காலண்டர் நேரடி செயல்பாடு";
+"Get" = "வாங்க";
+"Color" = "நிறம்";
+"Search for a city…" = "ஒரு நகரத்தைத் தேடுங்கள்.";
+"No directions" = "வழிமுறைகள் இல்லை";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "இருப்பிட அணுகல் மறுக்கப்பட்டது. ஒரு நகரத்தைத் தேடுங்கள் அல்லது அமைப்புகள் உள்ள அணுகலை வழங்கவும்.";
+"Cannot refresh. Location unknown." = "புதுப்பிக்க முடியாது.";
+"10-DAY FORECAST" = "10 நாள் முன்னறிவிப்பு";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "நாளை";
+"on_day" = "மீது %@";
+"in_days" = "உள்ள %d நாட்கள்";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "புதிய நிகழ்வு";
+
+/* Search placeholder */
+"Search for a city..." = "ஒரு நகரத்தைத் தேடுங்கள்.";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "ஒரு மணி நேரத்தை தட்டவும், விரைவில் ஒரு காலண்டர் நிகழ்வைச் சேர்க்கவும்.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "உணர்கிறேன்";
+"similar_to_actual_temp" = "உண்மையான வெப்பநிலைக்கு ஒத்ததாக.";
+"wind_cooler_feel" = "காற்று அதை குளிர்விக்கிறது.";
+"humidity_warmer_feel" = "ஈரப்பதம் அதை சூடாக உணர வைக்கிறது.";
+
+/* HumidityCard */
+"HUMIDITY" = "ஈரப்பதம்";
+"The dew point is %d° right now." = "ஈழத்தின் புள்ளி %dஇப்போது.";
+"dewPoint.current" = "ஈழத்தின் புள்ளி %dஇப்போது.";
+
+/* MoonCard */
+"MOON PHASE" = "நிலவு நிலை";
+"Moonrise" = "நிலவு உதித்தல்";
+"Moonset" = "நிலா";
+"Next %@" = "அடுத்தது %@";
+"Data unavailable" = "தரவு கிடைக்கவில்லை";
+"%d day" = "%d நாள்";
+"%d days" = "%d நாட்கள்";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "முன்னுரை";
+"PRECIPITATION_CARD_TODAY_LABEL" = "இன்று";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "அடுத்த எதிர்பார்ப்பு %1$.0f %2$@ %3$@. ."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "விரைவில் மழை பெய்யாது.";
+
+/* PressureCard */
+"PRESSURE" = "அழுத்தம்";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "சூரிய உதயம்";
+"Sunrise: %@" = "சூரிய உதயம்: %@";
+"Sunset: %@" = "சூரியன் அஸ்தமிக்கும்: %@";
+"Sunrise" = "சூரிய உதயம்";
+"Sunset" = "சூரியன் அஸ்தமிக்கும்";
+
+
+"Sunrise and Sunset" = "சூரிய உதயமும் சூரிய அஸ்தமனமும்";
+"First Light" = "முதல் ஒளி";
+"Solar Noon" = "சூரிய மதியம்";
+"Last Light" = "கடைசி ஒளி";
+"Total Daylight" = "முழு பகல் ஒளி";
+
+/* UVIndexCard */
+"UV INDEX" = "UV INDEX";
+"Low" = "குறைந்த அளவு";
+"Moderate" = "மிதமான";
+"High" = "உயர்";
+"Very High" = "மிக உயர்ந்த";
+"Extreme" = "தீவிரமான";
+
+/* VisibilityCard */
+"VISIBILITY" = "காணக்கூடிய தன்மை";
+"km" = "கிமீ";
+"Perfectly clear view." = "முற்றிலும் தெளிவான பார்வை.";
+"Excellent visibility." = "சிறந்த தெரிவுநிலை.";
+"Good visibility." = "நல்ல தெரிவுநிலை.";
+"Moderate visibility." = "மிதமான தெரிவுநிலை.";
+"Poor visibility." = "மோசமான தெரிவுநிலை.";
+"Very poor visibility." = "மிக மோசமான தெரிவுநிலை.";
+"visibility.perfect"   = "முற்றிலும் தெளிவான பார்வை.";
+"visibility.excellent" = "சிறந்த தெரிவுநிலை.";
+"visibility.good"      = "நல்ல தெரிவுநிலை.";
+"visibility.moderate"  = "மிதமான தெரிவுநிலை.";
+"visibility.poor"      = "மோசமான தெரிவுநிலை.";
+"visibility.verypoor"  = "மிக மோசமான தெரிவுநிலை.";
+"visibility.unknown"   = "";
+
+/* WindCard */
+"WIND" = "காற்று";
+"Gusts" = "சுவை";
+"Direction" = "திசை";
+"km/h" = "கிமீ/மணி";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "வானிலை தரவுகளை பெற முடியவில்லை. தயவுசெய்து உங்கள் இணைப்பை சரிபார்க்கவும் அல்லது பின்னர் மீண்டும் முயற்சிக்கவும்.";
+"Falling" = "விழுந்து";
+"Rising" = "உயர்வு";
+"Steady" = "நிலையான";
+"Unknown" = "அறியப்படாதது";
+"Sunny" = "சூரியன்";
+"Cloudy" = "மேகமூட்டமான";
+"Partly Cloudy" = "ஒரு பகுதியாக மேகமூட்டமாக";
+"Drizzle" = "குளிர்விப்பு";
+"Thunderstorm" = "இடி புயல்";
+"Fog" = "மூடுபனி";
+"Partly Cloudy Night" = "ஒரு பகுதி மேகமூட்டமான இரவு";
+"Clear Night" = "தெளிவான இரவு";
+"Hazy" = "மூடுபனி";
+"Today" = "இன்று";
+"Now" = "இப்போது";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "எ. என். இ.";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "மழை பெய்ய வாய்ப்பு";
+"Today's chance: %d%%" = "இன்றைய வாய்ப்புஃ %d%%";
+"%@'s chance: %d%%" = "%@வாய்ப்புஃ %d%%";
+"Max" = "மேக்ஸ்";
+"Min" = "மின்கொடுமை";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "ஒவ்வொரு மணி நேரத்திற்கும் நிகழக்கூடிய மழைப்பொழிவு வாய்ப்புகளை விட தினசரி மழைப்பொழிவு வாய்ப்பு அதிகமாக இருக்கும்.";
+"ChanceOfPrecipitation_Title" = "மழை பெய்ய வாய்ப்பு";
+"TodaysChance"                = "இன்றைய வாய்ப்புஃ %d%%";
+"OtherDayChance"              = "%@வாய்ப்புஃ %d%%";
+"DailyChanceExplanation"      = "ஒவ்வொரு மணி நேரத்திற்கும் நிகழக்கூடிய மழைப்பொழிவு வாய்ப்புகளை விட தினசரி மழைப்பொழிவு வாய்ப்பு அதிகமாக இருக்கும்.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "உணர்கிறேன்";
+"Actual" = "உண்மையான";
+"No hourly data available for this day." = "இன்று வரை மணிநேர தரவு எதுவும் கிடைக்கவில்லை.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "ஈரப்பதம், சூரிய ஒளி அல்லது காற்று காரணமாக வெப்பநிலை எப்படி இருக்கும்.";
+"The actual air temperature." = "உண்மையான காற்று வெப்பநிலை.";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat"  = "எல்ஃ %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "ஈரப்பதம்";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "ஈரப்பதம் %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "ஈரப்பதம் Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "இன்றைய மைன் %d%%  அதிகபட்சம் %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "மேக்ஸ்";
+"ChartMarker_Min"           = "மின்கொடுமை";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "மழைஃ %.1f%@, பனி: %.1f%@";
+"Precip_Total_RainFormat"       = "மழைஃ %.1f%@";
+"Precip_Total_SnowFormat"       = "பனி: %.1f%@";
+"Precip_Total_None"             = "மழைஃ 0%@";
+"Precip_Bars_Subtitle"          = "மழை மற்றும் பனி (%@)";
+"Precip_Level_Light"            = "ஒளி";
+"Precip_Level_Moderate"         = "மிதமான";
+"Precip_Level_Heavy"            = "கனமான";
+"Precip_Tooltip_Format"         = "%@h\nமழைஃ %.1f%@\nபனி: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "அழுத்தம் %@ %@";
+"Pressure_CurrentUnavailable"      = "அழுத்தம்ஃ --";
+"Pressure_DailyMinMaxFormat"       = "இன்றைய மைன் %@ %@  அதிகபட்சம் %@ %@";
+"Pressure_AverageFormat"           = "அழுத்த சராசரி %@ %@";
+"Pressure_DailyRangeFormat"        = "தினசரி வரம்புஃ %@%@ %@";
+"Pressure_Title"                   = "அழுத்தம்";
+"Pressure_NoData"                  = "இன்று வரை எந்த அழுத்த தரவும் கிடைக்கவில்லை.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "இன்றைய %@ %d";
+"UVGraphNoHourlyData"   = "இன்று வரை மணிநேர தரவு எதுவும் கிடைக்கவில்லை.";
+"UVGraphNowLabel"       = "இப்போது, %@";
+"UVCategory_None"       = "ஒன்றும் இல்லை";
+"UVCategory_Low"        = "குறைந்த அளவு";
+"UVCategory_Moderate"   = "மிதமான";
+"UVCategory_High"       = "உயர்";
+"UVCategory_VeryHigh"   = "மிக உயர்ந்த";
+"UVCategory_Extreme"    = "தீவிரமான";
+"UVAdvice_None"         = "இந்த நாளில் மிதமான அல்லது அதிகமான UV அளவுகள் எதிர்பார்க்கப்படுவதில்லை.";
+"UVAdvice_Range"        = "சூரிய ஒளி பாதுகாப்பு பரிந்துரைக்கப்படுகிறது. %@ க்கு %@, இடையில் அடையப்பட்டது %@ மற்றும் %@. .";
+"UVGraphMaxLabel" = "மேக்ஸ்";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "தெரிவுநிலை";
+"Visibility_NoData"                = "இன்று வரை காணக்கூடிய தரவு எதுவும் கிடைக்கவில்லை.";
+"Visibility_CurrentFormat"         = "தெரிவுநிலை %d %@";
+"Visibility_DailyMinMaxFormat"     = "நிமிடம் %d  அதிகபட்சம் %d %@";
+"Visibility_NoCurrentData"         = "தற்போது காணக்கூடிய தரவு எதுவும் கிடைக்கவில்லை.";
+"Visibility_HourlyAverages_NoData" = "மணிநேர தரவு எதுவும் கிடைக்கவில்லை.";
+"Visibility_MaxLabel"              = "மேக்ஸ்";
+"Visibility_MinLabel"              = "மின்கொடுமை";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "காற்று வேகம் & குஸ்ட்";
+"WindGraph_NoData" = "இன்று வரை காற்றின் தரவு எதுவும் கிடைக்கவில்லை.";
+"WindGraph_SpeedHeader" = "காற்று வேகம் %d";
+"WindGraph_GustHeader" = "வரை சுவைக்கிறது %d";
+"WindGraph_SpeedRangeHeader" = "காற்று வேகம் %d- ஒருவேளை.%d";
+"WindGraph_MaxSpeedLabel" = "மேக்ஸ் எஸ்";
+"WindGraph_MaxGustLabel" = "மேக்ஸ் ஜி";
+"WindGraph_DragLabel" = "%@\nவேகம்: %d\nகுஸ்ட்: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "தினசரி சுருக்கம்";
+
+"Precipitation Totals" = "மழைப்பொழிவு மொத்த";
+"LAST 24 HOURS" = "கடந்த 24 மணிநேரம்";
+"NEXT 24 HOURS" = "அடுத்த 24 மணி நேரம்";
+"Total" = "மொத்த";
+"Rain" = "மழை";
+"Snow" = "பனி";
+
+"About Wind Speed and Gusts" = "காற்று வேகம் மற்றும் காற்றின் தாவி";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "காற்று வேகம் ஒரு குறுகிய காலத்திற்கு சராசரியைப் பயன்படுத்தி கணக்கிடப்படுகிறது. காற்று வெடிப்புகள் இந்த சராசரியை விட குறுகிய காற்று வெடிப்புகள். ஒரு வெடிப்பு பொதுவாக 20 வினாடிகளுக்குள் நீடிக்கும்.";
+
+"About the Beaufort Scale" = "பீஃபோர்ட் அளவைப் பற்றி";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "ஒரு குறிப்பிட்ட வேகத்தில் காற்று எவ்வளவு வலுவானது அல்லது வலுவானது என்பதை பியோஃபோர்ட் காற்று அளவீடு வெளிப்படுத்துகிறது. பியோஃபோர்ட் அளவீடு அது எவ்வளவு காற்று உணரப் போகிறது அல்லது காற்று எவ்வளவு தாக்கத்தை ஏற்படுத்தக்கூடும் என்பதைப் புரிந்துகொள்வதை எளிதாக்குகிறது. இந்த அளவீட்டின் ஒவ்வொரு மதிப்பும் காற்று வேக வரம்புக்கு ஏற்படுகிறது.";
+
+"About Feels Like Temperature" = "வெப்பம் போன்ற உணர்வுகள்";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "உணர்வுகள் போன்றது எவ்வளவு சூடாக அல்லது குளிராக உணர்கிறது என்பதைக் குறிக்கிறது, மேலும் அது உண்மையான வெப்பநிலையிலிருந்து வேறுபடலாம்.";
+
+"Options" = "விருப்பங்கள்";
+"Temperature" = "வெப்பநிலை";
+"Use system setting (°C)" = "பயன்பாட்டு அமைப்பு அமைப்பு (°C)";
+"mm, cm" = "மிமீ, செ. மீ.";
+
+/* Dynamic label titles */
+"Conditions" = "நிபந்தனைகள்";
+"UV Index" = "UV இன்டெக்ஸ்";
+"Wind" = "காற்று";
+"Precipitation" = "மழை";
+"Humidity" = "ஈரப்பதம்";
+"Visibility" = "தெரிவுநிலை";
+"Pressure" = "அழுத்தம்";
+
+/* Fallback key */
+"displayedCondition" = "காட்டப்பட்டதுவிதிமுறை";
+
+/* Titles */
+"Forecast"                   = "முன்னறிவிப்பு";
+"DailySummary"               = "தினசரி சுருக்கம்";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° இப்போது %@ நிலையான நிலைமைகள். %@. . . காற்று இருந்து %@ வரை துடிப்புகளுடன் %d %@இன்றைய வெப்பநிலை %d° to %d° மற்றும் உணர்கிறேன் %d°. %@, மற்றும் %@. .";
+"UVIndexFormat"              = "UV இன்டெக்ஸ் வரை %d";
+"HumidityFormat"             = "சுற்றி ஈரப்பதம் %d%%";
+"HumidityRangeFormat"        = "ஈரப்பதம் %d%% க்கு %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@குறைந்த உள்ளது %d° மற்றும் உயர் %d°. வெப்பநிலை போன்ற உணர்வு இருக்கும் %d° to %d°. காற்று %@ எதிர்பார்க்கப்படுகிறது. %@";
+"NoPrecipLast24h"            = "கடந்த 24 மணி நேரத்தில் மழை பெய்யவில்லை.";
+"RainLast24h"                = "மழை பெய்தது %d கடந்த 24 மணி நேரத்தில்.";
+"SnowAndRainLast24h"         = "கடந்த 24 மணி நேரத்தில், பனி அளவிடப்பட்டது %@ செ. மீ. மற்றும் மழை %d மி.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "எ. என். இ.";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "மிமீ";
+"UnitCentimeter" = "செ. மீ.";
+
+/* common labels */
+"PrecipitationTotals_Title" = "மழைப்பொழிவு மொத்த";
+"Last24h_Label"             = "கடந்த 24 மணிநேரம்";
+"Next24h_Label"             = "அடுத்த 24 மணி நேரம்";
+"Total_Label"               = "மொத்த";
+"Precipitation_Label"       = "மழை";
+"Rain_Label"                = "மழை";
+"Snow_Label"                = "பனி";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "காற்று தற்போது %1$d %2$@ இருந்து %3$@இன்று, காற்று வேகம் %4$d க்கு %5$d %2$@, வரை துடிப்புகளுடன் %6$d %2$@. .";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "காற்று வேகம் %1$d க்கு %2$d %3$@, வரை துடிப்புகளுடன் %4$d %3$@. .";
+
+"Beaufort_Scale"                = "பீஃபோர்ட் அளவீடு";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "விவரக்குறிப்பு";
+"Beaufort_Column_kmh" = "கிமீ/மணி";
+"Beaufort_0"                    = "அமைதியாக இருங்கள்";
+"Beaufort_1"                    = "ஒளி காற்று";
+"Beaufort_2"                    = "ஒளி காற்று";
+"Beaufort_3"                    = "மென்மையான காற்று";
+"Beaufort_4"                    = "மிதமான காற்று";
+"Beaufort_5"                    = "புதிய காற்று";
+"Beaufort_6"                    = "வலுவான காற்று";
+"Beaufort_7"                    = "வலுவான காற்று";
+"Beaufort_8"                    = "கேல்";
+"Beaufort_9"                    = "வலுவான புயல்";
+"Beaufort_10"                   = "புயல்";
+"Beaufort_11"                   = "வன்முறை புயல்";
+"Beaufort_12"                   = "சூறாவளி சக்தி";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "இருந்தன %.1f%@ கடந்த 24 மணி நேரத்தில் பெய்த மழைகளின் எண்ணிக்கை. %.1f%@அடுத்த 24 மணி நேரத்தில், %.1f%@ மழை பெய்யும் என எதிர்பார்க்கப்படுகிறது.";
+"ForecastPrecip_OtherDayFormat" = "மீது %@, மொத்த மழை பெய்யும் %.1f%@. .";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "மழை பெய்யும் அளவு பற்றி";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "முன்னறிவிப்பு";
+"DailySummary_Title"           = "தினசரி சுருக்கம்";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "ஈழத்தின் புள்ளி %d° to %d°.";
+"DewPoint_FutureFormat"        = "சாய் புள்ளி இருக்கும் %d° to %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "இன்று, சராசரி ஈரப்பதம் %d%%. . %@";
+"ForecastHumidity_Other"       = "மீது %@, சராசரி ஈரப்பதம் இருக்கும் %d%%. .\n%@";
+
+"AboutPressure_Title"  = "அழுத்தம் பற்றி";
+"AboutPressure_Body"   = "வானிலை மாற்றங்களை முன்னறிவிக்க அழுத்தத்தில் குறிப்பிடத்தக்க, விரைவான மாற்றங்கள் பயன்படுத்தப்படுகின்றன. உதாரணமாக, அழுத்தத்தில் வீழ்ச்சி மழை அல்லது பனி வருவதைக் குறிக்கும், மேலும் அழுத்தம் அதிகரிப்பது வானிலை மேம்படும் என்று குறிக்கும். அழுத்தம் பாரோமெட்ரிக் அழுத்தம் அல்லது வளிமண்டல அழுத்தம் என்றும் அழைக்கப்படுகிறது.";
+
+"AboutHumidity_Title"  = "உறவினர் ஈரப்பதத்தைப் பற்றி";
+"AboutHumidity_Body"   = "ஈரப்பதம் என்பது காற்றில் உள்ள ஈரப்பதத்தின் அளவு ஆகும்.% mஅங்கு சாய் அல்லது மூடுபனி இருக்கலாம்.";
+
+"AboutDewPoint_Title" = "டூ பாயிண்ட் பற்றி";
+"AboutDewPoint_Body"  = "ஈரப்பத புள்ளி என்பது ஈரப்பதமாக உருவாகும் அளவுக்கு வெப்பநிலை வீழ்ச்சியடைய வேண்டும். இது காற்றின் ஈரப்பத உணர்வைக் கண்டறிய ஒரு பயனுள்ள வழியாக இருக்கலாம். ஈரப்பத புள்ளி எவ்வளவு உயர்ந்ததாக இருக்கும், அது ஈரப்பத உணர்வை அதிகரிக்கும். தற்போதைய வெப்பநிலையுடன் பொருந்தும் ஈரப்பத புள்ளி என்பது ஒப்பீட்டளவில் ஈரப்பதம் 100% ஆகும், மேலும் ஈர அல்லது மூடுபனி இருக்கலாம்.";
+
+"Section_Forecast"                     = "முன்னறிவிப்பு";
+"Section_DailySummary"                 = "தினசரி சுருக்கம்";
+"ForecastVisibility_TodayFormat" = "இன்று, தெரிவுநிலை %@, %d க்கு %d %@. .";
+"ForecastVisibility_OtherFormat" = "மீது %@, மிகக் குறைந்த தெரிவுநிலை இருக்கும் %@ அ %d %@, மேலும் மிக உயர்ந்தவர் %@ அ %d %@. .";
+"Clarity_Foggy"                        = "புகை";
+"Clarity_Hazy"                         = "மூடுபனி";
+"Clarity_Clear"                        = "தெளிவு";
+"Clarity_PerfectlyClear"               = "முற்றிலும் தெளிவாக";
+
+"AboutVisibility_Title" = "தெரிவுநிலை பற்றி";
+"AboutVisibility_Body" = "காற்று வெளிப்படைத்தன்மையைக் குறிக்கும் வகையில், சூரிய ஒளி அளவு அல்லது தடைகள் இருப்பதைக் கருத்தில் கொள்ளாமல், கட்டிடங்கள் மற்றும் மலைகள் போன்ற பொருட்களை எவ்வளவு தூரம் தெளிவாகக் காண முடியும் என்பதைக் குறிக்கிறது. %@ தெளிவாக கருதப்படுகிறது.";
+
+"PressureForecast_Today" = "தற்போது அழுத்தம் %@ %@ இன்று, சராசரி அழுத்தம் %@ %@, மற்றும் குறைந்த அழுத்தம் இருக்கும் %@ %@. .";
+"PressureForecast_Other" = "மீது %@, சராசரி அழுத்தம் இருக்கும் %@ %@, மற்றும் குறைந்த அழுத்தம் இருக்கும் %@ %@. .";
+"SectionForecast" = "முன்னறிவிப்பு";
+"SectionDailySummary" = "தினசரி சுருக்கம்";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "அடிப்படை திட்டத்தின் அனைத்து அம்சங்களும்";
+"Multi-calendar view" = "பல காலண்டர் காட்சி";
+"Sync with Google Calendar" = "உடன் ஒத்திசைவு Google Calendar";
+"Sync meets from Google Meet" = "ஒத்திசைவு சந்திக்கிறது Google சந்திக்க";
+
+/* BaseSubscriptionView */
+"Base Plan" = "அடிப்படை திட்டம்";
+"Single-day calendar view" = "ஒற்றை நாள் காலண்டர் காட்சி";
+"Multi-day calendar view" = "பல நாள் காலண்டர் காட்சி";
+"Monthly calendar view" = "மாதாந்திர காலண்டர் காட்சி";
+"Yearly overview" = "ஆண்டுதோறும் கணக்கெடுப்பு";
+"List view for events" = "நிகழ்வுகளின் பட்டியல் காட்சி";
+"Weather view" = "வானிலை காட்சி";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "பிரீமியம் திட்டம்";
+"Sync with Microsoft Calendar" = "உடன் ஒத்திசைவு Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "ஒத்திசைவு சந்திக்கிறது Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "சமமான %@ மாதத்திற்கு";
+"%d %@ free" = "%d %@ இலவசம்";
+
+/* SubscriptionListView */
+"Premium Plans" = "பிரீமியம் திட்டங்கள்";
+"You are subscribed to the %@ %@ plan" = "நீங்கள் %@ %@ திட்டம்";
+"Renews on: %@" = "புதுப்பிக்கிறதுஃ %@";
+"Start Free Trial" = "இலவச சோதனை தொடங்குங்கள்";
+"Subscribe Now" = "இப்போது பதிவு செய்யுங்கள்";
+"%d %@ free, then %@%@." = "%d %@ இலவச, பின்னர் %@%@. .";
+"Subscribe for %@%@." = "பதிவு செய்யவும் %@%@. .";
+"Privacy Policy"     = "தனியுரிமைக் கொள்கை";
+"Terms of Service"   = "சேவை விதிமுறைகள்";
+
+/* SubscriptionCategory */
+"Advanced" = "மேம்பட்ட";
+"Advanced Plan" = "மேம்பட்ட திட்டம்";
+"All Advanced Plan features" = "அனைத்து மேம்பட்ட திட்ட அம்சங்களும்";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "நீங்கள் ஒரு செயலில் வேண்டும் %@ இந்த பிரிவில் அணுக திட்டமிடுங்கள்.";
+"Plan Required" = "திட்டமிடல் தேவை";
+"OK" = "சரி";
+
+/* SubscriptionStatus */
+"Base"    = "அடிப்படை";
+"Premium" = "பிரீமியம்";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "கையொப்பமிடப்பட்ட %@ %@ திட்டம்.";
+
+/* Label for renewal date */
+"RenewsOn"            = "புதுப்பிக்கிறதுஃ %@";
+
+"Manage Subscription"                   = "பதிவுகளை நிர்வகித்தல்";
+
+/* Period units */
+"Daily"     = "தினசரி";
+"Weekly"    = "வாரந்தோறும்";
+"Monthly"   = "மாதத்திற்கு";
+"Yearly"    = "ஆண்டுதோறும்";
+"Recurring" = "மீண்டும் மீண்டும்";
+
+/* units */
+"day"   = "நாள்";
+"days"  = "நாட்கள்";
+"week"  = "வாரம்";
+"weeks" = "வாரங்கள்";
+"month"  = "மாதம்";
+"months" = "மாதங்கள்";
+"year"   = "ஆண்டு";
+"years"  = "ஆண்டுகள்";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S,M,T,W,T,F,S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "கிமீ/மணி";
+"Unit_Speed_mph" = "மைல்";
+"Unit_Distance_km" = "கிமீ";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "மிமீ";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "உங்கள் முந்தைய கொள்முதல் வெற்றிகரமாக மீட்டெடுக்கப்பட்டது.";
+"No active subscriptions found to restore."                = "மீட்டெடுக்கப்பட்ட செயலில் உள்ள சந்தாக்கள் எதுவும் இல்லை.";
+"Failed to restore purchases. Please try again later. (%@)" = "வாங்கியவற்றை மீட்டெடுக்க முடியவில்லை. தயவுசெய்து பின்னர் மீண்டும் முயற்சிக்கவும்.%@)";
+"Restore Purchases"                                        = "கொள்முதல் மீட்டெடுப்பு";
+
+"Ads Free" = "விளம்பரங்கள் இலவசம்";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "காலண்டர் & வானிலை";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "சிறிய காட்சிகள் இன்றைய தேதி மற்றும் தற்போதைய வானிலை.";
+"Calendar Events" = "காலண்டர் நிகழ்வுகள்";
+"Shows today's date, current weather, and your next calendar events." = "இன்றைய தேதி, தற்போதைய வானிலை, மற்றும் உங்கள் அடுத்த காலண்டர் நிகழ்வுகள் காட்டுகிறது.";
+"No upcoming events" = "இனி நிகழும் நிகழ்வுகள் இல்லை";
+"Tomorrow" = "நாளை";
+"Untitled" = "பெயரிடப்படாதது";
+"Detail" = "விவரம்";
+"Phase" = "கட்டம்";
+"Weather" = "வானிலை";
+"Select Your Email" = "உங்கள் மின்னஞ்சலைத் தேர்ந்தெடுக்கவும்";
+"Confirm" = "உறுதிப்படுத்தவும்";
+"Calendar name" = "காலண்டர் பெயர்";
+"Sharing: %@" = "பகிர்வுஃ %@";
+"Loading..." = "ஏற்றல்.";
+"Selected Location" = "தேர்ந்தெடுக்கப்பட்ட இடம்";
+"Data provided by Apple Weather" = "ஆப்பிள் வானிலை நிறுவனம் வழங்கிய தரவு";
+"Next" = "அடுத்தது";
+"No details found for the selected location." = "தேர்ந்தெடுக்கப்பட்ட இடத்திற்கு எந்த விவரங்களும் காணப்படவில்லை.";
+"Could not determine the time zone for the selected location." = "தேர்ந்தெடுக்கப்பட்ட இடத்திற்கான நேர மண்டலத்தை தீர்மானிக்க முடியவில்லை.";
+"(No Title)" = "(தலைப்பு இல்லை)";
+"Choose your e-mail" = "உங்கள் மின்னஞ்சலைத் தேர்ந்தெடுக்கவும்";
+"It will be treated as your primary address and invitations will not be sent to it." = "இது உங்கள் முதன்மை முகவரியாகக் கருதப்படும், மேலும் அழைப்பிதழ்கள் அதற்கு அனுப்பப்படாது.";
+"Invalid URL" = "செல்லுபடியற்ற URL";
+"Rate limit or insufficient permission" = "விகித வரம்பு அல்லது போதுமான அனுமதி இல்லை";
+"Network error: %@" = "நெட்வொர்க் தவறுஃ %@";
+"N/A - Selected Tab: %@" = "N/A - தேர்ந்தெடுக்கப்பட்ட தாள்ஃ %@";
+"Enable Notifications" = "அறிவிப்புகளை இயக்குதல்";
+"Event Notifications" = "நிகழ்வு அறிவிப்புகள்";
+"Weather Alert Notifications" = "வானிலை எச்சரிக்கை அறிவிப்புகள்";
+"Allow notifications so weather alerts can appear." = "வானிலை எச்சரிக்கைகள் தோன்றும்படி அறிவிப்புகளை அனுமதிக்கவும்.";
+"Event alerts are scheduled from your event alert settings." = "நிகழ்வு எச்சரிக்கைகள் உங்கள் நிகழ்வு எச்சரிக்கை அமைப்புகளில் இருந்து திட்டமிடப்பட்டுள்ளன.";
+"Allow notifications so event alerts can appear at the right time." = "நிகழ்வு எச்சரிக்கைகள் சரியான நேரத்தில் தோன்றும்படி அறிவிப்புகளை அனுமதிக்கவும்.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "இந்த பயன்பாட்டிற்கான அறிவிப்புகள் முடக்கப்பட்டுள்ளன. அவற்றை இயக்குவதற்குஃ அமைப்புகள் -> பயன்பாடுகள் -> Cloud Calendars -> அறிவிப்புகள் -> அறிவிப்புகளை அனுமதிக்கவும்.";
+"Promo.WiseEating.name" = "உணவைப் பற்றிய விவேகமும் உடற்பயிற்சி திட்டமும்";
+"Promo.WiseEating.description" = "விஸ் எட்டிங் என்பது உங்கள் AI- இயங்கும் பயிற்சியாளர், புத்திசாலித்தனமான ஊட்டச்சத்து மற்றும் பயிற்சிக்காக. இது நவீன ஊட்டச்சத்து அறிவியலை நடைமுறை கருவிகளுடன் இணைக்கிறது, இது உணவுகளை திட்டமிடவும், பயிற்சிகளை வடிவமைக்கவும், உங்கள் அலமாரியை நிர்வகிக்கவும், உணவு மற்றும் இயக்கங்கள் உங்கள் உடலை எவ்வாறு பாதிக்கின்றன என்பதைப் புரிந்துகொள்ளவும் உதவுகிறது.";
+"Promo.StoreFront.name" = "StoreFront ஸ்டுடியோ";
+"Promo.StoreFront.description" = "StoreFront Studio என்பது iOS மற்றும் macOS டெவலப்பர்களுக்கான உயர் தரமான 3D வடிவமைப்பு சூழலாகும். இது உயர் விசுவாசமான RealityKit ரெண்டரிங்கை சக்திவாய்ந்த Rich Text ஆசிரியருடன் இணைத்து மூல திரையுலகைகளை தொழில்முறை, உயர் மாற்றும் App Store சொத்துக்களாக மாற்ற உதவுகிறது.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio என்பது iOS மற்றும் macOS க்கான படைப்பாளர் தர திரை பதிவு ஸ்டுடியோ ஆகும். உங்கள் திரை மற்றும் கேமராவை ஒரே நேரத்தில் கைப்பற்றவும், மைக் + சிஸ்டம் ஆடியோவைக் கட்டுப்படுத்தவும், பயிற்சிகள், நடைமுறைகள் மற்றும் தயாரிப்பு டெமோக்களுக்கான சுத்தமான MP4 களை ஏற்றுமதி செய்யவும். iOS இல், நீங்கள் பயன்பாட்டின் உள்ளே ஒரு வீடியோவை இயக்கலாம் மற்றும் உங்கள் கேமராவுடன் சேர்ந்து பதிவிறக்கம் செய்யலாம்.";
+"Promo.MarketBrief.name" = "சந்தை விளக்கமளிப்பு AI";
+"Promo.MarketBrief.description" = "MarketBrief AI சாதனத்தில் உள்ள பகுப்பாய்வு மற்றும் சத்தத்திலிருந்து சமிக்ஞையை பிரிப்பதற்காக வடிவமைக்கப்பட்ட பல முகவர் பணிப்பாய்வு மூலம் சந்தை இயக்கத்தை புரிந்துகொள்ள உதவுகிறது. நிகழ்நேர விலை தரவைக் கண்காணிக்கவும், ஆட்சி பாணியில் நிகழ்தகவுகளை ஆராயவும், உங்கள் முடிவெடுப்புக்கு உதவும் தெளிவான டாஷ்போர்டுகள் மற்றும் வரைபடங்களைப் பயன்படுத்தவும். தனியுரிமை-முதலில்ஃ உங்கள் உள்ளமைவுகள் உங்கள் சாதனத்தில் தங்கும்.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "பயன்பாடுகள்";
+"Plan" = "திட்டம்";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "பனிப்பொழிவு";
+"WeatherCondition.blowingDust" = "தூசி";
+"WeatherCondition.blowingSnow" = "பனி வீசுதல்";
+"WeatherCondition.breezy" = "புத்துணர்ச்சி";
+"WeatherCondition.clear" = "தெளிவு";
+"WeatherCondition.cloudy" = "மேகமூட்டமான";
+"WeatherCondition.drizzle" = "குளிர்விப்பு";
+"WeatherCondition.flurries" = "சரளங்கள்";
+"WeatherCondition.foggy" = "மூடுபனி";
+"WeatherCondition.freezingDrizzle" = "குளிர்விக்கும் தரைசல்";
+"WeatherCondition.freezingRain" = "மழை";
+"WeatherCondition.frigid" = "குளிர்";
+"WeatherCondition.hail" = "ஹலோ";
+"WeatherCondition.haze" = "மூடுபனி";
+"WeatherCondition.heavyRain" = "கனமழை";
+"WeatherCondition.heavySnow" = "கனமான பனி";
+"WeatherCondition.hot" = "சூடான";
+"WeatherCondition.hurricane" = "சூறாவளி";
+"WeatherCondition.isolatedThunderstorms" = "தனிமைப்படுத்தப்பட்ட இடி புயல்கள்";
+"WeatherCondition.mostlyClear" = "பெரும்பாலும் தெளிவாக";
+"WeatherCondition.mostlyCloudy" = "பெரும்பாலும் மேகமூட்டமான";
+"WeatherCondition.partlyCloudy" = "ஒரு பகுதியாக மேகமூட்டமாக";
+"WeatherCondition.rain" = "மழை";
+"WeatherCondition.scatteredThunderstorms" = "பரவலான இடி புயல்கள்";
+"WeatherCondition.sleet" = "சைவ";
+"WeatherCondition.smoky" = "புகை";
+"WeatherCondition.snow" = "பனி";
+"WeatherCondition.strongStorms" = "கடுமையான இடி புயல்";
+"WeatherCondition.sunFlurries" = "சூரியன் புழுக்கள்";
+"WeatherCondition.sunShowers" = "சூரியன் மழை";
+"WeatherCondition.thunderstorms" = "இடி புயல்";
+"WeatherCondition.tropicalStorm" = "வெப்பமண்டல புயல்";
+"WeatherCondition.windy" = "காற்று";
+"WeatherCondition.wintryMix" = "குளிர்கால கலவையானது";
+"MoonPhase.new" = "புத்தாண்டு";
+"MoonPhase.waxingCrescent" = "செம்பாசி கிராசிங்";
+"MoonPhase.firstQuarter" = "முதல் காலாண்டு";
+"MoonPhase.waxingGibbous" = "க்யூப்ஸ் க்யூப்ஸ்";
+"MoonPhase.full" = "முழு நிலவு";
+"MoonPhase.waningGibbous" = "மங்கிவரும் கிப்புஸ்";
+"MoonPhase.lastQuarter" = "கடைசி காலாண்டு";
+"MoonPhase.waningCrescent" = "மங்கிவரும் அரைமாதம்";
+"WeatherAlert.Preview.Tornado" = "புயல் எச்சரிக்கைஃ உடனடியாக பாதுகாப்பான தங்குமிடம் தேடுங்கள்.";
+"WeatherAlert.Preview.Source" = "வானிலை சேவை";
+"WeatherAlert.Preview.Region" = "முன்னறிவிப்பு பகுதி";
+"Saved Regions" = "மீட்புப் பகுதிகள்";
+"Current Location" = "தற்போதைய இடம்";
+"Reorder Region" = "மறுசீரமைப்பு பகுதி";
+"WeatherAlert.Preview.HighTemperature" = "உயர் வெப்பநிலைக்கு மஞ்சள் எச்சரிக்கை";
+"Illumination" = "விளக்கு";
+"Shared event" = "பகிரப்பட்ட நிகழ்வு";
+"Add to Calendar" = "காலண்டரில் சேர்க்கவும்";
+"Event added" = "நிகழ்வு சேர்க்கப்பட்டது";
+"Already in your calendar" = "ஏற்கனவே உங்கள் காலண்டரில்";
+"Unable to add event" = "நிகழ்வு சேர்க்க முடியவில்லை";
+"Calendar Access Required" = "காலண்டர் அணுகல் தேவை";
+"Allow calendar access in Settings to add this event." = "இந்த நிகழ்வை சேர்க்க அமைப்புகள் இல் காலண்டர் அணுகலை அனுமதிக்கிறது.";
+"Open Settings" = "திறந்த அமைப்புகள்";
+"Adding…" = "சேர்க்கிறது.";
+"Couldn’t find a writable calendar." = "எழுதக்கூடிய காலண்டர் கண்டுபிடிக்க முடியவில்லை.";
+"Please try again." = "தயவு செய்து மீண்டும் முயற்சிக்கவும்.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "திட்டத்தை மாற்றவும்";
+"Current Plan" = "தற்போதைய திட்டம்";
+"You can change your plan or billing period at any time." = "நீங்கள் எந்த நேரத்திலும் உங்கள் திட்டத்தை அல்லது கட்டணக் காலத்தை மாற்றலாம்.";
+"Invites" = "அழைப்பிதழ்கள்";
+"Cancelled" = "ரத்து செய்யப்பட்டது";
+"Shared by me" = "நான் பகிர்ந்து";
+"Shared with me" = "என்னுடன் பகிர்ந்து";
+"No shared events yet." = "இதுவரை பகிரப்பட்ட நிகழ்வுகள் இல்லை.";
+"No one has shared an event with you yet." = "உங்களுடன் இதுவரை யாரும் ஒரு நிகழ்வை பகிர்ந்து கொள்ளவில்லை.";
+"Events you send from the share sheet appear here." = "பங்குச் சீட்டில் இருந்து நீங்கள் அனுப்பிய நிகழ்வுகள் இங்கே தோன்றும்.";
+"Invitations go to" = "அழைப்பிதழ்கள் செல்ல";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "நீங்கள் ஏற்றுக்கொள்ளும் அழைப்புகள் இங்கே சேர்க்கப்பட்டு புதுப்பிக்கப்படுகின்றன. அனுப்புநர் அழைப்பைத் தள்ளுபடியினால், அது வழியாக ஒரு கோடுடன் தெரியும்.";
+"Sample shared event" = "மாதிரி பகிரப்பட்ட நிகழ்வு";
+"Sofia" = "சோபியா";
+"Team lunch" = "குழு மதிய உணவு";
+
+/* Booking */
+"Booking page" = "முன்பதிவு பக்கம்";
+"Your name" = "உங்கள் பெயர்";
+"Display name" = "காட்சி பெயர்";
+"Source calendar" = "மூல காலண்டர்";
+"Booked meetings land here, and your busy times here block new bookings." = "முன்பதிவு செய்யப்பட்ட கூட்டங்கள் இங்கு வருகின்றன, உங்கள் பிஸியான நேரங்கள் புதிய முன்பதிவுகளை தடுக்கின்றன.";
+"Meeting types" = "கூட்ட வகைகள்";
+"%lld min" = "%lld நிமிடம்";
+"Add meeting type" = "கூட்ட வகை சேர்க்கவும்";
+"Weekly hours" = "வார வேலை நேரம்";
+"Save booking page" = "முன்பதிவு பக்கத்தை சேமிக்கவும்";
+"Your booking page is live" = "உங்கள் முன்பதிவு பக்கம் நேரடி";
+"Share this link — anyone can book one of your open times." = "இந்த இணைப்பை பகிர்ந்து கொள்ளுங்கள்  உங்கள் திறந்த நேரங்களில் ஒன்றை எவரும் பதிவு செய்யலாம்.";
+"Share link" = "பகிர்வு இணைப்பு";
+"Edit settings" = "அமைப்புகள் திருத்தவும்";
+"Add at least one meeting type." = "குறைந்தது ஒரு கூட்ட வகை சேர்க்கவும்.";
+"Turn on at least one day with valid hours." = "குறைந்தபட்சம் ஒரு நாளைக்கு செல்லுபடியாகும் நேரத்துடன் இயக்கவும்.";
+"Set up a booking page" = "ஒரு முன்பதிவு பக்கத்தை அமைக்கவும்";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "உங்கள் திறந்த நேரங்களை மக்கள் பதிவு செய்யட்டும். நீங்கள் தேர்ந்தெடுத்த காலண்டரில் கூட்டங்கள் அமைந்துவிடும், உங்கள் பிஸியான நேரங்களில் அந்த இடங்களை இலவசமாக வைத்திருங்கள்.";
+"Approve on this device" = "இந்த சாதனத்தில் ஒப்புதல்";
+"Set up web booking" = "இணையத்தில் முன்பதிவு செய்யவும்";
+"You're all set" = "நீங்கள் தயாராக உள்ளன";
+"Couldn't approve" = "ஒப்புதல் அளிக்க முடியவில்லை";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "இந்த உலாவியை உங்கள் காலண்டருடன் இணைக்க ஒப்புதல் அளிக்கவும், இதன் மூலம் இணையத்தில்  இலவசமாக முன்பதிவு பக்கத்தை உருவாக்க முடியும், ஏனெனில் உங்களிடம் பயன்பாடு உள்ளது.";
+"Linking…" = "இணைப்பு.";
+"Head back to your browser — it's ready to finish setting up your booking page." = "உங்கள் உலாவிக்குத் திரும்புங்கள்  உங்கள் முன்பதிவு பக்கத்தை அமைக்க முடிந்தது.";
+"The code may have expired. Reopen the QR on the web and try again." = "குறியீடு காலாவதியாகியிருக்கலாம். QR இணையத்தில் மற்றும் மீண்டும் முயற்சி.";
+"Read-only shared event" = "வாசிப்பு மட்டும் பகிரப்பட்ட நிகழ்வு";
+"Remove from My Calendar" = "என் காலண்டரில் இருந்து நீக்கவும்";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars கணக்கு";
+"App Clip sharing account" = "App Clip பகிர்வு கணக்கு";
+"Required for synced App Clip events and recovery after reinstalling." = "ஒத்திசைக்கத் தேவையானது App Clip நிகழ்வுகள் மற்றும் மீட்பு மறு நிறுவல் பிறகு.";
+"Continue with Google" = "தொடரவும் Google";
+"Sign Out" = "பதிவு செய்யுங்கள்";
+"Signing in…" = "பதிவு செய்யுங்கள்.";
+"Sign In" = "பதிவு செய்யவும்";
+"Sign in to continue" = "தொடர பதிவு செய்யவும்";
+"Your account keeps this shared event recoverable after reinstalling the app." = "உங்கள் கணக்கு பயன்பாட்டை மீண்டும் நிறுவிய பிறகு இந்த பகிரப்பட்ட நிகழ்வை மீட்டெடுக்க முடியும்.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "இந்த கணக்கு சொந்தமானது App Clip பகிரப்பட்டு அவற்றை மீண்டும் நிறுவிய பிறகு மீட்டெடுக்கிறது. இது காலண்டர் வழங்குநரின் உள்நுழைவுகளிலிருந்து தனித்தனியாக உள்ளது.";
+"Sign in with Google or Apple to share and receive synced events." = "பதிவு செய்யவும் Google அல்லது ஆப்பிள் பகிர மற்றும் ஒத்திசைக்கப்பட்ட நிகழ்வுகளை பெற.";
+"Apple did not return an identity token." = "ஆப்பிள் ஒரு அடையாள அடையாள அடையாளத்தை திருப்பித் தரவில்லை.";
+"Unable to share event" = "நிகழ்வை பகிர்ந்து கொள்ள முடியவில்லை";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "நிகழ்வு உங்கள் சேமிக்க முடியவில்லை Cloud Calendars கணக்கு. தயவு செய்து மீண்டும் முயற்சிக்கவும்.";
+"Google" = "Google";
+"Apple" = "ஆப்பிள்";
+"Microsoft" = "Microsoft";
+"Connect" = "இணைக்கவும்";
+"Connected" = "இணைப்பு";
+"Sign in with at least one account" = "குறைந்தது ஒரு கணக்கில் பதிவு செய்யவும்";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "இணைக்கவும் Google, ஆப்பிள், Microsoftஒவ்வொரு இணைக்கப்பட்ட அடையாளமும், அதே பகிரப்பட்ட நிகழ்வு கணக்கைத் திறக்கிறது.";
+"A Premium subscription is required to connect Microsoft." = "இணைக்க ஒரு பிரீமியம் சந்தா தேவைப்படுகிறது Microsoft. .";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "இந்த அடையாளங்கள் மட்டுமே App Clip பகிர்தல் மற்றும் மீட்பு. அவை காலண்டர் வழங்குநரின் உள்நுழைவு மற்றும் ஒத்திசைவு ஆகியவற்றிலிருந்து தனித்தனியாகவே உள்ளன.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "பதிவு செய்யவும் Google, ஆப்பிள், அல்லது Microsoft ஒத்திசைக்கப்பட்ட நிகழ்வுகளை பகிர்ந்துகொள்வதற்கும் பெறுவதற்கும்.";
+"Share a verified email during sign-in to use synced events and invitations." = "பதிவுபெறும் போது ஒரு சரிபார்க்கப்பட்ட மின்னஞ்சலை பகிரவும், ஒத்திசைக்கப்பட்ட நிகழ்வுகள் மற்றும் அழைப்பிதழ்களைப் பயன்படுத்தவும்.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "பதிவு செய்யும் போது நீங்கள் ஒரு சரிபார்க்கப்பட்ட மின்னஞ்சலைப் பகிர வேண்டும். மக்கள் அதைப் பயன்படுத்தி உங்களை காலண்டர்கள் மற்றும் நிகழ்வுகளுக்கு அழைப்பார்கள்.";
+"Manage connected accounts" = "இணைக்கப்பட்ட கணக்குகளை நிர்வகித்தல்";
+"Apple, Google, and Microsoft" = "ஆப்பிள், Google, மற்றும் Microsoft";
+"Open account sign-in" = "கணக்கைத் திறந்து பதிவு செய்யவும்";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "உரிமையாளர் வழங்கிய அணுகலைப் பகிர, மீட்டெடுக்க அல்லது பயன்படுத்த சரிபார்க்கப்பட்ட மின்னஞ்சல் தேவை.";
+"Accept" = "ஏற்றுக்கொள்ளுங்கள்";
+"Access removed" = "அணுகல் நீக்கப்பட்டது";
+"Add a Mail account on this device, then try again." = "இந்த சாதனத்தில் ஒரு மின்னஞ்சல் கணக்கைச் சேர்க்கவும், பின்னர் மீண்டும் முயற்சிக்கவும்.";
+"Add a writable calendar before moving this event." = "இந்த நிகழ்வை நகர்த்தும் முன் ஒரு எழுதக்கூடிய காலண்டரைச் சேர்க்கவும்.";
+"Add everyone who should receive this calendar and choose their access." = "இந்த காலண்டரைப் பெற வேண்டிய அனைவரையும் சேர்த்து, அவர்களது அணுகலைத் தேர்ந்தெடுக்கவும்.";
+"Add everyone who should receive this event and choose their access." = "இந்த நிகழ்வைப் பெற வேண்டிய அனைவரையும் சேர்த்து, அவர்களது அணுகலைத் தேர்ந்தெடுக்கவும்.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "சேவ் பிறகு, %@ அவர்களின் உள்ளூர் பிரதி ஒரு வரி மூலம் மட்டுமே படிக்கப்படும்.";
+"Anonymous recipient" = "அநாமதேய பெறுநர்";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "ஆப்பிள் மின்னஞ்சல் திருப்பி அனுப்பவில்லை. அமைப்புகள், பயன்பாட்டை நிறுத்தவும் Cloud Calendars, பின்னர் மீண்டும் இணைக்கவும் மற்றும் என் மின்னஞ்சல் பகிர்ந்து கொள்ளவும் என்பதைத் தேர்ந்தெடுக்கவும்.";
+"Calendar invitation" = "காலண்டர் அழைப்பு";
+"Cancel for Everyone" = "அனைவருக்கும் ரத்து செய்யுங்கள்";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "வாசகர், எழுத்தாளர் அல்லது உரிமையாளரைத் தேர்ந்தெடுக்கவும். உரிமையாளர்கள் இந்த நிகழ்வைப் பகிரலாம் மற்றும் அணுகலை நிர்வகிக்கலாம்.";
+"Choose how to share this synced event." = "இந்த ஒத்திசைக்கப்பட்ட நிகழ்வை எவ்வாறு பகிர்வது என்பதைத் தேர்ந்தெடுக்கவும்.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars இந்த சாதனத்தில் அமர்வு சேமிக்க முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.";
+"Cloud Calendars user" = "Cloud Calendars பயனர்";
+"Could not add: %@." = "சேர்க்க முடியவில்லைஃ %@. .";
+"Custom on this device" = "இந்த சாதனத்தில் தனிப்பயன்";
+"Decline" = "குறைவு";
+"Default from creator" = "படைப்பாளரின் இயல்புநிலை";
+"Deleted by owner" = "உரிமையாளர் நீக்கியது";
+"Each email address can appear only once." = "ஒவ்வொரு மின்னஞ்சல் முகவரியும் ஒரு முறை மட்டுமே தோன்றும்.";
+"Enter a valid email address for %@." = "ஒரு செல்லுபடியாகும் மின்னஞ்சல் முகவரியை உள்ளிடவும் %@. .";
+"From %@" = "இருந்து %@";
+"Invitation pending" = "அழைப்பு நிலுவையில் உள்ளது";
+"Loading shared calendars…" = "பகிரப்பட்ட காலண்டர்கள் ஏற்றும்...";
+"Mail is not configured" = "அஞ்சல் அமைக்கப்படவில்லை";
+"Manage calendar sharing" = "காலண்டர் பகிர்வு நிர்வகிக்கவும்";
+"New calendar invitation" = "புதிய காலண்டர் அழைப்பு";
+"New event invitation" = "புதிய நிகழ்வு அழைப்பிதழ்";
+"No calendars have been shared with you yet." = "உங்களுடன் இன்னும் எந்த காலண்டரும் பகிரப்படவில்லை.";
+"Open a shared event or calendar" = "பகிரப்பட்ட நிகழ்வு அல்லது காலண்டர் திறக்கவும்";
+"Open this event with Cloud Calendars:\n\n%@" = "இந்த நிகழ்வை திறக்க Cloud Calendars:\n\n%@";
+"Original creator" = "அசல் படைப்பாளர்";
+"People" = "மக்கள்";
+"People appear here after they add the event." = "நிகழ்வைச் சேர்த்த பிறகு மக்கள் இங்கு வருகிறார்கள்.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "A இடத்தை Cloud Calendars நிகழ்வு அல்லது காலண்டர் QR சட்டத்தின் உள்ளே குறியீடு.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "வாசகர் பார்வையிடவும் ஒத்திசைக்கவும் முடியும். எழுத்தாளர் திருத்தலாம். அழைக்கப்பட்ட மின்னஞ்சலுடன் உள்நுழைந்த பிறகு உரிமையாளர் அணுகலைப் பகிரலாம் மற்றும் நிர்வகிக்கலாம்.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "வாசகர் பார்க்க முடியும். எழுத்தாளர் நிகழ்வுகளைத் திருத்தலாம். உரிமையாளர் காலண்டரைப் பகிரலாம் மற்றும் அணுகலை நிர்வகிக்கலாம்.";
+"Remove" = "நீக்கவும்";
+"Remove Shared Calendar?" = "பகிரப்பட்ட காலண்டரை நீக்குதல்?";
+"Remove from My Calendars" = "என் காலண்டரிலிருந்து நீக்கவும்";
+"Resend" = "திருப்பி அனுப்பவும்";
+"Scan QR Code" = "ஸ்கேன் QR குறியீடு";
+"Scan to open this calendar" = "இந்த காலண்டரை திறக்க ஸ்கேன் செய்யவும்";
+"Scan to open this event" = "இந்த நிகழ்வைத் திறக்க ஸ்கேன் செய்யவும்";
+"Server returned %lld: %@" = "சேவையகம் திருப்பி %lld: %@";
+"Shared calendar" = "பகிரப்பட்ட காலண்டர்";
+"Shared calendar information" = "பகிரப்பட்ட காலண்டர் தகவல்";
+"Shared event: %@" = "பகிரப்பட்ட நிகழ்வுஃ %@";
+"Sign in or manage accounts" = "கணக்குகளை பதிவு செய்யவும் அல்லது நிர்வகிக்கவும்";
+"Sign in to manage event access." = "நிகழ்வு அணுகலை நிர்வகிக்க உள்நுழைக.";
+"Sign in to save event access." = "நிகழ்வு அணுகலை சேமிக்க உள்நுழைக.";
+"Sign in to see calendars shared with you." = "உங்களுடன் பகிரப்பட்ட காலண்டர்களைப் பார்க்க பதிவு செய்யுங்கள்.";
+"Sign-in couldn’t open. Please try again." = "பதிவு திறக்க முடியவில்லை. தயவு செய்து மீண்டும் முயற்சிக்கவும்.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "இந்த காலண்டரை பகிர்ந்து கொள்வதை நிறுத்து %@Save க்கு பிறகு, அவர்களின் உறைந்த பிரதி மற்றும் அதன் நிகழ்வுகள் அவற்றின் வழியாக ஒரு வரி மூலம் தெரியும்.";
+"The calendar and its events will be removed only from this device." = "காலண்டர் மற்றும் அதன் நிகழ்வுகள் இந்த சாதனத்திலிருந்து மட்டுமே அகற்றப்படும்.";
+"The provider didn’t return the information required to sign in." = "பதிவுபெறுவதற்கு தேவையான தகவல்களை வழங்குநர் திருப்பித் தரவில்லை.";
+"The provider returned an invalid response." = "வழங்குநர் தவறான பதிலைத் திருப்பித் தந்தார்.";
+"The sign-in response couldn’t be verified. Please try again." = "பதிவு செய்ததற்கு பதிலளிக்க முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.";
+"The sign-in response was invalid. Please try again." = "பதிவு செய்த பதில் செல்லாது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.";
+"This changes only your local copy. Shared event details stay read-only." = "இது உங்கள் உள்ளூர் பதிப்பை மட்டுமே மாற்றுகிறது. பகிரப்பட்ட நிகழ்வு விவரங்கள் வாசிப்பு மட்டுமே.";
+"This color changes only on this device." = "இந்த சாதனத்தில் மட்டுமே இந்த நிறம் மாறுகிறது.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "இந்த QR குறியீடு ஒரு Cloud Calendars நிகழ்வு அல்லது காலண்டர்.";
+"This QR code does not contain a Cloud Calendars share." = "இந்த QR குறியீடு ஒரு Cloud Calendars பகிர்ந்து கொள்ளுங்கள்.";
+"This removes only your local copy. Other people keep access." = "இது உங்கள் உள்ளூர் நகலை மட்டுமே நீக்குகிறது. மற்றவர்கள் அணுகலை வைத்திருக்கிறார்கள்.";
+"Try again" = "மீண்டும் முயற்சி செய்யுங்கள்";
+"Unable to Update Calendar" = "காலண்டரை புதுப்பிக்க முடியவில்லை";
+"Unable to add calendar" = "காலண்டர் சேர்க்க முடியவில்லை";
+"Unreadable response from the server" = "சேவையகத்திலிருந்து படிக்க முடியாத பதில்";
+"Use Apple, Google, or Microsoft." = "ஆப்பிள் பயன்படுத்தவும், Googleஅல்லது Microsoft. .";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "ஒரு கேமராவுடன் ஒரு சாதனத்தை பயன்படுத்தி Cloud Calendars QR குறியீடு.";
+"You can add up to 50 people at once." = "நீங்கள் ஒரே நேரத்தில் 50 பேர் வரை சேர்க்க முடியும்.";
+"You can send up to 50 invitations at once." = "நீங்கள் ஒரே நேரத்தில் 50 அழைப்பிதழ்களை அனுப்பலாம்.";
+"%lld connected account" = "%lld இணைக்கப்பட்ட கணக்கு";
+"%lld connected accounts" = "%lld இணைக்கப்பட்ட கணக்குகள்";
+"%lld pending invitation" = "%lld அழைப்புக்காக காத்திருக்கும்";
+"%lld pending invitations" = "%lld காத்திருக்கும் அழைப்புகள்";
+"%lld upcoming event" = "%lld எதிர்வரும் நிகழ்வு";
+"%lld upcoming events" = "%lld எதிர்வரும் நிகழ்வுகள்";
+"%@ invited you to %@" = "%@ உங்களை அழைத்து %@";

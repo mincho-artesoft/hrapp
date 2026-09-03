@@ -1,0 +1,13 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars ਆਪਣੇ ਸਮਾਗਮ ਨੂੰ ਏਕੀਕ੍ਰਿਤ ਕਰਨ ਲਈ ਕੈਲੰਡਰ ਪਹੁੰਚ ਦੀ ਲੋੜ ਹੈ iCloud, Google, ਅਤੇ Microsoft calendars, ਨਿਰਵਿਘਨ ਤਹਿ ਕਰਨ ਦੇ ਯੋਗ.";
+
+"NSContactsUsageDescription" = "Cloud Calendars ਇਵੈਂਟ ਸੱਦੇ ਨੂੰ ਸਰਲ ਬਣਾਉਣ ਅਤੇ ਭਾਗੀਦਾਰਾਂ ਦੇ ਵੇਰਵੇ ਅਸਾਨੀ ਨਾਲ ਪ੍ਰਬੰਧਿਤ ਕਰਨ ਲਈ ਤੁਹਾਡੇ ਸੰਪਰਕ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars ਐਪ ਬੰਦ ਹੋਣ 'ਤੇ ਵੀ ਤੁਹਾਡੇ ਸਥਾਨ ਤੱਕ ਪਹੁੰਚਦਾ ਹੈ, ਤੁਹਾਡੇ ਤਹਿ ਕੀਤੇ ਸਮਾਗਮਾਂ ਲਈ ਸਹੀ ਮੌਸਮ ਦੀ ਭਵਿੱਖਬਾਣੀ ਅਤੇ ਸਮੇਂ ਸਿਰ ਚੇਤਾਵਨੀ ਦਿੰਦਾ ਹੈ।";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars ਤੁਹਾਡੇ ਕੈਲੰਡਰ ਵਿੱਚ ਸਹੀ ਸਥਾਨਕ ਮੌਸਮ ਅਨੁਮਾਨਾਂ ਨੂੰ ਜੋੜਨ ਲਈ ਤੁਹਾਡੇ ਸਥਾਨ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ ਜਦੋਂ ਤੁਸੀਂ ਕਿਰਿਆਸ਼ੀਲ ਹੁੰਦੇ ਹੋ.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars ਆਪਣੇ ਸਮਾਗਮ ਨੂੰ ਏਕੀਕ੍ਰਿਤ ਕਰਨ ਲਈ ਕੈਲੰਡਰ ਪਹੁੰਚ ਦੀ ਲੋੜ ਹੈ iCloud, Google, ਅਤੇ Microsoft calendars, ਨਿਰਵਿਘਨ ਤਹਿ ਕਰਨ ਦੇ ਯੋਗ.";
+
+"NSCameraUsageDescription" = "ਸਾਂਝੇ ਕੀਤੇ ਇਵੈਂਟਾਂ ਅਤੇ ਕੈਲੰਡਰਾਂ ਦੇ QR ਕੋਡ ਸਕੈਨ ਕਰਨ ਲਈ Cloud Calendars ਕੈਮਰੇ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ।";

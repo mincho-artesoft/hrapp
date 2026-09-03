@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld dogodek";
+"%lld events" = "%lld dogodki";
+"Share Pop-up" = "Delovanje v vtisni";
+"Would you like to share this event?" = "Bi se rad delil s tem dogodkom?";
+"Don't ask again" = "Ne sprašuj več.";
+"No email was provided." = "Nobenega elektronskega sporočila ni bilo.";
+"Please enter a valid email to continue." = "Prosim, vnesite veljavno e-pošto.";
+"Your email" = "Vaš e-poštni naslov.";
+"Save" = "Prihrani";
+"Login" = "Vstop";
+"Logout" = "Izstop";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "Kalendari";
+"Inbox" = "Vnosna škatla";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Drugi";
+"Google calendars" = "Google calendars";
+"No synced Google calendars yet." = "Brez sinhronizacije Google calendarŠe vedno.";
+"Microsoft calendars" = "Microsoft calendars";
+"No synced Microsoft calendars yet." = "Brez sinhronizacije Microsoft calendarŠe vedno.";
+"Sign out" = "Podpisujte se.";
+"Add iCloud Calendar" = "Dodatek iCloud Kalendar";
+"Share calendars with iCloud Calendar" = "Skupaj s iCloud Kalendar";
+"Sign in with Google" = "Podpisujte se z: Google";
+"Sign in with Microsoft" = "Podpisujte se z: Microsoft";
+"Deselect All" = "Izbrišite vse";
+"Select All" = "Izberite vse";
+"No Email" = "Brez e-pošte";
+"Add Google Calendar" = "Dodatek Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "Ime koledarja";
+"Account" = "Račun";
+"COLOR" = "RABI";
+"NOTIFICATIONS" = "Družba";
+"Event Alerts" = "Opozoritve na dogodke";
+"Allow events on this calendar to display alerts." = "Dozvolite, da se dogodki v tem koledarju prikažejo.";
+"Add Calendar" = "Dodajte koledar";
+
+/* Colors */
+"Red" = "Rdeča";
+"Orange" = "Pomaranč";
+"Yellow" = "Žuto";
+"Green" = "Zelena";
+"Blue" = "Modra";
+"Purple" = "Fižolna";
+"Brown" = "Ronič";
+"Custom" = "Običajni";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Barva koledarja";
+"Custom..." = "Običajni...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Spremembe koledarja";
+"Delete Calendar" = "Izbrišite koledar";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Nadzor za deljenje...";
+"Shared with these users" = "Določena z njimi";
+"Add New Email" = "Dodajte novo e-pošto";
+"Email to share" = "E-poštna sporočila";
+"Permission:" = "Dovoljenje:";
+"Add" = "Dodatek";
+"Sharing:" = "Delitev:";
+"Done" = "Končana";
+
+"Error loading: %@" = "Napaka v naložitvi: %@";
+"Error adding: %@" = "Napaka pri dodajanju: %@";
+"Error deleting: %@" = "Izbriševanje napake: %@";
+"Error updating: %@" = "Napaka posodobitve: %@";
+"Error re-inviting (delete): %@" = "Napaka pri ponovnem povabljanju (izbrišitev): %@";
+"Error re-inviting (insert): %@" = "Napaka pri ponovnem povabljanju (vstaviti): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Čitatelj";
+"Writer" = "Pisec";
+"Owner"  = "Lastnik";
+
+/* MonthCalendarView */
+"Day View" = "Danovno razgled";
+"This is a repeating event." = "To se ponavlja.";
+"Save for This Event Only" = "Samo za ta dogodek.";
+"Save for Future Events" = "Prihrani za prihodnje dogodke";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Sonce";
+"Mon" = "Mon";
+"Tue" = "Tuje";
+"Wed" = "Poročena";
+"Thu" = "Thu";
+"Fri" = "V petek";
+"Sat" = "Sedišče";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Bližje";
+
+/* AllEventsListView */
+"No calendar access." = "Brez dostopa do koledarja.";
+
+/* EventRowView */
+"Ends" = "Končni";
+
+/* SearchEventRowView */
+"No Title" = "Brez naslova";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Pridružite se na sestanku";
+"Edit" = "Spremembe";
+"Duplicate" = "Dvojna";
+"Delete" = "Izbrišite";
+"Share" = "Delovanje";
+"Add to Google Meet" = "Dodaj Google Spoznaj me.";
+"Add to Microsoft Teams" = "Dodaj Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Brez izbranega obsega";
+"all-day" = "cel dan";
+"Search events..." = "Iskanje dogodkov...";
+"Day" = "Dan";
+"MultiDay" = "Več dni";
+"Month" = "Mesec";
+"Year" = "Letos";
+"List" = "Seznam";
+"MultiCalendar" = "Večkalendar";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Novi dogodek";
+"All-day event" = "Celodnevno dogodek";
+"Recurring Event" = "Ponavljajoče se dogodke";
+"This event is part of a series. Update which events?" = "To je del serije dogodkov.";
+"This Event Only" = "Samo ta dogodek";
+"All Future Events" = "Vse prihodnje dogodke";
+"Cancel" = "Odpoved";
+
+/* DraggableMenuView */
+"Calendar" = "Kalendar";
+"Subscriptions" = "Podpisovanje";
+"Settings" = "Nastavitve";
+"Sharing" = "Delitev";
+"Live" = "Živeti";
+"Stop" = "Nehaj.";
+"Calendar Live Activity" = "Aktivnost v živo v koledarju";
+"Get" = "Pridite.";
+"Color" = "Barva";
+"Search for a city…" = "Iščite mesto...";
+"No directions" = "Brez smerov";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "-Izgledajte mesto ali omogočite dostop v nastavitvah.";
+"Cannot refresh. Location unknown." = "Ne morem se osvežiti.";
+"10-DAY FORECAST" = "10 dni predhod";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "Jutri.";
+"on_day" = "na %@";
+"in_days" = "v %d dnevi";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Nov dogodek";
+
+/* Search placeholder */
+"Search for a city..." = "Iščite mesto...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Kliknite na uro, da hitro dodate dogodek v koledarju.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "Čutim se kot";
+"similar_to_actual_temp" = "Podobno temperaturi.";
+"wind_cooler_feel" = "Veter je hladnejši.";
+"humidity_warmer_feel" = "Vlažnost je toplejša.";
+
+/* HumidityCard */
+"HUMIDITY" = "VJEKROST";
+"The dew point is %d° right now." = "Točka roja je %d-Takoj.";
+"dewPoint.current" = "Točka roja je %d-Takoj.";
+
+/* MoonCard */
+"MOON PHASE" = "LUN FASE";
+"Moonrise" = "Objavitve Lune";
+"Moonset" = "Meseč";
+"Next %@" = "Naslednji. %@";
+"Data unavailable" = "Nepridostni podatki";
+"%d day" = "%d dan";
+"%d days" = "%d dnevi";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "Predpis";
+"PRECIPITATION_CARD_TODAY_LABEL" = "danes";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Naslednji pričakovani je %1$.0f %2$@ %3$@-Ne. -Prav."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Kmalu ne bo dežja.";
+
+/* PressureCard */
+"PRESSURE" = "Tlak";
+"hPa" = "HPa";
+
+/* SunsetCard */
+"SUNRISE" = "Sončni vzhod";
+"Sunrise: %@" = "Sončni vzhod: %@";
+"Sunset: %@" = "Sončni zahod: %@";
+"Sunrise" = "Vstanek sonca";
+"Sunset" = "Sončni zahod";
+
+
+"Sunrise and Sunset" = "Zjutraj in ponoči";
+"First Light" = "Prva luč";
+"Solar Noon" = "Sončna ob podnevi";
+"Last Light" = "Zadnja luč";
+"Total Daylight" = "Celotna dnevna svetloba";
+
+/* UVIndexCard */
+"UV INDEX" = "UV INDEX";
+"Low" = "Nizko";
+"Moderate" = "Zmerno";
+"High" = "Visoka";
+"Very High" = "Zelo visoko.";
+"Extreme" = "Izredno";
+
+/* VisibilityCard */
+"VISIBILITY" = "Vidljivost";
+"km" = "km";
+"Perfectly clear view." = "Popolnoma jasen pogled.";
+"Excellent visibility." = "Odlična vidljivost.";
+"Good visibility." = "Dobro vidljivost.";
+"Moderate visibility." = "-Smerna vidljivost.";
+"Poor visibility." = "-Slab vidljivost.";
+"Very poor visibility." = "Zelo slaba vidljivost.";
+"visibility.perfect"   = "Popolnoma jasen pogled.";
+"visibility.excellent" = "Odlična vidljivost.";
+"visibility.good"      = "Dobro vidljivost.";
+"visibility.moderate"  = "-Smerna vidljivost.";
+"visibility.poor"      = "-Slab vidljivost.";
+"visibility.verypoor"  = "Zelo slaba vidljivost.";
+"visibility.unknown"   = " Vsaka država";
+
+/* WindCard */
+"WIND" = "Veter";
+"Gusts" = "Vsa vloga";
+"Direction" = "Smeri";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "V";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Ne morem dobiti vremenskih podatkov.";
+"Falling" = "Padel";
+"Rising" = "Vstajanje";
+"Steady" = "Neustaljen";
+"Unknown" = "Neznana";
+"Sunny" = "Sončna.";
+"Cloudy" = "Oblačen.";
+"Partly Cloudy" = "Delno oblakano";
+"Drizzle" = "Vzdravi";
+"Thunderstorm" = "Vreme.";
+"Fog" = "Mra";
+"Partly Cloudy Night" = "Delno oblačena noč";
+"Clear Night" = "Čista noč";
+"Hazy" = "Nejasna";
+"Today" = "Danes";
+"Now" = "Zdaj pa ...";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "VZS";
+"cardinal.W"   = "V";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Možnost dežja";
+"Today's chance: %d%%" = "Današnja priložnost: %d%%";
+"%@'s chance: %d%%" = "%@-Šansa je: %d%%";
+"Max" = "Max.";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Vsak dan je možnost padavin večja od možnosti za vsako uro.";
+"ChanceOfPrecipitation_Title" = "Možnost dežja";
+"TodaysChance"                = "Današnja priložnost: %d%%";
+"OtherDayChance"              = "%@-Šansa je: %d%%";
+"DailyChanceExplanation"      = "Vsak dan je možnost padavin večja od možnosti za vsako uro.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Počutim se kot";
+"Actual" = "Dejanski";
+"No hourly data available for this day." = "Za ta dan ni podatkov na uro.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Kako se temperatura počuti zaradi vlage, sončne svetlobe ali vetra.";
+"The actual air temperature." = "Temperatura zraka.";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat"  = "L: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Vlažnost";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Vlažnost %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Vlažnost Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Danes je min %d%%  največ %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max.";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Dež: %.1f%@Sneg: %.1f%@";
+"Precip_Total_RainFormat"       = "Dež: %.1f%@";
+"Precip_Total_SnowFormat"       = "Sneg: %.1f%@";
+"Precip_Total_None"             = "Dežja: 0%@";
+"Precip_Bars_Subtitle"          = "Urne štapke za dež in sneg (%@)";
+"Precip_Level_Light"            = "Svetloba";
+"Precip_Level_Moderate"         = "Zmerno";
+"Precip_Level_Heavy"            = "Težko";
+"Precip_Tooltip_Format"         = "%@h\nDež: %.1f%@\nSneg: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Tlak %@ %@";
+"Pressure_CurrentUnavailable"      = "Tlak: --";
+"Pressure_DailyMinMaxFormat"       = "Danes je min %@ %@  največ %@ %@";
+"Pressure_AverageFormat"           = "Povprečni tlak %@ %@";
+"Pressure_DailyRangeFormat"        = "Dnevni razpon: %@ Vsaka država%@ %@";
+"Pressure_Title"                   = "Tlak";
+"Pressure_NoData"                  = "Za danes ni podatkov o tlaku.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Danes. %@ %d";
+"UVGraphNoHourlyData"   = "Za ta dan ni podatkov na uro.";
+"UVGraphNowLabel"       = "Zdaj pa... %@";
+"UVCategory_None"       = "Nobena.";
+"UVCategory_Low"        = "Nizko";
+"UVCategory_Moderate"   = "Zmerno";
+"UVCategory_High"       = "Visoka";
+"UVCategory_VeryHigh"   = "Zelo visoko.";
+"UVCategory_Extreme"    = "Izredno";
+"UVAdvice_None"         = "Za ta dan ni pričakovanih zmernih ali višjih UV- koncentracij.";
+"UVAdvice_Range"        = "Priporočljivo je zaščito pred soncem. %@ v %@, dosežena med %@ in %@-Ne. -Prav.";
+"UVGraphMaxLabel" = "Max.";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Vidljivost";
+"Visibility_NoData"                = "Za danes ni podatkov o vidljivosti.";
+"Visibility_CurrentFormat"         = "Vidljivost %d %@";
+"Visibility_DailyMinMaxFormat"     = "min. %d  največ %d %@";
+"Visibility_NoCurrentData"         = "Trenutno ni podatkov o vidljivosti.";
+"Visibility_HourlyAverages_NoData" = "Ni podatkov na uro.";
+"Visibility_MaxLabel"              = "Max.";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Hitrost vetra in gust";
+"WindGraph_NoData" = "Za danes ni podatkov o vetru.";
+"WindGraph_SpeedHeader" = "Hitrost vetra %d";
+"WindGraph_GustHeader" = "V redu je. %d";
+"WindGraph_SpeedRangeHeader" = "Hitrost vetra %d-Prav.%d";
+"WindGraph_MaxSpeedLabel" = "Max S";
+"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_DragLabel" = "%@\nHitrost: %d\nGust: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Povzetek dnevnega dneva";
+
+"Precipitation Totals" = "Skupna količina padcev";
+"LAST 24 HOURS" = "Zadnja 24 ur";
+"NEXT 24 HOURS" = "Naslednje 24 ur";
+"Total" = "Skupna";
+"Rain" = "Dež";
+"Snow" = "Sneg";
+
+"About Wind Speed and Gusts" = "O hitrosti vetra in gustu";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Hitrost vetra se izračuna z uporabo povprečja v kratkem času.";
+
+"About the Beaufort Scale" = "O Beaufortovi lestvici";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Beaufortova lestvica vetra izraža, kako močna ali močna je vetra pri določeni hitrosti.";
+
+"About Feels Like Temperature" = "O občutkih, kot je temperatura";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "V tem primeru je v tem trenutku zelo vroče in hladno, a temperatura je odvisna od vlage, sončne svetlobe in vetra.";
+
+"Options" = "Možnosti";
+"Temperature" = "Temperatura";
+"Use system setting (°C)" = "Uporaba nastavitev sistema (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Pod pogoji";
+"UV Index" = "UV indeks";
+"Wind" = "Veter";
+"Precipitation" = "Dežja";
+"Humidity" = "Vlažnost";
+"Visibility" = "Vidljivost";
+"Pressure" = "Tlak";
+
+/* Fallback key */
+"displayedCondition" = "prikazanoStavilo";
+
+/* Titles */
+"Forecast"                   = "Prognoza";
+"DailySummary"               = "Povzetek dnevnega dneva";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%dZdaj pa z %@ Obstaja možnost, da bo deževalo %@-Veter iz %@ z razstrelami do %d %@Temperatura danes je v razponu od %d° do %d# in se počuti kot %d-Prav. %@in %@-Ne. -Prav.";
+"UVIndexFormat"              = "UV indeks do %d";
+"HumidityFormat"             = "Vlažnost okoli %d%%";
+"HumidityRangeFormat"        = "Vlažnost iz %d%% v %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@Nizko je %dIn to je visoko %dTemperatura bo kot %d° do %d°. veter iz %@ Pričakovano. %@";
+"NoPrecipLast24h"            = "V zadnjih 24 urah ni bilo dežja.";
+"RainLast24h"                = "Deževalo je. %d mm v zadnjih 24 urah.";
+"SnowAndRainLast24h"         = "V zadnjih 24 urah je bil sneg merjen %@ cm in dež %d -Prav.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "VZS";
+"Dir_W"   = "V";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Skupna količina padcev";
+"Last24h_Label"             = "Zadnja 24 ur";
+"Next24h_Label"             = "Naslednje 24 ur";
+"Total_Label"               = "Skupna";
+"Precipitation_Label"       = "Dežja";
+"Rain_Label"                = "Dež";
+"Snow_Label"                = "Sneg";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "V veter je trenutno %1$d %2$@ iz %3$@Danes je hitrost vetra %4$d v %5$d %2$@, z raznimi %6$d %2$@-Ne. -Prav.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Hitrosti vetra se raztezajo od %1$d v %2$d %3$@, z raznimi %4$d %3$@-Ne. -Prav.";
+
+"Beaufort_Scale"                = "Beaufortska lestvica";
+"Beaufort_Column_bft" = "Bft";
+"Beaufort_Column_Description"   = "Opis";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "-Umirite se.";
+"Beaufort_1"                    = "Svetlo zrak";
+"Beaufort_2"                    = "Mrazen veter";
+"Beaufort_3"                    = "Nežen veter.";
+"Beaufort_4"                    = "Zmerno vetro";
+"Beaufort_5"                    = "Svež veter";
+"Beaufort_6"                    = "Močan veter";
+"Beaufort_7"                    = "Močan veter.";
+"Beaufort_8"                    = "Gale.";
+"Beaufort_9"                    = "Močan veter";
+"Beaufort_10"                   = "Sturma";
+"Beaufort_11"                   = "Nasilna nevihta";
+"Beaufort_12"                   = "Sila uragana";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Bilo je %.1f%@ Danes bo skupna količina deževnosti %.1f%@V naslednjih 24 urah, %.1f%@ Pričakovano je, da bo padalo.";
+"ForecastPrecip_OtherDayFormat" = "Na %@, celotna padavine bo %.1f%@-Ne. -Prav.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "O intenzivnosti dežja";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "Prognoza";
+"DailySummary_Title"           = "Povzetek dnevnega dneva";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Točka roja je %d° do %d-Prav.";
+"DewPoint_FutureFormat"        = "Točka roja bo %d° do %d-Prav.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Danes je povprečna vlažnost %d%%-Ne. -Prav. %@";
+"ForecastHumidity_Other"       = "Na %@, povprečna vlažnost bo %d%%-Ne. -Prav.\n%@";
+
+"AboutPressure_Title"  = "O pritiskom";
+"AboutPressure_Body"   = "Za napovedovanje sprememb vremenskega stanja se uporabljajo pomembne, hitre spremembe tlaka. Na primer, padec tlaka lahko pomeni, da prihaja dež ali sneg, povečanje tlaka pa lahko pomeni, da se bo vreme izboljšalo.";
+
+"AboutHumidity_Title"  = "O relativni vlage";
+"AboutHumidity_Body"   = "Relativna vlažnost, običajno znana samo kot vlažnost, je količina vlage v zraku v primerjavi s tem, kar lahko zadrži zrak.% mČe je mogoče, je mogoče, da je orno ali megla.";
+
+"AboutDewPoint_Title" = "O Dew Point";
+"AboutDewPoint_Body"  = "Temperatura je točka, na katero mora priti, da se formira vrha. Lahko je uporaben način za ugotovitev, kako vlažno je zrak.";
+
+"Section_Forecast"                     = "Prognoza";
+"Section_DailySummary"                 = "Povzetek dnevnega dneva";
+"ForecastVisibility_TodayFormat" = "Danes bo vidnost %@, na %d v %d %@-Ne. -Prav.";
+"ForecastVisibility_OtherFormat" = "Na %@, najnižja vidljivost bo %@ v %d %@, in najvišji bo %@ v %d %@-Ne. -Prav.";
+"Clarity_Foggy"                        = "Mlačna";
+"Clarity_Hazy"                         = "Nejasna";
+"Clarity_Clear"                        = "Jasno";
+"Clarity_PerfectlyClear"               = "Popolnoma jasno.";
+
+"AboutVisibility_Title" = "O vidljivosti";
+"AboutVisibility_Body" = "Vidljivost vam pove, kako daleč lahko jasno vidite objekte, kot so stavbe in hribe. %@ je jasno.";
+
+"PressureForecast_Today" = "Tlak je trenutno %@ %@ Danes bo povprečni tlak %@ %@, in najnižji tlak bo %@ %@-Ne. -Prav.";
+"PressureForecast_Other" = "Na %@, povprečni tlak bo %@ %@, in najnižji tlak bo %@ %@-Ne. -Prav.";
+"SectionForecast" = "Prognoza";
+"SectionDailySummary" = "Povzetek dnevnega dneva";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Vse funkcije osnovnega načrta";
+"Multi-calendar view" = "Razgled več koledarjev";
+"Sync with Google Calendar" = "Sinkronira z Google Calendar";
+"Sync meets from Google Meet" = "Sinkronizacija se sreča z Google Spoznaj me.";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Osnovni načrt";
+"Single-day calendar view" = "Ogled koledarja za en dan";
+"Multi-day calendar view" = "Ogled večdnevnega koledarja";
+"Monthly calendar view" = "Mesečni pregled koledarja";
+"Yearly overview" = "Letni pregled";
+"List view for events" = "Ogled seznama dogodkov";
+"Weather view" = "Pogled na vreme";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Priemni načrt";
+"Sync with Microsoft Calendar" = "Sinkronira z Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Sinkronizacija se sreča z Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Enako je z %@ na mesec";
+"%d %@ free" = "%d %@ brezplačno";
+
+/* SubscriptionListView */
+"Premium Plans" = "Priemni načrti";
+"You are subscribed to the %@ %@ plan" = "Podpisujete se na %@ %@ načrt";
+"Renews on: %@" = "Obnova: %@";
+"Start Free Trial" = "Začnite brezplačno preizkusno";
+"Subscribe Now" = "Podpisujte se zdaj";
+"%d %@ free, then %@%@." = "%d %@ Potem pa je brezplačno. %@%@-Ne. -Prav.";
+"Subscribe for %@%@." = "Podpis za %@%@-Ne. -Prav.";
+"Privacy Policy"     = "Politika zasebnosti";
+"Terms of Service"   = "Pod pogoji uporabe";
+
+/* SubscriptionCategory */
+"Advanced" = "Napredna";
+"Advanced Plan" = "Napredni načrt";
+"All Advanced Plan features" = "Vse funkcije naprednega načrta";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Potrebuješ aktivnega %@ načrt, da dostopate do tega dela.";
+"Plan Required" = "Potrebni načrt";
+"OK" = "V redu.";
+
+/* SubscriptionStatus */
+"Base"    = "Podlaga";
+"Premium" = "Priem";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Podpisani %@ %@ -Plano.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Obnova: %@";
+
+"Manage Subscription"                   = "Upravljanje naročnine";
+
+/* Period units */
+"Daily"     = "Vsak dan";
+"Weekly"    = "V tednu";
+"Monthly"   = "mesečno";
+"Yearly"    = "Letno";
+"Recurring" = "Ponavljajoče se";
+
+/* units */
+"day"   = "dan";
+"days"  = "dnevi";
+"week"  = "teden";
+"weeks" = "tedne";
+"month"  = "mesec";
+"months" = "mesece";
+"year"   = "letno";
+"years"  = "leta";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S, M, T, W, T, F, S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "km/h";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "HPa";
+"Unit_Pressure_inHg" = "vHg";
+
+"Your previous purchases have been successfully restored." = "Vaše prejšnje nakupe so bile uspešno obnovljene.";
+"No active subscriptions found to restore."                = "Nobenih aktivnih naročnikov ni bilo mogoče obnoviti.";
+"Failed to restore purchases. Please try again later. (%@)" = "Ne morem obnoviti nakupov.%@)";
+"Restore Purchases"                                        = "Obnova nakupov";
+
+"Ads Free" = "Oglasi brezplačni";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalendar in vreme";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Majhna prikazuje datum in trenutni vremenski položaj, srednja pa poveča lunjsko fazo in veter.";
+"Calendar Events" = "Dogodki v koledarju";
+"Shows today's date, current weather, and your next calendar events." = "Pokazuje današnji datum, trenutni vremenski položaj in naslednje dogodke v koledarju.";
+"No upcoming events" = "Nobenih prihodnjih dogodkov.";
+"Tomorrow" = "Jutri.";
+"Untitled" = "Neimenovani";
+"Detail" = "Podrobnost";
+"Phase" = "Faza";
+"Weather" = "Vreme";
+"Select Your Email" = "Izberite e-poštno sporočilo";
+"Confirm" = "Potrdite";
+"Calendar name" = "Ime koledarja";
+"Sharing: %@" = "Delitev: %@";
+"Loading..." = "Nosijo...";
+"Selected Location" = "Izbrano lokacijo";
+"Data provided by Apple Weather" = "Podatki, ki jih je zagotovil Apple Weather";
+"Next" = "Naslednji.";
+"No details found for the selected location." = "Za izbrano lokacijo ni bilo podatkov.";
+"Could not determine the time zone for the selected location." = "Ne morem določiti časovnega pasu za izbrano lokacijo.";
+"(No Title)" = "(Ni naslov)";
+"Choose your e-mail" = "Izberite e-poštno sporočilo";
+"It will be treated as your primary address and invitations will not be sent to it." = "To bo obravnavano kot vaš glavni naslov in povabilo se ne bo poslalo.";
+"Invalid URL" = "Neveljavni URL";
+"Rate limit or insufficient permission" = "Omejnina stopnje ali nezadostna dovoljenja";
+"Network error: %@" = "Napaka omrežja: %@";
+"N/A - Selected Tab: %@" = "N/A - Izbrana vtičnica: %@";
+"Enable Notifications" = "Omogočiti obvestila";
+"Event Notifications" = "Obvestila o dogodkih";
+"Weather Alert Notifications" = "Obvestila o vremenskem varovanju";
+"Allow notifications so weather alerts can appear." = "Pogoji obvestila, da se lahko pojavijo opozorila o vremenu.";
+"Event alerts are scheduled from your event alert settings." = "Opozoritve za dogodke so načrtovane iz nastavitev opozarjanja za dogodke.";
+"Allow notifications so event alerts can appear at the right time." = "Pogoji obvestila, da se lahko opozarjanja na dogodke prikažejo v pravočasno času.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Za omogočanje je izklopljeno obvestilo za to aplikacijo. Cloud Calendars -> Obvestila -> Pogoji obvestila.";
+"Promo.WiseEating.name" = "Pametno prehranjevanje in načrtovanje telesne kondicije";
+"Promo.WiseEating.description" = "Smarter Eating je vaš trener, ki vam omogoča pametnejšo prehrano in usposabljanje.Sodobna znanost o prehrani združuje z praktičnimi orodji, ki vam pomagajo načrtovati obroke, oblikovati vadbe, upravljati svojo shranjevalnico in razumeti, kako hrana in gibanje vplivajo na vaše telo.";
+"Promo.StoreFront.name" = "Studio StoreFront";
+"Promo.StoreFront.description" = "StoreFront Studio je elitno 3D oblikovalno okolje za iOS in macOS razvijalce. Kombinuje visoko verodostojno RealityKit rendering z močnim Rich Text editorjem, ki vam pomaga pretvoriti surove zaslone v profesionalne, visoko pretvorljive App Store sredstva.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio je ustvarjalni zaslon za snemanje zaslona za iOS in macOS. Zgrabite zaslon in fotoaparat hkrati, nadzorujte zvočnik sistema mikrofona in izvozite čiste MP4 za poučevanje, prehodke in demo izdelkov. Na iOS lahko celo igraš video v aplikaciji in jo snemate skupaj z fotoaparatom za reakcijsko in predstavnikovo vodeno vsebino.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI vam pomaga razumeti gibanje trga z analitiko na napravi in večodružbenim delovnim tokom, zasnovanim za ločevanje signala od hrupa. Sledite podatke o cenah v realnem času, raziskujte verjetnosti v stilu režima in uporabite jasne nadzorne plošče in grafikone za podporo odločanju.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplikacije";
+"Plan" = "Načrt";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Bližnjava";
+"WeatherCondition.blowingDust" = "Prah";
+"WeatherCondition.blowingSnow" = "Snež se razdihne";
+"WeatherCondition.breezy" = "Breezy.";
+"WeatherCondition.clear" = "Jasno";
+"WeatherCondition.cloudy" = "Oblačen.";
+"WeatherCondition.drizzle" = "Vzdravi";
+"WeatherCondition.flurries" = "Vprašanje";
+"WeatherCondition.foggy" = "Mra";
+"WeatherCondition.freezingDrizzle" = "Zmrznitev";
+"WeatherCondition.freezingRain" = "Zmrzla dež";
+"WeatherCondition.frigid" = "Hladno";
+"WeatherCondition.hail" = "-Prav.";
+"WeatherCondition.haze" = "Nevihta";
+"WeatherCondition.heavyRain" = "Močan dežek";
+"WeatherCondition.heavySnow" = "Velik sneg";
+"WeatherCondition.hot" = "Vroč.";
+"WeatherCondition.hurricane" = "Hurikani";
+"WeatherCondition.isolatedThunderstorms" = "Izolirani grmovi";
+"WeatherCondition.mostlyClear" = "Večinoma jasno";
+"WeatherCondition.mostlyCloudy" = "Večinoma oblakani.";
+"WeatherCondition.partlyCloudy" = "Delno oblakano";
+"WeatherCondition.rain" = "Dež";
+"WeatherCondition.scatteredThunderstorms" = "Razpršeni grmovi";
+"WeatherCondition.sleet" = "Slednja";
+"WeatherCondition.smoky" = "Dvojna dima";
+"WeatherCondition.snow" = "Sneg";
+"WeatherCondition.strongStorms" = "Močna grmljavica";
+"WeatherCondition.sunFlurries" = "Sončna žvečilka";
+"WeatherCondition.sunShowers" = "Sončna prha";
+"WeatherCondition.thunderstorms" = "Vreme.";
+"WeatherCondition.tropicalStorm" = "Tropska oluja";
+"WeatherCondition.windy" = "Vetič.";
+"WeatherCondition.wintryMix" = "Zima mešavina";
+"MoonPhase.new" = "Nova Luna";
+"MoonPhase.waxingCrescent" = "Vasični polmesec";
+"MoonPhase.firstQuarter" = "Prvi četrtletje";
+"MoonPhase.waxingGibbous" = "Vasičarski gibbozi";
+"MoonPhase.full" = "Polna Luna";
+"MoonPhase.waningGibbous" = "Gibbous, ki je slab.";
+"MoonPhase.lastQuarter" = "Zadnja četrtletja";
+"MoonPhase.waningCrescent" = "Zmanjajoči polmesec";
+"WeatherAlert.Preview.Tornado" = "Napoved tornada: takoj poiščite varno sklonišče.";
+"WeatherAlert.Preview.Source" = "Vreme";
+"WeatherAlert.Preview.Region" = "Predvideni območje";
+"Saved Regions" = "Rešeni regiji";
+"Current Location" = "Trenutna lokacija";
+"Reorder Region" = "Območje preurejanja";
+"WeatherAlert.Preview.HighTemperature" = "Rumeno opozorilo za visoke temperature";
+"Illumination" = "Svetloba";
+"Shared event" = "Skupni dogodek";
+"Add to Calendar" = "Dodaj v koledar";
+"Event added" = "Dodajanje dogodka";
+"Already in your calendar" = "Že v koledarju.";
+"Unable to add event" = "Ne morem dodati dogodka";
+"Calendar Access Required" = "Zahtevani dostop do koledarja";
+"Allow calendar access in Settings to add this event." = "Če želite dodati dogodek, omogočite dostop do koledarja v Nastavitvah.";
+"Open Settings" = "Odprte nastavitve";
+"Adding…" = "Dodatno...";
+"Couldn’t find a writable calendar." = "Nisem našel pisnega koledarja.";
+"Please try again." = "Prosim, poskusite še enkrat.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Sprememba načrta";
+"Current Plan" = "Trenutni načrt";
+"You can change your plan or billing period at any time." = "V vsakem trenutku lahko spremenite načrt ali obdobje obračunavanja.";
+"Invites" = "Poziv";
+"Cancelled" = "Odpovedano";
+"Shared by me" = "Jaz sem jo delila.";
+"Shared with me" = "Delila se z mano";
+"No shared events yet." = "Še ni skupnih dogodkov.";
+"No one has shared an event with you yet." = "Nihče še ni delil dogodka z vami.";
+"Events you send from the share sheet appear here." = "Dogodki, ki jih pošljete iz listine, se prikazujejo tukaj.";
+"Invitations go to" = "Poziv je namenjen";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Če od pošiljatelja odpokličete, ostane vidna s črto skozi to.";
+"Sample shared event" = "Izbira skupnega dogodka";
+"Sofia" = "Sofia";
+"Team lunch" = "Ekipični kosilo";
+
+/* Booking */
+"Booking page" = "Stranica rezervacije";
+"Your name" = "Tvoje ime.";
+"Display name" = "Ime prikaza";
+"Source calendar" = "Izvorni koledar";
+"Booked meetings land here, and your busy times here block new bookings." = "Zbirani sestanki se nahajajo tukaj, in vaše zasedene čase tukaj blokirajo nove rezervacije.";
+"Meeting types" = "Vrste srečanja";
+"%lld min" = "%lld min.";
+"Add meeting type" = "Dodatek tipa srečanja";
+"Weekly hours" = "V tednu";
+"Save booking page" = "Spomnite strani rezervacije";
+"Your booking page is live" = "Vaša rezervacija je na voljo.";
+"Share this link — anyone can book one of your open times." = "Podeljite ta povezavo  Vsakdo lahko rezervira eno od vaših odprtih časov.";
+"Share link" = "Povezava za skupno rabo";
+"Edit settings" = "Nastavitve urejanje";
+"Add at least one meeting type." = "Dodajte vsaj en tip srečanja.";
+"Turn on at least one day with valid hours." = "Vklopi vsaj en dan z veljavnimi urami.";
+"Set up a booking page" = "Ustvarite strani za rezervacijo";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Naj vam ljudje rezervirajo čas odprtih ur, sestanke pa se nahajajo v koledarju, ki ga izberete, in vaše obsežne čase pa jih ohranite prostih.";
+"Approve on this device" = "Odločitev za uporabo na tej napravi";
+"Set up web booking" = "Nastavite spletno rezervacijo";
+"You're all set" = "Vse je pripravljeno.";
+"Couldn't approve" = "Nisem mogla odobriti.";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Sprejeti povezavo tega brskalnika s svojim koledarjem, da lahko ustvarite spletno stran za rezervacijo brezplačno, ker imate aplikacijo.";
+"Linking…" = "Povezava...";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Vrnite se v brskalnik  pripravljen je za dokončanje nastavitve rezervacijske strani.";
+"The code may have expired. Reopen the QR on the web and try again." = "Kodec je morda potekel. QR Na spletu in poskusite znova.";
+"Read-only shared event" = "Določeni dogodek, ki se lahko prebere samo";
+"Remove from My Calendar" = "Izbrišite iz mojega koledarja";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars račun";
+"App Clip sharing account" = "App Clip deljenje računa";
+"Required for synced App Clip events and recovery after reinstalling." = "Zahteva za sinhronizacijo App Clip dogodki in okrevanje po ponovno namestitvi.";
+"Continue with Google" = "Nadaljujte z Google";
+"Sign Out" = "Izstopite";
+"Signing in…" = "Podpis...";
+"Sign In" = "Vpis";
+"Sign in to continue" = "Vpisati se je treba.";
+"Your account keeps this shared event recoverable after reinstalling the app." = "Vaš račun ohranja ta skupni dogodek obnovljiv po ponovno namestitvi aplikacije.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Ta račun je lastnik App Clip Podeljuje in jih po ponovno namestitvi obnovi.";
+"Sign in with Google or Apple to share and receive synced events." = "Podpisujte se z: Google ali Apple, da deli in prejme sinhronizirane dogodke.";
+"Apple did not return an identity token." = "Apple ni vrnil identifikacijske znamke.";
+"Unable to share event" = "Ne morem deliti dogodka";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "Dogodek ni mogel biti shranjen na vašo Cloud Calendars Prosim, poskusite znova.";
+"Google" = "Google";
+"Apple" = "Jabolko";
+"Microsoft" = "Microsoft";
+"Connect" = "Povežite";
+"Connected" = "Povezano";
+"Sign in with at least one account" = "Vstopite z vsaj enim računom";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "Povežite Google-Prav, jabolka. MicrosoftVsaka povezana identiteta odpira enake račune za skupne dogodke.";
+"A Premium subscription is required to connect Microsoft." = "Za povezovanje je potrebna naročnina Premium Microsoft-Ne. -Prav.";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "Ti identiteti so namenjeni samo App Clip Delajo se in se odvzamejo.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Podpisujte se z: Google, Apple ali Microsoft za izmenjavo in sprejemanje sinhroniziranih dogodkov.";
+"Share a verified email during sign-in to use synced events and invitations." = "Ob prijavljanju posredujte preverjeno e-pošto za uporabo sinhroniziranih dogodkov in povabljitev.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "Med prijavo morate deliti preverjeno e-pošto, ki jo bodo ljudje uporabili za iskanje in povabilo na koledare in dogodke.";
+"Manage connected accounts" = "Upravljanje povezanih računov";
+"Apple, Google, and Microsoft" = "Jabolko, Googlein Microsoft";
+"Open account sign-in" = "Odprite vpis na račun";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "Za izmenjavo, obnovitev ali uporabo dostopa, ki ga je dal lastnik, je potreben preverjen e-poštni naslov.";
+"Accept" = "Sprejmite";
+"Access removed" = "Odstranitev dostopa";
+"Add a Mail account on this device, then try again." = "Dodaj račun za pošto na ta napravo, nato poskusite znova.";
+"Add a writable calendar before moving this event." = "Dodaj zapisan koledar pred premikanjem dogodka.";
+"Add everyone who should receive this calendar and choose their access." = "Dodaj vse, ki bodo dobili ta koledar in izberite dostop.";
+"Add everyone who should receive this event and choose their access." = "Dodaj vse, ki bi morali prejemati dogodek in izberite dostop.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "Po Save, %@ Njihova lokalna kopija bo ostala samo za branje z črko skozi.";
+"Anonymous recipient" = "Anonimni prejemnik";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "Apple ni vrnil e-pošte. v Nastavitvah ne uporabljajte Apple ID za Cloud Calendars, nato se ponovno poveži in izberite Delite moj e-poštni naslov.";
+"Calendar invitation" = "Poziv na koledar";
+"Cancel for Everyone" = "Odpoved za vse";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Izberite branjelec, pisatelj ali lastnik. lastniki lahko tudi delijo to dogodek in upravljajo dostop.";
+"Choose how to share this synced event." = "Izberite, kako deliti to sinhronizirano dogodek.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars Sejo nisem mogel shraniti na tej napravi.";
+"Cloud Calendars user" = "Cloud Calendars uporabnik";
+"Could not add: %@." = "Ne morem dodati: %@-Ne. -Prav.";
+"Custom on this device" = "Na ta naprava je prilagojena";
+"Decline" = "Zmanjkalo";
+"Default from creator" = "Predpostavka ustvarjalca";
+"Deleted by owner" = "Izbriševalnik";
+"Each email address can appear only once." = "Vsak e-poštni naslov se lahko prikaže samo enkrat.";
+"Enter a valid email address for %@." = "Vnesite veljavni e-poštni naslov za %@-Ne. -Prav.";
+"From %@" = "Od: %@";
+"Invitation pending" = "Poziv je v teku";
+"Loading shared calendars…" = "Nadzorovanje skupnih koledarjev...";
+"Mail is not configured" = "Pošta ni konfigurirana";
+"Manage calendar sharing" = "Upravljanje deljenja koledarja";
+"New calendar invitation" = "Novi povabilo na koledar";
+"New event invitation" = "Nova povabilo na dogodek";
+"No calendars have been shared with you yet." = "Še ni bilo koledarjev.";
+"Open a shared event or calendar" = "Odprite skupno dogodek ali koledar";
+"Open this event with Cloud Calendars:\n\n%@" = "Odprite dogodek z Cloud CalendarsV skladu s členom 2\n\n%@";
+"Original creator" = "Originalni ustvarjalec";
+"People" = "Ljudje";
+"People appear here after they add the event." = "Ljudje se pojavijo tukaj, ko dodajo dogodek.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "Na vrstica A Cloud Calendars dogodek ali koledar QR kod znotraj okvirja.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "Čitatelj lahko preverja in sinhronizira. Pisec lahko ureja. Lastnik lahko tudi deli in upravlja dostop po prijavi z povabljenim e-poštnim naslovom.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "Članik lahko gleda, pisatelj lahko ureja dogodke, lastnik lahko tudi deli koledar in upravlja dostop.";
+"Remove" = "Odstranite";
+"Remove Shared Calendar?" = "Izbrišite skupno koledar?";
+"Remove from My Calendars" = "Izbriši iz mojih koledarjev";
+"Resend" = "Pošljite";
+"Scan QR Code" = "Skeniranje QR Šifra";
+"Scan to open this calendar" = "Skeniranje za odprtje tega koledarja";
+"Scan to open this event" = "Skeniranje za odprtje dogodka";
+"Server returned %lld: %@" = "Server se je vrnil %lldV skladu s členom 2 %@";
+"Shared calendar" = "Skupni koledar";
+"Shared calendar information" = "Določene informacije o koledarju";
+"Shared event: %@" = "Skupna dogodka: %@";
+"Sign in or manage accounts" = "Vpis ali upravljanje računov";
+"Sign in to manage event access." = "Vstopite v upravljanje dostopa do dogodka.";
+"Sign in to save event access." = "Vstopite, da shranite dostop do dogodka.";
+"Sign in to see calendars shared with you." = "Vstopite, da vidite koledare, ki jih delite z vami.";
+"Sign-in couldn’t open. Please try again." = "Vpis se ni mogel odpreti.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "Ne delite tega koledarja z %@Po Saveju bodo njihove zamrznjene kopije in dogodki še vedno vidni z črto skozi njih.";
+"The calendar and its events will be removed only from this device." = "Kalendar in njegovi dogodki bodo odstranjeni samo iz te naprave.";
+"The provider didn’t return the information required to sign in." = "Ponudnik ni vrnil informacij, ki so potrebne za prijavo.";
+"The provider returned an invalid response." = "Ponudnik je odgovoril na nepravičen odgovor.";
+"The sign-in response couldn’t be verified. Please try again." = "Odgovor na prijavo ni bil mogoče preveriti.";
+"The sign-in response was invalid. Please try again." = "Odziv na prijavo je bil neplaten.";
+"This changes only your local copy. Shared event details stay read-only." = "To spremeni samo lokalno kopijo.";
+"This color changes only on this device." = "Barva se spremeni le na tej napravi.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "To je ... QR kod ne vsebuje Cloud Calendars dogodek ali koledar.";
+"This QR code does not contain a Cloud Calendars share." = "To je ... QR kod ne vsebuje Cloud Calendars -Predjel.";
+"This removes only your local copy. Other people keep access." = "S tem odstranite samo lokalno kopijo, drugi pa imajo dostop.";
+"Try again" = "Poskusite še enkrat.";
+"Unable to Update Calendar" = "Ne morem posodobiti koledarja";
+"Unable to add calendar" = "Ne morem dodati koledarja";
+"Unreadable response from the server" = "Neprečiten odgovor od strežnika";
+"Use Apple, Google, or Microsoft." = "Uporabite Apple, Googleali Microsoft-Ne. -Prav.";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "Uporabite napravo z razpoložljivo kamero za skeniranje Cloud Calendars QR -Kode.";
+"You can add up to 50 people at once." = "Lahko skupaj povežete do 50 ljudi.";
+"You can send up to 50 invitations at once." = "Lahko pošljete do 50 povabilnic hkrati.";
+"%lld connected account" = "%lld povezan račun";
+"%lld connected accounts" = "%lld povezani računi";
+"%lld pending invitation" = "%lld predhodno povabilo";
+"%lld pending invitations" = "%lld predhodne povabilo";
+"%lld upcoming event" = "%lld prihodnje dogodke";
+"%lld upcoming events" = "%lld prihodnji dogodki";
+"%@ invited you to %@" = "%@ vas je povabil %@";

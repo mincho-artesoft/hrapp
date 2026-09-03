@@ -1,0 +1,13 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars vyžaduje prístup k kalendárom na zjednotenie udalostí z iCloud- Áno . Googlea Microsoft calendars, umožňujúce plynulé plánovanie.";
+
+"NSContactsUsageDescription" = "Cloud Calendars používa vaše kontakty na zjednodušenie pozvánok na udalosti a bez námahy spravovať údaje účastníkov.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars prístup k vašej polohe aj keď je aplikácia zatvorená, poskytuje presné počasie a včasné upozornenia na vaše naplánované udalosti.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars používa vašu polohu, keď je aktívna, aby priamo integrovala presné miestne počasie do vášho kalendára.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars vyžaduje prístup k kalendárom na zjednotenie udalostí z iCloud- Áno . Googlea Microsoft calendars, umožňujúce plynulé plánovanie.";
+
+"NSCameraUsageDescription" = "Cloud Calendars používa fotoaparát na skenovanie QR kódov zdieľaných udalostí a kalendárov.";

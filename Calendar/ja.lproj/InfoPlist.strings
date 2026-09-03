@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars は、アクティブ中にあなたの位置情報を使用して、正確な地域の天気予報をカレンダーに直接統合します。";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars では、iCloud、Google、Microsoft のカレンダーからイベントを統合し、シームレスなスケジュールを可能にするためにカレンダーへのアクセスが必要です。";
+
+"NSCameraUsageDescription" = "Cloud Calendarsは、共有されたイベントとカレンダーのQRコードをスキャンするためにカメラを使用します。";

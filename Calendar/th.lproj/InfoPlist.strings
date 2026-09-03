@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars ใช้ตำแหน่งของคุณขณะใช้งานเพื่อรวมการพยากรณ์อากาศในท้องถิ่นที่แม่นยำลงในปฏิทินของคุณโดยตรง";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars ต้องมีการเข้าถึงปฏิทินเพื่อรวมกิจกรรมของคุณจากปฏิทิน iCloud, Google และ Microsoft ทำให้สามารถกำหนดเวลาได้อย่างราบรื่น";
+
+"NSCameraUsageDescription" = "Cloud Calendars ใช้กล้องเพื่อสแกนคิวอาร์โค้ดของกิจกรรมและปฏิทินที่แชร์";

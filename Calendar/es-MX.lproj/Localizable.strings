@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld evento";
+"%lld events" = "%lld acontecimientos";
+"Share Pop-up" = "Compartir Pop-up";
+"Would you like to share this event?" = "¿Te gustaría compartir este evento?";
+"Don't ask again" = "No me lo vuelvas a preguntar.";
+"No email was provided." = "No se proporcionó ningún correo electrónico.";
+"Please enter a valid email to continue." = "Por favor, ingrese un correo electrónico válido para continuar.";
+"Your email" = "Su correo electrónico";
+"Save" = "Salvación";
+"Login" = "Ingreso";
+"Logout" = "Registro de entrada";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "Calendarios";
+"Inbox" = "Caja de entrada";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Otros";
+"Google calendars" = "Google calendarde la";
+"No synced Google calendars yet." = "No sincronizado Google calendarNo lo sé.";
+"Microsoft calendars" = "Microsoft calendarde la";
+"No synced Microsoft calendars yet." = "No sincronizado Microsoft calendarNo lo sé.";
+"Sign out" = "Regístrese";
+"Add iCloud Calendar" = "Añadir iCloud Calendario";
+"Share calendars with iCloud Calendar" = "Compartir calendarios con iCloud Calendario";
+"Sign in with Google" = "Regístrese con Google";
+"Sign in with Microsoft" = "Regístrese con Microsoft";
+"Deselect All" = "Deseleccionar todos";
+"Select All" = "Seleccione Todos";
+"No Email" = "No hay correo electrónico";
+"Add Google Calendar" = "Añadir Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "Nombre del calendario";
+"Account" = "Cuenta";
+"COLOR" = "COLOR";
+"NOTIFICATIONS" = "Notificaciones";
+"Event Alerts" = "Alertas de eventos";
+"Allow events on this calendar to display alerts." = "Permite que los eventos de este calendario muestren alertas.";
+"Add Calendar" = "Añadir el calendario";
+
+/* Colors */
+"Red" = "Rojo";
+"Orange" = "Naranja";
+"Yellow" = "Amarillo";
+"Green" = "El verde";
+"Blue" = "El azul";
+"Purple" = "Rojo";
+"Brown" = "El color marrón";
+"Custom" = "El producto";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "El color del calendario";
+"Custom..." = "El costumbre...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Editar el calendario";
+"Delete Calendar" = "Eliminar el calendario";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Cargar configuraciones de intercambio...";
+"Shared with these users" = "Compartido con estos usuarios";
+"Add New Email" = "Añadir un nuevo correo electrónico";
+"Email to share" = "Correos electrónicos para compartir";
+"Permission:" = "Permiso:";
+"Add" = "Añadir";
+"Sharing:" = "Compartición:";
+"Done" = "He hecho";
+
+"Error loading: %@" = "Carga de error: %@";
+"Error adding: %@" = "Añadir error: %@";
+"Error deleting: %@" = "Erro de eliminación: %@";
+"Error updating: %@" = "Actualización de error: %@";
+"Error re-inviting (delete): %@" = "Error de re-invitación (borrado): %@";
+"Error re-inviting (insert): %@" = "Error de re-invitación (insertar): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Lector";
+"Writer" = "Escritor";
+"Owner"  = "Propietario";
+
+/* MonthCalendarView */
+"Day View" = "Vista del día";
+"This is a repeating event." = "Este es un evento repetitivo.";
+"Save for This Event Only" = "Salvo para este evento";
+"Save for Future Events" = "Salva para los eventos futuros";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "El sol";
+"Mon" = "El Mon";
+"Tue" = "El día de la muerte";
+"Wed" = "Casado";
+"Thu" = "El de la";
+"Fri" = "Fr";
+"Sat" = "El sat";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Casi todo";
+
+/* AllEventsListView */
+"No calendar access." = "No hay acceso al calendario.";
+
+/* EventRowView */
+"Ends" = "Los finales";
+
+/* SearchEventRowView */
+"No Title" = "No se puede obtener título";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Únete a la reunión";
+"Edit" = "Edición";
+"Duplicate" = "Duplicado";
+"Delete" = "Eliminar";
+"Share" = "Compartir";
+"Add to Google Meet" = "Añadir a Google Conozcamos";
+"Add to Microsoft Teams" = "Añadir a Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "No se seleccionó el rango";
+"all-day" = "Todo el día";
+"Search events..." = "Los eventos de búsqueda...";
+"Day" = "Día de la fiesta";
+"MultiDay" = "Muchos días";
+"Month" = "Mes de año";
+"Year" = "Año";
+"List" = "Lista de los productos";
+"MultiCalendar" = "MultiCalendario";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Nuevo evento";
+"All-day event" = "Evento de todo el día";
+"Recurring Event" = "Un evento recurrente";
+"This event is part of a series. Update which events?" = "Este evento es parte de una serie. ¿Qué actualización?";
+"This Event Only" = "Sólo este evento";
+"All Future Events" = "Todos los acontecimientos futuros";
+"Cancel" = "Cancelación";
+
+/* DraggableMenuView */
+"Calendar" = "Calendario";
+"Subscriptions" = "Suscripciones";
+"Settings" = "Configuración";
+"Sharing" = "Compartición";
+"Live" = "Vivo";
+"Stop" = "Deje de hacerlo.";
+"Calendar Live Activity" = "Actividad en vivo del calendario";
+"Get" = "¡Vamos!";
+"Color" = "El color";
+"Search for a city…" = "Buscar una ciudad...";
+"No directions" = "No hay instrucciones";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Se niega el acceso a la ubicación.";
+"Cannot refresh. Location unknown." = "No puedo actualizar, ubicación desconocida.";
+"10-DAY FORECAST" = "Previsión de 10 días";
+"HighLowLabelFormat" = "H:%d° L:%d¿ Qué es eso ?";
+"tomorrow" = "mañana";
+"on_day" = "en el %@";
+"in_days" = "en %d días";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Nuevo acontecimiento";
+
+/* Search placeholder */
+"Search for a city..." = "Buscar una ciudad...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Toca una hora para agregar rápidamente un evento en el calendario.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "Me siento como";
+"similar_to_actual_temp" = "Es similar a la temperatura real.";
+"wind_cooler_feel" = "El viento hace que se sienta más fresco.";
+"humidity_warmer_feel" = "La humedad hace que se sienta más caliente.";
+
+/* HumidityCard */
+"HUMIDITY" = "La humedad";
+"The dew point is %d° right now." = "El punto de rocío es %d- Ahora mismo.";
+"dewPoint.current" = "El punto de rocío es %d- Ahora mismo.";
+
+/* MoonCard */
+"MOON PHASE" = "FASE de la luna";
+"Moonrise" = "Al amanecer de la luna";
+"Moonset" = "El lunar";
+"Next %@" = "Lo siguiente %@";
+"Data unavailable" = "No hay datos disponibles";
+"%d day" = "%d día";
+"%d days" = "%d días";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "Precipicación";
+"PRECIPITATION_CARD_TODAY_LABEL" = "hoy";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Lo siguiente esperado es %1$.0f %2$@ %3$@¿ Qué ?"; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "No se espera precipitación pronto.";
+
+/* PressureCard */
+"PRESSURE" = "Presión";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "El amanecer";
+"Sunrise: %@" = "Al amanecer: %@";
+"Sunset: %@" = "El atardecer: %@";
+"Sunrise" = "Al amanecer";
+"Sunset" = "El atardecer";
+
+
+"Sunrise and Sunset" = "Al amanecer y al atardecer";
+"First Light" = "Primera luz";
+"Solar Noon" = "El mediodía solar";
+"Last Light" = "La última luz";
+"Total Daylight" = "Luz total del día";
+
+/* UVIndexCard */
+"UV INDEX" = "Indice UV";
+"Low" = "Bajo";
+"Moderate" = "Moderado";
+"High" = "Alto";
+"Very High" = "Muy alto";
+"Extreme" = "Extrema";
+
+/* VisibilityCard */
+"VISIBILITY" = "VISIbilidad";
+"km" = "km";
+"Perfectly clear view." = "Vista perfectamente clara.";
+"Excellent visibility." = "Excelente visibilidad.";
+"Good visibility." = "Buena visibilidad.";
+"Moderate visibility." = "Visiblidad moderada.";
+"Poor visibility." = "- No tiene visibilidad.";
+"Very poor visibility." = "Muy mala visibilidad.";
+"visibility.perfect"   = "Vista perfectamente clara.";
+"visibility.excellent" = "Excelente visibilidad.";
+"visibility.good"      = "Buena visibilidad.";
+"visibility.moderate"  = "Visiblidad moderada.";
+"visibility.poor"      = "- No tiene visibilidad.";
+"visibility.verypoor"  = "Muy mala visibilidad.";
+"visibility.unknown"   = " El";
+
+/* WindCard */
+"WIND" = "Viento";
+"Gusts" = "Gustas";
+"Direction" = "Dirección";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "El producto";
+"Compass_W" = "El";
+"Compass_E" = "El";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "No conseguí datos meteorológicos, por favor revise su conexión o vuelva a intentarlo más tarde.";
+"Falling" = "Caer";
+"Rising" = "El aumento";
+"Steady" = "Estándalo";
+"Unknown" = "No se sabe";
+"Sunny" = "- ¿Qué pasa?";
+"Cloudy" = "No es muy bueno.";
+"Partly Cloudy" = "En parte nublado";
+"Drizzle" = "El agua";
+"Thunderstorm" = "Tormenta de granizo";
+"Fog" = "Noche";
+"Partly Cloudy Night" = "Noche parcialmente nublada";
+"Clear Night" = "Noche clara";
+"Hazy" = "No está bien";
+"Today" = "Hoy en día";
+"Now" = "Ahora , ¿ qué ?";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "El número de personas";
+"cardinal.ENE" = "En el caso de las";
+"cardinal.E"   = "El";
+"cardinal.ESE" = "El ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "El sistema de seguridad";
+"cardinal.S"   = "El producto";
+"cardinal.SSW" = "Las medidas de seguridad";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "El Consejo de Seguridad";
+"cardinal.W"   = "El";
+"cardinal.WNW" = "El Consejo de Ministros";
+"cardinal.NW"  = "Nuevo";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "La posibilidad de precipitación";
+"Today's chance: %d%%" = "La oportunidad de hoy: %d%%";
+"%@'s chance: %d%%" = "%@La oportunidad: %d%%";
+"Max" = "Max .";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "La probabilidad diaria de precipitación tiende a ser mayor que la probabilidad de cada hora.";
+"ChanceOfPrecipitation_Title" = "La posibilidad de precipitación";
+"TodaysChance"                = "La oportunidad de hoy: %d%%";
+"OtherDayChance"              = "%@La oportunidad: %d%%";
+"DailyChanceExplanation"      = "La probabilidad diaria de precipitación tiende a ser mayor que la probabilidad de cada hora.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Me siento como";
+"Actual" = "El número de personas";
+"No hourly data available for this day." = "No hay datos horarios disponibles para este día.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Cómo se siente la temperatura como resultado de la humedad, la luz solar o el viento.";
+"The actual air temperature." = "La temperatura del aire real.";
+"HighLabelFormat" = "H: %d¿ Qué es eso ?";
+"LowLabelFormat"  = "L: %d¿ Qué es eso ?";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H.";
+"HourlyGraph_LowLabel"  = "El";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Humedad";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Humedad %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Humedad Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "La hora de hoy %d%%  max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max .";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "La lluvia: %.1f%@, Nieve: %.1f%@";
+"Precip_Total_RainFormat"       = "La lluvia: %.1f%@";
+"Precip_Total_SnowFormat"       = "La nieve: %.1f%@";
+"Precip_Total_None"             = "Precipitación: 0%@";
+"Precip_Bars_Subtitle"          = "Barras por hora para lluvia y nieve (%@¿Qué es lo que se hace?";
+"Precip_Level_Light"            = "Luz";
+"Precip_Level_Moderate"         = "Moderado";
+"Precip_Level_Heavy"            = "El peso";
+"Precip_Tooltip_Format"         = "%@h) el\nLa lluvia: %.1f%@\nLa nieve: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Presión %@ %@";
+"Pressure_CurrentUnavailable"      = "Presión: --";
+"Pressure_DailyMinMaxFormat"       = "La hora de hoy %@ %@  max %@ %@";
+"Pressure_AverageFormat"           = "Presión media %@ %@";
+"Pressure_DailyRangeFormat"        = "Rango diario: %@ El%@ %@";
+"Pressure_Title"                   = "Presión";
+"Pressure_NoData"                  = "No hay datos de presión disponibles para este día.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "El día de hoy %@ %d";
+"UVGraphNoHourlyData"   = "No hay datos horarios disponibles para este día.";
+"UVGraphNowLabel"       = "Ahora, %@";
+"UVCategory_None"       = "No hay ninguna";
+"UVCategory_Low"        = "Bajo";
+"UVCategory_Moderate"   = "Moderado";
+"UVCategory_High"       = "Alto";
+"UVCategory_VeryHigh"   = "Muy alto";
+"UVCategory_Extreme"    = "Extrema";
+"UVAdvice_None"         = "No se espera que los niveles de UV sean moderados o superiores en este día.";
+"UVAdvice_Range"        = "Se recomienda protección solar. %@ de la %@, alcanzado entre %@ y %@¿ Qué ?";
+"UVGraphMaxLabel" = "Max .";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Visión";
+"Visibility_NoData"                = "No hay datos de visibilidad disponibles para este día.";
+"Visibility_CurrentFormat"         = "Visión %d %@";
+"Visibility_DailyMinMaxFormat"     = "Minutos %d  max %d %@";
+"Visibility_NoCurrentData"         = "No hay datos de visibilidad disponibles.";
+"Visibility_HourlyAverages_NoData" = "No hay datos horarios disponibles.";
+"Visibility_MaxLabel"              = "Max .";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Velocidad del viento y gust";
+"WindGraph_NoData" = "No hay datos de viento disponibles para este día.";
+"WindGraph_SpeedHeader" = "Velocidad del viento %d";
+"WindGraph_GustHeader" = "Guste hasta %d";
+"WindGraph_SpeedRangeHeader" = "Velocidad del viento %d- ¿ Qué ?%d";
+"WindGraph_MaxSpeedLabel" = "Max S";
+"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_DragLabel" = "%@\nVelocidad: %d\nGust: ¿Qué es eso? %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Resumen diario";
+
+"Precipitation Totals" = "Total de las precipitaciones";
+"LAST 24 HOURS" = "Las últimas 24 horas";
+"NEXT 24 HOURS" = "Las próximas 24 horas";
+"Total" = "Total";
+"Rain" = "La lluvia";
+"Snow" = "Nieve";
+
+"About Wind Speed and Gusts" = "Sobre la velocidad del viento y las gotas";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "La velocidad del viento se calcula utilizando el promedio durante un corto período de tiempo.";
+
+"About the Beaufort Scale" = "Sobre la escala de Beaufort";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "La escala de viento Beaufort expresa la fuerza o fuerza del viento a una velocidad determinada. La escala de Beaufort puede facilitar la comprensión de cuán ventoso se sentirá o cuánto efecto podría tener el viento.";
+
+"About Feels Like Temperature" = "Sobre las sensaciones de temperatura";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "El Feels Like transmite lo caliente o frío que se siente y puede ser diferente de la temperatura real.";
+
+"Options" = "Opciones";
+"Temperature" = "Temperatura";
+"Use system setting (°C)" = "Configuración del sistema de uso (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Condiciones";
+"UV Index" = "Indice UV";
+"Wind" = "Viento";
+"Precipitation" = "Precipitación";
+"Humidity" = "Humedad";
+"Visibility" = "Visión";
+"Pressure" = "Presión";
+
+/* Fallback key */
+"displayedCondition" = "se muestraCondición";
+
+/* Titles */
+"Forecast"                   = "Previsión";
+"DailySummary"               = "Resumen diario";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%dAhora con %@ Hay una posibilidad de precipitación de %@Viento de %@ con ráfagas de hasta %d %@La temperatura de hoy varía desde %d° a %d# Y se siente como %d¿Qué es eso? %@, y %@¿ Qué ?";
+"UVIndexFormat"              = "Indice UV hasta %d";
+"HumidityFormat"             = "Humedad alrededor %d%%";
+"HumidityRangeFormat"        = "Humedad de %d%% de la %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@El bajo es %d° y el alto es %dLa temperatura se sentirá como %d° a %d°. Viento de %@ Se espera. %@";
+"NoPrecipLast24h"            = "No se ha registrado precipitación en las últimas 24 horas.";
+"RainLast24h"                = "Hacía llover. %d mm en las últimas 24 horas.";
+"SnowAndRainLast24h"         = "En las últimas 24 horas, la nieve se midió %@ cm y lluvia %d ¿Qué es eso?";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "El número de personas";
+"Dir_ENE" = "En el caso de las";
+"Dir_E"   = "El";
+"Dir_ESE" = "El ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "El sistema de seguridad";
+"Dir_S"   = "El producto";
+"Dir_SSW" = "Las medidas de seguridad";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "El Consejo de Seguridad";
+"Dir_W"   = "El";
+"Dir_WNW" = "El Consejo de Ministros";
+"Dir_NW"  = "Nuevo";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "de la misma";
+"UnitCentimeter" = "Cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Total de las precipitaciones";
+"Last24h_Label"             = "Las últimas 24 horas";
+"Next24h_Label"             = "Las próximas 24 horas";
+"Total_Label"               = "Total";
+"Precipitation_Label"       = "Precipitación";
+"Rain_Label"                = "La lluvia";
+"Snow_Label"                = "Nieve";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "El viento está actualmente %1$d %2$@ de la %3$@Hoy en día, las velocidades del viento son %4$d de la %5$d %2$@, con ráfagas de hasta %6$d %2$@¿ Qué ?";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Las velocidades del viento varían desde %1$d de la %2$d %3$@, con ráfagas de hasta %4$d %3$@¿ Qué ?";
+
+"Beaufort_Scale"                = "Escala de Beaufort";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Descripción";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Calma .";
+"Beaufort_1"                    = "Aire ligero";
+"Beaufort_2"                    = "Brisa ligera";
+"Beaufort_3"                    = "Brisa suave";
+"Beaufort_4"                    = "Brisa moderada";
+"Beaufort_5"                    = "Brisa fresca";
+"Beaufort_6"                    = "Fuerte brisa";
+"Beaufort_7"                    = "Viento fuerte";
+"Beaufort_8"                    = "Gale , ¿ qué es eso ?";
+"Beaufort_9"                    = "Fuerte tormenta";
+"Beaufort_10"                   = "Tormenta";
+"Beaufort_11"                   = "Tormenta violenta";
+"Beaufort_12"                   = "Fuerza de huracán";
+"BeaufortRange_0"               = "El valor de la cantidad de residuos";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Ha habido %.1f%@ La precipitación total de hoy será de %.1f%@En las próximas 24 horas, %.1f%@ se espera precipitación.";
+"ForecastPrecip_OtherDayFormat" = "En el %@, la precipitación total será %.1f%@¿ Qué ?";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Sobre la intensidad de las precipitaciones";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "Previsión";
+"DailySummary_Title"           = "Resumen diario";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "El punto de rocío es %d° a %d¿Qué es eso?";
+"DewPoint_FutureFormat"        = "El punto de rocío será %d° a %d¿Qué es eso?";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Hoy en día, la humedad promedio es %d%%¿ Qué ? %@";
+"ForecastHumidity_Other"       = "En el %@, la humedad media será %d%%¿ Qué ?\n%@";
+
+"AboutPressure_Title"  = "Sobre la presión";
+"AboutPressure_Body"   = "Los cambios significativos y rápidos en la presión se utilizan para predecir los cambios en el clima. Por ejemplo, una caída de la presión puede significar que la lluvia o la nieve están en camino, y el aumento de la presión puede significar que el clima mejorará. La presión también se llama presión barométrica o presión atmosférica.";
+
+"AboutHumidity_Title"  = "Sobre la humedad relativa";
+"AboutHumidity_Body"   = "La humedad relativa, comúnmente conocida como humedad, es la cantidad de humedad en el aire en comparación con lo que el aire puede contener.% mCuando haya rocío o niebla.";
+
+"AboutDewPoint_Title" = "Sobre el punto de la rocío";
+"AboutDewPoint_Body"  = "El punto de rocío es el punto al que la temperatura debería caer para que se forme el rocío. Puede ser una forma útil de saber cuán húmeda se siente el aire  cuanto más alto sea el punto de rocío, más húmedo se siente.";
+
+"Section_Forecast"                     = "Previsión";
+"Section_DailySummary"                 = "Resumen diario";
+"ForecastVisibility_TodayFormat" = "Hoy, la visibilidad será %@, en %d de la %d %@¿ Qué ?";
+"ForecastVisibility_OtherFormat" = "En el %@, la visibilidad más baja será %@ en el %d %@, y el más alto será %@ en el %d %@¿ Qué ?";
+"Clarity_Foggy"                        = "Es muy brumoso.";
+"Clarity_Hazy"                         = "No está bien";
+"Clarity_Clear"                        = "Despejo";
+"Clarity_PerfectlyClear"               = "Está claro.";
+
+"AboutVisibility_Title" = "Sobre la visibilidad";
+"AboutVisibility_Body" = "La visibilidad indica la distancia a la que se pueden ver claramente objetos como edificios y colinas. Es una medida de la transparencia del aire y no tiene en cuenta la cantidad de luz solar o la presencia de obstrucciones. %@ se considera claro.";
+
+"PressureForecast_Today" = "La presión es actualmente %@ %@ Hoy, la presión media será %@ %@, y la presión más baja será %@ %@¿ Qué ?";
+"PressureForecast_Other" = "En el %@, la presión media será %@ %@, y la presión más baja será %@ %@¿ Qué ?";
+"SectionForecast" = "Previsión";
+"SectionDailySummary" = "Resumen diario";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Todas las características del Plan Base";
+"Multi-calendar view" = "Vista de calendario múltiple";
+"Sync with Google Calendar" = "Sincronización con Google Calendar";
+"Sync meets from Google Meet" = "Sincronización se encuentra de Google Conozcamos";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Plan de base";
+"Single-day calendar view" = "Vista de calendario de un solo día";
+"Multi-day calendar view" = "Vista de calendario de varios días";
+"Monthly calendar view" = "Vista del calendario mensual";
+"Yearly overview" = "Presentación anual";
+"List view for events" = "Vista de lista de eventos";
+"Weather view" = "Vista del tiempo";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Plan de venta";
+"Sync with Microsoft Calendar" = "Sincronización con Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Sincronización se encuentra de Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "El equivalente a %@ por mes";
+"%d %@ free" = "%d %@ libre";
+
+/* SubscriptionListView */
+"Premium Plans" = "Planes de venta";
+"You are subscribed to the %@ %@ plan" = "Usted está suscrito a la %@ %@ plan";
+"Renews on: %@" = "Se renueva en: %@";
+"Start Free Trial" = "Comience la prueba gratuita";
+"Subscribe Now" = "Suscribirse ahora";
+"%d %@ free, then %@%@." = "%d %@ libre, entonces %@%@¿ Qué ?";
+"Subscribe for %@%@." = "Suscribirse a %@%@¿ Qué ?";
+"Privacy Policy"     = "Política de privacidad";
+"Terms of Service"   = "Términos de servicio";
+
+/* SubscriptionCategory */
+"Advanced" = "Avanzado";
+"Advanced Plan" = "Plan avanzado";
+"All Advanced Plan features" = "Todas las características del Plan Avanzado";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Necesitas un activo %@ planea acceder a esta sección.";
+"Plan Required" = "Se requiere un plan";
+"OK" = "Está bien.";
+
+/* SubscriptionStatus */
+"Base"    = "Base";
+"Premium" = "Premiación";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Suscrito a %@ %@ - ¿Qué quieres?";
+
+/* Label for renewal date */
+"RenewsOn"            = "Se renueva en: %@";
+
+"Manage Subscription"                   = "Gestionar suscripciones";
+
+/* Period units */
+"Daily"     = "Diariamente";
+"Weekly"    = "Semanal";
+"Monthly"   = "Mensual";
+"Yearly"    = "Año tras año";
+"Recurring" = "Recurrentes";
+
+/* units */
+"day"   = "día";
+"days"  = "días";
+"week"  = "semana";
+"weeks" = "semanas";
+"month"  = "mes";
+"months" = "meses";
+"year"   = "año";
+"years"  = "años";
+
+/* YearMonthMiniView */
+"weekday.headers" = "El número de personas que se encuentren en el mercado de servicios de transporte de mercancías";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "por millas";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "de la misma";
+"Unit_Precipitation_in" = "\" \"";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "enHg";
+
+"Your previous purchases have been successfully restored." = "Sus compras anteriores han sido restauradas con éxito.";
+"No active subscriptions found to restore."                = "No se encontraron suscripciones activas para restaurar.";
+"Failed to restore purchases. Please try again later. (%@)" = "No se han recuperado las compras.%@(en inglés)";
+"Restore Purchases"                                        = "Restaurar las compras";
+
+"Ads Free" = "Anuncios gratis";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Calendario y clima";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Los pequeños muestran la fecha y el clima actual.";
+"Calendar Events" = "Eventos del calendario";
+"Shows today's date, current weather, and your next calendar events." = "Muestra la fecha de hoy, el clima actual y sus próximos eventos en el calendario.";
+"No upcoming events" = "No hay eventos por venir";
+"Tomorrow" = "Mañana";
+"Untitled" = "No tiene título";
+"Detail" = "Detalle";
+"Phase" = "Fase de la fase";
+"Weather" = "El tiempo";
+"Select Your Email" = "Seleccione su correo electrónico";
+"Confirm" = "Confirmar";
+"Calendar name" = "Nombre del calendario";
+"Sharing: %@" = "Compartición: %@";
+"Loading..." = "Cargando...";
+"Selected Location" = "Localización seleccionada";
+"Data provided by Apple Weather" = "Datos proporcionados por Apple Weather";
+"Next" = "Lo siguiente";
+"No details found for the selected location." = "No se encontraron detalles para el lugar seleccionado.";
+"Could not determine the time zone for the selected location." = "No pudo determinar el fuso horario para el lugar seleccionado.";
+"(No Title)" = "(No se puede decir)";
+"Choose your e-mail" = "Elige tu correo electrónico";
+"It will be treated as your primary address and invitations will not be sent to it." = "Se tratará como su dirección principal y no se le enviarán invitaciones.";
+"Invalid URL" = "URL inválida";
+"Rate limit or insufficient permission" = "Limite de tarifa o permiso insuficiente";
+"Network error: %@" = "Erro de red: %@";
+"N/A - Selected Tab: %@" = "N/A - Tab seleccionada: %@";
+"Enable Notifications" = "Habilitar las notificaciones";
+"Event Notifications" = "Notificaciones de eventos";
+"Weather Alert Notifications" = "Notificaciones de alerta meteorológica";
+"Allow notifications so weather alerts can appear." = "Permitir notificaciones para que aparezcan alertas meteorológicas.";
+"Event alerts are scheduled from your event alert settings." = "Las alertas de eventos se programan desde sus configuraciones de alerta de eventos.";
+"Allow notifications so event alerts can appear at the right time." = "Permitir notificaciones para que las alertas de eventos puedan aparecer en el momento adecuado.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Las notificaciones están desactivadas para esta aplicación. Para habilitarlas, vaya a: Configuraciones -> Aplicaciones -> Cloud Calendars -> Notificaciones -> Permitir las notificaciones.";
+"Promo.WiseEating.name" = "Una buena dieta y un buen plan de ejercicio";
+"Promo.WiseEating.description" = "Wise Eating es su entrenador de inteligencia artificial para una nutrición y entrenamiento más inteligentes. Combina la ciencia nutricional moderna con herramientas prácticas para ayudarlo a planificar comidas, diseñar entrenamientos, administrar su despensa y comprender cómo la comida y el movimiento afectan a su cuerpo.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio es el entorno de diseño 3D de élite para desarrolladores de iOS y macOS. Combina renderización RealityKit de alta fidelidad con un poderoso editor de Rich Text para ayudarlo a transformar capturas de pantalla crudas en activos profesionales y de alta conversión de la App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio es el estudio de grabación de pantalla de grado creador para iOS y macOS. Captura tu pantalla y cámara al mismo tiempo, controla el audio del sistema mic + y exporta MP4 limpios para tutoriales, pasatiempos y demostraciones de productos. En iOS, incluso puedes reproducir un video dentro de la aplicación y grabarlo junto con tu cámara para contenido de estilo de reacción y dirigido por el presentador.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI le ayuda a comprender el movimiento del mercado con análisis en el dispositivo y un flujo de trabajo multi-agente diseñado para separar la señal del ruido.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplicaciones";
+"Plan" = "Plan de trabajo";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Tormenta de nieve";
+"WeatherCondition.blowingDust" = "Polvo";
+"WeatherCondition.blowingSnow" = "La nieve sopla";
+"WeatherCondition.breezy" = "- ¿Qué es eso?";
+"WeatherCondition.clear" = "Despejo";
+"WeatherCondition.cloudy" = "No es muy bueno.";
+"WeatherCondition.drizzle" = "El agua";
+"WeatherCondition.flurries" = "Las flurries";
+"WeatherCondition.foggy" = "Noche";
+"WeatherCondition.freezingDrizzle" = "El agua congelada";
+"WeatherCondition.freezingRain" = "Una lluvia helada";
+"WeatherCondition.frigid" = "Frío";
+"WeatherCondition.hail" = "¡Hola!";
+"WeatherCondition.haze" = "El aire";
+"WeatherCondition.heavyRain" = "Fuerte lluvia";
+"WeatherCondition.heavySnow" = "Una fuerte nieve";
+"WeatherCondition.hot" = "¿Qué es?";
+"WeatherCondition.hurricane" = "El huracán";
+"WeatherCondition.isolatedThunderstorms" = "Tormentas aisladas";
+"WeatherCondition.mostlyClear" = "En su mayoría claro";
+"WeatherCondition.mostlyCloudy" = "Principalmente nublado";
+"WeatherCondition.partlyCloudy" = "En parte nublado";
+"WeatherCondition.rain" = "La lluvia";
+"WeatherCondition.scatteredThunderstorms" = "Tormentas de trueno dispersas";
+"WeatherCondition.sleet" = "El grano";
+"WeatherCondition.smoky" = "El humo";
+"WeatherCondition.snow" = "Nieve";
+"WeatherCondition.strongStorms" = "Una tormenta de granizo";
+"WeatherCondition.sunFlurries" = "Las Flurries del Sol";
+"WeatherCondition.sunShowers" = "Las duchas de sol";
+"WeatherCondition.thunderstorms" = "Tormenta de granizo";
+"WeatherCondition.tropicalStorm" = "Tormenta tropical";
+"WeatherCondition.windy" = "Viento .";
+"WeatherCondition.wintryMix" = "Mezcla de invierno";
+"MoonPhase.new" = "Luna nueva";
+"MoonPhase.waxingCrescent" = "Creciente media luna";
+"MoonPhase.firstQuarter" = "El primer trimestre";
+"MoonPhase.waxingGibbous" = "Los Gibbous de cera";
+"MoonPhase.full" = "Luna llena";
+"MoonPhase.waningGibbous" = "Gibbous en desvanecimiento";
+"MoonPhase.lastQuarter" = "El último trimestre";
+"MoonPhase.waningCrescent" = "La luna media que se desvanece";
+"WeatherAlert.Preview.Tornado" = "Advertencia de tornado: busque refugio seguro inmediatamente.";
+"WeatherAlert.Preview.Source" = "Servicio meteorológico";
+"WeatherAlert.Preview.Region" = "Área de pronóstico";
+"Saved Regions" = "Las regiones salvadas";
+"Current Location" = "Localización actual";
+"Reorder Region" = "Región de reordenamiento";
+"WeatherAlert.Preview.HighTemperature" = "Advertencia amarilla para altas temperaturas";
+"Illumination" = "Iluminación";
+"Shared event" = "Evento compartido";
+"Add to Calendar" = "Añadir al calendario";
+"Event added" = "Actuación añadida";
+"Already in your calendar" = "Ya está en tu calendario";
+"Unable to add event" = "No se puede añadir evento";
+"Calendar Access Required" = "Se requiere acceso al calendario";
+"Allow calendar access in Settings to add this event." = "Permite el acceso al calendario en Configuración para agregar este evento.";
+"Open Settings" = "Configuración abierta";
+"Adding…" = "Y añadir...";
+"Couldn’t find a writable calendar." = "No pude encontrar un calendario escriturable.";
+"Please try again." = "Por favor, vuelva a intentarlo.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Cambiar el plan";
+"Current Plan" = "Plan actual";
+"You can change your plan or billing period at any time." = "Puede cambiar su plan o el período de facturación en cualquier momento.";
+"Invites" = "Invitaciones";
+"Cancelled" = "Cancelado";
+"Shared by me" = "Compartido por mí";
+"Shared with me" = "Compartido conmigo";
+"No shared events yet." = "No hay eventos compartidos todavía.";
+"No one has shared an event with you yet." = "Nadie ha compartido un evento contigo todavía.";
+"Events you send from the share sheet appear here." = "Los eventos que envías de la hoja de acciones aparecen aquí.";
+"Invitations go to" = "Las invitaciones van a";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Las invitaciones que aceptas se añaden aquí y se mantienen actualizadas.";
+"Sample shared event" = "Muestra de evento compartido";
+"Sofia" = "Sofía";
+"Team lunch" = "Almuerzo de equipo";
+
+/* Booking */
+"Booking page" = "Página de reserva";
+"Your name" = "Su nombre";
+"Display name" = "Nombre de la pantalla";
+"Source calendar" = "Calendario de origen";
+"Booked meetings land here, and your busy times here block new bookings." = "Las reuniones reservadas llegan aquí, y sus tiempos ocupados aquí bloquean nuevas reservas.";
+"Meeting types" = "Tipos de reuniones";
+"%lld min" = "%lld Minutos";
+"Add meeting type" = "Añadir tipo de reunión";
+"Weekly hours" = "Horario semanal";
+"Save booking page" = "Guardar la página de reserva";
+"Your booking page is live" = "Su página de reserva está en vivo";
+"Share this link — anyone can book one of your open times." = "Comparte este enlace  cualquiera puede reservar uno de sus horarios abiertos.";
+"Share link" = "Enlace de compartir";
+"Edit settings" = "Modificar la configuración";
+"Add at least one meeting type." = "Añadir al menos un tipo de reunión.";
+"Turn on at least one day with valid hours." = "Encienda al menos un día con horarios válidos.";
+"Set up a booking page" = "Configurar una página de reserva";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Deja que la gente reserve tus horarios abiertos, las reuniones se ubican en el calendario que elijas, y tus horarios ocupados mantengan esas ranuras libres.";
+"Approve on this device" = "Aplicación en este dispositivo";
+"Set up web booking" = "Configurar la reserva en la web";
+"You're all set" = "Estás listo.";
+"Couldn't approve" = "No podía aprobar";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Aproveche vincular este navegador a su calendario para que pueda crear una página de reserva en la web  gratis, porque tiene la aplicación.";
+"Linking…" = "- Enlazar...";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Vuelve a tu navegador  está listo para terminar de configurar tu página de reserva.";
+"The code may have expired. Reopen the QR on the web and try again." = "El código puede haber expirado. QR en la red y vuelva a intentarlo.";
+"Read-only shared event" = "Evento compartido solo para lectura";
+"Remove from My Calendar" = "Quita de mi calendario";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars cuenta";
+"App Clip sharing account" = "App Clip cuenta compartida";
+"Required for synced App Clip events and recovery after reinstalling." = "Requerido para sincronizar App Clip eventos y recuperación después de la reinstalación.";
+"Continue with Google" = "Continúe con Google";
+"Sign Out" = "Registración";
+"Signing in…" = "Firmar el registro...";
+"Sign In" = "Regístrese";
+"Sign in to continue" = "Inscríbete para continuar";
+"Your account keeps this shared event recoverable after reinstalling the app." = "Su cuenta mantiene este evento compartido recuperable después de reinstalar la aplicación.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Esta cuenta es dueña App Clip Se separa de los registros de calendario del proveedor.";
+"Sign in with Google or Apple to share and receive synced events." = "Regístrese con Google o Apple para compartir y recibir eventos sincronizados.";
+"Apple did not return an identity token." = "Apple no devolvió una ficha de identidad.";
+"Unable to share event" = "No se puede compartir el evento";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "El evento no se pudo guardar a su Cloud Calendars Por favor, vuelve a intentarlo.";
+"Google" = "Google";
+"Apple" = "Manzana";
+"Microsoft" = "Microsoft";
+"Connect" = "Conectar";
+"Connected" = "Conectado";
+"Sign in with at least one account" = "Ingrese con al menos una cuenta";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "Conectar Google, la manzana, MicrosoftCada identidad conectada abre la misma cuenta de eventos compartidos.";
+"A Premium subscription is required to connect Microsoft." = "Se requiere una suscripción Premium para conectarse Microsoft¿ Qué ?";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "Estas identidades son sólo para App Clip Los datos de acceso a los calendarios y la sincronización de los datos de acceso a los calendarios de los proveedores de datos de acceso a los datos de acceso a los calendarios de los usuarios de los servicios de datos de los mismos.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Regístrese con Google, manzana, o Microsoft compartir y recibir eventos sincronizados.";
+"Share a verified email during sign-in to use synced events and invitations." = "Compartir un correo electrónico verificado durante el inicio de sesión para usar eventos y invitaciones sincronizados.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "Debes compartir un correo electrónico verificado durante el inicio de sesión. La gente lo utilizará para encontrar y invitarte a calendarios y eventos.";
+"Manage connected accounts" = "Gestionar cuentas conectadas";
+"Apple, Google, and Microsoft" = "La manzana, Google, y Microsoft";
+"Open account sign-in" = "Registro de cuenta abierta";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "Se requiere un correo electrónico verificado para compartir, recuperar o utilizar el acceso otorgado por un propietario.";
+"Accept" = "Acceptad";
+"Access removed" = "El acceso eliminado";
+"Add a Mail account on this device, then try again." = "Agregue una cuenta de correo en este dispositivo, y luego vuelva a intentarlo.";
+"Add a writable calendar before moving this event." = "Añadir un calendario escriturable antes de mover este evento.";
+"Add everyone who should receive this calendar and choose their access." = "Añadir a todos los que deben recibir este calendario y elegir su acceso.";
+"Add everyone who should receive this event and choose their access." = "Añadir a todos los que deberían recibir este evento y elegir su acceso.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "Después de Save, %@ Su copia local permanecerá sólo para lectura con una línea a través de ella.";
+"Anonymous recipient" = "Recipiente anónimo";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "Apple no devolvió un correo electrónico. En Configuración, deje de usar Apple ID para Cloud Calendars, luego volver a conectarse y elegir Compartir Mi correo electrónico.";
+"Calendar invitation" = "Invitación al calendario";
+"Cancel for Everyone" = "Cancelación para todos";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Seleccione Lector, Escritor o propietario. Los propietarios también pueden compartir este evento y administrar el acceso.";
+"Choose how to share this synced event." = "Elija cómo compartir este evento sincronizado.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars No pude guardar la sesión en este dispositivo.";
+"Cloud Calendars user" = "Cloud Calendars usuario";
+"Could not add: %@." = "No pude añadir: %@¿ Qué ?";
+"Custom on this device" = "Personalizado en este dispositivo";
+"Decline" = "Descenso";
+"Default from creator" = "El creador";
+"Deleted by owner" = "Borrado por el propietario";
+"Each email address can appear only once." = "Cada dirección de correo electrónico sólo puede aparecer una vez.";
+"Enter a valid email address for %@." = "Ingrese una dirección de correo electrónico válida para %@¿ Qué ?";
+"From %@" = "De la %@";
+"Invitation pending" = "Invitación pendiente";
+"Loading shared calendars…" = "Cargar calendarios compartidos...";
+"Mail is not configured" = "El correo no está configurado";
+"Manage calendar sharing" = "Gestionar el intercambio de calendarios";
+"New calendar invitation" = "Nueva invitación de calendario";
+"New event invitation" = "Invitación a un nuevo evento";
+"No calendars have been shared with you yet." = "No se han compartido calendarios con usted todavía.";
+"Open a shared event or calendar" = "Abre un evento compartido o calendario";
+"Open this event with Cloud Calendars:\n\n%@" = "Abre este evento con Cloud Calendars¿Qué es esto ?\n\n%@";
+"Original creator" = "Creador original";
+"People" = "La gente";
+"People appear here after they add the event." = "La gente aparece aquí después de agregar el evento.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "Coloque una Cloud Calendars evento o calendario QR código dentro del marco.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "El lector puede ver y sincronizar. El escritor puede editar. El propietario también puede compartir y administrar el acceso después de iniciar sesión con el correo electrónico invitado.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "El lector puede ver. El escritor puede editar eventos. El propietario también puede compartir el calendario y administrar el acceso.";
+"Remove" = "Retirado";
+"Remove Shared Calendar?" = "¿Quitar el calendario compartido?";
+"Remove from My Calendars" = "Retiré de mis calendarios";
+"Resend" = "Envía el mensaje";
+"Scan QR Code" = "Escanear QR Código";
+"Scan to open this calendar" = "Escanear para abrir este calendario";
+"Scan to open this event" = "Escanear para abrir este evento";
+"Server returned %lld: %@" = "El servidor regresó %lld¿Qué es esto ? %@";
+"Shared calendar" = "Calendario compartido";
+"Shared calendar information" = "Información compartida sobre el calendario";
+"Shared event: %@" = "Evento compartido: %@";
+"Sign in or manage accounts" = "Registre o administre cuentas";
+"Sign in to manage event access." = "Ingrese para administrar el acceso al evento.";
+"Sign in to save event access." = "Ingrese para guardar el acceso al evento.";
+"Sign in to see calendars shared with you." = "Ingrese para ver los calendarios compartidos con usted.";
+"Sign-in couldn’t open. Please try again." = "No se pudo abrir el registro, por favor vuelva a intentarlo.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "Deja de compartir este calendario con %@Después de Save, su copia congelada y sus eventos permanecerán visibles con una línea a través de ellos.";
+"The calendar and its events will be removed only from this device." = "El calendario y sus eventos se eliminarán únicamente de este dispositivo.";
+"The provider didn’t return the information required to sign in." = "El proveedor no devolvió la información necesaria para iniciar sesión.";
+"The provider returned an invalid response." = "El proveedor devolvió una respuesta inválida.";
+"The sign-in response couldn’t be verified. Please try again." = "La respuesta de inicio de sesión no pudo ser verificada.";
+"The sign-in response was invalid. Please try again." = "La respuesta de inicio de sesión fue inválida.";
+"This changes only your local copy. Shared event details stay read-only." = "Esto cambia sólo su copia local. Los detalles del evento compartido permanecen sólo para lectura.";
+"This color changes only on this device." = "Este color cambia sólo en este dispositivo.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "Esto es QR el código no contiene una Cloud Calendars evento o calendario.";
+"This QR code does not contain a Cloud Calendars share." = "Esto es QR el código no contiene una Cloud Calendars Comparte.";
+"This removes only your local copy. Other people keep access." = "Esto elimina sólo tu copia local.";
+"Try again" = "Inténtalo de nuevo.";
+"Unable to Update Calendar" = "No se puede actualizar el calendario";
+"Unable to add calendar" = "No se puede añadir calendario";
+"Unreadable response from the server" = "Respuesta no legible del servidor";
+"Use Apple, Google, or Microsoft." = "Usar la manzana, Google, o Microsoft¿ Qué ?";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "Utilice un dispositivo con una cámara disponible para escanear un Cloud Calendars QR ¿Qué es el código?";
+"You can add up to 50 people at once." = "Puedes sumar hasta 50 personas a la vez.";
+"You can send up to 50 invitations at once." = "Puedes enviar hasta 50 invitaciones a la vez.";
+"%lld connected account" = "%lld cuenta conectada";
+"%lld connected accounts" = "%lld cuentas conectadas";
+"%lld pending invitation" = "%lld Invitación pendiente";
+"%lld pending invitations" = "%lld Invitaciones pendientes";
+"%lld upcoming event" = "%lld próximo evento";
+"%lld upcoming events" = "%lld acontecimientos próximos";
+"%@ invited you to %@" = "%@ te invitó a %@";

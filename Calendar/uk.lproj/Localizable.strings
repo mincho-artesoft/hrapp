@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld події";
+"%lld events" = "%lld події";
+"Share Pop-up" = "Поділяйте Поп-ап";
+"Would you like to share this event?" = "Хочете поділитися цим подією?";
+"Don't ask again" = "Не запитай знову.";
+"No email was provided." = "Ніяких електронних листів не було надано.";
+"Please enter a valid email to continue." = "Будь ласка, введіть дійсний електронний лист, щоб продовжити.";
+"Your email" = "Ваша електронна пошта";
+"Save" = "Зберегти";
+"Login" = "Вхід";
+"Logout" = "Виведення";
+
+/* RootView */
+"N/A" = "Н/А";
+"Calendars" = "Календари";
+"Inbox" = "Повідомлення";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Інші";
+"Google calendars" = "Google calendarС";
+"No synced Google calendars yet." = "Без синхронізації Google calendar- Я ще не знаю.";
+"Microsoft calendars" = "Microsoft calendarС";
+"No synced Microsoft calendars yet." = "Без синхронізації Microsoft calendar- Я ще не знаю.";
+"Sign out" = "Підпишіться";
+"Add iCloud Calendar" = "Додавати iCloud Календарь";
+"Share calendars with iCloud Calendar" = "Поділитися календарем з iCloud Календарь";
+"Sign in with Google" = "Підпишіться з Google";
+"Sign in with Microsoft" = "Підпишіться з Microsoft";
+"Deselect All" = "Вибрати всі";
+"Select All" = "Виберіть всі";
+"No Email" = "Немає електронної пошти";
+"Add Google Calendar" = "Додавати Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "Назва календаря";
+"Account" = "Счет";
+"COLOR" = "ЦУР";
+"NOTIFICATIONS" = "Повідомлення";
+"Event Alerts" = "Попередження про події";
+"Allow events on this calendar to display alerts." = "Дозвольте подіям в цьому календарі відображати попередження.";
+"Add Calendar" = "Додавати календар";
+
+/* Colors */
+"Red" = "Червоний";
+"Orange" = "Оранжевий";
+"Yellow" = "Жільтий";
+"Green" = "Зілений";
+"Blue" = "Синій";
+"Purple" = "Фіолетовий";
+"Brown" = "Бруно";
+"Custom" = "Зазвичай";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Колер календаря";
+"Custom..." = "Зазвичай...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Редагуйте календар";
+"Delete Calendar" = "Знімайте календар";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Завантажую налаштування обміну...";
+"Shared with these users" = "Об'єднано з цими користувачами";
+"Add New Email" = "Додавати нову електронну пошту";
+"Email to share" = "Повідомлення електронної пошти";
+"Permission:" = "Дозвол:";
+"Add" = "Додавати";
+"Sharing:" = "Розділ:";
+"Done" = "Скінчено";
+
+"Error loading: %@" = "Помилка завантаження: %@";
+"Error adding: %@" = "Помилка додавання: %@";
+"Error deleting: %@" = "Вичистка помилки: %@";
+"Error updating: %@" = "Помилка оновлення: %@";
+"Error re-inviting (delete): %@" = "Помилка повторного запрошення (вимірання): %@";
+"Error re-inviting (insert): %@" = "Помилка повторного запрошення (вставка): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Читач";
+"Writer" = "Автор";
+"Owner"  = "Власник";
+
+/* MonthCalendarView */
+"Day View" = "Див'я на день";
+"This is a repeating event." = "Це повторення події.";
+"Save for This Event Only" = "Зарештою, тільки на цей день";
+"Save for Future Events" = "Забережіть на майбутні події";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Сонце";
+"Mon" = "Mon";
+"Tue" = "Туї";
+"Wed" = "Заміж";
+"Thu" = "Тю";
+"Fri" = "Фр.";
+"Sat" = "Сет";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Близько";
+
+/* AllEventsListView */
+"No calendar access." = "Не має доступу до календаря.";
+
+/* EventRowView */
+"Ends" = "Кончинок";
+
+/* SearchEventRowView */
+"No Title" = "Без титулу";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Приєднуйтесь до зібрання";
+"Edit" = "Редагуйте";
+"Duplicate" = "Дупліка";
+"Delete" = "Знімайте";
+"Share" = "Ділитися";
+"Add to Google Meet" = "Додавати Google Зустріч";
+"Add to Microsoft Teams" = "Додавати Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Не вибраний діапазон";
+"all-day" = "весь день";
+"Search events..." = "Пошукові події...";
+"Day" = "День";
+"MultiDay" = "Багатоденні";
+"Month" = "Місяць";
+"Year" = "Год";
+"List" = "Список";
+"MultiCalendar" = "Мультикалендар";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Нове події";
+"All-day event" = "Цеденне заходу";
+"Recurring Event" = "Повторення події";
+"This event is part of a series. Update which events?" = "Це подія є частиною серії.";
+"This Event Only" = "Тільки цей подій";
+"All Future Events" = "Всі події майбутнього";
+"Cancel" = "Відкласти";
+
+/* DraggableMenuView */
+"Calendar" = "Календарь";
+"Subscriptions" = "Підписки";
+"Settings" = "Наклади";
+"Sharing" = "Розділ";
+"Live" = "Живі";
+"Stop" = "Стій.";
+"Calendar Live Activity" = "Календарна активність";
+"Get" = "Зробіть";
+"Color" = "Колер";
+"Search for a city…" = "Шукайте місто...";
+"No directions" = "Ніяких вказів";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Доступ до місця відмовлений.";
+"Cannot refresh. Location unknown." = "Не можу оновити, місцезнаходження невідомо.";
+"10-DAY FORECAST" = "Десятиденний прогноз";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "завтра";
+"on_day" = "на %@";
+"in_days" = "в %d дні";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Нове події";
+
+/* Search placeholder */
+"Search for a city..." = "Шукайте місто...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Натисніть час, щоб швидко додати події в календарі.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "Свідчення";
+"similar_to_actual_temp" = "Схожі з фактичною температурою.";
+"wind_cooler_feel" = "Вітер робить все холоднішим.";
+"humidity_warmer_feel" = "Вільганість робить його теплішим.";
+
+/* HumidityCard */
+"HUMIDITY" = "НЕХТІВНОСТ";
+"The dew point is %d° right now." = "Точка роси %d- Зараз.";
+"dewPoint.current" = "Точка роси %d- Зараз.";
+
+/* MoonCard */
+"MOON PHASE" = "ПАСЕ МОЗНЯ";
+"Moonrise" = "Місяць";
+"Moonset" = "Місяць";
+"Next %@" = "Наступний %@";
+"Data unavailable" = "Недоступні дані";
+"%d day" = "%d день";
+"%d days" = "%d дні";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "ПРЕЦІПІТАЦИЯ";
+"PRECIPITATION_CARD_TODAY_LABEL" = "сьогодні";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Наступне очікування %1$.0f %2$@ %3$@- Я не знаю."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Не очікується скорой опадів.";
+
+/* PressureCard */
+"PRESSURE" = "Тиск";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "СУННІС";
+"Sunrise: %@" = "Сун'я підходить: %@";
+"Sunset: %@" = "Запад: %@";
+"Sunrise" = "Сун'я підходить";
+"Sunset" = "Запад сонця";
+
+
+"Sunrise and Sunset" = "З'явився сонце і заходить сонце";
+"First Light" = "Перше світло";
+"Solar Noon" = "Сонячний обід";
+"Last Light" = "Останнє світло";
+"Total Daylight" = "Тотальний світлоденний світ";
+
+/* UVIndexCard */
+"UV INDEX" = "UV INDEX";
+"Low" = "Низький";
+"Moderate" = "Умірна";
+"High" = "Високий";
+"Very High" = "Дуже високий";
+"Extreme" = "Екстремний";
+
+/* VisibilityCard */
+"VISIBILITY" = "Зірокність";
+"km" = "км";
+"Perfectly clear view." = "Досконало ясне вигляд.";
+"Excellent visibility." = "Чудова видимость.";
+"Good visibility." = "Хороша видимость.";
+"Moderate visibility." = "Умірна видимость.";
+"Poor visibility." = "- Погано бачимо.";
+"Very poor visibility." = "Дуже погана видимость.";
+"visibility.perfect"   = "Досконало ясне вигляд.";
+"visibility.excellent" = "Чудова видимость.";
+"visibility.good"      = "Хороша видимость.";
+"visibility.moderate"  = "Умірна видимость.";
+"visibility.poor"      = "- Погано бачимо.";
+"visibility.verypoor"  = "Дуже погана видимость.";
+"visibility.unknown"   = "";
+
+/* WindCard */
+"WIND" = "Вітер";
+"Gusts" = "Гасти";
+"Direction" = "Направлення";
+"km/h" = "км/год";
+"Compass_N" = "N";
+"Compass_S" = "С";
+"Compass_W" = "У";
+"Compass_E" = "Е";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Не вдалося отримати дані про погоду.";
+"Falling" = "Падати";
+"Rising" = "Підняття";
+"Steady" = "Стійкий";
+"Unknown" = "Невідомі";
+"Sunny" = "Сунні";
+"Cloudy" = "Облачна";
+"Partly Cloudy" = "Частично хмарна";
+"Drizzle" = "Дрізль";
+"Thunderstorm" = "Гром";
+"Fog" = "Тума";
+"Partly Cloudy Night" = "Частично хмарна ніч";
+"Clear Night" = "Ясна ніч";
+"Hazy" = "Смачна";
+"Today" = "Сьогодні";
+"Now" = "Тепер";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "Е";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "СЕ";
+"cardinal.S"   = "С";
+"cardinal.SSW" = "ССВ";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "У";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "ЗН";
+"cardinal.NNW" = "ННВ";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Шанс на дощів";
+"Today's chance: %d%%" = "Сьогоднішня можливість: %d%%";
+"%@'s chance: %d%%" = "%@Шанс: %d%%";
+"Max" = "Макс";
+"Min" = "Міна";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Щодня можливість опадів, як правило, вища, ніж у кожну годину.";
+"ChanceOfPrecipitation_Title" = "Шанс на дощів";
+"TodaysChance"                = "Сьогоднішня можливість: %d%%";
+"OtherDayChance"              = "%@Шанс: %d%%";
+"DailyChanceExplanation"      = "Щодня можливість опадів, як правило, вища, ніж у кожну годину.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Чувствую";
+"Actual" = "Фактичний";
+"No hourly data available for this day." = "На сьогоднішній день немає годинних даних.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Що таке температура, яка виникає в результаті вільгіння, сонячного світла або вітру.";
+"The actual air temperature." = "Фактична температура повітря.";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat"  = "L: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Увлажність";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Увлажність %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Увлажність Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Сьогоднішня міні- %d%%  Максимально %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Макс";
+"ChartMarker_Min"           = "Міна";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Дощ: %.1f%@Сніг: %.1f%@";
+"Precip_Total_RainFormat"       = "Дощ: %.1f%@";
+"Precip_Total_SnowFormat"       = "Сніг: %.1f%@";
+"Precip_Total_None"             = "Опадніща: 0%@";
+"Precip_Bars_Subtitle"          = "Часні штрихи для дощу та снігу (%@).";
+"Precip_Level_Light"            = "Світло";
+"Precip_Level_Moderate"         = "Умірна";
+"Precip_Level_Heavy"            = "Важливий";
+"Precip_Tooltip_Format"         = "%@h\nДощ: %.1f%@\nСніг: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Тиск %@ %@";
+"Pressure_CurrentUnavailable"      = "Тиск: --";
+"Pressure_DailyMinMaxFormat"       = "Сьогоднішня міні- %@ %@  Максимально %@ %@";
+"Pressure_AverageFormat"           = "Середній тиск %@ %@";
+"Pressure_DailyRangeFormat"        = "Дніве діапазон: %@%@ %@";
+"Pressure_Title"                   = "Тиск";
+"Pressure_NoData"                  = "На сьогодні немає даних про тиск.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Сьогоднішня %@ %d";
+"UVGraphNoHourlyData"   = "На сьогоднішній день немає годинних даних.";
+"UVGraphNowLabel"       = "Тепер, %@";
+"UVCategory_None"       = "Нікого";
+"UVCategory_Low"        = "Низький";
+"UVCategory_Moderate"   = "Умірна";
+"UVCategory_High"       = "Високий";
+"UVCategory_VeryHigh"   = "Дуже високий";
+"UVCategory_Extreme"    = "Екстремний";
+"UVAdvice_None"         = "У цей день не очікується середнього або більш високого рівня УФ.";
+"UVAdvice_Range"        = "Рекомендується захист від сонця. %@ до %@, досягнуто між %@ і %@- Я не знаю.";
+"UVGraphMaxLabel" = "Макс";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Видності";
+"Visibility_NoData"                = "На сьогодні немає даних про видимості.";
+"Visibility_CurrentFormat"         = "Видності %d %@";
+"Visibility_DailyMinMaxFormat"     = "мінімум %d  Максимально %d %@";
+"Visibility_NoCurrentData"         = "Податок про видимості не існує.";
+"Visibility_HourlyAverages_NoData" = "Немає даних на годину.";
+"Visibility_MaxLabel"              = "Макс";
+"Visibility_MinLabel"              = "Міна";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Швидкість вітру і густ";
+"WindGraph_NoData" = "На сьогодні немає даних про вітер.";
+"WindGraph_SpeedHeader" = "Швидкість вітру %d";
+"WindGraph_GustHeader" = "Доїжджає до %d";
+"WindGraph_SpeedRangeHeader" = "Швидкість вітру %d- Я не знаю.%d";
+"WindGraph_MaxSpeedLabel" = "Макс С";
+"WindGraph_MaxGustLabel" = "Макс Г";
+"WindGraph_DragLabel" = "%@\nШвидкість: %d\nГаст: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Кожного дня";
+
+"Precipitation Totals" = "Об'єм осадків";
+"LAST 24 HOURS" = "Останні 24 години";
+"NEXT 24 HOURS" = "Пізні 24 години";
+"Total" = "Об'єм";
+"Rain" = "Дощ";
+"Snow" = "Сніг";
+
+"About Wind Speed and Gusts" = "Про швидкість вітру і густи";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Швидкість вітру розраховується за допомогою середнього за короткий період часу.";
+
+"About the Beaufort Scale" = "Про масштаб Бофорта";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Шкала вітру Beaufort виражає, наскільки сильний чи сильний вітер на даній швидкості. Шкала Beaufort може полегшити розуміння, наскільки вітерним він буде відчувати або наскільки впливатиме вітер.";
+
+"About Feels Like Temperature" = "Про температуру";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Це означає, що температура, яка відчувається, може відрізнятися від температури, коли вона відчуває тепла або холоду.";
+
+"Options" = "Опозиції";
+"Temperature" = "Температура";
+"Use system setting (°C)" = "Установка системи використання (°C)";
+"mm, cm" = "мм, см";
+
+/* Dynamic label titles */
+"Conditions" = "Умови";
+"UV Index" = "UV-Індекс";
+"Wind" = "Вітер";
+"Precipitation" = "Потопи";
+"Humidity" = "Увлажність";
+"Visibility" = "Видності";
+"Pressure" = "Тиск";
+
+/* Fallback key */
+"displayedCondition" = "показанаУмова";
+
+/* Titles */
+"Forecast"                   = "Прогноз";
+"DailySummary"               = "Кожного дня";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° тепер з %@ У разі виникнення опадів, %@Вітер з %@ з випадами до %d %@Сьогодні температура становить %d° до %d° і відчуває, як %d- Я не знаю. %@, і %@- Я не знаю.";
+"UVIndexFormat"              = "УФ-індекс до %d";
+"HumidityFormat"             = "Вільгкість навколо %d%%";
+"HumidityRangeFormat"        = "Увлажність від %d%% до %d%%";
+"NA"                         = "Н/А";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@Нижче %d° і високий %d°. Температура буде відчувати, як %d° до %d°. Вітер з %@ - це очікувано. %@";
+"NoPrecipLast24h"            = "За останні 24 години не було зафіксовано опадів.";
+"RainLast24h"                = "Дощо. %d мм за останні 24 години.";
+"SnowAndRainLast24h"         = "За останні 24 години, сніг вимірюється %@ см і дощ %d Мм.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "Е";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "СЕ";
+"Dir_S"   = "С";
+"Dir_SSW" = "ССВ";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "У";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "ЗН";
+"Dir_NNW" = "ННВ";
+
+/* units */
+"UnitMillimeter" = "Мм";
+"UnitCentimeter" = "в см";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Об'єм осадків";
+"Last24h_Label"             = "Останні 24 години";
+"Next24h_Label"             = "Пізні 24 години";
+"Total_Label"               = "Об'єм";
+"Precipitation_Label"       = "Потопи";
+"Rain_Label"                = "Дощ";
+"Snow_Label"                = "Сніг";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Ветро зараз %1$d %2$@ від %3$@Сьогодні швидкість вітру %4$d до %5$d %2$@, з випадами до %6$d %2$@- Я не знаю.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Швидкість вітру варіюється від %1$d до %2$d %3$@, з випадами до %4$d %3$@- Я не знаю.";
+
+"Beaufort_Scale"                = "Шкала Бофорта";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Описание";
+"Beaufort_Column_kmh" = "км/год";
+"Beaufort_0"                    = "Спокійні";
+"Beaufort_1"                    = "Світло повітря";
+"Beaufort_2"                    = "Лягкий вітер";
+"Beaufort_3"                    = "Нежна вітерка";
+"Beaufort_4"                    = "Умірений вітер";
+"Beaufort_5"                    = "Світло свіже";
+"Beaufort_6"                    = "Сильний вітер";
+"Beaufort_7"                    = "Сильний вітер";
+"Beaufort_8"                    = "Гейл";
+"Beaufort_9"                    = "Сильний ветер";
+"Beaufort_10"                   = "Буря";
+"Beaufort_11"                   = "Сильний шторм";
+"Beaufort_12"                   = "Сила урагану";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "У світі %.1f%@ Сьогодні загальний рівень осадків буде %.1f%@У найближчі 24 години %.1f%@ Очікується опадів.";
+"ForecastPrecip_OtherDayFormat" = "На %@, загальний осадж буде %.1f%@- Я не знаю.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Про те, як сильні опади";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "Прогноз";
+"DailySummary_Title"           = "Кожного дня";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Точка роси %d° до %d- Я не знаю.";
+"DewPoint_FutureFormat"        = "Точка роси буде %d° до %d- Я не знаю.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Сьогодні середня вологість %d%%- Я не знаю. %@";
+"ForecastHumidity_Other"       = "На %@, середня вологість буде %d%%- Я не знаю.\n%@";
+
+"AboutPressure_Title"  = "Про тиск";
+"AboutPressure_Body"   = "Значні, швидкі зміни тиску використовуються для передбачення змін в погоді. Наприклад, падіння тиску може означати, що йде дощ або сніг, а зростання тиску може означати, що погода покращиться. Тиск також називається барометричним тиском або атмосферним тиском.";
+
+"AboutHumidity_Title"  = "Про відносну вологість";
+"AboutHumidity_Body"   = "Односна вільгатість, загально відома як вільгатість, - це кількість вільгити в повітрі порівняно з тим, що може утворити повітря.% mколи там може бути рога або тума.";
+
+"AboutDewPoint_Title" = "Про \"Джу-Пайнт\"";
+"AboutDewPoint_Body"  = "Точка роси - це те, до чого температура повинна спадати, щоб роситва утворилася. Це може бути корисним способом сказати, як вологій повітря відчувається.";
+
+"Section_Forecast"                     = "Прогноз";
+"Section_DailySummary"                 = "Кожного дня";
+"ForecastVisibility_TodayFormat" = "Сьогодні, видимості буде %@, на %d до %d %@- Я не знаю.";
+"ForecastVisibility_OtherFormat" = "На %@, найнижче видимості буде %@ на %d %@, і найвищий буде %@ на %d %@- Я не знаю.";
+"Clarity_Foggy"                        = "Тумані";
+"Clarity_Hazy"                         = "Смачна";
+"Clarity_Clear"                        = "Чисте";
+"Clarity_PerfectlyClear"               = "Це цілком зрозуміло.";
+
+"AboutVisibility_Title" = "Про видимості";
+"AboutVisibility_Body" = "Видності показує, наскільки далеко ви можете чітко бачити предмети, такі як будівлі та гори. %@ вважається зрозумілим.";
+
+"PressureForecast_Today" = "Натиск в даний час %@ %@ Сьогодні середнє тиск буде %@ %@, і найнижчий тиск буде %@ %@- Я не знаю.";
+"PressureForecast_Other" = "На %@, середній тиск буде %@ %@, і найнижчий тиск буде %@ %@- Я не знаю.";
+"SectionForecast" = "Прогноз";
+"SectionDailySummary" = "Кожного дня";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Всі функції базового плану";
+"Multi-calendar view" = "Вигляд багатокалендарних";
+"Sync with Google Calendar" = "Синхронізуйте з Google Calendar";
+"Sync meets from Google Meet" = "Синхрон зустрічається з Google Зустріч";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Основний план";
+"Single-day calendar view" = "Вигляд календаря на один день";
+"Multi-day calendar view" = "Вигляд багатоденного календаря";
+"Monthly calendar view" = "Мосячний показ календаря";
+"Yearly overview" = "Годовой огляд";
+"List view for events" = "Вигляд списку для подій";
+"Weather view" = "Погода";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "План премію";
+"Sync with Microsoft Calendar" = "Синхронізуйте з Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Синхрон зустрічається з Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Копію %@ щомісячно";
+"%d %@ free" = "%d %@ безкоштовно";
+
+/* SubscriptionListView */
+"Premium Plans" = "Планування преміум";
+"You are subscribed to the %@ %@ plan" = "Ви підписані на %@ %@ план";
+"Renews on: %@" = "Оновлення: %@";
+"Start Free Trial" = "Зачатайте безкоштовний пробний процес";
+"Subscribe Now" = "Підпишіться зараз";
+"%d %@ free, then %@%@." = "%d %@ вільна, то %@%@- Я не знаю.";
+"Subscribe for %@%@." = "Підпишіться на %@%@- Я не знаю.";
+"Privacy Policy"     = "Політика конфіденційності";
+"Terms of Service"   = "Умови надання послуг";
+
+/* SubscriptionCategory */
+"Advanced" = "Продовжена";
+"Advanced Plan" = "Передові плани";
+"All Advanced Plan features" = "Всі функції Плану";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Вам потрібен активний %@ планують отримати доступ до цього розділу.";
+"Plan Required" = "Необхідний план";
+"OK" = "Добре.";
+
+/* SubscriptionStatus */
+"Base"    = "База";
+"Premium" = "Премія";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Підписана на %@ %@ - План.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Оновлення: %@";
+
+"Manage Subscription"                   = "Управляйте підписом";
+
+/* Period units */
+"Daily"     = "щоденно";
+"Weekly"    = "Щороку";
+"Monthly"   = "щомісячний";
+"Yearly"    = "Щорічно";
+"Recurring" = "Повторення";
+
+/* units */
+"day"   = "день";
+"days"  = "дні";
+"week"  = "тиждень";
+"weeks" = "тижні";
+"month"  = "місяць";
+"months" = "місяці";
+"year"   = "рік";
+"years"  = "роки";
+
+/* YearMonthMiniView */
+"weekday.headers" = "С,М,Т,В,Т,Ф,С";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "км/год";
+"Unit_Speed_mph" = "миль";
+"Unit_Distance_km" = "км";
+"Unit_Distance_mi" = "Мі";
+"Unit_Precipitation_mm" = "Мм";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "вHg";
+
+"Your previous purchases have been successfully restored." = "Ваші попередні покупки були успішно відновлені.";
+"No active subscriptions found to restore."                = "Ніяких активних підписів не знайдено.";
+"Failed to restore purchases. Please try again later. (%@)" = "Не вдалося відновити покупки.%@)";
+"Restore Purchases"                                        = "Відновити покупки";
+
+"Ads Free" = "Реклама безкоштовна";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Календар і погода";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Невеликі покази дати і поточного погоду.";
+"Calendar Events" = "Події в календарі";
+"Shows today's date, current weather, and your next calendar events." = "З'ясує сьогоднішню дату, поточну погоду і наступні події на календарі.";
+"No upcoming events" = "Ніяких майбутніх подій";
+"Tomorrow" = "Завтра";
+"Untitled" = "Беззаголовна";
+"Detail" = "Деталі";
+"Phase" = "Фаза";
+"Weather" = "Погода";
+"Select Your Email" = "Виберіть електронну пошту";
+"Confirm" = "Підтвердження";
+"Calendar name" = "Назва календаря";
+"Sharing: %@" = "Розділ: %@";
+"Loading..." = "Завантаження...";
+"Selected Location" = "Вибрано місце";
+"Data provided by Apple Weather" = "Дані, надані Apple Weather";
+"Next" = "Наступний";
+"No details found for the selected location." = "Ніяких деталей не знайдено для обраного місця.";
+"Could not determine the time zone for the selected location." = "Не вдалося визначити часовий потік для обраного місця.";
+"(No Title)" = "(Без титулу)";
+"Choose your e-mail" = "Виберіть свою електронну пошту";
+"It will be treated as your primary address and invitations will not be sent to it." = "Вона буде розглядатися як ваш головний адрес і запрошення не будуть направлені до неї.";
+"Invalid URL" = "Недійний URL";
+"Rate limit or insufficient permission" = "Ограничення ставки або недостатнє дозволення";
+"Network error: %@" = "Помилка мережі: %@";
+"N/A - Selected Tab: %@" = "N/A - Обирана вкладка: %@";
+"Enable Notifications" = "Обов'язково повідомлення";
+"Event Notifications" = "За повідомленням про події";
+"Weather Alert Notifications" = "Увіщення про погоду";
+"Allow notifications so weather alerts can appear." = "Дозвольте повідомленням, щоб могли з'являтися попередження про погоду.";
+"Event alerts are scheduled from your event alert settings." = "Попередження подій плануються з ваших налаштувань попередження подій.";
+"Allow notifications so event alerts can appear at the right time." = "Дозвольте повідомленням, щоб повідомлення про події могли з'являтися в потрібний час.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "У цьому додатку виключені повідомлення. Щоб дозволити їх, перейдіть на: Настройки -> Приклади -> Cloud Calendars -> Повідомлення -> Дозвольте повідомлення.";
+"Promo.WiseEating.name" = "Мудре харчування і планування фітнесу";
+"Promo.WiseEating.description" = "Wise Eating є вашим тренеру для більш розумного харчування і тренування. Він поєднує сучасну науку про харчування з практичними інструментами, які допоможуть вам планувати їжу, розробляти тренування, керувати свій прибор і зрозуміти, як їжа і рух впливають на ваше тіло.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio - елітна 3D-дизайнерська середовища для розробників iOS і macOS. Вона поєднує високодостоверне рендеринг RealityKit з потужним редактором Rich Text, щоб допомогти вам перетворити сировини екранів в професійні, високо конвертуючі активи App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio - студія для запису екрану для iOS і macOS. Зафіксуйте екран і камеру одночасно, контролюйте аудіо мікрофон + системи і експортуйте чисті MP4 для уроків, проходів і демонстрацій продукту. На iOS ви навіть можете відтворювати відео всередині додатку і записати його разом з камерою для реакційного стилю та контенту, який веде презентатор.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI допомагає зрозуміти рух ринку з допомогою аналітики на пристрої та багатоагентного робочого потоку, розробленого для відділення сигналу від шуму. Відстежувати дані цін у реальному часі, досліджувати ймовірність режиму, а також використовувати чіткі панелі управління та графіки для підтримки прийняття рішень.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Прикладання";
+"Plan" = "План";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Снежна буря";
+"WeatherCondition.blowingDust" = "Пыл";
+"WeatherCondition.blowingSnow" = "Сніг, що дзьмує";
+"WeatherCondition.breezy" = "Брізі";
+"WeatherCondition.clear" = "Чисте";
+"WeatherCondition.cloudy" = "Облачна";
+"WeatherCondition.drizzle" = "Дрізль";
+"WeatherCondition.flurries" = "Флюри";
+"WeatherCondition.foggy" = "Тума";
+"WeatherCondition.freezingDrizzle" = "Заморозний дрізль";
+"WeatherCondition.freezingRain" = "Зморожаючий дощ";
+"WeatherCondition.frigid" = "Холодний";
+"WeatherCondition.hail" = "Довідь";
+"WeatherCondition.haze" = "Гмурові";
+"WeatherCondition.heavyRain" = "Сильний дощ";
+"WeatherCondition.heavySnow" = "Сильний сніг";
+"WeatherCondition.hot" = "Гарний";
+"WeatherCondition.hurricane" = "Ураган";
+"WeatherCondition.isolatedThunderstorms" = "Ізольовані грози";
+"WeatherCondition.mostlyClear" = "Найчастіше ясна";
+"WeatherCondition.mostlyCloudy" = "Найчастіше хмарні.";
+"WeatherCondition.partlyCloudy" = "Частично хмарна";
+"WeatherCondition.rain" = "Дощ";
+"WeatherCondition.scatteredThunderstorms" = "Розповсюджені громощі";
+"WeatherCondition.sleet" = "Сліт";
+"WeatherCondition.smoky" = "Дым";
+"WeatherCondition.snow" = "Сніг";
+"WeatherCondition.strongStorms" = "Сильний гроз";
+"WeatherCondition.sunFlurries" = "Сунні флюри";
+"WeatherCondition.sunShowers" = "Сунні душі";
+"WeatherCondition.thunderstorms" = "Гром";
+"WeatherCondition.tropicalStorm" = "Тропічна буря";
+"WeatherCondition.windy" = "Вітряний";
+"WeatherCondition.wintryMix" = "Зімовий зміш";
+"MoonPhase.new" = "Новий Місяць";
+"MoonPhase.waxingCrescent" = "Восячий півмісяць";
+"MoonPhase.firstQuarter" = "Перший квартал";
+"MoonPhase.waxingGibbous" = "Висіччі гіпбоси";
+"MoonPhase.full" = "Повний Місяць";
+"MoonPhase.waningGibbous" = "Змирені Гіббуси";
+"MoonPhase.lastQuarter" = "Останній квартал";
+"MoonPhase.waningCrescent" = "Змираючий півмісяць";
+"WeatherAlert.Preview.Tornado" = "Попередження з торнадо: негайно шукати безпечне притулок.";
+"WeatherAlert.Preview.Source" = "Служба погоди";
+"WeatherAlert.Preview.Region" = "Об'єкт прогнозування";
+"Saved Regions" = "Збережені регіони";
+"Current Location" = "Текуче місцезнаходження";
+"Reorder Region" = "Реордерний регіон";
+"WeatherAlert.Preview.HighTemperature" = "Жільтий попередження для високих температур";
+"Illumination" = "Освітлення";
+"Shared event" = "Сподільне заходу";
+"Add to Calendar" = "Додавати до календаря";
+"Event added" = "Додано події";
+"Already in your calendar" = "Уже в твоєму календарі.";
+"Unable to add event" = "Не можна додати події";
+"Calendar Access Required" = "Доступ до календаря необхідний";
+"Allow calendar access in Settings to add this event." = "Дозвольте отримати доступ до календаря в налаштуваннях, щоб додати цю подію.";
+"Open Settings" = "Відкрити налаштування";
+"Adding…" = "Додаючи...";
+"Couldn’t find a writable calendar." = "Не знайшов записного календаря.";
+"Please try again." = "Пробуйте ще раз.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Змінить план";
+"Current Plan" = "Подійний план";
+"You can change your plan or billing period at any time." = "Ви можете змінити свій план або термін розрахунку в будь-який час.";
+"Invites" = "Запрошення";
+"Cancelled" = "Відменено";
+"Shared by me" = "Я поділюся з ними.";
+"Shared with me" = "Поділяється зі мною";
+"No shared events yet." = "Ще немає спільних подій.";
+"No one has shared an event with you yet." = "Ніхто ще не поділився з вами подією.";
+"Events you send from the share sheet appear here." = "Події, які ви відправляєте з листа акцій, з'являються тут.";
+"Invitations go to" = "Запрошення йдуть до";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Якщо відправник відкликає запрошення, воно залишається видимим з лінією через нього.";
+"Sample shared event" = "Вибір поділи";
+"Sofia" = "Софія";
+"Team lunch" = "Командний обід";
+
+/* Booking */
+"Booking page" = "Страница бронювання";
+"Your name" = "Твоє ім'я";
+"Display name" = "Назва дисплею";
+"Source calendar" = "Календар джерела";
+"Booked meetings land here, and your busy times here block new bookings." = "Зарезервовані зустрічі приземлюються тут, а ваші зайняті часи тут блокують нові замови.";
+"Meeting types" = "Типи зустрічей";
+"%lld min" = "%lld мінімум";
+"Add meeting type" = "Додавати тип зустрічі";
+"Weekly hours" = "Тижневі години";
+"Save booking page" = "Зберігайте сторінку бронювання";
+"Your booking page is live" = "Ваша сторінка за бронювання працює";
+"Share this link — anyone can book one of your open times." = "Поділиться цією посиланням  будь-хто може замовити один з ваших відкритих годин.";
+"Share link" = "Зв'язок для обміну";
+"Edit settings" = "Редагувати налаштування";
+"Add at least one meeting type." = "Додайте хоча б один тип зустрічі.";
+"Turn on at least one day with valid hours." = "Запустити щонайменше один день з дійсним часом.";
+"Set up a booking page" = "Створюйте сторінку бронювання";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Позвольте людям замовити час відкриття, а зустрічі записуються на ваш вибір, і ваші зайняті часи залишають ці часи вільними.";
+"Approve on this device" = "Захвалення на цьому пристрої";
+"Set up web booking" = "Налагодити бронювання в Інтернеті";
+"You're all set" = "Ви все готові.";
+"Couldn't approve" = "Не міг схвалити";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Заверніть посилання цього браузера на свій календар, щоб ви могли створити сторінку бронювання в Інтернеті безкоштовно, тому що у вас є додаток.";
+"Linking…" = "З'єднує...";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Поверніться до браузера, він готовий до створення сторінки бронювання.";
+"The code may have expired. Reopen the QR on the web and try again." = "Код може закінчитися. QR в Інтернеті і спробуйте знову.";
+"Read-only shared event" = "Поділяється поділа для читання";
+"Remove from My Calendar" = "Знесення з мого календаря";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars рахунку";
+"App Clip sharing account" = "App Clip спільний рахунок";
+"Required for synced App Clip events and recovery after reinstalling." = "Необхідний для синхронізації App Clip події та відновлення після повторної установки.";
+"Continue with Google" = "Продовжуйте Google";
+"Sign Out" = "Підпишіться";
+"Signing in…" = "Підписую...";
+"Sign In" = "Підпишіться";
+"Sign in to continue" = "Підписуйтеся , щоб продовжити";
+"Your account keeps this shared event recoverable after reinstalling the app." = "Ваш акаунт зберігає спільний подію відновлюваною після повторного встановлення додатку.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Цей рахунок володіє App Clip Розділяється і відновлюється після повторної установки.";
+"Sign in with Google or Apple to share and receive synced events." = "Підпишіться з Google або Apple для обміну та отримання синхронних подій.";
+"Apple did not return an identity token." = "Apple не повернула ідентифікатор.";
+"Unable to share event" = "Не можна поділитися подією";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "Події не могли бути збережені для вашого Cloud Calendars Пробуйте ще раз.";
+"Google" = "Google";
+"Apple" = "Яблука";
+"Microsoft" = "Microsoft";
+"Connect" = "З'єднати";
+"Connected" = "З'єднані";
+"Sign in with at least one account" = "Зайдіть на сайт з принаймні одним рахунком";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "З'єднати Google, яблука, MicrosoftКожна пов'язана ідентичність відкриває один і той же об'єднаний об'єкт.";
+"A Premium subscription is required to connect Microsoft." = "Для підключення потрібна абоненція на преміум Microsoft- Я не знаю.";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "Ці ідентичності є лише для App Clip Вони залишаються окремими від входу в систему постачальника календаря та синхронізації.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Підпишіться з Google, яблука, або Microsoft поділитися та отримувати синхронізовані події.";
+"Share a verified email during sign-in to use synced events and invitations." = "Поділитися перевіреніми електронними листами під час реєстрації, щоб використовувати синхронні події та запрошення.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "Ви повинні поділитися підтвердженою електронною поштою під час реєстрації. Люди будуть використовувати її для пошуку і запрошення вас на календари та події.";
+"Manage connected accounts" = "Управління пов'язаними рахунками";
+"Apple, Google, and Microsoft" = "Яблука, Google, і Microsoft";
+"Open account sign-in" = "Відкриття реєстрації на рахунку";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "Для обміну, відновлення або використання доступу, наданого власником, потрібна перевірена електронна пошта.";
+"Accept" = "Прийміть";
+"Access removed" = "Доступ видалений";
+"Add a Mail account on this device, then try again." = "Додайте на цей пристрій акаунт Mail, а потім спробуйте ще раз.";
+"Add a writable calendar before moving this event." = "Додайте записний календар перед переміщенням цієї події.";
+"Add everyone who should receive this calendar and choose their access." = "Додайте всіх, хто повинен отримати цей календар і виберіть їх доступ.";
+"Add everyone who should receive this event and choose their access." = "Додайте всіх, хто повинен отримати цю подію і виберіть їх доступ.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "Після Сау, %@ Їхня локальна копія залишиться лише для читання з лінією через неї.";
+"Anonymous recipient" = "Анонімний одержувач";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "Apple не відправила електронну пошту. У параграфі Настройки перестаньте використовувати Apple ID для Cloud Calendars, потім підключиться знову і виберіть Поділити мою електронну пошту.";
+"Calendar invitation" = "Запрошення на календар";
+"Cancel for Everyone" = "Відкласти для всіх";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Виберіть читач, письменник або власник. Власники також можуть поділитися цією подією і керувати доступом.";
+"Choose how to share this synced event." = "Виберіть, як поділитися цим синхронним заходом.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars Не вдалося зберегти сесію на цьому пристрої.";
+"Cloud Calendars user" = "Cloud Calendars користувач";
+"Could not add: %@." = "Не змогла додати: %@- Я не знаю.";
+"Custom on this device" = "Намовний на цей пристрій";
+"Decline" = "Зниження";
+"Default from creator" = "Позадумова від творця";
+"Deleted by owner" = "Витриманий власником";
+"Each email address can appear only once." = "Кожна електронна пошта може з'являтися лише один раз.";
+"Enter a valid email address for %@." = "Введіть дійсний адрес електронної пошти для %@- Я не знаю.";
+"From %@" = "З %@";
+"Invitation pending" = "Запрошення чекає";
+"Loading shared calendars…" = "Завантажуючи спільні календари...";
+"Mail is not configured" = "Пошта не налаштована";
+"Manage calendar sharing" = "Управляйте обміну календарем";
+"New calendar invitation" = "Новий запрошення на календар";
+"New event invitation" = "Нове запрошення на захід";
+"No calendars have been shared with you yet." = "До сих пір з вами не поділилися календаріми.";
+"Open a shared event or calendar" = "Відкрити подію або календар";
+"Open this event with Cloud Calendars:\n\n%@" = "Відкрити цю подію Cloud CalendarsУведення:\n\n%@";
+"Original creator" = "Оригінальний творчик";
+"People" = "Люди";
+"People appear here after they add the event." = "Люди з'являються тут після того, як вони додають подію.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "Розмістити Cloud Calendars події або календар QR код в кадрі.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "Читач може переглядати і синхронізувати. письменник може редагувати. Власник також може ділитися і керувати доступом після входу з запрошеною електронною поштою.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "Читач може переглядати, письменник може редагувати події, власник також може поділитися календарем і керувати доступом.";
+"Remove" = "Виведення";
+"Remove Shared Calendar?" = "Знімайте спільний календар?";
+"Remove from My Calendars" = "Знімайте з моїх календарів";
+"Resend" = "Перепродажу";
+"Scan QR Code" = "Сканування QR Код";
+"Scan to open this calendar" = "Сканування для відкриття цього календаря";
+"Scan to open this event" = "Сканування для відкриття цієї події";
+"Server returned %lld: %@" = "Сервер повернувся %lldУведення: %@";
+"Shared calendar" = "Сподільний календар";
+"Shared calendar information" = "Об'єднана інформація про календар";
+"Shared event: %@" = "Сподільне заходу: %@";
+"Sign in or manage accounts" = "Запишітися або керувати рахунками";
+"Sign in to manage event access." = "Прийміться, щоб керувати доступом до події.";
+"Sign in to save event access." = "Завісніться, щоб зберегти доступ до події.";
+"Sign in to see calendars shared with you." = "Запишіться, щоб побачити календари, які ділиться з вами.";
+"Sign-in couldn’t open. Please try again." = "Запис не відкрився, спробуйте ще раз.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "Перестань ділитися цим календарем з %@Після \"Сейв\" їхня заморожена копія і її події залишаться видими з лінією через них.";
+"The calendar and its events will be removed only from this device." = "Календар і його події видаляються тільки з цього пристрою.";
+"The provider didn’t return the information required to sign in." = "Постачальник не повернув інформацію, необхідну для підписання.";
+"The provider returned an invalid response." = "Постачальник відповів неактуальним.";
+"The sign-in response couldn’t be verified. Please try again." = "Відповідь про реєстрацію не була перевірена.";
+"The sign-in response was invalid. Please try again." = "Відповідь на запис була недійсна.";
+"This changes only your local copy. Shared event details stay read-only." = "Це змінює лише місцеву копію.";
+"This color changes only on this device." = "Цей колір змінюється тільки на цьому пристрої.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "Це QR код не містить Cloud Calendars події або календар.";
+"This QR code does not contain a Cloud Calendars share." = "Це QR код не містить Cloud Calendars поділитися.";
+"This removes only your local copy. Other people keep access." = "Це видаляє лише місцеву копію, інші люди зберігають доступ.";
+"Try again" = "Попробуй ще раз.";
+"Unable to Update Calendar" = "Не вдалося оновлювати календар";
+"Unable to add calendar" = "Не можна додати календар";
+"Unreadable response from the server" = "Нечитання відповіді сервера";
+"Use Apple, Google, or Microsoft." = "Використовуйте яблуко, Google, або Microsoft- Я не знаю.";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "Використовуйте пристрій з доступною камерою для сканування Cloud Calendars QR Код.";
+"You can add up to 50 people at once." = "Ви можете додати до 50 людей одночасно.";
+"You can send up to 50 invitations at once." = "Ви можете відправити до 50 запрошень одночасно.";
+"%lld connected account" = "%lld пов'язаний рахунок";
+"%lld connected accounts" = "%lld пов'язані рахунки";
+"%lld pending invitation" = "%lld чекає запрошення";
+"%lld pending invitations" = "%lld чекають запрошення";
+"%lld upcoming event" = "%lld майбутня подія";
+"%lld upcoming events" = "%lld майбутній подій";
+"%@ invited you to %@" = "%@ запросив вас %@";

@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars sử dụng vị trí của bạn khi hoạt động để tích hợp dự báo thời tiết địa phương chính xác trực tiếp vào lịch của bạn.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars yêu cầu quyền truy cập vào lịch để thống nhất các sự kiện của bạn từ các lịch iCloud, Google và Microsoft, cho phép lập lịch liền mạch.";
+
+"NSCameraUsageDescription" = "Cloud Calendars sử dụng camera để quét mã QR của sự kiện và lịch được chia sẻ.";

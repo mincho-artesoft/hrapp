@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Το Cloud Calendars χρησιμοποιεί την τοποθεσία σας ενώ είναι ενεργό για να ενσωματώσει ακριβείς τοπικές προγνώσεις καιρού απευθείας στο ημερολόγιό σας.";
 
 "NSCalendarsFullAccessUsageDescription" = "Το Cloud Calendars απαιτεί πρόσβαση στο ημερολόγιο για να ενοποιήσει τα συμβάντα σας από τα ημερολόγια iCloud, Google και Microsoft, επιτρέποντας τον απρόσκοπτο προγραμματισμό.";
+
+"NSCameraUsageDescription" = "Το Cloud Calendars χρησιμοποιεί την κάμερα για τη σάρωση κωδικών QR κοινόχρηστων συμβάντων και ημερολογίων.";

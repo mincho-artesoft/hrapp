@@ -1,0 +1,13 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars zahtijeva pristup kalendaru da se ujedine događaje od iCloud-Nisam. Google, i Microsoft calendarS. omogućava bezuslovno rasporedenje.";
+
+"NSContactsUsageDescription" = "Cloud Calendars Koristi kontaktove kako bi pojednostavnili pozivnice za događaj i bez napora upravljali detaljima učesnika.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars pristupiti vaš položaj čak i kada je aplikacija zatvorena, pružajući tačne vremenske prognoze i blagovremene upozorenja za vaše planirane događaje.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars koristi vašu lokaciju dok je aktivna kako bi direktno u svoj kalendar integrirala tačne lokalne vremenske prognoze.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars zahtijeva pristup kalendaru da se ujedine događaje od iCloud-Nisam. Google, i Microsoft calendarS. omogućava bezuslovno rasporedenje.";
+
+"NSCameraUsageDescription" = "Cloud Calendars koristi kameru za skeniranje QR kodova dijeljenih događaja i kalendara.";

@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld udalosť";
+"%lld events" = "%lld udalosti";
+"Share Pop-up" = "Podieľanie Pop-up";
+"Would you like to share this event?" = "Chcete sa o túto udalosť podeliť?";
+"Don't ask again" = "Neopýtaj sa znova.";
+"No email was provided." = "Žiadne e-mailové správy neboli poskytnuté.";
+"Please enter a valid email to continue." = "Prosím, zadajte platný e-mail, aby ste pokračovali.";
+"Your email" = "Váš e-mail";
+"Save" = "Ušetriť";
+"Login" = "Vstup";
+"Logout" = "Vstup";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "Kalendáre";
+"Inbox" = "Prístupná schránka";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Ostatné";
+"Google calendars" = "Google calendars";
+"No synced Google calendars yet." = "Žiadne synchronizované Google calendarEšte nie.";
+"Microsoft calendars" = "Microsoft calendars";
+"No synced Microsoft calendars yet." = "Žiadne synchronizované Microsoft calendarEšte nie.";
+"Sign out" = "Vyhláste sa .";
+"Add iCloud Calendar" = "Pridať iCloud Kalendár";
+"Share calendars with iCloud Calendar" = "Podieľajte kalendáre s iCloud Kalendár";
+"Sign in with Google" = "Zapíšte sa s Google";
+"Sign in with Microsoft" = "Zapíšte sa s Microsoft";
+"Deselect All" = "Vyberte všetky";
+"Select All" = "Vyberte všetky";
+"No Email" = "Žiadne e-mailové správy";
+"Add Google Calendar" = "Pridať Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "Názov kalendára";
+"Account" = "Účet";
+"COLOR" = "ZÁRD";
+"NOTIFICATIONS" = "Oznámenia";
+"Event Alerts" = "Výstrahy o udalostiach";
+"Allow events on this calendar to display alerts." = "Nechajte udalosti v tomto kalendári zobrazovať upozornenia.";
+"Add Calendar" = "Pridať kalendár";
+
+/* Colors */
+"Red" = "Červená";
+"Orange" = "Pomarančová";
+"Yellow" = "Žltý";
+"Green" = "Zelená";
+"Blue" = "Modrá";
+"Purple" = "Fialový";
+"Brown" = "Hnedý";
+"Custom" = "Obvyklé";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Farba kalendára";
+"Custom..." = "Obvyklé...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Vymenúť kalendár";
+"Delete Calendar" = "Zmazať kalendár";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Naložovanie nastavenia zdieľania...";
+"Shared with these users" = "Zdieľané s týmito používateľmi";
+"Add New Email" = "Pridať nový e-mail";
+"Email to share" = "E-mail na zdieľanie";
+"Permission:" = "Povolenie:";
+"Add" = "Pridať";
+"Sharing:" = "Spolupráca:";
+"Done" = "Vyriešené";
+
+"Error loading: %@" = "Následné zaťaženie: %@";
+"Error adding: %@" = "Doplnenie chyby: %@";
+"Error deleting: %@" = "Odstránenie chyby: %@";
+"Error updating: %@" = "Zmeny aktualizácie: %@";
+"Error re-inviting (delete): %@" = "Opätovné vyvolanie chyby (vymazanie): %@";
+"Error re-inviting (insert): %@" = "Opätovné vyzve chyby (vložte): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Čítač";
+"Writer" = "Písateľ";
+"Owner"  = "Majiteľ";
+
+/* MonthCalendarView */
+"Day View" = "Dnevý pohľad";
+"This is a repeating event." = "Toto je opakovaná udalosť.";
+"Save for This Event Only" = "Ušetríme len túto udalosť";
+"Save for Future Events" = "Ušetrite si na budúce udalosti";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Slnko";
+"Mon" = "Mon";
+"Tue" = "Tuie";
+"Wed" = "Vydal";
+"Thu" = "Thu";
+"Fri" = "Dňa 1.";
+"Sat" = "SET";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "- V blízkosti";
+
+/* AllEventsListView */
+"No calendar access." = "Žiaden prístup k kalendárom.";
+
+/* EventRowView */
+"Ends" = "Koniec";
+
+/* SearchEventRowView */
+"No Title" = "Žiadny názov";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Pridajte sa na stretnutie";
+"Edit" = "Upravovať";
+"Duplicate" = "Dvojitý";
+"Delete" = "Zmazanie";
+"Share" = "Podieľanie";
+"Add to Google Meet" = "Pridať Google Stretneme sa";
+"Add to Microsoft Teams" = "Pridať Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Žiaden vybraný rozsah";
+"all-day" = "Celý deň";
+"Search events..." = "Vyhľadávacie udalosti...";
+"Day" = "Dňa";
+"MultiDay" = "Mnoho dní";
+"Month" = "Mesiac";
+"Year" = "Rok";
+"List" = "Zoznam";
+"MultiCalendar" = "Vyrovnanie";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Nová udalosť";
+"All-day event" = "Celodenná udalosť";
+"Recurring Event" = "Návratná udalosť";
+"This event is part of a series. Update which events?" = "Táto udalosť je súčasťou série.";
+"This Event Only" = "Len táto udalosť";
+"All Future Events" = "Všetky budúce udalosti";
+"Cancel" = "Zrušiť";
+
+/* DraggableMenuView */
+"Calendar" = "Kalendár";
+"Subscriptions" = "Predplatné";
+"Settings" = "Nastavenia";
+"Sharing" = "Podieľanie";
+"Live" = "Žiť";
+"Stop" = "Zastavte sa .";
+"Calendar Live Activity" = "Kalendárná aktivita";
+"Get" = "- Poď.";
+"Color" = "Farba";
+"Search for a city…" = "Hľadanie mesta...";
+"No directions" = "Žiadne usmernenia";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Hľadajte mesto alebo udelíte prístup v nastavení.";
+"Cannot refresh. Location unknown." = "Nemôžem sa osviežiť, miesto nie je známe.";
+"10-DAY FORECAST" = "10 Dňový predvídateľ";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "zajtra";
+"on_day" = "na %@";
+"in_days" = "v %d dni";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Nová udalosť";
+
+/* Search placeholder */
+"Search for a city..." = "Hľadanie mesta...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Kliknite na hodinu, aby ste rýchlo pridali udalosť kalendára.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "Cítite sa ako";
+"similar_to_actual_temp" = "Podobná skutočnej teplote.";
+"wind_cooler_feel" = "V vetre sa cíti chladnejšie.";
+"humidity_warmer_feel" = "Vlhkosť spôsobuje, že sa cíti teplejšie.";
+
+/* HumidityCard */
+"HUMIDITY" = "VYVRADNosť";
+"The dew point is %d° right now." = "Dásový bod je %d- Teraz.";
+"dewPoint.current" = "Dásový bod je %d- Teraz.";
+
+/* MoonCard */
+"MOON PHASE" = "FÁZA MESU";
+"Moonrise" = "Vstanie mesiaca";
+"Moonset" = "Múnus";
+"Next %@" = "Ďalší %@";
+"Data unavailable" = "Nedostatočné údaje";
+"%d day" = "%d deň";
+"%d days" = "%d dni";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "Predbežné";
+"PRECIPITATION_CARD_TODAY_LABEL" = "dnes";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Ďalšia očakávaná %1$.0f %2$@ %3$@- Áno ."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Čoskoro sa neočakáva žiadne dažďa.";
+
+/* PressureCard */
+"PRESSURE" = "Tlak";
+"hPa" = "hPa";
+
+/* SunsetCard */
+"SUNRISE" = "SUNRISE";
+"Sunrise: %@" = "Vystúpnutie slnka: %@";
+"Sunset: %@" = "Západ slnka: %@";
+"Sunrise" = "Vystúpenie slnka";
+"Sunset" = "Západ slnka";
+
+
+"Sunrise and Sunset" = "Vystúpnutie a západ slnka";
+"First Light" = "Prvé svetlo";
+"Solar Noon" = "Slnečné obede";
+"Last Light" = "Posledné svetlo";
+"Total Daylight" = "Celkový denný svetl";
+
+/* UVIndexCard */
+"UV INDEX" = "UV INDEX";
+"Low" = "Nízky";
+"Moderate" = "Umierané";
+"High" = "Vysoký";
+"Very High" = "Veľmi vysoko";
+"Extreme" = "Extrémne";
+
+/* VisibilityCard */
+"VISIBILITY" = "Viditeľnosť";
+"km" = "km";
+"Perfectly clear view." = "Dokonale čistý pohľad.";
+"Excellent visibility." = "Výborná viditeľnosť.";
+"Good visibility." = "Dobrú viditeľnosť.";
+"Moderate visibility." = "Umieraná viditeľnosť.";
+"Poor visibility." = "- Zlá viditeľnosť.";
+"Very poor visibility." = "Veľmi slabá viditeľnosť.";
+"visibility.perfect"   = "Dokonale čistý pohľad.";
+"visibility.excellent" = "Výborná viditeľnosť.";
+"visibility.good"      = "Dobrú viditeľnosť.";
+"visibility.moderate"  = "Umieraná viditeľnosť.";
+"visibility.poor"      = "- Zlá viditeľnosť.";
+"visibility.verypoor"  = "Veľmi slabá viditeľnosť.";
+"visibility.unknown"   = " ";
+
+/* WindCard */
+"WIND" = "Výchot";
+"Gusts" = "Vkusy";
+"Direction" = "smer";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "V";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Nezdvihol som údaje o počasí, prosím skontrolujte spojenie alebo skúste znova neskôr.";
+"Falling" = "Spadnutie";
+"Rising" = "Rast";
+"Steady" = "Stabilný";
+"Unknown" = "Neznáme";
+"Sunny" = "Slunčité .";
+"Cloudy" = "Oblačený";
+"Partly Cloudy" = "Často oblaková";
+"Drizzle" = "Driszzle";
+"Thunderstorm" = "Hradové búrky";
+"Fog" = "Mýra";
+"Partly Cloudy Night" = "Často oblakovaná noc";
+"Clear Night" = "Jasná noc";
+"Hazy" = "Nejasný";
+"Today" = "Dnes";
+"Now" = "Teraz.";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "Nové";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "V";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Šanca na dažď";
+"Today's chance: %d%%" = "Dnes je šanca: %d%%";
+"%@'s chance: %d%%" = "%@Šanca: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Denná pravdepodobnosť srážok je väčšia ako pravdepodobnosť za každú hodinu.";
+"ChanceOfPrecipitation_Title" = "Šanca na dažď";
+"TodaysChance"                = "Dnes je šanca: %d%%";
+"OtherDayChance"              = "%@Šanca: %d%%";
+"DailyChanceExplanation"      = "Denná pravdepodobnosť srážok je väčšia ako pravdepodobnosť za každú hodinu.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Cítim sa ako";
+"Actual" = "Účtovná hodnota";
+"No hourly data available for this day." = "Na tento deň nie sú k dispozícii hodiny.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Ako sa cíti teplota v dôsledku vlhkosti, slnečného svetla alebo vetra.";
+"The actual air temperature." = "- Pravá teplota vzduchu.";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat"  = "L: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Vlhkosť";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Vlhkosť %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Vlhkosť Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "Dnešný min %d%%  maximálne %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "Dešť: %.1f%@Sneh: %.1f%@";
+"Precip_Total_RainFormat"       = "Dešť: %.1f%@";
+"Precip_Total_SnowFormat"       = "Sneh: %.1f%@";
+"Precip_Total_None"             = "Predsahy: 0%@";
+"Precip_Bars_Subtitle"          = "Hodinové palice pre dážď a sneh (%@(v článku 2).";
+"Precip_Level_Light"            = "Svetlo";
+"Precip_Level_Moderate"         = "Umierané";
+"Precip_Level_Heavy"            = "Těžký";
+"Precip_Tooltip_Format"         = "%@h)\nDešť: %.1f%@\nSneh: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Tlač %@ %@";
+"Pressure_CurrentUnavailable"      = "Tlač: --";
+"Pressure_DailyMinMaxFormat"       = "Dnešný min %@ %@  maximálne %@ %@";
+"Pressure_AverageFormat"           = "Priemerný tlak %@ %@";
+"Pressure_DailyRangeFormat"        = "Denný rozsah: %@ %@ %@";
+"Pressure_Title"                   = "Tlač";
+"Pressure_NoData"                  = "Na tento deň nie sú k dispozícii žiadne údaje o tlaku.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "Dnes je %@ %d";
+"UVGraphNoHourlyData"   = "Na tento deň nie sú k dispozícii hodiny.";
+"UVGraphNowLabel"       = "Teraz, %@";
+"UVCategory_None"       = "Žiadna";
+"UVCategory_Low"        = "Nízky";
+"UVCategory_Moderate"   = "Umierané";
+"UVCategory_High"       = "Vysoký";
+"UVCategory_VeryHigh"   = "Veľmi vysoko";
+"UVCategory_Extreme"    = "Extrémne";
+"UVAdvice_None"         = "V tento deň sa neočakáva žiadne stredne alebo vyššie hladiny UV.";
+"UVAdvice_Range"        = "Odporúča sa ochranu pred slnkom. %@ na %@, dosiahnuté medzi %@ a %@- Áno .";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Viditeľnosť";
+"Visibility_NoData"                = "Na tento deň nie sú k dispozícii žiadne údaje o viditeľnosti.";
+"Visibility_CurrentFormat"         = "Viditeľnosť %d %@";
+"Visibility_DailyMinMaxFormat"     = "min. %d  maximálne %d %@";
+"Visibility_NoCurrentData"         = "Aktuálne údaje o viditeľnosti nie sú k dispozícii.";
+"Visibility_HourlyAverages_NoData" = "Neexistujú žiadne hodinné údaje.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Rýchlosť vetra a gust";
+"WindGraph_NoData" = "Na tento deň nie sú dostupné údaje o vetre.";
+"WindGraph_SpeedHeader" = "Rýchlosť vetra %d";
+"WindGraph_GustHeader" = "- To je dobré . %d";
+"WindGraph_SpeedRangeHeader" = "Rýchlosť vetra %d- Čo ?%d";
+"WindGraph_MaxSpeedLabel" = "Max S";
+"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_DragLabel" = "%@\nRýchlosť: %d\nGust: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Denný zhrnutie";
+
+"Precipitation Totals" = "Celkové množstvo dažďov";
+"LAST 24 HOURS" = "Posledné 24 hodín";
+"NEXT 24 HOURS" = "Ďalšie 24 hodín";
+"Total" = "Celkový";
+"Rain" = "Dešť";
+"Snow" = "Sneh";
+
+"About Wind Speed and Gusts" = "O rýchlosti vetra a gustoch";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Rýchlosť vetra sa vypočíta pomocou priemeru za krátky čas. Vypúšťania sú krátke výbuchy vetra nad týmto priemerom.";
+
+"About the Beaufort Scale" = "O Beaufortovej stupnici";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "V prípade, že sa východ vyvíja v určitom čase, môže byť východný v prípade, že sa východ vyvíja v určitom čase.";
+
+"About Feels Like Temperature" = "O pocitoch teploty";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "V prípade, že sa teplota v okolí pohybuje v teplotách, je to možné, že je teplota v okolí veľmi silná.";
+
+"Options" = "Možnosti";
+"Temperature" = "Temperatura";
+"Use system setting (°C)" = "Nastavenie systému používania (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Podmienky";
+"UV Index" = "UV index";
+"Wind" = "Výchot";
+"Precipitation" = "Predsahy";
+"Humidity" = "Vlhkosť";
+"Visibility" = "Viditeľnosť";
+"Pressure" = "Tlač";
+
+/* Fallback key */
+"displayedCondition" = "zobrazenéPodmienka";
+
+/* Titles */
+"Forecast"                   = "Predpovede";
+"DailySummary"               = "Denný zhrnutie";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° teraz s %@ V prípade, že sa na trhu nachádzajú podmienky, existuje pravdepodobnosť, že sa vyskytnú srážky. %@Výchot z %@ s rýmami až do %d %@Dnes sa teplota pohybuje od %d° do %dA cíti sa ako %d- V poriadku. %@a %@- Áno .";
+"UVIndexFormat"              = "UV index až do %d";
+"HumidityFormat"             = "Vlhkosť okolo %d%%";
+"HumidityRangeFormat"        = "Vlhkosť z %d%% na %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@- Je to nízke . %d° a najvyššie je %dTemperatura bude cítiť ako %d° do %d°. Výchot z %@ je očakávané. %@";
+"NoPrecipLast24h"            = "Za posledných 24 hodín sa nezistili žiadne dažďa.";
+"RainLast24h"                = "Pršalo . %d mm v posledných 24 hodinách.";
+"SnowAndRainLast24h"         = "Za posledných 24 hodín sa meril sníh %@ cm a dážď %d - Áno.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "Nové";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "V";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Celkové množstvo dažďov";
+"Last24h_Label"             = "Posledné 24 hodín";
+"Next24h_Label"             = "Ďalšie 24 hodín";
+"Total_Label"               = "Celkový";
+"Precipitation_Label"       = "Predsahy";
+"Rain_Label"                = "Dešť";
+"Snow_Label"                = "Sneh";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "V vetre je v súčasnosti %1$d %2$@ z %3$@Dnes sa rýchlosť vetra zvyšuje %4$d na %5$d %2$@, s rýmami až do %6$d %2$@- Áno .";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Rýchlosť vetra sa pohybuje od %1$d na %2$d %3$@, s rýmami až do %4$d %3$@- Áno .";
+
+"Beaufort_Scale"                = "Beaufortova stupnica";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Opis";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "- Poľudňuj sa.";
+"Beaufort_1"                    = "Svetlý vzduch";
+"Beaufort_2"                    = "Ľahký vetr";
+"Beaufort_3"                    = "Nevyvolený vietor";
+"Beaufort_4"                    = "Umieraný vetr";
+"Beaufort_5"                    = "Čerstvý veter";
+"Beaufort_6"                    = "Silný vetor";
+"Beaufort_7"                    = "Silný vietor";
+"Beaufort_8"                    = "Gale";
+"Beaufort_9"                    = "Silný vítr";
+"Beaufort_10"                   = "búrka";
+"Beaufort_11"                   = "Silná búrka";
+"Beaufort_12"                   = "Sila hurikánu";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Už bolo %.1f%@ Celkové množstvo dažďa v dnešnej dobe bude %.1f%@V priebehu nasledujúcich 24 hodín, %.1f%@ očakávaný pršvih.";
+"ForecastPrecip_OtherDayFormat" = "Na %@, celkový objem srážok bude %.1f%@- Áno .";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "O intenzite dažďa";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "Predpovede";
+"DailySummary_Title"           = "Denný zhrnutie";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "Dásový bod je %d° do %d- V poriadku.";
+"DewPoint_FutureFormat"        = "Dotyk rosy bude %d° do %d- V poriadku.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Dnes je priemerná vlhkosť %d%%- Áno . %@";
+"ForecastHumidity_Other"       = "Na %@, priemerná vlhkosť bude %d%%- Áno .\n%@";
+
+"AboutPressure_Title"  = "O tlaku";
+"AboutPressure_Body"   = "Významné, rýchle zmeny tlaku sa používajú na predpovedať zmeny počasia. Napríklad pokles tlaku môže znamenať, že prichádza dážď alebo sneh, a zvyšujúci sa tlak môže znamenať, že sa počasie zlepší.";
+
+"AboutHumidity_Title"  = "O relatívnej vlhkosti";
+"AboutHumidity_Body"   = "Relatívna vlhkosť, všeobecne známa len ako vlhkosť, je množstvo vlhkosti v vzduchu v porovnaní s tým, čo môže vzduch držať.% mv prípade, že je tam rosie alebo hmla.";
+
+"AboutDewPoint_Title" = "O Dew Point";
+"AboutDewPoint_Body"  = "V tomto prípade je to len v prípade, že sa teplota spadne, aby sa vytvorila sláva. Môže to byť užitočným spôsobom, ako zistiť, ako sa vzduch cíti vlhký.";
+
+"Section_Forecast"                     = "Predpovede";
+"Section_DailySummary"                 = "Denný zhrnutie";
+"ForecastVisibility_TodayFormat" = "Dnes bude viditeľnosť %@, v %d na %d %@- Áno .";
+"ForecastVisibility_OtherFormat" = "Na %@, najnižšia viditeľnosť bude %@ v %d %@, a najvyšší bude %@ v %d %@- Áno .";
+"Clarity_Foggy"                        = "Mýžný";
+"Clarity_Hazy"                         = "Nejasný";
+"Clarity_Clear"                        = "Čistá";
+"Clarity_PerfectlyClear"               = "Dokonale jasné .";
+
+"AboutVisibility_Title" = "O viditeľnosti";
+"AboutVisibility_Body" = "Viditeľnosť ukazuje, ako ďaleko môžete jasne vidieť objekty ako budovy a kopce. Je meradlom prehľadnosti vzduchu a neberie do úvahy množstvo slnečného svetla alebo prítomnosť prekážok. %@ je považovaná za jasné.";
+
+"PressureForecast_Today" = "V súčasnosti je tlak %@ %@ Dnes bude priemerný tlak %@ %@, a najnižší tlak bude %@ %@- Áno .";
+"PressureForecast_Other" = "Na %@, priemerný tlak bude %@ %@, a najnižší tlak bude %@ %@- Áno .";
+"SectionForecast" = "Predpovede";
+"SectionDailySummary" = "Denný zhrnutie";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Všetky funkcie základného plánu";
+"Multi-calendar view" = "Vyhľad viac kalendárov";
+"Sync with Google Calendar" = "Synchronizácia s Google Calendar";
+"Sync meets from Google Meet" = "Synchronizácia sa stretáva z Google Stretneme sa";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Základný plán";
+"Single-day calendar view" = "Výhľad kalendára na jeden deň";
+"Multi-day calendar view" = "Vyhľad kalendára na viac dní";
+"Monthly calendar view" = "Výhľad mesačného kalendára";
+"Yearly overview" = "Ročný prehľad";
+"List view for events" = "Výhľad zoznamu udalostí";
+"Weather view" = "Pohľad na počasie";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Plán prémiového";
+"Sync with Microsoft Calendar" = "Synchronizácia s Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Synchronizácia sa stretáva z Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Równoważný %@ za mesiac";
+"%d %@ free" = "%d %@ voľný";
+
+/* SubscriptionListView */
+"Premium Plans" = "Plány prémiového zabezpečenia";
+"You are subscribed to the %@ %@ plan" = "Vy ste podpísaný na %@ %@ plán";
+"Renews on: %@" = "Obnovuje: %@";
+"Start Free Trial" = "Začnite bezplatné skúšanie";
+"Subscribe Now" = "Podpisujte sa teraz";
+"%d %@ free, then %@%@." = "%d %@ Vypravte si to. %@%@- Áno .";
+"Subscribe for %@%@." = "Podpisovať %@%@- Áno .";
+"Privacy Policy"     = "Zásada ochrany osobných údajov";
+"Terms of Service"   = "Podmienky používania";
+
+/* SubscriptionCategory */
+"Advanced" = "Pokročilé";
+"Advanced Plan" = "Pokročilý plán";
+"All Advanced Plan features" = "Všetky funkcie pokročilého plánu";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Potrebuješ aktívny %@ plánuje prístup k tomuto oddelení.";
+"Plan Required" = "Vyžaduje sa plán";
+"OK" = "Dobre .";
+
+/* SubscriptionStatus */
+"Base"    = "Základ";
+"Premium" = "Prémy";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Podpisované na %@ %@ - Plán.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Obnovuje: %@";
+
+"Manage Subscription"                   = "Správa predplatného";
+
+/* Period units */
+"Daily"     = "Denná";
+"Weekly"    = "Vydňová";
+"Monthly"   = "Výročná";
+"Yearly"    = "Výročná";
+"Recurring" = "Obnoviteľné";
+
+/* units */
+"day"   = "deň";
+"days"  = "dni";
+"week"  = "týždeň";
+"weeks" = "týždne";
+"month"  = "mesiac";
+"months" = "mesiace";
+"year"   = "rok";
+"years"  = "roky";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S, M, T, W, T, F, S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "km/h";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "hPa";
+"Unit_Pressure_inHg" = "vHg";
+
+"Your previous purchases have been successfully restored." = "Vaše predchádzajúce nákupy boli úspešne obnovené.";
+"No active subscriptions found to restore."                = "Nevyšlo na obnovenie žiadnych aktívnych predplatníkov.";
+"Failed to restore purchases. Please try again later. (%@)" = "Neudobilo sa obnoviť nákup.%@)";
+"Restore Purchases"                                        = "Vrátiť nákup";
+
+"Ads Free" = "Reklamy zadarmo";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Kalendár a počasie";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Malé zobrazujú dnešný dátum a súčasné počasie.";
+"Calendar Events" = "V kalendári udalosti";
+"Shows today's date, current weather, and your next calendar events." = "Ukáže dnešný dátum, súčasné počasie a ďalšie udalosti v kalendári.";
+"No upcoming events" = "Žiadne ďalšie udalosti";
+"Tomorrow" = "Zajtra .";
+"Untitled" = "Neznámy";
+"Detail" = "Podrobnosť";
+"Phase" = "Faza";
+"Weather" = "Počasie";
+"Select Your Email" = "Vyberte si e-mail";
+"Confirm" = "Potvrďte";
+"Calendar name" = "Názov kalendára";
+"Sharing: %@" = "Spolupráca: %@";
+"Loading..." = "Náklad...";
+"Selected Location" = "Vybrané miesto";
+"Data provided by Apple Weather" = "Údaje poskytnuté spoločnosťou Apple Weather";
+"Next" = "Ďalší";
+"No details found for the selected location." = "Žiadne podrobnosti na vybranom mieste.";
+"Could not determine the time zone for the selected location." = "Nevedel som určiť časovú pásmu pre vybranú lokalitu.";
+"(No Title)" = "(bez názvu)";
+"Choose your e-mail" = "Vyberte si e-mail";
+"It will be treated as your primary address and invitations will not be sent to it." = "Bude sa považovať za vašu hlavnú adresu a pozvánky sa na ňu neposielajú.";
+"Invalid URL" = "Neplatný URL";
+"Rate limit or insufficient permission" = "Limit sadzby alebo nedostatočné povolenie";
+"Network error: %@" = "Mrežná chyba: %@";
+"N/A - Selected Tab: %@" = "N/A - Vybraná tabuľka: %@";
+"Enable Notifications" = "Umožniť oznámenia";
+"Event Notifications" = "Oznámenia o udalostiach";
+"Weather Alert Notifications" = "Oznámenia o počasí";
+"Allow notifications so weather alerts can appear." = "Nechaj sa zobraziť upozornenia na počasie.";
+"Event alerts are scheduled from your event alert settings." = "Výstražky udalostí sú naplánované z vašich nastavení výstražky udalostí.";
+"Allow notifications so event alerts can appear at the right time." = "Uveďte oznámenie, aby sa upozornenia na udalosti mohli zobraziť v správny čas.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Oznámenia sú vypnuté pre túto aplikáciu. Cloud Calendars -> Oznámenia -> Povolenie oznámenia.";
+"Promo.WiseEating.name" = "Múdry plán na jedlo a fitness";
+"Promo.WiseEating.description" = "Wise Eating je váš AI-poháňaný tréner pre inteligentnejšiu výživu a tréning. Spája modernú výživu s praktickými nástrojmi, ktoré vám pomôžu plánovať jedlá, navrhovať tréningy, riadiť svoju zásobnú komoru a pochopiť, ako potraviny a pohyb ovplyvňujú vaše telo.";
+"Promo.StoreFront.name" = "Studio StoreFront";
+"Promo.StoreFront.description" = "StoreFront Studio je elitné 3D dizajnové prostredie pre vývojárov iOS a macOS. Spája vysoce spoľahlivé renderovanie RealityKit s výkonným editorom Rich Text, ktorý vám pomôže premeniť surové obrazovky na profesionálne, vysoko konvertujúce aktíva App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio je tvorcov-grade nahrávací štúdium obrazovky pre iOS a macOS. Zachytiť obrazovku a fotoaparát naraz, ovládať mikrofón + systém zvuk, a export čistá MP4 pre výučby, prechádzky a demo produktov. Na iOS, môžete dokonca prehrávať video v rámci aplikácie a nahrávať spolu s fotoaparátom pre reakčný štýl a obsah vedený prezentátorom.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI vám pomáha pochopiť pohyb trhu pomocou analýzy na zariadení a mult-agentového pracovného toku navrhnutého na oddelenie signálu od hluku. Sledovať údaje o cenách v reálnom čase, preskúmať pravdepodobnosti v režime štýlu a použiť jasné prístrojové desky a diagramy na podporu prijímania rozhodnutí.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplikácie";
+"Plan" = "Plán";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Bližnica";
+"WeatherCondition.blowingDust" = "Prach";
+"WeatherCondition.blowingSnow" = "Vypúšťanie snehu";
+"WeatherCondition.breezy" = "Breezy";
+"WeatherCondition.clear" = "Čistá";
+"WeatherCondition.cloudy" = "Oblačený";
+"WeatherCondition.drizzle" = "Driszzle";
+"WeatherCondition.flurries" = "Vypúšťanie";
+"WeatherCondition.foggy" = "Mýra";
+"WeatherCondition.freezingDrizzle" = "Zmrazný drysel";
+"WeatherCondition.freezingRain" = "Zmrazný dážď";
+"WeatherCondition.frigid" = "Chlad";
+"WeatherCondition.hail" = "- Dobrý deň.";
+"WeatherCondition.haze" = "Hmyz";
+"WeatherCondition.heavyRain" = "Silný dážď";
+"WeatherCondition.heavySnow" = "Silný sneh";
+"WeatherCondition.hot" = "V horúcej";
+"WeatherCondition.hurricane" = "Hurikán";
+"WeatherCondition.isolatedThunderstorms" = "Izolované búrky";
+"WeatherCondition.mostlyClear" = "Väčšinou jasné";
+"WeatherCondition.mostlyCloudy" = "Väčšinou oblaková";
+"WeatherCondition.partlyCloudy" = "Často oblaková";
+"WeatherCondition.rain" = "Dešť";
+"WeatherCondition.scatteredThunderstorms" = "Rozprchnuté búrky";
+"WeatherCondition.sleet" = "Sled";
+"WeatherCondition.smoky" = "Dým";
+"WeatherCondition.snow" = "Sneh";
+"WeatherCondition.strongStorms" = "Silná búrka";
+"WeatherCondition.sunFlurries" = "Slnečné vlákna";
+"WeatherCondition.sunShowers" = "Sun Showery";
+"WeatherCondition.thunderstorms" = "Hradové búrky";
+"WeatherCondition.tropicalStorm" = "Tropická búrka";
+"WeatherCondition.windy" = "Výchotné";
+"WeatherCondition.wintryMix" = "Zimačná zmesička";
+"MoonPhase.new" = "Nový mesiac";
+"MoonPhase.waxingCrescent" = "Vasičujúci polmesieň";
+"MoonPhase.firstQuarter" = "Prvý štvrťrok";
+"MoonPhase.waxingGibbous" = "Vasičovanie Gibbous";
+"MoonPhase.full" = "Plný mesiac";
+"MoonPhase.waningGibbous" = "Zmierajúci Gibbous";
+"MoonPhase.lastQuarter" = "Posledný štvrťrok";
+"MoonPhase.waningCrescent" = "Zbledúci polmesieň";
+"WeatherAlert.Preview.Tornado" = "Varovanie tornádom: ihneď hľadajte bezpečné úkryt.";
+"WeatherAlert.Preview.Source" = "Služba počasia";
+"WeatherAlert.Preview.Region" = "Predpovede";
+"Saved Regions" = "Zachránené regióny";
+"Current Location" = "Aktuálne umiestnenie";
+"Reorder Region" = "Region prehodnotenia";
+"WeatherAlert.Preview.HighTemperature" = "Žlté varovanie pri vysokej teplote";
+"Illumination" = "Osvetlenie";
+"Shared event" = "Spolupráca";
+"Add to Calendar" = "Pridať do kalendára";
+"Event added" = "Pridané udalosti";
+"Already in your calendar" = "Už je to v kalendári.";
+"Unable to add event" = "Neudalo sa pridať udalosť";
+"Calendar Access Required" = "K dispozícii je potrebný prístup k kalendáru";
+"Allow calendar access in Settings to add this event." = "Ak chcete pridať túto udalosť, umožňte prístup do kalendára v nastavení.";
+"Open Settings" = "Otvorené nastavenia";
+"Adding…" = "Pridať...";
+"Couldn’t find a writable calendar." = "Nepošiel som na napísaný kalendár.";
+"Please try again." = "Prosím, skúste to znova.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Zmeniť plán";
+"Current Plan" = "Aktuálny plán";
+"You can change your plan or billing period at any time." = "Plán alebo termín účtovania môžete kedykoľvek zmeniť.";
+"Invites" = "Pozvanie";
+"Cancelled" = "Zrušené";
+"Shared by me" = "Spolupráca s nami";
+"Shared with me" = "Spolupráca sa so mnou";
+"No shared events yet." = "Ešte žiadne spoločné udalosti.";
+"No one has shared an event with you yet." = "Nikto s tebou ešte nezdieľal udalosť.";
+"Events you send from the share sheet appear here." = "Akcie, ktoré pošlete z listiny sú tu.";
+"Invitations go to" = "Pozvanie ide na";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Pozvanie, ktoré prijmete, sa pridáva tu a udržiava sa v aktualizácii.";
+"Sample shared event" = "Zobrazok zdieľaného udalosti";
+"Sofia" = "Sofia";
+"Team lunch" = "Tímový obed";
+
+/* Booking */
+"Booking page" = "Stránka rezervácie";
+"Your name" = "Tvoje meno";
+"Display name" = "Názov zobrazenia";
+"Source calendar" = "Zdrojový kalendár";
+"Booked meetings land here, and your busy times here block new bookings." = "Zarezervované stretnutia sa tu dostanú a vaše zaneprázdnené časy tu blokujú nové rezervácie.";
+"Meeting types" = "Typy stretnutí";
+"%lld min" = "%lld min.";
+"Add meeting type" = "Pridať typ schôdze";
+"Weekly hours" = "Vydňové hodiny";
+"Save booking page" = "Uložte stránku rezervácie";
+"Your booking page is live" = "Vaša rezervačná stránka je naživo";
+"Share this link — anyone can book one of your open times." = "Podieľajte sa na tomto odkazu  každý môže rezervovať jeden z vašich otvorených hodín.";
+"Share link" = "Zdieľajte odkaz";
+"Edit settings" = "Upravovanie nastavení";
+"Add at least one meeting type." = "Pridajte aspoň jeden typ stretnutia.";
+"Turn on at least one day with valid hours." = "Vypnite aspoň jeden deň s platnými hodinami.";
+"Set up a booking page" = "Nastavte si stránku rezervácie";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Nechaj ľudí rezervovať tvoje otvorené hodiny, stretnutia sa budú konať v kalendári, ktorý si vyberiete a tvoje ručné hodiny budú mať voľné.";
+"Approve on this device" = "Schvaľovanie na tomto zariadení";
+"Set up web booking" = "Nastaviť webové rezervácie";
+"You're all set" = "Ste pripravený.";
+"Couldn't approve" = "Nemohol som schváliť";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Schvaľte prepojenie tohto prehliadača so svojím kalendárom, aby ste mohli vytvoriť stránku rezervácie na webe  zadarmo, pretože máte aplikáciu.";
+"Linking…" = "Spájať...";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Vráťte sa do prehliadača  je pripravený dokončiť nastavenie vašej rezervačnej stránky.";
+"The code may have expired. Reopen the QR on the web and try again." = "Kód môže byť vypršal. QR na internete a skúste to znova.";
+"Read-only shared event" = "Spolupráca len prečítavacia udalosť";
+"Remove from My Calendar" = "Zbavte sa môjho kalendára";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars účet";
+"App Clip sharing account" = "App Clip účt spoločného";
+"Required for synced App Clip events and recovery after reinstalling." = "Na synchronizáciu sa vyžaduje App Clip udalosti a obnovenie po znovuinstaľovaní.";
+"Continue with Google" = "Pokračujte Google";
+"Sign Out" = "Zapiš sa";
+"Signing in…" = "Podpis...";
+"Sign In" = "Zapíšte sa";
+"Sign in to continue" = "Zapíšte sa na pokračovanie";
+"Your account keeps this shared event recoverable after reinstalling the app." = "Váš účet zachováva túto zdieľanú udalosť obnoviteľnou po znovuinstaľovaní aplikácie.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Tento účet vlastní App Clip je oddelený od prihlásení poskytovateľa kalendára.";
+"Sign in with Google or Apple to share and receive synced events." = "Zapíšte sa s Google alebo Apple, aby zdieľali a prijímali synchronizované udalosti.";
+"Apple did not return an identity token." = "Apple nevrátil totožnosť.";
+"Unable to share event" = "Nezdá sa zdieľať udalosť";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "udalosť nemohla byť uložená na váš Cloud Calendars Skúste znova.";
+"Google" = "Google";
+"Apple" = "Jablko";
+"Microsoft" = "Microsoft";
+"Connect" = "Pripojenie";
+"Connected" = "Vypriamené";
+"Sign in with at least one account" = "Vstupte s aspoň jedným účtom";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "Pripojenie Google, Apple, MicrosoftKaždá prepojená identita otvára rovnaký účet na zdieľané udalosti.";
+"A Premium subscription is required to connect Microsoft." = "Pri pripojení je potrebná predplatná ponuka Premium Microsoft- Áno .";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "Tieto identity sú len pre App Clip Zostávajú oddelené od prihlásení k poskytovateľovi kalendára a synchronizácie.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Zapíšte sa s Google, Apple alebo Microsoft zdieľať a prijímať synchronizované udalosti.";
+"Share a verified email during sign-in to use synced events and invitations." = "Podieľajte sa overeným e-mailom počas prihlásenia na použitie synchronizovaných udalostí a pozvánok.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "Počas prihlásenia musíte zdieľať overený e-mail, ktorý vás ľudia budú používať na nájdenie a pozvanie na kalendáre a udalosti.";
+"Manage connected accounts" = "Správa prepojených účtov";
+"Apple, Google, and Microsoft" = "Apple, Googlea Microsoft";
+"Open account sign-in" = "Otvorenie účtu";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "Pre zdieľanie, obnovu alebo používanie prístupu poskytnutého majiteľom je potrebný overený e-mail.";
+"Accept" = "Prijme";
+"Access removed" = "Ústup odstránený";
+"Add a Mail account on this device, then try again." = "Pridajte na toto zariadenie účet Mail a potom skúste znova.";
+"Add a writable calendar before moving this event." = "Pridajte do programu kalendár, ktorý je možné napísať pred presunom tejto udalosti.";
+"Add everyone who should receive this calendar and choose their access." = "Pridajte všetkých, ktorí by mali tento kalendár dostať a vyberte si prístup.";
+"Add everyone who should receive this event and choose their access." = "Pridajte všetkých, ktorí by mali túto udalosť prijímať a vyberte ich prístup.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "Po Save, %@ Ich miestna kópia zostane len prečítavacia s riadkom cez ňu.";
+"Anonymous recipient" = "Anonymný príjemca";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "Apple neodpovedal e-mail. V nastavení prestaňte používať Apple ID na Cloud Calendars, potom sa pripojte znova a vyberte zdieľať môj e-mail.";
+"Calendar invitation" = "Pozvanie na kalendár";
+"Cancel for Everyone" = "Zrušiť pre všetkých";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Vyberte si čítača, spisovateľa alebo majiteľa. Majitelia môžu tiež zdieľať túto udalosť a spravovať prístup.";
+"Choose how to share this synced event." = "Vyberte si, ako zdieľať túto synchronizovanú udalosť.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars Nešlo uložiť sesáciu na tomto zariadení.";
+"Cloud Calendars user" = "Cloud Calendars používateľ";
+"Could not add: %@." = "Nedokázal pridať: %@- Áno .";
+"Custom on this device" = "Na tento zariadenie";
+"Decline" = "Zníženie";
+"Default from creator" = "Zvyčajný od tvorcu";
+"Deleted by owner" = "Vymazané vlastníkom";
+"Each email address can appear only once." = "Každá e-mailová adresa sa môže zobraziť len raz.";
+"Enter a valid email address for %@." = "Vložte platnú e-mailovú adresu %@- Áno .";
+"From %@" = "Z %@";
+"Invitation pending" = "Pozvanie na podávanie";
+"Loading shared calendars…" = "Naložovanie zdieľaných kalendárov...";
+"Mail is not configured" = "Pošta nie je konfigurovaná";
+"Manage calendar sharing" = "Správa zdieľania kalendára";
+"New calendar invitation" = "Nová výzva na kalendár";
+"New event invitation" = "Nová pozvánka na udalosť";
+"No calendars have been shared with you yet." = "Ešte sme s vami nevydieľali kalendáre.";
+"Open a shared event or calendar" = "Otvorte zdieľanú udalosť alebo kalendár";
+"Open this event with Cloud Calendars:\n\n%@" = "Otvorte túto udalosť Cloud Calendars- V prípade:\n\n%@";
+"Original creator" = "Pôvodný tvorca";
+"People" = "Ľudia";
+"People appear here after they add the event." = "Ľudia sa tu objavia, keď pridajú udalosť.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "Polož a Cloud Calendars udalosť alebo kalendár QR kód v rámci.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "Čítač môže zobraziť a synchronizovať. Píšateľ môže upraviť. Majiteľ môže tiež zdieľať a spravovať prístup po prihlásení sa s pozvaným e-mailom.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "Čítač môže zobraziť, spisovateľ môže upraviť udalosti, majiteľ môže tiež zdieľať kalendár a spravovať prístup.";
+"Remove" = "Odstrániť";
+"Remove Shared Calendar?" = "Zrušiť zdieľaný kalendár?";
+"Remove from My Calendars" = "Odstráňte z mojich kalendárov";
+"Resend" = "Odovzdať";
+"Scan QR Code" = "Skenovanie QR Kód";
+"Scan to open this calendar" = "Skenovať na otvorenie tohto kalendára";
+"Scan to open this event" = "Skenať na otvorenie tohto udalosti";
+"Server returned %lld: %@" = "Vrátil sa server %lld- V prípade: %@";
+"Shared calendar" = "Spoločný kalendár";
+"Shared calendar information" = "Informácie o zdieľanom kalendári";
+"Shared event: %@" = "Spolupráca: %@";
+"Sign in or manage accounts" = "Zapíšte sa alebo spravte účty";
+"Sign in to manage event access." = "Prihláste sa na správu prístupu k udalostiam.";
+"Sign in to save event access." = "Prihláste sa na uloženie prístupu k udalosti.";
+"Sign in to see calendars shared with you." = "Prihláste sa, aby ste videli kalendáre, ktoré s vami zdieľame.";
+"Sign-in couldn’t open. Please try again." = "Zápis sa nemohol otvoriť, skúste znova.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "Prestaňte zdieľať tento kalendár s %@Po Save, ich zmrazená kópia a jej udalosti zostanú viditeľné s líniou cez nich.";
+"The calendar and its events will be removed only from this device." = "Kalendár a jeho udalosti sa odstranijú len z tohto zariadenia.";
+"The provider didn’t return the information required to sign in." = "Poskytovateľ neposkytol informácie potrebné na prihlásenie.";
+"The provider returned an invalid response." = "Poskytovateľ odpovedal neplatne.";
+"The sign-in response couldn’t be verified. Please try again." = "Odpoveď prihlásenia sa nemohla overiť.";
+"The sign-in response was invalid. Please try again." = "Odpoveď na prihlásenie bola neplatná.";
+"This changes only your local copy. Shared event details stay read-only." = "Zmení sa to len miestnou kópiou.";
+"This color changes only on this device." = "Táto farba sa mení len na tomto zariadení.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "Toto je QR kód neobsahuje Cloud Calendars udalosť alebo kalendár.";
+"This QR code does not contain a Cloud Calendars share." = "Toto je QR kód neobsahuje Cloud Calendars Podeliť.";
+"This removes only your local copy. Other people keep access." = "Tým sa odstráni iba vaša miestna kópia.";
+"Try again" = "Skúste to znova.";
+"Unable to Update Calendar" = "Nedokážem aktualizovať kalendár";
+"Unable to add calendar" = "Nedokážem pridať kalendár";
+"Unreadable response from the server" = "Nečítateľná odpoveď z servera";
+"Use Apple, Google, or Microsoft." = "Použite Apple, Googlealebo Microsoft- Áno .";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "Použite zariadenie s dostupným fotoaparátom na skenovanie Cloud Calendars QR kód.";
+"You can add up to 50 people at once." = "Môžete spočítať až 50 ľudí naraz.";
+"You can send up to 50 invitations at once." = "Môžete poslať až 50 pozvánok naraz.";
+"%lld connected account" = "%lld prepojený účet";
+"%lld connected accounts" = "%lld prepojené účty";
+"%lld pending invitation" = "%lld Vyčlenenie pozvania";
+"%lld pending invitations" = "%lld Vyžadované pozvánky";
+"%lld upcoming event" = "%lld nadchádzajúca udalosť";
+"%lld upcoming events" = "%lld nadchádzajúce udalosti";
+"%@ invited you to %@" = "%@ pozval vás %@";

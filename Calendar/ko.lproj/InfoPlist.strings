@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars는 활동하는 동안 사용자의 위치를 사용하여 정확한 지역 일기 예보를 캘린더에 직접 통합합니다.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars에서는 원활한 예약을 위해 iCloud, Google, Microsoft 캘린더의 이벤트를 통합하려면 캘린더 액세스가 필요합니다.";
+
+"NSCameraUsageDescription" = "Cloud Calendars는 공유 이벤트 및 캘린더의 QR 코드를 스캔하는 데 카메라를 사용합니다.";

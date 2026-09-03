@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars bruker posisjonen din mens den er aktiv for å integrere presise lokale værmeldinger direkte i kalenderen din.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars krever kalendertilgang for å forene hendelsene dine fra iCloud, Google og Microsoft kalendere, noe som muliggjør sømløs planlegging.";
+
+"NSCameraUsageDescription" = "Cloud Calendars bruker kameraet til å skanne QR-koder for delte hendelser og kalendere.";

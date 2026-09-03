@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld Evèniment";
+"%lld events" = "%lld esdeveniments";
+"Share Pop-up" = "Compartir Pop-up";
+"Would you like to share this event?" = "Vols compartir aquest esdeveniment?";
+"Don't ask again" = "No ho preguntes de nou.";
+"No email was provided." = "No s'ha proporcionat cap correu electrònic.";
+"Please enter a valid email to continue." = "Introdueix un correu electrònic válid per continuar.";
+"Your email" = "El teu correu electrònic";
+"Save" = "Salvar";
+"Login" = "Enregistrament";
+"Logout" = "Llogut";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "Calendars";
+"Inbox" = "Caixa de recepció";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Altres";
+"Google calendars" = "Google calendarS";
+"No synced Google calendars yet." = "No sincronizat Google calendarEncara no.";
+"Microsoft calendars" = "Microsoft calendarS";
+"No synced Microsoft calendars yet." = "No sincronizat Microsoft calendarEncara no.";
+"Sign out" = "Sorteix";
+"Add iCloud Calendar" = "Ajuda iCloud Calendari";
+"Share calendars with iCloud Calendar" = "Compartir calendaris amb iCloud Calendari";
+"Sign in with Google" = "Inscriure-se amb Google";
+"Sign in with Microsoft" = "Inscriure-se amb Microsoft";
+"Deselect All" = "Deseleccionar tots";
+"Select All" = "Seleccionar tots";
+"No Email" = "No hi ha correu electrònic";
+"Add Google Calendar" = "Ajuda Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "Nom del calendari";
+"Account" = "Conta";
+"COLOR" = "COLOR";
+"NOTIFICATIONS" = "NOTIFICATES";
+"Event Alerts" = "Alertes d'esdeveniments";
+"Allow events on this calendar to display alerts." = "Permetir que els esdeveniments en aquest calendari mostrin alertes.";
+"Add Calendar" = "Agrega Calendari";
+
+/* Colors */
+"Red" = "Roig";
+"Orange" = "Aranja";
+"Yellow" = "El groc";
+"Green" = "El verd";
+"Blue" = "Blau";
+"Purple" = "Roja";
+"Brown" = "Marró";
+"Custom" = "Personalitat";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Color del calendari";
+"Custom..." = "Com a costum...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Modificar Calendari";
+"Delete Calendar" = "Eliminar Calendari";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Carregant configuracions de compartir...";
+"Shared with these users" = "Compartit amb aquests usuaris";
+"Add New Email" = "Ajuda de nou correu electrònic";
+"Email to share" = "E-mail per compartir";
+"Permission:" = "Permissió:";
+"Add" = "Ajuda";
+"Sharing:" = "Compartir:";
+"Done" = "Feit";
+
+"Error loading: %@" = "Carregament d'errors: %@";
+"Error adding: %@" = "Errors de afegir: %@";
+"Error deleting: %@" = "Esborrat d'errors: %@";
+"Error updating: %@" = "Actualització d'errors: %@";
+"Error re-inviting (delete): %@" = "Error de re-invitar (eliminar): %@";
+"Error re-inviting (insert): %@" = "Error de re-invitar (insertar): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Lector";
+"Writer" = "Escriptor";
+"Owner"  = "Propietari";
+
+/* MonthCalendarView */
+"Day View" = "Vista del dia";
+"This is a repeating event." = "És un esdeveniment repetit.";
+"Save for This Event Only" = "Salva només per a aquest esdeveniment";
+"Save for Future Events" = "Reserva per als esdeveniments futurs";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "Sol";
+"Mon" = "Mon";
+"Tue" = "Tue";
+"Wed" = "Casada";
+"Thu" = "Thu";
+"Fri" = "Dissabte";
+"Sat" = "S'ha posat";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Près";
+
+/* AllEventsListView */
+"No calendar access." = "No hi ha accés a calendaris.";
+
+/* EventRowView */
+"Ends" = "Finals";
+
+/* SearchEventRowView */
+"No Title" = "No títol";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Assisteix a la reunió";
+"Edit" = "Edició";
+"Duplicate" = "Duplicat";
+"Delete" = "Eliminar";
+"Share" = "Compartir";
+"Add to Google Meet" = "A més Google - Encontrem-nos.";
+"Add to Microsoft Teams" = "A més Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "No hi ha intervalo seleccionat";
+"all-day" = "tot el dia";
+"Search events..." = "Eventes de cerca...";
+"Day" = "Dia";
+"MultiDay" = "Multidis";
+"Month" = "Mes";
+"Year" = "Anterior";
+"List" = "Lista";
+"MultiCalendar" = "MultiCalendari";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Novament";
+"All-day event" = "Event de tot el dia";
+"Recurring Event" = "Un esdeveniment recurrent";
+"This event is part of a series. Update which events?" = "Aquest esdeveniment forma part d'una sèrie.";
+"This Event Only" = "Només aquest esdeveniment";
+"All Future Events" = "Tots els esdeveniments del futur";
+"Cancel" = "Cancel·lar";
+
+/* DraggableMenuView */
+"Calendar" = "Calendari";
+"Subscriptions" = "Subscripcions";
+"Settings" = "Configuracions";
+"Sharing" = "Compartir";
+"Live" = "Viu";
+"Stop" = "Parem.";
+"Calendar Live Activity" = "Activitat en directe del calendari";
+"Get" = "- Sí .";
+"Color" = "Color";
+"Search for a city…" = "Buscar una ciutat...";
+"No directions" = "No hi ha cap direcció";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Accés a la ubicació negat.";
+"Cannot refresh. Location unknown." = "No puc refrescar-me, ubicació desconeguda.";
+"10-DAY FORECAST" = "Previsió de 10 dies";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "demà";
+"on_day" = "en %@";
+"in_days" = "en %d dies";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Un nou esdeveniment";
+
+/* Search placeholder */
+"Search for a city..." = "Buscar una ciutat...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Tinc una hora per afegir ràpidament un esdeveniment en el calendari.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "SENTIR-se com";
+"similar_to_actual_temp" = "Sembla a la temperatura real.";
+"wind_cooler_feel" = "El vent fa que es senti més fresc.";
+"humidity_warmer_feel" = "La humitat ho fa sentir més càlid.";
+
+/* HumidityCard */
+"HUMIDITY" = "L'UMIDAT";
+"The dew point is %d° right now." = "El punt de rosada és %d- Ara mateix.";
+"dewPoint.current" = "El punt de rosada és %d- Ara mateix.";
+
+/* MoonCard */
+"MOON PHASE" = "FASE LUNAL";
+"Moonrise" = "L'ascendència de la lluna";
+"Moonset" = "Lunset";
+"Next %@" = "Seguint %@";
+"Data unavailable" = "Dades no disponibles";
+"%d day" = "%d dia";
+"%d days" = "%d dies";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "Precipitació";
+"PRECIPITATION_CARD_TODAY_LABEL" = "avui";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "La següent espera és %1$.0f %2$@ %3$@- Sí ."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "No es preveuen precipitacions aviat.";
+
+/* PressureCard */
+"PRESSURE" = "Presió";
+"hPa" = "HPa";
+
+/* SunsetCard */
+"SUNRISE" = "L'ALLEVRE";
+"Sunrise: %@" = "Sortida del sol: %@";
+"Sunset: %@" = "- El tramont: %@";
+"Sunrise" = "Sortida del sol";
+"Sunset" = "El tramont";
+
+
+"Sunrise and Sunset" = "Sortida i tramunt";
+"First Light" = "Primera llum";
+"Solar Noon" = "Sol de mediòdia";
+"Last Light" = "Última llum";
+"Total Daylight" = "Total llum de dia";
+
+/* UVIndexCard */
+"UV INDEX" = "INDEX UV";
+"Low" = "Baixa";
+"Moderate" = "Moderat";
+"High" = "Alts";
+"Very High" = "molt alt";
+"Extreme" = "Extrèmics";
+
+/* VisibilityCard */
+"VISIBILITY" = "VISIBILITAT";
+"km" = "km";
+"Perfectly clear view." = "Vista perfectament clara.";
+"Excellent visibility." = "Excelent visibilitat.";
+"Good visibility." = "Bona visibilitat.";
+"Moderate visibility." = "Visibilitat moderada.";
+"Poor visibility." = "Mala visibilitat.";
+"Very poor visibility." = "Una visibilitat molt pobre.";
+"visibility.perfect"   = "Vista perfectament clara.";
+"visibility.excellent" = "Excelent visibilitat.";
+"visibility.good"      = "Bona visibilitat.";
+"visibility.moderate"  = "Visibilitat moderada.";
+"visibility.poor"      = "Mala visibilitat.";
+"visibility.verypoor"  = "Una visibilitat molt pobre.";
+"visibility.unknown"   = "";
+
+/* WindCard */
+"WIND" = "Vint";
+"Gusts" = "Gastes";
+"Direction" = "Direcció";
+"km/h" = "km/h";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "No podem obtenir dades meteorològiques, per favor comproveu la connexió o intenteu tornar més tard.";
+"Falling" = "Caigudes";
+"Rising" = "L'augment";
+"Steady" = "Estatal";
+"Unknown" = "No conegut";
+"Sunny" = "Sunny";
+"Cloudy" = "Oblidats";
+"Partly Cloudy" = "En part nublada";
+"Drizzle" = "Driszzle";
+"Thunderstorm" = "Tormenta de trums";
+"Fog" = "Neve";
+"Partly Cloudy Night" = "Noit parcialment nublada";
+"Clear Night" = "Noc clara";
+"Hazy" = "Hazy";
+"Today" = "Avui";
+"Now" = "Ara, ara.";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "N.E.";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "E";
+"cardinal.ESE" = "ESE";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "SSE";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "SSW";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "N.W.";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Possibilitat de precipitació";
+"Today's chance: %d%%" = "L'oportunitat d'avui: %d%%";
+"%@'s chance: %d%%" = "%@La possibilitat: %d%%";
+"Max" = "Max";
+"Min" = "Min";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "La probabilitat diària de precipitacions tendeix a ser més alta que la probabilitat per cada hora.";
+"ChanceOfPrecipitation_Title" = "Possibilitat de precipitació";
+"TodaysChance"                = "L'oportunitat d'avui: %d%%";
+"OtherDayChance"              = "%@La possibilitat: %d%%";
+"DailyChanceExplanation"      = "La probabilitat diària de precipitacions tendeix a ser més alta que la probabilitat per cada hora.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "S'ha sentit com";
+"Actual" = "Actuals";
+"No hourly data available for this day." = "No hi ha dades horàries disponibles per aquest dia.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Com es sent la temperatura com a resultat de l'humitat, la llum solar o el vent.";
+"The actual air temperature." = "La temperatura de l'aire real.";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat"  = "L: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "Humitat";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "Humitat %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "Humitat Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "La mina d'avui %d%%  max %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "Max";
+"ChartMarker_Min"           = "Min";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "La pluja: %.1f%@, Snow: %.1f%@";
+"Precip_Total_RainFormat"       = "La pluja: %.1f%@";
+"Precip_Total_SnowFormat"       = "Neve: %.1f%@";
+"Precip_Total_None"             = "Precipitació: 0%@";
+"Precip_Bars_Subtitle"          = "Bares horàries per a pluja i neu (%@).";
+"Precip_Level_Light"            = "Llum";
+"Precip_Level_Moderate"         = "Moderat";
+"Precip_Level_Heavy"            = "Pesada";
+"Precip_Tooltip_Format"         = "%@h\nLa pluja: %.1f%@\nNeve: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "Presió %@ %@";
+"Pressure_CurrentUnavailable"      = "Presió: --";
+"Pressure_DailyMinMaxFormat"       = "La mina d'avui %@ %@  max %@ %@";
+"Pressure_AverageFormat"           = "Presió mitjana %@ %@";
+"Pressure_DailyRangeFormat"        = "Interval diari: %@%@ %@";
+"Pressure_Title"                   = "Presió";
+"Pressure_NoData"                  = "No hi ha dades de pressió disponibles per aquest dia.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "El dia d'avui %@ %d";
+"UVGraphNoHourlyData"   = "No hi ha dades horàries disponibles per aquest dia.";
+"UVGraphNowLabel"       = "Ara, %@";
+"UVCategory_None"       = "Ningú";
+"UVCategory_Low"        = "Baixa";
+"UVCategory_Moderate"   = "Moderat";
+"UVCategory_High"       = "Alts";
+"UVCategory_VeryHigh"   = "molt alt";
+"UVCategory_Extreme"    = "Extrèmics";
+"UVAdvice_None"         = "No es preveuen nivells UV moderats o més alts en aquest dia.";
+"UVAdvice_Range"        = "Recomanació de protecció solar. %@ a %@, entre %@ i %@- Sí .";
+"UVGraphMaxLabel" = "Max";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "Visibilitat";
+"Visibility_NoData"                = "No hi ha dades de visibilitat disponibles per aquest dia.";
+"Visibility_CurrentFormat"         = "Visibilitat %d %@";
+"Visibility_DailyMinMaxFormat"     = "min %d  max %d %@";
+"Visibility_NoCurrentData"         = "No hi ha dades actuals de visibilitat disponibles.";
+"Visibility_HourlyAverages_NoData" = "No hi ha dades horàries disponibles.";
+"Visibility_MaxLabel"              = "Max";
+"Visibility_MinLabel"              = "Min";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Velocitat del vent i gust";
+"WindGraph_NoData" = "No hi ha dades de vent disponibles per aquest dia.";
+"WindGraph_SpeedHeader" = "Velocitat del vent %d";
+"WindGraph_GustHeader" = "Gusta fins a %d";
+"WindGraph_SpeedRangeHeader" = "Velocitat del vent %d- És el meu.%d";
+"WindGraph_MaxSpeedLabel" = "Max S";
+"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_DragLabel" = "%@\nVelocitat: %d\nGust: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Resum diari";
+
+"Precipitation Totals" = "Total de precipitacions";
+"LAST 24 HOURS" = "Les últimes 24 hores";
+"NEXT 24 HOURS" = "Les pròximes 24 hores";
+"Total" = "Total";
+"Rain" = "La pluja";
+"Snow" = "Neve";
+
+"About Wind Speed and Gusts" = "Sobre la velocitat del vent i els gustos";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "La velocitat del vent es calcula utilitzant la mitjana en un curt període de temps.";
+
+"About the Beaufort Scale" = "Sobre l'escala de Beaufort";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "L'escala de Beaufort expressa la força o força del vent a una velocitat determinada. L'escala de Beaufort pot facilitar la comprensió de com es sentirà ventós o quin efecte podria tenir el vent. Cada valor de l'escala correspon a un rang de velocitat del vent.";
+
+"About Feels Like Temperature" = "Sobre la temperatura";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "La temperatura de la Terra és influenciada per la humitat, la llum solar i el vent.";
+
+"Options" = "Opcions";
+"Temperature" = "Temperatura";
+"Use system setting (°C)" = "Configuració de sistema d'ús (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "Condicions";
+"UV Index" = "Índice UV";
+"Wind" = "Vint";
+"Precipitation" = "Precipitació";
+"Humidity" = "Humitat";
+"Visibility" = "Visibilitat";
+"Pressure" = "Presió";
+
+/* Fallback key */
+"displayedCondition" = "visualitzatCondició";
+
+/* Titles */
+"Forecast"                   = "Previsió";
+"DailySummary"               = "Resum diari";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° ara amb %@ Hi ha una possibilitat de precipitació %@- El vent de %@ amb raigs fins a %d %@La temperatura d'avui varia de %d° a %d° i se sent com %d- El meu pare. %@, i %@- Sí .";
+"UVIndexFormat"              = "Indicador UV fins a %d";
+"HumidityFormat"             = "Humitat al voltant %d%%";
+"HumidityRangeFormat"        = "Humitat de %d%% a %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@El baix és %d° i l'alt és %d°. La temperatura es sentirà com %d° a %d°. Vint de %@ s'espera. %@";
+"NoPrecipLast24h"            = "No hi ha precipitacions registrades en les últimes 24 hores.";
+"RainLast24h"                = "Va plouar. %d mm en les últimes 24 hores.";
+"SnowAndRainLast24h"         = "En les últimes 24 hores, la neu mesurada %@ cm i pluja %d - Sí, és així.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "N.E.";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "E";
+"Dir_ESE" = "ESE";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "SSE";
+"Dir_S"   = "S";
+"Dir_SSW" = "SSW";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "N.W.";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "cm";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Total de precipitacions";
+"Last24h_Label"             = "Les últimes 24 hores";
+"Next24h_Label"             = "Les pròximes 24 hores";
+"Total_Label"               = "Total";
+"Precipitation_Label"       = "Precipitació";
+"Rain_Label"                = "La pluja";
+"Snow_Label"                = "Neve";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "El vent és actualment %1$d %2$@ de la %3$@Avui, les velocitats del vent són %4$d a %5$d %2$@, amb raigs fins a %6$d %2$@- Sí .";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "Les velocitats del vent van de %1$d a %2$d %3$@, amb raigs fins a %4$d %3$@- Sí .";
+
+"Beaufort_Scale"                = "Escala de Beaufort";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "Descripció";
+"Beaufort_Column_kmh" = "km/h";
+"Beaufort_0"                    = "Calma";
+"Beaufort_1"                    = "Aire lleuger";
+"Beaufort_2"                    = "Brisa lleugera";
+"Beaufort_3"                    = "Brisa suau";
+"Beaufort_4"                    = "Brisa moderada";
+"Beaufort_5"                    = "Brisa fresca";
+"Beaufort_6"                    = "Una brisa forta";
+"Beaufort_7"                    = "Un vent fort";
+"Beaufort_8"                    = "Gale";
+"Beaufort_9"                    = "Una forta ventana";
+"Beaufort_10"                   = "Tempesta";
+"Beaufort_11"                   = "Tormenta violenta";
+"Beaufort_12"                   = "Força de l'huracan";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "Hi ha hagut %.1f%@ La precipitació total d'avui serà de %.1f%@En les pròximes 24 hores, %.1f%@ de precipitacions es preveu.";
+"ForecastPrecip_OtherDayFormat" = "En %@, la precipitació total serà %.1f%@- Sí .";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Sobre la intensitat de les precipitacions";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "Previsió";
+"DailySummary_Title"           = "Resum diari";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "El punt de rosada és %d° a %d- El meu pare.";
+"DewPoint_FutureFormat"        = "El punt de rosada serà %d° a %d- El meu pare.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "Avui, la humitat mitjana és %d%%- Sí . %@";
+"ForecastHumidity_Other"       = "En %@, la humitat mitjana serà %d%%- Sí .\n%@";
+
+"AboutPressure_Title"  = "Sobre la pressió";
+"AboutPressure_Body"   = "Els canvis significatius i ràpids de pressió s'utilitzen per predir canvis en el temps. Per exemple, una caiguda de pressió pot significar que hi ha pluja o neu, i l'augment de pressió pot significar que el temps s'haurà millorat. La pressió també es diu pressió baromètrica o pressió atmosfèrica.";
+
+"AboutHumidity_Title"  = "Sobre la humitat relativa";
+"AboutHumidity_Body"   = "La humitat relativa, coneguda com a humitat, és la quantitat d'humitat que hi ha a l'aire en comparació amb la que l'aire pot contenir.% mQuan hi ha orval o neblina.";
+
+"AboutDewPoint_Title" = "Sobre Dew Point";
+"AboutDewPoint_Body"  = "El punt de rosada és el que la temperatura hauria de caure per a que la rosada es formi. Pot ser una manera útil per saber com humid es sent l'aire.";
+
+"Section_Forecast"                     = "Previsió";
+"Section_DailySummary"                 = "Resum diari";
+"ForecastVisibility_TodayFormat" = "Avui, la visibilitat serà %@, en %d a %d %@- Sí .";
+"ForecastVisibility_OtherFormat" = "En %@, la visibilitat més baixa serà %@ a %d %@, i el més alt serà %@ a %d %@- Sí .";
+"Clarity_Foggy"                        = "Foggy";
+"Clarity_Hazy"                         = "Hazy";
+"Clarity_Clear"                        = "Clar";
+"Clarity_PerfectlyClear"               = "Perfecte clar.";
+
+"AboutVisibility_Title" = "Sobre la visibilitat";
+"AboutVisibility_Body" = "La visibilitat és una mesura de la transparència de l'aire i no té en compte la quantitat de llum solar o la presència d'obstruccions. %@ es considera clar.";
+
+"PressureForecast_Today" = "La pressió és actualment %@ %@ Avui, la pressió mitjana serà %@ %@, i la pressió més baixa serà %@ %@- Sí .";
+"PressureForecast_Other" = "En %@, la pressió mitjana serà %@ %@, i la pressió més baixa serà %@ %@- Sí .";
+"SectionForecast" = "Previsió";
+"SectionDailySummary" = "Resum diari";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Totes les característiques del Plan Base";
+"Multi-calendar view" = "Vista de calendari múltiple";
+"Sync with Google Calendar" = "Sincroniza amb Google Calendar";
+"Sync meets from Google Meet" = "Sincronizació es troba a partir de Google - Encontrem-nos.";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Plan bàsic";
+"Single-day calendar view" = "Vista de calendari per un dia";
+"Multi-day calendar view" = "Vista de calendari de diversos dies";
+"Monthly calendar view" = "Vista del calendari mensual";
+"Yearly overview" = "Presentació anual";
+"List view for events" = "Vista de listes per a esdeveniments";
+"Weather view" = "Vista del temps";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Plan de premi";
+"Sync with Microsoft Calendar" = "Sincroniza amb Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "Sincronizació es troba a partir de Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Equivalent a %@ per mes";
+"%d %@ free" = "%d %@ lliure";
+
+/* SubscriptionListView */
+"Premium Plans" = "Plans de premi";
+"You are subscribed to the %@ %@ plan" = "Vostè està subscrit a la %@ %@ Plan";
+"Renews on: %@" = "Renovació: %@";
+"Start Free Trial" = "Comença l'estudia gratuïta";
+"Subscribe Now" = "Subscriu-vos ara";
+"%d %@ free, then %@%@." = "%d %@ lliure, llavors %@%@- Sí .";
+"Subscribe for %@%@." = "Subscriure-se a %@%@- Sí .";
+"Privacy Policy"     = "Política de privacitat";
+"Terms of Service"   = "Condicions de servei";
+
+/* SubscriptionCategory */
+"Advanced" = "Avançat";
+"Advanced Plan" = "Plan avançat";
+"All Advanced Plan features" = "Totes les característiques del Pla Avançat";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Necessites un actiu %@ Plan de fer-ho.";
+"Plan Required" = "Requereix un pla";
+"OK" = "- Sí .";
+
+/* SubscriptionStatus */
+"Base"    = "Base";
+"Premium" = "Premi";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "Subscrit a %@ %@ Plan.";
+
+/* Label for renewal date */
+"RenewsOn"            = "Renovació: %@";
+
+"Manage Subscription"                   = "Gestionar la subscripció";
+
+/* Period units */
+"Daily"     = "Diàriament";
+"Weekly"    = "Setmanalment";
+"Monthly"   = "Mensual";
+"Yearly"    = "Anualitat";
+"Recurring" = "Repetent";
+
+/* units */
+"day"   = "dia";
+"days"  = "dies";
+"week"  = "setmana";
+"weeks" = "setmanes";
+"month"  = "mes";
+"months" = "mesos";
+"year"   = "any";
+"years"  = "anys";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S,M,T,W,T,F,S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "km/h";
+"Unit_Speed_mph" = "milhas";
+"Unit_Distance_km" = "km";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "HPa";
+"Unit_Pressure_inHg" = "enHg";
+
+"Your previous purchases have been successfully restored." = "Les seves compres anteriors han estat restaurades amb èxit.";
+"No active subscriptions found to restore."                = "No hi ha subscripcions actius per restaurar.";
+"Failed to restore purchases. Please try again later. (%@)" = "No es va recuperar la compra.%@)";
+"Restore Purchases"                                        = "Restaurar les compres";
+
+"Ads Free" = "Anunci gratuït";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Calendari i temps";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "La petita mostra la data d'avui i el temps actual.";
+"Calendar Events" = "Eventos del calendari";
+"Shows today's date, current weather, and your next calendar events." = "Mostra la data d'avui, el temps actual i els teus propers esdeveniments del calendari.";
+"No upcoming events" = "No hi ha esdeveniments que arribin";
+"Tomorrow" = "Demà";
+"Untitled" = "No titulada";
+"Detail" = "Detall";
+"Phase" = "Fase";
+"Weather" = "Meteorologia";
+"Select Your Email" = "Seleccioneu el vostre correu electrònic";
+"Confirm" = "Confirmació";
+"Calendar name" = "Nom del calendari";
+"Sharing: %@" = "Compartir: %@";
+"Loading..." = "Carregament...";
+"Selected Location" = "Lloc seleccionat";
+"Data provided by Apple Weather" = "Dades proporcionades per Apple Weather";
+"Next" = "Seguint";
+"No details found for the selected location." = "No es troben detalls per a la ubicació seleccionada.";
+"Could not determine the time zone for the selected location." = "No es va poder determinar el fons horari per a la ubicació seleccionada.";
+"(No Title)" = "(No té títol)";
+"Choose your e-mail" = "Seleccioneu el vostre correu electrònic";
+"It will be treated as your primary address and invitations will not be sent to it." = "Es tractarà com la seva adreça principal i les invitacions no s'enviarà a ella.";
+"Invalid URL" = "URL invalida";
+"Rate limit or insufficient permission" = "Limits de taxa o permís insuficient";
+"Network error: %@" = "Errors de xarxa: %@";
+"N/A - Selected Tab: %@" = "N/A - Tab seleccionada: %@";
+"Enable Notifications" = "Abilitar notificacions";
+"Event Notifications" = "Notificacions d'esdeveniments";
+"Weather Alert Notifications" = "Avís de alerta meteorològica";
+"Allow notifications so weather alerts can appear." = "Permetir notificacions per poder aparèixer alertes meteorològiques.";
+"Event alerts are scheduled from your event alert settings." = "Les alertes d'esdeveniments es programen des dels seus ajustes d'alerta d'esdeveniments.";
+"Allow notifications so event alerts can appear at the right time." = "Permetir notificacions per tal que les alertes d'esdeveniments puguin aparèixer en el moment adequat.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Les notificacions estan desactivades per a aquesta aplicació. Per activar-les, aneu a: Configuracions -> Aplicacions -> Cloud Calendars -> Notificacions -> Permetir notificacions.";
+"Promo.WiseEating.name" = "Un bon planejament de dieta i fitness";
+"Promo.WiseEating.description" = "Wise Eating és el teu coach d'IA per a una nutrició i entrenament més intel·ligents. Combina la ciència nutricional moderna amb eines pràctiques per ajudar-te a planificar menjars, dissenyar entrenaments, gestionar la teva despensa i comprendre com els aliments i els moviments afecten el teu cos.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio és l'entorn de disseny 3D d'élite per a desenvolupadors iOS i macOS. Combina renderi RealityKit d'alta fidelitat amb un poderós editor de Rich Text per ajudar a transformar captures d'ecran greus en actius professionals i de alta conversió de l'App Store.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio és l'estudi de gravatge d'escriptura de grau creador per a iOS i macOS. Captura la teva pantalla i càmera al mateix temps, controla el micròfon + sistema d'àudio, i exporta MP4 nets per tutorials, passejos i demostracions de productes. En iOS, fins i tot pots reproduir un vídeo dins de l'aplicació i gravar-lo juntament amb la teva càmera per a l'estil de reacció i contingut dirigit pel presentador.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI t'ajusta a entendre el moviment del mercat amb l'anàlisi en dispositiu i un flux de treball multiagent dissenyat per separar la senyals del soroll. Seguir dades de preus en temps real, explorar probabilitats de règim, i utilitzar tables de control i gràfics clars per donar suport a la presa de decisions. Privatesa-primer: les seves configuracions es mantenen en el seu dispositiu.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Aplicacions";
+"Plan" = "Plan";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Tempesta de neu";
+"WeatherCondition.blowingDust" = "Pols";
+"WeatherCondition.blowingSnow" = "Neve que sopla";
+"WeatherCondition.breezy" = "Breezy";
+"WeatherCondition.clear" = "Clar";
+"WeatherCondition.cloudy" = "Oblidats";
+"WeatherCondition.drizzle" = "Driszzle";
+"WeatherCondition.flurries" = "Fresques";
+"WeatherCondition.foggy" = "Neve";
+"WeatherCondition.freezingDrizzle" = "Drissel de congelació";
+"WeatherCondition.freezingRain" = "Una pluja congelada";
+"WeatherCondition.frigid" = "Frescat";
+"WeatherCondition.hail" = "- El seu nom.";
+"WeatherCondition.haze" = "Esborra";
+"WeatherCondition.heavyRain" = "Una pluja intensa";
+"WeatherCondition.heavySnow" = "Una gran neu";
+"WeatherCondition.hot" = "Calent";
+"WeatherCondition.hurricane" = "Huracan";
+"WeatherCondition.isolatedThunderstorms" = "Tempestes de tornado";
+"WeatherCondition.mostlyClear" = "Majoritàriament clar";
+"WeatherCondition.mostlyCloudy" = "Principalment nublada";
+"WeatherCondition.partlyCloudy" = "En part nublada";
+"WeatherCondition.rain" = "La pluja";
+"WeatherCondition.scatteredThunderstorms" = "Tempestes de tornado disperses";
+"WeatherCondition.sleet" = "El seu";
+"WeatherCondition.smoky" = "Fums";
+"WeatherCondition.snow" = "Neve";
+"WeatherCondition.strongStorms" = "Una tempesta de fulgres";
+"WeatherCondition.sunFlurries" = "Sun Flurries";
+"WeatherCondition.sunShowers" = "Les dutxes de sol";
+"WeatherCondition.thunderstorms" = "Tormenta de trums";
+"WeatherCondition.tropicalStorm" = "Tempesta tropical";
+"WeatherCondition.windy" = "Vento";
+"WeatherCondition.wintryMix" = "Mistura d'hivern";
+"MoonPhase.new" = "Lluna nova";
+"MoonPhase.waxingCrescent" = "Crescent en la cera";
+"MoonPhase.firstQuarter" = "Primer trimestre";
+"MoonPhase.waxingGibbous" = "Cenciador de Gibbous";
+"MoonPhase.full" = "Lluna plena";
+"MoonPhase.waningGibbous" = "Gibbous empenyat";
+"MoonPhase.lastQuarter" = "El darrer trimestre";
+"MoonPhase.waningCrescent" = "Crescent que s'esvaï";
+"WeatherAlert.Preview.Tornado" = "Avís de tornado: busqueu refugia segur immediatament.";
+"WeatherAlert.Preview.Source" = "Servei Meteorològic";
+"WeatherAlert.Preview.Region" = "Zona de previsions";
+"Saved Regions" = "Les regions salvades";
+"Current Location" = "L'ubicació actual";
+"Reorder Region" = "Reordenament de la regió";
+"WeatherAlert.Preview.HighTemperature" = "Avís amarell per a temperatures altes";
+"Illumination" = "Il·luminació";
+"Shared event" = "Event compartit";
+"Add to Calendar" = "Agrega al calendari";
+"Event added" = "Event afegit";
+"Already in your calendar" = "Ja està al teu calendari.";
+"Unable to add event" = "No es pot afegir esdeveniment";
+"Calendar Access Required" = "Requereix accés al calendari";
+"Allow calendar access in Settings to add this event." = "Permetre l'accés al calendari en Configuracions per afegir aquest esdeveniment.";
+"Open Settings" = "Configuracions obertes";
+"Adding…" = "A més...";
+"Couldn’t find a writable calendar." = "No vaig trobar un calendari escrit.";
+"Please try again." = "Si us plau, intentem de nou.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Canvia el pla";
+"Current Plan" = "Plan actual";
+"You can change your plan or billing period at any time." = "Pots canviar el teu pla o el termini de facturació en qualsevol moment.";
+"Invites" = "Invites";
+"Cancelled" = "Cancel·la";
+"Shared by me" = "Comparteix per mi";
+"Shared with me" = "Compartiu amb mi";
+"No shared events yet." = "Encara no hi ha esdeveniments compartits.";
+"No one has shared an event with you yet." = "Ningú ha compartit un esdeveniment amb tu encara.";
+"Events you send from the share sheet appear here." = "Els esdeveniments que envia de la ficha de les accions apareixen aquí.";
+"Invitations go to" = "Les invitacions van a";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Les invitacions que accepteixes s'afegeixen aquí i es mantenen actualitzades.";
+"Sample shared event" = "Esmampla d'esdeveniment compartit";
+"Sofia" = "Sofia";
+"Team lunch" = "Món de equip";
+
+/* Booking */
+"Booking page" = "Pàgina de reserva";
+"Your name" = "El teu nom";
+"Display name" = "Nom de l'afirmació";
+"Source calendar" = "Calendari de font";
+"Booked meetings land here, and your busy times here block new bookings." = "Les reunions reservades arriben aquí, i els teus moments ocupats aquí bloqueixen les noves reserves.";
+"Meeting types" = "Tipos de reunions";
+"%lld min" = "%lld min";
+"Add meeting type" = "Agrega tipus de reunió";
+"Weekly hours" = "Horari de la setmana";
+"Save booking page" = "Guarda la pàgina de reserva";
+"Your booking page is live" = "La teva pàgina de reserva és en directe.";
+"Share this link — anyone can book one of your open times." = "Comparteix aquest enllaç  qualsevol pot reservar un dels teus horaris oberts.";
+"Share link" = "Enllaç de compartir";
+"Edit settings" = "Modificar les configuracions";
+"Add at least one meeting type." = "A més, afegir almenys un tipus de reunió.";
+"Turn on at least one day with valid hours." = "Enviar almenys un dia amb horaris valides.";
+"Set up a booking page" = "Configurar una pàgina de reserva";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Deixeu que la gent reservi els vostres horaris oberts, les reunions arribin al calendari que escolteu, i els vostres horaris ocupats mantingueu aquestes places lliures.";
+"Approve on this device" = "Aprovació en aquest dispositiu";
+"Set up web booking" = "Configurar la reserva en web";
+"You're all set" = "Teniu tot preparat.";
+"Couldn't approve" = "No podia aprovar";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Aprova enllaçar aquest navegador al teu calendari per poder crear una pàgina de reserva a la web gratuïta, perquè tens l'aplicació.";
+"Linking…" = "Coneixent...";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Torna al teu navegador  està preparat per acabar la configuració de la pàgina de reserva.";
+"The code may have expired. Reopen the QR on the web and try again." = "El codi pot haver expirat. QR en la web i intentem de nou.";
+"Read-only shared event" = "Event compartit només per lectura";
+"Remove from My Calendar" = "Eliminar del meu calendari";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars compte";
+"App Clip sharing account" = "App Clip Compartir comptes";
+"Required for synced App Clip events and recovery after reinstalling." = "Requisitos per a la sincronizació App Clip Eventos i recuperació després de la reinstal·lació.";
+"Continue with Google" = "Continuar amb Google";
+"Sign Out" = "Inscriure-se";
+"Signing in…" = "Signar-se...";
+"Sign In" = "Inscriure-se";
+"Sign in to continue" = "Inscriure-se per continuar";
+"Your account keeps this shared event recoverable after reinstalling the app." = "El teu compte manté aquest esdeveniment compartit recuperable després de reinstal·lar l'aplicació.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Aquest compte és propietari App Clip Comparteix i les restaura després de la reinstal·lació.";
+"Sign in with Google or Apple to share and receive synced events." = "Inscriure-se amb Google o Apple per compartir i rebre esdeveniments sincronizats.";
+"Apple did not return an identity token." = "Apple no va retornar un token d'identitat.";
+"Unable to share event" = "No es pot compartir l'esdeveniment";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "L'esdeveniment no es pot guardar a la seva Cloud Calendars Compta, si us plau, torna a intentar-ho.";
+"Google" = "Google";
+"Apple" = "Apple";
+"Microsoft" = "Microsoft";
+"Connect" = "Conectar";
+"Connected" = "Coneixut";
+"Sign in with at least one account" = "Inscriure-se amb almenys un compte";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "Conectar Google, Apple, MicrosoftCada identitat connectada obre el mateix compte d'esdeveniments compartits.";
+"A Premium subscription is required to connect Microsoft." = "Es requereix una subscripció Premium per connectar Microsoft- Sí .";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "Aquestes identitats són només per a App Clip Compartir i recuperar. Es mantenen separats dels registres i sincronizacions del proveïdor de calendaris.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Inscriure-se amb Google, Apple, o Microsoft compartir i rebre esdeveniments sincronizats.";
+"Share a verified email during sign-in to use synced events and invitations." = "Comparteix un correu electrònic verificat durant la inscripció per utilitzar esdeveniments i invitacions sincronizats.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "Has de compartir un correu electrònic verificat durant la inscripció. La gent ho utilitzarà per trobar-te i convidar-te a calendaris i esdeveniments.";
+"Manage connected accounts" = "Gestionar les comptes connectats";
+"Apple, Google, and Microsoft" = "Apple, Google, i Microsoft";
+"Open account sign-in" = "Inscripció a compte obert";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "Un correu electrònic verificat és necessari per compartir, recuperar o utilitzar l'accés concedit per un propietari.";
+"Accept" = "Accepta";
+"Access removed" = "L'accés eliminat";
+"Add a Mail account on this device, then try again." = "Ajudi un compte de Mail en aquest dispositiu, després intentem de nou.";
+"Add a writable calendar before moving this event." = "A més, afegir un calendari escrit abans de traslladar aquest esdeveniment.";
+"Add everyone who should receive this calendar and choose their access." = "Agrega a tots els que han de rebre aquest calendari i escolli l'accés.";
+"Add everyone who should receive this event and choose their access." = "A més, afegir a tots els que han de rebre aquest esdeveniment i escollir l'accés.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "Després de Save, %@ La seva còpia local quedarà només llegida amb una línia a través d'ella.";
+"Anonymous recipient" = "Receptor anònim";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "Apple no va retornar un correu electrònic. En Configuracions, deixeu d'utilitzar Apple ID per Cloud Calendars, després reconeix-te de nou i triar Compartir el meu correu electrònic.";
+"Calendar invitation" = "Invitat al calendari";
+"Cancel for Everyone" = "Cancellar per a tothom";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Seleccioneu Lector, Escritor o propietari. Els propietaris també poden compartir aquest esdeveniment i gestionar l'accés.";
+"Choose how to share this synced event." = "Escollir com compartir aquest esdeveniment sincronizat.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars No es va poder guardar la sessió en aquest dispositiu.";
+"Cloud Calendars user" = "Cloud Calendars usuari";
+"Could not add: %@." = "No podia afegir: %@- Sí .";
+"Custom on this device" = "Personalitzat en aquest dispositiu";
+"Decline" = "Declinació";
+"Default from creator" = "Default del creador";
+"Deleted by owner" = "Eliminat pel propietari";
+"Each email address can appear only once." = "Cada adreça de correu electrònic pot aparèixer només una vegada.";
+"Enter a valid email address for %@." = "Introdueix una adreça de correu electrònic válida per %@- Sí .";
+"From %@" = "De %@";
+"Invitation pending" = "Invitació pendiente";
+"Loading shared calendars…" = "Carregant calendaris compartits...";
+"Mail is not configured" = "El correu no està configurat";
+"Manage calendar sharing" = "Gestionar el compartir calendari";
+"New calendar invitation" = "Nova invitació de calendari";
+"New event invitation" = "Nova invitació a l'esdeveniment";
+"No calendars have been shared with you yet." = "Encara no s'han compartit calendaris amb tu.";
+"Open a shared event or calendar" = "Obre un esdeveniment o calendari compartit";
+"Open this event with Cloud Calendars:\n\n%@" = "Obre aquest esdeveniment amb Cloud Calendars- El seu nom:\n\n%@";
+"Original creator" = "Creador original";
+"People" = "La gent";
+"People appear here after they add the event." = "La gent apareix aquí després d'ajustar l'esdeveniment.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "Colocar un Cloud Calendars Event o calendari QR codi dins del marc.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "El lector pot veure i sincronizar. L'escriptor pot editar. El propietari també pot compartir i gestionar l'accés després de iniciar sesión amb el correu electrònic convidat.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "El lector pot veure. l'escriptor pot editar esdeveniments. el propietari també pot compartir el calendari i gestionar l'accés.";
+"Remove" = "Eliminar";
+"Remove Shared Calendar?" = "Eliminar Calendari compartit?";
+"Remove from My Calendars" = "Elimina dels meus calendaris";
+"Resend" = "Enviar-ho";
+"Scan QR Code" = "Escanir QR Codi";
+"Scan to open this calendar" = "Escanir per obrir aquest calendari";
+"Scan to open this event" = "Escanir per obrir aquest esdeveniment";
+"Server returned %lld: %@" = "Servidor retornat %lld- El seu nom: %@";
+"Shared calendar" = "Calendari compartit";
+"Shared calendar information" = "Informació compartida sobre calendaris";
+"Shared event: %@" = "Event compartit: %@";
+"Sign in or manage accounts" = "Inscriure-se o gestionar comptes";
+"Sign in to manage event access." = "S'inscriu per gestionar l'accés a l'esdeveniment.";
+"Sign in to save event access." = "Inscriure-se per guardar l'accés a l'esdeveniment.";
+"Sign in to see calendars shared with you." = "Inscriu-vos per veure els calendaris comparts amb vosaltres.";
+"Sign-in couldn’t open. Please try again." = "No es va obrir la inscripció, si us plau, intentem de nou.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "Deixar de compartir aquest calendari amb %@Després de Save, la seva còpia congelada i els seus esdeveniments quedaran visibles amb una línia a través d'ells.";
+"The calendar and its events will be removed only from this device." = "El calendari i els seus esdeveniments només es suprimirà d'aquest dispositiu.";
+"The provider didn’t return the information required to sign in." = "El proveïdor no va retornar la informació necessària per iniciar la seva inscripció.";
+"The provider returned an invalid response." = "El proveïdor va respondre una resposta invalida.";
+"The sign-in response couldn’t be verified. Please try again." = "La resposta de registre no es va verificar.";
+"The sign-in response was invalid. Please try again." = "La resposta de registre va ser invalida.";
+"This changes only your local copy. Shared event details stay read-only." = "Això només modifica la teva còpia local.";
+"This color changes only on this device." = "Aquest color només canvia en aquest dispositiu.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "Això QR el codi no conté un Cloud Calendars Event o calendari.";
+"This QR code does not contain a Cloud Calendars share." = "Això QR el codi no conté un Cloud Calendars Comparteix.";
+"This removes only your local copy. Other people keep access." = "Això elimina només la teva còpia local.";
+"Try again" = "Intentar de nou.";
+"Unable to Update Calendar" = "No es pot actualitzar el calendari";
+"Unable to add calendar" = "No es pot afegir calendari";
+"Unreadable response from the server" = "Resposta i resposta no legible del servidor";
+"Use Apple, Google, or Microsoft." = "Utilitzeu Apple, Google, o Microsoft- Sí .";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "Utilitzar un dispositiu amb una càmera disponible per escanejar un Cloud Calendars QR codi.";
+"You can add up to 50 people at once." = "Pots sumar fins a 50 persones a la vegada.";
+"You can send up to 50 invitations at once." = "Pots enviar fins a 50 invitacions a la vegada.";
+"%lld connected account" = "%lld compte connectat";
+"%lld connected accounts" = "%lld comptes connectats";
+"%lld pending invitation" = "%lld Invitat pendent";
+"%lld pending invitations" = "%lld Invitades pendientes";
+"%lld upcoming event" = "%lld l'acte que està a punt de passar";
+"%lld upcoming events" = "%lld esdeveniments propensos";
+"%@ invited you to %@" = "%@ t'invita a %@";

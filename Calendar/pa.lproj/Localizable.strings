@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld ਘਟਨਾ";
+"%lld events" = "%lld ਘਟਨਾ";
+"Share Pop-up" = "ਸ਼ੇਅਰ ਪੌਪ-ਅੱਪ";
+"Would you like to share this event?" = "ਕੀ ਤੁਸੀਂ ਇਸ ਘਟਨਾ ਨੂੰ ਸਾਂਝਾ ਕਰਨਾ ਚਾਹੋਗੇ?";
+"Don't ask again" = "ਦੁਬਾਰਾ ਨਾ ਪੁੱਛੋ";
+"No email was provided." = "ਕੋਈ ਈਮੇਲ ਨਹੀਂ ਦਿੱਤੀ ਗਈ ਸੀ।";
+"Please enter a valid email to continue." = "ਅੱਗੇ ਵਧਣ ਲਈ ਕਿਰਪਾ ਕਰਕੇ ਇੱਕ ਵੈਧ ਈਮੇਲ ਦਰਜ ਕਰੋ।";
+"Your email" = "ਤੁਹਾਡੀ ਈਮੇਲ";
+"Save" = "ਬਚਾਓ";
+"Login" = "ਲੌਗਇਨ";
+"Logout" = "ਲੌਗਆਉਟ";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "ਕੈਲੰਡਰ";
+"Inbox" = "ਇਨਬਾਕਸ";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "ਹੋਰ";
+"Google calendars" = "Google calendars";
+"No synced Google calendars yet." = "ਕੋਈ ਸਿੰਕ੍ਰੋਨਾਈਜ਼ਡ ਨਹੀਂ Google calendarਅਜੇ ਤੱਕ.";
+"Microsoft calendars" = "Microsoft calendars";
+"No synced Microsoft calendars yet." = "ਕੋਈ ਸਿੰਕ੍ਰੋਨਾਈਜ਼ਡ ਨਹੀਂ Microsoft calendarਅਜੇ ਤੱਕ.";
+"Sign out" = "ਸਾਈਨ ਅਪ ਕਰੋ";
+"Add iCloud Calendar" = "ਜੋੜੋ iCloud ਕੈਲੰਡਰ";
+"Share calendars with iCloud Calendar" = "ਨਾਲ ਕੈਲੰਡਰ ਸਾਂਝਾ ਕਰੋ iCloud ਕੈਲੰਡਰ";
+"Sign in with Google" = "ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ Google";
+"Sign in with Microsoft" = "ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ Microsoft";
+"Deselect All" = "ਸਾਰੇ ਨੂੰ ਹਟਾਓ";
+"Select All" = "ਸਭ ਚੁਣੋ";
+"No Email" = "ਕੋਈ ਈਮੇਲ ਨਹੀਂ";
+"Add Google Calendar" = "ਜੋੜੋ Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "ਕੈਲੰਡਰ ਦਾ ਨਾਮ";
+"Account" = "ਖਾਤਾ";
+"COLOR" = "ਰੰਗ";
+"NOTIFICATIONS" = "ਸੂਚਨਾਵਾਂ";
+"Event Alerts" = "ਘਟਨਾ ਚੇਤਾਵਨੀ";
+"Allow events on this calendar to display alerts." = "ਇਸ ਕੈਲੰਡਰ ਵਿੱਚ ਹੋਣ ਵਾਲੀਆਂ ਘਟਨਾਵਾਂ ਨੂੰ ਚੇਤਾਵਨੀ ਦਿਖਾਉਣ ਦੀ ਆਗਿਆ ਦਿਓ।";
+"Add Calendar" = "ਕੈਲੰਡਰ ਜੋੜੋ";
+
+/* Colors */
+"Red" = "ਲਾਲ";
+"Orange" = "ਸੰਤਰੀ";
+"Yellow" = "ਪੀਲਾ";
+"Green" = "ਹਰੀ";
+"Blue" = "ਨੀਲਾ";
+"Purple" = "ਮਿਰਚ";
+"Brown" = "ਭੂਰਾ";
+"Custom" = "ਕਸਟਮ";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "ਕੈਲੰਡਰ ਦਾ ਰੰਗ";
+"Custom..." = "ਕਸਟਮ...";
+
+/* EditCalendarView */
+"Edit Calendar" = "ਕੈਲੰਡਰ ਸੰਪਾਦਿਤ ਕਰੋ";
+"Delete Calendar" = "ਕੈਲੰਡਰ ਹਟਾਓ";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "ਸ਼ੇਅਰਿੰਗ ਸੈਟਿੰਗਜ਼ ਲੋਡ ਕਰਨਾ...";
+"Shared with these users" = "ਇਹਨਾਂ ਉਪਭੋਗਤਾਵਾਂ ਨਾਲ ਸਾਂਝਾ ਕੀਤਾ ਗਿਆ";
+"Add New Email" = "ਨਵੀਂ ਈਮੇਲ ਜੋੜੋ";
+"Email to share" = "ਸਾਂਝਾ ਕਰਨ ਲਈ ਈਮੇਲ";
+"Permission:" = "ਇਜਾਜ਼ਤਃ";
+"Add" = "ਜੋੜੋ";
+"Sharing:" = "ਸਾਂਝਾ ਕਰਨਾਃ";
+"Done" = "ਪੂਰਾ ਕੀਤਾ";
+
+"Error loading: %@" = "ਗਲਤੀ ਲੋਡਿੰਗਃ %@";
+"Error adding: %@" = "ਜੋੜਨ ਵਿੱਚ ਗਲਤੀਃ %@";
+"Error deleting: %@" = "ਗਲਤੀ ਹਟਾਉਣਃ %@";
+"Error updating: %@" = "ਅਪਡੇਟ ਗਲਤੀਃ %@";
+"Error re-inviting (delete): %@" = "ਗਲਤੀ ਮੁੜ-ਉੱਛੁਕਤਾ (ਹਟਾਓ): %@";
+"Error re-inviting (insert): %@" = "ਗਲਤੀ ਮੁੜ-ਉੱਛੁਕਤਾ (ਇਨਸਰਟ): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "ਪਾਠਕ";
+"Writer" = "ਲੇਖਕ";
+"Owner"  = "ਮਾਲਕ";
+
+/* MonthCalendarView */
+"Day View" = "ਦਿਨ ਦਾ ਦ੍ਰਿਸ਼";
+"This is a repeating event." = "ਇਹ ਇਕ ਦੁਹਰਾਉਣ ਵਾਲੀ ਘਟਨਾ ਹੈ।";
+"Save for This Event Only" = "ਸਿਰਫ਼ ਇਸ ਘਟਨਾ ਲਈ ਹੀ";
+"Save for Future Events" = "ਭਵਿੱਖ ਦੀਆਂ ਘਟਨਾਵਾਂ ਲਈ ਬਚੋ";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "ਸੂਰਜ";
+"Mon" = "ਮੂਨ";
+"Tue" = "ਟੂਈ";
+"Wed" = "ਵਿਆਹ";
+"Thu" = "ਥੂ";
+"Fri" = "ਸ਼ੁੱਕਰਵਾਰ";
+"Sat" = "ਸੈੱਟ";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "ਨੇੜੇ";
+
+/* AllEventsListView */
+"No calendar access." = "ਕੈਲੰਡਰ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਹੈ।";
+
+/* EventRowView */
+"Ends" = "ਅੰਤ";
+
+/* SearchEventRowView */
+"No Title" = "ਕੋਈ ਸਿਰਲੇਖ ਨਹੀਂ";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "ਮੀਟਿੰਗ ਵਿਚ ਸ਼ਾਮਲ ਹੋਵੋ";
+"Edit" = "ਸੰਪਾਦਿਤ ਕਰੋ";
+"Duplicate" = "ਦੁਹਰਾਓ";
+"Delete" = "ਹਟਾਓ";
+"Share" = "ਸਾਂਝਾ ਕਰੋ";
+"Add to Google Meet" = "ਜੋੜੋ Google ਮਿਲੋ";
+"Add to Microsoft Teams" = "ਜੋੜੋ Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "ਕੋਈ ਚੁਣੀ ਸੀਮਾ ਨਹੀਂ";
+"all-day" = "ਸਾਰਾ ਦਿਨ";
+"Search events..." = "ਖੋਜ ਘਟਨਾਵਾਂ...";
+"Day" = "ਦਿਨ";
+"MultiDay" = "ਬਹੁ-ਦਿਨ";
+"Month" = "ਮਹੀਨਾ";
+"Year" = "ਸਾਲ";
+"List" = "ਸੂਚੀ";
+"MultiCalendar" = "ਮਲਟੀਕੈਲੇਂਡਰ";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "ਨਵੀਂ ਘਟਨਾ";
+"All-day event" = "ਪੂਰੇ ਦਿਨ ਦੀ ਘਟਨਾ";
+"Recurring Event" = "ਦੁਹਰਾਉਣ ਵਾਲੀ ਘਟਨਾ";
+"This event is part of a series. Update which events?" = "ਇਹ ਘਟਨਾ ਇੱਕ ਲੜੀ ਦਾ ਹਿੱਸਾ ਹੈ। ਕਿਹੜੀਆਂ ਘਟਨਾਵਾਂ ਨੂੰ ਅਪਡੇਟ ਕਰੋ?";
+"This Event Only" = "ਸਿਰਫ਼ ਇਹ ਘਟਨਾ";
+"All Future Events" = "ਭਵਿੱਖ ਦੀਆਂ ਸਾਰੀਆਂ ਘਟਨਾਵਾਂ";
+"Cancel" = "ਰੱਦ ਕਰਨਾ";
+
+/* DraggableMenuView */
+"Calendar" = "ਕੈਲੰਡਰ";
+"Subscriptions" = "ਗਾਹਕੀ";
+"Settings" = "ਸੈਟਿੰਗਜ਼";
+"Sharing" = "ਸਾਂਝਾ ਕਰਨਾ";
+"Live" = "ਜਿਊਂਦੇ ਰਹੋ";
+"Stop" = "ਰੁਕੋ";
+"Calendar Live Activity" = "ਕੈਲੰਡਰ ਲਾਈਵ ਗਤੀਵਿਧੀ";
+"Get" = "ਪ੍ਰਾਪਤ ਕਰੋ";
+"Color" = "ਰੰਗ";
+"Search for a city…" = "ਇੱਕ ਸ਼ਹਿਰ ਦੀ ਖੋਜ...";
+"No directions" = "ਕੋਈ ਦਿਸ਼ਾ ਨਹੀਂ";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "ਸਥਾਨ ਪਹੁੰਚ ਰੱਦ ਕੀਤੀ ਗਈ. ਸੈਟਿੰਗਜ਼ ਵਿੱਚ ਇੱਕ ਸ਼ਹਿਰ ਦੀ ਖੋਜ ਕਰੋ ਜਾਂ ਪਹੁੰਚ ਦਿਓ.";
+"Cannot refresh. Location unknown." = "ਮੈਂ ਤਾਜ਼ਾ ਨਹੀਂ ਕਰ ਸਕਦਾ. ਸਥਾਨ ਅਣਜਾਣ ਹੈ.";
+"10-DAY FORECAST" = "10 ਦਿਨ ਦੀ ਪੂਰਵ-ਅਨੁਮਾਨ";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "ਕੱਲ੍ਹ";
+"on_day" = "'ਤੇ %@";
+"in_days" = "ਵਿੱਚ %d ਦਿਨ";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "ਨਵੀਂ ਘਟਨਾ";
+
+/* Search placeholder */
+"Search for a city..." = "ਇੱਕ ਸ਼ਹਿਰ ਦੀ ਖੋਜ...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "ਕੈਲੰਡਰ ਘਟਨਾ ਨੂੰ ਤੇਜ਼ੀ ਨਾਲ ਜੋੜਨ ਲਈ ਇੱਕ ਘੰਟੇ ਤੇ ਟੈਪ ਕਰੋ.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "ਮਹਿਸੂਸ ਕਰਦਾ ਹੈ";
+"similar_to_actual_temp" = "ਅਸਲ ਤਾਪਮਾਨ ਦੇ ਸਮਾਨ.";
+"wind_cooler_feel" = "ਹਵਾ ਇਸ ਨੂੰ ਠੰਡਾ ਮਹਿਸੂਸ ਕਰ ਰਹੀ ਹੈ।";
+"humidity_warmer_feel" = "ਨਮੀ ਇਸ ਨੂੰ ਗਰਮ ਮਹਿਸੂਸ ਕਰ ਰਹੀ ਹੈ।";
+
+/* HumidityCard */
+"HUMIDITY" = "ਨਮੀ";
+"The dew point is %d° right now." = "ਦਸਤ ਦਾ ਬਿੰਦੂ %dਹੁਣੇ ਹੀ.";
+"dewPoint.current" = "ਦਸਤ ਦਾ ਬਿੰਦੂ %dਹੁਣੇ ਹੀ.";
+
+/* MoonCard */
+"MOON PHASE" = "ਚੰਦਰਮਾ ਪੜਾਅ";
+"Moonrise" = "ਚੰਦਰਮਾ ਉਠਣਾ";
+"Moonset" = "ਚੰਦਰਮਾ";
+"Next %@" = "ਅਗਲਾ %@";
+"Data unavailable" = "ਡਾਟਾ ਉਪਲਬਧ ਨਹੀਂ";
+"%d day" = "%d ਦਿਨ";
+"%d days" = "%d ਦਿਨ";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "ਪ੍ਰੈਸੀਪੀਟੇਸ਼ਨ";
+"PRECIPITATION_CARD_TODAY_LABEL" = "ਅੱਜ";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "ਅਗਲਾ ਉਮੀਦ ਹੈ %1$.0f %2$@ %3$@. ."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "ਜਲਦ ਹੀ ਕੋਈ ਬਾਰਸ਼ ਨਹੀਂ ਹੋਣ ਦੀ ਉਮੀਦ ਹੈ।";
+
+/* PressureCard */
+"PRESSURE" = "ਦਬਾਅ";
+"hPa" = "ਐਚਪੀਏ";
+
+/* SunsetCard */
+"SUNRISE" = "ਸੂਰਜ ਚੜ੍ਹਨਾ";
+"Sunrise: %@" = "ਸੂਰਜ ਚੜ੍ਹਨਾਃ %@";
+"Sunset: %@" = "ਸੂਰਜ ਡੁੱਬਣਃ %@";
+"Sunrise" = "ਸੂਰਜ ਚੜ੍ਹਨਾ";
+"Sunset" = "ਸੂਰਜ ਡੁੱਬਣ";
+
+
+"Sunrise and Sunset" = "ਸੂਰਜ ਚੜ੍ਹਨਾ ਅਤੇ ਸੂਰਜ ਡੁੱਬਣਾ";
+"First Light" = "ਪਹਿਲਾ ਚਾਨਣ";
+"Solar Noon" = "ਸੂਰਜੀ ਦੁਪਹਿਰ";
+"Last Light" = "ਆਖਰੀ ਚਾਨਣ";
+"Total Daylight" = "ਕੁੱਲ ਦਿਨ ਦੀ ਰੌਸ਼ਨੀ";
+
+/* UVIndexCard */
+"UV INDEX" = "ਯੂਵੀ ਇੰਡੈਕਸ";
+"Low" = "ਘੱਟ";
+"Moderate" = "ਮੱਧਮ";
+"High" = "ਉੱਚ";
+"Very High" = "ਬਹੁਤ ਉੱਚਾ";
+"Extreme" = "ਅਤਿਅੰਤ";
+
+/* VisibilityCard */
+"VISIBILITY" = "ਦਰਿਸ਼ਗੋਚਰਤਾ";
+"km" = "ਕਿਲੋਮੀਟਰ";
+"Perfectly clear view." = "ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਾਫ ਦ੍ਰਿਸ਼ਟੀ.";
+"Excellent visibility." = "ਸ਼ਾਨਦਾਰ ਦਿੱਖ.";
+"Good visibility." = "ਚੰਗੀ ਦਿੱਖ.";
+"Moderate visibility." = "ਦਰਮਿਆਨੀ ਦਿੱਖ.";
+"Poor visibility." = "ਮਾੜੀ ਦਿੱਖ.";
+"Very poor visibility." = "ਬਹੁਤ ਹੀ ਮਾੜੀ ਦਿੱਖ.";
+"visibility.perfect"   = "ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਾਫ ਦ੍ਰਿਸ਼ਟੀ.";
+"visibility.excellent" = "ਸ਼ਾਨਦਾਰ ਦਿੱਖ.";
+"visibility.good"      = "ਚੰਗੀ ਦਿੱਖ.";
+"visibility.moderate"  = "ਦਰਮਿਆਨੀ ਦਿੱਖ.";
+"visibility.poor"      = "ਮਾੜੀ ਦਿੱਖ.";
+"visibility.verypoor"  = "ਬਹੁਤ ਹੀ ਮਾੜੀ ਦਿੱਖ.";
+"visibility.unknown"   = "";
+
+/* WindCard */
+"WIND" = "ਹਵਾ";
+"Gusts" = "ਗੂਸਟ";
+"Direction" = "ਦਿਸ਼ਾ";
+"km/h" = "ਕਿਲੋਮੀਟਰ/ਘੰਟਾ";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "ਈ";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "ਮੌਸਮ ਦੇ ਅੰਕੜੇ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਰਿਹਾ. ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ ਸੰਪਰਕ ਦੀ ਜਾਂਚ ਕਰੋ ਜਾਂ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
+"Falling" = "ਡਿੱਗਣਾ";
+"Rising" = "ਵਧਣਾ";
+"Steady" = "ਸਥਿਰ";
+"Unknown" = "ਅਣਜਾਣ";
+"Sunny" = "ਧੁੱਪ";
+"Cloudy" = "ਬੱਦਲ";
+"Partly Cloudy" = "ਕੁਝ ਹੱਦ ਤੱਕ ਬੱਦਲ";
+"Drizzle" = "ਡ੍ਰਾਈਜ਼ਲ";
+"Thunderstorm" = "ਤੂਫ਼ਾਨ";
+"Fog" = "ਧੁੰਦ";
+"Partly Cloudy Night" = "ਕੁਝ ਹੱਦਾਂ ਦੀ ਰਾਤ";
+"Clear Night" = "ਸਾਫ਼ ਰਾਤ";
+"Hazy" = "ਹੁਸ਼ਿਆਰ";
+"Today" = "ਅੱਜ";
+"Now" = "ਹੁਣ";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "NNE";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "ਈ";
+"cardinal.ESE" = "ਈਐਸਈ";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "ਐਸਈਈ";
+"cardinal.S"   = "S";
+"cardinal.SSW" = "ਐਸਐਸਡਬਲਯੂ";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "NNW";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ";
+"Today's chance: %d%%" = "ਅੱਜ ਦਾ ਮੌਕਾਃ %d%%";
+"%@'s chance: %d%%" = "%@ਮੌਕਾਃ %d%%";
+"Max" = "ਮੈਕਸ";
+"Min" = "ਮਿਨ";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "ਰੋਜ਼ਾਨਾ ਬਾਰਸ਼ ਦੀ ਸੰਭਾਵਨਾ ਹਰ ਘੰਟੇ ਦੀ ਸੰਭਾਵਨਾ ਨਾਲੋਂ ਵੱਧ ਹੁੰਦੀ ਹੈ।";
+"ChanceOfPrecipitation_Title" = "ਮੀਂਹ ਦੀ ਸੰਭਾਵਨਾ";
+"TodaysChance"                = "ਅੱਜ ਦਾ ਮੌਕਾਃ %d%%";
+"OtherDayChance"              = "%@ਮੌਕਾਃ %d%%";
+"DailyChanceExplanation"      = "ਰੋਜ਼ਾਨਾ ਬਾਰਸ਼ ਦੀ ਸੰਭਾਵਨਾ ਹਰ ਘੰਟੇ ਦੀ ਸੰਭਾਵਨਾ ਨਾਲੋਂ ਵੱਧ ਹੁੰਦੀ ਹੈ।";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "ਮਹਿਸੂਸ ਕਰਦਾ ਹੈ";
+"Actual" = "ਅਸਲ";
+"No hourly data available for this day." = "ਅੱਜ ਦੇ ਸਮੇਂ ਲਈ ਕੋਈ ਘੰਟਾ ਡਾਟਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "ਨਮੀ, ਸੂਰਜ ਦੀ ਰੌਸ਼ਨੀ ਜਾਂ ਹਵਾ ਦੇ ਨਤੀਜੇ ਵਜੋਂ ਤਾਪਮਾਨ ਕਿਵੇਂ ਮਹਿਸੂਸ ਹੁੰਦਾ ਹੈ.";
+"The actual air temperature." = "ਹਵਾ ਦਾ ਅਸਲ ਤਾਪਮਾਨ।";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat"  = "L: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "ਨਮੀ";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "ਨਮੀ %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "ਨਮੀ Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "ਅੱਜ ਦੀ ਮਿਨ %d%%  ਅਧਿਕਤਮ %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "ਮੈਕਸ";
+"ChartMarker_Min"           = "ਮਿਨ";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "ਮੀਂਹਃ %.1f%@, ਬਰਫ਼: %.1f%@";
+"Precip_Total_RainFormat"       = "ਮੀਂਹਃ %.1f%@";
+"Precip_Total_SnowFormat"       = "ਬਰਫ਼ਃ %.1f%@";
+"Precip_Total_None"             = "ਵਰਖਾਃ 0%@";
+"Precip_Bars_Subtitle"          = "ਬਾਰਿਸ਼ ਅਤੇ ਬਰਫ ਲਈ ਘੰਟਾਵਾਰ ਬਾਰ (%@) ।";
+"Precip_Level_Light"            = "ਚਾਨਣ";
+"Precip_Level_Moderate"         = "ਮੱਧਮ";
+"Precip_Level_Heavy"            = "ਭਾਰੀ";
+"Precip_Tooltip_Format"         = "%@h\nਮੀਂਹਃ %.1f%@\nਬਰਫ਼ਃ %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "ਦਬਾਅ %@ %@";
+"Pressure_CurrentUnavailable"      = "ਦਬਾਅਃ --";
+"Pressure_DailyMinMaxFormat"       = "ਅੱਜ ਦੀ ਮਿਨ %@ %@  ਅਧਿਕਤਮ %@ %@";
+"Pressure_AverageFormat"           = "ਦਬਾਅ ਦਾ ਔਸਤ %@ %@";
+"Pressure_DailyRangeFormat"        = "ਰੋਜ਼ਾਨਾ ਰੇਂਜਃ %@%@ %@";
+"Pressure_Title"                   = "ਦਬਾਅ";
+"Pressure_NoData"                  = "ਅੱਜ ਦੇ ਲਈ ਕੋਈ ਦਬਾਅ ਡਾਟਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "ਅੱਜ ਦੇ %@ %d";
+"UVGraphNoHourlyData"   = "ਅੱਜ ਦੇ ਸਮੇਂ ਲਈ ਕੋਈ ਘੰਟਾ ਡਾਟਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।";
+"UVGraphNowLabel"       = "ਹੁਣ, %@";
+"UVCategory_None"       = "ਕੋਈ ਨਹੀਂ";
+"UVCategory_Low"        = "ਘੱਟ";
+"UVCategory_Moderate"   = "ਮੱਧਮ";
+"UVCategory_High"       = "ਉੱਚ";
+"UVCategory_VeryHigh"   = "ਬਹੁਤ ਉੱਚਾ";
+"UVCategory_Extreme"    = "ਅਤਿਅੰਤ";
+"UVAdvice_None"         = "ਇਸ ਦਿਨ ਕੋਈ ਦਰਮਿਆਨੇ ਜਾਂ ਉੱਚੇ UV ਪੱਧਰ ਦੀ ਉਮੀਦ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ.";
+"UVAdvice_Range"        = "ਸੂਰਜ ਦੀ ਸੁਰੱਖਿਆ ਦੀ ਸਿਫਾਰਸ਼ ਕੀਤੀ ਜਾਂਦੀ ਹੈ. %@ ਨੂੰ %@, ਵਿਚਕਾਰ ਪਹੁੰਚਿਆ %@ ਅਤੇ %@. .";
+"UVGraphMaxLabel" = "ਮੈਕਸ";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "ਦਰਿਸ਼ਗੋਚਰਤਾ";
+"Visibility_NoData"                = "ਅੱਜ ਤੱਕ ਕੋਈ ਦਰਿਸ਼ਗੋਚਰਤਾ ਡਾਟਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।";
+"Visibility_CurrentFormat"         = "ਦਰਿਸ਼ਗੋਚਰਤਾ %d %@";
+"Visibility_DailyMinMaxFormat"     = "ਮਿਨ %d  ਅਧਿਕਤਮ %d %@";
+"Visibility_NoCurrentData"         = "ਮੌਜੂਦਾ ਦਰਿਸ਼ਗੋਚਰਤਾ ਦੇ ਕੋਈ ਡਾਟਾ ਉਪਲਬਧ ਨਹੀਂ ਹਨ।";
+"Visibility_HourlyAverages_NoData" = "ਕੋਈ ਘੰਟਾ ਡਾਟਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।";
+"Visibility_MaxLabel"              = "ਮੈਕਸ";
+"Visibility_MinLabel"              = "ਮਿਨ";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "ਹਵਾ ਦੀ ਗਤੀ ਅਤੇ ਗਸਟ";
+"WindGraph_NoData" = "ਅੱਜ ਲਈ ਹਵਾ ਦੇ ਕੋਈ ਅੰਕੜੇ ਉਪਲਬਧ ਨਹੀਂ ਹਨ।";
+"WindGraph_SpeedHeader" = "ਹਵਾ ਦੀ ਗਤੀ %d";
+"WindGraph_GustHeader" = "ਤੱਕ ਦਾ ਸੁਆਦ %d";
+"WindGraph_SpeedRangeHeader" = "ਹਵਾ ਦੀ ਗਤੀ %d-%d";
+"WindGraph_MaxSpeedLabel" = "ਮੈਕਸ ਐਸ";
+"WindGraph_MaxGustLabel" = "ਮੈਕਸ ਜੀ";
+"WindGraph_DragLabel" = "%@\nਗਤੀਃ %d\nਗਸਟ: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "ਰੋਜ਼ਾਨਾ ਸੰਖੇਪ ਜਾਣਕਾਰੀ";
+
+"Precipitation Totals" = "ਮੀਂਹ ਦੀ ਕੁੱਲ ਰਕਮ";
+"LAST 24 HOURS" = "ਪਿਛਲੇ 24 ਘੰਟੇ";
+"NEXT 24 HOURS" = "ਅਗਲੇ 24 ਘੰਟੇ";
+"Total" = "ਕੁੱਲ";
+"Rain" = "ਮੀਂਹ";
+"Snow" = "ਬਰਫ";
+
+"About Wind Speed and Gusts" = "ਹਵਾ ਦੀ ਗਤੀ ਅਤੇ ਗਸਟ ਬਾਰੇ";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "ਹਵਾ ਦੀ ਗਤੀ ਨੂੰ ਥੋੜ੍ਹੇ ਸਮੇਂ ਦੇ ਔਸਤ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਗਿਣਿਆ ਜਾਂਦਾ ਹੈ। ਗਸਟ ਹਵਾ ਦੇ ਇਸ ਔਸਤ ਤੋਂ ਉੱਪਰ ਦੇ ਛੋਟੇ ਬੁਰਸ਼ ਹਨ। ਇੱਕ ਝਟਕਾ ਆਮ ਤੌਰ ਤੇ 20 ਸਕਿੰਟਾਂ ਤੋਂ ਘੱਟ ਰਹਿੰਦਾ ਹੈ।";
+
+"About the Beaufort Scale" = "ਬੋਫੋਰਟ ਪੈਮਾਨੇ ਬਾਰੇ";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "ਬੋਫੋਰਟ ਹਵਾ ਪੈਮਾਨੇ ਨੂੰ ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ ਇੱਕ ਦਿੱਤੀ ਗਈ ਗਤੀ ਤੇ ਹਵਾ ਕਿੰਨੀ ਮਜ਼ਬੂਤ ਜਾਂ ਮਜ਼ਬੂਤ ਹੈ। ਬੋਫੋਰਟ ਪੈਮਾਨੇ ਨਾਲ ਇਹ ਸਮਝਣਾ ਸੌਖਾ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਹਵਾ ਕਿੰਨੀ ਹਵਾਦਾਰ ਮਹਿਸੂਸ ਕਰੇਗੀ ਜਾਂ ਹਵਾ ਦਾ ਕਿੰਨਾ ਪ੍ਰਭਾਵ ਹੋ ਸਕਦਾ ਹੈ। ਪੈਮਾਨੇ 'ਤੇ ਹਰੇਕ ਮੁੱਲ ਹਵਾ ਦੀ ਗਤੀ ਦੀ ਸੀਮਾ ਦੇ ਅਨੁਕੂਲ ਹੈ।";
+
+"About Feels Like Temperature" = "ਤਾਪਮਾਨ ਦੇ ਬਾਰੇ";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "ਭਾਵਨਾ ਦੇ ਤੌਰ ਤੇ ਇਹ ਦੱਸਦਾ ਹੈ ਕਿ ਇਹ ਕਿੰਨਾ ਗਰਮ ਜਾਂ ਠੰਡਾ ਮਹਿਸੂਸ ਕਰਦਾ ਹੈ ਅਤੇ ਅਸਲ ਤਾਪਮਾਨ ਤੋਂ ਵੱਖਰਾ ਹੋ ਸਕਦਾ ਹੈ.";
+
+"Options" = "ਵਿਕਲਪ";
+"Temperature" = "ਤਾਪਮਾਨ";
+"Use system setting (°C)" = "ਸਿਸਟਮ ਸੈਟਿੰਗ ਵਰਤੋ (°C)";
+"mm, cm" = "mm, cm";
+
+/* Dynamic label titles */
+"Conditions" = "ਸ਼ਰਤਾਂ";
+"UV Index" = "ਯੂਵੀ ਇੰਡੈਕਸ";
+"Wind" = "ਹਵਾ";
+"Precipitation" = "ਮੀਂਹ";
+"Humidity" = "ਨਮੀ";
+"Visibility" = "ਦਰਿਸ਼ਗੋਚਰਤਾ";
+"Pressure" = "ਦਬਾਅ";
+
+/* Fallback key */
+"displayedCondition" = "ਵੇਖਾਇਆ ਗਿਆਸ਼ਰਤ";
+
+/* Titles */
+"Forecast"                   = "ਭਵਿੱਖਬਾਣੀ";
+"DailySummary"               = "ਰੋਜ਼ਾਨਾ ਸੰਖੇਪ ਜਾਣਕਾਰੀ";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° ਹੁਣ ਨਾਲ %@ ਹਾਲਾਤ. ਉੱਥੇ ਬਰਸਾਤੀ ਦੀ ਸੰਭਾਵਨਾ ਹੈ %@. . ਹਵਾ ਤੋਂ %@ ਤੱਕ ਦੇ ਰੌਸ਼ਨੀ ਨਾਲ %d %@ਅੱਜ ਦਾ ਤਾਪਮਾਨ %d° ਤੱਕ %d° ਅਤੇ ਮਹਿਸੂਸ ਕਰਦਾ ਹੈ ਕਿ %d°. %@, ਅਤੇ %@. .";
+"UVIndexFormat"              = "UV ਇੰਡੈਕਸ ਤੱਕ %d";
+"HumidityFormat"             = "ਆਸ ਪਾਸ ਦੀ ਨਮੀ %d%%";
+"HumidityRangeFormat"        = "ਨਮੀ %d%% ਨੂੰ %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@ਘੱਟ ਹੈ %d° ਅਤੇ ਉੱਚ ਹੈ %d°. ਤਾਪਮਾਨ ਮਹਿਸੂਸ ਕਰੇਗਾ %d° ਤੱਕ %d°. ਹਵਾ ਤੋਂ %@ ਉਮੀਦ ਕੀਤੀ ਜਾਂਦੀ ਹੈ. %@";
+"NoPrecipLast24h"            = "ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਕੋਈ ਬਾਰਸ਼ ਨਹੀਂ ਦਰਜ ਕੀਤੀ ਗਈ।";
+"RainLast24h"                = "ਮੀਂਹ ਪਿਆ %d ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਮਿਲੀਮੀਟਰ.";
+"SnowAndRainLast24h"         = "ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ, ਬਰਫ਼ ਦਾ ਮਾਪ %@ ਸੈਮੀ ਅਤੇ ਮੀਂਹ %d mm.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "NNE";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "ਈ";
+"Dir_ESE" = "ਈਐਸਈ";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "ਐਸਈਈ";
+"Dir_S"   = "S";
+"Dir_SSW" = "ਐਸਐਸਡਬਲਯੂ";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "NNW";
+
+/* units */
+"UnitMillimeter" = "mm";
+"UnitCentimeter" = "ਸੈਂਟੀਮੀਟਰ";
+
+/* common labels */
+"PrecipitationTotals_Title" = "ਮੀਂਹ ਦੀ ਕੁੱਲ ਰਕਮ";
+"Last24h_Label"             = "ਪਿਛਲੇ 24 ਘੰਟੇ";
+"Next24h_Label"             = "ਅਗਲੇ 24 ਘੰਟੇ";
+"Total_Label"               = "ਕੁੱਲ";
+"Precipitation_Label"       = "ਮੀਂਹ";
+"Rain_Label"                = "ਮੀਂਹ";
+"Snow_Label"                = "ਬਰਫ";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "ਹਵਾ ਇਸ ਵੇਲੇ %1$d %2$@ ਤੱਕ %3$@ਅੱਜ, ਹਵਾ ਦੀ ਗਤੀ %4$d ਨੂੰ %5$d %2$@, ਤੱਕ ਦੇ ਰੌਸ਼ਨੀ ਨਾਲ %6$d %2$@. .";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "ਹਵਾ ਦੀ ਗਤੀ %1$d ਨੂੰ %2$d %3$@, ਤੱਕ ਦੇ ਰੌਸ਼ਨੀ ਨਾਲ %4$d %3$@. .";
+
+"Beaufort_Scale"                = "ਬੋਫੋਰਟ ਪੈਮਾਨਾ";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "ਵਰਣਨ";
+"Beaufort_Column_kmh" = "ਕਿਲੋਮੀਟਰ/ਘੰਟਾ";
+"Beaufort_0"                    = "ਸ਼ਾਂਤ ਰਹੋ";
+"Beaufort_1"                    = "ਹਵਾ";
+"Beaufort_2"                    = "ਹਲਕਾ ਹਵਾ";
+"Beaufort_3"                    = "ਹਲਕੇ ਹਵਾ";
+"Beaufort_4"                    = "ਦਰਮਿਆਨੇ ਹਵਾ";
+"Beaufort_5"                    = "ਤਾਜ਼ਾ ਹਵਾ";
+"Beaufort_6"                    = "ਮਜ਼ਬੂਤ ਹਵਾ";
+"Beaufort_7"                    = "ਉੱਚੀ ਹਵਾ";
+"Beaufort_8"                    = "ਗੈਲ";
+"Beaufort_9"                    = "ਮਜ਼ਬੂਤ ਹਵਾ";
+"Beaufort_10"                   = "ਤੂਫਾਨ";
+"Beaufort_11"                   = "ਭਿਆਨਕ ਤੂਫਾਨ";
+"Beaufort_12"                   = "ਤੂਫਾਨ-ਸ਼ਕਤੀ";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "ਉੱਥੇ ਕੀਤਾ ਗਿਆ ਹੈ %.1f%@ ਪਿਛਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ ਬਾਰਸ਼ ਦੇ ਕੁੱਲ ਪੱਧਰ 'ਤੇ ਅੱਜ ਦੀ ਕੁੱਲ ਬਾਰਸ਼ %.1f%@ਅਗਲੇ 24 ਘੰਟਿਆਂ ਵਿੱਚ, %.1f%@ ਵਰਖਾ ਦੀ ਉਮੀਦ ਹੈ.";
+"ForecastPrecip_OtherDayFormat" = "'ਤੇ %@, ਕੁੱਲ ਵਰਖਾ ਹੋਵੇਗੀ %.1f%@. .";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "ਮੀਂਹ ਦੀ ਤੀਬਰਤਾ ਬਾਰੇ";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "ਭਵਿੱਖਬਾਣੀ";
+"DailySummary_Title"           = "ਰੋਜ਼ਾਨਾ ਸੰਖੇਪ ਜਾਣਕਾਰੀ";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "ਦਸਤ ਦਾ ਬਿੰਦੂ %d° ਤੱਕ %d°.";
+"DewPoint_FutureFormat"        = "ਦਿਹਾੜੀ ਦਾ ਬਿੰਦੂ ਹੋਵੇਗਾ %d° ਤੱਕ %d°.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "ਅੱਜ, ਔਸਤ ਨਮੀ %d%%. . %@";
+"ForecastHumidity_Other"       = "'ਤੇ %@, ਔਸਤ ਨਮੀ ਹੋਵੇਗੀ %d%%. .\n%@";
+
+"AboutPressure_Title"  = "ਦਬਾਅ ਬਾਰੇ";
+"AboutPressure_Body"   = "ਦਬਾਅ ਵਿੱਚ ਮਹੱਤਵਪੂਰਣ ਤੇਜ਼ ਤਬਦੀਲੀਆਂ ਮੌਸਮ ਵਿੱਚ ਤਬਦੀਲੀਆਂ ਦੀ ਭਵਿੱਖਬਾਣੀ ਕਰਨ ਲਈ ਵਰਤੀਆਂ ਜਾਂਦੀਆਂ ਹਨ। ਉਦਾਹਰਣ ਵਜੋਂ, ਦਬਾਅ ਵਿੱਚ ਗਿਰਾਵਟ ਦਾ ਮਤਲਬ ਇਹ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਬਾਰਸ਼ ਜਾਂ ਬਰਫ ਆਉਣ ਵਾਲੀ ਹੈ, ਅਤੇ ਵਧਦਾ ਦਬਾਅ ਦਾ ਮਤਲਬ ਇਹ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਮੌਸਮ ਵਿੱਚ ਸੁਧਾਰ ਹੋਵੇਗਾ। ਦਬਾਅ ਨੂੰ ਬਾਰੋਮੀਟਰਿਕ ਦਬਾਅ ਜਾਂ ਵਾਯੂਮੰਡਲ ਦਬਾਅ ਵੀ ਕਿਹਾ ਜਾਂਦਾ ਹੈ।";
+
+"AboutHumidity_Title"  = "ਰਿਸ਼ਤੇਦਾਰ ਨਮੀ ਬਾਰੇ";
+"AboutHumidity_Body"   = "ਨਪੁੰਸਕਤਾ, ਆਮ ਤੌਰ 'ਤੇ ਨਪੁੰਸਕਤਾ ਵਜੋਂ ਜਾਣੀ ਜਾਂਦੀ ਹੈ, ਹਵਾ ਵਿਚ ਨਮੀ ਦੀ ਮਾਤਰਾ ਹੈ ਜੋ ਹਵਾ ਰੱਖ ਸਕਦੀ ਹੈ. ਹਵਾ ਉੱਚ ਤਾਪਮਾਨ 'ਤੇ ਵਧੇਰੇ ਨਮੀ ਰੱਖ ਸਕਦੀ ਹੈ. ਨਪੁੰਸਕਤਾ 100 ਦੇ ਨੇੜੇ ਹੈ% mਜਦੋਂ ਵੀ ਦਹੀਂ ਜਾਂ ਧੁੰਦ ਹੋਵੇ।";
+
+"AboutDewPoint_Title" = "ਡੂ ਪੁਆਇੰਟ ਬਾਰੇ";
+"AboutDewPoint_Body"  = "ਦਹੀਂ ਦਾ ਬਿੰਦੂ ਉਹ ਹੈ ਜਿਸ ਨੂੰ ਤਾਪਮਾਨ ਨੂੰ ਡਿੱਗਣ ਦੀ ਜ਼ਰੂਰਤ ਹੁੰਦੀ ਹੈ ਤਾਂ ਜੋ ਦਹੀਂ ਬਣੇ। ਇਹ ਇਹ ਦੱਸਣ ਦਾ ਇੱਕ ਲਾਭਦਾਇਕ ਤਰੀਕਾ ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਹਵਾ ਕਿੰਨੀ ਨਮੀ ਮਹਿਸੂਸ ਕਰਦੀ ਹੈ  ਦਹੀਂ ਦਾ ਬਿੰਦੂ ਜਿੰਨਾ ਉੱਚਾ ਹੁੰਦਾ ਹੈ, ਓਨਾ ਜ਼ਿਆਦਾ ਨਮੀ ਮਹਿਸੂਸ ਹੁੰਦੀ ਹੈ। ਮੌਜੂਦਾ ਤਾਪਮਾਨ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਦਹੀਂ ਦਾ ਬਿੰਦੂ ਦਾ ਮਤਲਬ ਹੈ ਕਿ ਨਮੀ 100% ਹੈ, ਅਤੇ ਦਹੀਂ ਜਾਂ ਧੁੰਦ ਹੋ ਸਕਦੀ ਹੈ.";
+
+"Section_Forecast"                     = "ਭਵਿੱਖਬਾਣੀ";
+"Section_DailySummary"                 = "ਰੋਜ਼ਾਨਾ ਸੰਖੇਪ ਜਾਣਕਾਰੀ";
+"ForecastVisibility_TodayFormat" = "ਅੱਜ, ਦਿੱਖ ਨੂੰ %@, ' ਤੇ %d ਨੂੰ %d %@. .";
+"ForecastVisibility_OtherFormat" = "'ਤੇ %@, ਸਭ ਤੋਂ ਘੱਟ ਦਰਿਸ਼ਗੋਚਰਤਾ ਹੋਵੇਗੀ %@ 'ਤੇ %d %@ਅਤੇ ਸਭ ਤੋਂ ਉੱਚਾ ਹੋਵੇਗਾ %@ 'ਤੇ %d %@. .";
+"Clarity_Foggy"                        = "ਧੁੰਦ";
+"Clarity_Hazy"                         = "ਹੁਸ਼ਿਆਰ";
+"Clarity_Clear"                        = "ਸਾਫ਼";
+"Clarity_PerfectlyClear"               = "ਪੂਰੀ ਤਰ੍ਹਾਂ ਸਾਫ";
+
+"AboutVisibility_Title" = "ਦ੍ਰਿਸ਼ਟੀ ਬਾਰੇ";
+"AboutVisibility_Body" = "ਦ੍ਰਿਸ਼ਟੀ ਤੁਹਾਨੂੰ ਦੱਸਦੀ ਹੈ ਕਿ ਤੁਸੀਂ ਇਮਾਰਤਾਂ ਅਤੇ ਪਹਾੜਾਂ ਵਰਗੇ ਵਸਤੂਆਂ ਨੂੰ ਕਿੰਨੀ ਦੂਰ ਤੋਂ ਸਪਸ਼ਟ ਤੌਰ ਤੇ ਵੇਖ ਸਕਦੇ ਹੋ। ਇਹ ਹਵਾ ਦੀ ਪਾਰਦਰਸ਼ਤਾ ਦਾ ਮਾਪ ਹੈ ਅਤੇ ਸੂਰਜ ਦੀ ਰੌਸ਼ਨੀ ਦੀ ਮਾਤਰਾ ਜਾਂ ਰੁਕਾਵਟਾਂ ਦੀ ਮੌਜੂਦਗੀ ਨੂੰ ਧਿਆਨ ਵਿੱਚ ਨਹੀਂ ਰੱਖਦਾ. %@ ਸਪੱਸ਼ਟ ਮੰਨਿਆ ਜਾਂਦਾ ਹੈ।";
+
+"PressureForecast_Today" = "ਦਬਾਅ ਇਸ ਵੇਲੇ %@ %@ ਅੱਜ, ਔਸਤ ਦਬਾਅ %@ %@, ਅਤੇ ਸਭ ਤੋਂ ਘੱਟ ਦਬਾਅ ਹੋਵੇਗਾ %@ %@. .";
+"PressureForecast_Other" = "'ਤੇ %@, ਔਸਤ ਦਬਾਅ ਹੋਵੇਗਾ %@ %@, ਅਤੇ ਸਭ ਤੋਂ ਘੱਟ ਦਬਾਅ ਹੋਵੇਗਾ %@ %@. .";
+"SectionForecast" = "ਭਵਿੱਖਬਾਣੀ";
+"SectionDailySummary" = "ਰੋਜ਼ਾਨਾ ਸੰਖੇਪ ਜਾਣਕਾਰੀ";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "ਬੇਸ ਪਲਾਨ ਦੀਆਂ ਸਾਰੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ";
+"Multi-calendar view" = "ਬਹੁ-ਕੈਲੇਂਡਰ ਵਿਊ";
+"Sync with Google Calendar" = "ਨਾਲ ਸਮਕਾਲੀ Google Calendar";
+"Sync meets from Google Meet" = "ਸਿੰਕ ਤੱਕ ਮਿਲਦਾ ਹੈ Google ਮਿਲੋ";
+
+/* BaseSubscriptionView */
+"Base Plan" = "ਬੇਸ ਪਲਾਨ";
+"Single-day calendar view" = "ਇੱਕ ਦਿਨ ਲਈ ਕੈਲੰਡਰ ਵਿਊ";
+"Multi-day calendar view" = "ਬਹੁ-ਦਿਨ ਕੈਲੰਡਰ ਵਿਊ";
+"Monthly calendar view" = "ਮਹੀਨਾਵਾਰ ਕੈਲੰਡਰ ਵਿਊ";
+"Yearly overview" = "ਸਾਲਾਨਾ ਸੰਖੇਪ ਜਾਣਕਾਰੀ";
+"List view for events" = "ਸਮਾਗਮਾਂ ਲਈ ਸੂਚੀ ਵਿਯੂ";
+"Weather view" = "ਮੌਸਮ ਦਾ ਦ੍ਰਿਸ਼";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "ਪ੍ਰੀਮੀਅਮ ਯੋਜਨਾ";
+"Sync with Microsoft Calendar" = "ਨਾਲ ਸਮਕਾਲੀ Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "ਸਿੰਕ ਤੱਕ ਮਿਲਦਾ ਹੈ Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "ਬਰਾਬਰ %@ ਪ੍ਰਤੀ ਮਹੀਨਾ";
+"%d %@ free" = "%d %@ ਮੁਫ਼ਤ";
+
+/* SubscriptionListView */
+"Premium Plans" = "ਪ੍ਰੀਮੀਅਮ ਯੋਜਨਾਵਾਂ";
+"You are subscribed to the %@ %@ plan" = "ਤੁਸੀਂ ਇਸ ਨੂੰ %@ %@ ਯੋਜਨਾ";
+"Renews on: %@" = "ਨਵਿਆਇਆ ਗਿਆਃ %@";
+"Start Free Trial" = "ਮੁਫ਼ਤ ਮੁਕੱਦਮਾ ਸ਼ੁਰੂ ਕਰੋ";
+"Subscribe Now" = "ਹੁਣ ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ";
+"%d %@ free, then %@%@." = "%d %@ ਮੁਫ਼ਤ ਹੈ, ਫਿਰ %@%@. .";
+"Subscribe for %@%@." = "ਲਈ ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ %@%@. .";
+"Privacy Policy"     = "ਪਰਾਈਵੇਟ ਨੀਤੀ";
+"Terms of Service"   = "ਸੇਵਾ ਦੀਆਂ ਸ਼ਰਤਾਂ";
+
+/* SubscriptionCategory */
+"Advanced" = "ਉੱਨਤ";
+"Advanced Plan" = "ਤਕਨੀਕੀ ਯੋਜਨਾ";
+"All Advanced Plan features" = "ਐਡਵਾਂਸਡ ਪਲਾਨ ਦੀਆਂ ਸਾਰੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "ਤੁਹਾਨੂੰ ਇੱਕ ਸਰਗਰਮ ਦੀ ਲੋੜ ਹੈ %@ ਇਸ ਭਾਗ ਤੱਕ ਪਹੁੰਚਣ ਦੀ ਯੋਜਨਾ ਬਣਾਓ.";
+"Plan Required" = "ਯੋਜਨਾ ਦੀ ਲੋੜ";
+"OK" = "ਠੀਕ ਹੈ";
+
+/* SubscriptionStatus */
+"Base"    = "ਅਧਾਰ";
+"Premium" = "ਪ੍ਰੀਮੀਅਮ";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "ਸਾਈਨ ਅਪ ਕੀਤਾ %@ %@ ਯੋਜਨਾ.";
+
+/* Label for renewal date */
+"RenewsOn"            = "ਨਵਿਆਇਆ ਗਿਆਃ %@";
+
+"Manage Subscription"                   = "ਗਾਹਕੀ ਪ੍ਰਬੰਧਨ";
+
+/* Period units */
+"Daily"     = "ਰੋਜ਼ਾਨਾ";
+"Weekly"    = "ਹਫਤਾਵਾਰੀ";
+"Monthly"   = "ਮਹੀਨਾਵਾਰ";
+"Yearly"    = "ਸਾਲਾਨਾ";
+"Recurring" = "ਦੁਹਰਾਉਣਾ";
+
+/* units */
+"day"   = "ਦਿਨ";
+"days"  = "ਦਿਨ";
+"week"  = "ਹਫ਼ਤਾ";
+"weeks" = "ਹਫ਼ਤੇ";
+"month"  = "ਮਹੀਨਾ";
+"months" = "ਮਹੀਨੇ";
+"year"   = "ਸਾਲ";
+"years"  = "ਸਾਲ";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S,M,T,W,T,F,S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "ਕਿਲੋਮੀਟਰ/ਘੰਟਾ";
+"Unit_Speed_mph" = "ਮੀਲ";
+"Unit_Distance_km" = "ਕਿਲੋਮੀਟਰ";
+"Unit_Distance_mi" = "ਮਾਈ";
+"Unit_Precipitation_mm" = "mm";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "ਐਚਪੀਏ";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "ਤੁਹਾਡੀਆਂ ਪਿਛਲੀਆਂ ਖਰੀਦਦਾਰੀ ਸਫਲਤਾਪੂਰਵਕ ਬਹਾਲ ਕੀਤੀਆਂ ਗਈਆਂ ਹਨ।";
+"No active subscriptions found to restore."                = "ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਕੋਈ ਸਰਗਰਮ ਗਾਹਕੀ ਨਹੀਂ ਮਿਲੀ।";
+"Failed to restore purchases. Please try again later. (%@)" = "ਖਰੀਦਦਾਰੀ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ ਰਿਹਾ. ਕਿਰਪਾ ਕਰਕੇ ਬਾਅਦ ਵਿੱਚ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.%@)";
+"Restore Purchases"                                        = "ਖਰੀਦਦਾਰੀ ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ";
+
+"Ads Free" = "ਮੁਫ਼ਤ ਇਸ਼ਤਿਹਾਰ";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "ਕੈਲੰਡਰ ਅਤੇ ਮੌਸਮ";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "ਅੱਜ ਦੀ ਤਾਰੀਖ ਅਤੇ ਮੌਜੂਦਾ ਮੌਸਮ ਨੂੰ ਦਿਖਾਉਂਦਾ ਹੈ।";
+"Calendar Events" = "ਕੈਲੰਡਰ ਸਮਾਗਮ";
+"Shows today's date, current weather, and your next calendar events." = "ਅੱਜ ਦੀ ਤਾਰੀਖ, ਮੌਜੂਦਾ ਮੌਸਮ ਅਤੇ ਤੁਹਾਡੇ ਅਗਲੇ ਕੈਲੰਡਰ ਸਮਾਗਮਾਂ ਨੂੰ ਦਿਖਾਉਂਦਾ ਹੈ।";
+"No upcoming events" = "ਕੋਈ ਆਉਣ ਵਾਲੀਆਂ ਘਟਨਾਵਾਂ ਨਹੀਂ";
+"Tomorrow" = "ਕੱਲ੍ਹ";
+"Untitled" = "ਅਣਸੁਖਾਵਾਂ";
+"Detail" = "ਵਿਸਥਾਰ";
+"Phase" = "ਪੜਾਅ";
+"Weather" = "ਮੌਸਮ";
+"Select Your Email" = "ਆਪਣੀ ਈਮੇਲ ਚੁਣੋ";
+"Confirm" = "ਪੁਸ਼ਟੀ ਕਰੋ";
+"Calendar name" = "ਕੈਲੰਡਰ ਦਾ ਨਾਮ";
+"Sharing: %@" = "ਸਾਂਝਾ ਕਰਨਾਃ %@";
+"Loading..." = "ਲੋਡਿੰਗ...";
+"Selected Location" = "ਚੁਣੀ ਗਈ ਜਗ੍ਹਾ";
+"Data provided by Apple Weather" = "ਐਪਲ ਮੌਸਮ ਵੱਲੋਂ ਪ੍ਰਦਾਨ ਕੀਤੇ ਗਏ ਡਾਟਾ";
+"Next" = "ਅਗਲਾ";
+"No details found for the selected location." = "ਚੁਣੇ ਗਏ ਸਥਾਨ ਲਈ ਕੋਈ ਵੇਰਵਾ ਨਹੀਂ ਮਿਲਿਆ।";
+"Could not determine the time zone for the selected location." = "ਚੁਣੇ ਗਏ ਸਥਾਨ ਲਈ ਸਮਾਂ-ਜ਼ੋਨ ਨਿਰਧਾਰਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।";
+"(No Title)" = "(ਕੋਈ ਸਿਰਲੇਖ ਨਹੀਂ)";
+"Choose your e-mail" = "ਆਪਣੀ ਈਮੇਲ ਚੁਣੋ";
+"It will be treated as your primary address and invitations will not be sent to it." = "ਇਸ ਨੂੰ ਤੁਹਾਡਾ ਮੁੱਖ ਪਤਾ ਮੰਨਿਆ ਜਾਵੇਗਾ ਅਤੇ ਸੱਦੇ ਇਸ ਨੂੰ ਨਹੀਂ ਭੇਜੇ ਜਾਣਗੇ।";
+"Invalid URL" = "ਅਵੈਧ URL";
+"Rate limit or insufficient permission" = "ਦਰ ਸੀਮਾ ਜਾਂ ਨਾਕਾਫ਼ੀ ਇਜਾਜ਼ਤ";
+"Network error: %@" = "ਨੈੱਟਵਰਕ ਗਲਤੀਃ %@";
+"N/A - Selected Tab: %@" = "N/A - ਚੁਣਿਆ ਟੈਬਃ %@";
+"Enable Notifications" = "ਸੂਚਨਾਵਾਂ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ";
+"Event Notifications" = "ਘਟਨਾ ਸੂਚਨਾਵਾਂ";
+"Weather Alert Notifications" = "ਮੌਸਮ ਚੇਤਾਵਨੀ ਸੂਚਨਾਵਾਂ";
+"Allow notifications so weather alerts can appear." = "ਸੂਚਨਾਵਾਂ ਨੂੰ ਆਗਿਆ ਦਿਓ ਤਾਂ ਜੋ ਮੌਸਮ ਦੀਆਂ ਚੇਤਾਵਨੀਆਂ ਦਿਖਾਈ ਸਕਣ.";
+"Event alerts are scheduled from your event alert settings." = "ਘਟਨਾ ਚੇਤਾਵਨੀ ਤੁਹਾਡੀਆਂ ਘਟਨਾ ਚੇਤਾਵਨੀ ਸੈਟਿੰਗਜ਼ ਤੋਂ ਤਹਿ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।";
+"Allow notifications so event alerts can appear at the right time." = "ਸੂਚਨਾਵਾਂ ਨੂੰ ਆਗਿਆ ਦਿਓ ਤਾਂ ਜੋ ਘਟਨਾ ਚੇਤਾਵਨੀ ਸਹੀ ਸਮੇਂ ਤੇ ਦਿਖਾਈ ਦੇ ਸਕੇ.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "ਇਸ ਐਪ ਲਈ ਸੂਚਨਾਵਾਂ ਨੂੰ ਬੰਦ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ. ਉਹਨਾਂ ਨੂੰ ਸਮਰੱਥ ਕਰਨ ਲਈ, ਸੈਟਿੰਗਜ਼ -> ਐਪਸ -> 'ਤੇ ਜਾਓ Cloud Calendars -> ਸੂਚਨਾਵਾਂ -> ਸੂਚਨਾਵਾਂ ਦੀ ਆਗਿਆ ਦਿਓ।";
+"Promo.WiseEating.name" = "ਸਮਝਦਾਰ ਖਾਣਾ ਅਤੇ ਤੰਦਰੁਸਤੀ";
+"Promo.WiseEating.description" = "ਸਮਾਰਟ ਈਟਿੰਗ ਤੁਹਾਡੇ ਲਈ ਇੱਕ ਆਧੁਨਿਕ ਪੋਸ਼ਣ ਅਤੇ ਸਿਖਲਾਈ ਲਈ ਏਆਈ-ਸੰਚਾਲਿਤ ਕੋਚ ਹੈ। ਇਹ ਆਧੁਨਿਕ ਪੋਸ਼ਣ ਵਿਗਿਆਨ ਨੂੰ ਵਿਹਾਰਕ ਸਾਧਨਾਂ ਨਾਲ ਜੋੜਦਾ ਹੈ ਜੋ ਤੁਹਾਨੂੰ ਖਾਣੇ ਦੀ ਯੋਜਨਾ ਬਣਾਉਣ, ਕਸਰਤ ਡਿਜ਼ਾਈਨ ਕਰਨ, ਆਪਣੀ ਖਾਣਾ ਭੰਡਾਰ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰਨ ਅਤੇ ਇਹ ਸਮਝਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ ਕਿ ਭੋਜਨ ਅਤੇ ਗਤੀ ਤੁਹਾਡੇ ਸਰੀਰ ਨੂੰ ਕਿਵੇਂ ਪ੍ਰਭਾਵਤ ਕਰਦੇ ਹਨ.";
+"Promo.StoreFront.name" = "ਸਟੋਰਫ੍ਰੋਂਟ ਸਟੂਡੀਓ";
+"Promo.StoreFront.description" = "ਸਟੋਰਫ੍ਰੋਂਟ ਸਟੂਡੀਓ ਆਈਓਐਸ ਅਤੇ ਮੈਕੋਸ ਡਿਵੈਲਪਰਾਂ ਲਈ ਪ੍ਰਮੁੱਖ 3 ਡੀ ਡਿਜ਼ਾਈਨ ਵਾਤਾਵਰਣ ਹੈ. ਇਹ ਇੱਕ ਸ਼ਕਤੀਸ਼ਾਲੀ ਰਿਚ ਟੈਕਸਟ ਸੰਪਾਦਕ ਦੇ ਨਾਲ ਉੱਚ-ਵਿਸ਼ਵਾਸ ਵਾਲੀ ਰਿਲੀਟੀਕਿਟ ਰੈਂਡਰਿੰਗ ਨੂੰ ਜੋੜਦਾ ਹੈ ਤਾਂ ਜੋ ਤੁਹਾਨੂੰ ਕੱਚੇ ਸਕ੍ਰੀਨਸ਼ਾਟ ਨੂੰ ਪੇਸ਼ੇਵਰ, ਉੱਚ-ਪਰਿਵਰਤਨਸ਼ੀਲ ਐਪ ਸਟੋਰ ਸੰਪਤੀਆਂ ਵਿੱਚ ਬਦਲਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕੀਤੀ ਜਾ ਸਕੇ.";
+"Promo.ReelStudio.name" = "ਰੀਲਸਟੂਡੀਓ";
+"Promo.ReelStudio.description" = "ਰੀਲਸਟੂਡੀਓ ਆਈਓਐਸ ਅਤੇ ਮੈਕੋਸ ਲਈ ਸਿਰਜਣਹਾਰ-ਗਰੇਡ ਸਕ੍ਰੀਨ ਰਿਕਾਰਡਿੰਗ ਸਟੂਡੀਓ ਹੈ. ਇਕੋ ਸਮੇਂ ਆਪਣੀ ਸਕ੍ਰੀਨ ਅਤੇ ਕੈਮਰਾ ਨੂੰ ਕੈਪਚਰ ਕਰੋ, ਮਾਈਕ੍ਰੋ + ਸਿਸਟਮ ਆਡੀਓ ਨੂੰ ਨਿਯੰਤਰਿਤ ਕਰੋ, ਅਤੇ ਟਿutorialਟੋਰਿਅਲ, ਵਾਚਥ੍ਰੂ ਅਤੇ ਉਤਪਾਦ ਡੈਮੋ ਲਈ ਸਾਫ ਐਮਪੀ 4 ਐਕਸਪੋਰਟ ਕਰੋ. ਆਈਓਐਸ 'ਤੇ, ਤੁਸੀਂ ਐਪ ਦੇ ਅੰਦਰ ਵੀ ਵੀਡੀਓ ਚਲਾ ਸਕਦੇ ਹੋ ਅਤੇ ਪ੍ਰਤੀਕ੍ਰਿਆ-ਸ਼ੈਲੀ ਅਤੇ ਪੇਸ਼ਕਾਰ-ਅਗਵਾਈਡ ਸਮਗਰੀ ਲਈ ਆਪਣੇ ਕੈਮਰੇ ਨਾਲ ਰਿਕਾਰਡ ਕਰ ਸਕਦੇ ਹੋ.";
+"Promo.MarketBrief.name" = "ਮਾਰਕੀਟਬ੍ਰੀਫ ਏਆਈ";
+"Promo.MarketBrief.description" = "ਮਾਰਕੀਟ ਬ੍ਰੀਫ ਏਆਈ ਤੁਹਾਨੂੰ ਡਿਵਾਈਸ 'ਤੇ ਵਿਸ਼ਲੇਸ਼ਣ ਅਤੇ ਸ਼ੋਰ ਤੋਂ ਸਿਗਨਲ ਨੂੰ ਵੱਖ ਕਰਨ ਲਈ ਤਿਆਰ ਕੀਤੇ ਗਏ ਮਲਟੀ-ਏਜੈਂਟ ਵਰਕਫਲੋ ਨਾਲ ਮਾਰਕੀਟ ਅੰਦੋਲਨ ਨੂੰ ਸਮਝਣ ਵਿੱਚ ਸਹਾਇਤਾ ਕਰਦਾ ਹੈ. ਰੀਅਲ-ਟਾਈਮ ਕੀਮਤ ਡੇਟਾ ਨੂੰ ਟਰੈਕ ਕਰੋ, ਰੈਜਿਮ-ਸ਼ੈਲੀ ਦੀਆਂ ਸੰਭਾਵਨਾਵਾਂ ਦੀ ਪੜਚੋਲ ਕਰੋ, ਅਤੇ ਤੁਹਾਡੇ ਫੈਸਲੇ ਲੈਣ ਦੇ ਸਮਰਥਨ ਲਈ ਸਾਫ ਡੈਸ਼ਬੋਰਡ ਅਤੇ ਚਾਰਟ ਦੀ ਵਰਤੋਂ ਕਰੋ. ਪ੍ਰਾਈਵੇਸੀ-ਪਹਿਲਾਂਃ ਤੁਹਾਡੀਆਂ ਕੌਂਫਿਗਰੇਸ਼ਨਾਂ ਤੁਹਾਡੇ ਡਿਵਾਈਸ ਤੇ ਰਹਿੰਦੀਆਂ ਹਨ.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "ਐਪਸ";
+"Plan" = "ਯੋਜਨਾ";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "ਬਰਫ਼ਬਾਰੀ";
+"WeatherCondition.blowingDust" = "ਧੂੜ";
+"WeatherCondition.blowingSnow" = "ਬਰਫ਼ ਧੁੰਦ ਰਹੀ ਹੈ";
+"WeatherCondition.breezy" = "ਬਰੀਜ਼";
+"WeatherCondition.clear" = "ਸਾਫ਼";
+"WeatherCondition.cloudy" = "ਬੱਦਲ";
+"WeatherCondition.drizzle" = "ਡ੍ਰਾਈਜ਼ਲ";
+"WeatherCondition.flurries" = "ਫੁੱਲ";
+"WeatherCondition.foggy" = "ਧੁੰਦ";
+"WeatherCondition.freezingDrizzle" = "ਠੰਢਾ ਡ੍ਰਾਈਜ਼ਲ";
+"WeatherCondition.freezingRain" = "ਠੰਢੀ ਬਾਰਸ਼";
+"WeatherCondition.frigid" = "ਠੰਡਾ";
+"WeatherCondition.hail" = "ਹਾਇ";
+"WeatherCondition.haze" = "ਧੁੰਦ";
+"WeatherCondition.heavyRain" = "ਭਾਰੀ ਮੀਂਹ";
+"WeatherCondition.heavySnow" = "ਭਾਰੀ ਬਰਫਬਾਰੀ";
+"WeatherCondition.hot" = "ਗਰਮ";
+"WeatherCondition.hurricane" = "ਤੂਫਾਨ";
+"WeatherCondition.isolatedThunderstorms" = "ਅਲੱਗ-ਅਲੱਗ ਤੂਫਾਨ";
+"WeatherCondition.mostlyClear" = "ਜ਼ਿਆਦਾਤਰ ਸਪੱਸ਼ਟ";
+"WeatherCondition.mostlyCloudy" = "ਜ਼ਿਆਦਾਤਰ ਬੱਦਲ";
+"WeatherCondition.partlyCloudy" = "ਕੁਝ ਹੱਦ ਤੱਕ ਬੱਦਲ";
+"WeatherCondition.rain" = "ਮੀਂਹ";
+"WeatherCondition.scatteredThunderstorms" = "ਤੂਫ਼ਾਨ";
+"WeatherCondition.sleet" = "ਸਲੀਟ";
+"WeatherCondition.smoky" = "ਧੂੰਆਂ";
+"WeatherCondition.snow" = "ਬਰਫ";
+"WeatherCondition.strongStorms" = "ਭਾਰੀ ਤੂਫਾਨ";
+"WeatherCondition.sunFlurries" = "ਸੂਰਜ ਫੁੱਲ";
+"WeatherCondition.sunShowers" = "ਸੂਰਜ ਸ਼ਾਵਰ";
+"WeatherCondition.thunderstorms" = "ਤੂਫ਼ਾਨ";
+"WeatherCondition.tropicalStorm" = "ਤੂਫਾਨ";
+"WeatherCondition.windy" = "ਹਵਾਦਾਰ";
+"WeatherCondition.wintryMix" = "ਸਰਦੀਆਂ ਦਾ ਮਿਸ਼ਰਣ";
+"MoonPhase.new" = "ਨਵਾਂ ਚੰਦਰਮਾ";
+"MoonPhase.waxingCrescent" = "ਵੈਕਿੰਗ ਕਰੈਸਲੈਨ";
+"MoonPhase.firstQuarter" = "ਪਹਿਲੀ ਤਿਮਾਹੀ";
+"MoonPhase.waxingGibbous" = "ਵੈਕਸਿੰਗ ਗਿਬਸ";
+"MoonPhase.full" = "ਪੂਰਾ ਚੰਦਰਮਾ";
+"MoonPhase.waningGibbous" = "ਗਿੱਬੂਸ";
+"MoonPhase.lastQuarter" = "ਆਖਰੀ ਤਿਮਾਹੀ";
+"MoonPhase.waningCrescent" = "ਗਰਮ ਹੋ ਰਿਹਾ ਹੈ";
+"WeatherAlert.Preview.Tornado" = "ਤੂਫਾਨ ਦੀ ਚੇਤਾਵਨੀਃ ਤੁਰੰਤ ਸੁਰੱਖਿਅਤ ਛੁਪਾਈ ਲੱਭੋ।";
+"WeatherAlert.Preview.Source" = "ਮੌਸਮ ਸੇਵਾ";
+"WeatherAlert.Preview.Region" = "ਭਵਿੱਖਬਾਣੀ ਖੇਤਰ";
+"Saved Regions" = "ਬਚਾਏ ਗਏ ਖੇਤਰ";
+"Current Location" = "ਮੌਜੂਦਾ ਸਥਾਨ";
+"Reorder Region" = "ਰੀਆਰਡਰ ਖੇਤਰ";
+"WeatherAlert.Preview.HighTemperature" = "ਉੱਚ ਤਾਪਮਾਨ ਲਈ ਪੀਲੀ ਚੇਤਾਵਨੀ";
+"Illumination" = "ਰੋਸ਼ਨੀ";
+"Shared event" = "ਸਾਂਝੀ ਘਟਨਾ";
+"Add to Calendar" = "ਕੈਲੰਡਰ ਵਿੱਚ ਜੋੜੋ";
+"Event added" = "ਘਟਨਾ ਜੋੜਿਆ";
+"Already in your calendar" = "ਪਹਿਲਾਂ ਹੀ ਤੁਹਾਡੇ ਕੈਲੰਡਰ ਵਿੱਚ";
+"Unable to add event" = "ਘਟਨਾ ਜੋੜਨ ਵਿੱਚ ਅਸਮਰੱਥ";
+"Calendar Access Required" = "ਕੈਲੰਡਰ ਪਹੁੰਚ ਦੀ ਲੋੜ";
+"Allow calendar access in Settings to add this event." = "ਸੈਟਿੰਗਜ਼ ਵਿੱਚ ਕੈਲੰਡਰ ਪਹੁੰਚ ਨੂੰ ਇਸ ਘਟਨਾ ਨੂੰ ਜੋੜਨ ਲਈ ਸਹਾਇਕ ਹੈ.";
+"Open Settings" = "ਖੁੱਲੀ ਸੈਟਿੰਗ";
+"Adding…" = "ਜੋੜਨਾ ...";
+"Couldn’t find a writable calendar." = "ਲਿਖਣ ਯੋਗ ਕੈਲੰਡਰ ਨਹੀਂ ਲੱਭ ਸਕਿਆ.";
+"Please try again." = "ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "ਯੋਜਨਾ ਬਦਲੋ";
+"Current Plan" = "ਮੌਜੂਦਾ ਯੋਜਨਾ";
+"You can change your plan or billing period at any time." = "ਤੁਸੀਂ ਆਪਣੀ ਯੋਜਨਾ ਜਾਂ ਬਿਲਿੰਗ ਦੀ ਮਿਆਦ ਨੂੰ ਕਿਸੇ ਵੀ ਸਮੇਂ ਬਦਲ ਸਕਦੇ ਹੋ।";
+"Invites" = "ਸੱਦੇ";
+"Cancelled" = "ਰੱਦ ਕੀਤਾ ਗਿਆ";
+"Shared by me" = "ਮੇਰੇ ਦੁਆਰਾ ਸਾਂਝਾ ਕੀਤਾ";
+"Shared with me" = "ਮੇਰੇ ਨਾਲ ਸਾਂਝਾ";
+"No shared events yet." = "ਅਜੇ ਕੋਈ ਸਾਂਝੇ ਸਮਾਗਮ ਨਹੀਂ ਹੋਏ।";
+"No one has shared an event with you yet." = "ਕਿਸੇ ਨੇ ਵੀ ਤੁਹਾਡੇ ਨਾਲ ਕੋਈ ਘਟਨਾ ਸਾਂਝੀ ਨਹੀਂ ਕੀਤੀ ਹੈ।";
+"Events you send from the share sheet appear here." = "ਸ਼ੇਅਰ ਸ਼ੀਟ ਤੋਂ ਤੁਸੀਂ ਭੇਜੇ ਗਏ ਸਮਾਗਮ ਇੱਥੇ ਦਿਖਾਈ ਦਿੰਦੇ ਹਨ।";
+"Invitations go to" = "ਸੱਦੇ ਜਾਂਦੇ ਹਨ";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "ਤੁਸੀਂ ਸਵੀਕਾਰ ਕੀਤੇ ਸੱਦੇ ਇੱਥੇ ਜੋੜਦੇ ਹੋ ਅਤੇ ਅਪਡੇਟ ਕੀਤੇ ਜਾਂਦੇ ਹਨ। ਜੇ ਭੇਜਣ ਵਾਲੇ ਨੇ ਇੱਕ ਨੂੰ ਬੰਦ ਕਰ ਦਿੱਤਾ ਹੈ, ਤਾਂ ਇਹ ਇੱਕ ਲਾਈਨ ਦੇ ਨਾਲ ਦਿਖਾਈ ਦਿੰਦਾ ਹੈ.";
+"Sample shared event" = "ਸਾਂਝਾ ਘਟਨਾ ਦਾ ਨਮੂਨਾ";
+"Sofia" = "ਸੋਫੀਆ";
+"Team lunch" = "ਟੀਮ ਦਾ ਦੁਪਹਿਰ ਦਾ ਖਾਣਾ";
+
+/* Booking */
+"Booking page" = "ਬੁਕਿੰਗ ਸਫ਼ਾ";
+"Your name" = "ਤੁਹਾਡਾ ਨਾਮ";
+"Display name" = "ਡਿਸਪਲੇਅ ਨਾਮ";
+"Source calendar" = "ਸਰੋਤ ਕੈਲੰਡਰ";
+"Booked meetings land here, and your busy times here block new bookings." = "ਇੱਥੇ ਬੁੱਕ ਕੀਤੀਆਂ ਮੀਟਿੰਗਾਂ ਇੱਥੇ ਆਉਂਦੀਆਂ ਹਨ, ਅਤੇ ਤੁਹਾਡੇ ਵਿਅਸਤ ਸਮੇਂ ਇੱਥੇ ਨਵੇਂ ਬੁਕਿੰਗਾਂ ਨੂੰ ਰੋਕਦੇ ਹਨ.";
+"Meeting types" = "ਮੀਟਿੰਗ ਦੀਆਂ ਕਿਸਮਾਂ";
+"%lld min" = "%lld ਮਿਨ";
+"Add meeting type" = "ਮੀਟਿੰਗ ਦੀ ਕਿਸਮ ਜੋੜੋ";
+"Weekly hours" = "ਹਫਤਾਵਾਰੀ ਘੰਟੇ";
+"Save booking page" = "ਬੁਕਿੰਗ ਸਫ਼ਾ ਸੁਰੱਖਿਅਤ ਕਰੋ";
+"Your booking page is live" = "ਤੁਹਾਡੀ ਬੁਕਿੰਗ ਪੇਜ ਲਾਈਵ ਹੈ";
+"Share this link — anyone can book one of your open times." = "ਇਸ ਲਿੰਕ ਨੂੰ ਸਾਂਝਾ ਕਰੋ  ਕੋਈ ਵੀ ਤੁਹਾਡੇ ਖੁੱਲੇ ਸਮੇਂ ਵਿੱਚੋਂ ਇੱਕ ਬੁੱਕ ਕਰ ਸਕਦਾ ਹੈ।";
+"Share link" = "ਸਾਂਝਾ ਲਿੰਕ";
+"Edit settings" = "ਸੈਟਿੰਗਾਂ ਸੋਧੋ";
+"Add at least one meeting type." = "ਘੱਟੋ ਘੱਟ ਇੱਕ ਮੀਟਿੰਗ ਕਿਸਮ ਸ਼ਾਮਲ ਕਰੋ।";
+"Turn on at least one day with valid hours." = "ਘੱਟੋ ਘੱਟ ਇੱਕ ਦਿਨ ਠੀਕ ਘੰਟਿਆਂ ਨਾਲ ਚਾਲੂ ਕਰੋ।";
+"Set up a booking page" = "ਇੱਕ ਬੁਕਿੰਗ ਸਫ਼ਾ ਸਥਾਪਤ ਕਰੋ";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "ਲੋਕਾਂ ਨੂੰ ਤੁਹਾਡੇ ਖੁੱਲ੍ਹੇ ਸਮੇਂ ਨੂੰ ਬੁੱਕ ਕਰਨ ਦਿਓ। ਮੀਟਿੰਗਾਂ ਤੁਹਾਡੇ ਚੁਣੇ ਹੋਏ ਕੈਲੰਡਰ 'ਤੇ ਆਉਂਦੀਆਂ ਹਨ, ਅਤੇ ਤੁਹਾਡੇ ਵਿਅਸਤ ਸਮੇਂ ਉਨ੍ਹਾਂ ਸਮੇਂ ਨੂੰ ਮੁਫ਼ਤ ਰੱਖਦੇ ਹਨ।";
+"Approve on this device" = "ਇਸ ਉਪਕਰਣ ' ਤੇ ਪ੍ਰਵਾਨਗੀ ਦਿਓ";
+"Set up web booking" = "ਵੈੱਬ ਬੁਕਿੰਗ ਸੈਟ ਅਪ ਕਰੋ";
+"You're all set" = "ਤੁਸੀਂ ਸਾਰੇ ਤਿਆਰ ਹੋ";
+"Couldn't approve" = "ਮਨਜ਼ੂਰੀ ਨਹੀਂ ਦੇ ਸਕਿਆ";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "ਇਸ ਬ੍ਰਾਊਜ਼ਰ ਨੂੰ ਆਪਣੇ ਕੈਲੰਡਰ ਨਾਲ ਜੋੜਨ ਨੂੰ ਮਨਜ਼ੂਰੀ ਦਿਓ ਤਾਂ ਜੋ ਤੁਸੀਂ ਵੈੱਬ 'ਤੇ ਇੱਕ ਬੁਕਿੰਗ ਪੇਜ ਬਣਾ ਸਕੋ  ਮੁਫ਼ਤ, ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ ਐਪ ਹੈ.";
+"Linking…" = "ਲਿੰਕਿੰਗ...";
+"Head back to your browser — it's ready to finish setting up your booking page." = "ਆਪਣੇ ਬ੍ਰਾਊਜ਼ਰ ਤੇ ਵਾਪਸ ਜਾਓ  ਇਹ ਤੁਹਾਡੇ ਬੁਕਿੰਗ ਪੇਜ ਨੂੰ ਸੈੱਟ ਕਰਨ ਲਈ ਤਿਆਰ ਹੈ.";
+"The code may have expired. Reopen the QR on the web and try again." = "ਕੋਡ ਦੀ ਮਿਆਦ ਖਤਮ ਹੋ ਗਈ ਹੋ ਸਕਦੀ ਹੈ। QR ਵੈੱਬ ਤੇ ਜਾਓ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
+"Read-only shared event" = "ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ ਸਾਂਝੀ ਕੀਤੀ ਗਈ ਘਟਨਾ";
+"Remove from My Calendar" = "ਮੇਰੇ ਕੈਲੰਡਰ ਤੋਂ ਹਟਾਓ";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars ਖਾਤਾ";
+"App Clip sharing account" = "App Clip ਸਾਂਝਾ ਖਾਤਾ";
+"Required for synced App Clip events and recovery after reinstalling." = "ਸਿੰਕ੍ਰੋਨਾਈਜ਼ੇਸ਼ਨ ਲਈ ਲੋੜੀਂਦਾ App Clip ਘਟਨਾ ਅਤੇ ਮੁੜ ਸਥਾਪਿਤ ਹੋਣ ਤੋਂ ਬਾਅਦ ਮੁੜ ਪ੍ਰਾਪਤ.";
+"Continue with Google" = "ਨਾਲ ਜਾਰੀ ਰੱਖੋ Google";
+"Sign Out" = "ਸਾਈਨ ਅਪ ਕਰੋ";
+"Signing in…" = "ਸਾਈਨ ਇਨ ਕਰਨਾ...";
+"Sign In" = "ਸਾਈਨ ਇਨ ਕਰੋ";
+"Sign in to continue" = "ਜਾਰੀ ਰੱਖਣ ਲਈ ਸਾਈਨ ਇਨ ਕਰੋ";
+"Your account keeps this shared event recoverable after reinstalling the app." = "ਐਪ ਨੂੰ ਮੁੜ ਸਥਾਪਿਤ ਕਰਨ ਤੋਂ ਬਾਅਦ ਤੁਹਾਡਾ ਖਾਤਾ ਇਸ ਸਾਂਝੇ ਘਟਨਾ ਨੂੰ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਯੋਗ ਬਣਾਉਂਦਾ ਹੈ।";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "ਇਹ ਖਾਤਾ ਮਾਲਕ App Clip ਇਹ ਕੈਲੰਡਰ ਪ੍ਰਦਾਤਾ ਦੇ ਲੌਗਇਨ ਤੋਂ ਵੱਖਰਾ ਹੈ।";
+"Sign in with Google or Apple to share and receive synced events." = "ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ Google ਜਾਂ ਐਪਲ ਨੂੰ ਸਮਕਾਲੀ ਸਮਾਗਮਾਂ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ.";
+"Apple did not return an identity token." = "ਐਪਲ ਨੇ ਕੋਈ ਪਛਾਣ ਟੋਕਨ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ।";
+"Unable to share event" = "ਘਟਨਾ ਸਾਂਝੀ ਨਹੀਂ ਕਰ ਸਕੀ";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "ਘਟਨਾ ਨੂੰ ਤੁਹਾਡੇ ਲਈ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ Cloud Calendars ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।";
+"Google" = "Google";
+"Apple" = "ਸੇਬ";
+"Microsoft" = "Microsoft";
+"Connect" = "ਜੋੜੋ";
+"Connected" = "ਜੁੜਿਆ ਹੋਇਆ";
+"Sign in with at least one account" = "ਘੱਟੋ-ਘੱਟ ਇੱਕ ਖਾਤੇ ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "ਜੋੜੋ Google, ਐਪਲ, Microsoftਹਰੇਕ ਜੁੜੀ ਹੋਈ ਪਛਾਣ ਇੱਕੋ ਸਾਂਝੇ ਸਮਾਗਮਾਂ ਦਾ ਖਾਤਾ ਖੋਲ੍ਹਦੀ ਹੈ।";
+"A Premium subscription is required to connect Microsoft." = "ਕਨੈਕਟ ਕਰਨ ਲਈ ਪ੍ਰੀਮੀਅਮ ਗਾਹਕੀ ਦੀ ਲੋੜ ਹੈ Microsoft. .";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "ਇਹ ਪਛਾਣ ਸਿਰਫ App Clip ਸਾਂਝਾ ਕਰਨ ਅਤੇ ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ. ਉਹ ਕੈਲੰਡਰ ਪ੍ਰਦਾਤਾ ਦੇ ਲੌਗਇਨ ਅਤੇ ਸਿੰਕ ਤੋਂ ਵੱਖਰੇ ਰਹਿੰਦੇ ਹਨ.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "ਨਾਲ ਸਾਈਨ ਇਨ ਕਰੋ Google, ਐਪਲ, ਜਾਂ Microsoft ਸਮਕਾਲੀ ਸਮਾਗਮਾਂ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਅਤੇ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ.";
+"Share a verified email during sign-in to use synced events and invitations." = "ਸਮਕਾਲੀ ਸਮਾਗਮਾਂ ਅਤੇ ਸੱਦੇ ਵਰਤਣ ਲਈ ਸਾਈਨ-ਇਨ ਦੌਰਾਨ ਇੱਕ ਤਸਦੀਕ ਕੀਤੀ ਈਮੇਲ ਸਾਂਝਾ ਕਰੋ.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "ਤੁਹਾਨੂੰ ਲਾਗਇਨ ਦੌਰਾਨ ਇੱਕ ਤਸਦੀਕ ਈਮੇਲ ਸਾਂਝੀ ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ। ਲੋਕ ਇਸ ਨੂੰ ਲੱਭਣ ਅਤੇ ਤੁਹਾਨੂੰ ਕੈਲੰਡਰਾਂ ਅਤੇ ਸਮਾਗਮਾਂ ਲਈ ਸੱਦਾ ਦੇਣ ਲਈ ਵਰਤਣਗੇ।";
+"Manage connected accounts" = "ਜੁੜੇ ਖਾਤਿਆਂ ਦਾ ਪ੍ਰਬੰਧਨ";
+"Apple, Google, and Microsoft" = "ਸੇਬ, Google, ਅਤੇ Microsoft";
+"Open account sign-in" = "ਖਾਤਾ ਖੋਲ੍ਹੋ";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "ਮਾਲਕ ਦੁਆਰਾ ਦਿੱਤੀ ਗਈ ਪਹੁੰਚ ਨੂੰ ਸਾਂਝਾ ਕਰਨ, ਮੁੜ ਪ੍ਰਾਪਤ ਕਰਨ ਜਾਂ ਵਰਤਣ ਲਈ ਇੱਕ ਤਸਦੀਕ ਕੀਤੀ ਈਮੇਲ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ.";
+"Accept" = "ਸਵੀਕਾਰ ਕਰੋ";
+"Access removed" = "ਪਹੁੰਚ ਹਟਾ ਦਿੱਤੀ ਗਈ";
+"Add a Mail account on this device, then try again." = "ਇਸ ਡਿਵਾਈਸ ਉੱਤੇ ਇੱਕ ਮੇਲ ਖਾਤਾ ਜੋੜੋ, ਫਿਰ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।";
+"Add a writable calendar before moving this event." = "ਇਸ ਘਟਨਾ ਨੂੰ ਅੱਗੇ ਵਧਾਉਣ ਤੋਂ ਪਹਿਲਾਂ ਇੱਕ ਲਿਖਣਯੋਗ ਕੈਲੰਡਰ ਜੋੜੋ.";
+"Add everyone who should receive this calendar and choose their access." = "ਹਰੇਕ ਨੂੰ ਜੋੜੋ ਜਿਸ ਨੂੰ ਇਹ ਕੈਲੰਡਰ ਪ੍ਰਾਪਤ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ ਅਤੇ ਉਹਨਾਂ ਦੀ ਪਹੁੰਚ ਚੁਣੋ.";
+"Add everyone who should receive this event and choose their access." = "ਇਸ ਘਟਨਾ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਨ ਵਾਲੇ ਹਰ ਕਿਸੇ ਨੂੰ ਜੋੜੋ ਅਤੇ ਉਹਨਾਂ ਦੀ ਪਹੁੰਚ ਦੀ ਚੋਣ ਕਰੋ.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "ਸੇਵ ਤੋਂ ਬਾਅਦ, %@ ਉਨ੍ਹਾਂ ਦੀ ਸਥਾਨਕ ਕਾਪੀ ਸਿਰਫ ਪੜ੍ਹਨ ਲਈ ਹੀ ਰਹਿੰਦੀ ਹੈ ਜਿਸ ਵਿੱਚ ਇੱਕ ਲਾਈਨ ਹੈ।";
+"Anonymous recipient" = "ਅਗਿਆਤ ਪ੍ਰਾਪਤਕਰਤਾ";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "ਐਪਲ ਨੇ ਈਮੇਲ ਵਾਪਸ ਨਹੀਂ ਕੀਤੀ. ਸੈਟਿੰਗਜ਼ ਵਿੱਚ, ਐਪਲ ਆਈਡੀ ਦੀ ਵਰਤੋਂ ਬੰਦ ਕਰੋ Cloud Calendars, ਫਿਰ ਦੁਬਾਰਾ ਕਨੈਕਟ ਕਰੋ ਅਤੇ ਸ਼ੇਅਰ ਮੇਰੀ ਈਮੇਲ ਚੁਣੋ.";
+"Calendar invitation" = "ਕੈਲੰਡਰ ਸੱਦਾ";
+"Cancel for Everyone" = "ਸਾਰਿਆਂ ਲਈ ਰੱਦ ਕਰੋ";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "ਰੀਡਰ, ਲੇਖਕ, ਜਾਂ ਮਾਲਕ ਦੀ ਚੋਣ ਕਰੋ. ਮਾਲਕ ਇਸ ਘਟਨਾ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦੇ ਹਨ ਅਤੇ ਪਹੁੰਚ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦੇ ਹਨ.";
+"Choose how to share this synced event." = "ਇਸ ਸਮਕਾਲੀ ਘਟਨਾ ਨੂੰ ਕਿਵੇਂ ਸਾਂਝਾ ਕਰਨਾ ਹੈ, ਇਸ ਨੂੰ ਚੁਣੋ।";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars ਇਸ ਉਪਕਰਣ ਉੱਤੇ ਸੈਸ਼ਨ ਨੂੰ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ. ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
+"Cloud Calendars user" = "Cloud Calendars ਉਪਭੋਗਤਾ";
+"Could not add: %@." = "ਜੋੜ ਨਹੀਂ ਸਕਿਆਃ %@. .";
+"Custom on this device" = "ਇਸ ਉਪਕਰਣ ' ਤੇ ਕਸਟਮ";
+"Decline" = "ਘਟਣਾ";
+"Default from creator" = "ਸਿਰਜਣਹਾਰ ਦੁਆਰਾ ਡਿਫਾਲਟ";
+"Deleted by owner" = "ਮਾਲਕ ਦੁਆਰਾ ਮਿਟਾਇਆ ਗਿਆ";
+"Each email address can appear only once." = "ਹਰੇਕ ਈਮੇਲ ਪਤਾ ਸਿਰਫ ਇੱਕ ਵਾਰ ਦਿਖਾਈ ਦੇ ਸਕਦਾ ਹੈ।";
+"Enter a valid email address for %@." = "ਲਈ ਇੱਕ ਵੈਧ ਈਮੇਲ ਪਤਾ ਦਰਜ ਕਰੋ %@. .";
+"From %@" = "ਤੋਂ %@";
+"Invitation pending" = "ਸੱਦਾ ਉਡੀਕ ਵਿੱਚ ਹੈ";
+"Loading shared calendars…" = "ਸਾਂਝਾ ਕੈਲੰਡਰ ਲੋਡ ਕਰਨਾ...";
+"Mail is not configured" = "ਮੇਲ ਸੰਰਚਿਤ ਨਹੀਂ ਹੈ";
+"Manage calendar sharing" = "ਕੈਲੰਡਰ ਸਾਂਝਾ ਕਰਨਾ";
+"New calendar invitation" = "ਨਵਾਂ ਕੈਲੰਡਰ ਸੱਦਾ";
+"New event invitation" = "ਨਵੇਂ ਸਮਾਗਮ ਦਾ ਸੱਦਾ";
+"No calendars have been shared with you yet." = "ਅਜੇ ਤੱਕ ਤੁਹਾਡੇ ਨਾਲ ਕੋਈ ਕੈਲੰਡਰ ਸਾਂਝੇ ਨਹੀਂ ਕੀਤੇ ਗਏ ਹਨ।";
+"Open a shared event or calendar" = "ਸਾਂਝੀ ਸਮਾਗਮ ਜਾਂ ਕੈਲੰਡਰ ਖੋਲ੍ਹੋ";
+"Open this event with Cloud Calendars:\n\n%@" = "ਇਸ ਘਟਨਾ ਨੂੰ ਖੋਲ੍ਹੋ Cloud Calendars:\n\n%@";
+"Original creator" = "ਮੂਲ ਸਿਰਜਣਹਾਰ";
+"People" = "ਲੋਕ";
+"People appear here after they add the event." = "ਲੋਕ ਇੱਥੇ ਪ੍ਰਗਟ ਹੁੰਦੇ ਹਨ ਜਦੋਂ ਉਹ ਘਟਨਾ ਨੂੰ ਜੋੜਦੇ ਹਨ.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "ਏ ਪਾਓ Cloud Calendars ਘਟਨਾ ਜਾਂ ਕੈਲੰਡਰ QR ਫਰੇਮ ਦੇ ਅੰਦਰ ਕੋਡ.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "ਪਾਠਕ ਵੇਖ ਅਤੇ ਸਿੰਕ ਕਰ ਸਕਦਾ ਹੈ. ਲੇਖਕ ਸੰਪਾਦਿਤ ਕਰ ਸਕਦਾ ਹੈ. ਮਾਲਕ ਸੱਦਾ ਈਮੇਲ ਨਾਲ ਲੌਗਇਨ ਕਰਨ ਤੋਂ ਬਾਅਦ ਪਹੁੰਚ ਨੂੰ ਸਾਂਝਾ ਅਤੇ ਪ੍ਰਬੰਧਿਤ ਕਰ ਸਕਦਾ ਹੈ.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "ਪਾਠਕ ਵੇਖ ਸਕਦਾ ਹੈ. ਲੇਖਕ ਸਮਾਗਮ ਸੰਪਾਦਿਤ ਕਰ ਸਕਦਾ ਹੈ. ਮਾਲਕ ਕੈਲੰਡਰ ਨੂੰ ਸਾਂਝਾ ਕਰ ਸਕਦਾ ਹੈ ਅਤੇ ਪਹੁੰਚ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰ ਸਕਦਾ ਹੈ.";
+"Remove" = "ਹਟਾਓ";
+"Remove Shared Calendar?" = "ਸਾਂਝਾ ਕੈਲੰਡਰ ਹਟਾਓ?";
+"Remove from My Calendars" = "ਮੇਰੇ ਕੈਲੰਡਰਾਂ ਤੋਂ ਹਟਾਓ";
+"Resend" = "ਮੁੜ ਭੇਜੋ";
+"Scan QR Code" = "ਸਕੈਨ QR ਕੋਡ";
+"Scan to open this calendar" = "ਇਸ ਕੈਲੰਡਰ ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ ਸਕੈਨ ਕਰੋ";
+"Scan to open this event" = "ਇਸ ਘਟਨਾ ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ ਸਕੈਨ ਕਰੋ";
+"Server returned %lld: %@" = "ਸਰਵਰ ਵਾਪਸ %lld: %@";
+"Shared calendar" = "ਸਾਂਝਾ ਕੈਲੰਡਰ";
+"Shared calendar information" = "ਸਾਂਝੀ ਕੈਲੰਡਰ ਜਾਣਕਾਰੀ";
+"Shared event: %@" = "ਸਾਂਝਾ ਪ੍ਰੋਗਰਾਮਃ %@";
+"Sign in or manage accounts" = "ਖਾਤਿਆਂ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ ਜਾਂ ਉਹਨਾਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ";
+"Sign in to manage event access." = "ਘਟਨਾ ਪਹੁੰਚ ਪ੍ਰਬੰਧਨ ਲਈ ਸਾਈਨ ਇਨ ਕਰੋ।";
+"Sign in to save event access." = "ਘਟਨਾ ਤੱਕ ਪਹੁੰਚ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰਨ ਲਈ ਸਾਈਨ ਇਨ ਕਰੋ।";
+"Sign in to see calendars shared with you." = "ਤੁਹਾਡੇ ਨਾਲ ਸਾਂਝੇ ਕੀਤੇ ਗਏ ਕੈਲੰਡਰਾਂ ਨੂੰ ਵੇਖਣ ਲਈ ਸਾਈਨ ਇਨ ਕਰੋ।";
+"Sign-in couldn’t open. Please try again." = "ਰਜਿਸਟਰੇਸ਼ਨ ਖੋਲ੍ਹ ਨਹੀਂ ਸਕਿਆ. ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "ਇਸ ਕੈਲੰਡਰ ਨੂੰ ਸਾਂਝਾ ਕਰਨਾ ਬੰਦ ਕਰੋ %@Save ਦੇ ਬਾਅਦ, ਉਨ੍ਹਾਂ ਦੀ ਜੰਮਦੀ ਕਾਪੀ ਅਤੇ ਇਸ ਦੀਆਂ ਘਟਨਾਵਾਂ ਉਨ੍ਹਾਂ ਦੇ ਦੁਆਰਾ ਇੱਕ ਲਾਈਨ ਦੇ ਨਾਲ ਦਿਖਾਈ ਦੇਣਗੀਆਂ.";
+"The calendar and its events will be removed only from this device." = "ਕੈਲੰਡਰ ਅਤੇ ਇਸ ਦੀਆਂ ਘਟਨਾਵਾਂ ਨੂੰ ਸਿਰਫ ਇਸ ਉਪਕਰਣ ਤੋਂ ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ.";
+"The provider didn’t return the information required to sign in." = "ਪ੍ਰਦਾਤਾ ਨੇ ਸਾਈਨ ਇਨ ਕਰਨ ਲਈ ਲੋੜੀਂਦੀ ਜਾਣਕਾਰੀ ਵਾਪਸ ਨਹੀਂ ਕੀਤੀ।";
+"The provider returned an invalid response." = "ਪ੍ਰਦਾਤਾ ਨੇ ਇੱਕ ਅਵੈਧ ਜਵਾਬ ਦਿੱਤਾ।";
+"The sign-in response couldn’t be verified. Please try again." = "ਸਾਈਨ-ਇਨ ਜਵਾਬ ਦੀ ਪੁਸ਼ਟੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ. ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
+"The sign-in response was invalid. Please try again." = "ਲੌਗਇਨ ਜਵਾਬ ਅਵੈਧ ਸੀ. ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
+"This changes only your local copy. Shared event details stay read-only." = "ਇਹ ਸਿਰਫ ਤੁਹਾਡੀ ਸਥਾਨਕ ਕਾਪੀ ਨੂੰ ਬਦਲਦਾ ਹੈ. ਸਾਂਝੇ ਇਵੈਂਟ ਦੇ ਵੇਰਵੇ ਸਿਰਫ ਪੜ੍ਹਨ ਲਈ ਰਹਿੰਦੇ ਹਨ.";
+"This color changes only on this device." = "ਇਹ ਰੰਗ ਸਿਰਫ ਇਸ ਉਪਕਰਣ 'ਤੇ ਬਦਲਦਾ ਹੈ.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "ਇਹ QR ਕੋਡ ਵਿੱਚ ਇੱਕ Cloud Calendars ਘਟਨਾ ਜਾਂ ਕੈਲੰਡਰ.";
+"This QR code does not contain a Cloud Calendars share." = "ਇਹ QR ਕੋਡ ਵਿੱਚ ਇੱਕ Cloud Calendars ਸਾਂਝਾ ਕਰੋ।";
+"This removes only your local copy. Other people keep access." = "ਇਹ ਸਿਰਫ ਤੁਹਾਡੀ ਸਥਾਨਕ ਕਾਪੀ ਨੂੰ ਹਟਾ ਦਿੰਦਾ ਹੈ. ਹੋਰ ਲੋਕ ਪਹੁੰਚ ਨੂੰ ਕਾਇਮ ਰੱਖਦੇ ਹਨ.";
+"Try again" = "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ";
+"Unable to Update Calendar" = "ਕੈਲੰਡਰ ਨੂੰ ਅਪਡੇਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ";
+"Unable to add calendar" = "ਕੈਲੰਡਰ ਜੋੜਨ ਵਿੱਚ ਅਸਮਰੱਥ";
+"Unreadable response from the server" = "ਸਰਵਰ ਤੋਂ ਅਣਪੜ੍ਹਨਯੋਗ ਜਵਾਬ";
+"Use Apple, Google, or Microsoft." = "ਐਪਲ ਦੀ ਵਰਤੋਂ ਕਰੋ, Google, ਜਾਂ Microsoft. .";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "ਇੱਕ ਉਪਕਰਣ ਦੀ ਵਰਤੋਂ ਕਰੋ ਜਿਸ ਵਿੱਚ ਇੱਕ ਉਪਲੱਬਧ ਕੈਮਰਾ ਹੋਵੇ Cloud Calendars QR ਕੋਡ.";
+"You can add up to 50 people at once." = "ਤੁਸੀਂ ਇੱਕੋ ਸਮੇਂ 50 ਲੋਕਾਂ ਨੂੰ ਜੋੜ ਸਕਦੇ ਹੋ।";
+"You can send up to 50 invitations at once." = "ਤੁਸੀਂ ਇੱਕੋ ਸਮੇਂ 50 ਸੱਦੇ ਭੇਜ ਸਕਦੇ ਹੋ।";
+"%lld connected account" = "%lld ਜੁੜਿਆ ਖਾਤਾ";
+"%lld connected accounts" = "%lld ਜੁੜੇ ਖਾਤੇ";
+"%lld pending invitation" = "%lld ਸੱਦਾ ਜਾਰੀ";
+"%lld pending invitations" = "%lld ਉਡੀਕੀਆਂ ਹੋਈਆਂ ਸੱਦੇ";
+"%lld upcoming event" = "%lld ਆਉਣ ਵਾਲੀ ਘਟਨਾ";
+"%lld upcoming events" = "%lld ਆਉਣ ਵਾਲੀਆਂ ਘਟਨਾਵਾਂ";
+"%@ invited you to %@" = "%@ ਤੁਹਾਨੂੰ ਸੱਦਾ %@";

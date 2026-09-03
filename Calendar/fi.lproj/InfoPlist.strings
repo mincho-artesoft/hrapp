@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars käyttää sijaintiasi aktiivisena integroidakseen tarkat paikalliset sääennusteet suoraan kalenteriisi.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars vaatii kalenterin käyttöoikeuden yhdistääkseen tapahtumasi kalentereista iCloud, Google ja Microsoft, mikä mahdollistaa saumattoman ajoituksen.";
+
+"NSCameraUsageDescription" = "Cloud Calendars käyttää kameraa jaettujen tapahtumien ja kalenterien QR-koodien skannaamiseen.";

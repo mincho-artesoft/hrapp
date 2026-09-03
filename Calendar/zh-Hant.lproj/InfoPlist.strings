@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars 在活動時使用您的位置將精確的當地天氣預報直接整合到您的日曆中。";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars 需要日曆存取權限來統一 iCloud、Google 和 Microsoft 日曆中的事件，從而實現無縫安排。";
+
+"NSCameraUsageDescription" = "Cloud Calendars 使用相機掃描共享活動與行事曆的 QR Code。";

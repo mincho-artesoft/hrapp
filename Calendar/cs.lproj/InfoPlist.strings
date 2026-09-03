@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "Cloud Calendars využívá vaši polohu, když je aktivní, k integraci přesných místních předpovědí počasí přímo do vašeho kalendáře.";
 
 "NSCalendarsFullAccessUsageDescription" = "Cloud Calendars vyžaduje přístup ke kalendáři pro sjednocení vašich událostí z kalendářů iCloud, Google a Microsoft, což umožňuje bezproblémové plánování.";
+
+"NSCameraUsageDescription" = "Cloud Calendars používá fotoaparát ke skenování QR kódů sdílených událostí a kalendářů.";

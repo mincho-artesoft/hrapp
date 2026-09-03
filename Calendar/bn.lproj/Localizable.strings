@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld ঘটনা";
+"%lld events" = "%lld ঘটনা";
+"Share Pop-up" = "শেয়ার পপ-আপ";
+"Would you like to share this event?" = "আপনি কি এই ঘটনাটি ভাগ করতে চান?";
+"Don't ask again" = "আর একবার জিজ্ঞেস করো না";
+"No email was provided." = "কোন ইমেইল দেওয়া হয়নি।";
+"Please enter a valid email to continue." = "দয়া করে একটি বৈধ ইমেইল লিখুন।";
+"Your email" = "আপনার ইমেইল";
+"Save" = "সংরক্ষণ করুন";
+"Login" = "লগইন";
+"Logout" = "লগইন";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "ক্যালেন্ডার";
+"Inbox" = "ইনবক্স";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "অন্যান্য";
+"Google calendars" = "Google calendars";
+"No synced Google calendars yet." = "সিঙ্ক নেই Google calendarএখনো না।";
+"Microsoft calendars" = "Microsoft calendars";
+"No synced Microsoft calendars yet." = "সিঙ্ক নেই Microsoft calendarএখনো না।";
+"Sign out" = "সাইন আউট";
+"Add iCloud Calendar" = "যোগ করুন iCloud ক্যালেন্ডার";
+"Share calendars with iCloud Calendar" = "ক্যালেন্ডার শেয়ার করুন iCloud ক্যালেন্ডার";
+"Sign in with Google" = "সাইন ইন করুন Google";
+"Sign in with Microsoft" = "সাইন ইন করুন Microsoft";
+"Deselect All" = "সব অপসারণ করুন";
+"Select All" = "সব নির্বাচন করুন";
+"No Email" = "কোন ইমেইল নেই";
+"Add Google Calendar" = "যোগ করুন Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "ক্যালেন্ডারের নাম";
+"Account" = "অ্যাকাউন্ট";
+"COLOR" = "রঙ";
+"NOTIFICATIONS" = "বিজ্ঞপ্তি";
+"Event Alerts" = "ঘটনা সতর্কতা";
+"Allow events on this calendar to display alerts." = "এই ক্যালেন্ডারে থাকা ঘটনাগুলোকে সতর্কতা প্রদর্শন করতে দিন।";
+"Add Calendar" = "ক্যালেন্ডার যোগ করুন";
+
+/* Colors */
+"Red" = "লাল";
+"Orange" = "কমলা";
+"Yellow" = "হলুদ";
+"Green" = "সবুজ";
+"Blue" = "নীল";
+"Purple" = "প্যারা";
+"Brown" = "ব্রাউন";
+"Custom" = "কাস্টম";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "ক্যালেন্ডার রঙ";
+"Custom..." = "কাস্টম...";
+
+/* EditCalendarView */
+"Edit Calendar" = "ক্যালেন্ডার সম্পাদনা করুন";
+"Delete Calendar" = "ক্যালেন্ডার মুছে ফেলুন";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "শেয়ারিং সেটিংস লোড করা হচ্ছে...";
+"Shared with these users" = "এই ব্যবহারকারীদের সাথে শেয়ার করা";
+"Add New Email" = "নতুন ইমেইল যোগ করুন";
+"Email to share" = "শেয়ার করার জন্য ইমেইল";
+"Permission:" = "অনুমতিঃ";
+"Add" = "যোগ করুন";
+"Sharing:" = "ভাগ করাঃ";
+"Done" = "সম্পন্ন";
+
+"Error loading: %@" = "ত্রুটি লোডিংঃ %@";
+"Error adding: %@" = "যোগ ত্রুটিঃ %@";
+"Error deleting: %@" = "ত্রুটি মুছে ফেলাঃ %@";
+"Error updating: %@" = "আপডেট ত্রুটিঃ %@";
+"Error re-inviting (delete): %@" = "ত্রুটি পুনরায় আমন্ত্রণ (মুছে ফেলা): %@";
+"Error re-inviting (insert): %@" = "ত্রুটি পুনরায় আমন্ত্রণ (ইনস্টল করুন): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "পাঠক";
+"Writer" = "লেখক";
+"Owner"  = "মালিক";
+
+/* MonthCalendarView */
+"Day View" = "দিনের দৃশ্য";
+"This is a repeating event." = "এটা পুনরাবৃত্তি।";
+"Save for This Event Only" = "এই অনুষ্ঠানের জন্যই বাচাও";
+"Save for Future Events" = "ভবিষ্যতের ঘটনার জন্য সঞ্চয় করুন";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "সূর্য";
+"Mon" = "মঙ্গলবার";
+"Tue" = "টয়";
+"Wed" = "বিবাহিত";
+"Thu" = "থু";
+"Fri" = "শুক্রবার";
+"Sat" = "সেট";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "বন্ধ";
+
+/* AllEventsListView */
+"No calendar access." = "ক্যালেন্ডার অ্যাক্সেস নেই।";
+
+/* EventRowView */
+"Ends" = "শেষ";
+
+/* SearchEventRowView */
+"No Title" = "কোন শিরোনাম নেই";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "মিটিংয়ে যোগদান করুন";
+"Edit" = "সম্পাদনা";
+"Duplicate" = "ডুপ্লিকেট";
+"Delete" = "মুছে ফেলুন";
+"Share" = "ভাগ করে নেওয়ার";
+"Add to Google Meet" = "যোগ করুন Google দেখা";
+"Add to Microsoft Teams" = "যোগ করুন Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "কোন নির্বাচন করা পরিসীমা নেই";
+"all-day" = "সারাদিন";
+"Search events..." = "অনুসন্ধান ঘটনা...";
+"Day" = "দিন";
+"MultiDay" = "বহুদিন";
+"Month" = "মাস";
+"Year" = "বছর";
+"List" = "তালিকা";
+"MultiCalendar" = "মাল্টি ক্যালেন্ডার";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "নতুন ঘটনা";
+"All-day event" = "সারাদিনের অনুষ্ঠান";
+"Recurring Event" = "পুনরাবৃত্তি";
+"This event is part of a series. Update which events?" = "এই ঘটনাটি একটি সিরিজের অংশ। কোন ঘটনাগুলো আপডেট করা হয়েছে?";
+"This Event Only" = "এই ঘটনা";
+"All Future Events" = "ভবিষ্যতের সকল ঘটনা";
+"Cancel" = "বাতিল করা";
+
+/* DraggableMenuView */
+"Calendar" = "ক্যালেন্ডার";
+"Subscriptions" = "সাবস্ক্রিপশন";
+"Settings" = "সেটিং";
+"Sharing" = "ভাগ করা";
+"Live" = "জীবিত";
+"Stop" = "থামো";
+"Calendar Live Activity" = "ক্যালেন্ডার লাইভ ক্রিয়াকলাপ";
+"Get" = "যাও";
+"Color" = "রঙ";
+"Search for a city…" = "একটা শহর খুঁজতে...";
+"No directions" = "কোন নির্দেশনা নেই";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "অবস্থান অ্যাক্সেস অস্বীকার করা হয়েছে। সেটিংসে একটি শহর অনুসন্ধান করুন অথবা অ্যাক্সেস প্রদান করুন।";
+"Cannot refresh. Location unknown." = "রিফ্রেশ করতে পারছি না, অবস্থান অজানা।";
+"10-DAY FORECAST" = "১০ দিন পূর্বাভাস";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "কাল";
+"on_day" = "উপর %@";
+"in_days" = "মধ্যে %d দিন";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "নতুন ঘটনা";
+
+/* Search placeholder */
+"Search for a city..." = "একটা শহর খুঁজতে...";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "একটি ক্যালেন্ডার ইভেন্ট দ্রুত যোগ করতে একটি ঘন্টা টিপুন।";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "অনুভব করি";
+"similar_to_actual_temp" = "তাপমাত্রার সাথে মিল।";
+"wind_cooler_feel" = "বাতাসটা তো শীতল করে দিচ্ছে।";
+"humidity_warmer_feel" = "আর্দ্রতা তা আরও উষ্ণ করে তোলে।";
+
+/* HumidityCard */
+"HUMIDITY" = "আর্দ্রতা";
+"The dew point is %d° right now." = "ডাউ পয়েন্ট হল %dএখনই।";
+"dewPoint.current" = "ডাউ পয়েন্ট হল %dএখনই।";
+
+/* MoonCard */
+"MOON PHASE" = "চাঁদের পর্যায়";
+"Moonrise" = "চাঁদের উদয়";
+"Moonset" = "মুনসেট";
+"Next %@" = "পরবর্তী %@";
+"Data unavailable" = "তথ্য পাওয়া যায়নি";
+"%d day" = "%d দিন";
+"%d days" = "%d দিন";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "প্রিসিপিটেশন";
+"PRECIPITATION_CARD_TODAY_LABEL" = "আজ";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "পরবর্তী প্রত্যাশিত %1$.0f %2$@ %3$@. ."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "খুব শীঘ্রই বৃষ্টিপাত হবে না।";
+
+/* PressureCard */
+"PRESSURE" = "চাপ";
+"hPa" = "এইচপিএ";
+
+/* SunsetCard */
+"SUNRISE" = "সূর্যোদয়";
+"Sunrise: %@" = "সূর্যোদয়: %@";
+"Sunset: %@" = "সূর্যাস্তঃ %@";
+"Sunrise" = "সূর্যোদয়";
+"Sunset" = "সূর্যাস্ত";
+
+
+"Sunrise and Sunset" = "সূর্যোদয় ও সূর্যাস্ত";
+"First Light" = "প্রথম আলো";
+"Solar Noon" = "সূর্যের মধ্যরাত";
+"Last Light" = "শেষ আলো";
+"Total Daylight" = "মোট দিনের আলো";
+
+/* UVIndexCard */
+"UV INDEX" = "ইউভি ইন্ডিকেটর";
+"Low" = "কম";
+"Moderate" = "মাঝারি";
+"High" = "উচ্চ";
+"Very High" = "খুব উচ্চ";
+"Extreme" = "অতিমাত্রায়";
+
+/* VisibilityCard */
+"VISIBILITY" = "দৃশ্যমানতা";
+"km" = "কিলোমিটার";
+"Perfectly clear view." = "একেবারে পরিষ্কার দৃশ্য।";
+"Excellent visibility." = "চমৎকার দৃশ্যমানতা।";
+"Good visibility." = "ভালো দৃশ্যমানতা।";
+"Moderate visibility." = "মাঝারি দৃশ্যমানতা।";
+"Poor visibility." = "খারাপ দৃশ্যমানতা।";
+"Very poor visibility." = "খুব খারাপ দৃশ্যমানতা।";
+"visibility.perfect"   = "একেবারে পরিষ্কার দৃশ্য।";
+"visibility.excellent" = "চমৎকার দৃশ্যমানতা।";
+"visibility.good"      = "ভালো দৃশ্যমানতা।";
+"visibility.moderate"  = "মাঝারি দৃশ্যমানতা।";
+"visibility.poor"      = "খারাপ দৃশ্যমানতা।";
+"visibility.verypoor"  = "খুব খারাপ দৃশ্যমানতা।";
+"visibility.unknown"   = "";
+
+/* WindCard */
+"WIND" = "বাতাস";
+"Gusts" = "গস্ট";
+"Direction" = "দিক";
+"km/h" = "কিলোমিটার/ঘন্টা";
+"Compass_N" = "N";
+"Compass_S" = "এস";
+"Compass_W" = "W";
+"Compass_E" = "ই";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "আবহাওয়া তথ্য পাওয়া যায়নি, দয়া করে আপনার সংযোগ পরীক্ষা করুন অথবা পরে আবার চেষ্টা করুন।";
+"Falling" = "পড়ে যাওয়া";
+"Rising" = "বাড়ছে";
+"Steady" = "স্থির";
+"Unknown" = "অজানা";
+"Sunny" = "সানি";
+"Cloudy" = "মেঘলা";
+"Partly Cloudy" = "আংশিকভাবে মেঘলা";
+"Drizzle" = "ড্রিজল";
+"Thunderstorm" = "ঝড়";
+"Fog" = "কুয়াশা";
+"Partly Cloudy Night" = "আংশিকভাবে মেঘলা রাত";
+"Clear Night" = "পরিষ্কার রাত";
+"Hazy" = "কুয়াশা";
+"Today" = "আজ";
+"Now" = "এখন";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "এনএনই";
+"cardinal.NE"  = "NE";
+"cardinal.ENE" = "ENE";
+"cardinal.E"   = "ই";
+"cardinal.ESE" = "ইএসই";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "এসএসই";
+"cardinal.S"   = "এস";
+"cardinal.SSW" = "এসএসডাব্লু";
+"cardinal.SW"  = "এসডব্লিউ";
+"cardinal.WSW" = "WSW";
+"cardinal.W"   = "W";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "এনএনডব্লিউ";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "বৃষ্টিপাতের সম্ভাবনা";
+"Today's chance: %d%%" = "আজকের সুযোগঃ %d%%";
+"%@'s chance: %d%%" = "%@সুযোগঃ %d%%";
+"Max" = "ম্যাক্স";
+"Min" = "মিন";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "প্রতিদিন বৃষ্টিপাতের সম্ভাবনা প্রতি ঘণ্টার সম্ভাবনা থেকে বেশি।";
+"ChanceOfPrecipitation_Title" = "বৃষ্টিপাতের সম্ভাবনা";
+"TodaysChance"                = "আজকের সুযোগঃ %d%%";
+"OtherDayChance"              = "%@সুযোগঃ %d%%";
+"DailyChanceExplanation"      = "প্রতিদিন বৃষ্টিপাতের সম্ভাবনা প্রতি ঘণ্টার সম্ভাবনা থেকে বেশি।";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "মনে হচ্ছে";
+"Actual" = "প্রকৃত";
+"No hourly data available for this day." = "এই দিনের জন্য কোন ঘণ্টার তথ্য পাওয়া যায়নি।";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "আর্দ্রতা, সূর্যের আলো বা বাতাসের ফলে তাপমাত্রা কেমন হয়।";
+"The actual air temperature." = "বায়ুর তাপমাত্রা।";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat"  = "L: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "আর্দ্রতা";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "আর্দ্রতা %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "আর্দ্রতা Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "আজকের মিন %d%%  সর্বোচ্চ %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "ম্যাক্স";
+"ChartMarker_Min"           = "মিন";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "বৃষ্টিঃ %.1f%@, তুষার: %.1f%@";
+"Precip_Total_RainFormat"       = "বৃষ্টিঃ %.1f%@";
+"Precip_Total_SnowFormat"       = "তুষারঃ %.1f%@";
+"Precip_Total_None"             = "বৃষ্টিপাতঃ ০%@";
+"Precip_Bars_Subtitle"          = "বৃষ্টি ও তুষারের জন্য ঘণ্টায় বার (%@) ।";
+"Precip_Level_Light"            = "হালকা";
+"Precip_Level_Moderate"         = "মাঝারি";
+"Precip_Level_Heavy"            = "ভারী";
+"Precip_Tooltip_Format"         = "%@h\nবৃষ্টিঃ %.1f%@\nতুষারঃ %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "চাপ %@ %@";
+"Pressure_CurrentUnavailable"      = "চাপঃ --";
+"Pressure_DailyMinMaxFormat"       = "আজকের মিন %@ %@  সর্বোচ্চ %@ %@";
+"Pressure_AverageFormat"           = "চাপের গড় %@ %@";
+"Pressure_DailyRangeFormat"        = "দৈনিক পরিসীমাঃ %@%@ %@";
+"Pressure_Title"                   = "চাপ";
+"Pressure_NoData"                  = "আজকের জন্য কোন চাপের তথ্য পাওয়া যায়নি।";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "আজকের %@ %d";
+"UVGraphNoHourlyData"   = "এই দিনের জন্য কোন ঘণ্টার তথ্য পাওয়া যায়নি।";
+"UVGraphNowLabel"       = "এখন, %@";
+"UVCategory_None"       = "কোনটিই";
+"UVCategory_Low"        = "কম";
+"UVCategory_Moderate"   = "মাঝারি";
+"UVCategory_High"       = "উচ্চ";
+"UVCategory_VeryHigh"   = "খুব উচ্চ";
+"UVCategory_Extreme"    = "অতিমাত্রায়";
+"UVAdvice_None"         = "এই দিনে কোনো মাঝারি বা উচ্চতর UV স্তর আশা করা যায় না।";
+"UVAdvice_Range"        = "সূর্যের সুরক্ষা সুপারিশ করা হয়। %@ থেকে %@, এর মধ্যে পৌঁছেছে %@ এবং %@. .";
+"UVGraphMaxLabel" = "ম্যাক্স";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "দৃশ্যমানতা";
+"Visibility_NoData"                = "এই দিন কোন দৃশ্যমানতা তথ্য পাওয়া যায়নি।";
+"Visibility_CurrentFormat"         = "দৃশ্যমানতা %d %@";
+"Visibility_DailyMinMaxFormat"     = "মিনিট %d  সর্বোচ্চ %d %@";
+"Visibility_NoCurrentData"         = "বর্তমান দৃশ্যমানতার কোন তথ্য নেই।";
+"Visibility_HourlyAverages_NoData" = "ঘণ্টার তথ্য নেই।";
+"Visibility_MaxLabel"              = "ম্যাক্স";
+"Visibility_MinLabel"              = "মিন";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "বাতাসের গতি ও গস্ট";
+"WindGraph_NoData" = "আজকের জন্য কোন বায়ু তথ্য পাওয়া যায়নি।";
+"WindGraph_SpeedHeader" = "বাতাসের গতি %d";
+"WindGraph_GustHeader" = "গস্ট আপ %d";
+"WindGraph_SpeedRangeHeader" = "বাতাসের গতি %d- তুমি কি?%d";
+"WindGraph_MaxSpeedLabel" = "ম্যাক্স এস";
+"WindGraph_MaxGustLabel" = "ম্যাক্স জি";
+"WindGraph_DragLabel" = "%@\nগতিঃ %d\nগস্ট: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "দৈনিক সংক্ষিপ্ত বিবরণ";
+
+"Precipitation Totals" = "বৃষ্টিপাতের সংখ্যা";
+"LAST 24 HOURS" = "শেষ ২৪ ঘন্টা";
+"NEXT 24 HOURS" = "পরবর্তী ২৪ ঘন্টা";
+"Total" = "মোট";
+"Rain" = "বৃষ্টি";
+"Snow" = "তুষারপাত";
+
+"About Wind Speed and Gusts" = "বাতাসের গতি ও গাস্ট সম্পর্কে";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "বায়ুর গতি একটি স্বল্প সময়ের গড় ব্যবহার করে গণনা করা হয়। গস্টগুলি এই গড়ের উপরে বায়ুর স্বল্প সময়কালীন বিস্ফোরণ। একটি ঝড় সাধারণত 20 সেকেন্ডেরও কম সময় স্থায়ী হয়।";
+
+"About the Beaufort Scale" = "বফোর্ট স্কেল সম্পর্কে";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "বফোর্ট বায়ু স্কেল একটি নির্দিষ্ট গতিতে বাতাস কতটা শক্তিশালী বা শক্তিশালী তা প্রকাশ করে। বফোর্ট স্কেলটি বাতাস কতটা বাতাস অনুভব করবে বা বাতাস কতটা প্রভাব ফেলতে পারে তা বোঝা সহজ করতে পারে। স্কেলটির প্রতিটি মান বায়ুর গতির ব্যাপ্তির সাথে সম্পর্কিত।";
+
+"About Feels Like Temperature" = "তাপমাত্রা সম্পর্কে অনুভূতি";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Feels Like এর মানে হল যে এটি কতটা উষ্ণ বা ঠান্ডা অনুভব করে এবং তা প্রকৃত তাপমাত্রার থেকে আলাদা হতে পারে।";
+
+"Options" = "বিকল্প";
+"Temperature" = "তাপমাত্রা";
+"Use system setting (°C)" = "সিস্টেম সেটিং ব্যবহার করুন (°C)";
+"mm, cm" = "মিমি, সেমি";
+
+/* Dynamic label titles */
+"Conditions" = "শর্তাবলী";
+"UV Index" = "ইউভি সূচক";
+"Wind" = "বাতাস";
+"Precipitation" = "বৃষ্টিপাত";
+"Humidity" = "আর্দ্রতা";
+"Visibility" = "দৃশ্যমানতা";
+"Pressure" = "চাপ";
+
+/* Fallback key */
+"displayedCondition" = "প্রদর্শিতকন্ডিশন";
+
+/* Titles */
+"Forecast"                   = "পূর্বাভাস";
+"DailySummary"               = "দৈনিক সংক্ষিপ্ত বিবরণ";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° এখন সঙ্গে %@ বৃষ্টিপাতের সম্ভাবনা রয়েছে %@বাতাস থেকে %@ ধোঁয়া %d %@আজকের তাপমাত্রা থেকে %d° থেকে %d♪ এবং মনে হয় %d° %@এবং %@. .";
+"UVIndexFormat"              = "UV ইন্ডিকেটর পর্যন্ত %d";
+"HumidityFormat"             = "চারপাশে আর্দ্রতা %d%%";
+"HumidityRangeFormat"        = "আর্দ্রতা %d%% থেকে %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@নিম্নতম হল %d° এবং উচ্চতা হল %d°. তাপমাত্রা অনুভব করবে %d° থেকে %d°. বায়ু থেকে %@ আশা করা হচ্ছে। %@";
+"NoPrecipLast24h"            = "গত ২৪ ঘণ্টায় কোনো বৃষ্টিপাত রেকর্ড করা হয়নি।";
+"RainLast24h"                = "বৃষ্টি হয়েছে %d গত ২৪ ঘণ্টায় মিমি।";
+"SnowAndRainLast24h"         = "গত ২৪ ঘণ্টায় তুষারপাত %@ সেমি এবং বৃষ্টিপাত %d মিমি।";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "এনএনই";
+"Dir_NE"  = "NE";
+"Dir_ENE" = "ENE";
+"Dir_E"   = "ই";
+"Dir_ESE" = "ইএসই";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "এসএসই";
+"Dir_S"   = "এস";
+"Dir_SSW" = "এসএসডাব্লু";
+"Dir_SW"  = "এসডব্লিউ";
+"Dir_WSW" = "WSW";
+"Dir_W"   = "W";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "এনএনডব্লিউ";
+
+/* units */
+"UnitMillimeter" = "মিমি";
+"UnitCentimeter" = "সেমি";
+
+/* common labels */
+"PrecipitationTotals_Title" = "বৃষ্টিপাতের সংখ্যা";
+"Last24h_Label"             = "শেষ ২৪ ঘন্টা";
+"Next24h_Label"             = "পরবর্তী ২৪ ঘন্টা";
+"Total_Label"               = "মোট";
+"Precipitation_Label"       = "বৃষ্টিপাত";
+"Rain_Label"                = "বৃষ্টি";
+"Snow_Label"                = "তুষারপাত";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "বায়ু বর্তমানে %1$d %2$@ থেকে %3$@আজ, বাতাসের গতি %4$d থেকে %5$d %2$@, এর মধ্যে ধোঁয়া %6$d %2$@. .";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "বাতাসের গতির পরিসীমা %1$d থেকে %2$d %3$@, এর মধ্যে ধোঁয়া %4$d %3$@. .";
+
+"Beaufort_Scale"                = "বফোর্ট স্কেল";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description"   = "বর্ণনা";
+"Beaufort_Column_kmh" = "কিলোমিটার/ঘন্টা";
+"Beaufort_0"                    = "শান্ত হও";
+"Beaufort_1"                    = "হালকা বায়ু";
+"Beaufort_2"                    = "হালকা বাতাস";
+"Beaufort_3"                    = "হালকা বাতাস";
+"Beaufort_4"                    = "মাঝারি বাতাস";
+"Beaufort_5"                    = "তাজা বাতাস";
+"Beaufort_6"                    = "শক্তিশালী বাতাস";
+"Beaufort_7"                    = "প্রচণ্ড বাতাস";
+"Beaufort_8"                    = "গেইল";
+"Beaufort_9"                    = "শক্তিশালী ঝড়";
+"Beaufort_10"                   = "ঝড়";
+"Beaufort_11"                   = "হিংস্র ঝড়";
+"Beaufort_12"                   = "হারিকেন-ফোর্স";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "২  ৫";
+"BeaufortRange_2"               = "৬  ১১";
+"BeaufortRange_3"               = "১২  ১৯";
+"BeaufortRange_4"               = "২০  ২৮";
+"BeaufortRange_5"               = "২৯  ৩৮";
+"BeaufortRange_6"               = "৩৯  ৪৯";
+"BeaufortRange_7"               = "৫০  ৬১";
+"BeaufortRange_8"               = "৬২  ৭৪";
+"BeaufortRange_9"               = "৭৫  ৮৮";
+"BeaufortRange_10"              = "৮৯  ১০২";
+"BeaufortRange_11"              = "১০৩  ১১৭";
+"BeaufortRange_12"              = "> ১১৮";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "আছে %.1f%@ গত ২৪ ঘণ্টায় বৃষ্টিপাতের পরিমাণ %.1f%@আগামী ২৪ ঘণ্টার মধ্যে, %.1f%@ বৃষ্টিপাতের সম্ভাবনা রয়েছে।";
+"ForecastPrecip_OtherDayFormat" = "উপর %@, মোট বৃষ্টিপাত হবে %.1f%@. .";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "বৃষ্টিপাতের তীব্রতা সম্পর্কে";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "পূর্বাভাস";
+"DailySummary_Title"           = "দৈনিক সংক্ষিপ্ত বিবরণ";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "ডাউ পয়েন্ট হল %d° থেকে %d°";
+"DewPoint_FutureFormat"        = "ডাউ পয়েন্ট হবে %d° থেকে %d°";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "আজ, গড় আর্দ্রতা %d%%. . %@";
+"ForecastHumidity_Other"       = "উপর %@, গড় আর্দ্রতা হবে %d%%. .\n%@";
+
+"AboutPressure_Title"  = "চাপ সম্পর্কে";
+"AboutPressure_Body"   = "জলবায়ু পরিবর্তনের পূর্বাভাস দিতে চাপের উল্লেখযোগ্য, দ্রুত পরিবর্তন ব্যবহার করা হয়। উদাহরণস্বরূপ, চাপের পতনের অর্থ হতে পারে যে বৃষ্টি বা তুষার আসছে, এবং চাপের বৃদ্ধির অর্থ হতে পারে যে আবহাওয়া উন্নত হবে। চাপকে বারোমেট্রিক চাপ বা বায়ুমণ্ডলীয় চাপও বলা হয়।";
+
+"AboutHumidity_Title"  = "আপেক্ষিক আর্দ্রতা সম্পর্কে";
+"AboutHumidity_Body"   = "আপেক্ষিক আর্দ্রতা, সাধারণত আর্দ্রতা হিসাবে পরিচিত, বায়ু ধারণ করতে পারে তার তুলনায় বায়ুতে আর্দ্রতার পরিমাণ। বায়ু উচ্চ তাপমাত্রায় আরও আর্দ্রতা ধারণ করতে পারে। আপেক্ষিক আর্দ্রতা প্রায় 100% mযখন ডুম বা কুয়াশা হতে পারে।";
+
+"AboutDewPoint_Title" = "ডু পয়েন্ট সম্পর্কে";
+"AboutDewPoint_Body"  = "গরমের তাপমাত্রা গরম হওয়ার জন্য গরমের তাপমাত্রা হ'ল গরমের তাপমাত্রা। এটি বায়ু কতটা আর্দ্র বোধ করে তা জানার একটি দরকারী উপায় হতে পারে  গরমের তাপমাত্রা যত বেশি উচ্চ হয়, তত বেশি আর্দ্র বোধ হয়। বর্তমান তাপমাত্রার সাথে সামঞ্জস্যপূর্ণ গরমের তাপমাত্রা বোঝায় যে আপেক্ষিক আর্দ্রতা 100%, এবং গরম বা কুয়াশা থাকতে পারে।";
+
+"Section_Forecast"                     = "পূর্বাভাস";
+"Section_DailySummary"                 = "দৈনিক সংক্ষিপ্ত বিবরণ";
+"ForecastVisibility_TodayFormat" = "আজ, দৃশ্যমানতা হবে %@, এ %d থেকে %d %@. .";
+"ForecastVisibility_OtherFormat" = "উপর %@, সর্বনিম্ন দৃশ্যমানতা হবে %@ এ %d %@এবং সর্বোচ্চ হবে %@ এ %d %@. .";
+"Clarity_Foggy"                        = "ধূসর";
+"Clarity_Hazy"                         = "কুয়াশা";
+"Clarity_Clear"                        = "পরিষ্কার";
+"Clarity_PerfectlyClear"               = "একেবারে পরিষ্কার";
+
+"AboutVisibility_Title" = "দৃশ্যমানতা সম্পর্কে";
+"AboutVisibility_Body" = "দৃশ্যমানতা আপনাকে বোঝায় যে আপনি কত দূরে বিল্ডিং এবং পাহাড়ের মতো বস্তুগুলি পরিষ্কারভাবে দেখতে পারেন। এটি বায়ুর স্বচ্ছতার পরিমাপ এবং সূর্যের আলো বা বাধা উপস্থিতি বিবেচনা করে না। %@ স্পষ্ট বলে মনে করা হয়।";
+
+"PressureForecast_Today" = "চাপ বর্তমানে %@ %@ আজ, গড় চাপ হবে %@ %@, এবং সর্বনিম্ন চাপ হবে %@ %@. .";
+"PressureForecast_Other" = "উপর %@, গড় চাপ হবে %@ %@, এবং সর্বনিম্ন চাপ হবে %@ %@. .";
+"SectionForecast" = "পূর্বাভাস";
+"SectionDailySummary" = "দৈনিক সংক্ষিপ্ত বিবরণ";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "বেস প্ল্যানের সমস্ত বৈশিষ্ট্য";
+"Multi-calendar view" = "একাধিক ক্যালেন্ডার ভিউ";
+"Sync with Google Calendar" = "সঙ্গে সিঙ্ক Google Calendar";
+"Sync meets from Google Meet" = "সিঙ্ক মিটস থেকে Google দেখা";
+
+/* BaseSubscriptionView */
+"Base Plan" = "বেস প্ল্যান";
+"Single-day calendar view" = "এক দিনের ক্যালেন্ডার ভিউ";
+"Multi-day calendar view" = "একাধিক দিনের ক্যালেন্ডার ভিউ";
+"Monthly calendar view" = "মাসিক ক্যালেন্ডার ভিউ";
+"Yearly overview" = "বার্ষিক সারসংক্ষেপ";
+"List view for events" = "ইভেন্টগুলির তালিকা প্রদর্শন";
+"Weather view" = "আবহাওয়া দৃশ্য";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "প্রিমিয়াম প্ল্যান";
+"Sync with Microsoft Calendar" = "সঙ্গে সিঙ্ক Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "সিঙ্ক মিটস থেকে Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "সমতুল্য %@ প্রতি মাসে";
+"%d %@ free" = "%d %@ বিনামূল্যে";
+
+/* SubscriptionListView */
+"Premium Plans" = "প্রিমিয়াম প্ল্যান";
+"You are subscribed to the %@ %@ plan" = "আপনি এই চুক্তির জন্য সাবস্ক্রিপ্ট হয়েছেন %@ %@ পরিকল্পনা";
+"Renews on: %@" = "পুনর্নবীকরণঃ %@";
+"Start Free Trial" = "বিনামূল্যে ট্রায়াল শুরু করুন";
+"Subscribe Now" = "এখন সাবস্ক্রাইব করুন";
+"%d %@ free, then %@%@." = "%d %@ মুক্ত, তারপর %@%@. .";
+"Subscribe for %@%@." = "সাবস্ক্রাইব করুন %@%@. .";
+"Privacy Policy"     = "গোপনীয়তা নীতি";
+"Terms of Service"   = "পরিষেবা শর্তাবলী";
+
+/* SubscriptionCategory */
+"Advanced" = "উন্নত";
+"Advanced Plan" = "উন্নত পরিকল্পনা";
+"All Advanced Plan features" = "সমস্ত উন্নত প্ল্যান বৈশিষ্ট্য";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "আপনার একটি সক্রিয় প্রয়োজন %@ এই বিভাগে প্রবেশের পরিকল্পনা।";
+"Plan Required" = "পরিকল্পনা প্রয়োজন";
+"OK" = "ঠিক আছে";
+
+/* SubscriptionStatus */
+"Base"    = "বেস";
+"Premium" = "প্রিমিয়াম";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "স্বাক্ষরিত %@ %@ পরিকল্পনা।";
+
+/* Label for renewal date */
+"RenewsOn"            = "পুনর্নবীকরণঃ %@";
+
+"Manage Subscription"                   = "সাবস্ক্রিপশন পরিচালনা করুন";
+
+/* Period units */
+"Daily"     = "প্রতিদিন";
+"Weekly"    = "সাপ্তাহিক";
+"Monthly"   = "মাসিক";
+"Yearly"    = "বার্ষিক";
+"Recurring" = "পুনরাবৃত্তি";
+
+/* units */
+"day"   = "দিন";
+"days"  = "দিন";
+"week"  = "সপ্তাহ";
+"weeks" = "সপ্তাহ";
+"month"  = "মাস";
+"months" = "মাস";
+"year"   = "বছর";
+"years"  = "বছর";
+
+/* YearMonthMiniView */
+"weekday.headers" = "এস, এম, টি, ডাব্লু, টি, এফ, এস";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "কিলোমিটার/ঘন্টা";
+"Unit_Speed_mph" = "ঘন্টা";
+"Unit_Distance_km" = "কিলোমিটার";
+"Unit_Distance_mi" = "mi";
+"Unit_Precipitation_mm" = "মিমি";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "এইচপিএ";
+"Unit_Pressure_inHg" = "inHg";
+
+"Your previous purchases have been successfully restored." = "আপনার আগের ক্রয় সফলভাবে পুনরুদ্ধার করা হয়েছে।";
+"No active subscriptions found to restore."                = "কোন সক্রিয় সাবস্ক্রিপশন পুনরুদ্ধার করা পাওয়া যায় নি.";
+"Failed to restore purchases. Please try again later. (%@)" = "ক্রয় পুনরুদ্ধার করতে ব্যর্থ হয়েছে। দয়া করে পরে আবার চেষ্টা করুন।%@)";
+"Restore Purchases"                                        = "ক্রয় পুনরুদ্ধার";
+
+"Ads Free" = "বিজ্ঞাপন বিনামূল্যে";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "ক্যালেন্ডার ও আবহাওয়া";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "ছোট্ট ছবিতে আজকের তারিখ এবং বর্তমান আবহাওয়া দেখানো হয়। মাঝারিটি চাঁদের পর্যায় এবং বাতাস যোগ করে।";
+"Calendar Events" = "ক্যালেন্ডার ইভেন্ট";
+"Shows today's date, current weather, and your next calendar events." = "আজকের তারিখ, বর্তমান আবহাওয়া এবং আপনার পরবর্তী ক্যালেন্ডার ইভেন্ট দেখায়।";
+"No upcoming events" = "কোন আসন্ন ঘটনা নেই";
+"Tomorrow" = "আগামীকাল";
+"Untitled" = "নামহীন";
+"Detail" = "বিস্তারিত";
+"Phase" = "পর্যায়";
+"Weather" = "আবহাওয়া";
+"Select Your Email" = "আপনার ইমেইল নির্বাচন করুন";
+"Confirm" = "নিশ্চিত করুন";
+"Calendar name" = "ক্যালেন্ডারের নাম";
+"Sharing: %@" = "ভাগ করাঃ %@";
+"Loading..." = "লোডিং...";
+"Selected Location" = "নির্বাচিত অবস্থান";
+"Data provided by Apple Weather" = "অ্যাপল মেটার্সের তথ্য";
+"Next" = "পরবর্তী";
+"No details found for the selected location." = "নির্বাচিত স্থানের কোন তথ্য পাওয়া যায়নি।";
+"Could not determine the time zone for the selected location." = "নির্বাচিত স্থানের জন্য সময় অঞ্চল নির্ধারণ করতে পারিনি।";
+"(No Title)" = "(কোন শিরোনাম নেই)";
+"Choose your e-mail" = "আপনার ইমেইল নির্বাচন করুন";
+"It will be treated as your primary address and invitations will not be sent to it." = "এটি আপনার প্রধান ঠিকানা হিসেবে বিবেচিত হবে এবং আমন্ত্রণগুলি সেখানে পাঠানো হবে না।";
+"Invalid URL" = "অবৈধ URL";
+"Rate limit or insufficient permission" = "রেট সীমা বা অযথার্থ অনুমতি";
+"Network error: %@" = "নেটওয়ার্ক ত্রুটিঃ %@";
+"N/A - Selected Tab: %@" = "N/A - নির্বাচিত ট্যাবঃ %@";
+"Enable Notifications" = "বিজ্ঞপ্তি সক্ষম করুন";
+"Event Notifications" = "ইভেন্ট বিজ্ঞপ্তি";
+"Weather Alert Notifications" = "আবহাওয়া সতর্কতা বিজ্ঞপ্তি";
+"Allow notifications so weather alerts can appear." = "বিজ্ঞপ্তিগুলিকে অনুমতি দিন যাতে আবহাওয়া সতর্কতা প্রদর্শিত হতে পারে।";
+"Event alerts are scheduled from your event alert settings." = "ইভেন্টের সতর্কতা আপনার ইভেন্ট সতর্কতা সেটিংস থেকে নির্ধারিত হয়।";
+"Allow notifications so event alerts can appear at the right time." = "বিজ্ঞপ্তিগুলিকে অনুমতি দিন যাতে সঠিক সময়ে ইভেন্টের সতর্কতা প্রদর্শিত হতে পারে।";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "এই অ্যাপ্লিকেশনটির জন্য বিজ্ঞপ্তিগুলি বন্ধ করা হয়েছে। সেগুলি সক্ষম করতে যানঃ সেটিংস -> অ্যাপ্লিকেশন -> Cloud Calendars -> বিজ্ঞপ্তি -> বিজ্ঞপ্তি অনুমোদন করুন।";
+"Promo.WiseEating.name" = "বুদ্ধিমান খাবার ও ফিটনেস প্ল্যানিং";
+"Promo.WiseEating.description" = "স্মার্ট ইটিং হল আপনার বুদ্ধিমান পুষ্টি ও প্রশিক্ষণের জন্য আপনার এআই-চালিত কোচ। এটি আধুনিক পুষ্টি বিজ্ঞানকে ব্যবহারিক সরঞ্জামগুলির সাথে সংযুক্ত করে আপনাকে খাবার পরিকল্পনা করতে, ব্যায়াম ডিজাইন করতে, আপনার সঞ্চয়স্থানের ব্যবস্থাপনা করতে এবং কীভাবে খাদ্য এবং চলাচল আপনার শরীরকে প্রভাবিত করে তা বুঝতে সহায়তা করে।";
+"Promo.StoreFront.name" = "স্টোরফ্রন্ট স্টুডিও";
+"Promo.StoreFront.description" = "স্টোরফ্রন্ট স্টুডিও আইওএস এবং ম্যাকোস বিকাশকারীদের জন্য একটি বিশিষ্ট 3 ডি ডিজাইন পরিবেশ। এটি একটি শক্তিশালী রিচ টেক্সট সম্পাদক সহ উচ্চ-নিষ্ঠতা রিয়েলিটিকিট রেন্ডারিংকে সংযুক্ত করে আপনাকে কাঁচা স্ক্রিনশটগুলিকে পেশাদার, উচ্চ-পরিবর্তনকারী অ্যাপ স্টোর সম্পদগুলিতে রূপান্তর করতে সহায়তা করে।";
+"Promo.ReelStudio.name" = "রিল স্টুডিও";
+"Promo.ReelStudio.description" = "রিল স্টুডিও আইওএস এবং ম্যাকোসের জন্য স্রষ্টা-গ্রেড স্ক্রিন রেকর্ডিং স্টুডিও। একই সময়ে আপনার স্ক্রিন এবং ক্যামেরা ক্যাপচার করুন, মাইক্রো + সিস্টেম অডিও নিয়ন্ত্রণ করুন এবং টিউটোরিয়াল, ওয়াকথ্রু এবং পণ্য ডেমোগুলির জন্য পরিষ্কার এমপি 4 এক্সপোর্ট করুন। আইওএসে, আপনি অ্যাপ্লিকেশনটির ভিতরে একটি ভিডিও খেলতে এবং প্রতিক্রিয়া শৈলী এবং উপস্থাপকের নেতৃত্বাধীন সামগ্রী জন্য আপনার ক্যামেরার সাথে এটি রেকর্ড করতে পারেন।";
+"Promo.MarketBrief.name" = "মার্কেট ব্রিফ এআই";
+"Promo.MarketBrief.description" = "মার্কেটব্রিফ এআই আপনাকে ডিভাইস-অন বিশ্লেষণ এবং শব্দ থেকে সংকেত পৃথক করার জন্য ডিজাইন করা একটি মাল্টি-এজেন্ট ওয়ার্কফ্লো দিয়ে বাজার চলাচল বুঝতে সহায়তা করে। রিয়েল-টাইম মূল্যের তথ্য ট্র্যাক করুন, নিয়ন্ত্রন শৈলীর সম্ভাবনার অন্বেষণ করুন এবং আপনার সিদ্ধান্ত গ্রহণের জন্য পরিষ্কার ড্যাশবোর্ড এবং চার্ট ব্যবহার করুন। গোপনীয়তা-প্রথমঃ আপনার কনফিগারেশনগুলি আপনার ডিভাইসে থাকে।";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "অ্যাপ্লিকেশন";
+"Plan" = "পরিকল্পনা";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "তুষারপাত";
+"WeatherCondition.blowingDust" = "ধুলো";
+"WeatherCondition.blowingSnow" = "বরফ ঝড়";
+"WeatherCondition.breezy" = "ব্রেজি";
+"WeatherCondition.clear" = "পরিষ্কার";
+"WeatherCondition.cloudy" = "মেঘলা";
+"WeatherCondition.drizzle" = "ড্রিজল";
+"WeatherCondition.flurries" = "ফ্লুর";
+"WeatherCondition.foggy" = "কুয়াশা";
+"WeatherCondition.freezingDrizzle" = "হিমায়িত ড্রাইজেল";
+"WeatherCondition.freezingRain" = "হিমায়িত বৃষ্টি";
+"WeatherCondition.frigid" = "ঠান্ডা";
+"WeatherCondition.hail" = "হ্যালো";
+"WeatherCondition.haze" = "কুয়াশা";
+"WeatherCondition.heavyRain" = "ভারী বৃষ্টি";
+"WeatherCondition.heavySnow" = "ভারী তুষারপাত";
+"WeatherCondition.hot" = "গরম";
+"WeatherCondition.hurricane" = "ঘূর্ণিঝড়";
+"WeatherCondition.isolatedThunderstorms" = "বিচ্ছিন্ন ঝড়";
+"WeatherCondition.mostlyClear" = "বেশিরভাগই পরিষ্কার";
+"WeatherCondition.mostlyCloudy" = "বেশিরভাগ মেঘলা";
+"WeatherCondition.partlyCloudy" = "আংশিকভাবে মেঘলা";
+"WeatherCondition.rain" = "বৃষ্টি";
+"WeatherCondition.scatteredThunderstorms" = "ছড়িয়ে থাকা ঝড়";
+"WeatherCondition.sleet" = "স্লিট";
+"WeatherCondition.smoky" = "ধূমপান";
+"WeatherCondition.snow" = "তুষারপাত";
+"WeatherCondition.strongStorms" = "তীব্র ঝড়";
+"WeatherCondition.sunFlurries" = "সান ফ্লুরস";
+"WeatherCondition.sunShowers" = "সূর্য ঝরনা";
+"WeatherCondition.thunderstorms" = "ঝড়";
+"WeatherCondition.tropicalStorm" = "উষ্ণায়ন ঝড়";
+"WeatherCondition.windy" = "বায়ু";
+"WeatherCondition.wintryMix" = "শীতকালীন মিশ্রণ";
+"MoonPhase.new" = "নতুন চাঁদ";
+"MoonPhase.waxingCrescent" = "মোমবাতি Crescent";
+"MoonPhase.firstQuarter" = "প্রথম ত্রৈমাসিক";
+"MoonPhase.waxingGibbous" = "ওয়াকিং গিব্বস";
+"MoonPhase.full" = "পূর্ণ চাঁদ";
+"MoonPhase.waningGibbous" = "হ্রাস পাচ্ছে গিব্বস";
+"MoonPhase.lastQuarter" = "শেষ ত্রৈমাসিক";
+"MoonPhase.waningCrescent" = "মন্থর হাতি";
+"WeatherAlert.Preview.Tornado" = "টর্নেডো সতর্কতাঃ অবিলম্বে নিরাপদ আশ্রয় নিন।";
+"WeatherAlert.Preview.Source" = "আবহাওয়া পরিষেবা";
+"WeatherAlert.Preview.Region" = "পূর্বাভাস অঞ্চল";
+"Saved Regions" = "সংরক্ষিত অঞ্চল";
+"Current Location" = "বর্তমান অবস্থান";
+"Reorder Region" = "পুনর্গঠন অঞ্চল";
+"WeatherAlert.Preview.HighTemperature" = "উচ্চ তাপমাত্রার জন্য হলুদ সতর্কতা";
+"Illumination" = "আলোকসজ্জা";
+"Shared event" = "ভাগ করা অনুষ্ঠান";
+"Add to Calendar" = "ক্যালেন্ডারে যোগ করুন";
+"Event added" = "যোগ করা ঘটনা";
+"Already in your calendar" = "তোমার ক্যালেন্ডারে আছে";
+"Unable to add event" = "ইভেন্ট যোগ করা যায়নি";
+"Calendar Access Required" = "ক্যালেন্ডার অ্যাক্সেস প্রয়োজন";
+"Allow calendar access in Settings to add this event." = "এই ইভেন্ট যোগ করার জন্য সেটিংস থেকে ক্যালেন্ডার অ্যাক্সেস অনুমতি দিন.";
+"Open Settings" = "খোলা সেটিংস";
+"Adding…" = "যোগ করা হচ্ছে...";
+"Couldn’t find a writable calendar." = "লিখতে পারিনি ক্যালেন্ডার।";
+"Please try again." = "দয়া করে আবার চেষ্টা করুন।";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "পরিকল্পনা পরিবর্তন করুন";
+"Current Plan" = "বর্তমান পরিকল্পনা";
+"You can change your plan or billing period at any time." = "আপনি যে কোনো সময় আপনার পরিকল্পনা বা বিলিংয়ের সময়সীমা পরিবর্তন করতে পারেন।";
+"Invites" = "আমন্ত্রণ";
+"Cancelled" = "বাতিল করা হয়েছে";
+"Shared by me" = "আমার সাথে ভাগ করে নেওয়া";
+"Shared with me" = "আমার সাথে ভাগ করে নেওয়া";
+"No shared events yet." = "এখনো কোনো ভাগ করা ঘটনা নেই।";
+"No one has shared an event with you yet." = "কেউ তোমার সাথে এখনো কোনো ইভেন্ট শেয়ার করেনি।";
+"Events you send from the share sheet appear here." = "শেয়ার শীট থেকে আপনি যে ঘটনা পাঠান তা এখানে উপস্থিত হয়।";
+"Invitations go to" = "আমন্ত্রণগুলি";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "আপনি যে আমন্ত্রণ গ্রহণ করেন তা এখানে যোগ করা হয় এবং আপডেট করা হয়। যদি প্রেরক একটি কল করে, এটি তার মধ্য দিয়ে একটি লাইন দিয়ে দৃশ্যমান থাকে।";
+"Sample shared event" = "নমুনা ভাগ করা ইভেন্ট";
+"Sofia" = "সোফিয়া";
+"Team lunch" = "টিম লাঞ্চ";
+
+/* Booking */
+"Booking page" = "বুকিং পাতা";
+"Your name" = "তোমার নাম";
+"Display name" = "প্রদর্শন নাম";
+"Source calendar" = "উৎস ক্যালেন্ডার";
+"Booked meetings land here, and your busy times here block new bookings." = "এখানে ভাড়া করা মিটিং আছে, আর আপনার ব্যস্ত সময়গুলো এখানে নতুন ভাড়া বন্ধ করে দেয়।";
+"Meeting types" = "বৈঠকের ধরন";
+"%lld min" = "%lld মিনিট";
+"Add meeting type" = "মিটিং টাইপ যোগ করুন";
+"Weekly hours" = "সাপ্তাহিক ঘন্টা";
+"Save booking page" = "বুকিং পাতা সংরক্ষণ করুন";
+"Your booking page is live" = "আপনার বুকিং পেজ লাইভ";
+"Share this link — anyone can book one of your open times." = "এই লিঙ্কটি শেয়ার করুন  যে কেউ আপনার খোলা সময়গুলির একটি বুক করতে পারেন।";
+"Share link" = "শেয়ার লিঙ্ক";
+"Edit settings" = "সেটিংস সম্পাদনা করুন";
+"Add at least one meeting type." = "অন্তত একটি মিটিং টাইপ যোগ করুন।";
+"Turn on at least one day with valid hours." = "অন্তত একটি দিন চালু করুন, যা সময়সীমা অনুযায়ী কার্যকর হবে।";
+"Set up a booking page" = "একটি বুকিং পেজ সেট আপ করুন";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "আপনার খোলা সময়গুলোকে বুক করুন, আপনার পছন্দের ক্যালেন্ডারে মিটিংয়ের সময়গুলো থাকুক এবং ব্যস্ত সময়গুলোতে আপনার স্লটগুলো বিনামূল্যে রাখুন।";
+"Approve on this device" = "এই ডিভাইসে অনুমোদন";
+"Set up web booking" = "ওয়েব বুকিং সেট আপ করুন";
+"You're all set" = "তুমি সব ঠিক করে রেখেছ";
+"Couldn't approve" = "অনুমোদন দিতে পারিনি";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "আপনার ক্যালেন্ডারে এই ব্রাউজারটি লিঙ্ক করার অনুমোদন দিন যাতে আপনি ওয়েবের একটি বুকিং পৃষ্ঠা তৈরি করতে পারেন  বিনামূল্যে, কারণ আপনার কাছে অ্যাপ্লিকেশন রয়েছে।";
+"Linking…" = "লিঙ্কিং...";
+"Head back to your browser — it's ready to finish setting up your booking page." = "আপনার ব্রাউজারে ফিরে যান  আপনার বুকিং পৃষ্ঠা সেট আপ করার জন্য প্রস্তুত।";
+"The code may have expired. Reopen the QR on the web and try again." = "কোডটি মেয়াদ শেষ হতে পারে। QR ওয়েবে গিয়ে আবার চেষ্টা করুন।";
+"Read-only shared event" = "শুধুমাত্র পাঠযোগ্য শেয়ার ইভেন্ট";
+"Remove from My Calendar" = "আমার ক্যালেন্ডার থেকে সরিয়ে ফেলুন";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars অ্যাকাউন্ট";
+"App Clip sharing account" = "App Clip শেয়ারিং অ্যাকাউন্ট";
+"Required for synced App Clip events and recovery after reinstalling." = "সিঙ্ক করার জন্য প্রয়োজনীয় App Clip পুনরায় ইনস্টল করার পর ঘটনা এবং পুনরুদ্ধার।";
+"Continue with Google" = "সাথে চালিয়ে যান Google";
+"Sign Out" = "সাইন আউট করুন";
+"Signing in…" = "সাইন ইন করা...";
+"Sign In" = "সাইন ইন করুন";
+"Sign in to continue" = "চালিয়ে যেতে সাইন ইন করুন";
+"Your account keeps this shared event recoverable after reinstalling the app." = "আপনার অ্যাকাউন্ট অ্যাপ্লিকেশন পুনরায় ইনস্টল করার পরে এই ভাগ করা ঘটনা পুনরুদ্ধারযোগ্য রাখে.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "এই অ্যাকাউন্টের মালিক App Clip এটি ক্যালেন্ডার প্রদানকারীর লগইন থেকে পৃথক।";
+"Sign in with Google or Apple to share and receive synced events." = "সাইন ইন করুন Google অথবা অ্যাপল শেয়ার এবং সিঙ্ক ইভেন্ট গ্রহণ করতে.";
+"Apple did not return an identity token." = "অ্যাপল কোনো পরিচয়পত্র ফেরত দেয়নি।";
+"Unable to share event" = "ইভেন্ট শেয়ার করতে অক্ষম";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "ঘটনা আপনার জন্য সংরক্ষণ করা যাবে না Cloud Calendars অ্যাকাউন্ট, আবার চেষ্টা করুন।";
+"Google" = "Google";
+"Apple" = "আপেল";
+"Microsoft" = "Microsoft";
+"Connect" = "সংযুক্ত করুন";
+"Connected" = "সংযুক্ত";
+"Sign in with at least one account" = "কমপক্ষে একটি অ্যাকাউন্ট দিয়ে লগইন করুন";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "সংযুক্ত করুন Google, আপেল, Microsoftপ্রতিটি সংযুক্ত পরিচয় একই ভাগ করা ইভেন্ট অ্যাকাউন্ট খুলবে।";
+"A Premium subscription is required to connect Microsoft." = "সংযোগের জন্য প্রিমিয়াম সাবস্ক্রিপশন প্রয়োজন Microsoft. .";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "এই পরিচয় শুধুমাত্র জন্য App Clip ক্যালেন্ডার প্রদানকারীর লগইন এবং সিঙ্ক থেকে পৃথক থাকে।";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "সাইন ইন করুন Google, আপেল, অথবা Microsoft সিঙ্কড ইভেন্ট শেয়ার এবং গ্রহণ করতে।";
+"Share a verified email during sign-in to use synced events and invitations." = "সাইন-ইন করার সময় একটি যাচাই করা ইমেল শেয়ার করুন যাতে সিঙ্কযুক্ত ইভেন্ট এবং আমন্ত্রণগুলি ব্যবহার করা যায়।";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "লগইন করার সময় আপনাকে একটি নিশ্চিত ইমেইল শেয়ার করতে হবে। লোকেরা আপনাকে ক্যালেন্ডার এবং ইভেন্টগুলিতে আমন্ত্রণ জানাতে এবং খুঁজে পেতে এটি ব্যবহার করবে।";
+"Manage connected accounts" = "সংযুক্ত অ্যাকাউন্ট পরিচালনা";
+"Apple, Google, and Microsoft" = "আপেল, Googleএবং Microsoft";
+"Open account sign-in" = "খোলা অ্যাকাউন্ট সাইন ইন";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "মালিকের দেওয়া অ্যাক্সেস ভাগ করে নেওয়ার, পুনরুদ্ধার করার বা ব্যবহার করার জন্য একটি যাচাইকৃত ইমেল প্রয়োজন।";
+"Accept" = "গ্রহণ করুন";
+"Access removed" = "অ্যাক্সেস অপসারণ";
+"Add a Mail account on this device, then try again." = "এই ডিভাইসে একটি মেইল অ্যাকাউন্ট যোগ করুন, তারপর আবার চেষ্টা করুন।";
+"Add a writable calendar before moving this event." = "এই ইভেন্টটি সরানোর আগে একটি লিখিত ক্যালেন্ডার যোগ করুন।";
+"Add everyone who should receive this calendar and choose their access." = "এই ক্যালেন্ডারটি যারা পাবেন তাদের যোগ করুন এবং তাদের অ্যাক্সেস নির্বাচন করুন।";
+"Add everyone who should receive this event and choose their access." = "এই ইভেন্টটি গ্রহণ করা উচিত যারা যোগ করুন এবং তাদের অ্যাক্সেস নির্বাচন করুন.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "সাভের পরে, %@ তাদের স্থানীয় কপি শুধুমাত্র পাঠযোগ্য থাকবে, এর মধ্য দিয়ে একটি লাইন থাকবে।";
+"Anonymous recipient" = "অজানা প্রাপক";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "অ্যাপল ইমেইল রিটার্ন করেনি. সেটিংস এ অ্যাপল আইডি ব্যবহার বন্ধ করুন Cloud Calendars, তারপর আবার সংযোগ করুন এবং আমার ইমেইল শেয়ার করুন নির্বাচন করুন.";
+"Calendar invitation" = "ক্যালেন্ডার আমন্ত্রণ";
+"Cancel for Everyone" = "সবার জন্য বাতিল";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "পাঠক, লেখক বা মালিক নির্বাচন করুন. মালিকরা এই ইভেন্টটি ভাগ করে নিতে এবং অ্যাক্সেস পরিচালনা করতে পারেন।";
+"Choose how to share this synced event." = "এই সিঙ্কড ইভেন্টটি কিভাবে শেয়ার করবেন তা নির্বাচন করুন।";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars এই ডিভাইসে সেশন সংরক্ষণ করতে পারিনি. দয়া করে আবার চেষ্টা করুন.";
+"Cloud Calendars user" = "Cloud Calendars ব্যবহারকারী";
+"Could not add: %@." = "যোগ করতে পারিনিঃ %@. .";
+"Custom on this device" = "এই ডিভাইসে কাস্টম";
+"Decline" = "হ্রাস";
+"Default from creator" = "স্রষ্টা থেকে ডিফল্ট";
+"Deleted by owner" = "মালিক কর্তৃক মুছে ফেলা";
+"Each email address can appear only once." = "প্রতিটি ইমেইল ঠিকানা শুধুমাত্র একবার প্রদর্শিত হতে পারে।";
+"Enter a valid email address for %@." = "একটি বৈধ ইমেইল ঠিকানা লিখুন %@. .";
+"From %@" = "থেকে %@";
+"Invitation pending" = "আমন্ত্রণের অপেক্ষায়";
+"Loading shared calendars…" = "ভাগ করা ক্যালেন্ডার লোড করা...";
+"Mail is not configured" = "মেইল কনফিগার করা হয়নি";
+"Manage calendar sharing" = "ক্যালেন্ডার শেয়ারিং পরিচালনা করুন";
+"New calendar invitation" = "নতুন ক্যালেন্ডার আমন্ত্রণ";
+"New event invitation" = "নতুন অনুষ্ঠানের আমন্ত্রণ";
+"No calendars have been shared with you yet." = "এখনো আপনার সাথে কোন ক্যালেন্ডার শেয়ার করা হয়নি।";
+"Open a shared event or calendar" = "একটি শেয়ার ইভেন্ট বা ক্যালেন্ডার খুলুন";
+"Open this event with Cloud Calendars:\n\n%@" = "এই ইভেন্টটি দিয়ে খুলুন Cloud Calendars:\n\n%@";
+"Original creator" = "মূল স্রষ্টা";
+"People" = "মানুষ";
+"People appear here after they add the event." = "ঘটনা যোগ করার পর মানুষ এখানে উপস্থিত হয়।";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "একটি স্থান Cloud Calendars ঘটনা বা ক্যালেন্ডার QR ফ্রেমের ভেতর কোড।";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "পাঠক দেখতে এবং সিঙ্ক করতে পারেন। লেখক সম্পাদনা করতে পারেন। মালিক আমন্ত্রিত ইমেলের সাথে লগইন করার পরে অ্যাক্সেস ভাগ করে নিতে এবং পরিচালনা করতে পারেন।";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "পাঠক দেখতে পারেন. লেখক ইভেন্ট সম্পাদনা করতে পারেন. মালিক ক্যালেন্ডার ভাগ করতে পারেন এবং অ্যাক্সেস পরিচালনা করতে পারেন.";
+"Remove" = "অপসারণ";
+"Remove Shared Calendar?" = "শেয়ার্ড ক্যালেন্ডার মুছে ফেলুন?";
+"Remove from My Calendars" = "আমার ক্যালেন্ডার থেকে সরিয়ে ফেলুন";
+"Resend" = "পুনরায় পাঠান";
+"Scan QR Code" = "স্ক্যান QR কোড";
+"Scan to open this calendar" = "এই ক্যালেন্ডারটি খুলতে স্ক্যান করুন";
+"Scan to open this event" = "এই ইভেন্টটি খুলতে স্ক্যান করুন";
+"Server returned %lld: %@" = "সার্ভার ফিরে %lld: %@";
+"Shared calendar" = "ভাগ করা ক্যালেন্ডার";
+"Shared calendar information" = "শেয়ার ক্যালেন্ডার তথ্য";
+"Shared event: %@" = "ভাগ করা অনুষ্ঠানঃ %@";
+"Sign in or manage accounts" = "অ্যাকাউন্টগুলিতে লগ ইন করুন বা পরিচালনা করুন";
+"Sign in to manage event access." = "ইভেন্ট অ্যাক্সেস পরিচালনা করতে লগইন করুন।";
+"Sign in to save event access." = "ইভেন্ট অ্যাক্সেস সংরক্ষণ করতে লগইন করুন।";
+"Sign in to see calendars shared with you." = "আপনার সাথে শেয়ার করা ক্যালেন্ডার দেখতে লগইন করুন।";
+"Sign-in couldn’t open. Please try again." = "সাইন ইন খুলতে পারেনি, আবার চেষ্টা করুন।";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "এই ক্যালেন্ডারটি শেয়ার করা বন্ধ করুন %@Save এর পরে, তাদের হিমায়িত কপি এবং এর ঘটনা তাদের মধ্য দিয়ে একটি লাইন দিয়ে দৃশ্যমান থাকবে।";
+"The calendar and its events will be removed only from this device." = "এই ডিভাইস থেকে শুধুমাত্র ক্যালেন্ডার এবং এর ঘটনা সরানো হবে।";
+"The provider didn’t return the information required to sign in." = "সরবরাহকারী সাইন ইন করার জন্য প্রয়োজনীয় তথ্য ফেরত দেয়নি।";
+"The provider returned an invalid response." = "সরবরাহকারী একটি অবৈধ প্রতিক্রিয়া ফিরে।";
+"The sign-in response couldn’t be verified. Please try again." = "সাইন-ইন রেসপন্সটি যাচাই করা যায়নি. দয়া করে আবার চেষ্টা করুন।";
+"The sign-in response was invalid. Please try again." = "সাইন ইন রিসপন্সটি অবৈধ ছিল, দয়া করে আবার চেষ্টা করুন।";
+"This changes only your local copy. Shared event details stay read-only." = "এতে শুধুমাত্র আপনার স্থানীয় কপি পরিবর্তন হবে। ভাগ করা ইভেন্টের বিবরণ শুধুমাত্র পাঠযোগ্য থাকবে।";
+"This color changes only on this device." = "এই ডিভাইসে শুধুমাত্র এই রঙ পরিবর্তন হয়।";
+"This QR code does not contain a Cloud Calendars event or calendar." = "এইটা QR কোডটিতে কোন Cloud Calendars ঘটনা বা ক্যালেন্ডার।";
+"This QR code does not contain a Cloud Calendars share." = "এইটা QR কোডটিতে কোন Cloud Calendars ভাগ করে নেবেন।";
+"This removes only your local copy. Other people keep access." = "এটি শুধুমাত্র আপনার স্থানীয় কপি মুছে ফেলবে। অন্যরা অ্যাক্সেস রাখবে।";
+"Try again" = "আবার চেষ্টা করো";
+"Unable to Update Calendar" = "ক্যালেন্ডার আপডেট করা যায়নি";
+"Unable to add calendar" = "ক্যালেন্ডার যোগ করা যায়নি";
+"Unreadable response from the server" = "সার্ভার থেকে অ-পঠনযোগ্য প্রতিক্রিয়া";
+"Use Apple, Google, or Microsoft." = "অ্যাপল ব্যবহার করুন, Googleঅথবা Microsoft. .";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "একটি উপলব্ধ ক্যামেরা সঙ্গে একটি ডিভাইস ব্যবহার করে একটি স্ক্যান Cloud Calendars QR কোড।";
+"You can add up to 50 people at once." = "আপনি একসাথে ৫০ জন পর্যন্ত লোককে যোগ করতে পারেন।";
+"You can send up to 50 invitations at once." = "আপনি একসাথে ৫০ টি পর্যন্ত আমন্ত্রণ পাঠাতে পারেন।";
+"%lld connected account" = "%lld সংযুক্ত অ্যাকাউন্ট";
+"%lld connected accounts" = "%lld সংযুক্ত অ্যাকাউন্ট";
+"%lld pending invitation" = "%lld আমন্ত্রণের জন্য অপেক্ষা";
+"%lld pending invitations" = "%lld প্রতীক্ষিত আমন্ত্রণ";
+"%lld upcoming event" = "%lld আসন্ন ঘটনা";
+"%lld upcoming events" = "%lld আসন্ন ঘটনা";
+"%@ invited you to %@" = "%@ আপনাকে আমন্ত্রণ জানায় %@";

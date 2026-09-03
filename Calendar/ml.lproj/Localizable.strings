@@ -1,0 +1,951 @@
+/* RequestEmailView */
+"%lld event" = "%lld സംഭവം";
+"%lld events" = "%lld സംഭവങ്ങള്";
+"Share Pop-up" = "പങ്കിടുക പോപ്പ് അപ്പ്";
+"Would you like to share this event?" = "ഈ സംഭവം പങ്കുവെക്കാൻ താല്പര്യം ഉണ്ടോ?";
+"Don't ask again" = "വീണ്ടും ചോദിക്കണ്ട";
+"No email was provided." = "ഇമെയിൽ ഒന്നും നൽകിയിട്ടില്ല.";
+"Please enter a valid email to continue." = "തുടരാന് സാധുവായ ഒരു ഇ-മെയിൽ നല് കുക.";
+"Your email" = "നിങ്ങളുടെ ഇമെയിൽ";
+"Save" = "സംരക്ഷിക്കുക";
+"Login" = "ലോഗിൻ";
+"Logout" = "ലോഗോ ഔട്ട്";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "കലണ്ടറുകൾ";
+"Inbox" = "ഇൻബോക്സ്";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "മറ്റു";
+"Google calendars" = "Google calendarസ";
+"No synced Google calendars yet." = "സിൻക്രൊസിഡില്ല Google calendarഅത് ഇതുവരെ സംഭവിച്ചിട്ടില്ല.";
+"Microsoft calendars" = "Microsoft calendarസ";
+"No synced Microsoft calendars yet." = "സിൻക്രൊസിഡില്ല Microsoft calendarഅത് ഇതുവരെ സംഭവിച്ചിട്ടില്ല.";
+"Sign out" = "ഒപ്പിടുക";
+"Add iCloud Calendar" = "ചേർക്കുക iCloud കലണ്ടർ";
+"Share calendars with iCloud Calendar" = "കലണ്ടറുകൾ പങ്കിടുക iCloud കലണ്ടർ";
+"Sign in with Google" = "സൈൻ ഇൻ ചെയ്യുക Google";
+"Sign in with Microsoft" = "സൈൻ ഇൻ ചെയ്യുക Microsoft";
+"Deselect All" = "എല്ലാം ഒഴിവാക്കുക";
+"Select All" = "എല്ലാം തിരഞ്ഞെടുക്കുക";
+"No Email" = "ഇമെയിൽ ഇല്ല";
+"Add Google Calendar" = "ചേർക്കുക Google Calendar";
+
+/* AddCalendarView */
+"Calendar Name" = "കലണ്ടർ നാമം";
+"Account" = "അക്കൌണ്ട്";
+"COLOR" = "നിറം";
+"NOTIFICATIONS" = "അറിയിപ്പുകൾ";
+"Event Alerts" = "സംഭവം സംബന്ധിച്ച മുന്നറിയിപ്പുകൾ";
+"Allow events on this calendar to display alerts." = "ഈ കലണ്ടറിലെ സംഭവങ്ങള് ക്ക് മുന്നറിയിപ്പുകള് കാണിക്കാന് അനുവദിക്കുക.";
+"Add Calendar" = "കലണ്ടർ ചേർക്കുക";
+
+/* Colors */
+"Red" = "ചുവന്ന";
+"Orange" = "ഓറഞ്ച്";
+"Yellow" = "മഞ്ഞ";
+"Green" = "പച്ച";
+"Blue" = "നീല";
+"Purple" = "പർപ്പിൾ";
+"Brown" = "ചാരനിറം";
+"Custom" = "കസ്റ്റംസ്";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "കലണ്ടർ നിറം";
+"Custom..." = "ആചാരപരമായ...";
+
+/* EditCalendarView */
+"Edit Calendar" = "കലണ്ടർ തിരുത്തുക";
+"Delete Calendar" = "കലണ്ടർ ഇല്ലാതാക്കുക";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "പങ്കിടൽ ക്രമീകരണങ്ങൾ ലോഡുചെയ്യുന്നു...";
+"Shared with these users" = "ഈ ഉപയോക്താക്കളുമായി പങ്കുവെക്കുക";
+"Add New Email" = "പുതിയ ഇമെയിൽ ചേർക്കുക";
+"Email to share" = "പങ്കുവയ്ക്കുന്ന ഇമെയിൽ";
+"Permission:" = "അനുമതി:";
+"Add" = "ചേർക്കുക";
+"Sharing:" = "പങ്കിടൽഃ";
+"Done" = "പൂർത്തിയായി";
+
+"Error loading: %@" = "പിശക് ലോഡ് ചെയ്യൽഃ %@";
+"Error adding: %@" = "ചേർക്കുന്നതിൽ പിശക്: %@";
+"Error deleting: %@" = "പിശക് നീക്കംചെയ്യൽഃ %@";
+"Error updating: %@" = "അപ്ഡേറ്റ് ചെയ്തതിൽ പിശക്: %@";
+"Error re-inviting (delete): %@" = "പിശക് വീണ്ടും ക്ഷണിക്കുന്നു (ഇത് ഇല്ലാതാക്കുക): %@";
+"Error re-inviting (insert): %@" = "പിശക് വീണ്ടും ക്ഷണിക്കുന്നു (ചേർക്കുക): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "വായനക്കാരൻ";
+"Writer" = "എഴുത്തുകാരൻ";
+"Owner"  = "ഉടമസ്ഥൻ";
+
+/* MonthCalendarView */
+"Day View" = "പകല് കാഴ്ച";
+"This is a repeating event." = "ഇത് ആവർത്തിക്കുന്ന സംഭവമാണ്.";
+"Save for This Event Only" = "ഈ സംഭവത്തിനു മാത്രം";
+"Save for Future Events" = "ഭാവി സംഭവങ്ങൾക്കായി സംരക്ഷിക്കുക";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "സൂര്യൻ";
+"Mon" = "മണ്";
+"Tue" = "ടൂ";
+"Wed" = "വിവാഹിതരായി";
+"Thu" = "ഥു";
+"Fri" = "ഫ്രൈ";
+"Sat" = "സാന്ത്";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "അടുത്തു";
+
+/* AllEventsListView */
+"No calendar access." = "കലണ്ടറിലേക്ക് പ്രവേശനം ഇല്ല.";
+
+/* EventRowView */
+"Ends" = "അവസാനങ്ങൾ";
+
+/* SearchEventRowView */
+"No Title" = "തലക്കെട്ട് ഇല്ല";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "യോഗത്തിൽ പങ്കെടുക്കുക";
+"Edit" = "പരിഷ്കരിക്കുക";
+"Duplicate" = "ഇരട്ട";
+"Delete" = "ഇല്ലാതാക്കുക";
+"Share" = "പങ്കിടുക";
+"Add to Google Meet" = "ചേർക്കുക Google കണ്ടുമുട്ടുക";
+"Add to Microsoft Teams" = "ചേർക്കുക Microsoft Teams";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "തിരഞ്ഞെടുത്ത പരിധി ഇല്ല";
+"all-day" = "ദിവസം മുഴുവനും";
+"Search events..." = "തിരയൽ സംഭവങ്ങൾ...";
+"Day" = "ദിവസം";
+"MultiDay" = "ഒന്നിലധികം ദിവസങ്ങൾ";
+"Month" = "മാസം";
+"Year" = "വർഷം";
+"List" = "പട്ടിക";
+"MultiCalendar" = "മൾട്ടി കലണ്ടർ";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "പുതിയ സംഭവം";
+"All-day event" = "ദിവസം മുഴുവന് നടക്കുന്ന പരിപാടി";
+"Recurring Event" = "ആവർത്തിക്കുന്ന സംഭവം";
+"This event is part of a series. Update which events?" = "ഈ സംഭവം ഒരു പരമ്പരയുടെ ഭാഗമാണ്. ഏത് സംഭവങ്ങളാണ് അപ്ഡേറ്റ് ചെയ്യുന്നത്?";
+"This Event Only" = "ഈ സംഭവം മാത്രം";
+"All Future Events" = "ഭാവിയിലെ എല്ലാ സംഭവങ്ങളും";
+"Cancel" = "റദ്ദാക്കുക";
+
+/* DraggableMenuView */
+"Calendar" = "കലണ്ടർ";
+"Subscriptions" = "സബ്സ്ക്രിപ്ഷനുകൾ";
+"Settings" = "ക്രമീകരണങ്ങൾ";
+"Sharing" = "പങ്കിടൽ";
+"Live" = "ജീവിക്കുക";
+"Stop" = "നിർത്തുക";
+"Calendar Live Activity" = "കലണ്ടർ തത്സമയ പ്രവർത്തനം";
+"Get" = "പോകൂ";
+"Color" = "നിറം";
+"Search for a city…" = "ഒരു നഗരം തേടുക.";
+"No directions" = "മാർഗ്ഗനിർദ്ദേശം ഇല്ല";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "സ്ഥലം പ്രവേശനം നിഷേധിച്ചു. ക്രമീകരണങ്ങളിൽ ഒരു നഗരം തിരയുക അല്ലെങ്കിൽ പ്രവേശനം അനുവദിക്കുക.";
+"Cannot refresh. Location unknown." = "അപ്ഡേറ്റ് ചെയ്യാൻ പറ്റുന്നില്ല.";
+"10-DAY FORECAST" = "പത്തുദിവസത്തെ പ്രവചനം";
+"HighLowLabelFormat" = "എച്ച്:%d° L:%d°";
+"tomorrow" = "നാളെ";
+"on_day" = "ല് %@";
+"in_days" = "യിൽ %d ദിവസങ്ങൾ";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "പുതിയ സംഭവം";
+
+/* Search placeholder */
+"Search for a city..." = "ഒരു നഗരം തേടുക.";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "ഒരു കലണ്ടർ ഇവന്റ് വേഗത്തിൽ ചേര് ക്കുന്നതിന് ഒരു മണിക്കൂറില് ടാപ്പുചെയ്യുക.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "തോന്നുന്നതു പോലെ";
+"similar_to_actual_temp" = "യഥാർത്ഥ താപനിലയ്ക്ക് സമാനമാണ്.";
+"wind_cooler_feel" = "കാറ്റ് അത് തണുപ്പിച്ചതാക്കുന്നു.";
+"humidity_warmer_feel" = "ഈർപ്പം അതിനെ ചൂടാക്കുന്നു.";
+
+/* HumidityCard */
+"HUMIDITY" = "ആർദ്രത";
+"The dew point is %d° right now." = "മണൽ പോയിന്റ് %dഇപ്പോൾ തന്നെ.";
+"dewPoint.current" = "മണൽ പോയിന്റ് %dഇപ്പോൾ തന്നെ.";
+
+/* MoonCard */
+"MOON PHASE" = "ചന്ദ്രന്റെ ഘട്ടം";
+"Moonrise" = "ചന്ദ്രന്റെ ഉദയം";
+"Moonset" = "ചന്ദ്രൻ";
+"Next %@" = "അടുത്തത് %@";
+"Data unavailable" = "ഡാറ്റ ലഭ്യമല്ല";
+"%d day" = "%d ദിവസം";
+"%d days" = "%d ദിവസങ്ങൾ";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "പ്രീസിപ്പിറ്റേഷൻ";
+"PRECIPITATION_CARD_TODAY_LABEL" = "ഇന്ന്";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "അടുത്തതായി പ്രതീക്ഷിക്കുന്നത് %1$.0f %2$@ %3$@. ."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "അധികം വൈകാതെ മഴ പ്രതീക്ഷിക്കപ്പെടില്ല.";
+
+/* PressureCard */
+"PRESSURE" = "സമ്മർദ്ദം";
+"hPa" = "എച്ച്പിഎ";
+
+/* SunsetCard */
+"SUNRISE" = "സൂര്യോദയം";
+"Sunrise: %@" = "സൂര്യോദയം: %@";
+"Sunset: %@" = "സൂര്യാസ്തമയം: %@";
+"Sunrise" = "സൂര്യോദയം";
+"Sunset" = "സൂര്യാസ്തമയം";
+
+
+"Sunrise and Sunset" = "സൂര്യോദയവും സൂര്യാസ്തമയവും";
+"First Light" = "ആദ്യ വെളിച്ചം";
+"Solar Noon" = "സോളാർ ഉച്ചഭക്ഷണം";
+"Last Light" = "അവസാനത്തെ വെളിച്ചം";
+"Total Daylight" = "മൊത്തം പകല് വെളിച്ചം";
+
+/* UVIndexCard */
+"UV INDEX" = "യുവി ഇൻഡെക്സ്";
+"Low" = "താഴ്ന്ന നില";
+"Moderate" = "മിതമായ അളവിൽ";
+"High" = "ഉയരം";
+"Very High" = "വളരെ ഉയരമുള്ള";
+"Extreme" = "അങ്ങേയറ്റത്തെ";
+
+/* VisibilityCard */
+"VISIBILITY" = "ദൃശ്യപരത";
+"km" = "കിലോമീറ്റർ";
+"Perfectly clear view." = "തികച്ചും വ്യക്തമായ കാഴ്ച.";
+"Excellent visibility." = "നല്ല ദൃശ്യപരത.";
+"Good visibility." = "നല്ല ദൃശ്യത.";
+"Moderate visibility." = "മിതമായ ദൃശ്യപരത.";
+"Poor visibility." = "ദൃശ്യത കുറവാണ്.";
+"Very poor visibility." = "വളരെ മോശം ദൃശ്യപരത.";
+"visibility.perfect"   = "തികച്ചും വ്യക്തമായ കാഴ്ച.";
+"visibility.excellent" = "നല്ല ദൃശ്യപരത.";
+"visibility.good"      = "നല്ല ദൃശ്യത.";
+"visibility.moderate"  = "മിതമായ ദൃശ്യപരത.";
+"visibility.poor"      = "ദൃശ്യത കുറവാണ്.";
+"visibility.verypoor"  = "വളരെ മോശം ദൃശ്യപരത.";
+"visibility.unknown"   = "";
+
+/* WindCard */
+"WIND" = "കാറ്റും";
+"Gusts" = "ഗസ്ത്സ്";
+"Direction" = "ദിശ";
+"km/h" = "കിലോമീറ്റർ മണിക്കൂറിൽ";
+"Compass_N" = "N";
+"Compass_S" = "എസ്";
+"Compass_W" = "വ്";
+"Compass_E" = "ഇ";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "കാലാവസ്ഥാ വിവരങ്ങള് കിട്ടിയില്ല. ദയവായി നിങ്ങളുടെ കണക്ഷന് പരിശോധിക്കുക.";
+"Falling" = "വീഴുന്നു";
+"Rising" = "ഉയര് ന്നത്";
+"Steady" = "സ്ഥിരതയുള്ള";
+"Unknown" = "അജ്ഞാതമായത്";
+"Sunny" = "സണ്ണി";
+"Cloudy" = "മേഘം";
+"Partly Cloudy" = "ഭാഗികമായി മേഘം";
+"Drizzle" = "തുള്ളി";
+"Thunderstorm" = "തൂവൽ";
+"Fog" = "മങ്ങൽ";
+"Partly Cloudy Night" = "ഭാഗികമായി മേഘാവൃതമായ രാത്രി";
+"Clear Night" = "ശുഭരാത്രി";
+"Hazy" = "മങ്ങിയ";
+"Today" = "ഇന്ന്";
+"Now" = "ഇപ്പോൾ";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N"   = "N";
+"cardinal.NNE" = "എൻ. എൻ. ഇ";
+"cardinal.NE"  = "നെ";
+"cardinal.ENE" = "എ. എൻ. ഇ";
+"cardinal.E"   = "ഇ";
+"cardinal.ESE" = "ഇസെ";
+"cardinal.SE"  = "SE";
+"cardinal.SSE" = "എസ്. എസ്. ഇ";
+"cardinal.S"   = "എസ്";
+"cardinal.SSW" = "എസ്. എസ്. ഡബ്ല്യു";
+"cardinal.SW"  = "SW";
+"cardinal.WSW" = "വ്സ്";
+"cardinal.W"   = "വ്";
+"cardinal.WNW" = "WNW";
+"cardinal.NW"  = "NW";
+"cardinal.NNW" = "എൻ. എൻ. ഡബ്ല്യു";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "മഴ ലഭിക്കാനുള്ള സാധ്യത";
+"Today's chance: %d%%" = "ഇന്നത്തെ അവസരം: %d%%";
+"%@'s chance: %d%%" = "%@അവസരം: %d%%";
+"Max" = "മാക്സ്";
+"Min" = "മി";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "പ്രതിദിന മഴ ലഭിക്കാനുള്ള സാധ്യത ഓരോ മണിക്കൂറിനുള്ളതിനേക്കാളും കൂടുതലാണ്.";
+"ChanceOfPrecipitation_Title" = "മഴ ലഭിക്കാനുള്ള സാധ്യത";
+"TodaysChance"                = "ഇന്നത്തെ അവസരം: %d%%";
+"OtherDayChance"              = "%@അവസരം: %d%%";
+"DailyChanceExplanation"      = "പ്രതിദിന മഴ ലഭിക്കാനുള്ള സാധ്യത ഓരോ മണിക്കൂറിനുള്ളതിനേക്കാളും കൂടുതലാണ്.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "തോന്നുന്നതുപോലെ";
+"Actual" = "യഥാര് ത്ഥം";
+"No hourly data available for this day." = "ഈ ദിവസത്തെ മണിക്കൂറുകളില് വിവരങ്ങള് ലഭ്യമല്ല.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "ഈർപ്പം, സൂര്യപ്രകാശം, കാറ്റ് എന്നിവയുടെ ഫലമായി താപനില അനുഭവപ്പെടുന്നത്.";
+"The actual air temperature." = "വായു താപനില.";
+"HighLabelFormat" = "എച്ച്: %d°";
+"LowLabelFormat"  = "എൽ: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel"  = "ഐ";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label"            = "ഈർപ്പം";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat"    = "ഈർപ്പം %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat"        = "ഈർപ്പം Avg %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat"     = "ഇന്നത്തെ മിനു %d%%  പരമാവധി %d%%";
+
+/* Chart markers */
+"ChartMarker_Max"           = "മാക്സ്";
+"ChartMarker_Min"           = "മി";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat"   = "മഴ %.1f%@, മഞ്ഞും: %.1f%@";
+"Precip_Total_RainFormat"       = "മഴ %.1f%@";
+"Precip_Total_SnowFormat"       = "മഞ്ഞും %.1f%@";
+"Precip_Total_None"             = "മഴഃ 0%@";
+"Precip_Bars_Subtitle"          = "മഴയ്ക്കും മഞ്ഞിനും വേണ്ടി മണിക്കൂറുകളോളം ബാറുകൾ (%@)";
+"Precip_Level_Light"            = "വെളിച്ചം";
+"Precip_Level_Moderate"         = "മിതമായ അളവിൽ";
+"Precip_Level_Heavy"            = "കനത്ത";
+"Precip_Tooltip_Format"         = "%@ഹ\nമഴ %.1f%@\nമഞ്ഞും %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat"           = "സമ്മർദ്ദം %@ %@";
+"Pressure_CurrentUnavailable"      = "സമ്മർദ്ദം:-";
+"Pressure_DailyMinMaxFormat"       = "ഇന്നത്തെ മിനു %@ %@  പരമാവധി %@ %@";
+"Pressure_AverageFormat"           = "സമ്മർദ്ദ ശരാശരി %@ %@";
+"Pressure_DailyRangeFormat"        = "ദിവസേനയുള്ള ശ്രേണിഃ %@%@ %@";
+"Pressure_Title"                   = "സമ്മർദ്ദം";
+"Pressure_NoData"                  = "ഈ ദിവസത്തെ സമ്മർദ്ദ വിവരങ്ങളൊന്നും ലഭ്യമല്ല.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader"         = "ഇന്നത്തെ %@ %d";
+"UVGraphNoHourlyData"   = "ഈ ദിവസത്തെ മണിക്കൂറുകളില് വിവരങ്ങള് ലഭ്യമല്ല.";
+"UVGraphNowLabel"       = "ഇനി, %@";
+"UVCategory_None"       = "ഒന്നും";
+"UVCategory_Low"        = "താഴ്ന്ന നില";
+"UVCategory_Moderate"   = "മിതമായ അളവിൽ";
+"UVCategory_High"       = "ഉയരം";
+"UVCategory_VeryHigh"   = "വളരെ ഉയരമുള്ള";
+"UVCategory_Extreme"    = "അങ്ങേയറ്റത്തെ";
+"UVAdvice_None"         = "ഈ ദിവസം മിതമായതോ ഉയർന്നതോ ആയ UV അളവുകൾ പ്രതീക്ഷിക്കുന്നില്ല.";
+"UVAdvice_Range"        = "സൂര്യ സംരക്ഷണം ശുപാർശ ചെയ്യുന്നു. %@ ∙ %@, തമ്മില് എത്തിച്ചേര് ന്ന %@ ഒപ്പം %@. .";
+"UVGraphMaxLabel" = "മാക്സ്";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title"                 = "ദൃശ്യപരത";
+"Visibility_NoData"                = "ഇന്നുവരെ ദൃശ്യപരത സംബന്ധിച്ച വിവരങ്ങളൊന്നും ലഭ്യമല്ല.";
+"Visibility_CurrentFormat"         = "ദൃശ്യപരത %d %@";
+"Visibility_DailyMinMaxFormat"     = "മിനുട്ട് %d  പരമാവധി %d %@";
+"Visibility_NoCurrentData"         = "നിലവിലെ ദൃശ്യപരത സംബന്ധിച്ച വിവരങ്ങളൊന്നും ലഭ്യമല്ല.";
+"Visibility_HourlyAverages_NoData" = "മണിക്കൂറുകളില് വിവരങ്ങള് ലഭ്യമല്ല.";
+"Visibility_MaxLabel"              = "മാക്സ്";
+"Visibility_MinLabel"              = "മി";
+"Visibility_TooltipFormat"         = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "കാറ്റിന്റെ വേഗതയും ഗസ്റ്റ്";
+"WindGraph_NoData" = "ഇന്നുവരെ കാറ്റിന്റെ വിവരങ്ങളൊന്നും ലഭ്യമല്ല.";
+"WindGraph_SpeedHeader" = "കാറ്റിന്റെ വേഗത %d";
+"WindGraph_GustHeader" = "ആലപ്പുഴയിലെ %d";
+"WindGraph_SpeedRangeHeader" = "കാറ്റിന്റെ വേഗത %d- ഒരു കാര്യം .%d";
+"WindGraph_MaxSpeedLabel" = "മാക്സ് എസ്";
+"WindGraph_MaxGustLabel" = "മാക്സ് ജി";
+"WindGraph_DragLabel" = "%@\nവേഗത: %d\nഗസ്റ്റ്: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "ദൈനംദിന സംഗ്രഹം";
+
+"Precipitation Totals" = "മഴയുടെ ആകെ തുക";
+"LAST 24 HOURS" = "കഴിഞ്ഞ 24 മണിക്കൂറുകള്";
+"NEXT 24 HOURS" = "അടുത്ത 24 മണിക്കൂര്";
+"Total" = "മൊത്തം";
+"Rain" = "മഴ";
+"Snow" = "മഞ്ഞും";
+
+"About Wind Speed and Gusts" = "കാറ്റിന്റെ വേഗതയെയും കാറ്റിനെയും കുറിച്ചുള്ള";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "ചുരുങ്ങിയ കാലയളവിൽ ശരാശരി ഉപയോഗിച്ച് കാറ്റിന്റെ വേഗത കണക്കാക്കുന്നു. കാറ്റുകളുടെ ചുരുങ്ങിയ സ്പ്രേസ് ഈ ശരാശരിക്ക് മുകളിലാണ്. ഒരു കാറ്റ് സാധാരണയായി 20 സെക്കൻഡിൽ താഴെയാണ്.";
+
+"About the Beaufort Scale" = "ബൊഫോർട്ട് സ്കെയിലിനെക്കുറിച്ച്";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "ബൊഫോർട്ട് കാറ്റിന്റെ അളവ് ഒരു നിശ്ചിത വേഗതയിൽ കാറ്റിന്റെ ശക്തിയോ ശക്തിയോ എത്രമാത്രം ആണെന്ന് വ്യക്തമാക്കുന്നു. കാറ്റിന്റെ തോത് എത്രമാത്രം കാറ്റുള്ളതാണെന്ന് മനസിലാക്കാൻ ബൊഫോർട്ട് സ്കെയിൽ സഹായിക്കും. കാറ്റിന്റെ വേഗതയുടെ ശ്രേണിക്ക് അനുസൃതമായി ഓരോ മൂല്യവും സ്കെയിലിൽ ഉൾപ്പെടുന്നു.";
+
+"About Feels Like Temperature" = "താപനിലയെക്കുറിച്ച്";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "താപനിലയിൽ നിന്നും വ്യത്യസ്തമായ താപനിലയുള്ള ഒരു താപനിലയാണുള്ളത്. ഈർപ്പം, സൂര്യപ്രകാശം, കാറ്റ് എന്നിവയുടെ സ്വാധീനത്തിലാണ് താപനില.";
+
+"Options" = "ഓപ്ഷനുകൾ";
+"Temperature" = "താപനില";
+"Use system setting (°C)" = "സിസ്റ്റം ക്രമീകരണം ഉപയോഗിക്കുക (°C)";
+"mm, cm" = "മില്ലിമീറ്റർ, സെ.";
+
+/* Dynamic label titles */
+"Conditions" = "വ്യവസ്ഥകൾ";
+"UV Index" = "യുവി സൂചിക";
+"Wind" = "കാറ്റും";
+"Precipitation" = "മഴ";
+"Humidity" = "ഈർപ്പം";
+"Visibility" = "ദൃശ്യപരത";
+"Pressure" = "സമ്മർദ്ദം";
+
+/* Fallback key */
+"displayedCondition" = "കാണിച്ചുതന്നുനിബന്ധന";
+
+/* Titles */
+"Forecast"                   = "പ്രവചനം";
+"DailySummary"               = "ദൈനംദിന സംഗ്രഹം";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%dഇപ്പോൾ %@ മഴ ലഭിക്കാനുള്ള സാധ്യത %@കാറ്റിന്റെ %@ ആക്രമണങ്ങളുമായി %d %@ഇന്നത്തെ താപനില %d∙ ∙ ∙ ∙ ∙ %d♪ അത് പോലെ തോന്നുന്നു %d- ഒരു കറന്റ് %@, ഒപ്പം %@. .";
+"UVIndexFormat"              = "യുവി സൂചിക %d";
+"HumidityFormat"             = "ചുറ്റും ഈർപ്പം %d%%";
+"HumidityRangeFormat"        = "മലിനീകരണം %d%% ∙ %d%%";
+"NA"                         = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText"       = "%@ഏറ്റവും താഴ്ന്നത് %d° ഉയരവും %d°. താപനില ഇങ്ങനെ തോന്നും %d∙ ∙ ∙ ∙ ∙ %d°. കാറ്റിന്റെ %@ അത് പ്രതീക്ഷിക്കപ്പെടുന്നു. %@";
+"NoPrecipLast24h"            = "കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ മഴ രേഖപ്പെടുത്തിയിട്ടില്ല.";
+"RainLast24h"                = "മഴ പെയ്തു %d കഴിഞ്ഞ 24 മണിക്കൂറിനുള്ളിൽ";
+"SnowAndRainLast24h"         = "കഴിഞ്ഞ 24 മണിക്കൂറിനിടെ മഞ്ഞും %@ മഴയും മഴയും %d മില്ലി.";
+
+/* compass abbreviations */
+"Dir_N"   = "N";
+"Dir_NNE" = "എൻ. എൻ. ഇ";
+"Dir_NE"  = "നെ";
+"Dir_ENE" = "എ. എൻ. ഇ";
+"Dir_E"   = "ഇ";
+"Dir_ESE" = "ഇസെ";
+"Dir_SE"  = "SE";
+"Dir_SSE" = "എസ്. എസ്. ഇ";
+"Dir_S"   = "എസ്";
+"Dir_SSW" = "എസ്. എസ്. ഡബ്ല്യു";
+"Dir_SW"  = "SW";
+"Dir_WSW" = "വ്സ്";
+"Dir_W"   = "വ്";
+"Dir_WNW" = "WNW";
+"Dir_NW"  = "NW";
+"Dir_NNW" = "എൻ. എൻ. ഡബ്ല്യു";
+
+/* units */
+"UnitMillimeter" = "മില്ലി";
+"UnitCentimeter" = "സെ. മീ.";
+
+/* common labels */
+"PrecipitationTotals_Title" = "മഴയുടെ ആകെ തുക";
+"Last24h_Label"             = "കഴിഞ്ഞ 24 മണിക്കൂറുകള്";
+"Next24h_Label"             = "അടുത്ത 24 മണിക്കൂര്";
+"Total_Label"               = "മൊത്തം";
+"Precipitation_Label"       = "മഴ";
+"Rain_Label"                = "മഴ";
+"Snow_Label"                = "മഞ്ഞും";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "കാറ്റ് നിലവിൽ %1$d %2$@ ∙ %3$@ഇന്ന് കാറ്റിന്റെ വേഗത %4$d ∙ %5$d %2$@, ഉയര് ന്ന തോതിൽ %6$d %2$@. .";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range"   = "കാറ്റിന്റെ വേഗത %1$d ∙ %2$d %3$@, ഉയര് ന്ന തോതിൽ %4$d %3$@. .";
+
+"Beaufort_Scale"                = "ബൊഫോർട്ട് സ്കെയിൽ";
+"Beaufort_Column_bft" = "ബ്ഫ്";
+"Beaufort_Column_Description"   = "വിവരണം";
+"Beaufort_Column_kmh" = "കിലോമീറ്റർ മണിക്കൂറിൽ";
+"Beaufort_0"                    = "ശാന്തത";
+"Beaufort_1"                    = "വെളിച്ചം";
+"Beaufort_2"                    = "വെളിച്ചം";
+"Beaufort_3"                    = "സൌമ്യമായ കാറ്റ്";
+"Beaufort_4"                    = "മിതമായ കാറ്റ്";
+"Beaufort_5"                    = "ശുദ്ധമായ കാറ്റ്";
+"Beaufort_6"                    = "ശക്തമായ കാറ്റ്";
+"Beaufort_7"                    = "ശക്തമായ കാറ്റ്";
+"Beaufort_8"                    = "ഗെയ്ല്";
+"Beaufort_9"                    = "ശക്തമായ കാറ്റ്";
+"Beaufort_10"                   = "കൊടുങ്കാറ്റ്";
+"Beaufort_11"                   = "ശക്തമായ കൊടുങ്കാറ്റ്";
+"Beaufort_12"                   = "ചുഴലിക്കാറ്റ് ശക്തി";
+"BeaufortRange_0"               = "< 2";
+"BeaufortRange_1"               = "2  5";
+"BeaufortRange_2"               = "6  11";
+"BeaufortRange_3"               = "12  19";
+"BeaufortRange_4"               = "20  28";
+"BeaufortRange_5"               = "29  38";
+"BeaufortRange_6"               = "39  49";
+"BeaufortRange_7"               = "50  61";
+"BeaufortRange_8"               = "62  74";
+"BeaufortRange_9"               = "75  88";
+"BeaufortRange_10"              = "89  102";
+"BeaufortRange_11"              = "103  117";
+"BeaufortRange_12"              = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat"    = "അവിടെയൊക്കെ %.1f%@ കഴിഞ്ഞ 24 മണിക്കൂറിനുള്ളിൽ ലഭിച്ച മഴയുടെ എണ്ണം. %.1f%@അടുത്ത 24 മണിക്കൂറിനുള്ളിൽ, %.1f%@ മഴ ലഭിക്കുമെന്ന് പ്രതീക്ഷിക്കുന്നു.";
+"ForecastPrecip_OtherDayFormat" = "ഓൺ %@, മൊത്തം മഴ ലഭിക്കുന്നത് %.1f%@. .";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "മഴയുടെ തീവ്രതയെക്കുറിച്ച്";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title"               = "പ്രവചനം";
+"DailySummary_Title"           = "ദൈനംദിന സംഗ്രഹം";
+
+/* Dew point */
+"DewPoint_CurrentFormat"       = "മണൽ പോയിന്റ് %d∙ ∙ ∙ ∙ ∙ %d- ഒരു കറന്റ്";
+"DewPoint_FutureFormat"        = "മണൽ പോയിന്റ് ആയിരിക്കും %d∙ ∙ ∙ ∙ ∙ %d- ഒരു കറന്റ്";
+
+/* Humidity summaries */
+"ForecastHumidity_Today"       = "ഇന്ന് ശരാശരി ഈർപ്പം %d%%. . %@";
+"ForecastHumidity_Other"       = "ഓൺ %@, ശരാശരി ഈർപ്പം %d%%. .\n%@";
+
+"AboutPressure_Title"  = "സമ്മർദ്ദത്തെക്കുറിച്ച്";
+"AboutPressure_Body"   = "കാലാവസ്ഥയിൽ മാറ്റങ്ങൾ വരുത്താൻ പ്രഷറിലെ കാര്യമായ, ദ്രുതഗതിയിലുള്ള മാറ്റങ്ങൾ ഉപയോഗിക്കുന്നു. ഉദാഹരണത്തിന്, മഴയോ മഞ്ഞും വരുന്നതിനും മർദ്ദം ഉയരുന്നതിനും കാരണമാകും.";
+
+"AboutHumidity_Title"  = "ആപേക്ഷിക ഈർപ്പം";
+"AboutHumidity_Body"   = "ആപേക്ഷിക ഈർപ്പം, സാധാരണയായി ഈർപ്പം എന്ന് അറിയപ്പെടുന്നു, വായുവിൽ ഉള്ള ഈർപ്പം വായുവിൽ സൂക്ഷിക്കാൻ കഴിയുന്നതുമായി താരതമ്യപ്പെടുത്തുമ്പോൾ അളവാണ്. ഉയർന്ന താപനിലയിൽ വായുവിൽ കൂടുതൽ ഈർപ്പം സൂക്ഷിക്കാൻ കഴിയും.% mമണൽ അല്ലെങ്കിൽ മഞ്ഞ് ഉണ്ടായേക്കാം.";
+
+"AboutDewPoint_Title" = "ഡേ പോയിന്റിനെക്കുറിച്ച്";
+"AboutDewPoint_Body"  = "മണൽ താപനിലയിൽ വീഴേണ്ട താപനിലയാണ് മണൽ രൂപപ്പെടാൻ. വായു എത്രമാത്രം ഈർപ്പമുള്ളതായി അനുഭവപ്പെടുന്നുവെന്ന് അറിയാൻ ഇത് ഉപയോഗപ്രദമായ മാർഗമായിരിക്കാം  മണൽ താപനില ഉയർന്നതനുസരിച്ച് മണൽ കൂടുതൽ ഈർപ്പമുള്ളതായി അനുഭവപ്പെടുന്നു. നിലവിലെ താപനിലയുമായി പൊരുത്തപ്പെടുന്ന മണൽ താപനിലയുടെ അർത്ഥം ആപേക്ഷിക ഈർപ്പം 100% ആണ്, മണൽ അല്ലെങ്കിൽ മഞ്ഞ് ഉണ്ടാകാം.";
+
+"Section_Forecast"                     = "പ്രവചനം";
+"Section_DailySummary"                 = "ദൈനംദിന സംഗ്രഹം";
+"ForecastVisibility_TodayFormat" = "ഇന്ന്, ദൃശ്യപരത %@, %d ∙ %d %@. .";
+"ForecastVisibility_OtherFormat" = "ഓൺ %@, ഏറ്റവും കുറഞ്ഞ ദൃശ്യപരത %@ ല് %d %@ഏറ്റവും ഉയര് ന്നവനാകുന്നവനാണ് %@ ല് %d %@. .";
+"Clarity_Foggy"                        = "മങ്ങിയ";
+"Clarity_Hazy"                         = "മങ്ങിയ";
+"Clarity_Clear"                        = "വ്യക്തമായ";
+"Clarity_PerfectlyClear"               = "തികച്ചും വ്യക്തമാണ്.";
+
+"AboutVisibility_Title" = "ദൃശ്യതയെക്കുറിച്ച്";
+"AboutVisibility_Body" = "കെട്ടിടങ്ങളും കൊടുമുടികളും പോലുള്ള വസ്തുക്കളെ എത്ര ദൂരെയാണു കാണാനാകുക എന്ന് കാണിക്കുന്നതാണ് ദൃശ്യത. ഇത് വായുവിന്റെ സുതാര്യതയുടെ അളവാണ്. സൂര്യപ്രകാശത്തിന്റെ അളവും തടസ്സങ്ങളുടെ സാന്നിധ്യവും കണക്കിലെടുക്കുന്നില്ല. %@ വ്യക്തമായി കണക്കാക്കപ്പെടുന്നു.";
+
+"PressureForecast_Today" = "നിലവിൽ സമ്മർദ്ദം %@ %@ ഇന്ന്, ശരാശരി സമ്മർദ്ദം %@ %@, ഏറ്റവും കുറഞ്ഞ സമ്മർദ്ദം %@ %@. .";
+"PressureForecast_Other" = "ഓൺ %@, ശരാശരി സമ്മർദ്ദം %@ %@, ഏറ്റവും കുറഞ്ഞ സമ്മർദ്ദം %@ %@. .";
+"SectionForecast" = "പ്രവചനം";
+"SectionDailySummary" = "ദൈനംദിന സംഗ്രഹം";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "അടിസ്ഥാന പദ്ധതിയിലെ എല്ലാ സവിശേഷതകളും";
+"Multi-calendar view" = "ഒന്നിലധികം കലണ്ടർ കാഴ്ച";
+"Sync with Google Calendar" = "സിൻക്രൊസി Google Calendar";
+"Sync meets from Google Meet" = "സിൻക് ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു Google കണ്ടുമുട്ടുക";
+
+/* BaseSubscriptionView */
+"Base Plan" = "അടിസ്ഥാന പദ്ധതി";
+"Single-day calendar view" = "ഒറ്റദിവസ കലണ്ടർ കാഴ്ച";
+"Multi-day calendar view" = "ഒന്നിലധികം ദിവസത്തെ കലണ്ടർ കാഴ്ച";
+"Monthly calendar view" = "പ്രതിമാസ കലണ്ടർ കാണൽ";
+"Yearly overview" = "വാർഷിക അവലോകനം";
+"List view for events" = "ഇവന്റുകളുടെ പട്ടിക കാണൽ";
+"Weather view" = "കാലാവസ്ഥാ കാഴ്ച";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "പ്രീമിയം പ്ലാൻ";
+"Sync with Microsoft Calendar" = "സിൻക്രൊസി Microsoft Calendar";
+"Sync meets from Microsoft Teams" = "സിൻക് ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു ടു Microsoft Teams";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "തുല്യമായ %@ പ്രതിമാസം";
+"%d %@ free" = "%d %@ സൌജന്യമായി";
+
+/* SubscriptionListView */
+"Premium Plans" = "പ്രീമിയം പ്ലാനുകൾ";
+"You are subscribed to the %@ %@ plan" = "നിങ്ങള് ക്ക് ഈ നിയമം അംഗീകരിക്കുന്നുണ്ട്. %@ %@ പദ്ധതി";
+"Renews on: %@" = "പുതുക്കിയവഃ %@";
+"Start Free Trial" = "സൌജന്യമായി പരീക്ഷണം ആരംഭിക്കുക";
+"Subscribe Now" = "ഇപ്പോൾ സൈൻ അപ്പ് ചെയ്യുക";
+"%d %@ free, then %@%@." = "%d %@ പിന്നെ സൌജന്യമായി %@%@. .";
+"Subscribe for %@%@." = "സബ്സ്ക്രൈബ് ചെയ്യുക %@%@. .";
+"Privacy Policy"     = "സ്വകാര്യതാ നയം";
+"Terms of Service"   = "സേവന നിബന്ധനകൾ";
+
+/* SubscriptionCategory */
+"Advanced" = "പുരോഗമനം";
+"Advanced Plan" = "പുരോഗമന പദ്ധതി";
+"All Advanced Plan features" = "എല്ലാ ആഡ്വാൻസ്ഡ് പ്ലാന്റ് സവിശേഷതകളും";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "നിങ്ങള് ക്ക് ഒരു സജീവമായ %@ ഈ വിഭാഗത്തിലേക്ക് പ്രവേശനം നേടാന് ഉദ്ദേശിക്കുന്നു.";
+"Plan Required" = "പദ്ധതി ആവശ്യമായി വരും";
+"OK" = "ശരി .";
+
+/* SubscriptionStatus */
+"Base"    = "അടിസ്ഥാനം";
+"Premium" = "പ്രീമിയം";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "അംഗീകൃതമായി %@ %@ ഒരു പ്ലാൻ.";
+
+/* Label for renewal date */
+"RenewsOn"            = "പുതുക്കിയവഃ %@";
+
+"Manage Subscription"                   = "സബ്സ്ക്രിപ്ഷൻ നിയന്ത്രിക്കുക";
+
+/* Period units */
+"Daily"     = "ദൈനംദിന";
+"Weekly"    = "ആഴ്ചതോറും";
+"Monthly"   = "പ്രതിമാസം";
+"Yearly"    = "വാർഷികം";
+"Recurring" = "ആവർത്തിക്കുന്ന";
+
+/* units */
+"day"   = "ദിവസം";
+"days"  = "ദിവസങ്ങൾ";
+"week"  = "ആഴ്ച";
+"weeks" = "ആഴ്ചകൾ";
+"month"  = "മാസം";
+"months" = "മാസങ്ങള്";
+"year"   = "വർഷം";
+"years"  = "വർഷങ്ങൾ";
+
+/* YearMonthMiniView */
+"weekday.headers" = "എസ്, എം, ടി, ഡബ്ല്യു, ടി, എഫ്, എസ്";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "കിലോമീറ്റർ മണിക്കൂറിൽ";
+"Unit_Speed_mph" = "മൈൽ";
+"Unit_Distance_km" = "കിലോമീറ്റർ";
+"Unit_Distance_mi" = "മൈ";
+"Unit_Precipitation_mm" = "മില്ലി";
+"Unit_Precipitation_in" = "′′";
+"Unit_Pressure_hPa" = "എച്ച്പിഎ";
+"Unit_Pressure_inHg" = "ഇൻഹെഗ്";
+
+"Your previous purchases have been successfully restored." = "നിങ്ങളുടെ മുൻ വാങ്ങലുകൾ വിജയകരമായി പുനഃസ്ഥാപിച്ചു.";
+"No active subscriptions found to restore."                = "സജീവമായ സബ്സ്ക്രിപ്ഷനുകളൊന്നും കണ്ടെത്തിയില്ല.";
+"Failed to restore purchases. Please try again later. (%@)" = "വാങ്ങലുകൾ പുനഃസ്ഥാപിക്കാൻ സാധിച്ചില്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക.%@)";
+"Restore Purchases"                                        = "വാങ്ങലുകൾ പുനഃസ്ഥാപിക്കുക";
+
+"Ads Free" = "പരസ്യങ്ങൾ സൌജന്യം";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "കലണ്ടറും കാലാവസ്ഥയും";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "ചെറിയ ചിത്രങ്ങള് ഇന്നത്തെ തീയതിയും കാലാവസ്ഥയും കാണിക്കുന്നു.";
+"Calendar Events" = "കലണ്ടർ ഇവന്റുകൾ";
+"Shows today's date, current weather, and your next calendar events." = "ഇന്നത്തെ തീയതി, കാലാവസ്ഥ, നിങ്ങളുടെ അടുത്ത കലണ്ടർ ഇവന്റുകൾ എന്നിവ കാണിക്കുന്നു.";
+"No upcoming events" = "വരാനിരിക്കുന്ന സംഭവങ്ങളൊന്നും ഇല്ല";
+"Tomorrow" = "നാളെ";
+"Untitled" = "പേരിടാത്തത്";
+"Detail" = "വിശദാംശങ്ങള്";
+"Phase" = "ഘട്ടം";
+"Weather" = "കാലാവസ്ഥ";
+"Select Your Email" = "നിങ്ങളുടെ ഇമെയിൽ തിരഞ്ഞെടുക്കുക";
+"Confirm" = "സ്ഥിരീകരണം";
+"Calendar name" = "കലണ്ടർ നാമം";
+"Sharing: %@" = "പങ്കിടൽഃ %@";
+"Loading..." = "ലോഡിംഗ്.";
+"Selected Location" = "തിരഞ്ഞെടുത്ത സ്ഥലം";
+"Data provided by Apple Weather" = "ആപ്പിൾ കാലാവസ്ഥാ വകുപ്പ് നൽകുന്ന വിവരങ്ങൾ";
+"Next" = "അടുത്തത്";
+"No details found for the selected location." = "തിരഞ്ഞെടുത്ത സ്ഥലത്തെ കുറിച്ച് വിശദാംശങ്ങളൊന്നും കണ്ടെത്തിയിട്ടില്ല.";
+"Could not determine the time zone for the selected location." = "തിരഞ്ഞെടുത്ത സ്ഥലത്തിന് റെ സമയ മേഖല നിർണ്ണയിക്കാൻ കഴിഞ്ഞില്ല.";
+"(No Title)" = "(പേര് ഇല്ല)";
+"Choose your e-mail" = "നിങ്ങളുടെ ഇ- മെയിൽ തിരഞ്ഞെടുക്കുക";
+"It will be treated as your primary address and invitations will not be sent to it." = "നിങ്ങളുടെ പ്രധാന വിലാസമായി ഇത് പരിഗണിക്കും. ക്ഷണികള് ഇതിലേക്ക് അയയ്ക്കുന്നില്ല.";
+"Invalid URL" = "അസാധുവായ URL";
+"Rate limit or insufficient permission" = "നിരക്ക് പരിധി അല്ലെങ്കിൽ അനുമതി കുറവ്";
+"Network error: %@" = "നെറ്റ് വർക്ക് പിശക്ഃ %@";
+"N/A - Selected Tab: %@" = "N/A - തിരഞ്ഞെടുത്ത ടാബ്ഃ %@";
+"Enable Notifications" = "അറിയിപ്പുകൾ പ്രവർത്തനക്ഷമമാക്കുക";
+"Event Notifications" = "ഇവന്റ് അറിയിപ്പുകൾ";
+"Weather Alert Notifications" = "കാലാവസ്ഥാ മുന്നറിയിപ്പ് അറിയിപ്പുകൾ";
+"Allow notifications so weather alerts can appear." = "കാലാവസ്ഥാ അലേർട്ടുകൾ കാണാന് അറിയിപ്പുകള് അനുവദിക്കുക.";
+"Event alerts are scheduled from your event alert settings." = "ഇവന്റ് അലേർട്ടുകള് നിങ്ങളുടെ ഇവന്റ് അലേർട്ട് ക്രമീകരണത്തില് നിന്നും ഷെഡ്യൂൾ ചെയ്യപ്പെടുന്നു.";
+"Allow notifications so event alerts can appear at the right time." = "അറിയിപ്പുകള് അനുവദിക്കുക, അങ്ങനെ സംഭവവികാസങ്ങളെക്കുറിച്ച് ശരിയായ സമയത്ത് അറിയിപ്പ് നല് കാം.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "ഈ ആപ്ലിക്കേഷന് അറിയിപ്പുകൾ പ്രവർത്തനരഹിതമാണ്. അവ പ്രാപ്തമാക്കുന്നതിന്: ക്രമീകരണങ്ങൾ -> അപ്ലിക്കേഷനുകൾ -> Cloud Calendars -> അറിയിപ്പുകൾ -> അറിയിപ്പുകൾ അനുവദിക്കുക.";
+"Promo.WiseEating.name" = "വിവേകമുള്ള ഭക്ഷണവും വ്യായാമവും";
+"Promo.WiseEating.description" = "വിസ് എറ്റ് നിങ്ങളുടെ ബുദ്ധിശക്തിയുള്ള പോഷകാഹാര പരിശീലന പരിശീലകനാണ്. ആധുനിക പോഷകാഹാര ശാസ്ത്രത്തെ പ്രായോഗിക ഉപകരണങ്ങളുമായി സംയോജിപ്പിച്ച് ഭക്ഷണക്രമം ആസൂത്രണം ചെയ്യാനും വ്യായാമങ്ങൾ രൂപകൽപ്പന ചെയ്യാനും നിങ്ങളുടെ അങ്കി നിയന്ത്രിക്കാനും ഭക്ഷണവും ചലനവും നിങ്ങളുടെ ശരീരത്തെ എങ്ങനെ ബാധിക്കുന്നുവെന്ന് മനസിലാക്കാനും സഹായിക്കുന്നു.";
+"Promo.StoreFront.name" = "സ്റ്റോര് ഫ്രണ്ട് സ്റ്റുഡിയോ";
+"Promo.StoreFront.description" = "ഐഒഎസ്, മാകോസ് ഡവലപ്പർമാർക്ക് വേണ്ടിയുള്ള മികച്ച 3D ഡിസൈൻ പരിതസ്ഥിതിയാണ് സ്റ്റോർഫ്രണ്ട് സ്റ്റുഡിയോ. ഇത് ഉയർന്ന ഫിഡലിറ്റി റിയാലിറ്റി കിറ്റ് റെൻഡറിംഗും ശക്തമായ റിച്ചി ടെക്സ്റ്റ് എഡിറ്ററുമായും സംയോജിപ്പിച്ച് അസംസ്കൃത സ്ക്രീൻഷോട്ടുകൾ പ്രൊഫഷണൽ, ഉയർന്ന പരിവർത്തന ആപ്പ് സ്റ്റോർ അസറ്റുകളാക്കി മാറ്റാൻ സഹായിക്കുന്നു.";
+"Promo.ReelStudio.name" = "റീല് സ്റ്റുഡിയോ";
+"Promo.ReelStudio.description" = "ഐഒഎസ്, മാകോസ് എന്നിവയ്ക്കായുള്ള ക്രിയേറ്റർ ഗ്രേഡ് സ്ക്രീൻ റെക്കോർഡിംഗ് സ്റ്റുഡിയോയാണ് റീൽസ്റ്റുഡിയോ. ഒരേ സമയം നിങ്ങളുടെ സ്ക്രീനും ക്യാമറയും പകർത്തുക, മൈക്രോ + സിസ്റ്റം ഓഡിയോ നിയന്ത്രിക്കുക, ട്യൂട്ടോറിയലുകൾ, വാക്ക് ത്രൂകൾ, ഉൽപ്പന്ന ഡെമോകൾ എന്നിവയ്ക്കായി ശുദ്ധമായ എംപി 4 എക്സ്പോർട്ട് ചെയ്യുക. ഐഒഎസ് ഉപയോഗിച്ച് നിങ്ങൾക്ക് ആപ്ലിക്കേഷനുള്ളിൽ ഒരു വീഡിയോ പ്ലേ ചെയ്യാനും നിങ്ങളുടെ ക്യാമറയ്ക്കൊപ്പം റെക്കോർഡുചെയ്യാനും കഴിയും.";
+"Promo.MarketBrief.name" = "മാർക്കറ്റ് ബ്രീഫ് AI";
+"Promo.MarketBrief.description" = "മാർക്കറ്റ് ബ്രീഫ് AI ഉപകരണം ഉള്ളിലെ അനലിറ്റിക്സ്, ശബ്ദത്തിൽ നിന്ന് സിഗ്നൽ വേർതിരിക്കുന്നതിന് രൂപകൽപ്പന ചെയ്ത മൾട്ടി-ഏജന്റ് വർക്ക്ഫ്ലോ എന്നിവ ഉപയോഗിച്ച് വിപണി ചലനം മനസിലാക്കാൻ നിങ്ങളെ സഹായിക്കുന്നു. തത്സമയ വില ഡാറ്റ ട്രാക്കുചെയ്യുക, റെജിം ശൈലിയിലുള്ള സാധ്യതകൾ പര്യവേക്ഷണം ചെയ്യുക, നിങ്ങളുടെ തീരുമാനമെടുക്കൽ പിന്തുണയ്ക്കുന്നതിന് വ്യക്തമായ ഡാഷ്ബോർഡുകളും ചാർട്ടുകളും ഉപയോഗിക്കുക. സ്വകാര്യത-ആദ്യംഃ നിങ്ങളുടെ കോൺഫിഗറേഷനുകൾ നിങ്ങളുടെ ഉപകരണത്തിൽ തുടരുന്നു.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "ആപ്ലിക്കേഷനുകൾ";
+"Plan" = "പദ്ധതി";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "മഞ്ഞുമടക്ക";
+"WeatherCondition.blowingDust" = "പൊടി";
+"WeatherCondition.blowingSnow" = "മഞ്ഞും മഞ്ഞും";
+"WeatherCondition.breezy" = "കാറ്റ്";
+"WeatherCondition.clear" = "വ്യക്തമായ";
+"WeatherCondition.cloudy" = "മേഘം";
+"WeatherCondition.drizzle" = "തുള്ളി";
+"WeatherCondition.flurries" = "ചാഞ്ചാട്ടം";
+"WeatherCondition.foggy" = "മങ്ങൽ";
+"WeatherCondition.freezingDrizzle" = "തണുത്ത തണുപ്പിക്കൽ";
+"WeatherCondition.freezingRain" = "തണുത്ത മഴ";
+"WeatherCondition.frigid" = "തണുപ്പ്";
+"WeatherCondition.hail" = "ഹേലേ";
+"WeatherCondition.haze" = "മങ്ങൽ";
+"WeatherCondition.heavyRain" = "കനത്ത മഴ";
+"WeatherCondition.heavySnow" = "കനത്ത മഞ്ഞും";
+"WeatherCondition.hot" = "ചൂട്";
+"WeatherCondition.hurricane" = "ചുഴലിക്കാറ്റ്";
+"WeatherCondition.isolatedThunderstorms" = "ഒറ്റപ്പെട്ട തൂവലുകൾ";
+"WeatherCondition.mostlyClear" = "കൂടുതല് വ്യക്തമായ";
+"WeatherCondition.mostlyCloudy" = "കൂടുതല് മേഘം";
+"WeatherCondition.partlyCloudy" = "ഭാഗികമായി മേഘം";
+"WeatherCondition.rain" = "മഴ";
+"WeatherCondition.scatteredThunderstorms" = "വിരിച്ചു വിരിച്ചു വിരിച്ചു";
+"WeatherCondition.sleet" = "സ്ലീറ്റ്";
+"WeatherCondition.smoky" = "പുക";
+"WeatherCondition.snow" = "മഞ്ഞും";
+"WeatherCondition.strongStorms" = "കടുത്ത കൊടുങ്കാറ്റ്";
+"WeatherCondition.sunFlurries" = "സൺ ഫ്ലൂറിസ്";
+"WeatherCondition.sunShowers" = "സൂര്യൻ കുളിക്കുന്നവർ";
+"WeatherCondition.thunderstorms" = "തൂവൽ";
+"WeatherCondition.tropicalStorm" = "ഉഷ്ണമേഖലാ കൊടുങ്കാറ്റ്";
+"WeatherCondition.windy" = "കാറ്റുള്ള";
+"WeatherCondition.wintryMix" = "ശീതകാല മിശ്രിതം";
+"MoonPhase.new" = "പുതിയ ചന്ദ്രൻ";
+"MoonPhase.waxingCrescent" = "ശുഭ്രവസ്ത്രം";
+"MoonPhase.firstQuarter" = "ആദ്യ പാദത്തിൽ";
+"MoonPhase.waxingGibbous" = "വാക്സ് ചെയ്യുന്ന ഗിബ്ബൂസ്";
+"MoonPhase.full" = "പൂർണ്ണചന്ദ്രൻ";
+"MoonPhase.waningGibbous" = "നിസ്സാരമായ ഗിബ്ബൂസ്";
+"MoonPhase.lastQuarter" = "അവസാന പാദത്തിൽ";
+"MoonPhase.waningCrescent" = "മങ്ങുന്ന അർദ്ധചന്ദ്രൻ";
+"WeatherAlert.Preview.Tornado" = "ചുഴലിക്കാറ്റ് മുന്നറിയിപ്പ്: ഉടനെ സുരക്ഷിത അഭയം തേടുക.";
+"WeatherAlert.Preview.Source" = "കാലാവസ്ഥാ സേവനം";
+"WeatherAlert.Preview.Region" = "പ്രവചന മേഖല";
+"Saved Regions" = "രക്ഷപ്പെട്ട പ്രദേശങ്ങൾ";
+"Current Location" = "നിലവിലെ സ്ഥാനം";
+"Reorder Region" = "പുനക്രമീകരണ മേഖല";
+"WeatherAlert.Preview.HighTemperature" = "ഉയർന്ന താപനിലയെ കുറിച്ചുള്ള മഞ്ഞ മുന്നറിയിപ്പ്";
+"Illumination" = "വെളിച്ചം";
+"Shared event" = "പങ്കിട്ട പരിപാടി";
+"Add to Calendar" = "കലണ്ടറിലേക്ക് ചേർക്കുക";
+"Event added" = "സംഭവം ചേര് ന്നു";
+"Already in your calendar" = "നിങ്ങളുടെ കലണ്ടറിൽ തന്നെ";
+"Unable to add event" = "ഇവന്റ് ചേർക്കാനായില്ല";
+"Calendar Access Required" = "കലണ്ടറിലേക്ക് പ്രവേശനം ആവശ്യമാണ്";
+"Allow calendar access in Settings to add this event." = "ഈ ഇവന്റ് ചേർക്കാൻ ക്രമീകരണങ്ങളിൽ കലണ്ടർ ആക്സസ് അനുവദിക്കുക.";
+"Open Settings" = "തുറന്ന ക്രമീകരണങ്ങൾ";
+"Adding…" = "കൂട്ടിച്ചേർക്കുന്നു.";
+"Couldn’t find a writable calendar." = "എഴുതിയ കലണ്ടർ കണ്ടെത്താനായില്ല.";
+"Please try again." = "ദയവായി വീണ്ടും ശ്രമിക്കുക.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "പദ്ധതി മാറ്റുക";
+"Current Plan" = "നിലവിലെ പദ്ധതി";
+"You can change your plan or billing period at any time." = "നിങ്ങളുടെ പ്ലാനോ ഫില്ലിംഗ് കാലയളവോ ഏതു സമയത്തും മാറ്റാം.";
+"Invites" = "ക്ഷണങ്ങള്";
+"Cancelled" = "റദ്ദാക്കൽ";
+"Shared by me" = "എന്നെ പങ്കുവെച്ചത്";
+"Shared with me" = "എന്നോടൊപ്പം പങ്കുവെക്കുക";
+"No shared events yet." = "പങ്കിട്ട പരിപാടികളൊന്നും ഇതുവരെ ഉണ്ടായിട്ടില്ല.";
+"No one has shared an event with you yet." = "നിങ്ങളുമായി ഇതുവരെ ആരും ഒരു സംഭവം പങ്കുവെച്ചിട്ടില്ല.";
+"Events you send from the share sheet appear here." = "ഷെയര് ഷീറ്റിൽ നിന്നും നിങ്ങൾ അയച്ച സംഭവങ്ങള് ഇവിടെ കാണാം.";
+"Invitations go to" = "ക്ഷണങ്ങള്";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "നിങ്ങൾ സ്വീകരിക്കുന്ന ക്ഷണങ്ങൾ ഇവിടെ ചേർക്കുകയും അവ കാലികമാക്കുകയും ചെയ്യുന്നു. അയയ്ക്കുന്നയാൾ ഒരു ക്ഷണം ഓഫാക്കുകയാണെങ്കിൽ, അത് ഒരു ലൈൻ കൊണ്ട് ദൃശ്യമായി തുടരുന്നു.";
+"Sample shared event" = "പങ്കിട്ട സംഭവങ്ങളുടെ സാമ്പിൾ";
+"Sofia" = "സോഫിയ";
+"Team lunch" = "ടീം ഉച്ചഭക്ഷണം";
+
+/* Booking */
+"Booking page" = "ബുക്കിംഗ് പേജ്";
+"Your name" = "നിങ്ങളുടെ പേര്";
+"Display name" = "പ്രദർശന നാമം";
+"Source calendar" = "ഉറവിട കലണ്ടർ";
+"Booked meetings land here, and your busy times here block new bookings." = "റെക്കോർഡ് ചെയ്ത മീറ്റിങ്ങുകള് ഇവിടെ എത്തിയിരിക്കുന്നു, നിങ്ങളുടെ തിരക്കേറിയ സമയങ്ങള് ഇവിടെ പുതിയ റെക്കോർഡുകള് തടയുന്നു.";
+"Meeting types" = "യോഗങ്ങളുടെ തരം";
+"%lld min" = "%lld മിനുട്ട്";
+"Add meeting type" = "മീറ്റിംഗ് തരം ചേർക്കുക";
+"Weekly hours" = "ആഴ്ചയിലെ മണിക്കൂറുകൾ";
+"Save booking page" = "ബുക്കിംഗ് പേജ് സംരക്ഷിക്കുക";
+"Your booking page is live" = "നിങ്ങളുടെ ബുക്കിംഗ് പേജ് സജീവമാണ്";
+"Share this link — anyone can book one of your open times." = "ഈ ലിങ്ക് പങ്കുവെക്കുക. ആർക്കും നിങ്ങളുടെ തുറന്ന സമയങ്ങളിൽ ഒന്ന് ബുക്ക് ചെയ്യാം.";
+"Share link" = "പങ്കിടൽ ലിങ്ക്";
+"Edit settings" = "ക്രമീകരണങ്ങൾ പരിഷ്കരിക്കുക";
+"Add at least one meeting type." = "കുറഞ്ഞത് ഒരു യോഗം ചേർക്കുക.";
+"Turn on at least one day with valid hours." = "കുറഞ്ഞത് ഒരു ദിവസം മാത്രം സാധുവായ സമയങ്ങളോടെ ഓണാക്കുക.";
+"Set up a booking page" = "ഒരു ബുക്കിംഗ് പേജ് സജ്ജമാക്കുക";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "നിങ്ങളുടെ തുറന്ന സമയങ്ങൾ ആളുകൾക്ക് ബുക്ക് ചെയ്യാം. നിങ്ങളുടെ തിരഞ്ഞെടുത്ത കലണ്ടറിലാണ് യോഗങ്ങൾ എത്തുന്നത്. നിങ്ങളുടെ തിരക്കേറിയ സമയങ്ങളിൽ ആ സ്ലോട്ടുകൾ സൌജന്യമായി സൂക്ഷിക്കുക.";
+"Approve on this device" = "ഈ ഉപകരണത്തിൽ അംഗീകരിക്കുക";
+"Set up web booking" = "വെബ് ബുക്കിംഗ് ക്രമീകരിക്കുക";
+"You're all set" = "നീ എല്ലാം റെഡി ആയി";
+"Couldn't approve" = "അംഗീകരിക്കാൻ കഴിഞ്ഞില്ല";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "ഈ ബ്രൌസർ നിങ്ങളുടെ കലണ്ടറിലേക്ക് ലിങ്കുചെയ്യുന്നതിനെ അംഗീകരിക്കുക, അതിനാൽ നിങ്ങൾക്ക് വെബ്ബിൽ ഒരു ബുക്കിംഗ് പേജ് സൃഷ്ടിക്കാൻ കഴിയും  സൌജന്യമായി, കാരണം നിങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ഉണ്ട്.";
+"Linking…" = "ബന്ധിപ്പിക്കുന്നു.";
+"Head back to your browser — it's ready to finish setting up your booking page." = "നിങ്ങളുടെ ബ്രൌസറിലേക്ക് മടങ്ങുക. നിങ്ങളുടെ ബുക്കിംഗ് പേജ് സജ്ജീകരിക്കാൻ തയ്യാറാണ്.";
+"The code may have expired. Reopen the QR on the web and try again." = "കോഡ് കാലഹരണപ്പെട്ടിരിക്കാം. QR വെബിൽ പോയി വീണ്ടും ശ്രമിക്കുക.";
+"Read-only shared event" = "വായന മാത്രം പങ്കിട്ട പരിപാടി";
+"Remove from My Calendar" = "എന്റെ കലണ്ടറിൽ നിന്ന് നീക്കം ചെയ്യുക";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars അക്കൌണ്ട്";
+"App Clip sharing account" = "App Clip പങ്കിടൽ അക്കൌണ്ട്";
+"Required for synced App Clip events and recovery after reinstalling." = "സമന്വയിപ്പിക്കാന് ആവശ്യമായത് App Clip സംഭവങ്ങളും പുനഃസ്ഥാപനത്തിനു ശേഷമുള്ള വീണ്ടെടുക്കലും.";
+"Continue with Google" = "തുടര് ന്നു Google";
+"Sign Out" = "സൈൻ അപ്പ് ചെയ്യുക";
+"Signing in…" = "ഞാന് സൈൻ ഇൻ ചെയ്യുന്നു.";
+"Sign In" = "സൈൻ ഇൻ ചെയ്യുക";
+"Sign in to continue" = "തുടരാൻ സൈൻ ഇൻ ചെയ്യുക";
+"Your account keeps this shared event recoverable after reinstalling the app." = "ആപ്ലിക്കേഷൻ വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്ത ശേഷം നിങ്ങളുടെ അക്കൌണ്ട് ഈ പങ്കിട്ട ഇവന്റ് വീണ്ടെടുക്കാൻ സാധിക്കും.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "ഈ അക്കൌണ്ടിന്റെ ഉടമസ്ഥത App Clip അത് കലണ്ടർ ദാതാവിന്റെ ലോഗിൻസിൽ നിന്നും വേർപെടുത്തിയിരിക്കുന്നു.";
+"Sign in with Google or Apple to share and receive synced events." = "സൈൻ ഇൻ ചെയ്യുക Google അല്ലെങ്കിൽ ആപ്പിളിനോ സമന്വയിപ്പിച്ച ഇവന്റുകൾ പങ്കുവയ്ക്കാനും സ്വീകരിക്കാനും.";
+"Apple did not return an identity token." = "ആപ്പിൾ ഒരു ഐഡന്റിറ്റി ടോക്കൺ തിരികെ നൽകിയില്ല.";
+"Unable to share event" = "ഇവന്റ് പങ്കിടാൻ സാധിച്ചില്ല";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "ഇവന്റ് നിങ്ങളുടെ Cloud Calendars അക്കൌണ്ട്. ദയവായി വീണ്ടും ശ്രമിക്കുക.";
+"Google" = "Google";
+"Apple" = "ആപ്പിൾ";
+"Microsoft" = "Microsoft";
+"Connect" = "ബന്ധിപ്പിക്കുക";
+"Connected" = "ബന്ധിപ്പിച്ചിരിക്കുന്ന";
+"Sign in with at least one account" = "കുറഞ്ഞത് ഒരു അക്കൌണ്ട് ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യുക";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "ബന്ധിപ്പിക്കുക Google, ആപ്പിൾ, Microsoftഓരോ ബന്ധിപ്പിച്ച ഐഡന്റിറ്റിയും ഒരേ പങ്കിട്ട ഇവന്റ് അക്കൌണ്ട് തുറക്കുന്നു.";
+"A Premium subscription is required to connect Microsoft." = "കണക്ട് ചെയ്യുന്നതിന് പ്രീമിയം സബ്സ്ക്രിപ്ഷൻ ആവശ്യമാണ് Microsoft. .";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "ഈ ഐഡന്റിറ്റികൾ App Clip പങ്കിടലും വീണ്ടെടുക്കലും. അവ കലണ്ടർ ദാതാവിന്റെ ലോഗിൻ, സിൻക്രൊണൈസേഷനിൽ നിന്നും വേർപെടുത്താതെ തുടരുന്നു.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "സൈൻ ഇൻ ചെയ്യുക Google, ആപ്പിൾ, അല്ലെങ്കിൽ Microsoft സമന്വയിപ്പിച്ച സംഭവങ്ങള് പങ്കുവെക്കാനും സ്വീകരിക്കാനും.";
+"Share a verified email during sign-in to use synced events and invitations." = "സമന്വയിപ്പിച്ച ഇവന്റുകളും ക്ഷണങ്ങളും ഉപയോഗിക്കുന്നതിന് ലോഗിൻ ചെയ്യുമ്പോൾ സ്ഥിരീകരിച്ച ഇ-മെയിൽ പങ്കിടുക.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "ലോഗിൻ ചെയ്യുമ്പോൾ നിങ്ങൾ ഒരു സ്ഥിരീകരിച്ച ഇമെയിൽ പങ്കിടണം. കലണ്ടറുകളിലേക്കും ഇവന്റുകളിലേക്കും നിങ്ങളെ ക്ഷണിക്കാൻ ആളുകൾ അത് ഉപയോഗിക്കും.";
+"Manage connected accounts" = "കണക്ട് ചെയ്ത അക്കൌണ്ടുകൾ നിയന്ത്രിക്കുക";
+"Apple, Google, and Microsoft" = "ആപ്പിൾ, Google, ഒപ്പം Microsoft";
+"Open account sign-in" = "അക്കൌണ്ട് തുറക്കുക";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "ഒരു ഉടമ നൽകിയ ആക്സസ് പങ്കുവയ്ക്കുന്നതിനോ വീണ്ടെടുക്കുന്നതിനോ ഉപയോഗിക്കുന്നതിനോ ഒരു സ്ഥിരീകരിച്ച ഇമെയിൽ ആവശ്യമാണ്.";
+"Accept" = "അംഗീകരിക്കുക";
+"Access removed" = "ആക്സസ് നീക്കം ചെയ്തു";
+"Add a Mail account on this device, then try again." = "ഈ ഉപകരണത്തില് ഒരു മെയില് അക്കൌണ്ട് ചേര് ക്കുക, എന്നിട്ട് വീണ്ടും ശ്രമിക്കുക.";
+"Add a writable calendar before moving this event." = "ഈ ഇവന്റ് നീക്കുന്നതിനു മുമ്പ് ഒരു എഴുതിയ കലണ്ടർ ചേർക്കുക.";
+"Add everyone who should receive this calendar and choose their access." = "ഈ കലണ്ടര് സ്വീകരിക്കേണ്ടവരെ കൂട്ടിച്ചേര് ന്ന് അവരുടെ ആക്സസ് തിരഞ്ഞെടുക്കുക.";
+"Add everyone who should receive this event and choose their access." = "ഈ പരിപാടിക്ക് അർഹരായവരെ കൂട്ടിച്ചേര് ന്ന് അവരുടെ പ്രവേശനം തിരഞ്ഞെടുക്കുക.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "സേവിന് ശേഷം, %@ അവരുടെ പ്രാദേശിക പകർപ്പുകൾ വായിക്കാവുന്നതോടെ മാത്രമേ ഉള്ളൂ.";
+"Anonymous recipient" = "അജ്ഞാത സ്വീകർത്താവ്";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "ആപ്പിൾ ഒരു ഇമെയിൽ തിരികെ നൽകിയില്ല. ക്രമീകരണങ്ങളിൽ, ആപ്പിൾ ഐഡി ഉപയോഗിക്കുന്നത് അവസാനിപ്പിക്കുക Cloud Calendars, തുടർന്ന് വീണ്ടും കണക്ട് ചെയ്ത് എന്റെ ഇമെയിൽ പങ്കിടുക തിരഞ്ഞെടുക്കുക.";
+"Calendar invitation" = "കലണ്ടർ ക്ഷണം";
+"Cancel for Everyone" = "എല്ലാവര് ക്കും റദ്ദാക്കുക";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "വായനക്കാരൻ, എഴുത്തുകാരൻ, ഉടമ എന്നിവ തിരഞ്ഞെടുക്കുക. ഉടമകൾക്കും ഈ ഇവന്റ് പങ്കിടാനും ആക്സസ് നിയന്ത്രിക്കാനും കഴിയും.";
+"Choose how to share this synced event." = "ഈ സമന്വയിപ്പിച്ച സംഭവം എങ്ങനെ പങ്കുവെക്കാമെന്ന് തിരഞ്ഞെടുക്കുക.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars ഈ ഉപകരണത്തില് സെഷൻ സേവ് ചെയ്യാൻ സാധിച്ചില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.";
+"Cloud Calendars user" = "Cloud Calendars ഉപയോക്താവ്";
+"Could not add: %@." = "ചേർക്കാനായില്ലഃ %@. .";
+"Custom on this device" = "ഈ ഉപകരണത്തിന് വേണ്ടിയുള്ള കസ്റ്റം";
+"Decline" = "കുറവ്";
+"Default from creator" = "സ്രഷ്ടാവിന്റെ സ്ഥിരസ്ഥിതി";
+"Deleted by owner" = "ഉടമസ്ഥൻ നീക്കംചെയ്തു";
+"Each email address can appear only once." = "ഓരോ ഇ-മെയിൽ വിലാസത്തിനും ഒരു തവണ മാത്രമേ പ്രത്യക്ഷപ്പെടുകയുള്ളൂ.";
+"Enter a valid email address for %@." = "ഒരു സാധുവായ ഇമെയിൽ വിലാസം നൽകുക %@. .";
+"From %@" = "∙ നിന്ന് %@";
+"Invitation pending" = "ക്ഷണം കാത്തിരിക്കുന്നു";
+"Loading shared calendars…" = "പങ്കിട്ട കലണ്ടറുകൾ ലോഡുചെയ്യുന്നു...";
+"Mail is not configured" = "മെയിൽ ക്രമീകരിച്ചിട്ടില്ല";
+"Manage calendar sharing" = "കലണ്ടർ പങ്കിടൽ നിയന്ത്രിക്കുക";
+"New calendar invitation" = "പുതിയ കലണ്ടർ ക്ഷണം";
+"New event invitation" = "പുതിയ പരിപാടി ക്ഷണം";
+"No calendars have been shared with you yet." = "നിങ്ങളുമായി ഒരു കലണ്ടറും പങ്കുവെച്ചിട്ടില്ല.";
+"Open a shared event or calendar" = "പങ്കിട്ട ഒരു ഇവന്റ് അല്ലെങ്കിൽ കലണ്ടർ തുറക്കുക";
+"Open this event with Cloud Calendars:\n\n%@" = "ഈ ഇവന്റ് തുറക്കുക Cloud Calendars:\n\n%@";
+"Original creator" = "യഥാർത്ഥ സ്രഷ്ടാവ്";
+"People" = "ജനങ്ങള്";
+"People appear here after they add the event." = "ഇവന്റ് ചേര് ന്നതിനു ശേഷം ആളുകൾ ഇവിടെ വന്നു.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "ഒരു സ്ഥലം Cloud Calendars സംഭവം അല്ലെങ്കിൽ കലണ്ടർ QR ഫ്രെയിമിന് റെ ഉള്ളില് കോഡ്.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "വായനക്കാരന് കാണാനും സമന്വയിപ്പിക്കാനും കഴിയും. എഴുത്തുകാരന് എഡിറ്റുചെയ്യാനും കഴിയും. ക്ഷണിച്ച ഇമെയിൽ ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്ത ശേഷം ഉടമയ്ക്ക് ആക്സസ് പങ്കിടാനും നിയന്ത്രിക്കാനും കഴിയും.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "വായനക്കാരന് കാണാനും എഴുത്തുകാരന് ഇവന്റുകൾ എഡിറ്റുചെയ്യാനും ഉടമയ്ക്ക് കലണ്ടർ പങ്കുവയ്ക്കാനും ആക്സസ് നിയന്ത്രിക്കാനും കഴിയും.";
+"Remove" = "നീക്കം ചെയ്യുക";
+"Remove Shared Calendar?" = "പങ്കിട്ട കലണ്ടർ നീക്കം ചെയ്യുക?";
+"Remove from My Calendars" = "എന്റെ കലണ്ടറുകളിൽ നിന്ന് നീക്കം ചെയ്യുക";
+"Resend" = "വീണ്ടും അയയ്ക്കുക";
+"Scan QR Code" = "സ്കാൻ ചെയ്യുക QR കോഡ്";
+"Scan to open this calendar" = "ഈ കലണ്ടർ തുറക്കുന്നതിന് സ്കാൻ ചെയ്യുക";
+"Scan to open this event" = "ഈ സംഭവം തുറക്കുന്നതിന് സ്കാൻ ചെയ്യുക";
+"Server returned %lld: %@" = "സെർവർ തിരികെ %lld: %@";
+"Shared calendar" = "പങ്കിട്ട കലണ്ടർ";
+"Shared calendar information" = "പങ്കിട്ട കലണ്ടർ വിവരങ്ങൾ";
+"Shared event: %@" = "പങ്കിട്ട പരിപാടിഃ %@";
+"Sign in or manage accounts" = "അക്കൌണ്ടുകൾ ലോഗിൻ ചെയ്യുകയോ നിയന്ത്രിക്കുകയോ ചെയ്യുക";
+"Sign in to manage event access." = "ഇവന്റ് ആക്സസ് നിയന്ത്രിക്കുന്നതിന് ലോഗിൻ ചെയ്യുക.";
+"Sign in to save event access." = "ഇവന്റ് ആക്സസ് സംരക്ഷിക്കാൻ ലോഗിൻ ചെയ്യുക.";
+"Sign in to see calendars shared with you." = "നിങ്ങളുമായി പങ്കിട്ട കലണ്ടറുകൾ കാണാനായി സൈൻ ഇൻ ചെയ്യുക.";
+"Sign-in couldn’t open. Please try again." = "രജിസ്ട്രേഷൻ തുറക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "ഈ കലണ്ടർ പങ്കുവയ്ക്കുന്നത് അവസാനിപ്പിക്കുക %@സേവിനു ശേഷം, അവരുടെ മരവിപ്പിച്ച പകർപ്പും ഇവന്റുകളും അവയിലൂടെ ഒരു വരി കൊണ്ട് ദൃശ്യമാകും.";
+"The calendar and its events will be removed only from this device." = "ഈ ഉപകരണത്തിൽ നിന്നും മാത്രം കലണ്ടറും അതിന്റെ സംഭവങ്ങളും നീക്കം ചെയ്യപ്പെടും.";
+"The provider didn’t return the information required to sign in." = "സൈൻ ഇൻ ചെയ്യുന്നതിന് ആവശ്യമായ വിവരങ്ങൾ ദാതാവ് തിരിച്ചു തന്നില്ല.";
+"The provider returned an invalid response." = "ദാതാവ് അസാധുവായ മറുപടി നല് കി.";
+"The sign-in response couldn’t be verified. Please try again." = "സൈൻ ഇൻ റെസ്പോൺസ് സ്ഥിരീകരിക്കാനായില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.";
+"The sign-in response was invalid. Please try again." = "സൈൻ ഇൻ റെസ്പോൺസ് അസാധുവായി. ദയവായി വീണ്ടും ശ്രമിക്കുക.";
+"This changes only your local copy. Shared event details stay read-only." = "ഇത് നിങ്ങളുടെ പ്രാദേശിക പകർപ്പുകള് മാത്രം മാറ്റുന്നു. പങ്കിട്ട ഇവന്റ് വിശദാംശങ്ങള് വായിക്കാവുന്നതുമാത്രമാണ്.";
+"This color changes only on this device." = "ഈ ഉപകരണം മാത്രം ഈ നിറം മാറ്റുന്നു.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "ഈ QR കോഡിൽ ഒരു Cloud Calendars ഇവന്റ് അല്ലെങ്കിൽ കലണ്ടർ.";
+"This QR code does not contain a Cloud Calendars share." = "ഈ QR കോഡിൽ ഒരു Cloud Calendars പങ്കുവെക്കുക.";
+"This removes only your local copy. Other people keep access." = "ഇത് നിങ്ങളുടെ പ്രാദേശിക പകർപ്പ് മാത്രം നീക്കം ചെയ്യുന്നു. മറ്റുള്ളവർ ആക്സസ് സൂക്ഷിക്കുന്നു.";
+"Try again" = "വീണ്ടും ശ്രമിക്കുക";
+"Unable to Update Calendar" = "കലണ്ടർ അപ്ഡേറ്റ് ചെയ്യാനായില്ല";
+"Unable to add calendar" = "കലണ്ടർ ചേർക്കാനായില്ല";
+"Unreadable response from the server" = "സെർവറിൽ നിന്നും വായിക്കാത്ത പ്രതികരണം";
+"Use Apple, Google, or Microsoft." = "ആപ്പിളിന്റെ ഉപയോഗം Googleഅല്ലെങ്കിൽ Microsoft. .";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "ഒരു ക്യാമറ ഉപയോഗിച്ച് ഒരു സ്കാൻ ചെയ്യാം. Cloud Calendars QR കോഡ്.";
+"You can add up to 50 people at once." = "ഒരേ സമയം 50 പേരെ കൂട്ടാം.";
+"You can send up to 50 invitations at once." = "ഒരേ സമയം 50 ക്ഷണികള് വരെ അയയ്ക്കാൻ കഴിയും.";
+"%lld connected account" = "%lld കണക്ട് ചെയ്ത അക്കൌണ്ട്";
+"%lld connected accounts" = "%lld കണക്ട് ചെയ്ത അക്കൌണ്ടുകൾ";
+"%lld pending invitation" = "%lld ക്ഷണം കാത്തിരിക്കുകയാണ്";
+"%lld pending invitations" = "%lld കാത്തിരിക്കുന്ന ക്ഷണങ്ങൾ";
+"%lld upcoming event" = "%lld വരാനിരിക്കുന്ന സംഭവം";
+"%lld upcoming events" = "%lld വരാനിരിക്കുന്ന സംഭവങ്ങള്";
+"%@ invited you to %@" = "%@ നിങ്ങളെ ക്ഷണിച്ചു %@";

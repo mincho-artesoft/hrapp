@@ -9,3 +9,5 @@
 "NSLocationWhenInUseUsageDescription" = "A Cloud Calendars aktív állapotban használja az Ön tartózkodási helyét, hogy a pontos helyi időjárás-előrejelzéseket közvetlenül a naptárába integrálja.";
 
 "NSCalendarsFullAccessUsageDescription" = "A Cloud Calendars naptári hozzáférést igényel, hogy egyesítse a iCloud, Google és Microsoft naptárak eseményeit, lehetővé téve a zökkenőmentes ütemezést.";
+
+"NSCameraUsageDescription" = "A Cloud Calendars a kamerát a megosztott események és naptárak QR-kódjainak beolvasásához használja.";

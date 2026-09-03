@@ -1,0 +1,13 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars потребує доступу до календаря для об'єднання ваших подій з iCloud, Google, і Microsoft calendars, що дозволяє безперервно планувати.";
+
+"NSContactsUsageDescription" = "Cloud Calendars використовує ваші контакти для спрощення запрошення на події та легкого управління деталями учасників.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars доступ до вашого місця розташування навіть під час закриття додатку, надаючи точні прогнози погоди і своєчасні попередження про заплановані події.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars використовує місце розташування, коли він працює, щоб інтегрувати точні місцеві прогнози погоди безпосередньо в свій календар.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars потребує доступу до календаря для об'єднання ваших подій з iCloud, Google, і Microsoft calendars, що дозволяє безперервно планувати.";
+
+"NSCameraUsageDescription" = "Cloud Calendars використовує камеру для сканування QR-кодів спільних подій і календарів.";
