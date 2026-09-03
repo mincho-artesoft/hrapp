@@ -14,6 +14,8 @@ struct CalendarApp: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+    @StateObject private var appPreferences = AppPreferences.shared
+
     @AppStorage("subscriptionStatus")
     private var storedSubscriptionStatusRaw: String = SubscriptionCategory.base.rawValue
 
@@ -69,6 +71,8 @@ struct CalendarApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environment(\.locale, appPreferences.interfaceLocale)
+                .environment(\.layoutDirection, appPreferences.layoutDirection)
                 .onAppear {
                     EventNotificationManager.shared.configure()
                     EventNotificationManager.shared.requestAuthorizationOnLaunch()
@@ -226,24 +230,9 @@ struct CalendarApp: App {
 
         GlobalState.calendar = String(describing: calendar.identifier)
 
-        let temp = Measurement(value: 9, unit: UnitTemperature.celsius)
-        let formattedTemp = temp.formatted(.measurement(width: .abbreviated, usage: .person, numberFormatStyle: .number))
-        let unit = formattedTemp.firstIndex(of: "F") != nil ? UnitTemperature.fahrenheit : UnitTemperature.celsius
-        GlobalState.temperatureUnit = unit.symbol
-
-        GlobalState.measurementSystem = (locale.measurementSystem == .metric) ? "Metric" : "Imperial"
         GlobalState.firstWeekday = calendar.firstWeekday
 
-        let df = DateFormatter()
-        df.locale = locale
-        df.dateStyle = .short
-        GlobalState.dateFormat = df.dateFormat ?? ""
-
-        GlobalState.timeFormat = DateFormatter.dateFormat(
-            fromTemplate: "j:mm",
-            options: 0,
-            locale: locale
-        ) ?? "HH:mm"
+        appPreferences.applyFormattingPreferences()
 
         let nf = NumberFormatter()
         nf.locale = locale

@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Jazyk";
+"Measurement Units" = "Měrné jednotky";
+"Date Format" = "Formát data";
+"Time Format" = "Formát času";
+"System" = "Systémové";
+"Metric" = "Metrické";
+"Imperial" = "Imperiální";
+
 /* RequestEmailView */
 "%lld event" = "%lld událost";
 "%lld events" = "%lld události";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lldnadcházející událost";
 "%lld upcoming events" = "%lldnadcházející události";
 "%@ invited you to %@" = "%@pozvaný na%@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner prohledá vaši knihovnu fotografií a vyhledá snímky obrazovky, duplikáty a podobné snímky. Rychle je vyčistěte, abyste získali volné úložiště, zatímco veškerá analýza zůstane soukromá ve vašem zařízení.";
+"Promo.PureStrike.description" = "PureStrike Billiard vám umožní hrát 8-ball online, proti AI nebo s přáteli na jednom zařízení. Vylaďte zamíření, sílu, rotaci, pohled kamery, pravidla a průvodce střely pro každý zápas.";
+"Promo.StarFront.description" = "Survival: StarFront je třípruhová sci-fi obranná hra, kde přesouváte svůj tým mezi pruhy, zatímco každý voják automaticky střílí. Přizpůsobte svou formaci a přežijte postupující nepřátelské vlny.";
+"Promo.PolyCore.description" = "PolyCore TD je arkádová hra pro přežití v obranné věži, kde chráníte centrální věž před neúprosnými geometrickými nepřáteli. Při každém běhu získejte vylepšení, kombinujte zbraně a vybudujte jiný arzenál.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant je pracovní prostor pro produktivitu AI pro živé konverzace zahájené uživateli. Používejte přepis v reálném čase, kontextovou pomoc, poznámky a následné akce během schůzek, brainstormingu, překladu, plánování a učení.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive vám pomůže ušetřit úložiště bez mazání vzpomínek. Převádí fotografie do vysoce komprimovaných videoarchivů, zachovává váš obsah a zároveň usnadňuje organizaci a ukládání velkých sbírek.";
+"Promo.DreamsCalendar.description" = "Kalendář snů je soukromý deník snů, sledovač nálad a deník úvah pro noční a denní sny. Zaznamenávejte zážitky a emoce a pak si všímejte vzorců ve vašich dnech, spánku a představivosti.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle je relaxační třídicí hra v zářivé futuristické laboratoři. Nalévejte barevné tekutiny mezi skleněné zkumavky, dokud se každá barva neoddělí, protože každý experiment se stává složitějším.";
+"Promo.GlanceStudio.description" = "Glance Studio vám pomůže vytvořit filmová videa ve stylu chatu pro sociální média, reklamu a vyprávění příběhů. Vytvářejte animované konverzace v realistických 3D zařízeních, simulujte psaní, připojte média a exportujte poutavý vertikální obsah.";
+"Promo.Wonek.description" = "Wonek Video Studio přemění nezpracované záběry na obsah připravený k publikování. Najděte silné momenty, vytvářejte ostré klipy, přidejte čisté titulky a hlasové komentáře převodu textu na řeč a poté upravte video a zvuk v jednom soustředěném pracovním postupu.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop přináší do vašeho Macu tvorbu videí ve stylu filmového chatu. Vytvářejte animované konverzace v realistických 3D zařízeních, simulujte psaní, připojujte fotografie a videa a exportujte vertikální obsah pro sociální média.";

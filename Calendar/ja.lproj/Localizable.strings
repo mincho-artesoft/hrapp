@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "言語";
+"Measurement Units" = "単位系";
+"Date Format" = "日付形式";
+"Time Format" = "時刻形式";
+"System" = "システム";
+"Metric" = "メートル法";
+"Imperial" = "ヤード・ポンド法";
+
 /* RequestEmailView */
 "%lld event" = "%lld件のイベント";
 "%lld events" = "%lld件のイベント";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lld 予定イベント";
 "%lld upcoming events" = "%lld 今後のイベント";
 "%@ invited you to %@" = "%@お問い合わせ%@";
+
+"Promo.FastestScreenshotCleaner.description" = "最速のスクリーンショット クリーナーは、写真ライブラリをスキャンして、スクリーンショット、重複、および同様のキャプチャを探します。すべての分析はデバイス上に非公開のままでありながら、すぐにクリーンアップしてストレージを解放します。";
+"Promo.PureStrike.description" = "PureStrike Billiard を使用すると、1 つのデバイスでオンラインで AI と対戦したり、友達と 8 ボールをプレイしたりできます。試合ごとに狙い、パワー、スピン、カメラビュー、ルール、ショットガイドを微調整します。";
+"Promo.StarFront.description" = "Survival: StarFront は 3 レーンの SF ディフェンス ゲームで、各兵士が自動的に発砲しながらレーン間で分隊を移動します。フォーメーションを調整して、迫り来る敵の波を乗り切りましょう。";
+"Promo.PolyCore.description" = "PolyCore TD は、容赦ない幾何学的な敵から中央の砲塔を守るアーケード タワーディフェンス サバイバル ゲームです。実行するたびにアップグレードを獲得し、武器を組み合わせて、異なる武器庫を構築します。";
+"Promo.RealtimeAssistant.description" = "GPT リアルタイム アシスタントは、ユーザーが開始するライブ会話のための AI 生産性ワークスペースです。会議、ブレーンストーミング、翻訳、計画、学習中に、リアルタイムの文字起こし、コンテキスト アシスタント、メモ、フォローアップ アクションを使用できます。";
+"Promo.PhotoArchive.description" = "Photo2Video Archive は、思い出を削除せずにストレージを節約するのに役立ちます。写真を高度に圧縮されたビデオ アーカイブに変換し、コンテンツを保存しながら、大規模なコレクションの整理と保存を容易にします。";
+"Promo.DreamsCalendar.description" = "Dreams Calendar は、個人的な夢日記、気分トラッカー、昼夜の夢の反省日記です。経験や感情を記録し、日々の生活、睡眠、想像力のパターンに気づきます。";
+"Promo.LiquidColorPuzzle.description" = "リキッド カラー パズルは、輝く未来の研究室で楽しめるリラックスできる分類ゲームです。実験が複雑になるにつれて、すべての色が分離されるまでガラス管の間に色付きの液体を注ぎます。";
+"Promo.GlanceStudio.description" = "Glance Studio は、ソーシャル メディア、広告、ストーリーテリング用の映画のようなチャット スタイルのビデオを作成するのに役立ちます。リアルな 3D デバイス内でアニメーション化された会話を構築し、タイピングをシミュレートし、メディアを添付し、魅力的な垂直コンテンツをエクスポートします。";
+"Promo.Wonek.description" = "Wonek Video Studio は、生の映像を公開可能なコンテンツに変換します。力強い瞬間を見つけ、鮮明なクリップを作成し、きれいな字幕とテキスト読み上げのナレーションを追加して、集中した 1 つのワークフローでビデオとオーディオを磨きます。";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop は、映画のようなチャット スタイルのビデオ作成を Mac にもたらします。リアルな 3D デバイス内でアニメーション化された会話を構築し、タイピングをシミュレートし、写真やビデオを添付し、ソーシャル メディア用の垂直コンテンツをエクスポートします。";

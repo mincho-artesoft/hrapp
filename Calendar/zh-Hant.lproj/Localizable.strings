@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "語言";
+"Measurement Units" = "測量單位";
+"Date Format" = "日期格式";
+"Time Format" = "時間格式";
+"System" = "系統";
+"Metric" = "公制";
+"Imperial" = "英制";
+
 /* RequestEmailView */
 "%lld event" = "%lld 個事件";
 "%lld events" = "%lld 個事件";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lld 下一個事件";
 "%lld upcoming events" = "%lld 即将举行的事件";
 "%@ invited you to %@" = "%@邀請你來%@";
+
+"Promo.FastestScreenshotCleaner.description" = "最快的螢幕截圖清理器會掃描您的照片庫以查找螢幕截圖、重複項和類似的擷取內容。快速清理它們以釋放儲存空間，同時所有分析都私密地保存在您的裝置上。";
+"Promo.PureStrike.description" = "PureStrike Billiard 可讓您在一台裝置上線上玩 8 球、與 AI 對抗或與朋友一起玩。為每場比賽微調瞄準、力量、旋轉、攝影機視圖、規則和擊球指南。";
+"Promo.StarFront.description" = "Survival: StarFront 是一款三車道科幻防禦遊戲，您可以在車道之間移動您的小隊，同時每個士兵都會自動開火。調整你的陣型並在前進的敵軍中生存。";
+"Promo.PolyCore.description" = "PolyCore TD 是一款街機塔防生存遊戲，您可以在其中保護中央砲塔免受無情的幾何敵人的侵害。在每次跑步中獲得升級、組合武器並建造不同的軍械庫。";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant 是一個 AI 生產力工作區，用於用戶發起的即時對話。在會議、腦力激盪、翻譯、計劃和學習期間使用即時轉錄、上下文幫助、註釋和後續行動。";
+"Promo.PhotoArchive.description" = "Photo2Video Archive 可協助您節省儲存空間，而無需刪除記憶。它將照片轉換為高度壓縮的影片檔案，保留您的內容，同時使大型收藏更容易組織和儲存。";
+"Promo.DreamsCalendar.description" = "夢想日曆是一個私人夢想日記、情緒追蹤器和夜間和白天夢想的反思日記。記錄經歷和情緒，然後注意你的日常生活、睡眠和想像的模式。";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle 是一款在發光的未來實驗室中進行的輕鬆分類遊戲。將有色液體倒入玻璃管之間，直到每個實驗變得更加複雜，每種顏色都被分開。";
+"Promo.GlanceStudio.description" = "Glance Studio 可協助您為社群媒體、廣告和說故事創建電影聊天風格的影片。在逼真的 3D 裝置內建立動畫對話、模擬打字、附加媒體並匯出引人入勝的垂直內容。";
+"Promo.Wonek.description" = "Wonek Video Studio 將原始素材轉換為可發佈的內容。找到精彩瞬間，創建清晰的剪輯，添加清晰的字幕和文字轉語音配音，然後在一個集中的工作流程中完善視訊和音訊。";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop 為您的 Mac 帶來了戲院式聊天風格的影片創作。在逼真的 3D 裝置內建立動畫對話、模擬打字、附加照片和影片以及匯出社群媒體的垂直內容。";

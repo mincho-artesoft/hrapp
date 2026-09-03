@@ -14,10 +14,12 @@ struct SubscriptionCard: View {
                 VStack(alignment: .leading, spacing: 5) {
                     Text(product.periodUnitOnly)
                         .font(.headline)
-                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
                     Text(product.displayPrice)
                         .font(.title2.weight(.semibold))
-                        .adaptiveSingleLine(minimumScale: 0.55)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
                     
                     // → локализирано чрез NSLocalizedString + localizedFormat()
                     if let monthly = product.pricePerMonth,

@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Sprache";
+"Measurement Units" = "Maßeinheiten";
+"Date Format" = "Datumsformat";
+"Time Format" = "Zeitformat";
+"System" = "System";
+"Metric" = "Metrisch";
+"Imperial" = "Imperial";
+
 /* RequestEmailView */
 "%lld event" = "%lld Ereignis";
 "%lld events" = "%lld Ereignisse";
@@ -944,3 +953,15 @@
 "%lld upcoming event" = "%lld bevorstehende Veranstaltung";
 "%lld upcoming events" = "%lld kommende Veranstaltungen";
 "%@ invited you to %@" = "%@ hat Sie zu %@ eingeladen";
+
+"Promo.FastestScreenshotCleaner.description" = "Der schnellste Screenshot-Reiniger durchsucht Ihre Fotobibliothek nach Screenshots, Duplikaten und ähnlichen Aufnahmen. Bereinigen Sie sie schnell, um Speicherplatz freizugeben, während alle Analysen privat auf Ihrem Gerät bleiben.";
+"Promo.PureStrike.description" = "Mit PureStrike Billiard können Sie 8-Ball online, gegen KI oder mit Freunden auf einem Gerät spielen. Passen Sie Ziel, Kraft, Spin, Kameraansichten, Regeln und Schusshilfen für jedes Spiel an.";
+"Promo.StarFront.description" = "Survival: StarFront ist ein dreispuriges Science-Fiction-Verteidigungsspiel, bei dem Sie Ihren Trupp zwischen den Reihen bewegen, während jeder Soldat automatisch feuert. Passen Sie Ihre Formation an und überleben Sie die vorrückenden feindlichen Wellen.";
+"Promo.PolyCore.description" = "PolyCore TD ist ein Arcade-Tower-Defense-Überlebensspiel, in dem Sie einen zentralen Turm vor unerbittlichen geometrischen Feinden schützen. Verdiene Upgrades, kombiniere Waffen und baue bei jedem Lauf ein anderes Arsenal auf.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant ist ein KI-Produktivitätsarbeitsbereich für vom Benutzer gestartete Live-Gespräche. Nutzen Sie Echtzeit-Transkription, kontextbezogene Unterstützung, Notizen und Folgeaktionen bei Besprechungen, Brainstorming, Übersetzung, Planung und Lernen.";
+"Promo.PhotoArchive.description" = "Mit Photo2Video Archive können Sie Speicherplatz sparen, ohne Erinnerungen zu löschen. Es wandelt Fotos in hochkomprimierte Videoarchive um, bewahrt Ihre Inhalte und erleichtert gleichzeitig die Organisation und Speicherung großer Sammlungen.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar ist ein privates Traumtagebuch, Stimmungstracker und Reflexionstagebuch für Nacht- und Tagträume. Zeichnen Sie Erfahrungen und Emotionen auf und bemerken Sie dann Muster in Ihren Tagen, Ihrem Schlaf und Ihrer Vorstellungskraft.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle ist ein entspannendes Sortierspiel in einem leuchtenden futuristischen Labor. Gießen Sie farbige Flüssigkeiten zwischen Glasröhrchen, bis jede Farbe getrennt ist, da jedes Experiment komplexer wird.";
+"Promo.GlanceStudio.description" = "Mit Glance Studio können Sie filmische Videos im Chat-Stil für soziale Medien, Werbung und Storytelling erstellen. Erstellen Sie animierte Gespräche in realistischen 3D-Geräten, simulieren Sie das Tippen, hängen Sie Medien an und exportieren Sie ansprechende vertikale Inhalte.";
+"Promo.Wonek.description" = "Wonek Video Studio verwandelt Rohmaterial in veröffentlichungsbereite Inhalte. Finden Sie starke Momente, erstellen Sie scharfe Clips, fügen Sie klare Untertitel und Text-to-Speech-Voiceovers hinzu und optimieren Sie dann Video und Audio in einem konzentrierten Workflow.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop bringt filmische Videoerstellung im Chat-Stil auf Ihren Mac. Erstellen Sie animierte Gespräche in realistischen 3D-Geräten, simulieren Sie das Tippen, hängen Sie Fotos und Videos an und exportieren Sie vertikale Inhalte für soziale Medien.";

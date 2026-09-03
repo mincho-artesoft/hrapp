@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Idioma";
+"Measurement Units" = "Unitats de mesura";
+"Date Format" = "Format de data";
+"Time Format" = "Format d’hora";
+"System" = "Sistema";
+"Metric" = "Mètric";
+"Imperial" = "Imperial";
+
 /* RequestEmailView */
 "%lld event" = "%lld Evèniment";
 "%lld events" = "%lld esdeveniments";
@@ -949,3 +958,15 @@
 "%lld upcoming event" = "%lld l'acte que està a punt de passar";
 "%lld upcoming events" = "%lld esdeveniments propensos";
 "%@ invited you to %@" = "%@ t'invita a %@";
+
+"Promo.FastestScreenshotCleaner.description" = "El netejador de captures de pantalla més ràpid escaneja la vostra biblioteca de fotos a la recerca de captures de pantalla, duplicats i captures similars. Netegeu-los ràpidament per obtenir emmagatzematge gratuït mentre totes les anàlisis es mantenen de manera privada al vostre dispositiu.";
+"Promo.PureStrike.description" = "PureStrike Billiard et permet jugar a boles 8 en línia, contra la IA o amb amics en un sol dispositiu. Ajusta l'objectiu, la potència, el gir, les vistes de la càmera, les regles i les guies de trets per a cada partit.";
+"Promo.StarFront.description" = "Survival: StarFront és un joc de defensa de ciència-ficció de tres carrils on mous el teu equip entre els carrils mentre cada soldat dispara automàticament. Adapta la teva formació i sobreviu a les onades enemigues que avancen.";
+"Promo.PolyCore.description" = "PolyCore TD és un joc de supervivència arcade de defensa de torres on protegeix una torreta central dels implacables enemics geomètrics. Aconsegueix millores, combina armes i crea un arsenal diferent durant cada carrera.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant és un espai de treball de productivitat d'IA per a converses en directe iniciades per l'usuari. Utilitzeu la transcripció en temps real, l'assistència contextual, les notes i les accions de seguiment durant les reunions, la pluja d'idees, la traducció, la planificació i l'aprenentatge.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive us ajuda a estalviar emmagatzematge sense esborrar records. Transforma les fotos en arxius de vídeo altament comprimits, conservant el vostre contingut alhora que facilita l'organització i l'emmagatzematge de col·leccions grans.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar és un diari privat de somnis, un seguiment de l'estat d'ànim i un diari de reflexió per a somnis de nit i de dia. Enregistra experiències i emocions i, després, observa els patrons dels teus dies, son i imaginació.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle és un joc de classificació relaxant en un laboratori futurista brillant. Aboqueu líquids de colors entre tubs de vidre fins que cada color es separi a mesura que cada experiment es fa més complex.";
+"Promo.GlanceStudio.description" = "Glance Studio t'ajuda a crear vídeos d'estil de xat cinematogràfic per a xarxes socials, publicitat i narració. Crea converses animades dins de dispositius 3D realistes, simula l'escriptura, adjunta contingut multimèdia i exporta contingut vertical atractiu.";
+"Promo.Wonek.description" = "Wonek Video Studio converteix les imatges en brut en contingut llest per publicar. Trobeu moments forts, creeu clips nítids, afegiu subtítols nets i veus en off de text a veu, i després poliu el vídeo i l'àudio en un flux de treball centrat.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop ofereix la creació de vídeos d'estil de xat cinematogràfic al vostre Mac. Crea converses animades dins de dispositius 3D realistes, simula l'escriptura, adjunta fotos i vídeos i exporta contingut vertical per a xarxes socials.";

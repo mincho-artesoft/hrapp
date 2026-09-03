@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Limbă";
+"Measurement Units" = "Unități de măsură";
+"Date Format" = "Format dată";
+"Time Format" = "Format oră";
+"System" = "Sistem";
+"Metric" = "Metric";
+"Imperial" = "Imperial";
+
 /* RequestEmailView */
 "%lld event" = "%lld eveniment";
 "%lld events" = "%lld evenimente";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lld eveniment viitor";
 "%lld upcoming events" = "%lld evenimente viitoare";
 "%@ invited you to %@" = "%@ invitat să %@";
+
+"Promo.FastestScreenshotCleaner.description" = "Cel mai rapid Screenshot Cleaner scanează biblioteca dvs. de fotografii pentru capturi de ecran, duplicate și capturi similare. Curățați-le rapid pentru a obține spațiu de stocare gratuit, în timp ce toate analizele rămân private pe dispozitivul dvs.";
+"Promo.PureStrike.description" = "PureStrike Billiard vă permite să jucați 8-ball online, împotriva AI sau cu prietenii pe un singur dispozitiv. Ajustați țintirea, puterea, rotirea, vizualizările camerei, regulile și ghidurile de fotografiere pentru fiecare meci.";
+"Promo.StarFront.description" = "Supraviețuire: StarFront este un joc de apărare SF cu trei benzi în care îți muți echipa între benzi în timp ce fiecare soldat trage automat. Adaptați-vă formația și supraviețuiți valurilor inamice care avansează.";
+"Promo.PolyCore.description" = "PolyCore TD este un joc de supraviețuire arcade cu apărare în turn în care protejezi o turelă centrală de inamicii geometrici necruțători. Câștigă upgrade-uri, combină arme și construiește un arsenal diferit în timpul fiecărei curse.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant este un spațiu de lucru de productivitate AI pentru conversațiile live inițiate de utilizator. Folosiți transcrierea în timp real, asistența contextuală, note și acțiuni ulterioare în timpul întâlnirilor, brainstormingului, traducerii, planificării și învățării.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive vă ajută să economisiți spațiu de stocare fără a șterge amintirile. Transformă fotografiile în arhive video foarte comprimate, păstrându-ți conținutul în timp ce fac colecții mari mai ușor de organizat și stocat.";
+"Promo.DreamsCalendar.description" = "Calendarul Viselor este un jurnal privat de vise, un monitor al stării de spirit și un jurnal de reflecție pentru visele de noapte și de zi. Înregistrați experiențele și emoțiile, apoi observați modele de-a lungul zilelor, somnului și imaginației.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle este un joc relaxant de sortare într-un laborator futurist strălucitor. Turnați lichide colorate între tuburile de sticlă până când fiecare culoare este separată, pe măsură ce fiecare experiment devine mai complex.";
+"Promo.GlanceStudio.description" = "Glance Studio vă ajută să creați videoclipuri cinematografice în stil chat pentru rețelele sociale, publicitate și povestiri. Creați conversații animate în interiorul dispozitivelor 3D realiste, simulați tastarea, atașați conținut media și exportați conținut vertical captivant.";
+"Promo.Wonek.description" = "Wonek Video Studio transformă filmările brute în conținut gata de publicare. Găsiți momente puternice, creați clipuri clare, adăugați subtitrări curate și voce off text-to-speech, apoi îmbunătățiți videoclipurile și audio într-un singur flux de lucru concentrat.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop aduce pe Mac-ul dvs. crearea video cinematografică în stil chat. Creați conversații animate în interiorul dispozitivelor 3D realiste, simulați tastarea, atașați fotografii și videoclipuri și exportați conținut vertical pentru rețelele sociale.";

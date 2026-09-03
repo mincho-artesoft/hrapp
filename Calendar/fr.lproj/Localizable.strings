@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Langue";
+"Measurement Units" = "Unités de mesure";
+"Date Format" = "Format de date";
+"Time Format" = "Format de l’heure";
+"System" = "Système";
+"Metric" = "Métrique";
+"Imperial" = "Impérial";
+
 /* RequestEmailView */
 "%lld event" = "%lld événement";
 "%lld events" = "%lld événements";
@@ -942,3 +951,15 @@
 "%lld upcoming event" = "%lld événement à venir";
 "%lld upcoming events" = "%lld événements à venir";
 "%@ invited you to %@" = "%@ vous a invité à %@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner analyse votre photothèque à la recherche de captures d'écran, de doublons et de captures similaires. Nettoyez-les rapidement pour libérer de l'espace de stockage tandis que toutes les analyses restent en privé sur votre appareil.";
+"Promo.PureStrike.description" = "PureStrike Billiard vous permet de jouer à 8 balles en ligne, contre l'IA ou avec des amis sur un seul appareil. Affinez la visée, la puissance, la rotation, les vues de la caméra, les règles et les guides de tir pour chaque match.";
+"Promo.StarFront.description" = "Survival : StarFront est un jeu de défense de science-fiction à trois voies dans lequel vous déplacez votre équipe entre les voies pendant que chaque soldat tire automatiquement. Adaptez votre formation et survivez à l'avancée des vagues ennemies.";
+"Promo.PolyCore.description" = "PolyCore TD est un jeu de survie de tower defense d'arcade dans lequel vous protégez une tourelle centrale des ennemis géométriques implacables. Gagnez des améliorations, combinez des armes et construisez un arsenal différent à chaque course.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant est un espace de travail de productivité IA pour les conversations en direct démarrées par les utilisateurs. Utilisez la transcription en temps réel, l'assistance contextuelle, les notes et les actions de suivi lors des réunions, du brainstorming, de la traduction, de la planification et de l'apprentissage.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive vous aide à économiser du stockage sans supprimer de souvenirs. Il transforme les photos en archives vidéo hautement compressées, préservant votre contenu tout en facilitant l'organisation et le stockage de grandes collections.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar est un journal de rêves privé, un suivi de l'humeur et un journal de réflexion pour les rêves nocturnes et diurnes. Enregistrez vos expériences et vos émotions, puis remarquez les tendances de vos journées, de votre sommeil et de votre imagination.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle est un jeu de tri relaxant dans un laboratoire futuriste lumineux. Versez des liquides colorés entre des tubes en verre jusqu'à ce que chaque couleur soit séparée à mesure que chaque expérience devient plus complexe.";
+"Promo.GlanceStudio.description" = "Glance Studio vous aide à créer des vidéos cinématographiques de style chat pour les réseaux sociaux, la publicité et la narration. Créez des conversations animées dans des appareils 3D réalistes, simulez la saisie, joignez des médias et exportez du contenu vertical attrayant.";
+"Promo.Wonek.description" = "Wonek Video Studio transforme les séquences brutes en contenu prêt à être publié. Trouvez des moments forts, créez des clips nets, ajoutez des sous-titres clairs et des voix off de synthèse vocale, puis peaufinez la vidéo et l'audio dans un flux de travail ciblé.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop apporte la création vidéo de type chat cinématographique sur votre Mac. Créez des conversations animées dans des appareils 3D réalistes, simulez la saisie, joignez des photos et des vidéos et exportez du contenu vertical pour les réseaux sociaux.";

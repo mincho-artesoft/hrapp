@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Sprog";
+"Measurement Units" = "Måleenheder";
+"Date Format" = "Datoformat";
+"Time Format" = "Tidsformat";
+"System" = "System";
+"Metric" = "Metrisk";
+"Imperial" = "Imperial";
+
 /* RequestEmailView */
 "%lld event" = "%lld begivenhed";
 "%lld events" = "%lld begivenheder";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lldkommende begivenhed";
 "%lld upcoming events" = "%lldkommende begivenheder";
 "%@ invited you to %@" = "%@Inviterede dig til%@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner scanner dit fotobibliotek for skærmbilleder, dubletter og lignende optagelser. Ryd dem hurtigt op for at få fri lagerplads, mens al analyse forbliver privat på din enhed.";
+"Promo.PureStrike.description" = "PureStrike Billiard lader dig spille 8-bold online, mod AI eller med venner på én enhed. Finjuster sigte, kraft, spin, kameravisninger, regler og skudguider for hver kamp.";
+"Promo.StarFront.description" = "Survival: StarFront er et tre-banes sci-fi-forsvarsspil, hvor du flytter dit hold mellem banerne, mens hver soldat skyder automatisk. Tilpas din formation og overlev fjendens fremrykkende bølger.";
+"Promo.PolyCore.description" = "PolyCore TD er et arkadetårn-forsvars-overlevelsesspil, hvor du beskytter et centralt tårn mod ubarmhjertige geometriske fjender. Tjen opgraderinger, kombiner våben, og byg et andet arsenal under hver løbetur.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant er et AI-produktivitetsarbejdsområde til brugerstartede livesamtaler. Brug transskription i realtid, kontekstuel assistance, noter og opfølgende handlinger under møder, brainstorming, oversættelse, planlægning og læring.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive hjælper dig med at spare lagerplads uden at slette minder. Det forvandler fotos til meget komprimerede videoarkiver, bevarer dit indhold, mens det gør store samlinger nemmere at organisere og gemme.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar er en privat drømmedagbog, humørsporing og refleksionsdagbog til nat- og dagdrømme. Optag oplevelser og følelser, og læg derefter mærke til mønstre på tværs af dine dage, søvn og fantasi.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle er et afslappende sorteringsspil i et glødende futuristisk laboratorium. Hæld farvede væsker mellem glasrør, indtil hver farve er adskilt, efterhånden som hvert eksperiment bliver mere komplekst.";
+"Promo.GlanceStudio.description" = "Glance Studio hjælper dig med at skabe filmiske chat-videoer til sociale medier, reklamer og historiefortælling. Byg animerede samtaler inde i realistiske 3D-enheder, simuler skrivning, vedhæft medier og eksporter engagerende vertikalt indhold.";
+"Promo.Wonek.description" = "Wonek Video Studio forvandler rå optagelser til publiceringsklart indhold. Find stærke øjeblikke, skab skarpe klip, tilføj rene undertekster og tekst-til-tale voiceovers, og polér derefter video og lyd i én fokuseret arbejdsgang.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop bringer filmisk chat-lignende videooprettelse til din Mac. Byg animerede samtaler inde i realistiske 3D-enheder, simuler skrivning, vedhæft billeder og videoer, og eksporter vertikalt indhold til sociale medier.";

@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Język";
+"Measurement Units" = "Jednostki miary";
+"Date Format" = "Format daty";
+"Time Format" = "Format czasu";
+"System" = "System";
+"Metric" = "Metryczne";
+"Imperial" = "Imperialne";
+
 /* RequestEmailView */
 "%lld event" = "%lld wydarzenie";
 "%lld events" = "%lld wydarzenia";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lldzbliżające się zdarzenie";
 "%lld upcoming events" = "%lldzbliżające się wydarzenia";
 "%@ invited you to %@" = "%@Zaprosił cię do%@";
+
+"Promo.FastestScreenshotCleaner.description" = "Najszybszy program do czyszczenia zrzutów ekranu skanuje twoją bibliotekę zdjęć w poszukiwaniu zrzutów ekranu, duplikatów i podobnych przechwyceń. Szybko je wyczyść, aby zwolnić miejsce, a wszystkie analizy pozostaną prywatne na Twoim urządzeniu.";
+"Promo.PureStrike.description" = "PureStrike Billiard umożliwia grę w 8-bilę online, przeciwko sztucznej inteligencji lub ze znajomymi na jednym urządzeniu. Dostosuj celowanie, moc, rotację, widoki z kamery, zasady i wskazówki dotyczące strzałów dla każdego meczu.";
+"Promo.StarFront.description" = "Survival: StarFront to trzypasmowa gra obronna science-fiction, w której przemieszczasz swoją drużynę między liniami, podczas gdy każdy żołnierz strzela automatycznie. Dostosuj swoją formację i przetrwaj nacierające fale wroga.";
+"Promo.PolyCore.description" = "PolyCore TD to zręcznościowa gra survivalowa typu tower-defence, w której chronisz centralną wieżę przed bezlitosnymi geometrycznymi wrogami. Zdobywaj ulepszenia, łącz broń i buduj inny arsenał podczas każdego biegu.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant to obszar roboczy zwiększający produktywność AI, umożliwiający rozmowy na żywo inicjowane przez użytkowników. Korzystaj z transkrypcji w czasie rzeczywistym, pomocy kontekstowej, notatek i działań następczych podczas spotkań, burzy mózgów, tłumaczeń, planowania i uczenia się.";
+"Promo.PhotoArchive.description" = "Archiwum Photo2Video pomaga oszczędzać pamięć bez usuwania wspomnień. Przekształca zdjęcia w wysoce skompresowane archiwa wideo, zachowując zawartość, a jednocześnie ułatwiając porządkowanie i przechowywanie dużych kolekcji.";
+"Promo.DreamsCalendar.description" = "Kalendarz snów to prywatny dziennik snów, narzędzie do śledzenia nastroju i dziennik refleksji snów nocnych i dziennych. Rejestruj doświadczenia i emocje, a następnie zauważaj wzorce w ciągu dnia, snu i wyobraźni.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle to relaksująca gra polegająca na sortowaniu w świecącym futurystycznym laboratorium. Wlewaj kolorowe płyny pomiędzy szklane probówki, aż każdy kolor zostanie oddzielony, w miarę jak każdy eksperyment staje się bardziej złożony.";
+"Promo.GlanceStudio.description" = "Glance Studio pomaga tworzyć kinowe filmy w stylu czatu do mediów społecznościowych, reklam i opowiadania historii. Twórz animowane rozmowy na realistycznych urządzeniach 3D, symuluj pisanie, dołączaj multimedia i eksportuj angażujące treści pionowe.";
+"Promo.Wonek.description" = "Wonek Video Studio przekształca surowy materiał w treść gotową do publikacji. Znajdź mocne momenty, twórz ostre klipy, dodawaj przejrzyste napisy i zamianę tekstu na mowę, a następnie szlifuj wideo i audio w jednym, ukierunkowanym procesie.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop umożliwia tworzenie filmów w stylu kinowego czatu na komputerze Mac. Twórz animowane rozmowy na realistycznych urządzeniach 3D, symuluj pisanie, dołączaj zdjęcia i filmy oraz eksportuj treści pionowe do mediów społecznościowych.";

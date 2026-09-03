@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Taal";
+"Measurement Units" = "Maateenheden";
+"Date Format" = "Datumnotatie";
+"Time Format" = "Tijdnotatie";
+"System" = "Systeem";
+"Metric" = "Metrisch";
+"Imperial" = "Imperiaal";
+
 /* RequestEmailView */
 "%lld event" = "%lld evenement";
 "%lld events" = "%lld evenementen";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lld komende gebeurtenis";
 "%lld upcoming events" = "%lld komende gebeurtenissen";
 "%@ invited you to %@" = "%@ nodigde je uit voor %@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner scant uw fotobibliotheek op schermafbeeldingen, duplicaten en soortgelijke opnames. Ruim ze snel op om opslagruimte vrij te maken, terwijl alle analyses privé op uw apparaat blijven.";
+"Promo.PureStrike.description" = "Met PureStrike Billiard kun je 8-ball online, tegen AI of met vrienden spelen op één apparaat. Verfijn doel, kracht, spin, cameraweergaven, regels en schotgidsen voor elke wedstrijd.";
+"Promo.StarFront.description" = "Survival: StarFront is een sci-fi verdedigingsspel met drie rijstroken waarin je je team tussen rijstroken verplaatst terwijl elke soldaat automatisch vuurt. Pas je formatie aan en overleef de oprukkende vijandelijke golven.";
+"Promo.PolyCore.description" = "PolyCore TD is een arcade-torenverdedigingsoverlevingsspel waarin je een centraal torentje beschermt tegen meedogenloze geometrische vijanden. Verdien upgrades, combineer wapens en bouw tijdens elke run een ander arsenaal.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant is een AI-productiviteitswerkruimte voor door gebruikers gestarte live gesprekken. Gebruik realtime transcriptie, contextuele hulp, aantekeningen en vervolgacties tijdens vergaderingen, brainstormen, vertalen, plannen en leren.";
+"Promo.PhotoArchive.description" = "Met Photo2Video Archive kunt u opslagruimte besparen zonder herinneringen te verwijderen. Het transformeert foto's in sterk gecomprimeerde video-archieven, waardoor uw inhoud behouden blijft en grote collecties gemakkelijker te organiseren en op te slaan zijn.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar is een privé-droomdagboek, stemmingstracker en reflectiedagboek voor dag- en nachtdromen. Leg ervaringen en emoties vast en merk vervolgens patronen op in uw dagen, slaap en verbeelding.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle is een ontspannend sorteerspel in een gloeiend futuristisch laboratorium. Giet gekleurde vloeistoffen tussen glazen buizen totdat elke kleur gescheiden is naarmate elk experiment complexer wordt.";
+"Promo.GlanceStudio.description" = "Met Glance Studio kunt u filmische video's in chatstijl maken voor sociale media, advertenties en verhalen vertellen. Bouw geanimeerde gesprekken op realistische 3D-apparaten, simuleer typen, voeg media toe en exporteer boeiende verticale inhoud.";
+"Promo.Wonek.description" = "Wonek Video Studio zet onbewerkt beeldmateriaal om in publicatieklare inhoud. Vind sterke momenten, maak scherpe clips, voeg heldere ondertitels en tekst-naar-spraak voice-overs toe en verbeter vervolgens video en audio in één gerichte workflow.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop brengt videocreatie in filmische chatstijl naar je Mac. Bouw geanimeerde gesprekken op realistische 3D-apparaten, simuleer typen, voeg foto's en video's toe en exporteer verticale inhoud voor sociale media.";

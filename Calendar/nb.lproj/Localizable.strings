@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Språk";
+"Measurement Units" = "Måleenheter";
+"Date Format" = "Datoformat";
+"Time Format" = "Tidsformat";
+"System" = "System";
+"Metric" = "Metrisk";
+"Imperial" = "Britisk";
+
 /* RequestEmailView */
 "%lld event" = "%lld hendelse";
 "%lld events" = "%lld hendelser";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lld kommende hendelse";
 "%lld upcoming events" = "%lld kommende hendelser";
 "%@ invited you to %@" = "%@ inviterte deg til %@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner skanner fotobiblioteket ditt for skjermbilder, duplikater og lignende opptak. Rydd dem raskt opp for å få gratis lagringsplass mens all analyse forblir privat på enheten din.";
+"Promo.PureStrike.description" = "PureStrike Billiard lar deg spille 8-ball online, mot AI eller med venner på én enhet. Finjuster sikte, kraft, spinn, kameravisninger, regler og skuddguider for hver kamp.";
+"Promo.StarFront.description" = "Survival: StarFront er et trefelts sci-fi-forsvarsspill hvor du flytter troppen din mellom baner mens hver soldat skyter automatisk. Tilpass formasjonen din og overlev de fremadstormende fiendtlige bølgene.";
+"Promo.PolyCore.description" = "PolyCore TD er et arkadetårn-forsvarsoverlevelsesspill hvor du beskytter et sentralt tårn mot ubøyelige geometriske fiender. Tjen oppgraderinger, kombiner våpen og bygg et annet arsenal under hver løpetur.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant er et AI-produktivitetsarbeidsområde for brukerstartede live-samtaler. Bruk sanntidstranskripsjon, kontekstuell assistanse, notater og oppfølgingshandlinger under møter, idédugnad, oversettelse, planlegging og læring.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive hjelper deg med å spare lagring uten å slette minner. Den forvandler bilder til svært komprimerte videoarkiver, og bevarer innholdet ditt samtidig som det blir enklere å organisere og lagre store samlinger.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar er en privat drømmedagbok, humørsporing og refleksjonsdagbok for natt- og dagdrømmer. Registrer opplevelser og følelser, og legg deretter merke til mønstre på tvers av dagene, søvnen og fantasien.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle er et avslappende sorteringsspill i et glødende futuristisk laboratorium. Hell fargede væsker mellom glassrør til hver farge er skilt etter hvert som hvert eksperiment blir mer komplekst.";
+"Promo.GlanceStudio.description" = "Glance Studio hjelper deg med å lage filmiske chat-videoer for sosiale medier, reklame og historiefortelling. Bygg animerte samtaler inne i realistiske 3D-enheter, simuler skriving, legg ved media og eksporter engasjerende vertikalt innhold.";
+"Promo.Wonek.description" = "Wonek Video Studio gjør rå opptak til publiseringsklart innhold. Finn sterke øyeblikk, lag skarpe klipp, legg til rene undertekster og tekst-til-tale voiceovers, og poler deretter video og lyd i én fokusert arbeidsflyt.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop bringer filmskaping i chat-stil til Mac-en din. Bygg animerte samtaler inne i realistiske 3D-enheter, simuler skriving, legg ved bilder og videoer, og eksporter vertikalt innhold for sosiale medier.";

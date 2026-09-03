@@ -131,8 +131,6 @@ struct SubscriptionView: View {
                     }
         .cornerRadius(10)
         .padding(.horizontal)
-        .minimumScaleFactor(0.4)
-        .allowsTightening(true)
     }
 
     /// Избира „първия, който може да се купи“ за текущия таб

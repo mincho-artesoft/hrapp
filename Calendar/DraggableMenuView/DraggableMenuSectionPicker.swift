@@ -46,7 +46,7 @@ struct DraggableMenuSectionPicker: View {
             Text(item.title)
                 .font(.subheadline.weight(isSelected ? .semibold : .regular))
                 .lineLimit(1)
-                .minimumScaleFactor(0.65)
+                .minimumScaleFactor(0.8)
                 .frame(maxWidth: .infinity, minHeight: 32)
                 .contentShape(Rectangle())
         }

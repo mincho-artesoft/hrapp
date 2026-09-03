@@ -22,7 +22,8 @@ extension Locale {
     /// It follows the app language while retaining the user's region when the
     /// localization itself does not specify one (for example `ar` vs `fr-CA`).
     static var appFormatting: Locale {
-        let localization = Bundle.main.preferredLocalizations.first
+        let localization = AppPreferences.storedExplicitLanguageIdentifier
+            ?? Bundle.main.preferredLocalizations.first
             ?? Locale.autoupdatingCurrent.identifier
         let localizedLocale = Locale(identifier: localization)
         let currentLocale = Locale.autoupdatingCurrent

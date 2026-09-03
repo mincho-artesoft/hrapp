@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Dil";
+"Measurement Units" = "Ölçü Birimleri";
+"Date Format" = "Tarih Biçimi";
+"Time Format" = "Saat Biçimi";
+"System" = "Sistem";
+"Metric" = "Metrik";
+"Imperial" = "İngiliz";
+
 /* RequestEmailView */
 "%lld event" = "%lld etkinlik";
 "%lld events" = "%lld etkinlik";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "Yüzde %lld";
 "%lld upcoming events" = "%lld gelecek olaylar";
 "%@ invited you to %@" = "%@ sizi %@ davet etti";
+
+"Promo.FastestScreenshotCleaner.description" = "En Hızlı Ekran Görüntüsü Temizleyici, fotoğraf kitaplığınızı ekran görüntüleri, kopyalar ve benzer yakalamalar için tarar. Tüm analizler cihazınızda gizli olarak kalırken, depolama alanını boşaltmak için bunları hızlı bir şekilde temizleyin.";
+"Promo.PureStrike.description" = "PureStrike Bilardo, tek bir cihazda çevrimiçi olarak, yapay zekaya karşı veya arkadaşlarınızla 8 top oynamanıza olanak tanır. Her maç için nişan alma, güç, döndürme, kamera görüntüleri, kurallar ve atış kılavuzlarında ince ayarlar yapın.";
+"Promo.StarFront.description" = "Survival: StarFront, her askerin otomatik olarak ateş ederken ekibinizi şeritler arasında hareket ettirdiğiniz üç şeritli bir bilim kurgu savunma oyunudur. Formasyonunuzu uyarlayın ve ilerleyen düşman dalgalarından sağ çıkın.";
+"Promo.PolyCore.description" = "PolyCore TD, merkezi bir tareti amansız geometrik düşmanlardan koruduğunuz bir arcade kule savunma hayatta kalma oyunudur. Her koşuda yükseltmeler kazanın, silahları birleştirin ve farklı bir cephanelik inşa edin.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant, kullanıcı tarafından başlatılan canlı görüşmelere yönelik bir yapay zeka üretkenlik çalışma alanıdır. Toplantılar, beyin fırtınası, çeviri, planlama ve öğrenme sırasında gerçek zamanlı transkripsiyon, bağlamsal yardım, notlar ve takip eylemlerini kullanın.";
+"Promo.PhotoArchive.description" = "Photo2Video Arşivi, anıları silmeden depolama alanından tasarruf etmenize yardımcı olur. Fotoğrafları yüksek oranda sıkıştırılmış video arşivlerine dönüştürerek içeriğinizi korurken büyük koleksiyonların düzenlenmesini ve saklanmasını kolaylaştırır.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar, gece ve gündüz rüyaları için özel bir rüya günlüğü, ruh hali izleyicisi ve yansıma günlüğüdür. Deneyimleri ve duyguları kaydedin, ardından günleriniz, uykunuz ve hayal gücünüzdeki kalıpları fark edin.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle, parlayan fütüristik bir laboratuvarda rahatlatıcı bir sıralama oyunudur. Her deney daha karmaşık hale geldikçe her renk ayrılana kadar cam tüplerin arasına renkli sıvılar dökün.";
+"Promo.GlanceStudio.description" = "Glance Studio, sosyal medya, reklamcılık ve hikaye anlatımı için sinematik sohbet tarzı videolar oluşturmanıza yardımcı olur. Gerçekçi 3D cihazların içinde animasyonlu konuşmalar oluşturun, yazmayı simüle edin, medya ekleyin ve ilgi çekici dikey içeriği dışa aktarın.";
+"Promo.Wonek.description" = "Wonek Video Studio ham görüntüleri yayınlanmaya hazır içeriğe dönüştürüyor. Güçlü anları bulun, keskin klipler oluşturun, net altyazılar ve metinden konuşmaya seslendirmeler ekleyin, ardından odaklanmış tek bir iş akışında video ve sesi iyileştirin.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop, Mac'inize sinematik sohbet tarzı video oluşturma olanağı sağlar. Gerçekçi 3D cihazların içinde animasyonlu konuşmalar oluşturun, yazmayı simüle edin, fotoğraf ve videolar ekleyin ve sosyal medya için dikey içeriği dışa aktarın.";

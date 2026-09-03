@@ -44,26 +44,30 @@ struct AppsPromoListView: View {
                                 .font(.headline)
                                 .foregroundColor(.primary)
                             
-                            Text(app.description)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .lineLimit(nil) // ПРОМЯНА: nil позволява неограничен брой редове
-                                .fixedSize(horizontal: false, vertical: true) // Осигурява правилно разпъване във височина
-                                .multilineTextAlignment(.leading)
+                            if !app.description.isEmpty {
+                                Text(app.description)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(nil)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .multilineTextAlignment(.leading)
+                            }
                             
                             // Бутон към App Store
                             Link(destination: URL(string: app.appStoreURL)!) {
                                 Text(LocalizedStringKey("Get"))
-                                    .font(.caption.bold())
+                                    .font(.body.weight(.semibold))
                                     .foregroundColor(.white)
-                                    .padding(.vertical, 6)
-                                    .padding(.horizontal, 20)
+                                    .frame(minWidth: 88, minHeight: 40)
+                                    .padding(.horizontal, 8)
                                     .background(app.accentColor)
                                     .clipShape(Capsule())
                             }
                             .padding(.top, 4)
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .background(Color(.secondarySystemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))

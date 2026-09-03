@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "언어";
+"Measurement Units" = "측정 단위";
+"Date Format" = "날짜 형식";
+"Time Format" = "시간 형식";
+"System" = "시스템";
+"Metric" = "미터법";
+"Imperial" = "야드파운드법";
+
 /* RequestEmailView */
 "%lld event" = "이벤트 %lld개";
 "%lld events" = "이벤트 %lld개";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lld 다가오는 이벤트";
 "%lld upcoming events" = "%lld 다가오는 이벤트";
 "%@ invited you to %@" = "%@에 초대 %@";
+
+"Promo.FastestScreenshotCleaner.description" = "가장 빠른 스크린샷 클리너는 사진 라이브러리에서 스크린샷, 중복 및 유사한 캡처를 검색합니다. 모든 분석이 장치에 비공개로 유지되는 동안 신속하게 정리하여 무료 저장 공간을 확보하세요.";
+"Promo.PureStrike.description" = "PureStrike Billiard를 사용하면 온라인으로, AI를 상대로 또는 하나의 기기에서 친구들과 8볼을 플레이할 수 있습니다. 매 경기마다 조준, 파워, 스핀, 카메라 뷰, 규칙, 샷 가이드를 미세 조정하세요.";
+"Promo.StarFront.description" = "Survival: StarFront는 모든 군인이 자동으로 사격하는 동안 분대를 차선 간에 이동시키는 3차선 공상 과학 방어 게임입니다. 대형을 조정하고 전진하는 적의 파도에서 살아남으세요.";
+"Promo.PolyCore.description" = "PolyCore TD는 무자비한 기하학적 적들로부터 중앙 포탑을 보호하는 아케이드 타워 방어 생존 게임입니다. 매 실행마다 업그레이드를 획득하고, 무기를 결합하고, 다양한 무기고를 구축하세요.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant는 사용자가 시작한 실시간 대화를 위한 AI 생산성 작업 공간입니다. 회의, 브레인스토밍, 번역, 계획 및 학습 중에 실시간 전사, 상황별 지원, 메모 및 후속 조치를 사용하세요.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive는 추억을 삭제하지 않고도 저장 공간을 절약할 수 있도록 도와줍니다. 사진을 압축률이 높은 비디오 아카이브로 변환하여 콘텐츠를 보존하는 동시에 대규모 컬렉션을 더 쉽게 구성하고 저장할 수 있습니다.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar는 밤낮으로 꿈을 꾸는 개인 꿈 일지, 기분 추적기, 성찰 일기입니다. 경험과 감정을 기록한 다음 하루, 수면, 상상의 패턴을 알아보세요.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle은 빛나는 미래형 실험실에서 즐기는 편안한 분류 게임입니다. 각 실험이 더욱 복잡해짐에 따라 모든 색상이 분리될 때까지 유리관 사이에 색상이 있는 액체를 붓습니다.";
+"Promo.GlanceStudio.description" = "Glance Studio는 소셜 미디어, 광고 및 스토리텔링을 위한 영화 같은 채팅 스타일 비디오를 만드는 데 도움이 됩니다. 사실적인 3D 장치 내에서 애니메이션 대화를 만들고, 타이핑을 시뮬레이션하고, 미디어를 첨부하고, 흥미로운 수직 콘텐츠를 내보낼 수 있습니다.";
+"Promo.Wonek.description" = "Wonek Video Studio는 원본 영상을 게시 가능한 콘텐츠로 변환합니다. 하나의 집중된 워크플로우에서 인상적인 순간을 찾고, 선명한 클립을 만들고, 깔끔한 자막과 텍스트 음성 변환을 추가한 다음, 비디오와 오디오를 다듬으세요.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop은 Mac에서 영화 같은 채팅 스타일의 비디오 제작 기능을 제공합니다. 사실적인 3D 장치 내에서 애니메이션 대화를 만들고, 타이핑을 시뮬레이션하고, 사진과 비디오를 첨부하고, 소셜 미디어용 세로 콘텐츠를 내보낼 수 있습니다.";

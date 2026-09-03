@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Nyelv";
+"Measurement Units" = "Mértékegységek";
+"Date Format" = "Dátumformátum";
+"Time Format" = "Időformátum";
+"System" = "Rendszer";
+"Metric" = "Metrikus";
+"Imperial" = "Angolszász";
+
 /* RequestEmailView */
 "%lld event" = "%lld esemény";
 "%lld events" = "%lld esemény";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lldközelgő esemény";
 "%lld upcoming events" = "%lldközelgő események";
 "%@ invited you to %@" = "%@meghívtalak%@";
+
+"Promo.FastestScreenshotCleaner.description" = "A Fastest Screenshot Cleaner átvizsgálja a fotókönyvtárat képernyőképek, másolatok és hasonló felvételek után. Tisztítsa meg őket gyorsan, hogy ingyenes tárhelyet kapjon, miközben az összes elemzés privát módon az eszközén marad.";
+"Promo.PureStrike.description" = "A PureStrike Billiard segítségével 8 labdát játszhatsz online, mesterséges intelligencia ellen vagy barátaiddal egy eszközön. Finomhangolja a célzást, az erőt, a pörgetést, a kameranézeteket, a szabályokat és a lövési útmutatókat minden mérkőzéshez.";
+"Promo.StarFront.description" = "Survival: StarFront egy háromsávos sci-fi védelmi játék, ahol az osztagot mozgathatod a sávok között, miközben minden katona automatikusan tüzel. Alakítsd át formációdat, és éld túl az előrenyomuló ellenséges hullámokat.";
+"Promo.PolyCore.description" = "A PolyCore TD egy arcade toronyvédelmi túlélési játék, ahol megvédhetsz egy központi tornyot a könyörtelen geometrikus ellenségektől. Szerezz frissítéseket, kombinálj fegyvereket, és építs egy másik arzenált minden futás során.";
+"Promo.RealtimeAssistant.description" = "A GPT Realtime Assistant egy mesterséges intelligencia munkaterület a felhasználók által indított élő beszélgetésekhez. Használjon valós idejű átírást, kontextuális segítséget, jegyzeteket és nyomon követési műveleteket az értekezletek, ötletbörze, fordítás, tervezés és tanulás során.";
+"Promo.PhotoArchive.description" = "A Photo2Video Archive segítségével tárhelyet takaríthat meg az emlékek törlése nélkül. A fényképeket erősen tömörített videoarchívumokká alakítja, megőrzi a tartalmat, miközben megkönnyíti a nagy gyűjtemények rendszerezését és tárolását.";
+"Promo.DreamsCalendar.description" = "Az Dreams Calendar egy privát álomnapló, hangulatkövető és elmélkedési napló éjszakai és nappali álmokhoz. Rögzítse tapasztalatait és érzelmeit, majd vegye észre a mintákat a napjaiban, az alvásában és a képzeletében.";
+"Promo.LiquidColorPuzzle.description" = "A Liquid Color Puzzle egy pihentető válogatójáték egy ragyogó futurisztikus laboratóriumban. Öntsön színes folyadékokat az üvegcsövek közé, amíg minden szín el nem válik, mivel minden kísérlet bonyolultabbá válik.";
+"Promo.GlanceStudio.description" = "A Glance Studio segítségével moziszerű chat-stílusú videókat hozhat létre közösségi médiához, reklámozáshoz és történetmeséléshez. Építsen animált beszélgetéseket valósághű 3D-s eszközökön, szimuláljon gépelést, csatoljon médiát, és exportáljon lenyűgöző függőleges tartalmat.";
+"Promo.Wonek.description" = "A Wonek Video Studio a nyers felvételeket publikálásra kész tartalommá alakítja. Találja meg az erős pillanatokat, készítsen éles klipeket, adjon hozzá tiszta feliratokat és szöveget felolvasó hangot, majd csiszolja ki a videót és a hangot egyetlen fókuszált munkafolyamatban.";
+"Promo.GlanceStudioDesktop.description" = "A Glance Studio Desktop moziszerű chat-stílusú videókészítést biztosít Mac számítógépére. Építsen animált beszélgetéseket valósághű 3D-s eszközökön, szimuláljon gépelést, csatoljon fényképeket és videókat, és exportáljon függőleges tartalmat a közösségi médiába.";

@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Bahasa";
+"Measurement Units" = "Unit ukuran";
+"Date Format" = "Format tarikh";
+"Time Format" = "Format masa";
+"System" = "Sistem";
+"Metric" = "Metrik";
+"Imperial" = "Imperial";
+
 /* RequestEmailView */
 "%lld event" = "%lld acara";
 "%lld events" = "%lld acara";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "** %lld acara mendatang";
 "%lld upcoming events" = "%lldacara yang akan datang";
 "%@ invited you to %@" = "%@ mengundang anda ke %@";
+
+"Promo.FastestScreenshotCleaner.description" = "Pembersih Tangkapan Skrin Terpantas mengimbas pustaka foto anda untuk tangkapan skrin, pendua dan tangkapan serupa. Bersihkannya dengan cepat untuk membebaskan storan sementara semua analisis kekal secara peribadi pada peranti anda.";
+"Promo.PureStrike.description" = "PureStrike Billiard membolehkan anda bermain 8-bola dalam talian, menentang AI atau dengan rakan pada satu peranti. Perhalusi matlamat, kuasa, putaran, pandangan kamera, peraturan dan panduan syot untuk setiap perlawanan.";
+"Promo.StarFront.description" = "Survival: StarFront ialah permainan pertahanan sci-fi tiga lorong di mana anda menggerakkan skuad anda di antara lorong sementara setiap askar menembak secara automatik. Sesuaikan formasi anda dan bertahan dari gelombang musuh yang semakin maju.";
+"Promo.PolyCore.description" = "PolyCore TD ialah permainan survival pertahanan menara arked di mana anda melindungi menara tengah daripada musuh geometri yang tidak henti-henti. Dapatkan peningkatan, gabungkan senjata dan bina senjata yang berbeza semasa setiap larian.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant ialah ruang kerja produktiviti AI untuk perbualan langsung yang dimulakan pengguna. Gunakan transkripsi masa nyata, bantuan kontekstual, nota dan tindakan susulan semasa mesyuarat, sumbang saran, terjemahan, perancangan dan pembelajaran.";
+"Promo.PhotoArchive.description" = "Arkib Photo2Video membantu anda menyimpan storan tanpa memadamkan kenangan. Ia mengubah foto menjadi arkib video yang sangat mampat, mengekalkan kandungan anda sambil menjadikan koleksi besar lebih mudah untuk disusun dan disimpan.";
+"Promo.DreamsCalendar.description" = "Kalendar Impian ialah jurnal impian peribadi, penjejak mood dan diari refleksi untuk mimpi malam dan siang. Rakam pengalaman dan emosi, kemudian perhatikan corak sepanjang hari, tidur dan imaginasi anda.";
+"Promo.LiquidColorPuzzle.description" = "Teka-teki Warna Cecair ialah permainan menyusun santai dalam makmal futuristik yang bercahaya. Tuangkan cecair berwarna antara tiub kaca sehingga setiap warna diasingkan kerana setiap eksperimen menjadi lebih kompleks.";
+"Promo.GlanceStudio.description" = "Glance Studio membantu anda membuat video gaya sembang sinematik untuk media sosial, pengiklanan dan bercerita. Bina perbualan animasi dalam peranti 3D yang realistik, simulasikan penaipan, lampirkan media dan eksport kandungan menegak yang menarik.";
+"Promo.Wonek.description" = "Studio Video Wonek menukar rakaman mentah kepada kandungan sedia diterbitkan. Cari detik yang kuat, cipta klip tajam, tambahkan sari kata yang bersih dan alih suara teks ke pertuturan, kemudian gilap video dan audio dalam satu aliran kerja terfokus.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop membawa penciptaan video gaya sembang sinematik ke Mac anda. Bina perbualan animasi dalam peranti 3D yang realistik, simulasikan penaipan, lampirkan foto dan video serta eksport kandungan menegak untuk media sosial.";

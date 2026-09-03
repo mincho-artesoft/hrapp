@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Ngôn ngữ";
+"Measurement Units" = "Đơn vị đo lường";
+"Date Format" = "Định dạng ngày";
+"Time Format" = "Định dạng giờ";
+"System" = "Hệ thống";
+"Metric" = "Hệ mét";
+"Imperial" = "Hệ Anh";
+
 /* RequestEmailView */
 "%lld event" = "%lld sự kiện";
 "%lld events" = "%lld sự kiện";
@@ -947,3 +956,15 @@
 "%lld upcoming event" = "%lldsự kiện sắp tới";
 "%lld upcoming events" = "%lldsự kiện sắp tới";
 "%@ invited you to %@" = "%@Mời cậu%@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner quét thư viện ảnh của bạn để tìm ảnh chụp màn hình, bản sao và các ảnh chụp tương tự. Dọn dẹp chúng nhanh chóng để giải phóng bộ nhớ trong khi tất cả các phân tích vẫn ở chế độ riêng tư trên thiết bị của bạn.";
+"Promo.PureStrike.description" = "PureStrike Billiard cho phép bạn chơi 8 bóng trực tuyến, đấu với AI hoặc với bạn bè trên một thiết bị. Tinh chỉnh mục tiêu, sức mạnh, độ xoáy, chế độ xem camera, quy tắc và hướng dẫn bắn cho mỗi trận đấu.";
+"Promo.StarFront.description" = "Survival: StarFront là trò chơi phòng thủ khoa học viễn tưởng ba làn, trong đó bạn di chuyển đội của mình giữa các làn trong khi mọi người lính sẽ tự động khai hỏa. Điều chỉnh đội hình của bạn và sống sót trước làn sóng tấn công của kẻ thù.";
+"Promo.PolyCore.description" = "PolyCore TD là một trò chơi sinh tồn phòng thủ tháp arcade, nơi bạn bảo vệ tháp pháo trung tâm khỏi những kẻ thù hình học không ngừng nghỉ. Kiếm nâng cấp, kết hợp vũ khí và xây dựng kho vũ khí khác nhau trong mỗi lần chạy.";
+"Promo.RealtimeAssistant.description" = "Trợ lý thời gian thực GPT là không gian làm việc năng suất AI dành cho các cuộc trò chuyện trực tiếp do người dùng bắt đầu. Sử dụng phiên âm thời gian thực, hỗ trợ theo ngữ cảnh, ghi chú và các hành động tiếp theo trong các cuộc họp, động não, dịch thuật, lập kế hoạch và học tập.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive giúp bạn tiết kiệm dung lượng mà không xóa kỷ niệm. Nó biến ảnh thành kho lưu trữ video có độ nén cao, bảo toàn nội dung của bạn đồng thời giúp sắp xếp và lưu trữ các bộ sưu tập lớn dễ dàng hơn.";
+"Promo.DreamsCalendar.description" = "Lịch Giấc mơ là nhật ký giấc mơ riêng tư, theo dõi tâm trạng và nhật ký phản ánh những giấc mơ ngày và đêm. Ghi lại những trải nghiệm và cảm xúc, sau đó chú ý đến các khuôn mẫu trong ngày, giấc ngủ và trí tưởng tượng của bạn.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle là một trò chơi phân loại thư giãn trong phòng thí nghiệm tương lai rực rỡ. Đổ chất lỏng màu vào giữa các ống thủy tinh cho đến khi mỗi màu được tách ra khi mỗi thí nghiệm trở nên phức tạp hơn.";
+"Promo.GlanceStudio.description" = "Glance Studio giúp bạn tạo các video theo phong cách trò chuyện đậm chất điện ảnh cho mạng xã hội, quảng cáo và kể chuyện. Xây dựng các cuộc hội thoại hoạt hình bên trong các thiết bị 3D thực tế, mô phỏng thao tác nhập, đính kèm phương tiện và xuất nội dung dọc hấp dẫn.";
+"Promo.Wonek.description" = "Wonek Video Studio biến cảnh quay thô thành nội dung sẵn sàng xuất bản. Tìm những khoảnh khắc ấn tượng, tạo clip sắc nét, thêm phụ đề rõ ràng và giọng nói chuyển văn bản thành giọng nói, sau đó trau chuốt video và âm thanh trong một quy trình làm việc tập trung.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop mang đến khả năng tạo video theo phong cách trò chuyện điện ảnh cho máy Mac của bạn. Xây dựng các cuộc hội thoại hoạt hình bên trong các thiết bị 3D thực tế, mô phỏng thao tác nhập, đính kèm ảnh và video cũng như xuất nội dung dọc cho mạng xã hội.";

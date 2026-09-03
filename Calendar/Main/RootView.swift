@@ -59,7 +59,7 @@ struct RootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var systemColorScheme
     
-    private let promotionalApps: [AppPromoData] = [
+    private var promotionalApps: [AppPromoData] {[
         AppPromoData(
             appName: NSLocalizedString("Promo.WiseEating.name", comment: "Promoted app name"),
             description: NSLocalizedString("Promo.WiseEating.description", comment: "Promoted app description"),
@@ -94,8 +94,96 @@ struct RootView: View {
             systemImageFallback: "chart.line.uptrend.xyaxis",
             appStoreURL: "https://apps.apple.com/us/app/market-brief-ai/id6758329388", // TODO: сложи реалния линк
             accentColor: .blue.opacity(0.75)
+        ),
+        AppPromoData(
+            appName: "Fastest Screenshot Cleaner",
+            description: NSLocalizedString("Promo.FastestScreenshotCleaner.description", comment: "Promoted app description"),
+            iconName: "ScreenshotCleanerIcon",
+            systemImageFallback: "photo.on.rectangle.angled",
+            appStoreURL: "https://apps.apple.com/app/id6760660697",
+            accentColor: .blue
+        ),
+        AppPromoData(
+            appName: "PureStrike Billiard",
+            description: NSLocalizedString("Promo.PureStrike.description", comment: "Promoted app description"),
+            iconName: "PureStrikeIcon",
+            systemImageFallback: "circle.circle.fill",
+            appStoreURL: "https://apps.apple.com/app/id6760551465",
+            accentColor: .green
+        ),
+        AppPromoData(
+            appName: "Survival: StarFront",
+            description: NSLocalizedString("Promo.StarFront.description", comment: "Promoted app description"),
+            iconName: "StarFrontIcon",
+            systemImageFallback: "sparkles",
+            appStoreURL: "https://apps.apple.com/app/id6795571800",
+            accentColor: .indigo
+        ),
+        AppPromoData(
+            appName: "PolyCore TD",
+            description: NSLocalizedString("Promo.PolyCore.description", comment: "Promoted app description"),
+            iconName: "PolyCoreIcon",
+            systemImageFallback: "shield.lefthalf.filled",
+            appStoreURL: "https://apps.apple.com/app/id6758268849",
+            accentColor: .purple
+        ),
+        AppPromoData(
+            appName: "GPT Realtime Assistant",
+            description: NSLocalizedString("Promo.RealtimeAssistant.description", comment: "Promoted app description"),
+            iconName: "RealtimeAssistantIcon",
+            systemImageFallback: "waveform.and.mic",
+            appStoreURL: "https://apps.apple.com/app/id6770536523",
+            accentColor: .cyan
+        ),
+        AppPromoData(
+            appName: "Photo2Video Archive",
+            description: NSLocalizedString("Promo.PhotoArchive.description", comment: "Promoted app description"),
+            iconName: "PhotoArchiveIcon",
+            systemImageFallback: "photo.stack.fill",
+            appStoreURL: "https://apps.apple.com/app/id6760718313",
+            accentColor: .orange
+        ),
+        AppPromoData(
+            appName: "Dreams Calendar",
+            description: NSLocalizedString("Promo.DreamsCalendar.description", comment: "Promoted app description"),
+            iconName: "DreamsCalendarIcon",
+            systemImageFallback: "moon.stars.fill",
+            appStoreURL: "https://apps.apple.com/app/id6760776853",
+            accentColor: .indigo
+        ),
+        AppPromoData(
+            appName: "Liquid Color Puzzle",
+            description: NSLocalizedString("Promo.LiquidColorPuzzle.description", comment: "Promoted app description"),
+            iconName: "LiquidColorPuzzleIcon",
+            systemImageFallback: "testtube.2",
+            appStoreURL: "https://apps.apple.com/app/id6798603985",
+            accentColor: .mint
+        ),
+        AppPromoData(
+            appName: "Glance Studio",
+            description: NSLocalizedString("Promo.GlanceStudio.description", comment: "Promoted app description"),
+            iconName: "GlanceStudioIcon",
+            systemImageFallback: "message.fill",
+            appStoreURL: "https://apps.apple.com/app/id6774151809",
+            accentColor: .pink
+        ),
+        AppPromoData(
+            appName: "Wonek Video Studio",
+            description: NSLocalizedString("Promo.Wonek.description", comment: "Promoted app description"),
+            iconName: "WonekIcon",
+            systemImageFallback: "film.stack.fill",
+            appStoreURL: "https://apps.apple.com/app/id6761376446",
+            accentColor: .orange
+        ),
+        AppPromoData(
+            appName: "Glance Studio Desktop",
+            description: NSLocalizedString("Promo.GlanceStudioDesktop.description", comment: "Promoted app description"),
+            iconName: "GlanceStudioIcon",
+            systemImageFallback: "desktopcomputer",
+            appStoreURL: "https://apps.apple.com/app/id6775389610",
+            accentColor: .pink
         )
-    ]
+    ]}
 
 
     
@@ -383,8 +471,6 @@ struct RootView: View {
             .toolbarBackground(.visible, for: .bottomBar)
             .toolbarColorScheme(.light, for: .bottomBar) // Or .dark as per your theme
         }
-        .minimumScaleFactor(0.4)
-        .allowsTightening(true)
         .overlay(alignment: .top) {
             if eventSharePromptManager.event != nil {
                 EventSharePromptView(manager: eventSharePromptManager)
@@ -624,9 +710,9 @@ struct RootView: View {
                     .font(.system(size: 18))
                     .foregroundColor(selectedTab == 6 ? .white : .blue)
                 Text(LocalizedStringKey(title)) // For localization
-                    .font(.system(size: 10))
+                    .font(.caption2.weight(.medium))
                     .foregroundColor(selectedTab == 6 ? .white : .primary)
-                    .adaptiveSingleLine(minimumScale: 0.4)
+                    .adaptiveSingleLine(minimumScale: 0.75)
                     .frame(maxWidth: .infinity)
             }
         }

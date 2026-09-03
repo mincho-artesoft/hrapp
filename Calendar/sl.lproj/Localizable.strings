@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Jezik";
+"Measurement Units" = "Merske enote";
+"Date Format" = "Oblika datuma";
+"Time Format" = "Oblika časa";
+"System" = "Sistemsko";
+"Metric" = "Metrično";
+"Imperial" = "Imperialno";
+
 /* RequestEmailView */
 "%lld event" = "%lld dogodek";
 "%lld events" = "%lld dogodki";
@@ -949,3 +958,15 @@
 "%lld upcoming event" = "%lld prihodnje dogodke";
 "%lld upcoming events" = "%lld prihodnji dogodki";
 "%@ invited you to %@" = "%@ vas je povabil %@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner pregleda vašo knjižnico fotografij za posnetke zaslona, ​​dvojnike in podobne posnetke. Hitro jih očistite, da dobite brezplačen prostor za shranjevanje, medtem ko vsa analiza ostane zasebno v vaši napravi.";
+"Promo.PureStrike.description" = "PureStrike Billiard vam omogoča igranje 8 žog na spletu, proti umetni inteligenci ali s prijatelji v eni napravi. Natančno nastavite cilj, moč, vrtenje, poglede kamere, pravila in navodila za strel za vsako tekmo.";
+"Promo.StarFront.description" = "Survival: StarFront je tripasovna znanstvenofantastična obrambna igra, v kateri svojo ekipo premikate med stezami, medtem ko vsak vojak samodejno strelja. Prilagodite svojo formacijo in preživite napredujoče sovražnikove valove.";
+"Promo.PolyCore.description" = "PolyCore TD je arkadna igra preživetja za obrambo stolpa, kjer zaščitite osrednjo kupolo pred neusmiljenimi geometrijskimi sovražniki. Prislužite si nadgradnje, kombinirajte orožje in sestavite drugačen arzenal med vsakim tekom.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant je delovni prostor za produktivnost AI za pogovore v živo, ki jih začnejo uporabniki. Uporabite prepis v realnem času, kontekstualno pomoč, opombe in nadaljnja dejanja med sestanki, viharjenjem možganov, prevajanjem, načrtovanjem in učenjem.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive vam pomaga prihraniti prostor za shranjevanje brez brisanja spominov. Preoblikuje fotografije v visoko stisnjene video arhive, pri čemer ohrani vašo vsebino, hkrati pa olajša organiziranje in shranjevanje velikih zbirk.";
+"Promo.DreamsCalendar.description" = "Koledar sanj je zasebni dnevnik sanj, sledilnik razpoloženja in dnevnik razmišljanja o nočnih in dnevnih sanjah. Zabeležite izkušnje in čustva, nato pa opazite vzorce v svojih dneh, spanju in domišljiji.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle je sproščujoča igra razvrščanja v žarečem futurističnem laboratoriju. Barvne tekočine nalijte med steklene cevi, dokler ni vsaka barva ločena, saj vsak poskus postane bolj zapleten.";
+"Promo.GlanceStudio.description" = "Glance Studio vam pomaga ustvariti filmske videoposnetke v slogu klepeta za družbene medije, oglaševanje in pripovedovanje zgodb. Zgradite animirane pogovore znotraj realističnih 3D naprav, simulirajte tipkanje, priložite medije in izvozite zanimivo vertikalno vsebino.";
+"Promo.Wonek.description" = "Wonek Video Studio spremeni neobdelane posnetke v vsebino, pripravljeno za objavo. Poiščite močne trenutke, ustvarite ostre posnetke, dodajte čiste podnapise in glasovne pretvorbe besedila v govor, nato pa izpopolnite video in zvok v enem osredotočenem delovnem procesu.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop prinaša kinematografsko ustvarjanje videa v slogu klepeta v vaš Mac. Zgradite animirane pogovore znotraj realističnih 3D naprav, simulirajte tipkanje, priložite fotografije in videoposnetke ter izvozite navpično vsebino za družbene medije.";

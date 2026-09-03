@@ -74,7 +74,9 @@ struct SubscriptionListView: View {
                                 systemImage: "creditcard")
                         }
                         .font(.footnote)
-                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.85)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Button {
@@ -86,7 +88,9 @@ struct SubscriptionListView: View {
                                 systemImage: "lock.shield")
                         }
                         .font(.footnote)
-                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.85)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                     }
@@ -102,7 +106,9 @@ struct SubscriptionListView: View {
                                 systemImage: "arrow.trianglehead.2.clockwise")
                         }
                         .font(.footnote)
-                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.85)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Button {
@@ -114,7 +120,9 @@ struct SubscriptionListView: View {
                                 systemImage: "doc.text")
                         }
                         .font(.footnote)
-                        .adaptiveSingleLine(minimumScale: 0.4)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.85)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -216,7 +224,8 @@ struct SubscriptionListView: View {
                     
                     Text(labelKey)
                         .font(.headline.weight(.semibold))
-                        .adaptiveSingleLine(minimumScale: 0.45)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.85)
                         .padding(.vertical, 12)
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity)

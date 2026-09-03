@@ -1,3 +1,12 @@
+/* Preferences */
+"Language" = "Language";
+"Measurement Units" = "Measurement Units";
+"Date Format" = "Date Format";
+"Time Format" = "Time Format";
+"System" = "System";
+"Metric" = "Metric";
+"Imperial" = "Imperial";
+
 /* RequestEmailView */
 "%lld event" = "%lld event";
 "%lld events" = "%lld events";
@@ -949,3 +958,15 @@
 "%lld upcoming event" = "%lld upcoming event";
 "%lld upcoming events" = "%lld upcoming events";
 "%@ invited you to %@" = "%@ invited you to %@";
+
+"Promo.FastestScreenshotCleaner.description" = "Fastest Screenshot Cleaner scans your photo library for screenshots, duplicates, and similar captures. Clean them up quickly to free storage while all analysis stays privately on your device.";
+"Promo.PureStrike.description" = "PureStrike Billiard lets you play 8-ball online, against AI, or with friends on one device. Fine-tune aim, power, spin, camera views, rules, and shot guides for every match.";
+"Promo.StarFront.description" = "Survival: StarFront is a three-lane sci-fi defense game where you move your squad between lanes while every soldier fires automatically. Adapt your formation and survive the advancing enemy waves.";
+"Promo.PolyCore.description" = "PolyCore TD is an arcade tower-defense survival game where you protect a central turret from relentless geometric enemies. Earn upgrades, combine weapons, and build a different arsenal during every run.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant is an AI productivity workspace for user-started live conversations. Use real-time transcription, contextual assistance, notes, and follow-up actions during meetings, brainstorming, translation, planning, and learning.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive helps you save storage without deleting memories. It transforms photos into highly compressed video archives, preserving your content while making large collections easier to organize and store.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar is a private dream journal, mood tracker, and reflection diary for night and day dreams. Record experiences and emotions, then notice patterns across your days, sleep, and imagination.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle is a relaxing sorting game in a glowing futuristic laboratory. Pour colored liquids between glass tubes until every color is separated as each experiment becomes more complex.";
+"Promo.GlanceStudio.description" = "Glance Studio helps you create cinematic chat-style videos for social media, advertising, and storytelling. Build animated conversations inside realistic 3D devices, simulate typing, attach media, and export engaging vertical content.";
+"Promo.Wonek.description" = "Wonek Video Studio turns raw footage into publish-ready content. Find strong moments, create sharp clips, add clean subtitles and text-to-speech voiceovers, then polish video and audio in one focused workflow.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop brings cinematic chat-style video creation to your Mac. Build animated conversations inside realistic 3D devices, simulate typing, attach photos and videos, and export vertical content for social media.";
