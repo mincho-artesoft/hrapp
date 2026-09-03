@@ -9,3 +9,23 @@
 "Add to Calendar" = "Takvime Ekle";
 "You’ll see it update if the time changes or the event is called off." = "Saat değişirse veya etkinlik iptal edilirse güncellemeyi görürsün.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Eklediğinde etkinlik takvim uygulamana aktarılır. Bu App Clip takvimlerini asla okumaz.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Takvim davetiye";
+"Cancelled" = "İptal Edildi";
+"Check your e-mail" = "e-postanızı kontrol edin";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Tüm rezervasyonlarınızı görmek için bir bağlantı göndereceğiz.";
+"Get Cloud Calendars" = "Bulut Takvimleri Alın";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Bulut Takvimlerini bitirmek için alın – saatlerinizi belirleyin, bir bağlantı paylaşın ve takviminizde her rezervasyon toprağı paylaşın. Kurulum kodunu kurtardık, bu yüzden dışarıda bıraktığınız yerde toplanıyor.";
+"It may have expired. Ask for a new one below." = "Bu sona ermiş olabilir. Aşağıda yeni bir tane isteyin.";
+"Loading your bookings…" = "Rezervasyonlarınızı yükleyin...";
+"My bookings" = "Rezervasyonlarım";
+"No bookings on this link." = "Bu bağlantıda rezervasyon yok.";
+"Reschedule or cancel" = "Reschedule veya iptal";
+"Set up your booking page" = "Rezervasyon sayfanızı oluşturun";
+"Shared calendar" = "Paylaşılan takvim";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Bu App Clip sadece takvim davetini gösterir. Cloud Calendars'ı benimle paylaşmak için ekleyin.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Bu App Clip sadece olayı gösterir. Bulut Takvimlerini takviminize eklemek için indirin.";
+"This link didn’t work" = "Bu bağlantı işe yaramadı";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Rezervasyonlarınızı görmek ve yönetmek için bir bağlantı gönderdik. 7 gün boyunca çalışır.";
+"you@example.com" = "you@example.com";

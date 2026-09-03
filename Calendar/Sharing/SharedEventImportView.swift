@@ -35,7 +35,7 @@ struct SharedEventImportView: View {
 
     private var dateText: String {
         let formatter = DateFormatter()
-        formatter.locale = .current
+        formatter.locale = .appFormatting
         formatter.timeZone = payload.timeZone
         formatter.setLocalizedDateFormatFromTemplate("EEEEyMMMMd")
         return formatter.string(from: payload.start)
@@ -44,7 +44,7 @@ struct SharedEventImportView: View {
     private var timeText: String {
         guard !payload.isAllDay else { return NSLocalizedString("All-day event", comment: "") }
         let formatter = DateFormatter()
-        formatter.locale = .current
+        formatter.locale = .appFormatting
         formatter.timeZone = payload.timeZone
         formatter.setLocalizedDateFormatFromTemplate("jm")
         return "\(formatter.string(from: payload.start)) – \(formatter.string(from: payload.end))"

@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Abnehmender Mond";
 "MoonPhase.lastQuarter" = "Letztes Viertel";
 "MoonPhase.waningCrescent" = "Abnehmende Sichel";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

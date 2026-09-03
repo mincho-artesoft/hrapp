@@ -87,8 +87,20 @@ enum SharedInviteRefresher {
                 }
                 invite.receiptRecorded = true
                 SharedInviteTracker.update(invite)
+            } catch CloudCalendarsAPI.Failure.http(let code, let body)
+                where code == 403 && body.localizedCaseInsensitiveContains("removed by the owner") {
+                // This exact server response is authoritative. Other 403s
+                // (for example an ACL that is still being created) are
+                // retryable and must not revoke a freshly scanned invite.
+                return markRevokedInvite(invite)
             } catch {
                 print("Invite receipt could not be recorded for \(invite.eventID) - \(error.localizedDescription)")
+                // Do not ask the access endpoint until registration has
+                // succeeded. A newly scanned invite can otherwise receive a
+                // transient 404 ("not registered") and be frozen as revoked
+                // even though its scoped feed is valid. Keep the local copy
+                // active and retry on the next foreground sync instead.
+                return false
             }
         }
 
@@ -330,8 +342,14 @@ enum SharedInviteRefresher {
         }
 
         if let details = remote.details,
-           !details.matchesWritableFields(of: event) {
-            details.applyWritableFields(to: event)
+           !details.matchesWritableFields(
+                of: event,
+                canonicalLocation: remote.location
+           ) {
+            details.applyWritableFields(
+                to: event,
+                canonicalLocation: remote.location
+            )
             eventChanged = true
         }
 
@@ -518,7 +536,10 @@ enum SharedEventRecovery {
         event.isAllDay = remote.allDay
         event.location = remote.location
         event.url = remote.url.flatMap(URL.init(string:))
-        remote.details?.applyWritableFields(to: event)
+        remote.details?.applyWritableFields(
+            to: event,
+            canonicalLocation: remote.location
+        )
         event.calendar = destination
 
         do {

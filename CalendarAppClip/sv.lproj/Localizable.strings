@@ -9,3 +9,23 @@
 "Add to Calendar" = "Lägg till i kalendern";
 "You’ll see it update if the time changes or the event is called off." = "Du ser ändringen om tiden ändras eller händelsen ställs in.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "När du lägger till skickas händelsen till din kalenderapp. Den här App Clip-en läser aldrig dina kalendrar.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Kalenderinbjudan";
+"Cancelled" = "Avbruten";
+"Check your e-mail" = "Kontrollera din e-post";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Ange det e-postmeddelande du bokat med och vi skickar en länk för att se alla dina bokningar.";
+"Get Cloud Calendars" = "Få molnkalender";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Få Cloud Calendars att slutföra - ange dina timmar, dela en länk och varje bokningsland på din kalender. Vi har sparat din installationskod, så den plockar upp precis där du slutade.";
+"It may have expired. Ask for a new one below." = "Det kan ha gått ut. Be om en ny nedanför.";
+"Loading your bookings…" = "Ladda dina bokningar...";
+"My bookings" = "Mina bokningar";
+"No bookings on this link." = "Inga bokningar på denna länk.";
+"Reschedule or cancel" = "Reschedule eller cancel";
+"Set up your booking page" = "Ställ in din bokningssida";
+"Shared calendar" = "Delad kalender";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Denna App Clip förhandsgranskar bara kalenderinbjudan. Ladda ner molnkalender för att lägga till den för att delas med mig.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Denna App Clip förhandsgranskar bara händelsen. Ladda ner molnkalender för att lägga till den i din kalender.";
+"This link didn’t work" = "Denna länk fungerade inte";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Vi skickade en länk för att se och hantera dina bokningar. Det fungerar i 7 dagar.";
+"you@example.com" = "you@example.com";

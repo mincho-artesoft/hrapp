@@ -9,3 +9,23 @@
 "Add to Calendar" = "Tambahkan ke Kalender";
 "You’ll see it update if the time changes or the event is called off." = "Kamu akan melihat pembaruan jika waktunya berubah atau acaranya dibatalkan.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Menambahkan acara akan menyerahkannya ke aplikasi kalender kamu. App Clip ini tidak pernah membaca kalender kamu.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Undangan kalender";
+"Cancelled" = "Dibatalkan";
+"Check your e-mail" = "Periksa surel Anda";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Masukkan email yang kau pesan dan kami akan mengirim link untuk melihat semua booking-mu.";
+"Get Cloud Calendars" = "Dapatkan Kalender Awan";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Selesaikan Cloud Calendars - atur jam Anda, bagi satu tautan, dan setiap lahan pemesanan pada kalender Anda. Kami telah menyimpan kode setup Anda, sehingga mengambil tepat di mana Anda tinggalkan.";
+"It may have expired. Ask for a new one below." = "Mungkin sudah kadaluarsa. Mintalah yang baru di bawah ini.";
+"Loading your bookings…" = "Memuat booking Anda...";
+"My bookings" = "♪ My booking ♪";
+"No bookings on this link." = "Tidak ada pemesanan pada link ini.";
+"Reschedule or cancel" = "Jadwalkan atau batalkan";
+"Set up your booking page" = "Atur halaman pemesanan Anda";
+"Shared calendar" = "Kalender bersama";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Klip App ini hanya preview undangan kalender. Unduh Kalender Awan untuk menambahkannya ke Bersama dengan saya.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Klip App ini hanya preview acara. Unduh Kalender Awan untuk menambahkannya ke kalender Anda.";
+"This link didn’t work" = "Link ini tidak bekerja";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Kami mengirim link untuk melihat dan mengelola bookings Anda. Ini bekerja selama 7 hari.";
+"you@example.com" = "you@example.com";

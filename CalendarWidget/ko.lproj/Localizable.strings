@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "하현망간의 달";
 "MoonPhase.lastQuarter" = "하현";
 "MoonPhase.waningCrescent" = "그믐달";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV UV UV%@";

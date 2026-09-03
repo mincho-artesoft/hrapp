@@ -19,7 +19,8 @@ struct ClipSharedCalendar: Equatable {
         else { return nil }
         self.ownerID = ownerID
         self.calendarID = calendarID
-        title = values["title"].flatMap { $0.isEmpty ? nil : $0 } ?? "Shared calendar"
+        title = values["title"].flatMap { $0.isEmpty ? nil : $0 }
+            ?? String(localized: "Shared calendar")
         colorHex = values["color"].flatMap { $0.isEmpty ? nil : $0 } ?? "#0088FF"
     }
 

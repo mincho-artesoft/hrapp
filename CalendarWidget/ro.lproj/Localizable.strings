@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Convexă în descreștere";
 "MoonPhase.lastQuarter" = "Ultimul pătrar";
 "MoonPhase.waningCrescent" = "Concavă în descreștere";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV%@";

@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Khuyết cuối tháng";
 "MoonPhase.lastQuarter" = "Hạ huyền";
 "MoonPhase.waningCrescent" = "Lưỡi liềm cuối tháng";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV%@";

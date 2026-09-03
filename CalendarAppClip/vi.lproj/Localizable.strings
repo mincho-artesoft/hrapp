@@ -9,3 +9,23 @@
 "Add to Calendar" = "Thêm vào Lịch";
 "You’ll see it update if the time changes or the event is called off." = "Bạn sẽ thấy cập nhật nếu giờ thay đổi hoặc sự kiện bị hủy.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Việc thêm sẽ chuyển sự kiện sang ứng dụng lịch của bạn. App Clip này không bao giờ đọc lịch của bạn.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Giấy mời lịch";
+"Cancelled" = "Đã hủy";
+"Check your e-mail" = "Kiểm tra e-mail của bạn";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Hãy nhập e-mail bạn đã đặt và chúng tôi sẽ gửi liên kết để xem tất cả các cuộc hẹn của bạn.";
+"Get Cloud Calendars" = "Lấy lịch mây";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Hãy để lịch Cloud kết thúc — ấn định giờ, chia sẻ một liên kết và mỗi vùng đất đặt lịch. Chúng tôi đã tiết kiệm được mã thiết lập của anh, nên nó sẽ bắt kịp ngay chỗ anh bỏ dở.";
+"It may have expired. Ask for a new one below." = "Nó có thể đã hết hạn. Yêu cầu một cái mới ở dưới.";
+"Loading your bookings…" = "Đang nạp lịch...";
+"My bookings" = "Tôi đặt chỗ";
+"No bookings on this link." = "Không đặt chỗ trên đường dẫn này.";
+"Reschedule or cancel" = "Name";
+"Set up your booking page" = "Thiết lập trang đặt chỗ";
+"Shared calendar" = "Lịch đã chia sẻ";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Chương trình này chỉ xem thử giấy mời của lịch. Tải lịch Cloud để chia sẻ với tôi.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Cái nút Áp dụng này chỉ xem trước sự kiện này. Tải lịch mây để thêm lịch.";
+"This link didn’t work" = "Liên kết này không có tác dụng";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Chúng tôi đã gửi một liên kết để xem và quản lý các cuộc hẹn của anh. Nó hoạt động 7 ngày.";
+"you@example.com" = "you@example.com";

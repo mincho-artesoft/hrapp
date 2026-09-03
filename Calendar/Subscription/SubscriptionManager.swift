@@ -12,14 +12,7 @@ class SubscriptionManager: ObservableObject {
 
     var subscriptionStatus: SubscriptionStatus {
         get {
-            #if DEBUG
-            // Debug builds intentionally unlock the highest tier. Keeping the
-            // override in the manager makes every feature gate and ad check
-            // see the same value, without affecting Release/App Store builds.
-            return .premium
-            #else
             return SubscriptionStatus(rawValue: subscriptionStatusRaw) ?? .base
-            #endif
         }
         set {
             subscriptionStatusRaw = newValue.rawValue
@@ -40,8 +33,8 @@ class SubscriptionManager: ObservableObject {
     static let shared = SubscriptionManager()
     private init() {
         Task {
-            await loadProducts()
             await updatePurchasedStatus()
+            await loadProducts()
         }
         startListeningForUpdates()
     }
@@ -195,9 +188,6 @@ class SubscriptionManager: ObservableObject {
     }
 
     private func updateSubscriptionStatus() {
-        #if DEBUG
-        subscriptionStatus = .premium
-        #else
         guard !purchasedProductIDs.isEmpty else {
             subscriptionStatus = .base
             return
@@ -209,7 +199,6 @@ class SubscriptionManager: ObservableObject {
         } else {
             subscriptionStatus = .base
         }
-        #endif
     }
 
     // MARK: - Manage subscription sheet --------------------------------------

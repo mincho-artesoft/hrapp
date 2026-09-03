@@ -48,6 +48,8 @@ struct SheetSolarArcView: View {
                             .allowsHitTesting(false)
                     }
                 }
+                // `sunPosition` already returns a physical RTL-aware point.
+                .environment(\.layoutDirection, .leftToRight)
             }
             .frame(height: height)
 
@@ -212,6 +214,8 @@ private struct CompactSolarArcView: View {
                         .allowsHitTesting(false)
                 }
             }
+            // `sunPosition` already returns a physical RTL-aware point.
+            .environment(\.layoutDirection, .leftToRight)
         }
         .frame(height: 60)
         .overlay(alignment: .bottom) {

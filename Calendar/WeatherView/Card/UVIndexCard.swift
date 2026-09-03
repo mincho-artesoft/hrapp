@@ -41,6 +41,10 @@ struct UVIndexCard: View {
                    .position(x: indicatorCenterX, y: geometry.size.height / 2)
 
             }
+            // The positions above are already converted to physical screen
+            // coordinates. Keep this drawing surface LTR so SwiftUI does not
+            // mirror `.position(x:)` a second time in an RTL interface.
+            .environment(\.layoutDirection, .leftToRight)
             // Центриране на ZStack вертикално в GeometryReader
             .frame(maxHeight: .infinity)
         }

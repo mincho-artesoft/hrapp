@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Убывающая луна";
 "MoonPhase.lastQuarter" = "3‑я четверть";
 "MoonPhase.waningCrescent" = "Убывающий серп";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

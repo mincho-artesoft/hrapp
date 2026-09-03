@@ -9,3 +9,23 @@
 "Add to Calendar" = "Προσθήκη στο Ημερολόγιο";
 "You’ll see it update if the time changes or the event is called off." = "Θα δείτε την αλλαγή αν αλλάξει η ώρα ή ακυρωθεί το συμβάν.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Η προσθήκη παραδίδει το συμβάν στην εφαρμογή ημερολογίου σας. Αυτό το App Clip δεν διαβάζει ποτέ τα ημερολόγιά σας.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Πρόσκληση ημερολογίου";
+"Cancelled" = "Ακυρώθηκε";
+"Check your e-mail" = "Ελέγξτε το e-mail σας";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Εισάγετε το e-mail που κρατήσατε και θα στείλουμε ένα σύνδεσμο για να δείτε όλες τις κρατήσεις σας.";
+"Get Cloud Calendars" = "Λήψη ημερολογίων Cloud";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Τελειώστε τα ημερολόγια των Cloud — ρυθμίστε τις ώρες σας, μοιραστείτε έναν σύνδεσμο και κάθε κράτηση προσγειώνεται στο ημερολόγιό σας. Αποθηκεύσαμε τον κωδικό εγκατάστασης σου, οπότε συνεχίζει από εκεί που σταμάτησες.";
+"It may have expired. Ask for a new one below." = "Μπορεί να έχει λήξει. Ζητήστε ένα νέο παρακάτω.";
+"Loading your bookings…" = "Φόρτωση των κρατήσεων σας...";
+"My bookings" = "Οι κρατήσεις μου";
+"No bookings on this link." = "Δεν υπάρχουν κρατήσεις σε αυτό το σύνδεσμο.";
+"Reschedule or cancel" = "Αλλαγή προγράμματος ή ακύρωση";
+"Set up your booking page" = "Set σελίδας κράτησης";
+"Shared calendar" = "Κοινόχρηστο ημερολόγιο";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Αυτή η εφαρμογή Clip προεπισκοπεί μόνο την πρόσκληση ημερολογίου. Κατεβάστε τα ημερολόγια Cloud για να τα προσθέσετε στην κοινή χρήση μαζί μου.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Αυτή η εφαρμογή Clip προεπισκοπεί μόνο το γεγονός. Κατεβάστε τα ημερολόγια Cloud για να τα προσθέσετε στο ημερολόγιό σας.";
+"This link didn’t work" = "Αυτή η σύνδεση δεν λειτούργησε";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Στείλαμε ένα σύνδεσμο για να δούμε και να διαχειριστούμε τις κρατήσεις σας. Δουλεύει για 7 μέρες.";
+"you@example.com" = "you@example.com";

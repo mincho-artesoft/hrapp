@@ -9,3 +9,23 @@
 "Add to Calendar" = "เพิ่มลงในปฏิทิน";
 "You’ll see it update if the time changes or the event is called off." = "คุณจะเห็นการอัปเดตหากเวลาเปลี่ยนหรือกิจกรรมถูกยกเลิก";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "การเพิ่มจะส่งกิจกรรมไปยังแอปปฏิทินของคุณ App Clip นี้ไม่เคยอ่านปฏิทินของคุณ";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "การเชื้อเชิญปฏิทิน";
+"Cancelled" = "ยกเลิกแล้ว";
+"Check your e-mail" = "โปรดตรวจสอบอีเมลของคุณ";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "ใส่อีเมลที่คุณจองไว้ แล้วเราจะส่งลิงก์ไปดูหนังสือของคุณทั้งหมด";
+"Get Cloud Calendars" = "หาปฏิทินของเมฆ";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "จง ทํา ให้ ปฏิทิน คลา วด์ เสร็จ สมบูรณ์ — ตั้ง ชั่วโมง, เชื่อม ต่อ กัน หนึ่ง เส้น, และ ทํา หนังสือ ทุก ดิน แดน ใน ปฏิทิน ของ คุณ. เราเก็บรหัสการจัดฉากไว้ มันเลยเลือกที่ที่คุณทิ้งไว้";
+"It may have expired. Ask for a new one below." = "มันอาจจะหมดอายุ ถามหาอันใหม่ข้างล่าง";
+"Loading your bookings…" = "กําลังเรียกหนังสือของคุณ...";
+"My bookings" = "การจองของฉัน";
+"No bookings on this link." = "ไม่มีการจองที่ลิงก์นี้";
+"Reschedule or cancel" = "การจัดตารางหรือยกเลิก";
+"Set up your booking page" = "ตั้งค่าหน้าหนังสือของคุณ";
+"Shared calendar" = "ปฏิทินที่ใช้ร่วมกัน";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "ตัวกรองนี้ จะทําการแสดงตัวอย่างเฉพาะปฏิทินเท่านั้น ดาวน์โหลดปฏิทินเมฆ เพื่อเพิ่มเพื่อให้ฉันแบ่งปัน";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "คลิปนี้ จะแสดงตัวอย่างเฉพาะเหตุการณ์เท่านั้น ดาวน์โหลดปฏิทินของเมฆ เพื่อเพิ่มเข้าไปในปฏิทินของคุณ";
+"This link didn’t work" = "ส่วน เชื่อม นี้ ไม่ ได้ ผล";
+"We sent a link to see and manage your bookings. It works for 7 days." = "เราส่งลิงก์ไปดูและจัดการบัญชีของคุณ มันใช้ได้ 7 วัน";
+"you@example.com" = "you@example.com";

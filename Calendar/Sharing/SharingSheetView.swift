@@ -75,6 +75,7 @@ struct SharingSheetView: View {
     @State private var selectedEventAccessTarget: SharedEventAccessTarget?
     @State private var selectedReceivedEvent: EKEvent?
     @State private var selectedPendingInvitation: SharedEventImportPayload?
+    @State private var selectedPendingCalendarInvitation: SharedCalendarInvitationPayload?
     @State private var pendingInvitationActionIDs: Set<String> = []
     @State private var pendingInvitationErrorMessage: String?
     @State private var sharedEventsDestination: SharedEventsDestination?
@@ -175,7 +176,7 @@ struct SharingSheetView: View {
 
             sharedEventsNavigationButton(
                 title: "Pending invitations",
-                count: pendingInvitationManager.invitations.count,
+                count: pendingInvitationManager.totalInvitationCount,
                 systemImage: "envelope.badge.fill",
                 color: .orange,
                 destination: .pending
@@ -227,7 +228,7 @@ struct SharingSheetView: View {
 
                 Spacer(minLength: 8)
 
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.forward")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)
             }
@@ -263,7 +264,7 @@ struct SharingSheetView: View {
 
                     Spacer(minLength: 8)
 
-                    Image(systemName: "chevron.right")
+                    Image(systemName: "chevron.forward")
                         .font(.footnote.weight(.semibold))
                         .foregroundStyle(.tertiary)
                 }
@@ -274,8 +275,11 @@ struct SharingSheetView: View {
 
     private var cloudAccountSummary: String {
         let count = cloudAccountManager.account?.identities.count ?? 0
-        if count == 0 { return "Sign in or manage accounts" }
-        return count == 1 ? "1 connected account" : "\(count) connected accounts"
+        if count == 0 { return String(localized: "Sign in or manage accounts") }
+        let format = count == 1
+            ? String(localized: "%lld connected account")
+            : String(localized: "%lld connected accounts")
+        return String.localizedStringWithFormat(format, Int64(count))
     }
 
     private var cloudAccountView: some View {
@@ -354,7 +358,7 @@ struct SharingSheetView: View {
                         .accessibilityLabel("\(count) pending invitations")
                 }
 
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.forward")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)
             }
@@ -368,9 +372,15 @@ struct SharingSheetView: View {
         destination: SharedEventsDestination
     ) -> String {
         if destination == .pending {
-            return count == 1 ? "1 pending invitation" : "\(count) pending invitations"
+            let format = count == 1
+                ? String(localized: "%lld pending invitation")
+                : String(localized: "%lld pending invitations")
+            return String.localizedStringWithFormat(format, Int64(count))
         }
-        return count == 1 ? "1 upcoming event" : "\(count) upcoming events"
+        let format = count == 1
+            ? String(localized: "%lld event")
+            : String(localized: "%lld events")
+        return String.localizedStringWithFormat(format, Int64(count))
     }
 
     private func sharedEventsList(_ destination: SharedEventsDestination) -> some View {
@@ -402,6 +412,11 @@ struct SharingSheetView: View {
                 Task { await pendingInvitationManager.refresh() }
             }) { payload in
                 SharedEventImportView(payload: payload)
+            }
+            .sheet(item: $selectedPendingCalendarInvitation, onDismiss: {
+                Task { await pendingInvitationManager.refresh() }
+            }) { payload in
+                SharedCalendarInvitationView(payload: payload)
             }
             .onAppear {
                 showSharedEventsSearch = false
@@ -485,16 +500,19 @@ struct SharingSheetView: View {
         switch destination {
         case .pending:
             if pendingInvitationManager.isLoading
-                && pendingInvitationManager.invitations.isEmpty {
+                && pendingInvitationManager.totalInvitationCount == 0 {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else if pendingInvitationManager.invitations.isEmpty {
+            } else if pendingInvitationManager.totalInvitationCount == 0 {
                 sharedEventsEmptyState(
                     title: "No pending invitations.",
                     systemImage: "envelope.open"
                 )
             } else {
                 List {
+                    ForEach(pendingInvitationManager.calendarInvitations) { invitation in
+                        pendingCalendarInvitationRow(invitation)
+                    }
                     ForEach(pendingInvitationManager.invitations) { invitation in
                         pendingInvitationRow(invitation)
                     }
@@ -683,6 +701,68 @@ struct SharingSheetView: View {
         .padding(.vertical, 6)
     }
 
+    private func pendingCalendarInvitationRow(
+        _ invitation: CloudCalendarsAPI.PendingICloudCalendarInvitation
+    ) -> some View {
+        let isUpdating = pendingInvitationActionIDs.contains("calendar:\(invitation.id)")
+
+        return VStack(alignment: .leading, spacing: 7) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Label(invitation.title, systemImage: "calendar")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.primary)
+                    .lineLimit(2)
+
+                Spacer(minLength: 8)
+
+                Text(invitation.access.title)
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(
+                        invitation.access == .writer ? Color.green : Color.secondary
+                    )
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(.thinMaterial, in: Capsule())
+                    .fixedSize()
+            }
+
+            Text("Calendar invitation")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+
+            if let sender = invitation.senderEmail ?? invitation.ownerEmail {
+                Text("From \(sender)")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .truncationMode(.middle)
+            }
+
+            HStack(spacing: 10) {
+                Button(role: .destructive) {
+                    Task { await declinePendingCalendarInvitation(invitation) }
+                } label: {
+                    Text("Decline")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .tint(.red)
+
+                Button {
+                    selectedPendingCalendarInvitation = invitation.importPayload
+                } label: {
+                    Text("Accept")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(invitation.importPayload == nil)
+            }
+            .controlSize(.small)
+            .disabled(isUpdating)
+        }
+        .padding(.vertical, 6)
+    }
+
     @MainActor
     private func declinePendingInvitation(
         _ invitation: CloudCalendarsAPI.PendingEventInvitation
@@ -698,6 +778,31 @@ struct SharingSheetView: View {
             try await CloudCalendarsAPI.declinePendingEventInvitation(
                 eventId: invitation.eventId,
                 feedId: invitation.feedId,
+                session: session
+            )
+            pendingInvitationErrorMessage = nil
+            await pendingInvitationManager.refresh()
+        } catch {
+            pendingInvitationErrorMessage = error.localizedDescription
+        }
+    }
+
+    @MainActor
+    private func declinePendingCalendarInvitation(
+        _ invitation: CloudCalendarsAPI.PendingICloudCalendarInvitation
+    ) async {
+        let actionID = "calendar:\(invitation.id)"
+        guard !pendingInvitationActionIDs.contains(actionID),
+              let session = CalendarFeedSession.existing
+        else { return }
+
+        pendingInvitationActionIDs.insert(actionID)
+        defer { pendingInvitationActionIDs.remove(actionID) }
+
+        do {
+            try await CloudCalendarsAPI.declinePendingICloudCalendarInvitation(
+                ownerId: invitation.ownerId,
+                calendarId: invitation.calendarId,
                 session: session
             )
             pendingInvitationErrorMessage = nil
@@ -790,7 +895,7 @@ struct SharingSheetView: View {
 
                 Spacer(minLength: 8)
 
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.forward")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)
             }
@@ -919,10 +1024,7 @@ struct SharingSheetView: View {
     }
 
     private func reloadSharedEvents() {
-        let now = Date()
-
         sentEvents = SharedOutgoingEventTracker.sentEvents(in: viewModel.eventStore)
-            .filter { $0.end > now }
             .sorted {
                 if $0.start == $1.start { return $0.end < $1.end }
                 return $0.start < $1.start
@@ -931,8 +1033,7 @@ struct SharingSheetView: View {
         receivedEvents = SharedInviteTracker.tracked().values.compactMap { invite in
             guard let event = viewModel.eventStore.event(withIdentifier: invite.localEventIdentifier),
                   let start = event.startDate,
-                  let end = event.endDate,
-                  end > now
+                  let end = event.endDate
             else { return nil }
 
             return ReceivedSharedEvent(
@@ -1012,6 +1113,7 @@ private struct SharedEventAccessSheet: View {
                     }
                 }
             }
+            .disabled(isSaving)
             .navigationTitle("Event Access")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -1020,7 +1122,7 @@ private struct SharedEventAccessSheet: View {
                         Image(systemName: "pencil")
                     }
                     .accessibilityLabel("Edit Event")
-                    .disabled(editableEvent == nil || hasUnsavedChanges || isSaving)
+                    .disabled(editableEvent == nil || isSaving)
 
                     Button {
                         guard let editableEvent else { return }
@@ -1029,18 +1131,10 @@ private struct SharedEventAccessSheet: View {
                         Image(systemName: "square.and.arrow.up")
                     }
                     .accessibilityLabel("Share Event")
-                    .disabled(editableEvent == nil || hasUnsavedChanges || isSaving)
+                    .disabled(editableEvent == nil || isSaving)
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button {
-                        Task { await saveChanges() }
-                    } label: {
-                        if isSaving {
-                            ProgressView()
-                        } else {
-                            Text("Save")
-                        }
-                    }
+                    Button("Done") { dismiss() }
                     .disabled(isLoading || isSaving)
                 }
             }
@@ -1059,11 +1153,11 @@ private struct SharedEventAccessSheet: View {
                 presenting: recipientPendingRemoval
             ) { recipient in
                 Button("Remove Access", role: .destructive) {
-                    stageRemoval(of: recipient)
+                    removeAccess(from: recipient)
                 }
                 Button("Cancel", role: .cancel) {}
             } message: { recipient in
-                Text("After Save, \(recipient.displayEmail) will lose access. Their local copy will remain read-only with a line through it.")
+                Text(recipient.displayEmail)
             }
             .sheet(isPresented: $showEventEditor) {
                 if let localEventIdentifier = event.localEventIdentifier {
@@ -1092,9 +1186,9 @@ private struct SharedEventAccessSheet: View {
 
     private func recipientRow(_ recipient: CloudCalendarsAPI.EventRecipient) -> some View {
         let providers = recipient.isAnonymous
-            ? "Not signed in"
+            ? String(localized: "Not signed in")
             : recipient.isPendingInvitation
-                ? "Invitation pending"
+                ? String(localized: "Invitation pending")
                 : recipient.identities.map { $0.provider.capitalized }.joined(separator: ", ")
 
         return HStack(alignment: .top, spacing: 10) {
@@ -1202,7 +1296,7 @@ private struct SharedEventAccessSheet: View {
         recipient: CloudCalendarsAPI.EventRecipient
     ) -> some View {
         Button {
-            stageAccess(access, for: recipient)
+            changeAccess(access, for: recipient)
         } label: {
             if recipient.access == access {
                 Label(access.title, systemImage: "checkmark")
@@ -1216,7 +1310,7 @@ private struct SharedEventAccessSheet: View {
     private func loadRecipients() async {
         defer { isLoading = false }
         guard let session = CalendarFeedSession.existing else {
-            errorMessage = "Sign in to manage event access."
+            errorMessage = String(localized: "Sign in to manage event access.")
             return
         }
         do {
@@ -1234,21 +1328,25 @@ private struct SharedEventAccessSheet: View {
     }
 
     @MainActor
-    private func stageAccess(
+    private func changeAccess(
         _ access: CloudCalendarsAPI.EventAccess,
         for recipient: CloudCalendarsAPI.EventRecipient
     ) {
         guard !recipient.belongsToOriginalOwner,
-              let index = recipients.firstIndex(where: { $0.id == recipient.id })
+              let index = recipients.firstIndex(where: { $0.id == recipient.id }),
+              recipients[index].access != access
         else { return }
         recipients[index].access = access
+        Task { await persistChanges() }
     }
 
-    private func stageRemoval(of recipient: CloudCalendarsAPI.EventRecipient) {
+    @MainActor
+    private func removeAccess(from recipient: CloudCalendarsAPI.EventRecipient) {
         guard !recipient.belongsToOriginalOwner else { return }
         removedRecipientIDs.insert(recipient.id)
         recipients.removeAll { $0.id == recipient.id }
         recipientPendingRemoval = nil
+        Task { await persistChanges() }
     }
 
     private var removalDialogIsPresented: Binding<Bool> {
@@ -1258,7 +1356,7 @@ private struct SharedEventAccessSheet: View {
         )
     }
 
-    private var hasUnsavedChanges: Bool {
+    private var hasPendingChanges: Bool {
         guard removedRecipientIDs.isEmpty else { return true }
         let originalAccess = Dictionary(
             uniqueKeysWithValues: originalRecipients.map { ($0.id, $0.access) }
@@ -1267,14 +1365,13 @@ private struct SharedEventAccessSheet: View {
     }
 
     @MainActor
-    private func saveChanges() async {
+    private func persistChanges() async {
         guard !isSaving else { return }
-        guard hasUnsavedChanges else {
-            dismiss()
-            return
-        }
+        guard hasPendingChanges else { return }
         guard let session = CalendarFeedSession.existing else {
-            errorMessage = "Sign in to save event access."
+            recipients = originalRecipients
+            removedRecipientIDs = []
+            errorMessage = String(localized: "Sign in to manage event access.")
             return
         }
 
@@ -1303,8 +1400,9 @@ private struct SharedEventAccessSheet: View {
             originalRecipients = saved
             removedRecipientIDs = []
             NotificationCenter.default.post(name: .sharedEventsTrackingChanged, object: nil)
-            dismiss()
         } catch {
+            recipients = originalRecipients
+            removedRecipientIDs = []
             errorMessage = error.localizedDescription
         }
     }

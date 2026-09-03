@@ -9,3 +9,23 @@
 "Add to Calendar" = "カレンダーに追加";
 "You’ll see it update if the time changes or the event is called off." = "時刻が変わったり予定が取り消されたりすると、更新が反映されます。";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "追加すると、予定はカレンダーAppに引き渡されます。このApp Clipがカレンダーを読み取ることはありません。";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "カレンダーの招待状";
+"Cancelled" = "キャンセル済み";
+"Check your e-mail" = "メールでのお問い合わせ";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "予約したメールアドレスを入力すると、予約したメールアドレスがすべて表示されます。";
+"Get Cloud Calendars" = "クラウドカレンダーを入手";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "クラウドカレンダーを完成させる — 時間を設定し、1つのリンクを共有し、すべての予約ランドをカレンダーに共有します。 セットアップコードを保存しましたので、左から右にピックアップします。";
+"It may have expired. Ask for a new one below." = "期限が切れる場合があります。 以下に新しいものを依頼してください。";
+"Loading your bookings…" = "あなたの予約をロード...";
+"My bookings" = "私の予約";
+"No bookings on this link." = "このリンクに予約はありません。";
+"Reschedule or cancel" = "キャンセルまたはキャンセル";
+"Set up your booking page" = "予約ページを設定する";
+"Shared calendar" = "共有カレンダー";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "このアプリクリップは、カレンダーの招待状をプレビューするだけです。 クラウドカレンダーをダウンロードし、共有に追加します。";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "このアプリクリップはイベントをプレビューするだけです。 クラウドカレンダーをダウンロードしてカレンダーに追加します。";
+"This link didn’t work" = "このリンクが機能しなかった";
+"We sent a link to see and manage your bookings. It works for 7 days." = "予約確認・管理のためのリンクをお送りしました。 7日間有効です。";
+"you@example.com" = "you@example.com";

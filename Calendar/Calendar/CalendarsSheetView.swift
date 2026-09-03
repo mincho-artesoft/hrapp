@@ -24,12 +24,10 @@ private struct ICloudCalendarSharingTarget: Identifiable {
     let originalOwnerEmail: String?
 }
 
-private struct SharedICloudCalendarEditTarget: Identifiable {
+private struct SharedICloudCalendarInfoTarget: Identifiable {
     let id = UUID()
-    let calendar: EKCalendar
-    let ownerID: String
-    let calendarID: String
-    let access: CloudCalendarsAPI.EventAccess
+    let sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar
+    let localCalendar: EKCalendar
 }
 
 struct CalendarsSheetView: View {
@@ -53,7 +51,7 @@ struct CalendarsSheetView: View {
     @State private var addingGoogleCalendarColor: UIColor? = nil
     @State private var googleCalendarSharingTarget: GoogleCalendarSharingTarget?
     @State private var iCloudCalendarSharingTarget: ICloudCalendarSharingTarget?
-    @State private var sharedICloudCalendarEditTarget: SharedICloudCalendarEditTarget?
+    @State private var sharedICloudCalendarInfoTarget: SharedICloudCalendarInfoTarget?
     @State private var sharedICloudCalendars: [CloudCalendarsAPI.SharedICloudCalendar] = []
     @State private var isLoadingSharedICloudCalendars = false
     @State private var sharedICloudCalendarsError: String?
@@ -127,6 +125,13 @@ struct CalendarsSheetView: View {
         .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
             Task { await loadSharedICloudCalendars() }
         }
+        .onReceive(NotificationCenter.default.publisher(for: .sharedEventImported)) { _ in
+            viewModel.reloadCalendars()
+            Task { await loadSharedICloudCalendars() }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .EKEventStoreChanged)) { _ in
+            viewModel.reloadCalendars()
+        }
         .onReceive(sharedICloudRefreshTimer) { _ in
             Task { await loadSharedICloudCalendars() }
         }
@@ -140,20 +145,20 @@ struct CalendarsSheetView: View {
             EditCalendarView(eventStore: viewModel.eventStore, calendar: cal)
         }
 
-        .sheet(item: $sharedICloudCalendarEditTarget, onDismiss: {
+        .sheet(item: $sharedICloudCalendarInfoTarget, onDismiss: {
             viewModel.reloadCalendars()
             Task { await loadSharedICloudCalendars() }
         }) { target in
-            EditCalendarView(
+            SharedICloudCalendarInfoView(
                 eventStore: viewModel.eventStore,
-                calendar: target.calendar,
-                sharedContext: SharedCalendarEditContext(
-                    ownerID: target.ownerID,
-                    calendarID: target.calendarID,
-                    access: target.access,
-                    isOriginalCreator: false
-                )
+                sharedCalendar: target.sharedCalendar,
+                localCalendar: target.localCalendar,
+                onRemoved: { removedShareID in
+                    sharedICloudCalendars.removeAll { $0.id == removedShareID }
+                }
             )
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
         }
 
         // Add iCloud Calendar
@@ -301,18 +306,14 @@ struct CalendarsSheetView: View {
                                     originalOwnerEmail: calendar.ownerEmail
                                 )
                             } : nil,
-                            editAction: calendar.access == .owner && !calendar.isRevoked
-                                ? localCalendar.map { editableCalendar in
-                                    {
-                                        sharedICloudCalendarEditTarget = SharedICloudCalendarEditTarget(
-                                            calendar: editableCalendar,
-                                            ownerID: calendar.ownerId,
-                                            calendarID: calendar.calendarId,
-                                            access: calendar.access
-                                        )
-                                    }
-                                }
-                                : nil
+                            infoAction: {
+                                guard let localCalendar else { return }
+                                sharedICloudCalendarInfoTarget =
+                                    SharedICloudCalendarInfoTarget(
+                                        sharedCalendar: calendar,
+                                        localCalendar: localCalendar
+                                    )
+                            }
                         )
                             .listRowSeparator(.hidden)
                     }
@@ -664,12 +665,23 @@ struct CalendarsSheetView: View {
             // used to overwrite a local edit before the foreground sync could
             // upload it.
             _ = await SharedICloudCalendarLocalStore.refreshAll()
+            // The sync mutates EventKit in place. Refresh this sheet's
+            // observed calendar collection as well, otherwise its open rows
+            // can keep rendering the old EKCalendar instances while the
+            // timeline already shows the new metadata and events.
+            viewModel.reloadCalendars()
             let fetchedCalendars = try await CloudCalendarsAPI
                 .iCloudCalendarsSharedWithMe(session: session)
+                .filter {
+                    !SharedICloudCalendarLocalStore.isRemovedLocally(
+                        shareID: $0.id
+                    )
+                }
 
-            if sharedICloudCalendars != fetchedCalendars {
-                sharedICloudCalendars = fetchedCalendars
-            }
+            // Assign the fresh value on every completed refresh. Besides the
+            // title/color, the row also renders role and revocation fields
+            // that do not originate from EventKit.
+            sharedICloudCalendars = fetchedCalendars
             sharedICloudCalendarsError = nil
         } catch {
             sharedICloudCalendarsError = error.localizedDescription
@@ -718,7 +730,7 @@ private struct SharedICloudCalendarRow: View {
     let isSelected: Bool
     let toggleAction: () -> Void
     let manageSharingAction: (() -> Void)?
-    let editAction: (() -> Void)?
+    let infoAction: () -> Void
 
     var body: some View {
         HStack(spacing: 16) {
@@ -757,42 +769,35 @@ private struct SharedICloudCalendarRow: View {
 
             Spacer(minLength: 8)
 
-            Text(
-                calendar.isRevoked
-                    ? (calendar.wasDeletedByOwner ? "Deleted by owner" : "Access removed")
-                    : calendar.access.title
-            )
-            .font(.caption.weight(.semibold))
-            .foregroundStyle(
-                calendar.isRevoked
-                    ? Color.red
-                    : (calendar.access == .writer
-                        ? Color.green
-                        : Color(uiColor: .secondaryLabel))
-            )
-            .padding(.horizontal, 9)
-            .padding(.vertical, 5)
-            .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
-
-            if let editAction {
-                Button(action: editAction) {
-                    Image(systemName: "pencil")
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(.blue)
-                }
-                .buttonStyle(.borderless)
-                .accessibilityLabel("Edit shared calendar")
-            }
+            Text(calendarStatusText)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(
+                    calendar.isRevoked
+                        ? Color.red
+                        : Color.primary
+                )
+                .padding(.horizontal, 9)
+                .padding(.vertical, 5)
+                .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
 
             if let manageSharingAction {
                 Button(action: manageSharingAction) {
                     Image(systemName: "person.2.fill")
-                        .font(.body.weight(.semibold))
+                        .font(.system(size: 18))
                         .foregroundStyle(.blue)
                 }
                 .buttonStyle(.borderless)
                 .accessibilityLabel("Manage calendar sharing")
             }
+
+            Button(action: infoAction) {
+                Image(systemName: "info.circle")
+                    .font(.system(size: 18))
+                    .foregroundStyle(.blue)
+            }
+            .buttonStyle(.borderless)
+            .disabled(localCalendar == nil)
+            .accessibilityLabel("Shared calendar information")
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 5)
@@ -808,6 +813,9 @@ private struct SharedICloudCalendarRow: View {
     }
 
     private var calendarColor: Color {
+        if let cgColor = localCalendar?.cgColor {
+            return Color(uiColor: UIColor(cgColor: cgColor))
+        }
         let raw = calendar.color.trimmingCharacters(
             in: CharacterSet.alphanumerics.inverted
         )
@@ -819,5 +827,241 @@ private struct SharedICloudCalendarRow: View {
             green: Double((value >> 8) & 0xFF) / 255,
             blue: Double(value & 0xFF) / 255
         )
+    }
+
+    private var calendarStatusText: String {
+        guard calendar.isRevoked else { return calendar.access.title }
+        return calendar.wasDeletedByOwner
+            ? String(localized: "Deleted by owner")
+            : String(localized: "Access removed")
+    }
+}
+
+private struct SharedICloudCalendarInfoView: View {
+    private enum PresentedAlert: Identifiable {
+        case confirmRemoval
+        case failed(String)
+
+        var id: String {
+            switch self {
+            case .confirmRemoval: "confirm-removal"
+            case .failed(let message): "failed-\(message)"
+            }
+        }
+    }
+
+    @Environment(\.dismiss) private var dismiss
+
+    let eventStore: EKEventStore
+    let sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar
+    let localCalendar: EKCalendar
+    let onRemoved: (String) -> Void
+
+    @State private var selectedColor: UIColor
+    @State private var usesCreatorDefault: Bool
+    @State private var presentedAlert: PresentedAlert?
+    @State private var isRemoving = false
+
+    init(
+        eventStore: EKEventStore,
+        sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar,
+        localCalendar: EKCalendar,
+        onRemoved: @escaping (String) -> Void
+    ) {
+        self.eventStore = eventStore
+        self.sharedCalendar = sharedCalendar
+        self.localCalendar = localCalendar
+        self.onRemoved = onRemoved
+        let localOverride = SharedICloudCalendarLocalStore.localColorOverride(
+            shareID: sharedCalendar.id
+        )
+        _selectedColor = State(initialValue: localOverride ?? Self.creatorColor(sharedCalendar))
+        _usesCreatorDefault = State(initialValue: localOverride == nil)
+    }
+
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    TextField(
+                        LocalizedStringKey("Calendar Name"),
+                        text: .constant(sharedCalendar.title)
+                    )
+                    .disabled(true)
+                }
+
+                Section {
+                    NavigationLink {
+                        CalendarColorSelectionView(
+                            selectedColor: $selectedColor,
+                            defaultColor: Self.creatorColor(sharedCalendar),
+                            usesDefault: $usesCreatorDefault
+                        )
+                    } label: {
+                        HStack {
+                            Circle()
+                                .fill(Color(uiColor: effectiveSelectedColor))
+                                .frame(width: 20, height: 20)
+                            Text(displayColorName(for: effectiveSelectedColor))
+                                .padding(.leading, 8)
+                        }
+                    }
+                } header: {
+                    Text(LocalizedStringKey("COLOR"))
+                        .foregroundColor(.secondary)
+                } footer: {
+                    Text(
+                        usesCreatorDefault
+                            ? String(localized: "Default from creator")
+                            : String(localized: "Custom on this device")
+                    )
+                }
+
+                Section {
+                    LabeledContent("Access", value: sharedCalendar.access.title)
+                    if let ownerEmail = sharedCalendar.ownerEmail,
+                       !ownerEmail.isEmpty {
+                        LabeledContent("Owner", value: ownerEmail)
+                    }
+                }
+
+                Section {
+                    Button(role: .destructive) {
+                        presentedAlert = .confirmRemoval
+                    } label: {
+                        Text("Remove from My Calendars")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                }
+            }
+            .navigationBarTitle(LocalizedStringKey("Edit Calendar"), displayMode: .inline)
+            .navigationBarItems(
+                leading: AppToolbarTextButton("Cancel") { dismiss() },
+                trailing: AppToolbarTextButton("Done") { saveLocalColor() }
+            )
+        }
+        .alert(item: $presentedAlert) { alert in
+            switch alert {
+            case .confirmRemoval:
+                Alert(
+                    title: Text("Remove Shared Calendar?"),
+                    primaryButton: .destructive(Text("Remove")) {
+                        Task { await leaveSharedCalendar() }
+                    },
+                    secondaryButton: .cancel()
+                )
+            case .failed(let message):
+                Alert(
+                    title: Text("Unable to Update Calendar"),
+                    message: Text(message),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
+        }
+    }
+
+    private func saveLocalColor() {
+        do {
+            try SharedICloudCalendarLocalStore.setLocalColorOverride(
+                usesCreatorDefault ? nil : selectedColor,
+                for: sharedCalendar,
+                in: eventStore
+            )
+            CalendarViewModel.shared.reloadCalendars()
+            NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
+            dismiss()
+        } catch {
+            presentedAlert = .failed(error.localizedDescription)
+        }
+    }
+
+    private var effectiveSelectedColor: UIColor {
+        usesCreatorDefault ? Self.creatorColor(sharedCalendar) : selectedColor
+    }
+
+    private func displayColorName(for color: UIColor) -> String {
+        if colorsAreEqual(color, .systemRed) {
+            return String(localized: "Red")
+        }
+        if colorsAreEqual(color, .systemOrange) {
+            return String(localized: "Orange")
+        }
+        if colorsAreEqual(color, .systemYellow) {
+            return String(localized: "Yellow")
+        }
+        if colorsAreEqual(color, .systemGreen) {
+            return String(localized: "Green")
+        }
+        if colorsAreEqual(color, .systemBlue) {
+            return String(localized: "Blue")
+        }
+        if colorsAreEqual(color, .systemPurple) {
+            return String(localized: "Purple")
+        }
+        if colorsAreEqual(color, .brown) {
+            return String(localized: "Brown")
+        }
+        return String(localized: "Custom")
+    }
+
+    private func colorsAreEqual(_ lhs: UIColor, _ rhs: UIColor) -> Bool {
+        var lhsRed: CGFloat = 0
+        var lhsGreen: CGFloat = 0
+        var lhsBlue: CGFloat = 0
+        var lhsAlpha: CGFloat = 0
+        var rhsRed: CGFloat = 0
+        var rhsGreen: CGFloat = 0
+        var rhsBlue: CGFloat = 0
+        var rhsAlpha: CGFloat = 0
+        lhs.getRed(&lhsRed, green: &lhsGreen, blue: &lhsBlue, alpha: &lhsAlpha)
+        rhs.getRed(&rhsRed, green: &rhsGreen, blue: &rhsBlue, alpha: &rhsAlpha)
+        return lhsRed == rhsRed
+            && lhsGreen == rhsGreen
+            && lhsBlue == rhsBlue
+            && lhsAlpha == rhsAlpha
+    }
+
+    private static func creatorColor(
+        _ sharedCalendar: CloudCalendarsAPI.SharedICloudCalendar
+    ) -> UIColor {
+        let raw = sharedCalendar.color.trimmingCharacters(
+            in: CharacterSet.alphanumerics.inverted
+        )
+        guard raw.count == 6, let value = UInt64(raw, radix: 16) else {
+            return .systemBlue
+        }
+        return UIColor(
+            red: CGFloat((value >> 16) & 0xFF) / 255,
+            green: CGFloat((value >> 8) & 0xFF) / 255,
+            blue: CGFloat(value & 0xFF) / 255,
+            alpha: 1
+        )
+    }
+
+    @MainActor
+    private func leaveSharedCalendar() async {
+        guard !isRemoving else { return }
+        guard let session = CalendarFeedSession.existing else {
+            presentedAlert = .failed(String(localized: "Sign In Required"))
+            return
+        }
+        isRemoving = true
+        defer { isRemoving = false }
+        do {
+            try await CloudCalendarsAPI.leaveICloudCalendar(
+                ownerId: sharedCalendar.ownerId,
+                calendarId: sharedCalendar.calendarId,
+                session: session
+            )
+            try SharedICloudCalendarLocalStore.removeLocally(
+                sharedCalendar,
+                in: eventStore
+            )
+            onRemoved(sharedCalendar.id)
+            NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
+            dismiss()
+        } catch {
+            presentedAlert = .failed(error.localizedDescription)
+        }
     }
 }

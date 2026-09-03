@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Vähenevä kupera kuu";
 "MoonPhase.lastQuarter" = "Viime neljännes";
 "MoonPhase.waningCrescent" = "Vähenevä sirppi";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

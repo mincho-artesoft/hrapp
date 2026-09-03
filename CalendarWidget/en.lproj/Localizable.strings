@@ -26,6 +26,7 @@
 "Weather" = "Weather";
 "Pressure" = "Pressure";
 "UV Index" = "UV Index";
+"UV %@" = "UV %@";
 "Low" = "Low";
 "Moderate" = "Moderate";
 "High" = "High";

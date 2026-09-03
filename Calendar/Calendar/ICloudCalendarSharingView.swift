@@ -13,12 +13,17 @@ struct ICloudCalendarSharingView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var recipients: [CloudCalendarsAPI.ICloudCalendarRecipient] = []
+    @State private var loadedRecipients: [CloudCalendarsAPI.ICloudCalendarRecipient] = []
+    @State private var removedRecipientEmails: Set<String> = []
     @State private var isLoading = false
+    @State private var isRefreshing = false
     @State private var isSaving = false
+    @State private var sharingUpdatedAt: String?
     @State private var errorMessage: String?
     @State private var showQRCode = false
     @State private var showEmailInvitations = false
     @State private var recipientPendingRemoval: CloudCalendarsAPI.ICloudCalendarRecipient?
+    @State private var resendingRecipientIDs: Set<String> = []
 
     var body: some View {
         NavigationStack {
@@ -44,15 +49,20 @@ struct ICloudCalendarSharingView: View {
                     Button("Close") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(isSaving ? "Saving…" : "Save") {
-                        Task { await save() }
-                    }
+                    Button("Done") { dismiss() }
                     .disabled(isSaving || isLoading || CalendarFeedSession.existing == nil)
                 }
             }
-            .task { await load() }
+            .task {
+                await load()
+                while !Task.isCancelled {
+                    try? await Task.sleep(for: .seconds(20))
+                    guard !Task.isCancelled else { return }
+                    await load(showProgress: false)
+                }
+            }
             .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
-                Task { await load() }
+                Task { await load(showProgress: false) }
             }
             .sheet(isPresented: $showQRCode) {
                 if let calendarInvitationURL {
@@ -74,7 +84,9 @@ struct ICloudCalendarSharingView: View {
                     existingRecipients: recipients
                 ) { savedRecipients in
                     recipients = savedRecipients
+                    loadedRecipients = savedRecipients
                     errorMessage = nil
+                    Task { await load(showProgress: false) }
                 }
                 .presentationDetents([.large])
                 .presentationDragIndicator(.visible)
@@ -88,18 +100,18 @@ struct ICloudCalendarSharingView: View {
                 presenting: recipientPendingRemoval
             ) { recipient in
                 Button("Remove Access", role: .destructive) {
+                    removedRecipientEmails.insert(recipient.email.lowercased())
                     recipients.removeAll { $0.id == recipient.id }
                     recipientPendingRemoval = nil
+                    Task { await persistChanges() }
                 }
                 Button("Cancel", role: .cancel) {
                     recipientPendingRemoval = nil
                 }
             } message: { recipient in
-                Text(
-                    "Stop sharing this calendar with \(recipient.email)? "
-                        + "After Save, their frozen copy and its events will remain visible with a line through them."
-                )
+                Text(recipient.email)
             }
+            .interactiveDismissDisabled(isSaving)
         }
     }
 
@@ -123,12 +135,36 @@ struct ICloudCalendarSharingView: View {
                             .font(.title2)
                             .foregroundStyle(.blue)
 
-                        Text(recipient.email)
-                            .lineLimit(1)
-                            .truncationMode(.middle)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(recipient.email)
+                                .lineLimit(1)
+                                .truncationMode(.middle)
+
+                            if recipient.isPendingInvitation {
+                                Text("Invitation pending")
+                                    .font(.footnote)
+                                    .foregroundStyle(.secondary)
+
+                                Button {
+                                    Task { await resendInvitation(to: recipient) }
+                                } label: {
+                                    if resendingRecipientIDs.contains(recipient.id) {
+                                        ProgressView()
+                                            .controlSize(.small)
+                                    } else {
+                                        Label("Resend", systemImage: "arrow.clockwise")
+                                            .font(.footnote.weight(.semibold))
+                                    }
+                                }
+                                .buttonStyle(.borderless)
+                                .disabled(resendingRecipientIDs.contains(recipient.id))
+                            }
+                        }
                             .frame(maxWidth: .infinity, alignment: .leading)
 
-                        accessPicker(access: $recipient.access)
+                        accessPicker(access: $recipient.access) {
+                            Task { await persistChanges() }
+                        }
 
                         Button(role: .destructive) {
                             recipientPendingRemoval = recipient
@@ -146,6 +182,30 @@ struct ICloudCalendarSharingView: View {
 
         }
         .disabled(isSaving)
+    }
+
+    @MainActor
+    private func resendInvitation(
+        to recipient: CloudCalendarsAPI.ICloudCalendarRecipient
+    ) async {
+        guard !resendingRecipientIDs.contains(recipient.id) else { return }
+        resendingRecipientIDs.insert(recipient.id)
+        defer { resendingRecipientIDs.remove(recipient.id) }
+        do {
+            let session = try await CalendarFeedSession.current()
+            let sharing = try await CloudCalendarsAPI.inviteICloudCalendarRecipients(
+                calendarId: calendarID,
+                ownerId: originalOwnerID,
+                emails: [recipient.email],
+                session: session
+            )
+            recipients = sharing.recipients
+            loadedRecipients = sharing.recipients
+            sharingUpdatedAt = sharing.updatedAt
+            errorMessage = nil
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 
     private var sharingMethodsSection: some View {
@@ -219,7 +279,7 @@ struct ICloudCalendarSharingView: View {
 
             Spacer(minLength: 8)
 
-            Image(systemName: "chevron.right")
+            Image(systemName: "chevron.forward")
                 .font(.footnote.weight(.semibold))
                 .foregroundStyle(.tertiary)
         }
@@ -303,12 +363,15 @@ struct ICloudCalendarSharingView: View {
     }
 
     private func accessPicker(
-        access: Binding<CloudCalendarsAPI.EventAccess>
+        access: Binding<CloudCalendarsAPI.EventAccess>,
+        onChange: @escaping () -> Void
     ) -> some View {
         Menu {
             ForEach(CloudCalendarsAPI.EventAccess.calendarSharingCases) { option in
                 Button {
+                    guard option != access.wrappedValue else { return }
                     access.wrappedValue = option
+                    onChange()
                 } label: {
                     if option == access.wrappedValue {
                         Label(option.title, systemImage: "checkmark")
@@ -329,14 +392,27 @@ struct ICloudCalendarSharingView: View {
     }
 
     @MainActor
-    private func load() async {
+    private func load(showProgress: Bool = true) async {
         guard let session = CalendarFeedSession.existing else {
             recipients = []
+            loadedRecipients = []
+            sharingUpdatedAt = nil
             errorMessage = nil
             return
         }
-        isLoading = true
-        defer { isLoading = false }
+        guard !isRefreshing, !isSaving else { return }
+        // Do not let a background refresh overwrite a change in the short
+        // interval between the tap and its autosave request starting.
+        if !showProgress,
+           (recipients != loadedRecipients || !removedRecipientEmails.isEmpty) {
+            return
+        }
+        isRefreshing = true
+        if showProgress { isLoading = true }
+        defer {
+            isRefreshing = false
+            if showProgress { isLoading = false }
+        }
         do {
             var sharing = try await CloudCalendarsAPI.iCloudCalendarSharing(
                 calendarId: calendarID,
@@ -364,6 +440,9 @@ struct ICloudCalendarSharingView: View {
                 )
             }
             recipients = sharing.recipients
+            loadedRecipients = sharing.recipients
+            sharingUpdatedAt = sharing.updatedAt
+            removedRecipientEmails = []
             errorMessage = nil
         } catch {
             errorMessage = error.localizedDescription
@@ -371,8 +450,14 @@ struct ICloudCalendarSharingView: View {
     }
 
     @MainActor
-    private func save() async {
-        guard let session = CalendarFeedSession.existing else { return }
+    private func persistChanges() async {
+        guard !isSaving else { return }
+        guard let session = CalendarFeedSession.existing else {
+            recipients = loadedRecipients
+            removedRecipientEmails = []
+            errorMessage = String(localized: "Sign In Required")
+            return
+        }
 
         var valuesByEmail: [String: CloudCalendarsAPI.EventAccess] = [:]
         for recipient in recipients {
@@ -390,9 +475,14 @@ struct ICloudCalendarSharingView: View {
                 recipients: valuesByEmail
                     .map { (email: $0.key, access: $0.value) }
                     .sorted { $0.email < $1.email },
+                removedRecipientEmails: removedRecipientEmails,
+                expectedUpdatedAt: sharingUpdatedAt,
                 session: session
             )
             recipients = sharing.recipients
+            loadedRecipients = sharing.recipients
+            sharingUpdatedAt = sharing.updatedAt
+            removedRecipientEmails = []
             if isOriginalOwner {
                 SharedICloudCalendarLocalStore.registerOwnedCalendar(
                     shareID: calendarID,
@@ -403,8 +493,9 @@ struct ICloudCalendarSharingView: View {
                 )
             }
             errorMessage = nil
-            dismiss()
         } catch {
+            recipients = loadedRecipients
+            removedRecipientEmails = []
             errorMessage = error.localizedDescription
         }
     }
@@ -606,11 +697,14 @@ private struct ICloudCalendarEmailInvitationsView: View {
         }
         guard !entered.isEmpty else { return }
         if let invalid = entered.first(where: { !CalendarFeedSession.validEmail($0.0) }) {
-            errorMessage = "Enter a valid email address for \(invalid.0)."
+            errorMessage = String.localizedStringWithFormat(
+                String(localized: "Enter a valid email address for %@."),
+                invalid.0
+            )
             return
         }
         guard Set(entered.map { $0.0 }).count == entered.count else {
-            errorMessage = "Each email address can appear only once."
+            errorMessage = String(localized: "Each email address can appear only once.")
             return
         }
 
@@ -626,7 +720,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
         defer { isSaving = false }
         do {
             let session = try await CalendarFeedSession.current()
-            let sharing = try await CloudCalendarsAPI.saveICloudCalendarSharing(
+            _ = try await CloudCalendarsAPI.saveICloudCalendarSharing(
                 calendarId: calendarID,
                 ownerId: originalOwnerID,
                 title: calendarTitle,
@@ -635,6 +729,12 @@ private struct ICloudCalendarEmailInvitationsView: View {
                 recipients: accessByEmail
                     .map { (email: $0.key, access: $0.value) }
                     .sorted { $0.email < $1.email },
+                session: session
+            )
+            let sharing = try await CloudCalendarsAPI.inviteICloudCalendarRecipients(
+                calendarId: calendarID,
+                ownerId: originalOwnerID,
+                emails: entered.map { $0.0 },
                 session: session
             )
             onSaved(sharing.recipients)

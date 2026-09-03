@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Küçülen Şişkin Ay";
 "MoonPhase.lastQuarter" = "Son Dördün";
 "MoonPhase.waningCrescent" = "Küçülen Hilal";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

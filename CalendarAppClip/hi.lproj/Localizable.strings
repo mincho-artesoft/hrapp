@@ -9,3 +9,23 @@
 "Add to Calendar" = "कैलेंडर में जोड़ें";
 "You’ll see it update if the time changes or the event is called off." = "समय बदलने या इवेंट रद्द होने पर आपको अपडेट दिखेगा।";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "जोड़ने पर इवेंट आपके कैलेंडर ऐप को सौंप दिया जाता है। यह App Clip आपके कैलेंडर कभी नहीं पढ़ता।";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "कैलेंडर आमंत्रण";
+"Cancelled" = "रद्द किया गया";
+"Check your e-mail" = "अपने ईमेल की जाँच करें";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "आप के साथ बुक ई-मेल दर्ज करें और हम आपकी सभी बुकिंग देखने के लिए एक लिंक भेज देंगे।";
+"Get Cloud Calendars" = "क्लाउड कैलेंडर प्राप्त करें";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "क्लाउड कैलेंडर को समाप्त करने के लिए - अपने घंटे निर्धारित करें, एक लिंक साझा करें, और आपके कैलेंडर पर हर बुकिंग भूमि। हमने आपके सेटअप कोड को बचा लिया है, इसलिए यह सही है जहां आपने छोड़ दिया है।";
+"It may have expired. Ask for a new one below." = "यह समाप्त हो सकता है। नीचे एक नया सवाल पूछो।";
+"Loading your bookings…" = "अपनी बुकिंग लोड हो रहा है...";
+"My bookings" = "मेरी बुकिंग";
+"No bookings on this link." = "इस लिंक पर कोई बुकिंग नहीं है।";
+"Reschedule or cancel" = "रद्द करना";
+"Set up your booking page" = "अपना बुकिंग पेज सेट करें";
+"Shared calendar" = "साझा कैलेंडर";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "यह ऐप क्लिप केवल कैलेंडर आमंत्रण का पूर्वावलोकन करता है। इसे मेरे साथ साझा करने के लिए क्लाउड कैलेंडर डाउनलोड करें।";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "यह ऐप क्लिप केवल घटना का पूर्वावलोकन करता है। इसे अपने कैलेंडर में जोड़ने के लिए क्लाउड कैलेंडर डाउनलोड करें।";
+"This link didn’t work" = "यह लिंक काम नहीं किया";
+"We sent a link to see and manage your bookings. It works for 7 days." = "हमने आपकी बुकिंग को देखने और प्रबंधित करने के लिए एक लिंक भेजा। यह 7 दिनों तक काम करता है।";
+"you@example.com" = "you@example.com";

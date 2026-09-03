@@ -9,3 +9,23 @@
 "Add to Calendar" = "添加到日历";
 "You’ll see it update if the time changes or the event is called off." = "如果时间变动或日程取消，你会看到更新。";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "添加后，日程会交给你的日历 App。此轻 App 不会读取你的日历。";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "日历邀请";
+"Cancelled" = "已取消";
+"Check your e-mail" = "检查您的电子邮件";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "请输入您预定的电子邮件, 我们将发送一个链接来查看您所有的预定 。";
+"Get Cloud Calendars" = "获取云日历";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "让\"云历\"完成——设定时间,共享一个链接,以及日历上的每一块订地. 我们保存了你的设置代码,所以它会从你离开的地方得到。";
+"It may have expired. Ask for a new one below." = "可能已经过期了 下问新一.";
+"Loading your bookings…" = "正在装入您的预订...";
+"My bookings" = "我的预订";
+"No bookings on this link." = "此链接没有预订 。";
+"Reschedule or cancel" = "重新安排或取消";
+"Set up your booking page" = "设置您的预订页面";
+"Shared calendar" = "共享日历";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "此 App Clip 只预览日历邀请 。 下载\"云历\",以添加与我共享.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "此 App Clip 只预览此事件 。 下载云日历以添加到您的日历中 。";
+"This link didn’t work" = "这个链接不起作用";
+"We sent a link to see and manage your bookings. It works for 7 days." = "我们发送了一个链接 看和管理你的预订。 它工作了7天。";
+"you@example.com" = "you@example.com";

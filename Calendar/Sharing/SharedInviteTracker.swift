@@ -149,6 +149,25 @@ enum SharedInviteTracker {
         return isReadOnly(event)
     }
 
+    /// Reader access on a calendar share is stricter than a standalone event
+    /// invitation: the event belongs to the shared calendar, so recipients
+    /// must not be offered a local per-event delete action.
+    static func isInReadOnlySharedCalendar(_ event: EKEvent) -> Bool {
+        guard let calendarIdentifier = event.calendar?.calendarIdentifier,
+              SharedICloudCalendarLocalStore.isShared(
+                localCalendarIdentifier: calendarIdentifier
+              )
+        else { return false }
+        return !SharedICloudCalendarLocalStore.canEditEvents(
+            localCalendarIdentifier: calendarIdentifier
+        )
+    }
+
+    static func isInReadOnlySharedCalendar(_ descriptor: EventDescriptor) -> Bool {
+        guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return false }
+        return isInReadOnlySharedCalendar(event)
+    }
+
     /// Locally-created events remain shareable by their creator. A received
     /// event may be forwarded only when the first sharer explicitly delegated
     /// Owner access to this signed-in recipient.

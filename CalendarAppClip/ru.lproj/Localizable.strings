@@ -9,3 +9,23 @@
 "Add to Calendar" = "Добавить в календарь";
 "You’ll see it update if the time changes or the event is called off." = "Вы увидите изменение, если время сдвинется или событие отменят.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "При добавлении событие передаётся вашему приложению календаря. Этот App Clip никогда не читает ваши календари.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Приглашение по расписанию";
+"Cancelled" = "Отменено";
+"Check your e-mail" = "Проверьте свою электронную почту";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Введите электронное письмо, с которым вы забронировали, и мы отправим ссылку, чтобы увидеть все ваши заказы.";
+"Get Cloud Calendars" = "Получить облачные календари";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Завершите облачные календари - установите свои часы, поделитесь одной ссылкой, и каждое бронирование попадет в ваш календарь. Мы сохранили ваш код настройки, так что он поднимается прямо там, где вы остановились.";
+"It may have expired. Ask for a new one below." = "Возможно, он истек. Попросите новый ниже.";
+"Loading your bookings…" = "Загрузка ваших заказов...";
+"My bookings" = "Мои заказы";
+"No bookings on this link." = "Никаких заказов по этой ссылке.";
+"Reschedule or cancel" = "Отменить или отменить";
+"Set up your booking page" = "Настройте свою страницу бронирования";
+"Shared calendar" = "Общий календарь";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Это приложение Clip только предварительный просмотр приглашения календаря. Скачать облачные календари, чтобы добавить его в Shared with me.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Это приложение Clip только предварительный просмотр события. Загрузите облачные календари, чтобы добавить их в свой календарь.";
+"This link didn’t work" = "Эта ссылка не работала";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Мы отправили ссылку, чтобы увидеть и управлять вашими заказами. Работает 7 дней.";
+"you@example.com" = "you@example.com";

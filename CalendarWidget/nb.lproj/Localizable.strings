@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Minkende måne";
 "MoonPhase.lastQuarter" = "Siste kvarter";
 "MoonPhase.waningCrescent" = "Minkende månesigd";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

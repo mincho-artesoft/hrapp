@@ -3,6 +3,9 @@ import UIKit
 
 struct CalendarColorSelectionView: View {
     @Binding var selectedColor: UIColor
+
+    private let defaultColor: UIColor?
+    private let usesDefault: Binding<Bool>?
     
     @State private var showSystemColorPicker = false
     
@@ -19,10 +22,46 @@ struct CalendarColorSelectionView: View {
         ("Purple", .systemPurple),
         ("Brown",  .brown)
     ]
+
+    init(selectedColor: Binding<UIColor>) {
+        _selectedColor = selectedColor
+        defaultColor = nil
+        usesDefault = nil
+    }
+
+    init(
+        selectedColor: Binding<UIColor>,
+        defaultColor: UIColor,
+        usesDefault: Binding<Bool>
+    ) {
+        _selectedColor = selectedColor
+        self.defaultColor = defaultColor
+        self.usesDefault = usesDefault
+    }
     
     var body: some View {
         List {
             Section {
+                if let defaultColor, let usesDefault {
+                    HStack {
+                        Circle()
+                            .fill(Color(defaultColor))
+                            .frame(width: 20, height: 20)
+                        Text("Default from creator")
+                            .padding(.leading, 4)
+                        Spacer()
+                        if usesDefault.wrappedValue {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        selectedColor = defaultColor
+                        usesDefault.wrappedValue = true
+                    }
+                }
+
                 ForEach(colorOptions, id: \.name) { option in
                     HStack {
                         Circle()
@@ -32,7 +71,8 @@ struct CalendarColorSelectionView: View {
                         Text(LocalizedStringKey(option.name))
                             .padding(.leading, 4)
                         Spacer()
-                        if colorsAreEqual(option.color, selectedColor) {
+                        if usesDefault?.wrappedValue != true
+                            && colorsAreEqual(option.color, selectedColor) {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.blue)
                         }
@@ -40,6 +80,7 @@ struct CalendarColorSelectionView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         selectedColor = option.color
+                        usesDefault?.wrappedValue = false
                     }
                 }
                 
@@ -52,13 +93,17 @@ struct CalendarColorSelectionView: View {
                         .padding(.leading, 4)
                     Spacer()
                     // Ако текущият цвят не е в списъка (Red, Orange, …, Brown), показваме checkmark при “Custom...”
-                    if !colorOptions.contains(where: { colorsAreEqual($0.color, selectedColor) }) {
+                    if usesDefault?.wrappedValue != true
+                        && !colorOptions.contains(where: {
+                            colorsAreEqual($0.color, selectedColor)
+                        }) {
                         Image(systemName: "checkmark")
                             .foregroundColor(.blue)
                     }
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
+                    usesDefault?.wrappedValue = false
                     showSystemColorPicker = true
                 }
             }
@@ -66,11 +111,21 @@ struct CalendarColorSelectionView: View {
         // Заглавието на NavigationBar също го правим локализирано
         .navigationTitle(LocalizedStringKey("Calendar Color"))
         .sheet(isPresented: $showSystemColorPicker) {
-            UIKitColorPicker(selectedColor: $selectedColor)
+            UIKitColorPicker(selectedColor: customColorBinding)
                 .presentationDetents([.fraction(0.9), .large])
                 .presentationBackground(Color(.systemBackground))
                 .presentationDragIndicator(.visible)
         }
+    }
+
+    private var customColorBinding: Binding<UIColor> {
+        Binding(
+            get: { selectedColor },
+            set: { color in
+                selectedColor = color
+                usesDefault?.wrappedValue = false
+            }
+        )
     }
     
     private func colorsAreEqual(_ c1: UIColor, _ c2: UIColor) -> Bool {

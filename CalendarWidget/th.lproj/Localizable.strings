@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "ข้างแรม";
 "MoonPhase.lastQuarter" = "แรม 8 ค่ำ";
 "MoonPhase.waningCrescent" = "เสี้ยวข้างแรม";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "ยูวี%@";

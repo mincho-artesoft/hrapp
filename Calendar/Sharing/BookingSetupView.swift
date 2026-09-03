@@ -81,7 +81,15 @@ struct BookingSetupView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         TextField("Name", text: $t.name)
                         Picker("Length", selection: $t.duration) {
-                            ForEach(durations, id: \.self) { Text("\($0) min").tag($0) }
+                            ForEach(durations, id: \.self) { duration in
+                                Text(
+                                    String.localizedStringWithFormat(
+                                        NSLocalizedString("%lld min", comment: "Meeting duration in minutes"),
+                                        Int64(duration)
+                                    )
+                                )
+                                .tag(duration)
+                            }
                         }
                         .pickerStyle(.menu)
                     }
@@ -247,7 +255,7 @@ struct BookingSetupView: View {
     }
     private func weekdayName(_ day: Int) -> String {
         let f = DateFormatter()
-        f.locale = .current
+        f.locale = .appFormatting
         return f.standaloneWeekdaySymbols[day % 7]
     }
 }

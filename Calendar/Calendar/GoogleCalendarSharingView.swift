@@ -19,6 +19,7 @@ struct GoogleCalendarSharingView: View {
     /// Локално „op cache“:
     @State private var pendingShares: [PendingShare] = []
     @State private var pendingResendRuleIDs: Set<String> = []
+    @State private var updatingRuleIDs: Set<String> = []
     
     /// Сурови роли – нужни са в заявките (reader, writer, owner)
     let availableRoles = ["reader", "writer", "owner"]
@@ -302,6 +303,7 @@ struct GoogleCalendarSharingView: View {
                     }
                     .buttonStyle(.borderless)
                     .fixedSize(horizontal: true, vertical: true)
+                    .disabled(updatingRuleIDs.contains(rule.id))
 
                     Button(role: .destructive) {
                         Task { await deleteAclRule(rule) }
@@ -312,6 +314,7 @@ struct GoogleCalendarSharingView: View {
                             .frame(width: 28, height: 28)
                     }
                     .buttonStyle(.borderless)
+                    .disabled(updatingRuleIDs.contains(rule.id))
                     .accessibilityLabel("Remove Access")
                 } else {
                     Text(localizedRoleDisplayName(rule.role))
@@ -370,9 +373,12 @@ struct GoogleCalendarSharingView: View {
                 if rule.scope?.value == user.email && rule.role == "owner" {
                     return
                 }
+                let previousRole = aclRules[index].role
+                guard previousRole != newValue else { return }
                 aclRules[index].role = newValue
+                let updatedRule = aclRules[index]
                 Task {
-                    await updateAclRule(aclRules[index])
+                    await updateAclRule(updatedRule, previousRole: previousRole)
                 }
             }
         )
@@ -449,17 +455,20 @@ struct GoogleCalendarSharingView: View {
         guard !entered.isEmpty else { return nil }
 
         if let invalid = entered.first(where: { !CalendarFeedSession.validEmail($0.email) }) {
-            errorMessage = "Enter a valid email address for \(invalid.email)."
+            errorMessage = String.localizedStringWithFormat(
+                String(localized: "Enter a valid email address for %@."),
+                invalid.email
+            )
             return nil
         }
 
         let uniqueEmails = Set(entered.map { $0.email })
         guard uniqueEmails.count == entered.count else {
-            errorMessage = "Each email address can appear only once."
+            errorMessage = String(localized: "Each email address can appear only once.")
             return nil
         }
         guard entered.count <= 50 else {
-            errorMessage = "You can add up to 50 people at once."
+            errorMessage = String(localized: "You can add up to 50 people at once.")
             return nil
         }
         return entered
@@ -520,7 +529,10 @@ struct GoogleCalendarSharingView: View {
 
         shareDrafts = failedDrafts.isEmpty ? [ShareDraft()] : failedDrafts
         if !failedEmails.isEmpty {
-            errorMessage = "Could not add: \(failedEmails.joined(separator: ", "))."
+            errorMessage = String.localizedStringWithFormat(
+                String(localized: "Could not add: %@."),
+                failedEmails.joined(separator: ", ")
+            )
             focusedShareDraftID = failedDrafts.first?.id
         }
     }
@@ -545,7 +557,14 @@ struct GoogleCalendarSharingView: View {
         }
     }
     
-    private func updateAclRule(_ rule: GoogleCalendarACLRule) async {
+    @MainActor
+    private func updateAclRule(
+        _ rule: GoogleCalendarACLRule,
+        previousRole: String
+    ) async {
+        guard !updatingRuleIDs.contains(rule.id) else { return }
+        updatingRuleIDs.insert(rule.id)
+        defer { updatingRuleIDs.remove(rule.id) }
         errorMessage = ""
         do {
             try await viewModel.updateGoogleCalendarAclRule(
@@ -555,9 +574,10 @@ struct GoogleCalendarSharingView: View {
                 newRole: rule.role
             )
         } catch {
-            await MainActor.run {
-                errorMessage = localizedFormat(NSLocalizedString("Error updating: %@", comment: "Sharing update error"), error.localizedDescription)
+            if let index = aclRules.firstIndex(where: { $0.id == rule.id }) {
+                aclRules[index].role = previousRole
             }
+            errorMessage = localizedFormat(NSLocalizedString("Error updating: %@", comment: "Sharing update error"), error.localizedDescription)
         }
     }
     

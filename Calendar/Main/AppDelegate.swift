@@ -60,6 +60,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         let calendarIdentifier = userInfo["calendarIdentifier"] as? String
         let eventStartDate = userInfo["eventStartDate"] as? TimeInterval
         let pendingInvitationID = userInfo["pendingEventInvitationID"] as? String
+        let pendingCalendarInvitationID = userInfo["pendingCalendarInvitationID"] as? String
         let notificationIdentifier = response.notification.request.identifier
 
         DispatchQueue.main.async {
@@ -68,8 +69,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
             defer { completionHandler() }
 
             if pendingInvitationID != nil
-                || notificationIdentifier.hasPrefix("shared.event.invitation.") {
-                print("📨 [EventInvitations] User opened a pending invitation notification")
+                || pendingCalendarInvitationID != nil
+                || notificationIdentifier.hasPrefix("shared.event.invitation.")
+                || notificationIdentifier.hasPrefix("shared.calendar.invitation.") {
+                print("📨 [Invitations] User opened a pending invitation notification")
                 PendingEventInvitationNavigation.requestOpen()
                 return
             }

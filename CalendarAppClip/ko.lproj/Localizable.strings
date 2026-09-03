@@ -9,3 +9,23 @@
 "Add to Calendar" = "캘린더에 추가";
 "You’ll see it update if the time changes or the event is called off." = "시간이 바뀌거나 이벤트가 취소되면 업데이트된 내용이 표시됩니다.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "추가하면 이벤트가 캘린더 앱으로 전달됩니다. 이 App Clip은 캘린더를 읽지 않습니다.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "달력 초대";
+"Cancelled" = "취소됨";
+"Check your e-mail" = "자주 묻는 질문";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "예약된 이메일 주소를 입력하시면 모든 예약을 보실 수 있습니다.";
+"Get Cloud Calendars" = "클라우드 캘린더";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Cloud Calendars to finish — 시간을 설정하고, 하나의 링크를 공유하고, 캘린더에 모든 예약 토지. 우리는 설정 코드를 저장했습니다, 그래서 당신은 떨어져 왼쪽 오른쪽을 선택합니다.";
+"It may have expired. Ask for a new one below." = "만료 될 수 있습니다. 아래 새로운 것을 요청하십시오.";
+"Loading your bookings…" = "예약을 로딩 ...";
+"My bookings" = "내 예약";
+"No bookings on this link." = "이 링크에 예약이 없습니다.";
+"Reschedule or cancel" = "예약 및 취소";
+"Set up your booking page" = "자주 묻는 질문";
+"Shared calendar" = "공유 달력";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "이 앱 클립은 캘린더 초대를 미리 볼 수 있습니다. Cloud Calendars를 다운로드하여 공유 할 수 있습니다.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "이 앱 클립은 이벤트 만 미리보기합니다. Cloud 캘린더를 다운로드하여 캘린더에 추가합니다.";
+"This link didn’t work" = "이 링크가 작동하지 않았습니다";
+"We sent a link to see and manage your bookings. It works for 7 days." = "예약을 보고 관리하기 위한 링크를 보내드립니다. 그것은 7 일 동안 작동합니다.";
+"you@example.com" = "you@example.com";

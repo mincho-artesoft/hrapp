@@ -9,3 +9,23 @@
 "Add to Calendar" = "Adaugă în calendar";
 "You’ll see it update if the time changes or the event is called off." = "Vei vedea actualizarea dacă se schimbă ora sau evenimentul este anulat.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Adăugarea predă evenimentul aplicației tale de calendar. Acest App Clip nu îți citește niciodată calendarele.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Invitație calendar";
+"Cancelled" = "Anulat";
+"Check your e-mail" = "Verifică-ţi e-mailul.";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Introduceți e-mail-ul rezervat cu și vom trimite un link pentru a vedea toate rezervările.";
+"Get Cloud Calendars" = "Obține calendare cloud";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Ia calendare Cloud pentru a termina  Am salvat codul de configurare, așa că preia de unde ai rămas.";
+"It may have expired. Ask for a new one below." = "E posibil să fi expirat. Cere una nouă mai jos.";
+"Loading your bookings…" = "Se încarcă rezervările...";
+"My bookings" = "Rezervarile mele";
+"No bookings on this link." = "Nu există rezervări pe acest link.";
+"Reschedule or cancel" = "Reprogramează sau anulează";
+"Set up your booking page" = "Configurați pagina de rezervare";
+"Shared calendar" = "Calendar partajat";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Această App Clip previzualizare numai invitația calendar. Descărcați calendare cloud pentru a adăuga la partajat cu mine.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Acest App Clip previzualizare doar evenimentul. Descărcați Calendare Cloud pentru a adăuga în calendar.";
+"This link didn’t work" = "Această legătură nu a funcționat";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Am trimis un link pentru a vedea și gestiona rezervările. Funcţionează 7 zile.";
+"you@example.com" = "you@example.com";

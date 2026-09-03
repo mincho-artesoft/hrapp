@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Po pełni";
 "MoonPhase.lastQuarter" = "Ostatnia kwadra";
 "MoonPhase.waningCrescent" = "Po ostatniej kwadrze";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV%@";

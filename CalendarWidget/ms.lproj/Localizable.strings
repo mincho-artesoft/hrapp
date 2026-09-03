@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Purnama Surut";
 "MoonPhase.lastQuarter" = "Suku Terakhir";
 "MoonPhase.waningCrescent" = "Sabit Surut";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Afnemende maan";
 "MoonPhase.lastQuarter" = "Laatste kwartier";
 "MoonPhase.waningCrescent" = "Asgrauwe maan";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

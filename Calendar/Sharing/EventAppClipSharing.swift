@@ -130,7 +130,7 @@ private struct EventShareMethodPicker: View {
                 }
 
                 Spacer(minLength: 8)
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.forward")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)
             }
@@ -840,8 +840,14 @@ enum SharedOutgoingEventTracker {
                 eventChanged = true
             }
             if let details = remote.details,
-               !details.matchesWritableFields(of: event) {
-                details.applyWritableFields(to: event)
+               !details.matchesWritableFields(
+                    of: event,
+                    canonicalLocation: remote.location
+               ) {
+                details.applyWritableFields(
+                    to: event,
+                    canonicalLocation: remote.location
+                )
                 eventChanged = true
             }
 

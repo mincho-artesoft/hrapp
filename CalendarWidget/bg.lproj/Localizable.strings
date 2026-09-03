@@ -26,6 +26,7 @@
 "Weather" = "Време";
 "Pressure" = "Налягане";
 "UV Index" = "UV индекс";
+"UV %@" = "UV %@";
 "Low" = "Нисък";
 "Moderate" = "Умерен";
 "High" = "Висок";

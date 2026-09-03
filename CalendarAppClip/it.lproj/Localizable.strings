@@ -9,3 +9,23 @@
 "Add to Calendar" = "Aggiungi al calendario";
 "You’ll see it update if the time changes or the event is called off." = "Vedrai l’aggiornamento se l’orario cambia o l’evento viene annullato.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "L’aggiunta passa l’evento alla tua app Calendario. Questo App Clip non legge mai i tuoi calendari.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Calendario invito";
+"Cancelled" = "Annullato";
+"Check your e-mail" = "Controlla la tua email";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Inserisci l'e-mail con cui hai prenotato e ti invieremo un link per vedere tutte le tue prenotazioni.";
+"Get Cloud Calendars" = "Calendario Cloud";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Ottenere Calendario Cloud da terminare — impostare le ore, condividere un link, e ogni prenotazione atterra sul calendario. Abbiamo salvato il tuo codice di configurazione, cosi' verra' ritirato dove ti sei lasciato.";
+"It may have expired. Ask for a new one below." = "Potrebbe essere scaduto. Chiedine una nuova qui sotto.";
+"Loading your bookings…" = "Caricamento delle prenotazioni...";
+"My bookings" = "Le mie prenotazioni";
+"No bookings on this link." = "Nessuna prenotazione su questo link.";
+"Reschedule or cancel" = "Reschedule o cancellazione";
+"Set up your booking page" = "Impostare la pagina di prenotazione";
+"Shared calendar" = "Calendario condiviso";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Questo App Clip prevede solo l'invito del calendario. Scarica Cloud Calendars per aggiungerlo a Condividi con me.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Questo App Clip prevede solo l'evento. Scarica Cloud Calendars per aggiungerlo al tuo calendario.";
+"This link didn’t work" = "Questo link non funzionava";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Abbiamo inviato un link per vedere e gestire le tue prenotazioni. Funziona per 7 giorni.";
+"you@example.com" = "you@example.com";

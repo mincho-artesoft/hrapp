@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Avtagande fullmåne";
 "MoonPhase.lastQuarter" = "Sista kvarteret";
 "MoonPhase.waningCrescent" = "Avtagande halvmåne";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV %@";

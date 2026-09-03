@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Fogyó hold";
 "MoonPhase.lastQuarter" = "Utolsó negyed";
 "MoonPhase.waningCrescent" = "Fogyó holdsarló";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV%@";

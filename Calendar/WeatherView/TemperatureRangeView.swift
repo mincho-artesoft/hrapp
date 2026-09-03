@@ -82,6 +82,9 @@ struct TemperatureRangeView: View {
                 }
                 // ---------------------------------
             }
+            // All x values in this drawing surface are physical coordinates
+            // and already include the RTL conversion above.
+            .environment(\.layoutDirection, .leftToRight)
             .frame(height: barHeight) // Ensure ZStack uses the bar height
             // Center the ZStack vertically within the GeometryReader's height
              .frame(maxHeight: .infinity, alignment: .center)

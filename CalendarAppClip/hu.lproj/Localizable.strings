@@ -9,3 +9,23 @@
 "Add to Calendar" = "Hozzáadás a naptárhoz";
 "You’ll see it update if the time changes or the event is called off." = "Látni fogod a módosítást, ha változik az időpont vagy elmarad az esemény.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "A hozzáadás átadja az eseményt a naptáralkalmazásodnak. Ez az App Clip soha nem olvassa a naptáraidat.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Naptármeghívó";
+"Cancelled" = "Törölve";
+"Check your e-mail" = "Ellenőrizze az e-mailjeit";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Adja meg az e-mail foglalását, és küldünk egy linket, hogy minden foglalás.";
+"Get Cloud Calendars" = "Felhő naptárak";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Szerezd meg a Cloud Calendars befejezni - állítsa be az órát, osszon meg egy linket, és minden foglalás landol a naptár. Megmentettük a beállítási kódodat, így ott folytatódik, ahol abbahagytad.";
+"It may have expired. Ask for a new one below." = "Lehet, hogy lejárt. Kérj egy újat.";
+"Loading your bookings…" = "A foglalások betöltése...";
+"My bookings" = "A foglalásaim";
+"No bookings on this link." = "Nincs foglalás ezen a linken.";
+"Reschedule or cancel" = "Áthelyezve vagy törölve";
+"Set up your booking page" = "A foglalási oldal beállítása";
+"Shared calendar" = "Megosztott naptár";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Ez az App Clip csak a naptár meghívót nézheti meg. Töltse le a Cloud Calendarst, és adja hozzá hozzám.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Ez az App Clip csak megtekinti az eseményt. Töltse le a Cloud naptárakat a naptárhoz.";
+"This link didn’t work" = "Ez a link nem működött.";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Küldtünk egy linket, hogy lássuk és kezelje a foglalásokat. 7 napig működik.";
+"you@example.com" = "you@example.com";

@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "寝待月";
 "MoonPhase.lastQuarter" = "下弦";
 "MoonPhase.waningCrescent" = "有明月";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "紫外線%@";

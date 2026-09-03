@@ -247,7 +247,8 @@ struct RootView: View {
                                 },
                                 onSavedRegionsPresentationChange: { isPresented in
                                     weatherSavedRegionsIsPresented = isPresented
-                                }
+                                },
+                                eventEditorColorScheme: systemColorScheme
                             )
                             .colorScheme(.dark)
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])

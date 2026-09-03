@@ -239,19 +239,21 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         // ------------------------------------------------
         // (F) „Delete“ бутон
         // ------------------------------------------------
-        let deleteAction = UIAction(
-            title: SharedInviteTracker.deletionAffectsEveryone(descriptor)
-                ? NSLocalizedString("Cancel for Everyone", comment: "Cancel a shared event for every recipient")
-                : SharedInviteTracker.isReceived(descriptor)
-                    ? NSLocalizedString("Remove from My Calendar", comment: "Delete a received shared event locally")
-                    : NSLocalizedString("Delete", comment: ""),
-            image: UIImage(systemName: "trash"),
-            attributes: .destructive
-        ) { action in
-            self.deleteEventFromStore(descriptor)
-            self.onEventDeleted?(descriptor)
+        if !SharedInviteTracker.isInReadOnlySharedCalendar(descriptor) {
+            let deleteAction = UIAction(
+                title: SharedInviteTracker.deletionAffectsEveryone(descriptor)
+                    ? NSLocalizedString("Cancel for Everyone", comment: "Cancel a shared event for every recipient")
+                    : SharedInviteTracker.isReceived(descriptor)
+                        ? NSLocalizedString("Remove from My Calendar", comment: "Delete a received shared event locally")
+                        : NSLocalizedString("Delete", comment: ""),
+                image: UIImage(systemName: "trash"),
+                attributes: .destructive
+            ) { action in
+                self.deleteEventFromStore(descriptor)
+                self.onEventDeleted?(descriptor)
+            }
+            children.append(deleteAction)
         }
-        children.append(deleteAction)
         
         // ------------------------------------------------
         // (F) „Add to Google Meet“ (ако няма Meet линк)

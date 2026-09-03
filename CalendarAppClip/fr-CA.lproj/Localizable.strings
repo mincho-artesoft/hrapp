@@ -9,3 +9,23 @@
 "Add to Calendar" = "Ajouter au calendrier";
 "You’ll see it update if the time changes or the event is called off." = "Vous verrez la mise à jour si l’horaire change ou si l’événement est annulé.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "L’ajout transmet l’événement à votre app Calendrier. Cet App Clip ne lit jamais vos calendriers.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Invitation au calendrier";
+"Cancelled" = "Annulé";
+"Check your e-mail" = "Vérifiez votre e-mail";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Entrez l'e-mail que vous avez réservé et nous vous enverrons un lien pour voir toutes vos réservations.";
+"Get Cloud Calendars" = "Obtenir des calendriers Cloud";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Obtenez des calendriers Cloud à terminer — définissez vos heures, partagez un lien et chaque réservation atterrit sur votre calendrier. Nous avons enregistré votre code d'installation, donc il reprend là où vous avez laissé.";
+"It may have expired. Ask for a new one below." = "Il peut avoir expiré. Demandez-en un nouveau ci-dessous.";
+"Loading your bookings…" = "Chargement de vos réservations...";
+"My bookings" = "Mes réservations";
+"No bookings on this link." = "Pas de réservation sur ce lien.";
+"Reschedule or cancel" = "Rééchelonner ou annuler";
+"Set up your booking page" = "Configurez votre page de réservation";
+"Shared calendar" = "Calendrier partagé";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Cette App Clip ne prévisualise que l'invitation du calendrier. Télécharger les calendriers Cloud pour les ajouter à Shared with me.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Cette App Clip ne prévisualise que l'événement. Télécharger les calendriers Cloud pour l'ajouter à votre calendrier.";
+"This link didn’t work" = "Ce lien n'a pas fonctionné";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Nous avons envoyé un lien pour voir et gérer vos réservations. Ça dure 7 jours.";
+"you@example.com" = "you@example.com";

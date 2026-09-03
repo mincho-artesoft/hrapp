@@ -9,3 +9,23 @@
 "Add to Calendar" = "Legg til i kalender";
 "You’ll see it update if the time changes or the event is called off." = "Du ser oppdateringen hvis tidspunktet endres eller hendelsen avlyses.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Når du legger den til, sendes hendelsen til kalenderappen din. Denne App Clip-en leser aldri kalenderne dine.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Kalenderinvitasjon";
+"Cancelled" = "Avbrutt";
+"Check your e-mail" = "Sjekk e-posten din";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Skriv inn e-posten du bestilte med, så sender vi en lenke for å se alle bestillingene dine.";
+"Get Cloud Calendars" = "Få skykalendere";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Få Cloud kalendere til å fullføre - angi timene dine, dele en kobling og alle booking land i kalenderen din. Vi har lagret installasjonskoden din, så den plukker opp der du sluttet.";
+"It may have expired. Ask for a new one below." = "Det kan ha gått ut. Be om en ny nedenfor.";
+"Loading your bookings…" = "Laster inn bestillinger...";
+"My bookings" = "Min booking";
+"No bookings on this link." = "Ingen bookinger på denne linken.";
+"Reschedule or cancel" = "Rehabilitere eller avbryte";
+"Set up your booking page" = "Sett opp din bestillingsside";
+"Shared calendar" = "Delt kalender";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Denne appen klipper bare forhåndsvisning av kalenderinvitasjonen. Last ned Cloud Calendars for å legge den til Delt med meg.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Denne appen klipper bare forhåndsvisning av hendelsen. Last ned Cloud Calendars for å legge den til i kalenderen.";
+"This link didn’t work" = "Denne linken fungerte ikke";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Vi sendte en link for å se og administrere bestillingen din. Fungerer i 7 dager.";
+"you@example.com" = "you@example.com";

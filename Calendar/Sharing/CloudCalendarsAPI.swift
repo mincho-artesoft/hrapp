@@ -34,6 +34,18 @@ struct SharedEventLocation: Codable, Equatable {
     let longitude: Double?
     let radius: Double
 
+    init(
+        title: String,
+        latitude: Double?,
+        longitude: Double?,
+        radius: Double
+    ) {
+        self.title = title
+        self.latitude = latitude
+        self.longitude = longitude
+        self.radius = radius
+    }
+
     init(location: EKStructuredLocation) {
         title = location.title ?? ""
         latitude = location.geoLocation?.coordinate.latitude
@@ -41,8 +53,12 @@ struct SharedEventLocation: Codable, Equatable {
         radius = location.radius
     }
 
-    func makeLocation() -> EKStructuredLocation {
-        let location = EKStructuredLocation(title: title)
+    func makeLocation(title titleOverride: String? = nil) -> EKStructuredLocation {
+        let displayTitle = titleOverride?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let location = EKStructuredLocation(
+            title: displayTitle.flatMap { $0.isEmpty ? nil : $0 } ?? title
+        )
         if let latitude, let longitude {
             location.geoLocation = CLLocation(latitude: latitude, longitude: longitude)
         }
@@ -155,7 +171,10 @@ struct SharedEventDetails: Codable, Equatable {
         attendees = (event.attendees ?? []).map(SharedEventParticipant.init(participant:))
     }
 
-    func applyWritableFields(to event: EKEvent) {
+    func applyWritableFields(
+        to event: EKEvent,
+        canonicalLocation: String? = nil
+    ) {
         event.notes = notes
         event.timeZone = timeZone.flatMap(TimeZone.init(identifier:))
         if let availability = EKEventAvailability(rawValue: availability),
@@ -166,22 +185,48 @@ struct SharedEventDetails: Codable, Equatable {
         for alarm in alarms.compactMap({ $0.makeAlarm() }) { event.addAlarm(alarm) }
         for rule in event.recurrenceRules ?? [] { event.removeRecurrenceRule(rule) }
         for rule in recurrenceRules.compactMap({ $0.makeRule() }) { event.addRecurrenceRule(rule) }
-        event.structuredLocation = structuredLocation?.makeLocation()
+        if let structuredLocation {
+            // Assigning `event.location` after `structuredLocation` makes
+            // EventKit discard the coordinates. Use the complete canonical
+            // display string as the structured title instead, preserving both
+            // the two-line title/address presentation and the geo metadata.
+            event.structuredLocation = structuredLocation.makeLocation(
+                title: canonicalLocation
+            )
+        } else {
+            event.structuredLocation = nil
+            let displayLocation = canonicalLocation?
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+            event.location = displayLocation.flatMap { $0.isEmpty ? nil : $0 }
+        }
     }
 
     /// EventKit exposes organizer and attendees as read-only. Compare only the
     /// fields that this app can restore on the recipient's local event so an
     /// unchanged feed does not cause a save on every foreground refresh.
-    func matchesWritableFields(of event: EKEvent) -> Bool {
+    func matchesWritableFields(
+        of event: EKEvent,
+        canonicalLocation: String? = nil
+    ) -> Bool {
         let current = SharedEventDetails(event: event)
         let availabilityMatches = availability == EKEventAvailability.notSupported.rawValue
             || availability == current.availability
+        let displayLocation = canonicalLocation?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let expectedStructuredLocation = structuredLocation.map {
+            SharedEventLocation(
+                title: displayLocation.flatMap { $0.isEmpty ? nil : $0 } ?? $0.title,
+                latitude: $0.latitude,
+                longitude: $0.longitude,
+                radius: $0.radius
+            )
+        }
         return notes == current.notes
             && timeZone == current.timeZone
             && availabilityMatches
             && alarms == current.alarms
             && recurrenceRules == current.recurrenceRules
-            && structuredLocation == current.structuredLocation
+            && expectedStructuredLocation == current.structuredLocation
     }
 
     var payload: [String: Any]? {
@@ -222,9 +267,9 @@ enum CloudCalendarsAPI {
 
         var title: String {
             switch self {
-            case .reader: "Reader"
-            case .writer: "Writer"
-            case .owner: "Owner"
+            case .reader: String(localized: "Reader")
+            case .writer: String(localized: "Writer")
+            case .owner: String(localized: "Owner")
             }
         }
     }
@@ -242,8 +287,10 @@ enum CloudCalendarsAPI {
         let updatedAt: String?
 
         var displayEmail: String {
-            if isAnonymous { return "Anonymous recipient" }
-            return emails.first ?? identities.compactMap(\.email).first ?? "Cloud Calendars user"
+            if isAnonymous { return String(localized: "Anonymous recipient") }
+            return emails.first
+                ?? identities.compactMap(\.email).first
+                ?? String(localized: "Cloud Calendars user")
         }
 
         var isPendingInvitation: Bool {
@@ -262,10 +309,17 @@ enum CloudCalendarsAPI {
 
     struct ICloudCalendarRecipient: Codable, Equatable, Identifiable {
         let id: String
+        let userId: String?
         let email: String
         var access: EventAccess
+        let isPending: Bool?
         let invitedAt: String?
+        let acceptedAt: String?
         let updatedAt: String?
+
+        var isPendingInvitation: Bool {
+            isPending == true || (userId == nil && acceptedAt == nil)
+        }
     }
 
     struct ICloudCalendarSharing: Codable, Equatable, Identifiable {
@@ -278,6 +332,11 @@ enum CloudCalendarsAPI {
         let color: String
         let timeZone: String
         let recipients: [ICloudCalendarRecipient]
+        let updatedAt: String?
+        let events: [SharedICloudCalendarEvent]?
+        let eventsUpdatedAt: String?
+        let windowStart: String?
+        let windowEnd: String?
     }
 
     struct SharedICloudCalendarEvent: Codable, Equatable, Identifiable {
@@ -362,8 +421,43 @@ enum CloudCalendarsAPI {
         }
     }
 
+    struct PendingICloudCalendarInvitation: Decodable, Equatable, Identifiable {
+        let id: String
+        let ownerId: String
+        let ownerEmail: String?
+        let calendarId: String
+        let title: String
+        let color: String
+        let timeZone: String
+        let access: EventAccess
+        let invitedAt: String?
+        let senderEmail: String?
+
+        var invitationURL: URL? {
+            var components = URLComponents()
+            components.scheme = "https"
+            components.host = "api.cloud-calendars.com"
+            components.path = "/icloud-calendar-invites/open"
+            components.queryItems = [
+                URLQueryItem(name: "o", value: ownerId),
+                URLQueryItem(name: "c", value: calendarId),
+                URLQueryItem(name: "title", value: title),
+                URLQueryItem(name: "color", value: color)
+            ]
+            return components.url
+        }
+
+        var importPayload: SharedCalendarInvitationPayload? {
+            invitationURL.flatMap(SharedCalendarInvitationPayload.init(url:))
+        }
+    }
+
     private struct PendingEventInvitationsResponse: Decodable {
         let invitations: [PendingEventInvitation]
+    }
+
+    private struct PendingICloudCalendarInvitationsResponse: Decodable {
+        let invitations: [PendingICloudCalendarInvitation]
     }
 
     private struct EventRecipientsResponse: Decodable {
@@ -383,8 +477,16 @@ enum CloudCalendarsAPI {
         let calendar: ICloudCalendarSharing
     }
 
+    private struct ICloudCalendarEventsSaveResponse: Decodable {
+        let updatedAt: String?
+    }
+
     private struct SharedICloudCalendarsResponse: Decodable {
         let calendars: [SharedICloudCalendar]
+    }
+
+    private struct AcceptedICloudCalendarResponse: Decodable {
+        let calendar: SharedICloudCalendar
     }
 
     struct ReceivedInviteAccess: Decodable, Equatable {
@@ -451,8 +553,14 @@ enum CloudCalendarsAPI {
 
         var errorDescription: String? {
             switch self {
-            case .http(let code, let body): return "Server returned \(code): \(body)"
-            case .malformedResponse:        return "Unreadable response from the server"
+            case .http(let code, let body):
+                return String.localizedStringWithFormat(
+                    String(localized: "Server returned %lld: %@"),
+                    Int64(code),
+                    body
+                )
+            case .malformedResponse:
+                return String(localized: "Unreadable response from the server")
             }
         }
     }
@@ -564,6 +672,30 @@ enum CloudCalendarsAPI {
         return response.invitations
     }
 
+    static func pendingICloudCalendarInvitations(
+        session: Session
+    ) async throws -> [PendingICloudCalendarInvitation] {
+        let response: PendingICloudCalendarInvitationsResponse = try await send(
+            "/icloud-calendar-invitations/pending",
+            method: "GET",
+            body: nil,
+            bearer: session.deviceToken
+        )
+        return response.invitations
+    }
+
+    static func declinePendingICloudCalendarInvitation(
+        ownerId: String,
+        calendarId: String,
+        session: Session
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/icloud-calendar-invitations/pending/\(calendarId)/decline",
+            body: ["ownerId": ownerId],
+            bearer: session.deviceToken
+        )
+    }
+
     static func declinePendingEventInvitation(
         eventId: String,
         feedId: String,
@@ -648,13 +780,27 @@ enum CloudCalendarsAPI {
         ownerId: String,
         calendarId: String,
         session: Session
-    ) async throws {
-        try await sendIgnoringResponse(
+    ) async throws -> SharedICloudCalendar {
+        let response: AcceptedICloudCalendarResponse = try await send(
             "/icloud-calendar-invites/accept",
             body: [
                 "ownerId": ownerId,
                 "calendarId": calendarId
             ],
+            bearer: session.deviceToken
+        )
+        return response.calendar
+    }
+
+    static func leaveICloudCalendar(
+        ownerId: String,
+        calendarId: String,
+        session: Session
+    ) async throws {
+        try await sendIgnoringResponse(
+            "/icloud-calendars/\(calendarId)/access?ownerId=\(ownerId.urlQueryEncoded)",
+            method: "DELETE",
+            body: nil,
             bearer: session.deviceToken
         )
     }
@@ -666,6 +812,8 @@ enum CloudCalendarsAPI {
         color: String,
         timeZone: String,
         recipients: [(email: String, access: EventAccess)],
+        removedRecipientEmails: Set<String> = [],
+        expectedUpdatedAt: String? = nil,
         session: Session
     ) async throws -> ICloudCalendarSharing {
         var body: [String: Any] = [
@@ -674,12 +822,37 @@ enum CloudCalendarsAPI {
             "timeZone": timeZone,
             "recipients": recipients.map {
                 ["email": $0.email, "access": $0.access.rawValue]
-            }
+            },
+            // Calendar recipients may accept a QR/App Clip while the owner's
+            // sharing sheet is still open. Preserve recipients absent from
+            // that stale UI snapshot; only this explicit list revokes access.
+            "preserveUnmentionedRecipients": true,
+            "removedRecipientEmails": Array(removedRecipientEmails)
         ]
         if let ownerId, !ownerId.isEmpty { body["ownerId"] = ownerId }
+        if let expectedUpdatedAt, !expectedUpdatedAt.isEmpty {
+            body["expectedUpdatedAt"] = expectedUpdatedAt
+        }
         let response: ICloudCalendarSharingResponse = try await send(
             "/icloud-calendars/\(calendarId)/sharing",
             method: "PUT",
+            body: body,
+            bearer: session.deviceToken
+        )
+        return response.calendar
+    }
+
+    @discardableResult
+    static func inviteICloudCalendarRecipients(
+        calendarId: String,
+        ownerId: String? = nil,
+        emails: [String],
+        session: Session
+    ) async throws -> ICloudCalendarSharing {
+        var body: [String: Any] = ["emails": emails]
+        if let ownerId, !ownerId.isEmpty { body["ownerId"] = ownerId }
+        let response: ICloudCalendarSharingResponse = try await send(
+            "/icloud-calendars/\(calendarId)/invitations",
             body: body,
             bearer: session.deviceToken
         )
@@ -704,8 +877,9 @@ enum CloudCalendarsAPI {
         events: [SharedICloudCalendarEvent],
         windowStart: Date,
         windowEnd: Date,
+        expectedUpdatedAt: String? = nil,
         session: Session
-    ) async throws {
+    ) async throws -> String? {
         let encoder = JSONEncoder()
         let eventObjects: [[String: Any]] = try events.map { event in
             let data = try encoder.encode(event)
@@ -720,12 +894,16 @@ enum CloudCalendarsAPI {
             "events": eventObjects
         ]
         if let ownerId, !ownerId.isEmpty { body["ownerId"] = ownerId }
-        try await sendIgnoringResponse(
+        if let expectedUpdatedAt, !expectedUpdatedAt.isEmpty {
+            body["expectedUpdatedAt"] = expectedUpdatedAt
+        }
+        let response: ICloudCalendarEventsSaveResponse = try await send(
             "/icloud-calendars/\(calendarId)/events",
             method: "PUT",
             body: body,
             bearer: session.deviceToken
         )
+        return response.updatedAt
     }
 
     static func cancelEvent(id: String, session: Session) async throws {
@@ -1012,9 +1190,25 @@ enum CloudCalendarsAPI {
         body: [String: Any]?,
         bearer: String?
     ) async throws -> Data {
-        var request = URLRequest(url: requestURL(for: path))
+        var url = requestURL(for: path)
+        if method == "GET",
+           var components = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+            var items = components.queryItems ?? []
+            items.append(URLQueryItem(name: "_refresh", value: UUID().uuidString))
+            components.queryItems = items
+            url = components.url ?? url
+        }
+        var request = URLRequest(
+            url: url,
+            cachePolicy: method == "GET" ? .reloadIgnoringLocalCacheData : .useProtocolCachePolicy
+        )
         request.httpMethod = method
         request.timeoutInterval = 20
+
+        if method == "GET" {
+            request.setValue("no-cache, no-store", forHTTPHeaderField: "Cache-Control")
+            request.setValue("no-cache", forHTTPHeaderField: "Pragma")
+        }
 
         if let body {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -1056,11 +1250,15 @@ final class PendingEventInvitationManager: ObservableObject {
     static let shared = PendingEventInvitationManager()
 
     @Published private(set) var invitations: [CloudCalendarsAPI.PendingEventInvitation] = []
+    @Published private(set) var calendarInvitations: [CloudCalendarsAPI.PendingICloudCalendarInvitation] = []
     @Published private(set) var isLoading = false
     @Published private(set) var errorMessage: String?
 
+    var totalInvitationCount: Int { invitations.count + calendarInvitations.count }
+
     private let defaults = UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX") ?? .standard
     private let seenInvitationIDsKey = "pendingEventInvitations.seenIDs.v1"
+    private let seenCalendarInvitationIDsKey = "pendingCalendarInvitations.seenIDs.v1"
     private var pendingNotificationRefresh = false
     private var foregroundPollingTask: Task<Void, Never>?
 
@@ -1094,6 +1292,7 @@ final class PendingEventInvitationManager: ObservableObject {
         }
         guard let session = CalendarFeedSession.existing else {
             invitations = []
+            calendarInvitations = []
             errorMessage = nil
             return
         }
@@ -1109,14 +1308,28 @@ final class PendingEventInvitationManager: ObservableObject {
             }
         }
         do {
-            let loaded = try await CloudCalendarsAPI.pendingEventInvitations(session: session)
-            let sorted = loaded.sorted {
+            async let loadedEvents = CloudCalendarsAPI.pendingEventInvitations(session: session)
+            async let loadedCalendars = CloudCalendarsAPI.pendingICloudCalendarInvitations(
+                session: session
+            )
+            let (eventValues, calendarValues) = try await (loadedEvents, loadedCalendars)
+            let sorted = eventValues.sorted {
                 ($0.startDate ?? .distantFuture) < ($1.startDate ?? .distantFuture)
+            }
+            let sortedCalendars = calendarValues.sorted {
+                ($0.invitedAt ?? "") > ($1.invitedAt ?? "")
             }
             let seen = Set(defaults.stringArray(forKey: seenInvitationIDsKey) ?? [])
             let newInvitations = sorted.filter { !seen.contains($0.id) }
+            let seenCalendars = Set(
+                defaults.stringArray(forKey: seenCalendarInvitationIDsKey) ?? []
+            )
+            let newCalendarInvitations = sortedCalendars.filter {
+                !seenCalendars.contains($0.id)
+            }
 
             invitations = sorted
+            calendarInvitations = sortedCalendars
             errorMessage = nil
 
             if notifyForNewInvitations {
@@ -1127,8 +1340,21 @@ final class PendingEventInvitationManager: ObservableObject {
                 }
                 defaults.set(Array(updatedSeen), forKey: seenInvitationIDsKey)
 
+                var updatedSeenCalendars = seenCalendars
+                updatedSeenCalendars.formUnion(sortedCalendars.map(\.id))
+                if updatedSeenCalendars.count > 500 {
+                    updatedSeenCalendars = Set(Array(updatedSeenCalendars).suffix(500))
+                }
+                defaults.set(
+                    Array(updatedSeenCalendars),
+                    forKey: seenCalendarInvitationIDsKey
+                )
+
                 if !newInvitations.isEmpty {
                     await postNotifications(for: newInvitations)
+                }
+                if !newCalendarInvitations.isEmpty {
+                    await postCalendarNotifications(for: newCalendarInvitations)
                 }
             }
         } catch {
@@ -1160,6 +1386,38 @@ final class PendingEventInvitationManager: ObservableObject {
             content.userInfo = ["pendingEventInvitationID": invitation.id]
             let request = UNNotificationRequest(
                 identifier: "shared.event.invitation.\(invitation.id)",
+                content: content,
+                trigger: nil
+            )
+            try? await center.add(request)
+        }
+    }
+
+    private func postCalendarNotifications(
+        for invitations: [CloudCalendarsAPI.PendingICloudCalendarInvitation]
+    ) async {
+        let center = UNUserNotificationCenter.current()
+        guard await notificationsAreAuthorized(center) else { return }
+
+        for invitation in invitations {
+            let content = UNMutableNotificationContent()
+            content.title = NSLocalizedString(
+                "New calendar invitation",
+                comment: "Pending shared-calendar invitation notification title"
+            )
+            let sender = invitation.senderEmail ?? invitation.ownerEmail ?? "Cloud Calendars"
+            content.body = localizedFormat(
+                NSLocalizedString(
+                    "%@ invited you to %@",
+                    comment: "Pending shared-calendar invitation notification body"
+                ),
+                sender,
+                invitation.title
+            )
+            content.sound = .default
+            content.userInfo = ["pendingCalendarInvitationID": invitation.id]
+            let request = UNNotificationRequest(
+                identifier: "shared.calendar.invitation.\(invitation.id)",
                 content: content,
                 trigger: nil
             )

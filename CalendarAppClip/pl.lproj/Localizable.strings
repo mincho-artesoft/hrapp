@@ -9,3 +9,23 @@
 "Add to Calendar" = "Dodaj do kalendarza";
 "You’ll see it update if the time changes or the event is called off." = "Zobaczysz zmianę, jeśli godzina ulegnie zmianie lub wydarzenie zostanie odwołane.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Dodanie przekazuje wydarzenie do Twojej aplikacji kalendarza. Ten App Clip nigdy nie czyta Twoich kalendarzy.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Zaproszenie do kalendarza";
+"Cancelled" = "Anulowano";
+"Check your e-mail" = "Sprawdź pocztę e-mail";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Wpisz e-mail, w którym zarezerwowałeś e-mail, a my wyślemy link, aby zobaczyć wszystkie rezerwacje.";
+"Get Cloud Calendars" = "Pobierz kalendarze chmur";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Pobierz Cloud Calendars, aby zakończyć - ustaw swoje godziny, udostępnij jeden link i każda rezerwacja ląduje w kalendarzu. Zapisaliśmy twój kod, więc zaczyna się tam, gdzie skończyłeś.";
+"It may have expired. Ask for a new one below." = "Może wygasł. Poproś o nowy poniżej.";
+"Loading your bookings…" = "Wczytywanie rezerwacji...";
+"My bookings" = "Moje rezerwacje";
+"No bookings on this link." = "Żadnych rezerwacji na ten link.";
+"Reschedule or cancel" = "Przełożyć lub anulować";
+"Set up your booking page" = "Ustaw stronę rezerwacji";
+"Shared calendar" = "Wspólny kalendarz";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Ta aplikacja Clip prezentuje tylko zaproszenie do kalendarza. Pobierz Cloud Calendars, aby dodać go do Shared ze mną.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Ta aplikacja Clip tylko podgląda zdarzenie. Pobierz kalendarze Cloud, aby dodać je do kalendarza.";
+"This link didn’t work" = "Ten link nie działa.";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Wysłaliśmy link, aby zobaczyć i zarządzać rezerwacjami. Działa przez 7 dni.";
+"you@example.com" = "you@example.com";

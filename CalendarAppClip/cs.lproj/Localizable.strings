@@ -9,3 +9,23 @@
 "Add to Calendar" = "Přidat do kalendáře";
 "You’ll see it update if the time changes or the event is called off." = "Uvidíte změnu, pokud se čas změní nebo bude událost zrušena.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Přidáním se událost předá vaší kalendářové aplikaci. Tento App Clip nikdy nečte vaše kalendáře.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Pozvánka na kalendář";
+"Cancelled" = "Zrušeno";
+"Check your e-mail" = "Zkontrolujte si e-mail";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Zadejte e-mail, který jste si zarezervovali, a my Vám pošleme odkaz na všechny Vaše rezervace.";
+"Get Cloud Calendars" = "Získat cloud kalendáře";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Získejte Cloud kalendáře k dokončení - nastavit si hodiny, sdílet jeden odkaz, a každá rezervace přistane ve vašem kalendáři. Ušetřili jsme tvůj kód, takže se to objeví tam, kde jsi skončil.";
+"It may have expired. Ask for a new one below." = "Možná to vypršelo. Požádej o novou dole.";
+"Loading your bookings…" = "Nahrávám vaše rezervace...";
+"My bookings" = "Moje rezervace";
+"No bookings on this link." = "Žádné rezervace na tomto odkazu.";
+"Reschedule or cancel" = "Přeložit nebo zrušit";
+"Set up your booking page" = "Nastavit si rezervační stránku";
+"Shared calendar" = "Sdílený kalendář";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Tento App Clip pouze předpovídá pozvánku kalendáře. Stáhněte si Cloud Calendars a přidejte to ke mně.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Tento App Clip pouze zobrazuje událost. Stáhnout Cloud kalendáře přidat do kalendáře.";
+"This link didn’t work" = "Tohle spojení nefungovalo.";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Poslali jsme odkaz vidět a spravovat vaše rezervace. Funguje to 7 dní.";
+"you@example.com" = "you@example.com";

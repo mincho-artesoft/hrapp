@@ -27,6 +27,7 @@ struct WeatherKitView: View {
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)
     var onSavedRegionsPresentationChange: (Bool) -> Void
+    let eventEditorColorScheme: ColorScheme?
     @State private var eventToEdit: EKEvent? = nil
     @FocusState private var isSearchFieldFocused: Bool
     // MARK: - State Objects
@@ -67,11 +68,13 @@ struct WeatherKitView: View {
     init(
         selectedTab: Int,
         onViewChange: ((Int) -> Void)? = nil,
-        onSavedRegionsPresentationChange: @escaping (Bool) -> Void = { _ in }
+        onSavedRegionsPresentationChange: @escaping (Bool) -> Void = { _ in },
+        eventEditorColorScheme: ColorScheme? = nil
     ) {
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange!
         self.onSavedRegionsPresentationChange = onSavedRegionsPresentationChange
+        self.eventEditorColorScheme = eventEditorColorScheme
         #if DEBUG
         _showSavedRegions = State(initialValue: ScreenshotMode.weatherPreviewSavedRegionsOpen)
         _showSolarDetail = State(initialValue: ScreenshotMode.weatherPreviewSolarDetail)
@@ -410,7 +413,11 @@ struct WeatherKitView: View {
         )) {
             if let theEvent = eventToEdit {            // unwrap вътре
                 EventEditViewWrapper(eventStore: viewModel.eventStore,
-                                     event: theEvent)
+                                     event: theEvent,
+                                     preferredColorScheme: eventEditorColorScheme)
+                .environment(\.colorScheme, eventEditorColorScheme ?? .dark)
+                .presentationDetents([.large])
+                .presentationBackground(Color(uiColor: .systemBackground))
             }
         }
 

@@ -180,17 +180,20 @@ struct EventEmailInvitationsView: View {
         guard !entered.isEmpty else { return nil }
 
         if let invalid = entered.first(where: { !CalendarFeedSession.validEmail($0.email) }) {
-            errorMessage = "Enter a valid email address for \(invalid.email)."
+            errorMessage = String.localizedStringWithFormat(
+                String(localized: "Enter a valid email address for %@."),
+                invalid.email
+            )
             return nil
         }
 
         let uniqueEmails = Set(entered.map { $0.email })
         guard uniqueEmails.count == entered.count else {
-            errorMessage = "Each email address can appear only once."
+            errorMessage = String(localized: "Each email address can appear only once.")
             return nil
         }
         guard entered.count <= 50 else {
-            errorMessage = "You can send up to 50 invitations at once."
+            errorMessage = String(localized: "You can send up to 50 invitations at once.")
             return nil
         }
         return entered

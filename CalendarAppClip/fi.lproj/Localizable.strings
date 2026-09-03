@@ -9,3 +9,23 @@
 "Add to Calendar" = "Lisää kalenteriin";
 "You’ll see it update if the time changes or the event is called off." = "Näet muutoksen, jos aika vaihtuu tai tapahtuma perutaan.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Lisääminen siirtää tapahtuman kalenterisovellukseesi. Tämä App Clip ei koskaan lue kalentereitasi.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Kalenterikutsu";
+"Cancelled" = "Peruutettu";
+"Check your e-mail" = "Tarkista sähköpostisi";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Syötä varaamasi sähköposti ja lähetä linkki nähdäksesi kaikki varauksesi.";
+"Get Cloud Calendars" = "Hae pilvikalenterit";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Hanki Cloud Kalenterit loppuun . Määritä tunnit, jakaa yksi linkki, ja jokainen varaus laskeutuu kalenteriin. Tallensimme koodisi, joten se jatkaa siitä mihin jäit.";
+"It may have expired. Ask for a new one below." = "Se on saattanut vanheta. Pyydä uutta alla olevaa.";
+"Loading your bookings…" = "Ladataan varauksiasi...";
+"My bookings" = "Varaukseni";
+"No bookings on this link." = "Ei varauksia tästä linkistä.";
+"Reschedule or cancel" = "Muuta tai peruuta";
+"Set up your booking page" = "Aseta varaussivu";
+"Shared calendar" = "Yhteinen kalenteri";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Tämä App Clip vain esikatselee kalenterikutsun. Lataa Cloud Kalenterit lisätä sen Jaettu kanssani.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Tämä App Clip vain esikatselee tapahtuman. Lataa Cloud Kalenterit lisätäksesi sen kalenteriisi.";
+"This link didn’t work" = "Tämä linkki ei toiminut.";
+"We sent a link to see and manage your bookings. It works for 7 days." = "Lähetimme linkin nähdä ja hallita varauksia. Se toimii 7 päivää.";
+"you@example.com" = "you@example.com";

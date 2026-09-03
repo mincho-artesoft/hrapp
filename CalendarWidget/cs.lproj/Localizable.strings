@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Ubývající měsíc po úplňku";
 "MoonPhase.lastQuarter" = "Poslední čtvrt";
 "MoonPhase.waningCrescent" = "Ubývající měsíc před novem";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV%@";

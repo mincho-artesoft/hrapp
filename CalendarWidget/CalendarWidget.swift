@@ -579,7 +579,12 @@ private struct CalendarIconWidgetView: View {
                     .symbolRenderingMode(.multicolor)
                     .font(.system(size: 9, weight: .medium))
 
-                Text("UV \(entry.weather.uvIndex.map { roundedNumberText(Double($0)) } ?? "--")")
+                Text(
+                    String.localizedStringWithFormat(
+                        NSLocalizedString("UV %@", comment: "UV value"),
+                        entry.weather.uvIndex.map { roundedNumberText(Double($0)) } ?? "--"
+                    )
+                )
                     .font(.system(size: 11, weight: .medium))
                     .foregroundStyle(iconTextColor)
             }
@@ -676,6 +681,9 @@ private struct CalendarIconWidgetView: View {
                     .frame(width: indicatorWidth, height: 8)
                     .position(x: indicatorCenterX, y: geometry.size.height / 2)
             }
+            // `indicatorCenterX` and the gradient endpoints already account
+            // for RTL. Avoid a second automatic mirror by SwiftUI.
+            .environment(\.layoutDirection, .leftToRight)
             .frame(maxHeight: .infinity)
         }
         .frame(height: 8)
@@ -770,8 +778,19 @@ private struct CalendarIconWidgetView: View {
             return NSLocalizedString("Tomorrow", comment: "")
         }
 
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.locale = widgetLocale
+        formatter.timeZone = WidgetTimeZone.current
+
         let dateFormat = entry.settings.dateFormat.trimmingCharacters(in: .whitespacesAndNewlines)
-        return formattedDate(date, format: dateFormat.isEmpty ? "EEE d MMM" : dateFormat)
+        if dateFormat.isEmpty {
+            formatter.setLocalizedDateFormatFromTemplate("EEE d MMM")
+        } else {
+            formatter.dateFormat = dateFormat
+        }
+
+        return formatter.string(from: date)
     }
 
     private func shortTimeText(_ date: Date) -> String {

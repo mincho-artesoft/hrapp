@@ -5,6 +5,7 @@ import EventKitUI
 struct EventEditViewWrapper: UIViewControllerRepresentable {
     let eventStore: EKEventStore
     let event: EKEvent
+    var preferredColorScheme: ColorScheme? = nil
     
     /// Callback, който да се извика след като събитието е запазено / редактирано / изтрито.
     var onEventUpdated: (() -> Void)? = nil
@@ -20,6 +21,7 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         vc.view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
             ? .forceRightToLeft
             : .forceLeftToRight
+        applyPreferredAppearance(to: vc)
         
         return vc
     }
@@ -28,6 +30,17 @@ struct EventEditViewWrapper: UIViewControllerRepresentable {
         uiViewController.view.semanticContentAttribute = context.environment.layoutDirection == .rightToLeft
             ? .forceRightToLeft
             : .forceLeftToRight
+        applyPreferredAppearance(to: uiViewController)
+    }
+
+    private func applyPreferredAppearance(to controller: UIViewController) {
+        guard let preferredColorScheme else {
+            controller.overrideUserInterfaceStyle = .unspecified
+            return
+        }
+
+        controller.overrideUserInterfaceStyle = preferredColorScheme == .dark ? .dark : .light
+        controller.view.backgroundColor = .systemBackground
     }
     
     func makeCoordinator() -> Coordinator {

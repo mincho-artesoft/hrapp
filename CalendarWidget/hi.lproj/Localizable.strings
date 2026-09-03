@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "कृष्ण पक्ष की प्रतिपदा से सप्तमी";
 "MoonPhase.lastQuarter" = "कृष्ण पक्ष की अष्टमी";
 "MoonPhase.waningCrescent" = "कृष्ण पक्ष की नवमी से चतुर्दशी";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "यूवी %@";

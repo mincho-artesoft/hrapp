@@ -9,3 +9,23 @@
 "Add to Calendar" = "Add to Calendar";
 "You’ll see it update if the time changes or the event is called off." = "You’ll see it update if the time changes or the event is called off.";
 "Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "Adding the event hands it to your calendar app. This App Clip never reads your calendars.";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "Calendar invitation";
+"Cancelled" = "Cancelled";
+"Check your e-mail" = "Check your e-mail";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "Enter the e-mail you booked with and we’ll send a link to see all your bookings.";
+"Get Cloud Calendars" = "Get Cloud Calendars";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off.";
+"It may have expired. Ask for a new one below." = "It may have expired. Ask for a new one below.";
+"Loading your bookings…" = "Loading your bookings…";
+"My bookings" = "My bookings";
+"No bookings on this link." = "No bookings on this link.";
+"Reschedule or cancel" = "Reschedule or cancel";
+"Set up your booking page" = "Set up your booking page";
+"Shared calendar" = "Shared calendar";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me.";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar.";
+"This link didn’t work" = "This link didn’t work";
+"We sent a link to see and manage your bookings. It works for 7 days." = "We sent a link to see and manage your bookings. It works for 7 days.";
+"you@example.com" = "you@example.com";

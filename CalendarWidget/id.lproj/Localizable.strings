@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Separuh Pudar";
 "MoonPhase.lastQuarter" = "Kuartal Akhir";
 "MoonPhase.waningCrescent" = "Sabit Pudar";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV%@";

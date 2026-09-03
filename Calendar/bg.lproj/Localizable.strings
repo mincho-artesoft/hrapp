@@ -1,4 +1,6 @@
 /* RequestEmailView */
+"%lld event" = "%lld събитие";
+"%lld events" = "%lld събития";
 "Share Pop-up" = "Изскачащ прозорец за споделяне";
 "Would you like to share this event?" = "Искате ли да споделите това събитие?";
 "Don't ask again" = "Не питай отново";
@@ -76,7 +78,7 @@
 "Error re-inviting (insert): %@" = "Грешка при повторно канене (вмъкване): %@";
 
 /* Roles (for localizedRoleDisplayName) */
-"Reader" = "Четец";
+"Reader" = "Читател";
 "Writer" = "Редактор";
 "Owner"  = "Собственик";
 
@@ -832,13 +834,12 @@
 
 /* Акаунт само за App Clip споделяне и възстановяване */
 "Cloud Calendars account" = "Акаунт в Cloud Calendars";
-"App Clip sharing account" = "Акаунт за App Clip споделяне";
+"App Clip sharing account" = "Акаунт за споделяне чрез App Clip";
 "Required for synced App Clip events and recovery after reinstalling." = "Необходим е за синхронизирани App Clip събития и възстановяване след преинсталиране.";
 "Continue with Google" = "Продължи с Google";
 "Sign Out" = "Изход";
 "Signing in…" = "Влизане…";
 "Sign In" = "Вход";
-"Done" = "Готово";
 "Sign in to continue" = "Влезте, за да продължите";
 "Your account keeps this shared event recoverable after reinstalling the app." = "Акаунтът ви позволява това споделено събитие да бъде възстановено след преинсталиране на приложението.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Този акаунт притежава App Clip споделянията и ги възстановява след преинсталиране. Той е отделен от входовете за доставчици на календари.";
@@ -861,3 +862,86 @@
 "Manage connected accounts" = "Управление на свързаните акаунти";
 "Apple, Google, and Microsoft" = "Apple, Google и Microsoft";
 "Open account sign-in" = "Отвори входа за акаунт";
+
+/* Споделени събития, календари и покани */
+"A verified email is required to share, recover, or use access granted by an owner." = "Необходим е потвърден email за споделяне, възстановяване или използване на достъп, даден от собственик.";
+"Accept" = "Приеми";
+"Access removed" = "Достъпът е премахнат";
+"Add a Mail account on this device, then try again." = "Добавете Mail акаунт на това устройство и опитайте отново.";
+"Add a writable calendar before moving this event." = "Добавете календар с право за запис, преди да преместите събитието.";
+"Add everyone who should receive this calendar and choose their access." = "Добавете всички, които трябва да получат календара, и изберете достъпа им.";
+"Add everyone who should receive this event and choose their access." = "Добавете всички, които трябва да получат събитието, и изберете достъпа им.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "След Запази %@ ще загуби достъп. Локалното копие ще остане само за четене и зачертaно.";
+"Anonymous recipient" = "Анонимен получател";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "Apple не върна email. В Настройки спрете използването на Apple ID за Cloud Calendars, свържете се отново и изберете Споделяне на моя email.";
+"Calendar invitation" = "Покана за календар";
+"Cancel for Everyone" = "Отмени за всички";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Изберете Читател, Редактор или Собственик. Собствениците могат и да споделят събитието и да управляват достъпа.";
+"Choose how to share this synced event." = "Изберете как да споделите синхронизираното събитие.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars не можа да запази сесията на това устройство. Опитайте отново.";
+"Cloud Calendars user" = "Потребител на Cloud Calendars";
+"Could not add: %@." = "Не можаха да се добавят: %@.";
+"Custom on this device" = "Персонализиран на това устройство";
+"Decline" = "Откажи";
+"Default from creator" = "По подразбиране от създателя";
+"Deleted by owner" = "Изтрит от собственика";
+"Each email address can appear only once." = "Всеки email адрес може да присъства само веднъж.";
+"Enter a valid email address for %@." = "Въведете валиден email адрес за %@.";
+"From %@" = "От %@";
+"Invitation pending" = "Поканата чака отговор";
+"Loading shared calendars…" = "Зареждане на споделените календари…";
+"Mail is not configured" = "Mail не е настроен";
+"Manage calendar sharing" = "Управление на споделянето на календара";
+"New calendar invitation" = "Нова покана за календар";
+"New event invitation" = "Нова покана за събитие";
+"No calendars have been shared with you yet." = "Все още няма календари, споделени с вас.";
+"Open a shared event or calendar" = "Отваряне на споделено събитие или календар";
+"Open this event with Cloud Calendars:\n\n%@" = "Отворете това събитие с Cloud Calendars:\n\n%@";
+"Original creator" = "Първоначален създател";
+"People" = "Хора";
+"People appear here after they add the event." = "Хората се показват тук, след като добавят събитието.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "Поставете QR код за събитие или календар от Cloud Calendars в рамката.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "Читателят може да преглежда и синхронизира. Редакторът може да редактира. Собственикът може и да споделя и управлява достъпа след вход с поканения email.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "Читателят може да преглежда. Редакторът може да редактира събития. Собственикът може и да споделя календара и да управлява достъпа.";
+"Remove" = "Премахни";
+"Remove Shared Calendar?" = "Премахване на споделения календар?";
+"Remove from My Calendars" = "Премахни от моите календари";
+"Resend" = "Изпрати отново";
+"Scan QR Code" = "Сканирай QR код";
+"Scan to open this calendar" = "Сканирайте, за да отворите календара";
+"Scan to open this event" = "Сканирайте, за да отворите събитието";
+"Server returned %lld: %@" = "Сървърът върна %lld: %@";
+"Shared calendar" = "Споделен календар";
+"Shared calendar information" = "Информация за споделения календар";
+"Shared event: %@" = "Споделено събитие: %@";
+"Sign in or manage accounts" = "Влезте или управлявайте акаунтите";
+"Sign in to manage event access." = "Влезте, за да управлявате достъпа до събитието.";
+"Sign in to save event access." = "Влезте, за да запазите достъпа до събитието.";
+"Sign in to see calendars shared with you." = "Влезте, за да видите споделените с вас календари.";
+"Sign-in couldn’t open. Please try again." = "Входът не можа да се отвори. Опитайте отново.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "Да се спре ли споделянето на календара с %@? След Запази замразеното копие и събитията му ще останат видими и зачертани.";
+"The calendar and its events will be removed only from this device." = "Календарът и събитията му ще бъдат премахнати само от това устройство.";
+"The provider didn’t return the information required to sign in." = "Доставчикът не върна необходимата за вход информация.";
+"The provider returned an invalid response." = "Доставчикът върна невалиден отговор.";
+"The sign-in response couldn’t be verified. Please try again." = "Отговорът при вход не можа да бъде потвърден. Опитайте отново.";
+"The sign-in response was invalid. Please try again." = "Отговорът при вход беше невалиден. Опитайте отново.";
+"This changes only your local copy. Shared event details stay read-only." = "Това променя само локалното ви копие. Данните на споделеното събитие остават само за четене.";
+"This color changes only on this device." = "Този цвят се променя само на това устройство.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "Този QR код не съдържа събитие или календар от Cloud Calendars.";
+"This QR code does not contain a Cloud Calendars share." = "Този QR код не съдържа споделяне от Cloud Calendars.";
+"This removes only your local copy. Other people keep access." = "Това премахва само локалното ви копие. Останалите запазват достъпа си.";
+"Try again" = "Опитай отново";
+"Unable to Update Calendar" = "Календарът не може да бъде обновен";
+"Unable to add calendar" = "Календарът не може да бъде добавен";
+"Unreadable response from the server" = "Неразбираем отговор от сървъра";
+"Use Apple, Google, or Microsoft." = "Използвайте Apple, Google или Microsoft.";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "Използвайте устройство с налична камера, за да сканирате QR код от Cloud Calendars.";
+"You can add up to 50 people at once." = "Можете да добавите до 50 души наведнъж.";
+"You can send up to 50 invitations at once." = "Можете да изпратите до 50 покани наведнъж.";
+"%lld connected account" = "%lld свързан акаунт";
+"%lld connected accounts" = "%lld свързани акаунта";
+"%lld pending invitation" = "%lld чакаща покана";
+"%lld pending invitations" = "%lld чакащи покани";
+"%lld upcoming event" = "%lld предстоящо събитие";
+"%lld upcoming events" = "%lld предстоящи събития";
+"%@ invited you to %@" = "%@ ви покани в %@";

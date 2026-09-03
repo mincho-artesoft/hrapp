@@ -82,3 +82,6 @@
 "MoonPhase.waningGibbous" = "Φθίνων αμφίκυρτος";
 "MoonPhase.lastQuarter" = "Τελευταίο τέταρτο";
 "MoonPhase.waningCrescent" = "Φθίνων μηνίσκος";
+
+/* Sharing, App Clip, and widget additions */
+"UV %@" = "UV%@";

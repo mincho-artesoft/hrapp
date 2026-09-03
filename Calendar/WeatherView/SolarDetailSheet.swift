@@ -414,14 +414,17 @@ private struct SolarMonthRow: View {
                             .fill(
                                 LinearGradient(
                                     colors: [.orange, .yellow, .cyan],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
+                                    startPoint: layoutDirection == .rightToLeft ? .trailing : .leading,
+                                    endPoint: layoutDirection == .rightToLeft ? .leading : .trailing
                                 )
                             )
                             .frame(width: width, height: 6)
                             .position(x: centerX, y: 4)
                     }
                 }
+                // `centerX` is already expressed in physical RTL-aware
+                // coordinates, so do not let SwiftUI mirror it again.
+                .environment(\.layoutDirection, .leftToRight)
             }
             .frame(height: 8)
 
@@ -595,13 +598,16 @@ private struct SolarDayRow: View {
                         .fill(
                             LinearGradient(
                                 colors: [.orange, .yellow, .cyan],
-                                startPoint: .leading,
-                                endPoint: .trailing
+                                startPoint: layoutDirection == .rightToLeft ? .trailing : .leading,
+                                endPoint: layoutDirection == .rightToLeft ? .leading : .trailing
                             )
                         )
                         .frame(width: width, height: 6)
                         .position(x: centerX, y: 4)
                 }
+                // `centerX` is already expressed in physical RTL-aware
+                // coordinates, so do not let SwiftUI mirror it again.
+                .environment(\.layoutDirection, .leftToRight)
             }
             .frame(height: 8)
 

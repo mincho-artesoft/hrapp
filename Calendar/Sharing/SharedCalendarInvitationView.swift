@@ -32,7 +32,8 @@ struct SharedCalendarInvitationPayload: Identifiable, Equatable {
         else { return nil }
         self.ownerID = ownerID
         self.calendarID = calendarID
-        title = values["title"].flatMap { $0.isEmpty ? nil : $0 } ?? "Shared calendar"
+        title = values["title"].flatMap { $0.isEmpty ? nil : $0 }
+            ?? String(localized: "Shared calendar")
         colorHex = values["color"].flatMap { $0.isEmpty ? nil : $0 } ?? "#0088FF"
     }
 
@@ -186,11 +187,24 @@ struct SharedCalendarInvitationView: View {
 
         Task {
             do {
-                try await CloudCalendarsAPI.acceptICloudCalendarInvitation(
+                let accepted = try await CloudCalendarsAPI.acceptICloudCalendarInvitation(
                     ownerId: payload.ownerID,
                     calendarId: payload.calendarID,
                     session: session
                 )
+                SharedICloudCalendarLocalStore.restoreLocally(
+                    ownerID: payload.ownerID,
+                    calendarID: payload.calendarID
+                )
+                // Reconcile the exact record returned by the atomic accept
+                // request before the periodic list refresh. This prevents the
+                // newly copied calendar from briefly entering an unregistered
+                // state and being rendered as access-removed.
+                _ = try SharedICloudCalendarLocalStore.reconcile(
+                    accepted,
+                    in: CalendarViewModel.shared.eventStore
+                )
+                _ = await SharedICloudCalendarLocalStore.refreshAll()
                 NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
                 dismiss()
             } catch {
