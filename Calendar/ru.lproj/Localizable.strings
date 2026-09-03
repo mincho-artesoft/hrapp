@@ -712,6 +712,7 @@
 "N/A - Selected Tab: %@" = "Н/Д - выбранная вкладка: %@";
 "Enable Notifications" = "Включить уведомления";
 "Event Notifications" = "Уведомления о событиях";
+"Invitation Notifications" = "Уведомления о приглашениях";
 "Weather Alert Notifications" = "Уведомления о погодных предупреждениях";
 "Allow notifications so weather alerts can appear." = "Разрешите уведомления, чтобы получать предупреждения о погоде.";
 "Event alerts are scheduled from your event alert settings." = "Оповещения о событиях планируются согласно настройкам оповещений в событиях.";

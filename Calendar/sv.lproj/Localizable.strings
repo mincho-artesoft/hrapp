@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Ej tillgänglig – vald flik: %@";
 "Enable Notifications" = "Aktivera aviseringar";
 "Event Notifications" = "Händelsemeddelanden";
+"Invitation Notifications" = "Inbjudningsnotiser";
 "Weather Alert Notifications" = "Notiser om vädervarningar";
 "Allow notifications so weather alerts can appear." = "Tillåt notiser för att få vädervarningar.";
 "Event alerts are scheduled from your event alert settings." = "Händelsevarningar schemaläggs från dina inställningar för händelsevarningar.";

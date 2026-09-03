@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "N/A - Selected Tab: %@";
 "Enable Notifications" = "Enable Notifications";
 "Event Notifications" = "Event Notifications";
+"Invitation Notifications" = "Invitation Notifications";
 "Weather Alert Notifications" = "Weather Alert Notifications";
 "Allow notifications so weather alerts can appear." = "Allow notifications so weather alerts can appear.";
 "Event alerts are scheduled from your event alert settings." = "Event alerts are scheduled from your event alert settings.";

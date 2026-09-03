@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "不适用 - 所选选项卡：%@";
 "Enable Notifications" = "启用通知";
 "Event Notifications" = "活动通知";
+"Invitation Notifications" = "邀请通知";
 "Weather Alert Notifications" = "天气警报通知";
 "Allow notifications so weather alerts can appear." = "允许通知以接收天气警报。";
 "Event alerts are scheduled from your event alert settings." = "事件警报是根据您的事件警报设置安排的。";

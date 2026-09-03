@@ -712,6 +712,7 @@
 "N/A - Selected Tab: %@" = "N/D - onglet sélectionné : %@";
 "Enable Notifications" = "Activer les notifications";
 "Event Notifications" = "Notifications d’événements";
+"Invitation Notifications" = "Notifications d’invitations";
 "Weather Alert Notifications" = "Notifications d’alertes météo";
 "Allow notifications so weather alerts can appear." = "Autorisez les notifications pour recevoir les alertes météo.";
 "Event alerts are scheduled from your event alert settings." = "Les alertes d’événements sont programmées selon les réglages d’alerte de chaque événement.";

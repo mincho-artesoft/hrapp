@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "N.v.t. - Geselecteerd tabblad: %@";
 "Enable Notifications" = "Meldingen inschakelen";
 "Event Notifications" = "Gebeurtenismeldingen";
+"Invitation Notifications" = "Uitnodigingsmeldingen";
 "Weather Alert Notifications" = "Meldingen voor weerwaarschuwingen";
 "Allow notifications so weather alerts can appear." = "Sta meldingen toe om weerwaarschuwingen te ontvangen.";
 "Event alerts are scheduled from your event alert settings." = "Gebeurteniswaarschuwingen worden gepland via uw instellingen voor gebeurteniswaarschuwingen.";

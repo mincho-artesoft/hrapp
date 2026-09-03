@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "該当なし - 選択したタブ: %@";
 "Enable Notifications" = "通知を有効にする";
 "Event Notifications" = "イベント通知";
+"Invitation Notifications" = "招待通知";
 "Weather Alert Notifications" = "気象警報の通知";
 "Allow notifications so weather alerts can appear." = "気象警報を受け取るには通知を許可してください。";
 "Event alerts are scheduled from your event alert settings." = "イベント アラートは、イベント アラート設定からスケジュールされます。";

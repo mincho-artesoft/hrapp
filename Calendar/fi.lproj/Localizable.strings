@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Ei käytössä – Valittu välilehti: %@";
 "Enable Notifications" = "Ota ilmoitukset käyttöön";
 "Event Notifications" = "Tapahtuma-ilmoitukset";
+"Invitation Notifications" = "Kutsuilmoitukset";
 "Weather Alert Notifications" = "Säävaroitusilmoitukset";
 "Allow notifications so weather alerts can appear." = "Salli ilmoitukset, jotta voit vastaanottaa säävaroituksia.";
 "Event alerts are scheduled from your event alert settings." = "Tapahtumahälytykset ajoitetaan tapahtumahälytysasetuksistasi.";

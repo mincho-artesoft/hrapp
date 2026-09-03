@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "T/A - Tab yang Dipilih: %@";
 "Enable Notifications" = "Aktifkan Notifikasi";
 "Event Notifications" = "Pemberitahuan Acara";
+"Invitation Notifications" = "Notifikasi undangan";
 "Weather Alert Notifications" = "Pemberitahuan peringatan cuaca";
 "Allow notifications so weather alerts can appear." = "Izinkan pemberitahuan untuk menerima peringatan cuaca.";
 "Event alerts are scheduled from your event alert settings." = "Peringatan acara dijadwalkan dari pengaturan peringatan acara Anda.";

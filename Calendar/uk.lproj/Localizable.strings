@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "N/A - Обирана вкладка: %@";
 "Enable Notifications" = "Обов'язково повідомлення";
 "Event Notifications" = "За повідомленням про події";
+"Invitation Notifications" = "Сповіщення про запрошення";
 "Weather Alert Notifications" = "Увіщення про погоду";
 "Allow notifications so weather alerts can appear." = "Дозвольте повідомленням, щоб могли з'являтися попередження про погоду.";
 "Event alerts are scheduled from your event alert settings." = "Попередження подій плануються з ваших налаштувань попередження подій.";

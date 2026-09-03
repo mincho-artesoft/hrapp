@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Yok - Seçilen Sekme: %@";
 "Enable Notifications" = "Bildirimleri Etkinleştir";
 "Event Notifications" = "Etkinlik Bildirimleri";
+"Invitation Notifications" = "Davet Bildirimleri";
 "Weather Alert Notifications" = "Hava durumu uyarı bildirimleri";
 "Allow notifications so weather alerts can appear." = "Hava durumu uyarılarını almak için bildirimlere izin verin.";
 "Event alerts are scheduled from your event alert settings." = "Etkinlik uyarıları, etkinlik uyarısı ayarlarınızdan planlanır.";

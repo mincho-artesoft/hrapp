@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "N/A - Vybraná tabuľka: %@";
 "Enable Notifications" = "Umožniť oznámenia";
 "Event Notifications" = "Oznámenia o udalostiach";
+"Invitation Notifications" = "Oznámenia o pozvánkach";
 "Weather Alert Notifications" = "Oznámenia o počasí";
 "Allow notifications so weather alerts can appear." = "Nechaj sa zobraziť upozornenia na počasie.";
 "Event alerts are scheduled from your event alert settings." = "Výstražky udalostí sú naplánované z vašich nastavení výstražky udalostí.";

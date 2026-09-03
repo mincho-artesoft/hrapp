@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "해당 없음 - 선택한 탭: %@";
 "Enable Notifications" = "알림 활성화";
 "Event Notifications" = "이벤트 알림";
+"Invitation Notifications" = "초대 알림";
 "Weather Alert Notifications" = "기상 경보 알림";
 "Allow notifications so weather alerts can appear." = "기상 경보를 받으려면 알림을 허용하세요.";
 "Event alerts are scheduled from your event alert settings." = "이벤트 알림은 이벤트 알림 설정에서 예약됩니다.";

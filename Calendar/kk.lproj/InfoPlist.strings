@@ -1,0 +1,13 @@
+"CFBundleDisplayName" = "Cloud Calendars";
+
+"NSCalendarsUsageDescription" = "Cloud Calendars іс-шараларды iCloud, Google және Microsoft күнтізбелерінен біріктіру үшін күнтізбеге кіруді қажет етеді, осылайша үздіксіз жоспарлау мүмкіндігін береді.";
+
+"NSContactsUsageDescription" = "Cloud Calendars іс-шара шақыруларын жеңілдету және қатысушы мәліметтерін оңай басқару үшін контактілерді пайдаланады.";
+
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Cloud Calendars тіпті қолданба жабылған кезде де орналасқан жеріңізге қол жеткізеді, дәл ауа райы болжамын және жоспарланған оқиғаларыңыз туралы уақтылы ескертулер береді.";
+
+"NSLocationWhenInUseUsageDescription" = "Cloud Calendars нақты жергілікті ауа райы болжамдарын тікелей күнтізбеңізге біріктіру үшін белсенді кезде орналасқан жеріңізді пайдаланады.";
+
+"NSCalendarsFullAccessUsageDescription" = "Cloud Calendars іс-шараларды iCloud, Google және Microsoft күнтізбелерінен біріктіру үшін күнтізбеге кіруді қажет етеді, осылайша үздіксіз жоспарлау мүмкіндігін береді.";
+
+"NSCameraUsageDescription" = "Cloud Calendars ортақ оқиға мен күнтізбе QR кодтарын сканерлеу үшін камераны пайдаланады.";

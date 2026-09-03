@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Indisponibil – fila selectată: %@";
 "Enable Notifications" = "Activați notificările";
 "Event Notifications" = "Notificări de evenimente";
+"Invitation Notifications" = "Notificări de invitații";
 "Weather Alert Notifications" = "Notificări de avertizare meteo";
 "Allow notifications so weather alerts can appear." = "Permite notificările pentru a primi avertizări meteo.";
 "Event alerts are scheduled from your event alert settings." = "Alertele de evenimente sunt programate din setările dvs. de alertă de eveniment.";

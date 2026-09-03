@@ -1,0 +1,31 @@
+"All-day event" = "全天行程";
+"Cloud Calendars" = "Cloud Calendars";
+"Shared event" = "共享行程";
+"This App Clip only previews the event. It doesn’t access your calendars." = "此 App Clip 只會預覽行程，不會取用你的行事曆。";
+"Open Cloud Calendars" = "打開 Cloud Calendars";
+"Download Cloud Calendars" = "下載 Cloud Calendars";
+"Sample shared event" = "共享行程範例";
+"Sofia" = "索菲亞";
+"Add to Calendar" = "加入行事曆";
+"You’ll see it update if the time changes or the event is called off." = "如果時間變動或活動取消，你會看到更新。";
+"Adding the event hands it to your calendar app. This App Clip never reads your calendars." = "加入後，活動會交給你的行事曆 App。此 App Clip 不會讀取你的行事曆。";
+
+/* Sharing, App Clip, and widget additions */
+"Calendar invitation" = "行事曆邀請";
+"Cancelled" = "已取消";
+"Check your e-mail" = "檢查您的電子郵件";
+"Enter the e-mail you booked with and we’ll send a link to see all your bookings." = "請輸入您預訂的電子郵件,";
+"Get Cloud Calendars" = "取得雲曆";
+"Get Cloud Calendars to finish — set your hours, share one link, and every booking lands on your calendar. We've saved your setup code, so it picks up right where you left off." = "讓「雲曆」完成, 我們保存了你的設備密碼 所以它就在你留下的地方";
+"It may have expired. Ask for a new one below." = "可能已經过期了 要求在下面新增一款.";
+"Loading your bookings…" = "正在載入您的訂閱...";
+"My bookings" = "我的訂書";
+"No bookings on this link." = "此連結沒有訂閱 。";
+"Reschedule or cancel" = "重新安排或取消";
+"Set up your booking page" = "設定您的訂閱頁面";
+"Shared calendar" = "共享的行事曆";
+"This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "此 App Clip 只預覽行事曆邀請 。 下載「雲曆」,";
+"This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "此 App Clip 只預覽此事件 。 下載雲曆以加入您的行事曆 。";
+"This link didn’t work" = "這個連結沒有用";
+"We sent a link to see and manage your bookings. It works for 7 days." = "我們送了個連結來看你的訂票 它工作了7天。";
+"you@example.com" = "you@example.com";

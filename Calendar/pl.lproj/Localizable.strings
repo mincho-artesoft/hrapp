@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Nie dotyczy – wybrana karta: %@";
 "Enable Notifications" = "Włącz powiadomienia";
 "Event Notifications" = "Powiadomienia o wydarzeniach";
+"Invitation Notifications" = "Powiadomienia o zaproszeniach";
 "Weather Alert Notifications" = "Powiadomienia o ostrzeżeniach pogodowych";
 "Allow notifications so weather alerts can appear." = "Zezwól na powiadomienia, aby otrzymywać ostrzeżenia pogodowe.";
 "Event alerts are scheduled from your event alert settings." = "Alerty o wydarzeniach są planowane w ustawieniach alertów o wydarzeniach.";

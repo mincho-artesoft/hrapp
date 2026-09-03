@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Nem érhető el – kiválasztott lap: %@";
 "Enable Notifications" = "Értesítések engedélyezése";
 "Event Notifications" = "Eseményértesítések";
+"Invitation Notifications" = "Meghívóértesítések";
 "Weather Alert Notifications" = "Időjárási riasztások";
 "Allow notifications so weather alerts can appear." = "Engedélyezze az értesítéseket az időjárási riasztások fogadásához.";
 "Event alerts are scheduled from your event alert settings." = "Az eseményriasztások ütemezése az eseményriasztási beállításokból történik.";

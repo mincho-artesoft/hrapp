@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "N/A - নির্বাচিত ট্যাবঃ %@";
 "Enable Notifications" = "বিজ্ঞপ্তি সক্ষম করুন";
 "Event Notifications" = "ইভেন্ট বিজ্ঞপ্তি";
+"Invitation Notifications" = "আমন্ত্রণ বিজ্ঞপ্তি";
 "Weather Alert Notifications" = "আবহাওয়া সতর্কতা বিজ্ঞপ্তি";
 "Allow notifications so weather alerts can appear." = "বিজ্ঞপ্তিগুলিকে অনুমতি দিন যাতে আবহাওয়া সতর্কতা প্রদর্শিত হতে পারে।";
 "Event alerts are scheduled from your event alert settings." = "ইভেন্টের সতর্কতা আপনার ইভেন্ট সতর্কতা সেটিংস থেকে নির্ধারিত হয়।";

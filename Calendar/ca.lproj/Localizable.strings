@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "N/A - Tab seleccionada: %@";
 "Enable Notifications" = "Abilitar notificacions";
 "Event Notifications" = "Notificacions d'esdeveniments";
+"Invitation Notifications" = "Notificacions d'invitacions";
 "Weather Alert Notifications" = "Avís de alerta meteorològica";
 "Allow notifications so weather alerts can appear." = "Permetir notificacions per poder aparèixer alertes meteorològiques.";
 "Event alerts are scheduled from your event alert settings." = "Les alertes d'esdeveniments es programen des dels seus ajustes d'alerta d'esdeveniments.";

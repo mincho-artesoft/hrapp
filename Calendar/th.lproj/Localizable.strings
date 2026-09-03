@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "ไม่มีข้อมูล - แท็บที่เลือก: %@";
 "Enable Notifications" = "เปิดใช้งานการแจ้งเตือน";
 "Event Notifications" = "การแจ้งเตือนเหตุการณ์";
+"Invitation Notifications" = "การแจ้งเตือนคำเชิญ";
 "Weather Alert Notifications" = "การแจ้งเตือนคำเตือนสภาพอากาศ";
 "Allow notifications so weather alerts can appear." = "อนุญาตการแจ้งเตือนเพื่อรับคำเตือนสภาพอากาศ";
 "Event alerts are scheduled from your event alert settings." = "การแจ้งเตือนกิจกรรมกำหนดไว้จากการตั้งค่าการแจ้งเตือนกิจกรรมของคุณ";

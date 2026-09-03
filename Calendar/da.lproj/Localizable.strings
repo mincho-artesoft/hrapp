@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Ikke tilgængelig – valgt fane: %@";
 "Enable Notifications" = "Aktiver meddelelser";
 "Event Notifications" = "Begivenhedsmeddelelser";
+"Invitation Notifications" = "Invitationsnotifikationer";
 "Weather Alert Notifications" = "Notifikationer om vejradvarsler";
 "Allow notifications so weather alerts can appear." = "Tillad notifikationer for at modtage vejradvarsler.";
 "Event alerts are scheduled from your event alert settings." = "Begivenhedsadvarsler er planlagt fra dine indstillinger for begivenhedsunderretninger.";

@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "غير متوفر - علامة التبويب المحددة: %@";
 "Enable Notifications" = "تمكين الإخطارات";
 "Event Notifications" = "إشعارات الأحداث";
+"Invitation Notifications" = "إشعارات الدعوات";
 "Weather Alert Notifications" = "إشعارات تحذيرات الطقس";
 "Allow notifications so weather alerts can appear." = "اسمح بالإشعارات لتظهر تحذيرات الطقس.";
 "Event alerts are scheduled from your event alert settings." = "تتم جدولة تنبيهات الأحداث من إعدادات تنبيه الأحداث الخاصة بك.";

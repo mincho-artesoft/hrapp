@@ -1253,16 +1253,37 @@ final class PendingEventInvitationManager: ObservableObject {
     @Published private(set) var calendarInvitations: [CloudCalendarsAPI.PendingICloudCalendarInvitation] = []
     @Published private(set) var isLoading = false
     @Published private(set) var errorMessage: String?
+    @Published private(set) var invitationNotificationsEnabled: Bool
 
     var totalInvitationCount: Int { invitations.count + calendarInvitations.count }
 
     private let defaults = UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX") ?? .standard
+    private static let invitationNotificationsEnabledKey =
+        "InvitationNotificationsEnabled"
     private let seenInvitationIDsKey = "pendingEventInvitations.seenIDs.v1"
     private let seenCalendarInvitationIDsKey = "pendingCalendarInvitations.seenIDs.v1"
     private var pendingNotificationRefresh = false
     private var foregroundPollingTask: Task<Void, Never>?
 
-    private init() {}
+    private init() {
+        let defaults = UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX") ?? .standard
+        if defaults.object(forKey: Self.invitationNotificationsEnabledKey) == nil {
+            invitationNotificationsEnabled = true
+        } else {
+            invitationNotificationsEnabled = defaults.bool(
+                forKey: Self.invitationNotificationsEnabledKey
+            )
+        }
+    }
+
+    func setInvitationNotificationsEnabled(_ enabled: Bool) {
+        invitationNotificationsEnabled = enabled
+        defaults.set(enabled, forKey: Self.invitationNotificationsEnabledKey)
+
+        if !enabled {
+            removeInvitationNotifications()
+        }
+    }
 
     func startForegroundPolling() {
         guard foregroundPollingTask == nil else { return }
@@ -1365,6 +1386,7 @@ final class PendingEventInvitationManager: ObservableObject {
     private func postNotifications(
         for invitations: [CloudCalendarsAPI.PendingEventInvitation]
     ) async {
+        guard invitationNotificationsEnabled else { return }
         let center = UNUserNotificationCenter.current()
         guard await notificationsAreAuthorized(center) else { return }
 
@@ -1396,6 +1418,7 @@ final class PendingEventInvitationManager: ObservableObject {
     private func postCalendarNotifications(
         for invitations: [CloudCalendarsAPI.PendingICloudCalendarInvitation]
     ) async {
+        guard invitationNotificationsEnabled else { return }
         let center = UNUserNotificationCenter.current()
         guard await notificationsAreAuthorized(center) else { return }
 
@@ -1437,6 +1460,25 @@ final class PendingEventInvitationManager: ObservableObject {
                         || status == .ephemeral
                 )
             }
+        }
+    }
+
+    private func removeInvitationNotifications() {
+        let center = UNUserNotificationCenter.current()
+        let prefixes = ["shared.event.invitation.", "shared.calendar.invitation."]
+
+        center.getPendingNotificationRequests { requests in
+            let identifiers = requests.map(\.identifier).filter { identifier in
+                prefixes.contains { identifier.hasPrefix($0) }
+            }
+            center.removePendingNotificationRequests(withIdentifiers: identifiers)
+        }
+
+        center.getDeliveredNotifications { notifications in
+            let identifiers = notifications.map { $0.request.identifier }.filter { identifier in
+                prefixes.contains { identifier.hasPrefix($0) }
+            }
+            center.removeDeliveredNotifications(withIdentifiers: identifiers)
         }
     }
 }

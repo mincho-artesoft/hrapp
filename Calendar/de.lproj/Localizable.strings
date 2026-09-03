@@ -713,6 +713,7 @@
 "N/A - Selected Tab: %@" = "Nicht verfügbar - ausgewählter Tab: %@";
 "Enable Notifications" = "Mitteilungen aktivieren";
 "Event Notifications" = "Ereignismitteilungen";
+"Invitation Notifications" = "Einladungsmitteilungen";
 "Weather Alert Notifications" = "Unwetterwarnungen";
 "Allow notifications so weather alerts can appear." = "Erlaube Mitteilungen, damit Wetterwarnungen angezeigt werden können.";
 "Event alerts are scheduled from your event alert settings." = "Erinnerungen werden anhand der Hinweiseinstellungen deiner Ereignisse geplant.";

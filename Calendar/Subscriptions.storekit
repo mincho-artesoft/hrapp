@@ -24,7 +24,7 @@
     "_developerTeamID" : "8293TNMX6S",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 808060535.77692902,
+    "_lastSynchronizedDate" : 810134053.50423205,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
@@ -90,19 +90,9 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "एक महीने तक बिना विज्ञापन उपयोग।",
-              "displayName" : "उन्नत मासिक",
-              "locale" : "hi"
-            },
-            {
-              "description" : "一個月無廣告使用。",
-              "displayName" : "進階版月訂閱",
-              "locale" : "zh_Hant"
-            },
-            {
-              "description" : "Dostęp bez reklam przez jeden miesiąc.",
-              "displayName" : "Zaawansowany miesięczny",
-              "locale" : "pl"
+              "description" : "Ad-free access for one month.",
+              "displayName" : "Advanced Monthly",
+              "locale" : "en_CA"
             },
             {
               "description" : "Ad-free access for one month.",
@@ -110,34 +100,19 @@
               "locale" : "en_CA"
             },
             {
-              "description" : "Reklamfri åtkomst i en månad.",
-              "displayName" : "Avancerad månadsvis",
-              "locale" : "sv"
+              "description" : "Enjoy the app without ads for one month.",
+              "displayName" : "Advanced Monthly",
+              "locale" : "en_US"
             },
             {
-              "description" : "Dùng không quảng cáo trong một tháng.",
-              "displayName" : "Nâng cao hàng tháng",
-              "locale" : "vi"
+              "description" : "Enjoy the app without ads for one month.",
+              "displayName" : "Advanced Monthly",
+              "locale" : "en_GB"
             },
             {
-              "description" : "Используйте приложение без рекламы в течение месяца.",
-              "displayName" : "Продвинутый мес.",
-              "locale" : "ru"
-            },
-            {
-              "description" : "Profitez de l’app sans publicités pendant 1 mois.",
-              "displayName" : "Avancé Mensuel",
-              "locale" : "fr"
-            },
-            {
-              "description" : "Nutzen Sie die App einen Monat ohne Werbung.",
-              "displayName" : "Erweitert Monat",
-              "locale" : "de"
-            },
-            {
-              "description" : "Usa l’app senza pubblicità per un mese.",
-              "displayName" : "Avanzato Mensile",
-              "locale" : "it"
+              "description" : "Enjoy the app without ads for one month.",
+              "displayName" : "Advanced Monthly",
+              "locale" : "en_AU"
             },
             {
               "description" : "Enjoy the app without ads for one month.",
@@ -145,94 +120,19 @@
               "locale" : "en_US"
             },
             {
-              "description" : "Disfruta de la app sin anuncios durante un mes.",
-              "displayName" : "Avanzado Mensual",
-              "locale" : "es_ES"
+              "description" : "Reklamfri åtkomst i en månad.",
+              "displayName" : "Avancerad månadsvis",
+              "locale" : "sv"
             },
             {
-              "description" : "Een maand advertentievrije toegang.",
-              "displayName" : "Geavanceerd maandelijks",
-              "locale" : "nl"
+              "description" : "Reklamfri åtkomst i en månad.",
+              "displayName" : "Avancerad månadsvis",
+              "locale" : "sv"
             },
             {
-              "description" : "1か月間、広告なしで利用できます。",
-              "displayName" : "アドバンス月額",
-              "locale" : "ja"
-            },
-            {
-              "description" : "Reklámmentes hozzáférés egy hónapig.",
-              "displayName" : "Haladó havi",
-              "locale" : "hu"
-            },
-            {
-              "description" : "Akses tanpa iklan selama sebulan.",
-              "displayName" : "Lanjutan Bulanan",
-              "locale" : "ms"
-            },
-            {
-              "description" : "Bir ay reklamsız erişim.",
-              "displayName" : "Gelişmiş Aylık",
-              "locale" : "tr"
-            },
-            {
-              "description" : "Přístup bez reklam na jeden měsíc.",
-              "displayName" : "Pokročilé měsíčně",
-              "locale" : "cs"
-            },
-            {
-              "description" : "Mainokseton käyttö kuukauden ajan.",
-              "displayName" : "Edistynyt kuukausitilaus",
-              "locale" : "fi"
-            },
-            {
-              "description" : "גישה ללא פרסומות למשך חודש.",
-              "displayName" : "מתקדם חודשי",
-              "locale" : "he"
-            },
-            {
-              "description" : "한 달 동안 광고 없이 이용하세요.",
-              "displayName" : "고급 월간",
-              "locale" : "ko"
-            },
-            {
-              "description" : "Acesso sem anúncios por um mês.",
-              "displayName" : "Avançado mensal",
-              "locale" : "pt_BR"
-            },
-            {
-              "description" : "Acces fără reclame timp de o lună.",
-              "displayName" : "Avansat lunar",
-              "locale" : "ro"
-            },
-            {
-              "description" : "一个月无广告使用。",
-              "displayName" : "进阶版月订阅",
-              "locale" : "zh_Hans"
-            },
-            {
-              "description" : "استخدام بلا إعلانات لمدة شهر.",
-              "displayName" : "متقدم شهري",
-              "locale" : "ar"
-            },
-            {
-              "description" : "Akses bebas iklan selama satu bulan.",
-              "displayName" : "Lanjutan Bulanan",
-              "locale" : "id"
-            },
-            {
-              "description" : "ใช้งานแบบไม่มีโฆษณาเป็นเวลาหนึ่งเดือน",
-              "displayName" : "ขั้นสูงรายเดือน",
-              "locale" : "th"
-            },
-            {
-              "description" : "Χωρίς διαφημίσεις για έναν μήνα.",
-              "displayName" : "Προηγμένο μηνιαίο",
-              "locale" : "el"
-            },
-            {
-              "description" : "Accès sans publicité pendant un mois.",
-              "displayName" : "Avancé mensuel",
-              "locale" : "fr_CA"
+              "description" : "Reklamefri adgang i én måned.",
+              "displayName" : "Avanceret månedlig",
+              "locale" : "da"
             },
             {
               "description" : "Reklamefri adgang i én måned.",
@@ -245,9 +145,44 @@
               "locale" : "fr"
             },
             {
+              "description" : "Profitez de l’app sans publicités pendant 1 mois.",
+              "displayName" : "Avancé Mensuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Accès sans publicité pendant un mois.",
+              "displayName" : "Avancé mensuel",
+              "locale" : "fr_CA"
+            },
+            {
+              "description" : "Accès sans publicité pendant un mois.",
+              "displayName" : "Avancé mensuel",
+              "locale" : "fr_CA"
+            },
+            {
+              "description" : "Acces fără reclame timp de o lună.",
+              "displayName" : "Avansat lunar",
+              "locale" : "ro"
+            },
+            {
+              "description" : "Acces fără reclame timp de o lună.",
+              "displayName" : "Avansat lunar",
+              "locale" : "ro"
+            },
+            {
               "description" : "Disfruta de la app sin anuncios durante un mes.",
               "displayName" : "Avanzado Mensual",
               "locale" : "es_ES"
+            },
+            {
+              "description" : "Disfruta de la app sin anuncios durante un mes.",
+              "displayName" : "Avanzado Mensual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Disfruta la app sin anuncios durante un mes.",
+              "displayName" : "Avanzado mensual",
+              "locale" : "es_MX"
             },
             {
               "description" : "Usa l’app senza pubblicità per un mese.",
@@ -255,19 +190,244 @@
               "locale" : "it"
             },
             {
-              "description" : "Используйте приложение без рекламы в течение месяца.",
-              "displayName" : "Продвинутый мес.",
-              "locale" : "ru"
+              "description" : "Usa l’app senza pubblicità per un mese.",
+              "displayName" : "Avanzato Mensile",
+              "locale" : "it"
             },
             {
-              "description" : "Enjoy the app without ads for one month.",
-              "displayName" : "Advanced Monthly",
-              "locale" : "en_US"
+              "description" : "Acesso sem anúncios por um mês.",
+              "displayName" : "Avançado mensal",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Use a app sem anúncios durante um mês.",
+              "displayName" : "Avançado mensal",
+              "locale" : "pt_PT"
+            },
+            {
+              "description" : "Acesso sem anúncios por um mês.",
+              "displayName" : "Avançado mensal",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Gaudeix de l’app sense anuncis durant un mes.",
+              "displayName" : "Avançat mensual",
+              "locale" : "ca"
+            },
+            {
+              "description" : "Mainokseton käyttö kuukauden ajan.",
+              "displayName" : "Edistynyt kuukausitilaus",
+              "locale" : "fi"
+            },
+            {
+              "description" : "Mainokseton käyttö kuukauden ajan.",
+              "displayName" : "Edistynyt kuukausitilaus",
+              "locale" : "fi"
             },
             {
               "description" : "Nutzen Sie die App einen Monat ohne Werbung.",
               "displayName" : "Erweitert Monat",
               "locale" : "de"
+            },
+            {
+              "description" : "Nutzen Sie die App einen Monat ohne Werbung.",
+              "displayName" : "Erweitert Monat",
+              "locale" : "de"
+            },
+            {
+              "description" : "Een maand advertentievrije toegang.",
+              "displayName" : "Geavanceerd maandelijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Een maand advertentievrije toegang.",
+              "displayName" : "Geavanceerd maandelijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Bir ay reklamsız erişim.",
+              "displayName" : "Gelişmiş Aylık",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Bir ay reklamsız erişim.",
+              "displayName" : "Gelişmiş Aylık",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Reklámmentes hozzáférés egy hónapig.",
+              "displayName" : "Haladó havi",
+              "locale" : "hu"
+            },
+            {
+              "description" : "Reklámmentes hozzáférés egy hónapig.",
+              "displayName" : "Haladó havi",
+              "locale" : "hu"
+            },
+            {
+              "description" : "Akses tanpa iklan selama sebulan.",
+              "displayName" : "Lanjutan Bulanan",
+              "locale" : "ms"
+            },
+            {
+              "description" : "Akses tanpa iklan selama sebulan.",
+              "displayName" : "Lanjutan Bulanan",
+              "locale" : "ms"
+            },
+            {
+              "description" : "Akses bebas iklan selama satu bulan.",
+              "displayName" : "Lanjutan Bulanan",
+              "locale" : "id"
+            },
+            {
+              "description" : "Akses bebas iklan selama satu bulan.",
+              "displayName" : "Lanjutan Bulanan",
+              "locale" : "id"
+            },
+            {
+              "description" : "Koristite aplikaciju bez oglasa mjesec dana.",
+              "displayName" : "Napredni mjesečno",
+              "locale" : "hr"
+            },
+            {
+              "description" : "Dùng không quảng cáo trong một tháng.",
+              "displayName" : "Nâng cao hàng tháng",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Dùng không quảng cáo trong một tháng.",
+              "displayName" : "Nâng cao hàng tháng",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Aplikácia bez reklám na jeden mesiac.",
+              "displayName" : "Pokročilé mesačne",
+              "locale" : "sk"
+            },
+            {
+              "description" : "Přístup bez reklam na jeden měsíc.",
+              "displayName" : "Pokročilé měsíčně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Přístup bez reklam na jeden měsíc.",
+              "displayName" : "Pokročilé měsíčně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Dostęp bez reklam przez jeden miesiąc.",
+              "displayName" : "Zaawansowany miesięczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Dostęp bez reklam przez jeden miesiąc.",
+              "displayName" : "Zaawansowany miesięczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Χωρίς διαφημίσεις για έναν μήνα.",
+              "displayName" : "Προηγμένο μηνιαίο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Χωρίς διαφημίσεις για έναν μήνα.",
+              "displayName" : "Προηγμένο μηνιαίο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Используйте приложение без рекламы в течение месяца.",
+              "displayName" : "Продвинутый мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Используйте приложение без рекламы в течение месяца.",
+              "displayName" : "Продвинутый мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Користуйтеся без реклами протягом місяця.",
+              "displayName" : "Розширений щомісяця",
+              "locale" : "uk"
+            },
+            {
+              "description" : "גישה ללא פרסומות למשך חודש.",
+              "displayName" : "מתקדם חודשי",
+              "locale" : "he"
+            },
+            {
+              "description" : "גישה ללא פרסומות למשך חודש.",
+              "displayName" : "מתקדם חודשי",
+              "locale" : "he"
+            },
+            {
+              "description" : "استخدام بلا إعلانات لمدة شهر.",
+              "displayName" : "متقدم شهري",
+              "locale" : "ar"
+            },
+            {
+              "description" : "استخدام بلا إعلانات لمدة شهر.",
+              "displayName" : "متقدم شهري",
+              "locale" : "ar"
+            },
+            {
+              "description" : "एक महीने तक बिना विज्ञापन उपयोग।",
+              "displayName" : "उन्नत मासिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "एक महीने तक बिना विज्ञापन उपयोग।",
+              "displayName" : "उन्नत मासिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "ใช้งานแบบไม่มีโฆษณาเป็นเวลาหนึ่งเดือน",
+              "displayName" : "ขั้นสูงรายเดือน",
+              "locale" : "th"
+            },
+            {
+              "description" : "ใช้งานแบบไม่มีโฆษณาเป็นเวลาหนึ่งเดือน",
+              "displayName" : "ขั้นสูงรายเดือน",
+              "locale" : "th"
+            },
+            {
+              "description" : "1か月間、広告なしで利用できます。",
+              "displayName" : "アドバンス月額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "1か月間、広告なしで利用できます。",
+              "displayName" : "アドバンス月額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "一个月无广告使用。",
+              "displayName" : "进阶版月订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "一个月无广告使用。",
+              "displayName" : "进阶版月订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "一個月無廣告使用。",
+              "displayName" : "進階版月訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "一個月無廣告使用。",
+              "displayName" : "進階版月訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "한 달 동안 광고 없이 이용하세요.",
+              "displayName" : "고급 월간",
+              "locale" : "ko"
+            },
+            {
+              "description" : "한 달 동안 광고 없이 이용하세요.",
+              "displayName" : "고급 월간",
+              "locale" : "ko"
             }
           ],
           "productID" : "Cloud.Calendars.Advanced.Monthly",
@@ -293,84 +453,9 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "סנכרון לוח השנה של Microsoft ו-Teams.",
-              "displayName" : "פרימיום חודשי",
-              "locale" : "he"
-            },
-            {
-              "description" : "Microsoft Agenda- en Teams-synchronisatie.",
-              "displayName" : "Premium maandelijks",
-              "locale" : "nl"
-            },
-            {
-              "description" : "Synkronisera Microsoft Kalender och Teams.",
-              "displayName" : "Premium månadsvis",
-              "locale" : "sv"
-            },
-            {
-              "description" : "Sinkronisasi Kalender Microsoft & Teams.",
-              "displayName" : "Premium Bulanan",
-              "locale" : "id"
-            },
-            {
-              "description" : "Đồng bộ Lịch Microsoft và Teams.",
-              "displayName" : "Premium hàng tháng",
-              "locale" : "vi"
-            },
-            {
-              "description" : "مزامنة تقويم Microsoft وTeams.",
-              "displayName" : "مميز شهري",
-              "locale" : "ar"
-            },
-            {
-              "description" : "Microsoft-kalenterin ja Teamsin synkronointi.",
-              "displayName" : "Premium-kuukausitilaus",
-              "locale" : "fi"
-            },
-            {
-              "description" : "同步 Microsoft 日曆和 Teams。",
-              "displayName" : "高級版月訂閱",
-              "locale" : "zh_Hant"
-            },
-            {
-              "description" : "Microsoft Calendar & Teams sync.",
-              "displayName" : "Premium Monthly",
-              "locale" : "en_CA"
-            },
-            {
-              "description" : "Synkronisering med Microsoft Kalender og Teams.",
-              "displayName" : "Premium månedlig",
-              "locale" : "da"
-            },
-            {
-              "description" : "Synchronisation du calendrier Microsoft et de Teams.",
-              "displayName" : "Premium mensuel",
-              "locale" : "fr_CA"
-            },
-            {
-              "description" : "MicrosoftカレンダーとTeamsを同期。",
-              "displayName" : "プレミアム月額",
-              "locale" : "ja"
-            },
-            {
-              "description" : "ซิงค์ปฏิทิน Microsoft และ Teams",
-              "displayName" : "พรีเมียมรายเดือน",
-              "locale" : "th"
-            },
-            {
-              "description" : "Synchronizace kalendáře Microsoft a Teams.",
-              "displayName" : "Premium měsíčně",
-              "locale" : "cs"
-            },
-            {
-              "description" : "Microsoft कैलेंडर और Teams सिंक।",
-              "displayName" : "प्रीमियम मासिक",
-              "locale" : "hi"
-            },
-            {
-              "description" : "Sincronizare Calendar Microsoft și Teams.",
-              "displayName" : "Premium lunar",
-              "locale" : "ro"
+              "description" : "Microsoft Takvim ve Teams eşitlemesi.",
+              "displayName" : "Premium Aylık",
+              "locale" : "tr"
             },
             {
               "description" : "Microsoft Takvim ve Teams eşitlemesi.",
@@ -378,59 +463,14 @@
               "locale" : "tr"
             },
             {
-              "description" : "Microsoft Naptár és Teams szinkronizálása.",
-              "displayName" : "Prémium havi",
-              "locale" : "hu"
+              "description" : "Sinkronisasi Kalender Microsoft & Teams.",
+              "displayName" : "Premium Bulanan",
+              "locale" : "id"
             },
             {
-              "description" : "Sincronize o Calendário Microsoft e o Teams.",
-              "displayName" : "Premium mensal",
-              "locale" : "pt_BR"
-            },
-            {
-              "description" : "Συγχρονισμός Microsoft Calendar και Teams.",
-              "displayName" : "Premium μηνιαίο",
-              "locale" : "el"
-            },
-            {
-              "description" : "Microsoft 캘린더와 Teams 동기화.",
-              "displayName" : "프리미엄 월간",
-              "locale" : "ko"
-            },
-            {
-              "description" : "同步 Microsoft 日历和 Teams。",
-              "displayName" : "高级版月订阅",
-              "locale" : "zh_Hans"
-            },
-            {
-              "description" : "Календарь и Teams MS",
-              "displayName" : "Премиум мес.",
-              "locale" : "ru"
-            },
-            {
-              "description" : "MS Kalender & Teams Sync",
-              "displayName" : "Premium Monat",
-              "locale" : "de"
-            },
-            {
-              "description" : "Calendrier & Teams MS",
-              "displayName" : "Premium Mensuel",
-              "locale" : "fr"
-            },
-            {
-              "description" : "Calendario y Teams MS",
-              "displayName" : "Premium Mensual",
-              "locale" : "es_ES"
-            },
-            {
-              "description" : "MS Calendar & Teams sync",
-              "displayName" : "Premium Monthly",
-              "locale" : "en_US"
-            },
-            {
-              "description" : "Calendario e Teams MS",
-              "displayName" : "Premium Mensile",
-              "locale" : "it"
+              "description" : "Sinkronisasi Kalender Microsoft & Teams.",
+              "displayName" : "Premium Bulanan",
+              "locale" : "id"
             },
             {
               "description" : "Segerak Kalendar Microsoft & Teams.",
@@ -438,9 +478,9 @@
               "locale" : "ms"
             },
             {
-              "description" : "Synchronizacja kalendarza Microsoft i Teams.",
-              "displayName" : "Premium miesięczny",
-              "locale" : "pl"
+              "description" : "Segerak Kalendar Microsoft & Teams.",
+              "displayName" : "Premium Bulanan",
+              "locale" : "ms"
             },
             {
               "description" : "Calendario e Teams MS",
@@ -448,19 +488,19 @@
               "locale" : "it"
             },
             {
-              "description" : "Календарь и Teams MS",
-              "displayName" : "Премиум мес.",
-              "locale" : "ru"
+              "description" : "Calendario e Teams MS",
+              "displayName" : "Premium Mensile",
+              "locale" : "it"
             },
             {
-              "description" : "MS Calendar & Teams sync",
-              "displayName" : "Premium Monthly",
-              "locale" : "en_US"
+              "description" : "Calendario y Teams MS",
+              "displayName" : "Premium Mensual",
+              "locale" : "es_ES"
             },
             {
-              "description" : "MS Kalender & Teams Sync",
-              "displayName" : "Premium Monat",
-              "locale" : "de"
+              "description" : "Calendario y Teams MS",
+              "displayName" : "Premium Mensual",
+              "locale" : "es_ES"
             },
             {
               "description" : "Calendrier & Teams MS",
@@ -468,9 +508,289 @@
               "locale" : "fr"
             },
             {
-              "description" : "Calendario y Teams MS",
-              "displayName" : "Premium Mensual",
-              "locale" : "es_ES"
+              "description" : "Calendrier & Teams MS",
+              "displayName" : "Premium Mensuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "MS Kalender & Teams Sync",
+              "displayName" : "Premium Monat",
+              "locale" : "de"
+            },
+            {
+              "description" : "MS Kalender & Teams Sync",
+              "displayName" : "Premium Monat",
+              "locale" : "de"
+            },
+            {
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_CA"
+            },
+            {
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_AU"
+            },
+            {
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_CA"
+            },
+            {
+              "description" : "MS Calendar & Teams sync",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_GB"
+            },
+            {
+              "description" : "MS Calendar & Teams sync",
+              "displayName" : "Premium Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Đồng bộ Lịch Microsoft và Teams.",
+              "displayName" : "Premium hàng tháng",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Đồng bộ Lịch Microsoft và Teams.",
+              "displayName" : "Premium hàng tháng",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Sincronizare Calendar Microsoft și Teams.",
+              "displayName" : "Premium lunar",
+              "locale" : "ro"
+            },
+            {
+              "description" : "Sincronizare Calendar Microsoft și Teams.",
+              "displayName" : "Premium lunar",
+              "locale" : "ro"
+            },
+            {
+              "description" : "Microsoft Agenda- en Teams-synchronisatie.",
+              "displayName" : "Premium maandelijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Microsoft Agenda- en Teams-synchronisatie.",
+              "displayName" : "Premium maandelijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Sincronize o Calendário Microsoft e o Teams.",
+              "displayName" : "Premium mensal",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Sincronização com Calendário Microsoft e Teams.",
+              "displayName" : "Premium mensal",
+              "locale" : "pt_PT"
+            },
+            {
+              "description" : "Sincronize o Calendário Microsoft e o Teams.",
+              "displayName" : "Premium mensal",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Sincronitza Microsoft Calendar i Teams.",
+              "displayName" : "Premium mensual",
+              "locale" : "ca"
+            },
+            {
+              "description" : "Sincronización de Microsoft Calendar y Teams.",
+              "displayName" : "Premium mensual",
+              "locale" : "es_MX"
+            },
+            {
+              "description" : "Synchronisation du calendrier Microsoft et de Teams.",
+              "displayName" : "Premium mensuel",
+              "locale" : "fr_CA"
+            },
+            {
+              "description" : "Synchronisation du calendrier Microsoft et de Teams.",
+              "displayName" : "Premium mensuel",
+              "locale" : "fr_CA"
+            },
+            {
+              "description" : "Synchronizácia Microsoft Kalendára a Teams.",
+              "displayName" : "Premium mesačne",
+              "locale" : "sk"
+            },
+            {
+              "description" : "Synchronizacja kalendarza Microsoft i Teams.",
+              "displayName" : "Premium miesięczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Synchronizacja kalendarza Microsoft i Teams.",
+              "displayName" : "Premium miesięczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Sinkronizacija Microsoft Kalendara i Teamsa.",
+              "displayName" : "Premium mjesečno",
+              "locale" : "hr"
+            },
+            {
+              "description" : "Synkronisera Microsoft Kalender och Teams.",
+              "displayName" : "Premium månadsvis",
+              "locale" : "sv"
+            },
+            {
+              "description" : "Synkronisera Microsoft Kalender och Teams.",
+              "displayName" : "Premium månadsvis",
+              "locale" : "sv"
+            },
+            {
+              "description" : "Synkronisering med Microsoft Kalender og Teams.",
+              "displayName" : "Premium månedlig",
+              "locale" : "da"
+            },
+            {
+              "description" : "Synkronisering med Microsoft Kalender og Teams.",
+              "displayName" : "Premium månedlig",
+              "locale" : "da"
+            },
+            {
+              "description" : "Synchronizace kalendáře Microsoft a Teams.",
+              "displayName" : "Premium měsíčně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Synchronizace kalendáře Microsoft a Teams.",
+              "displayName" : "Premium měsíčně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Συγχρονισμός Microsoft Calendar και Teams.",
+              "displayName" : "Premium μηνιαίο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Συγχρονισμός Microsoft Calendar και Teams.",
+              "displayName" : "Premium μηνιαίο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Microsoft-kalenterin ja Teamsin synkronointi.",
+              "displayName" : "Premium-kuukausitilaus",
+              "locale" : "fi"
+            },
+            {
+              "description" : "Microsoft-kalenterin ja Teamsin synkronointi.",
+              "displayName" : "Premium-kuukausitilaus",
+              "locale" : "fi"
+            },
+            {
+              "description" : "Microsoft Naptár és Teams szinkronizálása.",
+              "displayName" : "Prémium havi",
+              "locale" : "hu"
+            },
+            {
+              "description" : "Microsoft Naptár és Teams szinkronizálása.",
+              "displayName" : "Prémium havi",
+              "locale" : "hu"
+            },
+            {
+              "description" : "Календарь и Teams MS",
+              "displayName" : "Премиум мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Календарь и Teams MS",
+              "displayName" : "Премиум мес.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Синхронізація Microsoft Календаря й Teams.",
+              "displayName" : "Преміум щомісяця",
+              "locale" : "uk"
+            },
+            {
+              "description" : "סנכרון לוח השנה של Microsoft ו-Teams.",
+              "displayName" : "פרימיום חודשי",
+              "locale" : "he"
+            },
+            {
+              "description" : "סנכרון לוח השנה של Microsoft ו-Teams.",
+              "displayName" : "פרימיום חודשי",
+              "locale" : "he"
+            },
+            {
+              "description" : "مزامنة تقويم Microsoft وTeams.",
+              "displayName" : "مميز شهري",
+              "locale" : "ar"
+            },
+            {
+              "description" : "مزامنة تقويم Microsoft وTeams.",
+              "displayName" : "مميز شهري",
+              "locale" : "ar"
+            },
+            {
+              "description" : "Microsoft कैलेंडर और Teams सिंक।",
+              "displayName" : "प्रीमियम मासिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "Microsoft कैलेंडर और Teams सिंक।",
+              "displayName" : "प्रीमियम मासिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "ซิงค์ปฏิทิน Microsoft และ Teams",
+              "displayName" : "พรีเมียมรายเดือน",
+              "locale" : "th"
+            },
+            {
+              "description" : "ซิงค์ปฏิทิน Microsoft และ Teams",
+              "displayName" : "พรีเมียมรายเดือน",
+              "locale" : "th"
+            },
+            {
+              "description" : "MicrosoftカレンダーとTeamsを同期。",
+              "displayName" : "プレミアム月額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "MicrosoftカレンダーとTeamsを同期。",
+              "displayName" : "プレミアム月額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "同步 Microsoft 日曆和 Teams。",
+              "displayName" : "高級版月訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "同步 Microsoft 日曆和 Teams。",
+              "displayName" : "高級版月訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "同步 Microsoft 日历和 Teams。",
+              "displayName" : "高级版月订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "同步 Microsoft 日历和 Teams。",
+              "displayName" : "高级版月订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "Microsoft 캘린더와 Teams 동기화.",
+              "displayName" : "프리미엄 월간",
+              "locale" : "ko"
+            },
+            {
+              "description" : "Microsoft 캘린더와 Teams 동기화.",
+              "displayName" : "프리미엄 월간",
+              "locale" : "ko"
             }
           ],
           "productID" : "Cloud.Calendars.Premium.Monthly",
@@ -496,69 +816,44 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "同步 Microsoft 日历和 Teams。",
-              "displayName" : "高级版年订阅",
-              "locale" : "zh_Hans"
-            },
-            {
-              "description" : "Microsoft Takvim ve Teams eşitlemesi.",
-              "displayName" : "Premium Yıllık",
-              "locale" : "tr"
-            },
-            {
-              "description" : "Microsoft Calendar & Teams sync.",
-              "displayName" : "Premium Yearly",
-              "locale" : "en_CA"
-            },
-            {
-              "description" : "Synchronizacja kalendarza Microsoft i Teams.",
-              "displayName" : "Premium roczny",
-              "locale" : "pl"
-            },
-            {
-              "description" : "Sincronizare Calendar Microsoft și Teams.",
-              "displayName" : "Premium anual",
-              "locale" : "ro"
-            },
-            {
-              "description" : "Συγχρονισμός Microsoft Calendar και Teams.",
-              "displayName" : "Premium ετήσιο",
-              "locale" : "el"
-            },
-            {
-              "description" : "סנכרון לוח השנה של Microsoft ו-Teams.",
-              "displayName" : "פרימיום שנתי",
-              "locale" : "he"
-            },
-            {
-              "description" : "Microsoft Naptár és Teams szinkronizálása.",
-              "displayName" : "Prémium éves",
-              "locale" : "hu"
-            },
-            {
-              "description" : "Đồng bộ Lịch Microsoft và Teams.",
-              "displayName" : "Premium hàng năm",
-              "locale" : "vi"
-            },
-            {
-              "description" : "مزامنة تقويم Microsoft وTeams.",
-              "displayName" : "مميز سنوي",
-              "locale" : "ar"
-            },
-            {
-              "description" : "Synkronisera Microsoft Kalender och Teams.",
-              "displayName" : "Premium årsvis",
-              "locale" : "sv"
-            },
-            {
-              "description" : "Synchronisation du calendrier Microsoft et de Teams.",
-              "displayName" : "Premium annuel",
-              "locale" : "fr_CA"
+              "description" : "Calendario e Teams MS ",
+              "displayName" : "Premium Annuale",
+              "locale" : "it"
             },
             {
               "description" : "Calendario e Teams MS ",
               "displayName" : "Premium Annuale",
               "locale" : "it"
+            },
+            {
+              "description" : "Calendrier & Teams MS",
+              "displayName" : "Premium Annuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Calendrier & Teams MS",
+              "displayName" : "Premium Annuel",
+              "locale" : "fr"
+            },
+            {
+              "description" : "Calendario y Teams MS",
+              "displayName" : "Premium Anual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Calendario y Teams MS",
+              "displayName" : "Premium Anual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "MS Kalender & Teams Sync",
+              "displayName" : "Premium Jahr",
+              "locale" : "de"
+            },
+            {
+              "description" : "MS Kalender & Teams Sync",
+              "displayName" : "Premium Jahr",
+              "locale" : "de"
             },
             {
               "description" : "Segerak Kalendar Microsoft & Teams.",
@@ -566,69 +861,14 @@
               "locale" : "ms"
             },
             {
-              "description" : "Microsoft Agenda- en Teams-synchronisatie.",
-              "displayName" : "Premium jaarlijks",
-              "locale" : "nl"
+              "description" : "Sinkronisasi Kalender Microsoft & Teams.",
+              "displayName" : "Premium Tahunan",
+              "locale" : "id"
             },
             {
-              "description" : "Microsoft कैलेंडर और Teams सिंक।",
-              "displayName" : "प्रीमियम वार्षिक",
-              "locale" : "hi"
-            },
-            {
-              "description" : "Microsoft 캘린더와 Teams 동기화.",
-              "displayName" : "프리미엄 연간",
-              "locale" : "ko"
-            },
-            {
-              "description" : "MS Kalender & Teams Sync",
-              "displayName" : "Premium Jahr",
-              "locale" : "de"
-            },
-            {
-              "description" : "Calendrier & Teams MS",
-              "displayName" : "Premium Annuel",
-              "locale" : "fr"
-            },
-            {
-              "description" : "Calendario y Teams MS",
-              "displayName" : "Premium Anual",
-              "locale" : "es_ES"
-            },
-            {
-              "description" : "Календарь и Teams MS",
-              "displayName" : "Премиум год.",
-              "locale" : "ru"
-            },
-            {
-              "description" : "MS Calendar & Teams sync",
-              "displayName" : "Premium Yearly",
-              "locale" : "en_US"
-            },
-            {
-              "description" : "同步 Microsoft 日曆和 Teams。",
-              "displayName" : "高級版年訂閱",
-              "locale" : "zh_Hant"
-            },
-            {
-              "description" : "Synkronisering med Microsoft Kalender og Teams.",
-              "displayName" : "Premium årlig",
-              "locale" : "da"
-            },
-            {
-              "description" : "MicrosoftカレンダーとTeamsを同期。",
-              "displayName" : "プレミアム年額",
-              "locale" : "ja"
-            },
-            {
-              "description" : "Microsoft-kalenterin ja Teamsin synkronointi.",
-              "displayName" : "Premium-vuositilaus",
-              "locale" : "fi"
-            },
-            {
-              "description" : "Synchronizace kalendáře Microsoft a Teams.",
-              "displayName" : "Premium ročně",
-              "locale" : "cs"
+              "description" : "Segerak Kalendar Microsoft & Teams.",
+              "displayName" : "Premium Tahunan",
+              "locale" : "ms"
             },
             {
               "description" : "Sinkronisasi Kalender Microsoft & Teams.",
@@ -636,14 +876,24 @@
               "locale" : "id"
             },
             {
-              "description" : "ซิงค์ปฏิทิน Microsoft และ Teams",
-              "displayName" : "พรีเมียมรายปี",
-              "locale" : "th"
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_CA"
             },
             {
-              "description" : "Sincronize o Calendário Microsoft e o Teams.",
-              "displayName" : "Premium anual",
-              "locale" : "pt_BR"
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_GB"
+            },
+            {
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_AU"
+            },
+            {
+              "description" : "Microsoft Calendar & Teams sync.",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_CA"
             },
             {
               "description" : "MS Calendar & Teams sync",
@@ -651,29 +901,259 @@
               "locale" : "en_US"
             },
             {
+              "description" : "MS Calendar & Teams sync",
+              "displayName" : "Premium Yearly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Microsoft Takvim ve Teams eşitlemesi.",
+              "displayName" : "Premium Yıllık",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Microsoft Takvim ve Teams eşitlemesi.",
+              "displayName" : "Premium Yıllık",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Synchronisation du calendrier Microsoft et de Teams.",
+              "displayName" : "Premium annuel",
+              "locale" : "fr_CA"
+            },
+            {
+              "description" : "Synchronisation du calendrier Microsoft et de Teams.",
+              "displayName" : "Premium annuel",
+              "locale" : "fr_CA"
+            },
+            {
+              "description" : "Sincronizare Calendar Microsoft și Teams.",
+              "displayName" : "Premium anual",
+              "locale" : "ro"
+            },
+            {
+              "description" : "Sincronitza Microsoft Calendar i Teams.",
+              "displayName" : "Premium anual",
+              "locale" : "ca"
+            },
+            {
+              "description" : "Sincronize o Calendário Microsoft e o Teams.",
+              "displayName" : "Premium anual",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Sincronizare Calendar Microsoft și Teams.",
+              "displayName" : "Premium anual",
+              "locale" : "ro"
+            },
+            {
+              "description" : "Sincronización de Microsoft Calendar y Teams.",
+              "displayName" : "Premium anual",
+              "locale" : "es_MX"
+            },
+            {
+              "description" : "Sincronização com Calendário Microsoft e Teams.",
+              "displayName" : "Premium anual",
+              "locale" : "pt_PT"
+            },
+            {
+              "description" : "Sincronize o Calendário Microsoft e o Teams.",
+              "displayName" : "Premium anual",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Sinkronizacija Microsoft Kalendara i Teamsa.",
+              "displayName" : "Premium godišnje",
+              "locale" : "hr"
+            },
+            {
+              "description" : "Đồng bộ Lịch Microsoft và Teams.",
+              "displayName" : "Premium hàng năm",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Đồng bộ Lịch Microsoft và Teams.",
+              "displayName" : "Premium hàng năm",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Microsoft Agenda- en Teams-synchronisatie.",
+              "displayName" : "Premium jaarlijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Microsoft Agenda- en Teams-synchronisatie.",
+              "displayName" : "Premium jaarlijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Synchronizacja kalendarza Microsoft i Teams.",
+              "displayName" : "Premium roczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Synchronizacja kalendarza Microsoft i Teams.",
+              "displayName" : "Premium roczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Synchronizácia Microsoft Kalendára a Teams.",
+              "displayName" : "Premium ročne",
+              "locale" : "sk"
+            },
+            {
+              "description" : "Synchronizace kalendáře Microsoft a Teams.",
+              "displayName" : "Premium ročně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Synchronizace kalendáře Microsoft a Teams.",
+              "displayName" : "Premium ročně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Synkronisering med Microsoft Kalender og Teams.",
+              "displayName" : "Premium årlig",
+              "locale" : "da"
+            },
+            {
+              "description" : "Synkronisering med Microsoft Kalender og Teams.",
+              "displayName" : "Premium årlig",
+              "locale" : "da"
+            },
+            {
+              "description" : "Synkronisera Microsoft Kalender och Teams.",
+              "displayName" : "Premium årsvis",
+              "locale" : "sv"
+            },
+            {
+              "description" : "Synkronisera Microsoft Kalender och Teams.",
+              "displayName" : "Premium årsvis",
+              "locale" : "sv"
+            },
+            {
+              "description" : "Συγχρονισμός Microsoft Calendar και Teams.",
+              "displayName" : "Premium ετήσιο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Συγχρονισμός Microsoft Calendar και Teams.",
+              "displayName" : "Premium ετήσιο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Microsoft-kalenterin ja Teamsin synkronointi.",
+              "displayName" : "Premium-vuositilaus",
+              "locale" : "fi"
+            },
+            {
+              "description" : "Microsoft-kalenterin ja Teamsin synkronointi.",
+              "displayName" : "Premium-vuositilaus",
+              "locale" : "fi"
+            },
+            {
+              "description" : "Microsoft Naptár és Teams szinkronizálása.",
+              "displayName" : "Prémium éves",
+              "locale" : "hu"
+            },
+            {
+              "description" : "Microsoft Naptár és Teams szinkronizálása.",
+              "displayName" : "Prémium éves",
+              "locale" : "hu"
+            },
+            {
               "description" : "Календарь и Teams MS",
               "displayName" : "Премиум год.",
               "locale" : "ru"
             },
             {
-              "description" : "Calendario e Teams MS ",
-              "displayName" : "Premium Annuale",
-              "locale" : "it"
+              "description" : "Календарь и Teams MS",
+              "displayName" : "Премиум год.",
+              "locale" : "ru"
             },
             {
-              "description" : "Calendrier & Teams MS",
-              "displayName" : "Premium Annuel",
-              "locale" : "fr"
+              "description" : "Синхронізація Microsoft Календаря й Teams.",
+              "displayName" : "Преміум щороку",
+              "locale" : "uk"
             },
             {
-              "description" : "Calendario y Teams MS",
-              "displayName" : "Premium Anual",
-              "locale" : "es_ES"
+              "description" : "סנכרון לוח השנה של Microsoft ו-Teams.",
+              "displayName" : "פרימיום שנתי",
+              "locale" : "he"
             },
             {
-              "description" : "MS Kalender & Teams Sync",
-              "displayName" : "Premium Jahr",
-              "locale" : "de"
+              "description" : "סנכרון לוח השנה של Microsoft ו-Teams.",
+              "displayName" : "פרימיום שנתי",
+              "locale" : "he"
+            },
+            {
+              "description" : "مزامنة تقويم Microsoft وTeams.",
+              "displayName" : "مميز سنوي",
+              "locale" : "ar"
+            },
+            {
+              "description" : "مزامنة تقويم Microsoft وTeams.",
+              "displayName" : "مميز سنوي",
+              "locale" : "ar"
+            },
+            {
+              "description" : "Microsoft कैलेंडर और Teams सिंक।",
+              "displayName" : "प्रीमियम वार्षिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "Microsoft कैलेंडर और Teams सिंक।",
+              "displayName" : "प्रीमियम वार्षिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "ซิงค์ปฏิทิน Microsoft และ Teams",
+              "displayName" : "พรีเมียมรายปี",
+              "locale" : "th"
+            },
+            {
+              "description" : "ซิงค์ปฏิทิน Microsoft และ Teams",
+              "displayName" : "พรีเมียมรายปี",
+              "locale" : "th"
+            },
+            {
+              "description" : "MicrosoftカレンダーとTeamsを同期。",
+              "displayName" : "プレミアム年額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "MicrosoftカレンダーとTeamsを同期。",
+              "displayName" : "プレミアム年額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "同步 Microsoft 日曆和 Teams。",
+              "displayName" : "高級版年訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "同步 Microsoft 日曆和 Teams。",
+              "displayName" : "高級版年訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "同步 Microsoft 日历和 Teams。",
+              "displayName" : "高级版年订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "同步 Microsoft 日历和 Teams。",
+              "displayName" : "高级版年订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "Microsoft 캘린더와 Teams 동기화.",
+              "displayName" : "프리미엄 연간",
+              "locale" : "ko"
+            },
+            {
+              "description" : "Microsoft 캘린더와 Teams 동기화.",
+              "displayName" : "프리미엄 연간",
+              "locale" : "ko"
             }
           ],
           "productID" : "Cloud.Calendars.Premium.Yearly",
@@ -699,94 +1179,14 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Reklámmentes hozzáférés egy évig.",
-              "displayName" : "Haladó éves",
-              "locale" : "hu"
-            },
-            {
-              "description" : "Dostęp bez reklam przez jeden rok.",
-              "displayName" : "Zaawansowany roczny",
-              "locale" : "pl"
-            },
-            {
-              "description" : "Acces fără reclame timp de un an.",
-              "displayName" : "Avansat anual",
-              "locale" : "ro"
-            },
-            {
-              "description" : "Akses bebas iklan selama satu tahun.",
-              "displayName" : "Lanjutan Tahunan",
-              "locale" : "id"
-            },
-            {
-              "description" : "일 년 동안 광고 없이 이용하세요.",
-              "displayName" : "고급 연간",
-              "locale" : "ko"
-            },
-            {
-              "description" : "一年无广告使用。",
-              "displayName" : "进阶版年订阅",
-              "locale" : "zh_Hans"
-            },
-            {
-              "description" : "Usa l’app senza pubblicità per un anno intero.",
-              "displayName" : "Avanzato Annuale",
-              "locale" : "it"
-            },
-            {
-              "description" : "Используйте приложение без рекламы целого года",
-              "displayName" : "Продвинутый год.",
-              "locale" : "ru"
-            },
-            {
-              "description" : "Profitez de l’application sans publicités pendant un an",
-              "displayName" : "Avancé Annuel",
-              "locale" : "fr"
-            },
-            {
-              "description" : "Nutzen Sie die App ein ganzes Jahr ohne Werbung.",
-              "displayName" : "Erweitert Jahr",
-              "locale" : "de"
-            },
-            {
               "description" : "Enjoy the app without ads for one full year.",
               "displayName" : "Advanced Yearly",
               "locale" : "en_US"
             },
             {
-              "description" : "Disfruta de la app sin anuncios durante un año.",
-              "displayName" : "Avanzado Anual",
-              "locale" : "es_ES"
-            },
-            {
-              "description" : "एक वर्ष तक बिना विज्ञापन उपयोग।",
-              "displayName" : "उन्नत वार्षिक",
-              "locale" : "hi"
-            },
-            {
-              "description" : "Dùng không quảng cáo trong một năm.",
-              "displayName" : "Nâng cao hàng năm",
-              "locale" : "vi"
-            },
-            {
-              "description" : "Akses tanpa iklan selama setahun.",
-              "displayName" : "Lanjutan Tahunan",
-              "locale" : "ms"
-            },
-            {
-              "description" : "Bir yıl reklamsız erişim.",
-              "displayName" : "Gelişmiş Yıllık",
-              "locale" : "tr"
-            },
-            {
-              "description" : "استخدام بلا إعلانات لمدة عام.",
-              "displayName" : "متقدم سنوي",
-              "locale" : "ar"
-            },
-            {
-              "description" : "Accès sans publicité pendant un an.",
-              "displayName" : "Avancé annuel",
-              "locale" : "fr_CA"
+              "description" : "Enjoy the app without ads for one full year.",
+              "displayName" : "Advanced Yearly",
+              "locale" : "en_AU"
             },
             {
               "description" : "Ad-free access for one year.",
@@ -794,39 +1194,19 @@
               "locale" : "en_CA"
             },
             {
-              "description" : "Přístup bez reklam na jeden rok.",
-              "displayName" : "Pokročilé ročně",
-              "locale" : "cs"
+              "description" : "Enjoy the app without ads for one full year.",
+              "displayName" : "Advanced Yearly",
+              "locale" : "en_US"
             },
             {
-              "description" : "Acesso sem anúncios por um ano.",
-              "displayName" : "Avançado anual",
-              "locale" : "pt_BR"
+              "description" : "Enjoy the app without ads for one full year.",
+              "displayName" : "Advanced Yearly",
+              "locale" : "en_GB"
             },
             {
-              "description" : "גישה ללא פרסומות למשך שנה.",
-              "displayName" : "מתקדם שנתי",
-              "locale" : "he"
-            },
-            {
-              "description" : "一年無廣告使用。",
-              "displayName" : "進階版年訂閱",
-              "locale" : "zh_Hant"
-            },
-            {
-              "description" : "Reklamefri adgang i ét år.",
-              "displayName" : "Avanceret årlig",
-              "locale" : "da"
-            },
-            {
-              "description" : "Een jaar advertentievrije toegang.",
-              "displayName" : "Geavanceerd jaarlijks",
-              "locale" : "nl"
-            },
-            {
-              "description" : "1年間、広告なしで利用できます。",
-              "displayName" : "アドバンス年額",
-              "locale" : "ja"
+              "description" : "Ad-free access for one year.",
+              "displayName" : "Advanced Yearly",
+              "locale" : "en_CA"
             },
             {
               "description" : "Reklamfri åtkomst i ett år.",
@@ -834,19 +1214,19 @@
               "locale" : "sv"
             },
             {
-              "description" : "Χωρίς διαφημίσεις για ένα έτος.",
-              "displayName" : "Προηγμένο ετήσιο",
-              "locale" : "el"
+              "description" : "Reklamfri åtkomst i ett år.",
+              "displayName" : "Avancerad årsvis",
+              "locale" : "sv"
             },
             {
-              "description" : "Mainokseton käyttö vuoden ajan.",
-              "displayName" : "Edistynyt vuositilaus",
-              "locale" : "fi"
+              "description" : "Reklamefri adgang i ét år.",
+              "displayName" : "Avanceret årlig",
+              "locale" : "da"
             },
             {
-              "description" : "ใช้งานแบบไม่มีโฆษณาเป็นเวลาหนึ่งปี",
-              "displayName" : "ขั้นสูงรายปี",
-              "locale" : "th"
+              "description" : "Reklamefri adgang i ét år.",
+              "displayName" : "Avanceret årlig",
+              "locale" : "da"
             },
             {
               "description" : "Profitez de l’application sans publicités pendant un an",
@@ -854,19 +1234,29 @@
               "locale" : "fr"
             },
             {
-              "description" : "Enjoy the app without ads for one full year.",
-              "displayName" : "Advanced Yearly",
-              "locale" : "en_US"
+              "description" : "Profitez de l’application sans publicités pendant un an",
+              "displayName" : "Avancé Annuel",
+              "locale" : "fr"
             },
             {
-              "description" : "Используйте приложение без рекламы целого года",
-              "displayName" : "Продвинутый год.",
-              "locale" : "ru"
+              "description" : "Accès sans publicité pendant un an.",
+              "displayName" : "Avancé annuel",
+              "locale" : "fr_CA"
             },
             {
-              "description" : "Nutzen Sie die App ein ganzes Jahr ohne Werbung.",
-              "displayName" : "Erweitert Jahr",
-              "locale" : "de"
+              "description" : "Accès sans publicité pendant un an.",
+              "displayName" : "Avancé annuel",
+              "locale" : "fr_CA"
+            },
+            {
+              "description" : "Acces fără reclame timp de un an.",
+              "displayName" : "Avansat anual",
+              "locale" : "ro"
+            },
+            {
+              "description" : "Acces fără reclame timp de un an.",
+              "displayName" : "Avansat anual",
+              "locale" : "ro"
             },
             {
               "description" : "Disfruta de la app sin anuncios durante un año.",
@@ -874,9 +1264,259 @@
               "locale" : "es_ES"
             },
             {
+              "description" : "Disfruta de la app sin anuncios durante un año.",
+              "displayName" : "Avanzado Anual",
+              "locale" : "es_ES"
+            },
+            {
+              "description" : "Disfruta la app sin anuncios durante un año.",
+              "displayName" : "Avanzado anual",
+              "locale" : "es_MX"
+            },
+            {
               "description" : "Usa l’app senza pubblicità per un anno intero.",
               "displayName" : "Avanzato Annuale",
               "locale" : "it"
+            },
+            {
+              "description" : "Usa l’app senza pubblicità per un anno intero.",
+              "displayName" : "Avanzato Annuale",
+              "locale" : "it"
+            },
+            {
+              "description" : "Acesso sem anúncios por um ano.",
+              "displayName" : "Avançado anual",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Acesso sem anúncios por um ano.",
+              "displayName" : "Avançado anual",
+              "locale" : "pt_BR"
+            },
+            {
+              "description" : "Use a app sem anúncios durante um ano.",
+              "displayName" : "Avançado anual",
+              "locale" : "pt_PT"
+            },
+            {
+              "description" : "Gaudeix de l’app sense anuncis durant un any.",
+              "displayName" : "Avançat anual",
+              "locale" : "ca"
+            },
+            {
+              "description" : "Mainokseton käyttö vuoden ajan.",
+              "displayName" : "Edistynyt vuositilaus",
+              "locale" : "fi"
+            },
+            {
+              "description" : "Mainokseton käyttö vuoden ajan.",
+              "displayName" : "Edistynyt vuositilaus",
+              "locale" : "fi"
+            },
+            {
+              "description" : "Nutzen Sie die App ein ganzes Jahr ohne Werbung.",
+              "displayName" : "Erweitert Jahr",
+              "locale" : "de"
+            },
+            {
+              "description" : "Nutzen Sie die App ein ganzes Jahr ohne Werbung.",
+              "displayName" : "Erweitert Jahr",
+              "locale" : "de"
+            },
+            {
+              "description" : "Een jaar advertentievrije toegang.",
+              "displayName" : "Geavanceerd jaarlijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Een jaar advertentievrije toegang.",
+              "displayName" : "Geavanceerd jaarlijks",
+              "locale" : "nl"
+            },
+            {
+              "description" : "Bir yıl reklamsız erişim.",
+              "displayName" : "Gelişmiş Yıllık",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Bir yıl reklamsız erişim.",
+              "displayName" : "Gelişmiş Yıllık",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Reklámmentes hozzáférés egy évig.",
+              "displayName" : "Haladó éves",
+              "locale" : "hu"
+            },
+            {
+              "description" : "Reklámmentes hozzáférés egy évig.",
+              "displayName" : "Haladó éves",
+              "locale" : "hu"
+            },
+            {
+              "description" : "Akses bebas iklan selama satu tahun.",
+              "displayName" : "Lanjutan Tahunan",
+              "locale" : "id"
+            },
+            {
+              "description" : "Akses tanpa iklan selama setahun.",
+              "displayName" : "Lanjutan Tahunan",
+              "locale" : "ms"
+            },
+            {
+              "description" : "Akses bebas iklan selama satu tahun.",
+              "displayName" : "Lanjutan Tahunan",
+              "locale" : "id"
+            },
+            {
+              "description" : "Akses tanpa iklan selama setahun.",
+              "displayName" : "Lanjutan Tahunan",
+              "locale" : "ms"
+            },
+            {
+              "description" : "Koristite aplikaciju bez oglasa cijelu godinu.",
+              "displayName" : "Napredni godišnje",
+              "locale" : "hr"
+            },
+            {
+              "description" : "Dùng không quảng cáo trong một năm.",
+              "displayName" : "Nâng cao hàng năm",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Dùng không quảng cáo trong một năm.",
+              "displayName" : "Nâng cao hàng năm",
+              "locale" : "vi"
+            },
+            {
+              "description" : "Aplikácia bez reklám na jeden rok.",
+              "displayName" : "Pokročilé ročne",
+              "locale" : "sk"
+            },
+            {
+              "description" : "Přístup bez reklam na jeden rok.",
+              "displayName" : "Pokročilé ročně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Přístup bez reklam na jeden rok.",
+              "displayName" : "Pokročilé ročně",
+              "locale" : "cs"
+            },
+            {
+              "description" : "Dostęp bez reklam przez jeden rok.",
+              "displayName" : "Zaawansowany roczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Dostęp bez reklam przez jeden rok.",
+              "displayName" : "Zaawansowany roczny",
+              "locale" : "pl"
+            },
+            {
+              "description" : "Χωρίς διαφημίσεις για ένα έτος.",
+              "displayName" : "Προηγμένο ετήσιο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Χωρίς διαφημίσεις για ένα έτος.",
+              "displayName" : "Προηγμένο ετήσιο",
+              "locale" : "el"
+            },
+            {
+              "description" : "Используйте приложение без рекламы целого года",
+              "displayName" : "Продвинутый год.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Используйте приложение без рекламы целого года",
+              "displayName" : "Продвинутый год.",
+              "locale" : "ru"
+            },
+            {
+              "description" : "Користуйтеся без реклами протягом року.",
+              "displayName" : "Розширений щороку",
+              "locale" : "uk"
+            },
+            {
+              "description" : "גישה ללא פרסומות למשך שנה.",
+              "displayName" : "מתקדם שנתי",
+              "locale" : "he"
+            },
+            {
+              "description" : "גישה ללא פרסומות למשך שנה.",
+              "displayName" : "מתקדם שנתי",
+              "locale" : "he"
+            },
+            {
+              "description" : "استخدام بلا إعلانات لمدة عام.",
+              "displayName" : "متقدم سنوي",
+              "locale" : "ar"
+            },
+            {
+              "description" : "استخدام بلا إعلانات لمدة عام.",
+              "displayName" : "متقدم سنوي",
+              "locale" : "ar"
+            },
+            {
+              "description" : "एक वर्ष तक बिना विज्ञापन उपयोग।",
+              "displayName" : "उन्नत वार्षिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "एक वर्ष तक बिना विज्ञापन उपयोग।",
+              "displayName" : "उन्नत वार्षिक",
+              "locale" : "hi"
+            },
+            {
+              "description" : "ใช้งานแบบไม่มีโฆษณาเป็นเวลาหนึ่งปี",
+              "displayName" : "ขั้นสูงรายปี",
+              "locale" : "th"
+            },
+            {
+              "description" : "ใช้งานแบบไม่มีโฆษณาเป็นเวลาหนึ่งปี",
+              "displayName" : "ขั้นสูงรายปี",
+              "locale" : "th"
+            },
+            {
+              "description" : "1年間、広告なしで利用できます。",
+              "displayName" : "アドバンス年額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "1年間、広告なしで利用できます。",
+              "displayName" : "アドバンス年額",
+              "locale" : "ja"
+            },
+            {
+              "description" : "一年无广告使用。",
+              "displayName" : "进阶版年订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "一年无广告使用。",
+              "displayName" : "进阶版年订阅",
+              "locale" : "zh_Hans"
+            },
+            {
+              "description" : "一年無廣告使用。",
+              "displayName" : "進階版年訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "一年無廣告使用。",
+              "displayName" : "進階版年訂閱",
+              "locale" : "zh_Hant"
+            },
+            {
+              "description" : "일 년 동안 광고 없이 이용하세요.",
+              "displayName" : "고급 연간",
+              "locale" : "ko"
+            },
+            {
+              "description" : "일 년 동안 광고 없이 이용하세요.",
+              "displayName" : "고급 연간",
+              "locale" : "ko"
             }
           ],
           "productID" : "Cloud.Calendars.Advanced.Yearly",

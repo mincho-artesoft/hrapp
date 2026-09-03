@@ -712,6 +712,7 @@
 "N/A - Selected Tab: %@" = "Няма данни - избран раздел: %@";
 "Enable Notifications" = "Разрешаване на нотификации";
 "Event Notifications" = "Нотификации за събития";
+"Invitation Notifications" = "Нотификации за покани";
 "Weather Alert Notifications" = "Нотификации за метеорологични предупреждения";
 "Allow notifications so weather alerts can appear." = "Разрешете нотификациите, за да получавате метеорологични предупреждения.";
 "Event alerts are scheduled from your event alert settings." = "Напомнянията се планират според настройките за аларми в събитията.";

@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "Není k dispozici – vybraná karta: %@";
 "Enable Notifications" = "Povolit oznámení";
 "Event Notifications" = "Upozornění na události";
+"Invitation Notifications" = "Oznámení o pozvánkách";
 "Weather Alert Notifications" = "Upozornění na výstrahy počasí";
 "Allow notifications so weather alerts can appear." = "Povolte oznámení, aby se mohly zobrazovat výstrahy počasí.";
 "Event alerts are scheduled from your event alert settings." = "Upozornění na události se plánují z nastavení upozornění na události.";

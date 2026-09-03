@@ -1,0 +1,973 @@
+/* Preferences */
+"Language" = "Тіл";
+"Measurement Units" = "Өлшем бірліктері";
+"Date Format" = "Күн пішімі";
+"Time Format" = "Уақыт пішімі";
+"System" = "Жүйе";
+"Metric" = "Метрикалық";
+"Imperial" = "Империялық";
+
+/* RequestEmailView */
+"%lld event" = "%lld оқиғасы";
+"%lld events" = "%lld оқиғалары";
+"Share Pop-up" = "Қалқымалы терезені бөлісу";
+"Would you like to share this event?" = "Осы оқиғамен бөліскіңіз келе ме?";
+"Don't ask again" = "Қайта сұрамаңыз";
+"No email was provided." = "Электрондық пошта жіберілмеді.";
+"Please enter a valid email to continue." = "Жалғастыру үшін жарамды электрондық поштаны енгізіңіз.";
+"Your email" = "Электрондық поштаңыз";
+"Save" = "Сақтау";
+"Login" = "Кіру";
+"Logout" = "Шығу";
+
+/* RootView */
+"N/A" = "N/A";
+"Calendars" = "Күнтізбелер";
+"Inbox" = "Кіріс жәшігі";
+
+/* CalendarsSheetView */
+"iCloud" = "iCloud";
+"Other" = "Басқа";
+"Google calendars" = "Google күнтізбелері";
+"No synced Google calendars yet." = "Синхрондалған Google күнтізбелері әлі жоқ.";
+"Microsoft calendars" = "Microsoft күнтізбелері";
+"No synced Microsoft calendars yet." = "Синхрондалған Microsoft күнтізбелері әлі жоқ.";
+"Sign out" = "Шығу";
+"Add iCloud Calendar" = "iCloud күнтізбесін қосу";
+"Share calendars with iCloud Calendar" = "Күнтізбелерді iCloud күнтізбесімен бөлісу";
+"Sign in with Google" = "Google арқылы кіріңіз";
+"Sign in with Microsoft" = "Microsoft арқылы кіріңіз";
+"Deselect All" = "Барлығын таңдаудан бас тарту";
+"Select All" = "Барлығын таңдаңыз";
+"No Email" = "Электрондық пошта жоқ";
+"Add Google Calendar" = "Google күнтізбесін қосу";
+
+/* AddCalendarView */
+"Calendar Name" = "Күнтізбе атауы";
+"Account" = "Тіркелгі";
+"COLOR" = "ТҮС";
+"NOTIFICATIONS" = "ХАБАРЛАНДЫРУЛАР";
+"Event Alerts" = "Оқиға туралы ескертулер";
+"Allow events on this calendar to display alerts." = "Осы күнтізбедегі оқиғаларға ескертулерді көрсетуге рұқсат беріңіз.";
+"Add Calendar" = "Күнтізбе қосу";
+
+/* Colors */
+"Red" = "Қызыл";
+"Orange" = "Қызғылт сары";
+"Yellow" = "Сары";
+"Green" = "Жасыл";
+"Blue" = "Көк";
+"Purple" = "Күлгін";
+"Brown" = "Қоңыр";
+"Custom" = "Арнаулы";
+
+/* CalendarColorSelectionView */
+"Calendar Color" = "Күнтізбе түсі";
+"Custom..." = "Арнаулы...";
+
+/* EditCalendarView */
+"Edit Calendar" = "Күнтізбені өңдеу";
+"Delete Calendar" = "Күнтізбені жою";
+
+/* GoogleCalendarSharingView */
+"Loading sharing settings…" = "Бөлісу параметрлері жүктелуде…";
+"Shared with these users" = "Осы пайдаланушылармен ортақ";
+"Add New Email" = "Жаңа электрондық поштаны қосу";
+"Email to share" = "Бөлісу үшін электрондық пошта";
+"Permission:" = "Рұқсат:";
+"Add" = "Қосу";
+"Sharing:" = "Бөлісу:";
+"Done" = "Дайын";
+
+"Error loading: %@" = "Жүктеу қатесі: %@";
+"Error adding: %@" = "Қосу қатесі: %@";
+"Error deleting: %@" = "Жою қатесі: %@";
+"Error updating: %@" = "Жаңарту қатесі: %@";
+"Error re-inviting (delete): %@" = "Қайта шақыру (жою) қатесі: %@";
+"Error re-inviting (insert): %@" = "Қайта шақыру қатесі (енгізу): %@";
+
+/* Roles (for localizedRoleDisplayName) */
+"Reader" = "Оқырман";
+"Writer" = "Жазушы";
+"Owner" = "Иесі";
+
+/* MonthCalendarView */
+"Day View" = "Күндізгі көрініс";
+"This is a repeating event." = "Бұл қайталанатын оқиға.";
+"Save for This Event Only" = "Тек осы оқиға үшін сақтаңыз";
+"Save for Future Events" = "Болашақ оқиғалар үшін сақтаңыз";
+
+/* Tabs (Day, MultiDay, Month, Year, List, MultiCalendar) */
+
+/* WeekdayHeaderView */
+"Sun" = "күн";
+"Mon" = "дүйсенбі";
+"Tue" = "сейсенбі";
+"Wed" = "р";
+"Thu" = "ж";
+"Fri" = "жұма";
+"Sat" = "сен";
+
+/* UIMenuButtonRepresentable */
+
+/* YearCalendarView */
+"Close" = "Жабу";
+
+/* AllEventsListView */
+"No calendar access." = "Күнтізбеге кіру мүмкіндігі жоқ.";
+
+/* EventRowView */
+"Ends" = "Аяқталады";
+
+/* SearchEventRowView */
+"No Title" = "Атауы жоқ";
+
+/* BasicEvent */
+
+/* SingleDayTimelineMultiCalendarView */
+
+/* TwoWayPinnedSingleDayMultiCalendarContainerView */
+
+/* TwoWayPinnedSingleDayMultiCalendarWrapper */
+
+/* MultiDayTimelineView */
+"Join Meeting" = "Кездесуге қосылу";
+"Edit" = "Өңдеу";
+"Duplicate" = "Көшірме";
+"Delete" = "Жою";
+"Share" = "Бөлісу";
+"Add to Google Meet" = "Google Meet қызметіне қосу";
+"Add to Microsoft Teams" = "Microsoft командаларына қосу";
+
+/* TwoWayPinnedMultiDayContainerView */
+"No selected range" = "Таңдалған ауқым жоқ";
+"all-day" = "күні бойы";
+"Search events..." = "Оқиғаларды іздеу...";
+"Day" = "Күн";
+"MultiDay" = "Көпкүндік";
+"Month" = "Ай";
+"Year" = "Жыл";
+"List" = "Тізім";
+"MultiCalendar" = "Көп күнтізбе";
+
+/* TwoWayPinnedMultiDayWrapper */
+"New event" = "Жаңа оқиға";
+"All-day event" = "Күні бойы өтетін іс-шара";
+"Recurring Event" = "Қайталанатын оқиға";
+"This event is part of a series. Update which events?" = "Бұл оқиға серияның бөлігі болып табылады. Қандай оқиғаларды жаңартыңыз?";
+"This Event Only" = "Тек осы оқиға";
+"All Future Events" = "Барлық болашақ оқиғалар";
+"Cancel" = "Болдырмау";
+
+/* DraggableMenuView */
+"Calendar" = "Күнтізбе";
+"Subscriptions" = "Жазылымдар";
+"Settings" = "Параметрлер";
+"Sharing" = "Бөлісу";
+"Live" = "Тікелей эфир";
+"Stop" = "Тоқта";
+"Calendar Live Activity" = "Күнтізбенің тікелей әрекеті";
+"Get" = "алыңыз";
+"Color" = "Түс";
+"Search for a city…" = "Қаланы іздеу…";
+"No directions" = "Бағыттар жоқ";
+
+/* WeatherKitView */
+"Location access denied. Search for a city or grant access in Settings." = "Орынға кіруге тыйым салынды. Қаланы іздеңіз немесе \"Параметрлер\" бөлімінен кіруге рұқсат беріңіз.";
+"Cannot refresh. Location unknown." = "Жаңарту мүмкін емес. Орналасқан жері белгісіз.";
+"10-DAY FORECAST" = "10 КҮНДІК БОЛЖАМ";
+"HighLowLabelFormat" = "H:%d° L:%d°";
+"tomorrow" = "ертең";
+"on_day" = "%@ бойынша";
+"in_days" = "%d күндері";
+
+/* Labels */
+
+/* Calendar event */
+"New Event" = "Жаңа оқиға";
+
+/* Search placeholder */
+"Search for a city..." = "Қаланы іздеу…";
+
+/* Footer tip */
+"Tap an hour to quickly add a calendar event." = "Күнтізбе оқиғасын жылдам қосу үшін сағатты түртіңіз.";
+
+
+/* FeelsLikeCard */
+"FEELS LIKE" = "СЕЗІЛУІ";
+"similar_to_actual_temp" = "Нақты температураға ұқсас.";
+"wind_cooler_feel" = "Жел оны салқындатуда.";
+"humidity_warmer_feel" = "Ылғалдылық оны жылы етеді.";
+
+/* HumidityCard */
+"HUMIDITY" = "ЫЛҒАЛДЫЛЫҚ";
+"The dew point is %d° right now." = "Шық нүктесі дәл қазір %d°.";
+"dewPoint.current" = "Шық нүктесі дәл қазір %d°.";
+
+/* MoonCard */
+"MOON PHASE" = "АЙ ФАЗАСЫ";
+"Moonrise" = "Айдың шығуы";
+"Moonset" = "Айдың батуы";
+"Next %@" = "Келесі %@";
+"Data unavailable" = "Деректер қолжетімсіз";
+"%d day" = "%d күні";
+"%d days" = "%d күндері";
+
+/* PrecipitationTodayCard */
+"PRECIPITATION_CARD_TITLE" = "ЖАУЫН-ШАШЫН";
+"PRECIPITATION_CARD_TODAY_LABEL" = "бүгін";
+"PRECIPITATION_CARD_NEXT_EXPECTED_FORMAT" = "Келесі күтілетін уақыт - %1$.0f %2$@ %3$@."; // E.g., "Next expected is 10 mm on Mon."
+"PRECIPITATION_CARD_NONE_EXPECTED" = "Жақын арада жауын-шашын күтілмейді.";
+
+/* PressureCard */
+"PRESSURE" = "ҚЫСЫМ";
+"hPa" = "гПа";
+
+/* SunsetCard */
+"SUNRISE" = "КҮННІҢ ШЫҒУЫ";
+"Sunrise: %@" = "Күннің шығуы: %@";
+"Sunset: %@" = "Күннің батуы: %@";
+"Sunrise" = "Күннің шығуы";
+"Sunset" = "Күннің батуы";
+
+
+"Sunrise and Sunset" = "Күннің шығуы мен батуы";
+"First Light" = "Бірінші жарық";
+"Solar Noon" = "Күн түс";
+"Last Light" = "Соңғы жарық";
+"Total Daylight" = "Жалпы күндізгі жарық";
+
+/* UVIndexCard */
+"UV INDEX" = "УК ИНДЕКСІ";
+"Low" = "Төмен";
+"Moderate" = "Орташа";
+"High" = "Жоғары";
+"Very High" = "Өте жоғары";
+"Extreme" = "Төтенше";
+
+/* VisibilityCard */
+"VISIBILITY" = "КӨРІНУ ҚАШЫҚТЫҒЫ";
+"km" = "км";
+"Perfectly clear view." = "Өте анық көрініс.";
+"Excellent visibility." = "Өте жақсы көріну.";
+"Good visibility." = "Жақсы көріну.";
+"Moderate visibility." = "Орташа көріну.";
+"Poor visibility." = "Нашар көріну.";
+"Very poor visibility." = "Өте нашар көріну.";
+"visibility.perfect" = "Өте анық көрініс.";
+"visibility.excellent" = "Өте жақсы көріну.";
+"visibility.good" = "Жақсы көріну.";
+"visibility.moderate" = "Орташа көріну.";
+"visibility.poor" = "Нашар көріну.";
+"visibility.verypoor" = "Өте нашар көріну.";
+"visibility.unknown" = "—";
+
+/* WindCard */
+"WIND" = "Жел";
+"Gusts" = "екпінді желдер";
+"Direction" = "Бағыт";
+"km/h" = "км/сағ";
+"Compass_N" = "N";
+"Compass_S" = "S";
+"Compass_W" = "W";
+"Compass_E" = "E";
+
+/* WeatherKitViewModel */
+"Failed to fetch weather data. Please check your connection or try again later." = "Ауа райы деректерін алу мүмкін болмады. Байланысты тексеріңіз немесе әрекетті кейінірек қайталаңыз.";
+"Falling" = "Құлау";
+"Rising" = "көтерілуде";
+"Steady" = "Тұрақты";
+"Unknown" = "Белгісіз";
+"Sunny" = "Күн шуақты";
+"Cloudy" = "Бұлтты";
+"Partly Cloudy" = "Көшпелі бұлт";
+"Drizzle" = "Жаңбыр жауады";
+"Thunderstorm" = "Найзағай";
+"Fog" = "Тұман";
+"Partly Cloudy Night" = "Көшпелі бұлтты түн";
+"Clear Night" = "Ашық түн";
+"Hazy" = "Бұлыңғыр";
+"Today" = "Бүгін";
+"Now" = "Қазір";
+
+/* Cardinal and intercardinal directions */
+"cardinal.N" = "N";
+"cardinal.NNE" = "ССШ";
+"cardinal.NE" = "СШ";
+"cardinal.ENE" = "ШСШ";
+"cardinal.E" = "E";
+"cardinal.ESE" = "ШОШ";
+"cardinal.SE" = "ОШ";
+"cardinal.SSE" = "ООШ";
+"cardinal.S" = "S";
+"cardinal.SSW" = "ООБ";
+"cardinal.SW" = "ОБ";
+"cardinal.WSW" = "БОБ";
+"cardinal.W" = "W";
+"cardinal.WNW" = "БСБ";
+"cardinal.NW" = "СБ";
+"cardinal.NNW" = "ССБ";
+
+/* WeatherDetailView chanceOfPrecipGraphSection */
+"Chance of Precipitation" = "Жауын-шашын ықтималдығы";
+"Today's chance: %d%%" = "Бүгінгі мүмкіндік: %d%%";
+"%@'s chance: %d%%" = "%@ мүмкіндігі: %d%%";
+"Max" = "Макс";
+"Min" = "Мин";
+"The daily chance of precipitation tends to be higher than the chance for each hour." = "Жауын-шашынның тәуліктік ықтималдығы әр сағаттағы мүмкіндіктен жоғарырақ болады.";
+"ChanceOfPrecipitation_Title" = "Жауын-шашын ықтималдығы";
+"TodaysChance" = "Бүгінгі мүмкіндік: %d%%";
+"OtherDayChance" = "%@ мүмкіндігі: %d%%";
+"DailyChanceExplanation" = "Жауын-шашынның тәуліктік ықтималдығы әр сағаттағы мүмкіндіктен жоғарырақ болады.";
+
+/* WeatherDetailView hourlyGraphSection */
+"Feels Like" = "Ұқсайды";
+"Actual" = "Нақты";
+"No hourly data available for this day." = "Бұл күн үшін сағаттық деректер қолжетімді емес.";
+"What the temperature feels like as a result of humidity, sunlight or wind." = "Ылғалдылық, күн сәулесі немесе жел нәтижесінде температура қандай болады.";
+"The actual air temperature." = "Нақты ауа температурасы.";
+"HighLabelFormat" = "H: %d°";
+"LowLabelFormat" = "L: %d°";
+// MARK: English (en.lproj/Localizable.strings)
+"HourlyGraph_HighLabel" = "H";
+"HourlyGraph_LowLabel" = "L";
+
+/* WeatherDetailView humidityGraphSection */
+/* Label for humidity section */
+"Humidity_Label" = "Ылғалдылық";
+
+/* Label for current humidity */
+"Humidity_CurrentFormat" = "Ылғалдылық %d%%";
+
+/* Label for average humidity */
+"Humidity_AvgFormat" = "Ылғалдылық орташа %d%%";
+
+/* Label for humidity min/max */
+"Humidity_MinMaxFormat" = "Бүгінгі минимум %d%% – макс %d%%";
+
+/* Chart markers */
+"ChartMarker_Max" = "Макс";
+"ChartMarker_Min" = "Мин";
+
+
+/* WeatherDetailView precipAmauntDiagranmSection */
+"Precip_Total_RainSnowFormat" = "Жаңбыр: %.1f%@, Қар: %.1f%@";
+"Precip_Total_RainFormat" = "Жаңбыр: %.1f%@";
+"Precip_Total_SnowFormat" = "Қар: %.1f%@";
+"Precip_Total_None" = "Жауын-шашын: 0%@";
+"Precip_Bars_Subtitle" = "Жаңбыр мен қарға арналған сағаттық жолақтар (%@).";
+"Precip_Level_Light" = "Жарық";
+"Precip_Level_Moderate" = "Орташа";
+"Precip_Level_Heavy" = "Ауыр";
+"Precip_Tooltip_Format" = "%@h\nЖаңбыр: %.1f%@\nҚар: %.1f%@";
+
+/* WeatherDetailView pressureGraphSection */
+"Pressure_CurrentFormat" = "Қысым %@ %@";
+"Pressure_CurrentUnavailable" = "Қысым: --";
+"Pressure_DailyMinMaxFormat" = "Бүгінгі минимум %@ %@ – макс %@ %@";
+"Pressure_AverageFormat" = "Орташа қысым %@ %@";
+"Pressure_DailyRangeFormat" = "Күнделікті ауқым: %@–%@ %@";
+"Pressure_Title" = "Қысым";
+"Pressure_NoData" = "Осы күні қысым туралы деректер жоқ.";
+
+/* WeatherDetailView uVGraphSection */
+"UVGraphHeader" = "Бүгінгі %@ %d";
+"UVGraphNoHourlyData" = "Бұл күн үшін сағаттық деректер қолжетімді емес.";
+"UVGraphNowLabel" = "Қазір, %@";
+"UVCategory_None" = "Ешқайсысы";
+"UVCategory_Low" = "Төмен";
+"UVCategory_Moderate" = "Орташа";
+"UVCategory_High" = "Жоғары";
+"UVCategory_VeryHigh" = "Өте жоғары";
+"UVCategory_Extreme" = "Төтенше";
+"UVAdvice_None" = "Бұл күні қалыпты немесе одан жоғары ультракүлгін деңгейлері күтілмейді.";
+"UVAdvice_Range" = "Күннен қорғау ұсынылады. УК деңгейлері %@ мен %@ аралығында, %@ және %@ аралығында жетеді.";
+"UVGraphMaxLabel" = "Макс";
+
+/* WeatherDetailView visibilityGraphSection */
+"Visibility_Title" = "Көріну";
+"Visibility_NoData" = "Бұл күні көріну деректері жоқ.";
+"Visibility_CurrentFormat" = "Көріну %d %@";
+"Visibility_DailyMinMaxFormat" = "мин %d – макс %d %@";
+"Visibility_NoCurrentData" = "Ағымдағы көріну деректері жоқ.";
+"Visibility_HourlyAverages_NoData" = "Сағаттық деректер қолжетімді емес.";
+"Visibility_MaxLabel" = "Макс";
+"Visibility_MinLabel" = "Мин";
+"Visibility_TooltipFormat" = "%@\n%.1f %@";
+
+/* WeatherDetailView windGraphSection */
+"WindGraph_Header" = "Жел жылдамдығы және екпіні";
+"WindGraph_NoData" = "Бұл күні жел туралы деректер жоқ.";
+"WindGraph_SpeedHeader" = "Жел жылдамдығы %d";
+"WindGraph_GustHeader" = "екпіні %d дейін";
+"WindGraph_SpeedRangeHeader" = "Жел жылдамдығы %d-%d";
+"WindGraph_MaxSpeedLabel" = "Макс S";
+"WindGraph_MaxGustLabel" = "Макс G";
+"WindGraph_DragLabel" = "%@\nЖылдамдық: %d\nЖел: %d";
+
+/* WeatherDetailView */
+
+"Daily Summary" = "Күнделікті қорытынды";
+
+"Precipitation Totals" = "Жауын-шашынның жалпы саны";
+"LAST 24 HOURS" = "СОҢҒЫ 24 САҒАТ";
+"NEXT 24 HOURS" = "КЕЛЕСІ 24 САҒАТ";
+"Total" = "Барлығы";
+"Rain" = "Жаңбыр";
+"Snow" = "Қар";
+
+"About Wind Speed and Gusts" = "Жел жылдамдығы мен екпіні туралы";
+"The wind speed is calculated using the average over a short period of time. Gusts are short bursts of wind above this average. A gust typically lasts under 20 seconds." = "Жел жылдамдығы қысқа уақыт аралығындағы орташа мәнді пайдалана отырып есептеледі. Желдің екпіні - бұл орташадан жоғары желдің қысқа екпіні. Дауыл әдетте 20 секундтан аз уақытқа созылады.";
+
+"About the Beaufort Scale" = "Бофорт шкаласы туралы";
+"The Beaufort wind scale expresses how forceful or strong the wind is at a given speed. The Beaufort scale may make it easier to understand how windy it will feel or how much effect the wind could have. Each value on the scale corresponds to a wind speed range." = "Бофорт жел шкаласы желдің берілген жылдамдықта қаншалықты күшті немесе күшті екенін көрсетеді. Бофорт шкаласы оның қаншалықты жел болатынын немесе желдің қаншалықты әсер ететінін түсінуді жеңілдетуі мүмкін. Шкаладағы әрбір мән жел жылдамдығының диапазонына сәйкес келеді.";
+
+"About Feels Like Temperature" = "Температура сияқты сезім туралы";
+"Feels Like conveys how warm or cold it feels and can be different from the actual temperature. The Feels Like temperature is affected by humidity, sunlight and wind." = "Сезілетін температура ауаның қаншалықты жылы немесе суық болып сезілетінін көрсетеді және нақты температурадан өзгеше болуы мүмкін. Оған ылғалдылық, күн сәулесі және жел әсер етеді.";
+
+"Options" = "Параметрлер";
+"Temperature" = "Температура";
+"Use system setting (°C)" = "Жүйе параметрін пайдалану (°C)";
+"mm, cm" = "мм, см";
+
+/* Dynamic label titles */
+"Conditions" = "Шарттар";
+"UV Index" = "УК индексі";
+"Wind" = "Жел";
+"Precipitation" = "Жауын-шашын";
+"Humidity" = "Ылғалдылық";
+"Visibility" = "Көріну";
+"Pressure" = "Қысым";
+
+/* Fallback key */
+"displayedCondition" = "көрсетілді.Жағдай";
+
+/* Titles */
+"Forecast" = "Болжам";
+"DailySummary" = "Күнделікті қорытынды";
+
+/* Current-day forecast */
+"CurrentDayForecastText" = "%d° қазір %@ шарттарымен. %@ жауын-шашын ықтималдығы бар. %@ жел, екпіні %d %@ дейін. Бүгінгі температура %d° пен %d° аралығында және %d° сияқты сезіледі. %@ және %@.";
+"UVIndexFormat" = "УК индексі %d дейін";
+"HumidityFormat" = "%d%% айналасындағы ылғалдылық";
+"HumidityRangeFormat" = "Ылғалдылық %d%% - %d%%";
+"NA" = "N/A";
+
+/* Other-day forecast */
+"OtherDayForecastText" = "%@ төменгі мәні - %d° және ең жоғарғысы - %d°. Температура %d° пен %d° сияқты болады. %@ жел күтілуде. %@";
+"NoPrecipLast24h" = "Соңғы 24 сағатта жауын-шашын тіркелген жоқ.";
+"RainLast24h" = "Соңғы 24 сағатта %d мм жаңбыр жауды.";
+"SnowAndRainLast24h" = "Соңғы 24 сағатта қар %@ см, жауын %d мм өлшенді.";
+
+/* compass abbreviations */
+"Dir_N" = "N";
+"Dir_NNE" = "ССШ";
+"Dir_NE" = "СШ";
+"Dir_ENE" = "ШСШ";
+"Dir_E" = "E";
+"Dir_ESE" = "ШОШ";
+"Dir_SE" = "ОШ";
+"Dir_SSE" = "ООШ";
+"Dir_S" = "S";
+"Dir_SSW" = "ООБ";
+"Dir_SW" = "ОБ";
+"Dir_WSW" = "БОБ";
+"Dir_W" = "W";
+"Dir_WNW" = "БСБ";
+"Dir_NW" = "СБ";
+"Dir_NNW" = "ССБ";
+
+/* units */
+"UnitMillimeter" = "мм";
+"UnitCentimeter" = "см";
+
+/* common labels */
+"PrecipitationTotals_Title" = "Жауын-шашынның жалпы саны";
+"Last24h_Label" = "СОҢҒЫ 24 САҒАТ";
+"Next24h_Label" = "КЕЛЕСІ 24 САҒАТ";
+"Total_Label" = "Барлығы";
+"Precipitation_Label" = "Жауын-шашын";
+"Rain_Label" = "Жаңбыр";
+"Snow_Label" = "Қар";
+
+// Wind Summary
+// Parameters for WindSummary_Current:
+// %1$d: currentSpeed (integer)
+// %2$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %3$@: directionAbbreviation (string, e.g., "N", "SW")
+// %4$d: minSpeed (integer)
+// %5$d: maxSpeed (integer)
+// %6$d: gustSpeed (integer)
+"WindSummary_Current" = "Жел қазіргі уақытта %3$@ %1$d %2$@. Бүгінгі күні желдің жылдамдығы %4$d - %5$d %2$@, екпіні %6$d %2$@ дейін.";
+
+// Parameters for WindSummary_Range:
+// %1$d: minSpeed (integer)
+// %2$d: maxSpeed (integer)
+// %3$@: speedUnitLabel (string, e.g., "km/h" or "mph")
+// %4$d: gustSpeed (integer)
+"WindSummary_Range" = "Жел жылдамдығы %1$d бастап %2$d %3$@ аралығында, екпіні %4$d %3$@ дейін.";
+
+"Beaufort_Scale" = "Бофорт шкаласы";
+"Beaufort_Column_bft" = "bft";
+"Beaufort_Column_Description" = "Сипаттама";
+"Beaufort_Column_kmh" = "км/сағ";
+"Beaufort_0" = "Сабыр";
+"Beaufort_1" = "Жеңіл ауа";
+"Beaufort_2" = "Жеңіл жел";
+"Beaufort_3" = "Жұмсақ жел";
+"Beaufort_4" = "Орташа жел";
+"Beaufort_5" = "Балғын жел";
+"Beaufort_6" = "Қатты жел";
+"Beaufort_7" = "Қатты жел";
+"Beaufort_8" = "Гейл";
+"Beaufort_9" = "Қатты дауыл";
+"Beaufort_10" = "Дауыл";
+"Beaufort_11" = "Қатты дауыл";
+"Beaufort_12" = "Дауыл күші";
+"BeaufortRange_0" = "< 2";
+"BeaufortRange_1" = "2 – 5";
+"BeaufortRange_2" = "6 – 11";
+"BeaufortRange_3" = "12 – 19";
+"BeaufortRange_4" = "20 – 28";
+"BeaufortRange_5" = "29 – 38";
+"BeaufortRange_6" = "39 – 49";
+"BeaufortRange_7" = "50 – 61";
+"BeaufortRange_8" = "62 – 74";
+"BeaufortRange_9" = "75 – 88";
+"BeaufortRange_10" = "89 – 102";
+"BeaufortRange_11" = "103 – 117";
+"BeaufortRange_12" = "> 118";
+
+/* Section header: Forecast vs Daily Summary */
+
+"ForecastPrecip_TodayFormat" = "Соңғы 24 сағатта %.1f%@ жауын-шашын болды. Бүгінгі жауын-шашынның жалпы мөлшері %.1f%@ болады. Алдағы 24 сағатта %.1f%@ жауын-шашын күтіледі.";
+"ForecastPrecip_OtherDayFormat" = "%@ күні жауын-шашынның жалпы мөлшері %.1f%@ болады.";
+
+
+/* Section header for precipitation intensity */
+"AboutPrecipitation_Title" = "Жауын-шашынның қарқындылығы туралы";
+
+/* Full description of how precipitation intensity is calculated */
+"AboutPrecipitation_Body" =
+"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+
+/* Section titles */
+"Forecast_Title" = "Болжам";
+"DailySummary_Title" = "Күнделікті қорытынды";
+
+/* Dew point */
+"DewPoint_CurrentFormat" = "Шық нүктесі %d° пен %d° аралығында.";
+"DewPoint_FutureFormat" = "Шық нүктесі %d° - %d° болады.";
+
+/* Humidity summaries */
+"ForecastHumidity_Today" = "Бүгінгі таңда орташа ылғалдылық %d%%. %@";
+"ForecastHumidity_Other" = "%@ параметрінде орташа ылғалдылық %d%% болады.\n%@";
+
+"AboutPressure_Title" = "Қысым туралы";
+"AboutPressure_Body" = "Ауа райының өзгеруін болжау үшін қысымның айтарлықтай, жылдам өзгеруі қолданылады. Мысалы, қысымның төмендеуі жаңбырдың немесе қардың жолда екенін, ал қысымның көтерілуі ауа-райының жақсаратынын білдіруі мүмкін. Қысымды барометрлік қысым немесе атмосфералық қысым деп те атайды.";
+
+"AboutHumidity_Title" = "Салыстырмалы ылғалдылық туралы";
+"AboutHumidity_Body" = "Салыстырмалы ылғалдылық, әдетте жай ғана ылғалдылық деп аталады, ауадағы ылғал мөлшерінің ауа ұстай алатын мөлшерге қатынасы. Жоғары температурада ауа көбірек ылғал ұстай алады. Салыстырмалы ылғалдылық 100%-ға жуық болса, шық немесе тұман болуы мүмкін.";
+
+"AboutDewPoint_Title" = "Шық нүктесі туралы";
+"AboutDewPoint_Body" = "Шық нүктесі - шық пайда болу үшін температураның төмендеуі қажет. Бұл ауаның қаншалықты ылғалды екенін анықтаудың пайдалы әдісі болуы мүмкін - шық нүктесі неғұрлым жоғары болса, соғұрлым ылғалды сезінеді. Ағымдағы температураға сәйкес келетін шық нүктесі салыстырмалы ылғалдылықтың 100% екенін білдіреді және шық немесе тұман болуы мүмкін.";
+
+"Section_Forecast" = "Болжам";
+"Section_DailySummary" = "Күнделікті қорытынды";
+"ForecastVisibility_TodayFormat" = "Бүгін көріну %@, %d және %d %@ болады.";
+"ForecastVisibility_OtherFormat" = "%@ күні ең төменгі көріну %@ — %d %@, ал ең жоғары көріну %@ — %d %@ болады.";
+"Clarity_Foggy" = "Тұман";
+"Clarity_Hazy" = "Бұлыңғыр";
+"Clarity_Clear" = "Таза";
+"Clarity_PerfectlyClear" = "Өте анық";
+
+"AboutVisibility_Title" = "Көріну туралы";
+"AboutVisibility_Body" = "Көріну мүмкіндігі ғимараттар мен төбелер сияқты нысандарды қаншалықты қашықтықта анық көруге болатынын көрсетеді. Бұл ауаның мөлдірлігінің өлшемі және күн сәулесінің мөлшерін немесе кедергілердің болуын ескермейді. %@ немесе одан жоғары көріну анық деп саналады.";
+
+"PressureForecast_Today" = "Қысым қазіргі уақытта %@ %@ және төмендеуде. Бүгін орташа қысым %@ %@, ал ең төменгі қысым %@ %@ болады.";
+"PressureForecast_Other" = "%@ құрылғысында орташа қысым %@ %@, ал ең төменгі қысым %@ %@ болады.";
+"SectionForecast" = "Болжам";
+"SectionDailySummary" = "Күнделікті қорытынды";
+
+/* AdvanceSubscriptionView */
+"All Base Plan features" = "Негізгі жоспардың барлық мүмкіндіктері";
+"Multi-calendar view" = "Көп күнтізбе көрінісі";
+"Sync with Google Calendar" = "Google күнтізбесімен синхрондау";
+"Sync meets from Google Meet" = "Синхрондау Google Meet жүйесінен кездеседі";
+
+/* BaseSubscriptionView */
+"Base Plan" = "Негізгі жоспар";
+"Single-day calendar view" = "Бір күндік күнтізбе көрінісі";
+"Multi-day calendar view" = "Көп күндік күнтізбе көрінісі";
+"Monthly calendar view" = "Айлық күнтізбе көрінісі";
+"Yearly overview" = "Жылдық шолу";
+"List view for events" = "Оқиғалардың тізім көрінісі";
+"Weather view" = "Ауа райы көрінісі";
+    
+/* PremiumSubscriptionView */
+"Premium Plan" = "Премиум жоспар";
+"Sync with Microsoft Calendar" = "Microsoft күнтізбесімен синхрондау";
+"Sync meets from Microsoft Teams" = "Синхрондау Microsoft командаларынан кездеседі";
+
+/* SubscriptionCard */
+"Equivalent to %@ per month" = "Айына %@ баламасы";
+"%d %@ free" = "%d %@ тегін";
+
+/* SubscriptionListView */
+"Premium Plans" = "Премиум жоспарлар";
+"You are subscribed to the %@ %@ plan" = "Сіз %@ %@ жоспарына жазылдыңыз";
+"Renews on: %@" = "Жаңартылған күні: %@";
+"Start Free Trial" = "Тегін сынақ нұсқасын бастаңыз";
+"Subscribe Now" = "Қазір жазылыңыз";
+"%d %@ free, then %@%@." = "%d %@ тегін, одан кейін %@%@.";
+"Subscribe for %@%@." = "%@%@ үшін жазылыңыз.";
+"Privacy Policy" = "Құпиялық саясаты";
+"Terms of Service" = "Қызмет көрсету шарттары";
+
+/* SubscriptionCategory */
+"Advanced" = "Кеңейтілген";
+"Advanced Plan" = "Қосымша жоспар";
+"All Advanced Plan features" = "Кеңейтілген жоспардың барлық мүмкіндіктері";
+
+/* SubscriptionView Alerts */
+"You need an active %@ plan to access this section." = "Бұл бөлімге кіру үшін сізге белсенді %@ жоспары қажет.";
+"Plan Required" = "Жоспар қажет";
+"OK" = "OK";
+
+/* SubscriptionStatus */
+"Base" = "Негіз";
+"Premium" = "Премиум";
+
+/* Subscription period units */
+
+/* SubscriptionListView status messages */
+/* Status without “the” */
+"SubscriptionStatus" = "%@ %@ жоспарына жазылды.";
+
+/* Label for renewal date */
+"RenewsOn" = "Жаңартылған күні: %@";
+
+"Manage Subscription" = "Жазылымды басқару";
+
+/* Period units */
+"Daily" = "Күнделікті";
+"Weekly" = "Апта сайын";
+"Monthly" = "Ай сайын";
+"Yearly" = "Жыл сайын";
+"Recurring" = "Қайталанатын";
+
+/* units */
+"day" = "күн";
+"days" = "күн";
+"week" = "апта";
+"weeks" = "апта";
+"month" = "ай";
+"months" = "ай";
+"year" = "жыл";
+"years" = "жыл";
+
+/* YearMonthMiniView */
+"weekday.headers" = "S, M, T, W, T, F, S";
+
+/* GlobalState */
+"Unit_Speed_kmh" = "км/сағ";
+"Unit_Speed_mph" = "миль/сағ";
+"Unit_Distance_km" = "км";
+"Unit_Distance_mi" = "миль";
+"Unit_Precipitation_mm" = "мм";
+"Unit_Precipitation_in" = "″";
+"Unit_Pressure_hPa" = "гПа";
+"Unit_Pressure_inHg" = "дюйм";
+
+"Your previous purchases have been successfully restored." = "Бұрынғы сатып алуларыңыз сәтті қалпына келтірілді.";
+"No active subscriptions found to restore." = "Қалпына келтіру үшін белсенді жазылымдар табылмады.";
+"Failed to restore purchases. Please try again later. (%@)" = "Сатып алулар қалпына келтірілмеді. Тағы жасауды сәл кейінірек көріңізді өтінеміз. (%@)";
+"Restore Purchases" = "Сатып алуларды қалпына келтіру";
+
+"Ads Free" = "Жарнамалар тегін";
+
+/* Shared widget and fallback labels */
+"Calendar & Weather" = "Күнтізбе және ауа райы";
+"Small shows today's date and current weather. Medium adds moon phase and wind." = "Шағын бейне бүгінгі күн мен ағымдағы ауа райын көрсетеді. Орташа ай фазасын және желді қосады.";
+"Calendar Events" = "Күнтізбе оқиғалары";
+"Shows today's date, current weather, and your next calendar events." = "Бүгінгі күнді, ағымдағы ауа райын және келесі күнтізбе оқиғаларын көрсетеді.";
+"No upcoming events" = "Алдағы оқиғалар жоқ";
+"Tomorrow" = "Ертең";
+"Untitled" = "Атаусыз";
+"Detail" = "Толығырақ";
+"Phase" = "Фаза";
+"Weather" = "Ауа райы";
+"Select Your Email" = "Электрондық поштаңызды таңдаңыз";
+"Confirm" = "Растау";
+"Calendar name" = "Күнтізбе атауы";
+"Sharing: %@" = "Ортақ пайдалану: %@";
+"Loading..." = "Жүктелуде...";
+"Selected Location" = "Таңдалған орын";
+"Data provided by Apple Weather" = "Деректер Apple арқылы берілген ауа райы";
+"Next" = "Келесі";
+"No details found for the selected location." = "Таңдалған орын туралы мәліметтер табылмады.";
+"Could not determine the time zone for the selected location." = "Таңдалған орын үшін уақыт белдеуін анықтау мүмкін болмады.";
+"(No Title)" = "(атауы жоқ)";
+"Choose your e-mail" = "Электрондық поштаңызды таңдаңыз";
+"It will be treated as your primary address and invitations will not be sent to it." = "Ол сіздің негізгі мекенжайыңыз ретінде қарастырылады және оған шақырулар жіберілмейді.";
+"Invalid URL" = "URL жарамсыз";
+"Rate limit or insufficient permission" = "Тариф шегі немесе рұқсат жеткіліксіз";
+"Network error: %@" = "Желі қатесі: %@";
+"N/A - Selected Tab: %@" = "Жоқ - Таңдалған қойынды: %@";
+"Enable Notifications" = "Хабарландыруларды қосу";
+"Event Notifications" = "Оқиғалар туралы хабарландырулар";
+"Invitation Notifications" = "Шақыру хабарландырулары";
+"Weather Alert Notifications" = "Ауа райы туралы ескерту хабарландырулары";
+"Allow notifications so weather alerts can appear." = "Ауа райы туралы ескертулер пайда болуы үшін хабарландыруларға рұқсат беріңіз.";
+"Event alerts are scheduled from your event alert settings." = "Оқиға ескертулері оқиға туралы ескерту параметрлерінен жоспарланған.";
+"Allow notifications so event alerts can appear at the right time." = "Оқиғалар туралы ескертулер қажетті уақытта пайда болуы үшін хабарландыруларға рұқсат беріңіз.";
+"Notifications are turned off for this app. To enable them go to: Settings -> Apps -> Cloud Calendars -> Notifications -> Allow Notifications." = "Бұл қолданба үшін хабарландырулар өшірілген. Оларды қосу үшін келесіге өтіңіз: Параметрлер -> Қолданбалар -> Cloud Calendars -> Хабарландырулар -> Хабарландыруларға рұқсат ету.";
+"Promo.WiseEating.name" = "Wise Eating & Fitness Planner";
+"Promo.WiseEating.description" = "Wise Eating - ақылды тамақтану мен жаттығуларға арналған AI-мен жұмыс істейтін жаттықтырушы. Ол тамақтануды жоспарлауға, жаттығуларды жобалауға, қоймаңызды басқаруға және тағам мен қозғалыстың денеңізге қалай әсер ететінін түсінуге көмектесетін заманауи тамақтану ғылымын практикалық құралдармен біріктіреді.";
+"Promo.StoreFront.name" = "StoreFront Studio";
+"Promo.StoreFront.description" = "StoreFront Studio — iOS және macOS әзірлеушілеріне арналған элиталық 3D дизайн ортасы. Ол өңделмеген скриншоттарды кәсіби, жоғары түрлендіретін App Store активтеріне түрлендіруге көмектесу үшін жоғары дәлдіктегі RealityKit көрсетуді қуатты Rich Text өңдегішімен біріктіреді.";
+"Promo.ReelStudio.name" = "ReelStudio";
+"Promo.ReelStudio.description" = "ReelStudio — iOS және macOS жүйелеріне арналған жасаушылар деңгейіндегі экран жазу студиясы. Экран мен камераны бір уақытта түсіріңіз, микрофон + жүйелік дыбысты басқарыңыз және оқулықтар, нұсқаулықтар және өнімнің демонстрациялары үшін таза MP4 файлдарын экспорттаңыз. iOS жүйесінде сіз тіпті қолданбаның ішінде бейнені ойнатып, оны реакция стилі мен баяндамашы басқаратын мазмұн үшін камерамен бірге жаза аласыз.";
+"Promo.MarketBrief.name" = "MarketBrief AI";
+"Promo.MarketBrief.description" = "MarketBrief AI сигналды шудан бөлуге арналған құрылғыдағы аналитика және көп агентті жұмыс процесі арқылы нарық қозғалысын түсінуге көмектеседі. Нақты уақыттағы баға деректерін қадағалаңыз, режим стиліндегі ықтималдықтарды зерттеңіз және шешім қабылдауды қолдау үшін анық бақылау тақталары мен диаграммаларды пайдаланыңыз. Біріншіден, құпиялылық: конфигурацияларыңыз құрылғыңызда қалады.";
+
+/* Application labels */
+"AppDisplayName" = "Cloud Calendars";
+"Apps" = "Қолданбалар";
+"Plan" = "Жоспар";
+
+/* Weather conditions and moon phases */
+"WeatherCondition.blizzard" = "Боран";
+"WeatherCondition.blowingDust" = "Шаң";
+"WeatherCondition.blowingSnow" = "Қар соғу";
+"WeatherCondition.breezy" = "Желді";
+"WeatherCondition.clear" = "Таза";
+"WeatherCondition.cloudy" = "Бұлтты";
+"WeatherCondition.drizzle" = "Жаңбыр жауады";
+"WeatherCondition.flurries" = "Толқындар";
+"WeatherCondition.foggy" = "Тұман";
+"WeatherCondition.freezingDrizzle" = "Аязды жаңбыр";
+"WeatherCondition.freezingRain" = "Аязды жаңбыр";
+"WeatherCondition.frigid" = "Суық";
+"WeatherCondition.hail" = "Сәлем";
+"WeatherCondition.haze" = "Тұман";
+"WeatherCondition.heavyRain" = "Қатты жаңбыр";
+"WeatherCondition.heavySnow" = "Қалың қар";
+"WeatherCondition.hot" = "Ыстық";
+"WeatherCondition.hurricane" = "Дауыл";
+"WeatherCondition.isolatedThunderstorms" = "Оқшауланған найзағайлар";
+"WeatherCondition.mostlyClear" = "Негізінен анық";
+"WeatherCondition.mostlyCloudy" = "Көбінесе бұлтты";
+"WeatherCondition.partlyCloudy" = "Көшпелі бұлт";
+"WeatherCondition.rain" = "Жаңбыр";
+"WeatherCondition.scatteredThunderstorms" = "Шашылған найзағай";
+"WeatherCondition.sleet" = "Қар";
+"WeatherCondition.smoky" = "Түтін";
+"WeatherCondition.snow" = "Қар";
+"WeatherCondition.strongStorms" = "Қатты найзағай";
+"WeatherCondition.sunFlurries" = "Күн шуағы";
+"WeatherCondition.sunShowers" = "Күн нөсерлері";
+"WeatherCondition.thunderstorms" = "Найзағай";
+"WeatherCondition.tropicalStorm" = "Тропикалық дауыл";
+"WeatherCondition.windy" = "Жел";
+"WeatherCondition.wintryMix" = "Қысқы қоспасы";
+"MoonPhase.new" = "Жаңа ай";
+"MoonPhase.waxingCrescent" = "Балауыз ай";
+"MoonPhase.firstQuarter" = "Бірінші тоқсан";
+"MoonPhase.waxingGibbous" = "Балауыздан жасалған гиббоус";
+"MoonPhase.full" = "Толық ай";
+"MoonPhase.waningGibbous" = "Күйзеліс";
+"MoonPhase.lastQuarter" = "Өткен тоқсан";
+"MoonPhase.waningCrescent" = "Өсіп бара жатқан жарты ай";
+"WeatherAlert.Preview.Tornado" = "Торнадо ескертуі: дереу қауіпсіз баспана іздеңіз.";
+"WeatherAlert.Preview.Source" = "Ауа райы қызметі";
+"WeatherAlert.Preview.Region" = "Болжам аймағы";
+"Saved Regions" = "Сақталған аймақтар";
+"Current Location" = "Ағымдағы орын";
+"Reorder Region" = "Аймаққа қайта тапсырыс беру";
+"WeatherAlert.Preview.HighTemperature" = "Жоғары температура туралы сары ескерту";
+"Illumination" = "Жарықтандыру";
+"Shared event" = "Ортақ оқиға";
+"Add to Calendar" = "Күнтізбеге қосу";
+"Event added" = "Оқиға қосылды";
+"Already in your calendar" = "Күнтізбеңізде әлдеқашан бар";
+"Unable to add event" = "Оқиға қосу мүмкін емес";
+"Calendar Access Required" = "Күнтізбеге кіру қажет";
+"Allow calendar access in Settings to add this event." = "Осы оқиғаны қосу үшін \"Параметрлер\" бөлімінде күнтізбеге кіруге рұқсат беріңіз.";
+"Open Settings" = "Параметрлерді ашыңыз";
+"Adding…" = "Қосылуда…";
+"Couldn’t find a writable calendar." = "Жазылатын күнтізбе табылмады.";
+"Please try again." = "Қайталап көріңіз.";
+
+/* Subscription group -- switching plan or duration */
+"Change Plan" = "Жоспарды өзгерту";
+"Current Plan" = "Ағымдағы жоспар";
+"You can change your plan or billing period at any time." = "Жоспарыңызды немесе төлем мерзімін кез келген уақытта өзгерте аласыз.";
+"Invites" = "Шақырады";
+"Cancelled" = "Бас тартылды";
+"Shared by me" = "Мен бөлісті";
+"Shared with me" = "Менімен бөлісті";
+"No shared events yet." = "Әлі ортақ іс-шаралар жоқ.";
+"No one has shared an event with you yet." = "Сізбен әлі ешкім оқиға бөліскен жоқ.";
+"Events you send from the share sheet appear here." = "Ортақ парақтан жіберілген оқиғалар осы жерде көрсетіледі.";
+"Invitations go to" = "Шақырулар келесіге барады";
+"Invitations you accept are added here and kept up to date. If the sender calls one off, it stays visible with a line through it." = "Сіз қабылдайтын шақырулар осында қосылады және жаңартылып отырады. Жіберуші біреуді өшіріп шақырса, ол арқылы өтетін сызықпен көрінеді.";
+"Sample shared event" = "Ортақ оқиға үлгісі";
+"Sofia" = "София";
+"Team lunch" = "Командалық түскі ас";
+
+/* Booking */
+"Booking page" = "Брондау беті";
+"Your name" = "Сіздің атыңыз";
+"Display name" = "Көрсетілетін атау";
+"Source calendar" = "Бастапқы күнтізбе";
+"Booked meetings land here, and your busy times here block new bookings." = "Брондаған кездесулер осында болады, ал сіздің бос емес уақыттарыңыз жаңа брондауларға тыйым салады.";
+"Meeting types" = "Жиналыс түрлері";
+"%lld min" = "%lld мин";
+"Add meeting type" = "Жиналыс түрін қосыңыз";
+"Weekly hours" = "Апталық жұмыс уақыты";
+"Save booking page" = "Брондау бетін сақтау";
+"Your booking page is live" = "Брондау бетіңіз белсенді";
+"Share this link — anyone can book one of your open times." = "Осы сілтемені бөлісіңіз — кез келген адам ашық уақыттарыңыздың біріне тапсырыс бере алады.";
+"Share link" = "Сілтемені бөлісу";
+"Edit settings" = "Параметрлерді өңдеу";
+"Add at least one meeting type." = "Кемінде бір жиналыс түрін қосыңыз.";
+"Turn on at least one day with valid hours." = "Жарамды сағаттармен кемінде бір күн қосыңыз.";
+"Set up a booking page" = "Брондау бетін орнатыңыз";
+"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Адамдарға ашық уақытыңызды брондау мүмкіндігін беріңіз. Кездесулер сіз таңдаған күнтізбеге түседі және сіздің бос уақытыңыз бос уақытты сақтайды.";
+"Approve on this device" = "Осы құрылғыда мақұлдаңыз";
+"Set up web booking" = "Веб-брондауды орнату";
+"You're all set" = "Барлығы дайын";
+"Couldn't approve" = "Мақұлдау мүмкін болмады";
+"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Бұл шолғышты күнтізбеңізбен байланыстыруды мақұлдаңыз, осылайша интернетте брондау бетін жасай аласыз — тегін, себебі сізде қолданба бар.";
+"Linking…" = "Байланысуда…";
+"Head back to your browser — it's ready to finish setting up your booking page." = "Браузерге қайта оралыңыз — ол брондау бетін орнатуды аяқтауға дайын.";
+"The code may have expired. Reopen the QR on the web and try again." = "Кодтың мерзімі өткен болуы мүмкін. Интернетте QR қайта ашып, әрекетті қайталаңыз.";
+"Read-only shared event" = "Тек оқуға арналған ортақ оқиға";
+"Remove from My Calendar" = "Менің күнтізбемнен жою";
+
+/* Account used only for App Clip sharing and recovery */
+"Cloud Calendars account" = "Cloud Calendars тіркелгісі";
+"App Clip sharing account" = "App Clip ортақ тіркелгісі";
+"Required for synced App Clip events and recovery after reinstalling." = "Синхрондалған App Clip оқиғалары және қайта орнатқаннан кейін қалпына келтіру үшін қажет.";
+"Continue with Google" = "Google арқылы жалғастырыңыз";
+"Sign Out" = "Шығу";
+"Signing in…" = "Жүйеге кіру…";
+"Sign In" = "Жүйеге кіру";
+"Sign in to continue" = "Жалғастыру үшін жүйеге кіріңіз";
+"Your account keeps this shared event recoverable after reinstalling the app." = "Тіркелгіңіз қолданбаны қайта орнатқаннан кейін осы ортақ оқиғаны қалпына келтіру мүмкіндігін сақтайды.";
+"This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Бұл тіркелгіде App Clip акциялары бар және оларды қайта орнатқаннан кейін қалпына келтіреді. Ол күнтізбе провайдерінен бөлек.";
+"Sign in with Google or Apple to share and receive synced events." = "Синхрондалған оқиғаларды бөлісу және алу үшін Google немесе Apple арқылы жүйеге кіріңіз.";
+"Apple did not return an identity token." = "Apple сәйкестендіру белгісін қайтармады.";
+"Unable to share event" = "Оқиғаны бөлісу мүмкін емес";
+"The event could not be saved to your Cloud Calendars account. Please try again." = "Оқиғаны Cloud Calendars есептік жазбаңызға сақтау мүмкін емес. Қайталап көріңіз.";
+"Google" = "Google";
+"Apple" = "Apple";
+"Microsoft" = "Microsoft";
+"Connect" = "Қосылу";
+"Connected" = "Қосылған";
+"Sign in with at least one account" = "Кемінде бір тіркелгімен кіріңіз";
+"Connect Google, Apple, Microsoft, or all three. Every connected identity opens the same shared-events account." = "Google, Apple, Microsoft немесе үшеуін қосыңыз. Әрбір қосылған сәйкестік бірдей ортақ оқиғалар тіркелгісін ашады.";
+"A Premium subscription is required to connect Microsoft." = "Microsoft қосу үшін премиум жазылым қажет.";
+"These identities are only for App Clip sharing and recovery. They remain separate from calendar-provider logins and sync." = "Бұл сәйкестіктер тек App Clip бөлісу және қалпына келтіру үшін арналған. Олар күнтізбе провайдерінің кіруінен және синхрондаудан бөлек қалады.";
+"Sign in with Google, Apple, or Microsoft to share and receive synced events." = "Синхрондалған оқиғаларды бөлісу және алу үшін Google, Apple немесе Microsoft арқылы жүйеге кіріңіз.";
+"Share a verified email during sign-in to use synced events and invitations." = "Синхрондалған оқиғалар мен шақыруларды пайдалану үшін жүйеге кіру кезінде расталған электрондық поштаны бөлісіңіз.";
+"You must share a verified email during sign-in. People will use it to find and invite you to calendars and events." = "Жүйеге кіру кезінде расталған электрондық поштаны бөлісу керек. Адамдар оны табу және сізді күнтізбелер мен оқиғаларға шақыру үшін пайдаланады.";
+"Manage connected accounts" = "Қосылған тіркелгілерді басқару";
+"Apple, Google, and Microsoft" = "Apple, Google және Microsoft";
+"Open account sign-in" = "Тіркелгіні ашу";
+
+/* Shared events, shared calendars, invitations, and account recovery */
+"A verified email is required to share, recover, or use access granted by an owner." = "Иесі берген рұқсатты бөлісу, қалпына келтіру немесе пайдалану үшін расталған электрондық пошта қажет.";
+"Accept" = "Қабылдау";
+"Access removed" = "Кіру жойылды";
+"Add a Mail account on this device, then try again." = "Осы құрылғыға пошта тіркелгісін қосып, әрекетті қайталаңыз.";
+"Add a writable calendar before moving this event." = "Осы оқиғаны жылжытпас бұрын жазылатын күнтізбені қосыңыз.";
+"Add everyone who should receive this calendar and choose their access." = "Осы күнтізбені алуы керек барлық адамдарды қосыңыз және олардың рұқсатын таңдаңыз.";
+"Add everyone who should receive this event and choose their access." = "Осы оқиғаны алуы тиіс барлық адамдарды қосыңыз және олардың рұқсатын таңдаңыз.";
+"After Save, %@ will lose access. Their local copy will remain read-only with a line through it." = "Сақтағаннан кейін %@ кіру мүмкіндігін жоғалтады. Олардың жергілікті көшірмелері жол арқылы тек оқуға арналған болып қалады.";
+"Anonymous recipient" = "Анонимді алушы";
+"Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email." = "Apple электрондық поштаны қайтармады. \"Параметрлер\" бөлімінде Cloud Calendars үшін Apple идентификаторын пайдалануды тоқтатып, қайта қосылып, Электрондық поштамды бөлісу опциясын таңдаңыз.";
+"Calendar invitation" = "Күнтізбе шақыруы";
+"Cancel for Everyone" = "Барлығы үшін бас тарту";
+"Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Оқырман, Жазушы немесе Ие таңдаңыз. Иелері де осы оқиғаны бөлісе алады және кіру рұқсатын басқара алады.";
+"Choose how to share this synced event." = "Осы синхрондалған оқиғаны бөлісу жолын таңдаңыз.";
+"Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars сеансты осы құрылғыда сақтай алмады. Қайталап көріңіз.";
+"Cloud Calendars user" = "Cloud Calendars пайдаланушысы";
+"Could not add: %@." = "Қосу мүмкін болмады: %@.";
+"Custom on this device" = "Осы құрылғыда реттелетін";
+"Decline" = "Бас тарту";
+"Default from creator" = "жасаушыдан әдепкі";
+"Deleted by owner" = "Иесі жойды";
+"Each email address can appear only once." = "Әрбір электрондық пошта мекенжайы тек бір рет пайда болуы мүмкін.";
+"Enter a valid email address for %@." = "%@ үшін жарамды электрондық пошта мекенжайын енгізіңіз.";
+"From %@" = "%@ бастап";
+"Invitation pending" = "Шақыру күтілуде";
+"Loading shared calendars…" = "Ортақ күнтізбелер жүктелуде…";
+"Mail is not configured" = "Пошта конфигурацияланбаған";
+"Manage calendar sharing" = "Күнтізбені ортақ пайдалануды басқару";
+"New calendar invitation" = "Жаңа күнтізбе шақыруы";
+"New event invitation" = "Жаңа оқиғаға шақыру";
+"No calendars have been shared with you yet." = "Сізбен әлі күнтізбелер бөлісілген жоқ.";
+"Open a shared event or calendar" = "Ортақ оқиғаны немесе күнтізбені ашыңыз";
+"Open this event with Cloud Calendars:\n\n%@" = "Бұл оқиғаны Cloud Calendars арқылы ашыңыз:\n\n%@";
+"Original creator" = "Түпнұсқа жасаушы";
+"People" = "Адамдар";
+"People appear here after they add the event." = "Адамдар оқиғаны қосқаннан кейін осында пайда болады.";
+"Place a Cloud Calendars event or calendar QR code inside the frame." = "Cloud Calendars оқиғасын немесе күнтізбе QR кодын кадрдың ішіне орналастырыңыз.";
+"Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "Оқырман көре және синхрондай алады. Жазушы өңдей алады. Иесі шақырылған электрондық пошта арқылы жүйеге кіргеннен кейін де рұқсатты бөлісе және басқара алады.";
+"Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "Оқырман көре алады. Жазушы оқиғаларды өңдей алады. Иесі күнтізбені ортақ пайдалана алады және кіруді басқара алады.";
+"Remove" = "Жою";
+"Remove Shared Calendar?" = "Ортақ күнтізбе жойылсын ба?";
+"Remove from My Calendars" = "Менің күнтізбелерімнен жою";
+"Resend" = "Қайта жіберу";
+"Scan QR Code" = "QR Code сканерлеу";
+"Scan to open this calendar" = "Осы күнтізбені ашу үшін сканерлеңіз";
+"Scan to open this event" = "Осы оқиғаны ашу үшін сканерлеңіз";
+"Server returned %lld: %@" = "Сервер қайтарылды %lld: %@";
+"Shared calendar" = "Ортақ күнтізбе";
+"Shared calendar information" = "Ортақ күнтізбе ақпараты";
+"Shared event: %@" = "Ортақ оқиға: %@";
+"Sign in or manage accounts" = "Жүйеге кіріңіз немесе тіркелгілерді басқарыңыз";
+"Sign in to manage event access." = "Оқиға рұқсатын басқару үшін жүйеге кіріңіз.";
+"Sign in to save event access." = "Оқиғаға кіру рұқсатын сақтау үшін жүйеге кіріңіз.";
+"Sign in to see calendars shared with you." = "Сізбен бөлісілген күнтізбелерді көру үшін жүйеге кіріңіз.";
+"Sign-in couldn’t open. Please try again." = "Жүйеге кіру ашылмады. Қайталап көріңіз.";
+"Stop sharing this calendar with %@? After Save, their frozen copy and its events will remain visible with a line through them." = "​​Осы күнтізбені %@ арқылы бөлісуді тоқтату керек пе? Сақтаудан кейін олардың бекітілген көшірмелері мен оқиғалары олар арқылы сызықпен көрінетін болады.";
+"The calendar and its events will be removed only from this device." = "Күнтізбе және оның оқиғалары тек осы құрылғыдан жойылады.";
+"The provider didn’t return the information required to sign in." = "Провайдер жүйеге кіру үшін қажетті ақпаратты қайтармады.";
+"The provider returned an invalid response." = "Провайдер жарамсыз жауапты қайтарды.";
+"The sign-in response couldn’t be verified. Please try again." = "Жүйеге кіру жауабын тексеру мүмкін болмады. Қайталап көріңіз.";
+"The sign-in response was invalid. Please try again." = "Жүйеге кіру жауабы жарамсыз. Қайталап көріңіз.";
+"This changes only your local copy. Shared event details stay read-only." = "Бұл тек жергілікті көшірмені өзгертеді. Ортақ оқиға туралы мәліметтер тек оқуға арналған.";
+"This color changes only on this device." = "Бұл түс тек осы құрылғыда өзгереді.";
+"This QR code does not contain a Cloud Calendars event or calendar." = "Бұл QR кодында Cloud Calendars оқиғасы немесе күнтізбе жоқ.";
+"This QR code does not contain a Cloud Calendars share." = "Бұл QR кодында Cloud Calendars үлесі жоқ.";
+"This removes only your local copy. Other people keep access." = "Бұл тек жергілікті көшірмені жояды. Басқа адамдар кіру мүмкіндігін сақтайды.";
+"Try again" = "Қайталап көріңіз";
+"Unable to Update Calendar" = "Күнтізбені жаңарту мүмкін емес";
+"Unable to add calendar" = "Күнтізбені қосу мүмкін емес";
+"Unreadable response from the server" = "Серверден оқылмайтын жауап";
+"Use Apple, Google, or Microsoft." = "Apple, Google немесе Microsoft пайдаланыңыз.";
+"Use a device with an available camera to scan a Cloud Calendars QR code." = "Cloud Calendars QR кодын сканерлеу үшін қол жетімді камерасы бар құрылғыны пайдаланыңыз.";
+"You can add up to 50 people at once." = "Бір уақытта 50 адамға дейін қосуға болады.";
+"You can send up to 50 invitations at once." = "Бір уақытта 50 шақыруға дейін жіберуге болады.";
+"%lld connected account" = "%lld қосылған тіркелгі";
+"%lld connected accounts" = "%lld қосылған тіркелгілер";
+"%lld pending invitation" = "%lld шақыру күтілуде";
+"%lld pending invitations" = "%lld күтудегі шақырулар";
+"%lld upcoming event" = "%lld алдағы оқиға";
+"%lld upcoming events" = "%lld алдағы оқиғалар";
+"%@ invited you to %@" = "%@ сізді %@ шақырды";
+
+"Promo.FastestScreenshotCleaner.description" = "Ең жылдам скриншот тазалау құралы скриншоттарды, көшірмелерді және ұқсас түсірілімдерді табу үшін фото кітапханаңызды сканерлейді. Барлық талдаулар құрылғыңызда жеке қалады, ал жадты босату үшін оларды жылдам тазалаңыз.";
+"Promo.PureStrike.description" = "PureStrike бильярд 8 допты онлайн, AI-ға қарсы немесе достарыңызбен бір құрылғыда ойнауға мүмкіндік береді. Әрбір матч үшін мақсатты, қуатты, айналдыруды, камера көріністерін, ережелерді және түсіру нұсқаулықтарын дәл баптаңыз.";
+"Promo.StarFront.description" = "Аман қалу: StarFront - бұл үш жолақты ғылыми-фантастикалық қорғаныс ойыны, онда әр сарбаз автоматты түрде атыс кезінде өз тобыңызды жолақтар арасында жылжытасыз. Құрылымыңызды бейімдеңіз және келе жатқан жау толқындарынан аман өтіңіз.";
+"Promo.PolyCore.description" = "PolyCore TD - орталық мұнараны тынымсыз геометриялық жаулардан қорғайтын аркадалық мұнарадан қорғану ойыны. Жаңартулар алыңыз, қаруларды біріктіріңіз және әр жүгіру кезінде басқа арсенал жасаңыз.";
+"Promo.RealtimeAssistant.description" = "GPT Realtime Assistant — пайдаланушы бастаған тікелей сөйлесулерге арналған AI өнімділігінің жұмыс кеңістігі. Кездесулер, миға шабуыл, аударма, жоспарлау және оқу кезінде нақты уақыттағы транскрипцияны, контекстік көмекті, жазбаларды және кейінгі әрекеттерді пайдаланыңыз.";
+"Promo.PhotoArchive.description" = "Photo2Video Archive жадты жоймай жадты сақтауға көмектеседі. Ол фотосуреттерді жоғары қысылған бейне мұрағаттарына түрлендіреді, мазмұнды сақтай отырып, үлкен жинақтарды ұйымдастыруды және сақтауды жеңілдетеді.";
+"Promo.DreamsCalendar.description" = "Dreams Calendar — түнгі және күндізгі армандарға арналған жеке арман журналы, көңіл-күйді бақылаушы және рефлексия күнделігі. Тәжірибелер мен эмоцияларды жазып алыңыз, содан кейін күндеріңіздің, ұйқыңыздың және қиялыңыздың үлгілерін байқаңыз.";
+"Promo.LiquidColorPuzzle.description" = "Liquid Color Puzzle - жарқыраған футуристік зертханадағы босаңсытатын сұрыптау ойыны. Әр тәжірибе күрделене түскен сайын әр түс бөлінгенше шыны түтіктердің арасына түсті сұйықтықтарды құйыңыз.";
+"Promo.GlanceStudio.description" = "Glance Studio әлеуметтік медиа, жарнама және әңгімелер үшін кинематографиялық чат стиліндегі бейнелерді жасауға көмектеседі. Шынайы 3D құрылғыларының ішінде анимациялық сөйлесулер жасаңыз, теруді имитациялаңыз, медианы тіркеңіз және тартымды тік мазмұнды экспорттаңыз.";
+"Promo.Wonek.description" = "Wonek бейне студиясы өңделмеген кадрларды жариялауға дайын мазмұнға айналдырады. Күшті сәттерді табыңыз, өткір клиптер жасаңыз, таза субтитрлерді және мәтінді дыбысқа дауысты қосуды қосыңыз, содан кейін бір мақсатты жұмыс процесінде бейне мен дыбысты жылтыратыңыз.";
+"Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop Mac компьютеріңізге кинематографиялық чат стиліндегі бейне жасауды ұсынады. Шынайы 3D құрылғыларының ішінде анимациялық сөйлесулер жасаңыз, теруді имитациялаңыз, фотосуреттер мен бейнелерді тіркеңіз және әлеуметтік медиа үшін тік мазмұнды экспорттаңыз.";

@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsSheetView: View {
     @ObservedObject private var appPreferences = AppPreferences.shared
     @ObservedObject private var notificationManager = EventNotificationManager.shared
+    @ObservedObject private var invitationManager = PendingEventInvitationManager.shared
     @State private var weatherAlertNotificationsEnabled =
         WeatherAlertNotificationManager.notificationsEnabled
     @AppStorage(EventSharePromptSettings.userDefaultsKey)
@@ -225,6 +226,24 @@ struct SettingsSheetView: View {
 
                 Divider()
 
+                Toggle(isOn: invitationNotificationToggleBinding) {
+                    HStack(spacing: 12) {
+                        Image(
+                            systemName: invitationNotificationsToggleIsOn
+                                ? "envelope.badge.fill"
+                                : "envelope.badge"
+                        )
+                        .font(.title3)
+                        .foregroundColor(.blue)
+                        .frame(width: 28, height: 28)
+
+                        Text(LocalizedStringKey("Invitation Notifications"))
+                            .font(.headline)
+                    }
+                }
+
+                Divider()
+
                 Toggle(isOn: weatherNotificationToggleBinding) {
                     HStack(spacing: 12) {
                         Image(
@@ -307,6 +326,27 @@ struct SettingsSheetView: View {
 
     private var weatherNotificationsToggleIsOn: Bool {
         weatherAlertNotificationsEnabled && notificationManager.notificationsAllowed
+    }
+
+    private var invitationNotificationsToggleIsOn: Bool {
+        invitationManager.invitationNotificationsEnabled
+            && notificationManager.notificationsAllowed
+    }
+
+    private var invitationNotificationToggleBinding: Binding<Bool> {
+        Binding(
+            get: { invitationNotificationsToggleIsOn },
+            set: { isOn in
+                invitationManager.setInvitationNotificationsEnabled(isOn)
+
+                guard isOn else { return }
+                if notificationManager.canAskForPermission {
+                    notificationManager.requestSystemNotificationAuthorizationIfNeeded()
+                } else if !notificationManager.notificationsAllowed {
+                    notificationManager.openAppSettings()
+                }
+            }
+        )
     }
 
     private var weatherNotificationToggleBinding: Binding<Bool> {

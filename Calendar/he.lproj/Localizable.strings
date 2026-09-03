@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "לא רלוונטי - כרטיסייה נבחרת: %@";
 "Enable Notifications" = "הפעל התראות";
 "Event Notifications" = "התראות על אירועים";
+"Invitation Notifications" = "התראות על הזמנות";
 "Weather Alert Notifications" = "התראות מזג אוויר";
 "Allow notifications so weather alerts can appear." = "יש לאפשר התראות כדי לקבל אזהרות מזג אוויר.";
 "Event alerts are scheduled from your event alert settings." = "התראות על אירועים מתוזמנות מהגדרות ההתראות על האירועים שלך.";

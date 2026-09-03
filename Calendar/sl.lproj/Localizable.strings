@@ -716,6 +716,7 @@
 "N/A - Selected Tab: %@" = "N/A - Izbrana vtičnica: %@";
 "Enable Notifications" = "Omogočiti obvestila";
 "Event Notifications" = "Obvestila o dogodkih";
+"Invitation Notifications" = "Obvestila o povabilih";
 "Weather Alert Notifications" = "Obvestila o vremenskem varovanju";
 "Allow notifications so weather alerts can appear." = "Pogoji obvestila, da se lahko pojavijo opozorila o vremenu.";
 "Event alerts are scheduled from your event alert settings." = "Opozoritve za dogodke so načrtovane iz nastavitev opozarjanja za dogodke.";
