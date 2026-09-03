@@ -1261,6 +1261,7 @@ export class CalendarService {
     );
     const recipient = (Array.isArray(calendar.recipients) ? calendar.recipients : [])
       .find((value: any) => {
+        if (value?.isPending === true) return false;
         if (value?.userId === principal.principalId) return true;
         return this.recipientEmails(value).some((email) => identityEmails.has(email));
       });
@@ -1277,7 +1278,12 @@ export class CalendarService {
   private async publicICloudCalendarSharing(
     context: ICloudCalendarAccessContext,
   ): Promise<any> {
-    const ownerAccount = await this.store.getJSON(this.keys.principal(context.ownerId));
+    const [ownerAccount, calendarEvents] = await Promise.all([
+      this.store.getJSON(this.keys.principal(context.ownerId)),
+      this.store.getJSON(
+        this.keys.icloudCalendarEvents(context.ownerId, context.calendarId),
+      ),
+    ]);
     const ownerIdentities = this.recipientIdentities(ownerAccount);
     const calendar = context.calendar ?? {
       schemaVersion: 2,
@@ -1294,6 +1300,10 @@ export class CalendarService {
       ownerEmail: ownerIdentities[0]?.email ?? null,
       currentAccess: context.access,
       isOriginalOwner: context.isOriginalOwner,
+      events: Array.isArray(calendarEvents?.events) ? calendarEvents.events : [],
+      eventsUpdatedAt: calendarEvents?.updatedAt ?? null,
+      windowStart: calendarEvents?.windowStart ?? null,
+      windowEnd: calendarEvents?.windowEnd ?? null,
     };
   }
 
@@ -1388,10 +1398,14 @@ export class CalendarService {
           64,
         ) ?? 'access_removed'
         : null;
+      const isPending = Boolean(recipient?.isPending ?? indexedValue.ref?.isPending);
       if ((!calendar || !recipient) && !revokedAt) {
         staleKeys.push(indexedValue.key);
         continue;
       }
+      // Email invitations are shown in Pending invitations until the recipient
+      // explicitly accepts them; they must not also appear as active calendars.
+      if (isPending && !revokedAt) continue;
 
       if (!ownerEmailCache.has(ownerId)) {
         const ownerAccount = await this.store.getJSON(this.keys.principal(ownerId));
@@ -1633,6 +1647,90 @@ export class CalendarService {
     });
   }
 
+  /** Lets a recipient leave a shared calendar. This removes every canonical
+   * recipient row associated with the current signed-in account and deletes
+   * its S3 indexes, so the user also disappears from the creator's access
+   * list. The original creator can never leave their own calendar. */
+  async leaveICloudCalendar(
+    principal: any,
+    calendarId: string,
+    requestedOwnerId?: unknown,
+  ): Promise<ApiResult> {
+    const ownerId = boundedPlainText(requestedOwnerId, 128);
+    if (!ownerId || !validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'ownerId and a valid calendarId are required' });
+    }
+    if (ownerId === principal.principalId) {
+      return result(403, { error: 'the original creator cannot leave their own calendar' });
+    }
+
+    const calendarKey = this.keys.icloudCalendarSharing(ownerId, calendarId);
+    const [calendar, account] = await Promise.all([
+      this.store.getJSON(calendarKey),
+      this.store.getJSON(this.keys.principal(principal.principalId)),
+    ]);
+    if (!calendar || calendar.deletedAt) {
+      await this.store.del(this.keys.receivedICloudCalendar(
+        principal.principalId,
+        ownerId,
+        calendarId,
+      ));
+      return result(200, { left: true });
+    }
+
+    const identityEmails = new Set(
+      this.recipientIdentities(account).map((identity) => identity.email),
+    );
+    const matchesCurrentUser = (recipient: any) =>
+      recipient?.userId === principal.principalId
+        || this.recipientEmails(recipient).some((email) => identityEmails.has(email));
+    const existingRecipients = Array.isArray(calendar.recipients)
+      ? calendar.recipients
+      : [];
+    const removedRecipients = existingRecipients.filter(matchesCurrentUser);
+    const recipients = existingRecipients.filter((recipient: any) =>
+      !matchesCurrentUser(recipient),
+    );
+
+    const deletes: Promise<any>[] = [
+      this.store.del(this.keys.receivedICloudCalendar(
+        principal.principalId,
+        ownerId,
+        calendarId,
+      )),
+    ];
+    const removedEmails = new Set<string>();
+    for (const recipient of removedRecipients) {
+      for (const email of this.recipientEmails(recipient)) removedEmails.add(email);
+      if (recipient?.userId) {
+        deletes.push(this.store.del(this.keys.receivedICloudCalendar(
+          String(recipient.userId),
+          ownerId,
+          calendarId,
+        )));
+      }
+    }
+    for (const email of removedEmails) {
+      deletes.push(this.store.del(this.keys.pendingICloudCalendarInvitation(
+        this.core.emailHash(email),
+        ownerId,
+        calendarId,
+      )));
+    }
+
+    if (removedRecipients.length > 0) {
+      const now = new Date().toISOString();
+      await this.store.putJSON(calendarKey, {
+        ...calendar,
+        recipients,
+        recipientCount: recipients.length,
+        updatedAt: now,
+      });
+    }
+    await Promise.all(deletes);
+    return result(200, { left: true });
+  }
+
   /** Saves the canonical calendar share object and all recipient indexes in
    * S3. As with shared events, a recipient is linked to a stable principal
    * whenever their verified e-mail already belongs to an app account. */
@@ -1678,6 +1776,13 @@ export class CalendarService {
 
     const key = this.keys.icloudCalendarSharing(ownerId, calendarId);
     const existing = context.calendar;
+    const expectedUpdatedAt = boundedPlainText(body.expectedUpdatedAt, 128);
+    if (expectedUpdatedAt && existing?.updatedAt !== expectedUpdatedAt) {
+      return result(409, {
+        error: 'calendar metadata changed on another device',
+        updatedAt: existing?.updatedAt ?? null,
+      });
+    }
     const ownerAccount = await this.store.getJSON(this.keys.principal(ownerId));
     const ownerIdentities = this.recipientIdentities(ownerAccount);
     const ownerEmails = new Set(ownerIdentities.map((identity) => identity.email));
@@ -1691,16 +1796,44 @@ export class CalendarService {
       const email = normalizeEmail(recipient?.email);
       if (email) existingByEmail.set(email, recipient);
     }
+    const removedRecipientEmails = new Set<string>(
+      (Array.isArray(body.removedRecipientEmails) ? body.removedRecipientEmails : [])
+        .map(normalizeEmail)
+        .filter((email: string | null): email is string => Boolean(email)),
+    );
+    if (body.preserveUnmentionedRecipients === true) {
+      // A QR/App Clip recipient can accept while the owner's sharing sheet is
+      // open. Merging unmentioned server rows prevents a later Save from that
+      // stale sheet from revoking the freshly accepted user. Revocation is
+      // always explicit through removedRecipientEmails.
+      for (const [email, recipient] of existingByEmail) {
+        if (!removedRecipientEmails.has(email) && !recipientsByEmail.has(email)) {
+          recipientsByEmail.set(email, {
+            email,
+            access: this.recipientAccess(recipient),
+          });
+        }
+      }
+    }
+    for (const email of removedRecipientEmails) recipientsByEmail.delete(email);
+    if (recipientsByEmail.size > 100) {
+      return result(400, { error: 'no more than 100 recipients are allowed' });
+    }
     const now = new Date().toISOString();
     const recipients = await Promise.all(
       [...recipientsByEmail.values()]
         .sort((a, b) => a.email.localeCompare(b.email))
         .map(async (recipient) => {
           const previous = existingByEmail.get(recipient.email);
+          // An e-mail invitation must stay pending until that exact recipient
+          // accepts it. A later Save from the owner must not silently turn a
+          // pending invitation into active access merely because the e-mail is
+          // already linked to a Cloud Calendars account.
+          const preservePending = previous?.isPending === true;
           const accountRef = await this.store.getJSON(
             this.keys.accountEmail(this.core.emailHash(recipient.email)),
           );
-          const recipientPrincipalId = accountRef?.principalId
+          const recipientPrincipalId = !preservePending && accountRef?.principalId
             && accountRef.principalId !== ownerId
             ? String(accountRef.principalId)
             : null;
@@ -1723,9 +1856,9 @@ export class CalendarService {
             emails,
             identities,
             access: recipient.access,
-            isPending: recipientPrincipalId == null,
+            isPending: preservePending || recipientPrincipalId == null,
             invitedAt: previous?.invitedAt ?? now,
-            acceptedAt: recipientPrincipalId
+            acceptedAt: !preservePending && recipientPrincipalId
               ? previous?.acceptedAt ?? now
               : null,
             updatedAt: now,
@@ -1853,6 +1986,234 @@ export class CalendarService {
     });
   }
 
+  /** Marks selected e-mail recipients as pending and sends (or re-sends) their
+   * invitation. Saving sharing metadata and delivering mail are deliberately
+   * separate operations so App Clip/QR recipients remain unaffected. */
+  async inviteICloudCalendarRecipients(
+    principal: any,
+    calendarId: string,
+    body: any,
+  ): Promise<ApiResult> {
+    if (!validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'invalid iCloud calendar identifier' });
+    }
+    const context = await this.iCloudCalendarAccessContext(
+      principal,
+      calendarId,
+      body.ownerId,
+      false,
+    );
+    if (!context || context.access !== 'owner' || !context.calendar) {
+      return result(403, { error: 'Owner access is required to invite calendar recipients' });
+    }
+
+    const emails = [...new Set(
+      (Array.isArray(body.emails) ? body.emails : [])
+        .map(normalizeEmail)
+        .filter((email: string | null): email is string => Boolean(email)),
+    )];
+    if (emails.length === 0 || emails.length > 50) {
+      return result(400, { error: 'between 1 and 50 invitation emails are required' });
+    }
+
+    const emailSet = new Set(emails);
+    const now = new Date().toISOString();
+    const previousRecipients = Array.isArray(context.calendar.recipients)
+      ? context.calendar.recipients
+      : [];
+    const matched = previousRecipients.filter((recipient: any) =>
+      emailSet.has(normalizeEmail(recipient?.email) ?? ''),
+    );
+    if (matched.length !== emails.length) {
+      return result(409, { error: 'save every invitation recipient before sending email' });
+    }
+
+    const previousUserIds = matched
+      .map((recipient: any) => boundedPlainText(recipient?.userId, 128))
+      .filter((value: string | null): value is string => Boolean(value));
+    const recipients = previousRecipients.map((recipient: any) => {
+      const email = normalizeEmail(recipient?.email);
+      if (!email || !emailSet.has(email)) return recipient;
+      return {
+        ...recipient,
+        id: `invited:${hashKey(email)}`,
+        userId: null,
+        email,
+        invitedEmail: email,
+        emails: [email],
+        identities: [],
+        isPending: true,
+        acceptedAt: null,
+        invitedAt: recipient?.invitedAt ?? now,
+        invitationSentAt: now,
+        updatedAt: now,
+      };
+    });
+    const calendar = {
+      ...context.calendar,
+      recipients,
+      recipientCount: recipients.length,
+      updatedAt: now,
+    };
+    await this.store.putJSON(
+      this.keys.icloudCalendarSharing(context.ownerId, calendarId),
+      calendar,
+    );
+
+    const invitedRecipients = recipients.filter((recipient: any) =>
+      emailSet.has(normalizeEmail(recipient?.email) ?? ''),
+    );
+    const indexWrites: Promise<any>[] = invitedRecipients.map((recipient: any) =>
+      this.store.putJSON(this.keys.pendingICloudCalendarInvitation(
+        this.core.emailHash(recipient.email),
+        context.ownerId,
+        calendarId,
+      ), {
+        ownerId: context.ownerId,
+        calendarId,
+        title: calendar.title,
+        color: calendar.color,
+        timeZone: calendar.timeZone,
+        email: recipient.email,
+        recipientId: recipient.id,
+        userId: null,
+        access: recipient.access,
+        isPending: true,
+        invitedAt: recipient.invitedAt,
+        invitationSentAt: now,
+        acceptedAt: null,
+        updatedAt: now,
+        revokedAt: null,
+        revokedReason: null,
+      }),
+    );
+    indexWrites.push(...previousUserIds.map((userId) => this.store.del(
+      this.keys.receivedICloudCalendar(userId, context.ownerId, calendarId),
+    )));
+    await Promise.all(indexWrites);
+
+    const senderAccount = await this.store.getJSON(
+      this.keys.principal(principal.principalId),
+    );
+    const senderIdentities = this.recipientIdentities(senderAccount);
+    const senderEmail = senderIdentities.find((identity) =>
+      identity.provider === principal.identityProvider,
+    )?.email ?? senderIdentities[0]?.email ?? null;
+    await Promise.all(invitedRecipients.map((recipient: any) =>
+      this.email.sendSharedCalendarInvitation({
+        email: recipient.email,
+        access: this.recipientAccess(recipient),
+        calendar,
+        ownerId: context.ownerId,
+        calendarId,
+        senderEmail,
+      }),
+    ));
+
+    return result(201, {
+      invitedCount: invitedRecipients.length,
+      calendar: await this.publicICloudCalendarSharing({ ...context, calendar }),
+    });
+  }
+
+  /** Lists unaccepted calendar invitations for every verified account e-mail. */
+  async pendingICloudCalendarInvitations(principal: any): Promise<ApiResult> {
+    const account = await this.store.getJSON(this.keys.principal(principal.principalId));
+    const emails = [...new Set(
+      this.recipientIdentities(account).map((identity) => identity.email),
+    )];
+    if (emails.length === 0) return result(200, { invitations: [] });
+
+    const indexed = (await Promise.all(emails.map(async (email) => {
+      const prefix = this.keys.pendingICloudCalendarInvitations(this.core.emailHash(email));
+      const objectKeys = await this.store.listKeys(prefix);
+      return Promise.all(objectKeys.map(async (key) => ({
+        key,
+        email,
+        ref: await this.store.getJSON(key),
+      })));
+    }))).flat();
+
+    const invitations = new Map<string, any>();
+    const staleKeys: string[] = [];
+    for (const value of indexed) {
+      const ownerId = String(value.ref?.ownerId ?? '');
+      const calendarId = String(value.ref?.calendarId ?? '');
+      if (!ownerId || !validICloudCalendarShareId(calendarId) || value.ref?.revokedAt) {
+        if (!value.ref?.revokedAt) staleKeys.push(value.key);
+        continue;
+      }
+      const calendar = await this.store.getJSON(
+        this.keys.icloudCalendarSharing(ownerId, calendarId),
+      );
+      const recipient = (Array.isArray(calendar?.recipients) ? calendar.recipients : [])
+        .find((item: any) => normalizeEmail(item?.email) === value.email);
+      if (!calendar || calendar.deletedAt || !recipient || recipient.isPending !== true) {
+        if (!recipient || recipient?.isPending !== false) staleKeys.push(value.key);
+        continue;
+      }
+
+      const ownerAccount = await this.store.getJSON(this.keys.principal(ownerId));
+      const ownerEmail = this.recipientIdentities(ownerAccount)[0]?.email ?? null;
+      const identity = `${ownerId}:${calendarId}`;
+      invitations.set(identity, {
+        id: hashKey(identity),
+        ownerId,
+        ownerEmail,
+        calendarId,
+        title: String(calendar.title ?? 'Shared calendar').slice(0, 512),
+        color: /^#[0-9a-fA-F]{6}$/.test(String(calendar.color ?? ''))
+          ? String(calendar.color).toUpperCase()
+          : '#0088FF',
+        timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
+        access: this.recipientAccess(recipient),
+        invitedAt: recipient.invitedAt ?? value.ref?.invitedAt ?? null,
+        senderEmail: ownerEmail,
+      });
+    }
+    await Promise.all(staleKeys.map((key) => this.store.del(key)));
+    return result(200, {
+      invitations: [...invitations.values()].sort((a, b) =>
+        String(b.invitedAt ?? '').localeCompare(String(a.invitedAt ?? '')),
+      ),
+    });
+  }
+
+  async declinePendingICloudCalendarInvitation(
+    principal: any,
+    calendarId: string,
+    body: any,
+  ): Promise<ApiResult> {
+    const ownerId = boundedPlainText(body.ownerId, 128);
+    if (!ownerId || !validICloudCalendarShareId(calendarId)) {
+      return result(400, { error: 'ownerId and a valid calendarId are required' });
+    }
+    const account = await this.store.getJSON(this.keys.principal(principal.principalId));
+    const emails = new Set(this.recipientIdentities(account).map((identity) => identity.email));
+    const key = this.keys.icloudCalendarSharing(ownerId, calendarId);
+    const calendar = await this.store.getJSON(key);
+    if (!calendar) return result(404, { error: 'pending invitation not found' });
+    const removed = (Array.isArray(calendar.recipients) ? calendar.recipients : [])
+      .filter((recipient: any) => recipient?.isPending === true
+        && emails.has(normalizeEmail(recipient?.email) ?? ''));
+    if (removed.length === 0) return result(404, { error: 'pending invitation not found' });
+    const recipients = calendar.recipients.filter((recipient: any) => !removed.includes(recipient));
+    await this.store.putJSON(key, {
+      ...calendar,
+      recipients,
+      recipientCount: recipients.length,
+      updatedAt: new Date().toISOString(),
+    });
+    await Promise.all(removed.map((recipient: any) => this.store.del(
+      this.keys.pendingICloudCalendarInvitation(
+        this.core.emailHash(normalizeEmail(recipient.email)!),
+        ownerId,
+        calendarId,
+      ),
+    )));
+    return result(200, { declined: true });
+  }
+
   /** Keeps the last shared snapshot as a tombstone when the owner deletes the
    * local calendar. Recipients retain a frozen, struck-through copy instead of
    * seeing the calendar and all of its events disappear without explanation. */
@@ -1953,6 +2314,17 @@ export class CalendarService {
       return result(409, { error: 'deleted calendars can no longer sync events' });
     }
 
+    const existingSnapshot = await this.store.getJSON(
+      this.keys.icloudCalendarEvents(context.ownerId, calendarId),
+    );
+    const expectedUpdatedAt = boundedPlainText(body.expectedUpdatedAt, 128);
+    if (expectedUpdatedAt && existingSnapshot?.updatedAt !== expectedUpdatedAt) {
+      return result(409, {
+        error: 'calendar events changed on another device',
+        updatedAt: existingSnapshot?.updatedAt ?? null,
+      });
+    }
+
     const rawEvents = Array.isArray(body.events) ? body.events : null;
     if (!rawEvents) return result(400, { error: 'events must be an array' });
     if (rawEvents.length > 5000) {
@@ -1976,7 +2348,7 @@ export class CalendarService {
       if (!title || !start || !end || Date.parse(end) < Date.parse(start)) {
         return result(400, { error: 'every event requires a title, start, and end' });
       }
-      const location = optionalPlainText(raw?.location, 2048);
+      const location = optionalMultilinePlainText(raw?.location, 2048);
       const eventUrl = optionalEventURL(raw?.url);
       if (eventUrl === undefined && raw?.url != null && raw?.url !== '') {
         return result(400, { error: 'an event URL is invalid' });
@@ -2477,12 +2849,15 @@ function boundedPlainText(value: unknown, maximumLength: number): string | null 
   return normalized;
 }
 
-function optionalPlainText(value: unknown, maximumLength: number): string | null {
+function optionalMultilinePlainText(value: unknown, maximumLength: number): string | null {
   if (value == null || value === '') return null;
   if (typeof value !== 'string') return null;
-  const normalized = value.trim();
+  // EventKit represents a selected place as a display title followed by its
+  // postal address on a second line. Preserve that meaningful newline while
+  // still rejecting every other control character.
+  const normalized = value.replace(/\r\n?/g, '\n').trim();
   if (!normalized || normalized.length > maximumLength) return null;
-  if (/[\u0000-\u001f\u007f]/.test(normalized)) return null;
+  if (/[\u0000-\u0009\u000b\u000c\u000e-\u001f\u007f]/.test(normalized)) return null;
   return normalized;
 }
 

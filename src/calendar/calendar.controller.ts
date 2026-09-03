@@ -145,6 +145,47 @@ export class CalendarController {
     return reply(res, await this.svc.acceptICloudCalendarInvitation(req.principal, body ?? {}));
   }
 
+  @Delete('icloud-calendars/:id/access')
+  @UseGuards(AuthGuard)
+  async leaveICloudCalendar(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Query('ownerId') ownerId: string | undefined,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(
+      res,
+      await this.svc.leaveICloudCalendar(req.principal, id, ownerId),
+    );
+  }
+
+  @Get('icloud-calendar-invitations/pending')
+  @UseGuards(AuthGuard)
+  async pendingICloudCalendarInvitations(
+    @Req() req: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(res, await this.svc.pendingICloudCalendarInvitations(req.principal));
+  }
+
+  @Post('icloud-calendar-invitations/pending/:calendarId/decline')
+  @UseGuards(AuthGuard)
+  async declinePendingICloudCalendarInvitation(
+    @Req() req: any,
+    @Param('calendarId') calendarId: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(
+      res,
+      await this.svc.declinePendingICloudCalendarInvitation(
+        req.principal,
+        calendarId,
+        body ?? {},
+      ),
+    );
+  }
+
   @Put('icloud-calendars/:id/sharing')
   @UseGuards(AuthGuard)
   async saveICloudCalendarSharing(
@@ -154,6 +195,20 @@ export class CalendarController {
     @Res({ passthrough: true }) res: Response,
   ) {
     return reply(res, await this.svc.saveICloudCalendarSharing(req.principal, id, body ?? {}));
+  }
+
+  @Post('icloud-calendars/:id/invitations')
+  @UseGuards(AuthGuard)
+  async inviteICloudCalendarRecipients(
+    @Req() req: any,
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    return reply(
+      res,
+      await this.svc.inviteICloudCalendarRecipients(req.principal, id, body ?? {}),
+    );
   }
 
   @Delete('icloud-calendars/:id/sharing')

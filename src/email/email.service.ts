@@ -307,9 +307,13 @@ export class EmailService {
     try {
       const url = new URL(raw);
       const apiHost = new URL(this.API_URL).hostname;
+      const allowedInvitationPaths = new Set([
+        '/event-invites/open',
+        '/icloud-calendar-invites/open',
+      ]);
       if (url.protocol !== 'https:'
           || url.hostname !== apiHost
-          || url.pathname !== '/event-invites/open') {
+          || !allowedInvitationPaths.has(url.pathname)) {
         return null;
       }
       return await QRCode.toBuffer(url.toString(), {
@@ -488,6 +492,63 @@ export class EmailService {
     await this.sendEmail(
       email,
       `${fromName} invited you: ${event.title}`,
+      this.shell(body),
+      { replyTo: senderEmail },
+    );
+  }
+
+  /** Sends a calendar invitation after the pending role has been persisted.
+   * The link is server-owned so Email and QR never depend on the App Clip URL. */
+  async sendSharedCalendarInvitation({
+    email,
+    access,
+    calendar,
+    ownerId,
+    calendarId,
+    senderEmail,
+  }: any): Promise<void> {
+    const invitationURL = new URL('/icloud-calendar-invites/open', this.API_URL);
+    invitationURL.searchParams.set('o', String(ownerId));
+    invitationURL.searchParams.set('c', String(calendarId));
+
+    const role = access === 'owner' ? 'Owner' : access === 'writer' ? 'Writer' : 'Reader';
+    const sender = String(senderEmail || calendar?.ownerEmail || 'Cloud Calendars');
+    const title = String(calendar?.title || 'Shared calendar');
+    const color = this.validEventColor(calendar?.color);
+    const permission = access === 'owner'
+      ? 'You can view, edit, share, and manage access after accepting.'
+      : access === 'writer'
+        ? 'You can view and edit its events after accepting.'
+        : 'You can view its synchronized events after accepting.';
+    const qrImageURL = new URL(this.sharedEventQRCodeURL(invitationURL.toString()));
+    // Gmail's image proxy can cache a previous failed response for the same
+    // URL. Give every sent/resend invitation a fresh image URL so a repaired
+    // QR endpoint is fetched again immediately.
+    qrImageURL.searchParams.set('v', Date.now().toString());
+    const qrURL = qrImageURL.toString();
+    const body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">Calendar invitation</h1>
+    <p style="margin:0 auto 8px;max-width:44ch;color:rgba(255,255,255,0.78);font-size:15px;text-align:center;">From <strong style="color:#ffffff;">${this.esc(sender)}</strong></p>
+    <p style="margin:0 auto 22px;max-width:42ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">You were invited as <strong style="color:#ffffff;">${role}</strong>. ${permission}</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:rgba(255,255,255,0.10);border-radius:10px;">
+      <tr>
+        <td width="4" style="width:4px;background:${color};border-radius:10px 0 0 10px;">&nbsp;</td>
+        <td style="padding:16px 18px;">
+          <div style="font-weight:700;font-size:18px;color:#ffffff;">${this.esc(title)}</div>
+          <div style="margin-top:8px;color:rgba(255,255,255,0.70);font-size:14px;">Calendar · ${role}</div>
+        </td>
+      </tr>
+    </table>
+    <div style="text-align:center;margin:24px 0 0;">${this.button(invitationURL.toString(), 'Open calendar')}</div>
+    <div style="margin:24px auto 0;text-align:center;">
+      <div style="display:inline-block;background:#ffffff;padding:14px;border-radius:18px;">
+        <img src="${this.esc(qrURL)}" width="240" height="240" alt="QR code to open the calendar" style="display:block;width:240px;height:240px;" />
+      </div>
+      <p style="margin:10px 0 0;color:rgba(255,255,255,0.62);font-size:13px;">Scan with Cloud Calendars</p>
+    </div>
+    <p style="margin:16px 0 0;text-align:center;color:rgba(255,255,255,0.48);font-size:12px;">Sign in with ${this.esc(email)} to accept the assigned access.</p>`;
+    await this.sendEmail(
+      email,
+      `${sender} invited you: ${title}`,
       this.shell(body),
       { replyTo: senderEmail },
     );
