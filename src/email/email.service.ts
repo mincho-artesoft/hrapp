@@ -498,7 +498,7 @@ export class EmailService {
   }
 
   /** Sends a calendar invitation after the pending role has been persisted.
-   * The link is server-owned so Email and QR never depend on the App Clip URL. */
+   * The server URL is shared through both the e-mail button and QR code. */
   async sendSharedCalendarInvitation({
     email,
     access,

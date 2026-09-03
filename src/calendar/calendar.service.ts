@@ -417,19 +417,37 @@ export class CalendarService {
     if (eventURL) deepLinkParams.set('eventURL', eventURL);
 
     const fullAppURL = `cloudcalendars://shared-event?${deepLinkParams.toString()}`;
-    const feedURL = `https://${this.core.FEED_HOST}/f/${encodeURIComponent(feedId)}.ics`;
-    const when = formatInvitationDate(start, end, timeZone, isAllDay);
+    const when = formatInvitationDateParts(start, end, timeZone, isAllDay);
     const cancelled = event.status === 'cancelled';
+    const senderPrincipalId = String(
+      acl?.feeds?.[feedId]?.principalId
+        ?? event.createdBy
+        ?? event.ownerId
+        ?? acl?.owner
+        ?? '',
+    );
+    const [senderAccount, calendarMeta] = senderPrincipalId
+      ? await Promise.all([
+        this.store.getJSON(this.keys.principal(senderPrincipalId)),
+        this.store.getJSON(this.keys.meta(feedIndex.calId)),
+      ])
+      : [null, null];
+    const senderEmail = this.recipientIdentities(senderAccount)[0]?.email ?? null;
+    const senderName = boundedPlainText(calendarMeta?.name, 160);
+    const sender = senderName && senderEmail && senderName !== senderEmail
+      ? `${senderName} <${senderEmail}>`
+      : senderEmail ?? senderName ?? 'Cloud Calendars';
 
     return {
       status: 200,
       html: eventInvitationPage({
         title,
-        when,
+        date: when.date,
+        time: when.time,
         location,
         color,
         fullAppURL,
-        feedURL,
+        sender,
         cancelled,
       }),
     };
@@ -1493,20 +1511,29 @@ export class CalendarService {
     deepLink.searchParams.set('c', calendarId);
     deepLink.searchParams.set('title', calendar.title ?? 'Shared calendar');
     deepLink.searchParams.set('color', calendar.color ?? '#0088FF');
-    const title = escapeHTML(calendar.title ?? 'Shared calendar');
+    const title = String(calendar.title ?? 'Shared calendar');
     const color = /^#[0-9a-fA-F]{6}$/.test(String(calendar.color ?? ''))
       ? String(calendar.color)
       : '#0088FF';
+    const ownerAccount = await this.store.getJSON(this.keys.principal(ownerId));
+    const sender = this.recipientIdentities(ownerAccount)[0]?.email
+      ?? normalizeEmail(calendar.ownerEmail)
+      ?? 'Cloud Calendars';
     return {
       status: 200,
       html: eventInvitationDocument(`
-        <section class="card" style="--event-color:${escapeHTML(color)}">
-          <h1>${title}</h1>
-          <p>A calendar was shared with you through Cloud Calendars.</p>
+        <section class="clip-content" data-view="app-clip-preview" style="--event-color:${escapeHTML(color)}">
+          <div class="sender-line">From <strong>${escapeHTML(sender)}</strong></div>
+          <div class="invitation-label"><span class="symbol" aria-hidden="true">▦</span><span>Calendar invitation</span></div>
+          <div class="preview-card calendar-preview">
+            <span class="symbol preview-symbol" aria-hidden="true">▦</span>
+            <strong class="event-title">${escapeHTML(title)}</strong>
+          </div>
           <div class="actions">
             <a class="primary" href="${escapeHTML(deepLink.toString())}">Open in Cloud Calendars</a>
           </div>
-        </section>`, String(calendar.title ?? 'Shared calendar')),
+          <div class="privacy-note"><span aria-hidden="true">♢</span><span>This page previews the calendar invitation. Open Cloud Calendars to add it to Shared with me.</span></div>
+        </section>`, title, 'Shared calendar'),
     };
   }
 
@@ -2902,20 +2929,34 @@ function safeTimeZone(value: string | null): string | null {
   }
 }
 
-function formatInvitationDate(
+function formatInvitationDateParts(
   start: Date,
   end: Date,
   timeZone: string,
   isAllDay: boolean,
-): string {
-  const options: Intl.DateTimeFormatOptions = isAllDay
-    ? { dateStyle: 'full', timeZone }
-    : { dateStyle: 'full', timeStyle: 'short', timeZone };
-  const formatter = new Intl.DateTimeFormat('en-US', options);
+): { date: string; time: string | null } {
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'full',
+    timeZone,
+  });
   try {
-    return formatter.formatRange(start, end);
+    if (isAllDay) {
+      return { date: dateFormatter.formatRange(start, end), time: null };
+    }
+    const timeFormatter = new Intl.DateTimeFormat('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      timeZone,
+    });
+    return {
+      date: dateFormatter.format(start),
+      time: timeFormatter.formatRange(start, end),
+    };
   } catch {
-    return `${formatter.format(start)} – ${formatter.format(end)}`;
+    return {
+      date: dateFormatter.format(start),
+      time: isAllDay ? null : `${start.toISOString()} – ${end.toISOString()}`,
+    };
   }
 }
 
@@ -2928,7 +2969,11 @@ function escapeHTML(value: unknown): string {
     .replace(/'/g, '&#39;');
 }
 
-function eventInvitationDocument(content: string, title: string): string {
+function eventInvitationDocument(
+  content: string,
+  title: string,
+  screenTitle = 'Shared event',
+): string {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -2939,26 +2984,41 @@ function eventInvitationDocument(content: string, title: string): string {
   <style>
     :root { color-scheme: dark; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px; background:linear-gradient(145deg,#061a33,#0b4d7a); color:#fff; }
-    main { width:min(100%,560px); }
-    .brand { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:24px; font-weight:750; }
-    .brand span:first-child { display:grid; place-items:center; width:42px; height:42px; border-radius:12px; background:#147ee8; font-size:24px; }
-    .card { padding:28px; border:1px solid rgba(255,255,255,.16); border-radius:28px; background:rgba(255,255,255,.10); box-shadow:0 24px 70px rgba(0,0,0,.25); backdrop-filter:blur(16px); }
-    h1 { margin:0 0 10px; font-size:clamp(26px,7vw,38px); line-height:1.08; overflow-wrap:anywhere; }
-    p { margin:0; color:rgba(255,255,255,.72); line-height:1.5; }
-    .details { margin:24px 0; padding:18px; border-left:4px solid var(--event-color,#0A84FF); border-radius:14px; background:rgba(0,0,0,.16); }
-    .detail { display:flex; gap:10px; margin:8px 0; color:rgba(255,255,255,.88); }
-    .actions { display:grid; gap:12px; }
-    a { display:block; padding:15px 18px; border-radius:999px; text-align:center; text-decoration:none; font-weight:750; }
-    .primary { background:#fff; color:#07335a; }
-    .secondary { border:1px solid rgba(255,255,255,.32); color:#fff; }
-    .hint { margin-top:18px; text-align:center; font-size:13px; }
-    .cancelled { display:inline-block; margin-bottom:14px; padding:6px 10px; border-radius:999px; background:#ff453a; font-weight:750; }
+    body { margin:0; min-height:100vh; min-height:100svh; background:linear-gradient(145deg,#051c3b 0%,#0a4d80 100%); color:#fff; }
+    main { width:min(100%,560px); margin:0 auto; padding:28px 22px max(28px,env(safe-area-inset-bottom)); }
+    .clip-header { display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; margin-bottom:22px; }
+    .clip-icon { display:block; width:86px; height:86px; border-radius:20px; object-fit:cover; }
+    .brand-name { color:rgba(255,255,255,.85); font-size:17px; font-weight:650; }
+    .screen-title { margin:0; color:#fff; font-size:clamp(30px,8vw,38px); line-height:1.08; font-weight:800; overflow-wrap:anywhere; }
+    .clip-content { width:100%; }
+    .sender-line { margin:-4px 4px 20px; color:rgba(255,255,255,.72); font-size:14px; line-height:19px; text-align:center; overflow-wrap:anywhere; }
+    .sender-line strong { color:#fff; font-weight:700; }
+    .invitation-label { display:flex; align-items:center; gap:9px; margin:0 4px 10px; color:rgba(255,255,255,.72); font-size:14px; font-weight:650; line-height:18px; }
+    .symbol { display:inline-flex; width:18px; flex:0 0 18px; align-items:center; justify-content:center; font-size:17px; line-height:1; }
+    .preview-card { position:relative; display:flex; flex-direction:column; gap:7px; width:100%; padding:7px 11px 7px 15px; border-radius:6px; overflow:hidden; background:color-mix(in srgb,var(--event-color,#0A84FF) 30%,transparent); color:var(--event-color,#0A84FF); }
+    .preview-card::before { content:""; position:absolute; inset:5px auto 5px 4px; width:3px; border-radius:999px; background:var(--event-color,#0A84FF); }
+    .calendar-preview { min-height:52px; flex-direction:row; align-items:center; gap:10px; padding-top:10px; padding-bottom:10px; border-radius:9px; }
+    .preview-symbol { margin-left:1px; }
+    .event-title { font-size:16px; line-height:20px; font-weight:750; overflow-wrap:anywhere; }
+    .preview-row { display:flex; align-items:flex-start; gap:7px; font-size:14px; line-height:18px; font-weight:650; white-space:pre-line; }
+    .actions { display:grid; gap:12px; margin-top:22px; }
+    a { display:block; padding:14px 18px; border-radius:999px; text-align:center; text-decoration:none; font-size:17px; line-height:22px; font-weight:700; }
+    .primary { background:#fff; color:#06335f; }
+    .privacy-note { display:flex; align-items:flex-start; gap:9px; margin-top:18px; color:rgba(255,255,255,.72); font-size:13px; line-height:18px; }
+    .cancelled { align-self:flex-start; margin:0 0 10px; padding:6px 10px; border-radius:999px; background:#ff453a; color:#fff; font-size:13px; font-weight:750; }
+    .message-card { padding:24px; border:1px solid rgba(255,255,255,.16); border-radius:24px; background:rgba(255,255,255,.10); }
+    .message-card h2 { margin:0 0 10px; font-size:25px; line-height:1.12; }
+    .message-card p { margin:0; color:rgba(255,255,255,.72); line-height:1.5; }
+    @media (max-width:380px) { main { padding-inline:18px; } .clip-icon { width:78px; height:78px; } }
   </style>
 </head>
 <body>
   <main>
-    <div class="brand"><span>🗓</span><span>Cloud Calendars</span></div>
+    <header class="clip-header">
+      <img class="clip-icon" src="https://www.cloud-calendars.com/icons/icon-192.png" width="86" height="86" alt="" />
+      <div class="brand-name">Cloud Calendars</div>
+      <h1 class="screen-title">${escapeHTML(screenTitle)}</h1>
+    </header>
     ${content}
   </main>
 </body>
@@ -2967,39 +3027,40 @@ function eventInvitationDocument(content: string, title: string): string {
 
 function eventInvitationErrorPage(message: string): string {
   return eventInvitationDocument(`
-    <section class="card">
-      <h1>${escapeHTML(message)}</h1>
+    <section class="message-card">
+      <h2>${escapeHTML(message)}</h2>
       <p>Ask the sender for a new event link.</p>
     </section>`, message);
 }
 
 function eventInvitationPage(input: {
   title: string;
-  when: string;
+  date: string;
+  time: string | null;
   location: string | null;
   color: string;
   fullAppURL: string;
-  feedURL: string;
+  sender: string;
   cancelled: boolean;
 }): string {
   const location = input.location
-    ? `<div class="detail"><span>📍</span><span>${escapeHTML(input.location)}</span></div>`
+    ? `<div class="preview-row"><span class="symbol" aria-hidden="true">⌖</span><span>${escapeHTML(input.location)}</span></div>`
     : '';
   const cancelled = input.cancelled ? '<div class="cancelled">Cancelled</div>' : '';
   return eventInvitationDocument(`
-    <section class="card" style="--event-color:${escapeHTML(input.color)}">
+    <section class="clip-content" data-view="app-clip-preview" style="--event-color:${escapeHTML(input.color)}">
       ${cancelled}
-      <h1>${escapeHTML(input.title)}</h1>
-      <p>Shared with you through Cloud Calendars.</p>
-      <div class="details">
-        <div class="detail"><span>🗓</span><span>${escapeHTML(input.when)}</span></div>
+      <div class="sender-line">From <strong>${escapeHTML(input.sender)}</strong></div>
+      <div class="invitation-label"><span class="symbol" aria-hidden="true">▦</span><span>${escapeHTML(input.date)}</span></div>
+      <div class="preview-card">
+        <strong class="event-title">${escapeHTML(input.title)}</strong>
+        ${input.time ? `<div class="preview-row"><span class="symbol" aria-hidden="true">◷</span><span>${escapeHTML(input.time)}</span></div>` : ''}
         ${location}
       </div>
       <div class="actions">
         <a class="primary" href="${escapeHTML(input.fullAppURL)}">Open in Cloud Calendars</a>
-        <a class="secondary" href="${escapeHTML(input.feedURL)}">Download calendar event</a>
       </div>
-      <p class="hint">This link opens the full app. It does not use the App Clip.</p>
+      <div class="privacy-note"><span aria-hidden="true">♢</span><span>This page previews the event. Open Cloud Calendars to add and synchronize it.</span></div>
     </section>`, input.title);
 }
 

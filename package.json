@@ -6,6 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "test:sharing": "ts-node test/calendar-sharing.integration.ts",
     "start:dev": "PORT=3000 ts-node src/local.ts",
     "package": "bash deploy.sh package",
     "deploy": "bash deploy.sh"
