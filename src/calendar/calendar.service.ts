@@ -1531,6 +1531,7 @@ export class CalendarService {
           </div>
           <div class="actions">
             <a class="primary" href="${escapeHTML(deepLink.toString())}">Open in Cloud Calendars</a>
+            <a class="secondary" href="${escapeHTML(CLOUD_CALENDARS_APP_STORE_URL)}">Download Cloud Calendars</a>
           </div>
           <div class="privacy-note"><span aria-hidden="true">♢</span><span>This page previews the calendar invitation. Open Cloud Calendars to add it to Shared with me.</span></div>
         </section>`, title, 'Shared calendar'),
@@ -2969,6 +2970,8 @@ function escapeHTML(value: unknown): string {
     .replace(/'/g, '&#39;');
 }
 
+const CLOUD_CALENDARS_APP_STORE_URL = 'https://apps.apple.com/app/id6744690319';
+
 function eventInvitationDocument(
   content: string,
   title: string,
@@ -3004,6 +3007,7 @@ function eventInvitationDocument(
     .actions { display:grid; gap:12px; margin-top:22px; }
     a { display:block; padding:14px 18px; border-radius:999px; text-align:center; text-decoration:none; font-size:17px; line-height:22px; font-weight:700; }
     .primary { background:#fff; color:#06335f; }
+    .secondary { border:2px solid rgba(255,255,255,.78); background:rgba(255,255,255,.08); color:#fff; }
     .privacy-note { display:flex; align-items:flex-start; gap:9px; margin-top:18px; color:rgba(255,255,255,.72); font-size:13px; line-height:18px; }
     .cancelled { align-self:flex-start; margin:0 0 10px; padding:6px 10px; border-radius:999px; background:#ff453a; color:#fff; font-size:13px; font-weight:750; }
     .message-card { padding:24px; border:1px solid rgba(255,255,255,.16); border-radius:24px; background:rgba(255,255,255,.10); }
@@ -3059,6 +3063,7 @@ function eventInvitationPage(input: {
       </div>
       <div class="actions">
         <a class="primary" href="${escapeHTML(input.fullAppURL)}">Open in Cloud Calendars</a>
+        <a class="secondary" href="${escapeHTML(CLOUD_CALENDARS_APP_STORE_URL)}">Download Cloud Calendars</a>
       </div>
       <div class="privacy-note"><span aria-hidden="true">♢</span><span>This page previews the event. Open Cloud Calendars to add and synchronize it.</span></div>
     </section>`, input.title);

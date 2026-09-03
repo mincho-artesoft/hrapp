@@ -266,6 +266,10 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
   assert.match(eventLanding.html, />Shared event</);
   assert.match(eventLanding.html, /class="preview-card"/);
   assert.match(eventLanding.html, /From <strong>owner@example\.com<\/strong>/);
+  assert.match(
+    eventLanding.html,
+    /href="https:\/\/apps\.apple\.com\/app\/id6744690319">Download Cloud Calendars<\/a>/,
+  );
   assert.doesNotMatch(eventLanding.html, /Download calendar event/);
 
   expectStatus(await service.inviteEventRecipients(owner, eventId, {
@@ -432,6 +436,10 @@ async function testCalendarSharing(service: CalendarService, email: FakeEmailSer
   assert.match(calendarLanding.html, />Shared calendar</);
   assert.match(calendarLanding.html, /class="preview-card calendar-preview"/);
   assert.match(calendarLanding.html, /From <strong>owner@example\.com<\/strong>/);
+  assert.match(
+    calendarLanding.html,
+    /href="https:\/\/apps\.apple\.com\/app\/id6744690319">Download Cloud Calendars<\/a>/,
+  );
 
   let shared = expectStatus(
     await service.iCloudCalendarsSharedWithMe(recipient),
