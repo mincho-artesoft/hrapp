@@ -18,37 +18,45 @@ enum CalendarSearchAppearance {
 }
 
 extension Locale {
+    /// Arabic UI should use Arabic-Indic digits even when the device region
+    /// normally defaults Arabic to Latin digits (for example `ar_BG`).
+    /// Other languages keep the numbering system selected by iOS.
+    var usingAppNumeralSystem: Locale {
+        guard language.languageCode?.identifier == "ar" else { return self }
+
+        var components = Locale.Components(identifier: identifier)
+        components.numberingSystem = "arab"
+        return Locale(components: components)
+    }
+
     /// Locale used for values that are rendered as part of the translated UI.
     /// It follows the app language while retaining the user's region when the
     /// localization itself does not specify one (for example `ar` vs `fr-CA`).
     static var appFormatting: Locale {
-        let localization = AppPreferences.storedExplicitLanguageIdentifier
-            ?? Bundle.main.preferredLocalizations.first
-            ?? Locale.autoupdatingCurrent.identifier
+        let localization = AppPreferences.formattingLanguageIdentifier
         let localizedLocale = Locale(identifier: localization)
         let currentLocale = Locale.autoupdatingCurrent
 
         // Keep the full user locale whenever it already uses the app language.
         // Unlike rebuilding a locale from language + region, this preserves
         // explicit iOS overrides such as 12/24-hour time and date-field order.
+        let resolvedLocale: Locale
         if currentLocale.language.languageCode == localizedLocale.language.languageCode {
-            return currentLocale
+            resolvedLocale = currentLocale
+        } else if localizedLocale.region != nil {
+            resolvedLocale = localizedLocale
+        } else {
+            let globalRegion = GlobalState.region.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !globalRegion.isEmpty {
+                resolvedLocale = Locale(identifier: "\(localization)_\(globalRegion)")
+            } else if let region = Locale.autoupdatingCurrent.region?.identifier {
+                resolvedLocale = Locale(identifier: "\(localization)_\(region)")
+            } else {
+                resolvedLocale = localizedLocale
+            }
         }
 
-        if localizedLocale.region != nil {
-            return localizedLocale
-        }
-
-        let globalRegion = GlobalState.region.trimmingCharacters(in: .whitespacesAndNewlines)
-        if !globalRegion.isEmpty {
-            return Locale(identifier: "\(localization)_\(globalRegion)")
-        }
-
-        if let region = Locale.autoupdatingCurrent.region?.identifier {
-            return Locale(identifier: "\(localization)_\(region)")
-        }
-
-        return localizedLocale
+        return resolvedLocale.usingAppNumeralSystem
     }
 }
 

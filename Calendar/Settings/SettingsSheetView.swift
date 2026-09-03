@@ -29,6 +29,14 @@ struct SettingsSheetView: View {
                 }
             }
         }
+        // `Form` is UIKit-backed and can retain its original semantic layout
+        // and menu labels after an in-app language change. Recreate only the
+        // settings form after the complete preference transaction, leaving
+        // the surrounding draggable menu and its position intact.
+        .id(appPreferences.presentationRevision)
+        .transaction { transaction in
+            transaction.animation = nil
+        }
         .scrollContentBackground(.hidden)
         .background(Color.clear)
         .listRowBackground(Color.clear)
@@ -69,6 +77,8 @@ struct SettingsSheetView: View {
                     }
                     .labelsHidden()
                     .pickerStyle(.menu)
+                    .environment(\.layoutDirection, appPreferences.layoutDirection)
+                    .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, 10)
@@ -89,6 +99,8 @@ struct SettingsSheetView: View {
                     }
                     .labelsHidden()
                     .pickerStyle(.menu)
+                    .environment(\.layoutDirection, appPreferences.layoutDirection)
+                    .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, 10)
@@ -107,6 +119,8 @@ struct SettingsSheetView: View {
                     }
                     .labelsHidden()
                     .pickerStyle(.menu)
+                    .environment(\.layoutDirection, appPreferences.layoutDirection)
+                    .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, 10)
@@ -125,6 +139,8 @@ struct SettingsSheetView: View {
                     }
                     .labelsHidden()
                     .pickerStyle(.menu)
+                    .environment(\.layoutDirection, appPreferences.layoutDirection)
+                    .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, 10)
@@ -151,19 +167,35 @@ struct SettingsSheetView: View {
     }
 
     private func dateFormatOption(_ preference: AppDateFormatPreference) -> Text {
-        let example = appPreferences.dateExample(for: preference)
+        let example = directionallyIsolated(
+            appPreferences.dateExample(for: preference)
+        )
         if preference == .system {
-            return Text(LocalizedStringKey("System")) + Text(verbatim: " (\(example))")
+            let system = NSLocalizedString("System", comment: "System preference")
+            return Text(verbatim: "\(system) (\(example))")
         }
         return Text(verbatim: example)
     }
 
     private func timeFormatOption(_ preference: AppTimeFormatPreference) -> Text {
-        let example = appPreferences.timeExample(for: preference)
+        let example = directionallyIsolated(
+            appPreferences.timeExample(for: preference)
+        )
         if preference == .system {
-            return Text(LocalizedStringKey("System")) + Text(verbatim: " (\(example))")
+            let system = NSLocalizedString("System", comment: "System preference")
+            return Text(verbatim: "\(system) (\(example))")
         }
         return Text(verbatim: example)
+    }
+
+    /// Keep numeric-only date/time examples in the same bidi run as the
+    /// selected application language. Without an isolate, a menu can place
+    /// its indicator on the LTR side when Arabic is active.
+    private func directionallyIsolated(_ value: String) -> String {
+        let start = appPreferences.layoutDirection == .rightToLeft
+            ? "\u{2067}" // Right-to-left isolate
+            : "\u{2066}" // Left-to-right isolate
+        return "\(start)\(value)\u{2069}"
     }
 
     private var notificationContent: some View {
@@ -190,7 +222,7 @@ struct SettingsSheetView: View {
                                 : "exclamationmark.triangle"
                         )
                         .font(.title3)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.orange)
                         .frame(width: 28, height: 28)
 
                         Text(LocalizedStringKey("Weather Alert Notifications"))

@@ -99,7 +99,13 @@ final class AppPreferences: ObservableObject {
     static let shared = AppPreferences()
     nonisolated static let systemLanguageIdentifier = "system"
 
-    @Published var languageIdentifier: String {
+    /// These preference values deliberately are not individually `@Published`.
+    /// Their observers first apply the complete Bundle/Locale/formatter
+    /// transaction and `presentationRevision` publishes exactly once at the
+    /// end. Publishing the selection before `didSet` completed made SwiftUI
+    /// render the previous layout direction, so RTL/LTR appeared one change
+    /// behind inside UIKit-backed controls and the draggable menu.
+    var languageIdentifier: String {
         didSet {
             guard languageIdentifier != oldValue else { return }
             UserDefaults.standard.set(languageIdentifier, forKey: AppPreferenceKey.language)
@@ -107,7 +113,7 @@ final class AppPreferences: ObservableObject {
         }
     }
 
-    @Published var measurementUnits: MeasurementUnitsPreference {
+    var measurementUnits: MeasurementUnitsPreference {
         didSet {
             guard measurementUnits != oldValue else { return }
             UserDefaults.standard.set(
@@ -115,26 +121,35 @@ final class AppPreferences: ObservableObject {
                 forKey: AppPreferenceKey.measurementUnits
             )
             applyFormattingPreferences(refreshWeather: true)
+            publishAppliedPreferences()
         }
     }
 
-    @Published var dateFormat: AppDateFormatPreference {
+    var dateFormat: AppDateFormatPreference {
         didSet {
             guard dateFormat != oldValue else { return }
             UserDefaults.standard.set(dateFormat.rawValue, forKey: AppPreferenceKey.dateFormat)
             applyFormattingPreferences()
+            publishAppliedPreferences()
         }
     }
 
-    @Published var timeFormat: AppTimeFormatPreference {
+    var timeFormat: AppTimeFormatPreference {
         didSet {
             guard timeFormat != oldValue else { return }
             UserDefaults.standard.set(timeFormat.rawValue, forKey: AppPreferenceKey.timeFormat)
             applyFormattingPreferences()
+            publishAppliedPreferences()
         }
     }
 
-    @Published private(set) var interfaceLocale: Locale
+    private(set) var interfaceLocale: Locale
+
+    /// Changes only after a complete preference transaction has been applied
+    /// to Bundle, Locale and the legacy GlobalState formatters. Views use this
+    /// value to refresh after the new values are ready, rather than reacting
+    /// to the earlier `@Published` will-change notification with stale data.
+    private(set) var presentationRevision: UInt = 0
 
     let availableLanguageIdentifiers: [String]
 
@@ -184,6 +199,20 @@ final class AppPreferences: ObservableObject {
             return nil
         }
         return identifier
+    }
+
+    /// The device/app language selected in Settings, independent from the
+    /// Bundle subclass used for the in-app override. Reading
+    /// `Bundle.main.preferredLocalizations` here can keep returning the
+    /// previously overridden Arabic localization while switching back to
+    /// System, which leaves SwiftUI in RTL until the next launch.
+    nonisolated static var preferredSystemLanguageIdentifier: String {
+        Locale.preferredLanguages.first
+            ?? Locale.autoupdatingCurrent.identifier
+    }
+
+    nonisolated static var formattingLanguageIdentifier: String {
+        storedExplicitLanguageIdentifier ?? preferredSystemLanguageIdentifier
     }
 
     func languageDisplayName(for identifier: String) -> String {
@@ -263,6 +292,14 @@ final class AppPreferences: ObservableObject {
         Bundle.useAppLanguage(explicitLanguageIdentifier)
         interfaceLocale = Self.makeInterfaceLocale(for: languageIdentifier)
         applyFormattingPreferences()
+        publishAppliedPreferences()
+    }
+
+    private func publishAppliedPreferences() {
+        presentationRevision &+= 1
+        // `@Published` emits from willSet. Sending manually after incrementing
+        // guarantees Equatable view boundaries observe the new revision and
+        // the already-applied Locale/layout direction in the same refresh.
         objectWillChange.send()
     }
 
@@ -336,20 +373,25 @@ final class AppPreferences: ObservableObject {
 
     private static func makeInterfaceLocale(for identifier: String) -> Locale {
         let localization = identifier == systemLanguageIdentifier
-            ? (Bundle.main.preferredLocalizations.first
-                ?? Locale.autoupdatingCurrent.identifier)
+            ? preferredSystemLanguageIdentifier
             : identifier
         let locale = Locale(identifier: localization)
+        let systemLocale = Locale.autoupdatingCurrent
 
-        if locale.region != nil {
-            return locale
+        let resolvedLocale: Locale
+        if systemLocale.language.languageCode == locale.language.languageCode {
+            // Preserve the device region and its date/time overrides when the
+            // effective app language is already the system language.
+            resolvedLocale = systemLocale
+        } else if locale.region != nil {
+            resolvedLocale = locale
+        } else if let region = systemLocale.region?.identifier {
+            resolvedLocale = Locale(identifier: "\(localization)_\(region)")
+        } else {
+            resolvedLocale = locale
         }
 
-        if let region = Locale.autoupdatingCurrent.region?.identifier {
-            return Locale(identifier: "\(localization)_\(region)")
-        }
-
-        return locale
+        return resolvedLocale.usingAppNumeralSystem
     }
 
     private static func systemTemperatureUnit(for locale: Locale) -> UnitTemperature {

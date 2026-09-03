@@ -134,9 +134,6 @@ struct DraggableMenuView<
                 .edgesIgnoringSafeArea([.top, .bottom])
 //                .animation(.spring(response: 0.3, dampingFraction: 0.8), value: effectiveY)
             }
-            .onAppear {
-                onStateChange(menuState)
-            }
             .onChange(of: menuState) { _, newState in
 //                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                     currentOffsetY = (newState == .full)

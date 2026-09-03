@@ -6,6 +6,7 @@ import CoreLocation
 
 // MARK: - RootView
 struct RootView: View {
+    @ObservedObject private var appPreferences = AppPreferences.shared
     @State private var selectedCalendars = Set<EKCalendar>()
     @State private var showCalendarChooser = false
     @State private var selectedTabDraggableMenuView = 0
@@ -206,8 +207,9 @@ struct RootView: View {
                     let isPortrait = geometry.size.height > geometry.size.width
 
                     VStack(spacing: 0) { // Ensure VStack uses spacing 0 if no explicit spacing is desired
-                        // Тук си избирате кой екран да се покаже според selectedTab
-                        switch selectedTab {
+                        Group {
+                            // Тук си избирате кой екран да се покаже според selectedTab
+                            switch selectedTab {
                         case 0:
                             MonthCalendarView(
                                 viewModel: CalendarViewModel.shared,
@@ -243,7 +245,10 @@ struct RootView: View {
                                 }
                             )
                             .onAppear { loadSingleDayEvents() }
-                            .onReceive(timer) { _ in loadSingleDayEvents() }
+                            .onReceive(timer) { _ in
+                                guard menuState != .full else { return }
+                                loadSingleDayEvents()
+                            }
                             .ignoresSafeArea(.all)
 
                         case 2:
@@ -278,7 +283,10 @@ struct RootView: View {
                                 }
                             )
                             .onAppear { loadMultiDayEvents() }
-                            .onReceive(timer) { _ in loadMultiDayEvents() }
+                            .onReceive(timer) { _ in
+                                guard menuState != .full else { return }
+                                loadMultiDayEvents()
+                            }
                             .ignoresSafeArea(.all)
 
                         case 4:
@@ -324,7 +332,10 @@ struct RootView: View {
                                 }
                             )
                             .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
-                            .onReceive(timer) { _ in loadSingleDayEventsLocal() }
+                            .onReceive(timer) { _ in
+                                guard menuState != .full else { return }
+                                loadSingleDayEventsLocal()
+                            }
                             .ignoresSafeArea(.all)
 
                         case 6:
@@ -340,10 +351,15 @@ struct RootView: View {
                             )
                             .colorScheme(.dark)
                             .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
-                        default:
-                            Text(localizedFormat(NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), localizedIntegerString(selectedTab))) // More informative fallback
-                                .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space
+                            default:
+                                Text(localizedFormat(NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), localizedIntegerString(selectedTab))) // More informative fallback
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space
+                            }
                         }
+                        // Formatters and UIKit-backed calendar layouts read a
+                        // shared preference snapshot. Rebuild only this main
+                        // content after that snapshot has been fully applied.
+                        .id(appPreferences.presentationRevision)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity) // Make sure the VStack fills the GeometryReader
                     .overlay(alignment: .bottom) {
@@ -413,18 +429,17 @@ struct RootView: View {
                                     .padding(.horizontal, 8)
                                 },
                                 verticalContent: {
-                                    switch selectedTabDraggableMenuView {
-                                    case 0: CalendarsSheetView(bottomContentInset: 128).padding(.vertical, 8)
-                                    case 1: CalendarsDropdownRepresentable(bottomContentInset: 128).padding(.vertical, 8)
-                                    case 2: SubscriptionView().padding(.vertical, 8)
-                                    case 3: AppsPromoListView(apps: promotionalApps).padding(.vertical, 8)
-                                    case 4: SharingSheetView(bottomContentInset: 128).padding(.vertical, 8)
-                                    case 5: SettingsSheetView(bottomContentInset: 128).padding(.vertical, 8)
-                                    default: Text(NSLocalizedString("N/A", comment: "Not available fallback"))
-                                    }
+                                    DraggableMenuVerticalContentHost(
+                                        selectedSection: selectedTabDraggableMenuView,
+                                        promotionalApps: promotionalApps,
+                                        preferenceRevision: appPreferences.presentationRevision
+                                    )
+                                    .equatable()
                                 },
-                                onStateChange: { state in // This is the onStateChange for DraggableMenuView
-                                    // Original logic for data loading on menu state change
+                                onStateChange: { state in
+                                    // Keep the expanded menu stable while the user is interacting
+                                    // with controls such as Picker. Refresh after it is dismissed.
+                                    guard state == .collapsed else { return }
                                     Task {
                                         let currentAccessGranted = await CalendarViewModel.shared.requestCalendarAccessIfNeeded()
                                         self.accessGranted = currentAccessGranted // Update local state
@@ -457,6 +472,17 @@ struct RootView: View {
                                 \.colorScheme,
                                 selectedTab == 6 ? .dark : systemColorScheme
                             )
+                            // The drawer owns UIKit-backed menus and stores its
+                            // slot views. Give it the final language environment
+                            // explicitly and recreate it for an actual language
+                            // change so none of its components retain the
+                            // previous semantic direction or localized labels.
+                            .environment(\.locale, appPreferences.interfaceLocale)
+                            .environment(\.layoutDirection, appPreferences.layoutDirection)
+                            .id(
+                                "draggable-\(appPreferences.languageIdentifier)-"
+                                    + (appPreferences.layoutDirection == .rightToLeft ? "rtl" : "ltr")
+                            )
                             .edgesIgnoringSafeArea(.all)
                             .zIndex(1) // Ensure DraggableMenuView is above the tap overlay
                             // ---- BEGIN FIX: Disable animation on DraggableMenuView based on selectedTab ----
@@ -466,6 +492,11 @@ struct RootView: View {
                     }
                 } // End GeometryReader
             } // End NavigationView
+            // UIKit-backed navigation and draggable-menu containers can retain
+            // their previous semantic direction. Recreate that subtree only
+            // when the effective direction actually flips (LTR <-> RTL), while
+            // keeping RootView's selection/menu state alive.
+            .id(appPreferences.layoutDirection == .rightToLeft ? "rtl" : "ltr")
             .navigationViewStyle(StackNavigationViewStyle())
             .toolbarBackground(Color.white.opacity(0.1), for: .bottomBar) // Example for bottom bar
             .toolbarBackground(.visible, for: .bottomBar)
@@ -981,6 +1012,50 @@ extension RootView {
 
         pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
         pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
+    }
+}
+
+/// Keeps the active drawer section independent from unrelated RootView
+/// publications (weather, live activity and event refreshes). Without this
+/// boundary SwiftUI could rebuild a Form/ScrollView while it was being used,
+/// resetting its scroll position and dismissing an open menu-style Picker.
+private struct DraggableMenuVerticalContentHost: View, Equatable {
+    let selectedSection: Int
+    let promotionalApps: [AppPromoData]
+    let preferenceRevision: UInt
+
+    nonisolated static func == (
+        lhs: DraggableMenuVerticalContentHost,
+        rhs: DraggableMenuVerticalContentHost
+    ) -> Bool {
+        lhs.selectedSection == rhs.selectedSection
+            && lhs.preferenceRevision == rhs.preferenceRevision
+    }
+
+    @ViewBuilder
+    var body: some View {
+        switch selectedSection {
+        case 0:
+            CalendarsSheetView(bottomContentInset: 128)
+                .padding(.vertical, 8)
+        case 1:
+            CalendarsDropdownRepresentable(bottomContentInset: 128)
+                .padding(.vertical, 8)
+        case 2:
+            SubscriptionView()
+                .padding(.vertical, 8)
+        case 3:
+            AppsPromoListView(apps: promotionalApps)
+                .padding(.vertical, 8)
+        case 4:
+            SharingSheetView(bottomContentInset: 128)
+                .padding(.vertical, 8)
+        case 5:
+            SettingsSheetView(bottomContentInset: 128)
+                .padding(.vertical, 8)
+        default:
+            Text(NSLocalizedString("N/A", comment: "Not available fallback"))
+        }
     }
 }
 

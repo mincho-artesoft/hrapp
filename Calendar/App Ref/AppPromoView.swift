@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct AppPromoData: Identifiable, Equatable {
-    let id = UUID()
+    // The App Store URL is stable and unique for every card. A fresh UUID here
+    // made all rows look new whenever RootView refreshed in the background.
+    var id: String { appStoreURL }
     let appName: String
     let description: String
     let iconName: String           // Името на картинката в Assets
