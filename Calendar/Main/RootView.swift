@@ -1037,22 +1037,22 @@ private struct DraggableMenuVerticalContentHost: View, Equatable {
         switch selectedSection {
         case 0:
             CalendarsSheetView(bottomContentInset: 128)
-                .padding(.vertical, 8)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
         case 1:
             CalendarsDropdownRepresentable(bottomContentInset: 128)
-                .padding(.vertical, 8)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
         case 2:
             SubscriptionView()
-                .padding(.vertical, 8)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
         case 3:
             AppsPromoListView(apps: promotionalApps)
-                .padding(.vertical, 8)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
         case 4:
             SharingSheetView(bottomContentInset: 128)
-                .padding(.vertical, 8)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
         case 5:
             SettingsSheetView(bottomContentInset: 128)
-                .padding(.vertical, 8)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
         default:
             Text(NSLocalizedString("N/A", comment: "Not available fallback"))
         }

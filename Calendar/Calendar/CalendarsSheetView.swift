@@ -83,8 +83,8 @@ struct CalendarsSheetView: View {
                 }
                 Spacer()
             }
-            .padding(.horizontal)
-            .padding(.top, 12)
+            .padding(.horizontal, DraggableMenuContentLayout.horizontalInset)
+            .padding(.top, DraggableMenuContentLayout.verticalInset)
 
             // Main content
             Form {

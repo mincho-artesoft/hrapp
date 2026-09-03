@@ -27,8 +27,7 @@ struct SubscriptionView: View {
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()
-                .padding(.top)
-                .padding(.horizontal)
+                .padding(.top, DraggableMenuContentLayout.verticalInset)
 
                 // Tab content
                 Group {
@@ -130,7 +129,7 @@ struct SubscriptionView: View {
                         Text(restoreAlertMessage)
                     }
         .cornerRadius(10)
-        .padding(.horizontal)
+        .padding(.horizontal, DraggableMenuContentLayout.horizontalInset)
     }
 
     /// Избира „първия, който може да се купи“ за текущия таб

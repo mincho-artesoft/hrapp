@@ -114,6 +114,9 @@ struct SharingSheetView: View {
                 }
             }
         }
+        .contentMargins(.horizontal, 0, for: .scrollContent)
+        .contentMargins(.vertical, 0, for: .scrollContent)
+        .listSectionSpacing(0)
         .scrollContentBackground(.hidden)
         .background(Color.clear)
         .listRowBackground(Color.clear)
@@ -170,41 +173,61 @@ struct SharingSheetView: View {
 
     private var sharingNavigationSection: some View {
         Section {
-            scanEventQRCodeButton
+            VStack(spacing: 0) {
+                scanEventQRCodeButton
 
-            cloudAccountButton
+                Divider()
 
-            sharedEventsNavigationButton(
-                title: "Pending invitations",
-                count: pendingInvitationManager.totalInvitationCount,
-                systemImage: "envelope.badge.fill",
-                color: .orange,
-                destination: .pending
+                cloudAccountButton
+
+                Divider()
+
+                sharedEventsNavigationButton(
+                    title: "Pending invitations",
+                    count: pendingInvitationManager.totalInvitationCount,
+                    systemImage: "envelope.badge.fill",
+                    color: .orange,
+                    destination: .pending
+                )
+
+                Divider()
+
+                sharedEventsNavigationButton(
+                    title: "Shared by me",
+                    count: sentEvents.count,
+                    systemImage: "paperplane.fill",
+                    color: .blue,
+                    destination: .sent
+                )
+
+                Divider()
+
+                sharedEventsNavigationButton(
+                    title: "Shared with me",
+                    count: receivedEvents.count,
+                    systemImage: "tray.and.arrow.down.fill",
+                    color: .indigo,
+                    destination: .received
+                )
+
+                // Temporarily hidden. Keep the booking flow implemented so this
+                // can be restored without rebuilding the feature.
+                // bookingButton
+
+                // Booking footer hidden together with the button:
+                // "Let people book your open times. Meetings land on the calendar
+                // you choose, and your busy times keep those slots free."
+            }
+            .listRowSeparator(.hidden)
+            .listRowBackground(Color.clear)
+            .listRowInsets(
+                EdgeInsets(
+                    top: 0,
+                    leading: DraggableMenuContentLayout.horizontalInset,
+                    bottom: 0,
+                    trailing: DraggableMenuContentLayout.horizontalInset
+                )
             )
-
-            sharedEventsNavigationButton(
-                title: "Shared by me",
-                count: sentEvents.count,
-                systemImage: "paperplane.fill",
-                color: .blue,
-                destination: .sent
-            )
-
-            sharedEventsNavigationButton(
-                title: "Shared with me",
-                count: receivedEvents.count,
-                systemImage: "tray.and.arrow.down.fill",
-                color: .indigo,
-                destination: .received
-            )
-
-            // Temporarily hidden. Keep the booking flow implemented so this
-            // can be restored without rebuilding the feature.
-            // bookingButton
-
-            // Booking footer hidden together with the button:
-            // "Let people book your open times. Meetings land on the calendar
-            // you choose, and your busy times keep those slots free."
         }
     }
 
@@ -232,6 +255,7 @@ struct SharingSheetView: View {
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)
             }
+            .padding(.vertical, DraggableMenuContentLayout.verticalInset)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -268,6 +292,7 @@ struct SharingSheetView: View {
                         .font(.footnote.weight(.semibold))
                         .foregroundStyle(.tertiary)
                 }
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
@@ -362,6 +387,7 @@ struct SharingSheetView: View {
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)
             }
+            .padding(.vertical, DraggableMenuContentLayout.verticalInset)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)

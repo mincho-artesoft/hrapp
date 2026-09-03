@@ -38,7 +38,12 @@ public class CalendarsDropdownView: UIView {
         
         stackView.spacing = 12
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        stackView.layoutMargins = UIEdgeInsets(
+            top: DraggableMenuContentLayout.verticalInset,
+            left: DraggableMenuContentLayout.horizontalInset,
+            bottom: DraggableMenuContentLayout.verticalInset,
+            right: DraggableMenuContentLayout.horizontalInset
+        )
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false

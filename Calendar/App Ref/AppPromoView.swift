@@ -76,7 +76,7 @@ struct AppsPromoListView: View {
                 }
                 Spacer(minLength: 150)
             }
-            .padding(.horizontal)
+            .padding(.horizontal, DraggableMenuContentLayout.horizontalInset)
         }
     }
 }

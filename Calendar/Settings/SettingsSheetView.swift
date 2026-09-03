@@ -37,6 +37,9 @@ struct SettingsSheetView: View {
         .transaction { transaction in
             transaction.animation = nil
         }
+        .contentMargins(.horizontal, 0, for: .scrollContent)
+        .contentMargins(.vertical, 0, for: .scrollContent)
+        .listSectionSpacing(0)
         .scrollContentBackground(.hidden)
         .background(Color.clear)
         .listRowBackground(Color.clear)
@@ -58,6 +61,14 @@ struct SettingsSheetView: View {
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
+            .listRowInsets(
+                EdgeInsets(
+                    top: 0,
+                    leading: DraggableMenuContentLayout.horizontalInset,
+                    bottom: 0,
+                    trailing: DraggableMenuContentLayout.horizontalInset
+                )
+            )
         }
     }
 
@@ -81,7 +92,7 @@ struct SettingsSheetView: View {
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .padding(.vertical, 10)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
 
                 Divider()
 
@@ -103,7 +114,7 @@ struct SettingsSheetView: View {
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .padding(.vertical, 10)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
 
                 Divider()
 
@@ -123,7 +134,7 @@ struct SettingsSheetView: View {
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .padding(.vertical, 10)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
 
                 Divider()
 
@@ -143,7 +154,7 @@ struct SettingsSheetView: View {
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .padding(.vertical, 10)
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
         }
     }
 

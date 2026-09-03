@@ -1,5 +1,10 @@
 import SwiftUI
 
+enum DraggableMenuContentLayout {
+    static let horizontalInset: CGFloat = 16
+    static let verticalInset: CGFloat = 8
+}
+
 /// A draggable bottom sheet menu with customizable bottom bar, horizontal & vertical content.
 struct DraggableMenuView<
     BottomBarContent: View,
