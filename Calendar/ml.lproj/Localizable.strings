@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "ലൊക്കേഷൻ";
+"Video Call" = "വീഡിയോ കോൾ";
+"Map Locations" = "മാപ് ലൊക്കേഷനുകൾ";
+"End Repeat" = "ആവർത്തനം അവസാനിപ്പിക്കൂ";
+"On Date" = "തീയതിക്ക്";
+"Custom…" = "കസ്റ്റം…";
+"Attachments will be applied to all occurrences" = "അറ്റാച്ച്മെന്റുകൾ എല്ലാ ആവർത്തനങ്ങൾക്കും ബാധകമായിരിക്കും";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "ഈ ഇവന്റിനുള്ള യാത്രാ സമയം നിങ്ങളുടെ കലണ്ടറിലേക്ക് ചേർക്കൂ. ഇവന്റ് അലേർട്ടുകൾ ഈ സമയം കണക്കിലെടുക്കുകയും ഈ സമയം നിങ്ങളുടെ കലണ്ടർ ബ്ലോക്ക് ചെയ്യപ്പെടുകയും ചെയ്യും.";
+"Repeats %@" = "%@ ആവർത്തിക്കുന്നു";
+"10 minutes before" = "10 മിനിറ്റ് മുമ്പ്";
+"2 hours before" = "2 മണിക്കൂർ മുമ്പ്";
+"2 days before" = "2 ദിവസം മുമ്പ്";
+"1 week before" = "1 ആഴ്ച മുമ്പ്";
+"Every Day" = "ദൈനംദിന";
+"Every Week" = "ആഴ്ചതോറും";
+"Every Month" = "പ്രതിമാസം";
+"Every Year" = "വാർഷികം";
+"Every 2 Weeks" = "എല്ലാ 2 ആഴ്ച";
+"Travel Time" = "യാത്രാ സമയം";
+"Repeat" = "ആവർത്തിക്കൂ";
+"Second Alert" = "രണ്ടാം അലേർട്ട്";
+"Never" = "ഒരിക്കലുമില്ല";
+"None" = "ഇല്ല";
+"Add attachment…" = "അറ്റാച്ച്മെന്റ് ചേർക്കൂ…";
+
+/* App-owned calendars */
+"Event Details" = "ഇവന്റ് വിശദാംശങ്ങൾ";
+"Edit Event" = "ഇവന്റ് തിരുത്തുക";
+"Delete Event" = "ഇവന്റ് ഇല്ലാതാക്കുക";
+"Delete Event?" = "ഇവന്റ് ഇല്ലാതാക്കണോ?";
+"All-day" = "ദിവസം മുഴുവൻ";
+"Starts" = "തുടക്കം";
+"Alert" = "അറിയിപ്പ്";
+"URL" = "URL";
+"Notes" = "കുറിപ്പുകൾ";
+"Title" = "ശീർഷകം";
+"Location or Video Call" = "സ്ഥലം അല്ലെങ്കിൽ വീഡിയോ കോൾ";
+"At time of event" = "ഇവന്റ് സമയത്ത്";
+"5 minutes before" = "5 മിനിറ്റ് മുമ്പ്";
+"15 minutes before" = "15 മിനിറ്റ് മുമ്പ്";
+"30 minutes before" = "30 മിനിറ്റ് മുമ്പ്";
+"1 hour before" = "1 മണിക്കൂർ മുമ്പ്";
+"1 day before" = "1 ദിവസം മുമ്പ്";
+"Access" = "ആക്‌സസ്";
+"Delete Calendar?" = "കലണ്ടർ ഇല്ലാതാക്കണോ?";
+"Add Local Calendar" = "ലോക്കൽ കലണ്ടർ ചേർക്കുക";
+"Local Calendars" = "ലോക്കൽ കലണ്ടറുകൾ";
+"No local calendars yet." = "ലോക്കൽ കലണ്ടറുകളൊന്നുമില്ല.";
+"Edit local calendar" = "ലോക്കൽ കലണ്ടർ എഡിറ്റ് ചെയ്യുക";
+"Share Event" = "ഇവന്റ് പങ്കിടുക";
+
 /* Preferences */
 "Language" = "ഭാഷ";
 "Measurement Units" = "അളവു യൂണിറ്റുകൾ";

@@ -3,6 +3,7 @@ import EventKit
 import EventKitUI
 @preconcurrency import WeatherKit // If you use WeatherKit directly in RootView
 import CoreLocation
+import Combine
 
 // MARK: - RootView
 struct RootView: View {
@@ -55,6 +56,7 @@ struct RootView: View {
 
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
+    @State private var appLocalEventTarget: AppLocalEventEditorTarget? = nil
     
     // Следим състоянието на сцената (active, background, inactive)
     @Environment(\.scenePhase) private var scenePhase
@@ -246,7 +248,8 @@ struct RootView: View {
                             )
                             .onAppear { loadSingleDayEvents() }
                             .onReceive(timer) { _ in
-                                guard menuState != .full else { return }
+                                guard menuState != .full,
+                                      !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
                                 loadSingleDayEvents()
                             }
                             .ignoresSafeArea(.all)
@@ -284,7 +287,8 @@ struct RootView: View {
                             )
                             .onAppear { loadMultiDayEvents() }
                             .onReceive(timer) { _ in
-                                guard menuState != .full else { return }
+                                guard menuState != .full,
+                                      !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
                                 loadMultiDayEvents()
                             }
                             .ignoresSafeArea(.all)
@@ -333,7 +337,8 @@ struct RootView: View {
                             )
                             .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
                             .onReceive(timer) { _ in
-                                guard menuState != .full else { return }
+                                guard menuState != .full,
+                                      !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
                                 loadSingleDayEventsLocal()
                             }
                             .ignoresSafeArea(.all)
@@ -477,7 +482,7 @@ struct RootView: View {
                             // explicitly and recreate it for an actual language
                             // change so none of its components retain the
                             // previous semantic direction or localized labels.
-                            .environment(\.locale, appPreferences.interfaceLocale)
+                            .environment(\.locale, appPreferences.presentationLocale)
                             .environment(\.layoutDirection, appPreferences.layoutDirection)
                             .id(
                                 "draggable-\(appPreferences.languageIdentifier)-"
@@ -562,6 +567,9 @@ struct RootView: View {
                     refreshCalendarWidgetEventsSnapshot()
                 }
             }
+        .onReceive(CalendarViewModel.shared.calendarContentDidChange) { _ in
+            reloadActiveEventRangeForCalendarContentChange()
+        }
         .onAppear {
             // The collapsed Weather menu is transparent so the live weather
             // scene continues seamlessly behind its handle and controls.
@@ -626,6 +634,13 @@ struct RootView: View {
                     }
                 }
             }
+        }
+        .sheet(item: $appLocalEventTarget) { target in
+            AppLocalEventEditorView(target: target) {
+                reloadVisibleEventRanges()
+            }
+            .presentationDetents([.large])
+            .presentationDragIndicator(.visible)
         }
         .onChange(of: selectedTab) { oldValue, newValue in
             self.oldSelectedTab = oldValue // Update oldSelectedTab
@@ -793,6 +808,70 @@ struct RootView: View {
 
 // MARK: - Data Loading Helpers (Original from your file)
 extension RootView {
+    private func reloadActiveEventRangeForCalendarContentChange() {
+        switch selectedTab {
+        case 1:
+            loadSingleDayEvents()
+        case 3:
+            loadMultiDayEvents()
+        case 4:
+            reloadAllEvents()
+        case 5:
+            reloadSingleDayEventsWithVisibleCalendars()
+        default:
+            break
+        }
+        refreshCalendarWidgetEventsSnapshot()
+    }
+
+    private func sortedForStablePresentation(
+        _ events: [EventDescriptor]
+    ) -> [EventDescriptor] {
+        events.sorted {
+            if $0.dateInterval.start != $1.dateInterval.start {
+                return $0.dateInterval.start < $1.dateInterval.start
+            }
+            if $0.dateInterval.end != $1.dateInterval.end {
+                return $0.dateInterval.end < $1.dateInterval.end
+            }
+            if ($0.calendarID ?? "") != ($1.calendarID ?? "") {
+                return ($0.calendarID ?? "") < ($1.calendarID ?? "")
+            }
+            return $0.text < $1.text
+        }
+    }
+
+    private func replacePinnedEventsSingle(with newValue: [EventDescriptor]) {
+        guard eventDescriptorPresentationKeys(pinnedEventsSingle)
+                != eventDescriptorPresentationKeys(newValue) else { return }
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            pinnedEventsSingle = newValue
+        }
+    }
+
+    private func replacePinnedEventsMulti(with newValue: [EventDescriptor]) {
+        guard eventDescriptorPresentationKeys(pinnedEventsMulti)
+                != eventDescriptorPresentationKeys(newValue) else { return }
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            pinnedEventsMulti = newValue
+        }
+    }
+
+    private func replacePinnedAllEvents(with newValue: [EventDescriptor]) {
+        let stableValue = sortedForStablePresentation(newValue)
+        guard eventDescriptorPresentationKeys(pinnedAllEvents)
+                != eventDescriptorPresentationKeys(stableValue) else { return }
+        var transaction = Transaction()
+        transaction.disablesAnimations = true
+        withTransaction(transaction) {
+            pinnedAllEvents = stableValue
+        }
+    }
+
     private func showMonthTab(for month: Date) {
         let normalizedMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: month)) ?? month
         selectedMonthDate = normalizedMonth
@@ -811,10 +890,10 @@ extension RootView {
         guard accessGranted else { return }
         let fromOnly = Calendar.current.startOfDay(for: pinnedFromDateSingle)
         guard let toDate = Calendar.current.date(byAdding: .day, value: 1, to: fromOnly) else {
-            pinnedEventsSingle = []
+            replacePinnedEventsSingle(with: [])
             return
         }
-        pinnedEventsSingle = fetchAndSplitEvents(from: fromOnly, to: toDate)
+        replacePinnedEventsSingle(with: fetchAndSplitEvents(from: fromOnly, to: toDate))
     }
 
     private func loadMultiDayEvents() {
@@ -824,20 +903,19 @@ extension RootView {
         let toOnly   = cal.startOfDay(for: pinnedToDateMulti)
 
         guard let actualEnd = cal.date(byAdding: .day, value: 1, to: toOnly) else {
-            pinnedEventsMulti = []
+            replacePinnedEventsMulti(with: [])
             return
         }
-        pinnedEventsMulti = fetchAndSplitEvents(from: fromOnly, to: actualEnd)
+        replacePinnedEventsMulti(with: fetchAndSplitEvents(from: fromOnly, to: actualEnd))
     }
 
     private func loadSingleDayEventsLocal() {
-        guard accessGranted else { return }
         let fromOnly = Calendar.current.startOfDay(for: pinnedFromDateSingle)
         guard let toDate = Calendar.current.date(byAdding: .day, value: 1, to: fromOnly) else {
-            pinnedEventsSingle = []
+            replacePinnedEventsSingle(with: [])
             return
         }
-        pinnedEventsSingle = fetchAndSplitEventsLocal(from: fromOnly, to: toDate)
+        replacePinnedEventsSingle(with: fetchAndSplitEventsLocal(from: fromOnly, to: toDate))
     }
 }
 
@@ -862,7 +940,12 @@ extension RootView {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
         }
-        return splitted
+        splitted.append(contentsOf: AppLocalCalendarStore.shared.descriptors(
+            from: from,
+            to: to,
+            selectedCalendarIDs: CalendarViewModel.shared.selectedCalendarIDs
+        ))
+        return sortedForStablePresentation(splitted)
     }
 
     private func fetchAndSplitEvents(from: Date, to: Date) -> [EventDescriptor] {
@@ -872,8 +955,17 @@ extension RootView {
             CalendarViewModel.shared.selectedCalendarIDs.contains($0.calendarIdentifier)
         }
 
-        let predicate = store.predicateForEvents(withStart: from, end: to, calendars: allowedCalendars.isEmpty ? nil : allowedCalendars) // Added check for empty allowedCalendars
-        let found = store.events(matching: predicate)
+        let found: [EKEvent]
+        if allowedCalendars.isEmpty {
+            found = []
+        } else {
+            let predicate = store.predicateForEvents(
+                withStart: from,
+                end: to,
+                calendars: allowedCalendars
+            )
+            found = store.events(matching: predicate)
+        }
 
         var splitted: [EventDescriptor] = []
         for ekEvent in found {
@@ -884,7 +976,12 @@ extension RootView {
                 splitted.append(EKMultiDayWrapper(realEvent: ekEvent))
             }
         }
-        return splitted
+        splitted.append(contentsOf: AppLocalCalendarStore.shared.descriptors(
+            from: from,
+            to: to,
+            selectedCalendarIDs: CalendarViewModel.shared.selectedCalendarIDs
+        ))
+        return sortedForStablePresentation(splitted)
     }
 
     private func splitEventByDays(_ ekEvent: EKEvent,
@@ -934,7 +1031,7 @@ extension RootView {
 
         loadedStartDate = start
         loadedEndDate   = end
-        pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
+        replacePinnedAllEvents(with: fetchAndSplitEvents(from: start, to: end))
     }
 
     func loadNextMonth(completion: (() -> Void)? = nil) {
@@ -1010,8 +1107,7 @@ extension RootView {
         loadedFrom      = Calendar.current.startOfDay(for: start)
         loadedUntil     = Calendar.current.startOfDay(for: end)
 
-        pinnedAllEvents = fetchAndSplitEvents(from: start, to: end)
-        pinnedAllEvents.sort { $0.dateInterval.start < $1.dateInterval.start }
+        replacePinnedAllEvents(with: fetchAndSplitEvents(from: start, to: end))
     }
 }
 
@@ -1062,6 +1158,10 @@ private struct DraggableMenuVerticalContentHost: View, Equatable {
 // MARK: - Create & Edit new Event (Original from your file)
 extension RootView {
     private func createAndEditNewEvent(on day: Date) {
+        if let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
+            appLocalEventTarget = AppLocalEventEditorTarget(date: day, calendarID: calendar.id)
+            return
+        }
         let status = EKEventStore.authorizationStatus(for: .event)
         let authorised: Bool = {
             if #available(iOS 17, *) {
@@ -1090,16 +1190,27 @@ extension RootView {
         newEvent.calendar   = store.defaultCalendarForNewEvents
         eventToEdit = newEvent
     }
+
+    private func reloadVisibleEventRanges() {
+        CalendarViewModel.shared.reloadCalendars()
+        switch selectedTab {
+        case 1: loadSingleDayEvents()
+        case 3: loadMultiDayEvents()
+        case 4: reloadAllEvents()
+        case 5: reloadSingleDayEventsWithVisibleCalendars()
+        default: break
+        }
+        refreshCalendarWidgetEventsSnapshot()
+    }
 }
 
 // MARK: - Reload for MultiCalendar (Original from your file)
 extension RootView {
     private func reloadSingleDayEventsWithVisibleCalendars() {
-         guard accessGranted else { pinnedEventsSingle = []; return }
          let cal = Calendar.current
          let fromOnly = cal.startOfDay(for: pinnedFromDateSingle)
          guard let toDate = cal.date(byAdding: .day, value: 1, to: fromOnly) else {
-             pinnedEventsSingle = []
+             replacePinnedEventsSingle(with: [])
              return
          }
 
@@ -1108,11 +1219,18 @@ extension RootView {
              visibleIDs.contains($0.calendarIdentifier)
          }
 
-         let predicate = CalendarViewModel.shared.eventStore
-             .predicateForEvents(withStart: fromOnly,
-                                 end: toDate,
-                                 calendars: allowedCalendars.isEmpty ? nil : allowedCalendars) // Added check for empty
-         let found = CalendarViewModel.shared.eventStore.events(matching: predicate)
+         let found: [EKEvent]
+         if allowedCalendars.isEmpty {
+             found = []
+         } else {
+             let predicate = CalendarViewModel.shared.eventStore
+                 .predicateForEvents(
+                     withStart: fromOnly,
+                     end: toDate,
+                     calendars: allowedCalendars
+                 )
+             found = CalendarViewModel.shared.eventStore.events(matching: predicate)
+         }
 
          var descriptors: [EventDescriptor] = []
          for ekEvent in found {
@@ -1126,6 +1244,11 @@ extension RootView {
                  descriptors.append(EKMultiDayWrapper(realEvent: ekEvent))
              }
          }
-         pinnedEventsSingle = descriptors
+         descriptors.append(contentsOf: AppLocalCalendarStore.shared.descriptors(
+             from: fromOnly,
+             to: toDate,
+             selectedCalendarIDs: visibleIDs
+         ))
+         replacePinnedEventsSingle(with: sortedForStablePresentation(descriptors))
      }
 }

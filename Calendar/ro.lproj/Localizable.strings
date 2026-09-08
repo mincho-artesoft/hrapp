@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Loc";
+"Video Call" = "Apel video";
+"Map Locations" = "Locuri pe hartă";
+"End Repeat" = "Sfârșit repetare";
+"On Date" = "Pe data de";
+"Custom…" = "Personalizată…";
+"Attachments will be applied to all occurrences" = "Fișierele vor fi atașate pentru toate aparițiile evenimentului";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Adăugați durata de deplasare pentru acest eveniment în calendarul dvs. Alertele evenimentului vor lua în calcul această durată, iar calendarul dvs. va fi blocat în perioada respectivă.";
+"Repeats %@" = "Se repetă %@";
+"10 minutes before" = "Cu 10 minute înainte";
+"2 hours before" = "Cu 2 ore înainte";
+"2 days before" = "Cu 2 zile înainte";
+"1 week before" = "Cu 1 săptămână înainte";
+"Every Day" = "Zilnic";
+"Every Week" = "Săptămânal";
+"Every Month" = "Lunar";
+"Every Year" = "Anual";
+"Every 2 Weeks" = "În fiecare 2 de săptămâni";
+"Travel Time" = "Durată deplasare";
+"Repeat" = "Repetare";
+"Second Alert" = "Alerta 2";
+"Never" = "Niciodată";
+"None" = "Nimic";
+"Add attachment…" = "Atașați un fișier…";
+
+/* App-owned calendars */
+"Event Details" = "Detalii eveniment";
+"Edit Event" = "Editați evenimentul";
+"Delete Event" = "Ștergeți evenimentul";
+"Delete Event?" = "Ștergeți evenimentul?";
+"All-day" = "Toată ziua";
+"Starts" = "Începe";
+"Alert" = "Alertă";
+"URL" = "URL";
+"Notes" = "Notițe";
+"Title" = "Titlu";
+"Location or Video Call" = "Locație sau apel video";
+"At time of event" = "La ora evenimentului";
+"5 minutes before" = "Cu 5 minute înainte";
+"15 minutes before" = "Cu 15 minute înainte";
+"30 minutes before" = "Cu 30 de minute înainte";
+"1 hour before" = "Cu 1 oră înainte";
+"1 day before" = "Cu 1 zi înainte";
+"Access" = "Acces";
+"Delete Calendar?" = "Ștergeți calendarul?";
+"Add Local Calendar" = "Adăugați un calendar local";
+"Local Calendars" = "Calendare locale";
+"No local calendars yet." = "Nu există încă niciun calendar local.";
+"Edit local calendar" = "Editați calendarul local";
+"Share Event" = "Partajați evenimentul";
+
 /* Preferences */
 "Language" = "Limbă";
 "Measurement Units" = "Unități de măsură";

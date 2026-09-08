@@ -8,6 +8,7 @@ struct ICloudCalendarSharingView: View {
     let calendarColor: String
     let timeZone: String
     let localCalendarIdentifier: String
+    var calendarKind: String = "eventkit"
     let originalOwnerID: String?
     let originalOwnerEmail: String?
 
@@ -81,6 +82,7 @@ struct ICloudCalendarSharingView: View {
                     calendarTitle: calendarTitle,
                     calendarColor: calendarColor,
                     timeZone: timeZone,
+                    calendarKind: calendarKind,
                     existingRecipients: recipients
                 ) { savedRecipients in
                     recipients = savedRecipients
@@ -426,11 +428,12 @@ struct ICloudCalendarSharingView: View {
                     title: calendarTitle,
                     color: calendarColor,
                     timeZone: timeZone,
+                    calendarKind: calendarKind,
                     recipients: [],
                     session: session
                 )
             }
-            if isOriginalOwner {
+            if isOriginalOwner && calendarKind == "eventkit" {
                 SharedICloudCalendarLocalStore.registerOwnedCalendar(
                     shareID: calendarID,
                     localCalendarIdentifier: localCalendarIdentifier
@@ -438,6 +441,11 @@ struct ICloudCalendarSharingView: View {
                 _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
                     in: CalendarViewModel.shared.eventStore
                 )
+            } else if calendarKind == "app_local" {
+                _ = AppLocalCalendarStore.shared.registerForSharing(
+                    id: localCalendarIdentifier
+                )
+                _ = await AppLocalCalendarSyncService.syncAll()
             }
             recipients = sharing.recipients
             loadedRecipients = sharing.recipients
@@ -472,6 +480,7 @@ struct ICloudCalendarSharingView: View {
                 title: calendarTitle,
                 color: calendarColor,
                 timeZone: timeZone,
+                calendarKind: calendarKind,
                 recipients: valuesByEmail
                     .map { (email: $0.key, access: $0.value) }
                     .sorted { $0.email < $1.email },
@@ -483,7 +492,7 @@ struct ICloudCalendarSharingView: View {
             loadedRecipients = sharing.recipients
             sharingUpdatedAt = sharing.updatedAt
             removedRecipientEmails = []
-            if isOriginalOwner {
+            if isOriginalOwner && calendarKind == "eventkit" {
                 SharedICloudCalendarLocalStore.registerOwnedCalendar(
                     shareID: calendarID,
                     localCalendarIdentifier: localCalendarIdentifier
@@ -491,6 +500,8 @@ struct ICloudCalendarSharingView: View {
                 _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(
                     in: CalendarViewModel.shared.eventStore
                 )
+            } else if calendarKind == "app_local" {
+                _ = await AppLocalCalendarSyncService.syncAll()
             }
             errorMessage = nil
         } catch {
@@ -514,6 +525,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
     let calendarTitle: String
     let calendarColor: String
     let timeZone: String
+    let calendarKind: String
     let existingRecipients: [CloudCalendarsAPI.ICloudCalendarRecipient]
     let onSaved: ([CloudCalendarsAPI.ICloudCalendarRecipient]) -> Void
 
@@ -726,6 +738,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
                 title: calendarTitle,
                 color: calendarColor,
                 timeZone: timeZone,
+                calendarKind: calendarKind,
                 recipients: accessByEmail
                     .map { (email: $0.key, access: $0.value) }
                     .sorted { $0.email < $1.email },

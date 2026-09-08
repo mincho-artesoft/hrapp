@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Τοποθεσία";
+"Video Call" = "Βιντεοκλήση";
+"Map Locations" = "Τοποθεσίες χάρτη";
+"End Repeat" = "Λήξη";
+"On Date" = "Την ημερομηνία";
+"Custom…" = "Προσαρμογή…";
+"Attachments will be applied to all occurrences" = "Τα συνημμένα θα εφαρμοστούν σε όλες τις εμφανίσεις";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Προσθέστε χρόνο μετάβασης για αυτό το γεγονός στο ημερολόγιό σας. Οι ειδοποιήσεις γεγονότος θα βασιστούν σε αυτόν τον χρόνο και θα αποκλειστεί επίσης η αντίστοιχη ώρα στο ημερολόγιο.";
+"Repeats %@" = "Επαναλαμβάνεται %@";
+"10 minutes before" = "10 λεπτά πριν";
+"2 hours before" = "2 ώρες πριν";
+"2 days before" = "2 ημέρες πριν";
+"1 week before" = "1 εβδομάδα πριν";
+"Every Day" = "Καθημερινά";
+"Every Week" = "Εβδομαδιαία";
+"Every Month" = "Μηνιαία";
+"Every Year" = "Ετήσιο";
+"Every 2 Weeks" = "Κάθε 2 εβδομάδες";
+"Travel Time" = "Χρόνος μετάβασης";
+"Repeat" = "Επανάληψη";
+"Second Alert" = "2η ειδοποίηση";
+"Never" = "Ποτέ";
+"None" = "Κανένας";
+"Add attachment…" = "Προσθήκη συνημμένου…";
+
+/* App-owned calendars */
+"Event Details" = "Λεπτομέρειες γεγονότος";
+"Edit Event" = "Επεξεργασία γεγονότος";
+"Delete Event" = "Διαγραφή γεγονότος";
+"Delete Event?" = "Διαγραφή γεγονότος;";
+"All-day" = "Ολοήμερο";
+"Starts" = "Έναρξη";
+"Alert" = "Ειδοποίηση";
+"URL" = "URL";
+"Notes" = "Σημειώσεις";
+"Title" = "Τίτλος";
+"Location or Video Call" = "Τοποθεσία ή βιντεοκλήση";
+"At time of event" = "Την ώρα του γεγονότος";
+"5 minutes before" = "5 λεπτά πριν";
+"15 minutes before" = "15 λεπτά πριν";
+"30 minutes before" = "30 λεπτά πριν";
+"1 hour before" = "1 ώρα πριν";
+"1 day before" = "1 ημέρα πριν";
+"Access" = "Πρόσβαση";
+"Delete Calendar?" = "Διαγραφή ημερολογίου;";
+"Add Local Calendar" = "Προσθήκη τοπικού ημερολογίου";
+"Local Calendars" = "Τοπικά ημερολόγια";
+"No local calendars yet." = "Δεν υπάρχουν ακόμη τοπικά ημερολόγια.";
+"Edit local calendar" = "Επεξεργασία τοπικού ημερολογίου";
+"Share Event" = "Κοινοποίηση γεγονότος";
+
 /* Preferences */
 "Language" = "Γλώσσα";
 "Measurement Units" = "Μονάδες μέτρησης";

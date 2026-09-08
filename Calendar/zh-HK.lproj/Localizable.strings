@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "位置";
+"Video Call" = "視像通話";
+"Map Locations" = "地圖位置";
+"End Repeat" = "結束重複";
+"On Date" = "指定日期";
+"Custom…" = "自訂⋯";
+"Attachments will be applied to all occurrences" = "附件將套用至所有重複行程";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "在日曆中加入此行程的路程。行程提示的時間將會因應路程調整，而你的日曆中該段時間將會顯示為忙碌。";
+"Repeats %@" = "%@重複一次";
+"10 minutes before" = "10 分鐘前";
+"2 hours before" = "2 小時前";
+"2 days before" = "2 日前";
+"1 week before" = "1 星期前";
+"Every Day" = "每日";
+"Every Week" = "每週";
+"Every Month" = "每月";
+"Every Year" = "每年";
+"Every 2 Weeks" = "每2星期";
+"Travel Time" = "路程時間";
+"Repeat" = "重複";
+"Second Alert" = "第二次提示";
+"Never" = "永不";
+"None" = "無";
+"Add attachment…" = "加入附件⋯";
+
+/* App-owned calendars */
+"Event Details" = "行程詳情";
+"Edit Event" = "編輯行程";
+"Delete Event" = "刪除行程";
+"Delete Event?" = "要刪除行程嗎？";
+"All-day" = "全日";
+"Starts" = "開始";
+"Alert" = "提示";
+"URL" = "URL";
+"Notes" = "備註";
+"Title" = "標題";
+"Location or Video Call" = "地點或視像通話";
+"At time of event" = "行程開始時";
+"5 minutes before" = "5 分鐘前";
+"15 minutes before" = "15 分鐘前";
+"30 minutes before" = "30 分鐘前";
+"1 hour before" = "1 小時前";
+"1 day before" = "1 日前";
+"Access" = "存取權限";
+"Delete Calendar?" = "要刪除日曆嗎？";
+"Add Local Calendar" = "加入本機日曆";
+"Local Calendars" = "本機日曆";
+"No local calendars yet." = "尚未有本機日曆。";
+"Edit local calendar" = "編輯本機日曆";
+"Share Event" = "分享行程";
+
 /* Preferences */
 "Language" = "語言";
 "Measurement Units" = "測量單位";

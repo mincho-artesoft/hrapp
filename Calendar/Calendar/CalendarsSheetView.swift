@@ -22,6 +22,11 @@ private struct ICloudCalendarSharingTarget: Identifiable {
     let localCalendarIdentifier: String
     let originalOwnerID: String?
     let originalOwnerEmail: String?
+    var calendarKind: String = "eventkit"
+}
+
+private struct AppLocalCalendarEditTarget: Identifiable {
+    let id: String
 }
 
 private struct SharedICloudCalendarInfoTarget: Identifiable {
@@ -35,16 +40,20 @@ struct CalendarsSheetView: View {
     @ObservedObject var viewModel: CalendarViewModel = .shared
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     @ObservedObject private var notificationManager = EventNotificationManager.shared
+    @ObservedObject private var appLocalStore = AppLocalCalendarStore.shared
 
     // MARK: - State
     @State private var showAddGoogleCalendarSheet: StoredGoogleUser? = nil
     @State private var iCloudExpanded = true
+    @State private var appLocalExpanded = true
     @State private var sharedICloudExpanded = true
     @State private var isOtherExpanded = true
     @State private var googleExpandedStates: [UUID: Bool] = [:]
     @State private var msExpandedStates: [UUID: Bool] = [:]
     @State private var calendarToEdit: EKCalendar? = nil
     @State private var showAddCalendarSheet = false
+    @State private var showAddAppLocalCalendarSheet = false
+    @State private var appLocalCalendarEditTarget: AppLocalCalendarEditTarget?
     @State private var showICloudSheet = false
     @State private var addingGoogleUserID: UUID? = nil
     @State private var addingGoogleCalendarTitle: String? = nil
@@ -76,7 +85,7 @@ struct CalendarsSheetView: View {
             // Custom “navigation bar”
             HStack {
                 Button(action: toggleSelectAll) {
-                    Text(viewModel.selectedCalendarIDs.count == viewModel.allCalendars.count
+                    Text(viewModel.selectedCalendarIDs == viewModel.allSelectableCalendarIDs
                          ? LocalizedStringKey("Deselect All")
                          : LocalizedStringKey("Select All"))
                         .fontWeight(.semibold)
@@ -89,6 +98,7 @@ struct CalendarsSheetView: View {
             // Main content
             Form {
                 iCloudSection
+                appLocalSection
                 sharedWithMeICloudSection
                 otherSection
                 googleSection
@@ -132,6 +142,9 @@ struct CalendarsSheetView: View {
         .onReceive(NotificationCenter.default.publisher(for: .EKEventStoreChanged)) { _ in
             viewModel.reloadCalendars()
         }
+        .onReceive(NotificationCenter.default.publisher(for: .appLocalCalendarStoreChanged)) { _ in
+            viewModel.reloadCalendars()
+        }
         .onReceive(sharedICloudRefreshTimer) { _ in
             Task { await loadSharedICloudCalendars() }
         }
@@ -164,6 +177,16 @@ struct CalendarsSheetView: View {
         // Add iCloud Calendar
         .sheet(isPresented: $showAddCalendarSheet) {
             AddCalendarView()
+        }
+
+        .sheet(isPresented: $showAddAppLocalCalendarSheet) {
+            AddCalendarView(destination: .appLocal)
+        }
+
+        .sheet(item: $appLocalCalendarEditTarget) { target in
+            AppLocalCalendarEditView(calendarID: target.id)
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
         }
 
         // Open iCloud share
@@ -204,6 +227,7 @@ struct CalendarsSheetView: View {
                 calendarColor: target.calendarColor,
                 timeZone: target.timeZone,
                 localCalendarIdentifier: target.localCalendarIdentifier,
+                calendarKind: target.calendarKind,
                 originalOwnerID: target.originalOwnerID,
                 originalOwnerEmail: target.originalOwnerEmail
             )
@@ -250,18 +274,64 @@ struct CalendarsSheetView: View {
         }
     }
 
+    private var appLocalSection: some View {
+        Section {
+            DisclosureGroup(
+                LocalizedStringKey("Local Calendars"),
+                isExpanded: $appLocalExpanded
+            ) {
+                if appLocalStore.ownedCalendars.isEmpty {
+                    Text("No local calendars yet.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .listRowSeparator(.hidden)
+                } else {
+                    ForEach(appLocalStore.ownedCalendars) { calendar in
+                        AppLocalCalendarRow(
+                            calendar: calendar,
+                            isSelected: viewModel.selectedCalendarIDs.contains(calendar.id),
+                            toggleAction: { toggleAppLocalCalendar(calendar) },
+                            editAction: {
+                                appLocalCalendarEditTarget = .init(id: calendar.id)
+                            },
+                            shareAction: calendar.canManageSharing ? {
+                                guard let registered = appLocalStore.registerForSharing(id: calendar.id) else {
+                                    return
+                                }
+                                iCloudCalendarSharingTarget = ICloudCalendarSharingTarget(
+                                    calendarID: registered.shareID,
+                                    calendarTitle: registered.title,
+                                    calendarColor: registered.colorHex,
+                                    timeZone: registered.timeZoneIdentifier,
+                                    localCalendarIdentifier: registered.id,
+                                    originalOwnerID: registered.remoteOwnerID,
+                                    originalOwnerEmail: registered.remoteOwnerEmail,
+                                    calendarKind: "app_local"
+                                )
+                            } : nil
+                        )
+                        .listRowSeparator(.hidden)
+                    }
+                }
+            }
+        }
+    }
+
     private var sharedWithMeICloudSection: some View {
         Section {
             DisclosureGroup(
                 LocalizedStringKey("Shared with me"),
                 isExpanded: $sharedICloudExpanded
             ) {
-                if CalendarFeedSession.existing == nil {
+                if CalendarFeedSession.existing == nil,
+                   appLocalStore.receivedCalendars.isEmpty {
                     Text("Sign in to see calendars shared with you.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .listRowSeparator(.hidden)
-                } else if isLoadingSharedICloudCalendars && sharedICloudCalendars.isEmpty {
+                } else if isLoadingSharedICloudCalendars,
+                          sharedICloudCalendars.isEmpty,
+                          appLocalStore.receivedCalendars.isEmpty {
                     HStack(spacing: 10) {
                         ProgressView()
                         Text("Loading shared calendars…")
@@ -269,17 +339,43 @@ struct CalendarsSheetView: View {
                     }
                     .listRowSeparator(.hidden)
                 } else if let sharedICloudCalendarsError,
-                          sharedICloudCalendars.isEmpty {
+                          sharedICloudCalendars.isEmpty,
+                          appLocalStore.receivedCalendars.isEmpty {
                     Label(sharedICloudCalendarsError, systemImage: "exclamationmark.circle.fill")
                         .font(.footnote)
                         .foregroundStyle(.red)
                         .listRowSeparator(.hidden)
-                } else if sharedICloudCalendars.isEmpty {
+                } else if sharedICloudCalendars.isEmpty,
+                          appLocalStore.receivedCalendars.isEmpty {
                     Text("No calendars have been shared with you yet.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .listRowSeparator(.hidden)
                 } else {
+                    ForEach(appLocalStore.receivedCalendars) { calendar in
+                        AppLocalCalendarRow(
+                            calendar: calendar,
+                            isSelected: viewModel.selectedCalendarIDs.contains(calendar.id),
+                            toggleAction: { toggleAppLocalCalendar(calendar) },
+                            editAction: {
+                                appLocalCalendarEditTarget = .init(id: calendar.id)
+                            },
+                            shareAction: calendar.canManageSharing ? {
+                                iCloudCalendarSharingTarget = ICloudCalendarSharingTarget(
+                                    calendarID: calendar.shareID,
+                                    calendarTitle: calendar.title,
+                                    calendarColor: calendar.colorHex,
+                                    timeZone: calendar.timeZoneIdentifier,
+                                    localCalendarIdentifier: calendar.id,
+                                    originalOwnerID: calendar.remoteOwnerID,
+                                    originalOwnerEmail: calendar.remoteOwnerEmail,
+                                    calendarKind: "app_local"
+                                )
+                            } : nil
+                        )
+                        .listRowSeparator(.hidden)
+                    }
+
                     ForEach(sharedICloudCalendars) { calendar in
                         let localCalendar = SharedICloudCalendarLocalStore.localCalendar(
                             for: calendar,
@@ -544,6 +640,11 @@ struct CalendarsSheetView: View {
 
     private var addCalendarSection: some View {
         Section {
+            Button { showAddAppLocalCalendarSheet = true } label: {
+                Label("Add Local Calendar", systemImage: "calendar.badge.plus")
+            }
+            .buttonStyle(.plain)
+
             Button { showAddCalendarSheet = true } label: {
                 HStack {
                     Image(systemName: "icloud.fill")
@@ -665,6 +766,7 @@ struct CalendarsSheetView: View {
             // used to overwrite a local edit before the foreground sync could
             // upload it.
             _ = await SharedICloudCalendarLocalStore.refreshAll()
+            _ = await AppLocalCalendarSyncService.syncAll()
             // The sync mutates EventKit in place. Refresh this sheet's
             // observed calendar collection as well, otherwise its open rows
             // can keep rendering the old EKCalendar instances while the
@@ -673,6 +775,8 @@ struct CalendarsSheetView: View {
             let fetchedCalendars = try await CloudCalendarsAPI
                 .iCloudCalendarsSharedWithMe(session: session)
                 .filter {
+                    $0.calendarKind != "app_local"
+                        &&
                     !SharedICloudCalendarLocalStore.isRemovedLocally(
                         shareID: $0.id
                     )
@@ -689,22 +793,30 @@ struct CalendarsSheetView: View {
     }
 
     private func toggleSelectAll() {
-        let allIDs = Set(viewModel.allCalendars.map { $0.calendarIdentifier })
-        if viewModel.selectedCalendarIDs.count == allIDs.count {
-            viewModel.selectedCalendarIDs.removeAll()
+        let allIDs = viewModel.allSelectableCalendarIDs
+        viewModel.selectedCalendarIDs = viewModel.selectedCalendarIDs == allIDs
+            ? []
+            : allIDs
+    }
+
+    private func toggleAppLocalCalendar(_ calendar: AppLocalCalendarRecord) {
+        var selection = viewModel.selectedCalendarIDs
+        if selection.contains(calendar.id) {
+            selection.remove(calendar.id)
         } else {
-            viewModel.selectedCalendarIDs = allIDs
+            selection.insert(calendar.id)
         }
-        notificationManager.rescheduleUpcomingEventNotifications()
+        viewModel.selectedCalendarIDs = selection
     }
 
     private func toggleCalendar(_ cal: EKCalendar) {
-        if viewModel.selectedCalendarIDs.contains(cal.calendarIdentifier) {
-            viewModel.selectedCalendarIDs.remove(cal.calendarIdentifier)
+        var selection = viewModel.selectedCalendarIDs
+        if selection.contains(cal.calendarIdentifier) {
+            selection.remove(cal.calendarIdentifier)
         } else {
-            viewModel.selectedCalendarIDs.insert(cal.calendarIdentifier)
+            selection.insert(cal.calendarIdentifier)
         }
-        notificationManager.rescheduleUpcomingEventNotifications()
+        viewModel.selectedCalendarIDs = selection
     }
 
     private func googleCopiedCalendars(for user: StoredGoogleUser) -> [EKCalendar] {

@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Ubicació";
+"Video Call" = "Videotrucada";
+"Map Locations" = "Ubicacions del mapa";
+"End Repeat" = "Atura la repetició";
+"On Date" = "En la data";
+"Custom…" = "Personalitza…";
+"Attachments will be applied to all occurrences" = "Els adjunts s’aplicaran a totes les repeticions.";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Afegeix al calendari el temps que tardaràs a arribar al lloc de l’esdeveniment. D’aquesta manera, es tindrà en compte als avisos que rebis i el calendari quedarà bloquejat durant aquest període.";
+"Repeats %@" = "Es repeteix %@";
+"10 minutes before" = "10 minuts abans";
+"2 hours before" = "2 hores abans";
+"2 days before" = "2 dies abans";
+"1 week before" = "1 setmana abans";
+"Every Day" = "Diàriament";
+"Every Week" = "Setmanalment";
+"Every Month" = "Mensual";
+"Every Year" = "Anualitat";
+"Every 2 Weeks" = "Cada 2 setmanes";
+"Travel Time" = "Temps de viatge";
+"Repeat" = "Repetició";
+"Second Alert" = "Segon avís";
+"Never" = "Mai";
+"None" = "Cap";
+"Add attachment…" = "Afegeix un adjunt…";
+
+/* App-owned calendars */
+"Event Details" = "Detalls de l’esdeveniment";
+"Edit Event" = "Edita l’esdeveniment";
+"Delete Event" = "Elimina l’esdeveniment";
+"Delete Event?" = "Voleu eliminar l’esdeveniment?";
+"All-day" = "Tot el dia";
+"Starts" = "Comença";
+"Alert" = "Avís";
+"URL" = "URL";
+"Notes" = "Notes";
+"Title" = "Títol";
+"Location or Video Call" = "Ubicació o videotrucada";
+"At time of event" = "A l’hora de l’esdeveniment";
+"5 minutes before" = "5 minuts abans";
+"15 minutes before" = "15 minuts abans";
+"30 minutes before" = "30 minuts abans";
+"1 hour before" = "1 hora abans";
+"1 day before" = "1 dia abans";
+"Access" = "Accés";
+"Delete Calendar?" = "Voleu eliminar el calendari?";
+"Add Local Calendar" = "Afegeix un calendari local";
+"Local Calendars" = "Calendaris locals";
+"No local calendars yet." = "Encara no hi ha calendaris locals.";
+"Edit local calendar" = "Edita el calendari local";
+"Share Event" = "Comparteix l’esdeveniment";
+
 /* Preferences */
 "Language" = "Idioma";
 "Measurement Units" = "Unitats de mesura";

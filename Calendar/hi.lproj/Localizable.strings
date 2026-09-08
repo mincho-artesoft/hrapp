@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "स्थान";
+"Video Call" = "वीडियो कॉल";
+"Map Locations" = "नक़्शे के स्थान";
+"End Repeat" = "दोहराना समाप्त करें";
+"On Date" = "तिथि को";
+"Custom…" = "कस्टम…";
+"Attachments will be applied to all occurrences" = "अटैचमेंट को सभी आयोजनों में लागू किया जाएगा";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "इस इवेंट के लिए अपने कैलेंडर में यात्रा समय जोड़ें। इवेंट अलर्ट द्वारा इस समय को ध्यान में रखा जाएगा और इस समय के दौरान आपका कैलेंडर ब्लॉक रहेगा।";
+"Repeats %@" = "%@ दोहराया जाता है";
+"10 minutes before" = "10 मिनट पहले";
+"2 hours before" = "2 घंटे पहले";
+"2 days before" = "2 दिन पहले";
+"1 week before" = "1 सप्ताह पहले";
+"Every Day" = "दैनिक";
+"Every Week" = "साप्ताहिक";
+"Every Month" = "मासिक";
+"Every Year" = "वार्षिक";
+"Every 2 Weeks" = "हर 2 सप्ताह";
+"Travel Time" = "यात्रा समय";
+"Repeat" = "दोहराएँ";
+"Second Alert" = "दूसरा अलर्ट";
+"Never" = "कभी नहीं";
+"None" = "कोई नहीं";
+"Add attachment…" = "अटैचमेंट जोड़ें…";
+
+/* App-owned calendars */
+"Event Details" = "इवेंट का विवरण";
+"Edit Event" = "इवेंट संपादित करें";
+"Delete Event" = "इवेंट हटाएँ";
+"Delete Event?" = "इवेंट हटाएँ?";
+"All-day" = "पूरे दिन";
+"Starts" = "शुरू";
+"Alert" = "अलर्ट";
+"URL" = "URL";
+"Notes" = "नोट्स";
+"Title" = "शीर्षक";
+"Location or Video Call" = "स्थान या वीडियो कॉल";
+"At time of event" = "इवेंट के समय";
+"5 minutes before" = "5 मिनट पहले";
+"15 minutes before" = "15 मिनट पहले";
+"30 minutes before" = "30 मिनट पहले";
+"1 hour before" = "1 घंटा पहले";
+"1 day before" = "1 दिन पहले";
+"Access" = "एक्सेस";
+"Delete Calendar?" = "कैलेंडर हटाएँ?";
+"Add Local Calendar" = "स्थानीय कैलेंडर जोड़ें";
+"Local Calendars" = "स्थानीय कैलेंडर";
+"No local calendars yet." = "अभी कोई स्थानीय कैलेंडर नहीं है।";
+"Edit local calendar" = "स्थानीय कैलेंडर संपादित करें";
+"Share Event" = "इवेंट साझा करें";
+
 /* Preferences */
 "Language" = "भाषा";
 "Measurement Units" = "माप की इकाइयाँ";

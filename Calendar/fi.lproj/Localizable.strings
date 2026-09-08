@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Paikka";
+"Video Call" = "Videopuhelu";
+"Map Locations" = "Karttasijainnit";
+"End Repeat" = "Lopeta toisto";
+"On Date" = "Päivänä";
+"Custom…" = "Muokkaa…";
+"Attachments will be applied to all occurrences" = "Liitteitä käytetään kaikkiin esiintymiin";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Lisää kalenteriin matka-aika tälle tapahtumalle. Tapahtumien hälytykset huomioivat matka-ajan, ja aika merkitään kalenteriisi varatuksi.";
+"Repeats %@" = "Toistuu %@";
+"10 minutes before" = "10 minuuttia ennen";
+"2 hours before" = "2 tuntia ennen";
+"2 days before" = "2 päivää ennen";
+"1 week before" = "1 viikko ennen";
+"Every Day" = "Päivittäin";
+"Every Week" = "viikoittain";
+"Every Month" = "Kuukausittain";
+"Every Year" = "Vuosittain";
+"Every 2 Weeks" = "Joka 2 viikkoa";
+"Travel Time" = "Matka-aika";
+"Repeat" = "Toistoväli";
+"Second Alert" = "2. hälytys";
+"Never" = "Ei koskaan";
+"None" = "Ei mitään";
+"Add attachment…" = "Lisää liite…";
+
+/* App-owned calendars */
+"Event Details" = "Tapahtuman tiedot";
+"Edit Event" = "Muokkaa tapahtumaa";
+"Delete Event" = "Poista tapahtuma";
+"Delete Event?" = "Poistetaanko tapahtuma?";
+"All-day" = "Koko päivä";
+"Starts" = "Alkaa";
+"Alert" = "Hälytys";
+"URL" = "URL";
+"Notes" = "Muistiinpanot";
+"Title" = "Otsikko";
+"Location or Video Call" = "Sijainti tai videopuhelu";
+"At time of event" = "Tapahtuman alkaessa";
+"5 minutes before" = "5 minuuttia ennen";
+"15 minutes before" = "15 minuuttia ennen";
+"30 minutes before" = "30 minuuttia ennen";
+"1 hour before" = "1 tunti ennen";
+"1 day before" = "1 päivä ennen";
+"Access" = "Käyttöoikeus";
+"Delete Calendar?" = "Poistetaanko kalenteri?";
+"Add Local Calendar" = "Lisää paikallinen kalenteri";
+"Local Calendars" = "Paikalliset kalenterit";
+"No local calendars yet." = "Ei vielä paikallisia kalentereita.";
+"Edit local calendar" = "Muokkaa paikallista kalenteria";
+"Share Event" = "Jaa tapahtuma";
+
 /* Preferences */
 "Language" = "Kieli";
 "Measurement Units" = "Mittayksiköt";

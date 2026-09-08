@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Lokasi";
+"Video Call" = "Panggilan Video";
+"Map Locations" = "Lokasi Peta";
+"End Repeat" = "Tamat Ulangan";
+"On Date" = "Pada Tarikh";
+"Custom…" = "Tersuai…";
+"Attachments will be applied to all occurrences" = "Lampiran akan digunakan pada semua kejadian";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Tambah masa perjalanan untuk peristiwa ini pada kalendar anda. Isyarat peristiwa akan mengambil kira masa ini dan kalendar anda akan disekat sepanjang tempoh ini.";
+"Repeats %@" = "Ulang %@";
+"10 minutes before" = "10 minit sebelum";
+"2 hours before" = "2 jam sebelum";
+"2 days before" = "2 hari sebelum";
+"1 week before" = "1 minggu sebelum";
+"Every Day" = "Setiap hari";
+"Every Week" = "Mingguan";
+"Every Month" = "Bulanan";
+"Every Year" = "setiap tahun";
+"Every 2 Weeks" = "Setiap 2 minggu";
+"Travel Time" = "Masa Perjalanan";
+"Repeat" = "Ulang";
+"Second Alert" = "Isyarat Kedua";
+"Never" = "Jangan";
+"None" = "Tiada";
+"Add attachment…" = "Tambah lampiran…";
+
+/* App-owned calendars */
+"Event Details" = "Butiran Acara";
+"Edit Event" = "Edit Acara";
+"Delete Event" = "Padam Acara";
+"Delete Event?" = "Padam acara?";
+"All-day" = "Sepanjang hari";
+"Starts" = "Bermula";
+"Alert" = "Isyarat";
+"URL" = "URL";
+"Notes" = "Nota";
+"Title" = "Tajuk";
+"Location or Video Call" = "Lokasi atau Panggilan Video";
+"At time of event" = "Pada waktu acara";
+"5 minutes before" = "5 minit sebelum";
+"15 minutes before" = "15 minit sebelum";
+"30 minutes before" = "30 minit sebelum";
+"1 hour before" = "1 jam sebelum";
+"1 day before" = "1 hari sebelum";
+"Access" = "Akses";
+"Delete Calendar?" = "Padam kalendar?";
+"Add Local Calendar" = "Tambah Kalendar Setempat";
+"Local Calendars" = "Kalendar Setempat";
+"No local calendars yet." = "Belum ada kalendar setempat.";
+"Edit local calendar" = "Edit kalendar setempat";
+"Share Event" = "Kongsi Acara";
+
 /* Preferences */
 "Language" = "Bahasa";
 "Measurement Units" = "Unit ukuran";

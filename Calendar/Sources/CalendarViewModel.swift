@@ -5,6 +5,37 @@ import Combine
 import MSAL
 import Contacts
 
+/// Provider-neutral calendar metadata used by MultiCalendar. EventKit-backed
+/// calendars (iCloud, Google and Microsoft mirrors) carry `calendar`; calendars
+/// stored by the app carry `appLocalCalendarID` instead.
+public struct MultiCalendarInfo {
+    public let id: String
+    public let title: String
+    public let color: UIColor
+    public var selected: Bool
+    public let calendar: EKCalendar?
+    public let appLocalCalendarID: String?
+    public let allowsContentModifications: Bool
+
+    public init(
+        id: String,
+        title: String,
+        color: UIColor,
+        selected: Bool,
+        calendar: EKCalendar? = nil,
+        appLocalCalendarID: String? = nil,
+        allowsContentModifications: Bool
+    ) {
+        self.id = id
+        self.title = title
+        self.color = color
+        self.selected = selected
+        self.calendar = calendar
+        self.appLocalCalendarID = appLocalCalendarID
+        self.allowsContentModifications = allowsContentModifications
+    }
+}
+
 @MainActor
 final class CalendarViewModel: ObservableObject {
     private var msSyncTimer: Timer?
@@ -28,12 +59,18 @@ final class CalendarViewModel: ObservableObject {
     
     let clientID = "540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com"
     @Published var allCalendars: [EKCalendar] = []
-    @Published var eventsByDay: [Date: [EKEvent]] = [:]
-    @Published var eventsByID:  [String: EKEvent] = [:]
+    @Published var eventsByDay: [Date: [EventDescriptor]] = [:]
+    @Published var eventsByID:  [String: EventDescriptor] = [:]
+    @Published private(set) var appLocalRevision: UInt = 0
 
     @Published var accessGranted = false
     @Published var selectedCalendarIDs: Set<String> = []
     @Published var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
+
+    /// Emits one coalesced refresh after visibility changes or a provider sync.
+    /// It intentionally is not `@Published`: consumers refresh their event
+    /// range without forcing every calendar/settings view to rebuild.
+    let calendarContentDidChange = PassthroughSubject<Void, Never>()
 
     @Published var firstLocalCalendarColor: UIColor?
     
@@ -48,6 +85,20 @@ final class CalendarViewModel: ObservableObject {
     let calendar = Calendar.current
     
     private var cancellables = Set<AnyCancellable>()
+    private var activeCalendarSyncCount = 0
+    private var pendingCalendarContentRefresh: Task<Void, Never>?
+    private var lastPublishedCalendarSnapshot: [CalendarPresentationState] = []
+
+    private struct CalendarPresentationState: Equatable {
+        let id: String
+        let title: String
+        let color: String
+        let sourceID: String
+        let sourceTitle: String
+        let sourceType: Int
+        let calendarType: Int
+        let allowsChanges: Bool
+    }
 
     // MARK: MULTI-ACCOUNT: Instead of a single googleToLocalCalendarMap, store them per user.
     //
@@ -117,6 +168,7 @@ final class CalendarViewModel: ObservableObject {
 
         // 5) Observe changes in selectedCalendarIDs and store them
         $selectedCalendarIDs
+            .removeDuplicates()
             .sink { newValue in
                 let hasConfiguredSelection = UserDefaults.standard.bool(forKey: self.hasConfiguredSelectedCalendarIDsKey)
                 guard !newValue.isEmpty || hasConfiguredSelection || !self.allCalendars.isEmpty else { return }
@@ -127,6 +179,7 @@ final class CalendarViewModel: ObservableObject {
                     UserDefaults.standard.set(true, forKey: self.hasConfiguredSelectedCalendarIDsKey)
                 }
                 CalendarWidgetStore.saveCalendarSelectionSnapshot(newValue)
+                self.calendarContentDidChange.send()
 
                 Task { @MainActor in
                     EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
@@ -140,6 +193,15 @@ final class CalendarViewModel: ObservableObject {
                name: .EKEventStoreChanged,
                object: eventStore
            )
+
+        NotificationCenter.default.publisher(for: .appLocalCalendarStoreChanged)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                self.appLocalRevision &+= 1
+                self.calendarContentDidChange.send()
+            }
+            .store(in: &cancellables)
 
            // Първоначално зареждане на локални събития и запис в oldEventCalendarMap
            loadAndStoreCurrentEvents()
@@ -218,6 +280,7 @@ final class CalendarViewModel: ObservableObject {
         oldEventCalendarMap = tmp
     }
     @objc private func handleEventStoreChanged(_ notification: Notification) {
+        scheduleCalendarContentRefresh()
         // 1) Селектираме „разрешените“ календари (или всички, ако предпочитате).
         let allowedCalendars = eventStore.calendars(for: .event)
             .filter { selectedCalendarIDs.contains($0.calendarIdentifier) }
@@ -593,7 +656,11 @@ final class CalendarViewModel: ObservableObject {
     // MARK: - Load Calendars
     func reloadCalendars() {
         let cals = eventStore.calendars(for: .event)
-        self.allCalendars = cals
+        let snapshot = calendarPresentationSnapshot(cals)
+        if snapshot != lastPublishedCalendarSnapshot {
+            lastPublishedCalendarSnapshot = snapshot
+            self.allCalendars = cals
+        }
         ensureDefaultCalendarSelectionIfNeeded()
 
         // Обновяваме речника (или каквото друго е нужно)
@@ -606,6 +673,161 @@ final class CalendarViewModel: ObservableObject {
             self.firstLocalCalendarColor = UIColor(cgColor: cgColor)
         } else {
             self.firstLocalCalendarColor = nil
+        }
+    }
+
+    var isCalendarSyncInProgress: Bool {
+        activeCalendarSyncCount > 0
+    }
+
+    private func beginCalendarSync() {
+        activeCalendarSyncCount += 1
+        pendingCalendarContentRefresh?.cancel()
+        pendingCalendarContentRefresh = nil
+    }
+
+    private func finishCalendarSync() {
+        activeCalendarSyncCount = max(0, activeCalendarSyncCount - 1)
+        guard activeCalendarSyncCount == 0 else { return }
+        reloadCalendars()
+        calendarContentDidChange.send()
+    }
+
+    /// EventKit can emit many notifications for one provider sync. Waiting for
+    /// the short burst to finish prevents views from rendering intermediate
+    /// provider state and then rendering the final state a moment later.
+    private func scheduleCalendarContentRefresh() {
+        guard activeCalendarSyncCount == 0 else { return }
+        pendingCalendarContentRefresh?.cancel()
+        pendingCalendarContentRefresh = Task { @MainActor [weak self] in
+            try? await Task.sleep(for: .milliseconds(180))
+            guard !Task.isCancelled, let self,
+                  self.activeCalendarSyncCount == 0 else { return }
+            self.reloadCalendars()
+            self.calendarContentDidChange.send()
+        }
+    }
+
+    private func calendarPresentationSnapshot(
+        _ calendars: [EKCalendar]
+    ) -> [CalendarPresentationState] {
+        calendars.map { calendar in
+            CalendarPresentationState(
+                id: calendar.calendarIdentifier,
+                title: calendar.title,
+                color: calendar.cgColor.map { String(describing: $0) } ?? "",
+                sourceID: calendar.source.sourceIdentifier,
+                sourceTitle: calendar.source.title,
+                sourceType: calendar.source.sourceType.rawValue,
+                calendarType: calendar.type.rawValue,
+                allowsChanges: calendar.allowsContentModifications
+            )
+        }
+    }
+
+    private func publishCalendarsDictionaryIfChanged(
+        _ newValue: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]
+    ) {
+        func snapshot(
+            _ value: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]
+        ) -> [String] {
+            value.map { id, info in
+                let color = info.color.cgColor.components?
+                    .map { String(format: "%.4f", Double($0)) }
+                    .joined(separator: ",") ?? info.color.description
+                return "\(id)|\(info.title)|\(color)|\(info.selected)"
+            }
+            .sorted()
+        }
+
+        guard snapshot(calendarsDict) != snapshot(newValue) else { return }
+        calendarsDict = newValue
+    }
+
+    private func publishEventsIfChanged(
+        eventsByDay newEventsByDay: [Date: [EventDescriptor]],
+        eventsByID newEventsByID: [String: EventDescriptor]
+    ) {
+        let oldDays = eventsByDay.keys.sorted()
+        let newDays = newEventsByDay.keys.sorted()
+        let hasSamePresentation = oldDays == newDays && zip(oldDays, newDays).allSatisfy {
+            oldDay, newDay in
+            eventDescriptorPresentationKeys(eventsByDay[oldDay] ?? [])
+                == eventDescriptorPresentationKeys(newEventsByDay[newDay] ?? [])
+        }
+        guard !hasSamePresentation else { return }
+        eventsByDay = newEventsByDay
+        eventsByID = newEventsByID
+    }
+
+    var appLocalCalendars: [AppLocalCalendarRecord] {
+        AppLocalCalendarStore.shared.ownedCalendars
+    }
+
+    /// A single source list for MultiCalendar. `calendarsDict` contains only
+    /// EventKit objects, so using it directly used to drop app-local and
+    /// received Cloud Calendars before their event descriptors were laid out.
+    var multiCalendarsDict: [String: MultiCalendarInfo] {
+        var result: [String: MultiCalendarInfo] = [:]
+
+        // Use EventKit's complete event-calendar list here. This includes
+        // iCloud/shared calendars and calendars exposed by Google/Microsoft
+        // accounts, even when they are not part of the legacy local/iCloud
+        // `calendarsDict` grouping.
+        for eventKitCalendar in allCalendars where
+            eventKitCalendar.type != .birthday
+                && eventKitCalendar.type != .subscription {
+            let id = eventKitCalendar.calendarIdentifier
+            result[id] = MultiCalendarInfo(
+                id: id,
+                title: eventKitCalendar.title,
+                color: eventKitCalendar.cgColor.map(UIColor.init(cgColor:)) ?? .systemGray,
+                selected: selectedCalendarIDs.contains(id),
+                calendar: eventKitCalendar,
+                allowsContentModifications: eventKitCalendar.allowsContentModifications
+            )
+        }
+
+        for appCalendar in AppLocalCalendarStore.shared.calendars where !appCalendar.isRevoked {
+            result[appCalendar.id] = MultiCalendarInfo(
+                id: appCalendar.id,
+                title: appCalendar.title,
+                color: AppLocalCalendarStore.color(appCalendar.displayColorHex),
+                selected: selectedCalendarIDs.contains(appCalendar.id),
+                appLocalCalendarID: appCalendar.id,
+                allowsContentModifications: appCalendar.canEditEvents
+            )
+        }
+
+        return result
+    }
+
+    func updateMultiCalendarSelection(_ newValue: [String: MultiCalendarInfo]) {
+        var updatedIDs = selectedCalendarIDs
+        var updatedLegacyDictionary = calendarsDict
+        for (id, info) in newValue {
+            if info.selected {
+                updatedIDs.insert(id)
+            } else {
+                updatedIDs.remove(id)
+            }
+            if var legacyInfo = updatedLegacyDictionary[id] {
+                legacyInfo.selected = info.selected
+                updatedLegacyDictionary[id] = legacyInfo
+            }
+        }
+        publishCalendarsDictionaryIfChanged(updatedLegacyDictionary)
+        selectedCalendarIDs = updatedIDs
+    }
+
+    var allSelectableCalendarIDs: Set<String> {
+        Set(allCalendars.map(\.calendarIdentifier))
+            .union(AppLocalCalendarStore.shared.calendars.map(\.id))
+    }
+
+    func pickFirstWritableSelectedAppLocalCalendar() -> AppLocalCalendarRecord? {
+        AppLocalCalendarStore.shared.calendars.first {
+            selectedCalendarIDs.contains($0.id) && $0.canEditEvents
         }
     }
 
@@ -654,24 +876,46 @@ final class CalendarViewModel: ObservableObject {
     }
 
     func loadEvents(for month: Date) {
-        guard isCalendarAccessGranted() else {
-            self.eventsByDay = [:]
-            self.eventsByID  = [:]
-            return
-        }
-        
-        let fetched = eventStore.fetchEventsByDay(for: month,
-                                                  calendar: calendar,
-                                                  allowedCalendarIDs: selectedCalendarIDs)
-        self.eventsByDay = fetched
-        
-        var tmp: [String: EKEvent] = [:]
-        for evList in fetched.values {
-            for ev in evList {
-                tmp[ev.eventIdentifier] = ev
+        var combined: [Date: [EventDescriptor]] = [:]
+        var byID: [String: EventDescriptor] = [:]
+
+        if isCalendarAccessGranted() {
+            let fetched = eventStore.fetchEventsByDay(
+                for: month,
+                calendar: calendar,
+                allowedCalendarIDs: selectedCalendarIDs
+            )
+            for (day, events) in fetched {
+                let descriptors = events.map(EKMultiDayWrapper.init(realEvent:))
+                combined[day, default: []].append(contentsOf: descriptors)
+                for descriptor in descriptors {
+                    byID[descriptor.realEvent.eventIdentifier] = descriptor
+                }
             }
         }
-        self.eventsByID = tmp
+
+        let monthStart = calendar.date(
+            from: calendar.dateComponents([.year, .month], from: month)
+        ) ?? calendar.startOfDay(for: month)
+        let rangeStart = calendar.date(byAdding: .day, value: -7, to: monthStart) ?? monthStart
+        let nextMonth = calendar.date(byAdding: .month, value: 1, to: monthStart) ?? monthStart
+        let rangeEnd = calendar.date(byAdding: .day, value: 7, to: nextMonth) ?? nextMonth
+        for descriptor in AppLocalCalendarStore.shared.descriptors(
+            from: rangeStart,
+            to: rangeEnd,
+            selectedCalendarIDs: selectedCalendarIDs
+        ) {
+            let day = calendar.startOfDay(for: descriptor.dateInterval.start)
+            combined[day, default: []].append(descriptor)
+            if let local = descriptor as? AppLocalEventDescriptor {
+                byID[local.eventID] = local
+            }
+        }
+
+        for key in combined.keys {
+            combined[key]?.sort { $0.dateInterval.start < $1.dateInterval.start }
+        }
+        publishEventsIfChanged(eventsByDay: combined, eventsByID: byID)
         EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
     }
     func localOrICloudCalendars() -> [EKCalendar] {
@@ -737,7 +981,7 @@ final class CalendarViewModel: ObservableObject {
             }
             
             // Запазваме дали е било селектирано досега
-            let wasSelected = calendarsDict[cal.calendarIdentifier]?.selected ?? true
+            let wasSelected = selectedCalendarIDs.contains(cal.calendarIdentifier)
             
             newDict[cal.calendarIdentifier] = (
                 title: calTitle,
@@ -748,16 +992,10 @@ final class CalendarViewModel: ObservableObject {
         }
         
         // 4) Заместваме стария речник с новия
-        self.calendarsDict = newDict
+        publishCalendarsDictionaryIfChanged(newDict)
     }
 
     func loadEventsForWholeYear(year: Int) {
-        guard isCalendarAccessGranted() else {
-            self.eventsByDay = [:]
-            self.eventsByID  = [:]
-            return
-        }
-
         var comp = DateComponents()
         comp.year = year
         comp.month = 1
@@ -770,28 +1008,50 @@ final class CalendarViewModel: ObservableObject {
         compNext.day = 1
         guard let startOfNextYear = calendar.date(from: compNext) else { return }
 
-        let allowedCals = allowedCalendars()
-        let predicate = eventStore.predicateForEvents(
-            withStart: startOfYear,
-            end: startOfNextYear,
-            calendars: allowedCals
-        )
-        let foundEvents = eventStore.events(matching: predicate)
-
-        var dict: [Date: [EKEvent]] = [:]
-        for ev in foundEvents {
-            let dayKey = calendar.startOfDay(for: ev.startDate)
-            dict[dayKey, default: []].append(ev)
-        }
-        self.eventsByDay = dict
-
-        var tmp: [String: EKEvent] = [:]
-        for evList in dict.values {
-            for ev in evList {
-                tmp[ev.eventIdentifier] = ev
+        var dict: [Date: [EventDescriptor]] = [:]
+        var byID: [String: EventDescriptor] = [:]
+        if isCalendarAccessGranted() {
+            let allowedCals = allowedCalendars()
+            if !allowedCals.isEmpty {
+                let predicate = eventStore.predicateForEvents(
+                    withStart: startOfYear,
+                    end: startOfNextYear,
+                    calendars: allowedCals
+                )
+                for event in eventStore.events(matching: predicate) {
+                    let descriptor = EKMultiDayWrapper(realEvent: event)
+                    let dayKey = calendar.startOfDay(for: event.startDate)
+                    dict[dayKey, default: []].append(descriptor)
+                    byID[event.eventIdentifier] = descriptor
+                }
             }
         }
-        self.eventsByID = tmp
+        for descriptor in AppLocalCalendarStore.shared.descriptors(
+            from: startOfYear,
+            to: startOfNextYear,
+            selectedCalendarIDs: selectedCalendarIDs
+        ) {
+            let dayKey = calendar.startOfDay(for: descriptor.dateInterval.start)
+            dict[dayKey, default: []].append(descriptor)
+            if let local = descriptor as? AppLocalEventDescriptor {
+                byID[local.eventID] = local
+            }
+        }
+        for key in dict.keys {
+            dict[key]?.sort {
+                if $0.dateInterval.start != $1.dateInterval.start {
+                    return $0.dateInterval.start < $1.dateInterval.start
+                }
+                if $0.dateInterval.end != $1.dateInterval.end {
+                    return $0.dateInterval.end < $1.dateInterval.end
+                }
+                if ($0.calendarID ?? "") != ($1.calendarID ?? "") {
+                    return ($0.calendarID ?? "") < ($1.calendarID ?? "")
+                }
+                return $0.text < $1.text
+            }
+        }
+        publishEventsIfChanged(eventsByDay: dict, eventsByID: byID)
     }
     
     func loadLocalCalendars() {
@@ -817,7 +1077,7 @@ final class CalendarViewModel: ObservableObject {
             )
         }
         
-        self.calendarsDict = dict
+        publishCalendarsDictionaryIfChanged(dict)
     }
 }
 
@@ -851,6 +1111,8 @@ extension CalendarViewModel {
     /// Sync *all* storedUsers
     @MainActor
     func performGoogleCalendarSyncForAllUsers() async {
+        beginCalendarSync()
+        defer { finishCalendarSync() }
         for user in storedUsers {
             await performGoogleCalendarSync(for: user)
         }
@@ -2903,6 +3165,8 @@ extension CalendarViewModel {
 
     /// Call this to sync all stored MsUsers
     func performMicrosoftCalendarSyncForAllUsers() async {
+        beginCalendarSync()
+        defer { finishCalendarSync() }
         for user in storedMsUsers {
             print(" - Will sync user \(user.email ?? "???" )")
             await performMicrosoftCalendarSync(for: user)
@@ -4721,9 +4985,10 @@ extension CalendarViewModel {
     /// Множество от calendarIdentifier-и, които трябва да се виждат.
     /// • Ако няма отметнати календари – показваме всички.
     var visibleCalendarIDs: Set<String> {
-        let selected = calendarsDict.filter { $0.value.selected }
+        let calendars = multiCalendarsDict
+        let selected = calendars.filter { $0.value.selected }
         return selected.isEmpty
-            ? Set(calendarsDict.keys)
+            ? Set(calendars.keys)
             : Set(selected.keys)
     }
 }

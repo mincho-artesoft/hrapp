@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "لوکیشن";
+"Video Call" = "ویڈیو کال";
+"Map Locations" = "نقشے کی لوکیشن";
+"End Repeat" = "دہرانا ختم کریں";
+"On Date" = "تاریخ کو";
+"Custom…" = "حسب خواہش…";
+"Attachments will be applied to all occurrences" = "اٹیچمنٹ کا اطلاق اس کے تمام ایونٹ پر ہوگا";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "اس ایونٹ کے لیے سفر کے وقت کو اپنے کیلنڈر میں شامل کریں۔ ایونٹ الرٹ اس وقت کو پیش نظر رکھے گا اور آپ کا کیلنڈر اس دوران بلاک رہے گا۔";
+"Repeats %@" = "‏%@ دہرایا جائے گا";
+"10 minutes before" = "10 منٹ پہلے";
+"2 hours before" = "2 گھنٹے پہلے";
+"2 days before" = "2 دن پہلے";
+"1 week before" = "1 ہفتہ پہلے";
+"Every Day" = "روزانہ";
+"Every Week" = "ہفتہ وار";
+"Every Month" = "ماہانہ";
+"Every Year" = "سالانہ";
+"Every 2 Weeks" = "ہر ‏2 ہفتے";
+"Travel Time" = "سفر کا وقت";
+"Repeat" = "دہرائیں";
+"Second Alert" = "دوسرا الرٹ";
+"Never" = "کبھی نہیں";
+"None" = "کوئی نہیں";
+"Add attachment…" = "اٹیچمنٹ شامل کریں…";
+
+/* App-owned calendars */
+"Event Details" = "ایونٹ کی تفصیلات";
+"Edit Event" = "ایونٹ میں ترمیم کریں";
+"Delete Event" = "ایونٹ حذف کریں";
+"Delete Event?" = "ایونٹ حذف کریں؟";
+"All-day" = "پورا دن";
+"Starts" = "شروع";
+"Alert" = "الرٹ";
+"URL" = "URL";
+"Notes" = "نوٹس";
+"Title" = "عنوان";
+"Location or Video Call" = "مقام یا ویڈیو کال";
+"At time of event" = "ایونٹ کے وقت";
+"5 minutes before" = "5 منٹ پہلے";
+"15 minutes before" = "15 منٹ پہلے";
+"30 minutes before" = "30 منٹ پہلے";
+"1 hour before" = "1 گھنٹہ پہلے";
+"1 day before" = "1 دن پہلے";
+"Access" = "رسائی";
+"Delete Calendar?" = "کیلنڈر حذف کریں؟";
+"Add Local Calendar" = "مقامی کیلنڈر شامل کریں";
+"Local Calendars" = "مقامی کیلنڈرز";
+"No local calendars yet." = "ابھی کوئی مقامی کیلنڈر نہیں ہے۔";
+"Edit local calendar" = "مقامی کیلنڈر میں ترمیم کریں";
+"Share Event" = "ایونٹ شیئر کریں";
+
 /* Preferences */
 "Language" = "زبان";
 "Measurement Units" = "پیمائش کی اکائیاں";

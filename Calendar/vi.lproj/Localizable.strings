@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Vị trí";
+"Video Call" = "Cuộc gọi video";
+"Map Locations" = "Vị trí trên bản đồ";
+"End Repeat" = "Kết thúc lặp lại";
+"On Date" = "Ngày";
+"Custom…" = "Tùy chỉnh…";
+"Attachments will be applied to all occurrences" = "Tệp đính kèm sẽ được áp dụng cho tất cả các lần diễn ra";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Thêm thời gian di chuyển cho sự kiện này vào lịch của bạn. Cảnh báo sự kiện sẽ ghi nhớ thời gian này và lịch của bạn sẽ bị chặn trong suốt thời gian này.";
+"Repeats %@" = "Lặp lại %@";
+"10 minutes before" = "Trước 10 phút";
+"2 hours before" = "Trước 2 giờ";
+"2 days before" = "Trước 2 ngày";
+"1 week before" = "Trước 1 tuần";
+"Every Day" = "hàng ngày";
+"Every Week" = "hàng tuần";
+"Every Month" = "hàng tháng";
+"Every Year" = "Hàng năm";
+"Every 2 Weeks" = "Mỗi 2 tuần";
+"Travel Time" = "Thời gian di chuyển";
+"Repeat" = "Lặp lại";
+"Second Alert" = "Báo lần 2";
+"Never" = "Không";
+"None" = "Không có";
+"Add attachment…" = "Thêm tệp đính kèm…";
+
+/* App-owned calendars */
+"Event Details" = "Chi tiết sự kiện";
+"Edit Event" = "Chỉnh sửa sự kiện";
+"Delete Event" = "Xóa sự kiện";
+"Delete Event?" = "Xóa sự kiện?";
+"All-day" = "Cả ngày";
+"Starts" = "Bắt đầu";
+"Alert" = "Cảnh báo";
+"URL" = "URL";
+"Notes" = "Ghi chú";
+"Title" = "Tiêu đề";
+"Location or Video Call" = "Vị trí hoặc cuộc gọi video";
+"At time of event" = "Vào thời điểm sự kiện";
+"5 minutes before" = "Trước 5 phút";
+"15 minutes before" = "Trước 15 phút";
+"30 minutes before" = "Trước 30 phút";
+"1 hour before" = "Trước 1 giờ";
+"1 day before" = "Trước 1 ngày";
+"Access" = "Quyền truy cập";
+"Delete Calendar?" = "Xóa lịch?";
+"Add Local Calendar" = "Thêm lịch cục bộ";
+"Local Calendars" = "Lịch cục bộ";
+"No local calendars yet." = "Chưa có lịch cục bộ.";
+"Edit local calendar" = "Sửa lịch cục bộ";
+"Share Event" = "Chia sẻ sự kiện";
+
 /* Preferences */
 "Language" = "Ngôn ngữ";
 "Measurement Units" = "Đơn vị đo lường";

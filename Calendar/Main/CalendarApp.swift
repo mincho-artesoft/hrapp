@@ -70,10 +70,27 @@ struct CalendarApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environment(\.locale, appPreferences.interfaceLocale)
+            Group {
+                #if DEBUG
+                if SimulatorCalendarTestSeeder.isRequested {
+                    SimulatorCalendarTestSeedView()
+                } else if UserDefaults.standard.bool(forKey: "EventEditorReferencePreview") {
+                    AppLocalEventReferencePreview()
+                } else {
+                    RootView()
+                }
+                #else
+                RootView()
+                #endif
+            }
+                .environment(\.locale, appPreferences.presentationLocale)
                 .environment(\.layoutDirection, appPreferences.layoutDirection)
                 .onAppear {
+                    #if DEBUG
+                    guard !UserDefaults.standard.bool(forKey: "EventEditorReferencePreview"),
+                          !SimulatorCalendarTestSeeder.isRequested
+                    else { return }
+                    #endif
                     EventNotificationManager.shared.configure()
                     EventNotificationManager.shared.requestAuthorizationOnLaunch()
 
@@ -141,6 +158,11 @@ struct CalendarApp: App {
             await CalendarLiveActivityBackgroundRefreshTask.run()
         }
         .onChange(of: scenePhase) { _, newPhase in
+            #if DEBUG
+            guard !UserDefaults.standard.bool(forKey: "EventEditorReferencePreview"),
+                  !SimulatorCalendarTestSeeder.isRequested
+            else { return }
+            #endif
             switch newPhase {
             case .active:
                 print("App is active.")

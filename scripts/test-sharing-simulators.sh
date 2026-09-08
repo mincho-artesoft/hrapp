@@ -4,10 +4,11 @@ set -euo pipefail
 # Read-only production smoke test for the two signed-in sharing accounts.
 # It deliberately does not create events, calendars, invitations, or e-mails.
 
-SENDER_UDID="${1:-E40E5DD1-EEE5-45A3-8FE6-445A5B837DE0}"
-RECEIVER_UDID="${2:-29A386F0-28CE-4D25-8016-3A2AE1970CE1}"
+SENDER_UDID="${1:-1A67A8FA-A72D-4244-9C1C-551D1C473FD4}"
+RECEIVER_UDID="${2:-786598BD-4158-4A5B-851F-8E04FDE3BC98}"
 APP_BUNDLE_ID="Deksan.CalendarASD"
-API_BASE_URL="https://api.cloud-calendars.com"
+API_BASE_URL="${API_BASE_URL:-https://63yo3ore3c.execute-api.us-east-1.amazonaws.com}"
+SESSION_FILE_NAME="${SESSION_FILE_NAME:-feed-session-debug.json}"
 TEST_TEMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TEST_TEMP_DIR"' EXIT
 
@@ -30,7 +31,7 @@ smoke_device() {
   xcrun simctl boot "$udid" >/dev/null 2>&1 || true
   xcrun simctl bootstatus "$udid" -b >/dev/null
   container="$(xcrun simctl get_app_container "$udid" "$APP_BUNDLE_ID" data)"
-  session="$container/Library/Application Support/CloudCalendars/feed-session.json"
+  session="$container/Library/Application Support/CloudCalendars/$SESSION_FILE_NAME"
 
   [[ -f "$session" ]] || {
     echo "FAIL $label: sharing session is missing" >&2

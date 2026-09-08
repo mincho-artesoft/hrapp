@@ -41,6 +41,7 @@ extension EKEventStore: @unchecked @retroactive Sendable{
         let allowedCals = calendars(for: .event).filter {
             allowedCalendarIDs.contains($0.calendarIdentifier)
         }
+        guard !allowedCals.isEmpty else { return [:] }
 
         let predicate = predicateForEvents(
             withStart: startOfMonth,

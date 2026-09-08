@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Место";
+"Video Call" = "Видеовызов";
+"Map Locations" = "Мои места";
+"End Repeat" = "Конец повтора";
+"On Date" = "В дату";
+"Custom…" = "Настроить…";
+"Attachments will be applied to all occurrences" = "Вложения будут добавляться во все повторы события.";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Вы можете указать, сколько времени уйдет на дорогу до места события. Вы будете получать напоминания с учетом времени в пути, а в календаре появится отметка, что в этом промежутке дня Вы заняты.";
+"Repeats %@" = "Повтор: %@";
+"10 minutes before" = "За 10 минут";
+"2 hours before" = "За 2 часа";
+"2 days before" = "За 2 дня";
+"1 week before" = "За 1 неделя";
+"Every Day" = "Ежедневно";
+"Every Week" = "Еженедельно";
+"Every Month" = "Ежемесячно";
+"Every Year" = "Ежегодно";
+"Every 2 Weeks" = "Каждую 2 недели";
+"Travel Time" = "Время в пути";
+"Repeat" = "Повтор";
+"Second Alert" = "2‑е напоминание";
+"Never" = "Никогда";
+"None" = "Нет";
+"Add attachment…" = "Добавить вложение…";
+
+/* App-owned calendars */
+"Event Details" = "Сведения о событии";
+"Edit Event" = "Редактировать событие";
+"Delete Event" = "Удалить событие";
+"Delete Event?" = "Удалить событие?";
+"All-day" = "Весь день";
+"Starts" = "Начало";
+"Alert" = "Уведомление";
+"URL" = "URL";
+"Notes" = "Заметки";
+"Title" = "Название";
+"Location or Video Call" = "Место или видеозвонок";
+"At time of event" = "В момент события";
+"5 minutes before" = "За 5 минут";
+"15 minutes before" = "За 15 минут";
+"30 minutes before" = "За 30 минут";
+"1 hour before" = "За 1 час";
+"1 day before" = "За 1 день";
+"Access" = "Доступ";
+"Delete Calendar?" = "Удалить календарь?";
+"Add Local Calendar" = "Добавить локальный календарь";
+"Local Calendars" = "Локальные календари";
+"No local calendars yet." = "Локальных календарей пока нет.";
+"Edit local calendar" = "Изменить локальный календарь";
+"Share Event" = "Поделиться событием";
+
 /* Preferences */
 "Language" = "Язык";
 "Measurement Units" = "Единицы измерения";

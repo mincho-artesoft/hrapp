@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "இருப்பிடம்";
+"Video Call" = "வீடியோ அழைப்பு";
+"Map Locations" = "மேப் இருப்பிடங்கள்";
+"End Repeat" = "தொடர்வை நிறுத்து";
+"On Date" = "தேதியில்";
+"Custom…" = "பிரத்தியேகம்…";
+"Attachments will be applied to all occurrences" = "அனைத்துத் தொடர் நிகழ்வுகளுக்கும் இணைப்புகள் பயன்படுத்தப்படும்";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "உங்கள் கேலண்டரில் இந்த நிகழ்வுக்கான பயண நேரத்தைச் சேர்க்கவும். நிகழ்வு விழிப்பூட்டல்கள் இந்த நேரத்தைக் கணக்கில் எடுத்துக் கொண்டு, இந்த நேரம் உங்கள் கேலண்டரில் குறித்துக்கொள்ளப்படும்.";
+"Repeats %@" = "தொடர்ச்சியான %@";
+"10 minutes before" = "10 நிமிடங்களுக்கு முன்";
+"2 hours before" = "2 மணி நேரத்திற்கு முன்";
+"2 days before" = "2 நாளுக்கு முன்";
+"1 week before" = "1 நாளுக்கு முன்";
+"Every Day" = "தினசரி";
+"Every Week" = "வாரந்தோறும்";
+"Every Month" = "மாதத்திற்கு";
+"Every Year" = "ஆண்டுதோறும்";
+"Every 2 Weeks" = "ஒவ்வொரு 2 வாரங்கள்";
+"Travel Time" = "பயண நேரம்";
+"Repeat" = "தொடர் நிகழ்வு";
+"Second Alert" = "இரண்டாவது விழிப்பூட்டல்";
+"Never" = "வேண்டாம்";
+"None" = "எதுவுமில்லை";
+"Add attachment…" = "இணைப்பைச் சேர்…";
+
+/* App-owned calendars */
+"Event Details" = "நிகழ்வு விவரங்கள்";
+"Edit Event" = "நிகழ்வைத் திருத்து";
+"Delete Event" = "நிகழ்வை நீக்கு";
+"Delete Event?" = "நிகழ்வை நீக்கவா?";
+"All-day" = "நாள் முழுவதும்";
+"Starts" = "தொடங்குகிறது";
+"Alert" = "எச்சரிக்கை";
+"URL" = "URL";
+"Notes" = "குறிப்புகள்";
+"Title" = "தலைப்பு";
+"Location or Video Call" = "இருப்பிடம் அல்லது வீடியோ அழைப்பு";
+"At time of event" = "நிகழ்வு நேரத்தில்";
+"5 minutes before" = "5 நிமிடங்களுக்கு முன்";
+"15 minutes before" = "15 நிமிடங்களுக்கு முன்";
+"30 minutes before" = "30 நிமிடங்களுக்கு முன்";
+"1 hour before" = "1 மணி நேரத்திற்கு முன்";
+"1 day before" = "1 நாளுக்கு முன்";
+"Access" = "அணுகல்";
+"Delete Calendar?" = "நாள்காட்டியை நீக்கவா?";
+"Add Local Calendar" = "உள்ளூர் நாள்காட்டியைச் சேர்";
+"Local Calendars" = "உள்ளூர் நாள்காட்டிகள்";
+"No local calendars yet." = "உள்ளூர் நாள்காட்டிகள் இன்னும் இல்லை.";
+"Edit local calendar" = "உள்ளூர் நாள்காட்டியைத் திருத்து";
+"Share Event" = "நிகழ்வைப் பகிர்";
+
 /* Preferences */
 "Language" = "மொழி";
 "Measurement Units" = "அளவீட்டு அலகுகள்";

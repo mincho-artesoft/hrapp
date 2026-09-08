@@ -162,6 +162,9 @@ struct YearCalendarView: View {
                 }
             }
         }
+        .onReceive(viewModel.calendarContentDidChange) { _ in
+            viewModel.loadEventsForWholeYear(year: year)
+        }
         .animation(.easeInOut, value: showSearchBar)
 
         // (D) Sheet за създаване/редактиране на събитие

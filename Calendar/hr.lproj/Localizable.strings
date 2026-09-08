@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Lokacija";
+"Video Call" = "Video poziv";
+"Map Locations" = "Lokacije na karti";
+"End Repeat" = "Kraj ponavljanja";
+"On Date" = "Na datum";
+"Custom…" = "Prilagodi…";
+"Attachments will be applied to all occurrences" = "Privici se primjenjuju na sva ponavljanja";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Dodajte trajanje putovanja za ovaj događaj u vaš kalendar. Alarmi za događaj uzet će ovo vrijeme u obzir i vaš kalendar bit će blokiran tijekom tog perioda.";
+"Repeats %@" = "Ponavlja se %@";
+"10 minutes before" = "10 minuta prije";
+"2 hours before" = "2 sata prije";
+"2 days before" = "2 dana prije";
+"1 week before" = "1 tjedan prije";
+"Every Day" = "Svakodnevno";
+"Every Week" = "Sedmoročno";
+"Every Month" = "U mjesečnoj";
+"Every Year" = "U svakoj godini";
+"Every 2 Weeks" = "Svaki 2 tjedna";
+"Travel Time" = "Trajanje putovanja";
+"Repeat" = "Ponavljanje";
+"Second Alert" = "Drugi alarm";
+"Never" = "Nikad";
+"None" = "Bez";
+"Add attachment…" = "Dodaj privitak…";
+
+/* App-owned calendars */
+"Event Details" = "Detalji događaja";
+"Edit Event" = "Uredi događaj";
+"Delete Event" = "Izbriši događaj";
+"Delete Event?" = "Izbrisati događaj?";
+"All-day" = "Cijeli dan";
+"Starts" = "Početak";
+"Alert" = "Upozorenje";
+"URL" = "URL";
+"Notes" = "Bilješke";
+"Title" = "Naslov";
+"Location or Video Call" = "Lokacija ili videopoziv";
+"At time of event" = "U vrijeme događaja";
+"5 minutes before" = "5 minuta prije";
+"15 minutes before" = "15 minuta prije";
+"30 minutes before" = "30 minuta prije";
+"1 hour before" = "1 sat prije";
+"1 day before" = "1 dan prije";
+"Access" = "Pristup";
+"Delete Calendar?" = "Izbrisati kalendar?";
+"Add Local Calendar" = "Dodaj lokalni kalendar";
+"Local Calendars" = "Lokalni kalendari";
+"No local calendars yet." = "Još nema lokalnih kalendara.";
+"Edit local calendar" = "Uredi lokalni kalendar";
+"Share Event" = "Podijeli događaj";
+
 /* Preferences */
 "Language" = "Jezik";
 "Measurement Units" = "Mjerne jedinice";

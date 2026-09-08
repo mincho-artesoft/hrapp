@@ -1,5 +1,6 @@
 import UIKit
 import SwiftUI
+import Combine
 import EventKit
 import EventKitUI
 
@@ -14,6 +15,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     // Най-горе при другите свойства
     private var calendarsChangedObserver: NSObjectProtocol?
+    private var calendarSourceCancellables = Set<AnyCancellable>()
     private var didScrollToNow = false
 
     // ---------------------------------------------------------
@@ -48,6 +50,11 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         didSet {
             weekView.onEventTap   = onEventTap
             allDayView.onEventTap = onEventTap
+        }
+    }
+    public var onEventEdit: ((EventDescriptor) -> Void)? {
+        didSet {
+            weekView.onEventEdit = onEventEdit
         }
     }
     public var onEventDeleted: ((EventDescriptor) -> Void)? {
@@ -243,22 +250,37 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         )
 
         updateCalendarsHeader()   // показваме текущите календари
+        observeCalendarSources()
         startRedrawTimer()
     }
 
 
     @objc private func handleCalendarsSelectionChanged(_ note: Notification) {
+        let selectionSnapshot = note.object as? [String: MultiCalendarInfo]
         Task { @MainActor in
-            onEventsReload!()
-            
-            updateCalendarsHeader()
+            onEventsReload?()
+            refreshCalendarSources(using: selectionSnapshot)
         }
     }
 
     @MainActor
-    private func updateCalendarsHeader() {
-        calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
+    private func updateCalendarsHeader(using snapshot: [String: MultiCalendarInfo]? = nil) {
+        calendarsHeaderView.calendarsDict = snapshot ?? calendarVM.multiCalendarsDict
         setNeedsLayout()          // safe, вече сме на Main actor
+        layoutIfNeeded()
+    }
+
+    /// Refreshes provider-neutral calendar columns when an app-local share or
+    /// a Google/Microsoft sync changes the available calendars while this
+    /// UIKit container is already on screen.
+    @MainActor
+    public func refreshCalendarSources(using snapshot: [String: MultiCalendarInfo]? = nil) {
+        updateCalendarsHeader(using: snapshot)
+        weekView.setNeedsDisplay()
+        weekView.setNeedsLayout()
+        allDayView.setNeedsDisplay()
+        allDayView.setNeedsLayout()
+        setNeedsLayout()
         layoutIfNeeded()
     }
 
@@ -267,9 +289,42 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         setupViews()
         
         // (НОВО) Задаваме списъка с календари от ViewModel
-        calendarsHeaderView.calendarsDict = calendarVM.calendarsDict
+        calendarsHeaderView.calendarsDict = calendarVM.multiCalendarsDict
+        observeCalendarSources()
         
         startRedrawTimer()
+    }
+
+    private func observeCalendarSources() {
+        calendarVM.$selectedCalendarIDs
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                Task { @MainActor [weak self] in
+                    self?.refreshCalendarSources()
+                }
+            }
+            .store(in: &calendarSourceCancellables)
+
+        calendarVM.$allCalendars
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                Task { @MainActor [weak self] in
+                    self?.refreshCalendarSources()
+                }
+            }
+            .store(in: &calendarSourceCancellables)
+
+        NotificationCenter.default.publisher(for: .appLocalCalendarStoreChanged)
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                Task { @MainActor [weak self] in
+                    self?.refreshCalendarSources()
+                }
+            }
+            .store(in: &calendarSourceCancellables)
     }
     
     deinit {
@@ -523,10 +578,10 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let fromOnly = cal.startOfDay(for: fromDate)
         
         let availableWidth = bounds.width - leftColumnWidth
-        let selectedCalendarCount = calendarVM.calendarsDict.values.filter { $0.selected }.count
+        let selectedCalendarCount = calendarVM.multiCalendarsDict.values.filter { $0.selected }.count
         let displayedCalendarCount = max(
             1,
-            selectedCalendarCount == 0 ? calendarVM.calendarsDict.count : selectedCalendarCount
+            selectedCalendarCount == 0 ? calendarVM.multiCalendarsDict.count : selectedCalendarCount
         )
         let fullyVisibleCalendarLimit = isLandscape ? 10 : 8
         let totalCalendarWidth: CGFloat

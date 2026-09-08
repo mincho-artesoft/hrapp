@@ -1,5 +1,4 @@
 import UIKit
-import EventKit
 
 @MainActor
 func arrangedForLayoutDirection<Element>(_ values: [Element], in view: UIView) -> [Element] {
@@ -9,9 +8,21 @@ func arrangedForLayoutDirection<Element>(_ values: [Element], in view: UIView) -
 }
 
 final class CalendarsHeaderView: UIView {
+    private struct CalendarHeaderState: Equatable {
+        let id: String
+        let title: String
+        let color: String
+        let selected: Bool
+    }
+
+    private var displayedSnapshot: [CalendarHeaderState] = []
+
     /// Данни за всеки календар: [calendarID: (title, color, selected)]
-    var calendarsDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:] {
+    var calendarsDict: [String: MultiCalendarInfo] = [:] {
         didSet {
+            let newSnapshot = snapshot(of: calendarsDict)
+            guard newSnapshot != displayedSnapshot else { return }
+            displayedSnapshot = newSnapshot
             rebuildSubviews()
         }
     }
@@ -35,6 +46,21 @@ final class CalendarsHeaderView: UIView {
         isOpaque = true
     }
 
+    private func snapshot(of value: [String: MultiCalendarInfo]) -> [CalendarHeaderState] {
+        value.map { id, info in
+            let color = info.color.cgColor.components?
+                .map { String(format: "%.4f", Double($0)) }
+                .joined(separator: ",") ?? info.color.description
+            return CalendarHeaderState(
+                id: id,
+                title: info.title,
+                color: color,
+                selected: info.selected
+            )
+        }
+        .sorted { $0.id < $1.id }
+    }
+
     private func rebuildSubviews() {
         // 1) Премахваме старите labels
         labelViews.forEach { $0.removeFromSuperview() }
@@ -42,7 +68,7 @@ final class CalendarsHeaderView: UIView {
 
         // 2) Избираме календарите, които трябва да се покажат
         let selectedCals = calendarsDict.filter { $0.value.selected }
-        let calsToDraw: [(String, (title: String, color: UIColor, selected: Bool, calendar: EKCalendar))]
+        let calsToDraw: [(String, MultiCalendarInfo)]
         if selectedCals.isEmpty {
             // ако няма селектирани -> показваме всички
             calsToDraw = Array(calendarsDict)

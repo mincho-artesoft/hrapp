@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Miejsce";
+"Video Call" = "Połączenie wideo";
+"Map Locations" = "Pokaż miejsca na mapie";
+"End Repeat" = "Koniec powtarzania";
+"On Date" = "W dniu";
+"Custom…" = "Własny…";
+"Attachments will be applied to all occurrences" = "Załączniki zostaną użyte we wszystkich wystąpieniach";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Dodaj czas podróży na miejsce tego wydarzenia do kalendarza. Alerty wydarzeń będą brały go pod uwagę, a Twój kalendarz będzie w tym czasie zablokowany.";
+"Repeats %@" = "Powtarzane: %@";
+"10 minutes before" = "10 minut wcześniej";
+"2 hours before" = "2 godzinę wcześniej";
+"2 days before" = "2 dni wcześniej";
+"1 week before" = "1 tydzień wcześniej";
+"Every Day" = "Codziennie";
+"Every Week" = "Co tydzień";
+"Every Month" = "Miesięcznie";
+"Every Year" = "Rocznie";
+"Every 2 Weeks" = "Co 2 tygodnie";
+"Travel Time" = "Czas podróży";
+"Repeat" = "Powtórz";
+"Second Alert" = "2. alert";
+"Never" = "Nigdy";
+"None" = "Brak";
+"Add attachment…" = "Dodaj załącznik…";
+
+/* App-owned calendars */
+"Event Details" = "Szczegóły wydarzenia";
+"Edit Event" = "Edytuj wydarzenie";
+"Delete Event" = "Usuń wydarzenie";
+"Delete Event?" = "Usunąć wydarzenie?";
+"All-day" = "Cały dzień";
+"Starts" = "Początek";
+"Alert" = "Alert";
+"URL" = "URL";
+"Notes" = "Notatki";
+"Title" = "Tytuł";
+"Location or Video Call" = "Miejsce lub rozmowa wideo";
+"At time of event" = "W chwili wydarzenia";
+"5 minutes before" = "5 minut wcześniej";
+"15 minutes before" = "15 minut wcześniej";
+"30 minutes before" = "30 minut wcześniej";
+"1 hour before" = "1 godzinę wcześniej";
+"1 day before" = "1 dzień wcześniej";
+"Access" = "Dostęp";
+"Delete Calendar?" = "Usunąć kalendarz?";
+"Add Local Calendar" = "Dodaj kalendar lokalny";
+"Local Calendars" = "Kalendarze lokalne";
+"No local calendars yet." = "Nie ma jeszcze kalendarzy lokalnych.";
+"Edit local calendar" = "Edytuj kalendarz lokalny";
+"Share Event" = "Udostępnij wydarzenie";
+
 /* Preferences */
 "Language" = "Język";
 "Measurement Units" = "Jednostki miary";

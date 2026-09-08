@@ -3,14 +3,21 @@ import EventKit
 
 /// Визуализация на един ред (EKEvent) за Search Results
 struct SearchEventRowView: View {
-    let event: EKEvent
+    let event: EventDescriptor
+
+    private var ekEvent: EKEvent? {
+        if let event = event as? EKEvent { return event }
+        return (event as? EKMultiDayWrapper)?.realEvent
+    }
 
     private var eventColor: UIColor {
-        guard let cal = event.calendar else { return .lightGray }
+        if let local = event as? AppLocalEventDescriptor { return local.color }
+        guard let cal = ekEvent?.calendar else { return .lightGray }
         return cal.cgColor.map(UIColor.init(cgColor:)) ?? .lightGray
     }
 
     private var calendarIconName: String? {
+        guard let event = ekEvent else { return nil }
         let calType = event.calendar?.type ?? .local
         if calType == .birthday {
             return "gift.circle.fill"
@@ -47,13 +54,14 @@ struct SearchEventRowView: View {
             }
 
             // Заглавие
-            Text(event.title?.isEmpty == false
-                 ? event.title!
-                : NSLocalizedString("No Title", comment: "Fallback if an event has no title"))
+            Text(event.text.isEmpty
+                 ? NSLocalizedString("No Title", comment: "Fallback if an event has no title")
+                 : event.text)
                 .font(.body)
                 .foregroundColor(.primary)
                 .strikethrough(
-                    SharedInviteTracker.shouldAppearStruckThrough(event),
+                    (event as? AppLocalEventDescriptor)?.isCancelled == true
+                        || ekEvent.map(SharedInviteTracker.shouldAppearStruckThrough) == true,
                     color: Color(uiColor: eventColor)
                 )
 
@@ -67,8 +75,8 @@ struct SearchEventRowView: View {
                     .foregroundColor(.gray)
             } else {
                 VStack(alignment: .trailing, spacing: 2) {
-                    Text(timeString(event.startDate))
-                    Text(timeString(event.endDate))
+                    Text(timeString(event.dateInterval.start))
+                    Text(timeString(event.dateInterval.end))
                 }
                 .font(.subheadline)
                 .foregroundColor(.gray)

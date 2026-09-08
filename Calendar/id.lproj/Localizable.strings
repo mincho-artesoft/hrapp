@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Lokasi";
+"Video Call" = "Panggilan Video";
+"Map Locations" = "Lokasi Peta";
+"End Repeat" = "Akhiri Ulangan";
+"On Date" = "Pada Tanggal";
+"Custom…" = "Khusus…";
+"Attachments will be applied to all occurrences" = "Lampiran akan diterapkan ke semua kejadian";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Tambahkan waktu perjalanan untuk acara ini ke kalender Anda. Peringatan acara akan mengacu pada waktu ini dan kalender Anda akan diblokir selama waktu perjalanan.";
+"Repeats %@" = "Berulang %@";
+"10 minutes before" = "10 menit sebelumnya";
+"2 hours before" = "2 jam sebelumnya";
+"2 days before" = "2 hari sebelumnya";
+"1 week before" = "1 minggu sebelumnya";
+"Every Day" = "Setiap hari";
+"Every Week" = "Mingguan";
+"Every Month" = "Bulanan";
+"Every Year" = "Tahunan";
+"Every 2 Weeks" = "Setiap 2 minggu";
+"Travel Time" = "Waktu Perjalanan";
+"Repeat" = "Ulangi";
+"Second Alert" = "Peringatan Kedua";
+"Never" = "Jangan Pernah";
+"None" = "Tidak Ada";
+"Add attachment…" = "Tambah lampiran…";
+
+/* App-owned calendars */
+"Event Details" = "Detail Acara";
+"Edit Event" = "Edit Acara";
+"Delete Event" = "Hapus Acara";
+"Delete Event?" = "Hapus acara?";
+"All-day" = "Sepanjang hari";
+"Starts" = "Mulai";
+"Alert" = "Peringatan";
+"URL" = "URL";
+"Notes" = "Catatan";
+"Title" = "Judul";
+"Location or Video Call" = "Lokasi atau Panggilan Video";
+"At time of event" = "Saat acara dimulai";
+"5 minutes before" = "5 menit sebelumnya";
+"15 minutes before" = "15 menit sebelumnya";
+"30 minutes before" = "30 menit sebelumnya";
+"1 hour before" = "1 jam sebelumnya";
+"1 day before" = "1 hari sebelumnya";
+"Access" = "Akses";
+"Delete Calendar?" = "Hapus kalender?";
+"Add Local Calendar" = "Tambah Kalender Lokal";
+"Local Calendars" = "Kalender Lokal";
+"No local calendars yet." = "Belum ada kalender lokal.";
+"Edit local calendar" = "Edit kalender lokal";
+"Share Event" = "Bagikan Acara";
+
 /* Preferences */
 "Language" = "Bahasa";
 "Measurement Units" = "Satuan pengukuran";

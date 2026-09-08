@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Орны";
+"Video Call" = "Видео қоңырау";
+"Map Locations" = "Картадағы геолокациялар";
+"End Repeat" = "Қайталау соңы";
+"On Date" = "Күні";
+"Custom…" = "Арнаулы…";
+"Attachments will be applied to all occurrences" = "Тіркемелер барлығына қолданылатын болады";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Күнтізбеге осы оқиға үшін сапар уақытын қосыңыз. Ескертулерді жібергенде, бұл уақыт ескеріледі және күнтізбеде осы уақыт үшін «Бос емес» күйі қойылады.";
+"Repeats %@" = "Қайталануы: %@";
+"10 minutes before" = "10 минут бұрын";
+"2 hours before" = "2 сағат бұрын";
+"2 days before" = "2 күн бұрын";
+"1 week before" = "1 апта бұрын";
+"Every Day" = "Күнделікті";
+"Every Week" = "Апта сайын";
+"Every Month" = "Ай сайын";
+"Every Year" = "Жыл сайын";
+"Every 2 Weeks" = "Әр 2 апта";
+"Travel Time" = "Сапар уақыты";
+"Repeat" = "Қайталау";
+"Second Alert" = "Екінші ескерту";
+"Never" = "Ешқашан";
+"None" = "Жоқ";
+"Add attachment…" = "Тіркеме қосу…";
+
+/* App-owned calendars */
+"Event Details" = "Оқиға мәліметтері";
+"Edit Event" = "Оқиғаны өңдеу";
+"Delete Event" = "Оқиғаны жою";
+"Delete Event?" = "Оқиға жойылсын ба?";
+"All-day" = "Күні бойы";
+"Starts" = "Басталуы";
+"Alert" = "Ескерту";
+"URL" = "URL";
+"Notes" = "Ескертпелер";
+"Title" = "Атауы";
+"Location or Video Call" = "Орын немесе бейнеқоңырау";
+"At time of event" = "Оқиға уақытында";
+"5 minutes before" = "5 минут бұрын";
+"15 minutes before" = "15 минут бұрын";
+"30 minutes before" = "30 минут бұрын";
+"1 hour before" = "1 сағат бұрын";
+"1 day before" = "1 күн бұрын";
+"Access" = "Қолжетімділік";
+"Delete Calendar?" = "Күнтізбе жойылсын ба?";
+"Add Local Calendar" = "Жергілікті күнтізбе қосу";
+"Local Calendars" = "Жергілікті күнтізбелер";
+"No local calendars yet." = "Әзірге жергілікті күнтізбелер жоқ.";
+"Edit local calendar" = "Жергілікті күнтізбені өңдеу";
+"Share Event" = "Оқиғаны бөлісу";
+
 /* Preferences */
 "Language" = "Тіл";
 "Measurement Units" = "Өлшем бірліктері";

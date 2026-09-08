@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Местоположение";
+"Video Call" = "Видео обаждане";
+"Map Locations" = "Местоположения на карта";
+"End Repeat" = "Приключи повтарянето";
+"On Date" = "На дата";
+"Custom…" = "Персонализиран…";
+"Attachments will be applied to all occurrences" = "Прикачените файлове ще се приложат за всички събития";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Добавете време за път за това събитие във вашия календар. Предупрежденията за събития ще го вземат предвид и вашият календар ще бъде блокиран по това време.";
+"Repeats %@" = "Повтаря се %@";
+"10 minutes before" = "10 минути преди";
+"2 hours before" = "2 часа преди";
+"2 days before" = "2 дни преди";
+"1 week before" = "1 седмица преди";
+"Every Day" = "Ежедневно";
+"Every Week" = "Седмично";
+"Every Month" = "Месечно";
+"Every Year" = "Годишно";
+"Every 2 Weeks" = "На всеки 2 седмици";
+"Travel Time" = "Време за път";
+"Repeat" = "Повтори";
+"Second Alert" = "Второ предупреждение";
+"Never" = "Никога";
+"None" = "Няма";
+"Add attachment…" = "Добави прикачен файл…";
+
+/* App-owned calendars */
+"Event Details" = "Подробности за събитието";
+"Edit Event" = "Редактирай събитие";
+"Delete Event" = "Изтриване на събитието";
+"Delete Event?" = "Да се изтрие ли събитието?";
+"All-day" = "Цял ден";
+"Starts" = "Начало";
+"Alert" = "Известие";
+"URL" = "URL";
+"Notes" = "Бележки";
+"Title" = "Заглавие";
+"Location or Video Call" = "Местоположение или видеоразговор";
+"At time of event" = "В часа на събитието";
+"5 minutes before" = "5 минути преди";
+"15 minutes before" = "15 минути преди";
+"30 minutes before" = "30 минути преди";
+"1 hour before" = "1 час преди";
+"1 day before" = "1 ден преди";
+"Access" = "Достъп";
+"Delete Calendar?" = "Да се изтрие ли календарът?";
+"Add Local Calendar" = "Добавяне на локален календар";
+"Local Calendars" = "Локални календари";
+"No local calendars yet." = "Все още няма локални календари.";
+"Edit local calendar" = "Редактиране на локален календар";
+"Share Event" = "Споделяне на събитие";
+
 /* Preferences */
 "Language" = "Език";
 "Measurement Units" = "Мерни единици";

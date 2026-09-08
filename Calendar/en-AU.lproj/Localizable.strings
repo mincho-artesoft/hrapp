@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Location";
+"Video Call" = "Video Call";
+"Map Locations" = "Map Locations";
+"End Repeat" = "End Repeat";
+"On Date" = "On Date";
+"Custom…" = "Custom…";
+"Attachments will be applied to all occurrences" = "Attachments will be applied to all occurrences";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time.";
+"Repeats %@" = "Repeats %@";
+"10 minutes before" = "10 minutes before";
+"2 hours before" = "2 hours before";
+"2 days before" = "2 days before";
+"1 week before" = "1 week before";
+"Every Day" = "Every Day";
+"Every Week" = "Every Week";
+"Every Month" = "Every Month";
+"Every Year" = "Every Year";
+"Every 2 Weeks" = "Every 2 Weeks";
+"Travel Time" = "Travel Time";
+"Repeat" = "Repeat";
+"Second Alert" = "Second Alert";
+"Never" = "Never";
+"None" = "None";
+"Add attachment…" = "Add Attachment…";
+
+/* App-owned calendars */
+"Event Details" = "Event Details";
+"Edit Event" = "Edit Event";
+"Delete Event" = "Delete Event";
+"Delete Event?" = "Delete Event?";
+"All-day" = "All-day";
+"Starts" = "Starts";
+"Alert" = "Alert";
+"URL" = "URL";
+"Notes" = "Notes";
+"Title" = "Title";
+"Location or Video Call" = "Location or Video Call";
+"At time of event" = "At time of event";
+"5 minutes before" = "5 minutes before";
+"15 minutes before" = "15 minutes before";
+"30 minutes before" = "30 minutes before";
+"1 hour before" = "1 hour before";
+"1 day before" = "1 day before";
+"Access" = "Access";
+"Delete Calendar?" = "Delete Calendar?";
+"Add Local Calendar" = "Add Local Calendar";
+"Local Calendars" = "Local Calendars";
+"No local calendars yet." = "No local calendars yet.";
+"Edit local calendar" = "Edit local calendar";
+"Share Event" = "Share Event";
+
 /* Preferences */
 "Language" = "Language";
 "Measurement Units" = "Measurement Units";

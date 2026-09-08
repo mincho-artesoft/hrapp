@@ -29,6 +29,16 @@ extension Locale {
         return Locale(components: components)
     }
 
+    /// Calendar dates throughout the app are Gregorian. Keep that calendar
+    /// when the selected language's regional default is another calendar
+    /// (for example Arabic in Saudi Arabia), while still retaining localized
+    /// names, order, direction, and numerals.
+    var usingAppCalendar: Locale {
+        var components = Locale.Components(identifier: identifier)
+        components.calendar = .gregorian
+        return Locale(components: components)
+    }
+
     /// Locale used for values that are rendered as part of the translated UI.
     /// It follows the app language while retaining the user's region when the
     /// localization itself does not specify one (for example `ar` vs `fr-CA`).
@@ -56,7 +66,7 @@ extension Locale {
             }
         }
 
-        return resolvedLocale.usingAppNumeralSystem
+        return resolvedLocale.usingAppNumeralSystem.usingAppCalendar
     }
 }
 

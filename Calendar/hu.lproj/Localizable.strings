@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Hely";
+"Video Call" = "Videohívás";
+"Map Locations" = "Térképhelyek";
+"End Repeat" = "Ismétlés vége";
+"On Date" = "Ekkor";
+"Custom…" = "Egyéni…";
+"Attachments will be applied to all occurrences" = "A mellékletek az összes előfordulásra alkalmazva lesznek";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Utazási idő hozzáadása a naptárban lévő eseményhez. Az eseményjelzések figyelembe fogják venni ezt az időt, és a naptár blokkolva lesz ebben az időszakban.";
+"Repeats %@" = "Ismétlődik %@";
+"10 minutes before" = "10 perccel előtte";
+"2 hours before" = "2 órával előtte";
+"2 days before" = "2 nappal előtte";
+"1 week before" = "1 hétpal előtte";
+"Every Day" = "Naponta";
+"Every Week" = "Hetente";
+"Every Month" = "Havonta";
+"Every Year" = "Évente";
+"Every 2 Weeks" = "Minden 2. hét";
+"Travel Time" = "Utazási idő";
+"Repeat" = "Ismétlés";
+"Second Alert" = "Második jelzés";
+"Never" = "Soha";
+"None" = "Nincs";
+"Add attachment…" = "Melléklet hozzáadása…";
+
+/* App-owned calendars */
+"Event Details" = "Esemény részletei";
+"Edit Event" = "Esemény szerkesztése";
+"Delete Event" = "Esemény törlése";
+"Delete Event?" = "Törli az eseményt?";
+"All-day" = "Egész nap";
+"Starts" = "Kezdés";
+"Alert" = "Jelzés";
+"URL" = "URL";
+"Notes" = "Jegyzetek";
+"Title" = "Cím";
+"Location or Video Call" = "Hely vagy videóhívás";
+"At time of event" = "Az esemény időpontjában";
+"5 minutes before" = "5 perccel előtte";
+"15 minutes before" = "15 perccel előtte";
+"30 minutes before" = "30 perccel előtte";
+"1 hour before" = "1 órával előtte";
+"1 day before" = "1 nappal előtte";
+"Access" = "Hozzáférés";
+"Delete Calendar?" = "Törli a naptárt?";
+"Add Local Calendar" = "Helyi naptár hozzáadása";
+"Local Calendars" = "Helyi naptárak";
+"No local calendars yet." = "Még nincsenek helyi naptárak.";
+"Edit local calendar" = "Helyi naptár szerkesztése";
+"Share Event" = "Esemény megosztása";
+
 /* Preferences */
 "Language" = "Nyelv";
 "Measurement Units" = "Mértékegységek";

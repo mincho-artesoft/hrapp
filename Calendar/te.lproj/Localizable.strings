@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "లొకేషన్";
+"Video Call" = "వీడియో కాల్";
+"Map Locations" = "మ్యాప్ లొకేషన్‌లు";
+"End Repeat" = "రిపీట్‌ను ముగించండి";
+"On Date" = "తేదీన";
+"Custom…" = "కస్టమ్…";
+"Attachments will be applied to all occurrences" = "అటాచ్‌మెంట్‌లు అన్ని పునరావృతాలకు వర్తిస్తాయి";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "మీ క్యాలెండర్‌లో ఈ ఇవెంట్ ప్రయాణ సమయాన్ని జోడించండి. ఇవెంట్ అలర్ట్‌లు ఈ సమయాన్ని పరిగణనలోకి తీసుకుంటాయి, అలాగే ఈ వేళలో మీ క్యాలెండర్ బ్లాక్ చేయబడుతుంది.";
+"Repeats %@" = "%@న రిపీట్ అవుతుంది";
+"10 minutes before" = "10 నిమిషాల ముందు";
+"2 hours before" = "2 గంటలు ముందు";
+"2 days before" = "2 రోజులు ముందు";
+"1 week before" = "1 వారం ముందు";
+"Every Day" = "రోజువారీ";
+"Every Week" = "వారానికి";
+"Every Month" = "నెలవారీ";
+"Every Year" = "వార్షిక";
+"Every 2 Weeks" = "ప్రతి 2 వారాలు";
+"Travel Time" = "ప్రయాణ సమయం";
+"Repeat" = "రిపీట్";
+"Second Alert" = "రెండవ అలర్ట్";
+"Never" = "ఎప్పటికీ వద్దు";
+"None" = "ఏదీ లేదు";
+"Add attachment…" = "అటాచ్‌మెంట్‌ను జోడించండి…";
+
+/* App-owned calendars */
+"Event Details" = "ఈవెంట్ వివరాలు";
+"Edit Event" = "ఈవెంట్‌ను సవరించండి";
+"Delete Event" = "ఈవెంట్ తొలగించండి";
+"Delete Event?" = "ఈవెంట్‌ను తొలగించాలా?";
+"All-day" = "రోజంతా";
+"Starts" = "ప్రారంభం";
+"Alert" = "హెచ్చరిక";
+"URL" = "URL";
+"Notes" = "గమనికలు";
+"Title" = "శీర్షిక";
+"Location or Video Call" = "స్థానం లేదా వీడియో కాల్";
+"At time of event" = "ఈవెంట్ సమయంలో";
+"5 minutes before" = "5 నిమిషాల ముందు";
+"15 minutes before" = "15 నిమిషాల ముందు";
+"30 minutes before" = "30 నిమిషాల ముందు";
+"1 hour before" = "1 గంట ముందు";
+"1 day before" = "1 రోజు ముందు";
+"Access" = "యాక్సెస్";
+"Delete Calendar?" = "క్యాలెండర్‌ను తొలగించాలా?";
+"Add Local Calendar" = "స్థానిక క్యాలెండర్‌ను జోడించండి";
+"Local Calendars" = "స్థానిక క్యాలెండర్‌లు";
+"No local calendars yet." = "ఇంకా స్థానిక క్యాలెండర్‌లు లేవు.";
+"Edit local calendar" = "స్థానిక క్యాలెండర్‌ను సవరించండి";
+"Share Event" = "ఈవెంట్‌ను షేర్ చేయండి";
+
 /* Preferences */
 "Language" = "భాష";
 "Measurement Units" = "కొలత యూనిట్లు";

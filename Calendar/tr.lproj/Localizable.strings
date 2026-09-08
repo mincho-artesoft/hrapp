@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Konum";
+"Video Call" = "Görüntülü Arama";
+"Map Locations" = "Harita Konumları";
+"End Repeat" = "Son Tarih";
+"On Date" = "Şu Tarihte:";
+"Custom…" = "Özel…";
+"Attachments will be applied to all occurrences" = "İlişikler tüm tekrarlara uygulanır";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Bu etkinliğin seyahat süresini takviminize ekleyin. Etkinlik uyarıları bu süreyi hesaba katacak ve takviminiz bu süre boyunca meşgul görünecektir.";
+"Repeats %@" = "Yineleme: %@";
+"10 minutes before" = "10 dakika önce";
+"2 hours before" = "2 saat önce";
+"2 days before" = "2 gün önce";
+"1 week before" = "1 hafta önce";
+"Every Day" = "Günlük";
+"Every Week" = "Haftalık";
+"Every Month" = "Aylık";
+"Every Year" = "yıllık";
+"Every 2 Weeks" = "Her 2 hafta";
+"Travel Time" = "Seyahat Süresi";
+"Repeat" = "Yineleme";
+"Second Alert" = "İkinci Uyarı";
+"Never" = "Asla";
+"None" = "Yok";
+"Add attachment…" = "İlişik ekle…";
+
+/* App-owned calendars */
+"Event Details" = "Etkinlik Ayrıntıları";
+"Edit Event" = "Etkinliği Düzenle";
+"Delete Event" = "Etkinliği Sil";
+"Delete Event?" = "Etkinlik silinsin mi?";
+"All-day" = "Tüm gün";
+"Starts" = "Başlangıç";
+"Alert" = "Uyarı";
+"URL" = "URL";
+"Notes" = "Notlar";
+"Title" = "Başlık";
+"Location or Video Call" = "Konum veya Görüntülü Arama";
+"At time of event" = "Etkinlik saatinde";
+"5 minutes before" = "5 dakika önce";
+"15 minutes before" = "15 dakika önce";
+"30 minutes before" = "30 dakika önce";
+"1 hour before" = "1 saat önce";
+"1 day before" = "1 gün önce";
+"Access" = "Erişim";
+"Delete Calendar?" = "Takvim silinsin mi?";
+"Add Local Calendar" = "Yerel Takvim Ekle";
+"Local Calendars" = "Yerel Takvimler";
+"No local calendars yet." = "Henüz yerel takvim yok.";
+"Edit local calendar" = "Yerel takvimi düzenle";
+"Share Event" = "Etkinliği Paylaş";
+
 /* Preferences */
 "Language" = "Dil";
 "Measurement Units" = "Ölçü Birimleri";

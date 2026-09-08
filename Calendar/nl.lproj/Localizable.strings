@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Locatie";
+"Video Call" = "Videogesprek";
+"Map Locations" = "Locaties op kaart";
+"End Repeat" = "Stop herhalen";
+"On Date" = "Op datum";
+"Custom…" = "Aangepast…";
+"Attachments will be applied to all occurrences" = "Bijlagen worden toegepast op alle herhalingen";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Voeg de reistijd voor deze activiteit toe aan je agenda. Activiteitsmeldingen houden rekening met deze reistijd en de reistijd wordt geblokkeerd in je agenda.";
+"Repeats %@" = "Herhaling: %@";
+"10 minutes before" = "10 minuten ervoor";
+"2 hours before" = "2 uur ervoor";
+"2 days before" = "2 dagen ervoor";
+"1 week before" = "1 week ervoor";
+"Every Day" = "Dagelijks";
+"Every Week" = "Wekelijks";
+"Every Month" = "Maandelijks";
+"Every Year" = "Jaarlijks";
+"Every 2 Weeks" = "Elke 2 weken";
+"Travel Time" = "Reistijd";
+"Repeat" = "Herhaal";
+"Second Alert" = "2e melding";
+"Never" = "Nooit";
+"None" = "Geen";
+"Add attachment…" = "Voeg bijlage toe…";
+
+/* App-owned calendars */
+"Event Details" = "Activiteitsdetails";
+"Edit Event" = "Activiteit bewerken";
+"Delete Event" = "Verwijder activiteit";
+"Delete Event?" = "Activiteit verwijderen?";
+"All-day" = "Hele dag";
+"Starts" = "Begint";
+"Alert" = "Melding";
+"URL" = "URL";
+"Notes" = "Notities";
+"Title" = "Titel";
+"Location or Video Call" = "Locatie of videogesprek";
+"At time of event" = "Op tijdstip van activiteit";
+"5 minutes before" = "5 minuten ervoor";
+"15 minutes before" = "15 minuten ervoor";
+"30 minutes before" = "30 minuten ervoor";
+"1 hour before" = "1 uur ervoor";
+"1 day before" = "1 dag ervoor";
+"Access" = "Toegang";
+"Delete Calendar?" = "Agenda verwijderen?";
+"Add Local Calendar" = "Lokale agenda toevoegen";
+"Local Calendars" = "Lokale agenda’s";
+"No local calendars yet." = "Nog geen lokale agenda’s.";
+"Edit local calendar" = "Lokale agenda bewerken";
+"Share Event" = "Activiteit delen";
+
 /* Preferences */
 "Language" = "Taal";
 "Measurement Units" = "Maateenheden";

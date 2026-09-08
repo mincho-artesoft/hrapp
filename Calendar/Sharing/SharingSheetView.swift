@@ -1,6 +1,5 @@
 import Combine
 import EventKit
-import EventKitUI
 import SwiftUI
 
 private struct ReceivedSharedEvent: Identifiable {
@@ -1186,20 +1185,20 @@ private struct SharedEventAccessSheet: View {
                 Text(recipient.displayEmail)
             }
             .sheet(isPresented: $showEventEditor) {
-                if let localEventIdentifier = event.localEventIdentifier {
-                    SharedEventEditController(
-                        localEventIdentifier: localEventIdentifier
-                    ) { action in
+                if let editableEvent {
+                    AppLocalEventEditorView(
+                        target: AppLocalEventEditorTarget(
+                            eventKitEvent: editableEvent,
+                            startsInEditingMode: true
+                        )
+                    ) {
                         showEventEditor = false
-                        if action == .saved {
-                            SharedEventSyncManager.eventStoreDidChange()
-                            NotificationCenter.default.post(
-                                name: .sharedEventsTrackingChanged,
-                                object: nil
-                            )
-                        }
+                        SharedEventSyncManager.eventStoreDidChange()
+                        NotificationCenter.default.post(
+                            name: .sharedEventsTrackingChanged,
+                            object: nil
+                        )
                     }
-                    .ignoresSafeArea()
                 }
             }
         }
@@ -1464,44 +1463,6 @@ private struct SharedEventAccessSheet: View {
             errorMessage = nil
         } catch {
             errorMessage = error.localizedDescription
-        }
-    }
-}
-
-private struct SharedEventEditController: UIViewControllerRepresentable {
-    let localEventIdentifier: String
-    let onComplete: (EKEventEditViewAction) -> Void
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(onComplete: onComplete)
-    }
-
-    func makeUIViewController(context: Context) -> EKEventEditViewController {
-        let controller = EKEventEditViewController()
-        let store = CalendarViewModel.shared.eventStore
-        controller.eventStore = store
-        controller.event = store.event(withIdentifier: localEventIdentifier)
-        controller.editViewDelegate = context.coordinator
-        return controller
-    }
-
-    func updateUIViewController(
-        _ uiViewController: EKEventEditViewController,
-        context: Context
-    ) {}
-
-    final class Coordinator: NSObject, EKEventEditViewDelegate {
-        let onComplete: (EKEventEditViewAction) -> Void
-
-        init(onComplete: @escaping (EKEventEditViewAction) -> Void) {
-            self.onComplete = onComplete
-        }
-
-        func eventEditViewController(
-            _ controller: EKEventEditViewController,
-            didCompleteWith action: EKEventEditViewAction
-        ) {
-            onComplete(action)
         }
     }
 }

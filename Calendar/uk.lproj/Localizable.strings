@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Місце";
+"Video Call" = "Відеовиклик";
+"Map Locations" = "Місця на карті";
+"End Repeat" = "Кінець повтору";
+"On Date" = "Точна дата";
+"Custom…" = "Власний варіант…";
+"Attachments will be applied to all occurrences" = "Вкладення застосовуватимуться для всіх повторень";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Додайте до свого календаря час у дорозі для цієї події. Оповістки про подію це врахують, і календар буде заблоковано протягом цього часу.";
+"Repeats %@" = "Повторюється %@";
+"10 minutes before" = "За 10 хвилин";
+"2 hours before" = "За 2 годину";
+"2 days before" = "За 2 дні";
+"1 week before" = "За 1 тиждень";
+"Every Day" = "щоденно";
+"Every Week" = "Щороку";
+"Every Month" = "щомісячний";
+"Every Year" = "Щорічно";
+"Every 2 Weeks" = "Що 2 тижні";
+"Travel Time" = "Час у дорозі";
+"Repeat" = "Повторити";
+"Second Alert" = "Друга оповістка";
+"Never" = "ніколи";
+"None" = "0";
+"Add attachment…" = "Додати вкладення…";
+
+/* App-owned calendars */
+"Event Details" = "Деталі події";
+"Edit Event" = "Редагувати подію";
+"Delete Event" = "Видалити подію";
+"Delete Event?" = "Видалити подію?";
+"All-day" = "Увесь день";
+"Starts" = "Початок";
+"Alert" = "Сповіщення";
+"URL" = "URL";
+"Notes" = "Нотатки";
+"Title" = "Назва";
+"Location or Video Call" = "Місце або відеовиклик";
+"At time of event" = "Під час події";
+"5 minutes before" = "За 5 хвилин";
+"15 minutes before" = "За 15 хвилин";
+"30 minutes before" = "За 30 хвилин";
+"1 hour before" = "За 1 годину";
+"1 day before" = "За 1 день";
+"Access" = "Доступ";
+"Delete Calendar?" = "Видалити календар?";
+"Add Local Calendar" = "Додати локальний календар";
+"Local Calendars" = "Локальні календарі";
+"No local calendars yet." = "Локальних календарів ще немає.";
+"Edit local calendar" = "Редагувати локальний календар";
+"Share Event" = "Поділитися подією";
+
 /* Preferences */
 "Language" = "Мова";
 "Measurement Units" = "Одиниці вимірювання";

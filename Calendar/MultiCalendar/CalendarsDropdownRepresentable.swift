@@ -1,6 +1,5 @@
 import SwiftUI
 import UIKit
-import EventKit
 
 // MARK: - SwiftUI обвивка
 
@@ -16,11 +15,11 @@ struct CalendarsDropdownRepresentable: UIViewRepresentable {
             ? .forceRightToLeft
             : .forceLeftToRight
         view.bottomContentInset = bottomContentInset
-        view.setCalendarsInfo(viewModel.calendarsDict)
+        view.setCalendarsInfo(viewModel.multiCalendarsDict)
         
         // двупосочна връзка SwiftUI ↔ UIKit
         view.onSelectionChanged = { newDict in
-            viewModel.calendarsDict = newDict
+            viewModel.updateMultiCalendarSelection(newDict)
         }
         return view
     }
@@ -31,6 +30,6 @@ struct CalendarsDropdownRepresentable: UIViewRepresentable {
             : .forceLeftToRight
         uiView.bottomContentInset = bottomContentInset
         // при всяка промяна от SwiftUI – опресняваме UIKit‑компонента
-        uiView.setCalendarsInfo(viewModel.calendarsDict)
+        uiView.setCalendarsInfo(viewModel.multiCalendarsDict)
     }
 }

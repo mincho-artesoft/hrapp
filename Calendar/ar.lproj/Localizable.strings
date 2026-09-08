@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "الموقع";
+"Video Call" = "مكالمة فيديو";
+"Map Locations" = "مواقع الخريطة";
+"End Repeat" = "إنهاء التكرار";
+"On Date" = "في تاريخ";
+"Custom…" = "مخصص…";
+"Attachments will be applied to all occurrences" = "سيتم تطبيق المرفقات على كل التكرارات";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "أضف وقت التنقل لهذا الحدث إلى تقويمك. ستقوم تنبيهات الحدث بأخذ هذا الوقت في الاعتبار وسيتم حظر تقويمك خلال هذا الوقت.";
+"Repeats %@" = "تكرار %@";
+"10 minutes before" = "قبل 10 دقائق";
+"2 hours before" = "قبل ساعتين";
+"2 days before" = "قبل يومين";
+"1 week before" = "قبل أسبوع";
+"Every Day" = "يوميا";
+"Every Week" = "أسبوعيا";
+"Every Month" = "شهريا";
+"Every Year" = "سنويا";
+"Every 2 Weeks" = "كل أسبوعين";
+"Travel Time" = "مدة التنقل";
+"Repeat" = "تكرار";
+"Second Alert" = "تنبيه ثانٍ";
+"Never" = "مطلقًا";
+"None" = "لا شيء";
+"Add attachment…" = "إضافة مرفق…";
+
+/* App-owned calendars */
+"Event Details" = "تفاصيل الحدث";
+"Edit Event" = "تحرير الحدث";
+"Delete Event" = "حذف الحدث";
+"Delete Event?" = "حذف الحدث؟";
+"All-day" = "طوال اليوم";
+"Starts" = "يبدأ";
+"Alert" = "تنبيه";
+"URL" = "عنوان URL";
+"Notes" = "ملاحظات";
+"Title" = "العنوان";
+"Location or Video Call" = "الموقع أو مكالمة فيديو";
+"At time of event" = "وقت الحدث";
+"5 minutes before" = "قبل 5 دقائق";
+"15 minutes before" = "قبل 15 دقيقة";
+"30 minutes before" = "قبل 30 دقيقة";
+"1 hour before" = "قبل ساعة";
+"1 day before" = "قبل يوم";
+"Access" = "الوصول";
+"Delete Calendar?" = "حذف التقويم؟";
+"Add Local Calendar" = "إضافة تقويم محلي";
+"Local Calendars" = "التقويمات المحلية";
+"No local calendars yet." = "لا توجد تقويمات محلية بعد.";
+"Edit local calendar" = "تعديل التقويم المحلي";
+"Share Event" = "مشاركة الحدث";
+
 /* Preferences */
 "Language" = "اللغة";
 "Measurement Units" = "وحدات القياس";

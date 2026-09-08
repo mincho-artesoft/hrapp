@@ -24,6 +24,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         let container = TwoWayPinnedSingleDayMultiCalendarContainerView()
         container.semanticContentAttribute = semanticDirection
+        container.refreshCalendarSources()
         
         container.fromDate = fromDate
         container.onEventDeleted = { descriptor in
@@ -40,6 +41,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         let (allDay, regular) = splitAllDay(events)
         container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
         container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
+        context.coordinator.lastRenderedEvents = eventDescriptorPresentationKeys(events)
         
         // CALLBACK-и
         container.onRangeChange = { newFrom, newTo in
@@ -48,8 +50,22 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         }
         
         container.onEventTap = { descriptor in
-            if let multi = descriptor as? EKMultiDayWrapper {
+            if let local = descriptor as? AppLocalEventDescriptor {
+                context.coordinator.presentAppLocalEditor(eventID: local.eventID, in: vc)
+            } else if let multi = descriptor as? EKMultiDayWrapper {
                 context.coordinator.presentSystemDetails(multi.ekEvent, in: vc)
+            }
+        }
+
+        container.onEventEdit = { descriptor in
+            if let local = descriptor as? AppLocalEventDescriptor {
+                context.coordinator.presentAppLocalEditor(
+                    eventID: local.eventID,
+                    startsInEditingMode: true,
+                    in: vc
+                )
+            } else if let multi = descriptor as? EKMultiDayWrapper {
+                context.coordinator.presentSystemEditor(multi.ekEvent, in: vc)
             }
         }
         
@@ -119,6 +135,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
     }
     
     public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        context.coordinator.parent = self
         guard let container = uiViewController.view.subviews
                 .first(where: { $0 is TwoWayPinnedSingleDayMultiCalendarContainerView })
                 as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
@@ -129,14 +146,23 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
         uiViewController.view.semanticContentAttribute = semanticDirection
         container.semanticContentAttribute = semanticDirection
+        container.refreshCalendarSources()
         
-        container.fromDate = fromDate
-        
-        let (allDay, regular) = splitAllDay(events)
-        container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
-        container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
-        
-        container.currentView = selectedTab
+        if container.fromDate != fromDate {
+            container.fromDate = fromDate
+        }
+
+        let presentation = eventDescriptorPresentationKeys(events)
+        if context.coordinator.lastRenderedEvents != presentation {
+            let (allDay, regular) = splitAllDay(events)
+            container.allDayView.allDayLayoutAttributes = allDay.map { EventLayoutAttributes($0) }
+            container.weekView.regularLayoutAttributes  = regular.map { EventLayoutAttributes($0) }
+            context.coordinator.lastRenderedEvents = presentation
+        }
+
+        if container.currentView != selectedTab {
+            container.currentView = selectedTab
+        }
         container.onViewChange = onViewChange
         container.onDayLabelTap = onDayLabelTap
         container.onMonthLabelTap = onMonthLabelTap
@@ -172,7 +198,8 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             }
         }
         
-        let parent: TwoWayPinnedSingleDayMultiCalendarWrapper
+        var parent: TwoWayPinnedSingleDayMultiCalendarWrapper
+        var lastRenderedEvents: [EventDescriptorPresentationKey] = []
         var currentlyViewingEventID: String?
         var currentlyEditingEventWasNew = false
         var currentlyEditingEventID: String?
@@ -218,8 +245,8 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             let visibleIDs = CalendarViewModel.shared.visibleCalendarIDs
             if debug {
                 print("⇢ visibleCalendarIDs =", visibleIDs)
-                print("⇢ calendarsDict (title • id • selected):")
-                CalendarViewModel.shared.calendarsDict.forEach { id, info in
+                print("⇢ MultiCalendar sources (title • id • selected):")
+                CalendarViewModel.shared.multiCalendarsDict.forEach { id, info in
                     print("   •", info.title, "•", id, "• sel:", info.selected)
                 }
             }
@@ -237,16 +264,21 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 }
             }
             
-            let predicate = parent.eventStore.predicateForEvents(
-                withStart: fromOnly,
-                end: actualEnd,
-                calendars: allowedCalendars.isEmpty ? nil : allowedCalendars
-            )
-            
             // ----------------------------------------------------------
-            // 3) Взимаме събитията
+            // 3) Взимаме събитията. `nil` here means all EventKit
+            // calendars, so an empty selection must stay an empty result.
             // ----------------------------------------------------------
-            let found = parent.eventStore.events(matching: predicate)
+            let found: [EKEvent]
+            if allowedCalendars.isEmpty {
+                found = []
+            } else {
+                let predicate = parent.eventStore.predicateForEvents(
+                    withStart: fromOnly,
+                    end: actualEnd,
+                    calendars: allowedCalendars
+                )
+                found = parent.eventStore.events(matching: predicate)
+            }
             if debug {
                 print("⇢ EventKit returned =", found.count, "events")
                 found.forEach { e in
@@ -279,6 +311,12 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                     descriptors.append(EKMultiDayWrapper(realEvent: ekEvent))
                 }
             }
+
+            descriptors.append(contentsOf: AppLocalCalendarStore.shared.descriptors(
+                from: fromOnly,
+                to: actualEnd,
+                selectedCalendarIDs: visibleIDs
+            ))
             
             if debug {
                 print("⇢ descriptors to UI =", descriptors.count)
@@ -327,11 +365,13 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             }
             currentlyEditingEventWasNew = ekEvent.eventIdentifier == nil
             currentlyEditingEventID = ekEvent.eventIdentifier
-            let editVC = EKEventEditViewController()
-            editVC.eventStore = parent.eventStore
-            editVC.event = ekEvent
-            editVC.editViewDelegate = self
-            parentVC.present(editVC, animated: true)
+            presentAppLocalEditor(
+                target: AppLocalEventEditorTarget(
+                    eventKitEvent: ekEvent,
+                    startsInEditingMode: true
+                ),
+                in: parentVC
+            )
             ReviewManager.eventCreated()
         }
         
@@ -341,6 +381,11 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             in parentVC: UIViewController,
             preselectedCalendar: EKCalendar? = nil
         ) {
+            if preselectedCalendar == nil,
+               let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
+                presentAppLocalEditor(date: date, calendarID: calendar.id, in: parentVC)
+                return
+            }
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = NSLocalizedString("New event", comment: "")
             newEvent.startDate = date
@@ -360,6 +405,11 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
 
         
         @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController,  preselectedCalendar: EKCalendar? = nil) {
+            if preselectedCalendar == nil,
+               let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
+                presentAppLocalEditor(date: date, calendarID: calendar.id, isAllDay: true, in: parentVC)
+                return
+            }
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = NSLocalizedString("All-day event", comment: "")
             newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
@@ -381,6 +431,17 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             isResize: Bool,
             isAllDay: Bool
         ) {
+            if let local = descriptor as? AppLocalEventDescriptor,
+               let event = AppLocalCalendarStore.shared.event(id: local.eventID) {
+                let duration = event.endDate.timeIntervalSince(event.startDate)
+                AppLocalCalendarStore.shared.moveEvent(
+                    id: event.id,
+                    startDate: isResize ? event.startDate : newDate,
+                    endDate: isResize ? max(newDate, event.startDate) : newDate.addingTimeInterval(duration)
+                )
+                reloadCurrentRange(debug: false)
+                return
+            }
             if let multi = descriptor as? EKMultiDayWrapper {
                 let ev = multi.realEvent
                 guard !SharedInviteTracker.isReadOnly(ev) else {
@@ -397,6 +458,61 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                     }
                 }
             }
+        }
+
+        @MainActor
+        func presentAppLocalEditor(eventID: String, in parentVC: UIViewController) {
+            presentAppLocalEditor(
+                target: AppLocalEventEditorTarget(eventID: eventID),
+                in: parentVC
+            )
+        }
+
+        @MainActor
+        func presentAppLocalEditor(
+            eventID: String,
+            startsInEditingMode: Bool,
+            in parentVC: UIViewController
+        ) {
+            presentAppLocalEditor(
+                target: AppLocalEventEditorTarget(
+                    eventID: eventID,
+                    startsInEditingMode: startsInEditingMode
+                ),
+                in: parentVC
+            )
+        }
+
+        @MainActor
+        private func presentAppLocalEditor(
+            date: Date,
+            calendarID: String,
+            isAllDay: Bool = false,
+            in parentVC: UIViewController
+        ) {
+            presentAppLocalEditor(
+                target: AppLocalEventEditorTarget(
+                    date: date,
+                    calendarID: calendarID,
+                    isAllDay: isAllDay
+                ),
+                in: parentVC
+            )
+        }
+
+        @MainActor
+        private func presentAppLocalEditor(
+            target: AppLocalEventEditorTarget,
+            in parentVC: UIViewController
+        ) {
+            let controller = UIHostingController(
+                rootView: AppLocalEventEditorView(target: target) { [weak self] in
+                    self?.reloadCurrentRange(debug: false)
+                }
+            )
+            controller.modalPresentationStyle = .pageSheet
+            controller.sheetPresentationController?.detents = [.large()]
+            parentVC.present(controller, animated: true)
         }
         
         @MainActor public func askUserForRecurring(event: EKEvent, newDate: Date, isResize: Bool) {
@@ -498,15 +614,13 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         @MainActor
         public func presentSystemDetails(_ ekEvent: EKEvent, in parentVC: UIViewController) {
             currentlyViewingEventID = ekEvent.eventIdentifier
-            let eventVC = ShareableEventViewController()
-            eventVC.event = ekEvent
-            eventVC.delegate = self
-            eventVC.allowsEditing = !SharedInviteTracker.isReadOnly(ekEvent)
-            eventVC.allowsCalendarPreview = !SharedInviteTracker.isReadOnly(ekEvent)
-
-            // Презентирате го модално в нав. контролер:
-            let navVC = UINavigationController(rootViewController: eventVC)
-            parentVC.present(navVC, animated: true)
+            presentAppLocalEditor(
+                target: AppLocalEventEditorTarget(
+                    eventKitEvent: ekEvent,
+                    startsInEditingMode: false
+                ),
+                in: parentVC
+            )
         }
 
     }

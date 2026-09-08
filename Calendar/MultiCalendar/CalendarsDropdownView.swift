@@ -1,5 +1,4 @@
 import UIKit
-import EventKit
 
 
 // MARK: - UIKit View
@@ -9,10 +8,18 @@ public class CalendarsDropdownView: UIView {
     private let stackView  = UIStackView()
 
     /// Ключ = calendarID
-    /// Стойност = (title, color, selected, calendar)
-    private var dict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)] = [:]
+    /// Стойност = provider-neutral calendar metadata.
+    private var dict: [String: MultiCalendarInfo] = [:]
+    private var displayedSnapshot: [CalendarRowState] = []
 
-    public var onSelectionChanged: (([String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]) -> Void)?
+    private struct CalendarRowState: Equatable {
+        let id: String
+        let title: String
+        let color: String
+        let isSelected: Bool
+    }
+
+    public var onSelectionChanged: (([String: MultiCalendarInfo]) -> Void)?
 
     public var bottomContentInset: CGFloat = 0 {
         didSet {
@@ -67,12 +74,31 @@ public class CalendarsDropdownView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setCalendarsInfo(_ newDict: [String: (title: String, color: UIColor, selected: Bool, calendar: EKCalendar)]) {
+    public func setCalendarsInfo(_ newDict: [String: MultiCalendarInfo]) {
         self.dict = newDict
+        guard snapshot(of: newDict) != displayedSnapshot else { return }
         reloadStackView()
+    }
+
+    private func snapshot(
+        of value: [String: MultiCalendarInfo]
+    ) -> [CalendarRowState] {
+        value.map { id, info in
+            let color = info.color.cgColor.components?
+                .map { String(format: "%.4f", Double($0)) }
+                .joined(separator: ",") ?? info.color.description
+            return CalendarRowState(
+                id: id,
+                title: info.title,
+                color: color,
+                isSelected: info.selected
+            )
+        }
+        .sorted { $0.id < $1.id }
     }
     
     private func reloadStackView() {
+        displayedSnapshot = snapshot(of: dict)
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
         let sortedTuples = dict.sorted { $0.value.title < $1.value.title }
@@ -152,24 +178,26 @@ public class CalendarsDropdownView: UIView {
         else { return }
         
         // Променяме флага selected
-        if let oldVal = dict[calID] {
-            dict[calID] = (
-                title:    oldVal.title,
-                color:    oldVal.color,
-                selected: !oldVal.selected,
-                calendar: oldVal.calendar
-            )
+        if var oldVal = dict[calID] {
+            oldVal.selected.toggle()
+            dict[calID] = oldVal
         }
         
+        // Reflect the tap immediately. The SwiftUI update caused by the
+        // callback below carries the same snapshot and therefore no longer
+        // tears down and rebuilds the rows a second time.
+        reloadStackView()
+
         // 1) Callback към SwiftUI/ViewModel
         onSelectionChanged?(dict)
         
         // 2) Вдигаме глобална нотификация
         //    (ТУК Е КЛЮЧОВАТА ПРОМЯНА, ако не е било сложено досега)
-        NotificationCenter.default.post(name: .calendarsSelectionChanged, object: nil)
+        // Pass the exact snapshot that is already visible in the dropdown.
+        // This keeps the pinned header in the same UI transaction instead of
+        // making it wait for a later SwiftUI/ViewModel refresh.
+        NotificationCenter.default.post(name: .calendarsSelectionChanged, object: dict)
         
-        // 3) Презареждаме UI на dropdown
-        reloadStackView()
     }
     
     public func desiredHeight() -> CGFloat {

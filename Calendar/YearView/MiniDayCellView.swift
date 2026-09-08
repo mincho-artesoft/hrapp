@@ -1,11 +1,10 @@
 // MiniDayCellView.swift
 import SwiftUI
-import EventKit
 
 struct MiniDayCellView: View {
     let day: Date
     let referenceMonth: Date
-    let events: [EKEvent]
+    let events: [EventDescriptor]
     
     // Използваме глобалния календар, зададен от потребителя
     private var calendar: Calendar {
@@ -23,9 +22,12 @@ struct MiniDayCellView: View {
         let dayNumber = calendar.component(.day, from: day)
         
         let distinctColors: [UIColor] = {
-            let cals = events.compactMap { $0.calendar }
-            let unique = Set(cals.map { $0.cgColor ?? UIColor.systemGray.cgColor })
-            return unique.map { UIColor(cgColor: $0) }
+            var seen = Set<String>()
+            return events.compactMap { event in
+                let color = event.color
+                let key = AppLocalCalendarStore.colorHex(color)
+                return seen.insert(key).inserted ? color : nil
+            }
         }()
         
         let colorChunks: [[UIColor]] = stride(from: 0, to: distinctColors.count, by: 3).map {

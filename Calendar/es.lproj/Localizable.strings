@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Ubicación";
+"Video Call" = "Videollamada";
+"Map Locations" = "Ubicaciones del mapa";
+"End Repeat" = "Terminar repetición";
+"On Date" = "En la fecha";
+"Custom…" = "Personalizar…";
+"Attachments will be applied to all occurrences" = "Los archivos adjuntos se aplicarán a todas las repeticiones.";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Añade el tiempo de viaje para este evento a tu calendario. Los avisos de evento tendrán en cuenta este tiempo, durante el que el calendario estará bloqueado.";
+"Repeats %@" = "Se repite %@";
+"10 minutes before" = "10 minutos antes";
+"2 hours before" = "2 horas antes";
+"2 days before" = "2 días antes";
+"1 week before" = "1 semana antes";
+"Every Day" = "Diario";
+"Every Week" = "Semanal";
+"Every Month" = "Mensual";
+"Every Year" = "Anual";
+"Every 2 Weeks" = "Cada 2 semanas";
+"Travel Time" = "Tiempo de viaje";
+"Repeat" = "Repetición";
+"Second Alert" = "Segundo aviso";
+"Never" = "Nunca";
+"None" = "Ninguno";
+"Add attachment…" = "Añadir archivo adjunto…";
+
+/* App-owned calendars */
+"Event Details" = "Detalles del evento";
+"Edit Event" = "Editar evento";
+"Delete Event" = "Eliminar evento";
+"Delete Event?" = "¿Eliminar evento?";
+"All-day" = "Todo el día";
+"Starts" = "Empieza";
+"Alert" = "Aviso";
+"URL" = "URL";
+"Notes" = "Notas";
+"Title" = "Título";
+"Location or Video Call" = "Ubicación o videollamada";
+"At time of event" = "A la hora del evento";
+"5 minutes before" = "5 minutos antes";
+"15 minutes before" = "15 minutos antes";
+"30 minutes before" = "30 minutos antes";
+"1 hour before" = "1 hora antes";
+"1 day before" = "1 día antes";
+"Access" = "Acceso";
+"Delete Calendar?" = "¿Eliminar calendario?";
+"Add Local Calendar" = "Añadir calendario local";
+"Local Calendars" = "Calendarios locales";
+"No local calendars yet." = "Aún no hay calendarios locales.";
+"Edit local calendar" = "Editar calendario local";
+"Share Event" = "Compartir evento";
+
 /* Preferences */
 "Language" = "Idioma";
 "Measurement Units" = "Unidades de medida";

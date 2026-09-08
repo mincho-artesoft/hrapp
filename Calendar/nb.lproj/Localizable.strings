@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Sted";
+"Video Call" = "Videoanrop";
+"Map Locations" = "Kartsteder";
+"End Repeat" = "Stopp gjentakelse";
+"On Date" = "På en dato";
+"Custom…" = "Tilpasset…";
+"Attachments will be applied to all occurrences" = "Vedleggene blir lagt til i alle forekomstene";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Legg til reisetid for hendelsen i kalenderen. Hendelsesvarsler vil ta denne tiden med i beregningen, og kalenderen vil vise deg som opptatt i dette tidsrommet.";
+"Repeats %@" = "Gjentas %@";
+"10 minutes before" = "10 minutter før";
+"2 hours before" = "2 timer før";
+"2 days before" = "2 dag før";
+"1 week before" = "1 dag før";
+"Every Day" = "Daglig";
+"Every Week" = "Ukentlig";
+"Every Month" = "Månedlig";
+"Every Year" = "Årlig";
+"Every 2 Weeks" = "Hver 2 uker";
+"Travel Time" = "Reisetid";
+"Repeat" = "Gjenta";
+"Second Alert" = "Andre varsel";
+"Never" = "Aldri";
+"None" = "Ingen";
+"Add attachment…" = "Legg til vedlegg…";
+
+/* App-owned calendars */
+"Event Details" = "Hendelsesdetaljer";
+"Edit Event" = "Rediger hendelse";
+"Delete Event" = "Slett hendelse";
+"Delete Event?" = "Slette hendelsen?";
+"All-day" = "Hele dagen";
+"Starts" = "Starter";
+"Alert" = "Varsel";
+"URL" = "URL";
+"Notes" = "Notater";
+"Title" = "Tittel";
+"Location or Video Call" = "Sted eller videosamtale";
+"At time of event" = "På tidspunktet for hendelsen";
+"5 minutes before" = "5 minutter før";
+"15 minutes before" = "15 minutter før";
+"30 minutes before" = "30 minutter før";
+"1 hour before" = "1 time før";
+"1 day before" = "1 dag før";
+"Access" = "Tilgang";
+"Delete Calendar?" = "Slette kalender?";
+"Add Local Calendar" = "Legg til lokal kalender";
+"Local Calendars" = "Lokale kalendere";
+"No local calendars yet." = "Ingen lokale kalendere ennå.";
+"Edit local calendar" = "Rediger lokal kalender";
+"Share Event" = "Del hendelse";
+
 /* Preferences */
 "Language" = "Språk";
 "Measurement Units" = "Måleenheter";

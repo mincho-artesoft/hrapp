@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Lokalitet";
+"Video Call" = "Videoopkald";
+"Map Locations" = "Kortlokaliteter";
+"End Repeat" = "Slut gentagelse";
+"On Date" = "På en dato";
+"Custom…" = "Speciel…";
+"Attachments will be applied to all occurrences" = "Bilag vil blive føjet til alle forekomster";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Føj rejsetiden til denne begivenhed til din kalender. Advarsler vil tage denne tid i betragtning, så din kalender er blokeret i tidsrummet.";
+"Repeats %@" = "Gentages: %@";
+"10 minutes before" = "10 minutter før";
+"2 hours before" = "2 timer før";
+"2 days before" = "2 dage før";
+"1 week before" = "1 uge før";
+"Every Day" = "Dagligt";
+"Every Week" = "Ugentligt";
+"Every Month" = "Månedligt";
+"Every Year" = "Årligt";
+"Every 2 Weeks" = "Hver 2 uger";
+"Travel Time" = "Rejsetid";
+"Repeat" = "Gentag";
+"Second Alert" = "Anden advarsel";
+"Never" = "Aldrig";
+"None" = "Ingen";
+"Add attachment…" = "Tilføj bilag…";
+
+/* App-owned calendars */
+"Event Details" = "Oplysninger om begivenhed";
+"Edit Event" = "Rediger begivenhed";
+"Delete Event" = "Slet begivenhed";
+"Delete Event?" = "Slet begivenheden?";
+"All-day" = "Hele dagen";
+"Starts" = "Starter";
+"Alert" = "Påmindelse";
+"URL" = "URL";
+"Notes" = "Noter";
+"Title" = "Titel";
+"Location or Video Call" = "Placering eller videoopkald";
+"At time of event" = "På tidspunktet for begivenheden";
+"5 minutes before" = "5 minutter før";
+"15 minutes before" = "15 minutter før";
+"30 minutes before" = "30 minutter før";
+"1 hour before" = "1 time før";
+"1 day before" = "1 dag før";
+"Access" = "Adgang";
+"Delete Calendar?" = "Slet kalender?";
+"Add Local Calendar" = "Tilføj lokal kalender";
+"Local Calendars" = "Lokale kalendere";
+"No local calendars yet." = "Ingen lokale kalendere endnu.";
+"Edit local calendar" = "Rediger lokal kalender";
+"Share Event" = "Del begivenhed";
+
 /* Preferences */
 "Language" = "Sprog";
 "Measurement Units" = "Måleenheder";

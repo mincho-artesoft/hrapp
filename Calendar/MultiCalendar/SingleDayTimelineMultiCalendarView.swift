@@ -44,6 +44,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     
     // MARK: - Public Callbacks
     public var onEventTap: ((EventDescriptor) -> Void)?
+    public var onEventEdit: ((EventDescriptor) -> Void)?
     public var onEmptyLongPress: ((Date, EKCalendar?) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
@@ -205,7 +206,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 title: NSLocalizedString("Edit", comment: ""),
                 image: UIImage(systemName: "square.and.pencil")
             ) { _ in
-                self.onEventTap?(descriptor)
+                self.onEventEdit?(descriptor)
             }
             children.append(editAction)
 
@@ -297,6 +298,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     }
     
     private func deleteEventFromStore(_ descriptor: EventDescriptor) {
+        if let local = descriptor as? AppLocalEventDescriptor {
+            guard !local.isReadOnly else { return }
+            AppLocalCalendarStore.shared.deleteEvent(id: local.eventID)
+            return
+        }
         guard let multi = descriptor as? EKMultiDayWrapper else { return }
         let realEv = multi.realEvent
         let localIdentifier = realEv.eventIdentifier
@@ -315,6 +321,16 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     }
 
     private func duplicateEventInStore(_ descriptor: EventDescriptor) {
+        if let local = descriptor as? AppLocalEventDescriptor,
+           var copy = AppLocalCalendarStore.shared.event(id: local.eventID),
+           AppLocalCalendarStore.shared.calendar(id: copy.calendarID)?.canEditEvents == true {
+            copy.id = "app-local-event:" + UUID().uuidString.lowercased()
+            copy.remoteEventID = nil
+            copy.createdAt = Date()
+            copy.updatedAt = Date()
+            AppLocalCalendarStore.shared.saveEvent(copy)
+            return
+        }
         guard let multi = descriptor as? EKMultiDayWrapper else { return }
         let original = multi.realEvent
         let store = CalendarViewModel.shared.eventStore
@@ -465,7 +481,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             // ─────────────────────────────────────────────────────────────────────────────
             let xPoint = point.x
             let dayIndex = Int(xPoint / dayColumnWidth)
-            let allCals = calendarVM.calendarsDict
+            let allCals = calendarVM.multiCalendarsDict
                  let selectedCals = allCals.filter { $0.value.selected }
                  let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                  let sortedCals = arrangedForLayoutDirection(
@@ -487,7 +503,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             
             // ─────────────────────────────────────────────────────────────────────────────
-            let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
+            let columNumber =  CGFloat(CalendarViewModel.shared.multiCalendarsDict.filter { $0.value.selected }.count)
 
             // 6) Position the ghost at the press location
             let w: CGFloat = dayColumnWidth - style.eventGap * 2 * columNumber
@@ -558,7 +574,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             dayIndex = max(0, min(dayIndex, dayCount - 1))
 
             // 2) Проверяваме колко календара сме показали и колко е subColumnWidth
-            let allCals = calendarVM.calendarsDict
+            let allCals = calendarVM.multiCalendarsDict
             let selectedCals = allCals.filter { $0.value.selected }
             let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
             let sortedCals = arrangedForLayoutDirection(
@@ -616,7 +632,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 dayIndex = max(0, min(dayIndex, dayCount - 1))
 
                 // 2) Списък календар(и)
-                let allCals = calendarVM.calendarsDict
+                let allCals = calendarVM.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
@@ -663,152 +679,52 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     var dayCount: Int = 1
     
     private func layoutRegularEvents() {
-        // 1) Hide all old eventViews to start fresh
-        for v in eventViews {
-            v.isHidden = true
-        }
-        
-        // 2) Figure out which calendars we’re showing in sub‑columns.
-        //    (Same logic as you have in CalendarsHeaderView.)
-        let allCals = calendarVM.calendarsDict
-        // allCals is [String : (title: String, color: UIColor, selected: Bool)]
-        
-        // Filter out those that are selected:
+        eventViews.forEach { $0.isHidden = true }
+        eventViewToDescriptor.removeAll(keepingCapacity: true)
+        let allCals = calendarVM.multiCalendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
-        
-        // If none selected, use all:
-        let calsToShow: [(String, (title: String, color: UIColor, selected: Bool, calendar: EKCalendar))]
-        if selectedCals.isEmpty {
-            calsToShow = Array(allCals)
-        } else {
-            calsToShow = Array(selectedCals)
-        }
-        
-        // Sort them by title:
-        // $0.1 == the (title, color, selected) in the first tuple
-        // $1.1 == the (title, color, selected) in the second tuple
+        let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         let sortedCals = arrangedForLayoutDirection(
-            calsToShow.sorted { $0.1.title < $1.1.title },
-            in: self
-        )
-        
-        // Number of sub‑columns = number of (selected) calendars
-        let numberOfSubcolumns = max(1, sortedCals.count)
-        // Each sub‑column’s width
-        let subColumnWidth = (dayColumnWidth / CGFloat(numberOfSubcolumns))
-        
-        // 3) Group events by day
+            calsToShow.sorted { $0.1.title < $1.1.title }, in: self)
+        let subColumnWidth = dayColumnWidth / CGFloat(max(1, sortedCals.count))
         let grouped = Dictionary(grouping: regularLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
         }
-        
-        // For reusing the EventView objects
         var usedEventViewIndex = 0
-        
-        // 4) Loop over each day
-        for dayIndex in 0 ..< dayCount {
-            guard let eventsForDay = grouped[dayIndex], !eventsForDay.isEmpty else {
-                continue
-            }
-            
-            // We now place each event in the sub‑column belonging to its calendar.
-            // If multiple events from the same calendar overlap in time,
-            // they’ll overlap visually in that sub‑column (no collision offset here).
-            
-            for attr in eventsForDay {
-                // 4A) Figure out this event’s calendarID
-                let calID = attr.descriptor.calendarID ?? ""
-                
-                // Find which sub‑column index to use.
-                // If not found, default to 0 (just in case).
-                let subIndex: Int = {
-                    if let idx = sortedCals.firstIndex(where: { $0.0 == calID }) {
-                        return idx
-                    } else {
-                        return 0
-                    }
-                }()
-                
-                // 4B) Calculate the frame:
-                //     x depends on subIndex,
-                //     width is subColumnWidth minus some gap,
-                //     y depends on event’s start time,
-                //     height depends on (end - start).
-                let start = attr.descriptor.dateInterval.start
-                let end   = attr.descriptor.dateInterval.end
-                
-                let xPos = CGFloat(dayIndex) * dayColumnWidth
-                          + subColumnWidth * CGFloat(subIndex)
-                
-                let yStart = topMargin + dateToY(start)
-                let yEnd   = topMargin + dateToY(end)
-                
-                // Some optional horizontal/vertical “gaps”
-                let gap: CGFloat = style.eventGap
-                
-                let finalX = xPos + gap
-                let finalW = subColumnWidth - 2 * gap
-                let finalY = yStart + gap
-                let finalH = max(1, (yEnd - yStart) - 2 * gap)
-                
-                // 4C) Get/Reuse an EventView, place it, and update the descriptor
-                let evView = ensureEventView(index: usedEventViewIndex)
-                usedEventViewIndex += 1
-                
-                evView.isHidden = false
-                evView.frame = CGRect(x: finalX, y: finalY, width: finalW, height: finalH)
-                
-                evView.updateWithDescriptor(event: attr.descriptor)
-                eventViewToDescriptor[evView] = attr.descriptor
-                if let multi = attr.descriptor as? EKMultiDayWrapper {
-                    var isCurrentlyEditedEventView = false
-                    if currentlyEditedEventViewID == multi.realEvent.eventIdentifier {
-                        isCurrentlyEditedEventView = true
-                    }
-                    if isCurrentlyEditedEventView {
+        for dayIndex in 0..<dayCount {
+            guard let attributes = grouped[dayIndex],
+                  let day = Calendar.current.date(byAdding: .day, value: dayIndex,
+                    to: Calendar.current.startOfDay(for: fromDate)) else { continue }
+            let byCalendar = Dictionary(grouping: attributes) { $0.descriptor.calendarID ?? "" }
+            for (subIndex, calendar) in sortedCals.enumerated() {
+                // A removed/deselected calendar must never fall into column zero.
+                guard let events = byCalendar[calendar.0] else { continue }
+                let placements = TimedEventLayout.place(events, day: day,
+                    originX: CGFloat(dayIndex) * dayColumnWidth + CGFloat(subIndex) * subColumnWidth,
+                    width: subColumnWidth, top: topMargin, hourHeight: hourHeight,
+                    gap: style.eventGap, rightToLeft: effectiveUserInterfaceLayoutDirection == .rightToLeft)
+                for placement in placements {
+                    let attr = placement.attributes
+                    let evView = ensureEventView(index: usedEventViewIndex)
+                    usedEventViewIndex += 1
+                    evView.isHidden = false
+                    evView.frame = placement.frame
+                    evView.updateWithDescriptor(event: attr.descriptor)
+                    evView.applyTimelinePlacement(placement)
+                    eventViewToDescriptor[evView] = attr.descriptor
+                    // Parent first, then children, including reused views after a
+                    // sync/reorder. UIKit hit testing must select the topmost child.
+                    bringSubviewToFront(evView)
+                    if let multi = attr.descriptor as? EKMultiDayWrapper,
+                       currentlyEditedEventViewID == multi.realEvent.eventIdentifier {
                         let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
-                        let lastDayIndex  = dayIndexFor(multi.realEvent.endDate)
-                        
-                        if firstDayIndex == lastDayIndex {
-                            // Реално е многодневно, но start/end попадат в един ден
-                            evView.eventResizeHandles[0].isHidden = false
-                            evView.eventResizeHandles[1].isHidden = false
-                        } else if dayIndex == firstDayIndex {
-                            // Горна дръжка
-                            evView.eventResizeHandles[0].isHidden = false
-                            evView.eventResizeHandles[1].isHidden = true
-                        } else if dayIndex == lastDayIndex {
-                            // Долната дръжка
-                            evView.eventResizeHandles[0].isHidden = true
-                            evView.eventResizeHandles[1].isHidden = false
-                        }
+                        let lastDayIndex = dayIndexFor(multi.realEvent.endDate)
+                        evView.eventResizeHandles[0].isHidden = dayIndex != firstDayIndex
+                        evView.eventResizeHandles[1].isHidden = dayIndex != lastDayIndex
                     }
                 }
             }
         }
-    }
-
-    private func isOverlapping(_ candidate: EventLayoutAttributes,
-                               in columnEvents: [EventLayoutAttributes]) -> Bool
-    {
-        let candStart = candidate.descriptor.dateInterval.start
-        let candEnd   = candidate.descriptor.dateInterval.end
-        
-        for ev in columnEvents {
-            let evStart = ev.descriptor.dateInterval.start
-            let evEnd   = ev.descriptor.dateInterval.end
-            
-            // 1) Стандартна проверка за реално застъпване на два интервала
-            let intervalsOverlap = (evStart < candEnd && candStart < evEnd)
-            
-            // 2) Проверка за разлика в началата под 40 минути
-            let diffStartTimes = abs(candStart.timeIntervalSince(evStart)) < 40 * 60
-            
-            if intervalsOverlap && diffStartTimes {
-                return true
-            }
-        }
-        return false
     }
 
     
@@ -1067,7 +983,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 container.addSubview(ghostView)
                 
                 // Фиксираме началната рамка
-                let columNumber =  CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
+                let columNumber =  CGFloat(CalendarViewModel.shared.multiCalendarsDict.filter { $0.value.selected }.count)
                 
                 let w: CGFloat = dayColumnWidth - style.eventGap * 2 * columNumber - 3
                 let h: CGFloat = 18
@@ -1110,7 +1026,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 dayIndex = max(0, min(dayIndex, dayCount - 1))
 
                 // Колко календара (подколони) има
-                let allCals = calendarVM.calendarsDict
+                let allCals = calendarVM.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
@@ -1223,7 +1139,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     dayIndex = max(0, min(dayIndex, dayCount - 1))
 
                     // Колко календара (подколони) има
-                    let allCals = calendarVM.calendarsDict
+                    let allCals = calendarVM.multiCalendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                     let sortedCals = arrangedForLayoutDirection(
@@ -1290,7 +1206,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     dayIndex = max(0, min(dayIndex, dayCount - 1))
 
                     // Колко календара (подколони) има
-                    let allCals = calendarVM.calendarsDict
+                    let allCals = calendarVM.multiCalendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                     let sortedCals = arrangedForLayoutDirection(
@@ -1419,7 +1335,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     
                     
                     // i) Открийте колко календара реално рисувате
-                    let allCals = calendarVM.calendarsDict
+                    let allCals = calendarVM.multiCalendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                     let sortedCals = arrangedForLayoutDirection(
@@ -1444,12 +1360,12 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     
                     // vi) Ако е EKMultiDayWrapper => сменяме realEvent.calendar
                     if let multi = descriptor as? EKMultiDayWrapper,
-                       let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                       let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
                     {
                         multi.realEvent.calendar = newCalendar
                     }
                     else if let singleEK = descriptor as? EKMultiDayWrapper,  // Ако ползвате EKWrapper за еднодневни
-                            let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                            let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
                     {
                         singleEK.ekEvent.calendar = newCalendar
                     }
@@ -1468,7 +1384,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     
                     
                     // i) Открийте колко календара реално рисувате
-                    let allCals = calendarVM.calendarsDict
+                    let allCals = calendarVM.multiCalendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                     let sortedCals = arrangedForLayoutDirection(
@@ -1493,12 +1409,12 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     
                     // vi) Ако е EKMultiDayWrapper => сменяме realEvent.calendar
                     if let multi = descriptor as? EKMultiDayWrapper,
-                       let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                       let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
                     {
                         multi.realEvent.calendar = newCalendar
                     }
                     else if let singleEK = descriptor as? EKMultiDayWrapper,  // Ако ползвате EKWrapper за еднодневни
-                            let newCalendar = calendarVM.calendarsDict[newCalendarID]?.calendar
+                            let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
                     {
                         singleEK.ekEvent.calendar = newCalendar
                     }
@@ -1625,7 +1541,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 ghost.layer.zPosition = 2
                 addSubview(ghost)
 
-                let columNumber = CGFloat(CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count)
+                let columNumber = CGFloat(CalendarViewModel.shared.multiCalendarsDict.filter { $0.value.selected }.count)
                 let dayIndex = dayIndexFor(thisDesc.dateInterval.start)
                 let ghostX = dayColumnWidth * CGFloat(dayIndex) + 2
                 let ghostY = sliceFrameInSelf.minY
@@ -1633,7 +1549,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let ghostH = sliceFrameInSelf.height
 
                 // Под‑колони
-                let allCals = calendarVM.calendarsDict
+                let allCals = calendarVM.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
@@ -1696,7 +1612,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 var dayIndex = Int(midX / dayColumnWidth)
                 dayIndex = max(0, min(dayIndex, dayCount - 1))
 
-                let allCals = calendarVM.calendarsDict
+                let allCals = calendarVM.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
@@ -1881,7 +1797,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 dayIndex = max(0, min(dayIndex, dayCount - 1))
 
                 // (A) Календарите (селектирани или всички)
-                let allCals = calendarVM.calendarsDict
+                let allCals = calendarVM.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
@@ -2072,7 +1988,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         ctx.restoreGState()
 
         // 3) Под‑колони (ако имаме повече от 1 календар)
-        let allCals = calendarVM.calendarsDict
+        let allCals = calendarVM.multiCalendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
         let numberOfCalendars = calsToShow.count // може да е 0, ако somehow няма

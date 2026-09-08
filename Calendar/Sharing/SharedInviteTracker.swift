@@ -145,6 +145,9 @@ enum SharedInviteTracker {
     }
 
     static func isReadOnly(_ descriptor: EventDescriptor) -> Bool {
+        if let local = descriptor as? AppLocalEventDescriptor {
+            return local.isReadOnly
+        }
         guard let event = (descriptor as? EKMultiDayWrapper)?.realEvent else { return false }
         return isReadOnly(event)
     }

@@ -51,22 +51,23 @@ struct SearchResultsView: View {
     @ObservedObject var viewModel = CalendarViewModel.shared
     var searchText: String
     @State private var eventToEdit: EKEvent? = nil
+    @State private var appLocalEventToEdit: AppLocalEventRecord? = nil
 
     // Филтриране на събитията според въведения текст
-    private var filteredEvents: [EKEvent] {
+    private var filteredEvents: [EventDescriptor] {
         guard !searchText.isEmpty else { return [] }
         let allEvents = Array(viewModel.eventsByID.values)
         return allEvents.filter { event in
-            event.title?.localizedCaseInsensitiveContains(searchText) == true
+            event.text.localizedCaseInsensitiveContains(searchText)
         }
     }
 
     // Групиране на резултатите по дни
-    private var groupedSearchResults: [(day: Date, events: [EKEvent])] {
-        var dict = [Date: [EKEvent]]()
+    private var groupedSearchResults: [(day: Date, events: [EventDescriptor])] {
+        var dict = [Date: [EventDescriptor]]()
         let calendar = Calendar.current
         for e in filteredEvents {
-            let dayStart = calendar.startOfDay(for: e.startDate)
+            let dayStart = calendar.startOfDay(for: e.dateInterval.start)
             dict[dayStart, default: []].append(e)
         }
         let sortedDays = dict.keys.sorted()
@@ -93,10 +94,16 @@ struct SearchResultsView: View {
                     header: Text(dayHeaderString(group.day))
                         .foregroundColor(Calendar.current.isDateInToday(group.day) ? .red : .primary)
                 ) {
-                    ForEach(group.events, id: \.eventIdentifier) { event in
+                    ForEach(Array(group.events.enumerated()), id: \.offset) { _, event in
                         SearchEventRowView(event: event)
                             .onTapGesture {
-                                eventToEdit = event
+                                if let local = event as? AppLocalEventDescriptor {
+                                    appLocalEventToEdit = AppLocalCalendarStore.shared.event(id: local.eventID)
+                                } else if let wrapper = event as? EKMultiDayWrapper {
+                                    eventToEdit = wrapper.realEvent
+                                } else if let ekEvent = event as? EKEvent {
+                                    eventToEdit = ekEvent
+                                }
                             }
                     }
                 }
@@ -115,6 +122,10 @@ struct SearchResultsView: View {
                 }
             }
         }
+        .onReceive(viewModel.calendarContentDidChange) { _ in
+            let currentYear = Calendar.current.component(.year, from: Date())
+            viewModel.loadEventsForWholeYear(year: currentYear)
+        }
         .sheet(item: $eventToEdit) { event in
             if SharedInviteTracker.isReadOnly(event) {
                 EventDetailViewWrapper(event: event)
@@ -127,6 +138,9 @@ struct SearchResultsView: View {
                     viewModel.loadEventsForWholeYear(year: currentYear)
                 }
             }
+        }
+        .sheet(item: $appLocalEventToEdit) { event in
+            AppLocalEventEditorView(target: AppLocalEventEditorTarget(eventID: event.id))
         }
     }
 }

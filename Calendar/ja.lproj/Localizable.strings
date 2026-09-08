@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "場所";
+"Video Call" = "ビデオ通話";
+"Map Locations" = "地図の場所";
+"End Repeat" = "繰り返しの終了";
+"On Date" = "指定日";
+"Custom…" = "カスタム…";
+"Attachments will be applied to all occurrences" = "添付ファイルはすべての予定に適用されます";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "この予定に必要な移動時間をカレンダーに追加します。予定通知は移動時間も考慮に入れて行います。また、移動時間も含めてカレンダー上でブロックします。";
+"Repeats %@" = "繰り返し: %@";
+"10 minutes before" = "10分前";
+"2 hours before" = "2時間前";
+"2 days before" = "2日前";
+"1 week before" = "1週間前";
+"Every Day" = "毎日";
+"Every Week" = "毎週";
+"Every Month" = "毎月";
+"Every Year" = "毎年";
+"Every 2 Weeks" = "2週間ごと";
+"Travel Time" = "移動時間";
+"Repeat" = "繰り返し";
+"Second Alert" = "予備の通知";
+"Never" = "しない";
+"None" = "なし";
+"Add attachment…" = "添付ファイルを追加…";
+
+/* App-owned calendars */
+"Event Details" = "イベントの詳細";
+"Edit Event" = "イベントを編集";
+"Delete Event" = "イベントを削除";
+"Delete Event?" = "イベントを削除しますか？";
+"All-day" = "終日";
+"Starts" = "開始";
+"Alert" = "通知";
+"URL" = "URL";
+"Notes" = "メモ";
+"Title" = "タイトル";
+"Location or Video Call" = "場所またはビデオ通話";
+"At time of event" = "イベントの開始時刻";
+"5 minutes before" = "5分前";
+"15 minutes before" = "15分前";
+"30 minutes before" = "30分前";
+"1 hour before" = "1時間前";
+"1 day before" = "1日前";
+"Access" = "アクセス権";
+"Delete Calendar?" = "カレンダーを削除しますか？";
+"Add Local Calendar" = "ローカルカレンダーを追加";
+"Local Calendars" = "ローカルカレンダー";
+"No local calendars yet." = "ローカルカレンダーはまだありません。";
+"Edit local calendar" = "ローカルカレンダーを編集";
+"Share Event" = "イベントを共有";
+
 /* Preferences */
 "Language" = "言語";
 "Measurement Units" = "単位系";

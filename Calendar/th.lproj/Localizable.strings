@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "สถานที่";
+"Video Call" = "โทรแบบวิดีโอ";
+"Map Locations" = "ตำแหน่งที่ตั้งบนแผนที่";
+"End Repeat" = "สิ้นสุดการทำประจำ";
+"On Date" = "ในวันที่";
+"Custom…" = "กำหนดเอง…";
+"Attachments will be applied to all occurrences" = "ไฟล์แนบจะถูกปรับใช้กับทุกกิจกรรม";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "เพิ่มเวลาเดินทางสำหรับกิจกรรมนี้ไปยังปฏิทินของคุณ การเตือนกิจกรรมจะพิจารณาเวลาเตือนโดยใช้เวลาเดินทางนี้ด้วย และปฏิทินของคุณจะถูกปิดกั้นไว้ในระหว่างเวลานี้";
+"Repeats %@" = "ทำประจำ%@";
+"10 minutes before" = "10 นาทีก่อน";
+"2 hours before" = "2 ชั่วโมงก่อน";
+"2 days before" = "2 วันก่อน";
+"1 week before" = "1 สัปดาห์ก่อน";
+"Every Day" = "รายวัน";
+"Every Week" = "รายสัปดาห์";
+"Every Month" = "รายเดือน";
+"Every Year" = "เป็นประจำทุกปี";
+"Every 2 Weeks" = "ทุก 2 สัปดาห์";
+"Travel Time" = "เวลาเดินทาง";
+"Repeat" = "ทำประจำ";
+"Second Alert" = "การเตือนครั้งที่สอง";
+"Never" = "ไม่เลย";
+"None" = "ไม่มี";
+"Add attachment…" = "เพิ่มไฟล์แนบ…";
+
+/* App-owned calendars */
+"Event Details" = "รายละเอียดกิจกรรม";
+"Edit Event" = "แก้ไขกิจกรรม";
+"Delete Event" = "ลบกิจกรรม";
+"Delete Event?" = "ลบกิจกรรมหรือไม่";
+"All-day" = "ตลอดวัน";
+"Starts" = "เริ่ม";
+"Alert" = "การเตือน";
+"URL" = "URL";
+"Notes" = "โน้ต";
+"Title" = "ชื่อ";
+"Location or Video Call" = "สถานที่หรือวิดีโอคอล";
+"At time of event" = "เมื่อถึงเวลากิจกรรม";
+"5 minutes before" = "5 นาทีก่อน";
+"15 minutes before" = "15 นาทีก่อน";
+"30 minutes before" = "30 นาทีก่อน";
+"1 hour before" = "1 ชั่วโมงก่อน";
+"1 day before" = "1 วันก่อน";
+"Access" = "สิทธิ์เข้าถึง";
+"Delete Calendar?" = "ลบปฏิทินหรือไม่";
+"Add Local Calendar" = "เพิ่มปฏิทินในเครื่อง";
+"Local Calendars" = "ปฏิทินในเครื่อง";
+"No local calendars yet." = "ยังไม่มีปฏิทินในเครื่อง";
+"Edit local calendar" = "แก้ไขปฏิทินในเครื่อง";
+"Share Event" = "แชร์กิจกรรม";
+
 /* Preferences */
 "Language" = "ภาษา";
 "Measurement Units" = "หน่วยวัด";

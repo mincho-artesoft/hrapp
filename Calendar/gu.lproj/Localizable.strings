@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "લોકેશન";
+"Video Call" = "વીડિયો કૉલ";
+"Map Locations" = "નકશાના લોકેશન";
+"End Repeat" = "રિપીટ સમાપ્ત કરો";
+"On Date" = "તારીખે";
+"Custom…" = "કસ્ટમ…";
+"Attachments will be applied to all occurrences" = "અટૅચમેંટ તમામ જગ્યાએ લાગુ થશે";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "આ ઇવેંટ માટે તમારા કૅલેંડરમાં પ્રવાસના સમયને ઉમેરો. ઇવેંટ અલર્ટ દ્વારા આ સમયને ધ્યાનમાં રાખવામાં આવશે અને આ સમય દરમિયાન તમારું કૅલેંડર બ્લૉક રહેશે.";
+"Repeats %@" = "%@ રિપીટ કરો";
+"10 minutes before" = "10 મિનિટ પહેલાં";
+"2 hours before" = "2 કલાક પહેલાં";
+"2 days before" = "2 દિવસ પહેલાં";
+"1 week before" = "1 અઠવાડિયું પહેલાં";
+"Every Day" = "દૈનિક";
+"Every Week" = "સાપ્તાહિક";
+"Every Month" = "માસિક";
+"Every Year" = "વાર્ષિક";
+"Every 2 Weeks" = "દરેક 2 અઠવાડિયાં";
+"Travel Time" = "પ્રવાસનો સમય";
+"Repeat" = "રિપીટ કરો";
+"Second Alert" = "બીજું અલર્ટ";
+"Never" = "ક્યારેય નહિ";
+"None" = "એકે નહિ";
+"Add attachment…" = "અટૅચમેંટ ઉમેરો…";
+
+/* App-owned calendars */
+"Event Details" = "ઇવેન્ટની વિગતો";
+"Edit Event" = "ઇવેન્ટ સંપાદિત કરો";
+"Delete Event" = "ઇવેન્ટ કાઢી નાખો";
+"Delete Event?" = "ઇવેન્ટ કાઢી નાખવી?";
+"All-day" = "આખો દિવસ";
+"Starts" = "શરૂ થાય છે";
+"Alert" = "ચેતવણી";
+"URL" = "URL";
+"Notes" = "નોંધો";
+"Title" = "શીર્ષક";
+"Location or Video Call" = "સ્થાન અથવા વીડિયો કૉલ";
+"At time of event" = "ઇવેન્ટના સમયે";
+"5 minutes before" = "5 મિનિટ પહેલાં";
+"15 minutes before" = "15 મિનિટ પહેલાં";
+"30 minutes before" = "30 મિનિટ પહેલાં";
+"1 hour before" = "1 કલાક પહેલાં";
+"1 day before" = "1 દિવસ પહેલાં";
+"Access" = "ઍક્સેસ";
+"Delete Calendar?" = "કૅલેન્ડર કાઢી નાખવું?";
+"Add Local Calendar" = "સ્થાનિક કૅલેન્ડર ઉમેરો";
+"Local Calendars" = "સ્થાનિક કૅલેન્ડર";
+"No local calendars yet." = "હજુ સુધી કોઈ સ્થાનિક કૅલેન્ડર નથી.";
+"Edit local calendar" = "સ્થાનિક કૅલેન્ડર સંપાદિત કરો";
+"Share Event" = "ઇવેન્ટ શેર કરો";
+
 /* Preferences */
 "Language" = "ભાષા";
 "Measurement Units" = "માપન એકમો";

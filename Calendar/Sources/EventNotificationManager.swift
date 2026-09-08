@@ -246,27 +246,37 @@ final class EventNotificationManager: NSObject, ObservableObject {
 
     private func makeUpcomingStoredEventNotifications() -> [StoredEventNotification] {
         let viewModel = CalendarViewModel.shared
-        guard viewModel.isCalendarAccessGranted() else { return [] }
-
-        if viewModel.allCalendars.isEmpty {
-            viewModel.reloadCalendars()
-        }
-
         let now = Date()
         guard let end = Calendar.current.date(byAdding: .year, value: 1, to: now) else { return [] }
+        var scheduled: [StoredEventNotification] = []
 
-        let allowedCalendars = viewModel.allCalendars.filter {
-            viewModel.selectedCalendarIDs.contains($0.calendarIdentifier)
+        if viewModel.isCalendarAccessGranted() {
+            if viewModel.allCalendars.isEmpty {
+                viewModel.reloadCalendars()
+            }
+
+            let allowedCalendars = viewModel.allCalendars.filter {
+                viewModel.selectedCalendarIDs.contains($0.calendarIdentifier)
+            }
+
+            if !allowedCalendars.isEmpty {
+                let predicate = viewModel.eventStore.predicateForEvents(
+                    withStart: now,
+                    end: end,
+                    calendars: allowedCalendars
+                )
+
+                scheduled.append(contentsOf: viewModel.eventStore.events(matching: predicate)
+                    .flatMap { storedNotifications(for: $0, now: now) })
+            }
         }
 
-        let predicate = viewModel.eventStore.predicateForEvents(
-            withStart: now,
-            end: end,
-            calendars: allowedCalendars.isEmpty ? nil : allowedCalendars
-        )
-
-        let events = viewModel.eventStore.events(matching: predicate)
-        let scheduled = events.flatMap { storedNotifications(for: $0, now: now) }
+        let appLocalStore = AppLocalCalendarStore.shared
+        scheduled.append(contentsOf: appLocalStore.events(
+            from: now,
+            to: end,
+            selectedCalendarIDs: viewModel.selectedCalendarIDs
+        ).flatMap { storedNotifications(for: $0, now: now) })
 
         return scheduled
             .sorted { $0.fireDate < $1.fireDate }
@@ -301,6 +311,30 @@ final class EventNotificationManager: NSObject, ObservableObject {
         }
     }
 
+    private func storedNotifications(
+        for event: AppLocalEventRecord,
+        now: Date
+    ) -> [StoredEventNotification] {
+        guard !event.alarms.isEmpty, !event.isCancelled else { return [] }
+        let title = event.title.isEmpty
+            ? NSLocalizedString("Untitled", comment: "Fallback event title")
+            : event.title
+
+        return event.alarms.enumerated().compactMap { index, alarm in
+            let fireDate = event.startDate.addingTimeInterval(alarm.relativeOffset)
+            guard fireDate > now else { return nil }
+            return StoredEventNotification(
+                identifier: "\(notificationPrefix)\(event.id).\(Int(fireDate.timeIntervalSince1970)).\(index)",
+                title: title,
+                body: notificationBody(for: event),
+                fireDate: fireDate,
+                eventStartDate: event.startDate,
+                eventIdentifier: event.id,
+                calendarIdentifier: event.calendarID
+            )
+        }
+    }
+
     private func fireDate(for alarm: EKAlarm, event: EKEvent) -> Date? {
         if let absoluteDate = alarm.absoluteDate {
             return absoluteDate
@@ -321,5 +355,13 @@ final class EventNotificationManager: NSObject, ObservableObject {
         }
 
         return formatter.string(from: event.startDate)
+    }
+
+    private func notificationBody(for event: AppLocalEventRecord) -> String {
+        if event.isAllDay {
+            return NSLocalizedString("All-day event", comment: "All-day event notification body")
+        }
+        let formatter = appTimeFormatter()
+        return "\(formatter.string(from: event.startDate)) - \(formatter.string(from: event.endDate))"
     }
 }

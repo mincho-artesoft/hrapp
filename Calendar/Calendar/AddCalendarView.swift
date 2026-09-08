@@ -2,13 +2,27 @@ import SwiftUI
 import EventKit
 
 struct AddCalendarView: View {
+    enum Destination {
+        case iCloud
+        case appLocal
+    }
+
     @Environment(\.presentationMode) var presentationMode
     let eventStore = CalendarViewModel.shared.eventStore
+    let destination: Destination
 
     @State private var calendarName: String = ""
     @State private var selectedColor: UIColor = .systemGreen
 
-    private let accountName: String = "iCloud"
+    init(destination: Destination = .iCloud) {
+        self.destination = destination
+    }
+
+    private var accountName: String {
+        destination == .iCloud
+            ? "iCloud"
+            : NSLocalizedString("Cloud Calendars", comment: "App-local calendar account")
+    }
 
     var body: some View {
         NavigationView {
@@ -36,7 +50,12 @@ struct AddCalendarView: View {
                 }
 
             }
-            .navigationBarTitle(LocalizedStringKey("Add Calendar"), displayMode: .inline)
+            .navigationBarTitle(
+                destination == .iCloud
+                    ? LocalizedStringKey("Add Calendar")
+                    : LocalizedStringKey("Add Local Calendar"),
+                displayMode: .inline
+            )
             .navigationBarItems(
                 leading:
                     AppToolbarTextButton("Cancel") {
@@ -52,6 +71,17 @@ struct AddCalendarView: View {
     }
 
     private func createCalendar() {
+        if destination == .appLocal {
+            let calendar = AppLocalCalendarStore.shared.createCalendar(
+                title: calendarName,
+                color: selectedColor
+            )
+            CalendarViewModel.shared.selectedCalendarIDs.insert(calendar.id)
+            CalendarViewModel.shared.reloadCalendars()
+            presentationMode.wrappedValue.dismiss()
+            return
+        }
+
         let newCal = EKCalendar(for: .event, eventStore: eventStore)
         newCal.title = calendarName
 

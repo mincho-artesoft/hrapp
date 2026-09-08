@@ -4,6 +4,8 @@ open class EventView: UIView {
     public var descriptor: EventDescriptor?
     public var color = SystemColors.label
     var viewModel: CalendarViewModel = .shared
+    private var timelineTextHeight: CGFloat?
+    private var timelineDepth: Int?
 
     public var contentHeight: Double {
         textView.frame.height
@@ -46,12 +48,24 @@ open class EventView: UIView {
     }
     
     public func updateWithDescriptor(event: EventDescriptor) {
+        timelineTextHeight = nil
+        timelineDepth = nil
         descriptor = event
-        guard let wrapper = event as? EKMultiDayWrapper else { return }
-        let isReadOnly = SharedInviteTracker.isReadOnly(wrapper.realEvent)
+        let wrapper = event as? EKMultiDayWrapper
+        let local = event as? AppLocalEventDescriptor
+        guard wrapper != nil || local != nil else { return }
+        let isReadOnly = SharedInviteTracker.isReadOnly(event)
+        let eventTitle = wrapper?.text ?? local?.text ?? event.text
+        let eventStart = event.timelineOriginalInterval.start
+        let eventEnd = event.timelineOriginalInterval.end
+        let eventLocation = wrapper?.realEvent.location ?? local?.location
+        let eventNotes = wrapper?.realEvent.notes ?? local?.notes
+        let shouldStrikeThrough = wrapper.map {
+            SharedInviteTracker.shouldAppearStruckThrough($0.realEvent)
+        } ?? local?.isCancelled ?? false
         
         // Calendar info
-        let eventCalendar = wrapper.realEvent.calendar
+        let eventCalendar = wrapper?.realEvent.calendar
         let calType = eventCalendar?.type ?? .local
 
         // Icon setup
@@ -112,10 +126,10 @@ open class EventView: UIView {
         }
 
         // 3) Title
-        finalString.append(NSAttributedString(string: wrapper.text, attributes: textAttributes))
+        finalString.append(NSAttributedString(string: event.isAllDay ? eventTitle : timelineTitle(eventTitle, font: event.font), attributes: textAttributes))
 
         // 4) Video call line
-        if let notes = wrapper.realEvent.notes,
+        if let notes = eventNotes,
            notes.contains("----( Video Call )----") {
             let bracketRegex = "\\[([^\\]]+)\\]"
             if let matchRange = notes.range(of: bracketRegex, options: .regularExpression) {
@@ -140,8 +154,8 @@ open class EventView: UIView {
             clockIcon.bounds = calendarAttachment.bounds
             finalString.append(NSAttributedString(attachment: clockIcon))
 
-            let start = wrapper.realEvent.startDate!
-            let end = wrapper.realEvent.endDate ?? start
+            let start = eventStart
+            let end = eventEnd
             let calendar = Calendar.current
             let spansDays = !calendar.isDate(start, inSameDayAs: end)
 
@@ -164,7 +178,7 @@ open class EventView: UIView {
         }
 
         // 6) Location line
-        if let loc = wrapper.realEvent.location, !loc.isEmpty {
+        if let loc = eventLocation, !loc.isEmpty {
             finalString.append(NSAttributedString(string: "\n"))
             let locAttachment = NSTextAttachment()
             locAttachment.image = UIImage(systemName: "location")?
@@ -177,7 +191,7 @@ open class EventView: UIView {
         // Invitations cancelled by their owner or whose access was revoked stay
         // visible with a line through them. Keep the line explicitly in the
         // event colour so every text fragment uses the same appearance.
-        if SharedInviteTracker.shouldAppearStruckThrough(wrapper.realEvent) {
+        if shouldStrikeThrough {
             finalString.addAttributes(
                 [
                     .strikethroughStyle: NSUnderlineStyle.single.rawValue,
@@ -189,7 +203,7 @@ open class EventView: UIView {
 
         // Apply to textView and style view
         textView.attributedText = finalString
-        textView.textContainer.maximumNumberOfLines = event.isAllDay ? 1 : 0
+        textView.textContainer.maximumNumberOfLines = event.isAllDay ? 1 : (bounds.width < 70 ? 2 : 0)
         textView.textContainer.lineBreakMode = event.isAllDay ? .byTruncatingTail : .byWordWrapping
         backgroundColor = .clear
         layer.backgroundColor = event.backgroundColor.cgColor
@@ -201,6 +215,62 @@ open class EventView: UIView {
         }
         setNeedsDisplay()
         setNeedsLayout()
+    }
+
+    func applyTimelinePlacement(_ placement: TimedEventLayout.Placement) {
+        timelineDepth = placement.depth
+        // Continuation slices stay colored underlays, without repeating a
+        // multi-day title over today's child events.
+        timelineTextHeight = placement.continuesFromPreviousDay ? 0 : placement.textHeight
+        applyTimelineColors()
+        setNeedsLayout()
+    }
+
+    private func timelineTitle(_ title: String, font: UIFont) -> String {
+        // Match the preview's two-line title budget; narrow overlap lanes
+        // must not wrap one title into a tall stack of individual letters.
+        let width = max(1, bounds.width - 17)
+        func fits(_ text: String) -> Bool {
+            (text as NSString).boundingRect(with: CGSize(width: width, height: .greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                attributes: [.font: font], context: nil).height <= ceil(font.lineHeight * 2)
+        }
+        guard !fits(title) else { return title }
+        let characters = Array(title)
+        var low = 0, high = characters.count
+        while low < high {
+            let mid = (low + high + 1) / 2
+            if fits(String(characters.prefix(mid)) + "…") { low = mid } else { high = mid - 1 }
+        }
+        return String(characters.prefix(low)).trimmingCharacters(in: .whitespaces) + "…"
+    }
+
+    private func applyTimelineColors() {
+        guard let depth = timelineDepth, let descriptor else { return }
+        let dark = traitCollection.userInterfaceStyle == .dark
+        layer.backgroundColor = EventTimelineColors.background(descriptor.color,
+            selected: false, depth: depth, dark: dark).cgColor
+        let text = NSMutableAttributedString(attributedString: textView.attributedText ?? NSAttributedString())
+        let fullRange = NSRange(location: 0, length: text.length)
+        text.addAttribute(.foregroundColor, value: EventTimelineColors.text(descriptor.color,
+            strength: 0.82, dark: dark), range: fullRange)
+        let titleLength = (text.string as NSString).range(of: "\n").location
+        text.addAttribute(.foregroundColor, value: EventTimelineColors.text(descriptor.color,
+            strength: 0.58, dark: dark),
+            range: NSRange(location: 0, length: titleLength == NSNotFound ? text.length : titleLength))
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = effectiveUserInterfaceLayoutDirection == .rightToLeft ? .right : .left
+        paragraph.baseWritingDirection = effectiveUserInterfaceLayoutDirection == .rightToLeft ? .rightToLeft : .leftToRight
+        text.addAttribute(.paragraphStyle, value: paragraph, range: fullRange)
+        textView.attributedText = text
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            applyTimelineColors()
+            setNeedsDisplay()
+        }
     }
     
     public func animateCreation() {
@@ -241,15 +311,14 @@ open class EventView: UIView {
         context.setLineCap(.round)
         context.translateBy(x: 0, y: 0.5)
         
-        let leftToRight = UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .leftToRight
-        let x: Double = leftToRight ? 0 : frame.width - 1.0
+        let leftToRight = effectiveUserInterfaceLayoutDirection == .leftToRight
+        let x: CGFloat = leftToRight ? 6 : bounds.width - 6
         let y: Double = 0
-        let hOffset: Double = 3
         let vOffset: Double = 5
         
         context.beginPath()
-        context.move(to: CGPoint(x: x + 2 * hOffset, y: y + vOffset))
-        context.addLine(to: CGPoint(x: x + 2 * hOffset, y: bounds.height - vOffset))
+        context.move(to: CGPoint(x: x, y: y + vOffset))
+        context.addLine(to: CGPoint(x: x, y: max(vOffset, bounds.height - vOffset)))
         context.strokePath()
         context.restoreGState()
     }
@@ -262,7 +331,7 @@ open class EventView: UIView {
         if let descriptor = descriptor, descriptor.isAllDay {
             leftPadding = 5
         } else {
-            leftPadding = 8
+            leftPadding = 12
         }
         
         // --- Отклонение по вертикала за all-day ---
@@ -273,19 +342,19 @@ open class EventView: UIView {
             topPadding = 0
         }
         
-        if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft {
+        if effectiveUserInterfaceLayoutDirection == .rightToLeft {
             textView.frame = CGRect(
-                x: bounds.minX,
+                x: bounds.minX + 5,
                 y: bounds.minY + topPadding,
-                width: bounds.width - 3,
-                height: bounds.height - topPadding
+                width: max(0, bounds.width - leftPadding - 5),
+                height: max(0, (timelineTextHeight ?? bounds.height) - topPadding)
             )
         } else {
             textView.frame = CGRect(
                 x: bounds.minX + leftPadding,
                 y: bounds.minY + topPadding,
-                width: bounds.width - leftPadding - 5,
-                height: bounds.height - topPadding
+                width: max(0, bounds.width - leftPadding - 5),
+                height: max(0, (timelineTextHeight ?? bounds.height) - topPadding)
             )
         }
         

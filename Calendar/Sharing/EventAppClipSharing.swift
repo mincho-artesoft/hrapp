@@ -353,7 +353,6 @@ enum EventShareEndpoint {
 
     private static let appleHost = "appclip.apple.com"
     private static let applePath = "/id"
-    private static let serverHost = "api.cloud-calendars.com"
     private static let serverPath = "/event-invites/open"
 
     static var appClipHost: String { appleHost }
@@ -368,8 +367,10 @@ enum EventShareEndpoint {
             resolvingAgainstBaseURL: false
         ) else { return nil }
 
-        components.scheme = "https"
-        components.host = serverHost
+        let server = CloudCalendarsAPI.baseURL
+        components.scheme = server.scheme
+        components.host = server.host
+        components.port = server.port
         components.path = serverPath
         components.queryItems = components.queryItems?.filter { $0.name != "p" }
         return components.url
@@ -377,7 +378,17 @@ enum EventShareEndpoint {
 
     /// The subscribable personal-calendar feed for a given feed identifier.
     static func feedURL(for feedID: String) -> URL? {
-        URL(string: "webcal://cal.cloud-calendars.com/f/\(feedID).ics")
+        #if DEBUG
+        var components = URLComponents(
+            url: CloudCalendarsAPI.baseURL,
+            resolvingAgainstBaseURL: false
+        )
+        components?.scheme = "webcal"
+        components?.path = "/f/\(feedID).ics"
+        return components?.url
+        #else
+        return URL(string: "webcal://cal.cloud-calendars.com/f/\(feedID).ics")
+        #endif
     }
 }
 
@@ -530,8 +541,7 @@ enum SharedOutgoingEventTracker {
             details: nil
         )
         let eventSnapshot = localEventIdentifier
-            .flatMap { CalendarViewModel.shared.eventStore.event(withIdentifier: $0) }
-            .flatMap(snapshot(for:))
+            .flatMap(snapshot(localEventIdentifier:))
 
         var all = load()
         all[eventID] = SentEvent(
@@ -560,9 +570,23 @@ enum SharedOutgoingEventTracker {
         var changed = false
 
         for (id, record) in all {
-            guard let localEventIdentifier = record.localEventIdentifier,
-                  let event = eventStore.event(withIdentifier: localEventIdentifier)
-            else { continue }
+            guard let localEventIdentifier = record.localEventIdentifier else { continue }
+
+            if let localEvent = AppLocalCalendarStore.shared.event(id: localEventIdentifier) {
+                var refreshed = record
+                refreshed.title = localEvent.title
+                refreshed.start = localEvent.startDate
+                refreshed.end = localEvent.endDate
+                refreshed.isAllDay = localEvent.isAllDay
+                refreshed.location = localEvent.location.isEmpty ? nil : localEvent.location
+                if refreshed != record {
+                    all[id] = refreshed
+                    changed = true
+                }
+                continue
+            }
+
+            guard let event = eventStore.event(withIdentifier: localEventIdentifier) else { continue }
 
             EventShareIdentity.removeLegacyMarker(from: event, store: eventStore)
 
@@ -599,6 +623,86 @@ enum SharedOutgoingEventTracker {
 
         var changedCount = 0
         for original in load().values {
+            if let localIdentifier = original.localEventIdentifier,
+               localIdentifier.hasPrefix("app-local-event:") {
+                guard let localEvent = AppLocalCalendarStore.shared.event(id: localIdentifier) else {
+                    guard original.feedID != nil,
+                          original.isCancelled != true,
+                          original.tracksLocalDeletion != false
+                    else { continue }
+                    do {
+                        try await CloudCalendarsAPI.cancelEvent(id: original.eventID, session: session)
+                        updatePersisted(original.eventID) { $0.isCancelled = true }
+                        changedCount += 1
+                    } catch {
+                        print("Shared local-event cancellation failed for \(original.eventID) - \(error.localizedDescription)")
+                    }
+                    continue
+                }
+
+                guard original.isCancelled != true,
+                      let calendar = AppLocalCalendarStore.shared.calendar(id: localEvent.calendarID),
+                      calendar.canEditEvents,
+                      let currentSnapshot = snapshot(for: localEvent)
+                else { continue }
+
+                let needsFeedRecovery = original.feedID == nil
+                guard needsFeedRecovery
+                        || currentSnapshot != original.lastUploadedSnapshot
+                        || original.serverMetadataVersion != 2
+                else { continue }
+
+                do {
+                    try await CloudCalendarsAPI.upsertEvent(
+                        SharedEventUpload(
+                            id: original.eventID,
+                            title: currentSnapshot.title,
+                            start: currentSnapshot.start,
+                            end: currentSnapshot.end,
+                            isAllDay: currentSnapshot.isAllDay,
+                            location: currentSnapshot.location,
+                            url: currentSnapshot.url.flatMap(URL.init(string:)),
+                            details: currentSnapshot.details ?? SharedEventDetails(
+                                notes: nil,
+                                timeZone: localEvent.timeZoneIdentifier
+                            ),
+                            localEventIdentifier: localEvent.id,
+                            organizerName: nil,
+                            organizerEmail: nil
+                        ),
+                        session: session,
+                        receivedFeedId: calendar.origin == .received ? original.feedID : nil
+                    )
+                    let recoveredFeedID: String?
+                    if needsFeedRecovery {
+                        let grant = try await CloudCalendarsAPI.createGrant(
+                            role: "viewer",
+                            eventId: original.eventID,
+                            feedName: currentSnapshot.title,
+                            session: session
+                        )
+                        recoveredFeedID = grant.feedId
+                    } else {
+                        recoveredFeedID = original.feedID
+                    }
+                    updatePersisted(original.eventID) { current in
+                        current.feedID = recoveredFeedID
+                        current.title = currentSnapshot.title
+                        current.start = currentSnapshot.start
+                        current.end = currentSnapshot.end
+                        current.isAllDay = currentSnapshot.isAllDay
+                        current.location = currentSnapshot.location
+                        current.lastUploadedSnapshot = currentSnapshot
+                        current.isCancelled = false
+                        current.serverMetadataVersion = 2
+                    }
+                    changedCount += 1
+                } catch {
+                    print("Shared local-event upload failed for \(original.eventID) - \(error.localizedDescription)")
+                }
+                continue
+            }
+
             guard let localIdentifier = original.localEventIdentifier,
                   let event = eventStore.event(withIdentifier: localIdentifier)
             else {
@@ -745,8 +849,7 @@ enum SharedOutgoingEventTracker {
         var all = load()
         let previous = all[remote.id]
         let recoveredLocalSnapshot = (localEventIdentifier ?? previous?.localEventIdentifier)
-            .flatMap { CalendarViewModel.shared.eventStore.event(withIdentifier: $0) }
-            .flatMap(snapshot(for:))
+            .flatMap(snapshot(localEventIdentifier:))
         all[remote.id] = SentEvent(
             eventID: remote.id,
             localEventIdentifier: localEventIdentifier ?? previous?.localEventIdentifier,
@@ -792,10 +895,46 @@ enum SharedOutgoingEventTracker {
         for remote in state.outgoing {
             guard var record = load()[remote.id],
                   let identifier = record.localEventIdentifier,
-                  let event = eventStore.event(withIdentifier: identifier),
                   let remoteSequence = remote.sequence,
                   record.lastServerSequence == nil || remoteSequence > record.lastServerSequence!
             else { continue }
+
+            if identifier.hasPrefix("app-local-event:"),
+               var localEvent = AppLocalCalendarStore.shared.event(id: identifier) {
+                if let current = snapshot(for: localEvent),
+                   let uploaded = record.lastUploadedSnapshot,
+                   current != uploaded {
+                    continue
+                }
+                guard let start = remote.startDate, let end = remote.endDate else { continue }
+                localEvent.title = remote.title
+                localEvent.startDate = start
+                localEvent.endDate = max(start, end)
+                localEvent.isAllDay = remote.allDay
+                localEvent.location = remote.location ?? ""
+                localEvent.urlString = remote.url ?? ""
+                localEvent.notes = remote.details?.notes ?? ""
+                localEvent.timeZoneIdentifier = remote.details?.timeZone ?? localEvent.timeZoneIdentifier
+                localEvent.alarms = (remote.details?.alarms ?? []).compactMap {
+                    guard let offset = $0.relativeOffset else { return nil }
+                    return AppLocalEventAlarm(relativeOffset: offset)
+                }
+                localEvent.isCancelled = remote.isCancelled
+                AppLocalCalendarStore.shared.saveEvent(localEvent)
+                record.title = remote.title
+                record.start = start
+                record.end = end
+                record.isAllDay = remote.allDay
+                record.location = remote.location
+                record.isCancelled = remote.isCancelled
+                record.lastServerSequence = remoteSequence
+                record.lastUploadedSnapshot = snapshot(for: localEvent)
+                updatePersisted(remote.id) { $0 = record }
+                changedCount += 1
+                continue
+            }
+
+            guard let event = eventStore.event(withIdentifier: identifier) else { continue }
 
             if let current = snapshot(for: event),
                let uploaded = record.lastUploadedSnapshot,
@@ -857,6 +996,7 @@ enum SharedOutgoingEventTracker {
                     try eventStore.save(event, span: span, commit: true)
                     record.localEventIdentifier = event.eventIdentifier
                 }
+                EventKitEventSupplementStore.update(details: remote.details, for: event)
                 record.title = remote.title
                 record.start = remote.startDate ?? record.start
                 record.end = remote.endDate ?? record.end
@@ -897,6 +1037,7 @@ enum SharedOutgoingEventTracker {
               let start = event.startDate,
               let end = event.endDate
         else { return nil }
+        let supplement = EventKitEventSupplementStore.supplement(for: event)
 
         return Snapshot(
             title: title,
@@ -905,8 +1046,52 @@ enum SharedOutgoingEventTracker {
             isAllDay: event.isAllDay,
             location: event.location,
             url: EventShareIdentity.shareableURL(from: event)?.absoluteString,
-            details: SharedEventDetails(event: event)
+            details: SharedEventDetails(
+                notes: event.notes,
+                timeZone: event.timeZone?.identifier,
+                availability: event.availability.rawValue,
+                alarms: (event.alarms ?? []).map(SharedEventAlarm.init(alarm:)),
+                recurrenceRules: (event.recurrenceRules ?? []).map(SharedEventRecurrenceRule.init(rule:)),
+                structuredLocation: event.structuredLocation.map(SharedEventLocation.init(location:)),
+                videoCallURL: supplement?.videoCallURL,
+                organizer: event.organizer.map(SharedEventParticipant.init(participant:)),
+                attendees: (event.attendees ?? []).map(SharedEventParticipant.init(participant:)),
+                travelTime: supplement?.travelTime,
+                attachments: supplement?.attachments.map(\.sharedValue)
+            )
         )
+    }
+
+    static func snapshot(for event: AppLocalEventRecord) -> Snapshot? {
+        let title = event.title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !title.isEmpty else { return nil }
+        return Snapshot(
+            title: title,
+            start: event.startDate,
+            end: event.endDate,
+            isAllDay: event.isAllDay,
+            location: event.location.isEmpty ? nil : event.location,
+            url: event.urlString.isEmpty ? nil : event.urlString,
+            details: SharedEventDetails(
+                notes: event.notes.isEmpty ? nil : event.notes,
+                timeZone: event.timeZoneIdentifier,
+                alarms: event.alarms.map { SharedEventAlarm(relativeOffset: $0.relativeOffset) },
+                recurrenceRules: event.recurrenceRules ?? [],
+                structuredLocation: event.structuredLocation,
+                videoCallURL: event.videoCallURL,
+                travelTime: event.travelTime,
+                attachments: event.attachments?.map(\.sharedValue)
+            )
+        )
+    }
+
+    private static func snapshot(localEventIdentifier: String) -> Snapshot? {
+        if let event = AppLocalCalendarStore.shared.event(id: localEventIdentifier) {
+            return snapshot(for: event)
+        }
+        return CalendarViewModel.shared.eventStore
+            .event(withIdentifier: localEventIdentifier)
+            .flatMap(snapshot(for:))
     }
 
     private static func updatePersisted(
@@ -972,6 +1157,7 @@ enum SharedEventSyncManager {
 
         let store = CalendarViewModel.shared.eventStore
         await SharedEventRecovery.restoreFromServer(force: false)
+        _ = await AppLocalCalendarSyncService.syncAll()
         _ = await SharedICloudCalendarLocalStore.syncOwnedCalendars(in: store)
         _ = await SharedOutgoingEventTracker.syncAll(in: store)
         _ = await SharedOutgoingEventTracker.pullRemoteChanges(in: store)
@@ -1011,7 +1197,25 @@ enum EventAppClipSharing {
         )
     }
 
+    @MainActor
     static func invocationURL(for descriptor: EventDescriptor, feedID: String? = nil) -> URL? {
+        if let localDescriptor = descriptor as? AppLocalEventDescriptor,
+           let localEvent = AppLocalCalendarStore.shared.event(id: localDescriptor.eventID),
+           let calendar = AppLocalCalendarStore.shared.calendar(id: localEvent.calendarID) {
+            return invocationURL(
+                title: localEvent.title,
+                start: localEvent.startDate,
+                end: localEvent.endDate,
+                isAllDay: localEvent.isAllDay,
+                timeZone: TimeZone(identifier: localEvent.timeZoneIdentifier) ?? .current,
+                color: AppLocalCalendarStore.color(calendar.displayColorHex),
+                location: localEvent.location.isEmpty ? nil : localEvent.location,
+                eventURL: localEvent.urlString.isEmpty ? nil : URL(string: localEvent.urlString),
+                shareID: localEvent.shareID,
+                feedID: feedID
+            )
+        }
+
         let event = (descriptor as? EKMultiDayWrapper)?.realEvent
         let start = event?.startDate ?? descriptor.dateInterval.start
         let end = event?.endDate ?? descriptor.dateInterval.end
@@ -1150,6 +1354,51 @@ enum EventAppClipSharing {
     }
 
     @MainActor
+    private static func syncedFeedID(for event: AppLocalEventRecord) async -> String? {
+        guard let calendar = AppLocalCalendarStore.shared.calendar(id: event.calendarID),
+              calendar.canManageSharing,
+              !event.isCancelled,
+              let snapshot = SharedOutgoingEventTracker.snapshot(for: event)
+        else { return nil }
+
+        do {
+            let session = try await CalendarFeedSession.current()
+            let existing = SharedOutgoingEventTracker.sentEvent(localEventIdentifier: event.id)
+            try await CloudCalendarsAPI.upsertEvent(
+                SharedEventUpload(
+                    id: event.shareID,
+                    title: snapshot.title,
+                    start: snapshot.start,
+                    end: snapshot.end,
+                    isAllDay: snapshot.isAllDay,
+                    location: snapshot.location,
+                    url: snapshot.url.flatMap(URL.init(string:)),
+                    details: snapshot.details ?? SharedEventDetails(
+                        notes: nil,
+                        timeZone: event.timeZoneIdentifier
+                    ),
+                    localEventIdentifier: event.id,
+                    organizerName: nil,
+                    organizerEmail: nil
+                ),
+                session: session,
+                receivedFeedId: existing?.feedID
+            )
+            if let feedID = existing?.feedID { return feedID }
+            let grant = try await CloudCalendarsAPI.createGrant(
+                role: "viewer",
+                eventId: event.shareID,
+                feedName: snapshot.title,
+                session: session
+            )
+            return grant.feedId
+        } catch {
+            print("Share: local event will not sync - \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    @MainActor
     static func shareableURL(for event: EKEvent) async -> URL? {
         guard CloudAccountManager.shared.isSignedIn else { return nil }
 
@@ -1201,6 +1450,11 @@ enum EventAppClipSharing {
     @MainActor
     static func shareableURL(for descriptor: EventDescriptor) async -> URL? {
         guard CloudAccountManager.shared.isSignedIn else { return nil }
+        if let localDescriptor = descriptor as? AppLocalEventDescriptor,
+           let localEvent = AppLocalCalendarStore.shared.event(id: localDescriptor.eventID) {
+            guard let feedID = await syncedFeedID(for: localEvent) else { return nil }
+            return invocationURL(for: descriptor, feedID: feedID)
+        }
         // Only a descriptor backed by a real EventKit event has an identity
         // stable enough to update later. A synthetic one - a placeholder drawn
         // for a multi-day span, say - would get a different id next time, so
@@ -1230,7 +1484,8 @@ enum EventAppClipSharing {
                 presentSyncError(from: presenter)
                 return
             }
-            let localEventIdentifier = (descriptor as? EKMultiDayWrapper)?.realEvent.eventIdentifier
+            let localEventIdentifier = (descriptor as? AppLocalEventDescriptor)?.eventID
+                ?? (descriptor as? EKMultiDayWrapper)?.realEvent.eventIdentifier
             presentSheet(
                 with: url,
                 localEventIdentifier: localEventIdentifier,
@@ -1240,6 +1495,39 @@ enum EventAppClipSharing {
                 popover.sourceRect = CGRect(
                     x: sourceView.bounds.midX,
                     y: sourceView.bounds.midY,
+                    width: 1,
+                    height: 1
+                )
+            }
+        }
+    }
+
+    @MainActor
+    static func present(for descriptor: EventDescriptor) {
+        let presenter = activePresentingViewController()
+        guard CloudAccountManager.shared.isSignedIn else {
+            presentAccountSignIn(from: presenter) {
+                present(for: descriptor)
+            }
+            return
+        }
+        Task { @MainActor in
+            guard let presenter else { return }
+            guard let url = await shareableURL(for: descriptor) else {
+                presentSyncError(from: presenter)
+                return
+            }
+            let localEventIdentifier = (descriptor as? AppLocalEventDescriptor)?.eventID
+                ?? (descriptor as? EKMultiDayWrapper)?.realEvent.eventIdentifier
+            presentSheet(
+                with: url,
+                localEventIdentifier: localEventIdentifier,
+                from: presenter
+            ) { popover in
+                popover.sourceView = presenter.view
+                popover.sourceRect = CGRect(
+                    x: presenter.view.bounds.midX,
+                    y: presenter.view.bounds.minY + 80,
                     width: 1,
                     height: 1
                 )

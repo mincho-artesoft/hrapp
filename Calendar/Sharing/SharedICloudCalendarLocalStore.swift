@@ -613,7 +613,8 @@ enum SharedICloudCalendarLocalStore {
             var changed = 0
 
             for sharedCalendar in sharedCalendars
-                where !isRemovedLocally(shareID: sharedCalendar.id) {
+                where sharedCalendar.calendarKind != "app_local"
+                    && !isRemovedLocally(shareID: sharedCalendar.id) {
                 let upload = try await uploadReceivedChangesIfNeeded(
                     sharedCalendar,
                     in: eventStore,
@@ -919,6 +920,7 @@ enum SharedICloudCalendarLocalStore {
                 title: sharing.title,
                 color: sharing.color,
                 timeZone: sharing.timeZone,
+                calendarKind: sharing.calendarKind,
                 access: .owner,
                 invitedAt: nil,
                 updatedAt: sharing.updatedAt,

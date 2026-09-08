@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Ort";
+"Video Call" = "Videoanruf";
+"Map Locations" = "Kartenorte";
+"End Repeat" = "Beenden";
+"On Date" = "Datum";
+"Custom…" = "Eigene …";
+"Attachments will be applied to all occurrences" = "Anhänge werden auf alle Vorkommen angewendet";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Füge die Wegzeit für dieses Ereignis zum Kalender hinzu. Diese Zeit wird bei den Hinweisen für das Ereignis berücksichtigt und im Kalender blockiert.";
+"Repeats %@" = "Wird %@ wiederholt";
+"10 minutes before" = "10 Minuten vorher";
+"2 hours before" = "2 Stunden vorher";
+"2 days before" = "2 Tage vorher";
+"1 week before" = "1 Woche vorher";
+"Every Day" = "Täglich";
+"Every Week" = "Wöchentlich";
+"Every Month" = "Monatlich";
+"Every Year" = "Jährlich";
+"Every 2 Weeks" = "Alle 2 Wochen";
+"Travel Time" = "Wegzeit";
+"Repeat" = "Wiederholung";
+"Second Alert" = "2. Hinweis";
+"Never" = "Nie";
+"None" = "Keine";
+"Add attachment…" = "Anhang hinzufügen …";
+
+/* App-owned calendars */
+"Event Details" = "Ereignisdetails";
+"Edit Event" = "Ereignis bearbeiten";
+"Delete Event" = "Ereignis löschen";
+"Delete Event?" = "Ereignis löschen?";
+"All-day" = "Ganztägig";
+"Starts" = "Beginn";
+"Alert" = "Hinweis";
+"URL" = "URL";
+"Notes" = "Notizen";
+"Title" = "Titel";
+"Location or Video Call" = "Ort oder Videoanruf";
+"At time of event" = "Zum Ereigniszeitpunkt";
+"5 minutes before" = "5 Minuten vorher";
+"15 minutes before" = "15 Minuten vorher";
+"30 minutes before" = "30 Minuten vorher";
+"1 hour before" = "1 Stunde vorher";
+"1 day before" = "1 Tag vorher";
+"Access" = "Zugriff";
+"Delete Calendar?" = "Kalender löschen?";
+"Add Local Calendar" = "Lokalen Kalender hinzufügen";
+"Local Calendars" = "Lokale Kalender";
+"No local calendars yet." = "Noch keine lokalen Kalender.";
+"Edit local calendar" = "Lokalen Kalender bearbeiten";
+"Share Event" = "Ereignis teilen";
+
 /* Preferences */
 "Language" = "Sprache";
 "Measurement Units" = "Maßeinheiten";

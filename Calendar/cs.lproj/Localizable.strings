@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Místo";
+"Video Call" = "Videohovor";
+"Map Locations" = "Polohy na mapě";
+"End Repeat" = "Konec opakování";
+"On Date" = "K datu";
+"Custom…" = "Vlastní…";
+"Attachments will be applied to all occurrences" = "Přílohy budou přidány ke všem výskytům události";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Přidejte čas cesty na tuto událost do svého kalendáře. Tento čas bude zohledněn v upozornění na událost a váš kalendář bude na zadaný čas zablokován.";
+"Repeats %@" = "Opakování: %@";
+"10 minutes before" = "10 minut předem";
+"2 hours before" = "2 hodinu předem";
+"2 days before" = "2 dny předem";
+"1 week before" = "1 týden předem";
+"Every Day" = "Denně";
+"Every Week" = "Týdenní";
+"Every Month" = "Měsíční";
+"Every Year" = "Ročně";
+"Every 2 Weeks" = "každý 2 týdny";
+"Travel Time" = "Čas cesty";
+"Repeat" = "Opakovat";
+"Second Alert" = "Další upozornění";
+"Never" = "Nikdy";
+"None" = "Žádný";
+"Add attachment…" = "Přidat přílohu…";
+
+/* App-owned calendars */
+"Event Details" = "Podrobnosti události";
+"Edit Event" = "Upravit událost";
+"Delete Event" = "Smazat událost";
+"Delete Event?" = "Smazat událost?";
+"All-day" = "Celý den";
+"Starts" = "Začátek";
+"Alert" = "Upozornění";
+"URL" = "URL";
+"Notes" = "Poznámky";
+"Title" = "Název";
+"Location or Video Call" = "Místo nebo videohovor";
+"At time of event" = "V čase události";
+"5 minutes before" = "5 minut předem";
+"15 minutes before" = "15 minut předem";
+"30 minutes before" = "30 minut předem";
+"1 hour before" = "1 hodinu předem";
+"1 day before" = "1 den předem";
+"Access" = "Přístup";
+"Delete Calendar?" = "Smazat kalendář?";
+"Add Local Calendar" = "Přidat místní kalendář";
+"Local Calendars" = "Místní kalendáře";
+"No local calendars yet." = "Zatím žádné místní kalendáře.";
+"Edit local calendar" = "Upravit místní kalendář";
+"Share Event" = "Sdílet událost";
+
 /* Preferences */
 "Language" = "Jazyk";
 "Measurement Units" = "Měrné jednotky";

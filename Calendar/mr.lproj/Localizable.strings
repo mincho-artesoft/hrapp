@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "स्थान";
+"Video Call" = "व्हिडिओ कॉल";
+"Map Locations" = "मॅप स्थान";
+"End Repeat" = "पुनरावृत्ती समाप्त करा";
+"On Date" = "ह्या दिनांकास";
+"Custom…" = "कस्टम…";
+"Attachments will be applied to all occurrences" = "अटॅचमेंट्स घडणाऱ्या सर्व घटनांना लागू होतील";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "ह्या इव्हेंटच्या प्रवासाचा वेळ तुमच्या दिनदर्शिकेमध्ये समाविष्ट करा. इव्हेंट अलर्ट हा वेळ लक्षात घेतील आणि तुमची दिनदर्शिका ह्या काळामध्ये ब्लॉक केली जाईल.";
+"Repeats %@" = "%@ पुनरावृत्ती होते";
+"10 minutes before" = "10 मिनिटे आधी";
+"2 hours before" = "2 तास आधी";
+"2 days before" = "2 दिवस आधी";
+"1 week before" = "1 आठवडा आधी";
+"Every Day" = "दररोज";
+"Every Week" = "आठवड्यातून";
+"Every Month" = "मासिक";
+"Every Year" = "दरवर्षी";
+"Every 2 Weeks" = "प्रत्येक 2 आठवडे";
+"Travel Time" = "प्रवासाची वेळ";
+"Repeat" = "पुन्हा करा";
+"Second Alert" = "दुसरा अलर्ट";
+"Never" = "कधीच नाही";
+"None" = "कोणतेही नाही";
+"Add attachment…" = "अटॅचमेंट समाविष्ट करा…";
+
+/* App-owned calendars */
+"Event Details" = "इव्हेंटचे तपशील";
+"Edit Event" = "इव्हेंट संपादित करा";
+"Delete Event" = "इव्हेंट हटवा";
+"Delete Event?" = "इव्हेंट हटवायचा?";
+"All-day" = "संपूर्ण दिवस";
+"Starts" = "सुरू";
+"Alert" = "सूचना";
+"URL" = "URL";
+"Notes" = "नोट्स";
+"Title" = "शीर्षक";
+"Location or Video Call" = "स्थान किंवा व्हिडिओ कॉल";
+"At time of event" = "इव्हेंटच्या वेळी";
+"5 minutes before" = "5 मिनिटे आधी";
+"15 minutes before" = "15 मिनिटे आधी";
+"30 minutes before" = "30 मिनिटे आधी";
+"1 hour before" = "1 तास आधी";
+"1 day before" = "1 दिवस आधी";
+"Access" = "प्रवेश";
+"Delete Calendar?" = "कॅलेंडर हटवायचे?";
+"Add Local Calendar" = "स्थानिक कॅलेंडर जोडा";
+"Local Calendars" = "स्थानिक कॅलेंडर";
+"No local calendars yet." = "अद्याप कोणतेही स्थानिक कॅलेंडर नाही.";
+"Edit local calendar" = "स्थानिक कॅलेंडर संपादित करा";
+"Share Event" = "इव्हेंट शेअर करा";
+
 /* Preferences */
 "Language" = "भाषा";
 "Measurement Units" = "मोजमापाची एकके";

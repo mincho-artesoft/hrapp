@@ -1,9 +1,8 @@
 import SwiftUI
-import EventKit
 
 struct YearMonthMiniView: View {
     let monthDate: Date
-    let eventsByDay: [Date: [EKEvent]]
+    let eventsByDay: [Date: [EventDescriptor]]
     let width: CGFloat
     let onMonthTapped: (Date) -> Void
 

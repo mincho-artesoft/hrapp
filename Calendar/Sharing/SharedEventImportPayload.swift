@@ -71,8 +71,16 @@ struct SharedEventImportPayload: Identifiable, Equatable {
         let scheme = url.scheme?.lowercased()
         let host = url.host?.lowercased()
         let isAppClipLink = scheme == "https" && host == "appclip.apple.com"
+        #if DEBUG
+        let serverInvitationHosts = [
+            "api.cloud-calendars.com",
+            "63yo3ore3c.execute-api.us-east-1.amazonaws.com"
+        ]
+        #else
+        let serverInvitationHosts = ["api.cloud-calendars.com"]
+        #endif
         let isServerInvitationLink = scheme == "https"
-            && host == "api.cloud-calendars.com"
+            && serverInvitationHosts.contains(host ?? "")
             && url.path == "/event-invites/open"
         let isFullAppHandoff = scheme == "cloudcalendars" && host == "shared-event"
 

@@ -1,17 +1,16 @@
 import SwiftUI
-import EventKit
 import UniformTypeIdentifiers
 
 struct DayCellView: View {
     let day: Date
     let currentMonth: Date
-    let events: [EKEvent]
+    let events: [EventDescriptor]
 
     /// Callback-и
     var onEventDropped: (String, Date) -> Void
     var onDayTap: (Date) -> Void
     var onDayLongPress: (Date) -> Void
-    var onEventTap: (EKEvent) -> Void
+    var onEventTap: (EventDescriptor) -> Void
 
     private let calendar = Calendar.current
 
@@ -47,11 +46,11 @@ struct DayCellView: View {
 
                 // Събития
                 if events.count <= 3 {
-                    ForEach(events, id: \.eventIdentifier) { event in
+                    ForEach(events, id: \.calendarGridIdentifier) { event in
                         eventCapsule(event)
                     }
                 } else {
-                    ForEach(events.prefix(3), id: \.eventIdentifier) { event in
+                    ForEach(events.prefix(3), id: \.calendarGridIdentifier) { event in
                         eventCapsule(event)
                     }
                     Text(localizedFormat("... +%d", events.count - 3))
@@ -73,20 +72,24 @@ struct DayCellView: View {
     }
 
     /// Капсулка за едно събитие
-    private func eventCapsule(_ event: EKEvent) -> some View {
-        let color = Color(UIColor(cgColor: event.calendar.cgColor ?? UIColor.systemGray.cgColor))
+    private func eventCapsule(_ event: EventDescriptor) -> some View {
+        let color = Color(uiColor: event.color)
+        let isReadOnly = (event as? AppLocalEventDescriptor)?.isReadOnly
+            ?? SharedInviteTracker.isReadOnly(event)
+        let isStruckThrough = (event as? AppLocalEventDescriptor)?.isCancelled
+            ?? SharedInviteTracker.shouldAppearStruckThrough(event)
 
         return HStack(spacing: 2) {
-            if SharedInviteTracker.isReadOnly(event) {
+            if isReadOnly {
                 Image(systemName: "lock.fill")
                     .font(.system(size: 7, weight: .semibold))
                     .accessibilityLabel(LocalizedStringKey("Read-only shared event"))
             }
 
-            Text(event.title)
+            Text(event.text)
                 .lineLimit(1)
                 .strikethrough(
-                    SharedInviteTracker.shouldAppearStruckThrough(event),
+                    isStruckThrough,
                     color: color
                 )
         }
@@ -101,7 +104,10 @@ struct DayCellView: View {
             .onTapGesture {
                 onEventTap(event)
             }
-            .modifier(DraggableModifier(event: event)) // ако ползвате draggable
+            .onDrag {
+                let identifier = event.calendarGridIdentifier
+                return NSItemProvider(object: identifier as NSString)
+            }
     }
 
     /// Обработка на drop (ако ползвате drag & drop)
@@ -125,5 +131,15 @@ struct DayCellView: View {
 
     private func isInCurrentMonth(_ date: Date) -> Bool {
         calendar.isDate(date, equalTo: currentMonth, toGranularity: .month)
+    }
+}
+
+private extension EventDescriptor {
+    var calendarGridIdentifier: String {
+        if let local = self as? AppLocalEventDescriptor { return local.eventID }
+        if let wrapper = self as? EKMultiDayWrapper {
+            return wrapper.realEvent.eventIdentifier ?? wrapper.realEvent.calendarItemIdentifier
+        }
+        return "descriptor:\(ObjectIdentifier(self).hashValue)"
     }
 }

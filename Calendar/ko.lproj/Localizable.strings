@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "위치";
+"Video Call" = "영상 통화";
+"Map Locations" = "지도 위치";
+"End Repeat" = "반복 종료";
+"On Date" = "날짜";
+"Custom…" = "사용자화…";
+"Attachments will be applied to all occurrences" = "첨부 파일이 반복되는 모든 이벤트에 적용됩니다.";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "이 이벤트의 이동 시간을 사용자의 캘린더에 추가하십시오. 이벤트 알림은 이동 시간을 고려해 작동하며 이동 시간 동안 캘린더에는 바쁨으로 표시됩니다.";
+"Repeats %@" = "반복: %@";
+"10 minutes before" = "10분 전";
+"2 hours before" = "2시간 전";
+"2 days before" = "2일 전";
+"1 week before" = "1주 전";
+"Every Day" = "매일";
+"Every Week" = "주간";
+"Every Month" = "월간";
+"Every Year" = "매년";
+"Every 2 Weeks" = "2주마다";
+"Travel Time" = "이동 시간";
+"Repeat" = "반복";
+"Second Alert" = "두 번째 알림";
+"Never" = "안 함";
+"None" = "없음";
+"Add attachment…" = "첨부 파일 추가…";
+
+/* App-owned calendars */
+"Event Details" = "이벤트 세부사항";
+"Edit Event" = "이벤트 편집";
+"Delete Event" = "이벤트 삭제";
+"Delete Event?" = "이벤트를 삭제할까요?";
+"All-day" = "하루 종일";
+"Starts" = "시작";
+"Alert" = "알림";
+"URL" = "URL";
+"Notes" = "메모";
+"Title" = "제목";
+"Location or Video Call" = "위치 또는 영상 통화";
+"At time of event" = "이벤트 시간";
+"5 minutes before" = "5분 전";
+"15 minutes before" = "15분 전";
+"30 minutes before" = "30분 전";
+"1 hour before" = "1시간 전";
+"1 day before" = "1일 전";
+"Access" = "접근 권한";
+"Delete Calendar?" = "캘린더를 삭제할까요?";
+"Add Local Calendar" = "로컬 캘린더 추가";
+"Local Calendars" = "로컬 캘린더";
+"No local calendars yet." = "아직 로컬 캘린더가 없습니다.";
+"Edit local calendar" = "로컬 캘린더 편집";
+"Share Event" = "이벤트 공유";
+
 /* Preferences */
 "Language" = "언어";
 "Measurement Units" = "측정 단위";

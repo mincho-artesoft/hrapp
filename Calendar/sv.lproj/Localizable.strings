@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Plats";
+"Video Call" = "Videosamtal";
+"Map Locations" = "Kartplatser";
+"End Repeat" = "Avsluta upprepning";
+"On Date" = "På datumet";
+"Custom…" = "Anpassa…";
+"Attachments will be applied to all occurrences" = "Bilagor används för alla förekomster";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Lägg till restid för den här aktiviteten på kalendern. Aktivitetspåminnelser tar hänsyn till den här tiden och din kalender blockeras även under restiden.";
+"Repeats %@" = "Upprepas %@";
+"10 minutes before" = "10 minuter före";
+"2 hours before" = "2 timmar före";
+"2 days before" = "2 dag före";
+"1 week before" = "1 dag före";
+"Every Day" = "Dagligen";
+"Every Week" = "Varje vecka";
+"Every Month" = "Månadsvis";
+"Every Year" = "Årligen";
+"Every 2 Weeks" = "Med intervall på 2 veckor";
+"Travel Time" = "Restid";
+"Repeat" = "Upprepa";
+"Second Alert" = "Påminnelse 2";
+"Never" = "Aldrig";
+"None" = "Ingen";
+"Add attachment…" = "Lägg till bilaga…";
+
+/* App-owned calendars */
+"Event Details" = "Händelsedetaljer";
+"Edit Event" = "Redigera aktivitet";
+"Delete Event" = "Radera händelse";
+"Delete Event?" = "Radera händelsen?";
+"All-day" = "Hela dagen";
+"Starts" = "Börjar";
+"Alert" = "Notis";
+"URL" = "URL";
+"Notes" = "Anteckningar";
+"Title" = "Titel";
+"Location or Video Call" = "Plats eller videosamtal";
+"At time of event" = "När händelsen börjar";
+"5 minutes before" = "5 minuter före";
+"15 minutes before" = "15 minuter före";
+"30 minutes before" = "30 minuter före";
+"1 hour before" = "1 timme före";
+"1 day before" = "1 dag före";
+"Access" = "Åtkomst";
+"Delete Calendar?" = "Radera kalender?";
+"Add Local Calendar" = "Lägg till lokal kalender";
+"Local Calendars" = "Lokala kalendrar";
+"No local calendars yet." = "Inga lokala kalendrar ännu.";
+"Edit local calendar" = "Redigera lokal kalender";
+"Share Event" = "Dela händelse";
+
 /* Preferences */
 "Language" = "Språk";
 "Measurement Units" = "Måttenheter";

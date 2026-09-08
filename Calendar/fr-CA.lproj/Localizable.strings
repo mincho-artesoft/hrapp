@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Lieu";
+"Video Call" = "Appel vidéo";
+"Map Locations" = "Emplacements sur le plan";
+"End Repeat" = "Fin de la récurrence";
+"On Date" = "le";
+"Custom…" = "Personnaliser…";
+"Attachments will be applied to all occurrences" = "Les pièces jointes seront appliquées à toutes les occurrences.";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Ajoutez la durée du trajet à cet événement du calendrier. Cette durée, pendant laquelle votre calendrier indiquera que vous n’êtes pas disponible, sera prise en compte par les alertes d’événement.";
+"Repeats %@" = "Se répète %@";
+"10 minutes before" = "10 minutes avant";
+"2 hours before" = "2 heures avant";
+"2 days before" = "2 jours avant";
+"1 week before" = "1 semaine avant";
+"Every Day" = "Quotidien";
+"Every Week" = "Hebdomadaire";
+"Every Month" = "Mensuel";
+"Every Year" = "Annuel";
+"Every 2 Weeks" = "Toutes les 2 semaines";
+"Travel Time" = "Temps de trajet";
+"Repeat" = "Récurrence";
+"Second Alert" = "Deuxième alerte";
+"Never" = "Jamais";
+"None" = "Aucune";
+"Add attachment…" = "Ajouter une pièce jointe…";
+
+/* App-owned calendars */
+"Event Details" = "Détails de l’événement";
+"Edit Event" = "Modifier l’événement";
+"Delete Event" = "Supprimer l’événement";
+"Delete Event?" = "Supprimer l’événement ?";
+"All-day" = "Toute la journée";
+"Starts" = "Début";
+"Alert" = "Alerte";
+"URL" = "URL";
+"Notes" = "Notes";
+"Title" = "Titre";
+"Location or Video Call" = "Lieu ou appel vidéo";
+"At time of event" = "À l’heure de l’événement";
+"5 minutes before" = "5 minutes avant";
+"15 minutes before" = "15 minutes avant";
+"30 minutes before" = "30 minutes avant";
+"1 hour before" = "1 heure avant";
+"1 day before" = "1 jour avant";
+"Access" = "Accès";
+"Delete Calendar?" = "Supprimer le calendrier ?";
+"Add Local Calendar" = "Ajouter un calendrier local";
+"Local Calendars" = "Calendriers locaux";
+"No local calendars yet." = "Aucun calendrier local pour le moment.";
+"Edit local calendar" = "Modifier le calendrier local";
+"Share Event" = "Partager l’événement";
+
 /* Preferences */
 "Language" = "Langue";
 "Measurement Units" = "Unités de mesure";

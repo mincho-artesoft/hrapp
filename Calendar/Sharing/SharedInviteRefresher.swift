@@ -353,8 +353,12 @@ enum SharedInviteRefresher {
             eventChanged = true
         }
 
+        let supplementalChanged = EventKitEventSupplementStore.update(
+            details: remote.details,
+            for: event
+        )
         let trackingChanged = updated != invite
-        guard eventChanged || trackingChanged else { return false }
+        guard eventChanged || trackingChanged || supplementalChanged else { return false }
 
         do {
             if eventChanged {

@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Posizione";
+"Video Call" = "Videochiamata";
+"Map Locations" = "Posizioni sulla mappa";
+"End Repeat" = "Fine ripetizione";
+"On Date" = "In data";
+"Custom…" = "Personalizza…";
+"Attachments will be applied to all occurrences" = "Gli allegati verranno inclusi in tutte le ricorrenze";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Aggiungi il tempo di percorrenza per questo evento al tuo calendario, gli avvisi ne terranno conto e non risulterai disponibile sul calendario.";
+"Repeats %@" = "Ripetizione: %@";
+"10 minutes before" = "10 minuti prima";
+"2 hours before" = "2 ore prima";
+"2 days before" = "2 giorni prima";
+"1 week before" = "1 settimana prima";
+"Every Day" = "Giornaliero";
+"Every Week" = "Settimanale";
+"Every Month" = "Mensile";
+"Every Year" = "Annuale";
+"Every 2 Weeks" = "Ogni 2 settimane";
+"Travel Time" = "Tempo di percorrenza";
+"Repeat" = "Ripeti";
+"Second Alert" = "Secondo avviso";
+"Never" = "Mai";
+"None" = "Nessuno";
+"Add attachment…" = "Aggiungi allegato…";
+
+/* App-owned calendars */
+"Event Details" = "Dettagli evento";
+"Edit Event" = "Modifica evento";
+"Delete Event" = "Elimina evento";
+"Delete Event?" = "Eliminare l’evento?";
+"All-day" = "Tutto il giorno";
+"Starts" = "Inizio";
+"Alert" = "Avviso";
+"URL" = "URL";
+"Notes" = "Note";
+"Title" = "Titolo";
+"Location or Video Call" = "Posizione o videochiamata";
+"At time of event" = "All’ora dell’evento";
+"5 minutes before" = "5 minuti prima";
+"15 minutes before" = "15 minuti prima";
+"30 minutes before" = "30 minuti prima";
+"1 hour before" = "1 ora prima";
+"1 day before" = "1 giorno prima";
+"Access" = "Accesso";
+"Delete Calendar?" = "Eliminare il calendario?";
+"Add Local Calendar" = "Aggiungi calendario locale";
+"Local Calendars" = "Calendari locali";
+"No local calendars yet." = "Nessun calendario locale.";
+"Edit local calendar" = "Modifica calendario locale";
+"Share Event" = "Condividi evento";
+
 /* Preferences */
 "Language" = "Lingua";
 "Measurement Units" = "Unità di misura";

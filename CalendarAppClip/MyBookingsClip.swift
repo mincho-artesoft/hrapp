@@ -57,7 +57,13 @@ private struct ClipBookingsResponse: Decodable {
 }
 
 enum ClipBookingsAPI {
+    #if DEBUG
+    static let base = URL(
+        string: "https://63yo3ore3c.execute-api.us-east-1.amazonaws.com"
+    )!
+    #else
     static let base = URL(string: "https://api.cloud-calendars.com")!
+    #endif
 
     /// Bookings carry ISO-8601 instants, some with fractional seconds and some
     /// without; parse both. The formatters are built inside the closure so nothing

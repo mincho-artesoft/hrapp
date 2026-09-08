@@ -602,4 +602,495 @@ private extension WeatherKitViewModel {
     }
 }
 
+/// Debug-only, launch-argument-driven reset used to put the two sharing
+/// simulators on the same deterministic calendar data without touching any
+/// other simulator. The normal app never enters this path.
+@MainActor
+enum SimulatorCalendarTestSeeder {
+    static let requestKey = "ResetAndSeedSimulatorCalendars"
+    static let resultKey = "SimulatorCalendarSeedResult"
+
+    static var isRequested: Bool {
+        UserDefaults.standard.bool(forKey: requestKey)
+    }
+
+    static func run() async -> String {
+        guard isRequested else { return "SKIP not requested" }
+
+        let eventStore = CalendarViewModel.shared.eventStore
+        do {
+            if EKEventStore.authorizationStatus(for: .event) != .fullAccess {
+                guard try await eventStore.requestFullAccessToEvents() else {
+                    return finish("FAIL EventKit access denied")
+                }
+            }
+
+            let eventKitResult = try await resetAndSeedEventKit(eventStore)
+            let localResult = resetAndSeedAppLocal()
+            clearStaleLocalSharingMetadata()
+
+            let selectedIDs = Set(
+                eventKitResult.calendarIDs + localResult.calendarIDs
+            )
+            CalendarViewModel.shared.selectedCalendarIDs = selectedIDs
+            UserDefaults.standard.set(
+                Array(selectedIDs).sorted(),
+                forKey: "SelectedCalendarIDsKey"
+            )
+            CalendarViewModel.shared.reloadCalendars()
+
+            return finish(
+                "PASS eventkitCalendars=\(eventKitResult.calendarIDs.count) "
+                    + "eventkitEvents=\(eventKitResult.eventCount) "
+                    + "localCalendars=\(localResult.calendarIDs.count) "
+                    + "localEvents=\(localResult.eventCount)"
+            )
+        } catch {
+            return finish("FAIL \(error.localizedDescription)")
+        }
+    }
+
+    private static func finish(_ result: String) -> String {
+        UserDefaults.standard.set(result, forKey: resultKey)
+        UserDefaults.standard.synchronize()
+        print("[SimulatorCalendarTestSeeder] \(result)")
+        return result
+    }
+
+    private static func resetAndSeedEventKit(
+        _ eventStore: EKEventStore
+    ) async throws -> (calendarIDs: [String], eventCount: Int) {
+        eventStore.refreshSourcesIfNecessary()
+        // EventKit can expose calendars before their items have arrived from
+        // the simulator's Calendar daemon. Give the daemon a short settling
+        // window so the destructive pass cannot miss old events.
+        try await Task.sleep(for: .seconds(2))
+        let writableCalendars = eventStore.calendars(for: .event)
+            .filter(\.allowsContentModifications)
+        let keeper = eventStore.defaultCalendarForNewEvents ?? writableCalendars.first
+        guard let keeper else {
+            throw NSError(
+                domain: "SimulatorCalendarTestSeeder",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "No writable EventKit calendar"]
+            )
+        }
+
+        var gregorian = Calendar(identifier: .gregorian)
+        gregorian.timeZone = TimeZone(identifier: "Europe/Sofia") ?? .current
+        // EventKit event predicates have a bounded reliable interval. Querying
+        // one giant range can return no items even though the calendar is not
+        // empty, so clear in three-year windows instead.
+        let removalRanges: [(Date, Date)] = stride(from: 2000, through: 2033, by: 3)
+            .compactMap { year in
+                guard let start = gregorian.date(from: DateComponents(
+                    year: year,
+                    month: 1,
+                    day: 1
+                )), let end = gregorian.date(from: DateComponents(
+                    year: min(year + 3, 2036),
+                    month: 1,
+                    day: 1
+                )) else { return nil }
+                return (start, end)
+            }
+
+        // Repeat after a refresh because simulator iCloud can deliver another
+        // page of items immediately after the first commit. Do not de-duplicate
+        // by calendarItemIdentifier: older simulator records can temporarily
+        // report the same empty identifier even though they are distinct.
+        for pass in 0..<3 {
+            let calendars = eventStore.calendars(for: .event)
+                .filter(\.allowsContentModifications)
+            let existingEvents = removalRanges.flatMap { start, end in
+                eventStore.events(matching: eventStore.predicateForEvents(
+                    withStart: start,
+                    end: end,
+                    calendars: calendars
+                ))
+            }
+            if existingEvents.isEmpty { break }
+            for event in existingEvents {
+                EventKitEventSupplementStore.remove(for: event)
+                try? eventStore.remove(
+                    event,
+                    span: event.hasRecurrenceRules ? .futureEvents : .thisEvent,
+                    commit: false
+                )
+            }
+            try eventStore.commit()
+            eventStore.refreshSourcesIfNecessary()
+            if pass < 2 { try await Task.sleep(for: .milliseconds(500)) }
+        }
+
+        for calendar in writableCalendars
+        where calendar.calendarIdentifier != keeper.calendarIdentifier {
+            try eventStore.removeCalendar(calendar, commit: false)
+        }
+        try eventStore.commit()
+
+        keeper.title = "Work"
+        keeper.cgColor = UIColor.systemBlue.cgColor
+        try eventStore.saveCalendar(keeper, commit: true)
+
+        func makeCalendar(_ title: String, _ color: UIColor) throws -> EKCalendar {
+            let calendar = EKCalendar(for: .event, eventStore: eventStore)
+            calendar.title = title
+            calendar.cgColor = color.cgColor
+            calendar.source = keeper.source
+            try eventStore.saveCalendar(calendar, commit: true)
+            return calendar
+        }
+
+        let personal = try makeCalendar("Personal", .systemGreen)
+        let team = try makeCalendar("Team", .systemOrange)
+        let calendars = [keeper, personal, team]
+        let dayStart = gregorian.startOfDay(for: Date())
+
+        func date(day: Int = 0, hour: Int, minute: Int = 0) -> Date {
+            let shifted = gregorian.date(byAdding: .day, value: day, to: dayStart) ?? dayStart
+            return gregorian.date(
+                bySettingHour: hour,
+                minute: minute,
+                second: 0,
+                of: shifted
+            ) ?? shifted
+        }
+
+        @discardableResult
+        func makeEvent(
+            _ title: String,
+            calendar: EKCalendar,
+            start: Date,
+            end: Date,
+            allDay: Bool = false,
+            location: String = "",
+            notes: String = "",
+            url: String? = nil,
+            alarms: [TimeInterval] = [],
+            recurrence: EKRecurrenceRule? = nil
+        ) throws -> EKEvent {
+            let event = EKEvent(eventStore: eventStore)
+            event.title = title
+            event.calendar = calendar
+            event.startDate = start
+            event.endDate = end
+            event.isAllDay = allDay
+            event.timeZone = gregorian.timeZone
+            event.location = location
+            event.notes = notes
+            event.url = url.flatMap(URL.init(string:))
+            event.alarms = alarms.map(EKAlarm.init(relativeOffset:))
+            if let recurrence { event.recurrenceRules = [recurrence] }
+            try eventStore.save(
+                event,
+                span: recurrence == nil ? .thisEvent : .futureEvents,
+                commit: false
+            )
+            return event
+        }
+
+        _ = try makeEvent(
+            "Project Milestone",
+            calendar: team,
+            start: dayStart,
+            end: gregorian.date(byAdding: .day, value: 1, to: dayStart)!,
+            allDay: true,
+            notes: "Shared all-day test event"
+        )
+        _ = try makeEvent(
+            "Morning Stand-up",
+            calendar: team,
+            start: date(hour: 8, minute: 30),
+            end: date(hour: 9),
+            location: "Meeting Room A",
+            alarms: [-600]
+        )
+        _ = try makeEvent(
+            "Product Planning",
+            calendar: keeper,
+            start: date(hour: 9),
+            end: date(hour: 10, minute: 30),
+            location: "Sofia Tech Park",
+            notes: "Review roadmap, owners, and the release checklist.",
+            url: "https://cloud-calendars.com/test",
+            alarms: [-900, -86_400]
+        )
+        _ = try makeEvent(
+            "Design Review",
+            calendar: team,
+            start: date(hour: 9, minute: 30),
+            end: date(hour: 11),
+            location: "Design Studio"
+        )
+        _ = try makeEvent(
+            "Lunch with Alex",
+            calendar: personal,
+            start: date(hour: 12),
+            end: date(hour: 13),
+            location: "Sofia Center"
+        )
+        _ = try makeEvent(
+            "Client Call",
+            calendar: keeper,
+            start: date(hour: 14),
+            end: date(hour: 15, minute: 30),
+            location: "Video Call",
+            notes: "Prepare the final proposal before the call."
+        )
+        // Dense reference matrix around Client Call. It deliberately covers
+        // same-calendar underlays, cross-calendar overlaps, identical starts,
+        // a nested 30-minute item and an event that begins on another event's
+        // end boundary. This lets the custom detail timeline be compared with
+        // Calendar.app using the exact same EventKit records.
+        _ = try makeEvent(
+            "Work Underlay",
+            calendar: keeper,
+            start: date(hour: 13),
+            end: date(hour: 17),
+            location: "Long same-calendar event"
+        )
+        _ = try makeEvent(
+            "Team Underlay",
+            calendar: team,
+            start: date(hour: 13, minute: 30),
+            end: date(hour: 17),
+            location: "Long cross-calendar event"
+        )
+        _ = try makeEvent(
+            "Same Start",
+            calendar: team,
+            start: date(hour: 14),
+            end: date(hour: 15, minute: 30)
+        )
+        _ = try makeEvent(
+            "Nested 30 Minutes",
+            calendar: personal,
+            start: date(hour: 14, minute: 30),
+            end: date(hour: 15)
+        )
+        _ = try makeEvent(
+            "Boundary Follow-up",
+            calendar: personal,
+            start: date(hour: 15),
+            end: date(hour: 15, minute: 30)
+        )
+        _ = try makeEvent(
+            "Release Check",
+            calendar: team,
+            start: date(hour: 16),
+            end: date(hour: 16, minute: 30)
+        )
+        _ = try makeEvent(
+            "Weekly Review",
+            calendar: keeper,
+            start: date(day: 1, hour: 10),
+            end: date(day: 1, hour: 11),
+            recurrence: EKRecurrenceRule(
+                recurrenceWith: .weekly,
+                interval: 1,
+                end: nil
+            )
+        )
+        _ = try makeEvent(
+            "Previous Day Retrospective",
+            calendar: team,
+            start: date(day: -1, hour: 15),
+            end: date(day: -1, hour: 16)
+        )
+        _ = try makeEvent(
+            "Two-Day Conference",
+            calendar: keeper,
+            start: date(day: -1, hour: 17),
+            end: date(day: 1, hour: 19),
+            location: "Sofia Expo Center",
+            notes: "Multi-day test event lasting longer than 24 hours."
+        )
+        _ = try makeEvent(
+            "Early Coffee",
+            calendar: personal,
+            start: date(day: 1, hour: 7, minute: 45),
+            end: date(day: 1, hour: 8)
+        )
+        _ = try makeEvent(
+            "Product Workshop",
+            calendar: team,
+            start: date(day: 2, hour: 10),
+            end: date(day: 2, hour: 12),
+            location: "Workshop Hall"
+        )
+        _ = try makeEvent(
+            "Personal Appointment",
+            calendar: personal,
+            start: date(day: 3, hour: 17),
+            end: date(day: 3, hour: 17, minute: 45)
+        )
+        _ = try makeEvent(
+            "Roadmap Follow-up",
+            calendar: keeper,
+            start: date(day: 5, hour: 13),
+            end: date(day: 5, hour: 14)
+        )
+        try eventStore.commit()
+        return (calendars.map(\.calendarIdentifier), 19)
+    }
+
+    private static func resetAndSeedAppLocal() -> (
+        calendarIDs: [String],
+        eventCount: Int
+    ) {
+        let store = AppLocalCalendarStore.shared
+        for calendar in store.calendars {
+            store.removeCalendar(id: calendar.id)
+        }
+
+        let projectsID = "app-local:test-projects"
+        let personalID = "app-local:test-personal"
+        store.upsertCalendar(AppLocalCalendarRecord(
+            id: projectsID,
+            title: "Local Projects",
+            colorHex: "#AF52DE"
+        ))
+        store.upsertCalendar(AppLocalCalendarRecord(
+            id: personalID,
+            title: "Local Personal",
+            colorHex: "#FF2D55"
+        ))
+
+        var gregorian = Calendar(identifier: .gregorian)
+        gregorian.timeZone = TimeZone(identifier: "Europe/Sofia") ?? .current
+        let dayStart = gregorian.startOfDay(for: Date())
+        func date(day: Int = 0, hour: Int, minute: Int = 0) -> Date {
+            let shifted = gregorian.date(byAdding: .day, value: day, to: dayStart) ?? dayStart
+            return gregorian.date(
+                bySettingHour: hour,
+                minute: minute,
+                second: 0,
+                of: shifted
+            ) ?? shifted
+        }
+
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-planning",
+            calendarID: projectsID,
+            title: "Local Planning",
+            startDate: date(hour: 10),
+            endDate: date(hour: 11, minute: 30),
+            location: "Project Room",
+            notes: "Editable local event with an attachment and alert.",
+            urlString: "https://cloud-calendars.com/local-test",
+            timeZoneIdentifier: gregorian.timeZone.identifier,
+            alarms: [AppLocalEventAlarm(relativeOffset: -900)],
+            structuredLocation: SharedEventLocation(
+                title: "Project Room",
+                latitude: 42.6977,
+                longitude: 23.3219,
+                radius: 0
+            ),
+            attachments: [AppLocalEventAttachment(
+                id: "test-agenda-attachment",
+                fileName: "agenda.txt",
+                contentType: "text/plain",
+                dataBase64: "VGVzdCBhZ2VuZGE="
+            )]
+        ))
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-overlap",
+            calendarID: projectsID,
+            title: "Local Engineering Sync",
+            startDate: date(hour: 10, minute: 30),
+            endDate: date(hour: 11),
+            location: "Online"
+        ))
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-gym",
+            calendarID: personalID,
+            title: "Gym",
+            startDate: date(hour: 18),
+            endDate: date(hour: 19)
+        ))
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-tomorrow",
+            calendarID: projectsID,
+            title: "Tomorrow Follow-up",
+            startDate: date(day: 1, hour: 13),
+            endDate: date(day: 1, hour: 13, minute: 30)
+        ))
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-retro",
+            calendarID: projectsID,
+            title: "Local Retrospective",
+            startDate: date(day: -2, hour: 11),
+            endDate: date(day: -2, hour: 12)
+        ))
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-offsite",
+            calendarID: projectsID,
+            title: "Local Multi-Day Offsite",
+            startDate: date(day: 1, hour: 15),
+            endDate: date(day: 3, hour: 18),
+            location: "Borovets",
+            notes: "Local multi-day test event lasting longer than 24 hours."
+        ))
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-breakfast",
+            calendarID: personalID,
+            title: "Breakfast",
+            startDate: date(day: 2, hour: 8, minute: 30),
+            endDate: date(day: 2, hour: 9)
+        ))
+        store.saveEvent(AppLocalEventRecord(
+            id: "app-local-event:test-local-day-off",
+            calendarID: personalID,
+            title: "Local Day Off",
+            startDate: gregorian.date(byAdding: .day, value: 4, to: dayStart) ?? dayStart,
+            endDate: gregorian.date(byAdding: .day, value: 5, to: dayStart) ?? dayStart,
+            isAllDay: true
+        ))
+        return ([projectsID, personalID], 8)
+    }
+
+    private static func clearStaleLocalSharingMetadata() {
+        let defaults = UserDefaults.standard
+        [
+            "UnifiedEventEditorEventKitFixtureID",
+            "EventEditorReferencePreview",
+            "EventEditorReferenceMode",
+            "EventEditorReferenceKind",
+            "EventEditorReferenceOverlap",
+            "EventEditorReferenceDenseTimeline",
+            "sharedInvites.tracked",
+            "eventShare.sentEvents.v1",
+            "eventShare.sentEventsMigrated.v1",
+            "eventShare.shareIDsByEvent",
+            "SharedICloudCalendarLocalIdentifiers",
+            "SharedICloudCalendarLocalEventIdentifiers.v1",
+            "SharedICloudCalendarOwnedIdentifiers.v1",
+            "SharedICloudCalendarRevokedShareIDs.v1",
+            "SharedICloudCalendarAccessByShareID.v1",
+            "SharedICloudCalendarSyncBaselines.v1",
+            "SharedICloudCalendarOwnedSyncBaselines.v1",
+            "SharedICloudCalendarLocalColorOverrides.v1",
+            "SharedICloudCalendarRemovedLocally.v1"
+        ].forEach(defaults.removeObject(forKey:))
+    }
+}
+
+@MainActor
+struct SimulatorCalendarTestSeedView: View {
+    @State private var status = "Preparing identical test calendars…"
+
+    var body: some View {
+        VStack(spacing: 16) {
+            ProgressView()
+            Text(status)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 24)
+        }
+        .task {
+            status = await SimulatorCalendarTestSeeder.run()
+        }
+    }
+}
+
 #endif

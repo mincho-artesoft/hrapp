@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "ଲୋକେଶନ୍‌";
+"Video Call" = "ଭିଡିଓ କଲ୍";
+"Map Locations" = "ମ୍ୟାପ୍ ଲୋକେଶନ୍";
+"End Repeat" = "ପୁନରାବୃତ୍ତି ସମାପ୍ତ କରନ୍ତୁ";
+"On Date" = "ତାରିଖରେ";
+"Custom…" = "କଷ୍ଟମ୍…";
+"Attachments will be applied to all occurrences" = "ଆଟାଚ୍‌ମେଣ୍ଟ୍‌ଗୁଡ଼ିକୁ ସମସ୍ତ ପୁନରାବୃତ୍ତିରେ ଲାଗୁ କରାଯିବ";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "ଏହି ଇଭେଣ୍ଟ୍ ପାଇଁ ଆପଣଙ୍କ କ୍ୟାଲେଣ୍ଡର୍‌ରେ ଯାତ୍ରା ସମୟ ଯୋଡ଼ନ୍ତୁ। ଇଭେଣ୍ଟ୍‌ ଆଲର୍ଟ୍‌ ଦ୍ୱାରା ଏହି ସମୟକୁ ଧ୍ୟାନରେ ରଖାଯିବ ଏବଂ ଏହି ସମୟରେ ଆପଣଙ୍କ କ୍ୟାଲେଣ୍ଡର୍‌କୁ ବ୍ଲକ୍ ରଖାଯିବ।";
+"Repeats %@" = "%@ ପୁନରାବୃତ୍ତି ହୋଇଥାଏ";
+"10 minutes before" = "10 ମିନିଟ୍ ପୂର୍ବରୁ";
+"2 hours before" = "2 ଘଣ୍ଟା ପୂର୍ବରୁ";
+"2 days before" = "2 ଦିନ ପୂର୍ବରୁ";
+"1 week before" = "1 ସପ୍ତାହ ପୂର୍ବରୁ";
+"Every Day" = "ଦୈନିକ";
+"Every Week" = "ସାପ୍ତାହିକ";
+"Every Month" = "ମାସିକ";
+"Every Year" = "ବାର୍ଷିକ";
+"Every 2 Weeks" = "ପ୍ରତ୍ୟେକ 2 ସପ୍ତାହ";
+"Travel Time" = "ଯାତ୍ରା ସମୟ";
+"Repeat" = "ପୁନରାବୃତ୍ତି କରନ୍ତୁ";
+"Second Alert" = "ଦ୍ୱିତୀୟ ଆଲର୍ଟ୍‌";
+"Never" = "କଦାପି ନୁହେଁ";
+"None" = "କୌଣସିଟି ନୁହେଁ";
+"Add attachment…" = "ଆଟାଚ୍‌ମେଣ୍ଟ୍ ଯୋଡ଼ନ୍ତୁ…";
+
+/* App-owned calendars */
+"Event Details" = "ଇଭେଣ୍ଟ ବିବରଣୀ";
+"Edit Event" = "ଇଭେଣ୍ଟ ସମ୍ପାଦନ କରନ୍ତୁ";
+"Delete Event" = "ଇଭେଣ୍ଟ ବିଲୋପ କରନ୍ତୁ";
+"Delete Event?" = "ଇଭେଣ୍ଟ ବିଲୋପ କରିବେ?";
+"All-day" = "ସାରା ଦିନ";
+"Starts" = "ଆରମ୍ଭ";
+"Alert" = "ସତର୍କତା";
+"URL" = "URL";
+"Notes" = "ଟିପ୍ପଣୀ";
+"Title" = "ଶୀର୍ଷକ";
+"Location or Video Call" = "ସ୍ଥାନ କିମ୍ବା ଭିଡିଓ କଲ୍";
+"At time of event" = "ଇଭେଣ୍ଟ ସମୟରେ";
+"5 minutes before" = "5 ମିନିଟ୍ ପୂର୍ବରୁ";
+"15 minutes before" = "15 ମିନିଟ୍ ପୂର୍ବରୁ";
+"30 minutes before" = "30 ମିନିଟ୍ ପୂର୍ବରୁ";
+"1 hour before" = "1 ଘଣ୍ଟା ପୂର୍ବରୁ";
+"1 day before" = "1 ଦିନ ପୂର୍ବରୁ";
+"Access" = "ଆକ୍ସେସ୍";
+"Delete Calendar?" = "କ୍ୟାଲେଣ୍ଡର ବିଲୋପ କରିବେ?";
+"Add Local Calendar" = "ସ୍ଥାନୀୟ କ୍ୟାଲେଣ୍ଡର ଯୋଡ଼ନ୍ତୁ";
+"Local Calendars" = "ସ୍ଥାନୀୟ କ୍ୟାଲେଣ୍ଡରଗୁଡ଼ିକ";
+"No local calendars yet." = "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ସ୍ଥାନୀୟ କ୍ୟାଲେଣ୍ଡର ନାହିଁ।";
+"Edit local calendar" = "ସ୍ଥାନୀୟ କ୍ୟାଲେଣ୍ଡର ସମ୍ପାଦନ କରନ୍ତୁ";
+"Share Event" = "ଇଭେଣ୍ଟ ସେୟାର କରନ୍ତୁ";
+
 /* Preferences */
 "Language" = "ଭାଷା";
 "Measurement Units" = "ମାପ ଏକକ";

@@ -159,6 +159,18 @@ final class AppPreferences: ObservableObject {
             : .leftToRight
     }
 
+    /// Locale used by SwiftUI controls. Besides the selected language and
+    /// numeral system, it carries the explicit 12/24-hour override so native
+    /// DatePicker controls update together with the rest of the app.
+    var presentationLocale: Locale {
+        guard timeFormat != .system else { return interfaceLocale }
+        var components = Locale.Components(locale: interfaceLocale)
+        components.hourCycle = timeFormat == .twelveHour
+            ? .oneToTwelve
+            : .zeroToTwentyThree
+        return Locale(components: components)
+    }
+
     private init() {
         let defaults = UserDefaults.standard
         let storedLanguage = defaults.string(forKey: AppPreferenceKey.language)
@@ -391,7 +403,7 @@ final class AppPreferences: ObservableObject {
             resolvedLocale = locale
         }
 
-        return resolvedLocale.usingAppNumeralSystem
+        return resolvedLocale.usingAppNumeralSystem.usingAppCalendar
     }
 
     private static func systemTemperatureUnit(for locale: Locale) -> UnitTemperature {

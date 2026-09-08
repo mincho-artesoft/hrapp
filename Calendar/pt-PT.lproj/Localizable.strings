@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Localização";
+"Video Call" = "Videochamada";
+"Map Locations" = "Localizações no mapa";
+"End Repeat" = "Parar repetição";
+"On Date" = "No dia";
+"Custom…" = "Personalizada…";
+"Attachments will be applied to all occurrences" = "Os anexos serão aplicados a todas as ocorrências.";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Adicione tempo de viagem para este evento no seu calendário. Os avisos terão este tempo em consideração e aparecerá como ocupado.";
+"Repeats %@" = "Repete‑se %@";
+"10 minutes before" = "10 minutos antes";
+"2 hours before" = "2 horas antes";
+"2 days before" = "2 dias antes";
+"1 week before" = "1 semana antes";
+"Every Day" = "Diariamente";
+"Every Week" = "Semanalmente";
+"Every Month" = "Mensal";
+"Every Year" = "Anuais";
+"Every 2 Weeks" = "A cada 2 semanas";
+"Travel Time" = "Tempo de viagem";
+"Repeat" = "Repetir";
+"Second Alert" = "2.º aviso";
+"Never" = "Nunca";
+"None" = "Nenhum";
+"Add attachment…" = "Adicionar anexo…";
+
+/* App-owned calendars */
+"Event Details" = "Detalhes do evento";
+"Edit Event" = "Editar evento";
+"Delete Event" = "Apagar evento";
+"Delete Event?" = "Apagar evento?";
+"All-day" = "Dia inteiro";
+"Starts" = "Início";
+"Alert" = "Aviso";
+"URL" = "URL";
+"Notes" = "Notas";
+"Title" = "Título";
+"Location or Video Call" = "Local ou videochamada";
+"At time of event" = "À hora do evento";
+"5 minutes before" = "5 minutos antes";
+"15 minutes before" = "15 minutos antes";
+"30 minutes before" = "30 minutos antes";
+"1 hour before" = "1 hora antes";
+"1 day before" = "1 dia antes";
+"Access" = "Acesso";
+"Delete Calendar?" = "Apagar calendário?";
+"Add Local Calendar" = "Adicionar calendário local";
+"Local Calendars" = "Calendários locais";
+"No local calendars yet." = "Ainda não existem calendários locais.";
+"Edit local calendar" = "Editar calendário local";
+"Share Event" = "Partilhar evento";
+
 /* Preferences */
 "Language" = "Idioma";
 "Measurement Units" = "Unidades de medida";

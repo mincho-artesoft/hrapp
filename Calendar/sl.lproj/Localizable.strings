@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Lokacija";
+"Video Call" = "Videoklic";
+"Map Locations" = "Lokacije na zemljevidu";
+"End Repeat" = "Konec ponavljanja";
+"On Date" = "Na datum";
+"Custom…" = "Prilagojeno …";
+"Attachments will be applied to all occurrences" = "Priloge bodo uporabljene za vse ponovitve";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Dodajte čas potovanja za ta dogodek v koledar. Opozorila dogodkov bodo upoštevala ta čas in koledar bo v tem času blokiran.";
+"Repeats %@" = "Ponovitve: %@";
+"10 minutes before" = "10 minut prej";
+"2 hours before" = "2 uro prej";
+"2 days before" = "2 dneva prej";
+"1 week before" = "1 teden prej";
+"Every Day" = "Vsak dan";
+"Every Week" = "V tednu";
+"Every Month" = "mesečno";
+"Every Year" = "Letno";
+"Every 2 Weeks" = "Vsak 2 tedna";
+"Travel Time" = "Čas potovanja";
+"Repeat" = "Ponovitev";
+"Second Alert" = "Drugo opozorilo";
+"Never" = "Nikoli";
+"None" = "Brez";
+"Add attachment…" = "Dodaj prilogo …";
+
+/* App-owned calendars */
+"Event Details" = "Podrobnosti dogodka";
+"Edit Event" = "Uredi dogodek";
+"Delete Event" = "Izbriši dogodek";
+"Delete Event?" = "Izbrišem dogodek?";
+"All-day" = "Ves dan";
+"Starts" = "Začetek";
+"Alert" = "Opozorilo";
+"URL" = "URL";
+"Notes" = "Opombe";
+"Title" = "Naslov";
+"Location or Video Call" = "Lokacija ali videoklic";
+"At time of event" = "Ob času dogodka";
+"5 minutes before" = "5 minut prej";
+"15 minutes before" = "15 minut prej";
+"30 minutes before" = "30 minut prej";
+"1 hour before" = "1 uro prej";
+"1 day before" = "1 dan prej";
+"Access" = "Dostop";
+"Delete Calendar?" = "Izbrišem koledar?";
+"Add Local Calendar" = "Dodaj lokalni koledar";
+"Local Calendars" = "Lokalni koledarji";
+"No local calendars yet." = "Lokalnih koledarjev še ni.";
+"Edit local calendar" = "Uredi lokalni koledar";
+"Share Event" = "Deli dogodek";
+
 /* Preferences */
 "Language" = "Jezik";
 "Measurement Units" = "Merske enote";

@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "מיקום";
+"Video Call" = "שיחת וידאו";
+"Map Locations" = "מיקומים על המפה";
+"End Repeat" = "סיום החזרה";
+"On Date" = "בתאריך";
+"Custom…" = "התאמה אישית…";
+"Attachments will be applied to all occurrences" = "הקבצים יצורפו לכל המופעים";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "ניתן להוסיף משך נסיעה לאירוע זה בלוח השנה. התראות על אירועים יביאו בחשבון את זמן הנסיעה, ולוח השנה שלך ייחסם בזמן זה.";
+"Repeats %@" = "חזרה: %@";
+"10 minutes before" = "10 דקות לפני";
+"2 hours before" = "שעה לפני";
+"2 days before" = "יומיים אחד לפני";
+"1 week before" = "1 שבוע אחד לפני";
+"Every Day" = "יומי";
+"Every Week" = "שבועי";
+"Every Month" = "חודשי";
+"Every Year" = "מדי שנה";
+"Every 2 Weeks" = "כל ‏2 שבועות";
+"Travel Time" = "משך נסיעה";
+"Repeat" = "חזרה";
+"Second Alert" = "התראה שנייה";
+"Never" = "אף פעם";
+"None" = "ללא";
+"Add attachment…" = "צירוף קובץ…";
+
+/* App-owned calendars */
+"Event Details" = "פרטי האירוע";
+"Edit Event" = "עריכת אירוע";
+"Delete Event" = "מחיקת האירוע";
+"Delete Event?" = "למחוק את האירוע?";
+"All-day" = "יום שלם";
+"Starts" = "התחלה";
+"Alert" = "התראה";
+"URL" = "כתובת URL";
+"Notes" = "הערות";
+"Title" = "כותרת";
+"Location or Video Call" = "מיקום או שיחת וידאו";
+"At time of event" = "בזמן האירוע";
+"5 minutes before" = "5 דקות לפני";
+"15 minutes before" = "15 דקות לפני";
+"30 minutes before" = "30 דקות לפני";
+"1 hour before" = "שעה לפני";
+"1 day before" = "יום אחד לפני";
+"Access" = "גישה";
+"Delete Calendar?" = "למחוק את לוח השנה?";
+"Add Local Calendar" = "הוספת לוח שנה מקומי";
+"Local Calendars" = "לוחות שנה מקומיים";
+"No local calendars yet." = "אין עדיין לוחות שנה מקומיים.";
+"Edit local calendar" = "עריכת לוח שנה מקומי";
+"Share Event" = "שיתוף אירוע";
+
 /* Preferences */
 "Language" = "שפה";
 "Measurement Units" = "יחידות מידה";

@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "ಸ್ಥಳ";
+"Video Call" = "ವೀಡಿಯೊ ಕರೆ";
+"Map Locations" = "ನಕ್ಷೆಯ ಸ್ಥಳಗಳು";
+"End Repeat" = "ಪುನರಾವರ್ತನೆಯ ಮುಕ್ತಾಯ";
+"On Date" = "ದಿನಾಂಕದಂದು";
+"Custom…" = "ಕಸ್ಟಮ್…";
+"Attachments will be applied to all occurrences" = "ಅಟ್ಯಾಚ್‌ಮೆಂಟ್‌ಗಳನ್ನು ಎಲ್ಲಾ ಸಂಭವನೆಗಳಿಗೆ ಅನ್ವಯಿಸಲಾಗುತ್ತದೆ";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "ಈ ಇವೆಂಟ್‌ಗಾಗಿ ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಪ್ರಯಾಣದ ಸಮಯವನ್ನು ಸೇರಿಸಿ. ಇವೆಂಟ್ ಅಲರ್ಟ್‌ಗಳು ಈ ಸಮಯವನ್ನು ಪರಿಗಣಿಸುತ್ತವೆ ಮತ್ತು ಈ ಸಮಯದ ಅವಧಿಯಲ್ಲಿ ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್ ಅನ್ನು ಬ್ಲಾಕ್ ಮಾಡಲಾಗುತ್ತದೆ.";
+"Repeats %@" = "%@ ಪುನರಾವರ್ತನೆಯಾಗುತ್ತದೆ";
+"10 minutes before" = "10 ನಿಮಿಷ ಮೊದಲು";
+"2 hours before" = "2 ಗಂಟೆ ಮೊದಲು";
+"2 days before" = "2 ದಿನ ಮೊದಲು";
+"1 week before" = "1 ದಿನ ಮೊದಲು";
+"Every Day" = "ದಿನನಿತ್ಯ";
+"Every Week" = "ವಾರಕ್ಕೊಮ್ಮೆ";
+"Every Month" = "ಮಾಸಿಕ";
+"Every Year" = "ವಾರ್ಷಿಕ";
+"Every 2 Weeks" = "ಪ್ರತಿ 2 ವಾರಗಳು";
+"Travel Time" = "ಪ್ರಯಾಣದ ಸಮಯ";
+"Repeat" = "ಪುನರಾವರ್ತಿಸಿ";
+"Second Alert" = "ಎರಡನೇ ಅಲರ್ಟ್";
+"Never" = "ಎಂದಿಗೂ ಬೇಡ";
+"None" = "ಯಾವುದೂ ಅಲ್ಲ";
+"Add attachment…" = "ಅಟ್ಯಾಚ್‌ಮೆಂಟ್ ಸೇರಿಸಿ…";
+
+/* App-owned calendars */
+"Event Details" = "ಈವೆಂಟ್ ವಿವರಗಳು";
+"Edit Event" = "ಈವೆಂಟ್ ಸಂಪಾದಿಸಿ";
+"Delete Event" = "ಈವೆಂಟ್ ಅಳಿಸಿ";
+"Delete Event?" = "ಈವೆಂಟ್ ಅಳಿಸುವುದೇ?";
+"All-day" = "ಇಡೀ ದಿನ";
+"Starts" = "ಪ್ರಾರಂಭ";
+"Alert" = "ಎಚ್ಚರಿಕೆ";
+"URL" = "URL";
+"Notes" = "ಟಿಪ್ಪಣಿಗಳು";
+"Title" = "ಶೀರ್ಷಿಕೆ";
+"Location or Video Call" = "ಸ್ಥಳ ಅಥವಾ ವೀಡಿಯೊ ಕರೆ";
+"At time of event" = "ಈವೆಂಟ್ ಸಮಯದಲ್ಲಿ";
+"5 minutes before" = "5 ನಿಮಿಷ ಮೊದಲು";
+"15 minutes before" = "15 ನಿಮಿಷ ಮೊದಲು";
+"30 minutes before" = "30 ನಿಮಿಷ ಮೊದಲು";
+"1 hour before" = "1 ಗಂಟೆ ಮೊದಲು";
+"1 day before" = "1 ದಿನ ಮೊದಲು";
+"Access" = "ಪ್ರವೇಶ";
+"Delete Calendar?" = "ಕ್ಯಾಲೆಂಡರ್ ಅಳಿಸುವುದೇ?";
+"Add Local Calendar" = "ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್ ಸೇರಿಸಿ";
+"Local Calendars" = "ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್‌ಗಳು";
+"No local calendars yet." = "ಇನ್ನೂ ಯಾವುದೇ ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್‌ಗಳಿಲ್ಲ.";
+"Edit local calendar" = "ಸ್ಥಳೀಯ ಕ್ಯಾಲೆಂಡರ್ ಸಂಪಾದಿಸಿ";
+"Share Event" = "ಈವೆಂಟ್ ಹಂಚಿಕೊಳ್ಳಿ";
+
 /* Preferences */
 "Language" = "ಭಾಷೆ";
 "Measurement Units" = "ಅಳತೆಯ ಘಟಕಗಳು";

@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "Miesto";
+"Video Call" = "Videohovor";
+"Map Locations" = "Miesta na mape";
+"End Repeat" = "Ukončiť opakovanie";
+"On Date" = "Dňa";
+"Custom…" = "Vlastná…";
+"Attachments will be applied to all occurrences" = "Prílohy budú pridané ku všetkým výskytom udalosti";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "Pridajte do svojho kalendára čas cesty pre túto udalosť. Upozornenia udalostí vezmú cestu do úvahy a v danom čase budete v kalendári zaneprázdnení.";
+"Repeats %@" = "Opakovanie: %@";
+"10 minutes before" = "10 minút vopred";
+"2 hours before" = "2 hodinu vopred";
+"2 days before" = "2 dni vopred";
+"1 week before" = "1 týždeň vopred";
+"Every Day" = "Denná";
+"Every Week" = "Vydňová";
+"Every Month" = "Výročná";
+"Every Year" = "Výročná";
+"Every 2 Weeks" = "Perióda 2 týždne";
+"Travel Time" = "Čas cesty";
+"Repeat" = "Opakovanie";
+"Second Alert" = "Druhé upozornenie";
+"Never" = "Nikdy";
+"None" = "Žiadny";
+"Add attachment…" = "Pridať prílohu…";
+
+/* App-owned calendars */
+"Event Details" = "Podrobnosti udalosti";
+"Edit Event" = "Upraviť udalosť";
+"Delete Event" = "Odstrániť udalosť";
+"Delete Event?" = "Odstrániť udalosť?";
+"All-day" = "Celý deň";
+"Starts" = "Začiatok";
+"Alert" = "Upozornenie";
+"URL" = "URL";
+"Notes" = "Poznámky";
+"Title" = "Názov";
+"Location or Video Call" = "Miesto alebo videohovor";
+"At time of event" = "V čase udalosti";
+"5 minutes before" = "5 minút vopred";
+"15 minutes before" = "15 minút vopred";
+"30 minutes before" = "30 minút vopred";
+"1 hour before" = "1 hodinu vopred";
+"1 day before" = "1 deň vopred";
+"Access" = "Prístup";
+"Delete Calendar?" = "Odstrániť kalendár?";
+"Add Local Calendar" = "Pridať miestny kalendár";
+"Local Calendars" = "Miestne kalendáre";
+"No local calendars yet." = "Zatiaľ žiadne miestne kalendáre.";
+"Edit local calendar" = "Upraviť miestny kalendár";
+"Share Event" = "Zdieľať udalosť";
+
 /* Preferences */
 "Language" = "Jazyk";
 "Measurement Units" = "Merné jednotky";

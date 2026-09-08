@@ -13,8 +13,16 @@ struct SharedCalendarInvitationPayload: Identifiable, Equatable {
         let scheme = url.scheme?.lowercased()
         let host = url.host?.lowercased()
         let isFullAppLink = scheme == "cloudcalendars" && host == "shared-calendar"
+        #if DEBUG
+        let serverInvitationHosts = [
+            "api.cloud-calendars.com",
+            "63yo3ore3c.execute-api.us-east-1.amazonaws.com"
+        ]
+        #else
+        let serverInvitationHosts = ["api.cloud-calendars.com"]
+        #endif
         let isServerLink = scheme == "https"
-            && host == "api.cloud-calendars.com"
+            && serverInvitationHosts.contains(host ?? "")
             && url.path == "/icloud-calendar-invites/open"
         let isAppClipLink = scheme == "https" && host == "appclip.apple.com"
 
@@ -192,19 +200,24 @@ struct SharedCalendarInvitationView: View {
                     calendarId: payload.calendarID,
                     session: session
                 )
-                SharedICloudCalendarLocalStore.restoreLocally(
-                    ownerID: payload.ownerID,
-                    calendarID: payload.calendarID
-                )
-                // Reconcile the exact record returned by the atomic accept
-                // request before the periodic list refresh. This prevents the
-                // newly copied calendar from briefly entering an unregistered
-                // state and being rendered as access-removed.
-                _ = try SharedICloudCalendarLocalStore.reconcile(
-                    accepted,
-                    in: CalendarViewModel.shared.eventStore
-                )
-                _ = await SharedICloudCalendarLocalStore.refreshAll()
+                if accepted.calendarKind == "app_local" {
+                    _ = AppLocalCalendarStore.shared.applyRemoteCalendar(accepted)
+                    _ = await AppLocalCalendarSyncService.syncAll()
+                } else {
+                    SharedICloudCalendarLocalStore.restoreLocally(
+                        ownerID: payload.ownerID,
+                        calendarID: payload.calendarID
+                    )
+                    // Reconcile the exact record returned by the atomic accept
+                    // request before the periodic list refresh. This prevents the
+                    // newly copied calendar from briefly entering an unregistered
+                    // state and being rendered as access-removed.
+                    _ = try SharedICloudCalendarLocalStore.reconcile(
+                        accepted,
+                        in: CalendarViewModel.shared.eventStore
+                    )
+                    _ = await SharedICloudCalendarLocalStore.refreshAll()
+                }
                 NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
                 dismiss()
             } catch {

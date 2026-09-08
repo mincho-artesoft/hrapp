@@ -1,3 +1,55 @@
+/* Unified event editor */
+"Location" = "ਟਿਕਾਣਾ";
+"Video Call" = "ਵੀਡੀਓ ਕਾਲ";
+"Map Locations" = "ਨਕਸ਼ਾ ਟਿਕਾਣੇ";
+"End Repeat" = "ਦੁਹਰਾਉਣਾ ਸਮਾਪਤ ਕਰੋ";
+"On Date" = "ਮਿਤੀ ਨੂੰ";
+"Custom…" = "ਵਿਉਂਤਬੱਧ…";
+"Attachments will be applied to all occurrences" = "ਅਟੈਚਮੈਂਟਾਂ ਸਾਰੀਆਂ ਉਤਪਤੀਆਂ ’ਤੇ ਲਾਗੂ ਹੋਣਗੀਆਂ";
+"Add travel time for this event to your calendar. Event alerts will take this time into account and your calendar will be blocked during this time." = "ਇਸ ਇਵੈਂਟ ਲਈ ਆਪਣੇ ਕੈਲੰਡਰ ਵਿੱਚ ਯਾਤਰਾ ਦਾ ਸਮਾਂ ਜੋੜੋ। ਇਵੈਂਟ ਅਲਰਟ ਵੱਲੋਂ ਇਸ ਸਮੇਂ ਨੂੰ ਧਿਆਨ ਵਿੱਚ ਰੱਖਿਆ ਜਾਵੇਗਾ ਅਤੇ ਇਸ ਸਮੇਂ ਦੌਰਾਨ ਤੁਹਾਡਾ ਕੈਲੰਡਰ ਬਲੌਕ ਰਹੇਗਾ।";
+"Repeats %@" = "%@ ਦੁਹਰਾਇਆ ਜਾਵੇਗਾ";
+"10 minutes before" = "10 ਮਿੰਟ ਪਹਿਲਾਂ";
+"2 hours before" = "2 ਘੰਟੇ ਪਹਿਲਾਂ";
+"2 days before" = "2 ਦਿਨ ਪਹਿਲਾਂ";
+"1 week before" = "1 ਹਫ਼ਤਾ ਪਹਿਲਾਂ";
+"Every Day" = "ਰੋਜ਼ਾਨਾ";
+"Every Week" = "ਹਫਤਾਵਾਰੀ";
+"Every Month" = "ਮਹੀਨਾਵਾਰ";
+"Every Year" = "ਸਾਲਾਨਾ";
+"Every 2 Weeks" = "ਹਰ 2 ਹਫ਼ਤੇ";
+"Travel Time" = "ਯਾਤਰਾ ਦਾ ਸਮਾਂ";
+"Repeat" = "ਦੁਹਰਾਓ";
+"Second Alert" = "ਦੂਜਾ ਅਲਰਟ";
+"Never" = "ਕਦੇ ਨਹੀਂ";
+"None" = "ਕੋਈ ਨਹੀਂ";
+"Add attachment…" = "ਅਟੈਚਮੈਂਟ ਜੋੜੋ…";
+
+/* App-owned calendars */
+"Event Details" = "ਇਵੈਂਟ ਵੇਰਵੇ";
+"Edit Event" = "ਇਵੈਂਟ ਸੰਪਾਦਿਤ ਕਰੋ";
+"Delete Event" = "ਇਵੈਂਟ ਮਿਟਾਓ";
+"Delete Event?" = "ਇਵੈਂਟ ਮਿਟਾਉਣਾ ਹੈ?";
+"All-day" = "ਸਾਰਾ ਦਿਨ";
+"Starts" = "ਸ਼ੁਰੂ";
+"Alert" = "ਅਲਰਟ";
+"URL" = "URL";
+"Notes" = "ਨੋਟਸ";
+"Title" = "ਸਿਰਲੇਖ";
+"Location or Video Call" = "ਟਿਕਾਣਾ ਜਾਂ ਵੀਡੀਓ ਕਾਲ";
+"At time of event" = "ਇਵੈਂਟ ਦੇ ਸਮੇਂ";
+"5 minutes before" = "5 ਮਿੰਟ ਪਹਿਲਾਂ";
+"15 minutes before" = "15 ਮਿੰਟ ਪਹਿਲਾਂ";
+"30 minutes before" = "30 ਮਿੰਟ ਪਹਿਲਾਂ";
+"1 hour before" = "1 ਘੰਟਾ ਪਹਿਲਾਂ";
+"1 day before" = "1 ਦਿਨ ਪਹਿਲਾਂ";
+"Access" = "ਪਹੁੰਚ";
+"Delete Calendar?" = "ਕੈਲੰਡਰ ਮਿਟਾਉਣਾ ਹੈ?";
+"Add Local Calendar" = "ਸਥਾਨਕ ਕੈਲੰਡਰ ਸ਼ਾਮਲ ਕਰੋ";
+"Local Calendars" = "ਸਥਾਨਕ ਕੈਲੰਡਰ";
+"No local calendars yet." = "ਹਾਲੇ ਕੋਈ ਸਥਾਨਕ ਕੈਲੰਡਰ ਨਹੀਂ ਹੈ।";
+"Edit local calendar" = "ਸਥਾਨਕ ਕੈਲੰਡਰ ਸੋਧੋ";
+"Share Event" = "ਇਵੈਂਟ ਸਾਂਝਾ ਕਰੋ";
+
 /* Preferences */
 "Language" = "ਭਾਸ਼ਾ";
 "Measurement Units" = "ਮਾਪ ਇਕਾਈਆਂ";

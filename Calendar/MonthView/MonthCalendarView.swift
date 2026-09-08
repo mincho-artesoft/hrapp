@@ -12,6 +12,7 @@ struct MonthCalendarView: View {
     
     @State private var eventToView: EKEvent? = nil
     @State private var eventToEdit: EKEvent? = nil
+    @State private var appLocalEventTarget: AppLocalEventEditorTarget? = nil
     
     @State private var showRepeatingDialog = false
     @State private var repeatingEvent: EKEvent? = nil
@@ -128,7 +129,11 @@ struct MonthCalendarView: View {
                                     ReviewManager.eventCreated()
                                 },
                                 onEventTap: { tappedEvent in
-                                    eventToView = tappedEvent
+                                    if let local = tappedEvent as? AppLocalEventDescriptor {
+                                        appLocalEventTarget = AppLocalEventEditorTarget(eventID: local.eventID)
+                                    } else if let event = (tappedEvent as? EKMultiDayWrapper)?.ekEvent {
+                                        eventToView = event
+                                    }
                                 }
                             )
                         }
@@ -148,6 +153,9 @@ struct MonthCalendarView: View {
             currentMonth = normalizedMonth
             viewModel.loadEvents(for: currentMonth)
         }
+        .onReceive(viewModel.calendarContentDidChange) { _ in
+            viewModel.loadEvents(for: currentMonth)
+        }
         .navigationBarHidden(true)
 
         // (E) Sheet за детайлен изглед
@@ -162,6 +170,12 @@ struct MonthCalendarView: View {
             viewModel.loadEvents(for: currentMonth)
         }) { theEvent in
             EventEditViewWrapper(eventStore: viewModel.eventStore, event: theEvent)
+        }
+
+        .sheet(item: $appLocalEventTarget, onDismiss: {
+            viewModel.loadEvents(for: currentMonth)
+        }) { target in
+            AppLocalEventEditorView(target: target)
         }
         
         // (G) Диалог за повтарящо се събитие
@@ -237,14 +251,42 @@ extension MonthCalendarView {
         guard let droppedEvent = viewModel.eventsByID[eventID],
               !SharedInviteTracker.isReadOnly(droppedEvent)
         else { return }
+
+        if let local = droppedEvent as? AppLocalEventDescriptor {
+            moveAppLocalEvent(local, to: newDate)
+            return
+        }
+
+        guard let wrapper = droppedEvent as? EKMultiDayWrapper else { return }
+        let event = wrapper.ekEvent
         
-        if droppedEvent.hasRecurrenceRules {
-            repeatingEvent = droppedEvent
+        if event.hasRecurrenceRules {
+            repeatingEvent = event
             repeatingNewDate = newDate
             showRepeatingDialog = true
         } else {
-            moveEvent(droppedEvent, to: newDate, span: .thisEvent)
+            moveEvent(event, to: newDate, span: .thisEvent)
         }
+    }
+
+    private func moveAppLocalEvent(_ descriptor: AppLocalEventDescriptor, to newDate: Date) {
+        guard let event = AppLocalCalendarStore.shared.event(id: descriptor.eventID),
+              AppLocalCalendarStore.shared.calendar(id: event.calendarID)?.canEditEvents == true
+        else { return }
+        let duration = event.endDate.timeIntervalSince(event.startDate)
+        let components = calendar.dateComponents([.hour, .minute, .second], from: event.startDate)
+        guard let newStart = calendar.date(
+            bySettingHour: components.hour ?? 0,
+            minute: components.minute ?? 0,
+            second: components.second ?? 0,
+            of: newDate
+        ) else { return }
+        AppLocalCalendarStore.shared.moveEvent(
+            id: event.id,
+            startDate: newStart,
+            endDate: newStart.addingTimeInterval(duration)
+        )
+        viewModel.loadEvents(for: currentMonth)
     }
 
     private func moveEvent(_ event: EKEvent, to newDate: Date, span: EKSpan) {
@@ -272,6 +314,10 @@ extension MonthCalendarView {
     }
 
     private func createAndEditNewEvent(on day: Date) {
+        if let calendar = viewModel.pickFirstWritableSelectedAppLocalCalendar() {
+            appLocalEventTarget = AppLocalEventEditorTarget(date: day, calendarID: calendar.id)
+            return
+        }
         let status = EKEventStore.authorizationStatus(for: .event)
         
         if #available(iOS 17.0, *) {

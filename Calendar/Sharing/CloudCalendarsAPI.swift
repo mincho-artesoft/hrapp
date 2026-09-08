@@ -8,6 +8,11 @@ struct SharedEventAlarm: Codable, Equatable {
     let relativeOffset: TimeInterval?
     let absoluteDate: String?
 
+    init(relativeOffset: TimeInterval?, absoluteDate: String? = nil) {
+        self.relativeOffset = relativeOffset
+        self.absoluteDate = absoluteDate
+    }
+
     init(alarm: EKAlarm) {
         if let absoluteDate = alarm.absoluteDate {
             self.absoluteDate = ISO8601DateFormatter().string(from: absoluteDate)
@@ -150,6 +155,13 @@ struct SharedEventParticipant: Codable, Equatable {
     }
 }
 
+struct SharedEventAttachment: Codable, Equatable, Identifiable {
+    let id: String
+    let fileName: String
+    let contentType: String?
+    let dataBase64: String
+}
+
 struct SharedEventDetails: Codable, Equatable {
     let notes: String?
     let timeZone: String?
@@ -157,8 +169,40 @@ struct SharedEventDetails: Codable, Equatable {
     let alarms: [SharedEventAlarm]
     let recurrenceRules: [SharedEventRecurrenceRule]
     let structuredLocation: SharedEventLocation?
+    let videoCallURL: String?
     let organizer: SharedEventParticipant?
     let attendees: [SharedEventParticipant]
+    /// EventKit does not expose these two fields through its public API. They
+    /// are nevertheless part of the portable model used by app-owned
+    /// calendars, where Cloud Calendars can preserve them losslessly.
+    let travelTime: TimeInterval?
+    let attachments: [SharedEventAttachment]?
+
+    init(
+        notes: String?,
+        timeZone: String?,
+        availability: Int = 0,
+        alarms: [SharedEventAlarm] = [],
+        recurrenceRules: [SharedEventRecurrenceRule] = [],
+        structuredLocation: SharedEventLocation? = nil,
+        videoCallURL: String? = nil,
+        organizer: SharedEventParticipant? = nil,
+        attendees: [SharedEventParticipant] = [],
+        travelTime: TimeInterval? = nil,
+        attachments: [SharedEventAttachment]? = nil
+    ) {
+        self.notes = notes
+        self.timeZone = timeZone
+        self.availability = availability
+        self.alarms = alarms
+        self.recurrenceRules = recurrenceRules
+        self.structuredLocation = structuredLocation
+        self.videoCallURL = videoCallURL
+        self.organizer = organizer
+        self.attendees = attendees
+        self.travelTime = travelTime
+        self.attachments = attachments
+    }
 
     init(event: EKEvent) {
         notes = event.notes
@@ -167,8 +211,11 @@ struct SharedEventDetails: Codable, Equatable {
         alarms = (event.alarms ?? []).map(SharedEventAlarm.init(alarm:))
         recurrenceRules = (event.recurrenceRules ?? []).map(SharedEventRecurrenceRule.init(rule:))
         structuredLocation = event.structuredLocation.map(SharedEventLocation.init(location:))
+        videoCallURL = nil
         organizer = event.organizer.map(SharedEventParticipant.init(participant:))
         attendees = (event.attendees ?? []).map(SharedEventParticipant.init(participant:))
+        travelTime = nil
+        attachments = nil
     }
 
     func applyWritableFields(
@@ -248,7 +295,13 @@ enum CloudCalendarsAPI {
     /// That hostname belongs to one API in one region, so anything shipped
     /// against it is pinned to today's deployment; this one can be pointed
     /// elsewhere without another App Store release.
+    #if DEBUG
+    static let baseURL = URL(
+        string: "https://63yo3ore3c.execute-api.us-east-1.amazonaws.com"
+    )!
+    #else
     static let baseURL = URL(string: "https://api.cloud-calendars.com")!
+    #endif
 
     struct AccountIdentity: Codable, Equatable, Identifiable {
         let provider: String
@@ -331,6 +384,7 @@ enum CloudCalendarsAPI {
         let title: String
         let color: String
         let timeZone: String
+        let calendarKind: String?
         let recipients: [ICloudCalendarRecipient]
         let updatedAt: String?
         let events: [SharedICloudCalendarEvent]?
@@ -367,6 +421,7 @@ enum CloudCalendarsAPI {
         let title: String
         let color: String
         let timeZone: String
+        let calendarKind: String?
         let access: EventAccess
         let invitedAt: String?
         let updatedAt: String?
@@ -429,14 +484,16 @@ enum CloudCalendarsAPI {
         let title: String
         let color: String
         let timeZone: String
+        let calendarKind: String?
         let access: EventAccess
         let invitedAt: String?
         let senderEmail: String?
 
         var invitationURL: URL? {
-            var components = URLComponents()
-            components.scheme = "https"
-            components.host = "api.cloud-calendars.com"
+            guard var components = URLComponents(
+                url: CloudCalendarsAPI.baseURL,
+                resolvingAgainstBaseURL: false
+            ) else { return nil }
             components.path = "/icloud-calendar-invites/open"
             components.queryItems = [
                 URLQueryItem(name: "o", value: ownerId),
@@ -811,6 +868,7 @@ enum CloudCalendarsAPI {
         title: String,
         color: String,
         timeZone: String,
+        calendarKind: String = "eventkit",
         recipients: [(email: String, access: EventAccess)],
         removedRecipientEmails: Set<String> = [],
         expectedUpdatedAt: String? = nil,
@@ -820,6 +878,7 @@ enum CloudCalendarsAPI {
             "title": title,
             "color": color,
             "timeZone": timeZone,
+            "calendarKind": calendarKind,
             "recipients": recipients.map {
                 ["email": $0.email, "access": $0.access.rawValue]
             },

@@ -131,7 +131,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         setNeedsDisplay()
         
         // 5) Събираме кои календари ще чертаем (взимаме само селектираните или всички)
-        let allCals = calendarVM.calendarsDict
+        let allCals = calendarVM.multiCalendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         let sortedCals = arrangedForLayoutDirection(
@@ -208,7 +208,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         ctx.fill(bounds)
         
         // 2) Взимаме селектираните календари (или всички, ако няма селектирани)
-        let allCals = calendarVM.calendarsDict
+        let allCals = calendarVM.multiCalendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         let sortedCals = arrangedForLayoutDirection(
@@ -384,7 +384,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             additionalGhostView = ghostView
             
             // Позиция на ghost
-            let columNumber =  CalendarViewModel.shared.calendarsDict.filter { $0.value.selected }.count
+            let columNumber =  CalendarViewModel.shared.multiCalendarsDict.filter { $0.value.selected }.count
             let w: CGFloat = dayColumnWidth - style.eventGap * 2 * CGFloat(columNumber)
             let h: CGFloat = 50
             let x = point.x - w / 2
@@ -398,7 +398,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 return
             }
             // 2) Смятаме кой точно календарен subColumn е
-            let allCals = CalendarViewModel.shared.calendarsDict
+            let allCals = CalendarViewModel.shared.multiCalendarsDict
             let selectedCals = allCals.filter { $0.value.selected }
             let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
             let sortedCals = arrangedForLayoutDirection(
@@ -462,7 +462,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     return
                 }
                 // 2) Смятаме кой точно календарен subColumn е
-                let allCals = CalendarViewModel.shared.calendarsDict
+                let allCals = CalendarViewModel.shared.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                 let sortedCals = arrangedForLayoutDirection(
@@ -506,7 +506,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     return
                 }
                 // 2) Смятаме кой точно календарен subColumn е
-                let allCals = CalendarViewModel.shared.calendarsDict
+                let allCals = CalendarViewModel.shared.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                 let sortedCals = arrangedForLayoutDirection(
@@ -606,7 +606,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     let endOfDay = cal.date(byAdding: .day, value: 1, to: startOfDay)!
                     
                     // Определяме новия календар
-                    let allCals = CalendarViewModel.shared.calendarsDict
+                    let allCals = CalendarViewModel.shared.multiCalendarsDict
                     let selectedCals = allCals.filter { $0.value.selected }
                     let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                     let sortedCalsSorted = arrangedForLayoutDirection(
@@ -623,7 +623,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     let newCalendarID = sortedCalsSorted[clampedIndex].key
                     
                     if let multi = descriptor as? EKMultiDayWrapper,
-                       let newCalendar = CalendarViewModel.shared.calendarsDict[newCalendarID]?.calendar {
+                       let newCalendar = CalendarViewModel.shared.multiCalendarsDict[newCalendarID]?.calendar {
                         multi.realEvent.calendar = newCalendar
                     }
                     
@@ -648,7 +648,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 
                 let relativeX = midX
                     - CGFloat(dayIndex) * container.weekView.dayColumnWidth
-                let allCals = CalendarViewModel.shared.calendarsDict
+                let allCals = CalendarViewModel.shared.multiCalendarsDict
                 let selectedCals = allCals.filter { $0.value.selected }
                 let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                 let sortedCalsSorted = arrangedForLayoutDirection(
@@ -663,7 +663,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let newCalendarID = sortedCalsSorted[clampedIndex].key
                 
                 if let multi = descriptor as? EKMultiDayWrapper,
-                   let newCalendar = CalendarViewModel.shared.calendarsDict[newCalendarID]?.calendar {
+                   let newCalendar = CalendarViewModel.shared.multiCalendarsDict[newCalendarID]?.calendar {
                     multi.realEvent.calendar = newCalendar
                 }
                 
@@ -712,7 +712,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
 
         // 3) Намираме над кой "sub-календар" сме
         //    (подколона за конкретния dayIndex).
-        let allCals = calendarVM.calendarsDict
+        let allCals = calendarVM.multiCalendarsDict
         let selectedCals = allCals.filter { $0.value.selected }
         // Ако няма селектирани, взимаме всички:
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
