@@ -8,6 +8,17 @@ import { reply } from '../common/api-result';
 export class CalendarController {
   constructor(private readonly svc: CalendarService) {}
 
+  @Get('f/:file')
+  async calendarFeed(@Param('file') file: string, @Res() res: Response) {
+    const feed = await this.svc.calendarFeed(file);
+    if (feed == null) {
+      res.status(404).type('text/plain').send('Calendar feed not found');
+      return;
+    }
+    res.setHeader('Cache-Control', 'no-cache, max-age=0, must-revalidate');
+    res.status(200).type('text/calendar; charset=utf-8').send(feed);
+  }
+
   @Post('register')
   async register(@Body() body: any, @Res({ passthrough: true }) res: Response) {
     return reply(res, await this.svc.register(body ?? {}));

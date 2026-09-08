@@ -3,6 +3,7 @@ dist/
 build-staging/
 *.log
 .staging-endpoint
+.debug-endpoint
 .endpoint
 .DS_Store
 *.zip

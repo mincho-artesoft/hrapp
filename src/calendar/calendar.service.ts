@@ -47,6 +47,16 @@ export class CalendarService {
     return this.email.sharedEventQRCodePng(value);
   }
 
+  /**
+   * Returns only a generated calendar feed. Keeping this behind the API lets
+   * non-production environments use a private S3 bucket without a second CDN.
+   */
+  async calendarFeed(feedFile: unknown): Promise<string | null> {
+    const match = /^([A-Za-z0-9_-]{8,128})\.ics$/.exec(String(feedFile ?? ''));
+    if (!match) return null;
+    return this.store.getText(this.keys.feed(match[1]));
+  }
+
   /** Anonymous registration — the device holds the only key to this calendar. */
   async register(body: any): Promise<ApiResult> {
     const principalId = randomId(16);
@@ -1310,6 +1320,7 @@ export class CalendarService {
       title: '',
       color: '#0088FF',
       timeZone: 'UTC',
+      calendarKind: 'eventkit',
       recipients: [],
     };
     return {
@@ -1353,6 +1364,7 @@ export class CalendarService {
         title: record.title,
         color: record.color,
         timeZone: record.timeZone,
+        calendarKind: record.calendarKind,
         recipients: (Array.isArray(record.recipients) ? record.recipients : []).map(
           (recipient: any) => ({
             email: recipient.email,
@@ -1451,6 +1463,10 @@ export class CalendarService {
         timeZone: safeTimeZone(
           String(calendar?.timeZone ?? indexedValue.ref?.timeZone ?? ''),
         ) ?? 'UTC',
+        calendarKind: calendar?.calendarKind === 'app_local'
+          || indexedValue.ref?.calendarKind === 'app_local'
+          ? 'app_local'
+          : 'eventkit',
         access: this.recipientAccess({
           access: recipient?.access ?? indexedValue.ref?.access,
         }),
@@ -1633,6 +1649,7 @@ export class CalendarService {
         ? String(calendar.color).toUpperCase()
         : '#0088FF',
       timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
+      calendarKind: calendar.calendarKind === 'app_local' ? 'app_local' : 'eventkit',
       email,
       recipientId: principal.principalId,
       userId: principal.principalId,
@@ -1668,6 +1685,7 @@ export class CalendarService {
         title: invitationRef.title,
         color: invitationRef.color,
         timeZone: invitationRef.timeZone,
+        calendarKind: invitationRef.calendarKind,
         access,
         invitedAt: invitationRef.invitedAt,
         updatedAt: now,
@@ -1804,6 +1822,11 @@ export class CalendarService {
 
     const key = this.keys.icloudCalendarSharing(ownerId, calendarId);
     const existing = context.calendar;
+    const requestedCalendarKind = boundedPlainText(body.calendarKind, 32);
+    const calendarKind = existing?.calendarKind === 'app_local'
+      || (!existing && requestedCalendarKind === 'app_local')
+      ? 'app_local'
+      : 'eventkit';
     const expectedUpdatedAt = boundedPlainText(body.expectedUpdatedAt, 128);
     if (expectedUpdatedAt && existing?.updatedAt !== expectedUpdatedAt) {
       return result(409, {
@@ -1909,6 +1932,7 @@ export class CalendarService {
       title,
       color,
       timeZone,
+      calendarKind,
       recipients,
       recipientCount: recipients.length,
       createdAt: existing?.createdAt ?? now,
@@ -1930,6 +1954,7 @@ export class CalendarService {
           title,
           color,
           timeZone,
+          calendarKind,
           email,
           recipientId: previousRecipient?.id ?? null,
           userId: previousRecipient?.userId ?? null,
@@ -1975,6 +2000,7 @@ export class CalendarService {
         title,
         color,
         timeZone,
+        calendarKind,
         email: recipient.email,
         recipientId: recipient.id,
         userId: recipient.userId,
@@ -1998,6 +2024,7 @@ export class CalendarService {
           title,
           color,
           timeZone,
+          calendarKind,
           recipientId: recipient.id,
           access: recipient.access,
           invitedAt: recipient.invitedAt,
@@ -2102,6 +2129,7 @@ export class CalendarService {
         title: calendar.title,
         color: calendar.color,
         timeZone: calendar.timeZone,
+        calendarKind: calendar.calendarKind === 'app_local' ? 'app_local' : 'eventkit',
         email: recipient.email,
         recipientId: recipient.id,
         userId: null,
@@ -2194,6 +2222,7 @@ export class CalendarService {
           ? String(calendar.color).toUpperCase()
           : '#0088FF',
         timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
+        calendarKind: calendar.calendarKind === 'app_local' ? 'app_local' : 'eventkit',
         access: this.recipientAccess(recipient),
         invitedAt: recipient.invitedAt ?? value.ref?.invitedAt ?? null,
         senderEmail: ownerEmail,
@@ -2286,6 +2315,7 @@ export class CalendarService {
           ? String(calendar.color).toUpperCase()
           : '#0088FF',
         timeZone: safeTimeZone(String(calendar.timeZone ?? '')) ?? 'UTC',
+        calendarKind: calendar.calendarKind === 'app_local' ? 'app_local' : 'eventkit',
         email,
         recipientId: recipient?.id ?? null,
         userId: recipient?.userId ?? null,
@@ -3145,6 +3175,31 @@ function sanitizeEventDetails(value: any): any {
     }))
     : [];
 
+  const travelTimeValue = typeof value.travelTime === 'number'
+    ? value.travelTime
+    : Number.NaN;
+  const travelTime = Number.isFinite(travelTimeValue)
+    ? Math.max(0, Math.min(86400, travelTimeValue))
+    : null;
+  let attachmentBytes = 0;
+  const attachments = Array.isArray(value.attachments)
+    ? value.attachments.slice(0, 5).map((attachment: any) => {
+      const dataBase64 = text(attachment?.dataBase64, 1_400_000);
+      if (!dataBase64 || !/^[A-Za-z0-9+/]*={0,2}$/.test(dataBase64)) return null;
+      const approximateBytes = Math.floor(dataBase64.length * 0.75);
+      if (approximateBytes > 1_000_000 || attachmentBytes + approximateBytes > 4_000_000) {
+        return null;
+      }
+      attachmentBytes += approximateBytes;
+      return {
+        id: text(attachment?.id, 128) ?? '',
+        fileName: text(attachment?.fileName, 512) ?? 'Attachment',
+        contentType: text(attachment?.contentType, 256),
+        dataBase64,
+      };
+    }).filter(Boolean)
+    : [];
+
   return {
     notes: text(value.notes, 20000),
     timeZone: text(value.timeZone, 128),
@@ -3152,6 +3207,8 @@ function sanitizeEventDetails(value: any): any {
     alarms,
     recurrenceRules,
     structuredLocation,
+    travelTime,
+    attachments,
     organizer: participant(value.organizer),
     attendees: Array.isArray(value.attendees)
       ? value.attendees.slice(0, 250).map(participant).filter(Boolean)

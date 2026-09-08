@@ -16,6 +16,10 @@ class MemoryStore {
     return stored ? structuredClone(stored.value) : null;
   }
 
+  async getText(key: string): Promise<string | null> {
+    return this.feeds.get(key) ?? null;
+  }
+
   async getJSONWithETag(key: string): Promise<{ value: any; etag: string } | null> {
     const stored = this.objects.get(key);
     return stored
@@ -254,6 +258,12 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
     eventId,
     feedName: 'Original event',
   }), 201, 'create event grant');
+  assert.match(
+    await service.calendarFeed(`${grant.feedId}.ics`) ?? '',
+    /BEGIN:VCALENDAR/,
+    'generated feed is available through the API feed gateway',
+  );
+  assert.equal(await service.calendarFeed('../private.json'), null);
   const eventUrl = `https://api.cloud-calendars.com/event-invites/open?e=${eventId}&c=${grant.feedId}&title=Original%20event&start=1977972000&end=1977977400&allDay=0&timeZone=Europe%2FSofia&color=%230A84FF`;
   const eventLanding = await service.eventInvitationLanding({
     e: eventId,
@@ -615,6 +625,33 @@ async function testCalendarSharing(service: CalendarService, email: FakeEmailSer
     recipients: [],
     expectedUpdatedAt: emailCalendar.calendar.updatedAt,
   }), 409, 'calendar metadata optimistic conflict');
+
+  const appLocalCalendarId = 'd'.repeat(64);
+  const appLocal = expectStatus(await service.saveICloudCalendarSharing(owner, appLocalCalendarId, {
+    title: 'Cloud Calendars Only',
+    color: '#5856D6',
+    timeZone: 'Europe/Sofia',
+    calendarKind: 'app_local',
+    recipients: [{ email: recipientEmail, access: 'writer' }],
+  }), 201, 'create app-local shared calendar');
+  assert.equal(appLocal.calendar.calendarKind, 'app_local');
+  const receivedAppLocal = expectStatus(
+    await service.iCloudCalendarsSharedWithMe(recipient),
+    200,
+    'app-local recipient calendar list',
+  ).calendars.find((value: any) => value.calendarId === appLocalCalendarId);
+  assert.equal(receivedAppLocal.calendarKind, 'app_local');
+  assert.equal(receivedAppLocal.access, 'writer');
+
+  const stillAppLocal = expectStatus(await service.saveICloudCalendarSharing(owner, appLocalCalendarId, {
+    title: 'Cloud Calendars Only',
+    color: '#5856D6',
+    timeZone: 'Europe/Sofia',
+    calendarKind: 'eventkit',
+    recipients: [{ email: recipientEmail, access: 'writer' }],
+    expectedUpdatedAt: appLocal.calendar.updatedAt,
+  }), 200, 'app-local calendar kind is immutable');
+  assert.equal(stillAppLocal.calendar.calendarKind, 'app_local');
 }
 
 async function main(): Promise<void> {

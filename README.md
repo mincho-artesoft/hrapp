@@ -3,10 +3,12 @@
 The NestJS port of the Cloud Calendars API. It **replaces** the original single
 `index.mjs` Lambda while preserving the whole architecture:
 
-- **Same S3-as-DB** — same bucket (`cal.cloud-calendars.com`), same key layout
+- **Same S3-as-DB model** — production uses `cal.cloud-calendars.com`; debug uses
+  a separate private bucket. Both keep the same key layout
   (`src/store/keys.ts`), same objects. No database was introduced.
-- **Same invocation** — the same API Gateway v2 HTTP API and custom domain
-  `api.cloud-calendars.com`. NestJS runs behind `@codegenie/serverless-express`.
+- **Isolated debug invocation** — debug uses its own Lambda and API Gateway;
+  production keeps the existing custom domain `api.cloud-calendars.com`.
+  NestJS runs behind `@codegenie/serverless-express` in both environments.
 - **Same contract** — every route, status code, and response body is identical,
   so the web app and PsyConnect keep working unchanged. Verified by a 36-check
   parity suite run locally, on a staging Lambda, and against production.
@@ -45,11 +47,15 @@ Leave `EMAIL_FROM` unset locally so SES sends become no-ops. Book with
 
 ```bash
 bash deploy.sh package        # build + zip only (dist + prod node_modules, no @aws-sdk)
-bash deploy.sh staging        # scratch function + its own HTTP API (safe to test)
-bash deploy.sh production     # CUT OVER the live cloud-calendars-api function
+bash deploy.sh                # isolated debug S3 + Lambda + HTTP API (default)
+bash deploy.sh debug          # same explicit debug deploy
+ALLOW_PRODUCTION_DEPLOY=I_UNDERSTAND_THIS_UPDATES_LIVE \
+  bash deploy.sh production   # CUT OVER live only after explicit approval
 ```
 
-`production` updates the live function's code and sets its handler to
+The debug endpoint is written to `.debug-endpoint`. Debug data never uses the
+production bucket. `production` is deliberately locked unless the safety flag
+is present; it updates the live function's code and sets its handler to
 `dist/lambda.handler`; runtime, memory, timeout, and env are left as they are.
 
 ## Roll back

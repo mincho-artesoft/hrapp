@@ -23,6 +23,17 @@ export class StoreService {
     return (await this.getJSONWithETag(key))?.value ?? null;
   }
 
+  /** Reads a generated text asset such as a subscribable `.ics` feed. */
+  async getText(key: string): Promise<string | null> {
+    try {
+      const res = await this.s3.send(new GetObjectCommand({ Bucket: this.bucket, Key: key }));
+      return await res.Body.transformToString();
+    } catch (err: any) {
+      if (err.name === 'NoSuchKey' || err.$metadata?.httpStatusCode === 404) return null;
+      throw err;
+    }
+  }
+
   /** Reads the object together with the exact version marker needed for an
    * optimistic conditional update. */
   async getJSONWithETag(key: string): Promise<{ value: any; etag: string } | null> {
