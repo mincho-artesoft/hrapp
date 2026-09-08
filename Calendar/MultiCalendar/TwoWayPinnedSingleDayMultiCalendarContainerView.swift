@@ -67,10 +67,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             weekView.onEventDuplicated = onEventDuplicated
         }
     }
-    public var onEmptyLongPress: ((Date, EKCalendar?) -> Void)? {
+    public var onEmptyLongPress: ((DateInterval, String?) -> Void)? {
         didSet {
             weekView.onEmptyLongPress   = onEmptyLongPress
-            allDayView.onEmptyLongPress = onEmptyLongPress
         }
     }
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)? {
@@ -223,6 +222,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     private var isInSecondPass = false
     private var lastHorizontalContentWidth: CGFloat = -1
     private var lastHorizontalLayoutWasRTL: Bool?
+    private var isSynchronizingScroll = false
     private let topBackgroundView = UIView()
     private let calendarHeaderBackgroundView = UIView()
 
@@ -360,7 +360,16 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         addSubview(allDayScrollView)
         
         hoursColumnScrollView.showsVerticalScrollIndicator = false
-        hoursColumnScrollView.isScrollEnabled = false
+        hoursColumnScrollView.showsHorizontalScrollIndicator = false
+        hoursColumnScrollView.isScrollEnabled = true
+        hoursColumnScrollView.bounces = false
+        hoursColumnScrollView.isDirectionalLockEnabled = true
+        hoursColumnScrollView.delegate = self
+        hoursColumnScrollView.accessibilityIdentifier = "timeline-hours-scroll"
+        let hoursTap = UITapGestureRecognizer(target: self, action: #selector(handleHoursColumnTap(_:)))
+        hoursTap.cancelsTouchesInView = false
+        hoursTap.require(toFail: hoursColumnScrollView.panGestureRecognizer)
+        hoursColumnScrollView.addGestureRecognizer(hoursTap)
         hoursColumnScrollView.contentInsetAdjustmentBehavior = .never
         hoursColumnScrollView.addSubview(hoursColumnView)
         hoursColumnScrollView.layer.zPosition = 3
@@ -368,7 +377,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         daysHeaderScrollView.showsVerticalScrollIndicator   = false
         daysHeaderScrollView.showsHorizontalScrollIndicator = false
-        daysHeaderScrollView.isScrollEnabled = true
+        daysHeaderScrollView.isScrollEnabled = false
         daysHeaderScrollView.delegate = self
         daysHeaderScrollView.backgroundColor = .secondarySystemBackground
         daysHeaderScrollView.bounces = false
@@ -583,25 +592,22 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             1,
             selectedCalendarCount == 0 ? calendarVM.multiCalendarsDict.count : selectedCalendarCount
         )
-        let fullyVisibleCalendarLimit = isLandscape ? 10 : 8
-        let totalCalendarWidth: CGFloat
-        if displayedCalendarCount <= fullyVisibleCalendarLimit {
-            totalCalendarWidth = availableWidth
-        } else {
-            totalCalendarWidth = max(
-                availableWidth,
-                CGFloat(displayedCalendarCount) * 52
-            )
-        }
+        // Same 100-point minimum as MultiDay. All four scroll surfaces share
+        // this width; adding calendars must not squeeze existing columns.
+        let totalCalendarWidth = TimelineInteractionGeometry.columnWidth(
+            available: availableWidth, count: displayedCalendarCount
+        ) * CGFloat(displayedCalendarCount)
 
         weekView.dayColumnWidth       = totalCalendarWidth
-        daysHeaderView.dayColumnWidth = totalCalendarWidth
+        // The single date stays centered in the viewport, independently of
+        // the scrollable calendar columns below it.
+        daysHeaderView.dayColumnWidth = availableWidth
         allDayView.dayColumnWidth     = totalCalendarWidth
         
-        let totalDaysHeaderWidth = daysHeaderView.dayColumnWidth
-        daysHeaderScrollView.contentSize = CGSize(width: totalDaysHeaderWidth, height: daysHeaderHeight)
+        let totalDaysHeaderWidth = totalCalendarWidth
+        daysHeaderScrollView.contentSize = CGSize(width: availableWidth, height: daysHeaderHeight)
         daysHeaderView.frame = CGRect(x: 0, y: 0,
-                                      width: totalDaysHeaderWidth,
+                                      width: availableWidth,
                                       height: daysHeaderHeight)
         
         // Втори хедър за календари под daysHeaderScrollView
@@ -700,7 +706,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                 CGPoint(x: initialOffsetX, y: mainScrollView.contentOffset.y),
                 animated: false
             )
-            daysHeaderScrollView.setContentOffset(CGPoint(x: initialOffsetX, y: 0), animated: false)
+            daysHeaderScrollView.setContentOffset(.zero, animated: false)
             calendarsHeaderScrollView.setContentOffset(CGPoint(x: initialOffsetX, y: 0), animated: false)
             allDayScrollView.setContentOffset(
                 CGPoint(x: initialOffsetX, y: allDayScrollView.contentOffset.y),
@@ -736,29 +742,29 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // MARK: - UIScrollViewDelegate
     // ---------------------------------------------------------
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !isSynchronizingScroll, scrollView != daysHeaderScrollView else { return }
+        isSynchronizingScroll = true
+        defer { isSynchronizingScroll = false }
         if scrollView == mainScrollView {
             let syncedOffsetY = syncedVerticalOffset(for: scrollView.contentOffset.y)
             if abs(scrollView.contentOffset.y - syncedOffsetY) > 0.5 {
                 mainScrollView.contentOffset.y = syncedOffsetY
             }
-            daysHeaderScrollView.contentOffset.x     = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x         = scrollView.contentOffset.x
             calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             hoursColumnScrollView.contentOffset.y      = syncedOffsetY
         }
-        else if scrollView == daysHeaderScrollView {
-            mainScrollView.contentOffset.x           = scrollView.contentOffset.x
-            allDayScrollView.contentOffset.x         = scrollView.contentOffset.x
-            calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
+        else if scrollView == hoursColumnScrollView {
+            let y = syncedVerticalOffset(for: scrollView.contentOffset.y)
+            hoursColumnScrollView.contentOffset = CGPoint(x: 0, y: y)
+            mainScrollView.contentOffset.y = y
         }
         else if scrollView == allDayScrollView {
             mainScrollView.contentOffset.x           = scrollView.contentOffset.x
-            daysHeaderScrollView.contentOffset.x     = scrollView.contentOffset.x
             calendarsHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
         }
         else if scrollView == calendarsHeaderScrollView {
             mainScrollView.contentOffset.x       = scrollView.contentOffset.x
-            daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x     = scrollView.contentOffset.x
         }
     }
@@ -769,6 +775,11 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         let sharedMaxOffset = min(mainMaxOffset, hoursMaxOffset)
 
         return min(max(proposedOffsetY, 0), sharedMaxOffset)
+    }
+
+    @objc private func handleHoursColumnTap(_ gesture: UITapGestureRecognizer) {
+        guard gesture.state == .ended else { return }
+        weekView.clearEventSelection()
     }
     
     // ---------------------------------------------------------

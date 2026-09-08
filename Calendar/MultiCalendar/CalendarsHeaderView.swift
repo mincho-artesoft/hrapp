@@ -16,6 +16,7 @@ final class CalendarsHeaderView: UIView {
     }
 
     private var displayedSnapshot: [CalendarHeaderState] = []
+    private var displayedLayoutDirection: UIUserInterfaceLayoutDirection?
 
     /// Данни за всеки календар: [calendarID: (title, color, selected)]
     var calendarsDict: [String: MultiCalendarInfo] = [:] {
@@ -62,6 +63,7 @@ final class CalendarsHeaderView: UIView {
     }
 
     private func rebuildSubviews() {
+        displayedLayoutDirection = effectiveUserInterfaceLayoutDirection
         // 1) Премахваме старите labels
         labelViews.forEach { $0.removeFromSuperview() }
         labelViews = []
@@ -78,15 +80,16 @@ final class CalendarsHeaderView: UIView {
 
         // 3) Сортираме ги по .title
         let sortedCals = arrangedForLayoutDirection(
-            calsToDraw.sorted { $0.1.title < $1.1.title },
+            calsToDraw.sorted(by: MultiCalendarInfo.orderedBefore),
             in: self
         )
 
         // 4) Създаваме UILabel за всеки, в сортиран ред
-        for (_, info) in sortedCals {
+        for (id, info) in sortedCals {
             let label = UILabel()
             label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
             label.text = info.title
+            label.accessibilityIdentifier = "calendar-column:" + id
             label.textAlignment = .center
             label.useAdaptiveSingleLine(minimumScale: 0.4)
 //            label.layer.cornerRadius = 8
@@ -103,37 +106,25 @@ final class CalendarsHeaderView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        if displayedLayoutDirection != effectiveUserInterfaceLayoutDirection { rebuildSubviews() }
         
         let count = labelViews.count
         guard count > 0 else { return }
         
         let totalWidth = bounds.width
-        let isLandscape = bounds.width > bounds.height
-
-        // Keep the same responsive rule as the timeline: common calendar
-        // counts fit completely; very large selections stay scrollable.
-        let actualColumnWidth: CGFloat
-        let fullyVisibleCalendarLimit = isLandscape ? 10 : 8
-        if count <= fullyVisibleCalendarLimit {
-            actualColumnWidth = totalWidth / CGFloat(count)
-        } else {
-            actualColumnWidth = max(52, defaultColumnWidth * 0.52)
-        }
+        // The container owns content width and synchronized scrolling.
+        let actualColumnWidth = totalWidth / CGFloat(count)
         
         for (index, lbl) in labelViews.enumerated() {
             let xPos = CGFloat(index) * actualColumnWidth
             lbl.frame = CGRect(
-                x: xPos /*+ 1.5*/,
+                x: xPos + 4,
                 y: 0,
-                width: actualColumnWidth /*- 3*/,
+                width: max(0, actualColumnWidth - 8),
                 height: bounds.height
             )
         }
         
-        if let scrollView = superview as? UIScrollView {
-            let contentW = CGFloat(count) * actualColumnWidth
-            scrollView.contentSize = CGSize(width: contentW, height: bounds.height)
-        }
     }
     
     override func draw(_ rect: CGRect) {

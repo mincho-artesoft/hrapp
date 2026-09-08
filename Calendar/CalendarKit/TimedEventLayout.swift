@@ -33,7 +33,8 @@ enum TimedEventLayout {
         }
         let engine = EventDetailTimelineLayout(width: availableWidth,
             minimumDuration: TimeInterval((minimumHeight + gap) / max(1, hourHeight) * 3_600),
-            gap: gap)
+            minimumHeaderDuration: TimeInterval(minimumHeight / max(1, hourHeight) * 3_600),
+            gap: gap, textStartBoundary: dayStart)
         // Convert wall-clock time to the same 24-hour grid as HoursColumnView.
         func y(_ date: Date) -> CGFloat {
             if date <= dayStart { return top }
@@ -54,8 +55,13 @@ enum TimedEventLayout {
             let frame = CGRect(x: originX + gap + placement.origin(in: availableWidth, rightToLeft: rightToLeft),
                 y: startY, width: placement.width, height: height)
             attr.frame = frame
+            // Short events still own their minimum-height block. Only a child,
+            // not the event's true short duration, reduces the label area.
+            let textHeight = placement.contentEnd < interval.end
+                ? max(0, min(height, y(placement.contentEnd) - startY - gap))
+                : height
             return Placement(attributes: attr, frame: frame, depth: placement.depth,
-                textHeight: max(0, min(height, y(placement.contentEnd) - startY - gap)),
+                textHeight: textHeight,
                 continuesFromPreviousDay: interval.start < dayStart)
         }
     }

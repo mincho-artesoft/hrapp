@@ -101,7 +101,7 @@ public class CalendarsDropdownView: UIView {
         displayedSnapshot = snapshot(of: dict)
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
-        let sortedTuples = dict.sorted { $0.value.title < $1.value.title }
+        let sortedTuples = dict.sorted(by: MultiCalendarInfo.orderedBefore)
         
         for (calID, info) in sortedTuples {
             let isSelected = info.selected

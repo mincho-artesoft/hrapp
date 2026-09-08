@@ -79,8 +79,9 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             }
         }
         
-        container.onEmptyLongPress = { date in
-            context.coordinator.createNewEventAndPresent(date: date, in: vc)
+        container.onEmptyLongPress = { interval, calendarID in
+            context.coordinator.createNewEventAndPresent(date: interval.start, in: vc,
+                initialInterval: interval, preselectedCalendarID: calendarID)
         }
         container.allDayView.onEmptyLongPress = { date in
             context.coordinator.createAllDayEventAndPresent(date: date, in: vc)
@@ -395,10 +396,15 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
 
         
         @MainActor
-        public func createNewEventAndPresent(date: Date, in parentVC: UIViewController) {
-            if let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
+        public func createNewEventAndPresent(
+            date: Date, in parentVC: UIViewController, initialInterval: DateInterval? = nil,
+            preselectedCalendarID: String? = nil
+        ) {
+            guard let destination = CalendarViewModel.shared.newEventCalendar(
+                preferredCalendarID: preselectedCalendarID) else { return }
+            if let calendarID = destination.appLocalCalendarID {
                 presentAppLocalEditor(
-                    target: AppLocalEventEditorTarget(date: date, calendarID: calendar.id),
+                    target: AppLocalEventEditorTarget(date: date, calendarID: calendarID, initialInterval: initialInterval),
                     in: parentVC
                 )
                 return
@@ -406,28 +412,22 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = NSLocalizedString("New event", comment: "")
 
-            // Намерете „първия селектиран“ календар, който позволява промени
-            // (т.е. не е read-only). EKCalendar има флаг `allowsContentModifications`.
-            if let writableSelectedCal =  CalendarViewModel.shared.pickFirstWritableSelectedCalendar() {
-                newEvent.calendar = writableSelectedCal
-            } else {
-                // Ако не намирате такъв, fallback към defaultCalendarForNewEvents
-                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
-            }
+            newEvent.calendar = destination.calendar
 
             newEvent.startDate = date
-            newEvent.endDate   = date.addingTimeInterval(3600)
+            newEvent.endDate   = initialInterval?.end ?? date.addingTimeInterval(3600)
             presentSystemEditor(newEvent, in: parentVC)
             ReviewManager.eventCreated()
         }
         
         @MainActor
         public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController) {
-            if let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
+            guard let destination = CalendarViewModel.shared.newEventCalendar() else { return }
+            if let calendarID = destination.appLocalCalendarID {
                 presentAppLocalEditor(
                     target: AppLocalEventEditorTarget(
                         date: date,
-                        calendarID: calendar.id,
+                        calendarID: calendarID,
                         isAllDay: true
                     ),
                     in: parentVC
@@ -437,11 +437,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = NSLocalizedString("All-day event", comment: "")
 
-            if let writableSelectedCal =  CalendarViewModel.shared.pickFirstWritableSelectedCalendar() {
-                newEvent.calendar = writableSelectedCal
-            } else {
-                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
-            }
+            newEvent.calendar = destination.calendar
             
             newEvent.isAllDay = true
             newEvent.startDate = date
@@ -459,14 +455,13 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
             isResize: Bool,
             isAllDay: Bool
         ) {
-            if let local = descriptor as? AppLocalEventDescriptor,
-               let event = AppLocalCalendarStore.shared.event(id: local.eventID) {
-                let duration = event.endDate.timeIntervalSince(event.startDate)
-                AppLocalCalendarStore.shared.moveEvent(
-                    id: event.id,
-                    startDate: isResize ? event.startDate : newDate,
-                    endDate: isResize ? max(newDate, event.startDate) : newDate.addingTimeInterval(duration)
-                )
+            if let local = descriptor as? AppLocalEventDescriptor {
+                // The timeline already resolved BOTH edges, including top-
+                // handle resizing and conversions between timed/all-day.
+                local.commitTimelineChange(isResize: isResize)
+                // Replace gesture-mutated slices even after a no-op or a
+                // rejected destination; the store remains authoritative.
+                lastRenderedEvents = []
                 reloadCurrentRange()
                 return
             }

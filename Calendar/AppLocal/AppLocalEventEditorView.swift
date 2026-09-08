@@ -16,6 +16,7 @@ struct AppLocalEventEditorTarget: Identifiable {
     let eventID: String?
     let eventKitEvent: EKEvent?
     let initialDate: Date
+    let initialInterval: DateInterval?
     let initialCalendarID: String?
     let initialEventKitCalendarID: String?
     let initialIsAllDay: Bool
@@ -25,6 +26,7 @@ struct AppLocalEventEditorTarget: Identifiable {
         self.eventID = eventID
         eventKitEvent = nil
         initialDate = Date()
+        initialInterval = nil
         initialCalendarID = nil
         initialEventKitCalendarID = nil
         initialIsAllDay = false
@@ -35,11 +37,13 @@ struct AppLocalEventEditorTarget: Identifiable {
         date: Date,
         calendarID: String?,
         eventKitCalendarID: String? = nil,
-        isAllDay: Bool = false
+        isAllDay: Bool = false,
+        initialInterval: DateInterval? = nil
     ) {
         eventID = nil
         eventKitEvent = nil
         initialDate = date
+        self.initialInterval = initialInterval
         initialCalendarID = calendarID
         initialEventKitCalendarID = eventKitCalendarID
         initialIsAllDay = isAllDay
@@ -50,6 +54,7 @@ struct AppLocalEventEditorTarget: Identifiable {
         eventID = nil
         self.eventKitEvent = eventKitEvent
         initialDate = eventKitEvent.startDate ?? Date()
+        initialInterval = nil
         initialCalendarID = nil
         initialEventKitCalendarID = eventKitEvent.calendar?.calendarIdentifier
         initialIsAllDay = eventKitEvent.isAllDay
@@ -287,15 +292,17 @@ struct AppLocalEventEditorView: View {
             MainActor.assumeIsolated { AppLocalCalendarStore.shared.event(id: id) }
         }
         let system = target.eventKitEvent
-        let localCalendars = MainActor.assumeIsolated { AppLocalCalendarStore.shared.calendars }
-        let systemDefault = MainActor.assumeIsolated {
-            CalendarViewModel.shared.eventStore.defaultCalendarForNewEvents?.calendarIdentifier
+        let defaultCalendarID = MainActor.assumeIsolated {
+            CalendarViewModel.shared.newEventCalendar()?.id
         }
         let initialAllDay = local?.isAllDay ?? system?.isAllDay ?? target.initialIsAllDay
-        let initialStart = local?.startDate ?? system?.startDate ?? Self.defaultStart(on: target.initialDate)
+        let initialSchedule = EventEditorInitialSchedule.resolve(
+            day: target.initialDate, exactInterval: target.initialInterval, isAllDay: initialAllDay)
+        let initialStart = local?.startDate ?? system?.startDate
+            ?? initialSchedule.start
         let storedEnd = local?.endDate
             ?? system?.endDate
-            ?? initialStart.addingTimeInterval(initialAllDay ? 86_400 : 3_600)
+            ?? initialSchedule.end
         let initialEnd = initialAllDay && storedEnd > initialStart
             ? storedEnd.addingTimeInterval(-1)
             : storedEnd
@@ -303,8 +310,7 @@ struct AppLocalEventEditorView: View {
             ?? system?.calendar?.calendarIdentifier
             ?? target.initialCalendarID
             ?? target.initialEventKitCalendarID
-            ?? localCalendars.first(where: \.canEditEvents)?.id
-            ?? systemDefault
+            ?? defaultCalendarID
             ?? ""
         let systemAlarms = (system?.alarms ?? []).sorted { $0.relativeOffset > $1.relativeOffset }
         let localAlarms = local?.alarms.map(\.relativeOffset) ?? []
@@ -1718,14 +1724,6 @@ struct AppLocalEventEditorView: View {
         lhs.title.localizedStandardCompare(rhs.title) == .orderedAscending
     }
 
-    private static func defaultStart(on date: Date) -> Date {
-        let calendar = Calendar.current
-        if calendar.isDateInToday(date) {
-            let rounded = ceil(Date().timeIntervalSinceReferenceDate / 900) * 900
-            return Date(timeIntervalSinceReferenceDate: rounded)
-        }
-        return calendar.date(bySettingHour: 9, minute: 0, second: 0, of: date) ?? date
-    }
 }
 
 @MainActor
@@ -2098,14 +2096,15 @@ private struct EventDetailTimelinePreview: View {
         let contentHeight = textClipHeight + hiddenTop
         let fontSize: CGFloat = contentHeight < 20 && !item.isSelected ? 9 : 10
         let lineHeight = UIFont.systemFont(ofSize: fontSize).lineHeight
-        let availableLines = max(0, (contentHeight - 6) / lineHeight)
-        let lineCount = max(1, Int(contentEnd < item.endDate ? ceil(availableLines) : floor(availableLines)))
+        let verticalPadding: CGFloat = height < 20 ? 1 : 3
+        let availableLines = max(0, (contentHeight - 2 * verticalPadding) / lineHeight)
+        let lineCount = max(0, Int(floor(availableLines)))
 
         Group {
             // Calendar keeps the content at the event's real start. A block
             // clipped by the top of this four-hour window therefore remains a
             // colored underlay instead of repeating its title over its children.
-            if hiddenTop < rowHeight * 4 {
+            if hiddenTop < rowHeight * 4, lineCount > 0 {
                 timelineContent(item, titleColor: titleColor, width: max(1, width - leadingPadding - horizontalPadding), lineCount: lineCount, fontSize: fontSize)
                     .font(.system(size: fontSize))
                     .fixedSize(horizontal: false, vertical: true)
@@ -2116,7 +2115,7 @@ private struct EventDetailTimelinePreview: View {
         .foregroundStyle(foregroundColor)
         .padding(.leading, leadingPadding)
         .padding(.trailing, horizontalPadding)
-        .padding(.vertical, height < 20 ? 1 : 3)
+        .padding(.vertical, verticalPadding)
         .offset(y: -hiddenTop)
         .frame(width: width, height: height, alignment: .topLeading)
         // Child backgrounds may be translucent. Clip the parent's text at
@@ -2214,7 +2213,8 @@ private struct EventDetailTimelinePreview: View {
                 start: $0.startDate, end: $0.endDate)
         }
         let engine = EventDetailTimelineLayout(width: availableWidth,
-            minimumDuration: TimeInterval((minimumBlockHeight + columnGap) / rowHeight * 3_600))
+            minimumDuration: TimeInterval((minimumBlockHeight + columnGap) / rowHeight * 3_600),
+            minimumHeaderDuration: TimeInterval((minimumBlockHeight + columnGap) / rowHeight * 3_600))
         let visibleInterval = DateInterval(start: firstDisplayedHour, end: displayEnd)
         return engine.place(input, in: visibleInterval).compactMap { placement in
             guard let item = byID[placement.id],

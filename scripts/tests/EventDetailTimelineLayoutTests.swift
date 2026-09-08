@@ -39,6 +39,13 @@ enum EventDetailTimelineLayoutTests {
         check(crossing[0].leading + crossing[0].width <= crossing[1].leading, "Crossing labels overlap")
         let short = engine.place([event("Short A", 9, 9.05), event("Short B", 9.1, 9.15)])
         check(short[0].leading + short[0].width <= short[1].leading, "Minimum-height short blocks overlap")
+        let safeHeaders = EventDetailTimelineLayout(width: 100, minimumHeaderDuration: 24 * 60)
+        let earlyChild = safeHeaders.place([event("Parent", 10, 12), event("Five minutes later", 10 + 5.0/60, 11)])
+        check(earlyChild.allSatisfy { $0.depth == 0 }, "Child covers parent's first title line")
+        check(earlyChild[0].leading + earlyChild[0].width <= earlyChild[1].leading, "Insufficient-header events need separate columns")
+        let halfHourChild = safeHeaders.place([event("Parent", 10, 12), event("Half-hour child", 10.5, 11)])
+        check(halfHourChild[1].depth == 1, "Valid nesting was removed despite room for a complete title")
+        check(halfHourChild[0].contentEnd == date(10.5), "Parent label must stop before the half-hour child")
 
         // A short event starting together with a new multi-day event can use
         // an older underlay instead of reserving a fourth root for the day.

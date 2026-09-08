@@ -66,7 +66,8 @@ enum TimedEventLayoutTests {
         precondition(ek.filter { $0.depth == 0 }.count == 2, "Every event became a narrow root lane")
         let byTitle = Dictionary(uniqueKeysWithValues: ek.map { ($0.attributes.descriptor.text, $0) })
         precondition(byTitle["Conference"]!.frame.maxY == 1210, "Midnight collapsed to the top of the day")
-        precondition(byTitle["Conference"]!.continuesFromPreviousDay, "Repeated continuation title")
+        precondition(byTitle["Conference"]!.continuesFromPreviousDay, "Continuation metadata lost")
+        precondition(byTitle["Conference"]!.textHeight > 0, "Continuation has room but no text")
         precondition(byTitle["Work Underlay"]!.textHeight == 48, "Parent text runs under children")
         precondition(byTitle["Release"]!.frame.width > byTitle["Same Start"]!.frame.width, "Free columns not reused")
         for width: CGFloat in [80, 160, 340] {
@@ -89,6 +90,32 @@ enum TimedEventLayoutTests {
         let tiny = EventLayoutAttributes(AppLocalEventDescriptor("Tiny", date(9), date(9.01), "Work",
             slice: DateInterval(start: date(9), end: date(9.01))))
         precondition(layout([tiny])[0].frame.height == 20, "Short event is an invisible line")
+        precondition(layout([tiny])[0].textHeight == 20, "Short event lost its title despite minimum block height")
+        // A child on yesterday's slice must not suppress today's title. Keep
+        // a child spanning midnight as a blocker so text cannot bleed through.
+        for useLocal in [false, true] {
+            func event(_ title: String, _ start: Double, _ end: Double) -> EventLayoutAttributes {
+                let interval = DateInterval(start: date(start), end: date(end))
+                let descriptor: EventDescriptor = useLocal
+                    ? AppLocalEventDescriptor(title, interval.start, interval.end, "Work", slice: interval)
+                    : EKMultiDayWrapper(title, interval.start, interval.end, "Work", slice: interval)
+                return EventLayoutAttributes(descriptor)
+            }
+            let parent = event("Multi-day", -12, 34)
+            let yesterday = event("Yesterday", -4, -3)
+            let today = event("Today", 9, 10)
+            let visible = layout([parent, yesterday, today])
+            let continuing = visible.first { $0.attributes.descriptor.text == "Multi-day" }!
+            precondition(continuing.textHeight == 448, "Yesterday's child hid today's continuation title")
+            let alone = layout([parent, yesterday])[0]
+            precondition(alone.textHeight == 1200, "Empty continuation day lost its text area")
+            let overnight = layout([parent, event("Overnight child", -1, 1)])
+            precondition(overnight[0].textHeight == 0, "Parent text overlaps a child spanning midnight")
+            for rtl in [false, true] {
+                let mirrored = layout([parent, yesterday, today], rtl: rtl)
+                precondition(mirrored[0].textHeight == continuing.textHeight, "RTL changes label visibility")
+            }
+        }
         print("PASS: UIKit adapter, local/EventKit parity, nesting, midnight, text clipping, column bounds, RTL and minimum height")
     }
 }

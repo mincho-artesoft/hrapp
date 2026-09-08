@@ -1158,8 +1158,9 @@ private struct DraggableMenuVerticalContentHost: View, Equatable {
 // MARK: - Create & Edit new Event (Original from your file)
 extension RootView {
     private func createAndEditNewEvent(on day: Date) {
-        if let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
-            appLocalEventTarget = AppLocalEventEditorTarget(date: day, calendarID: calendar.id)
+        guard let destination = CalendarViewModel.shared.newEventCalendar() else { return }
+        if let calendarID = destination.appLocalCalendarID {
+            appLocalEventTarget = AppLocalEventEditorTarget(date: day, calendarID: calendarID)
             return
         }
         let status = EKEventStore.authorizationStatus(for: .event)
@@ -1187,7 +1188,7 @@ extension RootView {
         newEvent.startDate  = eventInitialStart
         newEvent.endDate    = eventInitialStart.addingTimeInterval(3600)
         newEvent.title      = NSLocalizedString("New Event", comment: "")
-        newEvent.calendar   = store.defaultCalendarForNewEvents
+        newEvent.calendar   = destination.calendar
         eventToEdit = newEvent
     }
 

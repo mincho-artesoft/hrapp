@@ -6,6 +6,12 @@ open class EventView: UIView {
     var viewModel: CalendarViewModel = .shared
     private var timelineTextHeight: CGFloat?
     private var timelineDepth: Int?
+    private var previewInterval: DateInterval?
+    private var previewColor: UIColor?
+    private var renderedTextWidth: CGFloat?
+    private var measuredText: NSAttributedString?
+    private var measuredTextWidth: CGFloat?
+    private var measuredLineBottoms: [CGFloat] = []
 
     public var contentHeight: Double {
         textView.frame.height
@@ -48,16 +54,39 @@ open class EventView: UIView {
     }
     
     public func updateWithDescriptor(event: EventDescriptor) {
+        // Selection refreshes this same descriptor without another placement
+        // pass. Keep its clipping/palette; only a reused view needs a reset.
+        if descriptor !== event || event.isAllDay {
+            timelineTextHeight = nil
+            timelineDepth = nil
+        }
+        descriptor = event
+        previewInterval = nil
+        previewColor = nil
+        renderDescriptor()
+    }
+
+    /// Only the temporary view changes while a gesture is active. Persisted
+    /// events and their slices remain untouched until the gesture commits.
+    func updateTimelinePreview(interval: DateInterval) {
+        guard previewInterval != interval || renderedTextWidth != bounds.width else { return }
+        previewInterval = interval
         timelineTextHeight = nil
         timelineDepth = nil
-        descriptor = event
+        renderDescriptor()
+    }
+
+    private func renderDescriptor() {
+        guard let event = descriptor else { return }
         let wrapper = event as? EKMultiDayWrapper
         let local = event as? AppLocalEventDescriptor
         guard wrapper != nil || local != nil else { return }
+        renderedTextWidth = bounds.width
+        let eventColor = previewColor ?? event.color
         let isReadOnly = SharedInviteTracker.isReadOnly(event)
         let eventTitle = wrapper?.text ?? local?.text ?? event.text
-        let eventStart = event.timelineOriginalInterval.start
-        let eventEnd = event.timelineOriginalInterval.end
+        let eventStart = (previewInterval ?? event.timelineOriginalInterval).start
+        let eventEnd = (previewInterval ?? event.timelineOriginalInterval).end
         let eventLocation = wrapper?.realEvent.location ?? local?.location
         let eventNotes = wrapper?.realEvent.notes ?? local?.notes
         let shouldStrikeThrough = wrapper.map {
@@ -78,11 +107,11 @@ open class EventView: UIView {
         var shouldShowCalendarIcon = false
         if calType == .birthday {
             iconAttachment.image = UIImage(systemName: "gift.circle.fill")?
-                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                .withTintColor(eventColor, renderingMode: .alwaysOriginal)
         } else if calType == .subscription,
                   eventCalendar?.title.localizedCaseInsensitiveContains("holiday") == true {
             iconAttachment.image = UIImage(systemName: "star.circle.fill")?
-                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                .withTintColor(eventColor, renderingMode: .alwaysOriginal)
         } else {
             iconAttachment.image = nil
             shouldShowCalendarIcon = event.isAllDay
@@ -90,13 +119,13 @@ open class EventView: UIView {
 
         if shouldShowCalendarIcon {
             calendarAttachment.image = UIImage(systemName: "calendar.circle.fill")?
-                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                .withTintColor(eventColor, renderingMode: .alwaysOriginal)
         }
 
         // Prepare attributed string
         let textAttributes: [NSAttributedString.Key: Any] = [
             .font: event.font,
-            .foregroundColor: event.color
+            .foregroundColor: eventColor
         ]
         let finalString = NSMutableAttributedString()
 
@@ -114,7 +143,7 @@ open class EventView: UIView {
         if isReadOnly {
             let lockAttachment = NSTextAttachment()
             lockAttachment.image = UIImage(systemName: "lock.fill")?
-                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                .withTintColor(eventColor, renderingMode: .alwaysOriginal)
             lockAttachment.bounds = CGRect(
                 x: 0,
                 y: -1,
@@ -138,7 +167,7 @@ open class EventView: UIView {
                 finalString.append(NSAttributedString(string: "\n"))
                 let videoAttachment = NSTextAttachment()
                 videoAttachment.image = UIImage(systemName: "video")?
-                    .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                    .withTintColor(eventColor, renderingMode: .alwaysOriginal)
                 videoAttachment.bounds = calendarAttachment.bounds
                 finalString.append(NSAttributedString(attachment: videoAttachment))
                 finalString.append(NSAttributedString(string: " \(platform)", attributes: textAttributes))
@@ -150,7 +179,7 @@ open class EventView: UIView {
             finalString.append(NSAttributedString(string: "\n"))
             let clockIcon = NSTextAttachment()
             clockIcon.image = UIImage(systemName: "clock")?
-                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                .withTintColor(eventColor, renderingMode: .alwaysOriginal)
             clockIcon.bounds = calendarAttachment.bounds
             finalString.append(NSAttributedString(attachment: clockIcon))
 
@@ -182,7 +211,7 @@ open class EventView: UIView {
             finalString.append(NSAttributedString(string: "\n"))
             let locAttachment = NSTextAttachment()
             locAttachment.image = UIImage(systemName: "location")?
-                .withTintColor(event.color, renderingMode: .alwaysOriginal)
+                .withTintColor(eventColor, renderingMode: .alwaysOriginal)
             locAttachment.bounds = calendarAttachment.bounds
             finalString.append(NSAttributedString(attachment: locAttachment))
             finalString.append(NSAttributedString(string: " \(loc)", attributes: textAttributes))
@@ -195,33 +224,39 @@ open class EventView: UIView {
             finalString.addAttributes(
                 [
                     .strikethroughStyle: NSUnderlineStyle.single.rawValue,
-                    .strikethroughColor: event.color
+                    .strikethroughColor: eventColor
                 ],
                 range: NSRange(location: 0, length: finalString.length)
             )
         }
 
         // Apply to textView and style view
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.alignment = effectiveUserInterfaceLayoutDirection == .rightToLeft ? .right : .left
+        paragraph.baseWritingDirection = effectiveUserInterfaceLayoutDirection == .rightToLeft ? .rightToLeft : .leftToRight
+        finalString.addAttribute(.paragraphStyle, value: paragraph,
+            range: NSRange(location: 0, length: finalString.length))
         textView.attributedText = finalString
         textView.textContainer.maximumNumberOfLines = event.isAllDay ? 1 : (bounds.width < 70 ? 2 : 0)
         textView.textContainer.lineBreakMode = event.isAllDay ? .byTruncatingTail : .byWordWrapping
         backgroundColor = .clear
-        layer.backgroundColor = event.backgroundColor.cgColor
+        layer.backgroundColor = (previewColor?.withAlphaComponent(0.3) ?? event.backgroundColor).cgColor
         layer.cornerRadius = event.isAllDay ? 9 : 5
-        color = event.color
+        color = eventColor
         eventResizeHandles.forEach {
-            $0.borderColor = event.color
+            $0.borderColor = eventColor
             $0.isHidden = isReadOnly || event.editedEvent == nil
         }
+        applyTimelineColors()
         setNeedsDisplay()
         setNeedsLayout()
     }
 
     func applyTimelinePlacement(_ placement: TimedEventLayout.Placement) {
         timelineDepth = placement.depth
-        // Continuation slices stay colored underlays, without repeating a
-        // multi-day title over today's child events.
-        timelineTextHeight = placement.continuesFromPreviousDay ? 0 : placement.textHeight
+        // Every day slice needs its title, even before selection. The layout
+        // already limits the text to the space above this day's child events.
+        timelineTextHeight = placement.textHeight
         applyTimelineColors()
         setNeedsLayout()
     }
@@ -325,6 +360,9 @@ open class EventView: UIView {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
+        // Ghosts are often configured at .zero and receive their frame next.
+        // Re-render from the full title, not the previously truncated string.
+        if renderedTextWidth != bounds.width { renderDescriptor() }
         
         // --- Отклонение наляво за all-day (както преди) ---
         let leftPadding: CGFloat
@@ -362,9 +400,10 @@ open class EventView: UIView {
         if frame.minY < 0 {
             var textFrame = textView.frame
             textFrame.origin.y = -frame.minY
-            textFrame.size.height += frame.minY
+            textFrame.size.height = max(0, textFrame.size.height + frame.minY)
             textView.frame = textFrame
         }
+        fitCompleteTextLines()
         
         let first = eventResizeHandles.first
         let last = eventResizeHandles.last
@@ -390,19 +429,42 @@ open class EventView: UIView {
             size: size
         )
     }
+
+    /// A translucent child must not cover the lower half of its parent's next
+    /// line. Measure whole glyph lines (including attachment/Arabic metrics),
+    /// then truncate the last complete line inside the reserved text area.
+    private func fitCompleteTextLines() {
+        let text = textView.attributedText ?? NSAttributedString()
+        if measuredTextWidth != textView.bounds.width || measuredText?.isEqual(to: text) != true {
+            let storage = NSTextStorage(attributedString: text)
+            let manager = NSLayoutManager()
+            let container = NSTextContainer(size: CGSize(
+                width: textView.bounds.width, height: .greatestFiniteMagnitude))
+            container.lineFragmentPadding = 0
+            container.lineBreakMode = .byWordWrapping
+            manager.addTextContainer(container)
+            storage.addLayoutManager(manager)
+            manager.ensureLayout(for: container)
+            measuredLineBottoms = []
+            manager.enumerateLineFragments(forGlyphRange: manager.glyphRange(for: container)) { _, used, _, _, _ in
+                self.measuredLineBottoms.append(ceil(used.maxY))
+            }
+            measuredText = NSAttributedString(attributedString: text)
+            measuredTextWidth = textView.bounds.width
+        }
+        let limit = descriptor?.isAllDay == true ? 1 : (bounds.width < 70 ? 2 : Int.max)
+        let completeLines = min(limit, measuredLineBottoms.prefix { $0 <= floor(textView.bounds.height) }.count)
+        textView.isHidden = completeLines == 0
+        textView.textContainer.maximumNumberOfLines = max(1, completeLines)
+        textView.textContainer.lineBreakMode = .byTruncatingTail
+    }
     
-    func applyGhostStyle(cornerRadius: CGFloat = 5) {
+    func applyGhostStyle(cornerRadius: CGFloat = 5, calendarColor: UIColor? = nil) {
         // Round corners
         layer.cornerRadius = cornerRadius
         clipsToBounds = true
         
-        if let firstColor = viewModel.firstLocalCalendarColor {
-            color = firstColor
-            backgroundColor = firstColor.withAlphaComponent(0.3)
-        } else {
-            color = .systemBlue
-            backgroundColor = .systemBlue.withAlphaComponent(0.3)
-        }
+        applyGhostColor(newColor: calendarColor ?? viewModel.newEventCalendarColor ?? .systemBlue)
         
         // Тук сменяме цвета на текста
         textView.text = NSLocalizedString("New event", comment: "Default event title")
@@ -413,6 +475,8 @@ open class EventView: UIView {
         eventResizeHandles.forEach { $0.isHidden = true }
     }
     func applyGhostColor(newColor: UIColor) {
+        previewColor = newColor
+        if descriptor is EKMultiDayWrapper || descriptor is AppLocalEventDescriptor { renderDescriptor() }
         color = newColor
         backgroundColor = newColor.withAlphaComponent(0.3)
         textView.textColor = color.withAlphaComponent(1)

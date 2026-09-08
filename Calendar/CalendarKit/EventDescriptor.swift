@@ -31,6 +31,16 @@ public protocol EventDescriptor: AnyObject {
 
 // Сега, в extension-а давате default реализация
 extension EventDescriptor {
+    /// Slices are presentation objects. Gestures must operate on the whole
+    /// event, regardless of which backing store or day was pressed.
+    var timelineEventIdentity: String {
+        if let local = self as? AppLocalEventDescriptor { return "local:" + local.eventID }
+        if let native = self as? EKMultiDayWrapper {
+            return "ek:" + (native.realEvent.eventIdentifier ?? native.realEvent.calendarItemIdentifier)
+        }
+        return String(describing: ObjectIdentifier(self))
+    }
+
     public var calendarID: String? {
         // Ако сте EKMultiDayWrapper:
         if let ekWrap = self as? EKMultiDayWrapper {

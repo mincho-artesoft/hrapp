@@ -3,6 +3,8 @@ import EventKit
 
 public final class EKMultiDayWrapper: EventDescriptor {
     public let realEvent: EKEvent
+    /// A drop destination is a draft; it may belong to another storage provider.
+    var pendingCalendarID: String?
 
     var partialStart: Date
     var partialEnd: Date

@@ -89,6 +89,7 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
+        guard dragOffset == nil else { return }
         
         // Скриваме всички eventView‑та
         for ev in eventViews {
@@ -460,8 +461,24 @@ public final class AllDayView: UIView, UIGestureRecognizerDelegate {
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
-        case .ended, .cancelled:
-            additionalGhostView!.isHidden = true
+        case .cancelled, .failed:
+            stopAutoScroll()
+            autoScrollDirection = .zero
+            clear10MinuteMark()
+            setScrollsClipping(enabled: true)
+            additionalGhostView?.removeFromSuperview()
+            additionalGhostView = nil
+            for (view, frame) in multiDayDraggingOriginalFrames {
+                view.frame = frame
+                view.isHidden = false
+            }
+            dragOffset = nil
+            originalFrameForDraggedEvent = nil
+            multiDayDraggingOriginalFrames.removeAll()
+            setNeedsLayout()
+
+        case .ended:
+            additionalGhostView?.removeFromSuperview()
             additionalGhostView = nil
             if let container = self.superview?.superview as? TwoWayPinnedMultiDayContainerView {
                       container.allDayTitleLabel.textColor = .label

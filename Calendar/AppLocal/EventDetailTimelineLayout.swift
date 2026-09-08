@@ -38,8 +38,15 @@ struct EventDetailTimelineLayout {
 
     let width: CGFloat
     var minimumDuration: TimeInterval = 27 * 60
+    /// Nest only when at least one complete parent title line can precede the
+    /// child. Otherwise these are sibling columns, not overlapping labels.
+    var minimumHeaderDuration: TimeInterval = 0
     var gap: CGFloat = 2
     var nestedInset: CGFloat = 10
+    /// Full-day timelines repeat labels at each day's boundary. Earlier
+    /// children must not clip today's label. Detail previews leave this nil
+    /// to keep content anchored at the event's real start.
+    var textStartBoundary: Date? = nil
 
     private final class Node {
         let item: Item
@@ -92,8 +99,12 @@ struct EventDetailTimelineLayout {
                 nodes.append(node)
             }
             let end = batch.map(collisionEnd).max() ?? start
-            let candidates = nodes.filter {
-                $0.item.start < start && $0.item.end > end && $0.depth < 4
+            let candidates = nodes.filter { node in
+                let headerStart = textStartBoundary.map { boundary in
+                    boundary <= start ? max(boundary, node.item.start) : node.item.start
+                } ?? node.item.start
+                return node.item.start < start && node.item.end > end && node.depth < 4
+                    && start.timeIntervalSince(headerStart) >= minimumHeaderDuration
             }
             func busy(_ node: Node) -> Bool {
                 node.children.contains { $0.item.start < end && collisionEnd($0.item) > start }
@@ -140,8 +151,11 @@ struct EventDetailTimelineLayout {
             let spacing = count > 1 ? min(gap, laneWidth / 2) : 0
             let x = leading + CGFloat(placement.column) * laneWidth + spacing / 2
             let w = max(0.1, CGFloat(endColumn - placement.column) * laneWidth - spacing)
+            let textBlockers = node.children.filter { child in
+                textStartBoundary.map { child.item.end > $0 } ?? true
+            }
             let result = Placement(id: node.item.id, leading: x, width: w, depth: node.depth,
-                contentEnd: node.children.map(\.item.start).min() ?? node.item.end)
+                contentEnd: textBlockers.map(\.item.start).min() ?? node.item.end)
             let inset = min(nestedInset, w / 3)
             return [result] + placeNodes(node.children, leading: x + inset, width: w - inset, visibleInterval: visibleInterval)
         }

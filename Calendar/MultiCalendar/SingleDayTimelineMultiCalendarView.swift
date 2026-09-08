@@ -45,7 +45,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     // MARK: - Public Callbacks
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEventEdit: ((EventDescriptor) -> Void)?
-    public var onEmptyLongPress: ((Date, EKCalendar?) -> Void)?
+    public var onEmptyLongPress: ((DateInterval, String?) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
     public var onEventConvertToAllDay: ((EventDescriptor, Int) -> Void)?
@@ -77,6 +77,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     
     // MARK: - Auto-Scroll
     private var autoScrollDisplayLink: CADisplayLink?
+    private weak var autoScrollGesture: UILongPressGestureRecognizer?
     private var autoScrollDirection = CGPoint.zero
     
     // MARK: - Init
@@ -406,12 +407,22 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
         }
 
-        // 2) Махаме edit режима за всички
-        for (view, _) in eventViewToDescriptor {
+        clearEventSelection()
+    }
+
+    /// Shared by empty timeline space and the pinned hours column.
+    func clearEventSelection() {
+        guard draggingGhosts.isEmpty else { return }
+        currentlyEditedEventViewID = nil
+        currentTappedDescriptor = nil
+        isFirstResize = false
+        editMenuInteraction?.dismissMenu()
+        for (view, descriptor) in eventViewToDescriptor {
+            descriptor.editedEvent = nil
+            view.updateWithDescriptor(event: descriptor)
             view.eventResizeHandles[0].isHidden = true
             view.eventResizeHandles[1].isHidden = true
         }
-        currentlyEditedEventViewID = ""
 
         // ВАЖНО: тук връщаме minimumPressDuration на 0.2 за всеки EventView
         for evView in eventViews {
@@ -485,7 +496,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                  let selectedCals = allCals.filter { $0.value.selected }
                  let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                  let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                  )
 
@@ -503,13 +514,13 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             
             // ─────────────────────────────────────────────────────────────────────────────
-            let columNumber =  CGFloat(CalendarViewModel.shared.multiCalendarsDict.filter { $0.value.selected }.count)
+            let columNumber = CGFloat(subCount)
 
             // 6) Position the ghost at the press location
             let w: CGFloat = dayColumnWidth - style.eventGap * 2 * columNumber
-            let h: CGFloat = 50
+            let h = hourHeight
             let x = point.x - w / columNumber / 2
-            let y = point.y - 25
+            let y = point.y - h / 2
             let initialFrame = CGRect(x: x, y: y, width: w / columNumber, height: h)
             ghostView.frame = initialFrame
 
@@ -518,6 +529,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         
             ghostEmptySpaceView = ghostView
             ghostEmptySpaceDescriptor = ghostDesc
+            updateEmptySpacePreview(ghostView, proposedFrame: initialFrame)
 
             // 7) Store drag data
             let offsetX = point.x - initialFrame.minX
@@ -557,16 +569,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 newFrame.origin.y = bounds.height - newFrame.height
             }
 
-            // For the 10-minute highlight line, we do a "snap" of the date
-            // but we do NOT actually move the ghost's frame to that snap,
-            // we just highlight it in the hoursColumnView.
-            let topPoint = CGPoint(x: newFrame.midX, y: newFrame.minY)
-            if let rawDate = dateFromPoint(topPoint) {
-                let snapped = snapToNearest10Min(rawDate)
-                setSingle10MinuteMarkFromDate(snapped) // draws highlight line
-            }
-
-            ghostView.frame = newFrame
+            updateEmptySpacePreview(ghostView, proposedFrame: newFrame)
+            newFrame = ghostView.frame
 
             // 1) Намираме dayIndex (над кой ден сме)
             let xMid = newFrame.midX
@@ -578,7 +582,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             let selectedCals = allCals.filter { $0.value.selected }
             let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
             let sortedCals = arrangedForLayoutDirection(
-                calsToShow.sorted { $0.value.title < $1.value.title },
+                calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                 in: self
             )
 
@@ -592,14 +596,19 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             // 4) Ако искате да смените цвета според кой календар е “отдолу”,
             //    просто взимате съответния sortedCals[subIndex].value.color:
-            let newColor = sortedCals[subIndex].value.color
-            ghostView.applyGhostColor(newColor: newColor)
+            if sortedCals.indices.contains(subIndex) {
+                ghostView.applyGhostColor(newColor: sortedCals[subIndex].value.color)
+            }
             // If you want auto-scroll near edges:
             updateAutoScrollDirection(for: gesture)
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
-        case .ended, .cancelled:
+        case .cancelled, .failed:
+            cancelActiveTimelineGesture()
+
+        case .ended:
+            defer { setNeedsLayout() }
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.prepare()
             generator.impactOccurred()
@@ -611,10 +620,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             // Къде пускаме? => горния ръб на ghost-а
             let finalFrame = ghostView.frame
-            let topPoint = CGPoint(x: finalFrame.midX, y: finalFrame.minY)
-
-            // Преобразуваме до Date; махаме ghost-а от superview
-            let rawDate = dateFromPoint(topPoint)
+            // Submit the preview's interval without rounding it a second time.
+            let interval = ghostEmptySpaceDescriptor?.dateInterval
             ghostView.removeFromSuperview()
             ghostEmptySpaceView = nil
             ghostEmptySpaceDescriptor = nil
@@ -622,8 +629,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             draggingOriginalAlphas.removeAll()
 
             // Ако има реална дата
-            if let unwrapped = rawDate {
-                let snappedDate = snapToNearest10Min(unwrapped)
+            hoursColumnView?.selectedMinuteMark = nil
+            if let interval {
 
                 // ─────────────────────────────────────────────────────────────────────────
                 // 1) Намираме dayIndex
@@ -636,7 +643,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
 
@@ -650,11 +657,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 subIndex = max(0, min(subIndex, subCount - 1))
 
                 // 5) Извличаме конкретния EKCalendar
-                let chosenCalendar = sortedCals[subIndex].value.calendar
+                let chosenCalendar = sortedCals.indices.contains(subIndex) ? sortedCals[subIndex].key : nil
                 // ─────────────────────────────────────────────────────────────────────────
 
                 // Извикваме callback-а, като подаваме датата + календара
-                onEmptyLongPress?(snappedDate, chosenCalendar)
+                onEmptyLongPress?(interval, chosenCalendar)
             }
 
 
@@ -663,11 +670,25 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         }
     }
 
+    private func updateEmptySpacePreview(_ ghost: EventView, proposedFrame: CGRect) {
+        var frame = proposedFrame
+        frame.origin.x = max(0, min(frame.minX, bounds.width - frame.width))
+        guard let day = dateFromPoint(CGPoint(x: frame.midX, y: topMargin)),
+              let placement = TimelineInteractionGeometry.creationPlacement(
+                frame: frame, day: day, topMargin: topMargin, hourHeight: hourHeight)
+        else { return }
+        ghost.frame = placement.frame
+        ghostEmptySpaceDescriptor?.dateInterval = placement.interval
+        setSingle10MinuteMarkFromDate(placement.interval.start)
+    }
+
 
     
     // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
+        // Keep the descriptor/view mapping stable while a recognizer owns it.
+        guard draggingGhosts.isEmpty else { return }
         
         // Hide all eventViews first
         for v in eventViews {
@@ -685,7 +706,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         let sortedCals = arrangedForLayoutDirection(
-            calsToShow.sorted { $0.1.title < $1.1.title }, in: self)
+            calsToShow.sorted(by: MultiCalendarInfo.orderedBefore), in: self)
         let subColumnWidth = dayColumnWidth / CGFloat(max(1, sortedCals.count))
         let grouped = Dictionary(grouping: regularLayoutAttributes) {
             dayIndexFor($0.descriptor.dateInterval.start)
@@ -715,13 +736,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     // Parent first, then children, including reused views after a
                     // sync/reorder. UIKit hit testing must select the topmost child.
                     bringSubviewToFront(evView)
-                    if let multi = attr.descriptor as? EKMultiDayWrapper,
-                       currentlyEditedEventViewID == multi.realEvent.eventIdentifier {
-                        let firstDayIndex = dayIndexFor(multi.realEvent.startDate)
-                        let lastDayIndex = dayIndexFor(multi.realEvent.endDate)
-                        evView.eventResizeHandles[0].isHidden = dayIndex != firstDayIndex
-                        evView.eventResizeHandles[1].isHidden = dayIndex != lastDayIndex
-                    }
+                    updateResizeHandles(evView, descriptor: attr.descriptor)
                 }
             }
         }
@@ -751,6 +766,9 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         ev.addGestureRecognizer(lp)
         
         for handle in ev.eventResizeHandles {
+            // The handle ships with an unbound pan recognizer. It must not
+            // win against the actual resize recognizer on a quick movement.
+            handle.panGestureRecognizer.isEnabled = false
             let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleEventViewTap(_:)))
             tapGR.delegate = self
             handle.addGestureRecognizer(tapGR)
@@ -793,21 +811,13 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             return
         }
         
-        // Ако е многодневно, маркираме всички slice-ове на същото EKEvent
-        if descriptor is EKMultiDayWrapper {
-            // … вашата логика за маркиране на slice-ове, както досега …
-        } else {
-            // Ако е еднодневно, само той влиза в edit режим
-            descriptor.editedEvent = descriptor
-            evView.updateWithDescriptor(event: descriptor)
+        currentlyEditedEventViewID = descriptor.timelineEventIdentity
+        for (view, slice) in eventViewToDescriptor
+        where slice.timelineEventIdentity == descriptor.timelineEventIdentity {
+            slice.editedEvent = slice
+            view.updateWithDescriptor(event: slice)
+            updateResizeHandles(view, descriptor: slice)
         }
-        guard let multi = descriptor as? EKMultiDayWrapper else {
-          // Ако не е EKMultiDayWrapper, няма да имаме realEvent
-          return
-        }
-
-        // Задаваме идентификатора (ако го ползвате)
-        currentlyEditedEventViewID = multi.realEvent.eventIdentifier
         
         // 3) За новоселектирания eventView задаваме minimumPressDuration = 0.1
         if let gestures = evView.gestureRecognizers {
@@ -823,6 +833,38 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     }
 
     
+    private func cancelActiveTimelineGesture() {
+        stopAutoScroll()
+        setScrollsClipping(enabled: true)
+        hoursColumnView?.selectedMinuteMark = nil
+        for (view, ghost) in draggingGhosts {
+            ghost.removeFromSuperview()
+            view.alpha = draggingOriginalAlphas[view] ?? 1
+            view.layer.setValue(nil, forKey: DRAG_DATA_KEY)
+        }
+        for ghost in additionalDraggingGhosts.values { ghost.removeFromSuperview() }
+        additionalDraggingGhosts.removeAll()
+        draggingGhosts.removeAll()
+        draggingOriginalAlphas.removeAll()
+        ghostEmptySpaceView?.removeFromSuperview()
+        ghostEmptySpaceView = nil
+        ghostEmptySpaceDescriptor = nil
+        highlightedSubColumn = nil
+        if let container = superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
+            container.allDayView.highlightedSubColumn = nil
+        }
+        setNeedsLayout()
+        setNeedsDisplay()
+    }
+
+    private func updateResizeHandles(_ view: EventView, descriptor: EventDescriptor) {
+        let selected = currentlyEditedEventViewID == descriptor.timelineEventIdentity
+            && !SharedInviteTracker.isReadOnly(descriptor)
+        let interval = descriptor.timelineOriginalInterval
+        view.eventResizeHandles[0].isHidden = !selected || descriptor.dateInterval.start > interval.start
+        view.eventResizeHandles[1].isHidden = !selected || descriptor.dateInterval.end < interval.end
+    }
+
     private struct DragData {
         let totalDuration: TimeInterval
         let originalContainerFrames: [EventView: CGRect]
@@ -880,27 +922,16 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             setScrollsClipping(enabled: false)
             let realStart: Date
             let realEnd: Date
-            if let multi = descriptor as? EKMultiDayWrapper {
-                realStart = multi.realEvent.startDate
-                realEnd   = multi.realEvent.endDate
-            } else {
-                realStart = descriptor.dateInterval.start
-                realEnd   = descriptor.dateInterval.end
-            }
+            realStart = descriptor.timelineOriginalInterval.start
+            realEnd = descriptor.timelineOriginalInterval.end
             let totalDuration = realEnd.timeIntervalSince(realStart)
             
             guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
             let pointInContainer = gesture.location(in: container)
             
-            var slices: [EventView] = []
-            if let multi = descriptor as? EKMultiDayWrapper {
-                let eventID = multi.realEvent.eventIdentifier
-                for (ov, od) in eventViewToDescriptor {
-                    if let om = od as? EKMultiDayWrapper,
-                       om.realEvent.eventIdentifier == eventID {
-                        slices.append(ov)
-                    }
-                }
+            let slicesIdentity = descriptor.timelineEventIdentity
+            var slices = eventViewToDescriptor.compactMap { view, item in
+                item.timelineEventIdentity == slicesIdentity ? view : nil
             }
             
             
@@ -1030,7 +1061,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
 
@@ -1095,7 +1126,12 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 }
             }
 
-            // 6) Snap към 10 минути (ако желаете – тук можете просто да пресметнете, без да променяте ghost.frame)
+            if let anchor = draggingGhosts[evView] {
+                let frame = container.convert(anchor.frame, to: self)
+                let interval = dragPreviewInterval(frame: frame, originalStart: d.originalStart,
+                    sliceStart: descriptor.dateInterval.start, duration: d.totalDuration)
+                for ghost in draggingGhosts.values { ghost.updateTimelinePreview(interval: interval) }
+            }
 
             // 7) Проверяваме дали сме над allDayScrollView
             let isNowOverAllDay = container.allDayScrollView.frame.contains(fingerInContainer)
@@ -1143,7 +1179,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                     let sortedCals = arrangedForLayoutDirection(
-                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                         in: self
                     )
 
@@ -1210,7 +1246,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                     let sortedCals = arrangedForLayoutDirection(
-                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                         in: self
                     )
 
@@ -1255,7 +1291,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             }
            
 
-        case .ended, .cancelled:
+        case .cancelled, .failed:
+            cancelActiveTimelineGesture()
+
+        case .ended:
+            defer { setNeedsLayout() }
             for (ghostView, _) in additionalDraggingGhosts {
                 ghostView.layer.setValue(nil, forKey: "AdditionalGhostDragDataKey")
                 ghostView.isHidden = true
@@ -1297,11 +1337,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             var dayIndex = Int(floor((midX) / dayColumnWidth))
             dayIndex = max(0, min(dayIndex, dayCount - 1))
             
-            let topY = frameSelf.minY
-            let hourOffset = (topY - topMargin) / hourHeight
-            
-            let dayDate = dayStartDate(for: dayIndex)
-            let finalStart = dayDate.addingTimeInterval(hourOffset * 3600)
+            let previewInterval = dragPreviewInterval(frame: frameSelf, originalStart: d.originalStart,
+                sliceStart: descriptor.dateInterval.start, duration: d.totalDuration)
             
             for (sv, gh) in draggingGhosts {
                 gh.removeFromSuperview()
@@ -1312,8 +1349,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             draggingGhosts.removeAll()
             draggingOriginalAlphas.removeAll()
             
-            let snappedStart = snapToNearest10Min(finalStart)
-            let snappedEnd   = snappedStart.addingTimeInterval(d.totalDuration)
+            let snappedStart = previewInterval.start
+            let snappedEnd = previewInterval.end
             
             descriptor.isAllDay = false
             descriptor.dateInterval = DateInterval(start: snappedStart, end: snappedEnd)
@@ -1339,7 +1376,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                     let sortedCals = arrangedForLayoutDirection(
-                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                         in: self
                     )
                     let numCalendars = max(1, sortedCals.count)
@@ -1359,15 +1396,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let newCalendarID = sortedCals[newCalendarIndex].key
                     
                     // vi) Ако е EKMultiDayWrapper => сменяме realEvent.calendar
-                    if let multi = descriptor as? EKMultiDayWrapper,
-                       let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
-                    {
-                        multi.realEvent.calendar = newCalendar
+                    if let multi = descriptor as? EKMultiDayWrapper {
+                        multi.pendingCalendarID = newCalendarID
                     }
-                    else if let singleEK = descriptor as? EKMultiDayWrapper,  // Ако ползвате EKWrapper за еднодневни
-                            let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
-                    {
-                        singleEK.ekEvent.calendar = newCalendar
+                    else if let local = descriptor as? AppLocalEventDescriptor {
+                        local.pendingCalendarID = newCalendarID
                     }
                     
                     //
@@ -1388,7 +1421,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let selectedCals = allCals.filter { $0.value.selected }
                     let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                     let sortedCals = arrangedForLayoutDirection(
-                        calsToShow.sorted { $0.value.title < $1.value.title },
+                        calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                         in: self
                     )
                     let numCalendars = max(1, sortedCals.count)
@@ -1408,15 +1441,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                     let newCalendarID = sortedCals[newCalendarIndex].key
                     
                     // vi) Ако е EKMultiDayWrapper => сменяме realEvent.calendar
-                    if let multi = descriptor as? EKMultiDayWrapper,
-                       let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
-                    {
-                        multi.realEvent.calendar = newCalendar
+                    if let multi = descriptor as? EKMultiDayWrapper {
+                        multi.pendingCalendarID = newCalendarID
                     }
-                    else if let singleEK = descriptor as? EKMultiDayWrapper,  // Ако ползвате EKWrapper за еднодневни
-                            let newCalendar = calendarVM.multiCalendarsDict[newCalendarID]?.calendar
-                    {
-                        singleEK.ekEvent.calendar = newCalendar
+                    else if let local = descriptor as? AppLocalEventDescriptor {
+                        local.pendingCalendarID = newCalendarID
                     }
                     
                     //
@@ -1477,13 +1506,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
             let realStart: Date
             let realEnd: Date
-            if let multi = desc as? EKMultiDayWrapper {
-                realStart = multi.realEvent.startDate
-                realEnd   = multi.realEvent.endDate
-            } else {
-                realStart = desc.dateInterval.start
-                realEnd   = desc.dateInterval.end
-            }
+            realStart = desc.timelineOriginalInterval.start
+            realEnd = desc.timelineOriginalInterval.end
 
             // При всеки long press => “edit” mode
             selectEventView(eventView)
@@ -1499,25 +1523,15 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             // Изключваме clipToBounds, за да позволим движение извън видимото
             setScrollsClipping(enabled: false)
 
-            var totalDays = 1
-            if let multi = desc as? EKMultiDayWrapper {
-                let cal = Calendar.current
-                let startOfStart = cal.startOfDay(for: multi.realEvent.startDate)
-                let startOfEnd   = cal.startOfDay(for: multi.realEvent.endDate)
-                let dayCount = cal.dateComponents([.day], from: startOfStart, to: startOfEnd).day ?? 0
-                totalDays = dayCount + 1
-            }
+            let fullInterval = desc.timelineOriginalInterval
+            let totalDays = max(1, (Calendar.current.dateComponents([.day],
+                from: Calendar.current.startOfDay(for: fullInterval.start),
+                to: Calendar.current.startOfDay(for: fullInterval.end.addingTimeInterval(-0.001))).day ?? 0) + 1)
 
             // Събираме всички slice-ове на това събитие
-            var slices: [EventView] = []
-            if let multi = desc as? EKMultiDayWrapper {
-                let eventID = multi.realEvent.eventIdentifier
-                for (ov, od) in eventViewToDescriptor {
-                    if let om = od as? EKMultiDayWrapper,
-                       om.realEvent.eventIdentifier == eventID {
-                        slices.append(ov)
-                    }
-                }
+            let slicesIdentity = desc.timelineEventIdentity
+            var slices = eventViewToDescriptor.compactMap { view, item in
+                item.timelineEventIdentity == slicesIdentity ? view : nil
             }
 
 
@@ -1541,11 +1555,9 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 ghost.layer.zPosition = 2
                 addSubview(ghost)
 
-                let columNumber = CGFloat(CalendarViewModel.shared.multiCalendarsDict.filter { $0.value.selected }.count)
                 let dayIndex = dayIndexFor(thisDesc.dateInterval.start)
                 let ghostX = dayColumnWidth * CGFloat(dayIndex) + 2
                 let ghostY = sliceFrameInSelf.minY
-                let ghostW = dayColumnWidth - style.eventGap * 2 * columNumber - 2
                 let ghostH = sliceFrameInSelf.height
 
                 // Под‑колони
@@ -1553,25 +1565,19 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
                 let numCalendars = max(1, sortedCals.count)
                 let subColumnWidth = dayColumnWidth / CGFloat(numCalendars)
 
                 // Опитваме се да намерим subIndex (според съответния EKCalendar):
-                var subIndex = 0
-                if let multiEK = thisDesc as? EKMultiDayWrapper {
-                    let eventCalID = multiEK.realEvent.calendar.calendarIdentifier
-                    if let idx = sortedCals.firstIndex(where: { $0.key == eventCalID }) {
-                        subIndex = idx
-                    }
-                }
+                let subIndex = sortedCals.firstIndex { $0.key == thisDesc.calendarID } ?? 0
 
                 let ghostFrame = CGRect(
                     x: ghostX + CGFloat(subIndex) * subColumnWidth,
                     y: ghostY,
-                    width: ghostW / columNumber,
+                    width: max(1, subColumnWidth - style.eventGap * 2 - 2),
                     height: ghostH
                 )
                 ghost.frame = ghostFrame
@@ -1616,7 +1622,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
                 let subCount = max(1, sortedCals.count)
@@ -1742,6 +1748,8 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             if let newDateRaw = dateFromResize(f, isTop: d.isTop) {
                 let snapped = snapToNearest10Min(newDateRaw)
                 setSingle10MinuteMarkFromDate(snapped)
+                let interval = TimelineInteractionGeometry.resized(d.startInterval, edge: snapped, isTop: d.isTop)
+                for view in draggingGhosts.values { view.updateTimelinePreview(interval: interval) }
             }
 
             // (7) Auto‐scroll (ако сте го имплементирали)
@@ -1801,7 +1809,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? allCals : selectedCals
                 let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.value.title < $1.value.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
 
@@ -1823,7 +1831,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         // ----------------------------------------------------------------------------------
         // MARK: .ended / .cancelled
         // ----------------------------------------------------------------------------------
-        case .ended, .cancelled:
+        case .cancelled, .failed:
+            cancelActiveTimelineGesture()
+
+        case .ended:
+            defer { setNeedsLayout() }
             let generator = UIImpactFeedbackGenerator(style: .light)
               generator.prepare()
               generator.impactOccurred()
@@ -1869,15 +1881,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
             // Snap‐ваме горния / долния край
             if let newDateRaw = dateFromResize(finalFrameInSelf, isTop: d.isTop) {
                 let snapped = snapToNearest10Min(newDateRaw)
-                if d.isTop {
-                    if snapped < interval.end {
-                        interval = DateInterval(start: snapped, end: interval.end)
-                    }
-                } else {
-                    if snapped > interval.start {
-                        interval = DateInterval(start: interval.start, end: snapped)
-                    }
-                }
+                interval = TimelineInteractionGeometry.resized(interval, edge: snapped, isTop: d.isTop)
             }
             if d.originalTotalDays == eventViewToDescriptor.count && d.totalDay == 1 {
                 for ev in eventViews{
@@ -1904,6 +1908,17 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
 
     // MARK: - dayIndex, etc.
+    private func dragPreviewInterval(
+        frame: CGRect, originalStart: Date, sliceStart: Date, duration: TimeInterval
+    ) -> DateInterval {
+        let dayIndex = max(0, min(Int(floor(frame.midX / dayColumnWidth)), dayCount - 1))
+        let day = dayStartDate(for: dayIndex)
+        let proposed = day.addingTimeInterval(Double((frame.minY - topMargin) / hourHeight) * 3600)
+        let start = TimelineInteractionGeometry.movedStart(originalStart: originalStart,
+            sliceStart: sliceStart, proposedSliceStart: proposed)
+        return DateInterval(start: snapToNearest10Min(start), duration: duration)
+    }
+
     private func dayIndexFor(_ date: Date) -> Int {
         let cal = Calendar.current
         let startOnly = cal.startOfDay(for: fromDate)
@@ -2172,35 +2187,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     
     // ADDED: Вече го имате, но показвам къде се ползва
     private func snapToNearest10Min(_ date: Date) -> Date {
-        let cal = Calendar.current
-        let comps = cal.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        guard let y = comps.year, let mo = comps.month, let d = comps.day,
-              let h = comps.hour, let m = comps.minute else {
-            return date
-        }
-        if m == 0 { return date }
-        
-        let remainder = m % 10
-        var finalM = m
-        if remainder < 5 {
-            finalM = m - remainder
-        } else {
-            finalM = m + (10 - remainder)
-            if finalM == 60 {
-                finalM = 0
-                let plusHour = (h + 1) % 24
-                let comps2 = DateComponents(year: y, month: mo, day: d, hour: plusHour, minute: 0)
-                return cal.date(from: comps2) ?? date
-            }
-        }
-        var comps2 = DateComponents()
-        comps2.year = y
-        comps2.month = mo
-        comps2.day = d
-        comps2.hour = h
-        comps2.minute = finalM
-        comps2.second = 0
-        return cal.date(from: comps2) ?? date
+        TimelineInteractionGeometry.snappedToTenMinutes(date)
     }
     
     func dateFromPoint(_ point: CGPoint) -> Date? {
@@ -2240,6 +2227,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     
     // MARK: - Auto Scroll
     private func updateAutoScrollDirection(for gesture: UILongPressGestureRecognizer) {
+        autoScrollGesture = gesture
         guard let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView else { return }
         let location = gesture.location(in: container)
         let threshold: CGFloat = 50
@@ -2275,6 +2263,7 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
     }
     
     private func stopAutoScroll() {
+        autoScrollGesture = nil
         autoScrollDisplayLink?.invalidate()
         autoScrollDisplayLink = nil
     }
@@ -2293,6 +2282,18 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         newOffset.y = max(0, min(newOffset.y, scrollView.contentSize.height - scrollView.bounds.height))
         
         scrollView.setContentOffset(newOffset, animated: false)
+
+        // The finger may be stationary while the grid moves underneath it.
+        // Recompute the same draft frame/time as a regular gesture update.
+        if let gesture = autoScrollGesture, gesture.state == .changed {
+            if gesture.view is EventResizeHandleView {
+                handleResizeHandlePanGesture(gesture)
+            } else if gesture.view is EventView {
+                handleEventViewPan(gesture)
+            } else {
+                handleLongPressOnEmptySpace(gesture)
+            }
+        }
     }
     
     func dateFromFrame(_ frame: CGRect) -> Date? {

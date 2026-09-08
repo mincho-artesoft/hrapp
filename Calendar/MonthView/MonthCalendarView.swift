@@ -314,8 +314,9 @@ extension MonthCalendarView {
     }
 
     private func createAndEditNewEvent(on day: Date) {
-        if let calendar = viewModel.pickFirstWritableSelectedAppLocalCalendar() {
-            appLocalEventTarget = AppLocalEventEditorTarget(date: day, calendarID: calendar.id)
+        guard let destination = viewModel.newEventCalendar() else { return }
+        if let calendarID = destination.appLocalCalendarID {
+            appLocalEventTarget = AppLocalEventEditorTarget(date: day, calendarID: calendarID)
             return
         }
         let status = EKEventStore.authorizationStatus(for: .event)
@@ -348,7 +349,7 @@ extension MonthCalendarView {
         newEvent.startDate = startOfDay.addingTimeInterval(9 * 3600)
         newEvent.endDate = startOfDay.addingTimeInterval(10 * 3600)
         newEvent.title = NSLocalizedString("New Event", comment: "Default title for newly created events")
-        newEvent.calendar = viewModel.eventStore.defaultCalendarForNewEvents
+        newEvent.calendar = viewModel.newEventCalendar()?.calendar
         
         eventToEdit = newEvent
     }

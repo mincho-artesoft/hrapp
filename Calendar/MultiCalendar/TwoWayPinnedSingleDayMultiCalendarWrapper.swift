@@ -18,6 +18,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
 
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
+        context.coordinator.presentationController = vc
         let semanticDirection: UISemanticContentAttribute =
             context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight
         vc.view.semanticContentAttribute = semanticDirection
@@ -69,12 +70,13 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             }
         }
         
-        container.onEmptyLongPress = {date, calendar in
-            context.coordinator.createNewEventAndPresent(date: date, in: vc, preselectedCalendar: calendar)
+        container.onEmptyLongPress = { interval, calendar in
+            context.coordinator.createNewEventAndPresent(
+                date: interval.start, in: vc, preselectedCalendarID: calendar, initialInterval: interval)
         }
 
         container.allDayView.onEmptyLongPress = { date, calendar in
-            context.coordinator.createAllDayEventAndPresent(date: date, in: vc, preselectedCalendar: calendar)
+            context.coordinator.createAllDayEventAndPresent(date: date, in: vc, preselectedCalendarID: calendar)
         }
         
         container.onEventDragEnded = { descriptor, newDate, isAllDay in
@@ -199,6 +201,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         }
         
         var parent: TwoWayPinnedSingleDayMultiCalendarWrapper
+        weak var presentationController: UIViewController?
         var lastRenderedEvents: [EventDescriptorPresentationKey] = []
         var currentlyViewingEventID: String?
         var currentlyEditingEventWasNew = false
@@ -379,24 +382,21 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         public func createNewEventAndPresent(
             date: Date,
             in parentVC: UIViewController,
-            preselectedCalendar: EKCalendar? = nil
+            preselectedCalendarID: String? = nil,
+            initialInterval: DateInterval? = nil
         ) {
-            if preselectedCalendar == nil,
-               let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
-                presentAppLocalEditor(date: date, calendarID: calendar.id, in: parentVC)
+            guard let destination = CalendarViewModel.shared.newEventCalendar(
+                preferredCalendarID: preselectedCalendarID) else { return }
+            if let id = destination.appLocalCalendarID {
+                presentAppLocalEditor(date: date, calendarID: id, initialInterval: initialInterval, in: parentVC)
                 return
             }
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = NSLocalizedString("New event", comment: "")
             newEvent.startDate = date
-            newEvent.endDate   = date.addingTimeInterval(3600)
+            newEvent.endDate   = initialInterval?.end ?? date.addingTimeInterval(3600)
 
-            // Ако имаме избран календар, ползваме него; иначе default
-            if let cal = preselectedCalendar {
-                newEvent.calendar = cal
-            } else {
-                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
-            }
+            newEvent.calendar = destination.calendar
 
             presentSystemEditor(newEvent, in: parentVC)
             ReviewManager.eventCreated()
@@ -404,23 +404,19 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
 
 
         
-        @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController,  preselectedCalendar: EKCalendar? = nil) {
-            if preselectedCalendar == nil,
-               let calendar = CalendarViewModel.shared.pickFirstWritableSelectedAppLocalCalendar() {
-                presentAppLocalEditor(date: date, calendarID: calendar.id, isAllDay: true, in: parentVC)
+        @MainActor public func createAllDayEventAndPresent(date: Date, in parentVC: UIViewController, preselectedCalendarID: String? = nil) {
+            guard let destination = CalendarViewModel.shared.newEventCalendar(
+                preferredCalendarID: preselectedCalendarID) else { return }
+            if let id = destination.appLocalCalendarID {
+                presentAppLocalEditor(date: date, calendarID: id, isAllDay: true, in: parentVC)
                 return
             }
             let newEvent = EKEvent(eventStore: parent.eventStore)
             newEvent.title = NSLocalizedString("All-day event", comment: "")
-            newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
+            newEvent.calendar = destination.calendar
             newEvent.isAllDay = true
             newEvent.startDate = date
             newEvent.endDate   = date
-            if let cal = preselectedCalendar {
-                newEvent.calendar = cal
-            } else {
-                newEvent.calendar = parent.eventStore.defaultCalendarForNewEvents
-            }
             presentSystemEditor(newEvent, in: parentVC)
             ReviewManager.eventCreated()
         }
@@ -431,14 +427,21 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             isResize: Bool,
             isAllDay: Bool
         ) {
-            if let local = descriptor as? AppLocalEventDescriptor,
-               let event = AppLocalCalendarStore.shared.event(id: local.eventID) {
-                let duration = event.endDate.timeIntervalSince(event.startDate)
-                AppLocalCalendarStore.shared.moveEvent(
-                    id: event.id,
-                    startDate: isResize ? event.startDate : newDate,
-                    endDate: isResize ? max(newDate, event.startDate) : newDate.addingTimeInterval(duration)
-                )
+            if let local = descriptor as? AppLocalEventDescriptor {
+                if let destinationID = local.pendingCalendarID,
+                   let destination = parent.eventStore.calendar(withIdentifier: destinationID) {
+                    finishTimelineTransfer {
+                        try CalendarTimelineTransfer.move(local: local, to: destination,
+                            eventStore: parent.eventStore, isResize: isResize)
+                    }
+                    return
+                }
+                // The timeline already resolved BOTH edges, including top-
+                // handle resizing and conversions between timed/all-day.
+                local.commitTimelineChange(isResize: isResize)
+                // Replace gesture-mutated slices even after a no-op or a
+                // rejected destination; the store remains authoritative.
+                lastRenderedEvents = []
                 reloadCurrentRange(debug: false)
                 return
             }
@@ -447,6 +450,19 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 guard !SharedInviteTracker.isReadOnly(ev) else {
                     reloadCurrentRange()
                     return
+                }
+                if let destinationID = multi.pendingCalendarID {
+                    if let destination = AppLocalCalendarStore.shared.calendar(id: destinationID) {
+                        moveSystemEventToLocal(multi, destination: destination)
+                        return
+                    }
+                    guard let destination = parent.eventStore.calendar(withIdentifier: destinationID),
+                          destination.allowsContentModifications else {
+                        finishTimelineTransfer { throw CalendarTimelineTransfer.unavailable() }
+                        return
+                    }
+                    ev.calendar = destination
+                    multi.pendingCalendarID = nil
                 }
                 if ev.hasRecurrenceRules {
                     askUserForRecurring(event: ev, newDate: newDate, isResize: isResize)
@@ -458,6 +474,45 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                     }
                 }
             }
+        }
+
+        @MainActor
+        private func finishTimelineTransfer(_ operation: () throws -> Void) {
+            do {
+                try operation()
+                EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+                SharedEventSyncManager.eventStoreDidChange()
+                NotificationCenter.default.post(name: .sharedEventImported, object: nil)
+            } catch {
+                let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+                presentationController?.present(alert, animated: true)
+            }
+            lastRenderedEvents = []
+            reloadCurrentRange(debug: false)
+        }
+
+        @MainActor
+        private func moveSystemEventToLocal(_ event: EKMultiDayWrapper, destination: AppLocalCalendarRecord) {
+            let move: (EKSpan) -> Void = { span in
+                self.finishTimelineTransfer {
+                    try CalendarTimelineTransfer.move(system: event, to: destination,
+                        eventStore: self.parent.eventStore, span: span)
+                }
+            }
+            guard event.realEvent.hasRecurrenceRules else { move(.thisEvent); return }
+            let alert = UIAlertController(
+                title: NSLocalizedString("Recurring Event", comment: ""),
+                message: NSLocalizedString("This event is part of a series. Update which events?", comment: ""),
+                preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("This Event Only", comment: ""), style: .default) { _ in move(.thisEvent) })
+            alert.addAction(UIAlertAction(title: NSLocalizedString("All Future Events", comment: ""), style: .default) { _ in move(.futureEvents) })
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
+                self.lastRenderedEvents = []
+                self.reloadCurrentRange(debug: false)
+            })
+            alert.popoverPresentationController?.sourceView = presentationController?.view
+            presentationController?.present(alert, animated: true)
         }
 
         @MainActor
@@ -488,13 +543,15 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
             date: Date,
             calendarID: String,
             isAllDay: Bool = false,
+            initialInterval: DateInterval? = nil,
             in parentVC: UIViewController
         ) {
             presentAppLocalEditor(
                 target: AppLocalEventEditorTarget(
                     date: date,
                     calendarID: calendarID,
-                    isAllDay: isAllDay
+                    isAllDay: isAllDay,
+                    initialInterval: initialInterval
                 ),
                 in: parentVC
             )

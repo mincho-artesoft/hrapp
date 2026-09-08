@@ -401,6 +401,27 @@ final class AppLocalCalendarStore: ObservableObject {
         persistAndNotify()
     }
 
+    /// Cross-provider moves must confirm the disk write before deleting their
+    /// source. Ordinary in-memory save success is not sufficient for a move.
+    func saveTransferredEvent(_ event: AppLocalEventRecord) throws {
+        var updated = events.filter { $0.id != event.id }
+        updated.append(event)
+        try persistTransferredEvents(updated)
+    }
+
+    func deleteTransferredEvent(id: String) throws {
+        try persistTransferredEvents(events.filter { $0.id != id })
+    }
+
+    private func persistTransferredEvents(_ updated: [AppLocalEventRecord]) throws {
+        let snapshot = Snapshot(schemaVersion: 1, calendars: calendars, events: updated)
+        try JSONEncoder().encode(snapshot).write(to: fileURL, options: .atomic)
+        events = updated
+        NotificationCenter.default.post(name: .appLocalCalendarStoreChanged, object: nil)
+        EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
+        SharedEventSyncManager.eventStoreDidChange()
+    }
+
     func moveEvent(id: String, startDate: Date, endDate: Date) {
         guard let index = events.firstIndex(where: { $0.id == id }),
               calendar(id: events[index].calendarID)?.canEditEvents == true else { return }
@@ -514,6 +535,10 @@ final class AppLocalEventDescriptor: EventDescriptor {
     var partialStart: Date
     var partialEnd: Date
     weak var editedEvent: EventDescriptor?
+    // Gesture previews are drafts, just like EventKit objects. Do not publish
+    // store changes halfway through a drag (which rebuilds the active views).
+    private var pendingAllDay: Bool?
+    var pendingCalendarID: String?
 
     init(eventID: String, partialStart: Date, partialEnd: Date) {
         self.eventID = eventID
@@ -539,16 +564,28 @@ final class AppLocalEventDescriptor: EventDescriptor {
     }
 
     var isAllDay: Bool {
-        get { event?.isAllDay ?? false }
-        set {
-            let id = eventID
-            let allDay = newValue
-            MainActor.assumeIsolated {
-                guard var value = AppLocalCalendarStore.shared.event(id: id) else { return }
-                value.isAllDay = allDay
-                AppLocalCalendarStore.shared.saveEvent(value)
-            }
+        get { pendingAllDay ?? event?.isAllDay ?? false }
+        set { pendingAllDay = newValue }
+    }
+
+    @MainActor
+    func commitTimelineChange(isResize: Bool) {
+        let store = AppLocalCalendarStore.shared
+        guard var value = store.event(id: eventID), !isReadOnly else { return }
+        if let destination = pendingCalendarID {
+            guard store.calendar(id: destination)?.canEditEvents == true else { return }
+            value.calendarID = destination
         }
+        let oldDuration = value.endDate.timeIntervalSince(value.startDate)
+        let movingAllDay = value.isAllDay && isAllDay && !isResize
+        value.startDate = dateInterval.start
+        value.endDate = movingAllDay
+            ? value.startDate.addingTimeInterval(oldDuration)
+            : dateInterval.end
+        value.isAllDay = isAllDay
+        store.saveEvent(value)
+        pendingAllDay = nil
+        pendingCalendarID = nil
     }
 
     var text: String { event?.title ?? "" }

@@ -10,6 +10,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
 
     private var didScrollToNow = false
+    private var isSynchronizingScroll = false
 
     // MARK: - Public configuration
     public var showSingleDay: Bool = false {
@@ -88,10 +89,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
     }
 
-    public var onEmptyLongPress: ((Date) -> Void)? {
+    public var onEmptyLongPress: ((DateInterval, String?) -> Void)? {
         didSet {
             weekView.onEmptyLongPress = onEmptyLongPress
-            allDayView.onEmptyLongPress = onEmptyLongPress
         }
     }
     
@@ -416,7 +416,16 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         
         // hoursColumnScrollView
         hoursColumnScrollView.showsVerticalScrollIndicator = false
-        hoursColumnScrollView.isScrollEnabled = false
+        hoursColumnScrollView.showsHorizontalScrollIndicator = false
+        hoursColumnScrollView.isScrollEnabled = true
+        hoursColumnScrollView.bounces = false
+        hoursColumnScrollView.isDirectionalLockEnabled = true
+        hoursColumnScrollView.delegate = self
+        hoursColumnScrollView.accessibilityIdentifier = "timeline-hours-scroll"
+        let hoursTap = UITapGestureRecognizer(target: self, action: #selector(handleHoursColumnTap(_:)))
+        hoursTap.cancelsTouchesInView = false
+        hoursTap.require(toFail: hoursColumnScrollView.panGestureRecognizer)
+        hoursColumnScrollView.addGestureRecognizer(hoursTap)
         hoursColumnScrollView.contentInsetAdjustmentBehavior = .never
         hoursColumnScrollView.addSubview(hoursColumnView)
         hoursColumnScrollView.layer.zPosition = 3
@@ -780,16 +789,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // area and timeline scroll instead of squeezing every day on screen.
         // There is intentionally no maximum width: shorter ranges may expand to
         // use all of the available space.
-        let minimumDayColumnWidth: CGFloat = 100
-        let newDayColumnWidth: CGFloat
-        if dayCount > 0 {
-            newDayColumnWidth = max(
-                minimumDayColumnWidth,
-                availableWidth / CGFloat(dayCount)
-            )
-        } else {
-            newDayColumnWidth = minimumDayColumnWidth
-        }
+        let newDayColumnWidth = TimelineInteractionGeometry.columnWidth(
+            available: availableWidth, count: dayCount)
         weekView.dayColumnWidth = newDayColumnWidth
         daysHeaderView.dayColumnWidth = newDayColumnWidth
         allDayView.dayColumnWidth = newDayColumnWidth
@@ -916,6 +917,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
 
     // MARK: - UIScrollViewDelegate
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !isSynchronizingScroll else { return }
+        isSynchronizingScroll = true
+        defer { isSynchronizingScroll = false }
         if scrollView == mainScrollView {
             let syncedOffsetY = syncedVerticalOffset(for: scrollView.contentOffset.y)
             if abs(scrollView.contentOffset.y - syncedOffsetY) > 0.5 {
@@ -931,6 +935,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             mainScrollView.contentOffset.x = scrollView.contentOffset.x
             allDayScrollView.contentOffset.x = scrollView.contentOffset.x
         }
+        else if scrollView == hoursColumnScrollView {
+            let y = syncedVerticalOffset(for: scrollView.contentOffset.y)
+            hoursColumnScrollView.contentOffset = CGPoint(x: 0, y: y)
+            mainScrollView.contentOffset.y = y
+            hoursColumnWeatherScrollView.contentOffset.y = y
+        }
         else if scrollView == allDayScrollView {
             mainScrollView.contentOffset.x = scrollView.contentOffset.x
             daysHeaderScrollView.contentOffset.x = scrollView.contentOffset.x
@@ -943,6 +953,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let sharedMaxOffset = min(mainMaxOffset, hoursMaxOffset)
 
         return min(max(proposedOffsetY, 0), sharedMaxOffset)
+    }
+
+    @objc private func handleHoursColumnTap(_ gesture: UITapGestureRecognizer) {
+        guard gesture.state == .ended else { return }
+        weekView.clearEventSelection()
     }
     
     // MARK: - Timer

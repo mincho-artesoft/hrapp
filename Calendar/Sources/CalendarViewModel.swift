@@ -9,6 +9,10 @@ import Contacts
 /// calendars (iCloud, Google and Microsoft mirrors) carry `calendar`; calendars
 /// stored by the app carry `appLocalCalendarID` instead.
 public struct MultiCalendarInfo {
+    static func orderedBefore(_ lhs: (String, MultiCalendarInfo), _ rhs: (String, MultiCalendarInfo)) -> Bool {
+        CalendarColumnOrder.precedes(title: lhs.1.title, id: lhs.0, otherTitle: rhs.1.title, otherID: rhs.0)
+    }
+
     public let id: String
     public let title: String
     public let color: UIColor
@@ -72,7 +76,9 @@ final class CalendarViewModel: ObservableObject {
     /// range without forcing every calendar/settings view to rebuild.
     let calendarContentDidChange = PassthroughSubject<Void, Never>()
 
-    @Published var firstLocalCalendarColor: UIColor?
+    /// Resolve at gesture time; a cached color goes stale after visibility or
+    /// app-local color changes and can disagree with the editor destination.
+    var newEventCalendarColor: UIColor? { newEventCalendar()?.color }
     
     // MARK: MULTI-ACCOUNT: Instead of a single StoredGoogleUser, keep an array
     @Published var storedUsers: [StoredGoogleUser] = []
@@ -666,14 +672,6 @@ final class CalendarViewModel: ObservableObject {
         // Обновяваме речника (или каквото друго е нужно)
         syncNonOtherCalendarsDict()
 
-        // Използваме същата логика, която ползваме при създаване на нови събития
-        // (примерно pickFirstWritableSelectedCalendar())
-        if let writableSelectedCal = pickFirstWritableSelectedCalendar(),
-           let cgColor = writableSelectedCal.cgColor {
-            self.firstLocalCalendarColor = UIColor(cgColor: cgColor)
-        } else {
-            self.firstLocalCalendarColor = nil
-        }
     }
 
     var isCalendarSyncInProgress: Bool {
@@ -829,6 +827,31 @@ final class CalendarViewModel: ObservableObject {
         AppLocalCalendarStore.shared.calendars.first {
             selectedCalendarIDs.contains($0.id) && $0.canEditEvents
         }
+    }
+
+    /// Same default for timed/all-day ghosts, Add, and the custom editor.
+    /// Explicit MultiCalendar columns win; otherwise restore the first selected
+    /// writable calendar policy from 49b5bbac, across both backing stores.
+    func newEventCalendar(preferredCalendarID: String? = nil) -> MultiCalendarInfo? {
+        let metadata = multiCalendarsDict
+        var candidates = allCalendars.compactMap { metadata[$0.calendarIdentifier] }
+        candidates += AppLocalCalendarStore.shared.calendars.compactMap { metadata[$0.id] }
+        let systemDefault = eventStore.defaultCalendarForNewEvents
+        // EventKit can expose its default before the observable list reloads.
+        if let calendar = systemDefault,
+           !candidates.contains(where: { $0.id == calendar.calendarIdentifier }) {
+            candidates.append(MultiCalendarInfo(
+                id: calendar.calendarIdentifier, title: calendar.title,
+                color: calendar.cgColor.map(UIColor.init(cgColor:)) ?? .systemBlue,
+                selected: selectedCalendarIDs.contains(calendar.calendarIdentifier),
+                calendar: calendar,
+                allowsContentModifications: calendar.allowsContentModifications
+                    && calendar.type != .birthday && calendar.type != .subscription))
+        }
+        return NewEventCalendarSelection.resolve(
+            calendars: candidates, selectedIDs: selectedCalendarIDs,
+            preferredID: preferredCalendarID, defaultID: systemDefault?.calendarIdentifier,
+            id: \.id, writable: \.allowsContentModifications)
     }
 
     private func ensureDefaultCalendarSelectionIfNeeded() {

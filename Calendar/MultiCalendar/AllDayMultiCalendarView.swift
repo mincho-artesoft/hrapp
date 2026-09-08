@@ -47,7 +47,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     public var onEventTap: ((EventDescriptor) -> Void)?
     public var onEventDragEnded: ((EventDescriptor, Date, Bool) -> Void)?
     public var onEventDragResizeEnded: ((EventDescriptor, Date) -> Void)?
-    public var onEmptyLongPress: ((Date, EKCalendar?) -> Void)?
+    public var onEmptyLongPress: ((Date, String?) -> Void)?
 
     // Списък с атрибути (позиции, дескриптори) за all-day събитията.
     public var allDayLayoutAttributes = [EventLayoutAttributes]() {
@@ -108,6 +108,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
     
     public override func layoutSubviews() {
         super.layoutSubviews()
+        guard dragOffset == nil else { return }
         
         // 1) Скролът да обхваща цялата площ на self
         scrollView.frame = self.bounds
@@ -135,7 +136,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         let sortedCals = arrangedForLayoutDirection(
-            calsToShow.sorted { $0.1.title < $1.1.title },
+            calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
             in: self
         )
         
@@ -212,7 +213,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         let selectedCals = allCals.filter { $0.value.selected }
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         let sortedCals = arrangedForLayoutDirection(
-            calsToShow.sorted { $0.1.title < $1.1.title },
+            calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
             in: self
         )
         let numberOfCalendars = max(1, sortedCals.count)
@@ -402,7 +403,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
             let selectedCals = allCals.filter { $0.value.selected }
             let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
             let sortedCals = arrangedForLayoutDirection(
-                calsToShow.sorted { $0.1.title < $1.1.title },
+                calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                 in: self
             )
             let numCalendars = max(1, sortedCals.count)
@@ -466,7 +467,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                 let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.1.title < $1.1.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
                 let numCalendars = max(1, sortedCals.count)
@@ -510,7 +511,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let selectedCals = allCals.filter { $0.value.selected }
                 let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                 let sortedCals = arrangedForLayoutDirection(
-                    calsToShow.sorted { $0.1.title < $1.1.title },
+                    calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
                 let numCalendars = max(1, sortedCals.count)
@@ -574,8 +575,24 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         // ─────────────────────────────────────────────────────────────────────────────
         // MARK: .ended / .cancelled
         // ─────────────────────────────────────────────────────────────────────────────
-        case .ended, .cancelled:
-            additionalGhostView?.isHidden = true
+        case .cancelled, .failed:
+            stopAutoScroll()
+            autoScrollDirection = .zero
+            clear10MinuteMark()
+            setScrollsClipping(enabled: true)
+            additionalGhostView?.removeFromSuperview()
+            additionalGhostView = nil
+            for (view, frame) in multiDayDraggingOriginalFrames {
+                view.frame = frame
+                view.isHidden = false
+            }
+            dragOffset = nil
+            originalFrameForDraggedEvent = nil
+            multiDayDraggingOriginalFrames.removeAll()
+            setNeedsLayout()
+
+        case .ended:
+            additionalGhostView?.removeFromSuperview()
             additionalGhostView = nil
             
             if let container = self.superview?.superview as? TwoWayPinnedSingleDayMultiCalendarContainerView {
@@ -610,7 +627,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     let selectedCals = allCals.filter { $0.value.selected }
                     let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                     let sortedCalsSorted = arrangedForLayoutDirection(
-                        sortedCals.sorted { $0.1.title < $1.1.title },
+                        sortedCals.sorted(by: MultiCalendarInfo.orderedBefore),
                         in: self
                     )
                     
@@ -622,9 +639,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                     let clampedIndex = min(max(newCalendarIndex, 0), sortedCalsSorted.count - 1)
                     let newCalendarID = sortedCalsSorted[clampedIndex].key
                     
-                    if let multi = descriptor as? EKMultiDayWrapper,
-                       let newCalendar = CalendarViewModel.shared.multiCalendarsDict[newCalendarID]?.calendar {
-                        multi.realEvent.calendar = newCalendar
+                    if let multi = descriptor as? EKMultiDayWrapper {
+                        multi.pendingCalendarID = newCalendarID
+                    } else if let local = descriptor as? AppLocalEventDescriptor {
+                        local.pendingCalendarID = newCalendarID
                     }
                     
                     descriptor.isAllDay = true
@@ -652,7 +670,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let selectedCals = allCals.filter { $0.value.selected }
                 let sortedCals = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
                 let sortedCalsSorted = arrangedForLayoutDirection(
-                    sortedCals.sorted { $0.1.title < $1.1.title },
+                    sortedCals.sorted(by: MultiCalendarInfo.orderedBefore),
                     in: self
                 )
                 
@@ -662,9 +680,10 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
                 let clampedIndex = min(max(newCalendarIndex, 0), sortedCalsSorted.count - 1)
                 let newCalendarID = sortedCalsSorted[clampedIndex].key
                 
-                if let multi = descriptor as? EKMultiDayWrapper,
-                   let newCalendar = CalendarViewModel.shared.multiCalendarsDict[newCalendarID]?.calendar {
-                    multi.realEvent.calendar = newCalendar
+                if let multi = descriptor as? EKMultiDayWrapper {
+                    multi.pendingCalendarID = newCalendarID
+                } else if let local = descriptor as? AppLocalEventDescriptor {
+                    local.pendingCalendarID = newCalendarID
                 }
                 
                 let localY = evFrameInTimeline.minY - topMargin
@@ -718,7 +737,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         let calsToShow = selectedCals.isEmpty ? Array(allCals) : Array(selectedCals)
         // Сортираме
         let sortedCals = arrangedForLayoutDirection(
-            calsToShow.sorted { $0.1.title < $1.1.title },
+            calsToShow.sorted(by: MultiCalendarInfo.orderedBefore),
             in: self
         )
         let numCals = max(1, sortedCals.count)
@@ -736,7 +755,7 @@ public final class AllDayMultiCalendarView: UIView, UIGestureRecognizerDelegate 
         subIndex = max(0, min(subIndex, numCals - 1))
         
         // Извличаме EKCalendar (ако има)
-        let chosenCalendar = sortedCals[subIndex].value.calendar
+        let chosenCalendar = sortedCals.indices.contains(subIndex) ? sortedCals[subIndex].key : nil
         
         // 4) Извикваме callback и подаваме и календара
         onEmptyLongPress?(dayDate, chosenCalendar)
