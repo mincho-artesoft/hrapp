@@ -11,9 +11,7 @@ import { RouterLink } from '@angular/router';
 import { ScrollService } from '../../core/scroll.service';
 import { ActiveLocaleService } from '../../core/active-locale.service';
 import { storeCta } from '../../core/store-cta';
-import { bookNav, mineNav } from '../../core/booking-cta';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
-import { APP_STORE_URL } from '../../core/app-facts';
 
 interface NavItem {
   label: string;
@@ -41,15 +39,6 @@ export class HeaderComponent {
 
   readonly copy = this.active.copy;
   readonly storeCta = computed(() => storeCta(this.active.locale().code));
-  /** The article hub in this reader's language. */
-  readonly articlesHref = computed(() => this.active.path('/articles') + '/');
-  /** The booking page in this reader's language, and its short label. */
-  readonly bookingHref = computed(() => this.active.path('/book') + '/');
-  readonly bookingLabel = computed(() => bookNav(this.active.locale().code));
-  /** Passwordless "my bookings" view. */
-  readonly mineHref = computed(() => this.active.path('/bookings') + '/');
-  readonly mineLabel = computed(() => mineNav(this.active.locale().code));
-
   /** Labels come from the active language; the fragments never change. */
   readonly nav = computed<NavItem[]>(() => {
     const n = this.copy().nav;

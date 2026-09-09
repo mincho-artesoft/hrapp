@@ -3,7 +3,7 @@
  * Update here when the app ships and the whole site follows.
  */
 
-export const APP_STORE_URL = 'https://apps.apple.com/us/app/cloud-calendars/id6744690319';
+export const APP_STORE_URL = 'https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319';
 export const APP_NAME = 'Cloud Calendars';
 /** Exactly as Apple prints it. EOOD is the Bulgarian single-member limited
  *  form; a reader matching this against a receipt will not find 'Ltd'. */

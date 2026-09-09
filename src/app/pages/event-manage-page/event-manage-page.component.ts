@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SeoService } from '../../core/seo.service';
 import { DEFAULT_LOCALE, Locale, LOCALES, localePath } from '../../core/locales';
-import { BookingApiService, RegistrationView } from '../../core/booking-api.service';
-import { eventCopyFor } from '../../content/booking/event-registry';
+import { EventRegistrationApiService, RegistrationView } from '../../core/event-registration-api.service';
+import { eventCopyFor } from '../../content/event-registration/event-registry';
 
 type Mode = 'loading' | 'view' | 'cancelled' | 'notfound';
 
@@ -26,7 +26,7 @@ type Mode = 'loading' | 'view' | 'cancelled' | 'notfound';
 export class EventManagePageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SeoService);
-  private readonly api = inject(BookingApiService);
+  private readonly api = inject(EventRegistrationApiService);
 
   protected locale: Locale = DEFAULT_LOCALE;
   protected copy = eventCopyFor(DEFAULT_LOCALE.code);
@@ -42,7 +42,7 @@ export class EventManagePageComponent implements OnInit {
     this.copy = eventCopyFor(this.locale.code);
     this.seo.apply({
       title: this.copy.yourSpotTitle + ' — Cloud Calendars',
-      description: this.copy.ownerSeoDescription,
+      description: this.copy.seoDescription,
       path: localePath(this.locale, '/event/manage'),
       locale: this.locale,
       noindex: true,

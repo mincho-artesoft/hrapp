@@ -40,7 +40,6 @@ export class FooterComponent {
       { label: n.features, href: `${base}#features` },
       { label: n.pricing, href: `${base}#pricing` },
       { label: n.faq, href: `${base}#faq` },
-      { label: n.articles, href: `${this.active.path('/articles')}/` },
     ];
   });
 

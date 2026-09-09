@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SeoService } from '../../core/seo.service';
 import { DEFAULT_LOCALE, Locale, LOCALES, localePath } from '../../core/locales';
-import { BookingApiService, BookingError, EventRegisterResult, PublicEvent } from '../../core/booking-api.service';
-import { eventCopyFor } from '../../content/booking/event-registry';
+import { EventRegistrationApiService, EventRegistrationError, EventRegisterResult, PublicEvent } from '../../core/event-registration-api.service';
+import { eventCopyFor } from '../../content/event-registration/event-registry';
 
 type Mode = 'loading' | 'view' | 'done' | 'notfound' | 'error';
 
@@ -28,7 +28,7 @@ type Mode = 'loading' | 'view' | 'done' | 'notfound' | 'error';
 export class EventPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly seo = inject(SeoService);
-  private readonly api = inject(BookingApiService);
+  private readonly api = inject(EventRegistrationApiService);
 
   protected locale: Locale = DEFAULT_LOCALE;
   protected copy = eventCopyFor(DEFAULT_LOCALE.code);
@@ -73,7 +73,7 @@ export class EventPageComponent implements OnInit {
       this.mode.set('view');
       if (ev.title) this.seo.apply({ title: `${ev.title} — Cloud Calendars`, description: this.copy.seoDescription, path: localePath(this.locale, '/event'), locale: this.locale, noindex: true });
     } catch (e) {
-      this.mode.set(e instanceof BookingError && e.status === 404 ? 'notfound' : 'error');
+      this.mode.set(e instanceof EventRegistrationError && e.status === 404 ? 'notfound' : 'error');
     }
   }
 
@@ -89,7 +89,7 @@ export class EventPageComponent implements OnInit {
       this.result.set(res);
       this.mode.set('done');
     } catch (e) {
-      if (e instanceof BookingError && (e.status === 409 || e.status === 410)) {
+      if (e instanceof EventRegistrationError && (e.status === 409 || e.status === 410)) {
         await this.load(); // refresh: now full or cancelled
       } else {
         this.errorMsg.set(this.copy.genericError);
