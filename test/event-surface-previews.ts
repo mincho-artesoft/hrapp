@@ -11,7 +11,6 @@ import { CoreService } from '../src/core/core.service';
 import { keys } from '../src/store/keys';
 import { Module } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import QRCode from 'qrcode';
 
 const out = process.argv[2];
 assert(out, 'Provide a local output directory');
@@ -32,19 +31,22 @@ function save(name: string, html: string) {
   writeFileSync(join(out, name + '.html'), html);
   saved.push(name);
 }
-email.sendEmail = async (_to: string, _subject: string, html: string) => save(currentName, html);
+email.sendEmail = async (_to: string, _subject: string, html: string, options: any = {}) => {
+  for (const attachment of options.attachments ?? []) {
+    html = html.replaceAll(`cid:${attachment.ContentId}`,
+      `data:${attachment.ContentType};base64,${Buffer.from(attachment.RawContent).toString('base64')}`);
+  }
+  save(currentName, html);
+};
 email.sharedEventIconURL = (kind: string, color: string) =>
   'data:image/png;base64,' + email.invitationIconPng(kind, color).toString('base64');
 
 async function main() {
-  const qr = await QRCode.toDataURL(eventURL);
-  email.sharedEventQRCodeURL = () => qr;
   const event = { title: 'Product Launch Planning', start: new Date(1788953400000).toISOString(),
     end: new Date(1788958800000).toISOString(), location: 'Apple Park Visitor Center, Cupertino' };
   currentName = 'email-event-invitation';
   await email.sendSharedEventInvitation({ email: 'guest@example.com', access: 'writer', event, eventUrl: eventURL,
     timeZone: 'Europe/Sofia', senderName: 'Alex', senderEmail: 'alex@example.com', eventColor: '#0A84FF' });
-  email.sendEmail = async (_to: string, _subject: string, html: string) => save(currentName, html);
   for (const kind of ['registered', 'moved', 'cancelled']) {
     currentName = `email-registration-${kind}`;
     await email.notifyRegistration(kind, { event, email: 'guest@example.com', webcal: 'webcal://example.com/fixture.ics',

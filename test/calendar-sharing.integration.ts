@@ -3,6 +3,7 @@ import { CalendarService } from '../src/calendar/calendar.service';
 import { CoreService } from '../src/core/core.service';
 import { EmailService } from '../src/email/email.service';
 import { keys } from '../src/store/keys';
+import { nextRevisionTimestamp } from '../src/util/revision';
 
 type JsonValue = Record<string, any>;
 
@@ -115,8 +116,7 @@ function invitationQRCodeTarget(html: string, alt: string): string {
   const escapedAlt = alt.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const match = html.match(new RegExp(`<img src="([^"]+)"[^>]*alt="${escapedAlt}"`));
   assert.ok(match, `${alt} must be present in the invitation e-mail`);
-  const assetURL = new URL(htmlAttribute(match[1]));
-  return assetURL.searchParams.get('url') ?? '';
+  return htmlAttribute(match[1]);
 }
 
 async function testInvitationEmailLinks(): Promise<void> {
@@ -144,8 +144,8 @@ async function testInvitationEmailLinks(): Promise<void> {
   assert.equal(eventButtonURL.searchParams.get('c'), 'feed-id');
   assert.equal(
     invitationQRCodeTarget(sent[0].html, 'QR code to open the event'),
-    eventServerURL,
-    'event QR must keep the server invitation URL',
+    'cid:invitation-qr',
+    'event QR must reference an inline attachment',
   );
 
   sent.length = 0;
@@ -166,8 +166,8 @@ async function testInvitationEmailLinks(): Promise<void> {
   assert.equal(calendarButtonURL.searchParams.get('c'), calendarId);
   assert.equal(
     invitationQRCodeTarget(sent[0].html, 'QR code to open the calendar'),
-    calendarServerURL,
-    'calendar QR must keep the server invitation URL',
+    'cid:invitation-qr',
+    'calendar QR must reference an inline attachment',
   );
 }
 
@@ -264,7 +264,7 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
     'generated feed is available through the API feed gateway',
   );
   assert.equal(await service.calendarFeed('../private.json'), null);
-  const eventUrl = `https://api.cloud-calendars.com/event-invites/open?e=${eventId}&c=${grant.feedId}&title=Original%20event&start=1977972000&end=1977977400&allDay=0&timeZone=Europe%2FSofia&color=%230A84FF`;
+  const eventUrl = `${process.env.API_URL ?? 'https://api.cloud-calendars.com'}/event-invites/open?e=${eventId}&c=${grant.feedId}&title=Original%20event&start=1977972000&end=1977977400&allDay=0&timeZone=Europe%2FSofia&color=%230A84FF`;
   const eventLanding = await service.eventInvitationLanding({
     e: eventId,
     c: grant.feedId,
@@ -427,10 +427,11 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
   }), 404, 'anonymous access removed');
 }
 
-async function testCalendarSharing(service: CalendarService, email: FakeEmailService): Promise<void> {
+async function testCalendarSharing(service: CalendarService, email: FakeEmailService, kind = 'eventkit'): Promise<void> {
   const calendarId = 'a'.repeat(64);
   const first = expectStatus(await service.saveICloudCalendarSharing(owner, calendarId, {
     title: 'Team Calendar',
+    calendarKind: kind,
     color: '#FF9500',
     timeZone: 'Europe/Sofia',
     recipients: [{ email: recipientEmail, access: 'reader' }],
@@ -655,6 +656,13 @@ async function testCalendarSharing(service: CalendarService, email: FakeEmailSer
 }
 
 async function main(): Promise<void> {
+  const instant = Date.parse('2026-09-09T08:00:00.000Z');
+  assert.equal(nextRevisionTimestamp(new Date(instant).toISOString(), instant), '2026-09-09T08:00:00.001Z');
+  assert.equal(nextRevisionTimestamp(new Date(instant).toISOString(), instant - 1000), '2026-09-09T08:00:00.001Z');
+  delete process.env.API_URL;
+  await testInvitationEmailLinks();
+  for (const kind of ['eventkit', 'app_local']) {
+  process.env.API_URL = 'https://63yo3ore3c.execute-api.us-east-1.amazonaws.com';
   const store = new MemoryStore();
   const core = new CoreService(store as any);
   const email = new FakeEmailService();
@@ -662,9 +670,10 @@ async function main(): Promise<void> {
   await seedAccount(store, core, owner, ownerEmail);
   await seedAccount(store, core, recipient, recipientEmail);
 
-  await testInvitationEmailLinks();
   await testEventSharing(service, email);
-  await testCalendarSharing(service, email);
+  await testCalendarSharing(service, email, kind);
+  console.log(`PASS full permissions matrix: ${kind}`);
+  }
 
   console.log('PASS invitation e-mails: server invitation buttons and QR targets');
   console.log('PASS event sharing: invitations, Reader/Writer/Owner, sync, cancellation, removal, anonymous access');

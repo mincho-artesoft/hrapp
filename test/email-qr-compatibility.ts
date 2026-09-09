@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { EmailService } from '../src/email/email.service';
+import { canonicalInvitationURL } from '../src/email/invitation-url';
 
 // Diagnostic only: SES is intercepted. With --live, unauthenticated QR/feed
 // reads are allowed, plus one invitation request for the exact existing QA
@@ -22,7 +23,10 @@ async function inspectTemplate(label: string, api: string, eventURL: string, cal
   process.env.API_URL = api;
   const service = new EmailService();
   let html = '';
-  (service as any).sendEmail = async (_to: string, _subject: string, value: string) => { html = value; };
+  let attachments: any[] = [];
+  (service as any).sendEmail = async (_to: string, _subject: string, value: string, options: any) => {
+    html = value; attachments = options?.attachments ?? [];
+  };
   if (calendar) {
     await service.sendSharedCalendarInvitation({ email: 'qa@example.com', access: 'reader',
       calendar: { title: 'QA Local Calendar', color: '#AF52DE' }, ownerId: 'qa-owner', calendarId: 'd'.repeat(64) });
@@ -34,12 +38,13 @@ async function inspectTemplate(label: string, api: string, eventURL: string, cal
   const match = html.match(/<img src="([^"]+)"[^>]+alt="QR code to open (?:the event|the calendar)"/);
   assert.ok(match, `${label}: missing QR img element`);
   const imageURL = new URL(match[1].replace(/&amp;/g, '&'));
-  const target = imageURL.searchParams.get('url')!;
-  const png = await service.sharedEventQRCodePng(target);
+  const target = calendar ? `${api}/icloud-calendar-invites/open?o=qa-owner&c=${'d'.repeat(64)}`
+    : canonicalInvitationURL(eventURL, api, true)!.toString();
+  const png = attachments.find(a => `cid:${a.ContentId}` === imageURL.toString())?.RawContent;
   const result = { label, generatedPNG: Boolean(png), targetLength: target.length,
     targetHost: new URL(target).host, assetHost: imageURL.host,
     isRemoteImage: imageURL.protocol === 'https:', perMessageCacheKey: imageURL.searchParams.has('v') };
-  fs.writeFileSync(path.join(output, `${label}.html`), html);
+  fs.writeFileSync(path.join(output, `${label}.html`), png ? html.replace('cid:invitation-qr', 'data:image/png;base64,' + Buffer.from(png).toString('base64')) : html);
   if (png) fs.writeFileSync(path.join(output, `${label}-qr.png`), png);
   return result;
 }
@@ -101,7 +106,7 @@ async function main() {
       currentEventQR: await fetchEvidence(qr(current.toString())),
       calendarQR: await fetchEvidence(qr(calendar.toString())),
       debugFeed: await fetchEvidence(`${debugAPI}/f/${original.searchParams.get('c')}.ics`),
-      appRefresherFeed: await fetchEvidence(`https://cal.cloud-calendars.com/f/${original.searchParams.get('c')}.ics`),
+      legacyProductionFeed: await fetchEvidence(`https://cal.cloud-calendars.com/f/${original.searchParams.get('c')}.ics`),
       currentUIEventInvitation: await fetchEvidence(`${debugAPI}/events/${manifest.eventID}/invitations`, {
         method: 'POST', headers: { Authorization: `Bearer ${sender.deviceToken}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ eventUrl: current.toString(), invitations: [{ email: manifest.recipient, access: 'reader' }] }),

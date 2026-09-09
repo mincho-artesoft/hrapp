@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #
-# Package the NestJS API and deploy it. @aws-sdk is a devDependency, so the
-# production bundle omits it and relies on the Node 20 Lambda runtime's copy —
-# exactly as the original code did (the architecture is preserved).
+# Package the NestJS API and deploy it. Bundle the pinned SES SDK so inline
+# attachments are serialized even when Lambda's runtime SDK is older.
 #
 #   bash deploy.sh               deploy to the isolated debug environment
 #   bash deploy.sh package       build dist + zip only
@@ -30,7 +29,7 @@ package() {
   log "build (tsc)"
   (cd "$HERE" && npx tsc -p tsconfig.json)
 
-  log "staging production dependencies (no @aws-sdk)"
+  log "staging production dependencies (including pinned SES SDK)"
   rm -rf "$STAGE_DIR"; mkdir -p "$STAGE_DIR"
   cp -R "$HERE/dist" "$STAGE_DIR/dist"
   cp "$HERE/package.json" "$HERE/package-lock.json" "$STAGE_DIR/"

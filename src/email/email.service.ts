@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2';
+import { SESv2Client, SendEmailCommand, Attachment } from '@aws-sdk/client-sesv2';
 import QRCode from 'qrcode';
 import { eventPalette } from '../presentation/event-card';
+import { canonicalInvitationURL } from './invitation-url';
 
 const PNGJS: any = require('pngjs');
 
@@ -32,14 +33,14 @@ export class EmailService {
     to: string,
     subject: string,
     html: string,
-    options: { replyTo?: string | null } = {},
+    options: { replyTo?: string | null; attachments?: Attachment[] } = {},
   ): Promise<void> {
     if (!this.ses || !this.EMAIL_FROM) {
       console.log(`[email skipped — not configured] "${subject}" → ${to}`);
       return;
     }
     try {
-      await this.ses.send(
+      const sent = await this.ses.send(
         new SendEmailCommand({
           FromEmailAddress: this.EMAIL_FROM,
           Destination: { ToAddresses: [to] },
@@ -47,6 +48,7 @@ export class EmailService {
           Content: {
             Simple: {
               Subject: { Data: subject, Charset: 'UTF-8' },
+              Attachments: options.attachments,
               Body: {
                 Html: { Data: html, Charset: 'UTF-8' },
                 Text: { Data: this.plainText(html), Charset: 'UTF-8' },
@@ -55,6 +57,7 @@ export class EmailService {
           },
         }),
       );
+      console.info('[email sent]', JSON.stringify({ messageId: sent.MessageId, to, subject }));
     } catch (err: any) {
       // Delivery failure must not roll back an already-saved calendar action.
       console.error(`[email failed] "${subject}" → ${to}: ${err?.name ?? ''} ${err?.message ?? err}`);
@@ -111,6 +114,7 @@ export class EmailService {
   private plainText(html: string): string {
     return html
       .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, '$2 ($1)')
       .replace(/<(br|\/p|\/div|\/h[1-6]|\/tr)>/gi, '\n')
       .replace(/<[^>]+>/g, ' ')
       .replace(/&nbsp;/gi, ' ')
@@ -307,20 +311,9 @@ export class EmailService {
   }
 
   async sharedEventQRCodePng(value: unknown): Promise<Buffer | null> {
-    const raw = String(value ?? '');
-    if (!raw || raw.length > 2_048) return null;
+    const url = canonicalInvitationURL(value, this.API_URL, true);
+    if (!url) return null;
     try {
-      const url = new URL(raw);
-      const apiHost = new URL(this.API_URL).hostname;
-      const allowedInvitationPaths = new Set([
-        '/event-invites/open',
-        '/icloud-calendar-invites/open',
-      ]);
-      if (url.protocol !== 'https:'
-          || url.hostname !== apiHost
-          || !allowedInvitationPaths.has(url.pathname)) {
-        return null;
-      }
       return await QRCode.toBuffer(url.toString(), {
         type: 'png',
         width: 300,
@@ -331,6 +324,15 @@ export class EmailService {
     } catch {
       return null;
     }
+  }
+
+  private async invitationQRAttachment(url: string): Promise<Attachment> {
+    const png = await this.sharedEventQRCodePng(url);
+    // Never send a broken QR img silently. The caller keeps the invitation
+    // pending and can retry delivery if rendering fails.
+    if (!png) throw new Error('Invalid invitation QR URL');
+    return { RawContent: png, FileName: 'invitation-qr.png', ContentId: 'invitation-qr',
+      ContentType: 'image/png', ContentDisposition: 'INLINE', ContentTransferEncoding: 'BASE64' };
   }
 
   private registrationHtml(kind: string, { title, when, location, webcal, manageUrl }: any): string {
@@ -387,6 +389,10 @@ export class EmailService {
     senderEmail,
     eventColor,
   }: any): Promise<void> {
+    const canonicalURL = canonicalInvitationURL(eventUrl, this.API_URL);
+    if (!canonicalURL) throw new Error('Invalid event invitation URL');
+    eventUrl = canonicalURL.toString();
+    const qrAttachment = await this.invitationQRAttachment(eventUrl);
     const eventDateTime = this.fmtAppClipEvent(
       event.start,
       event.end,
@@ -406,7 +412,7 @@ export class EmailService {
     const color = this.validEventColor(eventColor);
     const qrBlock = `<div style="margin:24px auto 0;text-align:center;">
           <div style="display:inline-block;background:#ffffff;padding:14px;border-radius:18px;">
-            <img src="${this.esc(this.sharedEventQRCodeURL(eventUrl))}" width="240" height="240" alt="QR code to open the event" style="display:block;width:240px;height:240px;" />
+            <img src="cid:invitation-qr" width="240" height="240" alt="QR code to open the event" style="display:block;width:240px;height:240px;" />
           </div>
           <p style="margin:10px 0 0;color:rgba(255,255,255,0.62);font-size:13px;">Scan with Cloud Calendars</p>
         </div>`;
@@ -427,7 +433,7 @@ export class EmailService {
       email,
       `${fromName} invited you: ${event.title}`,
       this.shell(body),
-      { replyTo: senderEmail },
+      { replyTo: senderEmail, attachments: [qrAttachment] },
     );
   }
 
@@ -454,12 +460,7 @@ export class EmailService {
       : access === 'writer'
         ? 'You can view and edit its events after accepting.'
         : 'You can view its synchronized events after accepting.';
-    const qrImageURL = new URL(this.sharedEventQRCodeURL(invitationURL.toString()));
-    // Gmail's image proxy can cache a previous failed response for the same
-    // URL. Give every sent/resend invitation a fresh image URL so a repaired
-    // QR endpoint is fetched again immediately.
-    qrImageURL.searchParams.set('v', Date.now().toString());
-    const qrURL = qrImageURL.toString();
+    const qrAttachment = await this.invitationQRAttachment(invitationURL.toString());
     const body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">Calendar invitation</h1>
     <p style="margin:0 auto 8px;max-width:44ch;color:rgba(255,255,255,0.78);font-size:15px;text-align:center;">From <strong style="color:#ffffff;">${this.esc(sender)}</strong></p>
     <p style="margin:0 auto 22px;max-width:42ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">You were invited as <strong style="color:#ffffff;">${role}</strong>. ${permission}</p>
@@ -475,7 +476,7 @@ export class EmailService {
     <div style="text-align:center;margin:24px 0 0;">${this.button(invitationURL.toString(), 'Open calendar')}</div>
     <div style="margin:24px auto 0;text-align:center;">
       <div style="display:inline-block;background:#ffffff;padding:14px;border-radius:18px;">
-        <img src="${this.esc(qrURL)}" width="240" height="240" alt="QR code to open the calendar" style="display:block;width:240px;height:240px;" />
+        <img src="cid:invitation-qr" width="240" height="240" alt="QR code to open the calendar" style="display:block;width:240px;height:240px;" />
       </div>
       <p style="margin:10px 0 0;color:rgba(255,255,255,0.62);font-size:13px;">Scan with Cloud Calendars</p>
     </div>
@@ -484,7 +485,7 @@ export class EmailService {
       email,
       `${sender} invited you: ${title}`,
       this.shell(body),
-      { replyTo: senderEmail },
+      { replyTo: senderEmail, attachments: [qrAttachment] },
     );
   }
 }

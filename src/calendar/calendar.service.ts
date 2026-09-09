@@ -3,8 +3,10 @@ import { StoreService } from '../store/store.service';
 import { CoreService } from '../core/core.service';
 import { ApiResult, result } from '../common/api-result';
 import { randomId, hashKey } from '../util/ids';
+import { nextRevisionTimestamp } from '../util/revision';
 import { verifyAppleIdToken, verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
 import { EmailService } from '../email/email.service';
+import { canonicalInvitationURL } from '../email/invitation-url';
 import { EVENT_CARD_CSS, eventIcon, eventPalette } from '../presentation/event-card';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? null;
@@ -916,28 +918,16 @@ export class CalendarService {
     }
     const invitations = [...invitationByEmail.values()];
 
-    const rawEventURL = String(body.eventUrl ?? '');
+    let rawEventURL = String(body.eventUrl ?? '');
     if (!rawEventURL || rawEventURL.length > 8192) {
       return result(400, { error: 'a valid eventUrl is required' });
     }
-    let eventURL: URL;
-    try {
-      eventURL = new URL(rawEventURL);
-    } catch {
-      return result(400, { error: 'eventUrl is invalid' });
-    }
-    const feedId = eventURL.searchParams.get('c') ?? '';
-    const isServerInvitation = eventURL.hostname === 'api.cloud-calendars.com'
-      && eventURL.pathname === '/event-invites/open';
-    const isLegacyAppClipInvitation = eventURL.hostname === 'appclip.apple.com'
-      && eventURL.pathname === '/id'
-      && eventURL.searchParams.get('p') === 'Deksan.CalendarASD.Clip';
-    if (eventURL.protocol !== 'https:'
-        || (!isServerInvitation && !isLegacyAppClipInvitation)
-        || eventURL.searchParams.get('e') !== eventId
-        || !feedId) {
+    const eventURL = canonicalInvitationURL(rawEventURL, process.env.API_URL ?? 'https://api.cloud-calendars.com');
+    if (!eventURL || eventURL.pathname !== '/event-invites/open' || eventURL.searchParams.get('e') !== eventId) {
       return result(400, { error: 'eventUrl is not a matching Cloud Calendars invitation link' });
     }
+    const feedId = eventURL.searchParams.get('c')!;
+    rawEventURL = eventURL.toString();
     const feedIndex = await this.store.getJSON(this.keys.feedIndex(feedId));
     if (feedIndex?.calId !== context.calId
         || acl?.feeds?.[feedId]?.scope?.eventId !== eventId) {
@@ -1607,7 +1597,7 @@ export class CalendarService {
       (recipient: any) => recipient?.userId === principal.principalId,
     ) ?? matchingRecipients[0];
     const email = normalizeEmail(existing?.email) ?? identities[0].email;
-    const now = new Date().toISOString();
+    const now = nextRevisionTimestamp(calendar.updatedAt);
     const access = matchingRecipients
       .map((value: any) => this.recipientAccess(value))
       .sort((a, b) => this.eventAccessRank(b) - this.eventAccessRank(a))[0]
@@ -1766,7 +1756,7 @@ export class CalendarService {
     }
 
     if (removedRecipients.length > 0) {
-      const now = new Date().toISOString();
+      const now = nextRevisionTimestamp(calendar.updatedAt);
       await this.store.putJSON(calendarKey, {
         ...calendar,
         recipients,
@@ -1871,7 +1861,7 @@ export class CalendarService {
     if (recipientsByEmail.size > 100) {
       return result(400, { error: 'no more than 100 recipients are allowed' });
     }
-    const now = new Date().toISOString();
+    const now = nextRevisionTimestamp(existing?.updatedAt);
     const recipients = await Promise.all(
       [...recipientsByEmail.values()]
         .sort((a, b) => a.email.localeCompare(b.email))
@@ -2073,7 +2063,7 @@ export class CalendarService {
     }
 
     const emailSet = new Set(emails);
-    const now = new Date().toISOString();
+    const now = nextRevisionTimestamp(context.calendar.updatedAt);
     const previousRecipients = Array.isArray(context.calendar.recipients)
       ? context.calendar.recipients
       : [];
@@ -2260,7 +2250,7 @@ export class CalendarService {
       ...calendar,
       recipients,
       recipientCount: recipients.length,
-      updatedAt: new Date().toISOString(),
+      updatedAt: nextRevisionTimestamp(calendar.updatedAt),
     });
     await Promise.all(removed.map((recipient: any) => this.store.del(
       this.keys.pendingICloudCalendarInvitation(
@@ -2295,7 +2285,7 @@ export class CalendarService {
       return result(403, { error: 'only the original creator may delete this calendar' });
     }
 
-    const now = calendar.deletedAt ?? new Date().toISOString();
+    const now = calendar.deletedAt ?? nextRevisionTimestamp(calendar.updatedAt);
     const ownerEmail = this.recipientIdentities(ownerAccount)[0]?.email ?? null;
     const deletedCalendar = {
       ...calendar,
@@ -2424,7 +2414,7 @@ export class CalendarService {
       });
     }
 
-    const now = new Date().toISOString();
+    const now = nextRevisionTimestamp(existingSnapshot?.updatedAt);
     const snapshot = {
       schemaVersion: 1,
       ownerId: context.ownerId,
