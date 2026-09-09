@@ -26,9 +26,9 @@ struct CalendarLiveActivityEvent: Codable, Hashable, Identifiable {
 }
 
 private enum CalendarLiveActivityPalette {
-    static let background = Color.white.opacity(0.96)
-    static let primaryText = Color.black.opacity(0.9)
-    static let secondaryText = Color.black.opacity(0.62)
+    static let background = Color(uiColor: .systemBackground)
+    static let primaryText = Color.primary
+    static let secondaryText = Color.secondary
     static let accent = Color.blue
 }
 
@@ -530,51 +530,11 @@ private struct CalendarLiveActivityEventCardView: View {
     let settings: CalendarLiveActivitySettingsSnapshot
 
     var body: some View {
-        HStack(alignment: .center, spacing: 10) {
-            RoundedRectangle(cornerRadius: 3, style: .continuous)
-                .fill(eventColor)
-                .frame(width: 5, height: markerHeight)
-
-            VStack(alignment: .leading, spacing: 3) {
-                Text(
-                    event.title.isEmpty
-                        ? NSLocalizedString("Untitled", comment: "Fallback event title")
-                        : event.title
-                )
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(eventColor)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.75)
-
-                Label(eventTimeRangeText(event), systemImage: event.isAllDay ? "calendar" : "clock")
-                    .font(.system(size: 13, weight: .medium))
-                    .foregroundStyle(eventColor)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.78)
-
-                if let videoCallPlatform = event.videoCallPlatform, !videoCallPlatform.isEmpty {
-                    Label(videoCallPlatform, systemImage: "video")
-                        .font(.system(size: 13, weight: .medium))
-                        .foregroundStyle(eventColor)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.78)
-                }
-
-                if let location = event.location, !location.isEmpty {
-                    Label(location, systemImage: "location.fill")
-                        .font(.system(size: 13, weight: .medium))
-                        .foregroundStyle(eventColor)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.78)
-                }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .padding(.horizontal, 11)
-        .padding(.vertical, 7)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(eventBackgroundColor)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        CalendarEventCard(
+            title: event.title.isEmpty ? NSLocalizedString("Untitled", comment: "Fallback event title") : event.title,
+            color: eventColor, timeText: eventTimeRangeText(event), location: event.location,
+            videoCall: event.videoCallPlatform, isAllDay: event.isAllDay,
+            titleSize: 16, detailSize: 12, titleLines: 2, detailLines: 1)
     }
 
     private var eventColor: Color {

@@ -868,33 +868,12 @@
 "Sofia" = "సోఫియా";
 "Team lunch" = "జట్టు భోజనం";
 
-/* Booking */
-"Booking page" = "బుకింగ్ పేజీ";
 "Your name" = "మీ పేరు";
 "Display name" = "ప్రదర్శన పేరు";
 "Source calendar" = "మూలం క్యాలెండర్";
-"Booked meetings land here, and your busy times here block new bookings." = "బుక్ సమావేశాలు ఇక్కడ ల్యాండ్, మరియు మీ బిజీగా సమయం ఇక్కడ కొత్త బుకింగ్స్ నిరోధించడానికి.";
-"Meeting types" = "సమావేశాల రకాలు";
 "%lld min" = "%lld మైనస్";
-"Add meeting type" = "సమావేశ రకాన్ని జోడించండి";
-"Weekly hours" = "వారపు గంటలు";
-"Save booking page" = "బుకింగ్ పేజీని సేవ్ చేయండి";
-"Your booking page is live" = "మీ బుకింగ్ పేజీ ప్రత్యక్ష ఉంది";
-"Share this link — anyone can book one of your open times." = "ఈ లింక్ను పంచుకోండి ఎవరైనా మీ ఓపెన్ టైమ్లలో ఒకదాన్ని బుక్ చేసుకోవచ్చు.";
 "Share link" = "భాగస్వామ్యం లింక్";
 "Edit settings" = "సెట్టింగులను సవరించు";
-"Add at least one meeting type." = "కనీసం ఒక సమావేశ రకాన్ని జోడించండి.";
-"Turn on at least one day with valid hours." = "కనీసం ఒక రోజున చెల్లుబాటు అయ్యే గంటలతో ప్రారంభించండి.";
-"Set up a booking page" = "బుకింగ్ పేజీని ఏర్పాటు చేయండి";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "మీ ఖాళీ సమయాలను బుక్ చేసుకోండి. మీ సమావేశాలు మీ ఎంపిక చేసిన క్యాలెండర్లో ఉంటాయి.";
-"Approve on this device" = "ఈ పరికరంలో ఆమోదించండి";
-"Set up web booking" = "వెబ్ బుకింగ్ను సెటప్ చేయండి";
-"You're all set" = "మీరు అన్ని సిద్ధంగా ఉన్నారు";
-"Couldn't approve" = "ఆమోదించలేకపోయాను";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "ఈ బ్రౌజర్ను మీ క్యాలెండర్కు లింక్ చేయడానికి ఆమోదించండి, తద్వారా మీరు వెబ్లో బుకింగ్ పేజీని సృష్టించవచ్చు  ఉచితంగా, ఎందుకంటే మీకు అనువర్తనం ఉంది.";
-"Linking…" = "లింక్.";
-"Head back to your browser — it's ready to finish setting up your booking page." = "మీ బ్రౌజర్కు తిరిగి వెళ్ళు  మీ బుకింగ్ పేజీని సెటప్ చేయడానికి సిద్ధంగా ఉంది.";
-"The code may have expired. Reopen the QR on the web and try again." = "కోడ్ గడువు ముగిసింది. QR వెబ్ లో మరియు మళ్ళీ ప్రయత్నించండి.";
 "Read-only shared event" = "చదవడానికి మాత్రమే భాగస్వామ్య కార్యక్రమం";
 "Remove from My Calendar" = "నా క్యాలెండర్ నుండి తొలగించు";
 

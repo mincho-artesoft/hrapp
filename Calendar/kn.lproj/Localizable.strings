@@ -868,33 +868,12 @@
 "Sofia" = "ಸೋಫಿಯಾ";
 "Team lunch" = "ತಂಡದ ಊಟ";
 
-/* Booking */
-"Booking page" = "ಬುಕಿಂಗ್ ಪುಟ";
 "Your name" = "ನಿಮ್ಮ ಹೆಸರು";
 "Display name" = "ಪ್ರದರ್ಶನ ಹೆಸರು";
 "Source calendar" = "ಮೂಲ ಕ್ಯಾಲೆಂಡರ್";
-"Booked meetings land here, and your busy times here block new bookings." = "ಕಾಯ್ದಿರಿಸಿದ ಸಭೆಗಳು ಇಲ್ಲಿಗೆ ಬರುತ್ತವೆ, ಮತ್ತು ನಿಮ್ಮ ಬಿಡುವಿಲ್ಲದ ಸಮಯಗಳು ಇಲ್ಲಿ ಹೊಸ ಕಾಯ್ದಿರಿಸುವಿಕೆಯನ್ನು ತಡೆಯುತ್ತವೆ.";
-"Meeting types" = "ಸಭೆಗಳ ಪ್ರಕಾರಗಳು";
 "%lld min" = "%lld ನಿಮಿಷ";
-"Add meeting type" = "ಸಭೆ ಪ್ರಕಾರವನ್ನು ಸೇರಿಸಿ";
-"Weekly hours" = "ವಾರದ ಗಂಟೆಗಳು";
-"Save booking page" = "ಬುಕಿಂಗ್ ಪುಟವನ್ನು ಉಳಿಸಿ";
-"Your booking page is live" = "ನಿಮ್ಮ ಬುಕಿಂಗ್ ಪುಟವು ಲೈವ್ ಆಗಿದೆ";
-"Share this link — anyone can book one of your open times." = "ಈ ಲಿಂಕ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳಿ  ನಿಮ್ಮ ಮುಕ್ತ ಸಮಯಗಳಲ್ಲಿ ಒಂದನ್ನು ಯಾರಾದರೂ ಕಾಯ್ದಿರಿಸಬಹುದು.";
 "Share link" = "ಹಂಚಿಕೆ ಲಿಂಕ್";
 "Edit settings" = "ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಸಂಪಾದಿಸಿ";
-"Add at least one meeting type." = "ಕನಿಷ್ಠ ಒಂದು ಸಭೆ ಪ್ರಕಾರವನ್ನು ಸೇರಿಸಿ.";
-"Turn on at least one day with valid hours." = "ಕನಿಷ್ಠ ಒಂದು ದಿನವನ್ನು ಸಕಾಲಿಕ ಸಮಯದೊಂದಿಗೆ ಆನ್ ಮಾಡಿ.";
-"Set up a booking page" = "ಬುಕಿಂಗ್ ಪುಟವನ್ನು ಸ್ಥಾಪಿಸಿ";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "ನಿಮ್ಮ ತೆರೆದ ಸಮಯಗಳನ್ನು ಜನರು ಕಾಯ್ದಿರಿಸಲಿ. ಸಭೆಗಳು ನಿಮ್ಮ ಆಯ್ಕೆ ಕ್ಯಾಲೆಂಡರ್ನಲ್ಲಿ ಇರುತ್ತವೆ, ಮತ್ತು ನಿಮ್ಮ ಬಿಡುವಿಲ್ಲದ ಸಮಯಗಳು ಆ ಸ್ಲಾಟ್ಗಳನ್ನು ಉಚಿತವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳುತ್ತವೆ.";
-"Approve on this device" = "ಈ ಸಾಧನದಲ್ಲಿ ಅನುಮೋದನೆ";
-"Set up web booking" = "ವೆಬ್ ಬುಕಿಂಗ್ ಅನ್ನು ಸ್ಥಾಪಿಸಿ";
-"You're all set" = "ನೀವು ಎಲ್ಲಾ ಸಿದ್ಧವಾಗಿದೆ";
-"Couldn't approve" = "ಅನುಮೋದಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "ಈ ಬ್ರೌಸರ್ ಅನ್ನು ನಿಮ್ಮ ಕ್ಯಾಲೆಂಡರ್ಗೆ ಲಿಂಕ್ ಮಾಡಲು ಅನುಮೋದಿಸಿ ಆದ್ದರಿಂದ ನೀವು ವೆಬ್ನಲ್ಲಿ ಬುಕಿಂಗ್ ಪುಟವನ್ನು ರಚಿಸಬಹುದು  ಉಚಿತವಾಗಿ, ಏಕೆಂದರೆ ನೀವು ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಹೊಂದಿದ್ದೀರಿ.";
-"Linking…" = "ಸಂಪರ್ಕಿಸುವಿಕೆ.";
-"Head back to your browser — it's ready to finish setting up your booking page." = "ನಿಮ್ಮ ಬ್ರೌಸರ್ಗೆ ಹಿಂತಿರುಗಿ  ನಿಮ್ಮ ಬುಕಿಂಗ್ ಪುಟವನ್ನು ಹೊಂದಿಸಲು ಸಿದ್ಧವಾಗಿದೆ.";
-"The code may have expired. Reopen the QR on the web and try again." = "ಕೋಡ್ ಅವಧಿ ಮುಗಿದಿರಬಹುದು. QR ವೆಬ್ನಲ್ಲಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.";
 "Read-only shared event" = "ಓದಲು ಮಾತ್ರ ಹಂಚಿಕೆಯ ಘಟನೆ";
 "Remove from My Calendar" = "ನನ್ನ ಕ್ಯಾಲೆಂಡರ್ನಿಂದ ತೆಗೆದುಹಾಕಿ";
 

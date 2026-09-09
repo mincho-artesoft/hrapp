@@ -72,6 +72,10 @@ final class FailingSaveStore: EKEventStore {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UIViewController(); window?.makeKeyAndVisible()
         do {
+            if ProcessInfo.processInfo.environment["LOCAL_SHARING_ONLY"] == "1" {
+                try write(runSharingStoreTests())
+                return true
+            }
             let count = try runTests() + runTransferTests()
             try write(["status": "PASS", "checks": count])
         } catch { try? write(["status": "FAIL", "error": error.localizedDescription]) }

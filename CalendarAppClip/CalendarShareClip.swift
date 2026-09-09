@@ -130,7 +130,7 @@ struct CalendarClipPreviewView: View {
     }
 
     private var appStoreButton: some View {
-        Link(destination: URL(string: "https://apps.apple.com/app/cloud-calendars/id6744690319")!) {
+        Link(destination: URL(string: "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319")!) {
             Label("Download Cloud Calendars", systemImage: "arrow.down.app.fill")
                 .font(.headline)
                 .frame(maxWidth: .infinity)

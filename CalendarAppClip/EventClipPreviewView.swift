@@ -19,18 +19,15 @@ struct EventClipPreviewView: View {
         let formatter = DateFormatter()
         formatter.locale = .current
         formatter.timeZone = payload.timeZone
-        formatter.setLocalizedDateFormatFromTemplate("jm")
+        var calendar = Calendar.current
+        calendar.timeZone = payload.timeZone
+        formatter.setLocalizedDateFormatFromTemplate(calendar.isDate(payload.start, inSameDayAs: payload.end) ? "jm" : "MMMdjm")
         return "\(formatter.string(from: payload.start)) – \(formatter.string(from: payload.end))"
     }
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [Color(red: 0.02, green: 0.11, blue: 0.23), Color(red: 0.04, green: 0.30, blue: 0.50)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            Color(uiColor: .systemGroupedBackground).ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 22) {
@@ -43,7 +40,6 @@ struct EventClipPreviewView: View {
                 .padding(.vertical, 28)
             }
         }
-        .preferredColorScheme(.dark)
     }
 
     private var header: some View {
@@ -55,7 +51,7 @@ struct EventClipPreviewView: View {
 
             Text("Cloud Calendars")
                 .font(.headline)
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(.secondary)
 
             Text("Shared event")
                 .font(.largeTitle.bold())
@@ -67,40 +63,12 @@ struct EventClipPreviewView: View {
         VStack(alignment: .leading, spacing: 10) {
             Label(dateText, systemImage: "calendar")
                 .font(.subheadline.weight(.semibold))
-                .foregroundStyle(.white.opacity(0.72))
+                .foregroundStyle(.secondary)
                 .padding(.horizontal, 4)
 
-            VStack(alignment: .leading, spacing: 7) {
-                Text(payload.title)
-                    .font(.system(size: 16, weight: .bold))
-                    .fixedSize(horizontal: false, vertical: true)
-
-                if !payload.isAllDay {
-                    Label(timeText, systemImage: "clock")
-                }
-
-                if let location = payload.location {
-                    Label(location, systemImage: "location")
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
-            .font(.system(size: 14, weight: .semibold))
-            .foregroundStyle(payload.eventColor)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, 8)
-            .padding(.trailing, 5)
-            .padding(.vertical, 3)
-            .background(
-                payload.eventColor.opacity(0.30),
-                in: RoundedRectangle(cornerRadius: payload.isAllDay ? 9 : 5)
-            )
-            .overlay(alignment: .leading) {
-                Capsule()
-                    .fill(payload.eventColor)
-                    .frame(width: 3)
-                    .padding(.vertical, 5)
-                    .padding(.leading, 4.5)
-            }
+            CalendarEventCard(title: payload.title, color: payload.eventColor,
+                timeText: timeText, location: payload.location, isAllDay: payload.isAllDay,
+                titleSize: 16, detailSize: 14, titleLines: 3, detailLines: 3)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -112,7 +80,7 @@ struct EventClipPreviewView: View {
             Image(systemName: "lock.shield")
         }
         .font(.footnote)
-        .foregroundStyle(.white.opacity(0.72))
+        .foregroundStyle(.secondary)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -121,13 +89,13 @@ struct EventClipPreviewView: View {
     }
 
     private var appStoreButton: some View {
-        Link(destination: URL(string: "https://apps.apple.com/app/cloud-calendars/id6744690319")!) {
+        Link(destination: URL(string: "https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319")!) {
             Label("Download Cloud Calendars", systemImage: "arrow.down.app.fill")
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
-                .background(.white, in: Capsule())
-                .foregroundStyle(Color(red: 0.02, green: 0.20, blue: 0.38))
+                .background(Color.blue, in: Capsule())
+                .foregroundStyle(.white)
         }
     }
 

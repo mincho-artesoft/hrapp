@@ -43,10 +43,15 @@ struct SharedEventImportView: View {
 
     private var timeText: String {
         guard !payload.isAllDay else { return NSLocalizedString("All-day event", comment: "") }
-        let formatter = DateFormatter()
-        formatter.locale = .appFormatting
+        let formatter = appTimeFormatter()
         formatter.timeZone = payload.timeZone
-        formatter.setLocalizedDateFormatFromTemplate("jm")
+        var calendar = Calendar.current
+        calendar.timeZone = payload.timeZone
+        if !calendar.isDate(payload.start, inSameDayAs: payload.end) {
+            let date = appShortDateFormatter(includesYear: false)
+            date.timeZone = payload.timeZone
+            return "\(date.string(from: payload.start)) \(formatter.string(from: payload.start)) – \(date.string(from: payload.end)) \(formatter.string(from: payload.end))"
+        }
         return "\(formatter.string(from: payload.start)) – \(formatter.string(from: payload.end))"
     }
 
@@ -211,38 +216,16 @@ struct SharedEventImportView: View {
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 4)
 
-            VStack(alignment: .leading, spacing: 7) {
-                Text(payload.title)
-                    .font(.system(size: 16, weight: .bold))
-                    .fixedSize(horizontal: false, vertical: true)
-
-                Label(timeText, systemImage: "clock")
-
-                if let location = payload.location {
-                    Label(location, systemImage: "location")
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
-            .font(.system(size: 14, weight: .semibold))
-            .foregroundStyle(payload.eventColor)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, 8)
-            .padding(.trailing, 5)
-            .padding(.vertical, 6)
-            .background(
-                payload.eventColor.opacity(0.25),
-                in: RoundedRectangle(cornerRadius: payload.isAllDay ? 9 : 5)
-            )
-            .overlay(alignment: .leading) {
-                Capsule()
-                    .fill(payload.eventColor)
-                    .frame(width: 3)
-                    .padding(.vertical, 5)
-                    .padding(.leading, 4.5)
-            }
+            CalendarEventCard(title: payload.title, color: payload.eventColor,
+                timeText: timeText, location: payload.location, isAllDay: payload.isAllDay,
+                titleSize: 16, detailSize: 14, titleLines: 3, detailLines: 3)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
+
+    #if DEBUG
+    var eventSurfacePreview: some View { eventPreview }
+    #endif
 
     @ViewBuilder
     private var statusView: some View {

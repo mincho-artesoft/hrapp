@@ -67,7 +67,6 @@ struct SharingSheetView: View {
     @ObservedObject private var cloudAccountManager = CloudAccountManager.shared
     @ObservedObject private var pendingInvitationManager = PendingEventInvitationManager.shared
 
-    @State private var showBookingSetup = false
     @State private var showCloudAccount = false
     @State private var sentEvents: [SharedOutgoingEventTracker.SentEvent] = []
     @State private var receivedEvents: [ReceivedSharedEvent] = []
@@ -93,6 +92,27 @@ struct SharingSheetView: View {
     ).autoconnect()
 
     private let bottomContentInset: CGFloat
+
+    #if DEBUG
+    private var isSurfaceFixture = false
+    #else
+    private let isSurfaceFixture = false
+    #endif
+
+    private var displayedEventInvitations: [CloudCalendarsAPI.PendingEventInvitation] {
+        #if DEBUG
+        if isSurfaceFixture { return Self.surfaceInvitations }
+        #endif
+        return pendingInvitationManager.invitations
+    }
+
+    private var displayedCalendarInvitations: [CloudCalendarsAPI.PendingICloudCalendarInvitation] {
+        isSurfaceFixture ? [] : pendingInvitationManager.calendarInvitations
+    }
+
+    private var displayedInvitationCount: Int {
+        displayedEventInvitations.count + displayedCalendarInvitations.count
+    }
 
     init(bottomContentInset: CGFloat = 0) {
         self.bottomContentInset = bottomContentInset
@@ -120,9 +140,18 @@ struct SharingSheetView: View {
         .background(Color.clear)
         .listRowBackground(Color.clear)
         .onAppear {
+            guard !isSurfaceFixture else { return }
             viewModel.reloadCalendars()
             reloadSharedEvents()
             openPendingInvitationsIfRequested()
+            #if DEBUG
+            if let screen = EventSurfaceFullScreen.appScreen {
+                if screen == "account" { showCloudAccount = true }
+                else if let destination = SharedEventsDestination(rawValue: screen) {
+                    sharedEventsDestination = destination
+                }
+            }
+            #endif
             Task { await pendingInvitationManager.refresh() }
         }
         .onReceive(NotificationCenter.default.publisher(for: .openPendingEventInvitations)) { _ in
@@ -142,9 +171,6 @@ struct SharingSheetView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: .cloudAccountChanged)) { _ in
             Task { await pendingInvitationManager.refresh() }
-        }
-        .sheet(isPresented: $showBookingSetup) {
-            BookingSetupView()
         }
         .fullScreenCover(isPresented: $showCloudAccount) {
             cloudAccountView
@@ -183,7 +209,7 @@ struct SharingSheetView: View {
 
                 sharedEventsNavigationButton(
                     title: "Pending invitations",
-                    count: pendingInvitationManager.totalInvitationCount,
+                    count: displayedInvitationCount,
                     systemImage: "envelope.badge.fill",
                     color: .orange,
                     destination: .pending
@@ -209,13 +235,6 @@ struct SharingSheetView: View {
                     destination: .received
                 )
 
-                // Temporarily hidden. Keep the booking flow implemented so this
-                // can be restored without rebuilding the feature.
-                // bookingButton
-
-                // Booking footer hidden together with the button:
-                // "Let people book your open times. Meetings land on the calendar
-                // you choose, and your busy times keep those slots free."
             }
             .listRowSeparator(.hidden)
             .listRowBackground(Color.clear)
@@ -422,6 +441,7 @@ struct SharingSheetView: View {
                 }
 
                 sharedEventsListContent(destination)
+                    .allowsHitTesting(!isSurfaceFixture)
             }
             .animation(.easeInOut, value: showSharedEventsSearch)
             .toolbar(.hidden, for: .navigationBar)
@@ -446,7 +466,7 @@ struct SharingSheetView: View {
             .onAppear {
                 showSharedEventsSearch = false
                 sharedEventsSearchText = ""
-                if destination == .pending {
+                if destination == .pending && !isSurfaceFixture {
                     Task { await pendingInvitationManager.refresh() }
                 }
             }
@@ -525,20 +545,20 @@ struct SharingSheetView: View {
         switch destination {
         case .pending:
             if pendingInvitationManager.isLoading
-                && pendingInvitationManager.totalInvitationCount == 0 {
+                && displayedInvitationCount == 0 {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else if pendingInvitationManager.totalInvitationCount == 0 {
+            } else if displayedInvitationCount == 0 {
                 sharedEventsEmptyState(
                     title: "No pending invitations.",
                     systemImage: "envelope.open"
                 )
             } else {
                 List {
-                    ForEach(pendingInvitationManager.calendarInvitations) { invitation in
+                    ForEach(displayedCalendarInvitations) { invitation in
                         pendingCalendarInvitationRow(invitation)
                     }
-                    ForEach(pendingInvitationManager.invitations) { invitation in
+                    ForEach(displayedEventInvitations) { invitation in
                         pendingInvitationRow(invitation)
                     }
                 }
@@ -902,32 +922,6 @@ struct SharingSheetView: View {
                 .localizedCaseInsensitiveContains(query)
     }
 
-    private var bookingButton: some View {
-        Button {
-            showBookingSetup = true
-        } label: {
-            HStack(spacing: 12) {
-                Image(systemName: "calendar.badge.clock")
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(Color.blue)
-                    .frame(width: 38, height: 38)
-                    .background(Color.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
-
-                Text(LocalizedStringKey("Set up a booking page"))
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(.primary)
-                    .frame(minHeight: 38)
-
-                Spacer(minLength: 8)
-
-                Image(systemName: "chevron.forward")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-    }
 
     private func sharedEventRow(
         title: String,
@@ -1022,6 +1016,57 @@ struct SharingSheetView: View {
         .contentShape(Rectangle())
     }
 
+    #if DEBUG
+    /// The actual full-screen list, with in-memory data only. No tracker,
+    /// invitation, EventKit or backend records are written for screenshots.
+    init(eventSurfaceDestination: String) {
+        bottomContentInset = 0
+        isSurfaceFixture = true
+        _sharedEventsDestination = State(initialValue: SharedEventsDestination(rawValue: eventSurfaceDestination))
+        let start = Date().addingTimeInterval(3600)
+        let titles = ["Product Launch Planning", "Local Project Review", "Team Retrospective"]
+        _sentEvents = State(initialValue: titles.enumerated().map { index, title in
+            SharedOutgoingEventTracker.SentEvent(eventID: "surface-\(index)", title: title,
+                start: start.addingTimeInterval(Double(index) * 5400),
+                end: start.addingTimeInterval(Double(index) * 5400 + 3600), isAllDay: false,
+                location: index == 0 ? "Apple Park Visitor Center" : "Meeting room", sharedAt: start)
+        })
+        _receivedEvents = State(initialValue: titles.enumerated().map { index, title in
+            ReceivedSharedEvent(id: "surface-\(index)", feedID: "surface-preview", localEventIdentifier: "surface-preview-\(index)",
+                title: title, start: start.addingTimeInterval(Double(index) * 5400),
+                end: start.addingTimeInterval(Double(index) * 5400 + 3600), isAllDay: false,
+                location: index == 0 ? "Apple Park Visitor Center" : "Meeting room",
+                isCancelled: index == 2, isRevoked: false, access: index == 0 ? .writer : .reader)
+        })
+    }
+
+    private static var surfaceInvitations: [CloudCalendarsAPI.PendingEventInvitation] {
+        let start = Calendar.current.date(bySettingHour: 18, minute: 0, second: 0, of: Date())!
+        let formatter = ISO8601DateFormatter()
+        return ["Product Launch Planning", "Local Project Review"].enumerated().map { index, title in
+            CloudCalendarsAPI.PendingEventInvitation(id: "surface-\(index)", eventId: "surface-preview", feedId: "surface-preview",
+                title: title, start: formatter.string(from: start.addingTimeInterval(Double(index) * 5400)),
+                end: formatter.string(from: start.addingTimeInterval(Double(index) * 5400 + 3600)), allDay: false,
+                location: "Apple Park Visitor Center", access: index == 0 ? .writer : .reader, invitedAt: nil,
+                senderName: "Alex", senderEmail: "alex@example.com", eventUrl: "", color: "#0A84FF")
+        }
+    }
+
+    func eventSurfaceSharedRow(start: Date) -> some View {
+        sharedEventRow(title: "Product Launch Planning", start: start, end: start.addingTimeInterval(5400),
+            isAllDay: false, location: "Apple Park Visitor Center, Cupertino", isCancelled: false,
+            color: .blue, access: .writer, optionsAction: {}, infoAction: {})
+    }
+    func eventSurfacePendingRow(start: Date, url: URL) -> some View {
+        let formatter = ISO8601DateFormatter()
+        return pendingInvitationRow(CloudCalendarsAPI.PendingEventInvitation(id: "preview", eventId: "preview", feedId: "preview",
+            title: "Product Launch Planning", start: formatter.string(from: start),
+            end: formatter.string(from: start.addingTimeInterval(5400)), allDay: false,
+            location: "Apple Park Visitor Center, Cupertino", access: .writer, invitedAt: nil,
+            senderName: "Alex", senderEmail: "alex@example.com", eventUrl: url.absoluteString, color: "#0A84FF"))
+    }
+    #endif
+
     private func emptyRow(title: LocalizedStringKey, systemImage: String) -> some View {
         Label {
             Text(title)
@@ -1034,21 +1079,21 @@ struct SharingSheetView: View {
     }
 
     private func eventDateText(start: Date, end: Date, isAllDay: Bool) -> String {
+        let date = appShortDateFormatter()
+        let time = appTimeFormatter()
         if isAllDay {
-            return start.formatted(date: .abbreviated, time: .omitted)
+            return "\(date.string(from: start)) · \(NSLocalizedString("all-day", comment: "All day event"))"
         }
 
         if Calendar.current.isDate(start, inSameDayAs: end) {
-            let date = start.formatted(date: .abbreviated, time: .omitted)
-            let startTime = start.formatted(date: .omitted, time: .shortened)
-            let endTime = end.formatted(date: .omitted, time: .shortened)
-            return "\(date), \(startTime) – \(endTime)"
+            return "\(date.string(from: start)), \(time.string(from: start)) – \(time.string(from: end))"
         }
 
-        return "\(start.formatted(date: .abbreviated, time: .shortened)) – \(end.formatted(date: .abbreviated, time: .shortened))"
+        return "\(date.string(from: start)) \(time.string(from: start)) – \(date.string(from: end)) \(time.string(from: end))"
     }
 
     private func reloadSharedEvents() {
+        guard !isSurfaceFixture else { return }
         sentEvents = SharedOutgoingEventTracker.sentEvents(in: viewModel.eventStore)
             .sorted {
                 if $0.start == $1.start { return $0.end < $1.end }

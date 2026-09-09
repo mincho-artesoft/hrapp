@@ -411,9 +411,9 @@ private struct CalendarIconWidgetView: View {
                     .frame(width: iconWidth)
                     .frame(maxHeight: .infinity)
 
-                classicEventsList(limit: 5, spacing: 1)
+                classicEventsList(limit: min(5, max(1, Int(geometry.size.height / 34))), spacing: 2)
 //                    .padding(.leading, 8)
-                    .padding(.trailing, 16)
+                    .padding(.horizontal, 6)
 //                    .padding(.vertical, 8)
                     .frame(width: listWidth)
                     .frame(maxHeight: .infinity, alignment: .center)
@@ -439,8 +439,8 @@ private struct CalendarIconWidgetView: View {
                     .frame(width: iconWidth)
                     .frame(maxHeight: .infinity)
 
-                classicEventsList(limit: 11, spacing: 4)
-                    .padding(.trailing, 16)
+                classicEventsList(limit: min(11, max(1, Int(geometry.size.height / 36))), spacing: 4)
+                    .padding(.horizontal, 6)
                     .frame(width: listWidth)
                     .frame(maxHeight: .infinity, alignment: .center)
             }
@@ -477,26 +477,12 @@ private struct CalendarIconWidgetView: View {
     }
 
     private func classicEventRow(_ event: CalendarWidgetUpcomingEvent) -> some View {
-        HStack(alignment: .center, spacing: 8) {
-            Capsule()
-                .fill(event.tintColor)
-                .frame(width: 4, height: 20)
-
-            VStack(alignment: .leading, spacing: 1) {
-                Text(event.title.isEmpty ? NSLocalizedString("Untitled", comment: "Fallback event title") : event.title)
-                    .font(.system(size: 13, weight: .medium))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.75)
-
-                Text(eventScheduleText(event))
-                    .font(.system(size: 10, weight: .regular))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.65)
-                    .opacity(0.78)
-            }
-        }
-        .foregroundStyle(iconTextColor)
-        .frame(height: 26)
+        CalendarEventCard(
+            title: event.title.isEmpty ? NSLocalizedString("Untitled", comment: "Fallback event title") : event.title,
+            color: event.tintColor, timeText: eventScheduleText(event), isAllDay: event.isAllDay,
+            titleSize: 12, detailSize: 10, titleLines: 1, detailLines: 1, verticalPadding: 2,
+            showsBackground: false, foregroundColor: iconTextColor)
+            .frame(height: 32)
     }
 
     private var largeBottomMetrics: some View {

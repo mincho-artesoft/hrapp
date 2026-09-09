@@ -191,6 +191,18 @@ struct RootView: View {
 
     
     init() {
+        #if DEBUG
+        // Explicit, non-persisted launch navigation for whole-screen visual QA.
+        // Uses the normal RootView, real calendar data and production screens.
+        if let screen = EventSurfaceFullScreen.appScreen {
+            _selectedTab = State(initialValue: screen == "month" ? 0 : screen == "list" ? 4 : 1)
+            if ["sharing", "account", "pending", "sent", "received"].contains(screen) {
+                _selectedTabDraggableMenuView = State(initialValue: 4)
+                _menuState = State(initialValue: .full)
+            }
+            return
+        }
+        #endif
         // Ако няма нищо записано, по подразбиране ще е 1
         let saved = UserDefaults.standard.object(forKey: "selectedTabRoot") as? Int ?? 1
         if (0...6).contains(saved) { // Assuming 0-7 are your valid tab indices
@@ -597,7 +609,7 @@ struct RootView: View {
                     refreshCalendarWidgetEventsSnapshot()
                     openPendingEventNotificationDayIfNeeded()
                 } else {
-                    CalendarWidgetStore.clearUpcomingEventsSnapshot()
+                    refreshCalendarWidgetEventsSnapshot()
                 }
             }
             liveActivityManager.refreshStatus()
@@ -606,11 +618,8 @@ struct RootView: View {
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 openPendingEventNotificationDayIfNeeded()
-                if accessGranted {
-                    refreshCalendarWidgetEventsSnapshot()
-                } else {
-                    liveActivityManager.refreshStatus()
-                }
+                refreshCalendarWidgetEventsSnapshot()
+                liveActivityManager.refreshStatus()
             }
         }
         .sheet(item: $eventToEdit) { theEvent in
@@ -685,13 +694,8 @@ struct RootView: View {
     }
 
     private func refreshCalendarWidgetEventsSnapshot() {
-        guard accessGranted else {
-            CalendarWidgetStore.clearUpcomingEventsSnapshot()
-            return
-        }
-
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
-        liveActivityManager.update()
+        liveActivityManager.update(refreshSnapshot: false)
     }
 
     private func showPendingEventInvitations() {

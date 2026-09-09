@@ -868,33 +868,12 @@
 "Sofia" = "Sofia";
 "Team lunch" = "Ekipični kosilo";
 
-/* Booking */
-"Booking page" = "Stranica rezervacije";
 "Your name" = "Tvoje ime.";
 "Display name" = "Ime prikaza";
 "Source calendar" = "Izvorni koledar";
-"Booked meetings land here, and your busy times here block new bookings." = "Zbirani sestanki se nahajajo tukaj, in vaše zasedene čase tukaj blokirajo nove rezervacije.";
-"Meeting types" = "Vrste srečanja";
 "%lld min" = "%lld min.";
-"Add meeting type" = "Dodatek tipa srečanja";
-"Weekly hours" = "V tednu";
-"Save booking page" = "Spomnite strani rezervacije";
-"Your booking page is live" = "Vaša rezervacija je na voljo.";
-"Share this link — anyone can book one of your open times." = "Podeljite ta povezavo  Vsakdo lahko rezervira eno od vaših odprtih časov.";
 "Share link" = "Povezava za skupno rabo";
 "Edit settings" = "Nastavitve urejanje";
-"Add at least one meeting type." = "Dodajte vsaj en tip srečanja.";
-"Turn on at least one day with valid hours." = "Vklopi vsaj en dan z veljavnimi urami.";
-"Set up a booking page" = "Ustvarite strani za rezervacijo";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Naj vam ljudje rezervirajo čas odprtih ur, sestanke pa se nahajajo v koledarju, ki ga izberete, in vaše obsežne čase pa jih ohranite prostih.";
-"Approve on this device" = "Odločitev za uporabo na tej napravi";
-"Set up web booking" = "Nastavite spletno rezervacijo";
-"You're all set" = "Vse je pripravljeno.";
-"Couldn't approve" = "Nisem mogla odobriti.";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Sprejeti povezavo tega brskalnika s svojim koledarjem, da lahko ustvarite spletno stran za rezervacijo brezplačno, ker imate aplikacijo.";
-"Linking…" = "Povezava...";
-"Head back to your browser — it's ready to finish setting up your booking page." = "Vrnite se v brskalnik  pripravljen je za dokončanje nastavitve rezervacijske strani.";
-"The code may have expired. Reopen the QR on the web and try again." = "Kodec je morda potekel. QR Na spletu in poskusite znova.";
 "Read-only shared event" = "Določeni dogodek, ki se lahko prebere samo";
 "Remove from My Calendar" = "Izbrišite iz mojega koledarja";
 

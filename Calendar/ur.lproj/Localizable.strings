@@ -868,33 +868,12 @@
 "Sofia" = "صوفیہ";
 "Team lunch" = "ٹیم کا کھانا";
 
-/* Booking */
-"Booking page" = "بکنگ کا صفحہ";
 "Your name" = "آپ کا نام";
 "Display name" = "ڈسپلے کا نام";
 "Source calendar" = "ماخذ کیلنڈر";
-"Booked meetings land here, and your busy times here block new bookings." = "یہاں بک شدہ ملاقاتیں اترتی ہیں، اور آپ کے مصروف اوقات یہاں نئے بکنگ کو روکتے ہیں.";
-"Meeting types" = "اجلاسوں کی اقسام";
 "%lld min" = "%lld منٹ";
-"Add meeting type" = "میٹنگ کی قسم شامل کریں";
-"Weekly hours" = "ہفتہ وار اوقات";
-"Save booking page" = "بکنگ کا صفحہ محفوظ کریں";
-"Your booking page is live" = "آپ کی بکنگ کا صفحہ براہ راست ہے";
-"Share this link — anyone can book one of your open times." = "اس لنک کو شیئر کریں  کوئی بھی آپ کے کھلے اوقات میں سے ایک بک کروا سکتا ہے.";
 "Share link" = "شیئر لنک";
 "Edit settings" = "ترتیبات میں ترمیم کریں";
-"Add at least one meeting type." = "کم از کم ایک اجلاس کی قسم شامل کریں۔";
-"Turn on at least one day with valid hours." = "کم از کم ایک دن کو درست اوقات کے ساتھ چالو کریں۔";
-"Set up a booking page" = "بکنگ کا صفحہ ترتیب دیں";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "آپ کے اوقاتِ کار میں لوگوں کو آپ کے اوقاتِ کار کا انتظام کرنے دیں۔ آپ کے منتخب کردہ کیلنڈر پر ملاقاتیں ہوتی ہیں اور آپ کے مصروف اوقات میں ان اوقاتِ کار کو مفت رکھا جاتا ہے۔";
-"Approve on this device" = "اس آلہ پر منظور کریں";
-"Set up web booking" = "ویب پر بکنگ ترتیب دیں";
-"You're all set" = "آپ سب کچھ تیار ہیں";
-"Couldn't approve" = "منظور نہیں کر سکا";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "اس براؤزر کو اپنے کیلنڈر سے جوڑنے کی منظوری دیں تاکہ آپ ویب پر مفت میں بکنگ کا صفحہ بنا سکیں۔";
-"Linking…" = "رابطہ...";
-"Head back to your browser — it's ready to finish setting up your booking page." = "اپنے براؤزر پر واپس جائیں  یہ آپ کی بکنگ کا صفحہ ترتیب دینے کے لئے تیار ہے.";
-"The code may have expired. Reopen the QR on the web and try again." = "کوڈ ختم ہو گیا ہو سکتا ہے. دوبارہ کھولیں QR ویب پر اور دوبارہ کوشش کریں.";
 "Read-only shared event" = "صرف پڑھنے کے لیے مشترکہ تقریب";
 "Remove from My Calendar" = "میرے کیلنڈر سے ہٹا دیں";
 

@@ -72,7 +72,13 @@ struct CalendarApp: App {
         WindowGroup {
             Group {
                 #if DEBUG
-                if SimulatorCalendarTestSeeder.isRequested {
+                if LocalSharingE2ETest.requested {
+                    LocalSharingE2ETestView()
+                } else if EventSurfaceFullScreen.destination != nil {
+                    EventSurfaceFullScreen()
+                } else if EventSurfaceSnapshotSupport.requested {
+                    EventSurfaceSnapshots()
+                } else if SimulatorCalendarTestSeeder.isRequested {
                     SimulatorCalendarTestSeedView()
                 } else if UserDefaults.standard.bool(forKey: "EventEditorReferencePreview") {
                     AppLocalEventReferencePreview()
@@ -87,7 +93,11 @@ struct CalendarApp: App {
                 .environment(\.layoutDirection, appPreferences.layoutDirection)
                 .onAppear {
                     #if DEBUG
-                    guard !UserDefaults.standard.bool(forKey: "EventEditorReferencePreview"),
+                    guard !LocalSharingE2ETest.requested,
+                          EventSurfaceFullScreen.destination == nil,
+                          EventSurfaceFullScreen.appScreen == nil,
+                          !EventSurfaceSnapshotSupport.requested,
+                          !UserDefaults.standard.bool(forKey: "EventEditorReferencePreview"),
                           !SimulatorCalendarTestSeeder.isRequested
                     else { return }
                     #endif
@@ -159,7 +169,11 @@ struct CalendarApp: App {
         }
         .onChange(of: scenePhase) { _, newPhase in
             #if DEBUG
-            guard !UserDefaults.standard.bool(forKey: "EventEditorReferencePreview"),
+            guard !LocalSharingE2ETest.requested,
+                  EventSurfaceFullScreen.destination == nil,
+                  EventSurfaceFullScreen.appScreen == nil,
+                  !EventSurfaceSnapshotSupport.requested,
+                  !UserDefaults.standard.bool(forKey: "EventEditorReferencePreview"),
                   !SimulatorCalendarTestSeeder.isRequested
             else { return }
             #endif
@@ -177,9 +191,6 @@ struct CalendarApp: App {
                 // at most one local foreground notification.
                 PendingEventInvitationManager.shared.startForegroundPolling()
 
-                // If this device runs a booking page, keep it in step with the
-                // real calendar: push busy times up, pull new bookings down.
-                Task { await BookingManager.refresh() }
 
                 // ПРОВЕРКА ЗА РЕКЛАМИ
                 if SubscriptionManager.shared.subscriptionStatus == .base {
@@ -363,8 +374,6 @@ private enum CalendarLiveActivityBackgroundRefreshTask {
         await WeatherAlertNotificationManager.shared.checkForNewGPSAlerts(
             reason: "background-refresh"
         )
-
-        guard canReadCalendar else { return }
 
         let eventStore = EKEventStore()
         let selectedCalendarIDs = CalendarWidgetStore.selectedCalendarIDs(for: eventStore)

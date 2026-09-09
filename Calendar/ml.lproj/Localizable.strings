@@ -868,33 +868,12 @@
 "Sofia" = "സോഫിയ";
 "Team lunch" = "ടീം ഉച്ചഭക്ഷണം";
 
-/* Booking */
-"Booking page" = "ബുക്കിംഗ് പേജ്";
 "Your name" = "നിങ്ങളുടെ പേര്";
 "Display name" = "പ്രദർശന നാമം";
 "Source calendar" = "ഉറവിട കലണ്ടർ";
-"Booked meetings land here, and your busy times here block new bookings." = "റെക്കോർഡ് ചെയ്ത മീറ്റിങ്ങുകള് ഇവിടെ എത്തിയിരിക്കുന്നു, നിങ്ങളുടെ തിരക്കേറിയ സമയങ്ങള് ഇവിടെ പുതിയ റെക്കോർഡുകള് തടയുന്നു.";
-"Meeting types" = "യോഗങ്ങളുടെ തരം";
 "%lld min" = "%lld മിനുട്ട്";
-"Add meeting type" = "മീറ്റിംഗ് തരം ചേർക്കുക";
-"Weekly hours" = "ആഴ്ചയിലെ മണിക്കൂറുകൾ";
-"Save booking page" = "ബുക്കിംഗ് പേജ് സംരക്ഷിക്കുക";
-"Your booking page is live" = "നിങ്ങളുടെ ബുക്കിംഗ് പേജ് സജീവമാണ്";
-"Share this link — anyone can book one of your open times." = "ഈ ലിങ്ക് പങ്കുവെക്കുക. ആർക്കും നിങ്ങളുടെ തുറന്ന സമയങ്ങളിൽ ഒന്ന് ബുക്ക് ചെയ്യാം.";
 "Share link" = "പങ്കിടൽ ലിങ്ക്";
 "Edit settings" = "ക്രമീകരണങ്ങൾ പരിഷ്കരിക്കുക";
-"Add at least one meeting type." = "കുറഞ്ഞത് ഒരു യോഗം ചേർക്കുക.";
-"Turn on at least one day with valid hours." = "കുറഞ്ഞത് ഒരു ദിവസം മാത്രം സാധുവായ സമയങ്ങളോടെ ഓണാക്കുക.";
-"Set up a booking page" = "ഒരു ബുക്കിംഗ് പേജ് സജ്ജമാക്കുക";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "നിങ്ങളുടെ തുറന്ന സമയങ്ങൾ ആളുകൾക്ക് ബുക്ക് ചെയ്യാം. നിങ്ങളുടെ തിരഞ്ഞെടുത്ത കലണ്ടറിലാണ് യോഗങ്ങൾ എത്തുന്നത്. നിങ്ങളുടെ തിരക്കേറിയ സമയങ്ങളിൽ ആ സ്ലോട്ടുകൾ സൌജന്യമായി സൂക്ഷിക്കുക.";
-"Approve on this device" = "ഈ ഉപകരണത്തിൽ അംഗീകരിക്കുക";
-"Set up web booking" = "വെബ് ബുക്കിംഗ് ക്രമീകരിക്കുക";
-"You're all set" = "നീ എല്ലാം റെഡി ആയി";
-"Couldn't approve" = "അംഗീകരിക്കാൻ കഴിഞ്ഞില്ല";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "ഈ ബ്രൌസർ നിങ്ങളുടെ കലണ്ടറിലേക്ക് ലിങ്കുചെയ്യുന്നതിനെ അംഗീകരിക്കുക, അതിനാൽ നിങ്ങൾക്ക് വെബ്ബിൽ ഒരു ബുക്കിംഗ് പേജ് സൃഷ്ടിക്കാൻ കഴിയും  സൌജന്യമായി, കാരണം നിങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ഉണ്ട്.";
-"Linking…" = "ബന്ധിപ്പിക്കുന്നു.";
-"Head back to your browser — it's ready to finish setting up your booking page." = "നിങ്ങളുടെ ബ്രൌസറിലേക്ക് മടങ്ങുക. നിങ്ങളുടെ ബുക്കിംഗ് പേജ് സജ്ജീകരിക്കാൻ തയ്യാറാണ്.";
-"The code may have expired. Reopen the QR on the web and try again." = "കോഡ് കാലഹരണപ്പെട്ടിരിക്കാം. QR വെബിൽ പോയി വീണ്ടും ശ്രമിക്കുക.";
 "Read-only shared event" = "വായന മാത്രം പങ്കിട്ട പരിപാടി";
 "Remove from My Calendar" = "എന്റെ കലണ്ടറിൽ നിന്ന് നീക്കം ചെയ്യുക";
 

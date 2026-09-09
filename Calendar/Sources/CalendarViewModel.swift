@@ -206,6 +206,9 @@ final class CalendarViewModel: ObservableObject {
                 guard let self else { return }
                 self.appLocalRevision &+= 1
                 self.calendarContentDidChange.send()
+                Task { @MainActor in
+                    CalendarLiveActivityManager.shared.update()
+                }
             }
             .store(in: &cancellables)
 
@@ -491,6 +494,7 @@ final class CalendarViewModel: ObservableObject {
         // 6) Накрая записваме newEventCalendarMap като нов „стар“ snapshot
         oldEventCalendarMap = newEventCalendarMap
         CalendarWidgetStore.saveUpcomingEventsSnapshot()
+        CalendarLiveActivityManager.shared.update(refreshSnapshot: false)
         EventNotificationManager.shared.rescheduleUpcomingEventNotifications()
         SharedEventSyncManager.eventStoreDidChange()
     }

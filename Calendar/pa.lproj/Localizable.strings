@@ -868,33 +868,12 @@
 "Sofia" = "ਸੋਫੀਆ";
 "Team lunch" = "ਟੀਮ ਦਾ ਦੁਪਹਿਰ ਦਾ ਖਾਣਾ";
 
-/* Booking */
-"Booking page" = "ਬੁਕਿੰਗ ਸਫ਼ਾ";
 "Your name" = "ਤੁਹਾਡਾ ਨਾਮ";
 "Display name" = "ਡਿਸਪਲੇਅ ਨਾਮ";
 "Source calendar" = "ਸਰੋਤ ਕੈਲੰਡਰ";
-"Booked meetings land here, and your busy times here block new bookings." = "ਇੱਥੇ ਬੁੱਕ ਕੀਤੀਆਂ ਮੀਟਿੰਗਾਂ ਇੱਥੇ ਆਉਂਦੀਆਂ ਹਨ, ਅਤੇ ਤੁਹਾਡੇ ਵਿਅਸਤ ਸਮੇਂ ਇੱਥੇ ਨਵੇਂ ਬੁਕਿੰਗਾਂ ਨੂੰ ਰੋਕਦੇ ਹਨ.";
-"Meeting types" = "ਮੀਟਿੰਗ ਦੀਆਂ ਕਿਸਮਾਂ";
 "%lld min" = "%lld ਮਿਨ";
-"Add meeting type" = "ਮੀਟਿੰਗ ਦੀ ਕਿਸਮ ਜੋੜੋ";
-"Weekly hours" = "ਹਫਤਾਵਾਰੀ ਘੰਟੇ";
-"Save booking page" = "ਬੁਕਿੰਗ ਸਫ਼ਾ ਸੁਰੱਖਿਅਤ ਕਰੋ";
-"Your booking page is live" = "ਤੁਹਾਡੀ ਬੁਕਿੰਗ ਪੇਜ ਲਾਈਵ ਹੈ";
-"Share this link — anyone can book one of your open times." = "ਇਸ ਲਿੰਕ ਨੂੰ ਸਾਂਝਾ ਕਰੋ  ਕੋਈ ਵੀ ਤੁਹਾਡੇ ਖੁੱਲੇ ਸਮੇਂ ਵਿੱਚੋਂ ਇੱਕ ਬੁੱਕ ਕਰ ਸਕਦਾ ਹੈ।";
 "Share link" = "ਸਾਂਝਾ ਲਿੰਕ";
 "Edit settings" = "ਸੈਟਿੰਗਾਂ ਸੋਧੋ";
-"Add at least one meeting type." = "ਘੱਟੋ ਘੱਟ ਇੱਕ ਮੀਟਿੰਗ ਕਿਸਮ ਸ਼ਾਮਲ ਕਰੋ।";
-"Turn on at least one day with valid hours." = "ਘੱਟੋ ਘੱਟ ਇੱਕ ਦਿਨ ਠੀਕ ਘੰਟਿਆਂ ਨਾਲ ਚਾਲੂ ਕਰੋ।";
-"Set up a booking page" = "ਇੱਕ ਬੁਕਿੰਗ ਸਫ਼ਾ ਸਥਾਪਤ ਕਰੋ";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "ਲੋਕਾਂ ਨੂੰ ਤੁਹਾਡੇ ਖੁੱਲ੍ਹੇ ਸਮੇਂ ਨੂੰ ਬੁੱਕ ਕਰਨ ਦਿਓ। ਮੀਟਿੰਗਾਂ ਤੁਹਾਡੇ ਚੁਣੇ ਹੋਏ ਕੈਲੰਡਰ 'ਤੇ ਆਉਂਦੀਆਂ ਹਨ, ਅਤੇ ਤੁਹਾਡੇ ਵਿਅਸਤ ਸਮੇਂ ਉਨ੍ਹਾਂ ਸਮੇਂ ਨੂੰ ਮੁਫ਼ਤ ਰੱਖਦੇ ਹਨ।";
-"Approve on this device" = "ਇਸ ਉਪਕਰਣ ' ਤੇ ਪ੍ਰਵਾਨਗੀ ਦਿਓ";
-"Set up web booking" = "ਵੈੱਬ ਬੁਕਿੰਗ ਸੈਟ ਅਪ ਕਰੋ";
-"You're all set" = "ਤੁਸੀਂ ਸਾਰੇ ਤਿਆਰ ਹੋ";
-"Couldn't approve" = "ਮਨਜ਼ੂਰੀ ਨਹੀਂ ਦੇ ਸਕਿਆ";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "ਇਸ ਬ੍ਰਾਊਜ਼ਰ ਨੂੰ ਆਪਣੇ ਕੈਲੰਡਰ ਨਾਲ ਜੋੜਨ ਨੂੰ ਮਨਜ਼ੂਰੀ ਦਿਓ ਤਾਂ ਜੋ ਤੁਸੀਂ ਵੈੱਬ 'ਤੇ ਇੱਕ ਬੁਕਿੰਗ ਪੇਜ ਬਣਾ ਸਕੋ  ਮੁਫ਼ਤ, ਕਿਉਂਕਿ ਤੁਹਾਡੇ ਕੋਲ ਐਪ ਹੈ.";
-"Linking…" = "ਲਿੰਕਿੰਗ...";
-"Head back to your browser — it's ready to finish setting up your booking page." = "ਆਪਣੇ ਬ੍ਰਾਊਜ਼ਰ ਤੇ ਵਾਪਸ ਜਾਓ  ਇਹ ਤੁਹਾਡੇ ਬੁਕਿੰਗ ਪੇਜ ਨੂੰ ਸੈੱਟ ਕਰਨ ਲਈ ਤਿਆਰ ਹੈ.";
-"The code may have expired. Reopen the QR on the web and try again." = "ਕੋਡ ਦੀ ਮਿਆਦ ਖਤਮ ਹੋ ਗਈ ਹੋ ਸਕਦੀ ਹੈ। QR ਵੈੱਬ ਤੇ ਜਾਓ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.";
 "Read-only shared event" = "ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ ਸਾਂਝੀ ਕੀਤੀ ਗਈ ਘਟਨਾ";
 "Remove from My Calendar" = "ਮੇਰੇ ਕੈਲੰਡਰ ਤੋਂ ਹਟਾਓ";
 

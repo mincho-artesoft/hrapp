@@ -16,6 +16,7 @@ xcrun swiftc -sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" \
     "$repo_dir/Calendar/Sources/EKMultiDayWrapper.swift" \
     "$repo_dir/Calendar/AppLocal/EventKitEventSupplementStore.swift" \
     "$repo_dir/Calendar/AppLocal/CalendarTimelineTransfer.swift" \
+    "$repo_dir/scripts/tests/LocalSharingStoreTests.swift" \
     "$repo_dir/scripts/tests/LocalTimelineStoreTests.swift" \
     -o "$test_app/EventViewTests"
 codesign --force --sign - "$test_app"

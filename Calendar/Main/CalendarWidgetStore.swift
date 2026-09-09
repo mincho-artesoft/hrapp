@@ -153,20 +153,6 @@ enum CalendarWidgetStore {
 
     @MainActor
     static func saveUpcomingEventsSnapshot(limit: Int = 25) {
-        let status = EKEventStore.authorizationStatus(for: .event)
-        let hasReadAccess: Bool = {
-            if #available(iOS 17.0, *) {
-                return status == .fullAccess
-            } else {
-                return status == .authorized
-            }
-        }()
-
-        guard hasReadAccess else {
-            clearUpcomingEventsSnapshot()
-            return
-        }
-
         let eventStore = CalendarViewModel.shared.eventStore
         let selectedCalendarIDs = CalendarViewModel.shared.selectedCalendarIDs
         saveCalendarSelectionSnapshot(selectedCalendarIDs)
@@ -180,6 +166,7 @@ enum CalendarWidgetStore {
         saveUpcomingEventSnapshots(snapshots)
     }
 
+    @MainActor
     static func selectedCalendarIDs(for eventStore: EKEventStore) -> Set<String> {
         if let storedArray = UserDefaults.standard.array(forKey: selectedCalendarIDsKey) as? [String],
            !storedArray.isEmpty || UserDefaults.standard.bool(forKey: hasConfiguredSelectedCalendarIDsKey) {
@@ -187,6 +174,7 @@ enum CalendarWidgetStore {
         }
 
         return Set(eventStore.calendars(for: .event).map(\.calendarIdentifier))
+            .union(AppLocalCalendarStore.shared.calendars.map(\.id))
     }
 
     static func saveCalendarSelectionSnapshot(_ selectedCalendarIDs: Set<String>) {
@@ -200,40 +188,75 @@ enum CalendarWidgetStore {
         defaults.synchronize()
     }
 
+    @MainActor
     static func makeUpcomingEventSnapshots(
         from eventStore: EKEventStore,
         selectedCalendarIDs: Set<String>,
-        limit: Int = 25
+        limit: Int = 25,
+        now: Date = Date()
     ) -> [UpcomingEventSnapshot] {
-        let now = Date()
         let end = Calendar.current.date(byAdding: .year, value: 1, to: now) ?? now.addingTimeInterval(31_536_000)
         guard !selectedCalendarIDs.isEmpty else {
             return []
         }
 
-        let calendars = eventStore.calendars(for: .event).filter {
-            selectedCalendarIDs.contains($0.calendarIdentifier)
+        let status = EKEventStore.authorizationStatus(for: .event)
+        let canReadNative: Bool
+        if #available(iOS 17.0, *) { canReadNative = status == .fullAccess }
+        else { canReadNative = status == .authorized }
+
+        var nativeEvents: [EKEvent] = []
+        if canReadNative {
+            let calendars = eventStore.calendars(for: .event).filter {
+                selectedCalendarIDs.contains($0.calendarIdentifier)
+            }
+            // Passing nil/empty calendars to EventKit must never turn an
+            // explicit local-only selection into all native calendars.
+            if !calendars.isEmpty {
+                let predicate = eventStore.predicateForEvents(withStart: now, end: end, calendars: calendars)
+                nativeEvents = eventStore.events(matching: predicate)
+            }
         }
 
-        guard !calendars.isEmpty else {
-            return []
+        let localStore = AppLocalCalendarStore.shared
+        return combineUpcomingEventSnapshots(nativeEvents: nativeEvents,
+            localEvents: localStore.events(from: now, to: end, selectedCalendarIDs: selectedCalendarIDs),
+            localCalendars: localStore.calendars, selectedCalendarIDs: selectedCalendarIDs,
+            now: now, limit: limit)
+    }
+
+    /// Both consumers use one selection and one globally sorted/limited feed.
+    /// Calendar identity, not title, keeps same-named native/local calendars distinct.
+    @MainActor
+    static func combineUpcomingEventSnapshots(
+        nativeEvents: [EKEvent], localEvents: [AppLocalEventRecord],
+        localCalendars: [AppLocalCalendarRecord], selectedCalendarIDs: Set<String>,
+        now: Date, limit: Int
+    ) -> [UpcomingEventSnapshot] {
+        let calendars = Dictionary(localCalendars.map { ($0.id, $0) }, uniquingKeysWith: { _, last in last })
+        var snapshots = nativeEvents.filter {
+            selectedCalendarIDs.contains($0.calendar.calendarIdentifier)
+                && $0.status != .canceled
+                && !SharedInviteTracker.shouldAppearStruckThrough($0)
+        }.map(makeUpcomingEventSnapshot)
+        snapshots += localEvents.compactMap { event in
+            guard selectedCalendarIDs.contains(event.calendarID), !event.isCancelled,
+                  let calendar = calendars[event.calendarID], !calendar.isRevoked else { return nil }
+            let color = AppLocalCalendarStore.color(calendar.displayColorHex)
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
+            color.getRed(&r, green: &g, blue: &b, alpha: &a)
+            return UpcomingEventSnapshot(id: event.id, title: event.title,
+                startDate: event.startDate, endDate: event.endDate, isAllDay: event.isAllDay,
+                location: event.location.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
+                videoCallPlatform: videoCallPlatform(from: event.notes),
+                colorRed: Double(r), colorGreen: Double(g), colorBlue: Double(b), colorAlpha: Double(a))
         }
-
-        let predicate = eventStore.predicateForEvents(
-            withStart: now,
-            end: end,
-            calendars: calendars
-        )
-
-        return eventStore.events(matching: predicate)
-            .filter { event in
-                !event.isAllDay && event.startDate > now
+        return snapshots.filter { !$0.isAllDay && $0.startDate > now }
+            .sorted {
+                if $0.startDate != $1.startDate { return $0.startDate < $1.startDate }
+                return $0.id < $1.id
             }
-            .sorted { lhs, rhs in
-                lhs.startDate < rhs.startDate
-            }
-            .prefix(limit)
-            .map(makeUpcomingEventSnapshot)
+            .prefix(max(0, limit)).map { $0 }
     }
 
     static func saveUpcomingEventSnapshots(_ snapshots: [UpcomingEventSnapshot]) {

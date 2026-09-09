@@ -15,6 +15,8 @@ struct DayCellView: View {
     private let calendar = Calendar.current
 
     @State private var isTargeted = false
+    @Environment(\.colorScheme) private var colorScheme
+    @ScaledMetric(relativeTo: .subheadline) private var dayHeaderSize: CGFloat = 32
 
     var body: some View {
         ZStack {
@@ -31,18 +33,18 @@ struct DayCellView: View {
 
             // 2) Показваме деня и (до 3) събития
             VStack(spacing: 4) {
-                // Денят (ако е днес, показваме червен кръг)
-                if calendar.isDateInToday(day) {
-                    Text(dayNumber(day))
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                        .padding(6)
-                        .background(Circle().fill(Color.red))
-                } else {
-                    Text(dayNumber(day))
-                        .font(.subheadline)
-                        .foregroundColor(isInCurrentMonth(day) ? .primary : .gray)
-                }
+                // Reserve the same date header in every cell. Today's circle
+                // must not push its date or event chips below the other days.
+                Text(dayNumber(day))
+                    .font(.subheadline)
+                    .foregroundColor(calendar.isDateInToday(day)
+                        ? .white : (isInCurrentMonth(day) ? .primary : .gray))
+                    .frame(width: dayHeaderSize, height: dayHeaderSize)
+                    .background {
+                        if calendar.isDateInToday(day) {
+                            Circle().fill(Color.red)
+                        }
+                    }
 
                 // Събития
                 if events.count <= 3 {
@@ -73,7 +75,15 @@ struct DayCellView: View {
 
     /// Капсулка за едно събитие
     private func eventCapsule(_ event: EventDescriptor) -> some View {
-        let color = Color(uiColor: event.color)
+        let dark = colorScheme == .dark
+        let baseColor = event.color.resolvedColor(with: UITraitCollection(
+            userInterfaceStyle: dark ? .dark : .light))
+        // Keep the original capsule geometry, but use the shared event palette.
+        // Month chips deliberately have no leading stripe.
+        let textColor = Color(uiColor: EventTimelineColors.text(baseColor,
+            strength: 0.58, dark: dark))
+        let backgroundColor = Color(uiColor: EventTimelineColors.background(baseColor,
+            selected: false, depth: 0, dark: dark))
         let isReadOnly = (event as? AppLocalEventDescriptor)?.isReadOnly
             ?? SharedInviteTracker.isReadOnly(event)
         let isStruckThrough = (event as? AppLocalEventDescriptor)?.isCancelled
@@ -90,16 +100,16 @@ struct DayCellView: View {
                 .lineLimit(1)
                 .strikethrough(
                     isStruckThrough,
-                    color: color
+                    color: textColor
                 )
         }
             .font(.caption2)
-            .foregroundColor(.white)
+            .foregroundColor(textColor)
             .minimumScaleFactor(0.45)
             .allowsTightening(true)
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
-            .background(color)
+            .background(backgroundColor)
             .clipShape(Capsule())
             .onTapGesture {
                 onEventTap(event)

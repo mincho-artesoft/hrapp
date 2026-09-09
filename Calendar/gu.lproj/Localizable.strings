@@ -868,33 +868,12 @@
 "Sofia" = "સોફિયા";
 "Team lunch" = "ટીમ લંચ";
 
-/* Booking */
-"Booking page" = "બુકિંગ પાનું";
 "Your name" = "તમારું નામ";
 "Display name" = "પ્રદર્શન નામ";
 "Source calendar" = "સ્ત્રોત કૅલેન્ડર";
-"Booked meetings land here, and your busy times here block new bookings." = "બુક થયેલી બેઠકો અહીં આવે છે, અને તમારા વ્યસ્ત સમય અહીં નવા બુકિંગને અવરોધે છે.";
-"Meeting types" = "બેઠકોના પ્રકાર";
 "%lld min" = "%lld મિનિટ";
-"Add meeting type" = "બેઠક પ્રકાર ઉમેરો";
-"Weekly hours" = "સાપ્તાહિક કલાકો";
-"Save booking page" = "બુકિંગ પાનું સાચવો";
-"Your booking page is live" = "તમારી બુકિંગ પૃષ્ઠ જીવંત છે";
-"Share this link — anyone can book one of your open times." = "આ લિંક શેર કરો  કોઈપણ તમારા ખુલ્લા સમયમાંથી એક બુક કરી શકે છે.";
 "Share link" = "શેર લિંક";
 "Edit settings" = "સેટિંગ્સ સંપાદિત કરો";
-"Add at least one meeting type." = "ઓછામાં ઓછી એક બેઠક પ્રકાર ઉમેરો.";
-"Turn on at least one day with valid hours." = "માન્ય કલાકો સાથે ઓછામાં ઓછા એક દિવસ ચાલુ કરો.";
-"Set up a booking page" = "બુકિંગ પેજ સેટ કરો";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "તમારા સમયની વ્યવસ્થા કરો, તમારા સમયની વ્યવસ્થા કરો, તમારા સમયની વ્યવસ્થા કરો.";
-"Approve on this device" = "આ ઉપકરણ પર મંજૂરી";
-"Set up web booking" = "વેબ બુકિંગ સેટ કરો";
-"You're all set" = "તમે બધા તૈયાર છે";
-"Couldn't approve" = "મંજૂર ન કરી શક્યો";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "આ બ્રાઉઝરને તમારા કેલેન્ડર સાથે લિંક કરવા માટે મંજૂરી આપો જેથી તમે વેબ પર બુકિંગ પૃષ્ઠ બનાવી શકો  મફત, કારણ કે તમારી પાસે એપ્લિકેશન છે.";
-"Linking…" = "લિંકિંગ.";
-"Head back to your browser — it's ready to finish setting up your booking page." = "તમારા બ્રાઉઝર પર પાછા જાઓ  તે તમારા બુકિંગ પૃષ્ઠને સેટ કરવાનું સમાપ્ત કરવા માટે તૈયાર છે.";
-"The code may have expired. Reopen the QR on the web and try again." = "કોડ સમાપ્ત થઈ શકે છે. QR વેબ પર અને ફરીથી પ્રયાસ કરો.";
 "Read-only shared event" = "ફક્ત વાંચન માટે વહેંચાયેલ ઘટના";
 "Remove from My Calendar" = "મારા કૅલેન્ડરમાંથી દૂર કરો";
 

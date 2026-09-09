@@ -868,33 +868,12 @@
 "Sofia" = "Sofia";
 "Team lunch" = "Tímový obed";
 
-/* Booking */
-"Booking page" = "Stránka rezervácie";
 "Your name" = "Tvoje meno";
 "Display name" = "Názov zobrazenia";
 "Source calendar" = "Zdrojový kalendár";
-"Booked meetings land here, and your busy times here block new bookings." = "Zarezervované stretnutia sa tu dostanú a vaše zaneprázdnené časy tu blokujú nové rezervácie.";
-"Meeting types" = "Typy stretnutí";
 "%lld min" = "%lld min.";
-"Add meeting type" = "Pridať typ schôdze";
-"Weekly hours" = "Vydňové hodiny";
-"Save booking page" = "Uložte stránku rezervácie";
-"Your booking page is live" = "Vaša rezervačná stránka je naživo";
-"Share this link — anyone can book one of your open times." = "Podieľajte sa na tomto odkazu  každý môže rezervovať jeden z vašich otvorených hodín.";
 "Share link" = "Zdieľajte odkaz";
 "Edit settings" = "Upravovanie nastavení";
-"Add at least one meeting type." = "Pridajte aspoň jeden typ stretnutia.";
-"Turn on at least one day with valid hours." = "Vypnite aspoň jeden deň s platnými hodinami.";
-"Set up a booking page" = "Nastavte si stránku rezervácie";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Nechaj ľudí rezervovať tvoje otvorené hodiny, stretnutia sa budú konať v kalendári, ktorý si vyberiete a tvoje ručné hodiny budú mať voľné.";
-"Approve on this device" = "Schvaľovanie na tomto zariadení";
-"Set up web booking" = "Nastaviť webové rezervácie";
-"You're all set" = "Ste pripravený.";
-"Couldn't approve" = "Nemohol som schváliť";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Schvaľte prepojenie tohto prehliadača so svojím kalendárom, aby ste mohli vytvoriť stránku rezervácie na webe  zadarmo, pretože máte aplikáciu.";
-"Linking…" = "Spájať...";
-"Head back to your browser — it's ready to finish setting up your booking page." = "Vráťte sa do prehliadača  je pripravený dokončiť nastavenie vašej rezervačnej stránky.";
-"The code may have expired. Reopen the QR on the web and try again." = "Kód môže byť vypršal. QR na internete a skúste to znova.";
 "Read-only shared event" = "Spolupráca len prečítavacia udalosť";
 "Remove from My Calendar" = "Zbavte sa môjho kalendára";
 

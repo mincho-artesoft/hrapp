@@ -868,33 +868,12 @@
 "Sofia" = "Sofía";
 "Team lunch" = "Almuerzo de equipo";
 
-/* Booking */
-"Booking page" = "Página de reserva";
 "Your name" = "Su nombre";
 "Display name" = "Nombre de la pantalla";
 "Source calendar" = "Calendario de origen";
-"Booked meetings land here, and your busy times here block new bookings." = "Las reuniones reservadas llegan aquí, y sus tiempos ocupados aquí bloquean nuevas reservas.";
-"Meeting types" = "Tipos de reuniones";
 "%lld min" = "%lld Minutos";
-"Add meeting type" = "Añadir tipo de reunión";
-"Weekly hours" = "Horario semanal";
-"Save booking page" = "Guardar la página de reserva";
-"Your booking page is live" = "Su página de reserva está en vivo";
-"Share this link — anyone can book one of your open times." = "Comparte este enlace  cualquiera puede reservar uno de sus horarios abiertos.";
 "Share link" = "Enlace de compartir";
 "Edit settings" = "Modificar la configuración";
-"Add at least one meeting type." = "Añadir al menos un tipo de reunión.";
-"Turn on at least one day with valid hours." = "Encienda al menos un día con horarios válidos.";
-"Set up a booking page" = "Configurar una página de reserva";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "Deja que la gente reserve tus horarios abiertos, las reuniones se ubican en el calendario que elijas, y tus horarios ocupados mantengan esas ranuras libres.";
-"Approve on this device" = "Aplicación en este dispositivo";
-"Set up web booking" = "Configurar la reserva en la web";
-"You're all set" = "Estás listo.";
-"Couldn't approve" = "No podía aprobar";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "Aproveche vincular este navegador a su calendario para que pueda crear una página de reserva en la web  gratis, porque tiene la aplicación.";
-"Linking…" = "- Enlazar...";
-"Head back to your browser — it's ready to finish setting up your booking page." = "Vuelve a tu navegador  está listo para terminar de configurar tu página de reserva.";
-"The code may have expired. Reopen the QR on the web and try again." = "El código puede haber expirado. QR en la red y vuelva a intentarlo.";
 "Read-only shared event" = "Evento compartido solo para lectura";
 "Remove from My Calendar" = "Quita de mi calendario";
 

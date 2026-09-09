@@ -868,33 +868,12 @@
 "Sofia" = "சோபியா";
 "Team lunch" = "குழு மதிய உணவு";
 
-/* Booking */
-"Booking page" = "முன்பதிவு பக்கம்";
 "Your name" = "உங்கள் பெயர்";
 "Display name" = "காட்சி பெயர்";
 "Source calendar" = "மூல காலண்டர்";
-"Booked meetings land here, and your busy times here block new bookings." = "முன்பதிவு செய்யப்பட்ட கூட்டங்கள் இங்கு வருகின்றன, உங்கள் பிஸியான நேரங்கள் புதிய முன்பதிவுகளை தடுக்கின்றன.";
-"Meeting types" = "கூட்ட வகைகள்";
 "%lld min" = "%lld நிமிடம்";
-"Add meeting type" = "கூட்ட வகை சேர்க்கவும்";
-"Weekly hours" = "வார வேலை நேரம்";
-"Save booking page" = "முன்பதிவு பக்கத்தை சேமிக்கவும்";
-"Your booking page is live" = "உங்கள் முன்பதிவு பக்கம் நேரடி";
-"Share this link — anyone can book one of your open times." = "இந்த இணைப்பை பகிர்ந்து கொள்ளுங்கள்  உங்கள் திறந்த நேரங்களில் ஒன்றை எவரும் பதிவு செய்யலாம்.";
 "Share link" = "பகிர்வு இணைப்பு";
 "Edit settings" = "அமைப்புகள் திருத்தவும்";
-"Add at least one meeting type." = "குறைந்தது ஒரு கூட்ட வகை சேர்க்கவும்.";
-"Turn on at least one day with valid hours." = "குறைந்தபட்சம் ஒரு நாளைக்கு செல்லுபடியாகும் நேரத்துடன் இயக்கவும்.";
-"Set up a booking page" = "ஒரு முன்பதிவு பக்கத்தை அமைக்கவும்";
-"Let people book your open times. Meetings land on the calendar you choose, and your busy times keep those slots free." = "உங்கள் திறந்த நேரங்களை மக்கள் பதிவு செய்யட்டும். நீங்கள் தேர்ந்தெடுத்த காலண்டரில் கூட்டங்கள் அமைந்துவிடும், உங்கள் பிஸியான நேரங்களில் அந்த இடங்களை இலவசமாக வைத்திருங்கள்.";
-"Approve on this device" = "இந்த சாதனத்தில் ஒப்புதல்";
-"Set up web booking" = "இணையத்தில் முன்பதிவு செய்யவும்";
-"You're all set" = "நீங்கள் தயாராக உள்ளன";
-"Couldn't approve" = "ஒப்புதல் அளிக்க முடியவில்லை";
-"Approve linking this browser to your calendar so you can create a booking page on the web — free, because you have the app." = "இந்த உலாவியை உங்கள் காலண்டருடன் இணைக்க ஒப்புதல் அளிக்கவும், இதன் மூலம் இணையத்தில்  இலவசமாக முன்பதிவு பக்கத்தை உருவாக்க முடியும், ஏனெனில் உங்களிடம் பயன்பாடு உள்ளது.";
-"Linking…" = "இணைப்பு.";
-"Head back to your browser — it's ready to finish setting up your booking page." = "உங்கள் உலாவிக்குத் திரும்புங்கள்  உங்கள் முன்பதிவு பக்கத்தை அமைக்க முடிந்தது.";
-"The code may have expired. Reopen the QR on the web and try again." = "குறியீடு காலாவதியாகியிருக்கலாம். QR இணையத்தில் மற்றும் மீண்டும் முயற்சி.";
 "Read-only shared event" = "வாசிப்பு மட்டும் பகிரப்பட்ட நிகழ்வு";
 "Remove from My Calendar" = "என் காலண்டரில் இருந்து நீக்கவும்";
 
