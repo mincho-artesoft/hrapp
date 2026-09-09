@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { SESv2Client, SendEmailCommand, Attachment } from '@aws-sdk/client-sesv2';
 import QRCode from 'qrcode';
 import { eventPalette } from '../presentation/event-card';
-import { canonicalInvitationURL } from './invitation-url';
+import { canonicalInvitationURL, eventInvitationURLWithPreview } from './invitation-url';
 
 const PNGJS: any = require('pngjs');
 
@@ -316,8 +316,8 @@ export class EmailService {
     try {
       return await QRCode.toBuffer(url.toString(), {
         type: 'png',
-        width: 300,
-        margin: 2,
+        width: 600,
+        margin: 4,
         errorCorrectionLevel: 'M',
         color: { dark: '#08213FFF', light: '#FFFFFFFF' },
       });
@@ -391,7 +391,14 @@ export class EmailService {
   }: any): Promise<void> {
     const canonicalURL = canonicalInvitationURL(eventUrl, this.API_URL);
     if (!canonicalURL) throw new Error('Invalid event invitation URL');
-    eventUrl = canonicalURL.toString();
+    const previewURL = eventInvitationURLWithPreview(canonicalURL, {
+      ...event, details: { ...event.details, timeZone: event.details?.timeZone ?? timeZone },
+    });
+    if (!previewURL) throw new Error('Invalid event invitation preview');
+    if (!previewURL.searchParams.has('color') && eventColor) {
+      previewURL.searchParams.set('color', this.validEventColor(eventColor));
+    }
+    eventUrl = previewURL.toString();
     const qrAttachment = await this.invitationQRAttachment(eventUrl);
     const eventDateTime = this.fmtAppClipEvent(
       event.start,

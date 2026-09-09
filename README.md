@@ -58,6 +58,28 @@ production bucket. `production` is deliberately locked unless the safety flag
 is present; it updates the live function's code and sets its handler to
 `dist/lambda.handler`; runtime, memory, timeout, and env are left as they are.
 
+## Sharing compatibility with older apps
+
+The sharing API retains its existing sessions, identifiers, roles and feed URLs.
+Compatibility checks use the 1.7.0 wire model (iOS source `84ca418bc`) as a baseline:
+
+- Missing `travelTime`, `attachments` or `videoCallURL` on an older client's edit
+  preserves the existing value, for both individual events and calendar snapshots.
+  Explicit null/empty values from capable clients clear those fields normally.
+- Calendar kind remains immutable when an older client omits `calendarKind`.
+- Conditional snapshot writes reject concurrent replacements instead of silently
+  overwriting newer data with a stale legacy snapshot.
+- Event QR codes retain title/start/end/allDay and the existing scoped identifiers
+  required by older scanners. Long optional content is fetched from the feed.
+  Link previews use canonical event metadata, including for compact incoming links.
+- Past-event invitations remain available. New server pushes still require an app
+  version that registers its APNs installation; old apps retain their prior behavior.
+
+This is sharing compatibility, not restoration of the retired Booking product.
+Automated API/wire-format and actual QR-image decoding tests are not a substitute
+for a final smoke test of the exact distributed App Store binary before release.
+Only Debug is deployed during this work; production still needs explicit approval.
+
 ## Roll back
 
 The pre-NestJS backend is snapshotted for one-click restore at

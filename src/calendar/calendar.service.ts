@@ -7,7 +7,7 @@ import { randomId, hashKey } from '../util/ids';
 import { nextRevisionTimestamp } from '../util/revision';
 import { verifyAppleIdToken, verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
 import { EmailService } from '../email/email.service';
-import { canonicalInvitationURL } from '../email/invitation-url';
+import { canonicalInvitationURL, eventInvitationURLWithPreview } from '../email/invitation-url';
 import { EVENT_CARD_CSS, eventIcon, eventPalette } from '../presentation/event-card';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? null;
@@ -49,7 +49,20 @@ export class CalendarService {
   }
 
   async sharedEventEmailQRCode(value: unknown): Promise<Buffer | null> {
-    return this.email.sharedEventQRCodePng(value);
+    const url = canonicalInvitationURL(value, process.env.API_URL ?? 'https://api.cloud-calendars.com');
+    if (!url) return null;
+    if (url.pathname === '/event-invites/open') {
+      const feedId = url.searchParams.get('c')!;
+      const eventId = url.searchParams.get('e')!;
+      const feed = await this.store.getJSON(this.keys.feedIndex(feedId));
+      if (!feed?.calId) return null;
+      const acl = await this.store.getJSON(this.keys.acl(feed.calId));
+      if (acl?.feeds?.[feedId]?.scope?.eventId !== eventId) return null;
+      const event = await this.store.getJSON(this.keys.event(feed.calId, eventId));
+      const preview = eventInvitationURLWithPreview(url, event);
+      return preview ? this.email.sharedEventQRCodePng(preview.toString()) : null;
+    }
+    return this.email.sharedEventQRCodePng(url.toString());
   }
 
   /**
@@ -280,12 +293,11 @@ export class CalendarService {
     const localEventIdentifier = typeof body.localEventIdentifier === 'string'
       ? body.localEventIdentifier.slice(0, 512)
       : undefined;
-    let eventDetails: any | undefined;
-    if (Object.prototype.hasOwnProperty.call(body, 'details')) {
+    const hasEventDetails = Object.prototype.hasOwnProperty.call(body, 'details');
+    if (hasEventDetails) {
       if (body.details != null && (typeof body.details !== 'object' || Array.isArray(body.details))) {
         return result(400, { error: 'details must be an object' });
       }
-      eventDetails = sanitizeEventDetails(body.details);
     }
 
     const identities = await this.identitiesFor(principal);
@@ -311,6 +323,11 @@ export class CalendarService {
         contributorForbidden = true;
         return null;
       }
+      // Merge against this CAS attempt's canonical revision, not a stale
+      // pre-read. Old apps cannot round-trip fields introduced after 1.7.0.
+      const eventDetails = hasEventDetails
+        ? mergeEventDetailsForWrite(body.details, existing?.details)
+        : undefined;
       return {
         ...(existing ?? {}),
         id: eventId,
@@ -2369,9 +2386,10 @@ export class CalendarService {
       return result(409, { error: 'deleted calendars can no longer sync events' });
     }
 
-    const existingSnapshot = await this.store.getJSON(
+    const existingSnapshotEntry = await this.store.getJSONWithETag(
       this.keys.icloudCalendarEvents(context.ownerId, calendarId),
     );
+    const existingSnapshot = existingSnapshotEntry?.value;
     const expectedUpdatedAt = boundedPlainText(body.expectedUpdatedAt, 128);
     if (expectedUpdatedAt && existingSnapshot?.updatedAt !== expectedUpdatedAt) {
       return result(409, {
@@ -2391,6 +2409,9 @@ export class CalendarService {
       return result(400, { error: 'a valid sync window is required' });
     }
 
+    const previousEvents = new Map<string, any>(
+      (existingSnapshot?.events ?? []).map((event: any) => [event.id, event]),
+    );
     const eventsById = new Map<string, any>();
     for (const raw of rawEvents) {
       const id = String(raw?.id ?? '').toLowerCase();
@@ -2416,7 +2437,7 @@ export class CalendarService {
         allDay: Boolean(raw?.allDay),
         location,
         url: eventUrl ?? null,
-        details: sanitizeEventDetails(raw?.details),
+        details: mergeEventDetailsForWrite(raw?.details, previousEvents.get(id)?.details),
       });
     }
 
@@ -2432,10 +2453,11 @@ export class CalendarService {
       ),
       updatedAt: now,
     };
-    await this.store.putJSON(
-      this.keys.icloudCalendarEvents(context.ownerId, calendarId),
-      snapshot,
-    );
+    const snapshotKey = this.keys.icloudCalendarEvents(context.ownerId, calendarId);
+    const written = existingSnapshotEntry
+      ? await this.store.putJSONIfMatch(snapshotKey, snapshot, existingSnapshotEntry.etag)
+      : await this.store.putJSONIfAbsent(snapshotKey, snapshot);
+    if (!written) return result(409, { error: 'calendar events changed on another device' });
     return result(200, {
       eventCount: snapshot.events.length,
       updatedAt: now,
@@ -3094,6 +3116,22 @@ export function eventInvitationPage(input: {
     </section>`, input.title);
 }
 
+/** Missing extension fields mean "unknown to this client", not "delete".
+ * Modern clients use explicit null/[] to clear them. Omitted whole details in
+ * a legacy calendar snapshot also must not erase the canonical representation. */
+function mergeEventDetailsForWrite(value: any, previous: any): any {
+  if (value === undefined) return previous ?? null;
+  const sanitized = sanitizeEventDetails(value);
+  if (!sanitized || !previous) return sanitized;
+  for (const field of ['travelTime', 'attachments', 'videoCallURL']) {
+    if (!Object.prototype.hasOwnProperty.call(value, field)
+        && Object.prototype.hasOwnProperty.call(previous, field)) {
+      sanitized[field] = previous[field];
+    }
+  }
+  return sanitized;
+}
+
 /** Bounded, JSON-only copy of the portable EventKit fields. Feed URLs are
  * capabilities, so even authenticated owner input must not be allowed to grow
  * an S3 object without limit or inject arbitrary structures into recipients. */
@@ -3202,6 +3240,7 @@ function sanitizeEventDetails(value: any): any {
     alarms,
     recurrenceRules,
     structuredLocation,
+    videoCallURL: optionalEventURL(value.videoCallURL) ?? null,
     travelTime,
     attachments,
     organizer: participant(value.organizer),

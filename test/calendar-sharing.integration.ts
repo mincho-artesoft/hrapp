@@ -66,9 +66,10 @@ class MemoryStore {
 class FakeEmailService {
   readonly eventInvitations: any[] = [];
   readonly calendarInvitations: any[] = [];
+  lastQRCodeURL: string | undefined;
 
   sharedEventIconPng(): Buffer { return Buffer.from('icon'); }
-  async sharedEventQRCodePng(): Promise<Buffer> { return Buffer.from('qr'); }
+  async sharedEventQRCodePng(url: string): Promise<Buffer> { this.lastQRCodeURL = url; return Buffer.from('qr'); }
   async sendSharedEventInvitation(value: any): Promise<void> {
     this.eventInvitations.push(structuredClone(value));
   }
@@ -265,6 +266,11 @@ async function testEventSharing(service: CalendarService, email: FakeEmailServic
   );
   assert.equal(await service.calendarFeed('../private.json'), null);
   const eventUrl = `${process.env.API_URL ?? 'https://api.cloud-calendars.com'}/event-invites/open?e=${eventId}&c=${grant.feedId}&title=Original%20event&start=1977972000&end=1977977400&allDay=0&timeZone=Europe%2FSofia&color=%230A84FF`;
+  assert.ok(await service.sharedEventEmailQRCode(`${process.env.API_URL}/event-invites/open?e=${eventId}&c=${grant.feedId}`));
+  const qrPreview = new URL(email.lastQRCodeURL!);
+  assert.equal(qrPreview.searchParams.get('title'), 'Original event');
+  assert.equal(Number(qrPreview.searchParams.get('start')), Date.parse(eventPayload('Original event').start) / 1000);
+  assert.equal(await service.sharedEventEmailQRCode(`${process.env.API_URL}/event-invites/open?e=wrong-event&c=${grant.feedId}`), null);
   const eventLanding = await service.eventInvitationLanding({
     e: eventId,
     c: grant.feedId,
@@ -698,6 +704,74 @@ async function testPastEventInvitations(service: CalendarService, store: MemoryS
   console.log('PASS past event invitations: all rights, retained indexes, repeated refresh, landing page, decline, reinvite and accept');
 }
 
+async function testLegacySharingWrites(service: CalendarService, store: MemoryStore, kind: string): Promise<void> {
+  const extensions = {
+    travelTime: 900,
+    videoCallURL: 'https://example.com/meet',
+    attachments: [{ id: 'fixture', fileName: 'fixture.txt', contentType: 'text/plain', dataBase64: 'dGVzdA==' }],
+  };
+  const legacyDetails = { notes: 'Legacy edit', timeZone: 'Europe/Sofia', availability: 0,
+    alarms: [], recurrenceRules: [], attendees: [] };
+  const assertExtensions = (details: any, label: string) => {
+    for (const field of Object.keys(extensions)) assert.deepEqual(details[field], extensions[field], `${label}: ${field} must survive`);
+  };
+  for (const access of ['reader', 'writer', 'owner']) {
+    const eventId = `legacy-${access}`;
+    const original = { ...eventPayload('New client event'), details: { ...legacyDetails, ...extensions } };
+    expectStatus(await service.upsertEvent(owner, eventId, original), 201, 'new client event');
+    // Owner edit in the old wire format must retain new fields too.
+    expectStatus(await service.upsertEvent(owner, eventId, { ...original, details: legacyDetails }), 200, 'legacy creator edit');
+    assertExtensions((await store.getJSON(keys.event(owner.calId, eventId))).details, 'legacy creator');
+    const grant = expectStatus(await service.createGrant(owner, { role: 'viewer', eventId }), 201, 'legacy grant');
+    expectStatus(await service.inviteEventRecipients(owner, eventId, {
+      eventUrl: `${process.env.API_URL}/event-invites/open?e=${eventId}&c=${grant.feedId}`,
+      invitations: [{ email: recipientEmail, access }],
+    }), 201, 'invite legacy recipient');
+    expectStatus(await service.rememberReceivedInvite(recipient, { eventId, feedId: grant.feedId }), 201, 'legacy accept');
+    expectStatus(await service.upsertEvent(recipient, eventId, {
+      ...original, title: 'Legacy recipient edit', feedId: grant.feedId, details: legacyDetails,
+    }), access === 'reader' ? 403 : 200, 'legacy recipient permissions');
+    assertExtensions((await store.getJSON(keys.event(owner.calId, eventId))).details, `legacy ${access}`);
+    // Null and [] are explicit deletion; omission is not.
+    expectStatus(await service.upsertEvent(owner, eventId, {
+      ...original, details: { ...legacyDetails, travelTime: null, attachments: [], videoCallURL: null },
+    }), 200, 'modern explicit clear');
+    const cleared = (await store.getJSON(keys.event(owner.calId, eventId))).details;
+    assert.equal(cleared.travelTime, null); assert.equal(cleared.videoCallURL, null); assert.deepEqual(cleared.attachments, []);
+  }
+  const calendarId = 'e'.repeat(64), eventId = 'f'.repeat(64);
+  const metadata = { title: 'Legacy calendar', calendarKind: kind, color: '#AF52DE', timeZone: 'Europe/Sofia',
+    recipients: [{ email: recipientEmail, access: 'writer' }] };
+  expectStatus(await service.saveICloudCalendarSharing(owner, calendarId, metadata), 201, 'new calendar');
+  const { calendarKind: _omitted, ...oldMetadata } = metadata;
+  const oldResponse = expectStatus(await service.saveICloudCalendarSharing(owner, calendarId, oldMetadata), 200, 'old metadata omits kind');
+  assert.equal(oldResponse.calendar.calendarKind, kind, 'old edit must not convert app-local calendar to EventKit');
+  const window = { windowStart: '2032-01-01T00:00:00Z', windowEnd: '2033-01-01T00:00:00Z' };
+  const originalEvent = { ...calendarEvent('New calendar event'), id: eventId, details: { ...legacyDetails, ...extensions } };
+  expectStatus(await service.saveICloudCalendarEvents(owner, calendarId, { ...window, events: [originalEvent] }), 200, 'new snapshot');
+  const snapshotKey = keys.icloudCalendarEvents(owner.principalId, calendarId);
+  for (const details of [legacyDetails, undefined]) {
+    expectStatus(await service.saveICloudCalendarEvents(recipient, calendarId, {
+      ...window, ownerId: owner.principalId, events: [{ ...originalEvent, details }],
+    }), 200, 'legacy calendar snapshot');
+    assertExtensions((await store.getJSON(snapshotKey)).events[0].details, 'legacy calendar snapshot');
+  }
+  const oldWrite = store.putJSONIfMatch.bind(store);
+  store.putJSONIfMatch = async (key, value, etag) => key === snapshotKey ? false : oldWrite(key, value, etag);
+  try {
+    expectStatus(await service.saveICloudCalendarEvents(owner, calendarId, {
+      ...window, events: [{ ...originalEvent, details: legacyDetails }],
+    }), 409, 'concurrent snapshot conflict cannot overwrite newer data');
+    assertExtensions((await store.getJSON(snapshotKey)).events[0].details, 'conflicting snapshot');
+  } finally { store.putJSONIfMatch = oldWrite; }
+  expectStatus(await service.saveICloudCalendarEvents(owner, calendarId, {
+    ...window, events: [{ ...originalEvent, details: { ...legacyDetails, travelTime: null, attachments: [], videoCallURL: null } }],
+  }), 200, 'modern calendar clear');
+  assert.deepEqual((await store.getJSON(snapshotKey)).events[0].details.attachments, []);
+  assert.equal((await store.getJSON(snapshotKey)).events[0].details.travelTime, null);
+  console.log(`PASS legacy sharing compatibility: ${kind}, all rights, extension preservation, explicit clear, calendar kind and conflict protection`);
+}
+
 async function main(): Promise<void> {
   const instant = Date.parse('2026-09-09T08:00:00.000Z');
   assert.equal(nextRevisionTimestamp(new Date(instant).toISOString(), instant), '2026-09-09T08:00:00.001Z');
@@ -716,6 +790,7 @@ async function main(): Promise<void> {
   await testEventSharing(service, email);
   await testPastEventInvitations(service, store);
   await testCalendarSharing(service, email, kind);
+  await testLegacySharingWrites(service, store, kind);
   console.log(`PASS full permissions matrix: ${kind}`);
   }
 
