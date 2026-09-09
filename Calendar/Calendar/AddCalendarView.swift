@@ -25,7 +25,7 @@ struct AddCalendarView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     TextField(LocalizedStringKey("Calendar Name"), text: $calendarName)

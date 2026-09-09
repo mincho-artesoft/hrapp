@@ -103,6 +103,7 @@ struct CalendarApp: App {
                     #endif
                     EventNotificationManager.shared.configure()
                     EventNotificationManager.shared.requestAuthorizationOnLaunch()
+                    InvitationPushRegistration.shared.start()
 
                     // Логика за реклами
                     if SubscriptionManager.shared.subscriptionStatus == .base {
@@ -184,6 +185,7 @@ struct CalendarApp: App {
             switch newPhase {
             case .active:
                 print("App is active.")
+                InvitationPushRegistration.shared.start()
 
                 // Uses the same 20-second foreground cadence as the Google and
                 // Microsoft sync loops. It pushes organiser edits and pulls

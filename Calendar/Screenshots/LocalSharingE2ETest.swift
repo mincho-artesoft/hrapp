@@ -2,7 +2,8 @@
 import EventKit
 import SwiftUI
 
-/// Explicit simulator-only test runner. It calls the same production sharing,
+/// Explicit simulator test runner (physical devices allow only push diagnostics).
+/// It calls the same production sharing,
 /// import and sync services as the UI, with real signed-in Debug sessions.
 /// No credential is accepted in the environment or included in its report.
 @MainActor
@@ -11,7 +12,7 @@ enum LocalSharingE2ETest {
         #if targetEnvironment(simulator)
         return ProcessInfo.processInfo.environment["LOCAL_SHARING_E2E_ACTION"] != nil
         #else
-        return false
+        return NotificationDeliveryE2ETest.physicalPushAuditRequested
         #endif
     }
     struct Manifest: Codable {

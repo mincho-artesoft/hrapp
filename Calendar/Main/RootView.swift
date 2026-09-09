@@ -393,7 +393,10 @@ struct RootView: View {
                                  .zIndex(0)
                          }
                         
-                        if isPortrait { // This condition was from your original code for showing DraggableMenuView
+                        // Keep the drawer's identity alive during size changes.
+                        // Removing it also destroys the account/calendar sheet
+                        // presenting an external Google sign-in controller.
+                        Group {
                             DraggableMenuView(
                                 menuState: $menuState,
                                 adaptiveBackgroundOpacity:$draggableMenuAdaptiveBackgroundОpacity,
@@ -480,7 +483,9 @@ struct RootView: View {
                             // Weather uses the same draggable menu and bottom
                             // navigation as every calendar section. Only the
                             // optional VitaHealth tab remains excluded.
-                            .opacity(selectedTab == 7 ? 0 : 1)
+                            .opacity(isPortrait && selectedTab != 7 ? 1 : 0)
+                            .allowsHitTesting(isPortrait && selectedTab != 7)
+                            .accessibilityHidden(!isPortrait || selectedTab == 7)
                             // Weather has a permanent dark visual language.
                             // The menu is a sibling of WeatherKitView, so it
                             // must receive that scheme explicitly instead of
@@ -509,6 +514,9 @@ struct RootView: View {
                     }
                 } // End GeometryReader
             } // End NavigationView
+            // The keyboard is not an orientation change. Calendar editors and
+            // account sheets manage their own keyboard-safe content separately.
+            .ignoresSafeArea(.keyboard)
             // UIKit-backed navigation and draggable-menu containers can retain
             // their previous semantic direction. Recreate that subtree only
             // when the effective direction actually flips (LTR <-> RTL), while

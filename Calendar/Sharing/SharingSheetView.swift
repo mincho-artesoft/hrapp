@@ -337,7 +337,10 @@ struct SharingSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { showCloudAccount = false }
+                    Button("Close") {
+                        cloudAccountManager.cancelSignIn()
+                        showCloudAccount = false
+                    }
                 }
             }
         }

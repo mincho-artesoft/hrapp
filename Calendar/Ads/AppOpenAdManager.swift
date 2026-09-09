@@ -40,7 +40,7 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
     @MainActor
     func showAdIfAvailable() {
         // 1. Ако вече показваме или зареждаме – не прави нищо
-        guard !isShowingAd else { return }
+        guard !isShowingAd, !CloudAccountManager.shared.isSigningIn else { return }
 
         // 2. Провери дали имаме готова и "прясна" реклама
         if !isAdAvailable() {
@@ -54,6 +54,9 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
               let root = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
             return
         }
+        // A permission alert, account sheet, editor or OAuth controller is an
+        // active user flow, not a fresh app launch. Never cover/dismiss it.
+        guard root.presentedViewController == nil, !root.isBeingDismissed else { return }
 
         // 4. Покажи рекламата
         isShowingAd = true
@@ -67,6 +70,11 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
     appOpenAd = nil
     isShowingAd = false
     Task { await loadAd() }          // презареди
+  }
+
+  func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    appOpenAd = nil
+    isShowingAd = false
   }
 
   // MARK: -- Helpers

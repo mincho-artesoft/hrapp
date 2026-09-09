@@ -22,6 +22,14 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         print("Приложението ще бъде прекратено")
     }
 
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        InvitationPushRegistration.shared.received(token: deviceToken)
+    }
+
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        InvitationPushRegistration.shared.failedToRegister()
+    }
+
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return [.portrait, .landscapeLeft, .landscapeRight, .portraitUpsideDown]
@@ -42,6 +50,15 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 
     nonisolated func userNotificationCenter(_ center: UNUserNotificationCenter,
                                             willPresent notification: UNNotification) async -> UNNotificationPresentationOptions {
+        if notification.request.content.userInfo["cloudCalendarsPush"] as? Bool == true {
+            let data = notification.request.content.userInfo
+            let eventID = data["pendingEventInvitationID"] as? String
+            let calendarID = data["pendingCalendarInvitationID"] as? String
+            let shouldPresent = await MainActor.run {
+                PendingEventInvitationManager.shared.receivedRemoteInvitation(eventID: eventID, calendarID: calendarID)
+            }
+            return shouldPresent ? [.banner, .list, .sound] : []
+        }
         if notification.request.identifier.hasPrefix("weather.gps.alert.") {
             print("🌦️ [WeatherAlerts] iOS is presenting foreground notification id=\(notification.request.identifier)")
         } else if notification.request.identifier.hasPrefix("calendar.event.alarm.")

@@ -1112,6 +1112,19 @@ enum CloudCalendarsAPI {
     }
 
 
+    static func registerInvitationPush(
+        installationId: String, secret: String, revision: Int, token: String,
+        environment: String, enabled: Bool, session: Session
+    ) async throws -> Bool {
+        struct Registration: Decodable { let remoteInvitations: Bool }
+        let response: Registration = try await send(
+            "/me/push-devices/\(installationId)", method: "PUT",
+            body: ["secret": secret, "revision": revision, "token": token,
+                   "environment": environment, "enabled": enabled], bearer: session.deviceToken
+        )
+        return response.remoteInvitations
+    }
+
     // MARK: - Transport
 
     /// Decoding wrapper. Split from `sendIgnoringResponse` so that calls with
@@ -1222,6 +1235,7 @@ final class PendingEventInvitationManager: ObservableObject {
     func setInvitationNotificationsEnabled(_ enabled: Bool) {
         invitationNotificationsEnabled = enabled
         defaults.set(enabled, forKey: Self.invitationNotificationsEnabledKey)
+        InvitationPushRegistration.shared.requestSync()
 
         if !enabled {
             removeInvitationNotifications()
@@ -1314,16 +1328,36 @@ final class PendingEventInvitationManager: ObservableObject {
                     forKey: seenCalendarInvitationIDsKey
                 )
 
-                if !newInvitations.isEmpty {
+                await InvitationPushRegistration.shared.synchronize()
+                let useRemotePush = InvitationPushRegistration.shared.remoteInvitationsEnabled
+                if !useRemotePush && !newInvitations.isEmpty {
                     await postNotifications(for: newInvitations)
                 }
-                if !newCalendarInvitations.isEmpty {
+                if !useRemotePush && !newCalendarInvitations.isEmpty {
                     await postCalendarNotifications(for: newCalendarInvitations)
                 }
             }
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+
+    /// Server push uses the same invitation IDs and navigation as local alerts.
+    /// Polling still refreshes the list, but must not add a second banner.
+    @discardableResult
+    func receivedRemoteInvitation(eventID: String?, calendarID: String?) -> Bool {
+        if let eventID {
+            var seen = Set(defaults.stringArray(forKey: seenInvitationIDsKey) ?? [])
+            seen.insert(eventID)
+            defaults.set(Array(seen).suffix(500).map { $0 }, forKey: seenInvitationIDsKey)
+        }
+        if let calendarID {
+            var seen = Set(defaults.stringArray(forKey: seenCalendarInvitationIDsKey) ?? [])
+            seen.insert(calendarID)
+            defaults.set(Array(seen).suffix(500).map { $0 }, forKey: seenCalendarInvitationIDsKey)
+        }
+        Task { await refresh() }
+        return invitationNotificationsEnabled && CloudAccountManager.shared.isSignedIn
     }
 
     private func postNotifications(
@@ -1419,7 +1453,7 @@ final class PendingEventInvitationManager: ObservableObject {
         }
     }
 
-    private func removeInvitationNotifications() {
+    func removeInvitationNotifications() {
         let center = UNUserNotificationCenter.current()
         let prefixes = ["shared.event.invitation.", "shared.calendar.invitation."]
 
@@ -1427,14 +1461,15 @@ final class PendingEventInvitationManager: ObservableObject {
             let identifiers = requests.map(\.identifier).filter { identifier in
                 prefixes.contains { identifier.hasPrefix($0) }
             }
-            center.removePendingNotificationRequests(withIdentifiers: identifiers)
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
         }
 
         center.getDeliveredNotifications { notifications in
-            let identifiers = notifications.map { $0.request.identifier }.filter { identifier in
-                prefixes.contains { identifier.hasPrefix($0) }
-            }
-            center.removeDeliveredNotifications(withIdentifiers: identifiers)
+            let identifiers = notifications.filter { notification in
+                notification.request.content.userInfo["cloudCalendarsPush"] as? Bool == true
+                    || prefixes.contains { notification.request.identifier.hasPrefix($0) }
+            }.map { $0.request.identifier }
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: identifiers)
         }
     }
 }

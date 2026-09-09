@@ -14,7 +14,7 @@ struct AddGoogleCalendarView: View {
     @State private var selectedColor: UIColor = .systemBlue
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     TextField(NSLocalizedString("Calendar name", comment: "Google calendar name placeholder"), text: $calendarName)

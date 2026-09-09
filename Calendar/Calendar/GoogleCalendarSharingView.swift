@@ -60,7 +60,7 @@ struct GoogleCalendarSharingView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 if isLoading {
                     ProgressView(NSLocalizedString("Loading sharing settings…", comment: "Sharing settings loading message"))

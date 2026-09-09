@@ -39,7 +39,7 @@ struct EditCalendarView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     // Вместо "Calendar Name" ползвате локализиран ключ

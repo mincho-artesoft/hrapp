@@ -117,6 +117,7 @@ enum CalendarFeedSession {
             where code == 422 && body.contains("email_required") {
             throw SessionError.emailRequired
         }
+        try Task.checkCancellation()
         var identitiesByProvider: [String: CloudCalendarsAPI.AccountIdentity] = [:]
         for identity in currentSession?.identities ?? [] {
             identitiesByProvider[identity.provider] = identity

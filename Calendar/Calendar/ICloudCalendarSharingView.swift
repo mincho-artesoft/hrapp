@@ -13,6 +13,7 @@ struct ICloudCalendarSharingView: View {
     let originalOwnerEmail: String?
 
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject private var cloudAccountManager = CloudAccountManager.shared
     @State private var recipients: [CloudCalendarsAPI.ICloudCalendarRecipient] = []
     @State private var loadedRecipients: [CloudCalendarsAPI.ICloudCalendarRecipient] = []
     @State private var removedRecipientEmails: Set<String> = []
@@ -47,7 +48,10 @@ struct ICloudCalendarSharingView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { dismiss() }
+                    Button("Close") {
+                        cloudAccountManager.cancelSignIn()
+                        dismiss()
+                    }
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") { dismiss() }
@@ -113,7 +117,7 @@ struct ICloudCalendarSharingView: View {
             } message: { recipient in
                 Text(recipient.email)
             }
-            .interactiveDismissDisabled(isSaving)
+            .interactiveDismissDisabled(isSaving || cloudAccountManager.isSigningIn)
         }
     }
 

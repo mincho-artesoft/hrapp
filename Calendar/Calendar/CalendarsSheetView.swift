@@ -992,7 +992,7 @@ private struct SharedICloudCalendarInfoView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section {
                     TextField(

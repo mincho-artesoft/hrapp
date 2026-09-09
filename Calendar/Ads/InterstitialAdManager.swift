@@ -44,6 +44,7 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
         }
     }
     func showAd() {
+        guard !CloudAccountManager.shared.isSigningIn else { return }
         guard let interstitial else {
             print("⚠️ Ad wasn't ready")
             loadAd()

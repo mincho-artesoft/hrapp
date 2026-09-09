@@ -9,6 +9,18 @@ import WeatherKit
 /// Invitations/weather are labelled fixtures, not APNs or live WeatherKit.
 @MainActor
 enum NotificationDeliveryE2ETest {
+    /// Opt-in diagnostics on the user-authorized physical device. Never allow
+    /// calendar seeding, local notification fixtures, cleanup or sharing edits.
+    static var physicalPushAuditRequested: Bool {
+        #if targetEnvironment(simulator)
+        return false
+        #else
+        let env = ProcessInfo.processInfo.environment
+        return env["CLOUD_CALENDARS_DEVICE_PUSH_AUDIT"] == "1"
+            && ["notifications-push-register", "notifications-push-observe"]
+                .contains(env["LOCAL_SHARING_E2E_ACTION"] ?? "")
+        #endif
+    }
     struct State: Codable {
         var selected: Set<String>
         var eventFlag: Bool?
@@ -37,7 +49,11 @@ enum NotificationDeliveryE2ETest {
             "scope": "Actual iOS local delivery; production reminder scheduler and invitation/weather builders. Synthetic invitation/weather fixtures; no APNs or real weather warning."]
         do {
             let device = ProcessInfo.processInfo.environment["SIMULATOR_UDID"] ?? ""
-            try require(["1A67A8FA-A72D-4244-9C1C-551D1C473FD4", "786598BD-4158-4A5B-851F-8E04FDE3BC98", "6CC8E36B-735C-440C-9AAA-47069C0C310E"].contains(device), "Only the three QA simulators")
+            let approvedSimulator = ["1A67A8FA-A72D-4244-9C1C-551D1C473FD4", "786598BD-4158-4A5B-851F-8E04FDE3BC98", "6CC8E36B-735C-440C-9AAA-47069C0C310E"].contains(device)
+            let physicalAudit = physicalPushAuditRequested
+                && ["notifications-push-register", "notifications-push-observe"].contains(action)
+            try require(approvedSimulator || physicalAudit, "Only approved simulators or explicit physical-device push diagnostics")
+            report["physicalDevice"] = physicalAudit
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             let center = UNUserNotificationCenter.current()
             let settings = await center.notificationSettings()
@@ -49,7 +65,29 @@ enum NotificationDeliveryE2ETest {
             report["deliveredQAAtEntry"] = await center.deliveredNotifications().filter {
                 $0.request.content.title.hasPrefix(prefix) || $0.request.content.body.hasPrefix("QA TEST")
             }.map { ["id": $0.request.identifier, "title": $0.request.content.title, "body": $0.request.content.body] }
-            if action == "notifications-prepare" {
+            if action == "notifications-push-register" {
+                report["scope"] = "Real APNs device registration and authenticated backend binding; no synthetic notifications"
+                InvitationPushRegistration.shared.start()
+                for _ in 0..<40 {
+                    if InvitationPushRegistration.shared.remoteInvitationsEnabled { break }
+                    try await Task.sleep(for: .milliseconds(500))
+                }
+                await InvitationPushRegistration.shared.synchronize()
+                report["push"] = InvitationPushRegistration.shared.auditStatus
+                report["status"] = InvitationPushRegistration.shared.remoteInvitationsEnabled ? "PASS" : "NOT_READY"
+            } else if action == "notifications-push-observe" {
+                report["scope"] = "Read actual delivered server pushes; does not schedule or inject notifications"
+                report["deliveredPushes"] = await center.deliveredNotifications().filter {
+                    $0.request.content.userInfo["cloudCalendarsPush"] as? Bool == true
+                }.map { notification -> [String: Any] in
+                    let content = notification.request.content
+                    return ["id": notification.request.identifier, "title": content.title, "body": content.body,
+                        "isRemotePush": notification.request.trigger is UNPushNotificationTrigger,
+                        "eventInvitationID": content.userInfo["pendingEventInvitationID"] as? String ?? "",
+                        "calendarInvitationID": content.userInfo["pendingCalendarInvitationID"] as? String ?? ""]
+                }
+                report["status"] = "OBSERVED"
+            } else if action == "notifications-prepare" {
                 try require(!FileManager.default.fileExists(atPath: stateURL.path), "A test already exists; observe/cleanup before preparing again")
                 if settings.authorizationStatus == .notDetermined {
                     _ = try await center.requestAuthorization(options: [.alert, .sound, .badge])

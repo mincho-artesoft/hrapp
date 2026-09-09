@@ -143,6 +143,7 @@ final class EventNotificationManager: NSObject, ObservableObject {
 
             Task { @MainActor in
                 self?.authorizationStatus = status
+                InvitationPushRegistration.shared.requestSync()
                 self?.rescheduleUpcomingEventNotifications()
             }
         }

@@ -120,6 +120,88 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
     private var appleAuthorizationController: ASAuthorizationController?
     private var webAuthenticationSession: ASWebAuthenticationSession?
+    private weak var accountPresentationWindow: UIWindow?
+    private var authenticationWindow: UIWindow?
+    private var signInState = CloudSignInAttemptState()
+    private var signInTask: Task<Void, Never>?
+    private var signInTimeoutTask: Task<Void, Never>?
+
+    var canCancelSignIn: Bool { signInState.current != nil }
+
+    func updatePresentationWindow(_ window: UIWindow?) {
+        if let window { accountPresentationWindow = window }
+    }
+
+    private func beginSignIn(provider: String) -> CloudSignInAttemptState.Attempt? {
+        guard !isSigningIn else { return nil }
+        // Capture the account sheet's actual window before the system login
+        // makes the scene inactive. Never start against a new, invisible window.
+        let window = accountPresentationWindow ?? Self.presentingViewController()?.view.window
+        guard let window, !window.isHidden, window.windowScene != nil else {
+            setError(OAuthError.couldNotStart.localizedDescription, for: provider)
+            return nil
+        }
+        guard let attempt = signInState.begin(provider: provider) else { return nil }
+        authenticationWindow = window
+        isSigningIn = true
+        clearError(for: provider)
+        scheduleSignInTimeout(attempt, seconds: 300)
+        recordSignInPhase("opening", provider: provider)
+        return attempt
+    }
+
+    private func scheduleSignInTimeout(_ attempt: CloudSignInAttemptState.Attempt, seconds: Double) {
+        signInTimeoutTask?.cancel()
+        signInTimeoutTask = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(seconds)) } catch { return }
+            guard let self, self.signInState.contains(attempt.id) else { return }
+            self.cancelSignIn()
+            self.setError(NSLocalizedString("Sign-in timed out. Please try again.",
+                comment: "Cloud account sign-in timeout"), for: attempt.provider)
+            self.recordSignInPhase("timed-out", provider: attempt.provider)
+        }
+    }
+
+    private func finishSignIn(_ attempt: CloudSignInAttemptState.Attempt) {
+        guard signInState.finish(attempt.id) else { return }
+        signInTimeoutTask?.cancel()
+        signInTimeoutTask = nil
+        appleAuthorizationController = nil
+        webAuthenticationSession = nil
+        authenticationWindow = nil
+        signInTask = nil
+        isSigningIn = false
+        recordSignInPhase("finished", provider: attempt.provider)
+    }
+
+    func cancelSignIn() {
+        guard let attempt = signInState.current else { return }
+        let browser = webAuthenticationSession
+        let apple = appleAuthorizationController
+        let task = signInTask
+        // Invalidate first: cancellation itself can call the delegate.
+        finishSignIn(attempt)
+        task?.cancel()
+        browser?.cancel()
+        apple?.cancel()
+        recordSignInPhase("cancelled", provider: attempt.provider)
+    }
+
+    private func recordSignInPhase(_ phase: String, provider: String) {
+        #if DEBUG
+        // Physical-device diagnostic, deliberately containing no credentials,
+        // callback URLs, email addresses, or provider response bodies.
+        let status: [String: Any] = ["phase": phase, "provider": provider,
+            "isSigningIn": isSigningIn, "isSignedIn": isSignedIn,
+            "hasPresentationWindow": authenticationWindow != nil,
+            "timestamp": Date().ISO8601Format()]
+        if let root = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first,
+           let data = try? JSONSerialization.data(withJSONObject: status, options: [.sortedKeys]) {
+            try? FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+            try? data.write(to: root.appendingPathComponent("CloudAccountSignInStatus.json"), options: .atomic)
+        }
+        #endif
+    }
 
     var isSignedIn: Bool { account?.identities.isEmpty == false }
 
@@ -168,7 +250,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
     }
 
     func signInWithApple() {
-        guard !isSigningIn else { return }
+        guard let attempt = beginSignIn(provider: "apple") else { return }
 
         let request = ASAuthorizationAppleIDProvider().createRequest()
         configureAppleRequest(request)
@@ -177,23 +259,25 @@ final class CloudAccountManager: NSObject, ObservableObject {
         controller.delegate = self
         controller.presentationContextProvider = self
         appleAuthorizationController = controller
-        isSigningIn = true
-        clearError(for: "apple")
         controller.performRequests()
+        recordSignInPhase("provider-presented", provider: attempt.provider)
     }
 
     func completeAppleSignIn(_ result: Result<ASAuthorization, Error>) {
+        guard let attempt = signInState.current, attempt.provider == "apple" else { return }
         appleAuthorizationController = nil
         switch result {
         case .failure(let error):
-            isSigningIn = false
-            setError(error.localizedDescription, for: "apple")
+            finishSignIn(attempt)
+            if (error as? ASAuthorizationError)?.code != .canceled {
+                setError(error.localizedDescription, for: "apple")
+            }
         case .success(let authorization):
             guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
                   let tokenData = credential.identityToken,
                   let token = String(data: tokenData, encoding: .utf8)
             else {
-                isSigningIn = false
+                finishSignIn(attempt)
                 setError(
                     NSLocalizedString(
                         "Apple did not return an identity token.",
@@ -206,11 +290,13 @@ final class CloudAccountManager: NSObject, ObservableObject {
 
             let name = PersonNameComponentsFormatter().string(from: credential.fullName ?? .init())
             clearError(for: "apple")
-            Task {
+            scheduleSignInTimeout(attempt, seconds: 45)
+            signInTask = Task {
                 await authenticate(
                     provider: "apple",
                     token: token,
-                    name: name.isEmpty ? nil : name
+                    name: name.isEmpty ? nil : name,
+                    attempt: attempt
                 )
             }
         }
@@ -247,8 +333,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
             return
         }
 
-        isSigningIn = true
-        clearError(for: configuration.provider)
+        guard let attempt = beginSignIn(provider: configuration.provider) else { return }
 
         let session = ASWebAuthenticationSession(
             url: authorizationURL,
@@ -259,55 +344,64 @@ final class CloudAccountManager: NSObject, ObservableObject {
             let errorDomain = (error as NSError?)?.domain
 
             Task { @MainActor [weak self, callbackURL, errorDescription, errorCode, errorDomain] in
-                guard let self else { return }
-                self.webAuthenticationSession = nil
+                guard let self, self.signInState.contains(attempt.id) else { return }
+                self.signInTask = Task { @MainActor in
+                    guard self.signInState.contains(attempt.id) else { return }
+                    self.webAuthenticationSession = nil
+                    self.recordSignInPhase("provider-callback", provider: configuration.provider)
 
-                if errorDomain == ASWebAuthenticationSessionError.errorDomain,
-                   errorCode == ASWebAuthenticationSessionError.canceledLogin.rawValue {
-                    self.isSigningIn = false
-                    self.clearError(for: configuration.provider)
-                    return
-                }
-
-                guard let callbackURL else {
-                    self.isSigningIn = false
-                    self.setError(
-                        errorDescription ?? OAuthError.invalidCallback.localizedDescription,
-                        for: configuration.provider
-                    )
-                    return
-                }
-
-                do {
-                    let code = try Self.authorizationCode(
-                        from: callbackURL,
-                        expectedState: state
-                    )
-                    let response = try await Self.exchangeAuthorizationCode(
-                        code,
-                        codeVerifier: codeVerifier,
-                        configuration: configuration
-                    )
-                    let token: String?
-                    switch configuration.backendToken {
-                    case .identityToken:
-                        token = response.idToken
-                    case .accessToken:
-                        token = response.accessToken
-                    }
-                    guard let token, !token.isEmpty else {
-                        throw OAuthError.missingToken
+                    if errorDomain == ASWebAuthenticationSessionError.errorDomain,
+                       errorCode == ASWebAuthenticationSessionError.canceledLogin.rawValue {
+                        self.finishSignIn(attempt)
+                        self.clearError(for: configuration.provider)
+                        return
                     }
 
-                    let claims = response.idToken.flatMap(Self.identityClaims(from:))
-                    await self.authenticate(
-                        provider: configuration.provider,
-                        token: token,
-                        name: claims?.name ?? claims?.email
-                    )
-                } catch {
-                    self.isSigningIn = false
-                    self.setError(error.localizedDescription, for: configuration.provider)
+                    guard let callbackURL else {
+                        self.finishSignIn(attempt)
+                        self.setError(
+                            errorDescription ?? OAuthError.invalidCallback.localizedDescription,
+                            for: configuration.provider
+                        )
+                        return
+                    }
+
+                    do {
+                        self.scheduleSignInTimeout(attempt, seconds: 45)
+                        let code = try Self.authorizationCode(
+                            from: callbackURL,
+                            expectedState: state
+                        )
+                        let response = try await Self.exchangeAuthorizationCode(
+                            code,
+                            codeVerifier: codeVerifier,
+                            configuration: configuration
+                        )
+                        try Task.checkCancellation()
+                        guard self.signInState.contains(attempt.id) else { return }
+                        let token: String?
+                        switch configuration.backendToken {
+                        case .identityToken:
+                            token = response.idToken
+                        case .accessToken:
+                            token = response.accessToken
+                        }
+                        guard let token, !token.isEmpty else {
+                            throw OAuthError.missingToken
+                        }
+
+                        let claims = response.idToken.flatMap(Self.identityClaims(from:))
+                        await self.authenticate(
+                            provider: configuration.provider,
+                            token: token,
+                            name: claims?.name ?? claims?.email,
+                            attempt: attempt
+                        )
+                    } catch {
+                        guard self.signInState.contains(attempt.id) else { return }
+                        self.finishSignIn(attempt)
+                        self.setError(error.localizedDescription, for: configuration.provider)
+                    }
                 }
             }
         }
@@ -315,12 +409,12 @@ final class CloudAccountManager: NSObject, ObservableObject {
         session.prefersEphemeralWebBrowserSession = true
         webAuthenticationSession = session
 
-        guard session.start() else {
-            webAuthenticationSession = nil
-            isSigningIn = false
+        guard session.canStart, session.start() else {
+            finishSignIn(attempt)
             setError(OAuthError.couldNotStart.localizedDescription, for: configuration.provider)
             return
         }
+        recordSignInPhase("provider-presented", provider: configuration.provider)
     }
 
     private static func authorizationURL(
@@ -374,6 +468,7 @@ final class CloudAccountManager: NSObject, ObservableObject {
         configuration: OAuthConfiguration
     ) async throws -> OAuthTokenResponse {
         var request = URLRequest(url: configuration.tokenEndpoint)
+        request.timeoutInterval = 20
         request.httpMethod = "POST"
         request.setValue(
             "application/x-www-form-urlencoded; charset=utf-8",
@@ -463,14 +558,26 @@ final class CloudAccountManager: NSObject, ObservableObject {
     }
 
     func signOut() {
-        // The browser OAuth session is ephemeral and provider tokens are never
-        // retained. Calendar provider sessions remain entirely independent.
-        CalendarFeedSession.forget()
-        SharedInviteTracker.demoteAllToReader()
-        SharedICloudCalendarLocalStore.demoteAllToReader()
-        account = nil
-        providerErrors.removeAll()
-        NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
+        guard !isSigningIn else { return }
+        isSigningIn = true
+        Task {
+            defer { isSigningIn = false }
+            do {
+                try await InvitationPushRegistration.shared.prepareForSignOut(session: CalendarFeedSession.existing)
+                CalendarFeedSession.forget()
+                SharedInviteTracker.demoteAllToReader()
+                SharedICloudCalendarLocalStore.demoteAllToReader()
+                account = nil
+                providerErrors.removeAll()
+                PendingEventInvitationManager.shared.removeInvitationNotifications()
+                NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
+            } catch {
+                for identity in account?.identities ?? [] {
+                    setError(NSLocalizedString("Connect to the internet to safely stop invitation notifications and sign out.",
+                        comment: "Push registration sign out failure"), for: identity.provider)
+                }
+            }
+        }
     }
 
     func signOut(provider: String) {
@@ -501,25 +608,34 @@ final class CloudAccountManager: NSObject, ObservableObject {
         }
     }
 
-    private func authenticate(provider: String, token: String, name: String?) async {
-        defer { isSigningIn = false }
+    private func authenticate(provider: String, token: String, name: String?, attempt: CloudSignInAttemptState.Attempt) async {
+        guard signInState.contains(attempt.id) else { return }
+        recordSignInPhase("server-authentication", provider: provider)
         do {
             let session = try await CalendarFeedSession.authenticate(
                 provider: provider,
                 token: token,
                 name: name
             )
+            try Task.checkCancellation()
+            guard signInState.contains(attempt.id) else { return }
             account = Account(
                 identities: normalizedIdentities(from: session),
                 ownerId: session.ownerId
             )
             clearError(for: provider)
+            // Authentication is done. Recovery/push registration must not keep
+            // all Connect buttons disabled while other network work finishes.
+            finishSignIn(attempt)
             NotificationCenter.default.post(name: .cloudAccountChanged, object: nil)
-            await SharedEventRecovery.restoreFromServer()
-            await PendingEventInvitationManager.shared.refresh(
-                notifyForNewInvitations: true
-            )
+            InvitationPushRegistration.shared.requestSync()
+            Task {
+                await SharedEventRecovery.restoreFromServer()
+                await PendingEventInvitationManager.shared.refresh(notifyForNewInvitations: true)
+            }
         } catch CalendarFeedSession.SessionError.emailRequired where provider == "apple" {
+            guard signInState.contains(attempt.id) else { return }
+            finishSignIn(attempt)
             setError(
                 NSLocalizedString(
                     "Apple didn’t return an email. In Settings, stop using Apple ID for Cloud Calendars, then connect again and choose Share My Email.",
@@ -528,6 +644,8 @@ final class CloudAccountManager: NSObject, ObservableObject {
                 for: provider
             )
         } catch {
+            guard signInState.contains(attempt.id) else { return }
+            finishSignIn(attempt)
             setError(error.localizedDescription, for: provider)
         }
     }
@@ -570,6 +688,7 @@ extension CloudAccountManager: ASAuthorizationControllerDelegate {
         controller: ASAuthorizationController,
         didCompleteWithAuthorization authorization: ASAuthorization
     ) {
+        guard controller === appleAuthorizationController else { return }
         completeAppleSignIn(.success(authorization))
     }
 
@@ -577,13 +696,14 @@ extension CloudAccountManager: ASAuthorizationControllerDelegate {
         controller: ASAuthorizationController,
         didCompleteWithError error: Error
     ) {
+        guard controller === appleAuthorizationController else { return }
         completeAppleSignIn(.failure(error))
     }
 }
 
 extension CloudAccountManager: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        Self.presentingViewController()?.view.window
+        authenticationWindow ?? accountPresentationWindow ?? Self.presentingViewController()?.view.window
             ?? UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .flatMap(\.windows)
@@ -594,7 +714,7 @@ extension CloudAccountManager: ASAuthorizationControllerPresentationContextProvi
 
 extension CloudAccountManager: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        Self.presentingViewController()?.view.window
+        authenticationWindow ?? accountPresentationWindow ?? Self.presentingViewController()?.view.window
             ?? UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .flatMap(\.windows)
@@ -643,11 +763,18 @@ struct CloudAccountSignInContent: View {
                     ProgressView()
                     Text("Signing in…")
                         .foregroundStyle(.secondary)
+                    Spacer(minLength: 8)
+                    if manager.canCancelSignIn {
+                        Button("Cancel", action: manager.cancelSignIn)
+                            .buttonStyle(.borderless)
+                    }
                 }
                 .font(.subheadline)
             }
 
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(CloudAccountWindowReader(onWindow: manager.updatePresentationWindow))
     }
 
     private var guidanceCard: some View {
@@ -671,6 +798,7 @@ struct CloudAccountSignInContent: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(14)
         .fixedSize(horizontal: false, vertical: true)
         .layoutPriority(1)
@@ -873,10 +1001,14 @@ struct CloudAccountSignInView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Close") { dismiss() }
+                    Button("Close") {
+                        manager.cancelSignIn()
+                        dismiss()
+                    }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
+                        manager.cancelSignIn()
                         if let onDone {
                             onDone()
                         } else {
@@ -886,6 +1018,30 @@ struct CloudAccountSignInView: View {
                         .disabled(!manager.isSignedIn)
                 }
             }
+        }
+        .interactiveDismissDisabled(manager.isSigningIn)
+    }
+}
+
+/// Reads the window belonging to this particular sheet, including in iPad
+/// multi-window mode. It never makes a window key or presents its own controller.
+private struct CloudAccountWindowReader: UIViewRepresentable {
+    let onWindow: (UIWindow?) -> Void
+    func makeUIView(context: Context) -> WindowView {
+        let view = WindowView()
+        view.isUserInteractionEnabled = false
+        view.onWindow = onWindow
+        return view
+    }
+    func updateUIView(_ uiView: WindowView, context: Context) {
+        uiView.onWindow = onWindow
+        if let window = uiView.window { onWindow(window) }
+    }
+    final class WindowView: UIView {
+        var onWindow: ((UIWindow?) -> Void)?
+        override func didMoveToWindow() {
+            super.didMoveToWindow()
+            onWindow?(window)
         }
     }
 }
