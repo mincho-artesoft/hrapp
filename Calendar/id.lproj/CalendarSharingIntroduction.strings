@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Kalender lokal dan berbagi";
+"local.title" = "Kalender lokal";
+"local.body" = "Buat kalender langsung di Cloud Calendars tanpa menghubungkan iCloud, Google, atau Microsoft.";
+"sharing.title" = "Bagikan acara dan kalender";
+"sharing.body" = "Bagikan acara satu per satu atau seluruh kalender, termasuk kalender lokal dan iCloud Anda.";
+"access.title" = "Pilih hak akses";
+"access.body" = "Pilih siapa yang dapat melihat, mengedit, atau mengelola konten yang Anda bagikan.";
+"account" = "Untuk berbagi, masuk ke akun Cloud Calendars dengan Apple, Google, atau Microsoft.";
+"continue" = "Mengerti";

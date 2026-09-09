@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Yerel takvimler ve paylaşım";
+"local.title" = "Yerel takvimler";
+"local.body" = "iCloud, Google veya Microsoft bağlamadan doğrudan Cloud Calendars’ta takvim oluşturun.";
+"sharing.title" = "Etkinlik ve takvim paylaşın";
+"sharing.body" = "Yerel ve iCloud takvimleriniz dahil, tek tek etkinlikleri veya tüm takvimleri paylaşın.";
+"access.title" = "Erişim izinlerini seçin";
+"access.body" = "Paylaştıklarınızı kimlerin görüntüleyebileceğini, düzenleyebileceğini veya yönetebileceğini seçin.";
+"account" = "Paylaşmak için Apple, Google veya Microsoft ile bir Cloud Calendars hesabına giriş yapın.";
+"continue" = "Anladım";

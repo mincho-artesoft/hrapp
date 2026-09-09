@@ -16,3 +16,6 @@
 "Shared calendar" = "ปฏิทินที่ใช้ร่วมกัน";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "ตัวกรองนี้ จะทําการแสดงตัวอย่างเฉพาะปฏิทินเท่านั้น ดาวน์โหลดปฏิทินเมฆ เพื่อเพิ่มเพื่อให้ฉันแบ่งปัน";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "คลิปนี้ จะแสดงตัวอย่างเฉพาะเหตุการณ์เท่านั้น ดาวน์โหลดปฏิทินของเมฆ เพื่อเพิ่มเข้าไปในปฏิทินของคุณ";
+/* Retired share links. */
+"Link unavailable" = "ลิงก์ไม่พร้อมใช้งาน";
+"This link is no longer available." = "ลิงก์นี้ไม่พร้อมใช้งานแล้ว";

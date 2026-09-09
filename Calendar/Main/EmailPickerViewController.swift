@@ -19,10 +19,12 @@ class EmailPickerViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.semanticContentAttribute = AppPreferences.shared.layoutDirection == .rightToLeft
+            ? .forceRightToLeft : .forceLeftToRight
         view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
 
         // Container
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = .systemBackground
         containerView.layer.cornerRadius = 12
         containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)

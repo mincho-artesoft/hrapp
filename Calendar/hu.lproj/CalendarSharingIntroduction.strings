@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Helyi naptárak és megosztás";
+"local.title" = "Helyi naptárak";
+"local.body" = "Hozzon létre naptárakat közvetlenül a Cloud Calendarsban iCloud-, Google- vagy Microsoft-fiók csatlakoztatása nélkül.";
+"sharing.title" = "Események és naptárak megosztása";
+"sharing.body" = "Osszon meg egyedi eseményeket vagy teljes naptárakat, beleértve a helyi és az iCloud-naptárait is.";
+"access.title" = "Hozzáférés kiválasztása";
+"access.body" = "Válassza ki, ki tekintheti meg, szerkesztheti vagy kezelheti a megosztott tartalmat.";
+"account" = "A megosztáshoz jelentkezzen be egy Cloud Calendars-fiókba az Apple, a Google vagy a Microsoft segítségével.";
+"continue" = "Értem";

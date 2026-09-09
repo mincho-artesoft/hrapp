@@ -30,7 +30,7 @@ struct AppLocalCalendarRow: View {
                         .lineLimit(1)
                         .strikethrough(calendar.isRevoked, color: color)
                     if calendar.origin == .received {
-                        Text(calendar.remoteOwnerEmail ?? "Shared calendar")
+                        Text(calendar.remoteOwnerEmail ?? NSLocalizedString("Shared calendar", comment: "Shared calendar owner fallback"))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .lineLimit(1)
@@ -42,7 +42,7 @@ struct AppLocalCalendarRow: View {
             .buttonStyle(.plain)
 
             if calendar.origin == .received {
-                Text(calendar.isRevoked ? "Access removed" : calendar.access.title)
+                Text(calendar.isRevoked ? NSLocalizedString("Access removed", comment: "Revoked calendar access") : calendar.access.title)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(calendar.isRevoked ? .red : .primary)
                     .padding(.horizontal, 9)
@@ -137,7 +137,7 @@ struct AppLocalCalendarEditView: View {
                     Text("COLOR")
                 } footer: {
                     if calendar?.origin == .received {
-                        Text(usesCreatorDefault ? "Default from creator" : "Custom on this device")
+                        Text(LocalizedStringKey(usesCreatorDefault ? "Default from creator" : "Custom on this device"))
                     }
                 }
 
@@ -154,7 +154,7 @@ struct AppLocalCalendarEditView: View {
                     Button(role: .destructive) {
                         showDeleteConfirmation = true
                     } label: {
-                        Text(calendar?.origin == .received ? "Remove from My Calendars" : "Delete Calendar")
+                        Text(LocalizedStringKey(calendar?.origin == .received ? "Remove from My Calendars" : "Delete Calendar"))
                             .frame(maxWidth: .infinity)
                     }
                     .disabled(isDeleting)
@@ -178,11 +178,11 @@ struct AppLocalCalendarEditView: View {
                 }
             }
             .confirmationDialog(
-                calendar?.origin == .received ? "Remove Shared Calendar?" : "Delete Calendar?",
+                LocalizedStringKey(calendar?.origin == .received ? "Remove Shared Calendar?" : "Delete Calendar?"),
                 isPresented: $showDeleteConfirmation,
                 titleVisibility: .visible
             ) {
-                Button(calendar?.origin == .received ? "Remove" : "Delete Calendar", role: .destructive) {
+                Button(LocalizedStringKey(calendar?.origin == .received ? "Remove" : "Delete Calendar"), role: .destructive) {
                     deleteCalendar()
                 }
                 Button("Cancel", role: .cancel) {}

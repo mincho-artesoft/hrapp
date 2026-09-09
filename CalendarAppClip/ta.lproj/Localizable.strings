@@ -14,3 +14,6 @@
 "Shared calendar" = "பகிரப்பட்ட காலண்டர்";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "இந்த App Clip காலண்டர் அழைப்பை மட்டுமே முன்னோட்டமாக காட்டுகிறது. பதிவிறக்கவும் Cloud Calendars அதை என்னுடன் பகிர்ந்து கொள்ள.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "இந்த App Clip நிகழ்வை மட்டுமே முன்னோட்டமாக காட்டுகிறது. பதிவிறக்கவும் Cloud Calendars உங்கள் காலண்டரில் சேர்க்க.";
+/* Retired share links. */
+"Link unavailable" = "இணைப்பு கிடைக்கவில்லை";
+"This link is no longer available." = "இந்த இணைப்பு இனி கிடைக்காது.";

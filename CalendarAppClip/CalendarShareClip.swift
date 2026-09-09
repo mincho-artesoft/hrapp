@@ -143,8 +143,7 @@ struct CalendarClipPreviewView: View {
     private var privacyNote: some View {
         Label {
             Text(
-                "This App Clip only previews the calendar invitation. "
-                    + "Download Cloud Calendars to add it to Shared with me."
+                "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me."
             )
         } icon: {
             Image(systemName: "lock.shield")

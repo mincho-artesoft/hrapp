@@ -16,3 +16,6 @@
 "Shared calendar" = "Общий календарь";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Это приложение Clip только предварительный просмотр приглашения календаря. Скачать облачные календари, чтобы добавить его в Shared with me.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Это приложение Clip только предварительный просмотр события. Загрузите облачные календари, чтобы добавить их в свой календарь.";
+/* Retired share links. */
+"Link unavailable" = "Ссылка недоступна";
+"This link is no longer available." = "Эта ссылка больше недоступна.";

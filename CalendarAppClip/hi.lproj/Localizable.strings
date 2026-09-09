@@ -16,3 +16,6 @@
 "Shared calendar" = "साझा कैलेंडर";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "यह ऐप क्लिप केवल कैलेंडर आमंत्रण का पूर्वावलोकन करता है। इसे मेरे साथ साझा करने के लिए क्लाउड कैलेंडर डाउनलोड करें।";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "यह ऐप क्लिप केवल घटना का पूर्वावलोकन करता है। इसे अपने कैलेंडर में जोड़ने के लिए क्लाउड कैलेंडर डाउनलोड करें।";
+/* Retired share links. */
+"Link unavailable" = "लिंक उपलब्ध नहीं है";
+"This link is no longer available." = "यह लिंक अब उपलब्ध नहीं है।";

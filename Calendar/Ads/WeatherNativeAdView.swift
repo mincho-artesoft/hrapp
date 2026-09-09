@@ -194,7 +194,7 @@ private final class WeatherNativeAdContainerView: UIView {
         topStack.spacing = 8
         topStack.translatesAutoresizingMaskIntoConstraints = false
 
-        adBadgeLabel.text = "Ad"
+        adBadgeLabel.text = NSLocalizedString("Ad", comment: "Advertisement disclosure")
         adBadgeLabel.textColor = .white
         adBadgeLabel.font = .systemFont(ofSize: 10, weight: .bold)
         adBadgeLabel.textAlignment = .center
@@ -202,6 +202,7 @@ private final class WeatherNativeAdContainerView: UIView {
         adBadgeLabel.layer.cornerRadius = 4
         adBadgeLabel.layer.masksToBounds = true
         adBadgeLabel.translatesAutoresizingMaskIntoConstraints = false
+        adBadgeLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
 
         advertiserLabel.textColor = .secondaryLabel
         advertiserLabel.font = .systemFont(ofSize: 12, weight: .medium)
@@ -268,7 +269,7 @@ private final class WeatherNativeAdContainerView: UIView {
             topStack.leadingAnchor.constraint(equalTo: nativeAdView.leadingAnchor, constant: 14),
             topStack.trailingAnchor.constraint(equalTo: nativeAdView.trailingAnchor, constant: -14),
 
-            adBadgeLabel.widthAnchor.constraint(equalToConstant: 26),
+            adBadgeLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 26),
             adBadgeLabel.heightAnchor.constraint(equalToConstant: 18),
 
             mediaView.topAnchor.constraint(equalTo: topStack.bottomAnchor, constant: 8),

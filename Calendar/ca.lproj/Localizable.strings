@@ -312,7 +312,7 @@
 "visibility.moderate"  = "Visibilitat moderada.";
 "visibility.poor"      = "Mala visibilitat.";
 "visibility.verypoor"  = "Una visibilitat molt pobre.";
-"visibility.unknown"   = "";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "Vint";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "Glance Studio t'ajuda a crear vídeos d'estil de xat cinematogràfic per a xarxes socials, publicitat i narració. Crea converses animades dins de dispositius 3D realistes, simula l'escriptura, adjunta contingut multimèdia i exporta contingut vertical atractiu.";
 "Promo.Wonek.description" = "Wonek Video Studio converteix les imatges en brut en contingut llest per publicar. Trobeu moments forts, creeu clips nítids, afegiu subtítols nets i veus en off de text a veu, i després poliu el vídeo i l'àudio en un flux de treball centrat.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop ofereix la creació de vídeos d'estil de xat cinematogràfic al vostre Mac. Crea converses animades dins de dispositius 3D realistes, simula l'escriptura, adjunta fotos i vídeos i exporta contingut vertical per a xarxes socials.";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "Vols eliminar l’accés al calendari?";
+"Remove Access" = "Elimina l’accés";
+"Share calendar" = "Comparteix el calendari";
+"Add another person" = "Afegeix una altra persona";
+"Invite by Email" = "Convida per correu";
+"Email address" = "Adreça electrònica";
+"Remove invitation" = "Elimina la invitació";
+"QR Code" = "Codi QR";
+"Send" = "Envia";
+"Unable to scan" = "No es pot escanejar";
+"Unable to update invitation" = "No es pot actualitzar la invitació";
+"Search events" = "Cerca esdeveniments";
+"Event access removed" = "Accés a l’esdeveniment eliminat";
+"Manage event access" = "Gestiona l’accés a l’esdeveniment";
+"People with this event" = "Persones amb aquest esdeveniment";
+"Event Access" = "Accés a l’esdeveniment";
+"Remove Access?" = "Vols eliminar l’accés?";
+"Original sharer, Owner access" = "Autor original, accés de propietari";
+"Add to Shared with me" = "Afegeix a Compartit amb mi";
+"Clear" = "Esborra";
+"Sending…" = "S’està enviant…";
+"Send Invitations" = "Envia les invitacions";
+"Saving…" = "S’està desant…";
+"Save Invitations" = "Desa les invitacions";
+"Copied" = "Copiat";
+"Copy Link" = "Copia l’enllaç";
+"Event access: %@" = "Accés a l’esdeveniment: %@";
+"QR code for %@" = "Codi QR per a %@";
+"Sign-in timed out. Please try again." = "S’ha esgotat el temps d’inici de sessió. Torna-ho a provar.";
+"Connect to the internet to safely stop invitation notifications and sign out." = "Connecta’t a internet per aturar de manera segura les notificacions d’invitacions i tancar la sessió.";
+"The selected calendar cannot be edited." = "No es pot editar el calendari seleccionat.";
+"Link unavailable" = "Enllaç no disponible";
+"This link is no longer available." = "Aquest enllaç ja no està disponible.";
+"QR scanner unavailable" = "Escàner QR no disponible";
+"No recipients yet" = "Encara no hi ha destinataris";
+"Not signed in" = "No has iniciat sessió";
+"Sign In Required" = "Cal iniciar sessió";
+"Ad" = "Anunci";

@@ -312,7 +312,7 @@
 "visibility.moderate"  = "اعتدال پسند نمائش۔";
 "visibility.poor"      = "کم نمائش.";
 "visibility.verypoor"  = "بہت کم نمائش.";
-"visibility.unknown"   = "";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "ہوا";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "Glance Studio سوشل میڈیا، اشتہارات اور کہانی سنانے کے لیے سنیما چیٹ طرز کی ویڈیوز بنانے میں آپ کی مدد کرتا ہے۔ حقیقت پسندانہ 3D آلات کے اندر متحرک گفتگو بنائیں، ٹائپنگ کی نقل بنائیں، میڈیا کو منسلک کریں، اور مشغول عمودی مواد برآمد کریں۔";
 "Promo.Wonek.description" = "Wonek ویڈیو اسٹوڈیو خام فوٹیج کو شائع کرنے کے لیے تیار مواد میں بدل دیتا ہے۔ مضبوط لمحات تلاش کریں، تیز کلپس بنائیں، صاف سب ٹائٹلز اور ٹیکسٹ ٹو اسپیچ وائس اوور شامل کریں، پھر ایک فوکسڈ ورک فلو میں ویڈیو اور آڈیو کو پالش کریں۔";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop آپ کے Mac پر سنیما چیٹ طرز کی ویڈیو تخلیق لاتا ہے۔ حقیقت پسندانہ 3D آلات کے اندر متحرک گفتگو بنائیں، ٹائپنگ کی نقل بنائیں، تصاویر اور ویڈیوز منسلک کریں، اور سوشل میڈیا کے لیے عمودی مواد برآمد کریں۔";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "کیلنڈر تک رسائی ہٹائیں؟";
+"Remove Access" = "رسائی ہٹائیں";
+"Share calendar" = "کیلنڈر شیئر کریں";
+"Add another person" = "ایک اور شخص شامل کریں";
+"Invite by Email" = "ای میل سے مدعو کریں";
+"Email address" = "ای میل پتہ";
+"Remove invitation" = "دعوت ہٹائیں";
+"QR Code" = "QR کوڈ";
+"Send" = "بھیجیں";
+"Unable to scan" = "اسکین نہیں ہو سکا";
+"Unable to update invitation" = "دعوت اپ ڈیٹ نہیں ہو سکی";
+"Search events" = "ایونٹس تلاش کریں";
+"Event access removed" = "ایونٹ تک رسائی ہٹا دی گئی";
+"Manage event access" = "ایونٹ تک رسائی منظم کریں";
+"People with this event" = "اس ایونٹ کے حامل افراد";
+"Event Access" = "ایونٹ تک رسائی";
+"Remove Access?" = "رسائی ہٹائیں؟";
+"Original sharer, Owner access" = "اصل شیئر کنندہ، مالک کی رسائی";
+"Add to Shared with me" = "میرے ساتھ شیئر کردہ میں شامل کریں";
+"Clear" = "صاف کریں";
+"Sending…" = "بھیجا جا رہا ہے…";
+"Send Invitations" = "دعوتیں بھیجیں";
+"Saving…" = "محفوظ کیا جا رہا ہے…";
+"Save Invitations" = "دعوتیں محفوظ کریں";
+"Copied" = "کاپی ہو گیا";
+"Copy Link" = "لنک کاپی کریں";
+"Event access: %@" = "ایونٹ تک رسائی: %@";
+"QR code for %@" = "%@ کے لیے QR کوڈ";
+"Sign-in timed out. Please try again." = "سائن ان کا وقت ختم ہو گیا۔ دوبارہ کوشش کریں۔";
+"Connect to the internet to safely stop invitation notifications and sign out." = "دعوتوں کی اطلاعات محفوظ طریقے سے بند کرنے اور سائن آؤٹ کرنے کے لیے انٹرنیٹ سے منسلک ہوں۔";
+"The selected calendar cannot be edited." = "منتخب کیلنڈر میں ترمیم نہیں کی جا سکتی۔";
+"Link unavailable" = "لنک دستیاب نہیں";
+"This link is no longer available." = "یہ لنک اب دستیاب نہیں ہے۔";
+"QR scanner unavailable" = "QR اسکینر دستیاب نہیں";
+"No recipients yet" = "ابھی کوئی وصول کنندہ نہیں";
+"Not signed in" = "سائن ان نہیں ہے";
+"Sign In Required" = "سائن ان ضروری ہے";
+"Ad" = "اشتہار";

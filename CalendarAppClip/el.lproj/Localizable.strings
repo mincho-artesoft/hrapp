@@ -16,3 +16,6 @@
 "Shared calendar" = "Κοινόχρηστο ημερολόγιο";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Αυτή η εφαρμογή Clip προεπισκοπεί μόνο την πρόσκληση ημερολογίου. Κατεβάστε τα ημερολόγια Cloud για να τα προσθέσετε στην κοινή χρήση μαζί μου.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Αυτή η εφαρμογή Clip προεπισκοπεί μόνο το γεγονός. Κατεβάστε τα ημερολόγια Cloud για να τα προσθέσετε στο ημερολόγιό σας.";
+/* Retired share links. */
+"Link unavailable" = "Μη διαθέσιμος σύνδεσμος";
+"This link is no longer available." = "Αυτός ο σύνδεσμος δεν είναι πλέον διαθέσιμος.";

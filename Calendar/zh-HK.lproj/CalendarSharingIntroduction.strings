@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "本機日曆與共享";
+"local.title" = "本機日曆";
+"local.body" = "無需連接 iCloud、Google 或 Microsoft，即可直接在 Cloud Calendars 中建立日曆。";
+"sharing.title" = "共享行程與日曆";
+"sharing.body" = "共享個別行程或整份日曆，包括本機日曆和 iCloud 日曆。";
+"access.title" = "選擇存取權限";
+"access.body" = "選擇誰可以檢視、編輯或管理你共享的內容。";
+"account" = "如要共享，請使用 Apple、Google 或 Microsoft 登入 Cloud Calendars 帳户。";
+"continue" = "知道了";

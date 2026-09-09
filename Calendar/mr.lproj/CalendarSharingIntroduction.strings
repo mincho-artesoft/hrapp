@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "स्थानिक कॅलेंडर आणि शेअरिंग";
+"local.title" = "स्थानिक कॅलेंडर";
+"local.body" = "iCloud, Google किंवा Microsoft न जोडता थेट Cloud Calendars मध्ये कॅलेंडर तयार करा.";
+"sharing.title" = "इव्हेंट आणि कॅलेंडर शेअर करा";
+"sharing.body" = "तुमच्या स्थानिक आणि iCloud कॅलेंडरसह स्वतंत्र इव्हेंट किंवा संपूर्ण कॅलेंडर शेअर करा.";
+"access.title" = "ॲक्सेस परवानग्या निवडा";
+"access.body" = "तुम्ही शेअर केलेली सामग्री कोण पाहू, संपादित किंवा व्यवस्थापित करू शकते ते निवडा.";
+"account" = "शेअर करण्यासाठी Apple, Google किंवा Microsoft वापरून Cloud Calendars खात्यात साइन इन करा.";
+"continue" = "समजले";

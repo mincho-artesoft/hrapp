@@ -312,7 +312,7 @@
 "visibility.moderate"  = "Umieraná viditeľnosť.";
 "visibility.poor"      = "- Zlá viditeľnosť.";
 "visibility.verypoor"  = "Veľmi slabá viditeľnosť.";
-"visibility.unknown"   = " ";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "Výchot";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "Glance Studio vám pomáha vytvárať filmové videá v štýle chatu pre sociálne médiá, reklamu a rozprávanie príbehov. Vytvárajte animované konverzácie v realistických 3D zariadeniach, simulujte písanie, pripájajte médiá a exportujte pútavý vertikálny obsah.";
 "Promo.Wonek.description" = "Wonek Video Studio premení nespracované zábery na obsah pripravený na zverejnenie. Nájdite silné momenty, vytvorte ostré klipy, pridajte čisté titulky a hlasové prejavy prevodu textu na reč a potom vylepšite video a zvuk v jednom zameranom pracovnom postupe.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop prináša do vášho Macu vytváranie videí v štýle filmového chatu. Vytvárajte animované konverzácie v realistických 3D zariadeniach, simulujte písanie, pripájajte fotografie a videá a exportujte vertikálny obsah pre sociálne médiá.";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "Odobrať prístup ku kalendáru?";
+"Remove Access" = "Odobrať prístup";
+"Share calendar" = "Zdieľať kalendár";
+"Add another person" = "Pridať ďalšiu osobu";
+"Invite by Email" = "Pozvať e-mailom";
+"Email address" = "E-mailová adresa";
+"Remove invitation" = "Odobrať pozvánku";
+"QR Code" = "QR kód";
+"Send" = "Odoslať";
+"Unable to scan" = "Nedá sa skenovať";
+"Unable to update invitation" = "Pozvánku sa nepodarilo aktualizovať";
+"Search events" = "Hľadať udalosti";
+"Event access removed" = "Prístup k udalosti odobratý";
+"Manage event access" = "Spravovať prístup k udalosti";
+"People with this event" = "Ľudia s touto udalosťou";
+"Event Access" = "Prístup k udalosti";
+"Remove Access?" = "Odobrať prístup?";
+"Original sharer, Owner access" = "Pôvodný zdieľajúci, prístup vlastníka";
+"Add to Shared with me" = "Pridať do Zdieľané so mnou";
+"Clear" = "Vymazať";
+"Sending…" = "Odosielanie…";
+"Send Invitations" = "Odoslať pozvánky";
+"Saving…" = "Ukladanie…";
+"Save Invitations" = "Uložiť pozvánky";
+"Copied" = "Skopírované";
+"Copy Link" = "Kopírovať odkaz";
+"Event access: %@" = "Prístup k udalosti: %@";
+"QR code for %@" = "QR kód pre %@";
+"Sign-in timed out. Please try again." = "Vypršal časový limit prihlásenia. Skúste to znova.";
+"Connect to the internet to safely stop invitation notifications and sign out." = "Pripojte sa k internetu, aby ste bezpečne zastavili hlásenia o pozvánkach a odhlásili sa.";
+"The selected calendar cannot be edited." = "Vybraný kalendár sa nedá upraviť.";
+"Link unavailable" = "Odkaz nie je dostupný";
+"This link is no longer available." = "Tento odkaz už nie je dostupný.";
+"QR scanner unavailable" = "QR skener nie je dostupný";
+"No recipients yet" = "Zatiaľ žiadni príjemcovia";
+"Not signed in" = "Neprihlásený";
+"Sign In Required" = "Vyžaduje sa prihlásenie";
+"Ad" = "Reklama";

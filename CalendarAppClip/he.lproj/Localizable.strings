@@ -14,3 +14,6 @@
 "Shared calendar" = "לוח שנה משותף";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "ה-App Clip מציג רק תצוגה מקדימה של ההזמנה. יש להוריד את Cloud Calendars כדי להוסיף אותה אל ״שותפו איתי״.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "ה-App Clip מציג רק תצוגה מקדימה של האירוע. יש להוריד את Cloud Calendars כדי להוסיף אותו ללוח השנה.";
+/* Retired share links. */
+"Link unavailable" = "הקישור אינו זמין";
+"This link is no longer available." = "הקישור הזה אינו זמין עוד.";

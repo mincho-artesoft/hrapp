@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Lokálne kalendáre a zdieľanie";
+"local.title" = "Lokálne kalendáre";
+"local.body" = "Vytvárajte kalendáre priamo v Cloud Calendars bez pripojenia iCloudu, Googlu alebo Microsoftu.";
+"sharing.title" = "Zdieľajte udalosti a kalendáre";
+"sharing.body" = "Zdieľajte jednotlivé udalosti alebo celé kalendáre vrátane lokálnych kalendárov a kalendárov v iCloude.";
+"access.title" = "Vyberte prístupové práva";
+"access.body" = "Vyberte, kto môže zdieľaný obsah zobrazovať, upravovať alebo spravovať.";
+"account" = "Ak chcete zdieľať, prihláste sa do účtu Cloud Calendars cez Apple, Google alebo Microsoft.";
+"continue" = "Rozumiem";

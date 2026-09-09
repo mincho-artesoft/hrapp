@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Lokala kalendrar och delning";
+"local.title" = "Lokala kalendrar";
+"local.body" = "Skapa kalendrar direkt i Cloud Calendars utan att ansluta iCloud, Google eller Microsoft.";
+"sharing.title" = "Dela händelser och kalendrar";
+"sharing.body" = "Dela enskilda händelser eller hela kalendrar, inklusive dina lokala kalendrar och iCloud-kalendrar.";
+"access.title" = "Välj behörigheter";
+"access.body" = "Välj vem som kan visa, redigera eller hantera det du delar.";
+"account" = "Logga in på ett Cloud Calendars-konto med Apple, Google eller Microsoft för att dela.";
+"continue" = "Jag förstår";

@@ -33,7 +33,7 @@ extension SharedEventImportPayload {
                   let event = ICSEvent.first(withUID: eventID, in: text), !event.isCancelled,
                   let start = event.start, let end = event.end else { return nil }
             var query = values
-            query["title"] = event.summary ?? String(localized: "Shared event")
+            query["title"] = event.summary ?? NSLocalizedString("Shared event", comment: "")
             query["start"] = String(start.timeIntervalSince1970)
             query["end"] = String(end.timeIntervalSince1970)
             query["allDay"] = event.isAllDay == true ? "1" : "0"

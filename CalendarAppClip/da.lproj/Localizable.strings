@@ -16,3 +16,6 @@
 "Shared calendar" = "Fælles kalender";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Denne App Clip kun forhåndsviser kalenderen invitation. Hent Cloud kalendere til at tilføje det til delt med mig.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Denne App Clip kun previews begivenheden. Download Cloud kalendere til at tilføje det til din kalender.";
+/* Retired share links. */
+"Link unavailable" = "Link utilgængeligt";
+"This link is no longer available." = "Dette link er ikke længere tilgængeligt.";

@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Paikalliset kalenterit ja jakaminen";
+"local.title" = "Paikalliset kalenterit";
+"local.body" = "Luo kalentereita suoraan Cloud Calendarsissa yhdistämättä iCloudia, Googlea tai Microsoftia.";
+"sharing.title" = "Jaa tapahtumia ja kalentereita";
+"sharing.body" = "Jaa yksittäisiä tapahtumia tai kokonaisia kalentereita, myös paikallisia ja iCloud-kalentereita.";
+"access.title" = "Valitse käyttöoikeudet";
+"access.body" = "Valitse, kuka voi katsella, muokata tai hallita jakamaasi sisältöä.";
+"account" = "Kirjaudu jakamista varten Cloud Calendars -tilille Applen, Googlen tai Microsoftin kautta.";
+"continue" = "Selvä";

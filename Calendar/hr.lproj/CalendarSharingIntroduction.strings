@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Lokalni kalendari i dijeljenje";
+"local.title" = "Lokalni kalendari";
+"local.body" = "Izradite kalendare izravno u aplikaciji Cloud Calendars bez povezivanja s iCloudom, Googleom ili Microsoftom.";
+"sharing.title" = "Dijelite događaje i kalendare";
+"sharing.body" = "Dijelite pojedinačne događaje ili cijele kalendare, uključujući lokalne i iCloud kalendare.";
+"access.title" = "Odaberite prava pristupa";
+"access.body" = "Odaberite tko može pregledavati, uređivati ili upravljati sadržajem koji dijelite.";
+"account" = "Za dijeljenje se prijavite na račun Cloud Calendars putem Applea, Googlea ili Microsofta.";
+"continue" = "Razumijem";

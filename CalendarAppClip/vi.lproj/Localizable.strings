@@ -16,3 +16,6 @@
 "Shared calendar" = "Lịch đã chia sẻ";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Chương trình này chỉ xem thử giấy mời của lịch. Tải lịch Cloud để chia sẻ với tôi.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Cái nút Áp dụng này chỉ xem trước sự kiện này. Tải lịch mây để thêm lịch.";
+/* Retired share links. */
+"Link unavailable" = "Liên kết không khả dụng";
+"This link is no longer available." = "Liên kết này không còn khả dụng.";

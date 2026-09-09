@@ -127,7 +127,7 @@ struct GoogleCalendarSharingView: View {
                                             ProgressView()
                                                 .padding(.trailing, 6)
                                         }
-                                        Label(isAddingShares ? "Adding…" : "Add", systemImage: "person.badge.plus")
+                                        Label(LocalizedStringKey(isAddingShares ? "Adding…" : "Add"), systemImage: "person.badge.plus")
                                         .font(.body.weight(.semibold))
                                         Spacer()
                                     }
@@ -456,7 +456,7 @@ struct GoogleCalendarSharingView: View {
 
         if let invalid = entered.first(where: { !CalendarFeedSession.validEmail($0.email) }) {
             errorMessage = String.localizedStringWithFormat(
-                String(localized: "Enter a valid email address for %@."),
+                NSLocalizedString("Enter a valid email address for %@.", comment: ""),
                 invalid.email
             )
             return nil
@@ -464,11 +464,11 @@ struct GoogleCalendarSharingView: View {
 
         let uniqueEmails = Set(entered.map { $0.email })
         guard uniqueEmails.count == entered.count else {
-            errorMessage = String(localized: "Each email address can appear only once.")
+            errorMessage = NSLocalizedString("Each email address can appear only once.", comment: "")
             return nil
         }
         guard entered.count <= 50 else {
-            errorMessage = String(localized: "You can add up to 50 people at once.")
+            errorMessage = NSLocalizedString("You can add up to 50 people at once.", comment: "")
             return nil
         }
         return entered
@@ -530,7 +530,7 @@ struct GoogleCalendarSharingView: View {
         shareDrafts = failedDrafts.isEmpty ? [ShareDraft()] : failedDrafts
         if !failedEmails.isEmpty {
             errorMessage = String.localizedStringWithFormat(
-                String(localized: "Could not add: %@."),
+                NSLocalizedString("Could not add: %@.", comment: ""),
                 failedEmails.joined(separator: ", ")
             )
             focusedShareDraftID = failedDrafts.first?.id

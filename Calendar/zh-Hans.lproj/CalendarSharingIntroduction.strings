@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "本地日历与共享";
+"local.title" = "本地日历";
+"local.body" = "无需连接 iCloud、Google 或 Microsoft，即可直接在 Cloud Calendars 中创建日历。";
+"sharing.title" = "共享日程与日历";
+"sharing.body" = "共享单个日程或整个日历，包括本地日历和 iCloud 日历。";
+"access.title" = "选择访问权限";
+"access.body" = "选择谁可以查看、编辑或管理你共享的内容。";
+"account" = "如需共享，请使用 Apple、Google 或 Microsoft 登录 Cloud Calendars 账户。";
+"continue" = "知道了";

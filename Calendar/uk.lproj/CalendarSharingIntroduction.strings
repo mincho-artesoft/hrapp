@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Локальні календарі та спільний доступ";
+"local.title" = "Локальні календарі";
+"local.body" = "Створюйте календарі безпосередньо в Cloud Calendars без підключення iCloud, Google або Microsoft.";
+"sharing.title" = "Діліться подіями й календарями";
+"sharing.body" = "Діліться окремими подіями або цілими календарями, зокрема локальними календарями та календарями iCloud.";
+"access.title" = "Виберіть права доступу";
+"access.body" = "Виберіть, хто може переглядати, редагувати або керувати тим, чим ви ділитеся.";
+"account" = "Для спільного доступу ввійдіть до облікового запису Cloud Calendars через Apple, Google або Microsoft.";
+"continue" = "Зрозуміло";

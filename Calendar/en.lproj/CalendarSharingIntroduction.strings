@@ -1,0 +1,9 @@
+"title" = "Local calendars & sharing";
+"local.title" = "Local calendars";
+"local.body" = "Create calendars directly in Cloud Calendars, without connecting iCloud, Google or Microsoft.";
+"sharing.title" = "Share events & calendars";
+"sharing.body" = "Share individual events or whole calendars, including your local and iCloud calendars.";
+"access.title" = "Choose access";
+"access.body" = "Choose who can view, edit or manage what you share.";
+"account" = "To share, sign in to a Cloud Calendars account with Apple, Google or Microsoft.";
+"continue" = "Got it";

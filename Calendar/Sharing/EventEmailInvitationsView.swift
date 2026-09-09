@@ -68,7 +68,7 @@ struct EventEmailInvitationsView: View {
                                     .padding(.trailing, 6)
                             }
                             Label(
-                                isSending ? "Sending…" : "Send Invitations",
+                                LocalizedStringKey(isSending ? "Sending…" : "Send Invitations"),
                                 systemImage: "paperplane.fill"
                             )
                             .font(.body.weight(.semibold))
@@ -181,7 +181,7 @@ struct EventEmailInvitationsView: View {
 
         if let invalid = entered.first(where: { !CalendarFeedSession.validEmail($0.email) }) {
             errorMessage = String.localizedStringWithFormat(
-                String(localized: "Enter a valid email address for %@."),
+                NSLocalizedString("Enter a valid email address for %@.", comment: ""),
                 invalid.email
             )
             return nil
@@ -189,11 +189,11 @@ struct EventEmailInvitationsView: View {
 
         let uniqueEmails = Set(entered.map { $0.email })
         guard uniqueEmails.count == entered.count else {
-            errorMessage = String(localized: "Each email address can appear only once.")
+            errorMessage = NSLocalizedString("Each email address can appear only once.", comment: "")
             return nil
         }
         guard entered.count <= 50 else {
-            errorMessage = String(localized: "You can send up to 50 invitations at once.")
+            errorMessage = NSLocalizedString("You can send up to 50 invitations at once.", comment: "")
             return nil
         }
         return entered

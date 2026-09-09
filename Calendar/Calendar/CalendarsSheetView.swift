@@ -944,8 +944,8 @@ private struct SharedICloudCalendarRow: View {
     private var calendarStatusText: String {
         guard calendar.isRevoked else { return calendar.access.title }
         return calendar.wasDeletedByOwner
-            ? String(localized: "Deleted by owner")
-            : String(localized: "Access removed")
+            ? NSLocalizedString("Deleted by owner", comment: "")
+            : NSLocalizedString("Access removed", comment: "")
     }
 }
 
@@ -1024,8 +1024,8 @@ private struct SharedICloudCalendarInfoView: View {
                 } footer: {
                     Text(
                         usesCreatorDefault
-                            ? String(localized: "Default from creator")
-                            : String(localized: "Custom on this device")
+                            ? NSLocalizedString("Default from creator", comment: "")
+                            : NSLocalizedString("Custom on this device", comment: "")
                     )
                 }
 
@@ -1093,27 +1093,27 @@ private struct SharedICloudCalendarInfoView: View {
 
     private func displayColorName(for color: UIColor) -> String {
         if colorsAreEqual(color, .systemRed) {
-            return String(localized: "Red")
+            return NSLocalizedString("Red", comment: "")
         }
         if colorsAreEqual(color, .systemOrange) {
-            return String(localized: "Orange")
+            return NSLocalizedString("Orange", comment: "")
         }
         if colorsAreEqual(color, .systemYellow) {
-            return String(localized: "Yellow")
+            return NSLocalizedString("Yellow", comment: "")
         }
         if colorsAreEqual(color, .systemGreen) {
-            return String(localized: "Green")
+            return NSLocalizedString("Green", comment: "")
         }
         if colorsAreEqual(color, .systemBlue) {
-            return String(localized: "Blue")
+            return NSLocalizedString("Blue", comment: "")
         }
         if colorsAreEqual(color, .systemPurple) {
-            return String(localized: "Purple")
+            return NSLocalizedString("Purple", comment: "")
         }
         if colorsAreEqual(color, .brown) {
-            return String(localized: "Brown")
+            return NSLocalizedString("Brown", comment: "")
         }
-        return String(localized: "Custom")
+        return NSLocalizedString("Custom", comment: "")
     }
 
     private func colorsAreEqual(_ lhs: UIColor, _ rhs: UIColor) -> Bool {
@@ -1154,7 +1154,7 @@ private struct SharedICloudCalendarInfoView: View {
     private func leaveSharedCalendar() async {
         guard !isRemoving else { return }
         guard let session = CalendarFeedSession.existing else {
-            presentedAlert = .failed(String(localized: "Sign In Required"))
+            presentedAlert = .failed(NSLocalizedString("Sign In Required", comment: ""))
             return
         }
         isRemoving = true

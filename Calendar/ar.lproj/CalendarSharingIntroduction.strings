@@ -1,0 +1,9 @@
+"title" = "التقويمات المحلية والمشاركة";
+"local.title" = "التقويمات المحلية";
+"local.body" = "أنشئ تقويمات مباشرةً في Cloud Calendars دون ربط حساب iCloud أو Google أو Microsoft.";
+"sharing.title" = "مشاركة الأحداث والتقويمات";
+"sharing.body" = "شارك أحداثًا منفردة أو تقويمات كاملة، بما فيها تقويماتك المحلية وتقويمات iCloud.";
+"access.title" = "اختيار صلاحيات الوصول";
+"access.body" = "اختر من يمكنه عرض ما تشاركه أو تعديله أو إدارته.";
+"account" = "للمشاركة، سجّل الدخول إلى حساب Cloud Calendars باستخدام Apple أو Google أو Microsoft.";
+"continue" = "فهمت";

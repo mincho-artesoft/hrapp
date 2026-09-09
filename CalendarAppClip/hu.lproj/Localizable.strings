@@ -16,3 +16,6 @@
 "Shared calendar" = "Megosztott naptár";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Ez az App Clip csak a naptár meghívót nézheti meg. Töltse le a Cloud Calendarst, és adja hozzá hozzám.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Ez az App Clip csak megtekinti az eseményt. Töltse le a Cloud naptárakat a naptárhoz.";
+/* Retired share links. */
+"Link unavailable" = "A link nem érhető el";
+"This link is no longer available." = "Ez a link már nem érhető el.";

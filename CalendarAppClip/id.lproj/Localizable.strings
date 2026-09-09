@@ -16,3 +16,6 @@
 "Shared calendar" = "Kalender bersama";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Klip App ini hanya preview undangan kalender. Unduh Kalender Awan untuk menambahkannya ke Bersama dengan saya.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Klip App ini hanya preview acara. Unduh Kalender Awan untuk menambahkannya ke kalender Anda.";
+/* Retired share links. */
+"Link unavailable" = "Tautan tidak tersedia";
+"This link is no longer available." = "Tautan ini tidak lagi tersedia.";

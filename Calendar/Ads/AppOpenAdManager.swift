@@ -40,7 +40,8 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
     @MainActor
     func showAdIfAvailable() {
         // 1. Ако вече показваме или зареждаме – не прави нищо
-        guard !isShowingAd, !CloudAccountManager.shared.isSigningIn else { return }
+        guard !isShowingAd, !CloudAccountManager.shared.isSigningIn,
+              CalendarSharingIntroductionState.shared.hasCompleted else { return }
 
         // 2. Провери дали имаме готова и "прясна" реклама
         if !isAdAvailable() {

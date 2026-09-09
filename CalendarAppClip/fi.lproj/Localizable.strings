@@ -16,3 +16,6 @@
 "Shared calendar" = "Yhteinen kalenteri";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Tämä App Clip vain esikatselee kalenterikutsun. Lataa Cloud Kalenterit lisätä sen Jaettu kanssani.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Tämä App Clip vain esikatselee tapahtuman. Lataa Cloud Kalenterit lisätäksesi sen kalenteriisi.";
+/* Retired share links. */
+"Link unavailable" = "Linkki ei ole käytettävissä";
+"This link is no longer available." = "Tämä linkki ei ole enää käytettävissä.";

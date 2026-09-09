@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Calendare locale și partajare";
+"local.title" = "Calendare locale";
+"local.body" = "Creează calendare direct în Cloud Calendars, fără a conecta iCloud, Google sau Microsoft.";
+"sharing.title" = "Partajează evenimente și calendare";
+"sharing.body" = "Partajează evenimente individuale sau calendare întregi, inclusiv calendarele locale și iCloud.";
+"access.title" = "Alege drepturile de acces";
+"access.body" = "Alege cine poate vedea, edita sau gestiona ceea ce partajezi.";
+"account" = "Pentru a partaja, conectează-te la un cont Cloud Calendars cu Apple, Google sau Microsoft.";
+"continue" = "Am înțeles";

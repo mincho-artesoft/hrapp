@@ -318,11 +318,11 @@ struct SharingSheetView: View {
 
     private var cloudAccountSummary: String {
         let count = cloudAccountManager.account?.identities.count ?? 0
-        if count == 0 { return String(localized: "Sign in or manage accounts") }
+        if count == 0 { return NSLocalizedString("Sign in or manage accounts", comment: "") }
         let format = count == 1
-            ? String(localized: "%lld connected account")
-            : String(localized: "%lld connected accounts")
-        return String.localizedStringWithFormat(format, Int64(count))
+            ? NSLocalizedString("%lld connected account", comment: "")
+            : NSLocalizedString("%lld connected accounts", comment: "")
+        return localizedFormat(format, Int64(count))
     }
 
     private var cloudAccountView: some View {
@@ -394,7 +394,7 @@ struct SharingSheetView: View {
                 Spacer(minLength: 8)
 
                 if destination == .pending, count > 0 {
-                    Text(verbatim: "\(count)")
+                    Text(verbatim: localizedIntegerString(count))
                         .font(.caption2.weight(.bold))
                         .foregroundStyle(.white)
                         .lineLimit(1)
@@ -420,14 +420,14 @@ struct SharingSheetView: View {
     ) -> String {
         if destination == .pending {
             let format = count == 1
-                ? String(localized: "%lld pending invitation")
-                : String(localized: "%lld pending invitations")
-            return String.localizedStringWithFormat(format, Int64(count))
+                ? NSLocalizedString("%lld pending invitation", comment: "")
+                : NSLocalizedString("%lld pending invitations", comment: "")
+            return localizedFormat(format, Int64(count))
         }
         let format = count == 1
-            ? String(localized: "%lld event")
-            : String(localized: "%lld events")
-        return String.localizedStringWithFormat(format, Int64(count))
+            ? NSLocalizedString("%lld event", comment: "")
+            : NSLocalizedString("%lld events", comment: "")
+        return localizedFormat(format, Int64(count))
     }
 
     private func sharedEventsList(_ destination: SharedEventsDestination) -> some View {
@@ -481,7 +481,7 @@ struct SharingSheetView: View {
                     pendingInvitationErrorMessage = nil
                 }
             } message: {
-                Text(pendingInvitationErrorMessage ?? "Please try again.")
+                Text(pendingInvitationErrorMessage ?? NSLocalizedString("Please try again.", comment: "Invitation error fallback"))
             }
         }
     }
@@ -1010,7 +1010,7 @@ struct SharingSheetView: View {
                                 .frame(width: 30, height: 30)
                         }
                         .buttonStyle(.borderless)
-                        .accessibilityLabel("Event details")
+            .accessibilityLabel("Event Details")
                     }
                 }
             }
@@ -1259,9 +1259,9 @@ private struct SharedEventAccessSheet: View {
 
     private func recipientRow(_ recipient: CloudCalendarsAPI.EventRecipient) -> some View {
         let providers = recipient.isAnonymous
-            ? String(localized: "Not signed in")
+            ? NSLocalizedString("Not signed in", comment: "")
             : recipient.isPendingInvitation
-                ? String(localized: "Invitation pending")
+                ? NSLocalizedString("Invitation pending", comment: "")
                 : recipient.identities.map { $0.provider.capitalized }.joined(separator: ", ")
 
         return HStack(alignment: .top, spacing: 10) {
@@ -1383,7 +1383,7 @@ private struct SharedEventAccessSheet: View {
     private func loadRecipients() async {
         defer { isLoading = false }
         guard let session = CalendarFeedSession.existing else {
-            errorMessage = String(localized: "Sign in to manage event access.")
+            errorMessage = NSLocalizedString("Sign in to manage event access.", comment: "")
             return
         }
         do {
@@ -1444,7 +1444,7 @@ private struct SharedEventAccessSheet: View {
         guard let session = CalendarFeedSession.existing else {
             recipients = originalRecipients
             removedRecipientIDs = []
-            errorMessage = String(localized: "Sign in to manage event access.")
+            errorMessage = NSLocalizedString("Sign in to manage event access.", comment: "")
             return
         }
 

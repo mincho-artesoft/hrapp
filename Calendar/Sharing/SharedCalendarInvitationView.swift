@@ -41,7 +41,7 @@ struct SharedCalendarInvitationPayload: Identifiable, Equatable {
         self.ownerID = ownerID
         self.calendarID = calendarID
         title = values["title"].flatMap { $0.isEmpty ? nil : $0 }
-            ?? String(localized: "Shared calendar")
+            ?? NSLocalizedString("Shared calendar", comment: "")
         colorHex = values["color"].flatMap { $0.isEmpty ? nil : $0 } ?? "#0088FF"
     }
 

@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Lịch cục bộ và chia sẻ";
+"local.title" = "Lịch cục bộ";
+"local.body" = "Tạo lịch trực tiếp trong Cloud Calendars mà không cần kết nối iCloud, Google hoặc Microsoft.";
+"sharing.title" = "Chia sẻ sự kiện và lịch";
+"sharing.body" = "Chia sẻ từng sự kiện hoặc toàn bộ lịch, bao gồm lịch cục bộ và lịch iCloud của bạn.";
+"access.title" = "Chọn quyền truy cập";
+"access.body" = "Chọn người có thể xem, chỉnh sửa hoặc quản lý nội dung bạn chia sẻ.";
+"account" = "Để chia sẻ, hãy đăng nhập vào tài khoản Cloud Calendars bằng Apple, Google hoặc Microsoft.";
+"continue" = "Đã hiểu";

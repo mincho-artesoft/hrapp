@@ -16,3 +16,6 @@
 "Shared calendar" = "共享日历";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "此 App Clip 只预览日历邀请 。 下载\"云历\",以添加与我共享.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "此 App Clip 只预览此事件 。 下载云日历以添加到您的日历中 。";
+/* Retired share links. */
+"Link unavailable" = "链接不可用";
+"This link is no longer available." = "此链接已不可用。";

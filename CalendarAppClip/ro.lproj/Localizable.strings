@@ -16,3 +16,6 @@
 "Shared calendar" = "Calendar partajat";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Această App Clip previzualizare numai invitația calendar. Descărcați calendare cloud pentru a adăuga la partajat cu mine.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Acest App Clip previzualizare doar evenimentul. Descărcați Calendare Cloud pentru a adăuga în calendar.";
+/* Retired share links. */
+"Link unavailable" = "Link indisponibil";
+"This link is no longer available." = "Acest link nu mai este disponibil.";

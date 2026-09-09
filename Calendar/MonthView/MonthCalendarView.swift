@@ -25,7 +25,7 @@ struct MonthCalendarView: View {
     
     private var calendar: Calendar {
         var cal = Calendar.current
-        cal.locale = Locale.current
+        cal.locale = .appFormatting
         cal.firstWeekday = GlobalState.firstWeekday
         return cal
     }

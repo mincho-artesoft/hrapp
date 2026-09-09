@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Místní kalendáře a sdílení";
+"local.title" = "Místní kalendáře";
+"local.body" = "Vytvářejte kalendáře přímo v Cloud Calendars bez připojení iCloudu, Googlu nebo Microsoftu.";
+"sharing.title" = "Sdílení událostí a kalendářů";
+"sharing.body" = "Sdílejte jednotlivé události nebo celé kalendáře, včetně místních kalendářů a kalendářů na iCloudu.";
+"access.title" = "Zvolte přístup";
+"access.body" = "Zvolte, kdo může sdílený obsah zobrazovat, upravovat nebo spravovat.";
+"account" = "Chcete-li sdílet, přihlaste se k účtu Cloud Calendars pomocí Apple, Googlu nebo Microsoftu.";
+"continue" = "Rozumím";

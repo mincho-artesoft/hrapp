@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "ปฏิทินในเครื่องและการแชร์";
+"local.title" = "ปฏิทินในเครื่อง";
+"local.body" = "สร้างปฏิทินใน Cloud Calendars ได้โดยตรงโดยไม่ต้องเชื่อมต่อ iCloud, Google หรือ Microsoft";
+"sharing.title" = "แชร์กิจกรรมและปฏิทิน";
+"sharing.body" = "แชร์กิจกรรมแต่ละรายการหรือทั้งปฏิทิน รวมถึงปฏิทินในเครื่องและปฏิทิน iCloud ของคุณ";
+"access.title" = "เลือกสิทธิ์การเข้าถึง";
+"access.body" = "เลือกผู้ที่สามารถดู แก้ไข หรือจัดการสิ่งที่คุณแชร์";
+"account" = "หากต้องการแชร์ ให้ลงชื่อเข้าใช้บัญชี Cloud Calendars ด้วย Apple, Google หรือ Microsoft";
+"continue" = "เข้าใจแล้ว";

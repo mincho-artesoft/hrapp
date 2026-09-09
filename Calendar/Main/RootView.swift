@@ -19,6 +19,9 @@ struct RootView: View {
     @State private var weatherSavedRegionsIsPresented = false
     @AppStorage("interstitialTabSwitchCount") private var tabSwitchCounter: Int = 0
     @State private var accessGranted = false
+    @ObservedObject private var sharingIntroduction = CalendarSharingIntroductionState.shared
+    @State private var initialCalendarLoadFinished = false
+    @State private var showSharingIntroduction = false
     @State private var loadedUntil: Date = Calendar.current.startOfDay(for: Date())
     private let chunkDays: Int = 30
     private let maxLoadDate: Date = {
@@ -619,6 +622,7 @@ struct RootView: View {
                 } else {
                     refreshCalendarWidgetEventsSnapshot()
                 }
+                initialCalendarLoadFinished = true
             }
             liveActivityManager.refreshStatus()
             
@@ -629,6 +633,20 @@ struct RootView: View {
                 refreshCalendarWidgetEventsSnapshot()
                 liveActivityManager.refreshStatus()
             }
+        }
+        .task(id: canScheduleSharingIntroduction) {
+            await presentSharingIntroductionWhenReady()
+        }
+        .sheet(isPresented: $showSharingIntroduction, onDismiss: {
+            sharingIntroduction.releasePresentation()
+        }) {
+            CalendarSharingIntroductionView {
+                sharingIntroduction.complete()
+                showSharingIntroduction = false
+            }
+            .presentationDetents([.large])
+            .presentationDragIndicator(.hidden)
+            .interactiveDismissDisabled()
         }
         .sheet(item: $eventToEdit) { theEvent in
             EventEditViewWrapper(eventStore: CalendarViewModel.shared.eventStore, event: theEvent) {
@@ -699,6 +717,46 @@ struct RootView: View {
                 }
             }
         }
+    }
+
+    private var canScheduleSharingIntroduction: Bool {
+        initialCalendarLoadFinished && scenePhase == .active
+            && !sharingIntroduction.hasCompleted && !showSharingIntroduction
+            && eventToEdit == nil && appLocalEventTarget == nil
+            && menuState == .collapsed && !weatherSavedRegionsIsPresented
+    }
+
+    @MainActor
+    private func presentSharingIntroductionWhenReady() async {
+        guard canScheduleSharingIntroduction else { return }
+        #if DEBUG
+        guard !ScreenshotMode.isActive else { return }
+        #endif
+        // Calendar/location/notification consent and incoming invitations take
+        // priority. Wait for their actual presentation to finish, not just a
+        // fixed launch delay, and cancel when the scene or editor state changes.
+        do {
+            try await Task.sleep(for: .milliseconds(750))
+            while !Task.isCancelled && canScheduleSharingIntroduction {
+                let scene = UIApplication.shared.connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                    .first { $0.activationState == .foregroundActive }
+                if let root = scene?.windows.first(where: \.isKeyWindow)?.rootViewController,
+                   !hasActivePresentation(root),
+                   !CloudAccountManager.shared.isSigningIn,
+                   sharingIntroduction.beginPresentation() {
+                    showSharingIntroduction = true
+                    return
+                }
+                try await Task.sleep(for: .milliseconds(500))
+            }
+        } catch { /* A new presentation/background transition cancels the wait. */ }
+    }
+
+    @MainActor
+    private func hasActivePresentation(_ controller: UIViewController) -> Bool {
+        controller.presentedViewController != nil || controller.isBeingPresented
+            || controller.isBeingDismissed || controller.children.contains(where: hasActivePresentation)
     }
 
     private func refreshCalendarWidgetEventsSnapshot() {

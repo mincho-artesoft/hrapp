@@ -312,7 +312,7 @@
 "visibility.moderate"  = "Умірна видимость.";
 "visibility.poor"      = "- Погано бачимо.";
 "visibility.verypoor"  = "Дуже погана видимость.";
-"visibility.unknown"   = "";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "Вітер";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "Glance Studio допомагає створювати відео в стилі кінематографічного чату для соціальних мереж, реклами та оповідання. Створюйте анімовані розмови в реалістичних 3D-пристроях, імітуйте набір тексту, долучайте медіафайли та експортуйте захоплюючий вертикальний вміст.";
 "Promo.Wonek.description" = "Wonek Video Studio перетворює необроблений матеріал у готовий для публікації вміст. Знаходьте яскраві моменти, створюйте чіткі кліпи, додавайте чіткі субтитри та озвучення тексту в мовлення, а потім вдосконалюйте відео та аудіо в одному цілеспрямованому робочому процесі.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop створює відео у стилі кінематографічного чату на вашому Mac. Створюйте анімовані розмови в реалістичних 3D-пристроях, імітуйте набір тексту, вкладайте фотографії та відео та експортуйте вертикальний вміст для соціальних мереж.";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "Видалити доступ до календаря?";
+"Remove Access" = "Видалити доступ";
+"Share calendar" = "Поділитися календарем";
+"Add another person" = "Додати ще одну людину";
+"Invite by Email" = "Запросити електронною поштою";
+"Email address" = "Адреса електронної пошти";
+"Remove invitation" = "Видалити запрошення";
+"QR Code" = "QR-код";
+"Send" = "Надіслати";
+"Unable to scan" = "Не вдалося сканувати";
+"Unable to update invitation" = "Не вдалося оновити запрошення";
+"Search events" = "Пошук подій";
+"Event access removed" = "Доступ до події видалено";
+"Manage event access" = "Керування доступом до події";
+"People with this event" = "Люди з цією подією";
+"Event Access" = "Доступ до події";
+"Remove Access?" = "Видалити доступ?";
+"Original sharer, Owner access" = "Автор запрошення, права власника";
+"Add to Shared with me" = "Додати до «Поширені мені»";
+"Clear" = "Очистити";
+"Sending…" = "Надсилання…";
+"Send Invitations" = "Надіслати запрошення";
+"Saving…" = "Збереження…";
+"Save Invitations" = "Зберегти запрошення";
+"Copied" = "Скопійовано";
+"Copy Link" = "Копіювати посилання";
+"Event access: %@" = "Доступ до події: %@";
+"QR code for %@" = "QR-код для %@";
+"Sign-in timed out. Please try again." = "Час очікування входу минув. Спробуйте ще раз.";
+"Connect to the internet to safely stop invitation notifications and sign out." = "Підключіться до інтернету, щоб безпечно вимкнути сповіщення про запрошення та вийти з облікового запису.";
+"The selected calendar cannot be edited." = "Вибраний календар не можна редагувати.";
+"Link unavailable" = "Посилання недоступне";
+"This link is no longer available." = "Це посилання більше недоступне.";
+"QR scanner unavailable" = "QR-сканер недоступний";
+"No recipients yet" = "Поки немає одержувачів";
+"Not signed in" = "Вхід не виконано";
+"Sign In Required" = "Потрібен вхід";
+"Ad" = "Реклама";

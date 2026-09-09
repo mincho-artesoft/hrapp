@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "לוחות שנה מקומיים ושיתוף";
+"local.title" = "לוחות שנה מקומיים";
+"local.body" = "אפשר ליצור לוחות שנה ישירות ב-Cloud Calendars, בלי לחבר את iCloud, Google או Microsoft.";
+"sharing.title" = "שיתוף אירועים ולוחות שנה";
+"sharing.body" = "אפשר לשתף אירועים בודדים או לוחות שנה שלמים, כולל לוחות השנה המקומיים ולוחות השנה ב-iCloud.";
+"access.title" = "בחירת הרשאות גישה";
+"access.body" = "אפשר לבחור מי יוכל לצפות בתוכן המשותף, לערוך או לנהל אותו.";
+"account" = "כדי לשתף, יש להתחבר לחשבון Cloud Calendars באמצעות Apple, Google או Microsoft.";
+"continue" = "הבנתי";

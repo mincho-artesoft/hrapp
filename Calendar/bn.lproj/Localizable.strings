@@ -312,7 +312,7 @@
 "visibility.moderate"  = "মাঝারি দৃশ্যমানতা।";
 "visibility.poor"      = "খারাপ দৃশ্যমানতা।";
 "visibility.verypoor"  = "খুব খারাপ দৃশ্যমানতা।";
-"visibility.unknown"   = "";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "বাতাস";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "গ্ল্যান্স স্টুডিও আপনাকে সোশ্যাল মিডিয়া, বিজ্ঞাপন এবং গল্প বলার জন্য সিনেমাটিক চ্যাট-স্টাইলের ভিডিও তৈরি করতে সহায়তা করে। বাস্তবসম্মত 3D ডিভাইসের মধ্যে অ্যানিমেটেড কথোপকথন তৈরি করুন, টাইপিং অনুকরণ করুন, মিডিয়া সংযুক্ত করুন এবং আকর্ষক উল্লম্ব সামগ্রী রপ্তানি করুন।";
 "Promo.Wonek.description" = "Wonek ভিডিও স্টুডিও কাঁচা ফুটেজকে প্রকাশের জন্য প্রস্তুত সামগ্রীতে পরিণত করে। শক্তিশালী মুহূর্তগুলি খুঁজুন, তীক্ষ্ণ ক্লিপ তৈরি করুন, পরিষ্কার সাবটাইটেল এবং টেক্সট-টু-স্পিচ ভয়েসওভার যোগ করুন, তারপর একটি ফোকাসড ওয়ার্কফ্লোতে ভিডিও এবং অডিও পোলিশ করুন।";
 "Promo.GlanceStudioDesktop.description" = "গ্ল্যান্স স্টুডিও ডেস্কটপ আপনার ম্যাকে সিনেমাটিক চ্যাট-স্টাইলের ভিডিও তৈরি করে। বাস্তবসম্মত 3D ডিভাইসের মধ্যে অ্যানিমেটেড কথোপকথন তৈরি করুন, টাইপিং অনুকরণ করুন, ফটো এবং ভিডিও সংযুক্ত করুন এবং সোশ্যাল মিডিয়ার জন্য উল্লম্ব সামগ্রী রপ্তানি করুন৷";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "ক্যালেন্ডারের অ্যাক্সেস সরাবেন?";
+"Remove Access" = "অ্যাক্সেস সরান";
+"Share calendar" = "ক্যালেন্ডার শেয়ার করুন";
+"Add another person" = "আরেকজনকে যোগ করুন";
+"Invite by Email" = "ইমেইলে আমন্ত্রণ জানান";
+"Email address" = "ইমেইল ঠিকানা";
+"Remove invitation" = "আমন্ত্রণ সরান";
+"QR Code" = "QR কোড";
+"Send" = "পাঠান";
+"Unable to scan" = "স্ক্যান করা যায়নি";
+"Unable to update invitation" = "আমন্ত্রণ আপডেট করা যায়নি";
+"Search events" = "ইভেন্ট খুঁজুন";
+"Event access removed" = "ইভেন্টের অ্যাক্সেস সরানো হয়েছে";
+"Manage event access" = "ইভেন্টের অ্যাক্সেস পরিচালনা করুন";
+"People with this event" = "এই ইভেন্ট থাকা ব্যক্তিরা";
+"Event Access" = "ইভেন্টের অ্যাক্সেস";
+"Remove Access?" = "অ্যাক্সেস সরাবেন?";
+"Original sharer, Owner access" = "মূল শেয়ারকারী, মালিকের অ্যাক্সেস";
+"Add to Shared with me" = "আমার সাথে শেয়ার করা বিভাগে যোগ করুন";
+"Clear" = "মুছুন";
+"Sending…" = "পাঠানো হচ্ছে…";
+"Send Invitations" = "আমন্ত্রণ পাঠান";
+"Saving…" = "সংরক্ষণ করা হচ্ছে…";
+"Save Invitations" = "আমন্ত্রণ সংরক্ষণ করুন";
+"Copied" = "কপি করা হয়েছে";
+"Copy Link" = "লিঙ্ক কপি করুন";
+"Event access: %@" = "ইভেন্টের অ্যাক্সেস: %@";
+"QR code for %@" = "%@-এর QR কোড";
+"Sign-in timed out. Please try again." = "সাইন ইনের সময় শেষ হয়েছে। আবার চেষ্টা করুন।";
+"Connect to the internet to safely stop invitation notifications and sign out." = "নিরাপদে আমন্ত্রণের বিজ্ঞপ্তি বন্ধ করতে ও সাইন আউট করতে ইন্টারনেটে সংযুক্ত হন।";
+"The selected calendar cannot be edited." = "নির্বাচিত ক্যালেন্ডার সম্পাদনা করা যায় না।";
+"Link unavailable" = "লিঙ্ক উপলভ্য নয়";
+"This link is no longer available." = "এই লিঙ্ক আর উপলভ্য নয়।";
+"QR scanner unavailable" = "QR স্ক্যানার উপলভ্য নয়";
+"No recipients yet" = "এখনও কোনো প্রাপক নেই";
+"Not signed in" = "সাইন ইন করা হয়নি";
+"Sign In Required" = "সাইন ইন প্রয়োজন";
+"Ad" = "বিজ্ঞাপন";

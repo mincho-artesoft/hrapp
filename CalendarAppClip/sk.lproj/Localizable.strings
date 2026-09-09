@@ -14,3 +14,6 @@
 "Shared calendar" = "Spoločný kalendár";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Toto je App Clip Prezeráva len pozvanie na kalendár. Cloud Calendars Pridať to do zdieľaného so mnou.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Toto je App Clip Prehľad udalosti. Cloud Calendars pridať ho do kalendára.";
+/* Retired share links. */
+"Link unavailable" = "Odkaz nie je dostupný";
+"This link is no longer available." = "Tento odkaz už nie je dostupný.";

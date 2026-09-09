@@ -198,7 +198,9 @@ public class CalendarDateRangePickerViewController: UIViewController {
     // MARK: - monthLabelTapped
     @objc func monthLabelTapped() {
         arrowIsDown.toggle()
-        let rotationAngle: CGFloat = arrowIsDown ? .pi / 2 : 0
+        // A mirrored forward chevron points left: rotate the opposite way
+        // so the expanded month picker still points down in RTL.
+        let rotationAngle: CGFloat = arrowIsDown ? (usesRightToLeftLayout ? -.pi / 2 : .pi / 2) : 0
 
         // Завъртане и промяна на цвета на надписа
         UIView.animate(withDuration: 0.25) {

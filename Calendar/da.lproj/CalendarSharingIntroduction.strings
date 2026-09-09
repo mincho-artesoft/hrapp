@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Lokale kalendere og deling";
+"local.title" = "Lokale kalendere";
+"local.body" = "Opret kalendere direkte i Cloud Calendars uden at tilslutte iCloud, Google eller Microsoft.";
+"sharing.title" = "Del begivenheder og kalendere";
+"sharing.body" = "Del enkelte begivenheder eller hele kalendere, herunder dine lokale kalendere og iCloud-kalendere.";
+"access.title" = "Vælg adgang";
+"access.body" = "Vælg, hvem der kan se, redigere eller administrere det, du deler.";
+"account" = "Log ind på en Cloud Calendars-konto med Apple, Google eller Microsoft for at dele.";
+"continue" = "Forstået";

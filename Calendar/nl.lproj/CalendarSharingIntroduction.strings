@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Lokale agenda’s en delen";
+"local.title" = "Lokale agenda’s";
+"local.body" = "Maak agenda’s rechtstreeks in Cloud Calendars zonder iCloud, Google of Microsoft te koppelen.";
+"sharing.title" = "Deel activiteiten en agenda’s";
+"sharing.body" = "Deel afzonderlijke activiteiten of volledige agenda’s, waaronder je lokale en iCloud-agenda’s.";
+"access.title" = "Kies toegangsrechten";
+"access.body" = "Kies wie gedeelde inhoud mag bekijken, bewerken of beheren.";
+"account" = "Log in bij een Cloud Calendars-account met Apple, Google of Microsoft om te delen.";
+"continue" = "Begrepen";

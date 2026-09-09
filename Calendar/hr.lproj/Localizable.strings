@@ -312,7 +312,7 @@
 "visibility.moderate"  = "Umjerena vidljivost.";
 "visibility.poor"      = "Loša vidljivost.";
 "visibility.verypoor"  = "Vrlo loša vidljivost.";
-"visibility.unknown"   = " U redu je.";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "Vjetar";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "Glance Studio vam pomaže stvoriti kinematografske videozapise u stilu čavrljanja za društvene medije, oglašavanje i pripovijedanje. Gradite animirane razgovore unutar realističnih 3D uređaja, simulirajte tipkanje, priložite medije i izvezite privlačan vertikalni sadržaj.";
 "Promo.Wonek.description" = "Wonek Video Studio pretvara neobrađene snimke u sadržaj spreman za objavljivanje. Pronađite snažne trenutke, stvorite oštre isječke, dodajte čiste titlove i govorne glasove pretvaranja teksta u govor, zatim dotjerajte video i audio u jednom fokusiranom tijeku rada.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop donosi stvaranje video zapisa u kinematografskom stilu chata na vaš Mac. Izgradite animirane razgovore unutar realističnih 3D uređaja, simulirajte tipkanje, priložite fotografije i videozapise i izvezite okomiti sadržaj za društvene medije.";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "Ukloniti pristup kalendaru?";
+"Remove Access" = "Ukloni pristup";
+"Share calendar" = "Dijeli kalendar";
+"Add another person" = "Dodaj drugu osobu";
+"Invite by Email" = "Pozovi e-poštom";
+"Email address" = "Adresa e-pošte";
+"Remove invitation" = "Ukloni pozivnicu";
+"QR Code" = "QR kod";
+"Send" = "Pošalji";
+"Unable to scan" = "Skeniranje nije moguće";
+"Unable to update invitation" = "Pozivnicu nije moguće ažurirati";
+"Search events" = "Pretraži događaje";
+"Event access removed" = "Pristup događaju uklonjen";
+"Manage event access" = "Upravljaj pristupom događaju";
+"People with this event" = "Osobe s ovim događajem";
+"Event Access" = "Pristup događaju";
+"Remove Access?" = "Ukloniti pristup?";
+"Original sharer, Owner access" = "Izvorni pošiljatelj, pristup vlasnika";
+"Add to Shared with me" = "Dodaj u Podijeljeno sa mnom";
+"Clear" = "Očisti";
+"Sending…" = "Slanje…";
+"Send Invitations" = "Pošalji pozivnice";
+"Saving…" = "Spremanje…";
+"Save Invitations" = "Spremi pozivnice";
+"Copied" = "Kopirano";
+"Copy Link" = "Kopiraj poveznicu";
+"Event access: %@" = "Pristup događaju: %@";
+"QR code for %@" = "QR kod za %@";
+"Sign-in timed out. Please try again." = "Isteklo je vrijeme prijave. Pokušajte ponovno.";
+"Connect to the internet to safely stop invitation notifications and sign out." = "Povežite se s internetom kako biste sigurno zaustavili obavijesti o pozivnicama i odjavili se.";
+"The selected calendar cannot be edited." = "Odabrani kalendar nije moguće uređivati.";
+"Link unavailable" = "Poveznica nije dostupna";
+"This link is no longer available." = "Ova poveznica više nije dostupna.";
+"QR scanner unavailable" = "QR skener nije dostupan";
+"No recipients yet" = "Još nema primatelja";
+"Not signed in" = "Niste prijavljeni";
+"Sign In Required" = "Potrebna je prijava";
+"Ad" = "Oglas";

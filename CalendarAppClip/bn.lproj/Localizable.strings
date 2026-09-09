@@ -14,3 +14,6 @@
 "Shared calendar" = "ভাগ করা ক্যালেন্ডার";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "এইটা App Clip শুধুমাত্র ক্যালেন্ডার আমন্ত্রণের পূর্বরূপ দেখায়. ডাউনলোড করুন Cloud Calendars আমার সাথে শেয়ার করা হয়েছে যে এটি যোগ করতে.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "এইটা App Clip শুধুমাত্র ঘটনা প্রিভিউ. ডাউনলোড Cloud Calendars আপনার ক্যালেন্ডারে যোগ করার জন্য।";
+/* Retired share links. */
+"Link unavailable" = "লিঙ্ক উপলভ্য নয়";
+"This link is no longer available." = "এই লিঙ্ক আর উপলভ্য নয়।";

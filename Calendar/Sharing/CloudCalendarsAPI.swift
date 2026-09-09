@@ -341,9 +341,9 @@ enum CloudCalendarsAPI {
 
         var title: String {
             switch self {
-            case .reader: String(localized: "Reader")
-            case .writer: String(localized: "Writer")
-            case .owner: String(localized: "Owner")
+            case .reader: NSLocalizedString("Reader", comment: "")
+            case .writer: NSLocalizedString("Writer", comment: "")
+            case .owner: NSLocalizedString("Owner", comment: "")
             }
         }
     }
@@ -361,10 +361,10 @@ enum CloudCalendarsAPI {
         let updatedAt: String?
 
         var displayEmail: String {
-            if isAnonymous { return String(localized: "Anonymous recipient") }
+            if isAnonymous { return NSLocalizedString("Anonymous recipient", comment: "") }
             return emails.first
                 ?? identities.compactMap(\.email).first
-                ?? String(localized: "Cloud Calendars user")
+                ?? NSLocalizedString("Cloud Calendars user", comment: "")
         }
 
         var isPendingInvitation: Bool {
@@ -633,12 +633,12 @@ enum CloudCalendarsAPI {
             switch self {
             case .http(let code, let body):
                 return String.localizedStringWithFormat(
-                    String(localized: "Server returned %lld: %@"),
+                    NSLocalizedString("Server returned %lld: %@", comment: ""),
                     Int64(code),
                     body
                 )
             case .malformedResponse:
-                return String(localized: "Unreadable response from the server")
+                return NSLocalizedString("Unreadable response from the server", comment: "")
             }
         }
     }

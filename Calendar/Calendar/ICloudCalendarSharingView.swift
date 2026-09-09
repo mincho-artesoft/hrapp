@@ -180,7 +180,7 @@ struct ICloudCalendarSharingView: View {
                                 .foregroundStyle(.red)
                         }
                         .buttonStyle(.borderless)
-                        .accessibilityLabel("Remove access")
+                        .accessibilityLabel("Remove Access")
                     }
                     .padding(.vertical, 3)
                 }
@@ -467,7 +467,7 @@ struct ICloudCalendarSharingView: View {
         guard let session = CalendarFeedSession.existing else {
             recipients = loadedRecipients
             removedRecipientEmails = []
-            errorMessage = String(localized: "Sign In Required")
+            errorMessage = NSLocalizedString("Sign In Required", comment: "")
             return
         }
 
@@ -596,7 +596,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
                                     .padding(.trailing, 6)
                             }
                             Label(
-                                isSaving ? "Saving…" : "Save Invitations",
+                                LocalizedStringKey(isSaving ? "Saving…" : "Save Invitations"),
                                 systemImage: "paperplane.fill"
                             )
                             .font(.body.weight(.semibold))
@@ -714,13 +714,13 @@ private struct ICloudCalendarEmailInvitationsView: View {
         guard !entered.isEmpty else { return }
         if let invalid = entered.first(where: { !CalendarFeedSession.validEmail($0.0) }) {
             errorMessage = String.localizedStringWithFormat(
-                String(localized: "Enter a valid email address for %@."),
+                NSLocalizedString("Enter a valid email address for %@.", comment: ""),
                 invalid.0
             )
             return
         }
         guard Set(entered.map { $0.0 }).count == entered.count else {
-            errorMessage = String(localized: "Each email address can appear only once.")
+            errorMessage = NSLocalizedString("Each email address can appear only once.", comment: "")
             return
         }
 
@@ -806,7 +806,7 @@ private struct ICloudCalendarQRCodeView: View {
                         copied = true
                     } label: {
                         Label(
-                            copied ? "Copied" : "Copy Link",
+                            LocalizedStringKey(copied ? "Copied" : "Copy Link"),
                             systemImage: copied ? "checkmark" : "doc.on.doc"
                         )
                         .frame(maxWidth: .infinity)

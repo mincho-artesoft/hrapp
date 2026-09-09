@@ -312,7 +312,7 @@
 "visibility.moderate"  = "ସାମାନ୍ୟ ଦୃଶ୍ୟମାନତା ।";
 "visibility.poor"      = "ଖରାପ ଦୃଷ୍ଟି ।";
 "visibility.verypoor"  = "ବହୁତ ଖରାପ ଦୃଷ୍ଟି ।";
-"visibility.unknown"   = "";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "ପବନ";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "ସୋସିଆଲ ମିଡିଆ, ବିଜ୍ଞାପନ, ଏବଂ କାହାଣୀ କହିବା ପାଇଁ ସିନେମାଟିକ୍ ଚାଟ୍ ଷ୍ଟାଇଲ୍ ଭିଡିଓ ସୃଷ୍ଟି କରିବାରେ ଗ୍ଲାନ୍ସ ଷ୍ଟୁଡିଓ ଆପଣଙ୍କୁ ସାହାଯ୍ୟ କରେ | ବାସ୍ତବବାଦୀ 3D ଡିଭାଇସ୍ ଭିତରେ ଆନିମେଟେଡ୍ ବାର୍ତ୍ତାଳାପ ନିର୍ମାଣ କରନ୍ତୁ, ଟାଇପିଂକୁ ଅନୁକରଣ କରନ୍ତୁ, ମିଡିଆ ସଂଲଗ୍ନ କରନ୍ତୁ ଏବଂ ଜଡିତ ଭୂଲମ୍ବ ବିଷୟବସ୍ତୁ ରପ୍ତାନି କରନ୍ତୁ |";
 "Promo.Wonek.description" = "ୱୋନେକ ଭିଡିଓ ଷ୍ଟୁଡିଓ କଞ୍ଚା ଫୁଟେଜକୁ ପ୍ରକାଶନ-ପ୍ରସ୍ତୁତ ବିଷୟବସ୍ତୁରେ ପରିଣତ କରେ | ଶକ୍ତିଶାଳୀ ମୂହୁର୍ତ୍ତଗୁଡିକ ସନ୍ଧାନ କରନ୍ତୁ, ତୀକ୍ଷ୍ଣ କ୍ଲିପ୍ ସୃଷ୍ଟି କରନ୍ତୁ, ପରିଷ୍କାର ସବ୍ଟାଇଟ୍ ଏବଂ ଟେକ୍ସଟ୍-ଟୁ-ସ୍ପିଚ୍ ଭଏସ୍ ଓଭର ଯୋଡନ୍ତୁ, ତାପରେ ଗୋଟିଏ ଫୋକସ୍ ୱାର୍କଫ୍ଲୋରେ ଭିଡିଓ ଏବଂ ଅଡିଓକୁ ପଲିସ୍ କରନ୍ତୁ |";
 "Promo.GlanceStudioDesktop.description" = "ଗ୍ଲାନ୍ସ ଷ୍ଟୁଡିଓ ଡେସ୍କଟପ୍ ଆପଣଙ୍କ ମାକରେ ସିନେମାଟିକ୍ ଚାଟ୍ ଷ୍ଟାଇଲ୍ ଭିଡିଓ ସୃଷ୍ଟି ଆଣିଥାଏ | ବାସ୍ତବବାଦୀ 3D ଡିଭାଇସ୍ ଭିତରେ ଆନିମେଟେଡ୍ ବାର୍ତ୍ତାଳାପ ନିର୍ମାଣ କରନ୍ତୁ, ଟାଇପିଂକୁ ଅନୁକରଣ କରନ୍ତୁ, ଫଟୋ ଏବଂ ଭିଡିଓ ସଂଲଗ୍ନ କରନ୍ତୁ ଏବଂ ସୋସିଆଲ୍ ମିଡିଆ ପାଇଁ ଭୂଲମ୍ବ ବିଷୟବସ୍ତୁ ରପ୍ତାନି କରନ୍ତୁ |";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "କ୍ୟାଲେଣ୍ଡର ଆକ୍ସେସ୍ ହଟାଇବେ?";
+"Remove Access" = "ଆକ୍ସେସ୍ ହଟାନ୍ତୁ";
+"Share calendar" = "କ୍ୟାଲେଣ୍ଡର ସେୟାର କରନ୍ତୁ";
+"Add another person" = "ଆଉ ଜଣଙ୍କୁ ଯୋଡ଼ନ୍ତୁ";
+"Invite by Email" = "ଇମେଲ୍‌ରେ ଆମନ୍ତ୍ରଣ କରନ୍ତୁ";
+"Email address" = "ଇମେଲ୍ ଠିକଣା";
+"Remove invitation" = "ଆମନ୍ତ୍ରଣ ହଟାନ୍ତୁ";
+"QR Code" = "QR କୋଡ୍";
+"Send" = "ପଠାନ୍ତୁ";
+"Unable to scan" = "ସ୍କାନ୍ କରିହେଲା ନାହିଁ";
+"Unable to update invitation" = "ଆମନ୍ତ୍ରଣ ଅପଡେଟ୍ କରିହେଲା ନାହିଁ";
+"Search events" = "ଇଭେଣ୍ଟ ଖୋଜନ୍ତୁ";
+"Event access removed" = "ଇଭେଣ୍ଟ ଆକ୍ସେସ୍ ହଟାଯାଇଛି";
+"Manage event access" = "ଇଭେଣ୍ଟ ଆକ୍ସେସ୍ ପରିଚାଳନା କରନ୍ତୁ";
+"People with this event" = "ଏହି ଇଭେଣ୍ଟ ଥିବା ଲୋକମାନେ";
+"Event Access" = "ଇଭେଣ୍ଟ ଆକ୍ସେସ୍";
+"Remove Access?" = "ଆକ୍ସେସ୍ ହଟାଇବେ?";
+"Original sharer, Owner access" = "ମୂଳ ସେୟାରକାରୀ, ମାଲିକଙ୍କ ଆକ୍ସେସ୍";
+"Add to Shared with me" = "ମୋ ସହ ସେୟାର ହୋଇଥିବାରେ ଯୋଡ଼ନ୍ତୁ";
+"Clear" = "ସଫା କରନ୍ତୁ";
+"Sending…" = "ପଠାଯାଉଛି…";
+"Send Invitations" = "ଆମନ୍ତ୍ରଣ ପଠାନ୍ତୁ";
+"Saving…" = "ସେଭ୍ କରାଯାଉଛି…";
+"Save Invitations" = "ଆମନ୍ତ୍ରଣ ସେଭ୍ କରନ୍ତୁ";
+"Copied" = "କପି ହୋଇଛି";
+"Copy Link" = "ଲିଙ୍କ୍ କପି କରନ୍ତୁ";
+"Event access: %@" = "ଇଭେଣ୍ଟ ଆକ୍ସେସ୍: %@";
+"QR code for %@" = "%@ ପାଇଁ QR କୋଡ୍";
+"Sign-in timed out. Please try again." = "ସାଇନ୍ ଇନ୍ ସମୟ ସମାପ୍ତ ହୋଇଛି। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।";
+"Connect to the internet to safely stop invitation notifications and sign out." = "ଆମନ୍ତ୍ରଣ ବିଜ୍ଞପ୍ତି ସୁରକ୍ଷିତ ଭାବେ ବନ୍ଦ କରି ସାଇନ୍ ଆଉଟ୍ କରିବାକୁ ଇଣ୍ଟରନେଟ୍ ସହ ଯୋଡ଼ନ୍ତୁ।";
+"The selected calendar cannot be edited." = "ବଛାଯାଇଥିବା କ୍ୟାଲେଣ୍ଡର ସମ୍ପାଦନ କରିହେବ ନାହିଁ।";
+"Link unavailable" = "ଲିଙ୍କ୍ ଉପଲବ୍ଧ ନାହିଁ";
+"This link is no longer available." = "ଏହି ଲିଙ୍କ୍ ଆଉ ଉପଲବ୍ଧ ନାହିଁ।";
+"QR scanner unavailable" = "QR ସ୍କାନର୍ ଉପଲବ୍ଧ ନାହିଁ";
+"No recipients yet" = "ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ପ୍ରାପ୍ତକର୍ତ୍ତା ନାହାନ୍ତି";
+"Not signed in" = "ସାଇନ୍ ଇନ୍ ହୋଇନାହିଁ";
+"Sign In Required" = "ସାଇନ୍ ଇନ୍ ଆବଶ୍ୟକ";
+"Ad" = "ବିଜ୍ଞାପନ";

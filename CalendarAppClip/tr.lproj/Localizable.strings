@@ -16,3 +16,6 @@
 "Shared calendar" = "Paylaşılan takvim";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Bu App Clip sadece takvim davetini gösterir. Cloud Calendars'ı benimle paylaşmak için ekleyin.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Bu App Clip sadece olayı gösterir. Bulut Takvimlerini takviminize eklemek için indirin.";
+/* Retired share links. */
+"Link unavailable" = "Bağlantı kullanılamıyor";
+"This link is no longer available." = "Bu bağlantı artık kullanılamıyor.";

@@ -16,3 +16,6 @@
 "Shared calendar" = "Sdílený kalendář";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Tento App Clip pouze předpovídá pozvánku kalendáře. Stáhněte si Cloud Calendars a přidejte to ke mně.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Tento App Clip pouze zobrazuje událost. Stáhnout Cloud kalendáře přidat do kalendáře.";
+/* Retired share links. */
+"Link unavailable" = "Odkaz není dostupný";
+"This link is no longer available." = "Tento odkaz už není dostupný.";

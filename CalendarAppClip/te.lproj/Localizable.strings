@@ -14,3 +14,6 @@
 "Shared calendar" = "భాగస్వామ్య క్యాలెండర్";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "ఈ App Clip కేవలం క్యాలెండర్ ఆహ్వానాన్ని ముందే చూపిస్తుంది. డౌన్లోడ్ Cloud Calendars నాతో భాగస్వామ్యం చేయడానికి.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "ఈ App Clip ఈవెంట్ను మాత్రమే ప్రివ్యూ చేస్తుంది. డౌన్లోడ్ Cloud Calendars మీ క్యాలెండర్ లోకి జోడించడానికి.";
+/* Retired share links. */
+"Link unavailable" = "లింక్ అందుబాటులో లేదు";
+"This link is no longer available." = "ఈ లింక్ ఇక అందుబాటులో లేదు.";

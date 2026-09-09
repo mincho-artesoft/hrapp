@@ -185,7 +185,7 @@ private struct EventShareQRCodeView: View {
                         UIPasteboard.general.url = url
                         copied = true
                     } label: {
-                        Label(copied ? "Copied" : "Copy Link", systemImage: copied ? "checkmark" : "doc.on.doc")
+                        Label(LocalizedStringKey(copied ? "Copied" : "Copy Link"), systemImage: copied ? "checkmark" : "doc.on.doc")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)

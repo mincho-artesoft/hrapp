@@ -312,7 +312,7 @@
 "visibility.moderate"  = "Visão moderada.";
 "visibility.poor"      = "Má visibilidade.";
 "visibility.verypoor"  = "Muito má visibilidade.";
-"visibility.unknown"   = "";
+"visibility.unknown" = "—";
 
 /* WindCard */
 "WIND" = "Vento";
@@ -1002,3 +1002,42 @@
 "Promo.GlanceStudio.description" = "O Glance Studio ajuda você a criar vídeos cinematográficos em estilo de bate-papo para mídias sociais, publicidade e narrativas. Crie conversas animadas em dispositivos 3D realistas, simule digitação, anexe mídia e exporte conteúdo vertical envolvente.";
 "Promo.Wonek.description" = "Wonek Video Studio transforma imagens brutas em conteúdo pronto para publicação. Encontre momentos fortes, crie clipes nítidos, adicione legendas limpas e narrações de texto para fala e, em seguida, aprimore o vídeo e o áudio em um fluxo de trabalho focado.";
 "Promo.GlanceStudioDesktop.description" = "O Glance Studio Desktop traz a criação de vídeos cinematográficos em estilo de bate-papo para o seu Mac. Crie conversas animadas em dispositivos 3D realistas, simule digitação, anexe fotos e vídeos e exporte conteúdo vertical para mídias sociais.";
+/* Sharing and local calendar UI — localization audit. */
+"Remove calendar access?" = "Remover o acesso ao calendário?";
+"Remove Access" = "Remover acesso";
+"Share calendar" = "Partilhar calendário";
+"Add another person" = "Adicionar outra pessoa";
+"Invite by Email" = "Convidar por e-mail";
+"Email address" = "Endereço de e-mail";
+"Remove invitation" = "Remover convite";
+"QR Code" = "Código QR";
+"Send" = "Enviar";
+"Unable to scan" = "Não foi possível ler o código";
+"Unable to update invitation" = "Não foi possível atualizar o convite";
+"Search events" = "Pesquisar eventos";
+"Event access removed" = "Acesso ao evento removido";
+"Manage event access" = "Gerir acesso ao evento";
+"People with this event" = "Pessoas com este evento";
+"Event Access" = "Acesso ao evento";
+"Remove Access?" = "Remover acesso?";
+"Original sharer, Owner access" = "Autor da partilha, acesso de proprietário";
+"Add to Shared with me" = "Adicionar a Partilhado comigo";
+"Clear" = "Limpar";
+"Sending…" = "A enviar…";
+"Send Invitations" = "Enviar convites";
+"Saving…" = "A guardar…";
+"Save Invitations" = "Guardar convites";
+"Copied" = "Copiado";
+"Copy Link" = "Copiar ligação";
+"Event access: %@" = "Acesso ao evento: %@";
+"QR code for %@" = "Código QR para %@";
+"Sign-in timed out. Please try again." = "O tempo para iniciar sessão expirou. Tente novamente.";
+"Connect to the internet to safely stop invitation notifications and sign out." = "Ligue-se à internet para parar com segurança as notificações de convites e terminar sessão.";
+"The selected calendar cannot be edited." = "O calendário selecionado não pode ser editado.";
+"Link unavailable" = "Ligação indisponível";
+"This link is no longer available." = "Esta ligação já não está disponível.";
+"QR scanner unavailable" = "Leitor QR indisponível";
+"No recipients yet" = "Ainda sem destinatários";
+"Not signed in" = "Sessão não iniciada";
+"Sign In Required" = "É necessário iniciar sessão";
+"Ad" = "Anúncio";

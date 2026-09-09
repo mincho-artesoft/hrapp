@@ -1,0 +1,10 @@
+/* One-time local calendar and sharing introduction. */
+"title" = "Calendários locais e compartilhamento";
+"local.title" = "Calendários locais";
+"local.body" = "Crie calendários diretamente no Cloud Calendars, sem conectar iCloud, Google ou Microsoft.";
+"sharing.title" = "Compartilhe eventos e calendários";
+"sharing.body" = "Compartilhe eventos individuais ou calendários inteiros, incluindo seus calendários locais e do iCloud.";
+"access.title" = "Escolha as permissões de acesso";
+"access.body" = "Escolha quem pode ver, editar ou gerenciar o que você compartilha.";
+"account" = "Para compartilhar, entre em uma conta do Cloud Calendars com Apple, Google ou Microsoft.";
+"continue" = "Entendi";

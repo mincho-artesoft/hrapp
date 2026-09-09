@@ -14,3 +14,6 @@
 "Shared calendar" = "Zajednički kalendar";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Ovo je... App Clip Samo preuzima pozivnicu za kalendar. Cloud Calendars Da ga dodate u dijelio sa mnom.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Ovo je... App Clip Samo preuzima događaj. Cloud Calendars Da ga dodate u kalendar.";
+/* Retired share links. */
+"Link unavailable" = "Poveznica nije dostupna";
+"This link is no longer available." = "Ova poveznica više nije dostupna.";

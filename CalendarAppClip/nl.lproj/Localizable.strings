@@ -16,3 +16,6 @@
 "Shared calendar" = "Gedeelde agenda";
 "This App Clip only previews the calendar invitation. Download Cloud Calendars to add it to Shared with me." = "Deze App Clip geeft alleen een voorbeeld van de agenda-uitnodiging. Download Cloud Calendars om het toe te voegen aan Gedeeld met mij.";
 "This App Clip only previews the event. Download Cloud Calendars to add it to your calendar." = "Deze App Clip geeft alleen een voorbeeld van de gebeurtenis. Download Cloud Calendars om het aan uw agenda toe te voegen.";
+/* Retired share links. */
+"Link unavailable" = "Link niet beschikbaar";
+"This link is no longer available." = "Deze link is niet meer beschikbaar.";

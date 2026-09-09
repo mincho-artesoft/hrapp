@@ -91,7 +91,7 @@ struct SharedEventQRScannerView: View {
         guard !isResolving else { return }
         let trimmed = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let url = URL(string: trimmed) else {
-            errorMessage = String(localized: "This QR code does not contain a Cloud Calendars share.")
+            errorMessage = NSLocalizedString("This QR code does not contain a Cloud Calendars share.", comment: "")
             return
         }
 
@@ -107,7 +107,7 @@ struct SharedEventQRScannerView: View {
                 onScanned(.event(payload))
                 dismiss()
             } else {
-                errorMessage = String(localized: "This QR code does not contain a Cloud Calendars event or calendar.")
+                errorMessage = NSLocalizedString("This QR code does not contain a Cloud Calendars event or calendar.", comment: "")
             }
         }
     }

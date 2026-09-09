@@ -475,7 +475,7 @@ struct AppLocalEventEditorView: View {
                     detailForm
                 }
             }
-            .navigationTitle(isNew ? "New Event" : (isEditing ? "Edit Event" : "Event Details"))
+            .navigationTitle(LocalizedStringKey(isNew ? "New Event" : (isEditing ? "Edit Event" : "Event Details")))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbarContent }
             .fileImporter(
