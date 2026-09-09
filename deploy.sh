@@ -102,11 +102,8 @@ deploy_debug() {
   local ENDPOINT
   ENDPOINT=$(aws apigatewayv2 get-api --api-id "$API_ID" --region "$REGION" --query ApiEndpoint --output text)
   local FEED_HOST="${ENDPOINT#https://}"
-  local ENV="Variables={CAL_BUCKET=${DEBUG_BUCKET},FEED_HOST=${FEED_HOST},API_URL=${ENDPOINT},GOOGLE_CLIENT_ID=540859420644-a5mnvraqupd7l804e0s4e60doddqlktr.apps.googleusercontent.com,EMAIL_FROM=Cloud Calendars Debug <no-reply@cloud-calendars.com>}"
   log "configuring debug function for its isolated bucket and endpoint"
-  aws lambda update-function-configuration --function-name "$DEBUG_NAME" --region "$REGION" \
-    --handler "$HANDLER" --runtime "$RUNTIME" --timeout 30 --memory-size 512 \
-    --environment "$ENV" >/dev/null
+  node "$HERE/update-debug-config.mjs" "$DEBUG_BUCKET" "$FEED_HOST" "$ENDPOINT"
   aws lambda wait function-updated --function-name "$DEBUG_NAME" --region "$REGION"
   log "debug endpoint: ${ENDPOINT}"
   echo "$ENDPOINT" > "$HERE/.debug-endpoint"

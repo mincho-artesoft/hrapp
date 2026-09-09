@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Optional } from '@nestjs/common';
+import { PushService } from '../push/push.service';
 import { StoreService } from '../store/store.service';
 import { CoreService } from '../core/core.service';
 import { ApiResult, result } from '../common/api-result';
@@ -38,6 +39,7 @@ export class CalendarService {
     private readonly store: StoreService,
     private readonly core: CoreService,
     private readonly email: EmailService,
+    @Optional() private readonly push?: PushService,
   ) {}
 
   private get keys() { return this.store.keys; }
@@ -1055,6 +1057,8 @@ export class CalendarService {
       )));
 
     const timeZone = eventURL.searchParams.get('timeZone') ?? 'UTC';
+    await Promise.all(invitations.filter((invitation) => pendingInvitationEmails.has(invitation.email))
+      .map((invitation) => this.push?.enqueue('event', invitation.email, context.calId, eventId)));
     await Promise.all(invitations.map((invitation) => this.email.sendSharedEventInvitation({
       email: invitation.email,
       access: invitation.access,
@@ -1096,7 +1100,6 @@ export class CalendarService {
 
     const invitations = new Map<string, any>();
     const staleKeys: string[] = [];
-    const now = Date.now();
 
     for (const indexedValue of indexed) {
       const ref = indexedValue.ref;
@@ -1117,11 +1120,12 @@ export class CalendarService {
           || event.status === 'cancelled'
           || !recipient
           || !Number.isFinite(start.getTime())
-          || !Number.isFinite(end.getTime())
-          || end.getTime() <= now) {
+          || !Number.isFinite(end.getTime())) {
         staleKeys.push(indexedValue.key);
         continue;
       }
+      // A past event can still be shared. Its end date does not expire the
+      // invitation or authorize deleting the recipient's pending index.
 
       let eventUrl: URL;
       try {
@@ -2146,6 +2150,8 @@ export class CalendarService {
     const senderEmail = senderIdentities.find((identity) =>
       identity.provider === principal.identityProvider,
     )?.email ?? senderIdentities[0]?.email ?? null;
+    await Promise.all(invitedRecipients.map((recipient: any) =>
+      this.push?.enqueue('calendar', recipient.email, context.ownerId, calendarId)));
     await Promise.all(invitedRecipients.map((recipient: any) =>
       this.email.sendSharedCalendarInvitation({
         email: recipient.email,

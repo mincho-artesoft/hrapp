@@ -655,6 +655,49 @@ async function testCalendarSharing(service: CalendarService, email: FakeEmailSer
   assert.equal(stillAppLocal.calendar.calendarKind, 'app_local');
 }
 
+async function testPastEventInvitations(service: CalendarService, store: MemoryStore): Promise<void> {
+  for (const access of ['reader', 'writer', 'owner']) {
+    const eventId = `past-event-${access}`;
+    const payload = {
+      ...eventPayload(`Past event ${access}`),
+      start: '2000-01-01T07:45:00.000Z',
+      end: '2000-01-01T08:00:00.000Z',
+    };
+    expectStatus(await service.upsertEvent(owner, eventId, payload), 201, 'create past event');
+    const grant = expectStatus(await service.createGrant(owner, {
+      role: 'viewer', eventId, feedName: payload.title,
+    }), 201, 'create past event grant');
+    const body = {
+      eventUrl: `${process.env.API_URL}/event-invites/open?e=${eventId}&c=${grant.feedId}`,
+      invitations: [{ email: recipientEmail, access }],
+    };
+    expectStatus(await service.inviteEventRecipients(owner, eventId, body), 201, 'invite to past event');
+    for (let refresh = 0; refresh < 2; refresh++) {
+      const pending = expectStatus(await service.pendingEventInvitations(recipient), 200, 'past event remains pending');
+      const invitation = pending.invitations.find((value: any) => value.eventId === eventId);
+      assert.ok(invitation, 'past event must remain visible after every refresh');
+      assert.equal(invitation.access, access);
+      assert.equal(invitation.start, payload.start);
+      assert.equal(invitation.end, payload.end);
+      assert.ok(await store.getJSON(keys.pendingEventInvitation(
+        new CoreService(store as any).emailHash(recipientEmail), owner.calId, eventId,
+      )), 'refresh must not delete a pending index merely because the event ended');
+    }
+    assert.equal((await service.eventInvitationLanding({ e: eventId, c: grant.feedId })).status, 200);
+    expectStatus(await service.declinePendingEventInvitation(recipient, eventId, { feedId: grant.feedId }), 200, 'decline past invitation');
+    assert.ok(!expectStatus(await service.pendingEventInvitations(recipient), 200, 'pending after decline')
+      .invitations.some((value: any) => value.eventId === eventId));
+    expectStatus(await service.inviteEventRecipients(owner, eventId, body), 201, 'reinvite past event');
+    const accepted = expectStatus(await service.rememberReceivedInvite(recipient, {
+      eventId, feedId: grant.feedId, localEventIdentifier: `recipient-${eventId}`,
+    }), 201, 'accept past invitation');
+    assert.equal(accepted.access, access);
+    assert.ok(!expectStatus(await service.pendingEventInvitations(recipient), 200, 'pending after past acceptance')
+      .invitations.some((value: any) => value.eventId === eventId));
+  }
+  console.log('PASS past event invitations: all rights, retained indexes, repeated refresh, landing page, decline, reinvite and accept');
+}
+
 async function main(): Promise<void> {
   const instant = Date.parse('2026-09-09T08:00:00.000Z');
   assert.equal(nextRevisionTimestamp(new Date(instant).toISOString(), instant), '2026-09-09T08:00:00.001Z');
@@ -671,6 +714,7 @@ async function main(): Promise<void> {
   await seedAccount(store, core, recipient, recipientEmail);
 
   await testEventSharing(service, email);
+  await testPastEventInvitations(service, store);
   await testCalendarSharing(service, email, kind);
   console.log(`PASS full permissions matrix: ${kind}`);
   }
