@@ -189,6 +189,12 @@ struct SharedEventDetails: Codable, Equatable {
     /// calendars, where Cloud Calendars can preserve them losslessly.
     let travelTime: TimeInterval?
     let attachments: [SharedEventAttachment]?
+    private var hasCompleteExtensionFields = false
+
+    private enum CodingKeys: String, CodingKey {
+        case notes, timeZone, availability, alarms, recurrenceRules, structuredLocation
+        case videoCallURL, organizer, attendees, travelTime, attachments
+    }
 
     init(
         notes: String?,
@@ -214,6 +220,7 @@ struct SharedEventDetails: Codable, Equatable {
         self.attendees = attendees
         self.travelTime = travelTime
         self.attachments = attachments
+        hasCompleteExtensionFields = true
     }
 
     init(event: EKEvent) {
@@ -292,7 +299,9 @@ struct SharedEventDetails: Codable, Equatable {
         guard let data = try? JSONEncoder().encode(self),
               let object = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
         else { return nil }
-        return object
+        return SharedEventWireCompatibility.detailsPayload(
+            object, explicitExtensionClears: hasCompleteExtensionFields
+        )
     }
 }
 
@@ -954,9 +963,11 @@ enum CloudCalendarsAPI {
         let encoder = JSONEncoder()
         let eventObjects: [[String: Any]] = try events.map { event in
             let data = try encoder.encode(event)
-            guard let object = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            guard var object = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                 throw Failure.malformedResponse
             }
+            // Use the same explicit-clear semantics as single-event uploads.
+            object["details"] = event.details?.payload ?? NSNull()
             return object
         }
         var body: [String: Any] = [
