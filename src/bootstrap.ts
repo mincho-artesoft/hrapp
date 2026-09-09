@@ -6,16 +6,15 @@ import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/all-exceptions.filter';
 
 /**
- * Build the Nest app with the same behaviour on Lambda and locally: raw-body
- * capture (for the Stripe webhook signature), permissive CORS matching the
+ * Build the Nest app with the same behaviour on Lambda and locally: CORS matching the
  * original API, and the exception filter that preserves the original error
  * bodies. Pass an Express instance for the serverless adapter; omit it for a
  * standalone HTTP server in local dev.
  */
 export async function createApp(expressApp?: Express): Promise<INestApplication> {
   const app = expressApp
-    ? await NestFactory.create(AppModule, new ExpressAdapter(expressApp), { rawBody: true, logger: ['error', 'warn'] })
-    : await NestFactory.create(AppModule, { rawBody: true, logger: ['error', 'warn'] });
+    ? await NestFactory.create(AppModule, new ExpressAdapter(expressApp), { logger: ['error', 'warn'] })
+    : await NestFactory.create(AppModule, { logger: ['error', 'warn'] });
 
   app.enableCors({
     origin: '*',

@@ -33,25 +33,8 @@ export const keys = {
   pendingICloudCalendarInvitation: (emailHash: string, principalId: string, calendarId: string) =>
     `idx/icloud-calendar-invite-email/${emailHash}/${encodeURIComponent(principalId)}--${encodeURIComponent(calendarId)}.json`,
 
-  // Booking (Calendly-style scheduling on top of a calendar)
-  booking: (calId: string) => `cal/${calId}/booking.json`, // owner's availability config
-  bookingHandle: (handle: string) => `idx/book/${handle}.json`, // public handle -> {calId}
-  booked: (calId: string, slotKey: string) => `cal/${calId}/booked/${slotKey}.json`, // atomic slot claim
-
-  // Web booking access: pairing a browser to an installed app, and Stripe entitlement
-  pair: (code: string) => `idx/pair/${code}.json`, // short-lived QR pairing code
-  stripeCustomer: (id: string) => `idx/stripe/${id}.json`, // stripe customer -> {principalId}
-
-  // An invitee's manage link: unguessable token -> the booking they can move or cancel
+  // Registrant self-management tokens (not appointment scheduling).
   manage: (token: string) => `idx/manage/${token}.json`,
-  // Reverse pointer so the owner, who knows only the event, can find that manage
-  // record to decline or move a booking from their own side.
-  eventManage: (calId: string, eventId: string) => `idx/eventmanage/${calId}/${eventId}.json`,
-
-  // "My bookings": a passwordless session, and every booking an e-mail ever made
-  session: (token: string) => `idx/session/${token}.json`, // magic-link session -> {emailHash,email}
-  inviteeIndex: (emailHash: string) => `idx/invitee/${emailHash}/`, // prefix: all of one person's bookings
-  inviteeBooking: (emailHash: string, token: string) => `idx/invitee/${emailHash}/${token}.json`,
 
   // Shareable fixed-date events: one event, many registrants, each with their
   // own scoped feed. The event itself is a normal calendar event (keys.event),

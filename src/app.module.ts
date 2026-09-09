@@ -2,14 +2,8 @@ import { Module } from '@nestjs/common';
 import { CoreModule } from './core/core.module';
 import { CalendarController } from './calendar/calendar.controller';
 import { CalendarService } from './calendar/calendar.service';
-import { BookingController } from './booking/booking.controller';
-import { BookingService } from './booking/booking.service';
 import { MeController } from './me/me.controller';
 import { MeService } from './me/me.service';
-import { PairingController } from './pairing/pairing.controller';
-import { PairingService } from './pairing/pairing.service';
-import { BillingController } from './billing/billing.controller';
-import { BillingService } from './billing/billing.service';
 import { SharedEventController } from './shared-event/shared-event.controller';
 import { SharedEventService } from './shared-event/shared-event.service';
 
@@ -17,18 +11,12 @@ import { SharedEventService } from './shared-event/shared-event.service';
   imports: [CoreModule],
   controllers: [
     CalendarController,
-    BookingController,
     MeController,
-    PairingController,
-    BillingController,
     SharedEventController,
   ],
   providers: [
     CalendarService,
-    BookingService,
     MeService,
-    PairingService,
-    BillingService,
     SharedEventService,
   ],
 })

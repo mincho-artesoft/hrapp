@@ -11,7 +11,7 @@ import { keys } from './keys';
 /**
  * S3-as-DB. A thin, injectable wrapper around the exact operations the original
  * Lambda's lib/store.mjs performed — same bucket, same key layout, same
- * semantics (including the conditional write that arbitrates a booking race).
+ * semantics, including conditional writes for concurrent calendar changes.
  */
 @Injectable()
 export class StoreService {

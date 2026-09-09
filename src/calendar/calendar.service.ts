@@ -5,6 +5,7 @@ import { ApiResult, result } from '../common/api-result';
 import { randomId, hashKey } from '../util/ids';
 import { verifyAppleIdToken, verifyGoogleIdToken, verifyMicrosoftToken } from '../util/verify';
 import { EmailService } from '../email/email.service';
+import { EVENT_CARD_CSS, eventIcon, eventPalette } from '../presentation/event-card';
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? null;
 const APPLE_CLIENT_IDS = (process.env.APPLE_CLIENT_IDS ?? 'Deksan.CalendarASD')
@@ -1540,9 +1541,9 @@ export class CalendarService {
       html: eventInvitationDocument(`
         <section class="clip-content" data-view="app-clip-preview" style="--event-color:${escapeHTML(color)}">
           <div class="sender-line">From <strong>${escapeHTML(sender)}</strong></div>
-          <div class="invitation-label"><span class="symbol" aria-hidden="true">▦</span><span>Calendar invitation</span></div>
+          <div class="invitation-label">${eventIcon('calendar')}<span>Calendar invitation</span></div>
           <div class="preview-card calendar-preview">
-            <span class="symbol preview-symbol" aria-hidden="true">▦</span>
+            <span class="symbol preview-symbol" aria-hidden="true">${eventIcon('calendar')}</span>
             <strong class="event-title">${escapeHTML(title)}</strong>
           </div>
           <div class="actions">
@@ -3000,9 +3001,9 @@ function escapeHTML(value: unknown): string {
     .replace(/'/g, '&#39;');
 }
 
-const CLOUD_CALENDARS_APP_STORE_URL = 'https://apps.apple.com/app/id6744690319';
+const CLOUD_CALENDARS_APP_STORE_URL = 'https://apps.apple.com/us/app/cloud-calendars-sync-widget/id6744690319';
 
-function eventInvitationDocument(
+export function eventInvitationDocument(
   content: string,
   title: string,
   screenTitle = 'Shared event',
@@ -3015,34 +3016,32 @@ function eventInvitationDocument(
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src https: data:; base-uri 'none'; form-action 'none'" />
   <title>${escapeHTML(title)} · Cloud Calendars</title>
   <style>
-    :root { color-scheme: dark; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    :root { color-scheme:light dark; --ink:#1c1c1e; --secondary:#636366; --page:#f2f2f7; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    @media (prefers-color-scheme:dark) { :root { --ink:#fff; --secondary:#aeaeb2; --page:#000; } }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; min-height:100svh; background:linear-gradient(145deg,#051c3b 0%,#0a4d80 100%); color:#fff; }
+    body { margin:0; min-height:100vh; min-height:100svh; background:var(--page); color:var(--ink); }
     main { width:min(100%,560px); margin:0 auto; padding:28px 22px max(28px,env(safe-area-inset-bottom)); }
     .clip-header { display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; margin-bottom:22px; }
     .clip-icon { display:block; width:86px; height:86px; border-radius:20px; object-fit:cover; }
-    .brand-name { color:rgba(255,255,255,.85); font-size:17px; font-weight:650; }
-    .screen-title { margin:0; color:#fff; font-size:clamp(30px,8vw,38px); line-height:1.08; font-weight:800; overflow-wrap:anywhere; }
+    .brand-name { color:var(--secondary); font-size:17px; font-weight:650; }
+    .screen-title { margin:0; color:var(--ink); font-size:clamp(30px,8vw,38px); line-height:1.08; font-weight:800; overflow-wrap:anywhere; }
     .clip-content { width:100%; }
-    .sender-line { margin:-4px 4px 20px; color:rgba(255,255,255,.72); font-size:14px; line-height:19px; text-align:center; overflow-wrap:anywhere; }
-    .sender-line strong { color:#fff; font-weight:700; }
-    .invitation-label { display:flex; align-items:center; gap:9px; margin:0 4px 10px; color:rgba(255,255,255,.72); font-size:14px; font-weight:650; line-height:18px; }
+    .sender-line { margin:-4px 4px 20px; color:var(--secondary); font-size:14px; line-height:19px; text-align:center; overflow-wrap:anywhere; }
+    .sender-line strong { color:var(--ink); font-weight:700; }
+    .invitation-label { display:flex; align-items:center; gap:4px; margin:0 4px 10px; color:var(--secondary); font-size:14px; font-weight:600; line-height:18px; }
     .symbol { display:inline-flex; width:18px; flex:0 0 18px; align-items:center; justify-content:center; font-size:17px; line-height:1; }
-    .preview-card { position:relative; display:flex; flex-direction:column; gap:7px; width:100%; padding:7px 11px 7px 15px; border-radius:6px; overflow:hidden; background:color-mix(in srgb,var(--event-color,#0A84FF) 30%,transparent); color:var(--event-color,#0A84FF); }
-    .preview-card::before { content:""; position:absolute; inset:5px auto 5px 4px; width:3px; border-radius:999px; background:var(--event-color,#0A84FF); }
+    ${EVENT_CARD_CSS}
     .calendar-preview { min-height:52px; flex-direction:row; align-items:center; gap:10px; padding-top:10px; padding-bottom:10px; border-radius:9px; }
     .preview-symbol { margin-left:1px; }
-    .event-title { font-size:16px; line-height:20px; font-weight:750; overflow-wrap:anywhere; }
-    .preview-row { display:flex; align-items:flex-start; gap:7px; font-size:14px; line-height:18px; font-weight:650; white-space:pre-line; }
     .actions { display:grid; gap:12px; margin-top:22px; }
     a { display:block; padding:14px 18px; border-radius:999px; text-align:center; text-decoration:none; font-size:17px; line-height:22px; font-weight:700; }
-    .primary { background:#fff; color:#06335f; }
-    .secondary { border:2px solid rgba(255,255,255,.78); background:rgba(255,255,255,.08); color:#fff; }
-    .privacy-note { display:flex; align-items:flex-start; gap:9px; margin-top:18px; color:rgba(255,255,255,.72); font-size:13px; line-height:18px; }
+    .primary { background:#007aff; color:#fff; }
+    .secondary { border:1px solid var(--secondary); color:var(--ink); }
+    .privacy-note { display:flex; align-items:flex-start; gap:9px; margin-top:18px; color:var(--secondary); font-size:13px; line-height:18px; }
     .cancelled { align-self:flex-start; margin:0 0 10px; padding:6px 10px; border-radius:999px; background:#ff453a; color:#fff; font-size:13px; font-weight:750; }
     .message-card { padding:24px; border:1px solid rgba(255,255,255,.16); border-radius:24px; background:rgba(255,255,255,.10); }
     .message-card h2 { margin:0 0 10px; font-size:25px; line-height:1.12; }
-    .message-card p { margin:0; color:rgba(255,255,255,.72); line-height:1.5; }
+    .message-card p { margin:0; color:var(--secondary); line-height:1.5; }
     @media (max-width:380px) { main { padding-inline:18px; } .clip-icon { width:78px; height:78px; } }
   </style>
 </head>
@@ -3067,7 +3066,7 @@ function eventInvitationErrorPage(message: string): string {
     </section>`, message);
 }
 
-function eventInvitationPage(input: {
+export function eventInvitationPage(input: {
   title: string;
   date: string;
   time: string | null;
@@ -3078,17 +3077,17 @@ function eventInvitationPage(input: {
   cancelled: boolean;
 }): string {
   const location = input.location
-    ? `<div class="preview-row"><span class="symbol" aria-hidden="true">⌖</span><span>${escapeHTML(input.location)}</span></div>`
+    ? `<div class="preview-row">${eventIcon('location')}<span>${escapeHTML(input.location)}</span></div>`
     : '';
   const cancelled = input.cancelled ? '<div class="cancelled">Cancelled</div>' : '';
   return eventInvitationDocument(`
-    <section class="clip-content" data-view="app-clip-preview" style="--event-color:${escapeHTML(input.color)}">
+    <section class="clip-content" data-view="app-clip-preview" style="--event-color:${eventPalette(input.color).color}">
       ${cancelled}
       <div class="sender-line">From <strong>${escapeHTML(input.sender)}</strong></div>
-      <div class="invitation-label"><span class="symbol" aria-hidden="true">▦</span><span>${escapeHTML(input.date)}</span></div>
-      <div class="preview-card">
+      <div class="invitation-label">${eventIcon('calendar')}<span>${escapeHTML(input.date)}</span></div>
+      <div class="preview-card${input.cancelled ? ' event-cancelled' : ''}">
         <strong class="event-title">${escapeHTML(input.title)}</strong>
-        ${input.time ? `<div class="preview-row"><span class="symbol" aria-hidden="true">◷</span><span>${escapeHTML(input.time)}</span></div>` : ''}
+        ${input.time ? `<div class="preview-row">${eventIcon('clock')}<span>${escapeHTML(input.time)}</span></div>` : ''}
         ${location}
       </div>
       <div class="actions">

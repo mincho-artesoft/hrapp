@@ -19,13 +19,13 @@ The NestJS port of the Cloud Calendars API. It **replaces** the original single
 
 ```
 src/
-  util/            ids, ics (RFC 5545), booking-slots, verify  — pure ports
+  util/            ids, ics (RFC 5545), verify  — pure ports
   store/           keys.ts (data model) + StoreService (S3 CRUD)
   email/           EmailService (SES)
   core/            CoreService (regenerate, createCalendar, tokens, entitlement)
                    + CoreModule (@Global) + AuthGuard
   common/          ApiResult helper, AuthGuard, AllExceptionsFilter
-  calendar|booking|me|pairing|billing/   controllers + services per resource
+  calendar|me|shared-event/   controllers + services per resource
   bootstrap.ts     shared Nest app config (CORS, rawBody, filter)
   lambda.ts        serverless-express handler (dist/lambda.handler)
   local.ts         local HTTP server for dev

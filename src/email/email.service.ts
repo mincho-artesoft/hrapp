@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2';
 import QRCode from 'qrcode';
+import { eventPalette } from '../presentation/event-card';
 
 const PNGJS: any = require('pngjs');
 
 /**
- * Booking e-mails: confirmation, reschedule, cancellation, and the passwordless
- * sign-in link. Ported from the original lib/email.mjs — same SES delivery, same
+ * Calendar/event invitations and fixed-date event registration notifications.
+ * Ported from the original lib/email.mjs — same SES delivery, same
  * templates matched to the iOS App Clip, same owner-vs-invitee wording.
  *
  * Sending is guarded: with no `EMAIL_FROM` configured the calls become no-ops
- * and a booking still completes.
+ * and calendar actions still complete.
  */
 @Injectable()
 export class EmailService {
@@ -55,7 +56,7 @@ export class EmailService {
         }),
       );
     } catch (err: any) {
-      // Never let a mail failure break a booking — the meeting is already saved.
+      // Delivery failure must not roll back an already-saved calendar action.
       console.error(`[email failed] "${subject}" → ${to}: ${err?.name ?? ''} ${err?.message ?? err}`);
     }
   }
@@ -126,7 +127,14 @@ export class EmailService {
 
   /** One visual shell so the e-mails read as one product. */
   private shell(bodyHtml: string): string {
-    return `<!doctype html><html><body style="margin:0;padding:0;background:#08213f;">
+    return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><style>
+      .cc-event, .cc-event td { box-sizing:border-box; }
+      .cc-event-title, .cc-event-meta { overflow-wrap:anywhere; word-break:break-word; }
+      @media (prefers-color-scheme:dark) {
+        .cc-event { background:var(--cc-dark,#032C54) !important; }
+        .cc-event-title { color:var(--cc-color,#0A84FF) !important; }
+      }
+    </style></head><body style="margin:0;padding:0;background:#08213f;">
   <div style="background:#08213f;background-image:linear-gradient(135deg,#051C3B 0%,#0A4D80 100%);padding:34px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;margin:0 auto;">
       <tr><td align="center" style="padding-bottom:20px;">
@@ -145,29 +153,33 @@ export class EmailService {
     return `<a href="${this.esc(href)}" style="display:inline-block;background:${this.ACCENT};color:#ffffff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 30px;border-radius:999px;">${this.esc(label)}</a>`;
   }
 
-  private detailRow(icon: string, text: string, color = '#cdd9f2'): string {
-    return `<div style="margin-top:8px;color:${color};font-size:14px;">${icon}&nbsp;&nbsp;${this.esc(text)}</div>`;
+  private detailRow(icon: string, text: string, color = eventPalette(this.ACCENT).detail): string {
+    const kind = icon === '📍' ? 'location' : icon === '🗓' ? 'calendar' : null;
+    const symbol = kind ? `<img src="${this.esc(this.sharedEventIconURL(kind, color))}" width="14" height="14" alt="" style="vertical-align:-2px;border:0;" />` : icon;
+    return `<div class="cc-event-meta" style="margin-top:2px;color:${color};font-size:14px;line-height:19px;">${symbol}&nbsp;${this.esc(text)}</div>`;
   }
 
   /** The event, drawn like the App Clip's card: a tinted panel with an accent bar. */
-  private eventBlock(title: string, rows: string): string {
-    return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:rgba(91,155,255,0.16);border-radius:10px;">
+  private eventBlock(title: string, rows: string, eventColor: unknown = this.ACCENT): string {
+    const p = eventPalette(eventColor);
+    return `<table class="cc-event" role="presentation" width="100%" cellpadding="0" cellspacing="0" style="--cc-color:${p.color};--cc-dark:${p.dark};background:${p.light};border-radius:5px;table-layout:fixed;">
     <tr>
-      <td width="4" style="width:4px;background:${this.ACCENT};border-radius:10px 0 0 10px;">&nbsp;</td>
-      <td style="padding:15px 18px;">
-        <div style="font-weight:700;font-size:16px;color:#ffffff;">${this.esc(title)}</div>
-        ${rows}
+      <td style="padding:5px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="table-layout:fixed;"><tr>
+          <td width="3" style="width:3px;background:${p.color};border-radius:2px;font-size:0;">&nbsp;</td>
+          <td style="padding:0 2px 0 4px;">
+            <div class="cc-event-title" style="font-weight:600;font-size:16px;line-height:20px;color:${p.title};">${this.esc(title)}</div>
+            ${rows}
+          </td>
+        </tr></table>
       </td>
     </tr>
   </table>`;
   }
 
   private appClipEventBlock({ title, date, time, location, eventColor }: any): string {
-    const color = this.validEventColor(eventColor);
-    const red = Number.parseInt(color.slice(1, 3), 16);
-    const green = Number.parseInt(color.slice(3, 5), 16);
-    const blue = Number.parseInt(color.slice(5, 7), 16);
-    const tint = `rgba(${red},${green},${blue},0.30)`;
+    const palette = eventPalette(eventColor);
+    const color = palette.detail;
     const icon = (name: 'calendar' | 'clock' | 'location', alt: string) => {
       const iconColor = name === 'calendar' ? '#CDD9F2' : color;
       return `<img src="${this.esc(this.sharedEventIconURL(name, iconColor))}" width="14" height="14" alt="${alt}" style="display:inline-block;width:14px;height:14px;margin:0 7px 0 0;vertical-align:-2px;border:0;" />`;
@@ -176,22 +188,15 @@ export class EmailService {
       iconName: 'clock' | 'location',
       iconAlt: string,
       value: string,
-    ) => `<div style="margin-top:7px;color:${color};font-size:14px;font-weight:600;line-height:18px;">
+    ) => `<div class="cc-event-meta" style="margin-top:2px;color:${color};font-size:14px;font-weight:400;line-height:19px;">
       ${icon(iconName, iconAlt)}${this.esc(value)}
     </div>`;
     return `<div style="margin:0 4px 10px;color:rgba(255,255,255,0.72);font-size:13px;font-weight:600;line-height:18px;">
       ${icon('calendar', 'Date')}${this.esc(date)}
     </div>
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${tint};border-radius:5px;">
-    <tr>
-      <td width="3" style="width:3px;background:${color};border-radius:5px 0 0 5px;font-size:0;line-height:0;">&nbsp;</td>
-      <td style="padding:6px 8px;color:${color};">
-        <div style="font-weight:700;font-size:16px;line-height:20px;color:${color};">${this.esc(title)}</div>
-        ${time ? detail('clock', 'Time', time) : ''}
-        ${location ? detail('location', 'Location', location) : ''}
-      </td>
-    </tr>
-  </table>`;
+    ${this.eventBlock(title,
+      (time ? detail('clock', 'Time', time) : '') + (location ? detail('location', 'Location', location) : ''),
+      palette.color)}`;
   }
 
   private validEventColor(value: unknown): string {
@@ -325,77 +330,6 @@ export class EmailService {
       });
     } catch {
       return null;
-    }
-  }
-
-  private inviteeHtml(kind: string, { title, when, location, manageUrl, webcal, by }: any): string {
-    const byHost = by === 'owner';
-    const heading = {
-      booked: 'You’re booked',
-      rescheduled: 'Your booking moved',
-      cancelled: 'Booking cancelled',
-    }[kind];
-    const intro = {
-      booked: 'Your meeting is confirmed. Add it to your calendar below.',
-      rescheduled: byHost
-        ? 'The host moved your meeting to a new time.'
-        : 'Your meeting has been moved to a new time.',
-      cancelled: byHost
-        ? 'The host cancelled this meeting. Nothing more to do.'
-        : 'This meeting has been cancelled. Nothing more to do.',
-    }[kind];
-
-    let body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">${this.esc(heading)}</h1>
-    <p style="margin:0 auto 22px;max-width:40ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">${this.esc(intro)}</p>
-    ${this.eventBlock(title, this.detailRow('🗓', when) + (location ? this.detailRow('📍', location) : ''))}`;
-
-    if (kind !== 'cancelled') {
-      if (webcal) body += `<div style="text-align:center;margin:24px 0 0;">${this.button(webcal, 'Add to calendar')}</div>`;
-      body += `<p style="margin:16px 0 0;text-align:center;color:rgba(255,255,255,0.55);font-size:13px;">Need a different time? <a href="${this.esc(manageUrl)}" style="color:${this.ACCENT};text-decoration:underline;">Reschedule or cancel</a>.</p>`;
-    }
-    return this.shell(body);
-  }
-
-  private ownerHtml(kind: string, { title, when, name, email }: any): string {
-    const heading = {
-      booked: 'New booking',
-      rescheduled: 'A booking was moved',
-      cancelled: 'A booking was cancelled',
-    }[kind];
-    const body = `<h1 style="margin:4px 0 16px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">${this.esc(heading)}</h1>
-    ${this.eventBlock(title, this.detailRow('🗓', when) + this.detailRow('👤', `${name} <${email}>`))}
-    <p style="margin:16px 0 0;text-align:center;color:rgba(255,255,255,0.55);font-size:13px;">It’s already on your Cloud Calendars feed.</p>`;
-    return this.shell(body);
-  }
-
-  /**
-   * Fan a booking change out to the two participants. `kind` is one of
-   * 'booked' | 'rescheduled' | 'cancelled'. The owner mail is sent only when the
-   * booking config carries a contact address, and never when the owner is the
-   * one who acted (`by === 'owner'`).
-   */
-  async notifyBooking(kind: string, { config, event, name, email, manageToken, webcal, by }: any): Promise<void> {
-    const when = this.fmtWhen(event.start, event.end, config?.timeZone);
-    const manageUrl = `${this.SITE_URL}/booking/manage/?t=${manageToken}`;
-    const location = event.location ?? null;
-    const title = event.title;
-
-    const subj = {
-      booked: `Confirmed: ${title}`,
-      rescheduled: `Rescheduled: ${title}`,
-      cancelled: `Cancelled: ${title}`,
-    }[kind];
-
-    await this.sendEmail(email, subj, this.inviteeHtml(kind, { title, when, location, manageUrl, webcal, by }));
-
-    const ownerEmail = by === 'owner' ? null : config?.contactEmail;
-    if (ownerEmail) {
-      const ownerSubj = {
-        booked: `New booking: ${title}`,
-        rescheduled: `Moved: ${title}`,
-        cancelled: `Cancelled: ${title}`,
-      }[kind];
-      await this.sendEmail(ownerEmail, ownerSubj, this.ownerHtml(kind, { title, when, name, email }));
     }
   }
 
@@ -552,14 +486,5 @@ export class EmailService {
       this.shell(body),
       { replyTo: senderEmail },
     );
-  }
-
-  /** The passwordless sign-in link to the "my bookings" page. */
-  async sendLoginLink(to: string, url: string): Promise<void> {
-    const body = `<h1 style="margin:4px 0 8px;font-size:26px;font-weight:800;color:#ffffff;text-align:center;">Your bookings</h1>
-    <p style="margin:0 auto 22px;max-width:40ch;color:rgba(255,255,255,0.68);font-size:15px;text-align:center;">Tap below to see and manage every meeting you’ve booked. This link works for 7 days.</p>
-    <div style="text-align:center;margin:6px 0 0;">${this.button(url, 'View my bookings')}</div>
-    <p style="margin:18px 0 0;text-align:center;color:rgba(255,255,255,0.45);font-size:12px;">If you didn’t ask for this, you can ignore it.</p>`;
-    await this.sendEmail(to, 'Your Cloud Calendars bookings', this.shell(body));
   }
 }

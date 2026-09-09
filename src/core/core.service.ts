@@ -24,19 +24,6 @@ export class CoreService {
 
   constructor(private readonly store: StoreService) {}
 
-  async isEntitled(principalId: string): Promise<boolean> {
-    const rec = await this.store.getJSON(this.store.keys.principal(principalId));
-    const kind = rec?.entitlement?.kind;
-    return kind === 'app' || kind === 'web-paid' || kind === 'comp';
-  }
-
-  async grantEntitlement(principalId: string, kind: string, source: string): Promise<any> {
-    const rec = (await this.store.getJSON(this.store.keys.principal(principalId))) ?? { id: principalId };
-    rec.entitlement = { kind, source, since: new Date().toISOString() };
-    await this.store.putJSON(this.store.keys.principal(principalId), rec);
-    return rec.entitlement;
-  }
-
   feedUrl(feedId: string): string {
     return `https://${this.FEED_HOST}/f/${feedId}.ics`;
   }

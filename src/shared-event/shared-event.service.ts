@@ -10,7 +10,7 @@ import { randomId } from '../util/ids';
  * a link, and many people register with just their e-mail. Each registrant gets
  * a feed scoped to that one event (never the whole calendar) plus a confirmation
  * e-mail, and is notified when the organizer moves or cancels it. Built on the
- * same event-scoped-feed and e-mail machinery the booking flow already uses.
+ * calendar event-scoped feeds and invitation delivery.
  */
 @Injectable()
 export class SharedEventService {
@@ -28,16 +28,13 @@ export class SharedEventService {
     return `${this.SITE_URL}/event/?e=${handle}`;
   }
 
-  /** The owner's public name and zone, from their booking config or calendar meta. */
+  /** Shared-event identity comes only from its calendar metadata. */
   private async ownerDisplay(calId: string): Promise<{ displayName: string; timeZone: string; contactEmail: string | null }> {
-    const [config, meta] = await Promise.all([
-      this.store.getJSON(this.keys.booking(calId)),
-      this.store.getJSON(this.keys.meta(calId)),
-    ]);
+    const meta = await this.store.getJSON(this.keys.meta(calId));
     return {
-      displayName: config?.displayName || meta?.name || 'Cloud Calendars',
-      timeZone: config?.timeZone || meta?.timeZone || 'UTC',
-      contactEmail: config?.contactEmail ?? null,
+      displayName: meta?.name || 'Cloud Calendars',
+      timeZone: meta?.timeZone || 'UTC',
+      contactEmail: meta?.contactEmail ?? null,
     };
   }
 
