@@ -255,8 +255,10 @@ fi
 
 log "Running post-deploy live checks…"
 if [[ "$DRY_RUN" == "1" ]]; then
+  printf '  would run: node scripts/check-associated-domain.mjs https://%s\n' "$SITE_DOMAIN"
   printf '\033[90m  would run: node ai-visibility/live-check.mjs https://%s\033[0m\n' "$SITE_DOMAIN"
 else
+  "$NODE_BIN" "$ROOT_DIR/scripts/check-associated-domain.mjs" "https://$SITE_DOMAIN"
   "$NODE_BIN" "$ROOT_DIR/ai-visibility/live-check.mjs" "https://$SITE_DOMAIN"
 fi
 
