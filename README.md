@@ -61,7 +61,9 @@ is present; it updates the live function's code and sets its handler to
 ## Sharing compatibility with older apps
 
 The sharing API retains its existing sessions, identifiers, roles and feed URLs.
-Compatibility checks use the 1.7.0 wire model (iOS source `84ca418bc`) as a baseline:
+Compatibility checks use the 1.7.0 wire model (iOS source `84ca418bc`) as a baseline.
+The sharing API and event wire model are unchanged in the 1.7.1 source
+(`36dfc4c30`); the new app version is 1.7.2:
 
 - Missing `travelTime`, `attachments` or `videoCallURL` on an older client's edit
   preserves the existing value, for both individual events and calendar snapshots.
@@ -78,7 +80,10 @@ Compatibility checks use the 1.7.0 wire model (iOS source `84ca418bc`) as a base
 This is sharing compatibility, not restoration of the retired Booking product.
 Automated API/wire-format and actual QR-image decoding tests are not a substitute
 for a final smoke test of the exact distributed App Store binary before release.
-Only Debug is deployed during this work; production still needs explicit approval.
+Production was deployed with explicit user approval on 2026-09-09. See
+[the release record](PRODUCTION_RELEASE_2026-09-09.md) for verification and rollback.
+The existing production environment was preserved; server invitation pushes
+remain disabled there until production APNs/SQS configuration is added.
 
 ## Roll back
 
