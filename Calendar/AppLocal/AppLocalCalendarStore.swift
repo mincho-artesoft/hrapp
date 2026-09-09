@@ -270,9 +270,13 @@ final class AppLocalCalendarStore: ObservableObject {
     /// Reconciles an app-owned calendar snapshot. Unlike the EventKit path,
     /// all metadata and events remain inside this store.
     @discardableResult
-    func applyRemoteCalendar(_ remote: CloudCalendarsAPI.SharedICloudCalendar) -> Bool {
+    func applyRemoteCalendar(_ remote: CloudCalendarsAPI.SharedICloudCalendar, ownedCalendarID: String? = nil) -> Bool {
         guard remote.calendarKind == "app_local" else { return false }
-        let localID = calendars.first(where: {
+        if let ownedCalendarID {
+            guard let owned = calendar(id: ownedCalendarID), owned.origin == .owned,
+                  owned.shareID == remote.calendarId else { return false }
+        }
+        let localID = ownedCalendarID ?? calendars.first(where: {
             $0.origin == .received
                 && $0.remoteOwnerID == remote.ownerId
                 && $0.remoteCalendarID == remote.calendarId
@@ -284,22 +288,39 @@ final class AppLocalCalendarStore: ObservableObject {
             colorHex: remote.color,
             timeZoneIdentifier: remote.timeZone,
             createdAt: previous?.createdAt ?? Date(),
-            updatedAt: Self.date(remote.updatedAt) ?? Date(),
-            origin: .received,
+            updatedAt: Self.date(remote.updatedAt) ?? previous?.updatedAt ?? Date(),
+            origin: ownedCalendarID == nil ? .received : .owned,
             remoteOwnerID: remote.ownerId,
             remoteOwnerEmail: remote.ownerEmail,
             remoteCalendarID: remote.calendarId,
             access: remote.access,
-            isOriginalCreator: false,
+            isOriginalCreator: ownedCalendarID != nil,
             revokedAt: Self.date(remote.revokedAt),
             revokedReason: remote.revokedReason,
             localColorOverrideHex: previous?.localColorOverrideHex
         )
 
-        let remoteEvents = (remote.events ?? []).compactMap { value -> AppLocalEventRecord? in
+        // Acceptance/metadata responses omit events. Omission must never be
+        // interpreted as a deletion snapshot (an explicit [] means empty).
+        let remoteEvents: [AppLocalEventRecord] = remote.events == nil
+            ? events.filter { $0.calendarID == localID }.map { event in
+                var preserved = event
+                preserved.isCancelled = remote.isRevoked
+                return preserved
+            }
+            : (remote.events ?? []).compactMap { value -> AppLocalEventRecord? in
             guard let start = value.startDate, let end = value.endDate else { return nil }
+            let old = events.first { $0.calendarID == localID && $0.shareID == value.id }
+            var availableAlarms = old?.alarms ?? []
+            let alarms = (value.details?.alarms ?? []).compactMap { alarm -> AppLocalEventAlarm? in
+                guard let offset = alarm.relativeOffset else { return nil }
+                if let index = availableAlarms.firstIndex(where: { $0.relativeOffset == offset }) {
+                    return availableAlarms.remove(at: index)
+                }
+                return AppLocalEventAlarm(relativeOffset: offset)
+            }
             return AppLocalEventRecord(
-                id: Self.receivedEventID(calendarID: localID, remoteEventID: value.id),
+                id: old?.id ?? Self.receivedEventID(calendarID: localID, remoteEventID: value.id),
                 calendarID: localID,
                 title: value.title,
                 startDate: start,
@@ -310,12 +331,9 @@ final class AppLocalCalendarStore: ObservableObject {
                 urlString: value.url ?? "",
                 videoCallURL: value.details?.videoCallURL,
                 timeZoneIdentifier: value.details?.timeZone ?? remote.timeZone,
-                alarms: (value.details?.alarms ?? []).compactMap {
-                    guard let offset = $0.relativeOffset else { return nil }
-                    return AppLocalEventAlarm(relativeOffset: offset)
-                },
-                createdAt: events.first(where: { $0.remoteEventID == value.id })?.createdAt ?? Date(),
-                updatedAt: Self.date(remote.eventsUpdatedAt) ?? Date(),
+                alarms: alarms,
+                createdAt: old?.createdAt ?? Date(),
+                updatedAt: Self.date(remote.eventsUpdatedAt) ?? old?.updatedAt ?? Date(),
                 remoteEventID: value.id,
                 isCancelled: remote.isRevoked,
                 travelTime: value.details?.travelTime,
@@ -326,7 +344,9 @@ final class AppLocalCalendarStore: ObservableObject {
         }
 
         let changed = previous != updated
-            || events.filter { $0.calendarID == localID } != remoteEvents
+            || events.filter { $0.calendarID == localID }.sorted { $0.id < $1.id }
+                != remoteEvents.sorted { $0.id < $1.id }
+        guard changed else { return false }
         if let index = calendars.firstIndex(where: { $0.id == localID }) {
             calendars[index] = updated
         } else {

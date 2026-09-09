@@ -75,6 +75,34 @@ extension LocalStoreTestApp {
               "Alarms, attachments, recurrence and travel time survive import")
         let repeatedChange = store.applyRemoteCalendar(remote)
         check(!repeatedChange, "An identical remote revision does not trigger a false update")
+        var metadataOnly = remote
+        metadataOnly.events = nil
+        _ = store.applyRemoteCalendar(metadataOnly)
+        check(store.events.filter { $0.calendarID == received.id }.map(\.id) == [imported.id],
+              "Repeated metadata-only acceptance preserves existing local events")
+        var edited = remoteEvent
+        edited.title = "Writer edit"
+        var other = remoteEvent
+        other.id = "independent-event"
+        let base = [remoteEvent]
+        check(AppLocalCalendarMerge.events(base: base, local: base, remote: [edited]) == [edited],
+              "Stale creator snapshot preserves a Writer edit")
+        check(AppLocalCalendarMerge.events(base: base, local: [remoteEvent, other], remote: [edited]).count == 2,
+              "Independent creator addition survives a remote Writer edit")
+        var conflict = remoteEvent
+        conflict.title = "Conflicting creator edit"
+        check(AppLocalCalendarMerge.events(base: base, local: [conflict], remote: [edited]) == [edited],
+              "Same-event conflict uses the canonical remote version")
+        check(AppLocalCalendarMerge.events(base: base, local: [], remote: base).isEmpty,
+              "Local deletion is uploaded when the remote event is unchanged")
+        check(AppLocalCalendarMerge.events(base: base, local: base, remote: []).isEmpty,
+              "Remote deletion does not get resurrected by the creator")
+        var ownedRemote = remote
+        ownedRemote.events = [edited]
+        ownedRemote.access = .owner
+        check(store.applyRemoteCalendar(ownedRemote, ownedCalendarID: owned.id), "Writer snapshot applies to original local calendar")
+        check(store.event(id: localEvent.id)?.title == edited.title && store.calendar(id: owned.id)?.origin == .owned,
+              "Applying Writer changes preserves original event ID and calendar ownership")
         check(store.events.filter { $0.calendarID == received.id }.count == 1
               && store.events.first { $0.calendarID == received.id }?.id == imported.id,
               "Repeated import does not duplicate the event")

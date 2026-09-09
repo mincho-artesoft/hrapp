@@ -13,6 +13,7 @@ xcrun swiftc -sdk "$(xcrun --sdk iphonesimulator --show-sdk-path)" \
     -target "$(uname -m)-apple-ios18.0-simulator" \
     "$repo_dir/Calendar/CalendarKit/EventDescriptor.swift" \
     "$repo_dir/Calendar/AppLocal/AppLocalCalendarStore.swift" \
+    "$repo_dir/Calendar/AppLocal/AppLocalCalendarMerge.swift" \
     "$repo_dir/Calendar/Sources/EKMultiDayWrapper.swift" \
     "$repo_dir/Calendar/AppLocal/EventKitEventSupplementStore.swift" \
     "$repo_dir/Calendar/AppLocal/CalendarTimelineTransfer.swift" \

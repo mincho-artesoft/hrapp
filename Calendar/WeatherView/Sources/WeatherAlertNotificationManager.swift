@@ -389,6 +389,22 @@ actor WeatherAlertNotificationManager {
         )
     }
 
+    #if DEBUG
+    /// Synthetic, clearly labelled simulator alerts. Do not alter real GPS
+    /// data or permanently replace the user's active alert fingerprints.
+    func testNotificationDelivery(_ alerts: [WeatherAlert]) async {
+        let defaults = UserDefaults.standard
+        let previous = defaults.object(forKey: activeAlertFingerprintsKey)
+        defer {
+            if let previous { defaults.set(previous, forKey: activeAlertFingerprintsKey) }
+            else { defaults.removeObject(forKey: activeAlertFingerprintsKey) }
+        }
+        let gps = StoredGPSLocation(latitude: 42.7, longitude: 23.3, timestamp: Date(), displayName: "QA TEST — Sofia")
+        await deliverNewAlerts(alerts, gps: gps, center: .current())
+        await deliverNewAlerts(alerts, gps: gps, center: .current())
+    }
+    #endif
+
     private func fingerprint(for alert: WeatherAlert, gps: StoredGPSLocation) -> String {
         let latitudeBucket = (gps.latitude * 10).rounded() / 10
         let longitudeBucket = (gps.longitude * 10).rounded() / 10

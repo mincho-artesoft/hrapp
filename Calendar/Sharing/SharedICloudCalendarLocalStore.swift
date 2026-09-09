@@ -1061,9 +1061,11 @@ enum SharedICloudCalendarLocalStore {
         into localCalendar: EKCalendar,
         eventStore: EKEventStore
     ) throws -> Bool {
+        // A repeated acceptance returns metadata only. Preserve the events
+        // until the next full snapshot; [] explicitly clears the calendar.
+        guard let remoteEvents = sharedCalendar.events else { return false }
         var allMappings = eventIdentifiers
         var mapping = allMappings[sharedCalendar.id] ?? [:]
-        let remoteEvents = sharedCalendar.events ?? []
         let remoteIDs = Set(remoteEvents.map(\.id))
         var changed = false
 

@@ -378,17 +378,19 @@ enum EventShareEndpoint {
 
     /// The subscribable personal-calendar feed for a given feed identifier.
     static func feedURL(for feedID: String) -> URL? {
+        guard var components = URLComponents(url: httpFeedURL(for: feedID), resolvingAgainstBaseURL: false) else { return nil }
+        components.scheme = "webcal"
+        return components.url
+    }
+
+    /// Keep imports and refreshes on the same backend as the invitation.
+    static func httpFeedURL(for feedID: String) -> URL {
         #if DEBUG
-        var components = URLComponents(
-            url: CloudCalendarsAPI.baseURL,
-            resolvingAgainstBaseURL: false
-        )
-        components?.scheme = "webcal"
-        components?.path = "/f/\(feedID).ics"
-        return components?.url
+        let base = CloudCalendarsAPI.baseURL
         #else
-        return URL(string: "webcal://cal.cloud-calendars.com/f/\(feedID).ics")
+        let base = URL(string: "https://cal.cloud-calendars.com")!
         #endif
+        return base.appendingPathComponent("f").appendingPathComponent(feedID + ".ics")
     }
 }
 
@@ -915,10 +917,19 @@ enum SharedOutgoingEventTracker {
                 localEvent.urlString = remote.url ?? ""
                 localEvent.notes = remote.details?.notes ?? ""
                 localEvent.timeZoneIdentifier = remote.details?.timeZone ?? localEvent.timeZoneIdentifier
+                var availableAlarms = localEvent.alarms
                 localEvent.alarms = (remote.details?.alarms ?? []).compactMap {
                     guard let offset = $0.relativeOffset else { return nil }
+                    if let index = availableAlarms.firstIndex(where: { $0.relativeOffset == offset }) {
+                        return availableAlarms.remove(at: index)
+                    }
                     return AppLocalEventAlarm(relativeOffset: offset)
                 }
+                localEvent.videoCallURL = remote.details?.videoCallURL
+                localEvent.travelTime = remote.details?.travelTime
+                localEvent.recurrenceRules = remote.details?.recurrenceRules
+                localEvent.structuredLocation = remote.details?.structuredLocation
+                localEvent.attachments = remote.details?.attachments?.map(AppLocalEventAttachment.init)
                 localEvent.isCancelled = remote.isCancelled
                 AppLocalCalendarStore.shared.saveEvent(localEvent)
                 record.title = remote.title
@@ -1142,6 +1153,11 @@ enum SharedEventSyncManager {
     /// EventKit can emit several notifications for one Save. Debouncing keeps
     /// immediate sync responsive without producing duplicate API revisions.
     static func eventStoreDidChange() {
+        #if DEBUG
+        // Explicit E2E runs drive the real sync services at deterministic
+        // checkpoints; ordinary launches retain automatic debounced sync.
+        if LocalSharingE2ETest.requested { return }
+        #endif
         changeTask?.cancel()
         changeTask = Task { @MainActor in
             try? await Task.sleep(for: .milliseconds(700))
@@ -1382,7 +1398,7 @@ enum EventAppClipSharing {
                     organizerEmail: nil
                 ),
                 session: session,
-                receivedFeedId: existing?.feedID
+                receivedFeedId: calendar.origin == .received ? existing?.feedID : nil
             )
             if let feedID = existing?.feedID { return feedID }
             let grant = try await CloudCalendarsAPI.createGrant(

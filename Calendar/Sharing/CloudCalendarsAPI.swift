@@ -163,6 +163,18 @@ struct SharedEventAttachment: Codable, Equatable, Identifiable {
 }
 
 struct SharedEventDetails: Codable, Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        // Older local snapshots omit attachments; the API normalizes them to
+        // []. That wire-format difference is not an edit and must not trigger
+        // a stale owner upload over a Writer's canonical revision.
+        lhs.notes == rhs.notes && lhs.timeZone == rhs.timeZone
+            && lhs.availability == rhs.availability && lhs.alarms == rhs.alarms
+            && lhs.recurrenceRules == rhs.recurrenceRules
+            && lhs.structuredLocation == rhs.structuredLocation
+            && lhs.videoCallURL == rhs.videoCallURL && lhs.organizer == rhs.organizer
+            && lhs.attendees == rhs.attendees && lhs.travelTime == rhs.travelTime
+            && (lhs.attachments ?? []) == (rhs.attachments ?? [])
+    }
     let notes: String?
     let timeZone: String?
     let availability: Int
@@ -1345,6 +1357,19 @@ final class PendingEventInvitationManager: ObservableObject {
             try? await center.add(request)
         }
     }
+
+    #if DEBUG
+    /// Simulator audit: exercise production notification builders without
+    /// sending e-mails or changing pending invitations on the server.
+    func testNotificationDelivery(
+        events: [CloudCalendarsAPI.PendingEventInvitation],
+        calendars: [CloudCalendarsAPI.PendingICloudCalendarInvitation]
+    ) async {
+        guard LocalSharingE2ETest.requested else { return }
+        await postNotifications(for: events)
+        await postCalendarNotifications(for: calendars)
+    }
+    #endif
 
     private func postCalendarNotifications(
         for invitations: [CloudCalendarsAPI.PendingICloudCalendarInvitation]

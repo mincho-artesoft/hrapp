@@ -144,18 +144,22 @@ struct CalendarApp: App {
                         pendingSharedCalendar = calendar
                         return
                     }
-                    guard let payload = SharedEventImportPayload(url: url) else { return }
-                    SharedEventImportHandoffStore.clearPendingPayload()
-                    pendingSharedEvent = payload
+                    Task {
+                        guard let payload = await SharedEventImportPayload.resolve(url: url) else { return }
+                        SharedEventImportHandoffStore.clearPendingPayload()
+                        pendingSharedEvent = payload
+                    }
                 }
                 .onOpenURL { url in
                     if let calendar = SharedCalendarInvitationPayload(url: url) {
                         pendingSharedCalendar = calendar
                         return
                     }
-                    guard let payload = SharedEventImportPayload(url: url) else { return }
-                    SharedEventImportHandoffStore.clearPendingPayload()
-                    pendingSharedEvent = payload
+                    Task {
+                        guard let payload = await SharedEventImportPayload.resolve(url: url) else { return }
+                        SharedEventImportHandoffStore.clearPendingPayload()
+                        pendingSharedEvent = payload
+                    }
                 }
                 .sheet(item: $pendingSharedEvent) { payload in
                     SharedEventImportView(payload: payload)

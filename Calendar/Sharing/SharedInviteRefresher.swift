@@ -8,7 +8,6 @@ import Foundation
 /// keep whatever time it had the day they added it.
 @MainActor
 enum SharedInviteRefresher {
-    private static let feedHost = "cal.cloud-calendars.com"
 
     @discardableResult
     static func refreshAll() async -> Int {
@@ -228,7 +227,8 @@ enum SharedInviteRefresher {
 
     private static func fetchRemote(_ invite: SharedInviteTracker.Invite) async throws -> ICSEvent {
         guard var components = URLComponents(
-            string: "https://\(feedHost)/f/\(invite.feedID).ics"
+            url: EventShareEndpoint.httpFeedURL(for: invite.feedID),
+            resolvingAgainstBaseURL: false
         ) else { throw URLError(.badURL) }
 
         // Every foreground poll must see the latest S3 object. The query value

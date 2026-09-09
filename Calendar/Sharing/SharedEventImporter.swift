@@ -134,6 +134,14 @@ enum SharedEventImporter {
         guard canReadEvents else { return nil }
 
         let store = CalendarViewModel.shared.eventStore
+        // The invitation URL is a snapshot. Its title and dates can be stale
+        // after either participant edits the event, but its identity is stable.
+        if let eventID = payload.eventID,
+           let invite = SharedInviteTracker.invite(eventID: eventID),
+           invite.feedID == payload.feedID,
+           let event = store.event(withIdentifier: invite.localEventIdentifier) {
+            return event
+        }
         let predicate = store.predicateForEvents(
             withStart: payload.start.addingTimeInterval(-2),
             end: payload.end.addingTimeInterval(2),

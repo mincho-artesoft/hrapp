@@ -12,6 +12,7 @@ struct SharedEventQRScannerView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var errorMessage: String?
+    @State private var isResolving = false
 
     var body: some View {
         NavigationStack {
@@ -87,21 +88,28 @@ struct SharedEventQRScannerView: View {
     }
 
     private func handleScannedValue(_ rawValue: String) {
+        guard !isResolving else { return }
         let trimmed = rawValue.trimmingCharacters(in: .whitespacesAndNewlines)
         guard let url = URL(string: trimmed) else {
             errorMessage = String(localized: "This QR code does not contain a Cloud Calendars share.")
             return
         }
 
-        if let payload = SharedEventImportPayload(url: url) {
-            onScanned(.event(payload))
-        } else if let payload = SharedCalendarInvitationPayload(url: url) {
+        if let payload = SharedCalendarInvitationPayload(url: url) {
             onScanned(.calendar(payload))
-        } else {
-            errorMessage = String(localized: "This QR code does not contain a Cloud Calendars event or calendar.")
+            dismiss()
             return
         }
-        dismiss()
+        isResolving = true
+        Task {
+            defer { isResolving = false }
+            if let payload = await SharedEventImportPayload.resolve(url: url) {
+                onScanned(.event(payload))
+                dismiss()
+            } else {
+                errorMessage = String(localized: "This QR code does not contain a Cloud Calendars event or calendar.")
+            }
+        }
     }
 }
 

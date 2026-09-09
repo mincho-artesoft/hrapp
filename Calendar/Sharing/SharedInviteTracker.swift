@@ -51,6 +51,8 @@ enum SharedInviteTracker {
 
         var all = tracked()
         let previous = all[eventID]
+        let sameLocalCopy = previous?.localEventIdentifier == localEventIdentifier
+            && previous?.feedID == feedID
         let localSnapshot = CalendarViewModel.shared.eventStore
             .event(withIdentifier: localEventIdentifier)
             .flatMap(SharedOutgoingEventTracker.snapshot(for:))
@@ -60,10 +62,12 @@ enum SharedInviteTracker {
             localEventIdentifier: localEventIdentifier,
             isCancelled: previous?.isCancelled ?? false,
             isRevoked: false,
-            lastSequence: previous?.lastSequence ?? 0,
+            // A replacement copy starts with only URL fields. Force a full
+            // pull before it can upload edits against the old copy's baseline.
+            lastSequence: sameLocalCopy ? (previous?.lastSequence ?? -1) : -1,
             access: previous?.access ?? .reader,
-            lastSyncedSnapshot: previous?.lastSyncedSnapshot ?? localSnapshot,
-            receiptRecorded: previous?.receiptRecorded
+            lastSyncedSnapshot: sameLocalCopy ? (previous?.lastSyncedSnapshot ?? localSnapshot) : nil,
+            receiptRecorded: sameLocalCopy ? previous?.receiptRecorded : nil
         )
         save(all)
     }

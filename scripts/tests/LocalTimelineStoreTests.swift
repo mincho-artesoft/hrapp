@@ -23,16 +23,18 @@ struct SharedEventAttachment: Codable, Equatable {
 }
 enum CloudCalendarsAPI {
     enum EventAccess: String, Codable { case owner, writer, reader }
-    struct Alarm { var relativeOffset: Double? }
-    struct Details {
+    struct Alarm: Equatable { var relativeOffset: Double? }
+    struct Details: Equatable {
         var notes: String?; var videoCallURL: String?; var timeZone: String?
         var alarms: [Alarm]?; var travelTime: Double?
         var recurrenceRules: [SharedEventRecurrenceRule]?
         var structuredLocation: SharedEventLocation?; var attachments: [SharedEventAttachment]?
     }
-    struct RemoteEvent {
+    typealias SharedICloudCalendarEvent = RemoteEvent
+    struct RemoteEvent: Equatable {
         var id: String; var title: String; var startDate: Date?; var endDate: Date?
         var allDay: Bool; var location: String?; var url: String?; var details: Details?
+        var start: String { ISO8601DateFormatter().string(from: startDate ?? .distantPast) }
     }
     struct SharedICloudCalendar {
         var calendarKind: String; var ownerId: String; var calendarId: String

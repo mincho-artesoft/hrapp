@@ -50,6 +50,8 @@ enum LocalSharingE2ETest {
     static func run() async -> String {
         let env = ProcessInfo.processInfo.environment
         let action = env["LOCAL_SHARING_E2E_ACTION"] ?? "missing"
+        if action.hasPrefix("notifications-") { return await NotificationDeliveryE2ETest.run(action: action) }
+        if action.hasPrefix("matrix-") { return await SharingMatrixE2ETest.run(action: action) }
         do {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             try require(["seed", "accept", "owner-update", "receiver-check", "writer-role",
