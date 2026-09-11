@@ -1039,3 +1039,10 @@
 "Not signed in" = "Niet ingelogd";
 "Sign In Required" = "Inloggen vereist";
 "Ad" = "Advertentie";
+
+/* Sharing methods */
+"Email" = "E-mail";
+"Messages, AirDrop, and more" = "Berichten, AirDrop en meer";
+"Invite people and assign access" = "Nodig mensen uit en wijs toegang toe";
+"Let someone scan the calendar" = "Laat anderen de kalender scannen";
+"Let someone scan the event" = "Laat anderen de afspraak scannen";

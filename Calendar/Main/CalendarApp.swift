@@ -74,6 +74,8 @@ struct CalendarApp: App {
                 #if DEBUG
                 if LocalSharingE2ETest.requested {
                     LocalSharingE2ETestView()
+                } else if ScreenshotSharingCaptureView.isRequested {
+                    ScreenshotSharingCaptureView()
                 } else if EventSurfaceFullScreen.destination != nil {
                     EventSurfaceFullScreen()
                 } else if EventSurfaceSnapshotSupport.requested {
@@ -132,6 +134,17 @@ struct CalendarApp: App {
                     }
 
                     #if DEBUG
+                    if ScreenshotMode.isActive,
+                       UserDefaults.standard.bool(forKey: "ScreenshotLiveActivity") {
+                        Task { @MainActor in
+                            CalendarLiveActivityManager.shared.stop()
+                            try? await Task.sleep(for: .seconds(1))
+                            CalendarLiveActivityManager.shared.start()
+                            try? await Task.sleep(for: .seconds(2))
+                            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+                            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+                        }
+                    }
                     ScreenshotMode.stageCancelledInvite()
                     if let staged = ScreenshotMode.stagedInvite() {
                         pendingSharedEvent = staged

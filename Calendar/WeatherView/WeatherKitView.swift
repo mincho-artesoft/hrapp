@@ -1517,7 +1517,7 @@ struct WeatherKitView: View {
         case "sunset":
             return calendar.date(bySettingHour: 20, minute: 20, second: 0, of: Date())
         default:
-            return nil
+            return ScreenshotMode.referenceDate
         }
         #else
         nil
@@ -1976,6 +1976,7 @@ private struct HourlyCell: View {
         VStack(spacing: 8) {
             Text(item.hour)
                 .font(.system(size: 14, weight: .medium))
+                .fixedSize(horizontal: true, vertical: false)
                 .frame(height: 17)
 
             Image(systemName: item.symbol)
@@ -2001,7 +2002,7 @@ private struct HourlyCell: View {
                 .font(.system(size: 18, weight: .medium))
                 .frame(height: 22)
         }
-        .frame(minWidth: 25, idealWidth: 35, maxWidth: 45)
+        .frame(minWidth: 45)
         .contentShape(Rectangle())
     }
 }

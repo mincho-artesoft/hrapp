@@ -1039,3 +1039,10 @@
 "Not signed in" = "Belum masuk";
 "Sign In Required" = "Harus masuk";
 "Ad" = "Iklan";
+
+/* Sharing methods */
+"Email" = "Email";
+"Messages, AirDrop, and more" = "Pesan, AirDrop, dan lainnya";
+"Invite people and assign access" = "Undang orang dan atur akses";
+"Let someone scan the calendar" = "Izinkan orang memindai kalender";
+"Let someone scan the event" = "Izinkan orang memindai acara";

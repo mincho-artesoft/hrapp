@@ -12,6 +12,11 @@ class SubscriptionManager: ObservableObject {
 
     var subscriptionStatus: SubscriptionStatus {
         get {
+            #if DEBUG
+            // Render the ad-free app for explicit marketing captures. This
+            // neither changes persisted entitlement state nor buys a plan.
+            if ScreenshotMode.isActive { return .premium }
+            #endif
             return SubscriptionStatus(rawValue: subscriptionStatusRaw) ?? .base
         }
         set {

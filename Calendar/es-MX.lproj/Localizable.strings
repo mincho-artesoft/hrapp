@@ -128,8 +128,8 @@
 "Email to share" = "Correos electrónicos para compartir";
 "Permission:" = "Permiso:";
 "Add" = "Añadir";
-"Sharing:" = "Compartición:";
-"Done" = "He hecho";
+"Sharing:" = "Compartir:";
+"Done" = "Listo";
 
 "Error loading: %@" = "Carga de error: %@";
 "Error adding: %@" = "Añadir error: %@";
@@ -163,7 +163,7 @@
 /* UIMenuButtonRepresentable */
 
 /* YearCalendarView */
-"Close" = "Casi todo";
+"Close" = "Cerrar";
 
 /* AllEventsListView */
 "No calendar access." = "No hay acceso al calendario.";
@@ -215,9 +215,9 @@
 "Calendar" = "Calendario";
 "Subscriptions" = "Suscripciones";
 "Settings" = "Configuración";
-"Sharing" = "Compartición";
-"Live" = "Vivo";
-"Stop" = "Deje de hacerlo.";
+"Sharing" = "Compartir";
+"Live" = "En vivo";
+"Stop" = "Detener";
 "Calendar Live Activity" = "Actividad en vivo del calendario";
 "Get" = "¡Vamos!";
 "Color" = "El color";
@@ -227,7 +227,7 @@
 /* WeatherKitView */
 "Location access denied. Search for a city or grant access in Settings." = "Se niega el acceso a la ubicación.";
 "Cannot refresh. Location unknown." = "No puedo actualizar, ubicación desconocida.";
-"10-DAY FORECAST" = "Previsión de 10 días";
+"10-DAY FORECAST" = "Pronóstico de 10 días";
 "HighLowLabelFormat" = "H:%d° L:%d¿ Qué es eso ?";
 "tomorrow" = "mañana";
 "on_day" = "en el %@";
@@ -339,8 +339,8 @@
 "Partly Cloudy Night" = "Noche parcialmente nublada";
 "Clear Night" = "Noche clara";
 "Hazy" = "No está bien";
-"Today" = "Hoy en día";
-"Now" = "Ahora , ¿ qué ?";
+"Today" = "Hoy";
+"Now" = "Ahora";
 
 /* Cardinal and intercardinal directions */
 "cardinal.N"   = "N";
@@ -484,7 +484,7 @@
 
 /* Dynamic label titles */
 "Conditions" = "Condiciones";
-"UV Index" = "Indice UV";
+"UV Index" = "Índice UV";
 "Wind" = "Viento";
 "Precipitation" = "Precipitación";
 "Humidity" = "Humedad";
@@ -495,7 +495,7 @@
 "displayedCondition" = "se muestraCondición";
 
 /* Titles */
-"Forecast"                   = "Previsión";
+"Forecast" = "Pronóstico";
 "DailySummary"               = "Resumen diario";
 
 /* Current-day forecast */
@@ -604,7 +604,7 @@
 "Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
 
 /* Section titles */
-"Forecast_Title"               = "Previsión";
+"Forecast_Title" = "Pronóstico";
 "DailySummary_Title"           = "Resumen diario";
 
 /* Dew point */
@@ -748,11 +748,11 @@
 "Untitled" = "No tiene título";
 "Detail" = "Detalle";
 "Phase" = "Fase de la fase";
-"Weather" = "El tiempo";
+"Weather" = "Clima";
 "Select Your Email" = "Seleccione su correo electrónico";
 "Confirm" = "Confirmar";
 "Calendar name" = "Nombre del calendario";
-"Sharing: %@" = "Compartición: %@";
+"Sharing: %@" = "Compartir: %@";
 "Loading..." = "Cargando...";
 "Selected Location" = "Localización seleccionada";
 "Data provided by Apple Weather" = "Datos proporcionados por Apple Weather";
@@ -790,47 +790,47 @@
 
 /* Weather conditions and moon phases */
 "WeatherCondition.blizzard" = "Tormenta de nieve";
-"WeatherCondition.blowingDust" = "Polvo";
-"WeatherCondition.blowingSnow" = "La nieve sopla";
-"WeatherCondition.breezy" = "- ¿Qué es eso?";
-"WeatherCondition.clear" = "Despejo";
-"WeatherCondition.cloudy" = "No es muy bueno.";
-"WeatherCondition.drizzle" = "El agua";
-"WeatherCondition.flurries" = "Las flurries";
-"WeatherCondition.foggy" = "Noche";
-"WeatherCondition.freezingDrizzle" = "El agua congelada";
-"WeatherCondition.freezingRain" = "Una lluvia helada";
-"WeatherCondition.frigid" = "Frío";
-"WeatherCondition.hail" = "¡Hola!";
-"WeatherCondition.haze" = "El aire";
-"WeatherCondition.heavyRain" = "Fuerte lluvia";
-"WeatherCondition.heavySnow" = "Una fuerte nieve";
-"WeatherCondition.hot" = "¿Qué es?";
-"WeatherCondition.hurricane" = "El huracán";
+"WeatherCondition.blowingDust" = "Polvo en suspensión";
+"WeatherCondition.blowingSnow" = "Nieve con viento";
+"WeatherCondition.breezy" = "Brisa";
+"WeatherCondition.clear" = "Despejado";
+"WeatherCondition.cloudy" = "Nublado";
+"WeatherCondition.drizzle" = "Llovizna";
+"WeatherCondition.flurries" = "Nevadas ligeras";
+"WeatherCondition.foggy" = "Niebla";
+"WeatherCondition.freezingDrizzle" = "Llovizna helada";
+"WeatherCondition.freezingRain" = "Lluvia helada";
+"WeatherCondition.frigid" = "Frío intenso";
+"WeatherCondition.hail" = "Granizo";
+"WeatherCondition.haze" = "Neblina";
+"WeatherCondition.heavyRain" = "Lluvia intensa";
+"WeatherCondition.heavySnow" = "Nieve intensa";
+"WeatherCondition.hot" = "Calor intenso";
+"WeatherCondition.hurricane" = "Huracán";
 "WeatherCondition.isolatedThunderstorms" = "Tormentas aisladas";
-"WeatherCondition.mostlyClear" = "En su mayoría claro";
-"WeatherCondition.mostlyCloudy" = "Principalmente nublado";
-"WeatherCondition.partlyCloudy" = "En parte nublado";
-"WeatherCondition.rain" = "La lluvia";
-"WeatherCondition.scatteredThunderstorms" = "Tormentas de trueno dispersas";
-"WeatherCondition.sleet" = "El grano";
-"WeatherCondition.smoky" = "El humo";
+"WeatherCondition.mostlyClear" = "Mayormente despejado";
+"WeatherCondition.mostlyCloudy" = "Mayormente nublado";
+"WeatherCondition.partlyCloudy" = "Parcialmente nublado";
+"WeatherCondition.rain" = "Lluvia";
+"WeatherCondition.scatteredThunderstorms" = "Tormentas dispersas";
+"WeatherCondition.sleet" = "Aguanieve";
+"WeatherCondition.smoky" = "Humo";
 "WeatherCondition.snow" = "Nieve";
-"WeatherCondition.strongStorms" = "Una tormenta de granizo";
-"WeatherCondition.sunFlurries" = "Las Flurries del Sol";
-"WeatherCondition.sunShowers" = "Las duchas de sol";
-"WeatherCondition.thunderstorms" = "Tormenta de granizo";
+"WeatherCondition.strongStorms" = "Tormentas fuertes";
+"WeatherCondition.sunFlurries" = "Nieve ligera con sol";
+"WeatherCondition.sunShowers" = "Lluvia con sol";
+"WeatherCondition.thunderstorms" = "Tormentas eléctricas";
 "WeatherCondition.tropicalStorm" = "Tormenta tropical";
-"WeatherCondition.windy" = "Viento .";
-"WeatherCondition.wintryMix" = "Mezcla de invierno";
+"WeatherCondition.windy" = "Ventoso";
+"WeatherCondition.wintryMix" = "Mezcla invernal";
 "MoonPhase.new" = "Luna nueva";
-"MoonPhase.waxingCrescent" = "Creciente media luna";
-"MoonPhase.firstQuarter" = "El primer trimestre";
-"MoonPhase.waxingGibbous" = "Los Gibbous de cera";
+"MoonPhase.waxingCrescent" = "Luna creciente";
+"MoonPhase.firstQuarter" = "Cuarto creciente";
+"MoonPhase.waxingGibbous" = "Gibosa creciente";
 "MoonPhase.full" = "Luna llena";
-"MoonPhase.waningGibbous" = "Gibbous en desvanecimiento";
-"MoonPhase.lastQuarter" = "El último trimestre";
-"MoonPhase.waningCrescent" = "La luna media que se desvanece";
+"MoonPhase.waningGibbous" = "Gibosa menguante";
+"MoonPhase.lastQuarter" = "Cuarto menguante";
+"MoonPhase.waningCrescent" = "Luna menguante";
 "WeatherAlert.Preview.Tornado" = "Advertencia de tornado: busque refugio seguro inmediatamente.";
 "WeatherAlert.Preview.Source" = "Servicio meteorológico";
 "WeatherAlert.Preview.Region" = "Área de pronóstico";
@@ -922,7 +922,7 @@
 "Calendar invitation" = "Invitación al calendario";
 "Cancel for Everyone" = "Cancelación para todos";
 "Choose Reader, Writer, or Owner. Owners can also share this event and manage access." = "Seleccione Lector, Escritor o propietario. Los propietarios también pueden compartir este evento y administrar el acceso.";
-"Choose how to share this synced event." = "Elija cómo compartir este evento sincronizado.";
+"Choose how to share this synced event." = "Elige cómo compartir este evento sincronizado.";
 "Cloud Calendars couldn’t save the session on this device. Please try again." = "Cloud Calendars No pude guardar la sesión en este dispositivo.";
 "Cloud Calendars user" = "Cloud Calendars usuario";
 "Could not add: %@." = "No pude añadir: %@¿ Qué ?";
@@ -1041,3 +1041,13 @@
 "Not signed in" = "Sesión no iniciada";
 "Sign In Required" = "Es necesario iniciar sesión";
 "Ad" = "Anuncio";
+
+"Email" = "Correo";
+
+"Messages, AirDrop, and more" = "Mensajes, AirDrop y más";
+
+"Invite people and assign access" = "Invita personas y asigna permisos";
+
+"Let someone scan the event" = "Permite escanear el evento";
+
+"Let someone scan the calendar" = "Permite escanear el calendario";

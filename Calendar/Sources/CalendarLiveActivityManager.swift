@@ -143,7 +143,10 @@ final class CalendarLiveActivityManager: ObservableObject {
     nonisolated static func makeContentState(
         from snapshots: [CalendarWidgetStore.UpcomingEventSnapshot]
     ) -> CalendarLiveActivityAttributes.ContentState {
-        let now = Date()
+        var now = Date()
+        #if DEBUG
+        now = ScreenshotMode.referenceDate ?? now
+        #endif
         // Every ActivityKit request must keep its combined attributes and
         // content state below 4 KB. The UI only renders the next event; retain
         // two additional events so it can roll forward without sending the
@@ -151,7 +154,7 @@ final class CalendarLiveActivityManager: ObservableObject {
         let maximumEventCount = 3
 
         return CalendarLiveActivityAttributes.ContentState(
-            updatedAt: Date(),
+            updatedAt: now,
             events: snapshots
                 .filter { !$0.isAllDay && $0.startDate > now }
                 .sorted { lhs, rhs in

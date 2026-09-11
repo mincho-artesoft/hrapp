@@ -1039,3 +1039,10 @@
 "Not signed in" = "Não conectado";
 "Sign In Required" = "É necessário entrar";
 "Ad" = "Anúncio";
+
+/* Sharing methods */
+"Email" = "E-mail";
+"Messages, AirDrop, and more" = "Mensagens, AirDrop e mais";
+"Invite people and assign access" = "Convide pessoas e atribua acesso";
+"Let someone scan the calendar" = "Permita que outras pessoas escaneiem o calendário";
+"Let someone scan the event" = "Permita que outras pessoas escaneiem o evento";

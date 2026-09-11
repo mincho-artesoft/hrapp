@@ -1041,3 +1041,10 @@
 "Not signed in" = "Niste prijavljeni";
 "Sign In Required" = "Potrebna je prijava";
 "Ad" = "Oglas";
+
+/* Sharing methods */
+"Email" = "E-pošta";
+"Messages, AirDrop, and more" = "Sporočila, AirDrop in drugo";
+"Invite people and assign access" = "Povabite osebe in dodelite dostop";
+"Let someone scan the calendar" = "Omogočite skeniranje koledarja";
+"Let someone scan the event" = "Omogočite skeniranje dogodka";

@@ -1041,3 +1041,10 @@
 "Not signed in" = "সাইন ইন করা হয়নি";
 "Sign In Required" = "সাইন ইন প্রয়োজন";
 "Ad" = "বিজ্ঞাপন";
+
+/* Sharing methods */
+"Email" = "ইমেইল";
+"Messages, AirDrop, and more" = "মেসেজ, AirDrop এবং আরও অনেক কিছু";
+"Invite people and assign access" = "লোকেদের আমন্ত্রণ জানান ও অ্যাক্সেস দিন";
+"Let someone scan the calendar" = "অন্যদের ক্যালেন্ডারের কোড স্ক্যান করতে দিন";
+"Let someone scan the event" = "অন্যদের ইভেন্টের কোড স্ক্যান করতে দিন";

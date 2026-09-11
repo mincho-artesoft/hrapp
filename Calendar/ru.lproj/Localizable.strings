@@ -1035,3 +1035,10 @@
 "Not signed in" = "Вход не выполнен";
 "Sign In Required" = "Требуется вход";
 "Ad" = "Реклама";
+
+/* Sharing methods */
+"Email" = "Эл. почта";
+"Messages, AirDrop, and more" = "Сообщения, AirDrop и другое";
+"Invite people and assign access" = "Приглашайте людей и назначайте права доступа";
+"Let someone scan the calendar" = "Разрешите сканировать код календаря";
+"Let someone scan the event" = "Разрешите сканировать код события";

@@ -1041,3 +1041,10 @@
 "Not signed in" = "Neprihlásený";
 "Sign In Required" = "Vyžaduje sa prihlásenie";
 "Ad" = "Reklama";
+
+/* Sharing methods */
+"Email" = "E-mail";
+"Messages, AirDrop, and more" = "Správy, AirDrop a ďalšie";
+"Invite people and assign access" = "Pozvite ľudí a prideľte prístup";
+"Let someone scan the calendar" = "Umožnite naskenovanie kalendára";
+"Let someone scan the event" = "Umožnite naskenovanie udalosti";

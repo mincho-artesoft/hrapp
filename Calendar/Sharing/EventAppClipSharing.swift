@@ -44,7 +44,7 @@ private final class EventShareMailDelegate: NSObject, @preconcurrency MFMailComp
 }
 
 @MainActor
-private struct EventShareMethodPicker: View {
+struct EventShareMethodPicker: View {
     let eventTitle: String
     let onAppClip: () -> Void
     let onEmail: () -> Void

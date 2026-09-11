@@ -157,10 +157,15 @@ enum CalendarWidgetStore {
         let selectedCalendarIDs = CalendarViewModel.shared.selectedCalendarIDs
         saveCalendarSelectionSnapshot(selectedCalendarIDs)
 
+        var snapshotDate = Date()
+        #if DEBUG
+        snapshotDate = ScreenshotMode.referenceDate ?? snapshotDate
+        #endif
         let snapshots = makeUpcomingEventSnapshots(
             from: eventStore,
             selectedCalendarIDs: selectedCalendarIDs,
-            limit: limit
+            limit: limit,
+            now: snapshotDate
         )
 
         saveUpcomingEventSnapshots(snapshots)

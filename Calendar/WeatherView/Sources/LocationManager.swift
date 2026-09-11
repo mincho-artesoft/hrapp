@@ -18,7 +18,7 @@ class LocationManager: NSObject, ObservableObject {
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         #if DEBUG
-        if ScreenshotMode.isActive { return }
+        if ScreenshotMode.weatherPreviewCondition != nil { return }
         #endif
         manager.requestWhenInUseAuthorization()
     }
@@ -28,7 +28,7 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self.authorizationStatus = status
         #if DEBUG
-        if ScreenshotMode.isActive { return }
+        if ScreenshotMode.weatherPreviewCondition != nil { return }
         #endif
         
         print("🌦️ [WeatherAlerts] Location authorization changed: \(status.rawValue)")
@@ -52,7 +52,7 @@ extension LocationManager: @preconcurrency CLLocationManagerDelegate {
                          didUpdateLocations locations: [CLLocation]) {
 
         #if DEBUG
-        if ScreenshotMode.isActive { return }
+        if ScreenshotMode.weatherPreviewCondition != nil { return }
         #endif
 
         guard let location = locations.last else { return }

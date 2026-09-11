@@ -1040,3 +1040,10 @@
 "Not signed in" = "لم يتم تسجيل الدخول";
 "Sign In Required" = "يلزم تسجيل الدخول";
 "Ad" = "إعلان";
+
+/* Sharing methods */
+"Email" = "البريد الإلكتروني";
+"Messages, AirDrop, and more" = "الرسائل وAirDrop والمزيد";
+"Invite people and assign access" = "ادعُ أشخاصًا وحدد صلاحيات الوصول";
+"Let someone scan the calendar" = "اسمح للآخرين بمسح رمز التقويم";
+"Let someone scan the event" = "اسمح للآخرين بمسح رمز الحدث";

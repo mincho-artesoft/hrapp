@@ -64,6 +64,13 @@ class WeatherKitViewModel: ObservableObject {
     var locationTimeZone: TimeZone = .current
     @Published var locationCoordinate: CLLocationCoordinate2D?
 
+    private var observationDate: Date {
+        #if DEBUG
+        if let reference = ScreenshotMode.referenceDate { return reference }
+        #endif
+        return Date()
+    }
+
     // MARK: - Публични методи
 
     func setTimeZone(_ tz: TimeZone) {
@@ -83,9 +90,16 @@ class WeatherKitViewModel: ObservableObject {
         Task {
             do {
                 let loc = CLLocation(latitude: latitude, longitude: longitude)
+                var hourlyQuery: WeatherQuery<Forecast<HourWeather>> = .hourly
+                #if DEBUG
+                if let reference = ScreenshotMode.referenceDate {
+                    let start = reference.addingTimeInterval(-60 * 60)
+                    hourlyQuery = .hourly(startDate: start, endDate: start.addingTimeInterval(48 * 60 * 60))
+                }
+                #endif
                 let (current, hourlyData, dailyData, alerts) = try await weatherService.weather(
                     for: loc,
-                    including: .current, .hourly, .daily, .alerts
+                    including: .current, hourlyQuery, .daily, .alerts
                 )
 
                 print(
@@ -102,10 +116,16 @@ class WeatherKitViewModel: ObservableObject {
                 }
 
                 updateCurrentWeather(current)
+                #if DEBUG
+                if let reference = ScreenshotMode.referenceDate,
+                   let hour = hourlyData.forecast.last(where: { $0.date <= reference }) {
+                    updateScreenshotWeather(hour)
+                }
+                #endif
                 updateHourlyForecast(hourlyData.forecast)
                 updateDailyForecast(dailyData.forecast)
-                updateSolarEvents(dailyData.forecast, relativeTo: current.date)
-                updateCurrentPrecipitationType(hourlyData.forecast, relativeTo: current.date)
+                updateSolarEvents(dailyData.forecast, relativeTo: observationDate)
+                updateCurrentPrecipitationType(hourlyData.forecast, relativeTo: observationDate)
                 updateWeatherAlerts(alerts)
 
                 if isGPSLocation {
@@ -136,7 +156,7 @@ class WeatherKitViewModel: ObservableObject {
                     self.todayPrecipitationAmount = 0
                 }
 
-                if let nextHour = hourlyData.forecast.first(where: { $0.date > Date() }) {
+                if let nextHour = hourlyData.forecast.first(where: { $0.date > observationDate }) {
                     self.nextHourPrecipitationChance = nextHour.precipitationChance
                 } else {
                     self.nextHourPrecipitationChance = hourlyData.forecast.last?.precipitationChance
@@ -199,6 +219,42 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     // MARK: - Current Weather Conversion
+    #if DEBUG
+    /// Use the real WeatherKit hour matching the capture clock. This keeps the
+    /// native weather UI and widgets consistent without inventing a forecast.
+    private func updateScreenshotWeather(_ hour: HourWeather) {
+        let imperial = GlobalState.measurementSystem == "Imperial"
+        let temperatureUnit: UnitTemperature = GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol ? .fahrenheit : .celsius
+        currentTemp = hour.temperature.converted(to: temperatureUnit).value
+        currentFeelsLike = hour.apparentTemperature.converted(to: temperatureUnit).value
+        currentDewPoint = hour.dewPoint.converted(to: temperatureUnit).value
+        currentPressure = hour.pressure.converted(to: imperial ? .inchesOfMercury : .hectopascals).value
+        currentVisibility = hour.visibility.converted(to: imperial ? .miles : .kilometers).value
+        currentWindSpeed = hour.wind.speed.converted(to: imperial ? .milesPerHour : .kilometersPerHour).value
+        currentWindGust = hour.wind.gust?.converted(to: imperial ? .milesPerHour : .kilometersPerHour).value
+        currentWindDirection = Angle(degrees: hour.wind.direction.value)
+        currentHumidity = hour.humidity
+        currentUVIndex = hour.uvIndex.value
+        currentCloudCover = hour.cloudCover
+        currentPrecipitationAmount = hour.precipitationAmount.value / (imperial ? 25.4 : 1)
+        currentSymbol = hour.symbolName
+        currentConditionLocalizationKey = weatherConditionLocalizationKey(hour.condition)
+        currentCondition = localizedWeatherCondition(hour.condition)
+        switch hour.pressureTrend {
+        case .falling: pressureTrend = "Falling"
+        case .rising: pressureTrend = "Rising"
+        case .steady: pressureTrend = "Steady"
+        @unknown default: pressureTrend = "Unknown"
+        }
+        CalendarWidgetStore.saveWeatherSnapshot(
+            symbol: currentSymbol, condition: currentConditionLocalizationKey,
+            temperature: currentTemp, windDirectionDegrees: currentWindDirection?.degrees,
+            windDirectionText: windDirectionAbbreviation(for: currentWindDirection),
+            windSpeed: currentWindSpeed, pressure: currentPressure, uvIndex: currentUVIndex
+        )
+    }
+    #endif
+
     private func updateCurrentWeather(_ current: CurrentWeather) {
         // 1. Температура в °C или °F
         let tempUnit: UnitTemperature = (GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol)
@@ -316,7 +372,7 @@ class WeatherKitViewModel: ObservableObject {
         // 2. Определяме началото на текущия час
         var calendar = Calendar.current
         calendar.timeZone = locationTimeZone
-        let now = Date()
+        let now = observationDate
         guard let startOfHour = calendar.date(
             bySettingHour: calendar.component(.hour, from: now),
             minute: 0, second: 0, of: now
@@ -395,7 +451,7 @@ class WeatherKitViewModel: ObservableObject {
 
     // MARK: - Daily Forecast Conversion
     private func updateSolarEvents(_ days: [DayWeather], relativeTo observationDate: Date) {
-        let start = max(observationDate, Date())
+        let start = max(observationDate, self.observationDate)
         let end = start.addingTimeInterval(24 * 60 * 60)
 
         solarDayForecast = days.prefix(10).map { day in

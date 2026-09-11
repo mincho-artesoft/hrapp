@@ -1039,3 +1039,10 @@
 "Not signed in" = "未サインイン";
 "Sign In Required" = "サインインが必要です";
 "Ad" = "広告";
+
+/* Sharing methods */
+"Email" = "メール";
+"Messages, AirDrop, and more" = "メッセージ、AirDropなど";
+"Invite people and assign access" = "ユーザーを招待してアクセス権を設定";
+"Let someone scan the calendar" = "カレンダーのコードをスキャンして共有";
+"Let someone scan the event" = "イベントのコードをスキャンして共有";

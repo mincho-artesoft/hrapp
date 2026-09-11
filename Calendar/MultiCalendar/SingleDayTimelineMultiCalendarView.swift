@@ -2056,7 +2056,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
         }
 
         // 5) Червена „сега“ линия, ако днешният ден е в обхвата
+        #if DEBUG
+        let now = ScreenshotMode.referenceDate ?? Date()
+        #else
         let now = Date()
+        #endif
         let cal = Calendar.current
         let dayIndexNow = dayIndexFor(now)
 
@@ -2096,7 +2100,11 @@ public final class SingleDayTimelineMultiCalendarView: UIView, UIGestureRecogniz
 
     
     private func drawCurrentTimeLine(ctx: CGContext) {
+        #if DEBUG
+        let now = ScreenshotMode.referenceDate ?? Date()
+        #else
         let now = Date()
+        #endif
         let cal = Calendar.current
         let nowOnly = cal.startOfDay(for: now)
         let fromOnly = cal.startOfDay(for: fromDate)

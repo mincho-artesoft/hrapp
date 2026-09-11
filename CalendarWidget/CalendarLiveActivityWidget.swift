@@ -99,15 +99,15 @@ private struct CalendarLiveActivityAppIcon: View {
     }
 
     private var monthText: String {
-        formattedDate(Date(), format: "MMM").uppercased()
+        formattedDate(WidgetTimeZone.now, format: "MMM").uppercased()
     }
 
     private var weekdayText: String {
-        formattedDate(Date(), format: "EEE").uppercased()
+        formattedDate(WidgetTimeZone.now, format: "EEE").uppercased()
     }
 
     private var dayText: String {
-        roundedNumberText(Double(settings.calendar.component(.day, from: Date())))
+        roundedNumberText(Double(settings.calendar.component(.day, from: WidgetTimeZone.now)))
     }
 
     private var weatherSymbol: String {
@@ -441,7 +441,7 @@ private struct CalendarLiveActivityCountdownValueView: View {
 
     var body: some View {
         TimelineView(.periodic(from: Date(), by: 60)) { timeline in
-            Text(Self.localizedRemainingTime(until: targetDate, now: timeline.date, settings: settings))
+            Text(Self.localizedRemainingTime(until: targetDate, now: WidgetTimeZone.screenshotDate ?? timeline.date, settings: settings))
                 .monospacedDigit()
         }
     }
@@ -454,25 +454,46 @@ private struct CalendarLiveActivityCountdownValueView: View {
         let remaining = max(0, targetDate.timeIntervalSince(now))
         let value: Int
         let unitKey: String
+        let unit: NSCalendar.Unit
+        let unitSeconds: TimeInterval
 
         if remaining > 24 * 60 * 60 {
             value = Int(remaining / 86_400)
             unitKey = value == 1 ? "LiveActivityCountdownDayUnitOne" : "LiveActivityCountdownDayUnitOther"
+            unit = .day
+            unitSeconds = 86_400
         } else if remaining > 60 * 60 {
             value = Int(remaining / 3_600)
             unitKey = value == 1 ? "LiveActivityCountdownHourUnitOne" : "LiveActivityCountdownHourUnitOther"
+            unit = .hour
+            unitSeconds = 3_600
         } else {
             value = Int(remaining / 60)
             unitKey = value == 1 ? "LiveActivityCountdownMinuteUnitOne" : "LiveActivityCountdownMinuteUnitOther"
+            unit = .minute
+            unitSeconds = 60
+        }
+
+        // Foundation supplies native unit abbreviations and plural forms,
+        // including languages where a literal "min" is not meaningful.
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = settings.locale
+        let formatter = DateComponentsFormatter()
+        formatter.calendar = calendar
+        formatter.allowedUnits = unit
+        formatter.unitsStyle = .short
+        formatter.maximumUnitCount = 1
+        if let localized = formatter.string(from: Double(value) * unitSeconds) {
+            return localized
         }
 
         let format = NSLocalizedString(
             "LiveActivityCountdownFormat",
             comment: "Live Activity countdown format with value and localized unit"
         )
-        let unit = NSLocalizedString(unitKey, comment: "Live Activity countdown unit")
+        let fallbackUnit = NSLocalizedString(unitKey, comment: "Live Activity countdown unit")
 
-        return String(format: format, locale: settings.locale, value, unit)
+        return String(format: format, locale: settings.locale, value, fallbackUnit)
     }
 }
 
@@ -717,7 +738,7 @@ private extension CalendarLiveActivityAttributes.ContentState {
 }
 
 private extension Array where Element == CalendarLiveActivityEvent {
-    func futureEvents(now: Date = Date()) -> [CalendarLiveActivityEvent] {
+    func futureEvents(now: Date = WidgetTimeZone.now) -> [CalendarLiveActivityEvent] {
         self
             .filter { !$0.isAllDay && $0.startDate > now }
             .sorted {

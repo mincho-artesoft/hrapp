@@ -1039,3 +1039,10 @@
 "Not signed in" = "未登录";
 "Sign In Required" = "需要登录";
 "Ad" = "广告";
+
+/* Sharing methods */
+"Email" = "电子邮件";
+"Messages, AirDrop, and more" = "信息、AirDrop 等";
+"Invite people and assign access" = "邀请他人并分配访问权限";
+"Let someone scan the calendar" = "让他人扫码访问日历";
+"Let someone scan the event" = "让他人扫码访问日程";

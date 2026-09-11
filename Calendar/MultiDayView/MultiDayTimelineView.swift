@@ -1988,7 +1988,11 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
 
     
     private func drawCurrentTimeLine(ctx: CGContext) {
+        #if DEBUG
+        let now = ScreenshotMode.referenceDate ?? Date()
+        #else
         let now = Date()
+        #endif
         let cal = Calendar.current
         let nowOnly = cal.startOfDay(for: now)
         let fromOnly = cal.startOfDay(for: fromDate)

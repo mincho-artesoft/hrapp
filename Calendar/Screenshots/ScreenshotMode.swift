@@ -2,6 +2,7 @@ import Foundation
 import EventKit
 import SwiftUI
 import CoreLocation
+import UserNotifications
 
 #if DEBUG
 
@@ -119,6 +120,16 @@ enum ScreenshotMode {
 
     static var isActive: Bool { configuration != nil }
 
+    /// Pins the displayed calendar, widget and countdown clock in captures.
+    /// EventKit, WeatherKit and the system clock continue using real time.
+    static let referenceDate: Date? = {
+        guard isActive,
+              let value = UserDefaults.standard.string(forKey: "ScreenshotClock") else { return nil }
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        return formatter.date(from: value)
+    }()
+
     static var weatherPreviewSolarDetail: Bool {
         isActive && UserDefaults.standard.bool(forKey: "WeatherPreviewSolarDetail")
     }
@@ -141,6 +152,7 @@ enum ScreenshotMode {
             // normal launch must not inherit it, or the widget would keep
             // formatting in whichever city the last screenshot run staged.
             shared?.removeObject(forKey: sharedTimeZoneKey)
+            shared?.removeObject(forKey: "calendarWidget.screenshot.referenceDate")
             return
         }
 
@@ -150,6 +162,11 @@ enum ScreenshotMode {
         // this process is actually using is what keeps the Live Activity card
         // and the Lock Screen clock directly above it telling the same time.
         shared?.set(TimeZone.current.identifier, forKey: sharedTimeZoneKey)
+        if let referenceDate {
+            shared?.set(referenceDate, forKey: "calendarWidget.screenshot.referenceDate")
+        } else {
+            shared?.removeObject(forKey: "calendarWidget.screenshot.referenceDate")
+        }
 
         let defaults = UserDefaults.standard
 
@@ -159,8 +176,30 @@ enum ScreenshotMode {
         // screen had laid out - the exact failure waiting on it is meant to
         // remove.
         defaults.removeObject(forKey: readyKey)
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 
         defaults.set(configuration.screen.rootTab, forKey: "selectedTabRoot")
+
+        // Choose a real saved city through the same store as the city picker.
+        // WeatherKit still fetches live weather for these coordinates.
+        let coordinate = defaults.string(forKey: "ScreenshotWeatherCoordinate")?
+            .split(separator: ",").compactMap { Double($0) }
+        if configuration.screen == .weather,
+           let name = defaults.string(forKey: "ScreenshotWeatherCity"),
+           let latitude = coordinate?.first ?? defaults.string(forKey: "ScreenshotWeatherLatitude").flatMap(Double.init),
+           let longitude = (coordinate?.count == 2 ? coordinate?.last : nil)
+                ?? defaults.string(forKey: "ScreenshotWeatherLongitude").flatMap(Double.init),
+           (-90...90).contains(latitude), (-180...180).contains(longitude) {
+            let store = SavedWeatherRegionsStore.shared
+            let region = store.save(
+                name: name,
+                subtitle: defaults.string(forKey: "ScreenshotWeatherCountry"),
+                coordinate: .init(latitude: latitude, longitude: longitude),
+                timeZone: TimeZone.current
+            )
+            store.select(region.id)
+        }
 
         if configuration.screen == .weather,
            let condition = configuration.weatherPreviewCondition {
@@ -370,6 +409,48 @@ enum ScreenshotMode {
         }
         UserDefaults.standard.set(matching, forKey: "SelectedCalendarIDsKey")
         CalendarViewModel.shared.selectedCalendarIDs = Set(matching)
+    }
+}
+
+/// Captures the actual share forms with inert, in-memory sample data.
+/// Explicit launch arguments keep this entirely outside normal navigation.
+@MainActor
+struct ScreenshotSharingCaptureView: View {
+    static var scene: String {
+        UserDefaults.standard.string(forKey: "ScreenshotSharingScene") ?? ""
+    }
+
+    static var isRequested: Bool {
+        ScreenshotMode.isActive && ["event", "calendar"].contains(scene)
+    }
+
+    private var title: String {
+        UserDefaults.standard.string(forKey: "ScreenshotSharingTitle") ?? "Cloud Calendars"
+    }
+
+    var body: some View {
+        RootView()
+            .sheet(isPresented: .constant(true)) {
+                Group {
+                    if Self.scene == "event" {
+                        EventShareMethodPicker(eventTitle: title,
+                            onAppClip: {}, onEmail: {}, onQRCode: {}, onCancel: {})
+                    } else {
+                        ICloudCalendarSharingView(calendarID: "screenshot-calendar",
+                            calendarTitle: title, calendarColor: "#8E6BF0",
+                            timeZone: TimeZone.current.identifier, localCalendarIdentifier: "",
+                            originalOwnerID: "screenshot-owner", originalOwnerEmail: "sofia@example.com",
+                            isScreenshotPreview: true)
+                    }
+                }
+                .allowsHitTesting(false)
+                .presentationDetents([Self.scene == "event" ? .medium : .large])
+                .presentationDragIndicator(.visible)
+                .task {
+                    try? await Task.sleep(for: .milliseconds(800))
+                    ScreenshotMode.markReady()
+                }
+            }
     }
 }
 

@@ -1039,3 +1039,10 @@
 "Not signed in" = "Not signed in";
 "Sign In Required" = "Sign In Required";
 "Ad" = "Ad";
+
+/* Sharing methods */
+"Email" = "Email";
+"Messages, AirDrop, and more" = "Messages, AirDrop, and more";
+"Invite people and assign access" = "Invite people and assign access";
+"Let someone scan the calendar" = "Let someone scan the calendar";
+"Let someone scan the event" = "Let someone scan the event";

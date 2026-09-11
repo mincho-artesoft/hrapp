@@ -1039,3 +1039,10 @@
 "Not signed in" = "Ei kirjautuneena";
 "Sign In Required" = "Kirjautuminen vaaditaan";
 "Ad" = "Mainos";
+
+/* Sharing methods */
+"Email" = "Sähköposti";
+"Messages, AirDrop, and more" = "Viestit, AirDrop ja muut";
+"Invite people and assign access" = "Kutsu ihmisiä ja määritä käyttöoikeudet";
+"Let someone scan the calendar" = "Anna muiden skannata kalenteri";
+"Let someone scan the event" = "Anna muiden skannata tapahtuma";

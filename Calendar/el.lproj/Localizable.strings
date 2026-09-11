@@ -1039,3 +1039,10 @@
 "Not signed in" = "Δεν έχετε συνδεθεί";
 "Sign In Required" = "Απαιτείται σύνδεση";
 "Ad" = "Διαφήμιση";
+
+/* Sharing methods */
+"Email" = "Email";
+"Messages, AirDrop, and more" = "Μηνύματα, AirDrop και άλλα";
+"Invite people and assign access" = "Προσκαλέστε άτομα και ορίστε πρόσβαση";
+"Let someone scan the calendar" = "Επιτρέψτε τη σάρωση του ημερολογίου";
+"Let someone scan the event" = "Επιτρέψτε τη σάρωση του συμβάντος";

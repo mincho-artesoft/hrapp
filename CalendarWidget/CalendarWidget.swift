@@ -17,6 +17,17 @@ import WidgetKit
 enum WidgetTimeZone {
     static let overrideKey = "calendarWidget.global.timeZone"
 
+    static var screenshotDate: Date? {
+        #if DEBUG
+        return UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX")?
+            .object(forKey: "calendarWidget.screenshot.referenceDate") as? Date
+        #else
+        return nil
+        #endif
+    }
+
+    static var now: Date { screenshotDate ?? Date() }
+
     static var current: TimeZone {
         #if DEBUG
         if let identifier = UserDefaults(suiteName: "group.ARTE-SOFT.sandBOX")?
@@ -212,13 +223,13 @@ private struct CalendarIconProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (CalendarIconEntry) -> Void) {
-        completion(CalendarIconEntry(date: Date(), weather: WidgetSharedStore.snapshot(), settings: WidgetSharedStore.globalSettings(), events: WidgetSharedStore.upcomingEvents()))
+        completion(CalendarIconEntry(date: WidgetTimeZone.now, weather: WidgetSharedStore.snapshot(), settings: WidgetSharedStore.globalSettings(), events: WidgetSharedStore.upcomingEvents()))
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<CalendarIconEntry>) -> Void) {
         let now = Date()
         let settings = WidgetSharedStore.globalSettings()
-        let entry = CalendarIconEntry(date: now, weather: WidgetSharedStore.snapshot(), settings: settings, events: WidgetSharedStore.upcomingEvents())
+        let entry = CalendarIconEntry(date: WidgetTimeZone.screenshotDate ?? now, weather: WidgetSharedStore.snapshot(), settings: settings, events: WidgetSharedStore.upcomingEvents())
         let nextRefresh = Calendar.current.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(900)
         completion(Timeline(entries: [entry], policy: .after(nextRefresh)))
     }

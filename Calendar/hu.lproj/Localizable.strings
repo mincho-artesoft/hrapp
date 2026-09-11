@@ -1039,3 +1039,10 @@
 "Not signed in" = "Nincs bejelentkezve";
 "Sign In Required" = "Bejelentkezés szükséges";
 "Ad" = "Hirdetés";
+
+/* Sharing methods */
+"Email" = "E-mail";
+"Messages, AirDrop, and more" = "Üzenetek, AirDrop és egyebek";
+"Invite people and assign access" = "Hívjon meg másokat, és adjon hozzáférést";
+"Let someone scan the calendar" = "A naptár beolvasásának engedélyezése";
+"Let someone scan the event" = "Az esemény beolvasásának engedélyezése";

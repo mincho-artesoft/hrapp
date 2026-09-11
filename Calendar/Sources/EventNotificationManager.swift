@@ -185,6 +185,11 @@ final class EventNotificationManager: NSObject, ObservableObject {
     }
 
     private func requestAuthorization() {
+        #if DEBUG
+        // Marketing capture devices do not deliver reminders or show consent
+        // prompts. Ordinary launches retain the normal permission flow.
+        if ScreenshotMode.isActive { return }
+        #endif
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, error in
             print("🌦️ [WeatherAlerts] Notification authorization request completed: granted=\(granted), error=\(error?.localizedDescription ?? "none")")
             if let error {

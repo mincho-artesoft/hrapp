@@ -1034,3 +1034,10 @@
 "Not signed in" = "Non connecté";
 "Sign In Required" = "Connexion requise";
 "Ad" = "Publicité";
+
+/* Sharing methods */
+"Email" = "E-mail";
+"Messages, AirDrop, and more" = "Messages, AirDrop et plus";
+"Invite people and assign access" = "Invitez des personnes et définissez les accès";
+"Let someone scan the calendar" = "Permettez de scanner le calendrier";
+"Let someone scan the event" = "Permettez de scanner l’événement";

@@ -1041,3 +1041,10 @@
 "Not signed in" = "உள்நுழையவில்லை";
 "Sign In Required" = "உள்நுழைய வேண்டும்";
 "Ad" = "விளம்பரம்";
+
+/* Sharing methods */
+"Email" = "மின்னஞ்சல்";
+"Messages, AirDrop, and more" = "செய்திகள், AirDrop மற்றும் பல";
+"Invite people and assign access" = "நபர்களை அழைத்து அணுகலை வழங்கவும்";
+"Let someone scan the calendar" = "மற்றவர்கள் நாள்காட்டிக் குறியீட்டை ஸ்கேன் செய்ய அனுமதிக்கவும்";
+"Let someone scan the event" = "மற்றவர்கள் நிகழ்வுக் குறியீட்டை ஸ்கேன் செய்ய அனுமதிக்கவும்";

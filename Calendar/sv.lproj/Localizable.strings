@@ -1039,3 +1039,10 @@
 "Not signed in" = "Inte inloggad";
 "Sign In Required" = "Inloggning krävs";
 "Ad" = "Annons";
+
+/* Sharing methods */
+"Email" = "E-post";
+"Messages, AirDrop, and more" = "Meddelanden, AirDrop och mer";
+"Invite people and assign access" = "Bjud in personer och tilldela åtkomst";
+"Let someone scan the calendar" = "Låt andra skanna kalendern";
+"Let someone scan the event" = "Låt andra skanna händelsen";

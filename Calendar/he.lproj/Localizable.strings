@@ -1039,3 +1039,10 @@
 "Not signed in" = "לא מחובר";
 "Sign In Required" = "נדרשת התחברות";
 "Ad" = "מודעה";
+
+/* Sharing methods */
+"Email" = "דוא״ל";
+"Messages, AirDrop, and more" = "הודעות, AirDrop ועוד";
+"Invite people and assign access" = "הזמנת אנשים והקצאת הרשאות גישה";
+"Let someone scan the calendar" = "אפשרו לאחרים לסרוק את קוד היומן";
+"Let someone scan the event" = "אפשרו לאחרים לסרוק את קוד האירוע";

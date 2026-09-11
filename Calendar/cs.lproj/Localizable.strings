@@ -1039,3 +1039,10 @@
 "Not signed in" = "Nepřihlášeno";
 "Sign In Required" = "Je vyžadováno přihlášení";
 "Ad" = "Reklama";
+
+/* Sharing methods */
+"Email" = "E-mail";
+"Messages, AirDrop, and more" = "Zprávy, AirDrop a další";
+"Invite people and assign access" = "Pozvěte lidi a nastavte oprávnění";
+"Let someone scan the calendar" = "Umožněte naskenování kalendáře";
+"Let someone scan the event" = "Umožněte naskenování události";

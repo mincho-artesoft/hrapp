@@ -1039,3 +1039,10 @@
 "Not signed in" = "Giriş yapılmadı";
 "Sign In Required" = "Giriş gerekli";
 "Ad" = "Reklam";
+
+/* Sharing methods */
+"Email" = "E-posta";
+"Messages, AirDrop, and more" = "Mesajlar, AirDrop ve daha fazlası";
+"Invite people and assign access" = "Kişileri davet edin ve erişim atayın";
+"Let someone scan the calendar" = "Başkalarının takvimi taramasına izin verin";
+"Let someone scan the event" = "Başkalarının etkinliği taramasına izin verin";

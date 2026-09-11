@@ -1039,3 +1039,10 @@
 "Not signed in" = "साइन इन नहीं है";
 "Sign In Required" = "साइन इन आवश्यक है";
 "Ad" = "विज्ञापन";
+
+/* Sharing methods */
+"Email" = "ईमेल";
+"Messages, AirDrop, and more" = "संदेश, AirDrop और अन्य";
+"Invite people and assign access" = "लोगों को आमंत्रित करें और ऐक्सेस दें";
+"Let someone scan the calendar" = "दूसरों को कैलेंडर का कोड स्कैन करने दें";
+"Let someone scan the event" = "दूसरों को इवेंट का कोड स्कैन करने दें";

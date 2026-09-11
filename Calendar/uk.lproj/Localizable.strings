@@ -1041,3 +1041,10 @@
 "Not signed in" = "Вхід не виконано";
 "Sign In Required" = "Потрібен вхід";
 "Ad" = "Реклама";
+
+/* Sharing methods */
+"Email" = "Ел. пошта";
+"Messages, AirDrop, and more" = "Повідомлення, AirDrop тощо";
+"Invite people and assign access" = "Запрошуйте людей і надавайте доступ";
+"Let someone scan the calendar" = "Дозвольте сканувати код календаря";
+"Let someone scan the event" = "Дозвольте сканувати код події";

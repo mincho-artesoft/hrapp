@@ -12,6 +12,18 @@ struct ICloudCalendarSharingView: View {
     let originalOwnerID: String?
     let originalOwnerEmail: String?
 
+    #if DEBUG
+    var isScreenshotPreview = false
+    #endif
+
+    private var screenshotPreviewEnabled: Bool {
+        #if DEBUG
+        return isScreenshotPreview && ScreenshotMode.isActive
+        #else
+        return false
+        #endif
+    }
+
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var cloudAccountManager = CloudAccountManager.shared
     @State private var recipients: [CloudCalendarsAPI.ICloudCalendarRecipient] = []
@@ -30,7 +42,7 @@ struct ICloudCalendarSharingView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if CalendarFeedSession.existing == nil {
+                if CalendarFeedSession.existing == nil && !screenshotPreviewEnabled {
                     Form {
                         Section {
                             CloudAccountSignInContent()
@@ -55,10 +67,23 @@ struct ICloudCalendarSharingView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") { dismiss() }
-                    .disabled(isSaving || isLoading || CalendarFeedSession.existing == nil)
+                    .disabled(isSaving || isLoading || (CalendarFeedSession.existing == nil && !screenshotPreviewEnabled))
                 }
             }
             .task {
+                #if DEBUG
+                if screenshotPreviewEnabled {
+                    // In-memory samples in the production form. No account,
+                    // calendar sharing record or invitation is created.
+                    recipients = [
+                        .init(id: "sample-diego", userId: "sample-diego", email: "diego@example.com",
+                              access: .writer, isPending: false, invitedAt: nil, acceptedAt: nil, updatedAt: nil),
+                        .init(id: "sample-elena", userId: "sample-elena", email: "elena@example.com",
+                              access: .reader, isPending: false, invitedAt: nil, acceptedAt: nil, updatedAt: nil)
+                    ]
+                    return
+                }
+                #endif
                 await load()
                 while !Task.isCancelled {
                     try? await Task.sleep(for: .seconds(20))
@@ -399,6 +424,7 @@ struct ICloudCalendarSharingView: View {
 
     @MainActor
     private func load(showProgress: Bool = true) async {
+        guard !screenshotPreviewEnabled else { return }
         guard let session = CalendarFeedSession.existing else {
             recipients = []
             loadedRecipients = []
