@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SettingsSheetView: View {
     @ObservedObject private var appPreferences = AppPreferences.shared
+    @ObservedObject private var consentManager = ConsentManager.shared
     @ObservedObject private var notificationManager = EventNotificationManager.shared
     @ObservedObject private var invitationManager = PendingEventInvitationManager.shared
     @State private var weatherAlertNotificationsEnabled =
@@ -156,6 +157,29 @@ struct SettingsSheetView: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.vertical, DraggableMenuContentLayout.verticalInset)
+
+                // Only where consent was asked for in the first place. Google
+                // requires a way back into the form there, and there is
+                // nothing to manage anywhere else.
+                if consentManager.isPrivacyOptionsRequired {
+                    Divider()
+
+                    Button {
+                        consentManager.presentPrivacyOptionsForm()
+                    } label: {
+                        HStack(spacing: 0) {
+                            preferenceLabel("Ad Privacy", icon: "hand.raised")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
+                            Image(systemName: "chevron.forward")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.vertical, DraggableMenuContentLayout.verticalInset)
+                }
         }
     }
 

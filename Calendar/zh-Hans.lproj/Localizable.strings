@@ -1046,3 +1046,6 @@
 "Invite people and assign access" = "邀请他人并分配访问权限";
 "Let someone scan the calendar" = "让他人扫码访问日历";
 "Let someone scan the event" = "让他人扫码访问日程";
+
+/* Ad privacy */
+"Ad Privacy" = "广告隐私";

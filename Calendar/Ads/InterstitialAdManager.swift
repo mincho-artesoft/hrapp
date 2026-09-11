@@ -22,6 +22,10 @@ final class InterstitialAdManager: NSObject, FullScreenContentDelegate, Observab
     // В InterstitialAdManager.swift
 
     func loadAd() {
+        // No request goes out without a consent string to carry. `init` calls
+        // this before consent is in; the launch path calls it again after.
+        guard ConsentManager.shared.canRequestAds else { return }
+
         // 1. Ако вече имаме заредена реклама, не правим нищо.
         if interstitial != nil {
             print("ℹ️ Interstitial ad already loaded/loading")

@@ -1046,3 +1046,6 @@
 "Invite people and assign access" = "Kutsu ihmisiä ja määritä käyttöoikeudet";
 "Let someone scan the calendar" = "Anna muiden skannata kalenteri";
 "Let someone scan the event" = "Anna muiden skannata tapahtuma";
+
+/* Ad privacy */
+"Ad Privacy" = "Mainosten tietosuoja";

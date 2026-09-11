@@ -1043,3 +1043,6 @@
 "Invite people and assign access" = "Personen einladen und Zugriff vergeben";
 "Let someone scan the calendar" = "Kalender per QR-Code scannen lassen";
 "Let someone scan the event" = "Ereignis per QR-Code scannen lassen";
+
+/* Ad privacy */
+"Ad Privacy" = "Anzeigen-Datenschutz";

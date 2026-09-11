@@ -1047,3 +1047,6 @@
 "Invite people and assign access" = "ادعُ أشخاصًا وحدد صلاحيات الوصول";
 "Let someone scan the calendar" = "اسمح للآخرين بمسح رمز التقويم";
 "Let someone scan the event" = "اسمح للآخرين بمسح رمز الحدث";
+
+/* Ad privacy */
+"Ad Privacy" = "خصوصية الإعلانات";

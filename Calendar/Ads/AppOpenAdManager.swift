@@ -21,6 +21,8 @@ class AppOpenAdManager: NSObject, FullScreenContentDelegate {
     
   /// Зарежда нов спот (ако няма или е експирал).
   func loadAd() async {
+    // No request goes out without a consent string to carry.
+    guard ConsentManager.shared.canRequestAds else { return }
     guard !isLoadingAd, !isAdAvailable() else { return }
     isLoadingAd = true
     do {

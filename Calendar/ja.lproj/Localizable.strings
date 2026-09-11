@@ -1046,3 +1046,6 @@
 "Invite people and assign access" = "ユーザーを招待してアクセス権を設定";
 "Let someone scan the calendar" = "カレンダーのコードをスキャンして共有";
 "Let someone scan the event" = "イベントのコードをスキャンして共有";
+
+/* Ad privacy */
+"Ad Privacy" = "広告のプライバシー";

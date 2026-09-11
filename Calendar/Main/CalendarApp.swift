@@ -109,8 +109,15 @@ struct CalendarApp: App {
 
                     // Логика за реклами
                     if SubscriptionManager.shared.subscriptionStatus == .base {
-                        MobileAds.shared.start(completionHandler: nil)
                         Task {
+                            // The consent record is refreshed, and any form
+                            // owed is answered, before the first ad request
+                            // goes out. Outside the EEA nothing is shown and
+                            // this returns almost at once.
+                            await ConsentManager.shared.gatherConsentIfNeeded()
+                            guard ConsentManager.shared.canRequestAds else { return }
+
+                            MobileAds.shared.start(completionHandler: nil)
                             await AppOpenAdManager.shared.loadAd()
                             InterstitialAdManager.shared.loadAd()
                         }
@@ -213,7 +220,12 @@ struct CalendarApp: App {
 
                 // ПРОВЕРКА ЗА РЕКЛАМИ
                 if SubscriptionManager.shared.subscriptionStatus == .base {
-                    Task { await AppOpenAdManager.shared.loadAd() }
+                    Task {
+                        // Retry for the launch above if the window was not up
+                        // yet, and the only chance on a later foreground.
+                        await ConsentManager.shared.gatherConsentIfNeeded()
+                        await AppOpenAdManager.shared.loadAd()
+                    }
 
                     // ✅ Показваме само ако НЕ е първо стартиране.
                     if hasLaunchedBefore {

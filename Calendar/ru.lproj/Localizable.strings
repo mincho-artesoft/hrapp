@@ -1042,3 +1042,6 @@
 "Invite people and assign access" = "Приглашайте людей и назначайте права доступа";
 "Let someone scan the calendar" = "Разрешите сканировать код календаря";
 "Let someone scan the event" = "Разрешите сканировать код события";
+
+/* Ad privacy */
+"Ad Privacy" = "Конфиденциальность рекламы";

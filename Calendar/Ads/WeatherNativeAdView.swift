@@ -117,6 +117,12 @@ private struct WeatherNativeAdRepresentable: UIViewRepresentable {
             )
             loader.delegate = self
             adLoader = loader
+
+            // No request goes out without a consent string to carry.
+            guard ConsentManager.shared.canRequestAds else {
+                didFail = true
+                return
+            }
             loader.load(Request())
         }
 
