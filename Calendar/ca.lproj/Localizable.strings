@@ -55,6 +55,7 @@
 "Measurement Units" = "Unitats de mesura";
 "Date Format" = "Format de data";
 "Time Format" = "Format d’hora";
+"First Day of Week" = "Primer dia de la setmana";
 "System" = "Sistema";
 "Metric" = "Mètric";
 "Imperial" = "Imperial";
@@ -68,7 +69,7 @@
 "No email was provided." = "No s'ha proporcionat cap correu electrònic.";
 "Please enter a valid email to continue." = "Introdueix un correu electrònic válid per continuar.";
 "Your email" = "El teu correu electrònic";
-"Save" = "Salvar";
+"Save" = "Desa";
 "Login" = "Enregistrament";
 "Logout" = "Llogut";
 
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "No sincronizat Google calendarEncara no.";
 "Microsoft calendars" = "Microsoft calendarS";
 "No synced Microsoft calendars yet." = "No sincronizat Microsoft calendarEncara no.";
-"Sign out" = "Sorteix";
+"Sign out" = "Tancar sessió";
 "Add iCloud Calendar" = "Ajuda iCloud Calendari";
 "Share calendars with iCloud Calendar" = "Compartir calendaris amb iCloud Calendari";
 "Sign in with Google" = "Inscriure-se amb Google";
@@ -129,7 +130,7 @@
 "Permission:" = "Permissió:";
 "Add" = "Ajuda";
 "Sharing:" = "Compartir:";
-"Done" = "Feit";
+"Done" = "Fet";
 
 "Error loading: %@" = "Carregament d'errors: %@";
 "Error adding: %@" = "Errors de afegir: %@";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "FASE LUNAL";
-"Moonrise" = "L'ascendència de la lluna";
-"Moonset" = "Lunset";
+"Moonrise" = "Sortida de la lluna";
+"Moonset" = "Posta de la lluna";
 "Next %@" = "Seguint %@";
 "Data unavailable" = "Dades no disponibles";
 "%d day" = "%d dia";
@@ -718,9 +719,6 @@
 "year"   = "any";
 "years"  = "anys";
 
-/* YearMonthMiniView */
-"weekday.headers" = "S,M,T,W,T,F,S";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";
 "Unit_Speed_mph" = "milhas";
@@ -857,8 +855,8 @@
 "You can change your plan or billing period at any time." = "Pots canviar el teu pla o el termini de facturació en qualsevol moment.";
 "Invites" = "Invitacions";
 "Cancelled" = "Cancel·la";
-"Shared by me" = "Comparteix per mi";
-"Shared with me" = "Compartiu amb mi";
+"Shared by me" = "Compartit per mi";
+"Shared with me" = "Compartit amb mi";
 "No shared events yet." = "Encara no hi ha esdeveniments compartits.";
 "No one has shared an event with you yet." = "Ningú ha compartit un esdeveniment amb tu encara.";
 "Events you send from the share sheet appear here." = "Els esdeveniments que envia de la ficha de les accions apareixen aquí.";
@@ -882,9 +880,9 @@
 "App Clip sharing account" = "App Clip Compartir comptes";
 "Required for synced App Clip events and recovery after reinstalling." = "Requisitos per a la sincronizació App Clip Eventos i recuperació després de la reinstal·lació.";
 "Continue with Google" = "Continuar amb Google";
-"Sign Out" = "Inscriure-se";
+"Sign Out" = "Tancar sessió";
 "Signing in…" = "Signar-se...";
-"Sign In" = "Inscriure-se";
+"Sign In" = "Iniciar sessió";
 "Sign in to continue" = "Inscriure-se per continuar";
 "Your account keeps this shared event recoverable after reinstalling the app." = "El teu compte manté aquest esdeveniment compartit recuperable després de reinstal·lar l'aplicació.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Aquest compte és propietari App Clip Comparteix i les restaura després de la reinstal·lació.";

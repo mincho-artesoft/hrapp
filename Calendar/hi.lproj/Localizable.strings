@@ -55,6 +55,7 @@
 "Measurement Units" = "माप की इकाइयाँ";
 "Date Format" = "दिनांक प्रारूप";
 "Time Format" = "समय प्रारूप";
+"First Day of Week" = "सप्ताह का पहला दिन";
 "System" = "सिस्टम";
 "Metric" = "मीट्रिक";
 "Imperial" = "इंपीरियल";
@@ -717,9 +718,6 @@
 "months" = "महीने";
 "year"   = "वर्ष";
 "years"  = "साल";
-
-/* YearMonthMiniView */
-"weekday.headers" = "र,सो,मं,बु,गु,शु,श";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

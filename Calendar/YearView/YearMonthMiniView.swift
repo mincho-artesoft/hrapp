@@ -6,21 +6,25 @@ struct YearMonthMiniView: View {
     let width: CGFloat
     let onMonthTapped: (Date) -> Void
 
+    @Environment(\.locale) private var locale
+
     private var calendar: Calendar {
         var cal = Calendar.current
+        cal.locale = locale
         cal.firstWeekday = GlobalState.firstWeekday
-        if !GlobalState.region.isEmpty {
-            cal.locale = Locale(identifier: GlobalState.region)
-        }
         return cal
     }
 
-    // 1) Зареждаме CSV от Localizable.strings
-    private var rawSymbols: [String] {
-        let csv = NSLocalizedString("weekday.headers", comment: "Comma-separated 1-letter weekday symbols, starting от Sunday")
-        return csv
-            .split(separator: ",")
-            .map { String($0) }
+    /// Едно-буквените заглавия на колоните идват от символите на самия
+    /// календар, а не от преводен CSV. Преводът можеше да загуби компонент
+    /// или да раздели с не-ASCII запетая, а `ForEach(0..<7)` четеше отвъд
+    /// края на масива — точно това беше крашът в 1.7.1.
+    private var weekdayHeaders: [String] {
+        let cal = calendar
+        let symbols = cal.veryShortWeekdaySymbols
+        guard symbols.count == 7 else { return Array(repeating: "", count: 7) }
+        let idx = min(max(cal.firstWeekday - 1, 0), 6)
+        return Array(symbols[idx...] + symbols[..<idx])
     }
 
     var body: some View {
@@ -37,23 +41,20 @@ struct YearMonthMiniView: View {
 
                 let allGridDays = calendar.generateDatesForMonthGridAligned(for: monthDate)
 
-                // 2) Завъртаме rawSymbols така, че първият елемент да е съобразен с firstWeekday
-                let headers = rawSymbols.rotated(by: calendar.firstWeekday - 1)
-
                 LazyVGrid(
                     columns: Array(repeating: GridItem(.fixed(width == 180 ? 24 : 21), spacing: 1), count: 7),
                     spacing: 1
                 ) {
-                    // 3) Header на дните
-                    ForEach(0..<7) { i in
-                        Text(headers[i])
+                    // 1) Header на дните
+                    ForEach(Array(weekdayHeaders.enumerated()), id: \.offset) { _, symbol in
+                        Text(symbol)
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .adaptiveSingleLine(minimumScale: 0.4)
                             .frame(maxWidth: .infinity)
                     }
 
-                    // 4) Дни от месеца
+                    // 2) Дни от месеца
                     ForEach(allGridDays, id: \.self) { day in
                         let dayKey = calendar.startOfDay(for: day)
                         let dayEvents = eventsByDay[dayKey] ?? []

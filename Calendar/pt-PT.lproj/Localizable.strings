@@ -55,6 +55,7 @@
 "Measurement Units" = "Unidades de medida";
 "Date Format" = "Formato da data";
 "Time Format" = "Formato da hora";
+"First Day of Week" = "Primeiro dia da semana";
 "System" = "Sistema";
 "Metric" = "Métrico";
 "Imperial" = "Imperial";
@@ -68,7 +69,7 @@
 "No email was provided." = "Não foi fornecido nenhum e-mail.";
 "Please enter a valid email to continue." = "Por favor, insira um e-mail válido para continuar.";
 "Your email" = "O teu e-mail";
-"Save" = "Salvar";
+"Save" = "Guardar";
 "Login" = "Login";
 "Logout" = "Logout";
 
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "Não sincronizado Google calendarAinda não.";
 "Microsoft calendars" = "Microsoft calendarS.";
 "No synced Microsoft calendars yet." = "Não sincronizado Microsoft calendarAinda não.";
-"Sign out" = "Assina-te.";
+"Sign out" = "Terminar sessão";
 "Add iCloud Calendar" = "Adicionar iCloud Calendário";
 "Share calendars with iCloud Calendar" = "Compartilhar calendários com iCloud Calendário";
 "Sign in with Google" = "Assine com Google";
@@ -186,7 +187,7 @@
 "Join Meeting" = "Participe das reuniões";
 "Edit" = "Edição";
 "Duplicate" = "Duplicado";
-"Delete" = "Excluir";
+"Delete" = "Eliminar";
 "Share" = "Compartilhar";
 "Add to Google Meet" = "Adicionar Google - Conheça-me .";
 "Add to Microsoft Teams" = "Adicionar Microsoft Teams";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "FASE LUNA";
-"Moonrise" = "A ascensão da lua";
-"Moonset" = "Lunar";
+"Moonrise" = "Nascer da Lua";
+"Moonset" = "Pôr da Lua";
 "Next %@" = "Próximo %@";
 "Data unavailable" = "Não disponíveis dados";
 "%d day" = "%d dia";
@@ -718,9 +719,6 @@
 "year"   = "ano";
 "years"  = "anos";
 
-/* YearMonthMiniView */
-"weekday.headers" = "S, M, T, W, T, F, S";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";
 "Unit_Speed_mph" = "milhas";
@@ -857,8 +855,8 @@
 "You can change your plan or billing period at any time." = "Pode alterar o seu plano ou o seu período de faturamento a qualquer momento.";
 "Invites" = "Convidados";
 "Cancelled" = "Cancelação";
-"Shared by me" = "Compartilhado por mim";
-"Shared with me" = "Compartilhado comigo";
+"Shared by me" = "Partilhado por mim";
+"Shared with me" = "Partilhado comigo";
 "No shared events yet." = "Ainda não há eventos compartilhados.";
 "No one has shared an event with you yet." = "Ainda ninguém compartilhou um evento contigo.";
 "Events you send from the share sheet appear here." = "Os eventos que enviam da ficha de ações aparecem aqui.";
@@ -882,9 +880,9 @@
 "App Clip sharing account" = "App Clip Conta de partilha";
 "Required for synced App Clip events and recovery after reinstalling." = "Requerido para sincronização App Clip eventos e recuperação após a reinstalação.";
 "Continue with Google" = "Continuar com Google";
-"Sign Out" = "Inscreva-se";
+"Sign Out" = "Terminar sessão";
 "Signing in…" = "A assinar...";
-"Sign In" = "Inscrever-se";
+"Sign In" = "Iniciar sessão";
 "Sign in to continue" = "Inscreva-se para continuar";
 "Your account keeps this shared event recoverable after reinstalling the app." = "A sua conta mantém este evento compartilhado recuperável após a reinstalação do aplicativo.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Esta conta é proprietária App Clip Compartilha e restaura após a reinstalação.";

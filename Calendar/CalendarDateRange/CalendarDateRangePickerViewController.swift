@@ -277,7 +277,10 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
                                   numberOfItemsInSection section: Int) -> Int {
            let weekdayRowItems = 7
            // Вашата настройка за първи ден на седмицата (1 = неделя … 7 = събота)
-           let firstWeekday = GlobalState.firstWeekday
+           // Клампваме: `UserDefaults.integer` дава 0, когато ключът липсва,
+           // а суровата аритметика по-долу не минава през Calendar, който би
+           // отхвърлил стойност извън 1...7.
+           let firstWeekday = min(max(GlobalState.firstWeekday, 1), 7)
            // кой е денят на седмицата за 1-во число на currentMonth
            let weekdayOfFirst = getWeekday(date: currentMonth) // 1…7
            // колко празни клетки преди 1-во число
@@ -296,7 +299,10 @@ extension CalendarDateRangePickerViewController: UICollectionViewDataSource, UIC
            cell.reset()
            cell.selectedColor = self.selectedColor
 
-           let firstWeekday = GlobalState.firstWeekday
+           // Клампваме: `UserDefaults.integer` дава 0, когато ключът липсва,
+           // а суровата аритметика по-долу не минава през Calendar, който би
+           // отхвърлил стойност извън 1...7.
+           let firstWeekday = min(max(GlobalState.firstWeekday, 1), 7)
            let weekdayOfFirst = getWeekday(date: currentMonth)
            let blankItems = (weekdayOfFirst - firstWeekday + 7) % 7
 

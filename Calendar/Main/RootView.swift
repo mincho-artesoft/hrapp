@@ -503,6 +503,7 @@ struct RootView: View {
                             // change so none of its components retain the
                             // previous semantic direction or localized labels.
                             .environment(\.locale, appPreferences.presentationLocale)
+                            .environment(\.calendar, appPreferences.presentationCalendar)
                             .environment(\.layoutDirection, appPreferences.layoutDirection)
                             .id(
                                 "draggable-\(appPreferences.languageIdentifier)-"
@@ -835,6 +836,16 @@ struct RootView: View {
         .frame(maxWidth: .infinity)
     }
 
+    /// Brightness ceiling for the drawer tint over the weather scene, applied
+    /// before `backgroundDimmingOpacity` multiplies it by a further 0.65.
+    /// The drawer renders in the `.dark` colour scheme, so its section tabs and
+    /// labels are white: a pale daytime sky washed them out at the untouched
+    /// tint (measured 0.49), while clamping all the way to the saved-regions
+    /// navy turned the drawer black and threw the sky's colour away. 0.28 lands
+    /// the composited surface near 0.18 — roughly 4.6:1 against white — and
+    /// keeps the sky's hue visible.
+    private static let weatherMenuMaxBrightness: Double = 0.28
+
     private var weatherDraggableMenuBackground: Color? {
         guard selectedTab == 6 else { return nil }
 
@@ -842,6 +853,7 @@ struct RootView: View {
             return Color(red: 0.03, green: 0.13, blue: 0.24)
         }
 
+        // Keep the sky's hue, only darken it enough to read white text on.
         return WeatherSceneBackground.bottomSkyColor(
             conditionKey: weatherMenuViewModel.currentConditionLocalizationKey,
             symbolName: weatherMenuViewModel.currentSymbol,
@@ -849,6 +861,7 @@ struct RootView: View {
             sunset: weatherMenuViewModel.sunsetTime,
             observationDate: weatherMenuObservationDate
         )
+        .darkened(toMaxBrightness: Self.weatherMenuMaxBrightness)
     }
 
     private var weatherMenuObservationDate: Date {

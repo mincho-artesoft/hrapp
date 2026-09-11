@@ -55,6 +55,7 @@
 "Measurement Units" = "मोजमापाची एकके";
 "Date Format" = "दिनांक स्वरूप";
 "Time Format" = "वेळेचे स्वरूप";
+"First Day of Week" = "आठवड्याचा पहिला दिवस";
 "System" = "सिस्टम";
 "Metric" = "मेट्रिक";
 "Imperial" = "इम्पीरियल";
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "कोणत्याही समक्रमण नाही Google calendarअजून नाही.";
 "Microsoft calendars" = "Microsoft कॅलेंडर";
 "No synced Microsoft calendars yet." = "कोणत्याही समक्रमण नाही Microsoft calendarअजून नाही.";
-"Sign out" = "साइन अप करा";
+"Sign out" = "साइन आउट करा";
 "Add iCloud Calendar" = "जोडणे iCloud कॅलेंडर";
 "Share calendars with iCloud Calendar" = "कॅलेंडर शेअर करा iCloud कॅलेंडर";
 "Sign in with Google" = "साइन इन करा Google";
@@ -259,7 +260,7 @@
 /* MoonCard */
 "MOON PHASE" = "चांदणीचा टप्पा";
 "Moonrise" = "चंद्राचा उदय";
-"Moonset" = "चंद्राचा उदय";
+"Moonset" = "चंद्रास्त";
 "Next %@" = "पुढील %@";
 "Data unavailable" = "डेटा उपलब्ध नाही";
 "%d day" = "%d दिवस";
@@ -718,9 +719,6 @@
 "year"   = "वर्ष";
 "years"  = "वर्ष";
 
-/* YearMonthMiniView */
-"weekday.headers" = "S,M,T,W,T,F,S";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "किमी/ता";
 "Unit_Speed_mph" = "मायल्स";
@@ -882,7 +880,7 @@
 "App Clip sharing account" = "App Clip सामायिक खाते";
 "Required for synced App Clip events and recovery after reinstalling." = "समक्रमण करण्यासाठी आवश्यक App Clip घटना आणि पुनर्स्थापना नंतर पुनर्प्राप्ती.";
 "Continue with Google" = "पुढे Google";
-"Sign Out" = "नोंदणी करा";
+"Sign Out" = "साइन आउट करा";
 "Signing in…" = "साइन इन करा.";
 "Sign In" = "साइन इन करा";
 "Sign in to continue" = "पुढे जाण्यासाठी साइन इन करा";

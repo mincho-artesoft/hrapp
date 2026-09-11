@@ -158,6 +158,26 @@ struct SettingsSheetView: View {
                 }
                 .padding(.vertical, DraggableMenuContentLayout.verticalInset)
 
+                Divider()
+
+                HStack(spacing: 0) {
+                    preferenceLabel("First Day of Week", icon: "calendar.day.timeline.left")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Picker("", selection: $appPreferences.firstWeekday) {
+                        ForEach(FirstWeekdayPreference.allCases) { preference in
+                            firstWeekdayOption(preference)
+                                .tag(preference)
+                        }
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.menu)
+                    .environment(\.layoutDirection, appPreferences.layoutDirection)
+                    .multilineTextAlignment(.trailing)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
+
                 // Only where consent was asked for in the first place. Google
                 // requires a way back into the form there, and there is
                 // nothing to manage anywhere else.
@@ -211,6 +231,17 @@ struct SettingsSheetView: View {
             return Text(verbatim: "\(system) (\(example))")
         }
         return Text(verbatim: example)
+    }
+
+    /// Weekday names come from the calendar's own standalone symbols, so the
+    /// 54 localizations do not have to carry seven more hand-written strings.
+    private func firstWeekdayOption(_ preference: FirstWeekdayPreference) -> Text {
+        let name = appPreferences.weekdayDisplayName(for: preference)
+        if preference == .system {
+            let system = NSLocalizedString("System", comment: "System preference")
+            return Text(verbatim: name.isEmpty ? system : "\(system) (\(name))")
+        }
+        return Text(verbatim: name)
     }
 
     private func timeFormatOption(_ preference: AppTimeFormatPreference) -> Text {

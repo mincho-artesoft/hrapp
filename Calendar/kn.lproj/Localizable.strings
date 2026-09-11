@@ -55,6 +55,7 @@
 "Measurement Units" = "ಅಳತೆಯ ಘಟಕಗಳು";
 "Date Format" = "ದಿನಾಂಕ ಸ್ವರೂಪ";
 "Time Format" = "ಸಮಯ ಸ್ವರೂಪ";
+"First Day of Week" = "ವಾರದ ಮೊದಲ ದಿನ";
 "System" = "ಸಿಸ್ಟಮ್";
 "Metric" = "ಮೆಟ್ರಿಕ್";
 "Imperial" = "ಇಂಪೀರಿಯಲ್";
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "ಸಿಂಕ್ರೊನೈಸ್ ಮಾಡದಿರುವುದು Google calendarಇನ್ನೂ.";
 "Microsoft calendars" = "Microsoft calendarಗಳು";
 "No synced Microsoft calendars yet." = "ಸಿಂಕ್ರೊನೈಸ್ ಮಾಡದಿರುವುದು Microsoft calendarಇನ್ನೂ.";
-"Sign out" = "ಸೈನ್ ಅಪ್ ಮಾಡಿ";
+"Sign out" = "ಸೈನ್ ಔಟ್ ಮಾಡಿ";
 "Add iCloud Calendar" = "ಸೇರಿಸಿ iCloud ಕ್ಯಾಲೆಂಡರ್";
 "Share calendars with iCloud Calendar" = "ಕ್ಯಾಲೆಂಡರ್ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ iCloud ಕ್ಯಾಲೆಂಡರ್";
 "Sign in with Google" = "ಸೈನ್ ಇನ್ ಮಾಡಿ Google";
@@ -718,9 +719,6 @@
 "year"   = "ವರ್ಷ";
 "years"  = "ವರ್ಷಗಳು";
 
-/* YearMonthMiniView */
-"weekday.headers" = "ಎಂ, ಟಿ, ಡಬ್ಲ್ಯೂ, ಟಿ, ಎಫ್, ಎಸ್";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "ಕಿಮೀ/ಗಂಟೆ";
 "Unit_Speed_mph" = "ಮೈಲಿಗಾಲ";
@@ -882,7 +880,7 @@
 "App Clip sharing account" = "App Clip ಹಂಚಿಕೆ ಖಾತೆ";
 "Required for synced App Clip events and recovery after reinstalling." = "ಸಿಂಕ್ರೊನೈಸ್ ಮಾಡಲು ಅಗತ್ಯವಿದೆ App Clip ಘಟನೆಗಳು ಮತ್ತು ಮರುಸ್ಥಾಪನೆಯ ನಂತರ ಚೇತರಿಕೆ.";
 "Continue with Google" = "ಮುಂದುವರಿಸಿ Google";
-"Sign Out" = "ಸೈನ್ ಅಪ್ ಮಾಡಿ";
+"Sign Out" = "ಸೈನ್ ಔಟ್ ಮಾಡಿ";
 "Signing in…" = "ಸೈನ್ ಇನ್ ಮಾಡಿ.";
 "Sign In" = "ಸೈನ್ ಇನ್ ಮಾಡಿ";
 "Sign in to continue" = "ಮುಂದುವರಿಸಲು ಸೈನ್ ಇನ್ ಮಾಡಿ";

@@ -55,6 +55,7 @@
 "Measurement Units" = "পরিমাপের একক";
 "Date Format" = "তারিখের বিন্যাস";
 "Time Format" = "সময়ের বিন্যাস";
+"First Day of Week" = "সপ্তাহের প্রথম দিন";
 "System" = "সিস্টেম";
 "Metric" = "মেট্রিক";
 "Imperial" = "ইম্পেরিয়াল";
@@ -259,7 +260,7 @@
 /* MoonCard */
 "MOON PHASE" = "চাঁদের পর্যায়";
 "Moonrise" = "চাঁদের উদয়";
-"Moonset" = "মুনসেট";
+"Moonset" = "চাঁদের অস্ত";
 "Next %@" = "পরবর্তী %@";
 "Data unavailable" = "তথ্য পাওয়া যায়নি";
 "%d day" = "%d দিন";
@@ -718,9 +719,6 @@
 "year"   = "বছর";
 "years"  = "বছর";
 
-/* YearMonthMiniView */
-"weekday.headers" = "এস, এম, টি, ডাব্লু, টি, এফ, এস";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "কিলোমিটার/ঘন্টা";
 "Unit_Speed_mph" = "ঘন্টা";
@@ -857,7 +855,7 @@
 "You can change your plan or billing period at any time." = "আপনি যে কোনো সময় আপনার পরিকল্পনা বা বিলিংয়ের সময়সীমা পরিবর্তন করতে পারেন।";
 "Invites" = "আমন্ত্রণ";
 "Cancelled" = "বাতিল করা হয়েছে";
-"Shared by me" = "আমার সাথে ভাগ করে নেওয়া";
+"Shared by me" = "আমার দ্বারা শেয়ার করা";
 "Shared with me" = "আমার সাথে ভাগ করে নেওয়া";
 "No shared events yet." = "এখনো কোনো ভাগ করা ঘটনা নেই।";
 "No one has shared an event with you yet." = "কেউ তোমার সাথে এখনো কোনো ইভেন্ট শেয়ার করেনি।";

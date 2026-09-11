@@ -11,7 +11,8 @@ struct WeekdayHeaderView: View {
         // Можеш да ползваш shortWeekdaySymbols ("Sun", "Mon", …)
         let symbols = cal.shortWeekdaySymbols  // ["Sun","Mon",…]
         // Завъртаме масива така, че да започва от firstWeekday
-        let idx = cal.firstWeekday - 1         // 0-базирано
+        guard symbols.count == 7 else { return symbols }
+        let idx = min(max(cal.firstWeekday - 1, 0), 6)   // 0-базирано
         return Array(symbols[idx...] + symbols[..<idx])
     }
     

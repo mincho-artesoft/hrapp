@@ -55,6 +55,7 @@
 "Measurement Units" = "Merske enote";
 "Date Format" = "Oblika datuma";
 "Time Format" = "Oblika časa";
+"First Day of Week" = "Prvi dan v tednu";
 "System" = "Sistemsko";
 "Metric" = "Metrično";
 "Imperial" = "Imperialno";
@@ -68,7 +69,7 @@
 "No email was provided." = "Nobenega elektronskega sporočila ni bilo.";
 "Please enter a valid email to continue." = "Prosim, vnesite veljavno e-pošto.";
 "Your email" = "Vaš e-poštni naslov.";
-"Save" = "Prihrani";
+"Save" = "Shrani";
 "Login" = "Vstop";
 "Logout" = "Izstop";
 
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "Brez sinhronizacije Google calendarŠe vedno.";
 "Microsoft calendars" = "Koledarji Microsoft";
 "No synced Microsoft calendars yet." = "Brez sinhronizacije Microsoft calendarŠe vedno.";
-"Sign out" = "Podpisujte se.";
+"Sign out" = "Odjava";
 "Add iCloud Calendar" = "Dodatek iCloud Kalendar";
 "Share calendars with iCloud Calendar" = "Skupaj s iCloud Kalendar";
 "Sign in with Google" = "Podpisujte se z: Google";
@@ -129,7 +130,7 @@
 "Permission:" = "Dovoljenje:";
 "Add" = "Dodatek";
 "Sharing:" = "Delitev:";
-"Done" = "Končana";
+"Done" = "Končano";
 
 "Error loading: %@" = "Napaka v naložitvi: %@";
 "Error adding: %@" = "Napaka pri dodajanju: %@";
@@ -186,7 +187,7 @@
 "Join Meeting" = "Pridružite se na sestanku";
 "Edit" = "Spremembe";
 "Duplicate" = "Dvojna";
-"Delete" = "Izbrišite";
+"Delete" = "Izbriši";
 "Share" = "Delovanje";
 "Add to Google Meet" = "Dodaj Google Spoznaj me.";
 "Add to Microsoft Teams" = "Dodaj Microsoft Teams";
@@ -209,7 +210,7 @@
 "This event is part of a series. Update which events?" = "To je del serije dogodkov.";
 "This Event Only" = "Samo ta dogodek";
 "All Future Events" = "Vse prihodnje dogodke";
-"Cancel" = "Odpoved";
+"Cancel" = "Prekliči";
 
 /* DraggableMenuView */
 "Calendar" = "Kalendar";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "LUN FASE";
-"Moonrise" = "Objavitve Lune";
-"Moonset" = "Meseč";
+"Moonrise" = "Vzhod Lune";
+"Moonset" = "Zahod Lune";
 "Next %@" = "Naslednji. %@";
 "Data unavailable" = "Nepridostni podatki";
 "%d day" = "%d dan";
@@ -718,9 +719,6 @@
 "year"   = "letno";
 "years"  = "leta";
 
-/* YearMonthMiniView */
-"weekday.headers" = "S, M, T, W, T, F, S";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";
 "Unit_Speed_mph" = "km/h";
@@ -857,8 +855,8 @@
 "You can change your plan or billing period at any time." = "V vsakem trenutku lahko spremenite načrt ali obdobje obračunavanja.";
 "Invites" = "Poziv";
 "Cancelled" = "Odpovedano";
-"Shared by me" = "Jaz sem jo delila.";
-"Shared with me" = "Delila se z mano";
+"Shared by me" = "Deljeno z moje strani";
+"Shared with me" = "Deljeno z mano";
 "No shared events yet." = "Še ni skupnih dogodkov.";
 "No one has shared an event with you yet." = "Nihče še ni delil dogodka z vami.";
 "Events you send from the share sheet appear here." = "Dogodki, ki jih pošljete iz listine, se prikazujejo tukaj.";
@@ -882,9 +880,9 @@
 "App Clip sharing account" = "App Clip deljenje računa";
 "Required for synced App Clip events and recovery after reinstalling." = "Zahteva za sinhronizacijo App Clip dogodki in okrevanje po ponovno namestitvi.";
 "Continue with Google" = "Nadaljujte z Google";
-"Sign Out" = "Izstopite";
+"Sign Out" = "Odjava";
 "Signing in…" = "Podpis...";
-"Sign In" = "Vpis";
+"Sign In" = "Prijava";
 "Sign in to continue" = "Vpisati se je treba.";
 "Your account keeps this shared event recoverable after reinstalling the app." = "Vaš račun ohranja ta skupni dogodek obnovljiv po ponovno namestitvi aplikacije.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Ta račun je lastnik App Clip Podeljuje in jih po ponovno namestitvi obnovi.";
@@ -948,7 +946,7 @@
 "Place a Cloud Calendars event or calendar QR code inside the frame." = "Na vrstica A Cloud Calendars dogodek ali koledar QR kod znotraj okvirja.";
 "Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "Čitatelj lahko preverja in sinhronizira. Pisec lahko ureja. Lastnik lahko tudi deli in upravlja dostop po prijavi z povabljenim e-poštnim naslovom.";
 "Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "Članik lahko gleda, pisatelj lahko ureja dogodke, lastnik lahko tudi deli koledar in upravlja dostop.";
-"Remove" = "Odstranite";
+"Remove" = "Odstrani";
 "Remove Shared Calendar?" = "Izbrišite skupno koledar?";
 "Remove from My Calendars" = "Izbriši iz mojih koledarjev";
 "Resend" = "Pošljite";

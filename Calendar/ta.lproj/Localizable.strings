@@ -55,6 +55,7 @@
 "Measurement Units" = "அளவீட்டு அலகுகள்";
 "Date Format" = "தேதி வடிவம்";
 "Time Format" = "நேர வடிவம்";
+"First Day of Week" = "வாரத்தின் முதல் நாள்";
 "System" = "அமைப்பு";
 "Metric" = "மெட்ரிக்";
 "Imperial" = "இம்பீரியல்";
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "ஒத்திசைவு இல்லை Google calendarஇன்னும் இல்லை.";
 "Microsoft calendars" = "Microsoft calendarஅ";
 "No synced Microsoft calendars yet." = "ஒத்திசைவு இல்லை Microsoft calendarஇன்னும் இல்லை.";
-"Sign out" = "பதிவு செய்யுங்கள்";
+"Sign out" = "வெளியேறு";
 "Add iCloud Calendar" = "சேர்க்கவும் iCloud காலண்டர்";
 "Share calendars with iCloud Calendar" = "காலண்டர்களை பகிர்ந்து கொள்ளவும் iCloud காலண்டர்";
 "Sign in with Google" = "பதிவு செய்யவும் Google";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "நிலவு நிலை";
-"Moonrise" = "நிலவு உதித்தல்";
-"Moonset" = "நிலா";
+"Moonrise" = "நிலவு உதயம்";
+"Moonset" = "நிலவு மறைவு";
 "Next %@" = "அடுத்தது %@";
 "Data unavailable" = "தரவு கிடைக்கவில்லை";
 "%d day" = "%d நாள்";
@@ -718,9 +719,6 @@
 "year"   = "ஆண்டு";
 "years"  = "ஆண்டுகள்";
 
-/* YearMonthMiniView */
-"weekday.headers" = "S,M,T,W,T,F,S";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "கிமீ/மணி";
 "Unit_Speed_mph" = "மைல்";
@@ -857,8 +855,8 @@
 "You can change your plan or billing period at any time." = "நீங்கள் எந்த நேரத்திலும் உங்கள் திட்டத்தை அல்லது கட்டணக் காலத்தை மாற்றலாம்.";
 "Invites" = "அழைப்பிதழ்கள்";
 "Cancelled" = "ரத்து செய்யப்பட்டது";
-"Shared by me" = "நான் பகிர்ந்து";
-"Shared with me" = "என்னுடன் பகிர்ந்து";
+"Shared by me" = "நான் பகிர்ந்தவை";
+"Shared with me" = "என்னுடன் பகிரப்பட்டவை";
 "No shared events yet." = "இதுவரை பகிரப்பட்ட நிகழ்வுகள் இல்லை.";
 "No one has shared an event with you yet." = "உங்களுடன் இதுவரை யாரும் ஒரு நிகழ்வை பகிர்ந்து கொள்ளவில்லை.";
 "Events you send from the share sheet appear here." = "பங்குச் சீட்டில் இருந்து நீங்கள் அனுப்பிய நிகழ்வுகள் இங்கே தோன்றும்.";
@@ -882,9 +880,9 @@
 "App Clip sharing account" = "App Clip பகிர்வு கணக்கு";
 "Required for synced App Clip events and recovery after reinstalling." = "ஒத்திசைக்கத் தேவையானது App Clip நிகழ்வுகள் மற்றும் மீட்பு மறு நிறுவல் பிறகு.";
 "Continue with Google" = "தொடரவும் Google";
-"Sign Out" = "பதிவு செய்யுங்கள்";
+"Sign Out" = "வெளியேறு";
 "Signing in…" = "பதிவு செய்யுங்கள்.";
-"Sign In" = "பதிவு செய்யவும்";
+"Sign In" = "உள்நுழை";
 "Sign in to continue" = "தொடர பதிவு செய்யவும்";
 "Your account keeps this shared event recoverable after reinstalling the app." = "உங்கள் கணக்கு பயன்பாட்டை மீண்டும் நிறுவிய பிறகு இந்த பகிரப்பட்ட நிகழ்வை மீட்டெடுக்க முடியும்.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "இந்த கணக்கு சொந்தமானது App Clip பகிரப்பட்டு அவற்றை மீண்டும் நிறுவிய பிறகு மீட்டெடுக்கிறது. இது காலண்டர் வழங்குநரின் உள்நுழைவுகளிலிருந்து தனித்தனியாக உள்ளது.";

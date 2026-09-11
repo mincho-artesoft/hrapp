@@ -55,6 +55,7 @@
 "Measurement Units" = "Unidades de medida";
 "Date Format" = "Formato de fecha";
 "Time Format" = "Formato de hora";
+"First Day of Week" = "Primer día de la semana";
 "System" = "Sistema";
 "Metric" = "Métrico";
 "Imperial" = "Imperial";
@@ -68,7 +69,7 @@
 "No email was provided." = "No se proporcionó ningún correo electrónico.";
 "Please enter a valid email to continue." = "Por favor, ingrese un correo electrónico válido para continuar.";
 "Your email" = "Su correo electrónico";
-"Save" = "Salvación";
+"Save" = "Guardar";
 "Login" = "Ingreso";
 "Logout" = "Registro de entrada";
 
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "No sincronizado Google calendarNo lo sé.";
 "Microsoft calendars" = "Microsoft calendarde la";
 "No synced Microsoft calendars yet." = "No sincronizado Microsoft calendarNo lo sé.";
-"Sign out" = "Regístrese";
+"Sign out" = "Cerrar sesión";
 "Add iCloud Calendar" = "Añadir iCloud Calendario";
 "Share calendars with iCloud Calendar" = "Compartir calendarios con iCloud Calendario";
 "Sign in with Google" = "Regístrese con Google";
@@ -129,7 +130,7 @@
 "Permission:" = "Permiso:";
 "Add" = "Añadir";
 "Sharing:" = "Compartición:";
-"Done" = "He hecho";
+"Done" = "Listo";
 
 "Error loading: %@" = "Carga de error: %@";
 "Error adding: %@" = "Añadir error: %@";
@@ -209,7 +210,7 @@
 "This event is part of a series. Update which events?" = "Este evento es parte de una serie. ¿Qué actualización?";
 "This Event Only" = "Sólo este evento";
 "All Future Events" = "Todos los acontecimientos futuros";
-"Cancel" = "Cancelación";
+"Cancel" = "Cancelar";
 
 /* DraggableMenuView */
 "Calendar" = "Calendario";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "FASE de la luna";
-"Moonrise" = "Al amanecer de la luna";
-"Moonset" = "El lunar";
+"Moonrise" = "Salida de la luna";
+"Moonset" = "Puesta de la luna";
 "Next %@" = "Lo siguiente %@";
 "Data unavailable" = "No hay datos disponibles";
 "%d day" = "%d día";
@@ -718,9 +719,6 @@
 "year"   = "año";
 "years"  = "años";
 
-/* YearMonthMiniView */
-"weekday.headers" = "El número de personas que se encuentren en el mercado de servicios de transporte de mercancías";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";
 "Unit_Speed_mph" = "por millas";
@@ -882,9 +880,9 @@
 "App Clip sharing account" = "App Clip cuenta compartida";
 "Required for synced App Clip events and recovery after reinstalling." = "Requerido para sincronizar App Clip eventos y recuperación después de la reinstalación.";
 "Continue with Google" = "Continúe con Google";
-"Sign Out" = "Registración";
+"Sign Out" = "Cerrar sesión";
 "Signing in…" = "Firmar el registro...";
-"Sign In" = "Regístrese";
+"Sign In" = "Iniciar sesión";
 "Sign in to continue" = "Inscríbete para continuar";
 "Your account keeps this shared event recoverable after reinstalling the app." = "Su cuenta mantiene este evento compartido recuperable después de reinstalar la aplicación.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Esta cuenta es dueña App Clip Se separa de los registros de calendario del proveedor.";
@@ -948,7 +946,7 @@
 "Place a Cloud Calendars event or calendar QR code inside the frame." = "Coloque una Cloud Calendars evento o calendario QR código dentro del marco.";
 "Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "El lector puede ver y sincronizar. El escritor puede editar. El propietario también puede compartir y administrar el acceso después de iniciar sesión con el correo electrónico invitado.";
 "Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "El lector puede ver. El escritor puede editar eventos. El propietario también puede compartir el calendario y administrar el acceso.";
-"Remove" = "Retirado";
+"Remove" = "Quitar";
 "Remove Shared Calendar?" = "¿Quitar el calendario compartido?";
 "Remove from My Calendars" = "Retiré de mis calendarios";
 "Resend" = "Envía el mensaje";

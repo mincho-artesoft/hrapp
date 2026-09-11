@@ -55,6 +55,7 @@
 "Measurement Units" = "Unidades de medida";
 "Date Format" = "Formato da data";
 "Time Format" = "Formato da hora";
+"First Day of Week" = "Primeiro dia da semana";
 "System" = "Sistema";
 "Metric" = "Métrico";
 "Imperial" = "Imperial";
@@ -717,9 +718,6 @@
 "months" = "meses";
 "year"   = "ano";
 "years"  = "anos";
-
-/* YearMonthMiniView */
-"weekday.headers" = "D,S,T,Q,Q,S,S";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

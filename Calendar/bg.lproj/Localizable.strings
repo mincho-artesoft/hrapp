@@ -55,6 +55,7 @@
 "Measurement Units" = "Мерни единици";
 "Date Format" = "Формат на датата";
 "Time Format" = "Формат на часа";
+"First Day of Week" = "Първи ден от седмицата";
 "System" = "Системни";
 "Metric" = "Метрични";
 "Imperial" = "Имперски";
@@ -713,9 +714,6 @@
 "months" = "месеца";
 "year"   = "година";
 "years"  = "години";
-
-/* YearMonthMiniView */
-"weekday.headers" = "Н,П,В,С,Ч,П,С";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

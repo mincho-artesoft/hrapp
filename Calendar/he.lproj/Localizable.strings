@@ -55,6 +55,7 @@
 "Measurement Units" = "יחידות מידה";
 "Date Format" = "תבנית תאריך";
 "Time Format" = "תבנית שעה";
+"First Day of Week" = "היום הראשון בשבוע";
 "System" = "מערכת";
 "Metric" = "מטרי";
 "Imperial" = "אימפריאלי";
@@ -717,9 +718,6 @@
 "months" = "חודשים";
 "year"   = "שנה";
 "years"  = "שנים";
-
-/* YearMonthMiniView */
-"weekday.headers" = "א׳,ב׳,ג׳,ד׳,ה׳,ו׳,ש׳";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

@@ -55,6 +55,7 @@
 "Measurement Units" = "Maateenheden";
 "Date Format" = "Datumnotatie";
 "Time Format" = "Tijdnotatie";
+"First Day of Week" = "Eerste dag van de week";
 "System" = "Systeem";
 "Metric" = "Metrisch";
 "Imperial" = "Imperiaal";
@@ -717,9 +718,6 @@
 "months" = "maanden";
 "year"   = "jaar";
 "years"  = "jaren";
-
-/* YearMonthMiniView */
-"weekday.headers" = "Z,M,D,W,D,V,Z";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

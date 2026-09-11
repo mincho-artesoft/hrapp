@@ -55,6 +55,7 @@
 "Measurement Units" = "Måttenheter";
 "Date Format" = "Datumformat";
 "Time Format" = "Tidsformat";
+"First Day of Week" = "Veckans första dag";
 "System" = "System";
 "Metric" = "Metriskt";
 "Imperial" = "Brittiskt";
@@ -717,9 +718,6 @@
 "months" = "månader";
 "year"   = "år";
 "years"  = "år";
-
-/* YearMonthMiniView */
-"weekday.headers" = "S,M,T,O,T,F,L";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

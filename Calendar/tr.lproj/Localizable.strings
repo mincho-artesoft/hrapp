@@ -55,6 +55,7 @@
 "Measurement Units" = "Ölçü Birimleri";
 "Date Format" = "Tarih Biçimi";
 "Time Format" = "Saat Biçimi";
+"First Day of Week" = "Haftanın ilk günü";
 "System" = "Sistem";
 "Metric" = "Metrik";
 "Imperial" = "İngiliz";
@@ -717,9 +718,6 @@
 "months" = "aylar";
 "year"   = "yıl";
 "years"  = "yıllar";
-
-/* YearMonthMiniView */
-"weekday.headers" = "P,P,S,Ç,P,C,C";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

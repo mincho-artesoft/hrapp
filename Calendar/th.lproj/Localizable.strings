@@ -55,6 +55,7 @@
 "Measurement Units" = "หน่วยวัด";
 "Date Format" = "รูปแบบวันที่";
 "Time Format" = "รูปแบบเวลา";
+"First Day of Week" = "วันแรกของสัปดาห์";
 "System" = "ระบบ";
 "Metric" = "เมตริก";
 "Imperial" = "อิมพีเรียล";
@@ -717,9 +718,6 @@
 "months" = "เดือน";
 "year"   = "ปี";
 "years"  = "ปี";
-
-/* YearMonthMiniView */
-"weekday.headers" = "อา,จ,อ,พ,พฤ,ศ,ส";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

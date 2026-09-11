@@ -55,6 +55,7 @@
 "Measurement Units" = "അളവു യൂണിറ്റുകൾ";
 "Date Format" = "തീയതി ഫോർമാറ്റ്";
 "Time Format" = "സമയ ഫോർമാറ്റ്";
+"First Day of Week" = "ആഴ്ചയിലെ ആദ്യ ദിവസം";
 "System" = "സിസ്റ്റം";
 "Metric" = "മെട്രിക്";
 "Imperial" = "ഇംപീരിയൽ";
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "സിൻക്രൊസിഡില്ല Google calendarഅത് ഇതുവരെ സംഭവിച്ചിട്ടില്ല.";
 "Microsoft calendars" = "Microsoft calendarസ";
 "No synced Microsoft calendars yet." = "സിൻക്രൊസിഡില്ല Microsoft calendarഅത് ഇതുവരെ സംഭവിച്ചിട്ടില്ല.";
-"Sign out" = "ഒപ്പിടുക";
+"Sign out" = "സൈൻ ഔട്ട് ചെയ്യുക";
 "Add iCloud Calendar" = "ചേർക്കുക iCloud കലണ്ടർ";
 "Share calendars with iCloud Calendar" = "കലണ്ടറുകൾ പങ്കിടുക iCloud കലണ്ടർ";
 "Sign in with Google" = "സൈൻ ഇൻ ചെയ്യുക Google";
@@ -718,9 +719,6 @@
 "year"   = "വർഷം";
 "years"  = "വർഷങ്ങൾ";
 
-/* YearMonthMiniView */
-"weekday.headers" = "എസ്, എം, ടി, ഡബ്ല്യു, ടി, എഫ്, എസ്";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "കിലോമീറ്റർ മണിക്കൂറിൽ";
 "Unit_Speed_mph" = "മൈൽ";
@@ -882,7 +880,7 @@
 "App Clip sharing account" = "App Clip പങ്കിടൽ അക്കൌണ്ട്";
 "Required for synced App Clip events and recovery after reinstalling." = "സമന്വയിപ്പിക്കാന് ആവശ്യമായത് App Clip സംഭവങ്ങളും പുനഃസ്ഥാപനത്തിനു ശേഷമുള്ള വീണ്ടെടുക്കലും.";
 "Continue with Google" = "തുടര് ന്നു Google";
-"Sign Out" = "സൈൻ അപ്പ് ചെയ്യുക";
+"Sign Out" = "സൈൻ ഔട്ട് ചെയ്യുക";
 "Signing in…" = "ഞാന് സൈൻ ഇൻ ചെയ്യുന്നു.";
 "Sign In" = "സൈൻ ഇൻ ചെയ്യുക";
 "Sign in to continue" = "തുടരാൻ സൈൻ ഇൻ ചെയ്യുക";

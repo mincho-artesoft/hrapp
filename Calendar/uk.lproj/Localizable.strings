@@ -55,6 +55,7 @@
 "Measurement Units" = "Одиниці вимірювання";
 "Date Format" = "Формат дати";
 "Time Format" = "Формат часу";
+"First Day of Week" = "Перший день тижня";
 "System" = "Системні";
 "Metric" = "Метричні";
 "Imperial" = "Імперські";
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "Без синхронізації Google calendar- Я ще не знаю.";
 "Microsoft calendars" = "Microsoft calendarС";
 "No synced Microsoft calendars yet." = "Без синхронізації Microsoft calendar- Я ще не знаю.";
-"Sign out" = "Підпишіться";
+"Sign out" = "Вийти";
 "Add iCloud Calendar" = "Додавати iCloud Календарь";
 "Share calendars with iCloud Calendar" = "Поділитися календарем з iCloud Календарь";
 "Sign in with Google" = "Підпишіться з Google";
@@ -129,7 +130,7 @@
 "Permission:" = "Дозвол:";
 "Add" = "Додавати";
 "Sharing:" = "Розділ:";
-"Done" = "Скінчено";
+"Done" = "Готово";
 
 "Error loading: %@" = "Помилка завантаження: %@";
 "Error adding: %@" = "Помилка додавання: %@";
@@ -186,7 +187,7 @@
 "Join Meeting" = "Приєднуйтесь до зібрання";
 "Edit" = "Редагуйте";
 "Duplicate" = "Дупліка";
-"Delete" = "Знімайте";
+"Delete" = "Видалити";
 "Share" = "Ділитися";
 "Add to Google Meet" = "Додавати Google Зустріч";
 "Add to Microsoft Teams" = "Додавати Microsoft Teams";
@@ -209,7 +210,7 @@
 "This event is part of a series. Update which events?" = "Це подія є частиною серії.";
 "This Event Only" = "Тільки цей подій";
 "All Future Events" = "Всі події майбутнього";
-"Cancel" = "Відкласти";
+"Cancel" = "Скасувати";
 
 /* DraggableMenuView */
 "Calendar" = "Календарь";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "ПАСЕ МОЗНЯ";
-"Moonrise" = "Місяць";
-"Moonset" = "Місяць";
+"Moonrise" = "Схід Місяця";
+"Moonset" = "Захід Місяця";
 "Next %@" = "Наступний %@";
 "Data unavailable" = "Недоступні дані";
 "%d day" = "%d день";
@@ -718,9 +719,6 @@
 "year"   = "рік";
 "years"  = "роки";
 
-/* YearMonthMiniView */
-"weekday.headers" = "С,М,Т,В,Т,Ф,С";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "км/год";
 "Unit_Speed_mph" = "миль";
@@ -857,8 +855,8 @@
 "You can change your plan or billing period at any time." = "Ви можете змінити свій план або термін розрахунку в будь-який час.";
 "Invites" = "Запрошення";
 "Cancelled" = "Відменено";
-"Shared by me" = "Я поділюся з ними.";
-"Shared with me" = "Поділяється зі мною";
+"Shared by me" = "Надані мною";
+"Shared with me" = "Надані мені";
 "No shared events yet." = "Ще немає спільних подій.";
 "No one has shared an event with you yet." = "Ніхто ще не поділився з вами подією.";
 "Events you send from the share sheet appear here." = "Події, які ви відправляєте з листа акцій, з'являються тут.";
@@ -882,9 +880,9 @@
 "App Clip sharing account" = "App Clip спільний рахунок";
 "Required for synced App Clip events and recovery after reinstalling." = "Необхідний для синхронізації App Clip події та відновлення після повторної установки.";
 "Continue with Google" = "Продовжуйте Google";
-"Sign Out" = "Підпишіться";
+"Sign Out" = "Вийти";
 "Signing in…" = "Підписую...";
-"Sign In" = "Підпишіться";
+"Sign In" = "Увійти";
 "Sign in to continue" = "Підписуйтеся , щоб продовжити";
 "Your account keeps this shared event recoverable after reinstalling the app." = "Ваш акаунт зберігає спільний подію відновлюваною після повторного встановлення додатку.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Цей рахунок володіє App Clip Розділяється і відновлюється після повторної установки.";
@@ -948,7 +946,7 @@
 "Place a Cloud Calendars event or calendar QR code inside the frame." = "Розмістити Cloud Calendars події або календар QR код в кадрі.";
 "Reader can view and sync. Writer can edit. Owner can also share and manage access after signing in with the invited email." = "Читач може переглядати і синхронізувати. письменник може редагувати. Власник також може ділитися і керувати доступом після входу з запрошеною електронною поштою.";
 "Reader can view. Writer can edit events. Owner can also share the calendar and manage access." = "Читач може переглядати, письменник може редагувати події, власник також може поділитися календарем і керувати доступом.";
-"Remove" = "Виведення";
+"Remove" = "Вилучити";
 "Remove Shared Calendar?" = "Знімайте спільний календар?";
 "Remove from My Calendars" = "Знімайте з моїх календарів";
 "Resend" = "Перепродажу";

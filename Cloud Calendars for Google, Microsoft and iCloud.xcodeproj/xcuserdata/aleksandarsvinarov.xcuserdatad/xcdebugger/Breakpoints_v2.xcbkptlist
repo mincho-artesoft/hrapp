@@ -64,7 +64,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2011"
             endingLineNumber = "2011"
-            landmarkName = "removeLocalGoogleCalendars(forUserID:)"
+            landmarkName = "pickPrimaryEmailIfNeeded(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -80,7 +80,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2012"
             endingLineNumber = "2012"
-            landmarkName = "removeLocalGoogleCalendars(forUserID:)"
+            landmarkName = "pickPrimaryEmailIfNeeded(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,8 +96,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3236"
             endingLineNumber = "3236"
-            landmarkName = "fetchMsEventsPage(msCalID:accessToken:startDate:endDate:pageLink:)"
-            landmarkType = "7">
+            landmarkName = "CalendarViewModel"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

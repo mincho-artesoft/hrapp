@@ -55,6 +55,7 @@
 "Measurement Units" = "Mértékegységek";
 "Date Format" = "Dátumformátum";
 "Time Format" = "Időformátum";
+"First Day of Week" = "A hét első napja";
 "System" = "Rendszer";
 "Metric" = "Metrikus";
 "Imperial" = "Angolszász";
@@ -717,9 +718,6 @@
 "months" = "hónap";
 "year"   = "évben";
 "years"  = "év";
-
-/* YearMonthMiniView */
-"weekday.headers" = "V,H,K,Sz,Cs,P,Sz";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

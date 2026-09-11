@@ -520,6 +520,7 @@ struct AppLocalEventEditorView: View {
             }
         }
         .environment(\.locale, appPreferences.presentationLocale)
+        .environment(\.calendar, appPreferences.presentationCalendar)
         .environment(\.layoutDirection, appPreferences.layoutDirection)
     }
 
@@ -1937,6 +1938,7 @@ private struct PreferenceCompactDatePicker: View {
         }
         .fixedSize(horizontal: true, vertical: true)
         .environment(\.locale, appPreferences.presentationLocale)
+        .environment(\.calendar, appPreferences.presentationCalendar)
     }
 
     private var displayText: String {

@@ -55,6 +55,7 @@
 "Measurement Units" = "Měrné jednotky";
 "Date Format" = "Formát data";
 "Time Format" = "Formát času";
+"First Day of Week" = "První den v týdnu";
 "System" = "Systémové";
 "Metric" = "Metrické";
 "Imperial" = "Imperiální";
@@ -717,9 +718,6 @@
 "months" = "měsíce";
 "year"   = "rok";
 "years"  = "let";
-
-/* YearMonthMiniView */
-"weekday.headers" = "N,P,Ú,S,Č,P,S";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

@@ -36,6 +36,16 @@ enum SharingMatrixE2ETest {
     static func require(_ value: Bool, _ message: String) throws {
         if !value { throw NSError(domain: "SharingMatrix", code: 1, userInfo: [NSLocalizedDescriptionKey: message]) }
     }
+    /// This harness exists to REPORT failures. A force-unwrap here traps the
+    /// whole app, so the run dies with no JSON report at all and the driver
+    /// script can only say "exited without a report". Throwing instead lets the
+    /// per-item `catch` record which backend shape changed.
+    static func unwrap<T>(_ value: T?, _ message: String) throws -> T {
+        guard let value else {
+            throw NSError(domain: "SharingMatrix", code: 4, userInfo: [NSLocalizedDescriptionKey: message])
+        }
+        return value
+    }
     static func save(_ manifest: Manifest) throws { try JSONEncoder().encode(manifest).write(to: manifestURL, options: .atomic) }
     static func load() throws -> Manifest { try JSONDecoder().decode(Manifest.self, from: Data(contentsOf: manifestURL)) }
     static func hash(_ value: String) -> String { SHA256.hash(data: Data(value.utf8)).map { String(format: "%02x", $0) }.joined() }
@@ -128,9 +138,11 @@ enum SharingMatrixE2ETest {
                     let repeated = await EventAppClipSharing.shareableURL(for: individual)
                     check(label + " repeat event share keeps feed", repeated.flatMap(SharedEventImportPayload.init(url:))?.feedID == SharedEventImportPayload(url: url)?.feedID)
                 }
-                let payload = SharedEventImportPayload(url: url)!
+                let payload = try unwrap(SharedEventImportPayload(url: url), label + ": share URL is not a valid import payload")
                 manifest.items.append(Item(kind: kind, access: role, calendarID: calendarID, localCalendarID: localID,
-                    localEventID: localEventID, eventID: payload.eventID!, url: url.absoluteString, label: label))
+                    localEventID: localEventID,
+                    eventID: try unwrap(payload.eventID, label + ": import payload carries no event id"),
+                    url: url.absoluteString, label: label))
                 try save(manifest)
                 _ = try await CloudCalendarsAPI.saveICloudCalendarSharing(calendarId: calendarID, title: label,
                     color: kind == "app_local" ? "#AF52DE" : "#007AFF", timeZone: "Europe/Sofia", calendarKind: kind,
@@ -151,7 +163,9 @@ enum SharingMatrixE2ETest {
                 let key = item.calendarID + ":" + kind
                 if manifest.sent.contains(key) { continue }
                 if kind == "event" {
-                    let url = EventShareEndpoint.serverInvitationURL(from: URL(string: item.url)!)!
+                    let shareURL = try unwrap(URL(string: item.url), item.label + ": stored share URL is not a URL")
+                    let url = try unwrap(EventShareEndpoint.serverInvitationURL(from: shareURL),
+                        item.label + ": share URL has no server invitation form")
                     _ = try await CloudCalendarsAPI.inviteEventRecipients(eventId: item.eventID, eventURL: url,
                         invitations: [.init(email: manifest.recipient, access: item.access)], session: session)
                 } else {
@@ -185,11 +199,16 @@ enum SharingMatrixE2ETest {
     }
     static func receive(_ item: Item, manifest: Manifest, session: CloudCalendarsAPI.Session) async throws {
         let label = item.label
-        let payload = SharedEventImportPayload(url: URL(string: item.url)!)!
+        let shareURL = try unwrap(URL(string: item.url), label + ": stored share URL is not a URL")
+        let payload = try unwrap(SharedEventImportPayload(url: shareURL), label + ": share URL is not a valid import payload")
         let previousLocalID = SharedInviteTracker.invite(eventID: item.eventID)?.localEventIdentifier
-        var compact = URLComponents(url: EventShareEndpoint.serverInvitationURL(from: URL(string: item.url)!)!, resolvingAgainstBaseURL: false)!
+        let serverURL = try unwrap(EventShareEndpoint.serverInvitationURL(from: shareURL),
+            label + ": share URL has no server invitation form")
+        var compact = try unwrap(URLComponents(url: serverURL, resolvingAgainstBaseURL: false),
+            label + ": server invitation URL cannot be decomposed")
         compact.queryItems = compact.queryItems?.filter { ["e", "c", "timeZone", "color"].contains($0.name) }
-        let resolved = await SharedEventImportPayload.resolve(url: compact.url!)
+        let compactURL = try unwrap(compact.url, label + ": compact invitation URL cannot be rebuilt")
+        let resolved = await SharedEventImportPayload.resolve(url: compactURL)
         check(label + " compact QR resolves full event", resolved?.title.hasPrefix(label) == true && resolved?.location == payload.location && resolved?.eventID == item.eventID)
         let result = await SharedEventImporter.add(payload, toCalendarWithIdentifier: manifest.destination)
         if case .added = result { check(label + " individual imported", true) }

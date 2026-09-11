@@ -7,6 +7,49 @@ enum AppPreferenceKey {
     static let measurementUnits = "AppMeasurementUnitsPreference"
     static let dateFormat = "AppDateFormatPreference"
     static let timeFormat = "AppTimeFormatPreference"
+    static let firstWeekday = "AppFirstWeekdayPreference"
+}
+
+enum FirstWeekdayPreference: String, CaseIterable, Identifiable {
+    case system
+    case sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+
+    var id: String { rawValue }
+
+    /// `Calendar.firstWeekday` index (1 = Sunday), or `nil` to follow the device.
+    var weekdayIndex: Int? {
+        switch self {
+        case .system:    return nil
+        case .sunday:    return 1
+        case .monday:    return 2
+        case .tuesday:   return 3
+        case .wednesday: return 4
+        case .thursday:  return 5
+        case .friday:    return 6
+        case .saturday:  return 7
+        }
+    }
+
+    /// Same choice expressed for `Locale.Components`, so native SwiftUI
+    /// controls (DatePicker's month grid) start the week on the same day.
+    var localeWeekday: Locale.Weekday? {
+        switch self {
+        case .system:    return nil
+        case .sunday:    return .sunday
+        case .monday:    return .monday
+        case .tuesday:   return .tuesday
+        case .wednesday: return .wednesday
+        case .thursday:  return .thursday
+        case .friday:    return .friday
+        case .saturday:  return .saturday
+        }
+    }
 }
 
 enum MeasurementUnitsPreference: String, CaseIterable, Identifiable {
@@ -143,6 +186,15 @@ final class AppPreferences: ObservableObject {
         }
     }
 
+    var firstWeekday: FirstWeekdayPreference {
+        didSet {
+            guard firstWeekday != oldValue else { return }
+            UserDefaults.standard.set(firstWeekday.rawValue, forKey: AppPreferenceKey.firstWeekday)
+            applyFormattingPreferences()
+            publishAppliedPreferences()
+        }
+    }
+
     private(set) var interfaceLocale: Locale
 
     /// Changes only after a complete preference transaction has been applied
@@ -160,15 +212,50 @@ final class AppPreferences: ObservableObject {
     }
 
     /// Locale used by SwiftUI controls. Besides the selected language and
-    /// numeral system, it carries the explicit 12/24-hour override so native
-    /// DatePicker controls update together with the rest of the app.
+    /// numeral system, it carries the explicit 12/24-hour override and the
+    /// chosen first day of week, so native DatePicker controls update
+    /// together with the rest of the app.
     var presentationLocale: Locale {
-        guard timeFormat != .system else { return interfaceLocale }
+        let weekday = firstWeekday.localeWeekday
+        guard timeFormat != .system || weekday != nil else { return interfaceLocale }
         var components = Locale.Components(locale: interfaceLocale)
-        components.hourCycle = timeFormat == .twelveHour
-            ? .oneToTwelve
-            : .zeroToTwentyThree
+        if timeFormat != .system {
+            components.hourCycle = timeFormat == .twelveHour
+                ? .oneToTwelve
+                : .zeroToTwentyThree
+        }
+        if let weekday {
+            components.firstDayOfWeek = weekday
+        }
         return Locale(components: components)
+    }
+
+    /// The chosen first day of week as a `Calendar.firstWeekday` index,
+    /// resolved against the device when the preference is `.system` and
+    /// clamped to the 1...7 range `Calendar` accepts.
+    var resolvedFirstWeekday: Int {
+        let resolved = firstWeekday.weekdayIndex ?? Calendar.autoupdatingCurrent.firstWeekday
+        return min(max(resolved, 1), 7)
+    }
+
+    /// Calendar for SwiftUI controls that lay out a week or a month grid.
+    /// Injected into the environment next to `presentationLocale`.
+    var presentationCalendar: Calendar {
+        var calendar = Calendar.autoupdatingCurrent
+        calendar.locale = presentationLocale
+        calendar.firstWeekday = resolvedFirstWeekday
+        return calendar
+    }
+
+    /// Menu label for a first-day-of-week option, taken from the calendar's
+    /// own standalone symbols rather than new translated strings.
+    func weekdayDisplayName(for preference: FirstWeekdayPreference) -> String {
+        var calendar = Calendar.autoupdatingCurrent
+        calendar.locale = interfaceLocale
+        let index = (preference.weekdayIndex ?? Calendar.autoupdatingCurrent.firstWeekday) - 1
+        let symbols = calendar.standaloneWeekdaySymbols
+        guard symbols.indices.contains(index) else { return "" }
+        return symbols[index]
     }
 
     private init() {
@@ -190,6 +277,9 @@ final class AppPreferences: ObservableObject {
         ) ?? .system
         timeFormat = AppTimeFormatPreference(
             rawValue: defaults.string(forKey: AppPreferenceKey.timeFormat) ?? ""
+        ) ?? .system
+        firstWeekday = FirstWeekdayPreference(
+            rawValue: defaults.string(forKey: AppPreferenceKey.firstWeekday) ?? ""
         ) ?? .system
         availableLanguageIdentifiers = supportedLanguages.sorted()
         interfaceLocale = Self.makeInterfaceLocale(for: resolvedLanguage)
@@ -286,6 +376,9 @@ final class AppPreferences: ObservableObject {
 
         GlobalState.dateFormat = resolvedDateFormat(for: dateFormat)
         GlobalState.timeFormat = resolvedTimeFormat(for: timeFormat)
+        // Legacy read surface for the calendar views and for the App Group
+        // snapshot the widgets read, so the snapshot below carries the value.
+        GlobalState.firstWeekday = resolvedFirstWeekday
         CalendarWidgetStore.saveGlobalStateSnapshot()
 
         guard refreshWeather,

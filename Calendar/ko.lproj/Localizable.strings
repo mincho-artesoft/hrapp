@@ -55,6 +55,7 @@
 "Measurement Units" = "측정 단위";
 "Date Format" = "날짜 형식";
 "Time Format" = "시간 형식";
+"First Day of Week" = "주 시작 요일";
 "System" = "시스템";
 "Metric" = "미터법";
 "Imperial" = "야드파운드법";
@@ -717,9 +718,6 @@
 "months" = "개월";
 "year"   = "년";
 "years"  = "년";
-
-/* YearMonthMiniView */
-"weekday.headers" = "일,월,화,수,목,금,토";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

@@ -55,6 +55,7 @@
 "Measurement Units" = "Unități de măsură";
 "Date Format" = "Format dată";
 "Time Format" = "Format oră";
+"First Day of Week" = "Prima zi a săptămânii";
 "System" = "Sistem";
 "Metric" = "Metric";
 "Imperial" = "Imperial";
@@ -717,9 +718,6 @@
 "months" = "luni";
 "year"   = "an";
 "years"  = "ani";
-
-/* YearMonthMiniView */
-"weekday.headers" = "D,L,M,M,J,V,S";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

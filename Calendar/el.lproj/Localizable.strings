@@ -55,6 +55,7 @@
 "Measurement Units" = "Μονάδες μέτρησης";
 "Date Format" = "Μορφή ημερομηνίας";
 "Time Format" = "Μορφή ώρας";
+"First Day of Week" = "Πρώτη ημέρα της εβδομάδας";
 "System" = "Σύστημα";
 "Metric" = "Μετρικό";
 "Imperial" = "Αυτοκρατορικό";
@@ -717,9 +718,6 @@
 "months" = "μήνες";
 "year"   = "έτος";
 "years"  = "χρόνια";
-
-/* YearMonthMiniView */
-"weekday.headers" = "Κ,Δ,Τ,Τ,Π,Π,Σ";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

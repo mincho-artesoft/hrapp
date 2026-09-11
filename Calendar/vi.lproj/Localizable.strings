@@ -55,6 +55,7 @@
 "Measurement Units" = "Đơn vị đo lường";
 "Date Format" = "Định dạng ngày";
 "Time Format" = "Định dạng giờ";
+"First Day of Week" = "Ngày đầu tuần";
 "System" = "Hệ thống";
 "Metric" = "Hệ mét";
 "Imperial" = "Hệ Anh";
@@ -717,9 +718,6 @@
 "months" = "tháng";
 "year"   = "năm";
 "years"  = "năm";
-
-/* YearMonthMiniView */
-"weekday.headers" = "CN,T2,T3,T4,T5,T6,T7";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

@@ -290,8 +290,13 @@ public class WeekCarouselView: UIView,
     private func alignToFirstWeekday(_ date: Date) -> Date {
         let cal = customCalendar
         let weekday = cal.component(.weekday, from: date)            // текущ ден от седмицата 1–7
-        let offset = cal.firstWeekday - weekday                      // колко дни да отместим назад/напред
-        let maybeStart = cal.date(byAdding: .day, value: offset, to: date) ?? date
+        // Винаги назад до началото на седмицата, която съдържа `date`.
+        // Разликата `firstWeekday - weekday` е положителна, когато денят е
+        // преди firstWeekday (например неделя при firstWeekday = понеделник),
+        // и тогава връщаше началото на СЛЕДВАЩАТА седмица — заради което
+        // appendWeeks прескачаше цяла седмица при всяко скролване напред.
+        let delta = (weekday - cal.firstWeekday + 7) % 7
+        let maybeStart = cal.date(byAdding: .day, value: -delta, to: date) ?? date
         return cal.startOfDay(for: maybeStart)
     }
 

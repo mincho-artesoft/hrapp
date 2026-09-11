@@ -55,6 +55,7 @@
 "Measurement Units" = "Mittayksiköt";
 "Date Format" = "Päivämäärän muoto";
 "Time Format" = "Ajan muoto";
+"First Day of Week" = "Viikon ensimmäinen päivä";
 "System" = "Järjestelmä";
 "Metric" = "Metrinen";
 "Imperial" = "Imperiaalinen";
@@ -717,9 +718,6 @@
 "months" = "kuukautta";
 "year"   = "vuosi";
 "years"  = "vuotta";
-
-/* YearMonthMiniView */
-"weekday.headers" = "S,M,T,K,T,P,L";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

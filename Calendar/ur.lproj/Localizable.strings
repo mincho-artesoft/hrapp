@@ -55,6 +55,7 @@
 "Measurement Units" = "پیمائش کی اکائیاں";
 "Date Format" = "تاریخ کی شکل";
 "Time Format" = "وقت کی شکل";
+"First Day of Week" = "ہفتے کا پہلا دن";
 "System" = "سسٹم";
 "Metric" = "میٹرک";
 "Imperial" = "امپیریل";
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "کوئی ہم آہنگی نہیں Google calendarابھی تک.";
 "Microsoft calendars" = "Microsoft calendarس";
 "No synced Microsoft calendars yet." = "کوئی ہم آہنگی نہیں Microsoft calendarابھی تک.";
-"Sign out" = "دستخط کریں";
+"Sign out" = "سائن آؤٹ کریں";
 "Add iCloud Calendar" = "شامل کریں iCloud کیلنڈر";
 "Share calendars with iCloud Calendar" = "کیلنڈروں کو اشتراک کریں iCloud کیلنڈر";
 "Sign in with Google" = "سائن ان کریں Google";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "چاند کا مرحلہ";
-"Moonrise" = "چاند طلوع";
-"Moonset" = "چاند سیٹ";
+"Moonrise" = "چاند کا طلوع";
+"Moonset" = "چاند کا غروب";
 "Next %@" = "اگلا %@";
 "Data unavailable" = "ڈیٹا دستیاب نہیں";
 "%d day" = "%d دن";
@@ -718,9 +719,6 @@
 "year"   = "سال";
 "years"  = "سال";
 
-/* YearMonthMiniView */
-"weekday.headers" = "S،M،T،W،T،F،S";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "کلومیٹر فی گھنٹہ";
 "Unit_Speed_mph" = "میل";
@@ -857,7 +855,7 @@
 "You can change your plan or billing period at any time." = "آپ کسی بھی وقت اپنے منصوبے یا بلنگ کی مدت کو تبدیل کرسکتے ہیں۔";
 "Invites" = "دعوت نامے";
 "Cancelled" = "منسوخ";
-"Shared by me" = "میرے ساتھ اشتراک کیا";
+"Shared by me" = "میں نے شیئر کیا";
 "Shared with me" = "میرے ساتھ اشتراک کیا";
 "No shared events yet." = "ابھی تک کوئی مشترکہ تقریبات نہیں.";
 "No one has shared an event with you yet." = "ابھی تک کسی نے آپ کے ساتھ کوئی واقعہ شیئر نہیں کیا ہے۔";
@@ -882,7 +880,7 @@
 "App Clip sharing account" = "App Clip بانٹنا اکاؤنٹ";
 "Required for synced App Clip events and recovery after reinstalling." = "مطابقت پذیر ہونے کی ضرورت App Clip واقعات اور دوبارہ انسٹال کرنے کے بعد بازیابی.";
 "Continue with Google" = "اس کے ساتھ جاری رکھیں Google";
-"Sign Out" = "سائن اپ کریں";
+"Sign Out" = "سائن آؤٹ کریں";
 "Signing in…" = "سائن ان کرنا...";
 "Sign In" = "سائن ان کریں";
 "Sign in to continue" = "جاری رکھنے کے لئے سائن ان کریں";

@@ -55,6 +55,7 @@
 "Measurement Units" = "Өлшем бірліктері";
 "Date Format" = "Күн пішімі";
 "Time Format" = "Уақыт пішімі";
+"First Day of Week" = "Аптаның бірінші күні";
 "System" = "Жүйе";
 "Metric" = "Метрикалық";
 "Imperial" = "Империялық";
@@ -717,9 +718,6 @@
 "months" = "ай";
 "year" = "жыл";
 "years" = "жыл";
-
-/* YearMonthMiniView */
-"weekday.headers" = "S, M, T, W, T, F, S";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "км/сағ";

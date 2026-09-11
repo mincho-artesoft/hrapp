@@ -92,6 +92,7 @@ struct CalendarApp: App {
                 #endif
             }
                 .environment(\.locale, appPreferences.presentationLocale)
+                .environment(\.calendar, appPreferences.presentationCalendar)
                 .environment(\.layoutDirection, appPreferences.layoutDirection)
                 .onAppear {
                     #if DEBUG
@@ -294,8 +295,11 @@ struct CalendarApp: App {
 
         GlobalState.calendar = String(describing: calendar.identifier)
 
-        GlobalState.firstWeekday = calendar.firstWeekday
-
+        // `GlobalState.firstWeekday` is owned by `applyFormattingPreferences()`
+        // below, the same way `dateFormat` and `timeFormat` are. Assigning it
+        // from `Calendar.current` here reverted the user's choice on every
+        // return to the foreground; the `.system` case still re-resolves
+        // against the device because this runs on each `.active` transition.
         appPreferences.applyFormattingPreferences()
 
         let nf = NumberFormatter()

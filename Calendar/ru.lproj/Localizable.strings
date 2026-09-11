@@ -55,6 +55,7 @@
 "Measurement Units" = "Единицы измерения";
 "Date Format" = "Формат даты";
 "Time Format" = "Формат времени";
+"First Day of Week" = "Первый день недели";
 "System" = "Системные";
 "Metric" = "Метрические";
 "Imperial" = "Имперские";
@@ -713,9 +714,6 @@
 "months" = "месяцев";
 "year"   = "год";
 "years"  = "лет";
-
-/* YearMonthMiniView */
-"weekday.headers" = "В,П,В,С,Ч,П,С";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

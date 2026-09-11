@@ -55,6 +55,7 @@
 "Measurement Units" = "ମାପ ଏକକ";
 "Date Format" = "ତାରିଖ ଫର୍ମାଟ୍";
 "Time Format" = "ସମୟ ଫର୍ମାଟ୍";
+"First Day of Week" = "ସପ୍ତାହର ପ୍ରଥମ ଦିନ";
 "System" = "ସିଷ୍ଟମ୍";
 "Metric" = "ମେଟ୍ରିକ୍";
 "Imperial" = "ଇମ୍ପେରିଆଲ୍";
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "ସିଙ୍କ୍ ନାହିଁ Google calendarଏବେ ବି ନାହିଁ ।";
 "Microsoft calendars" = "Microsoft calendarସ";
 "No synced Microsoft calendars yet." = "ସିଙ୍କ୍ ନାହିଁ Microsoft calendarଏବେ ବି ନାହିଁ ।";
-"Sign out" = "ସାଇନ୍ ଇନ୍ କରନ୍ତୁ";
+"Sign out" = "ସାଇନ୍ ଆଉଟ୍ କରନ୍ତୁ";
 "Add iCloud Calendar" = "ଯୋଡନ୍ତୁ iCloud କ୍ୟାଲେଣ୍ଡର";
 "Share calendars with iCloud Calendar" = "କ୍ୟାଲେଣ୍ଡରଗୁଡିକ ସହ ସେୟାର କରନ୍ତୁ iCloud କ୍ୟାଲେଣ୍ଡର";
 "Sign in with Google" = "ସାଇନ୍ ଇନ୍ କରନ୍ତୁ Google";
@@ -259,7 +260,7 @@
 /* MoonCard */
 "MOON PHASE" = "ଚନ୍ଦ୍ରମା";
 "Moonrise" = "ଚନ୍ଦ୍ର ଉଦୟ";
-"Moonset" = "ଚନ୍ଦ୍ରମା";
+"Moonset" = "ଚନ୍ଦ୍ର ଅସ୍ତ";
 "Next %@" = "ପରବର୍ତ୍ତୀ %@";
 "Data unavailable" = "ତଥ୍ୟ ମିଳୁନାହିଁ";
 "%d day" = "%d ଦିନ";
@@ -718,9 +719,6 @@
 "year"   = "ବର୍ଷ";
 "years"  = "ବର୍ଷ";
 
-/* YearMonthMiniView */
-"weekday.headers" = "ଏସ, ଏମ, ଟି, ୱ, ଟି, ଏଫ, ଏସ";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "କିଲୋମିଟର/ଘଣ୍ଟା";
 "Unit_Speed_mph" = "ମାଇଲ";
@@ -882,7 +880,7 @@
 "App Clip sharing account" = "App Clip ଅଂଶୀଦାର ଖାତା";
 "Required for synced App Clip events and recovery after reinstalling." = "ସିଙ୍କନ ପାଇଁ ଆବଶ୍ୟକ App Clip ପୁନଃ ସଂସ୍ଥାପନ ପରେ ଘଟଣା ଏବଂ ପୁନଃସ୍ଥାପନ ।";
 "Continue with Google" = "ଜାରି ରଖନ୍ତୁ Google";
-"Sign Out" = "ସାଇନଅପ୍ କରନ୍ତୁ";
+"Sign Out" = "ସାଇନ୍ ଆଉଟ୍ କରନ୍ତୁ";
 "Signing in…" = "ସାଇନ୍ ଇନ୍ କରିବା...";
 "Sign In" = "ସାଇନ୍ ଇନ୍ କରନ୍ତୁ";
 "Sign in to continue" = "ଜାରି ରଖିବା ପାଇଁ ସାଇନ୍ ଇନ୍ କରନ୍ତୁ";

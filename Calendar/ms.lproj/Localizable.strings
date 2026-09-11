@@ -55,6 +55,7 @@
 "Measurement Units" = "Unit ukuran";
 "Date Format" = "Format tarikh";
 "Time Format" = "Format masa";
+"First Day of Week" = "Hari pertama minggu";
 "System" = "Sistem";
 "Metric" = "Metrik";
 "Imperial" = "Imperial";
@@ -717,9 +718,6 @@
 "months" = "bulan";
 "year"   = "tahun";
 "years"  = "tahun";
-
-/* YearMonthMiniView */
-"weekday.headers" = "A,I,S,R,K,J,S";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

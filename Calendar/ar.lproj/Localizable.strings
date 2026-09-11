@@ -55,6 +55,7 @@
 "Measurement Units" = "وحدات القياس";
 "Date Format" = "تنسيق التاريخ";
 "Time Format" = "تنسيق الوقت";
+"First Day of Week" = "أول يوم في الأسبوع";
 "System" = "النظام";
 "Metric" = "متري";
 "Imperial" = "إمبراطوري";
@@ -717,9 +718,6 @@
 "months" = "أشهر";
 "year"   = "سنة";
 "years"  = "سنوات";
-
-/* YearMonthMiniView */
-"weekday.headers" = "ح,ن,ث,ر,خ,ج,س";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

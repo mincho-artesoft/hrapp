@@ -55,6 +55,7 @@
 "Measurement Units" = "単位系";
 "Date Format" = "日付形式";
 "Time Format" = "時刻形式";
+"First Day of Week" = "週の開始日";
 "System" = "システム";
 "Metric" = "メートル法";
 "Imperial" = "ヤード・ポンド法";
@@ -717,9 +718,6 @@
 "months" = "月";
 "year"   = "年";
 "years"  = "年";
-
-/* YearMonthMiniView */
-"weekday.headers" = "日,月,火,水,木,金,土";
 
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";

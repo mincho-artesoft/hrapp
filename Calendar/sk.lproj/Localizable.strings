@@ -55,6 +55,7 @@
 "Measurement Units" = "Merné jednotky";
 "Date Format" = "Formát dátumu";
 "Time Format" = "Formát času";
+"First Day of Week" = "Prvý deň týždňa";
 "System" = "Systémové";
 "Metric" = "Metrické";
 "Imperial" = "Imperiálne";
@@ -68,7 +69,7 @@
 "No email was provided." = "Žiadne e-mailové správy neboli poskytnuté.";
 "Please enter a valid email to continue." = "Prosím, zadajte platný e-mail, aby ste pokračovali.";
 "Your email" = "Váš e-mail";
-"Save" = "Ušetriť";
+"Save" = "Uložiť";
 "Login" = "Vstup";
 "Logout" = "Vstup";
 
@@ -84,7 +85,7 @@
 "No synced Google calendars yet." = "Žiadne synchronizované Google calendarEšte nie.";
 "Microsoft calendars" = "Kalendáre Microsoft";
 "No synced Microsoft calendars yet." = "Žiadne synchronizované Microsoft calendarEšte nie.";
-"Sign out" = "Vyhláste sa .";
+"Sign out" = "Odhlásiť sa";
 "Add iCloud Calendar" = "Pridať iCloud Kalendár";
 "Share calendars with iCloud Calendar" = "Podieľajte kalendáre s iCloud Kalendár";
 "Sign in with Google" = "Zapíšte sa s Google";
@@ -129,7 +130,7 @@
 "Permission:" = "Povolenie:";
 "Add" = "Pridať";
 "Sharing:" = "Spolupráca:";
-"Done" = "Vyriešené";
+"Done" = "Hotovo";
 
 "Error loading: %@" = "Následné zaťaženie: %@";
 "Error adding: %@" = "Doplnenie chyby: %@";
@@ -186,7 +187,7 @@
 "Join Meeting" = "Pridajte sa na stretnutie";
 "Edit" = "Upravovať";
 "Duplicate" = "Dvojitý";
-"Delete" = "Zmazanie";
+"Delete" = "Vymazať";
 "Share" = "Podieľanie";
 "Add to Google Meet" = "Pridať Google Stretneme sa";
 "Add to Microsoft Teams" = "Pridať Microsoft Teams";
@@ -258,8 +259,8 @@
 
 /* MoonCard */
 "MOON PHASE" = "FÁZA MESU";
-"Moonrise" = "Vstanie mesiaca";
-"Moonset" = "Múnus";
+"Moonrise" = "Východ Mesiaca";
+"Moonset" = "Západ Mesiaca";
 "Next %@" = "Ďalší %@";
 "Data unavailable" = "Nedostatočné údaje";
 "%d day" = "%d deň";
@@ -718,9 +719,6 @@
 "year"   = "rok";
 "years"  = "roky";
 
-/* YearMonthMiniView */
-"weekday.headers" = "S, M, T, W, T, F, S";
-
 /* GlobalState */
 "Unit_Speed_kmh" = "km/h";
 "Unit_Speed_mph" = "km/h";
@@ -857,8 +855,8 @@
 "You can change your plan or billing period at any time." = "Plán alebo termín účtovania môžete kedykoľvek zmeniť.";
 "Invites" = "Pozvanie";
 "Cancelled" = "Zrušené";
-"Shared by me" = "Spolupráca s nami";
-"Shared with me" = "Spolupráca sa so mnou";
+"Shared by me" = "Zdieľané mnou";
+"Shared with me" = "Zdieľané so mnou";
 "No shared events yet." = "Ešte žiadne spoločné udalosti.";
 "No one has shared an event with you yet." = "Nikto s tebou ešte nezdieľal udalosť.";
 "Events you send from the share sheet appear here." = "Akcie, ktoré pošlete z listiny sú tu.";
@@ -882,9 +880,9 @@
 "App Clip sharing account" = "App Clip účt spoločného";
 "Required for synced App Clip events and recovery after reinstalling." = "Na synchronizáciu sa vyžaduje App Clip udalosti a obnovenie po znovuinstaľovaní.";
 "Continue with Google" = "Pokračujte Google";
-"Sign Out" = "Zapiš sa";
+"Sign Out" = "Odhlásiť sa";
 "Signing in…" = "Podpis...";
-"Sign In" = "Zapíšte sa";
+"Sign In" = "Prihlásiť sa";
 "Sign in to continue" = "Zapíšte sa na pokračovanie";
 "Your account keeps this shared event recoverable after reinstalling the app." = "Váš účet zachováva túto zdieľanú udalosť obnoviteľnou po znovuinstaľovaní aplikácie.";
 "This account owns App Clip shares and restores them after reinstalling. It is separate from calendar-provider logins." = "Tento účet vlastní App Clip je oddelený od prihlásení poskytovateľa kalendára.";
