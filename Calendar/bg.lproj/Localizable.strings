@@ -1037,3 +1037,10 @@
 "Not signed in" = "Няма активен вход";
 "Sign In Required" = "Необходим е вход";
 "Ad" = "Реклама";
+
+/* Sharing methods */
+"Email" = "Имейл";
+"Messages, AirDrop, and more" = "Съобщения, AirDrop и други";
+"Invite people and assign access" = "Поканете хора и задайте достъп";
+"Let someone scan the calendar" = "Позволете сканиране на календара";
+"Let someone scan the event" = "Позволете сканиране на събитието";

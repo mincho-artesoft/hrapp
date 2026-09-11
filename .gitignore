@@ -55,3 +55,6 @@ art/sky/build/
 
 # Python bytecode from the sky bake scripts
 __pycache__/
+
+# Xcode per-user window/editor state — noise in every diff
+*.xcuserstate

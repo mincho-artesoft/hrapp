@@ -1041,3 +1041,10 @@
 "Not signed in" = "Sesión no iniciada";
 "Sign In Required" = "Es necesario iniciar sesión";
 "Ad" = "Anuncio";
+
+/* Sharing methods */
+"Email" = "Correo";
+"Messages, AirDrop, and more" = "Mensajes, AirDrop y más";
+"Invite people and assign access" = "Invita personas y asigna permisos";
+"Let someone scan the calendar" = "Permite escanear el calendario";
+"Let someone scan the event" = "Permite escanear el evento";

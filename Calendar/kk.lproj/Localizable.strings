@@ -1041,3 +1041,10 @@
 "Not signed in" = "Жүйеге кірмеген";
 "Sign In Required" = "Кіру қажет";
 "Ad" = "Жарнама";
+
+/* Sharing methods */
+"Email" = "Электрондық пошта";
+"Messages, AirDrop, and more" = "Хабарлар, AirDrop және басқалары";
+"Invite people and assign access" = "Адамдарды шақырып, рұқсат беріңіз";
+"Let someone scan the calendar" = "Күнтізбені сканерлеуге мүмкіндік беріңіз";
+"Let someone scan the event" = "Оқиғаны сканерлеуге мүмкіндік беріңіз";

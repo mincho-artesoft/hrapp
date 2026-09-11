@@ -153,6 +153,7 @@ enum ScreenshotMode {
             // formatting in whichever city the last screenshot run staged.
             shared?.removeObject(forKey: sharedTimeZoneKey)
             shared?.removeObject(forKey: "calendarWidget.screenshot.referenceDate")
+            removeStagedRegions()
             return
         }
 
@@ -191,14 +192,13 @@ enum ScreenshotMode {
            let longitude = (coordinate?.count == 2 ? coordinate?.last : nil)
                 ?? defaults.string(forKey: "ScreenshotWeatherLongitude").flatMap(Double.init),
            (-90...90).contains(latitude), (-180...180).contains(longitude) {
-            let store = SavedWeatherRegionsStore.shared
-            let region = store.save(
+            let region = stageRegion(
                 name: name,
                 subtitle: defaults.string(forKey: "ScreenshotWeatherCountry"),
                 coordinate: .init(latitude: latitude, longitude: longitude),
                 timeZone: TimeZone.current
             )
-            store.select(region.id)
+            SavedWeatherRegionsStore.shared.select(region.id)
         }
 
         if configuration.screen == .weather,
@@ -208,26 +208,25 @@ enum ScreenshotMode {
 
         if configuration.screen == .weather,
            defaults.bool(forKey: "WeatherPreviewSavedRegions") {
-            let store = SavedWeatherRegionsStore.shared
-            let sofia = store.save(
+            let sofia = stageRegion(
                 name: "София",
                 subtitle: "България",
                 coordinate: .init(latitude: 42.6977, longitude: 23.3219),
                 timeZone: TimeZone(identifier: "Europe/Sofia")
             )
-            _ = store.save(
+            _ = stageRegion(
                 name: "Пловдив",
                 subtitle: "България",
                 coordinate: .init(latitude: 42.1354, longitude: 24.7453),
                 timeZone: TimeZone(identifier: "Europe/Sofia")
             )
-            _ = store.save(
+            _ = stageRegion(
                 name: "Лондон",
                 subtitle: "Обединено кралство",
                 coordinate: .init(latitude: 51.5072, longitude: -0.1276),
                 timeZone: TimeZone(identifier: "Europe/London")
             )
-            store.select(sofia.id)
+            SavedWeatherRegionsStore.shared.select(sofia.id)
         }
 
         // The seeder creates one set of calendars per language, named for that
@@ -365,6 +364,58 @@ enum ScreenshotMode {
     }
 
     static let readyKey = "ScreenshotReady"
+
+    /// Ids of the saved regions a capture put in the user's own city list.
+    /// Kept so the next ordinary launch can take them back out again - without
+    /// it every screenshot run would leave its city behind for good.
+    private static let stagedRegionsKey = "ScreenshotStagedRegionIDs"
+
+    /// Saves a region exactly as the city picker does, and records it as this
+    /// run's, but only when it is genuinely new. `save` folds a coordinate
+    /// onto a nearby existing entry, and a city the user saved themselves must
+    /// survive the cleanup.
+    @MainActor
+    @discardableResult
+    private static func stageRegion(
+        name: String,
+        subtitle: String?,
+        coordinate: CLLocationCoordinate2D,
+        timeZone: TimeZone?
+    ) -> SavedWeatherRegion {
+        let store = SavedWeatherRegionsStore.shared
+        let existingIDs = Set(store.regions.map(\.id))
+        let region = store.save(
+            name: name,
+            subtitle: subtitle,
+            coordinate: coordinate,
+            timeZone: timeZone
+        )
+
+        guard !existingIDs.contains(region.id) else { return region }
+
+        let defaults = UserDefaults.standard
+        var staged = defaults.stringArray(forKey: stagedRegionsKey) ?? []
+        if !staged.contains(region.id.uuidString) {
+            staged.append(region.id.uuidString)
+            defaults.set(staged, forKey: stagedRegionsKey)
+        }
+        return region
+    }
+
+    /// Drops whatever the previous capture staged. Reads the key before
+    /// touching the store so an ordinary launch, which is every launch outside
+    /// a capture, does not build the singleton just to find nothing to do.
+    @MainActor
+    private static func removeStagedRegions() {
+        let defaults = UserDefaults.standard
+        guard let staged = defaults.stringArray(forKey: stagedRegionsKey) else { return }
+
+        let store = SavedWeatherRegionsStore.shared
+        for id in staged.compactMap(UUID.init(uuidString:)) {
+            store.remove(id)
+        }
+        defaults.removeObject(forKey: stagedRegionsKey)
+    }
 
     /// Shared with the widget extension, which reads it as
     /// `WidgetTimeZone.overrideKey`. Both live in the app group because the

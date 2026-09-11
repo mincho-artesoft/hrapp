@@ -124,7 +124,7 @@ class WeatherKitViewModel: ObservableObject {
                 #endif
                 updateHourlyForecast(hourlyData.forecast)
                 updateDailyForecast(dailyData.forecast)
-                updateSolarEvents(dailyData.forecast, relativeTo: observationDate)
+                updateSolarEvents(dailyData.forecast)
                 updateCurrentPrecipitationType(hourlyData.forecast, relativeTo: observationDate)
                 updateWeatherAlerts(alerts)
 
@@ -450,8 +450,8 @@ class WeatherKitViewModel: ObservableObject {
     }
 
     // MARK: - Daily Forecast Conversion
-    private func updateSolarEvents(_ days: [DayWeather], relativeTo observationDate: Date) {
-        let start = max(observationDate, self.observationDate)
+    private func updateSolarEvents(_ days: [DayWeather]) {
+        let start = observationDate
         let end = start.addingTimeInterval(24 * 60 * 60)
 
         solarDayForecast = days.prefix(10).map { day in
