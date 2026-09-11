@@ -927,7 +927,7 @@
 "Deleted by owner" = "Suprimido por el propietario";
 "Each email address can appear only once." = "Cada dirección de correo electrónico puede aparecer sólo una vez.";
 "Enter a valid email address for %@." = "Introduzca una dirección de correo electrónico válida para %@.";
-"From %@" = "From %@";
+"From %@" = "De %@";
 "Invitation pending" = "Invitación pendiente";
 "Loading shared calendars…" = "Cargando calendarios compartidos...";
 "Mail is not configured" = "El correo no está configurado";

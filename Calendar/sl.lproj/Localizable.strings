@@ -80,9 +80,9 @@
 /* CalendarsSheetView */
 "iCloud" = "iCloud";
 "Other" = "Drugi";
-"Google calendars" = "Google calendars";
+"Google calendars" = "Koledarji Google";
 "No synced Google calendars yet." = "Brez sinhronizacije Google calendarŠe vedno.";
-"Microsoft calendars" = "Microsoft calendars";
+"Microsoft calendars" = "Koledarji Microsoft";
 "No synced Microsoft calendars yet." = "Brez sinhronizacije Microsoft calendarŠe vedno.";
 "Sign out" = "Podpisujte se.";
 "Add iCloud Calendar" = "Dodatek iCloud Kalendar";
@@ -290,7 +290,7 @@
 "Total Daylight" = "Celotna dnevna svetloba";
 
 /* UVIndexCard */
-"UV INDEX" = "UV INDEX";
+"UV INDEX" = "UV INDEKS";
 "Low" = "Nizko";
 "Moderate" = "Zmerno";
 "High" = "Visoka";
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "Za ta dan ni podatkov na uro.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "Kako se temperatura počuti zaradi vlage, sončne svetlobe ali vetra.";
 "The actual air temperature." = "Temperatura zraka.";
-"HighLabelFormat" = "H: %d°";
-"LowLabelFormat"  = "L: %d°";
+"HighLabelFormat" = "Maks.: %d°";
+"LowLabelFormat"  = "Min.: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "L";
@@ -453,8 +453,8 @@
 "WindGraph_SpeedHeader" = "Hitrost vetra %d";
 "WindGraph_GustHeader" = "V redu je. %d";
 "WindGraph_SpeedRangeHeader" = "Hitrost vetra %d-Prav.%d";
-"WindGraph_MaxSpeedLabel" = "Max S";
-"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_MaxSpeedLabel" = "Najv. hitrost";
+"WindGraph_MaxGustLabel" = "Najv. sunek";
 "WindGraph_DragLabel" = "%@\nHitrost: %d\nGust: %d";
 
 /* WeatherDetailView */
@@ -571,7 +571,7 @@
 "Beaufort_5"                    = "Svež veter";
 "Beaufort_6"                    = "Močan veter";
 "Beaufort_7"                    = "Močan veter.";
-"Beaufort_8"                    = "Gale.";
+"Beaufort_8"                    = "Viharni veter";
 "Beaufort_9"                    = "Močan veter";
 "Beaufort_10"                   = "Sturma";
 "Beaufort_11"                   = "Nasilna nevihta";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"Intenzivnost se izračuna glede na količino dežja ali snega, ki pade v eni uri, in pokaže, kako močne bodo padavine. Uporablja se tudi za druge vrste padavin, kot sta žled in zimska mešanica. Naliv ali močan snežni vihar imata lahko »močno« intenzivnost, medtem ko imata običajen dež ali rahlo pršenje »zmerno« ali »šibko« intenzivnost.";
 
 /* Section titles */
 "Forecast_Title"               = "Prognoza";
@@ -792,7 +792,7 @@
 "WeatherCondition.blizzard" = "Bližnjava";
 "WeatherCondition.blowingDust" = "Prah";
 "WeatherCondition.blowingSnow" = "Snež se razdihne";
-"WeatherCondition.breezy" = "Breezy.";
+"WeatherCondition.breezy" = "Vetrovno";
 "WeatherCondition.clear" = "Jasno";
 "WeatherCondition.cloudy" = "Oblačen.";
 "WeatherCondition.drizzle" = "Vzdravi";
@@ -817,7 +817,7 @@
 "WeatherCondition.smoky" = "Dvojna dima";
 "WeatherCondition.snow" = "Sneg";
 "WeatherCondition.strongStorms" = "Močna grmljavica";
-"WeatherCondition.sunFlurries" = "Sončna žvečilka";
+"WeatherCondition.sunFlurries" = "Sonce z rahlim sneženjem";
 "WeatherCondition.sunShowers" = "Sončna prha";
 "WeatherCondition.thunderstorms" = "Vreme.";
 "WeatherCondition.tropicalStorm" = "Tropska oluja";

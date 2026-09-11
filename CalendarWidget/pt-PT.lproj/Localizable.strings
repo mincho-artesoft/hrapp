@@ -44,7 +44,7 @@
 "WeatherCondition.blizzard" = "Nevasca";
 "WeatherCondition.blowingDust" = "Poluição";
 "WeatherCondition.blowingSnow" = "Neve que sopra";
-"WeatherCondition.breezy" = "Breezy";
+"WeatherCondition.breezy" = "Com brisa";
 "WeatherCondition.clear" = "- Claro.";
 "WeatherCondition.cloudy" = "- Não .";
 "WeatherCondition.drizzle" = "Driszzle";

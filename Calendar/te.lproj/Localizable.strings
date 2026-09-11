@@ -290,7 +290,7 @@
 "Total Daylight" = "మొత్తం పగటి వెలుగు";
 
 /* UVIndexCard */
-"UV INDEX" = "UV INDEX";
+"UV INDEX" = "UV సూచిక";
 "Low" = "తక్కువ";
 "Moderate" = "మృదువైనది";
 "High" = "అధిక";
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "ఈ రోజు కోసం గంటల సంఖ్య అందుబాటులో లేదు.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "తేమ, సూర్యకాంతి లేదా గాలి కారణంగా ఉష్ణోగ్రత ఎలా ఉంటుందో.";
 "The actual air temperature." = "వాస్తవ గాలి ఉష్ణోగ్రత.";
-"HighLabelFormat" = "ఎచ్: %d°";
-"LowLabelFormat"  = "ఎల్: %d°";
+"HighLabelFormat" = "గరిష్ఠం: %d°";
+"LowLabelFormat"  = "కనిష్ఠం: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "ఎచ్";
 "HourlyGraph_LowLabel"  = "ఎల్";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"గంటకు ఎంత వర్షం లేదా మంచు కురుస్తుందో దాని ఆధారంగా తీవ్రతను లెక్కిస్తారు; వర్షం లేదా మంచు ఎంత బలంగా అనిపిస్తుందో ఇది సూచిస్తుంది. వడగళ్ల వాన, శీతాకాలపు మిశ్రమం వంటి ఇతర వర్షపాత రకాలకూ దీన్ని ఉపయోగిస్తారు. కుండపోత వర్షం లేదా తీవ్రమైన మంచు తుఫాను తీవ్రత “అధికం” కావచ్చు, అదే సమయంలో సాధారణ వర్షం లేదా తేలికపాటి తుంపర తీవ్రత “మధ్యస్థం” లేదా “తేలిక” కావచ్చు.";
 
 /* Section titles */
 "Forecast_Title"               = "అంచనా";

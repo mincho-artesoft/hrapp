@@ -276,7 +276,7 @@
 "hPa" = "hPa";
 
 /* SunsetCard */
-"SUNRISE" = "СУННІС";
+"SUNRISE" = "СХІД СОНЦЯ";
 "Sunrise: %@" = "Сун'я підходить: %@";
 "Sunset: %@" = "Запад: %@";
 "Sunrise" = "Сун'я підходить";
@@ -290,7 +290,7 @@
 "Total Daylight" = "Тотальний світлоденний світ";
 
 /* UVIndexCard */
-"UV INDEX" = "UV INDEX";
+"UV INDEX" = "УФ-індекс";
 "Low" = "Низький";
 "Moderate" = "Умірна";
 "High" = "Високий";
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "На сьогоднішній день немає годинних даних.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "Що таке температура, яка виникає в результаті вільгіння, сонячного світла або вітру.";
 "The actual air temperature." = "Фактична температура повітря.";
-"HighLabelFormat" = "H: %d°";
-"LowLabelFormat"  = "L: %d°";
+"HighLabelFormat" = "Макс.: %d°";
+"LowLabelFormat"  = "Мін.: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "L";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"Інтенсивність розраховується на основі того, скільки дощу або снігу випадає за годину, і показує, наскільки сильними відчуватимуться опади. Вона також використовується для інших типів опадів, як-от мокрий сніг і зимова суміш. Злива або сильна завірюха можуть мати «високу» інтенсивність, а звичайний дощ чи легка мряка — «помірну» або «слабку».";
 
 /* Section titles */
 "Forecast_Title"               = "Прогноз";

@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "ഈ ദിവസത്തെ മണിക്കൂറുകളില് വിവരങ്ങള് ലഭ്യമല്ല.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "ഈർപ്പം, സൂര്യപ്രകാശം, കാറ്റ് എന്നിവയുടെ ഫലമായി താപനില അനുഭവപ്പെടുന്നത്.";
 "The actual air temperature." = "വായു താപനില.";
-"HighLabelFormat" = "എച്ച്: %d°";
-"LowLabelFormat"  = "എൽ: %d°";
+"HighLabelFormat" = "കൂടിയത്: %d°";
+"LowLabelFormat"  = "കുറഞ്ഞത്: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "ഐ";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"ഒരു മണിക്കൂറിൽ എത്ര മഴയോ മഞ്ഞോ പെയ്യുന്നു എന്നതിന്റെ അടിസ്ഥാനത്തിലാണ് തീവ്രത കണക്കാക്കുന്നത്; മഴയോ മഞ്ഞോ എത്ര ശക്തമായി അനുഭവപ്പെടും എന്ന് ഇത് സൂചിപ്പിക്കുന്നു. ആലിപ്പഴ മഴ, ശൈത്യകാല മിശ്രിതം തുടങ്ങിയ മറ്റു വർഷണ തരങ്ങൾക്കും ഇത് ഉപയോഗിക്കുന്നു. പെരുമഴയ്ക്കോ കനത്ത മഞ്ഞുകാറ്റിനോ “ശക്തമായ” തീവ്രത ഉണ്ടാകാം, അതേസമയം സാധാരണ മഴയ്ക്കോ നേരിയ ചാറ്റൽമഴയ്ക്കോ “മിതമായ” അല്ലെങ്കിൽ “നേരിയ” തീവ്രത ഉണ്ടാകാം.";
 
 /* Section titles */
 "Forecast_Title"               = "പ്രവചനം";

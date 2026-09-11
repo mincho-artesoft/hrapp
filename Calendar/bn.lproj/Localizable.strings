@@ -80,9 +80,9 @@
 /* CalendarsSheetView */
 "iCloud" = "iCloud";
 "Other" = "অন্যান্য";
-"Google calendars" = "Google calendars";
+"Google calendars" = "Google ক্যালেন্ডার";
 "No synced Google calendars yet." = "সিঙ্ক নেই Google calendarএখনো না।";
-"Microsoft calendars" = "Microsoft calendars";
+"Microsoft calendars" = "Microsoft ক্যালেন্ডার";
 "No synced Microsoft calendars yet." = "সিঙ্ক নেই Microsoft calendarএখনো না।";
 "Sign out" = "সাইন আউট";
 "Add iCloud Calendar" = "যোগ করুন iCloud ক্যালেন্ডার";
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "এই দিনের জন্য কোন ঘণ্টার তথ্য পাওয়া যায়নি।";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "আর্দ্রতা, সূর্যের আলো বা বাতাসের ফলে তাপমাত্রা কেমন হয়।";
 "The actual air temperature." = "বায়ুর তাপমাত্রা।";
-"HighLabelFormat" = "H: %d°";
-"LowLabelFormat"  = "L: %d°";
+"HighLabelFormat" = "সর্বোচ্চ: %d°";
+"LowLabelFormat"  = "সর্বনিম্ন: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "L";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"তীব্রতা প্রতি ঘণ্টায় কতটা বৃষ্টি বা তুষার পড়ে তার ভিত্তিতে গণনা করা হয় এবং এটি বোঝায় বৃষ্টি বা তুষারপাত কতটা ভারী অনুভূত হবে। এটি শিলাবৃষ্টি ও শীতকালীন মিশ্র বর্ষণের মতো অন্যান্য ধরনের বর্ষণের ক্ষেত্রেও ব্যবহৃত হয়। প্রবল বর্ষণ বা ভারী তুষারঝড়ের তীব্রতা “ভারী” হতে পারে, আর সাধারণ বৃষ্টি বা হালকা গুঁড়ি গুঁড়ি বৃষ্টির তীব্রতা “মাঝারি” বা “হালকা” হতে পারে।";
 
 /* Section titles */
 "Forecast_Title"               = "পূর্বাভাস";

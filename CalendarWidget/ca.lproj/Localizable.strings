@@ -44,7 +44,7 @@
 "WeatherCondition.blizzard" = "Tempesta de neu";
 "WeatherCondition.blowingDust" = "Pols";
 "WeatherCondition.blowingSnow" = "Neve que sopla";
-"WeatherCondition.breezy" = "Breezy";
+"WeatherCondition.breezy" = "Ventós";
 "WeatherCondition.clear" = "Clar";
 "WeatherCondition.cloudy" = "Oblidats";
 "WeatherCondition.drizzle" = "Driszzle";
@@ -69,7 +69,7 @@
 "WeatherCondition.smoky" = "Fums";
 "WeatherCondition.snow" = "Neve";
 "WeatherCondition.strongStorms" = "Una tempesta de fulgres";
-"WeatherCondition.sunFlurries" = "Sun Flurries";
+"WeatherCondition.sunFlurries" = "Sol i nevades lleugeres";
 "WeatherCondition.sunShowers" = "Les dutxes de sol";
 "WeatherCondition.thunderstorms" = "Tormenta de trums";
 "WeatherCondition.tropicalStorm" = "Tempesta tropical";

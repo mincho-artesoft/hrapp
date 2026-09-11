@@ -74,7 +74,7 @@
 
 /* RootView */
 "N/A" = "N/A";
-"Calendars" = "Calendars";
+"Calendars" = "Calendaris";
 "Inbox" = "Caixa de recepció";
 
 /* CalendarsSheetView */
@@ -330,7 +330,7 @@
 "Rising" = "L'augment";
 "Steady" = "Estatal";
 "Unknown" = "No conegut";
-"Sunny" = "Sunny";
+"Sunny" = "Assolellat";
 "Cloudy" = "Oblidats";
 "Partly Cloudy" = "En part nublada";
 "Drizzle" = "Driszzle";
@@ -338,7 +338,7 @@
 "Fog" = "Neve";
 "Partly Cloudy Night" = "Noit parcialment nublada";
 "Clear Night" = "Noc clara";
-"Hazy" = "Hazy";
+"Hazy" = "Boirós";
 "Today" = "Avui";
 "Now" = "Ara, ara.";
 
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "No hi ha dades horàries disponibles per aquest dia.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "Com es sent la temperatura com a resultat de l'humitat, la llum solar o el vent.";
 "The actual air temperature." = "La temperatura de l'aire real.";
-"HighLabelFormat" = "H: %d°";
-"LowLabelFormat"  = "L: %d°";
+"HighLabelFormat" = "Màx.: %d°";
+"LowLabelFormat"  = "Mín.: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "L";
@@ -453,8 +453,8 @@
 "WindGraph_SpeedHeader" = "Velocitat del vent %d";
 "WindGraph_GustHeader" = "Gusta fins a %d";
 "WindGraph_SpeedRangeHeader" = "Velocitat del vent %d- És el meu.%d";
-"WindGraph_MaxSpeedLabel" = "Max S";
-"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_MaxSpeedLabel" = "Vel. màx";
+"WindGraph_MaxGustLabel" = "Ràf. màx";
 "WindGraph_DragLabel" = "%@\nVelocitat: %d\nGust: %d";
 
 /* WeatherDetailView */
@@ -571,7 +571,7 @@
 "Beaufort_5"                    = "Brisa fresca";
 "Beaufort_6"                    = "Una brisa forta";
 "Beaufort_7"                    = "Un vent fort";
-"Beaufort_8"                    = "Gale";
+"Beaufort_8"                    = "Temporal";
 "Beaufort_9"                    = "Una forta ventana";
 "Beaufort_10"                   = "Tempesta";
 "Beaufort_11"                   = "Tormenta violenta";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"La intensitat es calcula segons la quantitat de pluja o neu que cau per hora i indica com de forta es notarà la precipitació. També s'utilitza per a altres tipus de precipitació, com l'aiguaneu i la barreja hivernal. Un xàfec o una nevada intensa poden tenir una intensitat «forta», mentre que una pluja normal o un plugim lleuger poden tenir una intensitat «moderada» o «lleugera».";
 
 /* Section titles */
 "Forecast_Title"               = "Previsió";
@@ -628,8 +628,8 @@
 "Section_DailySummary"                 = "Resum diari";
 "ForecastVisibility_TodayFormat" = "Avui, la visibilitat serà %@, en %d a %d %@- Sí .";
 "ForecastVisibility_OtherFormat" = "En %@, la visibilitat més baixa serà %@ a %d %@, i el més alt serà %@ a %d %@- Sí .";
-"Clarity_Foggy"                        = "Foggy";
-"Clarity_Hazy"                         = "Hazy";
+"Clarity_Foggy"                        = "Amb boira";
+"Clarity_Hazy"                         = "Boirós";
 "Clarity_Clear"                        = "Clar";
 "Clarity_PerfectlyClear"               = "Perfecte clar.";
 
@@ -792,7 +792,7 @@
 "WeatherCondition.blizzard" = "Tempesta de neu";
 "WeatherCondition.blowingDust" = "Pols";
 "WeatherCondition.blowingSnow" = "Neve que sopla";
-"WeatherCondition.breezy" = "Breezy";
+"WeatherCondition.breezy" = "Ventós";
 "WeatherCondition.clear" = "Clar";
 "WeatherCondition.cloudy" = "Oblidats";
 "WeatherCondition.drizzle" = "Driszzle";
@@ -817,7 +817,7 @@
 "WeatherCondition.smoky" = "Fums";
 "WeatherCondition.snow" = "Neve";
 "WeatherCondition.strongStorms" = "Una tempesta de fulgres";
-"WeatherCondition.sunFlurries" = "Sun Flurries";
+"WeatherCondition.sunFlurries" = "Sol i nevades lleugeres";
 "WeatherCondition.sunShowers" = "Les dutxes de sol";
 "WeatherCondition.thunderstorms" = "Tormenta de trums";
 "WeatherCondition.tropicalStorm" = "Tempesta tropical";
@@ -855,7 +855,7 @@
 "Change Plan" = "Canvia el pla";
 "Current Plan" = "Plan actual";
 "You can change your plan or billing period at any time." = "Pots canviar el teu pla o el termini de facturació en qualsevol moment.";
-"Invites" = "Invites";
+"Invites" = "Invitacions";
 "Cancelled" = "Cancel·la";
 "Shared by me" = "Comparteix per mi";
 "Shared with me" = "Compartiu amb mi";

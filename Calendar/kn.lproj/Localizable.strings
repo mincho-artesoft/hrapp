@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "ಈ ದಿನಕ್ಕೆ ಯಾವುದೇ ಗಂಟೆಯ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "ತೇವಾಂಶ, ಸೂರ್ಯನ ಬೆಳಕು ಅಥವಾ ಗಾಳಿಯ ಪರಿಣಾಮವಾಗಿ ತಾಪಮಾನ ಹೇಗಿರುತ್ತದೆ.";
 "The actual air temperature." = "ನಿಜವಾದ ಗಾಳಿಯ ಉಷ್ಣತೆ.";
-"HighLabelFormat" = "ಎಚ್: %d°";
-"LowLabelFormat"  = "ಎಲ್: %d°";
+"HighLabelFormat" = "ಗರಿಷ್ಠ: %d°";
+"LowLabelFormat"  = "ಕನಿಷ್ಠ: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "ಎಚ್";
 "HourlyGraph_LowLabel"  = "L";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"ತೀವ್ರತೆಯನ್ನು ಗಂಟೆಗೆ ಎಷ್ಟು ಮಳೆ ಅಥವಾ ಹಿಮ ಬೀಳುತ್ತದೆ ಎಂಬುದರ ಆಧಾರದ ಮೇಲೆ ಲೆಕ್ಕ ಹಾಕಲಾಗುತ್ತದೆ ಮತ್ತು ಮಳೆ ಅಥವಾ ಹಿಮ ಎಷ್ಟು ಬಲವಾಗಿ ಅನಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ಸೂಚಿಸುತ್ತದೆ. ಇದನ್ನು ಆಲಿಕಲ್ಲು ಮಳೆ ಮತ್ತು ಚಳಿಗಾಲದ ಮಿಶ್ರಣದಂತಹ ಇತರ ಮಳೆ ಪ್ರಕಾರಗಳಿಗೂ ಬಳಸಲಾಗುತ್ತದೆ. ಧಾರಾಕಾರ ಮಳೆ ಅಥವಾ ಭಾರೀ ಹಿಮಬಿರುಗಾಳಿ “ಭಾರೀ” ತೀವ್ರತೆ ಹೊಂದಿರಬಹುದು, ಆದರೆ ಸಾಮಾನ್ಯ ಮಳೆ ಅಥವಾ ತೆಳು ತುಂತುರು “ಮಧ್ಯಮ” ಅಥವಾ “ಹಗುರ” ತೀವ್ರತೆ ಹೊಂದಿರಬಹುದು.";
 
 /* Section titles */
 "Forecast_Title"               = "ಮುನ್ಸೂಚನೆ";

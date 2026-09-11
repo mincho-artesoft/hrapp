@@ -44,7 +44,7 @@
 "WeatherCondition.blizzard" = "Bližnjava";
 "WeatherCondition.blowingDust" = "Prah";
 "WeatherCondition.blowingSnow" = "Snež se razdihne";
-"WeatherCondition.breezy" = "Breezy.";
+"WeatherCondition.breezy" = "Vetrovno";
 "WeatherCondition.clear" = "Jasno";
 "WeatherCondition.cloudy" = "Oblačen.";
 "WeatherCondition.drizzle" = "Vzdravi";
@@ -69,7 +69,7 @@
 "WeatherCondition.smoky" = "Dvojna dima";
 "WeatherCondition.snow" = "Sneg";
 "WeatherCondition.strongStorms" = "Močna grmljavica";
-"WeatherCondition.sunFlurries" = "Sončna žvečilka";
+"WeatherCondition.sunFlurries" = "Sonce z rahlim sneženjem";
 "WeatherCondition.sunShowers" = "Sončna prha";
 "WeatherCondition.thunderstorms" = "Vreme.";
 "WeatherCondition.tropicalStorm" = "Tropska oluja";

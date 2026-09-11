@@ -80,9 +80,9 @@
 /* CalendarsSheetView */
 "iCloud" = "iCloud";
 "Other" = "इतर";
-"Google calendars" = "Google calendars";
+"Google calendars" = "Google कॅलेंडर";
 "No synced Google calendars yet." = "कोणत्याही समक्रमण नाही Google calendarअजून नाही.";
-"Microsoft calendars" = "Microsoft calendars";
+"Microsoft calendars" = "Microsoft कॅलेंडर";
 "No synced Microsoft calendars yet." = "कोणत्याही समक्रमण नाही Microsoft calendarअजून नाही.";
 "Sign out" = "साइन अप करा";
 "Add iCloud Calendar" = "जोडणे iCloud कॅलेंडर";
@@ -290,7 +290,7 @@
 "Total Daylight" = "पूर्ण दिवसाचा प्रकाश";
 
 /* UVIndexCard */
-"UV INDEX" = "UV INDEX";
+"UV INDEX" = "यूव्ही निर्देशांक";
 "Low" = "कमी";
 "Moderate" = "मध्यम";
 "High" = "उच्च";
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "या दिवशी तासाचा डेटा उपलब्ध नाही.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "आर्द्रता, सूर्यप्रकाश किंवा वारामुळे तापमान कसे वाटते.";
 "The actual air temperature." = "हवाचे वास्तविक तापमान.";
-"HighLabelFormat" = "H: %d°";
-"LowLabelFormat"  = "L: %d°";
+"HighLabelFormat" = "कमाल: %d°";
+"LowLabelFormat"  = "किमान: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "L";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"तीव्रतेची गणना प्रति तास किती पाऊस किंवा बर्फ पडतो यावर आधारित केली जाते आणि पाऊस किंवा बर्फ किती जोरदार जाणवेल हे ती दर्शवते. गारांचा पाऊस आणि हिवाळी मिश्रण यांसारख्या इतर वर्षणप्रकारांसाठीही ती वापरली जाते. मुसळधार पाऊस किंवा तीव्र हिमवादळाची तीव्रता “जोरदार” असू शकते, तर सामान्य पाऊस किंवा हलक्या रिमझिमीची तीव्रता “मध्यम” किंवा “हलकी” असू शकते.";
 
 /* Section titles */
 "Forecast_Title"               = "अंदाज";

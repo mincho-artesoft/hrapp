@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "Бұл күн үшін сағаттық деректер қолжетімді емес.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "Ылғалдылық, күн сәулесі немесе жел нәтижесінде температура қандай болады.";
 "The actual air temperature." = "Нақты ауа температурасы.";
-"HighLabelFormat" = "H: %d°";
-"LowLabelFormat" = "L: %d°";
+"HighLabelFormat" = "Макс.: %d°";
+"LowLabelFormat" = "Мин.: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel" = "L";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"Қарқындылық бір сағатта қанша жаңбыр немесе қар жауатынына қарай есептеледі және жауын-шашынның қаншалықты күшті сезілетінін көрсетеді. Ол сондай-ақ сулы қар мен қысқы аралас жауын сияқты басқа түрлерге де қолданылады. Нөсер немесе қатты боран «күшті» қарқындылыққа ие болуы мүмкін, ал қалыпты жаңбыр немесе жеңіл себелек «орташа» не «әлсіз» қарқындылықта болады.";
 
 /* Section titles */
 "Forecast_Title" = "Болжам";

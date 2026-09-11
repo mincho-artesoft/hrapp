@@ -290,7 +290,7 @@
 "Total Daylight" = "முழு பகல் ஒளி";
 
 /* UVIndexCard */
-"UV INDEX" = "UV INDEX";
+"UV INDEX" = "UV குறியீட்டெண்";
 "Low" = "குறைந்த அளவு";
 "Moderate" = "மிதமான";
 "High" = "உயர்";
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "இன்று வரை மணிநேர தரவு எதுவும் கிடைக்கவில்லை.";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "ஈரப்பதம், சூரிய ஒளி அல்லது காற்று காரணமாக வெப்பநிலை எப்படி இருக்கும்.";
 "The actual air temperature." = "உண்மையான காற்று வெப்பநிலை.";
-"HighLabelFormat" = "H: %d°";
-"LowLabelFormat"  = "எல்ஃ %d°";
+"HighLabelFormat" = "அதிகபட்சம்: %d°";
+"LowLabelFormat"  = "குறைந்தது: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "L";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"ஒரு மணி நேரத்தில் எவ்வளவு மழை அல்லது பனி பொழிகிறது என்பதன் அடிப்படையில் தீவிரம் கணக்கிடப்படுகிறது; மழை அல்லது பனி எவ்வளவு கடுமையாக உணரப்படும் என்பதை இது குறிக்கிறது. பனிக்கட்டி மழை, குளிர்கால கலவை போன்ற பிற பொழிவு வகைகளுக்கும் இது பயன்படுகிறது. கனமழை அல்லது கடுமையான பனிப்புயலின் தீவிரம் “அதிகம்” ஆக இருக்கலாம், அதே நேரத்தில் சராசரி மழை அல்லது இலேசான தூறலின் தீவிரம் “மிதமானது” அல்லது “இலேசானது” ஆக இருக்கலாம்.";
 
 /* Section titles */
 "Forecast_Title"               = "முன்னறிவிப்பு";

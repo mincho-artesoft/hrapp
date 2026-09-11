@@ -97,7 +97,7 @@
 /* AddCalendarView */
 "Calendar Name" = "Nome do calendário";
 "Account" = "Conta";
-"COLOR" = "COLOR";
+"COLOR" = "COR";
 "NOTIFICATIONS" = "Notificações";
 "Event Alerts" = "Alertas de eventos";
 "Allow events on this calendar to display alerts." = "Permitir que os eventos deste calendário exijam alertas.";
@@ -453,8 +453,8 @@
 "WindGraph_SpeedHeader" = "Velocidade do vento %d";
 "WindGraph_GustHeader" = "Gostas até %d";
 "WindGraph_SpeedRangeHeader" = "Velocidade do vento %d- Não .%d";
-"WindGraph_MaxSpeedLabel" = "Max S";
-"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_MaxSpeedLabel" = "Vel. máx";
+"WindGraph_MaxGustLabel" = "Raj. máx";
 "WindGraph_DragLabel" = "%@\nVelocidade: %d\nGust: %d";
 
 /* WeatherDetailView */
@@ -571,7 +571,7 @@
 "Beaufort_5"                    = "Brisa fresca";
 "Beaufort_6"                    = "Brisa forte";
 "Beaufort_7"                    = "Vento forte";
-"Beaufort_8"                    = "Gale";
+"Beaufort_8"                    = "Vendaval";
 "Beaufort_9"                    = "Forte vento";
 "Beaufort_10"                   = "Tempestade";
 "Beaufort_11"                   = "Tempestade violenta";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"A intensidade é calculada com base na quantidade de chuva ou neve que cai por hora e indica quão forte a chuva ou a neve será sentida. Também é usada para outros tipos de precipitação, como chuva gelada e precipitação mista de inverno. Um aguaceiro ou uma tempestade de neve intensa pode ter intensidade “forte”, enquanto uma chuva comum ou um chuvisco mais leve pode ter intensidade “moderada” ou “fraca”.";
 
 /* Section titles */
 "Forecast_Title"               = "Previsão";
@@ -792,7 +792,7 @@
 "WeatherCondition.blizzard" = "Nevasca";
 "WeatherCondition.blowingDust" = "Poluição";
 "WeatherCondition.blowingSnow" = "Neve que sopra";
-"WeatherCondition.breezy" = "Breezy";
+"WeatherCondition.breezy" = "Com brisa";
 "WeatherCondition.clear" = "- Claro.";
 "WeatherCondition.cloudy" = "- Não .";
 "WeatherCondition.drizzle" = "Driszzle";

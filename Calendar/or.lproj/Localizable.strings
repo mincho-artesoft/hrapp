@@ -290,7 +290,7 @@
 "Total Daylight" = "ସଂପୂର୍ଣ୍ଣ ଦିନର ଆଲୋକ";
 
 /* UVIndexCard */
-"UV INDEX" = "UV INDEX";
+"UV INDEX" = "UV ସୂଚକାଙ୍କ";
 "Low" = "କମ";
 "Moderate" = "ମଜବୁତ";
 "High" = "ଉଚ୍ଚ";
@@ -378,8 +378,8 @@
 "No hourly data available for this day." = "ଆଜି ପର୍ଯ୍ୟନ୍ତ କୌଣସି ଘଣ୍ଟା ଘଣ୍ଟା ତଥ୍ୟ ଉପଲବ୍ଧ ନାହିଁ ।";
 "What the temperature feels like as a result of humidity, sunlight or wind." = "ଆର୍ଦ୍ରତା, ସୂର୍ଯ୍ୟ କିରଣ କିମ୍ବା ପବନ ଯୋଗୁଁ ତାପମାତ୍ରା କିପରି ଅନୁଭବ ହୁଏ ।";
 "The actual air temperature." = "ପ୍ରକୃତ ବାୟୁ ତାପମାତ୍ରା ।";
-"HighLabelFormat" = "ଏଚ: %d°";
-"LowLabelFormat"  = "L: %d°";
+"HighLabelFormat" = "ସର୍ବାଧିକ: %d°";
+"LowLabelFormat"  = "ସର୍ବନିମ୍ନ: %d°";
 // MARK: English (en.lproj/Localizable.strings)
 "HourlyGraph_HighLabel" = "H";
 "HourlyGraph_LowLabel"  = "L";
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"ଘଣ୍ଟା ପିଛା କେତେ ବର୍ଷା କିମ୍ବା ତୁଷାର ପଡ଼େ ତାହା ଆଧାରରେ ତୀବ୍ରତା ଗଣନା କରାଯାଏ ଏବଂ ଏହା ବର୍ଷା କିମ୍ବା ତୁଷାର କେତେ ପ୍ରବଳ ଅନୁଭୂତ ହେବ ତାହା ସୂଚାଏ। ଶିଳାବୃଷ୍ଟି ଏବଂ ଶୀତକାଳୀନ ମିଶ୍ରଣ ଭଳି ଅନ୍ୟ ବର୍ଷଣ ପ୍ରକାର ପାଇଁ ମଧ୍ୟ ଏହା ବ୍ୟବହୃତ ହୁଏ। ପ୍ରବଳ ବର୍ଷା କିମ୍ବା ଭାରୀ ତୁଷାରଝଡ଼ର ତୀବ୍ରତା “ପ୍ରବଳ” ହୋଇପାରେ, ଯେତେବେଳେ ସାଧାରଣ ବର୍ଷା କିମ୍ବା ହାଲୁକା ବୁନ୍ଦାର ତୀବ୍ରତା “ମଧ୍ୟମ” କିମ୍ବା “ହାଲୁକା” ହୋଇପାରେ।";
 
 /* Section titles */
 "Forecast_Title"               = "ପୂର୍ବାନୁମାନ";

@@ -453,8 +453,8 @@
 "WindGraph_SpeedHeader" = "Velocidad del viento %d";
 "WindGraph_GustHeader" = "Guste hasta %d";
 "WindGraph_SpeedRangeHeader" = "Velocidad del viento %d- ¿ Qué ?%d";
-"WindGraph_MaxSpeedLabel" = "Max S";
-"WindGraph_MaxGustLabel" = "Max G";
+"WindGraph_MaxSpeedLabel" = "Vel máx";
+"WindGraph_MaxGustLabel" = "Ráf máx";
 "WindGraph_DragLabel" = "%@\nVelocidad: %d\nGust: ¿Qué es eso? %d";
 
 /* WeatherDetailView */
@@ -601,7 +601,7 @@
 
 /* Full description of how precipitation intensity is calculated */
 "AboutPrecipitation_Body" =
-"Intensity is calculated based on how much rain or snow falls per hour and is meant to indicate how heavy the rain or snow will feel. It is also used with other precipitation types such as sleet and wintry mix. A downpour or heavy snowstorm can have a \"heavy\" intensity, while an average rainfall or lighter drizzle can have a \"moderate\" or \"light\" intensity.";
+"La intensidad se calcula según la cantidad de lluvia o nieve que cae por hora y está pensada para indicar cuán intensa se sentirá la precipitación. También se utiliza para otros tipos de precipitación, como aguanieve o mezclas invernales. Un aguacero o tormenta de nieve intensa puede tener intensidad «fuerte», mientras que una lluvia normal o llovizna ligera puede tener intensidad «moderada» o «ligera».";
 
 /* Section titles */
 "Forecast_Title" = "Pronóstico";
