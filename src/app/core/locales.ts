@@ -52,6 +52,19 @@ export const LOCALES: readonly Locale[] = [
     storefront: 'sa',
   },
   {
+    code: 'bg',
+    slug: 'bg',
+    hreflang: 'bg',
+    label: 'Български',
+    dir: 'ltr',
+    // The App Store carries no Bulgarian localisation, so there is no folder of
+    // Bulgarian screenshots to point at. The rail shows the English shots
+    // rather than nothing: the app's own interface is what a reader is about to
+    // see, and it is in English for them either way.
+    media: 'en-US',
+    storefront: 'bg',
+  },
+  {
     code: 'cs',
     slug: 'cs',
     hreflang: 'cs',
@@ -331,6 +344,7 @@ export function storeUrl(locale: Locale, base: string): string {
 export type LocaleCode =
   | 'en-US'
   | 'ar-SA'
+  | 'bg'
   | 'cs'
   | 'da'
   | 'de-DE'

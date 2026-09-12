@@ -14,6 +14,7 @@
 export const STORE_CTA: Readonly<Record<string, string>> = {
   'en-US': 'Download on the App Store',
   'ar-SA': 'التنزيل من App Store',
+  bg: 'Изтеглете от App Store',
   cs: 'Stáhnout z App Store',
   da: 'Hent i App Store',
   'de-DE': 'Laden im App Store',

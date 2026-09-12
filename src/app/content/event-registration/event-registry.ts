@@ -2,6 +2,7 @@ import { LocaleCode } from '../../core/locales';
 import { EventCopy } from './types';
 import { EVENT_EN_US } from './event-en';
 import { EVENT_AR_SA } from './event-ar-SA';
+import { EVENT_BG } from './event-bg';
 import { EVENT_CS } from './event-cs';
 import { EVENT_DA } from './event-da';
 import { EVENT_DE_DE } from './event-de-DE';
@@ -33,6 +34,7 @@ import { EVENT_ZH_HANT } from './event-zh-Hant';
 /** The shareable-events copy, per language — English fallback. */
 export const EVENT_COPY: Readonly<Record<LocaleCode, EventCopy>> = {
   'en-US': EVENT_EN_US,
+  bg: EVENT_BG,
   'ar-SA': EVENT_AR_SA,
   cs: EVENT_CS,
   da: EVENT_DA,

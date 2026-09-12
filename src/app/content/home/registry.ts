@@ -28,6 +28,7 @@ import { HOME_HI } from './hi';
 import { HOME_TH } from './th';
 import { HOME_AR_SA } from './ar-SA';
 import { HOME_HE } from './he';
+import { HOME_BG } from './bg';
 import { HomeCopy } from './types';
 
 /**
@@ -42,6 +43,7 @@ export const HOME_COPY: Readonly<Partial<Record<LocaleCode, HomeCopy>>> = {
   'en-US': HOME_EN_US,
   he: HOME_HE,
   'ar-SA': HOME_AR_SA,
+  bg: HOME_BG,
   th: HOME_TH,
   hi: HOME_HI,
   'zh-Hant': HOME_ZH_HANT,

@@ -214,6 +214,50 @@ export const ARTICLE_FACTS: Readonly<Record<string, ArticleFacts>> = {
     claims: [{ id: 'advancedMonthly', value: '0.49' }],
     updated: '2026-08-27',
   },
+  'why-a-shared-calendar-does-not-appear': {
+    slug: 'why-a-shared-calendar-does-not-appear',
+    family: 'sharing',
+    intent: 'editing',
+    claims: [
+      { id: 'refreshHint', value: '1' },
+      { id: 'accounts', value: '3' },
+    ],
+    updated: '2026-09-12',
+  },
+  'the-secret-address-of-a-google-calendar': {
+    slug: 'the-secret-address-of-a-google-calendar',
+    family: 'sharing',
+    intent: 'editing',
+    claims: [
+      { id: 'linkLength', value: '22' },
+      { id: 'sharePrice', value: '0' },
+    ],
+    updated: '2026-09-12',
+  },
+  'what-guests-can-do-to-your-event': {
+    slug: 'what-guests-can-do-to-your-event',
+    family: 'sharing',
+    intent: 'editing',
+    claims: [{ id: 'sharePrice', value: '0' }],
+    updated: '2026-09-12',
+  },
+  'google-calendars-that-never-reach-your-iphone': {
+    slug: 'google-calendars-that-never-reach-your-iphone',
+    family: 'unify',
+    intent: 'unify',
+    claims: [
+      { id: 'accounts', value: '3' },
+      { id: 'price', value: '0' },
+    ],
+    updated: '2026-09-12',
+  },
+  'taking-back-a-calendar-you-shared': {
+    slug: 'taking-back-a-calendar-you-shared',
+    family: 'sharing',
+    intent: 'editing',
+    claims: [{ id: 'advancedMonthly', value: '0.49' }],
+    updated: '2026-09-12',
+  },
   'inviting-people-who-do-not-have-the-app': {
     slug: 'inviting-people-who-do-not-have-the-app',
     family: 'sharing',
