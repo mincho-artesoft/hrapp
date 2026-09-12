@@ -993,13 +993,14 @@ private enum WeatherSceneRenderer {
         time: TimeInterval,
         size: CGSize
     ) -> [WeatherCloudPlacement] {
-        let count = min(30, max(0, Int(ceil(scene.cloudCoverage * 30))))
+        let capacity = min(30, max(8, Int(size.width / 45)))
+        let count = min(capacity, max(0, Int(ceil(scene.cloudCoverage * Double(capacity)))))
         let direction = scene.cloudTravelVector
 
         return (0..<count).map { index in
             let depth = hash(index, 22)
             let shape = hash(index, 25)
-            let scale = CGFloat(0.52 + depth * 0.38 + shape * 0.10)
+            let scale = CGFloat(0.28 + pow(depth, 1.3) * 0.94 + shape * 0.10)
             let strain = CGFloat(1 + min(scene.effectiveWindKPH, 150) * 0.0015 * sin(time * 0.08 + Double(index)))
             let cloudWidth = CGFloat(188 + hash(index, 26) * 58) * scale * strain
             let usesStorm = hash(index, 23) < scene.stormCloudWeight
@@ -1008,7 +1009,7 @@ private enum WeatherSceneRenderer {
             // Each cloud has its own altitude and starting phase. Depth still
             // influences scale and blur, but never forces a visible row.
             let altitudeJitter = (hash(index, 27) - 0.5) * 0.105
-            let baseY = size.height * CGFloat(0.085 + depth * 0.245 + altitudeJitter)
+            let baseY = size.height * CGFloat(0.06 + (1 - depth) * 0.43 + altitudeJitter)
             let windLift = sin(CGFloat(time) * 0.017 + CGFloat(index) * 1.37)
                 * size.height * 0.012 * CGFloat(direction.dy)
             let organicLift = sin(CGFloat(time) * 0.046 + CGFloat(index) * 2.11)
@@ -1040,8 +1041,8 @@ private enum WeatherSceneRenderer {
                     height: cloudHeight
                 ),
                 usesStormSprite: usesStorm,
-                opacity: (0.32 + depth * 0.34 + shape * 0.05) * (scene.isNight ? 0.76 : 1),
-                blur: max(0.35, 2.8 - depth * 2.35)
+                opacity: (0.74 + depth * 0.16 + shape * 0.04) * (scene.isNight ? 0.76 : 1),
+                blur: 0.12 + (1 - depth) * 0.35
             )
         }
         .sorted { $0.depth < $1.depth }
