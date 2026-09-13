@@ -2,9 +2,12 @@ import { HomeCopy } from './types';
 
 /** The home page in Japanese. */
 export const HOME_JA: HomeCopy = {
-  metaTitle: 'Cloud Calendars — カレンダーと天気をひとつの画面に',
+  // 同じ理由で書き直した。「クラウドカレンダー」で月に88回表示されて一度も
+  // 押されていない。探している人が欲しいのは天気ではなく、アカウントをまとめる
+  // カレンダーなので、それを先に言う。
+  metaTitle: 'Cloud Calendars — iCloud・Google・Outlook をひとつの画面に',
   metaDescription:
-    'iCloud・Google・Microsoft のカレンダーをひとつの枠に、天気を日そのものの中へ。iPhone と iPad で無料。',
+    'iPhone と iPad で、iCloud・Google・Outlook のカレンダーをひとつの画面に。無料で始められ、アカウント登録は不要。その日の天気もカレンダーの中に。',
   nav: {
     tour: 'ツアー',
     widgets: 'ウィジェット',
