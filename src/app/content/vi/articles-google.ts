@@ -28,6 +28,20 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Chi phí hằng tháng của gói nơi việc này được quản lý trong ứng dụng, tính bằng đô la',
     },
+    faq: [
+      {
+        q: 'Người khác có thấy tiêu đề sự kiện của tôi nếu tôi chỉ chia sẻ rảnh/bận không?',
+        a: 'Không. Rảnh/bận chỉ hiện các khối thời gian, không có tiêu đề, địa điểm, ghi chú hay khách mời. Chỉ «mọi chi tiết» mới để lộ những thứ đó — và để lộ tất cả.',
+      },
+      {
+        q: 'Quyền «thực hiện thay đổi và quản lý chia sẻ» cho phép làm gì?',
+        a: 'Sửa mọi sự kiện và trao lịch của bạn cho người khác mà không hỏi bạn. Đó là mức duy nhất cho phép người khác phát quyền truy cập.',
+      },
+      {
+        q: 'Tôi có xem được ai đang có quyền vào lịch của mình không?',
+        a: 'Có, trong phần cài đặt chia sẻ của lịch đó. Chẳng có gì nhắc bạn xem, còn chia sẻ thì cứ dồn lại: hãy đọc danh sách hai lần mỗi năm.',
+      },
+    ],
     practical: [
       'Mặc định rảnh/bận cho bất kỳ ai chỉ cần đặt giờ với bạn.',
       'Dành «thực hiện thay đổi» cho người thật sự sắp lịch thay bạn.',
@@ -63,6 +77,20 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Số giờ giữa các lần một nguồn đã đăng ký xin làm mới',
       accounts: 'Số loại tài khoản mà một khung nhìn giữ chung, không cần tới những thứ này',
     },
+    faq: [
+      {
+        q: 'Tôi đã nhận lịch chia sẻ nhưng nó không có trên iPhone. Vì sao?',
+        a: 'Việc chia sẻ đáp xuống đúng tài khoản Google được gửi tới, và một lịch vừa được thêm thường đến các thiết bị khác ở trạng thái tắt. Hãy xem tài khoản trước, rồi tìm nó ở dạng chưa đánh dấu chứ không phải mất hẳn.',
+      },
+      {
+        q: 'Chia sẻ tới địa chỉ nhóm có được không?',
+        a: 'Hiếm khi. Danh sách thư gần như không tới được từng người phía sau nó. Cần địa chỉ vốn chính là một tài khoản Google.',
+      },
+      {
+        q: 'Bao lâu thì lịch chia sẻ xuất hiện?',
+        a: 'Chia sẻ bằng quyền xuất hiện ngay khi danh sách làm mới. Lịch chia sẻ dạng liên kết là một đăng ký và chạy theo nhịp của bên phát hành.',
+      },
+    ],
     practical: [
       'Xem tài khoản nào đã chấp nhận chia sẻ trước khi xem bất cứ điều gì khác.',
       'Mở danh sách lịch trên thiết bị và tìm nó ở trạng thái tắt chứ đừng tìm cái vắng mặt.',
@@ -98,6 +126,20 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Số ký tự ngẫu nhiên bảo vệ một liên kết chia sẻ của chúng tôi',
       sharePrice: 'Chi phí chia sẻ một sự kiện từ ứng dụng',
     },
+    faq: [
+      {
+        q: 'Ai đó có thể làm gì với địa chỉ bí mật của lịch tôi?',
+        a: 'Xem mọi thứ trên đó — tiêu đề, giờ giấc, địa điểm và ghi chú — mà không cần đăng nhập, không cần quyền, và không để lại dấu vết nào rằng họ đã xem.',
+      },
+      {
+        q: 'Tôi có lấy lại được địa chỉ bí mật không?',
+        a: 'Chỉ bằng cách đặt lại, và điều đó giết địa chỉ cũ với tất cả mọi người cùng lúc: đồng nghiệp, bảng theo dõi và mọi đoạn mã lặng lẽ dựa vào nó, không báo trước.',
+      },
+      {
+        q: 'Tôi gửi địa chỉ bí mật cho đồng nghiệp qua email được không?',
+        a: 'Hãy coi nó là công khai ngay khi rời khỏi tay bạn. Lớp bảo vệ duy nhất là khó đoán, và việc chuyển tiếp xóa sạch đúng điều đó.',
+      },
+    ],
     practical: [
       'Hãy coi địa chỉ bí mật là công khai ngay khi nó rời khỏi tay bạn.',
       'Đừng bao giờ công bố địa chỉ của cái lịch bạn thực sự dùng.',
@@ -132,6 +174,20 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Chi phí gửi một sự kiện đơn lẻ từ ứng dụng',
     },
+    faq: [
+      {
+        q: 'Khách mời có thấy nhau trong một lời mời của Lịch Google không?',
+        a: 'Mặc định thường là có. «Xem danh sách khách mời» hiện mọi người được mời cùng câu trả lời của họ: ổn trong một nhóm, khó xử với khách hàng, và sai khi khách mời là những khách hàng riêng rẽ.',
+      },
+      {
+        q: 'Khách mời có đổi được giờ họp của tôi không?',
+        a: 'Nếu «sửa sự kiện» được bật thì có, và thay đổi áp dụng cho tất cả mọi người. Hiếm khi ta muốn thế và rất dễ để nguyên.',
+      },
+      {
+        q: 'Làm sao ngăn khách mời mời thêm người khác?',
+        a: 'Tắt «mời người khác» ngay trên sự kiện. Các thiết lập này thuộc về sự kiện chứ không thuộc tài khoản, nên chúng quay về giá trị mặc định mỗi lần.',
+      },
+    ],
     practical: [
       'Tắt «xem danh sách khách mời» với mọi thứ gửi tới những người không quen nhau.',
       'Để «sửa sự kiện» tắt, trừ khi có người thật sự sắp lịch thay bạn.',
@@ -167,6 +223,20 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Số loại tài khoản mà một khung nhìn giữ chung',
       price: 'Chi phí cho phần Google',
     },
+    faq: [
+      {
+        q: 'Vì sao chỉ một số lịch Google của tôi hiện trên iPhone?',
+        a: 'Google giữ cho từng thiết bị một danh sách những lịch được phép đồng bộ, và các lịch phụ — được chia sẻ, đăng ký, lập cho một dự án — thường nằm ngoài danh sách ấy.',
+      },
+      {
+        q: 'Thiết lập đồng bộ Lịch Google cho iPhone nằm ở đâu?',
+        a: 'Không nằm trong phần cài đặt của iOS. Nó sống trên một trang riêng của Google, nên tìm ở chỗ hiển nhiên sẽ chẳng thấy gì sai và cũng chẳng đổi được gì.',
+      },
+      {
+        q: 'Làm sao thấy hết lịch Google trên iPhone?',
+        a: 'Qua một ứng dụng hỏi thẳng Google thay vì đi qua danh sách của thiết bị. Nó hiện mọi lịch mà tài khoản thực sự có, kể cả những lịch điện thoại đã bỏ rơi.',
+      },
+    ],
     practical: [
       'Xem danh sách đồng bộ của Google trước khi cho rằng tài khoản bị hỏng.',
       'Hãy tính rằng lịch đăng ký và lịch chia sẻ bị loại ra chứ không được đưa vào.',
@@ -201,6 +271,20 @@ export const GOOGLE_VI: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Chi phí hằng tháng của gói nơi việc này được quản lý, tính bằng đô la',
     },
+    faq: [
+      {
+        q: 'Gỡ một người có xóa những gì họ đã xem không?',
+        a: 'Không. Lời mời họ đã có, sự kiện họ đã chép sang lịch riêng và mọi thứ đã xuất ra đều còn. Quyền truy cập chấm dứt; các bản sao thì không.',
+      },
+      {
+        q: 'Người đó có được báo rằng tôi đã gỡ quyền của họ không?',
+        a: 'Không. Lịch biến khỏi danh sách của họ ngay lập tức và không kèm lời nhắn nào.',
+      },
+      {
+        q: 'Vì sao lịch của tôi vẫn chia sẻ với người tôi chưa từng mời?',
+        a: 'Một người từng có quyền quản lý chia sẻ đã thêm họ. Gỡ người đó vẫn để nguyên tất cả những ai họ đã thêm — vì thế phải đọc cả danh sách chứ không phải một cái tên.',
+      },
+    ],
     practical: [
       'Đọc toàn bộ danh sách quyền, không chỉ cái tên bạn định gỡ.',
       'Đặt lại địa chỉ bí mật nếu người đó từng có nó.',

@@ -61,6 +61,19 @@ export interface LocalisedArticle {
   readonly claims: Readonly<Record<string, string>>;
   /** What to actually do, in order. */
   readonly practical: readonly string[];
+  /**
+   * Questions a reader actually asks, answered in full.
+   *
+   * Optional because it is written, not derived. The temptation was to fold
+   * commonBelief and its correction into a question and call that an FAQ, but
+   * a belief restated as a question is not one somebody typed, and marking it
+   * up as though it were is the sort of thing that trains an assistant to
+   * answer badly. An article either has real questions or it has none.
+   *
+   * The answers are rendered on the page as well as marked up: an answer a
+   * reader cannot see is one the markup should not claim.
+   */
+  readonly faq?: readonly { readonly q: string; readonly a: string }[];
   readonly seeAlso?: readonly string[];
 }
 
@@ -82,6 +95,7 @@ export interface ArticleChrome {
   readonly colWhat: string;
   readonly colValue: string;
   readonly practical: string;
+  readonly faqHeading: string;
   readonly seeAlso: string;
   readonly updated: string;
   readonly ctaLine: string;

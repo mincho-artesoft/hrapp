@@ -12,6 +12,7 @@ export const CHROME_FI: ArticleChrome = {
   colWhat: 'Mitä se kuvaa',
   colValue: 'Arvo',
   practical: 'Mitä tehdä',
+  faqHeading: 'Kysymyksiä',
   seeAlso: 'Lue myös',
   updated: 'Viimeksi tarkistettu',
   ctaLine: 'Kalenterisi ja ennuste yhdessä näkymässä — iPhonessa ja iPadissa.',

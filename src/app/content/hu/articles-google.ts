@@ -28,6 +28,20 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Annak a szintnek a havi ára, ahol ezt az alkalmazásban kezeled, dollárban',
     },
+    faq: [
+      {
+        q: 'Látszanak az események címei, ha csak a szabad/elfoglalt állapotot osztom meg?',
+        a: 'Nem. A szabad/elfoglalt időblokkokat mutat cím, helyszín, jegyzet és vendégek nélkül. Csak a „minden részlet” tárja fel őket — és akkor mindet.',
+      },
+      {
+        q: 'Mit enged a „módosítás és a megosztás kezelése”?',
+        a: 'Minden esemény szerkesztését, és azt, hogy a naptáradat továbbadja másoknak anélkül, hogy megkérdezne. Ez az egyetlen szint, ahol rajtad kívül más oszt hozzáférést.',
+      },
+      {
+        q: 'Meg tudom nézni, kinek van már hozzáférése a naptáramhoz?',
+        a: 'Igen, az adott naptár megosztási beállításaiban. Semmi nem hív rá, hogy megnézd, a megosztások pedig csak gyűlnek: olvasd át a listát évente kétszer.',
+      },
+    ],
     practical: [
       'Alapértelmezésben szabad/foglalt mindenkinek, akinek csak időpontot kell foglalnia nálad.',
       'A „módosítás” joga azoké, akik tényleg helyetted szerveznek.',
@@ -63,6 +77,20 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Órák egy előfizetett csatorna frissítési kérései között',
       accounts: 'Fióktípusok, amelyeket egyetlen nézet ehelyett összefog',
     },
+    faq: [
+      {
+        q: 'Elfogadtam egy megosztott naptárat, de nincs az iPhone-omon. Miért?',
+        a: 'A megosztás abba a Google-fiókba érkezik, amelyiknek címezték, és a frissen hozzáadott naptár a többi eszközre többnyire kikapcsolva jut el. Előbb a fiókot nézd meg, aztán keresd kipipálatlanul, ne hiányzóként.',
+      },
+      {
+        q: 'Működik a megosztás csoportcímre?',
+        a: 'Ritkán. A levelezőlista alig éri el a mögötte álló embereket. Az a cím kell, amelyik maga is Google-fiók.',
+      },
+      {
+        q: 'Mennyi idő alatt jelenik meg egy megosztott naptár?',
+        a: 'A jogosultsággal megosztott azonnal látszik, amint a lista frissül. A linkként megosztott naptár előfizetés, és a közzétevő ritmusát követi.',
+      },
+    ],
     practical: [
       'Először azt nézd meg, melyik fiók fogadta el a megosztást.',
       'Nyisd meg az eszközön a naptárlistát, és kikapcsolva keresd, ne hiányzóként.',
@@ -98,6 +126,20 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Véletlen karakterek, amelyek a mi megosztási linkünket védik',
       sharePrice: 'Mennyibe kerül egy esemény megosztása az alkalmazásból',
     },
+    faq: [
+      {
+        q: 'Mit kezdhet valaki a naptáram titkos címével?',
+        a: 'Mindent láthat rajta — címeket, időpontokat, helyszíneket és jegyzeteket — bejelentkezés nélkül, engedély nélkül, és anélkül hogy bárhol nyoma maradna, hogy megnézte.',
+      },
+      {
+        q: 'Visszavehetem a naptár titkos címét?',
+        a: 'Csak úgy, hogy visszaállítod, ami egyszerre öli meg a régit mindenkinél: kollégáknál, műszerfalakon és minden szkriptnél, amely csendben rá támaszkodott, figyelmeztetés nélkül.',
+      },
+      {
+        q: 'Elküldhetem a titkos címet e-mailben egy kollégának?',
+        a: 'Tekintsd nyilvánosnak abban a pillanatban, ahogy kikerül a kezedből. Egyetlen védelme, hogy nehéz kitalálni, és a továbbküldés pontosan ezt szünteti meg.',
+      },
+    ],
     practical: [
       'Kezeld nyilvánosként a titkos címet abban a pillanatban, ahogy kikerül a kezedből.',
       'Soha ne tedd közzé annak a naptárnak a címét, amelyiket valóban használod.',
@@ -132,6 +174,20 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Mennyibe kerül egyetlen esemény küldése az alkalmazásból',
     },
+    faq: [
+      {
+        q: 'Látják egymást a vendégek egy Google Naptár meghívóban?',
+        a: 'Alapból többnyire igen. A „vendéglista megtekintése” megmutatja az összes meghívottat és a válaszukat: csapaton belül rendben, ügyféllel kínos, különálló ügyfeleknél pedig egyszerűen hibás.',
+      },
+      {
+        q: 'Megváltoztathatja egy vendég a megbeszélésem időpontját?',
+        a: 'Ha az „esemény módosítása” be van jelölve, igen, és a változás mindenkire vonatkozik. Ritkán akarjuk, és könnyen bekapcsolva marad.',
+      },
+      {
+        q: 'Hogyan akadályozom meg, hogy a vendégek másokat hívjanak meg?',
+        a: 'Kapcsold ki a „mások meghívása” jogot magán az eseményen. Ezek a beállítások az eseményhez tartoznak, nem a fiókhoz, így minden alkalommal visszaállnak az alapértelmezésre.',
+      },
+    ],
     practical: [
       'Kapcsold ki a „vendéglista megtekintése” jogot mindennél, ami egymást nem ismerő embereknek megy.',
       'Hagyd kikapcsolva az „esemény módosítása” jogot, hacsak valaki tényleg helyetted nem szervez.',
@@ -167,6 +223,20 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Fióktípusok, amelyeket egyetlen nézet összefog',
       price: 'Mennyibe kerül a Google-oldal',
     },
+    faq: [
+      {
+        q: 'Miért csak néhány Google-naptáram jelenik meg az iPhone-on?',
+        a: 'A Google eszközönként vezet listát arról, mely naptárak szinkronizálhatnak, és a másodlagosak — a megosztottak, az előfizetettek, a projektre létrehozottak — gyakran kimaradnak belőle.',
+      },
+      {
+        q: 'Hol van a Google Naptár szinkronizálási beállítása iPhone-on?',
+        a: 'Nem az iOS beállításaiban. Külön Google-oldalon él, és ezért a kézenfekvő helyen keresve semmi hibát nem találsz, és semmi nem változik.',
+      },
+      {
+        q: 'Hogyan látom az összes Google-naptáramat az iPhone-on?',
+        a: 'Olyan alkalmazáson át, amely közvetlenül a Google-t kérdezi, nem az eszköz listáján keresztül. Az minden naptárat megmutat, ami a fiókban tényleg ott van, azokat is, amelyeket a telefon elejtett.',
+      },
+    ],
     practical: [
       'Nézd meg a Google szinkronizálási listáját, mielőtt elromlottnak hinnéd a fiókot.',
       'Számíts rá, hogy az előfizetett és megosztott naptárak ki vannak zárva, nem bent vannak.',
@@ -201,6 +271,20 @@ export const GOOGLE_HU: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Annak a szintnek a havi ára, ahol ezt kezeled, dollárban',
     },
+    faq: [
+      {
+        q: 'Törli valakinek az eltávolítása azt, amit már látott?',
+        a: 'Nem. A már nála lévő meghívók, a saját naptárába másolt események és minden exportált megmarad. A hozzáférés véget ér; a másolatok nem.',
+      },
+      {
+        q: 'Értesül róla az illető, hogy megvontam a hozzáférését?',
+        a: 'Nem. A naptár azonnal és üzenet nélkül eltűnik a listájáról.',
+      },
+      {
+        q: 'Miért van a naptáram megosztva valakivel, akit sosem hívtam meg?',
+        a: 'Olyasvalaki adta hozzá, akinek joga volt kezelni a megosztást. Őt eltávolítva mindenki a helyén marad, akit hozzáadott — ezért a teljes listát olvassuk végig, nem egy nevet.',
+      },
+    ],
     practical: [
       'Olvasd végig a teljes hozzáférési listát, ne csak azt a nevet, amelyiket ki akartad venni.',
       'Állítsd vissza a titkos címet, ha az illetőnek valaha megvolt.',

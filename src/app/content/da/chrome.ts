@@ -12,6 +12,7 @@ export const CHROME_DA: ArticleChrome = {
   colWhat: 'Hvad det beskriver',
   colValue: 'Værdi',
   practical: 'Hvad du gør',
+  faqHeading: 'Spørgsmål',
   seeAlso: 'Læs også',
   updated: 'Sidst efterset',
   ctaLine: 'Din kalender og vejrudsigten i én visning — på iPhone og iPad.',

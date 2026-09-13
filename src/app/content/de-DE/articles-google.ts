@@ -28,6 +28,20 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Monatlicher Preis der Stufe, in der das in der App verwaltet wird, in Dollar',
     },
+    faq: [
+      {
+        q: 'Sieht jemand meine Termintitel, wenn ich nur frei/gebucht teile?',
+        a: 'Nein. Frei/gebucht zeigt Zeitblöcke ohne Titel, Orte, Notizen oder Gäste. Erst „alle Termindetails“ legt das offen — und dann alles davon.',
+      },
+      {
+        q: 'Was darf jemand mit „Ändern und Freigabeeinstellungen verwalten“?',
+        a: 'Jeden Termin bearbeiten und Ihren Kalender an weitere Personen weitergeben, ohne Sie zu fragen. Es ist die einzige Stufe, auf der jemand anderes Zugriff verteilen kann.',
+      },
+      {
+        q: 'Kann ich nachsehen, wer bereits Zugriff auf meinen Kalender hat?',
+        a: 'Ja, in den Freigabeeinstellungen des Kalenders. Niemand erinnert Sie daran, und Freigaben sammeln sich nur an, deshalb lohnt sich ein Blick zweimal im Jahr.',
+      },
+    ],
     practical: [
       'Standardmäßig frei/gebucht für alle, die nur Zeit bei Ihnen buchen wollen.',
       '„Ändern“ nur für Menschen, die wirklich für Sie planen.',
@@ -63,6 +77,20 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Stunden zwischen den Aktualisierungsanfragen eines abonnierten Feeds',
       accounts: 'Kontoarten, die eine Ansicht ganz ohne das alles zusammenhält',
     },
+    faq: [
+      {
+        q: 'Ich habe eine Freigabe angenommen, aber der Kalender ist nicht auf dem iPhone. Warum?',
+        a: 'Die Freigabe landet in dem Google-Konto, an das sie adressiert war, und ein neu hinzugefügter Kalender kommt auf anderen Geräten meist ausgeschaltet an. Prüfen Sie erst das Konto, dann suchen Sie ihn nicht als fehlend, sondern als nicht angehakt.',
+      },
+      {
+        q: 'Funktioniert eine Freigabe an eine Gruppenadresse?',
+        a: 'Selten. Ein Verteiler oder eine Gruppenadresse erreicht die Menschen dahinter kaum. Nötig ist die Adresse, die selbst ein Google-Konto ist.',
+      },
+      {
+        q: 'Wie lange dauert es, bis ein geteilter Kalender auftaucht?',
+        a: 'Eine Freigabe über Berechtigungen erscheint, sobald die Kalenderliste aktualisiert. Ein per Link geteilter Kalender ist dagegen ein Abonnement und folgt dem Takt des Herausgebers.',
+      },
+    ],
     practical: [
       'Erst prüfen, welches Konto die Freigabe angenommen hat, dann alles andere.',
       'Die Kalenderliste auf dem Gerät öffnen und nach dem ausgeschalteten Eintrag suchen, nicht nach einem fehlenden.',
@@ -98,6 +126,20 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Zufallszeichen, die einen Freigabelink von uns schützen',
       sharePrice: 'Was das Teilen eines Termins aus der App kostet',
     },
+    faq: [
+      {
+        q: 'Was kann jemand mit der geheimen Adresse meines Kalenders anfangen?',
+        a: 'Alles darauf sehen — Titel, Zeiten, Orte und Notizen — ohne Anmeldung, ohne Berechtigung und ohne dass irgendwo festgehalten wird, dass er nachgesehen hat.',
+      },
+      {
+        q: 'Kann ich eine geheime Kalenderadresse zurücknehmen?',
+        a: 'Nur durch Zurücksetzen, und das tötet die alte Adresse für alle gleichzeitig: Kolleginnen, Dashboards und jedes still daran hängende Skript, ohne Warnung.',
+      },
+      {
+        q: 'Kann ich die geheime Adresse einer Kollegin mailen?',
+        a: 'Betrachten Sie sie als öffentlich, sobald sie Ihre Hände verlässt. Ihr einziger Schutz ist, schwer zu erraten zu sein, und Weiterleiten hebt genau das auf.',
+      },
+    ],
     practical: [
       'Die geheime Adresse als öffentlich betrachten, sobald sie Ihre Hände verlässt.',
       'Niemals die Adresse des Kalenders herausgeben, den Sie tatsächlich nutzen.',
@@ -132,6 +174,20 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Was das Senden eines einzelnen Termins aus der App kostet',
     },
+    faq: [
+      {
+        q: 'Sehen Gäste einander in einer Google-Kalender-Einladung?',
+        a: 'Standardmäßig meist ja. „Gästeliste sehen“ zeigt alle Eingeladenen und ihre Antworten — im Team in Ordnung, bei Kundschaft unangenehm und falsch, wenn die Gäste getrennte Kunden sind.',
+      },
+      {
+        q: 'Kann ein Gast die Uhrzeit meines Termins ändern?',
+        a: 'Wenn „Termin ändern“ gesetzt ist, ja — und die Änderung gilt für alle. Selten gewollt, leicht aktiviert gelassen.',
+      },
+      {
+        q: 'Wie verhindere ich, dass Gäste weitere Personen einladen?',
+        a: '„Andere einladen“ am Termin selbst abschalten. Diese Einstellungen gehören zum Termin, nicht zum Konto, und fallen bei jedem neuen auf Ihre Standardwerte zurück.',
+      },
+    ],
     practical: [
       '„Gästeliste sehen“ ausschalten bei allem, was an einander fremde Menschen geht.',
       '„Termin ändern“ aus lassen, außer jemand plant wirklich für Sie.',
@@ -167,6 +223,20 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Kontoarten, die eine Ansicht zusammenhält',
       price: 'Was die Google-Seite kostet',
     },
+    faq: [
+      {
+        q: 'Warum erscheinen nur einige meiner Google-Kalender auf dem iPhone?',
+        a: 'Google führt pro Gerät eine Liste, welche Kalender synchronisieren dürfen, und Zweitkalender — geteilte, abonnierte, für ein Projekt angelegte — stehen häufig außerhalb davon.',
+      },
+      {
+        q: 'Wo ist die Synchronisierungseinstellung für Google-Kalender auf dem iPhone?',
+        a: 'Nicht in den iOS-Einstellungen. Sie liegt auf einer eigenen Google-Seite, weshalb die Suche an der naheliegenden Stelle nichts findet und nichts ändert.',
+      },
+      {
+        q: 'Wie sehe ich alle Google-Kalender auf dem iPhone?',
+        a: 'Über eine App, die Google direkt abfragt, statt über die Geräteliste. Sie zeigt jeden Kalender, den das Konto wirklich hält, auch die vom Telefon fallengelassenen.',
+      },
+    ],
     practical: [
       'Erst die Google-Synchronisierungsliste prüfen, bevor Sie das Konto für kaputt halten.',
       'Damit rechnen, dass abonnierte und geteilte Kalender ausgeschlossen statt eingeschlossen sind.',
@@ -201,6 +271,20 @@ export const GOOGLE_DE_DE: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Monatlicher Preis der Stufe, in der das verwaltet wird, in Dollar',
     },
+    faq: [
+      {
+        q: 'Löscht das Entfernen einer Person, was sie bereits gesehen hat?',
+        a: 'Nein. Bereits erhaltene Einladungen, in den eigenen Kalender kopierte Termine und alles Exportierte bleiben. Der Zugriff endet, die Kopien nicht.',
+      },
+      {
+        q: 'Erfährt die Person, dass ich ihren Zugriff entfernt habe?',
+        a: 'Nein. Der Kalender verschwindet sofort und ohne Nachricht aus ihrer Liste.',
+      },
+      {
+        q: 'Warum ist mein Kalender mit jemandem geteilt, den ich nie eingeladen habe?',
+        a: 'Jemand mit dem Recht, Freigaben zu verwalten, hat ihn hinzugefügt. Diese Person zu entfernen lässt alle von ihr Hinzugefügten stehen — deshalb liest man die ganze Liste und nicht einen Namen.',
+      },
+    ],
     practical: [
       'Die vollständige Zugriffsliste lesen, nicht nur den Namen, den Sie streichen wollten.',
       'Die geheime Adresse zurücksetzen, wenn die Person sie je hatte.',

@@ -12,6 +12,7 @@ export const CHROME_BG: ArticleChrome = {
   colWhat: 'Какво описва',
   colValue: 'Стойност',
   practical: 'Какво да направите',
+  faqHeading: 'Въпроси',
   seeAlso: 'Прочетете също',
   updated: 'Последно проверено',
   ctaLine: 'Календарът и прогнозата в един изглед — на iPhone и iPad.',

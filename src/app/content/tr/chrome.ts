@@ -12,6 +12,7 @@ export const CHROME_TR: ArticleChrome = {
   colWhat: 'Neyi anlatıyor',
   colValue: 'Değer',
   practical: 'Ne yapmalı',
+  faqHeading: 'Sorular',
   seeAlso: 'Şunu da okuyun',
   updated: 'Son gözden geçirme',
   ctaLine: 'Takviminiz ve hava tahmini tek görünümde — iPhone ve iPad’de.',

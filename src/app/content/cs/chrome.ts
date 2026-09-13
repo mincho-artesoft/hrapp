@@ -12,6 +12,7 @@ export const CHROME_CS: ArticleChrome = {
   colWhat: 'Co to popisuje',
   colValue: 'Hodnota',
   practical: 'Co dělat',
+  faqHeading: 'Otázky',
   seeAlso: 'Přečtěte si také',
   updated: 'Naposledy ověřeno',
   ctaLine: 'Váš kalendář a předpověď v jednom pohledu — na iPhonu a iPadu.',

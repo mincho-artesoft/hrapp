@@ -12,6 +12,7 @@ export const CHROME_JA: ArticleChrome = {
   colWhat: '何を表すか',
   colValue: '値',
   practical: 'どうすればよいか',
+  faqHeading: 'よくある質問',
   seeAlso: 'あわせて読む',
   updated: '最終確認',
   ctaLine: 'カレンダーと天気予報をひとつの画面に — iPhone と iPad で。',

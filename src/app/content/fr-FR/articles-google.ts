@@ -28,6 +28,20 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: "Coût mensuel du niveau où cela se gère dans l'app, en dollars",
     },
+    faq: [
+      {
+        q: 'Voit-on le titre de mes événements si je partage seulement libre/occupé ?',
+        a: 'Non. Libre/occupé montre des blocs de temps sans titres, ni lieux, ni notes, ni invités. Seul « voir tous les détails » les expose — et il les expose tous.',
+      },
+      {
+        q: 'Que permet « apporter des modifications et gérer le partage » ?',
+        a: 'Modifier chaque événement, et confier votre agenda à d’autres personnes sans vous demander. C’est le seul niveau qui laisse quelqu’un d’autre distribuer l’accès.',
+      },
+      {
+        q: 'Puis-je vérifier qui a déjà accès à mon agenda ?',
+        a: 'Oui, dans les paramètres de partage de cet agenda. Rien ne vous invite à regarder et le partage ne fait que s’accumuler : relisez la liste deux fois par an.',
+      },
+    ],
     practical: [
       'Par défaut, libre/occupé pour quiconque doit seulement réserver du temps avec vous.',
       "Réservez « apporter des modifications » à ceux qui planifient vraiment pour vous.",
@@ -63,6 +77,20 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: "Heures entre deux demandes d'actualisation d'un flux abonné",
       accounts: 'Types de comptes réunis dans une seule vue, sans rien de tout cela',
     },
+    faq: [
+      {
+        q: 'J’ai accepté un agenda partagé mais il n’est pas sur mon iPhone. Pourquoi ?',
+        a: 'Le partage atterrit dans le compte Google auquel il était adressé, et un agenda fraîchement ajouté arrive le plus souvent désactivé sur les autres appareils. Vérifiez d’abord le compte, puis cherchez-le décoché plutôt qu’absent.',
+      },
+      {
+        q: 'Le partage vers une adresse de groupe fonctionne-t-il ?',
+        a: 'Rarement. Une liste de diffusion atteint peu les personnes derrière elle. Il faut l’adresse qui est elle-même un compte Google.',
+      },
+      {
+        q: 'En combien de temps un agenda partagé doit-il apparaître ?',
+        a: 'Un partage par autorisation apparaît dès que la liste se rafraîchit. Un agenda partagé par lien est un abonnement : il suit le rythme de l’éditeur, pas le vôtre.',
+      },
+    ],
     practical: [
       "Vérifiez quel compte a accepté le partage avant toute autre chose.",
       "Ouvrez la liste des agendas sur l'appareil et cherchez-le désactivé plutôt qu'absent.",
@@ -98,6 +126,20 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Caractères aléatoires protégeant un lien de partage du nôtre',
       sharePrice: "Ce que coûte le partage d'un événement depuis l'app",
     },
+    faq: [
+      {
+        q: 'Que peut faire quelqu’un avec l’adresse secrète de mon agenda ?',
+        a: 'Voir tout ce qu’il contient — titres, horaires, lieux et notes — sans connexion, sans autorisation, et sans qu’il reste la moindre trace de son passage.',
+      },
+      {
+        q: 'Puis-je reprendre une adresse secrète d’agenda ?',
+        a: 'Seulement en la réinitialisant, ce qui tue l’ancienne pour tout le monde d’un coup : collègues, tableaux de bord et scripts qui s’y appuyaient en silence, sans avertissement.',
+      },
+      {
+        q: 'Puis-je envoyer l’adresse secrète à un collègue par e-mail ?',
+        a: 'Considérez-la comme publique dès qu’elle quitte vos mains. Sa seule protection est d’être difficile à deviner, et un transfert annule exactement cela.',
+      },
+    ],
     practical: [
       "Considérez l'adresse secrète comme publique dès qu'elle quitte vos mains.",
       "Ne publiez jamais l'adresse de l'agenda que vous utilisez réellement.",
@@ -132,6 +174,20 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: "Ce que coûte l'envoi d'un seul événement depuis l'app",
     },
+    faq: [
+      {
+        q: 'Les invités se voient-ils entre eux sur une invitation Google Agenda ?',
+        a: 'Par défaut, le plus souvent oui. « Voir la liste des invités » montre tous les conviés et leurs réponses — acceptable en équipe, gênant avec un client, faux quand les invités sont des clients distincts.',
+      },
+      {
+        q: 'Un invité peut-il changer l’heure de ma réunion ?',
+        a: 'Si « modifier l’événement » est coché, oui, et le changement s’applique à tout le monde. Rarement souhaité, facilement laissé actif.',
+      },
+      {
+        q: 'Comment empêcher les invités d’en inviter d’autres ?',
+        a: 'Décochez « inviter d’autres personnes » sur l’événement lui-même. Ces réglages appartiennent à l’événement et non au compte : ils reviennent à vos valeurs par défaut à chaque création.',
+      },
+    ],
     practical: [
       "Désactivez « voir la liste des invités » pour tout envoi à des gens qui ne se connaissent pas.",
       "Laissez « modifier l'événement » désactivé sauf si quelqu'un planifie vraiment pour vous.",
@@ -167,6 +223,20 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Types de comptes réunis dans une seule vue',
       price: 'Ce que coûte le côté Google',
     },
+    faq: [
+      {
+        q: 'Pourquoi seuls certains de mes agendas Google apparaissent-ils sur iPhone ?',
+        a: 'Google tient, par appareil, une liste des agendas autorisés à se synchroniser, et les agendas secondaires — partagés, abonnés, créés pour un projet — en sont fréquemment absents.',
+      },
+      {
+        q: 'Où est le réglage de synchronisation Google Agenda pour iPhone ?',
+        a: 'Pas dans les réglages d’iOS. Il vit sur une page Google à part, et c’est pourquoi chercher à l’endroit évident ne trouve rien et ne change rien.',
+      },
+      {
+        q: 'Comment voir tous mes agendas Google sur iPhone ?',
+        a: 'En passant par une app qui interroge Google directement plutôt que par la liste de l’appareil. Elle montre chaque agenda que le compte détient, y compris ceux que le téléphone a écartés.',
+      },
+    ],
     practical: [
       "Vérifiez la liste de synchronisation Google avant de croire le compte cassé.",
       "Attendez-vous à ce que les agendas abonnés et partagés soient exclus, pas inclus.",
@@ -201,6 +271,20 @@ export const GOOGLE_FR_FR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Coût mensuel du niveau où cela se gère, en dollars',
     },
+    faq: [
+      {
+        q: 'Retirer quelqu’un efface-t-il ce qu’il a déjà vu ?',
+        a: 'Non. Les invitations qu’il détient déjà, les événements copiés dans son propre agenda et tout ce qui a été exporté survivent. L’accès se termine, pas les copies.',
+      },
+      {
+        q: 'La personne est-elle prévenue que je lui ai retiré l’accès ?',
+        a: 'Non. L’agenda disparaît de sa liste immédiatement et sans message.',
+      },
+      {
+        q: 'Pourquoi mon agenda est-il partagé avec quelqu’un que je n’ai jamais invité ?',
+        a: 'Quelqu’un ayant le droit de gérer le partage l’a ajouté. Le retirer laisse en place toutes les personnes qu’il a ajoutées — d’où la nécessité de lire la liste entière.',
+      },
+    ],
     practical: [
       "Lisez la liste complète des accès, pas seulement le nom que vous vouliez retirer.",
       "Réinitialisez l'adresse secrète si la personne l'a eue un jour.",

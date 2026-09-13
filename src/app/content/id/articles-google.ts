@@ -28,6 +28,20 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Biaya bulanan tingkat tempat ini dikelola di aplikasi, dalam dolar',
     },
+    faq: [
+      {
+        q: 'Apakah judul acara saya terlihat kalau hanya berbagi sibuk/luang?',
+        a: 'Tidak. Sibuk/luang menampilkan blok waktu tanpa judul, lokasi, catatan, atau tamu. Hanya «semua detail» yang membukanya — dan membuka semuanya.',
+      },
+      {
+        q: 'Apa yang diizinkan «membuat perubahan dan mengelola berbagi»?',
+        a: 'Menyunting setiap acara dan menyerahkan kalender Anda kepada orang lain tanpa bertanya. Itu satu-satunya tingkat di mana orang lain membagikan akses.',
+      },
+      {
+        q: 'Bisakah saya melihat siapa saja yang sudah punya akses?',
+        a: 'Bisa, di pengaturan berbagi kalender itu. Tidak ada yang mengingatkan Anda untuk melihat dan berbagi hanya menumpuk: baca daftarnya dua kali setahun.',
+      },
+    ],
     practical: [
       'Gunakan sibuk/luang sebagai bawaan untuk siapa pun yang hanya perlu memesan waktu dengan Anda.',
       'Simpan «membuat perubahan» untuk mereka yang benar-benar menjadwalkan untuk Anda.',
@@ -63,6 +77,20 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Jam antara permintaan penyegaran dari umpan langganan',
       accounts: 'Jenis akun yang disatukan satu tampilan tanpa semua ini',
     },
+    faq: [
+      {
+        q: 'Saya menerima kalender bersama tapi tidak ada di iPhone. Kenapa?',
+        a: 'Berbagi mendarat di akun Google yang dituju, dan kalender yang baru ditambahkan biasanya tiba dalam keadaan mati di perangkat lain. Periksa akunnya dulu, lalu cari dalam keadaan tidak dicentang, bukan hilang.',
+      },
+      {
+        q: 'Apakah berbagi ke alamat grup berhasil?',
+        a: 'Jarang. Milis nyaris tidak sampai ke orang-orang di baliknya. Yang dibutuhkan adalah alamat yang memang sebuah akun Google.',
+      },
+      {
+        q: 'Berapa lama kalender bersama muncul?',
+        a: 'Berbagi lewat izin muncul begitu daftar disegarkan. Kalender yang dibagikan sebagai tautan adalah langganan dan mengikuti irama penerbitnya.',
+      },
+    ],
     practical: [
       'Periksa akun mana yang menerima berbagi sebelum memeriksa hal lain.',
       'Buka daftar kalender di perangkat dan cari dalam keadaan mati, bukan hilang.',
@@ -98,6 +126,20 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Karakter acak yang melindungi tautan berbagi milik kami',
       sharePrice: 'Biaya membagikan satu acara dari aplikasi',
     },
+    faq: [
+      {
+        q: 'Apa yang bisa dilakukan orang dengan alamat rahasia kalender saya?',
+        a: 'Melihat semua isinya — judul, waktu, lokasi, dan catatan — tanpa masuk, tanpa izin, dan tanpa meninggalkan catatan bahwa ia melihat.',
+      },
+      {
+        q: 'Bisakah saya menarik kembali alamat rahasia kalender?',
+        a: 'Hanya dengan mengatur ulangnya, dan itu mematikan yang lama untuk semua orang sekaligus: rekan kerja, dasbor, dan setiap skrip yang diam-diam bersandar padanya, tanpa peringatan.',
+      },
+      {
+        q: 'Bolehkah saya mengirim alamat rahasia ke rekan lewat email?',
+        a: 'Anggap publik sejak ia lepas dari tangan Anda. Satu-satunya pelindungnya adalah sulit ditebak, dan meneruskannya justru meniadakan itu.',
+      },
+    ],
     practical: [
       'Anggap alamat rahasia sebagai publik begitu ia lepas dari tangan Anda.',
       'Jangan pernah menerbitkan alamat kalender yang benar-benar Anda pakai.',
@@ -132,6 +174,20 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Biaya mengirim satu acara dari aplikasi',
     },
+    faq: [
+      {
+        q: 'Apakah tamu saling melihat pada undangan Google Kalender?',
+        a: 'Secara bawaan biasanya ya. «Lihat daftar tamu» menampilkan semua yang diundang beserta jawabannya: tidak masalah dalam tim, canggung dengan klien, dan keliru bila tamunya pelanggan yang terpisah.',
+      },
+      {
+        q: 'Bisakah tamu mengubah jam rapat saya?',
+        a: 'Kalau «ubah acara» dicentang, bisa, dan perubahannya berlaku untuk semua orang. Jarang diinginkan dan mudah dibiarkan aktif.',
+      },
+      {
+        q: 'Bagaimana mencegah tamu mengundang orang lain?',
+        a: 'Matikan «undang orang lain» pada acara itu sendiri. Pengaturan ini milik acara, bukan akun, jadi kembali ke bawaan Anda setiap kali.',
+      },
+    ],
     practical: [
       'Matikan «lihat daftar tamu» untuk apa pun yang dikirim ke orang yang tidak saling kenal.',
       'Biarkan «ubah acara» mati kecuali ada yang benar-benar menjadwalkan untuk Anda.',
@@ -167,6 +223,20 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Jenis akun yang disatukan satu tampilan',
       price: 'Biaya sisi Google',
     },
+    faq: [
+      {
+        q: 'Kenapa hanya sebagian kalender Google saya muncul di iPhone?',
+        a: 'Google menyimpan daftar per perangkat tentang kalender mana yang boleh disinkronkan, dan kalender sekunder — yang dibagikan, dilanggan, dibuat untuk proyek — sering berada di luarnya.',
+      },
+      {
+        q: 'Di mana pengaturan sinkronisasi Google Kalender untuk iPhone?',
+        a: 'Bukan di pengaturan iOS. Ia ada di halaman Google tersendiri, dan karena itu mencari di tempat yang jelas tidak menemukan apa pun dan tidak mengubah apa pun.',
+      },
+      {
+        q: 'Bagaimana melihat semua kalender Google di iPhone?',
+        a: 'Lewat aplikasi yang menanyai Google langsung alih-alih lewat daftar perangkat. Ia menampilkan setiap kalender yang benar-benar dimiliki akun, termasuk yang dijatuhkan ponsel.',
+      },
+    ],
     practical: [
       'Periksa daftar sinkronisasi Google sebelum menyimpulkan akunnya rusak.',
       'Harapkan kalender langganan dan bersama dikecualikan, bukan disertakan.',
@@ -201,6 +271,20 @@ export const GOOGLE_ID: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Biaya bulanan tingkat tempat ini dikelola, dalam dolar',
     },
+    faq: [
+      {
+        q: 'Apakah mengeluarkan seseorang menghapus yang sudah dilihatnya?',
+        a: 'Tidak. Undangan yang sudah dipegangnya, acara yang disalin ke kalendernya sendiri, dan apa pun yang diekspor tetap ada. Akses berakhir; salinan tidak.',
+      },
+      {
+        q: 'Apakah orang itu diberi tahu bahwa saya mencabut aksesnya?',
+        a: 'Tidak. Kalender lenyap dari daftarnya seketika dan tanpa pesan.',
+      },
+      {
+        q: 'Kenapa kalender saya masih dibagikan ke orang yang tak pernah saya undang?',
+        a: 'Seseorang yang berhak mengelola berbagi menambahkannya. Mengeluarkan orang itu membiarkan semua yang ia tambahkan tetap ada — karena itu dibaca seluruh daftarnya, bukan satu nama.',
+      },
+    ],
     practical: [
       'Baca daftar akses selengkapnya, bukan hanya nama yang hendak Anda keluarkan.',
       'Atur ulang alamat rahasia jika orang itu pernah memilikinya.',

@@ -28,6 +28,20 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Månedlig pris for niveauet, hvor dette styres i appen, i dollars',
     },
+    faq: [
+      {
+        q: 'Kan man se mine begivenhedstitler, hvis jeg kun deler ledig/optaget?',
+        a: 'Nej. Ledig/optaget viser blokke af tid uden titler, steder, noter eller gæster. Først «alle detaljer» blotter dem — og så dem alle.',
+      },
+      {
+        q: 'Hvad giver «foretage ændringer og administrere deling»?',
+        a: 'Ret til at redigere hver eneste begivenhed og til at give din kalender videre til flere personer uden at spørge dig. Det er det eneste niveau, hvor en anden deler adgang ud.',
+      },
+      {
+        q: 'Kan jeg se, hvem der allerede har adgang til min kalender?',
+        a: 'Ja, i den kalenders delingsindstillinger. Intet beder dig kigge, og delinger hober sig kun op: læs listen to gange om året.',
+      },
+    ],
     practical: [
       'Ledig/optaget som standard til alle, der kun skal booke tid hos dig.',
       'Gem «foretage ændringer» til dem, der reelt planlægger for dig.',
@@ -63,6 +77,20 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Timer mellem opdateringsanmodninger fra et abonneret feed',
       accounts: 'Kontotyper, som ét overblik holder sammen helt uden dette',
     },
+    faq: [
+      {
+        q: 'Jeg har accepteret en delt kalender, men den er ikke på min iPhone. Hvorfor?',
+        a: 'Delingen lander i den Google-konto, den var adresseret til, og en nytilføjet kalender ankommer som regel slukket på andre enheder. Tjek kontoen først, og led så efter den uden flueben frem for fraværende.',
+      },
+      {
+        q: 'Virker deling til en gruppeadresse?',
+        a: 'Sjældent. En mailliste når næppe de mennesker, der står bag. Der skal bruges den adresse, som selv er en Google-konto.',
+      },
+      {
+        q: 'Hvor lang tid går der, før en delt kalender dukker op?',
+        a: 'En deling via rettigheder dukker op, så snart listen opdateres. En kalender delt som link er et abonnement og følger udgiverens takt.',
+      },
+    ],
     practical: [
       'Tjek hvilken konto der accepterede delingen, før du tjekker noget andet.',
       'Åbn kalenderlisten på enheden og led efter den slukket frem for fraværende.',
@@ -98,6 +126,20 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Tilfældige tegn, der beskytter et delingslink af vores slags',
       sharePrice: 'Hvad det koster at dele en begivenhed fra appen',
     },
+    faq: [
+      {
+        q: 'Hvad kan nogen bruge den hemmelige adresse til min kalender til?',
+        a: 'Se alt på den — titler, tidspunkter, steder og noter — uden login, uden tilladelse og uden at det nogen steder noteres, at de har kigget.',
+      },
+      {
+        q: 'Kan jeg tage en hemmelig kalenderadresse tilbage?',
+        a: 'Kun ved at nulstille den, hvilket dræber den gamle for alle på én gang: kolleger, dashboards og ethvert script, der stille lænede sig op ad den, uden varsel.',
+      },
+      {
+        q: 'Kan jeg maile den hemmelige adresse til en kollega?',
+        a: 'Behandl den som offentlig, fra det øjeblik den forlader dine hænder. Dens eneste beskyttelse er at være svær at gætte, og videresendelse ophæver netop det.',
+      },
+    ],
     practical: [
       'Behandl den hemmelige adresse som offentlig, så snart den forlader dine hænder.',
       'Udgiv aldrig adressen til den kalender, du faktisk bruger.',
@@ -132,6 +174,20 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Hvad det koster at sende en enkelt begivenhed fra appen',
     },
+    faq: [
+      {
+        q: 'Kan gæsterne se hinanden i en invitation fra Google Kalender?',
+        a: 'Som standard oftest ja. «Se gæstelisten» viser alle inviterede og deres svar: fint i et team, akavet hos en kunde, forkert når gæsterne er adskilte kunder.',
+      },
+      {
+        q: 'Kan en gæst ændre tidspunktet for mit møde?',
+        a: 'Hvis «rediger begivenhed» er sat, ja, og ændringen gælder alle. Sjældent ønsket og let ladt tændt.',
+      },
+      {
+        q: 'Hvordan forhindrer jeg gæster i at invitere andre?',
+        a: 'Slå «invitere andre» fra på selve begivenheden. Indstillingerne hører til begivenheden og ikke til kontoen, så de falder tilbage til dine standardværdier hver gang.',
+      },
+    ],
     practical: [
       'Slå «se gæstelisten» fra ved alt, der sendes til folk, som ikke kender hinanden.',
       'Lad «redigere begivenhed» være slået fra, medmindre nogen reelt planlægger for dig.',
@@ -167,6 +223,20 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Kontotyper, som ét overblik holder sammen',
       price: 'Hvad Google-siden koster',
     },
+    faq: [
+      {
+        q: 'Hvorfor vises kun nogle af mine Google-kalendere på iPhone?',
+        a: 'Google fører pr. enhed en liste over, hvilke kalendere der må synkronisere, og sekundære kalendere — delte, abonnerede, lavet til et projekt — står ofte uden for den.',
+      },
+      {
+        q: 'Hvor er synkroniseringsindstillingen for Google Kalender på iPhone?',
+        a: 'Ikke i iOS-indstillingerne. Den bor på en Google-side for sig, og derfor finder man intet galt det indlysende sted, og intet ændrer sig.',
+      },
+      {
+        q: 'Hvordan ser jeg alle mine Google-kalendere på iPhone?',
+        a: 'Gennem en app, der spørger Google direkte i stedet for gennem enhedens liste. Den viser hver kalender, kontoen faktisk har, også dem telefonen lod falde.',
+      },
+    ],
     practical: [
       'Tjek Googles synkroniseringsliste, før du går ud fra, at kontoen er i stykker.',
       'Regn med, at abonnerede og delte kalendere er udeladt snarere end medtaget.',
@@ -201,6 +271,20 @@ export const GOOGLE_DA: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Månedlig pris for niveauet, hvor dette styres, i dollars',
     },
+    faq: [
+      {
+        q: 'Sletter det, som personen allerede har set, når jeg fjerner adgangen?',
+        a: 'Nej. Invitationer, personen allerede har, begivenheder kopieret til egen kalender og alt eksporteret bliver. Adgangen slutter; kopierne gør ikke.',
+      },
+      {
+        q: 'Får personen besked om, at jeg har fjernet adgangen?',
+        a: 'Nej. Kalenderen forsvinder fra listen straks og uden besked.',
+      },
+      {
+        q: 'Hvorfor er min kalender delt med nogen, jeg aldrig har inviteret?',
+        a: 'En med ret til at administrere deling tilføjede dem. At fjerne den person lader alle, vedkommende tilføjede, blive — derfor læser man hele listen og ikke ét navn.',
+      },
+    ],
     practical: [
       'Læs hele adgangslisten, ikke kun det navn du ville fjerne.',
       'Nulstil den hemmelige adresse, hvis personen nogensinde har haft den.',

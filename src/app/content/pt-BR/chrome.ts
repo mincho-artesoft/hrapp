@@ -12,6 +12,7 @@ export const CHROME_PT_BR: ArticleChrome = {
   colWhat: 'O que descreve',
   colValue: 'Valor',
   practical: 'O que fazer',
+  faqHeading: 'Perguntas',
   seeAlso: 'Leia também',
   updated: 'Última revisão',
   ctaLine: 'Sua agenda e a previsão em uma só vista — no iPhone e no iPad.',

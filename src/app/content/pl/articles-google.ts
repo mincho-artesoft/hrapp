@@ -28,6 +28,20 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Miesięczny koszt poziomu, na którym zarządza się tym w aplikacji, w dolarach',
     },
+    faq: [
+      {
+        q: 'Czy ktoś zobaczy tytuły moich wydarzeń, jeśli udostępnię tylko wolny/zajęty?',
+        a: 'Nie. Wolny/zajęty pokazuje bloki czasu bez tytułów, miejsc, notatek i gości. Dopiero „wszystkie szczegóły” je odsłaniają — i odsłaniają wszystkie.',
+      },
+      {
+        q: 'Co daje „wprowadzanie zmian i zarządzanie udostępnianiem”?',
+        a: 'Edytowanie każdego wydarzenia oraz przekazanie twojego kalendarza kolejnym osobom bez pytania ciebie. To jedyny poziom, na którym ktoś inny rozdaje dostęp.',
+      },
+      {
+        q: 'Czy mogę sprawdzić, kto ma już dostęp do mojego kalendarza?',
+        a: 'Tak, w ustawieniach udostępniania tego kalendarza. Nic nie zachęca do zaglądania, a udostępnienia tylko się kumulują: przejrzyj listę dwa razy w roku.',
+      },
+    ],
     practical: [
       'Domyślnie wolny/zajęty dla każdego, kto ma tylko rezerwować u ciebie czas.',
       '„Wprowadzanie zmian” zostaw tym, którzy naprawdę planują za ciebie.',
@@ -63,6 +77,20 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Godziny między prośbami o odświeżenie subskrybowanego kanału',
       accounts: 'Rodzaje kont, które jeden widok trzyma razem bez tego wszystkiego',
     },
+    faq: [
+      {
+        q: 'Przyjąłem udostępniony kalendarz, ale nie ma go na iPhonie. Dlaczego?',
+        a: 'Udostępnienie ląduje na koncie Google, do którego było adresowane, a świeżo dodany kalendarz przychodzi na inne urządzenia najczęściej wyłączony. Sprawdź najpierw konto, potem szukaj go niezaznaczonego, a nie brakującego.',
+      },
+      {
+        q: 'Czy udostępnienie na adres grupowy działa?',
+        a: 'Rzadko. Lista mailingowa prawie nie dociera do stojących za nią osób. Potrzebny jest adres, który sam jest kontem Google.',
+      },
+      {
+        q: 'Jak długo czeka się na pojawienie się udostępnionego kalendarza?',
+        a: 'Udostępnienie przez uprawnienia pojawia się, gdy lista się odświeży. Kalendarz udostępniony linkiem to subskrypcja i odświeża się w rytmie wydawcy.',
+      },
+    ],
     practical: [
       'Najpierw sprawdź, które konto przyjęło udostępnienie.',
       'Otwórz listę kalendarzy na urządzeniu i szukaj go wyłączonego, a nie nieobecnego.',
@@ -98,6 +126,20 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Losowe znaki chroniące nasz link do udostępniania',
       sharePrice: 'Ile kosztuje udostępnienie wydarzenia z aplikacji',
     },
+    faq: [
+      {
+        q: 'Co ktoś może zrobić z tajnym adresem mojego kalendarza?',
+        a: 'Zobaczyć wszystko, co w nim jest — tytuły, godziny, miejsca i notatki — bez logowania, bez uprawnień i bez śladu, że zaglądał.',
+      },
+      {
+        q: 'Czy mogę odebrać tajny adres kalendarza?',
+        a: 'Tylko przez zresetowanie, co zabija stary dla wszystkich naraz: współpracowników, pulpity i każdy skrypt, który po cichu na nim polegał, bez ostrzeżenia.',
+      },
+      {
+        q: 'Czy mogę wysłać tajny adres współpracownikowi mailem?',
+        a: 'Traktuj go jak publiczny od chwili, gdy opuści twoje ręce. Jedyną ochroną jest to, że trudno go zgadnąć, a przesłanie dalej znosi dokładnie to.',
+      },
+    ],
     practical: [
       'Traktuj tajny adres jak publiczny od chwili, gdy opuści twoje ręce.',
       'Nigdy nie publikuj adresu kalendarza, z którego naprawdę korzystasz.',
@@ -132,6 +174,20 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Ile kosztuje wysłanie pojedynczego wydarzenia z aplikacji',
     },
+    faq: [
+      {
+        q: 'Czy goście widzą się nawzajem w zaproszeniu z Kalendarza Google?',
+        a: 'Domyślnie zwykle tak. „Widzenie listy gości” pokazuje wszystkich zaproszonych i ich odpowiedzi: w zespole w porządku, przy kliencie niezręcznie, a przy osobnych klientach po prostu źle.',
+      },
+      {
+        q: 'Czy gość może zmienić godzinę mojego spotkania?',
+        a: 'Jeśli „modyfikowanie wydarzenia” jest zaznaczone, tak, i zmiana obowiązuje wszystkich. Rzadko tego chcemy i łatwo zostawić włączone.',
+      },
+      {
+        q: 'Jak powstrzymać gości przed zapraszaniem innych?',
+        a: 'Odznacz „zapraszanie innych” w samym wydarzeniu. Te ustawienia należą do wydarzenia, nie do konta, więc za każdym razem wracają do twoich wartości domyślnych.',
+      },
+    ],
     practical: [
       'Wyłącz „widzenie listy gości” we wszystkim, co idzie do osób, które się nie znają.',
       'Zostaw „modyfikowanie wydarzenia” wyłączone, chyba że ktoś naprawdę planuje za ciebie.',
@@ -167,6 +223,20 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Rodzaje kont, które jeden widok trzyma razem',
       price: 'Ile kosztuje strona Google',
     },
+    faq: [
+      {
+        q: 'Dlaczego na iPhonie widać tylko część moich kalendarzy Google?',
+        a: 'Google prowadzi dla każdego urządzenia listę kalendarzy, którym wolno się synchronizować, a kalendarze dodatkowe — udostępnione, subskrybowane, założone do projektu — często są poza nią.',
+      },
+      {
+        q: 'Gdzie jest ustawienie synchronizacji Kalendarza Google dla iPhone’a?',
+        a: 'Nie w ustawieniach iOS. Mieszka na osobnej stronie Google i dlatego szukanie w oczywistym miejscu niczego nie znajduje i niczego nie zmienia.',
+      },
+      {
+        q: 'Jak zobaczyć wszystkie kalendarze Google na iPhonie?',
+        a: 'Przez aplikację, która pyta Google bezpośrednio, zamiast przez listę urządzenia. Pokazuje każdy kalendarz, który konto naprawdę ma, łącznie z porzuconymi przez telefon.',
+      },
+    ],
     practical: [
       'Sprawdź listę synchronizacji Google, zanim uznasz konto za zepsute.',
       'Zakładaj, że kalendarze subskrybowane i udostępnione są wykluczone, nie włączone.',
@@ -201,6 +271,20 @@ export const GOOGLE_PL: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Miesięczny koszt poziomu, na którym się tym zarządza, w dolarach',
     },
+    faq: [
+      {
+        q: 'Czy usunięcie osoby kasuje to, co już zobaczyła?',
+        a: 'Nie. Zaproszenia, które już ma, wydarzenia skopiowane do własnego kalendarza i wszystko wyeksportowane zostają. Dostęp się kończy, kopie nie.',
+      },
+      {
+        q: 'Czy osoba dowie się, że odebrałem jej dostęp?',
+        a: 'Nie. Kalendarz znika z jej listy natychmiast i bez wiadomości.',
+      },
+      {
+        q: 'Dlaczego mój kalendarz jest udostępniony komuś, kogo nigdy nie zapraszałem?',
+        a: 'Dodał go ktoś, kto miał prawo zarządzać udostępnianiem. Usunięcie tej osoby zostawia na miejscu wszystkich przez nią dodanych — dlatego czyta się całą listę, a nie jedno nazwisko.',
+      },
+    ],
     practical: [
       'Przeczytaj pełną listę dostępu, nie tylko nazwisko, które chciałeś usunąć.',
       'Zresetuj tajny adres, jeśli ta osoba kiedykolwiek go miała.',

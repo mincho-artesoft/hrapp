@@ -28,6 +28,20 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Měsíční cena úrovně, kde se tohle spravuje v aplikaci, v dolarech',
     },
+    faq: [
+      {
+        q: 'Uvidí někdo názvy mých událostí, když sdílím jen volno/obsazeno?',
+        a: 'Ne. Volno/obsazeno ukazuje bloky času bez názvů, míst, poznámek i hostů. Teprve „všechny podrobnosti“ je odhalí — a odhalí je všechny.',
+      },
+      {
+        q: 'Co dovoluje „provádět změny a spravovat sdílení“?',
+        a: 'Upravovat každou událost a předat váš kalendář dalším lidem, aniž by se vás někdo zeptal. Je to jediná úroveň, na které přístup rozdává někdo jiný než vy.',
+      },
+      {
+        q: 'Můžu si ověřit, kdo už má k mému kalendáři přístup?',
+        a: 'Ano, v nastavení sdílení daného kalendáře. Nic vás k tomu nevybízí a sdílení se jen hromadí: přečtěte si seznam dvakrát do roka.',
+      },
+    ],
     practical: [
       'Ve výchozím stavu volno/obsazeno pro každého, kdo si u vás má jen rezervovat čas.',
       '„Provádět změny“ nechte lidem, kteří za vás skutečně plánují.',
@@ -63,6 +77,20 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Hodiny mezi žádostmi odebíraného kanálu o obnovení',
       accounts: 'Typy účtů, které jeden pohled drží pohromadě i bez tohohle všeho',
     },
+    faq: [
+      {
+        q: 'Přijal jsem sdílený kalendář, ale na iPhonu není. Proč?',
+        a: 'Sdílení přistane v tom účtu Google, kterému bylo adresováno, a čerstvě přidaný kalendář dorazí na ostatní zařízení většinou vypnutý. Zkontrolujte nejdřív účet, pak ho hledejte nezaškrtnutý, ne chybějící.',
+      },
+      {
+        q: 'Funguje sdílení na skupinovou adresu?',
+        a: 'Zřídka. E-mailová konference se k lidem za ní skoro nedostane. Je potřeba adresa, která sama je účtem Google.',
+      },
+      {
+        q: 'Jak dlouho trvá, než se sdílený kalendář objeví?',
+        a: 'Sdílení přes oprávnění se objeví, jakmile se seznam obnoví. Kalendář sdílený odkazem je odběr a obnovuje se v rytmu vydavatele.',
+      },
+    ],
     practical: [
       'Nejdřív zjistěte, který účet sdílení přijal, teprve pak zkoumejte zbytek.',
       'Otevřete seznam kalendářů v zařízení a hledejte ho vypnutý, ne chybějící.',
@@ -98,6 +126,20 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Náhodné znaky, které chrání náš odkaz na sdílení',
       sharePrice: 'Kolik stojí sdílení jedné události z aplikace',
     },
+    faq: [
+      {
+        q: 'Co může někdo udělat s tajnou adresou mého kalendáře?',
+        a: 'Vidět všechno, co v něm je — názvy, časy, místa i poznámky — bez přihlášení, bez oprávnění a bez jediné stopy, že se díval.',
+      },
+      {
+        q: 'Dá se tajná adresa kalendáře vzít zpět?',
+        a: 'Jen resetem, který zabije starou adresu všem naráz: kolegům, přehledům i každému skriptu, který se o ni potichu opíral, bez varování.',
+      },
+      {
+        q: 'Můžu tajnou adresu poslat kolegovi e-mailem?',
+        a: 'Berte ji jako veřejnou od chvíle, kdy opustí vaše ruce. Její jedinou ochranou je, že se těžko hádá, a přeposlání přesně tohle ruší.',
+      },
+    ],
     practical: [
       'Berte tajnou adresu jako veřejnou od chvíle, kdy opustí vaše ruce.',
       'Nikdy nezveřejňujte adresu kalendáře, který skutečně používáte.',
@@ -132,6 +174,20 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Kolik stojí odeslání jedné události z aplikace',
     },
+    faq: [
+      {
+        q: 'Vidí hosté jeden druhého v pozvánce z Kalendáře Google?',
+        a: 'Ve výchozím stavu většinou ano. „Zobrazit seznam hostů“ ukáže všechny pozvané i jejich odpovědi: v týmu v pořádku, u klienta trapné a u oddělených zákazníků prostě špatně.',
+      },
+      {
+        q: 'Může host změnit čas mé schůzky?',
+        a: 'Pokud je zaškrtnuté „upravit událost“, ano, a změna platí všem. Chce se to zřídka a zapnuté zůstává snadno.',
+      },
+      {
+        q: 'Jak zabráním hostům zvát další lidi?',
+        a: 'Vypněte „pozvat další“ přímo v události. Tato nastavení patří události, ne účtu, takže se pokaždé vracejí k vašim výchozím hodnotám.',
+      },
+    ],
     practical: [
       'U všeho, co jde lidem, kteří se navzájem neznají, vypněte „zobrazit seznam hostů“.',
       '„Upravit událost“ nechte vypnuté, ledaže za vás někdo opravdu plánuje.',
@@ -167,6 +223,20 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Typy účtů, které jeden pohled drží pohromadě',
       price: 'Kolik stojí strana Googlu',
     },
+    faq: [
+      {
+        q: 'Proč se na iPhonu ukazuje jen část mých kalendářů Google?',
+        a: 'Google vede pro každé zařízení seznam kalendářů, které se smějí synchronizovat, a druhotné — sdílené, odebírané, založené kvůli projektu — bývají mimo něj.',
+      },
+      {
+        q: 'Kde je nastavení synchronizace Kalendáře Google pro iPhone?',
+        a: 'Není v nastavení iOS. Žije na vlastní stránce Googlu, a proto hledání na zřejmém místě nic nenajde a nic nezmění.',
+      },
+      {
+        q: 'Jak uvidím na iPhonu všechny kalendáře Google?',
+        a: 'Přes aplikaci, která se ptá Googlu přímo, místo přes seznam zařízení. Ukáže každý kalendář, který účet opravdu má, včetně těch, které telefon zahodil.',
+      },
+    ],
     practical: [
       'Než prohlásíte účet za rozbitý, zkontrolujte seznam synchronizace Googlu.',
       'Počítejte s tím, že odebírané a sdílené kalendáře jsou vyloučené, ne zahrnuté.',
@@ -201,6 +271,20 @@ export const GOOGLE_CS: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Měsíční cena úrovně, kde se tohle spravuje, v dolarech',
     },
+    faq: [
+      {
+        q: 'Smaže odebrání člověka to, co už viděl?',
+        a: 'Ne. Pozvánky, které už má, události zkopírované do vlastního kalendáře i cokoli vyexportovaného zůstanou. Přístup končí, kopie ne.',
+      },
+      {
+        q: 'Dozví se ten člověk, že jsem mu přístup odebral?',
+        a: 'Ne. Kalendář mu ze seznamu zmizí okamžitě a beze zprávy.',
+      },
+      {
+        q: 'Proč je můj kalendář sdílený s někým, koho jsem nikdy nepozval?',
+        a: 'Přidal ho někdo, kdo směl spravovat sdílení. Odebrání té osoby nechá všechny jí přidané na místě — proto se čte celý seznam, ne jedno jméno.',
+      },
+    ],
     practical: [
       'Přečtěte celý seznam přístupů, ne jen jméno, které jste chtěli odebrat.',
       'Resetujte tajnou adresu, pokud ji ten člověk někdy měl.',

@@ -28,6 +28,20 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Costul lunar al nivelului în care se gestionează asta în aplicație, în dolari',
     },
+    faq: [
+      {
+        q: 'Se văd titlurile evenimentelor mele dacă partajez doar liber/ocupat?',
+        a: 'Nu. Liber/ocupat arată blocuri de timp fără titluri, locuri, notițe sau invitați. Abia „toate detaliile” le expune — și le expune pe toate.',
+      },
+      {
+        q: 'Ce permite „efectuarea de modificări și gestionarea partajării”?',
+        a: 'Editarea oricărui eveniment și predarea calendarului tău altor persoane fără să te întrebe. E singurul nivel la care altcineva împarte accesul.',
+      },
+      {
+        q: 'Pot verifica cine are deja acces la calendarul meu?',
+        a: 'Da, în setările de partajare ale acelui calendar. Nimic nu te îndeamnă să te uiți, iar partajările doar se adună: citește lista de două ori pe an.',
+      },
+    ],
     practical: [
       'Implicit liber/ocupat pentru oricine trebuie doar să rezerve timp cu tine.',
       'Păstrează „efectuarea de modificări” pentru cei care chiar planifică în locul tău.',
@@ -63,6 +77,20 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Ore între cererile de reîmprospătare ale unui flux abonat',
       accounts: 'Tipuri de conturi pe care o singură vedere le ține laolaltă, fără nimic din toate astea',
     },
+    faq: [
+      {
+        q: 'Am acceptat un calendar partajat, dar nu e pe iPhone. De ce?',
+        a: 'Partajarea aterizează în contul Google căruia i-a fost adresată, iar un calendar proaspăt adăugat ajunge pe celelalte dispozitive de obicei oprit. Verifică întâi contul, apoi caută-l nebifat, nu absent.',
+      },
+      {
+        q: 'Funcționează partajarea către o adresă de grup?',
+        a: 'Rar. O listă de discuții ajunge greu la oamenii din spatele ei. E nevoie de adresa care este ea însăși un cont Google.',
+      },
+      {
+        q: 'Cât durează până apare un calendar partajat?',
+        a: 'Partajarea prin permisiuni apare imediat ce lista se reîmprospătează. Un calendar partajat ca link este un abonament și urmează ritmul celui care publică.',
+      },
+    ],
     practical: [
       'Verifică întâi ce cont a acceptat partajarea, apoi restul.',
       'Deschide lista de calendare de pe dispozitiv și caută-l oprit, nu absent.',
@@ -98,6 +126,20 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Caractere aleatorii care protejează un link de partajare de-al nostru',
       sharePrice: 'Cât costă partajarea unui eveniment din aplicație',
     },
+    faq: [
+      {
+        q: 'Ce poate face cineva cu adresa secretă a calendarului meu?',
+        a: 'Să vadă tot ce e pe el — titluri, ore, locuri și notițe — fără autentificare, fără permisiune și fără să rămână undeva urma că s-a uitat.',
+      },
+      {
+        q: 'Pot lua înapoi o adresă secretă de calendar?',
+        a: 'Doar resetând-o, ceea ce omoară adresa veche pentru toți deodată: colegi, tablouri de bord și orice script care se sprijinea tăcut pe ea, fără avertisment.',
+      },
+      {
+        q: 'Pot trimite adresa secretă unui coleg pe e-mail?',
+        a: 'Tratează-o ca publică din clipa în care îți iese din mâini. Singura ei protecție e că se ghicește greu, iar redirecționarea anulează exact asta.',
+      },
+    ],
     practical: [
       'Tratează adresa secretă drept publică din clipa în care îți iese din mâini.',
       'Nu publica niciodată adresa calendarului pe care chiar îl folosești.',
@@ -132,6 +174,20 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Cât costă trimiterea unui singur eveniment din aplicație',
     },
+    faq: [
+      {
+        q: 'Se văd invitații între ei într-o invitație din Google Calendar?',
+        a: 'Implicit, de obicei da. „Vizualizarea listei de invitați” arată toți cei chemați și răspunsurile lor: în regulă într-o echipă, jenant cu un client și greșit când invitații sunt clienți separați.',
+      },
+      {
+        q: 'Poate un invitat să schimbe ora ședinței mele?',
+        a: 'Dacă „modificarea evenimentului” e bifată, da, iar schimbarea e valabilă pentru toți. Rareori se dorește și ușor rămâne pornită.',
+      },
+      {
+        q: 'Cum împiedic invitații să cheme alți oameni?',
+        a: 'Oprește „invitarea altora” chiar pe eveniment. Aceste setări aparțin evenimentului, nu contului, deci revin la valorile tale implicite de fiecare dată.',
+      },
+    ],
     practical: [
       'Oprește „vizualizarea listei de invitați” la tot ce pleacă spre oameni care nu se cunosc.',
       'Lasă „modificarea evenimentului” oprită, dacă nu cumva cineva chiar planifică pentru tine.',
@@ -167,6 +223,20 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Tipuri de conturi pe care o singură vedere le ține laolaltă',
       price: 'Cât costă partea de Google',
     },
+    faq: [
+      {
+        q: 'De ce apar pe iPhone doar unele dintre calendarele mele Google?',
+        a: 'Google ține, pentru fiecare dispozitiv, o listă cu ce calendare au voie să se sincronizeze, iar cele secundare — partajate, abonate, făcute pentru un proiect — rămân deseori în afara ei.',
+      },
+      {
+        q: 'Unde e setarea de sincronizare Google Calendar pentru iPhone?',
+        a: 'Nu în setările iOS. Trăiește pe o pagină Google separată, motiv pentru care căutarea în locul evident nu găsește nimic și nu schimbă nimic.',
+      },
+      {
+        q: 'Cum văd toate calendarele Google pe iPhone?',
+        a: 'Printr-o aplicație care interoghează Google direct, nu prin lista dispozitivului. Arată fiecare calendar pe care contul îl are cu adevărat, inclusiv pe cele lăsate deoparte de telefon.',
+      },
+    ],
     practical: [
       'Verifică lista de sincronizare Google înainte să crezi contul stricat.',
       'Așteaptă-te ca abonate și partajate să fie excluse, nu incluse.',
@@ -201,6 +271,20 @@ export const GOOGLE_RO: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Costul lunar al nivelului în care se gestionează asta, în dolari',
     },
+    faq: [
+      {
+        q: 'Scoaterea cuiva șterge și ce a văzut deja?',
+        a: 'Nu. Invitațiile pe care le are deja, evenimentele copiate în propriul calendar și tot ce a fost exportat rămân. Accesul se încheie; copiile nu.',
+      },
+      {
+        q: 'Află persoana că i-am retras accesul?',
+        a: 'Nu. Calendarul dispare din lista ei imediat și fără niciun mesaj.',
+      },
+      {
+        q: 'De ce e calendarul meu partajat cu cineva pe care nu l-am invitat niciodată?',
+        a: 'L-a adăugat cineva care avea dreptul de a gestiona partajarea. Scoaterea acelei persoane lasă la locul lor pe toți cei adăugați de ea — de aceea se citește lista întreagă, nu un nume.',
+      },
+    ],
     practical: [
       'Citește lista completă de acces, nu doar numele pe care voiai să-l scoți.',
       'Resetează adresa secretă dacă persoana a avut-o vreodată.',

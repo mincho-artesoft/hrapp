@@ -38,6 +38,20 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Hours between refresh requests a subscribed feed makes',
       accounts: 'Account types one view can hold without any of this',
     },
+    faq: [
+      {
+        q: 'I accepted a shared calendar but it is not on my iPhone. Why?',
+        a: 'The share lands in the Google account it was addressed to, and a newly added calendar usually arrives switched off on other devices. Check which account accepted it, then look for the calendar unticked rather than missing.',
+      },
+      {
+        q: 'Does sharing a calendar with a group address work?',
+        a: 'Rarely. A mailing list or group address seldom reaches the individuals behind it. The share needs the address that is itself a Google account.',
+      },
+      {
+        q: 'How long should a shared calendar take to show up?',
+        a: 'A permission-based share appears as soon as the calendar list refreshes. A calendar shared as a link is a subscription instead, and it updates on the publisher’s schedule rather than immediately.',
+      },
+    ],
     practical: [
       'Check which account accepted the share before checking anything else.',
       'Open the calendar list on the device and look for it switched off rather than absent.',
@@ -73,6 +87,20 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Random characters protecting a share link of our own',
       sharePrice: 'What sharing an event from the app costs',
     },
+    faq: [
+      {
+        q: 'What can someone do with the secret address of my Google calendar?',
+        a: 'See everything on it — titles, times, locations and notes — without signing in or being granted permission, and without leaving any record that they looked.',
+      },
+      {
+        q: 'Can I take a secret calendar address back?',
+        a: 'Only by resetting it, which kills the old address for everyone at once: colleagues, dashboards and any script quietly relying on it, none of whom are warned.',
+      },
+      {
+        q: 'Is it safe to email the secret address to a colleague?',
+        a: 'Treat it as public from the moment it leaves your hands. Its only protection is being hard to guess, and forwarding defeats that completely.',
+      },
+    ],
     practical: [
       'Treat the secret address as public the moment it leaves your hands.',
       'Never publish the address of the calendar you actually use.',
@@ -107,6 +135,20 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'What sending a single event from the app costs',
     },
+    faq: [
+      {
+        q: 'Can guests see each other on a Google Calendar invitation?',
+        a: 'By default, usually yes. “See guest list” shows everybody invited and how they replied — fine inside a team, awkward with a client, and wrong when the guests are separate customers.',
+      },
+      {
+        q: 'Can a guest change the time of my meeting?',
+        a: 'If “modify event” is ticked, yes, and the change applies to everybody. It is rarely wanted and easily left on.',
+      },
+      {
+        q: 'How do I stop guests from inviting other people?',
+        a: 'Turn off “invite others” on the event itself. These settings belong to the event rather than the account, so they return to your defaults every time you create one.',
+      },
+    ],
     practical: [
       'Turn off see guest list for anything sent to people who do not know each other.',
       'Leave modify event off unless somebody genuinely schedules for you.',
@@ -142,6 +184,20 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Account types one view can hold',
       price: 'What the Google side costs',
     },
+    faq: [
+      {
+        q: 'Why do only some of my Google calendars show up on iPhone?',
+        a: 'Google keeps a per-device list of which calendars are allowed to sync, and secondary calendars — shared ones, subscribed ones, ones made for a project — are frequently outside it.',
+      },
+      {
+        q: 'Where is the Google Calendar sync setting for iPhone?',
+        a: 'Not in iOS settings. It lives on a Google page of its own, which is why looking in the obvious place finds nothing wrong and changes nothing.',
+      },
+      {
+        q: 'How do I see every Google calendar on my iPhone?',
+        a: 'Read them through an app that queries Google directly instead of through the device sync list. It shows every calendar the account actually holds, including the ones the phone dropped.',
+      },
+    ],
     practical: [
       'Check the Google sync list before assuming the account is broken.',
       'Expect subscribed and shared calendars to be excluded rather than included.',
@@ -176,6 +232,20 @@ export const GOOGLE_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Monthly cost of the tier this is managed in, in dollars',
     },
+    faq: [
+      {
+        q: 'Does removing someone from a calendar delete what they already saw?',
+        a: 'No. Invitations they already hold, events they copied into their own calendar and anything exported all survive. Access ends; copies do not.',
+      },
+      {
+        q: 'Will the person be told that I removed their access?',
+        a: 'No. The calendar disappears from their list immediately and without a message.',
+      },
+      {
+        q: 'Why is my calendar still shared with someone I never invited?',
+        a: 'Somebody who had “manage sharing” added them. Removing that person leaves everyone they added in place, which is why the whole access list has to be read rather than one name.',
+      },
+    ],
     practical: [
       'Read the full access list, not just the name you meant to remove.',
       'Reset the secret address if the person ever had it.',

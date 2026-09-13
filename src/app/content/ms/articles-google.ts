@@ -28,6 +28,20 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Kos bulanan tahap tempat ini diurus dalam aplikasi, dalam dolar',
     },
+    faq: [
+      {
+        q: 'Adakah tajuk acara saya kelihatan jika saya kongsi sibuk/lapang sahaja?',
+        a: 'Tidak. Sibuk/lapang menunjukkan blok masa tanpa tajuk, lokasi, nota atau tetamu. Hanya «semua butiran» mendedahkannya — dan mendedahkan semuanya.',
+      },
+      {
+        q: 'Apa yang dibenarkan oleh «buat perubahan dan urus perkongsian»?',
+        a: 'Menyunting setiap acara dan menyerahkan kalendar anda kepada orang lain tanpa bertanya. Itu satu-satunya tahap yang membolehkan orang lain mengagihkan akses.',
+      },
+      {
+        q: 'Bolehkah saya lihat siapa sudah mempunyai akses kepada kalendar saya?',
+        a: 'Boleh, dalam tetapan perkongsian kalendar itu. Tiada apa yang mengajak anda menyemak dan perkongsian hanya bertimbun: baca senarainya dua kali setahun.',
+      },
+    ],
     practical: [
       'Jadikan sibuk/lapang lalai untuk sesiapa yang hanya perlu menempah masa dengan anda.',
       'Simpan «buat perubahan» untuk mereka yang benar-benar menjadualkan bagi pihak anda.',
@@ -63,6 +77,20 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Jam antara permintaan penyegaran oleh suapan langganan',
       accounts: 'Jenis akaun yang disatukan oleh satu paparan tanpa semua ini',
     },
+    faq: [
+      {
+        q: 'Saya terima kalendar kongsi tetapi tiada pada iPhone. Kenapa?',
+        a: 'Perkongsian mendarat dalam akaun Google yang dituju, dan kalendar yang baru ditambah biasanya tiba dalam keadaan dimatikan pada peranti lain. Semak akaun dahulu, kemudian cari ia tidak bertanda, bukan hilang.',
+      },
+      {
+        q: 'Adakah perkongsian ke alamat kumpulan berkesan?',
+        a: 'Jarang. Senarai mel sukar sampai kepada orang di sebaliknya. Yang diperlukan ialah alamat yang memang sebuah akaun Google.',
+      },
+      {
+        q: 'Berapa lama kalendar kongsi mengambil masa untuk muncul?',
+        a: 'Perkongsian melalui kebenaran muncul sebaik senarai disegarkan. Kalendar yang dikongsi sebagai pautan ialah langganan dan mengikut rentak penerbitnya.',
+      },
+    ],
     practical: [
       'Semak akaun mana yang menerima perkongsian sebelum menyemak perkara lain.',
       'Buka senarai kalendar pada peranti dan cari dalam keadaan dimatikan, bukan tiada.',
@@ -98,6 +126,20 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Aksara rawak yang melindungi pautan perkongsian kami',
       sharePrice: 'Kos berkongsi satu acara dari aplikasi',
     },
+    faq: [
+      {
+        q: 'Apa yang boleh dilakukan seseorang dengan alamat rahsia kalendar saya?',
+        a: 'Melihat segala isinya — tajuk, waktu, lokasi dan nota — tanpa log masuk, tanpa kebenaran, dan tanpa meninggalkan rekod bahawa dia melihat.',
+      },
+      {
+        q: 'Bolehkah saya menarik balik alamat rahsia kalendar?',
+        a: 'Hanya dengan menetapkannya semula, dan itu mematikan yang lama untuk semua orang serentak: rakan sekerja, papan pemuka dan setiap skrip yang bersandar padanya secara senyap, tanpa amaran.',
+      },
+      {
+        q: 'Bolehkah saya e-mel alamat rahsia kepada rakan sekerja?',
+        a: 'Anggap ia awam sebaik ia keluar daripada tangan anda. Satu-satunya perlindungannya ialah sukar diteka, dan memanjangkannya membatalkan tepat perkara itu.',
+      },
+    ],
     practical: [
       'Anggap alamat rahsia sebagai awam sebaik ia keluar dari tangan anda.',
       'Jangan sekali-kali menerbitkan alamat kalendar yang anda benar-benar guna.',
@@ -132,6 +174,20 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Kos menghantar satu acara dari aplikasi',
     },
+    faq: [
+      {
+        q: 'Adakah tetamu nampak satu sama lain dalam jemputan Kalendar Google?',
+        a: 'Secara lalai selalunya ya. «Lihat senarai tetamu» menunjukkan semua yang dijemput dan jawapan mereka: tidak mengapa dalam pasukan, janggal dengan pelanggan, dan salah apabila tetamu ialah pelanggan yang berasingan.',
+      },
+      {
+        q: 'Bolehkah tetamu menukar waktu mesyuarat saya?',
+        a: 'Jika «ubah acara» ditanda, boleh, dan perubahan itu terpakai untuk semua. Jarang dikehendaki dan mudah dibiarkan hidup.',
+      },
+      {
+        q: 'Bagaimana menghalang tetamu daripada menjemput orang lain?',
+        a: 'Matikan «jemput orang lain» pada acara itu sendiri. Tetapan ini milik acara, bukan akaun, jadi ia kembali kepada nilai lalai anda setiap kali.',
+      },
+    ],
     practical: [
       'Matikan «lihat senarai tetamu» bagi apa-apa yang dihantar kepada orang yang tidak saling mengenali.',
       'Biarkan «ubah acara» dimatikan melainkan ada orang yang benar-benar menjadualkan untuk anda.',
@@ -167,6 +223,20 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Jenis akaun yang disatukan oleh satu paparan',
       price: 'Kos bahagian Google',
     },
+    faq: [
+      {
+        q: 'Kenapa hanya sebahagian kalendar Google saya muncul pada iPhone?',
+        a: 'Google menyimpan senarai bagi setiap peranti tentang kalendar mana yang dibenarkan menyegerak, dan kalendar sekunder — yang dikongsi, dilanggan, dibuat untuk projek — kerap berada di luarnya.',
+      },
+      {
+        q: 'Di mana tetapan penyegerakan Kalendar Google untuk iPhone?',
+        a: 'Bukan dalam tetapan iOS. Ia berada pada halaman Google tersendiri, dan sebab itulah mencari di tempat yang jelas tidak menemui apa-apa dan tidak mengubah apa-apa.',
+      },
+      {
+        q: 'Bagaimana saya melihat semua kalendar Google pada iPhone?',
+        a: 'Melalui aplikasi yang bertanya kepada Google secara terus dan bukan melalui senarai peranti. Ia menunjukkan setiap kalendar yang benar-benar ada pada akaun, termasuk yang digugurkan telefon.',
+      },
+    ],
     practical: [
       'Semak senarai penyegerakan Google sebelum menganggap akaun itu rosak.',
       'Jangkakan kalendar langganan dan kongsi dikecualikan, bukan disertakan.',
@@ -201,6 +271,20 @@ export const GOOGLE_MS: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Kos bulanan tahap tempat ini diurus, dalam dolar',
     },
+    faq: [
+      {
+        q: 'Adakah mengeluarkan seseorang memadam apa yang sudah dilihatnya?',
+        a: 'Tidak. Jemputan yang sudah ada padanya, acara yang disalin ke kalendarnya sendiri dan apa-apa yang dieksport kekal. Akses tamat; salinan tidak.',
+      },
+      {
+        q: 'Adakah orang itu diberitahu bahawa saya menarik balik aksesnya?',
+        a: 'Tidak. Kalendar hilang daripada senarainya serta-merta dan tanpa mesej.',
+      },
+      {
+        q: 'Kenapa kalendar saya masih dikongsi dengan orang yang tidak pernah saya jemput?',
+        a: 'Seseorang yang berhak mengurus perkongsian menambahnya. Mengeluarkan orang itu membiarkan semua yang ditambahnya kekal — sebab itulah dibaca seluruh senarai, bukan satu nama.',
+      },
+    ],
     practical: [
       'Baca senarai akses sepenuhnya, bukan hanya nama yang anda niat keluarkan.',
       'Tetapkan semula alamat rahsia jika orang itu pernah memilikinya.',

@@ -12,6 +12,7 @@ export const CHROME_EL: ArticleChrome = {
   colWhat: 'Τι περιγράφει',
   colValue: 'Τιμή',
   practical: 'Τι να κάνετε',
+  faqHeading: 'Ερωτήσεις',
   seeAlso: 'Διαβάστε επίσης',
   updated: 'Τελευταίος έλεγχος',
   ctaLine: 'Το ημερολόγιό σας και η πρόγνωση σε μία προβολή — σε iPhone και iPad.',

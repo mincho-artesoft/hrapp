@@ -135,5 +135,29 @@ export class ArticlePageComponent {
       about: { '@type': 'SoftwareApplication', name: APP_NAME, applicationCategory: 'ProductivityApplication', operatingSystem: 'iOS', url: APP_STORE_URL },
     });
     doc.head.appendChild(script);
+
+    // FAQPage only where the page actually shows questions. Google's own rule
+    // is that the marked-up answer must be the visible one, and the article
+    // renders these above; an article without a written FAQ emits nothing
+    // rather than a manufactured one.
+    const faqId = 'article-faq-jsonld';
+    doc.getElementById(faqId)?.remove();
+    const faq = this.article!.faq ?? [];
+    if (!faq.length) return;
+
+    const faqScript = doc.createElement('script');
+    faqScript.id = faqId;
+    faqScript.type = 'application/ld+json';
+    faqScript.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: this.locale.hreflang,
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    });
+    doc.head.appendChild(faqScript);
   }
 }

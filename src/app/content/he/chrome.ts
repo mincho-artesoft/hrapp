@@ -12,6 +12,7 @@ export const CHROME_HE: ArticleChrome = {
   colWhat: 'מה זה מתאר',
   colValue: 'ערך',
   practical: 'מה לעשות',
+  faqHeading: 'שאלות',
   seeAlso: 'קראו גם',
   updated: 'נבדק לאחרונה',
   ctaLine: 'היומן שלכם ותחזית מזג האוויר בתצוגה אחת — ב‑iPhone וב‑iPad.',

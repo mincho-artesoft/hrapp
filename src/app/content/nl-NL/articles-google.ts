@@ -28,6 +28,20 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Maandprijs van het niveau waarin dit in de app wordt beheerd, in dollars',
     },
+    faq: [
+      {
+        q: 'Zijn mijn afspraaktitels zichtbaar als ik alleen vrij/bezet deel?',
+        a: 'Nee. Vrij/bezet toont blokken tijd zonder titels, locaties, notities of gasten. Alleen «alle afspraakgegevens» legt die bloot — en dan allemaal.',
+      },
+      {
+        q: 'Wat mag iemand met «wijzigingen aanbrengen en delen beheren»?',
+        a: 'Elke afspraak bewerken én jouw agenda doorgeven aan anderen zonder het te vragen. Het is het enige niveau waarop iemand anders toegang kan uitdelen.',
+      },
+      {
+        q: 'Kan ik zien wie al toegang heeft tot mijn agenda?',
+        a: 'Ja, in de deelinstellingen van die agenda. Niets nodigt je uit om te kijken en delen stapelt zich alleen op: lees de lijst twee keer per jaar.',
+      },
+    ],
     practical: [
       'Standaard vrij/bezet voor iedereen die alleen tijd bij je hoeft te boeken.',
       'Houd «wijzigingen aanbrengen» voor mensen die echt voor je plannen.',
@@ -63,6 +77,20 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Uren tussen verversingsverzoeken van een geabonneerde feed',
       accounts: 'Soorten accounts die één overzicht bijeenhoudt, zonder dit alles',
     },
+    faq: [
+      {
+        q: 'Ik heb een gedeelde agenda geaccepteerd maar hij staat niet op mijn iPhone. Waarom?',
+        a: 'De deling landt in het Google-account waaraan hij was gericht, en een net toegevoegde agenda komt op andere apparaten meestal uitgeschakeld binnen. Kijk eerst naar het account en zoek hem daarna niet-aangevinkt in plaats van afwezig.',
+      },
+      {
+        q: 'Werkt delen met een groepsadres?',
+        a: 'Zelden. Een mailinglijst bereikt de mensen erachter nauwelijks. Nodig is het adres dat zelf een Google-account is.',
+      },
+      {
+        q: 'Hoe lang duurt het voordat een gedeelde agenda verschijnt?',
+        a: 'Een deling via rechten verschijnt zodra de lijst ververst. Een als link gedeelde agenda is een abonnement en volgt het ritme van de uitgever.',
+      },
+    ],
     practical: [
       'Kijk eerst welk account de deling heeft geaccepteerd, daarna pas naar de rest.',
       'Open de agendalijst op het apparaat en zoek hem uitgeschakeld in plaats van afwezig.',
@@ -98,6 +126,20 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Willekeurige tekens die een deellink van ons beschermen',
       sharePrice: 'Wat het delen van één afspraak uit de app kost',
     },
+    faq: [
+      {
+        q: 'Wat kan iemand met het geheime adres van mijn agenda?',
+        a: 'Alles erop zien — titels, tijden, locaties en notities — zonder inloggen, zonder rechten en zonder dat ergens wordt vastgelegd dat hij heeft gekeken.',
+      },
+      {
+        q: 'Kan ik een geheim agenda-adres terugnemen?',
+        a: 'Alleen door het opnieuw in te stellen, en dat doodt het oude voor iedereen tegelijk: collega’s, dashboards en elk script dat er stil op leunde, zonder waarschuwing.',
+      },
+      {
+        q: 'Mag ik het geheime adres naar een collega mailen?',
+        a: 'Behandel het als openbaar zodra het je handen verlaat. De enige bescherming is dat het moeilijk te raden is, en doorsturen heft precies dat op.',
+      },
+    ],
     practical: [
       'Behandel het geheime adres als openbaar zodra het je handen verlaat.',
       'Publiceer nooit het adres van de agenda die je echt gebruikt.',
@@ -132,6 +174,20 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Wat het versturen van één afspraak uit de app kost',
     },
+    faq: [
+      {
+        q: 'Zien gasten elkaar bij een uitnodiging in Google Agenda?',
+        a: 'Standaard meestal wel. «Gastenlijst zien» toont iedereen die is uitgenodigd en hun antwoord: prima in een team, ongemakkelijk bij een klant, fout wanneer de gasten losse klanten zijn.',
+      },
+      {
+        q: 'Kan een gast de tijd van mijn vergadering wijzigen?',
+        a: 'Als «afspraak wijzigen» aan staat wel, en de wijziging geldt voor iedereen. Zelden gewenst en makkelijk aan gelaten.',
+      },
+      {
+        q: 'Hoe voorkom ik dat gasten anderen uitnodigen?',
+        a: 'Zet «anderen uitnodigen» uit op de afspraak zelf. Deze instellingen horen bij de afspraak en niet bij het account, dus ze vallen elke keer terug op je standaard.',
+      },
+    ],
     practical: [
       'Zet «gastenlijst zien» uit bij alles dat naar mensen gaat die elkaar niet kennen.',
       'Laat «afspraak wijzigen» uit, tenzij iemand echt voor je plant.',
@@ -167,6 +223,20 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Soorten accounts die één overzicht bijeenhoudt',
       price: 'Wat de Google-kant kost',
     },
+    faq: [
+      {
+        q: 'Waarom verschijnen maar sommige van mijn Google-agenda’s op de iPhone?',
+        a: 'Google houdt per apparaat een lijst bij van welke agenda’s mogen synchroniseren, en secundaire agenda’s — gedeelde, geabonneerde, voor een project gemaakte — staan daar vaak buiten.',
+      },
+      {
+        q: 'Waar staat de synchronisatie-instelling voor Google Agenda op de iPhone?',
+        a: 'Niet in de iOS-instellingen. Ze staat op een eigen Google-pagina, en daarom vindt zoeken op de voor de hand liggende plek niets en verandert er niets.',
+      },
+      {
+        q: 'Hoe zie ik al mijn Google-agenda’s op de iPhone?',
+        a: 'Via een app die Google rechtstreeks bevraagt in plaats van via de lijst van het apparaat. Die toont elke agenda die het account echt heeft, ook de door de telefoon weggelaten.',
+      },
+    ],
     practical: [
       'Kijk in de Google-synchronisatielijst voordat je het account kapot verklaart.',
       'Reken erop dat geabonneerde en gedeelde agenda’s zijn uitgesloten, niet opgenomen.',
@@ -201,6 +271,20 @@ export const GOOGLE_NL_NL: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Maandprijs van het niveau waarin dit wordt beheerd, in dollars',
     },
+    faq: [
+      {
+        q: 'Wist iemand verwijderen ook wat die persoon al heeft gezien?',
+        a: 'Nee. Uitnodigingen die hij al heeft, afspraken die naar zijn eigen agenda zijn gekopieerd en alles wat geëxporteerd is blijven bestaan. De toegang eindigt, de kopieën niet.',
+      },
+      {
+        q: 'Krijgt de persoon bericht dat ik de toegang heb ingetrokken?',
+        a: 'Nee. De agenda verdwijnt onmiddellijk en zonder melding uit zijn lijst.',
+      },
+      {
+        q: 'Waarom is mijn agenda gedeeld met iemand die ik nooit heb uitgenodigd?',
+        a: 'Iemand met het recht om delen te beheren heeft die persoon toegevoegd. Die eerste verwijderen laat iedereen staan die hij toevoegde — daarom lees je de hele lijst en niet één naam.',
+      },
+    ],
     practical: [
       'Lees de volledige toegangslijst, niet alleen de naam die je wilde verwijderen.',
       'Stel het geheime adres opnieuw in als die persoon het ooit had.',

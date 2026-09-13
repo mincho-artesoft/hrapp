@@ -12,6 +12,7 @@ export const CHROME_KO: ArticleChrome = {
   colWhat: '무엇을 가리키는가',
   colValue: '값',
   practical: '무엇을 하면 되는가',
+  faqHeading: '자주 묻는 질문',
   seeAlso: '함께 읽기',
   updated: '마지막 확인',
   ctaLine: '달력과 일기예보를 한 화면에 — iPhone과 iPad에서.',

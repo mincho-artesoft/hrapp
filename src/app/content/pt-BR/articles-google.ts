@@ -28,6 +28,20 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Custo mensal do nível em que isso é gerenciado no app, em dólares',
     },
+    faq: [
+      {
+        q: 'Dá para ver os títulos dos meus eventos se eu compartilhar só livre/ocupado?',
+        a: 'Não. Livre/ocupado mostra blocos de tempo sem títulos, locais, anotações ou convidados. Só «ver todos os detalhes» expõe isso — e expõe tudo.',
+      },
+      {
+        q: 'O que permite «fazer alterações e gerenciar o compartilhamento»?',
+        a: 'Editar qualquer evento e entregar sua agenda a outras pessoas sem perguntar. É o único nível que deixa outra pessoa distribuir acesso.',
+      },
+      {
+        q: 'Posso ver quem já tem acesso à minha agenda?',
+        a: 'Sim, nas configurações de compartilhamento daquela agenda. Nada convida você a olhar e os compartilhamentos só se acumulam: revise a lista duas vezes por ano.',
+      },
+    ],
     practical: [
       'Use livre/ocupado como padrão para quem só precisa reservar um horário com você.',
       'Deixe «fazer alterações» para quem realmente agenda por você.',
@@ -63,6 +77,20 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Horas entre os pedidos de atualização de um feed assinado',
       accounts: 'Tipos de conta que uma única visão reúne sem nada disso',
     },
+    faq: [
+      {
+        q: 'Aceitei uma agenda compartilhada e ela não está no meu iPhone. Por quê?',
+        a: 'O compartilhamento cai na conta do Google para a qual foi endereçado, e uma agenda recém-adicionada costuma chegar desligada nos outros aparelhos. Veja primeiro a conta, depois procure-a desmarcada, não ausente.',
+      },
+      {
+        q: 'Compartilhar com um endereço de grupo funciona?',
+        a: 'Raramente. Uma lista de e-mails quase não alcança as pessoas por trás dela. É preciso o endereço que é em si uma conta do Google.',
+      },
+      {
+        q: 'Quanto tempo leva para uma agenda compartilhada aparecer?',
+        a: 'O compartilhamento por permissão aparece assim que a lista atualiza. Uma agenda compartilhada como link é uma assinatura e segue o ritmo de quem publica.',
+      },
+    ],
     practical: [
       'Veja qual conta aceitou o compartilhamento antes de qualquer outra coisa.',
       'Abra a lista de agendas no aparelho e procure-a desligada, não ausente.',
@@ -98,6 +126,20 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Caracteres aleatórios que protegem um link de compartilhamento nosso',
       sharePrice: 'O que custa compartilhar um evento pelo app',
     },
+    faq: [
+      {
+        q: 'O que alguém pode fazer com o endereço secreto da minha agenda?',
+        a: 'Ver tudo o que há nela — títulos, horários, locais e anotações — sem login, sem permissão e sem deixar registro de que olhou.',
+      },
+      {
+        q: 'Dá para retomar um endereço secreto de agenda?',
+        a: 'Só redefinindo, o que mata o antigo para todo mundo de uma vez: colegas, painéis e qualquer script que se apoiava nele em silêncio, sem aviso.',
+      },
+      {
+        q: 'Posso mandar o endereço secreto por e-mail para um colega?',
+        a: 'Trate como público a partir do instante em que ele sai das suas mãos. A única proteção é ser difícil de adivinhar, e um encaminhamento anula justamente isso.',
+      },
+    ],
     practical: [
       'Trate o endereço secreto como público no instante em que ele sai das suas mãos.',
       'Nunca publique o endereço da agenda que você realmente usa.',
@@ -132,6 +174,20 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'O que custa enviar um único evento pelo app',
     },
+    faq: [
+      {
+        q: 'Os convidados se veem entre si num convite do Google Agenda?',
+        a: 'Por padrão, quase sempre sim. «Ver a lista de convidados» mostra todos os chamados e suas respostas: tudo bem num time, constrangedor com cliente, errado quando os convidados são clientes separados.',
+      },
+      {
+        q: 'Um convidado pode mudar o horário da minha reunião?',
+        a: 'Se «modificar o evento» estiver marcado, sim, e a mudança vale para todos. Raramente se quer isso e é fácil deixar ligado.',
+      },
+      {
+        q: 'Como impeço que convidados chamem outras pessoas?',
+        a: 'Desmarque «convidar outros» no próprio evento. Essas configurações pertencem ao evento e não à conta, então voltam ao seu padrão toda vez.',
+      },
+    ],
     practical: [
       'Desligue «ver a lista de convidados» em tudo que vai para pessoas que não se conhecem.',
       'Mantenha «modificar o evento» desligado, a menos que alguém realmente agende por você.',
@@ -167,6 +223,20 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Tipos de conta que uma única visão reúne',
       price: 'O que custa o lado do Google',
     },
+    faq: [
+      {
+        q: 'Por que só algumas das minhas agendas do Google aparecem no iPhone?',
+        a: 'O Google mantém, por aparelho, uma lista de quais agendas podem sincronizar, e as secundárias — compartilhadas, assinadas, criadas para um projeto — ficam fora com frequência.',
+      },
+      {
+        q: 'Onde fica a configuração de sincronização do Google Agenda para iPhone?',
+        a: 'Não nos ajustes do iOS. Ela mora numa página do próprio Google, e por isso procurar no lugar óbvio não acha nada e não muda nada.',
+      },
+      {
+        q: 'Como vejo todas as minhas agendas do Google no iPhone?',
+        a: 'Por um app que consulta o Google diretamente em vez de passar pela lista do aparelho. Ele mostra todas as agendas que a conta realmente tem, inclusive as que o telefone deixou de fora.',
+      },
+    ],
     practical: [
       'Confira a lista de sincronização do Google antes de achar que a conta quebrou.',
       'Conte com agendas assinadas e compartilhadas excluídas, não incluídas.',
@@ -201,6 +271,20 @@ export const GOOGLE_PT_BR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Custo mensal do nível em que isso é gerenciado, em dólares',
     },
+    faq: [
+      {
+        q: 'Remover alguém apaga o que essa pessoa já viu?',
+        a: 'Não. Convites que ela já tem, eventos copiados para a agenda dela e tudo que foi exportado permanecem. O acesso acaba; as cópias não.',
+      },
+      {
+        q: 'A pessoa é avisada de que retirei o acesso dela?',
+        a: 'Não. A agenda some da lista dela na hora e sem mensagem.',
+      },
+      {
+        q: 'Por que minha agenda ainda está compartilhada com alguém que nunca convidei?',
+        a: 'Alguém com permissão para gerenciar o compartilhamento a adicionou. Remover essa pessoa deixa no lugar todas as que ela acrescentou — por isso se lê a lista inteira, não um nome.',
+      },
+    ],
     practical: [
       'Leia a lista completa de acesso, não só o nome que você queria tirar.',
       'Redefina o endereço secreto se a pessoa já o teve.',

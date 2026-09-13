@@ -12,6 +12,7 @@ export const CHROME_HU: ArticleChrome = {
   colWhat: 'Mit ír le',
   colValue: 'Érték',
   practical: 'Mit tegyen',
+  faqHeading: 'Kérdések',
   seeAlso: 'Olvassa el ezt is',
   updated: 'Utoljára ellenőrizve',
   ctaLine: 'A naptára és az előrejelzés egyetlen nézetben — iPhone-on és iPaden.',

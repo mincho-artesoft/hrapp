@@ -12,6 +12,7 @@ export const CHROME_ZH_HANS: ArticleChrome = {
   colWhat: '描述的是什么',
   colValue: '数值',
   practical: '该怎么做',
+  faqHeading: '常见问题',
   seeAlso: '延伸阅读',
   updated: '最近核对',
   ctaLine: '把日历和天气预报放进同一个视图 — 在 iPhone 和 iPad 上。',

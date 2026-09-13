@@ -60,6 +60,18 @@
       </ol>
     </section>
 
+    @if (article.faq?.length) {
+      <section class="article__faq">
+        <h2>{{ chrome.faqHeading }}</h2>
+        <dl>
+          @for (item of article.faq; track item.q) {
+            <dt>{{ item.q }}</dt>
+            <dd>{{ item.a }}</dd>
+          }
+        </dl>
+      </section>
+    }
+
     @if (seeAlso.length) {
       <section class="article__related">
         <h2>{{ chrome.seeAlso }}</h2>

@@ -12,6 +12,7 @@ export const CHROME_VI: ArticleChrome = {
   colWhat: 'Mô tả điều gì',
   colValue: 'Giá trị',
   practical: 'Nên làm gì',
+  faqHeading: 'Câu hỏi',
   seeAlso: 'Đọc thêm',
   updated: 'Lần rà soát gần nhất',
   ctaLine: 'Lịch của bạn và dự báo thời tiết trong cùng một khung nhìn — trên iPhone và iPad.',

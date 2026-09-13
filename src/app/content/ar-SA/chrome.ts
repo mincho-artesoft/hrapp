@@ -12,6 +12,7 @@ export const CHROME_AR_SA: ArticleChrome = {
   colWhat: 'ماذا يصف',
   colValue: 'القيمة',
   practical: 'ماذا تفعل',
+  faqHeading: 'أسئلة',
   seeAlso: 'اقرأ أيضًا',
   updated: 'آخر مراجعة',
   ctaLine: 'تقويمك والتوقعات الجوية في عرض واحد — على iPhone وiPad.',

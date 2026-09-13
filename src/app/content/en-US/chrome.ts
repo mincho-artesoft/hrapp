@@ -18,6 +18,7 @@ export const CHROME_EN_US: ArticleChrome = {
   colWhat: 'What it describes',
   colValue: 'Value',
   practical: 'What to do',
+  faqHeading: 'Questions',
   seeAlso: 'Related',
   updated: 'Last reviewed',
   ctaLine: 'Your calendar and the forecast, in one view — on iPhone and iPad.',

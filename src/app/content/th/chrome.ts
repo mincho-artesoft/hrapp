@@ -12,6 +12,7 @@ export const CHROME_TH: ArticleChrome = {
   colWhat: 'อธิบายอะไร',
   colValue: 'ค่า',
   practical: 'ควรทำอย่างไร',
+  faqHeading: 'คำถาม',
   seeAlso: 'อ่านเพิ่มเติม',
   updated: 'ตรวจทานล่าสุด',
   ctaLine: 'ปฏิทินและพยากรณ์อากาศของคุณในมุมมองเดียว — บน iPhone และ iPad',

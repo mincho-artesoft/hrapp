@@ -17,6 +17,7 @@ export const CHROME_FR_FR: ArticleChrome = {
   colWhat: 'Ce que cela décrit',
   colValue: 'Valeur',
   practical: 'Que faire',
+  faqHeading: 'Questions',
   seeAlso: 'À lire aussi',
   updated: 'Dernière révision',
   ctaLine: 'Votre agenda et la météo dans une seule vue — sur iPhone et iPad.',

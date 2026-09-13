@@ -12,6 +12,7 @@ export const CHROME_HI: ArticleChrome = {
   colWhat: 'यह क्या बताता है',
   colValue: 'मान',
   practical: 'क्या करें',
+  faqHeading: 'सवाल',
   seeAlso: 'यह भी पढ़ें',
   updated: 'अंतिम जाँच',
   ctaLine: 'आपका कैलेंडर और मौसम का पूर्वानुमान एक ही दृश्य में — iPhone और iPad पर।',

@@ -12,6 +12,7 @@ export const CHROME_MS: ArticleChrome = {
   colWhat: 'Apa yang digambarkan',
   colValue: 'Nilai',
   practical: 'Apa yang perlu dibuat',
+  faqHeading: 'Soalan',
   seeAlso: 'Baca juga',
   updated: 'Kali terakhir disemak',
   ctaLine: 'Kalendar dan ramalan cuaca anda dalam satu paparan — pada iPhone dan iPad.',

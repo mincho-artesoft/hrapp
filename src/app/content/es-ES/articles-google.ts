@@ -28,6 +28,20 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Coste mensual del nivel donde se gestiona esto en la app, en dólares',
     },
+    faq: [
+      {
+        q: '¿Se ven los títulos de mis eventos si comparto solo libre/ocupado?',
+        a: 'No. Libre/ocupado muestra bloques de tiempo sin títulos, lugares, notas ni invitados. Solo «ver todos los detalles» los expone, y los expone todos.',
+      },
+      {
+        q: '¿Qué permite «hacer cambios y gestionar la compartición»?',
+        a: 'Editar cualquier evento y entregar tu calendario a más personas sin preguntarte. Es el único nivel que deja a otro repartir el acceso.',
+      },
+      {
+        q: '¿Puedo ver quién tiene ya acceso a mi calendario?',
+        a: 'Sí, en los ajustes de compartición de ese calendario. Nada te invita a mirar y lo compartido solo se acumula: revisa la lista dos veces al año.',
+      },
+    ],
     practical: [
       'Por defecto, libre/ocupado para quien solo necesita reservar tiempo contigo.',
       'Reserva «hacer cambios» para quien de verdad planifica por ti.',
@@ -63,6 +77,20 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Horas entre peticiones de actualización de un feed suscrito',
       accounts: 'Tipos de cuenta que una sola vista reúne sin nada de esto',
     },
+    faq: [
+      {
+        q: 'Acepté un calendario compartido y no está en mi iPhone. ¿Por qué?',
+        a: 'Lo compartido aterriza en la cuenta de Google a la que iba dirigido, y un calendario recién añadido suele llegar desactivado a los demás dispositivos. Mira primero la cuenta y luego búscalo sin marcar, no ausente.',
+      },
+      {
+        q: '¿Funciona compartir con una dirección de grupo?',
+        a: 'Rara vez. Una lista de correo apenas alcanza a las personas que hay detrás. Hace falta la dirección que es en sí una cuenta de Google.',
+      },
+      {
+        q: '¿Cuánto tarda en aparecer un calendario compartido?',
+        a: 'Lo compartido por permisos aparece en cuanto se refresca la lista. Un calendario compartido como enlace es una suscripción y sigue el ritmo de quien publica.',
+      },
+    ],
     practical: [
       'Comprueba qué cuenta aceptó lo compartido antes que ninguna otra cosa.',
       'Abre la lista de calendarios del dispositivo y búscalo desactivado, no ausente.',
@@ -98,6 +126,20 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Caracteres aleatorios que protegen un enlace nuestro',
       sharePrice: 'Lo que cuesta compartir un evento desde la app',
     },
+    faq: [
+      {
+        q: '¿Qué puede hacer alguien con la dirección secreta de mi calendario?',
+        a: 'Ver todo lo que hay en él —títulos, horas, lugares y notas— sin iniciar sesión, sin permiso y sin dejar rastro de que ha mirado.',
+      },
+      {
+        q: '¿Puedo recuperar una dirección secreta de calendario?',
+        a: 'Solo restableciéndola, lo que mata la anterior para todos a la vez: compañeros, paneles y cualquier script que se apoyaba en ella en silencio, sin aviso.',
+      },
+      {
+        q: '¿Puedo enviar la dirección secreta por correo a un compañero?',
+        a: 'Trátala como pública desde que sale de tus manos. Su única protección es ser difícil de adivinar, y un reenvío anula exactamente eso.',
+      },
+    ],
     practical: [
       'Trata la dirección secreta como pública en cuanto sale de tus manos.',
       'No publiques nunca la dirección del calendario que usas de verdad.',
@@ -132,6 +174,20 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Lo que cuesta enviar un solo evento desde la app',
     },
+    faq: [
+      {
+        q: '¿Los invitados se ven entre sí en una invitación de Google Calendar?',
+        a: 'Por defecto, casi siempre sí. «Ver la lista de invitados» muestra a todos los llamados y sus respuestas: bien en un equipo, incómodo con un cliente y equivocado cuando los invitados son clientes distintos.',
+      },
+      {
+        q: '¿Puede un invitado cambiar la hora de mi reunión?',
+        a: 'Si «modificar el evento» está marcado, sí, y el cambio vale para todos. Rara vez se quiere y es fácil dejarlo activo.',
+      },
+      {
+        q: '¿Cómo evito que los invitados inviten a otros?',
+        a: 'Desmarca «invitar a otros» en el propio evento. Estos ajustes pertenecen al evento y no a la cuenta, así que vuelven a tus valores por defecto cada vez.',
+      },
+    ],
     practical: [
       'Desactiva «ver la lista de invitados» en todo lo que va a gente que no se conoce entre sí.',
       'Deja «modificar el evento» apagado salvo que alguien planifique realmente por ti.',
@@ -167,6 +223,20 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Tipos de cuenta que una sola vista reúne',
       price: 'Lo que cuesta la parte de Google',
     },
+    faq: [
+      {
+        q: '¿Por qué solo aparecen algunos de mis calendarios de Google en el iPhone?',
+        a: 'Google guarda, por dispositivo, una lista de qué calendarios pueden sincronizarse, y los secundarios —compartidos, suscritos, creados para un proyecto— quedan fuera con frecuencia.',
+      },
+      {
+        q: '¿Dónde está el ajuste de sincronización de Google Calendar para iPhone?',
+        a: 'No está en los ajustes de iOS. Vive en una página propia de Google, y por eso buscar en el sitio evidente no encuentra nada ni cambia nada.',
+      },
+      {
+        q: '¿Cómo veo todos mis calendarios de Google en el iPhone?',
+        a: 'A través de una app que consulta a Google directamente en vez de por la lista del dispositivo. Enseña todos los calendarios que la cuenta tiene, incluidos los que el teléfono dejó fuera.',
+      },
+    ],
     practical: [
       'Mira la lista de sincronización de Google antes de dar la cuenta por rota.',
       'Da por hecho que los calendarios suscritos y compartidos quedan excluidos.',
@@ -201,6 +271,20 @@ export const GOOGLE_ES_ES: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Coste mensual del nivel donde se gestiona esto, en dólares',
     },
+    faq: [
+      {
+        q: '¿Quitar a alguien borra lo que ya vio?',
+        a: 'No. Las invitaciones que ya tiene, los eventos copiados a su propio calendario y todo lo exportado sobreviven. El acceso termina; las copias no.',
+      },
+      {
+        q: '¿Se le avisa a la persona de que le he quitado el acceso?',
+        a: 'No. El calendario desaparece de su lista al instante y sin mensaje.',
+      },
+      {
+        q: '¿Por qué mi calendario sigue compartido con alguien a quien nunca invité?',
+        a: 'Alguien con permiso para gestionar la compartición lo añadió. Quitar a esa persona deja en su sitio a todas las que añadió: por eso se lee la lista entera y no un nombre.',
+      },
+    ],
     practical: [
       'Lee la lista completa de acceso, no solo el nombre que ibas a quitar.',
       'Restablece la dirección secreta si esa persona la tuvo alguna vez.',

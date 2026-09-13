@@ -12,6 +12,7 @@ export const CHROME_NL_NL: ArticleChrome = {
   colWhat: 'Wat het beschrijft',
   colValue: 'Waarde',
   practical: 'Wat te doen',
+  faqHeading: 'Vragen',
   seeAlso: 'Lees ook',
   updated: 'Laatst nagekeken',
   ctaLine: 'Uw agenda en het weer in één weergave — op iPhone en iPad.',

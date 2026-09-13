@@ -161,6 +161,20 @@ export const SHARING_EN_US: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Monthly cost of managing these permissions in-app, in dollars',
     },
+    faq: [
+      {
+        q: 'Can someone see my event titles if I share free/busy?',
+        a: 'No. Free/busy shows blocks of time with no titles, locations, notes or guests. Only “see all event details” exposes those, and it exposes all of them.',
+      },
+      {
+        q: 'What does “make changes and manage sharing” let someone do?',
+        a: 'Edit every event on the calendar, and hand the calendar to further people without asking you. It is the only level that lets somebody else give out access.',
+      },
+      {
+        q: 'Can I check who already has access to my Google calendar?',
+        a: 'Yes, in that calendar’s sharing settings. Nothing prompts you to look, and sharing only accumulates, so it is worth reading the list twice a year.',
+      },
+    ],
     practical: [
       'Default to free/busy for anyone who only needs to book time with you.',
       "Reserve 'make changes' for people who genuinely schedule on your behalf.",

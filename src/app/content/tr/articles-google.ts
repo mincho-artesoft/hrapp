@@ -28,6 +28,20 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Bunun uygulamada yönetildiği katmanın aylık ücreti, dolar olarak',
     },
+    faq: [
+      {
+        q: 'Yalnızca boş/meşgul paylaşırsam etkinlik başlıklarım görünür mü?',
+        a: 'Hayır. Boş/meşgul, başlıksız zaman bloklarını gösterir; yer, not ve konuk yoktur. Bunları ancak «tüm ayrıntılar» açar — ve hepsini açar.',
+      },
+      {
+        q: '«Değişiklik yapma ve paylaşımı yönetme» neye izin verir?',
+        a: 'Her etkinliği düzenlemeye ve takviminizi size sormadan başkalarına devretmeye. Erişimi sizden başka birinin dağıtabildiği tek düzey budur.',
+      },
+      {
+        q: 'Takvimime kimlerin erişimi olduğunu görebilir miyim?',
+        a: 'Evet, o takvimin paylaşım ayarlarında. Hiçbir şey bakmanızı istemez ve paylaşımlar yalnızca birikir: listeyi yılda iki kez okuyun.',
+      },
+    ],
     practical: [
       'Sizden yalnızca zaman ayırtacak herkes için varsayılan boş/meşgul olsun.',
       '«Değişiklik yapma»yı gerçekten sizin adınıza plan yapanlara bırakın.',
@@ -63,6 +77,20 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
       refreshHint: 'Abone olunan bir akışın yenileme istekleri arasındaki saat',
       accounts: 'Tek bir görünümün bütün bunlar olmadan bir arada tuttuğu hesap türleri',
     },
+    faq: [
+      {
+        q: 'Paylaşılan bir takvimi kabul ettim ama iPhone’umda yok. Neden?',
+        a: 'Paylaşım, gönderildiği Google hesabına iner ve yeni eklenen bir takvim diğer cihazlara çoğunlukla kapalı ulaşır. Önce hesaba bakın, sonra onu yok değil, işaretlenmemiş olarak arayın.',
+      },
+      {
+        q: 'Grup adresine paylaşım işe yarar mı?',
+        a: 'Nadiren. Bir posta listesi arkasındaki kişilere güçlükle ulaşır. Gereken, kendisi bir Google hesabı olan adrestir.',
+      },
+      {
+        q: 'Paylaşılan bir takvim ne kadar sürede görünür?',
+        a: 'İzinle yapılan paylaşım, liste yenilenir yenilenmez görünür. Bağlantı olarak paylaşılan takvim ise aboneliktir ve yayımlayanın temposunu izler.',
+      },
+    ],
     practical: [
       'Her şeyden önce paylaşımı hangi hesabın kabul ettiğine bakın.',
       'Cihazdaki takvim listesini açın ve onu yok değil, kapalı olarak arayın.',
@@ -98,6 +126,20 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
       linkLength: 'Bizim paylaşım bağlantımızı koruyan rastgele karakter sayısı',
       sharePrice: 'Uygulamadan bir etkinliği paylaşmanın ücreti',
     },
+    faq: [
+      {
+        q: 'Biri takvimimin gizli adresiyle ne yapabilir?',
+        a: 'Üzerindeki her şeyi görebilir — başlıklar, saatler, yerler ve notlar — oturum açmadan, izin almadan ve baktığına dair hiçbir yerde kayıt bırakmadan.',
+      },
+      {
+        q: 'Gizli takvim adresini geri alabilir miyim?',
+        a: 'Yalnızca sıfırlayarak; bu da eskisini herkes için aynı anda öldürür: iş arkadaşları, panolar ve ona sessizce dayanan her betik, hiçbir uyarı almadan.',
+      },
+      {
+        q: 'Gizli adresi bir iş arkadaşıma e-postayla gönderebilir miyim?',
+        a: 'Elinizden çıktığı andan itibaren herkese açık sayın. Tek koruması tahmin edilmesinin zor olmasıdır ve iletmek tam olarak bunu ortadan kaldırır.',
+      },
+    ],
     practical: [
       'Gizli adresi, elinizden çıktığı anda herkese açık sayın.',
       'Gerçekten kullandığınız takvimin adresini asla yayımlamayın.',
@@ -132,6 +174,20 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       sharePrice: 'Uygulamadan tek bir etkinlik göndermenin ücreti',
     },
+    faq: [
+      {
+        q: 'Google Takvim davetinde konuklar birbirini görür mü?',
+        a: 'Varsayılan olarak çoğunlukla evet. «Konuk listesini görme», davet edilen herkesi ve yanıtlarını gösterir: ekip içinde sorun değil, müşteriyle rahatsız edici, konuklar ayrı müşterilerse doğrudan yanlış.',
+      },
+      {
+        q: 'Bir konuk toplantımın saatini değiştirebilir mi?',
+        a: '«Etkinliği değiştirme» işaretliyse evet, ve değişiklik herkes için geçerli olur. Nadiren istenir, kolayca açık bırakılır.',
+      },
+      {
+        q: 'Konukların başkalarını davet etmesini nasıl engellerim?',
+        a: '«Başkalarını davet etme»yi etkinliğin kendisinde kapatın. Bu ayarlar hesaba değil etkinliğe aittir, bu yüzden her seferinde varsayılanlarınıza döner.',
+      },
+    ],
     practical: [
       'Birbirini tanımayan kişilere giden her şeyde «konuk listesini görme»yi kapatın.',
       'Biri gerçekten sizin adınıza plan yapmıyorsa «etkinliği değiştirme»yi kapalı bırakın.',
@@ -167,6 +223,20 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
       accounts: 'Tek bir görünümün bir arada tuttuğu hesap türleri',
       price: 'Google tarafının ücreti',
     },
+    faq: [
+      {
+        q: 'Neden Google takvimlerimin yalnızca bazıları iPhone’da görünüyor?',
+        a: 'Google, cihaz başına hangi takvimlerin eşitlenebileceğini tutan bir liste tutar ve ikincil takvimler — paylaşılanlar, abone olunanlar, bir proje için kurulanlar — sıklıkla bunun dışındadır.',
+      },
+      {
+        q: 'iPhone için Google Takvim eşitleme ayarı nerede?',
+        a: 'iOS ayarlarında değil. Kendi Google sayfasında yaşar; bu yüzden bariz yere bakmak bir hata bulmaz ve hiçbir şeyi değiştirmez.',
+      },
+      {
+        q: 'iPhone’da tüm Google takvimlerimi nasıl görürüm?',
+        a: 'Cihazın listesi yerine Google’a doğrudan soran bir uygulamayla. Hesabın gerçekten sahip olduğu her takvimi gösterir, telefonun düşürdüklerini de.',
+      },
+    ],
     practical: [
       'Hesabı bozuk saymadan önce Google’ın eşitleme listesine bakın.',
       'Abone olunan ve paylaşılan takvimlerin dahil değil, dışarıda olmasını bekleyin.',
@@ -201,6 +271,20 @@ export const GOOGLE_TR: Readonly<Record<string, LocalisedArticle>> = {
     claims: {
       advancedMonthly: 'Bunun yönetildiği katmanın aylık ücreti, dolar olarak',
     },
+    faq: [
+      {
+        q: 'Birini çıkarmak onun gördüklerini de siler mi?',
+        a: 'Hayır. Elinde olan davetler, kendi takvimine kopyaladığı etkinlikler ve dışa aktarılan her şey kalır. Erişim biter; kopyalar bitmez.',
+      },
+      {
+        q: 'Kişiye erişimini kaldırdığım bildirilir mi?',
+        a: 'Hayır. Takvim, listesinden anında ve mesajsız kaybolur.',
+      },
+      {
+        q: 'Takvimim neden hiç davet etmediğim biriyle paylaşılmış durumda?',
+        a: 'Paylaşımı yönetme yetkisi olan biri onu eklemiş. O kişiyi çıkarmak, eklediği herkesi yerinde bırakır — bu yüzden tek bir isim değil, listenin tamamı okunur.',
+      },
+    ],
     practical: [
       'Yalnızca çıkarmak istediğiniz ismi değil, erişim listesinin tamamını okuyun.',
       'Kişi gizli adrese bir zamanlar sahip olduysa adresi sıfırlayın.',

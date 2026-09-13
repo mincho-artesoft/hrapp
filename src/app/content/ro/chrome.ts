@@ -12,6 +12,7 @@ export const CHROME_RO: ArticleChrome = {
   colWhat: 'Ce descrie',
   colValue: 'Valoare',
   practical: 'Ce să faceți',
+  faqHeading: 'Întrebări',
   seeAlso: 'Citiți și',
   updated: 'Ultima verificare',
   ctaLine: 'Calendarul dumneavoastră și prognoza într-o singură vedere — pe iPhone și iPad.',
