@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
@@ -5,10 +6,10 @@ import { ShotRailComponent } from '../../components/shot-rail/shot-rail.componen
 import { ARTICLE_FACTS } from '../../content/article-facts';
 import { CONTENT, contentFor, localesWith } from '../../content/registry';
 import { ArticleChrome, ClaimRow, LocalisedArticle } from '../../content/types';
-import { APP_STORE_URL } from '../../core/app-facts';
+import { APP_DEVELOPER, APP_NAME, APP_STORE_URL, SITE_URL } from '../../core/app-facts';
 import { DEFAULT_LOCALE, Locale, localePath, storeUrl } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
-import { SeoService } from '../../core/seo.service';
+import { SeoService, absolute } from '../../core/seo.service';
 
 interface SeeAlsoLink {
   readonly path: string;
@@ -81,9 +82,58 @@ export class ArticlePageComponent {
         path: localePath(other, path),
       })),
     });
+
+    this.describeAsArticle(slug, facts.updated);
   }
 
   localised(path: string): string {
     return localePath(this.locale, path);
+  }
+
+  /**
+   * Say that this page is an article.
+   *
+   * Until now every one of them carried the app's SoftwareApplication block
+   * from index.html and nothing else, so a reader that parses rather than
+   * reads -- a search engine, an assistant answering a question -- learned that
+   * Cloud Calendars exists and never learned that this page answers anything.
+   * The sibling site has carried Article markup on its guides all along; this
+   * is the same, built from the same objects the page renders.
+   *
+   * Only dateModified is emitted. The facts record when an article was last
+   * checked and not when it first appeared, and a publication date invented to
+   * fill a required field is exactly the kind of claim this codebase keeps out
+   * of the prose.
+   *
+   * Injected rather than templated because a <script type="application/ld+json">
+   * inside an Angular template is escaped as text rather than parsed.
+   */
+  private describeAsArticle(slug: string, updated: string): void {
+    const doc = inject(DOCUMENT);
+    const id = 'article-jsonld';
+    doc.getElementById(id)?.remove();
+
+    // The same function the canonical uses, so the two cannot drift: this site
+    // is served from an S3 website endpoint that answers the slashless form with
+    // a redirect, and an @id pointing at a redirect describes a different page.
+    const url = absolute(localePath(this.locale, `/articles/${slug}`));
+    const publisher = { '@type': 'Organization', name: APP_DEVELOPER, url: SITE_URL };
+    const script = doc.createElement('script');
+    script.id = id;
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: this.article!.title,
+      description: this.article!.description,
+      inLanguage: this.locale.hreflang,
+      dateModified: updated,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      author: publisher,
+      publisher,
+      isPartOf: { '@type': 'WebSite', name: APP_NAME, url: SITE_URL },
+      about: { '@type': 'SoftwareApplication', name: APP_NAME, applicationCategory: 'ProductivityApplication', operatingSystem: 'iOS', url: APP_STORE_URL },
+    });
+    doc.head.appendChild(script);
   }
 }

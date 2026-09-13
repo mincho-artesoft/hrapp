@@ -39,7 +39,7 @@ export interface SeoInput {
  * hreflang, og:url, and the sitemap, which is generated from these very tags --
  * inherits it from here.
  */
-function absolute(path: string): string {
+export function absolute(path: string): string {
   if (path === '/' || path === '') return `${SITE_URL}/`;
   return `${SITE_URL}/${path.replace(/^\/+/, '').replace(/\/+$/, '')}/`;
 }
