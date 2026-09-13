@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Thai. */
 export const HOME_TH: HomeCopy = {
-  metaTitle: 'Cloud Calendars — ปฏิทินและพยากรณ์อากาศของคุณในมุมมองเดียว',
+  metaTitle: 'Cloud Calendars — iCloud, Google และ Outlook ในหน้าจอเดียว',
   metaDescription:
-    'ปฏิทิน iCloud, Google และ Microsoft ในตารางเดียว โดยมีสภาพอากาศอยู่ในตัววันนั้นเอง ฟรีบน iPhone และ iPad',
+    'ปฏิทิน iCloud, Google และ Outlook ของคุณในหน้าจอเดียวบน iPhone และ iPad เริ่มใช้ฟรี ไม่ต้องสมัครบัญชี และอากาศของแต่ละวันอยู่ในปฏิทินเลย',
   nav: {
     tour: 'ชมรอบ',
     widgets: 'วิดเจ็ต',

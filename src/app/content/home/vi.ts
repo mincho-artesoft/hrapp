@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Vietnamese. */
 export const HOME_VI: HomeCopy = {
-  metaTitle: 'Cloud Calendars — lịch của bạn và dự báo thời tiết trong một khung nhìn',
+  metaTitle: 'Cloud Calendars — iCloud, Google và Outlook trong một khung',
   metaDescription:
-    'Lịch iCloud, Google và Microsoft trong cùng một lưới, với thời tiết nằm ngay trong chính ngày đó. Miễn phí trên iPhone và iPad.',
+    'Lịch iCloud, Google và Outlook của bạn trong một khung trên iPhone và iPad. Miễn phí để bắt đầu, không cần tạo tài khoản, thời tiết mỗi ngày ngay trong lịch.',
   nav: {
     tour: 'Giới thiệu',
     widgets: 'Widget',

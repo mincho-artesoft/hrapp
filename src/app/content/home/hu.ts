@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Hungarian. */
 export const HOME_HU: HomeCopy = {
-  metaTitle: 'Cloud Calendars — a naptára és az előrejelzés egyetlen nézetben',
+  metaTitle: 'Cloud Calendars — iCloud, Google és Outlook egy nézetben',
   metaDescription:
-    'iCloud-, Google- és Microsoft-naptárak egyetlen rácsban, az időjárással magában a napban. Ingyenes iPhone-on és iPaden.',
+    'Az iCloud, a Google és az Outlook naptárai egyetlen nézetben iPhone-on és iPaden. Ingyenes kezdés, nincs fiók létrehozása, a napi időjárás a rácsban.',
   nav: {
     tour: 'Bemutató',
     widgets: 'Modulok',

@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_HU: ArticleChrome = {
   allArticles: 'Minden cikk',
+  hubTitle: 'Útmutatók iCloud-, Google- és Outlook-naptárakhoz',
+  hubDescription:
+    'Világos válaszok a naptármegosztásról, az iCloud, a Google és az Outlook egy nézetbe hozásáról iPhone-on és iPaden, a widgetekről és az időjárás szerinti tervezésről.',
   commonBelief: 'Amit szinte mindenki feltételez',
   whatIsTrue: 'Ami valójában történik',
   theNumbers: 'A számok',

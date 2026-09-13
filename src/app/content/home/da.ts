@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Danish. */
 export const HOME_DA: HomeCopy = {
-  metaTitle: 'Cloud Calendars — din kalender og vejrudsigten i én visning',
+  metaTitle: 'Cloud Calendars — iCloud, Google og Outlook i ét overblik',
   metaDescription:
-    'iCloud-, Google- og Microsoft-kalendere i ét gitter, med vejret i selve dagen. Gratis på iPhone og iPad.',
+    'Dine kalendere fra iCloud, Google og Outlook i ét overblik på iPhone og iPad. Gratis at begynde, ingen konto at oprette, og dagens vejr direkte i kalenderen.',
   nav: {
     tour: 'Rundvisning',
     widgets: 'Widgets',

@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_TH: ArticleChrome = {
   allArticles: 'บทความทั้งหมด',
+  hubTitle: 'คู่มือปฏิทิน iCloud, Google และ Outlook',
+  hubDescription:
+    'คำตอบตรงไปตรงมาเรื่องการแชร์ปฏิทิน การรวม iCloud, Google และ Outlook ไว้ในหน้าจอเดียวบน iPhone และ iPad วิดเจ็ต และการวางแผนตามสภาพอากาศ',
   commonBelief: 'สิ่งที่เกือบทุกคนคิดไปเอง',
   whatIsTrue: 'สิ่งที่เกิดขึ้นจริง',
   theNumbers: 'ตัวเลข',

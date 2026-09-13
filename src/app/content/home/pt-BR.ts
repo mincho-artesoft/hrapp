@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Portuguese. */
 export const HOME_PT_BR: HomeCopy = {
-  metaTitle: 'Cloud Calendars — sua agenda e a previsão em uma só vista',
+  metaTitle: 'Cloud Calendars — iCloud, Google e Outlook em uma visão',
   metaDescription:
-    'Agendas do iCloud, do Google e da Microsoft em uma única grade, com o tempo dentro do próprio dia. Grátis no iPhone e no iPad.',
+    'Suas agendas do iCloud, Google e Outlook em uma visão no iPhone e no iPad. Grátis para começar, sem criar conta, com o tempo de cada dia dentro da grade.',
   nav: {
     tour: 'Tour',
     widgets: 'Widgets',

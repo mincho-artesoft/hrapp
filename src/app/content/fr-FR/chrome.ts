@@ -8,6 +8,9 @@ import { ArticleChrome } from '../types';
  */
 export const CHROME_FR_FR: ArticleChrome = {
   allArticles: 'Tous les articles',
+  hubTitle: 'Guides pour les agendas iCloud, Google et Outlook',
+  hubDescription:
+    'Des réponses claires sur le partage d’un agenda, la réunion d’iCloud, Google et Outlook dans une seule vue sur iPhone et iPad, les widgets et la météo.',
   commonBelief: 'Ce que presque tout le monde suppose',
   whatIsTrue: 'Ce qui se passe vraiment',
   theNumbers: 'Les chiffres',

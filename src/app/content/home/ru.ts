@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Russian. */
 export const HOME_RU: HomeCopy = {
-  metaTitle: 'Cloud Calendars — ваш календарь и прогноз в одном виде',
+  metaTitle: 'Cloud Calendars — iCloud, Google и Outlook в одном виде',
   metaDescription:
-    'Календари iCloud, Google и Microsoft в одной сетке, с погодой внутри самого дня. Бесплатно на iPhone и iPad.',
+    'Ваши календари из iCloud, Google и Outlook в одном виде на iPhone и iPad. Бесплатно для начала, без создания учётной записи, с погодой каждого дня в сетке.',
   nav: {
     tour: 'Обзор',
     widgets: 'Виджеты',

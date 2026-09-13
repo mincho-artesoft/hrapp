@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_TR: ArticleChrome = {
   allArticles: 'Tüm yazılar',
+  hubTitle: 'iCloud, Google ve Outlook takvim rehberleri',
+  hubDescription:
+    'Takvim paylaşımı, iCloud, Google ve Outlook’u iPhone ve iPad’de tek görünümde toplama, widget’lar ve havaya göre plan yapma hakkında net yanıtlar.',
   commonBelief: 'Neredeyse herkesin varsaydığı',
   whatIsTrue: 'Gerçekte olan',
   theNumbers: 'Sayılar',

@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_JA: ArticleChrome = {
   allArticles: 'すべての記事',
+  hubTitle: 'iCloud・Google・Outlook カレンダーの使い方',
+  hubDescription:
+    'カレンダーの共有、iCloud・Google・Outlook を iPhone と iPad でひとつの画面にまとめる方法、ウィジェット、天気に合わせた予定づくり。',
   commonBelief: 'ほとんどの人が思い込んでいること',
   whatIsTrue: '実際に起きていること',
   theNumbers: '数字',

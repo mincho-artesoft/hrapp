@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Hindi. */
 export const HOME_HI: HomeCopy = {
-  metaTitle: 'Cloud Calendars — आपका कैलेंडर और मौसम का पूर्वानुमान एक ही दृश्य में',
+  metaTitle: 'Cloud Calendars — iCloud, Google और Outlook एक ही जगह',
   metaDescription:
-    'iCloud, Google और Microsoft के कैलेंडर एक ही ख़ाके में, और मौसम ख़ुद उसी दिन के भीतर। iPhone और iPad पर मुफ़्त।',
+    'iPhone और iPad पर iCloud, Google और Outlook के कैलेंडर एक ही दृश्य में। शुरुआत मुफ़्त, कोई खाता बनाने की ज़रूरत नहीं, हर दिन का मौसम कैलेंडर के भीतर।',
   nav: {
     tour: 'झलक',
     widgets: 'विजेट',

@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { SITE_URL } from './app-facts';
-import { Locale } from './locales';
+import { DEFAULT_LOCALE, Locale } from './locales';
 
 export interface SeoInput {
   title: string;
@@ -118,6 +118,19 @@ export class SeoService {
       link.href = absolute(item.path);
       this.doc.head.appendChild(link);
     }
+
+    // And one more for everybody else. x-default is what a search engine shows
+    // a reader whose language is none of the thirty -- without it, it picks for
+    // itself, and what it picks for a Finn who reads English is as likely to be
+    // the Thai page as the English one. The default language answers that,
+    // which is what it is for.
+    const fallback = items.find((item) => item.hreflang === DEFAULT_LOCALE.hreflang);
+    if (!fallback) return;
+    const link = this.doc.createElement('link');
+    link.rel = 'alternate';
+    link.hreflang = 'x-default';
+    link.href = absolute(fallback.path);
+    this.doc.head.appendChild(link);
   }
 
   private set(name: string, content: string): void {

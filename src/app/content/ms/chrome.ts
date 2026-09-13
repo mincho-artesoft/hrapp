@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_MS: ArticleChrome = {
   allArticles: 'Semua artikel',
+  hubTitle: 'Panduan kalendar iCloud, Google dan Outlook',
+  hubDescription:
+    'Jawapan terus tentang perkongsian kalendar, menyatukan iCloud, Google dan Outlook dalam satu paparan pada iPhone dan iPad, widget, serta merancang mengikut cuaca.',
   commonBelief: 'Apa yang hampir semua orang andaikan',
   whatIsTrue: 'Apa yang sebenarnya berlaku',
   theNumbers: 'Angkanya',

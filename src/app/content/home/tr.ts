@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Turkish. */
 export const HOME_TR: HomeCopy = {
-  metaTitle: 'Cloud Calendars — takviminiz ve hava tahmini tek görünümde',
+  metaTitle: 'Cloud Calendars — iCloud, Google ve Outlook tek görünümde',
   metaDescription:
-    'iCloud, Google ve Microsoft takvimleri tek bir ızgarada, hava günün içine yerleşmiş halde. iPhone ve iPad’de ücretsiz.',
+    'iCloud, Google ve Outlook takvimleriniz iPhone ve iPad’de tek görünümde. Başlaması ücretsiz, hesap açmak gerekmez, her günün havası takvimin içinde.',
   nav: {
     tour: 'Tur',
     widgets: 'Widget’lar',

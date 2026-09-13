@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Finnish. */
 export const HOME_FI: HomeCopy = {
-  metaTitle: 'Cloud Calendars — kalenterisi ja ennuste yhdessä näkymässä',
+  metaTitle: 'Cloud Calendars — iCloud, Google ja Outlook yhdessä',
   metaDescription:
-    'iCloud-, Google- ja Microsoft-kalenterit yhdessä ruudukossa, sää itse päivän sisällä. Ilmainen iPhonelle ja iPadille.',
+    'iCloudin, Googlen ja Outlookin kalenterit yhdessä näkymässä iPhonessa ja iPadissa. Aloitus ilmaiseksi, ei tunnusta luotavaksi, päivän sää kalenterissa.',
   nav: {
     tour: 'Kierros',
     widgets: 'Widgetit',

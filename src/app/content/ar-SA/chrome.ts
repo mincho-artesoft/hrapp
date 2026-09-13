@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_AR_SA: ArticleChrome = {
   allArticles: 'كل المقالات',
+  hubTitle: 'أدلة تقاويم iCloud وGoogle وOutlook',
+  hubDescription:
+    'إجابات واضحة عن مشاركة التقويم، وجمع iCloud وGoogle وOutlook في شاشة واحدة على iPhone وiPad، والأدوات، والتخطيط حسب الطقس.',
   commonBelief: 'ما يفترضه الجميع تقريبًا',
   whatIsTrue: 'ما يحدث فعلًا',
   theNumbers: 'الأرقام',

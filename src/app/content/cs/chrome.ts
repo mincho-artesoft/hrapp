@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_CS: ArticleChrome = {
   allArticles: 'Všechny články',
+  hubTitle: 'Návody pro kalendáře iCloud, Google a Outlook',
+  hubDescription:
+    'Srozumitelné odpovědi na sdílení kalendáře, na spojení iCloudu, Googlu a Outlooku do jednoho pohledu na iPhonu a iPadu, na widgety a na plánování podle počasí.',
   commonBelief: 'Co téměř každý předpokládá',
   whatIsTrue: 'Jak to ve skutečnosti je',
   theNumbers: 'Čísla',

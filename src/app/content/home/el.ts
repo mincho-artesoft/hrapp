@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Greek. */
 export const HOME_EL: HomeCopy = {
-  metaTitle: 'Cloud Calendars — το ημερολόγιό σας και η πρόγνωση σε μία προβολή',
+  metaTitle: 'Cloud Calendars — iCloud, Google και Outlook σε μία προβολή',
   metaDescription:
-    'Ημερολόγια iCloud, Google και Microsoft σε ένα πλέγμα, με τον καιρό μέσα στην ίδια τη μέρα. Δωρεάν σε iPhone και iPad.',
+    'Τα ημερολόγιά σας από iCloud, Google και Outlook σε μία προβολή σε iPhone και iPad. Δωρεάν ξεκίνημα, χωρίς λογαριασμό, με τον καιρό της ημέρας στο πλέγμα.',
   nav: {
     tour: 'Ξενάγηση',
     widgets: 'Widget',

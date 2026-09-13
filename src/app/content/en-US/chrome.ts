@@ -9,6 +9,9 @@ import { ArticleChrome } from '../types';
  */
 export const CHROME_EN_US: ArticleChrome = {
   allArticles: 'All articles',
+  hubTitle: 'Guides for iCloud, Google and Outlook calendars',
+  hubDescription:
+    'Plain answers about sharing a calendar, keeping iCloud, Google and Outlook in one view on iPhone and iPad, widgets, and planning around the weather.',
   commonBelief: 'What most people assume',
   whatIsTrue: 'What is actually true',
   theNumbers: 'The numbers',

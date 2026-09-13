@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** Началната страница на български. */
 export const HOME_BG: HomeCopy = {
-  metaTitle: 'Cloud Calendars — календарът и прогнозата в един изглед',
+  metaTitle: 'Cloud Calendars — iCloud, Google и Outlook в един изглед',
   metaDescription:
-    'Календарите от iCloud, Google и Microsoft в една решетка, с времето вградено в самия ден. Безплатно за iPhone и iPad.',
+    'Календарите ви от iCloud, Google и Outlook в един изглед на iPhone и iPad. Безплатно начало, без регистрация, с прогнозата за всеки ден вътре в решетката.',
 
   nav: {
     tour: 'Обиколка',

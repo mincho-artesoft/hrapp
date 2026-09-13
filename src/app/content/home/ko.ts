@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Korean. */
 export const HOME_KO: HomeCopy = {
-  metaTitle: 'Cloud Calendars — 달력과 날씨를 한 화면에',
+  metaTitle: 'Cloud Calendars — iCloud·Google·Outlook을 한 화면에',
   metaDescription:
-    'iCloud, Google, Microsoft 달력을 하나의 격자에, 날씨는 하루 안에. iPhone과 iPad에서 무료.',
+    'iPhone과 iPad에서 iCloud와 Google과 Outlook 캘린더를 한 화면에. 무료로 시작, 계정 만들 필요 없음, 그날의 날씨가 달력 안에.',
   nav: {
     tour: '둘러보기',
     widgets: '위젯',

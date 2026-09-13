@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Arabic. */
 export const HOME_AR_SA: HomeCopy = {
-  metaTitle: 'Cloud Calendars — تقويمك والتوقعات الجوية في عرض واحد',
+  metaTitle: 'Cloud Calendars — iCloud وGoogle وOutlook في شاشة واحدة',
   metaDescription:
-    'تقاويم iCloud وGoogle وMicrosoft في شبكة واحدة، والطقس داخل اليوم نفسه. مجانًا على iPhone وiPad.',
+    'تقاويم iCloud وGoogle وOutlook في شاشة واحدة على iPhone وiPad. البداية مجانية، بلا حساب جديد، وطقس كل يوم داخل التقويم نفسه.',
   nav: {
     tour: 'جولة',
     widgets: 'عناصر الواجهة',

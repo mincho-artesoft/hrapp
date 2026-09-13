@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_ZH_HANS: ArticleChrome = {
   allArticles: '全部文章',
+  hubTitle: 'iCloud、Google 和 Outlook 日历指南',
+  hubDescription:
+    '关于共享日历、在 iPhone 和 iPad 上把 iCloud、Google 和 Outlook 放进同一个视图、小组件，以及按天气安排行程的清楚解答。',
   commonBelief: '几乎所有人都默认的事',
   whatIsTrue: '实际发生的事',
   theNumbers: '数字',

@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_SV: ArticleChrome = {
   allArticles: 'Alla artiklar',
+  hubTitle: 'Guider för iCloud-, Google- och Outlook-kalendrar',
+  hubDescription:
+    'Tydliga svar om att dela en kalender, om att hålla iCloud, Google och Outlook i en vy på iPhone och iPad, om widgetar och om att planera efter vädret.',
   commonBelief: 'Vad nästan alla antar',
   whatIsTrue: 'Vad som faktiskt händer',
   theNumbers: 'Siffrorna',

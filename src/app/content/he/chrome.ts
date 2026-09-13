@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_HE: ArticleChrome = {
   allArticles: 'כל הכתבות',
+  hubTitle: 'מדריכים ליומני iCloud, Google ו‑Outlook',
+  hubDescription:
+    'תשובות ברורות על שיתוף יומן, על החזקת iCloud, Google ו‑Outlook בתצוגה אחת ב‑iPhone וב‑iPad, על ווידג׳טים ועל תכנון לפי מזג האוויר.',
   commonBelief: 'מה שכמעט כולם מניחים',
   whatIsTrue: 'מה שקורה באמת',
   theNumbers: 'המספרים',

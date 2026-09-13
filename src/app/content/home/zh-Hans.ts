@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Simplified Chinese. */
 export const HOME_ZH_HANS: HomeCopy = {
-  metaTitle: 'Cloud Calendars — 把日历和天气放进同一个视图',
+  metaTitle: 'Cloud Calendars — iCloud、Google 和 Outlook 合为一个视图',
   metaDescription:
-    'iCloud、Google 和 Microsoft 日历落在同一张格子里，天气就在那一天里面。iPhone 和 iPad 上免费。',
+    '在 iPhone 和 iPad 上，把 iCloud、Google 和 Outlook 的日历放进同一个视图。免费开始，无需注册账号，每天的天气就在格子里。',
   nav: {
     tour: '导览',
     widgets: '小组件',

@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Polish. */
 export const HOME_PL: HomeCopy = {
-  metaTitle: 'Cloud Calendars — twój kalendarz i prognoza w jednym widoku',
+  metaTitle: 'Cloud Calendars — iCloud, Google i Outlook w jednym widoku',
   metaDescription:
-    'Kalendarze iCloud, Google i Microsoft w jednej siatce, z pogodą wewnątrz samego dnia. Za darmo na iPhonie i iPadzie.',
+    'Twoje kalendarze z iCloud, Google i Outlooka w jednym widoku na iPhonie i iPadzie. Start za darmo, bez zakładania konta, z pogodą każdego dnia w siatce.',
   nav: {
     tour: 'Przewodnik',
     widgets: 'Widżety',

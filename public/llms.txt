@@ -1,10 +1,10 @@
 # Cloud Calendars
 
-> An iPhone and iPad calendar app that merges iCloud, Google Calendar and Microsoft into one view, with the hourly and ten-day weather forecast rendered inside the calendar itself rather than in a separate app. Built by Arte Soft Ltd. Free tier includes Google sync, every calendar view, the full weather hub and all Home Screen widgets.
+> An iPhone and iPad calendar app that merges iCloud, Google Calendar and Microsoft into one view, with the hourly and fourteen-day weather forecast rendered inside the calendar itself rather than in a separate app. Built by ARTE SOFT EOOD. Free tier includes Google sync, every calendar view, the full weather hub and all Home Screen widgets.
 
 Cloud Calendars answers one question a normal calendar cannot: what will the weather be doing during the thing you have scheduled. Every day view, week view and month view carries the forecast alongside the events, and Home Screen widgets plus a Live Activity surface the next event and its conditions without unlocking the phone.
 
-Requires iOS 18 or later. About 30 MB. Available worldwide on the App Store, localised into English, German, Spanish, French, Italian, Bulgarian and Russian.
+Requires iOS 18 or later. About 35 MB. Available worldwide on the App Store. This site is published in thirty languages; every page below exists in all of them, linked by hreflang.
 
 ## Product
 
@@ -14,7 +14,7 @@ Requires iOS 18 or later. About 30 MB. Available worldwide on the App Store, loc
 ## What it does
 
 - Unified calendar: reads iCloud through Apple's EventKit with no account required; Google and Microsoft accounts can be added
-- Weather inside the calendar: hourly and ten-day forecasts, feels-like temperature, precipitation, UV, wind and gusts, humidity, dew point, visibility, pressure, sunrise, sunset, moon phase
+- Weather inside the calendar: hourly and fourteen-day forecasts, feels-like temperature, precipitation, UV, wind and gusts, humidity, dew point, visibility, pressure, sunrise, sunset, moon phase
 - Views: single day, multi-day week, multi-calendar columns, month, year, and a chronological list
 - Editing by direct manipulation: drag an event to another time or day, drag its edges to change duration, synced back to the source calendar
 - Home Screen widgets in three sizes, and a Live Activity that counts down to the next event

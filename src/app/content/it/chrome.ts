@@ -8,6 +8,9 @@ import { ArticleChrome } from '../types';
  */
 export const CHROME_IT: ArticleChrome = {
   allArticles: 'Tutti gli articoli',
+  hubTitle: 'Guide ai calendari iCloud, Google e Outlook',
+  hubDescription:
+    'Risposte chiare su come condividere un calendario, tenere iCloud, Google e Outlook in un’unica vista su iPhone e iPad, i widget e pianificare con il meteo.',
   commonBelief: 'Quello che quasi tutti danno per scontato',
   whatIsTrue: 'Quello che succede davvero',
   theNumbers: 'I numeri',

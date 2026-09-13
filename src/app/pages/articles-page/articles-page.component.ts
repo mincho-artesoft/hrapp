@@ -105,23 +105,9 @@ export class ArticlesPageComponent {
       if (cards.length) this.groups.push({ family, heading: headings[family], cards });
     }
 
-    // The description is composed from the family headings this language
-    // already carries rather than translated separately. A hub page honestly
-    // is its list of topics, and building the sentence this way means all
-    // twenty-nine hubs describe themselves in their own language instead of
-    // sharing one English sentence.
-    const topics = [
-      this.chrome.familyWeather,
-      this.chrome.familyUnify,
-      this.chrome.familyWidgets,
-      this.chrome.familySharing,
-      this.chrome.familyPlanning,
-      this.chrome.familyCompare,
-    ].join(' · ');
-
     inject(SeoService).apply({
-      title: `${this.chrome.allArticles} — Cloud Calendars`,
-      description: `${this.chrome.allArticles}: ${topics}`,
+      title: this.chrome.hubTitle,
+      description: this.chrome.hubDescription,
       path: localePath(this.locale, '/articles'),
       locale: this.locale,
       // The hub exists in every published language, so its alternate set is

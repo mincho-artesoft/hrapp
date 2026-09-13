@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Romanian. */
 export const HOME_RO: HomeCopy = {
-  metaTitle: 'Cloud Calendars — calendarul dumneavoastră și prognoza într-o singură vedere',
+  metaTitle: 'Cloud Calendars — iCloud, Google și Outlook într-o vedere',
   metaDescription:
-    'Calendare iCloud, Google și Microsoft într-o singură grilă, cu vremea în interiorul zilei înseși. Gratuit pe iPhone și iPad.',
+    'Calendarele tale din iCloud, Google și Outlook într-o vedere pe iPhone și iPad. Gratuit la început, fără cont de creat, cu vremea fiecărei zile în grilă.',
   nav: {
     tour: 'Tur',
     widgets: 'Widgeturi',

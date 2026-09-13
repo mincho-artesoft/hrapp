@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_VI: ArticleChrome = {
   allArticles: 'Tất cả bài viết',
+  hubTitle: 'Hướng dẫn lịch iCloud, Google và Outlook',
+  hubDescription:
+    'Giải đáp rõ ràng về chia sẻ lịch, gộp iCloud, Google và Outlook vào một khung nhìn trên iPhone và iPad, tiện ích màn hình và lên lịch theo thời tiết.',
   commonBelief: 'Điều gần như ai cũng mặc định',
   whatIsTrue: 'Điều thực sự xảy ra',
   theNumbers: 'Các con số',

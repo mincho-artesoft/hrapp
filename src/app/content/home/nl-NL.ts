@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Dutch. */
 export const HOME_NL_NL: HomeCopy = {
-  metaTitle: 'Cloud Calendars — uw agenda en het weer in één weergave',
+  metaTitle: 'Cloud Calendars — iCloud, Google en Outlook in één overzicht',
   metaDescription:
-    'iCloud-, Google- en Microsoft-agenda’s in één raster, met het weer in de dag zelf. Gratis op iPhone en iPad.',
+    'Je agenda’s uit iCloud, Google en Outlook in één overzicht op iPhone en iPad. Gratis beginnen, geen account aanmaken, het weer van elke dag in het rooster.',
   nav: {
     tour: 'Rondleiding',
     widgets: 'Widgets',

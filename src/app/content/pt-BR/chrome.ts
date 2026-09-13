@@ -3,6 +3,9 @@ import { ArticleChrome } from '../types';
 /** The words every article in this language shares. */
 export const CHROME_PT_BR: ArticleChrome = {
   allArticles: 'Todos os artigos',
+  hubTitle: 'Guias para agendas do iCloud, Google e Outlook',
+  hubDescription:
+    'Respostas diretas sobre compartilhar uma agenda, reunir iCloud, Google e Outlook em uma única visão no iPhone e no iPad, widgets e planejar pelo tempo.',
   commonBelief: 'O que quase todo mundo supõe',
   whatIsTrue: 'O que realmente acontece',
   theNumbers: 'Os números',

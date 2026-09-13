@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Czech. */
 export const HOME_CS: HomeCopy = {
-  metaTitle: 'Cloud Calendars — váš kalendář a předpověď v jednom pohledu',
+  metaTitle: 'Cloud Calendars — iCloud, Google a Outlook v jednom pohledu',
   metaDescription:
-    'Kalendáře iCloud, Google a Microsoft v jedné mřížce, s počasím uvnitř samotného dne. Zdarma na iPhonu a iPadu.',
+    'Kalendáře z iCloudu, Googlu a Outlooku v jednom pohledu na iPhonu a iPadu. Zdarma na začátek, bez zakládání účtu, s předpovědí pro každý den přímo v mřížce.',
   nav: {
     tour: 'Prohlídka',
     widgets: 'Widgety',

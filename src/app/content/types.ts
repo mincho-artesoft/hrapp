@@ -67,6 +67,15 @@ export interface LocalisedArticle {
 /** Wording shared by every article in one language. */
 export interface ArticleChrome {
   readonly allArticles: string;
+  /**
+   * The hub's <title> and description, which are not its heading.
+   *
+   * "All articles" is the right words above a list and the wrong words in a
+   * search result: nobody types it, so the page drew twenty-four impressions
+   * and no clicks. The heading stays; these two say what the list is about.
+   */
+  readonly hubTitle: string;
+  readonly hubDescription: string;
   readonly commonBelief: string;
   readonly whatIsTrue: string;
   readonly theNumbers: string;

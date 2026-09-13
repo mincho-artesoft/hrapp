@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Indonesian. */
 export const HOME_ID: HomeCopy = {
-  metaTitle: 'Cloud Calendars — kalender Anda dan prakiraan cuaca dalam satu tampilan',
+  metaTitle: 'Cloud Calendars — iCloud, Google, dan Outlook jadi satu',
   metaDescription:
-    'Kalender iCloud, Google, dan Microsoft dalam satu kisi, dengan cuaca di dalam harinya sendiri. Gratis di iPhone dan iPad.',
+    'Kalender iCloud, Google, dan Outlook dalam satu tampilan di iPhone dan iPad. Gratis untuk mulai, tanpa membuat akun, cuaca tiap hari di dalam kalender.',
   nav: {
     tour: 'Tur',
     widgets: 'Widget',

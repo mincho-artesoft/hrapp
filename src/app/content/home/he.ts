@@ -2,9 +2,9 @@ import { HomeCopy } from './types';
 
 /** The home page in Hebrew. */
 export const HOME_HE: HomeCopy = {
-  metaTitle: 'Cloud Calendars — היומן שלכם והתחזית בתצוגה אחת',
+  metaTitle: 'Cloud Calendars — iCloud, Google ו‑Outlook בתצוגה אחת',
   metaDescription:
-    'יומני iCloud, Google ו‑Microsoft ברשת אחת, עם מזג האוויר בתוך היום עצמו. חינם ב‑iPhone וב‑iPad.',
+    'היומנים שלכם מ‑iCloud, מ‑Google ומ‑Outlook בתצוגה אחת ב‑iPhone וב‑iPad. חינם להתחלה, בלי לפתוח חשבון, ומזג האוויר של כל יום בתוך הלוח עצמו.',
   nav: {
     tour: 'סיור',
     widgets: 'ווידג׳טים',
