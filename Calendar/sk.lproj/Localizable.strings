@@ -1000,8 +1000,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio vám pomáha vytvárať filmové videá v štýle chatu pre sociálne médiá, reklamu a rozprávanie príbehov. Vytvárajte animované konverzácie v realistických 3D zariadeniach, simulujte písanie, pripájajte médiá a exportujte pútavý vertikálny obsah.";
 "Promo.Wonek.description" = "Wonek Video Studio premení nespracované zábery na obsah pripravený na zverejnenie. Nájdite silné momenty, vytvorte ostré klipy, pridajte čisté titulky a hlasové prejavy prevodu textu na reč a potom vylepšite video a zvuk v jednom zameranom pracovnom postupe.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop prináša do vášho Macu vytváranie videí v štýle filmového chatu. Vytvárajte animované konverzácie v realistických 3D zariadeniach, simulujte písanie, pripájajte fotografie a videá a exportujte vertikálny obsah pre sociálne médiá.";
-"Promo.Ayurveda.description" = "Plánujte jedlá podľa dóše, vytvárajte jogové zostavy a cvičte meditáciu a dychové cvičenia.";
-"Promo.BrassPawn.description" = "Trénujte pomocou úloh, taktiky, koncoviek, analýzy enginom a online šachu.";
+"Promo.Ayurveda.description" = "Plánujte jedlá podľa dóše, vytvárajte jogové zostavy a cvičte meditáciu a dychové cvičenia. Vytvorte si vyváženú dennú rutinu, ktorá spája výživu, pohyb, všímavosť a dych.";
+"Promo.BrassPawn.description" = "Trénujte pomocou úloh, taktiky, koncoviek, analýzy enginom a online šachu. Zlepšujte prepočet, rozoberajte pozície a robte v každej partii lepšie rozhodnutia.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Odobrať prístup ku kalendáru?";
 "Remove Access" = "Odobrať prístup";
@@ -1051,3 +1051,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Súkromie reklám";
+
+/* Theme */
+"Theme" = "Motív";
+"Light" = "Svetlý";
+"Dark" = "Tmavý";

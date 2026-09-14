@@ -77,6 +77,28 @@ struct SettingsSheetView: View {
     private var preferencesContent: some View {
         VStack(spacing: 0) {
                 HStack(spacing: 0) {
+                    preferenceLabel("Theme", icon: "circle.lefthalf.filled")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Picker("", selection: $appPreferences.theme) {
+                        Text(LocalizedStringKey("System"))
+                            .tag(AppThemePreference.system)
+                        Text(LocalizedStringKey("Light"))
+                            .tag(AppThemePreference.light)
+                        Text(LocalizedStringKey("Dark"))
+                            .tag(AppThemePreference.dark)
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.menu)
+                    .environment(\.layoutDirection, appPreferences.layoutDirection)
+                    .multilineTextAlignment(.trailing)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .padding(.vertical, DraggableMenuContentLayout.verticalInset)
+
+                Divider()
+
+                HStack(spacing: 0) {
                     preferenceLabel("Language", icon: "globe")
                         .frame(maxWidth: .infinity, alignment: .leading)
 

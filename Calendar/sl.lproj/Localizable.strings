@@ -1000,8 +1000,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio vam pomaga ustvariti filmske videoposnetke v slogu klepeta za družbene medije, oglaševanje in pripovedovanje zgodb. Zgradite animirane pogovore znotraj realističnih 3D naprav, simulirajte tipkanje, priložite medije in izvozite zanimivo vertikalno vsebino.";
 "Promo.Wonek.description" = "Wonek Video Studio spremeni neobdelane posnetke v vsebino, pripravljeno za objavo. Poiščite močne trenutke, ustvarite ostre posnetke, dodajte čiste podnapise in glasovne pretvorbe besedila v govor, nato pa izpopolnite video in zvok v enem osredotočenem delovnem procesu.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop prinaša kinematografsko ustvarjanje videa v slogu klepeta v vaš Mac. Zgradite animirane pogovore znotraj realističnih 3D naprav, simulirajte tipkanje, priložite fotografije in videoposnetke ter izvozite navpično vsebino za družbene medije.";
-"Promo.Ayurveda.description" = "Načrtujte obroke glede na došo, sestavite zaporedja joge ter vadite meditacijo in dihalne tehnike.";
-"Promo.BrassPawn.description" = "Vadite z ugankami, taktikami, končnicami, analizo pogona in spletnim šahom.";
+"Promo.Ayurveda.description" = "Načrtujte obroke glede na došo, sestavite zaporedja joge ter vadite meditacijo in dihalne tehnike. Ustvarite uravnoteženo dnevno rutino, ki združuje prehrano, gibanje, čuječnost in dihanje.";
+"Promo.BrassPawn.description" = "Vadite z ugankami, taktikami, končnicami, analizo pogona in spletnim šahom. Izostrite preračunavanje, analizirajte pozicije in sprejemajte boljše odločitve v vsaki partiji.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Odstranim dostop do koledarja?";
 "Remove Access" = "Odstrani dostop";
@@ -1051,3 +1051,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Zasebnost oglasov";
+
+/* Theme */
+"Theme" = "Tema";
+"Light" = "Svetla";
+"Dark" = "Temna";

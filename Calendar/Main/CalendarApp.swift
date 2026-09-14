@@ -94,6 +94,7 @@ struct CalendarApp: App {
                 .environment(\.locale, appPreferences.presentationLocale)
                 .environment(\.calendar, appPreferences.presentationCalendar)
                 .environment(\.layoutDirection, appPreferences.layoutDirection)
+                .preferredColorScheme(appPreferences.theme.preferredColorScheme)
                 .onAppear {
                     #if DEBUG
                     guard !LocalSharingE2ETest.requested,

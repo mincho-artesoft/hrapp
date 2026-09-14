@@ -998,8 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio hjälper dig att skapa filmiska chattliknande videor för sociala medier, reklam och berättande. Skapa animerade konversationer i realistiska 3D-enheter, simulera skrivning, bifoga media och exportera engagerande vertikalt innehåll.";
 "Promo.Wonek.description" = "Wonek Video Studio förvandlar råmaterial till publiceringsfärdigt innehåll. Hitta starka ögonblick, skapa skarpa klipp, lägg till rena undertexter och text-till-tal voiceovers, polera sedan video och ljud i ett fokuserat arbetsflöde.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop ger filmskapande chattliknande videor till din Mac. Skapa animerade konversationer i realistiska 3D-enheter, simulera skrivning, bifoga foton och videor och exportera vertikalt innehåll för sociala medier.";
-"Promo.Ayurveda.description" = "Planera måltider efter dosha, bygg yogasekvenser och öva meditation och andning.";
-"Promo.BrassPawn.description" = "Träna med problem, taktik, slutspel, motoranalys och onlineschack.";
+"Promo.Ayurveda.description" = "Planera måltider efter dosha, bygg yogasekvenser och öva meditation och andning. Skapa en balanserad daglig rutin som förenar kost, rörelse, medveten närvaro och andning.";
+"Promo.BrassPawn.description" = "Träna med problem, taktik, slutspel, motoranalys och onlineschack. Skärp din beräkning, analysera ställningar och fatta bättre beslut i varje parti.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Ta bort kalenderåtkomst?";
 "Remove Access" = "Ta bort åtkomst";
@@ -1049,3 +1049,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Annonsintegritet";
+
+/* Theme */
+"Theme" = "Tema";
+"Light" = "Ljust";
+"Dark" = "Mörkt";

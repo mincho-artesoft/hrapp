@@ -217,6 +217,9 @@ struct RootView: View {
             if screen == "apps" {
                 _selectedTabDraggableMenuView = State(initialValue: 3)
                 _menuState = State(initialValue: .full)
+            } else if screen == "settings" {
+                _selectedTabDraggableMenuView = State(initialValue: 5)
+                _menuState = State(initialValue: .full)
             } else if ["sharing", "account", "pending", "sent", "received"].contains(screen) {
                 _selectedTabDraggableMenuView = State(initialValue: 4)
                 _menuState = State(initialValue: .full)

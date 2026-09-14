@@ -998,8 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio giúp bạn tạo các video theo phong cách trò chuyện đậm chất điện ảnh cho mạng xã hội, quảng cáo và kể chuyện. Xây dựng các cuộc hội thoại hoạt hình bên trong các thiết bị 3D thực tế, mô phỏng thao tác nhập, đính kèm phương tiện và xuất nội dung dọc hấp dẫn.";
 "Promo.Wonek.description" = "Wonek Video Studio biến cảnh quay thô thành nội dung sẵn sàng xuất bản. Tìm những khoảnh khắc ấn tượng, tạo clip sắc nét, thêm phụ đề rõ ràng và giọng nói chuyển văn bản thành giọng nói, sau đó trau chuốt video và âm thanh trong một quy trình làm việc tập trung.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop mang đến khả năng tạo video theo phong cách trò chuyện điện ảnh cho máy Mac của bạn. Xây dựng các cuộc hội thoại hoạt hình bên trong các thiết bị 3D thực tế, mô phỏng thao tác nhập, đính kèm ảnh và video cũng như xuất nội dung dọc cho mạng xã hội.";
-"Promo.Ayurveda.description" = "Lên kế hoạch bữa ăn theo dosha, xây dựng chuỗi yoga, đồng thời tập thiền và hít thở.";
-"Promo.BrassPawn.description" = "Luyện tập với câu đố, chiến thuật, tàn cuộc, phân tích bằng engine và cờ vua trực tuyến.";
+"Promo.Ayurveda.description" = "Lên kế hoạch bữa ăn theo dosha, xây dựng chuỗi yoga, đồng thời tập thiền và hít thở. Xây dựng thói quen hằng ngày cân bằng, kết hợp dinh dưỡng, vận động, chánh niệm và hơi thở.";
+"Promo.BrassPawn.description" = "Luyện tập với câu đố, chiến thuật, tàn cuộc, phân tích bằng engine và cờ vua trực tuyến. Rèn khả năng tính toán, xem lại thế cờ và đưa ra quyết định tốt hơn trong mỗi ván đấu.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Xóa quyền truy cập lịch?";
 "Remove Access" = "Xóa quyền truy cập";
@@ -1049,3 +1049,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Quyền riêng tư quảng cáo";
+
+/* Theme */
+"Theme" = "Giao diện";
+"Light" = "Sáng";
+"Dark" = "Tối";

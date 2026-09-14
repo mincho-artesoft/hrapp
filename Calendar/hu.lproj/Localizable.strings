@@ -998,8 +998,8 @@
 "Promo.GlanceStudio.description" = "A Glance Studio segítségével moziszerű chat-stílusú videókat hozhat létre közösségi médiához, reklámozáshoz és történetmeséléshez. Építsen animált beszélgetéseket valósághű 3D-s eszközökön, szimuláljon gépelést, csatoljon médiát, és exportáljon lenyűgöző függőleges tartalmat.";
 "Promo.Wonek.description" = "A Wonek Video Studio a nyers felvételeket publikálásra kész tartalommá alakítja. Találja meg az erős pillanatokat, készítsen éles klipeket, adjon hozzá tiszta feliratokat és szöveget felolvasó hangot, majd csiszolja ki a videót és a hangot egyetlen fókuszált munkafolyamatban.";
 "Promo.GlanceStudioDesktop.description" = "A Glance Studio Desktop moziszerű chat-stílusú videókészítést biztosít Mac számítógépére. Építsen animált beszélgetéseket valósághű 3D-s eszközökön, szimuláljon gépelést, csatoljon fényképeket és videókat, és exportáljon függőleges tartalmat a közösségi médiába.";
-"Promo.Ayurveda.description" = "Tervezzen dosha-alapú étkezéseket, állítson össze jógasorozatokat, és gyakoroljon meditációt és légzéstechnikákat.";
-"Promo.BrassPawn.description" = "Fejlődjön feladványokkal, taktikákkal, végjátékokkal, motoros elemzéssel és online sakkal.";
+"Promo.Ayurveda.description" = "Tervezzen dosha-alapú étkezéseket, állítson össze jógasorozatokat, és gyakoroljon meditációt és légzéstechnikákat. Alakítson ki kiegyensúlyozott napi rutint, amely egyesíti a táplálkozást, a mozgást, a tudatos jelenlétet és a légzést.";
+"Promo.BrassPawn.description" = "Fejlődjön feladványokkal, taktikákkal, végjátékokkal, motoros elemzéssel és online sakkal. Fejlessze a számolást, elemezze az állásokat, és hozzon jobb döntéseket minden játszmában.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Eltávolítja a naptárhoz való hozzáférést?";
 "Remove Access" = "Hozzáférés eltávolítása";
@@ -1049,3 +1049,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Hirdetési adatvédelem";
+
+/* Theme */
+"Theme" = "Téma";
+"Light" = "Világos";
+"Dark" = "Sötét";

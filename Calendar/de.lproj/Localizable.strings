@@ -995,8 +995,8 @@
 "Promo.GlanceStudio.description" = "Mit Glance Studio können Sie filmische Videos im Chat-Stil für soziale Medien, Werbung und Storytelling erstellen. Erstellen Sie animierte Gespräche in realistischen 3D-Geräten, simulieren Sie das Tippen, hängen Sie Medien an und exportieren Sie ansprechende vertikale Inhalte.";
 "Promo.Wonek.description" = "Wonek Video Studio verwandelt Rohmaterial in veröffentlichungsbereite Inhalte. Finden Sie starke Momente, erstellen Sie scharfe Clips, fügen Sie klare Untertitel und Text-to-Speech-Voiceovers hinzu und optimieren Sie dann Video und Audio in einem konzentrierten Workflow.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop bringt filmische Videoerstellung im Chat-Stil auf Ihren Mac. Erstellen Sie animierte Gespräche in realistischen 3D-Geräten, simulieren Sie das Tippen, hängen Sie Fotos und Videos an und exportieren Sie vertikale Inhalte für soziale Medien.";
-"Promo.Ayurveda.description" = "Plane Dosha-gerechte Mahlzeiten, erstelle Yoga-Sequenzen und übe Meditation und Atemarbeit.";
-"Promo.BrassPawn.description" = "Trainiere mit Aufgaben, Taktik, Endspielen, Engine-Analyse und Online-Schach.";
+"Promo.Ayurveda.description" = "Plane Dosha-gerechte Mahlzeiten, erstelle Yoga-Sequenzen und übe Meditation und Atemarbeit. Entwickle eine ausgewogene Tagesroutine, die Ernährung, Bewegung, Achtsamkeit und Atmung verbindet.";
+"Promo.BrassPawn.description" = "Trainiere mit Aufgaben, Taktik, Endspielen, Engine-Analyse und Online-Schach. Verbessere deine Variantenberechnung, analysiere Stellungen und triff in jeder Partie bessere Entscheidungen.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Kalenderzugriff entfernen?";
 "Remove Access" = "Zugriff entfernen";
@@ -1046,3 +1046,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Anzeigen-Datenschutz";
+
+/* Theme */
+"Theme" = "Design";
+"Light" = "Hell";
+"Dark" = "Dunkel";

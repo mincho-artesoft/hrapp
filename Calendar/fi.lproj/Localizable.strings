@@ -998,8 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio auttaa sinua luomaan elokuvamaisia chat-tyylisiä videoita sosiaaliseen mediaan, mainontaan ja tarinankerrontaan. Rakenna animoituja keskusteluja realistisissa 3D-laitteissa, simuloi kirjoittamista, liitä mediaa ja vie mukaansatempaavaa pystysuuntaista sisältöä.";
 "Promo.Wonek.description" = "Wonek Video Studio muuttaa raakamateriaalin julkaisuvalmiiksi sisällöksi. Löydä vahvoja hetkiä, luo teräviä leikkeitä, lisää selkeitä tekstityksiä ja tekstistä puheeksi selostuksia ja hio sitten videota ja ääntä yhdessä kohdistetun työnkulun aikana.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop tuo elokuvamaisen chat-tyylisen videon luomisen Macillesi. Rakenna animoituja keskusteluja realistisissa 3D-laitteissa, simuloi kirjoittamista, liitä valokuvia ja videoita ja vie vertikaalista sisältöä sosiaaliseen mediaan.";
-"Promo.Ayurveda.description" = "Suunnittele doshaan perustuvia aterioita, rakenna joogasarjoja ja harjoita meditaatiota ja hengitysharjoituksia.";
-"Promo.BrassPawn.description" = "Harjoittele tehtävillä, taktiikoilla, loppupeleillä, moottorianalyysillä ja verkkoshakilla.";
+"Promo.Ayurveda.description" = "Suunnittele doshaan perustuvia aterioita, rakenna joogasarjoja ja harjoita meditaatiota ja hengitysharjoituksia. Rakenna tasapainoinen päivärutiini, joka yhdistää ravinnon, liikkeen, tietoisen läsnäolon ja hengityksen.";
+"Promo.BrassPawn.description" = "Harjoittele tehtävillä, taktiikoilla, loppupeleillä, moottorianalyysillä ja verkkoshakilla. Kehitä laskentaa, arvioi asemia ja tee vahvempia päätöksiä jokaisessa pelissä.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Poistetaanko kalenterin käyttöoikeus?";
 "Remove Access" = "Poista käyttöoikeus";
@@ -1049,3 +1049,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Mainosten tietosuoja";
+
+/* Theme */
+"Theme" = "Teema";
+"Light" = "Vaalea";
+"Dark" = "Tumma";

@@ -1000,8 +1000,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio t'ajuda a crear vídeos d'estil de xat cinematogràfic per a xarxes socials, publicitat i narració. Crea converses animades dins de dispositius 3D realistes, simula l'escriptura, adjunta contingut multimèdia i exporta contingut vertical atractiu.";
 "Promo.Wonek.description" = "Wonek Video Studio converteix les imatges en brut en contingut llest per publicar. Trobeu moments forts, creeu clips nítids, afegiu subtítols nets i veus en off de text a veu, i després poliu el vídeo i l'àudio en un flux de treball centrat.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop ofereix la creació de vídeos d'estil de xat cinematogràfic al vostre Mac. Crea converses animades dins de dispositius 3D realistes, simula l'escriptura, adjunta fotos i vídeos i exporta contingut vertical per a xarxes socials.";
-"Promo.Ayurveda.description" = "Planifica àpats segons el dosha, crea seqüències de ioga i practica meditació i respiració.";
-"Promo.BrassPawn.description" = "Entrena amb problemes, tàctiques, finals, anàlisi amb motor i escacs en línia.";
+"Promo.Ayurveda.description" = "Planifica àpats segons el dosha, crea seqüències de ioga i practica meditació i respiració. Crea una rutina diària equilibrada que reuneixi nutrició, moviment, consciència plena i respiració.";
+"Promo.BrassPawn.description" = "Entrena amb problemes, tàctiques, finals, anàlisi amb motor i escacs en línia. Millora el càlcul, revisa les posicions i pren decisions més sòlides en cada partida.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Vols eliminar l’accés al calendari?";
 "Remove Access" = "Elimina l’accés";
@@ -1051,3 +1051,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Privadesa dels anuncis";
+
+/* Theme */
+"Theme" = "Tema";
+"Light" = "Clar";
+"Dark" = "Fosc";

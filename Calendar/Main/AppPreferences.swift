@@ -4,10 +4,27 @@ import SwiftUI
 
 enum AppPreferenceKey {
     static let language = "AppLanguagePreference"
+    static let theme = "AppThemePreference"
     static let measurementUnits = "AppMeasurementUnitsPreference"
     static let dateFormat = "AppDateFormatPreference"
     static let timeFormat = "AppTimeFormatPreference"
     static let firstWeekday = "AppFirstWeekdayPreference"
+}
+
+enum AppThemePreference: String, CaseIterable, Identifiable {
+    case system
+    case light
+    case dark
+
+    var id: String { rawValue }
+
+    var preferredColorScheme: ColorScheme? {
+        switch self {
+        case .system: return nil
+        case .light:  return .light
+        case .dark:   return .dark
+        }
+    }
 }
 
 enum FirstWeekdayPreference: String, CaseIterable, Identifiable {
@@ -156,6 +173,14 @@ final class AppPreferences: ObservableObject {
         }
     }
 
+    var theme: AppThemePreference {
+        didSet {
+            guard theme != oldValue else { return }
+            UserDefaults.standard.set(theme.rawValue, forKey: AppPreferenceKey.theme)
+            publishAppliedPreferences()
+        }
+    }
+
     var measurementUnits: MeasurementUnitsPreference {
         didSet {
             guard measurementUnits != oldValue else { return }
@@ -269,6 +294,9 @@ final class AppPreferences: ObservableObject {
             ? storedLanguage
             : Self.systemLanguageIdentifier
         languageIdentifier = resolvedLanguage
+        theme = AppThemePreference(
+            rawValue: defaults.string(forKey: AppPreferenceKey.theme) ?? ""
+        ) ?? .system
         measurementUnits = MeasurementUnitsPreference(
             rawValue: defaults.string(forKey: AppPreferenceKey.measurementUnits) ?? ""
         ) ?? .system

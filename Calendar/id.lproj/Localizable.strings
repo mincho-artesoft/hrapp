@@ -998,8 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio membantu Anda membuat video bergaya obrolan sinematik untuk media sosial, periklanan, dan bercerita. Bangun percakapan animasi di dalam perangkat 3D yang realistis, simulasikan pengetikan, lampirkan media, dan ekspor konten vertikal yang menarik.";
 "Promo.Wonek.description" = "Wonek Video Studio mengubah rekaman mentah menjadi konten siap publikasi. Temukan momen yang menarik, buat klip yang tajam, tambahkan subtitle yang rapi dan sulih suara text-to-speech, lalu sempurnakan video dan audio dalam satu alur kerja yang terfokus.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop menghadirkan pembuatan video bergaya obrolan sinematik ke Mac Anda. Bangun percakapan animasi di dalam perangkat 3D realistis, simulasikan pengetikan, lampirkan foto dan video, dan ekspor konten vertikal untuk media sosial.";
-"Promo.Ayurveda.description" = "Rencanakan makanan berdasarkan dosha, susun rangkaian yoga, serta berlatih meditasi dan pernapasan.";
-"Promo.BrassPawn.description" = "Berlatih dengan teka-teki, taktik, permainan akhir, analisis engine, dan catur online.";
+"Promo.Ayurveda.description" = "Rencanakan makanan berdasarkan dosha, susun rangkaian yoga, serta berlatih meditasi dan pernapasan. Bangun rutinitas harian seimbang yang menyatukan nutrisi, gerakan, kesadaran penuh, dan pernapasan.";
+"Promo.BrassPawn.description" = "Berlatih dengan teka-teki, taktik, permainan akhir, analisis engine, dan catur online. Pertajam perhitungan, tinjau posisi, dan ambil keputusan yang lebih kuat di setiap pertandingan.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Hapus akses kalender?";
 "Remove Access" = "Hapus akses";
@@ -1049,3 +1049,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "Privasi Iklan";
+
+/* Theme */
+"Theme" = "Tema";
+"Light" = "Terang";
+"Dark" = "Gelap";

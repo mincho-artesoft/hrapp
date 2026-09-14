@@ -998,8 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio は、ソーシャル メディア、広告、ストーリーテリング用の映画のようなチャット スタイルのビデオを作成するのに役立ちます。リアルな 3D デバイス内でアニメーション化された会話を構築し、タイピングをシミュレートし、メディアを添付し、魅力的な垂直コンテンツをエクスポートします。";
 "Promo.Wonek.description" = "Wonek Video Studio は、生の映像を公開可能なコンテンツに変換します。力強い瞬間を見つけ、鮮明なクリップを作成し、きれいな字幕とテキスト読み上げのナレーションを追加して、集中した 1 つのワークフローでビデオとオーディオを磨きます。";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop は、映画のようなチャット スタイルのビデオ作成を Mac にもたらします。リアルな 3D デバイス内でアニメーション化された会話を構築し、タイピングをシミュレートし、写真やビデオを添付し、ソーシャル メディア用の垂直コンテンツをエクスポートします。";
-"Promo.Ayurveda.description" = "ドーシャに基づく食事を計画し、ヨガシークエンスを作成して、瞑想と呼吸法を実践できます。";
-"Promo.BrassPawn.description" = "パズル、戦術、終盤、エンジン解析、オンライン対局でトレーニングできます。";
+"Promo.Ayurveda.description" = "ドーシャに基づく食事を計画し、ヨガシークエンスを作成して、瞑想と呼吸法を実践できます。栄養、運動、マインドフルネス、呼吸をひとつにまとめた、バランスのよい毎日のルーティンを作りましょう。";
+"Promo.BrassPawn.description" = "パズル、戦術、終盤、エンジン解析、オンライン対局でトレーニングできます。読みの力を磨き、局面を振り返り、どの対局でもより良い判断ができるようにしましょう。";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "カレンダーへのアクセス権を削除しますか？";
 "Remove Access" = "アクセス権を削除";
@@ -1049,3 +1049,8 @@
 
 /* Ad privacy */
 "Ad Privacy" = "広告のプライバシー";
+
+/* Theme */
+"Theme" = "テーマ";
+"Light" = "ライト";
+"Dark" = "ダーク";
