@@ -680,8 +680,12 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         super.layoutSubviews()
         
         let isLandscape = bounds.width > bounds.height
+        let hidesSingleDayCarousel = isLandscape && traitCollection.userInterfaceIdiom != .pad
         let isRTL = usesRightToLeftLayout
-        let topOffset: CGFloat = isLandscape ? 0 : 53.5
+        let tabletLandscapeTopInset = traitCollection.userInterfaceIdiom == .pad
+            ? max(safeAreaInsets.top, window?.safeAreaInsets.top ?? 0)
+            : 0
+        let topOffset: CGFloat = isLandscape ? tabletLandscapeTopInset : 53.5
         
         // 1. Фон зад navBar (ако има)
         topBackgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topOffset)
@@ -756,7 +760,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         // 3. SingleDayCarousel
         var singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
         singleDayCarousel.isHidden = !showSingleDay
-        if isLandscape {
+        if hidesSingleDayCarousel {
             singleDayCarousel.isHidden = true
             singleDayCarouselHeight = 0
         }

@@ -243,6 +243,9 @@ struct RootView: View {
             NavigationView {
                 GeometryReader { geometry in
                     let isPortrait = geometry.size.height > geometry.size.width
+                    let showsDraggableMenu = (
+                        isPortrait || UIDevice.current.userInterfaceIdiom == .pad
+                    ) && selectedTab != 7
 
                     VStack(spacing: 0) { // Ensure VStack uses spacing 0 if no explicit spacing is desired
                         Group {
@@ -404,7 +407,7 @@ struct RootView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity) // Make sure the VStack fills the GeometryReader
                     .overlay(alignment: .bottom) {
-                        if menuState == .full && isPortrait && selectedTab != 7 {
+                        if menuState == .full && showsDraggableMenu {
                              Color.black.opacity(0.001)
                                  .ignoresSafeArea()
                                  .contentShape(Rectangle())
@@ -507,9 +510,9 @@ struct RootView: View {
                             // Weather uses the same draggable menu and bottom
                             // navigation as every calendar section. Only the
                             // optional VitaHealth tab remains excluded.
-                            .opacity(isPortrait && selectedTab != 7 ? 1 : 0)
-                            .allowsHitTesting(isPortrait && selectedTab != 7)
-                            .accessibilityHidden(!isPortrait || selectedTab == 7)
+                            .opacity(showsDraggableMenu ? 1 : 0)
+                            .allowsHitTesting(showsDraggableMenu)
+                            .accessibilityHidden(!showsDraggableMenu)
                             // Weather has a permanent dark visual language.
                             // The menu is a sibling of WeatherKitView, so it
                             // must receive that scheme explicitly instead of

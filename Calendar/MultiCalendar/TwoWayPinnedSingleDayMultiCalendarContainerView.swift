@@ -482,8 +482,12 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         super.layoutSubviews()
         
         let isLandscape = bounds.width > bounds.height
+        let hidesSingleDayCarousel = isLandscape && traitCollection.userInterfaceIdiom != .pad
         let isRTL = usesRightToLeftLayout
-        let topOffset: CGFloat = isLandscape ? 0 : 53.5
+        let tabletLandscapeTopInset = traitCollection.userInterfaceIdiom == .pad
+            ? max(safeAreaInsets.top, window?.safeAreaInsets.top ?? 0)
+            : 0
+        let topOffset: CGFloat = isLandscape ? tabletLandscapeTopInset : 53.5
         
         topBackgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topOffset)
         topBackgroundView.layer.zPosition = 3
@@ -551,7 +555,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         
         var singleDayCarouselHeight: CGFloat = 70
         singleDayCarousel.isHidden = false
-        if isLandscape {
+        if hidesSingleDayCarousel {
             singleDayCarousel.isHidden = true
             singleDayCarouselHeight = 0
         }
