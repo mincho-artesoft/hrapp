@@ -1,0 +1,56 @@
+{
+  "platform": "IOS",
+  "locales": {
+    "mr-IN": {
+      "keywords": "हवामान,विजेट,वेळापत्रक,नियोजन,अंदाज,iCloud,बैठक,इव्हेंट,काम,लॉक स्क्रीन,पाऊस,आज,आठवडा,महिना,दिन,वर्ष"
+    },
+    "te-IN": {
+      "keywords": "వాతావరణం,విడ్జెట్,షెడ్యూల్,ప్రణాళిక,సూచన,iCloud,సమావేశం,ఈవెంట్,పని,లాక్ స్క్రీన్,వర్షం,ఈరోజు,నెల,గంట"
+    },
+    "pa-IN": {
+      "keywords": "ਮੌਸਮ,ਵਿਜੇਟ,ਸਮਾਂ-ਸਾਰਣੀ,ਯੋਜਨਾ,ਭਵਿੱਖਬਾਣੀ,iCloud,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਕੰਮ,ਲਾਕ ਸਕਰੀਨ,ਮੀਂਹ,ਅੱਜ,ਹਫ਼ਤਾ,ਮਹੀਨਾ,ਦਿਨ,ਯਾਦ"
+    },
+    "or-IN": {
+      "keywords": "ପାଗ,ୱିଜେଟ୍,ସମୟସୂଚୀ,ଯୋଜନା,ପୂର୍ବାନୁମାନ,iCloud,ବୈଠକ,ଇଭେଣ୍ଟ,କାମ,ଲକ୍ ସ୍କ୍ରିନ୍,ବର୍ଷା,ଆଜି,ସପ୍ତାହ,କ୍ୟାଲେଣ୍ଡର"
+    },
+    "uk": {
+      "keywords": "погода,віджет,розклад,планер,порядок денний,прогноз,iCloud,події,зустрічі,екран блокування,дощ,плани"
+    },
+    "ca": {
+      "keywords": "temps,widget,horari,planificador,agenda,previsió,iCloud,reunions,esdeveniments,pantalla,pluja,alerta"
+    },
+    "kn-IN": {
+      "keywords": "ಹವಾಮಾನ,ವಿಜೆಟ್,ವೇಳಾಪಟ್ಟಿ,ಯೋಜನೆ,ಮುನ್ಸೂಚನೆ,iCloud,ಸಭೆ,ಈವೆಂಟ್,ಕೆಲಸ,ಲಾಕ್ ಸ್ಕ್ರೀನ್,ಮಳೆ,ಇಂದು,ಕ್ಯಾಲೆಂಡರ್,ವಾರ"
+    },
+    "pt-PT": {
+      "keywords": "tempo,widget,horário,planeador,agenda,previsão,iCloud,reuniões,eventos,ecrã de bloqueio,chuva,alerta"
+    },
+    "ml-IN": {
+      "keywords": "കാലാവസ്ഥ,വിജറ്റ്,ഷെഡ്യൂൾ,ആസൂത്രണം,പ്രവചനം,iCloud,മീറ്റിംഗ്,ഇവന്റ്,ജോലി,ലോക്ക് സ്ക്രീൻ,മഴ,ഇന്ന്,ദിവസം"
+    },
+    "sk": {
+      "keywords": "počasie,widget,rozvrh,plánovač,agenda,predpoveď,iCloud,udalosti,stretnutia,uzamknutá obrazovka,úlohy"
+    },
+    "gu-IN": {
+      "keywords": "હવામાન,વિજેટ,સમયપત્રક,આયોજન,આગાહી,iCloud,મીટિંગ,ઇવેન્ટ,કામ,લૉક સ્ક્રીન,વરસાદ,આજે,અઠવાડિયું,રીમાઇન્ડર"
+    },
+    "ta-IN": {
+      "keywords": "வானிலை,விட்ஜெட்,அட்டவணை,திட்டமிடல்,முன்னறிவிப்பு,iCloud,கூட்டம்,நிகழ்வு,வேலை,பூட்டுத்திரை,மழை,ஞாபகம்"
+    },
+    "sl-SI": {
+      "keywords": "vreme,widget,urnik,načrtovalnik,agenda,napoved,iCloud,dogodki,sestanki,zaklenjen zaslon,dež,danes,QR"
+    },
+    "es-MX": {
+      "keywords": "clima,widget,horario,planificador,agenda,pronóstico,iCloud,juntas,eventos,pantalla,lluvia,hoy,alerta"
+    },
+    "ur-PK": {
+      "keywords": "موسم,وجیٹ,شیڈول,منصوبہ بندی,پیش گوئی,iCloud,میٹنگ,ایونٹ,کام,لاک اسکرین,بارش,آج,ہفتہ,مہینہ,کیلنڈر,وقت"
+    },
+    "hr": {
+      "keywords": "vrijeme,widget,raspored,planer,agenda,prognoza,iCloud,sastanci,događaji,zaključan zaslon,kiša,obveze"
+    },
+    "bn-BD": {
+      "keywords": "আবহাওয়া,উইজেট,সময়সূচি,পরিকল্পনা,পূর্বাভাস,iCloud,মিটিং,ইভেন্ট,কাজ,লক স্ক্রিন,বৃষ্টি,আজ,মাস,দিন,মাস"
+    }
+  }
+}

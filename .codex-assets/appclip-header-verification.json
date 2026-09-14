@@ -1,0 +1,103 @@
+{
+  "appId": "6744690319",
+  "applied": false,
+  "experienceId": "383c34c1-9705-4bad-a6cc-ee1526d2786f",
+  "results": [
+    {
+      "assetId": "e126129b-43c8-4c01-a9ca-d2ef77a1983d",
+      "locale": "en-GB",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "75b0db96-8a72-4118-9bce-110385046b8b",
+      "locale": "mr-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "3a0c12e7-9c62-4f50-a383-580947a8645c",
+      "locale": "te-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "513ca3cc-2ea5-47d9-aa68-278fedea67aa",
+      "locale": "pa-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "a3a377bb-dbf9-4c58-a200-193c72f682fa",
+      "locale": "or-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "71d66387-0bf8-4778-a567-c937a483db2e",
+      "locale": "uk",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "576b7b0f-1e2b-4d01-a473-41334e3b67a5",
+      "locale": "ca",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "551f63a9-1d13-4860-8497-200f6bd7e2f7",
+      "locale": "kn-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "d166aa13-fd19-46a8-b247-63790e88137a",
+      "locale": "pt-PT",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "5792652b-76fd-41cc-8b45-91cda33302f8",
+      "locale": "ml-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "27a902ac-aed9-41cb-aed5-2bd04b3f9363",
+      "locale": "sk",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "0af6f2ba-2868-4987-91c2-8cf5e4b51c3b",
+      "locale": "gu-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "258eefbb-2df6-4b5f-aa94-a36054b082d0",
+      "locale": "ta-IN",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "3f8e5c61-c473-4899-b4e6-c92c2fd1bd8b",
+      "locale": "sl-SI",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "5a95acaf-df20-47a9-b1fe-c88e32fd0741",
+      "locale": "en-AU",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "f90c2a13-6b0a-4303-b969-1c5e749018b7",
+      "locale": "es-MX",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "5e152228-2726-48e9-a125-f11291895bcc",
+      "locale": "ur-PK",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "6704d5ef-d1b6-4d1e-94a3-a48624e63861",
+      "locale": "hr",
+      "state": "already-complete"
+    },
+    {
+      "assetId": "d3dd287d-1677-4f20-8cdf-8bd09d8cec67",
+      "locale": "bn-BD",
+      "state": "already-complete"
+    }
+  ],
+  "version": "1.7.2"
+}

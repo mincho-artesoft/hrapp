@@ -1,0 +1,254 @@
+{
+  "//" : "Written. Anything under \"failed\" was refused by Apple and is still as it was; the rest is live on the listing.",
+  "applied" : true,
+  "changes" : [
+    {
+      "field" : "keywords",
+      "from" : "আবহাওয়া,উইজেট,সময়সূচি,পরিকল্পনা,পূর্বাভাস,iCloud,মিটিং,ইভেন্ট,কাজ,লক স্ক্রিন,বৃষ্টি,আজ,মাস",
+      "locale" : "bn-BD",
+      "record" : "version",
+      "to" : "আবহাওয়া,উইজেট,সময়সূচি,পরিকল্পনা,পূর্বাভাস,iCloud,মিটিং,ইভেন্ট,কাজ,লক স্ক্রিন,বৃষ্টি,আজ,মাস,দিন,মাস"
+    },
+    {
+      "field" : "keywords",
+      "from" : "temps,widget,horari,planificador,agenda,previsió,iCloud,reunions,esdeveniments,pantalla,pluja",
+      "locale" : "ca",
+      "record" : "version",
+      "to" : "temps,widget,horari,planificador,agenda,previsió,iCloud,reunions,esdeveniments,pantalla,pluja,alerta"
+    },
+    {
+      "field" : "keywords",
+      "from" : "clima,widget,horario,planificador,agenda,pronóstico,iCloud,juntas,eventos,pantalla,lluvia,hoy",
+      "locale" : "es-MX",
+      "record" : "version",
+      "to" : "clima,widget,horario,planificador,agenda,pronóstico,iCloud,juntas,eventos,pantalla,lluvia,hoy,alerta"
+    },
+    {
+      "field" : "keywords",
+      "from" : "હવામાન,વિજેટ,સમયપત્રક,આયોજન,આગાહી,iCloud,મીટિંગ,ઇવેન્ટ,કામ,લૉક સ્ક્રીન,વરસાદ,આજે,અઠવાડિયું",
+      "locale" : "gu-IN",
+      "record" : "version",
+      "to" : "હવામાન,વિજેટ,સમયપત્રક,આયોજન,આગાહી,iCloud,મીટિંગ,ઇવેન્ટ,કામ,લૉક સ્ક્રીન,વરસાદ,આજે,અઠવાડિયું,રીમાઇન્ડર"
+    },
+    {
+      "field" : "keywords",
+      "from" : "vrijeme,widget,raspored,planer,agenda,prognoza,iCloud,sastanci,događaji,zaključan zaslon,kiša",
+      "locale" : "hr",
+      "record" : "version",
+      "to" : "vrijeme,widget,raspored,planer,agenda,prognoza,iCloud,sastanci,događaji,zaključan zaslon,kiša,obveze"
+    },
+    {
+      "field" : "keywords",
+      "from" : "ಹವಾಮಾನ,ವಿಜೆಟ್,ವೇಳಾಪಟ್ಟಿ,ಯೋಜನೆ,ಮುನ್ಸೂಚನೆ,iCloud,ಸಭೆ,ಈವೆಂಟ್,ಕೆಲಸ,ಲಾಕ್ ಸ್ಕ್ರೀನ್,ಮಳೆ,ಇಂದು",
+      "locale" : "kn-IN",
+      "record" : "version",
+      "to" : "ಹವಾಮಾನ,ವಿಜೆಟ್,ವೇಳಾಪಟ್ಟಿ,ಯೋಜನೆ,ಮುನ್ಸೂಚನೆ,iCloud,ಸಭೆ,ಈವೆಂಟ್,ಕೆಲಸ,ಲಾಕ್ ಸ್ಕ್ರೀನ್,ಮಳೆ,ಇಂದು,ಕ್ಯಾಲೆಂಡರ್,ವಾರ"
+    },
+    {
+      "field" : "keywords",
+      "from" : "കാലാവസ്ഥ,വിജറ്റ്,ഷെഡ്യൂൾ,ആസൂത്രണം,പ്രവചനം,iCloud,മീറ്റിംഗ്,ഇവന്റ്,ജോലി,ലോക്ക് സ്ക്രീൻ,മഴ,ഇന്ന്",
+      "locale" : "ml-IN",
+      "record" : "version",
+      "to" : "കാലാവസ്ഥ,വിജറ്റ്,ഷെഡ്യൂൾ,ആസൂത്രണം,പ്രവചനം,iCloud,മീറ്റിംഗ്,ഇവന്റ്,ജോലി,ലോക്ക് സ്ക്രീൻ,മഴ,ഇന്ന്,ദിവസം"
+    },
+    {
+      "field" : "keywords",
+      "from" : "हवामान,विजेट,वेळापत्रक,नियोजन,अंदाज,iCloud,बैठक,इव्हेंट,काम,लॉक स्क्रीन,पाऊस,आज,आठवडा,महिना",
+      "locale" : "mr-IN",
+      "record" : "version",
+      "to" : "हवामान,विजेट,वेळापत्रक,नियोजन,अंदाज,iCloud,बैठक,इव्हेंट,काम,लॉक स्क्रीन,पाऊस,आज,आठवडा,महिना,दिन,वर्ष"
+    },
+    {
+      "field" : "keywords",
+      "from" : "ପାଗ,ୱିଜେଟ୍,ସମୟସୂଚୀ,ଯୋଜନା,ପୂର୍ବାନୁମାନ,iCloud,ବୈଠକ,ଇଭେଣ୍ଟ,କାମ,ଲକ୍ ସ୍କ୍ରିନ୍,ବର୍ଷା,ଆଜି,ସପ୍ତାହ",
+      "locale" : "or-IN",
+      "record" : "version",
+      "to" : "ପାଗ,ୱିଜେଟ୍,ସମୟସୂଚୀ,ଯୋଜନା,ପୂର୍ବାନୁମାନ,iCloud,ବୈଠକ,ଇଭେଣ୍ଟ,କାମ,ଲକ୍ ସ୍କ୍ରିନ୍,ବର୍ଷା,ଆଜି,ସପ୍ତାହ,କ୍ୟାଲେଣ୍ଡର"
+    },
+    {
+      "field" : "keywords",
+      "from" : "ਮੌਸਮ,ਵਿਜੇਟ,ਸਮਾਂ-ਸਾਰਣੀ,ਯੋਜਨਾ,ਭਵਿੱਖਬਾਣੀ,iCloud,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਕੰਮ,ਲਾਕ ਸਕਰੀਨ,ਮੀਂਹ,ਅੱਜ,ਹਫ਼ਤਾ",
+      "locale" : "pa-IN",
+      "record" : "version",
+      "to" : "ਮੌਸਮ,ਵਿਜੇਟ,ਸਮਾਂ-ਸਾਰਣੀ,ਯੋਜਨਾ,ਭਵਿੱਖਬਾਣੀ,iCloud,ਮੀਟਿੰਗ,ਇਵੈਂਟ,ਕੰਮ,ਲਾਕ ਸਕਰੀਨ,ਮੀਂਹ,ਅੱਜ,ਹਫ਼ਤਾ,ਮਹੀਨਾ,ਦਿਨ,ਯਾਦ"
+    },
+    {
+      "field" : "keywords",
+      "from" : "tempo,widget,horário,planeador,agenda,previsão,iCloud,reuniões,eventos,ecrã de bloqueio,chuva",
+      "locale" : "pt-PT",
+      "record" : "version",
+      "to" : "tempo,widget,horário,planeador,agenda,previsão,iCloud,reuniões,eventos,ecrã de bloqueio,chuva,alerta"
+    },
+    {
+      "field" : "keywords",
+      "from" : "počasie,widget,rozvrh,plánovač,agenda,predpoveď,iCloud,udalosti,stretnutia,uzamknutá obrazovka",
+      "locale" : "sk",
+      "record" : "version",
+      "to" : "počasie,widget,rozvrh,plánovač,agenda,predpoveď,iCloud,udalosti,stretnutia,uzamknutá obrazovka,úlohy"
+    },
+    {
+      "field" : "keywords",
+      "from" : "vreme,widget,urnik,načrtovalnik,agenda,napoved,iCloud,dogodki,sestanki,zaklenjen zaslon,dež,danes",
+      "locale" : "sl-SI",
+      "record" : "version",
+      "to" : "vreme,widget,urnik,načrtovalnik,agenda,napoved,iCloud,dogodki,sestanki,zaklenjen zaslon,dež,danes,QR"
+    },
+    {
+      "field" : "keywords",
+      "from" : "வானிலை,விட்ஜெட்,அட்டவணை,திட்டமிடல்,முன்னறிவிப்பு,iCloud,கூட்டம்,நிகழ்வு,வேலை,பூட்டுத்திரை,மழை",
+      "locale" : "ta-IN",
+      "record" : "version",
+      "to" : "வானிலை,விட்ஜெட்,அட்டவணை,திட்டமிடல்,முன்னறிவிப்பு,iCloud,கூட்டம்,நிகழ்வு,வேலை,பூட்டுத்திரை,மழை,ஞாபகம்"
+    },
+    {
+      "field" : "keywords",
+      "from" : "వాతావరణం,విడ్జెట్,షెడ్యూల్,ప్రణాళిక,సూచన,iCloud,సమావేశం,ఈవెంట్,పని,లాక్ స్క్రీన్,వర్షం,ఈరోజు",
+      "locale" : "te-IN",
+      "record" : "version",
+      "to" : "వాతావరణం,విడ్జెట్,షెడ్యూల్,ప్రణాళిక,సూచన,iCloud,సమావేశం,ఈవెంట్,పని,లాక్ స్క్రీన్,వర్షం,ఈరోజు,నెల,గంట"
+    },
+    {
+      "field" : "keywords",
+      "from" : "погода,віджет,розклад,планер,порядок денний,прогноз,iCloud,події,зустрічі,екран блокування,дощ",
+      "locale" : "uk",
+      "record" : "version",
+      "to" : "погода,віджет,розклад,планер,порядок денний,прогноз,iCloud,події,зустрічі,екран блокування,дощ,плани"
+    },
+    {
+      "field" : "keywords",
+      "from" : "موسم,وجیٹ,شیڈول,منصوبہ بندی,پیش گوئی,iCloud,میٹنگ,ایونٹ,کام,لاک اسکرین,بارش,آج,ہفتہ,مہینہ",
+      "locale" : "ur-PK",
+      "record" : "version",
+      "to" : "موسم,وجیٹ,شیڈول,منصوبہ بندی,پیش گوئی,iCloud,میٹنگ,ایونٹ,کام,لاک اسکرین,بارش,آج,ہفتہ,مہینہ,کیلنڈر,وقت"
+    }
+  ],
+  "failed" : [
+
+  ],
+  "rejected" : [
+
+  ],
+  "unchanged" : 0,
+  "versionString" : "1.7.2",
+  "written" : [
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "bn-BD",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "ca",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "es-MX",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "gu-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "hr",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "kn-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "ml-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "mr-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "or-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "pa-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "pt-PT",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "sk",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "sl-SI",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "ta-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "te-IN",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "uk",
+      "record" : "version"
+    },
+    {
+      "fields" : [
+        "keywords"
+      ],
+      "locale" : "ur-PK",
+      "record" : "version"
+    }
+  ]
+}
