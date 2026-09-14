@@ -998,6 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio, sosyal medya, reklamcılık ve hikaye anlatımı için sinematik sohbet tarzı videolar oluşturmanıza yardımcı olur. Gerçekçi 3D cihazların içinde animasyonlu konuşmalar oluşturun, yazmayı simüle edin, medya ekleyin ve ilgi çekici dikey içeriği dışa aktarın.";
 "Promo.Wonek.description" = "Wonek Video Studio ham görüntüleri yayınlanmaya hazır içeriğe dönüştürüyor. Güçlü anları bulun, keskin klipler oluşturun, net altyazılar ve metinden konuşmaya seslendirmeler ekleyin, ardından odaklanmış tek bir iş akışında video ve sesi iyileştirin.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop, Mac'inize sinematik sohbet tarzı video oluşturma olanağı sağlar. Gerçekçi 3D cihazların içinde animasyonlu konuşmalar oluşturun, yazmayı simüle edin, fotoğraf ve videolar ekleyin ve sosyal medya için dikey içeriği dışa aktarın.";
+"Promo.Ayurveda.description" = "Doshanıza uygun öğünler planlayın, yoga akışları oluşturun, meditasyon ve nefes çalışmaları yapın.";
+"Promo.BrassPawn.description" = "Bulmacalar, taktikler, oyun sonları, motor analizi ve çevrimiçi satrançla antrenman yapın.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Takvim erişimi kaldırılsın mı?";
 "Remove Access" = "Erişimi kaldır";

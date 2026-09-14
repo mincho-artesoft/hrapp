@@ -67,6 +67,22 @@ struct RootView: View {
     
     private var promotionalApps: [AppPromoData] {[
         AppPromoData(
+            appName: "Brass Pawn: Chess Trainer",
+            description: NSLocalizedString("Promo.BrassPawn.description", comment: "Promoted app description"),
+            iconName: "BrassPawnIcon",
+            systemImageFallback: "checkerboard.rectangle",
+            appStoreURL: "https://apps.apple.com/app/id6803566012",
+            accentColor: .brown
+        ),
+        AppPromoData(
+            appName: "Ayurveda & Asana Yoga",
+            description: NSLocalizedString("Promo.Ayurveda.description", comment: "Promoted app description"),
+            iconName: "AyurvedaAsanaIcon",
+            systemImageFallback: "figure.yoga",
+            appStoreURL: "https://apps.apple.com/app/id6800370073",
+            accentColor: .purple
+        ),
+        AppPromoData(
             appName: NSLocalizedString("Promo.WiseEating.name", comment: "Promoted app name"),
             description: NSLocalizedString("Promo.WiseEating.description", comment: "Promoted app description"),
             iconName: "WiseEatingIcon",
@@ -83,22 +99,21 @@ struct RootView: View {
             accentColor: .cyan
         ),
 
-        // ✅ NEW #1
         AppPromoData(
             appName: NSLocalizedString("Promo.ReelStudio.name", comment: "Promoted app name"),
             description: NSLocalizedString("Promo.ReelStudio.description", comment: "Promoted app description"),
-            iconName: "ReelStudioIcon", // добави в Assets
+            iconName: "ReelStudioIcon",
             systemImageFallback: "record.circle.fill",
-            appStoreURL: "https://apps.apple.com/us/app/reelstudio/id6758941990", // TODO: сложи реалния линк
+            appStoreURL: "https://apps.apple.com/app/id6758941990",
             accentColor: .purple
         ),
 
         AppPromoData(
             appName: NSLocalizedString("Promo.MarketBrief.name", comment: "Promoted app name"),
             description: NSLocalizedString("Promo.MarketBrief.description", comment: "Promoted app description"),
-            iconName: "MarketBriefIcon", // добави в Assets
+            iconName: "MarketBriefIcon",
             systemImageFallback: "chart.line.uptrend.xyaxis",
-            appStoreURL: "https://apps.apple.com/us/app/market-brief-ai/id6758329388", // TODO: сложи реалния линк
+            appStoreURL: "https://apps.apple.com/app/id6758329388",
             accentColor: .blue.opacity(0.75)
         ),
         AppPromoData(
@@ -199,7 +214,10 @@ struct RootView: View {
         // Uses the normal RootView, real calendar data and production screens.
         if let screen = EventSurfaceFullScreen.appScreen {
             _selectedTab = State(initialValue: screen == "month" ? 0 : screen == "list" ? 4 : 1)
-            if ["sharing", "account", "pending", "sent", "received"].contains(screen) {
+            if screen == "apps" {
+                _selectedTabDraggableMenuView = State(initialValue: 3)
+                _menuState = State(initialValue: .full)
+            } else if ["sharing", "account", "pending", "sent", "received"].contains(screen) {
                 _selectedTabDraggableMenuView = State(initialValue: 4)
                 _menuState = State(initialValue: .full)
             }

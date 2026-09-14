@@ -998,6 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio pomaga tworzyć kinowe filmy w stylu czatu do mediów społecznościowych, reklam i opowiadania historii. Twórz animowane rozmowy na realistycznych urządzeniach 3D, symuluj pisanie, dołączaj multimedia i eksportuj angażujące treści pionowe.";
 "Promo.Wonek.description" = "Wonek Video Studio przekształca surowy materiał w treść gotową do publikacji. Znajdź mocne momenty, twórz ostre klipy, dodawaj przejrzyste napisy i zamianę tekstu na mowę, a następnie szlifuj wideo i audio w jednym, ukierunkowanym procesie.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop umożliwia tworzenie filmów w stylu kinowego czatu na komputerze Mac. Twórz animowane rozmowy na realistycznych urządzeniach 3D, symuluj pisanie, dołączaj zdjęcia i filmy oraz eksportuj treści pionowe do mediów społecznościowych.";
+"Promo.Ayurveda.description" = "Planuj posiłki zgodnie z doszą, układaj sekwencje jogi oraz ćwicz medytację i oddech.";
+"Promo.BrassPawn.description" = "Trenuj dzięki zadaniom, taktyce, końcówkom, analizie silnika i szachom online.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Usunąć dostęp do kalendarza?";
 "Remove Access" = "Usuń dostęp";

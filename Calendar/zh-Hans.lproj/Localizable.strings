@@ -998,6 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio 可帮助您为社交媒体、广告和讲故事创建电影聊天风格的视频。在逼真的 3D 设备内构建动画对话、模拟打字、附加媒体并导出引人入胜的垂直内容。";
 "Promo.Wonek.description" = "Wonek Video Studio 将原始素材转换为可发布的内容。找到精彩瞬间，创建清晰的剪辑，添加清晰的字幕和文本转语音配音，然后在一个集中的工作流程中完善视频和音频。";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop 为您的 Mac 带来了影院式聊天风格的视频创作。在逼真的 3D 设备内构建动画对话、模拟打字、附加照片和视频以及导出社交媒体的垂直内容。";
+"Promo.Ayurveda.description" = "规划符合体质的餐点、创建瑜伽序列，并练习冥想与呼吸法。";
+"Promo.BrassPawn.description" = "通过棋题、战术、残局、引擎分析和在线国际象棋进行训练。";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "移除日历访问权限？";
 "Remove Access" = "移除访问权限";

@@ -993,6 +993,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio vous aide à créer des vidéos cinématographiques de style chat pour les réseaux sociaux, la publicité et la narration. Créez des conversations animées dans des appareils 3D réalistes, simulez la saisie, joignez des médias et exportez du contenu vertical attrayant.";
 "Promo.Wonek.description" = "Wonek Video Studio transforme les séquences brutes en contenu prêt à être publié. Trouvez des moments forts, créez des clips nets, ajoutez des sous-titres clairs et des voix off de synthèse vocale, puis peaufinez la vidéo et l'audio dans un flux de travail ciblé.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop apporte la création vidéo de type chat cinématographique sur votre Mac. Créez des conversations animées dans des appareils 3D réalistes, simulez la saisie, joignez des photos et des vidéos et exportez du contenu vertical pour les réseaux sociaux.";
+"Promo.Ayurveda.description" = "Planifiez des repas selon votre dosha, créez des séquences de yoga et pratiquez la méditation et la respiration.";
+"Promo.BrassPawn.description" = "Entraînez-vous avec des problèmes, des tactiques, des finales, l’analyse par moteur et les échecs en ligne.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Supprimer l’accès au calendrier ?";
 "Remove Access" = "Supprimer l’accès";

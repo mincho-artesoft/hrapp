@@ -1000,6 +1000,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio vam pomaže stvoriti kinematografske videozapise u stilu čavrljanja za društvene medije, oglašavanje i pripovijedanje. Gradite animirane razgovore unutar realističnih 3D uređaja, simulirajte tipkanje, priložite medije i izvezite privlačan vertikalni sadržaj.";
 "Promo.Wonek.description" = "Wonek Video Studio pretvara neobrađene snimke u sadržaj spreman za objavljivanje. Pronađite snažne trenutke, stvorite oštre isječke, dodajte čiste titlove i govorne glasove pretvaranja teksta u govor, zatim dotjerajte video i audio u jednom fokusiranom tijeku rada.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop donosi stvaranje video zapisa u kinematografskom stilu chata na vaš Mac. Izgradite animirane razgovore unutar realističnih 3D uređaja, simulirajte tipkanje, priložite fotografije i videozapise i izvezite okomiti sadržaj za društvene medije.";
+"Promo.Ayurveda.description" = "Planirajte obroke prema doši, sastavljajte slijedove joge te vježbajte meditaciju i tehnike disanja.";
+"Promo.BrassPawn.description" = "Vježbajte uz zadatke, taktike, završnice, analizu računalom i online šah.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Ukloniti pristup kalendaru?";
 "Remove Access" = "Ukloni pristup";

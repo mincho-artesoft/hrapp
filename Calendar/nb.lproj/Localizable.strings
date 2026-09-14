@@ -998,6 +998,8 @@
 "Promo.GlanceStudio.description" = "Glance Studio hjelper deg med å lage filmiske chat-videoer for sosiale medier, reklame og historiefortelling. Bygg animerte samtaler inne i realistiske 3D-enheter, simuler skriving, legg ved media og eksporter engasjerende vertikalt innhold.";
 "Promo.Wonek.description" = "Wonek Video Studio gjør rå opptak til publiseringsklart innhold. Finn sterke øyeblikk, lag skarpe klipp, legg til rene undertekster og tekst-til-tale voiceovers, og poler deretter video og lyd i én fokusert arbeidsflyt.";
 "Promo.GlanceStudioDesktop.description" = "Glance Studio Desktop bringer filmskaping i chat-stil til Mac-en din. Bygg animerte samtaler inne i realistiske 3D-enheter, simuler skriving, legg ved bilder og videoer, og eksporter vertikalt innhold for sosiale medier.";
+"Promo.Ayurveda.description" = "Planlegg måltider etter dosha, bygg yogasekvenser og øv på meditasjon og pusteteknikker.";
+"Promo.BrassPawn.description" = "Tren med oppgaver, taktikk, sluttspill, motoranalyse og nettsjakk.";
 /* Sharing and local calendar UI — localization audit. */
 "Remove calendar access?" = "Fjerne kalendertilgang?";
 "Remove Access" = "Fjern tilgang";
