@@ -1,19 +1,7 @@
 import SwiftUI
-#if os(iOS)
 import UIKit
-#else
-import AppKit
-#endif
 
-private func atmosphereImage(_ name: String) -> CGImage? {
-    #if os(iOS)
-    return UIImage(named: name)?.cgImage
-    #else
-    return NSImage(named: NSImage.Name(name))?.cgImage(forProposedRect: nil, context: nil, hints: nil)
-    #endif
-}
-
-/// A lightweight hybrid weather scene. Blender-rendered volumetric cloud variants add
+/// A lightweight hybrid weather scene. AI-generated cloud sprite cycles add
 /// organic detail while SwiftUI drives movement, lighting and precipitation.
 struct WeatherSceneBackground: View {
     let conditionKey: String
@@ -29,8 +17,6 @@ struct WeatherSceneBackground: View {
     let windGustKPH: Double?
     let windDirectionDegrees: Double?
     let observationDate: Date?
-    let latitude: Double?
-    let longitude: Double?
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -47,8 +33,7 @@ struct WeatherSceneBackground: View {
         windSpeedKPH: Double? = nil,
         windGustKPH: Double? = nil,
         windDirectionDegrees: Double? = nil,
-        observationDate: Date? = nil,
-        latitude: Double? = nil, longitude: Double? = nil
+        observationDate: Date? = nil
     ) {
         self.conditionKey = conditionKey
         self.symbolName = symbolName
@@ -63,7 +48,6 @@ struct WeatherSceneBackground: View {
         self.windGustKPH = windGustKPH
         self.windDirectionDegrees = windDirectionDegrees
         self.observationDate = observationDate
-        self.latitude = latitude; self.longitude = longitude
     }
 
     /// The opaque colour at the lower edge of the same sky palette used by
@@ -96,7 +80,7 @@ struct WeatherSceneBackground: View {
     }
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 30.0, paused: reduceMotion)) { timeline in
+        TimelineView(.animation(minimumInterval: 1.0 / 60.0, paused: reduceMotion)) { timeline in
             let currentDate = observationDate ?? timeline.date
             let scene = WeatherSceneDescriptor(
                 conditionKey: conditionKey,
@@ -111,8 +95,7 @@ struct WeatherSceneBackground: View {
                 cloudCover: cloudCover,
                 windSpeedKPH: windSpeedKPH,
                 windGustKPH: windGustKPH,
-                windDirectionDegrees: windDirectionDegrees,
-                latitude: latitude, longitude: longitude
+                windDirectionDegrees: windDirectionDegrees
             )
             Canvas(opaque: true, rendersAsynchronously: true) { context, size in
                 let time = reduceMotion ? 0 : timeline.date.timeIntervalSinceReferenceDate
@@ -179,8 +162,6 @@ private struct WeatherSceneDescriptor {
     let windSpeedKPH: Double
     let windGustKPH: Double
     let windDirectionDegrees: Double
-    let latitude: Double?
-    let longitude: Double?
 
     init(
         conditionKey: String,
@@ -195,10 +176,8 @@ private struct WeatherSceneDescriptor {
         cloudCover: Double?,
         windSpeedKPH: Double?,
         windGustKPH: Double?,
-        windDirectionDegrees: Double?,
-        latitude: Double? = nil, longitude: Double? = nil
+        windDirectionDegrees: Double?
     ) {
-        self.latitude = latitude; self.longitude = longitude
         let rawCondition = conditionKey
             .split(separator: ".")
             .last
@@ -772,17 +751,11 @@ private enum WeatherSceneRenderer {
         in context: inout GraphicsContext,
         size: CGSize
     ) {
-        func projected(_ position: SkyPosition) -> (progress: Double, center: CGPoint)? {
-            guard position.altitude >= 0 else { return nil }
-            return (0.5, CGPoint(x: size.width * position.azimuth / 360,
-                y: size.height * (0.42 - 0.38 * min(90, position.altitude) / 90)))
+        let sun = scene.sunProgress.map {
+            (progress: $0, center: celestialCenter(progress: $0, size: size))
         }
-        var sun = scene.sunProgress.map { (progress: $0, center: celestialCenter(progress: $0, size: size)) }
-        var moon = scene.moonProgress.map { (progress: $0, center: celestialCenter(progress: $0, size: size)) }
-        if let latitude = scene.latitude, let longitude = scene.longitude,
-           latitude.isFinite, longitude.isFinite, abs(latitude) <= 90, abs(longitude) <= 180 {
-            sun = projected(Astronomy.sunPosition(date: scene.observationDate, latitude: latitude, longitude: longitude))
-            moon = projected(Astronomy.moonState(date: scene.observationDate, latitude: latitude, longitude: longitude).position)
+        let moon = scene.moonProgress.map {
+            (progress: $0, center: celestialCenter(progress: $0, size: size))
         }
 
         // The Sun and Moon use the same visual sky arc. Their real rise/set
@@ -918,10 +891,41 @@ private enum WeatherSceneRenderer {
                 continue
             }
 
-            drawCloudSprite(frames[index % frames.count], in: placement.rect,
-                opacity: placement.opacity, blur: placement.blur,
-                tint: scene.cloudTwilightTint ?? (scene.isNight ? Color(red: 0.35, green: 0.43, blue: 0.60) : nil),
-                context: &context)
+            let lastFrame = max(1, frames.count - 1)
+            let cycleLength = Double(lastFrame * 2)
+            let morphDepthFactor = 0.52 + placement.depth * 0.82
+            let morphVariation = 0.78 + hash(index, 29) * 0.44
+            let rawProgress = (
+                time * scene.cloudMorphFramesPerSecond * morphDepthFactor * morphVariation
+                    + hash(index, 24) * cycleLength
+            )
+                .truncatingRemainder(dividingBy: cycleLength)
+            let frameProgress = rawProgress <= Double(lastFrame)
+                ? rawProgress
+                : cycleLength - rawProgress
+            let currentFrame = min(lastFrame, Int(floor(frameProgress)))
+            let nextFrame = min(lastFrame, currentFrame + 1)
+            let linearFade = frameProgress - floor(frameProgress)
+            // A cosine fade has zero velocity at both ends. Combined with the
+            // normalized sprite bounds below, this removes the visible snap
+            // when the cloud changes from one generated shape to the next.
+            let crossfade = 0.5 - 0.5 * cos(Double.pi * linearFade)
+            drawCloudSprite(
+                frames[currentFrame],
+                in: placement.rect,
+                opacity: placement.opacity * (1 - crossfade),
+                blur: placement.blur,
+                tint: scene.cloudTwilightTint,
+                context: &context
+            )
+            drawCloudSprite(
+                frames[nextFrame],
+                in: placement.rect,
+                opacity: placement.opacity * crossfade,
+                blur: placement.blur,
+                tint: scene.cloudTwilightTint,
+                context: &context
+            )
         }
     }
 
@@ -993,17 +997,17 @@ private enum WeatherSceneRenderer {
         time: TimeInterval,
         size: CGSize
     ) -> [WeatherCloudPlacement] {
-        let count = min(30, max(0, Int(ceil(scene.cloudCoverage * 30))))
+        let isOvercast = scene.cloudCoverage >= 0.75
+        let count = isOvercast ? 8 : (scene.cloudCoverage > 0.45 ? 5 : 4)
         let direction = scene.cloudTravelVector
 
         return (0..<count).map { index in
             let depth = hash(index, 22)
             let shape = hash(index, 25)
             let scale = CGFloat(0.52 + depth * 0.38 + shape * 0.10)
-            let strain = CGFloat(1 + min(scene.effectiveWindKPH, 150) * 0.0015 * sin(time * 0.08 + Double(index)))
-            let cloudWidth = CGFloat(188 + hash(index, 26) * 58) * scale * strain
+            let cloudWidth = CGFloat(188 + hash(index, 26) * 58) * scale
             let usesStorm = hash(index, 23) < scene.stormCloudWeight
-            let cloudHeight = cloudWidth * (usesStorm ? 0.66 : 0.58) / (strain * strain)
+            let cloudHeight = cloudWidth * (usesStorm ? 0.66 : 0.58)
 
             // Each cloud has its own altitude and starting phase. Depth still
             // influences scale and blur, but never forces a visible row.
@@ -1712,7 +1716,7 @@ private enum WeatherCloudSpriteFrames {
     static let storm = makeFrames(named: "weather_cloud_storm_sprite")
 
     private static func makeFrames(named name: String) -> [Image] {
-        guard let atlas = atmosphereImage(name) else { return [] }
+        guard let atlas = UIImage(named: name)?.cgImage else { return [] }
 
         let columns = 4
         let rows = 2
@@ -1742,7 +1746,7 @@ private enum WeatherLightningSpriteFrames {
     ].filter { !$0.isEmpty }
 
     private static func makeFrames(named name: String) -> [Image] {
-        guard let atlas = atmosphereImage(name) else { return [] }
+        guard let atlas = UIImage(named: name)?.cgImage else { return [] }
         let columns = 4
         let rows = 2
         let frameWidth = atlas.width / columns
@@ -1767,7 +1771,7 @@ private enum WeatherPrecipitationSpriteFrames {
     static let hail = makeFrames(named: "weather_hail_particles")
 
     private static func makeFrames(named name: String) -> [Image] {
-        guard let atlas = atmosphereImage(name) else { return [] }
+        guard let atlas = UIImage(named: name)?.cgImage else { return [] }
         let columns = 4
         let rows = 3
         let frameWidth = atlas.width / columns

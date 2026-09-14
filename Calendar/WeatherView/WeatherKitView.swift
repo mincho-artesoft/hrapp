@@ -482,8 +482,7 @@ struct WeatherKitView: View {
             windSpeedKPH: normalizedWindSpeedKPH(vm.currentWindSpeed),
             windGustKPH: normalizedWindSpeedKPH(vm.currentWindGust),
             windDirectionDegrees: vm.currentWindDirection?.degrees,
-            observationDate: weatherPreviewObservationDate,
-            latitude: vm.locationCoordinate?.latitude, longitude: vm.locationCoordinate?.longitude
+            observationDate: weatherPreviewObservationDate
         )
         .id("\(vm.currentConditionLocalizationKey)|\(vm.currentSymbol)|\(vm.currentPrecipitationType ?? "none")")
         .transition(.opacity)
