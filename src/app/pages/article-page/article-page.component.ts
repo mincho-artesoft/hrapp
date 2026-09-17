@@ -1,13 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ShotRailComponent } from '../../components/shot-rail/shot-rail.component';
 import { ARTICLE_FACTS } from '../../content/article-facts';
 import { CONTENT, contentFor, localesWith } from '../../content/registry';
 import { ArticleChrome, ClaimRow, LocalisedArticle } from '../../content/types';
 import { APP_DEVELOPER, APP_NAME, APP_STORE_URL, SITE_URL } from '../../core/app-facts';
-import { DEFAULT_LOCALE, Locale, localePath, storeUrl } from '../../core/locales';
+import { DEFAULT_LOCALE, Locale, linkPath, localePath, storeUrl } from '../../core/locales';
 import { storeCta } from '../../core/store-cta';
 import { SeoService, absolute } from '../../core/seo.service';
 
@@ -28,7 +28,7 @@ interface SeeAlsoLink {
   selector: 'cc-article-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, ShotRailComponent],
+  imports: [ShotRailComponent],
   templateUrl: './article-page.component.html',
   styleUrl: './article-page.component.scss',
 })
@@ -67,7 +67,7 @@ export class ArticlePageComponent {
     this.seeAlso = (this.article.seeAlso ?? [])
       .filter((other) => other in content.articles)
       .map((other) => ({
-        path: localePath(this.locale, `/articles/${other}`),
+        path: linkPath(this.locale, `/articles/${other}`),
         label: content.articles[other].short,
       }));
 
@@ -87,7 +87,7 @@ export class ArticlePageComponent {
   }
 
   localised(path: string): string {
-    return localePath(this.locale, path);
+    return linkPath(this.locale, path);
   }
 
   /**

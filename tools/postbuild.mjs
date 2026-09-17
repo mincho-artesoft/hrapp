@@ -180,6 +180,7 @@ const built = new Set(
 built.add('/');
 
 const broken = new Map();
+const unslashed = new Map();
 for (const file of pages(DIST)) {
   const html = readFileSync(file, 'utf8');
   for (const [, href] of html.matchAll(/href="(\/[^"#?]*)"/g)) {
@@ -188,9 +189,19 @@ for (const file of pages(DIST)) {
     if (/\.(js|css|xml|txt|ico|png|jpe?g|webp|avif|svg|mp4|webm|woff2?)$/.test(href)) continue;
     if (href.startsWith('/media/') || href.startsWith('/assets/')) continue;
     const target = href.endsWith('/') ? href : `${href}/`;
-    if (built.has(target) || built.has(href)) continue;
-    if (!broken.has(href)) broken.set(href, new Set());
-    broken.get(href).add(`/${relative(DIST, file)}`);
+    if (!built.has(target) && !built.has(href)) {
+      if (!broken.has(href)) broken.set(href, new Set());
+      broken.get(href).add(`/${relative(DIST, file)}`);
+      continue;
+    }
+    // The page exists, but only at the slash form, and normalising the slash
+    // before the lookup above is exactly why this went unnoticed: 397 links
+    // resolved, each through a 301. The canonical tags had been fixed for the
+    // same reason years earlier; the links in the pages had not.
+    if (href !== target && !built.has(href)) {
+      if (!unslashed.has(href)) unslashed.set(href, new Set());
+      unslashed.get(href).add(`/${relative(DIST, file)}`);
+    }
   }
 }
 
@@ -204,8 +215,19 @@ if (broken.size) {
   process.exit(1);
 }
 
+if (unslashed.size) {
+  console.error(`\npostbuild: ${unslashed.size} internal link(s) omit the trailing slash, so each costs a 301:`);
+  for (const [href, from] of [...unslashed].slice(0, 15)) {
+    const where = [...from].slice(0, 3).join(', ');
+    const more = from.size > 3 ? ` (+${from.size - 3} more)` : '';
+    console.error(`  ${href}\n      linked from ${where}${more}`);
+  }
+  if (unslashed.size > 15) console.error(`  … and ${unslashed.size - 15} more`);
+  process.exit(1);
+}
+
 const withAlternates = urls.filter((u) => u.alternates.length > 1).length;
 console.log(
   `postbuild: sitemap (${urls.length} urls, ${withAlternates} with alternates), ` +
-    `llms.txt (${articles.length} articles), ${built.size} pages, every internal link resolves`,
+    `llms.txt (${articles.length} articles), ${built.size} pages, every internal link resolves without a redirect`,
 );

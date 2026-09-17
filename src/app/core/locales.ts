@@ -324,6 +324,25 @@ export function localePath(locale: Locale, path: string): string {
 }
 
 /**
+ * The same path, as an address to put in an `href`.
+ *
+ * The host resolves a directory only with a trailing slash and answers 301
+ * otherwise, which `absolute()` already accounts for when it writes a
+ * canonical URL. The links in the pages did not: every article link on the
+ * site pointed at the slashless form, so a reader and a crawler both spent a
+ * redirect on every click, and Search Console reported the sitemap's pages as
+ * "Page with redirect" once it re-crawled them.
+ *
+ * Kept separate from `localePath` because that one also feeds the canonical
+ * and hreflang values, where `absolute()` does the normalising, and doing it
+ * twice would be a second place to keep in agreement.
+ */
+export function linkPath(locale: Locale, path: string): string {
+  const p = localePath(locale, path);
+  return p.endsWith('/') ? p : `${p}/`;
+}
+
+/**
  * The App Store link for a locale.
  *
  * Apple resolves the storefront from the path segment, so a German reader

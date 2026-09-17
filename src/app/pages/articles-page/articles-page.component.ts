@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ARTICLE_FACTS } from '../../content/article-facts';
 import { contentFor, LIVE_LOCALES } from '../../content/registry';
 import { ArticleChrome, Family } from '../../content/types';
-import { DEFAULT_LOCALE, Locale, localePath } from '../../core/locales';
+import { DEFAULT_LOCALE, Locale, linkPath, localePath } from '../../core/locales';
 import { SeoService } from '../../core/seo.service';
 
 interface Card {
@@ -25,7 +25,6 @@ interface Group {
   selector: 'cc-articles-page',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink],
   template: `
     <div class="hub">
       <h1>{{ chrome.allArticles }}</h1>
@@ -35,7 +34,7 @@ interface Group {
           <ul>
             @for (card of group.cards; track card.slug) {
               <li>
-                <a [routerLink]="card.path">{{ card.title }}</a>
+                <a [href]="card.path">{{ card.title }}</a>
                 <p>{{ card.description }}</p>
               </li>
             }
@@ -98,7 +97,7 @@ export class ArticlesPageComponent {
         .filter(([slug]) => ARTICLE_FACTS[slug]?.family === family)
         .map(([slug, article]) => ({
           slug,
-          path: localePath(this.locale, `/articles/${slug}`),
+          path: linkPath(this.locale, `/articles/${slug}`),
           title: article.short,
           description: article.description,
         }));

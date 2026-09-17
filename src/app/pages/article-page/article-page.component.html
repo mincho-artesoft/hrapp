@@ -2,7 +2,7 @@
   <article class="article">
     <header class="article__head">
       <p class="article__crumbs">
-        <a [routerLink]="localised('/articles')">{{ chrome.allArticles }}</a>
+        <a [href]="localised('/articles')">{{ chrome.allArticles }}</a>
       </p>
       <h1>{{ article.title }}</h1>
       <p class="article__lede">{{ article.lede }}</p>
@@ -77,7 +77,7 @@
         <h2>{{ chrome.seeAlso }}</h2>
         <ul>
           @for (link of seeAlso; track link.path) {
-            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+            <li><a [href]="link.path">{{ link.label }}</a></li>
           }
         </ul>
       </section>
