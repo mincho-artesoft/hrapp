@@ -183,7 +183,10 @@ enum ScreenshotMode {
         defaults.set(configuration.screen.rootTab, forKey: "selectedTabRoot")
 
         // Choose a real saved city through the same store as the city picker.
-        // WeatherKit still fetches live weather for these coordinates.
+        // WeatherKit still fetches live weather for these coordinates. The id is
+        // kept so the saved-city sheet, staged below, can put the check mark back
+        // on this city instead of leaving it on the last one saved.
+        var selectedWeatherRegionID: UUID?
         let coordinate = defaults.string(forKey: "ScreenshotWeatherCoordinate")?
             .split(separator: ",").compactMap { Double($0) }
         if configuration.screen == .weather,
@@ -199,34 +202,34 @@ enum ScreenshotMode {
                 timeZone: TimeZone.current
             )
             SavedWeatherRegionsStore.shared.select(region.id)
+            selectedWeatherRegionID = region.id
         }
 
-        if configuration.screen == .weather,
-           let condition = configuration.weatherPreviewCondition {
+        // The day and week views carry weather chips of their own, and those come from
+        // the same view model. A capture that names a condition gets it on every screen,
+        // so a run does not depend on a live forecast arriving for that city.
+        if let condition = configuration.weatherPreviewCondition {
             WeatherKitViewModel.shared.applyWeatherPreview(condition: condition)
         }
 
         if configuration.screen == .weather,
            defaults.bool(forKey: "WeatherPreviewSavedRegions") {
-            let sofia = stageRegion(
-                name: "София",
-                subtitle: "България",
-                coordinate: .init(latitude: 42.6977, longitude: 23.3219),
-                timeZone: TimeZone(identifier: "Europe/Sofia")
-            )
-            _ = stageRegion(
-                name: "Пловдив",
-                subtitle: "България",
-                coordinate: .init(latitude: 42.1354, longitude: 24.7453),
-                timeZone: TimeZone(identifier: "Europe/Sofia")
-            )
-            _ = stageRegion(
-                name: "Лондон",
-                subtitle: "Обединено кралство",
-                coordinate: .init(latitude: 51.5072, longitude: -0.1276),
-                timeZone: TimeZone(identifier: "Europe/London")
-            )
-            SavedWeatherRegionsStore.shared.select(sofia.id)
+            // The list is passed in per capture, so an English shot is not left
+            // showing the three Bulgarian cities the first run happened to need.
+            let staged = previewCities(from: defaults).map { city in
+                stageRegion(
+                    name: city.name,
+                    subtitle: city.subtitle,
+                    coordinate: .init(latitude: city.latitude, longitude: city.longitude),
+                    timeZone: city.timeZone.flatMap(TimeZone.init(identifier:))
+                )
+            }
+            // Saving a city selects it, so after this the check mark sat on the last
+            // one staged. The capture's own city takes it back; a capture without one
+            // gives it to the first city in the list.
+            if let selected = selectedWeatherRegionID ?? staged.first?.id {
+                SavedWeatherRegionsStore.shared.select(selected)
+            }
         }
 
         // The seeder creates one set of calendars per language, named for that
@@ -251,6 +254,16 @@ enum ScreenshotMode {
     static var weatherPreviewMoonPhase: String? { configuration?.weatherPreviewMoonPhase }
     static var weatherPreviewPrecipitation: String? { configuration?.weatherPreviewPrecipitation }
     static var weatherPreviewAlert: String? { configuration?.weatherPreviewAlert }
+
+    /// The city `applyIfNeeded` staged and selected, so a capture with
+    /// deterministic weather still names a real place in the header instead of
+    /// reading "Weather Preview".
+    static var stagedWeatherCity: String? {
+        guard isActive,
+              let name = UserDefaults.standard.string(forKey: "ScreenshotWeatherCity"),
+              !name.isEmpty else { return nil }
+        return name
+    }
     static var weatherPreviewSavedRegionsOpen: Bool {
         UserDefaults.standard.bool(forKey: "WeatherPreviewSavedRegionsOpen")
     }
@@ -369,6 +382,56 @@ enum ScreenshotMode {
     /// Kept so the next ordinary launch can take them back out again - without
     /// it every screenshot run would leave its city behind for good.
     private static let stagedRegionsKey = "ScreenshotStagedRegionIDs"
+
+    private struct PreviewCity: Decodable {
+        let name: String
+        let subtitle: String?
+        let latitude: Double
+        let longitude: Double
+        let timeZone: String?
+    }
+
+    /// The cities the saved-city sheet is staged with, as JSON on the command
+    /// line:
+    ///
+    ///     -WeatherPreviewCities <base64 of [{"name":"New York",
+    ///                             "subtitle":"United States","latitude":40.7128,
+    ///                             "longitude":-74.0060,"timeZone":"America/New_York"}]>
+    ///
+    /// Without it the three cities the Bulgarian run needed are staged, which is
+    /// what every capture before this argument existed relied on.
+    private static func previewCities(from defaults: UserDefaults) -> [PreviewCity] {
+        // A command-line value that opens with a bracket is parsed into an array before
+        // it ever reaches `string(forKey:)`, so the JSON has to be taken back from
+        // whichever of the two forms the argument domain decided on.
+        let payload: Data? = {
+            if let raw = defaults.string(forKey: "WeatherPreviewCities") {
+                // base64 first: a bare JSON array on the command line is read as a
+                // property list, and one that does not parse is dropped before it
+                // reaches here, so the harness sends the encoded form.
+                if let decoded = Data(base64Encoded: raw) { return decoded }
+                return raw.data(using: .utf8)
+            }
+            if let parsed = defaults.array(forKey: "WeatherPreviewCities") {
+                return try? JSONSerialization.data(withJSONObject: parsed)
+            }
+            return nil
+        }()
+        guard let data = payload,
+              let cities = try? JSONDecoder().decode([PreviewCity].self, from: data),
+              !cities.isEmpty
+        else {
+            return [
+                PreviewCity(name: "София", subtitle: "България",
+                            latitude: 42.6977, longitude: 23.3219, timeZone: "Europe/Sofia"),
+                PreviewCity(name: "Пловдив", subtitle: "България",
+                            latitude: 42.1354, longitude: 24.7453, timeZone: "Europe/Sofia"),
+                PreviewCity(name: "Лондон", subtitle: "Обединено кралство",
+                            latitude: 51.5072, longitude: -0.1276, timeZone: "Europe/London"),
+            ]
+        }
+        return cities
+    }
 
     /// Saves a region exactly as the city picker does, and records it as this
     /// run's, but only when it is genuinely new. `save` folds a coordinate
@@ -517,7 +580,26 @@ private extension WeatherKitViewModel {
     }
 
     func applyWeatherPreview(condition: String) {
-        let profile = weatherPreviewProfile(for: condition)
+        // Every number here is printed as it is, in whatever units the region asks for,
+        // so the profile - written metric - has to be converted the same way the real
+        // forecast is. Without it a US capture read 20°, 1012 inHg and 8 cm of snow.
+        let imperial = GlobalState.measurementSystem == "Imperial"
+        let unit: UnitTemperature = GlobalState.temperatureUnit == UnitTemperature.fahrenheit.symbol
+            ? .fahrenheit : .celsius
+        let metric = weatherPreviewProfile(for: condition)
+        let profile = WeatherPreviewProfile(
+            symbol: metric.symbol,
+            temperature: Measurement(value: metric.temperature, unit: UnitTemperature.celsius)
+                .converted(to: unit).value.rounded(),
+            precipitationChance: metric.precipitationChance,
+            // centimetres of snow become inches, kilometres per hour become miles
+            snowfall: imperial ? (metric.snowfall / 2.54).rounded(toPlaces: 1) : metric.snowfall,
+            windSpeed: imperial
+                ? Measurement(value: metric.windSpeed, unit: UnitSpeed.kilometersPerHour)
+                    .converted(to: .milesPerHour).value.rounded()
+                : metric.windSpeed,
+            cloudCover: metric.cloudCover
+        )
         let conditionKey = "WeatherCondition.\(condition)"
         let actualNow = Date()
         locationCoordinate = CLLocationCoordinate2D(latitude: 42.6977, longitude: 23.3219)
@@ -541,15 +623,18 @@ private extension WeatherKitViewModel {
         currentCondition = NSLocalizedString(conditionKey, comment: "Weather preview condition")
         currentFeelsLike = profile.temperature + (condition == "hot" ? 3 : -1)
         currentHumidity = profile.precipitationChance > 0.4 ? 0.82 : 0.48
-        currentPressure = 1_012
-        currentVisibility = ["foggy", "haze", "smoky", "blowingDust"].contains(condition) ? 2.8 : 16
+        currentPressure = imperial ? 29.88 : 1_012
+        let visibilityKm: Double = ["foggy", "haze", "smoky", "blowingDust"].contains(condition) ? 2.8 : 16
+        currentVisibility = imperial
+            ? Measurement(value: visibilityKm, unit: UnitLength.kilometers).converted(to: .miles).value.rounded(toPlaces: 1)
+            : visibilityKm
         currentUVIndex = ["clear", "mostlyClear", "hot"].contains(condition) ? 7 : 3
         currentWindSpeed = profile.windSpeed
         currentWindGust = profile.windSpeed * 1.45
         currentWindDirection = Angle(degrees: 238)
-        currentDewPoint = profile.temperature - 4
+        currentDewPoint = profile.temperature - (imperial ? 7 : 4)
         pressureTrend = "Steady"
-        currentPrecipitationAmount = profile.precipitationChance * 3.4
+        currentPrecipitationAmount = profile.precipitationChance * 3.4 / (imperial ? 25.4 : 1)
         currentCloudCover = profile.cloudCover
         currentPrecipitationType = ScreenshotMode.weatherPreviewPrecipitation
             ?? previewPrecipitationType(for: condition)
@@ -599,7 +684,16 @@ private extension WeatherKitViewModel {
                 lastLight: sunset.addingTimeInterval(31 * 60)
             )
         }
-        todayPrecipitationAmount = profile.precipitationChance * 7.5
+        // The widgets read weather from the shared snapshot, not from this view model, so
+        // a capture without it showed empty widgets and the run refused the frame. This is
+        // what made the Arabic pass stop three times.
+        CalendarWidgetStore.saveWeatherSnapshot(
+            symbol: profile.symbol, condition: conditionKey,
+            temperature: profile.temperature, windDirectionDegrees: 238,
+            windDirectionText: windDirectionAbbreviation(for: Angle(degrees: 238)),
+            windSpeed: profile.windSpeed, pressure: currentPressure, uvIndex: currentUVIndex
+        )
+        todayPrecipitationAmount = profile.precipitationChance * 7.5 / (imperial ? 25.4 : 1)
         nextHourPrecipitationChance = profile.precipitationChance
         errorMessage = nil
 
@@ -1222,6 +1316,15 @@ struct SimulatorCalendarTestSeedView: View {
         .task {
             status = await SimulatorCalendarTestSeeder.run()
         }
+    }
+}
+
+private extension Double {
+    /// Keeps a converted preview figure to the number of decimals the card prints,
+    /// so 3.2 inches of snow does not arrive as 3.2283464566929134.
+    func rounded(toPlaces places: Int) -> Double {
+        let f = pow(10.0, Double(places))
+        return (self * f).rounded() / f
     }
 }
 

@@ -1010,7 +1010,14 @@ struct WeatherKitView: View {
     }
 
     private func regionLocalTime(timeZone: TimeZone) -> String {
-        appTimeFormatter(timeZone: timeZone).string(from: Date())
+        // A capture pins its clock; without this the city cards printed the real
+        // time of day beside a status bar frozen at half past seven.
+        #if DEBUG
+        let now = ScreenshotMode.referenceDate ?? Date()
+        #else
+        let now = Date()
+        #endif
+        return appTimeFormatter(timeZone: timeZone).string(from: now)
     }
 
     private func loadSavedRegionsWeather() async {
@@ -1020,7 +1027,15 @@ struct WeatherKitView: View {
 
         #if DEBUG
         if ScreenshotMode.weatherPreviewSavedRegionsOpen {
-            let previewConditions: [(String, String, Double, Double, Double)] = [
+            // The card prints these numbers as they are, so a capture in a
+            // Fahrenheit locale needs Fahrenheit ones: 32 under a sun and a
+            // high-temperature warning read as a mistake.
+            let previewConditions: [(String, String, Double, Double, Double)] = usesFahrenheit ? [
+                ("WeatherCondition.clear", "sun.max.fill", 90, 63, 90),
+                ("WeatherCondition.partlyCloudy", "cloud.sun.fill", 81, 61, 84),
+                ("WeatherCondition.cloudy", "cloud.fill", 57, 57, 70),
+                ("WeatherCondition.rain", "cloud.rain.fill", 66, 55, 72)
+            ] : [
                 ("WeatherCondition.clear", "sun.max.fill", 32, 17, 32),
                 ("WeatherCondition.partlyCloudy", "cloud.sun.fill", 27, 16, 29),
                 ("WeatherCondition.cloudy", "cloud.fill", 14, 14, 21),
@@ -1042,6 +1057,20 @@ struct WeatherKitView: View {
                 )
                 finishedLoadingRegionWeatherIDs.insert(region.id)
             }
+            // Without this the current-location card is the one empty tile on
+            // an otherwise complete sheet: the preview fills every saved city
+            // but the card above them was left waiting for a location fix.
+            currentLocationWeather = SavedRegionWeatherSummary(
+                temperature: usesFahrenheit ? 72 : 22,
+                lowTemperature: usesFahrenheit ? 57 : 14,
+                highTemperature: usesFahrenheit ? 75 : 24,
+                condition: NSLocalizedString("WeatherCondition.mostlyClear",
+                                             comment: "Preview current location condition"),
+                conditionKey: "WeatherCondition.mostlyClear",
+                symbolName: "sun.max.fill",
+                alertSummary: nil,
+                isDaylight: true
+            )
             finishedLoadingCurrentLocationWeather = true
             return
         }
@@ -1487,6 +1516,11 @@ struct WeatherKitView: View {
     
     private func displayedCityName() -> String {
         if weatherPreviewIsActive {
+            #if DEBUG
+            if let city = ScreenshotMode.stagedWeatherCity {
+                return city
+            }
+            #endif
             return "Weather Preview"
         }
         if !geocodedCityName.isEmpty {
