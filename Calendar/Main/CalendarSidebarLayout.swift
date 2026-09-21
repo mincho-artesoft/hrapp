@@ -41,6 +41,10 @@ enum CalendarSidebarLayout {
         isMac || (isTablet && windowSize.width > windowSize.height)
     }
 
+    static func viewportSize(contentSize: CGSize, horizontalInsets: CGFloat, verticalInsets: CGFloat) -> CGSize {
+        CGSize(width: contentSize.width + horizontalInsets, height: contentSize.height + verticalInsets)
+    }
+
     static func width(availableWidth: CGFloat) -> CGFloat {
         min(360, max(280, availableWidth * 0.28))
     }

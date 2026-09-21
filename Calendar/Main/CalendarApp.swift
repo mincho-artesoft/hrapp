@@ -91,6 +91,7 @@ struct CalendarApp: App {
                 RootView()
                 #endif
             }
+                .calendarWindowLayout()
                 .environment(\.locale, appPreferences.presentationLocale)
                 .environment(\.calendar, appPreferences.presentationCalendar)
                 .environment(\.layoutDirection, appPreferences.layoutDirection)

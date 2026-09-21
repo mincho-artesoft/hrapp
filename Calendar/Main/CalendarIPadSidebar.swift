@@ -8,13 +8,27 @@ struct CalendarIPadSidebar: View {
     let onSelectDate: (Date) -> Void
     let onOpenEvent: (AppLocalEventEditorTarget) -> Void
     @Environment(\.calendar) private var calendar
-    @State private var month = Date()
-    @State private var events: [CalendarSidebarEvent] = []
+    @State private var month: Date
+    @StateObject private var snapshot: CalendarIPadSidebarSnapshot
+    @State private var hasAppeared = false
     @ObservedObject private var model = CalendarViewModel.shared
     @ObservedObject private var preferences = AppPreferences.shared
 
+    init(selectedDate: Date, selectedEvent: Binding<CalendarSidebarEvent?>,
+         onSelectDate: @escaping (Date) -> Void, onOpenEvent: @escaping (AppLocalEventEditorTarget) -> Void) {
+        self.selectedDate = selectedDate
+        self._selectedEvent = selectedEvent
+        self.onSelectDate = onSelectDate
+        self.onOpenEvent = onOpenEvent
+        _month = State(initialValue: selectedDate)
+        // StateObject evaluates this once, before the first body, not on every
+        // parent update. Reopening starts from current local data, never [].
+        _snapshot = StateObject(wrappedValue: CalendarIPadSidebarSnapshot(
+            month: selectedDate, calendar: AppPreferences.shared.presentationCalendar))
+    }
+
     var body: some View {
-        CalendarSidebarView(selectedDate: selectedDate, month: $month, events: events,
+        CalendarSidebarView(selectedDate: selectedDate, month: $month, events: snapshot.events,
             selectedEvent: $selectedEvent,
             calendar: calendar, timeLabel: { appTimeFormatter().string(from: $0) },
             onSelectDate: onSelectDate, onOpenEvent: { item in
@@ -26,13 +40,43 @@ struct CalendarIPadSidebar: View {
             })
             .id(preferences.presentationRevision)
             .onChange(of: calendar) { _, _ in reload() }
-            .onAppear { month = selectedDate; reload() }
+            .onAppear {
+                if hasAppeared { reload() }
+                hasAppeared = true
+            }
             .onChange(of: month) { _, _ in reload() }
             .onReceive(model.calendarContentDidChange) { _ in reload() }
             .onChange(of: model.accessGranted) { _, _ in reload() }
+            .onChange(of: model.allCalendars.map(\.calendarIdentifier)) { _, _ in reload() }
     }
 
     private func reload() {
+        snapshot.reload(month: month, calendar: calendar)
+        if let selected = selectedEvent {
+            if let native = selected.nativeEvent {
+                selectedEvent = native.refresh() ? CalendarSidebarEvent(event: native) : nil
+            } else {
+                selectedEvent = CalendarSidebarEvent(descriptor: AppLocalEventDescriptor(eventID: selected.id,
+                    partialStart: selected.start, partialEnd: selected.end))
+            }
+        }
+    }
+}
+
+@MainActor
+private final class CalendarIPadSidebarSnapshot: ObservableObject {
+    @Published private(set) var events: [CalendarSidebarEvent]
+
+    init(month: Date, calendar: Calendar) {
+        events = Self.load(month: month, calendar: calendar)
+    }
+
+    func reload(month: Date, calendar: Calendar) {
+        events = Self.load(month: month, calendar: calendar)
+    }
+
+    private static func load(month: Date, calendar: Calendar) -> [CalendarSidebarEvent] {
+        let model = CalendarViewModel.shared
         let today = calendar.startOfDay(for: Date())
         let start = calendar.date(byAdding: .year, value: -1, to: today) ?? today
         let end = calendar.date(byAdding: .year, value: 3, to: today) ?? today
@@ -64,15 +108,7 @@ struct CalendarIPadSidebar: View {
                     location: event.location, notes: event.notes, isCancelled: descriptor.isCancelled)
             }
         }
-        events = Array(items.values)
-        if let selected = selectedEvent {
-            if let native = selected.nativeEvent {
-                selectedEvent = native.refresh() ? CalendarSidebarEvent(event: native) : nil
-            } else {
-                selectedEvent = CalendarSidebarEvent(descriptor: AppLocalEventDescriptor(eventID: selected.id,
-                    partialStart: selected.start, partialEnd: selected.end))
-            }
-        }
+        return Array(items.values)
     }
 }
 
@@ -94,24 +130,4 @@ extension CalendarSidebarEvent {
     }
 }
 
-/// Read this calendar's own window, not UIScreen or a global key window. The
-/// app's navigation rail, keyboard and presented sheets must not flip the
-/// orientation test for the calendar underneath them.
-struct CalendarWindowSizeReader: UIViewRepresentable {
-    let onChange: (CGSize) -> Void
-    func makeUIView(context: Context) -> SizeView { SizeView() }
-    func updateUIView(_ view: SizeView, context: Context) { view.onChange = onChange }
-
-    final class SizeView: UIView {
-        var onChange: ((CGSize) -> Void)?
-        private var lastSize = CGSize.zero
-        override func didMoveToWindow() { super.didMoveToWindow(); reportSize() }
-        override func layoutSubviews() { super.layoutSubviews(); reportSize() }
-        private func reportSize() {
-            guard let size = window?.bounds.size, size != lastSize else { return }
-            lastSize = size
-            DispatchQueue.main.async { [weak self] in self?.onChange?(size) }
-        }
-    }
-}
 #endif

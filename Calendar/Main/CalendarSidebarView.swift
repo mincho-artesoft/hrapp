@@ -60,6 +60,7 @@ struct CalendarSidebarView: View {
     let timeLabel: (Date) -> String
     let onSelectDate: (Date) -> Void
     let onOpenEvent: (CalendarSidebarEvent) -> Void
+    @ScaledMetric(relativeTo: .body) private var upNextContentHeight = 72.0
 
     private var sortedEvents: [CalendarSidebarEvent] {
         events.sorted { $0.start == $1.start ? $0.id < $1.id : $0.start < $1.start }
@@ -72,16 +73,21 @@ struct CalendarSidebarView: View {
                 TimelineView(.periodic(from: .now, by: 60)) { context in
                     VStack(alignment: .leading, spacing: 10) {
                         sectionTitle("Up next")
-                        if let event = sorted.first(where: {
-                            CalendarSidebarLayout.isUpcoming(isAllDay: $0.isAllDay, end: $0.end, now: context.date)
-                        }) {
-                            eventCard(event)
-                        } else {
-                            Text("Nothing upcoming")
-                                .font(.subheadline).foregroundStyle(.secondary)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(12).background(Color(uiColor: .systemGray6), in: RoundedRectangle(cornerRadius: 8))
+                        Group {
+                            if let event = sorted.first(where: {
+                                CalendarSidebarLayout.isUpcoming(isAllDay: $0.isAllDay, end: $0.end, now: context.date)
+                            }) {
+                                eventCard(event)
+                            } else {
+                                Text("Nothing upcoming")
+                                    .font(.subheadline).foregroundStyle(.secondary)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(12).background(Color(uiColor: .systemGray6), in: RoundedRectangle(cornerRadius: 8))
+                            }
                         }
+                        // Reserve the same slot for an appointment or an empty
+                        // state, so a provider refresh cannot move the month card.
+                        .frame(minHeight: upNextContentHeight, alignment: .top)
                     }
                 }
                 miniCalendar(events: sorted)
@@ -187,6 +193,7 @@ struct CalendarSidebarView: View {
                     .fixedSize()
                 }
                 .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(2)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .contentShape(Rectangle())

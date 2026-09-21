@@ -62,7 +62,7 @@ struct RootView: View {
     @State private var appLocalEventTarget: AppLocalEventEditorTarget? = nil
     @State private var sidebarEventTarget: AppLocalEventEditorTarget?
     @State private var selectedSidebarEvent: CalendarSidebarEvent?
-    @State private var calendarWindowSize = CGSize.zero
+    @Environment(\.calendarWindowSize) private var calendarWindowSize
     @State private var listScrollRequest: CalendarListScrollRequest?
     
     // Следим състоянието на сцената (active, background, inactive)
@@ -253,7 +253,11 @@ struct RootView: View {
 
                     HStack(spacing: 0) {
                         if selectedTab != 6 && selectedTab != 7 && CalendarSidebarLayout.isVisible(isMac: false,
-                            isTablet: UIDevice.current.userInterfaceIdiom == .pad, windowSize: calendarWindowSize) {
+                            isTablet: UIDevice.current.userInterfaceIdiom == .pad,
+                            windowSize: calendarWindowSize ?? CalendarSidebarLayout.viewportSize(
+                                contentSize: geometry.size,
+                                horizontalInsets: geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing,
+                                verticalInsets: geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom)) {
                             CalendarIPadSidebar(selectedDate: sidebarSelectedDate, selectedEvent: $selectedSidebarEvent,
                                 onSelectDate: selectSidebarDate, onOpenEvent: { sidebarEventTarget = $0 })
                                 .frame(width: CalendarSidebarLayout.width(availableWidth: geometry.size.width))
@@ -270,7 +274,6 @@ struct RootView: View {
                             showsMenu: showsDraggableMenu, safeAreaBottom: geometry.safeAreaInsets.bottom))
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .background(CalendarWindowSizeReader { calendarWindowSize = $0 })
                     .frame(maxWidth: .infinity, maxHeight: .infinity) // Make sure the VStack fills the GeometryReader
                     .overlay(alignment: .bottom) {
                         if menuState == .full && showsDraggableMenu {
