@@ -1056,3 +1056,10 @@
 "Theme" = "Tema";
 "Light" = "Svijetla";
 "Dark" = "Tamna";
+
+/* Landscape calendar sidebar */
+"Up next" = "Slijedi";
+"Nothing upcoming" = "Nema nadolazećih događaja";
+"Open event" = "Otvori događaj";
+"Previous month" = "Prethodni mjesec";
+"Next month" = "Sljedeći mjesec";

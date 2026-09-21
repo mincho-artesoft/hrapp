@@ -35,7 +35,7 @@ struct CalendarEventSearchField: View {
                 .padding(.trailing, 2)
             }
             .padding(.horizontal, 16)
-            .frame(height: 50)
+            .frame(height: CalendarHeaderLayout.height)
             .onAppear {
                 DispatchQueue.main.async {
                     isFocused = true
@@ -108,6 +108,10 @@ struct SearchResultsView: View {
                     }
                 }
             }
+            CalendarScrollFooter()
+                .listRowInsets(EdgeInsets())
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
         }
 
         .listStyle(.plain)

@@ -60,6 +60,10 @@ struct RootView: View {
     // Sheet за създаване/редакция на събитие
     @State private var eventToEdit: EKEvent? = nil
     @State private var appLocalEventTarget: AppLocalEventEditorTarget? = nil
+    @State private var sidebarEventTarget: AppLocalEventEditorTarget?
+    @State private var selectedSidebarEvent: CalendarSidebarEvent?
+    @State private var calendarWindowSize = CGSize.zero
+    @State private var listScrollRequest: CalendarListScrollRequest?
     
     // Следим състоянието на сцената (active, background, inactive)
     @Environment(\.scenePhase) private var scenePhase
@@ -247,164 +251,26 @@ struct RootView: View {
                         isPortrait || UIDevice.current.userInterfaceIdiom == .pad
                     ) && selectedTab != 7
 
-                    VStack(spacing: 0) { // Ensure VStack uses spacing 0 if no explicit spacing is desired
-                        Group {
-                            // Тук си избирате кой екран да се покаже според selectedTab
-                            switch selectedTab {
-                        case 0:
-                            MonthCalendarView(
-                                viewModel: CalendarViewModel.shared,
-                                startMonth: selectedMonthDate,
-                                selectedTab: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                },
-                                onDaySelected: { selectedDay in
-                                    showSingleDayTab(for: selectedDay)
-                                }
-                            )
-                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
-
-                        case 1:
-                            TwoWayPinnedMultiDayWrapper(
-                                fromDate: $pinnedFromDateSingle,
-                                toDate: $pinnedToDateSingle,
-                                events: $pinnedEventsSingle,
-                                eventStore: CalendarViewModel.shared.eventStore,
-                                isSingleDay: true,
-                                selectedTab: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                },
-                                onDayLabelTap: { tappedDay in
-                                    pinnedFromDateSingle = tappedDay
-                                    pinnedToDateSingle   = tappedDay
-                                    loadSingleDayEvents()
-                                },
-                                onMonthLabelTap: { month in
-                                    showMonthTab(for: month)
-                                }
-                            )
-                            .onAppear { loadSingleDayEvents() }
-                            .onReceive(timer) { _ in
-                                guard menuState != .full,
-                                      !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
-                                loadSingleDayEvents()
-                            }
-                            .ignoresSafeArea(.all)
-
-                        case 2:
-                            YearCalendarView(
-                                viewModel: CalendarViewModel.shared,
-                                selectedTab: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                },
-                                onMonthSelected: { month in
-                                    showMonthTab(for: month)
-                                }
-                            )
-                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
-
-                        case 3:
-                            TwoWayPinnedMultiDayWrapper(
-                                fromDate: $pinnedFromDateMulti,
-                                toDate: $pinnedToDateMulti,
-                                events: $pinnedEventsMulti,
-                                eventStore: CalendarViewModel.shared.eventStore,
-                                isSingleDay: false,
-                                selectedTab: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                },
-                                onDayLabelTap: { tappedDay in
-                                    pinnedFromDateSingle = tappedDay
-                                    pinnedToDateSingle   = tappedDay
-                                    loadSingleDayEvents()
-                                    selectedTab = 1
-                                }
-                            )
-                            .onAppear { loadMultiDayEvents() }
-                            .onReceive(timer) { _ in
-                                guard menuState != .full,
-                                      !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
-                                loadMultiDayEvents()
-                            }
-                            .ignoresSafeArea(.all)
-
-                        case 4:
-                            AllEventsListView(
-                                pinnedAllEvents: $pinnedAllEvents,
-                                selectedTab: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                },
-                                loadInitialEvents: {
-                                    reloadAllEvents()
-                                },
-                                onLoadMoreAfter: {
-                                    if loadedUntil < maxLoadDate {
-                                        loadNextChunkOfEvents()
-                                    }
-                                },
-                                onLoadMoreBefore: {
-                                    if loadedFrom > minLoadDate {
-                                        loadPreviousChunkOfEvents()
-                                    }
-                                }
-                            )
-                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
-
-                        case 5:
-                            TwoWayPinnedSingleDayMultiCalendarWrapper(
-                                fromDate: $pinnedFromDateSingle,
-                                events: $pinnedEventsSingle,
-                                eventStore: CalendarViewModel.shared.eventStore,
-                                selectedTab: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                },
-                                onDayLabelTap: { tappedDay in
-                                    pinnedFromDateSingle = tappedDay
-                                    // For SingleDayMultiCalendarWrapper, toDate is usually same as fromDate
-                                    // pinnedToDateSingle   = tappedDay // Not typically set by this wrapper
-                                    loadSingleDayEventsLocal()
-                                },
-                                onMonthLabelTap: { month in
-                                    showMonthTab(for: month)
-                                }
-                            )
-                            .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
-                            .onReceive(timer) { _ in
-                                guard menuState != .full,
-                                      !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
-                                loadSingleDayEventsLocal()
-                            }
-                            .ignoresSafeArea(.all)
-
-                        case 6:
-                            WeatherKitView(
-                                selectedTab: selectedTab,
-                                onViewChange: { newTab in
-                                    selectedTab = newTab
-                                },
-                                onSavedRegionsPresentationChange: { isPresented in
-                                    weatherSavedRegionsIsPresented = isPresented
-                                },
-                                eventEditorColorScheme: systemColorScheme
-                            )
-                            .colorScheme(.dark)
-                            .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
-                            default:
-                                Text(localizedFormat(NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), localizedIntegerString(selectedTab))) // More informative fallback
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space
-                            }
+                    HStack(spacing: 0) {
+                        if selectedTab != 6 && selectedTab != 7 && CalendarSidebarLayout.isVisible(isMac: false,
+                            isTablet: UIDevice.current.userInterfaceIdiom == .pad, windowSize: calendarWindowSize) {
+                            CalendarIPadSidebar(selectedDate: sidebarSelectedDate, selectedEvent: $selectedSidebarEvent,
+                                onSelectDate: selectSidebarDate, onOpenEvent: { sidebarEventTarget = $0 })
+                                .frame(width: CalendarSidebarLayout.width(availableWidth: geometry.size.width))
+                                .environment(\.calendarBottomClearance, CalendarScrollLayout.bottomClearance(
+                                    showsMenu: showsDraggableMenu, safeAreaBottom: geometry.safeAreaInsets.bottom))
+                            Divider()
                         }
+                        activeCalendarView
                         // Formatters and UIKit-backed calendar layouts read a
                         // shared preference snapshot. Rebuild only this main
                         // content after that snapshot has been fully applied.
                         .id(appPreferences.presentationRevision)
+                        .environment(\.calendarBottomClearance, CalendarScrollLayout.bottomClearance(
+                            showsMenu: showsDraggableMenu, safeAreaBottom: geometry.safeAreaInsets.bottom))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
+                    .background(CalendarWindowSizeReader { calendarWindowSize = $0 })
                     .frame(maxWidth: .infinity, maxHeight: .infinity) // Make sure the VStack fills the GeometryReader
                     .overlay(alignment: .bottom) {
                         if menuState == .full && showsDraggableMenu {
@@ -563,6 +429,9 @@ struct RootView: View {
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .zIndex(100)
             }
+        }
+        .sheet(item: $sidebarEventTarget, onDismiss: reloadActiveEventRangeForCalendarContentChange) { target in
+            AppLocalEventEditorView(target: target)
         }
         .animation(.spring(response: 0.35, dampingFraction: 0.86), value: eventSharePromptManager.event != nil)
         #if DEBUG
@@ -985,6 +854,197 @@ extension RootView {
         selectedTab = 0
     }
 
+    @ViewBuilder
+    private var activeCalendarView: some View {
+        // Тук си избирате кой екран да се покаже според selectedTab
+        switch selectedTab {
+    case 0:
+        MonthCalendarView(
+            viewModel: CalendarViewModel.shared,
+            startMonth: selectedMonthDate,
+            selectedTab: selectedTab,
+            onViewChange: { newTab in
+                selectedTab = newTab
+            },
+            onDaySelected: { selectedDay in
+                showSingleDayTab(for: selectedDay)
+            },
+            onMonthChanged: { selectedMonthDate = $0 }
+        )
+        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+
+    case 1:
+        TwoWayPinnedMultiDayWrapper(
+            fromDate: $pinnedFromDateSingle,
+            toDate: $pinnedToDateSingle,
+            events: $pinnedEventsSingle,
+            eventStore: CalendarViewModel.shared.eventStore,
+            isSingleDay: true,
+            selectedTab: selectedTab,
+            onViewChange: { newTab in
+                selectedTab = newTab
+            },
+            onDayLabelTap: { tappedDay in
+                pinnedFromDateSingle = tappedDay
+                pinnedToDateSingle   = tappedDay
+                loadSingleDayEvents()
+            },
+            onMonthLabelTap: { month in
+                showMonthTab(for: month)
+            },
+            onEventSelectionChanged: updateSidebarSelection
+        )
+        .onAppear { loadSingleDayEvents() }
+        .onReceive(timer) { _ in
+            guard menuState != .full,
+                  !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
+            loadSingleDayEvents()
+        }
+        .ignoresSafeArea(.all)
+
+    case 2:
+        YearCalendarView(
+            viewModel: CalendarViewModel.shared,
+            selectedTab: selectedTab,
+            onViewChange: { newTab in
+                selectedTab = newTab
+            },
+            onMonthSelected: { month in
+                showMonthTab(for: month)
+            }
+        )
+        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+
+    case 3:
+        TwoWayPinnedMultiDayWrapper(
+            fromDate: $pinnedFromDateMulti,
+            toDate: $pinnedToDateMulti,
+            events: $pinnedEventsMulti,
+            eventStore: CalendarViewModel.shared.eventStore,
+            isSingleDay: false,
+            selectedTab: selectedTab,
+            onViewChange: { newTab in
+                selectedTab = newTab
+            },
+            onDayLabelTap: { tappedDay in
+                pinnedFromDateSingle = tappedDay
+                pinnedToDateSingle   = tappedDay
+                loadSingleDayEvents()
+                selectedTab = 1
+            },
+            onEventSelectionChanged: updateSidebarSelection
+        )
+        .onAppear { loadMultiDayEvents() }
+        .onReceive(timer) { _ in
+            guard menuState != .full,
+                  !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
+            loadMultiDayEvents()
+        }
+        .ignoresSafeArea(.all)
+
+    case 4:
+        AllEventsListView(
+            pinnedAllEvents: $pinnedAllEvents,
+            scrollRequest: listScrollRequest,
+            selectedTab: selectedTab,
+            onViewChange: { newTab in
+                selectedTab = newTab
+            },
+            loadInitialEvents: {
+                reloadAllEvents()
+            },
+            onLoadMoreAfter: {
+                if loadedUntil < maxLoadDate {
+                    loadNextChunkOfEvents()
+                }
+            },
+            onLoadMoreBefore: {
+                if loadedFrom > minLoadDate {
+                    loadPreviousChunkOfEvents()
+                }
+            }
+        )
+        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+
+    case 5:
+        TwoWayPinnedSingleDayMultiCalendarWrapper(
+            fromDate: $pinnedFromDateSingle,
+            events: $pinnedEventsSingle,
+            eventStore: CalendarViewModel.shared.eventStore,
+            selectedTab: selectedTab,
+            onViewChange: { newTab in
+                selectedTab = newTab
+            },
+            onDayLabelTap: { tappedDay in
+                pinnedFromDateSingle = tappedDay
+                // For SingleDayMultiCalendarWrapper, toDate is usually same as fromDate
+                // pinnedToDateSingle   = tappedDay // Not typically set by this wrapper
+                loadSingleDayEventsLocal()
+            },
+            onMonthLabelTap: { month in
+                showMonthTab(for: month)
+            },
+            onEventSelectionChanged: updateSidebarSelection
+        )
+        .onAppear {  reloadSingleDayEventsWithVisibleCalendars() }
+        .onReceive(timer) { _ in
+            guard menuState != .full,
+                  !CalendarViewModel.shared.isCalendarSyncInProgress else { return }
+            loadSingleDayEventsLocal()
+        }
+        .ignoresSafeArea(.all)
+
+    case 6:
+        WeatherKitView(
+            selectedTab: selectedTab,
+            onViewChange: { newTab in
+                selectedTab = newTab
+            },
+            onSavedRegionsPresentationChange: { isPresented in
+                weatherSavedRegionsIsPresented = isPresented
+            },
+            eventEditorColorScheme: systemColorScheme
+        )
+        .colorScheme(.dark)
+        .ignoresSafeArea(.container, edges: [.leading, .trailing, .bottom])
+        default:
+            Text(localizedFormat(NSLocalizedString("N/A - Selected Tab: %@", comment: "Fallback selected tab label"), localizedIntegerString(selectedTab))) // More informative fallback
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure it fills space
+        }
+    }
+
+    private var sidebarSelectedDate: Date {
+        switch selectedTab {
+        case 0: selectedMonthDate
+        case 3: pinnedFromDateMulti
+        case 4: listScrollRequest?.date ?? pinnedFromDateSingle
+        default: pinnedFromDateSingle
+        }
+    }
+
+    private func updateSidebarSelection(_ descriptor: EventDescriptor?) {
+        selectedSidebarEvent = descriptor.flatMap { CalendarSidebarEvent(descriptor: $0) }
+    }
+
+    private func selectSidebarDate(_ date: Date) {
+        selectedSidebarEvent = nil
+        if selectedTab == 3 {
+            let range = CalendarSidebarLayout.movedRange(start: pinnedFromDateMulti, end: pinnedToDateMulti,
+                to: date, calendar: appPreferences.presentationCalendar)
+            pinnedFromDateMulti = range.0
+            pinnedToDateMulti = range.1
+            loadMultiDayEvents()
+        } else if selectedTab == 4 {
+            listScrollRequest = CalendarListScrollRequest(date: date)
+            if date < loadedFrom || date >= loadedUntil { reloadAllEvents() }
+        } else if selectedTab == 5 {
+            pinnedFromDateSingle = date
+            reloadSingleDayEventsWithVisibleCalendars()
+        } else {
+            showSingleDayTab(for: date)
+        }
+    }
+
     private func showSingleDayTab(for day: Date) {
         let normalizedDay = Calendar.current.startOfDay(for: day)
         pinnedFromDateSingle = normalizedDay
@@ -1201,7 +1261,7 @@ extension RootView {
     }
 
     private func reloadAllEvents() {
-        let now = Date()
+        let now = listScrollRequest?.date ?? Date()
         guard
             let start = Calendar.current.date(byAdding: .month, value: -1, to: now),
             let end   = Calendar.current.date(byAdding: .month, value: 1, to: now)

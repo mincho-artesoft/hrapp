@@ -1056,3 +1056,10 @@
 "Theme" = "Tema";
 "Light" = "Clar";
 "Dark" = "Fosc";
+
+/* Landscape calendar sidebar */
+"Up next" = "A continuació";
+"Nothing upcoming" = "No hi ha esdeveniments propers";
+"Open event" = "Obre l’esdeveniment";
+"Previous month" = "Mes anterior";
+"Next month" = "Mes següent";

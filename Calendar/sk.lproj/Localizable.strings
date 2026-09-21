@@ -1056,3 +1056,10 @@
 "Theme" = "Motív";
 "Light" = "Svetlý";
 "Dark" = "Tmavý";
+
+/* Landscape calendar sidebar */
+"Up next" = "Nasleduje";
+"Nothing upcoming" = "Žiadne nadchádzajúce udalosti";
+"Open event" = "Otvoriť udalosť";
+"Previous month" = "Predchádzajúci mesiac";
+"Next month" = "Nasledujúci mesiac";

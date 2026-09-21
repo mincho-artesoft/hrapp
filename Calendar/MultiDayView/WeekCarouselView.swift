@@ -60,6 +60,7 @@ public class WeekCarouselView: UIView,
     }
     
     private func setup() {
+        clipsToBounds = true
         let layout = WeekFlowLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isPagingEnabled = true

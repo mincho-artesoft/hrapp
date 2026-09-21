@@ -1056,3 +1056,10 @@
 "Theme" = "തീം";
 "Light" = "ലൈറ്റ്";
 "Dark" = "ഡാർക്ക്";
+
+/* Landscape calendar sidebar */
+"Up next" = "അടുത്തത്";
+"Nothing upcoming" = "വരാനിരിക്കുന്ന ഇവന്റുകളില്ല";
+"Open event" = "ഇവന്റ് തുറക്കുക";
+"Previous month" = "മുൻ മാസം";
+"Next month" = "അടുത്ത മാസം";

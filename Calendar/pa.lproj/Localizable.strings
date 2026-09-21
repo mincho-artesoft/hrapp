@@ -1056,3 +1056,10 @@
 "Theme" = "ਥੀਮ";
 "Light" = "ਹਲਕਾ";
 "Dark" = "ਗੂੜ੍ਹਾ";
+
+/* Landscape calendar sidebar */
+"Up next" = "ਅੱਗੇ";
+"Nothing upcoming" = "ਕੋਈ ਆਉਣ ਵਾਲਾ ਇਵੈਂਟ ਨਹੀਂ";
+"Open event" = "ਇਵੈਂਟ ਖੋਲ੍ਹੋ";
+"Previous month" = "ਪਿਛਲਾ ਮਹੀਨਾ";
+"Next month" = "ਅਗਲਾ ਮਹੀਨਾ";

@@ -1054,3 +1054,10 @@
 "Theme" = "Tema";
 "Light" = "Ljust";
 "Dark" = "Mörkt";
+
+/* Landscape calendar sidebar */
+"Up next" = "Härnäst";
+"Nothing upcoming" = "Inga kommande händelser";
+"Open event" = "Öppna händelse";
+"Previous month" = "Föregående månad";
+"Next month" = "Nästa månad";

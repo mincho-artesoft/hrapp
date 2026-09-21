@@ -1050,3 +1050,10 @@
 "Theme" = "Tema";
 "Light" = "Chiaro";
 "Dark" = "Scuro";
+
+/* Landscape calendar sidebar */
+"Up next" = "Prossimi eventi";
+"Nothing upcoming" = "Nessun evento in programma";
+"Open event" = "Apri evento";
+"Previous month" = "Mese precedente";
+"Next month" = "Mese successivo";

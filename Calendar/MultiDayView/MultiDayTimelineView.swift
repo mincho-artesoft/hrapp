@@ -2,6 +2,7 @@ import UIKit
 import EventKit
 
 public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @preconcurrency UIEditMenuInteractionDelegate {
+    private let timeLinesOverlay = TimelineTimeLinesOverlay()
     private var highlightedDayIndexes: Set<Int> = []
     private var isCurrentlyOverAllDay = false
 
@@ -41,6 +42,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     
     // MARK: - Public Callbacks
     public var onEventTap: ((EventDescriptor) -> Void)?
+    public var onEventSelectionChanged: ((EventDescriptor?) -> Void)?
     public var onEventEdit: ((EventDescriptor) -> Void)?
     public var onEmptyLongPress: ((DateInterval, String?) -> Void)?
     public var onEventDeleted: ((EventDescriptor) -> Void)?
@@ -391,6 +393,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     /// Shared by empty timeline space and the pinned hours column.
     func clearEventSelection() {
         guard draggingGhosts.isEmpty else { return }
+        onEventSelectionChanged?(nil)
         currentlyEditedEventViewID = nil
         currentTappedDescriptor = nil
         isFirstResize = false
@@ -576,6 +579,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     // MARK: - Layout
     public override func layoutSubviews() {
         super.layoutSubviews()
+        updateTimeLinesOverlay()
         // Keep the descriptor/view mapping stable while a recognizer owns it.
         guard draggingGhosts.isEmpty else { return }
         
@@ -821,6 +825,7 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         
         // 2) Активираме „edit“ режима за ново-селектирания
         guard let descriptor = eventViewToDescriptor[evView] else { return }
+        onEventSelectionChanged?(descriptor)
         guard !SharedInviteTracker.isReadOnly(descriptor) else {
             setSingle10MinuteMarkFromDate(descriptor.dateInterval.start)
             return
@@ -1927,8 +1932,6 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
     public override func draw(_ rect: CGRect) {
         guard let ctx = UIGraphicsGetCurrentContext() else { return }
         
-        let totalWidth = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
-        
         // 1) Изпълваме фона с цвета на фоновия UIView (ако държите, може да го пропуснете,
         //    понеже backgroundColor = .systemGray6 е вече зададено).
         //    Ако искате да сте сигурни, че винаги се "fill"-ва, може да го направите така:
@@ -1947,22 +1950,9 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
             }
         }
         
-        // 3) Хоризонтални линии (часовете)
-        ctx.saveGState()
-        ctx.setStrokeColor(style.separatorColor.cgColor)
-        ctx.setLineWidth(1.0 / UIScreen.main.scale)
-        ctx.beginPath()
-        
-        var lastY: CGFloat = 0
-        for hour in 0...24 {
-            let y = topMargin + CGFloat(hour) * hourHeight
-            lastY = y
-            ctx.move(to: CGPoint(x: leadingInsetForHours, y: y))
-            ctx.addLine(to: CGPoint(x: totalWidth, y: y))
-        }
-        ctx.strokePath()
-        ctx.restoreGState()
-        
+        // Horizontal time references are drawn above event cards.
+        let lastY = topMargin + 24 * hourHeight
+
         // 4) Вертикални линии (гранични на колоните)
         ctx.saveGState()
         ctx.setStrokeColor(style.separatorColor.cgColor)
@@ -1982,67 +1972,25 @@ public final class MultiDayTimelineView: UIView, UIGestureRecognizerDelegate, @p
         ctx.strokePath()
         ctx.restoreGState()
         
-        // 5) Червената линия „сега“ (ако попада в диапазона)
-        drawCurrentTimeLine(ctx: ctx)
+        updateTimeLinesOverlay()
     }
 
     
-    private func drawCurrentTimeLine(ctx: CGContext) {
+    private func updateTimeLinesOverlay() {
         #if DEBUG
         let now = ScreenshotMode.referenceDate ?? Date()
         #else
         let now = Date()
         #endif
-        let cal = Calendar.current
-        let nowOnly = cal.startOfDay(for: now)
-        let fromOnly = cal.startOfDay(for: fromDate)
-        let toOnly   = cal.startOfDay(for: toDate)
-
-        // Ако искате линията да се вижда само когато "днешният" ден е в диапазона:
-        if nowOnly < fromOnly || nowOnly > toOnly {
-            return
-        }
-
-        let dayIndex = dayIndexFor(now)
-        if dayIndex < 0 || dayIndex >= dayCount {
-            return
-        }
-
-        let hour   = CGFloat(cal.component(.hour, from: now))
-        let minute = CGFloat(cal.component(.minute, from: now))
-        let fraction = hour + minute/60.0
-        let yNow = topMargin + fraction * hourHeight
-
-        // Координати за цялата линия (отляво надясно)
-        let fullLineStartX = leadingInsetForHours
-        let fullLineEndX   = leadingInsetForHours + dayColumnWidth * CGFloat(dayCount)
-
-        // Тясната част върху самия текущ ден
-        let currentDayX  = dayOriginX(for: dayIndex)
-        let currentDayX2 = currentDayX + dayColumnWidth
-
-        // 1) Полупрозрачна линия през всички колони
-        ctx.saveGState()
-        ctx.setStrokeColor(UIColor.systemRed.withAlphaComponent(0.3).cgColor)
-        ctx.setLineWidth(1.5)
-        ctx.beginPath()
-        ctx.move(to: CGPoint(x: fullLineStartX, y: yNow))
-        ctx.addLine(to: CGPoint(x: fullLineEndX,   y: yNow))
-        ctx.strokePath()
-        ctx.restoreGState()
-
-        // 2) Напълно непрозрачна линия само върху текущия ден
-        ctx.saveGState()
-        ctx.setStrokeColor(UIColor.systemRed.cgColor)
-        ctx.setLineWidth(1.5)
-        ctx.beginPath()
-        ctx.move(to: CGPoint(x: currentDayX,  y: yNow))
-        ctx.addLine(to: CGPoint(x: currentDayX2, y: yNow))
-        ctx.strokePath()
-        ctx.restoreGState()
+        let index = dayIndexFor(now)
+        let todayX = dayOriginX(for: index)
+        let todayRange: ClosedRange<CGFloat>? = index >= 0 && index < dayCount && dayColumnWidth > 0
+            ? todayX...(todayX + dayColumnWidth) : nil
+        timeLinesOverlay.update(in: self, topMargin: topMargin, hourHeight: hourHeight,
+            startX: leadingInsetForHours, endX: leadingInsetForHours + dayColumnWidth * CGFloat(dayCount),
+            todayRange: todayRange, now: now, separatorColor: style.separatorColor)
     }
 
-    
     // MARK: - Helpers
     private func dateToY(_ date: Date) -> CGFloat {
         let cal = Calendar.current

@@ -1056,3 +1056,10 @@
 "Theme" = "థీమ్";
 "Light" = "లైట్";
 "Dark" = "డార్క్";
+
+/* Landscape calendar sidebar */
+"Up next" = "తరువాత";
+"Nothing upcoming" = "రాబోయే ఈవెంట్‌లు లేవు";
+"Open event" = "ఈవెంట్‌ను తెరవండి";
+"Previous month" = "గత నెల";
+"Next month" = "తరువాతి నెల";

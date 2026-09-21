@@ -17,6 +17,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
     
     public var onDayLabelTap: ((Date) -> Void)? = nil
     public var onMonthLabelTap: ((Date) -> Void)? = nil
+    public var onEventSelectionChanged: ((EventDescriptor?) -> Void)? = nil
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
         let semanticDirection: UISemanticContentAttribute =
@@ -29,6 +30,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         // vc.modalPresentationStyle = .fullScreen
 
         let container = TwoWayPinnedMultiDayContainerView()
+        container.bottomScrollPadding = context.environment.calendarBottomClearance
         container.semanticContentAttribute = semanticDirection
         container.onEventDeleted = { descriptor in
                // Когато в MultiDayTimelineView натиснат „Delete“ (и реално изтриете EventKit event),
@@ -54,12 +56,17 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
         
         // CALLBACK-и
         container.onRangeChange = { newFrom, newTo in
+            context.coordinator.parent.onEventSelectionChanged?(nil)
             fromDate = newFrom
             toDate   = newTo
             context.coordinator.reloadCurrentRange()
         }
         
+        container.onEventSelectionChanged = { descriptor in
+            context.coordinator.parent.onEventSelectionChanged?(descriptor)
+        }
         container.onEventTap = { descriptor in
+            context.coordinator.parent.onEventSelectionChanged?(descriptor)
             if let local = descriptor as? AppLocalEventDescriptor {
                 context.coordinator.presentAppLocalEditor(eventID: local.eventID, in: vc)
             } else if let multi = descriptor as? EKMultiDayWrapper {
@@ -144,6 +151,7 @@ public struct TwoWayPinnedMultiDayWrapper: UIViewControllerRepresentable {
                 as? TwoWayPinnedMultiDayContainerView else {
             return
         }
+        container.bottomScrollPadding = context.environment.calendarBottomClearance
 
         let semanticDirection: UISemanticContentAttribute =
             context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight

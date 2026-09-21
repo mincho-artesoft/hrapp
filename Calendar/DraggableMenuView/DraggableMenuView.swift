@@ -13,9 +13,9 @@ struct DraggableMenuView<
 >: View {
 
     // MARK: — Config & Theme
-    private let fixedBottomBarHeight: CGFloat = 60
-    private let handleHeight: CGFloat = 26
-    private let collapsedPeekExtra: CGFloat = 10
+    private let fixedBottomBarHeight = CalendarScrollLayout.bottomBarHeight
+    private let handleHeight = CalendarScrollLayout.handleHeight
+    private let collapsedPeekExtra = CalendarScrollLayout.collapsedPeekExtra
     private var topGapWhenExpanded: CGFloat = UIScreen.main.bounds.height * 0.2
 
     @Binding var adaptiveBackgroundOpacity: CGFloat

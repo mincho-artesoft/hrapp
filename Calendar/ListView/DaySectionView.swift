@@ -14,9 +14,17 @@ struct DaySectionView: View {
     
     var body: some View {
         Section {
+            if dayGroup.events.isEmpty {
+                Text("No events found")
+                    .foregroundStyle(.secondary)
+                    .id(dayGroup.day)
+            }
             ForEach(dayGroup.events.indices, id: \.self) { i in
                 let event = dayGroup.events[i]
                 EventRowView(event: event, timeString: timeString)
+                    // ScrollViewReader must target a real List row, not the
+                    // Section's supplementary header (invalid on iOS 26).
+                    .id(i == 0 ? AnyHashable(dayGroup.day) : AnyHashable(i))
                     .onTapGesture {
                         eventRowAction(event)
                     }
@@ -27,6 +35,7 @@ struct DaySectionView: View {
                 .foregroundColor(isToday(dayGroup.day) ? .red : .secondary)
                 .padding(.bottom, 4)
                 .textCase(nil)
+                .accessibilityIdentifier("calendar.list.day.\(Int(dayGroup.day.timeIntervalSince1970))")
         }
     }
 }

@@ -9,8 +9,7 @@ import EventKitUI
 //
 public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
                                                                   UIScrollViewDelegate,
-                                                                  UIGestureRecognizerDelegate,
-                                                                  UISearchBarDelegate
+                                                                  UIGestureRecognizerDelegate
 {
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     // Най-горе при другите свойства
@@ -31,7 +30,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // Dropdown + background
     private var dropdownBackgroundView: UIView?
     
-    public var currentView: Int = 1
+    public var currentView: Int = 1 { didSet { setNeedsLayout() } }
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {
@@ -46,6 +45,9 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     
     public var onRangeChange: ((Date, Date) -> Void)?
     
+    public var onEventSelectionChanged: ((EventDescriptor?) -> Void)? {
+        didSet { weekView.onEventSelectionChanged = onEventSelectionChanged }
+    }
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
             weekView.onEventTap   = onEventTap
@@ -117,16 +119,8 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     
     // Горна лента (navBar)
     private let navBar = UIView()
+    private let headerHost = CalendarScreenHeaderHost()
     
-    private let monthLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .label
-        label.isHidden  = true
-        label.isUserInteractionEnabled = true
-        return label
-    }()
     
     private let singleDayCarousel: WeekCarouselView = {
         let view = WeekCarouselView()
@@ -135,81 +129,21 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         return view
     }()
     
-    private let viewMenuButton: UIButton = {
-        let btn = UIButton(type: .system)
-        let image = UIImage(systemName: "ellipsis.circle")
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .systemBlue
-        return btn
-    }()
-    
-//    private let addEventButton: UIButton = {
-//        let btn = UIButton(type: .system)
-//        let image = UIImage(systemName: "plus")
-//        btn.setImage(image, for: .normal)
-//        btn.tintColor = .systemBlue
-//        return btn
-//    }()
-    
-    // Търсене
-    private let searchButton: UIButton = {
-        let btn = UIButton(type: .custom)
-        let image = CalendarSearchAppearance.iconImage.withRenderingMode(.alwaysTemplate)
-        btn.setImage(image, for: .normal)
-        btn.imageView?.contentMode = .center
-        btn.tintColor = .systemBlue
-        return btn
-    }()
-
-    private let closeSearchButton: UIButton = {
-        let btn = UIButton(type: .system)
-        let image = UIImage(systemName: "xmark")
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .secondaryLabel
-        btn.isHidden = true
-        return btn
-    }()
-    
-    private let searchBar: UISearchBar = {
-        let sb = UISearchBar()
-        sb.placeholder = NSLocalizedString("Search events...", comment: "")
-        sb.isHidden = false
-        sb.searchBarStyle = .default
-        sb.backgroundImage = UIImage()
-        sb.barTintColor = .systemGray5
-        sb.backgroundColor = .systemGray5
-        sb.isTranslucent = false
-        sb.tintColor = .systemBlue
-        sb.layer.cornerRadius = 8
-        sb.layer.masksToBounds = true
-        
-        if #available(iOS 13.0, *) {
-            let textField = sb.searchTextField
-            textField.leftViewMode = .never
-            textField.backgroundColor = .systemGray5
-            textField.layer.cornerRadius = 8
-            textField.layer.masksToBounds = true
-            textField.font = UIFont.systemFont(ofSize: 16)
-            textField.adjustsFontSizeToFitWidth = true
-            textField.minimumFontSize = 10
-            textField.attributedPlaceholder = NSAttributedString(
-                string: NSLocalizedString("Search events...", comment: "Search events placeholder"),
-                attributes: [.foregroundColor: UIColor.secondaryLabel]
-            )
-        }
-        return sb
-    }()
-    
     // ---------------------------------------------------------
     // MARK: - Layout constants
     // ---------------------------------------------------------
-    fileprivate let navBarHeight: CGFloat     = 50
+    fileprivate let navBarHeight = CalendarHeaderLayout.height
     fileprivate let daysHeaderHeight: CGFloat = 20
     fileprivate let leftColumnWidth: CGFloat  = 60
-    fileprivate let bottomScrollPadding: CGFloat = 50
+    var bottomScrollPadding: CGFloat = 0 { didSet { if oldValue != bottomScrollPadding { setNeedsLayout() } } }
 
     private var usesRightToLeftLayout: Bool {
         effectiveUserInterfaceLayoutDirection == .rightToLeft
+    }
+
+    private var isWindowLandscape: Bool {
+        let size = window?.bounds.size ?? bounds.size
+        return size.width > size.height
     }
     
     private let topBorder    = CALayer()
@@ -407,9 +341,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         addSubview(navBar)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        navBar.addSubview(monthLabel)
-        let monthLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(monthLabelTapped))
-        monthLabel.addGestureRecognizer(monthLabelTapGesture)
         
         addSubview(singleDayCarousel)
         singleDayCarousel.onDaySelected = { [weak self] date in
@@ -418,19 +349,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             self.onRangeChange?(date, date)
             self.setNeedsLayout()
         }
-        
-//        navBar.addSubview(addEventButton)
-//        addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
-        
-        updateButtonIconForCurrentView()
-        if #available(iOS 14.0, *) {
-            viewMenuButton.showsMenuAsPrimaryAction = true
-            viewMenuButton.menu = buildViewMenu()
-        }
-        navBar.addSubview(viewMenuButton)
-        
-        navBar.addSubview(searchButton)
-        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
         weekView.hoursColumnView = hoursColumnView
         
@@ -478,81 +396,48 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         onMonthLabelTap?(fromDate)
     }
 
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window == nil { headerHost.detach() }
+        else { setNeedsLayout() }
+    }
+
+    public override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+        setNeedsLayout()
+    }
+
+    private func updateScreenHeader() {
+        let isLandscape = isWindowLandscape
+        headerHost.update(in: navBar, snapshot: .init(mode: currentView,
+            title: !isLandscape ? appDateFormatter(template: "LLLL").string(from: fromDate) : nil,
+            range: nil, rangeIsSelected: false,
+            rtl: usesRightToLeftLayout, localeIdentifier: Locale.appFormatting.identifier),
+            hidden: isSearching,
+            onTitle: { [weak self] in self?.monthLabelTapped() },
+            onRange: {  },
+            onSearch: { [weak self] in self?.searchButtonTapped() },
+            onViewChange: { [weak self] mode in
+                self?.currentView = mode
+                self?.onViewChange?(mode)
+            })
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        let isLandscape = bounds.width > bounds.height
+        let isLandscape = isWindowLandscape
         let hidesSingleDayCarousel = isLandscape && traitCollection.userInterfaceIdiom != .pad
         let isRTL = usesRightToLeftLayout
-        let tabletLandscapeTopInset = traitCollection.userInterfaceIdiom == .pad
-            ? max(safeAreaInsets.top, window?.safeAreaInsets.top ?? 0)
-            : 0
-        let topOffset: CGFloat = isLandscape ? tabletLandscapeTopInset : 53.5
+        let topOffset = CalendarHeaderLayout.topInset(safeAreaTop: safeAreaInsets.top)
         
         topBackgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topOffset)
         topBackgroundView.layer.zPosition = 3
 
-        navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width - 2, height: navBarHeight)
+        navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width, height: navBarHeight)
         
-        if !isLandscape {
-            let df = appDateFormatter(template: "LLLL")
-            monthLabel.text = df.string(from: fromDate)
-            monthLabel.textColor = .systemBlue
-            monthLabel.useAdaptiveSingleLine(minimumScale: 0.4)
-            monthLabel.isHidden = false
-        } else {
-            monthLabel.isHidden = true
-        }
-        
-        let menuBtnSize: CGFloat   = 34
-        let searchBtnSize = CalendarSearchAppearance.buttonSize
-        let margin:  CGFloat       = 8
-        
-        let menuButtonX = isRTL ? 10 : navBar.bounds.width - menuBtnSize - 10
-        let centerY = (navBar.bounds.height - menuBtnSize) / 2
-        viewMenuButton.frame = CGRect(
-            x: menuButtonX,
-            y: centerY,
-            width: menuBtnSize,
-            height: menuBtnSize
-        )
-        updateButtonIconForCurrentView()
-        if #available(iOS 14.0, *) {
-            viewMenuButton.menu = buildViewMenu()
-        }
-        
-        let searchButtonX = isRTL
-            ? menuButtonX + menuBtnSize + margin
-            : menuButtonX - searchBtnSize - margin
-        let searchCenterY = (navBar.bounds.height - searchBtnSize) / 2
-        searchButton.frame = CGRect(
-            x: searchButtonX,
-            y: searchCenterY,
-            width: searchBtnSize,
-            height: searchBtnSize
-        )
-        closeSearchButton.frame = CGRect(
-            x: isRTL ? 10 : navBar.bounds.width - searchBtnSize - 10,
-            y: searchCenterY,
-            width: searchBtnSize,
-            height: searchBtnSize
-        )
+        updateScreenHeader()
 
-        if !isLandscape {
-            let labelLeading: CGFloat = 10
-            let labelTrailing = isRTL
-                ? navBar.bounds.width - (searchButtonX + searchBtnSize + margin)
-                : searchButtonX - margin
-            let availableMonthWidth = max(0, labelTrailing - labelLeading)
-            monthLabel.frame = CGRect(
-                x: isRTL ? navBar.bounds.width - labelLeading - availableMonthWidth : labelLeading,
-                y: 0,
-                width: availableMonthWidth,
-                height: navBar.bounds.height
-            )
-            monthLabel.textAlignment = isRTL ? .right : .left
-        }
-        
         var singleDayCarouselHeight: CGFloat = 70
         singleDayCarousel.isHidden = false
         if hidesSingleDayCarousel {
@@ -810,130 +695,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // ---------------------------------------------------------
     
     // MARK: - iOS 14+ menu
-    @available(iOS 14.0, *)
-    private func buildViewMenu() -> UIMenu {
-        // Създаване на иконите за опциите
-        let dayImage          = UIImage(systemName: "calendar.day.timeline.leading")
-        let multiDayImage     = UIImage(systemName: "distribute.horizontal.left")
-        let monthImage        = UIImage(systemName: "calendar")
-        let yearImage         = UIImage(systemName: "12.lane")
-        let listImage         = UIImage(systemName: "list.bullet")
-        let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
-        let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
-
-        // Съществуващите UIAction-и
-        let dayAction = UIAction(
-            title: NSLocalizedString("Day", comment: ""),
-            image: dayImage,
-            state: currentView == 1 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 1
-            self?.onViewChange?(1)
-            self?.viewMenuButton.setImage(dayImage, for: .normal)
-        }
-        
-        let multiAction = UIAction(
-            title: NSLocalizedString("MultiDay", comment: ""),
-            image: multiDayImage,
-            state: currentView == 3 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 3
-            self?.onViewChange?(3)
-            self?.viewMenuButton.setImage(multiDayImage, for: .normal)
-        }
-        
-        let monthAction = UIAction(
-            title: NSLocalizedString("Month", comment: ""),
-            image: monthImage,
-            state: currentView == 0 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 0
-            self?.onViewChange?(0)
-            self?.viewMenuButton.setImage(monthImage, for: .normal)
-        }
-        
-        let yearAction = UIAction(
-            title: NSLocalizedString("Year", comment: ""),
-            image: yearImage,
-            state: currentView == 2 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 2
-            self?.onViewChange?(2)
-            self?.viewMenuButton.setImage(yearImage, for: .normal)
-        }
-        
-        let listAction = UIAction(
-            title: NSLocalizedString("List", comment: ""),
-            image: listImage,
-            state: currentView == 4 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 4
-            self?.onViewChange?(4)
-            self?.viewMenuButton.setImage(listImage, for: .normal)
-        }
-        
-        let multiCalendarAction = UIAction(
-           title: NSLocalizedString("MultiCalendar", comment: ""),
-           image: multiCalendarIcon,
-           state: currentView == 5 ? .on : .off
-        ) { [weak self] _ in
-            // ПРОМЯНА: Премахната е проверката за абонамент.
-            self?.currentView = 5
-            self?.onViewChange?(5)
-            self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
-        }
-        
-        // Добавяне на нов UIAction за Weather
-        let weatherAction = UIAction(
-            title: NSLocalizedString("Weather", comment: ""),
-            image: weatherImage,
-            state: currentView == 6 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 6
-            self?.onViewChange?(6)
-            self?.viewMenuButton.setImage(weatherImage, for: .normal)
-        }
-        
-        return UIMenu(
-            title: "",
-            children: [
-                dayAction,
-                multiAction,
-                monthAction,
-                yearAction,
-                listAction,
-                multiCalendarAction,
-                weatherAction
-            ]
-        )
-    }
-
-
-    private func updateButtonIconForCurrentView() {
-        let imageName: String
-        switch currentView {
-        case 1:
-            imageName = "calendar.day.timeline.leading"
-        case 3:
-            imageName = "distribute.horizontal.left"
-        case 0:
-            imageName = "calendar"
-        case 2:
-            imageName = "12.lane"
-        case 4:
-            imageName = "list.bullet"
-        case 5:
-            imageName = "align.vertical.top"
-        case 6:
-            imageName = "cloud.sun"
-        default:
-            imageName = "calendar"
-        }
-        
-        viewMenuButton.setImage(UIImage(systemName: imageName), for: .normal)
-    }
-
-   
     private func fmt(_ d: Date) -> String {
         appShortDateFormatter().string(from: d)
     }
@@ -948,25 +709,17 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
     // ---------------------------------------------------------
     // MARK: - Търсене
     // ---------------------------------------------------------
-    private var searchHostingController: UIHostingController<SearchResultsView>?
+    private var searchHostingController: UIHostingController<AnyView>?
     private var searchFieldHostingController: UIHostingController<CalendarEventSearchField>?
     private var isSearching: Bool = false {
         didSet {
-            if isSearching {
-//                addEventButton.isHidden      = true
-                viewMenuButton.isHidden      = true
-                searchButton.isHidden        = true
-                closeSearchButton.isHidden   = true
-                animateSearchBarIn()
-            } else {
-//                addEventButton.isHidden      = false
-                viewMenuButton.isHidden      = false
-                searchButton.isHidden        = false
-                closeSearchButton.isHidden   = true
-                animateSearchBarOut()
-            }
+            updateScreenHeader()
+            if isSearching { animateSearchBarIn() }
+            else { animateSearchBarOut() }
+            setNeedsLayout()
         }
     }
+
     private var searchText: String = "" {
         didSet {
             updateSearchResults()
@@ -983,21 +736,6 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
         searchText = ""
     }
     
-    public func searchBar(_ searchBar: UISearchBar, textDidChange text: String) {
-        self.searchText = text
-    }
-    
-    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        searchBar.resignFirstResponder()
-        searchText = ""
-        searchBar.text = ""
-    }
-    
     private func animateSearchBarIn() {
         searchFieldHostingController?.view.removeFromSuperview()
 
@@ -1009,6 +747,7 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             self?.closeSearchButtonTapped()
         }
         let controller = UIHostingController(rootView: field)
+        controller.safeAreaRegions = []
         controller.view.backgroundColor = .clear
         controller.view.frame = navBar.bounds
         controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -1058,18 +797,22 @@ public final class TwoWayPinnedSingleDayMultiCalendarContainerView: UIView,
             return
         }
         
-        let resultsView = SearchResultsView(searchText: searchText)
+        let resultsView = AnyView(SearchResultsView(searchText: searchText)
+            .environment(\.calendarBottomClearance, bottomScrollPadding)
+            .environment(\.locale, Locale.appFormatting)
+            .environment(\.layoutDirection, usesRightToLeftLayout ? .rightToLeft : .leftToRight))
         if let hc = searchHostingController {
             hc.rootView = resultsView
         } else {
             let hc = UIHostingController(rootView: resultsView)
+            hc.safeAreaRegions = []
             searchHostingController = hc
             addSubview(hc.view)
         }
         
         if let hc = searchHostingController {
             bringSubviewToFront(hc.view)
-            let navBarBottom = CGFloat(navBarHeight)
+            let navBarBottom = navBar.frame.maxY
             hc.view.layer.zPosition = 9
             hc.view.frame = CGRect(
                 x: 0,

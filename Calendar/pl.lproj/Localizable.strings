@@ -1054,3 +1054,10 @@
 "Theme" = "Motyw";
 "Light" = "Jasny";
 "Dark" = "Ciemny";
+
+/* Landscape calendar sidebar */
+"Up next" = "Wkrótce";
+"Nothing upcoming" = "Brak nadchodzących wydarzeń";
+"Open event" = "Otwórz wydarzenie";
+"Previous month" = "Poprzedni miesiąc";
+"Next month" = "Następny miesiąc";

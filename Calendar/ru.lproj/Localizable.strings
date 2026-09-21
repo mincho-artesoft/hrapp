@@ -1050,3 +1050,10 @@
 "Theme" = "Тема";
 "Light" = "Светлая";
 "Dark" = "Тёмная";
+
+/* Landscape calendar sidebar */
+"Up next" = "Далее";
+"Nothing upcoming" = "Нет предстоящих событий";
+"Open event" = "Открыть событие";
+"Previous month" = "Предыдущий месяц";
+"Next month" = "Следующий месяц";

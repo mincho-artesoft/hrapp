@@ -1054,3 +1054,10 @@
 "Theme" = "Teema";
 "Light" = "Vaalea";
 "Dark" = "Tumma";
+
+/* Landscape calendar sidebar */
+"Up next" = "Seuraavaksi";
+"Nothing upcoming" = "Ei tulevia tapahtumia";
+"Open event" = "Avaa tapahtuma";
+"Previous month" = "Edellinen kuukausi";
+"Next month" = "Seuraava kuukausi";

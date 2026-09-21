@@ -1052,3 +1052,10 @@
 "Theme" = "Тема";
 "Light" = "Светла";
 "Dark" = "Тъмна";
+
+/* Landscape calendar sidebar */
+"Up next" = "Следващо събитие";
+"Nothing upcoming" = "Няма предстоящи събития";
+"Open event" = "Отвори събитието";
+"Previous month" = "Предишен месец";
+"Next month" = "Следващ месец";

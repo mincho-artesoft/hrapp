@@ -9,6 +9,7 @@ struct MonthCalendarView: View {
     var selectedTab: Int
     var onViewChange: ((Int) -> Void)?
     var onDaySelected: ((Date) -> Void)?
+    var onMonthChanged: ((Date) -> Void)? = nil
     
     @State private var eventToView: EKEvent? = nil
     @State private var eventToEdit: EKEvent? = nil
@@ -33,13 +34,15 @@ struct MonthCalendarView: View {
          startMonth: Date,
          selectedTab: Int,
          onViewChange: ((Int) -> Void)?,
-         onDaySelected: ((Date) -> Void)? = nil) {
+         onDaySelected: ((Date) -> Void)? = nil,
+         onMonthChanged: ((Date) -> Void)? = nil) {
         self.viewModel = viewModel
         self.startMonth = startMonth
         self._currentMonth = State(initialValue: startMonth)
         self.selectedTab = selectedTab
         self.onViewChange = onViewChange
         self.onDaySelected = onDaySelected
+        self.onMonthChanged = onMonthChanged
         
         // ① 100 % прозрачно – когато е в scroll-edge (върха)
         let clear = UINavigationBarAppearance()
@@ -139,6 +142,7 @@ struct MonthCalendarView: View {
                         }
                     }
                     .padding(.horizontal, 8)
+                    CalendarScrollFooter()
                 }
             }
         }
@@ -153,6 +157,7 @@ struct MonthCalendarView: View {
             currentMonth = normalizedMonth
             viewModel.loadEvents(for: currentMonth)
         }
+        .onChange(of: currentMonth) { _, month in onMonthChanged?(month) }
         .onReceive(viewModel.calendarContentDidChange) { _ in
             viewModel.loadEvents(for: currentMonth)
         }
@@ -196,37 +201,10 @@ struct MonthCalendarView: View {
         }
     }
 
-    @ViewBuilder
     private var topBar: some View {
-        HStack(spacing: 9) {
-            Spacer()
-            if !showSearchBar {
-                Button {
-                    showSearchBar = true
-                } label: {
-                    Image(uiImage: CalendarSearchAppearance.iconImage)
-                        .renderingMode(.template)
-                        .foregroundStyle(.blue)
-                }
-                .frame(
-                    width: CalendarSearchAppearance.buttonSize,
-                    height: CalendarSearchAppearance.buttonSize
-                )
-                .contentShape(Rectangle())
-                .buttonStyle(.plain)
-
-                UIMenuButtonRepresentable(
-                    currentView: selectedTab,
-                    onViewChange: { newTab in
-                        onViewChange?(newTab)
-                    }
-                )
-                .frame(width: 30, height: 30)
-            }
-        }
-        .padding(.horizontal)
-        .padding(.top, 8)
-        .padding(.bottom, 8)
+        CalendarScreenHeader(currentView: selectedTab,
+            onSearch: { showSearchBar = true },
+            onViewChange: { newTab in onViewChange?(newTab) })
     }
 }
 

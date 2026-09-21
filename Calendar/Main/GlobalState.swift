@@ -3,18 +3,13 @@ import UIKit
 
 enum CalendarSearchAppearance {
     static let iconPointSize: CGFloat = 22
-    static let buttonSize: CGFloat = 36
+    static let buttonSize = CalendarHeaderLayout.buttonSize
 
     static var symbolConfiguration: UIImage.SymbolConfiguration {
         UIImage.SymbolConfiguration(pointSize: iconPointSize, weight: .regular)
     }
 
-    static var iconImage: UIImage {
-        UIImage(
-            systemName: "magnifyingglass",
-            withConfiguration: symbolConfiguration
-        ) ?? UIImage()
-    }
+    static var iconImage: UIImage { CalendarHeaderAppearance.image("magnifyingglass") }
 }
 
 extension Locale {

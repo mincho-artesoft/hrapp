@@ -1054,3 +1054,10 @@
 "Theme" = "Thema";
 "Light" = "Licht";
 "Dark" = "Donker";
+
+/* Landscape calendar sidebar */
+"Up next" = "Hierna";
+"Nothing upcoming" = "Geen komende activiteiten";
+"Open event" = "Activiteit openen";
+"Previous month" = "Vorige maand";
+"Next month" = "Volgende maand";

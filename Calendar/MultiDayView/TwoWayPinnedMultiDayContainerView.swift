@@ -5,8 +5,7 @@ import Foundation
 // MARK: - TwoWayPinnedMultiDayContainerView
 public final class TwoWayPinnedMultiDayContainerView: UIView,
                                                       UIScrollViewDelegate,
-                                                      UIGestureRecognizerDelegate,
-                                                      UISearchBarDelegate {
+                                                      UIGestureRecognizerDelegate {
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
 
     private var didScrollToNow = false
@@ -18,24 +17,17 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             if showSingleDay {
                 toDate = fromDate
             }
-            // Показваме или скриваме етикета за месеца
-            monthLabel.isHidden = !showSingleDay
             setNeedsLayout()
         }
     }
     
-    public var currentView: Int = 3 {
-        didSet {
-            updateButtonIconForCurrentView()
-            viewMenuButton.menu = buildViewMenu()
-        }
-    }
+    public var currentView: Int = 3 { didSet { setNeedsLayout() } }
 
     public var onViewChange: ((Int) -> Void)?
     
     public var fromDate: Date = Date() {
         didSet {
-            refreshDateRangeButtonTitle()
+
             daysHeaderView.fromDate = fromDate
             allDayView.fromDate = fromDate
             weekView.fromDate = fromDate
@@ -53,7 +45,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     public var toDate: Date = Date() {
         didSet {
-            refreshDateRangeButtonTitle()
+
             daysHeaderView.toDate = toDate
             allDayView.toDate = toDate
             weekView.toDate = toDate
@@ -67,6 +59,9 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     public var onRangeChange: ((Date, Date) -> Void)?
     
+    public var onEventSelectionChanged: ((EventDescriptor?) -> Void)? {
+        didSet { weekView.onEventSelectionChanged = onEventSelectionChanged }
+    }
     public var onEventTap: ((EventDescriptor) -> Void)? {
         didSet {
             weekView.onEventTap = onEventTap
@@ -142,17 +137,8 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     
     // MARK: - "Nav bar" (top area)
     private let navBar = UIView()
+    private let headerHost = CalendarScreenHeaderHost()
     
-    // Добавяме нов лейбъл за месеца (скрит по подразбиране, ще го показваме само при showSingleDay = true)
-    private let monthLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .label
-        label.isHidden = true
-        label.isUserInteractionEnabled = true
-        return label
-    }()
     
     // MARK: - singleDayCarousel
     private let singleDayCarousel: WeekCarouselView = {
@@ -162,132 +148,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         return view
     }()
     
-    private let dateRangeButton: UIButton = {
-        let btn = UIButton(type: .custom)
-        btn.setTitle(
-            NSLocalizedString("No selected range", comment: "No selected date range"),
-            for: .normal
-        )
-        btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        btn.useAdaptiveTitle(minimumScale: 0.4)
-        btn.layer.cornerRadius = 8
-        btn.backgroundColor = .systemGray5
-        btn.setTitleColor(.label, for: .normal)
-        btn.setTitleColor(.systemBlue, for: .selected)
-        btn.setTitleColor(.systemBlue, for: .highlighted)
-        return btn
-    }()
-    
-    private let viewMenuButton: UIButton = {
-        let btn = UIButton(type: .system)
-        let image = UIImage(systemName: "ellipsis.circle")
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .systemBlue
-        return btn
-    }()
-    
-    // Бутон “+”
-//    private let addEventButton: UIButton = {
-//        let btn = UIButton(type: .system)
-//        let image = UIImage(systemName: "plus")
-//        btn.setImage(image, for: .normal)
-//        btn.tintColor = .systemBlue
-//        return btn
-//    }()
-    
-    /// NEW: Бутон с лупичка
-    private let searchButton: UIButton = {
-        let btn = UIButton(type: .custom)
-        let image = CalendarSearchAppearance.iconImage.withRenderingMode(.alwaysTemplate)
-        btn.setImage(image, for: .normal)
-        btn.imageView?.contentMode = .center
-        btn.tintColor = .systemBlue
-        return btn
-    }()
-
-    private let closeSearchButton: UIButton = {
-        let btn = UIButton(type: .system)
-        let image = UIImage(systemName: "xmark")
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .secondaryLabel
-        btn.isHidden = true
-        return btn
-    }()
-    
-    // MARK: - Search functionality (с Cancel)
-    private let searchBar: UISearchBar = {
-        let sb = UISearchBar()
-        sb.placeholder = NSLocalizedString("Search events...", comment: "Search events placeholder")
-        sb.isHidden = false
-        sb.searchBarStyle = .default
-        sb.backgroundImage = UIImage()
-        sb.barTintColor = .systemGray5
-        sb.backgroundColor = .systemGray5
-        sb.isTranslucent = false
-        sb.tintColor = .systemBlue
-        
-        sb.layer.cornerRadius = 8
-        sb.layer.masksToBounds = true
-        
-        if #available(iOS 13.0, *) {
-            let textField = sb.searchTextField
-            textField.leftViewMode = .never
-            textField.backgroundColor = .systemGray5
-            textField.layer.cornerRadius = 8
-            textField.layer.masksToBounds = true
-            textField.font = UIFont.systemFont(ofSize: 16)
-            textField.adjustsFontSizeToFitWidth = true
-            textField.minimumFontSize = 10
-            textField.attributedPlaceholder = NSAttributedString(
-                string: NSLocalizedString("Search events...", comment: "Search events placeholder"),
-                attributes: [.foregroundColor: UIColor.secondaryLabel]
-            )
-        }
-        
-        return sb
-    }()
-    
-    private var searchHostingController: UIHostingController<SearchResultsView>?
+    private var searchHostingController: UIHostingController<AnyView>?
     private var searchFieldHostingController: UIHostingController<CalendarEventSearchField>?
     
     private var isSearching: Bool = false {
         didSet {
-            if isSearching {
-                // Крие някои бутони (Add, Menu, Search)
-//                addEventButton.isHidden = true
-                viewMenuButton.isHidden = true
-                searchButton.isHidden = true
-                closeSearchButton.isHidden = true
-                
-                // Ако showSingleDay = true, оставяме каросела видим, но скриваме бутона:
-                if showSingleDay {
-                    dateRangeButton.isHidden = true
-                } else {
-                    dateRangeButton.isHidden   = true
-                }
-                
-                // Показваме SearchBar с анимация
-                animateSearchBarIn()
-                
-            } else {
-                // Възстановяваме бутоните
-//                addEventButton.isHidden = false
-                viewMenuButton.isHidden = false
-                searchButton.isHidden = false
-                closeSearchButton.isHidden = true
-                
-                if showSingleDay {
-                    dateRangeButton.isHidden   = true
-                } else {
-                    dateRangeButton.isHidden   = false
-                }
-                
-                // Скриваме SearchBar
-                animateSearchBarOut()
-            }
+            updateScreenHeader()
+            if isSearching { animateSearchBarIn() }
+            else { animateSearchBarOut() }
+            setNeedsLayout()
         }
     }
-    
+
     private var searchText: String = "" {
         didSet {
             updateSearchResults()
@@ -295,10 +167,10 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }
     
     // MARK: - Private constants & variables
-    fileprivate let navBarHeight: CGFloat = 50
+    fileprivate let navBarHeight = CalendarHeaderLayout.height
     fileprivate let daysHeaderHeight: CGFloat = 40
     fileprivate let leftColumnWidth: CGFloat = 60
-    fileprivate let bottomScrollPadding: CGFloat = 50
+    var bottomScrollPadding: CGFloat = 0 { didSet { if oldValue != bottomScrollPadding { setNeedsLayout() } } }
     fileprivate let weatherStripWidth: CGFloat = 50
     /// Whether the hourly weather strip is drawn beside the timeline.
     fileprivate var showsWeatherStrip: Bool {
@@ -314,6 +186,11 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
 
     private var usesRightToLeftLayout: Bool {
         effectiveUserInterfaceLayoutDirection == .rightToLeft
+    }
+
+    private var isWindowLandscape: Bool {
+        let size = window?.bounds.size ?? bounds.size
+        return size.width > size.height
     }
     
     private let topBorder = CALayer()
@@ -337,7 +214,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         super.init(frame: frame)
         setupViews()
         startRedrawTimer()
-        refreshDateRangeButtonTitle()
+
         NotificationCenter.default.addObserver(
                self,
                selector: #selector(orientationDidChange),
@@ -356,7 +233,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         super.init(coder: coder)
         setupViews()
         startRedrawTimer()
-        refreshDateRangeButtonTitle()
+
         NotificationCenter.default.addObserver(
                self,
                selector: #selector(orientationDidChange),
@@ -479,10 +356,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         navBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        // Добавяме monthLabel в navBar
-        navBar.addSubview(monthLabel)
-        let monthLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(monthLabelTapped))
-        monthLabel.addGestureRecognizer(monthLabelTapGesture)
         
         // singleDayCarousel
         addSubview(singleDayCarousel)
@@ -493,26 +366,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             self.onRangeChange?(date, date)
             self.setNeedsLayout()
         }
-        
-        // dateRangeButton
-        dateRangeButton.addTarget(self, action: #selector(didTapDateRangeButton), for: .touchUpInside)
-        navBar.addSubview(dateRangeButton)
-        
-        // addEventButton
-//        navBar.addSubview(addEventButton)
-//        addEventButton.addTarget(self, action: #selector(addEventButtonTapped), for: .touchUpInside)
-        
-        updateButtonIconForCurrentView() // дава началната икона
-           
-           if #available(iOS 14.0, *) {
-              viewMenuButton.showsMenuAsPrimaryAction = true
-              viewMenuButton.menu = buildViewMenu()
-           }
-        navBar.addSubview(viewMenuButton)
-        
-        // searchButton
-        navBar.addSubview(searchButton)
-        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         
         // Свързваме вюта
         daysHeaderView.leadingInsetForHours = 0
@@ -563,22 +416,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         searchText = ""
     }
     
-    // MARK: - UISearchBarDelegate
-    public func searchBar(_ searchBar: UISearchBar, textDidChange text: String) {
-        self.searchText = text
-    }
-    
-    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        searchBar.resignFirstResponder()
-        searchText = ""
-        searchBar.text = ""
-    }
-    
+    // MARK: - Shared SwiftUI search field
     private func animateSearchBarIn() {
         searchFieldHostingController?.view.removeFromSuperview()
 
@@ -590,6 +428,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             self?.closeSearchButtonTapped()
         }
         let controller = UIHostingController(rootView: field)
+        controller.safeAreaRegions = []
         controller.view.backgroundColor = .clear
         controller.view.frame = navBar.bounds
         controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -643,19 +482,23 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             return
         }
         
-        let resultsView = SearchResultsView(searchText: searchText)
+        let resultsView = AnyView(SearchResultsView(searchText: searchText)
+            .environment(\.calendarBottomClearance, bottomScrollPadding)
+            .environment(\.locale, Locale.appFormatting)
+            .environment(\.layoutDirection, usesRightToLeftLayout ? .rightToLeft : .leftToRight))
         
         if let hc = searchHostingController {
             hc.rootView = resultsView
         } else {
             let hc = UIHostingController(rootView: resultsView)
+            hc.safeAreaRegions = []
             searchHostingController = hc
             addSubview(hc.view)
         }
         
         if let hc = searchHostingController {
             bringSubviewToFront(hc.view)
-            let navBarBottom = CGFloat(navBarHeight)
+            let navBarBottom = navBar.frame.maxY
             hc.view.layer.zPosition = 9
             hc.view.frame = CGRect(
                 x: 0,
@@ -676,87 +519,51 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }
     
     // MARK: - Layout
+    public override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window == nil { headerHost.detach() }
+        else { setNeedsLayout() }
+    }
+
+    public override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+        setNeedsLayout()
+    }
+
+    private func updateScreenHeader() {
+        let isLandscape = isWindowLandscape
+        headerHost.update(in: navBar, snapshot: .init(mode: currentView,
+            title: showSingleDay && !isLandscape ? appDateFormatter(template: "LLLL").string(from: fromDate) : nil,
+            range: showSingleDay ? nil : dateRangeTitle, rangeIsSelected: showCalendar,
+            rtl: usesRightToLeftLayout, localeIdentifier: Locale.appFormatting.identifier),
+            hidden: isSearching,
+            onTitle: { [weak self] in self?.monthLabelTapped() },
+            onRange: { [weak self] in self?.didTapDateRangeButton() },
+            onSearch: { [weak self] in self?.searchButtonTapped() },
+            onViewChange: { [weak self] mode in
+                self?.currentView = mode
+                self?.onViewChange?(mode)
+            })
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        let isLandscape = bounds.width > bounds.height
+        let isLandscape = isWindowLandscape
         let hidesSingleDayCarousel = isLandscape && traitCollection.userInterfaceIdiom != .pad
         let isRTL = usesRightToLeftLayout
-        let tabletLandscapeTopInset = traitCollection.userInterfaceIdiom == .pad
-            ? max(safeAreaInsets.top, window?.safeAreaInsets.top ?? 0)
-            : 0
-        let topOffset: CGFloat = isLandscape ? tabletLandscapeTopInset : 53.5
+        let topOffset = CalendarHeaderLayout.topInset(safeAreaTop: safeAreaInsets.top)
         
         // 1. Фон зад navBar (ако има)
         topBackgroundView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topOffset)
         topBackgroundView.layer.zPosition = 3
         
         // 2. NavBar
-        navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width - 2, height: navBarHeight)
+        navBar.frame = CGRect(x: 0, y: topOffset, width: bounds.width, height: navBarHeight)
         navBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         
-        // Подготвяме името на месеца. Рамката му се изчислява след
-        // бутоните, за да използва точно свободната ширина.
-        if showSingleDay && !isLandscape {
-            let df = appDateFormatter(template: "LLLL")
-            monthLabel.text = df.string(from: fromDate)
-            monthLabel.textColor = .systemBlue
-            monthLabel.useAdaptiveSingleLine(minimumScale: 0.4)
-            monthLabel.isHidden = false
-        } else {
-            monthLabel.isHidden = true
-        }
-        
-        // Подреждаме бутоните в navBar
-        let menuBtnSize: CGFloat = 34
-        let searchBtnSize = CalendarSearchAppearance.buttonSize
-        let margin: CGFloat = 8
-        
-        let menuButtonX = isRTL ? 10 : navBar.bounds.width - menuBtnSize - 10
-        let centerY = (navBar.bounds.height - menuBtnSize) / 2
-        viewMenuButton.frame = CGRect(x: menuButtonX, y: centerY, width: menuBtnSize, height: menuBtnSize)
-        
-        let searchButtonX = isRTL
-            ? menuButtonX + menuBtnSize + margin
-            : menuButtonX - searchBtnSize - margin
-        let searchCenterY = (navBar.bounds.height - searchBtnSize) / 2
-        searchButton.frame = CGRect(x: searchButtonX, y: searchCenterY, width: searchBtnSize, height: searchBtnSize)
-        closeSearchButton.frame = CGRect(
-            x: isRTL ? 10 : navBar.bounds.width - searchBtnSize - 10,
-            y: searchCenterY,
-            width: searchBtnSize,
-            height: searchBtnSize
-        )
+        updateScreenHeader()
 
-        if showSingleDay && !isLandscape {
-            let labelLeading: CGFloat = 10
-            let labelTrailing = isRTL
-                ? navBar.bounds.width - (searchButtonX + searchBtnSize + margin)
-                : searchButtonX - margin
-            let availableMonthWidth = max(0, labelTrailing - labelLeading)
-            monthLabel.frame = CGRect(
-                x: isRTL ? navBar.bounds.width - labelLeading - availableMonthWidth : labelLeading,
-                y: 0,
-                width: availableMonthWidth,
-                height: navBar.bounds.height
-            )
-            monthLabel.textAlignment = isRTL ? .right : .left
-        }
-        
-        let btnX: CGFloat = isRTL ? searchButtonX + searchBtnSize + margin : 10
-        let availableButtonWidth = isRTL
-            ? navBar.bounds.width - btnX - 10
-            : searchButtonX - btnX - margin
-        let btnW = max(0, availableButtonWidth)
-        let btnH: CGFloat = 40
-        let btnY = (navBar.bounds.height - btnH) / 2
-        dateRangeButton.frame = CGRect(x: btnX, y: btnY, width: btnW, height: btnH)
-        
-        // Ако не търсим, скриваме dateRangeButton при showSingleDay
-        if !isSearching {
-            dateRangeButton.isHidden = showSingleDay
-        }
-        
         // 3. SingleDayCarousel
         var singleDayCarouselHeight: CGFloat = showSingleDay ? 70 : 0
         singleDayCarousel.isHidden = !showSingleDay
@@ -982,128 +789,6 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         }
     }
     
-    @available(iOS 14.0, *)
-    private func buildViewMenu() -> UIMenu {
-        // Създаване на иконите за опциите
-        let dayImage          = UIImage(systemName: "calendar.day.timeline.leading")
-        let multiDayImage     = UIImage(systemName: "distribute.horizontal.left")
-        let monthImage        = UIImage(systemName: "calendar")
-        let yearImage         = UIImage(systemName: "12.lane")
-        let listImage         = UIImage(systemName: "list.bullet")
-        let multiCalendarIcon = UIImage(systemName: "align.vertical.top")
-        let weatherImage      = UIImage(systemName: "cloud.sun")  // Нова икона за Weather
-
-        // Съществуващите UIAction-и
-        let dayAction = UIAction(
-            title: NSLocalizedString("Day", comment: ""),
-            image: dayImage,
-            state: currentView == 1 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 1
-            self?.onViewChange?(1)
-            self?.viewMenuButton.setImage(dayImage, for: .normal)
-        }
-        
-        let multiAction = UIAction(
-            title: NSLocalizedString("MultiDay", comment: ""),
-            image: multiDayImage,
-            state: currentView == 3 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 3
-            self?.onViewChange?(3)
-            self?.viewMenuButton.setImage(multiDayImage, for: .normal)
-        }
-        
-        let monthAction = UIAction(
-            title: NSLocalizedString("Month", comment: ""),
-            image: monthImage,
-            state: currentView == 0 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 0
-            self?.onViewChange?(0)
-            self?.viewMenuButton.setImage(monthImage, for: .normal)
-        }
-        
-        let yearAction = UIAction(
-            title: NSLocalizedString("Year", comment: ""),
-            image: yearImage,
-            state: currentView == 2 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 2
-            self?.onViewChange?(2)
-            self?.viewMenuButton.setImage(yearImage, for: .normal)
-        }
-        
-        let listAction = UIAction(
-            title: NSLocalizedString("List", comment: ""),
-            image: listImage,
-            state: currentView == 4 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 4
-            self?.onViewChange?(4)
-            self?.viewMenuButton.setImage(listImage, for: .normal)
-        }
-        
-        let multiCalendarAction = UIAction(
-            title: NSLocalizedString("MultiCalendar", comment: ""),
-            image: multiCalendarIcon,
-            state: currentView == 5 ? .on : .off
-        ) { [weak self] _ in
-            // ПРОМЯНА: Премахната е проверката за абонамент.
-            self?.currentView = 5
-            self?.onViewChange?(5)
-            self?.viewMenuButton.setImage(multiCalendarIcon, for: .normal)
-        }
-        
-        // Добавяне на нов UIAction за Weather
-        let weatherAction = UIAction(
-            title: NSLocalizedString("Weather", comment: ""),
-            image: weatherImage,
-            state: currentView == 6 ? .on : .off
-        ) { [weak self] _ in
-            self?.currentView = 6
-            self?.onViewChange?(6)
-            self?.viewMenuButton.setImage(weatherImage, for: .normal)
-        }
-        
-        return UIMenu(
-            title: "",
-            children: [
-                dayAction,
-                multiAction,
-                monthAction,
-                yearAction,
-                listAction,
-                multiCalendarAction,
-                weatherAction
-            ]
-        )
-    }
-
-
-    private func updateButtonIconForCurrentView() {
-        let imageName: String
-        switch currentView {
-        case 1:
-            imageName = "calendar.day.timeline.leading"
-        case 3:
-            imageName = "distribute.horizontal.left"
-        case 0:
-            imageName = "calendar"
-        case 2:
-            imageName = "12.lane"
-        case 4:
-            imageName = "list.bullet"
-        case 5:
-            imageName = "align.vertical.top"
-        case 6:
-            imageName = "cloud.sun"
-        default:
-            imageName = "calendar"
-        }
-        
-        viewMenuButton.setImage(UIImage(systemName: imageName), for: .normal)
-    }
     // MARK: - DateRangeButton
     @objc private func didTapDateRangeButton() {
         if showCalendar {
@@ -1126,11 +811,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
     }
     
     private func showCalendarPopupOnWindow() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else {
-            print("No active UIWindow found.")
-            return
-        }
+        guard let window else { return }
         guard !showCalendar else { return }
         showCalendar = true
         
@@ -1166,7 +847,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         let calendarHeight: CGFloat = 350
         
         // Координати на бутона в прозореца
-        let buttonFrameInWindow = dateRangeButton.superview?.convert(dateRangeButton.frame, to: window) ?? .zero
+        let buttonFrameInWindow = navBar.convert(navBar.bounds, to: window)
         
         // Първоначално центриране по X
         var finalX = (window.bounds.width - calendarWidth) / 2
@@ -1239,7 +920,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         tapGesture.delegate = self
         backgroundView.addGestureRecognizer(tapGesture)
         
-        dateRangeButton.isSelected = true
+        updateScreenHeader()
     }
 
 
@@ -1252,7 +933,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             let hc = calendarHostingController,
             let bgView = calendarBackgroundView
         else {
-            dateRangeButton.isSelected = false
+            updateScreenHeader()
             return
         }
         
@@ -1267,24 +948,18 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
         })
         
         calendarHostingController = nil
-        dateRangeButton.isSelected = false
+        updateScreenHeader()
     }
     
     // MARK: - Helpers
-    private func refreshDateRangeButtonTitle() {
-        if fromDate > toDate {
-            dateRangeButton.setTitle(NSLocalizedString("No selected range", comment: ""), for: .normal)
-        } else {
-            let s = fmt(fromDate)
-            let e = fmt(toDate)
-            if s.isEmpty || e.isEmpty {
-                dateRangeButton.setTitle(NSLocalizedString("No selected range", comment: ""), for: .normal)
-            } else {
-                dateRangeButton.setTitle("\(s) - \(e)", for: .normal)
-            }
-        }
+    private var dateRangeTitle: String {
+        guard fromDate <= toDate else { return NSLocalizedString("No selected range", comment: "") }
+        let start = fmt(fromDate)
+        let end = fmt(toDate)
+        return start.isEmpty || end.isEmpty
+            ? NSLocalizedString("No selected range", comment: "") : "\(start) - \(end)"
     }
-    
+
     private func fmt(_ d: Date) -> String {
         appShortDateFormatter().string(from: d)
     }
@@ -1300,7 +975,7 @@ public final class TwoWayPinnedMultiDayContainerView: UIView,
             return false
         }
         // Ако докосваме dateRangeButton → също да не го затваряме
-        if let tappedView = touch.view, tappedView.isDescendant(of: dateRangeButton) {
+        if let tappedView = touch.view, tappedView.isDescendant(of: navBar) {
             return false
         }
         return true

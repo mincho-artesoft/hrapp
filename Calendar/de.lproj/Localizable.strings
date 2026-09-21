@@ -1051,3 +1051,10 @@
 "Theme" = "Design";
 "Light" = "Hell";
 "Dark" = "Dunkel";
+
+/* Landscape calendar sidebar */
+"Up next" = "Als Nächstes";
+"Nothing upcoming" = "Keine bevorstehenden Ereignisse";
+"Open event" = "Ereignis öffnen";
+"Previous month" = "Vorheriger Monat";
+"Next month" = "Nächster Monat";

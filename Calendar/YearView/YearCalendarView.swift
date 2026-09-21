@@ -97,7 +97,7 @@ struct YearCalendarView: View {
                         if isPad {
                                 return Array(
                                     repeating: GridItem(.fixed(180), spacing: horizontalSpacing),
-                                    count: isLandscape ? 6 : 4
+                                    count: max(1, Int((geometry.size.width - 32) / (180 + horizontalSpacing)))
                                 )
 
                         } else {
@@ -154,7 +154,8 @@ struct YearCalendarView: View {
                         }
                         .padding(.horizontal, 16)
                         .padding(.top, 8)
-                        .padding(.bottom, isLandscape ? 16 : 80)
+                        .padding(.bottom, 16)
+                        CalendarScrollFooter()
                     }
                 }
                 .onAppear {
@@ -176,37 +177,10 @@ struct YearCalendarView: View {
         .navigationBarHidden(true)
     }
 
-    @ViewBuilder
     private var topBar: some View {
-        HStack(spacing: 9) {
-            Spacer()
-            if !showSearchBar {
-                Button {
-                    showSearchBar = true
-                } label: {
-                    Image(uiImage: CalendarSearchAppearance.iconImage)
-                        .renderingMode(.template)
-                        .foregroundStyle(.blue)
-                }
-                .frame(
-                    width: CalendarSearchAppearance.buttonSize,
-                    height: CalendarSearchAppearance.buttonSize
-                )
-                .contentShape(Rectangle())
-                .buttonStyle(.plain)
-
-                UIMenuButtonRepresentable(
-                    currentView: selectedTab,
-                    onViewChange: { newTab in
-                        onViewChange?(newTab)
-                    }
-                )
-                .frame(width: 30, height: 30)
-            }
-        }
-        .padding(.horizontal)
-        .padding(.top, 8)
-        .padding(.bottom, 8)
+        CalendarScreenHeader(currentView: selectedTab,
+            onSearch: { showSearchBar = true },
+            onViewChange: { newTab in onViewChange?(newTab) })
     }
     
     // MARK: - Helper-и

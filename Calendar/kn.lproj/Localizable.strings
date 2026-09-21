@@ -1056,3 +1056,10 @@
 "Theme" = "ಥೀಮ್";
 "Light" = "ತಿಳಿ";
 "Dark" = "ಗಾಢ";
+
+/* Landscape calendar sidebar */
+"Up next" = "ಮುಂದೆ";
+"Nothing upcoming" = "ಮುಂಬರುವ ಈವೆಂಟ್‌ಗಳಿಲ್ಲ";
+"Open event" = "ಈವೆಂಟ್ ತೆರೆಯಿರಿ";
+"Previous month" = "ಹಿಂದಿನ ತಿಂಗಳು";
+"Next month" = "ಮುಂದಿನ ತಿಂಗಳು";

@@ -15,6 +15,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
     
     public var onDayLabelTap: ((Date) -> Void)? = nil
     public var onMonthLabelTap: ((Date) -> Void)? = nil
+    public var onEventSelectionChanged: ((EventDescriptor?) -> Void)? = nil
 
     public func makeUIViewController(context: Context) -> UIViewController {
         let vc = UIViewController()
@@ -24,6 +25,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         vc.view.semanticContentAttribute = semanticDirection
         
         let container = TwoWayPinnedSingleDayMultiCalendarContainerView()
+        container.bottomScrollPadding = context.environment.calendarBottomClearance
         container.semanticContentAttribute = semanticDirection
         container.refreshCalendarSources()
         
@@ -46,11 +48,16 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
         
         // CALLBACK-и
         container.onRangeChange = { newFrom, newTo in
+            context.coordinator.parent.onEventSelectionChanged?(nil)
             fromDate = newFrom
             context.coordinator.reloadCurrentRange()
         }
         
+        container.onEventSelectionChanged = { descriptor in
+            context.coordinator.parent.onEventSelectionChanged?(descriptor)
+        }
         container.onEventTap = { descriptor in
+            context.coordinator.parent.onEventSelectionChanged?(descriptor)
             if let local = descriptor as? AppLocalEventDescriptor {
                 context.coordinator.presentAppLocalEditor(eventID: local.eventID, in: vc)
             } else if let multi = descriptor as? EKMultiDayWrapper {
@@ -143,6 +150,7 @@ public struct TwoWayPinnedSingleDayMultiCalendarWrapper: UIViewControllerReprese
                 as? TwoWayPinnedSingleDayMultiCalendarContainerView else {
             return
         }
+        container.bottomScrollPadding = context.environment.calendarBottomClearance
 
         let semanticDirection: UISemanticContentAttribute =
             context.environment.layoutDirection == .rightToLeft ? .forceRightToLeft : .forceLeftToRight

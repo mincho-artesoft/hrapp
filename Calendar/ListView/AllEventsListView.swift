@@ -3,6 +3,7 @@ import EventKit
 
 struct AllEventsListView: View {
     @Binding var pinnedAllEvents: [EventDescriptor]
+    var scrollRequest: CalendarListScrollRequest? = nil
     
     let selectedTab: Int
     let onViewChange: (Int) -> Void
@@ -13,10 +14,12 @@ struct AllEventsListView: View {
     
     @State private var eventToView: EKEvent? = nil
     
-    // Флаг, за да знаем, че току-що сме заредили стари събития
-    @State private var didLoadMoreBefore: Bool = false
-    // Флаг, който контролира видимостта на съдържанието
-    @State private var isContentVisible: Bool = false
+    @State private var didInitialScroll = false
+    @State private var handledScrollRequestID: UUID?
+    @State private var isUserScrolling = false
+    @State private var visibleDays: Set<Date> = []
+    @State private var loadedBeforeDuringScroll = false
+    @State private var loadedAfterDuringScroll = false
     
     // MARK: - NEW: Search states
     @State private var showSearchBar = false
@@ -54,59 +57,31 @@ struct AllEventsListView: View {
         }
         .animation(.easeInOut, value: showSearchBar)
         .navigationBarHidden(true)
+        .onChange(of: scrollRequest) { _, _ in
+            showSearchBar = false
+            searchText = ""
+        }
     }
 
-    @ViewBuilder
     private var topBar: some View {
-        HStack(spacing: 9) {
-            Spacer()
-            if !showSearchBar {
-                Button {
-                    showSearchBar = true
-                } label: {
-                    Image(uiImage: CalendarSearchAppearance.iconImage)
-                        .renderingMode(.template)
-                        .foregroundStyle(.blue)
-                }
-                .frame(
-                    width: CalendarSearchAppearance.buttonSize,
-                    height: CalendarSearchAppearance.buttonSize
-                )
-                .contentShape(Rectangle())
-                .buttonStyle(.plain)
-
-                UIMenuButtonRepresentable(
-                    currentView: selectedTab,
-                    onViewChange: { newTab in
-                        onViewChange(newTab)
-                    }
-                )
-                .frame(width: 30, height: 30)
-            }
-        }
-        .padding(.horizontal)
-        .padding(.top, 8)
-        .padding(.bottom, 8)
+        CalendarScreenHeader(currentView: selectedTab,
+            onSearch: { showSearchBar = true },
+            onViewChange: { newTab in onViewChange(newTab) })
     }
     
     // MARK: - The main List content
     @ViewBuilder
     private func content(proxy: ScrollViewProxy) -> some View {
-        Group {
-            if isContentVisible {
-                eventList(proxy: proxy)
-            } else {
-                EmptyView()
-            }
-        }
+        eventList(proxy: proxy)
         .onAppear {
             if pinnedAllEvents.isEmpty {
                 loadInitialEvents()
             }
-            scrollToToday(proxy: proxy)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.06) {
-                isContentVisible = true
-            }
+        }
+        .onDisappear {
+            // Search replaces the List and its scroll reader. Restore the date
+            // anchor when the list is mounted again instead of showing row one.
+            didInitialScroll = false
         }
     }
     
@@ -114,8 +89,7 @@ struct AllEventsListView: View {
         List {
             let dayGroups = groupByDay(pinnedAllEvents)
             
-            ForEach(dayGroups.indices, id: \.self) { index in
-                let dayGroup = dayGroups[index]
+            ForEach(dayGroups) { dayGroup in
                 
                 DaySectionView(
                     dayGroup: dayGroup,
@@ -131,39 +105,61 @@ struct AllEventsListView: View {
                         print("Event type not supported for editing")
                     }
                 }
-                .id(dayGroup.day)
                 .onAppear {
-                    let threshold = 3
-                    // Ако сме в първите редове -> зареждаме още "назад"
-                    if index < threshold {
-                        didLoadMoreBefore = true
-                        onLoadMoreBefore()
-                    }
-                    // Ако сме в последните редове -> зареждаме още "надолу"
-                    if index >= dayGroups.count - threshold {
-                        onLoadMoreAfter()
-                    }
+                    visibleDays.insert(dayGroup.day)
+                    loadNearVisibleEdges()
                 }
+                .onDisappear { visibleDays.remove(dayGroup.day) }
+            }
+
+            Section {
+                CalendarScrollFooter()
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
+                    .accessibilityHidden(true)
             }
         }
         .listStyle(.plain)
-        .onChange(of: pinnedAllEvents.count) { _, _ in
-            if didLoadMoreBefore {
-                scrollToToday(proxy: proxy)
-                didLoadMoreBefore = false
+        .onScrollPhaseChange { previous, phase in
+            if phase == .interacting && previous != .interacting {
+                loadedBeforeDuringScroll = false
+                loadedAfterDuringScroll = false
             }
+            isUserScrolling = phase == .interacting || phase == .decelerating
+            loadNearVisibleEdges()
+        }
+        .task(id: CalendarListScrollUpdate(request: scrollRequest, days: groupByDay(pinnedAllEvents).map(\.day))) {
+            guard !didInitialScroll || handledScrollRequestID != scrollRequest?.id,
+                  let target = CalendarSidebarLayout.listScrollTarget(
+                    days: groupByDay(pinnedAllEvents).map(\.day), selectedDate: scrollRequest?.date,
+                    calendar: Calendar.current) else { return }
+            // Render the section before asking List to find its anchor.
+            await Task.yield()
+            guard !Task.isCancelled else { return }
+            if scrollRequest != nil {
+                withAnimation(.easeInOut(duration: 0.25)) { proxy.scrollTo(target, anchor: .top) }
+            } else {
+                proxy.scrollTo(target, anchor: .top)
+            }
+            didInitialScroll = true
+            handledScrollRequestID = scrollRequest?.id
         }
     }
-    
-    private func scrollToToday(proxy: ScrollViewProxy) {
-        let today = Calendar.current.startOfDay(for: Date())
-        let groups = groupByDay(pinnedAllEvents)
-        if let match = groups.first(where: {
-            Calendar.current.isDate($0.day, inSameDayAs: today)
-        }) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                proxy.scrollTo(match.day, anchor: .top)
-            }
+
+    private func loadNearVisibleEdges() {
+        // Never paginate while the initial/programmatic anchor is resolving.
+        // Also check when a gesture begins: sparse lists may already have their
+        // first/last sections on screen, so no new onAppear would be delivered.
+        guard didInitialScroll, isUserScrolling else { return }
+        let days = groupByDay(pinnedAllEvents).map(\.day)
+        if !loadedBeforeDuringScroll, days.prefix(3).contains(where: visibleDays.contains) {
+            loadedBeforeDuringScroll = true
+            onLoadMoreBefore()
+        }
+        if !loadedAfterDuringScroll, days.suffix(3).contains(where: visibleDays.contains) {
+            loadedAfterDuringScroll = true
+            onLoadMoreAfter()
         }
     }
     
@@ -177,7 +173,8 @@ struct AllEventsListView: View {
             dict[dayStart, default: []].append(e)
         }
         
-        let sortedKeys = dict.keys.sorted()
+        let sortedKeys = CalendarSidebarLayout.listDays(eventDays: Array(dict.keys),
+            selectedDate: scrollRequest?.date, calendar: cal)
         return sortedKeys.map { day in
             let dayEvents = dict[day] ?? []
             let sortedEvents = dayEvents.sorted { $0.dateInterval.start < $1.dateInterval.start }

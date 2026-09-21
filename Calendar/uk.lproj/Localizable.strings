@@ -1056,3 +1056,10 @@
 "Theme" = "Тема";
 "Light" = "Світла";
 "Dark" = "Темна";
+
+/* Landscape calendar sidebar */
+"Up next" = "Далі";
+"Nothing upcoming" = "Немає майбутніх подій";
+"Open event" = "Відкрити подію";
+"Previous month" = "Попередній місяць";
+"Next month" = "Наступний місяць";

@@ -1056,3 +1056,10 @@
 "Theme" = "Тақырып";
 "Light" = "Ашық";
 "Dark" = "Қараңғы";
+
+/* Landscape calendar sidebar */
+"Up next" = "Келесі";
+"Nothing upcoming" = "Алдағы оқиғалар жоқ";
+"Open event" = "Оқиғаны ашу";
+"Previous month" = "Алдыңғы ай";
+"Next month" = "Келесі ай";

@@ -136,9 +136,7 @@ struct WeatherKitView: View {
 
                     // Keep the legal attribution and the final weather card
                     // above the shared draggable handle and bottom bar.
-                    Spacer()
-                        .frame(height: 96)
-                        .accessibilityHidden(true)
+                    CalendarScrollFooter()
                 }
                 // Ако е необходимо, можете да запазите tap gesture за скриване на търсачката
                 .onTapGesture {
@@ -530,57 +528,18 @@ struct WeatherKitView: View {
     }
 
     private var weatherTopBar: some View {
-        HStack(spacing: 9) {
-            if !showSearchBar {
-                Button {
-                    openSavedRegions()
-                } label: {
-                    Image(systemName: "list.bullet")
-                        .font(.system(size: 22, weight: .medium))
+        CalendarScreenHeader(currentView: selectedTab, tint: .white,
+            controlsHidden: showSearchBar,
+            onSavedRegions: openSavedRegions,
+            onSearch: {
+                withAnimation { showSearchBar = true }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    isSearchFieldFocused = true
                 }
-                .frame(width: 36, height: 36)
-                .contentShape(Rectangle())
-                .buttonStyle(.plain)
-                .foregroundColor(.white)
-                .accessibilityLabel(NSLocalizedString("Saved Regions", comment: "Saved weather regions"))
-            }
-
-            Spacer()
-            if !showSearchBar {
-                Button {
-                    withAnimation {
-                        showSearchBar = true
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        isSearchFieldFocused = true
-                    }
-                } label: {
-                    Image(uiImage: CalendarSearchAppearance.iconImage)
-                        .renderingMode(.template)
-                }
-                .frame(
-                    width: CalendarSearchAppearance.buttonSize,
-                    height: CalendarSearchAppearance.buttonSize
-                )
-                .contentShape(Rectangle())
-                .buttonStyle(.plain)
-                .foregroundColor(.white)
-
-                UIMenuButtonRepresentable(
-                    currentView: selectedTab,
-                    tintColor: .white,
-                    onViewChange: onViewChange
-                )
-                .frame(width: 36, height: 36)
-            }
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.horizontal)
-        .padding(.top, 8)
-        .padding(.bottom, 8)
-        .background(Color.black.opacity(0.001))
-        .contentShape(Rectangle())
-        .zIndex(20)
+            }, onViewChange: onViewChange)
+            .background(Color.black.opacity(0.001))
+            .contentShape(Rectangle())
+            .zIndex(20)
     }
 
     private var savedRegionsScreen: some View {

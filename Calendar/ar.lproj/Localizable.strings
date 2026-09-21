@@ -1055,3 +1055,10 @@
 "Theme" = "السمة";
 "Light" = "فاتح";
 "Dark" = "داكن";
+
+/* Landscape calendar sidebar */
+"Up next" = "التالي";
+"Nothing upcoming" = "لا توجد أحداث قادمة";
+"Open event" = "فتح الحدث";
+"Previous month" = "الشهر السابق";
+"Next month" = "الشهر التالي";

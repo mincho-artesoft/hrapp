@@ -1054,3 +1054,10 @@
 "Theme" = "テーマ";
 "Light" = "ライト";
 "Dark" = "ダーク";
+
+/* Landscape calendar sidebar */
+"Up next" = "次の予定";
+"Nothing upcoming" = "今後の予定はありません";
+"Open event" = "イベントを開く";
+"Previous month" = "前の月";
+"Next month" = "次の月";
