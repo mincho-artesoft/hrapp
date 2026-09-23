@@ -44,7 +44,7 @@ struct AppLocalCalendarRow: View {
             if calendar.origin == .received {
                 Text(calendar.isRevoked ? NSLocalizedString("Access removed", comment: "Revoked calendar access") : calendar.access.title)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(calendar.isRevoked ? .red : .primary)
+                    .foregroundStyle(calendar.isRevoked ? .red : .secondary)
                     .padding(.horizontal, 9)
                     .padding(.vertical, 5)
                     .background(Color(uiColor: .secondarySystemGroupedBackground), in: Capsule())
@@ -143,7 +143,10 @@ struct AppLocalCalendarEditView: View {
 
                 if let calendar, calendar.origin == .received {
                     Section {
-                        LabeledContent("Access", value: calendar.access.title)
+                        LabeledContent("Access") {
+                            Text(calendar.access.title)
+                                .foregroundStyle(.secondary)
+                        }
                         if let email = calendar.remoteOwnerEmail, !email.isEmpty {
                             LabeledContent("Owner", value: email)
                         }

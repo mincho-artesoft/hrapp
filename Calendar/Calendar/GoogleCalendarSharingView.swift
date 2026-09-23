@@ -209,6 +209,7 @@ struct GoogleCalendarSharingView: View {
             } label: {
                 HStack(spacing: 5) {
                     Text(localizedRoleDisplayName(draft.wrappedValue.role))
+                        .foregroundStyle(.secondary)
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.caption2.weight(.bold))
                 }
@@ -294,6 +295,7 @@ struct GoogleCalendarSharingView: View {
                     } label: {
                         HStack(spacing: 5) {
                             Text(localizedRoleDisplayName(rule.role))
+                                .foregroundStyle(.secondary)
                             Image(systemName: "chevron.up.chevron.down")
                                 .font(.caption2.weight(.bold))
                         }

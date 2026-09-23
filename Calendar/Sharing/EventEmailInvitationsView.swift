@@ -130,6 +130,7 @@ struct EventEmailInvitationsView: View {
             } label: {
                 HStack(spacing: 5) {
                     Text(invitation.wrappedValue.access.title)
+                        .foregroundStyle(.secondary)
                     Image(systemName: "chevron.up.chevron.down")
                         .font(.caption2.weight(.bold))
                 }

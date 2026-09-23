@@ -695,7 +695,7 @@ struct SharingSheetView: View {
 
                 Text(invitation.access.title)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(invitation.access == .writer ? Color.green : Color.secondary)
+                    .foregroundStyle(.secondary)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
                     .background(.thinMaterial, in: Capsule())
@@ -765,9 +765,7 @@ struct SharingSheetView: View {
 
                 Text(invitation.access.title)
                     .font(.caption.weight(.semibold))
-                    .foregroundStyle(
-                        invitation.access == .writer ? Color.green : Color.secondary
-                    )
+                    .foregroundStyle(.secondary)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
                     .background(.thinMaterial, in: Capsule())
@@ -984,7 +982,7 @@ struct SharingSheetView: View {
                 } else if let access {
                     Text(access.title)
                         .font(.footnote.weight(.semibold))
-                        .foregroundStyle(access == .writer ? Color.green : Color.secondary)
+                        .foregroundStyle(.secondary)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
                         .background(.thinMaterial, in: Capsule())
@@ -1331,6 +1329,7 @@ private struct SharedEventAccessSheet: View {
                     } label: {
                         HStack(spacing: 5) {
                             Text(recipient.access.title)
+                                .foregroundStyle(.secondary)
                             Image(systemName: "chevron.up.chevron.down")
                                 .font(.caption2.weight(.bold))
                         }

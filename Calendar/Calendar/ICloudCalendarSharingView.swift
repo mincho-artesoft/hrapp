@@ -414,6 +414,7 @@ struct ICloudCalendarSharingView: View {
         } label: {
             HStack(spacing: 5) {
                 Text(access.wrappedValue.title)
+                    .foregroundStyle(.secondary)
                 Image(systemName: "chevron.up.chevron.down")
                     .font(.caption2.weight(.bold))
             }
@@ -704,6 +705,7 @@ private struct ICloudCalendarEmailInvitationsView: View {
         } label: {
             HStack(spacing: 5) {
                 Text(access.wrappedValue.title)
+                    .foregroundStyle(.secondary)
                 Image(systemName: "chevron.up.chevron.down")
                     .font(.caption2.weight(.bold))
             }

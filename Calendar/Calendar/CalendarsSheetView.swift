@@ -886,7 +886,7 @@ private struct SharedICloudCalendarRow: View {
                 .foregroundStyle(
                     calendar.isRevoked
                         ? Color.red
-                        : Color.primary
+                        : Color.secondary
                 )
                 .padding(.horizontal, 9)
                 .padding(.vertical, 5)
@@ -1030,7 +1030,10 @@ private struct SharedICloudCalendarInfoView: View {
                 }
 
                 Section {
-                    LabeledContent("Access", value: sharedCalendar.access.title)
+                    LabeledContent("Access") {
+                        Text(sharedCalendar.access.title)
+                            .foregroundStyle(.secondary)
+                    }
                     if let ownerEmail = sharedCalendar.ownerEmail,
                        !ownerEmail.isEmpty {
                         LabeledContent("Owner", value: ownerEmail)
