@@ -1,11 +1,17 @@
 # cloud-calendars-api (NestJS serverless)
 
+Current storage and deployment: [Hetzner storage](HETZNER_STORAGE.md). Both
+calendar namespaces now live on Hetzner, while production and Debug Lambdas
+remain in AWS. This repository deploys only Cloud Calendars. The common storage
+service is maintained separately in `calendar-storage-infra`.
+
 The NestJS port of the Cloud Calendars API. It **replaces** the original single
 `index.mjs` Lambda while preserving the whole architecture:
 
-- **Same S3-as-DB model** — production uses `cal.cloud-calendars.com`; debug uses
-  a separate private bucket. Both keep the same key layout
-  (`src/store/keys.ts`), same objects. No database was introduced.
+- **Separate calendar stores** — production uses the Hetzner namespace
+  `cal.cloud-calendars.com`; Debug uses `cloud-calendars-api-debug-303803840503`.
+  Both keep the same object keys and conditional-write semantics through the
+  private HTTPS storage service.
 - **Isolated debug invocation** — debug uses its own Lambda and API Gateway;
   production keeps the existing custom domain `api.cloud-calendars.com`.
   NestJS runs behind `@codegenie/serverless-express` in both environments.

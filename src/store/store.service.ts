@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import {
-  S3Client,
   GetObjectCommand,
   PutObjectCommand,
   DeleteObjectCommand,
   ListObjectsV2Command,
 } from '@aws-sdk/client-s3';
 import { keys } from './keys';
+import { CalendarStorageClient } from './calendar-storage-client';
 
 /**
  * S3-as-DB. A thin, injectable wrapper around the exact operations the original
@@ -17,7 +17,7 @@ import { keys } from './keys';
 export class StoreService {
   readonly keys = keys;
   private readonly bucket = process.env.CAL_BUCKET as string;
-  private readonly s3 = new S3Client({});
+  private readonly s3 = new CalendarStorageClient();
 
   async getJSON(key: string): Promise<any> {
     return (await this.getJSONWithETag(key))?.value ?? null;

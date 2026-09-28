@@ -42,18 +42,14 @@ package() {
 }
 
 ensure_debug_infrastructure() {
-  if ! aws s3api head-bucket --bucket "$DEBUG_BUCKET" >/dev/null 2>&1; then
-    log "creating isolated debug bucket ${DEBUG_BUCKET}"
-    aws s3api create-bucket --bucket "$DEBUG_BUCKET" --region "$REGION" >/dev/null
-    aws s3api put-public-access-block --bucket "$DEBUG_BUCKET" \
-      --public-access-block-configuration \
-      'BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true'
-    aws s3api put-bucket-encryption --bucket "$DEBUG_BUCKET" \
-      --server-side-encryption-configuration \
-      '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"},"BucketKeyEnabled":true}]}'
-    aws s3api put-bucket-tagging --bucket "$DEBUG_BUCKET" \
-      --tagging 'TagSet=[{Key=Project,Value=CloudCalendars},{Key=Environment,Value=debug}]'
+  local STORAGE_URL
+  STORAGE_URL=$(aws lambda get-function-configuration --function-name "$DEBUG_NAME" --region "$REGION" \
+    --query 'Environment.Variables.CALENDAR_STORAGE_URL' --output text)
+  if [[ "$STORAGE_URL" != "https://storage.wonek.com" ]]; then
+    echo "Configure the existing Debug Lambda for Hetzner calendar storage before deploying." >&2
+    exit 1
   fi
+  log "using isolated Hetzner calendar directory ${DEBUG_BUCKET}"
 
   if ! aws iam get-role --role-name "$DEBUG_ROLE_NAME" >/dev/null 2>&1; then
     log "creating isolated debug Lambda role ${DEBUG_ROLE_NAME}"
@@ -64,9 +60,6 @@ ensure_debug_infrastructure() {
       --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
   fi
 
-  aws iam put-role-policy --role-name "$DEBUG_ROLE_NAME" --policy-name s3-debug-only \
-    --policy-document \
-    "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\",\"s3:PutObject\",\"s3:DeleteObject\",\"s3:ListBucket\"],\"Resource\":[\"arn:aws:s3:::${DEBUG_BUCKET}\",\"arn:aws:s3:::${DEBUG_BUCKET}/*\"]}]}"
   aws iam put-role-policy --role-name "$DEBUG_ROLE_NAME" --policy-name ses-send \
     --policy-document \
     '{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Action":["ses:SendEmail"],"Resource":"*"}]}'
@@ -113,6 +106,13 @@ deploy_production() {
   if [[ "${ALLOW_PRODUCTION_DEPLOY:-}" != "I_UNDERSTAND_THIS_UPDATES_LIVE" ]]; then
     echo "Production deploy is locked. Set ALLOW_PRODUCTION_DEPLOY=I_UNDERSTAND_THIS_UPDATES_LIVE only after explicit release approval." >&2
     exit 2
+  fi
+  local STORAGE_URL
+  STORAGE_URL=$(aws lambda get-function-configuration --function-name "$PROD_NAME" --region "$REGION" \
+    --query 'Environment.Variables.CALENDAR_STORAGE_URL' --output text)
+  if [[ "$STORAGE_URL" != "https://storage.wonek.com" ]]; then
+    echo "Configure the production Lambda for Hetzner calendar storage before deploying." >&2
+    exit 1
   fi
   package
   log "CUTOVER: updating live ${PROD_NAME} code"

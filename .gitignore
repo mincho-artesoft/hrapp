@@ -7,3 +7,5 @@ build-staging/
 .endpoint
 .DS_Store
 *.zip
+__pycache__/
+*.pyc
